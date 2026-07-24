@@ -270,6 +270,20 @@ class RAGOrchestrator:
             is_sufficient = sufficiency.is_sufficient
             confidence = self._sufficiency_evaluator.confidence(chunks)
 
+            # Numeric evidence is selected from the original child chunks
+            # before ContextBuilder expands parents.  This prevents a nearby
+            # table row in a parent section from displacing the retrieved
+            # row that actually matches the requested metric.
+            raw_numeric_answer = self._deterministic_extractor.answer_numeric_query_from_chunks(
+                question, chunks
+            )
+            # Test doubles and third-party extractors may not implement the
+            # optional raw-child contract yet.  Only a real answer payload is
+            # allowed to short-circuit generation; a truthy mock/object must
+            # retain the legacy context/LLM path.
+            if not isinstance(raw_numeric_answer, dict):
+                raw_numeric_answer = None
+
             # 2. Build context (with dedup and score threshold)
             context, sources = self._context_builder.build(chunks)
 
@@ -311,12 +325,26 @@ class RAGOrchestrator:
                 calculation_result is None
                 or calculation_result.status is CalculationStatus.NOT_APPLICABLE
             ):
-                deterministic_context_answer = (
+                deterministic_context_answer = raw_numeric_answer or (
                     self._deterministic_extractor.answer_deterministic_query_from_context(
                         question,
                         context,
                         sources,
                     )
+                )
+
+            # Preserve the exact child evidence used by the numeric selector.
+            # ContextBuilder may replace a child with an expanded parent; that
+            # is desirable for LLM context, but validation must also see the
+            # row/window that the deterministic answer was derived from.
+            if raw_numeric_answer and raw_numeric_answer.get("chunks"):
+                raw_evidence = tuple(
+                    EvidenceItem.from_chunk(chunk)
+                    for chunk in raw_numeric_answer["chunks"]
+                )
+                evidence_for_validation = raw_evidence + tuple(
+                    item for item in evidence_for_validation
+                    if item.chunk_id not in {raw.chunk_id for raw in raw_evidence}
                 )
 
             # Phase 4 hotfix: Run answerability for ALL paths (including
@@ -471,9 +499,10 @@ class RAGOrchestrator:
                     if deterministic_context_answer:
                         answer = deterministic_context_answer["answer"]
                         is_sufficient = True
-                        deterministic_answer = deterministic_context_answer[
-                            "diagnostic"
-                        ]
+                        deterministic_answer = {
+                            "path": deterministic_context_answer["diagnostic"],
+                            "selection": deterministic_context_answer.get("selection", []),
+                        }
                         low_confidence_numeric_override = False
                     else:
                         low_confidence_numeric_override = (
@@ -521,8 +550,11 @@ class RAGOrchestrator:
         elapsed_ms = (time.time() - t0) * 1000
         import hashlib as _hashlib
 
-        context_str = context or ""
-        answer_str = answer or ""
+        # Trace redaction/hashing must never affect a response.  Some legacy
+        # integrations use non-string response proxies, so coerce solely for
+        # hashing while preserving the public answer value unchanged.
+        context_str = context if isinstance(context, str) else str(context or "")
+        answer_str = answer if isinstance(answer, str) else str(answer or "")
         context_hash = _hashlib.sha256(context_str.encode("utf-8")).hexdigest()[:16]
         answer_hash = _hashlib.sha256(answer_str.encode("utf-8")).hexdigest()[:16]
 

@@ -104,18 +104,35 @@ class QueryProcessor:
         return any(marker in normalized for marker in numeric_markers) or any(marker in query for marker in cjk_markers)
 
     def should_try_deterministic_numeric_answer(self, query: str, chunks: list) -> bool:
-        """Check if we should attempt a deterministic numeric answer."""
+        """Attempt evidence extraction for any numeric question with evidence.
+
+        The extractor itself returns ``None`` when it cannot find a
+        query-aligned value. This keeps the router generic rather than
+        maintaining a brittle per-metric allow-list, while retaining the
+        normal LLM/refusal fallback when no deterministic answer is found.
+        """
         if not chunks or not self.is_numeric_query(query):
             return False
+
         normalized = (query or "").lower()
-        strong_markers = (
-            "record", "how much", "percentage", "percent", "cash and cash equivalents",
-            "gross margin", "platform revenue", "volume-based revenue", "credit facilities",
-            "operating activities", "net assets", "budget", "actual 2020", "reserve and surplus",
-            "practice question", "compare", "amount", "year-over-year", "growth rate",
-            "total revenue", "pct system", "madrid system",
-        )
-        return any(marker in normalized for marker in strong_markers)
+        # Quantifiers explicitly request a numeric value.  Otherwise require
+        # at least two meaningful target terms: this preserves the historical
+        # LLM route for underspecified prompts such as "What was revenue?"
+        # without encoding a list of document-specific financial metrics.
+        if any(marker in normalized for marker in (
+            "how much", "how many", "amount", "percentage", "percent",
+            "多少", "金额", "百分比",
+        )):
+            return True
+        stopwords = {
+            "what", "was", "were", "the", "and", "for", "with", "from",
+            "does", "did", "have", "has", "this", "that", "report", "document",
+        }
+        terms = [
+            token for token in re.findall(r"[a-zA-Z0-9]{2,}", normalized)
+            if token not in stopwords
+        ]
+        return len(set(terms)) >= 2
 
     def should_try_deterministic_factual_answer(self, query: str) -> bool:
         """Check if we should attempt a deterministic factual answer."""
