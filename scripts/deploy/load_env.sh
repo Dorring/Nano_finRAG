@@ -86,3 +86,132 @@ port_is_free() {
     fi
     return 0
 }
+
+# ---------------------------------------------------------------------------
+# PID ownership verification (prevents killing a reused/unrelated PID)
+# ---------------------------------------------------------------------------
+
+# Read the process start time (field 22 of /proc/<pid>/stat, in clock ticks).
+# Prints the value; prints empty string if unavailable.
+# Usage: _read_start_time <pid>
+_read_start_time() {
+    local pid="$1"
+    local stat after_comm
+    stat="$(cat "/proc/${pid}/stat" 2>/dev/null || true)"
+    [[ -n "${stat}" ]] || { printf ''; return; }
+    # Field 2 (comm) may contain spaces inside parens; strip up to last ')'.
+    after_comm="${stat##*) }"
+    # After the comm field, starttime is field 20 (22 - 2 removed fields).
+    printf '%s' "$(echo "${after_comm}" | awk '{print $20}')"
+}
+
+# Read /proc/<pid>/cmdline as a single space-joined string.
+# Usage: _read_cmdline <pid>
+_read_cmdline() {
+    local pid="$1"
+    tr '\0' ' ' < "/proc/${pid}/cmdline" 2>/dev/null || printf ''
+}
+
+# Write a metadata file (pid, start time, command marker, tmux session)
+# alongside a PID file, so stop scripts can verify ownership before killing.
+# Usage: write_pid_meta <pid_file> <pid> <marker> <session>
+write_pid_meta() {
+    local pid_file="$1" pid="$2" marker="$3" session="$4"
+    local meta_file="${pid_file}.meta"
+    local start_time
+    start_time="$(_read_start_time "${pid}")"
+    {
+        printf 'pid=%s\n' "${pid}"
+        printf 'process_start_time=%s\n' "${start_time}"
+        printf 'expected_command_marker=%s\n' "${marker}"
+        printf 'tmux_session=%s\n' "${session}"
+    } > "${meta_file}"
+}
+
+# Verify that a recorded PID still belongs to the service that wrote the PID
+# file. Returns 0 (true) if the PID is owned by us and safe to kill; returns
+# 1 (false) if the PID is stale, reused, or the command marker is absent.
+# Usage: verify_pid_owner <pid_file> <marker>
+verify_pid_owner() {
+    local pid_file="$1" marker="$2"
+    local meta_file="${pid_file}.meta"
+    local pid recorded_start cur_start cmdline
+
+    [[ -f "${pid_file}" ]] || return 1
+    pid="$(cat "${pid_file}" 2>/dev/null || true)"
+    [[ -n "${pid}" ]] || return 1
+
+    # PID must still be alive.
+    kill -0 "${pid}" 2>/dev/null || return 1
+
+    # If /proc is available (Linux), verify start time + command marker.
+    if [[ -r "/proc/${pid}/stat" ]]; then
+        # --- start-time check (detects PID reuse) ---
+        recorded_start=""
+        if [[ -f "${meta_file}" ]]; then
+            while IFS='=' read -r k v; do
+                [[ "${k}" == "process_start_time" ]] && recorded_start="${v}"
+            done < "${meta_file}" 2>/dev/null || true
+        fi
+        cur_start="$(_read_start_time "${pid}")"
+        if [[ -n "${recorded_start}" && -n "${cur_start}" \
+              && "${recorded_start}" != "${cur_start}" ]]; then
+            return 1   # start time changed -> PID was reused
+        fi
+        # --- command-marker check (detects unrelated process) ---
+        cmdline="$(_read_cmdline "${pid}")"
+        if [[ -n "${marker}" && -n "${cmdline}" ]]; then
+            case "${cmdline}" in
+                *"${marker}"*) ;;             # matches -> ok
+                *) return 1 ;;                 # marker absent -> not ours
+            esac
+        fi
+    fi
+    return 0
+}
+
+# Stop a single service safely: kill its tmux session, then verify-and-kill
+# the recorded PID. Never kills a PID that fails ownership verification.
+# Usage: stop_service <label> <session> <pid_file> <status_file> <marker>
+stop_service() {
+    local label="$1" session="$2" pid_file="$3" status_file="$4" marker="$5"
+    echo "[stop] ${label} ..."
+
+    # Kill the tmux session first; this takes the whole process tree with it.
+    if tmux has-session -t "${session}" 2>/dev/null; then
+        tmux kill-session -t "${session}"
+        echo "[stop] ${label}: killed tmux session '${session}'."
+    else
+        echo "[stop] ${label}: no tmux session '${session}'."
+    fi
+
+    # Kill by recorded PID only after ownership verification.
+    if [[ -f "${pid_file}" ]]; then
+        local pid
+        pid="$(cat "${pid_file}" 2>/dev/null || true)"
+        if [[ -n "${pid}" ]] && kill -0 "${pid}" 2>/dev/null; then
+            if verify_pid_owner "${pid_file}" "${marker}"; then
+                echo "[stop] ${label}: verified PID ${pid}; sending TERM."
+                kill -TERM "${pid}" 2>/dev/null || true
+                local waited=0
+                while [[ "${waited}" -lt 10 ]] && kill -0 "${pid}" 2>/dev/null; do
+                    sleep 1
+                    waited=$((waited + 1))
+                done
+                if kill -0 "${pid}" 2>/dev/null; then
+                    echo "[stop] ${label}: still alive after 10s; sending KILL."
+                    kill -9 "${pid}" 2>/dev/null || true
+                fi
+            else
+                echo "[stop] ${label}: STALE_PID — PID ${pid} no longer belongs to this service; not killing."
+            fi
+        else
+            echo "[stop] ${label}: PID ${pid:-<none>} not running."
+        fi
+        rm -f "${pid_file}" "${pid_file}.meta"
+    else
+        echo "[stop] ${label}: no PID file."
+    fi
+
+    rm -f "${status_file}"
+}

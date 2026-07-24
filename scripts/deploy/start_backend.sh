@@ -97,6 +97,10 @@ echo "[backend] Started in tmux session '${SESSION}'. Waiting for /healthz (up t
 
 __URL="http://${BACKEND_HOST}:${BACKEND_PORT}/healthz"
 if wait_for_http_checked "${__URL}" 60 "${PID_FILE}"; then
+    __pid="$(cat "${PID_FILE}" 2>/dev/null || true)"
+    if [[ -n "${__pid}" ]]; then
+        write_pid_meta "${PID_FILE}" "${__pid}" "src.main:app" "${SESSION}"
+    fi
     write_status "READY"
     echo "[backend] READY (PID $(cat "${PID_FILE}" 2>/dev/null || echo "?"))."
     exit 0

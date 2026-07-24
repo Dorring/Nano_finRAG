@@ -16,7 +16,9 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
 import sys
+import time
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -57,7 +59,7 @@ class TestResult:
 
     def __init__(self, name: str, status: str, detail: str = "") -> None:
         self.name = name
-        self.status = status  # "pass" | "fail"
+        self.status = status  # "pass" | "fail" | "pending"
         self.detail = detail
 
     def to_dict(self) -> dict[str, Any]:
@@ -360,10 +362,85 @@ def test_no_path_leak_in_errors(backend_url: str) -> TestResult:
     return TestResult("no_path_leak_in_errors", "pass")
 
 
-def test_restart_recovery() -> TestResult:
-    """Test 12: services recover after restart (manual verification, documented)."""
-    note = "manual_check_documented: run stop_all.sh then start_all.sh and re-run healthcheck"
-    return TestResult("restart_recovery", "pass", note)
+def _endpoint_healthy(url: str) -> bool:
+    """Return True if a GET to ``url`` returns HTTP 200."""
+    status, _, _ = http_request("GET", url)
+    return status == 200
+
+
+def test_restart_recovery(env: Mapping[str, str]) -> TestResult:
+    """Test 12: services recover after a real restart.
+
+    Snapshots initial health, invokes ``restart_all.sh``, waits for all three
+    services to become healthy again, and only then reports ``pass``. If the
+    services are not initially healthy the test reports ``pending`` (cannot
+    verify restart of something that is not running). It never returns a
+    fixed ``pass``.
+    """
+    restart_script = SCRIPT_DIR / "restart_all.sh"
+    if not restart_script.is_file():
+        return TestResult("restart_recovery", "pending", "restart_all.sh not found")
+
+    model_url = (
+        f"http://{env.get('MODEL_HOST', '127.0.0.1')}:{env.get('MODEL_PORT', '18001')}"
+    )
+    backend_url = (
+        f"http://{env.get('BACKEND_HOST', '127.0.0.1')}:{env.get('BACKEND_PORT', '18002')}"
+    )
+    frontend_url = (
+        f"http://{env.get('FRONTEND_HOST', '127.0.0.1')}:{env.get('FRONTEND_PORT', '18003')}"
+    )
+
+    # Services must be healthy before we restart them.
+    initial_ok = (
+        _endpoint_healthy(f"{model_url}/health")
+        and _endpoint_healthy(f"{backend_url}/healthz")
+        and _endpoint_healthy(f"{frontend_url}/")
+    )
+    if not initial_ok:
+        return TestResult(
+            "restart_recovery", "pending",
+            "services not healthy before restart; cannot verify recovery",
+        )
+
+    # Run the real restart script.
+    try:
+        proc = subprocess.run(
+            ["bash", str(restart_script)],
+            capture_output=True,
+            text=True,
+            timeout=300,
+        )
+    except (subprocess.TimeoutExpired, OSError):
+        return TestResult(
+            "restart_recovery", "pending",
+            "restart_all.sh could not be executed",
+        )
+    if proc.returncode != 0:
+        return TestResult(
+            "restart_recovery", "fail",
+            "restart_all.sh exited non-zero",
+        )
+
+    # Wait for all three services to become healthy again (up to 180s).
+    deadline = time.monotonic() + 180.0
+    recovered = False
+    while time.monotonic() < deadline:
+        if (
+            _endpoint_healthy(f"{model_url}/health")
+            and _endpoint_healthy(f"{backend_url}/healthz")
+            and _endpoint_healthy(f"{frontend_url}/")
+        ):
+            recovered = True
+            break
+        time.sleep(3)
+
+    if recovered:
+        return TestResult("restart_recovery", "pass")
+    return TestResult(
+        "restart_recovery", "fail",
+        "services not healthy after restart within 180s",
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -406,17 +483,24 @@ def run_all_tests(env: Mapping[str, str]) -> dict[str, Any]:
 
     # Tests 11-12: security and recovery.
     results.append(test_no_path_leak_in_errors(backend_url))
-    results.append(test_restart_recovery())
+    results.append(test_restart_recovery(env))
 
     passed = sum(1 for r in results if r.status == "pass")
     failed = sum(1 for r in results if r.status == "fail")
-    overall = "pass" if failed == 0 else "fail"
+    pending = sum(1 for r in results if r.status == "pending")
+    if failed > 0:
+        overall = "fail"
+    elif pending > 0:
+        overall = "pending"
+    else:
+        overall = "pass"
 
     return {
         "tests": [r.to_dict() for r in results],
         "total": len(results),
         "passed": passed,
         "failed": failed,
+        "pending": pending,
         "overall": overall,
     }
 

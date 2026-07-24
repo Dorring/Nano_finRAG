@@ -164,14 +164,14 @@ def test_acceptance_criteria_count(criteria_list):
 
 
 def test_all_criteria_have_status(criteria_list):
-    # Test that all criteria have a status field ("passed" or "pending")
+    # Test that all criteria have a status field ("passed", "pending", or "failed")
     for i, c in enumerate(criteria_list):
         if not isinstance(c, dict):
             continue
         status = c.get("status")
         assert status is not None, \
             f"Criterion #{i} ({c.get('id', '?')}) has no status field"
-        assert status in ("passed", "pending"), \
+        assert status in ("passed", "pending", "failed"), \
             f"Criterion '{c.get('id', '?')}' has unexpected status: {status}"
 
 
@@ -185,10 +185,10 @@ def test_acceptance_criterion_exists(criteria_list, criterion_id):
 
 @pytest.mark.parametrize("criterion_id", ACCEPTANCE_CRITERIA)
 def test_acceptance_criterion_status(criteria_list, criterion_id):
-    # Test that each criterion has a valid status ("passed" or "pending")
+    # Test that each criterion has a valid status ("passed", "pending", or "failed")
     status = _criterion_status(criteria_list, criterion_id)
     assert status is not None, \
         f"Criterion '{criterion_id}' not found in acceptance criteria"
     status_lower = str(status).lower()
-    assert status_lower in ("passed", "pending"), \
+    assert status_lower in ("passed", "pending", "failed"), \
         f"Criterion '{criterion_id}' has unexpected status: {status}"

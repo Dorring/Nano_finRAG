@@ -91,6 +91,10 @@ echo "[model] Started in tmux session '${SESSION}'. Waiting for /health (up to 1
 
 __URL="http://${MODEL_HOST}:${MODEL_PORT}/health"
 if wait_for_http_checked "${__URL}" 120 "${PID_FILE}"; then
+    __pid="$(cat "${PID_FILE}" 2>/dev/null || true)"
+    if [[ -n "${__pid}" ]]; then
+        write_pid_meta "${PID_FILE}" "${__pid}" "chat_openai_compat" "${SESSION}"
+    fi
     write_status "READY"
     echo "[model] READY (PID $(cat "${PID_FILE}" 2>/dev/null || echo "?"))."
     exit 0

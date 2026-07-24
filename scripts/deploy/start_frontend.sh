@@ -94,6 +94,10 @@ echo "[frontend] Started in tmux session '${SESSION}'. Waiting for HTTP 200 (up 
 
 __URL="http://${FRONTEND_HOST}:${FRONTEND_PORT}/"
 if wait_for_http_checked "${__URL}" 60 "${PID_FILE}"; then
+    __pid="$(cat "${PID_FILE}" 2>/dev/null || true)"
+    if [[ -n "${__pid}" ]]; then
+        write_pid_meta "${PID_FILE}" "${__pid}" "npm" "${SESSION}"
+    fi
     write_status "READY"
     echo "[frontend] READY (PID $(cat "${PID_FILE}" 2>/dev/null || echo "?"))."
     exit 0

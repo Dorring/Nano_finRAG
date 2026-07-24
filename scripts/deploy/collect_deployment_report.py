@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
 import sys
 import time
 import urllib.error
@@ -119,6 +120,168 @@ def measure_latency(url: str, timeout: float = HTTP_TIMEOUT_SECONDS) -> Optional
         return None
     elapsed = (time.monotonic() - start) * 1000.0
     return round(elapsed, 1)
+
+
+def _http_post_json(
+    url: str,
+    body: dict[str, Any],
+    headers: Optional[dict[str, str]] = None,
+    timeout: float = HTTP_TIMEOUT_SECONDS,
+) -> tuple[int, Optional[Any]]:
+    """POST JSON and return ``(status_code, parsed_json_or_None)``."""
+    req_headers: dict[str, str] = {"Accept": "application/json"}
+    if headers:
+        req_headers.update(headers)
+    data = json.dumps(body).encode("utf-8")
+    req_headers["Content-Type"] = "application/json"
+    req = urllib.request.Request(url, data=data, headers=req_headers, method="POST")
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            status = int(getattr(resp, "status", 200))
+            raw = resp.read().decode("utf-8", errors="replace")
+    except urllib.error.HTTPError as exc:
+        try:
+            raw = exc.read().decode("utf-8", errors="replace")
+        except Exception:
+            raw = ""
+        try:
+            return exc.code, json.loads(raw) if raw else None
+        except json.JSONDecodeError:
+            return exc.code, None
+    except (urllib.error.URLError, TimeoutError, OSError):
+        return 0, None
+    try:
+        return status, json.loads(raw) if raw else None
+    except json.JSONDecodeError:
+        return status, None
+
+
+def obtain_auth_token(backend_url: str) -> Optional[str]:
+    """Register or login as the report user; return ``access_token`` or ``None``."""
+    email = "phase7-perf@example.com"
+    password = "phase7-perf-password-123456"
+    _, body = _http_post_json(
+        f"{backend_url}/register",
+        {"email": email, "password": password},
+    )
+    if isinstance(body, dict) and body.get("access_token"):
+        return body["access_token"]
+    _, body = _http_post_json(
+        f"{backend_url}/login",
+        {"email": email, "password": password},
+    )
+    if isinstance(body, dict) and body.get("access_token"):
+        return body["access_token"]
+    return None
+
+
+def measure_query_latency(
+    backend_url: str,
+    path: str,
+    token: Optional[str],
+    question: str,
+    timeout: float = 60.0,
+) -> Optional[float]:
+    """Measure an authenticated POST /query latency in ms (``None`` on failure)."""
+    headers: dict[str, str] = {}
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    start = time.monotonic()
+    status, _ = _http_post_json(
+        f"{backend_url}{path}",
+        {"question": question},
+        headers=headers,
+        timeout=timeout,
+    )
+    if status != 200:
+        return None
+    return round((time.monotonic() - start) * 1000.0, 1)
+
+
+def _percentile(sorted_values: list[float], pct: float) -> Optional[float]:
+    """Return the ``pct`` percentile of a pre-sorted list (``None`` if empty)."""
+    if not sorted_values:
+        return None
+    n = len(sorted_values)
+    if n == 1:
+        return round(sorted_values[0], 1)
+    rank = (pct / 100.0) * (n - 1)
+    lo = int(rank)
+    hi = min(lo + 1, n - 1)
+    frac = rank - lo
+    val = sorted_values[lo] + (sorted_values[hi] - sorted_values[lo]) * frac
+    return round(val, 1)
+
+
+def _sample_resources(env: Mapping[str, str]) -> dict[str, Any]:
+    """Sample CPU load, service RSS memory, and GPU memory (best-effort)."""
+    resources: dict[str, Any] = {
+        "cpu_loadavg_1min": None,
+        "rss_memory_mb": {},
+        "gpu_memory_used_mb": None,
+    }
+
+    # CPU load average from /proc/loadavg (Linux).
+    try:
+        with open("/proc/loadavg", "r", encoding="utf-8") as fh:
+            parts = fh.read().split()
+            if parts:
+                resources["cpu_loadavg_1min"] = parts[0]
+    except OSError:
+        pass
+
+    # RSS memory of each service process, read from its PID file.
+    pid_dir = Path(env.get("PID_DIR", "")) or (REPO_ROOT / "runtime" / "phase7" / "pids")
+    for name, pid_file in (
+        ("model", pid_dir / "model.pid"),
+        ("backend", pid_dir / "backend.pid"),
+        ("frontend", pid_dir / "frontend.pid"),
+    ):
+        if not pid_file.is_file():
+            continue
+        try:
+            pid = pid_file.read_text(encoding="utf-8").strip()
+        except OSError:
+            continue
+        status_path = Path(f"/proc/{pid}/status")
+        if not status_path.is_file():
+            continue
+        try:
+            for line in status_path.read_text(encoding="utf-8").splitlines():
+                if line.startswith("VmRSS:"):
+                    parts = line.split()
+                    if len(parts) >= 2:
+                        # VmRSS is in kB; convert to MB.
+                        resources["rss_memory_mb"][name] = round(
+                            int(parts[1]) / 1024.0, 1
+                        )
+                    break
+        except (OSError, ValueError):
+            pass
+
+    # GPU memory via nvidia-smi for the configured device.
+    gpu_device = env.get("CUDA_VISIBLE_DEVICES", "0")
+    try:
+        proc = subprocess.run(
+            [
+                "nvidia-smi",
+                f"--id={gpu_device}",
+                "--query-gpu=memory.used",
+                "--format=csv,noheader,nounits",
+            ],
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+        if proc.returncode == 0:
+            out = proc.stdout.strip().splitlines()
+            if out:
+                resources["gpu_memory_used_mb"] = round(float(out[0]), 1)
+    except (OSError, ValueError, subprocess.SubprocessError):
+        pass
+
+    return resources
+
 
 
 def list_deploy_scripts() -> list[str]:
@@ -247,7 +410,14 @@ def build_service_status_report(
 
 
 def build_performance_report(env: Mapping[str, str]) -> dict[str, Any]:
-    """Build ``performance-report.json`` with basic endpoint latency metrics."""
+    """Build ``performance-report.json`` with multi-sample latency metrics.
+
+    Measures 7 endpoint classes (model health/models, backend healthz/readyz,
+    frontend root, normal Q&A, calculation Q&A) with ``SAMPLES`` repetitions
+    each, recording average / p50 / p95 / error_count, plus a CPU/RAM/GPU
+    resource snapshot.
+    """
+    SAMPLES = 10
     model_host = env.get("MODEL_HOST", "127.0.0.1")
     model_port = env.get("MODEL_PORT", "18001")
     backend_host = env.get("BACKEND_HOST", "127.0.0.1")
@@ -259,7 +429,8 @@ def build_performance_report(env: Mapping[str, str]) -> dict[str, Any]:
     backend_url = f"http://{backend_host}:{backend_port}"
     frontend_url = f"http://{frontend_host}:{frontend_port}"
 
-    endpoints = [
+    # GET endpoints (no auth).
+    get_endpoints = [
         ("model_health", f"{model_url}/health"),
         ("model_models", f"{model_url}/v1/models"),
         ("backend_healthz", f"{backend_url}/healthz"),
@@ -267,24 +438,75 @@ def build_performance_report(env: Mapping[str, str]) -> dict[str, Any]:
         ("frontend_root", f"{frontend_url}/"),
     ]
 
+    # Best-effort auth token for the POST /query endpoints.
+    token = obtain_auth_token(backend_url)
+    question_normal = "贵州茅台2023年营业收入是多少?"
+    question_calc = "贵州茅台2023年毛利率是多少?"
+
     measurements: list[dict[str, Any]] = []
-    for name, url in endpoints:
-        latency = measure_latency(url)
+
+    for name, url in get_endpoints:
+        latencies: list[float] = []
+        errors = 0
+        for _ in range(SAMPLES):
+            lat = measure_latency(url)
+            if lat is None:
+                errors += 1
+            else:
+                latencies.append(lat)
+        sorted_lat = sorted(latencies)
         measurements.append({
             "endpoint": name,
-            "latency_ms": latency,
-            "status": "ok" if latency is not None else "unreachable",
+            "sample_count": SAMPLES,
+            "error_count": errors,
+            "average_ms": round(sum(latencies) / len(latencies), 1) if latencies else None,
+            "p50_ms": _percentile(sorted_lat, 50),
+            "p95_ms": _percentile(sorted_lat, 95),
+            "min_ms": sorted_lat[0] if sorted_lat else None,
+            "max_ms": sorted_lat[-1] if sorted_lat else None,
+            "status": "ok" if errors == 0 else ("degraded" if latencies else "unreachable"),
         })
 
-    reachable = [m for m in measurements if m["latency_ms"] is not None]
-    latencies = [m["latency_ms"] for m in reachable if m["latency_ms"] is not None]
+    # POST /query endpoints (authenticated).
+    for name, path, question in (
+        ("query_normal", "/query", question_normal),
+        ("query_calculation", "/query", question_calc),
+    ):
+        latencies = []
+        errors = 0
+        for _ in range(SAMPLES):
+            lat = measure_query_latency(backend_url, path, token, question)
+            if lat is None:
+                errors += 1
+            else:
+                latencies.append(lat)
+        sorted_lat = sorted(latencies)
+        measurements.append({
+            "endpoint": name,
+            "sample_count": SAMPLES,
+            "error_count": errors,
+            "average_ms": round(sum(latencies) / len(latencies), 1) if latencies else None,
+            "p50_ms": _percentile(sorted_lat, 50),
+            "p95_ms": _percentile(sorted_lat, 95),
+            "min_ms": sorted_lat[0] if sorted_lat else None,
+            "max_ms": sorted_lat[-1] if sorted_lat else None,
+            "status": "ok" if errors == 0 else ("degraded" if latencies else "unreachable"),
+        })
+
+    reachable = [m for m in measurements if m["status"] != "unreachable"]
+    all_p50 = [m["p50_ms"] for m in reachable if m["p50_ms"] is not None]
     summary = {
         "endpoints_measured": len(measurements),
         "endpoints_reachable": len(reachable),
-        "min_latency_ms": min(latencies) if latencies else None,
-        "max_latency_ms": max(latencies) if latencies else None,
-        "avg_latency_ms": round(sum(latencies) / len(latencies), 1) if latencies else None,
+        "samples_per_endpoint": SAMPLES,
+        "min_p50_ms": min(all_p50) if all_p50 else None,
+        "max_p95_ms": max(
+            (m["p95_ms"] for m in reachable if m["p95_ms"] is not None),
+            default=None,
+        ),
     }
+
+    resources = _sample_resources(env)
 
     return {
         "manifest_type": "phase7_performance_report",
@@ -292,7 +514,9 @@ def build_performance_report(env: Mapping[str, str]) -> dict[str, Any]:
         "generated_at": time.time(),
         "summary": summary,
         "measurements": measurements,
+        "resources": resources,
     }
+
 
 
 # ---------------------------------------------------------------------------
@@ -335,7 +559,49 @@ def build_acceptance_report(
     def _from_health(ok: bool) -> str:
         return "passed" if ok else "pending"
 
-    perf_exists = PERFORMANCE_REPORT_PATH.is_file()
+    # Load the performance report to determine whether real measurements
+    # (not just an unreachable/null skeleton) have been recorded.
+    perf_report = load_json_safe(PERFORMANCE_REPORT_PATH)
+    perf_measurements = []
+    if perf_report and isinstance(perf_report.get("measurements"), list):
+        perf_measurements = perf_report["measurements"]
+    perf_resources = perf_report.get("resources", {}) if perf_report else {}
+
+    def _perf_measurements_complete() -> bool:
+        """True when every measured endpoint is reachable with p50/p95 data."""
+        if not perf_measurements:
+            return False
+        for m in perf_measurements:
+            if not isinstance(m, dict):
+                return False
+            if m.get("status") == "unreachable":
+                return False
+            if m.get("p50_ms") is None or m.get("p95_ms") is None:
+                return False
+        return True
+
+    def _perf_has_p50_p95() -> bool:
+        for m in perf_measurements:
+            if isinstance(m, dict) and m.get("p50_ms") is not None \
+                    and m.get("p95_ms") is not None:
+                return True
+        return False
+
+    def _perf_has_resources() -> bool:
+        return bool(
+            perf_resources.get("cpu_loadavg_1min") is not None
+            and perf_resources.get("rss_memory_mb")
+            and perf_resources.get("gpu_memory_used_mb") is not None
+        )
+
+    # restart_recovery reflects the smoke test's real restart result.
+    _rr_status = smoke_tests.get("restart_recovery", "")
+    if _rr_status == "pass":
+        _rr_acceptance = "passed"
+    elif _rr_status == "fail":
+        _rr_acceptance = "failed"
+    else:
+        _rr_acceptance = "pending"
 
     # --- 42 acceptance criteria (exact IDs from spec) ---
     criteria: list[dict[str, Any]] = [
@@ -431,7 +697,7 @@ def build_acceptance_report(
                    "Scripts do not kill unrelated processes", "passed"),
         # 29. Restart recovery
         _criterion("restart_recovery",
-                   "Services recover after restart", "pending"),
+                   "Services recover after restart", _rr_acceptance),
         # 30. Logout persistence
         _criterion("logout_persistence",
                    "Services survive SSH logout", "pending"),
@@ -440,14 +706,16 @@ def build_acceptance_report(
                    "SSH tunnel access works", "pending"),
         # 32. Performance report
         _criterion("performance_report",
-                   "Basic performance report complete",
-                   "passed" if perf_exists else "pending"),
+                   "Performance report complete with real measurements",
+                   "passed" if _perf_measurements_complete() else "pending"),
         # 33. CPU/RAM/GPU recorded
         _criterion("cpu_ram_gpu_recorded",
-                   "CPU, RAM, GPU usage recorded", "pending"),
+                   "CPU, RAM, GPU usage recorded",
+                   "passed" if _perf_has_resources() else "pending"),
         # 34. p50/p95 recorded
         _criterion("p50_p95_recorded",
-                   "p50 and p95 latency recorded", "pending"),
+                   "p50 and p95 latency recorded",
+                   "passed" if _perf_has_p50_p95() else "pending"),
         # 35. Artifact sanitized
         _criterion("artifact_sanitized",
                    "Artifacts are sanitized (no IPs, paths, secrets)", "passed"),
@@ -476,6 +744,7 @@ def build_acceptance_report(
 
     passed_count = sum(1 for c in criteria if c["status"] == "passed")
     pending_count = sum(1 for c in criteria if c["status"] == "pending")
+    failed_count = sum(1 for c in criteria if c["status"] == "failed")
 
     return {
         "manifest_type": "phase7_acceptance",
@@ -485,7 +754,7 @@ def build_acceptance_report(
             "total": len(criteria),
             "passed": passed_count,
             "pending": pending_count,
-            "failed": 0,
+            "failed": failed_count,
         },
         "criteria": criteria,
     }
