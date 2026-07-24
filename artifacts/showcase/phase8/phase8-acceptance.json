@@ -1,0 +1,362 @@
+{
+  "phase": 8,
+  "title": "Phase 8 Showcase Acceptance",
+  "summary": {
+    "total": 50,
+    "passed": 39,
+    "failed": 3,
+    "pending": 8
+  },
+  "criteria": [
+    {
+      "id": 1,
+      "key": "branch_created_from_phase7",
+      "description": "Branch created from Phase 7 master",
+      "status": "pending",
+      "note": null
+    },
+    {
+      "id": 2,
+      "key": "readme_rewritten_for_nano_finance",
+      "description": "README.md rewritten for nano_finance (not nanochat)",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 3,
+      "key": "upstream_nanochat_attribution",
+      "description": "Upstream NanoChat attribution present",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 4,
+      "key": "english_readme_exists",
+      "description": "English README.md exists",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 5,
+      "key": "chinese_readme_exists",
+      "description": "Chinese README.zh-CN.md exists",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 6,
+      "key": "clear_project_background",
+      "description": "Clear project background / overview section",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 7,
+      "key": "core_problems_listed",
+      "description": "Core problems addressed listed",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 8,
+      "key": "training_pipeline_documented",
+      "description": "Training pipeline documented",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 9,
+      "key": "rag_architecture_documented",
+      "description": "RAG architecture documented",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 10,
+      "key": "financial_calculation_documented",
+      "description": "Financial calculation documented",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 11,
+      "key": "validation_documented",
+      "description": "Validation pipeline documented",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 12,
+      "key": "deployment_documented",
+      "description": "Deployment documented",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 13,
+      "key": "architecture_diagram_present",
+      "description": "Architecture diagram (Mermaid) present",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 14,
+      "key": "nine_operations_listed",
+      "description": "9 financial operations listed",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 15,
+      "key": "validation_categories_listed",
+      "description": "6+ validation categories listed",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 16,
+      "key": "three_services_listed",
+      "description": "3 services listed (model/backend/frontend)",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 17,
+      "key": "only_verified_metrics",
+      "description": "Only verified engineering metrics presented on landing page",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 18,
+      "key": "not_using_0_of_54_as_quality",
+      "description": "0/54 not presented as quality metric",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 19,
+      "key": "no_historical_unverified_on_landing",
+      "description": "No historical unverified metrics on landing page",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 20,
+      "key": "no_function_calling_claim",
+      "description": "No model-native function calling claim for calculator",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 21,
+      "key": "no_hallucination_elimination_claim",
+      "description": "No hallucination elimination claim",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 22,
+      "key": "no_production_grade_accuracy_claim",
+      "description": "No production-grade accuracy claim",
+      "status": "failed",
+      "note": null
+    },
+    {
+      "id": 23,
+      "key": "demo_guide_exists",
+      "description": "Demo guide (docs/showcase/demo-guide.md) exists",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 24,
+      "key": "five_demo_scenarios",
+      "description": "5 demo scenarios documented",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 25,
+      "key": "three_screenshots",
+      "description": "3+ demo screenshots in assets/demo/",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 26,
+      "key": "no_sensitive_info_in_screenshots",
+      "description": "No sensitive info (IPs, emails) in screenshots",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 27,
+      "key": "demo_example_usable",
+      "description": "Demo example data usable and valid JSON",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 28,
+      "key": "quick_start_commands_executable",
+      "description": "Quick start commands documented and executable",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 29,
+      "key": "ssh_tunnel_documented",
+      "description": "SSH tunnel access documented",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 30,
+      "key": "project_timeline_present",
+      "description": "Project timeline / phases documented",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 31,
+      "key": "documentation_index",
+      "description": "Documentation index present",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 32,
+      "key": "resume_evidence_exists",
+      "description": "Resume evidence doc exists",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 33,
+      "key": "interview_guide_exists",
+      "description": "Interview guide exists",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 34,
+      "key": "github_description_set",
+      "description": "GitHub repo description set",
+      "status": "pending",
+      "note": null
+    },
+    {
+      "id": 35,
+      "key": "github_topics_set",
+      "description": "GitHub topics set",
+      "status": "pending",
+      "note": null
+    },
+    {
+      "id": 36,
+      "key": "claim_validator_exists",
+      "description": "Claim validator / known-claims doc exists",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 37,
+      "key": "privacy_check_pass",
+      "description": "Privacy check passes (no IPs, creds, emails)",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 38,
+      "key": "link_check_pass",
+      "description": "All relative links valid",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 39,
+      "key": "asset_size_check_pass",
+      "description": "Asset size check (demo SVGs exist and valid)",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 40,
+      "key": "en_zh_consistency",
+      "description": "English/Chinese READMEs consistent on key numbers",
+      "status": "passed",
+      "note": null
+    },
+    {
+      "id": 41,
+      "key": "all_showcase_tests_pass",
+      "description": "All tests/showcase/ tests pass",
+      "status": "passed",
+      "note": "43 passed, 0 failed, 0 errors"
+    },
+    {
+      "id": 42,
+      "key": "full_test_suite_pass",
+      "description": "Full test suite passes",
+      "status": "failed",
+      "note": "0 passed, 0 failed, 2 errors"
+    },
+    {
+      "id": 43,
+      "key": "pytest_failed_zero",
+      "description": "pytest: failed=0",
+      "status": "passed",
+      "note": "0 failed"
+    },
+    {
+      "id": 44,
+      "key": "pytest_errors_zero",
+      "description": "pytest: errors=0",
+      "status": "passed",
+      "note": "0 errors"
+    },
+    {
+      "id": 45,
+      "key": "ruff_pass",
+      "description": "Ruff linting passes",
+      "status": "pending",
+      "note": null
+    },
+    {
+      "id": 46,
+      "key": "compileall_pass",
+      "description": "Python compileall passes (no syntax errors)",
+      "status": "failed",
+      "note": null
+    },
+    {
+      "id": 47,
+      "key": "pr_created",
+      "description": "PR created with description and screenshots",
+      "status": "pending",
+      "note": null
+    },
+    {
+      "id": 48,
+      "key": "pr_has_screenshots",
+      "description": "PR includes screenshots",
+      "status": "pending",
+      "note": null
+    },
+    {
+      "id": 49,
+      "key": "no_core_rag_algorithm_modified",
+      "description": "No core RAG algorithm modified since Phase 7",
+      "status": "pending",
+      "note": null
+    },
+    {
+      "id": 50,
+      "key": "no_phase_9_started",
+      "description": "No Phase 9 work started",
+      "status": "pending",
+      "note": null
+    }
+  ]
+}

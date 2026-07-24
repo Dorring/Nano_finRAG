@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="box1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f3460;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="box2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#533483;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="box3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bg)" rx="8"/>
+
+  <!-- Title -->
+  <text x="400" y="50" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="bold" fill="#e0e0e0" text-anchor="middle">System Overview — Three Service Architecture</text>
+  <line x1="150" y1="65" x2="650" y2="65" stroke="#e94560" stroke-width="1" opacity="0.5"/>
+
+  <!-- Service Box 1: Model Service -->
+  <rect x="80" y="110" width="180" height="120" rx="10" fill="url(#box1)" filter="url(#shadow)" stroke="#0f3460" stroke-width="1"/>
+  <text x="170" y="145" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">Model Service</text>
+  <text x="170" y="168" font-family="monospace" font-size="12" fill="#a0a0c0" text-anchor="middle">:18001</text>
+  <text x="170" y="190" font-family="Arial, sans-serif" font-size="11" fill="#c0c0d0" text-anchor="middle">LLM Inference</text>
+  <text x="170" y="208" font-family="Arial, sans-serif" font-size="11" fill="#c0c0d0" text-anchor="middle">GPT Model</text>
+
+  <!-- Arrow 1 -->
+  <line x1="260" y1="170" x2="330" y2="170" stroke="#a0a0c0" stroke-width="2" marker-end="url(#arrow)"/>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#a0a0c0"/></marker></defs>
+
+  <!-- Service Box 2: Backend Service -->
+  <rect x="335" y="110" width="180" height="120" rx="10" fill="url(#box2)" filter="url(#shadow)" stroke="#533483" stroke-width="1"/>
+  <text x="425" y="145" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">Backend Service</text>
+  <text x="425" y="168" font-family="monospace" font-size="12" fill="#a0a0c0" text-anchor="middle">:18002</text>
+  <text x="425" y="190" font-family="Arial, sans-serif" font-size="11" fill="#c0c0d0" text-anchor="middle">FastAPI + RAG</text>
+  <text x="425" y="208" font-family="Arial, sans-serif" font-size="11" fill="#c0c0d0" text-anchor="middle">Validation</text>
+
+  <!-- Arrow 2 -->
+  <line x1="515" y1="170" x2="585" y2="170" stroke="#a0a0c0" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Service Box 3: Frontend Service -->
+  <rect x="590" y="110" width="180" height="120" rx="10" fill="url(#box3)" filter="url(#shadow)" stroke="#e94560" stroke-width="1"/>
+  <text x="680" y="145" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">Frontend Service</text>
+  <text x="680" y="168" font-family="monospace" font-size="12" fill="#a0a0c0" text-anchor="middle">:18003</text>
+  <text x="680" y="190" font-family="Arial, sans-serif" font-size="11" fill="#c0c0d0" text-anchor="middle">React SPA</text>
+  <text x="680" y="208" font-family="Arial, sans-serif" font-size="11" fill="#c0c0d0" text-anchor="middle">Chat UI</text>
+
+  <!-- User -->
+  <rect x="320" y="280" width="260" height="50" rx="8" fill="none" stroke="#a0a0c0" stroke-width="1" stroke-dasharray="6,3"/>
+  <text x="450" y="312" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e0e0e0" text-anchor="middle">User / SSH Tunnel</text>
+
+  <!-- Arrow from user to Frontend -->
+  <line x1="450" y1="280" x2="680" y2="230" stroke="#a0a0c0" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+  <!-- Footer -->
+  <text x="400" y="370" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#808090" text-anchor="middle">tmux-managed · Rootless · No Docker · Ordered Startup</text>
+
+  <!-- Feature bullets -->
+  <text x="80" y="420" font-family="Arial, sans-serif" font-size="12" fill="#a0a0c0">✓ Health checks</text>
+  <text x="280" y="420" font-family="Arial, sans-serif" font-size="12" fill="#a0a0c0">✓ Smoke tests</text>
+  <text x="480" y="420" font-family="Arial, sans-serif" font-size="12" fill="#a0a0c0">✓ SSE streaming</text>
+  <text x="80" y="450" font-family="Arial, sans-serif" font-size="12" fill="#a0a0c0">✓ PID ownership verification</text>
+  <text x="280" y="450" font-family="Arial, sans-serif" font-size="12" fill="#a0a0c0">✓ Restart recovery</text>
+  <text x="480" y="450" font-family="Arial, sans-serif" font-size="12" fill="#a0a0c0">✓ SSH tunnel access</text>
+
+  <!-- Placeholder indicator -->
+  <rect x="600" y="460" width="160" height="24" rx="4" fill="#e94560" opacity="0.7"/>
+  <text x="680" y="477" font-family="Arial, sans-serif" font-size="11" fill="#ffffff" text-anchor="middle">[ Placeholder Screenshot ]</text>
+</svg>
