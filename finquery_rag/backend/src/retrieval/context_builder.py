@@ -245,9 +245,10 @@ class EvidenceSufficiencyEvaluator:
             str(chunk.get("score_kind") or "").lower()
             for chunk in chunks
         }
-        if score_kinds == {"rrf"}:
+        known_score_kinds = score_kinds - {"", "unknown"}
+        if known_score_kinds == {"rrf"}:
             threshold = self._rrf_threshold
-        elif score_kinds and score_kinds != {"", "unknown"}:
+        elif known_score_kinds:
             threshold = self._dense_threshold
         else:
             # Compatibility for legacy stores that predate score provenance.

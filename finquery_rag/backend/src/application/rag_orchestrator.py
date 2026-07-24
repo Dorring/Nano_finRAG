@@ -287,9 +287,15 @@ class RAGOrchestrator:
             context_evidence = getattr(
                 self._context_builder, "last_context_evidence", None
             )
-            if not isinstance(context_evidence, list):
+            if not isinstance(context_evidence, list) or (
+                not context_evidence and chunks and context
+            ):
                 # Compatibility for lightweight test doubles and alternate
                 # context builders that do not expose the new contract yet.
+                # A non-empty context without recorded evidence is also an
+                # incomplete implementation of that contract; fall back to
+                # the retrieved chunks rather than incorrectly refusing an
+                # otherwise answerable question as having no evidence.
                 context_evidence = chunks
             evidence_for_validation = tuple(
                 EvidenceItem.from_chunk(c) for c in context_evidence

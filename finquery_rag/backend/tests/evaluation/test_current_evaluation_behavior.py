@@ -380,10 +380,13 @@ class TestEvalRunnerSignature:
         asyncio.run(run_case(case, engine, user_id=1, n_results=3))
         assert FakeEngine.last_call["doc_names"] is None
 
-    def test_prediction_does_not_extract_phase3_4_fields(self) -> None:
-        """Document the gap: current run_case does NOT extract
-        calculations/answerability/validation/warnings from the engine result.
-        Phase 5 blind_runner must add these fields."""
+    def test_prediction_preserves_public_validation_fields(self) -> None:
+        """Offline predictions preserve public grounding verdicts.
+
+        Calculations and warnings remain trace-only here, but answerability,
+        validation, and repair are needed to distinguish a safe refusal from
+        a retrieval or generation regression in evaluation reports.
+        """
 
         class FakeEngine:
             async def query(self, **kwargs: Any) -> dict[str, Any]:
@@ -393,17 +396,19 @@ class TestEvalRunnerSignature:
                     "calculations": [{"operation": "sum"}],
                     "answerability": {"status": "answerable"},
                     "validation": {"status": "passed"},
+                    "repair": {"fallback_used": False},
                     "warnings": ["minor"],
                 }
 
         engine = FakeEngine()
         case = _make_case()
         pred = asyncio.run(run_case(case, engine, user_id=1, n_results=3))
-        # This is the current behavior — Phase 3/4 fields are NOT extracted
+        # Trace-only fields are intentionally not copied into predictions.
         assert "calculations" not in pred
-        assert "answerability" not in pred
-        assert "validation" not in pred
         assert "warnings" not in pred
+        assert pred["answerability"] == {"status": "answerable"}
+        assert pred["validation"] == {"status": "passed"}
+        assert pred["repair"] == {"fallback_used": False}
 
 
 class TestValidateNResults:

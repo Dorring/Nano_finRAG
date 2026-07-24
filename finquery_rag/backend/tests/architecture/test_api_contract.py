@@ -99,9 +99,10 @@ def test_api_endpoint_count():
     # Count route decorators
     import re
     routes = re.findall(r'@app\.(get|post|delete|put)\(', content)
-    # Baseline: 30 endpoints as of 2026-07-20
-    assert len(routes) == 30, (
-        f"Expected 30 API endpoints, found {len(routes)}. "
+    # Baseline: 31 endpoints as of 2026-07-25, including the authenticated
+    # document parsing-quality diagnostics endpoint.
+    assert len(routes) == 31, (
+        f"Expected 31 API endpoints, found {len(routes)}. "
         "If you added/removed endpoints, update this test and artifacts/baseline/repository-metrics.json."
     )
 

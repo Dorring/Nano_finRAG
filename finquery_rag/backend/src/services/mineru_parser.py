@@ -139,14 +139,22 @@ def process_pdf_with_mineru(
         if section_path:
             hierarchy["section_path"] = section_path
             hierarchy["section_title"] = section_path.split(" > ")[-1]
-        split_docs = (
-            recursive_splitter.split_documents([Document(page_content=text, metadata=metadata)])
-            if len(text) > long_chunk_threshold else [Document(page_content=text, metadata=metadata)]
-        )
-        for sub_idx, split_doc in enumerate(split_docs):
-            suffix = f"page_{page}::chunk_{chunk_idx}_{sub_idx}" if len(split_docs) > 1 else f"page_{page}::chunk_{chunk_idx}"
+        # Avoid constructing a LangChain Document for an already-small
+        # MinerU block.  Besides avoiding needless work, this keeps the
+        # parser boundary independent of optional LangChain test doubles.
+        if len(text) > long_chunk_threshold:
+            split_contents = [
+                item.page_content
+                for item in recursive_splitter.split_documents(
+                    [Document(page_content=text, metadata=metadata)]
+                )
+            ]
+        else:
+            split_contents = [text]
+        for sub_idx, split_content in enumerate(split_contents):
+            suffix = f"page_{page}::chunk_{chunk_idx}_{sub_idx}" if len(split_contents) > 1 else f"page_{page}::chunk_{chunk_idx}"
             chunks.append({
-                "content": chunk_content_with_section_fn(split_doc.page_content, section_path),
+                "content": chunk_content_with_section_fn(split_content, section_path),
                 "metadata": {
                     **metadata,
                     **hierarchy,

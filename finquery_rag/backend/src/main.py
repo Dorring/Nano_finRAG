@@ -866,11 +866,7 @@ async def upload_document(file: UploadFile = File(...), current_user: User = Dep
         # Register document in lifecycle registry
         doc_id = uuid.uuid4().hex
         document_registry.register(
-            doc_id,
-            current_user.id,
-            safe_filename,
-            fh,
-            status="parsing",
+            doc_id, current_user.id, safe_filename, fh, status="parsing",
             parser_version=parser_version,
             splitter_version=splitter_version,
             embedding_version=embedding_version,
