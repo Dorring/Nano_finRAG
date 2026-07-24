@@ -1,65 +1,54 @@
 {
-  "failed": 11,
-  "overall": "fail",
-  "passed": 1,
+  "failed": 0,
+  "overall": "pass",
+  "passed": 12,
+  "pending": 0,
   "tests": [
     {
-      "detail": "model endpoint not reachable",
       "name": "model_accessible",
-      "status": "fail"
+      "status": "pass"
     },
     {
-      "detail": "healthz did not return 200",
       "name": "backend_healthz",
-      "status": "fail"
+      "status": "pass"
     },
     {
-      "detail": "root page did not return 200",
       "name": "frontend_root",
-      "status": "fail"
+      "status": "pass"
     },
     {
-      "detail": "readyz did not return 200",
       "name": "backend_calls_model",
-      "status": "fail"
+      "status": "pass"
     },
     {
-      "detail": "frontend page not loaded",
       "name": "frontend_reaches_backend",
-      "status": "fail"
+      "status": "pass"
     },
     {
-      "detail": "query did not return 200",
       "name": "query_normal",
-      "status": "fail"
+      "status": "pass"
     },
     {
-      "detail": "calc query did not return 200",
       "name": "query_calculation",
-      "status": "fail"
+      "status": "pass"
     },
     {
-      "detail": "unsafe crash response",
       "name": "query_unanswerable_safe",
-      "status": "fail"
+      "status": "pass"
     },
     {
-      "detail": "stream did not terminate with done event",
       "name": "sse_terminates",
-      "status": "fail"
+      "status": "pass"
     },
     {
-      "detail": "no trace_id in query response",
       "name": "trace_id_present",
-      "status": "fail"
+      "status": "pass"
     },
     {
-      "detail": "backend unreachable",
       "name": "no_path_leak_in_errors",
-      "status": "fail"
+      "status": "pass"
     },
     {
-      "detail": "manual_check_documented: run stop_all.sh then start_all.sh and re-run healthcheck",
       "name": "restart_recovery",
       "status": "pass"
     }

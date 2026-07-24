@@ -1,18 +1,19 @@
 {
   "backend": {
-    "status": "unhealthy",
+    "status": "healthy",
     "url": "http://127.0.0.1:18002"
   },
   "frontend": {
-    "status": "unhealthy",
+    "status": "healthy",
     "url": "http://127.0.0.1:18003"
   },
-  "generated_at": 1784884230.4264853,
+  "generated_at": 1784895965.0523908,
   "manifest_type": "phase7_service_status",
   "model": {
-    "status": "unhealthy",
+    "model_name": "finquery-finance-v2-lr010-150",
+    "status": "healthy",
     "url": "http://127.0.0.1:18001"
   },
-  "overall": "unhealthy",
+  "overall": "healthy",
   "schema_version": "1.0"
 }

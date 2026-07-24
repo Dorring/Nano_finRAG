@@ -2,31 +2,15 @@
   "manifest_type": "phase7_logout_persistence",
   "schema_version": "1.0",
   "phase": "Phase 7: Rootless Online Serving",
-  "verification_status": "pending",
-  "logout_persistent": null,
-  "description": "Verifies that all three services (model, backend, frontend) remain running after SSH session disconnects, using tmux sessions that persist independently of the SSH connection.",
-  "prerequisites": [
-    "All three services started via scripts/deploy/start_all.sh",
-    "All three tmux sessions active (nano-finance-model, nano-finance-backend, nano-finance-frontend)",
-    "All health checks passing"
-  ],
-  "verification_steps": [
-    "1. Start all services: bash scripts/deploy/start_all.sh",
-    "2. Verify all READY: bash scripts/deploy/status.sh",
-    "3. Run health check: python scripts/deploy/healthcheck.py",
-    "4. Disconnect SSH (close terminal or exit)",
-    "5. Reconnect to server via SSH",
-    "6. Run status check: bash scripts/deploy/status.sh",
-    "7. Run health check: python scripts/deploy/healthcheck.py",
-    "8. Access frontend via SSH tunnel"
-  ],
-  "expected_result": {
-    "model_status": "RUNNING",
-    "backend_status": "RUNNING",
-    "frontend_status": "RUNNING",
-    "health_overall": "healthy",
-    "logout_persistent": true
+  "verification_status": "verified",
+  "logout_persistent": true,
+  "verified_at": 1784892493.2335153,
+  "checks": {
+    "model_healthy": true,
+    "backend_healthy": true,
+    "frontend_healthy": true
   },
+  "description": "Verified that all three services (model, backend, frontend) remain running after SSH session disconnects, using tmux sessions that persist independently of the SSH connection.",
   "notes": [
     "tmux sessions persist independently of SSH connections",
     "Server reboot requires manual restart: bash scripts/deploy/start_all.sh",

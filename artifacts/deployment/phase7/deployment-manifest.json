@@ -13,9 +13,9 @@
   "config_reference": {
     "active_path": "config/deployment/online.env",
     "template_path": "config/deployment/online.env.example",
-    "using_example": true
+    "using_example": false
   },
-  "generated_at": 1784884230.4229753,
+  "generated_at": 1784895965.0522203,
   "manifest_type": "phase7_deployment_manifest",
   "phase": "Phase 7: Rootless Online Serving",
   "runtime_directory_structure": {
@@ -46,6 +46,7 @@
     "collect_deployment_report.py",
     "healthcheck.py",
     "load_env.sh",
+    "record_test_results.py",
     "restart_all.sh",
     "smoke_test.py",
     "start_all.sh",
@@ -53,7 +54,10 @@
     "start_frontend.sh",
     "start_model.sh",
     "status.sh",
-    "stop_all.sh"
+    "stop_all.sh",
+    "stop_one.sh",
+    "verify_logout_persistence.py",
+    "verify_ssh_tunnel.py"
   ],
   "services": [
     {

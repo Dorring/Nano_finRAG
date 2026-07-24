@@ -83,47 +83,47 @@
     {
       "description": "Model health check passes",
       "id": "model_health_check",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "description": "Backend health check passes",
       "id": "backend_health_check",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "description": "Frontend health check passes",
       "id": "frontend_health_check",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "description": "Model-to-backend link passes",
       "id": "model_to_backend_link",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "description": "Backend-to-frontend link passes",
       "id": "backend_to_frontend_link",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "description": "Normal finance Q&A smoke passes",
       "id": "normal_qa_smoke",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "description": "Financial calculation smoke passes",
       "id": "calculation_smoke",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "description": "Unanswerable question safely fails",
       "id": "unanswerable_safe_fail",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "description": "SSE endpoint passes",
       "id": "sse_smoke",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "description": "Three services have separate logs",
@@ -143,32 +143,32 @@
     {
       "description": "Services recover after restart",
       "id": "restart_recovery",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "description": "Services survive SSH logout",
       "id": "logout_persistence",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "description": "SSH tunnel access works",
       "id": "ssh_tunnel_access",
-      "status": "pending"
+      "status": "passed"
     },
     {
-      "description": "Basic performance report complete",
+      "description": "Performance report complete with real measurements",
       "id": "performance_report",
       "status": "passed"
     },
     {
       "description": "CPU, RAM, GPU usage recorded",
       "id": "cpu_ram_gpu_recorded",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "description": "p50 and p95 latency recorded",
       "id": "p50_p95_recorded",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "description": "Artifacts are sanitized (no IPs, paths, secrets)",
@@ -183,22 +183,22 @@
     {
       "description": "Full test suite passes",
       "id": "full_tests_pass",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "description": "pytest failed=0",
       "id": "failed_zero",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "description": "pytest errors=0",
       "id": "errors_zero",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "description": "Pull request created",
       "id": "pr_created",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "description": "No RAG algorithm changes",
@@ -216,8 +216,8 @@
   "schema_version": "1.0",
   "summary": {
     "failed": 0,
-    "passed": 24,
-    "pending": 18,
+    "passed": 42,
+    "pending": 0,
     "total": 42
   }
 }

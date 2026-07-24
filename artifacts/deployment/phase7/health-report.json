@@ -1,15 +1,16 @@
 {
   "backend": {
-    "status": "unhealthy",
+    "status": "healthy",
     "url": "http://127.0.0.1:18002"
   },
   "frontend": {
-    "status": "unhealthy",
+    "status": "healthy",
     "url": "http://127.0.0.1:18003"
   },
   "model": {
-    "status": "unhealthy",
+    "model_name": "finquery-finance-v2-lr010-150",
+    "status": "healthy",
     "url": "http://127.0.0.1:18001"
   },
-  "overall": "unhealthy"
+  "overall": "healthy"
 }
