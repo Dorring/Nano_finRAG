@@ -145,6 +145,85 @@ class DeterministicAnswerExtractor:
             "diagnostic": "deterministic_numeric_evidence",
         }
 
+    def answer_numeric_query_from_chunks(self, query: str, chunks: list) -> dict | None:
+        """Answer a numeric question from raw retrieved child evidence.
+
+        This intentionally runs before parent-context expansion.  Parent
+        context is useful for generation, but can join nearby rows from a
+        table or section and make a numeric extractor select an unrelated
+        value.  The selector below remains document-agnostic: it ranks
+        small evidence windows by query-term coverage and numeric proximity.
+        """
+        if not chunks or not self._query_processor.should_try_deterministic_numeric_answer(
+            query, chunks
+        ):
+            return None
+
+        query_terms = self._important_query_terms(query)
+        candidates = []
+        for chunk in chunks:
+            metadata = chunk.get("metadata") or {}
+            source = self._chunk_source_label(chunk)
+            for text in self._numeric_windows(chunk.get("content", "")):
+                values = self._extract_numeric_phrases(query, text)
+                if not values:
+                    continue
+                score = self._raw_numeric_evidence_score(text, query, query_terms)
+                if score <= 0:
+                    continue
+                candidates.append({
+                    "score": score + float(chunk.get("rerank_score", chunk.get("score", 0)) or 0),
+                    "text": text,
+                    "source": source,
+                    "values": values,
+                    "chunk": chunk,
+                    "is_table": metadata.get("type") == "table",
+                })
+
+        if not candidates:
+            return None
+        candidates.sort(key=lambda item: (-item["score"], len(item["text"])))
+        selected = self._select_raw_numeric_evidence(query, candidates, limit=2)
+        if not selected:
+            return None
+
+        values = []
+        seen = set()
+        for item in selected:
+            for value in item["values"]:
+                key = value.lower()
+                if key not in seen:
+                    seen.add(key)
+                    values.append(value)
+                if len(values) >= self._numeric_value_limit(query):
+                    break
+            if len(values) >= self._numeric_value_limit(query):
+                break
+        if not values:
+            return None
+
+        citation = self._inline_source_citation(selected[0].get("source"))
+        # The evidence payload is returned as structured sources.  Do not
+        # append full evidence rows to the answer text: validators correctly
+        # treat every number in an answer as a claim, so table neighbours in
+        # an explanatory block would otherwise be validated as user-facing
+        # financial assertions.
+        answer_lines = [f"Answer: {', '.join(values)}{citation}."]
+        return {
+            "answer": "\n".join(answer_lines),
+            "diagnostic": "raw_child_numeric_evidence",
+            "chunks": [item["chunk"] for item in selected],
+            "selection": [
+                {
+                    "chunk_id": item["chunk"].get("doc_id") or item["chunk"].get("chunk_id"),
+                    "source": item["source"],
+                    "score": round(item["score"], 4),
+                    "values": item["values"],
+                }
+                for item in selected
+            ],
+        }
+
     def answer_factual_query_from_context(self, query: str, context: str, sources: list) -> dict | None:
         """Return deterministic evidence for factual front-matter/definition/list questions."""
         if not context or self._query_processor.is_numeric_query(query):
@@ -195,6 +274,112 @@ class DeterministicAnswerExtractor:
         if factual:
             return factual
         return self.answer_numeric_query_from_context(query, context, sources)
+
+    @staticmethod
+    def _chunk_source_label(chunk: dict) -> str | None:
+        metadata = chunk.get("metadata") or {}
+        filename = metadata.get("doc_name") or chunk.get("filename")
+        page = metadata.get("page", chunk.get("page"))
+        if filename and page:
+            return f"{filename}, p{page}"
+        return filename or None
+
+    @staticmethod
+    def _numeric_windows(content: str) -> list[str]:
+        """Split raw chunk text into compact, table-friendly evidence rows."""
+        windows = []
+        for raw_line in (content or "").splitlines():
+            line = re.sub(r"\s+", " ", raw_line).strip(" |-\t")
+            # A chunk beginning with punctuation and a digit is usually a
+            # split decimal/amount (for example ``.9 million`` after ``$1``
+            # was cut into the preceding chunk).  It is not standalone
+            # financial evidence and must not become an answer candidate.
+            if re.match(r"^[.,;)]\s*\d", line):
+                continue
+            if line and re.search(r"\d", line):
+                windows.append(line[:700])
+        if not windows:
+            compact = re.sub(r"\s+", " ", content or "").strip()
+            windows = [sentence.strip() for sentence in re.split(r"(?<=[.;])\s+", compact)
+                       if sentence.strip() and re.search(r"\d", sentence)]
+        return windows
+
+    @staticmethod
+    def _raw_numeric_evidence_score(
+        text: str,
+        query: str,
+        query_terms: set[str],
+    ) -> float:
+        lowered = text.lower()
+        hits = sum(1 for term in query_terms if term in lowered)
+        if not hits:
+            return 0.0
+        number_hits = len(re.findall(
+            r"[-+]?\$?\(?\d[\d,]*(?:\.\d+)?\)?\s*(?:%|per cent|million|thousand|francs)?",
+            text,
+            flags=re.IGNORECASE,
+        ))
+        if not number_hits:
+            return 0.0
+        # Prefer evidence that covers more of the query, but avoid rewarding
+        # long parent-like prose solely because it contains many numbers.
+        coverage = hits / max(1, len(query_terms))
+        numeric_positions = [match.start() for match in re.finditer(r"\d", lowered)]
+        phrase_hits = 0
+        for phrase in DeterministicAnswerExtractor._query_metric_phrases(query):
+            phrase_start = lowered.find(phrase)
+            if phrase_start >= 0 and any(
+                abs(phrase_start - position) <= 80
+                for position in numeric_positions
+            ):
+                phrase_hits += 1
+        return coverage * 10.0 + min(number_hits, 3) + phrase_hits * 6.0
+
+    @staticmethod
+    def _query_metric_phrases(query: str) -> set[str]:
+        """Extract financial two-token phrases without document-specific rules."""
+        tokens = re.findall(r"[a-zA-Z][a-zA-Z0-9&.-]{2,}", (query or "").lower())
+        financial_terms = {
+            "revenue", "revenues", "margin", "cash", "equivalents",
+            "income", "expense", "expenses", "assets", "liabilities",
+            "debt", "equity", "fees", "facility", "facilities", "loan",
+            "profit", "loss", "earnings", "dividend", "balance",
+        }
+        return {
+            f"{left} {right}"
+            for left, right in zip(tokens, tokens[1:])
+            if left in financial_terms or right in financial_terms
+        }
+
+    @staticmethod
+    def _inline_source_citation(source: str | None) -> str:
+        """Render a validator-compatible document/page citation."""
+        return f" [{source}]" if source else ""
+
+    @staticmethod
+    def _numeric_value_limit(query: str) -> int:
+        normalized = (query or "").lower()
+        return 2 if any(marker in normalized for marker in (
+            " and ", "compare", "components", "growth", "rate",
+        )) else 1
+
+    @staticmethod
+    def _select_raw_numeric_evidence(query: str, candidates: list[dict], *, limit: int) -> list[dict]:
+        """Keep complementary raw evidence without duplicating one table row."""
+        selected = []
+        seen = set()
+        need_multiple = DeterministicAnswerExtractor._numeric_value_limit(query) > 1
+        for item in candidates:
+            key = re.sub(r"\W+", " ", item["text"].lower()).strip()[:220]
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            selected.append(item)
+            if len(selected) >= limit:
+                break
+            if not need_multiple:
+                break
+        return selected
 
     # --- Static helper methods ---
 
@@ -336,8 +521,15 @@ class DeterministicAnswerExtractor:
         values = []
         seen = set()
         for match in pattern.finditer(text or ""):
+            if match.start() and (text or "")[match.start() - 1] == ".":
+                continue
             value = cls._normalize_numeric_phrase(match.group(0), query, text)
             if not value:
+                continue
+            # A year used only to scope the question is not an answer value.
+            if re.fullmatch(r"(?:19|20)\d{2}", value.strip()) and re.search(
+                rf"\b{re.escape(value.strip())}\b", query or ""
+            ):
                 continue
             key = value.lower()
             if key in seen:

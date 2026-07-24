@@ -270,6 +270,14 @@ class RAGOrchestrator:
             is_sufficient = sufficiency.is_sufficient
             confidence = self._sufficiency_evaluator.confidence(chunks)
 
+            # Numeric evidence is selected from the original child chunks
+            # before ContextBuilder expands parents.  This prevents a nearby
+            # table row in a parent section from displacing the retrieved
+            # row that actually matches the requested metric.
+            raw_numeric_answer = self._deterministic_extractor.answer_numeric_query_from_chunks(
+                question, chunks
+            )
+
             # 2. Build context (with dedup and score threshold)
             context, sources = self._context_builder.build(chunks)
 
@@ -311,12 +319,26 @@ class RAGOrchestrator:
                 calculation_result is None
                 or calculation_result.status is CalculationStatus.NOT_APPLICABLE
             ):
-                deterministic_context_answer = (
+                deterministic_context_answer = raw_numeric_answer or (
                     self._deterministic_extractor.answer_deterministic_query_from_context(
                         question,
                         context,
                         sources,
                     )
+                )
+
+            # Preserve the exact child evidence used by the numeric selector.
+            # ContextBuilder may replace a child with an expanded parent; that
+            # is desirable for LLM context, but validation must also see the
+            # row/window that the deterministic answer was derived from.
+            if raw_numeric_answer and raw_numeric_answer.get("chunks"):
+                raw_evidence = tuple(
+                    EvidenceItem.from_chunk(chunk)
+                    for chunk in raw_numeric_answer["chunks"]
+                )
+                evidence_for_validation = raw_evidence + tuple(
+                    item for item in evidence_for_validation
+                    if item.chunk_id not in {raw.chunk_id for raw in raw_evidence}
                 )
 
             # Phase 4 hotfix: Run answerability for ALL paths (including
@@ -471,9 +493,10 @@ class RAGOrchestrator:
                     if deterministic_context_answer:
                         answer = deterministic_context_answer["answer"]
                         is_sufficient = True
-                        deterministic_answer = deterministic_context_answer[
-                            "diagnostic"
-                        ]
+                        deterministic_answer = {
+                            "path": deterministic_context_answer["diagnostic"],
+                            "selection": deterministic_context_answer.get("selection", []),
+                        }
                         low_confidence_numeric_override = False
                     else:
                         low_confidence_numeric_override = (

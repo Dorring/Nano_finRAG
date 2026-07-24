@@ -104,18 +104,14 @@ class QueryProcessor:
         return any(marker in normalized for marker in numeric_markers) or any(marker in query for marker in cjk_markers)
 
     def should_try_deterministic_numeric_answer(self, query: str, chunks: list) -> bool:
-        """Check if we should attempt a deterministic numeric answer."""
-        if not chunks or not self.is_numeric_query(query):
-            return False
-        normalized = (query or "").lower()
-        strong_markers = (
-            "record", "how much", "percentage", "percent", "cash and cash equivalents",
-            "gross margin", "platform revenue", "volume-based revenue", "credit facilities",
-            "operating activities", "net assets", "budget", "actual 2020", "reserve and surplus",
-            "practice question", "compare", "amount", "year-over-year", "growth rate",
-            "total revenue", "pct system", "madrid system",
-        )
-        return any(marker in normalized for marker in strong_markers)
+        """Attempt evidence extraction for any numeric question with evidence.
+
+        The extractor itself returns ``None`` when it cannot find a
+        query-aligned value. This keeps the router generic rather than
+        maintaining a brittle per-metric allow-list, while retaining the
+        normal LLM/refusal fallback when no deterministic answer is found.
+        """
+        return bool(chunks) and self.is_numeric_query(query)
 
     def should_try_deterministic_factual_answer(self, query: str) -> bool:
         """Check if we should attempt a deterministic factual answer."""
