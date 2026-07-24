@@ -59,8 +59,17 @@ checkpoint*/
 .ruff_cache/
 
 .runtime/
+runtime/
 *.db
 *.sqlite
 *.sqlite3
 finquery_rag/.cc-work/
 commit_msg.txt
+
+# Phase 7 deployment config (keep example, ignore actual)
+config/deployment/online.env
+
+# Phase 7 deployment artifacts (allowlist)
+!artifacts/deployment/
+artifacts/deployment/*
+!artifacts/deployment/phase7/

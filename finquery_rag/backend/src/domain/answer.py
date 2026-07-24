@@ -65,6 +65,7 @@ _LEGACY_FIELDS_BY_PATH: dict[AnswerPath, tuple[str, ...]] = {
         "intent",
         "intent_confidence",
         "rewritten_question",
+        "trace_id",
     ),
     AnswerPath.NO_RETRIEVAL: (
         "answer",
@@ -75,6 +76,7 @@ _LEGACY_FIELDS_BY_PATH: dict[AnswerPath, tuple[str, ...]] = {
         "intent",
         "intent_confidence",
         "rewritten_question",
+        "trace_id",
     ),
     AnswerPath.NO_DOCUMENTS: (
         "answer",
@@ -83,6 +85,7 @@ _LEGACY_FIELDS_BY_PATH: dict[AnswerPath, tuple[str, ...]] = {
         "searched_docs",
         "context_sufficient",
         "rewritten_question",
+        "trace_id",
     ),
 }
 

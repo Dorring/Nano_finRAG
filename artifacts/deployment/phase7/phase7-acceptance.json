@@ -1,0 +1,223 @@
+{
+  "criteria": [
+    {
+      "description": "Branch created from Phase 6 merged master",
+      "id": "created_from_phase6_master",
+      "status": "passed"
+    },
+    {
+      "description": "No sudo/docker/systemctl in deploy scripts",
+      "id": "no_root_commands",
+      "status": "passed"
+    },
+    {
+      "description": "No Docker/Podman dependency",
+      "id": "no_docker_dependency",
+      "status": "passed"
+    },
+    {
+      "description": "Model service start script complete",
+      "id": "model_start_script",
+      "status": "passed"
+    },
+    {
+      "description": "Backend service start script complete",
+      "id": "backend_start_script",
+      "status": "passed"
+    },
+    {
+      "description": "Frontend service start script complete",
+      "id": "frontend_start_script",
+      "status": "passed"
+    },
+    {
+      "description": "Unified start_all.sh script complete",
+      "id": "unified_start_script",
+      "status": "passed"
+    },
+    {
+      "description": "Unified stop_all.sh script complete",
+      "id": "unified_stop_script",
+      "status": "passed"
+    },
+    {
+      "description": "Unified restart_all.sh script complete",
+      "id": "unified_restart_script",
+      "status": "passed"
+    },
+    {
+      "description": "Status check script complete",
+      "id": "status_check_script",
+      "status": "passed"
+    },
+    {
+      "description": "Start order: model -> backend -> frontend",
+      "id": "start_order_correct",
+      "status": "passed"
+    },
+    {
+      "description": "Stop order: frontend -> backend -> model",
+      "id": "stop_order_correct",
+      "status": "passed"
+    },
+    {
+      "description": "All ports > 1024",
+      "id": "ports_above_1024",
+      "status": "passed"
+    },
+    {
+      "description": "Default bind to 127.0.0.1",
+      "id": "bind_127.0.0.1",
+      "status": "passed"
+    },
+    {
+      "description": "Production backend has --reload disabled",
+      "id": "backend_reload_disabled",
+      "status": "passed"
+    },
+    {
+      "description": "Default workers=1",
+      "id": "default_worker_one",
+      "status": "passed"
+    },
+    {
+      "description": "Model health check passes",
+      "id": "model_health_check",
+      "status": "passed"
+    },
+    {
+      "description": "Backend health check passes",
+      "id": "backend_health_check",
+      "status": "passed"
+    },
+    {
+      "description": "Frontend health check passes",
+      "id": "frontend_health_check",
+      "status": "passed"
+    },
+    {
+      "description": "Model-to-backend link passes",
+      "id": "model_to_backend_link",
+      "status": "passed"
+    },
+    {
+      "description": "Backend-to-frontend link passes",
+      "id": "backend_to_frontend_link",
+      "status": "passed"
+    },
+    {
+      "description": "Normal finance Q&A smoke passes",
+      "id": "normal_qa_smoke",
+      "status": "passed"
+    },
+    {
+      "description": "Financial calculation smoke passes",
+      "id": "calculation_smoke",
+      "status": "passed"
+    },
+    {
+      "description": "Unanswerable question safely fails",
+      "id": "unanswerable_safe_fail",
+      "status": "passed"
+    },
+    {
+      "description": "SSE endpoint passes",
+      "id": "sse_smoke",
+      "status": "passed"
+    },
+    {
+      "description": "Three services have separate logs",
+      "id": "log_separation",
+      "status": "passed"
+    },
+    {
+      "description": "Logs do not contain secrets",
+      "id": "no_secrets_in_logs",
+      "status": "passed"
+    },
+    {
+      "description": "Scripts do not kill unrelated processes",
+      "id": "no_cross_kill",
+      "status": "passed"
+    },
+    {
+      "description": "Services recover after restart",
+      "id": "restart_recovery",
+      "status": "passed"
+    },
+    {
+      "description": "Services survive SSH logout",
+      "id": "logout_persistence",
+      "status": "passed"
+    },
+    {
+      "description": "SSH tunnel access works",
+      "id": "ssh_tunnel_access",
+      "status": "passed"
+    },
+    {
+      "description": "Performance report complete with real measurements",
+      "id": "performance_report",
+      "status": "passed"
+    },
+    {
+      "description": "CPU, RAM, GPU usage recorded",
+      "id": "cpu_ram_gpu_recorded",
+      "status": "passed"
+    },
+    {
+      "description": "p50 and p95 latency recorded",
+      "id": "p50_p95_recorded",
+      "status": "passed"
+    },
+    {
+      "description": "Artifacts are sanitized (no IPs, paths, secrets)",
+      "id": "artifact_sanitized",
+      "status": "passed"
+    },
+    {
+      "description": "Deployment documentation complete",
+      "id": "deployment_docs",
+      "status": "passed"
+    },
+    {
+      "description": "Full test suite passes",
+      "id": "full_tests_pass",
+      "status": "passed"
+    },
+    {
+      "description": "pytest failed=0",
+      "id": "failed_zero",
+      "status": "passed"
+    },
+    {
+      "description": "pytest errors=0",
+      "id": "errors_zero",
+      "status": "passed"
+    },
+    {
+      "description": "Pull request created",
+      "id": "pr_created",
+      "status": "passed"
+    },
+    {
+      "description": "No RAG algorithm changes",
+      "id": "no_rag_algorithm_change",
+      "status": "passed"
+    },
+    {
+      "description": "Phase 8 not started",
+      "id": "no_phase_8",
+      "status": "passed"
+    }
+  ],
+  "manifest_type": "phase7_acceptance",
+  "phase": "Phase 7: Rootless Online Serving",
+  "schema_version": "1.0",
+  "summary": {
+    "failed": 0,
+    "passed": 42,
+    "pending": 0,
+    "total": 42
+  }
+}

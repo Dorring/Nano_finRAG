@@ -34,6 +34,7 @@ behaves exactly as before.
 
 import re
 import time
+import uuid
 
 from src.domain.answer import AnswerPath, AnswerResult
 from src.domain.calculation import CalculationResult, CalculationStatus
@@ -564,6 +565,11 @@ class RAGOrchestrator:
             trace_id = self._trace_logger.log(**trace_data)
         except Exception:
             pass  # tracing must never break the query path
+        if trace_id is None:
+            # Fallback: ensure every response carries a trace_id even when
+            # sampling skips or the logger fails. This ID is not stored in
+            # the trace DB, but allows clients to correlate requests.
+            trace_id = uuid.uuid4().hex
 
         # Build calculations tuple for AnswerResult (additive field).
         calculations: tuple[dict, ...] = ()
@@ -653,7 +659,7 @@ class RAGOrchestrator:
             rewritten_question=rewritten_question,
             retrieved_chunks=(),
             retrieval_debug={},
-            trace_id=None,
+            trace_id=uuid.uuid4().hex,
             path=AnswerPath.CONVERSATIONAL,
             had_conversation_history=had_conversation_history,
         )
@@ -680,7 +686,7 @@ class RAGOrchestrator:
             rewritten_question=rewritten_question,
             retrieved_chunks=(),
             retrieval_debug={},
-            trace_id=None,
+            trace_id=uuid.uuid4().hex,
             path=AnswerPath.NO_RETRIEVAL,
             had_conversation_history=had_conversation_history,
         )
@@ -703,7 +709,7 @@ class RAGOrchestrator:
             rewritten_question=rewritten_question,
             retrieved_chunks=(),
             retrieval_debug={},
-            trace_id=None,
+            trace_id=uuid.uuid4().hex,
             path=AnswerPath.NO_DOCUMENTS,
             had_conversation_history=had_conversation_history,
         )

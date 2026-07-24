@@ -1,0 +1,13 @@
+{
+  "manifest_type": "phase7_ssh_tunnel",
+  "schema_version": "1.0",
+  "phase": "Phase 7: Rootless Online Serving",
+  "verified_at": 1784895922.4579906,
+  "tunnel_established": true,
+  "frontend_accessible": true,
+  "backend_login_ok": true,
+  "request_completed": true,
+  "http_status": 200,
+  "trace_id_present": true,
+  "tunnel_ok": true
+}

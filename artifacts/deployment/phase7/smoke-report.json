@@ -1,0 +1,57 @@
+{
+  "failed": 0,
+  "overall": "pass",
+  "passed": 12,
+  "pending": 0,
+  "tests": [
+    {
+      "name": "model_accessible",
+      "status": "pass"
+    },
+    {
+      "name": "backend_healthz",
+      "status": "pass"
+    },
+    {
+      "name": "frontend_root",
+      "status": "pass"
+    },
+    {
+      "name": "backend_calls_model",
+      "status": "pass"
+    },
+    {
+      "name": "frontend_reaches_backend",
+      "status": "pass"
+    },
+    {
+      "name": "query_normal",
+      "status": "pass"
+    },
+    {
+      "name": "query_calculation",
+      "status": "pass"
+    },
+    {
+      "name": "query_unanswerable_safe",
+      "status": "pass"
+    },
+    {
+      "name": "sse_terminates",
+      "status": "pass"
+    },
+    {
+      "name": "trace_id_present",
+      "status": "pass"
+    },
+    {
+      "name": "no_path_leak_in_errors",
+      "status": "pass"
+    },
+    {
+      "name": "restart_recovery",
+      "status": "pass"
+    }
+  ],
+  "total": 12
+}

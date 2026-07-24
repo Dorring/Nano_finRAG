@@ -1,0 +1,92 @@
+{
+  "artifact_directory_structure": {
+    "known_artifacts": [
+      "health-report.json",
+      "smoke-report.json",
+      "deployment-manifest.json",
+      "service-status-report.json",
+      "performance-report.json",
+      "phase7-acceptance.json"
+    ],
+    "root": "artifacts/deployment/phase7/"
+  },
+  "config_reference": {
+    "active_path": "config/deployment/online.env",
+    "template_path": "config/deployment/online.env.example",
+    "using_example": false
+  },
+  "generated_at": 1784895965.0522203,
+  "manifest_type": "phase7_deployment_manifest",
+  "phase": "Phase 7: Rootless Online Serving",
+  "runtime_directory_structure": {
+    "log_files": [
+      "model.log",
+      "backend.log",
+      "frontend.log"
+    ],
+    "pid_files": [
+      "model.pid",
+      "backend.pid",
+      "frontend.pid"
+    ],
+    "root": "runtime/phase7/",
+    "status_files": [
+      "model.status",
+      "backend.status",
+      "frontend.status"
+    ],
+    "subdirs": [
+      "logs/",
+      "pids/",
+      "status/"
+    ]
+  },
+  "schema_version": "1.0",
+  "script_inventory": [
+    "collect_deployment_report.py",
+    "healthcheck.py",
+    "load_env.sh",
+    "record_test_results.py",
+    "restart_all.sh",
+    "smoke_test.py",
+    "start_all.sh",
+    "start_backend.sh",
+    "start_frontend.sh",
+    "start_model.sh",
+    "status.sh",
+    "stop_all.sh",
+    "stop_one.sh",
+    "verify_logout_persistence.py",
+    "verify_ssh_tunnel.py"
+  ],
+  "services": [
+    {
+      "health_endpoint": "/health",
+      "host": "127.0.0.1",
+      "models_endpoint": "/v1/models",
+      "name": "model",
+      "port": 18001,
+      "startup_command_template": "python -m scripts.chat_openai_compat --source {MODEL_SOURCE} --model-tag {MODEL_TAG} --step {MODEL_STEP} --model-name {MODEL_NAME} --port {MODEL_PORT} --host {MODEL_HOST}",
+      "tmux_session": "nano-finance-model"
+    },
+    {
+      "health_endpoint": "/healthz",
+      "host": "127.0.0.1",
+      "name": "backend",
+      "port": 18002,
+      "query_endpoint": "POST /query",
+      "ready_endpoint": "/readyz",
+      "startup_command_template": "uvicorn src.main:app --host {BACKEND_HOST} --port {BACKEND_PORT} --workers 1",
+      "stream_endpoint": "POST /query/stream",
+      "tmux_session": "nano-finance-backend"
+    },
+    {
+      "health_endpoint": "GET /",
+      "host": "127.0.0.1",
+      "name": "frontend",
+      "port": 18003,
+      "startup_command_template": "npm run dev -- --host {FRONTEND_HOST} --port {FRONTEND_PORT}",
+      "tmux_session": "nano-finance-frontend"
+    }
+  ]
+}
