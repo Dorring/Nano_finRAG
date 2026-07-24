@@ -6,6 +6,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_text_splitters import MarkdownHeaderTextSplitter
 from .process_tables import enhance_table_with_context, extract_tables_with_camelot
 from .chunk_id import make_chunk_id
+from .mineru_parser import MinerUParseError, process_pdf_with_mineru
 
 # 1. 用于长章节内部二次切分的备选方案
 # 适配 2048 上下文：chunk_size 从 1000 降至 350，overlap 从 200 降至 50
@@ -29,6 +30,35 @@ MARKDOWN_SPLITTER = MarkdownHeaderTextSplitter(
 
 # 长章节二次切分阈值：从 1500 降至 500，适配短上下文
 LONG_CHUNK_THRESHOLD = 500
+
+
+def _resolve_parser_backend(pdf_path: str) -> str:
+    """Resolve an explicit parser choice, with a conservative auto policy.
+
+    ``auto`` remains native for born-digital PDFs. It can route low-text
+    documents (usually scans) to a separately deployed MinerU service only
+    when the operator explicitly enables that behaviour.
+    """
+    requested = os.getenv("PARSER_BACKEND", "native").strip().lower()
+    if requested not in {"native", "mineru", "auto"}:
+        raise ValueError("PARSER_BACKEND must be one of: native, mineru, auto")
+    if requested != "auto":
+        return requested
+    auto_enabled = os.getenv("MINERU_AUTO_ENABLED", "false").strip().lower() in {"1", "true", "yes"}
+    if not auto_enabled or not os.getenv("MINERU_API_URL", "").strip():
+        return "native"
+    sample_pages = max(1, int(os.getenv("MINERU_AUTO_SAMPLE_PAGES", "3")))
+    min_chars = max(1, int(os.getenv("MINERU_AUTO_MIN_TEXT_CHARS", "80")))
+    try:
+        with pymupdf.open(pdf_path) as candidate:
+            observed = sum(
+                len(candidate[index].get_text("text").strip())
+                for index in range(min(len(candidate), sample_pages))
+            )
+        return "mineru" if observed < min_chars else "native"
+    except Exception as exc:
+        print(f"Parser auto-detection failed: {exc}; using native parser.")
+        return "native"
 
 
 def _analyze_font_hierarchy(page: pymupdf.Page) -> dict:
@@ -327,6 +357,23 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
     :param pdf_path: 待处理的PDF文件路径
     :return: (切分后的文本块列表, PDF总页数)
     """
+    backend = _resolve_parser_backend(pdf_path)
+    if backend == "mineru":
+        print("[Parser] Using optional MinerU backend")
+        try:
+            return process_pdf_with_mineru(
+                pdf_path,
+                user_id=user_id,
+                recursive_splitter=RECURSIVE_SPLITTER,
+                long_chunk_threshold=LONG_CHUNK_THRESHOLD,
+                hierarchy_metadata_fn=_hierarchy_metadata,
+                chunk_content_with_section_fn=_chunk_content_with_section,
+            )
+        except MinerUParseError:
+            # An explicit MinerU choice must fail visibly; silently mixing two
+            # parsers would make document lineage and evaluation unreliable.
+            raise
+
     chunks = []
     doc_name = os.path.basename(pdf_path)
 
