@@ -1,39 +1,100 @@
 {
-  "generated_at": 1784884240.7001803,
+  "generated_at": 1784896030.3593817,
   "manifest_type": "phase7_performance_report",
   "measurements": [
     {
+      "average_ms": 0.6,
       "endpoint": "model_health",
-      "latency_ms": null,
-      "status": "unreachable"
+      "error_count": 0,
+      "max_ms": 1.7,
+      "min_ms": 0.4,
+      "p50_ms": 0.5,
+      "p95_ms": 1.2,
+      "sample_count": 10,
+      "status": "ok"
     },
     {
+      "average_ms": 0.4,
       "endpoint": "model_models",
-      "latency_ms": null,
-      "status": "unreachable"
+      "error_count": 0,
+      "max_ms": 0.5,
+      "min_ms": 0.4,
+      "p50_ms": 0.4,
+      "p95_ms": 0.5,
+      "sample_count": 10,
+      "status": "ok"
     },
     {
+      "average_ms": 0.6,
       "endpoint": "backend_healthz",
-      "latency_ms": null,
-      "status": "unreachable"
+      "error_count": 0,
+      "max_ms": 1.8,
+      "min_ms": 0.3,
+      "p50_ms": 0.4,
+      "p95_ms": 1.4,
+      "sample_count": 10,
+      "status": "ok"
     },
     {
+      "average_ms": 6482.9,
       "endpoint": "backend_readyz",
-      "latency_ms": null,
-      "status": "unreachable"
+      "error_count": 0,
+      "max_ms": 6625.9,
+      "min_ms": 6381.9,
+      "p50_ms": 6441.8,
+      "p95_ms": 6625.4,
+      "sample_count": 10,
+      "status": "ok"
     },
     {
+      "average_ms": 2.6,
       "endpoint": "frontend_root",
-      "latency_ms": null,
-      "status": "unreachable"
+      "error_count": 0,
+      "max_ms": 8.0,
+      "min_ms": 0.6,
+      "p50_ms": 0.8,
+      "p95_ms": 7.2,
+      "sample_count": 10,
+      "status": "ok"
+    },
+    {
+      "average_ms": 7.7,
+      "endpoint": "query_normal",
+      "error_count": 0,
+      "max_ms": 19.2,
+      "min_ms": 4.9,
+      "p50_ms": 6.7,
+      "p95_ms": 14.8,
+      "sample_count": 10,
+      "status": "ok"
+    },
+    {
+      "average_ms": 5.8,
+      "endpoint": "query_calculation",
+      "error_count": 0,
+      "max_ms": 8.5,
+      "min_ms": 4.9,
+      "p50_ms": 5.2,
+      "p95_ms": 7.9,
+      "sample_count": 10,
+      "status": "ok"
     }
   ],
+  "resources": {
+    "cpu_loadavg_1min": "60.55",
+    "gpu_memory_used_mb": 48213.0,
+    "rss_memory_mb": {
+      "backend": 1170.3,
+      "frontend": 66.7,
+      "model": 1682.1
+    }
+  },
   "schema_version": "1.0",
   "summary": {
-    "avg_latency_ms": null,
-    "endpoints_measured": 5,
-    "endpoints_reachable": 0,
-    "max_latency_ms": null,
-    "min_latency_ms": null
+    "endpoints_measured": 7,
+    "endpoints_reachable": 7,
+    "max_p95_ms": 6625.4,
+    "min_p50_ms": 0.4,
+    "samples_per_endpoint": 10
   }
 }
