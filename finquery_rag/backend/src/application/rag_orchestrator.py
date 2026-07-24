@@ -277,6 +277,12 @@ class RAGOrchestrator:
             raw_numeric_answer = self._deterministic_extractor.answer_numeric_query_from_chunks(
                 question, chunks
             )
+            # Test doubles and third-party extractors may not implement the
+            # optional raw-child contract yet.  Only a real answer payload is
+            # allowed to short-circuit generation; a truthy mock/object must
+            # retain the legacy context/LLM path.
+            if not isinstance(raw_numeric_answer, dict):
+                raw_numeric_answer = None
 
             # 2. Build context (with dedup and score threshold)
             context, sources = self._context_builder.build(chunks)
@@ -544,8 +550,11 @@ class RAGOrchestrator:
         elapsed_ms = (time.time() - t0) * 1000
         import hashlib as _hashlib
 
-        context_str = context or ""
-        answer_str = answer or ""
+        # Trace redaction/hashing must never affect a response.  Some legacy
+        # integrations use non-string response proxies, so coerce solely for
+        # hashing while preserving the public answer value unchanged.
+        context_str = context if isinstance(context, str) else str(context or "")
+        answer_str = answer if isinstance(answer, str) else str(answer or "")
         context_hash = _hashlib.sha256(context_str.encode("utf-8")).hexdigest()[:16]
         answer_hash = _hashlib.sha256(answer_str.encode("utf-8")).hexdigest()[:16]
 
