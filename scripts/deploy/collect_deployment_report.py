@@ -235,7 +235,8 @@ def _sample_resources(env: Mapping[str, str]) -> dict[str, Any]:
         pass
 
     # RSS memory of each service process, read from its PID file.
-    pid_dir = Path(env.get("PID_DIR", "")) or (REPO_ROOT / "runtime" / "phase7" / "pids")
+    pid_dir_raw = env.get("PID_DIR")
+    pid_dir = Path(pid_dir_raw) if pid_dir_raw else (REPO_ROOT / "runtime" / "phase7" / "pids")
     for name, pid_file in (
         ("model", pid_dir / "model.pid"),
         ("backend", pid_dir / "backend.pid"),
