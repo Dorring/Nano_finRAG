@@ -90,7 +90,9 @@ def test_query_trace_failure_does_not_break_answer(tmp_path):
     )
 
     assert result["answer"] == "Revenue was $10M."
-    assert result["trace_id"] is None
+    # When trace logger fails, a fallback UUID is generated so clients
+    # always have a trace_id to correlate requests.
+    assert isinstance(result["trace_id"], str) and len(result["trace_id"]) > 0
 
 
 def test_eval_runner_persists_trace_id():
