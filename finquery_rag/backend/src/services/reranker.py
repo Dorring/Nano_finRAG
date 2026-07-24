@@ -50,10 +50,11 @@ class HeuristicReranker:
             return []
 
         query_terms = _tokenize(query)
+        query_phrases = _query_phrases(query)
         scored = []
         for index, chunk in enumerate(chunks):
             original_score = _safe_float(chunk.get("score", 0.0))
-            lexical_score = _lexical_overlap(query_terms, chunk.get("content", ""))
+            lexical_score = _lexical_overlap(query_terms, chunk.get("content", ""), query_phrases)
             rerank_score = (
                 self.original_score_weight * original_score
                 + self.lexical_weight * lexical_score
@@ -149,14 +150,52 @@ def _tokenize(text: str) -> set[str]:
     }
 
 
-def _lexical_overlap(query_terms: set[str], content: str) -> float:
+def _query_phrases(text: str) -> set[str]:
+    """Return specific adjacent query phrases for dependency-free reranking.
+
+    Token overlap alone treats a common word such as cash as equally useful
+    in a note title and in the requested line item. Adjacent content-bearing
+    terms preserve more of the user's retrieval intent while remaining
+    language- and document-agnostic.
+    """
+    stopwords = {
+        "what", "was", "were", "the", "and", "for", "with", "from", "this",
+        "that", "how", "much", "many", "did", "does", "have", "has", "of",
+        "in", "on", "at", "as", "to", "a", "an", "report", "document",
+    }
+    tokens = [
+        token.lower()
+        for token in re.findall(r"[A-Za-z0-9_]+", text or "")
+        if token.lower() not in stopwords and len(token) > 1
+    ]
+    return {
+        f"{left} {right}"
+        for left, right in zip(tokens, tokens[1:])
+        if left != right
+    }
+
+
+def _lexical_overlap(
+    query_terms: set[str],
+    content: str,
+    query_phrases: set[str] | None = None,
+) -> float:
     if not query_terms:
         return 0.0
     content_terms = _tokenize(content)
     if not content_terms:
         return 0.0
     overlap = len(query_terms & content_terms)
-    return overlap / math.sqrt(len(query_terms) * len(content_terms))
+    token_score = overlap / math.sqrt(len(query_terms) * len(content_terms))
+    phrases = query_phrases or set()
+    if not phrases:
+        return token_score
+    normalized_content = re.sub(r"\s+", " ", content or "").lower()
+    phrase_hits = sum(1 for phrase in phrases if phrase in normalized_content)
+    # The bounded bonus promotes exact metric phrases without suppressing
+    # sparse lexical matches when PDFs split a phrase across a line boundary.
+    phrase_score = min(0.45, 0.45 * phrase_hits / len(phrases))
+    return token_score + phrase_score
 
 
 def _safe_float(value) -> float:

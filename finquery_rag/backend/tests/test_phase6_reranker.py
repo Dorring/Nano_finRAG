@@ -115,6 +115,19 @@ def test_heuristic_reranker_adds_metadata_and_reorders_by_query_overlap():
     assert result[0]["rerank_score"] > result[1]["rerank_score"]
 
 
+def test_heuristic_reranker_prefers_exact_metric_phrase_over_shared_word():
+    chunks = [
+        chunk("a", "Cash tax benefit was $1.3 million.", 0.1),
+        chunk("b", "Cash and cash equivalents were $42.2 million.", 0.1),
+    ]
+    result = HeuristicReranker(original_score_weight=0.0, lexical_weight=1.0).rerank(
+        "How much cash and cash equivalents did the company have?",
+        chunks,
+    )
+
+    assert result[0]["doc_id"] == "b"
+
+
 def test_rag_engine_default_reranker_disabled_preserves_order():
     engine, path = make_engine()
     try:
