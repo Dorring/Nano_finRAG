@@ -45,13 +45,16 @@ TEST_EMAIL = os.environ.get("TEST_EMAIL", "test@example.com")
 TEST_PASSWORD = os.environ.get("TEST_PASSWORD", "testpassword123")
 
 
-def _post_json(url: str, body: dict[str, Any]) -> tuple[int, Optional[dict]]:
+def _post_json(url: str, body: dict[str, Any], token: Optional[str] = None) -> tuple[int, Optional[dict]]:
     """POST JSON and return ``(status_code, parsed_body)``."""
     data = json.dumps(body).encode("utf-8")
+    headers: dict[str, str] = {"Content-Type": "application/json"}
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
     req = urllib.request.Request(
         url,
         data=data,
-        headers={"Content-Type": "application/json"},
+        headers=headers,
         method="POST",
     )
     try:
@@ -101,7 +104,7 @@ def main() -> int:
 
     # 2. Backend login via tunnel.
     login_status, login_body = _post_json(
-        f"{backend_url}/token",
+        f"{backend_url}/login",
         {"email": TEST_EMAIL, "password": TEST_PASSWORD},
     )
     token = None
@@ -121,6 +124,7 @@ def main() -> int:
                 "question": "测试问题",
                 "n_results": 1,
             },
+            token=token,
         )
         http_status = query_status
         if query_status == 200 and isinstance(query_body, dict):
