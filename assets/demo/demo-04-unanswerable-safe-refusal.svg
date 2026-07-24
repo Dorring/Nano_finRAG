@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0f3460;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#533483;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bg)" rx="8"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#e0e0e0" text-anchor="middle">Citation &amp; Source — Page-level Evidence Tracking</text>
+  <line x1="150" y1="55" x2="650" y2="55" stroke="#0f3460" stroke-width="1" opacity="0.5"/>
+
+  <!-- Document Panel (Left) -->
+  <rect x="40" y="80" width="340" height="330" rx="8" fill="#12122a" stroke="#2a2a4e" stroke-width="1"/>
+  <rect x="40" y="80" width="340" height="35" rx="8" fill="url(#headerGrad)"/>
+  <rect x="40" y="107" width="340" height="8" fill="url(#headerGrad)"/>
+  <text x="210" y="103" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">Annual Report 2025 — Page 42</text>
+
+  <!-- Highlighted text in document -->
+  <rect x="55" y="130" width="310" height="18" rx="3" fill="#1a1a3a"/>
+  <text x="62" y="143" font-family="monospace" font-size="10" fill="#808090">...revenue figures for the fiscal...</text>
+
+  <rect x="55" y="155" width="310" height="20" rx="3" fill="#1a3a2a" stroke="#4ecdc4" stroke-width="1"/>
+  <text x="62" y="169" font-family="monospace" font-size="10" fill="#e0e0e0" font-weight="bold">Total revenue reached ¥12,847</text>
+
+  <rect x="55" y="182" width="310" height="18" rx="3" fill="#1a1a3a"/>
+  <text x="62" y="195" font-family="monospace" font-size="10" fill="#808090">...million for the year ending...</text>
+
+  <!-- Highlighted text 2 -->
+  <rect x="55" y="210" width="310" height="20" rx="3" fill="#3a2a1a" stroke="#e9c46a" stroke-width="1"/>
+  <text x="62" y="224" font-family="monospace" font-size="10" fill="#e0e0e0" font-weight="bold">Gross margin improved to 58.3%</text>
+
+  <rect x="55" y="237" width="310" height="18" rx="3" fill="#1a1a3a"/>
+  <text x="62" y="250" font-family="monospace" font-size="10" fill="#808090">...compared to 56.1% in prior...</text>
+
+  <rect x="55" y="265" width="310" height="18" rx="3" fill="#1a1a3a"/>
+  <text x="62" y="278" font-family="monospace" font-size="10" fill="#808090">...year. Operating expenses...</text>
+
+  <text x="210" y="395" font-family="Arial, sans-serif" font-size="10" fill="#606080" text-anchor="middle">Chunk ID: ar2025-p42-c3 | chars: 2048</text>
+
+  <!-- Citation Panel (Right) -->
+  <rect x="410" y="80" width="350" height="330" rx="8" fill="#12122a" stroke="#2a2a4e" stroke-width="1"/>
+  <rect x="410" y="80" width="350" height="35" rx="8" fill="url(#headerGrad)"/>
+  <rect x="410" y="107" width="350" height="8" fill="url(#headerGrad)"/>
+  <text x="585" y="103" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">Evidence Tracking</text>
+
+  <!-- Citation items -->
+  <rect x="425" y="135" width="320" height="50" rx="6" fill="#1a1a3a" stroke="#4ecdc4" stroke-width="1" opacity="0.8"/>
+  <rect x="425" y="135" width="8" height="50" rx="4" fill="#4ecdc4"/>
+  <text x="442" y="155" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#4ecdc4">Claim: Revenue = ¥12,847M</text>
+  <text x="442" y="174" font-family="monospace" font-size="9" fill="#a0a0c0">Source: AR2025 p.42 | Span: 156-189</text>
+
+  <rect x="425" y="200" width="320" height="50" rx="6" fill="#1a1a3a" stroke="#e9c46a" stroke-width="1" opacity="0.8"/>
+  <rect x="425" y="200" width="8" height="50" rx="4" fill="#e9c46a"/>
+  <text x="442" y="220" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#e9c46a">Claim: Gross Margin = 58.3%</text>
+  <text x="442" y="239" font-family="monospace" font-size="9" fill="#a0a0c0">Source: AR2025 p.42 | Span: 223-245</text>
+
+  <rect x="425" y="265" width="320" height="50" rx="6" fill="#1a1a3a" stroke="#533483" stroke-width="1" opacity="0.8"/>
+  <rect x="425" y="265" width="8" height="50" rx="4" fill="#533483"/>
+  <text x="442" y="285" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#533483">Claim: Prior Margin = 56.1%</text>
+  <text x="442" y="304" font-family="monospace" font-size="9" fill="#a0a0c0">Source: AR2025 p.42 | Span: 280-295</text>
+
+  <!-- Validation status -->
+  <rect x="425" y="335" width="320" height="55" rx="6" fill="#1a2a1a" stroke="#4ecdc4" stroke-width="1"/>
+  <text x="585" y="358" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#4ecdc4" text-anchor="middle">✓ All 3 claims verified</text>
+  <text x="585" y="378" font-family="monospace" font-size="9" fill="#a0a0c0" text-anchor="middle">Numeric ✓ | Source ✓ | Page ✓</text>
+
+  <!-- Placeholder indicator -->
+  <rect x="600" y="460" width="160" height="24" rx="4" fill="#e94560" opacity="0.7"/>
+  <text x="680" y="477" font-family="Arial, sans-serif" font-size="11" fill="#ffffff" text-anchor="middle">[ Placeholder Screenshot ]</text>
+</svg>

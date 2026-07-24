@@ -1,0 +1,136 @@
+{
+  "title": "Claim Audit Report",
+  "overall_pass": true,
+  "total_checks": 21,
+  "passed": 21,
+  "failed": 0,
+  "checks": [
+    {
+      "check": "Banned term 'production-ready' not in README.md",
+      "pass": true,
+      "detail": "OK in README.md"
+    },
+    {
+      "check": "Banned term 'state-of-the-art' not in README.md",
+      "pass": true,
+      "detail": "OK in README.md"
+    },
+    {
+      "check": "Banned term 'production-grade accuracy' not in README.md",
+      "pass": true,
+      "detail": "Found in disclaimer context only — OK in README.md"
+    },
+    {
+      "check": "Banned term 'production-ready' not in README.zh-CN.md",
+      "pass": true,
+      "detail": "OK in README.zh-CN.md"
+    },
+    {
+      "check": "Banned term 'state-of-the-art' not in README.zh-CN.md",
+      "pass": true,
+      "detail": "OK in README.zh-CN.md"
+    },
+    {
+      "check": "Banned term 'production-grade accuracy' not in README.zh-CN.md",
+      "pass": true,
+      "detail": "OK in README.zh-CN.md"
+    },
+    {
+      "check": "'eliminates hallucinations' not in README.md",
+      "pass": true,
+      "detail": "OK in README.md"
+    },
+    {
+      "check": "'eliminates hallucinations' not in README.zh-CN.md",
+      "pass": true,
+      "detail": "OK in README.zh-CN.md"
+    },
+    {
+      "check": "No 'native tool calling' or 'function calling' as model-native claim in README.md",
+      "pass": true,
+      "detail": "OK in README.md"
+    },
+    {
+      "check": "No 'native tool calling' or 'function calling' as model-native claim in README.zh-CN.md",
+      "pass": true,
+      "detail": "OK in README.zh-CN.md"
+    },
+    {
+      "check": "'0/54' not used as quality metric in README.md",
+      "pass": true,
+      "detail": "Found in disclaimer context only — OK in README.md"
+    },
+    {
+      "check": "'0/54' not used as quality metric in README.zh-CN.md",
+      "pass": true,
+      "detail": "Found in disclaimer context only — OK in README.zh-CN.md"
+    },
+    {
+      "check": "'59.5%' not in verified metrics section of README.md",
+      "pass": true,
+      "detail": "OK in README.md"
+    },
+    {
+      "check": "'59.5%' not in verified metrics section of README.zh-CN.md",
+      "pass": true,
+      "detail": "OK in README.zh-CN.md"
+    },
+    {
+      "check": "All metrics in README.md table exist in verified-metrics.md",
+      "pass": true,
+      "detail": "All 6 metrics found in verified-metrics.md"
+    },
+    {
+      "check": "All metrics in README.zh-CN.md table exist in verified-metrics.md",
+      "pass": true,
+      "detail": "All 6 metrics found in verified-metrics.md"
+    },
+    {
+      "check": "README README.md mentions upstream NanoChat",
+      "pass": true,
+      "detail": "OK mentions upstream"
+    },
+    {
+      "check": "README README.zh-CN.md mentions upstream NanoChat",
+      "pass": true,
+      "detail": "OK mentions upstream"
+    },
+    {
+      "check": "Consistent numbers across READMEs (9 ops, 6+ validation, 3 services, 42/42)",
+      "pass": true,
+      "detail": "EN=found, ZH=found; EN=found, ZH=found; EN=found, ZH=found; EN=found, ZH=found",
+      "sub_checks": [
+        {
+          "check": "Consistent 'deterministic financial operations' = 9 across READMEs",
+          "pass": true,
+          "detail": "EN=found, ZH=found"
+        },
+        {
+          "check": "Consistent 'validation categories' = 6+ across READMEs",
+          "pass": true,
+          "detail": "EN=found, ZH=found"
+        },
+        {
+          "check": "Consistent 'online services' = 3 across READMEs",
+          "pass": true,
+          "detail": "EN=found, ZH=found"
+        },
+        {
+          "check": "Consistent 'phase 7 deployment acceptance' = 42/42 across READMEs",
+          "pass": true,
+          "detail": "EN=found, ZH=found"
+        }
+      ]
+    },
+    {
+      "check": "Demo screenshots referenced in README.md exist",
+      "pass": true,
+      "detail": "Found 6 screenshot(s) in assets/demo/"
+    },
+    {
+      "check": "Demo screenshots referenced in README.zh-CN.md exist",
+      "pass": true,
+      "detail": "Found 6 screenshot(s) in assets/demo/"
+    }
+  ]
+}

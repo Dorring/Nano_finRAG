@@ -1,0 +1,96 @@
+{
+  "title": "Privacy Report",
+  "overall_pass": true,
+  "total_checks": 15,
+  "passed": 15,
+  "failed": 0,
+  "checks": [
+    {
+      "check": "SVG privacy: assets\\demo\\demo-01-financial-qa.svg",
+      "pass": true,
+      "detail": "OK",
+      "file": "assets\\demo\\demo-01-financial-qa.svg"
+    },
+    {
+      "check": "SVG privacy: assets\\demo\\demo-02-deterministic-calculation.svg",
+      "pass": true,
+      "detail": "OK",
+      "file": "assets\\demo\\demo-02-deterministic-calculation.svg"
+    },
+    {
+      "check": "SVG privacy: assets\\demo\\demo-03-unit-period-ambiguity.svg",
+      "pass": true,
+      "detail": "OK",
+      "file": "assets\\demo\\demo-03-unit-period-ambiguity.svg"
+    },
+    {
+      "check": "SVG privacy: assets\\demo\\demo-04-unanswerable-safe-refusal.svg",
+      "pass": true,
+      "detail": "OK",
+      "file": "assets\\demo\\demo-04-unanswerable-safe-refusal.svg"
+    },
+    {
+      "check": "SVG privacy: assets\\demo\\demo-05-online-three-service.svg",
+      "pass": true,
+      "detail": "OK",
+      "file": "assets\\demo\\demo-05-online-three-service.svg"
+    },
+    {
+      "check": "SVG privacy: assets\\demo\\demo-06-ssh-tunnel.svg",
+      "pass": true,
+      "detail": "OK",
+      "file": "assets\\demo\\demo-06-ssh-tunnel.svg"
+    },
+    {
+      "check": "SVG privacy: assets\\demo\\demo-01-financial-qa.svg",
+      "pass": true,
+      "detail": "OK",
+      "file": "assets\\demo\\demo-01-financial-qa.svg"
+    },
+    {
+      "check": "SVG privacy: assets\\demo\\demo-02-deterministic-calculation.svg",
+      "pass": true,
+      "detail": "OK",
+      "file": "assets\\demo\\demo-02-deterministic-calculation.svg"
+    },
+    {
+      "check": "SVG privacy: assets\\demo\\demo-03-unit-period-ambiguity.svg",
+      "pass": true,
+      "detail": "OK",
+      "file": "assets\\demo\\demo-03-unit-period-ambiguity.svg"
+    },
+    {
+      "check": "SVG privacy: assets\\demo\\demo-04-unanswerable-safe-refusal.svg",
+      "pass": true,
+      "detail": "OK",
+      "file": "assets\\demo\\demo-04-unanswerable-safe-refusal.svg"
+    },
+    {
+      "check": "SVG privacy: assets\\demo\\demo-05-online-three-service.svg",
+      "pass": true,
+      "detail": "OK",
+      "file": "assets\\demo\\demo-05-online-three-service.svg"
+    },
+    {
+      "check": "SVG privacy: assets\\demo\\demo-06-ssh-tunnel.svg",
+      "pass": true,
+      "detail": "OK",
+      "file": "assets\\demo\\demo-06-ssh-tunnel.svg"
+    },
+    {
+      "check": "README.md: no real server IPs (10.x, 192.168.x.x)",
+      "pass": true,
+      "detail": "OK"
+    },
+    {
+      "check": "README.md: no credentials (password/token with real values)",
+      "pass": true,
+      "detail": "OK"
+    },
+    {
+      "check": "examples/demo/: no real company data claims",
+      "pass": true,
+      "detail": "OK"
+    }
+  ]
+}

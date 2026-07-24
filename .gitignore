@@ -73,3 +73,7 @@ config/deployment/online.env
 !artifacts/deployment/
 artifacts/deployment/*
 !artifacts/deployment/phase7/
+# Phase 8 showcase artifacts (allowlist)
+!artifacts/showcase/
+artifacts/showcase/*
+!artifacts/showcase/phase8/
