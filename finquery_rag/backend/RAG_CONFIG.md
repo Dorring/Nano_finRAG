@@ -40,6 +40,16 @@ all dense/BM25 rows receive consistent parser lineage and page metadata. Run
 the existing `run-http`, `retrieval-eval-bundle`, and `failure-analysis` flow
 on the same cases before making MinerU the default for any document class.
 
+Authenticated users can inspect non-content parser/index diagnostics after an
+upload. The endpoint reports parser/splitter/embedding lineage, text/table
+chunk counts, page coverage, and warnings such as `page_1_concentration` or
+`missing_sparse_index`:
+
+```bash
+curl -H "Authorization: Bearer <token>" \
+  http://127.0.0.1:8000/document-registry/quality
+```
+
 ## Reranking
 
 The FastAPI backend enables the dependency-free heuristic reranker by default.

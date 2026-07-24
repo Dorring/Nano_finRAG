@@ -347,6 +347,73 @@ class SqliteBM25Retriever:
             "orphan_doc_ids_truncated": len(orphan_doc_ids) > 50,
         }
 
+    def document_quality_report(self, user_id: int) -> list[Dict]:
+        """Summarize non-content index quality signals per tenant document.
+
+        This intentionally inspects only stored metadata, not chunk text. It
+        helps identify parser regressions such as a disproportionate number of
+        chunks being attributed to page 1 before retrieval quality is judged.
+        """
+        if user_id is None:
+            return []
+        with sqlite3.connect(self.db_path, timeout=10) as conn:
+            rows = conn.execute(
+                "SELECT doc_name, metadata_json FROM chunk_store WHERE user_id = ?",
+                (user_id,),
+            ).fetchall()
+
+        reports: dict[str, dict] = {}
+        for doc_name, metadata_json in rows:
+            if not isinstance(doc_name, str) or not doc_name:
+                continue
+            report = reports.setdefault(doc_name, {
+                "filename": doc_name,
+                "chunk_count": 0,
+                "text_chunk_count": 0,
+                "table_chunk_count": 0,
+                "pages": set(),
+                "missing_page_metadata": 0,
+                "page_1_chunk_count": 0,
+            })
+            report["chunk_count"] += 1
+            try:
+                metadata = json.loads(metadata_json or "{}")
+            except (TypeError, json.JSONDecodeError):
+                metadata = {}
+            if metadata.get("type") == "table":
+                report["table_chunk_count"] += 1
+            else:
+                report["text_chunk_count"] += 1
+            try:
+                page = int(metadata.get("page"))
+            except (TypeError, ValueError):
+                page = 0
+            if page <= 0:
+                report["missing_page_metadata"] += 1
+            else:
+                report["pages"].add(page)
+                if page == 1:
+                    report["page_1_chunk_count"] += 1
+
+        output = []
+        for report in reports.values():
+            total = max(1, report["chunk_count"])
+            known_pages = sorted(report.pop("pages"))
+            page_1_share = report["page_1_chunk_count"] / total
+            warnings = []
+            if report["missing_page_metadata"]:
+                warnings.append("missing_page_metadata")
+            if len(known_pages) >= 3 and page_1_share >= 0.5:
+                warnings.append("page_1_concentration")
+            report.update({
+                "indexed_page_count": len(known_pages),
+                "max_indexed_page": max(known_pages, default=0),
+                "page_1_share": round(page_1_share, 4),
+                "warnings": warnings,
+            })
+            output.append(report)
+        return sorted(output, key=lambda item: item["filename"].lower())
+
     def rebuild_fts_index(self, user_id: int = None) -> Dict:
         """Rebuild FTS rows from chunk_store and return the post-rebuild report."""
         deleted_fts_rows = 0

@@ -477,6 +477,59 @@ async def list_document_registry(
         "status_summary": document_registry.status_summary(current_user.id),
     }
 
+
+@app.get("/document-registry/quality")
+async def document_registry_quality(current_user: User = Depends(get_current_user)):
+    """Return non-content parsing/index quality signals for ready documents."""
+    engine = get_rag_engine()
+    quality_by_filename = {
+        item["filename"]: item
+        for item in engine.bm25_retriever.document_quality_report(current_user.id)
+    }
+    rows = document_registry.list_all(current_user.id, status="ready", limit=1000)
+    latest_by_filename = {}
+    for row in rows:
+        filename = row.get("filename")
+        if not filename:
+            continue
+        if int(row.get("version") or 0) >= int(latest_by_filename.get(filename, {}).get("version") or 0):
+            latest_by_filename[filename] = row
+
+    documents = []
+    for filename, row in sorted(latest_by_filename.items()):
+        quality = quality_by_filename.get(filename)
+        warnings = list((quality or {}).get("warnings", []))
+        if quality is None:
+            warnings.append("missing_sparse_index")
+        page_count = int(row.get("page_count") or 0)
+        indexed_pages = int((quality or {}).get("indexed_page_count") or 0)
+        coverage = (indexed_pages / page_count) if page_count > 0 else None
+        if page_count > 0 and indexed_pages > page_count:
+            warnings.append("indexed_page_count_exceeds_registry")
+        documents.append({
+            **_public_registry_document(row),
+            "quality": {
+                **(quality or {
+                    "chunk_count": 0,
+                    "text_chunk_count": 0,
+                    "table_chunk_count": 0,
+                    "missing_page_metadata": 0,
+                    "indexed_page_count": 0,
+                    "max_indexed_page": 0,
+                    "page_1_chunk_count": 0,
+                    "page_1_share": 0.0,
+                }),
+                "registry_page_count": page_count,
+                "indexed_page_coverage": round(coverage, 4) if coverage is not None else None,
+                "warnings": sorted(set(warnings)),
+            },
+        })
+    return {
+        "documents": documents,
+        "document_count": len(documents),
+        "warning_document_count": sum(bool(item["quality"]["warnings"]) for item in documents),
+    }
+
 @app.get("/traces")
 async def list_query_traces(
     limit: int = 20,
