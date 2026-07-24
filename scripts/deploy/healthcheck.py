@@ -68,14 +68,21 @@ def resolve_env() -> Mapping[str, str]:
     return merged
 
 
-def http_get_json(url: str, timeout: float = HTTP_TIMEOUT_SECONDS) -> tuple[int, Optional[Any]]:
+def http_get_json(url: str, timeout: float = HTTP_TIMEOUT_SECONDS, accept_json: bool = True) -> tuple[int, Optional[Any]]:
     """Perform an HTTP GET and return ``(status_code, parsed_json_or_None)``.
 
     Returns ``(0, None)`` on network/timeout errors so callers can mark a
     service unhealthy without propagating exceptions or stack traces.
+
+    When ``accept_json`` is True (default), sends ``Accept: application/json``.
+    Set to False for endpoints that serve HTML (e.g. Vite dev server root),
+    since some dev servers return 404 for JSON content negotiation.
     """
+    headers: dict[str, str] = {}
+    if accept_json:
+        headers["Accept"] = "application/json"
     try:
-        req = urllib.request.Request(url, headers={"Accept": "application/json"})
+        req = urllib.request.Request(url, headers=headers)
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             status = int(getattr(resp, "status", 200))
             body = resp.read().decode("utf-8", errors="replace")
@@ -92,9 +99,9 @@ def http_get_json(url: str, timeout: float = HTTP_TIMEOUT_SECONDS) -> tuple[int,
     return status, parsed
 
 
-def http_get_status(url: str, timeout: float = HTTP_TIMEOUT_SECONDS) -> int:
+def http_get_status(url: str, timeout: float = HTTP_TIMEOUT_SECONDS, accept_json: bool = True) -> int:
     """Return only the HTTP status code for a GET request (0 on failure)."""
-    status, _ = http_get_json(url, timeout=timeout)
+    status, _ = http_get_json(url, timeout=timeout, accept_json=accept_json)
     return status
 
 
@@ -145,7 +152,9 @@ def check_backend_service(base_url: str) -> dict[str, Any]:
 def check_frontend_service(base_url: str) -> dict[str, Any]:
     """Check frontend service root page."""
     report: dict[str, Any] = {"url": sanitize_url(base_url)}
-    status = http_get_status(f"{base_url}/")
+    # Vite dev server returns 404 for Accept: application/json on root;
+    # use a plain GET without content negotiation.
+    status = http_get_status(f"{base_url}/", accept_json=False)
     report["status"] = "healthy" if status == 200 else "unhealthy"
     return report
 

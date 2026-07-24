@@ -112,14 +112,21 @@ def http_request(
     body: Optional[dict[str, Any]] = None,
     headers: Optional[dict[str, str]] = None,
     timeout: float = HTTP_TIMEOUT_SECONDS,
+    accept_json: bool = True,
 ) -> tuple[int, Optional[Any], Optional[str]]:
     """Perform an HTTP request.
 
     Returns ``(status_code, parsed_json_or_None, raw_text_or_None)``.
     On network errors returns ``(0, None, None)`` so callers never see
     exceptions or stack traces.
+
+    When ``accept_json`` is False, the ``Accept: application/json`` header
+    is omitted (needed for Vite dev server root, which returns 404 for
+    JSON content negotiation).
     """
-    req_headers: dict[str, str] = {"Accept": "application/json"}
+    req_headers: dict[str, str] = {}
+    if accept_json:
+        req_headers["Accept"] = "application/json"
     if headers:
         req_headers.update(headers)
     data: Optional[bytes] = None
@@ -257,7 +264,7 @@ def test_backend_healthz(backend_url: str) -> TestResult:
 
 def test_frontend_root(frontend_url: str) -> TestResult:
     """Test 3: frontend ``/`` returns 200."""
-    status, _, _ = http_request("GET", f"{frontend_url}/")
+    status, _, _ = http_request("GET", f"{frontend_url}/", accept_json=False)
     if status != 200:
         return TestResult("frontend_root", "fail", "root page did not return 200")
     return TestResult("frontend_root", "pass")
@@ -274,7 +281,7 @@ def test_backend_calls_model(backend_url: str) -> TestResult:
 
 def test_frontend_reaches_backend(frontend_url: str, backend_port: str) -> TestResult:
     """Test 5: frontend page loads and references backend API."""
-    status, _, raw = http_request("GET", f"{frontend_url}/")
+    status, _, raw = http_request("GET", f"{frontend_url}/", accept_json=False)
     if status != 200 or not raw:
         return TestResult("frontend_reaches_backend", "fail", "frontend page not loaded")
     # The Vite dev server bundles API URL into the page/scripts. Check for
@@ -362,9 +369,9 @@ def test_no_path_leak_in_errors(backend_url: str) -> TestResult:
     return TestResult("no_path_leak_in_errors", "pass")
 
 
-def _endpoint_healthy(url: str) -> bool:
+def _endpoint_healthy(url: str, accept_json: bool = True) -> bool:
     """Return True if a GET to ``url`` returns HTTP 200."""
-    status, _, _ = http_request("GET", url)
+    status, _, _ = http_request("GET", url, accept_json=accept_json)
     return status == 200
 
 
@@ -395,7 +402,7 @@ def test_restart_recovery(env: Mapping[str, str]) -> TestResult:
     initial_ok = (
         _endpoint_healthy(f"{model_url}/health")
         and _endpoint_healthy(f"{backend_url}/healthz")
-        and _endpoint_healthy(f"{frontend_url}/")
+        and _endpoint_healthy(f"{frontend_url}/", accept_json=False)
     )
     if not initial_ok:
         return TestResult(
@@ -429,7 +436,7 @@ def test_restart_recovery(env: Mapping[str, str]) -> TestResult:
         if (
             _endpoint_healthy(f"{model_url}/health")
             and _endpoint_healthy(f"{backend_url}/healthz")
-            and _endpoint_healthy(f"{frontend_url}/")
+            and _endpoint_healthy(f"{frontend_url}/", accept_json=False)
         ):
             recovered = True
             break
