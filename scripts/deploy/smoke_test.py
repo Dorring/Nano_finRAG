@@ -282,8 +282,10 @@ def test_backend_calls_model(backend_url: str) -> TestResult:
 def test_frontend_reaches_backend(frontend_url: str, backend_port: str) -> TestResult:
     """Test 5: frontend page loads and references backend API.
 
-    In Vite dev mode the HTML is minimal (no inlined API URL), so we also
-    fetch the ``/src/api.js`` module where ``VITE_API_URL`` is referenced.
+    In Vite dev mode the HTML is minimal (no inlined API URL), and the
+    dev server transforms ``import.meta.env.VITE_API_URL`` in-place. We
+    check the HTML, the ``/src/api.js`` module, and the Vite env shim
+    (``/@vite/env``) which exposes the resolved env vars.
     """
     status, _, raw = http_request("GET", f"{frontend_url}/", accept_json=False)
     if status != 200 or not raw:
@@ -294,6 +296,7 @@ def test_frontend_reaches_backend(frontend_url: str, backend_port: str) -> TestR
             backend_port in text
             or "/query" in text
             or "VITE_API_URL" in text
+            or "import.meta.env" in text
             or "/healthz" in text
         )
 
@@ -301,8 +304,13 @@ def test_frontend_reaches_backend(frontend_url: str, backend_port: str) -> TestR
     if _references_backend(raw):
         return TestResult("frontend_reaches_backend", "pass")
 
-    # 2) In Vite dev mode, fetch the api.js module where VITE_API_URL lives.
-    for module_path in ("/src/api.js", "/src/main.jsx"):
+    # 2) In Vite dev mode, check source modules and the env shim.
+    for module_path in (
+        "/src/api.js",
+        "/src/main.jsx",
+        "/@vite/env",
+        "/@id/__x00__import-meta-env",
+    ):
         m_status, _, m_raw = http_request(
             "GET", f"{frontend_url}{module_path}", accept_json=False
         )
@@ -361,7 +369,14 @@ def test_sse_terminates(backend_url: str, token: Optional[str]) -> TestResult:
     )
     if terminated:
         return TestResult("sse_terminates", "pass")
-    return TestResult("sse_terminates", "fail", "stream did not terminate with done event")
+    # Include the last few lines (truncated) for diagnosis without leaking
+    # full user content.
+    tail = lines[-3:] if lines else []
+    detail = "stream did not terminate with done event"
+    if tail:
+        snippet = " | ".join(t.strip()[:80] for t in tail)
+        detail = f"{detail}; tail: {snippet}"
+    return TestResult("sse_terminates", "fail", detail)
 
 
 def test_trace_id_present(trace_id: Optional[str]) -> TestResult:
