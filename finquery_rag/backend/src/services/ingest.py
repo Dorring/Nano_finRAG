@@ -240,6 +240,36 @@ def _chunk_content_with_section(content: str, section_path: str) -> str:
         return body
     return f"{prefix}\n{body}"
 
+
+def _split_page_markdown(page_markdown: str, source: str) -> list[Document]:
+    """Split one page while keeping the caller-owned page identity intact.
+
+    Splitting a document-wide Markdown stream allows heading metadata from one
+    page to overwrite the synthetic page marker of later chunks.  Page
+    attribution is a retrieval and citation contract, so page boundaries are
+    deliberately preserved here; section headers still work within each page.
+    """
+    try:
+        return MARKDOWN_SPLITTER.split_text(page_markdown)
+    except Exception as exc:
+        print(f"Markdown split failed, fallback to recursive. Error: {exc}")
+        fallback = Document(page_content=page_markdown, metadata={"source": source})
+        return RECURSIVE_SPLITTER.split_documents([fallback])
+
+
+def _iter_page_markdown_splits(
+    page_markdowns: list[tuple[int, str]], source: str
+):
+    """Yield Markdown splits with their immutable PDF page number.
+
+    ``MarkdownHeaderTextSplitter`` only preserves headings in its metadata; it
+    has no intrinsic knowledge of PDF pages.  Keeping the page in this small
+    iterator makes the ingestion invariant explicit and independently testable.
+    """
+    for page_number, page_markdown in page_markdowns:
+        for split_doc in _split_page_markdown(page_markdown, source):
+            yield page_number, split_doc
+
 def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
     """
     经济型结构化切分管线：基于规则重构Markdown，实现树状逻辑切分。
@@ -274,8 +304,7 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
             },
         })
 
-    global_markdown_text = ""
-    current_page_metadata = {"source": pdf_path}
+    page_markdowns: list[tuple[int, str]] = []
 
     for page_num in range(pages):
         page = doc[page_num]
@@ -288,31 +317,14 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
         if not page_md.strip():
             continue
 
-        global_markdown_text += f"\n\n#### 🈳PAGE_MARKER_{actual_page_num}\n\n{page_md}"
+        page_markdowns.append((actual_page_num, page_md))
 
-    # Markdown 逻辑切分
-    try:
-        md_splits = MARKDOWN_SPLITTER.split_text(global_markdown_text)
-    except Exception as e:
-        print(f"Markdown split failed, fallback to recursive. Error: {e}")
-        fallback_docs = [Document(page_content=global_markdown_text, metadata=current_page_metadata)]
-        md_splits = RECURSIVE_SPLITTER.split_documents(fallback_docs)
-
-    # 组装文本块
-    for chunk_idx, split_doc in enumerate(md_splits):
+    # Split pages independently so every child chunk inherits the known PDF
+    # page rather than relying on fragile synthetic Markdown headers.
+    chunk_idx = 0
+    for actual_page, split_doc in _iter_page_markdown_splits(page_markdowns, pdf_path):
         content = split_doc.page_content
         metadata = split_doc.metadata.copy()
-
-        actual_page = 1
-
-        if "Header 4" in metadata and "🈳PAGE_MARKER_" in metadata.get("Header 4", ""):
-            try:
-                actual_page = int(metadata["Header 4"].split("_")[-1])
-            except ValueError:
-                pass
-
-            content = content.replace(f"#### {metadata['Header 4']}", "").strip()
-            del metadata["Header 4"]
 
         if not content:
             continue
@@ -327,11 +339,15 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
         )
         section_path = hierarchy_meta.get("section_path", "")
 
-        # 长章节二次切分（阈值降低适配短上下文）
+        # Long sections are split again for the short generation context.
         if len(content) > LONG_CHUNK_THRESHOLD:
-            sub_docs = RECURSIVE_SPLITTER.split_documents([Document(page_content=content, metadata=metadata)])
+            sub_docs = RECURSIVE_SPLITTER.split_documents(
+                [Document(page_content=content, metadata=metadata)]
+            )
             for sub_idx, sub_doc in enumerate(sub_docs):
-                doc_id = make_chunk_id(user_id, doc_name, f"page_{actual_page}::chunk_{chunk_idx}_{sub_idx}")
+                doc_id = make_chunk_id(
+                    user_id, doc_name, f"page_{actual_page}::chunk_{chunk_idx}_{sub_idx}"
+                )
                 chunks.append({
                     "content": _chunk_content_with_section(sub_doc.page_content, section_path),
                     "metadata": {
@@ -340,8 +356,8 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
                         "type": "text",
                         "page": actual_page,
                         "source": pdf_path,
-                        "doc_id": doc_id
-                    }
+                        "doc_id": doc_id,
+                    },
                 })
         else:
             doc_id = make_chunk_id(user_id, doc_name, f"page_{actual_page}::chunk_{chunk_idx}")
@@ -353,9 +369,10 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
                     "type": "text",
                     "page": actual_page,
                     "source": pdf_path,
-                    "doc_id": doc_id
-                }
+                    "doc_id": doc_id,
+                },
             })
+        chunk_idx += 1
 
     # 处理表格块（使用 NVIDIA API 增强表格上下文）
     for actual_page_num, table_list in tables_by_page.items():
