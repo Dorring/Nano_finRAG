@@ -26,24 +26,87 @@ class DeterministicAnswerExtractor:
             and (chunk.get("metadata") or {}).get("subtype") == "title"
             and (chunk.get("content") or "").strip()
         ]
-        if not title_chunks:
-            return None
         title_chunks.sort(key=lambda chunk: (chunk.get("metadata") or {}).get("page", 999))
-        title_chunk = dict(title_chunks[0])
-        title = re.sub(r"\s+", " ", title_chunk.get("content", "")).strip()
-        title = re.sub(r"^title\s*:\s*", "", title, flags=re.IGNORECASE).strip()
-        title = self._clean_deterministic_title(title)
-        if not self._is_valid_deterministic_title(title):
+        title_chunk = None
+        title = None
+        for candidate_chunk in title_chunks:
+            candidate_title = self._clean_deterministic_title(
+                re.sub(r"^title\s*:\s*", "", candidate_chunk.get("content", ""), flags=re.IGNORECASE).strip()
+            )
+            if self._is_valid_deterministic_title(candidate_title):
+                title_chunk = dict(candidate_chunk)
+                title = candidate_title
+                break
+
+        if title_chunk is None:
+            for candidate_chunk in chunks or []:
+                metadata = candidate_chunk.get("metadata") or {}
+                if metadata.get("page") != 1:
+                    continue
+                candidate_title = self._title_from_page_one_evidence(candidate_chunk.get("content", ""))
+                if self._is_valid_deterministic_title(candidate_title):
+                    title_chunk = dict(candidate_chunk)
+                    title = candidate_title
+                    break
+
+        if title_chunk is None or not title:
             return None
-        if "reporting period" in normalized_query and not re.search(r"\b(19|20)\d{2}\b|year to|year ended", title, re.IGNORECASE):
-            return None
+
+        reporting_period = None
+        if "reporting period" in normalized_query:
+            reporting_period = self._reporting_period_from_evidence(chunks or [])
+            if not reporting_period:
+                return None
+
         title_chunk["score"] = max(float(title_chunk.get("score", 0) or 0), 1.0)
         title_chunk["deterministic_answer"] = "front_matter_title"
+        answer = f'The title of the paper is "{title}".'
+        if reporting_period:
+            answer += f" Reporting period: {reporting_period}."
         return {
-            "answer": f'The title of the paper is "{title}".',
+            "answer": answer,
             "chunks": [title_chunk],
             "diagnostic": "front_matter_title",
         }
+
+    @classmethod
+    def _title_from_page_one_evidence(cls, content: str) -> str | None:
+        """Extract a cover title from a page-one chunk when metadata is partial."""
+        lines = []
+        for raw_line in (content or "").splitlines():
+            line = re.sub(r"^\s*(?:section:\s*|#+\s*)", "", raw_line, flags=re.IGNORECASE)
+            line = re.sub(r"\s+", " ", line).strip(" -")
+            lowered = line.lower()
+            if not line or lowered.startswith(("abstract", "keywords", "paper id", "anonymous")):
+                break
+            if "www." in lowered or "http://" in lowered or "https://" in lowered:
+                break
+            if line.isdigit() and not re.fullmatch(r"(?:19|20)\d{2}", line):
+                continue
+            if lines and line.lower() == lines[-1].lower():
+                continue
+            lines.append(line)
+            if len(lines) >= 4:
+                break
+        title = cls._clean_deterministic_title(" ".join(lines))
+        title = re.sub(r"\bannualreport\b", "Annual Report", title, flags=re.IGNORECASE)
+        return title or None
+
+    @staticmethod
+    def _reporting_period_from_evidence(chunks: list) -> str | None:
+        """Find an explicitly stated reporting period in front-page evidence."""
+        patterns = (
+            r"\bYear\s+to\s+(?:December|June|March|September)\s+\d{1,2},?\s+(?:19|20)\d{2}\b",
+            r"\bYear\s+ended\s+(?:December|June|March|September)\s+\d{1,2},?\s+(?:19|20)\d{2}\b",
+            r"\bFor\s+the\s+year\s+ended\s+(?:December|June|March|September)\s+\d{1,2},?\s+(?:19|20)\d{2}\b",
+        )
+        for chunk in chunks:
+            text = re.sub(r"\s+", " ", chunk.get("content", "") or "")
+            for pattern in patterns:
+                match = re.search(pattern, text, flags=re.IGNORECASE)
+                if match:
+                    return match.group(0)
+        return None
 
     def answer_numeric_query_from_context(self, query: str, context: str, sources: list) -> dict | None:
         """Return a deterministic numeric answer when relevant evidence lines are present."""

@@ -90,6 +90,7 @@ class RAGOrchestrator:
         intent_classifier,
         list_all_documents_fn,
         get_front_matter_chunks_fn,
+        get_page_chunks_fn=None,
         numeric_rrf_floor: float = 0.008,
         numeric_dense_floor: float = 0.08,
         model_name: str = "nanochat",
@@ -106,6 +107,7 @@ class RAGOrchestrator:
         self._classify_intent = intent_classifier
         self._list_all_documents = list_all_documents_fn
         self._get_front_matter_chunks = get_front_matter_chunks_fn
+        self._get_page_chunks = get_page_chunks_fn
         self._numeric_rrf_floor = numeric_rrf_floor
         self._numeric_dense_floor = numeric_dense_floor
         self._model_name = model_name
@@ -916,16 +918,11 @@ class RAGOrchestrator:
         user_id: int | None = None,
     ) -> list:
         """Direct metadata lookup for deterministic front-matter questions."""
-        if (
-            not self._query_processor.is_title_query(query)
-            or not doc_names
-            or user_id is None
-        ):
-            return []
-        if "reporting period" in (query or "").lower():
+        if not self._query_processor.is_title_query(query) or not doc_names or user_id is None:
             return []
         chunks = []
         for doc_name in doc_names:
+            has_valid_title = False
             for chunk in self._get_front_matter_chunks(
                 doc_name=doc_name, user_id=user_id, subtype="title"
             ):
@@ -936,6 +933,19 @@ class RAGOrchestrator:
                     DeterministicAnswerExtractor._clean_deterministic_title(title)
                 ):
                     chunks.append(chunk)
+                    has_valid_title = True
+            # The title metadata can be partial on marketing-style covers. For
+            # title+period questions we also need the adjacent cover evidence.
+            # Page-one lookup is deterministic, tenant scoped, and avoids
+            # relying on an unrelated vector hit from later in the document.
+            if self._get_page_chunks and (
+                not has_valid_title or "reporting period" in (query or "").lower()
+            ):
+                chunks.extend(
+                    self._get_page_chunks(
+                        doc_name, user_id, [1], limit_per_page=4
+                    )
+                )
         return chunks
 
     @staticmethod
