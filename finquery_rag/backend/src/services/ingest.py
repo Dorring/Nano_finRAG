@@ -104,15 +104,19 @@ def _reconstruct_page_to_markdown(page: pymupdf.Page, tab_bboxes: list, hierarch
 
 
 
-def _safe_find_table_bboxes(page: pymupdf.Page) -> list:
-    """Return PyMuPDF table bboxes, or an empty list when detection fails."""
+def _safe_find_pymupdf_tables(page: pymupdf.Page) -> list:
+    """Return PyMuPDF table objects without allowing detection to block ingest."""
     try:
         finder = page.find_tables()
-        tables = getattr(finder, "tables", []) or []
+        return list(getattr(finder, "tables", []) or [])
     except Exception as exc:
         print(f"PyMuPDF table detection failed on page {page.number + 1}: {exc}; continuing without table bboxes.")
         return []
 
+
+def _safe_find_table_bboxes(page: pymupdf.Page, tables: list | None = None) -> list:
+    """Return table bboxes from already detected tables when available."""
+    tables = _safe_find_pymupdf_tables(page) if tables is None else tables
     bboxes = []
     for table in tables:
         try:
@@ -122,6 +126,51 @@ def _safe_find_table_bboxes(page: pymupdf.Page) -> list:
         except Exception as exc:
             print(f"Skipping PyMuPDF table bbox on page {page.number + 1}: {exc}")
     return bboxes
+
+
+def _markdown_escape_table_cell(value) -> str:
+    text = re.sub(r"\\s+", " ", str(value or "")).strip()
+    return text.replace("|", "\\|")
+
+
+def _native_table_to_markdown(table) -> str:
+    """Convert one PyMuPDF table to small, dependency-free Markdown."""
+    try:
+        raw_rows = table.extract()
+    except Exception as exc:
+        print(f"Skipping PyMuPDF table extraction: {exc}")
+        return ""
+    rows = [
+        [_markdown_escape_table_cell(cell) for cell in row]
+        for row in (raw_rows or [])
+        if any(_markdown_escape_table_cell(cell) for cell in row)
+    ]
+    if not rows:
+        return ""
+    width = max(len(row) for row in rows)
+    normalized_rows = [row + [""] * (width - len(row)) for row in rows]
+    header = normalized_rows[0]
+    body = normalized_rows[1:] or [[""] * width]
+    separator = ["---"] * width
+    return "\n".join(
+        "| " + " | ".join(row) + " |"
+        for row in [header, separator, *body]
+    )
+
+
+def _extract_pymupdf_table_entries(page: pymupdf.Page, tables: list) -> list[dict]:
+    """Create usable table entries for pages where Camelot has no result."""
+    entries = []
+    for table in tables:
+        markdown = _native_table_to_markdown(table)
+        if not markdown:
+            continue
+        try:
+            bbox = tuple(getattr(table, "bbox", None) or ()) or None
+        except Exception:
+            bbox = None
+        entries.append({"md": markdown, "bbox": bbox})
+    return entries
 
 def _clean_front_matter_line(text: str) -> str:
     text = re.sub(r"\s+", " ", text or "").strip()
@@ -310,7 +359,22 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
         page = doc[page_num]
         actual_page_num = page_num + 1
 
-        tab_bboxes = _safe_find_table_bboxes(page)
+        native_tables = _safe_find_pymupdf_tables(page)
+        # Camelot is preferred when it succeeds.  Native PyMuPDF extraction is
+        # a local fallback, which keeps numeric evidence available offline.
+        if not tables_by_page.get(actual_page_num):
+            native_entries = _extract_pymupdf_table_entries(page, native_tables)
+            if native_entries:
+                tables_by_page[actual_page_num] = native_entries
+
+        # Do not remove a detected table from regular text unless the page has
+        # a structured table chunk to retain that evidence. Duplication is
+        # safer than silently losing a financial value on parser failure.
+        tab_bboxes = (
+            _safe_find_table_bboxes(page, native_tables)
+            if tables_by_page.get(actual_page_num)
+            else []
+        )
         hierarchy_map = _analyze_font_hierarchy(page)
         page_md = _reconstruct_page_to_markdown(page, tab_bboxes, hierarchy_map)
 

@@ -56,3 +56,27 @@ def test_pymupdf_table_detection_failure_returns_empty_bboxes():
             raise RuntimeError("no table bbox")
 
     assert _safe_find_table_bboxes(Page()) == []
+
+
+def test_pymupdf_tables_can_supply_markdown_when_camelot_has_no_result():
+    from src.services.ingest import _extract_pymupdf_table_entries
+
+    class Table:
+        bbox = (10, 20, 100, 200)
+
+        def extract(self):
+            return [
+                ["Metric", "2025"],
+                ["Cash and cash equivalents", "$42.2 million"],
+            ]
+
+    entries = _extract_pymupdf_table_entries(None, [Table()])
+
+    assert entries == [{
+        "bbox": (10, 20, 100, 200),
+        "md": (
+            "| Metric | 2025 |\n"
+            "| --- | --- |\n"
+            "| Cash and cash equivalents | $42.2 million |"
+        ),
+    }]
