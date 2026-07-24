@@ -6,7 +6,7 @@ import json
 import time
 
 from .services.auth import create_access_token, get_current_user, get_password_hash, verify_password
-from .services.ingest import process_pdf
+from .services.ingest import get_ingest_lineage, process_pdf
 from .services.vector_store import add_documents, list_all_documents, delete_document_collection, get_collection_stats
 from .services.rag_engine import RAGEngine
 from .services.document_registry import DocumentRegistry, VALID_TRANSITIONS
@@ -16,7 +16,7 @@ from .services.health import collect_health_snapshot
 from .services.feedback import FeedbackStore
 from .services.query_scope import resolve_query_document_names
 from .services.streaming import make_stream_done_event, make_stream_error_event, safe_log_query_trace
-from .services.retrieval_config import get_reranker_model, get_reranker_name
+from .services.retrieval_config import get_embedding_model_name, get_reranker_model, get_reranker_name
 from .evaluation.evaluation import compare_reports, evaluate_payload, feedback_to_replay_case, trace_to_replay_case
 from .models.schemas import (
     AnswerabilityResponse,
@@ -790,7 +790,15 @@ async def upload_document(file: UploadFile = File(...), current_user: User = Dep
         with open(temp_path, "rb") as f:
             file_bytes = f.read()
         fh = DocumentRegistry.file_hash(file_bytes)
-        existing = document_registry.find_by_file_hash(current_user.id, fh)
+        parser_version, splitter_version = get_ingest_lineage(temp_path)
+        embedding_version = get_embedding_model_name()
+        existing = document_registry.find_by_file_hash(
+            current_user.id,
+            fh,
+            parser_version=parser_version,
+            splitter_version=splitter_version,
+            embedding_version=embedding_version,
+        )
         if existing:
             os.remove(temp_path)
             os.rmdir(temp_dir)
@@ -805,7 +813,14 @@ async def upload_document(file: UploadFile = File(...), current_user: User = Dep
         # Register document in lifecycle registry
         doc_id = uuid.uuid4().hex
         document_registry.register(
-            doc_id, current_user.id, safe_filename, fh, status="parsing"
+            doc_id,
+            current_user.id,
+            safe_filename,
+            fh,
+            status="parsing",
+            parser_version=parser_version,
+            splitter_version=splitter_version,
+            embedding_version=embedding_version,
         )
 
         # process pdf
@@ -817,7 +832,13 @@ async def upload_document(file: UploadFile = File(...), current_user: User = Dep
 
         # Phase 1: content hash dedup
         ch = DocumentRegistry.content_hash(chunks)
-        content_existing = document_registry.find_by_content_hash(current_user.id, ch)
+        content_existing = document_registry.find_by_content_hash(
+            current_user.id,
+            ch,
+            parser_version=parser_version,
+            splitter_version=splitter_version,
+            embedding_version=embedding_version,
+        )
         if content_existing and content_existing["document_id"] != doc_id:
             document_registry.mark_failed(doc_id, "Duplicate content (same as %s)" % content_existing["filename"])
             os.remove(temp_path)

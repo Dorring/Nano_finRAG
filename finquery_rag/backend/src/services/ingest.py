@@ -30,6 +30,9 @@ MARKDOWN_SPLITTER = MarkdownHeaderTextSplitter(
 
 # 长章节二次切分阈值：从 1500 降至 500，适配短上下文
 LONG_CHUNK_THRESHOLD = 500
+NATIVE_PARSER_VERSION = "native-layout-v2"
+MINERU_PARSER_VERSION = "mineru-content-list-v1"
+SPLITTER_VERSION = "page-boundary-section-v2"
 
 
 def _resolve_parser_backend(pdf_path: str) -> str:
@@ -59,6 +62,13 @@ def _resolve_parser_backend(pdf_path: str) -> str:
     except Exception as exc:
         print(f"Parser auto-detection failed: {exc}; using native parser.")
         return "native"
+
+
+def get_ingest_lineage(pdf_path: str) -> tuple[str, str]:
+    """Return parser and splitter versions used for this concrete upload."""
+    backend = _resolve_parser_backend(pdf_path)
+    parser_version = MINERU_PARSER_VERSION if backend == "mineru" else NATIVE_PARSER_VERSION
+    return parser_version, SPLITTER_VERSION
 
 
 def _analyze_font_hierarchy(page: pymupdf.Page) -> dict:
