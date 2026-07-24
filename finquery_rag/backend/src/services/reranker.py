@@ -6,6 +6,7 @@ without changing the RAG pipeline shape.
 """
 from __future__ import annotations
 
+import math
 import re
 from dataclasses import dataclass
 from typing import Any, Protocol
@@ -35,11 +36,9 @@ class NoopReranker:
 class HeuristicReranker:
     """Dependency-free lexical reranker for deterministic tests and fallback.
 
-    Score combines the fused retrieval score with informative query-term and
-    phrase coverage. Coverage is deliberately independent of chunk length:
-    parent-expanded chunks should not be penalized merely for containing more
-    evidence. It is not a substitute for a cross-encoder, but gives the
-    pipeline a stable offline reranker contract without model downloads.
+    Score combines original retrieval score with query-token overlap. It is not
+    a substitute for a cross-encoder, but gives the pipeline a stable reranker
+    contract without model downloads or new dependencies.
     """
 
     original_score_weight: float = 0.7
@@ -54,11 +53,7 @@ class HeuristicReranker:
         scored = []
         for index, chunk in enumerate(chunks):
             original_score = _safe_float(chunk.get("score", 0.0))
-            lexical_score = _lexical_overlap(
-                query_terms,
-                chunk.get("content", ""),
-                query_text=query,
-            )
+            lexical_score = _lexical_overlap(query_terms, chunk.get("content", ""))
             rerank_score = (
                 self.original_score_weight * original_score
                 + self.lexical_weight * lexical_score
@@ -154,60 +149,14 @@ def _tokenize(text: str) -> set[str]:
     }
 
 
-def _lexical_overlap(
-    query_terms: set[str],
-    content: str,
-    *,
-    query_text: str | None = None,
-) -> float:
-    """Score informative query coverage and adjacent phrase coverage.
-
-    The former cosine-style overlap divided by the number of terms in a chunk,
-    which systematically favoured short but weak snippets over parent-expanded
-    evidence. This bounded score measures the fraction of meaningful query
-    terms and phrases represented by a candidate instead.
-    """
+def _lexical_overlap(query_terms: set[str], content: str) -> float:
     if not query_terms:
         return 0.0
     content_terms = _tokenize(content)
     if not content_terms:
         return 0.0
-    informative_query_terms = query_terms - _LEXICAL_STOPWORDS
-    if not informative_query_terms:
-        informative_query_terms = query_terms
-
-    term_coverage = len(informative_query_terms & content_terms) / len(informative_query_terms)
-    query_sequence = [
-        token for token in _token_sequence(query_text or "")
-        if token in informative_query_terms
-    ]
-    content_sequence = " ".join(_token_sequence(content))
-    phrases = {
-        " ".join(query_sequence[index:index + 2])
-        for index in range(max(0, len(query_sequence) - 1))
-    }
-    phrase_coverage = (
-        sum(phrase in content_sequence for phrase in phrases) / len(phrases)
-        if phrases else 0.0
-    )
-    return 0.75 * term_coverage + 0.25 * phrase_coverage
-
-
-_LEXICAL_STOPWORDS = frozenset({
-    "a", "an", "and", "are", "as", "at", "by", "did", "do", "does",
-    "document", "for", "from", "how", "in", "is", "it", "its", "many",
-    "much", "of", "on", "or", "paper", "pdf", "please", "report", "the",
-    "this", "that", "these", "those", "to", "was", "were", "what", "which",
-    "with",
-})
-
-
-def _token_sequence(text: str) -> list[str]:
-    return [
-        token.lower()
-        for token in re.findall(r"[A-Za-z0-9_]+|[\u4e00-\u9fff]", text or "")
-        if token.strip()
-    ]
+    overlap = len(query_terms & content_terms)
+    return overlap / math.sqrt(len(query_terms) * len(content_terms))
 
 
 def _safe_float(value) -> float:
