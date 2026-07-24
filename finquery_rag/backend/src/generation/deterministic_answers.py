@@ -17,7 +17,9 @@ class DeterministicAnswerExtractor:
 
     def answer_front_matter_query(self, query: str, chunks: list) -> dict | None:
         """Answer deterministic front-matter questions from structured chunks."""
-        if not self._query_processor.is_title_query(query):
+        is_title_query = self._query_processor.is_title_query(query)
+        is_overview_query = self._query_processor.is_document_overview_query(query)
+        if not is_title_query and not is_overview_query:
             return None
         normalized_query = (query or "").lower()
         title_chunks = [
@@ -60,7 +62,10 @@ class DeterministicAnswerExtractor:
 
         title_chunk["score"] = max(float(title_chunk.get("score", 0) or 0), 1.0)
         title_chunk["deterministic_answer"] = "front_matter_title"
-        answer = f'The title of the paper is "{title}".'
+        if is_overview_query and not is_title_query:
+            answer = f"The document covers: {title}."
+        else:
+            answer = f'The title of the paper is "{title}".'
         if reporting_period:
             answer += f" Reporting period: {reporting_period}."
         return {

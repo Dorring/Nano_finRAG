@@ -918,7 +918,7 @@ class RAGOrchestrator:
         user_id: int | None = None,
     ) -> list:
         """Direct metadata lookup for deterministic front-matter questions."""
-        if not self._query_processor.is_title_query(query) or not doc_names or user_id is None:
+        if not self._query_processor.is_front_matter_query(query) or not doc_names or user_id is None:
             return []
         chunks = []
         for doc_name in doc_names:

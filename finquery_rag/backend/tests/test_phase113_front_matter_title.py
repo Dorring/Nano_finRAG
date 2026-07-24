@@ -127,6 +127,20 @@ def test_front_matter_title_can_include_reporting_period_from_cover_evidence(tmp
     assert "Year to December 31, 2020" in answer["answer"]
 
 
+def test_document_overview_uses_title_page_evidence(tmp_path):
+    engine = RAGEngine(_DummyLLM(), bm25_db_path=str(tmp_path / "b.db"))
+    chunks = [{
+        "doc_id": "book::front_matter_title",
+        "content": "Title: Financial Statements of a Company",
+        "metadata": {"type": "front_matter", "subtype": "title", "page": 1, "doc_name": "book.pdf"},
+        "score": 1.0,
+    }]
+
+    answer = engine.answer_front_matter_query("What topic does this document cover?", chunks)
+
+    assert answer["answer"] == "The document covers: Financial Statements of a Company."
+
+
 def test_retrieve_front_matter_chunks_uses_metadata_lookup_before_vector_search(monkeypatch, tmp_path):
     def fake_front_matter(doc_name, user_id, subtype=None):
         assert doc_name == "paper.pdf"
