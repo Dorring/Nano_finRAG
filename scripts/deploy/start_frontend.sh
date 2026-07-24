@@ -17,7 +17,8 @@ FRONTEND_DIR="${REPO_ROOT}/finquery_rag/frontend"
 : "${FRONTEND_PORT:=18003}"
 : "${BACKEND_HOST:=127.0.0.1}"
 : "${BACKEND_PORT:=18002}"
-: "${VITE_API_URL:=http://${BACKEND_HOST}:${BACKEND_PORT}}"
+: "${VITE_API_URL:=/api}"
+: "${VITE_API_PROXY_TARGET:=http://${BACKEND_HOST}:${BACKEND_PORT}}"
 
 write_status() { printf '%s\n' "$1" > "${STATUS_FILE}"; }
 
@@ -81,6 +82,7 @@ fi
     printf 'echo $$ > %s\n' "$(shell_squote "${PID_FILE}")"
     printf 'cd %s\n' "$(shell_squote "${FRONTEND_DIR}")"
     printf 'export %s=%s\n' "VITE_API_URL" "$(shell_squote "${VITE_API_URL}")"
+    printf 'export %s=%s\n' "VITE_API_PROXY_TARGET" "$(shell_squote "${VITE_API_PROXY_TARGET}")"
     printf 'exec npm run dev -- --host %s --port %s > %s 2>&1\n' \
         "$(shell_squote "${FRONTEND_HOST}")" \
         "$(shell_squote "${FRONTEND_PORT}")" \
