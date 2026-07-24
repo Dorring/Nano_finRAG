@@ -61,6 +61,19 @@ def test_extract_title_merges_multiline_front_matter_title():
     assert title == "Rethinking Crack Segmentation: A Semantic-Visual Co-refinement Paradigm with the MSCrack30K Benchmark"
 
 
+def test_extract_title_falls_back_to_adjacent_cover_lines_when_primary_font_is_partial():
+    page = _FakePage([
+        ("2025", 44, 70),
+        ("Driving Smart Solutions", 25, 130),
+        ("ANNUALREPORT", 28, 180),
+        ("www.example.com", 9, 240),
+    ])
+
+    title = _extract_title_from_first_page(page)
+
+    assert title == "2025 Driving Smart Solutions Annual Report"
+
+
 def test_front_matter_title_answer_strips_title_prefix(tmp_path):
     engine = RAGEngine(_DummyLLM(), bm25_db_path=str(tmp_path / "b.db"))
     chunks = [{
@@ -74,6 +87,58 @@ def test_front_matter_title_answer_strips_title_prefix(tmp_path):
 
     assert answer["answer"] == 'The title of the paper is "Rethinking Crack Segmentation".'
     assert answer["diagnostic"] == "front_matter_title"
+
+
+def test_front_matter_title_falls_back_to_page_one_cover_evidence(tmp_path):
+    engine = RAGEngine(_DummyLLM(), bm25_db_path=str(tmp_path / "b.db"))
+    chunks = [{
+        "doc_id": "report::page_1::chunk_0",
+        "content": "Section: 2025\n# 2025\nDriving Smart Solutions\nANNUALREPORT\nwww.example.com",
+        "metadata": {"type": "text", "page": 1, "doc_name": "report.pdf"},
+        "score": 0.1,
+    }]
+
+    answer = engine.answer_front_matter_query("What is the title of this report?", chunks)
+
+    assert answer["answer"] == 'The title of the paper is "2025 Driving Smart Solutions Annual Report".'
+    assert answer["diagnostic"] == "front_matter_title"
+
+
+def test_front_matter_title_can_include_reporting_period_from_cover_evidence(tmp_path):
+    engine = RAGEngine(_DummyLLM(), bm25_db_path=str(tmp_path / "b.db"))
+    chunks = [
+        {
+            "doc_id": "report::front_matter_title",
+            "content": "Title: Annual financial report and financial statements",
+            "metadata": {"type": "front_matter", "subtype": "title", "page": 1, "doc_name": "report.pdf"},
+            "score": 1.0,
+        },
+        {
+            "doc_id": "report::page_1::chunk_0",
+            "content": "Annual financial report and financial statements\nYear to December 31, 2020",
+            "metadata": {"type": "text", "page": 1, "doc_name": "report.pdf"},
+            "score": 0.1,
+        },
+    ]
+
+    answer = engine.answer_front_matter_query("What is the title and reporting period?", chunks)
+
+    assert "Annual financial report and financial statements" in answer["answer"]
+    assert "Year to December 31, 2020" in answer["answer"]
+
+
+def test_document_overview_uses_title_page_evidence(tmp_path):
+    engine = RAGEngine(_DummyLLM(), bm25_db_path=str(tmp_path / "b.db"))
+    chunks = [{
+        "doc_id": "book::front_matter_title",
+        "content": "Title: Financial Statements of a Company",
+        "metadata": {"type": "front_matter", "subtype": "title", "page": 1, "doc_name": "book.pdf"},
+        "score": 1.0,
+    }]
+
+    answer = engine.answer_front_matter_query("What topic does this document cover?", chunks)
+
+    assert answer["answer"] == "The document covers: Financial Statements of a Company."
 
 
 def test_retrieve_front_matter_chunks_uses_metadata_lookup_before_vector_search(monkeypatch, tmp_path):

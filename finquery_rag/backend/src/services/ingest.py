@@ -219,6 +219,61 @@ def _clean_front_matter_line(text: str) -> str:
     return text.strip()
 
 
+def _normalize_cover_title(text: str) -> str:
+    """Normalize common PDF cover typography without changing its meaning."""
+    cleaned = re.sub(r"\s+", " ", text or "").strip(" -")
+    cleaned = re.sub(r"\bannualreport\b", "Annual Report", cleaned, flags=re.IGNORECASE)
+    return cleaned
+
+
+def _is_usable_cover_title(text: str) -> bool:
+    """Reject partial cover labels such as ANNUAL or a page number."""
+    cleaned = _normalize_cover_title(text)
+    words = re.findall(r"[A-Za-z][A-Za-z0-9&'/-]*", cleaned)
+    if len(cleaned) < 12 or len(words) < 2:
+        return False
+    return cleaned.lower() not in {
+        "annual report",
+        "annual",
+        "report",
+        "financial statements",
+    }
+
+
+def _fallback_cover_title(lines: list[dict], page_height: float) -> str | None:
+    """Build a title from adjacent cover lines when font ranking is incomplete.
+
+    Marketing-style covers often use a large year plus a smaller tagline and
+    report label. Treating the three lines as one local run is more robust
+    than accepting a single oversized word as the title.
+    """
+    title_lines = []
+    pending_year = None
+    for item in sorted(lines, key=lambda entry: entry["y0"]):
+        text = _normalize_cover_title(item["text"])
+        lowered = text.lower()
+        if item["y0"] > page_height * 0.45:
+            break
+        if lowered.startswith(("abstract", "keywords", "paper id", "anonymous")):
+            break
+        if "www." in lowered or "http://" in lowered or "https://" in lowered:
+            break
+        if re.fullmatch(r"(?:19|20)\d{2}", text):
+            pending_year = text
+            continue
+        if text.isdigit():
+            continue
+        if pending_year and not title_lines:
+            title_lines.append(pending_year)
+        pending_year = None
+        title_lines.append(text)
+        if len(title_lines) >= 4:
+            break
+
+    candidate = _normalize_cover_title(" ".join(title_lines))
+    return candidate if _is_usable_cover_title(candidate) else None
+
+
 def _extract_title_from_first_page(page: pymupdf.Page) -> str | None:
     """Extract a likely title from page 1 using font-size/layout signals."""
     try:
@@ -236,7 +291,7 @@ def _extract_title_from_first_page(page: pymupdf.Page) -> str | None:
                 continue
             raw_text = " ".join(span.get("text", "").strip() for span in spans)
             clean_text = _clean_front_matter_line(raw_text)
-            if not clean_text or clean_text.isdigit():
+            if not clean_text:
                 continue
             max_size = max(float(span.get("size", 0) or 0) for span in spans)
             y0 = min(float(span.get("bbox", [0, 0, 0, 0])[1]) for span in spans)
@@ -266,9 +321,10 @@ def _extract_title_from_first_page(page: pymupdf.Page) -> str | None:
 
     if not title_lines:
         return None
-    title = " ".join(title_lines[:5])
-    title = re.sub(r"\s+", " ", title).strip(" -")
-    return title or None
+    title = _normalize_cover_title(" ".join(title_lines[:5]))
+    if _is_usable_cover_title(title):
+        return title
+    return _fallback_cover_title(lines, page_height)
 
 
 def _section_path_from_metadata(metadata: dict) -> str:

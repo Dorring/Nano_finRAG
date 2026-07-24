@@ -2,7 +2,12 @@ from .trace import TraceLogger
 import os
 import re
 
-from .vector_store import query_collection, list_all_documents, get_front_matter_chunks
+from .vector_store import (
+    query_collection,
+    list_all_documents,
+    get_front_matter_chunks,
+    get_page_chunks,
+)
 from .retrieval import SqliteBM25Retriever
 from .reranker import build_reranker
 from .intent import classify_query_intent
@@ -183,6 +188,7 @@ class RAGEngine:
             intent_classifier=classify_query_intent,
             list_all_documents_fn=list_all_documents,
             get_front_matter_chunks_fn=get_front_matter_chunks,
+            get_page_chunks_fn=get_page_chunks,
             numeric_rrf_floor=self.numeric_rrf_floor,
             numeric_dense_floor=self.numeric_dense_floor,
             model_name=self.model_name,

@@ -62,7 +62,20 @@ class QueryProcessor:
             "title", "author", "abstract", "paper name", "paper title",
             "\u6807\u9898", "\u9898\u76ee", "\u8bba\u6587\u540d", "\u4f5c\u8005", "\u6458\u8981", "\u8fd9\u7bc7\u8bba\u6587",
         )
-        return any(marker in normalized for marker in markers)
+        return any(marker in normalized for marker in markers) or self.is_document_overview_query(query)
+
+    @staticmethod
+    def is_document_overview_query(query: str) -> bool:
+        """Identify broad questions best answered from a document cover or title page."""
+        normalized = (query or "").lower()
+        patterns = (
+            r"\bwhat\s+(?:topic|subject)\b",
+            r"\bwhat\s+(?:does|is)\b.*\b(?:cover|about)\b",
+            r"\bmain\s+(?:topic|subject)\b",
+            r"\bwhat\s+is\s+this\s+document\s+about\b",
+            r"(?:这篇|该|这个).{0,8}(?:讲什么|关于什么|主题)",
+        )
+        return any(re.search(pattern, normalized, flags=re.IGNORECASE) for pattern in patterns)
 
     def is_title_query(self, query: str) -> bool:
         """Check if the query is specifically about a document title."""
