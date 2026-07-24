@@ -21,6 +21,9 @@ LAUNCHER="${RUNTIME_DIR}/.launch_model.sh"
 : "${MODEL_TEMPERATURE:=0}"
 : "${MODEL_MAX_TOKENS:=512}"
 : "${CONDA_ENV_NAME:=nano}"
+: "${MODEL_PYTHON:=}"
+: "${HF_HUB_OFFLINE:=1}"
+: "${HF_DATASETS_OFFLINE:=1}"
 
 write_status() { printf '%s\n' "$1" > "${STATUS_FILE}"; }
 
@@ -56,8 +59,12 @@ if ! port_is_free "${MODEL_PORT}"; then
 fi
 
 # Build conda activation prefix (best-effort; assume python is correct if absent).
+# If MODEL_PYTHON is set to an executable, use it directly (venv) and skip conda.
 __CONDA_PRE=""
-if command -v conda >/dev/null 2>&1; then
+__PYTHON="python"
+if [[ -n "${MODEL_PYTHON}" && -x "${MODEL_PYTHON}" ]]; then
+    __PYTHON="${MODEL_PYTHON}"
+elif command -v conda >/dev/null 2>&1; then
     __CONDA_BASE="$(conda info --base 2>/dev/null || true)"
     if [[ -n "${__CONDA_BASE}" && -f "${__CONDA_BASE}/etc/profile.d/conda.sh" ]]; then
         __CONDA_PRE="source $(shell_squote "${__CONDA_BASE}/etc/profile.d/conda.sh") && conda activate $(shell_squote "${CONDA_ENV_NAME}") && "
@@ -70,9 +77,12 @@ fi
     printf 'set -e\n'
     printf 'echo $$ > %s\n' "$(shell_squote "${PID_FILE}")"
     printf 'cd %s\n' "$(shell_squote "${REPO_ROOT}")"
-    printf '%sCUDA_VISIBLE_DEVICES=%s exec python -m scripts.chat_openai_compat --source %s --model-tag %s --step %s --model-name %s --port %s --host %s --temperature %s --max-tokens %s > %s 2>&1\n' \
+    printf 'export HF_HUB_OFFLINE=%s\n' "$(shell_squote "${HF_HUB_OFFLINE}")"
+    printf 'export HF_DATASETS_OFFLINE=%s\n' "$(shell_squote "${HF_DATASETS_OFFLINE}")"
+    printf '%sCUDA_VISIBLE_DEVICES=%s exec %s -m scripts.chat_openai_compat --source %s --model-tag %s --step %s --model-name %s --port %s --host %s --temperature %s --max-tokens %s > %s 2>&1\n' \
         "${__CONDA_PRE}" \
         "$(shell_squote "${CUDA_VISIBLE_DEVICES}")" \
+        "$(shell_squote "${__PYTHON}")" \
         "$(shell_squote "${MODEL_SOURCE}")" \
         "$(shell_squote "${MODEL_TAG}")" \
         "$(shell_squote "${MODEL_STEP}")" \

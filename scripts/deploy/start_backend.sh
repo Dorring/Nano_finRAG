@@ -55,12 +55,15 @@ if ! port_is_free "${BACKEND_PORT}"; then
     exit 1
 fi
 
-# Choose how to run uvicorn. Prefer a direct venv binary (clean PID), then uv run.
+# Choose how to run uvicorn. Prefer a venv python -m uvicorn (works even when
+# the uvicorn console script is absent), then a direct venv binary, then uv run.
 __UVICORN="uvicorn"
-if [[ -n "${BACKEND_VENV_PATH:-}" && -x "${BACKEND_VENV_PATH}/bin/uvicorn" ]]; then
-    __UVICORN="${BACKEND_VENV_PATH}/bin/uvicorn"
+if [[ -n "${BACKEND_VENV_PATH:-}" && -x "${BACKEND_VENV_PATH}/bin/python" ]]; then
+    __UVICORN="${BACKEND_VENV_PATH}/bin/python -m uvicorn"
 elif [[ -x "${BACKEND_DIR}/.venv/bin/uvicorn" ]]; then
     __UVICORN="${BACKEND_DIR}/.venv/bin/uvicorn"
+elif [[ -x "${BACKEND_DIR}/.venv/bin/python" ]]; then
+    __UVICORN="${BACKEND_DIR}/.venv/bin/python -m uvicorn"
 elif command -v uv >/dev/null 2>&1; then
     __UVICORN="uv run uvicorn"
 fi
