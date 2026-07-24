@@ -60,6 +60,12 @@ def test_config_snapshot_rejects_bad_numeric_env(monkeypatch):
     assert "SESSION_TTL_SECONDS must be >= 0" in cfg["errors"]
 
 
+def test_config_snapshot_uses_wider_default_candidate_pool(monkeypatch):
+    monkeypatch.delenv("RAG_CANDIDATE_MULTIPLIER", raising=False)
+    cfg = collect_config_snapshot()
+    assert cfg["retrieval"]["candidate_multiplier"] == 4
+
+
 def test_health_snapshot_ready_when_required_stores_exist(tmp_path, monkeypatch):
     chroma_dir = tmp_path / "chroma_db"
     chroma_dir.mkdir()

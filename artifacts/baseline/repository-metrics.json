@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-20",
+  "generated_at": "2026-07-25",
   "branch": "chore/nf-00-baseline-audit",
   "file_counts": {
     "nanochat_core": 19,
@@ -29,7 +29,7 @@
     "chat_openai_compat.py": "~600"
   },
   "api_endpoints": {
-    "total": 30,
+    "total": 31,
     "categories": {
       "auth": ["POST /register", "POST /login"],
       "documents": ["GET /documents", "GET /documents/{doc_name}", "POST /upload", "DELETE /documents", "DELETE /documents/{doc_name}"],
@@ -41,7 +41,7 @@
       "memory": ["GET /memory/profile", "PUT /memory/profile", "DELETE /memory/profile"],
       "health": ["GET /", "GET /healthz", "GET /readyz", "GET /ops/summary"],
       "user": ["GET /me"],
-      "registry": ["GET /document-registry"]
+      "registry": ["GET /document-registry", "GET /document-registry/quality"]
     }
   },
   "dependencies": {

@@ -6,6 +6,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_text_splitters import MarkdownHeaderTextSplitter
 from .process_tables import enhance_table_with_context, extract_tables_with_camelot
 from .chunk_id import make_chunk_id
+from .mineru_parser import MinerUParseError, process_pdf_with_mineru
 
 # 1. 用于长章节内部二次切分的备选方案
 # 适配 2048 上下文：chunk_size 从 1000 降至 350，overlap 从 200 降至 50
@@ -29,6 +30,45 @@ MARKDOWN_SPLITTER = MarkdownHeaderTextSplitter(
 
 # 长章节二次切分阈值：从 1500 降至 500，适配短上下文
 LONG_CHUNK_THRESHOLD = 500
+NATIVE_PARSER_VERSION = "native-layout-v2"
+MINERU_PARSER_VERSION = "mineru-content-list-v1"
+SPLITTER_VERSION = "page-boundary-section-v2"
+
+
+def _resolve_parser_backend(pdf_path: str) -> str:
+    """Resolve an explicit parser choice, with a conservative auto policy.
+
+    ``auto`` remains native for born-digital PDFs. It can route low-text
+    documents (usually scans) to a separately deployed MinerU service only
+    when the operator explicitly enables that behaviour.
+    """
+    requested = os.getenv("PARSER_BACKEND", "native").strip().lower()
+    if requested not in {"native", "mineru", "auto"}:
+        raise ValueError("PARSER_BACKEND must be one of: native, mineru, auto")
+    if requested != "auto":
+        return requested
+    auto_enabled = os.getenv("MINERU_AUTO_ENABLED", "false").strip().lower() in {"1", "true", "yes"}
+    if not auto_enabled or not os.getenv("MINERU_API_URL", "").strip():
+        return "native"
+    sample_pages = max(1, int(os.getenv("MINERU_AUTO_SAMPLE_PAGES", "3")))
+    min_chars = max(1, int(os.getenv("MINERU_AUTO_MIN_TEXT_CHARS", "80")))
+    try:
+        with pymupdf.open(pdf_path) as candidate:
+            observed = sum(
+                len(candidate[index].get_text("text").strip())
+                for index in range(min(len(candidate), sample_pages))
+            )
+        return "mineru" if observed < min_chars else "native"
+    except Exception as exc:
+        print(f"Parser auto-detection failed: {exc}; using native parser.")
+        return "native"
+
+
+def get_ingest_lineage(pdf_path: str) -> tuple[str, str]:
+    """Return parser and splitter versions used for this concrete upload."""
+    backend = _resolve_parser_backend(pdf_path)
+    parser_version = MINERU_PARSER_VERSION if backend == "mineru" else NATIVE_PARSER_VERSION
+    return parser_version, SPLITTER_VERSION
 
 
 def _analyze_font_hierarchy(page: pymupdf.Page) -> dict:
@@ -104,15 +144,19 @@ def _reconstruct_page_to_markdown(page: pymupdf.Page, tab_bboxes: list, hierarch
 
 
 
-def _safe_find_table_bboxes(page: pymupdf.Page) -> list:
-    """Return PyMuPDF table bboxes, or an empty list when detection fails."""
+def _safe_find_pymupdf_tables(page: pymupdf.Page) -> list:
+    """Return PyMuPDF table objects without allowing detection to block ingest."""
     try:
         finder = page.find_tables()
-        tables = getattr(finder, "tables", []) or []
+        return list(getattr(finder, "tables", []) or [])
     except Exception as exc:
         print(f"PyMuPDF table detection failed on page {page.number + 1}: {exc}; continuing without table bboxes.")
         return []
 
+
+def _safe_find_table_bboxes(page: pymupdf.Page, tables: list | None = None) -> list:
+    """Return table bboxes from already detected tables when available."""
+    tables = _safe_find_pymupdf_tables(page) if tables is None else tables
     bboxes = []
     for table in tables:
         try:
@@ -122,6 +166,51 @@ def _safe_find_table_bboxes(page: pymupdf.Page) -> list:
         except Exception as exc:
             print(f"Skipping PyMuPDF table bbox on page {page.number + 1}: {exc}")
     return bboxes
+
+
+def _markdown_escape_table_cell(value) -> str:
+    text = re.sub(r"\\s+", " ", str(value or "")).strip()
+    return text.replace("|", "\\|")
+
+
+def _native_table_to_markdown(table) -> str:
+    """Convert one PyMuPDF table to small, dependency-free Markdown."""
+    try:
+        raw_rows = table.extract()
+    except Exception as exc:
+        print(f"Skipping PyMuPDF table extraction: {exc}")
+        return ""
+    rows = [
+        [_markdown_escape_table_cell(cell) for cell in row]
+        for row in (raw_rows or [])
+        if any(_markdown_escape_table_cell(cell) for cell in row)
+    ]
+    if not rows:
+        return ""
+    width = max(len(row) for row in rows)
+    normalized_rows = [row + [""] * (width - len(row)) for row in rows]
+    header = normalized_rows[0]
+    body = normalized_rows[1:] or [[""] * width]
+    separator = ["---"] * width
+    return "\n".join(
+        "| " + " | ".join(row) + " |"
+        for row in [header, separator, *body]
+    )
+
+
+def _extract_pymupdf_table_entries(page: pymupdf.Page, tables: list) -> list[dict]:
+    """Create usable table entries for pages where Camelot has no result."""
+    entries = []
+    for table in tables:
+        markdown = _native_table_to_markdown(table)
+        if not markdown:
+            continue
+        try:
+            bbox = tuple(getattr(table, "bbox", None) or ()) or None
+        except Exception:
+            bbox = None
+        entries.append({"md": markdown, "bbox": bbox})
+    return entries
 
 def _clean_front_matter_line(text: str) -> str:
     text = re.sub(r"\s+", " ", text or "").strip()
@@ -240,6 +329,36 @@ def _chunk_content_with_section(content: str, section_path: str) -> str:
         return body
     return f"{prefix}\n{body}"
 
+
+def _split_page_markdown(page_markdown: str, source: str) -> list[Document]:
+    """Split one page while keeping the caller-owned page identity intact.
+
+    Splitting a document-wide Markdown stream allows heading metadata from one
+    page to overwrite the synthetic page marker of later chunks.  Page
+    attribution is a retrieval and citation contract, so page boundaries are
+    deliberately preserved here; section headers still work within each page.
+    """
+    try:
+        return MARKDOWN_SPLITTER.split_text(page_markdown)
+    except Exception as exc:
+        print(f"Markdown split failed, fallback to recursive. Error: {exc}")
+        fallback = Document(page_content=page_markdown, metadata={"source": source})
+        return RECURSIVE_SPLITTER.split_documents([fallback])
+
+
+def _iter_page_markdown_splits(
+    page_markdowns: list[tuple[int, str]], source: str
+):
+    """Yield Markdown splits with their immutable PDF page number.
+
+    ``MarkdownHeaderTextSplitter`` only preserves headings in its metadata; it
+    has no intrinsic knowledge of PDF pages.  Keeping the page in this small
+    iterator makes the ingestion invariant explicit and independently testable.
+    """
+    for page_number, page_markdown in page_markdowns:
+        for split_doc in _split_page_markdown(page_markdown, source):
+            yield page_number, split_doc
+
 def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
     """
     经济型结构化切分管线：基于规则重构Markdown，实现树状逻辑切分。
@@ -248,6 +367,23 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
     :param pdf_path: 待处理的PDF文件路径
     :return: (切分后的文本块列表, PDF总页数)
     """
+    backend = _resolve_parser_backend(pdf_path)
+    if backend == "mineru":
+        print("[Parser] Using optional MinerU backend")
+        try:
+            return process_pdf_with_mineru(
+                pdf_path,
+                user_id=user_id,
+                recursive_splitter=RECURSIVE_SPLITTER,
+                long_chunk_threshold=LONG_CHUNK_THRESHOLD,
+                hierarchy_metadata_fn=_hierarchy_metadata,
+                chunk_content_with_section_fn=_chunk_content_with_section,
+            )
+        except MinerUParseError:
+            # An explicit MinerU choice must fail visibly; silently mixing two
+            # parsers would make document lineage and evaluation unreliable.
+            raise
+
     chunks = []
     doc_name = os.path.basename(pdf_path)
 
@@ -274,45 +410,42 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
             },
         })
 
-    global_markdown_text = ""
-    current_page_metadata = {"source": pdf_path}
+    page_markdowns: list[tuple[int, str]] = []
 
     for page_num in range(pages):
         page = doc[page_num]
         actual_page_num = page_num + 1
 
-        tab_bboxes = _safe_find_table_bboxes(page)
+        native_tables = _safe_find_pymupdf_tables(page)
+        # Camelot is preferred when it succeeds.  Native PyMuPDF extraction is
+        # a local fallback, which keeps numeric evidence available offline.
+        if not tables_by_page.get(actual_page_num):
+            native_entries = _extract_pymupdf_table_entries(page, native_tables)
+            if native_entries:
+                tables_by_page[actual_page_num] = native_entries
+
+        # Do not remove a detected table from regular text unless the page has
+        # a structured table chunk to retain that evidence. Duplication is
+        # safer than silently losing a financial value on parser failure.
+        tab_bboxes = (
+            _safe_find_table_bboxes(page, native_tables)
+            if tables_by_page.get(actual_page_num)
+            else []
+        )
         hierarchy_map = _analyze_font_hierarchy(page)
         page_md = _reconstruct_page_to_markdown(page, tab_bboxes, hierarchy_map)
 
         if not page_md.strip():
             continue
 
-        global_markdown_text += f"\n\n#### 🈳PAGE_MARKER_{actual_page_num}\n\n{page_md}"
+        page_markdowns.append((actual_page_num, page_md))
 
-    # Markdown 逻辑切分
-    try:
-        md_splits = MARKDOWN_SPLITTER.split_text(global_markdown_text)
-    except Exception as e:
-        print(f"Markdown split failed, fallback to recursive. Error: {e}")
-        fallback_docs = [Document(page_content=global_markdown_text, metadata=current_page_metadata)]
-        md_splits = RECURSIVE_SPLITTER.split_documents(fallback_docs)
-
-    # 组装文本块
-    for chunk_idx, split_doc in enumerate(md_splits):
+    # Split pages independently so every child chunk inherits the known PDF
+    # page rather than relying on fragile synthetic Markdown headers.
+    chunk_idx = 0
+    for actual_page, split_doc in _iter_page_markdown_splits(page_markdowns, pdf_path):
         content = split_doc.page_content
         metadata = split_doc.metadata.copy()
-
-        actual_page = 1
-
-        if "Header 4" in metadata and "🈳PAGE_MARKER_" in metadata.get("Header 4", ""):
-            try:
-                actual_page = int(metadata["Header 4"].split("_")[-1])
-            except ValueError:
-                pass
-
-            content = content.replace(f"#### {metadata['Header 4']}", "").strip()
-            del metadata["Header 4"]
 
         if not content:
             continue
@@ -327,11 +460,15 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
         )
         section_path = hierarchy_meta.get("section_path", "")
 
-        # 长章节二次切分（阈值降低适配短上下文）
+        # Long sections are split again for the short generation context.
         if len(content) > LONG_CHUNK_THRESHOLD:
-            sub_docs = RECURSIVE_SPLITTER.split_documents([Document(page_content=content, metadata=metadata)])
+            sub_docs = RECURSIVE_SPLITTER.split_documents(
+                [Document(page_content=content, metadata=metadata)]
+            )
             for sub_idx, sub_doc in enumerate(sub_docs):
-                doc_id = make_chunk_id(user_id, doc_name, f"page_{actual_page}::chunk_{chunk_idx}_{sub_idx}")
+                doc_id = make_chunk_id(
+                    user_id, doc_name, f"page_{actual_page}::chunk_{chunk_idx}_{sub_idx}"
+                )
                 chunks.append({
                     "content": _chunk_content_with_section(sub_doc.page_content, section_path),
                     "metadata": {
@@ -340,8 +477,8 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
                         "type": "text",
                         "page": actual_page,
                         "source": pdf_path,
-                        "doc_id": doc_id
-                    }
+                        "doc_id": doc_id,
+                    },
                 })
         else:
             doc_id = make_chunk_id(user_id, doc_name, f"page_{actual_page}::chunk_{chunk_idx}")
@@ -353,9 +490,10 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
                     "type": "text",
                     "page": actual_page,
                     "source": pdf_path,
-                    "doc_id": doc_id
-                }
+                    "doc_id": doc_id,
+                },
             })
+        chunk_idx += 1
 
     # 处理表格块（使用 NVIDIA API 增强表格上下文）
     for actual_page_num, table_list in tables_by_page.items():

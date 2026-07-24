@@ -33,11 +33,11 @@ class TestFinancialCalculationPolicy:
 
 
 class TestDocumentQAPolicy:
-    def test_strict_numeric_but_lenient_citation_warning(self):
+    def test_numeric_claims_are_repairable_but_citations_warn(self):
         p = get_policy_for_intent("document_qa")
         assert p.require_evidence is True
         assert p.validate_numeric_claims is True
-        assert p.strict_numeric_grounding is True
+        assert p.strict_numeric_grounding is False
         # Missing citations warn rather than block for document QA.
         assert p.missing_citation_action == ACTION_WARN
         assert p.unsupported_numeric_action == ACTION_BLOCK

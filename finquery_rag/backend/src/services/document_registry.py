@@ -85,19 +85,50 @@ class DocumentRegistry:
         combined = chr(10).join(c.get("content", "") for c in sorted_chunks)
         return hashlib.sha256(combined.encode("utf-8")).hexdigest()
 
-    def find_by_file_hash(self, tenant_id, file_hash):
+    def find_by_file_hash(self, tenant_id, file_hash, *, parser_version=None,
+                          splitter_version=None, embedding_version=None):
+        """Find a ready duplicate, optionally constrained to ingest lineage.
+
+        Version-constrained matching permits a deliberate re-upload after a
+        parser, splitter, or embedding change while retaining normal duplicate
+        protection for identical processing configurations.
+        """
+        conditions = ["tenant_id = ?", "file_hash = ?", "status = 'ready'"]
+        params = [tenant_id, file_hash]
+        for column, value in (
+            ("parser_version", parser_version),
+            ("splitter_version", splitter_version),
+            ("embedding_version", embedding_version),
+        ):
+            if value is not None:
+                conditions.append(f"{column} = ?")
+                params.append(value)
         with self._conn() as conn:
             row = conn.execute(
-                "SELECT * FROM document_registry WHERE tenant_id = ? AND file_hash = ? AND status = 'ready' ORDER BY version DESC LIMIT 1",
-                (tenant_id, file_hash)
+                "SELECT * FROM document_registry WHERE " + " AND ".join(conditions)
+                + " ORDER BY version DESC LIMIT 1",
+                tuple(params),
             ).fetchone()
             return self._row_to_dict(row) if row else None
 
-    def find_by_content_hash(self, tenant_id, content_hash):
+    def find_by_content_hash(self, tenant_id, content_hash, *, parser_version=None,
+                             splitter_version=None, embedding_version=None):
+        """Find a same-content duplicate scoped to an optional ingest lineage."""
+        conditions = ["tenant_id = ?", "content_hash = ?", "status = 'ready'"]
+        params = [tenant_id, content_hash]
+        for column, value in (
+            ("parser_version", parser_version),
+            ("splitter_version", splitter_version),
+            ("embedding_version", embedding_version),
+        ):
+            if value is not None:
+                conditions.append(f"{column} = ?")
+                params.append(value)
         with self._conn() as conn:
             row = conn.execute(
-                "SELECT * FROM document_registry WHERE tenant_id = ? AND content_hash = ? AND status = 'ready' ORDER BY version DESC LIMIT 1",
-                (tenant_id, content_hash)
+                "SELECT * FROM document_registry WHERE " + " AND ".join(conditions)
+                + " ORDER BY version DESC LIMIT 1",
+                tuple(params),
             ).fetchone()
             return self._row_to_dict(row) if row else None
 

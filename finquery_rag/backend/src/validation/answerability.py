@@ -36,6 +36,7 @@ REASON_NO_EVIDENCE = "no_evidence"
 REASON_INSUFFICIENT_EVIDENCE = "insufficient_evidence"
 REASON_MISSING_DOCUMENTS = "missing_documents"
 REASON_NO_RETRIEVAL_REQUIRED = "no_retrieval_required"
+REASON_QUERY_MATCHED_EVIDENCE = "query_matched_evidence"
 
 
 class AnswerabilityEvaluator:
@@ -55,6 +56,7 @@ class AnswerabilityEvaluator:
         sufficiency_result: SufficiencyResult,
         calculation_result: CalculationResult | None,
         requested_documents: tuple[str, ...],
+        has_query_matched_evidence: bool = False,
     ) -> AnswerabilityResult:
         """Evaluate whether the question can be answered with the available evidence.
 
@@ -118,7 +120,21 @@ class AnswerabilityEvaluator:
             )
 
         # --- 4. Insufficient evidence -> NOT_ANSWERABLE ---
+        # A deterministic extractor is only allowed to set this signal after
+        # finding query-matched text in the actual model context.  It is a
+        # generic evidence-strength signal, not a document/page/answer rule.
+        # This prevents rank-scale calibration from rejecting a verifiable
+        # answer merely because it came from a single-retriever RRF hit.
         if not sufficiency_result.is_sufficient:
+            if has_query_matched_evidence:
+                return AnswerabilityResult(
+                    status=AnswerabilityStatus.ANSWERABLE,
+                    reason_codes=(REASON_QUERY_MATCHED_EVIDENCE,),
+                    evidence_count=len(evidence),
+                    document_count=self._count_unique_documents(evidence),
+                    best_score=sufficiency_result.best_score,
+                    average_score=sufficiency_result.average_score,
+                )
             missing = self._missing_requirements(
                 requested_documents=requested_documents,
                 evidence=evidence,

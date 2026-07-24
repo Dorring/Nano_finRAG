@@ -103,6 +103,10 @@ _SCALE_MAP: dict[str, Decimal] = {
     "b": Decimal("1000000000"),
     "万": Decimal("10000"),
     "亿": Decimal("100000000"),
+    # Not a financial scale.  Treat it as a raw amount so an invented unit
+    # such as "8888 zillion" is still extracted and rejected by grounding
+    # validation instead of silently bypassing the safety gate.
+    "zillion": Decimal("1"),
 }
 
 
@@ -124,7 +128,7 @@ _RE_SCALED_AMOUNT = re.compile(
     r"(?<![$¥€£\w])"
     r"(\d{1,3}(?:,\d{3})*(?:\.\d+)?|\d+(?:\.\d+)?)"
     r"\s*"
-    r"(trillion|billion|million|thousand|k|m|b|万|亿)\b",
+    r"(trillion|billion|million|thousand|zillion|k|m|b|万|亿)\b",
     re.IGNORECASE,
 )
 

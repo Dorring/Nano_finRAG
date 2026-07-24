@@ -2,6 +2,54 @@
 
 Runtime configuration is read from environment variables.
 
+## Optional MinerU PDF parsing
+
+The default parser is `native`: PyMuPDF text/layout reconstruction, Camelot
+tables, and a dependency-free PyMuPDF table fallback. It has no extra model or
+GPU residency and remains the recommended default for born-digital financial
+reports.
+
+MinerU is an opt-in parser backend for scanned PDFs, complicated multi-column
+layouts, and tables that the native parser cannot preserve. FinQuery consumes
+MinerU's stable flat `*_content_list.json` artifact and maps it into the same
+tenant-scoped chunk, page, section, and citation contract as native ingest.
+
+```bash
+# Default: no MinerU process, model download, or GPU allocation.
+PARSER_BACKEND=native
+
+# Explicit fallback for a known difficult document. MinerU must already be
+# installed or reachable as a separately managed service.
+PARSER_BACKEND=mineru
+MINERU_COMMAND=mineru
+MINERU_API_URL=http://127.0.0.1:8001
+MINERU_BACKEND=pipeline
+MINERU_TIMEOUT_SECONDS=600
+```
+
+`PARSER_BACKEND=auto` is deliberately conservative. It remains native unless
+`MINERU_AUTO_ENABLED=true` and `MINERU_API_URL` are both set; then documents
+whose first few pages have unusually little extractable text are routed to
+MinerU. This protects normal upload latency and avoids silently consuming GPU
+resources. An explicit `mineru` failure is surfaced as an upload failure rather
+than silently mixing parser outputs; retry with `native` or repair the MinerU
+service.
+
+After changing parser backend, delete and re-upload the affected document so
+all dense/BM25 rows receive consistent parser lineage and page metadata. Run
+the existing `run-http`, `retrieval-eval-bundle`, and `failure-analysis` flow
+on the same cases before making MinerU the default for any document class.
+
+Authenticated users can inspect non-content parser/index diagnostics after an
+upload. The endpoint reports parser/splitter/embedding lineage, text/table
+chunk counts, page coverage, and warnings such as `page_1_concentration` or
+`missing_sparse_index`:
+
+```bash
+curl -H "Authorization: Bearer <token>" \
+  http://127.0.0.1:8000/document-registry/quality
+```
+
 ## Reranking
 
 The FastAPI backend enables the dependency-free heuristic reranker by default.

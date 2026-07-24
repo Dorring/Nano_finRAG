@@ -6,7 +6,7 @@ import json
 import time
 
 from .services.auth import create_access_token, get_current_user, get_password_hash, verify_password
-from .services.ingest import process_pdf
+from .services.ingest import get_ingest_lineage, process_pdf
 from .services.vector_store import add_documents, list_all_documents, delete_document_collection, get_collection_stats
 from .services.rag_engine import RAGEngine
 from .services.document_registry import DocumentRegistry, VALID_TRANSITIONS
@@ -16,7 +16,7 @@ from .services.health import collect_health_snapshot
 from .services.feedback import FeedbackStore
 from .services.query_scope import resolve_query_document_names
 from .services.streaming import make_stream_done_event, make_stream_error_event, safe_log_query_trace
-from .services.retrieval_config import get_reranker_model, get_reranker_name
+from .services.retrieval_config import get_embedding_model_name, get_reranker_model, get_reranker_name
 from .evaluation.evaluation import compare_reports, evaluate_payload, feedback_to_replay_case, trace_to_replay_case
 from .models.schemas import (
     AnswerabilityResponse,
@@ -117,7 +117,7 @@ def get_rag_engine():
             reranker_name=get_reranker_name(),
             # Model path comes from os.getenv("RAG_RERANKER_MODEL") via retrieval_config.
             reranker_model=get_reranker_model(),
-            retrieval_candidate_multiplier=int(os.getenv("RAG_CANDIDATE_MULTIPLIER", "2")),
+            retrieval_candidate_multiplier=int(os.getenv("RAG_CANDIDATE_MULTIPLIER", "4")),
         )
     return rag_engine
 
@@ -477,6 +477,59 @@ async def list_document_registry(
         "status_summary": document_registry.status_summary(current_user.id),
     }
 
+
+@app.get("/document-registry/quality")
+async def document_registry_quality(current_user: User = Depends(get_current_user)):
+    """Return non-content parsing/index quality signals for ready documents."""
+    engine = get_rag_engine()
+    quality_by_filename = {
+        item["filename"]: item
+        for item in engine.bm25_retriever.document_quality_report(current_user.id)
+    }
+    rows = document_registry.list_all(current_user.id, status="ready", limit=1000)
+    latest_by_filename = {}
+    for row in rows:
+        filename = row.get("filename")
+        if not filename:
+            continue
+        if int(row.get("version") or 0) >= int(latest_by_filename.get(filename, {}).get("version") or 0):
+            latest_by_filename[filename] = row
+
+    documents = []
+    for filename, row in sorted(latest_by_filename.items()):
+        quality = quality_by_filename.get(filename)
+        warnings = list((quality or {}).get("warnings", []))
+        if quality is None:
+            warnings.append("missing_sparse_index")
+        page_count = int(row.get("page_count") or 0)
+        indexed_pages = int((quality or {}).get("indexed_page_count") or 0)
+        coverage = (indexed_pages / page_count) if page_count > 0 else None
+        if page_count > 0 and indexed_pages > page_count:
+            warnings.append("indexed_page_count_exceeds_registry")
+        documents.append({
+            **_public_registry_document(row),
+            "quality": {
+                **(quality or {
+                    "chunk_count": 0,
+                    "text_chunk_count": 0,
+                    "table_chunk_count": 0,
+                    "missing_page_metadata": 0,
+                    "indexed_page_count": 0,
+                    "max_indexed_page": 0,
+                    "page_1_chunk_count": 0,
+                    "page_1_share": 0.0,
+                }),
+                "registry_page_count": page_count,
+                "indexed_page_coverage": round(coverage, 4) if coverage is not None else None,
+                "warnings": sorted(set(warnings)),
+            },
+        })
+    return {
+        "documents": documents,
+        "document_count": len(documents),
+        "warning_document_count": sum(bool(item["quality"]["warnings"]) for item in documents),
+    }
+
 @app.get("/traces")
 async def list_query_traces(
     limit: int = 20,
@@ -790,7 +843,15 @@ async def upload_document(file: UploadFile = File(...), current_user: User = Dep
         with open(temp_path, "rb") as f:
             file_bytes = f.read()
         fh = DocumentRegistry.file_hash(file_bytes)
-        existing = document_registry.find_by_file_hash(current_user.id, fh)
+        parser_version, splitter_version = get_ingest_lineage(temp_path)
+        embedding_version = get_embedding_model_name()
+        existing = document_registry.find_by_file_hash(
+            current_user.id,
+            fh,
+            parser_version=parser_version,
+            splitter_version=splitter_version,
+            embedding_version=embedding_version,
+        )
         if existing:
             os.remove(temp_path)
             os.rmdir(temp_dir)
@@ -805,7 +866,10 @@ async def upload_document(file: UploadFile = File(...), current_user: User = Dep
         # Register document in lifecycle registry
         doc_id = uuid.uuid4().hex
         document_registry.register(
-            doc_id, current_user.id, safe_filename, fh, status="parsing"
+            doc_id, current_user.id, safe_filename, fh, status="parsing",
+            parser_version=parser_version,
+            splitter_version=splitter_version,
+            embedding_version=embedding_version,
         )
 
         # process pdf
@@ -817,7 +881,13 @@ async def upload_document(file: UploadFile = File(...), current_user: User = Dep
 
         # Phase 1: content hash dedup
         ch = DocumentRegistry.content_hash(chunks)
-        content_existing = document_registry.find_by_content_hash(current_user.id, ch)
+        content_existing = document_registry.find_by_content_hash(
+            current_user.id,
+            ch,
+            parser_version=parser_version,
+            splitter_version=splitter_version,
+            embedding_version=embedding_version,
+        )
         if content_existing and content_existing["document_id"] != doc_id:
             document_registry.mark_failed(doc_id, "Duplicate content (same as %s)" % content_existing["filename"])
             os.remove(temp_path)

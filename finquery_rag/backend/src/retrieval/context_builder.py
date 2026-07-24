@@ -27,9 +27,19 @@ class ContextBuilder:
         self._max_context_tokens = max_context_tokens
         self._min_score_threshold = min_score_threshold
         self._tokenizer = tokenizer
+        # The exact chunks whose text entered the built context.  Validation
+        # must use these (including parent expansion/truncation), rather than
+        # a stale pre-context child chunk set.
+        self._last_context_evidence: list[dict] = []
+
+    @property
+    def last_context_evidence(self) -> list[dict]:
+        """Return copies of the evidence chunks represented in the context."""
+        return [dict(chunk) for chunk in self._last_context_evidence]
 
     def build(self, chunks: list) -> tuple[str, list[dict]]:
         """Build context from retrieved chunks with dedup, score threshold, and token budget."""
+        self._last_context_evidence = []
         if not chunks:
             return "", []
 
@@ -54,6 +64,7 @@ class ContextBuilder:
 
         context_parts = []
         sources = []
+        context_evidence = []
         current_tokens = 0
         safe_limit = self._max_context_tokens - 200
 
@@ -97,6 +108,9 @@ class ContextBuilder:
                         truncated_content = content[:int(remaining_tokens * 3)] + "\n[...]"
                     chunk_text = "[%s]\n%s" % (source_ref, truncated_content)
                     context_parts.append(chunk_text)
+                    evidence_chunk = dict(chunk)
+                    evidence_chunk["content"] = truncated_content
+                    context_evidence.append(evidence_chunk)
                     sources.append({
                         "filename": filename, "page": page,
                         "type": chunk_type, "score": chunk.get("score", 0),
@@ -109,6 +123,7 @@ class ContextBuilder:
 
             context_parts.append(chunk_text)
             current_tokens += chunk_tokens
+            context_evidence.append(dict(chunk))
             sources.append({
                 "filename": filename, "page": page,
                 "type": chunk_type, "score": chunk.get("score", 0),
@@ -118,6 +133,7 @@ class ContextBuilder:
                 "child_hit_count": child_hit_count,
             })
 
+        self._last_context_evidence = context_evidence
         context_str = "\n\n---\n\n".join(context_parts)
         return context_str, sources
 
@@ -210,7 +226,7 @@ class EvidenceSufficiencyEvaluator:
     def __init__(
         self,
         *,
-        rrf_sufficiency_threshold: float = 0.025,
+        rrf_sufficiency_threshold: float = 0.008,
         dense_sufficiency_threshold: float = 0.15,
     ):
         self._rrf_threshold = rrf_sufficiency_threshold
@@ -225,11 +241,18 @@ class EvidenceSufficiencyEvaluator:
         best_score = max(scores)
         avg_score = sum(scores) / len(scores)
 
-        max_possible_rrf = 0.05
-        if best_score < max_possible_rrf:
+        score_kinds = {
+            str(chunk.get("score_kind") or "").lower()
+            for chunk in chunks
+        }
+        known_score_kinds = score_kinds - {"", "unknown"}
+        if known_score_kinds == {"rrf"}:
             threshold = self._rrf_threshold
-        else:
+        elif known_score_kinds:
             threshold = self._dense_threshold
+        else:
+            # Compatibility for legacy stores that predate score provenance.
+            threshold = self._rrf_threshold if best_score < 0.05 else self._dense_threshold
 
         is_sufficient = best_score >= threshold
         return SufficiencyResult(

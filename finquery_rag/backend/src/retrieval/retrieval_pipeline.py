@@ -24,7 +24,7 @@ class RetrievalPipeline:
         bm25_retriever=None,
         reranker=None,
         query_processor: QueryProcessor | None = None,
-        candidate_multiplier: int = 2,
+        candidate_multiplier: int = 4,
         use_hybrid: bool = True,
     ):
         self._dense_query_fn = dense_query_fn

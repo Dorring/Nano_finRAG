@@ -172,6 +172,25 @@ def test_search_rejects_non_string_and_blank_queries(tmp_path):
     assert retriever.search("   ", user_id=1) == []
 
 
+def test_search_expansion_terms_are_disjunctive_not_mandatory(tmp_path):
+    retriever = SqliteBM25Retriever(db_path=str(tmp_path / "bm25.db"))
+    retriever.add_chunks([
+        _chunk("r.pdf::revenue", content="platform revenue was reported"),
+        _chunk("r.pdf::period", content="2025 annual disclosure"),
+    ], user_id=1)
+
+    results = retriever.search(
+        "platform revenue 2025 unrelated expansion token",
+        user_id=1,
+        k=10,
+    )
+
+    assert {row["doc_id"] for row in results} == {
+        "user_1_r.pdf::revenue",
+        "user_1_r.pdf::period",
+    }
+
+
 
 def test_add_chunks_ignores_empty_and_invalid_batches(tmp_path):
     retriever = SqliteBM25Retriever(db_path=str(tmp_path / "bm25.db"))
