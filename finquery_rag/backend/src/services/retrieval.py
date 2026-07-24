@@ -29,6 +29,7 @@ class SqliteBM25Retriever:
 
     SCHEMA_VERSION = 2
     MAX_SEARCH_LIMIT = 100
+    MAX_MATCH_TOKENS = 32
 
     def _normalize_limit(self, k: int) -> int:
         try:
@@ -92,9 +93,20 @@ class SqliteBM25Retriever:
             conn.commit()
 
     def _clean_query(self, query: str) -> str:
+        """Build a bounded, injection-safe disjunctive FTS5 query.
+
+        Query expansion adds useful related terms. Passing them to FTS5 as a
+        whitespace-separated expression makes them implicit AND terms, which
+        can discard relevant chunks that do not contain every expansion token.
+        Quoted OR terms retain BM25 ranking while treating expansion as recall
+        assistance rather than a mandatory filter.
+        """
         tokenized = " ".join(jieba.cut_for_search(query.lower()))
-        tokenized = re.sub(r'[^\w\s]', ' ', tokenized)
-        return tokenized.strip()
+        tokens = re.findall(r"\w+", tokenized, flags=re.UNICODE)
+        unique_tokens = list(dict.fromkeys(token for token in tokens if token))
+        return " OR ".join(
+            f'"{token}"' for token in unique_tokens[:self.MAX_MATCH_TOKENS]
+        )
 
     def _normalize_chunk(self, chunk, user_id: int):
         if not isinstance(chunk, dict):
