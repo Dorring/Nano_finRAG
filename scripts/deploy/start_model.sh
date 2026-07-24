@@ -53,7 +53,20 @@ if [[ "${MODEL_PORT}" -le 1024 ]]; then
     exit 1
 fi
 if ! port_is_free "${MODEL_PORT}"; then
-    echo "[model] Port ${MODEL_PORT} is already in use." >&2
+    # Port is in use — check if it's a healthy model service we can reuse.
+    __HEALTH_URL="http://${MODEL_HOST}:${MODEL_PORT}/health"
+    if wait_for_http_checked "${__HEALTH_URL}" 5 "" 2>/dev/null; then
+        echo "[model] Port ${MODEL_PORT} is in use by a healthy model service. Reusing it."
+        # Try to discover the PID via the port.
+        __DISCOVERED_PID="$(discover_pid_on_port "${MODEL_PORT}" 2>/dev/null || true)"
+        if [[ -n "${__DISCOVERED_PID}" ]]; then
+            echo "${__DISCOVERED_PID}" > "${PID_FILE}"
+            write_pid_meta "${PID_FILE}" "${__DISCOVERED_PID}" "chat_openai_compat" "${SESSION}"
+        fi
+        write_status "READY"
+        exit 0
+    fi
+    echo "[model] Port ${MODEL_PORT} is already in use and not a healthy model service." >&2
     write_status "FAILED"
     exit 1
 fi

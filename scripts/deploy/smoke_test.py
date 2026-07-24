@@ -280,20 +280,35 @@ def test_backend_calls_model(backend_url: str) -> TestResult:
 
 
 def test_frontend_reaches_backend(frontend_url: str, backend_port: str) -> TestResult:
-    """Test 5: frontend page loads and references backend API."""
+    """Test 5: frontend page loads and references backend API.
+
+    In Vite dev mode the HTML is minimal (no inlined API URL), so we also
+    fetch the ``/src/api.js`` module where ``VITE_API_URL`` is referenced.
+    """
     status, _, raw = http_request("GET", f"{frontend_url}/", accept_json=False)
     if status != 200 or not raw:
         return TestResult("frontend_reaches_backend", "fail", "frontend page not loaded")
-    # The Vite dev server bundles API URL into the page/scripts. Check for
-    # backend port or API path references without logging the full page text.
-    references_backend = (
-        backend_port in raw
-        or "/query" in raw
-        or "VITE_API_URL" in raw
-        or "/healthz" in raw
-    )
-    if references_backend:
+
+    def _references_backend(text: str) -> bool:
+        return (
+            backend_port in text
+            or "/query" in text
+            or "VITE_API_URL" in text
+            or "/healthz" in text
+        )
+
+    # 1) Check the HTML payload first (production build inlines the URL).
+    if _references_backend(raw):
         return TestResult("frontend_reaches_backend", "pass")
+
+    # 2) In Vite dev mode, fetch the api.js module where VITE_API_URL lives.
+    for module_path in ("/src/api.js", "/src/main.jsx"):
+        m_status, _, m_raw = http_request(
+            "GET", f"{frontend_url}{module_path}", accept_json=False
+        )
+        if m_status == 200 and m_raw and _references_backend(m_raw):
+            return TestResult("frontend_reaches_backend", "pass")
+
     return TestResult("frontend_reaches_backend", "fail", "no backend API reference found")
 
 

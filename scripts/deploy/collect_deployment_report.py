@@ -34,12 +34,16 @@ CONFIG_DIR = REPO_ROOT / "config" / "deployment"
 ENV_FILE_PRIMARY = CONFIG_DIR / "online.env"
 ENV_FILE_FALLBACK = CONFIG_DIR / "online.env.example"
 ARTIFACT_DIR = REPO_ROOT / "artifacts" / "deployment" / "phase7"
+RUNTIME_DIR = REPO_ROOT / "runtime" / "phase7"
 HEALTH_REPORT_PATH = ARTIFACT_DIR / "health-report.json"
 SMOKE_REPORT_PATH = ARTIFACT_DIR / "smoke-report.json"
 DEPLOYMENT_MANIFEST_PATH = ARTIFACT_DIR / "deployment-manifest.json"
 SERVICE_STATUS_REPORT_PATH = ARTIFACT_DIR / "service-status-report.json"
 PERFORMANCE_REPORT_PATH = ARTIFACT_DIR / "performance-report.json"
+LOGOUT_PERSISTENCE_REPORT_PATH = ARTIFACT_DIR / "logout-persistence-report.json"
+SSH_TUNNEL_REPORT_PATH = ARTIFACT_DIR / "ssh-tunnel-report.json"
 ACCEPTANCE_REPORT_PATH = ARTIFACT_DIR / "phase7-acceptance.json"
+TEST_RESULTS_PATH = RUNTIME_DIR / "test-results.json"
 HTTP_TIMEOUT_SECONDS = 10.0
 
 
@@ -567,6 +571,45 @@ def build_acceptance_report(
         perf_measurements = perf_report["measurements"]
     perf_resources = perf_report.get("resources", {}) if perf_report else {}
 
+    # Load logout-persistence report for criterion #30.
+    logout_report = load_json_safe(LOGOUT_PERSISTENCE_REPORT_PATH)
+    logout_persistent = (
+        logout_report is not None
+        and logout_report.get("logout_persistent") is True
+    )
+
+    # Load SSH tunnel report for criterion #31.
+    ssh_tunnel_report = load_json_safe(SSH_TUNNEL_REPORT_PATH)
+    ssh_tunnel_ok = (
+        ssh_tunnel_report is not None
+        and ssh_tunnel_report.get("tunnel_established") is True
+        and ssh_tunnel_report.get("frontend_accessible") is True
+    )
+
+    # Load test results for criteria #37-#39.
+    test_results = load_json_safe(TEST_RESULTS_PATH)
+    tests_pass = (
+        test_results is not None
+        and test_results.get("failed") == 0
+        and test_results.get("errors") == 0
+    )
+    tests_failed_zero = (
+        test_results is not None
+        and test_results.get("failed") == 0
+    )
+    tests_errors_zero = (
+        test_results is not None
+        and test_results.get("errors") == 0
+    )
+
+    # PR created: check environment variable or artifact.
+    pr_created = (
+        env.get("PR_NUMBER")
+        or env.get("PR_CREATED")
+        or (ssh_tunnel_report is not None and ssh_tunnel_report.get("pr_created"))
+        or False
+    )
+
     def _perf_measurements_complete() -> bool:
         """True when every measured endpoint is reachable with p50/p95 data."""
         if not perf_measurements:
@@ -700,10 +743,12 @@ def build_acceptance_report(
                    "Services recover after restart", _rr_acceptance),
         # 30. Logout persistence
         _criterion("logout_persistence",
-                   "Services survive SSH logout", "pending"),
+                   "Services survive SSH logout",
+                   "passed" if logout_persistent else "pending"),
         # 31. SSH tunnel access
         _criterion("ssh_tunnel_access",
-                   "SSH tunnel access works", "pending"),
+                   "SSH tunnel access works",
+                   "passed" if ssh_tunnel_ok else "pending"),
         # 32. Performance report
         _criterion("performance_report",
                    "Performance report complete with real measurements",
@@ -724,16 +769,20 @@ def build_acceptance_report(
                    "Deployment documentation complete", "passed"),
         # 37. Full tests pass
         _criterion("full_tests_pass",
-                   "Full test suite passes", "pending"),
+                   "Full test suite passes",
+                   "passed" if tests_pass else "pending"),
         # 38. Failed=0
         _criterion("failed_zero",
-                   "pytest failed=0", "pending"),
+                   "pytest failed=0",
+                   "passed" if tests_failed_zero else "pending"),
         # 39. Errors=0
         _criterion("errors_zero",
-                   "pytest errors=0", "pending"),
+                   "pytest errors=0",
+                   "passed" if tests_errors_zero else "pending"),
         # 40. PR created
         _criterion("pr_created",
-                   "Pull request created", "pending"),
+                   "Pull request created",
+                   "passed" if pr_created else "pending"),
         # 41. No RAG algorithm change
         _criterion("no_rag_algorithm_change",
                    "No RAG algorithm changes", "passed"),

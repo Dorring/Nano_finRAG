@@ -87,6 +87,27 @@ port_is_free() {
     return 0
 }
 
+# Discover the PID of the process listening on a given TCP port.
+# Prints the PID (or empty string if not found). Best-effort across ss/netstat.
+# Usage: discover_pid_on_port <port>
+discover_pid_on_port() {
+    local port="$1"
+    local line pid
+    if command -v ss >/dev/null 2>&1; then
+        # ss -ltnp output: "LISTEN 0 2048 127.0.0.1:18001 0.0.0.0:* users:(("python",pid=682192,fd=56))"
+        line="$(ss -ltnp 2>/dev/null | grep -E "[:.]${port}\b" | head -n1 || true)"
+        pid="$(printf '%s' "${line}" | grep -oE 'pid=[0-9]+' | head -n1 | cut -d= -f2 || true)"
+        printf '%s' "${pid}"
+        return
+    elif command -v netstat >/dev/null 2>&1; then
+        line="$(netstat -ltnp 2>/dev/null | grep -E "[:.]${port}\b" | head -n1 || true)"
+        pid="$(printf '%s' "${line}" | grep -oE '[0-9]+/' | head -n1 | tr -d '/' || true)"
+        printf '%s' "${pid}"
+        return
+    fi
+    printf ''
+}
+
 # ---------------------------------------------------------------------------
 # PID ownership verification (prevents killing a reused/unrelated PID)
 # ---------------------------------------------------------------------------
