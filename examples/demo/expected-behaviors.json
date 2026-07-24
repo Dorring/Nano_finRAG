@@ -1,0 +1,14 @@
+{
+  "document_qa": {
+    "expected": "answer",
+    "requirements": ["source_citation", "page_number"]
+  },
+  "calculation": {
+    "expected": "calculation",
+    "requirements": ["operand_binding", "formula_display", "result_with_unit"]
+  },
+  "not_answerable": {
+    "expected": "safe_refusal",
+    "requirements": ["NOT_ANSWERABLE or safe fallback"]
+  }
+}

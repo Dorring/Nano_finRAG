@@ -1,0 +1,14 @@
+[
+  {
+    "type": "document_qa",
+    "question": "What was the reported revenue in 2025?"
+  },
+  {
+    "type": "calculation",
+    "question": "Calculate the revenue growth from 2024 to 2025."
+  },
+  {
+    "type": "not_answerable",
+    "question": "What was the company's share price at year end?"
+  }
+]
