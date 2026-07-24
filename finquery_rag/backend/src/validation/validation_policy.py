@@ -102,7 +102,11 @@ _DOCUMENT_QA = ValidationPolicy(
     validate_numeric_claims=True,
     validate_units=True,
     validate_periods=True,
-    strict_numeric_grounding=True,
+    # A retrieved-document answer can contain several independent claims.
+    # Treat an ungrounded numeric claim as repairable so the response layer
+    # can remove only that claim and keep the evidence-backed remainder.
+    # Calculation and comparison intents remain fail-closed above.
+    strict_numeric_grounding=False,
     unsupported_numeric_action=ACTION_BLOCK,
     missing_citation_action=ACTION_WARN,
 )

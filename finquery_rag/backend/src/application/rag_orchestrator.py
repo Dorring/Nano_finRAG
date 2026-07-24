@@ -282,8 +282,34 @@ class RAGOrchestrator:
                 if calculation_result.status is not CalculationStatus.NOT_APPLICABLE:
                     calculation_answer = render_calculation_result(calculation_result)
 
-            # Build evidence for validation (used by all sub-paths).
-            evidence_for_validation = tuple(EvidenceItem.from_chunk(c) for c in chunks)
+            # Build validation evidence from the exact context representation
+            # (parent-expanded and token-truncated), not stale child chunks.
+            context_evidence = getattr(
+                self._context_builder, "last_context_evidence", None
+            )
+            if not isinstance(context_evidence, list):
+                # Compatibility for lightweight test doubles and alternate
+                # context builders that do not expose the new contract yet.
+                context_evidence = chunks
+            evidence_for_validation = tuple(
+                EvidenceItem.from_chunk(c) for c in context_evidence
+            )
+
+            # Extractors operate only on retrieved context and may provide a
+            # generic query-matched-evidence signal to answerability.  This
+            # does not bypass post-generation grounding validation.
+            deterministic_context_answer = None
+            if (
+                calculation_result is None
+                or calculation_result.status is CalculationStatus.NOT_APPLICABLE
+            ):
+                deterministic_context_answer = (
+                    self._deterministic_extractor.answer_deterministic_query_from_context(
+                        question,
+                        context,
+                        sources,
+                    )
+                )
 
             # Phase 4 hotfix: Run answerability for ALL paths (including
             # calculation EXECUTED/BLOCKED/FAILED).
@@ -296,6 +322,7 @@ class RAGOrchestrator:
                     sufficiency_result=sufficiency,
                     calculation_result=calculation_result,
                     requested_documents=tuple(doc_names),
+                    has_query_matched_evidence=bool(deterministic_context_answer),
                 )
                 if answerability_result.status is AnswerabilityStatus.NOT_ANSWERABLE:
                     answer = (
@@ -433,11 +460,6 @@ class RAGOrchestrator:
                     }
                 else:
                     # Non-calculation: deterministic context or LLM.
-                    deterministic_context_answer = self._deterministic_extractor.answer_deterministic_query_from_context(
-                        question,
-                        context,
-                        sources,
-                    )
                     if deterministic_context_answer:
                         answer = deterministic_context_answer["answer"]
                         is_sufficient = True

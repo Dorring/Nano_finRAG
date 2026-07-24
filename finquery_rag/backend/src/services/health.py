@@ -172,7 +172,7 @@ def _sqlite_check(path: str, *, required_tables: tuple[str, ...] = ()) -> dict[s
 def collect_config_snapshot() -> dict[str, Any]:
     """Return non-secret runtime configuration relevant to RAG operations."""
     candidate_multiplier, candidate_error = _safe_int(
-        os.getenv("RAG_CANDIDATE_MULTIPLIER"), 2
+        os.getenv("RAG_CANDIDATE_MULTIPLIER"), 4
     )
     session_ttl, ttl_error = _safe_int(os.getenv("SESSION_TTL_SECONDS"), 0)
 

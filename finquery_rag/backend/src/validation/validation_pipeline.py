@@ -68,6 +68,7 @@ class GroundedValidationPipeline:
         sufficiency_result: SufficiencyResult,
         calculation_result: CalculationResult | None,
         requested_documents: tuple[str, ...],
+        has_query_matched_evidence: bool = False,
     ) -> AnswerabilityResult:
         """Run the pre-generation answerability gate.
 
@@ -86,6 +87,7 @@ class GroundedValidationPipeline:
             sufficiency_result=sufficiency_result,
             calculation_result=calculation_result,
             requested_documents=requested_documents,
+            has_query_matched_evidence=has_query_matched_evidence,
         )
 
     # -----------------------------------------------------------------

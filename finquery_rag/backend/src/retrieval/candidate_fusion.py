@@ -7,12 +7,21 @@ Extracted from RAGEngine to isolate score normalization and deduplication.
 
 
 def normalize_scores(chunks: list) -> list:
-    """Unify score fields: copy RRF fused_score into score."""
+    """Unify score fields while preserving their provenance.
+
+    RRF scores are rank-derived and live on a much smaller numeric scale than
+    dense similarity scores.  Callers must not infer the scale from the score
+    value itself: a valid single-retriever RRF hit is commonly about 0.016.
+    """
     for chunk in chunks:
         if "fused_score" in chunk:
             chunk["score"] = chunk["fused_score"]
+            chunk["score_kind"] = "rrf"
         elif "score" not in chunk:
             chunk["score"] = 0
+            chunk.setdefault("score_kind", "unknown")
+        else:
+            chunk.setdefault("score_kind", "dense")
     return chunks
 
 
@@ -172,6 +181,6 @@ def rrf(ranked_lists, k: int = 60):
     )
 
     return [
-        {**doc_map[doc_id], "fused_score": score}
+        {**doc_map[doc_id], "fused_score": score, "score_kind": "rrf"}
         for doc_id, score in sorted_ids
     ]

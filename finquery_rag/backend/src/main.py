@@ -117,7 +117,7 @@ def get_rag_engine():
             reranker_name=get_reranker_name(),
             # Model path comes from os.getenv("RAG_RERANKER_MODEL") via retrieval_config.
             reranker_model=get_reranker_model(),
-            retrieval_candidate_multiplier=int(os.getenv("RAG_CANDIDATE_MULTIPLIER", "2")),
+            retrieval_candidate_multiplier=int(os.getenv("RAG_CANDIDATE_MULTIPLIER", "4")),
         )
     return rag_engine
 

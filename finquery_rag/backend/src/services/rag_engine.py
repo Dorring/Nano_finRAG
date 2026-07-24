@@ -67,7 +67,7 @@ class RAGEngine:
                  trace_db_path: str | None = None,
                  reranker_name: str | None = None,
                  reranker_model: str | None = None,
-                 retrieval_candidate_multiplier: int = 2,
+                 retrieval_candidate_multiplier: int = 4,
                  enable_calculation_pipeline: bool = True,
                  enable_validation_pipeline: bool = True):
         """
@@ -108,7 +108,7 @@ class RAGEngine:
         self.bm25_retriever = SqliteBM25Retriever(db_path=bm25_db_path)
         self.trace_logger = TraceLogger(db_path=trace_db_path, sample_rate=1.0, redact_content=True)
         self.min_score_threshold = 0.0  # chunks below this score are discarded
-        self.rrf_sufficiency_threshold = float(os.getenv("RAG_RRF_SUFFICIENCY_THRESHOLD", "0.025"))
+        self.rrf_sufficiency_threshold = float(os.getenv("RAG_RRF_SUFFICIENCY_THRESHOLD", "0.008"))
         self.dense_sufficiency_threshold = float(os.getenv("RAG_DENSE_SUFFICIENCY_THRESHOLD", "0.15"))
         self.numeric_rrf_floor = float(os.getenv("RAG_NUMERIC_RRF_FLOOR", "0.008"))
         self.numeric_dense_floor = float(os.getenv("RAG_NUMERIC_DENSE_FLOOR", "0.08"))

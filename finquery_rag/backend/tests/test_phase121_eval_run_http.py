@@ -46,6 +46,9 @@ def test_run_http_case_posts_query_payload_and_normalizes_prediction(monkeypatch
             "context_sufficient": True,
             "intent": "document_qa",
             "trace_id": "abc123",
+            "answerability": {"status": "answerable"},
+            "validation": {"status": "passed"},
+            "repair": {"fallback_used": False},
         })
 
     monkeypatch.setattr(eval_runner.urllib.request, "urlopen", fake_urlopen)
@@ -82,6 +85,9 @@ def test_run_http_case_posts_query_payload_and_normalizes_prediction(monkeypatch
     ]
     assert prediction["retrieval_debug"] == {"candidate_count": 16, "returned_count": 8}
     assert prediction["trace_id"] == "abc123"
+    assert prediction["answerability"] == {"status": "answerable"}
+    assert prediction["validation"] == {"status": "passed"}
+    assert prediction["repair"] == {"fallback_used": False}
 
 
 def test_run_jsonl_cases_http_writes_predictions(tmp_path, monkeypatch):

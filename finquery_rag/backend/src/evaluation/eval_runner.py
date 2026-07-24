@@ -51,6 +51,12 @@ async def run_case(
         "trace_id": result.get("trace_id"),
         "latency_ms": latency_ms,
     }
+    # Keep the public validation verdict in offline predictions.  This makes
+    # safe refusals distinguishable from retrieval/model regressions without
+    # exposing trace-only internals or changing score semantics.
+    for field in ("answerability", "validation", "repair"):
+        if field in result:
+            prediction[field] = result.get(field)
     if "rewritten_question" in result:
         prediction["rewritten_question"] = result.get("rewritten_question")
     return prediction
@@ -240,6 +246,11 @@ def _prediction_from_result(
         "trace_id": result.get("trace_id"),
         "latency_ms": latency_ms,
     }
+    # Keep the public validation verdict in HTTP-backed predictions too.  The
+    # in-process and online runners must expose equivalent diagnostics.
+    for field in ("answerability", "validation", "repair"):
+        if field in result:
+            prediction[field] = result.get(field)
     if "rewritten_question" in result:
         prediction["rewritten_question"] = result.get("rewritten_question")
     if "error" in result:
