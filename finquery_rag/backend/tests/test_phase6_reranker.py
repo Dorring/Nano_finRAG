@@ -115,6 +115,19 @@ def test_heuristic_reranker_adds_metadata_and_reorders_by_query_overlap():
     assert result[0]["rerank_score"] > result[1]["rerank_score"]
 
 
+def test_heuristic_reranker_does_not_penalize_parent_expansion_length():
+    long_relevant_parent = (
+        "Platform revenue for 2025 was reported in the operating results. "
+        + "supporting disclosure " * 400
+    )
+    chunks = [
+        chunk("short-but-weak", "revenue was discussed", 0.03),
+        chunk("expanded-parent", long_relevant_parent, 0.02),
+    ]
+    result = HeuristicReranker().rerank("What was platform revenue in 2025?", chunks)
+    assert result[0]["doc_id"] == "expanded-parent"
+
+
 def test_rag_engine_default_reranker_disabled_preserves_order():
     engine, path = make_engine()
     try:
