@@ -211,7 +211,10 @@ def read_sse_stream(
 
     Returns ``(terminated_ok, collected_lines)``.
     """
-    headers: dict[str, str] = {"Accept": "text/event-stream"}
+    headers: dict[str, str] = {
+        "Accept": "text/event-stream",
+        "Content-Type": "application/json",
+    }
     if token:
         headers["Authorization"] = f"Bearer {token}"
     data = json.dumps(body).encode("utf-8")
@@ -223,7 +226,15 @@ def read_sse_stream(
                 line = raw_line.decode("utf-8", errors="replace").rstrip("\r\n")
                 if line:
                     collected.append(line)
-    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError):
+    except urllib.error.HTTPError as exc:
+        # 422/401/etc: capture response body for diagnostics.
+        try:
+            payload = exc.read().decode("utf-8", errors="replace").strip()
+            if payload:
+                collected.append(f"HTTP_{exc.code}: {payload[:200]}")
+        except Exception:
+            pass
+    except (urllib.error.URLError, TimeoutError, OSError):
         pass
     return _stream_terminated(collected), collected
 
