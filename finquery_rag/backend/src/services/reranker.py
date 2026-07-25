@@ -49,16 +49,20 @@ class HeuristicReranker:
         if not chunks:
             return []
 
-        query_terms = _tokenize(query)
+        query_terms = _informative_terms(_tokenize(query))
         scored = []
         for index, chunk in enumerate(chunks):
-            original_score = _safe_float(chunk.get("score", 0.0))
-            lexical_score = _lexical_overlap(query_terms, chunk.get("content", ""))
+            item = _select_table_evidence(query_terms, chunk)
+            original_score = _safe_float(item.get("score", 0.0))
+            lexical_score = _lexical_overlap(query_terms, item.get("content", ""))
+            table_bonus = _safe_float(
+                (item.get("metadata") or {}).get("table_evidence_match_ratio", 0.0)
+            ) * 0.08
             rerank_score = (
                 self.original_score_weight * original_score
                 + self.lexical_weight * lexical_score
+                + table_bonus
             )
-            item = dict(chunk)
             item["rerank_score"] = rerank_score
             item["reranker"] = self.name
             scored.append((rerank_score, original_score, -index, item))
@@ -147,6 +151,83 @@ def _tokenize(text: str) -> set[str]:
         for token in re.findall(r"[A-Za-z0-9_]+|[\u4e00-\u9fff]", text or "")
         if token.strip()
     }
+
+
+_STOPWORDS = {
+    "a", "an", "and", "are", "as", "at", "by", "did", "do", "does", "for",
+    "from", "how", "in", "is", "of", "on", "or", "the", "to", "was", "were",
+    "what", "when", "where", "which", "who", "with", "year",
+}
+
+
+def _informative_terms(terms: set[str]) -> set[str]:
+    """Remove query glue words so table metric labels drive row selection."""
+    filtered = {
+        term for term in terms
+        if term not in _STOPWORDS and (len(term) > 1 or 0x4e00 <= ord(term) <= 0x9fff)
+    }
+    return filtered or terms
+
+
+def _select_table_evidence(query_terms: set[str], chunk: dict) -> dict:
+    """Return the best matching row-sized window from a table chunk.
+
+    The vector store keeps table chunks as one document. Passing that entire
+    blob to a lexical reranker and a numeric extractor dilutes metric labels
+    with unrelated cells. This function is runtime-only: it preserves the
+    original doc_id and source metadata while replacing only the evidence text
+    passed downstream.
+    """
+    metadata = chunk.get("metadata") or {}
+    if metadata.get("type") != "table":
+        return dict(chunk)
+
+    lines = [line.strip() for line in str(chunk.get("content") or "").splitlines() if line.strip()]
+    if not lines or not query_terms:
+        return dict(chunk)
+
+    best: tuple[float, int, str, float] | None = None
+    for index, line in enumerate(lines):
+        evidence_lines = []
+        if index > 0 and not _has_numeric_value(lines[index - 1]):
+            evidence_lines.append(lines[index - 1])
+        evidence_lines.append(line)
+        if index + 1 < len(lines) and not _has_numeric_value(lines[index + 1]):
+            evidence_lines.append(lines[index + 1])
+        evidence = "\n".join(evidence_lines)
+        evidence_terms = _tokenize(evidence)
+        overlap = query_terms & evidence_terms
+        if not overlap or not _has_numeric_value(evidence):
+            continue
+
+        coverage = len(overlap) / len(query_terms)
+        anchor_terms = _tokenize(line)
+        anchor_overlap = len(query_terms & anchor_terms) / len(query_terms)
+        score = coverage + (0.35 * anchor_overlap)
+        if "|" in line:
+            score += 0.05
+        candidate = (score, -index, evidence, coverage)
+        if best is None or candidate > best:
+            best = candidate
+
+    if best is None:
+        return dict(chunk)
+
+    _, negative_index, evidence, coverage = best
+    item = dict(chunk)
+    item["content"] = evidence
+    selected_metadata = dict(metadata)
+    selected_metadata.update({
+        "table_evidence_extracted": True,
+        "table_evidence_row": -negative_index,
+        "table_evidence_match_ratio": round(coverage, 4),
+    })
+    item["metadata"] = selected_metadata
+    return item
+
+
+def _has_numeric_value(text: str) -> bool:
+    return bool(re.search(r"\d[\d,]*(?:\.\d+)?", text or ""))
 
 
 def _lexical_overlap(query_terms: set[str], content: str) -> float:

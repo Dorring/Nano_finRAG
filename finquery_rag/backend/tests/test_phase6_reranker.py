@@ -229,3 +229,39 @@ def test_cross_encoder_reranker_requires_model_or_path():
         assert "requires a model" in str(exc)
     else:
         raise AssertionError("expected ValueError")
+
+
+def test_heuristic_reranker_uses_matching_table_row_as_downstream_evidence():
+    table = {
+        "doc_id": "report::table_1",
+        "content": (
+            "Revenue summary\n"
+            "Product | Revenue | Growth\n"
+            "Platform | $181.0 million | 15%\n"
+            "Volume-based | $38.0 million | 70%\n"
+            "Services | $9.0 million | 4%"
+        ),
+        "metadata": {"type": "table", "page": 7},
+        "score": 0.1,
+    }
+
+    result = HeuristicReranker(
+        original_score_weight=0.0,
+        lexical_weight=1.0,
+    ).rerank("What was volume-based revenue and its growth rate?", [table])
+
+    selected = result[0]
+    assert selected["doc_id"] == "report::table_1"
+    assert "Volume-based | $38.0 million | 70%" in selected["content"]
+    assert "Platform | $181.0 million | 15%" not in selected["content"]
+    assert selected["metadata"]["table_evidence_extracted"] is True
+    assert selected["metadata"]["table_evidence_match_ratio"] > 0
+
+
+def test_heuristic_reranker_preserves_non_table_evidence_text():
+    source = chunk("text::1", "Volume-based revenue was $38 million.", 0.1)
+
+    selected = HeuristicReranker().rerank("volume-based revenue", [source])[0]
+
+    assert selected["content"] == source["content"]
+    assert "table_evidence_extracted" not in selected["metadata"]
