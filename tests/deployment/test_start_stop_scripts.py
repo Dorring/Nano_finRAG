@@ -138,6 +138,9 @@ def test_start_backend_passes_optional_mineru_settings():
         "MINERU_AUTO_ENABLED",
         "MINERU_AUTO_SAMPLE_PAGES",
         "MINERU_AUTO_MIN_TEXT_CHARS",
+        "MINERU_METHOD",
+        "MINERU_FORCE_CPU",
+        "MINERU_CUDA_VISIBLE_DEVICES",
     ):
         assert variable in text, (
             f"start_backend.sh does not pass {variable} into the backend session"

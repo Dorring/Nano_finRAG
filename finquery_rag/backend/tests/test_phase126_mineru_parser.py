@@ -54,3 +54,24 @@ def test_mineru_content_list_preserves_page_and_table_contract(monkeypatch):
     assert chunks[1]["metadata"]["type"] == "table"
     assert "$42" in chunks[1]["content"]
     assert all("confidential" not in chunk["content"] for chunk in chunks)
+
+
+def test_mineru_subprocess_can_scope_resources_and_method(monkeypatch, tmp_path):
+    captured = {}
+
+    def fake_run(args, **kwargs):
+        captured["args"] = args
+        captured["env"] = kwargs["env"]
+        return SimpleNamespace(returncode=0, stderr="", stdout="")
+
+    monkeypatch.setattr(mineru_parser.subprocess, "run", fake_run)
+    monkeypatch.setattr(mineru_parser, "_load_content_list", lambda _: [{"type": "text"}])
+    monkeypatch.setenv("MINERU_CUDA_VISIBLE_DEVICES", "2")
+    monkeypatch.setenv("MINERU_METHOD", "txt")
+
+    assert mineru_parser._run_mineru("annual.pdf", tmp_path) == [{"type": "text"}]
+    assert captured["env"]["CUDA_VISIBLE_DEVICES"] == "2"
+    assert captured["args"][-1] == "txt"
+
+    monkeypatch.setenv("MINERU_FORCE_CPU", "true")
+    mineru_parser._run_mineru("annual.pdf", tmp_path)

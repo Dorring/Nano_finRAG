@@ -25,6 +25,21 @@ class MinerUParseError(RuntimeError):
     """Raised when an explicitly selected MinerU parser cannot produce output."""
 
 
+def _mineru_subprocess_env() -> dict[str, str]:
+    """Return a child environment without changing backend GPU visibility."""
+    env = os.environ.copy()
+    force_cpu = (
+        os.getenv("MINERU_FORCE_CPU", "").strip().lower() in {"1", "true", "yes"}
+    )
+    if force_cpu:
+        env["CUDA_VISIBLE_DEVICES"] = ""
+    else:
+        visible_devices = os.getenv("MINERU_CUDA_VISIBLE_DEVICES", "").strip()
+        if visible_devices:
+            env["CUDA_VISIBLE_DEVICES"] = visible_devices
+    return env
+
+
 def _as_text(value) -> str:
     if isinstance(value, str):
         return value.strip()
@@ -73,13 +88,19 @@ def _run_mineru(pdf_path: str, output_dir: Path) -> list[dict]:
     if not command:
         raise MinerUParseError("MINERU_COMMAND is empty")
     backend = os.getenv("MINERU_BACKEND", "pipeline")
-    args = command + ["-p", pdf_path, "-o", str(output_dir), "-b", backend, "-m", "auto"]
+    method = os.getenv("MINERU_METHOD", "auto").strip().lower()
+    if method not in {"auto", "txt", "ocr"}:
+        raise MinerUParseError("MINERU_METHOD must be one of: auto, txt, ocr")
+    args = command + ["-p", pdf_path, "-o", str(output_dir), "-b", backend, "-m", method]
     api_url = os.getenv("MINERU_API_URL", "").strip()
     if api_url:
         args.extend(["--api-url", api_url])
     timeout = max(1, int(os.getenv("MINERU_TIMEOUT_SECONDS", "600")))
     try:
-        result = subprocess.run(args, capture_output=True, text=True, timeout=timeout, check=False)
+        result = subprocess.run(
+            args, capture_output=True, text=True, timeout=timeout,
+            check=False, env=_mineru_subprocess_env(),
+        )
     except FileNotFoundError as exc:
         raise MinerUParseError("MinerU CLI is unavailable; install/configure MINERU_COMMAND") from exc
     except subprocess.TimeoutExpired as exc:
