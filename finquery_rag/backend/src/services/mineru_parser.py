@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import os
+import html
 import re
 import shlex
 import subprocess
@@ -50,22 +51,95 @@ def _as_text(value) -> str:
     return ""
 
 
+def _normalize_table_fragment(value: str) -> str:
+    """Turn MinerU table HTML into readable row-oriented evidence."""
+    value = html.unescape(value or "")
+    value = re.sub(r"<\s*/\s*tr\s*>", "\n", value, flags=re.IGNORECASE)
+    value = re.sub(r"<\s*(?:td|th)\b[^>]*>", " | ", value, flags=re.IGNORECASE)
+    value = re.sub(r"<\s*/\s*(?:td|th)\s*>", " ", value, flags=re.IGNORECASE)
+    value = re.sub(r"<[^>]+>", " ", value)
+    rows = []
+    for row in value.splitlines():
+        row = re.sub(r"[\t\r\f\v ]+", " ", row).strip(" |")
+        if row:
+            rows.append(row)
+    return "\n".join(rows)
+
+
 def _block_text(block: dict) -> str:
+    """Extract searchable text without erasing table cell boundaries."""
     block_type = str(block.get("type", ""))
     if block_type == "table":
-        parts = [
-            _as_text(block.get("table_caption")),
-            _as_text(block.get("table_body")),
-            _as_text(block.get("table_footnote")),
-        ]
-    else:
-        parts = [_as_text(block.get("text")), _as_text(block.get("content"))]
-    text = "\n".join(part for part in parts if part)
-    # Preserve cell words and values while keeping HTML-only table output
-    # useful to lexical and dense retrieval.
-    text = re.sub(r"<[^>]+>", " ", text)
-    return re.sub(r"\\s+", " ", text).strip()
+        parts = []
+        for label, value in (
+            ("", block.get("table_caption")),
+            ("", block.get("table_body")),
+            ("Notes: ", block.get("table_footnote")),
+        ):
+            raw = _as_text(value)
+            if not raw:
+                continue
+            normalized = _normalize_table_fragment(raw)
+            if normalized:
+                parts.append(f"{label}{normalized}")
+        return "\n".join(parts).strip()
 
+    parts = [_as_text(block.get("text")), _as_text(block.get("content"))]
+    text = "\n".join(part for part in parts if part)
+    text = re.sub(r"[ \t\r\f\v]+", " ", text)
+    return re.sub(r"\n{3,}", "\n\n", text).strip()
+
+
+def _front_matter_title(records: list[dict]) -> str:
+    """Infer a cover title from early text blocks, without document-specific rules."""
+    lines = []
+    stop_markers = ("abstract", "keywords", "paper id", "anonymous")
+    for record in records:
+        if record["page"] != 1 or record["block_type"] != "text":
+            continue
+        candidate = re.sub(r"\s+", " ", record["text"]).strip()
+        if not candidate:
+            continue
+        if any(marker in candidate.lower() for marker in stop_markers):
+            break
+        if len(candidate) > 180:
+            break
+        lines.append(candidate)
+        if len(lines) >= 5:
+            break
+    title = " ".join(lines).strip()
+    return title if len(title) >= 8 else ""
+
+
+def _window_records(records: list[dict], *, max_chars: int) -> list[dict]:
+    """Merge adjacent text records within a page/section into useful evidence windows."""
+    windows: list[dict] = []
+    current: dict | None = None
+
+    def flush() -> None:
+        nonlocal current
+        if current and current["text"].strip():
+            windows.append(current)
+        current = None
+
+    for record in records:
+        if record["block_type"] == "table":
+            flush()
+            windows.append(record)
+            continue
+        compatible = (
+            current is not None
+            and current["page"] == record["page"]
+            and current["section_path"] == record["section_path"]
+        )
+        candidate = f'{current["text"]}\n{record["text"]}' if compatible else record["text"]
+        if not compatible or len(candidate) > max_chars:
+            flush()
+            current = dict(record)
+        else:
+            current["text"] = candidate
+    flush()
+    return windows
 
 def _load_content_list(output_dir: Path) -> list[dict]:
     candidates = sorted(
@@ -120,20 +194,19 @@ def process_pdf_with_mineru(
     hierarchy_metadata_fn,
     chunk_content_with_section_fn,
 ) -> tuple[list[dict], int]:
-    """Run optional MinerU parsing and emit the same chunk schema as native ingest."""
+    """Run MinerU and emit stable, section-aware evidence chunks."""
     doc_name = os.path.basename(pdf_path)
     with pymupdf.open(pdf_path) as pdf:
         page_count = len(pdf)
     with tempfile.TemporaryDirectory(prefix="finquery_mineru_") as output_root:
         blocks = _run_mineru(pdf_path, Path(output_root))
 
-    chunks: list[dict] = []
     headings: dict[int, str] = {}
-    chunk_idx = 0
     ignored_types = {"header", "footer", "page_number", "aside_text", "page_footnote"}
+    records: list[dict] = []
     for block in blocks:
-        block_type = str(block.get("type", "text"))
-        if block_type in ignored_types:
+        original_type = str(block.get("type", "text"))
+        if original_type in ignored_types:
             continue
         text = _block_text(block)
         if not text:
@@ -144,10 +217,40 @@ def process_pdf_with_mineru(
             page = 1
         page = min(max(page, 1), max(page_count, 1))
         level = block.get("text_level")
-        if block_type == "text" and isinstance(level, int) and level > 0:
+        if original_type == "text" and isinstance(level, int) and level > 0:
             headings[level] = text
             headings = {key: value for key, value in headings.items() if key <= level}
         section_path = " > ".join(headings[key] for key in sorted(headings))
+        records.append({
+            "page": page,
+            "block_type": "table" if original_type == "table" else "text",
+            "section_path": section_path,
+            "text": text,
+        })
+
+    chunks: list[dict] = []
+    title = _front_matter_title(records)
+    if title:
+        chunks.append({
+            "content": f"Title: {title}",
+            "metadata": {
+                "mineru_type": "front_matter",
+                "parser_backend": "mineru",
+                "type": "front_matter",
+                "subtype": "title",
+                "page": 1,
+                "source": pdf_path,
+                "doc_id": make_chunk_id(user_id, doc_name, "page_1::front_matter_title"),
+            },
+        })
+
+    chunk_idx = 0
+    table_numbers: dict[int, int] = {}
+    for record in _window_records(records, max_chars=max(1, long_chunk_threshold)):
+        page = record["page"]
+        block_type = record["block_type"]
+        section_path = record["section_path"]
+        text = record["text"]
         metadata = {"mineru_type": block_type, "parser_backend": "mineru"}
         hierarchy = hierarchy_metadata_fn(
             metadata,
@@ -160,10 +263,8 @@ def process_pdf_with_mineru(
         if section_path:
             hierarchy["section_path"] = section_path
             hierarchy["section_title"] = section_path.split(" > ")[-1]
-        # Avoid constructing a LangChain Document for an already-small
-        # MinerU block.  Besides avoiding needless work, this keeps the
-        # parser boundary independent of optional LangChain test doubles.
-        if len(text) > long_chunk_threshold:
+
+        if block_type == "text" and len(text) > long_chunk_threshold:
             split_contents = [
                 item.page_content
                 for item in recursive_splitter.split_documents(
@@ -172,8 +273,15 @@ def process_pdf_with_mineru(
             ]
         else:
             split_contents = [text]
+
         for sub_idx, split_content in enumerate(split_contents):
-            suffix = f"page_{page}::chunk_{chunk_idx}_{sub_idx}" if len(split_contents) > 1 else f"page_{page}::chunk_{chunk_idx}"
+            if block_type == "table":
+                table_numbers[page] = table_numbers.get(page, 0) + 1
+                suffix = f"page_{page}::table_{table_numbers[page]}"
+            elif len(split_contents) > 1:
+                suffix = f"page_{page}::chunk_{chunk_idx}_{sub_idx}"
+            else:
+                suffix = f"page_{page}::chunk_{chunk_idx}"
             chunks.append({
                 "content": chunk_content_with_section_fn(split_content, section_path),
                 "metadata": {
