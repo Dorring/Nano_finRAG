@@ -262,6 +262,16 @@ class TestNumericClaimValidator:
         issues = validator.validate(claims, evidence, _strict_policy())
         assert len(issues) == 0
 
+    def test_decimal_scale_conversion_grounded(self):
+        """A fractional million amount remains grounded after base-unit conversion."""
+        extractor = ClaimExtractor()
+        validator = NumericClaimValidator()
+        answer = "Cash was $42.2 million."
+        evidence = (_evidence("Cash and cash equivalents were $42.2 million."),)
+        claims = extractor.extract(answer)
+        issues = validator.validate(claims, evidence, _strict_policy())
+        assert issues == ()
+
     def test_public_message_does_not_leak_internals(self):
         """The public_message should not contain internal values or paths."""
         extractor = ClaimExtractor()

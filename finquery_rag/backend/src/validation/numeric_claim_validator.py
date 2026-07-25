@@ -243,29 +243,29 @@ class NumericClaimValidator:
 
     @staticmethod
     def _scale_representations(value: Decimal) -> tuple[str, ...]:
-        """Generate scale-suffixed representations of a value.
+        """Generate normalized textual representations at common financial scales.
 
-        E.g., 1000000 -> "1 million", "1M", "1.00 million"
+        Decimal amounts are stored in base units, so "$42.2 million" becomes
+        "42,200,000" during claim extraction. Preserve fractional scale
+        representations as well as whole-unit abbreviations before matching
+        against source evidence.
         """
         reps: list[str] = []
-        abs_value = abs(value)
-
-        if abs_value >= Decimal("1000000000") and abs_value % Decimal("1000000000") == 0:
-            scaled = value / Decimal("1000000000")
-            reps.append(f"{scaled} billion")
-            reps.append(f"{scaled}B")
-            reps.append(f"{scaled:.2f} billion")
-        elif abs_value >= Decimal("1000000") and abs_value % Decimal("1000000") == 0:
-            scaled = value / Decimal("1000000")
-            reps.append(f"{scaled} million")
-            reps.append(f"{scaled}M")
-            reps.append(f"{scaled:.2f} million")
-        elif abs_value >= Decimal("1000") and abs_value % Decimal("1000") == 0:
-            scaled = value / Decimal("1000")
-            reps.append(f"{scaled} thousand")
-            reps.append(f"{scaled}K")
-            reps.append(f"{scaled:.2f} thousand")
-
+        absolute = abs(value)
+        for divisor, label, suffix in (
+            (Decimal("1000000000"), "billion", "B"),
+            (Decimal("1000000"), "million", "M"),
+            (Decimal("1000"), "thousand", "K"),
+        ):
+            if absolute < divisor:
+                continue
+            scaled = value / divisor
+            compact = format(scaled.normalize(), "f")
+            reps.extend((
+                f"{compact} {label}",
+                f"{scaled:.2f} {label}",
+                f"{compact}{suffix}",
+            ))
         return tuple(reps)
 
     @staticmethod
