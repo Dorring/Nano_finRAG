@@ -21,10 +21,14 @@ PARSER_BACKEND=native
 # Explicit fallback for a known difficult document. MinerU must already be
 # installed or reachable as a separately managed service.
 PARSER_BACKEND=mineru
-MINERU_COMMAND=mineru
-MINERU_API_URL=http://127.0.0.1:8001
+MINERU_COMMAND=/absolute/path/to/mineru
 MINERU_BACKEND=pipeline
 MINERU_TIMEOUT_SECONDS=600
+MINERU_METHOD=auto
+# Scope the parser subprocess without changing model-service visibility.
+MINERU_CUDA_VISIBLE_DEVICES=2
+# Or force CPU when no GPU has been allocated for document parsing.
+# MINERU_FORCE_CPU=true
 ```
 
 `PARSER_BACKEND=auto` is deliberately conservative. It remains native unless
