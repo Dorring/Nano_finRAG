@@ -124,3 +124,21 @@ def test_restart_all_calls_stop_then_start():
     assert start_pos != -1, "restart_all.sh does not call start_all.sh"
     assert stop_pos < start_pos, \
         "restart_all.sh must call stop_all.sh before start_all.sh"
+
+
+def test_start_backend_passes_optional_mineru_settings():
+    """Optional parser configuration must survive the tmux launcher boundary."""
+    text = _read_script("start_backend.sh")
+    for variable in (
+        "PARSER_BACKEND",
+        "MINERU_COMMAND",
+        "MINERU_API_URL",
+        "MINERU_BACKEND",
+        "MINERU_TIMEOUT_SECONDS",
+        "MINERU_AUTO_ENABLED",
+        "MINERU_AUTO_SAMPLE_PAGES",
+        "MINERU_AUTO_MIN_TEXT_CHARS",
+    ):
+        assert variable in text, (
+            f"start_backend.sh does not pass {variable} into the backend session"
+        )
