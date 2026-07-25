@@ -50,15 +50,16 @@ class HeuristicReranker:
             return []
 
         query_terms = _tokenize(query)
+        table_query_terms = _informative_terms(query_terms)
         scored = []
         for index, chunk in enumerate(chunks):
-            original_score = _safe_float(chunk.get("score", 0.0))
-            lexical_score = _lexical_overlap(query_terms, chunk.get("content", ""))
+            item = _annotate_table_evidence(table_query_terms, chunk)
+            original_score = _safe_float(item.get("score", 0.0))
+            lexical_score = _lexical_overlap(query_terms, item.get("content", ""))
             rerank_score = (
                 self.original_score_weight * original_score
                 + self.lexical_weight * lexical_score
             )
-            item = dict(chunk)
             item["rerank_score"] = rerank_score
             item["reranker"] = self.name
             scored.append((rerank_score, original_score, -index, item))
@@ -147,6 +148,67 @@ def _tokenize(text: str) -> set[str]:
         for token in re.findall(r"[A-Za-z0-9_]+|[\u4e00-\u9fff]", text or "")
         if token.strip()
     }
+
+
+_STOPWORDS = {
+    "a", "an", "and", "are", "as", "at", "by", "did", "do", "does", "for",
+    "from", "how", "in", "is", "of", "on", "or", "the", "to", "was", "were",
+    "what", "when", "where", "which", "who", "with", "year",
+}
+
+
+def _informative_terms(terms: set[str]) -> set[str]:
+    """Remove query glue words so table metric labels drive row selection."""
+    filtered = {
+        term for term in terms
+        if term not in _STOPWORDS and (len(term) > 1 or 0x4e00 <= ord(term) <= 0x9fff)
+    }
+    return filtered or terms
+
+
+def _annotate_table_evidence(query_terms: set[str], chunk: dict) -> dict:
+    """Attach a matching numeric table row without changing chunk content."""
+    metadata = chunk.get("metadata") or {}
+    item = dict(chunk)
+    item["metadata"] = dict(metadata)
+    if metadata.get("type") != "table" or not query_terms:
+        return item
+
+    lines = [line.strip() for line in str(chunk.get("content") or "").splitlines() if line.strip()]
+    best: tuple[float, int, str, float] | None = None
+    for index, line in enumerate(lines):
+        if not _has_numeric_value(line):
+            continue
+        evidence_lines = []
+        if index > 0 and not _has_numeric_value(lines[index - 1]):
+            evidence_lines.append(lines[index - 1])
+        evidence_lines.append(line)
+        if index + 1 < len(lines) and not _has_numeric_value(lines[index + 1]):
+            evidence_lines.append(lines[index + 1])
+        evidence = "\n".join(evidence_lines)
+        overlap = query_terms & _tokenize(evidence)
+        if not overlap:
+            continue
+        coverage = len(overlap) / len(query_terms)
+        anchor_overlap = len(query_terms & _tokenize(line)) / len(query_terms)
+        score = coverage + (0.35 * anchor_overlap) + (0.05 if "|" in line else 0.0)
+        candidate = (score, -index, evidence, coverage)
+        if best is None or candidate > best:
+            best = candidate
+
+    if best is None:
+        return item
+    _, negative_index, evidence, coverage = best
+    item["metadata"].update({
+        "table_evidence": evidence,
+        "table_evidence_row": -negative_index,
+        "table_evidence_match_ratio": round(coverage, 4),
+    })
+    return item
+
+
+def _has_numeric_value(text: str) -> bool:
+    return bool(re.search(r"\d[\d,]*(?:\.\d+)?", text or ""))
 
 
 def _lexical_overlap(query_terms: set[str], content: str) -> float:

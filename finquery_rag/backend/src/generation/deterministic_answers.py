@@ -164,7 +164,11 @@ class DeterministicAnswerExtractor:
         for chunk in chunks:
             metadata = chunk.get("metadata") or {}
             source = self._chunk_source_label(chunk)
-            for text in self._numeric_windows(chunk.get("content", "")):
+            table_evidence = metadata.get("table_evidence")
+            for text in self._numeric_windows(
+                chunk.get("content", ""),
+                extra_windows=[table_evidence] if table_evidence else None,
+            ):
                 numeric_candidates = self._numeric_candidate_records(query, text)
                 values = self._unique_numeric_values(numeric_candidates)
                 if not values:
@@ -290,24 +294,36 @@ class DeterministicAnswerExtractor:
         return filename or None
 
     @staticmethod
-    def _numeric_windows(content: str) -> list[str]:
-        """Split raw chunk text into compact, table-friendly evidence rows."""
+    def _numeric_windows(
+        content: str,
+        *,
+        extra_windows: list[str] | None = None,
+    ) -> list[str]:
+        """Split raw chunks into compact, table-friendly evidence rows."""
         windows = []
-        for raw_line in (content or "").splitlines():
-            line = re.sub(r"\s+", " ", raw_line).strip(" |-\t")
-            # A chunk beginning with punctuation and a digit is usually a
-            # split decimal/amount (for example ``.9 million`` after ``$1``
-            # was cut into the preceding chunk).  It is not standalone
-            # financial evidence and must not become an answer candidate.
-            if re.match(r"^[.,;)]\s*\d", line):
-                continue
-            if line and re.search(r"\d", line):
+        seen = set()
+
+        def add_window(raw_text: str) -> None:
+            line = re.sub(r"\s+", " ", raw_text or "").strip(" |-\t")
+            if not line or re.match(r"^[.,;)]\s*\d", line):
+                return
+            if not re.search(r"\d", line):
+                return
+            key = line.lower()
+            if key not in seen:
+                seen.add(key)
                 windows.append(line[:700])
+
+        for extra in extra_windows or []:
+            add_window(extra)
+        for raw_line in (content or "").splitlines():
+            add_window(raw_line)
         if not windows:
             compact = re.sub(r"\s+", " ", content or "").strip()
-            windows = [sentence.strip() for sentence in re.split(r"(?<=[.;])\s+", compact)
-                       if sentence.strip() and re.search(r"\d", sentence)]
+            for sentence in re.split(r"(?<=[.;])\s+", compact):
+                add_window(sentence)
         return windows
+
 
     @staticmethod
     def _raw_numeric_evidence_score(

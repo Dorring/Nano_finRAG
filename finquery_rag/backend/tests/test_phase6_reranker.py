@@ -229,3 +229,32 @@ def test_cross_encoder_reranker_requires_model_or_path():
         assert "requires a model" in str(exc)
     else:
         raise AssertionError("expected ValueError")
+
+
+def test_table_evidence_annotation_preserves_chunk_content_and_guides_numeric_extraction():
+    from generation.deterministic_answers import DeterministicAnswerExtractor
+
+    table = {
+        "doc_id": "report::table_1",
+        "content": (
+            "Revenue summary\n"
+            "Product | Revenue | Growth\n"
+            "Platform | $181.0 million | 15%\n"
+            "Volume-based | $38.0 million | 70%"
+        ),
+        "metadata": {"type": "table", "page": 7, "doc_name": "report.pdf"},
+        "score": 0.1,
+    }
+    selected = HeuristicReranker().rerank(
+        "What was volume-based revenue and its growth rate?", [table],
+    )[0]
+
+    assert selected["content"] == table["content"]
+    assert "Volume-based | $38.0 million | 70%" in selected["metadata"]["table_evidence"]
+
+    answer = DeterministicAnswerExtractor().answer_numeric_query_from_chunks(
+        "What was volume-based revenue and its growth rate?", [selected],
+    )
+    assert answer is not None
+    assert "$38 million" in answer["answer"]
+    assert "70%" in answer["answer"]
