@@ -76,3 +76,38 @@ def test_numeric_extraction_gate_is_not_metric_allow_listed():
         "How much did Metric B contribute?",
         [{"content": "Metric B contributed 12 units."}],
     ) is True
+
+
+def test_raw_child_selector_prefers_metric_amount_over_nearby_date():
+    extractor = DeterministicAnswerExtractor()
+    result = extractor.answer_numeric_query_from_chunks(
+        "How much cash and cash equivalents did the company have as of December 31, 2025?",
+        [
+            _chunk(
+                "As of December 31, 2025, cash and cash equivalents were "
+                "$42.2 million, compared to $114.9 million as of December 31, 2024. "
+                "Cash and cash equivalents held by subsidiaries were $6.7 million "
+                "and $13.3 million, respectively."
+            ),
+        ],
+    )
+
+    assert result is not None
+    answer = result["answer"].split("[", 1)[0]
+    assert "$42.2 million" in answer
+    assert "31" not in answer
+    assert "2024" not in answer
+    assert "$13.3 million" not in answer
+
+
+def test_raw_child_selector_skips_table_note_before_metric_amount():
+    extractor = DeterministicAnswerExtractor()
+    result = extractor.answer_numeric_query_from_chunks(
+        "What were cash and cash equivalents at year end?",
+        [_chunk("Cash and cash equivalents | 3 | 143,540 | 206,031")],
+    )
+
+    assert result is not None
+    answer = result["answer"].split("[", 1)[0]
+    assert "143,540" in answer
+    assert "Answer: 3" not in answer
