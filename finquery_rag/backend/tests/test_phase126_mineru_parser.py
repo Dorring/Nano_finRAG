@@ -34,8 +34,14 @@ def test_mineru_content_list_preserves_page_and_table_contract(monkeypatch):
         mineru_parser,
         "_run_mineru",
         lambda *_: [
-            {"type": "text", "text": "Revenue discussion", "text_level": 1, "page_idx": 0},
-            {"type": "table", "table_caption": ["Revenue table"], "table_body": "<table><tr><td>$42</td></tr></table>", "page_idx": 2},
+            {"type": "text", "text": "Annual Revenue Report", "text_level": 1, "page_idx": 0},
+            {"type": "text", "text": "Revenue discussion", "page_idx": 0},
+            {
+                "type": "table",
+                "table_caption": ["Revenue table"],
+                "table_body": "<table><tr><th>Metric</th><th>Amount</th></tr><tr><td>Revenue</td><td>$42</td></tr></table>",
+                "page_idx": 2,
+            },
             {"type": "footer", "text": "confidential", "page_idx": 2},
         ],
     )
@@ -50,11 +56,41 @@ def test_mineru_content_list_preserves_page_and_table_contract(monkeypatch):
     )
 
     assert pages == 3
-    assert [chunk["metadata"]["page"] for chunk in chunks] == [1, 3]
-    assert chunks[1]["metadata"]["type"] == "table"
-    assert "$42" in chunks[1]["content"]
+    titles = [chunk for chunk in chunks if chunk["metadata"]["type"] == "front_matter"]
+    tables = [chunk for chunk in chunks if chunk["metadata"]["type"] == "table"]
+    assert titles[0]["metadata"]["subtype"] == "title"
+    assert "Annual Revenue Report" in titles[0]["content"]
+    assert len(tables) == 1
+    assert tables[0]["metadata"]["page"] == 3
+    assert "Revenue | $42" in tables[0]["content"]
     assert all("confidential" not in chunk["content"] for chunk in chunks)
 
+
+def test_mineru_groups_adjacent_text_into_one_parent_evidence_window(monkeypatch):
+    monkeypatch.setattr(mineru_parser.pymupdf, "open", lambda _: _Pdf())
+    monkeypatch.setattr(
+        mineru_parser,
+        "_run_mineru",
+        lambda *_: [
+            {"type": "text", "text": "Management discussion", "text_level": 1, "page_idx": 1},
+            {"type": "text", "text": "Revenue increased to $42 million.", "page_idx": 1},
+            {"type": "text", "text": "The increase was driven by subscriptions.", "page_idx": 1},
+        ],
+    )
+
+    chunks, _ = mineru_parser.process_pdf_with_mineru(
+        "annual.pdf",
+        user_id=7,
+        recursive_splitter=_Splitter(),
+        long_chunk_threshold=500,
+        hierarchy_metadata_fn=_hierarchy,
+        chunk_content_with_section_fn=lambda text, _: text,
+    )
+
+    text_chunks = [chunk for chunk in chunks if chunk["metadata"]["type"] == "text"]
+    assert len(text_chunks) == 1
+    assert "Revenue increased to $42 million." in text_chunks[0]["content"]
+    assert "subscriptions" in text_chunks[0]["metadata"]["parent_excerpt"]
 
 def test_mineru_subprocess_can_scope_resources_and_method(monkeypatch, tmp_path):
     captured = {}

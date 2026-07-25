@@ -31,7 +31,7 @@ MARKDOWN_SPLITTER = MarkdownHeaderTextSplitter(
 # 长章节二次切分阈值：从 1500 降至 500，适配短上下文
 LONG_CHUNK_THRESHOLD = 500
 NATIVE_PARSER_VERSION = "native-layout-v2"
-MINERU_PARSER_VERSION = "mineru-content-list-v1"
+MINERU_PARSER_VERSION = "mineru-content-list-v2"
 SPLITTER_VERSION = "page-boundary-section-v2"
 
 
