@@ -165,12 +165,17 @@ class DeterministicAnswerExtractor:
             metadata = chunk.get("metadata") or {}
             source = self._chunk_source_label(chunk)
             for text in self._numeric_windows(chunk.get("content", "")):
-                values = self._extract_numeric_phrases(query, text)
+                numeric_candidates = self._numeric_candidate_records(query, text)
+                values = self._unique_numeric_values(numeric_candidates)
                 if not values:
                     continue
                 score = self._raw_numeric_evidence_score(text, query, query_terms)
                 if score <= 0:
                     continue
+                # Rank at value granularity as well as row granularity.  A
+                # broad row can mention the metric twice; the direct metric
+                # value must beat a later qualified sub-scope in that row.
+                score += numeric_candidates[0][0]
                 candidates.append({
                     "score": score + float(chunk.get("rerank_score", chunk.get("score", 0)) or 0),
                     "text": text,
@@ -358,10 +363,13 @@ class DeterministicAnswerExtractor:
 
     @staticmethod
     def _numeric_value_limit(query: str) -> int:
+        """Return multiple values only for an explicitly multi-value request."""
         normalized = (query or "").lower()
-        return 2 if any(marker in normalized for marker in (
-            " and ", "compare", "components", "growth", "rate",
-        )) else 1
+        multi_value_markers = (
+            "compare", "components", "growth rate", "year-over-year",
+            "year over year", "both ", "two ",
+        )
+        return 2 if any(marker in normalized for marker in multi_value_markers) else 1
 
     @staticmethod
     def _select_raw_numeric_evidence(query: str, candidates: list[dict], *, limit: int) -> list[dict]:
@@ -513,24 +521,45 @@ class DeterministicAnswerExtractor:
 
     @classmethod
     def _extract_numeric_phrases(cls, query: str, text: str) -> list[str]:
+        return cls._unique_numeric_values(cls._numeric_candidate_records(query, text))
+
+    @classmethod
+    def _numeric_candidate_records(cls, query: str, text: str) -> list[tuple[float, int, str]]:
+        """Collect and rank financial-looking numbers from one evidence row."""
         pattern = re.compile(
             r"(?:\$|rs\.?\s*)?\d[\d,]*(?:\.\d+)?\s*"
             r"(?:%|per cent|million|thousand(?:s)?(?: of Swiss francs)?|Swiss francs|francs)?",
             re.IGNORECASE,
         )
-        values = []
-        seen = set()
+        normalized_query = (query or "").lower()
+        query_terms = cls._important_query_terms(query)
+        metric_phrases = cls._query_metric_phrases(query)
+        ranked: list[tuple[float, int, str]] = []
         for match in pattern.finditer(text or ""):
             if match.start() and (text or "")[match.start() - 1] == ".":
                 continue
             value = cls._normalize_numeric_phrase(match.group(0), query, text)
             if not value:
                 continue
-            # A year used only to scope the question is not an answer value.
-            if re.fullmatch(r"(?:19|20)\d{2}", value.strip()) and re.search(
-                rf"\b{re.escape(value.strip())}\b", query or ""
-            ):
-                continue
+            score = cls._numeric_candidate_score(
+                value=value,
+                text=text,
+                start=match.start(),
+                end=match.end(),
+                query_terms=query_terms,
+                metric_phrases=metric_phrases,
+                query=normalized_query,
+            )
+            if score > 0:
+                ranked.append((score, match.start(), value))
+        ranked.sort(key=lambda item: (-item[0], item[1]))
+        return ranked
+
+    @staticmethod
+    def _unique_numeric_values(ranked: list[tuple[float, int, str]]) -> list[str]:
+        values = []
+        seen = set()
+        for _, _, value in ranked:
             key = value.lower()
             if key in seen:
                 continue
@@ -539,6 +568,79 @@ class DeterministicAnswerExtractor:
             if len(values) >= 6:
                 break
         return values
+
+    @classmethod
+    def _numeric_candidate_score(
+        cls,
+        *,
+        value: str,
+        text: str,
+        start: int,
+        end: int,
+        query_terms: set[str],
+        metric_phrases: set[str],
+        query: str,
+    ) -> float:
+        """Score a value using units, local metric proximity and date penalties."""
+        lowered = (text or "").lower()
+        local_start = max(0, start - 100)
+        local_end = min(len(lowered), end + 100)
+        local = lowered[local_start:local_end]
+        raw_number = re.sub(r"[^0-9.]", "", value)
+        try:
+            numeric = float(raw_number.replace(",", ""))
+        except ValueError:
+            numeric = 0.0
+
+        score = 0.0
+        has_unit = bool(re.search(
+            r"\$|%|per cent|million|thousand|francs",
+            value,
+            flags=re.IGNORECASE,
+        ))
+        if has_unit:
+            score += 5.0
+        if numeric and numeric < 100 and not has_unit:
+            # A bare 1/2/3 is commonly a table note, footnote or day of month.
+            score -= 4.0
+        if 1900 <= numeric <= 2100 and not has_unit:
+            score -= 8.0
+
+        month_pattern = (
+            r"(?:january|february|march|april|may|june|july|august|"
+            r"september|october|november|december)\s+\d{1,2}"
+        )
+        if re.search(month_pattern, local, flags=re.IGNORECASE):
+            if numeric <= 31 or 1900 <= numeric <= 2100:
+                score -= 10.0
+
+        score += 2.0 * sum(1 for term in query_terms if term in local)
+        for phrase in metric_phrases:
+            for phrase_match in re.finditer(re.escape(phrase), lowered):
+                if phrase_match.end() <= start:
+                    distance = start - phrase_match.end()
+                    if distance <= 100:
+                        score += max(0.0, 7.0 - distance / 16.0)
+                        # Prefer the value directly attached to a metric over
+                        # a later qualified sub-scope in the same paragraph.
+                        between = lowered[phrase_match.end():start]
+                        modifiers = re.findall(r"[a-z]{3,}", between)
+                        score += max(0.0, 4.0 - 0.7 * len(modifiers))
+                else:
+                    distance = phrase_match.start() - end
+                    if 0 <= distance <= 100:
+                        score += max(0.0, 3.0 - distance / 32.0)
+
+        asks_for_rate = any(marker in query for marker in (
+            "growth", "rate", "percentage", "percent", "year-over-year", "year over year",
+        ))
+        if asks_for_rate and re.search(r"%|per cent", value, flags=re.IGNORECASE):
+            score += 5.0
+        elif asks_for_rate and has_unit:
+            # A growth query normally asks for the base metric as well as
+            # its rate; preserve that natural answer order.
+            score += 5.0
+        return score
 
     @classmethod
     def _summarize_numeric_values(cls, query: str, selected: list[dict], *, context: str | None = None) -> str | None:
