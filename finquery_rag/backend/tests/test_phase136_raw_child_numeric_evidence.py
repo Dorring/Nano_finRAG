@@ -147,3 +147,20 @@ def test_raw_child_selector_rejects_negated_qualifier():
     answer = result["answer"].split("[", 1)[0]
     assert "72%" in answer
     assert "76%" not in answer
+
+
+def test_raw_child_selector_ignores_structural_section_number():
+    extractor = DeterministicAnswerExtractor()
+    result = extractor.answer_numeric_query_from_chunks(
+        "What record revenue did the company report for 2025 and what was the year-over-year growth?",
+        [
+            _chunk("Section: Notes to Financial Statements > 2. REVENUE"),
+            _chunk("The company reported record revenue of $219 million, an increase of 22% year-over-year."),
+        ],
+    )
+
+    assert result is not None
+    answer = result["answer"].split("[", 1)[0]
+    assert "$219 million" in answer
+    assert "22%" in answer
+    assert "Answer: 2" not in answer
