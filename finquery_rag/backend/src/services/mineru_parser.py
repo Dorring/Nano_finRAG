@@ -185,6 +185,62 @@ def _run_mineru(pdf_path: str, output_dir: Path) -> list[dict]:
     return _load_content_list(output_dir)
 
 
+def append_table_row_children(chunks: list[dict]) -> list[dict]:
+    """Add independently retrievable numeric rows while retaining each parent table."""
+    expanded = list(chunks or [])
+    for parent in chunks or []:
+        metadata = parent.get("metadata") or {}
+        if metadata.get("type") != "table":
+            continue
+        parent_id = metadata.get("doc_id")
+        if not isinstance(parent_id, str) or not parent_id.strip():
+            continue
+
+        lines = [
+            line.strip()
+            for line in str(parent.get("content") or "").splitlines()
+            if line.strip()
+        ]
+        header_lines = []
+        for line in lines:
+            if _is_table_data_row(line):
+                break
+            if "|" in line and not _is_table_separator(line):
+                header_lines.append(line)
+        header = header_lines[-1] if header_lines else ""
+
+        row_count = 0
+        for line_index, line in enumerate(lines):
+            if not _is_table_data_row(line):
+                continue
+            row_count += 1
+            if row_count > 80:
+                break
+            content = "\n".join(part for part in (header, line) if part)
+            row_metadata = {
+                **metadata,
+                "type": "table_row",
+                "subtype": "numeric_row",
+                "parent_table_id": parent_id,
+                "parent_id": parent_id,
+                "table_row_index": line_index,
+                "table_row_child": True,
+                "doc_id": f"{parent_id}::row_{line_index}",
+            }
+            expanded.append({"content": content, "metadata": row_metadata})
+    return expanded
+
+
+def _is_table_separator(line: str) -> bool:
+    return bool(re.fullmatch(r"[|:\- ]+", line or ""))
+
+
+def _is_table_data_row(line: str) -> bool:
+    if "|" not in (line or "") or _is_table_separator(line):
+        return False
+    return bool(re.search(r"\d", line))
+
+
 def process_pdf_with_mineru(
     pdf_path: str,
     *,
@@ -294,6 +350,7 @@ def process_pdf_with_mineru(
                 },
             })
         chunk_idx += 1
+    chunks = append_table_row_children(chunks)
     if not chunks:
         raise MinerUParseError("MinerU returned no readable text or table blocks")
     return chunks, page_count

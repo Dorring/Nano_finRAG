@@ -111,3 +111,39 @@ def test_mineru_subprocess_can_scope_resources_and_method(monkeypatch, tmp_path)
 
     monkeypatch.setenv("MINERU_FORCE_CPU", "true")
     mineru_parser._run_mineru("annual.pdf", tmp_path)
+
+
+def test_mineru_table_rows_become_retrievable_children(monkeypatch):
+    monkeypatch.setattr(mineru_parser.pymupdf, "open", lambda _: _Pdf())
+    monkeypatch.setattr(
+        mineru_parser,
+        "_run_mineru",
+        lambda *_: [
+            {
+                "type": "table",
+                "table_body": (
+                    "<table><tr><th>Metric</th><th>Amount</th></tr>"
+                    "<tr><td>Subscription revenue</td><td>$42</td></tr>"
+                    "<tr><td>Service revenue</td><td>$9</td></tr></table>"
+                ),
+                "page_idx": 1,
+            },
+        ],
+    )
+
+    chunks, _ = mineru_parser.process_pdf_with_mineru(
+        "annual.pdf",
+        user_id=7,
+        recursive_splitter=_Splitter(),
+        long_chunk_threshold=500,
+        hierarchy_metadata_fn=_hierarchy,
+        chunk_content_with_section_fn=lambda text, _: text,
+    )
+
+    parents = [chunk for chunk in chunks if chunk["metadata"]["type"] == "table"]
+    rows = [chunk for chunk in chunks if chunk["metadata"]["type"] == "table_row"]
+    assert len(parents) == 1
+    assert len(rows) == 2
+    assert "Subscription revenue | $42" in rows[0]["content"]
+    assert rows[0]["metadata"]["parent_table_id"] == parents[0]["metadata"]["doc_id"]
+    assert rows[0]["metadata"]["doc_id"].startswith(parents[0]["metadata"]["doc_id"] + "::row_")

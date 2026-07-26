@@ -6,7 +6,11 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_text_splitters import MarkdownHeaderTextSplitter
 from .process_tables import enhance_table_with_context, extract_tables_with_camelot
 from .chunk_id import make_chunk_id
-from .mineru_parser import MinerUParseError, process_pdf_with_mineru
+from .mineru_parser import (
+    MinerUParseError,
+    append_table_row_children,
+    process_pdf_with_mineru,
+)
 
 # 1. 用于长章节内部二次切分的备选方案
 # 适配 2048 上下文：chunk_size 从 1000 降至 350，overlap 从 200 降至 50
@@ -584,10 +588,15 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
 
     doc.close()
 
+    chunks = append_table_row_children(chunks)
     table_count = sum(1 for c in chunks if c["metadata"]["type"] == "table")
-    text_count = len(chunks) - table_count
+    table_row_count = sum(1 for c in chunks if c["metadata"]["type"] == "table_row")
+    text_count = len(chunks) - table_count - table_row_count
 
-    print(f"✓ Extracted {len(chunks)} structured chunks: ({text_count} text, {table_count} tables)")
+    print(
+        f"Extracted {len(chunks)} structured chunks: "
+        f"({text_count} text, {table_count} tables, {table_row_count} table rows)"
+    )
     print(f"{'=' * 60}\n")
 
     return chunks, pages
