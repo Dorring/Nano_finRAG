@@ -222,9 +222,17 @@ def _direct_value_alignment(matching_phrases: set[tuple[str, str]], content: str
     verbs = r"(?:is|are|was|were|totaled|amounted(?:\s+to)?|stood(?:\s+at)?|equaled|reached|reported)"
     for phrase in matching_phrases:
         phrase_pattern = r"\b" + r"\W+".join(map(re.escape, phrase)) + r"\b"
-        direct_pattern = phrase_pattern + r"\s+" + verbs + r"\b.{0,32}?" + value
-        if re.search(direct_pattern, lowered):
-            return 0.8
+        for match in re.finditer(phrase_pattern, lowered):
+            # A metric can be mentioned as the object of another measure
+            # ("interest income from cash ..."), which is not a direct
+            # statement of the metric's own value.
+            prefix = lowered[max(0, match.start() - 32):match.start()]
+            relation = r"(?:from(?:\s+[a-z]+){0,3}|on|of|for|in|against|related\s+to)"
+            if re.search(r"\b" + relation + r"\s*$", prefix):
+                continue
+            following = lowered[match.end():match.end() + 96]
+            if re.match(r"\s+" + verbs + r"\b.{0,32}?" + value, following):
+                return 0.8
     return 0.0
 
 
