@@ -111,3 +111,39 @@ def test_raw_child_selector_skips_table_note_before_metric_amount():
     answer = result["answer"].split("[", 1)[0]
     assert "143,540" in answer
     assert "Answer: 3" not in answer
+
+
+def test_raw_child_selector_rejects_conflicting_activity_qualifier():
+    extractor = DeterministicAnswerExtractor()
+    result = extractor.answer_numeric_query_from_chunks(
+        "What net cash was provided by operating activities in 2025?",
+        [
+            _chunk(
+                "Net cash provided by financing activities was $64.6 million in 2025."
+            ),
+            _chunk(
+                "Net cash provided by operating activities was $24.1 million in 2025."
+            ),
+        ],
+    )
+
+    assert result is not None
+    answer = result["answer"].split("[", 1)[0]
+    assert "$24.1 million" in answer
+    assert "$64.6 million" not in answer
+
+
+def test_raw_child_selector_rejects_negated_qualifier():
+    extractor = DeterministicAnswerExtractor()
+    result = extractor.answer_numeric_query_from_chunks(
+        "What was the GAAP gross margin in 2025?",
+        [
+            _chunk("Non-GAAP gross margin was 76% in 2025."),
+            _chunk("GAAP gross margin was 72% in 2025."),
+        ],
+    )
+
+    assert result is not None
+    answer = result["answer"].split("[", 1)[0]
+    assert "72%" in answer
+    assert "76%" not in answer

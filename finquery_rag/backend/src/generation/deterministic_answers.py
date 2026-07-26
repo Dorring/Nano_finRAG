@@ -160,6 +160,7 @@ class DeterministicAnswerExtractor:
             return None
 
         query_terms = self._important_query_terms(query)
+        anchor_phrases = self._query_anchor_phrases(query)
         candidates = []
         for chunk in chunks:
             metadata = chunk.get("metadata") or {}
@@ -170,9 +171,22 @@ class DeterministicAnswerExtractor:
                 if not values:
                     continue
                 score = self._raw_numeric_evidence_score(text, query, query_terms)
+                anchor_matches, anchor_conflicts = self._anchor_profile(
+                    anchor_phrases, text
+                )
+                # A chunk that explicitly substitutes a different qualifier
+                # (for example financing activities for operating activities)
+                # is contradictory evidence, not a partial match. This is
+                # phrase-based and independent of document names or pages.
+                if anchor_conflicts:
+                    continue
+                if anchor_phrases and not anchor_matches:
+                    continue
+                score += anchor_matches * 8.0
+                score += self._numeric_relation_score(query, text)
                 if score <= 0:
                     continue
-                # Rank at value granularity as well as row granularity.  A
+                # Rank at value granularity as well as row granularity. A
                 # broad row can mention the metric twice; the direct metric
                 # value must beat a later qualified sub-scope in that row.
                 score += numeric_candidates[0][0]
@@ -355,6 +369,111 @@ class DeterministicAnswerExtractor:
             for left, right in zip(tokens, tokens[1:])
             if left in financial_terms or right in financial_terms
         }
+
+    @staticmethod
+    def _query_anchor_phrases(query: str) -> tuple[tuple[str, str], ...]:
+        """Return query-specific two-word anchors without a metric allow-list."""
+        stopwords = {
+            "what", "was", "were", "the", "and", "for", "did", "does",
+            "have", "how", "much", "many", "as", "of", "in", "on", "by",
+            "to", "from", "with", "which", "a", "an", "at", "is", "its",
+            "this", "that", "shown", "given", "reported", "disclosed",
+            "amount", "value", "year", "ended", "during", "came", "company",
+            "organization", "percentage", "percent", "growth", "rate",
+            "year-over-year", "year-over", "over", "quarter",
+            "january", "february", "march", "april", "may", "june",
+            "july", "august", "september", "october", "november", "december",
+        }
+        raw_tokens = re.findall(r"[a-zA-Z][a-zA-Z0-9&.-]{0,}", query or "")
+        tokens = [
+            token.lower()
+            for token in raw_tokens
+            # Keep an uppercase one-letter label (for example Metric A).
+            # Lowercase articles remain stopwords.
+            if (
+                token.lower() not in stopwords
+                or (len(token) == 1 and token.isupper())
+            )
+            and not re.fullmatch(r"(?:19|20)\d{2}", token)
+        ]
+        collapsed_tokens = []
+        for token in tokens:
+            if not collapsed_tokens or token != collapsed_tokens[-1]:
+                collapsed_tokens.append(token)
+
+        anchors = []
+        for left, right in zip(collapsed_tokens, collapsed_tokens[1:]):
+            if left == right:
+                continue
+            pair = (left, right)
+            if pair not in anchors:
+                anchors.append(pair)
+        return tuple(anchors)
+
+    @staticmethod
+    def _anchor_profile(
+        anchors: tuple[tuple[str, str], ...],
+        text: str,
+    ) -> tuple[int, int]:
+        """Count exact query anchors and explicit qualifier contradictions."""
+        connectors = {"and", "by", "of", "in", "for", "to", "from", "with", "at", "as"}
+        tokens = re.findall(r"[a-zA-Z][a-zA-Z0-9&.-]*", text or "")
+        tokens = [token.lower().strip(".-") for token in tokens]
+        tokens = [token for token in tokens if token and token not in connectors]
+        collapsed_tokens = []
+        for token in tokens:
+            if not collapsed_tokens or token != collapsed_tokens[-1]:
+                collapsed_tokens.append(token)
+        tokens = collapsed_tokens
+        pairs = list(zip(tokens, tokens[1:]))
+        pair_set = set(pairs)
+        matches = 0
+        conflicts = 0
+        negators = {"non", "not", "without", "excluding", "except"}
+
+        for left, right in anchors:
+            if (left, right) in pair_set:
+                negated = any(
+                    index > 0 and tokens[index - 1] in negators
+                    for index, pair in enumerate(pairs)
+                    if pair == (left, right)
+                )
+                if negated:
+                    conflicts += 1
+                else:
+                    matches += 1
+                continue
+
+            # A relation tail with another qualifier is contradictory:
+            # financing activities does not answer operating activities.
+            if any(candidate_right == right and candidate_left != left
+                   for candidate_left, candidate_right in pairs):
+                conflicts += 1
+        return matches, conflicts
+
+    @staticmethod
+    def _numeric_relation_score(query: str, text: str) -> float:
+        """Score generic ratio semantics separately from change semantics."""
+        normalized_query = (query or "").lower()
+        normalized_text = (text or "").lower()
+        asks_for_share = any(marker in normalized_query for marker in (
+            "percentage of", "percent of", "share of", "came from",
+        ))
+        if not asks_for_share:
+            return 0.0
+
+        score = 0.0
+        if re.search(
+            r"\b(accounted\s+for|representing|share\s+of|of\s+(?:the\s+)?total)\b",
+            normalized_text,
+        ):
+            score += 12.0
+        if re.search(
+            r"\b(increased|decreased|grew|growth|fell|compared)\b",
+            normalized_text,
+        ):
+            score -= 9.0
+        return score
 
     @staticmethod
     def _inline_source_citation(source: str | None) -> str:
