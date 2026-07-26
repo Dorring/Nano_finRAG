@@ -46,6 +46,42 @@ def test_table_without_bbox_is_kept_as_usable_table(monkeypatch):
     assert tables == {1: [{"md": "| a |\n|---|\n| 1 |", "bbox": None}]}
 
 
+def test_flattened_table_markdown_is_rejected_before_native_fallback():
+    from src.services.process_tables import is_usable_table_markdown
+
+    flattened = (
+        "| Original Budget 2020 Program Title System A 110,231 109,097 98,755 "
+        "10,342 Actual Expense Difference and repeated page text | Another very long "
+        "flattened cell containing a visual table without usable column boundaries |\n"
+        "| --- | --- |"
+    )
+
+    assert is_usable_table_markdown(flattened) is False
+
+
+def test_structured_two_column_table_remains_usable():
+    from src.services.process_tables import is_usable_table_markdown
+
+    markdown = "| Metric | Value |\n| --- | --- |\n| Cash and cash equivalents | 42.2 million |"
+    assert is_usable_table_markdown(markdown) is True
+
+
+def test_format_table_keeps_multiline_cell_in_one_markdown_row():
+    import pandas as pd
+    from types import SimpleNamespace
+    from src.services.process_tables import format_table
+
+    table = SimpleNamespace(df=pd.DataFrame([
+        ["Metric", "2020"],
+        ["Cash and\n cash equivalents", "143,540\r\n"],
+    ]))
+
+    markdown = format_table(table)
+    assert "Cash and cash equivalents" in markdown
+    assert "Cash and\n cash" not in markdown
+    assert "143,540" in markdown
+
+
 def test_pymupdf_table_detection_failure_returns_empty_bboxes():
     from src.services.ingest import _safe_find_table_bboxes
 
