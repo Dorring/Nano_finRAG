@@ -304,7 +304,20 @@ class DeterministicAnswerExtractor:
         return filename or None
 
     @staticmethod
-    def _numeric_windows(content: str) -> list[str]:
+    def _is_structural_numeric_line(line: str) -> bool:
+        """Exclude section and table labels that carry numbering, not values."""
+        normalized = re.sub(r"\s+", " ", line or "").strip()
+        if not normalized:
+            return True
+        if normalized.lower().startswith("section:"):
+            return True
+        return bool(re.fullmatch(
+            r"(?:chapter|section|note|table)?\s*\d+(?:\.\d+)*\.?\s+[A-Z][A-Z &/-]{2,}",
+            normalized,
+        ))
+
+    @classmethod
+    def _numeric_windows(cls, content: str) -> list[str]:
         """Split raw chunk text into compact, table-friendly evidence rows."""
         windows = []
         for raw_line in (content or "").splitlines():
@@ -315,7 +328,7 @@ class DeterministicAnswerExtractor:
             # financial evidence and must not become an answer candidate.
             if re.match(r"^[.,;)]\s*\d", line):
                 continue
-            if line and re.search(r"\d", line):
+            if line and not cls._is_structural_numeric_line(line) and re.search(r"\d", line):
                 windows.append(line[:700])
         if not windows:
             compact = re.sub(r"\s+", " ", content or "").strip()
@@ -719,11 +732,20 @@ class DeterministicAnswerExtractor:
         ))
         if has_unit:
             score += 5.0
-        if numeric and numeric < 100 and not has_unit:
-            # A bare 1/2/3 is commonly a table note, footnote or day of month.
-            score -= 4.0
-        if 1900 <= numeric <= 2100 and not has_unit:
-            score -= 8.0
+        asks_for_count = any(marker in query for marker in (
+            "how many", "number of", "count",
+        ))
+        asks_for_year = any(marker in query for marker in (
+            "what year", "which year", "year was",
+        ))
+        if numeric and numeric < 100 and not has_unit and not asks_for_count:
+            # Bare small integers are almost always table notes, footnotes,
+            # or heading labels for financial-value questions.
+            return -100.0
+        if 1900 <= numeric <= 2100 and not has_unit and not asks_for_year:
+            # Reporting years constrain the question but are rarely the
+            # requested value unless the user explicitly asks for a year.
+            return -100.0
 
         month_pattern = (
             r"(?:january|february|march|april|may|june|july|august|"

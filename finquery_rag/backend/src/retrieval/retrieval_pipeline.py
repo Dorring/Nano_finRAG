@@ -125,6 +125,13 @@ class RetrievalPipeline:
             return self._attach_structured_table_evidence(selected[:top_k] if top_k else selected, user_id=user_id)
 
         candidate_k = top_k * self._candidate_multiplier
+        # Financial values are frequently stored in split table rows.  Keep a
+        # wider candidate pool for all numeric questions, then let the
+        # reranker choose the final top-k.  This is document-agnostic and
+        # avoids losing an exact row before its section metadata can help
+        # disambiguate similarly named metrics.
+        if top_k > 0 and self._query_processor.is_numeric_query(query):
+            candidate_k = max(candidate_k, top_k * 8)
         dense_results = self._dense_query_fn(
             query_text=retrieval_query, doc_name=document_name,
             n_results=candidate_k, user_id=user_id,
