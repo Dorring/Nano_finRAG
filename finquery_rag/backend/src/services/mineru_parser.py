@@ -186,7 +186,7 @@ def _run_mineru(pdf_path: str, output_dir: Path) -> list[dict]:
 
 
 def append_table_row_children(chunks: list[dict]) -> list[dict]:
-    """Add independently retrievable numeric rows while retaining each parent table."""
+    """Add retrievable table rows and column-labelled numeric cell evidence."""
     expanded = list(chunks or [])
     for parent in chunks or []:
         metadata = parent.get("metadata") or {}
@@ -210,8 +210,10 @@ def append_table_row_children(chunks: list[dict]) -> list[dict]:
         # Preserve nearby table title, units, and column labels. They carry
         # the scale and period needed to interpret a row value correctly.
         header_context = header_lines[-3:]
+        header_cells = _table_header_cells(header_context)
 
         row_count = 0
+        cell_count = 0
         for line_index, line in enumerate(lines):
             if not _is_table_data_row(line):
                 continue
@@ -230,8 +232,101 @@ def append_table_row_children(chunks: list[dict]) -> list[dict]:
                 "table_row_child": True,
                 "doc_id": f"{parent_id}::row_{line_index}",
             }
-            expanded.append({"content": content, "metadata": row_metadata})
+            row_chunk = {"content": content, "metadata": row_metadata}
+            expanded.append(row_chunk)
+            if cell_count >= 250:
+                continue
+            for cell_chunk in _table_cell_children(
+                row_chunk=row_chunk,
+                raw_row=line,
+                header_cells=header_cells,
+                unit_context=header_context[:-1],
+            ):
+                if cell_count >= 250:
+                    break
+                expanded.append(cell_chunk)
+                cell_count += 1
     return expanded
+
+
+def _table_header_cells(header_context: list[str]) -> list[str]:
+    """Return the nearest pipe-delimited header row, preserving column order."""
+    for line in reversed(header_context or []):
+        cells = _split_table_cells(line)
+        if len([cell for cell in cells if cell]) >= 2:
+            return cells
+    return []
+
+
+def _split_table_cells(line: str) -> list[str]:
+    return [cell.strip() for cell in (line or "").strip().strip("|").split("|")]
+
+
+def _table_cell_children(
+    *,
+    row_chunk: dict,
+    raw_row: str,
+    header_cells: list[str],
+    unit_context: list[str],
+) -> list[dict]:
+    """Emit narrow, column-labelled numeric evidence from a structured table row.
+
+    Rows remain the primary representation, while cells make values from
+    multi-column financial statements independently retrievable. Alignment is
+    positional and document-agnostic: a leading descriptor cell is treated as
+    the row label when the remaining cells match the header count.
+    """
+    if not header_cells:
+        return []
+    row_cells = _split_table_cells(raw_row)
+    if len(row_cells) < len(header_cells):
+        return []
+
+    if len(row_cells) == len(header_cells) + 1:
+        row_label = row_cells[0]
+        values = row_cells[1:]
+    elif len(row_cells) == len(header_cells):
+        row_label = ""
+        values = row_cells
+    else:
+        values = row_cells[-len(header_cells):]
+        row_label = " ".join(cell for cell in row_cells[:-len(header_cells)] if cell)
+
+    if len(values) != len(header_cells):
+        return []
+
+    row_metadata = dict(row_chunk.get("metadata") or {})
+    row_doc_id = str(row_metadata.get("doc_id") or "").strip()
+    if not row_doc_id:
+        return []
+
+    context = " ".join(item.strip() for item in unit_context if item.strip())[:360]
+    children = []
+    for column_index, (header, value) in enumerate(zip(header_cells, values)):
+        header = header.strip()
+        value = value.strip()
+        if not header or not value or not re.search(r"\d", value):
+            continue
+        # Put the semantic column and its value first. This keeps dates in a
+        # row label as supporting context rather than the leading numeric
+        # candidate for a numeric extractor.
+        parts = [f"Column: {header}", f"Value: {value}"]
+        if row_label:
+            parts.append(f"Table row: {row_label}")
+        if context:
+            parts.append(f"Table context: {context}")
+        cell_metadata = {
+            **row_metadata,
+            "type": "table_cell",
+            "subtype": "numeric_cell",
+            "parent_row_id": row_doc_id,
+            "table_column": header,
+            "table_column_index": column_index,
+            "table_cell_child": True,
+            "doc_id": f"{row_doc_id}::cell_{column_index}",
+        }
+        children.append({"content": "; ".join(parts)[:900], "metadata": cell_metadata})
+    return children
 
 
 def _is_table_separator(line: str) -> bool:
