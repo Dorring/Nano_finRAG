@@ -283,8 +283,10 @@ def _table_cell_children(
 
     Rows remain the primary representation, while cells make values from
     multi-column financial statements independently retrievable. Alignment is
-    positional and document-agnostic: a leading descriptor cell is treated as
-    the row label when the remaining cells match the header count.
+    positional and document-agnostic: a single leading descriptor cell is
+    treated as the row label when the remaining cells exactly match the header
+    count. Ambiguous rows intentionally produce no cells: a wrong
+    header/value pair is more harmful than losing optional, secondary evidence.
     """
     if not header_cells:
         return []
@@ -299,8 +301,11 @@ def _table_cell_children(
         row_label = ""
         values = row_cells
     else:
-        values = row_cells[-len(header_cells):]
-        row_label = " ".join(cell for cell in row_cells[:-len(header_cells)] if cell)
+        # A wrapped descriptor or an incomplete multi-line header makes it
+        # impossible to map values to columns safely. The parent table row is
+        # still retained as primary sparse evidence, but do not manufacture
+        # misleading column-labelled children.
+        return []
 
     if len(values) != len(header_cells):
         return []
@@ -333,6 +338,7 @@ def _table_cell_children(
             "table_column": header,
             "table_column_index": column_index,
             "table_cell_child": True,
+            "table_alignment": "exact",
             "doc_id": f"{row_doc_id}::cell_{column_index}",
         }
         children.append({"content": "; ".join(parts)[:900], "metadata": cell_metadata})

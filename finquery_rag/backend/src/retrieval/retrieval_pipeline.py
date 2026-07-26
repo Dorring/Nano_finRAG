@@ -4,6 +4,7 @@ Extracted from RAGEngine to isolate retrieval orchestration.
 Dependencies are injected via constructor, not read from environment.
 """
 import asyncio
+import inspect
 from typing import Callable
 
 from src.retrieval.candidate_fusion import (
@@ -61,7 +62,13 @@ class RetrievalPipeline:
         )
         return selected
 
-    def _attach_structured_table_evidence(self, chunks: list, *, user_id: int | None) -> list:
+    def _attach_structured_table_evidence(
+        self,
+        chunks: list,
+        *,
+        user_id: int | None,
+        query: str | None = None,
+    ) -> list:
         """Attach aligned cells to selected table rows, never to primary candidates."""
         getter = getattr(self._bm25_retriever, "get_table_cell_evidence", None)
         if not callable(getter) or user_id is None:
@@ -74,7 +81,21 @@ class RetrievalPipeline:
         ]
         if not row_ids:
             return chunks
-        evidence_by_row = getter(row_ids, user_id=user_id)
+        try:
+            parameters = inspect.signature(getter).parameters.values()
+            supports_query = any(
+                parameter.name == "query"
+                or parameter.kind == inspect.Parameter.VAR_KEYWORD
+                for parameter in parameters
+            )
+        except (TypeError, ValueError):
+            supports_query = False
+        if supports_query:
+            evidence_by_row = getter(row_ids, user_id=user_id, query=query)
+        else:
+            # Keep compatibility with retrievers exposing the pre-query-aware
+            # method signature without masking a TypeError raised internally.
+            evidence_by_row = getter(row_ids, user_id=user_id)
         attached = []
         for chunk in chunks:
             facts = evidence_by_row.get(chunk.get("doc_id"), [])
@@ -122,7 +143,9 @@ class RetrievalPipeline:
                 is_front_matter_query_fn=self._query_processor.is_front_matter_query,
             )
             selected = self._apply_reranker(query, results, top_k)
-            return self._attach_structured_table_evidence(selected[:top_k] if top_k else selected, user_id=user_id)
+            return self._attach_structured_table_evidence(
+                selected[:top_k] if top_k else selected, user_id=user_id, query=query,
+            )
 
         candidate_k = top_k * self._candidate_multiplier
         # Financial values are frequently stored in split table rows.  Keep a
@@ -151,7 +174,9 @@ class RetrievalPipeline:
                 is_front_matter_query_fn=self._query_processor.is_front_matter_query,
             )
             selected = self._apply_reranker(query, results, top_k)
-            return self._attach_structured_table_evidence(selected[:top_k] if top_k else selected, user_id=user_id)
+            return self._attach_structured_table_evidence(
+                selected[:top_k] if top_k else selected, user_id=user_id, query=query,
+            )
 
         results = normalize_scores(dense_results)
         results = boost_front_matter_chunks(
@@ -159,7 +184,9 @@ class RetrievalPipeline:
             is_front_matter_query_fn=self._query_processor.is_front_matter_query,
         )
         selected = self._apply_reranker(query, results, top_k)
-        return self._attach_structured_table_evidence(selected[:top_k] if top_k else selected, user_id=user_id)
+        return self._attach_structured_table_evidence(
+                selected[:top_k] if top_k else selected, user_id=user_id, query=query,
+            )
 
     async def retrieve_multiple(
         self,

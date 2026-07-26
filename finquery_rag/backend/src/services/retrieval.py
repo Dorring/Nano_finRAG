@@ -241,8 +241,15 @@ class SqliteBM25Retriever:
         *,
         user_id: int,
         max_cells_per_row: int = 3,
+        query: str | None = None,
     ) -> dict[str, list[Dict]]:
-        """Load numeric cells only for table rows already selected as evidence."""
+        """Load trustworthy numeric cells only for table rows already selected.
+
+        Cells are secondary evidence, so fail closed for legacy or ambiguous
+        parser output. When a query is available, prefer cells whose column
+        labels and row text overlap with its terms rather than SQLite insertion
+        order.
+        """
         if user_id is None or not parent_row_ids or max_cells_per_row <= 0:
             return {}
         wanted = {str(item).strip() for item in parent_row_ids if str(item).strip()}
@@ -267,8 +274,8 @@ class SqliteBM25Retriever:
             parent_row_id = metadata.get("parent_row_id")
             if (
                 metadata.get("type") != "table_cell"
+                or metadata.get("table_alignment") != "exact"
                 or parent_row_id not in wanted
-                or len(grouped[parent_row_id]) >= max_cells_per_row
             ):
                 continue
             grouped[parent_row_id].append({
@@ -277,7 +284,41 @@ class SqliteBM25Retriever:
                 "metadata": metadata,
                 "score": 0.0,
             })
+        for parent_row_id, facts in grouped.items():
+            facts.sort(
+                key=lambda fact: (
+                    -self._table_cell_query_score(query, fact),
+                    str(fact.get("doc_id") or ""),
+                )
+            )
+            grouped[parent_row_id] = facts[:max_cells_per_row]
         return dict(grouped)
+
+    @staticmethod
+    def _table_cell_query_score(query: str | None, fact: Dict) -> int:
+        """Score an already-selected row's exact-alignment cells by query overlap."""
+        if not query:
+            return 0
+        normalized_query = str(query).lower()
+        tokens = re.findall(r"[a-z0-9]+", normalized_query)
+        stop_words = {
+            "a", "an", "and", "are", "as", "at", "did", "for", "how", "in",
+            "is", "of", "on", "the", "to", "was", "were", "what", "which",
+            "with",
+        }
+        terms = [token for token in tokens if len(token) >= 3 and token not in stop_words]
+        metadata = fact.get("metadata") or {}
+        searchable = " ".join((
+            str(metadata.get("table_column") or ""),
+            str(fact.get("content") or ""),
+        )).lower()
+        score = sum(1 for term in terms if term in searchable)
+        for width in (2, 3):
+            for start in range(max(0, len(terms) - width + 1)):
+                phrase = " ".join(terms[start:start + width])
+                if phrase and phrase in searchable:
+                    score += width * 2
+        return score
 
     def delete_doc(self, doc_name: str, user_id: int):
         if user_id is None:

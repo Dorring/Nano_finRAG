@@ -32,6 +32,7 @@ def test_table_cell_children_preserve_header_value_alignment():
         if child["metadata"]["table_column"] == "Net Assets Total"
     )
     assert "Value: 387,063" in target["content"]
+    assert target["metadata"]["table_alignment"] == "exact"
 
     extractor = DeterministicAnswerExtractor(query_processor=QueryProcessor())
     answer = extractor.answer_numeric_query_from_chunks(
@@ -42,3 +43,24 @@ def test_table_cell_children_preserve_header_value_alignment():
     assert answer is not None
     assert "387,063" in answer["answer"]
     assert "565,601" not in answer["answer"]
+
+
+def test_table_cell_children_skip_ambiguous_header_value_alignment():
+    parent = {
+        "content": (
+            "Original Budget | Actual Expense\n"
+            "Program | Program Title\n"
+            "5 | The PCT System | 110,231 | 109,097 | 98,755 | 10,342"
+        ),
+        "metadata": {
+            "type": "table",
+            "doc_id": "user_1_demo.pdf::page_2::table_1",
+            "page": 2,
+            "doc_name": "demo.pdf",
+        },
+    }
+
+    children = append_table_row_children([parent])
+
+    assert any(child["metadata"].get("type") == "table_row" for child in children)
+    assert not any(child["metadata"].get("type") == "table_cell" for child in children)
