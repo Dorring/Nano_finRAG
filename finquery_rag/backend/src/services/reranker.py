@@ -53,13 +53,14 @@ class HeuristicReranker:
         scored = []
         for index, chunk in enumerate(chunks):
             original_score = _safe_float(chunk.get("score", 0.0))
-            lexical_score = _lexical_overlap(query_terms, chunk.get("content", ""))
+            lexical_score = _evidence_alignment(query, query_terms, chunk.get("content", ""))
             rerank_score = (
                 self.original_score_weight * original_score
                 + self.lexical_weight * lexical_score
             )
             item = dict(chunk)
             item["rerank_score"] = rerank_score
+            item["evidence_alignment"] = lexical_score
             item["reranker"] = self.name
             scored.append((rerank_score, original_score, -index, item))
 
@@ -157,6 +158,91 @@ def _lexical_overlap(query_terms: set[str], content: str) -> float:
         return 0.0
     overlap = len(query_terms & content_terms)
     return overlap / math.sqrt(len(query_terms) * len(content_terms))
+
+
+_EVIDENCE_STOPWORDS = {
+    "a", "an", "and", "as", "at", "by", "did", "do", "does", "for",
+    "from", "have", "has", "how", "in", "is", "it", "its", "of", "on",
+    "or", "the", "this", "to", "was", "were", "what", "which", "with",
+    "company", "document", "report", "year", "ended", "december",
+}
+
+
+def _evidence_alignment(query: str, query_terms: set[str], content: str) -> float:
+    """Prefer document-scoped metric phrases near answer-bearing values.
+
+    Retrieval already filters by document, so proper-name tokens in a query
+    are scope hints rather than metric evidence. This lightweight score
+    rewards the remaining two-word phrases and, for value questions, phrases
+    that occur close to a number. It is independent of any document/page or
+    fixed financial metric.
+    """
+    base = _lexical_overlap(query_terms, content)
+    query_tokens = _query_evidence_tokens(query)
+    content_tokens = _content_evidence_tokens(content)
+    if len(query_tokens) < 2 or len(content_tokens) < 2:
+        return base
+
+    query_phrases = {
+        tuple(query_tokens[index:index + 2])
+        for index in range(len(query_tokens) - 1)
+    }
+    content_phrases = {
+        tuple(content_tokens[index:index + 2])
+        for index in range(len(content_tokens) - 1)
+    }
+    matching_phrases = query_phrases.intersection(content_phrases)
+    score = base + min(0.9, 0.45 * len(matching_phrases))
+    if not matching_phrases or not _is_value_query(query):
+        return score
+
+    lowered = (content or "").lower()
+    for phrase in matching_phrases:
+        pattern = r"\b" + r"\W+".join(map(re.escape, phrase)) + r"\b"
+        for match in re.finditer(pattern, lowered):
+            window = lowered[max(0, match.start() - 60):match.end() + 140]
+            if re.search(r"[$]?\d[\d,]*(?:\.\d+)?(?:\s*(?:%|per\s+cent|million|billion|thousand))?", window):
+                return score + 0.3
+    return score
+
+
+def _query_evidence_tokens(query: str) -> list[str]:
+    raw_tokens = re.findall(r"[A-Za-z][A-Za-z0-9_-]*", query or "")
+    tokens = []
+    for index, raw in enumerate(raw_tokens):
+        normalized = raw.lower()
+        if normalized in _EVIDENCE_STOPWORDS:
+            continue
+        # Proper names only establish the document/company scope. Preserve
+        # the leading question word, but do not let a later title/acronym
+        # displace a metric phrase inside an already scoped document.
+        if index > 0 and (raw.isupper() or raw[:1].isupper()):
+            continue
+        if not tokens or normalized != tokens[-1]:
+            tokens.append(normalized)
+    return tokens
+
+
+def _content_evidence_tokens(content: str) -> list[str]:
+    tokens = [
+        token.lower()
+        for token in re.findall(r"[A-Za-z][A-Za-z0-9_-]*", content or "")
+        if token.lower() not in _EVIDENCE_STOPWORDS
+    ]
+    collapsed = []
+    for token in tokens:
+        if not collapsed or token != collapsed[-1]:
+            collapsed.append(token)
+    return collapsed
+
+
+def _is_value_query(query: str) -> bool:
+    normalized = (query or "").lower()
+    return any(marker in normalized for marker in (
+        "how much", "how many", "amount", "revenue", "cash", "margin",
+        "income", "expense", "assets", "liabilities", "percentage",
+        "percent", "rate", "growth", "profit", "loss",
+    ))
 
 
 def _safe_float(value) -> float:
