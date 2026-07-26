@@ -252,3 +252,24 @@ def test_heuristic_reranker_prefers_metric_phrase_near_value_over_scope_header()
 
     assert result[0]["doc_id"] == "evidence"
     assert result[0]["evidence_alignment"] > result[1]["evidence_alignment"]
+
+
+def test_heuristic_reranker_prefers_direct_metric_value_assertion():
+    query = "How much cash and cash equivalents did the company have?"
+    chunks = [
+        chunk(
+            "indirect",
+            "Interest income from cash and cash equivalents was $1.5 million.",
+            0.032,
+        ),
+        chunk(
+            "direct",
+            "On a consolidated basis, cash and cash equivalents were $42.2 million.",
+            0.027,
+        ),
+    ]
+
+    result = HeuristicReranker().rerank(query, chunks)
+
+    assert result[0]["doc_id"] == "direct"
+    assert result[0]["evidence_alignment"] > result[1]["evidence_alignment"]
