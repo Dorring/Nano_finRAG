@@ -96,6 +96,7 @@ def add_documents(chunks: list, doc_name: str, user_id: int = None, pages: int =
     ids = []
     documents = []
     metadatas = []
+    sparse_only_rows = 0
 
     for c in chunks:
         raw_id = c.get("metadata", {}).get("doc_id") or c.get("id")
@@ -111,6 +112,16 @@ def add_documents(chunks: list, doc_name: str, user_id: int = None, pages: int =
             metadata["user_id"] = user_id
         if pages:
             metadata["pages"] = pages
+
+        # Table rows are compact lexical evidence. Keep them in BM25, but
+        # prevent them from competing with parent tables and prose in dense
+        # semantic retrieval. ingest.py writes all chunks to BM25 after this
+        # function returns, using the tenant and document metadata above.
+        if metadata.get("type") == "table_row":
+            metadata["retrieval_channel"] = "sparse"
+            metadata["dense_indexed"] = False
+            sparse_only_rows += 1
+            continue
 
         ids.append(doc_id)
         documents.append(content)
@@ -130,7 +141,10 @@ def add_documents(chunks: list, doc_name: str, user_id: int = None, pages: int =
             metadatas=batch_metas
         )
 
-    print(f"✓ Added/Updated {len(chunks)} chunks for doc '{doc_name}' in global collection.")
+    print(
+        f"Added/Updated {len(ids)} dense chunks for doc {doc_name!r}; "
+        f"kept {sparse_only_rows} table rows in BM25-only retrieval."
+    )
     return {
         "collection_name": collection.name,
         "total_docs": collection.count()

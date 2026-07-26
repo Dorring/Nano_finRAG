@@ -153,6 +153,29 @@ class TestStorageBoundaryEnforcement:
         for did in store["ids"]:
             assert did.startswith("user_42_"), f"Expected scoped ID, got {did}"
 
+    def test_table_rows_are_sparse_only_but_keep_bm25_metadata(self, mock_collection):
+        """Table rows must not pollute dense retrieval but remain BM25-indexable."""
+        col, store = mock_collection
+        chunks = make_chunks_raw("report.pdf", count=1)
+        row = {
+            "content": "Revenue | 2025 | 181.0",
+            "metadata": {
+                "doc_id": "report.pdf::page_1::table_1::row_2",
+                "type": "table_row",
+                "page": 1,
+            },
+        }
+        chunks.append(row)
+
+        add_documents(chunks, "report.pdf", user_id=42)
+
+        assert len(store["ids"]) == 1
+        assert store["metadatas"][0]["type"] == "text"
+        assert row["metadata"]["doc_name"] == "report.pdf"
+        assert row["metadata"]["user_id"] == 42
+        assert row["metadata"]["retrieval_channel"] == "sparse"
+        assert row["metadata"]["dense_indexed"] is False
+
     def test_add_documents_idempotent(self, mock_collection):
         """Pre-scoped IDs should not be double-prefixed."""
         col, store = mock_collection
