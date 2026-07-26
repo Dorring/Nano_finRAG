@@ -158,7 +158,7 @@ class SqliteBM25Retriever:
                 )
             conn.commit()
 
-    def search(self, query: str, k: int = 10, doc_name: str = None, user_id: int = None) -> List[Dict]:
+    def search(self, query: str, k: int = 10, doc_name: str = None, user_id: int = None, include_secondary: bool = False) -> List[Dict]:
         """
         SQLite FTS5 稀疏检索。
         修复：增加 doc_name 和 user_id 过滤，防止跨文档/跨用户数据泄露。
@@ -166,6 +166,10 @@ class SqliteBM25Retriever:
         limit = self._normalize_limit(k)
         if limit <= 0:
             return []
+
+        # Retrieve a wider candidate pool before excluding narrow cell facts.
+        # Otherwise year/value cells can consume the entire BM25 top-k list.
+        fetch_limit = min(self.MAX_SEARCH_LIMIT, max(limit, limit * 4))
 
         normalized_query = self._normalize_query(query)
         if not normalized_query:
@@ -199,7 +203,7 @@ class SqliteBM25Retriever:
                     params.append(doc_name)
 
                 sql += " ORDER BY score ASC LIMIT ?;"
-                params.append(limit)
+                params.append(fetch_limit)
 
                 cursor.execute(sql, tuple(params))
                 rows = cursor.fetchall()
@@ -218,6 +222,8 @@ class SqliteBM25Retriever:
                 metadata = json.loads(row[2] or "{}")
             except (TypeError, json.JSONDecodeError):
                 continue
+            if not include_secondary and metadata.get("type") == "table_cell":
+                continue
             seen_doc_ids.add(doc_id)
             results.append({
                 "doc_id": doc_id,
@@ -225,7 +231,53 @@ class SqliteBM25Retriever:
                 "metadata": metadata,
                 "score": -float(row[3]) # BM25 score in FTS5 is negative, so we negate it
             })
+            if len(results) >= limit:
+                break
         return results
+
+    def get_table_cell_evidence(
+        self,
+        parent_row_ids: list[str],
+        *,
+        user_id: int,
+        max_cells_per_row: int = 3,
+    ) -> dict[str, list[Dict]]:
+        """Load numeric cells only for table rows already selected as evidence."""
+        if user_id is None or not parent_row_ids or max_cells_per_row <= 0:
+            return {}
+        wanted = {str(item).strip() for item in parent_row_ids if str(item).strip()}
+        if not wanted:
+            return {}
+
+        grouped: dict[str, list[Dict]] = defaultdict(list)
+        try:
+            with sqlite3.connect(self.db_path, timeout=10) as conn:
+                rows = conn.execute(
+                    "SELECT doc_id, content, metadata_json FROM chunk_store WHERE user_id = ?",
+                    (user_id,),
+                ).fetchall()
+        except sqlite3.Error:
+            return {}
+
+        for doc_id, content, metadata_json in rows:
+            try:
+                metadata = json.loads(metadata_json or "{}")
+            except (TypeError, json.JSONDecodeError):
+                continue
+            parent_row_id = metadata.get("parent_row_id")
+            if (
+                metadata.get("type") != "table_cell"
+                or parent_row_id not in wanted
+                or len(grouped[parent_row_id]) >= max_cells_per_row
+            ):
+                continue
+            grouped[parent_row_id].append({
+                "doc_id": doc_id,
+                "content": content,
+                "metadata": metadata,
+                "score": 0.0,
+            })
+        return dict(grouped)
 
     def delete_doc(self, doc_name: str, user_id: int):
         if user_id is None:
