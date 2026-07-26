@@ -61,6 +61,46 @@ class RetrievalPipeline:
         )
         return selected
 
+    def _attach_structured_table_evidence(self, chunks: list, *, user_id: int | None) -> list:
+        """Attach aligned cells to selected table rows, never to primary candidates."""
+        getter = getattr(self._bm25_retriever, "get_table_cell_evidence", None)
+        if not callable(getter) or user_id is None:
+            return chunks
+        row_ids = [
+            chunk.get("doc_id")
+            for chunk in chunks
+            if (chunk.get("metadata") or {}).get("type") == "table_row"
+            and not (chunk.get("metadata") or {}).get("structured_fact_evidence")
+        ]
+        if not row_ids:
+            return chunks
+        evidence_by_row = getter(row_ids, user_id=user_id)
+        attached = []
+        for chunk in chunks:
+            facts = evidence_by_row.get(chunk.get("doc_id"), [])
+            if not facts:
+                attached.append(chunk)
+                continue
+            fact_lines = [
+                fact.get("content", "").strip()
+                for fact in facts
+                if fact.get("content", "").strip()
+            ]
+            if not fact_lines:
+                attached.append(chunk)
+                continue
+            item = dict(chunk)
+            metadata = dict(item.get("metadata") or {})
+            item["content"] = (
+                f"{item.get('content', '').rstrip()}\n"
+                "Structured table facts:\n"
+                + "\n".join(f"- {line}" for line in fact_lines)
+            )
+            metadata["structured_fact_evidence"] = fact_lines
+            metadata["structured_fact_count"] = len(fact_lines)
+            item["metadata"] = metadata
+            attached.append(item)
+        return attached
     def retrieve_single(
         self,
         document_name: str,
@@ -82,7 +122,7 @@ class RetrievalPipeline:
                 is_front_matter_query_fn=self._query_processor.is_front_matter_query,
             )
             selected = self._apply_reranker(query, results, top_k)
-            return selected[:top_k] if top_k else selected
+            return self._attach_structured_table_evidence(selected[:top_k] if top_k else selected, user_id=user_id)
 
         candidate_k = top_k * self._candidate_multiplier
         dense_results = self._dense_query_fn(
@@ -104,7 +144,7 @@ class RetrievalPipeline:
                 is_front_matter_query_fn=self._query_processor.is_front_matter_query,
             )
             selected = self._apply_reranker(query, results, top_k)
-            return selected[:top_k] if top_k else selected
+            return self._attach_structured_table_evidence(selected[:top_k] if top_k else selected, user_id=user_id)
 
         results = normalize_scores(dense_results)
         results = boost_front_matter_chunks(
@@ -112,7 +152,7 @@ class RetrievalPipeline:
             is_front_matter_query_fn=self._query_processor.is_front_matter_query,
         )
         selected = self._apply_reranker(query, results, top_k)
-        return selected[:top_k] if top_k else selected
+        return self._attach_structured_table_evidence(selected[:top_k] if top_k else selected, user_id=user_id)
 
     async def retrieve_multiple(
         self,

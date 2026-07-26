@@ -97,6 +97,7 @@ def add_documents(chunks: list, doc_name: str, user_id: int = None, pages: int =
     documents = []
     metadatas = []
     sparse_only_rows = 0
+    secondary_table_cells = 0
 
     for c in chunks:
         raw_id = c.get("metadata", {}).get("doc_id") or c.get("id")
@@ -117,10 +118,15 @@ def add_documents(chunks: list, doc_name: str, user_id: int = None, pages: int =
         # prevent them from competing with parent tables and prose in dense
         # semantic retrieval. ingest.py writes all chunks to BM25 after this
         # function returns, using the tenant and document metadata above.
-        if metadata.get("type") == "table_row":
-            metadata["retrieval_channel"] = "sparse"
+        chunk_type = metadata.get("type")
+        if chunk_type in {"table_row", "table_cell"}:
+            is_table_cell = chunk_type == "table_cell"
+            metadata["retrieval_channel"] = "secondary_structured" if is_table_cell else "sparse"
             metadata["dense_indexed"] = False
-            sparse_only_rows += 1
+            if is_table_cell:
+                secondary_table_cells += 1
+            else:
+                sparse_only_rows += 1
             continue
 
         ids.append(doc_id)
@@ -143,7 +149,8 @@ def add_documents(chunks: list, doc_name: str, user_id: int = None, pages: int =
 
     print(
         f"Added/Updated {len(ids)} dense chunks for doc {doc_name!r}; "
-        f"kept {sparse_only_rows} table rows in BM25-only retrieval."
+        f"kept {sparse_only_rows} table rows in BM25-only retrieval and "
+        f"{secondary_table_cells} table cells as secondary structured evidence."
     )
     return {
         "collection_name": collection.name,
@@ -174,11 +181,12 @@ def query_collection(
     if user_id is None:
         return []
     where_filter = _tenant_doc_where(user_id, doc_name)
+    candidate_limit = max(n_results, n_results * 4)
 
     # 执行查询
     query_results = collection.query(
         query_texts=[query_text],
-        n_results=n_results,
+        n_results=candidate_limit,
         where=where_filter
     )
 
@@ -191,6 +199,8 @@ def query_collection(
             query_results["metadatas"][0],
             query_results["distances"][0]
         ):
+            if (meta or {}).get("type") == "table_cell":
+                continue
             results.append({
                 "doc_id": doc_id,
                 "content": doc,
@@ -199,7 +209,7 @@ def query_collection(
                 "score": 1 - distance
             })
 
-    return results
+    return results[:n_results]
 
 def query_multiple_collections(
     doc_names: List[str],
@@ -226,10 +236,11 @@ def query_multiple_collections(
     if user_id is None:
         return []
     where_filter = _tenant_docs_where(user_id, doc_names)
+    candidate_limit = max(n_results, n_results * 4)
 
     query_results = collection.query(
         query_texts=[query_text],
-        n_results=n_results,
+        n_results=candidate_limit,
         where=where_filter
     )
 
@@ -242,6 +253,8 @@ def query_multiple_collections(
             query_results["metadatas"][0],
             query_results["distances"][0]
         ):
+            if (meta or {}).get("type") == "table_cell":
+                continue
             results.append({
                 "doc_id": doc_id,
                 "content": doc,
@@ -249,7 +262,7 @@ def query_multiple_collections(
                 "score": 1 - distance
             })
 
-    return results
+    return results[:n_results]
 
 
 def get_front_matter_chunks(doc_name: str, user_id: int, subtype: str | None = None) -> List[Dict]:

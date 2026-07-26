@@ -1533,12 +1533,9 @@ requires-dist = [
     { name = "fastapi", specifier = ">=0.117.1" },
     { name = "kernels", specifier = ">=0.11.7" },
     { name = "psutil", specifier = ">=7.1.0" },
-<<<<<<< HEAD
     { name = "pynvml", specifier = ">=13.0.0" },
     { name = "python-dotenv", specifier = ">=1.2.1" },
     { name = "regex", specifier = ">=2025.9.1" },
-=======
->>>>>>> 0aaca56805eb13f6e6e1fff789a08086902f12ab
     { name = "rustbpe", specifier = ">=0.1.0" },
     { name = "setuptools", marker = "extra == 'cpu'", specifier = ">=65.0.0" },
     { name = "tiktoken", specifier = ">=0.11.0" },
