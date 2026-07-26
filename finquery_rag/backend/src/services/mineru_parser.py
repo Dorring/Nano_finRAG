@@ -205,9 +205,11 @@ def append_table_row_children(chunks: list[dict]) -> list[dict]:
         for line in lines:
             if _is_table_data_row(line):
                 break
-            if "|" in line and not _is_table_separator(line):
+            if not _is_table_separator(line):
                 header_lines.append(line)
-        header = header_lines[-1] if header_lines else ""
+        # Preserve nearby table title, units, and column labels. They carry
+        # the scale and period needed to interpret a row value correctly.
+        header_context = header_lines[-3:]
 
         row_count = 0
         for line_index, line in enumerate(lines):
@@ -216,7 +218,7 @@ def append_table_row_children(chunks: list[dict]) -> list[dict]:
             row_count += 1
             if row_count > 80:
                 break
-            content = "\n".join(part for part in (header, line) if part)
+            content = "\n".join([*header_context, line])[:900]
             row_metadata = {
                 **metadata,
                 "type": "table_row",
@@ -224,6 +226,7 @@ def append_table_row_children(chunks: list[dict]) -> list[dict]:
                 "parent_table_id": parent_id,
                 "parent_id": parent_id,
                 "table_row_index": line_index,
+                "table_header_context": "\n".join(header_context)[:600],
                 "table_row_child": True,
                 "doc_id": f"{parent_id}::row_{line_index}",
             }
@@ -238,7 +241,22 @@ def _is_table_separator(line: str) -> bool:
 def _is_table_data_row(line: str) -> bool:
     if "|" not in (line or "") or _is_table_separator(line):
         return False
+    if _is_table_header_row(line):
+        return False
     return bool(re.search(r"\d", line))
+
+
+def _is_table_header_row(line: str) -> bool:
+    """Treat descriptor-plus-year columns as headers, not financial values."""
+    cells = [cell.strip() for cell in line.strip("|").split("|") if cell.strip()]
+    if not cells:
+        return False
+    normalized = [re.sub(r"[^a-z]", "", cell.lower()) for cell in cells]
+    header_terms = {"metric", "metrics", "activity", "activities", "description", "item", "year", "years"}
+    if any(cell in header_terms for cell in normalized):
+        return True
+    numeric_cells = [cell for cell in cells if re.fullmatch(r"(?:19|20)\d{2}", cell)]
+    return len(numeric_cells) >= 2 and len(numeric_cells) == len(cells) - 1
 
 
 def process_pdf_with_mineru(
