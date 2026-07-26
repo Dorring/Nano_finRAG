@@ -147,3 +147,28 @@ def test_mineru_table_rows_become_retrievable_children(monkeypatch):
     assert "Subscription revenue | $42" in rows[0]["content"]
     assert rows[0]["metadata"]["parent_table_id"] == parents[0]["metadata"]["doc_id"]
     assert rows[0]["metadata"]["doc_id"].startswith(parents[0]["metadata"]["doc_id"] + "::row_")
+
+
+def test_table_row_child_preserves_caption_units_and_column_headers():
+    chunks = [{
+        "content": (
+            "Consolidated cash flow statement (in thousands)\n"
+            "For the year ended December 31, 2025\n"
+            "| Activity | 2025 | 2024 |\n"
+            "| --- | --- | --- |\n"
+            "| Operating activities | 24,053 | 9,703 |"
+        ),
+        "metadata": {"type": "table", "doc_id": "user_7_report.pdf::page_8::table_1"},
+    }]
+
+    rows = [
+        chunk for chunk in mineru_parser.append_table_row_children(chunks)
+        if chunk["metadata"]["type"] == "table_row"
+    ]
+
+    assert len(rows) == 1
+    assert "in thousands" in rows[0]["content"]
+    assert "For the year ended December 31, 2025" in rows[0]["content"]
+    assert "| Activity | 2025 | 2024 |" in rows[0]["content"]
+    assert "Operating activities | 24,053 | 9,703" in rows[0]["content"]
+    assert "in thousands" in rows[0]["metadata"]["table_header_context"]
