@@ -183,6 +183,7 @@ class DeterministicAnswerExtractor:
                 if anchor_phrases and not anchor_matches:
                     continue
                 score += anchor_matches * 8.0
+                score += self._numeric_relation_score(query, text)
                 if score <= 0:
                     continue
                 # Rank at value granularity as well as row granularity. A
@@ -377,12 +378,22 @@ class DeterministicAnswerExtractor:
             "have", "how", "much", "many", "as", "of", "in", "on", "by",
             "to", "from", "with", "which", "a", "an", "at", "is", "its",
             "this", "that", "shown", "given", "reported", "disclosed",
-            "amount", "value", "year", "ended", "during", "came",
+            "amount", "value", "year", "ended", "during", "came", "company",
+            "organization", "percentage", "percent", "growth", "rate",
+            "year-over-year", "year-over", "over", "quarter",
+            "january", "february", "march", "april", "may", "june",
+            "july", "august", "september", "october", "november", "december",
         }
+        raw_tokens = re.findall(r"[a-zA-Z][a-zA-Z0-9&.-]{0,}", query or "")
         tokens = [
             token.lower()
-            for token in re.findall(r"[a-zA-Z][a-zA-Z0-9&.-]{1,}", query or "")
-            if token.lower() not in stopwords
+            for token in raw_tokens
+            # Keep an uppercase one-letter label (for example Metric A).
+            # Lowercase articles remain stopwords.
+            if (
+                token.lower() not in stopwords
+                or (len(token) == 1 and token.isupper())
+            )
             and not re.fullmatch(r"(?:19|20)\d{2}", token)
         ]
         collapsed_tokens = []
@@ -407,7 +418,8 @@ class DeterministicAnswerExtractor:
         """Count exact query anchors and explicit qualifier contradictions."""
         connectors = {"and", "by", "of", "in", "for", "to", "from", "with", "at", "as"}
         tokens = re.findall(r"[a-zA-Z][a-zA-Z0-9&.-]*", text or "")
-        tokens = [token.lower() for token in tokens if token.lower() not in connectors]
+        tokens = [token.lower().strip(".-") for token in tokens]
+        tokens = [token for token in tokens if token and token not in connectors]
         collapsed_tokens = []
         for token in tokens:
             if not collapsed_tokens or token != collapsed_tokens[-1]:
@@ -438,6 +450,30 @@ class DeterministicAnswerExtractor:
                    for candidate_left, candidate_right in pairs):
                 conflicts += 1
         return matches, conflicts
+
+    @staticmethod
+    def _numeric_relation_score(query: str, text: str) -> float:
+        """Score generic ratio semantics separately from change semantics."""
+        normalized_query = (query or "").lower()
+        normalized_text = (text or "").lower()
+        asks_for_share = any(marker in normalized_query for marker in (
+            "percentage of", "percent of", "share of", "came from",
+        ))
+        if not asks_for_share:
+            return 0.0
+
+        score = 0.0
+        if re.search(
+            r"\b(accounted\s+for|representing|share\s+of|of\s+(?:the\s+)?total)\b",
+            normalized_text,
+        ):
+            score += 12.0
+        if re.search(
+            r"\b(increased|decreased|grew|growth|fell|compared)\b",
+            normalized_text,
+        ):
+            score -= 9.0
+        return score
 
     @staticmethod
     def _inline_source_citation(source: str | None) -> str:
