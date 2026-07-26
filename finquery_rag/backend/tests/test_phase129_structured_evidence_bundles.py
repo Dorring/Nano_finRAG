@@ -108,3 +108,32 @@ def test_retrieval_pipeline_attaches_cells_only_after_row_selection():
     assert "Structured table facts:" in selected[0]["content"]
     assert "Column: 2025; Value: 42.2" in selected[0]["content"]
     assert selected[0]["metadata"]["structured_fact_count"] == 1
+
+
+def test_numeric_retrieval_uses_wider_candidate_pool_before_reranking():
+    calls = []
+
+    def dense_query(**kwargs):
+        calls.append(kwargs["n_results"])
+        return []
+
+    class FakeBM25:
+        def search(self, _query, *, k, **_kwargs):
+            calls.append(k)
+            return []
+
+    pipeline = RetrievalPipeline(
+        dense_query_fn=dense_query,
+        bm25_retriever=FakeBM25(),
+        candidate_multiplier=4,
+        use_hybrid=True,
+    )
+
+    pipeline.retrieve_single(
+        "report.pdf",
+        "What cash and cash equivalents were reported in 2025?",
+        user_id=7,
+        top_k=3,
+    )
+
+    assert calls == [24, 24]

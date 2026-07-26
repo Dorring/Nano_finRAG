@@ -273,3 +273,60 @@ def test_heuristic_reranker_prefers_direct_metric_value_assertion():
 
     assert result[0]["doc_id"] == "direct"
     assert result[0]["evidence_alignment"] > result[1]["evidence_alignment"]
+
+
+def test_heuristic_reranker_uses_section_path_to_disambiguate_identical_table_rows():
+    query = (
+        "In the Black Swan Ltd. practice question, what cash and cash "
+        "equivalents amount is given?"
+    )
+    chunks = [
+        {
+            **chunk("amba", "Cash and cash equivalents | 98,000", 0.1),
+            "metadata": {"section_path": "Amba Ltd. illustration"},
+        },
+        {
+            **chunk("black_swan", "Cash and cash equivalents | 6,100", 0.1),
+            "metadata": {"section_path": "Black Swan Ltd. practice question"},
+        },
+    ]
+
+    result = HeuristicReranker(
+        original_score_weight=0.0, lexical_weight=1.0
+    ).rerank(query, chunks)
+
+    assert result[0]["doc_id"] == "black_swan"
+    assert result[0]["evidence_alignment"] > result[1]["evidence_alignment"]
+
+
+def test_heuristic_reranker_combines_same_page_heading_and_table_row_evidence():
+    query = (
+        "In the Black Swan Ltd. practice question, what cash and cash "
+        "equivalents amount is given?"
+    )
+    chunks = [
+        {
+            **chunk("black_heading", "Prepare a balance sheet of Black Swan Ltd.", 0.1),
+            "metadata": {"doc_name": "guide.pdf", "page": 27},
+        },
+        {
+            **chunk("black_value", "Cash and cash equivalents | 6,100", 0.1),
+            "metadata": {"doc_name": "guide.pdf", "page": 27},
+        },
+        {
+            **chunk("other_value", "Cash and cash equivalents | 60,000", 0.1),
+            "metadata": {"doc_name": "guide.pdf", "page": 11},
+        },
+    ]
+
+    result = HeuristicReranker(
+        original_score_weight=0.0, lexical_weight=1.0
+    ).rerank(query, chunks)
+
+    assert result[0]["doc_id"] == "black_value"
+    assert result[0]["page_evidence_alignment"] > 0
+    assert next(item for item in result if item["doc_id"] == "black_value")[
+        "rerank_score"
+    ] > next(item for item in result if item["doc_id"] == "other_value")[
+        "rerank_score"
+    ]

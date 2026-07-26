@@ -50,17 +50,26 @@ class HeuristicReranker:
             return []
 
         query_terms = _tokenize(query)
+        evidence_texts = [_chunk_evidence_text(chunk) for chunk in chunks]
+        page_alignment = _page_evidence_alignment(
+            query, chunks, evidence_texts
+        )
         scored = []
-        for index, chunk in enumerate(chunks):
+        for index, (chunk, evidence_text) in enumerate(zip(chunks, evidence_texts)):
             original_score = _safe_float(chunk.get("score", 0.0))
-            lexical_score = _evidence_alignment(query, query_terms, chunk.get("content", ""))
+            lexical_score = _evidence_alignment(
+                query, query_terms, evidence_text
+            )
+            coherence_score = page_alignment.get(_page_key(chunk), 0.0)
             rerank_score = (
                 self.original_score_weight * original_score
                 + self.lexical_weight * lexical_score
+                + 0.10 * coherence_score
             )
             item = dict(chunk)
             item["rerank_score"] = rerank_score
             item["evidence_alignment"] = lexical_score
+            item["page_evidence_alignment"] = coherence_score
             item["reranker"] = self.name
             scored.append((rerank_score, original_score, -index, item))
 
@@ -140,6 +149,105 @@ def build_reranker(
             raise ValueError("RAG_RERANKER_MODEL is required for cross-encoder reranking")
         return CrossEncoderReranker(model_name_or_path=model_name_or_path)
     raise ValueError(f"Unknown reranker: {name}")
+
+
+
+def _chunk_evidence_text(chunk: dict) -> str:
+    """Combine chunk text with compact structural metadata for reranking.
+
+    Table rows often contain only a line item and numbers; their surrounding
+    section or illustration name is stored in metadata.  Including that
+    metadata lets a query's entity/qualifier terms disambiguate otherwise
+    identical rows without changing the indexed document content.
+    """
+    metadata = chunk.get("metadata") or {}
+    structural_values = [
+        metadata.get(key)
+        for key in ("section_path", "table_title", "row_label", "parent_title")
+        if metadata.get(key)
+    ]
+    structural = " ".join(str(value) for value in structural_values)
+    content = chunk.get("content", "") or ""
+    return f"{structural}\n{content}".strip()
+
+
+
+def _page_key(chunk: dict) -> tuple[str, int | None] | None:
+    """Return a document/page key when the chunk has page-level provenance."""
+    metadata = chunk.get("metadata") or {}
+    doc_name = metadata.get("doc_name")
+    page = metadata.get("page")
+    if not doc_name or page is None:
+        return None
+    return str(doc_name), page
+
+
+def _page_evidence_alignment(
+    query: str,
+    chunks: list[dict],
+    evidence_texts: list[str],
+) -> dict[tuple[str, int | None] | None, float]:
+    """Reward pages where complementary chunks jointly cover rare query anchors.
+
+    A page-level boost is useful only when it joins evidence that a normal
+    chunk-level ranker cannot see together, such as an illustration heading
+    and a separate table row. Terms common across the candidate set, such as
+    cash, are intentionally insufficient: they would otherwise promote
+    unrelated pages that happen to contain the same generic metric.
+    """
+    query_tokens = _query_page_tokens(query)
+    if len(query_tokens) < 2:
+        return {}
+
+    chunk_hits = [
+        query_tokens.intersection(_tokenize(text))
+        for text in evidence_texts
+    ]
+    token_frequency = {
+        token: sum(token in hits for hits in chunk_hits)
+        for token in query_tokens
+    }
+    rare_tokens = {
+        token
+        for token, frequency in token_frequency.items()
+        if frequency <= max(2, len(chunks) // 5)
+    }
+    if not rare_tokens:
+        return {}
+
+    page_hits: dict[tuple[str, int | None] | None, set[str]] = {}
+    page_counts: dict[tuple[str, int | None] | None, int] = {}
+    for chunk, hits in zip(chunks, chunk_hits):
+        key = _page_key(chunk)
+        if key is None or not hits:
+            continue
+        page_hits.setdefault(key, set()).update(hits)
+        page_counts[key] = page_counts.get(key, 0) + 1
+
+    aligned = {}
+    for key, hits in page_hits.items():
+        rare_hits = hits.intersection(rare_tokens)
+        # Require both a discriminative anchor and a second query signal.
+        if page_counts.get(key, 0) < 2 or not rare_hits or len(hits) < 2:
+            continue
+        coverage = len(hits) / len(query_tokens)
+        rare_coverage = len(rare_hits) / len(rare_tokens)
+        aligned[key] = 0.4 * coverage + 0.6 * rare_coverage
+    return aligned
+
+
+def _query_page_tokens(query: str) -> set[str]:
+    """Keep query entity and metric tokens for complementary page matching."""
+    generic = _EVIDENCE_STOPWORDS | {
+        "amount", "given", "question", "questions", "shown", "show",
+        "reported", "reporting", "financial", "statement", "statements",
+        "practice", "basis", "company", "companies",
+    }
+    return {
+        token
+        for token in _tokenize(query)
+        if len(token) >= 3 and token not in generic
+    }
 
 
 def _tokenize(text: str) -> set[str]:
