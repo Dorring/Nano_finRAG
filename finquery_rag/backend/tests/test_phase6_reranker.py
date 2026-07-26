@@ -229,3 +229,26 @@ def test_cross_encoder_reranker_requires_model_or_path():
         assert "requires a model" in str(exc)
     else:
         raise AssertionError("expected ValueError")
+
+
+def test_heuristic_reranker_prefers_metric_phrase_near_value_over_scope_header():
+    query = "How much cash and cash equivalents did PDF Solutions have as of December 31, 2025?"
+    chunks = [
+        chunk(
+            "scope",
+            "PDF SOLUTIONS, INC. CONSOLIDATED STATEMENTS OF CASH FLOWS. "
+            "Net change in cash was 371 in 2025.",
+            0.032,
+        ),
+        chunk(
+            "evidence",
+            "On a consolidated basis, cash and cash equivalents were "
+            "$42.2 million as of December 31, 2025.",
+            0.027,
+        ),
+    ]
+
+    result = HeuristicReranker().rerank(query, chunks)
+
+    assert result[0]["doc_id"] == "evidence"
+    assert result[0]["evidence_alignment"] > result[1]["evidence_alignment"]
