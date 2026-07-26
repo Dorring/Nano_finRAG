@@ -283,10 +283,11 @@ def _table_cell_children(
 
     Rows remain the primary representation, while cells make values from
     multi-column financial statements independently retrievable. Alignment is
-    positional and document-agnostic: a single leading descriptor cell is
-    treated as the row label when the remaining cells exactly match the header
-    count. Ambiguous rows intentionally produce no cells: a wrong
-    header/value pair is more harmful than losing optional, secondary evidence.
+    positional and document-agnostic: up to two leading descriptor cells are
+    treated as a row label when the trailing values exactly match a rich
+    multi-column header. Ambiguous short headers intentionally produce no
+    cells: a wrong header/value pair is more harmful than losing optional,
+    secondary evidence.
     """
     if not header_cells:
         return []
@@ -294,17 +295,21 @@ def _table_cell_children(
     if len(row_cells) < len(header_cells):
         return []
 
-    if len(row_cells) == len(header_cells) + 1:
-        row_label = row_cells[0]
-        values = row_cells[1:]
-    elif len(row_cells) == len(header_cells):
+    leading_cells = len(row_cells) - len(header_cells)
+    if leading_cells == 0:
         row_label = ""
         values = row_cells
+    elif 1 <= leading_cells <= 2 and len(header_cells) >= 3:
+        # Financial statements commonly use a number and a label before a
+        # period/value block. The suffix is safe only when it exactly matches
+        # a sufficiently rich header; short headers cannot justify discarding
+        # several unknown leading cells.
+        row_label = " ".join(cell for cell in row_cells[:leading_cells] if cell)
+        values = row_cells[leading_cells:]
     else:
-        # A wrapped descriptor or an incomplete multi-line header makes it
-        # impossible to map values to columns safely. The parent table row is
-        # still retained as primary sparse evidence, but do not manufacture
-        # misleading column-labelled children.
+        # A wrapped descriptor or incomplete short header makes it impossible
+        # to map values to columns safely. The parent table row remains primary
+        # sparse evidence, but do not manufacture labelled children.
         return []
 
     if len(values) != len(header_cells):
