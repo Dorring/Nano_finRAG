@@ -195,6 +195,7 @@ def _evidence_alignment(query: str, query_terms: set[str], content: str) -> floa
     score = base + min(0.9, 0.45 * len(matching_phrases))
     if not matching_phrases or not _is_value_query(query):
         return score
+    score += _direct_value_alignment(matching_phrases, content)
 
     lowered = (content or "").lower()
     for phrase in matching_phrases:
@@ -204,6 +205,27 @@ def _evidence_alignment(query: str, query_terms: set[str], content: str) -> floa
             if re.search(r"[$]?\d[\d,]*(?:\.\d+)?(?:\s*(?:%|per\s+cent|million|billion|thousand))?", window):
                 return score + 0.3
     return score
+
+
+def _direct_value_alignment(matching_phrases: set[tuple[str, str]], content: str) -> float:
+    """Reward a metric directly asserted to equal a nearby value.
+
+    A term match alone is ambiguous in financial reports: it may occur in an
+    interest-income explanation, a foreign-subsidiary disclosure, or a cash
+    flow adjustment. This gives an extra signal only when the matching metric
+    phrase is immediately followed by an assertion verb and a value. The
+    phrase comes from the user's query, so the rule is document- and
+    metric-agnostic.
+    """
+    lowered = (content or "").lower()
+    value = r"[$€£¥]?\s*\(?\d[\d,]*(?:\.\d+)?\)?(?:\s*(?:%|per\s+cent|million|billion|thousand))?"
+    verbs = r"(?:is|are|was|were|totaled|amounted(?:\s+to)?|stood(?:\s+at)?|equaled|reached|reported)"
+    for phrase in matching_phrases:
+        phrase_pattern = r"\b" + r"\W+".join(map(re.escape, phrase)) + r"\b"
+        direct_pattern = phrase_pattern + r"\s+" + verbs + r"\b.{0,32}?" + value
+        if re.search(direct_pattern, lowered):
+            return 0.8
+    return 0.0
 
 
 def _query_evidence_tokens(query: str) -> list[str]:
