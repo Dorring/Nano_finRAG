@@ -27,6 +27,7 @@ def _table_cell():
             "page": 4,
             "type": "table_cell",
             "parent_row_id": "user_7_report.pdf::page_4::table_1::row_2",
+            "table_alignment": "exact",
         },
     }
 
@@ -108,6 +109,39 @@ def test_retrieval_pipeline_attaches_cells_only_after_row_selection():
     assert "Structured table facts:" in selected[0]["content"]
     assert "Column: 2025; Value: 42.2" in selected[0]["content"]
     assert selected[0]["metadata"]["structured_fact_count"] == 1
+
+
+def test_bm25_prefers_query_matched_exact_table_cells(tmp_path):
+    retriever = SqliteBM25Retriever(db_path=str(tmp_path / "bm25.db"))
+    row = _table_row()
+    parent_row_id = row["metadata"]["doc_id"]
+    original_budget = {
+        "content": "Column: Original budget; Value: 110,231; Table row: PCT System",
+        "metadata": {
+            **_table_cell()["metadata"],
+            "doc_id": f"{parent_row_id}::cell_0",
+            "parent_row_id": parent_row_id,
+            "table_column": "Original budget",
+        },
+    }
+    actual_expense = {
+        "content": "Column: Actual expense; Value: 98,755; Table row: PCT System",
+        "metadata": {
+            **_table_cell()["metadata"],
+            "doc_id": f"{parent_row_id}::cell_1",
+            "parent_row_id": parent_row_id,
+            "table_column": "Actual expense",
+        },
+    }
+    retriever.add_chunks([row, original_budget, actual_expense], user_id=7)
+
+    facts = retriever.get_table_cell_evidence(
+        [parent_row_id],
+        user_id=7,
+        query="What was the actual expense for the PCT system?",
+    )
+
+    assert facts[parent_row_id][0]["metadata"]["table_column"] == "Actual expense"
 
 
 def test_numeric_retrieval_uses_wider_candidate_pool_before_reranking():
