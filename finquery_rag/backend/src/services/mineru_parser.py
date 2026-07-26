@@ -250,12 +250,22 @@ def append_table_row_children(chunks: list[dict]) -> list[dict]:
 
 
 def _table_header_cells(header_context: list[str]) -> list[str]:
-    """Return the nearest pipe-delimited header row, preserving column order."""
-    for line in reversed(header_context or []):
+    """Return the richest pipe-delimited header row, preserving column order.
+
+    PDF extraction frequently wraps a multi-line header.  The closest line can
+    be a descriptor such as ``Program | Program Title`` while the preceding
+    line carries the actual value columns.  Prefer the row with the most
+    non-empty cells; ties keep the later row closest to the data.
+    """
+    candidates = []
+    for position, line in enumerate(header_context or []):
         cells = _split_table_cells(line)
-        if len([cell for cell in cells if cell]) >= 2:
-            return cells
-    return []
+        non_empty = [cell for cell in cells if cell]
+        if len(non_empty) >= 2:
+            candidates.append((len(non_empty), position, cells))
+    if not candidates:
+        return []
+    return max(candidates, key=lambda item: (item[0], item[1]))[2]
 
 
 def _split_table_cells(line: str) -> list[str]:
@@ -342,16 +352,33 @@ def _is_table_data_row(line: str) -> bool:
 
 
 def _is_table_header_row(line: str) -> bool:
-    """Treat descriptor-plus-year columns as headers, not financial values."""
+    """Treat descriptor-plus-period columns as headers, not financial values.
+
+    Extracted financial tables often render column years as ``2020 (1)`` or
+    spread labels across multiple lines.  A line with two or more year labels
+    and no non-year financial amount is therefore a header even when the year
+    cells include footnote markers.
+    """
     cells = [cell.strip() for cell in line.strip("|").split("|") if cell.strip()]
     if not cells:
         return False
     normalized = [re.sub(r"[^a-z]", "", cell.lower()) for cell in cells]
-    header_terms = {"metric", "metrics", "activity", "activities", "description", "item", "year", "years"}
+    header_terms = {
+        "metric", "metrics", "activity", "activities", "description", "item",
+        "year", "years", "program", "programtitle", "particulars", "amount",
+        "budget", "actual", "difference", "note",
+    }
     if any(cell in header_terms for cell in normalized):
         return True
-    numeric_cells = [cell for cell in cells if re.fullmatch(r"(?:19|20)\d{2}", cell)]
-    return len(numeric_cells) >= 2 and len(numeric_cells) == len(cells) - 1
+
+    numeric_tokens = re.findall(r"(?<![A-Za-z])\d[\d,]*(?:\.\d+)?", line or "")
+    years = [token for token in numeric_tokens if re.fullmatch(r"(?:19|20)\d{2}", token)]
+    non_year_amounts = [
+        token for token in numeric_tokens
+        if not re.fullmatch(r"(?:19|20)\d{2}", token)
+        and ("," in token or len(token.replace(",", "")) >= 3)
+    ]
+    return len(years) >= 2 and not non_year_amounts
 
 
 def process_pdf_with_mineru(
