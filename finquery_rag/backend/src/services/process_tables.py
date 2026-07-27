@@ -11,7 +11,16 @@ def format_table(table: Any) -> str:
     if table.df.empty or len(table.df) < 1:
         return ""
 
-    formatted_table = table.df.apply(lambda x: x.str.replace("\n", "").str.replace("\t", " "))
+    # Camelot may embed newlines, carriage returns, or non-breaking spaces
+    # inside individual dataframe cells.  Leaving them in place turns one
+    # visual table row into several Markdown lines, disconnecting labels from
+    # their numeric values downstream.  Normalise all whitespace within each
+    # cell before serialising, while preserving the dataframe's columns.
+    formatted_table = table.df.apply(
+        lambda column: column.map(
+            lambda value: re.sub(r"\s+", " ", str(value or "")).strip()
+        )
+    )
 
     try:
         final_table = formatted_table.rename(columns=formatted_table.iloc[0]).drop(formatted_table.index[0]).reset_index(drop=True)
@@ -19,6 +28,42 @@ def format_table(table: Any) -> str:
         final_table = formatted_table
 
     return final_table.to_markdown(index=False)
+
+
+def is_usable_table_markdown(markdown: str) -> bool:
+    """Reject parser output that looks like a flattened page, not a table.
+
+    Camelot can return a non-empty dataframe after merging most of a visual
+    table into one or two very long cells.  Treating that artifact as a valid
+    table prevents the native PyMuPDF fallback from running and creates
+    misleading row/cell evidence.  The check intentionally validates only
+    structure and length; it does not depend on document names, page numbers,
+    or financial terms.
+    """
+    rows = []
+    for line in (markdown or "").splitlines():
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        if not cells or all(not cell for cell in cells):
+            continue
+        if all(re.fullmatch(r":?-{3,}:?", cell or "") for cell in cells):
+            continue
+        rows.append(cells)
+
+    if len(rows) < 2:
+        return False
+    widths = {len(row) for row in rows}
+    if len(widths) != 1:
+        return False
+
+    non_empty = [cell for row in rows for cell in row if cell]
+    if not non_empty:
+        return False
+    # One giant flattened cell is not a reliable row/column structure. Keep
+    # the threshold generous for narrative labels while failing malformed PDF
+    # extraction that packs a whole table into a single field.
+    if max(len(cell) for cell in non_empty) > 320:
+        return False
+    return True
 
 
 def _read_tables(pdf_path: str, pages: str) -> list[Any]:
@@ -68,7 +113,9 @@ def extract_tables_with_camelot(pdf_path: str, pages: str = "1-end") -> dict[int
             print(f"Skipping malformed table: {exc}")
             continue
 
-        if not table_markdown:
+        if not table_markdown or not is_usable_table_markdown(table_markdown):
+            if table_markdown:
+                print(f"Skipping structurally malformed table on page {page_num}.")
             continue
 
         tables_by_page.setdefault(page_num, []).append({
