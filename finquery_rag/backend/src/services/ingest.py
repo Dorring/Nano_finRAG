@@ -276,7 +276,11 @@ def _extract_layout_table_row_entries(page: pymupdf.Page, tables: list) -> list[
             parts = []
             previous_x1 = None
             for x0, x1, text in ordered:
-                if previous_x1 is not None and x0 - previous_x1 > 24:
+                # In common financial PDFs, adjacent numeric columns are
+                # separated by roughly 16+ points, while normal words within
+                # a label have much smaller gaps.  Keep the threshold low
+                # enough to retain distinct compact amount columns.
+                if previous_x1 is not None and x0 - previous_x1 > 16:
                     parts.append("|")
                 parts.append(text)
                 previous_x1 = x1
