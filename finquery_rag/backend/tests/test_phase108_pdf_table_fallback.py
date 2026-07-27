@@ -143,3 +143,39 @@ def test_layout_rows_keep_table_label_and_values_on_same_line():
 
     assert len(rows) == 1
     assert rows[0]["content"] == "Cash and cash equivalents | 3 | 143,540 | 206,031"
+
+
+def test_layout_rows_include_observed_period_header_context():
+    from src.services.ingest import _extract_layout_table_row_entries
+
+    class Table:
+        bbox = (0, 0, 500, 200)
+
+    class Page:
+        number = 0
+
+        def get_text(self, mode):
+            assert mode == "words"
+            return [
+                (10, 20, 75, 32, "December", 0, 0, 0),
+                (78, 20, 95, 32, "31,", 0, 0, 1),
+                (98, 20, 130, 32, "2020", 0, 0, 2),
+                (180, 20, 245, 32, "December", 0, 0, 3),
+                (248, 20, 265, 32, "31,", 0, 0, 4),
+                (268, 20, 300, 32, "2019", 0, 0, 5),
+                (10, 50, 45, 62, "Cash", 0, 1, 0),
+                (48, 50, 72, 62, "and", 0, 1, 1),
+                (75, 50, 100, 62, "cash", 0, 1, 2),
+                (103, 50, 190, 62, "equivalents", 0, 1, 3),
+                (230, 50, 245, 62, "3", 0, 1, 4),
+                (330, 50, 380, 62, "143,540", 0, 1, 5),
+                (400, 50, 450, 62, "206,031", 0, 1, 6),
+            ]
+
+    rows = _extract_layout_table_row_entries(Page(), [Table()])
+
+    assert rows[1]["content"] == (
+        "Cash and cash equivalents | 3 | 143,540 | 206,031\n"
+        "Table column context: December 31, 2020 | December 31, 2019"
+    )
+    assert rows[1]["table_header_context"] == "December 31, 2020 | December 31, 2019"
