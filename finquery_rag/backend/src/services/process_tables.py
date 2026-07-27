@@ -43,7 +43,7 @@ def is_usable_table_markdown(markdown: str) -> bool:
     rows = []
     for line in (markdown or "").splitlines():
         cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
-        if len(cells) < 2 or all(not cell for cell in cells):
+        if not cells or all(not cell for cell in cells):
             continue
         if all(re.fullmatch(r":?-{3,}:?", cell or "") for cell in cells):
             continue
@@ -52,7 +52,7 @@ def is_usable_table_markdown(markdown: str) -> bool:
     if len(rows) < 2:
         return False
     widths = {len(row) for row in rows}
-    if len(widths) != 1 or next(iter(widths)) < 2:
+    if len(widths) != 1:
         return False
 
     non_empty = [cell for row in rows for cell in row if cell]
