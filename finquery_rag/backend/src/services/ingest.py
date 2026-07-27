@@ -216,6 +216,82 @@ def _extract_pymupdf_table_entries(page: pymupdf.Page, tables: list) -> list[dic
         entries.append({"md": markdown, "bbox": bbox})
     return entries
 
+
+def _extract_layout_table_row_entries(page: pymupdf.Page, tables: list) -> list[dict]:
+    """Rebuild numeric table rows from native PDF word coordinates.
+
+    A visual table may survive detection while Camelot or ``Table.extract``
+    still separates its labels and values onto different Markdown lines.  PDF
+    word coordinates preserve the original horizontal reading order, so this
+    creates a narrow sparse-evidence row for words sharing a baseline inside
+    a detected table box.  It deliberately adds no inferred headers or values.
+    """
+    boxes = []
+    for table_index, table in enumerate(tables or [], start=1):
+        try:
+            bbox = tuple(getattr(table, "bbox", None) or ())
+        except Exception:
+            bbox = ()
+        if len(bbox) != 4:
+            continue
+        boxes.append((table_index, bbox))
+    if not boxes:
+        return []
+
+    try:
+        raw_words = page.get_text("words") or []
+    except Exception as exc:
+        print(f"Skipping layout table rows on page {page.number + 1}: {exc}")
+        return []
+
+    entries = []
+    for table_index, (left, top, right, bottom) in boxes:
+        words = []
+        for word in raw_words:
+            if len(word) < 5:
+                continue
+            x0, y0, x1, y1, text = word[:5]
+            text = str(text or "").strip()
+            if not text:
+                continue
+            center_y = (float(y0) + float(y1)) / 2
+            center_x = (float(x0) + float(x1)) / 2
+            if (
+                float(left) - 2 <= center_x <= float(right) + 2
+                and float(top) - 2 <= center_y <= float(bottom) + 2
+            ):
+                words.append((float(x0), float(y0), float(x1), text))
+
+        rows: list[dict] = []
+        for x0, y0, x1, text in sorted(words, key=lambda item: (item[1], item[0])):
+            if not rows or abs(y0 - rows[-1]["y"]) > 2.5:
+                rows.append({"y": y0, "words": [(x0, x1, text)]})
+            else:
+                rows[-1]["words"].append((x0, x1, text))
+
+        for row_index, row in enumerate(rows):
+            ordered = sorted(row["words"], key=lambda item: item[0])
+            if len(ordered) < 2:
+                continue
+            parts = []
+            previous_x1 = None
+            for x0, x1, text in ordered:
+                if previous_x1 is not None and x0 - previous_x1 > 24:
+                    parts.append("|")
+                parts.append(text)
+                previous_x1 = x1
+            content = " ".join(parts).strip()
+            if not re.search(r"\d", content):
+                continue
+            entries.append({
+                "content": content[:900],
+                "table_index": table_index,
+                "row_index": row_index,
+            })
+            if len(entries) >= 300:
+                return entries
+    return entries
+
 def _clean_front_matter_line(text: str) -> str:
     text = re.sub(r"\s+", " ", text or "").strip()
     text = re.sub(r"^\d{1,3}\s+", "", text)
@@ -471,6 +547,7 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
         })
 
     page_markdowns: list[tuple[int, str]] = []
+    layout_table_rows: list[tuple[int, dict]] = []
 
     for page_num in range(pages):
         page = doc[page_num]
@@ -483,6 +560,11 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
             native_entries = _extract_pymupdf_table_entries(page, native_tables)
             if native_entries:
                 tables_by_page[actual_page_num] = native_entries
+
+        layout_table_rows.extend(
+            (actual_page_num, entry)
+            for entry in _extract_layout_table_row_entries(page, native_tables)
+        )
 
         # Do not remove a detected table from regular text unless the page has
         # a structured table chunk to retain that evidence. Duplication is
@@ -585,6 +667,36 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
                     "parent_child": True,
                 }
             })
+
+    # Keep coordinate-reconstructed rows as primary sparse evidence. They are
+    # complementary to parser-produced Markdown rows and retain only observed
+    # words, so they cannot manufacture a financial value.
+    for actual_page_num, entry in layout_table_rows:
+        table_index = entry["table_index"]
+        row_index = entry["row_index"]
+        parent_id = make_chunk_id(
+            user_id, doc_name, f"page_{actual_page_num}::layout_table_parent_{table_index}"
+        )
+        doc_id = make_chunk_id(
+            user_id,
+            doc_name,
+            f"page_{actual_page_num}::layout_table_{table_index}::row_{row_index}",
+        )
+        chunks.append({
+            "content": entry["content"],
+            "metadata": {
+                "type": "table_row",
+                "subtype": "layout_coordinate_row",
+                "page": actual_page_num,
+                "source": pdf_path,
+                "doc_id": doc_id,
+                "parent_id": parent_id,
+                "parent_table_id": parent_id,
+                "table_num": table_index,
+                "table_row_index": row_index,
+                "table_layout_extracted": True,
+            },
+        })
 
     doc.close()
 
