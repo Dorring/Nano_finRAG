@@ -269,6 +269,7 @@ def _extract_layout_table_row_entries(page: pymupdf.Page, tables: list) -> list[
             else:
                 rows[-1]["words"].append((x0, x1, text))
 
+        header_context: list[str] = []
         for row_index, row in enumerate(rows):
             ordered = sorted(row["words"], key=lambda item: item[0])
             if len(ordered) < 2:
@@ -287,14 +288,42 @@ def _extract_layout_table_row_entries(page: pymupdf.Page, tables: list) -> list[
             content = " ".join(parts).strip()
             if not re.search(r"\d", content):
                 continue
+            if _is_layout_table_header(content):
+                header_context.append(content)
+                header_context = header_context[-3:]
+            elif header_context:
+                content = (
+                    f"{content}\n"
+                    f"Table column context: {' | '.join(header_context)}"
+                )
             entries.append({
                 "content": content[:900],
                 "table_index": table_index,
                 "row_index": row_index,
+                "table_header_context": "\n".join(header_context)[:600],
             })
             if len(entries) >= 300:
                 return entries
     return entries
+
+
+def _is_layout_table_header(content: str) -> bool:
+    """Identify period/column headers in a coordinate-reconstructed table.
+
+    A table's units and reporting period are commonly rendered on a separate
+    visual row from its line items.  Preserve them as context when they carry
+    repeated years or generic column labels; do not infer a schema from the
+    values themselves.
+    """
+    normalized = re.sub(r"\s+", " ", content or "").lower()
+    years = re.findall(r"\b(?:19|20)\d{2}\b", normalized)
+    if len(years) >= 2:
+        return True
+    header_markers = (
+        "actual", "budget", "forecast", "comparable", "variance",
+        "year ended", "period ended", "as at", "as of", "balance at",
+    )
+    return any(marker in normalized for marker in header_markers)
 
 def _clean_front_matter_line(text: str) -> str:
     text = re.sub(r"\s+", " ", text or "").strip()
@@ -699,6 +728,7 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
                 "table_num": table_index,
                 "table_row_index": row_index,
                 "table_layout_extracted": True,
+                "table_header_context": entry.get("table_header_context", ""),
             },
         })
 
