@@ -8,6 +8,27 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "src"))
 from src.application.rag_orchestrator import RAGOrchestrator
 
 
+class TestDisplaySourceDeduplication:
+    def test_keeps_first_source_per_document_page(self):
+        sources = [
+            {"filename": "report.pdf", "page": 10, "type": "table_row", "chunk_id": "row"},
+            {"filename": "report.pdf", "page": 10, "type": "table", "chunk_id": "table"},
+            {"filename": "report.pdf", "page": 11, "type": "text", "chunk_id": "text"},
+        ]
+
+        result = RAGOrchestrator._dedupe_display_sources(sources)
+
+        assert result == [sources[0], sources[2]]
+
+    def test_preserves_page_less_sources_by_chunk_id(self):
+        sources = [
+            {"filename": "report.pdf", "page": None, "chunk_id": "a"},
+            {"filename": "report.pdf", "page": None, "chunk_id": "b"},
+        ]
+
+        assert RAGOrchestrator._dedupe_display_sources(sources) == sources
+
+
 class TestConversationalQuery:
     def test_greeting(self):
         result = RAGOrchestrator._handle_conversational_query("hello")

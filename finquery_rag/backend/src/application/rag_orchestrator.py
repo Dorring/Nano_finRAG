@@ -77,6 +77,32 @@ class RAGOrchestrator:
     11. Trace logging
     """
 
+    @staticmethod
+    def _dedupe_display_sources(sources: list[dict]) -> list[dict]:
+        """Return one public citation per document page.
+
+        Retrieval may legitimately use several text, table, and row chunks
+        from a single page.  They must all remain available to context
+        construction and validation, but repeating them in the public source
+        list neither adds provenance nor helps a user inspect the evidence.
+        Keep the first (therefore highest-ranked) source for each page while
+        retaining sources without a page by their chunk identity.
+        """
+        deduped: list[dict] = []
+        seen: set[tuple] = set()
+        for source in sources or []:
+            filename = source.get("filename")
+            page = source.get("page")
+            if filename and page is not None:
+                key = ("page", str(filename), str(page))
+            else:
+                key = ("chunk", str(source.get("chunk_id") or id(source)))
+            if key in seen:
+                continue
+            seen.add(key)
+            deduped.append(source)
+        return deduped
+
     def __init__(
         self,
         *,
@@ -643,7 +669,7 @@ class RAGOrchestrator:
 
         return AnswerResult(
             answer=answer,
-            sources=tuple(sources),
+            sources=tuple(self._dedupe_display_sources(sources)),
             context=context,
             searched_docs=tuple(doc_names),
             confidence=confidence,
