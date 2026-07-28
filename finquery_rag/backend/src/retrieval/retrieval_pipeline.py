@@ -11,8 +11,12 @@ from src.retrieval.candidate_fusion import (
     normalize_scores,
     boost_front_matter_chunks,
     ensure_multi_doc_coverage,
+    rrf,
+    weighted_rrf,
 )
+from src.retrieval.candidate_trace import summarize_candidates
 from src.retrieval.query_processor import QueryProcessor
+from src.retrieval.query_profile import QueryVariant, profile_query
 
 
 class RetrievalPipeline:
@@ -61,6 +65,31 @@ class RetrievalPipeline:
             len(selected),
         )
         return selected
+
+    def _set_stage_debug(
+        self, *, profile, variants, dense_results, sparse_results,
+        fused_results, reranked_results, final_results,
+    ) -> None:
+        """Persist candidate stages using IDs and scores, never document text."""
+        self._last_retrieval_debug = {
+            **self._make_retrieval_debug(len(fused_results), len(final_results)),
+            "query_profile": {
+                "answer_type": profile.answer_type,
+                "is_numeric": profile.is_numeric,
+                "is_multi_document": profile.is_multi_document,
+            },
+            "query_variants": [
+                {"name": item.name, "text": item.text, "weight": item.weight}
+                for item in variants
+            ],
+            "candidate_stages": {
+                "dense": summarize_candidates(dense_results, limit=50),
+                "bm25": summarize_candidates(sparse_results, limit=50),
+                "rrf": summarize_candidates(fused_results, limit=40),
+                "reranker": summarize_candidates(reranked_results, limit=20),
+                "final": summarize_candidates(final_results, limit=5),
+            },
+        }
 
     def _attach_structured_table_evidence(
         self,
@@ -155,14 +184,19 @@ class RetrievalPipeline:
         # disambiguate similarly named metrics.
         if top_k > 0 and self._query_processor.is_numeric_query(query):
             candidate_k = max(candidate_k, top_k * 8)
-        dense_results = self._dense_query_fn(
-            query_text=retrieval_query, doc_name=document_name,
-            n_results=candidate_k, user_id=user_id,
-        )
-
         bm25 = self._bm25_retriever
         if bm25:
-            from src.retrieval.candidate_fusion import rrf
+            # NF36 keeps stage diagnostics but does not enable the evaluated
+            # multi-query path: all tested global weights regressed quality.
+            profile = profile_query(
+                query,
+                is_numeric=self._query_processor.is_numeric_query(query),
+            )
+            variants = [QueryVariant("original", query, 1.0)]
+            dense_results = self._dense_query_fn(
+                query_text=retrieval_query, doc_name=document_name,
+                n_results=candidate_k, user_id=user_id,
+            )
             sparse_results = bm25.search(
                 retrieval_query, k=candidate_k,
                 doc_name=document_name, user_id=user_id,
@@ -173,11 +207,27 @@ class RetrievalPipeline:
                 query, results,
                 is_front_matter_query_fn=self._query_processor.is_front_matter_query,
             )
-            selected = self._apply_reranker(query, results, top_k)
+            reranked = (
+                self._reranker.rerank(query, results, top_k=min(20, len(results)))
+                if self._reranker else results[:20]
+            )
+            selected = (
+                self._reranker.rerank(query, results, top_k=top_k)
+                if self._reranker else results[:top_k]
+            )
+            self._set_stage_debug(
+                profile=profile, variants=variants, dense_results=dense_results,
+                sparse_results=sparse_results, fused_results=results,
+                reranked_results=reranked, final_results=selected,
+            )
             return self._attach_structured_table_evidence(
-                selected[:top_k] if top_k else selected, user_id=user_id, query=query,
+                selected, user_id=user_id, query=query,
             )
 
+        dense_results = self._dense_query_fn(
+            query_text=retrieval_query, doc_name=document_name,
+            n_results=candidate_k, user_id=user_id,
+        )
         results = normalize_scores(dense_results)
         results = boost_front_matter_chunks(
             query, results,

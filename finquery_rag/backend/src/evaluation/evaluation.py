@@ -204,6 +204,7 @@ class Prediction:
     latency_ms: float | None = None
     error: str | None = None
     error_detail: str | None = None
+    retrieval_debug: dict[str, Any] = field(default_factory=dict)
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "Prediction":
@@ -227,6 +228,7 @@ class Prediction:
             latency_ms=_optional_float(data.get("latency_ms")),
             error=str(data["error"]) if data.get("error") else None,
             error_detail=str(data["error_detail"]) if data.get("error_detail") else None,
+            retrieval_debug=dict(data.get("retrieval_debug") or {}),
         )
 
 
@@ -905,6 +907,101 @@ def diagnose_retrieval(
             if total_expected_sources == 0
             else []
         ),
+    }
+
+
+def diagnose_candidate_stages(
+    cases: Iterable[EvaluationCase],
+    predictions: dict[str, Prediction],
+) -> dict[str, Any]:
+    """Classify where labeled evidence disappears in the retrieval pipeline."""
+    stage_names = ("bm25", "dense", "rrf", "reranker", "final")
+    counts = {
+        "not_in_bm25_or_dense_40": 0,
+        "lost_during_rrf": 0,
+        "lost_during_rerank": 0,
+        "lost_during_final_top_k": 0,
+        "evidence_present_answer_failed": 0,
+        "passed": 0,
+        "untraced": 0,
+    }
+    score_by_id = {
+        item["id"]: item
+        for item in evaluate_predictions(cases, predictions).get("cases", [])
+    }
+    items = []
+    for case in cases:
+        prediction = predictions.get(case.case_id)
+        stages = (prediction.retrieval_debug.get("candidate_stages", {}) if prediction else {})
+        if not case.expected_sources:
+            items.append({"id": case.case_id, "failure_stage": "passed", "reason": "no_expected_sources"})
+            counts["passed"] += 1
+            continue
+        if not stages:
+            items.append({"id": case.case_id, "failure_stage": "untraced"})
+            counts["untraced"] += 1
+            continue
+
+        def hits(stage: str, limit: int) -> bool:
+            rows = stages.get(stage, [])[:limit]
+            normalized = [
+                {
+                    "doc_id": row.get("evidence_id"),
+                    "filename": row.get("document_id"),
+                    "page": row.get("page"),
+                }
+                for row in rows
+            ]
+            return any(expected.matches(row) for expected in case.expected_sources for row in normalized)
+
+        bm25_hit = hits("bm25", 40)
+        dense_hit = hits("dense", 40)
+        if not bm25_hit and not dense_hit:
+            failure_stage = "not_in_bm25_or_dense_40"
+        elif not hits("rrf", 40):
+            failure_stage = "lost_during_rrf"
+        elif not hits("reranker", 20):
+            failure_stage = "lost_during_rerank"
+        elif not hits("final", 5):
+            failure_stage = "lost_during_final_top_k"
+        elif not score_by_id.get(case.case_id, {}).get("passed", False):
+            failure_stage = "evidence_present_answer_failed"
+        else:
+            failure_stage = "passed"
+        counts[failure_stage] += 1
+        items.append({
+            "id": case.case_id,
+            "failure_stage": failure_stage,
+            "bm25_hit_40": bm25_hit,
+            "dense_hit_40": dense_hit,
+            "rrf_hit_40": hits("rrf", 40),
+            "reranker_hit_20": hits("reranker", 20),
+            "final_hit_5": hits("final", 5),
+        })
+    stage_recall = {}
+    total_expected = sum(len(case.expected_sources) for case in cases)
+    stages_and_limits = (
+        ("bm25", 8), ("bm25", 20), ("bm25", 40),
+        ("dense", 8), ("dense", 20), ("dense", 40),
+        ("rrf", 8), ("rrf", 20), ("rrf", 40),
+        ("reranker", 5), ("reranker", 8), ("reranker", 20),
+        ("final", 5),
+    )
+    for stage, limit in stages_and_limits:
+        hits = 0
+        for case in cases:
+            prediction = predictions.get(case.case_id)
+            debug = prediction.retrieval_debug if prediction else {}
+            rows = debug.get("candidate_stages", {}).get(stage, [])[:limit]
+            normalized = [
+                {"doc_id": row.get("evidence_id"), "filename": row.get("document_id"), "page": row.get("page")}
+                for row in rows
+            ]
+            hits += sum(any(expected.matches(row) for row in normalized) for expected in case.expected_sources)
+        stage_recall[f"{stage}_recall_at_{limit}"] = hits / total_expected if total_expected else 1.0
+    return {
+        "summary": {**counts, "total_expected_sources": total_expected, **stage_recall},
+        "cases": items,
     }
 
 

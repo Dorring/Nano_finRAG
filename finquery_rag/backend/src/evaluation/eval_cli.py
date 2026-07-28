@@ -20,6 +20,7 @@ from .evaluation import (
     build_interview_report,
     compare_reports,
     diagnose_retrieval,
+    diagnose_candidate_stages,
     evaluate_predictions,
     export_replay_cases_from_feedback,
     export_replay_cases_from_traces,
@@ -111,6 +112,11 @@ def main(argv: list[str] | None = None) -> int:
     retrieval_diag.add_argument("--candidate-field", choices=["retrieved_chunks", "sources"], default="retrieved_chunks")
     retrieval_diag.add_argument("--worst-limit", type=int, default=10, help="Maximum worst cases to include")
     retrieval_diag.add_argument("--out", help="Optional diagnostics JSON output path")
+
+    candidate_stage = sub.add_parser("candidate-stage-diagnostics", help="Classify candidate loss across BM25, dense, RRF, reranker, and final stages")
+    candidate_stage.add_argument("--cases", required=True, help="Golden/replay cases JSONL")
+    candidate_stage.add_argument("--predictions", required=True, help="Predictions JSONL with retrieval_debug candidate stages")
+    candidate_stage.add_argument("--out", help="Optional diagnostics JSON output path")
 
     interview = sub.add_parser("interview-report", help="Build a compact interview/demo metrics report")
     interview.add_argument("--cases", required=True, help="Golden/replay cases JSONL")
@@ -420,6 +426,20 @@ def main(argv: list[str] | None = None) -> int:
         if args.out:
             write_json_file(args.out, report)
         print(payload)
+        return 0
+
+    if args.command == "candidate-stage-diagnostics":
+        try:
+            report = diagnose_candidate_stages(
+                load_jsonl_cases(args.cases),
+                load_jsonl_predictions(args.predictions),
+            )
+        except ValueError as exc:
+            print(str(exc), file=sys.stderr)
+            return 2
+        if args.out:
+            write_json_file(args.out, report)
+        print(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True))
         return 0
 
     if args.command == "interview-report":
