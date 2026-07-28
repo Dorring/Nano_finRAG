@@ -67,6 +67,17 @@ class ExpectedSource:
 
         return True
 
+    def to_stable_dict(self) -> dict[str, Any]:
+        """Return a canonical dict for stable fingerprinting.
+
+        `page` is normalized to a string so that 1 and "1" produce the same
+        fingerprint; both forms are semantically equivalent citation targets.
+        """
+        return {
+            "filename": self.filename,
+            "page": None if self.page is None else str(self.page),
+            "chunk_id": self.chunk_id,
+        }
 
 
 @dataclass(frozen=True)
