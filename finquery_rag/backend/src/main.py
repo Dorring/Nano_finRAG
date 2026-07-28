@@ -1337,3 +1337,39 @@ async def clear_all_documents(current_user: User = Depends(get_current_user)):
         raise api_error(500, "partial_failure", f"Partial failure: {'; '.join(errors)}")
 
     return {"message": f"All documents cleared for user {current_user.id}"}
+
+
+
+@app.post("/ops/retrieval-candidates")
+async def retrieval_candidates(
+    request: QueryRequest,
+    current_user: User = Depends(get_current_user),
+):
+    """Return privacy-safe per-document retrieval stages for offline evaluation.
+
+    This diagnostic route intentionally does not call generation, create a
+    session, or mutate indexes. It is authenticated and intended for the
+    NF37 candidate-pool exporter.
+    """
+    document_names = list(request.document_names or [])
+    if not document_names:
+        document_names = [
+            row.get("name") or row.get("filename")
+            for row in list_all_documents(user_id=current_user.id)
+            if row.get("name") or row.get("filename")
+        ]
+    engine = get_rag_engine()
+    per_document = []
+    for document_name in document_names:
+        engine.retrieve_single_document(
+            document_name,
+            request.question,
+            user_id=current_user.id,
+            n_results=max(5, request.n_results),
+        )
+        debug = dict(engine._last_retrieval_debug)
+        per_document.append({
+            "document_name": document_name,
+            "candidate_stages": debug.get("candidate_stages", {}),
+        })
+    return {"question": request.question, "documents": per_document}

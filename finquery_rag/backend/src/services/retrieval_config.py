@@ -20,11 +20,11 @@ def get_embedding_model_name() -> str:
 
 
 def get_reranker_name() -> str:
-    return os.getenv("RAG_RERANKER", DEFAULT_RERANKER).strip() or DEFAULT_RERANKER
+    return (os.getenv("RERANKER_PROVIDER") or os.getenv("RAG_RERANKER") or DEFAULT_RERANKER).strip() or DEFAULT_RERANKER
 
 
 def get_reranker_model() -> str | None:
-    value = os.getenv("RAG_RERANKER_MODEL")
+    value = os.getenv("RERANKER_MODEL_NAME") or os.getenv("RAG_RERANKER_MODEL")
     if value is None:
         return None
     value = value.strip()
@@ -50,7 +50,7 @@ def build_retrieval_model_config() -> dict[str, Any]:
         errors.append("RAG_RERANKER_MODEL points to a missing local path")
     if not _looks_like_local_path(embedding_model):
         warnings.append("embedding model is a remote/model-hub name; ensure it is cached or downloads are allowed")
-    if reranker == "cross-encoder" and reranker_model and not _looks_like_local_path(reranker_model):
+    if reranker in {"cross-encoder", "bge_v2_m3", "bge-v2-m3"} and reranker_model and not _looks_like_local_path(reranker_model):
         warnings.append("cross-encoder reranker model is a remote/model-hub name; prefer a local path for offline deployment")
 
     return {

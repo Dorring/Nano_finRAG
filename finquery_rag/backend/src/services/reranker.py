@@ -148,6 +148,8 @@ def build_reranker(
         if not model_name_or_path:
             raise ValueError("RAG_RERANKER_MODEL is required for cross-encoder reranking")
         return CrossEncoderReranker(model_name_or_path=model_name_or_path)
+    if normalized in {"bge_v2_m3", "bge-v2-m3"}:
+        return BgeV2M3Reranker(model_name_or_path=model_name_or_path or "BAAI/bge-reranker-v2-m3")
     raise ValueError(f"Unknown reranker: {name}")
 
 
@@ -388,3 +390,79 @@ def _safe_float(value) -> float:
         return float(value)
     except (TypeError, ValueError):
         return 0.0
+
+
+
+@dataclass
+class BgeV2M3Reranker:
+    """Explicit BGE v2-m3 evidence-bundle reranker.
+
+    The provider is intentionally lazy and never downloads during module import.
+    Evaluation callers receive provider failures rather than a silent fallback.
+    """
+
+    model_name_or_path: str = "BAAI/bge-reranker-v2-m3"
+    device: str = "cuda"
+    max_length: int = 1024
+    batch_size: int = 8
+    model: Any | None = None
+    name: str = "bge_v2_m3"
+
+    def _get_model(self):
+        if self.model is None:
+            try:
+                from FlagEmbedding import FlagReranker
+            except ImportError as exc:
+                raise RuntimeError(
+                    "FlagEmbedding is required for RERANKER_PROVIDER=bge_v2_m3"
+                ) from exc
+            self.model = FlagReranker(
+                self.model_name_or_path,
+                use_fp16=self.device.startswith("cuda"),
+                devices=[self.device],
+            )
+        return self.model
+
+    def score(self, query: str, chunks: list[dict]) -> list[float]:
+        if not chunks:
+            return []
+        from src.retrieval.evidence_bundle_serializer import (
+            build_evidence_bundle,
+            build_token_budgeted_text,
+        )
+        pairs = [
+            [query, build_token_budgeted_text(build_evidence_bundle(chunk), max_length=self.max_length)]
+            for chunk in chunks
+        ]
+        scores = self._get_model().compute_score(
+            pairs,
+            batch_size=self.batch_size,
+            max_length=self.max_length,
+            normalize=True,
+        )
+        if isinstance(scores, (float, int)):
+            scores = [scores]
+        scores = list(scores)
+        if len(scores) != len(chunks):
+            raise RuntimeError(
+                f"BGE reranker output count mismatch: expected {len(chunks)}, got {len(scores)}"
+            )
+        return [_safe_float(score) for score in scores]
+
+    def rerank(self, query: str, chunks: list[dict], top_k: int | None = None) -> list[dict]:
+        if not chunks:
+            return []
+        scores = self.score(query, chunks)
+        scored = []
+        for index, (chunk, score) in enumerate(zip(chunks, scores)):
+            item = dict(chunk)
+            item["rerank_score"] = _safe_float(score)
+            item["reranker"] = self.name
+            item["pre_rerank_rank"] = index + 1
+            scored.append(item)
+        scored.sort(key=lambda item: (
+            -_safe_float(item["rerank_score"]),
+            item["pre_rerank_rank"],
+            str(item.get("doc_id") or ""),
+        ))
+        return scored[:top_k] if top_k is not None else scored
