@@ -166,7 +166,13 @@ class DeterministicAnswerExtractor:
             metadata = chunk.get("metadata") or {}
             source = self._chunk_source_label(chunk)
             for text in self._numeric_windows(chunk.get("content", "")):
-                numeric_candidates = self._numeric_candidate_records(query, text)
+                if self._has_metric_year_conflict(query, text):
+                    continue
+                numeric_candidates = self._column_aware_numeric_candidates(
+                    query,
+                    text,
+                    self._numeric_candidate_records(query, text),
+                )
                 values = self._unique_numeric_values(numeric_candidates)
                 if not values:
                     continue
@@ -320,8 +326,14 @@ class DeterministicAnswerExtractor:
     def _numeric_windows(cls, content: str) -> list[str]:
         """Split raw chunk text into compact, table-friendly evidence rows."""
         windows = []
-        for raw_line in (content or "").splitlines():
+        raw_lines = (content or "").splitlines()
+        inferred_header = cls._inferred_column_context(raw_lines)
+        for index, raw_line in enumerate(raw_lines):
             line = re.sub(r"\s+", " ", raw_line).strip(" |-\t")
+            if line.lower().startswith("table column context:"):
+                # The context is attached to the preceding row below.  It is
+                # not independently answerable evidence.
+                continue
             # A chunk beginning with punctuation and a digit is usually a
             # split decimal/amount (for example ``.9 million`` after ``$1``
             # was cut into the preceding chunk).  It is not standalone
@@ -329,12 +341,75 @@ class DeterministicAnswerExtractor:
             if re.match(r"^[.,;)]\s*\d", line):
                 continue
             if line and not cls._is_structural_numeric_line(line) and re.search(r"\d", line):
+                # Coordinate-reconstructed tables retain the source row and
+                # a following column-header line.  Keep them together so an
+                # answerer can map a requested period/qualifier to the right
+                # value instead of treating every table amount as equivalent.
+                if index + 1 < len(raw_lines):
+                    header = re.sub(r"\s+", " ", raw_lines[index + 1]).strip()
+                    if header.lower().startswith("table column context:"):
+                        line = f"{line}\n{header}"
+                if "table column context:" not in line.lower() and inferred_header:
+                    line = f"{line}\nTable column context: {inferred_header}"
+                line = cls._separate_packed_table_values(line)
                 windows.append(line[:700])
         if not windows:
             compact = re.sub(r"\s+", " ", content or "").strip()
             windows = [sentence.strip() for sentence in re.split(r"(?<=[.;])\s+", compact)
                        if sentence.strip() and re.search(r"\d", sentence)]
         return windows
+
+    @staticmethod
+    def _inferred_column_context(lines: list[str]) -> str | None:
+        """Recover repeated date headings from a text-extracted table.
+
+        Some PDFs preserve the table's values but emit its two date headers as
+        separate text lines.  This is still explicit evidence, so it may be
+        used for column alignment.  We only accept the first two date/year
+        headings near the beginning of a chunk; arbitrary later years in body
+        prose are intentionally ignored.
+        """
+        compact = re.sub(r"\s+", " ", " ".join(lines[:12] or [])).strip()
+        date_or_year = re.compile(
+            r"\b(?:(?:January|February|March|April|May|June|July|August|"
+            r"September|October|November|December)\s+\d{1,2},?\s*)?"
+            r"(?:19|20)\d{2}\b",
+            re.IGNORECASE,
+        )
+        headings = []
+        for match in date_or_year.finditer(compact):
+            heading = match.group(0).strip()
+            if heading and heading not in headings:
+                headings.append(heading)
+            if len(headings) == 2:
+                break
+        return " | ".join(headings) if len(headings) == 2 else None
+
+    @staticmethod
+    def _separate_packed_table_values(text: str) -> str:
+        """Insert separators in clearly concatenated table amounts.
+
+        A recurring PDF extraction defect joins adjacent columns into one
+        token, for example ``143,540206,031``.  Split only runs that contain
+        at least two complete comma-grouped values and do *not* already look
+        like one legitimate multi-group value such as ``1,234,567``.  The
+        operation is syntax-based and does not depend on a document, page, or
+        financial metric name.
+        """
+        def replace(match: re.Match) -> str:
+            raw = match.group(0)
+            if re.fullmatch(r"\d{1,3}(?:,\d{3}){2,}", raw):
+                return raw
+            values = re.findall(r"\d{1,3},\d{3}", raw)
+            if len(values) < 2:
+                return raw
+            first = raw.find(values[0])
+            prefix = raw[:first]
+            if prefix and not prefix.isdigit():
+                return raw
+            return " | ".join(part for part in ([prefix] if prefix else []) + values)
+
+        return re.sub(r"(?<![\d,])[\d,]{13,}(?![\d,])", replace, text or "")
 
     @staticmethod
     def _raw_numeric_evidence_score(
@@ -670,6 +745,13 @@ class DeterministicAnswerExtractor:
         for match in pattern.finditer(text or ""):
             if match.start() and (text or "")[match.start() - 1] == ".":
                 continue
+            # A comma is a structural separator in a financial value.  Text
+            # extraction occasionally glues a reporting year or footnote to
+            # an amount (for example ``2018328,732``); that is not a valid
+            # numeric claim and must never outrank clean evidence elsewhere.
+            raw_numeric = re.sub(r"[^0-9,]", "", match.group(0))
+            if re.search(r"\d{4,},\d{3}", raw_numeric):
+                continue
             value = cls._normalize_numeric_phrase(match.group(0), query, text)
             if not value:
                 continue
@@ -686,6 +768,126 @@ class DeterministicAnswerExtractor:
                 ranked.append((score, match.start(), value))
         ranked.sort(key=lambda item: (-item[0], item[1]))
         return ranked
+
+    @classmethod
+    def _column_aware_numeric_candidates(
+        cls,
+        query: str,
+        text: str,
+        candidates: list[tuple[float, int, str]],
+    ) -> list[tuple[float, int, str]]:
+        """Boost values aligned with an explicit table-column context.
+
+        Layout extraction often yields a sparse row such as ``Cash | 143,540
+        | 206,031`` followed by ``Table column context: 2020 | 2019``.  The
+        mapping here is deliberately conservative and generic: only the last
+        N numeric cells are aligned to N visible headers.  That handles common
+        label/footnote prefixes while leaving ambiguous rows unchanged.
+        """
+        marker = re.search(r"(?:^|\n)Table column context:\s*(.+)$", text or "", re.IGNORECASE)
+        if not marker or len(candidates) < 2:
+            return candidates
+
+        headers = [part.strip().lower() for part in marker.group(1).split("|") if part.strip()]
+        # ``candidates`` arrives ordered by relevance score.  Column mapping
+        # is positional, so restore source-text order before pairing values
+        # with their headers.
+        row_candidates = sorted(
+            (item for item in candidates if item[1] < marker.start()),
+            key=lambda item: item[1],
+        )
+        if len(headers) < 2 or len(row_candidates) < 2:
+            return candidates
+
+        # Multi-line headers are flattened into one context string during
+        # layout extraction.  Prefer the tail of the header that actually
+        # describes period/value columns, then align only as many columns as
+        # the row exposes.  This avoids mapping a leading ``No.`` or table
+        # title onto the first financial amount.
+        period_headers = [
+            header for header in headers
+            if re.search(r"\b(?:19|20)\d{2}\b", header)
+            or any(term in header for term in (
+                "actual", "budget", "forecast", "comparable", "variance",
+            ))
+        ]
+        if len(period_headers) >= 2:
+            headers = period_headers
+        if len(headers) > len(row_candidates):
+            headers = headers[-len(row_candidates):]
+        elif len(row_candidates) > len(headers):
+            row_candidates = row_candidates[-len(headers):]
+        if len(headers) < 2:
+            return candidates
+
+        # Headers describe the trailing numeric columns; leading row labels
+        # and statement-note numbers must not shift this alignment.
+        aligned = row_candidates[-len(headers):]
+        query_lower = (query or "").lower()
+        query_years = set(re.findall(r"\b(?:19|20)\d{2}\b", query_lower))
+        query_qualifiers = {
+            token
+            for token in ("actual", "budget", "forecast", "comparable", "variance")
+            if token in query_lower
+        }
+        if not query_years and not query_qualifiers:
+            return candidates
+
+        adjustments = {}
+        for candidate, header in zip(aligned, headers):
+            header_years = set(re.findall(r"\b(?:19|20)\d{2}\b", header))
+            bonus = 0.0
+            if query_years:
+                if query_years & header_years:
+                    bonus += 18.0
+                elif header_years:
+                    bonus -= 6.0
+            bonus += 8.0 * sum(qualifier in header for qualifier in query_qualifiers)
+            adjustments[candidate] = bonus
+
+        if not adjustments or not any(adjustments.values()):
+            return candidates
+        boosted = [
+            (score + adjustments.get((score, start, value), 0.0), start, value)
+            for score, start, value in candidates
+        ]
+        boosted.sort(key=lambda item: (-item[0], item[1]))
+        return boosted
+
+    @classmethod
+    def _has_metric_year_conflict(cls, query: str, text: str) -> bool:
+        """Reject a metric row explicitly labelled with another reporting year.
+
+        Financial statements routinely include opening balances next to the
+        requested reporting-period value.  A row such as ``Net assets at
+        December 31, 2018`` is contradictory evidence for a question about
+        2020, even when the section heading elsewhere mentions 2020.  Require
+        the conflict to occur immediately after a query metric phrase so
+        unrelated historical comparisons remain usable evidence.
+        """
+        query_years = set(re.findall(r"\b(?:19|20)\d{2}\b", query or ""))
+        if not query_years:
+            return False
+        lowered = (text or "").lower()
+        for phrase in cls._query_metric_phrases(query):
+            for match in re.finditer(re.escape(phrase), lowered):
+                # Only an immediately following date labels this metric's
+                # value.  A later comparison date (for example “compared to
+                # 2024”) must remain valid evidence for a 2025 value.
+                following = lowered[match.end():match.end() + 48]
+                nearby_years = set(re.findall(r"\b(?:19|20)\d{2}\b", following))
+                # A missing delimiter can join a year to the first table
+                # amount (``2018328,732``).  Preserve the embedded year for
+                # temporal validation only when the remainder has the shape
+                # of a comma-grouped amount; ordinary long identifiers do
+                # not become reporting-period evidence.
+                nearby_years.update(re.findall(
+                    r"\b((?:19|20)\d{2})(?=\d{1,3},\d{3})",
+                    following,
+                ))
+                if nearby_years and not (nearby_years & query_years):
+                    return True
+        return False
 
     @staticmethod
     def _unique_numeric_values(ranked: list[tuple[float, int, str]]) -> list[str]:

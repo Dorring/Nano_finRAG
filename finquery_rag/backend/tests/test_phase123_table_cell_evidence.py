@@ -64,3 +64,138 @@ def test_table_cell_children_skip_ambiguous_header_value_alignment():
 
     assert any(child["metadata"].get("type") == "table_row" for child in children)
     assert not any(child["metadata"].get("type") == "table_cell" for child in children)
+
+
+def test_layout_row_column_context_selects_requested_reporting_period():
+    """Sparse coordinate rows retain enough context for safe year selection."""
+    extractor = DeterministicAnswerExtractor(query_processor=QueryProcessor())
+    chunks = [{
+        "content": (
+            "Cash and cash equivalents | 3 | 143,540 | 206,031\n"
+            "Table column context: December 31, 2020 | December 31, 2019"
+        ),
+        "metadata": {
+            "type": "table_row",
+            "subtype": "layout_coordinate_row",
+            "doc_name": "statement.pdf",
+            "page": 4,
+        },
+        "score": 0.1,
+    }]
+
+    answer = extractor.answer_numeric_query_from_chunks(
+        "What were cash and cash equivalents at December 31, 2020?",
+        chunks,
+    )
+
+    assert answer is not None
+    assert "143,540" in answer["answer"]
+    assert "206,031" not in answer["answer"]
+
+
+def test_layout_row_column_context_selects_requested_actual_column():
+    """Column qualifiers are treated as evidence, not document-specific rules."""
+    extractor = DeterministicAnswerExtractor(query_processor=QueryProcessor())
+    chunks = [{
+        "content": (
+            "System A | 110,231 | 98,755 | 10,342\n"
+            "Table column context: Budget 2020 | Actual 2020 | Variance"
+        ),
+        "metadata": {"type": "table_row", "doc_name": "statement.pdf", "page": 8},
+        "score": 0.1,
+    }]
+
+    answer = extractor.answer_numeric_query_from_chunks(
+        "What was the actual 2020 amount for System A?",
+        chunks,
+    )
+
+    assert answer is not None
+    assert "98,755" in answer["answer"]
+    assert "110,231" not in answer["answer"]
+
+
+def test_text_extracted_date_headers_and_packed_values_are_aligned_safely():
+    """Broken PDF column spacing remains usable without document-specific rules."""
+    extractor = DeterministicAnswerExtractor(query_processor=QueryProcessor())
+    chunks = [{
+        "content": (
+            "December 31,\n2020\nDecember 31,\n2019\n"
+            "Total cash and cash equivalents143,540206,031"
+        ),
+        "metadata": {"type": "text", "doc_name": "statement.pdf", "page": 9},
+        "score": 0.1,
+    }]
+
+    answer = extractor.answer_numeric_query_from_chunks(
+        "What were total cash and cash equivalents at December 31, 2020?",
+        chunks,
+    )
+
+    assert answer is not None
+    assert "143,540" in answer["answer"]
+    assert "206,031" not in answer["answer"]
+
+
+def test_malformed_glued_year_amount_is_not_a_numeric_claim():
+    extractor = DeterministicAnswerExtractor(query_processor=QueryProcessor())
+    chunks = [{
+        "content": (
+            "Net assets at December 31, 2018328,732\n"
+            "At December 31, 2020, net assets were 387.1 million Swiss francs."
+        ),
+        "metadata": {"type": "text", "doc_name": "statement.pdf", "page": 12},
+        "score": 0.1,
+    }]
+
+    answer = extractor.answer_numeric_query_from_chunks(
+        "What were net assets at December 31, 2020?",
+        chunks,
+    )
+
+    assert answer is not None
+    assert "387.1 million" in answer["answer"]
+    assert "2018328,732" not in answer["answer"]
+
+
+def test_explicit_opening_balance_year_does_not_answer_requested_period():
+    extractor = DeterministicAnswerExtractor(query_processor=QueryProcessor())
+    chunks = [{
+        "content": (
+            "Net assets at December 31, 2018 were 261,412.\n"
+            "At December 31, 2020, net assets were 387.1 million Swiss francs."
+        ),
+        "metadata": {"type": "text", "doc_name": "statement.pdf", "page": 12},
+        "score": 0.1,
+    }]
+
+    answer = extractor.answer_numeric_query_from_chunks(
+        "What were net assets at December 31, 2020?",
+        chunks,
+    )
+
+    assert answer is not None
+    assert "387.1 million" in answer["answer"]
+    assert "261,412" not in answer["answer"]
+
+
+def test_flattened_multiline_headers_ignore_table_number_column():
+    extractor = DeterministicAnswerExtractor(query_processor=QueryProcessor())
+    chunks = [{
+        "content": (
+            "Reserve and surplus | 1 | 2,00,000 | 5,00,000\n"
+            "Table column context: Balance Sheet as at March 31, 2017 | "
+            "No. | 2017 (Rs.) | 2016 (Rs.)"
+        ),
+        "metadata": {"type": "table_row", "doc_name": "statement.pdf", "page": 13},
+        "score": 0.1,
+    }]
+
+    answer = extractor.answer_numeric_query_from_chunks(
+        "What reserve and surplus amount is shown for March 31, 2017?",
+        chunks,
+    )
+
+    assert answer is not None
+    assert "2,00,000" in answer["answer"]
+    assert "5,00,000" not in answer["answer"]
