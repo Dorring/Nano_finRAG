@@ -30,3 +30,7 @@ dependencies = [
 testpaths = ["tests"]
 python_files = ["test_*.py"]
 addopts = "-p no:cacheprovider"
+markers = [
+    "integration: tests requiring real model downloads or external services",
+    "gpu: tests requiring GPU hardware",
+]
