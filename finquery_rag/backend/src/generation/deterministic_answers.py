@@ -174,7 +174,8 @@ class DeterministicAnswerExtractor:
                     self._numeric_candidate_records(query, text),
                 )
                 values = self._unique_numeric_values(numeric_candidates)
-                if not values:
+                component_pairs = self._component_amount_pairs(query, [{"text": text}])
+                if not values and not component_pairs:
                     continue
                 score = self._raw_numeric_evidence_score(text, query, query_terms)
                 anchor_matches, anchor_conflicts = self._anchor_profile(
@@ -184,13 +185,16 @@ class DeterministicAnswerExtractor:
                 # (for example financing activities for operating activities)
                 # is contradictory evidence, not a partial match. This is
                 # phrase-based and independent of document names or pages.
-                if anchor_conflicts:
+                if anchor_conflicts and not component_pairs:
                     continue
-                if anchor_phrases and not anchor_matches:
+                if anchor_phrases and not anchor_matches and not component_pairs:
                     continue
                 score += anchor_matches * 8.0
+                if component_pairs:
+                    score += 12.0
+                    values = component_pairs
                 score += self._numeric_relation_score(query, text)
-                if score <= 0:
+                if score <= 0 and not component_pairs:
                     continue
                 # Rank at value granularity as well as row granularity. A
                 # broad row can mention the metric twice; the direct metric
@@ -212,18 +216,11 @@ class DeterministicAnswerExtractor:
         if not selected:
             return None
 
-        values = []
-        seen = set()
-        for item in selected:
-            for value in item["values"]:
-                key = value.lower()
-                if key not in seen:
-                    seen.add(key)
-                    values.append(value)
-                if len(values) >= self._numeric_value_limit(query):
-                    break
-            if len(values) >= self._numeric_value_limit(query):
-                break
+        component_pairs = self._component_amount_pairs(query, selected)
+        if component_pairs:
+            values = component_pairs
+        else:
+            values = self._select_answer_values(query, selected)
         if not values:
             return None
 
@@ -579,6 +576,92 @@ class DeterministicAnswerExtractor:
         return 2 if any(marker in normalized for marker in multi_value_markers) else 1
 
     @staticmethod
+    def _asks_for_rate(query: str) -> bool:
+        normalized = (query or "").lower()
+        return any(marker in normalized for marker in (
+            "growth", "growth rate", "year-over-year", "year over year",
+            "percentage", "percent",
+        ))
+
+    @classmethod
+    def _select_answer_values(cls, query: str, selected: list[dict]) -> list[str]:
+        """Choose complementary values from one evidence row when possible.
+
+        A question asking for a metric and its rate must not be answered by
+        taking arbitrary numbers from separate retrieved chunks. Prefer an
+        amount and a percentage that co-occur in the same evidence row.
+        """
+        limit = cls._numeric_value_limit(query)
+        if limit > 1 and cls._asks_for_rate(query):
+            for item in selected:
+                ranked = cls._column_aware_numeric_candidates(
+                    query,
+                    item["text"],
+                    cls._numeric_candidate_records(query, item["text"]),
+                )
+                amounts = [
+                    value for _, _, value in ranked
+                    if re.search(r"\$|million|billion|thousand|francs", value, re.IGNORECASE)
+                ]
+                rates = [
+                    value for _, _, value in ranked
+                    if re.search(r"%|per cent", value, re.IGNORECASE)
+                ]
+                if amounts and rates:
+                    return [amounts[0], rates[0]]
+
+        values = []
+        seen = set()
+        for item in selected:
+            for value in item["values"]:
+                key = value.lower()
+                if key not in seen:
+                    seen.add(key)
+                    values.append(value)
+                if len(values) >= limit:
+                    return values
+        return values
+
+    @classmethod
+    def _component_amount_pairs(cls, query: str, selected: list[dict]) -> list[str]:
+        """Extract labelled monetary components from a single evidence span.
+
+        This is scoped to explicit component/list questions. It binds each
+        amount to the nearby label rather than returning detached amounts.
+        """
+        normalized = (query or "").lower()
+        if not any(marker in normalized for marker in (
+            "component", "components", "consist", "consisted", "two ",
+        )):
+            return []
+
+        amount = r"(\$?\d[\d,]*(?:\.\d+)?\s*(?:million|billion|thousand|francs))"
+        connector = (
+            r"(?:in\s+(?:an?\s+)?(?:aggregate\s+)?"
+            r"(?:principal\s+)?(?:amount|value)\s+of|of|was|were)"
+        )
+        pattern = re.compile(
+            r"(?:\([a-z]\)\s*)?(?:an?\s+|the\s+)?"
+            r"(?P<label>[A-Za-z][A-Za-z0-9&'/-]*(?:\s+[A-Za-z][A-Za-z0-9&'/-]*){0,7}?)"
+            r"\s+" + connector + r"\s+" + amount,
+            re.IGNORECASE,
+        )
+        for item in selected:
+            pairs = []
+            seen = set()
+            for match in pattern.finditer(item.get("text", "")):
+                label = re.sub(r"\s+", " ", match.group("label")).strip(" -")
+                value = cls._normalize_numeric_phrase(match.group(2), query, item["text"])
+                key = (label.lower(), value.lower())
+                if not label or key in seen:
+                    continue
+                seen.add(key)
+                pairs.append(f"{label}, {value}")
+                if len(pairs) >= 2:
+                    return pairs
+        return []
+
+    @staticmethod
     def _select_raw_numeric_evidence(query: str, candidates: list[dict], *, limit: int) -> list[dict]:
         """Keep complementary raw evidence without duplicating one table row."""
         selected = []
@@ -720,6 +803,7 @@ class DeterministicAnswerExtractor:
     @staticmethod
     def _normalize_numeric_phrase(value: str, query: str, evidence_text: str) -> str:
         value = re.sub(r"\s+", " ", value or "").strip(" ,.;:")
+        value = re.sub(r"(?<=\d)\s+%", "%", value)
         value = re.sub(r"\$(\d[\d,]*)\.0\s+million\b", r"$\1 million", value, flags=re.IGNORECASE)
         if value.endswith("%") and any(marker in (query or "").lower() for marker in ("year-over-year", "growth rate", "grow year over year")):
             if "year-over-year" in evidence_text.lower() or "compared to" in evidence_text.lower():
