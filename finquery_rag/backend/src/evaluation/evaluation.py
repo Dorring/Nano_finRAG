@@ -915,7 +915,6 @@ def diagnose_candidate_stages(
     predictions: dict[str, Prediction],
 ) -> dict[str, Any]:
     """Classify where labeled evidence disappears in the retrieval pipeline."""
-    stage_names = ("bm25", "dense", "rrf", "reranker", "final")
     counts = {
         "not_in_bm25_or_dense_40": 0,
         "lost_during_rrf": 0,
