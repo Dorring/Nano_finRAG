@@ -55,10 +55,11 @@ def _build_record(doc_id: str, content: str, metadata: dict) -> CanonicalEvidenc
     )
 
 
-def export_canonical_corpus(out_dir: Path) -> dict:
+def export_canonical_corpus(out_dir: Path, chroma_path: str | None = None) -> dict:
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    client = chromadb.PersistentClient(path=CHROMA_PATH)
+    resolved_path = chroma_path or CHROMA_PATH
+    client = chromadb.PersistentClient(path=resolved_path)
     collection = client.get_or_create_collection(name=COLLECTION_NAME)
     data = collection.get(include=["metadatas", "documents"])
 
@@ -92,10 +93,7 @@ def main() -> int:
     parser.add_argument("--chroma-path", default=CHROMA_PATH)
     args = parser.parse_args()
 
-    global CHROMA_PATH
-    CHROMA_PATH = args.chroma_path
-
-    export_canonical_corpus(Path(args.out_dir))
+    export_canonical_corpus(Path(args.out_dir), chroma_path=args.chroma_path)
     return 0
 
 
