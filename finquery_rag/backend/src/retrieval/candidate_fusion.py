@@ -184,3 +184,27 @@ def rrf(ranked_lists, k: int = 60):
         {**doc_map[doc_id], "fused_score": score, "score_kind": "rrf"}
         for doc_id, score in sorted_ids
     ]
+
+
+def weighted_rrf(ranked_lists, k: int = 60):
+    """Fuse variant/retriever candidate lists with deterministic provenance."""
+    fused_scores = defaultdict(float)
+    candidates = {}
+    provenance = defaultdict(list)
+    for variant, retriever, ranked in ranked_lists:
+        for rank, item in enumerate(ranked or [], start=1):
+            metadata = item.get("metadata") or {}
+            if metadata.get("type") == "table_cell":
+                continue
+            key = item.get("doc_id")
+            if not key:
+                continue
+            contribution = float(variant.weight) / (k + rank)
+            fused_scores[key] += contribution
+            candidates.setdefault(key, item)
+            provenance[key].append({"query_variant": variant.name, "retriever": retriever, "rank": rank, "contribution": contribution})
+    return [
+        {**candidates[key], "fused_score": score, "score_kind": "rrf",
+         "retrieval_provenance": provenance[key]}
+        for key, score in sorted(fused_scores.items(), key=lambda pair: (-pair[1], pair[0]))
+    ]
