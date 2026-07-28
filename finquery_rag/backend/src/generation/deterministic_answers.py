@@ -871,7 +871,10 @@ class DeterministicAnswerExtractor:
         lowered = (text or "").lower()
         for phrase in cls._query_metric_phrases(query):
             for match in re.finditer(re.escape(phrase), lowered):
-                following = lowered[match.end():match.end() + 72]
+                # Only an immediately following date labels this metric's
+                # value.  A later comparison date (for example “compared to
+                # 2024”) must remain valid evidence for a 2025 value.
+                following = lowered[match.end():match.end() + 48]
                 nearby_years = set(re.findall(r"\b(?:19|20)\d{2}\b", following))
                 # A missing delimiter can join a year to the first table
                 # amount (``2018328,732``).  Preserve the embedded year for
