@@ -2,20 +2,19 @@
 from __future__ import annotations
 
 import numpy as np
-
 from src.evaluation.evaluation import EvaluationCase, ExpectedSource
 from src.evaluation.nf37_metrics import ranking_metrics
+from src.evaluation.nf38_corpus import CanonicalEvidenceRecord, hash_embedding_text
+from src.evaluation.nf38_dense_index import DenseIndex, build_dense_index
 from src.evaluation.nf38_evaluator import (
+    _from_rrf_format,
     _normalize_bm25_candidates,
     _to_rrf_format,
-    _from_rrf_format,
     run_dense_diagnostic,
     run_hybrid_ranking,
 )
 from src.retrieval.candidate_fusion import rrf
 from src.retrieval.embedding_provider import l2_normalize
-from src.evaluation.nf38_dense_index import DenseIndex, build_dense_index
-from src.evaluation.nf38_corpus import CanonicalEvidenceRecord, hash_embedding_text
 
 
 class _StubProvider:
@@ -262,3 +261,114 @@ def test_question_and_label_hashes_are_independent():
     modified = [replace(cases[0], question="What is net income?")]
     assert question_fingerprint(modified) != q_hash
     assert label_fingerprint(modified) == l_hash
+
+
+def test_latency_report_serializes_to_dict():
+    """LatencyReport must produce a dict with all required fields."""
+    from src.evaluation.nf38_evaluator import LatencyReport
+
+    report = LatencyReport(
+        model_cold_start_seconds=1.5,
+        index_build_seconds=10.0,
+        chunks_encoded=100,
+        chunks_per_second=10.0,
+        query_embedding_p50_ms=5.0,
+        query_embedding_p95_ms=8.0,
+    )
+    d = report.to_dict()
+    assert d["model_cold_start_seconds"] == 1.5
+    assert d["index_build_seconds"] == 10.0
+    assert d["chunks_encoded"] == 100
+    assert d["chunks_per_second"] == 10.0
+    assert d["query_embedding_p50_ms"] == 5.0
+    assert d["query_embedding_p95_ms"] == 8.0
+    assert "gpu_memory_mb" in d
+    assert "process_rss_mb" in d
+    assert "index_disk_bytes" in d
+
+
+def test_measure_query_latencies_returns_p50_p95():
+    """measure_query_latencies must return p50_ms and p95_ms."""
+    from src.evaluation.nf38_evaluator import measure_query_latencies
+
+    provider = _StubProvider()
+    result = measure_query_latencies(provider, ["test query"], warmup=1, rounds=5)
+    assert "p50_ms" in result
+    assert "p95_ms" in result
+    assert result["p50_ms"] >= 0
+    assert result["p95_ms"] >= result["p50_ms"]
+
+
+def test_measure_query_latencies_empty_queries():
+    """Empty queries list should return zero latencies."""
+    from src.evaluation.nf38_evaluator import measure_query_latencies
+
+    provider = _StubProvider()
+    result = measure_query_latencies(provider, [])
+    assert result == {"p50_ms": 0.0, "p95_ms": 0.0}
+
+
+def test_compute_token_length_report_returns_distribution():
+    """Token length report must include p50/p90/p95/p99/max and truncated counts."""
+    from src.evaluation.nf38_evaluator import compute_token_length_report
+
+    records = _make_records(10)
+    provider = _StubProvider()
+    report = compute_token_length_report(records, provider)
+    assert "p50" in report
+    assert "p90" in report
+    assert "p95" in report
+    assert "p99" in report
+    assert "max" in report
+    assert "truncated_count_at_512" in report
+    assert "truncated_count_at_1024" in report
+    assert report["total_records"] == 10
+
+
+def test_compute_token_length_report_empty_records():
+    """Empty records should return all-zero report."""
+    from src.evaluation.nf38_evaluator import compute_token_length_report
+
+    report = compute_token_length_report([], _StubProvider())
+    assert report["total_records"] == 0
+    assert report["p50"] == 0
+    assert report["max"] == 0
+
+
+def test_get_process_rss_mb_returns_positive():
+    """Process RSS must be a non-negative float."""
+    from src.evaluation.nf38_evaluator import get_process_rss_mb
+
+    rss = get_process_rss_mb()
+    assert isinstance(rss, float)
+    assert rss >= 0.0
+
+
+def test_bm25_pool_is_shared():
+    """The BM25 pool must be the same data structure used by both variants.
+
+    This verifies that freeze_bm25_pool returns a single dict that is
+    passed to both variant runs — not re-frozen per variant.
+    """
+    from src.evaluation.nf38_evaluator import freeze_bm25_pool
+
+    cases = [_make_case("c1"), _make_case("c2")]
+
+    call_count = [0]
+
+    def fake_bm25_search(query: str, k: int = 50, user_id: int = 9003) -> list[dict]:
+        call_count[0] += 1
+        return [
+            {
+                "doc_id": f"bm25_{call_count[0]}_{query[:5]}",
+                "content": "revenue text",
+                "metadata": {"doc_name": "a.pdf", "page": 1, "type": "text"},
+                "score": 1.0,
+            }
+        ]
+
+    pool = freeze_bm25_pool(cases, fake_bm25_search, k=50)
+    # Must be called once per case, not per variant
+    assert call_count[0] == len(cases)
+    assert set(pool.keys()) == {"c1", "c2"}
+

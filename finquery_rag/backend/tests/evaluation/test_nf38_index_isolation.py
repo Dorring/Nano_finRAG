@@ -3,19 +3,17 @@ from __future__ import annotations
 
 import numpy as np
 import pytest
-
 from src.evaluation.nf38_corpus import (
     CanonicalEvidenceRecord,
     build_corpus_manifest,
     hash_embedding_text,
 )
-from src.retrieval.embedding_provider import l2_normalize
 from src.evaluation.nf38_dense_index import (
     DenseIndex,
-    IndexManifest,
     assert_indexes_share_corpus,
     build_dense_index,
 )
+from src.retrieval.embedding_provider import l2_normalize
 
 
 class _StubProvider:
@@ -237,6 +235,39 @@ def test_production_collection_is_not_modified(tmp_path):
     assert (tmp_path / "test-index" / "index-manifest.json").exists()
     # No chroma_db directory should be created.
     assert not (tmp_path / "chroma_db").exists()
+
+
+def test_same_corpus_used_for_both_indexes():
+    """Both MiniLM and BGE-M3 indexes must be built from the exact same corpus.
+
+    This is the core isolation invariant: the only variable that changes
+    between Variant A and Variant B is the embedding model. The corpus,
+    evidence IDs, and ordering must be identical.
+    """
+    records = _make_records(5)
+    manifest = build_corpus_manifest(records)
+    provider_minilm = _StubProvider("minilm", 384, seed=1)
+    provider_bge = _StubProvider("bge-m3", 1024, seed=2)
+
+    index_minilm = build_dense_index(
+        records, provider_minilm, manifest["corpus_hash"], manifest["evidence_ids_hash"]
+    )
+    index_bge = build_dense_index(
+        records, provider_bge, manifest["corpus_hash"], manifest["evidence_ids_hash"]
+    )
+
+    # Corpus hash must match
+    assert index_minilm.corpus_hash == index_bge.corpus_hash
+    # Evidence IDs hash must match
+    assert index_minilm.evidence_ids_hash == index_bge.evidence_ids_hash
+    # Record count must match
+    assert len(index_minilm.records) == len(index_bge.records)
+    # Evidence IDs must be identical and in the same order
+    ids_minilm = [r.evidence_id for r in index_minilm.records]
+    ids_bge = [r.evidence_id for r in index_bge.records]
+    assert ids_minilm == ids_bge
+    # Dimensions differ (the only allowed difference)
+    assert index_minilm.dimension != index_bge.dimension
 
 
 def test_table_cells_are_not_global_candidates():

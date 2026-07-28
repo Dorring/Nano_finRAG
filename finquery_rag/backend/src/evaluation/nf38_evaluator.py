@@ -7,18 +7,174 @@ isolation.
 """
 from __future__ import annotations
 
-import json
+import os
 import time
-from pathlib import Path
+from dataclasses import dataclass
 from typing import Any
 
 import numpy as np
 
 from src.evaluation.evaluation import EvaluationCase
 from src.evaluation.nf37_metrics import ranking_metrics
+from src.evaluation.nf38_dense_index import DenseIndex
 from src.retrieval.candidate_fusion import rrf
 from src.retrieval.embedding_provider import EmbeddingProvider
-from src.evaluation.nf38_dense_index import DenseIndex, build_dense_index
+
+
+@dataclass
+class LatencyReport:
+    """Collects latency and resource metrics for an embedding variant."""
+
+    model_cold_start_seconds: float = 0.0
+    index_build_seconds: float = 0.0
+    chunks_encoded: int = 0
+    chunks_per_second: float = 0.0
+    query_embedding_p50_ms: float = 0.0
+    query_embedding_p95_ms: float = 0.0
+    dense_search_p50_ms: float = 0.0
+    dense_search_p95_ms: float = 0.0
+    full_retrieval_p50_ms: float = 0.0
+    full_retrieval_p95_ms: float = 0.0
+    end_to_end_p50_ms: float = 0.0
+    end_to_end_p95_ms: float = 0.0
+    gpu_memory_mb: int | None = None
+    process_rss_mb: float = 0.0
+    index_disk_bytes: int = 0
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "model_cold_start_seconds": self.model_cold_start_seconds,
+            "index_build_seconds": self.index_build_seconds,
+            "chunks_encoded": self.chunks_encoded,
+            "chunks_per_second": self.chunks_per_second,
+            "query_embedding_p50_ms": self.query_embedding_p50_ms,
+            "query_embedding_p95_ms": self.query_embedding_p95_ms,
+            "dense_search_p50_ms": self.dense_search_p50_ms,
+            "dense_search_p95_ms": self.dense_search_p95_ms,
+            "full_retrieval_p50_ms": self.full_retrieval_p50_ms,
+            "full_retrieval_p95_ms": self.full_retrieval_p95_ms,
+            "end_to_end_p50_ms": self.end_to_end_p50_ms,
+            "end_to_end_p95_ms": self.end_to_end_p95_ms,
+            "gpu_memory_mb": self.gpu_memory_mb,
+            "process_rss_mb": self.process_rss_mb,
+            "index_disk_bytes": self.index_disk_bytes,
+        }
+
+
+def measure_query_latencies(
+    provider: EmbeddingProvider,
+    queries: list[str],
+    warmup: int = 1,
+    rounds: int = 10,
+) -> dict[str, float]:
+    """Measure query embedding latencies with warm-up and hot runs.
+
+    Returns p50/p95 in milliseconds. The warm-up is excluded from
+    the reported measurements.
+    """
+    if not queries:
+        return {"p50_ms": 0.0, "p95_ms": 0.0}
+
+    # Warm-up
+    for _ in range(warmup):
+        provider.encode_queries(queries[:1])
+
+    latencies: list[float] = []
+    for _ in range(rounds):
+        start = time.monotonic()
+        provider.encode_queries(queries[:1])
+        latencies.append((time.monotonic() - start) * 1000)
+
+    return {
+        "p50_ms": _percentile(latencies, 50),
+        "p95_ms": _percentile(latencies, 95),
+    }
+
+
+def get_gpu_memory_mb() -> int | None:
+    """Return current GPU memory usage in MB, or None if unavailable."""
+    try:
+        import torch
+
+        if torch.cuda.is_available():
+            return int(torch.cuda.memory_allocated() / (1024 * 1024))
+    except ImportError:
+        pass
+    return None
+
+
+def get_process_rss_mb() -> float:
+    """Return process RSS in MB."""
+    try:
+        import resource
+
+        return float(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss) / 1024.0
+    except (ImportError, AttributeError):
+        pass
+    try:
+        import psutil
+
+        return float(psutil.Process(os.getpid()).memory_info().rss) / (1024 * 1024)
+    except (ImportError, OSError, RuntimeError):
+        return 0.0
+
+
+def compute_token_length_report(
+    records: list,
+    provider: EmbeddingProvider,
+) -> dict[str, Any]:
+    """Compute token-length distribution for the corpus under the BGE tokenizer.
+
+    Returns p50/p90/p95/p99/max, truncated counts at 512 and 1024.
+    """
+    texts = [r.embedding_text for r in records]
+    if not texts:
+        return {
+            "p50": 0, "p90": 0, "p95": 0, "p99": 0, "max": 0,
+            "truncated_count_at_512": 0,
+            "truncated_count_at_1024": 0,
+            "total_records": 0,
+        }
+
+    lengths = _estimate_token_lengths(texts, provider)
+    arr = np.array(lengths, dtype=np.float32)
+
+    return {
+        "p50": int(np.percentile(arr, 50)),
+        "p90": int(np.percentile(arr, 90)),
+        "p95": int(np.percentile(arr, 95)),
+        "p99": int(np.percentile(arr, 99)),
+        "max": int(arr.max()),
+        "truncated_count_at_512": int(sum(1 for l in lengths if l > 512)),
+        "truncated_count_at_1024": int(sum(1 for l in lengths if l > 1024)),
+        "total_records": len(lengths),
+    }
+
+
+def _estimate_token_lengths(texts: list[str], provider: EmbeddingProvider) -> list[int]:
+    """Estimate token lengths using the provider's tokenizer if available.
+
+    Falls back to a word-count heuristic if no tokenizer is accessible.
+    """
+    tokenizer = _get_provider_tokenizer(provider)
+    if tokenizer is not None:
+        return [len(tokenizer.encode(text)) for text in texts]
+    # Heuristic: ~1.3 tokens per word for English/Chinese mixed text
+    return [max(1, int(len(text.split()) * 1.3)) for text in texts]
+
+
+def _get_provider_tokenizer(provider: EmbeddingProvider):
+    """Try to extract a tokenizer from the provider's underlying model."""
+    model = getattr(provider, "_model", None)
+    if model is None:
+        return None
+
+    # FlagEmbedding BGEM3FlagModel
+    if hasattr(model, "tokenizer"):
+        tok = model.tokenizer
+        if hasattr(tok, "encode"):
+            return tok
+    return None
 
 
 def freeze_bm25_pool(
