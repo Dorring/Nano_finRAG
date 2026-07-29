@@ -1,13 +1,13 @@
 """Export privacy-safe RRF candidate metadata from an NF36 prediction run."""
 from __future__ import annotations
 import argparse
-import hashlib
 import json
 import sys
 from pathlib import Path
 
 BACKEND = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(BACKEND))
+from src.evaluation.case_fingerprints import label_fingerprint, question_fingerprint
 from src.evaluation.evaluation import load_jsonl_cases, load_jsonl_predictions
 
 def main() -> int:
@@ -33,10 +33,15 @@ def main() -> int:
             "parent_id": row.get("parent_id"), "table_id": row.get("table_id"),
             "rrf_rank": row.get("rank"), "rrf_score": row.get("rrf_score"),
         } for row in rows]})
-    digest = hashlib.sha256(cases_path.read_bytes()).hexdigest()
-    manifest = {"question_count": len(cases), "question_hash": digest, "label_hash": digest,
-        "index_fingerprint": args.index_fingerprint, "embedding_model": args.embedding_model,
-        "generator_model": args.generator_model, "candidate_pool_depth": 40}
+    manifest = {
+        "question_count": len(cases),
+        "question_hash": question_fingerprint(cases),
+        "label_hash": label_fingerprint(cases),
+        "index_fingerprint": args.index_fingerprint,
+        "embedding_model": args.embedding_model,
+        "generator_model": args.generator_model,
+        "candidate_pool_depth": 40,
+    }
     (out_dir / "candidate-pool.json").write_text(json.dumps(pool, ensure_ascii=False, indent=2), encoding="utf-8")
     (out_dir / "baseline-manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
     return 0
