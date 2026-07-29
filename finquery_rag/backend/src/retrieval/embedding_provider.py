@@ -7,6 +7,7 @@ happens on first encode, not at import time.
 """
 from __future__ import annotations
 
+import os
 from typing import Any, Protocol
 
 import numpy as np
@@ -29,6 +30,19 @@ class EmbeddingProvider(Protocol):
 
     @property
     def max_length(self) -> int:
+        ...
+
+    @property
+    def device(self) -> str:
+        ...
+
+    def get_tokenizer(self):
+        ...
+
+    def identity_files(self) -> dict[str, tuple[str, ...]]:
+        ...
+
+    def identity_payloads(self) -> dict[str, object]:
         ...
 
     def encode_documents(self, texts: list[str]) -> np.ndarray:
@@ -94,6 +108,37 @@ class ExistingMiniLMEmbeddingProvider:
     def max_length(self) -> int:
         return 256
 
+    @property
+    def device(self) -> str:
+        return self._device
+
+    def get_tokenizer(self):
+        return getattr(self._load(), "tokenizer", None)
+
+    @property
+    def resolved_revision(self) -> str:
+        return self.revision
+
+    def identity_files(self) -> dict[str, tuple[str, ...]]:
+        from pathlib import Path
+
+        root = Path(self._model_name)
+        return {
+            "config": tuple(str(root / name) for name in ("config.json",)),
+            "tokenizer": tuple(str(root / name) for name in ("tokenizer.json", "tokenizer_config.json")),
+        }
+
+    def identity_payloads(self) -> dict[str, object]:
+        model = self._load()
+        first_module = getattr(model, "_first_module", lambda: None)()
+        config = getattr(getattr(first_module, "auto_model", None), "config", None)
+        tokenizer = getattr(first_module, "tokenizer", None) or getattr(model, "tokenizer", None)
+        config_payload = config.to_dict() if hasattr(config, "to_dict") else None
+        tokenizer_payload = getattr(tokenizer, "init_kwargs", None)
+        if tokenizer_payload is None and hasattr(tokenizer, "get_vocab"):
+            tokenizer_payload = tokenizer.get_vocab()
+        return {"config": config_payload, "tokenizer": tokenizer_payload}
+
     def _load(self):
         if self._model is None:
             from sentence_transformers import SentenceTransformer
@@ -132,10 +177,11 @@ class BgeM3DenseEmbeddingProvider:
         model_revision: str | None = None,
         device: str = "cuda:1",
         batch_size: int = 16,
-        max_length: int = 512,
+        max_length: int = 1024,
         use_fp16: bool = True,
     ) -> None:
         self._model_name = model_name_or_path
+        self._model_path = os.getenv("BGE_M3_MODEL_PATH", model_name_or_path)
         self._model_revision = model_revision
         self._device = device
         self._batch_size = batch_size
@@ -159,6 +205,32 @@ class BgeM3DenseEmbeddingProvider:
     def max_length(self) -> int:
         return self._max_length
 
+    @property
+    def device(self) -> str:
+        return self._device
+
+    def get_tokenizer(self):
+        return getattr(self._load(), "tokenizer", None)
+
+    @property
+    def resolved_revision(self) -> str:
+        from pathlib import Path
+
+        root = Path(self._model_path)
+        return root.name if root.is_dir() else self.revision
+
+    def identity_files(self) -> dict[str, tuple[str, ...]]:
+        from pathlib import Path
+
+        root = Path(self._model_path)
+        return {
+            "config": tuple(str(root / name) for name in ("config.json",)),
+            "tokenizer": tuple(str(root / name) for name in ("tokenizer.json", "tokenizer_config.json")),
+        }
+
+    def identity_payloads(self) -> dict[str, object]:
+        return {}
+
     def _load(self):
         if self._model is None:
             try:
@@ -168,7 +240,7 @@ class BgeM3DenseEmbeddingProvider:
                     "FlagEmbedding is required for BGE-M3 dense evaluation"
                 ) from exc
             self._model = BGEM3FlagModel(
-                self._model_name,
+                self._model_path,
                 devices=[self._device],
                 use_fp16=self._use_fp16,
             )

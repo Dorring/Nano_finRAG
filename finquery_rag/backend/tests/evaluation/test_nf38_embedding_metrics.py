@@ -7,6 +7,7 @@ from src.evaluation.nf37_metrics import ranking_metrics
 from src.evaluation.nf38_corpus import CanonicalEvidenceRecord, hash_embedding_text
 from src.evaluation.nf38_dense_index import DenseIndex, build_dense_index
 from src.evaluation.nf38_evaluator import (
+    EvaluationScope,
     _from_rrf_format,
     _normalize_bm25_candidates,
     _to_rrf_format,
@@ -15,6 +16,11 @@ from src.evaluation.nf38_evaluator import (
 )
 from src.retrieval.candidate_fusion import rrf
 from src.retrieval.embedding_provider import l2_normalize
+
+
+class _StubTokenizer:
+    def encode(self, text: str) -> list[str]:
+        return text.split()
 
 
 class _StubProvider:
@@ -38,6 +44,16 @@ class _StubProvider:
     @property
     def max_length(self) -> int:
         return 128
+
+    @property
+    def device(self) -> str:
+        return "cpu"
+
+    def get_tokenizer(self):
+        return _StubTokenizer()
+
+    def identity_files(self) -> dict[str, tuple[str, ...]]:
+        return {"config": (), "tokenizer": ()}
 
     def encode_documents(self, texts: list[str]) -> np.ndarray:
         if not texts:
@@ -268,6 +284,7 @@ def test_latency_report_serializes_to_dict():
     from src.evaluation.nf38_evaluator import LatencyReport
 
     report = LatencyReport(
+        device="cpu",
         model_cold_start_seconds=1.5,
         index_build_seconds=10.0,
         chunks_encoded=100,
@@ -314,7 +331,7 @@ def test_compute_token_length_report_returns_distribution():
 
     records = _make_records(10)
     provider = _StubProvider()
-    report = compute_token_length_report(records, provider)
+    report = compute_token_length_report(records, provider, selected_max_length=512)
     assert "p50" in report
     assert "p90" in report
     assert "p95" in report
@@ -329,7 +346,7 @@ def test_compute_token_length_report_empty_records():
     """Empty records should return all-zero report."""
     from src.evaluation.nf38_evaluator import compute_token_length_report
 
-    report = compute_token_length_report([], _StubProvider())
+    report = compute_token_length_report([], _StubProvider(), selected_max_length=512)
     assert report["total_records"] == 0
     assert report["p50"] == 0
     assert report["max"] == 0
@@ -367,8 +384,15 @@ def test_bm25_pool_is_shared():
             }
         ]
 
-    pool = freeze_bm25_pool(cases, fake_bm25_search, k=50)
-    # Must be called once per case, not per variant
+    scope = EvaluationScope(
+        tenant_id=7,
+        allowed_document_ids=frozenset({"a.pdf"}),
+        expected_case_count=2,
+        expected_corpus_hash="corpus",
+        expected_evidence_ids_hash="evidence",
+    )
+    pool = freeze_bm25_pool(cases, fake_bm25_search, scope=scope, k=50)
+    # Must be called once per case, not per variant.
     assert call_count[0] == len(cases)
-    assert set(pool.keys()) == {"c1", "c2"}
+    assert set(pool.candidates.keys()) == {"c1", "c2"}
 
