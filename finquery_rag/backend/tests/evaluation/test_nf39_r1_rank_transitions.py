@@ -19,7 +19,10 @@ def test_rank_transition_definitions_are_same_k_correct():
     ) is RankTransition.PROMOTED_INTO_TOP5
     assert classify_rank_transition(
         rrf_rank=30, reranker_input_top_n=20, reranker_rank=10, final_rank=None
-    ) is RankTransition.TRUNCATED_BEFORE_RERANKER
+    ) is RankTransition.PROMOTED_BUT_OUTSIDE_TOP5
+    assert classify_rank_transition(
+        rrf_rank=2, reranker_input_top_n=20, reranker_rank=2, final_rank=None
+    ) is RankTransition.DROPPED_BY_FINAL_SELECTOR
 
 
 def test_reranker_input_without_rank_is_integrity_error():

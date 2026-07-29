@@ -131,7 +131,7 @@ def stage_metrics_same_k(*, cases: Iterable[EvaluationCase], rankings: dict[str,
 def classify_rank_transition(*, rrf_rank: int | None, reranker_input_top_n: int, reranker_rank: int | None, final_rank: int | None, rrf_top_n: int = 40) -> RankTransition:
     if rrf_rank is None or rrf_rank > rrf_top_n:
         return RankTransition.NOT_IN_RRF_40
-    if rrf_rank > reranker_input_top_n:
+    if rrf_rank > reranker_input_top_n and reranker_rank is None:
         return RankTransition.TRUNCATED_BEFORE_RERANKER
     if reranker_rank is None:
         raise EvaluationIntegrityError("Candidate entered reranker but has no reranker rank")
