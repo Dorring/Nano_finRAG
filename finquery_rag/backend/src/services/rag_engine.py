@@ -136,7 +136,11 @@ class RAGEngine:
             self.tokenizer = None
 
         self._retrieval_pipeline = RetrievalPipeline(
-            dense_query_fn=query_collection,
+            # Resolve the module dependency at call time.  Besides keeping
+            # the dependency injectable for tests, this avoids freezing a
+            # stale function reference while the service module is being
+            # reloaded.  The invoked production function is unchanged.
+            dense_query_fn=lambda **kwargs: query_collection(**kwargs),
             bm25_retriever=self.bm25_retriever,
             reranker=self.reranker,
             query_processor=self._query_processor,
