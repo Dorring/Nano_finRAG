@@ -16,7 +16,6 @@ from src.evaluation.nf40_frozen_context import load_frozen_contexts
 from src.evaluation.nf40_runner import FrozenContextEvaluationRunner, validate_labeled_cases
 from src.evaluation.nf40_start_gate import require_verified_nf39_r2_inputs
 from src.services.rag_engine import RAGEngine
-from src.services.retrieval_config import get_reranker_model, get_reranker_name
 
 
 def _sha256_json(value: object) -> str:
@@ -42,6 +41,22 @@ def _parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def _build_frozen_context_engine(client: OpenAI) -> RAGEngine:
+    """Build only the answer-pipeline dependencies required by NF40.
+
+    Retrieval is never reached with a verified frozen context. Avoiding the
+    optional reranker makes this command independent of its model cache and
+    prevents an unrelated remote download before the evaluation begins.
+    """
+    return RAGEngine(
+        client,
+        model_name=os.getenv("LLM_MODEL_NAME", "nanochat"),
+        use_hybrid=False,
+        reranker_name="none",
+        retrieval_candidate_multiplier=1,
+    )
+
+
 async def _run(args: argparse.Namespace) -> None:
     # All gates execute before engine/model construction and before outputs.
     require_verified_nf39_r2_inputs(
@@ -59,14 +74,7 @@ async def _run(args: argparse.Namespace) -> None:
         base_url=os.getenv("LLM_API_BASE_URL", "http://127.0.0.1:8500/v1"),
         api_key=os.getenv("LLM_API_KEY", "not-needed-for-local"),
     )
-    engine = RAGEngine(
-        client,
-        model_name=os.getenv("LLM_MODEL_NAME", "nanochat"),
-        use_hybrid=True,
-        reranker_name=get_reranker_name(),
-        reranker_model=get_reranker_model(),
-        retrieval_candidate_multiplier=int(os.getenv("RAG_CANDIDATE_MULTIPLIER", "4")),
-    )
+    engine = _build_frozen_context_engine(client)
     runner = FrozenContextEvaluationRunner(rag_engine=engine)
     runs, metrics = await runner.run(cases=cases, contexts=contexts, tenant_id=args.tenant_id)
 
