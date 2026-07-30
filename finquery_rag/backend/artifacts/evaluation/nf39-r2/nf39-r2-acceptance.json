@@ -1,0 +1,54 @@
+{
+  "artifact_schema": "nf39-r2/v1",
+  "candidate_integrity": {
+    "duplicate_candidate_key_count": 0,
+    "final_candidate_count": 135,
+    "invalid_candidate_key_count": 0,
+    "missing_content_hash_count": 0,
+    "missing_document_id_count": 0,
+    "missing_source_id_count": 0,
+    "passed": true,
+    "rrf_candidate_count": 1080
+  },
+  "corrected_baseline": {
+    "status": "accepted",
+    "valid_for_future_regression": true,
+    "version": "nf39-r2"
+  },
+  "determinism": {
+    "candidate_pool_hash_equal": true,
+    "final_context_hashes_equal": true,
+    "passed": true,
+    "snapshot_hash_equal": true,
+    "stage_metrics_equal": true
+  },
+  "legacy_baseline": {
+    "reason_codes": [
+      "empty_candidate_identity",
+      "missing_content_hash",
+      "out_of_corpus_bm25_records"
+    ],
+    "status": "superseded_due_to_artifact_corruption",
+    "valid_for_regression": false,
+    "version": "nf39-r1"
+  },
+  "legacy_r1_metrics_match": false,
+  "legacy_r1_metrics_match_is_informational_only": true,
+  "nf40_start_allowed": true,
+  "production_behavior_changed": false,
+  "scope_integrity": {
+    "canonical_evidence_count": 2636,
+    "document_count": 3,
+    "legacy_out_of_corpus_candidate_occurrences_filtered": 143,
+    "legacy_out_of_corpus_distinct_candidates_filtered": 92,
+    "passed": true,
+    "remaining_out_of_corpus_candidates": 0,
+    "tenant_id": 1
+  },
+  "snapshot_integrity": {
+    "passed": true,
+    "payload_record_count": 135,
+    "snapshot_rehydrated_count": 135,
+    "verified_final_context_count": 27
+  }
+}

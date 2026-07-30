@@ -1,0 +1,42 @@
+{
+  "boundaries": [
+    {
+      "candidate_count": 1080,
+      "candidate_keys_hash": "62f65a32f01a5f56f822f0d78500f677b3596b3e05be159d65252312f0d301a8",
+      "missing_content_count": 0,
+      "missing_document_id_count": 0,
+      "missing_source_id_count": 0,
+      "missing_tenant_id_count": 0,
+      "stage": "rrf_top40"
+    },
+    {
+      "candidate_count": 540,
+      "candidate_keys_hash": "bb174139374820d49076ff5654c293b663c3aca2f6f30545b375ce5cd826f310",
+      "missing_content_count": 0,
+      "missing_document_id_count": 0,
+      "missing_source_id_count": 0,
+      "missing_tenant_id_count": 0,
+      "stage": "reranker_input_top20"
+    },
+    {
+      "candidate_count": 540,
+      "candidate_keys_hash": "bb174139374820d49076ff5654c293b663c3aca2f6f30545b375ce5cd826f310",
+      "missing_content_count": 0,
+      "missing_document_id_count": 0,
+      "missing_source_id_count": 0,
+      "missing_tenant_id_count": 0,
+      "stage": "reranker_output_top20"
+    },
+    {
+      "candidate_count": 135,
+      "candidate_keys_hash": "3a4bb1b9899641a5836df743a1bd9e6d9afd5206930672b2e033e12d86c567a0",
+      "missing_content_count": 0,
+      "missing_document_id_count": 0,
+      "missing_source_id_count": 0,
+      "missing_tenant_id_count": 0,
+      "stage": "final_top5"
+    }
+  ],
+  "first_identity_loss_stage": "BM25 frozen-pool to NF39 RRF normalization",
+  "root_cause": "NF39 exporter re-read normalized BM25 candidates as raw SQLite rows and discarded candidate_id"
+}

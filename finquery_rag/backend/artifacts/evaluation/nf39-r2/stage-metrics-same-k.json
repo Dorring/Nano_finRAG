@@ -1,0 +1,113 @@
+{
+  "denominators": {
+    "expected_source_count": 35,
+    "multi_source_case_count": 9,
+    "no_answer_case_count": 2,
+    "retrieval_case_count": 25
+  },
+  "stages": {
+    "s0_rrf_top40": {
+      "all_source_coverage_at_20": 0.5555555555555556,
+      "all_source_coverage_at_40": 0.6666666666666666,
+      "all_source_coverage_at_5": 0.4444444444444444,
+      "all_source_covered_case_count_at_20": 5,
+      "all_source_covered_case_count_at_40": 6,
+      "all_source_covered_case_count_at_5": 4,
+      "case_hit_count_at_20": 22,
+      "case_hit_count_at_40": 24,
+      "case_hit_count_at_5": 16,
+      "case_hit_rate_at_20": 0.88,
+      "case_hit_rate_at_40": 0.96,
+      "case_hit_rate_at_5": 0.64,
+      "denominators": {
+        "expected_source_count": 35,
+        "multi_source_case_count": 9,
+        "no_answer_case_count": 2,
+        "retrieval_case_count": 25
+      },
+      "mrr_at_20": 0.6030497076023392,
+      "mrr_at_40": 0.6053429098955415,
+      "mrr_at_5": 0.58,
+      "source_hit_count_at_20": 27,
+      "source_hit_count_at_40": 31,
+      "source_hit_count_at_5": 20,
+      "source_recall_at_20": 0.7714285714285715,
+      "source_recall_at_40": 0.8857142857142857,
+      "source_recall_at_5": 0.5714285714285714
+    },
+    "s1_rrf_top20_reranker_input": {
+      "all_source_coverage_at_20": 0.5555555555555556,
+      "all_source_coverage_at_5": 0.4444444444444444,
+      "all_source_covered_case_count_at_20": 5,
+      "all_source_covered_case_count_at_5": 4,
+      "case_hit_count_at_20": 22,
+      "case_hit_count_at_5": 16,
+      "case_hit_rate_at_20": 0.88,
+      "case_hit_rate_at_5": 0.64,
+      "denominators": {
+        "expected_source_count": 35,
+        "multi_source_case_count": 9,
+        "no_answer_case_count": 2,
+        "retrieval_case_count": 25
+      },
+      "mrr_at_20": 0.6030497076023392,
+      "mrr_at_5": 0.58,
+      "source_hit_count_at_20": 27,
+      "source_hit_count_at_5": 20,
+      "source_recall_at_20": 0.7714285714285715,
+      "source_recall_at_5": 0.5714285714285714
+    },
+    "s2_reranker_ranked_top20": {
+      "all_source_coverage_at_20": 0.5555555555555556,
+      "all_source_coverage_at_5": 0.4444444444444444,
+      "all_source_covered_case_count_at_20": 5,
+      "all_source_covered_case_count_at_5": 4,
+      "case_hit_count_at_20": 22,
+      "case_hit_count_at_5": 16,
+      "case_hit_rate_at_20": 0.88,
+      "case_hit_rate_at_5": 0.64,
+      "denominators": {
+        "expected_source_count": 35,
+        "multi_source_case_count": 9,
+        "no_answer_case_count": 2,
+        "retrieval_case_count": 25
+      },
+      "mrr_at_20": 0.6030497076023392,
+      "mrr_at_5": 0.58,
+      "source_hit_count_at_20": 27,
+      "source_hit_count_at_5": 20,
+      "source_recall_at_20": 0.7714285714285715,
+      "source_recall_at_5": 0.5714285714285714
+    },
+    "s3_reranker_top5": {
+      "all_source_coverage_at_5": 0.4444444444444444,
+      "all_source_covered_case_count_at_5": 4,
+      "case_hit_count_at_5": 16,
+      "case_hit_rate_at_5": 0.64,
+      "denominators": {
+        "expected_source_count": 35,
+        "multi_source_case_count": 9,
+        "no_answer_case_count": 2,
+        "retrieval_case_count": 25
+      },
+      "mrr_at_5": 0.58,
+      "source_hit_count_at_5": 20,
+      "source_recall_at_5": 0.5714285714285714
+    },
+    "s4_final_context_top5": {
+      "all_source_coverage_at_5": 0.4444444444444444,
+      "all_source_covered_case_count_at_5": 4,
+      "case_hit_count_at_5": 16,
+      "case_hit_rate_at_5": 0.64,
+      "denominators": {
+        "expected_source_count": 35,
+        "multi_source_case_count": 9,
+        "no_answer_case_count": 2,
+        "retrieval_case_count": 25
+      },
+      "mrr_at_5": 0.58,
+      "source_hit_count_at_5": 20,
+      "source_recall_at_5": 0.5714285714285714
+    }
+  }
+}

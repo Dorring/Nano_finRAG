@@ -1,0 +1,2762 @@
+{
+  "artifact_schema": "nf39-r2/v1",
+  "candidate_identity_schema": "candidate-identity/v1",
+  "cases": {
+    "leac_amba_cash": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:b2f2b06b6779775202f7dd2a32e11bd35ee9fbaa778449c180ebf2b1976aedb3",
+          "content_byte_count": 617,
+          "content_char_count": 617,
+          "content_hash": "eaa237b3a2776863c93196a327a757e52f76546c3c31dca000bb22070461cbcd",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_10::chunk_15",
+            "tenant_id": 1
+          },
+          "page": 10,
+          "parent_id": "user_1_leac203.pdf::page_10::parent_15",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "table",
+          "candidate_key": "candidate:v1:8aedf754e4674d38ad622d8fd710b960a6e35a34a53982765887b8ef062b17d2",
+          "content_byte_count": 1110,
+          "content_char_count": 1110,
+          "content_hash": "82ba721bf688a8a9d1fd84c140909951b224721b7b13a65fcd3a2004ecace725",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_10::table_2",
+            "tenant_id": 1
+          },
+          "page": 10,
+          "parent_id": "user_1_leac203.pdf::page_10::table_parent_2",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:34c4d156aa0f9eed1014e61722c5cc30bd5c92d42b4833ae9ec5f62b00085241",
+          "content_byte_count": 196,
+          "content_char_count": 196,
+          "content_hash": "a1d86a365d863dac25185dca489af517f217efb8d05836832ef34b69aeffc0d6",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_10::chunk_16",
+            "tenant_id": 1
+          },
+          "page": 10,
+          "parent_id": "user_1_leac203.pdf::page_10::parent_16",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "table",
+          "candidate_key": "candidate:v1:648382a321290dadde2a690ce9624901e101e9ea86534bfb06ea1cc37d797264",
+          "content_byte_count": 1320,
+          "content_char_count": 1320,
+          "content_hash": "953cfab69875d56adb81e98385d3083b67372ee94a1520ea1203355db5c313cd",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_27::table_1",
+            "tenant_id": 1
+          },
+          "page": 27,
+          "parent_id": "user_1_leac203.pdf::page_27::table_parent_1",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "table",
+          "candidate_key": "candidate:v1:4b2671ddb03f1d4570c085d4d6c587cdb78bd451bf933e2139d7f86767b3f579",
+          "content_byte_count": 1804,
+          "content_char_count": 1804,
+          "content_hash": "9ecbaeaf59a52ba7190dfdf7b1edb4697b10f571af9f329aee0fe88960ba7123",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_11::table_1",
+            "tenant_id": 1
+          },
+          "page": 11,
+          "parent_id": "user_1_leac203.pdf::page_11::table_parent_1",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "590162e2105df1499828474d46d36d69bd74089c756aa811fe96ecb379e69f1f"
+    },
+    "leac_black_swan_cash": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:913e2b7a4034ff168875ae7ceb29b6f62c0c16f4fb5c7eb1717c52abc1fca452",
+          "content_byte_count": 488,
+          "content_char_count": 488,
+          "content_hash": "9704da608ddf9646323b151dd1427b57286b9b68c3fecf61469159653e6d56ea",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_27::chunk_37",
+            "tenant_id": 1
+          },
+          "page": 27,
+          "parent_id": "user_1_leac203.pdf::page_27::parent_37",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "table",
+          "candidate_key": "candidate:v1:648382a321290dadde2a690ce9624901e101e9ea86534bfb06ea1cc37d797264",
+          "content_byte_count": 1320,
+          "content_char_count": 1320,
+          "content_hash": "953cfab69875d56adb81e98385d3083b67372ee94a1520ea1203355db5c313cd",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_27::table_1",
+            "tenant_id": 1
+          },
+          "page": 27,
+          "parent_id": "user_1_leac203.pdf::page_27::table_parent_1",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "table",
+          "candidate_key": "candidate:v1:4b2671ddb03f1d4570c085d4d6c587cdb78bd451bf933e2139d7f86767b3f579",
+          "content_byte_count": 1804,
+          "content_char_count": 1804,
+          "content_hash": "9ecbaeaf59a52ba7190dfdf7b1edb4697b10f571af9f329aee0fe88960ba7123",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_11::table_1",
+            "tenant_id": 1
+          },
+          "page": 11,
+          "parent_id": "user_1_leac203.pdf::page_11::table_parent_1",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "table",
+          "candidate_key": "candidate:v1:1b0ddc7bd3b72a3ce562b78814abf31703822bedb9705defe9642c9bcd0461a4",
+          "content_byte_count": 834,
+          "content_char_count": 834,
+          "content_hash": "915b220e89caea18a8f893530d20dcfb22a6b188e0e6742c24ef50ce703330ee",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_17::table_3",
+            "tenant_id": 1
+          },
+          "page": 17,
+          "parent_id": "user_1_leac203.pdf::page_17::table_parent_3",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:4a2eebf9fc451a8ea7f010ba8474846eb49a2efe6fa7752ad8e58d44f91a1372",
+          "content_byte_count": 74,
+          "content_char_count": 74,
+          "content_hash": "36453d3ff601ceda317f6ae62f992c3b0575bde025409e09c5fb758dda7d36c6",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_62::chunk_64_16",
+            "tenant_id": 1
+          },
+          "page": 62,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_62::parent_64",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "c7e1e53cd8ae113d959bf5fd94fdaddb8ace24d5a2c3bd9a5530752620276f08"
+    },
+    "leac_current_item_rule": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:edf272902cfdb3d35286dc8f7615b256e1887cf63b5eb1021f00fc36a1ea5dac",
+          "content_byte_count": 323,
+          "content_char_count": 323,
+          "content_hash": "b5439d581d5b3c64e502b26766a39de716c56e92f7b942f2ada6f17af97f5f0d",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_10::chunk_13",
+            "tenant_id": 1
+          },
+          "page": 10,
+          "parent_id": "user_1_leac203.pdf::page_10::parent_13",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "table",
+          "candidate_key": "candidate:v1:8b568152344eb3c6015ad4a8a47db5084844f0358be22bdfeccd44959b802a71",
+          "content_byte_count": 1627,
+          "content_char_count": 1613,
+          "content_hash": "45e037a38511e4bc50b750a662711cf8c58093a3bbd19c011066fca0423a82f8",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_10::table_1",
+            "tenant_id": 1
+          },
+          "page": 10,
+          "parent_id": "user_1_leac203.pdf::page_10::table_parent_1",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:aeb462167da02eaa9e8bd846db853105c4e6f094e7377b9f5aecb0ca5758626b",
+          "content_byte_count": 867,
+          "content_char_count": 863,
+          "content_hash": "b0a8f89ce9019b397f7554a9e7b723f29a700099160e9857ebb82e4232495ffc",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_10::chunk_14",
+            "tenant_id": 1
+          },
+          "page": 10,
+          "parent_id": "user_1_leac203.pdf::page_10::parent_14",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:88d9d769d40f402d29605f42a544a1f3a7a0d70ba23b7910b1f8d03c4c3ac5da",
+          "content_byte_count": 365,
+          "content_char_count": 365,
+          "content_hash": "1158867c43b1422440105e82a3f3722c830791cd28d1d2520f8efe2868fa083b",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_6::chunk_6_4",
+            "tenant_id": 1
+          },
+          "page": 6,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_6::parent_6",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:32932c74aebe5b4ffbc07f3c7ea46758a26a01909615c6ce80e33fae4ef74f90",
+          "content_byte_count": 55,
+          "content_char_count": 55,
+          "content_hash": "de0a39d797b6904457478a8f6081adb6d325c2ae9f80cf90bf39053e802da3fe",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_36::chunk_36_3",
+            "tenant_id": 1
+          },
+          "page": 36,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_36::parent_36",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "9eb71f6fd6e4c8c58cbcf5364bf8b586d288ffee812be1e4aad9affbf33e80e9"
+    },
+    "leac_meaning": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:527a075026b4edddaef352d286191673f2d35b856d0b60568abdb60bb269235f",
+          "content_byte_count": 321,
+          "content_char_count": 321,
+          "content_hash": "0d7369f5f8a9c50498039caaec3316ec259e2e3f0a9f3ce06851e547386fcfcc",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_23::chunk_32_6",
+            "tenant_id": 1
+          },
+          "page": 23,
+          "parent_id": "user_1_leac203.pdf::page_23::parent_32",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:13d68b96369c8a7278a9a497c40481ebfe9b03c5a25a565ac3bf1d7d6a20d4bd",
+          "content_byte_count": 200,
+          "content_char_count": 200,
+          "content_hash": "c5214e6399c098f7eaea9e8e5cf35111a576ab6be7b115d9695090e8c39cf458",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_61::chunk_63_0",
+            "tenant_id": 1
+          },
+          "page": 61,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_61::parent_63",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:27224d8a76e1aa26d6b179b69a74b916957a7bfa4dfc452bff8614cb8f626648",
+          "content_byte_count": 285,
+          "content_char_count": 285,
+          "content_hash": "7c0e9869bfcc4922b7c3fb8fff3938787541f43c6d6cc74206fd013e81fe42ed",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_24::chunk_33_4",
+            "tenant_id": 1
+          },
+          "page": 24,
+          "parent_id": "user_1_leac203.pdf::page_24::parent_33",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:e54618c261bc15693fa69df21c9dc8d092d3eeb0367e088b107ea8c569a54ed8",
+          "content_byte_count": 203,
+          "content_char_count": 203,
+          "content_hash": "d8d0ee712db3645b9c10bab4430bdf7fe3f1b1ba8b1d9144aafe4a325dcc7022",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_3::chunk_2_7",
+            "tenant_id": 1
+          },
+          "page": 3,
+          "parent_id": "user_1_leac203.pdf::page_3::parent_2",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "table",
+          "candidate_key": "candidate:v1:a8eec77a5ae6d7b590b5ac91695dd1e410eacce0d785b0c048e81144663da0e1",
+          "content_byte_count": 1074,
+          "content_char_count": 1074,
+          "content_hash": "565e381b9b2bbaa530a9603dd48cb00eb9bbefb074963374bad525433dae759a",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_24::table_2",
+            "tenant_id": 1
+          },
+          "page": 24,
+          "parent_id": "user_1_leac203.pdf::page_24::table_parent_2",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "8ed8b654cbc568caff018bc46ce01f38b457d6f06f150a70c4f2fc4d9ced4f71"
+    },
+    "leac_nature": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "table",
+          "candidate_key": "candidate:v1:2d3e8c1e914fa9f8270fa5f06f6c64d3b444f001c2d5a60589215015e58d1272",
+          "content_byte_count": 1209,
+          "content_char_count": 1205,
+          "content_hash": "25ae4c3a61c3a249de1998d5796476aebd343938d1eb0311e05959b8e590e1b5",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_2::table_1",
+            "tenant_id": 1
+          },
+          "page": 2,
+          "parent_id": "user_1_leac203.pdf::page_2::table_parent_1",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:523cfedb336ae36fb84e97692a5bb845e3f7c28a211472c751848b2cbaf89ca2",
+          "content_byte_count": 344,
+          "content_char_count": 342,
+          "content_hash": "be3182a3e05348518cfaa4190a90236b0543ffbee550e65fa666640528815df6",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_2::chunk_1_2",
+            "tenant_id": 1
+          },
+          "page": 2,
+          "parent_id": "user_1_leac203.pdf::page_2::parent_1",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:e5480eee3d57ceabcfba5e5c2ae8cffa9662247aeca3b9607f841f917546d25e",
+          "content_byte_count": 282,
+          "content_char_count": 282,
+          "content_hash": "41180603f47ccf2afaa7046ca66bb19a5bd5040780ed2f743f1bf4dee3afe07b",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_22::chunk_31_9",
+            "tenant_id": 1
+          },
+          "page": 22,
+          "parent_id": "user_1_leac203.pdf::page_22::parent_31",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:8bef089cc0edff35399c3d94f4d9c260dd6ceb8cb693d3f7d5554942ea1821fb",
+          "content_byte_count": 288,
+          "content_char_count": 288,
+          "content_hash": "cc0c80cede1df6b8a3f37e85334988eb2368ab9c8d19a5b4edeb102f52194276",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_2::chunk_1_1",
+            "tenant_id": 1
+          },
+          "page": 2,
+          "parent_id": "user_1_leac203.pdf::page_2::parent_1",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:da3aa3c661858699c62f33daf44ac5c9c587d8a94e6155493a48ec8690a8deb1",
+          "content_byte_count": 82,
+          "content_char_count": 82,
+          "content_hash": "a6a7ccc5995afe6219c377cfde751126f039f6e1b06db99d828f4ed02b5f2b44",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_2::chunk_1_4",
+            "tenant_id": 1
+          },
+          "page": 2,
+          "parent_id": "user_1_leac203.pdf::page_2::parent_1",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "0e238e7da61c664d41f5df27b657060fe446c6714f2af9f97eef359b9d3fb8e3"
+    },
+    "leac_sunfill_reserve_surplus": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:b2f2b06b6779775202f7dd2a32e11bd35ee9fbaa778449c180ebf2b1976aedb3",
+          "content_byte_count": 617,
+          "content_char_count": 617,
+          "content_hash": "eaa237b3a2776863c93196a327a757e52f76546c3c31dca000bb22070461cbcd",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_10::chunk_15",
+            "tenant_id": 1
+          },
+          "page": 10,
+          "parent_id": "user_1_leac203.pdf::page_10::parent_15",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "table",
+          "candidate_key": "candidate:v1:d2f625f43b0538981861bb8182e059fcb883613d5deeb7a5be8e5b3612eb4d61",
+          "content_byte_count": 898,
+          "content_char_count": 898,
+          "content_hash": "50e2199c8ed95f6cc6e8817e7b1b6e364e8620d4bec7ca3be5da5ee1f6357df4",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_14::table_1",
+            "tenant_id": 1
+          },
+          "page": 14,
+          "parent_id": "user_1_leac203.pdf::page_14::table_parent_1",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:78577c3db91ed2e1dd28c7c0f246f970688695a17446b023e5d3cd9e68b24640",
+          "content_byte_count": 317,
+          "content_char_count": 305,
+          "content_hash": "52af2ea6a6fe74958e1a0e9cc34d4161006907b95789ee8fef4b9dc57504907f",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_8::chunk_7_3",
+            "tenant_id": 1
+          },
+          "page": 8,
+          "parent_id": "user_1_leac203.pdf::page_8::parent_7",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:0fa72769e388773db2d7e46b7b8e94ce89241d89a50b86734010d83420823e86",
+          "content_byte_count": 317,
+          "content_char_count": 301,
+          "content_hash": "5f2ff13f046252ced21e92a0afcc94e85f5cd775c5d9e51f1a9adc603bebec1b",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_8::chunk_7_4",
+            "tenant_id": 1
+          },
+          "page": 8,
+          "parent_id": "user_1_leac203.pdf::page_8::parent_7",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "table",
+          "candidate_key": "candidate:v1:648382a321290dadde2a690ce9624901e101e9ea86534bfb06ea1cc37d797264",
+          "content_byte_count": 1320,
+          "content_char_count": 1320,
+          "content_hash": "953cfab69875d56adb81e98385d3083b67372ee94a1520ea1203355db5c313cd",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "leac203.pdf",
+            "kind": "block",
+            "source_id": "user_1_leac203.pdf::page_27::table_1",
+            "tenant_id": 1
+          },
+          "page": 27,
+          "parent_id": "user_1_leac203.pdf::page_27::table_parent_1",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "6a49d9721d6fe26449814a58d9aa0c69d3d91f4a6617cbffc5a8634d5ac5468f"
+    },
+    "leac_title": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:424c82e546d33c1804908e040f0229e1795ae700f53b03b1144d54bb3680cf10",
+          "content_byte_count": 190,
+          "content_char_count": 126,
+          "content_hash": "08d2de998936b8b7a16b160f2d096ff9f0fcdd953f33ba7b6a10e18f665bb42f",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_96::chunk_100",
+            "tenant_id": 1
+          },
+          "page": 96,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_96::parent_100",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:5b04280b12c266ac46dc59b17fd08ed7899292233c36e0e91c0c555a64fcb7a4",
+          "content_byte_count": 122,
+          "content_char_count": 122,
+          "content_hash": "f5e1e849b5634f8f1fd661b54442203eb3a1ce971962cb578087e6fbbc7ec68d",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_96::chunk_112",
+            "tenant_id": 1
+          },
+          "page": 96,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_96::parent_112",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:69d51dd778c2209742c1606aec635ffc7bbef99b4da368e9e05631cac781df16",
+          "content_byte_count": 64,
+          "content_char_count": 62,
+          "content_hash": "deab27b854a932662848488869be67c6e913e99bbf89e63d44dc7eaf7390f09d",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_5::chunk_5_10",
+            "tenant_id": 1
+          },
+          "page": 5,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_5::parent_5",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:2696d9c6fc89cd0142838f8c00f916839e6b0b8ad373784cf7731f6733a26d8c",
+          "content_byte_count": 87,
+          "content_char_count": 83,
+          "content_hash": "58077f8587de2663f70c2c68f6e1ba8f5a7131b253bbfa5b9f30c29e72f11fc5",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_5::chunk_5_5",
+            "tenant_id": 1
+          },
+          "page": 5,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_5::parent_5",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:d0595bb1f416c43a12e3a2165e832dfef1a7557ef0a830005a1222bef185d2f3",
+          "content_byte_count": 98,
+          "content_char_count": 98,
+          "content_hash": "5b0937722ffefd268c677fab8902d301065525ddf2c1fae20ca5e45ee9d40a08",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_3::chunk_1_8",
+            "tenant_id": 1
+          },
+          "page": 3,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_3::parent_1",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "37586dda49f2f7e369847064b41027efedabd06d7f5df09e58f037e719a1dbe0"
+    },
+    "multi_doc_cash_terms": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:4a2eebf9fc451a8ea7f010ba8474846eb49a2efe6fa7752ad8e58d44f91a1372",
+          "content_byte_count": 74,
+          "content_char_count": 74,
+          "content_hash": "36453d3ff601ceda317f6ae62f992c3b0575bde025409e09c5fb758dda7d36c6",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_62::chunk_64_16",
+            "tenant_id": 1
+          },
+          "page": 62,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_62::parent_64",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:4210dc235e79795cde7852007588dbad9aa9a9d59216ef99984654ceeb765bec",
+          "content_byte_count": 479,
+          "content_char_count": 479,
+          "content_hash": "dcf06cc76e3ce08ce3eb19e6c4ee42dba57664792a116f43727069dd25698857",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_35::chunk_139",
+            "tenant_id": 1
+          },
+          "page": 35,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_35::parent_139",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:662248322087883128cc95b5526ef3a3be37293e22f084e24b8c5e26f8c62e85",
+          "content_byte_count": 364,
+          "content_char_count": 364,
+          "content_hash": "eb635050300ba049048b5b1eef79e0c3852d4086ab1cd49f2bae6191a61a7070",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_62::chunk_64_7",
+            "tenant_id": 1
+          },
+          "page": 62,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_62::parent_64",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:ebd897493f65b1642868d426f0cfcecf13c04f51acee56dda6ac554d099e724a",
+          "content_byte_count": 115,
+          "content_char_count": 115,
+          "content_hash": "7430f1d95c48584ca5bf748d615a6d00bbb6cdfde56ef832ca1595bf5bc27efc",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_59::chunk_61_12",
+            "tenant_id": 1
+          },
+          "page": 59,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_59::parent_61",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:5a6eb733f0f2fda4d316a56703add3a9e9491f1c791dd24b32dd148929348bbc",
+          "content_byte_count": 151,
+          "content_char_count": 151,
+          "content_hash": "33aa6da3e7a314d60651c07147e3513cbd7f5e818a2907520f19e66bebb7181e",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_62::chunk_64_8",
+            "tenant_id": 1
+          },
+          "page": 62,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_62::parent_64",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "dfcec00e800e10705aafbd602980537c74e8068477678dbc274bee2e30f3d061"
+    },
+    "multi_doc_compare_revenue": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:133dd3d75b19f22fb04fd77b24dd5de94e31f19b126999039a6927746c703a71",
+          "content_byte_count": 223,
+          "content_char_count": 223,
+          "content_hash": "ec4985fa5debc2932fe9f1c70d72cc7fbd9cf7eb7f8d620f2a9eb4eb2b1329cc",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_3::chunk_1_1",
+            "tenant_id": 1
+          },
+          "page": 3,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_3::parent_1",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:170605f95e44de9abcc10814966a8a0a1d8056f1a2affc1a6462659178ae74cb",
+          "content_byte_count": 92,
+          "content_char_count": 92,
+          "content_hash": "e93b01215156f0914bc125b72a20b017d85a72df46a75d14fbe63dd260a95f3e",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_7::chunk_13",
+            "tenant_id": 1
+          },
+          "page": 7,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_7::parent_13",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:bcc0ba71b4db55d018a50bf71faa948f88c27e211ae29d4cc5e45a2a5371f7d3",
+          "content_byte_count": 351,
+          "content_char_count": 351,
+          "content_hash": "7276275b3f79a91c65c29bb7d01c92cf84148c5902c9218586a78a8f75b597d1",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_90::chunk_92_1",
+            "tenant_id": 1
+          },
+          "page": 90,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_90::parent_92",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:b70a11ec6b053fe686ee8efe795b903cfe19d2972048f3450fecb0c37f653b30",
+          "content_byte_count": 94,
+          "content_char_count": 94,
+          "content_hash": "48c5d5cf126a329bdc69218cd15a12a79f3aa6efae8187a79d95336f0b0089b6",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_15::chunk_81",
+            "tenant_id": 1
+          },
+          "page": 15,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_15::parent_81",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:ee932524824eaec7eda024bc5a9fa4c1fc779128e38d5f9cc7c683a41eed46ee",
+          "content_byte_count": 105,
+          "content_char_count": 105,
+          "content_hash": "14b7acece895dd7767ba065cf987b3e2d50855e9807ca4a3424b6a4f0ac58fe8",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_1::chunk_0",
+            "tenant_id": 1
+          },
+          "page": 1,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_1::parent_0",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "39716f186af34fe84052643ab1664c9ab5101c2ca6ea7443c6ef2b52319b6950"
+    },
+    "pdfsol_cash_equivalents": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:18c5a1f50304fd1f78ffedf2f4f86f823957ffdad2b309e6369456b477d50574",
+          "content_byte_count": 210,
+          "content_char_count": 210,
+          "content_hash": "e1448cc6500ac6d92433f7dd146fd2a56172a57f4adccd660dabc61decc8be34",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_48::chunk_48_10",
+            "tenant_id": 1
+          },
+          "page": 48,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_48::parent_48",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:0dc50ce1da37bbf7fba4113903baf3bcfba23b7e76d98dcd6182f6d0e304c019",
+          "content_byte_count": 110,
+          "content_char_count": 110,
+          "content_hash": "4c93d56aa0d1ea18b756306b387d955905466ab987aae5dca66584f1c7af9afd",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_59::chunk_61_0",
+            "tenant_id": 1
+          },
+          "page": 59,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_59::parent_61",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:c81d7b4e4e503b9a390bf4270a27e2513d86a49eda273c10249d5d82c08bf968",
+          "content_byte_count": 107,
+          "content_char_count": 105,
+          "content_hash": "d06ee24be0863a061d83903ee6e8faaa11754fe7d51472f8653563515533b96e",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_60::chunk_62_0",
+            "tenant_id": 1
+          },
+          "page": 60,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_60::parent_62",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:673a5bf4f8127c9a09dc9ca3fa1f8aed43aa325ce6addce9869e8cfec9ba1273",
+          "content_byte_count": 402,
+          "content_char_count": 378,
+          "content_hash": "76d3deab7f48cf08518af1bfef48addf5a0cf2518da2219efe40e96544df5ad4",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_7::chunk_7_16",
+            "tenant_id": 1
+          },
+          "page": 7,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_7::parent_7",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:87a947e7bdb7345a91be4b13297c9ae265278cbedb221c183d19aedd0905bdad",
+          "content_byte_count": 360,
+          "content_char_count": 360,
+          "content_hash": "979f724255c05c7bf2ddfec675ab86c9111f0f457864124bf134fff760ca3628",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_51::chunk_51_11",
+            "tenant_id": 1
+          },
+          "page": 51,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_51::parent_51",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "cb08757919279ba42e890f06752131cc370d4c1bb4f6668e205a248e7f5daace"
+    },
+    "pdfsol_credit_facilities": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:69d51dd778c2209742c1606aec635ffc7bbef99b4da368e9e05631cac781df16",
+          "content_byte_count": 64,
+          "content_char_count": 62,
+          "content_hash": "deab27b854a932662848488869be67c6e913e99bbf89e63d44dc7eaf7390f09d",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_5::chunk_5_10",
+            "tenant_id": 1
+          },
+          "page": 5,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_5::parent_5",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:2696d9c6fc89cd0142838f8c00f916839e6b0b8ad373784cf7731f6733a26d8c",
+          "content_byte_count": 87,
+          "content_char_count": 83,
+          "content_hash": "58077f8587de2663f70c2c68f6e1ba8f5a7131b253bbfa5b9f30c29e72f11fc5",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_5::chunk_5_5",
+            "tenant_id": 1
+          },
+          "page": 5,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_5::parent_5",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:424c82e546d33c1804908e040f0229e1795ae700f53b03b1144d54bb3680cf10",
+          "content_byte_count": 190,
+          "content_char_count": 126,
+          "content_hash": "08d2de998936b8b7a16b160f2d096ff9f0fcdd953f33ba7b6a10e18f665bb42f",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_96::chunk_100",
+            "tenant_id": 1
+          },
+          "page": 96,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_96::parent_100",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:5b04280b12c266ac46dc59b17fd08ed7899292233c36e0e91c0c555a64fcb7a4",
+          "content_byte_count": 122,
+          "content_char_count": 122,
+          "content_hash": "f5e1e849b5634f8f1fd661b54442203eb3a1ce971962cb578087e6fbbc7ec68d",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_96::chunk_112",
+            "tenant_id": 1
+          },
+          "page": 96,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_96::parent_112",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:c81d7b4e4e503b9a390bf4270a27e2513d86a49eda273c10249d5d82c08bf968",
+          "content_byte_count": 107,
+          "content_char_count": 105,
+          "content_hash": "d06ee24be0863a061d83903ee6e8faaa11754fe7d51472f8653563515533b96e",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_60::chunk_62_0",
+            "tenant_id": 1
+          },
+          "page": 60,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_60::parent_62",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "49c50a718179c6022e24689d64dd30042805165da3d3bda2085fb1c79587c646"
+    },
+    "pdfsol_gross_margin": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:133dd3d75b19f22fb04fd77b24dd5de94e31f19b126999039a6927746c703a71",
+          "content_byte_count": 223,
+          "content_char_count": 223,
+          "content_hash": "ec4985fa5debc2932fe9f1c70d72cc7fbd9cf7eb7f8d620f2a9eb4eb2b1329cc",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_3::chunk_1_1",
+            "tenant_id": 1
+          },
+          "page": 3,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_3::parent_1",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:22197e9fdb445260c7370c4b1d4e3356e78e055b30ee1f8469f35ecb59d2eb16",
+          "content_byte_count": 326,
+          "content_char_count": 320,
+          "content_hash": "c461ab1da6566f1055dcabb1e746628a44da4349ff52889c4f4c1c14a71a7be0",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_3::chunk_1_10",
+            "tenant_id": 1
+          },
+          "page": 3,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_3::parent_1",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:d058e60d1bcccfc9ee820a9aae5ef06287a07dee7e62e0f483242c347b08eaec",
+          "content_byte_count": 342,
+          "content_char_count": 342,
+          "content_hash": "8da364e0d3e2a92d748c9ac4dc5875509b6410ac9789ecc2c4c26fe19435190d",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_46::chunk_46_0",
+            "tenant_id": 1
+          },
+          "page": 46,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_46::parent_46",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:5b04280b12c266ac46dc59b17fd08ed7899292233c36e0e91c0c555a64fcb7a4",
+          "content_byte_count": 122,
+          "content_char_count": 122,
+          "content_hash": "f5e1e849b5634f8f1fd661b54442203eb3a1ce971962cb578087e6fbbc7ec68d",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_96::chunk_112",
+            "tenant_id": 1
+          },
+          "page": 96,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_96::parent_112",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:323ebd1b2cd7665d341ddf6b9f478575f0b4936dbda78f14bbd3ce672c9d2257",
+          "content_byte_count": 218,
+          "content_char_count": 218,
+          "content_hash": "69dea1a5a23f444bcfc21440886d442dd7e133a63f12b3225c33b4b0d46f8631",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_45::chunk_45_0",
+            "tenant_id": 1
+          },
+          "page": 45,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_45::parent_45",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "8a2857df3ae653d59f6622a1fd897caea85e353c3c44db2e9fc1d8fe8e9ad4a0"
+    },
+    "pdfsol_no_ceo_salary": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:5b04280b12c266ac46dc59b17fd08ed7899292233c36e0e91c0c555a64fcb7a4",
+          "content_byte_count": 122,
+          "content_char_count": 122,
+          "content_hash": "f5e1e849b5634f8f1fd661b54442203eb3a1ce971962cb578087e6fbbc7ec68d",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_96::chunk_112",
+            "tenant_id": 1
+          },
+          "page": 96,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_96::parent_112",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:673a5bf4f8127c9a09dc9ca3fa1f8aed43aa325ce6addce9869e8cfec9ba1273",
+          "content_byte_count": 402,
+          "content_char_count": 378,
+          "content_hash": "76d3deab7f48cf08518af1bfef48addf5a0cf2518da2219efe40e96544df5ad4",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_7::chunk_7_16",
+            "tenant_id": 1
+          },
+          "page": 7,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_7::parent_7",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:133dd3d75b19f22fb04fd77b24dd5de94e31f19b126999039a6927746c703a71",
+          "content_byte_count": 223,
+          "content_char_count": 223,
+          "content_hash": "ec4985fa5debc2932fe9f1c70d72cc7fbd9cf7eb7f8d620f2a9eb4eb2b1329cc",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_3::chunk_1_1",
+            "tenant_id": 1
+          },
+          "page": 3,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_3::parent_1",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:aa0a863f164ed3552806bbdd91b33e4cfdfc38f264f1c142ec3e27bdd514205e",
+          "content_byte_count": 290,
+          "content_char_count": 290,
+          "content_hash": "4aa20c1283d9066c5d3da92137f08cd0d76e3e17e981c30de1302a2c58090509",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_53::chunk_53_1",
+            "tenant_id": 1
+          },
+          "page": 53,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_53::parent_53",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:86dd5243ebcf1c5d16a90952674a9962ee221b678dbd3fe981962807b7c5ebfa",
+          "content_byte_count": 295,
+          "content_char_count": 295,
+          "content_hash": "fd678220ea11d32262aa6c5d7d6fe90e74c63507efb9a5c714ee7a2193829ee6",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_55::chunk_55_1",
+            "tenant_id": 1
+          },
+          "page": 55,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_55::parent_55",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "a9575077a8e60ecc5e711c562138cd51f506611c724faeb949e5da34d3b365da"
+    },
+    "pdfsol_operating_cash_flow": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:40dd96a4a01f53698e7fa79d6ae1ac20abb8ff2a1511e480223fba3f3848f124",
+          "content_byte_count": 379,
+          "content_char_count": 379,
+          "content_hash": "437e3a83d4dd49e53a161d7c078c3be87bb939a1094add390890f5cddb2f0e4b",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_59::chunk_61_1",
+            "tenant_id": 1
+          },
+          "page": 59,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_59::parent_61",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:cb6e0c539580a446ffe159d1ff418b6b0d063120391caa9bed9bb1cf911fab14",
+          "content_byte_count": 233,
+          "content_char_count": 233,
+          "content_hash": "ee09d1ec294ac57775f51858b6d25d864f4288fcb2ab3e613e8eafcf57b60cd1",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_50::chunk_50_16",
+            "tenant_id": 1
+          },
+          "page": 50,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_50::parent_50",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:24f594d0d198b4efaac1050229982656bd7634ff102853e76c44b0f15086f1ca",
+          "content_byte_count": 378,
+          "content_char_count": 378,
+          "content_hash": "6879a35ec5cf8c4760fe83af8c2135f414a607cc2436df39459dd27b30a52b4f",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_50::chunk_50_1",
+            "tenant_id": 1
+          },
+          "page": 50,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_50::parent_50",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:e7d9a52a7537cd602835df347adaedc2b61abaeb66da19739079f94e19a85925",
+          "content_byte_count": 228,
+          "content_char_count": 228,
+          "content_hash": "ae4ed79c280655aba383d07afc6e36755587540141fce70c496b0f93124df146",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_50::chunk_50_11",
+            "tenant_id": 1
+          },
+          "page": 50,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_50::parent_50",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:03275ff2a632f053938e26a8bf1a5fc266253b5005791268304dcaf8f2ffddef",
+          "content_byte_count": 341,
+          "content_char_count": 341,
+          "content_hash": "7f0d4b166cbc3e54d923ae3606187a7488101d864d6a8658d591be797f63d6e0",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_50::chunk_50_12",
+            "tenant_id": 1
+          },
+          "page": 50,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_50::parent_50",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "218c0cdc551074f9601f5a1a109dc9bebd339e930ee727124aa3e979fb5fdd13"
+    },
+    "pdfsol_platform_revenue": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:133dd3d75b19f22fb04fd77b24dd5de94e31f19b126999039a6927746c703a71",
+          "content_byte_count": 223,
+          "content_char_count": 223,
+          "content_hash": "ec4985fa5debc2932fe9f1c70d72cc7fbd9cf7eb7f8d620f2a9eb4eb2b1329cc",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_3::chunk_1_1",
+            "tenant_id": 1
+          },
+          "page": 3,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_3::parent_1",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:6811d7198230e5cb321f3e7161a595c5bf2b6a36c388aa80d625966c54562233",
+          "content_byte_count": 300,
+          "content_char_count": 296,
+          "content_hash": "17130fe5cf78ee9014dcee9a13752924007737dbcfe43512709acda6fd60bca6",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_3::chunk_1_9",
+            "tenant_id": 1
+          },
+          "page": 3,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_3::parent_1",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:b7bd9f7b7a0ede76667e92249454d977a13ef35c81390552c23b3df9386a5055",
+          "content_byte_count": 347,
+          "content_char_count": 345,
+          "content_hash": "200084592b9b48ce0cd2ed0e6749b542cf73e52c629c636dcc30fd2cf6ee0b9d",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_40::chunk_40_1",
+            "tenant_id": 1
+          },
+          "page": 40,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_40::parent_40",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:9d027d07cec60d46f066a37478a35679588b42b08d9992e4b11d2fb18e7fe325",
+          "content_byte_count": 187,
+          "content_char_count": 187,
+          "content_hash": "54b131ce42dab1780a96fb49a000cbcf87c545a2bb99aed8d1ba7d02e2419417",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_45::chunk_45_5",
+            "tenant_id": 1
+          },
+          "page": 45,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_45::parent_45",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:7f978812a6d6bb1fb378cf4be7af49af0169f0dd46d9879153d48e65dc08f56a",
+          "content_byte_count": 226,
+          "content_char_count": 226,
+          "content_hash": "8614ffd19da0de83bd52553e46d81f5a934a3e29ad9a451f077f945571253bfa",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_8::chunk_8_9",
+            "tenant_id": 1
+          },
+          "page": 8,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_8::parent_8",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "c4dd1eaf9d4ee200ab65a621dd714ced74a1271f30bcd16cc08c15ad601a9ad7"
+    },
+    "pdfsol_record_revenue": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:133dd3d75b19f22fb04fd77b24dd5de94e31f19b126999039a6927746c703a71",
+          "content_byte_count": 223,
+          "content_char_count": 223,
+          "content_hash": "ec4985fa5debc2932fe9f1c70d72cc7fbd9cf7eb7f8d620f2a9eb4eb2b1329cc",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_3::chunk_1_1",
+            "tenant_id": 1
+          },
+          "page": 3,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_3::parent_1",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:5b04280b12c266ac46dc59b17fd08ed7899292233c36e0e91c0c555a64fcb7a4",
+          "content_byte_count": 122,
+          "content_char_count": 122,
+          "content_hash": "f5e1e849b5634f8f1fd661b54442203eb3a1ce971962cb578087e6fbbc7ec68d",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_96::chunk_112",
+            "tenant_id": 1
+          },
+          "page": 96,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_96::parent_112",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:673a5bf4f8127c9a09dc9ca3fa1f8aed43aa325ce6addce9869e8cfec9ba1273",
+          "content_byte_count": 402,
+          "content_char_count": 378,
+          "content_hash": "76d3deab7f48cf08518af1bfef48addf5a0cf2518da2219efe40e96544df5ad4",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_7::chunk_7_16",
+            "tenant_id": 1
+          },
+          "page": 7,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_7::parent_7",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:bcc0ba71b4db55d018a50bf71faa948f88c27e211ae29d4cc5e45a2a5371f7d3",
+          "content_byte_count": 351,
+          "content_char_count": 351,
+          "content_hash": "7276275b3f79a91c65c29bb7d01c92cf84148c5902c9218586a78a8f75b597d1",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_90::chunk_92_1",
+            "tenant_id": 1
+          },
+          "page": 90,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_90::parent_92",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:ee932524824eaec7eda024bc5a9fa4c1fc779128e38d5f9cc7c683a41eed46ee",
+          "content_byte_count": 105,
+          "content_char_count": 105,
+          "content_hash": "14b7acece895dd7767ba065cf987b3e2d50855e9807ca4a3424b6a4f0ac58fe8",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_1::chunk_0",
+            "tenant_id": 1
+          },
+          "page": 1,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_1::parent_0",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "4507cea1388ee4243f303648ea19585af09581b5ddcb3a2208850b9d6552a89a"
+    },
+    "pdfsol_title": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:5b04280b12c266ac46dc59b17fd08ed7899292233c36e0e91c0c555a64fcb7a4",
+          "content_byte_count": 122,
+          "content_char_count": 122,
+          "content_hash": "f5e1e849b5634f8f1fd661b54442203eb3a1ce971962cb578087e6fbbc7ec68d",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_96::chunk_112",
+            "tenant_id": 1
+          },
+          "page": 96,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_96::parent_112",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:424c82e546d33c1804908e040f0229e1795ae700f53b03b1144d54bb3680cf10",
+          "content_byte_count": 190,
+          "content_char_count": 126,
+          "content_hash": "08d2de998936b8b7a16b160f2d096ff9f0fcdd953f33ba7b6a10e18f665bb42f",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_96::chunk_100",
+            "tenant_id": 1
+          },
+          "page": 96,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_96::parent_100",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:102c29f54645ccba6e92e6e893e7d4f8f691d1b99595aed03b840aa70bfd91fd",
+          "content_byte_count": 281,
+          "content_char_count": 281,
+          "content_hash": "db5ff4ff1537ef0fb54a3f845d98c8a3512cf9ab0927262dab65f4c029e286ac",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_5::chunk_5_2",
+            "tenant_id": 1
+          },
+          "page": 5,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_5::parent_5",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:d0595bb1f416c43a12e3a2165e832dfef1a7557ef0a830005a1222bef185d2f3",
+          "content_byte_count": 98,
+          "content_char_count": 98,
+          "content_hash": "5b0937722ffefd268c677fab8902d301065525ddf2c1fae20ca5e45ee9d40a08",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_3::chunk_1_8",
+            "tenant_id": 1
+          },
+          "page": 3,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_3::parent_1",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:673a5bf4f8127c9a09dc9ca3fa1f8aed43aa325ce6addce9869e8cfec9ba1273",
+          "content_byte_count": 402,
+          "content_char_count": 378,
+          "content_hash": "76d3deab7f48cf08518af1bfef48addf5a0cf2518da2219efe40e96544df5ad4",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_7::chunk_7_16",
+            "tenant_id": 1
+          },
+          "page": 7,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_7::parent_7",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "e6102ad24c423be775984695314818331828981368807de60ff715a5f62c05ef"
+    },
+    "pdfsol_volume_revenue": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:133dd3d75b19f22fb04fd77b24dd5de94e31f19b126999039a6927746c703a71",
+          "content_byte_count": 223,
+          "content_char_count": 223,
+          "content_hash": "ec4985fa5debc2932fe9f1c70d72cc7fbd9cf7eb7f8d620f2a9eb4eb2b1329cc",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_3::chunk_1_1",
+            "tenant_id": 1
+          },
+          "page": 3,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_3::parent_1",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:3afff55c4c3241163cc30052e4d18e35abb3512128123597618035b9788a5745",
+          "content_byte_count": 352,
+          "content_char_count": 352,
+          "content_hash": "818b9e078e437b6974e1242f7a9f06b32d1ea91a55e3cbd23c87bf678b222c9f",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_45::chunk_45_7",
+            "tenant_id": 1
+          },
+          "page": 45,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_45::parent_45",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:8891fff98a5ead4cd0a92115755b35ceab865bd072de2608bc9fff74984f808f",
+          "content_byte_count": 320,
+          "content_char_count": 318,
+          "content_hash": "2e9b93d84887ff0c43ad80cae90ae6dc52982a165b72c91ba9886c5e03f65323",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_40::chunk_40_3",
+            "tenant_id": 1
+          },
+          "page": 40,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_40::parent_40",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:caee5e736d46085b8eab8c386a4bce239376cbb33b68f35d292f01b83d880a7b",
+          "content_byte_count": 357,
+          "content_char_count": 357,
+          "content_hash": "0544229197c549bb06bbc07533fa5a2c5827af8c9acc7c76ede49fd3a07029d6",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_40::chunk_40_2",
+            "tenant_id": 1
+          },
+          "page": 40,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_40::parent_40",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:673a5bf4f8127c9a09dc9ca3fa1f8aed43aa325ce6addce9869e8cfec9ba1273",
+          "content_byte_count": 402,
+          "content_char_count": 378,
+          "content_hash": "76d3deab7f48cf08518af1bfef48addf5a0cf2518da2219efe40e96544df5ad4",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_7::chunk_7_16",
+            "tenant_id": 1
+          },
+          "page": 7,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_7::parent_7",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "c8f19045ac66d617e2cd9befb1140f35829cd69f48f757269d37991df90eb772"
+    },
+    "wipo_budget_pct_actual": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:eeb4c2de9de07f690252f99af7839a809d76d6618d83926f8273b1e59a985175",
+          "content_byte_count": 1659,
+          "content_char_count": 1655,
+          "content_hash": "a8c92840c6361a31d3aaa5ee2bb58717a74e2a4249271cee1ceb661e768965e7",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_47::chunk_243_6",
+            "tenant_id": 1
+          },
+          "page": 47,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_47::parent_243",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:93ab78f13809e21eb0bb9925345761ff96aec68cb2eed33921531ff7b1d02d4b",
+          "content_byte_count": 1693,
+          "content_char_count": 1689,
+          "content_hash": "e464b741bb892e06755eb89a7a8a8b32ee29eb41347e2466744a96ddb5c394a4",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_47::chunk_243_5",
+            "tenant_id": 1
+          },
+          "page": 47,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_47::parent_243",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:2687334925831c91672d99c92233d6e821e014e8863e49e8f69858d1c7f9a1aa",
+          "content_byte_count": 1621,
+          "content_char_count": 1617,
+          "content_hash": "8b3913426e3235c37f15bcab83955e974154fbf11eb21f0299655fd12b65cf14",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_47::chunk_243_4",
+            "tenant_id": 1
+          },
+          "page": 47,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_47::parent_243",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:89d7a34c8aec109548bc06482164b63e9f2da4f0488dc25dc500aa5c0b253f7f",
+          "content_byte_count": 1670,
+          "content_char_count": 1666,
+          "content_hash": "6ee3f9ef9e30708391142edd83a26f47377fc13a18491a11dd1dc6b60c5e501d",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_47::chunk_243_3",
+            "tenant_id": 1
+          },
+          "page": 47,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_47::parent_243",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:21a009bdef5605fe191f40a97e04ba7cd6d161cfdeb7f416d0daed8786ec2f90",
+          "content_byte_count": 1617,
+          "content_char_count": 1613,
+          "content_hash": "ac6bdd0a64712d59458f66921898ab5a11d33607fac7d40f1ff6d4b7ed75fb2a",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_47::chunk_243_0",
+            "tenant_id": 1
+          },
+          "page": 47,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_47::parent_243",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "c701274afa2df97ba3ff4a8d6ca81392a75ff90e4ad396eedbf389ea3a8bb1e8"
+    },
+    "wipo_cash_2020": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:2b78c15cd0c1b77c11dc928f9da7b4e14350b58aed69e4baef8f9e62edd6b58e",
+          "content_byte_count": 145,
+          "content_char_count": 145,
+          "content_hash": "7634b7904b58cb2104364e0016f8193550fc33cbbf2380aec2041fa0c272aa93",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_50::chunk_251_21",
+            "tenant_id": 1
+          },
+          "page": 50,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_50::parent_251",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:4210dc235e79795cde7852007588dbad9aa9a9d59216ef99984654ceeb765bec",
+          "content_byte_count": 479,
+          "content_char_count": 479,
+          "content_hash": "dcf06cc76e3ce08ce3eb19e6c4ee42dba57664792a116f43727069dd25698857",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_35::chunk_139",
+            "tenant_id": 1
+          },
+          "page": 35,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_35::parent_139",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:87a947e7bdb7345a91be4b13297c9ae265278cbedb221c183d19aedd0905bdad",
+          "content_byte_count": 360,
+          "content_char_count": 360,
+          "content_hash": "979f724255c05c7bf2ddfec675ab86c9111f0f457864124bf134fff760ca3628",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_51::chunk_51_11",
+            "tenant_id": 1
+          },
+          "page": 51,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_51::parent_51",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:ebd897493f65b1642868d426f0cfcecf13c04f51acee56dda6ac554d099e724a",
+          "content_byte_count": 115,
+          "content_char_count": 115,
+          "content_hash": "7430f1d95c48584ca5bf748d615a6d00bbb6cdfde56ef832ca1595bf5bc27efc",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_59::chunk_61_12",
+            "tenant_id": 1
+          },
+          "page": 59,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_59::parent_61",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:687d8f65e6d34da2c369b59cf9dd0d8dd3e2918ae5fe8481d9d59a3cf0fab69b",
+          "content_byte_count": 94,
+          "content_char_count": 94,
+          "content_hash": "fd22765d06d7ddc4dca6460669401ae3b4e628dd2803ad92c431d4a8f15f0255",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_33::chunk_134",
+            "tenant_id": 1
+          },
+          "page": 33,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_33::parent_134",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "df3d5238d938bca2403bbba4579445b492e55bfc9d12d44a2fa2581a7b2cf646"
+    },
+    "wipo_madrid_share": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:3f9ae0af7dce2fbf42e4c5dba24acdcdb366aaa395823cb04db4badf26c34e66",
+          "content_byte_count": 1275,
+          "content_char_count": 1273,
+          "content_hash": "16fd7050d2568d7e11da99219f95d9efdbb1200dd58a57c7b1a0e50a61dfb3fc",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_10::chunk_24_1",
+            "tenant_id": 1
+          },
+          "page": 10,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_10::parent_24",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:a0281128632d972f64c8637b593e9d0edf6d3c67e843fffd7ef71721aee0ad49",
+          "content_byte_count": 120,
+          "content_char_count": 120,
+          "content_hash": "2c30ae6d8aff979347816fcb6ffbd00472fa37d070b973b8bd44a0d1136ed505",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_10::chunk_28",
+            "tenant_id": 1
+          },
+          "page": 10,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_10::parent_28",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:1c331402637449305e251f2eb3ff50416e13170db04a4ce7b6591a4e744eca10",
+          "content_byte_count": 1340,
+          "content_char_count": 1338,
+          "content_hash": "ad4d0adb7c7d8dbdb900d0b521124f231d9787d829aefc3c61f3e99848225e27",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_10::chunk_24_0",
+            "tenant_id": 1
+          },
+          "page": 10,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_10::parent_24",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:8cb704bae5e28977233d1266ab58fd8ee5c2ad937a363028446beb2bd7f7cfcd",
+          "content_byte_count": 1155,
+          "content_char_count": 1151,
+          "content_hash": "bba86a17cf1d97ec3cb30522d923930542ac02508916da659b17db7cfe3c8011",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_10::chunk_24_3",
+            "tenant_id": 1
+          },
+          "page": 10,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_10::parent_24",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:3f9a8ece3daabd7f225f2fb1872ffd9a8c1d481fa582517e546b47c40f0306da",
+          "content_byte_count": 1335,
+          "content_char_count": 1331,
+          "content_hash": "1875d0c9ac6b2a447ca45807610c4e1f59c4740d6e162c8f9de25e1b50ca6690",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_10::chunk_24_2",
+            "tenant_id": 1
+          },
+          "page": 10,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_10::parent_24",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "deacdd0c911126534139d66f222e283a1e177e2001ba30486ee88e4885246318"
+    },
+    "wipo_net_assets": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:687d8f65e6d34da2c369b59cf9dd0d8dd3e2918ae5fe8481d9d59a3cf0fab69b",
+          "content_byte_count": 94,
+          "content_char_count": 94,
+          "content_hash": "fd22765d06d7ddc4dca6460669401ae3b4e628dd2803ad92c431d4a8f15f0255",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_33::chunk_134",
+            "tenant_id": 1
+          },
+          "page": 33,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_33::parent_134",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:42b80443c6bfc018e9cf79621ac885e5543123f30bcd94d0f88d8a435ceb2dd9",
+          "content_byte_count": 425,
+          "content_char_count": 425,
+          "content_hash": "53789e104dea07cd9e4476e7e685f2702ec861ba5460975ce80fb87472149f29",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_26::chunk_114_0",
+            "tenant_id": 1
+          },
+          "page": 26,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_26::parent_114",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:cafe636a2f787ecd1b34aedf24bf1467dda73f047a6ffcf3824de238a34fdafb",
+          "content_byte_count": 94,
+          "content_char_count": 94,
+          "content_hash": "60af2ca242c9ef4fed7663160c155f2a30bbce1c51ca16ec07e0dcbf3ca28870",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_46::chunk_238_0",
+            "tenant_id": 1
+          },
+          "page": 46,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_46::parent_238",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:4af7aca73205741e15bb1a40faf42bfdb22c21e7eb342290ba3bf82edc90720e",
+          "content_byte_count": 1477,
+          "content_char_count": 1471,
+          "content_hash": "dbc7c345d0ba25a3e2753f5d7ff7bcca5fffd49f73ee9fd7f8597d934501e117",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_14::chunk_80_2",
+            "tenant_id": 1
+          },
+          "page": 14,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_14::parent_80",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:010f771648fe24f40b0abc60eb8758fca2300c7d5d45dd2c2591e0c1a58190b8",
+          "content_byte_count": 94,
+          "content_char_count": 94,
+          "content_hash": "b4217b5efbd853939a8082677f5688a98eeba7fd0173ed74c179355b514296c2",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_51::chunk_252",
+            "tenant_id": 1
+          },
+          "page": 51,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_51::parent_252",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "3f8e3f6c1983d831433e8856516f7aac21459314f29d8d3305e6d9fa8ef2f9b4"
+    },
+    "wipo_no_ceo_salary": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:72155020b74cb04f5cba67786ce17f00f6de1aa065eef6f439a6b3d06f5e18ff",
+          "content_byte_count": 94,
+          "content_char_count": 94,
+          "content_hash": "eafc0b7e8f99da358ad5eeabb190bde57ac012623036d3faaf2c6f1fc09eabca",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_18::chunk_95",
+            "tenant_id": 1
+          },
+          "page": 18,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_18::parent_95",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:b70a11ec6b053fe686ee8efe795b903cfe19d2972048f3450fecb0c37f653b30",
+          "content_byte_count": 94,
+          "content_char_count": 94,
+          "content_hash": "48c5d5cf126a329bdc69218cd15a12a79f3aa6efae8187a79d95336f0b0089b6",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_15::chunk_81",
+            "tenant_id": 1
+          },
+          "page": 15,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_15::parent_81",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:a9aaf511a5d7efcaf8971c26d4cdcf268c231348308a3b219c6926c72aa22f95",
+          "content_byte_count": 159,
+          "content_char_count": 159,
+          "content_hash": "8ff4b4e3421cc17cec506dfce75b43bc8cc82cb285ec3bc9f6f1e9402b748d17",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_9::chunk_16",
+            "tenant_id": 1
+          },
+          "page": 9,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_9::parent_16",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:694a51b5870f66b57465a7cfb6e0a1cbc10c8c4d8939be6f5a71468f9e9a9525",
+          "content_byte_count": 159,
+          "content_char_count": 159,
+          "content_hash": "cf9aa32be092780558c55443a7029805d1df0c2391a32aa4af3e23864b9c3f75",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_11::chunk_38",
+            "tenant_id": 1
+          },
+          "page": 11,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_11::parent_38",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:f0dd70de99aa8e1cdabf7279308efbf6b64dc57a926fc795167aaed96a09fe98",
+          "content_byte_count": 94,
+          "content_char_count": 94,
+          "content_hash": "8f54d4671de63371b85c33306fe649c62c9d5ce5c8ab8236e9883680718dac53",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_19::chunk_98",
+            "tenant_id": 1
+          },
+          "page": 19,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_19::parent_98",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "fd53cfe85d14a5d6519bc52e956eaaae2a5f1d13ad5d96ae4b9c4e99e41dc3cb"
+    },
+    "wipo_org": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:f49dd31fda28911303eb162de22a3062f66253e2ffcedb9ce2dc064369b98b6b",
+          "content_byte_count": 88,
+          "content_char_count": 88,
+          "content_hash": "c44f4cf050ed591f60e384c4ad55bb5f7443286fe28440c4a9259b538f8791e1",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_6::chunk_11",
+            "tenant_id": 1
+          },
+          "page": 6,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_6::parent_11",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:8608f9f1b0d2f10375d043655cb181ae59f709716912e177c877b28b21b6eb39",
+          "content_byte_count": 279,
+          "content_char_count": 279,
+          "content_hash": "f0dbe1f0a1a043cc901dfabef8d0864f12f1265f703f11663ee4e2a5560ff4f6",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_5::chunk_5_0",
+            "tenant_id": 1
+          },
+          "page": 5,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_5::parent_5",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "front_matter",
+          "candidate_key": "candidate:v1:b32187eb513e52cf602acb5ad5f01d0c03b937a634e1bb8248629f8a1aa1fc36",
+          "content_byte_count": 85,
+          "content_char_count": 85,
+          "content_hash": "bac53c7128d30bf0e624b8bb007060dc9afb86b833247b5b88547def91fa7c90",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_1::front_matter_title",
+            "tenant_id": 1
+          },
+          "page": 1,
+          "parent_id": null,
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:b8b57b2e878450ba912fd676a0011ae8cb6c29d83df43dd6b80b0eda2e0cd7d3",
+          "content_byte_count": 166,
+          "content_char_count": 166,
+          "content_hash": "be25c92b5a22d8dcfdb53e67bfe9996c24055475ae574ebebfa6056afb4d4b39",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_3::chunk_2",
+            "tenant_id": 1
+          },
+          "page": 3,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_3::parent_2",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:72155020b74cb04f5cba67786ce17f00f6de1aa065eef6f439a6b3d06f5e18ff",
+          "content_byte_count": 94,
+          "content_char_count": 94,
+          "content_hash": "eafc0b7e8f99da358ad5eeabb190bde57ac012623036d3faaf2c6f1fc09eabca",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_18::chunk_95",
+            "tenant_id": 1
+          },
+          "page": 18,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_18::parent_95",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "dd80efc28e8fa6b010d18689510a2e77f0f0ef3986ce861b7d42735c975eed67"
+    },
+    "wipo_pct_share": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:71649e0b7815c4a75387fc964524a856917ecd471629f9d1b59e4236ea517585",
+          "content_byte_count": 114,
+          "content_char_count": 114,
+          "content_hash": "28175227ef2df448e501847643a6f61e1e265c1a4c4cff2fde66538b76d692f8",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_10::chunk_26",
+            "tenant_id": 1
+          },
+          "page": 10,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_10::parent_26",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:827dd0a1644a8a9d827ba8aac79612cb63f5ad6871d4d1aef192267c51d5a6a2",
+          "content_byte_count": 799,
+          "content_char_count": 799,
+          "content_hash": "42c70506b92fe471b77bc7ace15e1b9b9e8730ec46691e428a04b3fe8af5a0d7",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_11::chunk_42_1",
+            "tenant_id": 1
+          },
+          "page": 11,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_11::parent_42",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:e0761eef04484554bb4175c57605809380f7ee7f09a11823d5e52c83a72c6c1d",
+          "content_byte_count": 410,
+          "content_char_count": 406,
+          "content_hash": "6fc9941e2fb133b57436605dbbb0ce5fa0584cc0a96927a72684c485664177fc",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_11::chunk_41",
+            "tenant_id": 1
+          },
+          "page": 11,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_11::parent_41",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:67d571f9cf6abcd5faef872230834f636cce057a184e25f55163dec586d217f8",
+          "content_byte_count": 905,
+          "content_char_count": 905,
+          "content_hash": "cd99584c9aaa1a0310691f0aa2ae84fc2fef2eb188a80f60e1f95a13787d84e6",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_11::chunk_42_0",
+            "tenant_id": 1
+          },
+          "page": 11,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_11::parent_42",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:1d3ce88c047f3ac3333860e77b08db073707fe763470eed5e1252d59f8a9b41e",
+          "content_byte_count": 4044,
+          "content_char_count": 4030,
+          "content_hash": "f1f15d1443718d535f0355903e43664ea2e32977052a2e62d54a997f1df5fc72",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_16::chunk_84_3",
+            "tenant_id": 1
+          },
+          "page": 16,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_16::parent_84",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "19e4574808da4c9cfe308f7a81d929cb3a4fb15a5f1adc614f785aaaa77f1377"
+    },
+    "wipo_title": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:07dc1a8ad56d67bd5c016bd1d2e879ff3a7903478faa7b72d4cfcd9e0911a4e1",
+          "content_byte_count": 94,
+          "content_char_count": 94,
+          "content_hash": "ce8d63afd5f9368bf357e7f0dbc90cd0df4414a46dde86d66bb7d601db30bdd1",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_50::chunk_251_0",
+            "tenant_id": 1
+          },
+          "page": 50,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_50::parent_251",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:6f1bef70408e7e8794c147f8b55b0ee9ffc488e05a63648e11f4a5f01ff0cc9e",
+          "content_byte_count": 360,
+          "content_char_count": 360,
+          "content_hash": "17e6a0c567d1c13ce89413d0cd0416802b533509ee924f7298907de93d130c6f",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "FINAL Annual Report.pdf",
+            "kind": "block",
+            "source_id": "user_1_FINAL Annual Report.pdf::page_66::chunk_68_20",
+            "tenant_id": 1
+          },
+          "page": 66,
+          "parent_id": "user_1_FINAL Annual Report.pdf::page_66::parent_68",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:cafe636a2f787ecd1b34aedf24bf1467dda73f047a6ffcf3824de238a34fdafb",
+          "content_byte_count": 94,
+          "content_char_count": 94,
+          "content_hash": "60af2ca242c9ef4fed7663160c155f2a30bbce1c51ca16ec07e0dcbf3ca28870",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_46::chunk_238_0",
+            "tenant_id": 1
+          },
+          "page": 46,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_46::parent_238",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:9620888d0fed6611d31ce6ad5f88ccd43e365fd6907f256f69cf4907881eb56b",
+          "content_byte_count": 1778,
+          "content_char_count": 1750,
+          "content_hash": "b92c938756f4cfec0621e824c4c961cc6477c6a12222a94469a6fe5b1fdc22a4",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_21::chunk_103_6",
+            "tenant_id": 1
+          },
+          "page": 21,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_21::parent_103",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:687d8f65e6d34da2c369b59cf9dd0d8dd3e2918ae5fe8481d9d59a3cf0fab69b",
+          "content_byte_count": 94,
+          "content_char_count": 94,
+          "content_hash": "fd22765d06d7ddc4dca6460669401ae3b4e628dd2803ad92c431d4a8f15f0255",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_33::chunk_134",
+            "tenant_id": 1
+          },
+          "page": 33,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_33::parent_134",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "353ff68cc799acdf57b5bd8ffc994f87c65e5dbc14a62e88d6899f72c8359749"
+    },
+    "wipo_total_revenue_2020": {
+      "candidate_count": 5,
+      "candidates": [
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:010f771648fe24f40b0abc60eb8758fca2300c7d5d45dd2c2591e0c1a58190b8",
+          "content_byte_count": 94,
+          "content_char_count": 94,
+          "content_hash": "b4217b5efbd853939a8082677f5688a98eeba7fd0173ed74c179355b514296c2",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_51::chunk_252",
+            "tenant_id": 1
+          },
+          "page": 51,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_51::parent_252",
+          "rank": 1,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:7f95dcfbee80cc280738c5e1f015e6d96b11fde038c3845e305ad11036084361",
+          "content_byte_count": 156,
+          "content_char_count": 156,
+          "content_hash": "8d4f25fa58b8348df967d1ab91be12acc26975c08f136d86b81ae364fc30ad53",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_10::chunk_22",
+            "tenant_id": 1
+          },
+          "page": 10,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_10::parent_22",
+          "rank": 2,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:cafe636a2f787ecd1b34aedf24bf1467dda73f047a6ffcf3824de238a34fdafb",
+          "content_byte_count": 94,
+          "content_char_count": 94,
+          "content_hash": "60af2ca242c9ef4fed7663160c155f2a30bbce1c51ca16ec07e0dcbf3ca28870",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_46::chunk_238_0",
+            "tenant_id": 1
+          },
+          "page": 46,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_46::parent_238",
+          "rank": 3,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:6efe4d6cce7ec020293f6aa42ef1d26a25d17713256fc61f6f0805bf703dc19d",
+          "content_byte_count": 1347,
+          "content_char_count": 1345,
+          "content_hash": "058e67fd5b033f31343022da3bbcb4bf4528f715b4132413ba516d69783b4d78",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_9::chunk_19",
+            "tenant_id": 1
+          },
+          "page": 9,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_9::parent_19",
+          "rank": 4,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        },
+        {
+          "block_type": "text",
+          "candidate_key": "candidate:v1:5ab5f1fdf403b770fefb5d7aaf087326c7a9fb045d6eaa4a85dc495918c0a40a",
+          "content_byte_count": 94,
+          "content_char_count": 94,
+          "content_hash": "a0f0c4df01465d0cd5e90bab405eb047edb9adfbd98594425db83c289c8f5c77",
+          "identity": {
+            "collection_id": "rag_global_knowledge_base",
+            "document_id": "wipo_pub_rn2021_18e.pdf",
+            "kind": "block",
+            "source_id": "user_1_wipo_pub_rn2021_18e.pdf::page_52::chunk_253",
+            "tenant_id": 1
+          },
+          "page": 52,
+          "parent_id": "user_1_wipo_pub_rn2021_18e.pdf::page_52::parent_253",
+          "rank": 5,
+          "renderer_schema": "context-renderer/v1",
+          "table_id": null
+        }
+      ],
+      "content_hash_available": true,
+      "final_context_hash": "0346d27278fea3c130ed8d98e4a1948e564098092fd670ddb83756aa5cbf10c9"
+    }
+  },
+  "cases_without_exported_content_hash": 0,
+  "context_renderer_schema": "context-renderer/v1"
+}

@@ -1,0 +1,16 @@
+{
+  "answerable_case_count": 25,
+  "artifact_schema": "nf39-r2/v1",
+  "candidate_pool_hash": "5fe5e77e32105ee45bd00b77c9563d2c078b1b2beef2abf4bed2377187aa68de",
+  "case_count": 27,
+  "corpus_hash": "66a60698769a166b81c328ef78fbfe5c1f1b67c4c6dff6ea22f66d05bc39b08f",
+  "expected_source_count": 35,
+  "final_top_k": 5,
+  "label_hash": "3d5286f5a21e09ada3a574b91dfaa75ad3bc87cf189d3a6f9578e8eea06a54aa",
+  "no_answer_case_count": 2,
+  "production_behavior_changed": false,
+  "question_hash": "5ab9bb23d5e58969801731a4401ba3276eba80232d9d432ed630b90d1d0d6dcd",
+  "reranker_input_top_n": 20,
+  "rrf_top_n": 40,
+  "tenant_id": 1
+}

@@ -371,7 +371,10 @@ def freeze_bm25_pool(
             )
         if len(accepted) < k:
             shortfalls.append(case.case_id)
-        pool[case.case_id] = _normalize_bm25_candidates(accepted)
+        pool[case.case_id] = _normalize_bm25_candidates(
+            accepted,
+            tenant_id=scope.tenant_id,
+        )
 
     return FrozenBm25Pool(
         candidates=pool,
@@ -390,17 +393,35 @@ def _candidate_document_id(candidate: dict[str, Any]) -> str:
     return str(metadata.get("doc_name") or candidate.get("document_id") or "")
 
 
-def _normalize_bm25_candidates(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def _normalize_bm25_candidates(
+    candidates: list[dict[str, Any]],
+    *,
+    tenant_id: int | None = None,
+) -> list[dict[str, Any]]:
+    """Normalize raw BM25 results without discarding their source identity."""
     normalized: list[dict[str, Any]] = []
     for rank, candidate in enumerate(candidates):
         metadata = candidate.get("metadata") or {}
+        evidence_id = candidate.get("doc_id")
+        document_id = metadata.get("doc_name")
+        if not isinstance(evidence_id, str) or not evidence_id.strip():
+            raise EvaluationConfigurationError(
+                f"BM25 candidate at rank {rank} is missing doc_id"
+            )
+        if not isinstance(document_id, str) or not document_id.strip():
+            raise EvaluationConfigurationError(
+                f"BM25 candidate at rank {rank} is missing document_id"
+            )
         normalized.append(
             {
-                "candidate_id": candidate.get("doc_id", ""),
-                "evidence_id": candidate.get("doc_id", ""),
-                "document_id": metadata.get("doc_name", ""),
+                "candidate_id": evidence_id,
+                "evidence_id": evidence_id,
+                "document_id": document_id,
+                "tenant_id": tenant_id,
                 "page": metadata.get("page"),
                 "block_type": metadata.get("type", "text"),
+                "parent_id": metadata.get("parent_id"),
+                "table_id": metadata.get("table_id"),
                 "score": float(candidate.get("score", 0)),
                 "rank": rank,
             }
@@ -625,3 +646,4 @@ def _gold_ranks(case: EvaluationCase, candidates: list[dict[str, Any]]) -> list[
                 ranks.append(rank + 1)
                 break
     return ranks
+

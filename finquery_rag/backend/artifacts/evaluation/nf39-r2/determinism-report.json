@@ -1,0 +1,61 @@
+{
+  "candidate_pool_hash_run_a": "5fe5e77e32105ee45bd00b77c9563d2c078b1b2beef2abf4bed2377187aa68de",
+  "candidate_pool_hash_run_b": "5fe5e77e32105ee45bd00b77c9563d2c078b1b2beef2abf4bed2377187aa68de",
+  "final_context_manifest_sha256_run_a": "71a764b32945ed07d9ad79471f3d2ddb781ab36d163cb43eaabd08c4f0cf20cc",
+  "final_context_manifest_sha256_run_b": "71a764b32945ed07d9ad79471f3d2ddb781ab36d163cb43eaabd08c4f0cf20cc",
+  "passed": true,
+  "snapshot_sha256_run_a": "9f607e7bfd79b0b9f026769ec8bf067cc0be8f1918ed7b0f72704760d9999b00",
+  "snapshot_sha256_run_b": "9f607e7bfd79b0b9f026769ec8bf067cc0be8f1918ed7b0f72704760d9999b00",
+  "stage_metrics_run_a": {
+    "final_at_5": {
+      "case_hits": 16,
+      "source_hits": 20
+    },
+    "reranker_at_20": {
+      "case_hits": 22,
+      "source_hits": 27
+    },
+    "reranker_at_5": {
+      "case_hits": 16,
+      "source_hits": 20
+    },
+    "rrf_at_20": {
+      "case_hits": 22,
+      "source_hits": 27
+    },
+    "rrf_at_40": {
+      "case_hits": 24,
+      "source_hits": 31
+    },
+    "rrf_at_5": {
+      "case_hits": 16,
+      "source_hits": 20
+    }
+  },
+  "stage_metrics_run_b": {
+    "final_at_5": {
+      "case_hits": 16,
+      "source_hits": 20
+    },
+    "reranker_at_20": {
+      "case_hits": 22,
+      "source_hits": 27
+    },
+    "reranker_at_5": {
+      "case_hits": 16,
+      "source_hits": 20
+    },
+    "rrf_at_20": {
+      "case_hits": 22,
+      "source_hits": 27
+    },
+    "rrf_at_40": {
+      "case_hits": 24,
+      "source_hits": 31
+    },
+    "rrf_at_5": {
+      "case_hits": 16,
+      "source_hits": 20
+    }
+  }
+}
