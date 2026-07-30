@@ -58,7 +58,10 @@ def _matches_expected(fact, case) -> bool:
         for source in case.expected_sources
     ):
         return False
-    return value_matches_expected(fact.raw_value, case.expected_numbers)
+    if case.expected_numbers:
+        return value_matches_expected(fact.raw_value, case.expected_numbers)
+    text = (fact.evaluation_text or "").lower()
+    return bool(text and any(expected.lower() in text for expected in case.expected_answer_contains))
 
 
 def _proxy_family(value: str | None) -> str | None:

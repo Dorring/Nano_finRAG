@@ -234,6 +234,7 @@ class DeterministicAnswerExtractor:
                             unit=self._observed_unit(value),
                             scale=self._observed_scale(value),
                             period=None,
+                            evaluation_text=text,
                         ),
                     )
                 candidates.append({
@@ -402,6 +403,37 @@ class DeterministicAnswerExtractor:
             if self._source_label_from_metadata(source)
         }
         selected_fact_ids = []
+        evidence_fact_ids = {}
+        for ordinal, item in enumerate(evidence):
+            source_metadata_item = source_metadata.get(item.get("source"), {})
+            candidate_key = source_metadata_item.get("candidate_key")
+            observed_fact_id = fact_id(
+                candidate_key=candidate_key,
+                stage="factual_context_evidence",
+                ordinal=ordinal,
+                raw_value=item["text"],
+            )
+            evidence_fact_ids[id(item)] = observed_fact_id
+            self._notify_observer(
+                observer,
+                "on_fact_candidate_extracted",
+                candidate=ProductionFactTrace(
+                    fact_id=observed_fact_id,
+                    candidate_key=candidate_key,
+                    candidate_rank=source_metadata_item.get("candidate_rank"),
+                    document_id=(source_metadata_item.get("document_id") or source_metadata_item.get("filename")),
+                    page=source_metadata_item.get("page"),
+                    extraction_stage="factual_context_evidence",
+                    source_span_hash=self._stable_text_hash(item["text"]),
+                    raw_value=None,
+                    canonical_value=None,
+                    currency=None,
+                    unit=None,
+                    scale=None,
+                    period=None,
+                    evaluation_text=item["text"],
+                ),
+            )
         # ``direct_answer`` is produced by the existing context summarizer.
         # It has no explicit candidate object, so bind it only when the
         # frozen context contains exactly one matching source marker.  This
@@ -447,6 +479,7 @@ class DeterministicAnswerExtractor:
                         unit=None,
                         scale=None,
                         period=None,
+                        evaluation_text=direct_answer,
                     ),
                 )
                 self._notify_observer(
@@ -455,35 +488,11 @@ class DeterministicAnswerExtractor:
                     fact_id=observed_fact_id,
                     reason_codes=("direct_context_summary",),
                 )
-        for ordinal, item in enumerate(selected):
-            source_metadata_item = source_metadata.get(item.get("source"), {})
-            candidate_key = source_metadata_item.get("candidate_key")
-            observed_fact_id = fact_id(
-                candidate_key=candidate_key,
-                stage="factual_context_evidence",
-                ordinal=ordinal,
-                raw_value=item["text"],
-            )
+        for item in selected:
+            observed_fact_id = evidence_fact_ids.get(id(item))
+            if observed_fact_id is None:
+                continue
             selected_fact_ids.append(observed_fact_id)
-            self._notify_observer(
-                observer,
-                "on_fact_candidate_extracted",
-                candidate=ProductionFactTrace(
-                    fact_id=observed_fact_id,
-                    candidate_key=candidate_key,
-                    candidate_rank=source_metadata_item.get("candidate_rank"),
-                    document_id=(source_metadata_item.get("document_id") or source_metadata_item.get("filename")),
-                    page=source_metadata_item.get("page"),
-                    extraction_stage="factual_context_evidence",
-                    source_span_hash=self._stable_text_hash(item["text"]),
-                    raw_value=None,
-                    canonical_value=None,
-                    currency=None,
-                    unit=None,
-                    scale=None,
-                    period=None,
-                ),
-            )
             self._notify_observer(
                 observer,
                 "on_fact_selected",

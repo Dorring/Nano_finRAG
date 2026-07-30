@@ -21,6 +21,8 @@ class ProductionFactTrace:
     unit: str | None
     scale: str | None
     period: str | None
+    # Evaluation-only local text used for matching; never artifact serialized.
+    evaluation_text: str | None = field(default=None, repr=False, compare=False)
 
 
 class DeterministicAnswerObserver(Protocol):
