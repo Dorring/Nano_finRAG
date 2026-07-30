@@ -408,9 +408,7 @@ class RAGOrchestrator:
             ):
                 deterministic_context_answer = raw_numeric_answer or (
                     self._deterministic_extractor.answer_deterministic_query_from_context(
-                        question,
-                        context,
-                        sources,
+                        question, context, sources, observer=deterministic_observer
                     )
                 )
 

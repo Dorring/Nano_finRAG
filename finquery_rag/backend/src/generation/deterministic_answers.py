@@ -354,12 +354,25 @@ class DeterministicAnswerExtractor:
                 # Instrumentation must never affect production answers.
                 pass
 
-    def answer_factual_query_from_context(self, query: str, context: str, sources: list) -> dict | None:
+    def answer_factual_query_from_context(
+        self,
+        query: str,
+        context: str,
+        sources: list,
+        *,
+        observer=None,
+    ) -> dict | None:
         """Return deterministic evidence for factual front-matter/definition/list questions."""
         if not context or self._query_processor.is_numeric_query(query):
             return None
         if not self._query_processor.should_try_deterministic_factual_answer(query):
             return None
+
+        self._notify_observer(
+            observer,
+            "on_route_selected",
+            route="deterministic_factual_context",
+        )
 
         normalized = (query or "").lower()
         direct_answer = self._summarize_factual_evidence(query, [], context=context)
@@ -383,6 +396,101 @@ class DeterministicAnswerExtractor:
         else:
             prefix = "The relevant document evidence is:"
 
+        source_metadata = {
+            self._source_label_from_metadata(source): source
+            for source in sources or []
+            if self._source_label_from_metadata(source)
+        }
+        selected_fact_ids = []
+        # ``direct_answer`` is produced by the existing context summarizer.
+        # It has no explicit candidate object, so bind it only when the
+        # frozen context contains exactly one matching source marker.  This
+        # records the real short-circuit while failing closed on ambiguity.
+        if direct_answer and not selected:
+            lowered_context = context.lower()
+            matching_sources = []
+            for label, source in source_metadata.items():
+                marker = f"[{label}]".lower()
+                start = lowered_context.find(marker)
+                if start < 0:
+                    continue
+                end = lowered_context.find("\n\n---\n\n", start)
+                segment = lowered_context[start:] if end < 0 else lowered_context[start:end]
+                normalized_answer = re.sub(r"\W+", "", direct_answer.lower())
+                normalized_segment = re.sub(r"\W+", "", segment)
+                if normalized_answer and normalized_answer in normalized_segment:
+                    matching_sources.append(source)
+            if len(matching_sources) == 1:
+                source_metadata_item = matching_sources[0]
+                candidate_key = source_metadata_item.get("candidate_key")
+                observed_fact_id = fact_id(
+                    candidate_key=candidate_key,
+                    stage="factual_context_direct_summary",
+                    ordinal=0,
+                    raw_value=direct_answer,
+                )
+                selected_fact_ids.append(observed_fact_id)
+                self._notify_observer(
+                    observer,
+                    "on_fact_candidate_extracted",
+                    candidate=ProductionFactTrace(
+                        fact_id=observed_fact_id,
+                        candidate_key=candidate_key,
+                        candidate_rank=source_metadata_item.get("candidate_rank"),
+                        document_id=(source_metadata_item.get("document_id") or source_metadata_item.get("filename")),
+                        page=source_metadata_item.get("page"),
+                        extraction_stage="factual_context_direct_summary",
+                        source_span_hash=self._stable_text_hash(direct_answer),
+                        raw_value=None,
+                        canonical_value=None,
+                        currency=None,
+                        unit=None,
+                        scale=None,
+                        period=None,
+                    ),
+                )
+                self._notify_observer(
+                    observer,
+                    "on_fact_selected",
+                    fact_id=observed_fact_id,
+                    reason_codes=("direct_context_summary",),
+                )
+        for ordinal, item in enumerate(selected):
+            source_metadata_item = source_metadata.get(item.get("source"), {})
+            candidate_key = source_metadata_item.get("candidate_key")
+            observed_fact_id = fact_id(
+                candidate_key=candidate_key,
+                stage="factual_context_evidence",
+                ordinal=ordinal,
+                raw_value=item["text"],
+            )
+            selected_fact_ids.append(observed_fact_id)
+            self._notify_observer(
+                observer,
+                "on_fact_candidate_extracted",
+                candidate=ProductionFactTrace(
+                    fact_id=observed_fact_id,
+                    candidate_key=candidate_key,
+                    candidate_rank=source_metadata_item.get("candidate_rank"),
+                    document_id=(source_metadata_item.get("document_id") or source_metadata_item.get("filename")),
+                    page=source_metadata_item.get("page"),
+                    extraction_stage="factual_context_evidence",
+                    source_span_hash=self._stable_text_hash(item["text"]),
+                    raw_value=None,
+                    canonical_value=None,
+                    currency=None,
+                    unit=None,
+                    scale=None,
+                    period=None,
+                ),
+            )
+            self._notify_observer(
+                observer,
+                "on_fact_selected",
+                fact_id=observed_fact_id,
+                reason_codes=("context_evidence_rank",),
+            )
+
         answer_lines = []
         if direct_answer:
             answer_lines.append(f"Answer: {direct_answer}")
@@ -393,17 +501,41 @@ class DeterministicAnswerExtractor:
                 answer_lines.append(f"- {item['text']} (Source: {item['source']})")
             else:
                 answer_lines.append(f"- {item['text']}")
+        answer = "\n".join(answer_lines)
+        self._notify_observer(
+            observer,
+            "on_answer_rendered",
+            source_fact_ids=tuple(selected_fact_ids),
+            answer_hash=self._stable_text_hash(answer),
+        )
         return {
-            "answer": "\n".join(answer_lines),
+            "answer": answer,
             "diagnostic": "deterministic_factual_evidence",
         }
 
-    def answer_deterministic_query_from_context(self, query: str, context: str, sources: list) -> dict | None:
+    def answer_deterministic_query_from_context(
+        self,
+        query: str,
+        context: str,
+        sources: list,
+        *,
+        observer=None,
+    ) -> dict | None:
         """Try deterministic non-LLM answering from retrieved context."""
-        factual = self.answer_factual_query_from_context(query, context, sources)
+        factual = self.answer_factual_query_from_context(
+            query, context, sources, observer=observer
+        )
         if factual:
             return factual
         return self.answer_numeric_query_from_context(query, context, sources)
+
+    @staticmethod
+    def _source_label_from_metadata(source: dict) -> str | None:
+        filename = source.get("filename") or source.get("document_id")
+        page = source.get("page")
+        if filename and page:
+            return f"{filename}, p{page}"
+        return filename or None
 
     @staticmethod
     def _chunk_source_label(chunk: dict) -> str | None:

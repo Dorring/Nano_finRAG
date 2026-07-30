@@ -147,6 +147,9 @@ def as_evaluation_context(context: FrozenCaseContext) -> FrozenEvaluationContext
                 "type": candidate.block_type,
                 "score": 0.0,
                 "chunk_id": candidate.source_id,
+                "candidate_key": candidate.candidate_key,
+                "candidate_rank": candidate.rank,
+                "document_id": candidate.document_id,
             }
         )
     return FrozenEvaluationContext(
