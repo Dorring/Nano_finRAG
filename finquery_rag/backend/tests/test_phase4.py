@@ -213,10 +213,16 @@ class TestQueryRewriting:
             loop.close()
 
 class TestQueryReturnsRewrittenQuestion:
+    @staticmethod
+    def _without_documents(engine):
+        """Keep query-rewrite tests independent from vector-store state."""
+        engine._orchestrator._list_all_documents = lambda _user_id: []
+
     def test_with_history_returns_rewritten(self, tmp_path):
         from services.rag_engine import RAGEngine
         mc = MockLLMClient(rewrite_response='What was the revenue in Q3?')
         eng = RAGEngine(mc, use_hybrid=False, bm25_db_path=os.path.join(str(tmp_path), 'b.db'))
+        self._without_documents(eng)
         history = [{'role':'user','content':'Tell me about Q3'},{'role':'assistant','content':'Q3 was great'}]
         loop = asyncio.new_event_loop()
         try:
@@ -229,6 +235,7 @@ class TestQueryReturnsRewrittenQuestion:
         from services.rag_engine import RAGEngine
         mc = MockLLMClient()
         eng = RAGEngine(mc, use_hybrid=False, bm25_db_path=os.path.join(str(tmp_path), 'b.db'))
+        self._without_documents(eng)
         loop = asyncio.new_event_loop()
         try:
             r = loop.run_until_complete(eng.query('What is revenue?', doc_names=[], user_id=1))

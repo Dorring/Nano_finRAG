@@ -34,6 +34,19 @@ class TestLowConfidenceNoLLM:
     message via AnswerabilityEvaluator. Pass ``enable_validation_pipeline=False``
     to preserve the Phase 3 semantics these tests assert.
     """
+    @staticmethod
+    def _install_local_retrieval(engine):
+        """Avoid relying on a process-global Chroma fixture in unit tests."""
+        engine._orchestrator._retrieve_front_matter_chunks = lambda *args: []
+        engine._retrieval_pipeline._dense_query_fn = lambda **kwargs: [
+            {
+                'doc_id': 'user_1_f.pdf::page_1::chunk_1',
+                'content': 'Revenue was 10 million.',
+                'metadata': {'type': 'text', 'page': 1, 'doc_name': 'f.pdf'},
+                'score': 0.8,
+            }
+        ]
+
     def test_insufficient_context_skips_llm(self, tmp_path):
         from services.rag_engine import RAGEngine
         mc = CloseableMockLLM(allow_calls=False)
@@ -44,6 +57,7 @@ class TestLowConfidenceNoLLM:
         eng._sufficiency_evaluator.evaluate = lambda chunks: SufficiencyResult(is_sufficient=False, best_score=0.01, average_score=0.01)
         eng._sufficiency_evaluator.confidence = lambda chunks: 0.01
         eng._context_builder.build = lambda chunks: ('mock context', [{'filename':'f.pdf','page':1,'type':'text','score':0.01}])
+        self._install_local_retrieval(eng)
         loop = asyncio.new_event_loop()
         try:
             r = loop.run_until_complete(eng.query('test', doc_names=['f.pdf'], user_id=1))
@@ -63,6 +77,7 @@ class TestLowConfidenceNoLLM:
         eng._sufficiency_evaluator.evaluate = lambda chunks: SufficiencyResult(is_sufficient=True, best_score=0.8, average_score=0.75)
         eng._sufficiency_evaluator.confidence = lambda chunks: 0.78
         eng._context_builder.build = lambda chunks: ('mock context', [{'filename':'f.pdf','page':1,'type':'text','score':0.8}])
+        self._install_local_retrieval(eng)
         loop = asyncio.new_event_loop()
         try:
             r = loop.run_until_complete(eng.query('test', doc_names=['f.pdf'], user_id=1))
