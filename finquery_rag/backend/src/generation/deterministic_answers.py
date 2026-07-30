@@ -8,13 +8,52 @@ import re
 
 from src.retrieval.query_processor import QueryProcessor
 from src.generation.deterministic_observer import ProductionFactTrace, fact_id
+from src.retrieval.fact_extractor_provider import (
+    CurrentProductionFactExtractor,
+    DeterministicFactExtractor,
+)
 
 
 class DeterministicAnswerExtractor:
     """Extract deterministic answers from context without LLM generation."""
 
-    def __init__(self, *, query_processor: QueryProcessor | None = None):
+    def __init__(
+        self,
+        *,
+        query_processor: QueryProcessor | None = None,
+        fact_extractor: DeterministicFactExtractor | None = None,
+    ):
         self._query_processor = query_processor or QueryProcessor()
+        self._fact_extractor = fact_extractor or CurrentProductionFactExtractor()
+
+    @property
+    def fact_extractor(self) -> DeterministicFactExtractor:
+        """The explicitly configured provider; default remains legacy current."""
+        return self._fact_extractor
+
+    def observe_structured_facts(self, query: str, chunks: list, *, observer=None) -> None:
+        """Record shadow facts without altering any production decision.
+
+        This is only active for the explicitly selected structured provider.
+        It lets frozen-context evaluation compare factual extraction coverage
+        even when the unchanged factual selector does not consume a numeric
+        fact candidate.
+        """
+        if (
+            self._fact_extractor.name != "structured_shadow"
+            or self._query_processor.is_numeric_query(query)
+        ):
+            return
+        try:
+            self._fact_extractor.extract(
+                question=query,
+                evidence=tuple(chunks),
+                observer=observer,
+            )
+        except Exception:
+            # An observation/extraction failure must not change a normal
+            # production answer. Formal shadow evaluation inspects its trace.
+            return
 
     def answer_front_matter_query(self, query: str, chunks: list) -> dict | None:
         """Answer deterministic front-matter questions from structured chunks."""
@@ -160,6 +199,14 @@ class DeterministicAnswerExtractor:
         ):
             return None
 
+        # Keep the current implementation byte-for-byte compatible.  The
+        # optional structured provider is a shadow-only alternative and is
+        # deliberately selected before any legacy extraction state is built.
+        if self._fact_extractor.name == "structured_shadow":
+            return self._answer_numeric_query_from_structured_facts(
+                query, chunks, observer=observer
+            )
+
         self._notify_observer(
             observer,
             "on_route_selected",
@@ -293,6 +340,104 @@ class DeterministicAnswerExtractor:
         return {
             "answer": answer,
             "diagnostic": "raw_child_numeric_evidence",
+            "chunks": [item["chunk"] for item in selected],
+            "selection": [
+                {
+                    "chunk_id": item["chunk"].get("doc_id") or item["chunk"].get("chunk_id"),
+                    "source": item["source"],
+                    "score": round(item["score"], 4),
+                    "values": item["values"],
+                }
+                for item in selected
+            ],
+        }
+
+    def _answer_numeric_query_from_structured_facts(
+        self,
+        query: str,
+        chunks: list,
+        *,
+        observer=None,
+    ) -> dict | None:
+        """Project structured facts into the unchanged numeric selector.
+
+        The extractor is the only varying component.  Evidence scoring,
+        ``_select_raw_numeric_evidence``, answer rendering, citation binding,
+        calculation routing, and validation remain the production code paths.
+        """
+        self._notify_observer(
+            observer,
+            "on_route_selected",
+            route="deterministic_numeric_structured_shadow",
+        )
+        facts = self._fact_extractor.extract(
+            question=query,
+            evidence=tuple(chunks),
+            observer=observer,
+        ).facts
+        if not facts:
+            return None
+        query_terms = self._important_query_terms(query)
+        anchors = self._query_anchor_phrases(query)
+        candidates = []
+        for fact in facts:
+            if not fact.raw_value:
+                continue
+            text = " ".join(
+                value for value in (fact.metric, fact.period, fact.raw_value) if value
+            )
+            if self._has_metric_year_conflict(query, text):
+                continue
+            score = self._raw_numeric_evidence_score(text, query, query_terms)
+            matched, conflicts = self._anchor_profile(anchors, text)
+            if conflicts or (anchors and not matched):
+                continue
+            score += matched * 8.0 + self._numeric_relation_score(query, text)
+            if score <= 0:
+                continue
+            source = self._chunk_source_label(fact.chunk)
+            candidates.append({
+                "score": score + float(fact.chunk.get("rerank_score", fact.chunk.get("score", 0)) or 0),
+                "text": fact.source_text,
+                "source": source,
+                "values": [fact.raw_value],
+                "chunk": fact.chunk,
+                "is_table": (fact.chunk.get("metadata") or {}).get("type") == "table",
+                "fact_ids": [(fact.raw_value, fact.fact_id)],
+            })
+        if not candidates:
+            return None
+        candidates.sort(key=lambda item: (-item["score"], len(item["text"])))
+        selected = self._select_raw_numeric_evidence(query, candidates, limit=2)
+        if not selected:
+            return None
+        values = self._select_answer_values(query, selected)
+        if not values:
+            return None
+        selected_fact_ids = tuple(
+            observed_fact_id
+            for item in selected
+            for value, observed_fact_id in item["fact_ids"]
+            if value in values
+        )
+        for observed_fact_id in selected_fact_ids:
+            self._notify_observer(
+                observer,
+                "on_fact_selected",
+                fact_id=observed_fact_id,
+                reason_codes=("raw_numeric_evidence_score", "structured_fact_projection"),
+            )
+        citation = self._inline_source_citation(selected[0].get("source"))
+        answer = f"Answer: {', '.join(values)}{citation}."
+        self._notify_observer(
+            observer,
+            "on_answer_rendered",
+            source_fact_ids=selected_fact_ids,
+            answer_hash=self._stable_text_hash(answer),
+        )
+        return {
+            "answer": answer,
+            "diagnostic": "structured_shadow_numeric_evidence",
             "chunks": [item["chunk"] for item in selected],
             "selection": [
                 {

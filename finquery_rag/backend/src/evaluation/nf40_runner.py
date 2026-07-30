@@ -19,6 +19,7 @@ from src.evaluation.nf40_pipeline_observer import (
     AnswerPipelineTrace,
     EvaluationExecutionContext,
 )
+from src.generation.deterministic_observer import RecordingDeterministicAnswerObserver
 
 
 class NF40ConfigurationError(ValueError):
@@ -51,6 +52,9 @@ class NF40CaseRun:
     evaluation: StageEvaluation
     public_record: dict[str, Any]
     private_record: dict[str, Any]
+    trace: AnswerPipelineTrace
+    raw_score: dict[str, float]
+    released_score: dict[str, float]
 
 
 class FrozenContextEvaluationRunner:
@@ -74,6 +78,10 @@ class FrozenContextEvaluationRunner:
             context_hash=frozen.final_context_hash,
             context_coverage=coverage.value,
         )
+        # Evaluation-only instrumentation is attached before entering the
+        # unchanged production answer pipeline. It is a no-op observer in
+        # ordinary HTTP and production requests.
+        trace.deterministic_observer = RecordingDeterministicAnswerObserver()
         frozen_input = as_evaluation_context(frozen)
         started = time.monotonic()
         result = self._rag_engine.answer_frozen_evaluation(
@@ -153,7 +161,14 @@ class FrozenContextEvaluationRunner:
             "released_answer": trace._released_answer_text,
             "context_hash": frozen.final_context_hash,
         }
-        return NF40CaseRun(evaluation=evaluation, public_record=public, private_record=private)
+        return NF40CaseRun(
+            evaluation=evaluation,
+            public_record=public,
+            private_record=private,
+            trace=trace,
+            raw_score=raw_score,
+            released_score=released_score,
+        )
 
     async def run(self, *, cases: Iterable[EvaluationCase], contexts: dict[str, FrozenCaseContext], tenant_id: int) -> tuple[list[NF40CaseRun], dict]:
         rows = validate_labeled_cases(cases)
