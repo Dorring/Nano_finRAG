@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 from typing import Any
@@ -39,6 +40,9 @@ from src.evaluation.nf38_evaluator import (  # noqa: E402
     validate_scope_corpus,
 )
 from src.retrieval.candidate_fusion import rrf  # noqa: E402
+from src.retrieval.candidate_identity import (  # noqa: E402
+    CandidateIdentityError,
+)
 from src.retrieval.embedding_provider import (  # noqa: E402
     ExistingMiniLMEmbeddingProvider,
 )
@@ -134,19 +138,35 @@ def _enrich_dense_candidates(
 
 
 def _normalize_bm25_full(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Normalize BM25 candidates with full identity metadata."""
+    """Preserve the identity emitted by :func:`freeze_bm25_pool`.
+
+    ``freeze_bm25_pool`` already converts raw SQLite rows to the common
+    evaluation shape.  The former implementation treated those records as
+    raw SQLite rows again and read ``doc_id`` (which is absent), collapsing
+    the complete BM25 ranking into an empty RRF key.
+    """
     normalized = []
     for rank, c in enumerate(candidates):
         meta = c.get("metadata") or {}
+        evidence_id = c.get("candidate_id") or c.get("evidence_id")
+        document_id = c.get("document_id") or meta.get("doc_name")
+        if not isinstance(evidence_id, str) or not evidence_id.strip():
+            raise CandidateIdentityError(
+                f"BM25 candidate at rank {rank} is missing evidence_id"
+            )
+        if not isinstance(document_id, str) or not document_id.strip():
+            raise CandidateIdentityError(
+                f"BM25 candidate at rank {rank} is missing document_id"
+            )
         normalized.append(
             {
-                "candidate_id": c.get("doc_id", ""),
-                "evidence_id": c.get("doc_id", ""),
-                "document_id": meta.get("doc_name", ""),
-                "page": meta.get("page"),
-                "block_type": meta.get("type", "text"),
-                "parent_id": meta.get("parent_id"),
-                "table_id": meta.get("table_id"),
+                "candidate_id": evidence_id,
+                "evidence_id": evidence_id,
+                "document_id": document_id,
+                "page": c.get("page", meta.get("page")),
+                "block_type": c.get("block_type", meta.get("type", "text")),
+                "parent_id": c.get("parent_id", meta.get("parent_id")),
+                "table_id": c.get("table_id", meta.get("table_id")),
                 "score": float(c.get("score", 0)),
                 "rank": rank,
             }
@@ -219,7 +239,9 @@ def main() -> int:
     )
 
     print("Building MiniLM index...")
-    provider = ExistingMiniLMEmbeddingProvider()
+    provider = ExistingMiniLMEmbeddingProvider(
+        os.environ.get("EMBEDDING_MODEL_NAME", "all-MiniLM-L6-v2")
+    )
     index = build_dense_index(records, provider, corpus_hash, evidence_ids_hash)
     index_fingerprint = index.manifest().index_fingerprint
 
@@ -236,15 +258,29 @@ def main() -> int:
 
     print("Computing RRF Top-40 for each case...")
     rrf_pool: dict[str, list[dict[str, Any]]] = {}
+    bm25_out_of_corpus_count = 0
+    bm25_shortfall_cases: list[str] = []
     for case in cases:
         query_vector = provider.encode_queries([case.question])[0]
         dense_candidates = _enrich_dense_candidates(
             index.search(query_vector, k=max(args.rrf_top_n, 40)),
             record_lookup,
         )
-        bm25_candidates = _normalize_bm25_full(
+        raw_bm25_candidates = _normalize_bm25_full(
             frozen_bm25.candidates.get(case.case_id, [])
         )
+        bm25_candidates = [
+            candidate
+            for candidate in raw_bm25_candidates
+            if candidate["candidate_id"] in record_lookup
+        ]
+        bm25_out_of_corpus_count += len(raw_bm25_candidates) - len(bm25_candidates)
+        if len(bm25_candidates) < 50:
+            bm25_shortfall_cases.append(case.case_id)
+        if not bm25_candidates:
+            raise CandidateIdentityError(
+                f"BM25 has no candidates in the canonical corpus for {case.case_id}"
+            )
         fused = rrf(
             [
                 _to_rrf_format_full(dense_candidates),
@@ -298,6 +334,8 @@ def main() -> int:
         "label_hash": label_fingerprint(cases),
         "rrf_k": 60,
         "bm25_frozen": True,
+        "bm25_out_of_corpus_candidate_count": bm25_out_of_corpus_count,
+        "bm25_cases_with_canonical_shortfall": bm25_shortfall_cases,
     }
     _write_json(out_dir / "rrf-candidate-pool-manifest.json", manifest)
 
@@ -332,3 +370,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
