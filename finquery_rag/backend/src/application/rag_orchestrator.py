@@ -335,8 +335,11 @@ class RAGOrchestrator:
             # before ContextBuilder expands parents.  This prevents a nearby
             # table row in a parent section from displacing the retrieved
             # row that actually matches the requested metric.
+            deterministic_observer = getattr(
+                evaluation_observer, "deterministic_observer", None
+            )
             raw_numeric_answer = self._deterministic_extractor.answer_numeric_query_from_chunks(
-                question, chunks
+                question, chunks, observer=deterministic_observer
             )
             # Test doubles and third-party extractors may not implement the
             # optional raw-child contract yet.  Only a real answer payload is
