@@ -1,0 +1,17 @@
+{
+  "algorithm_changed": false,
+  "evaluation_scope_changed": true,
+  "from": "nf39-r1",
+  "metric_changes_are_performance_claim": false,
+  "migration_type": "artifact_integrity_correction",
+  "new_metrics_valid": true,
+  "old_metrics_valid": false,
+  "production_config_changed": false,
+  "scope_changes": [
+    "candidate identity preserved",
+    "out-of-corpus BM25 records removed",
+    "content hashes added",
+    "frozen snapshot made reproducible"
+  ],
+  "to": "nf39-r2"
+}
