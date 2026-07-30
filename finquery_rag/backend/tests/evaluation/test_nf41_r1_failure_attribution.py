@@ -39,3 +39,11 @@ def test_missing_trace_is_not_guessed_from_raw_answer():
         facts=[], selected_fact_ids=(), raw_answer_correct=False, fact_matches_gold=lambda _fact: True,
     )
     assert result is ProductionFactFailure.PRODUCTION_TRACE_INSUFFICIENT
+
+
+def test_attempted_extraction_with_no_fact_is_extractor_failure():
+    result = classify_observed_fact_failure(
+        facts=[], selected_fact_ids=(), raw_answer_correct=False,
+        fact_matches_gold=lambda _fact: True, extraction_attempted=True,
+    )
+    assert result is ProductionFactFailure.PRODUCTION_FACT_NOT_EXTRACTED

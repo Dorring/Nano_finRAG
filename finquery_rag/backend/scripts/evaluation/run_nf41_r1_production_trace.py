@@ -14,7 +14,6 @@ from src.evaluation.nf40_pipeline_observer import AnswerPipelineTrace
 from src.evaluation.nf40_start_gate import require_verified_nf39_r2_inputs
 from src.evaluation.nf41_numeric_identity import value_matches_expected
 from src.evaluation.nf41_production_attribution import (
-    ProductionFactFailure,
     classify_observed_fact_failure,
     next_step_for_observed_failures,
     proxy_production_relation,
@@ -130,14 +129,13 @@ async def _run(args: argparse.Namespace) -> None:
             failure = "not_applicable"
         elif coverage.value != "all_gold_in_final":
             failure = "not_applicable"
-        elif not recorder.facts:
-            failure = ProductionFactFailure.PRODUCTION_TRACE_INSUFFICIENT.value
         else:
             failure = classify_observed_fact_failure(
                 facts=recorder.facts,
                 selected_fact_ids=selected,
                 raw_answer_correct=previous[case.case_id]["raw_answer_correct"],
                 fact_matches_gold=lambda fact: fact in correct_facts,
+                extraction_attempted=bool(recorder.routes),
             ).value
         failures[failure] += 1
         raw_proxy_failure = (

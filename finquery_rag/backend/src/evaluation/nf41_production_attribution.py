@@ -21,6 +21,7 @@ def classify_observed_fact_failure(
     selected_fact_ids: Iterable[str],
     raw_answer_correct: bool,
     fact_matches_gold: Callable[[object], bool],
+    extraction_attempted: bool = False,
 ) -> ProductionFactFailure:
     """Classify only what an actual observer has recorded.
 
@@ -29,6 +30,8 @@ def classify_observed_fact_failure(
     """
     observed = list(facts)
     if not observed:
+        if extraction_attempted:
+            return ProductionFactFailure.PRODUCTION_FACT_NOT_EXTRACTED
         return ProductionFactFailure.PRODUCTION_TRACE_INSUFFICIENT
     correct = [fact for fact in observed if fact_matches_gold(fact)]
     if not correct:
