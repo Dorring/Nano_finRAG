@@ -132,8 +132,11 @@ def as_evaluation_context(context: FrozenCaseContext) -> FrozenEvaluationContext
                 "metadata": {
                     "filename": candidate.document_id,
                     "document_name": candidate.document_id,
+                    "document_id": candidate.document_id,
                     "page": candidate.page,
                     "type": candidate.block_type,
+                    "candidate_key": candidate.candidate_key,
+                    "candidate_rank": candidate.rank,
                 },
             }
         )

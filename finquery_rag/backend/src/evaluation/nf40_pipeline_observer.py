@@ -56,6 +56,9 @@ class AnswerPipelineTrace:
     # diagnostic snapshot when a real run is explicitly requested.
     _raw_generation_text: str | None = field(default=None, repr=False)
     _released_answer_text: str | None = field(default=None, repr=False)
+    # Optional local-only deterministic trace used by NF41 R1. It remains
+    # absent in normal production requests and is never public-serialized.
+    deterministic_observer: Any | None = field(default=None, repr=False)
 
     def record_context(self, *, context_hash: str) -> None:
         self.context_hash = context_hash

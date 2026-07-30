@@ -7,6 +7,7 @@ term-matching heuristics.
 import re
 
 from src.retrieval.query_processor import QueryProcessor
+from src.generation.deterministic_observer import ProductionFactTrace, fact_id
 
 
 class DeterministicAnswerExtractor:
@@ -145,7 +146,7 @@ class DeterministicAnswerExtractor:
             "diagnostic": "deterministic_numeric_evidence",
         }
 
-    def answer_numeric_query_from_chunks(self, query: str, chunks: list) -> dict | None:
+    def answer_numeric_query_from_chunks(self, query: str, chunks: list, *, observer=None) -> dict | None:
         """Answer a numeric question from raw retrieved child evidence.
 
         This intentionally runs before parent-context expansion.  Parent
@@ -158,6 +159,12 @@ class DeterministicAnswerExtractor:
             query, chunks
         ):
             return None
+
+        self._notify_observer(
+            observer,
+            "on_route_selected",
+            route="deterministic_numeric_raw_child",
+        )
 
         query_terms = self._important_query_terms(query)
         anchor_phrases = self._query_anchor_phrases(query)
@@ -200,6 +207,35 @@ class DeterministicAnswerExtractor:
                 # broad row can mention the metric twice; the direct metric
                 # value must beat a later qualified sub-scope in that row.
                 score += numeric_candidates[0][0]
+                fact_ids = []
+                candidate_key = metadata.get("candidate_key")
+                for ordinal, value in enumerate(values):
+                    observed_fact_id = fact_id(
+                        candidate_key=candidate_key,
+                        stage="raw_numeric_child",
+                        ordinal=ordinal,
+                        raw_value=value,
+                    )
+                    fact_ids.append((value, observed_fact_id))
+                    self._notify_observer(
+                        observer,
+                        "on_fact_candidate_extracted",
+                        candidate=ProductionFactTrace(
+                            fact_id=observed_fact_id,
+                            candidate_key=candidate_key,
+                            candidate_rank=metadata.get("candidate_rank"),
+                            document_id=metadata.get("document_id") or metadata.get("filename") or metadata.get("doc_name"),
+                            page=metadata.get("page"),
+                            extraction_stage="raw_numeric_child",
+                            source_span_hash=self._stable_text_hash(text),
+                            raw_value=value,
+                            canonical_value=re.sub(r"[^0-9.-]", "", value),
+                            currency=self._observed_currency(value),
+                            unit=self._observed_unit(value),
+                            scale=self._observed_scale(value),
+                            period=None,
+                        ),
+                    )
                 candidates.append({
                     "score": score + float(chunk.get("rerank_score", chunk.get("score", 0)) or 0),
                     "text": text,
@@ -207,6 +243,7 @@ class DeterministicAnswerExtractor:
                     "values": values,
                     "chunk": chunk,
                     "is_table": metadata.get("type") == "table",
+                    "fact_ids": fact_ids,
                 })
 
         if not candidates:
@@ -224,6 +261,20 @@ class DeterministicAnswerExtractor:
         if not values:
             return None
 
+        selected_fact_ids = tuple(
+            fact_id
+            for item in selected
+            for value, fact_id in item.get("fact_ids", [])
+            if value in values
+        )
+        for selected_fact_id in selected_fact_ids:
+            self._notify_observer(
+                observer,
+                "on_fact_selected",
+                fact_id=selected_fact_id,
+                reason_codes=("raw_numeric_evidence_score", "first_selected_value"),
+            )
+
         citation = self._inline_source_citation(selected[0].get("source"))
         # The evidence payload is returned as structured sources.  Do not
         # append full evidence rows to the answer text: validators correctly
@@ -231,8 +282,15 @@ class DeterministicAnswerExtractor:
         # an explanatory block would otherwise be validated as user-facing
         # financial assertions.
         answer_lines = [f"Answer: {', '.join(values)}{citation}."]
+        answer = "\n".join(answer_lines)
+        self._notify_observer(
+            observer,
+            "on_answer_rendered",
+            source_fact_ids=selected_fact_ids,
+            answer_hash=self._stable_text_hash(answer),
+        )
         return {
-            "answer": "\n".join(answer_lines),
+            "answer": answer,
             "diagnostic": "raw_child_numeric_evidence",
             "chunks": [item["chunk"] for item in selected],
             "selection": [
@@ -245,6 +303,56 @@ class DeterministicAnswerExtractor:
                 for item in selected
             ],
         }
+
+    @staticmethod
+    def _stable_text_hash(value: str) -> str:
+        import hashlib
+        return hashlib.sha256((value or "").encode("utf-8")).hexdigest()
+
+    @staticmethod
+    def _observed_unit(value: str) -> str | None:
+        lowered = (value or "").lower()
+        if "%" in lowered or "per cent" in lowered:
+            return "percentage"
+        if "million" in lowered:
+            return "million"
+        if "thousand" in lowered:
+            return "thousand"
+        if "billion" in lowered:
+            return "billion"
+        if "$" in lowered or "franc" in lowered:
+            return "currency"
+        return None
+
+    @staticmethod
+    def _observed_currency(value: str) -> str | None:
+        lowered = (value or "").lower()
+        if "$" in lowered or "usd" in lowered:
+            return "USD"
+        if "swiss franc" in lowered or "chf" in lowered:
+            return "CHF"
+        return None
+
+    @staticmethod
+    def _observed_scale(value: str) -> str:
+        lowered = (value or "").lower()
+        if "billion" in lowered:
+            return "1000000000"
+        if "million" in lowered:
+            return "1000000"
+        if "thousand" in lowered:
+            return "1000"
+        return "1"
+
+    @staticmethod
+    def _notify_observer(observer, method: str, **kwargs) -> None:
+        callback = getattr(observer, method, None)
+        if callable(callback):
+            try:
+                callback(**kwargs)
+            except Exception:
+                # Instrumentation must never affect production answers.
+                pass
 
     def answer_factual_query_from_context(self, query: str, context: str, sources: list) -> dict | None:
         """Return deterministic evidence for factual front-matter/definition/list questions."""
