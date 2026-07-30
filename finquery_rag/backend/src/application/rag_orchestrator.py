@@ -58,6 +58,7 @@ from src.generation.deterministic_answers import DeterministicAnswerExtractor
 from src.retrieval.candidate_fusion import summarize_retrieved_chunks
 from src.validation.validation_pipeline import GroundedValidationPipeline
 from src.validation.response_repair import RepairResult, ResponseRepair
+from src.application.frozen_evaluation import FrozenEvaluationContext
 
 
 class RAGOrchestrator:
@@ -102,6 +103,15 @@ class RAGOrchestrator:
             seen.add(key)
             deduped.append(source)
         return deduped
+
+    @staticmethod
+    def _notify_evaluation_observer(observer, method: str, **kwargs) -> None:
+        """Call the private NF40 observer without affecting production flow."""
+        if observer is None:
+            return
+        callback = getattr(observer, method, None)
+        if callable(callback):
+            callback(**kwargs)
 
     def __init__(
         self,
@@ -149,6 +159,8 @@ class RAGOrchestrator:
         request: QueryRequest,
         *,
         n_results: int = 3,
+        frozen_evaluation_context: FrozenEvaluationContext | None = None,
+        evaluation_observer=None,
     ) -> AnswerResult:
         """Execute the full RAG pipeline and return a typed ``AnswerResult``.
 
@@ -163,6 +175,12 @@ class RAGOrchestrator:
         }
 
         question = request.question
+        if frozen_evaluation_context is not None:
+            self._notify_evaluation_observer(
+                evaluation_observer,
+                "record_context",
+                context_hash=frozen_evaluation_context.final_context_hash,
+            )
         if request.conversation_history:
             question = await self._llm_gateway.rewrite_query(
                 question,
@@ -192,7 +210,10 @@ class RAGOrchestrator:
             )
 
         doc_names: list[str]
-        if request.document_names:
+        if frozen_evaluation_context is not None:
+            frozen_evaluation_context.validate()
+            doc_names = list(frozen_evaluation_context.document_names)
+        elif request.document_names:
             doc_names = list(request.document_names)
         else:
             all_docs = self._list_all_documents(request.user_id)
@@ -204,25 +225,30 @@ class RAGOrchestrator:
                 had_conversation_history=had_history,
             )
 
-        # 1. Retrieve relevant chunks. Front-matter facts use direct metadata lookup first.
-        chunks = self._retrieve_front_matter_chunks(
-            doc_names, question, request.user_id
-        )
-        if not chunks:
-            if len(doc_names) == 1:
-                chunks = self._retrieval_pipeline.retrieve_single(
-                    document_name=doc_names[0],
-                    query=question,
-                    user_id=request.user_id,
-                    top_k=n_results,
-                )
-            else:
-                chunks = await self._retrieval_pipeline.retrieve_multiple(
-                    document_names=doc_names,
-                    query=question,
-                    user_id=request.user_id,
-                    top_k=n_results,
-                )
+        # 1. Retrieve relevant chunks. The private frozen-evaluation input
+        # is the sole exception: it supplies a previously verified Top-5 and
+        # thereby bypasses retrieval without changing any normal request.
+        if frozen_evaluation_context is not None:
+            chunks = [dict(chunk) for chunk in frozen_evaluation_context.chunks]
+        else:
+            chunks = self._retrieve_front_matter_chunks(
+                doc_names, question, request.user_id
+            )
+            if not chunks:
+                if len(doc_names) == 1:
+                    chunks = self._retrieval_pipeline.retrieve_single(
+                        document_name=doc_names[0],
+                        query=question,
+                        user_id=request.user_id,
+                        top_k=n_results,
+                    )
+                else:
+                    chunks = await self._retrieval_pipeline.retrieve_multiple(
+                        document_names=doc_names,
+                        query=question,
+                        user_id=request.user_id,
+                        top_k=n_results,
+                    )
 
         front_matter_answer = self._deterministic_extractor.answer_front_matter_query(
             question, chunks
@@ -239,7 +265,11 @@ class RAGOrchestrator:
 
         if front_matter_answer:
             chunks = front_matter_answer["chunks"]
-            context, sources = self._context_builder.build(chunks)
+            if frozen_evaluation_context is None:
+                context, sources = self._context_builder.build(chunks)
+            else:
+                context = frozen_evaluation_context.context
+                sources = [dict(item) for item in frozen_evaluation_context.sources]
             answer = front_matter_answer["answer"]
             is_sufficient = True
             confidence = 1.0
@@ -277,6 +307,11 @@ class RAGOrchestrator:
                         "reason_codes": list(answerability_result.reason_codes),
                     }
                 else:
+                    self._notify_evaluation_observer(
+                        evaluation_observer,
+                        "record_raw_generation",
+                        answer=answer,
+                    )
                     (
                         answer,
                         validation_result,
@@ -310,8 +345,13 @@ class RAGOrchestrator:
             if not isinstance(raw_numeric_answer, dict):
                 raw_numeric_answer = None
 
-            # 2. Build context (with dedup and score threshold)
-            context, sources = self._context_builder.build(chunks)
+            # 2. Build context (with dedup and score threshold). Frozen
+            # evaluation contexts are already rendered and hash-verified.
+            if frozen_evaluation_context is None:
+                context, sources = self._context_builder.build(chunks)
+            else:
+                context = frozen_evaluation_context.context
+                sources = [dict(item) for item in frozen_evaluation_context.sources]
 
             # 3. Deterministic calculation pipeline (Phase 3 Commit 8).
             if self._calculation_pipeline is not None:
@@ -323,11 +363,23 @@ class RAGOrchestrator:
                 )
                 if calculation_result.status is not CalculationStatus.NOT_APPLICABLE:
                     calculation_answer = render_calculation_result(calculation_result)
+                    self._notify_evaluation_observer(
+                        evaluation_observer,
+                        "record_calculation",
+                        status=calculation_result.status.value,
+                        operation=(
+                            calculation_result.operation.value
+                            if calculation_result.operation is not None
+                            else None
+                        ),
+                    )
 
             # Build validation evidence from the exact context representation
             # (parent-expanded and token-truncated), not stale child chunks.
-            context_evidence = getattr(
-                self._context_builder, "last_context_evidence", None
+            context_evidence = (
+                chunks
+                if frozen_evaluation_context is not None
+                else getattr(self._context_builder, "last_context_evidence", None)
             )
             if not isinstance(context_evidence, list) or (
                 not context_evidence and chunks and context
@@ -561,6 +613,11 @@ class RAGOrchestrator:
             # (calculation EXECUTED, deterministic, LLM) — but NOT for
             # answerability-blocked paths (which already have a safe fallback).
             if self._validation_pipeline is not None and not answerability_blocked:
+                self._notify_evaluation_observer(
+                    evaluation_observer,
+                    "record_raw_generation",
+                    answer=answer,
+                )
                 answer, validation_result, repair_result, initial_validation_result = (
                     self._validate_and_repair_once(
                         answer=answer,
@@ -648,11 +705,30 @@ class RAGOrchestrator:
             trace_data["diagnostics"]["repair"] = (
                 repair_result.to_trace_dict() if repair_result is not None else None
             )
+        self._notify_evaluation_observer(
+            evaluation_observer,
+            "record_validation",
+            status=(validation_result.status.value if validation_result is not None else None),
+            failures=(
+                [issue.code for issue in validation_result.issues]
+                if validation_result is not None
+                else []
+            ),
+            repair_attempted=bool(repair_result and repair_result.was_repaired),
+            repair_status=(
+                "fallback" if repair_result and repair_result.fallback_used
+                else "repaired" if repair_result and repair_result.was_repaired
+                else None
+            ),
+        )
         trace_id = None
-        try:
-            trace_id = self._trace_logger.log(**trace_data)
-        except Exception:
-            pass  # tracing must never break the query path
+        # NF40's private frozen-context adapter deliberately does not persist
+        # traces. Normal API requests retain the existing logger behaviour.
+        if frozen_evaluation_context is None:
+            try:
+                trace_id = self._trace_logger.log(**trace_data)
+            except Exception:
+                pass  # tracing must never break the query path
         if trace_id is None:
             # Fallback: ensure every response carries a trace_id even when
             # sampling skips or the logger fails. This ID is not stored in
@@ -667,6 +743,12 @@ class RAGOrchestrator:
         ):
             calculations = (calculation_result.to_public_dict(),)
 
+        self._notify_evaluation_observer(
+            evaluation_observer,
+            "record_release",
+            answer=answer,
+            response_type=("safe_fallback" if repair_result and repair_result.fallback_used else "answer"),
+        )
         return AnswerResult(
             answer=answer,
             sources=tuple(self._dedupe_display_sources(sources)),
@@ -697,7 +779,6 @@ class RAGOrchestrator:
                 repair_result.to_public_dict() if repair_result is not None else None
             ),
         )
-
     # ------------------------------------------------------------------
     # Legacy compatibility shim (not for production use)
     # ------------------------------------------------------------------

@@ -29,6 +29,7 @@ from src.generation.llm_gateway import LLMGateway
 from src.generation.response_renderer import validate_answer
 from src.generation.deterministic_answers import DeterministicAnswerExtractor
 from src.application.rag_orchestrator import RAGOrchestrator
+from src.application.frozen_evaluation import FrozenEvaluationContext
 from src.finance.calculation_pipeline import CalculationPipeline
 from src.validation.validation_pipeline import GroundedValidationPipeline
 from src.services.memory_profile import build_memory_profile_context
@@ -195,7 +196,6 @@ class RAGEngine:
             calculation_pipeline=self._calculation_pipeline,
             validation_pipeline=self._validation_pipeline,
         )
-
     def _get_bm25_retriever(self, doc_name=str, user_id: int = None):
         """获取 SQLite FTS5 稀疏检索器。如果未启用混合检索则返回 None。"""
         if not self.use_hybrid:
@@ -474,6 +474,35 @@ class RAGEngine:
             memory_profile=memory_profile,
         )
         result = await self._orchestrator.answer(request, n_results=n_results)
+        return result.to_legacy_dict()
+
+    async def answer_frozen_evaluation(
+        self,
+        *,
+        question: str,
+        user_id: int,
+        frozen_context: FrozenEvaluationContext,
+        evaluation_observer=None,
+    ) -> dict:
+        """Run the normal answer pipeline over a verified local snapshot.
+
+        This deliberately has no HTTP route. It bypasses retrieval only; the
+        configured generator, calculation pipeline, validation, repair and
+        response rendering remain those of this engine instance.
+        """
+        request = QueryRequest(
+            question=question,
+            document_names=frozen_context.document_names,
+            user_id=user_id,
+            conversation_history=(),
+            memory_profile=None,
+        )
+        result = await self._orchestrator.answer(
+            request,
+            n_results=len(frozen_context.chunks),
+            frozen_evaluation_context=frozen_context,
+            evaluation_observer=evaluation_observer,
+        )
         return result.to_legacy_dict()
 
     def _handle_conversational_query(self, query: str) -> str | None:
