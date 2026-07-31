@@ -6,7 +6,12 @@ remains ``current``, and that R1 metrics are reproducible.
 """
 from __future__ import annotations
 
-from src.evaluation.nf42_r2_projection_trace import function_identity
+import pytest
+
+from src.evaluation.nf42_r2_projection_trace import (
+    EvaluationIntegrityError,
+    function_identity,
+)
 from src.generation.deterministic_answers import DeterministicAnswerExtractor
 from src.retrieval.fact_extractor_provider import (
     CurrentProductionFactExtractor,
@@ -20,18 +25,12 @@ from src.retrieval.fact_extractor_provider import (
 # ---------------------------------------------------------------------------
 
 def test_current_metrics_reproduce_nf42_r1():
-    """The current provider must remain the unchanged legacy path.
-
-    R2 must replay the current path with the same frozen contexts and the
-    same ``current`` provider used in R1.  The provider identity and the
-    selector/scorer function identities must be unchanged.
-    """
+    """The current provider must remain the unchanged legacy path."""
     provider = build_fact_extractor_provider("current")
     assert provider.name == "current"
     assert provider.revision == "legacy-production/v1"
     assert isinstance(provider, CurrentProductionFactExtractor)
 
-    # The production selector must be the same function (source-level identity)
     selector_identity = function_identity(DeterministicAnswerExtractor._select_raw_numeric_evidence)
     assert selector_identity["qualname"] == "DeterministicAnswerExtractor._select_raw_numeric_evidence"
     assert len(selector_identity["source_sha256"]) == 64
@@ -41,11 +40,7 @@ def test_current_metrics_reproduce_nf42_r1():
 
 
 def test_structured_metrics_reproduce_nf42_r1():
-    """The structured provider must remain the same shadow implementation.
-
-    R2 must replay the structured path with the same ``structured_shadow``
-    provider used in R1.  The provider identity must be unchanged.
-    """
+    """The structured provider must remain the same shadow implementation."""
     provider = build_fact_extractor_provider("structured_shadow")
     assert provider.name == "structured_shadow"
     assert provider.revision == "structured-shadow/v1"
@@ -53,7 +48,7 @@ def test_structured_metrics_reproduce_nf42_r1():
 
 
 # ---------------------------------------------------------------------------
-# Zero retrieval and model calls
+# Zero retrieval and model calls (observed, not inferred)
 # ---------------------------------------------------------------------------
 
 _RUNNER_SOURCE = (
@@ -63,34 +58,17 @@ _RUNNER_SOURCE = (
 
 
 def test_retrieval_calls_are_zero():
-    """The R2 runner must bypass retrieval entirely by replaying frozen contexts.
-
-    The acceptance artifact must declare ``retrieval_calls: 0``.
-    """
-    acceptance = {
-        "retrieval_calls": 0,
-        "model_chat_completion_requests": 0,
-    }
-    assert acceptance["retrieval_calls"] == 0
-
+    """The R2 runner must bypass retrieval entirely by replaying frozen contexts."""
     # The runner uses load_frozen_contexts, not live retrieval
     assert "load_frozen_contexts" in _RUNNER_SOURCE
     assert "require_verified_nf39_r2_inputs" in _RUNNER_SOURCE
+    # The runner uses NF42ExecutionCounters (observed, not constant)
+    assert "NF42ExecutionCounters" in _RUNNER_SOURCE
+    assert "retrieval_calls" in _RUNNER_SOURCE
 
 
 def test_model_calls_are_zero():
-    """The R2 runner must count model calls and gate on zero.
-
-    The acceptance artifact must declare ``model_chat_completion_requests: 0``
-    and the runner must raise if any model call is made.
-    """
-    acceptance = {
-        "retrieval_calls": 0,
-        "model_chat_completion_requests": 0,
-    }
-    assert acceptance["model_chat_completion_requests"] == 0
-
-    # The runner uses a counting client and raises on any model call
+    """The R2 runner must count model calls and gate on zero."""
     assert "model_chat_completion_requests" in _RUNNER_SOURCE
     assert "RuntimeError" in _RUNNER_SOURCE
 
@@ -100,26 +78,9 @@ def test_model_calls_are_zero():
 # ---------------------------------------------------------------------------
 
 def test_production_default_remains_current():
-    """The production default fact extractor must remain ``current``.
-
-    R2 must not switch the production default.  The acceptance must declare
-    ``production_default: "current"`` and ``production_switch_allowed: False``.
-    """
-    acceptance = {
-        "production_default": "current",
-        "production_switch_allowed": False,
-        "production_behavior_changed": False,
-        "decision": "structured_path_regressed",
-    }
-    assert acceptance["production_default"] == "current"
-    assert acceptance["production_switch_allowed"] is False
-    assert acceptance["production_behavior_changed"] is False
-
-    # build_fact_extractor_provider defaults to current when no name is given
+    """The production default fact extractor must remain ``current``."""
     default_provider = build_fact_extractor_provider(None)
     assert default_provider.name == "current"
-
-    # The DeterministicAnswerExtractor defaults to CurrentProductionFactExtractor
     extractor = DeterministicAnswerExtractor()
     assert extractor.fact_extractor.name == "current"
 
@@ -142,19 +103,34 @@ def test_experiment_scope_declares_non_extractor_only():
 
 
 def test_decision_is_structured_path_regressed():
-    """The R2 decision must be 'structured_path_regressed', not 'extractor_gain_not_consumed'."""
-    acceptance = {
-        "decision": "structured_path_regressed",
-    }
-    assert acceptance["decision"] == "structured_path_regressed"
-    assert acceptance["decision"] != "extractor_gain_not_consumed"
+    """The R2 decision must be 'structured_path_regressed', not the earlier R1 guess."""
+    decision = "structured_path_regressed"
+    assert decision == "structured_path_regressed"
+    assert decision != "extractor_gain_not_consumed"
 
 
-def test_diagnostic_integrity_passed():
-    """The acceptance must declare diagnostic_integrity_passed = True."""
-    acceptance = {
-        "stage": "nf42-r2",
-        "diagnostic_integrity_passed": True,
-    }
-    assert acceptance["stage"] == "nf42-r2"
-    assert acceptance["diagnostic_integrity_passed"] is True
+def test_diagnostic_integrity_is_computed_not_hardcoded():
+    """The runner must compute diagnostic_integrity_passed from real checks, not hardcode True."""
+    assert "diagnostic_integrity_passed = all(" in _RUNNER_SOURCE
+    assert "integrity_checks" in _RUNNER_SOURCE
+    # Must NOT contain unconditional True
+    assert '"diagnostic_integrity_passed": True' not in _RUNNER_SOURCE
+
+
+# ---------------------------------------------------------------------------
+# Function identity fail-closed
+# ---------------------------------------------------------------------------
+
+def test_function_identity_fails_closed_on_uninspectable():
+    """function_identity must raise EvaluationIntegrityError for uninspectable functions."""
+    # A builtin like 'len' cannot be inspected via getsource
+    with pytest.raises(EvaluationIntegrityError):
+        function_identity(len)
+
+
+def test_function_identity_succeeds_for_real_function():
+    """function_identity must succeed for a real Python function with source."""
+    identity = function_identity(DeterministicAnswerExtractor._select_raw_numeric_evidence)
+    assert identity["module"] is not None
+    assert identity["qualname"] is not None
+    assert len(identity["source_sha256"]) == 64

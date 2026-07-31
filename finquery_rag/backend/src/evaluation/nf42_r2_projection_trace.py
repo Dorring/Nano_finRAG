@@ -11,7 +11,7 @@ from __future__ import annotations
 import hashlib
 import inspect
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any
 
@@ -29,6 +29,14 @@ def stable_json_hash(payload: Any) -> str:
 def sha256_text(value: str) -> str:
     """SHA-256 of a UTF-8 string."""
     return hashlib.sha256((value or "").encode("utf-8")).hexdigest()
+
+
+# ---------------------------------------------------------------------------
+# Integrity error
+# ---------------------------------------------------------------------------
+
+class EvaluationIntegrityError(RuntimeError):
+    """Raised when evaluation integrity cannot be guaranteed."""
 
 
 # ---------------------------------------------------------------------------
@@ -74,6 +82,98 @@ class RegressionCause(str, Enum):
     CITATION_SOURCE_CHANGED = "citation_source_changed"
     VALIDATION_ONLY_REGRESSION = "validation_only_regression"
     UNCLASSIFIED = "unclassified"
+
+
+class GoldMatchGranularity(str, Enum):
+    """Granularity at which a fact matched the gold answer source."""
+
+    CANDIDATE_KEY = "candidate_key"
+    CHUNK_ID = "chunk_id"
+    FILENAME_PAGE = "filename_page"
+
+
+# ---------------------------------------------------------------------------
+# Expected baseline (from verified NF42 R1 artifact)
+# ---------------------------------------------------------------------------
+
+@dataclass(frozen=True)
+class NF42ExpectedBaseline:
+    """Expected R1 baseline metrics that R2 must reproduce."""
+
+    all_gold_case_count: int
+
+    current_correct_fact_cases: int
+    structured_correct_fact_cases: int
+
+    current_all_gold_raw_correct: int
+    structured_all_gold_raw_correct: int
+
+    current_all_gold_released_correct: int
+    structured_all_gold_released_correct: int
+
+    current_any_gold_released_correct: int
+    structured_any_gold_released_correct: int
+
+    regression_case_count: int
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "all_gold_case_count": self.all_gold_case_count,
+            "current_correct_fact_cases": self.current_correct_fact_cases,
+            "structured_correct_fact_cases": self.structured_correct_fact_cases,
+            "current_all_gold_raw_correct": self.current_all_gold_raw_correct,
+            "structured_all_gold_raw_correct": self.structured_all_gold_raw_correct,
+            "current_all_gold_released_correct": self.current_all_gold_released_correct,
+            "structured_all_gold_released_correct": self.structured_all_gold_released_correct,
+            "current_any_gold_released_correct": self.current_any_gold_released_correct,
+            "structured_any_gold_released_correct": self.structured_any_gold_released_correct,
+            "regression_case_count": self.regression_case_count,
+        }
+
+
+# ---------------------------------------------------------------------------
+# Execution counters (observed, not inferred)
+# ---------------------------------------------------------------------------
+
+@dataclass
+class NF42ExecutionCounters:
+    """Real observed execution counters, not inferred from flags."""
+
+    retrieval_calls: int = 0
+    model_chat_completion_requests: int = 0
+    memory_writes: int = 0
+    feedback_writes: int = 0
+    document_state_writes: int = 0
+
+    def all_zero(self) -> bool:
+        return (
+            self.retrieval_calls == 0
+            and self.model_chat_completion_requests == 0
+            and self.memory_writes == 0
+            and self.feedback_writes == 0
+            and self.document_state_writes == 0
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "retrieval_calls": self.retrieval_calls,
+            "model_chat_completion_requests": self.model_chat_completion_requests,
+            "memory_writes": self.memory_writes,
+            "feedback_writes": self.feedback_writes,
+            "document_state_writes": self.document_state_writes,
+        }
+
+
+# ---------------------------------------------------------------------------
+# Frozen document identity mapping
+# ---------------------------------------------------------------------------
+
+@dataclass(frozen=True)
+class FrozenDocumentIdentity:
+    """Explicit mapping from internal document_id to filename."""
+
+    document_id: str
+    filename: str
 
 
 # ---------------------------------------------------------------------------
@@ -211,27 +311,33 @@ class RegressionCaseTrace:
 
     case_id: str
 
-    current_selected_candidate_ids: list[str]
-    current_selected_fact_ids: list[str]
-    current_selected_values_hash: list[str]
-    current_pre_selector_scores: list[float]
-    current_raw_correct: bool
-    current_released_correct: bool
+    current_extracted_fact_ids: list[str] = field(default_factory=list)
+    current_projected_fact_ids: list[str] = field(default_factory=list)
+    current_selected_candidate_ids: list[str] = field(default_factory=list)
+    current_selected_fact_ids: list[str] = field(default_factory=list)
+    current_selected_values_hash: list[str] = field(default_factory=list)
+    current_pre_selector_scores: list[float] = field(default_factory=list)
+    current_raw_correct: bool = False
+    current_released_correct: bool = False
 
-    structured_selected_candidate_ids: list[str]
-    structured_selected_fact_ids: list[str]
-    structured_selected_values_hash: list[str]
-    structured_pre_selector_scores: list[float]
-    structured_raw_correct: bool
-    structured_released_correct: bool
+    structured_extracted_fact_ids: list[str] = field(default_factory=list)
+    structured_projected_fact_ids: list[str] = field(default_factory=list)
+    structured_selected_candidate_ids: list[str] = field(default_factory=list)
+    structured_selected_fact_ids: list[str] = field(default_factory=list)
+    structured_selected_values_hash: list[str] = field(default_factory=list)
+    structured_pre_selector_scores: list[float] = field(default_factory=list)
+    structured_raw_correct: bool = False
+    structured_released_correct: bool = False
 
-    first_divergence_stage: str
-    regression_cause: RegressionCause
+    first_divergence_stage: str = "unclassified"
+    regression_cause: RegressionCause = RegressionCause.UNCLASSIFIED
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "case_id": self.case_id,
             "current": {
+                "extracted_fact_ids": self.current_extracted_fact_ids,
+                "projected_fact_ids": self.current_projected_fact_ids,
                 "selected_candidate_ids": self.current_selected_candidate_ids,
                 "selected_fact_ids": self.current_selected_fact_ids,
                 "selected_values_hash": self.current_selected_values_hash,
@@ -240,6 +346,8 @@ class RegressionCaseTrace:
                 "released_correct": self.current_released_correct,
             },
             "structured": {
+                "extracted_fact_ids": self.structured_extracted_fact_ids,
+                "projected_fact_ids": self.structured_projected_fact_ids,
                 "selected_candidate_ids": self.structured_selected_candidate_ids,
                 "selected_fact_ids": self.structured_selected_fact_ids,
                 "selected_values_hash": self.structured_selected_values_hash,
@@ -287,83 +395,86 @@ def classify_new_fact_loss(trace: NewFactFunnelTrace) -> StructuredFactLossStage
 
 def classify_regression_cause(
     *,
-    current_trace: dict[str, Any],
-    structured_trace: dict[str, Any],
-    current_projected: list[NumericEvidenceCandidateTrace],
-    structured_projected: list[NumericEvidenceCandidateTrace],
+    current_extracted_fact_ids: set[str],
+    structured_extracted_fact_ids: set[str],
+    current_projected_fact_ids: set[str],
+    structured_projected_fact_ids: set[str],
+    current_selected_fact_ids: set[str],
+    structured_selected_fact_ids: set[str],
+    current_selected_values: tuple[str, ...],
+    structured_selected_values: tuple[str, ...],
+    current_raw_correct: bool,
+    structured_raw_correct: bool,
+    current_released_correct: bool,
+    structured_released_correct: bool,
 ) -> tuple[str, RegressionCause]:
     """Determine the first divergence stage and regression cause.
 
-    Returns (first_divergence_stage, regression_cause).  The cause is
-    inferred from trace data, never hardcoded by case ID.
+    Uses explicit structured inputs — no ``dict[str, Any]`` — so the
+    attribution is driven by observed fact IDs at each stage, not
+    inferred from selected_fact_ids alone.
+
+    Attribution order:
+        1. fact_extraction   — legacy correct fact not in structured extracted
+        2. fact_projection   — legacy correct fact extracted but not projected
+        3. pre_selector_ranking_or_selection — projected but not selected
+        4. value_selection   — selected but values differ
+        5. answer_rendering  — values same but raw answer wrong
+        6. validation        — raw correct but released wrong
     """
-    current_facts = set(current_trace.get("selected_fact_ids", []))
-    structured_facts = set(structured_trace.get("selected_fact_ids", []))
+    # Stage 1: extraction divergence — legacy correct fact disappeared
+    legacy_only_extracted = current_extracted_fact_ids - structured_extracted_fact_ids
+    if legacy_only_extracted:
+        return ("fact_extraction", RegressionCause.LEGACY_CORRECT_FACT_NOT_EXTRACTED)
 
-    current_values = current_trace.get("selected_values_hash", [])
-    structured_values = structured_trace.get("selected_values_hash", [])
-
-    current_scores = current_trace.get("pre_selector_scores", [])
-    structured_scores = structured_trace.get("pre_selector_scores", [])
-
-    current_raw = current_trace.get("raw_correct", False)
-    structured_raw = structured_trace.get("raw_correct", False)
-    current_released = current_trace.get("released_correct", False)
-    structured_released = structured_trace.get("released_correct", False)
-
-    # Stage 1: fact extraction divergence
-    if not current_facts and not structured_facts:
-        pass  # both empty, look further
-    elif current_facts and not (current_facts & structured_facts):
-        # Legacy correct fact was not selected in structured path
-        # Check if it was even projected
-        current_fact_id = next(iter(current_facts))
-        structured_projected_ids = {
-            fid for p in structured_projected for fid in p.source_fact_ids
-        }
-        if current_fact_id not in structured_projected_ids:
-            return ("fact_extraction", RegressionCause.LEGACY_CORRECT_FACT_NOT_EXTRACTED)
+    # Stage 2: projection divergence — extracted but not projected
+    legacy_only_projected = current_projected_fact_ids - structured_projected_fact_ids
+    if legacy_only_projected:
         return ("fact_projection", RegressionCause.LEGACY_CORRECT_FACT_NOT_PROJECTED)
 
-    # Stage 2: pre-selector ranking divergence
-    if (
-        current_scores != structured_scores
-        and current_scores
-        and structured_scores
-        and current_scores[0] != structured_scores[0]
-    ):
-        # Check if a wrong period/metric/scale ranked higher
-        return ("pre_selector_ranking", RegressionCause.LEGACY_CORRECT_CANDIDATE_DISPLACED)
+    # Stage 3: selection/ranking divergence — projected but not selected
+    legacy_only_selected = current_selected_fact_ids - structured_selected_fact_ids
+    if legacy_only_selected:
+        return ("pre_selector_ranking_or_selection", RegressionCause.LEGACY_CORRECT_CANDIDATE_DISPLACED)
 
-    # Stage 3: value selection divergence
-    if current_values != structured_values:
+    # Stage 4: value selection divergence — selected facts differ in values
+    if current_selected_values != structured_selected_values:
         return ("value_selection", RegressionCause.VALUE_SELECTION_CHANGED)
 
-    # Stage 4: raw answer divergence
-    if current_raw and not structured_raw:
+    # Stage 5: raw answer divergence — values same but raw answer wrong
+    if current_raw_correct and not structured_raw_correct:
         return ("answer_rendering", RegressionCause.VALUE_SELECTION_CHANGED)
 
-    # Stage 5: validation-only regression
-    if current_raw == structured_raw and current_released and not structured_released:
+    # Stage 6: validation-only regression — raw correct but released wrong
+    if current_raw_correct == structured_raw_correct and current_released_correct and not structured_released_correct:
         return ("validation", RegressionCause.VALIDATION_ONLY_REGRESSION)
 
     return ("unclassified", RegressionCause.UNCLASSIFIED)
 
 
 # ---------------------------------------------------------------------------
-# Function identity
+# Function identity (fail-closed)
 # ---------------------------------------------------------------------------
 
 def function_identity(fn: Any) -> dict[str, Any]:
     """Record the source-level identity of a function.
 
     Uses ``inspect.getsource`` so that a fixed description string cannot
-    masquerade as an unchanged implementation.
+    masquerade as an unchanged implementation.  Fails closed: if the
+    source cannot be retrieved the function raises
+    ``EvaluationIntegrityError`` rather than hashing an empty string.
     """
     try:
         source = inspect.getsource(fn)
-    except (TypeError, OSError):
-        source = ""
+    except (TypeError, OSError) as exc:
+        raise EvaluationIntegrityError(
+            f"Cannot fingerprint {fn!r}"
+        ) from exc
+
+    if not source.strip():
+        raise EvaluationIntegrityError(
+            f"Empty source identity for {fn!r}"
+        )
 
     return {
         "module": getattr(fn, "__module__", None),

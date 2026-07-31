@@ -6,100 +6,46 @@ the regression cause is inferred from trace data, not hardcoded by case ID.
 from __future__ import annotations
 
 from src.evaluation.nf42_r2_projection_trace import (
-    NumericEvidenceCandidateTrace,
     RegressionCaseTrace,
     RegressionCause,
     classify_regression_cause,
 )
 
 
-def _make_projected(
-    *,
-    proj_id: str = "projected:v1:abc",
-    fact_ids: tuple[str, ...] = ("fact_1",),
-    score: float = 10.0,
-) -> NumericEvidenceCandidateTrace:
-    return NumericEvidenceCandidateTrace(
-        projected_candidate_id=proj_id,
-        provider="current",
-        candidate_key="key_1",
-        candidate_rank=1,
-        source_fact_ids=fact_ids,
-        source_span_hash="hash_1",
-        document_id="doc_a",
-        page=1,
-        projected_text_hash="text_hash_1",
-        projected_value_hashes=("val_hash_1",),
-        metric="Revenue",
-        period="2025",
-        currency="USD",
-        unit="million",
-        base_evidence_score=score,
-        anchor_match_count=1,
-        anchor_conflict_count=0,
-        relation_score=2.0,
-        value_granularity_score=0.0,
-        component_pair_score=0.0,
-        retrieval_score=0.5,
-        final_pre_selector_score=score,
-        pre_selector_rank=1,
-        selector_input=True,
-        selector_output_rank=1,
-    )
-
-
 def test_two_regression_cases_have_first_divergence():
     """Two regression cases must each have a first_divergence_stage."""
-    # Case A: legacy correct fact not projected in structured path
-    current_trace_a = {
-        "selected_fact_ids": ["fact_legacy_a"],
-        "selected_values_hash": ["hash_a"],
-        "pre_selector_scores": [10.0],
-        "raw_correct": True,
-        "released_correct": True,
-    }
-    structured_trace_a = {
-        "selected_fact_ids": ["fact_other_a"],
-        "selected_values_hash": ["hash_b"],
-        "pre_selector_scores": [8.0],
-        "raw_correct": False,
-        "released_correct": False,
-    }
-    current_proj_a = [_make_projected(proj_id="proj_a", fact_ids=("fact_legacy_a",), score=10.0)]
-    structured_proj_a = [_make_projected(proj_id="proj_b", fact_ids=("fact_other_a",), score=8.0)]
-
+    # Case A: legacy correct fact not extracted in structured path
     stage_a, cause_a = classify_regression_cause(
-        current_trace=current_trace_a,
-        structured_trace=structured_trace_a,
-        current_projected=current_proj_a,
-        structured_projected=structured_proj_a,
+        current_extracted_fact_ids={"fact_legacy_a"},
+        structured_extracted_fact_ids={"fact_other_a"},
+        current_projected_fact_ids={"fact_legacy_a"},
+        structured_projected_fact_ids={"fact_other_a"},
+        current_selected_fact_ids={"fact_legacy_a"},
+        structured_selected_fact_ids={"fact_other_a"},
+        current_selected_values=("val_a",),
+        structured_selected_values=("val_b",),
+        current_raw_correct=True,
+        structured_raw_correct=False,
+        current_released_correct=True,
+        structured_released_correct=False,
     )
     assert stage_a != "unclassified"
     assert cause_a != RegressionCause.UNCLASSIFIED
 
-    # Case B: value selection changed
-    current_trace_b = {
-        "selected_fact_ids": ["fact_legacy_b"],
-        "selected_values_hash": ["hash_x"],
-        "pre_selector_scores": [10.0],
-        "raw_correct": True,
-        "released_correct": True,
-    }
-    structured_trace_b = {
-        "selected_fact_ids": ["fact_legacy_b"],
-        "selected_values_hash": ["hash_y"],
-        "pre_selector_scores": [10.0],
-        "raw_correct": False,
-        "released_correct": False,
-    }
-    current_proj_b = [_make_projected(proj_id="proj_c", fact_ids=("fact_legacy_b",), score=10.0)]
-    structured_proj_b = [_make_projected(proj_id="proj_c", fact_ids=("fact_legacy_b",), score=10.0)]
-
+    # Case B: value selection changed (same extracted/projected/selected)
     stage_b, cause_b = classify_regression_cause(
-        current_trace=current_trace_b,
-        structured_trace=structured_trace_b,
-        current_projected=current_proj_b,
-        structured_projected=structured_proj_b,
+        current_extracted_fact_ids={"fact_legacy_b"},
+        structured_extracted_fact_ids={"fact_legacy_b"},
+        current_projected_fact_ids={"fact_legacy_b"},
+        structured_projected_fact_ids={"fact_legacy_b"},
+        current_selected_fact_ids={"fact_legacy_b"},
+        structured_selected_fact_ids={"fact_legacy_b"},
+        current_selected_values=("val_x",),
+        structured_selected_values=("val_y",),
+        current_raw_correct=True,
+        structured_raw_correct=False,
+        current_released_correct=True,
+        structured_released_correct=False,
     )
     assert stage_b != "unclassified"
     assert cause_b != RegressionCause.UNCLASSIFIED
@@ -107,12 +53,16 @@ def test_two_regression_cases_have_first_divergence():
     # Both regression traces must have a first_divergence_stage
     reg_a = RegressionCaseTrace(
         case_id="case_a",
+        current_extracted_fact_ids=["fact_legacy_a"],
+        current_projected_fact_ids=["fact_legacy_a"],
         current_selected_candidate_ids=["proj_a"],
         current_selected_fact_ids=["fact_legacy_a"],
         current_selected_values_hash=["hash_a"],
         current_pre_selector_scores=[10.0],
         current_raw_correct=True,
         current_released_correct=True,
+        structured_extracted_fact_ids=["fact_other_a"],
+        structured_projected_fact_ids=["fact_other_a"],
         structured_selected_candidate_ids=["proj_b"],
         structured_selected_fact_ids=["fact_other_a"],
         structured_selected_values_hash=["hash_b"],
@@ -124,12 +74,16 @@ def test_two_regression_cases_have_first_divergence():
     )
     reg_b = RegressionCaseTrace(
         case_id="case_b",
+        current_extracted_fact_ids=["fact_legacy_b"],
+        current_projected_fact_ids=["fact_legacy_b"],
         current_selected_candidate_ids=["proj_c"],
         current_selected_fact_ids=["fact_legacy_b"],
         current_selected_values_hash=["hash_x"],
         current_pre_selector_scores=[10.0],
         current_raw_correct=True,
         current_released_correct=True,
+        structured_extracted_fact_ids=["fact_legacy_b"],
+        structured_projected_fact_ids=["fact_legacy_b"],
         structured_selected_candidate_ids=["proj_c"],
         structured_selected_fact_ids=["fact_legacy_b"],
         structured_selected_values_hash=["hash_y"],
@@ -149,66 +103,55 @@ def test_regression_cause_is_not_case_specific():
     Two cases with identical trace data but different case IDs must
     produce the same regression cause.
     """
-    current_trace = {
-        "selected_fact_ids": ["fact_legacy"],
-        "selected_values_hash": ["hash_x"],
-        "pre_selector_scores": [10.0],
-        "raw_correct": True,
-        "released_correct": True,
-    }
-    structured_trace = {
-        "selected_fact_ids": ["fact_other"],
-        "selected_values_hash": ["hash_y"],
-        "pre_selector_scores": [8.0],
-        "raw_correct": False,
-        "released_correct": False,
-    }
-    current_proj = [_make_projected(proj_id="proj_a", fact_ids=("fact_legacy",), score=10.0)]
-    structured_proj = [_make_projected(proj_id="proj_b", fact_ids=("fact_other",), score=8.0)]
-
-    # Same trace data, different case IDs
+    # Same trace data (case_id is not even a parameter)
     stage_1, cause_1 = classify_regression_cause(
-        current_trace=current_trace,
-        structured_trace=structured_trace,
-        current_projected=current_proj,
-        structured_projected=structured_proj,
+        current_extracted_fact_ids={"fact_legacy"},
+        structured_extracted_fact_ids={"fact_other"},
+        current_projected_fact_ids={"fact_legacy"},
+        structured_projected_fact_ids={"fact_other"},
+        current_selected_fact_ids={"fact_legacy"},
+        structured_selected_fact_ids={"fact_other"},
+        current_selected_values=("val_x",),
+        structured_selected_values=("val_y",),
+        current_raw_correct=True,
+        structured_raw_correct=False,
+        current_released_correct=True,
+        structured_released_correct=False,
     )
     stage_2, cause_2 = classify_regression_cause(
-        current_trace=current_trace,
-        structured_trace=structured_trace,
-        current_projected=current_proj,
-        structured_projected=structured_proj,
+        current_extracted_fact_ids={"fact_legacy"},
+        structured_extracted_fact_ids={"fact_other"},
+        current_projected_fact_ids={"fact_legacy"},
+        structured_projected_fact_ids={"fact_other"},
+        current_selected_fact_ids={"fact_legacy"},
+        structured_selected_fact_ids={"fact_other"},
+        current_selected_values=("val_x",),
+        structured_selected_values=("val_y",),
+        current_raw_correct=True,
+        structured_raw_correct=False,
+        current_released_correct=True,
+        structured_released_correct=False,
     )
 
-    # case_id is not even a parameter to classify_regression_cause
     assert stage_1 == stage_2
     assert cause_1 == cause_2
 
 
 def test_regression_cause_validation_only():
     """A case where raw is correct but released regressed is a validation-only regression."""
-    current_trace = {
-        "selected_fact_ids": ["fact_1"],
-        "selected_values_hash": ["hash_x"],
-        "pre_selector_scores": [10.0],
-        "raw_correct": True,
-        "released_correct": True,
-    }
-    structured_trace = {
-        "selected_fact_ids": ["fact_1"],
-        "selected_values_hash": ["hash_x"],
-        "pre_selector_scores": [10.0],
-        "raw_correct": True,
-        "released_correct": False,
-    }
-    current_proj = [_make_projected(fact_ids=("fact_1",))]
-    structured_proj = [_make_projected(fact_ids=("fact_1",))]
-
     stage, cause = classify_regression_cause(
-        current_trace=current_trace,
-        structured_trace=structured_trace,
-        current_projected=current_proj,
-        structured_projected=structured_proj,
+        current_extracted_fact_ids={"fact_1"},
+        structured_extracted_fact_ids={"fact_1"},
+        current_projected_fact_ids={"fact_1"},
+        structured_projected_fact_ids={"fact_1"},
+        current_selected_fact_ids={"fact_1"},
+        structured_selected_fact_ids={"fact_1"},
+        current_selected_values=("val_x",),
+        structured_selected_values=("val_x",),
+        current_raw_correct=True,
+        structured_raw_correct=True,
+        current_released_correct=True,
+        structured_released_correct=False,
     )
     assert cause == RegressionCause.VALIDATION_ONLY_REGRESSION
     assert stage == "validation"
@@ -218,27 +161,33 @@ def test_regression_trace_serializes_to_dict():
     """RegressionCaseTrace must serialize correctly without exposing full text."""
     trace = RegressionCaseTrace(
         case_id="case_z",
+        current_extracted_fact_ids=["fact_1"],
+        current_projected_fact_ids=["fact_1"],
         current_selected_candidate_ids=["proj_a"],
         current_selected_fact_ids=["fact_1"],
         current_selected_values_hash=["hash_a"],
         current_pre_selector_scores=[10.0],
         current_raw_correct=True,
         current_released_correct=True,
+        structured_extracted_fact_ids=["fact_2"],
+        structured_projected_fact_ids=["fact_2"],
         structured_selected_candidate_ids=["proj_b"],
         structured_selected_fact_ids=["fact_2"],
         structured_selected_values_hash=["hash_b"],
         structured_pre_selector_scores=[8.0],
         structured_raw_correct=False,
         structured_released_correct=False,
-        first_divergence_stage="pre_selector_ranking",
+        first_divergence_stage="pre_selector_ranking_or_selection",
         regression_cause=RegressionCause.LEGACY_CORRECT_CANDIDATE_DISPLACED,
     )
     data = trace.to_dict()
     assert data["case_id"] == "case_z"
-    assert data["first_divergence_stage"] == "pre_selector_ranking"
+    assert data["first_divergence_stage"] == "pre_selector_ranking_or_selection"
     assert data["regression_cause"] == "legacy_correct_candidate_displaced"
     assert "current" in data
     assert "structured" in data
+    assert "extracted_fact_ids" in data["current"]
+    assert "projected_fact_ids" in data["current"]
     # Must not contain full source text
     assert "source_text" not in data
     assert "evaluation_text" not in data

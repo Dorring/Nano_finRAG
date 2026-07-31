@@ -2,9 +2,7 @@
 
 Verifies that the gate logic correctly determines which next phase is
 allowed based on the distribution of first-loss stages across newly
-correct facts.  The gates decide whether NF43 (Selector A/B), a
-Projection fix, a Value-selection fix, a Renderer fix, or a Validator
-fix is the appropriate next step — or whether to stop.
+correct facts.  Gates count unique CASES, not individual facts.
 """
 from __future__ import annotations
 
@@ -88,20 +86,34 @@ def _make_trace(
 
 
 def _determine_gate(traces: list[NewFactFunnelTrace]) -> dict:
-    """Replicate the gate logic from run_nf42_r2_attribution._determine_next_gate."""
-    stage_counts: dict[str, int] = {}
+    """Replicate the gate logic — case-based, not fact-based."""
+    fact_stage_counts: dict[str, int] = {}
     for t in traces:
         stage = t.first_loss_stage.value
-        stage_counts[stage] = stage_counts.get(stage, 0) + 1
+        fact_stage_counts[stage] = fact_stage_counts.get(stage, 0) + 1
 
-    selector_gate = stage_counts.get("entered_selector_not_selected", 0) >= 3
-    projection_gate = (
-        stage_counts.get("dropped_during_projection", 0)
-        + stage_counts.get("ranked_below_selector_input", 0)
-    ) >= 3
-    value_gate = stage_counts.get("selected_value_not_used", 0) >= 2
-    renderer_gate = stage_counts.get("value_used_raw_answer_wrong", 0) >= 2
-    validator_gate = stage_counts.get("raw_correct_validation_regression", 0) >= 2
+    # Case-level counts (deduplicated by case_id)
+    case_stage_counts: dict[str, int] = {}
+    for stage in fact_stage_counts:
+        case_stage_counts[stage] = len({
+            t.case_id for t in traces
+            if t.first_loss_stage.value == stage
+        })
+
+    selector_case_count = case_stage_counts.get("entered_selector_not_selected", 0)
+    projection_case_count = (
+        case_stage_counts.get("dropped_during_projection", 0)
+        + case_stage_counts.get("ranked_below_selector_input", 0)
+    )
+    value_case_count = case_stage_counts.get("selected_value_not_used", 0)
+    renderer_case_count = case_stage_counts.get("value_used_raw_answer_wrong", 0)
+    validator_case_count = case_stage_counts.get("raw_correct_validation_regression", 0)
+
+    selector_gate = selector_case_count >= 3
+    projection_gate = projection_case_count >= 3
+    value_gate = value_case_count >= 2
+    renderer_gate = renderer_case_count >= 2
+    validator_gate = validator_case_count >= 2
 
     if selector_gate:
         next_phase = "NF43 — Structured Fact Selector A/B"
@@ -117,7 +129,8 @@ def _determine_gate(traces: list[NewFactFunnelTrace]) -> dict:
         next_phase = "Stop — no concentrated bottleneck; expand evaluation set"
 
     return {
-        "stage_counts": stage_counts,
+        "fact_stage_counts": fact_stage_counts,
+        "case_stage_counts": case_stage_counts,
         "selector_gate": selector_gate,
         "projection_gate": projection_gate,
         "value_selection_gate": value_gate,
@@ -244,11 +257,11 @@ def test_selector_gate_takes_precedence_over_projection():
     assert "NF43" in gate["next_phase"]
 
 
-def test_gate_counts_are_case_based():
-    """Gate thresholds count cases, not just facts.
+def test_gate_counts_unique_cases_not_facts():
+    """Gate thresholds count unique cases, not individual facts.
 
     Two facts in the same case should not double-count toward a gate.
-    The funnel traces are per-fact, but the gate must consider distinct cases.
+    The gate must consider distinct cases.
     """
     # Two facts in the same case both lost at selector stage — only 1 case
     traces = [
@@ -256,8 +269,13 @@ def test_gate_counts_are_case_based():
                     stage=StructuredFactLossStage.ENTERED_SELECTOR_NOT_SELECTED),
         _make_trace(case_id="case_1", fact_id="fact_1b",
                     stage=StructuredFactLossStage.ENTERED_SELECTOR_NOT_SELECTED),
+        _make_trace(case_id="case_2", fact_id="fact_2a",
+                    stage=StructuredFactLossStage.ENTERED_SELECTOR_NOT_SELECTED),
+        _make_trace(case_id="case_2", fact_id="fact_2b",
+                    stage=StructuredFactLossStage.ENTERED_SELECTOR_NOT_SELECTED),
     ]
     gate = _determine_gate(traces)
-    # stage_counts counts facts (2), but selector_gate threshold is >= 3
-    assert gate["stage_counts"]["entered_selector_not_selected"] == 2
+    # Fact count is 4, but case count is 2 — below the 3-case threshold
+    assert gate["fact_stage_counts"]["entered_selector_not_selected"] == 4
+    assert gate["case_stage_counts"]["entered_selector_not_selected"] == 2
     assert gate["selector_gate"] is False
