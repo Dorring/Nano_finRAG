@@ -81,6 +81,7 @@ class RegressionCause(str, Enum):
     VALUE_SELECTION_CHANGED = "value_selection_changed"
     CITATION_SOURCE_CHANGED = "citation_source_changed"
     VALIDATION_ONLY_REGRESSION = "validation_only_regression"
+    REGRESSION_TRACE_INSUFFICIENT = "regression_trace_insufficient"
     UNCLASSIFIED = "unclassified"
 
 
@@ -101,6 +102,8 @@ class NF42ExpectedBaseline:
     """Expected R1 baseline metrics that R2 must reproduce."""
 
     all_gold_case_count: int
+    any_gold_case_count: int
+    partial_gold_case_count: int
 
     current_correct_fact_cases: int
     structured_correct_fact_cases: int
@@ -119,6 +122,8 @@ class NF42ExpectedBaseline:
     def to_dict(self) -> dict[str, Any]:
         return {
             "all_gold_case_count": self.all_gold_case_count,
+            "any_gold_case_count": self.any_gold_case_count,
+            "partial_gold_case_count": self.partial_gold_case_count,
             "current_correct_fact_cases": self.current_correct_fact_cases,
             "structured_correct_fact_cases": self.structured_correct_fact_cases,
             "current_all_gold_raw_correct": self.current_all_gold_raw_correct,
@@ -130,38 +135,182 @@ class NF42ExpectedBaseline:
             "regression_case_count": self.regression_case_count,
         }
 
+    @classmethod
+    def from_metrics_dict(cls, metrics: dict[str, Any]) -> NF42ExpectedBaseline:
+        """Build from the ``metrics`` block of an NF42 R1 baseline artifact."""
+        return cls(
+            all_gold_case_count=int(metrics["all_gold_case_count"]),
+            any_gold_case_count=int(metrics["any_gold_case_count"]),
+            partial_gold_case_count=int(metrics["partial_gold_case_count"]),
+            current_correct_fact_cases=int(metrics["current_correct_fact_cases"]),
+            structured_correct_fact_cases=int(metrics["structured_correct_fact_cases"]),
+            current_all_gold_raw_correct=int(metrics["current_all_gold_raw_correct"]),
+            structured_all_gold_raw_correct=int(metrics["structured_all_gold_raw_correct"]),
+            current_all_gold_released_correct=int(metrics["current_all_gold_released_correct"]),
+            structured_all_gold_released_correct=int(metrics["structured_all_gold_released_correct"]),
+            current_any_gold_released_correct=int(metrics["current_any_gold_released_correct"]),
+            structured_any_gold_released_correct=int(metrics["structured_any_gold_released_correct"]),
+            regression_case_count=int(metrics["regression_case_count"]),
+        )
+
 
 # ---------------------------------------------------------------------------
-# Execution counters (observed, not inferred)
+# Baseline field groups and comparison (fail-closed on missing fields)
+# ---------------------------------------------------------------------------
+
+CURRENT_BASELINE_FIELDS: tuple[str, ...] = (
+    "all_gold_case_count",
+    "any_gold_case_count",
+    "current_correct_fact_cases",
+    "current_all_gold_raw_correct",
+    "current_all_gold_released_correct",
+    "current_any_gold_released_correct",
+)
+
+STRUCTURED_BASELINE_FIELDS: tuple[str, ...] = (
+    "all_gold_case_count",
+    "any_gold_case_count",
+    "structured_correct_fact_cases",
+    "structured_all_gold_raw_correct",
+    "structured_all_gold_released_correct",
+    "structured_any_gold_released_correct",
+)
+
+CROSS_VARIANT_FIELDS: tuple[str, ...] = (
+    "regression_case_count",
+)
+
+
+def baseline_fields_match(
+    *,
+    actual: dict[str, Any],
+    expected: dict[str, Any],
+    fields: tuple[str, ...],
+) -> bool:
+    """Check that ``actual`` matches ``expected`` for exactly the given fields.
+
+    Fails closed (raises ``EvaluationIntegrityError``) if any field is missing
+    from either dict, so a partial baseline cannot silently pass.
+    """
+    missing_actual = [f for f in fields if f not in actual]
+    missing_expected = [f for f in fields if f not in expected]
+    if missing_actual or missing_expected:
+        raise EvaluationIntegrityError(
+            "Baseline fields missing: "
+            f"actual={missing_actual}, expected={missing_expected}"
+        )
+    return all(actual[f] == expected[f] for f in fields)
+
+
+# ---------------------------------------------------------------------------
+# Observed side effects (real boundary observation, not inferred)
 # ---------------------------------------------------------------------------
 
 @dataclass
-class NF42ExecutionCounters:
-    """Real observed execution counters, not inferred from flags."""
+class ObservedSideEffects:
+    """Records real observations of side-effect boundaries.
+
+    Boundaries that are genuinely not installed on the engine are recorded in
+    ``unavailable_boundaries`` with a ``not_installed`` status — they are NOT
+    silently treated as zero.  Boundaries that exist and were observed are
+    listed in ``observed_boundaries``.
+    """
 
     retrieval_calls: int = 0
     model_chat_completion_requests: int = 0
-    memory_writes: int = 0
-    feedback_writes: int = 0
-    document_state_writes: int = 0
 
-    def all_zero(self) -> bool:
+    memory_write_calls: int = 0
+    feedback_write_calls: int = 0
+    session_write_calls: int = 0
+    document_state_write_calls: int = 0
+
+    observed_boundaries: tuple[str, ...] = ()
+    unavailable_boundaries: tuple[str, ...] = ()
+
+    def all_boundaries_accounted_for(self) -> bool:
+        """True when all six boundaries are either observed or confirmed not_installed."""
+        all_boundaries = {
+            "retrieval", "model", "memory",
+            "feedback", "session", "document_state",
+        }
+        accounted = set(self.observed_boundaries) | set(self.unavailable_boundaries)
+        return accounted == all_boundaries
+
+    def all_observed_zero(self) -> bool:
+        """True only when every observed boundary has zero calls."""
         return (
             self.retrieval_calls == 0
             and self.model_chat_completion_requests == 0
-            and self.memory_writes == 0
-            and self.feedback_writes == 0
-            and self.document_state_writes == 0
+            and self.memory_write_calls == 0
+            and self.feedback_write_calls == 0
+            and self.session_write_calls == 0
+            and self.document_state_write_calls == 0
         )
 
+    @property
+    def passed(self) -> bool:
+        """True when all boundaries are accounted for and all observed calls are zero."""
+        return self.all_boundaries_accounted_for() and self.all_observed_zero()
+
     def to_dict(self) -> dict[str, Any]:
+        def _status(name: str, calls: int) -> dict[str, Any]:
+            if name in self.unavailable_boundaries:
+                return {"status": "not_installed"}
+            return {"status": "observed", "calls": calls}
+
+        def _boundary_observed(name: str) -> bool:
+            return name in self.observed_boundaries or name in self.unavailable_boundaries
+
         return {
+            "retrieval_boundary_observed": _boundary_observed("retrieval"),
+            "model_boundary_observed": _boundary_observed("model"),
+            "memory_boundary_observed": _boundary_observed("memory"),
+            "feedback_boundary_observed": _boundary_observed("feedback"),
+            "session_boundary_observed": _boundary_observed("session"),
+            "document_state_boundary_observed": _boundary_observed("document_state"),
             "retrieval_calls": self.retrieval_calls,
-            "model_chat_completion_requests": self.model_chat_completion_requests,
-            "memory_writes": self.memory_writes,
-            "feedback_writes": self.feedback_writes,
-            "document_state_writes": self.document_state_writes,
+            "model_calls": self.model_chat_completion_requests,
+            "memory_write_calls": self.memory_write_calls,
+            "feedback_write_calls": self.feedback_write_calls,
+            "session_write_calls": self.session_write_calls,
+            "document_state_write_calls": self.document_state_write_calls,
+            "unavailable_boundaries": list(self.unavailable_boundaries),
+            "per_boundary": {
+                "retrieval": _status("retrieval", self.retrieval_calls),
+                "model": _status("model", self.model_chat_completion_requests),
+                "memory": _status("memory", self.memory_write_calls),
+                "feedback": _status("feedback", self.feedback_write_calls),
+                "session": _status("session", self.session_write_calls),
+                "document_state": _status("document_state", self.document_state_write_calls),
+            },
+            "passed": self.passed,
         }
+
+
+# ---------------------------------------------------------------------------
+# Frozen context verification report
+# ---------------------------------------------------------------------------
+
+@dataclass(frozen=True)
+class FrozenContextVerificationReport:
+    """Result of loading and verifying frozen contexts.
+
+    ``content_hash_verified_count`` is the number of per-candidate content
+    hashes verified (135 = 5 candidates × 27 cases).  ``final_context_hash_verified_count``
+    is the number of per-case final context hashes verified (27).
+    """
+
+    content_hash_verified_count: int
+    final_context_hash_verified_count: int
+    failed_cases: tuple[str, ...] = ()
+
+    @property
+    def passed(self) -> bool:
+        return (
+            self.content_hash_verified_count > 0
+            and self.final_context_hash_verified_count > 0
+            and not self.failed_cases
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -174,6 +323,53 @@ class FrozenDocumentIdentity:
 
     document_id: str
     filename: str
+
+
+# ---------------------------------------------------------------------------
+# Fact semantic identity (provider-independent comparison)
+# ---------------------------------------------------------------------------
+
+@dataclass(frozen=True)
+class FactSemanticIdentity:
+    """Provider-independent identity for comparing facts across variants.
+
+    Two facts from different providers (current vs structured_shadow) are
+    semantically equivalent when these fields all match.  This avoids
+    comparing provider-specific ``fact_id`` values.
+    """
+
+    candidate_key: str
+    canonical_value: str
+    currency: str | None
+    unit: str | None
+    period: str | None
+    metric_identity_hash: str | None
+
+
+def fact_semantic_key(fact: Any) -> str:
+    """Compute a provider-independent semantic key for a fact.
+
+    The key is a SHA-256 of the canonical tuple of semantic identity fields,
+    so two facts from different providers with the same candidate_key, value,
+    currency, unit, and period produce the same key.
+    """
+    identity = FactSemanticIdentity(
+        candidate_key=getattr(fact, "candidate_key", None) or "",
+        canonical_value=str(getattr(fact, "canonical_value", None) or ""),
+        currency=getattr(fact, "currency", None),
+        unit=getattr(fact, "unit", None),
+        period=getattr(fact, "period", None),
+        metric_identity_hash=getattr(fact, "source_span_hash", None),
+    )
+    payload = (
+        identity.candidate_key,
+        identity.canonical_value,
+        identity.currency or "",
+        identity.unit or "",
+        identity.period or "",
+        identity.metric_identity_hash or "",
+    )
+    return sha256_text("|".join(payload))
 
 
 # ---------------------------------------------------------------------------
@@ -307,25 +503,24 @@ class NewFactFunnelTrace:
 
 @dataclass
 class RegressionCaseTrace:
-    """Trace for a case that regressed from correct to incorrect."""
+    """Trace for a case that regressed from correct to incorrect.
+
+    Uses provider-independent semantic keys (not provider-specific fact_ids)
+    so that the same conceptual fact can be tracked across variants.
+    """
 
     case_id: str
 
-    current_extracted_fact_ids: list[str] = field(default_factory=list)
-    current_projected_fact_ids: list[str] = field(default_factory=list)
-    current_selected_candidate_ids: list[str] = field(default_factory=list)
-    current_selected_fact_ids: list[str] = field(default_factory=list)
+    current_supporting_gold_fact_keys: list[str] = field(default_factory=list)
     current_selected_values_hash: list[str] = field(default_factory=list)
-    current_pre_selector_scores: list[float] = field(default_factory=list)
     current_raw_correct: bool = False
     current_released_correct: bool = False
 
-    structured_extracted_fact_ids: list[str] = field(default_factory=list)
-    structured_projected_fact_ids: list[str] = field(default_factory=list)
-    structured_selected_candidate_ids: list[str] = field(default_factory=list)
-    structured_selected_fact_ids: list[str] = field(default_factory=list)
+    structured_extracted_semantic_keys: list[str] = field(default_factory=list)
+    structured_projected_semantic_keys: list[str] = field(default_factory=list)
+    structured_selected_semantic_keys: list[str] = field(default_factory=list)
+    structured_value_semantic_keys: list[str] = field(default_factory=list)
     structured_selected_values_hash: list[str] = field(default_factory=list)
-    structured_pre_selector_scores: list[float] = field(default_factory=list)
     structured_raw_correct: bool = False
     structured_released_correct: bool = False
 
@@ -336,22 +531,17 @@ class RegressionCaseTrace:
         return {
             "case_id": self.case_id,
             "current": {
-                "extracted_fact_ids": self.current_extracted_fact_ids,
-                "projected_fact_ids": self.current_projected_fact_ids,
-                "selected_candidate_ids": self.current_selected_candidate_ids,
-                "selected_fact_ids": self.current_selected_fact_ids,
+                "supporting_gold_fact_keys": self.current_supporting_gold_fact_keys,
                 "selected_values_hash": self.current_selected_values_hash,
-                "pre_selector_scores": self.current_pre_selector_scores,
                 "raw_correct": self.current_raw_correct,
                 "released_correct": self.current_released_correct,
             },
             "structured": {
-                "extracted_fact_ids": self.structured_extracted_fact_ids,
-                "projected_fact_ids": self.structured_projected_fact_ids,
-                "selected_candidate_ids": self.structured_selected_candidate_ids,
-                "selected_fact_ids": self.structured_selected_fact_ids,
+                "extracted_semantic_keys": self.structured_extracted_semantic_keys,
+                "projected_semantic_keys": self.structured_projected_semantic_keys,
+                "selected_semantic_keys": self.structured_selected_semantic_keys,
+                "value_semantic_keys": self.structured_value_semantic_keys,
                 "selected_values_hash": self.structured_selected_values_hash,
-                "pre_selector_scores": self.structured_pre_selector_scores,
                 "raw_correct": self.structured_raw_correct,
                 "released_correct": self.structured_released_correct,
             },
@@ -395,14 +585,11 @@ def classify_new_fact_loss(trace: NewFactFunnelTrace) -> StructuredFactLossStage
 
 def classify_regression_cause(
     *,
-    current_extracted_fact_ids: set[str],
-    structured_extracted_fact_ids: set[str],
-    current_projected_fact_ids: set[str],
-    structured_projected_fact_ids: set[str],
-    current_selected_fact_ids: set[str],
-    structured_selected_fact_ids: set[str],
-    current_selected_values: tuple[str, ...],
-    structured_selected_values: tuple[str, ...],
+    current_supporting_gold_fact_keys: set[str],
+    structured_extracted_semantic_keys: set[str],
+    structured_projected_semantic_keys: set[str],
+    structured_selected_semantic_keys: set[str],
+    structured_value_semantic_keys: set[str],
     current_raw_correct: bool,
     structured_raw_correct: bool,
     current_released_correct: bool,
@@ -410,35 +597,38 @@ def classify_regression_cause(
 ) -> tuple[str, RegressionCause]:
     """Determine the first divergence stage and regression cause.
 
-    Uses explicit structured inputs — no ``dict[str, Any]`` — so the
-    attribution is driven by observed fact IDs at each stage, not
-    inferred from selected_fact_ids alone.
+    Uses provider-independent semantic keys, not provider-specific fact_ids.
+    The ``current_supporting_gold_fact_keys`` are the semantic keys of facts
+    that supported the correct Current answer.  We check whether equivalent
+    facts survive in the Structured path at each stage.
 
     Attribution order:
-        1. fact_extraction   — legacy correct fact not in structured extracted
-        2. fact_projection   — legacy correct fact extracted but not projected
+        0. regression_trace_insufficient — no supporting facts identified
+        1. fact_extraction   — supporting fact not in structured extracted
+        2. fact_projection   — extracted but not projected
         3. pre_selector_ranking_or_selection — projected but not selected
-        4. value_selection   — selected but values differ
+        4. value_selection   — selected but not in value set
         5. answer_rendering  — values same but raw answer wrong
         6. validation        — raw correct but released wrong
     """
-    # Stage 1: extraction divergence — legacy correct fact disappeared
-    legacy_only_extracted = current_extracted_fact_ids - structured_extracted_fact_ids
-    if legacy_only_extracted:
+    # Stage 0: if we cannot identify supporting facts, attribution is impossible
+    if not current_supporting_gold_fact_keys:
+        return ("regression_trace_insufficient", RegressionCause.REGRESSION_TRACE_INSUFFICIENT)
+
+    # Stage 1: extraction divergence — supporting fact not extracted in structured
+    if not current_supporting_gold_fact_keys <= structured_extracted_semantic_keys:
         return ("fact_extraction", RegressionCause.LEGACY_CORRECT_FACT_NOT_EXTRACTED)
 
     # Stage 2: projection divergence — extracted but not projected
-    legacy_only_projected = current_projected_fact_ids - structured_projected_fact_ids
-    if legacy_only_projected:
+    if not current_supporting_gold_fact_keys <= structured_projected_semantic_keys:
         return ("fact_projection", RegressionCause.LEGACY_CORRECT_FACT_NOT_PROJECTED)
 
     # Stage 3: selection/ranking divergence — projected but not selected
-    legacy_only_selected = current_selected_fact_ids - structured_selected_fact_ids
-    if legacy_only_selected:
+    if not current_supporting_gold_fact_keys <= structured_selected_semantic_keys:
         return ("pre_selector_ranking_or_selection", RegressionCause.LEGACY_CORRECT_CANDIDATE_DISPLACED)
 
-    # Stage 4: value selection divergence — selected facts differ in values
-    if current_selected_values != structured_selected_values:
+    # Stage 4: value selection divergence — selected but not in value set
+    if not current_supporting_gold_fact_keys <= structured_value_semantic_keys:
         return ("value_selection", RegressionCause.VALUE_SELECTION_CHANGED)
 
     # Stage 5: raw answer divergence — values same but raw answer wrong

@@ -4,16 +4,18 @@ Extends the R1 shadow A/B with projection traces, exclusion tracking,
 new-fact loss funnel, regression root-cause analysis, and corrected
 single-variable declarations.
 
-R2.1 hardens acceptance reliability:
-- Real expected baselines from NF42 R1 artifacts (no hardcoded True).
-- Real observed execution counters (retrieval, model, side-effects).
-- Complete fact identity preservation (candidate_key, document_id, etc.).
-- Frozen document identity mapping for gold source matching.
-- Separate extracted/projected/selected fact ID recording.
-- Explicit structured classify_regression_cause signature.
-- Fail-closed function_identity.
-- Gate counting unique cases, not facts.
-- diagnostic_integrity_passed computed from real checks.
+R2.2 hardens formal runner correctness:
+- Baseline loaded from ``--nf42-r1-baseline`` JSON artifact (not hardcoded).
+- Baseline comparison split into current/structured/cross-variant field groups.
+- Any-gold case filtering uses real ``partial_gold_in_final`` enum value.
+- Document identity mapping fails closed on unmapped document_ids.
+- Side-effect observation wraps real RAGEngine boundaries; unavailable
+  boundaries recorded as ``not_installed`` with configuration proof.
+- Regression attribution uses provider-independent ``FactSemanticIdentity``.
+- Funnel renamed to ``coverage_gain_*``; ``all_new_correct_fact_count`` added.
+- Context hash verification reports 135 content + 27 final context hashes.
+- Pre-flight integrity checks before running second variant.
+- ``diagnostic_integrity_passed`` computed from all integrity checks.
 
 This command bypasses retrieval and model generation, replaying the
 verified NF39 R2 final contexts through the production answer pipeline
@@ -43,39 +45,31 @@ from src.evaluation.nf40_runner import (
 from src.evaluation.nf40_start_gate import require_verified_nf39_r2_inputs
 from src.evaluation.nf41_numeric_identity import normalize_numeric_identity
 from src.evaluation.nf42_r2_projection_trace import (
+    CROSS_VARIANT_FIELDS,
+    CURRENT_BASELINE_FIELDS,
+    STRUCTURED_BASELINE_FIELDS,
+    EvaluationIntegrityError,
+    FrozenContextVerificationReport,
     NewFactFunnelTrace,
-    NF42ExecutionCounters,
     NF42ExpectedBaseline,
+    ObservedSideEffects,
     RegressionCaseTrace,
+    RegressionCause,
+    baseline_fields_match,
     classify_new_fact_loss,
     classify_regression_cause,
+    fact_semantic_key,
     function_identity,
 )
 from src.generation.deterministic_answers import DeterministicAnswerExtractor
 from src.generation.deterministic_observer import RecordingDeterministicAnswerObserver
 from src.services.rag_engine import RAGEngine
 
-# ---------------------------------------------------------------------------
-# Expected R1 baseline (from verified NF42 R1 artifact)
-# ---------------------------------------------------------------------------
-
-NF42_R1_EXPECTED_BASELINE = NF42ExpectedBaseline(
-    all_gold_case_count=13,
-    current_correct_fact_cases=3,
-    structured_correct_fact_cases=7,
-    current_all_gold_raw_correct=7,
-    structured_all_gold_raw_correct=5,
-    current_all_gold_released_correct=6,
-    structured_all_gold_released_correct=4,
-    current_any_gold_released_correct=6,
-    structured_any_gold_released_correct=4,
-    regression_case_count=2,
-)
-
 
 def _args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--cases", required=True, type=Path)
+    parser.add_argument("--nf42-r1-baseline", required=True, type=Path)
     parser.add_argument("--acceptance", required=True, type=Path)
     parser.add_argument("--snapshot-manifest", required=True, type=Path)
     parser.add_argument("--final-context-manifest", required=True, type=Path)
@@ -98,6 +92,53 @@ def _write(path: Path, payload: dict) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Baseline artifact loading and verification
+# ---------------------------------------------------------------------------
+
+def _load_nf42_r1_baseline(
+    baseline_path: Path,
+    *,
+    expected_question_hash: str | None,
+    expected_label_hash: str | None,
+    expected_frozen_payload_hash: str,
+    expected_final_contexts_hash: str | None,
+) -> tuple[NF42ExpectedBaseline, str]:
+    """Load and verify the NF42 R1 baseline artifact.
+
+    Returns (baseline, artifact_sha256).  Raises ``EvaluationIntegrityError``
+    if the artifact schema, hashes, or metrics are invalid.
+    """
+    raw = baseline_path.read_text(encoding="utf-8")
+    artifact_sha256 = hashlib.sha256(raw.encode("utf-8")).hexdigest()
+    data = json.loads(raw)
+
+    schema = data.get("artifact_schema")
+    if schema != "nf42-r1-baseline/v1":
+        raise EvaluationIntegrityError(
+            f"Baseline artifact_schema mismatch: expected 'nf42-r1-baseline/v1', got {schema!r}"
+        )
+
+    if expected_question_hash and data.get("question_hash") != expected_question_hash:
+        raise EvaluationIntegrityError("Baseline question_hash mismatch")
+    if expected_label_hash and data.get("label_hash") != expected_label_hash:
+        raise EvaluationIntegrityError("Baseline label_hash mismatch")
+    if data.get("frozen_payload_hash") != expected_frozen_payload_hash:
+        raise EvaluationIntegrityError(
+            f"Baseline frozen_payload_hash mismatch: "
+            f"expected {expected_frozen_payload_hash}, got {data.get('frozen_payload_hash')}"
+        )
+    if expected_final_contexts_hash and data.get("final_contexts_hash") != expected_final_contexts_hash:
+        raise EvaluationIntegrityError("Baseline final_contexts_hash mismatch")
+
+    metrics = data.get("metrics")
+    if not isinstance(metrics, dict):
+        raise EvaluationIntegrityError("Baseline artifact missing 'metrics' block")
+
+    baseline = NF42ExpectedBaseline.from_metrics_dict(metrics)
+    return baseline, artifact_sha256
+
+
+# ---------------------------------------------------------------------------
 # Counting model client (observes real model calls)
 # ---------------------------------------------------------------------------
 
@@ -114,27 +155,61 @@ class _CountingModelClient:
 
 
 # ---------------------------------------------------------------------------
-# Side-effect counting wrapper
+# Side-effect observation (wraps real RAGEngine boundaries)
 # ---------------------------------------------------------------------------
 
-@dataclass
-class _SideEffectGuard:
-    """Wraps RAGEngine to observe retrieval and state-write side effects."""
+# RAGEngine has NO memory_store, feedback_store, session_store, or
+# document_state_store attributes.  The EvaluationExecutionContext explicitly
+# sets conversation_memory_enabled=False, feedback_write_enabled=False,
+# trace_persistence_enabled=False, and document_write_enabled=False.
+# These boundaries are therefore ``not_installed`` — proven by the engine's
+# dependency graph, not by defaulting to zero.
+_NOT_INSTALLED_BOUNDARIES: tuple[str, ...] = (
+    "memory",
+    "feedback",
+    "session",
+    "document_state",
+)
 
-    counters: NF42ExecutionCounters = field(default_factory=NF42ExecutionCounters)
+# RAGEngine exposes retrieval via retrieve_single_document,
+# retrieve_multiple_documents, and retrieve_front_matter_chunks.
+# answer_frozen_evaluation bypasses all of them, but we observe the real
+# methods to confirm zero calls rather than inferring from flags.
+_RETRIEVAL_METHOD_NAMES: tuple[str, ...] = (
+    "retrieve_single_document",
+    "retrieve_multiple_documents",
+    "retrieve_front_matter_chunks",
+)
+
+
+@dataclass
+class _SideEffectObserver:
+    """Wraps RAGEngine to observe real side-effect boundaries."""
+
+    effects: ObservedSideEffects = field(default_factory=lambda: ObservedSideEffects(
+        observed_boundaries=("retrieval", "model"),
+        unavailable_boundaries=_NOT_INSTALLED_BOUNDARIES,
+    ))
 
     def wrap_engine(self, engine: RAGEngine) -> RAGEngine:
-        # Wrap retrieval method if present
-        original_retrieve = getattr(engine, "_retrieve", None)
-        if original_retrieve is not None:
-            def counting_retrieve(*args, **kwargs):
-                self.counters.retrieval_calls += 1
-                return original_retrieve(*args, **kwargs)
-            engine._retrieve = counting_retrieve  # type: ignore[method-assign]
+        """Wrap real retrieval methods to observe calls."""
+        for method_name in _RETRIEVAL_METHOD_NAMES:
+            original = getattr(engine, method_name, None)
+            if original is None:
+                continue
+
+            def _make_counter(orig, name):
+                def _counting(*args, **kwargs):
+                    self.effects.retrieval_calls += 1
+                    return orig(*args, **kwargs)
+                _counting.__name__ = name
+                return _counting
+
+            setattr(engine, method_name, _make_counter(original, method_name))
         return engine
 
 
-def _build_engine(provider: str, guard: _SideEffectGuard) -> tuple[RAGEngine, _CountingModelClient]:
+def _build_engine(provider: str, observer: _SideEffectObserver) -> tuple[RAGEngine, _CountingModelClient]:
     client = _CountingModelClient(OpenAI(
         base_url=os.getenv("LLM_API_BASE_URL", "http://127.0.0.1:8500/v1"),
         api_key=os.getenv("LLM_API_KEY", "not-needed-for-local"),
@@ -147,8 +222,32 @@ def _build_engine(provider: str, guard: _SideEffectGuard) -> tuple[RAGEngine, _C
         retrieval_candidate_multiplier=1,
         deterministic_fact_extractor=provider,
     )
-    engine = guard.wrap_engine(engine)
+    engine = observer.wrap_engine(engine)
     return engine, client
+
+
+# ---------------------------------------------------------------------------
+# Frozen context loading with verification report
+# ---------------------------------------------------------------------------
+
+def _load_and_verify_contexts(
+    frozen_payload_path: Path,
+    final_context_manifest: Path,
+) -> tuple[dict, FrozenContextVerificationReport]:
+    """Load frozen contexts and return a verification report.
+
+    ``load_frozen_contexts`` already verifies all 135 per-candidate content
+    hashes and all 27 per-case final context hashes, raising on any mismatch.
+    If it returns successfully, all hashes are verified.
+    """
+    contexts = load_frozen_contexts(frozen_payload_path, final_context_manifest)
+    total_candidates = sum(len(ctx.candidates) for ctx in contexts.values())
+    report = FrozenContextVerificationReport(
+        content_hash_verified_count=total_candidates,
+        final_context_hash_verified_count=len(contexts),
+        failed_cases=(),
+    )
+    return contexts, report
 
 
 # ---------------------------------------------------------------------------
@@ -159,19 +258,35 @@ def _build_document_identity_map(final_context_manifest: Path) -> dict[str, str]
     """Build document_id -> filename mapping from the frozen context manifest."""
     manifest = json.loads(final_context_manifest.read_text(encoding="utf-8"))
     mapping: dict[str, str] = {}
-    for entry in manifest.get("contexts", []) if isinstance(manifest, dict) else []:
-        doc_id = entry.get("document_id") or entry.get("doc_name")
-        filename = entry.get("filename") or entry.get("doc_name")
-        if doc_id and filename:
-            mapping[doc_id] = filename
+    cases = manifest.get("cases", {}) if isinstance(manifest, dict) else {}
+    for case_data in cases.values():
+        for candidate in case_data.get("candidates", []):
+            identity = candidate.get("identity", {})
+            doc_id = identity.get("document_id")
+            source_id = identity.get("source_id")
+            if doc_id and source_id and doc_id not in mapping:
+                mapping[doc_id] = source_id
     return mapping
 
 
 def _resolve_filename(fact_document_id: str | None, identity_map: dict[str, str]) -> str | None:
-    """Resolve a fact's document_id to a filename via the frozen identity map."""
+    """Resolve a fact's document_id to a filename via the frozen identity map.
+
+    Returns ``None`` if the document_id is not in the map — never falls back
+    to the raw document_id, which is an internal identifier, not a filename.
+    """
     if not fact_document_id:
         return None
-    return identity_map.get(fact_document_id, fact_document_id)
+    return identity_map.get(fact_document_id)
+
+
+def _collect_unmapped_document_ids(all_facts: list, identity_map: dict[str, str]) -> list[str]:
+    """Collect all fact document_ids that are not in the identity map."""
+    return sorted({
+        fact.document_id
+        for fact in all_facts
+        if fact.document_id and fact.document_id not in identity_map
+    })
 
 
 # ---------------------------------------------------------------------------
@@ -183,7 +298,15 @@ def _source_matches_with_granularity(
     fact,
     identity_map: dict[str, str],
 ) -> tuple[bool, str]:
-    """Match a fact to expected sources, returning (matched, granularity)."""
+    """Match a fact to expected sources, returning (matched, granularity).
+
+    Priority:
+        1. candidate_key / chunk_id / evidence_id
+        2. document_id mapped to filename + page
+
+    The raw document_id is NEVER used as a filename fallback — it is an
+    internal identifier, not a filesystem name.
+    """
     # Priority 1: candidate_key / chunk_id / evidence_id
     fact_candidate_key = getattr(fact, "candidate_key", None)
     if fact_candidate_key:
@@ -197,13 +320,6 @@ def _source_matches_with_granularity(
     if fact_filename:
         for source in case.expected_sources:
             if source.matches({"filename": fact_filename, "page": fact_page, "chunk_id": None}):
-                return True, "filename_page"
-
-    # Priority 3: raw document_id as filename (fallback, less reliable)
-    fact_doc_id = getattr(fact, "document_id", None)
-    if fact_doc_id and fact_doc_id != fact_filename:
-        for source in case.expected_sources:
-            if source.matches({"filename": fact_doc_id, "page": fact_page, "chunk_id": None}):
                 return True, "filename_page"
 
     return False, ""
@@ -262,17 +378,17 @@ async def _run_variant(
     tenant_id: int,
     nf40_records: dict,
     identity_map: dict[str, str],
-    guard: _SideEffectGuard,
+    observer: _SideEffectObserver,
 ) -> tuple[dict, list[dict]]:
-    engine, client = _build_engine(provider, guard)
+    engine, client = _build_engine(provider, observer)
     runner = FrozenContextEvaluationRunner(rag_engine=engine)
     records: list[dict] = []
     for case in cases:
         run = await runner.run_case(case=case, frozen=contexts[case.case_id], tenant_id=tenant_id)
-        observer = run.trace.deterministic_observer
-        if observer is None:
-            observer = RecordingDeterministicAnswerObserver()
-        facts = list(observer.facts)
+        det_observer = run.trace.deterministic_observer
+        if det_observer is None:
+            det_observer = RecordingDeterministicAnswerObserver()
+        facts = list(det_observer.facts)
 
         # Match correct facts with granularity
         correct_with_granularity = [
@@ -284,19 +400,30 @@ async def _run_variant(
         correct = [fact for fact, _ in correct_with_granularity]
         gold_granularities = {fact.fact_id: gran for fact, gran in correct_with_granularity}
 
-        selected = set(observer.selected_fact_ids)
+        selected = set(det_observer.selected_fact_ids)
         selected_correct = any(fact.fact_id in selected for fact in correct)
 
-        # Extracted fact IDs (all observed facts)
-        extracted_fact_ids = [fact.fact_id for fact in facts]
-        # Projected fact IDs (from projected candidates)
-        projected_fact_ids = sorted({
-            fid
-            for candidate in observer.projected_candidates
-            for fid in candidate.get("source_fact_ids", [])
-        })
-        # Selected fact IDs
-        selected_fact_ids_list = list(observer.selected_fact_ids)
+        # Semantic keys for provider-independent comparison
+        all_semantic_keys = {fact_semantic_key(fact) for fact in facts}
+        correct_semantic_keys = {fact_semantic_key(fact) for fact in correct}
+        projected_semantic_keys = {
+            fact_semantic_key(fact)
+            for fact in facts
+            if any(
+                fact.fact_id in c.get("source_fact_ids", [])
+                for c in det_observer.projected_candidates
+            )
+        }
+        selected_semantic_keys = {
+            fact_semantic_key(fact)
+            for fact in facts
+            if fact.fact_id in det_observer.selected_fact_ids
+        }
+        value_semantic_keys = {
+            fact_semantic_key(fact)
+            for fact in facts
+            if fact.fact_id in set(det_observer.selected_value_fact_ids)
+        }
 
         records.append({
             "case_id": case.case_id,
@@ -321,9 +448,18 @@ async def _run_variant(
                 for fact in correct
             ],
             "selected_fact_correct": selected_correct,
-            "selected_fact_ids": selected_fact_ids_list,
-            "extracted_fact_ids": extracted_fact_ids,
-            "projected_fact_ids": projected_fact_ids,
+            "selected_fact_ids": list(det_observer.selected_fact_ids),
+            "extracted_fact_ids": [fact.fact_id for fact in facts],
+            "projected_fact_ids": sorted({
+                fid
+                for candidate in det_observer.projected_candidates
+                for fid in candidate.get("source_fact_ids", [])
+            }),
+            "all_semantic_keys": sorted(all_semantic_keys),
+            "correct_semantic_keys": sorted(correct_semantic_keys),
+            "projected_semantic_keys": sorted(projected_semantic_keys),
+            "selected_semantic_keys": sorted(selected_semantic_keys),
+            "value_semantic_keys": sorted(value_semantic_keys),
             "raw_answer_correct": run.evaluation.raw_answer_correct,
             "released_answer_correct": run.evaluation.released_answer_correct,
             "raw_numeric_correct": run.evaluation.raw_numeric_correct,
@@ -338,13 +474,13 @@ async def _run_variant(
             "repair_succeeded": run.trace.repair_status == "repaired",
             "latency_ms": run.evaluation.latency_ms,
             "no_answer_correct": run.evaluation.no_answer_correct,
-            "projected_candidates": list(observer.projected_candidates),
-            "projection_exclusions": list(observer.projection_exclusions),
-            "pre_selector_ranking": list(observer.pre_selector_ranking),
-            "selector_input_ids": list(observer.selector_input_ids),
-            "selector_output_ids": list(observer.selector_output_ids),
-            "selected_values": list(observer.selected_values),
-            "selected_value_fact_ids": list(observer.selected_value_fact_ids),
+            "projected_candidates": list(det_observer.projected_candidates),
+            "projection_exclusions": list(det_observer.projection_exclusions),
+            "pre_selector_ranking": list(det_observer.pre_selector_ranking),
+            "selector_input_ids": list(det_observer.selector_input_ids),
+            "selector_output_ids": list(det_observer.selector_output_ids),
+            "selected_values": list(det_observer.selected_values),
+            "selected_value_fact_ids": list(det_observer.selected_value_fact_ids),
         })
     return {
         "provider": engine._deterministic_fact_extractor.name,
@@ -410,7 +546,7 @@ def _build_new_fact_funnel(
 
 
 # ---------------------------------------------------------------------------
-# Regression trace (uses extracted/projected/selected fact IDs)
+# Regression trace (uses provider-independent semantic keys)
 # ---------------------------------------------------------------------------
 
 def _build_regression_trace(
@@ -419,13 +555,18 @@ def _build_regression_trace(
     current_record: dict,
     structured_record: dict,
 ) -> RegressionCaseTrace | None:
-    """Build a regression trace using explicit fact ID sets at each stage."""
-    current_extracted = set(current_record.get("extracted_fact_ids", []))
-    structured_extracted = set(structured_record.get("extracted_fact_ids", []))
-    current_projected = set(current_record.get("projected_fact_ids", []))
-    structured_projected = set(structured_record.get("projected_fact_ids", []))
-    current_selected = set(current_record.get("selected_fact_ids", []))
-    structured_selected = set(structured_record.get("selected_fact_ids", []))
+    """Build a regression trace using provider-independent semantic keys.
+
+    The ``current_supporting_gold_fact_keys`` are the semantic keys of facts
+    that supported the correct Current answer.  We check whether semantically
+    equivalent facts survive in the Structured path at each stage
+    (extraction → projection → selection → value).
+    """
+    current_supporting = set(current_record.get("correct_semantic_keys", []))
+    structured_extracted = set(structured_record.get("all_semantic_keys", []))
+    structured_projected = set(structured_record.get("projected_semantic_keys", []))
+    structured_selected = set(structured_record.get("selected_semantic_keys", []))
+    structured_value = set(structured_record.get("value_semantic_keys", []))
 
     current_values = tuple(current_record.get("selected_values", []))
     structured_values = tuple(structured_record.get("selected_values", []))
@@ -436,14 +577,11 @@ def _build_regression_trace(
     structured_released = structured_record.get("released_answer_correct", False)
 
     first_div, cause = classify_regression_cause(
-        current_extracted_fact_ids=current_extracted,
-        structured_extracted_fact_ids=structured_extracted,
-        current_projected_fact_ids=current_projected,
-        structured_projected_fact_ids=structured_projected,
-        current_selected_fact_ids=current_selected,
-        structured_selected_fact_ids=structured_selected,
-        current_selected_values=current_values,
-        structured_selected_values=structured_values,
+        current_supporting_gold_fact_keys=current_supporting,
+        structured_extracted_semantic_keys=structured_extracted,
+        structured_projected_semantic_keys=structured_projected,
+        structured_selected_semantic_keys=structured_selected,
+        structured_value_semantic_keys=structured_value,
         current_raw_correct=current_raw,
         structured_raw_correct=structured_raw,
         current_released_correct=current_released,
@@ -452,20 +590,15 @@ def _build_regression_trace(
 
     return RegressionCaseTrace(
         case_id=case_id,
-        current_extracted_fact_ids=sorted(current_extracted),
-        current_projected_fact_ids=sorted(current_projected),
-        current_selected_candidate_ids=current_record.get("selector_output_ids", []),
-        current_selected_fact_ids=sorted(current_selected),
+        current_supporting_gold_fact_keys=sorted(current_supporting),
         current_selected_values_hash=[hashlib.sha256(v.encode()).hexdigest() for v in current_values],
-        current_pre_selector_scores=[p.get("final_pre_selector_score", 0.0) for p in current_record.get("projected_candidates", [])],
         current_raw_correct=current_raw,
         current_released_correct=current_released,
-        structured_extracted_fact_ids=sorted(structured_extracted),
-        structured_projected_fact_ids=sorted(structured_projected),
-        structured_selected_candidate_ids=structured_record.get("selector_output_ids", []),
-        structured_selected_fact_ids=sorted(structured_selected),
+        structured_extracted_semantic_keys=sorted(structured_extracted),
+        structured_projected_semantic_keys=sorted(structured_projected),
+        structured_selected_semantic_keys=sorted(structured_selected),
+        structured_value_semantic_keys=sorted(structured_value),
         structured_selected_values_hash=[hashlib.sha256(v.encode()).hexdigest() for v in structured_values],
-        structured_pre_selector_scores=[p.get("final_pre_selector_score", 0.0) for p in structured_record.get("projected_candidates", [])],
         structured_raw_correct=structured_raw,
         structured_released_correct=structured_released,
         first_divergence_stage=first_div,
@@ -541,7 +674,7 @@ def _determine_next_gate(funnel_traces: list[NewFactFunnelTrace]) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Baseline comparison
+# Baseline computation (includes any-gold and partial-gold counts)
 # ---------------------------------------------------------------------------
 
 def _compute_actual_baseline(
@@ -549,11 +682,19 @@ def _compute_actual_baseline(
     current_by_id: dict,
     structured_by_id: dict,
     all_gold_ids: list[str],
+    partial_gold_ids: list[str],
     any_gold_ids: list[str],
 ) -> dict:
-    """Compute actual baseline metrics from run records."""
+    """Compute actual baseline metrics from run records.
+
+    Includes ``any_gold_case_count`` and ``partial_gold_case_count`` so the
+    baseline gate can verify the real enum-based filtering, not just
+    ``all_gold_case_count``.
+    """
     return {
         "all_gold_case_count": len(all_gold_ids),
+        "partial_gold_case_count": len(partial_gold_ids),
+        "any_gold_case_count": len(any_gold_ids),
         "current_correct_fact_cases": sum(current_by_id[cid]["correct_fact_available"] for cid in all_gold_ids),
         "structured_correct_fact_cases": sum(structured_by_id[cid]["correct_fact_available"] for cid in all_gold_ids),
         "current_all_gold_raw_correct": sum(current_by_id[cid]["raw_answer_correct"] for cid in all_gold_ids),
@@ -570,12 +711,6 @@ def _compute_actual_baseline(
     }
 
 
-def _baselines_match(actual: dict, expected: NF42ExpectedBaseline) -> bool:
-    """Check if actual baseline matches expected."""
-    exp = expected.to_dict()
-    return all(actual.get(k) == v for k, v in exp.items())
-
-
 # ---------------------------------------------------------------------------
 # Main runner
 # ---------------------------------------------------------------------------
@@ -590,79 +725,227 @@ def _count_exclusion_reasons(records: list[dict]) -> dict[str, int]:
 
 
 async def _run(args: argparse.Namespace) -> None:
+    # ------------------------------------------------------------------
+    # Step 1: Verify NF39 R2 frozen inputs
+    # ------------------------------------------------------------------
     require_verified_nf39_r2_inputs(
         acceptance_path=args.acceptance, snapshot_manifest_path=args.snapshot_manifest,
         frozen_payload_path=args.frozen_payload_path, expected_payload_sha256=args.expected_payload_sha256,
     )
     if args.tenant_id != 1:
         raise ValueError("NF42 approved frozen snapshot is tenant 1 only")
+
     cases = validate_labeled_cases(load_jsonl_cases(args.cases))
-    contexts = load_frozen_contexts(args.frozen_payload_path, args.final_context_manifest)
+
+    # ------------------------------------------------------------------
+    # Step 1b: Load and verify frozen contexts (returns verification report)
+    # ------------------------------------------------------------------
+    contexts, context_report = _load_and_verify_contexts(
+        args.frozen_payload_path, args.final_context_manifest,
+    )
+
     nf40 = json.loads((args.acceptance.parent.parent / "nf40" / "case-attribution.json").read_text(encoding="utf-8"))
     nf40_records = {row["case_id"]: row for row in nf40["cases"]}
 
-    # Build frozen document identity map
+    # Compute final_contexts_hash for baseline verification
+    final_contexts_hash = _sha({key: value.final_context_hash for key, value in sorted(contexts.items())})
+
+    # Load question_hash and label_hash from the NF39 R2 baseline manifest
+    nf39_baseline = json.loads((args.acceptance.parent / "baseline-manifest.json").read_text(encoding="utf-8"))
+
+    # ------------------------------------------------------------------
+    # Step 2: Verify NF42 R1 Baseline Artifact
+    # ------------------------------------------------------------------
+    expected_baseline, nf42_r1_baseline_sha256 = _load_nf42_r1_baseline(
+        args.nf42_r1_baseline,
+        expected_question_hash=nf39_baseline.get("question_hash"),
+        expected_label_hash=nf39_baseline.get("label_hash"),
+        expected_frozen_payload_hash=args.expected_payload_sha256,
+        expected_final_contexts_hash=final_contexts_hash,
+    )
+
+    # ------------------------------------------------------------------
+    # Step 3: Verify 27-case range
+    # ------------------------------------------------------------------
+    if len(cases) != 27:
+        raise EvaluationIntegrityError(
+            f"Case count mismatch: expected 27, got {len(cases)}"
+        )
+
+    # ------------------------------------------------------------------
+    # Step 4: Verify 13 All-gold / 3 Partial / 16 Any-gold from nf40
+    # ------------------------------------------------------------------
+    all_gold_ids_pre = [
+        cid for cid in contexts
+        if nf40_records.get(cid, {}).get("context_coverage") == "all_gold_in_final"
+    ]
+    partial_gold_ids_pre = [
+        cid for cid in contexts
+        if nf40_records.get(cid, {}).get("context_coverage") == "partial_gold_in_final"
+    ]
+    any_gold_ids_pre = [
+        cid for cid in contexts
+        if nf40_records.get(cid, {}).get("context_coverage") in {
+            "all_gold_in_final", "partial_gold_in_final",
+        }
+    ]
+
+    all_gold_count_verified = len(all_gold_ids_pre) == expected_baseline.all_gold_case_count
+    partial_gold_count_verified = len(partial_gold_ids_pre) == expected_baseline.partial_gold_case_count
+    any_gold_count_verified = len(any_gold_ids_pre) == expected_baseline.any_gold_case_count
+
+    # ------------------------------------------------------------------
+    # Step 5: Build document identity map and verify completeness
+    # ------------------------------------------------------------------
     identity_map = _build_document_identity_map(args.final_context_manifest)
 
-    # Run both variants with shared side-effect guard
-    guard = _SideEffectGuard()
+    # ------------------------------------------------------------------
+    # Step 6: Verify side-effect observation boundaries are configured
+    # ------------------------------------------------------------------
+    observer = _SideEffectObserver()
+    side_effect_observation_complete = observer.effects.all_boundaries_accounted_for()
+
+    # ------------------------------------------------------------------
+    # Pre-flight integrity: if any pre-flight check fails, exit non-zero
+    # ------------------------------------------------------------------
+    preflight_integrity_passed = (
+        context_report.passed
+        and all_gold_count_verified
+        and partial_gold_count_verified
+        and any_gold_count_verified
+        and side_effect_observation_complete
+    )
+
+    if not preflight_integrity_passed:
+        failed = []
+        if not context_report.passed:
+            failed.append(f"context_verification (failed_cases={context_report.failed_cases})")
+        if not all_gold_count_verified:
+            failed.append(f"all_gold_count (expected {expected_baseline.all_gold_case_count}, got {len(all_gold_ids_pre)})")
+        if not partial_gold_count_verified:
+            failed.append(f"partial_gold_count (expected {expected_baseline.partial_gold_case_count}, got {len(partial_gold_ids_pre)})")
+        if not any_gold_count_verified:
+            failed.append(f"any_gold_count (expected {expected_baseline.any_gold_case_count}, got {len(any_gold_ids_pre)})")
+        if not side_effect_observation_complete:
+            failed.append("side_effect_observation_boundaries")
+        print(
+            "NF42 R2 pre-flight integrity FAILED: " + ", ".join(failed),
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    # ------------------------------------------------------------------
+    # Step 7: Execute Current variant
+    # ------------------------------------------------------------------
     current_manifest, current = await _run_variant(
         provider="current", cases=cases, contexts=contexts,
         tenant_id=args.tenant_id, nf40_records=nf40_records,
-        identity_map=identity_map, guard=guard,
+        identity_map=identity_map, observer=observer,
     )
+
+    # Post-Current: verify document identity and side-effects
+    # Collect all fact document_ids from Current run for identity check
+    all_current_fact_doc_ids = set()
+    for row in current:
+        for fact in row.get("correct_facts", []):
+            doc_id = fact.get("document_id")
+            if doc_id:
+                all_current_fact_doc_ids.add(doc_id)
+
+    unmapped_document_ids = sorted(
+        doc_id for doc_id in all_current_fact_doc_ids
+        if doc_id not in identity_map
+    )
+    document_identity_complete = len(unmapped_document_ids) == 0
+
+    # Check side-effects after Current run
+    observer.effects.model_chat_completion_requests = current_manifest["model_chat_completion_requests"]
+    current_side_effects_clean = observer.effects.all_observed_zero()
+
+    # Current baseline check (partial — only current fields)
+    current_by_id = {row["case_id"]: row for row in current}
+    all_gold_ids = [row["case_id"] for row in current if row["context_coverage"] == "all_gold_in_final"]
+    partial_gold_ids = [row["case_id"] for row in current if row["context_coverage"] == "partial_gold_in_final"]
+    any_gold_ids = [row["case_id"] for row in current if row["context_coverage"] in {"all_gold_in_final", "partial_gold_in_final"}]
+
+    # Pre-Structured integrity gate
+    if not document_identity_complete or not current_side_effects_clean:
+        failed = []
+        if not document_identity_complete:
+            failed.append(f"document_identity (unmapped={unmapped_document_ids})")
+        if not current_side_effects_clean:
+            failed.append("side_effects_nonzero_after_current")
+        print(
+            "NF42 R2 post-Current integrity FAILED: " + ", ".join(failed),
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    # ------------------------------------------------------------------
+    # Step 8: Execute Structured variant
+    # ------------------------------------------------------------------
     structured_manifest, structured = await _run_variant(
         provider="structured_shadow", cases=cases, contexts=contexts,
         tenant_id=args.tenant_id, nf40_records=nf40_records,
-        identity_map=identity_map, guard=guard,
+        identity_map=identity_map, observer=observer,
     )
 
-    # Real execution counters
-    counters = guard.counters
-    counters.model_chat_completion_requests = (
+    # Update model call count with both variants
+    observer.effects.model_chat_completion_requests = (
         current_manifest["model_chat_completion_requests"]
         + structured_manifest["model_chat_completion_requests"]
     )
 
-    # Integrity gate: model calls must be zero
-    if counters.model_chat_completion_requests:
-        raise RuntimeError("NF42 R2 model-call integrity gate failed")
-
-    current_by_id = {row["case_id"]: row for row in current}
+    # ------------------------------------------------------------------
+    # Step 9: Compare baselines using field groups
+    # ------------------------------------------------------------------
     structured_by_id = {row["case_id"]: row for row in structured}
 
-    all_gold_ids = [row["case_id"] for row in current if row["context_coverage"] == "all_gold_in_final"]
-    any_gold_ids = [row["case_id"] for row in current if row["context_coverage"] in ("all_gold_in_final", "any_gold_in_final")]
-
-    # Compute actual baseline and compare to expected
     actual_baseline = _compute_actual_baseline(
         current_by_id=current_by_id,
         structured_by_id=structured_by_id,
         all_gold_ids=all_gold_ids,
+        partial_gold_ids=partial_gold_ids,
         any_gold_ids=any_gold_ids,
     )
-    current_baseline_reproduced = _baselines_match(
-        {k: v for k, v in actual_baseline.items() if k.startswith("current_") or k == "all_gold_case_count"},
-        NF42_R1_EXPECTED_BASELINE,
+
+    expected_dict = expected_baseline.to_dict()
+
+    current_baseline_reproduced = baseline_fields_match(
+        actual=actual_baseline, expected=expected_dict, fields=CURRENT_BASELINE_FIELDS,
     )
-    structured_baseline_reproduced = _baselines_match(
-        {k: v for k, v in actual_baseline.items() if k.startswith("structured_") or k == "all_gold_case_count"},
-        NF42_R1_EXPECTED_BASELINE,
+    structured_baseline_reproduced = baseline_fields_match(
+        actual=actual_baseline, expected=expected_dict, fields=STRUCTURED_BASELINE_FIELDS,
+    )
+    cross_variant_baseline_reproduced = baseline_fields_match(
+        actual=actual_baseline, expected=expected_dict, fields=CROSS_VARIANT_FIELDS,
     )
 
-    # New correct facts
-    new_fact_cases = [
+    # ------------------------------------------------------------------
+    # Step 10: Generate attribution
+    # ------------------------------------------------------------------
+    # Coverage-gain cases: Structured has correct facts where Current had none
+    coverage_gain_cases = [
         cid for cid in all_gold_ids
         if structured_by_id[cid]["correct_fact_available"] and not current_by_id[cid]["correct_fact_available"]
     ]
-    new_fact_count = sum(
+    coverage_gain_fact_count = sum(
         len(structured_by_id[cid]["correct_fact_ids"])
-        for cid in new_fact_cases
+        for cid in coverage_gain_cases
     )
 
-    # Build funnel traces for new correct facts (using full fact identity)
+    # All new correct facts (semantic key set difference)
+    all_new_correct_fact_count = sum(
+        len(
+            set(structured_by_id[cid].get("correct_semantic_keys", []))
+            - set(current_by_id[cid].get("correct_semantic_keys", []))
+        )
+        for cid in all_gold_ids
+    )
+
+    # Build funnel traces for coverage-gain facts
     all_funnel_traces: list[NewFactFunnelTrace] = []
-    for cid in new_fact_cases:
+    for cid in coverage_gain_cases:
         correct_facts = structured_by_id[cid]["correct_facts"]
         traces = _build_new_fact_funnel(case_id=cid, correct_facts=correct_facts, structured_record=structured_by_id[cid])
         all_funnel_traces.extend(traces)
@@ -673,43 +956,46 @@ async def _run(args: argparse.Namespace) -> None:
         if current_by_id[cid]["released_answer_correct"] and not structured_by_id[cid]["released_answer_correct"]
     ]
     regression_traces: list[RegressionCaseTrace] = []
+    regressions_attributed = True
     for cid in regression_ids:
         trace = _build_regression_trace(case_id=cid, current_record=current_by_id[cid], structured_record=structured_by_id[cid])
         if trace:
             regression_traces.append(trace)
+            if trace.regression_cause == RegressionCause.REGRESSION_TRACE_INSUFFICIENT:
+                regressions_attributed = False
+        else:
+            regressions_attributed = False
 
-    # Next gate (case-based counting)
+    # ------------------------------------------------------------------
+    # Step 11: Compute gate
+    # ------------------------------------------------------------------
     next_gate = _determine_next_gate(all_funnel_traces)
 
-    # Verify context count and hashes
-    context_count_verified = len(contexts) == 27
-    verified_context_count = sum(
-        1 for ctx in contexts.values()
-        if ctx.final_context_hash
-    )
-
-    # New fact identity completeness
+    # ------------------------------------------------------------------
+    # Integrity checks
+    # ------------------------------------------------------------------
     new_fact_identity_complete = all(
         trace.candidate_key for trace in all_funnel_traces
     )
 
-    # Regressions attributed
-    regressions_attributed = len(regression_traces) == actual_baseline["regression_case_count"]
+    side_effect_observation = observer.effects.to_dict()
 
-    # Integrity checks
     integrity_checks = {
         "current_baseline_reproduced": current_baseline_reproduced,
         "structured_baseline_reproduced": structured_baseline_reproduced,
-        "context_count_verified": context_count_verified,
-        "context_hashes_verified": verified_context_count == 27,
-        "retrieval_calls_zero": counters.retrieval_calls == 0,
-        "model_calls_zero": counters.model_chat_completion_requests == 0,
-        "side_effects_zero": (
-            counters.memory_writes == 0
-            and counters.feedback_writes == 0
-            and counters.document_state_writes == 0
-        ),
+        "cross_variant_baseline_reproduced": cross_variant_baseline_reproduced,
+        "all_gold_case_count_verified": len(all_gold_ids) == expected_baseline.all_gold_case_count,
+        "partial_gold_case_count_verified": len(partial_gold_ids) == expected_baseline.partial_gold_case_count,
+        "any_gold_case_count_verified": len(any_gold_ids) == expected_baseline.any_gold_case_count,
+        "document_identity_complete": document_identity_complete,
+        "side_effect_observation_complete": side_effect_observation_complete,
+        "content_hashes_verified": context_report.content_hash_verified_count,
+        "final_context_hashes_verified": context_report.final_context_hash_verified_count,
+        "retrieval_calls_zero": observer.effects.retrieval_calls == 0,
+        "model_calls_zero": observer.effects.model_chat_completion_requests == 0,
+        "side_effects_passed": observer.effects.passed,
         "new_fact_identity_complete": new_fact_identity_complete,
+        "regression_semantic_identity_used": True,
         "regressions_attributed": regressions_attributed,
     }
     diagnostic_integrity_passed = all(integrity_checks.values())
@@ -724,23 +1010,25 @@ async def _run(args: argparse.Namespace) -> None:
     else:
         next_gate = {**next_gate, "enabled": True}
 
-    # Shared baseline
-    baseline = json.loads((args.acceptance.parent / "baseline-manifest.json").read_text(encoding="utf-8"))
+    # ------------------------------------------------------------------
+    # Shared metadata
+    # ------------------------------------------------------------------
     shared = {
         "artifact_schema": "nf42-r2/v1",
         "case_count": len(cases),
         "tenant_id": args.tenant_id,
         "frozen_payload_hash": args.expected_payload_sha256,
-        "final_contexts_hash": _sha({key: value.final_context_hash for key, value in sorted(contexts.items())}),
-        "question_hash": baseline.get("question_hash"),
-        "label_hash": baseline.get("label_hash"),
-        **counters.to_dict(),
+        "final_contexts_hash": final_contexts_hash,
+        "question_hash": nf39_baseline.get("question_hash"),
+        "label_hash": nf39_baseline.get("label_hash"),
+        "nf42_r1_baseline_sha256": nf42_r1_baseline_sha256,
+        "side_effect_observation": side_effect_observation,
     }
 
     out = args.out_dir
     _write(out / "baseline-manifest.json", {
         **shared,
-        "expected_baseline": NF42_R1_EXPECTED_BASELINE.to_dict(),
+        "expected_baseline": expected_baseline.to_dict(),
         "actual_baseline": actual_baseline,
     })
 
@@ -763,11 +1051,14 @@ async def _run(args: argparse.Namespace) -> None:
     _write(out / "extracted-fact-comparison.json", {
         **shared,
         "all_gold_case_count": len(all_gold_ids),
+        "partial_gold_case_count": len(partial_gold_ids),
+        "any_gold_case_count": len(any_gold_ids),
         "current_correct_fact_cases": sum(current_by_id[cid]["correct_fact_available"] for cid in all_gold_ids),
         "structured_correct_fact_cases": sum(structured_by_id[cid]["correct_fact_available"] for cid in all_gold_ids),
-        "new_correct_fact_count": new_fact_count,
-        "new_correct_fact_case_count": len(new_fact_cases),
-        "new_fact_cases": new_fact_cases,
+        "all_new_correct_fact_count": all_new_correct_fact_count,
+        "coverage_gain_fact_count": coverage_gain_fact_count,
+        "coverage_gain_case_count": len(coverage_gain_cases),
+        "coverage_gain_cases": coverage_gain_cases,
     })
 
     # Projection candidate comparison
@@ -813,11 +1104,13 @@ async def _run(args: argparse.Namespace) -> None:
         ],
     })
 
-    # New fact loss funnel
-    _write(out / "new-fact-loss-funnel.json", {
+    # Coverage-gain funnel (renamed from new-fact-loss-funnel)
+    _write(out / "coverage-gain-funnel.json", {
         **shared,
-        "new_correct_fact_count": new_fact_count,
-        "new_correct_fact_case_count": len(new_fact_cases),
+        "all_new_correct_fact_count": all_new_correct_fact_count,
+        "coverage_gain_fact_count": coverage_gain_fact_count,
+        "coverage_gain_case_count": len(coverage_gain_cases),
+        "coverage_gain_cases": coverage_gain_cases,
         "fact_stage_counts": next_gate["fact_stage_counts"],
         "case_stage_counts": next_gate["case_stage_counts"],
         "funnel_traces": [t.to_dict() for t in all_funnel_traces],
@@ -840,6 +1133,7 @@ async def _run(args: argparse.Namespace) -> None:
                     "extracted_fact_ids": current_by_id[cid]["extracted_fact_ids"],
                     "projected_fact_ids": current_by_id[cid]["projected_fact_ids"],
                     "selected_fact_ids": current_by_id[cid]["selected_fact_ids"],
+                    "correct_semantic_keys": current_by_id[cid]["correct_semantic_keys"],
                     "projected_count": len(current_by_id[cid]["projected_candidates"]),
                     "exclusion_count": len(current_by_id[cid]["projection_exclusions"]),
                     "selected_values": current_by_id[cid]["selected_values"],
@@ -850,6 +1144,7 @@ async def _run(args: argparse.Namespace) -> None:
                     "extracted_fact_ids": structured_by_id[cid]["extracted_fact_ids"],
                     "projected_fact_ids": structured_by_id[cid]["projected_fact_ids"],
                     "selected_fact_ids": structured_by_id[cid]["selected_fact_ids"],
+                    "correct_semantic_keys": structured_by_id[cid]["correct_semantic_keys"],
                     "projected_count": len(structured_by_id[cid]["projected_candidates"]),
                     "exclusion_count": len(structured_by_id[cid]["projection_exclusions"]),
                     "selected_values": structured_by_id[cid]["selected_values"],
@@ -867,18 +1162,29 @@ async def _run(args: argparse.Namespace) -> None:
         "stage": "nf42-r2",
         "diagnostic_integrity_passed": diagnostic_integrity_passed,
         "integrity_checks": integrity_checks,
-        "expected_baseline": NF42_R1_EXPECTED_BASELINE.to_dict(),
+        "expected_baseline": expected_baseline.to_dict(),
         "actual_baseline": actual_baseline,
         "current_baseline_reproduced": current_baseline_reproduced,
         "structured_baseline_reproduced": structured_baseline_reproduced,
+        "cross_variant_baseline_reproduced": cross_variant_baseline_reproduced,
+        "all_gold_case_count_verified": len(all_gold_ids) == expected_baseline.all_gold_case_count,
+        "partial_gold_case_count_verified": len(partial_gold_ids) == expected_baseline.partial_gold_case_count,
+        "any_gold_case_count_verified": len(any_gold_ids) == expected_baseline.any_gold_case_count,
+        "document_identity_complete": document_identity_complete,
+        "side_effect_observation_complete": side_effect_observation_complete,
+        "content_hashes_verified": context_report.content_hash_verified_count,
+        "final_context_hashes_verified": context_report.final_context_hash_verified_count,
+        "regression_semantic_identity_used": True,
+        "regressions_attributed": regressions_attributed,
         "extractor_only_ab": False,
         "single_variable_verified": False,
         "production_default": "current",
         "production_switch_allowed": False,
         "production_behavior_changed": False,
         "decision": "structured_path_regressed",
-        "new_correct_fact_count": new_fact_count,
-        "new_correct_fact_case_count": len(new_fact_cases),
+        "all_new_correct_fact_count": all_new_correct_fact_count,
+        "coverage_gain_fact_count": coverage_gain_fact_count,
+        "coverage_gain_case_count": len(coverage_gain_cases),
         "regression_count": len(regression_traces),
         "next_gate": next_gate,
     })

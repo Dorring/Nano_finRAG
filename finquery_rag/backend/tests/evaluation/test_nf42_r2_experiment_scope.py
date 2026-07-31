@@ -62,15 +62,20 @@ def test_retrieval_calls_are_zero():
     # The runner uses load_frozen_contexts, not live retrieval
     assert "load_frozen_contexts" in _RUNNER_SOURCE
     assert "require_verified_nf39_r2_inputs" in _RUNNER_SOURCE
-    # The runner uses NF42ExecutionCounters (observed, not constant)
-    assert "NF42ExecutionCounters" in _RUNNER_SOURCE
+    # The runner uses ObservedSideEffects (observed, not constant)
+    assert "ObservedSideEffects" in _RUNNER_SOURCE
+    assert "_SideEffectObserver" in _RUNNER_SOURCE
     assert "retrieval_calls" in _RUNNER_SOURCE
+    # The runner loads the baseline from a JSON file and compares via field groups
+    assert "--nf42-r1-baseline" in _RUNNER_SOURCE
+    assert "baseline_fields_match" in _RUNNER_SOURCE
 
 
 def test_model_calls_are_zero():
     """The R2 runner must count model calls and gate on zero."""
     assert "model_chat_completion_requests" in _RUNNER_SOURCE
-    assert "RuntimeError" in _RUNNER_SOURCE
+    assert "model_calls_zero" in _RUNNER_SOURCE
+    assert "sys.exit(1)" in _RUNNER_SOURCE
 
 
 # ---------------------------------------------------------------------------
