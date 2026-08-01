@@ -555,6 +555,13 @@ class RegressionCaseTrace:
     first_divergence_stage: str = "unclassified"
     regression_cause: RegressionCause = RegressionCause.UNCLASSIFIED
 
+    #: Label anomaly record — set when regression attribution used the
+    #: current-selected-fact fallback because expected_sources matching
+    #: yielded no supporting facts.  This is strictly diagnostic: the
+    #: fallback does NOT feed into correct-fact coverage, citation recall,
+    #: source recall, golden pass, or the next-gate decision.
+    label_anomaly: dict[str, Any] | None = None
+
     def to_dict(self) -> dict[str, Any]:
         return {
             "case_id": self.case_id,
@@ -575,6 +582,7 @@ class RegressionCaseTrace:
             },
             "first_divergence_stage": self.first_divergence_stage,
             "regression_cause": self.regression_cause.value,
+            "label_anomaly": self.label_anomaly,
         }
 
 

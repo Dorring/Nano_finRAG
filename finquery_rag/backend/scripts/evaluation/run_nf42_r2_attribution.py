@@ -556,6 +556,17 @@ async def _run_variant(
                 "selector_output_ids": list(det_observer.selector_output_ids),
                 "selected_values": list(det_observer.selected_values),
                 "selected_value_fact_ids": list(det_observer.selected_value_fact_ids),
+                "expected_source_pages": [
+                    source.page
+                    for source in case.expected_sources
+                    if source.page is not None
+                ],
+                "selected_fact_pages": [
+                    fact.page
+                    for fact in facts
+                    if fact.fact_id in det_observer.selected_fact_ids
+                    and fact.page is not None
+                ],
             }
         )
     return {
@@ -672,8 +683,31 @@ def _build_regression_trace(
     # selected facts as supporting facts.  This handles cases where the
     # expected_sources page annotation does not match the actual page of the
     # correct fact (e.g. label says page 48 but the gold fact is on page 51).
+    #
+    # STRICTLY LIMITED: the fallback only feeds ``current_supporting`` into
+    # ``classify_regression_cause`` below.  It does NOT modify
+    # ``current_record["correct_semantic_keys"]``, so correct-fact coverage,
+    # citation recall, source recall, golden pass, and the next-gate
+    # decision are unaffected.  A ``label_anomaly`` record is emitted so the
+    # mismatch is visible in the regression report.
+    label_anomaly: dict | None = None
     if not current_supporting and current_raw:
         current_supporting = set(current_record.get("selected_semantic_keys", []))
+        expected_pages = sorted(
+            {str(p) for p in current_record.get("expected_source_pages", [])}
+        )
+        observed_pages = sorted(
+            {str(p) for p in current_record.get("selected_fact_pages", [])}
+        )
+        label_anomaly = {
+            "label_anomaly": True,
+            "anomaly_type": "expected_source_page_mismatch",
+            "expected_pages": expected_pages,
+            "observed_supporting_pages": observed_pages,
+            "support_basis": "current_selected_fact_fallback",
+            "gold_source_match": False,
+            "used_for_regression_attribution_only": True,
+        }
 
     structured_extracted = set(structured_record.get("all_semantic_keys", []))
     structured_projected = set(structured_record.get("projected_semantic_keys", []))
@@ -714,6 +748,7 @@ def _build_regression_trace(
         structured_released_correct=structured_released,
         first_divergence_stage=first_div,
         regression_cause=cause,
+        label_anomaly=label_anomaly,
     )
 
 
@@ -1444,6 +1479,11 @@ async def _run(args: argparse.Namespace) -> None:
             "final_context_hashes_verified": context_report.final_context_hash_verified_count,
             "regression_semantic_identity_used": True,
             "regressions_attributed": regressions_attributed,
+            "label_anomalies": [
+                t.label_anomaly
+                for t in regression_traces
+                if t.label_anomaly is not None
+            ],
             "extractor_only_ab": False,
             "single_variable_verified": False,
             "production_default": "current",
