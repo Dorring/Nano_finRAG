@@ -9,6 +9,7 @@ Verifies the 20 mandatory R2.2 requirements:
 - Regression attribution uses provider-independent semantic identity
 - Context hash verification reports actual verified counts, not non-empty hashes
 """
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -58,11 +59,21 @@ _resolve_filename = _extract_function_from_source(_RUNNER_SOURCE, "_resolve_file
 _collect_unmapped_document_ids = _extract_function_from_source(
     _RUNNER_SOURCE, "_collect_unmapped_document_ids"
 )
+_source_matches_with_granularity = _extract_function_from_source(
+    _RUNNER_SOURCE, "_source_matches_with_granularity"
+)
+# _source_matches_with_granularity calls _resolve_filename at runtime; inject
+# the already-extracted function into its globals so it can resolve.
+if _source_matches_with_granularity is not None and _resolve_filename is not None:
+    _source_matches_with_granularity.__globals__["_resolve_filename"] = (
+        _resolve_filename
+    )
 
 
 # ---------------------------------------------------------------------------
 # Mock fact for semantic key tests
 # ---------------------------------------------------------------------------
+
 
 @dataclass
 class _MockFact:
@@ -80,16 +91,42 @@ class _MockFact:
     evaluation_text: str | None = None
 
 
+@dataclass
+class _MockExpectedSource:
+    """Stand-in for EvaluationCase.ExpectedSource with the fields the runner reads."""
+
+    filename: str | None = None
+    page: int | str | None = None
+    chunk_id: str | None = None
+
+    def matches(self, candidate: dict) -> bool:
+        """Replicates ExpectedSource.matches for priority-1 candidate_key checks."""
+        candidate_id = candidate.get("chunk_id") or candidate.get("doc_id")
+        if self.chunk_id and candidate_id != self.chunk_id:
+            return False
+        if self.filename:
+            cand_filename = candidate.get("filename") or candidate.get("doc_name")
+            if cand_filename != self.filename:
+                return False
+        if self.page is not None:
+            cand_page = candidate.get("page")
+            if str(cand_page) != str(self.page):
+                return False
+        return True
+
+
 # ===========================================================================
 # 1. Baseline field groups
 # ===========================================================================
 
+
 def test_current_baseline_uses_only_current_fields():
     """CURRENT_BASELINE_FIELDS must only contain current_* and shared fields."""
     for field in CURRENT_BASELINE_FIELDS:
-        assert field.startswith("current_") or field in {"all_gold_case_count", "any_gold_case_count"}, (
-            f"Unexpected field in CURRENT_BASELINE_FIELDS: {field}"
-        )
+        assert field.startswith("current_") or field in {
+            "all_gold_case_count",
+            "any_gold_case_count",
+        }, f"Unexpected field in CURRENT_BASELINE_FIELDS: {field}"
     # Must NOT contain structured_* fields
     assert not any(f.startswith("structured_") for f in CURRENT_BASELINE_FIELDS)
 
@@ -97,9 +134,10 @@ def test_current_baseline_uses_only_current_fields():
 def test_structured_baseline_uses_only_structured_fields():
     """STRUCTURED_BASELINE_FIELDS must only contain structured_* and shared fields."""
     for field in STRUCTURED_BASELINE_FIELDS:
-        assert field.startswith("structured_") or field in {"all_gold_case_count", "any_gold_case_count"}, (
-            f"Unexpected field in STRUCTURED_BASELINE_FIELDS: {field}"
-        )
+        assert field.startswith("structured_") or field in {
+            "all_gold_case_count",
+            "any_gold_case_count",
+        }, f"Unexpected field in STRUCTURED_BASELINE_FIELDS: {field}"
     # Must NOT contain current_* fields
     assert not any(f.startswith("current_") for f in STRUCTURED_BASELINE_FIELDS)
 
@@ -140,6 +178,7 @@ def test_baseline_is_loaded_from_artifact():
 # 2. Any-gold case filtering
 # ===========================================================================
 
+
 def test_partial_gold_is_included_in_any_gold():
     """partial_gold_in_final cases must be included in the any-gold set."""
     rows = [
@@ -147,10 +186,15 @@ def test_partial_gold_is_included_in_any_gold():
         {"case_id": "c2", "context_coverage": "partial_gold_in_final"},
         {"case_id": "c3", "context_coverage": "no_gold_in_final"},
     ]
-    all_gold_ids = [r["case_id"] for r in rows if r["context_coverage"] == "all_gold_in_final"]
-    partial_gold_ids = [r["case_id"] for r in rows if r["context_coverage"] == "partial_gold_in_final"]
+    all_gold_ids = [
+        r["case_id"] for r in rows if r["context_coverage"] == "all_gold_in_final"
+    ]
+    partial_gold_ids = [
+        r["case_id"] for r in rows if r["context_coverage"] == "partial_gold_in_final"
+    ]
     any_gold_ids = [
-        r["case_id"] for r in rows
+        r["case_id"]
+        for r in rows
         if r["context_coverage"] in {"all_gold_in_final", "partial_gold_in_final"}
     ]
     assert "c2" in any_gold_ids
@@ -169,6 +213,7 @@ def test_any_gold_case_count_is_sixteen():
 # ===========================================================================
 # 3. Document identity mapping
 # ===========================================================================
+
 
 def test_unmapped_document_id_fails_integrity():
     """Unmapped document_ids must cause document_identity_complete=False."""
@@ -195,11 +240,14 @@ def test_document_id_is_never_raw_filename_fallback():
 # 4. Side-effect observation
 # ===========================================================================
 
+
 def test_side_effect_counter_requires_observed_boundary():
     """ObservedSideEffects.passed must be False when boundaries are not accounted for."""
     effects = ObservedSideEffects()  # No boundaries set
     assert effects.all_observed_zero() is True  # All counts are 0 by default
-    assert effects.passed is False  # But passed is False because boundaries not accounted for
+    assert (
+        effects.passed is False
+    )  # But passed is False because boundaries not accounted for
     assert effects.all_boundaries_accounted_for() is False
 
 
@@ -212,7 +260,9 @@ def test_unobserved_memory_boundary_does_not_count_as_zero():
     )
     assert effects.memory_write_calls == 0  # Default 0
     assert effects.all_observed_zero() is True  # All counts are 0
-    assert effects.all_boundaries_accounted_for() is False  # But memory not accounted for
+    assert (
+        effects.all_boundaries_accounted_for() is False
+    )  # But memory not accounted for
     assert effects.passed is False  # So passed is False
 
 
@@ -231,6 +281,7 @@ def test_nonzero_session_write_blocks_integrity():
 # ===========================================================================
 # 5. Regression semantic identity
 # ===========================================================================
+
 
 def test_provider_specific_fact_ids_are_not_compared_directly():
     """fact_semantic_key must produce the same key for facts with different fact_ids but same semantic identity."""
@@ -298,14 +349,16 @@ def test_semantic_equivalent_fact_survives_provider_fact_id_change():
     # The supporting key is computed from semantic identity, not fact_id
     # So if the structured path extracted the semantically equivalent fact,
     # it should NOT trigger extraction regression
-    supporting_key = fact_semantic_key(_MockFact(
-        candidate_key="chunk_1",
-        canonical_value="500",
-        currency="USD",
-        unit=None,
-        period="2023",
-        source_span_hash="span_x",
-    ))
+    supporting_key = fact_semantic_key(
+        _MockFact(
+            candidate_key="chunk_1",
+            canonical_value="500",
+            currency="USD",
+            unit=None,
+            period="2023",
+            source_span_hash="span_x",
+        )
+    )
     stage, cause = classify_regression_cause(
         current_supporting_gold_fact_keys={supporting_key},
         structured_extracted_semantic_keys={supporting_key},  # Same semantic key
@@ -341,6 +394,7 @@ def test_insufficient_supporting_fact_trace_blocks_attribution():
 # ===========================================================================
 # 6. Context hash verification
 # ===========================================================================
+
 
 def test_context_hash_nonempty_is_not_hash_verification():
     """Counting non-empty hash fields is NOT the same as FrozenContextVerificationReport."""
@@ -390,3 +444,105 @@ def test_27_final_context_hashes_must_be_verified():
         failed_cases=(),
     )
     assert report_fail.final_context_hash_verified_count != 27
+
+
+# ===========================================================================
+# 7. Source matching — chunk_id bypass for facts
+# ===========================================================================
+
+
+def test_fact_matches_when_expected_source_has_chunk_id():
+    """Facts must match ExpectedSource by filename+page even when chunk_id is set.
+
+    ``ExpectedSource.matches()`` requires ``chunk_id`` alignment when the
+    expected source carries one, but extracted facts don't have a
+    ``chunk_id`` field — only ``document_id`` (mapped to filename) and
+    ``page``.  The runner's priority-2 matching must bypass the chunk_id
+    gate so that facts from the correct document and page are recognised
+    as gold-matching.
+    """
+    if _source_matches_with_granularity is None:
+        pytest.skip("Runner function could not be extracted")
+
+    case = type(
+        "Case",
+        (),
+        {
+            "expected_sources": (
+                _MockExpectedSource(
+                    filename="FINAL Annual Report.pdf",
+                    page=51,
+                    chunk_id="user_1_FINAL Annual Report.pdf::page_51::chunk_51_11",
+                ),
+            ),
+        },
+    )()
+
+    fact = _MockFact(
+        candidate_key="candidate:v1:abc123",
+        document_id="FINAL Annual Report.pdf",
+        page=51,
+        raw_value="$42.2 million",
+    )
+
+    identity_map = {"FINAL Annual Report.pdf": "FINAL Annual Report.pdf"}
+    matched, granularity = _source_matches_with_granularity(case, fact, identity_map)
+    assert matched is True
+    assert granularity == "filename_page"
+
+
+def test_fact_does_not_match_when_page_differs():
+    """Facts must NOT match when the ExpectedSource page differs."""
+    if _source_matches_with_granularity is None:
+        pytest.skip("Runner function could not be extracted")
+
+    case = type(
+        "Case",
+        (),
+        {
+            "expected_sources": (
+                _MockExpectedSource(
+                    filename="FINAL Annual Report.pdf",
+                    page=48,
+                    chunk_id="some_chunk",
+                ),
+            ),
+        },
+    )()
+
+    fact = _MockFact(
+        candidate_key="candidate:v1:abc123",
+        document_id="FINAL Annual Report.pdf",
+        page=51,  # Different page
+    )
+
+    identity_map = {"FINAL Annual Report.pdf": "FINAL Annual Report.pdf"}
+    matched, _ = _source_matches_with_granularity(case, fact, identity_map)
+    assert matched is False
+
+
+def test_fact_matches_when_expected_source_has_no_page():
+    """Facts must match when ExpectedSource specifies filename only (no page)."""
+    if _source_matches_with_granularity is None:
+        pytest.skip("Runner function could not be extracted")
+
+    case = type(
+        "Case",
+        (),
+        {
+            "expected_sources": (
+                _MockExpectedSource(filename="leac203.pdf", page=None, chunk_id=None),
+            ),
+        },
+    )()
+
+    fact = _MockFact(
+        candidate_key="candidate:v1:xyz",
+        document_id="leac203.pdf",
+        page=27,
+    )
+
+    identity_map = {"leac203.pdf": "leac203.pdf"}
+    matched, granularity = _source_matches_with_granularity(case, fact, identity_map)
+    assert matched is True
+    assert granularity == "filename_page"

@@ -6,6 +6,7 @@ extraction and the final released answer.
 
 It is evaluation-only: production code paths are never altered.
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -19,10 +20,13 @@ from typing import Any
 # Stable hashing helpers
 # ---------------------------------------------------------------------------
 
+
 def stable_json_hash(payload: Any) -> str:
     """SHA-256 of a canonical JSON representation."""
     return hashlib.sha256(
-        json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        json.dumps(
+            payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+        ).encode("utf-8")
     ).hexdigest()
 
 
@@ -35,6 +39,7 @@ def sha256_text(value: str) -> str:
 # Integrity error
 # ---------------------------------------------------------------------------
 
+
 class EvaluationIntegrityError(RuntimeError):
     """Raised when evaluation integrity cannot be guaranteed."""
 
@@ -42,6 +47,7 @@ class EvaluationIntegrityError(RuntimeError):
 # ---------------------------------------------------------------------------
 # Enums
 # ---------------------------------------------------------------------------
+
 
 class StructuredFactLossStage(str, Enum):
     """First-loss stage for a correct structured fact."""
@@ -97,6 +103,7 @@ class GoldMatchGranularity(str, Enum):
 # Expected baseline (from verified NF42 R1 artifact)
 # ---------------------------------------------------------------------------
 
+
 @dataclass(frozen=True)
 class NF42ExpectedBaseline:
     """Expected R1 baseline metrics that R2 must reproduce."""
@@ -145,11 +152,21 @@ class NF42ExpectedBaseline:
             current_correct_fact_cases=int(metrics["current_correct_fact_cases"]),
             structured_correct_fact_cases=int(metrics["structured_correct_fact_cases"]),
             current_all_gold_raw_correct=int(metrics["current_all_gold_raw_correct"]),
-            structured_all_gold_raw_correct=int(metrics["structured_all_gold_raw_correct"]),
-            current_all_gold_released_correct=int(metrics["current_all_gold_released_correct"]),
-            structured_all_gold_released_correct=int(metrics["structured_all_gold_released_correct"]),
-            current_any_gold_released_correct=int(metrics["current_any_gold_released_correct"]),
-            structured_any_gold_released_correct=int(metrics["structured_any_gold_released_correct"]),
+            structured_all_gold_raw_correct=int(
+                metrics["structured_all_gold_raw_correct"]
+            ),
+            current_all_gold_released_correct=int(
+                metrics["current_all_gold_released_correct"]
+            ),
+            structured_all_gold_released_correct=int(
+                metrics["structured_all_gold_released_correct"]
+            ),
+            current_any_gold_released_correct=int(
+                metrics["current_any_gold_released_correct"]
+            ),
+            structured_any_gold_released_correct=int(
+                metrics["structured_any_gold_released_correct"]
+            ),
             regression_case_count=int(metrics["regression_case_count"]),
         )
 
@@ -176,9 +193,7 @@ STRUCTURED_BASELINE_FIELDS: tuple[str, ...] = (
     "structured_any_gold_released_correct",
 )
 
-CROSS_VARIANT_FIELDS: tuple[str, ...] = (
-    "regression_case_count",
-)
+CROSS_VARIANT_FIELDS: tuple[str, ...] = ("regression_case_count",)
 
 
 def baseline_fields_match(
@@ -206,6 +221,7 @@ def baseline_fields_match(
 # Observed side effects (real boundary observation, not inferred)
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class ObservedSideEffects:
     """Records real observations of side-effect boundaries.
@@ -230,8 +246,12 @@ class ObservedSideEffects:
     def all_boundaries_accounted_for(self) -> bool:
         """True when all six boundaries are either observed or confirmed not_installed."""
         all_boundaries = {
-            "retrieval", "model", "memory",
-            "feedback", "session", "document_state",
+            "retrieval",
+            "model",
+            "memory",
+            "feedback",
+            "session",
+            "document_state",
         }
         accounted = set(self.observed_boundaries) | set(self.unavailable_boundaries)
         return accounted == all_boundaries
@@ -259,7 +279,9 @@ class ObservedSideEffects:
             return {"status": "observed", "calls": calls}
 
         def _boundary_observed(name: str) -> bool:
-            return name in self.observed_boundaries or name in self.unavailable_boundaries
+            return (
+                name in self.observed_boundaries or name in self.unavailable_boundaries
+            )
 
         return {
             "retrieval_boundary_observed": _boundary_observed("retrieval"),
@@ -281,7 +303,9 @@ class ObservedSideEffects:
                 "memory": _status("memory", self.memory_write_calls),
                 "feedback": _status("feedback", self.feedback_write_calls),
                 "session": _status("session", self.session_write_calls),
-                "document_state": _status("document_state", self.document_state_write_calls),
+                "document_state": _status(
+                    "document_state", self.document_state_write_calls
+                ),
             },
             "passed": self.passed,
         }
@@ -290,6 +314,7 @@ class ObservedSideEffects:
 # ---------------------------------------------------------------------------
 # Frozen context verification report
 # ---------------------------------------------------------------------------
+
 
 @dataclass(frozen=True)
 class FrozenContextVerificationReport:
@@ -317,6 +342,7 @@ class FrozenContextVerificationReport:
 # Frozen document identity mapping
 # ---------------------------------------------------------------------------
 
+
 @dataclass(frozen=True)
 class FrozenDocumentIdentity:
     """Explicit mapping from internal document_id to filename."""
@@ -328,6 +354,7 @@ class FrozenDocumentIdentity:
 # ---------------------------------------------------------------------------
 # Fact semantic identity (provider-independent comparison)
 # ---------------------------------------------------------------------------
+
 
 @dataclass(frozen=True)
 class FactSemanticIdentity:
@@ -375,6 +402,7 @@ def fact_semantic_key(fact: Any) -> str:
 # ---------------------------------------------------------------------------
 # Trace data structures
 # ---------------------------------------------------------------------------
+
 
 @dataclass(frozen=True)
 class NumericEvidenceCandidateTrace:
@@ -554,6 +582,7 @@ class RegressionCaseTrace:
 # Classification
 # ---------------------------------------------------------------------------
 
+
 def classify_new_fact_loss(trace: NewFactFunnelTrace) -> StructuredFactLossStage:
     """Determine the first stage at which a correct fact was lost."""
     if not trace.correct_fact_extracted:
@@ -613,7 +642,10 @@ def classify_regression_cause(
     """
     # Stage 0: if we cannot identify supporting facts, attribution is impossible
     if not current_supporting_gold_fact_keys:
-        return ("regression_trace_insufficient", RegressionCause.REGRESSION_TRACE_INSUFFICIENT)
+        return (
+            "regression_trace_insufficient",
+            RegressionCause.REGRESSION_TRACE_INSUFFICIENT,
+        )
 
     # Stage 1: extraction divergence — supporting fact not extracted in structured
     if not current_supporting_gold_fact_keys <= structured_extracted_semantic_keys:
@@ -625,7 +657,10 @@ def classify_regression_cause(
 
     # Stage 3: selection/ranking divergence — projected but not selected
     if not current_supporting_gold_fact_keys <= structured_selected_semantic_keys:
-        return ("pre_selector_ranking_or_selection", RegressionCause.LEGACY_CORRECT_CANDIDATE_DISPLACED)
+        return (
+            "pre_selector_ranking_or_selection",
+            RegressionCause.LEGACY_CORRECT_CANDIDATE_DISPLACED,
+        )
 
     # Stage 4: value selection divergence — selected but not in value set
     if not current_supporting_gold_fact_keys <= structured_value_semantic_keys:
@@ -636,7 +671,11 @@ def classify_regression_cause(
         return ("answer_rendering", RegressionCause.VALUE_SELECTION_CHANGED)
 
     # Stage 6: validation-only regression — raw correct but released wrong
-    if current_raw_correct == structured_raw_correct and current_released_correct and not structured_released_correct:
+    if (
+        current_raw_correct == structured_raw_correct
+        and current_released_correct
+        and not structured_released_correct
+    ):
         return ("validation", RegressionCause.VALIDATION_ONLY_REGRESSION)
 
     return ("unclassified", RegressionCause.UNCLASSIFIED)
@@ -645,6 +684,7 @@ def classify_regression_cause(
 # ---------------------------------------------------------------------------
 # Function identity (fail-closed)
 # ---------------------------------------------------------------------------
+
 
 def function_identity(fn: Any) -> dict[str, Any]:
     """Record the source-level identity of a function.
@@ -657,14 +697,10 @@ def function_identity(fn: Any) -> dict[str, Any]:
     try:
         source = inspect.getsource(fn)
     except (TypeError, OSError) as exc:
-        raise EvaluationIntegrityError(
-            f"Cannot fingerprint {fn!r}"
-        ) from exc
+        raise EvaluationIntegrityError(f"Cannot fingerprint {fn!r}") from exc
 
     if not source.strip():
-        raise EvaluationIntegrityError(
-            f"Empty source identity for {fn!r}"
-        )
+        raise EvaluationIntegrityError(f"Empty source identity for {fn!r}")
 
     return {
         "module": getattr(fn, "__module__", None),
