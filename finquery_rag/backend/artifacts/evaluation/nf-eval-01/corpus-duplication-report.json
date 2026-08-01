@@ -1,0 +1,28 @@
+{
+  "schema_version": "financial-rag-corpus-duplication/v1",
+  "duplicate_file_hashes": 0,
+  "duplicate_file_hash_details": {},
+  "duplicate_document_records": 0,
+  "duplicate_document_details": {},
+  "duplicate_chroma_ids": 0,
+  "duplicate_bm25_ids": 0,
+  "out_of_scope_document_count": 2639,
+  "global_user_index_outside_benchmark_record_count": 2639,
+  "bm25_out_of_scope_record_count": 3563,
+  "chroma_out_of_scope_record_count": 2636,
+  "out_of_scope_bm25_document_names": [
+    "FINAL Annual Report.pdf",
+    "leac203.pdf",
+    "wipo_pub_rn2021_18e.pdf"
+  ],
+  "out_of_scope_chroma_document_names": [
+    "FINAL Annual Report.pdf",
+    "leac203.pdf",
+    "wipo_pub_rn2021_18e.pdf"
+  ],
+  "benchmark_document_count": 8,
+  "benchmark_scope_outside_record_count": 0,
+  "global_index_contaminated": false,
+  "benchmark_requires_document_whitelist": true,
+  "passed": true
+}

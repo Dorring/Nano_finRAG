@@ -6,8 +6,8 @@ import sys
 from pathlib import Path
 BACKEND = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(BACKEND))
-from src.evaluation.evaluation import load_jsonl_cases
-from src.evaluation.nf37_metrics import ranking_metrics
+from src.evaluation.evaluation import load_jsonl_cases  # noqa: E402
+from src.evaluation.nf37_metrics import ranking_metrics  # noqa: E402
 
 def main() -> int:
     parser = argparse.ArgumentParser()
