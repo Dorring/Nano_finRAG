@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Financial RAG Benchmark v1 document catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "documents"],
+  "properties": {
+    "schema_version": {"const": "financial-rag-benchmark/v1"},
+    "documents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "document_id", "company", "fiscal_year", "local_filename",
+          "official_landing_url", "pdf_url", "source_kind", "status",
+          "coverage_focus"
+        ],
+        "properties": {
+          "document_id": {"type": "string", "minLength": 1},
+          "company": {"type": "string", "minLength": 1},
+          "fiscal_year": {"type": "string", "pattern": "^[0-9]{4}$"},
+          "local_filename": {"type": "string", "pattern": "\\.pdf$"},
+          "official_landing_url": {"type": "string", "format": "uri"},
+          "pdf_url": {"type": ["string", "null"], "format": "uri"},
+          "source_kind": {"const": "issuer_investor_relations"},
+          "status": {"enum": ["official_pdf_url_verified", "official_pdf_url_pending_verification", "downloaded_unreviewed", "ingested_verified"]},
+          "coverage_focus": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    }
+  }
+}

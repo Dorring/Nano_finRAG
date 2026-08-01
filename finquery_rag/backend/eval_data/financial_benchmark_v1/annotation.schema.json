@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://finquery/eval/financial-rag-benchmark/v1/annotation.schema.json",
+  "title": "FinancialRagBenchmarkAnnotation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "company", "type", "question", "expected_answer", "expected_sources", "difficulty", "requires_calculation", "answerable", "review"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "company": {"type": "string", "minLength": 1},
+    "type": {"enum": ["fact", "table_fact", "calculation", "multi_source", "no_answer", "unit_period_trap"]},
+    "question": {"type": "string", "minLength": 1},
+    "expected_answer": {"type": ["object", "null"]},
+    "expected_sources": {"type": "array", "items": {"type": "object", "required": ["document_id", "page", "section"], "properties": {"document_id": {"type": "string"}, "page": {"type": "integer", "minimum": 1}, "section": {"type": "string", "minLength": 1}, "table": {"type": ["string", "null"]}, "row": {"type": ["string", "null"]}, "column": {"type": ["string", "null"]}}}},
+    "difficulty": {"enum": ["easy", "medium", "hard"]},
+    "requires_calculation": {"type": "boolean"},
+    "answerable": {"type": "boolean"},
+    "review": {"type": "object", "required": ["status"], "properties": {"status": {"enum": ["draft", "reviewed", "accepted"]}, "first_reviewer": {"type": ["string", "null"]}, "second_reviewer": {"type": ["string", "null"]}}}
+  }
+}
