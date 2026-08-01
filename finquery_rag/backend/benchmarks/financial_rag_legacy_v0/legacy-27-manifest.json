@@ -1,0 +1,13 @@
+{
+  "benchmark_id": "financial-rag-legacy-v0",
+  "schema_version": "1.0",
+  "case_count": 27,
+  "label_status": "legacy_locked",
+  "source_reference": "finquery_real_eval/real_eval_3docs.jsonl",
+  "documents": [
+    "FINAL Annual Report.pdf",
+    "leac203.pdf",
+    "wipo_pub_rn2021_18e.pdf"
+  ],
+  "metric_policy": "report separately from financial-rag-v1"
+}

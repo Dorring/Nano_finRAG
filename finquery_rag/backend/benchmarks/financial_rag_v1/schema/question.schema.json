@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Financial RAG benchmark question",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["case_id", "benchmark_id", "company", "document_scope", "question", "answerable", "answer_type", "category", "difficulty", "requires_calculation", "requires_multiple_sources", "draft_status", "authoring_method"],
+  "properties": {
+    "case_id": {"type": "string", "minLength": 1},
+    "benchmark_id": {"const": "financial-rag-v1"},
+    "company": {"type": "string", "minLength": 1},
+    "document_scope": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "question": {"type": "string", "minLength": 8},
+    "answerable": {"type": "boolean"},
+    "answer_type": {"enum": ["text", "numeric", "currency", "percentage", "date", "comparison", "aggregation", "no_answer"]},
+    "category": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "difficulty": {"enum": ["easy", "medium", "hard"]},
+    "requires_calculation": {"type": "boolean"},
+    "requires_multiple_sources": {"type": "boolean"},
+    "draft_status": {"enum": ["generated", "edited", "rejected"]},
+    "authoring_method": {"enum": ["human", "assisted", "human_or_assisted"]},
+    "generation_timestamp": {"type": ["string", "null"]}
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Financial RAG benchmark source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["document_id", "filename", "page", "evidence_type", "source_verified"],
+  "properties": {
+    "document_id": {"type": "string", "minLength": 1},
+    "filename": {"type": "string", "pattern": "\\.pdf$"},
+    "page": {"type": "integer", "minimum": 1},
+    "printed_page": {"type": ["integer", "null"], "minimum": 1},
+    "section": {"type": ["string", "null"]},
+    "table_title": {"type": ["string", "null"]},
+    "row_label": {"type": ["string", "null"]},
+    "column_header": {"type": ["string", "null"]},
+    "period": {"type": ["string", "null"]},
+    "unit": {"type": ["string", "null"]},
+    "scale": {"type": ["string", "null"]},
+    "candidate_key": {"type": ["string", "null"]},
+    "evidence_id": {"type": ["string", "null"]},
+    "row_id": {"type": ["string", "null"]},
+    "evidence_type": {"enum": ["text", "table", "table_row", "front_matter"]},
+    "source_verified": {"type": "boolean"}
+  }
+}

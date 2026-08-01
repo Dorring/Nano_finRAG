@@ -7,8 +7,8 @@ from pathlib import Path
 
 BACKEND = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(BACKEND))
-from src.evaluation.case_fingerprints import label_fingerprint, question_fingerprint
-from src.evaluation.evaluation import load_jsonl_cases, load_jsonl_predictions
+from src.evaluation.case_fingerprints import label_fingerprint, question_fingerprint  # noqa: E402
+from src.evaluation.evaluation import load_jsonl_cases, load_jsonl_predictions  # noqa: E402
 
 def main() -> int:
     parser = argparse.ArgumentParser()

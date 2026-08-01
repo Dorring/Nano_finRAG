@@ -1,0 +1,107 @@
+{
+  "benchmark_id": "financial-rag-v1",
+  "schema_version": "1.0",
+  "tenant_id": 1,
+  "document_count": 8,
+  "total_pages": 1348,
+  "total_chunks": 44608,
+  "documents": [
+    {
+      "company": "Apple",
+      "document_id": "aapl_fy2025",
+      "filename": "aapl_fy2025_10k.pdf",
+      "fiscal_year": 2025,
+      "source_type": "official_annual_report",
+      "source_format": "official_pdf",
+      "page_count": 80,
+      "chunk_count": 2433,
+      "file_sha256": "108590052c3ba5400c63660d787fe7ed4e43868292946d7a7facebe9ab7d1aab",
+      "document_identity_hash": "f33577d1008c94e2af54857b292dc5a56f04953576782284999c0c1d4abef90c"
+    },
+    {
+      "company": "JPMorganChase",
+      "document_id": "jpm_fy2025",
+      "filename": "jpm_fy2025_annual_report.pdf",
+      "fiscal_year": 2025,
+      "source_type": "official_annual_report",
+      "source_format": "official_pdf",
+      "page_count": 364,
+      "chunk_count": 14677,
+      "file_sha256": "2a3ee9733eafd01e7667c5540fbd797c4cc688d14f00638a877f5623d1316d9d",
+      "document_identity_hash": "b076ab05d41569fafb1bf34ee9f3389a41c79378d76211c0d006fbaab0a0dff5"
+    },
+    {
+      "company": "The Coca-Cola Company",
+      "document_id": "ko_fy2025",
+      "filename": "ko_fy2025_10k.pdf",
+      "fiscal_year": 2025,
+      "source_type": "official_annual_report",
+      "source_format": "official_pdf",
+      "page_count": 192,
+      "chunk_count": 5921,
+      "file_sha256": "3cf15f041ac30a094d868f383272d5129762dc4ef457413b95dcdae09e560015",
+      "document_identity_hash": "b2564e604f03371e8dba886e04610925422625a58ee84156c4a86607bf220149"
+    },
+    {
+      "company": "Microsoft",
+      "document_id": "msft_fy2025",
+      "filename": "msft_fy2025_annual_report.pdf",
+      "fiscal_year": 2025,
+      "source_type": "official_annual_report",
+      "source_format": "docx_converted_pdf",
+      "page_count": 90,
+      "chunk_count": 2128,
+      "file_sha256": "1fb4c08a3aa6de381aec07aab6588964534c1a291d66046f950153ccdb84c3d4",
+      "document_identity_hash": "a4e8f726beaebdc5bc7f8faa5330bd4d8cc727b3b8a2cbc54d95ba5ad75ab3e1"
+    },
+    {
+      "company": "NVIDIA",
+      "document_id": "nvda_fy2025",
+      "filename": "nvda_fy2025_annual_report.pdf",
+      "fiscal_year": 2025,
+      "source_type": "official_annual_report",
+      "source_format": "official_pdf",
+      "page_count": 181,
+      "chunk_count": 5983,
+      "file_sha256": "757b344ab62ba282f6e44e0702e8ce5f190d88fb23b5e0a2beaf4cb277a395cc",
+      "document_identity_hash": "1177c01029ff28976a51210d47f1f0898afb251650d497775dac7e63d1e2162e"
+    },
+    {
+      "company": "Pfizer",
+      "document_id": "pfe_fy2024",
+      "filename": "pfe_fy2024_10k.pdf",
+      "fiscal_year": 2024,
+      "source_type": "official_annual_report",
+      "source_format": "official_pdf",
+      "page_count": 165,
+      "chunk_count": 5837,
+      "file_sha256": "8ee0b08f2f2c9326a3fab44642507c7907b53e75cc5a12839e8cde2228ed0229",
+      "document_identity_hash": "b9294a315715e36e192f735b7bf9eecbea3e2d8243d35630ed06233ae1decc23"
+    },
+    {
+      "company": "Tesla",
+      "document_id": "tsla_fy2025",
+      "filename": "tsla_fy2025_10k.pdf",
+      "fiscal_year": 2025,
+      "source_type": "official_annual_report",
+      "source_format": "sec_html_converted_pdf",
+      "page_count": 140,
+      "chunk_count": 4419,
+      "file_sha256": "5e33e314f47e85380f2e6a7d84481bd965e528f6614363c6b8fbce1a1d6df523",
+      "document_identity_hash": "c4029c438365ae789d4cd6c35741c496863369ae7e61fab7d8083736d202324e"
+    },
+    {
+      "company": "Visa",
+      "document_id": "v_fy2025",
+      "filename": "v_fy2025_annual_report.pdf",
+      "fiscal_year": 2025,
+      "source_type": "official_annual_report",
+      "source_format": "official_pdf",
+      "page_count": 136,
+      "chunk_count": 3210,
+      "file_sha256": "1fb927051da5346b0f5c3a9447a3bdf42c5ea9259000c94398db5965ddbcc7dd",
+      "document_identity_hash": "1f404bfc4e3e2b8575d16bf5a3a52414dcbca5dc36fed95b166159f086d77ca4"
+    }
+  ],
+  "corpus_hash": "edd4e8c1aac89ea1480dcb723857b487cb6038218d0a924b749eb6ec8fd13448"
+}
