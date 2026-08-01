@@ -3,6 +3,7 @@
 Verifies that regression cases have a first divergence stage and that
 the regression cause is inferred from trace data, not hardcoded by case ID.
 """
+
 from __future__ import annotations
 
 from src.evaluation.nf42_r2_projection_trace import (
@@ -34,8 +35,8 @@ def test_two_regression_cases_have_first_divergence():
         current_supporting_gold_fact_keys={"key_b"},
         structured_extracted_semantic_keys={"key_b"},  # Extracted
         structured_projected_semantic_keys={"key_b"},  # Projected
-        structured_selected_semantic_keys={"key_b"},   # Selected
-        structured_value_semantic_keys={"key_b"},      # In value set
+        structured_selected_semantic_keys={"key_b"},  # Selected
+        structured_value_semantic_keys={"key_b"},  # In value set
         current_raw_correct=True,
         structured_raw_correct=False,  # But raw answer wrong
         current_released_correct=True,

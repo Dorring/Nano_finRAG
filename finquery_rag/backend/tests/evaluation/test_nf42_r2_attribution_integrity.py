@@ -5,6 +5,7 @@ that baselines are checked against expected R1 values; that execution
 counters are observed; that fact identity is preserved; that gold source
 matching uses explicit mapping; and that gates count cases not facts.
 """
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -74,8 +75,16 @@ def test_current_baseline_mismatch_blocks_gate():
         "current_any_gold_released_correct": 6,
     }
     exp_dict = expected.to_dict()
-    current_keys = {k: actual.get(k) for k in exp_dict if k.startswith("current_") or k == "all_gold_case_count"}
-    matched = all(current_keys.get(k) == v for k, v in exp_dict.items() if k.startswith("current_") or k == "all_gold_case_count")
+    current_keys = {
+        k: actual.get(k)
+        for k in exp_dict
+        if k.startswith("current_") or k == "all_gold_case_count"
+    }
+    matched = all(
+        current_keys.get(k) == v
+        for k, v in exp_dict.items()
+        if k.startswith("current_") or k == "all_gold_case_count"
+    )
     assert matched is False
 
 
@@ -103,14 +112,23 @@ def test_structured_baseline_mismatch_blocks_gate():
         "structured_any_gold_released_correct": 4,
     }
     exp_dict = expected.to_dict()
-    structured_keys = {k: actual.get(k) for k in exp_dict if k.startswith("structured_") or k == "all_gold_case_count"}
-    matched = all(structured_keys.get(k) == v for k, v in exp_dict.items() if k.startswith("structured_") or k == "all_gold_case_count")
+    structured_keys = {
+        k: actual.get(k)
+        for k in exp_dict
+        if k.startswith("structured_") or k == "all_gold_case_count"
+    }
+    matched = all(
+        structured_keys.get(k) == v
+        for k, v in exp_dict.items()
+        if k.startswith("structured_") or k == "all_gold_case_count"
+    )
     assert matched is False
 
 
 # ---------------------------------------------------------------------------
 # Real execution counters (observed, not constant)
 # ---------------------------------------------------------------------------
+
 
 def test_retrieval_count_is_observed_not_constant():
     """ObservedSideEffects must track real retrieval calls, not infer from flags."""
@@ -138,6 +156,7 @@ def test_side_effect_counters_are_tracked():
 # ---------------------------------------------------------------------------
 # Fact identity preservation
 # ---------------------------------------------------------------------------
+
 
 def test_new_correct_fact_preserves_candidate_key():
     """Each new correct fact must have a candidate_key for traceability."""
@@ -186,6 +205,7 @@ def test_new_correct_fact_without_candidate_key_fails_integrity():
 # Document identity mapping
 # ---------------------------------------------------------------------------
 
+
 def test_document_id_is_not_used_as_filename_without_mapping():
     """document_id must not be treated as filename without an explicit mapping.
 
@@ -214,6 +234,7 @@ def test_document_id_is_not_used_as_filename_without_mapping():
 # ---------------------------------------------------------------------------
 # Extracted/projected/selected fact IDs are distinct
 # ---------------------------------------------------------------------------
+
 
 def test_extracted_and_selected_fact_ids_are_distinct():
     """Extracted, projected, and selected fact IDs are recorded separately."""
@@ -285,6 +306,7 @@ def test_selection_failure_uses_selected_fact_ids():
 # Function identity fail-closed
 # ---------------------------------------------------------------------------
 
+
 def test_function_identity_fails_closed():
     """function_identity must raise EvaluationIntegrityError, not hash empty string."""
     # Builtin functions cannot be inspected via getsource
@@ -299,6 +321,7 @@ def test_function_identity_fails_closed():
 # ---------------------------------------------------------------------------
 # Gate counts unique cases not facts
 # ---------------------------------------------------------------------------
+
 
 def test_gate_counts_unique_cases_not_facts():
     """Gate must use case-level counts, not fact-level counts.
@@ -338,6 +361,7 @@ def test_gate_counts_unique_cases_not_facts():
 # ---------------------------------------------------------------------------
 # Integrity failure disables next gate
 # ---------------------------------------------------------------------------
+
 
 def test_integrity_failure_disables_next_gate():
     """When diagnostic_integrity_passed is False, next_gate must be disabled."""
