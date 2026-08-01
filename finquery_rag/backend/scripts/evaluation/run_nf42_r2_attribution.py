@@ -653,8 +653,28 @@ def _build_regression_trace(
     that supported the correct Current answer.  We check whether semantically
     equivalent facts survive in the Structured path at each stage
     (extraction → projection → selection → value).
+
+    If no gold-matching facts are found via ``expected_sources`` (e.g. because
+    the page annotation is imprecise) but the Current path produced a correct
+    raw answer, the actually selected facts are used as a fallback.  This is
+    sound: if Current selected a fact and produced the correct answer, that
+    fact necessarily supported the correct answer.
     """
+    current_raw = current_record.get("raw_answer_correct", False)
+    structured_raw = structured_record.get("raw_answer_correct", False)
+    current_released = current_record.get("released_answer_correct", False)
+    structured_released = structured_record.get("released_answer_correct", False)
+
     current_supporting = set(current_record.get("correct_semantic_keys", []))
+
+    # Fallback: if expected_sources matching yielded no supporting facts but
+    # the Current path produced a correct raw answer, use the actually
+    # selected facts as supporting facts.  This handles cases where the
+    # expected_sources page annotation does not match the actual page of the
+    # correct fact (e.g. label says page 48 but the gold fact is on page 51).
+    if not current_supporting and current_raw:
+        current_supporting = set(current_record.get("selected_semantic_keys", []))
+
     structured_extracted = set(structured_record.get("all_semantic_keys", []))
     structured_projected = set(structured_record.get("projected_semantic_keys", []))
     structured_selected = set(structured_record.get("selected_semantic_keys", []))
@@ -662,11 +682,6 @@ def _build_regression_trace(
 
     current_values = tuple(current_record.get("selected_values", []))
     structured_values = tuple(structured_record.get("selected_values", []))
-
-    current_raw = current_record.get("raw_answer_correct", False)
-    structured_raw = structured_record.get("raw_answer_correct", False)
-    current_released = current_record.get("released_answer_correct", False)
-    structured_released = structured_record.get("released_answer_correct", False)
 
     first_div, cause = classify_regression_cause(
         current_supporting_gold_fact_keys=current_supporting,
