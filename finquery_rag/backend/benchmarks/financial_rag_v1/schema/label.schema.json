@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Financial RAG benchmark label",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["case_id", "expected_answer", "expected_sources", "calculation", "expected_no_answer", "label_status", "review_status"],
+  "properties": {
+    "case_id": {"type": "string", "minLength": 1},
+    "expected_answer": {"type": "object", "required": ["text", "canonical_value", "currency", "unit", "scale", "period", "tolerance"], "properties": {"text": {"type": ["string", "null"]}, "canonical_value": {"type": ["string", "null"]}, "currency": {"type": ["string", "null"]}, "unit": {"type": ["string", "null"]}, "scale": {"type": ["string", "null"]}, "period": {"type": ["string", "null"]}, "tolerance": {"type": ["number", "string", "null"]}, "draft_placeholder": {"type": "boolean"}}, "additionalProperties": false},
+    "expected_sources": {"type": "array", "items": {"$ref": "source.schema.json"}},
+    "calculation": {"type": ["object", "null"], "properties": {"operation": {"enum": ["growth_rate", "difference", "sum", "ratio", "custom"]}, "operands": {"type": "array"}, "formula": {"type": "string"}, "draft_placeholder": {"type": "boolean"}}, "required": ["operation", "operands", "formula"], "additionalProperties": true},
+    "expected_no_answer": {"type": "boolean"},
+    "label_status": {"enum": ["draft", "reviewed", "golden", "sealed"]},
+    "review_status": {"enum": ["unreviewed", "in_review", "reviewed"]},
+    "review_notes": {"type": ["string", "null"]}
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "case_id": "company_001",
+  "benchmark_id": "financial-rag-v1",
+  "company": "Company",
+  "document_scope": ["document_id"],
+  "question": "",
+  "answerable": true,
+  "answer_type": "numeric",
+  "category": ["single_document"],
+  "difficulty": "medium",
+  "requires_calculation": false,
+  "requires_multiple_sources": false,
+  "draft_status": "generated",
+  "authoring_method": "human_or_assisted"
+}

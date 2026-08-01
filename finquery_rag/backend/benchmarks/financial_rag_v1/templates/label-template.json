@@ -1,0 +1,17 @@
+{
+  "case_id": "company_001",
+  "expected_answer": {
+    "text": null,
+    "canonical_value": null,
+    "currency": "USD",
+    "unit": "currency",
+    "scale": "1",
+    "period": "FY2025",
+    "tolerance": null
+  },
+  "expected_sources": [],
+  "calculation": null,
+  "expected_no_answer": false,
+  "label_status": "draft",
+  "review_status": "unreviewed"
+}

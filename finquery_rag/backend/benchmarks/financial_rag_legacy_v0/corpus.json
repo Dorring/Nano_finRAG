@@ -1,0 +1,21 @@
+{
+  "benchmark_id": "financial-rag-legacy-v0",
+  "schema_version": "1.0",
+  "status": "legacy_locked",
+  "source_reference": "finquery_real_eval/real_eval_3docs.jsonl",
+  "document_count": 3,
+  "documents": [
+    {
+      "filename": "FINAL Annual Report.pdf",
+      "document_identity_source": "production registry; resolve at runtime"
+    },
+    {
+      "filename": "leac203.pdf",
+      "document_identity_source": "production registry; resolve at runtime"
+    },
+    {
+      "filename": "wipo_pub_rn2021_18e.pdf",
+      "document_identity_source": "production registry; resolve at runtime"
+    }
+  ]
+}
