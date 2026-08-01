@@ -6,15 +6,58 @@ term-matching heuristics.
 """
 import re
 
+from src.generation.deterministic_observer import (
+    ProductionFactTrace,
+    fact_id,
+    projected_candidate_id,
+)
+from src.retrieval.fact_extractor_provider import (
+    CurrentProductionFactExtractor,
+    DeterministicFactExtractor,
+)
 from src.retrieval.query_processor import QueryProcessor
-from src.generation.deterministic_observer import ProductionFactTrace, fact_id
 
 
 class DeterministicAnswerExtractor:
     """Extract deterministic answers from context without LLM generation."""
 
-    def __init__(self, *, query_processor: QueryProcessor | None = None):
+    def __init__(
+        self,
+        *,
+        query_processor: QueryProcessor | None = None,
+        fact_extractor: DeterministicFactExtractor | None = None,
+    ):
         self._query_processor = query_processor or QueryProcessor()
+        self._fact_extractor = fact_extractor or CurrentProductionFactExtractor()
+
+    @property
+    def fact_extractor(self) -> DeterministicFactExtractor:
+        """The explicitly configured provider; default remains legacy current."""
+        return self._fact_extractor
+
+    def observe_structured_facts(self, query: str, chunks: list, *, observer=None) -> None:
+        """Record shadow facts without altering any production decision.
+
+        This is only active for the explicitly selected structured provider.
+        It lets frozen-context evaluation compare factual extraction coverage
+        even when the unchanged factual selector does not consume a numeric
+        fact candidate.
+        """
+        if (
+            self._fact_extractor.name != "structured_shadow"
+            or self._query_processor.is_numeric_query(query)
+        ):
+            return
+        try:
+            self._fact_extractor.extract(
+                question=query,
+                evidence=tuple(chunks),
+                observer=observer,
+            )
+        except Exception:
+            # An observation/extraction failure must not change a normal
+            # production answer. Formal shadow evaluation inspects its trace.
+            return
 
     def answer_front_matter_query(self, query: str, chunks: list) -> dict | None:
         """Answer deterministic front-matter questions from structured chunks."""
@@ -160,6 +203,14 @@ class DeterministicAnswerExtractor:
         ):
             return None
 
+        # Keep the current implementation byte-for-byte compatible.  The
+        # optional structured provider is a shadow-only alternative and is
+        # deliberately selected before any legacy extraction state is built.
+        if self._fact_extractor.name == "structured_shadow":
+            return self._answer_numeric_query_from_structured_facts(
+                query, chunks, observer=observer
+            )
+
         self._notify_observer(
             observer,
             "on_route_selected",
@@ -237,22 +288,82 @@ class DeterministicAnswerExtractor:
                             evaluation_text=text,
                         ),
                     )
+                retrieval_score = float(chunk.get("rerank_score", chunk.get("score", 0)) or 0)
+                final_score = score + retrieval_score
+                source_span_hash = self._stable_text_hash(text)
+                source_fact_ids = tuple(fid for _, fid in fact_ids)
+                projected_value_hashes = tuple(self._stable_text_hash(v) for v in values)
+                proj_id = projected_candidate_id(
+                    provider="current",
+                    candidate_key=candidate_key,
+                    source_fact_ids=source_fact_ids,
+                    source_span_hash=source_span_hash,
+                    projected_value_hashes=projected_value_hashes,
+                )
+                relation_score = self._numeric_relation_score(query, text)
+                value_granularity = numeric_candidates[0][0] if numeric_candidates else 0.0
+                component_score = 12.0 if component_pairs else 0.0
+                self._notify_observer(
+                    observer,
+                    "on_numeric_candidate_projected",
+                    trace={
+                        "projected_candidate_id": proj_id,
+                        "provider": "current",
+                        "candidate_key": candidate_key,
+                        "candidate_rank": metadata.get("candidate_rank"),
+                        "source_fact_ids": list(source_fact_ids),
+                        "source_span_hash": source_span_hash,
+                        "document_id": metadata.get("document_id") or metadata.get("filename") or metadata.get("doc_name"),
+                        "page": metadata.get("page"),
+                        "projected_text_hash": source_span_hash,
+                        "projected_value_hashes": list(projected_value_hashes),
+                        "metric": None,
+                        "period": None,
+                        "currency": self._observed_currency(values[0]) if values else None,
+                        "unit": self._observed_unit(values[0]) if values else None,
+                        "base_evidence_score": score - anchor_matches * 8.0 - component_score - relation_score - value_granularity,
+                        "anchor_match_count": anchor_matches,
+                        "anchor_conflict_count": anchor_conflicts,
+                        "relation_score": relation_score,
+                        "value_granularity_score": value_granularity,
+                        "component_pair_score": component_score,
+                        "retrieval_score": retrieval_score,
+                        "final_pre_selector_score": final_score,
+                        "pre_selector_rank": None,
+                        "selector_input": False,
+                        "selector_output_rank": None,
+                    },
+                )
                 candidates.append({
-                    "score": score + float(chunk.get("rerank_score", chunk.get("score", 0)) or 0),
+                    "score": final_score,
                     "text": text,
                     "source": source,
                     "values": values,
                     "chunk": chunk,
                     "is_table": metadata.get("type") == "table",
                     "fact_ids": fact_ids,
+                    "_projected_id": proj_id,
                 })
 
         if not candidates:
             return None
         candidates.sort(key=lambda item: (-item["score"], len(item["text"])))
+        ranked_ids = [item.get("_projected_id") for item in candidates]
+        self._notify_observer(
+            observer, "on_pre_selector_ranked",
+            ranked_candidate_ids=ranked_ids,
+        )
+        self._notify_observer(
+            observer, "on_selector_input",
+            input_candidate_ids=ranked_ids,
+        )
         selected = self._select_raw_numeric_evidence(query, candidates, limit=2)
         if not selected:
             return None
+        self._notify_observer(
+            observer, "on_selector_output",
+            output_candidate_ids=[item.get("_projected_id") for item in selected],
+        )
 
         component_pairs = self._component_amount_pairs(query, selected)
         if component_pairs:
@@ -261,6 +372,11 @@ class DeterministicAnswerExtractor:
             values = self._select_answer_values(query, selected)
         if not values:
             return None
+        self._notify_observer(
+            observer, "on_answer_values_selected",
+            values=values,
+            fact_ids=[fid for item in selected for v, fid in item.get("fact_ids", []) if v in values],
+        )
 
         selected_fact_ids = tuple(
             fact_id
@@ -293,6 +409,195 @@ class DeterministicAnswerExtractor:
         return {
             "answer": answer,
             "diagnostic": "raw_child_numeric_evidence",
+            "chunks": [item["chunk"] for item in selected],
+            "selection": [
+                {
+                    "chunk_id": item["chunk"].get("doc_id") or item["chunk"].get("chunk_id"),
+                    "source": item["source"],
+                    "score": round(item["score"], 4),
+                    "values": item["values"],
+                }
+                for item in selected
+            ],
+        }
+
+    def _answer_numeric_query_from_structured_facts(
+        self,
+        query: str,
+        chunks: list,
+        *,
+        observer=None,
+    ) -> dict | None:
+        """Project structured facts into the unchanged numeric selector.
+
+        NF42 R2 correction: this path is NOT an extractor-only A/B.  It also
+        changes fact-to-evidence projection, selector input granularity, and
+        pre-selector scoring.  The selector, renderer, calculator, citation,
+        and validation code paths remain unchanged.
+        """
+        self._notify_observer(
+            observer,
+            "on_route_selected",
+            route="deterministic_numeric_structured_shadow",
+        )
+        facts = self._fact_extractor.extract(
+            question=query,
+            evidence=tuple(chunks),
+            observer=observer,
+        ).facts
+        if not facts:
+            return None
+        query_terms = self._important_query_terms(query)
+        anchors = self._query_anchor_phrases(query)
+        candidates = []
+        for fact in facts:
+            fact_span_hash = self._stable_text_hash(fact.source_text)
+            if not fact.raw_value:
+                self._notify_observer(
+                    observer, "on_fact_projection_excluded",
+                    fact_id=fact.fact_id, reason="missing_raw_value",
+                    source_span_hash=fact_span_hash,
+                )
+                continue
+            text = " ".join(
+                value for value in (fact.metric, fact.period, fact.raw_value) if value
+            )
+            if self._has_metric_year_conflict(query, text):
+                self._notify_observer(
+                    observer, "on_fact_projection_excluded",
+                    fact_id=fact.fact_id, reason="metric_period_conflict",
+                    source_span_hash=fact_span_hash,
+                )
+                continue
+            base_score = self._raw_numeric_evidence_score(text, query, query_terms)
+            matched, conflicts = self._anchor_profile(anchors, text)
+            if conflicts:
+                self._notify_observer(
+                    observer, "on_fact_projection_excluded",
+                    fact_id=fact.fact_id, reason="anchor_conflict",
+                    source_span_hash=fact_span_hash,
+                )
+                continue
+            if anchors and not matched:
+                self._notify_observer(
+                    observer, "on_fact_projection_excluded",
+                    fact_id=fact.fact_id, reason="required_anchor_missing",
+                    source_span_hash=fact_span_hash,
+                )
+                continue
+            relation_score = self._numeric_relation_score(query, text)
+            score = base_score + matched * 8.0 + relation_score
+            if score <= 0:
+                self._notify_observer(
+                    observer, "on_fact_projection_excluded",
+                    fact_id=fact.fact_id, reason="non_positive_score",
+                    source_span_hash=fact_span_hash,
+                )
+                continue
+            source = self._chunk_source_label(fact.chunk)
+            retrieval_score = float(fact.chunk.get("rerank_score", fact.chunk.get("score", 0)) or 0)
+            final_score = score + retrieval_score
+            source_fact_ids = (fact.fact_id,)
+            projected_value_hashes = (self._stable_text_hash(fact.raw_value),)
+            proj_id = projected_candidate_id(
+                provider="structured_shadow",
+                candidate_key=fact.candidate_key,
+                source_fact_ids=source_fact_ids,
+                source_span_hash=fact_span_hash,
+                projected_value_hashes=projected_value_hashes,
+            )
+            self._notify_observer(
+                observer,
+                "on_numeric_candidate_projected",
+                trace={
+                    "projected_candidate_id": proj_id,
+                    "provider": "structured_shadow",
+                    "candidate_key": fact.candidate_key,
+                    "candidate_rank": fact.candidate_rank,
+                    "source_fact_ids": list(source_fact_ids),
+                    "source_span_hash": fact_span_hash,
+                    "document_id": fact.document_id,
+                    "page": fact.page,
+                    "projected_text_hash": self._stable_text_hash(text),
+                    "projected_value_hashes": list(projected_value_hashes),
+                    "metric": fact.metric,
+                    "period": fact.period,
+                    "currency": fact.currency,
+                    "unit": fact.unit,
+                    "base_evidence_score": base_score,
+                    "anchor_match_count": matched,
+                    "anchor_conflict_count": conflicts,
+                    "relation_score": relation_score,
+                    "value_granularity_score": 0.0,
+                    "component_pair_score": 0.0,
+                    "retrieval_score": retrieval_score,
+                    "final_pre_selector_score": final_score,
+                    "pre_selector_rank": None,
+                    "selector_input": False,
+                    "selector_output_rank": None,
+                },
+            )
+            candidates.append({
+                "score": final_score,
+                "text": fact.source_text,
+                "source": source,
+                "values": [fact.raw_value],
+                "chunk": fact.chunk,
+                "is_table": (fact.chunk.get("metadata") or {}).get("type") == "table",
+                "fact_ids": [(fact.raw_value, fact.fact_id)],
+                "_projected_id": proj_id,
+            })
+        if not candidates:
+            return None
+        candidates.sort(key=lambda item: (-item["score"], len(item["text"])))
+        ranked_ids = [item.get("_projected_id") for item in candidates]
+        self._notify_observer(
+            observer, "on_pre_selector_ranked",
+            ranked_candidate_ids=ranked_ids,
+        )
+        self._notify_observer(
+            observer, "on_selector_input",
+            input_candidate_ids=ranked_ids,
+        )
+        selected = self._select_raw_numeric_evidence(query, candidates, limit=2)
+        if not selected:
+            return None
+        self._notify_observer(
+            observer, "on_selector_output",
+            output_candidate_ids=[item.get("_projected_id") for item in selected],
+        )
+        values = self._select_answer_values(query, selected)
+        if not values:
+            return None
+        self._notify_observer(
+            observer, "on_answer_values_selected",
+            values=values,
+            fact_ids=[fid for item in selected for v, fid in item.get("fact_ids", []) if v in values],
+        )
+        selected_fact_ids = tuple(
+            observed_fact_id
+            for item in selected
+            for value, observed_fact_id in item["fact_ids"]
+            if value in values
+        )
+        for observed_fact_id in selected_fact_ids:
+            self._notify_observer(
+                observer,
+                "on_fact_selected",
+                fact_id=observed_fact_id,
+                reason_codes=("raw_numeric_evidence_score", "structured_fact_projection"),
+            )
+        citation = self._inline_source_citation(selected[0].get("source"))
+        answer = f"Answer: {', '.join(values)}{citation}."
+        self._notify_observer(
+            observer,
+            "on_answer_rendered",
+            source_fact_ids=selected_fact_ids,
+            answer_hash=self._stable_text_hash(answer),
+        )
+        return {
+            "answer": answer,
+            "diagnostic": "structured_shadow_numeric_evidence",
             "chunks": [item["chunk"] for item in selected],
             "selection": [
                 {

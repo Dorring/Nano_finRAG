@@ -338,6 +338,9 @@ class RAGOrchestrator:
             deterministic_observer = getattr(
                 evaluation_observer, "deterministic_observer", None
             )
+            self._deterministic_extractor.observe_structured_facts(
+                question, chunks, observer=deterministic_observer
+            )
             raw_numeric_answer = self._deterministic_extractor.answer_numeric_query_from_chunks(
                 question, chunks, observer=deterministic_observer
             )

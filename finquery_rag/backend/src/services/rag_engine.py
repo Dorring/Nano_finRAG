@@ -28,6 +28,7 @@ from src.generation.prompt_builder import get_system_prompt
 from src.generation.llm_gateway import LLMGateway
 from src.generation.response_renderer import validate_answer
 from src.generation.deterministic_answers import DeterministicAnswerExtractor
+from src.retrieval.fact_extractor_provider import build_fact_extractor_provider
 from src.application.rag_orchestrator import RAGOrchestrator
 from src.application.frozen_evaluation import FrozenEvaluationContext
 from src.finance.calculation_pipeline import CalculationPipeline
@@ -75,7 +76,8 @@ class RAGEngine:
                  reranker_model: str | None = None,
                  retrieval_candidate_multiplier: int = 4,
                  enable_calculation_pipeline: bool = True,
-                 enable_validation_pipeline: bool = True):
+                 enable_validation_pipeline: bool = True,
+                 deterministic_fact_extractor: str | None = None):
         """
         RAGEngine 类的初始化方法。
 
@@ -161,8 +163,14 @@ class RAGEngine:
             model_name=self.model_name,
             max_new_tokens=self.max_new_tokens,
         )
+        self._deterministic_fact_extractor = build_fact_extractor_provider(
+            deterministic_fact_extractor
+            if deterministic_fact_extractor is not None
+            else os.getenv("DETERMINISTIC_FACT_EXTRACTOR", "current")
+        )
         self._deterministic_extractor = DeterministicAnswerExtractor(
             query_processor=self._query_processor,
+            fact_extractor=self._deterministic_fact_extractor,
         )
         # Phase 3: Deterministic calculation pipeline. Enabled by default so
         # production callers get calculation support without explicit wiring.
