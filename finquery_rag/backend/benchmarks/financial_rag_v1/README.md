@@ -26,6 +26,13 @@ no-answer templates must all be zero.  A clean quality audit still does not
 promote a record to Golden; `review-status.jsonl` remains the authority for
 human approval.
 
+The current Drafts include an audited answer-key pass for the 64 answerable
+records.  `answer_key_status=entered_unverified` means the numeric answer has
+been entered for annotation work, not that its physical PDF page, row, or
+stable evidence identity has been verified.  The eight no-answer records use
+`pending_negative_evidence` until a reviewer completes a full-text search.
+No answer-keyed Draft is eligible for Baseline, Golden, or Sealed evaluation.
+
 This directory contains the Phase 1 benchmark foundation for eight financial
 reports.  The 72 records in `data/` are **Draft only**: they are generated for
 review and must not be used as Golden, Sealed, or Baseline evaluation data.

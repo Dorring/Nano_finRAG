@@ -185,6 +185,26 @@ def quality_audit(
     no_answer_template_count = sum(
         count - 1 for count in no_answer_types.values() if count > 1
     )
+    answer_key_missing_cases: list[str] = []
+    answer_key_status_missing_cases: list[str] = []
+    source_unverified_count = 0
+    for question in questions_list:
+        if not question.get("answerable", True):
+            continue
+        case_id = str(question.get("case_id"))
+        label = labels_by_id.get(case_id, {})
+        answer = label.get("expected_answer", {})
+        has_scalar = isinstance(answer, Mapping) and answer.get("canonical_value") is not None
+        has_components = isinstance(answer, Mapping) and bool(answer.get("component_values"))
+        if not (has_scalar or has_components):
+            answer_key_missing_cases.append(case_id)
+        if answer.get("answer_key_status") != "entered_unverified":
+            answer_key_status_missing_cases.append(case_id)
+        source_unverified_count += sum(
+            int(not bool(source.get("source_verified")))
+            for source in label.get("expected_sources", [])
+            if isinstance(source, Mapping)
+        )
     golden_case_count = sum(
         int(labels_by_id.get(str(question.get("case_id")), {}).get("label_status") in {"golden", "sealed"})
         for question in questions_list
@@ -205,6 +225,11 @@ def quality_audit(
         "no_answer_template_count": no_answer_template_count,
         "no_answer_type_counts": dict(no_answer_types),
         "no_answer_count": len(no_answer_questions),
+        "answer_key_missing_count": len(answer_key_missing_cases),
+        "answer_key_missing_cases": answer_key_missing_cases,
+        "answer_key_status_missing_count": len(answer_key_status_missing_cases),
+        "answer_key_status_missing_cases": answer_key_status_missing_cases,
+        "source_unverified_count": source_unverified_count,
         "golden_case_count": golden_case_count,
         "quality_valid": not any(
             (
@@ -216,6 +241,8 @@ def quality_audit(
                 placeholder_tables,
                 missing_review_plan,
                 no_answer_template_count,
+                answer_key_missing_cases,
+                answer_key_status_missing_cases,
                 golden_case_count,
             )
         ),
