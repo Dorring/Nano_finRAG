@@ -3,7 +3,7 @@
   "title": "Financial RAG benchmark question",
   "type": "object",
   "additionalProperties": false,
-  "required": ["case_id", "benchmark_id", "company", "document_scope", "question", "answerable", "answer_type", "category", "difficulty", "requires_calculation", "requires_multiple_sources", "draft_status", "authoring_method"],
+  "required": ["case_id", "benchmark_id", "company", "document_scope", "question", "answerable", "answer_type", "category", "difficulty", "requires_calculation", "requires_multiple_sources", "draft_status", "authoring_method", "question_revision", "question_revision_status", "superseded_review_action"],
   "properties": {
     "case_id": {"type": "string", "minLength": 1},
     "benchmark_id": {"const": "financial-rag-v1"},
@@ -22,7 +22,10 @@
     "requested_period": {"type": ["string", "null"]},
     "requested_periods": {"type": "array", "items": {"type": "string", "minLength": 1}},
     "semantic_group": {"type": "string", "minLength": 1},
-    "review_action": {"enum": ["keep", "rewrite", "replace", "manual_source_review"]},
+    "review_action": {"enum": ["manual_answer_source_review", "manual_negative_evidence_review", "needs_question_revision", "needs_answer_revision", "needs_source_revision", "verified"]},
+    "question_revision": {"type": "integer", "minimum": 1},
+    "question_revision_status": {"enum": ["ready_for_human_verification", "in_review", "reviewed"]},
+    "superseded_review_action": {"type": ["string", "null"], "enum": ["keep", "rewrite", "replace", "manual_source_review", null]},
     "output_contract": {"enum": ["report_both", "difference", "percentage_share", "growth_rate_comparison", "higher_and_difference"]},
     "comparison_operands": {"type": "array", "items": {"type": "string", "minLength": 1}},
     "no_answer_type": {"type": "string", "minLength": 1}

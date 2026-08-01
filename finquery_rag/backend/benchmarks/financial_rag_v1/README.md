@@ -33,6 +33,13 @@ stable evidence identity has been verified.  The eight no-answer records use
 `pending_negative_evidence` until a reviewer completes a full-text search.
 No answer-keyed Draft is eligible for Baseline, Golden, or Sealed evaluation.
 
+Phase 1.2 closes the annotation contract: answerable cases use
+`manual_answer_source_review`, no-answer cases use
+`manual_negative_evidence_review`, and `annotation-worklist.jsonl` counts every
+expected evidence record (currently 80, not just the 64 answerable cases).
+Composite answers use component-level values, while percentages declare their
+representation and tolerance explicitly.
+
 This directory contains the Phase 1 benchmark foundation for eight financial
 reports.  The 72 records in `data/` are **Draft only**: they are generated for
 review and must not be used as Golden, Sealed, or Baseline evaluation data.

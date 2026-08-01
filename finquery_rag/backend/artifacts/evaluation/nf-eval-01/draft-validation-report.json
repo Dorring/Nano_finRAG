@@ -43,5 +43,26 @@
     "golden_case_count": 0,
     "quality_valid": true
   },
+  "annotation_contract": {
+    "case_count": 72,
+    "answerable_case_count": 64,
+    "no_answer_case_count": 8,
+    "expected_source_record_count": 80,
+    "verified_source_record_count": 0,
+    "composite_answer_count": 5,
+    "invalid_composite_contract_count": 0,
+    "percentage_answer_count": 12,
+    "percentage_representation_missing_count": 0,
+    "numeric_tolerance_missing_count": 0,
+    "stale_review_action_count": 0,
+    "ready_for_human_verification_count": 72,
+    "candidate_identity_record_count": 0,
+    "candidate_identity_completeness_rate": 0.0,
+    "calculation_pending_count": 11,
+    "negative_evidence_pending_count": 8,
+    "golden_case_count": 0,
+    "ready_for_golden_count": 0,
+    "contract_valid": true
+  },
   "golden_case_count": 0
 }

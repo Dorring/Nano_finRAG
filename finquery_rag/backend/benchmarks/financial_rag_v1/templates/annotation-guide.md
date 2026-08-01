@@ -56,3 +56,10 @@ records remain `pending_negative_evidence` until a full-text negative search
 is documented.  Drafts are never Golden or Sealed.  Promotion requires question, answer,
 source, and (when applicable) calculation review, plus
 `ready_for_golden=true`.
+
+The current review actions are workflow states, not historical edit commands:
+answerable records use `manual_answer_source_review`, and no-answer records use
+`manual_negative_evidence_review`.  The prior `replace` or `rewrite` action is
+retained only as `superseded_review_action`.  Source review is counted per
+expected source record, so a two-source question contributes two evidence
+items to the Golden gate.
