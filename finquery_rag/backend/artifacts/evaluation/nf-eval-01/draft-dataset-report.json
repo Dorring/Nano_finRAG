@@ -1,5 +1,4 @@
 {
-  "benchmark_id": "financial-rag-v1",
   "document_count": 8,
   "draft_question_count": 72,
   "questions_per_document": {
@@ -13,38 +12,28 @@
     "v_fy2025": 9
   },
   "category_counts": {
-    "calculation": 8,
-    "multi_source": 8,
-    "no_answer": 8,
+    "draft": 72,
     "single_document": 24,
     "table_fact": 16,
+    "calculation": 11,
+    "multi_source": 8,
+    "no_answer": 8,
     "unit_scale_period_trap": 8
   },
   "answer_type_counts": {
-    "comparison": 8,
-    "currency": 48,
+    "currency": 42,
+    "percentage": 12,
+    "comparison": 6,
     "no_answer": 8,
-    "percentage": 8
+    "financial_volume": 3,
+    "numeric": 1
   },
   "answerable_count": 64,
   "no_answer_count": 8,
-  "calculation_count": 8,
+  "calculation_count": 11,
   "multi_source_count": 8,
   "duplicate_case_ids": 0,
   "schema_errors": 0,
   "golden_case_count": 0,
-  "draft_only": true,
-  "generated_at": "2026-08-01T15:01:46.562176+00:00",
-  "validation": {
-    "errors": [],
-    "warnings": [],
-    "duplicate_question_ids": [],
-    "duplicate_label_ids": [],
-    "duplicate_review_ids": [],
-    "duplicate_question_texts": [],
-    "question_count": 72,
-    "label_count": 72,
-    "review_count": 72,
-    "schema_valid": true
-  }
+  "draft_quality_valid": true
 }

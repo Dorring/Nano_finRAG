@@ -16,6 +16,7 @@
     "period": {"type": ["string", "null"]},
     "unit": {"type": ["string", "null"]},
     "scale": {"type": ["string", "null"]},
+    "display_scale": {"type": ["string", "null"]},
     "candidate_key": {"type": ["string", "null"]},
     "evidence_id": {"type": ["string", "null"]},
     "row_id": {"type": ["string", "null"]},

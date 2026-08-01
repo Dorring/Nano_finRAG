@@ -11,13 +11,20 @@
     "document_scope": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
     "question": {"type": "string", "minLength": 8},
     "answerable": {"type": "boolean"},
-    "answer_type": {"enum": ["text", "numeric", "currency", "percentage", "date", "comparison", "aggregation", "no_answer"]},
+    "answer_type": {"enum": ["text", "numeric", "currency", "percentage", "date", "comparison", "aggregation", "financial_volume", "no_answer"]},
     "category": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
     "difficulty": {"enum": ["easy", "medium", "hard"]},
     "requires_calculation": {"type": "boolean"},
     "requires_multiple_sources": {"type": "boolean"},
     "draft_status": {"enum": ["generated", "edited", "rejected"]},
     "authoring_method": {"enum": ["human", "assisted", "human_or_assisted"]},
-    "generation_timestamp": {"type": ["string", "null"]}
+    "generation_timestamp": {"type": ["string", "null"]},
+    "requested_period": {"type": ["string", "null"]},
+    "requested_periods": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "semantic_group": {"type": "string", "minLength": 1},
+    "review_action": {"enum": ["keep", "rewrite", "replace", "manual_source_review"]},
+    "output_contract": {"enum": ["report_both", "difference", "percentage_share", "growth_rate_comparison", "higher_and_difference"]},
+    "comparison_operands": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "no_answer_type": {"type": "string", "minLength": 1}
   }
 }

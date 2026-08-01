@@ -19,6 +19,13 @@ The 72 records in `data/*.draft.jsonl` are draft annotations, not Golden or
 Sealed labels.  They require human review of the question, answer, source,
 and calculation fields before entering a formal baseline.
 
+Phase 1.1 applies semantic quality gates before that review: duplicate intent,
+ambiguous metrics, undefined multi-source output contracts, question/label
+period mismatches, generic section/table placeholders, and repeated
+no-answer templates must all be zero.  A clean quality audit still does not
+promote a record to Golden; `review-status.jsonl` remains the authority for
+human approval.
+
 This directory contains the Phase 1 benchmark foundation for eight financial
 reports.  The 72 records in `data/` are **Draft only**: they are generated for
 review and must not be used as Golden, Sealed, or Baseline evaluation data.

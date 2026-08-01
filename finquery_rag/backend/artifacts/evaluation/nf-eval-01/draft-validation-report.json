@@ -10,5 +10,33 @@
   "review_count": 72,
   "schema_valid": true,
   "draft_mode": true,
+  "quality": {
+    "question_count": 72,
+    "semantic_duplicate_count": 0,
+    "semantic_duplicate_groups": {},
+    "ambiguous_metric_count": 0,
+    "ambiguous_metric_cases": [],
+    "undefined_comparison_count": 0,
+    "undefined_comparison_cases": [],
+    "question_label_period_mismatch": 0,
+    "period_mismatch_cases": [],
+    "placeholder_section_count": 0,
+    "placeholder_table_title_count": 0,
+    "missing_review_plan_count": 0,
+    "no_answer_template_count": 0,
+    "no_answer_type_counts": {
+      "internal_model_accuracy": 1,
+      "customer_contract_amount": 1,
+      "plant_level_output": 1,
+      "customer_renewal_rate": 1,
+      "customer_level_revenue": 1,
+      "future_financial_guidance": 1,
+      "customer_specific_future_price": 1,
+      "internal_employee_metric": 1
+    },
+    "no_answer_count": 8,
+    "golden_case_count": 0,
+    "quality_valid": true
+  },
   "golden_case_count": 0
 }
