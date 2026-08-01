@@ -1,0 +1,30 @@
+{
+  "id": "company_001",
+  "company": "Company",
+  "type": "table_fact",
+  "question": "Question text",
+  "expected_answer": {
+    "value": null,
+    "unit": null,
+    "period": null,
+    "currency": null
+  },
+  "expected_sources": [
+    {
+      "document_id": "company_fy2025",
+      "page": 1,
+      "section": "Section title",
+      "table": "Table title",
+      "row": "Row label",
+      "column": "2025"
+    }
+  ],
+  "difficulty": "medium",
+  "requires_calculation": false,
+  "answerable": true,
+  "review": {
+    "status": "draft",
+    "first_reviewer": null,
+    "second_reviewer": null
+  }
+}
