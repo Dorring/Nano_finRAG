@@ -63,3 +63,17 @@ answerable records use `manual_answer_source_review`, and no-answer records use
 retained only as `superseded_review_action`.  Source review is counted per
 expected source record, so a two-source question contributes two evidence
 items to the Golden gate.
+
+## PDF verification and indexed identity
+
+`pdf_page_verified=true` and `pdf_content_verified=true` mean that a reviewer
+or a documented verification pass checked the disclosed value against the
+actual ingested PDF, using the physical 1-based PDF page. These fields do not
+make a source Golden. `source_verified` remains false until the source has a
+stable indexed candidate identity and the human source-review workflow is
+complete. If row-level identity is unavailable, record the limitation rather
+than inventing a `row_id`.
+
+An automated full-document term scan for a no-answer case is provisional
+evidence only. It does not satisfy the manual negative-evidence gate and must
+not set `negative_evidence_reviewed=true`.

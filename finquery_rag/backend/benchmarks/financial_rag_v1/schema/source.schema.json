@@ -20,9 +20,14 @@
     "candidate_key": {"type": ["string", "null"]},
     "identity_granularity": {"enum": ["candidate_key", "evidence_id", "row", "chunk"]},
     "identity_limitation": {"type": ["string", "null"]},
+    "candidate_identity_status": {"enum": ["pending", "bound"]},
     "evidence_id": {"type": ["string", "null"]},
     "row_id": {"type": ["string", "null"]},
     "evidence_type": {"enum": ["text", "table", "table_row", "front_matter"]},
+    "pdf_page_verified": {"type": "boolean"},
+    "pdf_content_verified": {"type": "boolean"},
+    "pdf_verification_method": {"enum": ["pdf_text_and_visual"]},
+    "pdf_verified_at": {"type": ["string", "null"]},
     "source_verified": {"type": "boolean"}
   }
 }

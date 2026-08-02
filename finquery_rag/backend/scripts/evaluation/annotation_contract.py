@@ -38,6 +38,10 @@ def _source_counts(label: Mapping[str, Any]) -> tuple[int, int]:
     return len(sources), sum(int(_has_candidate_identity(source)) for source in sources if isinstance(source, Mapping))
 
 
+def _pdf_source_verified(source: Mapping[str, Any]) -> bool:
+    return bool(source.get("pdf_page_verified")) and bool(source.get("pdf_content_verified"))
+
+
 def ready_for_golden(case: Mapping[str, Any]) -> bool:
     """Return whether one case satisfies every human-review gate."""
     source_count = int(case.get("expected_source_count", 0))
@@ -187,6 +191,11 @@ def build_annotation_worklist(
         label = labels_by_id[case_id]
         review = reviews_by_id[case_id]
         source_count, verified_count = _source_counts(label)
+        pdf_verified_count = sum(
+            int(_pdf_source_verified(source))
+            for source in label.get("expected_sources", [])
+            if isinstance(source, Mapping)
+        )
         item = {
             "case_id": case_id,
             "company": question.get("company"),
@@ -198,6 +207,7 @@ def build_annotation_worklist(
             "negative_evidence_review_status": review.get("negative_evidence_review_status", "not_applicable"),
             "expected_source_count": source_count,
             "verified_source_count": verified_count,
+            "pdf_verified_source_count": pdf_verified_count,
             "all_sources_have_candidate_identity": all(_has_candidate_identity(source) for source in label.get("expected_sources", [])),
             "reviewer": review.get("reviewer"),
             "reviewed_at": review.get("reviewed_at"),
@@ -225,6 +235,12 @@ def annotation_contract_report(
         int(bool(source.get("source_verified")))
         for item in answerable
         for source in labels_by_id[str(item["case_id"])].get("expected_sources", [])
+    )
+    pdf_verified_source_count = sum(
+        int(_pdf_source_verified(source))
+        for item in answerable
+        for source in labels_by_id[str(item["case_id"])].get("expected_sources", [])
+        if isinstance(source, Mapping)
     )
     composite_count = 0
     invalid_composite = 0
@@ -270,6 +286,7 @@ def annotation_contract_report(
         "no_answer_case_count": len(no_answer),
         "expected_source_record_count": source_count,
         "verified_source_record_count": verified_source_count,
+        "pdf_verified_source_record_count": pdf_verified_source_count,
         "composite_answer_count": composite_count,
         "invalid_composite_contract_count": invalid_composite,
         "percentage_answer_count": percentage_count,

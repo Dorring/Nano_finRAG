@@ -27,7 +27,7 @@ def test_repaired_question_has_no_stale_review_action():
     allowed = {"manual_answer_source_review", "manual_negative_evidence_review"}
     assert all(question["review_action"] in allowed for question in questions)
     assert all(label["review_action"] in allowed for label in labels)
-    assert all(question["question_revision"] == 2 for question in questions)
+    assert all(question["question_revision"] in {2, 3} for question in questions)
     assert all(question["question_revision_status"] == "ready_for_human_verification" for question in questions)
     assert all(question["superseded_review_action"] in {"keep", "rewrite", "replace", "manual_source_review"} for question in questions)
 
@@ -97,6 +97,7 @@ def test_source_gate_counts_source_records_not_cases():
     assert report["answerable_case_count"] == 64
     assert report["expected_source_record_count"] == 80
     assert report["verified_source_record_count"] == 0
+    assert report["pdf_verified_source_record_count"] == 80
     assert report["candidate_identity_record_count"] == 0
 
 
