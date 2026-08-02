@@ -1,0 +1,240 @@
+{
+  "bm25": {
+    "recall_at_20": {
+      "all_source_coverage": {
+        "count": 6,
+        "denominator": 16,
+        "rate": 0.375
+      },
+      "case_hit": {
+        "count": 44,
+        "denominator": 64,
+        "rate": 0.6875
+      },
+      "k": 20,
+      "mrr": 0.25236802328702,
+      "source_recall": {
+        "count": 50,
+        "denominator": 80,
+        "rate": 0.625
+      }
+    },
+    "recall_at_40": {
+      "all_source_coverage": {
+        "count": 7,
+        "denominator": 16,
+        "rate": 0.4375
+      },
+      "case_hit": {
+        "count": 51,
+        "denominator": 64,
+        "rate": 0.796875
+      },
+      "k": 40,
+      "mrr": 0.25614858413619496,
+      "source_recall": {
+        "count": 58,
+        "denominator": 80,
+        "rate": 0.725
+      }
+    },
+    "recall_at_5": {
+      "all_source_coverage": {
+        "count": 3,
+        "denominator": 16,
+        "rate": 0.1875
+      },
+      "case_hit": {
+        "count": 29,
+        "denominator": 64,
+        "rate": 0.453125
+      },
+      "k": 5,
+      "mrr": 0.23072916666666665,
+      "source_recall": {
+        "count": 32,
+        "denominator": 80,
+        "rate": 0.4
+      }
+    }
+  },
+  "dense": {
+    "recall_at_20": {
+      "all_source_coverage": {
+        "count": 8,
+        "denominator": 16,
+        "rate": 0.5
+      },
+      "case_hit": {
+        "count": 47,
+        "denominator": 64,
+        "rate": 0.734375
+      },
+      "k": 20,
+      "mrr": 0.341964587619338,
+      "source_recall": {
+        "count": 55,
+        "denominator": 80,
+        "rate": 0.6875
+      }
+    },
+    "recall_at_40": {
+      "all_source_coverage": {
+        "count": 11,
+        "denominator": 16,
+        "rate": 0.6875
+      },
+      "case_hit": {
+        "count": 52,
+        "denominator": 64,
+        "rate": 0.8125
+      },
+      "k": 40,
+      "mrr": 0.34449825319100436,
+      "source_recall": {
+        "count": 63,
+        "denominator": 80,
+        "rate": 0.7875
+      }
+    },
+    "recall_at_5": {
+      "all_source_coverage": {
+        "count": 4,
+        "denominator": 16,
+        "rate": 0.25
+      },
+      "case_hit": {
+        "count": 29,
+        "denominator": 64,
+        "rate": 0.453125
+      },
+      "k": 5,
+      "mrr": 0.31197916666666664,
+      "source_recall": {
+        "count": 33,
+        "denominator": 80,
+        "rate": 0.4125
+      }
+    }
+  },
+  "final": {
+    "recall_at_5": {
+      "all_source_coverage": {
+        "count": 7,
+        "denominator": 16,
+        "rate": 0.4375
+      },
+      "case_hit": {
+        "count": 33,
+        "denominator": 64,
+        "rate": 0.515625
+      },
+      "k": 5,
+      "mrr": 0.3263020833333333,
+      "source_recall": {
+        "count": 40,
+        "denominator": 80,
+        "rate": 0.5
+      }
+    }
+  },
+  "reranker": {
+    "recall_at_20": {
+      "all_source_coverage": {
+        "count": 9,
+        "denominator": 16,
+        "rate": 0.5625
+      },
+      "case_hit": {
+        "count": 50,
+        "denominator": 64,
+        "rate": 0.78125
+      },
+      "k": 20,
+      "mrr": 0.35700466906566947,
+      "source_recall": {
+        "count": 59,
+        "denominator": 80,
+        "rate": 0.7375
+      }
+    },
+    "recall_at_5": {
+      "all_source_coverage": {
+        "count": 7,
+        "denominator": 16,
+        "rate": 0.4375
+      },
+      "case_hit": {
+        "count": 33,
+        "denominator": 64,
+        "rate": 0.515625
+      },
+      "k": 5,
+      "mrr": 0.3263020833333333,
+      "source_recall": {
+        "count": 40,
+        "denominator": 80,
+        "rate": 0.5
+      }
+    }
+  },
+  "rrf": {
+    "recall_at_20": {
+      "all_source_coverage": {
+        "count": 10,
+        "denominator": 16,
+        "rate": 0.625
+      },
+      "case_hit": {
+        "count": 52,
+        "denominator": 64,
+        "rate": 0.8125
+      },
+      "k": 20,
+      "mrr": 0.2802251455786431,
+      "source_recall": {
+        "count": 62,
+        "denominator": 80,
+        "rate": 0.775
+      }
+    },
+    "recall_at_40": {
+      "all_source_coverage": {
+        "count": 12,
+        "denominator": 16,
+        "rate": 0.75
+      },
+      "case_hit": {
+        "count": 59,
+        "denominator": 64,
+        "rate": 0.921875
+      },
+      "k": 40,
+      "mrr": 0.28401163580666555,
+      "source_recall": {
+        "count": 71,
+        "denominator": 80,
+        "rate": 0.8875
+      }
+    },
+    "recall_at_5": {
+      "all_source_coverage": {
+        "count": 3,
+        "denominator": 16,
+        "rate": 0.1875
+      },
+      "case_hit": {
+        "count": 28,
+        "denominator": 64,
+        "rate": 0.4375
+      },
+      "k": 5,
+      "mrr": 0.24192708333333332,
+      "source_recall": {
+        "count": 31,
+        "denominator": 80,
+        "rate": 0.3875
+      }
+    }
+  }
+}

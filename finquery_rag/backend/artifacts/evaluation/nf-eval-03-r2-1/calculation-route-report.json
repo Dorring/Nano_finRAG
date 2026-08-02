@@ -1,0 +1,66 @@
+{
+  "artifact_schema": "nf-eval-03-r2-1/v1",
+  "calculation_case_count": 11,
+  "calculation_route_miss_as_first_failure": 1,
+  "calculation_route_miss_total": 11,
+  "cases": [
+    {
+      "case_id": "aapl_fy2025_006",
+      "execution_mode": "deterministic_fact",
+      "route_missed": true
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "execution_mode": "deterministic_fact",
+      "route_missed": true
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "execution_mode": "deterministic_fact",
+      "route_missed": true
+    },
+    {
+      "case_id": "ko_fy2025_007",
+      "execution_mode": "deterministic_fact",
+      "route_missed": true
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "execution_mode": "deterministic_fact",
+      "route_missed": true
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "execution_mode": "deterministic_fact",
+      "route_missed": true
+    },
+    {
+      "case_id": "nvda_fy2025_006",
+      "execution_mode": "deterministic_fact",
+      "route_missed": true
+    },
+    {
+      "case_id": "pfe_fy2024_006",
+      "execution_mode": "deterministic_fact",
+      "route_missed": true
+    },
+    {
+      "case_id": "tsla_fy2025_006",
+      "execution_mode": "deterministic_fact",
+      "route_missed": true
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "execution_mode": "deterministic_fact",
+      "route_missed": true
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "execution_mode": "deterministic_fact",
+      "route_missed": true
+    }
+  ],
+  "execution_mode_counts": {
+    "deterministic_fact": 11
+  }
+}

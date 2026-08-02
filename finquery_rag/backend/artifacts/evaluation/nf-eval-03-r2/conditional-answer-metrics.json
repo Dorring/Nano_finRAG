@@ -1,0 +1,502 @@
+{
+  "all_gold_in_final": {
+    "case_count": 10,
+    "raw": {
+      "answer_contract_pass": {
+        "count": 1,
+        "denominator": 10,
+        "rate": 0.1
+      },
+      "answer_value_pass": {
+        "count": 2,
+        "denominator": 10,
+        "rate": 0.2
+      },
+      "answerable_case_denominator": 10,
+      "case_denominator": 10,
+      "component_assignment_accuracy": {
+        "count": 2,
+        "denominator": 10,
+        "rate": 0.2
+      },
+      "currency_accuracy": {
+        "count": 2,
+        "denominator": 10,
+        "rate": 0.2
+      },
+      "full_citation_recall_case_rate": 0.4,
+      "grounded_pass": {
+        "count": 0,
+        "denominator": 10,
+        "rate": 0.0
+      },
+      "macro_citation_precision": 0.25,
+      "macro_citation_recall": 0.4,
+      "micro_citation_precision": 0.21052631578947367,
+      "micro_source_recall": 0.45454545454545453,
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "perfect_citation_precision_case_rate": 0.1,
+      "period_accuracy": {
+        "count": 7,
+        "denominator": 10,
+        "rate": 0.7
+      },
+      "raw_available_denominator": 10,
+      "scale_accuracy": {
+        "count": 1,
+        "denominator": 10,
+        "rate": 0.1
+      },
+      "unit_accuracy": {
+        "count": 2,
+        "denominator": 10,
+        "rate": 0.2
+      },
+      "value_accuracy": {
+        "count": 2,
+        "denominator": 10,
+        "rate": 0.2
+      }
+    },
+    "released": {
+      "answer_contract_pass": {
+        "count": 1,
+        "denominator": 10,
+        "rate": 0.1
+      },
+      "answer_value_pass": {
+        "count": 2,
+        "denominator": 10,
+        "rate": 0.2
+      },
+      "answerable_case_denominator": 10,
+      "case_denominator": 10,
+      "component_assignment_accuracy": {
+        "count": 2,
+        "denominator": 10,
+        "rate": 0.2
+      },
+      "currency_accuracy": {
+        "count": 2,
+        "denominator": 10,
+        "rate": 0.2
+      },
+      "full_citation_recall_case_rate": 0.4,
+      "grounded_pass": {
+        "count": 0,
+        "denominator": 10,
+        "rate": 0.0
+      },
+      "macro_citation_precision": 0.25,
+      "macro_citation_recall": 0.4,
+      "micro_citation_precision": 0.21052631578947367,
+      "micro_source_recall": 0.45454545454545453,
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "perfect_citation_precision_case_rate": 0.1,
+      "period_accuracy": {
+        "count": 6,
+        "denominator": 10,
+        "rate": 0.6
+      },
+      "raw_available_denominator": null,
+      "scale_accuracy": {
+        "count": 1,
+        "denominator": 10,
+        "rate": 0.1
+      },
+      "unit_accuracy": {
+        "count": 2,
+        "denominator": 10,
+        "rate": 0.2
+      },
+      "value_accuracy": {
+        "count": 2,
+        "denominator": 10,
+        "rate": 0.2
+      }
+    }
+  },
+  "no_answer_case": {
+    "case_count": 8,
+    "raw": {
+      "answer_contract_pass": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "answer_value_pass": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "answerable_case_denominator": 0,
+      "case_denominator": 6,
+      "component_assignment_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "currency_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "full_citation_recall_case_rate": 1.0,
+      "grounded_pass": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "macro_citation_precision": 1.0,
+      "macro_citation_recall": 1.0,
+      "micro_citation_precision": 1.0,
+      "micro_source_recall": 1.0,
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 6,
+        "rate": 0.0
+      },
+      "perfect_citation_precision_case_rate": 1.0,
+      "period_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "raw_available_denominator": 6,
+      "scale_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "unit_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "value_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      }
+    },
+    "released": {
+      "answer_contract_pass": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "answer_value_pass": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "answerable_case_denominator": 0,
+      "case_denominator": 8,
+      "component_assignment_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "currency_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "full_citation_recall_case_rate": 1.0,
+      "grounded_pass": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "macro_citation_precision": 1.0,
+      "macro_citation_recall": 1.0,
+      "micro_citation_precision": 1.0,
+      "micro_source_recall": 1.0,
+      "no_answer_accuracy": {
+        "count": 2,
+        "denominator": 8,
+        "rate": 0.25
+      },
+      "perfect_citation_precision_case_rate": 1.0,
+      "period_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "raw_available_denominator": null,
+      "scale_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "unit_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "value_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      }
+    }
+  },
+  "no_gold_in_final": {
+    "case_count": 52,
+    "raw": {
+      "answer_contract_pass": {
+        "count": 1,
+        "denominator": 50,
+        "rate": 0.02
+      },
+      "answer_value_pass": {
+        "count": 2,
+        "denominator": 50,
+        "rate": 0.04
+      },
+      "answerable_case_denominator": 50,
+      "case_denominator": 50,
+      "component_assignment_accuracy": {
+        "count": 2,
+        "denominator": 50,
+        "rate": 0.04
+      },
+      "currency_accuracy": {
+        "count": 2,
+        "denominator": 50,
+        "rate": 0.04
+      },
+      "full_citation_recall_case_rate": 0.0,
+      "grounded_pass": {
+        "count": 0,
+        "denominator": 50,
+        "rate": 0.0
+      },
+      "macro_citation_precision": 0.0,
+      "macro_citation_recall": 0.0,
+      "micro_citation_precision": 0.0,
+      "micro_source_recall": 0.0,
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "perfect_citation_precision_case_rate": 0.0,
+      "period_accuracy": {
+        "count": 34,
+        "denominator": 50,
+        "rate": 0.68
+      },
+      "raw_available_denominator": 50,
+      "scale_accuracy": {
+        "count": 1,
+        "denominator": 50,
+        "rate": 0.02
+      },
+      "unit_accuracy": {
+        "count": 2,
+        "denominator": 50,
+        "rate": 0.04
+      },
+      "value_accuracy": {
+        "count": 2,
+        "denominator": 50,
+        "rate": 0.04
+      }
+    },
+    "released": {
+      "answer_contract_pass": {
+        "count": 0,
+        "denominator": 52,
+        "rate": 0.0
+      },
+      "answer_value_pass": {
+        "count": 0,
+        "denominator": 52,
+        "rate": 0.0
+      },
+      "answerable_case_denominator": 52,
+      "case_denominator": 52,
+      "component_assignment_accuracy": {
+        "count": 0,
+        "denominator": 52,
+        "rate": 0.0
+      },
+      "currency_accuracy": {
+        "count": 0,
+        "denominator": 52,
+        "rate": 0.0
+      },
+      "full_citation_recall_case_rate": 0.0,
+      "grounded_pass": {
+        "count": 0,
+        "denominator": 52,
+        "rate": 0.0
+      },
+      "macro_citation_precision": 0.0,
+      "macro_citation_recall": 0.0,
+      "micro_citation_precision": 0.0,
+      "micro_source_recall": 0.0,
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "perfect_citation_precision_case_rate": 0.0,
+      "period_accuracy": {
+        "count": 25,
+        "denominator": 52,
+        "rate": 0.4807692307692308
+      },
+      "raw_available_denominator": null,
+      "scale_accuracy": {
+        "count": 0,
+        "denominator": 52,
+        "rate": 0.0
+      },
+      "unit_accuracy": {
+        "count": 0,
+        "denominator": 52,
+        "rate": 0.0
+      },
+      "value_accuracy": {
+        "count": 0,
+        "denominator": 52,
+        "rate": 0.0
+      }
+    }
+  },
+  "partial_gold_in_final": {
+    "case_count": 2,
+    "raw": {
+      "answer_contract_pass": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      },
+      "answer_value_pass": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      },
+      "answerable_case_denominator": 2,
+      "case_denominator": 2,
+      "component_assignment_accuracy": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      },
+      "currency_accuracy": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      },
+      "full_citation_recall_case_rate": 0.0,
+      "grounded_pass": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      },
+      "macro_citation_precision": 0.5,
+      "macro_citation_recall": 0.5,
+      "micro_citation_precision": 0.5,
+      "micro_source_recall": 0.5,
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "perfect_citation_precision_case_rate": 0.0,
+      "period_accuracy": {
+        "count": 2,
+        "denominator": 2,
+        "rate": 1.0
+      },
+      "raw_available_denominator": 2,
+      "scale_accuracy": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      },
+      "unit_accuracy": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      },
+      "value_accuracy": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      }
+    },
+    "released": {
+      "answer_contract_pass": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      },
+      "answer_value_pass": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      },
+      "answerable_case_denominator": 2,
+      "case_denominator": 2,
+      "component_assignment_accuracy": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      },
+      "currency_accuracy": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      },
+      "full_citation_recall_case_rate": 0.0,
+      "grounded_pass": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      },
+      "macro_citation_precision": 0.5,
+      "macro_citation_recall": 0.5,
+      "micro_citation_precision": 0.5,
+      "micro_source_recall": 0.5,
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "perfect_citation_precision_case_rate": 0.0,
+      "period_accuracy": {
+        "count": 1,
+        "denominator": 2,
+        "rate": 0.5
+      },
+      "raw_available_denominator": null,
+      "scale_accuracy": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      },
+      "unit_accuracy": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      },
+      "value_accuracy": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      }
+    }
+  }
+}

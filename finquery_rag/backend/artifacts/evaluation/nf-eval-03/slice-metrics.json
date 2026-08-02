@@ -1,0 +1,384 @@
+{
+  "bucket": {
+    "calculation": {
+      "citation_precision": {
+        "count": 0,
+        "denominator": 11,
+        "rate": 0.0
+      },
+      "citation_recall": {
+        "count": 5,
+        "denominator": 11,
+        "rate": 0.45454545454545453
+      },
+      "golden_pass": {
+        "count": 0,
+        "denominator": 11,
+        "rate": 0.0
+      },
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "numeric_accuracy": {
+        "count": 0,
+        "denominator": 11,
+        "rate": 0.0
+      }
+    },
+    "fact": {
+      "citation_precision": {
+        "count": 3,
+        "denominator": 24,
+        "rate": 0.125
+      },
+      "citation_recall": {
+        "count": 10,
+        "denominator": 24,
+        "rate": 0.4166666666666667
+      },
+      "golden_pass": {
+        "count": 3,
+        "denominator": 24,
+        "rate": 0.125
+      },
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "numeric_accuracy": {
+        "count": 8,
+        "denominator": 24,
+        "rate": 0.3333333333333333
+      }
+    },
+    "multi_source": {
+      "citation_precision": {
+        "count": 0,
+        "denominator": 5,
+        "rate": 0.0
+      },
+      "citation_recall": {
+        "count": 1,
+        "denominator": 5,
+        "rate": 0.2
+      },
+      "golden_pass": {
+        "count": 0,
+        "denominator": 5,
+        "rate": 0.0
+      },
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "numeric_accuracy": {
+        "count": 0,
+        "denominator": 5,
+        "rate": 0.0
+      }
+    },
+    "no_answer": {
+      "citation_precision": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "citation_recall": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "golden_pass": {
+        "count": 2,
+        "denominator": 8,
+        "rate": 0.25
+      },
+      "no_answer_accuracy": {
+        "count": 2,
+        "denominator": 8,
+        "rate": 0.25
+      },
+      "numeric_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      }
+    },
+    "table_fact": {
+      "citation_precision": {
+        "count": 1,
+        "denominator": 16,
+        "rate": 0.0625
+      },
+      "citation_recall": {
+        "count": 8,
+        "denominator": 16,
+        "rate": 0.5
+      },
+      "golden_pass": {
+        "count": 6,
+        "denominator": 16,
+        "rate": 0.375
+      },
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "numeric_accuracy": {
+        "count": 7,
+        "denominator": 16,
+        "rate": 0.4375
+      }
+    },
+    "unit_scale_period_trap": {
+      "citation_precision": {
+        "count": 0,
+        "denominator": 8,
+        "rate": 0.0
+      },
+      "citation_recall": {
+        "count": 3,
+        "denominator": 8,
+        "rate": 0.375
+      },
+      "golden_pass": {
+        "count": 0,
+        "denominator": 8,
+        "rate": 0.0
+      },
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": 1.0
+      },
+      "numeric_accuracy": {
+        "count": 0,
+        "denominator": 8,
+        "rate": 0.0
+      }
+    }
+  },
+  "company": {
+    "Apple": {
+      "citation_precision": {
+        "count": 1,
+        "denominator": 8,
+        "rate": 0.125
+      },
+      "citation_recall": {
+        "count": 6,
+        "denominator": 8,
+        "rate": 0.75
+      },
+      "golden_pass": {
+        "count": 1,
+        "denominator": 9,
+        "rate": 0.1111111111111111
+      },
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 1,
+        "rate": 0.0
+      },
+      "numeric_accuracy": {
+        "count": 1,
+        "denominator": 8,
+        "rate": 0.125
+      }
+    },
+    "JPMorgan": {
+      "citation_precision": {
+        "count": 0,
+        "denominator": 8,
+        "rate": 0.0
+      },
+      "citation_recall": {
+        "count": 2,
+        "denominator": 8,
+        "rate": 0.25
+      },
+      "golden_pass": {
+        "count": 2,
+        "denominator": 9,
+        "rate": 0.2222222222222222
+      },
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 1,
+        "rate": 0.0
+      },
+      "numeric_accuracy": {
+        "count": 2,
+        "denominator": 8,
+        "rate": 0.25
+      }
+    },
+    "Microsoft": {
+      "citation_precision": {
+        "count": 0,
+        "denominator": 8,
+        "rate": 0.0
+      },
+      "citation_recall": {
+        "count": 3,
+        "denominator": 8,
+        "rate": 0.375
+      },
+      "golden_pass": {
+        "count": 0,
+        "denominator": 9,
+        "rate": 0.0
+      },
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 1,
+        "rate": 0.0
+      },
+      "numeric_accuracy": {
+        "count": 2,
+        "denominator": 8,
+        "rate": 0.25
+      }
+    },
+    "NVIDIA": {
+      "citation_precision": {
+        "count": 1,
+        "denominator": 8,
+        "rate": 0.125
+      },
+      "citation_recall": {
+        "count": 2,
+        "denominator": 8,
+        "rate": 0.25
+      },
+      "golden_pass": {
+        "count": 2,
+        "denominator": 9,
+        "rate": 0.2222222222222222
+      },
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 1,
+        "rate": 0.0
+      },
+      "numeric_accuracy": {
+        "count": 2,
+        "denominator": 8,
+        "rate": 0.25
+      }
+    },
+    "Pfizer": {
+      "citation_precision": {
+        "count": 1,
+        "denominator": 8,
+        "rate": 0.125
+      },
+      "citation_recall": {
+        "count": 3,
+        "denominator": 8,
+        "rate": 0.375
+      },
+      "golden_pass": {
+        "count": 1,
+        "denominator": 9,
+        "rate": 0.1111111111111111
+      },
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 1,
+        "rate": 0.0
+      },
+      "numeric_accuracy": {
+        "count": 2,
+        "denominator": 8,
+        "rate": 0.25
+      }
+    },
+    "Tesla": {
+      "citation_precision": {
+        "count": 0,
+        "denominator": 8,
+        "rate": 0.0
+      },
+      "citation_recall": {
+        "count": 5,
+        "denominator": 8,
+        "rate": 0.625
+      },
+      "golden_pass": {
+        "count": 2,
+        "denominator": 9,
+        "rate": 0.2222222222222222
+      },
+      "no_answer_accuracy": {
+        "count": 0,
+        "denominator": 1,
+        "rate": 0.0
+      },
+      "numeric_accuracy": {
+        "count": 2,
+        "denominator": 8,
+        "rate": 0.25
+      }
+    },
+    "The Coca-Cola Company": {
+      "citation_precision": {
+        "count": 0,
+        "denominator": 8,
+        "rate": 0.0
+      },
+      "citation_recall": {
+        "count": 2,
+        "denominator": 8,
+        "rate": 0.25
+      },
+      "golden_pass": {
+        "count": 1,
+        "denominator": 9,
+        "rate": 0.1111111111111111
+      },
+      "no_answer_accuracy": {
+        "count": 1,
+        "denominator": 1,
+        "rate": 1.0
+      },
+      "numeric_accuracy": {
+        "count": 1,
+        "denominator": 8,
+        "rate": 0.125
+      }
+    },
+    "Visa": {
+      "citation_precision": {
+        "count": 1,
+        "denominator": 8,
+        "rate": 0.125
+      },
+      "citation_recall": {
+        "count": 4,
+        "denominator": 8,
+        "rate": 0.5
+      },
+      "golden_pass": {
+        "count": 2,
+        "denominator": 9,
+        "rate": 0.2222222222222222
+      },
+      "no_answer_accuracy": {
+        "count": 1,
+        "denominator": 1,
+        "rate": 1.0
+      },
+      "numeric_accuracy": {
+        "count": 3,
+        "denominator": 8,
+        "rate": 0.375
+      }
+    }
+  }
+}

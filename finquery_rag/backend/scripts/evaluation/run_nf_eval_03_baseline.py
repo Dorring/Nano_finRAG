@@ -312,6 +312,35 @@ def _matched_sources(expected: list[dict[str, Any]], candidates: list[dict[str, 
     return sum(1 for source in expected if any(_source_matches(source, candidate) for candidate in candidates))
 
 
+_ARTIFACT_TEXT_KEYS = frozenset({
+    "text",
+    "content",
+    "raw_text",
+    "chunk_text",
+    "document_text",
+    "answer",
+    "prompt",
+    "context",
+})
+
+
+def _sanitize_for_artifact(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {
+            key: _sanitize_for_artifact(item)
+            for key, item in value.items()
+            if key not in _ARTIFACT_TEXT_KEYS
+        }
+    if isinstance(value, list):
+        return [_sanitize_for_artifact(item) for item in value]
+    return value
+
+
+def _sanitize_retrieval_debug(debug: dict[str, Any]) -> dict[str, Any]:
+    sanitized = _sanitize_for_artifact(debug)
+    return dict(sanitized) if isinstance(sanitized, dict) else {}
+
+
 def _stage_metrics(labels: list[dict[str, Any]], stage_rankings: dict[str, list[dict[str, Any]]], k: int) -> dict[str, Any]:
     eligible = [label for label in labels if not label.get("expected_no_answer") and label.get("expected_sources")]
     source_total = sum(len(label.get("expected_sources") or []) for label in eligible)
@@ -327,7 +356,8 @@ def _stage_metrics(labels: list[dict[str, Any]], stage_rankings: dict[str, list[
         matched = _matched_sources(expected, ranked)
         case_hits += int(matched > 0)
         source_hits += matched
-        all_hits += int(matched == len(expected))
+        if len(expected) > 1:
+            all_hits += int(matched == len(expected))
         first_rank = next((rank for rank, candidate in enumerate(ranked, 1) if any(_source_matches(source, candidate) for source in expected)), None)
         reciprocal.append(1.0 / first_rank if first_rank else 0.0)
     return {
@@ -417,7 +447,12 @@ async def _run_queries(args: argparse.Namespace, inputs: GoldenInputs) -> tuple[
         case_id = str(question["case_id"])
         label = inputs.labels_by_id[case_id]
         doc_names = [filenames[item] for item in question.get("document_scope", [])]
-        trace = AnswerPipelineTrace(case_id=case_id, trace_id=uuid.uuid4().hex, context_hash="")
+        trace = AnswerPipelineTrace(
+            case_id=case_id,
+            trace_id=uuid.uuid4().hex,
+            context_hash="",
+            context_coverage="not_evaluated",
+        )
         request = QueryRequest(
             question=str(question["question"]),
             document_names=tuple(doc_names),
@@ -478,7 +513,7 @@ async def _run_queries(args: argparse.Namespace, inputs: GoldenInputs) -> tuple[
             "released_citation_precision": released_citation_precision,
             "validation_status": (result.get("validation") or {}).get("status"),
             "repair": result.get("repair"),
-            "retrieval_debug": debug,
+            "retrieval_debug": _sanitize_retrieval_debug(debug),
             "stage_out_of_scope_count": stage_out_of_scope,
             "sources_out_of_scope_count": sources_out_of_scope,
             "retrieved_count": len(retrieved),

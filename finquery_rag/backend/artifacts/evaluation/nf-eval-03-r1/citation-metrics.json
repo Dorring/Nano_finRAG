@@ -1,0 +1,18 @@
+{
+  "raw": {
+    "full_citation_recall_case_rate": 0.06451612903225806,
+    "macro_citation_precision": 0.056451612903225805,
+    "macro_citation_recall": 0.08064516129032258,
+    "micro_citation_precision": 0.04081632653061224,
+    "micro_source_recall": 0.08974358974358974,
+    "perfect_citation_precision_case_rate": 0.016129032258064516
+  },
+  "released": {
+    "full_citation_recall_case_rate": 0.0625,
+    "macro_citation_precision": 0.0546875,
+    "macro_citation_recall": 0.078125,
+    "micro_citation_precision": 0.04,
+    "micro_source_recall": 0.0875,
+    "perfect_citation_precision_case_rate": 0.015625
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "execution_mode_counts": {
+    "deterministic_fact": 54,
+    "llm_generation": 11,
+    "safe_response": 7
+  },
+  "model_chat_completion_requests": 11,
+  "model_invoked_case_count": 11,
+  "model_invoked_case_ids": [
+    "aapl_fy2025_002",
+    "aapl_fy2025_004",
+    "aapl_fy2025_005",
+    "aapl_fy2025_007",
+    "aapl_fy2025_008",
+    "aapl_fy2025_009",
+    "pfe_fy2024_008",
+    "tsla_fy2025_008",
+    "v_fy2025_004",
+    "v_fy2025_007",
+    "v_fy2025_009"
+  ]
+}

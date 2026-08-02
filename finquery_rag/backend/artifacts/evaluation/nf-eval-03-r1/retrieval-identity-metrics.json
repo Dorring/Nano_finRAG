@@ -1,0 +1,288 @@
+{
+  "identity_observability": {
+    "expected_bound_source_count": 80,
+    "identity_observability_passed": true,
+    "missing_candidate_identity_count": 0,
+    "missing_citation_identity_count": 0,
+    "page_fallback_count": 0,
+    "stage_counts": {
+      "bm25": {
+        "candidate_count": 2578,
+        "missing_candidate_identity_count": 0
+      },
+      "dense": {
+        "candidate_count": 2580,
+        "missing_candidate_identity_count": 0
+      },
+      "final": {
+        "candidate_count": 360,
+        "missing_candidate_identity_count": 0
+      },
+      "reranker": {
+        "candidate_count": 1440,
+        "missing_candidate_identity_count": 0
+      },
+      "rrf": {
+        "candidate_count": 2810,
+        "missing_candidate_identity_count": 0
+      }
+    }
+  },
+  "stages": {
+    "bm25": {
+      "recall_at_20": {
+        "case_hit": {
+          "count": 14,
+          "denominator": 64,
+          "rate": 0.21875
+        },
+        "k": 20,
+        "mrr": 0.036006773047214224,
+        "multi_evidence_all_source_coverage": {
+          "count": 0,
+          "denominator": 16,
+          "rate": 0.0
+        },
+        "page_fallback_count": 0,
+        "source_recall": {
+          "count": 14,
+          "denominator": 80,
+          "rate": 0.175
+        }
+      },
+      "recall_at_40": {
+        "case_hit": {
+          "count": 23,
+          "denominator": 64,
+          "rate": 0.359375
+        },
+        "k": 40,
+        "mrr": 0.04090157411699292,
+        "multi_evidence_all_source_coverage": {
+          "count": 1,
+          "denominator": 16,
+          "rate": 0.0625
+        },
+        "page_fallback_count": 0,
+        "source_recall": {
+          "count": 24,
+          "denominator": 80,
+          "rate": 0.3
+        }
+      },
+      "recall_at_5": {
+        "case_hit": {
+          "count": 2,
+          "denominator": 64,
+          "rate": 0.03125
+        },
+        "k": 5,
+        "mrr": 0.01953125,
+        "multi_evidence_all_source_coverage": {
+          "count": 0,
+          "denominator": 16,
+          "rate": 0.0
+        },
+        "page_fallback_count": 0,
+        "source_recall": {
+          "count": 2,
+          "denominator": 80,
+          "rate": 0.025
+        }
+      }
+    },
+    "definitions": {
+      "all_multi_evidence_case_count": 16,
+      "calculation_multi_evidence_case_count": 11,
+      "explicit_multi_source_case_count": 5
+    },
+    "dense": {
+      "recall_at_20": {
+        "case_hit": {
+          "count": 5,
+          "denominator": 64,
+          "rate": 0.078125
+        },
+        "k": 20,
+        "mrr": 0.0275390625,
+        "multi_evidence_all_source_coverage": {
+          "count": 0,
+          "denominator": 16,
+          "rate": 0.0
+        },
+        "page_fallback_count": 0,
+        "source_recall": {
+          "count": 5,
+          "denominator": 80,
+          "rate": 0.0625
+        }
+      },
+      "recall_at_40": {
+        "case_hit": {
+          "count": 9,
+          "denominator": 64,
+          "rate": 0.140625
+        },
+        "k": 40,
+        "mrr": 0.029780795714515473,
+        "multi_evidence_all_source_coverage": {
+          "count": 2,
+          "denominator": 16,
+          "rate": 0.125
+        },
+        "page_fallback_count": 0,
+        "source_recall": {
+          "count": 11,
+          "denominator": 80,
+          "rate": 0.1375
+        }
+      },
+      "recall_at_5": {
+        "case_hit": {
+          "count": 3,
+          "denominator": 64,
+          "rate": 0.046875
+        },
+        "k": 5,
+        "mrr": 0.02395833333333333,
+        "multi_evidence_all_source_coverage": {
+          "count": 0,
+          "denominator": 16,
+          "rate": 0.0
+        },
+        "page_fallback_count": 0,
+        "source_recall": {
+          "count": 3,
+          "denominator": 80,
+          "rate": 0.0375
+        }
+      }
+    },
+    "final": {
+      "recall_at_5": {
+        "case_hit": {
+          "count": 12,
+          "denominator": 64,
+          "rate": 0.1875
+        },
+        "k": 5,
+        "mrr": 0.10338541666666666,
+        "multi_evidence_all_source_coverage": {
+          "count": 1,
+          "denominator": 16,
+          "rate": 0.0625
+        },
+        "page_fallback_count": 0,
+        "source_recall": {
+          "count": 13,
+          "denominator": 80,
+          "rate": 0.1625
+        }
+      }
+    },
+    "reranker": {
+      "recall_at_20": {
+        "case_hit": {
+          "count": 22,
+          "denominator": 64,
+          "rate": 0.34375
+        },
+        "k": 20,
+        "mrr": 0.11955470744533245,
+        "multi_evidence_all_source_coverage": {
+          "count": 2,
+          "denominator": 16,
+          "rate": 0.125
+        },
+        "page_fallback_count": 0,
+        "source_recall": {
+          "count": 24,
+          "denominator": 80,
+          "rate": 0.3
+        }
+      },
+      "recall_at_5": {
+        "case_hit": {
+          "count": 12,
+          "denominator": 64,
+          "rate": 0.1875
+        },
+        "k": 5,
+        "mrr": 0.10338541666666666,
+        "multi_evidence_all_source_coverage": {
+          "count": 1,
+          "denominator": 16,
+          "rate": 0.0625
+        },
+        "page_fallback_count": 0,
+        "source_recall": {
+          "count": 13,
+          "denominator": 80,
+          "rate": 0.1625
+        }
+      }
+    },
+    "rrf": {
+      "recall_at_20": {
+        "case_hit": {
+          "count": 11,
+          "denominator": 64,
+          "rate": 0.171875
+        },
+        "k": 20,
+        "mrr": 0.016740418755221385,
+        "multi_evidence_all_source_coverage": {
+          "count": 0,
+          "denominator": 16,
+          "rate": 0.0
+        },
+        "page_fallback_count": 0,
+        "source_recall": {
+          "count": 11,
+          "denominator": 80,
+          "rate": 0.1375
+        }
+      },
+      "recall_at_40": {
+        "case_hit": {
+          "count": 19,
+          "denominator": 64,
+          "rate": 0.296875
+        },
+        "k": 40,
+        "mrr": 0.021003122225724844,
+        "multi_evidence_all_source_coverage": {
+          "count": 1,
+          "denominator": 16,
+          "rate": 0.0625
+        },
+        "page_fallback_count": 0,
+        "source_recall": {
+          "count": 20,
+          "denominator": 80,
+          "rate": 0.25
+        }
+      },
+      "recall_at_5": {
+        "case_hit": {
+          "count": 1,
+          "denominator": 64,
+          "rate": 0.015625
+        },
+        "k": 5,
+        "mrr": 0.003125,
+        "multi_evidence_all_source_coverage": {
+          "count": 0,
+          "denominator": 16,
+          "rate": 0.0
+        },
+        "page_fallback_count": 0,
+        "source_recall": {
+          "count": 1,
+          "denominator": 80,
+          "rate": 0.0125
+        }
+      }
+    }
+  }
+}

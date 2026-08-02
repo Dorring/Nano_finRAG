@@ -1,0 +1,82 @@
+{
+  "answer_origin_counts": {
+    "llm": 3,
+    "safe_response": 5
+  },
+  "artifact_schema": "nf-eval-03-r2-1/v1",
+  "case_count": 8,
+  "cases": [
+    {
+      "answer_origin": "llm",
+      "answerability_result": "false_positive",
+      "case_id": "aapl_fy2025_008",
+      "primary_failure": "false_answer_llm",
+      "validator_release_result": "unknown",
+      "validator_trace_available": false
+    },
+    {
+      "answer_origin": "safe_response",
+      "answerability_result": "false_positive",
+      "case_id": "jpm_fy2025_008",
+      "primary_failure": "false_answer_deterministic",
+      "validator_release_result": "unknown",
+      "validator_trace_available": false
+    },
+    {
+      "answer_origin": "safe_response",
+      "answerability_result": "correct_rejection",
+      "case_id": "ko_fy2025_008",
+      "primary_failure": "correct_safe_response",
+      "validator_release_result": "unknown",
+      "validator_trace_available": false
+    },
+    {
+      "answer_origin": "safe_response",
+      "answerability_result": "false_positive",
+      "case_id": "msft_fy2025_008",
+      "primary_failure": "false_answer_deterministic",
+      "validator_release_result": "unknown",
+      "validator_trace_available": false
+    },
+    {
+      "answer_origin": "safe_response",
+      "answerability_result": "false_positive",
+      "case_id": "nvda_fy2025_008",
+      "primary_failure": "false_answer_deterministic",
+      "validator_release_result": "unknown",
+      "validator_trace_available": false
+    },
+    {
+      "answer_origin": "llm",
+      "answerability_result": "false_positive",
+      "case_id": "pfe_fy2024_008",
+      "primary_failure": "false_answer_llm",
+      "validator_release_result": "unknown",
+      "validator_trace_available": false
+    },
+    {
+      "answer_origin": "llm",
+      "answerability_result": "false_positive",
+      "case_id": "tsla_fy2025_008",
+      "primary_failure": "false_answer_llm",
+      "validator_release_result": "unknown",
+      "validator_trace_available": false
+    },
+    {
+      "answer_origin": "safe_response",
+      "answerability_result": "correct_rejection",
+      "case_id": "v_fy2025_008",
+      "primary_failure": "correct_safe_response",
+      "validator_release_result": "unknown",
+      "validator_trace_available": false
+    }
+  ],
+  "primary_failure_counts": {
+    "correct_safe_response": 2,
+    "false_answer_deterministic": 3,
+    "false_answer_llm": 3
+  },
+  "validator_release_result_counts": {
+    "unknown": 8
+  }
+}

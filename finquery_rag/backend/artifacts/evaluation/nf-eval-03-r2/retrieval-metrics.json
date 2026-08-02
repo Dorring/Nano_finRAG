@@ -1,0 +1,139 @@
+{
+  "definitions": {
+    "all_multi_evidence_case_count": 16,
+    "calculation_multi_evidence_case_count": 11,
+    "explicit_multi_source_case_count": 5,
+    "reranker_input_source": {
+      "rrf_all": 72
+    },
+    "rrf_ordered_list_is_captured_full_reranker_input": true
+  },
+  "final": {
+    "recall_at_5": {
+      "case_hit": {
+        "count": 12,
+        "denominator": 64,
+        "rate": 0.1875
+      },
+      "k": 5,
+      "mrr": 0.10338541666666666,
+      "multi_evidence_all_source_coverage": {
+        "count": 1,
+        "denominator": 16,
+        "rate": 0.0625
+      },
+      "page_fallback_count": 0,
+      "source_recall": {
+        "count": 13,
+        "denominator": 80,
+        "rate": 0.1625
+      }
+    }
+  },
+  "reranker": {
+    "recall_at_20": {
+      "case_hit": {
+        "count": 22,
+        "denominator": 64,
+        "rate": 0.34375
+      },
+      "k": 20,
+      "mrr": 0.11955470744533245,
+      "multi_evidence_all_source_coverage": {
+        "count": 2,
+        "denominator": 16,
+        "rate": 0.125
+      },
+      "page_fallback_count": 0,
+      "source_recall": {
+        "count": 24,
+        "denominator": 80,
+        "rate": 0.3
+      }
+    },
+    "recall_at_5": {
+      "case_hit": {
+        "count": 12,
+        "denominator": 64,
+        "rate": 0.1875
+      },
+      "k": 5,
+      "mrr": 0.10338541666666666,
+      "multi_evidence_all_source_coverage": {
+        "count": 1,
+        "denominator": 16,
+        "rate": 0.0625
+      },
+      "page_fallback_count": 0,
+      "source_recall": {
+        "count": 13,
+        "denominator": 80,
+        "rate": 0.1625
+      }
+    }
+  },
+  "rrf": {
+    "recall_at_20": {
+      "case_hit": {
+        "count": 11,
+        "denominator": 64,
+        "rate": 0.171875
+      },
+      "k": 20,
+      "mrr": 0.016740418755221385,
+      "multi_evidence_all_source_coverage": {
+        "count": 0,
+        "denominator": 16,
+        "rate": 0.0
+      },
+      "page_fallback_count": 0,
+      "source_recall": {
+        "count": 11,
+        "denominator": 80,
+        "rate": 0.1375
+      }
+    },
+    "recall_at_40": {
+      "case_hit": {
+        "count": 19,
+        "denominator": 64,
+        "rate": 0.296875
+      },
+      "k": 40,
+      "mrr": 0.021003122225724844,
+      "multi_evidence_all_source_coverage": {
+        "count": 1,
+        "denominator": 16,
+        "rate": 0.0625
+      },
+      "page_fallback_count": 0,
+      "source_recall": {
+        "count": 20,
+        "denominator": 80,
+        "rate": 0.25
+      }
+    },
+    "recall_at_5": {
+      "case_hit": {
+        "count": 1,
+        "denominator": 64,
+        "rate": 0.015625
+      },
+      "k": 5,
+      "mrr": 0.003125,
+      "multi_evidence_all_source_coverage": {
+        "count": 0,
+        "denominator": 16,
+        "rate": 0.0
+      },
+      "page_fallback_count": 0,
+      "source_recall": {
+        "count": 1,
+        "denominator": 80,
+        "rate": 0.0125
+      }
+    }
+  },
+  "stage_metrics_comparability_reason": "RRF metrics use Top-40 while production reranker input uses the full RRF list",
+  "stage_metrics_directly_comparable": false
+}

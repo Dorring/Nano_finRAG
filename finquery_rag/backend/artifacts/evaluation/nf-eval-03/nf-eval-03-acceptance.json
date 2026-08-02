@@ -1,0 +1,14 @@
+{
+  "artifact_schema": "nf-eval-03/baseline/v1",
+  "baseline_run_completed": true,
+  "benchmark_id": "financial-rag-v1",
+  "case_count": 72,
+  "decision": "baseline_recorded",
+  "errors": [],
+  "legacy_27_included": false,
+  "model_chat_completion_requests": 11,
+  "production_behavior_changed": false,
+  "scope_integrity_passed": true,
+  "status": "superseded_due_to_metric_semantics",
+  "superseded_by": "nf-eval-03-r1"
+}

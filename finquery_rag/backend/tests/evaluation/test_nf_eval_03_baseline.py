@@ -7,6 +7,7 @@ from scripts.evaluation.run_nf_eval_03_baseline import (
     _answer_correct,
     _load_inputs,
     _numeric_matches,
+    _sanitize_retrieval_debug,
     _stage_metrics,
 )
 
@@ -120,3 +121,51 @@ def test_stage_metrics_use_answerable_source_denominator() -> None:
 
 def test_benchmark_paths_are_inside_backend() -> None:
     assert Path(BENCHMARK, "data", "questions.golden.jsonl").is_file()
+
+
+def test_stage_metrics_all_source_coverage_uses_multi_source_case_denominator() -> None:
+    labels = [
+        {
+            "case_id": "single",
+            "expected_no_answer": False,
+            "expected_sources": [{"filename": "a.pdf", "page": 1, "evidence_id": "a"}],
+        },
+        {
+            "case_id": "multi",
+            "expected_no_answer": False,
+            "expected_sources": [
+                {"filename": "a.pdf", "page": 1, "evidence_id": "a"},
+                {"filename": "a.pdf", "page": 2, "evidence_id": "b"},
+            ],
+        },
+    ]
+    rankings = {
+        "single": [{"filename": "a.pdf", "page": 1, "evidence_id": "a"}],
+        "multi": [
+            {"filename": "a.pdf", "page": 1, "evidence_id": "a"},
+            {"filename": "a.pdf", "page": 2, "evidence_id": "b"},
+        ],
+    }
+
+    metrics = _stage_metrics(labels, rankings, 5)
+
+    assert metrics["all_source_coverage"] == {"count": 1, "denominator": 1, "rate": 1.0}
+
+
+def test_artifact_debug_drops_candidate_text() -> None:
+    debug = {
+        "candidate_stages": {
+            "final": [
+                {"document_id": "doc-1", "page": 3, "text": "document body"},
+            ],
+        },
+        "query_variants": [{"name": "original", "text": "question text"}],
+    }
+
+    sanitized = _sanitize_retrieval_debug(debug)
+
+    assert sanitized["candidate_stages"]["final"][0] == {
+        "document_id": "doc-1",
+        "page": 3,
+    }
+    assert sanitized["query_variants"][0] == {"name": "original"}
