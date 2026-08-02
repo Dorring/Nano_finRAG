@@ -1,0 +1,63 @@
+{
+  "raw": {
+    "citation_precision": {
+      "count": 4,
+      "denominator": 64,
+      "rate": 0.0625
+    },
+    "citation_recall": {
+      "count": 27,
+      "denominator": 64,
+      "rate": 0.421875
+    },
+    "golden_pass": {
+      "count": 15,
+      "denominator": 72,
+      "rate": 0.20833333333333334
+    },
+    "no_answer_accuracy": {
+      "count": 2,
+      "denominator": 8,
+      "rate": 0.25
+    },
+    "numeric_accuracy": {
+      "count": 15,
+      "denominator": 64,
+      "rate": 0.234375
+    }
+  },
+  "raw_available_count": 68,
+  "released": {
+    "citation_precision": {
+      "count": 4,
+      "denominator": 64,
+      "rate": 0.0625
+    },
+    "citation_recall": {
+      "count": 27,
+      "denominator": 64,
+      "rate": 0.421875
+    },
+    "golden_pass": {
+      "count": 11,
+      "denominator": 72,
+      "rate": 0.1527777777777778
+    },
+    "no_answer_accuracy": {
+      "count": 2,
+      "denominator": 8,
+      "rate": 0.25
+    },
+    "numeric_accuracy": {
+      "count": 15,
+      "denominator": 64,
+      "rate": 0.234375
+    }
+  },
+  "repair_attempt_count": 68,
+  "validator_status_counts": {
+    "None": 4,
+    "passed": 53,
+    "repairable": 15
+  }
+}
