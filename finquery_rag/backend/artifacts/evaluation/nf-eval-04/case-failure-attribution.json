@@ -1,0 +1,1168 @@
+{
+  "answerable_case_count": 64,
+  "records": [
+    {
+      "case_class": "all_gold_case",
+      "case_id": "aapl_fy2025_001",
+      "company": "Apple",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "all",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "aapl_fy2025_002",
+      "company": "Apple",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "not_retrieved_by_bm25_top200": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "aapl_fy2025_003",
+      "company": "Apple",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "all",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "aapl_fy2025_004",
+      "company": "Apple",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "bm25_window_truncation": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "aapl_fy2025_005",
+      "company": "Apple",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "bm25_window_truncation": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "aapl_fy2025_006",
+      "company": "Apple",
+      "expected_source_count": 2,
+      "matched_sources_in_diagnostic_rrf": 2,
+      "matched_sources_in_diagnostic_union": 2,
+      "matched_sources_in_production_rrf": 2,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "all",
+      "source_failure_stages": {
+        "entered_rrf_pool": 2
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "partial_gold_case",
+      "case_id": "aapl_fy2025_007",
+      "company": "Apple",
+      "expected_source_count": 2,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 1,
+      "rrf_coverage": "partial",
+      "rrf_top40_coverage": "partial",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1,
+        "not_retrieved_by_bm25_top200": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "aapl_fy2025_009",
+      "company": "Apple",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "all",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "jpm_fy2025_001",
+      "company": "JPMorgan",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "not_retrieved_by_bm25_top200": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "jpm_fy2025_002",
+      "company": "JPMorgan",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "bm25_window_truncation": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "jpm_fy2025_003",
+      "company": "JPMorgan",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "not_retrieved_by_bm25_top200": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "jpm_fy2025_004",
+      "company": "JPMorgan",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "not_retrieved_by_bm25_top200": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "jpm_fy2025_005",
+      "company": "JPMorgan",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "jpm_fy2025_006",
+      "company": "JPMorgan",
+      "expected_source_count": 2,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 2,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "not_retrieved_by_bm25_top200": 2
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "jpm_fy2025_007",
+      "company": "JPMorgan",
+      "expected_source_count": 2,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 2,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "not_retrieved_by_bm25_top200": 2
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "jpm_fy2025_009",
+      "company": "JPMorgan",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "not_retrieved_by_bm25_top200": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "ko_fy2025_001",
+      "company": "The Coca-Cola Company",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "bm25_window_truncation": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "ko_fy2025_002",
+      "company": "The Coca-Cola Company",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "not_retrieved_by_bm25_top200": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "ko_fy2025_003",
+      "company": "The Coca-Cola Company",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "all",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "ko_fy2025_004",
+      "company": "The Coca-Cola Company",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "bm25_window_truncation": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "ko_fy2025_005",
+      "company": "The Coca-Cola Company",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "bm25_window_truncation": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "ko_fy2025_006",
+      "company": "The Coca-Cola Company",
+      "expected_source_count": 2,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 2,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "not_retrieved_by_bm25_top200": 2
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "ko_fy2025_007",
+      "company": "The Coca-Cola Company",
+      "expected_source_count": 2,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 2,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "not_retrieved_by_bm25_top200": 2
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "ko_fy2025_009",
+      "company": "The Coca-Cola Company",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "bm25_window_truncation": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "msft_fy2025_001",
+      "company": "Microsoft",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "all",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "msft_fy2025_002",
+      "company": "Microsoft",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "msft_fy2025_003",
+      "company": "Microsoft",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "all",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "msft_fy2025_004",
+      "company": "Microsoft",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "all",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "msft_fy2025_005",
+      "company": "Microsoft",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "msft_fy2025_006",
+      "company": "Microsoft",
+      "expected_source_count": 2,
+      "matched_sources_in_diagnostic_rrf": 2,
+      "matched_sources_in_diagnostic_union": 2,
+      "matched_sources_in_production_rrf": 2,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "entered_rrf_pool": 2
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "msft_fy2025_007",
+      "company": "Microsoft",
+      "expected_source_count": 2,
+      "matched_sources_in_diagnostic_rrf": 2,
+      "matched_sources_in_diagnostic_union": 2,
+      "matched_sources_in_production_rrf": 2,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "partial",
+      "source_failure_stages": {
+        "entered_rrf_pool": 2
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "msft_fy2025_009",
+      "company": "Microsoft",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "all",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "nvda_fy2025_001",
+      "company": "NVIDIA",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "not_retrieved_by_bm25_top200": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "nvda_fy2025_002",
+      "company": "NVIDIA",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "bm25_window_truncation": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "nvda_fy2025_003",
+      "company": "NVIDIA",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "all",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "nvda_fy2025_004",
+      "company": "NVIDIA",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "nvda_fy2025_005",
+      "company": "NVIDIA",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "bm25_window_truncation": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "nvda_fy2025_006",
+      "company": "NVIDIA",
+      "expected_source_count": 2,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 2,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "not_retrieved_by_bm25_top200": 2
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "partial_gold_case",
+      "case_id": "nvda_fy2025_007",
+      "company": "NVIDIA",
+      "expected_source_count": 2,
+      "matched_sources_in_diagnostic_rrf": 2,
+      "matched_sources_in_diagnostic_union": 2,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 1,
+      "rrf_coverage": "partial",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "bm25_window_truncation": 1,
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "nvda_fy2025_009",
+      "company": "NVIDIA",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "all",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "pfe_fy2024_001",
+      "company": "Pfizer",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "bm25_window_truncation": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "pfe_fy2024_002",
+      "company": "Pfizer",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "missed_by_both_retrievers": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "pfe_fy2024_003",
+      "company": "Pfizer",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "missed_by_both_retrievers": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "pfe_fy2024_004",
+      "company": "Pfizer",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "dense_window_truncation": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "pfe_fy2024_005",
+      "company": "Pfizer",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "all",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "pfe_fy2024_006",
+      "company": "Pfizer",
+      "expected_source_count": 2,
+      "matched_sources_in_diagnostic_rrf": 2,
+      "matched_sources_in_diagnostic_union": 2,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 2,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "bm25_window_truncation": 2
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "partial_gold_case",
+      "case_id": "pfe_fy2024_007",
+      "company": "Pfizer",
+      "expected_source_count": 2,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 1,
+      "rrf_coverage": "partial",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1,
+        "missed_by_both_retrievers": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "pfe_fy2024_009",
+      "company": "Pfizer",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "missed_by_both_retrievers": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "tsla_fy2025_001",
+      "company": "Tesla",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "tsla_fy2025_002",
+      "company": "Tesla",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "bm25_window_truncation": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "tsla_fy2025_003",
+      "company": "Tesla",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "tsla_fy2025_004",
+      "company": "Tesla",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "all",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "tsla_fy2025_005",
+      "company": "Tesla",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "both_windows_truncated": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "tsla_fy2025_006",
+      "company": "Tesla",
+      "expected_source_count": 2,
+      "matched_sources_in_diagnostic_rrf": 2,
+      "matched_sources_in_diagnostic_union": 2,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 2,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "bm25_window_truncation": 2
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "partial_gold_case",
+      "case_id": "tsla_fy2025_007",
+      "company": "Tesla",
+      "expected_source_count": 2,
+      "matched_sources_in_diagnostic_rrf": 2,
+      "matched_sources_in_diagnostic_union": 2,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 1,
+      "rrf_coverage": "partial",
+      "rrf_top40_coverage": "partial",
+      "source_failure_stages": {
+        "bm25_window_truncation": 1,
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "tsla_fy2025_009",
+      "company": "Tesla",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "all",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "v_fy2025_001",
+      "company": "Visa",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "bm25_window_truncation": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "v_fy2025_002",
+      "company": "Visa",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "not_retrieved_by_bm25_top200": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "all_gold_case",
+      "case_id": "v_fy2025_003",
+      "company": "Visa",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 0,
+      "rrf_coverage": "all",
+      "rrf_top40_coverage": "all",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "v_fy2025_004",
+      "company": "Visa",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "bm25_window_truncation": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "v_fy2025_005",
+      "company": "Visa",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "not_retrieved_by_bm25_top200": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "v_fy2025_006",
+      "company": "Visa",
+      "expected_source_count": 2,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 2,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "bm25_window_truncation": 1,
+        "missed_by_both_retrievers": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "partial_gold_case",
+      "case_id": "v_fy2025_007",
+      "company": "Visa",
+      "expected_source_count": 2,
+      "matched_sources_in_diagnostic_rrf": 1,
+      "matched_sources_in_diagnostic_union": 1,
+      "matched_sources_in_production_rrf": 1,
+      "missing_source_count": 1,
+      "rrf_coverage": "partial",
+      "rrf_top40_coverage": "partial",
+      "source_failure_stages": {
+        "entered_rrf_pool": 1,
+        "not_retrieved_by_bm25_top200": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    },
+    {
+      "case_class": "none_gold_case",
+      "case_id": "v_fy2025_009",
+      "company": "Visa",
+      "expected_source_count": 1,
+      "matched_sources_in_diagnostic_rrf": 0,
+      "matched_sources_in_diagnostic_union": 0,
+      "matched_sources_in_production_rrf": 0,
+      "missing_source_count": 1,
+      "rrf_coverage": "none",
+      "rrf_top40_coverage": "none",
+      "source_failure_stages": {
+        "not_retrieved_by_bm25_top200": 1
+      },
+      "terminology_categories": [
+        "exact_metric_match"
+      ]
+    }
+  ],
+  "rrf_coverage_counts": {
+    "all": 23,
+    "none": 36,
+    "partial": 5
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "affected_case_count": 41,
+  "case_counts": {
+    "bm25_query_terminology": 0,
+    "candidate_window": 13,
+    "dense_coverage": 53,
+    "parent_child": 0,
+    "rrf_fusion": 0
+  },
+  "gate_selection_method": "unique_case_count_and_fixed_threshold",
+  "optimization_allowed": false,
+  "passing_gates": [
+    "candidate_window",
+    "dense_coverage"
+  ],
+  "selected_gate": "dense_coverage",
+  "thresholds": {
+    "bm25_query_terminology": 12,
+    "candidate_window": 12,
+    "dense_coverage": 12,
+    "parent_child": 8,
+    "rrf_fusion": 8
+  }
+}
