@@ -1,0 +1,21 @@
+{
+  "artifact_schema": "nf-eval-02/golden-evidence-binding/v1",
+  "binding_methods": {
+    "full_index_document_page_search": 15,
+    "parent_table_row_expansion": 53,
+    "top20_exact": 12
+  },
+  "bound_candidate_identity_count": 80,
+  "corpus_hash": "edd4e8c1aac89ea1480dcb723857b487cb6038218d0a924b749eb6ec8fd13448",
+  "expected_source_record_count": 80,
+  "question_hash": "3b1433ea7546020ec7ab90a9cb700bb58d90aa040f65e6610d6bc5b1330e97b7",
+  "reference_answer_hash": "181c9ed45ae904353431ef6d427b139e1d5f0b8f437c2fdd9f25e2f9b7abb7a7",
+  "source_verified_count": 80,
+  "status_counts": {
+    "ambiguous": 0,
+    "bound": 80,
+    "missing_from_index": 0,
+    "out_of_scope": 0
+  },
+  "tenant_id": 1
+}

@@ -1,0 +1,177 @@
+{
+  "artifact_schema": "nf-eval-02/golden-evidence-binding/v1",
+  "case_count": 8,
+  "cases": [
+    {
+      "case_id": "aapl_fy2025_008",
+      "document_id": "aapl_fy2025",
+      "full_document_search_completed": true,
+      "human_negative_evidence_reviewed": true,
+      "manual_review_log_present": true,
+      "negative_evidence_reviewed": true,
+      "positive_match_count": 0,
+      "positive_quantitative_match_count": 0,
+      "reviewed_at": "2026-08-02",
+      "searched_synonyms": [
+        "model accuracy",
+        "accuracy metric",
+        "model performance",
+        "artificial intelligence accuracy"
+      ],
+      "searched_terms": [
+        "internal model accuracy",
+        "Apple"
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_008",
+      "document_id": "jpm_fy2025",
+      "full_document_search_completed": true,
+      "human_negative_evidence_reviewed": true,
+      "manual_review_log_present": true,
+      "negative_evidence_reviewed": true,
+      "positive_match_count": 2,
+      "positive_quantitative_match_count": 0,
+      "reviewed_at": "2026-08-02",
+      "searched_synonyms": [
+        "client contract amount",
+        "customer contract value",
+        "individual client",
+        "contract value"
+      ],
+      "searched_terms": [
+        "customer contract amount",
+        "JPMorgan"
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_008",
+      "document_id": "ko_fy2025",
+      "full_document_search_completed": true,
+      "human_negative_evidence_reviewed": true,
+      "manual_review_log_present": true,
+      "negative_evidence_reviewed": true,
+      "positive_match_count": 0,
+      "positive_quantitative_match_count": 0,
+      "reviewed_at": "2026-08-02",
+      "searched_synonyms": [
+        "plant output",
+        "production volume",
+        "named plant",
+        "facility output",
+        "plant capacity"
+      ],
+      "searched_terms": [
+        "plant level output",
+        "The Coca-Cola Company"
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_008",
+      "document_id": "msft_fy2025",
+      "full_document_search_completed": true,
+      "human_negative_evidence_reviewed": true,
+      "manual_review_log_present": true,
+      "negative_evidence_reviewed": true,
+      "positive_match_count": 0,
+      "positive_quantitative_match_count": 0,
+      "reviewed_at": "2026-08-02",
+      "searched_synonyms": [
+        "contract renewal",
+        "customer retention",
+        "renewal rate",
+        "customer churn"
+      ],
+      "searched_terms": [
+        "customer renewal rate",
+        "Microsoft"
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_008",
+      "document_id": "nvda_fy2025",
+      "full_document_search_completed": true,
+      "human_negative_evidence_reviewed": true,
+      "manual_review_log_present": true,
+      "negative_evidence_reviewed": true,
+      "positive_match_count": 2,
+      "positive_quantitative_match_count": 0,
+      "reviewed_at": "2026-08-02",
+      "searched_synonyms": [
+        "customer concentration",
+        "individual customer revenue",
+        "customer revenue",
+        "data center customer"
+      ],
+      "searched_terms": [
+        "customer level revenue",
+        "NVIDIA"
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_008",
+      "document_id": "pfe_fy2024",
+      "full_document_search_completed": true,
+      "human_negative_evidence_reviewed": true,
+      "manual_review_log_present": true,
+      "negative_evidence_reviewed": true,
+      "positive_match_count": 30,
+      "positive_quantitative_match_count": 0,
+      "reviewed_at": "2026-08-02",
+      "searched_synonyms": [
+        "financial guidance",
+        "2026 guidance",
+        "fiscal 2026 outlook",
+        "projected 2026 results",
+        "forecast"
+      ],
+      "searched_terms": [
+        "future financial guidance",
+        "Pfizer"
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_008",
+      "document_id": "tsla_fy2025",
+      "full_document_search_completed": true,
+      "human_negative_evidence_reviewed": true,
+      "manual_review_log_present": true,
+      "negative_evidence_reviewed": true,
+      "positive_match_count": 0,
+      "positive_quantitative_match_count": 0,
+      "reviewed_at": "2026-08-02",
+      "searched_synonyms": [
+        "customer purchase price",
+        "future purchase price",
+        "guaranteed purchase price",
+        "2026 price"
+      ],
+      "searched_terms": [
+        "customer specific future price",
+        "Tesla"
+      ]
+    },
+    {
+      "case_id": "v_fy2025_008",
+      "document_id": "v_fy2025",
+      "full_document_search_completed": true,
+      "human_negative_evidence_reviewed": true,
+      "manual_review_log_present": true,
+      "negative_evidence_reviewed": true,
+      "positive_match_count": 0,
+      "positive_quantitative_match_count": 0,
+      "reviewed_at": "2026-08-02",
+      "searched_synonyms": [
+        "employee performance metric",
+        "employee accuracy",
+        "internal performance metric",
+        "employee score"
+      ],
+      "searched_terms": [
+        "internal employee metric",
+        "Visa"
+      ]
+    }
+  ],
+  "reviewed_count": 8
+}
