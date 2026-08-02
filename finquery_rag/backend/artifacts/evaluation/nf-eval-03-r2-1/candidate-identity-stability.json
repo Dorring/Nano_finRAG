@@ -1,0 +1,12 @@
+{
+  "anomalous_cases": [],
+  "artifact_schema": "nf-eval-03-r2-1/v1",
+  "candidate_identity_changed_between_stages": 0,
+  "candidate_identity_stability_passed": true,
+  "missing_identity_by_stage": {
+    "final": 0,
+    "reranker": 0,
+    "reranker_input": 0,
+    "rrf": 0
+  }
+}

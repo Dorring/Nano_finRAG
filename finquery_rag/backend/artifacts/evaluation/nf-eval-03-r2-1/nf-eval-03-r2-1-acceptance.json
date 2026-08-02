@@ -1,0 +1,13 @@
+{
+  "artifact_schema": "nf-eval-03-r2-1/v1",
+  "candidate_identity_stability_passed": true,
+  "candidate_lineage_integrity_passed": true,
+  "decision": "formal_baseline_attribution_closed",
+  "failure_attribution_semantics_verified": true,
+  "model_chat_completion_requests": 0,
+  "model_chat_completion_requests_for_r2_1": 0,
+  "optimization_allowed": false,
+  "production_behavior_changed": false,
+  "production_queries_executed": 0,
+  "retrieval_artifact_reused": true
+}

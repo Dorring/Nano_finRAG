@@ -1,0 +1,30 @@
+{
+  "answerable_case_count": 64,
+  "artifact_schema": "nf-eval-03-r2-1/v1",
+  "case_count": 72,
+  "coverage_uses_unique_candidate_keys": true,
+  "no_answer_case_count": 8,
+  "not_all_gold_in_rrf_pool": 41,
+  "stage_coverage_counts": {
+    "final": {
+      "all": 10,
+      "none": 52,
+      "partial": 2
+    },
+    "reranker_input": {
+      "all": 23,
+      "none": 36,
+      "partial": 5
+    },
+    "reranker_output": {
+      "all": 16,
+      "none": 42,
+      "partial": 6
+    },
+    "rrf": {
+      "all": 23,
+      "none": 36,
+      "partial": 5
+    }
+  }
+}
