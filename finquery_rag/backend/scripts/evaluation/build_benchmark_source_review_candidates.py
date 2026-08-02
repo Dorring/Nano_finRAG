@@ -146,9 +146,51 @@ def build_candidates(
 
     os.environ["CHROMA_PATH"] = str(chroma_path)
     from src.services.retrieval import SqliteBM25Retriever
-    from src.services.vector_store import query_multiple_collections
+    from src.services import vector_store
 
-    bm25 = SqliteBM25Retriever(db_path=str(bm25_db_path))
+    # Bypass the retriever constructor's schema migration hook. The review
+    # builder must only read the already-built BM25 index.
+    bm25 = object.__new__(SqliteBM25Retriever)
+    bm25.db_path = str(bm25_db_path)
+    chroma_client = vector_store.get_chroma_client()
+    collection = chroma_client.get_collection(
+        name=vector_store.GLOBAL_COLLECTION_NAME,
+        embedding_function=vector_store.embed_fn,
+    )
+
+    def query_dense(query: str, filenames: list[str]) -> list[dict[str, Any]]:
+        result = collection.query(
+            query_texts=[query],
+            n_results=max(top_k, top_k * 4),
+            where={
+                "$and": [
+                    {"user_id": tenant_id},
+                    {"doc_name": {"$in": filenames}},
+                ]
+            },
+            include=["documents", "metadatas", "distances"],
+        )
+        rows: list[dict[str, Any]] = []
+        for doc_id, content, metadata, distance in zip(
+            result.get("ids", [[]])[0],
+            result.get("documents", [[]])[0],
+            result.get("metadatas", [[]])[0],
+            result.get("distances", [[]])[0],
+        ):
+            metadata = metadata if isinstance(metadata, dict) else {}
+            if metadata.get("type") == "table_cell":
+                continue
+            rows.append(
+                {
+                    "doc_id": doc_id,
+                    "content": content,
+                    "metadata": metadata,
+                    "score": 1 - float(distance),
+                }
+            )
+            if len(rows) >= top_k:
+                break
+        return rows
     output_records: dict[str, list[dict[str, Any]]] = defaultdict(list)
     scope_rejected = 0
     candidate_count = 0
@@ -181,12 +223,7 @@ def build_candidates(
             bm25_candidates.append(raw)
             if len(bm25_candidates) >= top_k:
                 break
-        raw_dense = query_multiple_collections(
-            scope_filenames,
-            str(question["question"]),
-            n_results=top_k,
-            user_id=tenant_id,
-        )
+        raw_dense = query_dense(str(question["question"]), scope_filenames)
         dense_candidates = [
             item
             for item in raw_dense
