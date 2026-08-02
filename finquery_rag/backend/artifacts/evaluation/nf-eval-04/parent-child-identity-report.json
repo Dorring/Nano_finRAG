@@ -1,0 +1,91 @@
+{
+  "exact_identity_recall_sources": 31,
+  "gold_source_count": 80,
+  "parent_child_identity_mismatch_count": 0,
+  "records": [
+    {
+      "case_id": "msft_fy2025_005",
+      "gold_candidate_key": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+      "reason": "same-page_or_parent_observation_is_not_equivalence",
+      "retrievable_parent_observed": true,
+      "source_index": 0,
+      "verified_equivalence": false
+    },
+    {
+      "case_id": "pfe_fy2024_002",
+      "gold_candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+      "reason": "same-page_or_parent_observation_is_not_equivalence",
+      "retrievable_parent_observed": true,
+      "source_index": 0,
+      "verified_equivalence": false
+    },
+    {
+      "case_id": "pfe_fy2024_003",
+      "gold_candidate_key": "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e",
+      "reason": "same-page_or_parent_observation_is_not_equivalence",
+      "retrievable_parent_observed": true,
+      "source_index": 0,
+      "verified_equivalence": false
+    },
+    {
+      "case_id": "pfe_fy2024_004",
+      "gold_candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+      "reason": "same-page_or_parent_observation_is_not_equivalence",
+      "retrievable_parent_observed": true,
+      "source_index": 0,
+      "verified_equivalence": false
+    },
+    {
+      "case_id": "pfe_fy2024_005",
+      "gold_candidate_key": "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e",
+      "reason": "same-page_or_parent_observation_is_not_equivalence",
+      "retrievable_parent_observed": true,
+      "source_index": 0,
+      "verified_equivalence": false
+    },
+    {
+      "case_id": "pfe_fy2024_007",
+      "gold_candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+      "reason": "same-page_or_parent_observation_is_not_equivalence",
+      "retrievable_parent_observed": true,
+      "source_index": 0,
+      "verified_equivalence": false
+    },
+    {
+      "case_id": "pfe_fy2024_009",
+      "gold_candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+      "reason": "same-page_or_parent_observation_is_not_equivalence",
+      "retrievable_parent_observed": true,
+      "source_index": 0,
+      "verified_equivalence": false
+    },
+    {
+      "case_id": "tsla_fy2025_005",
+      "gold_candidate_key": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+      "reason": "same-page_or_parent_observation_is_not_equivalence",
+      "retrievable_parent_observed": true,
+      "source_index": 0,
+      "verified_equivalence": false
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "gold_candidate_key": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+      "reason": "same-page_or_parent_observation_is_not_equivalence",
+      "retrievable_parent_observed": true,
+      "source_index": 1,
+      "verified_equivalence": false
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "gold_candidate_key": "candidate:v1:21f924b9c1b33d1e7caa949ac3dcca366d20e99a1aacf2b9d84be8e762ad6240",
+      "reason": "same-page_or_parent_observation_is_not_equivalence",
+      "retrievable_parent_observed": true,
+      "source_index": 0,
+      "verified_equivalence": false
+    }
+  ],
+  "retrievable_parent_observed_count": 10,
+  "same_page_not_equivalence_count": 10,
+  "verified_equivalence_count": 0,
+  "verified_equivalent_identity_recall_sources": 0
+}

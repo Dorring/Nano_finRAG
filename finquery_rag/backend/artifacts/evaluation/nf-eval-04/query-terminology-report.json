@@ -1,0 +1,2036 @@
+{
+  "affected_case_count": 41,
+  "heuristic_case_count": 0,
+  "records": [
+    {
+      "case_id": "aapl_fy2025_001",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "net",
+        "sales",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "apple",
+        "fy2025",
+        "net",
+        "sales",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "aapl_fy2025_002",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "net",
+        "sales",
+        "services"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "apple",
+        "fy2025",
+        "net",
+        "sales",
+        "services"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "aapl_fy2025_003",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "gross",
+        "margin",
+        "percentage"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "apple",
+        "fy2025",
+        "gross",
+        "margin",
+        "percentage"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "aapl_fy2025_004",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "fy2025",
+        "iphone",
+        "net",
+        "sales"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2025",
+        "iphone",
+        "net",
+        "product",
+        "sales",
+        "service",
+        "table"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "aapl_fy2025_005",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "fy2025",
+        "mac",
+        "net",
+        "sales"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2025",
+        "mac",
+        "net",
+        "product",
+        "sales",
+        "service",
+        "table"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "aapl_fy2025_006",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2024",
+        "net",
+        "sales",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "apple",
+        "fy2024",
+        "fy2025",
+        "growth",
+        "net",
+        "over",
+        "rate",
+        "sales",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "aapl_fy2025_006",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "net",
+        "sales",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "apple",
+        "fy2024",
+        "fy2025",
+        "growth",
+        "net",
+        "over",
+        "rate",
+        "sales",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "aapl_fy2025_007",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "iphone",
+        "net",
+        "sales",
+        "services"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "apple",
+        "both",
+        "fy2025",
+        "iphone",
+        "net",
+        "report",
+        "sales",
+        "services"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "aapl_fy2025_007",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "net",
+        "sales",
+        "services"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "apple",
+        "both",
+        "fy2025",
+        "iphone",
+        "net",
+        "report",
+        "sales",
+        "services"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "aapl_fy2025_009",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "fy2024",
+        "iphone",
+        "net",
+        "sales"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2024",
+        "fy2025",
+        "iphone",
+        "net",
+        "rather",
+        "sales"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "jpm_fy2025_001",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "assets",
+        "fy2025",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "assets",
+        "fy2025",
+        "jpmorgan",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "jpm_fy2025_002",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "liabilities",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2025",
+        "jpmorgan",
+        "liabilities",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "jpm_fy2025_003",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "income",
+        "net"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2025",
+        "income",
+        "jpmorgan",
+        "net"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "jpm_fy2025_004",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "banking",
+        "community",
+        "consumer",
+        "fy2025",
+        "income",
+        "net"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "banking",
+        "community",
+        "consumer",
+        "financial",
+        "fy2025",
+        "income",
+        "net",
+        "results",
+        "table"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "jpm_fy2025_005",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "bank",
+        "commercial",
+        "fy2025",
+        "income",
+        "investment",
+        "net"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "bank",
+        "commercial",
+        "financial",
+        "fy2025",
+        "income",
+        "investment",
+        "net",
+        "results",
+        "table"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "assets",
+        "fy2024",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "assets",
+        "fy2024",
+        "fy2025",
+        "growth",
+        "jpmorgan",
+        "over",
+        "rate",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "assets",
+        "fy2025",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "assets",
+        "fy2024",
+        "fy2025",
+        "growth",
+        "jpmorgan",
+        "over",
+        "rate",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "jpm_fy2025_007",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "banking",
+        "community",
+        "consumer",
+        "fy2025",
+        "income",
+        "net"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "banking",
+        "both",
+        "community",
+        "consumer",
+        "fy2025",
+        "income",
+        "jpmorgan",
+        "liabilities",
+        "net",
+        "report",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "jpm_fy2025_007",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "liabilities",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "banking",
+        "both",
+        "community",
+        "consumer",
+        "fy2025",
+        "income",
+        "jpmorgan",
+        "liabilities",
+        "net",
+        "report",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "jpm_fy2025_009",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "banking",
+        "community",
+        "consumer",
+        "fy2024",
+        "income",
+        "net"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "banking",
+        "community",
+        "consumer",
+        "fy2024",
+        "fy2025",
+        "income",
+        "net",
+        "rather"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "ko_fy2025_001",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "net",
+        "operating",
+        "revenues"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "coca",
+        "cola",
+        "fy2025",
+        "net",
+        "operating",
+        "revenues"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "ko_fy2025_002",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "income",
+        "operating"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "coca",
+        "cola",
+        "fy2025",
+        "income",
+        "operating"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "ko_fy2025_003",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "attributable",
+        "coca",
+        "cola",
+        "fy2025",
+        "income",
+        "net",
+        "shareowners"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "attributable",
+        "coca",
+        "cola",
+        "fy2025",
+        "income",
+        "net",
+        "shareowners"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "ko_fy2025_004",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "emea",
+        "fy2025",
+        "net",
+        "operating",
+        "revenues",
+        "segment",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "emea",
+        "fy2025",
+        "net",
+        "operating",
+        "revenues",
+        "segment",
+        "table",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "ko_fy2025_005",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "america",
+        "fy2025",
+        "net",
+        "north",
+        "operating",
+        "revenues",
+        "segment",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "america",
+        "fy2025",
+        "net",
+        "north",
+        "operating",
+        "revenues",
+        "segment",
+        "table",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2024",
+        "net",
+        "operating",
+        "revenues"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "coca",
+        "cola",
+        "fy2024",
+        "fy2025",
+        "growth",
+        "net",
+        "operating",
+        "over",
+        "rate",
+        "revenues"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "net",
+        "operating",
+        "revenues"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "coca",
+        "cola",
+        "fy2024",
+        "fy2025",
+        "growth",
+        "net",
+        "operating",
+        "over",
+        "rate",
+        "revenues"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "ko_fy2025_007",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "emea",
+        "fy2025",
+        "operating",
+        "party",
+        "third"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "came",
+        "coca",
+        "cola",
+        "consolidated",
+        "emea",
+        "fy2025",
+        "net",
+        "operating",
+        "party",
+        "percentage",
+        "revenue",
+        "revenues",
+        "third"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "ko_fy2025_007",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "consolidated",
+        "fy2025",
+        "net",
+        "operating",
+        "revenues"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "came",
+        "coca",
+        "cola",
+        "consolidated",
+        "emea",
+        "fy2025",
+        "net",
+        "operating",
+        "party",
+        "percentage",
+        "revenue",
+        "revenues",
+        "third"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "ko_fy2025_009",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "emea",
+        "fy2024",
+        "net",
+        "operating",
+        "revenues",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "emea",
+        "fy2024",
+        "net",
+        "operating",
+        "revenues",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "msft_fy2025_001",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "revenue",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2025",
+        "microsoft",
+        "revenue",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "msft_fy2025_002",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "business",
+        "fy2025",
+        "processes",
+        "productivity",
+        "revenue"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "business",
+        "fy2025",
+        "microsoft",
+        "processes",
+        "productivity",
+        "revenue"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "msft_fy2025_003",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "computing",
+        "fy2025",
+        "more",
+        "personal",
+        "revenue"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "computing",
+        "fy2025",
+        "microsoft",
+        "more",
+        "personal",
+        "revenue"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "msft_fy2025_004",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "cloud",
+        "fy2025",
+        "intelligent",
+        "revenue",
+        "segment"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "cloud",
+        "fy2025",
+        "intelligent",
+        "revenue",
+        "segment",
+        "table"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "msft_fy2025_005",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "business",
+        "fy2025",
+        "income",
+        "operating",
+        "processes",
+        "productivity",
+        "segment"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "business",
+        "fy2025",
+        "income",
+        "operating",
+        "processes",
+        "productivity",
+        "reportable",
+        "segment",
+        "table"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2024",
+        "revenue",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2024",
+        "fy2025",
+        "growth",
+        "microsoft",
+        "over",
+        "rate",
+        "revenue",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "revenue",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2024",
+        "fy2025",
+        "growth",
+        "microsoft",
+        "over",
+        "rate",
+        "revenue",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "cloud",
+        "fy2025",
+        "intelligent",
+        "revenue"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "came",
+        "cloud",
+        "fy2025",
+        "intelligent",
+        "microsoft",
+        "percentage",
+        "revenue",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "revenue",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "came",
+        "cloud",
+        "fy2025",
+        "intelligent",
+        "microsoft",
+        "percentage",
+        "revenue",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "msft_fy2025_009",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "cloud",
+        "fy2024",
+        "intelligent",
+        "revenue"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "cloud",
+        "fy2024",
+        "fy2025",
+        "intelligent",
+        "rather",
+        "revenue"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "nvda_fy2025_001",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "revenue"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2025",
+        "nvidia",
+        "revenue",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "nvda_fy2025_002",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "gaming",
+        "revenue"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2025",
+        "gaming",
+        "nvidia",
+        "revenue"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "nvda_fy2025_003",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "gross",
+        "margin"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2025",
+        "gaap",
+        "gross",
+        "margin",
+        "nvidia",
+        "percentage"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "nvda_fy2025_004",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "center",
+        "data",
+        "end",
+        "fy2025",
+        "market",
+        "revenue"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "center",
+        "data",
+        "end",
+        "fy2025",
+        "market",
+        "revenue",
+        "table"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "nvda_fy2025_005",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "automotive",
+        "end",
+        "fy2025",
+        "market",
+        "revenue"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "automotive",
+        "end",
+        "fy2025",
+        "market",
+        "revenue",
+        "table"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "nvda_fy2025_006",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2024",
+        "revenue"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2024",
+        "fy2025",
+        "growth",
+        "nvidia",
+        "over",
+        "rate",
+        "revenue",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "nvda_fy2025_006",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "revenue"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2024",
+        "fy2025",
+        "growth",
+        "nvidia",
+        "over",
+        "rate",
+        "revenue",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "nvda_fy2025_007",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "center",
+        "data",
+        "fy2025",
+        "revenue"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "both",
+        "center",
+        "data",
+        "fy2025",
+        "gaap",
+        "gross",
+        "margin",
+        "nvidia",
+        "percentage",
+        "report",
+        "revenue"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "nvda_fy2025_007",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "gross",
+        "margin"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "both",
+        "center",
+        "data",
+        "fy2025",
+        "gaap",
+        "gross",
+        "margin",
+        "nvidia",
+        "percentage",
+        "report",
+        "revenue"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "nvda_fy2025_009",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "center",
+        "data",
+        "fy2024",
+        "revenue"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "center",
+        "data",
+        "fy2024",
+        "fy2025",
+        "rather",
+        "revenue"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "pfe_fy2024_001",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2024",
+        "revenues",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2024",
+        "pfizer",
+        "revenues",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "pfe_fy2024_002",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "comirnaty",
+        "fy2024"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "comirnaty",
+        "fy2024",
+        "pfizer",
+        "revenue"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "pfe_fy2024_003",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "eliquis",
+        "fy2024"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "eliquis",
+        "fy2024",
+        "pfizer",
+        "revenue"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "pfe_fy2024_004",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "fy2024",
+        "paxlovid",
+        "product",
+        "revenues",
+        "selected"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2024",
+        "paxlovid",
+        "product",
+        "revenue",
+        "revenues",
+        "selected",
+        "table"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "pfe_fy2024_005",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "family",
+        "fy2024",
+        "prevnar",
+        "product",
+        "revenues",
+        "selected"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "family",
+        "fy2024",
+        "prevnar",
+        "product",
+        "revenue",
+        "revenues",
+        "selected",
+        "table"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "pfe_fy2024_006",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2023",
+        "revenues",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2023",
+        "fy2024",
+        "growth",
+        "over",
+        "pfizer",
+        "rate",
+        "revenues",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "pfe_fy2024_006",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2024",
+        "revenues",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2023",
+        "fy2024",
+        "growth",
+        "over",
+        "pfizer",
+        "rate",
+        "revenues",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "pfe_fy2024_007",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "comirnaty",
+        "fy2024"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "both",
+        "comirnaty",
+        "development",
+        "expense",
+        "fy2024",
+        "pfizer",
+        "report",
+        "research",
+        "revenue"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "pfe_fy2024_007",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "development",
+        "fy2024",
+        "research"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "both",
+        "comirnaty",
+        "development",
+        "expense",
+        "fy2024",
+        "pfizer",
+        "report",
+        "research",
+        "revenue"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "pfe_fy2024_009",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "fy2023",
+        "paxlovid"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2023",
+        "fy2024",
+        "paxlovid",
+        "rather",
+        "revenue"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "tsla_fy2025_001",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "revenues",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2025",
+        "revenues",
+        "tesla",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "tsla_fy2025_002",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "other",
+        "services"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2025",
+        "other",
+        "revenue",
+        "services",
+        "tesla"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "tsla_fy2025_003",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "automotive",
+        "credits",
+        "fy2025",
+        "regulatory"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "automotive",
+        "credits",
+        "fy2025",
+        "regulatory",
+        "revenue",
+        "tesla"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "tsla_fy2025_004",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "automotive",
+        "fy2025",
+        "revenues",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "automotive",
+        "fy2025",
+        "revenues",
+        "tesla",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "tsla_fy2025_005",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "energy",
+        "fy2025",
+        "generation",
+        "operations",
+        "results",
+        "revenue",
+        "segment",
+        "storage"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "energy",
+        "fy2025",
+        "generation",
+        "operations",
+        "results",
+        "revenue",
+        "segment",
+        "storage",
+        "table"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "tsla_fy2025_006",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2024",
+        "revenues",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2024",
+        "fy2025",
+        "growth",
+        "over",
+        "rate",
+        "revenues",
+        "tesla",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "tsla_fy2025_006",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "revenues",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2024",
+        "fy2025",
+        "growth",
+        "over",
+        "rate",
+        "revenues",
+        "tesla",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "automotive",
+        "fy2025",
+        "revenues",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "automotive",
+        "energy",
+        "fy2025",
+        "generation",
+        "higher",
+        "revenue",
+        "revenues",
+        "segment",
+        "storage",
+        "tesla",
+        "total",
+        "which"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "energy",
+        "fy2025",
+        "generation",
+        "revenue",
+        "revenues",
+        "segment",
+        "storage"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "automotive",
+        "energy",
+        "fy2025",
+        "generation",
+        "higher",
+        "revenue",
+        "revenues",
+        "segment",
+        "storage",
+        "tesla",
+        "total",
+        "which"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "tsla_fy2025_009",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "automotive",
+        "fy2024",
+        "revenues",
+        "total"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "automotive",
+        "fy2024",
+        "revenues",
+        "tesla",
+        "total"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "v_fy2025_001",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "net",
+        "revenue"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2025",
+        "net",
+        "revenue",
+        "visa"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "v_fy2025_002",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "total",
+        "volume"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2025",
+        "total",
+        "visa",
+        "volume"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "v_fy2025_003",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "networks",
+        "processed",
+        "transactions",
+        "visa"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2025",
+        "many",
+        "networks",
+        "processed",
+        "transactions",
+        "visa"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "v_fy2025_004",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "fy2025",
+        "highlights",
+        "operational",
+        "payments",
+        "volume"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2025",
+        "highlights",
+        "operational",
+        "payments",
+        "table",
+        "volume"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "v_fy2025_005",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "consolidated",
+        "fy2025",
+        "income",
+        "net",
+        "operations",
+        "statements"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "consolidated",
+        "fy2025",
+        "gaap",
+        "income",
+        "net",
+        "operations",
+        "statements",
+        "table",
+        "visa"
+      ],
+      "row_label_match": true,
+      "table_title_match": true
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2024",
+        "net",
+        "revenue"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2024",
+        "fy2025",
+        "growth",
+        "net",
+        "over",
+        "rate",
+        "revenue",
+        "visa"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "net",
+        "revenue"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2024",
+        "fy2025",
+        "growth",
+        "net",
+        "over",
+        "rate",
+        "revenue",
+        "visa"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "v_fy2025_007",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "payments",
+        "volume"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "both",
+        "fy2025",
+        "networks",
+        "number",
+        "payments",
+        "processed",
+        "report",
+        "transactions",
+        "visa",
+        "volume"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "v_fy2025_007",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": true,
+      "matched_question_tokens": [
+        "fy2025",
+        "networks",
+        "processed",
+        "transactions",
+        "visa"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "both",
+        "fy2025",
+        "networks",
+        "number",
+        "payments",
+        "processed",
+        "report",
+        "transactions",
+        "visa",
+        "volume"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    },
+    {
+      "case_id": "v_fy2025_009",
+      "category": "exact_metric_match",
+      "classification_method": "normalized_token_overlap_diagnostic",
+      "company_term_match": false,
+      "matched_question_tokens": [
+        "fy2024",
+        "payments",
+        "volume"
+      ],
+      "metric_term_match": true,
+      "period_term_match": true,
+      "question_tokens": [
+        "fy2024",
+        "fy2025",
+        "payments",
+        "rather",
+        "volume"
+      ],
+      "row_label_match": true,
+      "table_title_match": false
+    }
+  ],
+  "terminology_counts": {
+    "exact_metric_match": 80
+  }
+}
