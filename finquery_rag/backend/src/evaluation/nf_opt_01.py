@@ -119,6 +119,13 @@ def dense_coverage_gate(
     elif not latency_passed:
         decision = "dense_coverage_shadow_failed"
         next_gate = Opt01Gate.REGRESSION_STOP.value
+    elif completeness_passed and (
+        dense_regressed_sources > 1
+        or rrf_regressed_sources_at_40 > 1
+        or rrf_regressed_all_cases > 0
+    ):
+        decision = "dense_coverage_shadow_failed"
+        next_gate = Opt01Gate.REGRESSION_STOP.value
     elif (
         completeness_passed
         and dense_source_gain_at_200 > 0

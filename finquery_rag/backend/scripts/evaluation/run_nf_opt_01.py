@@ -900,14 +900,14 @@ def _run(args: argparse.Namespace) -> int:
         cutoff=40,
     )
     rrf_all_regressed_cases = sum(
-        row["current_rrf_top40_coverage"] == "all"
-        and row["shadow_rrf_top40_coverage"] != "all"
+        row["current_rrf_coverage"] == "all"
+        and row["shadow_rrf_coverage"] != "all"
         for row in case_comparison
     )
-    current_all = Counter(row["current_rrf_top40_coverage"] for row in case_comparison)
-    shadow_all = Counter(row["shadow_rrf_top40_coverage"] for row in case_comparison)
-    current_full_all = Counter(row["current_rrf_coverage"] for row in case_comparison)
-    shadow_full_all = Counter(row["shadow_rrf_coverage"] for row in case_comparison)
+    current_all = Counter(row["current_rrf_coverage"] for row in case_comparison)
+    shadow_all = Counter(row["shadow_rrf_coverage"] for row in case_comparison)
+    current_top40_all = Counter(row["current_rrf_top40_coverage"] for row in case_comparison)
+    shadow_top40_all = Counter(row["shadow_rrf_top40_coverage"] for row in case_comparison)
     latency_ratio = None
     if dense_query_times_current and dense_query_times_shadow:
         current_p95 = percentile(dense_query_times_current, 0.95) or 0.0
@@ -974,8 +974,8 @@ def _run(args: argparse.Namespace) -> int:
         "shadow": shadow_rrf_metrics,
         "current_case_coverage": dict(current_all),
         "shadow_case_coverage": dict(shadow_all),
-        "current_full_pool_case_coverage": dict(current_full_all),
-        "shadow_full_pool_case_coverage": dict(shadow_full_all),
+        "current_rrf_top40_case_coverage": dict(current_top40_all),
+        "shadow_rrf_top40_case_coverage": dict(shadow_top40_all),
         "multi_evidence_current_all": sum(
             row["expected_source_count"] > 1 and row["current_rrf_coverage"] == "all"
             for row in case_comparison
@@ -994,6 +994,8 @@ def _run(args: argparse.Namespace) -> int:
         "rrf_top40_regressed_source_count": rrf_source_regressions["regressed_hit_count"],
         "current_all_partial_none": dict(current_all),
         "shadow_all_partial_none": dict(shadow_all),
+        "current_rrf_top40_all_partial_none": dict(current_top40_all),
+        "shadow_rrf_top40_all_partial_none": dict(shadow_top40_all),
     })
     _write(args.out_dir / "latency-report.json", {
         "embedding_model": args.embedding_model,

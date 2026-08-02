@@ -29,14 +29,14 @@
     "source_count": 80
   },
   "current_case_coverage": {
-    "all": 15,
-    "none": 45,
-    "partial": 4
-  },
-  "current_full_pool_case_coverage": {
     "all": 23,
     "none": 36,
     "partial": 5
+  },
+  "current_rrf_top40_case_coverage": {
+    "all": 15,
+    "none": 45,
+    "partial": 4
   },
   "multi_evidence_current_all": 3,
   "multi_evidence_shadow_all": 3,
@@ -712,13 +712,13 @@
     "source_count": 80
   },
   "shadow_case_coverage": {
-    "all": 27,
-    "none": 34,
-    "partial": 3
-  },
-  "shadow_full_pool_case_coverage": {
     "all": 28,
     "none": 31,
     "partial": 5
+  },
+  "shadow_rrf_top40_case_coverage": {
+    "all": 27,
+    "none": 34,
+    "partial": 3
   }
 }

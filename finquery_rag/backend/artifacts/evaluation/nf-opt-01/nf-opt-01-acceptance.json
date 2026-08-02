@@ -8,7 +8,7 @@
     "decision": "dense_coverage_shadow_failed",
     "gain_passed": false,
     "latency_passed": true,
-    "next_gate": "candidate_window_expansion",
+    "next_gate": "stop_and_analyze_regression",
     "optimization_allowed": false,
     "passed": false,
     "production_switch_allowed": false

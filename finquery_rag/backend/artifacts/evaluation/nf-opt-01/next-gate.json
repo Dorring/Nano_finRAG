@@ -2,5 +2,5 @@
   "optimization_allowed": false,
   "production_switch_allowed": false,
   "reason": "dense_coverage_shadow_failed",
-  "selected_gate": "candidate_window_expansion"
+  "selected_gate": "stop_and_analyze_regression"
 }

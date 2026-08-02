@@ -34,6 +34,7 @@ def test_average_gain_cannot_hide_case_regression():
         latency_increase_ratio=0.1,
     )
     assert result["passed"] is False
+    assert result["next_gate"] == "stop_and_analyze_regression"
 
 
 def test_positive_rrf_gain_recommends_window_diagnostic_without_switch():
