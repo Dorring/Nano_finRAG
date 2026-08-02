@@ -12,7 +12,7 @@ from typing import Any, Iterable
 
 QUESTION_ANSWER_TYPES = {
     "text", "numeric", "currency", "percentage", "date",
-    "comparison", "aggregation", "no_answer",
+    "comparison", "aggregation", "financial_volume", "no_answer",
 }
 DIFFICULTIES = {"easy", "medium", "hard"}
 SOURCE_TYPES = {"text", "table", "table_row", "front_matter"}
@@ -110,7 +110,7 @@ def _source_errors(source: dict[str, Any], *, corpus_by_id: dict[str, dict[str, 
         errors.append(f"unsupported evidence_type: {source['evidence_type']}")
     if not isinstance(source["source_verified"], bool):
         errors.append("source_verified must be boolean")
-    for optional in ("section", "table_title", "row_label", "column_header", "period", "unit", "scale"):
+    for optional in ("section", "table_title", "row_label", "column_header", "period", "unit", "scale", "display_scale"):
         if optional in source and source[optional] is not None and not isinstance(source[optional], str):
             errors.append(f"source {optional} must be a string or null")
     return errors

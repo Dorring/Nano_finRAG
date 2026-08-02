@@ -6,12 +6,19 @@
   "required": ["case_id", "expected_answer", "expected_sources", "calculation", "expected_no_answer", "label_status", "review_status"],
   "properties": {
     "case_id": {"type": "string", "minLength": 1},
-    "expected_answer": {"type": "object", "required": ["text", "canonical_value", "currency", "unit", "scale", "period", "tolerance"], "properties": {"text": {"type": ["string", "null"]}, "canonical_value": {"type": ["string", "null"]}, "currency": {"type": ["string", "null"]}, "unit": {"type": ["string", "null"]}, "scale": {"type": ["string", "null"]}, "period": {"type": ["string", "null"]}, "tolerance": {"type": ["number", "string", "null"]}, "draft_placeholder": {"type": "boolean"}}, "additionalProperties": false},
+    "expected_answer": {"type": "object", "required": ["text", "canonical_value", "currency", "unit", "scale", "period", "tolerance"], "properties": {"text": {"type": ["string", "null"]}, "canonical_value": {"type": ["string", "null"]}, "currency": {"type": ["string", "null"]}, "unit": {"type": ["string", "null"]}, "scale": {"type": ["string", "null"]}, "display_scale": {"type": ["string", "null"]}, "display_value": {"type": ["string", "null"]}, "value_type": {"type": ["string", "null"]}, "answer_key_status": {"enum": ["entered_unverified", "pending_negative_evidence", "missing"]}, "percentage_representation": {"enum": ["percentage_points", "proportion", "basis_points"]}, "period": {"type": ["string", "null"]}, "periods": {"type": "array", "items": {"type": "string"}}, "tolerance": {"type": ["number", "string", "null"]}, "draft_placeholder": {"type": "boolean"}, "output_contract": {"type": ["string", "null"]}, "components": {"type": "array", "items": {"type": "string"}}, "component_values": {"type": "array", "items": {"type": "object", "required": ["metric", "canonical_value", "display_value", "period"], "properties": {"metric": {"type": "string"}, "canonical_value": {"type": "string"}, "display_value": {"type": "string"}, "currency": {"type": ["string", "null"]}, "unit": {"type": ["string", "null"]}, "period": {"type": "string"}}, "additionalProperties": false}}}, "additionalProperties": false},
     "expected_sources": {"type": "array", "items": {"$ref": "source.schema.json"}},
     "calculation": {"type": ["object", "null"], "properties": {"operation": {"enum": ["growth_rate", "difference", "sum", "ratio", "custom"]}, "operands": {"type": "array"}, "formula": {"type": "string"}, "draft_placeholder": {"type": "boolean"}}, "required": ["operation", "operands", "formula"], "additionalProperties": true},
     "expected_no_answer": {"type": "boolean"},
     "label_status": {"enum": ["draft", "reviewed", "golden", "sealed"]},
     "review_status": {"enum": ["unreviewed", "in_review", "reviewed"]},
-    "review_notes": {"type": ["string", "null"]}
+    "review_notes": {"type": ["string", "null"]},
+    "review_action": {"enum": ["manual_answer_source_review", "manual_negative_evidence_review", "needs_question_revision", "needs_answer_revision", "needs_source_revision", "verified"]},
+    "question_revision": {"type": "integer", "minimum": 1},
+    "superseded_review_action": {"type": ["string", "null"], "enum": ["keep", "rewrite", "replace", "manual_source_review", null]},
+    "review_plan": {"type": "object"},
+    "ready_for_golden": {"type": "boolean"},
+    "output_contract": {"type": ["string", "null"]},
+    "no_answer_review": {"type": "object"}
   }
 }

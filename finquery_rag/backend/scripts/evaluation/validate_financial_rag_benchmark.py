@@ -9,9 +9,13 @@ from pathlib import Path
 
 try:
     from scripts.evaluation.benchmark_foundation import load_json, load_jsonl, validate_dataset
+    from scripts.evaluation.annotation_contract import annotation_contract_report, validate_annotation_contract
+    from scripts.evaluation.draft_quality import quality_audit
 except ModuleNotFoundError:  # direct script execution from backend
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from scripts.evaluation.benchmark_foundation import load_json, load_jsonl, validate_dataset
+    from scripts.evaluation.annotation_contract import annotation_contract_report, validate_annotation_contract
+    from scripts.evaluation.draft_quality import quality_audit
 
 
 def main() -> int:
@@ -23,19 +27,30 @@ def main() -> int:
     parser.add_argument("--out", type=Path, default=Path("artifacts/evaluation/nf-eval-01/draft-validation-report.json"))
     parser.add_argument("--reviewed", action="store_true", help="apply stricter reviewed/golden answer checks")
     args = parser.parse_args()
+    questions = load_jsonl(args.questions)
+    labels = load_jsonl(args.labels)
+    reviews = load_jsonl(args.review)
     result = validate_dataset(
         corpus=load_json(args.corpus),
-        questions=load_jsonl(args.questions),
-        labels=load_jsonl(args.labels),
-        review_records=load_jsonl(args.review),
+        questions=questions,
+        labels=labels,
+        review_records=reviews,
         draft=not args.reviewed,
     )
     result["draft_mode"] = not args.reviewed
+    result["quality"] = quality_audit(
+        questions=questions,
+        labels=labels,
+        reviews=reviews,
+    )
+    result["annotation_contract"] = annotation_contract_report(questions, labels, reviews)
+    result["errors"].extend(validate_annotation_contract(questions, labels, reviews))
+    result["schema_valid"] = not result["errors"]
     result["golden_case_count"] = 0 if not args.reviewed else sum(1 for item in load_jsonl(args.review) if item.get("ready_for_golden"))
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result, ensure_ascii=False, indent=2))
-    return 0 if result["schema_valid"] else 1
+    return 0 if result["schema_valid"] and result["quality"]["quality_valid"] else 1
 
 
 if __name__ == "__main__":

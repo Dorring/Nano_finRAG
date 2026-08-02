@@ -16,6 +16,10 @@ physical PDF pages.
 - Percentages are proportions in normalized form only when the label explicitly
   says so; otherwise preserve the report's percentage representation and set
   `unit="percentage"`.
+- The current Draft answer keys store percentage points as strings (for
+  example `46.9` means 46.9%), with a separate `display_value` such as
+  `46.90%`.  Reviewers must confirm the report representation before Golden
+  promotion; do not silently convert percentage points to proportions.
 - Parenthesized values are negative values.
 - Do not silently convert a percentage into a plain number.
 
@@ -46,6 +50,16 @@ Record the search terms and reviewer notes, but do not fabricate a source.
 ## Promotion gate
 
 Draft records have `source_verified=false` and `review_status=unreviewed`.
-They are never Golden or Sealed.  Promotion requires question, answer,
+`answer_key_status=entered_unverified` only records that an answer key has
+been entered for annotation; it does not verify the PDF source.  No-answer
+records remain `pending_negative_evidence` until a full-text negative search
+is documented.  Drafts are never Golden or Sealed.  Promotion requires question, answer,
 source, and (when applicable) calculation review, plus
 `ready_for_golden=true`.
+
+The current review actions are workflow states, not historical edit commands:
+answerable records use `manual_answer_source_review`, and no-answer records use
+`manual_negative_evidence_review`.  The prior `replace` or `rewrite` action is
+retained only as `superseded_review_action`.  Source review is counted per
+expected source record, so a two-source question contributes two evidence
+items to the Golden gate.

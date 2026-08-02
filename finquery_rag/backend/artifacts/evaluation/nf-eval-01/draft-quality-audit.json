@@ -1,0 +1,174 @@
+{
+  "before": {
+    "question_count": 72,
+    "semantic_duplicate_count": 24,
+    "semantic_duplicate_groups": {
+      "Apple:generated_total_metric": [
+        "aapl_fy2025_001",
+        "aapl_fy2025_002",
+        "aapl_fy2025_003"
+      ],
+      "Apple:generated_table_metric": [
+        "aapl_fy2025_004",
+        "aapl_fy2025_005"
+      ],
+      "JPMorganChase:generated_total_metric": [
+        "jpm_fy2025_001",
+        "jpm_fy2025_002",
+        "jpm_fy2025_003"
+      ],
+      "JPMorganChase:generated_table_metric": [
+        "jpm_fy2025_004",
+        "jpm_fy2025_005"
+      ],
+      "The Coca-Cola Company:generated_total_metric": [
+        "ko_fy2025_001",
+        "ko_fy2025_002",
+        "ko_fy2025_003"
+      ],
+      "The Coca-Cola Company:generated_table_metric": [
+        "ko_fy2025_004",
+        "ko_fy2025_005"
+      ],
+      "Microsoft:generated_total_metric": [
+        "msft_fy2025_001",
+        "msft_fy2025_002",
+        "msft_fy2025_003"
+      ],
+      "Microsoft:generated_table_metric": [
+        "msft_fy2025_004",
+        "msft_fy2025_005"
+      ],
+      "NVIDIA:generated_total_metric": [
+        "nvda_fy2025_001",
+        "nvda_fy2025_002",
+        "nvda_fy2025_003"
+      ],
+      "NVIDIA:generated_table_metric": [
+        "nvda_fy2025_004",
+        "nvda_fy2025_005"
+      ],
+      "Pfizer:generated_total_metric": [
+        "pfe_fy2024_001",
+        "pfe_fy2024_002",
+        "pfe_fy2024_003"
+      ],
+      "Pfizer:generated_table_metric": [
+        "pfe_fy2024_004",
+        "pfe_fy2024_005"
+      ],
+      "Tesla:generated_total_metric": [
+        "tsla_fy2025_001",
+        "tsla_fy2025_002",
+        "tsla_fy2025_003"
+      ],
+      "Tesla:generated_table_metric": [
+        "tsla_fy2025_004",
+        "tsla_fy2025_005"
+      ],
+      "Visa:generated_total_metric": [
+        "v_fy2025_001",
+        "v_fy2025_002",
+        "v_fy2025_003"
+      ],
+      "Visa:generated_table_metric": [
+        "v_fy2025_004",
+        "v_fy2025_005"
+      ]
+    },
+    "ambiguous_metric_count": 18,
+    "ambiguous_metric_cases": [
+      "aapl_fy2025_007",
+      "ko_fy2025_004",
+      "ko_fy2025_005",
+      "ko_fy2025_007",
+      "ko_fy2025_009",
+      "msft_fy2025_001",
+      "msft_fy2025_002",
+      "msft_fy2025_003",
+      "msft_fy2025_006",
+      "nvda_fy2025_007",
+      "pfe_fy2024_004",
+      "pfe_fy2024_005",
+      "pfe_fy2024_007",
+      "pfe_fy2024_009",
+      "v_fy2025_004",
+      "v_fy2025_005",
+      "v_fy2025_007",
+      "v_fy2025_009"
+    ],
+    "undefined_comparison_count": 8,
+    "undefined_comparison_cases": [
+      "aapl_fy2025_007",
+      "jpm_fy2025_007",
+      "ko_fy2025_007",
+      "msft_fy2025_007",
+      "nvda_fy2025_007",
+      "pfe_fy2024_007",
+      "tsla_fy2025_007",
+      "v_fy2025_007"
+    ],
+    "question_label_period_mismatch": 16,
+    "period_mismatch_cases": [
+      "aapl_fy2025_006",
+      "aapl_fy2025_009",
+      "jpm_fy2025_006",
+      "jpm_fy2025_009",
+      "ko_fy2025_006",
+      "ko_fy2025_009",
+      "msft_fy2025_006",
+      "msft_fy2025_009",
+      "nvda_fy2025_006",
+      "nvda_fy2025_009",
+      "pfe_fy2024_006",
+      "pfe_fy2024_009",
+      "tsla_fy2025_006",
+      "tsla_fy2025_009",
+      "v_fy2025_006",
+      "v_fy2025_009"
+    ],
+    "placeholder_section_count": 72,
+    "placeholder_table_title_count": 72,
+    "missing_review_plan_count": 72,
+    "no_answer_template_count": 7,
+    "no_answer_type_counts": {
+      "missing": 8
+    },
+    "no_answer_count": 8,
+    "golden_case_count": 0,
+    "quality_valid": false
+  },
+  "after": {
+    "question_count": 72,
+    "semantic_duplicate_count": 0,
+    "semantic_duplicate_groups": {},
+    "ambiguous_metric_count": 0,
+    "ambiguous_metric_cases": [],
+    "undefined_comparison_count": 0,
+    "undefined_comparison_cases": [],
+    "question_label_period_mismatch": 0,
+    "period_mismatch_cases": [],
+    "placeholder_section_count": 0,
+    "placeholder_table_title_count": 0,
+    "missing_review_plan_count": 0,
+    "no_answer_template_count": 0,
+    "no_answer_type_counts": {
+      "internal_model_accuracy": 1,
+      "customer_contract_amount": 1,
+      "plant_level_output": 1,
+      "customer_renewal_rate": 1,
+      "customer_level_revenue": 1,
+      "future_financial_guidance": 1,
+      "customer_specific_future_price": 1,
+      "internal_employee_metric": 1
+    },
+    "no_answer_count": 8,
+    "answer_key_missing_count": 0,
+    "answer_key_missing_cases": [],
+    "answer_key_status_missing_count": 0,
+    "answer_key_status_missing_cases": [],
+    "source_unverified_count": 80,
+    "golden_case_count": 0,
+    "quality_valid": true
+  }
+}
