@@ -1,0 +1,49 @@
+{
+  "cases": [
+    {
+      "case_id": "aapl_fy2025_008",
+      "execution_mode": "llm_generation",
+      "failure_stage": "false_answer_llm"
+    },
+    {
+      "case_id": "jpm_fy2025_008",
+      "execution_mode": "safe_response",
+      "failure_stage": "false_answer_deterministic"
+    },
+    {
+      "case_id": "ko_fy2025_008",
+      "execution_mode": "safe_response",
+      "failure_stage": "correct_safe_response"
+    },
+    {
+      "case_id": "msft_fy2025_008",
+      "execution_mode": "safe_response",
+      "failure_stage": "false_answer_deterministic"
+    },
+    {
+      "case_id": "nvda_fy2025_008",
+      "execution_mode": "safe_response",
+      "failure_stage": "false_answer_deterministic"
+    },
+    {
+      "case_id": "pfe_fy2024_008",
+      "execution_mode": "llm_generation",
+      "failure_stage": "false_answer_llm"
+    },
+    {
+      "case_id": "tsla_fy2025_008",
+      "execution_mode": "llm_generation",
+      "failure_stage": "false_answer_llm"
+    },
+    {
+      "case_id": "v_fy2025_008",
+      "execution_mode": "safe_response",
+      "failure_stage": "correct_safe_response"
+    }
+  ],
+  "counts": {
+    "correct_safe_response": 2,
+    "false_answer_deterministic": 3,
+    "false_answer_llm": 3
+  }
+}

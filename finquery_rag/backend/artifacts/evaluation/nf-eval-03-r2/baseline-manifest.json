@@ -1,0 +1,33 @@
+{
+  "allowed_document_ids_hash": "2e57091baf09d1d26c1650c1ea82e4ac0b6c23eae9b0a2450afdebb8e63792a8",
+  "answerable_count": 64,
+  "artifact_schema": "nf-eval-03-r2/baseline/v1",
+  "benchmark_id": "financial-rag-v1",
+  "candidate_injection_before_rerank": false,
+  "case_count": 72,
+  "corpus_hash": "edd4e8c1aac89ea1480dcb723857b487cb6038218d0a924b749eb6ec8fd13448",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "generator_endpoint": "http://127.0.0.1:18001/v1",
+  "generator_model": "finquery-finance-v2-lr010-150",
+  "golden_manifest_sha256": "e6a0d344b9034c0661fb9c42f410ee73dde8917e155c10473ffa49f648d9664f",
+  "legacy_27_included": false,
+  "n_results": 5,
+  "negative_evidence_hash": "bbfac5cf45cb515250df42148ade28a97a7c21a0cefdcfb1cd414eaa5086e707",
+  "no_answer_count": 8,
+  "parent_expansion_before_rerank": false,
+  "production_behavior_changed": false,
+  "question_hash": "3b1433ea7546020ec7ab90a9cb700bb58d90aa040f65e6610d6bc5b1330e97b7",
+  "reference_answer_hash": "181c9ed45ae904353431ef6d427b139e1d5f0b8f437c2fdd9f25e2f9b7abb7a7",
+  "reranker": "heuristic",
+  "reranker_input_limit": null,
+  "reranker_input_limit_semantics": "full_rrf_list_before_top20_output",
+  "reranker_input_source": {
+    "rrf_all": 72
+  },
+  "reranker_model": null,
+  "reranker_output_limit": 20,
+  "retrieval_candidate_multiplier": 4,
+  "review_status_hash": "398d0653886f3d573e43002d3dc93ad8a5cd7ae3b0768f5087a4897b6750146f",
+  "source_identity_hash": "18eb4461f135cba49ae2565f444cc8ca61a26df80b17cd30759d67ff71fcf19c",
+  "tenant_id": 1
+}

@@ -1,0 +1,16 @@
+{
+  "anomalies": [],
+  "candidate_identity_changed_between_stages": 0,
+  "case_count": 72,
+  "duplicate_candidate_count": 0,
+  "final_not_in_reranker_output_count": 0,
+  "lineage_integrity_passed": true,
+  "missing_identity_count": 0,
+  "reranker_input_not_in_rrf_count": 0,
+  "reranker_input_source_counts": {
+    "rrf_all": 72
+  },
+  "reranker_output_not_in_input_count": 0,
+  "unexpected_candidate_injection_count": 0,
+  "unexplained_candidate_drop_count": 0
+}
