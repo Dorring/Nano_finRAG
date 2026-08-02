@@ -8,5 +8,7 @@
   "legacy_27_included": false,
   "model_chat_completion_requests": 11,
   "production_behavior_changed": false,
-  "scope_integrity_passed": true
+  "scope_integrity_passed": true,
+  "status": "superseded_due_to_metric_semantics",
+  "superseded_by": "nf-eval-03-r1"
 }

@@ -1,0 +1,20 @@
+{
+  "artifact_schema": "nf-eval-03-r1/baseline/v1",
+  "baseline_run_completed": true,
+  "benchmark_id": "financial-rag-v1",
+  "case_count": 72,
+  "decision": "formal_baseline_recorded",
+  "execution_mode_counts": {
+    "deterministic_fact": 54,
+    "llm_generation": 11,
+    "safe_response": 7
+  },
+  "identity_observability_passed": true,
+  "input_integrity_passed": true,
+  "legacy_27_included": false,
+  "metric_semantics_verified": true,
+  "model_chat_completion_requests": 11,
+  "page_fallback_count": 0,
+  "production_behavior_changed": false,
+  "scope_integrity_passed": true
+}
