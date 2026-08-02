@@ -1,0 +1,23 @@
+{
+  "artifact_schema": "financial-rag-v1/reference-answers/v1",
+  "benchmark_id": "financial-rag-v1",
+  "status": "reference_only",
+  "question_count": 72,
+  "answerable_count": 64,
+  "no_answer_count": 8,
+  "calculation_count": 11,
+  "composite_answer_count": 5,
+  "question_hash": "3b1433ea7546020ec7ab90a9cb700bb58d90aa040f65e6610d6bc5b1330e97b7",
+  "reference_answer_hash": "181c9ed45ae904353431ef6d427b139e1d5f0b8f437c2fdd9f25e2f9b7abb7a7",
+  "corpus_hash": "edd4e8c1aac89ea1480dcb723857b487cb6038218d0a924b749eb6ec8fd13448",
+  "source_verified_count": 0,
+  "candidate_identity_count": 0,
+  "golden_case_count": 0,
+  "golden_promotion_allowed": false,
+  "source_identity_pending": true,
+  "negative_evidence_pending_count": 8,
+  "files": [
+    "data/questions.reference.jsonl",
+    "data/labels.reference.jsonl"
+  ]
+}

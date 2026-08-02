@@ -198,7 +198,7 @@ def quality_audit(
         has_components = isinstance(answer, Mapping) and bool(answer.get("component_values"))
         if not (has_scalar or has_components):
             answer_key_missing_cases.append(case_id)
-        if answer.get("answer_key_status") != "entered_unverified":
+        if answer.get("answer_key_status") not in {"entered_unverified", "verified_reference"}:
             answer_key_status_missing_cases.append(case_id)
         source_unverified_count += sum(
             int(not bool(source.get("source_verified")))

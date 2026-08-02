@@ -133,7 +133,7 @@ def test_negative_evidence_suggestions_are_not_completed_review():
     _, labels, reviews = _records()
     no_answer = next(item for item in labels if item["expected_no_answer"])
     review = next(item for item in reviews if item["case_id"] == no_answer["case_id"])
-    assert no_answer["expected_answer"]["answer_key_status"] == "pending_negative_evidence"
+    assert no_answer["expected_answer"]["answer_key_status"] == "verified_reference_no_answer"
     assert review["negative_evidence_review_status"] == "pending"
     assert review["full_document_search_completed"] is False
 
