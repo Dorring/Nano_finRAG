@@ -1,0 +1,23 @@
+{
+  "ambiguous_identity_count": 0,
+  "answerable_count": 64,
+  "artifact_schema": "nf-eval-02/golden-evidence-binding/v1",
+  "baseline_run": false,
+  "benchmark_document_count": 8,
+  "bound_candidate_identity_count": 80,
+  "corpus_hash": "edd4e8c1aac89ea1480dcb723857b487cb6038218d0a924b749eb6ec8fd13448",
+  "document_whitelist_hash": "2e57091baf09d1d26c1650c1ea82e4ac0b6c23eae9b0a2450afdebb8e63792a8",
+  "expected_source_record_count": 80,
+  "golden_promotion_allowed": true,
+  "golden_ready": true,
+  "golden_ready_case_count": 72,
+  "missing_from_index_count": 0,
+  "negative_evidence_verified_count": 8,
+  "out_of_scope_identity_count": 0,
+  "production_behavior_changed": false,
+  "question_count": 72,
+  "question_hash": "3b1433ea7546020ec7ab90a9cb700bb58d90aa040f65e6610d6bc5b1330e97b7",
+  "reference_answer_hash": "181c9ed45ae904353431ef6d427b139e1d5f0b8f437c2fdd9f25e2f9b7abb7a7",
+  "source_verified_count": 80,
+  "unresolved_anomaly_count": 0
+}

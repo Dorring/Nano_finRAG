@@ -1,0 +1,15 @@
+{
+  "answerable_count": 64,
+  "benchmark_id": "financial-rag-v1",
+  "corpus_hash": "edd4e8c1aac89ea1480dcb723857b487cb6038218d0a924b749eb6ec8fd13448",
+  "expected_source_record_count": 80,
+  "golden_ready": true,
+  "negative_evidence_hash": "bbfac5cf45cb515250df42148ade28a97a7c21a0cefdcfb1cd414eaa5086e707",
+  "no_answer_count": 8,
+  "question_count": 72,
+  "question_hash": "3b1433ea7546020ec7ab90a9cb700bb58d90aa040f65e6610d6bc5b1330e97b7",
+  "reference_answer_hash": "181c9ed45ae904353431ef6d427b139e1d5f0b8f437c2fdd9f25e2f9b7abb7a7",
+  "review_status_hash": "398d0653886f3d573e43002d3dc93ad8a5cd7ae3b0768f5087a4897b6750146f",
+  "schema_version": "1.0",
+  "source_identity_hash": "18eb4461f135cba49ae2565f444cc8ca61a26df80b17cd30759d67ff71fcf19c"
+}

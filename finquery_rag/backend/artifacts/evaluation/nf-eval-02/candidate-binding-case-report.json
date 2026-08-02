@@ -1,0 +1,437 @@
+{
+  "artifact_schema": "nf-eval-02/golden-evidence-binding/v1",
+  "cases": [
+    {
+      "case_id": "aapl_fy2025_001",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "aapl_fy2025_002",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "aapl_fy2025_003",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "aapl_fy2025_004",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "aapl_fy2025_005",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "aapl_fy2025_006",
+      "ready_for_golden": true,
+      "source_count": 2,
+      "verified_source_count": 2
+    },
+    {
+      "case_id": "aapl_fy2025_007",
+      "ready_for_golden": true,
+      "source_count": 2,
+      "verified_source_count": 2
+    },
+    {
+      "case_id": "aapl_fy2025_008",
+      "ready_for_golden": true,
+      "source_count": 0,
+      "verified_source_count": 0
+    },
+    {
+      "case_id": "aapl_fy2025_009",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "jpm_fy2025_001",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "jpm_fy2025_002",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "jpm_fy2025_003",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "jpm_fy2025_004",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "jpm_fy2025_005",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "ready_for_golden": true,
+      "source_count": 2,
+      "verified_source_count": 2
+    },
+    {
+      "case_id": "jpm_fy2025_007",
+      "ready_for_golden": true,
+      "source_count": 2,
+      "verified_source_count": 2
+    },
+    {
+      "case_id": "jpm_fy2025_008",
+      "ready_for_golden": true,
+      "source_count": 0,
+      "verified_source_count": 0
+    },
+    {
+      "case_id": "jpm_fy2025_009",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "ko_fy2025_001",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "ko_fy2025_002",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "ko_fy2025_003",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "ko_fy2025_004",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "ko_fy2025_005",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "ready_for_golden": true,
+      "source_count": 2,
+      "verified_source_count": 2
+    },
+    {
+      "case_id": "ko_fy2025_007",
+      "ready_for_golden": true,
+      "source_count": 2,
+      "verified_source_count": 2
+    },
+    {
+      "case_id": "ko_fy2025_008",
+      "ready_for_golden": true,
+      "source_count": 0,
+      "verified_source_count": 0
+    },
+    {
+      "case_id": "ko_fy2025_009",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "msft_fy2025_001",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "msft_fy2025_002",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "msft_fy2025_003",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "msft_fy2025_004",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "msft_fy2025_005",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "ready_for_golden": true,
+      "source_count": 2,
+      "verified_source_count": 2
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "ready_for_golden": true,
+      "source_count": 2,
+      "verified_source_count": 2
+    },
+    {
+      "case_id": "msft_fy2025_008",
+      "ready_for_golden": true,
+      "source_count": 0,
+      "verified_source_count": 0
+    },
+    {
+      "case_id": "msft_fy2025_009",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "nvda_fy2025_001",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "nvda_fy2025_002",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "nvda_fy2025_003",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "nvda_fy2025_004",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "nvda_fy2025_005",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "nvda_fy2025_006",
+      "ready_for_golden": true,
+      "source_count": 2,
+      "verified_source_count": 2
+    },
+    {
+      "case_id": "nvda_fy2025_007",
+      "ready_for_golden": true,
+      "source_count": 2,
+      "verified_source_count": 2
+    },
+    {
+      "case_id": "nvda_fy2025_008",
+      "ready_for_golden": true,
+      "source_count": 0,
+      "verified_source_count": 0
+    },
+    {
+      "case_id": "nvda_fy2025_009",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "pfe_fy2024_001",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "pfe_fy2024_002",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "pfe_fy2024_003",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "pfe_fy2024_004",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "pfe_fy2024_005",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "pfe_fy2024_006",
+      "ready_for_golden": true,
+      "source_count": 2,
+      "verified_source_count": 2
+    },
+    {
+      "case_id": "pfe_fy2024_007",
+      "ready_for_golden": true,
+      "source_count": 2,
+      "verified_source_count": 2
+    },
+    {
+      "case_id": "pfe_fy2024_008",
+      "ready_for_golden": true,
+      "source_count": 0,
+      "verified_source_count": 0
+    },
+    {
+      "case_id": "pfe_fy2024_009",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "tsla_fy2025_001",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "tsla_fy2025_002",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "tsla_fy2025_003",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "tsla_fy2025_004",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "tsla_fy2025_005",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "tsla_fy2025_006",
+      "ready_for_golden": true,
+      "source_count": 2,
+      "verified_source_count": 2
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "ready_for_golden": true,
+      "source_count": 2,
+      "verified_source_count": 2
+    },
+    {
+      "case_id": "tsla_fy2025_008",
+      "ready_for_golden": true,
+      "source_count": 0,
+      "verified_source_count": 0
+    },
+    {
+      "case_id": "tsla_fy2025_009",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "v_fy2025_001",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "v_fy2025_002",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "v_fy2025_003",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "v_fy2025_004",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "v_fy2025_005",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "ready_for_golden": true,
+      "source_count": 2,
+      "verified_source_count": 2
+    },
+    {
+      "case_id": "v_fy2025_007",
+      "ready_for_golden": true,
+      "source_count": 2,
+      "verified_source_count": 2
+    },
+    {
+      "case_id": "v_fy2025_008",
+      "ready_for_golden": true,
+      "source_count": 0,
+      "verified_source_count": 0
+    },
+    {
+      "case_id": "v_fy2025_009",
+      "ready_for_golden": true,
+      "source_count": 1,
+      "verified_source_count": 1
+    }
+  ]
+}

@@ -26,7 +26,14 @@ def _has_candidate_identity(source: Mapping[str, Any]) -> bool:
     if not isinstance(candidate_key, str) or not candidate_key.strip():
         return False
     granularity = source.get("identity_granularity", "candidate_key")
-    if granularity not in {"candidate_key", "evidence_id", "row", "chunk"}:
+    if granularity not in {
+        "candidate_key",
+        "evidence_id",
+        "row",
+        "table_row",
+        "table_block",
+        "chunk",
+    }:
         return False
     if granularity == "chunk" and source.get("identity_limitation") != "row_identity_not_available":
         return False
