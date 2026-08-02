@@ -77,3 +77,13 @@ than inventing a `row_id`.
 An automated full-document term scan for a no-answer case is provisional
 evidence only. It does not satisfy the manual negative-evidence gate and must
 not set `negative_evidence_reviewed=true`.
+
+## Reference-answer layer
+
+The reference-answer files freeze the reviewed values and formulas separately
+from the evidence gate. "verified_reference" applies to answerable cases;
+"verified_reference_no_answer" records the expected no-answer direction while
+its negative-evidence review is still pending. Reference status never sets
+"source_verified", does not bind a "candidate_key", and cannot set
+"ready_for_golden=true". Strict retrieval and citation metrics must use only a
+later Golden/Sealed layer with stable source identity.

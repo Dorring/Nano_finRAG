@@ -28,24 +28,21 @@ def test_repaired_draft_quality_gate_is_clean_and_not_golden():
     assert result["answer_key_status_missing_count"] == 0
 
 
-def test_answer_keys_remain_unverified_draft_data():
+def test_reference_answer_keys_remain_draft_and_sources_unverified():
     labels = load_jsonl(DATA / "labels.draft.jsonl")
     answerable = [label for label in labels if not label["expected_no_answer"]]
     no_answer = [label for label in labels if label["expected_no_answer"]]
     assert len(answerable) == 64
     assert all(label["label_status"] == "draft" for label in labels)
     assert all(label["review_status"] == "unreviewed" for label in labels)
-    assert all(
-        label["expected_answer"]["answer_key_status"] == "entered_unverified"
-        for label in answerable
-    )
+    assert all(label["expected_answer"]["answer_key_status"] == "verified_reference" for label in answerable)
     assert all(
         label["expected_answer"]["canonical_value"] is not None
         or label["expected_answer"].get("component_values")
         for label in answerable
     )
     assert all(
-        label["expected_answer"]["answer_key_status"] == "pending_negative_evidence"
+        label["expected_answer"]["answer_key_status"] == "verified_reference_no_answer"
         for label in no_answer
     )
     assert all(
