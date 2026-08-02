@@ -1,0 +1,26 @@
+{
+  "candidate_count": 38319,
+  "candidate_source": "bm25_chunk_store_canonical_universe",
+  "collection_hash": "e3ca2f79426bb39108a7dd11fd6212fcf2978e2a9bd016434eb4557f5be15094",
+  "current_collection_untouched": true,
+  "current_dense_candidate_count": 21868,
+  "duplicate_candidate_count": 0,
+  "embedding_model": "all-MiniLM-L6-v2",
+  "embedding_provider": {
+    "distance_metric": "cosine",
+    "model_name": "all-MiniLM-L6-v2",
+    "query_encoder_shared_with_current": true
+  },
+  "global_user_records_excluded_by_whitelist": 3563,
+  "gold_identity_expected_count": 80,
+  "gold_identity_presence_count": 80,
+  "gold_labels_not_used_to_build_universe": true,
+  "index_build_ms": 227210.2648029104,
+  "out_of_scope_candidate_count": 0,
+  "shadow_collection_count": 38319,
+  "shadow_collection_name": "financial_rag_v1_dense_coverage_shadow",
+  "table_cell_records_excluded_from_global_identity": 6289,
+  "unique_candidate_count": 38319,
+  "unsupported_candidate_count": 0,
+  "variant": "canonical_coverage_shadow"
+}

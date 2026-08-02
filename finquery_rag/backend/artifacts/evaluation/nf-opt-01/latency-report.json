@@ -1,0 +1,13 @@
+{
+  "current_dense_query_p50_ms": 94.72082694992423,
+  "current_dense_query_p95_ms": 130.78998611308634,
+  "embedding_model": "all-MiniLM-L6-v2",
+  "online_latency_comparable": true,
+  "p95_increase_ratio": -0.024722177194862482,
+  "query_embedding_p50_ms": 858.9128800667822,
+  "query_embedding_p95_ms": 1084.0475738514215,
+  "query_embedding_reused": true,
+  "shadow_dense_query_p50_ms": 101.34866903536022,
+  "shadow_dense_query_p95_ms": 127.55657290108502,
+  "shadow_index_build_ms": 227210.2648029104
+}

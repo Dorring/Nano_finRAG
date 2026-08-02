@@ -1,0 +1,31 @@
+{
+  "current_all_partial_none": {
+    "all": 15,
+    "none": 45,
+    "partial": 4
+  },
+  "dense": {
+    "both_hit_count": 12,
+    "both_missed_count": 0,
+    "current_hit_count": 13,
+    "new_hit_count": 35,
+    "regressed_hit_count": 1,
+    "shadow_hit_count": 47
+  },
+  "dense_retrieval_regressed_source_count": 1,
+  "rrf_all_gold_regressed_case_count": 0,
+  "rrf_top40": {
+    "both_hit_count": 19,
+    "both_missed_count": 7,
+    "current_hit_count": 19,
+    "new_hit_count": 12,
+    "regressed_hit_count": 0,
+    "shadow_hit_count": 31
+  },
+  "rrf_top40_regressed_source_count": 0,
+  "shadow_all_partial_none": {
+    "all": 27,
+    "none": 34,
+    "partial": 3
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "answer_generation_calls": 0,
+  "artifact_schema": "nf-opt-01/v1",
+  "case_count": 64,
+  "decision": "dense_coverage_shadow_failed",
+  "dense_coverage_gate": {
+    "completeness_passed": true,
+    "decision": "dense_coverage_shadow_failed",
+    "gain_passed": false,
+    "latency_passed": true,
+    "next_gate": "candidate_window_expansion",
+    "optimization_allowed": false,
+    "passed": false,
+    "production_switch_allowed": false
+  },
+  "embedding_model_same": true,
+  "expected_source_count": 80,
+  "input_hashes_verified": true,
+  "legacy_27_loaded": false,
+  "model_chat_completion_requests": 0,
+  "optimization_allowed": false,
+  "production_behavior_changed": false,
+  "production_switch_allowed": false,
+  "query_embedding_shared": true,
+  "scope_integrity_passed": true,
+  "shadow_production_collection_modified": false
+}
