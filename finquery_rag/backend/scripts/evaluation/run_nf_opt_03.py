@@ -330,7 +330,7 @@ def run(args: argparse.Namespace) -> int:
     elif any(comparisons[name]["gate"]["bm25_gain_passed"] and len(source_hit_set(rows[name], "rrf", 40) - base_rrf40) >= 6 and len(source_hit_set(rows[name], "reranker", 20) - base_reranker20) >= 5 and not comparisons[name]["gate"]["transfer_gain_passed"] for name in ("B80", "B120", "B200")):
         decision, next_gate = "bm25_window_blocked_by_final_selector", "final_context_budget_ab"
     elif any(comparisons[name]["gate"]["bm25_gain_passed"] and not comparisons[name]["gate"]["transfer_gain_passed"] for name in ("B80", "B120", "B200")):
-        decision, next_gate = "bm25_window_blocked_by_fusion_competition", "stop_and_analyze_rrf_contribution"
+        decision, next_gate = "bm25_window_gain_not_safely_transferred", "final_evidence_budget_ab"
     else:
         decision, next_gate = "bm25_window_gain_insufficient", "retrieval_representation_or_query_analysis"
 
