@@ -1,0 +1,43 @@
+{
+  "comparisons": {
+    "A": {
+      "bm25_gain_passed": false,
+      "integrity_passed": true,
+      "latency_gate_passed": true,
+      "passed": false,
+      "regression_passed": true,
+      "transfer_gain_passed": false
+    },
+    "B120": {
+      "bm25_gain_passed": true,
+      "integrity_passed": true,
+      "latency_gate_passed": true,
+      "passed": false,
+      "regression_passed": false,
+      "transfer_gain_passed": false
+    },
+    "B200": {
+      "bm25_gain_passed": true,
+      "integrity_passed": true,
+      "latency_gate_passed": true,
+      "passed": false,
+      "regression_passed": false,
+      "transfer_gain_passed": false
+    },
+    "B80": {
+      "bm25_gain_passed": true,
+      "integrity_passed": true,
+      "latency_gate_passed": true,
+      "passed": false,
+      "regression_passed": false,
+      "transfer_gain_passed": false
+    }
+  },
+  "order": [
+    "B80",
+    "B120",
+    "B200"
+  ],
+  "selected_limit": null,
+  "selected_variant": null
+}

@@ -1,0 +1,50 @@
+{
+  "A": {
+    "metrics": {
+      "@5": {
+        "all_gold_case_count": 10,
+        "none_case_count": 52,
+        "partial_case_count": 2,
+        "source_hit_count": 13,
+        "source_recall": 0.1625
+      }
+    },
+    "multi_evidence_all_source_coverage": 1
+  },
+  "B120": {
+    "metrics": {
+      "@5": {
+        "all_gold_case_count": 9,
+        "none_case_count": 53,
+        "partial_case_count": 2,
+        "source_hit_count": 12,
+        "source_recall": 0.15
+      }
+    },
+    "multi_evidence_all_source_coverage": 1
+  },
+  "B200": {
+    "metrics": {
+      "@5": {
+        "all_gold_case_count": 11,
+        "none_case_count": 51,
+        "partial_case_count": 2,
+        "source_hit_count": 14,
+        "source_recall": 0.175
+      }
+    },
+    "multi_evidence_all_source_coverage": 1
+  },
+  "B80": {
+    "metrics": {
+      "@5": {
+        "all_gold_case_count": 9,
+        "none_case_count": 53,
+        "partial_case_count": 2,
+        "source_hit_count": 13,
+        "source_recall": 0.1625
+      }
+    },
+    "multi_evidence_all_source_coverage": 2
+  }
+}

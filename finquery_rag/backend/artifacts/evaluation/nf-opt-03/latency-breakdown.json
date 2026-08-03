@@ -1,0 +1,270 @@
+{
+  "A": {
+    "bm25_ms": {
+      "mean_ms": 148.56085162318777,
+      "measured_run_count": 64,
+      "p50_ms": 133.64348304457963,
+      "p95_ms": 268.0633570998907,
+      "warmup_count": 5
+    },
+    "candidate_count_p50": 40.0,
+    "candidate_count_p95": 40.0,
+    "dense_ms": {
+      "mean_ms": 107.20637816484668,
+      "measured_run_count": 64,
+      "p50_ms": 102.6800840627402,
+      "p95_ms": 159.52449990436435,
+      "warmup_count": 5
+    },
+    "final_selector_ms": {
+      "mean_ms": 5.403843562817201,
+      "measured_run_count": 64,
+      "p50_ms": 4.676833050325513,
+      "p95_ms": 11.279890779405832,
+      "warmup_count": 5
+    },
+    "normalization_ms": {
+      "mean_ms": 0.5498118189279921,
+      "measured_run_count": 64,
+      "p50_ms": 0.47959107905626297,
+      "p95_ms": 0.5421650130301714,
+      "warmup_count": 5
+    },
+    "query_embedding_ms": {
+      "mean_ms": 1653.6989282212744,
+      "measured_run_count": 64,
+      "p50_ms": 1652.3867680225521,
+      "p95_ms": 1902.3788401391357,
+      "warmup_count": 5
+    },
+    "reranker_ms": {
+      "mean_ms": 5.453395420772722,
+      "measured_run_count": 64,
+      "p50_ms": 4.735067021101713,
+      "p95_ms": 8.761554956436157,
+      "warmup_count": 5
+    },
+    "rrf_ms": {
+      "mean_ms": 0.5493671851581894,
+      "measured_run_count": 64,
+      "p50_ms": 0.5780609790235758,
+      "p95_ms": 0.682049198076129,
+      "warmup_count": 5
+    },
+    "total_retrieval_ms": {
+      "mean_ms": 1922.0398391335038,
+      "measured_run_count": 64,
+      "p50_ms": 1914.060978218913,
+      "p95_ms": 2212.4124439433217,
+      "warmup_count": 5
+    },
+    "union_ms": {
+      "mean_ms": 0.6172631365188863,
+      "measured_run_count": 64,
+      "p50_ms": 0.6421778816729784,
+      "p95_ms": 0.7757728453725576,
+      "warmup_count": 5
+    }
+  },
+  "B120": {
+    "bm25_ms": {
+      "mean_ms": 142.2442824659811,
+      "measured_run_count": 64,
+      "p50_ms": 141.30722591653466,
+      "p95_ms": 193.2804270181805,
+      "warmup_count": 5
+    },
+    "candidate_count_p50": 120.0,
+    "candidate_count_p95": 120.0,
+    "dense_ms": {
+      "mean_ms": 107.20637816484668,
+      "measured_run_count": 64,
+      "p50_ms": 102.6800840627402,
+      "p95_ms": 159.52449990436435,
+      "warmup_count": 5
+    },
+    "final_selector_ms": {
+      "mean_ms": 11.24909004647634,
+      "measured_run_count": 64,
+      "p50_ms": 10.450544068589807,
+      "p95_ms": 16.588863916695118,
+      "warmup_count": 5
+    },
+    "normalization_ms": {
+      "mean_ms": 5.806032128020888,
+      "measured_run_count": 64,
+      "p50_ms": 1.3147518038749695,
+      "p95_ms": 2.530616009607911,
+      "warmup_count": 5
+    },
+    "query_embedding_ms": {
+      "mean_ms": 1653.6989282212744,
+      "measured_run_count": 64,
+      "p50_ms": 1652.3867680225521,
+      "p95_ms": 1902.3788401391357,
+      "warmup_count": 5
+    },
+    "reranker_ms": {
+      "mean_ms": 11.417301921028411,
+      "measured_run_count": 64,
+      "p50_ms": 10.69957297295332,
+      "p95_ms": 16.83161803521216,
+      "warmup_count": 5
+    },
+    "rrf_ms": {
+      "mean_ms": 1.2828797771362588,
+      "measured_run_count": 64,
+      "p50_ms": 1.183374086394906,
+      "p95_ms": 1.7721191979944706,
+      "warmup_count": 5
+    },
+    "total_retrieval_ms": {
+      "mean_ms": 1934.2778650461696,
+      "measured_run_count": 64,
+      "p50_ms": 1936.3586746621877,
+      "p95_ms": 2237.7038651611656,
+      "warmup_count": 5
+    },
+    "union_ms": {
+      "mean_ms": 1.3729723214055412,
+      "measured_run_count": 64,
+      "p50_ms": 1.2753850314766169,
+      "p95_ms": 1.5654719900339842,
+      "warmup_count": 5
+    }
+  },
+  "B200": {
+    "bm25_ms": {
+      "mean_ms": 162.32160856452538,
+      "measured_run_count": 64,
+      "p50_ms": 150.539229856804,
+      "p95_ms": 255.58206089772284,
+      "warmup_count": 5
+    },
+    "candidate_count_p50": 200.0,
+    "candidate_count_p95": 200.0,
+    "dense_ms": {
+      "mean_ms": 107.20637816484668,
+      "measured_run_count": 64,
+      "p50_ms": 102.6800840627402,
+      "p95_ms": 159.52449990436435,
+      "warmup_count": 5
+    },
+    "final_selector_ms": {
+      "mean_ms": 18.54363493839628,
+      "measured_run_count": 64,
+      "p50_ms": 16.690911957994103,
+      "p95_ms": 28.68021000176668,
+      "warmup_count": 5
+    },
+    "normalization_ms": {
+      "mean_ms": 2.272237412398681,
+      "measured_run_count": 64,
+      "p50_ms": 2.161704935133457,
+      "p95_ms": 3.1616168562322855,
+      "warmup_count": 5
+    },
+    "query_embedding_ms": {
+      "mean_ms": 1653.6989282212744,
+      "measured_run_count": 64,
+      "p50_ms": 1652.3867680225521,
+      "p95_ms": 1902.3788401391357,
+      "warmup_count": 5
+    },
+    "reranker_ms": {
+      "mean_ms": 17.78210571501404,
+      "measured_run_count": 64,
+      "p50_ms": 16.842861892655492,
+      "p95_ms": 27.300222078338265,
+      "warmup_count": 5
+    },
+    "rrf_ms": {
+      "mean_ms": 1.9965158753620926,
+      "measured_run_count": 64,
+      "p50_ms": 1.814835937693715,
+      "p95_ms": 2.2716401144862175,
+      "warmup_count": 5
+    },
+    "total_retrieval_ms": {
+      "mean_ms": 1965.8735675584467,
+      "measured_run_count": 64,
+      "p50_ms": 1962.4924326781183,
+      "p95_ms": 2293.433509999886,
+      "warmup_count": 5
+    },
+    "union_ms": {
+      "mean_ms": 2.0521586666291114,
+      "measured_run_count": 64,
+      "p50_ms": 1.8661320209503174,
+      "p95_ms": 2.632207004353404,
+      "warmup_count": 5
+    }
+  },
+  "B80": {
+    "bm25_ms": {
+      "mean_ms": 149.19561390706804,
+      "measured_run_count": 64,
+      "p50_ms": 137.87565403617918,
+      "p95_ms": 270.1475969515741,
+      "warmup_count": 5
+    },
+    "candidate_count_p50": 80.0,
+    "candidate_count_p95": 80.0,
+    "dense_ms": {
+      "mean_ms": 107.20637816484668,
+      "measured_run_count": 64,
+      "p50_ms": 102.6800840627402,
+      "p95_ms": 159.52449990436435,
+      "warmup_count": 5
+    },
+    "final_selector_ms": {
+      "mean_ms": 8.240548133471748,
+      "measured_run_count": 64,
+      "p50_ms": 7.604590151458979,
+      "p95_ms": 14.535201014950871,
+      "warmup_count": 5
+    },
+    "normalization_ms": {
+      "mean_ms": 1.0413975760457106,
+      "measured_run_count": 64,
+      "p50_ms": 0.8987509645521641,
+      "p95_ms": 1.4564059674739838,
+      "warmup_count": 5
+    },
+    "query_embedding_ms": {
+      "mean_ms": 1653.6989282212744,
+      "measured_run_count": 64,
+      "p50_ms": 1652.3867680225521,
+      "p95_ms": 1902.3788401391357,
+      "warmup_count": 5
+    },
+    "reranker_ms": {
+      "mean_ms": 8.561868820834206,
+      "measured_run_count": 64,
+      "p50_ms": 7.7632509637624025,
+      "p95_ms": 14.538932824507356,
+      "warmup_count": 5
+    },
+    "rrf_ms": {
+      "mean_ms": 1.11790463415673,
+      "measured_run_count": 64,
+      "p50_ms": 0.8649469818919897,
+      "p95_ms": 1.2258980423212051,
+      "warmup_count": 5
+    },
+    "total_retrieval_ms": {
+      "mean_ms": 1930.21175024478,
+      "measured_run_count": 64,
+      "p50_ms": 1927.0306697580963,
+      "p95_ms": 2187.200059881434,
+      "warmup_count": 5
+    },
+    "union_ms": {
+      "mean_ms": 1.1491107870824635,
+      "measured_run_count": 64,
+      "p50_ms": 0.9367179591208696,
+      "p95_ms": 1.3400029856711626,
+      "warmup_count": 5
+    }
+  }
+}

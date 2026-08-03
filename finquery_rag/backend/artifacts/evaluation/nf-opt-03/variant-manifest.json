@@ -1,0 +1,26 @@
+{
+  "artifact_schema": "nf-opt-03/v1",
+  "bm25_diagnostic_interface": "direct_read_only_fts5_for_limits_above_production_cap",
+  "current_limit_distribution": {
+    "20": 10,
+    "40": 54
+  },
+  "current_production_config": {
+    "candidate_multiplier": 4,
+    "embedding_model": "all-MiniLM-L6-v2",
+    "final_k": 5,
+    "n_results": 5,
+    "reranker": "heuristic"
+  },
+  "dense_configuration_identical": true,
+  "final_k": 5,
+  "reranker": "heuristic",
+  "reranker_input_source": "rrf_all",
+  "rrf_configuration_identical": true,
+  "variants": {
+    "A": null,
+    "B120": 120,
+    "B200": 200,
+    "B80": 80
+  }
+}

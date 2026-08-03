@@ -1,0 +1,38 @@
+{
+  "A": {
+    "coverage": {
+      "all": 23,
+      "none": 36,
+      "partial": 5
+    },
+    "source_hit_count": 31,
+    "source_recall": 0.3875
+  },
+  "B120": {
+    "coverage": {
+      "all": 36,
+      "none": 24,
+      "partial": 4
+    },
+    "source_hit_count": 45,
+    "source_recall": 0.5625
+  },
+  "B200": {
+    "coverage": {
+      "all": 41,
+      "none": 19,
+      "partial": 4
+    },
+    "source_hit_count": 52,
+    "source_recall": 0.65
+  },
+  "B80": {
+    "coverage": {
+      "all": 34,
+      "none": 26,
+      "partial": 4
+    },
+    "source_hit_count": 43,
+    "source_recall": 0.5375
+  }
+}

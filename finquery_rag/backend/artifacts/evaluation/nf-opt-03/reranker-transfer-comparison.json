@@ -1,0 +1,106 @@
+{
+  "A": {
+    "metrics": {
+      "@10": {
+        "all_gold_case_count": 12,
+        "none_case_count": 48,
+        "partial_case_count": 4,
+        "source_hit_count": 17,
+        "source_recall": 0.2125
+      },
+      "@20": {
+        "all_gold_case_count": 16,
+        "none_case_count": 42,
+        "partial_case_count": 6,
+        "source_hit_count": 24,
+        "source_recall": 0.3
+      },
+      "@5": {
+        "all_gold_case_count": 10,
+        "none_case_count": 52,
+        "partial_case_count": 2,
+        "source_hit_count": 13,
+        "source_recall": 0.1625
+      }
+    },
+    "mrr_at_20": 0.3477955125682399
+  },
+  "B120": {
+    "metrics": {
+      "@10": {
+        "all_gold_case_count": 14,
+        "none_case_count": 46,
+        "partial_case_count": 4,
+        "source_hit_count": 20,
+        "source_recall": 0.25
+      },
+      "@20": {
+        "all_gold_case_count": 22,
+        "none_case_count": 38,
+        "partial_case_count": 4,
+        "source_hit_count": 29,
+        "source_recall": 0.3625
+      },
+      "@5": {
+        "all_gold_case_count": 9,
+        "none_case_count": 53,
+        "partial_case_count": 2,
+        "source_hit_count": 12,
+        "source_recall": 0.15
+      }
+    },
+    "mrr_at_20": 0.2679892003421415
+  },
+  "B200": {
+    "metrics": {
+      "@10": {
+        "all_gold_case_count": 15,
+        "none_case_count": 45,
+        "partial_case_count": 4,
+        "source_hit_count": 21,
+        "source_recall": 0.2625
+      },
+      "@20": {
+        "all_gold_case_count": 21,
+        "none_case_count": 39,
+        "partial_case_count": 4,
+        "source_hit_count": 28,
+        "source_recall": 0.35
+      },
+      "@5": {
+        "all_gold_case_count": 11,
+        "none_case_count": 51,
+        "partial_case_count": 2,
+        "source_hit_count": 14,
+        "source_recall": 0.175
+      }
+    },
+    "mrr_at_20": 0.26177322264938363
+  },
+  "B80": {
+    "metrics": {
+      "@10": {
+        "all_gold_case_count": 13,
+        "none_case_count": 47,
+        "partial_case_count": 4,
+        "source_hit_count": 19,
+        "source_recall": 0.2375
+      },
+      "@20": {
+        "all_gold_case_count": 21,
+        "none_case_count": 39,
+        "partial_case_count": 4,
+        "source_hit_count": 28,
+        "source_recall": 0.35
+      },
+      "@5": {
+        "all_gold_case_count": 9,
+        "none_case_count": 53,
+        "partial_case_count": 2,
+        "source_hit_count": 13,
+        "source_recall": 0.1625
+      }
+    },
+    "mrr_at_20": 0.2925589369350979
+  }
+}

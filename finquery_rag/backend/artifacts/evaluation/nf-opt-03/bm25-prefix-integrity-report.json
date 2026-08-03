@@ -1,0 +1,2334 @@
+{
+  "A": {
+    "case_count": 64,
+    "cases": [
+      {
+        "case_id": "aapl_fy2025_001",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 20,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_002",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 20,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_004",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 20,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_005",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 20,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_007",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 20,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_009",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 20,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_001",
+        "current_count": 38,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 38,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_002",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 20,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_004",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 20,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 40,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_007",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 20,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_009",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 20,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      }
+    ],
+    "failed_case_count": 0,
+    "passed": true
+  },
+  "B120": {
+    "case_count": 64,
+    "cases": [
+      {
+        "case_id": "aapl_fy2025_001",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_002",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_004",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_005",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_007",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_009",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_001",
+        "current_count": 38,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_002",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_004",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_007",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_009",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 120,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      }
+    ],
+    "failed_case_count": 0,
+    "passed": true
+  },
+  "B200": {
+    "case_count": 64,
+    "cases": [
+      {
+        "case_id": "aapl_fy2025_001",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_002",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_004",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_005",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_007",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_009",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_001",
+        "current_count": 38,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_002",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_004",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_007",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_009",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 200,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      }
+    ],
+    "failed_case_count": 0,
+    "passed": true
+  },
+  "B80": {
+    "case_count": 64,
+    "cases": [
+      {
+        "case_id": "aapl_fy2025_001",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_002",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_004",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_005",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_007",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "aapl_fy2025_009",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "jpm_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "ko_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "msft_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "nvda_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_001",
+        "current_count": 38,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "pfe_fy2024_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_002",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_004",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_007",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "tsla_fy2025_009",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_001",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_002",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_003",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_004",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_005",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_006",
+        "current_count": 40,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_007",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      },
+      {
+        "case_id": "v_fy2025_009",
+        "current_count": 20,
+        "current_keys_missing_from_expanded": [],
+        "expanded_count": 80,
+        "order_changed": false,
+        "passed": true,
+        "prefix_equal": true
+      }
+    ],
+    "failed_case_count": 0,
+    "passed": true
+  }
+}
