@@ -37,7 +37,16 @@ from src.domain.evidence import EvidenceItem
 from src.finance.calculation_executor import execute_plan
 from src.finance.calculation_registry import get_operation_entry
 from src.finance.evidence_extractor import extract_operands
+from src.finance.calculation_intent import detect_calculation_intent
 from src.finance.operation_router import RoutingDecision, route_calculation
+from src.finance.structured_operand_binding import (
+    adapt_bound_operands,
+    bind_operands,
+    build_operand_specs,
+    extract_financial_facts,
+)
+
+ENABLE_STRUCTURED_OPERAND_BINDING = False
 
 
 class CalculationPipeline:
@@ -48,8 +57,14 @@ class CalculationPipeline:
     on every query that requires retrieval.
     """
 
-    def __init__(self, *, allow_derived_document_qa: bool = False):
+    def __init__(
+        self,
+        *,
+        allow_derived_document_qa: bool = False,
+        enable_structured_operand_binding: bool = ENABLE_STRUCTURED_OPERAND_BINDING,
+    ):
         self._allow_derived_document_qa = allow_derived_document_qa
+        self._enable_structured_operand_binding = enable_structured_operand_binding
 
     def try_calculate(
         self,
@@ -90,6 +105,64 @@ class CalculationPipeline:
 
         # 4. Execute the plan deterministically.
         return execute_plan(plan)
+
+    def try_structured_shadow(
+        self,
+        question: str,
+        intent: dict[str, Any],
+        evidence: tuple[EvidenceItem, ...],
+    ) -> CalculationResult:
+        """Evaluate structured binding without changing the production result."""
+        if not self._enable_structured_operand_binding:
+            return NOT_APPLICABLE_RESULT
+        routing = route_calculation(
+            question,
+            intent,
+            allow_derived_document_qa=self._allow_derived_document_qa,
+        )
+        if (
+            routing.status is CalculationStatus.NOT_APPLICABLE
+            or routing.operation is None
+        ):
+            return NOT_APPLICABLE_RESULT
+        calculation_intent = detect_calculation_intent(question)
+        specs = build_operand_specs(
+            question=question,
+            routing_decision=routing,
+            calculation_intent=calculation_intent,
+        )
+        if not specs:
+            return execute_plan(
+                CalculationPlan(
+                    operation=routing.operation,
+                    operands=(),
+                    formula_version=routing.formula_version or "unknown.v1",
+                    target_metric=routing.metric or routing.operation.value,
+                    status=CalculationStatus.BLOCKED,
+                    block_reason="OPERAND_MISSING: no structured operand specification",
+                )
+            )
+        binding = bind_operands(specs, extract_financial_facts(evidence))
+        if not binding.success:
+            return execute_plan(
+                CalculationPlan(
+                    operation=routing.operation,
+                    operands=(),
+                    formula_version=routing.formula_version or "unknown.v1",
+                    target_metric=routing.metric or routing.operation.value,
+                    status=CalculationStatus.BLOCKED,
+                    block_reason=f"{binding.block_reason}: structured binding blocked",
+                )
+            )
+        operands = adapt_bound_operands(binding.operands, routing.operation.value)
+        return execute_plan(
+            CalculationPlan(
+                operation=routing.operation,
+                operands=operands,
+                formula_version=routing.formula_version or "unknown.v1",
+                target_metric=routing.metric or routing.operation.value,
+            )
+        )
 
     @staticmethod
     def _build_plan(

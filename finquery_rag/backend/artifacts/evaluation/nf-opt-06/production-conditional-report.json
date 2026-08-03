@@ -1,0 +1,118 @@
+{
+  "all_required_evidence_case_count": 1,
+  "binder_success_given_complete_evidence": 0,
+  "case_count": 11,
+  "note": "Current Final evidence is reconstructed read-only from frozen NF-EVAL-03 R2 traces; no retrieval or answer generation is run.",
+  "records": [
+    {
+      "binder_invoked": true,
+      "binder_success": false,
+      "case_id": "aapl_fy2025_006",
+      "evidence_sufficient": false,
+      "execution_success": false,
+      "final_evidence_count": 5,
+      "final_gold_coverage": "no_gold_in_final",
+      "result_correct": false
+    },
+    {
+      "binder_invoked": true,
+      "binder_success": false,
+      "case_id": "jpm_fy2025_006",
+      "evidence_sufficient": false,
+      "execution_success": false,
+      "final_evidence_count": 5,
+      "final_gold_coverage": "no_gold_in_final",
+      "result_correct": false
+    },
+    {
+      "binder_invoked": true,
+      "binder_success": false,
+      "case_id": "ko_fy2025_006",
+      "evidence_sufficient": false,
+      "execution_success": false,
+      "final_evidence_count": 5,
+      "final_gold_coverage": "no_gold_in_final",
+      "result_correct": false
+    },
+    {
+      "binder_invoked": true,
+      "binder_success": false,
+      "case_id": "ko_fy2025_007",
+      "evidence_sufficient": false,
+      "execution_success": false,
+      "final_evidence_count": 5,
+      "final_gold_coverage": "no_gold_in_final",
+      "result_correct": false
+    },
+    {
+      "binder_invoked": true,
+      "binder_success": false,
+      "case_id": "msft_fy2025_006",
+      "evidence_sufficient": true,
+      "execution_success": false,
+      "final_evidence_count": 5,
+      "final_gold_coverage": "all_gold_in_final",
+      "result_correct": false
+    },
+    {
+      "binder_invoked": true,
+      "binder_success": false,
+      "case_id": "msft_fy2025_007",
+      "evidence_sufficient": false,
+      "execution_success": false,
+      "final_evidence_count": 5,
+      "final_gold_coverage": "partial_gold_in_final",
+      "result_correct": false
+    },
+    {
+      "binder_invoked": true,
+      "binder_success": false,
+      "case_id": "nvda_fy2025_006",
+      "evidence_sufficient": false,
+      "execution_success": false,
+      "final_evidence_count": 5,
+      "final_gold_coverage": "no_gold_in_final",
+      "result_correct": false
+    },
+    {
+      "binder_invoked": true,
+      "binder_success": false,
+      "case_id": "pfe_fy2024_006",
+      "evidence_sufficient": false,
+      "execution_success": false,
+      "final_evidence_count": 5,
+      "final_gold_coverage": "no_gold_in_final",
+      "result_correct": false
+    },
+    {
+      "binder_invoked": true,
+      "binder_success": false,
+      "case_id": "tsla_fy2025_006",
+      "evidence_sufficient": false,
+      "execution_success": false,
+      "final_evidence_count": 5,
+      "final_gold_coverage": "no_gold_in_final",
+      "result_correct": false
+    },
+    {
+      "binder_invoked": true,
+      "binder_success": false,
+      "case_id": "tsla_fy2025_007",
+      "evidence_sufficient": false,
+      "execution_success": false,
+      "final_evidence_count": 5,
+      "final_gold_coverage": "partial_gold_in_final",
+      "result_correct": false
+    },
+    {
+      "binder_invoked": true,
+      "binder_success": false,
+      "case_id": "v_fy2025_006",
+      "evidence_sufficient": false,
+      "execution_success": false,
+      "final_evidence_count": 5,
+      "final_gold_coverage": "no_gold_in_final",
+      "result_correct": false
+    }
+  ]
+}
