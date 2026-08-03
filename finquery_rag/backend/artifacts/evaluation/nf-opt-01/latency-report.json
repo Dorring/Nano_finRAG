@@ -1,0 +1,17 @@
+{
+  "current_dense_query_p50_ms": 88.56093604117632,
+  "current_dense_query_p95_ms": 130.19789895042777,
+  "embedding_model": "all-MiniLM-L6-v2",
+  "online_latency_comparable": true,
+  "query_embedding_p50_ms": 808.5297059733421,
+  "query_embedding_p95_ms": 1085.8020798768848,
+  "query_embedding_reused": true,
+  "shadow_dense_query_p50_ms": 103.44494506716728,
+  "shadow_dense_query_p95_ms": 130.12472004629672,
+  "shadow_index_build_ms": 241.6342510841787,
+  "shadow_p95_increase_ratio": -0.0005620590249226479,
+  "superset_dense_query_p50_ms": 99.6356988325715,
+  "superset_dense_query_p95_ms": 127.875603036955,
+  "superset_index_build_ms": 3486.5363349672407,
+  "superset_p95_increase_ratio": -0.017836661975297888
+}

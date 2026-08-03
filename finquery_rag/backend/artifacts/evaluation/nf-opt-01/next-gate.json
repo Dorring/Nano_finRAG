@@ -1,0 +1,7 @@
+{
+  "formal_variant": "regression_safe_superset",
+  "optimization_allowed": true,
+  "production_switch_allowed": false,
+  "reason": "dense_coverage_experiment_recorded",
+  "selected_gate": "protected_residual_candidate_ab"
+}

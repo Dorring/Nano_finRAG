@@ -1,0 +1,33 @@
+{
+  "candidate_count": 38319,
+  "canonical_candidate_count": 38319,
+  "canonical_keys_included": true,
+  "canonical_missing_candidate_count": 16451,
+  "collection_hash": "27b8b68e2bad8dd4102c9f91072ee63278f9fb2cd8a0c7578ca8c8d6e454316a",
+  "collection_name": "financial_rag_v1_dense_coverage_superset",
+  "current_candidate_count": 21868,
+  "current_collection_untouched": true,
+  "current_keys_preserved": true,
+  "current_record_manifest": {
+    "candidate_count": 21868,
+    "identity_conflict_count": 0,
+    "invalid_identity_count": 0,
+    "production_vectors_reused_count": 21868
+  },
+  "current_vectors_reused_count": 21868,
+  "distance_metric": "cosine",
+  "duplicate_candidate_count": 0,
+  "embedding_model": "all-MiniLM-L6-v2",
+  "gold_identity_expected_count": 80,
+  "gold_identity_presence_count": 80,
+  "identity_conflict_count": 0,
+  "index_build_ms": 3486.529525136575,
+  "index_reused": true,
+  "new_vectors_encoded_count": 0,
+  "out_of_scope_candidate_count": 0,
+  "query_encoder_shared_with_current": true,
+  "shadow_collection_untouched": true,
+  "unique_candidate_count": 38319,
+  "unsupported_candidate_count": 0,
+  "variant": "regression_safe_superset"
+}

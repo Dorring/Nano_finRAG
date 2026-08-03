@@ -1,0 +1,20 @@
+{
+  "all_hashes_verified": true,
+  "allowed_document_count": 8,
+  "artifact_schema": "nf-opt-01/v1",
+  "benchmark_hash": "183b0aa98961f49893c364ac4c3cf97d50ef9343710dd8e55c6ee0dde8a96274",
+  "benchmark_id": "financial-rag-v1",
+  "case_count": 64,
+  "corpus_hash": "edd4e8c1aac89ea1480dcb723857b487cb6038218d0a924b749eb6ec8fd13448",
+  "expected_source_count": 80,
+  "golden_manifest_sha256": "e6a0d344b9034c0661fb9c42f410ee73dde8917e155c10473ffa49f648d9664f",
+  "legacy_documents_loaded": 0,
+  "negative_evidence_hash": "bbfac5cf45cb515250df42148ade28a97a7c21a0cefdcfb1cd414eaa5086e707",
+  "nf04_hashes_unchanged": true,
+  "question_hash": "3b1433ea7546020ec7ab90a9cb700bb58d90aa040f65e6610d6bc5b1330e97b7",
+  "reference_answer_hash": "181c9ed45ae904353431ef6d427b139e1d5f0b8f437c2fdd9f25e2f9b7abb7a7",
+  "review_status_hash": "398d0653886f3d573e43002d3dc93ad8a5cd7ae3b0768f5087a4897b6750146f",
+  "scope_integrity_passed": true,
+  "source_identity_hash": "18eb4461f135cba49ae2565f444cc8ca61a26df80b17cd30759d67ff71fcf19c",
+  "tenant_id": 1
+}
