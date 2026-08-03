@@ -40,6 +40,7 @@
   },
   "multi_evidence_current_all": 3,
   "multi_evidence_shadow_all": 3,
+  "multi_evidence_superset_all": 3,
   "records": [
     {
       "case_id": "aapl_fy2025_001",
@@ -49,7 +50,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "aapl_fy2025_002",
@@ -59,7 +63,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "aapl_fy2025_003",
@@ -69,7 +76,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "aapl_fy2025_004",
@@ -79,7 +89,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "aapl_fy2025_005",
@@ -89,7 +102,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "aapl_fy2025_006",
@@ -99,7 +115,10 @@
       "expected_source_count": 2,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "aapl_fy2025_007",
@@ -109,7 +128,10 @@
       "expected_source_count": 2,
       "shadow_rrf_coverage": "partial",
       "shadow_rrf_top40_coverage": "partial",
-      "shadow_union_coverage": "partial"
+      "shadow_union_coverage": "partial",
+      "superset_rrf_coverage": "partial",
+      "superset_rrf_top40_coverage": "partial",
+      "superset_union_coverage": "partial"
     },
     {
       "case_id": "aapl_fy2025_009",
@@ -119,7 +141,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "jpm_fy2025_001",
@@ -129,7 +154,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "jpm_fy2025_002",
@@ -139,7 +167,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "jpm_fy2025_003",
@@ -149,7 +180,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "jpm_fy2025_004",
@@ -159,7 +193,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "jpm_fy2025_005",
@@ -169,7 +206,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "jpm_fy2025_006",
@@ -179,7 +219,10 @@
       "expected_source_count": 2,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "jpm_fy2025_007",
@@ -189,7 +232,10 @@
       "expected_source_count": 2,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "jpm_fy2025_009",
@@ -199,7 +245,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "ko_fy2025_001",
@@ -209,7 +258,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "ko_fy2025_002",
@@ -219,7 +271,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "ko_fy2025_003",
@@ -229,7 +284,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "ko_fy2025_004",
@@ -239,7 +297,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "ko_fy2025_005",
@@ -249,7 +310,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "ko_fy2025_006",
@@ -259,7 +323,10 @@
       "expected_source_count": 2,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "ko_fy2025_007",
@@ -269,7 +336,10 @@
       "expected_source_count": 2,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "ko_fy2025_009",
@@ -279,7 +349,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "msft_fy2025_001",
@@ -289,7 +362,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "msft_fy2025_002",
@@ -299,7 +375,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "msft_fy2025_003",
@@ -309,7 +388,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "msft_fy2025_004",
@@ -319,7 +401,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "msft_fy2025_005",
@@ -329,7 +414,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "msft_fy2025_006",
@@ -339,7 +427,10 @@
       "expected_source_count": 2,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "msft_fy2025_007",
@@ -349,7 +440,10 @@
       "expected_source_count": 2,
       "shadow_rrf_coverage": "partial",
       "shadow_rrf_top40_coverage": "partial",
-      "shadow_union_coverage": "partial"
+      "shadow_union_coverage": "partial",
+      "superset_rrf_coverage": "partial",
+      "superset_rrf_top40_coverage": "partial",
+      "superset_union_coverage": "partial"
     },
     {
       "case_id": "msft_fy2025_009",
@@ -359,7 +453,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "nvda_fy2025_001",
@@ -369,7 +466,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "nvda_fy2025_002",
@@ -379,7 +479,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "nvda_fy2025_003",
@@ -389,7 +492,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "nvda_fy2025_004",
@@ -399,7 +505,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "nvda_fy2025_005",
@@ -409,7 +518,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "nvda_fy2025_006",
@@ -419,7 +531,10 @@
       "expected_source_count": 2,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "nvda_fy2025_007",
@@ -429,7 +544,10 @@
       "expected_source_count": 2,
       "shadow_rrf_coverage": "partial",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "partial"
+      "shadow_union_coverage": "partial",
+      "superset_rrf_coverage": "partial",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "partial"
     },
     {
       "case_id": "nvda_fy2025_009",
@@ -439,7 +557,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "pfe_fy2024_001",
@@ -449,7 +570,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "pfe_fy2024_002",
@@ -459,7 +583,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "pfe_fy2024_003",
@@ -469,7 +596,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "pfe_fy2024_004",
@@ -479,7 +609,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "pfe_fy2024_005",
@@ -489,7 +622,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "pfe_fy2024_006",
@@ -499,7 +635,10 @@
       "expected_source_count": 2,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "pfe_fy2024_007",
@@ -509,7 +648,10 @@
       "expected_source_count": 2,
       "shadow_rrf_coverage": "partial",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "partial"
+      "shadow_union_coverage": "partial",
+      "superset_rrf_coverage": "partial",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "partial"
     },
     {
       "case_id": "pfe_fy2024_009",
@@ -519,7 +661,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "tsla_fy2025_001",
@@ -529,7 +674,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "tsla_fy2025_002",
@@ -539,7 +687,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "tsla_fy2025_003",
@@ -549,7 +700,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "tsla_fy2025_004",
@@ -559,7 +713,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "tsla_fy2025_005",
@@ -569,7 +726,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "tsla_fy2025_006",
@@ -579,7 +739,10 @@
       "expected_source_count": 2,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "tsla_fy2025_007",
@@ -589,7 +752,10 @@
       "expected_source_count": 2,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "tsla_fy2025_009",
@@ -599,7 +765,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "v_fy2025_001",
@@ -609,7 +778,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "v_fy2025_002",
@@ -619,7 +791,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "v_fy2025_003",
@@ -629,7 +804,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     },
     {
       "case_id": "v_fy2025_004",
@@ -639,7 +817,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "v_fy2025_005",
@@ -649,7 +830,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "v_fy2025_006",
@@ -659,7 +843,10 @@
       "expected_source_count": 2,
       "shadow_rrf_coverage": "none",
       "shadow_rrf_top40_coverage": "none",
-      "shadow_union_coverage": "none"
+      "shadow_union_coverage": "none",
+      "superset_rrf_coverage": "none",
+      "superset_rrf_top40_coverage": "none",
+      "superset_union_coverage": "none"
     },
     {
       "case_id": "v_fy2025_007",
@@ -669,7 +856,10 @@
       "expected_source_count": 2,
       "shadow_rrf_coverage": "partial",
       "shadow_rrf_top40_coverage": "partial",
-      "shadow_union_coverage": "partial"
+      "shadow_union_coverage": "partial",
+      "superset_rrf_coverage": "partial",
+      "superset_rrf_top40_coverage": "partial",
+      "superset_union_coverage": "partial"
     },
     {
       "case_id": "v_fy2025_009",
@@ -679,7 +869,10 @@
       "expected_source_count": 1,
       "shadow_rrf_coverage": "all",
       "shadow_rrf_top40_coverage": "all",
-      "shadow_union_coverage": "all"
+      "shadow_union_coverage": "all",
+      "superset_rrf_coverage": "all",
+      "superset_rrf_top40_coverage": "all",
+      "superset_union_coverage": "all"
     }
   ],
   "shadow": {
@@ -717,6 +910,45 @@
     "partial": 5
   },
   "shadow_rrf_top40_case_coverage": {
+    "all": 27,
+    "none": 34,
+    "partial": 3
+  },
+  "superset": {
+    "@100": {
+      "case_hit_count": 33,
+      "case_hit_rate": 0.515625,
+      "source_hit_count": 36,
+      "source_recall": 0.45
+    },
+    "@20": {
+      "case_hit_count": 20,
+      "case_hit_rate": 0.3125,
+      "source_hit_count": 21,
+      "source_recall": 0.2625
+    },
+    "@200": {
+      "case_hit_count": 33,
+      "case_hit_rate": 0.515625,
+      "source_hit_count": 36,
+      "source_recall": 0.45
+    },
+    "@40": {
+      "case_hit_count": 30,
+      "case_hit_rate": 0.46875,
+      "source_hit_count": 33,
+      "source_recall": 0.4125
+    },
+    "case_count": 64,
+    "rank_field": "rank",
+    "source_count": 80
+  },
+  "superset_case_coverage": {
+    "all": 28,
+    "none": 31,
+    "partial": 5
+  },
+  "superset_rrf_top40_case_coverage": {
     "all": 27,
     "none": 34,
     "partial": 3

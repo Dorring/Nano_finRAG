@@ -37,5 +37,41 @@
     "all": 27,
     "none": 34,
     "partial": 3
+  },
+  "superset_all_partial_none": {
+    "all": 28,
+    "none": 31,
+    "partial": 5
+  },
+  "superset_dense": {
+    "both_hit_count": 12,
+    "both_missed_count": 0,
+    "current_hit_count": 13,
+    "new_hit_count": 35,
+    "regressed_hit_count": 1,
+    "shadow_hit_count": 47
+  },
+  "superset_rrf_all_gold_regressed_case_count": 4,
+  "superset_rrf_top40": {
+    "both_hit_count": 19,
+    "both_missed_count": 7,
+    "current_hit_count": 19,
+    "new_hit_count": 12,
+    "regressed_hit_count": 0,
+    "shadow_hit_count": 31
+  },
+  "superset_rrf_top40_all_gold_regressed_case_count": 0,
+  "superset_rrf_top40_all_partial_none": {
+    "all": 27,
+    "none": 34,
+    "partial": 3
+  },
+  "superset_union": {
+    "both_hit_count": 4,
+    "both_missed_count": 11,
+    "current_hit_count": 5,
+    "new_hit_count": 22,
+    "regressed_hit_count": 1,
+    "shadow_hit_count": 26
   }
 }

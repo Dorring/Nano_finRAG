@@ -1,13 +1,17 @@
 {
-  "current_dense_query_p50_ms": 85.56825411505997,
-  "current_dense_query_p95_ms": 116.4072931278497,
+  "current_dense_query_p50_ms": 89.52192217111588,
+  "current_dense_query_p95_ms": 140.31896903179586,
   "embedding_model": "all-MiniLM-L6-v2",
   "online_latency_comparable": true,
-  "p95_increase_ratio": 0.11861796060627117,
-  "query_embedding_p50_ms": 858.5391009692103,
-  "query_embedding_p95_ms": 1134.108236990869,
+  "query_embedding_p50_ms": 839.633118826896,
+  "query_embedding_p95_ms": 1083.7517008185387,
   "query_embedding_reused": true,
-  "shadow_dense_query_p50_ms": 94.02184491045773,
-  "shadow_dense_query_p95_ms": 130.21528883837163,
-  "shadow_index_build_ms": 206.47341897711158
+  "shadow_dense_query_p50_ms": 100.03103106282651,
+  "shadow_dense_query_p95_ms": 128.1813879031688,
+  "shadow_index_build_ms": 222.25288185290992,
+  "shadow_p95_increase_ratio": -0.08649993092435508,
+  "superset_dense_query_p50_ms": 98.21490803733468,
+  "superset_dense_query_p95_ms": 122.42636899463832,
+  "superset_index_build_ms": 3299.2516439408064,
+  "superset_p95_increase_ratio": -0.12751376496433015
 }

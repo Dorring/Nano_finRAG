@@ -30,6 +30,7 @@ from src.evaluation.nf_opt_01 import (
     compare_rank_maps,
     coverage_state,
     dense_coverage_gate,
+    dense_superset_gate,
     percentile,
     rank_metrics,
 )
@@ -46,6 +47,7 @@ BENCHMARK = ROOT / "benchmarks" / "financial_rag_v1"
 DATA = BENCHMARK / "data"
 DEFAULT_OUT = ROOT / "artifacts" / "evaluation" / "nf-opt-01"
 DEFAULT_RUNTIME = ROOT / "runtime" / "evaluation" / "nf-opt-01" / "shadow-chroma"
+DEFAULT_SUPERSET_RUNTIME = ROOT / "runtime" / "evaluation" / "nf-opt-01" / "superset-chroma"
 DEFAULT_NEGATIVE = ROOT / "artifacts" / "evaluation" / "nf-eval-02" / "negative-evidence-review-report.json"
 NF04_OUT = ROOT / "artifacts" / "evaluation" / "nf-eval-04"
 
@@ -85,6 +87,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--chroma-path", type=Path, default=ROOT / "chroma_db")
     parser.add_argument("--bm25-db-path", type=Path, default=ROOT / "rag_bm25.db")
     parser.add_argument("--shadow-path", type=Path, default=DEFAULT_RUNTIME)
+    parser.add_argument("--superset-path", type=Path, default=DEFAULT_SUPERSET_RUNTIME)
     parser.add_argument("--out-dir", type=Path, default=DEFAULT_OUT)
     parser.add_argument("--corpus", type=Path, default=BENCHMARK / "corpus.json")
     parser.add_argument("--manifest", dest="manifest_path", type=Path, default=DATA / "golden-manifest.json")
@@ -282,6 +285,230 @@ def _current_collection_keys(
         if key:
             keys.add(key)
     return keys
+
+
+def _load_current_dense_records(
+    collection: Any,
+    *,
+    filenames: Sequence[str],
+    mapping: Mapping[str, str],
+    tenant_id: int,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Read production vectors without re-encoding or mutating the collection."""
+
+    where = {"$and": [{"user_id": tenant_id}, {"doc_name": {"$in": list(filenames)}}]}
+    result = collection.get(
+        where=where,
+        include=["documents", "metadatas", "embeddings"],
+    )
+    ids = result.get("ids") or []
+    documents = result.get("documents") or []
+    metadatas = result.get("metadatas") or []
+    embeddings = result.get("embeddings")
+    if embeddings is None or len(embeddings) != len(ids):
+        raise NFOpt01Error("current dense collection did not expose all embeddings")
+    records_by_key: dict[str, dict[str, Any]] = {}
+    invalid_count = 0
+    conflict_count = 0
+    for candidate_id, content, metadata, embedding in zip(ids, documents, metadatas, embeddings):
+        metadata = dict(metadata or {})
+        raw = _raw_candidate_for_identity(
+            {
+                "doc_id": str(candidate_id),
+                "content": content,
+                "metadata": metadata,
+            }
+        )
+        key, document_id, evidence_id = r1.candidate_identity_from_record(
+            raw,
+            filename_to_document=mapping,
+            tenant_id=tenant_id,
+        )
+        rendered_hash = _content_hash(content)
+        if not key or not document_id or not evidence_id or not rendered_hash:
+            invalid_count += 1
+            continue
+        row = {
+            "candidate_key": str(key),
+            "evidence_id": str(evidence_id),
+            "doc_id": str(candidate_id),
+            "document_id": str(document_id),
+            "filename": str(metadata.get("doc_name") or ""),
+            "content": str(content),
+            "content_hash": rendered_hash,
+            "metadata": _metadata_for_chroma(
+                candidate_key=str(key),
+                evidence_id=str(evidence_id),
+                document_id=str(document_id),
+                filename=str(metadata.get("doc_name") or ""),
+                metadata=metadata,
+                content_hash=rendered_hash,
+                tenant_id=tenant_id,
+            )
+            | {"dense_variant_source": "current_production", "nf_opt_01_metadata_schema": "v3"},
+            "embedding": np.asarray(embedding, dtype=np.float32).tolist(),
+        }
+        prior = records_by_key.get(str(key))
+        if prior is not None:
+            prior_page = prior["metadata"].get("page")
+            page = row["metadata"].get("page")
+            if (
+                prior["document_id"] != row["document_id"]
+                or prior["content_hash"] != row["content_hash"]
+                or prior_page != page
+            ):
+                conflict_count += 1
+                continue
+            # Identical duplicate rows do not create a second canonical key.
+            continue
+        records_by_key[str(key)] = row
+    if invalid_count or conflict_count:
+        raise NFOpt01Error(
+            "current dense identity validation failed: "
+            f"invalid={invalid_count}, conflicts={conflict_count}"
+        )
+    records = sorted(records_by_key.values(), key=lambda row: row["candidate_key"])
+    return records, {
+        "candidate_count": len(records),
+        "invalid_identity_count": invalid_count,
+        "identity_conflict_count": conflict_count,
+        "production_vectors_reused_count": len(records),
+    }
+
+
+def _build_superset_index(
+    *,
+    superset_client: Any,
+    superset_name: str,
+    current_records: Sequence[Mapping[str, Any]],
+    canonical_records: Sequence[Mapping[str, Any]],
+    embed_fn: Any,
+) -> tuple[Any, dict[str, Any], float]:
+    """Build Current ∪ Canonical while reusing every current vector exactly."""
+
+    started = time.perf_counter()
+    current_by_key = {str(row["candidate_key"]): dict(row) for row in current_records}
+    canonical_by_key = {str(row["candidate_key"]): dict(row) for row in canonical_records}
+    conflicts: list[dict[str, Any]] = []
+    merged: list[dict[str, Any]] = []
+    for key, current in current_by_key.items():
+        canonical = canonical_by_key.get(key)
+        if canonical is not None:
+            current_page = (current.get("metadata") or {}).get("page")
+            canonical_page = (canonical.get("metadata") or {}).get("page")
+            if (
+                current.get("document_id") != canonical.get("document_id")
+                or current.get("content_hash") != canonical.get("content_hash")
+                or current_page != canonical_page
+            ):
+                conflicts.append(
+                    {
+                        "candidate_key": key,
+                        "document_id_current": current.get("document_id"),
+                        "document_id_canonical": canonical.get("document_id"),
+                        "content_hash_current": current.get("content_hash"),
+                        "content_hash_canonical": canonical.get("content_hash"),
+                        "page_current": current_page,
+                        "page_canonical": canonical_page,
+                    }
+                )
+        merged.append(current)
+    for key, canonical in canonical_by_key.items():
+        if key in current_by_key:
+            continue
+        row = dict(canonical)
+        row["metadata"] = dict(row.get("metadata") or {}) | {
+            "dense_variant_source": "canonical_missing",
+            "nf_opt_01_metadata_schema": "v3",
+        }
+        row["embedding"] = None
+        merged.append(row)
+    if conflicts:
+        raise NFOpt01Error(
+            "Current ∪ Canonical identity conflicts detected: "
+            f"{len(conflicts)}"
+        )
+    merged.sort(key=lambda row: str(row["candidate_key"]))
+    target_ids = {str(row["candidate_key"]) for row in merged}
+    collection = superset_client.get_or_create_collection(
+        name=superset_name,
+        embedding_function=embed_fn,
+        metadata={"hnsw:space": "cosine", "nf_opt_01": "regression_safe_superset"},
+    )
+    reused = False
+    if int(collection.count()) == len(target_ids):
+        try:
+            existing = collection.get(limit=len(target_ids), include=["metadatas"])
+            existing_ids = {str(value) for value in (existing.get("ids") or [])}
+            existing_meta = existing.get("metadatas") or []
+            metadata_ok = all(
+                (metadata or {}).get("nf_opt_01_metadata_schema") == "v3"
+                for metadata in existing_meta
+            )
+        except Exception:
+            existing_ids = set()
+            metadata_ok = False
+        if existing_ids == target_ids and metadata_ok:
+            reused = True
+    if not reused and int(collection.count()) > 0:
+        superset_client.delete_collection(name=superset_name)
+        collection = superset_client.get_or_create_collection(
+            name=superset_name,
+            embedding_function=embed_fn,
+            metadata={"hnsw:space": "cosine", "nf_opt_01": "regression_safe_superset"},
+        )
+    encoded_missing = 0
+    if not reused:
+        batch_size = 256
+        for start in range(0, len(merged), batch_size):
+            batch = merged[start:start + batch_size]
+            missing = [index for index, row in enumerate(batch) if row.get("embedding") is None]
+            if missing:
+                missing_vectors = embed_fn([str(batch[index]["content"]) for index in missing])
+                for index, vector in zip(missing, missing_vectors):
+                    batch[index]["embedding"] = np.asarray(vector, dtype=np.float32).tolist()
+                encoded_missing += len(missing)
+            collection.upsert(
+                ids=[str(row["candidate_key"]) for row in batch],
+                documents=[str(row["content"]) for row in batch],
+                metadatas=[dict(row["metadata"]) for row in batch],
+                embeddings=[row["embedding"] for row in batch],
+            )
+    manifest = {
+        "variant": "regression_safe_superset",
+        "embedding_model": "all-MiniLM-L6-v2",
+        "candidate_count": len(merged),
+        "unique_candidate_count": len(target_ids),
+        "duplicate_candidate_count": len(merged) - len(target_ids),
+        "unsupported_candidate_count": 0,
+        "out_of_scope_candidate_count": 0,
+        "current_candidate_count": len(current_by_key),
+        "canonical_candidate_count": len(canonical_by_key),
+        "canonical_missing_candidate_count": len(set(canonical_by_key) - set(current_by_key)),
+        "current_vectors_reused_count": len(current_by_key),
+        "new_vectors_encoded_count": encoded_missing if not reused else 0,
+        "current_keys_preserved": set(current_by_key).issubset(target_ids),
+        "canonical_keys_included": set(canonical_by_key).issubset(target_ids),
+        "identity_conflict_count": len(conflicts),
+        "collection_hash": _stable_hash(
+            [
+                {
+                    "candidate_key": row["candidate_key"],
+                    "document_id": row["document_id"],
+                    "content_hash": row["content_hash"],
+                    "page": (row.get("metadata") or {}).get("page"),
+                }
+                for row in merged
+            ]
+        ),
+        "collection_name": superset_name,
+        "current_collection_untouched": True,
+        "query_encoder_shared_with_current": True,
+        "distance_metric": "cosine",
+        "index_reused": reused,
+        "index_build_ms": (time.perf_counter() - started) * 1000.0,
+    }
+    return collection, manifest, (time.perf_counter() - started) * 1000.0
 
 
 def _build_shadow_index(
@@ -578,6 +805,7 @@ def _run(args: argparse.Namespace) -> int:
         raise NFOpt01Error("NF-OPT-01 only permits all-MiniLM-L6-v2")
     args.out_dir.mkdir(parents=True, exist_ok=True)
     args.shadow_path.mkdir(parents=True, exist_ok=True)
+    args.superset_path.mkdir(parents=True, exist_ok=True)
     os.environ.setdefault("HF_HUB_OFFLINE", "1")
     os.environ.setdefault("HF_DATASETS_OFFLINE", "1")
     os.environ["CHROMA_PATH"] = str(args.chroma_path)
@@ -622,6 +850,14 @@ def _run(args: argparse.Namespace) -> int:
         tenant_id=args.tenant_id,
         gold_keys=gold_keys,
     )
+    current_records, current_record_manifest = _load_current_dense_records(
+        current_collection,
+        filenames=filenames,
+        mapping=mapping,
+        tenant_id=args.tenant_id,
+    )
+    if set(row["candidate_key"] for row in current_records) != current_keys:
+        raise NFOpt01Error("current dense key audit does not match current collection key audit")
     shadow_manifest["current_dense_candidate_count"] = len(current_keys)
     shadow_manifest["current_collection_untouched"] = True
     shadow_name = "financial_rag_v1_dense_coverage_shadow"
@@ -640,26 +876,51 @@ def _run(args: argparse.Namespace) -> int:
         "query_encoder_shared_with_current": True,
         "distance_metric": "cosine",
     }
+    superset_client = chromadb.PersistentClient(path=str(args.superset_path))
+    superset_name = "financial_rag_v1_dense_coverage_superset"
+    superset_collection, superset_manifest, superset_build_ms = _build_superset_index(
+        superset_client=superset_client,
+        superset_name=superset_name,
+        current_records=current_records,
+        canonical_records=records,
+        embed_fn=vector_store.embed_fn,
+    )
+    superset_manifest["current_record_manifest"] = current_record_manifest
+    superset_manifest["shadow_collection_untouched"] = True
+    superset_keys = {str(row["candidate_key"]) for row in current_records} | {
+        str(row["candidate_key"]) for row in records
+    }
+    superset_manifest["gold_identity_presence_count"] = sum(
+        str(key) in superset_keys for key in gold_keys
+    )
+    superset_manifest["gold_identity_expected_count"] = len(gold_keys)
 
     query_processor = QueryProcessor()
     bm25 = SqliteBM25Retriever(db_path=str(args.bm25_db_path))
     current_dense_rows: list[dict[str, Any]] = []
     shadow_dense_rows: list[dict[str, Any]] = []
+    superset_dense_rows: list[dict[str, Any]] = []
     current_union_rows: list[dict[str, Any]] = []
     shadow_union_rows: list[dict[str, Any]] = []
+    superset_union_rows: list[dict[str, Any]] = []
     current_rrf_rows: list[dict[str, Any]] = []
     shadow_rrf_rows: list[dict[str, Any]] = []
+    superset_rrf_rows: list[dict[str, Any]] = []
     # Gold-only rows keep Source Recall denominators fixed at the frozen 80
     # Expected Sources.  The candidate rows above remain for lineage and
     # regression diagnostics, but must not be used as metric denominators.
     current_dense_gold_rows: list[dict[str, Any]] = []
     shadow_dense_gold_rows: list[dict[str, Any]] = []
+    superset_dense_gold_rows: list[dict[str, Any]] = []
     current_union_gold_rows: list[dict[str, Any]] = []
     shadow_union_gold_rows: list[dict[str, Any]] = []
+    superset_union_gold_rows: list[dict[str, Any]] = []
     current_rrf_gold_rows: list[dict[str, Any]] = []
     shadow_rrf_gold_rows: list[dict[str, Any]] = []
+    superset_rrf_gold_rows: list[dict[str, Any]] = []
     dense_query_times_current: list[float] = []
     dense_query_times_shadow: list[float] = []
+    dense_query_times_superset: list[float] = []
     query_embedding_times: list[float] = []
     dense_source_comparison: list[dict[str, Any]] = []
     hybrid_source_comparison: list[dict[str, Any]] = []
@@ -707,8 +968,19 @@ def _run(args: argparse.Namespace) -> int:
             mapping=mapping,
         )
         dense_query_times_shadow.append((time.perf_counter() - started) * 1000.0)
+        started = time.perf_counter()
+        superset_dense = _query_dense(
+            superset_collection,
+            query_embedding=query_embedding,
+            filename=filename,
+            tenant_id=args.tenant_id,
+            limit=args.diagnostic_top_n,
+            mapping=mapping,
+        )
+        dense_query_times_superset.append((time.perf_counter() - started) * 1000.0)
         current_dense_map = _rank_map(current_dense)
         shadow_dense_map = _rank_map(shadow_dense)
+        superset_dense_map = _rank_map(superset_dense)
         case_sources = [
             row for row in source_rows if row["case_id"] == case_id
         ]
@@ -725,6 +997,11 @@ def _run(args: argparse.Namespace) -> int:
                     "shadow_index_present": key in {row["candidate_key"] for row in records},
                     "current_dense_rank": current_rank,
                     "shadow_dense_rank": shadow_rank,
+                    "superset_dense_rank": superset_dense_map.get(key),
+                    "superset_index_present": key in {
+                        row["candidate_key"] for row in current_records
+                    }
+                    or key in {row["candidate_key"] for row in records},
                     "coverage_gain": current_rank is None and shadow_rank is not None,
                     "ranking_gain": shadow_rank is not None and (current_rank is None or shadow_rank < current_rank),
                 }
@@ -746,6 +1023,7 @@ def _run(args: argparse.Namespace) -> int:
         ]
         current_dense_window = current_dense[:candidate_k]
         shadow_dense_window = shadow_dense[:candidate_k]
+        superset_dense_window = superset_dense[:candidate_k]
         current_union = _union_candidates(
             current_dense_window,
             bm25_rows,
@@ -754,6 +1032,12 @@ def _run(args: argparse.Namespace) -> int:
         )
         shadow_union = _union_candidates(
             shadow_dense_window,
+            bm25_rows,
+            mapping=mapping,
+            tenant_id=args.tenant_id,
+        )
+        superset_union = _union_candidates(
+            superset_dense_window,
             bm25_rows,
             mapping=mapping,
             tenant_id=args.tenant_id,
@@ -774,6 +1058,14 @@ def _run(args: argparse.Namespace) -> int:
             mapping=mapping,
             tenant_id=args.tenant_id,
         )
+        superset_rrf = _rrf_candidates(
+            superset_dense_window,
+            bm25_rows,
+            query=query,
+            query_processor=query_processor,
+            mapping=mapping,
+            tenant_id=args.tenant_id,
+        )
         current_dense_rows.extend(
             {"case_id": case_id, "candidate_key": key, "rank": rank}
             for key, rank in current_dense_map.items()
@@ -782,10 +1074,16 @@ def _run(args: argparse.Namespace) -> int:
             {"case_id": case_id, "candidate_key": key, "rank": rank}
             for key, rank in shadow_dense_map.items()
         )
+        superset_dense_rows.extend(
+            {"case_id": case_id, "candidate_key": key, "rank": rank}
+            for key, rank in superset_dense_map.items()
+        )
         current_union_map = _rank_map(current_union)
         shadow_union_map = _rank_map(shadow_union)
+        superset_union_map = _rank_map(superset_union)
         current_rrf_map = _rank_map(current_rrf)
         shadow_rrf_map = _rank_map(shadow_rrf)
+        superset_rrf_map = _rank_map(superset_rrf)
         current_union_rows.extend(
             {"case_id": case_id, "candidate_key": key, "rank": rank}
             for key, rank in current_union_map.items()
@@ -793,6 +1091,10 @@ def _run(args: argparse.Namespace) -> int:
         shadow_union_rows.extend(
             {"case_id": case_id, "candidate_key": key, "rank": rank}
             for key, rank in shadow_union_map.items()
+        )
+        superset_union_rows.extend(
+            {"case_id": case_id, "candidate_key": key, "rank": rank}
+            for key, rank in superset_union_map.items()
         )
         current_rrf_rows.extend(
             {"case_id": case_id, "candidate_key": key, "rank": rank}
@@ -802,6 +1104,10 @@ def _run(args: argparse.Namespace) -> int:
             {"case_id": case_id, "candidate_key": key, "rank": rank}
             for key, rank in shadow_rrf_map.items()
         )
+        superset_rrf_rows.extend(
+            {"case_id": case_id, "candidate_key": key, "rank": rank}
+            for key, rank in superset_rrf_map.items()
+        )
         for source in case_sources:
             source_key = source["candidate_key"]
             current_dense_gold_rows.append(
@@ -810,17 +1116,26 @@ def _run(args: argparse.Namespace) -> int:
             shadow_dense_gold_rows.append(
                 {"case_id": case_id, "source_index": source["source_index"], "candidate_key": source_key, "rank": shadow_dense_map.get(source_key)}
             )
+            superset_dense_gold_rows.append(
+                {"case_id": case_id, "source_index": source["source_index"], "candidate_key": source_key, "rank": superset_dense_map.get(source_key)}
+            )
             current_union_gold_rows.append(
                 {"case_id": case_id, "source_index": source["source_index"], "candidate_key": source_key, "rank": current_union_map.get(source_key)}
             )
             shadow_union_gold_rows.append(
                 {"case_id": case_id, "source_index": source["source_index"], "candidate_key": source_key, "rank": shadow_union_map.get(source_key)}
             )
+            superset_union_gold_rows.append(
+                {"case_id": case_id, "source_index": source["source_index"], "candidate_key": source_key, "rank": superset_union_map.get(source_key)}
+            )
             current_rrf_gold_rows.append(
                 {"case_id": case_id, "source_index": source["source_index"], "candidate_key": source_key, "rank": current_rrf_map.get(source_key)}
             )
             shadow_rrf_gold_rows.append(
                 {"case_id": case_id, "source_index": source["source_index"], "candidate_key": source_key, "rank": shadow_rrf_map.get(source_key)}
+            )
+            superset_rrf_gold_rows.append(
+                {"case_id": case_id, "source_index": source["source_index"], "candidate_key": source_key, "rank": superset_rrf_map.get(source_key)}
             )
         current_state = coverage_state(
             [row["candidate_key"] for row in case_sources],
@@ -830,6 +1145,10 @@ def _run(args: argparse.Namespace) -> int:
             [row["candidate_key"] for row in case_sources],
             shadow_rrf_map,
         )
+        superset_state = coverage_state(
+            [row["candidate_key"] for row in case_sources],
+            superset_rrf_map,
+        )
         hybrid_source_comparison.extend(
             {
                 "case_id": case_id,
@@ -837,8 +1156,10 @@ def _run(args: argparse.Namespace) -> int:
                 "candidate_key": source["candidate_key"],
                 "current_union_rank": current_union_map.get(source["candidate_key"]),
                 "shadow_union_rank": shadow_union_map.get(source["candidate_key"]),
+                "superset_union_rank": superset_union_map.get(source["candidate_key"]),
                 "current_rrf_rank": current_rrf_map.get(source["candidate_key"]),
                 "shadow_rrf_rank": shadow_rrf_map.get(source["candidate_key"]),
+                "superset_rrf_rank": superset_rrf_map.get(source["candidate_key"]),
             }
             for source in case_sources
         )
@@ -852,23 +1173,33 @@ def _run(args: argparse.Namespace) -> int:
                 "shadow_union_coverage": coverage_state(
                     [row["candidate_key"] for row in case_sources], shadow_union_map
                 ),
+                "superset_union_coverage": coverage_state(
+                    [row["candidate_key"] for row in case_sources], superset_union_map
+                ),
                 "current_rrf_coverage": current_state,
                 "shadow_rrf_coverage": shadow_state,
+                "superset_rrf_coverage": superset_state,
                 "current_rrf_top40_coverage": coverage_state(
                     [row["candidate_key"] for row in case_sources], list(current_rrf_map)[:40]
                 ),
                 "shadow_rrf_top40_coverage": coverage_state(
                     [row["candidate_key"] for row in case_sources], list(shadow_rrf_map)[:40]
                 ),
+                "superset_rrf_top40_coverage": coverage_state(
+                    [row["candidate_key"] for row in case_sources], list(superset_rrf_map)[:40]
+                ),
             }
         )
 
     current_dense_metrics = _metrics_rows(current_dense_gold_rows, "rank")
     shadow_dense_metrics = _metrics_rows(shadow_dense_gold_rows, "rank")
+    superset_dense_metrics = _metrics_rows(superset_dense_gold_rows, "rank")
     current_union_metrics = _metrics_rows(current_union_gold_rows, "rank")
     shadow_union_metrics = _metrics_rows(shadow_union_gold_rows, "rank")
+    superset_union_metrics = _metrics_rows(superset_union_gold_rows, "rank")
     current_rrf_metrics = _metrics_rows(current_rrf_gold_rows, "rank")
     shadow_rrf_metrics = _metrics_rows(shadow_rrf_gold_rows, "rank")
+    superset_rrf_metrics = _metrics_rows(superset_rrf_gold_rows, "rank")
     current_dense_gold_map = {
         f"{row['case_id']}:{row['candidate_key']}": row["rank"]
         for row in current_dense_gold_rows
@@ -877,6 +1208,11 @@ def _run(args: argparse.Namespace) -> int:
     shadow_dense_gold_map = {
         f"{row['case_id']}:{row['candidate_key']}": row["rank"]
         for row in shadow_dense_gold_rows
+        if isinstance(row.get("rank"), int)
+    }
+    superset_dense_gold_map = {
+        f"{row['case_id']}:{row['candidate_key']}": row["rank"]
+        for row in superset_dense_gold_rows
         if isinstance(row.get("rank"), int)
     }
     current_rrf_gold_map = {
@@ -889,6 +1225,11 @@ def _run(args: argparse.Namespace) -> int:
         for row in shadow_rrf_gold_rows
         if isinstance(row.get("rank"), int)
     }
+    superset_rrf_gold_map = {
+        f"{row['case_id']}:{row['candidate_key']}": row["rank"]
+        for row in superset_rrf_gold_rows
+        if isinstance(row.get("rank"), int)
+    }
     dense_regressions = compare_rank_maps(
         current_dense_gold_map,
         shadow_dense_gold_map,
@@ -899,6 +1240,16 @@ def _run(args: argparse.Namespace) -> int:
         shadow_rrf_gold_map,
         cutoff=40,
     )
+    superset_dense_regressions = compare_rank_maps(
+        current_dense_gold_map,
+        superset_dense_gold_map,
+        cutoff=args.diagnostic_top_n,
+    )
+    superset_rrf_source_regressions = compare_rank_maps(
+        current_rrf_gold_map,
+        superset_rrf_gold_map,
+        cutoff=40,
+    )
     rrf_all_regressed_cases = sum(
         row["current_rrf_coverage"] == "all"
         and row["shadow_rrf_coverage"] != "all"
@@ -906,14 +1257,39 @@ def _run(args: argparse.Namespace) -> int:
     )
     current_all = Counter(row["current_rrf_coverage"] for row in case_comparison)
     shadow_all = Counter(row["shadow_rrf_coverage"] for row in case_comparison)
+    superset_all = Counter(row["superset_rrf_coverage"] for row in case_comparison)
     current_top40_all = Counter(row["current_rrf_top40_coverage"] for row in case_comparison)
     shadow_top40_all = Counter(row["shadow_rrf_top40_coverage"] for row in case_comparison)
+    superset_top40_all = Counter(row["superset_rrf_top40_coverage"] for row in case_comparison)
+    superset_rrf_all_regressed_cases = sum(
+        row["current_rrf_coverage"] == "all"
+        and row["superset_rrf_coverage"] != "all"
+        for row in case_comparison
+    )
+    superset_rrf_top40_all_regressed_cases = sum(
+        row["current_rrf_top40_coverage"] == "all"
+        and row["superset_rrf_top40_coverage"] != "all"
+        for row in case_comparison
+    )
+    superset_union_source_regressions = compare_rank_maps(
+        {
+            f"{row['case_id']}:{row['candidate_key']}": row["rank"]
+            for row in current_union_gold_rows
+            if isinstance(row.get("rank"), int)
+        },
+        {
+            f"{row['case_id']}:{row['candidate_key']}": row["rank"]
+            for row in superset_union_gold_rows
+            if isinstance(row.get("rank"), int)
+        },
+        cutoff=args.production_top_k * args.candidate_multiplier,
+    )
     latency_ratio = None
     if dense_query_times_current and dense_query_times_shadow:
         current_p95 = percentile(dense_query_times_current, 0.95) or 0.0
         shadow_p95 = percentile(dense_query_times_shadow, 0.95) or 0.0
         latency_ratio = (shadow_p95 - current_p95) / current_p95 if current_p95 else None
-    gate = dense_coverage_gate(
+    canonical_shadow_gate = dense_coverage_gate(
         shadow_gold_identity_presence=int(shadow_manifest["gold_identity_presence_count"]),
         unsupported_candidate_count=int(shadow_manifest["unsupported_candidate_count"]),
         out_of_scope_candidate_count=int(shadow_manifest["out_of_scope_candidate_count"]),
@@ -926,20 +1302,44 @@ def _run(args: argparse.Namespace) -> int:
         rrf_regressed_all_cases=rrf_all_regressed_cases,
         latency_increase_ratio=latency_ratio,
     )
+    superset_latency_ratio = None
+    if dense_query_times_current and dense_query_times_superset:
+        current_p95 = percentile(dense_query_times_current, 0.95) or 0.0
+        superset_p95 = percentile(dense_query_times_superset, 0.95) or 0.0
+        superset_latency_ratio = (
+            (superset_p95 - current_p95) / current_p95 if current_p95 else None
+        )
+    superset_gate = dense_superset_gate(
+        superset_gold_identity_presence=int(superset_manifest["gold_identity_presence_count"]),
+        unsupported_candidate_count=int(superset_manifest["unsupported_candidate_count"]),
+        out_of_scope_candidate_count=int(superset_manifest["out_of_scope_candidate_count"]),
+        dense_source_hit_at_200=superset_dense_metrics["@200"]["source_hit_count"],
+        rrf_source_hit_at_40=superset_rrf_metrics["@40"]["source_hit_count"],
+        rrf_top40_all_case_count=superset_top40_all["all"],
+        dense_regressed_sources=superset_dense_regressions["regressed_hit_count"],
+        rrf_regressed_sources_at_40=superset_rrf_source_regressions["regressed_hit_count"],
+        rrf_regressed_all_cases=superset_rrf_all_regressed_cases,
+        rrf_top40_regressed_all_cases=superset_rrf_top40_all_regressed_cases,
+        union_regressed_sources=superset_union_source_regressions["regressed_hit_count"],
+        latency_increase_ratio=superset_latency_ratio,
+    )
     integrity["scope_integrity_passed"] = (
         shadow_manifest["out_of_scope_candidate_count"] == 0
         and scope_out_of_scope == 0
     )
     acceptance = {
         "artifact_schema": "nf-opt-01/v1",
-        "decision": gate["decision"],
-        "dense_coverage_gate": gate,
+        "decision": superset_gate["decision"],
+        "formal_variant": "regression_safe_superset",
+        "canonical_replacement_shadow_gate": canonical_shadow_gate,
+        "dense_superset_gate": superset_gate,
         "case_count": len(case_comparison),
         "expected_source_count": len(source_rows),
         "input_hashes_verified": integrity["all_hashes_verified"] and integrity["nf04_hashes_unchanged"],
         "scope_integrity_passed": integrity["scope_integrity_passed"],
         "legacy_27_loaded": False,
         "shadow_production_collection_modified": False,
+        "superset_production_collection_modified": False,
         "embedding_model_same": True,
         "query_embedding_shared": True,
         "model_chat_completion_requests": model_calls,
@@ -950,6 +1350,7 @@ def _run(args: argparse.Namespace) -> int:
     }
     _write(args.out_dir / "input-integrity-report.json", integrity)
     _write(args.out_dir / "dense-shadow-index-manifest.json", shadow_manifest)
+    _write(args.out_dir / "dense-superset-index-manifest.json", superset_manifest)
     _write(args.out_dir / "dense-index-presence-comparison.json", {
         "current_exact_gold_presence_count": sum(key in current_keys for key in gold_keys),
         "shadow_exact_gold_presence_count": shadow_manifest["gold_identity_presence_count"],
@@ -962,20 +1363,25 @@ def _run(args: argparse.Namespace) -> int:
     _write(args.out_dir / "dense-rank-comparison.json", {
         "current": current_dense_metrics,
         "shadow": shadow_dense_metrics,
+        "superset": superset_dense_metrics,
         "records": dense_source_comparison,
     })
     _write(args.out_dir / "hybrid-union-comparison.json", {
         "current": current_union_metrics,
         "shadow": shadow_union_metrics,
+        "superset": superset_union_metrics,
         "records": hybrid_source_comparison,
     })
     _write(args.out_dir / "rrf-comparison.json", {
         "current": current_rrf_metrics,
         "shadow": shadow_rrf_metrics,
+        "superset": superset_rrf_metrics,
         "current_case_coverage": dict(current_all),
         "shadow_case_coverage": dict(shadow_all),
+        "superset_case_coverage": dict(superset_all),
         "current_rrf_top40_case_coverage": dict(current_top40_all),
         "shadow_rrf_top40_case_coverage": dict(shadow_top40_all),
+        "superset_rrf_top40_case_coverage": dict(superset_top40_all),
         "multi_evidence_current_all": sum(
             row["expected_source_count"] > 1 and row["current_rrf_coverage"] == "all"
             for row in case_comparison
@@ -984,18 +1390,29 @@ def _run(args: argparse.Namespace) -> int:
             row["expected_source_count"] > 1 and row["shadow_rrf_coverage"] == "all"
             for row in case_comparison
         ),
+        "multi_evidence_superset_all": sum(
+            row["expected_source_count"] > 1 and row["superset_rrf_coverage"] == "all"
+            for row in case_comparison
+        ),
         "records": case_comparison,
     })
     _write(args.out_dir / "regression-report.json", {
         "dense": dense_regressions,
         "rrf_top40": rrf_source_regressions,
+        "superset_dense": superset_dense_regressions,
+        "superset_rrf_top40": superset_rrf_source_regressions,
+        "superset_union": superset_union_source_regressions,
         "rrf_all_gold_regressed_case_count": rrf_all_regressed_cases,
+        "superset_rrf_all_gold_regressed_case_count": superset_rrf_all_regressed_cases,
+        "superset_rrf_top40_all_gold_regressed_case_count": superset_rrf_top40_all_regressed_cases,
         "dense_retrieval_regressed_source_count": dense_regressions["regressed_hit_count"],
         "rrf_top40_regressed_source_count": rrf_source_regressions["regressed_hit_count"],
         "current_all_partial_none": dict(current_all),
         "shadow_all_partial_none": dict(shadow_all),
         "current_rrf_top40_all_partial_none": dict(current_top40_all),
         "shadow_rrf_top40_all_partial_none": dict(shadow_top40_all),
+        "superset_all_partial_none": dict(superset_all),
+        "superset_rrf_top40_all_partial_none": dict(superset_top40_all),
     })
     _write(args.out_dir / "latency-report.json", {
         "embedding_model": args.embedding_model,
@@ -1006,15 +1423,57 @@ def _run(args: argparse.Namespace) -> int:
         "current_dense_query_p95_ms": percentile(dense_query_times_current, 0.95),
         "shadow_dense_query_p50_ms": percentile(dense_query_times_shadow, 0.50),
         "shadow_dense_query_p95_ms": percentile(dense_query_times_shadow, 0.95),
+        "superset_dense_query_p50_ms": percentile(dense_query_times_superset, 0.50),
+        "superset_dense_query_p95_ms": percentile(dense_query_times_superset, 0.95),
         "shadow_index_build_ms": build_ms,
-        "p95_increase_ratio": latency_ratio,
+        "superset_index_build_ms": superset_build_ms,
+        "shadow_p95_increase_ratio": latency_ratio,
+        "superset_p95_increase_ratio": superset_latency_ratio,
         "online_latency_comparable": True,
     })
     _write(args.out_dir / "next-gate.json", {
-        "selected_gate": gate["next_gate"],
+        "selected_gate": superset_gate["next_gate"],
         "optimization_allowed": False,
         "production_switch_allowed": False,
-        "reason": gate["decision"],
+        "reason": superset_gate["decision"],
+        "formal_variant": "regression_safe_superset",
+    })
+    _write(args.out_dir / "regression-case-analysis.json", {
+        "canonical_replacement_shadow_regressed_cases": [
+            row["case_id"]
+            for row in case_comparison
+            if row["current_rrf_coverage"] == "all"
+            and row["shadow_rrf_coverage"] != "all"
+        ],
+        "superset_regressed_cases": [
+            row["case_id"]
+            for row in case_comparison
+            if row["current_rrf_coverage"] == "all"
+            and row["superset_rrf_coverage"] != "all"
+        ],
+        "records": [row for row in case_comparison if row["case_id"] in {
+            "msft_fy2025_002",
+            "msft_fy2025_005",
+            "msft_fy2025_006",
+            "msft_fy2025_007",
+        }],
+        "dense_rank_records": [row for row in dense_source_comparison if row["case_id"] in {
+            "msft_fy2025_002",
+            "msft_fy2025_005",
+            "msft_fy2025_006",
+            "msft_fy2025_007",
+        }],
+        "hybrid_rank_records": [row for row in hybrid_source_comparison if row["case_id"] in {
+            "msft_fy2025_002",
+            "msft_fy2025_005",
+            "msft_fy2025_006",
+            "msft_fy2025_007",
+        }],
+    })
+    _write(args.out_dir / "nf-opt-01-r1-acceptance.json", {
+        **acceptance,
+        "phase": "NF-OPT-01 R1",
+        "current_union_and_canonical_shadow_retained_for_diagnostics": True,
     })
     _write(args.out_dir / "nf-opt-01-acceptance.json", acceptance)
     print(json.dumps({
@@ -1022,10 +1481,13 @@ def _run(args: argparse.Namespace) -> int:
         "shadow_manifest": shadow_manifest,
         "current_dense": current_dense_metrics,
         "shadow_dense": shadow_dense_metrics,
+        "superset_dense": superset_dense_metrics,
         "current_rrf": current_rrf_metrics,
         "shadow_rrf": shadow_rrf_metrics,
+        "superset_rrf": superset_rrf_metrics,
         "current_case_coverage": dict(current_all),
         "shadow_case_coverage": dict(shadow_all),
+        "superset_case_coverage": dict(superset_all),
     }, ensure_ascii=False, indent=2, sort_keys=True))
     return 0 if acceptance["input_hashes_verified"] and acceptance["scope_integrity_passed"] else 2
 

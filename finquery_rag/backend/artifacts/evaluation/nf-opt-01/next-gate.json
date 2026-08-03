@@ -1,6 +1,7 @@
 {
+  "formal_variant": "regression_safe_superset",
   "optimization_allowed": false,
   "production_switch_allowed": false,
-  "reason": "dense_coverage_shadow_failed",
+  "reason": "dense_superset_failed_regression",
   "selected_gate": "stop_and_analyze_regression"
 }

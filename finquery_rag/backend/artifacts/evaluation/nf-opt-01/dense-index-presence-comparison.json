@@ -13,7 +13,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 7,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 7,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d",
@@ -24,7 +26,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 115,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 115,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:f06ee04f963d52481ef27a335b7a6c09674546d3ab590a90c2a4a033f8ea34d8",
@@ -35,7 +39,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 1,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 1,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
@@ -46,7 +52,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 16,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 16,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:d8d06e11d524ce4ec4c95ca728ef61ba568965f41b623d7033faf672eea17989",
@@ -57,7 +65,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 134,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 134,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563",
@@ -68,7 +78,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 13,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 13,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563",
@@ -79,7 +91,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 13,
       "shadow_index_present": true,
-      "source_index": 1
+      "source_index": 1,
+      "superset_dense_rank": 13,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
@@ -90,7 +104,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 3,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 3,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d",
@@ -101,7 +117,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 1
+      "source_index": 1,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
@@ -112,7 +130,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 8,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 8,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
@@ -123,7 +143,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:d822718dbec99a61ac7b4c914ac8b09a7bf97aa5ece318730b7c97c26821848e",
@@ -134,7 +156,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:b5494e22a29663edc6ff9f1ce1b126c4c9f32d6933a1479b696a5c93a3e45135",
@@ -145,7 +169,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
@@ -156,7 +182,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 43,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 43,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:a9325e992895567a4c2721f66a3bc3c24b663ddeade06999ff5c87755159932c",
@@ -167,7 +195,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 5,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 5,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
@@ -178,7 +208,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
@@ -189,7 +221,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 1
+      "source_index": 1,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
@@ -200,7 +234,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:d822718dbec99a61ac7b4c914ac8b09a7bf97aa5ece318730b7c97c26821848e",
@@ -211,7 +247,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 1
+      "source_index": 1,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
@@ -222,7 +260,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 56,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 56,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
@@ -233,7 +273,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 22,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 22,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:5a25663abb16c0b92c93f62a32e2decdd60aad7b65e2ce937ace826a22a136c9",
@@ -244,7 +286,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 198,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 198,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:1b48a73c57594dcf8a511dbd4d5aa5f5cd6c3bc4657d5cafb6ea00b67adc8572",
@@ -255,7 +299,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 1,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 1,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
@@ -266,7 +312,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 5,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 5,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
@@ -277,7 +325,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 9,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 9,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
@@ -288,7 +338,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 15,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 15,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
@@ -299,7 +351,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 15,
       "shadow_index_present": true,
-      "source_index": 1
+      "source_index": 1,
+      "superset_dense_rank": 15,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:214ce6712de95bbe235ef407a4a41b42d0ba38080b13d80a418493656e357a9b",
@@ -310,7 +364,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
@@ -321,7 +377,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 61,
       "shadow_index_present": true,
-      "source_index": 1
+      "source_index": 1,
+      "superset_dense_rank": 60,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:2615a8131b1b84e1f788cfb9c9292fa6b20c9688723ff3bc555f21d4590d95d8",
@@ -332,7 +390,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 9,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 9,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
@@ -343,7 +403,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": 27,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 27,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
@@ -354,7 +416,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": 98,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 98,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
@@ -365,7 +429,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": 1,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 1,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
@@ -376,7 +442,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": 4,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 4,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
@@ -387,7 +455,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": 68,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 68,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
@@ -398,7 +468,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": 57,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 57,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
@@ -409,7 +481,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": 57,
       "shadow_index_present": true,
-      "source_index": 1
+      "source_index": 1,
+      "superset_dense_rank": 57,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
@@ -420,7 +494,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": 12,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 12,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
@@ -431,7 +507,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": 51,
       "shadow_index_present": true,
-      "source_index": 1
+      "source_index": 1,
+      "superset_dense_rank": 51,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
@@ -442,7 +520,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": 13,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 13,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024",
@@ -453,7 +533,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:c03a713affc5c00b9d7416a69608d071305fa17362b7668a963dc1f2b5cc8697",
@@ -464,7 +546,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf",
@@ -475,7 +559,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 69,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 69,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d",
@@ -486,7 +572,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 7,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 7,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:84ecbba7da14d18cf2bb3b171d9bff27fa45ad1c75d4ae77545b1b0046f0b92e",
@@ -497,7 +585,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 26,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 26,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024",
@@ -508,7 +598,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 162,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 162,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024",
@@ -519,7 +611,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 162,
       "shadow_index_present": true,
-      "source_index": 1
+      "source_index": 1,
+      "superset_dense_rank": 162,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d",
@@ -530,7 +624,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf",
@@ -541,7 +637,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 1
+      "source_index": 1,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d",
@@ -552,7 +650,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 7,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 7,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827",
@@ -563,7 +663,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
@@ -574,7 +676,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e",
@@ -585,7 +689,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
@@ -596,7 +702,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": 98,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 98,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e",
@@ -607,7 +715,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": 193,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 193,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827",
@@ -618,7 +728,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827",
@@ -629,7 +741,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 1
+      "source_index": 1,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
@@ -640,7 +754,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:4886dcb9c5a4bd430f3888bc77cf033b0745509bd1bc968682ea31caef7b5c56",
@@ -651,7 +767,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 1
+      "source_index": 1,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
@@ -662,7 +780,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
@@ -673,7 +793,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 20,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 20,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:764e51106a705bd6f16af004eeb7f0126c4209a0c62a5319d13153dc95987982",
@@ -684,7 +806,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:7fcc2dc3de8832dfab1fe0b8a08e25a303a996470fa598765b1e08144018e9f7",
@@ -695,7 +819,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 17,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 18,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52",
@@ -706,7 +832,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 4,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 4,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
@@ -717,7 +845,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
@@ -728,7 +858,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 49,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 49,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
@@ -739,7 +871,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 49,
       "shadow_index_present": true,
-      "source_index": 1
+      "source_index": 1,
+      "superset_dense_rank": 49,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52",
@@ -750,7 +884,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 3,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 3,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
@@ -761,7 +897,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": 71,
       "shadow_index_present": true,
-      "source_index": 1
+      "source_index": 1,
+      "superset_dense_rank": 71,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52",
@@ -772,7 +910,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 3,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 3,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83",
@@ -783,7 +923,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:fd7d3044411973c1af57bf015ca3fd14efb235afbe07f01c8ff1d8d9259536db",
@@ -794,7 +936,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
@@ -805,7 +949,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 2,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 2,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
@@ -816,7 +962,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 25,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 25,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:4c11889fb53c1b1a3194a2e6518b9d94a910cfa71ea99f8e25c4ef206e06613b",
@@ -827,7 +975,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:21f924b9c1b33d1e7caa949ac3dcca366d20e99a1aacf2b9d84be8e762ad6240",
@@ -838,7 +988,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83",
@@ -849,7 +1001,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 125,
       "shadow_index_present": true,
-      "source_index": 1
+      "source_index": 1,
+      "superset_dense_rank": 125,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
@@ -860,7 +1014,9 @@
       "ranking_gain": false,
       "shadow_dense_rank": null,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": null,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
@@ -871,7 +1027,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 1,
       "shadow_index_present": true,
-      "source_index": 1
+      "source_index": 1,
+      "superset_dense_rank": 1,
+      "superset_index_present": true
     },
     {
       "candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
@@ -882,7 +1040,9 @@
       "ranking_gain": true,
       "shadow_dense_rank": 12,
       "shadow_index_present": true,
-      "source_index": 0
+      "source_index": 0,
+      "superset_dense_rank": 12,
+      "superset_index_present": true
     }
   ],
   "shadow_candidate_count": 38319,

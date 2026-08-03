@@ -162,6 +162,70 @@ def dense_coverage_gate(
     }
 
 
+def dense_superset_gate(
+    *,
+    superset_gold_identity_presence: int,
+    unsupported_candidate_count: int,
+    out_of_scope_candidate_count: int,
+    dense_source_hit_at_200: int,
+    rrf_source_hit_at_40: int,
+    rrf_top40_all_case_count: int,
+    dense_regressed_sources: int,
+    rrf_regressed_sources_at_40: int,
+    rrf_regressed_all_cases: int,
+    rrf_top40_regressed_all_cases: int,
+    union_regressed_sources: int,
+    latency_increase_ratio: float | None,
+) -> dict[str, Any]:
+    """Apply the strict zero-regression gate to the Superset variant."""
+
+    completeness_passed = (
+        superset_gold_identity_presence == 80
+        and unsupported_candidate_count == 0
+        and out_of_scope_candidate_count == 0
+    )
+    gain_passed = (
+        dense_source_hit_at_200 >= 50
+        and rrf_source_hit_at_40 >= 33
+        and rrf_top40_all_case_count >= 27
+    )
+    regression_passed = (
+        dense_regressed_sources == 0
+        and rrf_regressed_sources_at_40 == 0
+        and rrf_regressed_all_cases == 0
+        and rrf_top40_regressed_all_cases == 0
+        and union_regressed_sources == 0
+    )
+    latency_passed = (
+        latency_increase_ratio is not None
+        and latency_increase_ratio <= 0.20
+    )
+    passed = completeness_passed and gain_passed and regression_passed and latency_passed
+    if passed:
+        decision = "dense_superset_passed"
+        next_gate = Opt01Gate.CANDIDATE_WINDOW.value
+    elif not regression_passed:
+        decision = "dense_superset_failed_regression"
+        next_gate = Opt01Gate.REGRESSION_STOP.value
+    elif not latency_passed:
+        decision = "dense_superset_failed_latency"
+        next_gate = Opt01Gate.REGRESSION_STOP.value
+    else:
+        decision = "dense_superset_failed_target"
+        next_gate = Opt01Gate.DENSE_COVERAGE_SHADOW.value
+    return {
+        "decision": decision,
+        "passed": passed,
+        "production_switch_allowed": False,
+        "completeness_passed": completeness_passed,
+        "gain_passed": gain_passed,
+        "regression_passed": regression_passed,
+        "latency_passed": latency_passed,
+        "next_gate": next_gate,
+        "optimization_allowed": False,
+    }
+
+
 def percentile(values: Sequence[float], fraction: float) -> float | None:
     """Nearest-rank percentile suitable for small deterministic benchmark sets."""
 

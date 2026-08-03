@@ -12,6 +12,7 @@
     "production_switch_allowed": false
   },
   "case_count": 64,
+  "current_union_and_canonical_shadow_retained_for_diagnostics": true,
   "decision": "dense_superset_failed_regression",
   "dense_superset_gate": {
     "completeness_passed": true,
@@ -31,6 +32,7 @@
   "legacy_27_loaded": false,
   "model_chat_completion_requests": 0,
   "optimization_allowed": false,
+  "phase": "NF-OPT-01 R1",
   "production_behavior_changed": false,
   "production_switch_allowed": false,
   "query_embedding_shared": true,
