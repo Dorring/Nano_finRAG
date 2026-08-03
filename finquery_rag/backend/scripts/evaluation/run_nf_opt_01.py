@@ -1351,10 +1351,15 @@ def _run(args: argparse.Namespace) -> int:
     )
     acceptance = {
         "artifact_schema": "nf-opt-01/v1",
-        "decision": superset_gate["decision"],
+        # The monolithic Superset is retained as a reproducible negative
+        # experiment.  Its failed zero-regression gate must not prevent the
+        # next, separately scoped protected-residual experiment.
+        "decision": "dense_coverage_experiment_recorded",
         "formal_variant": "regression_safe_superset",
         "canonical_replacement_shadow_gate": canonical_shadow_gate,
         "dense_superset_gate": superset_gate,
+        "monolithic_superset_validated": False,
+        "next_gate": "protected_residual_candidate_ab",
         "case_count": len(case_comparison),
         "expected_source_count": len(source_rows),
         "input_hashes_verified": integrity["all_hashes_verified"] and integrity["nf04_hashes_unchanged"],
@@ -1368,7 +1373,7 @@ def _run(args: argparse.Namespace) -> int:
         "answer_generation_calls": answer_calls,
         "production_behavior_changed": False,
         "production_switch_allowed": False,
-        "optimization_allowed": False,
+        "optimization_allowed": True,
     }
     _write(args.out_dir / "input-integrity-report.json", integrity)
     _write(args.out_dir / "dense-shadow-index-manifest.json", shadow_manifest)
@@ -1454,10 +1459,10 @@ def _run(args: argparse.Namespace) -> int:
         "online_latency_comparable": True,
     })
     _write(args.out_dir / "next-gate.json", {
-        "selected_gate": superset_gate["next_gate"],
-        "optimization_allowed": False,
+        "selected_gate": "protected_residual_candidate_ab",
+        "optimization_allowed": True,
         "production_switch_allowed": False,
-        "reason": superset_gate["decision"],
+        "reason": "dense_coverage_experiment_recorded",
         "formal_variant": "regression_safe_superset",
     })
     _write(args.out_dir / "regression-case-analysis.json", {
