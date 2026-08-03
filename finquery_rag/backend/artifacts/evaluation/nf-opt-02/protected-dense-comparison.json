@@ -1,0 +1,94 @@
+{
+  "A": {
+    "@100": {
+      "case_hit_count": 9,
+      "case_hit_rate": 0.140625,
+      "source_hit_count": 11,
+      "source_recall": 0.1375
+    },
+    "@20": {
+      "case_hit_count": 5,
+      "case_hit_rate": 0.078125,
+      "source_hit_count": 5,
+      "source_recall": 0.0625
+    },
+    "@40": {
+      "case_hit_count": 9,
+      "case_hit_rate": 0.140625,
+      "source_hit_count": 11,
+      "source_recall": 0.1375
+    },
+    "case_count": 64,
+    "rank_field": "rank",
+    "source_count": 80
+  },
+  "C10": {
+    "@100": {
+      "case_hit_count": 29,
+      "case_hit_rate": 0.453125,
+      "source_hit_count": 34,
+      "source_recall": 0.425
+    },
+    "@20": {
+      "case_hit_count": 5,
+      "case_hit_rate": 0.078125,
+      "source_hit_count": 5,
+      "source_recall": 0.0625
+    },
+    "@40": {
+      "case_hit_count": 9,
+      "case_hit_rate": 0.140625,
+      "source_hit_count": 11,
+      "source_recall": 0.1375
+    },
+    "case_count": 64,
+    "rank_field": "rank",
+    "source_count": 80
+  },
+  "C20": {
+    "@100": {
+      "case_hit_count": 34,
+      "case_hit_rate": 0.53125,
+      "source_hit_count": 39,
+      "source_recall": 0.4875
+    },
+    "@20": {
+      "case_hit_count": 5,
+      "case_hit_rate": 0.078125,
+      "source_hit_count": 5,
+      "source_recall": 0.0625
+    },
+    "@40": {
+      "case_hit_count": 9,
+      "case_hit_rate": 0.140625,
+      "source_hit_count": 11,
+      "source_recall": 0.1375
+    },
+    "case_count": 64,
+    "rank_field": "rank",
+    "source_count": 80
+  },
+  "C40": {
+    "@100": {
+      "case_hit_count": 39,
+      "case_hit_rate": 0.609375,
+      "source_hit_count": 45,
+      "source_recall": 0.5625
+    },
+    "@20": {
+      "case_hit_count": 5,
+      "case_hit_rate": 0.078125,
+      "source_hit_count": 5,
+      "source_recall": 0.0625
+    },
+    "@40": {
+      "case_hit_count": 9,
+      "case_hit_rate": 0.140625,
+      "source_hit_count": 11,
+      "source_recall": 0.1375
+    },
+    "case_count": 64,
+    "rank_field": "rank",
+    "source_count": 80
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "artifact_schema": "nf-opt-02/v1",
+  "canonical_candidate_count": 38319,
+  "collection_name": "financial_rag_v1_dense_residual",
+  "current_candidate_count": 21868,
+  "current_residual_overlap_count": 0,
+  "duplicate_candidate_count": 0,
+  "embedding_model": "all-MiniLM-L6-v2",
+  "gold_identity_expected_count": 80,
+  "gold_identity_presence_count": 80,
+  "gold_labels_not_used_to_build_universe": true,
+  "identity_conflict_count": 0,
+  "index_build_ms": 880427.4241719395,
+  "index_reused": false,
+  "new_vectors_encoded_count": 16451,
+  "out_of_scope_candidate_count": 0,
+  "residual_candidate_count": 16451,
+  "variant": "canonical_only_residual"
+}
