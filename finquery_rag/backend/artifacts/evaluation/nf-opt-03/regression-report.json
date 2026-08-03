@@ -1,0 +1,134 @@
+{
+  "A": {
+    "bm25": {
+      "baseline_source_count": 24,
+      "both_source_count": 24,
+      "new_source_count": 0,
+      "regressed_source_count": 0,
+      "variant_source_count": 24
+    },
+    "final5": {
+      "baseline_source_count": 13,
+      "both_source_count": 13,
+      "new_source_count": 0,
+      "regressed_source_count": 0,
+      "variant_source_count": 13
+    },
+    "final_all_gold_regressed_cases": 0,
+    "reranker20": {
+      "baseline_source_count": 24,
+      "both_source_count": 24,
+      "new_source_count": 0,
+      "regressed_source_count": 0,
+      "variant_source_count": 24
+    },
+    "reranker_all_gold_regressed_cases": 0,
+    "rrf40": {
+      "baseline_source_count": 20,
+      "both_source_count": 20,
+      "new_source_count": 0,
+      "regressed_source_count": 0,
+      "variant_source_count": 20
+    },
+    "rrf_all_gold_regressed_cases": 0
+  },
+  "B120": {
+    "bm25": {
+      "baseline_source_count": 24,
+      "both_source_count": 24,
+      "new_source_count": 17,
+      "regressed_source_count": 0,
+      "variant_source_count": 41
+    },
+    "final5": {
+      "baseline_source_count": 13,
+      "both_source_count": 11,
+      "new_source_count": 1,
+      "regressed_source_count": 2,
+      "variant_source_count": 12
+    },
+    "final_all_gold_regressed_cases": 2,
+    "reranker20": {
+      "baseline_source_count": 24,
+      "both_source_count": 22,
+      "new_source_count": 7,
+      "regressed_source_count": 2,
+      "variant_source_count": 29
+    },
+    "reranker_all_gold_regressed_cases": 0,
+    "rrf40": {
+      "baseline_source_count": 20,
+      "both_source_count": 17,
+      "new_source_count": 3,
+      "regressed_source_count": 3,
+      "variant_source_count": 20
+    },
+    "rrf_all_gold_regressed_cases": 2
+  },
+  "B200": {
+    "bm25": {
+      "baseline_source_count": 24,
+      "both_source_count": 24,
+      "new_source_count": 24,
+      "regressed_source_count": 0,
+      "variant_source_count": 48
+    },
+    "final5": {
+      "baseline_source_count": 13,
+      "both_source_count": 11,
+      "new_source_count": 3,
+      "regressed_source_count": 2,
+      "variant_source_count": 14
+    },
+    "final_all_gold_regressed_cases": 2,
+    "reranker20": {
+      "baseline_source_count": 24,
+      "both_source_count": 20,
+      "new_source_count": 8,
+      "regressed_source_count": 4,
+      "variant_source_count": 28
+    },
+    "reranker_all_gold_regressed_cases": 2,
+    "rrf40": {
+      "baseline_source_count": 20,
+      "both_source_count": 17,
+      "new_source_count": 3,
+      "regressed_source_count": 3,
+      "variant_source_count": 20
+    },
+    "rrf_all_gold_regressed_cases": 2
+  },
+  "B80": {
+    "bm25": {
+      "baseline_source_count": 24,
+      "both_source_count": 24,
+      "new_source_count": 14,
+      "regressed_source_count": 0,
+      "variant_source_count": 38
+    },
+    "final5": {
+      "baseline_source_count": 13,
+      "both_source_count": 11,
+      "new_source_count": 2,
+      "regressed_source_count": 2,
+      "variant_source_count": 13
+    },
+    "final_all_gold_regressed_cases": 2,
+    "reranker20": {
+      "baseline_source_count": 24,
+      "both_source_count": 22,
+      "new_source_count": 6,
+      "regressed_source_count": 2,
+      "variant_source_count": 28
+    },
+    "reranker_all_gold_regressed_cases": 0,
+    "rrf40": {
+      "baseline_source_count": 20,
+      "both_source_count": 18,
+      "new_source_count": 2,
+      "regressed_source_count": 2,
+      "variant_source_count": 20
+    },
+    "rrf_all_gold_regressed_cases": 1
+  }
+}

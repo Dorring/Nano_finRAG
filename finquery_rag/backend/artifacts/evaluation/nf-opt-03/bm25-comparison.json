@@ -1,0 +1,190 @@
+{
+  "A": {
+    "rank_metrics": {
+      "@120": {
+        "all_gold_case_count": 18,
+        "none_case_count": 41,
+        "partial_case_count": 5,
+        "source_hit_count": 24,
+        "source_recall": 0.3
+      },
+      "@20": {
+        "all_gold_case_count": 11,
+        "none_case_count": 50,
+        "partial_case_count": 3,
+        "source_hit_count": 14,
+        "source_recall": 0.175
+      },
+      "@200": {
+        "all_gold_case_count": 18,
+        "none_case_count": 41,
+        "partial_case_count": 5,
+        "source_hit_count": 24,
+        "source_recall": 0.3
+      },
+      "@40": {
+        "all_gold_case_count": 18,
+        "none_case_count": 41,
+        "partial_case_count": 5,
+        "source_hit_count": 24,
+        "source_recall": 0.3
+      },
+      "@80": {
+        "all_gold_case_count": 18,
+        "none_case_count": 41,
+        "partial_case_count": 5,
+        "source_hit_count": 24,
+        "source_recall": 0.3
+      }
+    },
+    "window_limit": "current_production",
+    "window_metrics": {
+      "all_gold_case_count": 18,
+      "none_case_count": 41,
+      "partial_case_count": 5,
+      "source_hit_count": 24,
+      "source_recall": 0.3
+    }
+  },
+  "B120": {
+    "rank_metrics": {
+      "@120": {
+        "all_gold_case_count": 33,
+        "none_case_count": 26,
+        "partial_case_count": 5,
+        "source_hit_count": 41,
+        "source_recall": 0.5125
+      },
+      "@20": {
+        "all_gold_case_count": 11,
+        "none_case_count": 50,
+        "partial_case_count": 3,
+        "source_hit_count": 14,
+        "source_recall": 0.175
+      },
+      "@200": {
+        "all_gold_case_count": 33,
+        "none_case_count": 26,
+        "partial_case_count": 5,
+        "source_hit_count": 41,
+        "source_recall": 0.5125
+      },
+      "@40": {
+        "all_gold_case_count": 20,
+        "none_case_count": 39,
+        "partial_case_count": 5,
+        "source_hit_count": 26,
+        "source_recall": 0.325
+      },
+      "@80": {
+        "all_gold_case_count": 30,
+        "none_case_count": 29,
+        "partial_case_count": 5,
+        "source_hit_count": 38,
+        "source_recall": 0.475
+      }
+    },
+    "window_limit": 120,
+    "window_metrics": {
+      "all_gold_case_count": 33,
+      "none_case_count": 26,
+      "partial_case_count": 5,
+      "source_hit_count": 41,
+      "source_recall": 0.5125
+    }
+  },
+  "B200": {
+    "rank_metrics": {
+      "@120": {
+        "all_gold_case_count": 33,
+        "none_case_count": 26,
+        "partial_case_count": 5,
+        "source_hit_count": 41,
+        "source_recall": 0.5125
+      },
+      "@20": {
+        "all_gold_case_count": 11,
+        "none_case_count": 50,
+        "partial_case_count": 3,
+        "source_hit_count": 14,
+        "source_recall": 0.175
+      },
+      "@200": {
+        "all_gold_case_count": 38,
+        "none_case_count": 21,
+        "partial_case_count": 5,
+        "source_hit_count": 48,
+        "source_recall": 0.6
+      },
+      "@40": {
+        "all_gold_case_count": 20,
+        "none_case_count": 39,
+        "partial_case_count": 5,
+        "source_hit_count": 26,
+        "source_recall": 0.325
+      },
+      "@80": {
+        "all_gold_case_count": 30,
+        "none_case_count": 29,
+        "partial_case_count": 5,
+        "source_hit_count": 38,
+        "source_recall": 0.475
+      }
+    },
+    "window_limit": 200,
+    "window_metrics": {
+      "all_gold_case_count": 38,
+      "none_case_count": 21,
+      "partial_case_count": 5,
+      "source_hit_count": 48,
+      "source_recall": 0.6
+    }
+  },
+  "B80": {
+    "rank_metrics": {
+      "@120": {
+        "all_gold_case_count": 30,
+        "none_case_count": 29,
+        "partial_case_count": 5,
+        "source_hit_count": 38,
+        "source_recall": 0.475
+      },
+      "@20": {
+        "all_gold_case_count": 11,
+        "none_case_count": 50,
+        "partial_case_count": 3,
+        "source_hit_count": 14,
+        "source_recall": 0.175
+      },
+      "@200": {
+        "all_gold_case_count": 30,
+        "none_case_count": 29,
+        "partial_case_count": 5,
+        "source_hit_count": 38,
+        "source_recall": 0.475
+      },
+      "@40": {
+        "all_gold_case_count": 20,
+        "none_case_count": 39,
+        "partial_case_count": 5,
+        "source_hit_count": 26,
+        "source_recall": 0.325
+      },
+      "@80": {
+        "all_gold_case_count": 30,
+        "none_case_count": 29,
+        "partial_case_count": 5,
+        "source_hit_count": 38,
+        "source_recall": 0.475
+      }
+    },
+    "window_limit": 80,
+    "window_metrics": {
+      "all_gold_case_count": 30,
+      "none_case_count": 29,
+      "partial_case_count": 5,
+      "source_hit_count": 38,
+      "source_recall": 0.475
+    }
+  }
+}
