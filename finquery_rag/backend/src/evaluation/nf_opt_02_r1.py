@@ -70,7 +70,7 @@ def promotion_demotion(rows: Sequence[Mapping[str, Any]], stage: str) -> dict[st
     return counts
 
 def hit_set(rows: Sequence[Mapping[str, Any]], stage: str, cutoff: int) -> set[str]:
-    return {f"{row['case_id']}:{row['candidate_key']}" for row in rows if isinstance(row.get(f"{stage}_rank"), int) and row[f"{stage}_rank"] <= cutoff}
+    return {f"{row['case_id']}:{row.get('source_index', row.get('candidate_key'))}" for row in rows if isinstance(row.get(f"{stage}_rank"), int) and row[f"{stage}_rank"] <= cutoff}
 
 def all_gold_cases(rows: Sequence[Mapping[str, Any]], stage: str, cutoff: int) -> set[str]:
     by_case: dict[str, list[Mapping[str, Any]]] = {}
