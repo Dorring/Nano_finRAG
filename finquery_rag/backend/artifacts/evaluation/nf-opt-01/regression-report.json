@@ -67,11 +67,13 @@
     "partial": 3
   },
   "superset_union": {
-    "both_hit_count": 4,
-    "both_missed_count": 11,
-    "current_hit_count": 5,
-    "new_hit_count": 22,
-    "regressed_hit_count": 1,
-    "shadow_hit_count": 26
+    "both_hit_count": 5,
+    "both_missed_count": 39,
+    "current_hit_count": 10,
+    "new_hit_count": 24,
+    "regressed_hit_count": 5,
+    "scope": "per_case_production_candidate_limit",
+    "shadow_hit_count": 29,
+    "superset_hit_count": 29
   }
 }

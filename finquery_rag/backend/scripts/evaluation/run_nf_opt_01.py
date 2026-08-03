@@ -1167,6 +1167,7 @@ def _run(args: argparse.Namespace) -> int:
             {
                 "case_id": case_id,
                 "expected_source_count": len(case_sources),
+                "production_candidate_limit": candidate_k,
                 "current_union_coverage": coverage_state(
                     [row["candidate_key"] for row in case_sources], current_union_map
                 ),
@@ -1271,19 +1272,40 @@ def _run(args: argparse.Namespace) -> int:
         and row["superset_rrf_top40_coverage"] != "all"
         for row in case_comparison
     )
-    superset_union_source_regressions = compare_rank_maps(
-        {
-            f"{row['case_id']}:{row['candidate_key']}": row["rank"]
-            for row in current_union_gold_rows
-            if isinstance(row.get("rank"), int)
-        },
-        {
-            f"{row['case_id']}:{row['candidate_key']}": row["rank"]
-            for row in superset_union_gold_rows
-            if isinstance(row.get("rank"), int)
-        },
-        cutoff=args.production_top_k * args.candidate_multiplier,
-    )
+    production_limits = {
+        str(row["case_id"]): int(row["production_candidate_limit"])
+        for row in case_comparison
+    }
+    current_union_production_hits = {
+        f"{row['case_id']}:{row['candidate_key']}"
+        for row in current_union_gold_rows
+        if isinstance(row.get("rank"), int)
+        and int(row["rank"]) <= production_limits[str(row["case_id"])]
+    }
+    superset_union_production_hits = {
+        f"{row['case_id']}:{row['candidate_key']}"
+        for row in superset_union_gold_rows
+        if isinstance(row.get("rank"), int)
+        and int(row["rank"]) <= production_limits[str(row["case_id"])]
+    }
+    all_union_gold_keys = {
+        f"{row['case_id']}:{row['candidate_key']}"
+        for row in current_union_gold_rows
+    }
+    superset_union_source_regressions = {
+        "current_hit_count": len(current_union_production_hits),
+        "shadow_hit_count": len(superset_union_production_hits),
+        "superset_hit_count": len(superset_union_production_hits),
+        "new_hit_count": len(superset_union_production_hits - current_union_production_hits),
+        "regressed_hit_count": len(current_union_production_hits - superset_union_production_hits),
+        "both_hit_count": len(current_union_production_hits & superset_union_production_hits),
+        "both_missed_count": len(
+            all_union_gold_keys
+            - current_union_production_hits
+            - superset_union_production_hits
+        ),
+        "scope": "per_case_production_candidate_limit",
+    }
     latency_ratio = None
     if dense_query_times_current and dense_query_times_shadow:
         current_p95 = percentile(dense_query_times_current, 0.95) or 0.0
