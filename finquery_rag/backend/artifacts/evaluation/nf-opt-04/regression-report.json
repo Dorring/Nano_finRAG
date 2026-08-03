@@ -1,0 +1,117 @@
+{
+  "F10": {
+    "all_gold_case": {
+      "baseline_count": 10,
+      "both_count": 10,
+      "new_count": 2,
+      "regressed_count": 0,
+      "variant_count": 12
+    },
+    "multi_evidence_all_source": {
+      "baseline_count": 1,
+      "both_count": 1,
+      "new_count": 0,
+      "regressed_count": 0,
+      "variant_count": 1
+    },
+    "source": {
+      "baseline_count": 13,
+      "both_count": 13,
+      "new_count": 4,
+      "regressed_count": 0,
+      "variant_count": 17
+    }
+  },
+  "F5": {
+    "all_gold_case": {
+      "baseline_count": 10,
+      "both_count": 10,
+      "new_count": 0,
+      "regressed_count": 0,
+      "variant_count": 10
+    },
+    "multi_evidence_all_source": {
+      "baseline_count": 1,
+      "both_count": 1,
+      "new_count": 0,
+      "regressed_count": 0,
+      "variant_count": 1
+    },
+    "source": {
+      "baseline_count": 13,
+      "both_count": 13,
+      "new_count": 0,
+      "regressed_count": 0,
+      "variant_count": 13
+    }
+  },
+  "F8": {
+    "all_gold_case": {
+      "baseline_count": 10,
+      "both_count": 10,
+      "new_count": 2,
+      "regressed_count": 0,
+      "variant_count": 12
+    },
+    "multi_evidence_all_source": {
+      "baseline_count": 1,
+      "both_count": 1,
+      "new_count": 0,
+      "regressed_count": 0,
+      "variant_count": 1
+    },
+    "source": {
+      "baseline_count": 13,
+      "both_count": 13,
+      "new_count": 4,
+      "regressed_count": 0,
+      "variant_count": 17
+    }
+  },
+  "FT10": {
+    "all_gold_case": {
+      "baseline_count": 10,
+      "both_count": 10,
+      "new_count": 2,
+      "regressed_count": 0,
+      "variant_count": 12
+    },
+    "multi_evidence_all_source": {
+      "baseline_count": 1,
+      "both_count": 1,
+      "new_count": 0,
+      "regressed_count": 0,
+      "variant_count": 1
+    },
+    "source": {
+      "baseline_count": 13,
+      "both_count": 13,
+      "new_count": 4,
+      "regressed_count": 0,
+      "variant_count": 17
+    }
+  },
+  "FT8": {
+    "all_gold_case": {
+      "baseline_count": 10,
+      "both_count": 10,
+      "new_count": 2,
+      "regressed_count": 0,
+      "variant_count": 12
+    },
+    "multi_evidence_all_source": {
+      "baseline_count": 1,
+      "both_count": 1,
+      "new_count": 0,
+      "regressed_count": 0,
+      "variant_count": 1
+    },
+    "source": {
+      "baseline_count": 13,
+      "both_count": 13,
+      "new_count": 4,
+      "regressed_count": 0,
+      "variant_count": 17
+    }
+  }
+}

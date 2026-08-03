@@ -1,0 +1,51 @@
+{
+  "comparisons": {
+    "F10": {
+      "context_quality_passed": true,
+      "gain_passed": false,
+      "integrity_passed": true,
+      "latency_gate_passed": true,
+      "passed": false,
+      "regression_passed": true
+    },
+    "F5": {
+      "context_quality_passed": true,
+      "gain_passed": false,
+      "integrity_passed": true,
+      "latency_gate_passed": true,
+      "passed": false,
+      "regression_passed": true
+    },
+    "F8": {
+      "context_quality_passed": true,
+      "gain_passed": false,
+      "integrity_passed": true,
+      "latency_gate_passed": true,
+      "passed": false,
+      "regression_passed": true
+    },
+    "FT10": {
+      "context_quality_passed": true,
+      "gain_passed": false,
+      "integrity_passed": true,
+      "latency_gate_passed": true,
+      "passed": false,
+      "regression_passed": true
+    },
+    "FT8": {
+      "context_quality_passed": true,
+      "gain_passed": false,
+      "integrity_passed": true,
+      "latency_gate_passed": true,
+      "passed": false,
+      "regression_passed": true
+    }
+  },
+  "order": [
+    "F8",
+    "FT8",
+    "F10",
+    "FT10"
+  ],
+  "selected_variant": null
+}

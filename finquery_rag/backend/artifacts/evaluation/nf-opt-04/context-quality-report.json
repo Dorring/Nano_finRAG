@@ -1,0 +1,72 @@
+{
+  "F10": {
+    "case_count": 64,
+    "conflicting_period_case_count": 0,
+    "conflicting_value_case_count": 0,
+    "context_tokens_mean": 2449.984375,
+    "context_tokens_p50": 2376.0,
+    "context_tokens_p95": 3595.0,
+    "duplicate_evidence_case_rate": 0.015625,
+    "evidence_count_mean": 10.0,
+    "evidence_count_p50": 10.0,
+    "evidence_count_p95": 10.0,
+    "same_metric_duplicate_case_rate": 0.0,
+    "same_page_duplicate_case_rate": 0.984375
+  },
+  "F5": {
+    "case_count": 64,
+    "conflicting_period_case_count": 0,
+    "conflicting_value_case_count": 0,
+    "context_tokens_mean": 1419.015625,
+    "context_tokens_p50": 1443.0,
+    "context_tokens_p95": 2060.0,
+    "duplicate_evidence_case_rate": 0.0,
+    "evidence_count_mean": 5.0,
+    "evidence_count_p50": 5.0,
+    "evidence_count_p95": 5.0,
+    "same_metric_duplicate_case_rate": 0.0,
+    "same_page_duplicate_case_rate": 0.90625
+  },
+  "F8": {
+    "case_count": 64,
+    "conflicting_period_case_count": 0,
+    "conflicting_value_case_count": 0,
+    "context_tokens_mean": 2078.140625,
+    "context_tokens_p50": 2079.0,
+    "context_tokens_p95": 2955.0,
+    "duplicate_evidence_case_rate": 0.015625,
+    "evidence_count_mean": 8.0,
+    "evidence_count_p50": 8.0,
+    "evidence_count_p95": 8.0,
+    "same_metric_duplicate_case_rate": 0.0,
+    "same_page_duplicate_case_rate": 0.96875
+  },
+  "FT10": {
+    "case_count": 64,
+    "conflicting_period_case_count": 0,
+    "conflicting_value_case_count": 0,
+    "context_tokens_mean": 2449.984375,
+    "context_tokens_p50": 2376.0,
+    "context_tokens_p95": 3595.0,
+    "duplicate_evidence_case_rate": 0.015625,
+    "evidence_count_mean": 10.0,
+    "evidence_count_p50": 10.0,
+    "evidence_count_p95": 10.0,
+    "same_metric_duplicate_case_rate": 0.0,
+    "same_page_duplicate_case_rate": 0.984375
+  },
+  "FT8": {
+    "case_count": 64,
+    "conflicting_period_case_count": 0,
+    "conflicting_value_case_count": 0,
+    "context_tokens_mean": 2078.140625,
+    "context_tokens_p50": 2079.0,
+    "context_tokens_p95": 2955.0,
+    "duplicate_evidence_case_rate": 0.015625,
+    "evidence_count_mean": 8.0,
+    "evidence_count_p50": 8.0,
+    "evidence_count_p95": 8.0,
+    "same_metric_duplicate_case_rate": 0.0,
+    "same_page_duplicate_case_rate": 0.96875
+  }
+}

@@ -1,0 +1,342 @@
+{
+  "F10": {
+    "bm25_ms": {
+      "mean_ms": 173.45509100414347,
+      "measured_run_count": 64,
+      "p50_ms": 156.7662269808352,
+      "p95_ms": 276.188749819994
+    },
+    "context_serialization_ms": {
+      "mean_ms": 1.9114666101813782,
+      "measured_run_count": 64,
+      "p50_ms": 1.7355659510940313,
+      "p95_ms": 2.777275862172246
+    },
+    "dense_ms": {
+      "mean_ms": 100.7850005189539,
+      "measured_run_count": 64,
+      "p50_ms": 93.95121992565691,
+      "p95_ms": 158.4496998693794
+    },
+    "final_selection_ms": {
+      "mean_ms": 0.003084736817982048,
+      "measured_run_count": 64,
+      "p50_ms": 0.0028850045055150986,
+      "p95_ms": 0.004627043381333351
+    },
+    "normalization_ms": {
+      "mean_ms": 0.6423786944651511,
+      "measured_run_count": 64,
+      "p50_ms": 0.49848202615976334,
+      "p95_ms": 1.6406928189098835
+    },
+    "query_embedding_ms": {
+      "mean_ms": 150.3068309793889,
+      "measured_run_count": 64,
+      "p50_ms": 121.94557301700115,
+      "p95_ms": 399.14564113132656
+    },
+    "reranker_ms": {
+      "mean_ms": 5.240181668341393,
+      "measured_run_count": 64,
+      "p50_ms": 4.859294043853879,
+      "p95_ms": 8.841244969516993
+    },
+    "rrf_ms": {
+      "mean_ms": 0.9130189173447434,
+      "measured_run_count": 64,
+      "p50_ms": 0.6854841485619545,
+      "p95_ms": 1.455123070627451
+    },
+    "token_counting_ms": {
+      "mean_ms": 0.0,
+      "measured_run_count": 64,
+      "p50_ms": 0.0,
+      "p95_ms": 0.0
+    },
+    "total_retrieval_ms": {
+      "mean_ms": 433.89778718483285,
+      "measured_run_count": 64,
+      "p50_ms": 394.67117423191667,
+      "p95_ms": 689.3641618080437
+    },
+    "union_ms": {
+      "mean_ms": 0.6407340551959351,
+      "measured_run_count": 64,
+      "p50_ms": 0.6190231069922447,
+      "p95_ms": 0.6633801385760307
+    }
+  },
+  "F5": {
+    "bm25_ms": {
+      "mean_ms": 173.45509100414347,
+      "measured_run_count": 64,
+      "p50_ms": 156.7662269808352,
+      "p95_ms": 276.188749819994
+    },
+    "context_serialization_ms": {
+      "mean_ms": 1.3979980831209105,
+      "measured_run_count": 64,
+      "p50_ms": 1.4245170168578625,
+      "p95_ms": 1.938522094860673
+    },
+    "dense_ms": {
+      "mean_ms": 100.7850005189539,
+      "measured_run_count": 64,
+      "p50_ms": 93.95121992565691,
+      "p95_ms": 158.4496998693794
+    },
+    "final_selection_ms": {
+      "mean_ms": 0.017448321159463376,
+      "measured_run_count": 64,
+      "p50_ms": 0.016014091670513153,
+      "p95_ms": 0.028342008590698242
+    },
+    "normalization_ms": {
+      "mean_ms": 0.6423786944651511,
+      "measured_run_count": 64,
+      "p50_ms": 0.49848202615976334,
+      "p95_ms": 1.6406928189098835
+    },
+    "query_embedding_ms": {
+      "mean_ms": 150.3068309793889,
+      "measured_run_count": 64,
+      "p50_ms": 121.94557301700115,
+      "p95_ms": 399.14564113132656
+    },
+    "reranker_ms": {
+      "mean_ms": 5.240181668341393,
+      "measured_run_count": 64,
+      "p50_ms": 4.859294043853879,
+      "p95_ms": 8.841244969516993
+    },
+    "rrf_ms": {
+      "mean_ms": 0.9130189173447434,
+      "measured_run_count": 64,
+      "p50_ms": 0.6854841485619545,
+      "p95_ms": 1.455123070627451
+    },
+    "token_counting_ms": {
+      "mean_ms": 0.0,
+      "measured_run_count": 64,
+      "p50_ms": 0.0,
+      "p95_ms": 0.0
+    },
+    "total_retrieval_ms": {
+      "mean_ms": 433.39868224211386,
+      "measured_run_count": 64,
+      "p50_ms": 394.463200122118,
+      "p95_ms": 689.557692501694
+    },
+    "union_ms": {
+      "mean_ms": 0.6407340551959351,
+      "measured_run_count": 64,
+      "p50_ms": 0.6190231069922447,
+      "p95_ms": 0.6633801385760307
+    }
+  },
+  "F8": {
+    "bm25_ms": {
+      "mean_ms": 173.45509100414347,
+      "measured_run_count": 64,
+      "p50_ms": 156.7662269808352,
+      "p95_ms": 276.188749819994
+    },
+    "context_serialization_ms": {
+      "mean_ms": 1.5866038083913736,
+      "measured_run_count": 64,
+      "p50_ms": 1.5780578833073378,
+      "p95_ms": 2.360256854444742
+    },
+    "dense_ms": {
+      "mean_ms": 100.7850005189539,
+      "measured_run_count": 64,
+      "p50_ms": 93.95121992565691,
+      "p95_ms": 158.4496998693794
+    },
+    "final_selection_ms": {
+      "mean_ms": 0.002809691068250686,
+      "measured_run_count": 64,
+      "p50_ms": 0.0026740599423646927,
+      "p95_ms": 0.00424613244831562
+    },
+    "normalization_ms": {
+      "mean_ms": 0.6423786944651511,
+      "measured_run_count": 64,
+      "p50_ms": 0.49848202615976334,
+      "p95_ms": 1.6406928189098835
+    },
+    "query_embedding_ms": {
+      "mean_ms": 150.3068309793889,
+      "measured_run_count": 64,
+      "p50_ms": 121.94557301700115,
+      "p95_ms": 399.14564113132656
+    },
+    "reranker_ms": {
+      "mean_ms": 5.240181668341393,
+      "measured_run_count": 64,
+      "p50_ms": 4.859294043853879,
+      "p95_ms": 8.841244969516993
+    },
+    "rrf_ms": {
+      "mean_ms": 0.9130189173447434,
+      "measured_run_count": 64,
+      "p50_ms": 0.6854841485619545,
+      "p95_ms": 1.455123070627451
+    },
+    "token_counting_ms": {
+      "mean_ms": 0.0,
+      "measured_run_count": 64,
+      "p50_ms": 0.0,
+      "p95_ms": 0.0
+    },
+    "total_retrieval_ms": {
+      "mean_ms": 433.5726493372931,
+      "measured_run_count": 64,
+      "p50_ms": 394.4902110379189,
+      "p95_ms": 689.3792948685586
+    },
+    "union_ms": {
+      "mean_ms": 0.6407340551959351,
+      "measured_run_count": 64,
+      "p50_ms": 0.6190231069922447,
+      "p95_ms": 0.6633801385760307
+    }
+  },
+  "FT10": {
+    "bm25_ms": {
+      "mean_ms": 173.45509100414347,
+      "measured_run_count": 64,
+      "p50_ms": 156.7662269808352,
+      "p95_ms": 276.188749819994
+    },
+    "context_serialization_ms": {
+      "mean_ms": 0.011785679816966876,
+      "measured_run_count": 64,
+      "p50_ms": 0.01130695454776287,
+      "p95_ms": 0.014902092516422272
+    },
+    "dense_ms": {
+      "mean_ms": 100.7850005189539,
+      "measured_run_count": 64,
+      "p50_ms": 93.95121992565691,
+      "p95_ms": 158.4496998693794
+    },
+    "final_selection_ms": {
+      "mean_ms": 1.6556071495870128,
+      "measured_run_count": 64,
+      "p50_ms": 1.6188500449061394,
+      "p95_ms": 2.410211833193898
+    },
+    "normalization_ms": {
+      "mean_ms": 0.6423786944651511,
+      "measured_run_count": 64,
+      "p50_ms": 0.49848202615976334,
+      "p95_ms": 1.6406928189098835
+    },
+    "query_embedding_ms": {
+      "mean_ms": 150.3068309793889,
+      "measured_run_count": 64,
+      "p50_ms": 121.94557301700115,
+      "p95_ms": 399.14564113132656
+    },
+    "reranker_ms": {
+      "mean_ms": 5.240181668341393,
+      "measured_run_count": 64,
+      "p50_ms": 4.859294043853879,
+      "p95_ms": 8.841244969516993
+    },
+    "rrf_ms": {
+      "mean_ms": 0.9130189173447434,
+      "measured_run_count": 64,
+      "p50_ms": 0.6854841485619545,
+      "p95_ms": 1.455123070627451
+    },
+    "token_counting_ms": {
+      "mean_ms": 1.6547679115319625,
+      "measured_run_count": 64,
+      "p50_ms": 1.6180691309273243,
+      "p95_ms": 2.4097219575196505
+    },
+    "total_retrieval_ms": {
+      "mean_ms": 435.30539657876943,
+      "measured_run_count": 64,
+      "p50_ms": 395.6393620464951,
+      "p95_ms": 690.3885817155242
+    },
+    "union_ms": {
+      "mean_ms": 0.6407340551959351,
+      "measured_run_count": 64,
+      "p50_ms": 0.6190231069922447,
+      "p95_ms": 0.6633801385760307
+    }
+  },
+  "FT8": {
+    "bm25_ms": {
+      "mean_ms": 173.45509100414347,
+      "measured_run_count": 64,
+      "p50_ms": 156.7662269808352,
+      "p95_ms": 276.188749819994
+    },
+    "context_serialization_ms": {
+      "mean_ms": 0.012023574527120218,
+      "measured_run_count": 64,
+      "p50_ms": 0.011206138879060745,
+      "p95_ms": 0.015113037079572678
+    },
+    "dense_ms": {
+      "mean_ms": 100.7850005189539,
+      "measured_run_count": 64,
+      "p50_ms": 93.95121992565691,
+      "p95_ms": 158.4496998693794
+    },
+    "final_selection_ms": {
+      "mean_ms": 5.0893548141175415,
+      "measured_run_count": 64,
+      "p50_ms": 4.765813006088138,
+      "p95_ms": 7.292510941624641
+    },
+    "normalization_ms": {
+      "mean_ms": 0.6423786944651511,
+      "measured_run_count": 64,
+      "p50_ms": 0.49848202615976334,
+      "p95_ms": 1.6406928189098835
+    },
+    "query_embedding_ms": {
+      "mean_ms": 150.3068309793889,
+      "measured_run_count": 64,
+      "p50_ms": 121.94557301700115,
+      "p95_ms": 399.14564113132656
+    },
+    "reranker_ms": {
+      "mean_ms": 5.240181668341393,
+      "measured_run_count": 64,
+      "p50_ms": 4.859294043853879,
+      "p95_ms": 8.841244969516993
+    },
+    "rrf_ms": {
+      "mean_ms": 0.9130189173447434,
+      "measured_run_count": 64,
+      "p50_ms": 0.6854841485619545,
+      "p95_ms": 1.455123070627451
+    },
+    "token_counting_ms": {
+      "mean_ms": 5.088805046398193,
+      "measured_run_count": 64,
+      "p50_ms": 4.765392048284411,
+      "p95_ms": 7.291940040886402
+    },
+    "total_retrieval_ms": {
+      "mean_ms": 442.17341927287634,
+      "measured_run_count": 64,
+      "p50_ms": 402.9038317967206,
+      "p95_ms": 695.7361709792167
+    },
+    "union_ms": {
+      "mean_ms": 0.6407340551959351,
+      "measured_run_count": 64,
+      "p50_ms": 0.6190231069922447,
+      "p95_ms": 0.6633801385760307
+    }
+  }
+}
