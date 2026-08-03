@@ -1,0 +1,36 @@
+{
+  "answer_generation_called": false,
+  "artifact_schema": "nf-opt-04/v1",
+  "current_production_config": {
+    "candidate_multiplier": 4,
+    "embedding_model": "all-MiniLM-L6-v2",
+    "final_k": 5,
+    "n_results": 5,
+    "reranker": "heuristic"
+  },
+  "gold_labels_not_used_for_selection": true,
+  "reranker_input_source": "rrf_all",
+  "token_counter": "tiktoken/cl100k_base",
+  "variants": {
+    "F10": {
+      "max_evidence": 10,
+      "token_budget": null
+    },
+    "F5": {
+      "max_evidence": 5,
+      "token_budget": null
+    },
+    "F8": {
+      "max_evidence": 8,
+      "token_budget": null
+    },
+    "FT10": {
+      "max_evidence": 10,
+      "token_budget": 8000
+    },
+    "FT8": {
+      "max_evidence": 8,
+      "token_budget": 6000
+    }
+  }
+}

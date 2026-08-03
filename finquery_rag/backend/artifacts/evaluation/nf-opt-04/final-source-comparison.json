@@ -1,0 +1,42 @@
+{
+  "F10": {
+    "all_gold_case_count": 12,
+    "case_hit_count": 16,
+    "none_case_count": 48,
+    "partial_case_count": 4,
+    "source_hit_count": 17,
+    "source_recall": 0.2125
+  },
+  "F5": {
+    "all_gold_case_count": 10,
+    "case_hit_count": 12,
+    "none_case_count": 52,
+    "partial_case_count": 2,
+    "source_hit_count": 13,
+    "source_recall": 0.1625
+  },
+  "F8": {
+    "all_gold_case_count": 12,
+    "case_hit_count": 16,
+    "none_case_count": 48,
+    "partial_case_count": 4,
+    "source_hit_count": 17,
+    "source_recall": 0.2125
+  },
+  "FT10": {
+    "all_gold_case_count": 12,
+    "case_hit_count": 16,
+    "none_case_count": 48,
+    "partial_case_count": 4,
+    "source_hit_count": 17,
+    "source_recall": 0.2125
+  },
+  "FT8": {
+    "all_gold_case_count": 12,
+    "case_hit_count": 16,
+    "none_case_count": 48,
+    "partial_case_count": 4,
+    "source_hit_count": 17,
+    "source_recall": 0.2125
+  }
+}
