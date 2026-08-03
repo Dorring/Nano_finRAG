@@ -1,0 +1,84 @@
+{
+  "calculation_result_correct_count": 0,
+  "case_count": 11,
+  "execution_completed_count": 2,
+  "records": [
+    {
+      "actual_result_value": null,
+      "calculation_result_correct": false,
+      "case_id": "aapl_fy2025_006",
+      "execution_completed": false,
+      "expected_result_value": "6.4255"
+    },
+    {
+      "actual_result_value": null,
+      "calculation_result_correct": false,
+      "case_id": "jpm_fy2025_006",
+      "execution_completed": false,
+      "expected_result_value": "10.5447"
+    },
+    {
+      "actual_result_value": null,
+      "calculation_result_correct": false,
+      "case_id": "ko_fy2025_006",
+      "execution_completed": false,
+      "expected_result_value": "1.8699"
+    },
+    {
+      "actual_result_value": "0.9409",
+      "calculation_result_correct": false,
+      "case_id": "ko_fy2025_007",
+      "execution_completed": true,
+      "expected_result_value": "22.5965248952"
+    },
+    {
+      "actual_result_value": null,
+      "calculation_result_correct": false,
+      "case_id": "msft_fy2025_006",
+      "execution_completed": false,
+      "expected_result_value": "14.9322"
+    },
+    {
+      "actual_result_value": null,
+      "calculation_result_correct": false,
+      "case_id": "msft_fy2025_007",
+      "execution_completed": false,
+      "expected_result_value": "37.7195"
+    },
+    {
+      "actual_result_value": null,
+      "calculation_result_correct": false,
+      "case_id": "nvda_fy2025_006",
+      "execution_completed": false,
+      "expected_result_value": "114.2034"
+    },
+    {
+      "actual_result_value": null,
+      "calculation_result_correct": false,
+      "case_id": "pfe_fy2024_006",
+      "execution_completed": false,
+      "expected_result_value": "6.8410"
+    },
+    {
+      "actual_result_value": null,
+      "calculation_result_correct": false,
+      "case_id": "tsla_fy2025_006",
+      "execution_completed": false,
+      "expected_result_value": "-2.9307"
+    },
+    {
+      "actual_result_value": null,
+      "calculation_result_correct": false,
+      "case_id": "tsla_fy2025_007",
+      "execution_completed": false,
+      "expected_result_value": "56755000000"
+    },
+    {
+      "actual_result_value": "0.0000",
+      "calculation_result_correct": false,
+      "case_id": "v_fy2025_006",
+      "execution_completed": true,
+      "expected_result_value": "11.3400"
+    }
+  ]
+}
