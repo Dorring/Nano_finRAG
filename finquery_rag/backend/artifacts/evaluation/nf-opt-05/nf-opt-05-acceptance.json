@@ -1,0 +1,18 @@
+{
+  "answer_generation_calls": 0,
+  "artifact_schema": "nf-opt-05/v1",
+  "calculation_case_count": 11,
+  "calculation_route_precision": 1.0,
+  "calculation_route_recall": 1.0,
+  "case_count": 72,
+  "decision": "calculation_routing_validated_operand_blocked",
+  "false_positive_count": 0,
+  "input_hashes_verified": true,
+  "model_chat_completion_requests": 0,
+  "no_answer_false_positive_count": 0,
+  "operation_accuracy": 1.0,
+  "oracle_operand_accuracy": 0.18181818181818182,
+  "oracle_result_accuracy": 0.18181818181818182,
+  "production_behavior_changed": false,
+  "production_switch_allowed": false
+}

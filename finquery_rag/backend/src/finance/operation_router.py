@@ -26,6 +26,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from src.domain.calculation import CalculationOperation, CalculationStatus
+from src.finance.calculation_intent import detect_calculation_intent
 from src.finance.metric_lexicon import (
     GenericOperationEntry,
     MetricDefinition,
@@ -179,7 +180,12 @@ def _extract_target_scale(question: str) -> str | None:
     return None
 
 
-def route_calculation(question: str, intent: dict[str, Any]) -> RoutingDecision:
+def route_calculation(
+    question: str,
+    intent: dict[str, Any],
+    *,
+    allow_derived_document_qa: bool = False,
+) -> RoutingDecision:
     """Route a question to the calculation pipeline or decline (NOT_APPLICABLE).
 
     Args:
@@ -189,26 +195,79 @@ def route_calculation(question: str, intent: dict[str, Any]) -> RoutingDecision:
     Returns:
         A ``RoutingDecision`` with ``status`` READY or NOT_APPLICABLE.
     """
-    # Gate 1: intent must be financial_calculation.
+    calculation_intent = detect_calculation_intent(question)
+    if (
+        allow_derived_document_qa
+        and calculation_intent.requires_calculation
+        and calculation_intent.derived_value_requested
+        and calculation_intent.operation is not None
+    ):
+        # A fully structured derived-value request can override document_qa.
+        # This is the NF-OPT-05 addition; no direct reported metric qualifies.
+        metric_def = find_metric_by_alias(question)
+        if (
+            metric_def is not None
+            and metric_def.operation is calculation_intent.operation
+        ):
+            decision = RoutingDecision.from_metric(metric_def)
+            return RoutingDecision(
+                **{**decision.__dict__, "reason": "derived_value_named_metric"}
+            )
+        generic_entry = find_generic_operation(question)
+        if (
+            generic_entry is not None
+            and generic_entry.operation is calculation_intent.operation
+        ):
+            target_scale = (
+                _extract_target_scale(question)
+                if generic_entry.operation is CalculationOperation.SCALE_CONVERSION
+                else None
+            )
+            decision = RoutingDecision.from_generic(
+                generic_entry, target_scale=target_scale
+            )
+            return RoutingDecision(
+                **{**decision.__dict__, "reason": "derived_value_generic_operation"}
+            )
+        generic_by_operation = {
+            CalculationOperation.DIFFERENCE: (
+                "difference.v1",
+                "current - previous",
+                "base",
+            ),
+            CalculationOperation.SUM: ("sum.v1", "sum(operands)", "base"),
+            CalculationOperation.AVERAGE: (
+                "average.v1",
+                "sum(operands) / count",
+                "base",
+            ),
+        }
+        fallback = generic_by_operation.get(calculation_intent.operation)
+        if fallback is not None:
+            formula_version, formula_template, unit = fallback
+            return RoutingDecision(
+                status=CalculationStatus.READY,
+                operation=calculation_intent.operation,
+                metric=calculation_intent.operation.value,
+                formula_version=formula_version,
+                formula_template=formula_template,
+                unit=unit,
+                reason="derived_value_intent",
+            )
+
+    # Preserve the production calculator's explicit-intent contract for
+    # callers already classified as financial_calculation.
     if intent.get("intent") != "financial_calculation":
         return RoutingDecision.not_applicable("intent_not_financial_calculation")
-
-    # Gate 2: an explicit calculation verb must be present.
     if not _has_explicit_calculation_pattern(question):
         return RoutingDecision.not_applicable("no_explicit_calculation_verb")
-
-    # Gate 3a: check for a named metric (gross_margin, net_margin, etc.).
     metric_def = find_metric_by_alias(question)
     if metric_def is not None:
         return RoutingDecision.from_metric(metric_def)
-
-    # Gate 3b: check for a generic operation keyword (sum, difference, etc.).
     generic_entry = find_generic_operation(question)
     if generic_entry is not None:
         target_scale = None
         if generic_entry.operation is CalculationOperation.SCALE_CONVERSION:
             target_scale = _extract_target_scale(question)
         return RoutingDecision.from_generic(generic_entry, target_scale=target_scale)
-
-    # No metric or operation keyword matched — let the LLM handle it.
     return RoutingDecision.not_applicable("no_metric_or_operation_matched")

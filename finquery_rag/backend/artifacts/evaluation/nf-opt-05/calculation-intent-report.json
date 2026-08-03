@@ -1,0 +1,725 @@
+{
+  "case_count": 72,
+  "records": [
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "aapl_fy2025_001",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "aapl_fy2025_002",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "aapl_fy2025_003",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "aapl_fy2025_004",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "aapl_fy2025_005",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_calculation",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "aapl_fy2025_006",
+      "detected_operation": "growth_rate",
+      "expected_operation": "growth_rate",
+      "expected_route": "deterministic_calculation",
+      "route_decision_reason": "derived_value_named_metric"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "aapl_fy2025_007",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "aapl_fy2025_008",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "aapl_fy2025_009",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "jpm_fy2025_001",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "jpm_fy2025_002",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "jpm_fy2025_003",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "jpm_fy2025_004",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "jpm_fy2025_005",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_calculation",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "jpm_fy2025_006",
+      "detected_operation": "growth_rate",
+      "expected_operation": "growth_rate",
+      "expected_route": "deterministic_calculation",
+      "route_decision_reason": "derived_value_named_metric"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "jpm_fy2025_007",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "jpm_fy2025_008",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "jpm_fy2025_009",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "ko_fy2025_001",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "ko_fy2025_002",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "ko_fy2025_003",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "ko_fy2025_004",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "ko_fy2025_005",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_calculation",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "ko_fy2025_006",
+      "detected_operation": "growth_rate",
+      "expected_operation": "growth_rate",
+      "expected_route": "deterministic_calculation",
+      "route_decision_reason": "derived_value_named_metric"
+    },
+    {
+      "actual_route": "deterministic_calculation",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "ko_fy2025_007",
+      "detected_operation": "percentage_share",
+      "expected_operation": "percentage_share",
+      "expected_route": "deterministic_calculation",
+      "route_decision_reason": "derived_value_named_metric"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "ko_fy2025_008",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "ko_fy2025_009",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "msft_fy2025_001",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "msft_fy2025_002",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "msft_fy2025_003",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "msft_fy2025_004",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "msft_fy2025_005",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_calculation",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "msft_fy2025_006",
+      "detected_operation": "growth_rate",
+      "expected_operation": "growth_rate",
+      "expected_route": "deterministic_calculation",
+      "route_decision_reason": "derived_value_named_metric"
+    },
+    {
+      "actual_route": "deterministic_calculation",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "msft_fy2025_007",
+      "detected_operation": "percentage_share",
+      "expected_operation": "percentage_share",
+      "expected_route": "deterministic_calculation",
+      "route_decision_reason": "derived_value_named_metric"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "msft_fy2025_008",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "no_explicit_calculation_verb"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "msft_fy2025_009",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "nvda_fy2025_001",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "nvda_fy2025_002",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "nvda_fy2025_003",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "nvda_fy2025_004",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "nvda_fy2025_005",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_calculation",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "nvda_fy2025_006",
+      "detected_operation": "growth_rate",
+      "expected_operation": "growth_rate",
+      "expected_route": "deterministic_calculation",
+      "route_decision_reason": "derived_value_named_metric"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "nvda_fy2025_007",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "no_explicit_calculation_verb"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "nvda_fy2025_008",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "nvda_fy2025_009",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "pfe_fy2024_001",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "pfe_fy2024_002",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "pfe_fy2024_003",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "pfe_fy2024_004",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "pfe_fy2024_005",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_calculation",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "pfe_fy2024_006",
+      "detected_operation": "growth_rate",
+      "expected_operation": "growth_rate",
+      "expected_route": "deterministic_calculation",
+      "route_decision_reason": "derived_value_named_metric"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "pfe_fy2024_007",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "pfe_fy2024_008",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "pfe_fy2024_009",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "tsla_fy2025_001",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "tsla_fy2025_002",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "tsla_fy2025_003",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "tsla_fy2025_004",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "tsla_fy2025_005",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_calculation",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "tsla_fy2025_006",
+      "detected_operation": "growth_rate",
+      "expected_operation": "growth_rate",
+      "expected_route": "deterministic_calculation",
+      "route_decision_reason": "derived_value_named_metric"
+    },
+    {
+      "actual_route": "deterministic_calculation",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "tsla_fy2025_007",
+      "detected_operation": "difference",
+      "expected_operation": "difference",
+      "expected_route": "deterministic_calculation",
+      "route_decision_reason": "derived_value_intent"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "tsla_fy2025_008",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "tsla_fy2025_009",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "v_fy2025_001",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "v_fy2025_002",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "v_fy2025_003",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "v_fy2025_004",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "v_fy2025_005",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_calculation",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "v_fy2025_006",
+      "detected_operation": "growth_rate",
+      "expected_operation": "growth_rate",
+      "expected_route": "deterministic_calculation",
+      "route_decision_reason": "derived_value_named_metric"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "v_fy2025_007",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "v_fy2025_008",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    },
+    {
+      "actual_route": "deterministic_fact",
+      "before_route": "deterministic_fact",
+      "calculation_detector_invoked": true,
+      "case_id": "v_fy2025_009",
+      "detected_operation": null,
+      "expected_operation": null,
+      "expected_route": "non_calculation",
+      "route_decision_reason": "intent_not_financial_calculation"
+    }
+  ]
+}

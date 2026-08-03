@@ -1,0 +1,314 @@
+{
+  "artifact_schema": "nf-opt-05-r1/v1",
+  "case_count": 11,
+  "contracts": [
+    {
+      "case_id": "aapl_fy2025_006",
+      "contract_source": "calculation.operands+expected_sources",
+      "operands": [
+        {
+          "candidate_key": "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563",
+          "currency": null,
+          "evidence_chunk_id": "user_1_aapl_fy2025_10k.pdf::page_26::layout_table_1::row_4",
+          "metric": "Total net sales",
+          "period": "FY2024",
+          "role": "previous",
+          "scale": null,
+          "value": "391035000000"
+        },
+        {
+          "candidate_key": "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563",
+          "currency": null,
+          "evidence_chunk_id": "user_1_aapl_fy2025_10k.pdf::page_26::layout_table_1::row_4",
+          "metric": "Total net sales",
+          "period": "FY2025",
+          "role": "current",
+          "scale": null,
+          "value": "416161000000"
+        }
+      ],
+      "operation": "growth_rate",
+      "unit_scale_contract_available": false
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "contract_source": "calculation.operands+expected_sources",
+      "operands": [
+        {
+          "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+          "currency": null,
+          "evidence_chunk_id": "user_1_jpm_fy2025_annual_report.pdf::page_199::table_1::row_19",
+          "metric": "Total assets",
+          "period": "FY2024",
+          "role": "previous",
+          "scale": null,
+          "value": "4002814000000"
+        },
+        {
+          "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+          "currency": null,
+          "evidence_chunk_id": "user_1_jpm_fy2025_annual_report.pdf::page_199::table_1::row_19",
+          "metric": "Total assets",
+          "period": "FY2025",
+          "role": "current",
+          "scale": null,
+          "value": "4424900000000"
+        }
+      ],
+      "operation": "growth_rate",
+      "unit_scale_contract_available": false
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "contract_source": "calculation.operands+expected_sources",
+      "operands": [
+        {
+          "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+          "currency": null,
+          "evidence_chunk_id": "user_1_ko_fy2025_10k.pdf::page_63::layout_table_1::row_0",
+          "metric": "Net operating revenues",
+          "period": "FY2024",
+          "role": "previous",
+          "scale": null,
+          "value": "47061000000"
+        },
+        {
+          "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+          "currency": null,
+          "evidence_chunk_id": "user_1_ko_fy2025_10k.pdf::page_63::layout_table_1::row_0",
+          "metric": "Net operating revenues",
+          "period": "FY2025",
+          "role": "current",
+          "scale": null,
+          "value": "47941000000"
+        }
+      ],
+      "operation": "growth_rate",
+      "unit_scale_contract_available": false
+    },
+    {
+      "case_id": "ko_fy2025_007",
+      "contract_source": "calculation.operands+expected_sources",
+      "operands": [
+        {
+          "candidate_key": "candidate:v1:214ce6712de95bbe235ef407a4a41b42d0ba38080b13d80a418493656e357a9b",
+          "currency": null,
+          "evidence_chunk_id": "user_1_ko_fy2025_10k.pdf::page_119::layout_table_1::row_2",
+          "metric": "EMEA third-party revenue",
+          "period": "FY2025",
+          "role": "part",
+          "scale": null,
+          "value": "10833000000"
+        },
+        {
+          "candidate_key": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+          "currency": null,
+          "evidence_chunk_id": "user_1_ko_fy2025_10k.pdf::page_119::layout_table_1::row_4",
+          "metric": "Net operating revenues",
+          "period": "FY2025",
+          "role": "total",
+          "scale": null,
+          "value": "47941000000"
+        }
+      ],
+      "operation": "ratio",
+      "unit_scale_contract_available": false
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "contract_source": "calculation.operands+expected_sources",
+      "operands": [
+        {
+          "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+          "currency": null,
+          "evidence_chunk_id": "user_1_msft_fy2025_annual_report.pdf::page_80::chunk_91_2",
+          "metric": "Total revenue",
+          "period": "FY2024",
+          "role": "previous",
+          "scale": null,
+          "value": "245122000000"
+        },
+        {
+          "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+          "currency": null,
+          "evidence_chunk_id": "user_1_msft_fy2025_annual_report.pdf::page_80::chunk_91_2",
+          "metric": "Total revenue",
+          "period": "FY2025",
+          "role": "current",
+          "scale": null,
+          "value": "281724000000"
+        }
+      ],
+      "operation": "growth_rate",
+      "unit_scale_contract_available": false
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "contract_source": "calculation.operands+expected_sources",
+      "operands": [
+        {
+          "candidate_key": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
+          "currency": null,
+          "evidence_chunk_id": "user_1_msft_fy2025_annual_report.pdf::page_80::chunk_91_1",
+          "metric": "Intelligent Cloud revenue",
+          "period": "FY2025",
+          "role": "part",
+          "scale": null,
+          "value": "106265000000"
+        },
+        {
+          "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+          "currency": null,
+          "evidence_chunk_id": "user_1_msft_fy2025_annual_report.pdf::page_80::chunk_91_2",
+          "metric": "Total revenue",
+          "period": "FY2025",
+          "role": "total",
+          "scale": null,
+          "value": "281724000000"
+        }
+      ],
+      "operation": "ratio",
+      "unit_scale_contract_available": false
+    },
+    {
+      "case_id": "nvda_fy2025_006",
+      "contract_source": "calculation.operands+expected_sources",
+      "operands": [
+        {
+          "candidate_key": "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024",
+          "currency": null,
+          "evidence_chunk_id": "user_1_nvda_fy2025_annual_report.pdf::page_144::table_1::row_4",
+          "metric": "Total revenue",
+          "period": "FY2024",
+          "role": "previous",
+          "scale": null,
+          "value": "60922000000"
+        },
+        {
+          "candidate_key": "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024",
+          "currency": null,
+          "evidence_chunk_id": "user_1_nvda_fy2025_annual_report.pdf::page_144::table_1::row_4",
+          "metric": "Total revenue",
+          "period": "FY2025",
+          "role": "current",
+          "scale": null,
+          "value": "130497000000"
+        }
+      ],
+      "operation": "growth_rate",
+      "unit_scale_contract_available": false
+    },
+    {
+      "case_id": "pfe_fy2024_006",
+      "contract_source": "calculation.operands+expected_sources",
+      "operands": [
+        {
+          "candidate_key": "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827",
+          "currency": null,
+          "evidence_chunk_id": "user_1_pfe_fy2024_10k.pdf::page_60::table_1::row_7",
+          "metric": "Total revenues",
+          "period": "FY2023",
+          "role": "previous",
+          "scale": null,
+          "value": "59553000000"
+        },
+        {
+          "candidate_key": "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827",
+          "currency": null,
+          "evidence_chunk_id": "user_1_pfe_fy2024_10k.pdf::page_60::table_1::row_7",
+          "metric": "Total revenues",
+          "period": "FY2024",
+          "role": "current",
+          "scale": null,
+          "value": "63627000000"
+        }
+      ],
+      "operation": "growth_rate",
+      "unit_scale_contract_available": false
+    },
+    {
+      "case_id": "tsla_fy2025_006",
+      "contract_source": "calculation.operands+expected_sources",
+      "operands": [
+        {
+          "candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+          "currency": null,
+          "evidence_chunk_id": "user_1_tsla_fy2025_10k.pdf::page_69::layout_table_2::row_7",
+          "metric": "Total revenues",
+          "period": "FY2024",
+          "role": "previous",
+          "scale": null,
+          "value": "97690000000"
+        },
+        {
+          "candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+          "currency": null,
+          "evidence_chunk_id": "user_1_tsla_fy2025_10k.pdf::page_69::layout_table_2::row_7",
+          "metric": "Total revenues",
+          "period": "FY2025",
+          "role": "current",
+          "scale": null,
+          "value": "94827000000"
+        }
+      ],
+      "operation": "growth_rate",
+      "unit_scale_contract_available": false
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "contract_source": "calculation.operands+expected_sources",
+      "operands": [
+        {
+          "candidate_key": "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52",
+          "currency": null,
+          "evidence_chunk_id": "user_1_tsla_fy2025_10k.pdf::page_55::layout_table_1::row_5",
+          "metric": "Total automotive revenues",
+          "period": "FY2025",
+          "role": "minuend",
+          "scale": null,
+          "value": "69526000000"
+        },
+        {
+          "candidate_key": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+          "currency": null,
+          "evidence_chunk_id": "user_1_tsla_fy2025_10k.pdf::page_55::table_1",
+          "metric": "Energy generation and storage segment revenue",
+          "period": "FY2025",
+          "role": "subtrahend",
+          "scale": null,
+          "value": "12771000000"
+        }
+      ],
+      "operation": "difference",
+      "unit_scale_contract_available": false
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "contract_source": "calculation.operands+expected_sources",
+      "operands": [
+        {
+          "candidate_key": "candidate:v1:21f924b9c1b33d1e7caa949ac3dcca366d20e99a1aacf2b9d84be8e762ad6240",
+          "currency": null,
+          "evidence_chunk_id": "user_1_v_fy2025_annual_report.pdf::page_75::table_1",
+          "metric": "Net revenue",
+          "period": "FY2024",
+          "role": "previous",
+          "scale": null,
+          "value": "35926000000"
+        },
+        {
+          "candidate_key": "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83",
+          "currency": null,
+          "evidence_chunk_id": "user_1_v_fy2025_annual_report.pdf::page_75::table_1::row_4",
+          "metric": "Net revenue",
+          "period": "FY2025",
+          "role": "current",
+          "scale": null,
+          "value": "40000000000"
+        }
+      ],
+      "operation": "growth_rate",
+      "unit_scale_contract_available": false
+    }
+  ]
+}
