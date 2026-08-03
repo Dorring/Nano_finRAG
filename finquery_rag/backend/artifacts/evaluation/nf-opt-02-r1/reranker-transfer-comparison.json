@@ -1,0 +1,126 @@
+{
+  "A": {
+    "metrics": {
+      "@10": {
+        "all_gold_case_count": 12,
+        "none_case_count": 48,
+        "partial_case_count": 4,
+        "source_hit_count": 17,
+        "source_recall": 0.2125
+      },
+      "@20": {
+        "all_gold_case_count": 16,
+        "none_case_count": 43,
+        "partial_case_count": 5,
+        "source_hit_count": 23,
+        "source_recall": 0.2875
+      },
+      "@5": {
+        "all_gold_case_count": 10,
+        "none_case_count": 52,
+        "partial_case_count": 2,
+        "source_hit_count": 13,
+        "source_recall": 0.1625
+      }
+    },
+    "mrr_at_20": 0.35999212427783855,
+    "promotion_demotion": {
+      "gold_demotion_count": 0,
+      "gold_promotion_count": 23,
+      "gold_unchanged_count": 0
+    }
+  },
+  "C10": {
+    "metrics": {
+      "@10": {
+        "all_gold_case_count": 15,
+        "none_case_count": 45,
+        "partial_case_count": 4,
+        "source_hit_count": 21,
+        "source_recall": 0.2625
+      },
+      "@20": {
+        "all_gold_case_count": 22,
+        "none_case_count": 38,
+        "partial_case_count": 4,
+        "source_hit_count": 30,
+        "source_recall": 0.375
+      },
+      "@5": {
+        "all_gold_case_count": 10,
+        "none_case_count": 52,
+        "partial_case_count": 2,
+        "source_hit_count": 13,
+        "source_recall": 0.1625
+      }
+    },
+    "mrr_at_20": 0.30654569789185176,
+    "promotion_demotion": {
+      "gold_demotion_count": 1,
+      "gold_promotion_count": 28,
+      "gold_unchanged_count": 1
+    }
+  },
+  "C20": {
+    "metrics": {
+      "@10": {
+        "all_gold_case_count": 17,
+        "none_case_count": 43,
+        "partial_case_count": 4,
+        "source_hit_count": 23,
+        "source_recall": 0.2875
+      },
+      "@20": {
+        "all_gold_case_count": 23,
+        "none_case_count": 36,
+        "partial_case_count": 5,
+        "source_hit_count": 31,
+        "source_recall": 0.3875
+      },
+      "@5": {
+        "all_gold_case_count": 12,
+        "none_case_count": 50,
+        "partial_case_count": 2,
+        "source_hit_count": 15,
+        "source_recall": 0.1875
+      }
+    },
+    "mrr_at_20": 0.29616420286063144,
+    "promotion_demotion": {
+      "gold_demotion_count": 1,
+      "gold_promotion_count": 30,
+      "gold_unchanged_count": 0
+    }
+  },
+  "C40": {
+    "metrics": {
+      "@10": {
+        "all_gold_case_count": 18,
+        "none_case_count": 42,
+        "partial_case_count": 4,
+        "source_hit_count": 24,
+        "source_recall": 0.3
+      },
+      "@20": {
+        "all_gold_case_count": 24,
+        "none_case_count": 35,
+        "partial_case_count": 5,
+        "source_hit_count": 33,
+        "source_recall": 0.4125
+      },
+      "@5": {
+        "all_gold_case_count": 12,
+        "none_case_count": 50,
+        "partial_case_count": 2,
+        "source_hit_count": 15,
+        "source_recall": 0.1875
+      }
+    },
+    "mrr_at_20": 0.2859100155446371,
+    "promotion_demotion": {
+      "gold_demotion_count": 1,
+      "gold_promotion_count": 32,
+      "gold_unchanged_count": 0
+    }
+  }
+}
