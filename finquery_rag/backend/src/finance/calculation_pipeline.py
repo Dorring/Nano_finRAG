@@ -48,6 +48,9 @@ class CalculationPipeline:
     on every query that requires retrieval.
     """
 
+    def __init__(self, *, allow_derived_document_qa: bool = False):
+        self._allow_derived_document_qa = allow_derived_document_qa
+
     def try_calculate(
         self,
         question: str,
@@ -71,7 +74,11 @@ class CalculationPipeline:
               (never fall back to LLM for numeric hallucination safety).
         """
         # 1. Route the question through the conservative 3-gate router.
-        routing = route_calculation(question, intent)
+        routing = route_calculation(
+            question,
+            intent,
+            allow_derived_document_qa=self._allow_derived_document_qa,
+        )
         if routing.status is CalculationStatus.NOT_APPLICABLE:
             return NOT_APPLICABLE_RESULT
 
