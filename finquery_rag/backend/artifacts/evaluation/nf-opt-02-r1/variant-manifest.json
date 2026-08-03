@@ -1,0 +1,12 @@
+{
+  "candidate_multiplier": 4,
+  "final_selector": "current_production_top5",
+  "reranker": "heuristic",
+  "reranker_input_source": "rrf_all",
+  "variants": {
+    "A": 0,
+    "C10": 10,
+    "C20": 20,
+    "C40": 40
+  }
+}

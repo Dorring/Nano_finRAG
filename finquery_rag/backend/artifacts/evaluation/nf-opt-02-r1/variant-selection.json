@@ -1,0 +1,50 @@
+{
+  "comparisons": {
+    "A": {
+      "completeness_passed": true,
+      "decision": "protected_residual_transfer_failed",
+      "latency_gate_passed": true,
+      "next_gate": "stop_residual_dense_and_pivot_bm25_window",
+      "passed": false,
+      "production_switch_allowed": false,
+      "regression_passed": true,
+      "transfer_gain_passed": false
+    },
+    "C10": {
+      "completeness_passed": true,
+      "decision": "protected_residual_transfer_failed",
+      "latency_gate_passed": false,
+      "next_gate": "stop_residual_dense_and_pivot_bm25_window",
+      "passed": false,
+      "production_switch_allowed": false,
+      "regression_passed": true,
+      "transfer_gain_passed": false
+    },
+    "C20": {
+      "completeness_passed": true,
+      "decision": "protected_residual_transfer_failed",
+      "latency_gate_passed": false,
+      "next_gate": "stop_residual_dense_and_pivot_bm25_window",
+      "passed": false,
+      "production_switch_allowed": false,
+      "regression_passed": true,
+      "transfer_gain_passed": false
+    },
+    "C40": {
+      "completeness_passed": true,
+      "decision": "protected_residual_transfer_failed",
+      "latency_gate_passed": false,
+      "next_gate": "stop_residual_dense_and_pivot_bm25_window",
+      "passed": false,
+      "production_switch_allowed": false,
+      "regression_passed": true,
+      "transfer_gain_passed": false
+    }
+  },
+  "order": [
+    "C10",
+    "C20",
+    "C40"
+  ],
+  "selected_variant": null
+}

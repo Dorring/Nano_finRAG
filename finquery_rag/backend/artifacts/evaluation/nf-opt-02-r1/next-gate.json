@@ -1,0 +1,5 @@
+{
+  "decision": "protected_residual_transfer_failed",
+  "next_gate": "stop_residual_dense_and_pivot_bm25_window",
+  "production_switch_allowed": false
+}

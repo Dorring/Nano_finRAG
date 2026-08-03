@@ -1,0 +1,40 @@
+{
+  "order": [
+    "C10",
+    "C20",
+    "C40"
+  ],
+  "selected_variant": null,
+  "variants": {
+    "C10": {
+      "completeness_passed": true,
+      "decision": "protected_residual_dense_not_validated",
+      "gain_passed": false,
+      "latency_passed": false,
+      "next_gate": "protected_residual_candidate_ab",
+      "passed": false,
+      "production_switch_allowed": false,
+      "regression_passed": false
+    },
+    "C20": {
+      "completeness_passed": true,
+      "decision": "protected_residual_dense_not_validated",
+      "gain_passed": false,
+      "latency_passed": false,
+      "next_gate": "protected_residual_candidate_ab",
+      "passed": false,
+      "production_switch_allowed": false,
+      "regression_passed": false
+    },
+    "C40": {
+      "completeness_passed": true,
+      "decision": "protected_residual_dense_not_validated",
+      "gain_passed": false,
+      "latency_passed": false,
+      "next_gate": "protected_residual_candidate_ab",
+      "passed": false,
+      "production_switch_allowed": false,
+      "regression_passed": false
+    }
+  }
+}

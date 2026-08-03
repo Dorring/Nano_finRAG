@@ -1,0 +1,102 @@
+{
+  "A": {
+    "final5": {
+      "baseline_source_count": 13,
+      "both_source_count": 13,
+      "new_source_count": 0,
+      "regressed_source_count": 0,
+      "variant_source_count": 13
+    },
+    "final_all_gold_gain": 0,
+    "reranker10": {
+      "baseline_source_count": 17,
+      "both_source_count": 17,
+      "new_source_count": 0,
+      "regressed_source_count": 0,
+      "variant_source_count": 17
+    },
+    "reranker20": {
+      "baseline_source_count": 23,
+      "both_source_count": 23,
+      "new_source_count": 0,
+      "regressed_source_count": 0,
+      "variant_source_count": 23
+    },
+    "reranker20_all_gold_gain": 0
+  },
+  "C10": {
+    "final5": {
+      "baseline_source_count": 13,
+      "both_source_count": 13,
+      "new_source_count": 0,
+      "regressed_source_count": 0,
+      "variant_source_count": 13
+    },
+    "final_all_gold_gain": 0,
+    "reranker10": {
+      "baseline_source_count": 17,
+      "both_source_count": 17,
+      "new_source_count": 4,
+      "regressed_source_count": 0,
+      "variant_source_count": 21
+    },
+    "reranker20": {
+      "baseline_source_count": 23,
+      "both_source_count": 23,
+      "new_source_count": 7,
+      "regressed_source_count": 0,
+      "variant_source_count": 30
+    },
+    "reranker20_all_gold_gain": 6
+  },
+  "C20": {
+    "final5": {
+      "baseline_source_count": 13,
+      "both_source_count": 13,
+      "new_source_count": 2,
+      "regressed_source_count": 0,
+      "variant_source_count": 15
+    },
+    "final_all_gold_gain": 2,
+    "reranker10": {
+      "baseline_source_count": 17,
+      "both_source_count": 17,
+      "new_source_count": 6,
+      "regressed_source_count": 0,
+      "variant_source_count": 23
+    },
+    "reranker20": {
+      "baseline_source_count": 23,
+      "both_source_count": 23,
+      "new_source_count": 8,
+      "regressed_source_count": 0,
+      "variant_source_count": 31
+    },
+    "reranker20_all_gold_gain": 7
+  },
+  "C40": {
+    "final5": {
+      "baseline_source_count": 13,
+      "both_source_count": 13,
+      "new_source_count": 2,
+      "regressed_source_count": 0,
+      "variant_source_count": 15
+    },
+    "final_all_gold_gain": 2,
+    "reranker10": {
+      "baseline_source_count": 17,
+      "both_source_count": 17,
+      "new_source_count": 7,
+      "regressed_source_count": 0,
+      "variant_source_count": 24
+    },
+    "reranker20": {
+      "baseline_source_count": 23,
+      "both_source_count": 23,
+      "new_source_count": 10,
+      "regressed_source_count": 0,
+      "variant_source_count": 33
+    },
+    "reranker20_all_gold_gain": 8
+  }
+}

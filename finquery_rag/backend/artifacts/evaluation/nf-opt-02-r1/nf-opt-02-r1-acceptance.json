@@ -1,0 +1,14 @@
+{
+  "answer_generation_calls": 0,
+  "artifact_schema": "nf-opt-02-r1/v1",
+  "candidate_lineage_passed": true,
+  "decision": "protected_residual_transfer_failed",
+  "final_selector_calls": 256,
+  "legacy_27_loaded": false,
+  "model_chat_completion_requests": 0,
+  "production_behavior_changed": false,
+  "production_switch_allowed": false,
+  "reranker_calls": 512,
+  "scope_integrity_passed": true,
+  "selected_variant": null
+}

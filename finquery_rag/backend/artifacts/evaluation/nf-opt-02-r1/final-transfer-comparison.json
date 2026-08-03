@@ -1,0 +1,50 @@
+{
+  "A": {
+    "metrics": {
+      "@5": {
+        "all_gold_case_count": 10,
+        "none_case_count": 52,
+        "partial_case_count": 2,
+        "source_hit_count": 13,
+        "source_recall": 0.1625
+      }
+    },
+    "mrr_at_5": 0.5513888888888888
+  },
+  "C10": {
+    "metrics": {
+      "@5": {
+        "all_gold_case_count": 10,
+        "none_case_count": 52,
+        "partial_case_count": 2,
+        "source_hit_count": 13,
+        "source_recall": 0.1625
+      }
+    },
+    "mrr_at_5": 0.5444444444444444
+  },
+  "C20": {
+    "metrics": {
+      "@5": {
+        "all_gold_case_count": 12,
+        "none_case_count": 50,
+        "partial_case_count": 2,
+        "source_hit_count": 15,
+        "source_recall": 0.1875
+      }
+    },
+    "mrr_at_5": 0.49642857142857144
+  },
+  "C40": {
+    "metrics": {
+      "@5": {
+        "all_gold_case_count": 12,
+        "none_case_count": 50,
+        "partial_case_count": 2,
+        "source_hit_count": 15,
+        "source_recall": 0.1875
+      }
+    },
+    "mrr_at_5": 0.4869047619047619
+  }
+}
