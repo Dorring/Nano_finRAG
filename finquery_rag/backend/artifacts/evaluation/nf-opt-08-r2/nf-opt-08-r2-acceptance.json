@@ -10,13 +10,14 @@
   "decision": "structured_reingestion_parser_mapping_blocked",
   "gap_status_counts": {
     "ambiguous": 0,
-    "candidate_pending": 0,
+    "candidate_pending": 11,
     "missing_period_column": 3,
     "missing_row": 7,
-    "missing_scale": 8,
-    "numeric_parse_failed": 4,
+    "missing_scale": 0,
+    "numeric_parse_failed": 1,
     "wrong_table_candidate": 0
   },
+  "hierarchical_identity_references_valid": true,
   "input_hashes_verified": true,
   "manual_review_allowed": false,
   "model_calls": 0,
@@ -25,5 +26,7 @@
   "reviewed_at_non_null_count": 0,
   "reviewer_non_null_count": 0,
   "sorted_by_case_source": true,
-  "source_count": 22
+  "source_count": 22,
+  "status_fields_consistent": true,
+  "zero_execution_counts": true
 }

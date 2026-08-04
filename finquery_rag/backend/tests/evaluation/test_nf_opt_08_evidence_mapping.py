@@ -31,6 +31,8 @@ def _option(**changes):
         "shadow_table_id": "table",
         "shadow_row_id": "row",
         "shadow_cell_ids": ["cell"],
+        "row_index": 0,
+        "column_index": 0,
     }
     value.update(changes)
     return value
@@ -96,3 +98,87 @@ def test_wrong_metric_row_cannot_be_pending():
 
     assert status == "missing_row"
     assert proposed is None
+
+
+def test_tail_currency_symbol_is_parsed_safely():
+    from decimal import Decimal
+    from scripts.evaluation.run_nf_opt_08_r2_mapping_package import number
+
+    assert number("47,061  $") == Decimal("47061")
+    assert number("($47,061)") == Decimal("-47061")
+    assert number("47,061 estimated") is None
+    assert number("47,061 / 48,000") is None
+
+
+def test_table_header_scale_context_is_recovered():
+    from scripts.evaluation.run_nf_opt_08_r2_mapping_package import table_context
+
+    context, currency, scale, source = table_context(
+        [["December 31, (in millions, except share data)", "", "2025", "2024"]],
+        "",
+    )
+
+    assert "millions" in context.casefold()
+    assert currency is None
+    assert scale == "million"
+    assert source == "table_header"
+
+
+def test_invalid_parser_header_falls_back_to_matrix_period_header():
+    from scripts.evaluation.run_nf_opt_08_r2_mapping_package import Table, resolve_header
+
+    table = Table(
+        "pymupdf", "1", None, "doc", 1, 0, None,
+        [["Year ended", "", "2025", "2024"], ["Revenue", "$", "100", "90"]],
+        [[None] * 4, [None] * 4], ["Revenues"], None, None, None, None,
+    )
+    path, raw, period, resolution = resolve_header(table, 2)
+
+    assert path
+    assert raw == "2025"
+    assert period == "FY2025"
+    assert resolution == "matrix_multilevel"
+
+
+def test_cross_table_row_cell_reference_fails_hierarchy_validation():
+    from scripts.evaluation.run_nf_opt_08_r2_mapping_package import references_are_hierarchical
+
+    reference = {"shadow_table_id": "table-a", "shadow_row_id": "row-b", "shadow_cell_ids": ["cell-b"]}
+    assert not references_are_hierarchical(
+        [reference],
+        {"table-a": {"row-a"}, "table-b": {"row-b"}},
+        {"row-a": {"cell-a"}, "row-b": {"cell-b"}},
+    )
+
+
+def test_acceptance_fields_fail_closed():
+    from scripts.evaluation.run_nf_opt_08_r2_mapping_package import acceptance_is_valid
+
+    valid = {
+        "source_count": 22,
+        "case_source_unique": True,
+        "sorted_by_case_source": True,
+        "all_review_status_pending": True,
+        "reviewer_non_null_count": 0,
+        "reviewed_at_non_null_count": 0,
+        "automatic_verified_count": 0,
+        "input_hashes_verified": True,
+        "production_switch_allowed": False,
+        "manual_review_allowed": False,
+        "status_fields_consistent": True,
+        "hierarchical_identity_references_valid": True,
+        "zero_execution_counts": True,
+    }
+    assert acceptance_is_valid(valid)
+    for key, bad_value in (
+        ("source_count", 21),
+        ("reviewer_non_null_count", 1),
+        ("input_hashes_verified", False),
+        ("production_switch_allowed", True),
+        ("manual_review_allowed", True),
+        ("hierarchical_identity_references_valid", False),
+        ("zero_execution_counts", False),
+    ):
+        candidate = dict(valid)
+        candidate[key] = bad_value
+        assert not acceptance_is_valid(candidate)
