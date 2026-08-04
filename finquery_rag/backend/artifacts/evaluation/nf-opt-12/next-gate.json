@@ -1,0 +1,12 @@
+{
+  "decision": "audit_complete",
+  "family_collapse_candidate": {
+    "matched_sources": 15,
+    "source_count": 80
+  },
+  "production_switch_allowed": false,
+  "slot_aware_candidate": {
+    "matched_sources": 24,
+    "source_count": 80
+  }
+}
