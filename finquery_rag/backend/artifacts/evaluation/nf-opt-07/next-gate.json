@@ -1,0 +1,5 @@
+{
+  "decision": "table_fact_extraction_blocked_by_source_representation",
+  "next_gate": "shadow_structured_table_reingestion",
+  "production_switch_allowed": false
+}
