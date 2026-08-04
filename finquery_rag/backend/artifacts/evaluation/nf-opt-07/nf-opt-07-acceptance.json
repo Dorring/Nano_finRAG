@@ -1,0 +1,15 @@
+{
+  "ambiguous_same_page_join_count": 0,
+  "answer_generation_calls": 0,
+  "decision": "table_fact_extraction_blocked_by_source_representation",
+  "gate_passed": false,
+  "input_hashes_verified": true,
+  "model_chat_completion_requests": 0,
+  "parser_implemented": false,
+  "production_behavior_changed": false,
+  "production_switch_allowed": false,
+  "recoverability_gate_passed": false,
+  "recoverable_source_count": 9,
+  "source_count": 22,
+  "unsupported_source_count": 13
+}
