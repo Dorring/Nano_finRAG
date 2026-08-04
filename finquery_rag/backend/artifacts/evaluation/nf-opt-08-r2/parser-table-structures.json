@@ -1,0 +1,272 @@
+{
+  "records": [
+    {
+      "column_count": 9,
+      "document_id": "aapl_fy2025",
+      "header_excerpt": [
+        "2025",
+        "Change",
+        "2024",
+        "Change",
+        "2023"
+      ],
+      "parser_artifact_hash": "4213245cbe9f66d2a17cc5b03e19eb4b03b85c8921e5d8421802c2451a2a9fa5",
+      "parser_name": "camelot",
+      "parser_version": "camelot-current",
+      "pdf_page": 26,
+      "row_count": 9,
+      "row_identity_count": 9,
+      "shadow_table_id": "shadow:f716d5931b7fea17ce75725cc5f49c06fb673b2a69a7471e71842af915e6d07b",
+      "table_bbox": [
+        9.121,
+        594.659,
+        602.56,
+        712.547
+      ],
+      "table_index": 0
+    },
+    {
+      "column_count": 5,
+      "document_id": "jpm_fy2025",
+      "header_excerpt": [
+        "December 31, (in millions, except share data)",
+        "2025",
+        "2024"
+      ],
+      "parser_artifact_hash": "6b3a8f92b658a18728d534525dd0c2f617fa05b3781003c3afaabfa4f2dc659c",
+      "parser_name": "camelot",
+      "parser_version": "camelot-current",
+      "pdf_page": 199,
+      "row_count": 38,
+      "row_identity_count": 38,
+      "shadow_table_id": "shadow:878093e85df0091dac9bd33d2214f9182944264343e1d949626d085240a184a2",
+      "table_bbox": [
+        42.5,
+        243.498,
+        573.088,
+        758.492
+      ],
+      "table_index": 0
+    },
+    {
+      "column_count": 7,
+      "document_id": "ko_fy2025",
+      "header_excerpt": [
+        "Net Operating Revenues",
+        "$",
+        "47,941",
+        "$",
+        "47,061",
+        "$",
+        "45,754"
+      ],
+      "parser_artifact_hash": "6b88eb79bcd817f8dbf5e16ca2d3f0cf59a83e0ec52db0cbde58f404e90cd20f",
+      "parser_name": "pymupdf",
+      "parser_version": "1.26.6",
+      "pdf_page": 63,
+      "row_count": 20,
+      "row_identity_count": 20,
+      "shadow_table_id": "shadow:39bf0214a1139b754d4ee605db31165421c2f70d2ca69e3a4c1963d1c6861a7d",
+      "table_bbox": [
+        23.55,
+        125.129,
+        587.293,
+        340.983
+      ],
+      "table_index": 0
+    },
+    {
+      "column_count": 19,
+      "document_id": "ko_fy2025",
+      "header_excerpt": [
+        "Year Ended December 31, 2025"
+      ],
+      "parser_artifact_hash": "efa9e27329aa89b50cfd0d861a3064fb426d9595919453d56798e5988ff02915",
+      "parser_name": "pymupdf",
+      "parser_version": "1.26.6",
+      "pdf_page": 119,
+      "row_count": 18,
+      "row_identity_count": 18,
+      "shadow_table_id": "shadow:f692fbbad65420dab5a7901295d0bfc62c34653773b423743cad61dc2421b2b8",
+      "table_bbox": [
+        23.55,
+        95.165,
+        587.398,
+        259.963
+      ],
+      "table_index": 0
+    },
+    {
+      "column_count": 5,
+      "document_id": "msft_fy2025",
+      "header_excerpt": [
+        "Year Ended June\u00a030,",
+        "2025",
+        "2024",
+        "2023"
+      ],
+      "parser_artifact_hash": "47e7fadcb5a0f6dffab47f2f09230dfc9fe717dc4f7c582fb30b8dac5a433b69",
+      "parser_name": "camelot",
+      "parser_version": "camelot-current",
+      "pdf_page": 80,
+      "row_count": 25,
+      "row_identity_count": 25,
+      "shadow_table_id": "shadow:d8e2b90b58235759fe214cac0c21afb38500b92a504435dea86fed8c4aa53540",
+      "table_bbox": [
+        25.8,
+        224.59,
+        585.4,
+        673.772
+      ],
+      "table_index": 0
+    },
+    {
+      "column_count": 7,
+      "document_id": "nvda_fy2025",
+      "header_excerpt": [
+        "Jan 26, 2025",
+        "Jan 28, 2024",
+        "Jan 29, 2023"
+      ],
+      "parser_artifact_hash": "62cf1b37b6f6bac5885ae1fb9ef728b45a5f817db97d18c842226306cee26201",
+      "parser_name": "camelot",
+      "parser_version": "camelot-current",
+      "pdf_page": 144,
+      "row_count": 25,
+      "row_identity_count": 25,
+      "shadow_table_id": "shadow:8f7015b0282665c9840b673cad198f2bb2278d8bff9c22e02c452f772266ccbc",
+      "table_bbox": [
+        46.63,
+        328.13,
+        569.586,
+        722.88
+      ],
+      "table_index": 0
+    },
+    {
+      "column_count": 7,
+      "document_id": "pfe_fy2024",
+      "header_excerpt": [
+        "(MILLIONS, EXCEPT PER SHARE DATA)",
+        "2024",
+        "2023",
+        "2022"
+      ],
+      "parser_artifact_hash": "366092b2791869480436fe53f7485de9a03df10315ccbcfb5c8098b0e072db50",
+      "parser_name": "camelot",
+      "parser_version": "camelot-current",
+      "pdf_page": 60,
+      "row_count": 33,
+      "row_identity_count": 33,
+      "shadow_table_id": "shadow:6b1e4aec2d6b4f1ca9b1e7894a2e4949db9d347ad9798234445b04cf2fec8534",
+      "table_bbox": [
+        9.121,
+        314.724,
+        579.528,
+        723.069
+      ],
+      "table_index": 0
+    },
+    {
+      "column_count": 14,
+      "document_id": "tsla_fy2025",
+      "header_excerpt": [
+        "(Dollars in millions)",
+        "2025",
+        "2024",
+        "2023",
+        "$",
+        "%",
+        "$",
+        "%"
+      ],
+      "parser_artifact_hash": "d2b03ba20e3ceec675063101041f3815ebf0622e66a036aff6186e603c8558da",
+      "parser_name": "camelot",
+      "parser_version": "camelot-current",
+      "pdf_page": 55,
+      "row_count": 12,
+      "row_identity_count": 12,
+      "shadow_table_id": "shadow:50ec201c5ce49421da48833b21068795dc3e210d51d4ddd1b3b70a94f2c9cb04",
+      "table_bbox": [
+        46.8,
+        427.353,
+        577.081,
+        712.766
+      ],
+      "table_index": 0
+    },
+    {
+      "column_count": 27,
+      "document_id": "tsla_fy2025",
+      "header_excerpt": [
+        "Automotive sales",
+        "$",
+        "65,821",
+        "$",
+        "72,480",
+        "$",
+        "78,509",
+        "$"
+      ],
+      "parser_artifact_hash": "8ce36b174447bee8982c89e6fb745e1cbd7d0ba08e825817eb0c84221fd687ab",
+      "parser_name": "pymupdf",
+      "parser_version": "1.26.6",
+      "pdf_page": 55,
+      "row_count": 8,
+      "row_identity_count": 8,
+      "shadow_table_id": "shadow:b845164b545201d9e89f4be99dd31e35d8e9c13b57a2861cf0fb243d5d2f5fb2",
+      "table_bbox": [
+        56.7,
+        168.801,
+        566.956,
+        422.526
+      ],
+      "table_index": 0
+    },
+    {
+      "column_count": 12,
+      "document_id": "tsla_fy2025",
+      "header_excerpt": [
+        "Revenues"
+      ],
+      "parser_artifact_hash": "6dbe8c7108284b045cd128d1912b7c42f58f1e51a612e44a0c9536ffbe515fb7",
+      "parser_name": "pymupdf",
+      "parser_version": "1.26.6",
+      "pdf_page": 69,
+      "row_count": 8,
+      "row_identity_count": 8,
+      "shadow_table_id": "shadow:ff22028b0d419ececc9bd014a86fb137ae2bdad578b11d124873f5c69cd04dab",
+      "table_bbox": [
+        56.696,
+        583.276,
+        566.954,
+        796.251
+      ],
+      "table_index": 1
+    },
+    {
+      "column_count": 6,
+      "document_id": "v_fy2025",
+      "header_excerpt": [
+        "2025",
+        "2024",
+        "2023"
+      ],
+      "parser_artifact_hash": "7156c79faceff87e92a020df0eacf23b9b8e4fd2581f1a3eaf2848e9c6a7dfca",
+      "parser_name": "camelot",
+      "parser_version": "camelot-current",
+      "pdf_page": 75,
+      "row_count": 38,
+      "row_identity_count": 38,
+      "shadow_table_id": "shadow:d6b0c2138902b7ad9fbc53f19fab9184c029c7219fe3dde6da6b0fe845b318a0",
+      "table_bbox": [
+        89.44,
+        194.805,
+        580.128,
+        710.597
+      ],
+      "table_index": 0
+    }
+  ],
+  "table_count": 11
+}

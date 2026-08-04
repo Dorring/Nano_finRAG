@@ -1,0 +1,58 @@
+{
+  "records": [
+    {
+      "candidate_count": 8,
+      "case_id": "aapl_fy2025_006",
+      "source_index": 0,
+      "status": "ambiguous"
+    },
+    {
+      "candidate_count": 8,
+      "case_id": "aapl_fy2025_006",
+      "source_index": 1,
+      "status": "ambiguous"
+    },
+    {
+      "candidate_count": 16,
+      "case_id": "msft_fy2025_006",
+      "source_index": 0,
+      "status": "ambiguous"
+    },
+    {
+      "candidate_count": 16,
+      "case_id": "msft_fy2025_006",
+      "source_index": 1,
+      "status": "ambiguous"
+    },
+    {
+      "candidate_count": 0,
+      "case_id": "msft_fy2025_007",
+      "source_index": 0,
+      "status": "missing_row"
+    },
+    {
+      "candidate_count": 16,
+      "case_id": "msft_fy2025_007",
+      "source_index": 1,
+      "status": "ambiguous"
+    },
+    {
+      "candidate_count": 9,
+      "case_id": "nvda_fy2025_006",
+      "source_index": 0,
+      "status": "ambiguous"
+    },
+    {
+      "candidate_count": 9,
+      "case_id": "nvda_fy2025_006",
+      "source_index": 1,
+      "status": "ambiguous"
+    },
+    {
+      "candidate_count": 39,
+      "case_id": "tsla_fy2025_007",
+      "source_index": 0,
+      "status": "ambiguous"
+    }
+  ]
+}

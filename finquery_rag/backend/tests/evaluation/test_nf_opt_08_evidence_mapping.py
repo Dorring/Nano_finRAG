@@ -13,3 +13,8 @@ def test_mapping_requires_metric_period_value_match():
 
 def test_parser_top1_is_not_auto_verified():
     assert not mapping_is_manually_verified(_mapping(reviewer=None, reviewed_at=None, verified=False))
+
+
+def test_shadow_identity_does_not_depend_on_case_id():
+    from src.evaluation.nf_opt_08 import stable_shadow_id
+    assert stable_shadow_id("doc", 1, "parser", [0, 0, 1, 1], [["x"]]) == stable_shadow_id("doc", 1, "parser", [0, 0, 1, 1], [["x"]])
