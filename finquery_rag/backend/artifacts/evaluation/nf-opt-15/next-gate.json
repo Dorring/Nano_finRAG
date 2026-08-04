@@ -1,0 +1,5 @@
+{
+  "decision": "structured_retrieval_view_field_coverage_blocked",
+  "next_gate": "stop_structured_retrieval_view_before_bm25f",
+  "production_switch_allowed": false
+}

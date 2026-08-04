@@ -1,0 +1,27 @@
+{
+  "answer_generation_calls": 0,
+  "answerable_case_count": 64,
+  "artifact_schema": "nf-opt-15/gate-a/acceptance/v1",
+  "baseline_master_merge_commit": "d52c1ed02c387c551a521f5f7c5ab61180d21e05",
+  "baseline_tree_sha": "e6ccdd5832a651cf53422a7273287702ec7532ca",
+  "decision": "structured_retrieval_view_field_coverage_blocked",
+  "dense_behavior_modified": false,
+  "final_top_k_modified": false,
+  "gold_source_count": 80,
+  "gold_used_only_for_posthoc_coverage": true,
+  "input_hashes": {
+    "corpus_sha256": "0969f1a73ded67f71c427cf4bfe41fbff475353ee90eb56fc3a575353228dc4c",
+    "labels_sha256": "22092a7a00a3d22f0a2838d81e983fe94bca2abe14ec6954ffeb289261794df6",
+    "questions_sha256": "fd3d9df48c642bbace9b114ca43461dae1717cab94d7fe6d12ffb95bf3ffe4f0"
+  },
+  "model_calls": 0,
+  "no_answer_case_count": 8,
+  "original_candidate_identity_modified": false,
+  "production_code_wired": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "question_count": 72,
+  "reranker_behavior_modified": false,
+  "rrf_behavior_modified": false,
+  "view_construction_gold_fields_read": false
+}
