@@ -35,6 +35,7 @@ class Table:
     scale_text: str | None
     currency: str | None
     scale: str | None
+    cell_bboxes: list[list[tuple[float, float, float, float] | None]]
     table_id: str = ""
 
 
@@ -106,7 +107,14 @@ def parse_tables(document_id: str, pdf_path: Path, pages: list[int]) -> list[Tab
         index = by_page.get(page, 0)
         by_page[page] = index + 1
         bbox = tuple(round(float(x), 3) for x in getattr(table, "_bbox", ()) or ()) or None
-        out.append(Table("camelot", document_id, page, index, bbox, matrix, headers_from_matrix(matrix), None, None, None))
+        cell_bboxes = [
+            [
+                (round(float(cell.x1), 3), round(float(cell.y1), 3), round(float(cell.x2), 3), round(float(cell.y2), 3))
+                for cell in row
+            ]
+            for row in table.cells
+        ]
+        out.append(Table("camelot", document_id, page, index, bbox, matrix, headers_from_matrix(matrix), None, None, None, cell_bboxes))
     with pymupdf.open(pdf_path) as pdf:
         for page_no in sorted(set(pages)):
             page = pdf[page_no - 1]
@@ -115,7 +123,17 @@ def parse_tables(document_id: str, pdf_path: Path, pages: list[int]) -> list[Tab
                 matrix = [[str(cell or "").strip() for cell in row] for row in table.extract()]
                 headers = [str(name or "").strip() for name in table.header.names] if table.header else []
                 bbox = tuple(round(float(x), 3) for x in table.bbox)
-                out.append(Table("pymupdf", document_id, page_no, index, bbox, matrix, headers, raw_scale, currency, scale))
+                width = max((len(row) for row in matrix), default=0)
+                flat = list(table.cells)
+                cell_bboxes = [
+                    [
+                        tuple(round(float(x), 3) for x in flat[row_index * width + column_index])
+                        if row_index * width + column_index < len(flat) and flat[row_index * width + column_index] else None
+                        for column_index in range(len(row))
+                    ]
+                    for row_index, row in enumerate(matrix)
+                ]
+                out.append(Table("pymupdf", document_id, page_no, index, bbox, matrix, headers, raw_scale, currency, scale, cell_bboxes))
     for table in out:
         matrix = [[norm(cell) for cell in row] for row in table.matrix]
         table.table_id = stable_shadow_id(table.document_id, table.page, table.parser, table.bbox, matrix)
@@ -219,7 +237,32 @@ def main() -> int:
             "table_index": table.index, "table_bbox": table.bbox, "row_count": len(table.matrix),
             "column_count": max((len(row) for row in table.matrix), default=0),
             "header_excerpt": [x for x in (table.headers or headers_from_matrix(table.matrix)) if x][:8],
-            "row_identity_count": len(table.matrix),
+            "rows": [
+                {
+                    "shadow_row_id": stable_shadow_id(table.table_id, row_index, [norm(cell) for cell in row]),
+                    "row_index": row_index,
+                    "cells": [
+                        {
+                            "shadow_cell_id": stable_shadow_id(
+                                stable_shadow_id(table.table_id, row_index, [norm(value) for value in row]),
+                                column_index,
+                                norm(cell),
+                            ),
+                            "row_index": row_index,
+                            "column_index": column_index,
+                            "normalized_text_hash": hashlib.sha256(norm(cell).encode()).hexdigest(),
+                            "bbox": (
+                                table.cell_bboxes[row_index][column_index]
+                                if row_index < len(table.cell_bboxes)
+                                and column_index < len(table.cell_bboxes[row_index])
+                                else None
+                            ),
+                        }
+                        for column_index, cell in enumerate(row)
+                    ],
+                }
+                for row_index, row in enumerate(table.matrix)
+            ],
             "parser_artifact_hash": hashlib.sha256(json.dumps([[norm(c) for c in r] for r in table.matrix], sort_keys=True).encode()).hexdigest(),
         })
     write("parser-table-structures.json", {"table_count": len(structures), "records": sorted(structures, key=lambda x: (x["document_id"], x["pdf_page"], x["parser_name"], x["table_index"]))})
