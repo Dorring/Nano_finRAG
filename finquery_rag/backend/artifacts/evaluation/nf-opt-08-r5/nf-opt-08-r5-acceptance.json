@@ -1,0 +1,18 @@
+{
+  "answer_generation_calls": 0,
+  "binder_calls": 0,
+  "calculator_calls": 0,
+  "complete_pair_case_count": 4,
+  "complete_pair_source_count": 8,
+  "decision": "parser_route_closed_mapping_frozen",
+  "input_hashes_verified": true,
+  "model_calls": 0,
+  "ocr_experiment_allowed": false,
+  "parser_optimization_closed": true,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "reviewed_source_count": 10,
+  "single_side_case_count": 2,
+  "total_source_count": 22,
+  "unresolved_source_count": 12
+}
