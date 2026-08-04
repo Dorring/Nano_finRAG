@@ -1,0 +1,21 @@
+{
+  "artifact_schema": "nf-opt-12/oracle/v1",
+  "baseline_strict_final_source_recall_at_5": {
+    "matched_sources": 13,
+    "source_count": 80
+  },
+  "oracle_family_collapse_plus_slot_aware_strict_recall_at_5": {
+    "matched_sources": 24,
+    "source_count": 80
+  },
+  "oracle_family_collapse_proxy_recall_at_5": {
+    "matched_sources": 15,
+    "source_count": 80
+  },
+  "oracle_only": true,
+  "oracle_slot_aware_strict_recall_at_5": {
+    "matched_sources": 24,
+    "source_count": 80
+  },
+  "production_ranking_modified": false
+}

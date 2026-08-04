@@ -1,0 +1,13 @@
+{
+  "answer_generation_calls": 0,
+  "artifact_schema": "nf-opt-12/acceptance/v1",
+  "case_count": 64,
+  "decision": "evidence_family_slot_audit_recorded",
+  "gold_source_count": 80,
+  "input_hashes_verified": true,
+  "model_calls": 0,
+  "oracle_used_for_production": false,
+  "production_behavior_changed": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false
+}

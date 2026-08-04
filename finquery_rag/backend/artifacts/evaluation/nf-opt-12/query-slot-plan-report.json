@@ -1,0 +1,1565 @@
+{
+  "artifact_schema": "nf-opt-12/query-slot/v1",
+  "case_count": 64,
+  "cases": [
+    {
+      "case_id": "aapl_fy2025_001",
+      "document_scope": [
+        "aapl_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "aapl_fy2025_002",
+      "document_scope": [
+        "aapl_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "aapl_fy2025_003",
+      "document_scope": [
+        "aapl_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "aapl_fy2025_004",
+      "document_scope": [
+        "aapl_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "aapl_fy2025_005",
+      "document_scope": [
+        "aapl_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "aapl_fy2025_006",
+      "document_scope": [
+        "aapl_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": "growth_rate",
+      "required_evidence_count": 2,
+      "requires_calculation": true,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "operand",
+          "slot_id": "query-slot-1"
+        },
+        {
+          "period": "FY2025",
+          "role": "operand",
+          "slot_id": "query-slot-2"
+        }
+      ]
+    },
+    {
+      "case_id": "aapl_fy2025_007",
+      "document_scope": [
+        "aapl_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "aapl_fy2025_009",
+      "document_scope": [
+        "aapl_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        },
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-2"
+        }
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_001",
+      "document_scope": [
+        "jpm_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_002",
+      "document_scope": [
+        "jpm_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_003",
+      "document_scope": [
+        "jpm_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_004",
+      "document_scope": [
+        "jpm_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_005",
+      "document_scope": [
+        "jpm_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "document_scope": [
+        "jpm_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": "growth_rate",
+      "required_evidence_count": 2,
+      "requires_calculation": true,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "operand",
+          "slot_id": "query-slot-1"
+        },
+        {
+          "period": "FY2025",
+          "role": "operand",
+          "slot_id": "query-slot-2"
+        }
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_007",
+      "document_scope": [
+        "jpm_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_009",
+      "document_scope": [
+        "jpm_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        },
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-2"
+        }
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_001",
+      "document_scope": [
+        "ko_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_002",
+      "document_scope": [
+        "ko_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_003",
+      "document_scope": [
+        "ko_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_004",
+      "document_scope": [
+        "ko_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_005",
+      "document_scope": [
+        "ko_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "document_scope": [
+        "ko_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": "growth_rate",
+      "required_evidence_count": 2,
+      "requires_calculation": true,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "operand",
+          "slot_id": "query-slot-1"
+        },
+        {
+          "period": "FY2025",
+          "role": "operand",
+          "slot_id": "query-slot-2"
+        }
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_007",
+      "document_scope": [
+        "ko_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": "percentage_share",
+      "required_evidence_count": 2,
+      "requires_calculation": true,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "operand",
+          "slot_id": "query-slot-1"
+        },
+        {
+          "period": null,
+          "role": "operand",
+          "slot_id": "query-slot-2"
+        }
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_009",
+      "document_scope": [
+        "ko_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_001",
+      "document_scope": [
+        "msft_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_002",
+      "document_scope": [
+        "msft_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_003",
+      "document_scope": [
+        "msft_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_004",
+      "document_scope": [
+        "msft_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_005",
+      "document_scope": [
+        "msft_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "document_scope": [
+        "msft_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": "growth_rate",
+      "required_evidence_count": 2,
+      "requires_calculation": true,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "operand",
+          "slot_id": "query-slot-1"
+        },
+        {
+          "period": "FY2025",
+          "role": "operand",
+          "slot_id": "query-slot-2"
+        }
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "document_scope": [
+        "msft_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": "percentage_share",
+      "required_evidence_count": 2,
+      "requires_calculation": true,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "operand",
+          "slot_id": "query-slot-1"
+        },
+        {
+          "period": null,
+          "role": "operand",
+          "slot_id": "query-slot-2"
+        }
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_009",
+      "document_scope": [
+        "msft_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        },
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-2"
+        }
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_001",
+      "document_scope": [
+        "nvda_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_002",
+      "document_scope": [
+        "nvda_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_003",
+      "document_scope": [
+        "nvda_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_004",
+      "document_scope": [
+        "nvda_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_005",
+      "document_scope": [
+        "nvda_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_006",
+      "document_scope": [
+        "nvda_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": "growth_rate",
+      "required_evidence_count": 2,
+      "requires_calculation": true,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "operand",
+          "slot_id": "query-slot-1"
+        },
+        {
+          "period": "FY2025",
+          "role": "operand",
+          "slot_id": "query-slot-2"
+        }
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_007",
+      "document_scope": [
+        "nvda_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_009",
+      "document_scope": [
+        "nvda_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        },
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-2"
+        }
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_001",
+      "document_scope": [
+        "pfe_fy2024"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_002",
+      "document_scope": [
+        "pfe_fy2024"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_003",
+      "document_scope": [
+        "pfe_fy2024"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_004",
+      "document_scope": [
+        "pfe_fy2024"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_005",
+      "document_scope": [
+        "pfe_fy2024"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_006",
+      "document_scope": [
+        "pfe_fy2024"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": "growth_rate",
+      "required_evidence_count": 2,
+      "requires_calculation": true,
+      "slots": [
+        {
+          "period": "FY2023",
+          "role": "operand",
+          "slot_id": "query-slot-1"
+        },
+        {
+          "period": "FY2024",
+          "role": "operand",
+          "slot_id": "query-slot-2"
+        }
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_007",
+      "document_scope": [
+        "pfe_fy2024"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_009",
+      "document_scope": [
+        "pfe_fy2024"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2023",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        },
+        {
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "query-slot-2"
+        }
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_001",
+      "document_scope": [
+        "tsla_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_002",
+      "document_scope": [
+        "tsla_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_003",
+      "document_scope": [
+        "tsla_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_004",
+      "document_scope": [
+        "tsla_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_005",
+      "document_scope": [
+        "tsla_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_006",
+      "document_scope": [
+        "tsla_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": "growth_rate",
+      "required_evidence_count": 2,
+      "requires_calculation": true,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "operand",
+          "slot_id": "query-slot-1"
+        },
+        {
+          "period": "FY2025",
+          "role": "operand",
+          "slot_id": "query-slot-2"
+        }
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "document_scope": [
+        "tsla_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": "difference",
+      "required_evidence_count": 2,
+      "requires_calculation": true,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "operand",
+          "slot_id": "query-slot-1"
+        },
+        {
+          "period": null,
+          "role": "operand",
+          "slot_id": "query-slot-2"
+        }
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_009",
+      "document_scope": [
+        "tsla_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "v_fy2025_001",
+      "document_scope": [
+        "v_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "v_fy2025_002",
+      "document_scope": [
+        "v_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "v_fy2025_003",
+      "document_scope": [
+        "v_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "v_fy2025_004",
+      "document_scope": [
+        "v_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "v_fy2025_005",
+      "document_scope": [
+        "v_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "document_scope": [
+        "v_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": "growth_rate",
+      "required_evidence_count": 2,
+      "requires_calculation": true,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "operand",
+          "slot_id": "query-slot-1"
+        },
+        {
+          "period": "FY2025",
+          "role": "operand",
+          "slot_id": "query-slot-2"
+        }
+      ]
+    },
+    {
+      "case_id": "v_fy2025_007",
+      "document_scope": [
+        "v_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        }
+      ]
+    },
+    {
+      "case_id": "v_fy2025_009",
+      "document_scope": [
+        "v_fy2025"
+      ],
+      "expected_fields_read": false,
+      "input_fields": [
+        "case_id",
+        "question",
+        "document_scope",
+        "requires_calculation"
+      ],
+      "operation": null,
+      "required_evidence_count": 1,
+      "requires_calculation": false,
+      "slots": [
+        {
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "query-slot-1"
+        },
+        {
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "query-slot-2"
+        }
+      ]
+    }
+  ],
+  "expected_fields_read": false,
+  "query_only": true
+}
