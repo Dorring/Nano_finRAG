@@ -1,0 +1,19 @@
+{
+  "fresh_parse_executed": false,
+  "parser_inputs_verified_safe": true,
+  "status": "unavailable",
+  "variant_a": {
+    "available": false,
+    "name": "retained_structured_artifact",
+    "reason": "no_retained_structured_artifacts"
+  },
+  "variant_b": {
+    "available": false,
+    "backend_mode": "pipeline",
+    "name": "fresh_shadow_structured_parse",
+    "ocr_enabled": false,
+    "parser_name": "mineru",
+    "parser_version": "unavailable",
+    "reason": "cli_not_installed_or_not_configured"
+  }
+}

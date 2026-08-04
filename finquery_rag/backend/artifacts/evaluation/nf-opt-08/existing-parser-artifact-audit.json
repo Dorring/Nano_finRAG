@@ -1,0 +1,78 @@
+{
+  "artifact_schema": "nf-opt-08/existing-parser-artifact-audit/v1",
+  "documents": [
+    {
+      "artifact_types": [],
+      "document_id": "aapl_fy2025",
+      "has_cell_geometry": false,
+      "has_page_layout": false,
+      "has_table_html": false,
+      "has_table_images": false
+    },
+    {
+      "artifact_types": [],
+      "document_id": "jpm_fy2025",
+      "has_cell_geometry": false,
+      "has_page_layout": false,
+      "has_table_html": false,
+      "has_table_images": false
+    },
+    {
+      "artifact_types": [],
+      "document_id": "ko_fy2025",
+      "has_cell_geometry": false,
+      "has_page_layout": false,
+      "has_table_html": false,
+      "has_table_images": false
+    },
+    {
+      "artifact_types": [],
+      "document_id": "msft_fy2025",
+      "has_cell_geometry": false,
+      "has_page_layout": false,
+      "has_table_html": false,
+      "has_table_images": false
+    },
+    {
+      "artifact_types": [],
+      "document_id": "nvda_fy2025",
+      "has_cell_geometry": false,
+      "has_page_layout": false,
+      "has_table_html": false,
+      "has_table_images": false
+    },
+    {
+      "artifact_types": [],
+      "document_id": "pfe_fy2024",
+      "has_cell_geometry": false,
+      "has_page_layout": false,
+      "has_table_html": false,
+      "has_table_images": false
+    },
+    {
+      "artifact_types": [],
+      "document_id": "tsla_fy2025",
+      "has_cell_geometry": false,
+      "has_page_layout": false,
+      "has_table_html": false,
+      "has_table_images": false
+    },
+    {
+      "artifact_types": [],
+      "document_id": "v_fy2025",
+      "has_cell_geometry": false,
+      "has_page_layout": false,
+      "has_table_html": false,
+      "has_table_images": false
+    }
+  ],
+  "known_structured_locations_present": {
+    "intermediate": false,
+    "mineru": false,
+    "parser_artifacts": false,
+    "structured": false
+  },
+  "markdown_or_plaintext_counted_as_structured": false,
+  "retained_structured_artifact_count": 0,
+  "status": "no_retained_structured_artifacts"
+}
