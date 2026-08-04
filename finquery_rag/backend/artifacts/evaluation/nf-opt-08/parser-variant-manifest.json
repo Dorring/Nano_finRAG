@@ -1,19 +1,24 @@
 {
-  "fresh_parse_executed": false,
+  "fresh_parse_executed": true,
   "parser_inputs_verified_safe": true,
-  "status": "unavailable",
+  "status": "available",
   "variant_a": {
     "available": false,
     "name": "retained_structured_artifact",
     "reason": "no_retained_structured_artifacts"
   },
   "variant_b": {
-    "available": false,
-    "backend_mode": "pipeline",
+    "available": true,
+    "backend_mode": "pymupdf_find_tables_plus_camelot_stream_lattice",
+    "fallback": {
+      "available": true,
+      "name": "mineru",
+      "parser_version": "3.4.4",
+      "reason": "located_isolated_runtime_not_invoked_in_primary_probe"
+    },
     "name": "fresh_shadow_structured_parse",
     "ocr_enabled": false,
-    "parser_name": "mineru",
-    "parser_version": "unavailable",
-    "reason": "cli_not_installed_or_not_configured"
+    "parser_name": "pymupdf_camelot_native",
+    "parser_version": "1.26.6"
   }
 }

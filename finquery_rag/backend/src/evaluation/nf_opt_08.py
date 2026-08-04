@@ -143,6 +143,11 @@ def parser_capability_gate(records: Iterable[dict[str, object]]) -> dict[str, ob
     return {**metrics, "gate_passed": passed}
 
 
+def combined_table_count(pymupdf_count: int, camelot_count: int) -> int:
+    """Native parser capability is the union of its two fixed detectors."""
+    return max(0, pymupdf_count) + max(0, camelot_count)
+
+
 def require_safe_parser_inputs(inputs: dict[str, object]) -> None:
     """Parser inputs may contain a PDF locator and page, never answer metadata."""
     forbidden = {

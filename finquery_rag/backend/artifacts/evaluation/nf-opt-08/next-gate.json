@@ -1,6 +1,7 @@
 {
-  "decision": "structured_reingestion_parser_blocked",
-  "next_gate": "stop_and_review_parser_backend",
+  "decision": "structured_reingestion_parser_mapping_blocked",
+  "next_gate": "manual_shadow_evidence_mapping_review",
   "production_switch_allowed": false,
-  "reason": "gate_a_blocked_no_fixed_structured_parser_or_retained_artifact"
+  "reason": "gate_a_blocked_pending_manual_old_to_new_evidence_mapping",
+  "supersedes": "default_conda_parser_unavailable_conclusion"
 }

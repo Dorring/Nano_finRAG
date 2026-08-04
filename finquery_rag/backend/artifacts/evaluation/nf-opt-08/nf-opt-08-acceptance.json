@@ -1,14 +1,15 @@
 {
   "answer_generation_calls": 0,
   "control_set_hash": "3cf02bba3b5eda155b5204522b7018693d2a74847552227c0c303636946db7a5",
-  "decision": "structured_reingestion_parser_blocked",
+  "decision": "structured_reingestion_parser_mapping_blocked",
   "diagnostic_integrity_passed": true,
+  "fresh_shadow_parse_executed": true,
   "model_chat_completion_requests": 0,
   "parser_capability_gate_passed": false,
   "production_behavior_changed": false,
   "production_queries_executed": 0,
   "production_switch_allowed": false,
-  "reason": "gate_a_blocked_no_fixed_structured_parser_or_retained_artifact",
+  "reason": "gate_a_blocked_pending_manual_old_to_new_evidence_mapping",
   "shadow_page_set_hash": "4a811033400e451d44df8d5c64f26c47eb2eb1f868e077cae81c4acdc549529c",
   "source_count": 22
 }
