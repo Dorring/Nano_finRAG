@@ -1,0 +1,7 @@
+{
+  "actual_semantics": "gold_promoted_reranker_pool_ceiling_at_5",
+  "query_slots_used_for_candidate_selection": false,
+  "reported_metric": "oracle_slot_aware_strict_recall_at_5",
+  "reported_value": "24/80",
+  "sufficient_to_gate_production_selector": false
+}

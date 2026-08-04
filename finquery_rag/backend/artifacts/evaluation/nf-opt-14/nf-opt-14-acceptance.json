@@ -1,0 +1,24 @@
+{
+  "answer_generation_calls": 0,
+  "artifact_schema": "nf-opt-14/gate-a/acceptance/v1",
+  "candidate_compatibility_gold_fields_read": false,
+  "candidate_store_access_mode": "sqlite_read_only",
+  "case_count": 64,
+  "final_top_k": 5,
+  "gold_used_only_for_posthoc_scoring": true,
+  "input_hashes": {
+    "case_results_sha256": "afd2b91a050e178bfd65ed37820ec48f5b314d1b1bdd9f3e6c3d08e96f255d48",
+    "labels_sha256": "22092a7a00a3d22f0a2838d81e983fe94bca2abe14ec6954ffeb289261794df6",
+    "questions_sha256": "fd3d9df48c642bbace9b114ca43461dae1717cab94d7fe6d12ffb95bf3ffe4f0"
+  },
+  "model_calls": 0,
+  "no_answer_case_count": 8,
+  "no_answer_final_behavior_unchanged": true,
+  "production_behavior_changed": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "reranker_order_modified": false,
+  "slot_plan_expected_fields_read": false,
+  "source_count": 80,
+  "strict_hit_regression_count": 0
+}
