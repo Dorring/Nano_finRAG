@@ -26,6 +26,9 @@ def _option(**changes):
         "normalized_period": "FY2025",
         "parsed_numeric_value": "100",
         "parsed_scale": "million",
+        "scale_context_source": "table_header",
+        "cell_geometry_valid": True,
+        "header_path": ["FY2025"],
         "normalized_base_value": "100000000",
         "strict": True,
         "shadow_table_id": "table",
@@ -130,7 +133,7 @@ def test_invalid_parser_header_falls_back_to_matrix_period_header():
     table = Table(
         "pymupdf", "1", None, "doc", 1, 0, None,
         [["Year ended", "", "2025", "2024"], ["Revenue", "$", "100", "90"]],
-        [[None] * 4, [None] * 4], ["Revenues"], None, None, None, None,
+        [[None] * 4, [None] * 4], ["Revenues"], None, None, None, None, None, None,
     )
     path, raw, period, resolution = resolve_header(table, 2)
 
@@ -182,3 +185,42 @@ def test_acceptance_fields_fail_closed():
         candidate = dict(valid)
         candidate[key] = bad_value
         assert not acceptance_is_valid(candidate)
+
+
+def test_target_excerpt_contains_a_late_target_column():
+    from scripts.evaluation.run_nf_opt_08_r2_mapping_package import target_excerpt
+
+    excerpt = target_excerpt(["Metric", "1", "2", "3", "4", "5", "6", "7", "47,941"], "Metric", 8)
+    assert excerpt["target_cell_excerpt"]["raw_text"] == "47,941"
+    assert any(cell["column_index"] == 8 for cell in excerpt["neighbor_cells"])
+
+
+def test_single_period_many_value_columns_is_not_unique_candidate():
+    from scripts.evaluation.run_nf_opt_08_r2_mapping_package import classify
+
+    options = [
+        _option(
+            column_index=index,
+            parsed_scale="million",
+            scale_context_source="table_header",
+            cell_geometry_valid=True,
+            header_path=["FY2025"],
+            strict=True,
+        )
+        for index in (2, 4, 6)
+    ]
+    status, _, proposed, _ = classify(_contract(), options)
+    assert status == "missing_period_column"
+    assert proposed is None
+
+
+def test_cell_geometry_rejects_bbox_outside_table():
+    from scripts.evaluation.run_nf_opt_08_r2_mapping_package import Table, cell_geometry_valid
+
+    table = Table(
+        "pymupdf", "1", None, "doc", 1, 0, (0, 0, 100, 100),
+        [["Revenue", "100"]], [[(200, 0, 210, 10), (10, 0, 20, 10)]],
+        [], None, None, None, None, None, None,
+    )
+    assert not cell_geometry_valid(table, 0, 0)
+    assert cell_geometry_valid(table, 0, 1)

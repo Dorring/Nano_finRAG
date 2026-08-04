@@ -36,6 +36,8 @@ class Table:
     currency: str | None
     scale: str | None
     scale_context_source: str | None
+    scale_context_bbox: tuple[float, float, float, float] | None
+    scale_context_distance: float | None
     shadow_table_id: str = ""
 
 
@@ -156,7 +158,7 @@ def camelot_tables(document_id: str, pdf: Path, pdf_page: int) -> list[Table]:
         bboxes = [[(round(float(cell.x1), 3), round(float(cell.y1), 3), round(float(cell.x2), 3), round(float(cell.y2), 3)) for cell in row] for row in item.cells]
         bbox = tuple(round(float(x), 3) for x in getattr(item, "_bbox", ()) or ()) or None
         raw_scale, currency, scale, source = table_context(matrix, page_text)
-        tables.append(Table("camelot", version, flavor, document_id, pdf_page, index, bbox, matrix, bboxes, matrix_headers(matrix), raw_scale, currency, scale, source))
+        tables.append(Table("camelot", version, flavor, document_id, pdf_page, index, bbox, matrix, bboxes, matrix_headers(matrix), raw_scale, currency, scale, source, None, None))
     return tables
 
 
@@ -169,11 +171,16 @@ def pymupdf_tables(document_id: str, pdf: Path, pdf_page: int) -> list[Table]:
         tables = []
         for index, item in enumerate(page.find_tables().tables):
             matrix = [[str(cell or "").strip() for cell in row] for row in item.extract()]
-            width = max((len(row) for row in matrix), default=0)
-            flat = list(item.cells)
-            bboxes = [[tuple(round(float(x), 3) for x in flat[row_index * width + column_index]) if row_index * width + column_index < len(flat) and flat[row_index * width + column_index] else None for column_index in range(len(row))] for row_index, row in enumerate(matrix)]
+            bboxes = [
+                [
+                    tuple(round(float(value), 3) for value in cell) if cell else None
+                    for cell in row.cells[:len(matrix[row_index])]
+                ]
+                for row_index, row in enumerate(item.rows)
+            ]
             headers = [str(value or "").strip() for value in item.header.names] if item.header else []
-            tables.append(Table("pymupdf", pymupdf.__version__, None, document_id, pdf_page, index, tuple(round(float(x), 3) for x in item.bbox), matrix, bboxes, headers, raw_scale, currency, scale, "page_text" if raw_scale else None))
+            table_bbox = tuple(round(float(x), 3) for x in item.bbox)
+            tables.append(Table("pymupdf", pymupdf.__version__, None, document_id, pdf_page, index, table_bbox, matrix, bboxes, headers, raw_scale, currency, scale, "page_text_unlocated" if raw_scale else None, None, None))
     return tables
 
 
@@ -197,6 +204,29 @@ def source_contract(label: dict[str, Any], source_index: int) -> dict[str, Any]:
     return {"case_id": label["case_id"], "source_index": source_index, "legacy_candidate_key": source["candidate_key"], "legacy_evidence_id": source["evidence_id"], "document_id": source["document_id"], "pdf_page": source["candidate_pdf_page"], "expected_metric": operand.get("metric") or source.get("row_label"), "expected_period": operand.get("period") or source.get("period"), "expected_value": operand.get("value"), "expected_currency": source.get("currency"), "expected_normalized_scale": source.get("scale")}
 
 
+def cell_geometry_valid(table: Table, row_index: int, column_index: int) -> bool:
+    if table.bbox is None or row_index >= len(table.bboxes) or column_index >= len(table.bboxes[row_index]):
+        return False
+    bbox = table.bboxes[row_index][column_index]
+    if bbox is None:
+        return False
+    tx0, ty0, tx1, ty1 = table.bbox
+    x0, y0, x1, y1 = bbox
+    return tx0 - 1 <= x0 <= x1 <= tx1 + 1 and ty0 - 1 <= y0 <= y1 <= ty1 + 1
+
+
+def target_excerpt(row: list[str], row_label: str, column_index: int) -> dict[str, Any]:
+    start, end = max(0, column_index - 2), min(len(row), column_index + 3)
+    return {
+        "row_label_excerpt": [row_label],
+        "target_cell_excerpt": {"column_index": column_index, "raw_text": row[column_index]},
+        "neighbor_cells": [
+            {"column_index": index, "raw_text": row[index]}
+            for index in range(start, end)
+        ],
+    }
+
+
 def option(contract: dict[str, Any], table: Table, row_index: int, column_index: int) -> dict[str, Any]:
     row = table.matrix[row_index]
     raw_label = label_for(row)
@@ -215,7 +245,10 @@ def option(contract: dict[str, Any], table: Table, row_index: int, column_index:
     metric_score = 1.0 if metric_match else len(expected_tokens & metric_tokens) / max(1, len(expected_tokens))
     period_match = normalized_period == contract["expected_period"]
     value_match = normalized_value == expected_value if normalized_value is not None and expected_value is not None else False
-    strict = all((metric_match, period_match, parsed is not None, table.scale is not None, value_match))
+    geometry_valid = cell_geometry_valid(table, row_index, column_index)
+    scale_is_local = table.scale_context_source == "table_header"
+    strict = all((metric_match, period_match, parsed is not None, scale_is_local, value_match, geometry_valid))
+    excerpt = target_excerpt(row, raw_label, column_index)
     return {
         "document_id": table.document_id, "pdf_page": table.pdf_page,
         "shadow_table_id": table.shadow_table_id, "shadow_row_id": row_id,
@@ -229,10 +262,13 @@ def option(contract: dict[str, Any], table: Table, row_index: int, column_index:
         "raw_currency_context": table.raw_scale_context, "parsed_currency": table.currency,
         "raw_scale_context": table.raw_scale_context, "parsed_scale": table.scale,
         "scale_context_source": table.scale_context_source,
+        "scale_context_bbox": table.scale_context_bbox,
+        "scale_context_distance": table.scale_context_distance,
+        "cell_geometry_valid": geometry_valid,
+        **excerpt,
         "normalized_base_value": str(normalized_value) if normalized_value is not None else None,
         "metric_score": metric_score, "period_score": int(period_match), "value_score": int(value_match),
         "header_excerpt": [value for value in (table.headers or matrix_headers(table.matrix)) if value][:8],
-        "row_excerpt": [value for value in row if value][:8],
         "scale_excerpt": table.raw_scale_context, "strict": strict,
     }
 
@@ -264,9 +300,12 @@ def classify(contract: dict[str, Any], options: list[dict[str, Any]]) -> tuple[s
     numeric = [item for item in with_period if item["parsed_numeric_value"] is not None]
     if not numeric:
         return "numeric_parse_failed", ["matching_metric_period_cell_is_not_numeric"], None, with_period[:5]
-    with_scale = [item for item in numeric if item["parsed_scale"]]
+    same_period_columns = {item["column_index"] for item in numeric}
+    if len(same_period_columns) > 1 and all(not item["header_path"][1:] for item in numeric):
+        return "missing_period_column", ["period_not_unique_without_column_header_path"], None, numeric[:5]
+    with_scale = [item for item in numeric if item["parsed_scale"] and item["scale_context_source"] == "table_header"]
     if not with_scale:
-        return "missing_scale", ["no_explicit_scale_context"], None, numeric[:5]
+        return "missing_scale", ["no_local_explicit_scale_context"], None, numeric[:5]
     with_value = [item for item in with_scale if item["normalized_base_value"] == str(contract["expected_value"])]
     if not with_value:
         return "wrong_table_candidate", ["no_metric_period_scale_candidate_has_expected_value"], None, with_scale[:5]
@@ -274,6 +313,7 @@ def classify(contract: dict[str, Any], options: list[dict[str, Any]]) -> tuple[s
     unique = {(item["shadow_table_id"], item["shadow_row_id"], tuple(item["shadow_cell_ids"])) for item in strict}
     if len(unique) != 1:
         return "ambiguous", ["multiple_strict_candidates"], None, strict[:8]
+    strict[0]["column_path_unique"] = True
     return "candidate_pending", ["unique_metric_period_value_scale_candidate"], strict[0], []
 
 
@@ -282,7 +322,7 @@ def table_record(table: Table) -> dict[str, Any]:
     for row_index, row in enumerate(table.matrix):
         row_id = stable_shadow_id(table.shadow_table_id, row_index, [normalized(cell) for cell in row])
         rows.append({"shadow_row_id": row_id, "row_index": row_index, "cells": [{"shadow_cell_id": stable_shadow_id(row_id, column_index, normalized(cell)), "row_index": row_index, "column_index": column_index, "raw_text": cell, "normalized_text": normalized(cell), "normalized_text_hash": text_hash(cell), "bbox": table.bboxes[row_index][column_index] if row_index < len(table.bboxes) and column_index < len(table.bboxes[row_index]) else None} for column_index, cell in enumerate(row)]})
-    return {"parser_name": table.parser_name, "parser_version": table.parser_version, "parser_flavor": table.parser_flavor, "document_id": table.document_id, "pdf_page": table.pdf_page, "shadow_table_id": table.shadow_table_id, "table_index": table.table_index, "table_bbox": table.bbox, "headers": table.headers, "raw_scale_context": table.raw_scale_context, "parsed_currency": table.currency, "parsed_scale": table.scale, "scale_context_source": table.scale_context_source, "row_count": len(table.matrix), "column_count": max((len(row) for row in table.matrix), default=0), "rows": rows, "parser_artifact_hash": hashlib.sha256(json.dumps([[normalized(cell) for cell in row] for row in table.matrix], sort_keys=True).encode()).hexdigest()}
+    return {"parser_name": table.parser_name, "parser_version": table.parser_version, "parser_flavor": table.parser_flavor, "document_id": table.document_id, "pdf_page": table.pdf_page, "shadow_table_id": table.shadow_table_id, "table_index": table.table_index, "table_bbox": table.bbox, "headers": table.headers, "raw_scale_context": table.raw_scale_context, "parsed_currency": table.currency, "parsed_scale": table.scale, "scale_context_source": table.scale_context_source, "scale_context_bbox": table.scale_context_bbox, "scale_context_distance": table.scale_context_distance, "row_count": len(table.matrix), "column_count": max((len(row) for row in table.matrix), default=0), "rows": rows, "parser_artifact_hash": hashlib.sha256(json.dumps([[normalized(cell) for cell in row] for row in table.matrix], sort_keys=True).encode()).hexdigest()}
 
 
 
@@ -364,6 +404,12 @@ def main() -> int:
         (
             record["candidate_status"] == "candidate_pending"
             and record["proposed_candidate"] is not None
+            and record["proposed_candidate"].get("strict") is True
+            and record["proposed_candidate"].get("cell_geometry_valid") is True
+            and record["proposed_candidate"].get("column_path_unique") is True
+            and record["proposed_candidate"].get("scale_context_source") == "table_header"
+            and record["proposed_candidate"]["target_cell_excerpt"]["raw_text"] == record["proposed_candidate"]["raw_cell_text"]
+            and any(cell["column_index"] == record["proposed_candidate"]["column_index"] and cell["raw_text"] == record["proposed_candidate"]["raw_cell_text"] for cell in record["proposed_candidate"]["neighbor_cells"])
             and not record["competing_candidates"]
         )
         or (
