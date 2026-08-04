@@ -1,0 +1,13 @@
+{
+  "all_human_fields_unmodified": true,
+  "authorized_by_user": true,
+  "decision": "independent_ai_review_recorded",
+  "manual_review_allowed": false,
+  "production_switch_allowed": false,
+  "review_mode": "authorized_ai_assisted_independent_review",
+  "reviewed_at": "2026-08-04T06:10:03Z",
+  "reviewed_candidate_count": 10,
+  "reviewer_id": "openai_gpt-5.6-thinking",
+  "reviewer_type": "ai_reviewer",
+  "source_commit": "9b088c9"
+}
