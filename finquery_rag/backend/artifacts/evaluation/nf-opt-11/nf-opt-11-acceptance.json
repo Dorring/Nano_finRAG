@@ -1,0 +1,12 @@
+{
+  "answer_generation_calls": 0,
+  "artifact_replay_match": true,
+  "binder_strict_pass_count": 4,
+  "calculator_executed_count": 4,
+  "case_count": 4,
+  "decision": "shadow_replay_evidence_closed",
+  "expected_fields_used_for_execution": false,
+  "model_calls": 0,
+  "production_index_writes": 0,
+  "production_switch_allowed": false
+}

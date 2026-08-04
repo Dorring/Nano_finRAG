@@ -1,0 +1,18 @@
+{
+  "automatic_verified_count": 0,
+  "candidate_ranking_can_auto_verify": false,
+  "candidate_ranking_used_expected_metric": true,
+  "candidate_ranking_used_expected_period": true,
+  "candidate_ranking_used_expected_value": true,
+  "parser_extraction_used_gold_fields": false,
+  "source_count": 22,
+  "status_counts": {
+    "ambiguous": 0,
+    "candidate_pending": 10,
+    "missing_period_column": 4,
+    "missing_row": 7,
+    "missing_scale": 0,
+    "numeric_parse_failed": 1,
+    "wrong_table_candidate": 0
+  }
+}

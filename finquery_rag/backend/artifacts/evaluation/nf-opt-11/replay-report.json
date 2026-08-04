@@ -1,0 +1,73 @@
+{
+  "artifact_replay_match": true,
+  "records": [
+    {
+      "binding_status": "bound",
+      "calculator_status": "executed",
+      "case_id": "aapl_fy2025_006",
+      "operand_roles": [
+        "previous",
+        "current"
+      ],
+      "operand_values": [
+        "391035000000",
+        "416161000000"
+      ],
+      "operation": "growth_rate",
+      "result_percent": "6.4300",
+      "result_ratio": "0.0643",
+      "strict_binding_pass": true
+    },
+    {
+      "binding_status": "bound",
+      "calculator_status": "executed",
+      "case_id": "jpm_fy2025_006",
+      "operand_roles": [
+        "previous",
+        "current"
+      ],
+      "operand_values": [
+        "4002814000000",
+        "4424900000000"
+      ],
+      "operation": "growth_rate",
+      "result_percent": "10.5400",
+      "result_ratio": "0.1054",
+      "strict_binding_pass": true
+    },
+    {
+      "binding_status": "bound",
+      "calculator_status": "executed",
+      "case_id": "ko_fy2025_006",
+      "operand_roles": [
+        "previous",
+        "current"
+      ],
+      "operand_values": [
+        "47061000000",
+        "47941000000"
+      ],
+      "operation": "growth_rate",
+      "result_percent": "1.8700",
+      "result_ratio": "0.0187",
+      "strict_binding_pass": true
+    },
+    {
+      "binding_status": "bound",
+      "calculator_status": "executed",
+      "case_id": "pfe_fy2024_006",
+      "operand_roles": [
+        "previous",
+        "current"
+      ],
+      "operand_values": [
+        "59553000000",
+        "63627000000"
+      ],
+      "operation": "growth_rate",
+      "result_percent": "6.8400",
+      "result_ratio": "0.0684",
+      "strict_binding_pass": true
+    }
+  ]
+}

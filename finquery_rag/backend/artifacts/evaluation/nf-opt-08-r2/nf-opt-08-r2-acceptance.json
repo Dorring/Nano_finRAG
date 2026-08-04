@@ -1,0 +1,32 @@
+{
+  "all_review_status_pending": true,
+  "answer_generation_calls": 0,
+  "automatic_verified_count": 0,
+  "binder_calls": 0,
+  "calculator_calls": 0,
+  "case_source_unique": true,
+  "control_set_hash": "3cf02bba3b5eda155b5204522b7018693d2a74847552227c0c303636946db7a5",
+  "cross_artifact_identity_references_valid": true,
+  "decision": "structured_reingestion_parser_mapping_blocked",
+  "gap_status_counts": {
+    "ambiguous": 0,
+    "candidate_pending": 10,
+    "missing_period_column": 4,
+    "missing_row": 7,
+    "missing_scale": 0,
+    "numeric_parse_failed": 1,
+    "wrong_table_candidate": 0
+  },
+  "hierarchical_identity_references_valid": true,
+  "input_hashes_verified": true,
+  "manual_review_allowed": false,
+  "model_calls": 0,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "reviewed_at_non_null_count": 0,
+  "reviewer_non_null_count": 0,
+  "sorted_by_case_source": true,
+  "source_count": 22,
+  "status_fields_consistent": true,
+  "zero_execution_counts": true
+}

@@ -1,0 +1,4900 @@
+{
+  "record_count": 22,
+  "records": [
+    {
+      "candidate_count": 24,
+      "candidate_status": "candidate_pending",
+      "case_id": "aapl_fy2025_006",
+      "classification_reasons": [
+        "unique_metric_period_value_scale_candidate"
+      ],
+      "competing_candidates": [],
+      "document_id": "aapl_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Total net sales",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2024",
+      "expected_value": "391035000000",
+      "legacy_candidate_key": "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563",
+      "legacy_evidence_id": "user_1_aapl_fy2025_10k.pdf::page_26::layout_table_1::row_4",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 26,
+      "period_match": null,
+      "proposed_candidate": {
+        "cell_geometry_valid": true,
+        "column_index": 5,
+        "column_path_unique": true,
+        "document_id": "aapl_fy2025",
+        "header_excerpt": [
+          "2025",
+          "Change",
+          "2024",
+          "Change",
+          "2023"
+        ],
+        "header_path": [
+          "2024"
+        ],
+        "header_resolution": "parser_header",
+        "metric_score": 1.0,
+        "neighbor_cells": [
+          {
+            "column_index": 3,
+            "raw_text": "6 %"
+          },
+          {
+            "column_index": 4,
+            "raw_text": "$"
+          },
+          {
+            "column_index": 5,
+            "raw_text": "391,035"
+          },
+          {
+            "column_index": 6,
+            "raw_text": "2 %"
+          },
+          {
+            "column_index": 7,
+            "raw_text": "$"
+          }
+        ],
+        "normalized_base_value": "391035000000",
+        "normalized_metric": "total net sales",
+        "normalized_period": "FY2024",
+        "parsed_currency": "USD",
+        "parsed_numeric_value": "391035",
+        "parsed_scale": "million",
+        "parser_flavor": "stream",
+        "parser_name": "camelot",
+        "parser_version": "1.0.9",
+        "pdf_page": 26,
+        "period_score": 1,
+        "raw_cell_text": "391,035",
+        "raw_column_header": "2024",
+        "raw_currency_context": "dollars in millions",
+        "raw_row_label": "Total net sales $",
+        "raw_scale_context": "dollars in millions",
+        "row_index": 8,
+        "row_label_excerpt": [
+          "Total net sales $"
+        ],
+        "scale_context_bbox": null,
+        "scale_context_distance": null,
+        "scale_context_source": "table_header",
+        "scale_excerpt": "dollars in millions",
+        "shadow_cell_ids": [
+          "shadow:bc46756af5962c863789ceb1467cb78b30e1bfe781cefdb0279400dfe7101f7f"
+        ],
+        "shadow_row_id": "shadow:1b2fe86ab89e98f39738f14bd6daab3275ca62134b9571d1dd290ebf465e6df6",
+        "shadow_table_id": "shadow:e3a65260e41bd4c824639cc79d63693c95aaec228556cbb0f8bd4d61ac4b63aa",
+        "strict": true,
+        "table_index": 0,
+        "target_cell_excerpt": {
+          "column_index": 5,
+          "raw_text": "391,035"
+        },
+        "value_score": 1
+      },
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 0,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 24,
+      "candidate_status": "candidate_pending",
+      "case_id": "aapl_fy2025_006",
+      "classification_reasons": [
+        "unique_metric_period_value_scale_candidate"
+      ],
+      "competing_candidates": [],
+      "document_id": "aapl_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Total net sales",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2025",
+      "expected_value": "416161000000",
+      "legacy_candidate_key": "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563",
+      "legacy_evidence_id": "user_1_aapl_fy2025_10k.pdf::page_26::layout_table_1::row_4",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 26,
+      "period_match": null,
+      "proposed_candidate": {
+        "cell_geometry_valid": true,
+        "column_index": 2,
+        "column_path_unique": true,
+        "document_id": "aapl_fy2025",
+        "header_excerpt": [
+          "2025",
+          "Change",
+          "2024",
+          "Change",
+          "2023"
+        ],
+        "header_path": [
+          "2025"
+        ],
+        "header_resolution": "parser_header",
+        "metric_score": 1.0,
+        "neighbor_cells": [
+          {
+            "column_index": 0,
+            "raw_text": "Total net sales"
+          },
+          {
+            "column_index": 1,
+            "raw_text": "$"
+          },
+          {
+            "column_index": 2,
+            "raw_text": "416,161"
+          },
+          {
+            "column_index": 3,
+            "raw_text": "6 %"
+          },
+          {
+            "column_index": 4,
+            "raw_text": "$"
+          }
+        ],
+        "normalized_base_value": "416161000000",
+        "normalized_metric": "total net sales",
+        "normalized_period": "FY2025",
+        "parsed_currency": "USD",
+        "parsed_numeric_value": "416161",
+        "parsed_scale": "million",
+        "parser_flavor": "stream",
+        "parser_name": "camelot",
+        "parser_version": "1.0.9",
+        "pdf_page": 26,
+        "period_score": 1,
+        "raw_cell_text": "416,161",
+        "raw_column_header": "2025",
+        "raw_currency_context": "dollars in millions",
+        "raw_row_label": "Total net sales $",
+        "raw_scale_context": "dollars in millions",
+        "row_index": 8,
+        "row_label_excerpt": [
+          "Total net sales $"
+        ],
+        "scale_context_bbox": null,
+        "scale_context_distance": null,
+        "scale_context_source": "table_header",
+        "scale_excerpt": "dollars in millions",
+        "shadow_cell_ids": [
+          "shadow:bd8768e92b9ef1e1bcc32919badf4e716321e26a1516cb3aab25e21119b95b38"
+        ],
+        "shadow_row_id": "shadow:1b2fe86ab89e98f39738f14bd6daab3275ca62134b9571d1dd290ebf465e6df6",
+        "shadow_table_id": "shadow:e3a65260e41bd4c824639cc79d63693c95aaec228556cbb0f8bd4d61ac4b63aa",
+        "strict": true,
+        "table_index": 0,
+        "target_cell_excerpt": {
+          "column_index": 2,
+          "raw_text": "416,161"
+        },
+        "value_score": 1
+      },
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 1,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 45,
+      "candidate_status": "candidate_pending",
+      "case_id": "jpm_fy2025_006",
+      "classification_reasons": [
+        "unique_metric_period_value_scale_candidate"
+      ],
+      "competing_candidates": [],
+      "document_id": "jpm_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Total assets",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2024",
+      "expected_value": "4002814000000",
+      "legacy_candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+      "legacy_evidence_id": "user_1_jpm_fy2025_annual_report.pdf::page_199::table_1::row_19",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 199,
+      "period_match": null,
+      "proposed_candidate": {
+        "cell_geometry_valid": true,
+        "column_index": 4,
+        "column_path_unique": true,
+        "document_id": "jpm_fy2025",
+        "header_excerpt": [
+          "December 31, (in millions, except share data)",
+          "2025",
+          "2024"
+        ],
+        "header_path": [
+          "2024"
+        ],
+        "header_resolution": "parser_header",
+        "metric_score": 1.0,
+        "neighbor_cells": [
+          {
+            "column_index": 2,
+            "raw_text": "$  4,424,900"
+          },
+          {
+            "column_index": 3,
+            "raw_text": "$"
+          },
+          {
+            "column_index": 4,
+            "raw_text": "4,002,814"
+          }
+        ],
+        "normalized_base_value": "4002814000000",
+        "normalized_metric": "total assets a",
+        "normalized_period": "FY2024",
+        "parsed_currency": null,
+        "parsed_numeric_value": "4002814",
+        "parsed_scale": "million",
+        "parser_flavor": "stream",
+        "parser_name": "camelot",
+        "parser_version": "1.0.9",
+        "pdf_page": 199,
+        "period_score": 1,
+        "raw_cell_text": "4,002,814",
+        "raw_column_header": "2024",
+        "raw_currency_context": "in millions",
+        "raw_row_label": "Total assets(a)",
+        "raw_scale_context": "in millions",
+        "row_index": 18,
+        "row_label_excerpt": [
+          "Total assets(a)"
+        ],
+        "scale_context_bbox": null,
+        "scale_context_distance": null,
+        "scale_context_source": "table_header",
+        "scale_excerpt": "in millions",
+        "shadow_cell_ids": [
+          "shadow:40a266ada71a5e8a71b08f8504de233aedcd344d5ab4f15b0c510d222267ee37"
+        ],
+        "shadow_row_id": "shadow:d27088c38b4f52c42be93b97d0b49c9cfd2ff4bb2edd3a9d80fc111eb16bc57b",
+        "shadow_table_id": "shadow:be36b775f1bb25576c11f4bd4cc2462654e94d53d9c21373d6f0e6683ba7ab6b",
+        "strict": true,
+        "table_index": 0,
+        "target_cell_excerpt": {
+          "column_index": 4,
+          "raw_text": "4,002,814"
+        },
+        "value_score": 1
+      },
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 0,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 45,
+      "candidate_status": "candidate_pending",
+      "case_id": "jpm_fy2025_006",
+      "classification_reasons": [
+        "unique_metric_period_value_scale_candidate"
+      ],
+      "competing_candidates": [],
+      "document_id": "jpm_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Total assets",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2025",
+      "expected_value": "4424900000000",
+      "legacy_candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+      "legacy_evidence_id": "user_1_jpm_fy2025_annual_report.pdf::page_199::table_1::row_19",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 199,
+      "period_match": null,
+      "proposed_candidate": {
+        "cell_geometry_valid": true,
+        "column_index": 2,
+        "column_path_unique": true,
+        "document_id": "jpm_fy2025",
+        "header_excerpt": [
+          "December 31, (in millions, except share data)",
+          "2025",
+          "2024"
+        ],
+        "header_path": [
+          "2025"
+        ],
+        "header_resolution": "parser_header",
+        "metric_score": 1.0,
+        "neighbor_cells": [
+          {
+            "column_index": 0,
+            "raw_text": "Total assets(a)"
+          },
+          {
+            "column_index": 1,
+            "raw_text": ""
+          },
+          {
+            "column_index": 2,
+            "raw_text": "$  4,424,900"
+          },
+          {
+            "column_index": 3,
+            "raw_text": "$"
+          },
+          {
+            "column_index": 4,
+            "raw_text": "4,002,814"
+          }
+        ],
+        "normalized_base_value": "4424900000000",
+        "normalized_metric": "total assets a",
+        "normalized_period": "FY2025",
+        "parsed_currency": null,
+        "parsed_numeric_value": "4424900",
+        "parsed_scale": "million",
+        "parser_flavor": "stream",
+        "parser_name": "camelot",
+        "parser_version": "1.0.9",
+        "pdf_page": 199,
+        "period_score": 1,
+        "raw_cell_text": "$  4,424,900",
+        "raw_column_header": "2025",
+        "raw_currency_context": "in millions",
+        "raw_row_label": "Total assets(a)",
+        "raw_scale_context": "in millions",
+        "row_index": 18,
+        "row_label_excerpt": [
+          "Total assets(a)"
+        ],
+        "scale_context_bbox": null,
+        "scale_context_distance": null,
+        "scale_context_source": "table_header",
+        "scale_excerpt": "in millions",
+        "shadow_cell_ids": [
+          "shadow:369a511985b40c16ad4fd3bc7dd11a5fc21a70af49eb1df0d15fdb744e1d8b31"
+        ],
+        "shadow_row_id": "shadow:d27088c38b4f52c42be93b97d0b49c9cfd2ff4bb2edd3a9d80fc111eb16bc57b",
+        "shadow_table_id": "shadow:be36b775f1bb25576c11f4bd4cc2462654e94d53d9c21373d6f0e6683ba7ab6b",
+        "strict": true,
+        "table_index": 0,
+        "target_cell_excerpt": {
+          "column_index": 2,
+          "raw_text": "$  4,424,900"
+        },
+        "value_score": 1
+      },
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 1,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 13,
+      "candidate_status": "candidate_pending",
+      "case_id": "ko_fy2025_006",
+      "classification_reasons": [
+        "unique_metric_period_value_scale_candidate"
+      ],
+      "competing_candidates": [],
+      "document_id": "ko_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Net operating revenues",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2024",
+      "expected_value": "47061000000",
+      "legacy_candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "legacy_evidence_id": "user_1_ko_fy2025_10k.pdf::page_63::layout_table_1::row_0",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 63,
+      "period_match": null,
+      "proposed_candidate": {
+        "cell_geometry_valid": true,
+        "column_index": 4,
+        "column_path_unique": true,
+        "document_id": "ko_fy2025",
+        "header_excerpt": [
+          "Year Ended December 31,",
+          "2025",
+          "2024",
+          "2023"
+        ],
+        "header_path": [
+          "2024"
+        ],
+        "header_resolution": "parser_header",
+        "metric_score": 1.0,
+        "neighbor_cells": [
+          {
+            "column_index": 2,
+            "raw_text": "$"
+          },
+          {
+            "column_index": 3,
+            "raw_text": "47,941  $"
+          },
+          {
+            "column_index": 4,
+            "raw_text": "47,061  $"
+          },
+          {
+            "column_index": 5,
+            "raw_text": "45,754"
+          }
+        ],
+        "normalized_base_value": "47061000000",
+        "normalized_metric": "net operating revenues",
+        "normalized_period": "FY2024",
+        "parsed_currency": null,
+        "parsed_numeric_value": "47061",
+        "parsed_scale": "million",
+        "parser_flavor": "stream",
+        "parser_name": "camelot",
+        "parser_version": "1.0.9",
+        "pdf_page": 63,
+        "period_score": 1,
+        "raw_cell_text": "47,061  $",
+        "raw_column_header": "2024",
+        "raw_currency_context": "In millions",
+        "raw_row_label": "Net Operating Revenues $",
+        "raw_scale_context": "In millions",
+        "row_index": 2,
+        "row_label_excerpt": [
+          "Net Operating Revenues $"
+        ],
+        "scale_context_bbox": null,
+        "scale_context_distance": null,
+        "scale_context_source": "table_header",
+        "scale_excerpt": "In millions",
+        "shadow_cell_ids": [
+          "shadow:7b52ac9d515207d80956bff8a2ab8c870602183ae9cfad2f8d9b47ba1994836b"
+        ],
+        "shadow_row_id": "shadow:606edba1ed56bc5418e2ea3fa41420f2b67e90309d8c56be0d3bdceb741750a1",
+        "shadow_table_id": "shadow:b81332d4a9f3675bae51828d92f09f0c4ebda3ebce74d73981a22562fbf4f53b",
+        "strict": true,
+        "table_index": 0,
+        "target_cell_excerpt": {
+          "column_index": 4,
+          "raw_text": "47,061  $"
+        },
+        "value_score": 1
+      },
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 0,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 13,
+      "candidate_status": "candidate_pending",
+      "case_id": "ko_fy2025_006",
+      "classification_reasons": [
+        "unique_metric_period_value_scale_candidate"
+      ],
+      "competing_candidates": [],
+      "document_id": "ko_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Net operating revenues",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2025",
+      "expected_value": "47941000000",
+      "legacy_candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "legacy_evidence_id": "user_1_ko_fy2025_10k.pdf::page_63::layout_table_1::row_0",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 63,
+      "period_match": null,
+      "proposed_candidate": {
+        "cell_geometry_valid": true,
+        "column_index": 3,
+        "column_path_unique": true,
+        "document_id": "ko_fy2025",
+        "header_excerpt": [
+          "Year Ended December 31,",
+          "2025",
+          "2024",
+          "2023"
+        ],
+        "header_path": [
+          "2025"
+        ],
+        "header_resolution": "parser_header",
+        "metric_score": 1.0,
+        "neighbor_cells": [
+          {
+            "column_index": 1,
+            "raw_text": ""
+          },
+          {
+            "column_index": 2,
+            "raw_text": "$"
+          },
+          {
+            "column_index": 3,
+            "raw_text": "47,941  $"
+          },
+          {
+            "column_index": 4,
+            "raw_text": "47,061  $"
+          },
+          {
+            "column_index": 5,
+            "raw_text": "45,754"
+          }
+        ],
+        "normalized_base_value": "47941000000",
+        "normalized_metric": "net operating revenues",
+        "normalized_period": "FY2025",
+        "parsed_currency": null,
+        "parsed_numeric_value": "47941",
+        "parsed_scale": "million",
+        "parser_flavor": "stream",
+        "parser_name": "camelot",
+        "parser_version": "1.0.9",
+        "pdf_page": 63,
+        "period_score": 1,
+        "raw_cell_text": "47,941  $",
+        "raw_column_header": "2025",
+        "raw_currency_context": "In millions",
+        "raw_row_label": "Net Operating Revenues $",
+        "raw_scale_context": "In millions",
+        "row_index": 2,
+        "row_label_excerpt": [
+          "Net Operating Revenues $"
+        ],
+        "scale_context_bbox": null,
+        "scale_context_distance": null,
+        "scale_context_source": "table_header",
+        "scale_excerpt": "In millions",
+        "shadow_cell_ids": [
+          "shadow:690c598c2933cf3bf1e4adde98806bbff13f21d296e01a55907de889759297a8"
+        ],
+        "shadow_row_id": "shadow:606edba1ed56bc5418e2ea3fa41420f2b67e90309d8c56be0d3bdceb741750a1",
+        "shadow_table_id": "shadow:b81332d4a9f3675bae51828d92f09f0c4ebda3ebce74d73981a22562fbf4f53b",
+        "strict": true,
+        "table_index": 0,
+        "target_cell_excerpt": {
+          "column_index": 3,
+          "raw_text": "47,941  $"
+        },
+        "value_score": 1
+      },
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 1,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 73,
+      "candidate_status": "missing_row",
+      "case_id": "ko_fy2025_007",
+      "classification_reasons": [
+        "no_exact_metric_row"
+      ],
+      "competing_candidates": [
+        {
+          "cell_geometry_valid": true,
+          "column_index": 0,
+          "document_id": "ko_fy2025",
+          "header_excerpt": [],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Third party\nIntersegment"
+            },
+            {
+              "column_index": 1,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 2,
+              "raw_text": "10,833  $\n680"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "third party intersegment 10 833 680 6 331 3 19 579 7 5 328 310 5 726 9 47 797 1 009 144 1 009 47 941",
+          "normalized_period": null,
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 119,
+          "period_score": 0,
+          "raw_cell_text": "Third party\nIntersegment",
+          "raw_column_header": null,
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Third party\nIntersegment $ 10,833  $\n680 6,331  $\n3 19,579  $\n7 5,328  $\n310 5,726  $\n9 47,797  $\n1,009 144  $\n\u2014 \u2014  $\n(1,009) 47,941 \n\u2014",
+          "raw_scale_context": "in millions",
+          "row_index": 3,
+          "row_label_excerpt": [
+            "Third party\nIntersegment $ 10,833  $\n680 6,331  $\n3 19,579  $\n7 5,328  $\n310 5,726  $\n9 47,797  $\n1,009 144  $\n\u2014 \u2014  $\n(1,009) 47,941 \n\u2014"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "table_header",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:36cfc710b547d0dc7888b23021bd4d4bb15a6e96a6e9bc1dea287e77b017156c"
+          ],
+          "shadow_row_id": "shadow:d30ab0a303818301ead39eb687e165e5802cc481f49a6aae8d4b8d57c7d17838",
+          "shadow_table_id": "shadow:3872ed5229ff2689d3ff7ad2323a41e2798224e76df3d813088724d9d97616a3",
+          "strict": false,
+          "table_index": 1,
+          "target_cell_excerpt": {
+            "column_index": 0,
+            "raw_text": "Third party\nIntersegment"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 1,
+          "document_id": "ko_fy2025",
+          "header_excerpt": [],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Third party\nIntersegment"
+            },
+            {
+              "column_index": 1,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 2,
+              "raw_text": "10,833  $\n680"
+            },
+            {
+              "column_index": 3,
+              "raw_text": "6,331  $\n3"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "third party intersegment 10 833 680 6 331 3 19 579 7 5 328 310 5 726 9 47 797 1 009 144 1 009 47 941",
+          "normalized_period": null,
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 119,
+          "period_score": 0,
+          "raw_cell_text": "$",
+          "raw_column_header": null,
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Third party\nIntersegment $ 10,833  $\n680 6,331  $\n3 19,579  $\n7 5,328  $\n310 5,726  $\n9 47,797  $\n1,009 144  $\n\u2014 \u2014  $\n(1,009) 47,941 \n\u2014",
+          "raw_scale_context": "in millions",
+          "row_index": 3,
+          "row_label_excerpt": [
+            "Third party\nIntersegment $ 10,833  $\n680 6,331  $\n3 19,579  $\n7 5,328  $\n310 5,726  $\n9 47,797  $\n1,009 144  $\n\u2014 \u2014  $\n(1,009) 47,941 \n\u2014"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "table_header",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:5d202d6620424735be4e4692c04e2ec3ea3efe99fa39237fbbf64304f11ed1b7"
+          ],
+          "shadow_row_id": "shadow:d30ab0a303818301ead39eb687e165e5802cc481f49a6aae8d4b8d57c7d17838",
+          "shadow_table_id": "shadow:3872ed5229ff2689d3ff7ad2323a41e2798224e76df3d813088724d9d97616a3",
+          "strict": false,
+          "table_index": 1,
+          "target_cell_excerpt": {
+            "column_index": 1,
+            "raw_text": "$"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 2,
+          "document_id": "ko_fy2025",
+          "header_excerpt": [],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Third party\nIntersegment"
+            },
+            {
+              "column_index": 1,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 2,
+              "raw_text": "10,833  $\n680"
+            },
+            {
+              "column_index": 3,
+              "raw_text": "6,331  $\n3"
+            },
+            {
+              "column_index": 4,
+              "raw_text": "19,579  $\n7"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "third party intersegment 10 833 680 6 331 3 19 579 7 5 328 310 5 726 9 47 797 1 009 144 1 009 47 941",
+          "normalized_period": null,
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 119,
+          "period_score": 0,
+          "raw_cell_text": "10,833  $\n680",
+          "raw_column_header": null,
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Third party\nIntersegment $ 10,833  $\n680 6,331  $\n3 19,579  $\n7 5,328  $\n310 5,726  $\n9 47,797  $\n1,009 144  $\n\u2014 \u2014  $\n(1,009) 47,941 \n\u2014",
+          "raw_scale_context": "in millions",
+          "row_index": 3,
+          "row_label_excerpt": [
+            "Third party\nIntersegment $ 10,833  $\n680 6,331  $\n3 19,579  $\n7 5,328  $\n310 5,726  $\n9 47,797  $\n1,009 144  $\n\u2014 \u2014  $\n(1,009) 47,941 \n\u2014"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "table_header",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:26744e8d964b68f9e6c43fda764b7c10a7c96f4740cfdd701b39b08288dc7ee6"
+          ],
+          "shadow_row_id": "shadow:d30ab0a303818301ead39eb687e165e5802cc481f49a6aae8d4b8d57c7d17838",
+          "shadow_table_id": "shadow:3872ed5229ff2689d3ff7ad2323a41e2798224e76df3d813088724d9d97616a3",
+          "strict": false,
+          "table_index": 1,
+          "target_cell_excerpt": {
+            "column_index": 2,
+            "raw_text": "10,833  $\n680"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 3,
+          "document_id": "ko_fy2025",
+          "header_excerpt": [],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 1,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 2,
+              "raw_text": "10,833  $\n680"
+            },
+            {
+              "column_index": 3,
+              "raw_text": "6,331  $\n3"
+            },
+            {
+              "column_index": 4,
+              "raw_text": "19,579  $\n7"
+            },
+            {
+              "column_index": 5,
+              "raw_text": "5,328  $\n310"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "third party intersegment 10 833 680 6 331 3 19 579 7 5 328 310 5 726 9 47 797 1 009 144 1 009 47 941",
+          "normalized_period": null,
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 119,
+          "period_score": 0,
+          "raw_cell_text": "6,331  $\n3",
+          "raw_column_header": null,
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Third party\nIntersegment $ 10,833  $\n680 6,331  $\n3 19,579  $\n7 5,328  $\n310 5,726  $\n9 47,797  $\n1,009 144  $\n\u2014 \u2014  $\n(1,009) 47,941 \n\u2014",
+          "raw_scale_context": "in millions",
+          "row_index": 3,
+          "row_label_excerpt": [
+            "Third party\nIntersegment $ 10,833  $\n680 6,331  $\n3 19,579  $\n7 5,328  $\n310 5,726  $\n9 47,797  $\n1,009 144  $\n\u2014 \u2014  $\n(1,009) 47,941 \n\u2014"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "table_header",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:ae8bd10a6053f131ad734a67d6375b078bf903d42350f54f3e9fc75edb3ebabf"
+          ],
+          "shadow_row_id": "shadow:d30ab0a303818301ead39eb687e165e5802cc481f49a6aae8d4b8d57c7d17838",
+          "shadow_table_id": "shadow:3872ed5229ff2689d3ff7ad2323a41e2798224e76df3d813088724d9d97616a3",
+          "strict": false,
+          "table_index": 1,
+          "target_cell_excerpt": {
+            "column_index": 3,
+            "raw_text": "6,331  $\n3"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 4,
+          "document_id": "ko_fy2025",
+          "header_excerpt": [],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 2,
+              "raw_text": "10,833  $\n680"
+            },
+            {
+              "column_index": 3,
+              "raw_text": "6,331  $\n3"
+            },
+            {
+              "column_index": 4,
+              "raw_text": "19,579  $\n7"
+            },
+            {
+              "column_index": 5,
+              "raw_text": "5,328  $\n310"
+            },
+            {
+              "column_index": 6,
+              "raw_text": "5,726  $\n9"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "third party intersegment 10 833 680 6 331 3 19 579 7 5 328 310 5 726 9 47 797 1 009 144 1 009 47 941",
+          "normalized_period": null,
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 119,
+          "period_score": 0,
+          "raw_cell_text": "19,579  $\n7",
+          "raw_column_header": null,
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Third party\nIntersegment $ 10,833  $\n680 6,331  $\n3 19,579  $\n7 5,328  $\n310 5,726  $\n9 47,797  $\n1,009 144  $\n\u2014 \u2014  $\n(1,009) 47,941 \n\u2014",
+          "raw_scale_context": "in millions",
+          "row_index": 3,
+          "row_label_excerpt": [
+            "Third party\nIntersegment $ 10,833  $\n680 6,331  $\n3 19,579  $\n7 5,328  $\n310 5,726  $\n9 47,797  $\n1,009 144  $\n\u2014 \u2014  $\n(1,009) 47,941 \n\u2014"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "table_header",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:ef3aeb48d81f9e00ecc27ff650e029368750f2ecc3e108309db8964a974a2b41"
+          ],
+          "shadow_row_id": "shadow:d30ab0a303818301ead39eb687e165e5802cc481f49a6aae8d4b8d57c7d17838",
+          "shadow_table_id": "shadow:3872ed5229ff2689d3ff7ad2323a41e2798224e76df3d813088724d9d97616a3",
+          "strict": false,
+          "table_index": 1,
+          "target_cell_excerpt": {
+            "column_index": 4,
+            "raw_text": "19,579  $\n7"
+          },
+          "value_score": 0
+        }
+      ],
+      "document_id": "ko_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "EMEA third-party revenue",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2025",
+      "expected_value": "10833000000",
+      "legacy_candidate_key": "candidate:v1:214ce6712de95bbe235ef407a4a41b42d0ba38080b13d80a418493656e357a9b",
+      "legacy_evidence_id": "user_1_ko_fy2025_10k.pdf::page_119::layout_table_1::row_2",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 119,
+      "period_match": null,
+      "proposed_candidate": null,
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 0,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 111,
+      "candidate_status": "missing_period_column",
+      "case_id": "ko_fy2025_007",
+      "classification_reasons": [
+        "period_not_unique_without_column_header_path"
+      ],
+      "competing_candidates": [
+        {
+          "cell_geometry_valid": true,
+          "column_index": 17,
+          "document_id": "ko_fy2025",
+          "header_excerpt": [
+            "Year Ended December 31, 2025"
+          ],
+          "header_path": [
+            "Year Ended December 31, 2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 15,
+              "raw_text": "(1,009)"
+            },
+            {
+              "column_index": 16,
+              "raw_text": ""
+            },
+            {
+              "column_index": 17,
+              "raw_text": "47,941"
+            },
+            {
+              "column_index": 18,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": "47941000000",
+          "normalized_metric": "total net operating revenues",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": "47941",
+          "parsed_scale": "million",
+          "parser_flavor": null,
+          "parser_name": "pymupdf",
+          "parser_version": "1.26.6",
+          "pdf_page": 119,
+          "period_score": 1,
+          "raw_cell_text": "47,941",
+          "raw_column_header": "Year Ended December 31, 2025",
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Total net operating revenues",
+          "raw_scale_context": "in millions",
+          "row_index": 4,
+          "row_label_excerpt": [
+            "Total net operating revenues"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text_unlocated",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:bb41f6c316a6e3fc0a60fdee7bf854edad2fa819efbe89adff72bdd7bbb6fa54"
+          ],
+          "shadow_row_id": "shadow:2625d65ddd98e0e8a8e5ab88dd2341ff604074682e6d63b9722ab45584adcb3c",
+          "shadow_table_id": "shadow:64dcb3652110289889d22a648ab0f5daaaeba1d0092e6ea813b65de7d6905aae",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 17,
+            "raw_text": "47,941"
+          },
+          "value_score": 1
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 1,
+          "document_id": "ko_fy2025",
+          "header_excerpt": [
+            "Year Ended December 31, 2025"
+          ],
+          "header_path": [
+            "Year Ended December 31, 2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Total net operating revenues"
+            },
+            {
+              "column_index": 1,
+              "raw_text": "11,513"
+            },
+            {
+              "column_index": 2,
+              "raw_text": ""
+            },
+            {
+              "column_index": 3,
+              "raw_text": "6,334"
+            }
+          ],
+          "normalized_base_value": "11513000000",
+          "normalized_metric": "total net operating revenues",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": "11513",
+          "parsed_scale": "million",
+          "parser_flavor": null,
+          "parser_name": "pymupdf",
+          "parser_version": "1.26.6",
+          "pdf_page": 119,
+          "period_score": 1,
+          "raw_cell_text": "11,513",
+          "raw_column_header": "Year Ended December 31, 2025",
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Total net operating revenues",
+          "raw_scale_context": "in millions",
+          "row_index": 4,
+          "row_label_excerpt": [
+            "Total net operating revenues"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text_unlocated",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:cefad39a6fadb946606a2521a5a81aaa593a905e4981662cc23d57ade3a51152"
+          ],
+          "shadow_row_id": "shadow:2625d65ddd98e0e8a8e5ab88dd2341ff604074682e6d63b9722ab45584adcb3c",
+          "shadow_table_id": "shadow:64dcb3652110289889d22a648ab0f5daaaeba1d0092e6ea813b65de7d6905aae",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 1,
+            "raw_text": "11,513"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 3,
+          "document_id": "ko_fy2025",
+          "header_excerpt": [
+            "Year Ended December 31, 2025"
+          ],
+          "header_path": [
+            "Year Ended December 31, 2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 1,
+              "raw_text": "11,513"
+            },
+            {
+              "column_index": 2,
+              "raw_text": ""
+            },
+            {
+              "column_index": 3,
+              "raw_text": "6,334"
+            },
+            {
+              "column_index": 4,
+              "raw_text": ""
+            },
+            {
+              "column_index": 5,
+              "raw_text": "19,586"
+            }
+          ],
+          "normalized_base_value": "6334000000",
+          "normalized_metric": "total net operating revenues",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": "6334",
+          "parsed_scale": "million",
+          "parser_flavor": null,
+          "parser_name": "pymupdf",
+          "parser_version": "1.26.6",
+          "pdf_page": 119,
+          "period_score": 1,
+          "raw_cell_text": "6,334",
+          "raw_column_header": "Year Ended December 31, 2025",
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Total net operating revenues",
+          "raw_scale_context": "in millions",
+          "row_index": 4,
+          "row_label_excerpt": [
+            "Total net operating revenues"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text_unlocated",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:b385d005374a40737e1608440c1d718d6597fe813af758da5bf9489c712af90d"
+          ],
+          "shadow_row_id": "shadow:2625d65ddd98e0e8a8e5ab88dd2341ff604074682e6d63b9722ab45584adcb3c",
+          "shadow_table_id": "shadow:64dcb3652110289889d22a648ab0f5daaaeba1d0092e6ea813b65de7d6905aae",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 3,
+            "raw_text": "6,334"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 5,
+          "document_id": "ko_fy2025",
+          "header_excerpt": [
+            "Year Ended December 31, 2025"
+          ],
+          "header_path": [
+            "Year Ended December 31, 2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 3,
+              "raw_text": "6,334"
+            },
+            {
+              "column_index": 4,
+              "raw_text": ""
+            },
+            {
+              "column_index": 5,
+              "raw_text": "19,586"
+            },
+            {
+              "column_index": 6,
+              "raw_text": ""
+            },
+            {
+              "column_index": 7,
+              "raw_text": "5,638"
+            }
+          ],
+          "normalized_base_value": "19586000000",
+          "normalized_metric": "total net operating revenues",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": "19586",
+          "parsed_scale": "million",
+          "parser_flavor": null,
+          "parser_name": "pymupdf",
+          "parser_version": "1.26.6",
+          "pdf_page": 119,
+          "period_score": 1,
+          "raw_cell_text": "19,586",
+          "raw_column_header": "Year Ended December 31, 2025",
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Total net operating revenues",
+          "raw_scale_context": "in millions",
+          "row_index": 4,
+          "row_label_excerpt": [
+            "Total net operating revenues"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text_unlocated",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:cef1174dae5e77d1e74868f1c263994d9ddca7831e19082c8b3ce9bff7c18d61"
+          ],
+          "shadow_row_id": "shadow:2625d65ddd98e0e8a8e5ab88dd2341ff604074682e6d63b9722ab45584adcb3c",
+          "shadow_table_id": "shadow:64dcb3652110289889d22a648ab0f5daaaeba1d0092e6ea813b65de7d6905aae",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 5,
+            "raw_text": "19,586"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 7,
+          "document_id": "ko_fy2025",
+          "header_excerpt": [
+            "Year Ended December 31, 2025"
+          ],
+          "header_path": [
+            "Year Ended December 31, 2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 5,
+              "raw_text": "19,586"
+            },
+            {
+              "column_index": 6,
+              "raw_text": ""
+            },
+            {
+              "column_index": 7,
+              "raw_text": "5,638"
+            },
+            {
+              "column_index": 8,
+              "raw_text": ""
+            },
+            {
+              "column_index": 9,
+              "raw_text": "5,735"
+            }
+          ],
+          "normalized_base_value": "5638000000",
+          "normalized_metric": "total net operating revenues",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": "5638",
+          "parsed_scale": "million",
+          "parser_flavor": null,
+          "parser_name": "pymupdf",
+          "parser_version": "1.26.6",
+          "pdf_page": 119,
+          "period_score": 1,
+          "raw_cell_text": "5,638",
+          "raw_column_header": "Year Ended December 31, 2025",
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Total net operating revenues",
+          "raw_scale_context": "in millions",
+          "row_index": 4,
+          "row_label_excerpt": [
+            "Total net operating revenues"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text_unlocated",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:5aa81eb77150a3b6703611b68706b72389c3c39a3dd9893e9f8d246f78192c3d"
+          ],
+          "shadow_row_id": "shadow:2625d65ddd98e0e8a8e5ab88dd2341ff604074682e6d63b9722ab45584adcb3c",
+          "shadow_table_id": "shadow:64dcb3652110289889d22a648ab0f5daaaeba1d0092e6ea813b65de7d6905aae",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 7,
+            "raw_text": "5,638"
+          },
+          "value_score": 0
+        }
+      ],
+      "document_id": "ko_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Net operating revenues",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2025",
+      "expected_value": "47941000000",
+      "legacy_candidate_key": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+      "legacy_evidence_id": "user_1_ko_fy2025_10k.pdf::page_119::layout_table_1::row_4",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 119,
+      "period_match": null,
+      "proposed_candidate": null,
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 1,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 40,
+      "candidate_status": "missing_row",
+      "case_id": "msft_fy2025_006",
+      "classification_reasons": [
+        "no_exact_metric_row"
+      ],
+      "competing_candidates": [
+        {
+          "cell_geometry_valid": true,
+          "column_index": 0,
+          "document_id": "msft_fy2025",
+          "header_excerpt": [
+            "Year Ended June\u00a030,",
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "header_path": [
+            "2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "120,81"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 80,
+          "period_score": 0,
+          "raw_cell_text": "Revenue",
+          "raw_column_header": "2025",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue",
+          "raw_scale_context": "In millions",
+          "row_index": 2,
+          "row_label_excerpt": [
+            "Revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:b693a0d3217b82095ceac43b618ed5b832b0b22b69c64d5a18465fcb16c0bba1"
+          ],
+          "shadow_row_id": "shadow:0543a03cc514da625219892b152309258a46dec6c482c5945253d28b661328c0",
+          "shadow_table_id": "shadow:89a6fe61880ec50ebee1c099efc159af7bcfda88a837db8f7a372f77d9bf1d5c",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 0,
+            "raw_text": "Revenue"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 1,
+          "document_id": "msft_fy2025",
+          "header_excerpt": [
+            "Year Ended June\u00a030,",
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "header_path": [
+            "2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "120,81"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 80,
+          "period_score": 0,
+          "raw_cell_text": "",
+          "raw_column_header": "2025",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue",
+          "raw_scale_context": "In millions",
+          "row_index": 2,
+          "row_label_excerpt": [
+            "Revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:b352b2f7a8ab98ded41fe8526224345b7b436ba9da89224a06d72be7c1112849"
+          ],
+          "shadow_row_id": "shadow:0543a03cc514da625219892b152309258a46dec6c482c5945253d28b661328c0",
+          "shadow_table_id": "shadow:89a6fe61880ec50ebee1c099efc159af7bcfda88a837db8f7a372f77d9bf1d5c",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 1,
+            "raw_text": ""
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 2,
+          "document_id": "msft_fy2025",
+          "header_excerpt": [
+            "Year Ended June\u00a030,",
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "header_path": [
+            "2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "120,81"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": "12081000000",
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": "12081",
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 80,
+          "period_score": 0,
+          "raw_cell_text": "120,81",
+          "raw_column_header": "2025",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue",
+          "raw_scale_context": "In millions",
+          "row_index": 2,
+          "row_label_excerpt": [
+            "Revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:52afa922e6dd70f20769b6997ac60dc7926184acc8c2d1e1853abee01047d971"
+          ],
+          "shadow_row_id": "shadow:0543a03cc514da625219892b152309258a46dec6c482c5945253d28b661328c0",
+          "shadow_table_id": "shadow:89a6fe61880ec50ebee1c099efc159af7bcfda88a837db8f7a372f77d9bf1d5c",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 2,
+            "raw_text": "120,81"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 3,
+          "document_id": "msft_fy2025",
+          "header_excerpt": [
+            "Year Ended June\u00a030,",
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "header_path": [
+            "2024"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "120,81"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2024",
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 80,
+          "period_score": 1,
+          "raw_cell_text": "",
+          "raw_column_header": "2024",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue",
+          "raw_scale_context": "In millions",
+          "row_index": 2,
+          "row_label_excerpt": [
+            "Revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:0a1805060b6749e956bb9978e7594eeaf4455da7730623aa32776c103a8bd31a"
+          ],
+          "shadow_row_id": "shadow:0543a03cc514da625219892b152309258a46dec6c482c5945253d28b661328c0",
+          "shadow_table_id": "shadow:89a6fe61880ec50ebee1c099efc159af7bcfda88a837db8f7a372f77d9bf1d5c",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 3,
+            "raw_text": ""
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 4,
+          "document_id": "msft_fy2025",
+          "header_excerpt": [
+            "Year Ended June\u00a030,",
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "header_path": [
+            "2023"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 2,
+              "raw_text": "120,81"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2023",
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 80,
+          "period_score": 0,
+          "raw_cell_text": "",
+          "raw_column_header": "2023",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue",
+          "raw_scale_context": "In millions",
+          "row_index": 2,
+          "row_label_excerpt": [
+            "Revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:83287a0dcbfc8117a8f1186802d0d940381d791d057499d1225f50867f005bf4"
+          ],
+          "shadow_row_id": "shadow:0543a03cc514da625219892b152309258a46dec6c482c5945253d28b661328c0",
+          "shadow_table_id": "shadow:89a6fe61880ec50ebee1c099efc159af7bcfda88a837db8f7a372f77d9bf1d5c",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 4,
+            "raw_text": ""
+          },
+          "value_score": 0
+        }
+      ],
+      "document_id": "msft_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Total revenue",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2024",
+      "expected_value": "245122000000",
+      "legacy_candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "legacy_evidence_id": "user_1_msft_fy2025_annual_report.pdf::page_80::chunk_91_2",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 80,
+      "period_match": null,
+      "proposed_candidate": null,
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 0,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 40,
+      "candidate_status": "missing_row",
+      "case_id": "msft_fy2025_006",
+      "classification_reasons": [
+        "no_exact_metric_row"
+      ],
+      "competing_candidates": [
+        {
+          "cell_geometry_valid": true,
+          "column_index": 0,
+          "document_id": "msft_fy2025",
+          "header_excerpt": [
+            "Year Ended June\u00a030,",
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "header_path": [
+            "2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "120,81"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 80,
+          "period_score": 1,
+          "raw_cell_text": "Revenue",
+          "raw_column_header": "2025",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue",
+          "raw_scale_context": "In millions",
+          "row_index": 2,
+          "row_label_excerpt": [
+            "Revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:b693a0d3217b82095ceac43b618ed5b832b0b22b69c64d5a18465fcb16c0bba1"
+          ],
+          "shadow_row_id": "shadow:0543a03cc514da625219892b152309258a46dec6c482c5945253d28b661328c0",
+          "shadow_table_id": "shadow:89a6fe61880ec50ebee1c099efc159af7bcfda88a837db8f7a372f77d9bf1d5c",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 0,
+            "raw_text": "Revenue"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 1,
+          "document_id": "msft_fy2025",
+          "header_excerpt": [
+            "Year Ended June\u00a030,",
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "header_path": [
+            "2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "120,81"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 80,
+          "period_score": 1,
+          "raw_cell_text": "",
+          "raw_column_header": "2025",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue",
+          "raw_scale_context": "In millions",
+          "row_index": 2,
+          "row_label_excerpt": [
+            "Revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:b352b2f7a8ab98ded41fe8526224345b7b436ba9da89224a06d72be7c1112849"
+          ],
+          "shadow_row_id": "shadow:0543a03cc514da625219892b152309258a46dec6c482c5945253d28b661328c0",
+          "shadow_table_id": "shadow:89a6fe61880ec50ebee1c099efc159af7bcfda88a837db8f7a372f77d9bf1d5c",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 1,
+            "raw_text": ""
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 2,
+          "document_id": "msft_fy2025",
+          "header_excerpt": [
+            "Year Ended June\u00a030,",
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "header_path": [
+            "2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "120,81"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": "12081000000",
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": "12081",
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 80,
+          "period_score": 1,
+          "raw_cell_text": "120,81",
+          "raw_column_header": "2025",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue",
+          "raw_scale_context": "In millions",
+          "row_index": 2,
+          "row_label_excerpt": [
+            "Revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:52afa922e6dd70f20769b6997ac60dc7926184acc8c2d1e1853abee01047d971"
+          ],
+          "shadow_row_id": "shadow:0543a03cc514da625219892b152309258a46dec6c482c5945253d28b661328c0",
+          "shadow_table_id": "shadow:89a6fe61880ec50ebee1c099efc159af7bcfda88a837db8f7a372f77d9bf1d5c",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 2,
+            "raw_text": "120,81"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 3,
+          "document_id": "msft_fy2025",
+          "header_excerpt": [
+            "Year Ended June\u00a030,",
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "header_path": [
+            "2024"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "120,81"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2024",
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 80,
+          "period_score": 0,
+          "raw_cell_text": "",
+          "raw_column_header": "2024",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue",
+          "raw_scale_context": "In millions",
+          "row_index": 2,
+          "row_label_excerpt": [
+            "Revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:0a1805060b6749e956bb9978e7594eeaf4455da7730623aa32776c103a8bd31a"
+          ],
+          "shadow_row_id": "shadow:0543a03cc514da625219892b152309258a46dec6c482c5945253d28b661328c0",
+          "shadow_table_id": "shadow:89a6fe61880ec50ebee1c099efc159af7bcfda88a837db8f7a372f77d9bf1d5c",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 3,
+            "raw_text": ""
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 4,
+          "document_id": "msft_fy2025",
+          "header_excerpt": [
+            "Year Ended June\u00a030,",
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "header_path": [
+            "2023"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 2,
+              "raw_text": "120,81"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2023",
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 80,
+          "period_score": 0,
+          "raw_cell_text": "",
+          "raw_column_header": "2023",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue",
+          "raw_scale_context": "In millions",
+          "row_index": 2,
+          "row_label_excerpt": [
+            "Revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:83287a0dcbfc8117a8f1186802d0d940381d791d057499d1225f50867f005bf4"
+          ],
+          "shadow_row_id": "shadow:0543a03cc514da625219892b152309258a46dec6c482c5945253d28b661328c0",
+          "shadow_table_id": "shadow:89a6fe61880ec50ebee1c099efc159af7bcfda88a837db8f7a372f77d9bf1d5c",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 4,
+            "raw_text": ""
+          },
+          "value_score": 0
+        }
+      ],
+      "document_id": "msft_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Total revenue",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2025",
+      "expected_value": "281724000000",
+      "legacy_candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "legacy_evidence_id": "user_1_msft_fy2025_annual_report.pdf::page_80::chunk_91_2",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 80,
+      "period_match": null,
+      "proposed_candidate": null,
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 1,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 0,
+      "candidate_status": "missing_row",
+      "case_id": "msft_fy2025_007",
+      "classification_reasons": [
+        "no_exact_metric_row"
+      ],
+      "competing_candidates": [],
+      "document_id": "msft_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Intelligent Cloud revenue",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2025",
+      "expected_value": "106265000000",
+      "legacy_candidate_key": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
+      "legacy_evidence_id": "user_1_msft_fy2025_annual_report.pdf::page_80::chunk_91_1",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 80,
+      "period_match": null,
+      "proposed_candidate": null,
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 0,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 40,
+      "candidate_status": "missing_row",
+      "case_id": "msft_fy2025_007",
+      "classification_reasons": [
+        "no_exact_metric_row"
+      ],
+      "competing_candidates": [
+        {
+          "cell_geometry_valid": true,
+          "column_index": 0,
+          "document_id": "msft_fy2025",
+          "header_excerpt": [
+            "Year Ended June\u00a030,",
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "header_path": [
+            "2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "120,81"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 80,
+          "period_score": 1,
+          "raw_cell_text": "Revenue",
+          "raw_column_header": "2025",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue",
+          "raw_scale_context": "In millions",
+          "row_index": 2,
+          "row_label_excerpt": [
+            "Revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:b693a0d3217b82095ceac43b618ed5b832b0b22b69c64d5a18465fcb16c0bba1"
+          ],
+          "shadow_row_id": "shadow:0543a03cc514da625219892b152309258a46dec6c482c5945253d28b661328c0",
+          "shadow_table_id": "shadow:89a6fe61880ec50ebee1c099efc159af7bcfda88a837db8f7a372f77d9bf1d5c",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 0,
+            "raw_text": "Revenue"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 1,
+          "document_id": "msft_fy2025",
+          "header_excerpt": [
+            "Year Ended June\u00a030,",
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "header_path": [
+            "2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "120,81"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 80,
+          "period_score": 1,
+          "raw_cell_text": "",
+          "raw_column_header": "2025",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue",
+          "raw_scale_context": "In millions",
+          "row_index": 2,
+          "row_label_excerpt": [
+            "Revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:b352b2f7a8ab98ded41fe8526224345b7b436ba9da89224a06d72be7c1112849"
+          ],
+          "shadow_row_id": "shadow:0543a03cc514da625219892b152309258a46dec6c482c5945253d28b661328c0",
+          "shadow_table_id": "shadow:89a6fe61880ec50ebee1c099efc159af7bcfda88a837db8f7a372f77d9bf1d5c",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 1,
+            "raw_text": ""
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 2,
+          "document_id": "msft_fy2025",
+          "header_excerpt": [
+            "Year Ended June\u00a030,",
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "header_path": [
+            "2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "120,81"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": "12081000000",
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": "12081",
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 80,
+          "period_score": 1,
+          "raw_cell_text": "120,81",
+          "raw_column_header": "2025",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue",
+          "raw_scale_context": "In millions",
+          "row_index": 2,
+          "row_label_excerpt": [
+            "Revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:52afa922e6dd70f20769b6997ac60dc7926184acc8c2d1e1853abee01047d971"
+          ],
+          "shadow_row_id": "shadow:0543a03cc514da625219892b152309258a46dec6c482c5945253d28b661328c0",
+          "shadow_table_id": "shadow:89a6fe61880ec50ebee1c099efc159af7bcfda88a837db8f7a372f77d9bf1d5c",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 2,
+            "raw_text": "120,81"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 3,
+          "document_id": "msft_fy2025",
+          "header_excerpt": [
+            "Year Ended June\u00a030,",
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "header_path": [
+            "2024"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "120,81"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2024",
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 80,
+          "period_score": 0,
+          "raw_cell_text": "",
+          "raw_column_header": "2024",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue",
+          "raw_scale_context": "In millions",
+          "row_index": 2,
+          "row_label_excerpt": [
+            "Revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:0a1805060b6749e956bb9978e7594eeaf4455da7730623aa32776c103a8bd31a"
+          ],
+          "shadow_row_id": "shadow:0543a03cc514da625219892b152309258a46dec6c482c5945253d28b661328c0",
+          "shadow_table_id": "shadow:89a6fe61880ec50ebee1c099efc159af7bcfda88a837db8f7a372f77d9bf1d5c",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 3,
+            "raw_text": ""
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 4,
+          "document_id": "msft_fy2025",
+          "header_excerpt": [
+            "Year Ended June\u00a030,",
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "header_path": [
+            "2023"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 2,
+              "raw_text": "120,81"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2023",
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 80,
+          "period_score": 0,
+          "raw_cell_text": "",
+          "raw_column_header": "2023",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue",
+          "raw_scale_context": "In millions",
+          "row_index": 2,
+          "row_label_excerpt": [
+            "Revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:83287a0dcbfc8117a8f1186802d0d940381d791d057499d1225f50867f005bf4"
+          ],
+          "shadow_row_id": "shadow:0543a03cc514da625219892b152309258a46dec6c482c5945253d28b661328c0",
+          "shadow_table_id": "shadow:89a6fe61880ec50ebee1c099efc159af7bcfda88a837db8f7a372f77d9bf1d5c",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 4,
+            "raw_text": ""
+          },
+          "value_score": 0
+        }
+      ],
+      "document_id": "msft_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Total revenue",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2025",
+      "expected_value": "281724000000",
+      "legacy_candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "legacy_evidence_id": "user_1_msft_fy2025_annual_report.pdf::page_80::chunk_91_2",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 80,
+      "period_match": null,
+      "proposed_candidate": null,
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 1,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 21,
+      "candidate_status": "missing_row",
+      "case_id": "nvda_fy2025_006",
+      "classification_reasons": [
+        "no_exact_metric_row"
+      ],
+      "competing_candidates": [
+        {
+          "cell_geometry_valid": true,
+          "column_index": 0,
+          "document_id": "nvda_fy2025",
+          "header_excerpt": [
+            "Jan 26, 2025",
+            "Jan 28, 2024",
+            "Jan 29, 2023"
+          ],
+          "header_path": [
+            "Jan 26, 2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 2,
+              "raw_text": "130,497"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 144,
+          "period_score": 0,
+          "raw_cell_text": "Revenue",
+          "raw_column_header": "Jan 26, 2025",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue $",
+          "raw_scale_context": "In millions",
+          "row_index": 3,
+          "row_label_excerpt": [
+            "Revenue $"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "table_header",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:74fa0f1ab8fda1b2400bbd72e2032217491534a65e39622722b4503163bbd235"
+          ],
+          "shadow_row_id": "shadow:21535e01a79c10f5709c0c8f4d354f057095bca09fa43366bf1f2af3e5120f78",
+          "shadow_table_id": "shadow:29b5c7b284f65325fe9aa3049b36748e67a518a02a41d54e31b97196f31437aa",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 0,
+            "raw_text": "Revenue"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 1,
+          "document_id": "nvda_fy2025",
+          "header_excerpt": [
+            "Jan 26, 2025",
+            "Jan 28, 2024",
+            "Jan 29, 2023"
+          ],
+          "header_path": [
+            "Jan 26, 2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 2,
+              "raw_text": "130,497"
+            },
+            {
+              "column_index": 3,
+              "raw_text": "$"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 144,
+          "period_score": 0,
+          "raw_cell_text": "$",
+          "raw_column_header": "Jan 26, 2025",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue $",
+          "raw_scale_context": "In millions",
+          "row_index": 3,
+          "row_label_excerpt": [
+            "Revenue $"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "table_header",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:a5af6e031dd8cfd0ec4358fb13747a1936c922b40a3f845bd2904cd1bc89d3e7"
+          ],
+          "shadow_row_id": "shadow:21535e01a79c10f5709c0c8f4d354f057095bca09fa43366bf1f2af3e5120f78",
+          "shadow_table_id": "shadow:29b5c7b284f65325fe9aa3049b36748e67a518a02a41d54e31b97196f31437aa",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 1,
+            "raw_text": "$"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 2,
+          "document_id": "nvda_fy2025",
+          "header_excerpt": [
+            "Jan 26, 2025",
+            "Jan 28, 2024",
+            "Jan 29, 2023"
+          ],
+          "header_path": [
+            "Jan 26, 2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 2,
+              "raw_text": "130,497"
+            },
+            {
+              "column_index": 3,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 4,
+              "raw_text": "60,922"
+            }
+          ],
+          "normalized_base_value": "130497000000",
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": "130497",
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 144,
+          "period_score": 0,
+          "raw_cell_text": "130,497",
+          "raw_column_header": "Jan 26, 2025",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue $",
+          "raw_scale_context": "In millions",
+          "row_index": 3,
+          "row_label_excerpt": [
+            "Revenue $"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "table_header",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:7f13ddf78b9da79fddaf7bf17115f20e93b9626dfb29f83d9ce4e39a833996cc"
+          ],
+          "shadow_row_id": "shadow:21535e01a79c10f5709c0c8f4d354f057095bca09fa43366bf1f2af3e5120f78",
+          "shadow_table_id": "shadow:29b5c7b284f65325fe9aa3049b36748e67a518a02a41d54e31b97196f31437aa",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 2,
+            "raw_text": "130,497"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 3,
+          "document_id": "nvda_fy2025",
+          "header_excerpt": [
+            "Jan 26, 2025",
+            "Jan 28, 2024",
+            "Jan 29, 2023"
+          ],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 1,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 2,
+              "raw_text": "130,497"
+            },
+            {
+              "column_index": 3,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 4,
+              "raw_text": "60,922"
+            },
+            {
+              "column_index": 5,
+              "raw_text": "$"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": null,
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 144,
+          "period_score": 0,
+          "raw_cell_text": "$",
+          "raw_column_header": null,
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue $",
+          "raw_scale_context": "In millions",
+          "row_index": 3,
+          "row_label_excerpt": [
+            "Revenue $"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "table_header",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:490a6d3dee6f19071797b3c36793d9a8f644c599cc16e7034287172103c44c23"
+          ],
+          "shadow_row_id": "shadow:21535e01a79c10f5709c0c8f4d354f057095bca09fa43366bf1f2af3e5120f78",
+          "shadow_table_id": "shadow:29b5c7b284f65325fe9aa3049b36748e67a518a02a41d54e31b97196f31437aa",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 3,
+            "raw_text": "$"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 4,
+          "document_id": "nvda_fy2025",
+          "header_excerpt": [
+            "Jan 26, 2025",
+            "Jan 28, 2024",
+            "Jan 29, 2023"
+          ],
+          "header_path": [
+            "Jan 28, 2024"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 2,
+              "raw_text": "130,497"
+            },
+            {
+              "column_index": 3,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 4,
+              "raw_text": "60,922"
+            },
+            {
+              "column_index": 5,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 6,
+              "raw_text": "26,974"
+            }
+          ],
+          "normalized_base_value": "60922000000",
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2024",
+          "parsed_currency": null,
+          "parsed_numeric_value": "60922",
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 144,
+          "period_score": 1,
+          "raw_cell_text": "60,922",
+          "raw_column_header": "Jan 28, 2024",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue $",
+          "raw_scale_context": "In millions",
+          "row_index": 3,
+          "row_label_excerpt": [
+            "Revenue $"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "table_header",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:33b33156d85c6a5fb612f728c7a69c989356fde662fe8aad18a867cf45df2c24"
+          ],
+          "shadow_row_id": "shadow:21535e01a79c10f5709c0c8f4d354f057095bca09fa43366bf1f2af3e5120f78",
+          "shadow_table_id": "shadow:29b5c7b284f65325fe9aa3049b36748e67a518a02a41d54e31b97196f31437aa",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 4,
+            "raw_text": "60,922"
+          },
+          "value_score": 1
+        }
+      ],
+      "document_id": "nvda_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Total revenue",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2024",
+      "expected_value": "60922000000",
+      "legacy_candidate_key": "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024",
+      "legacy_evidence_id": "user_1_nvda_fy2025_annual_report.pdf::page_144::table_1::row_4",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 144,
+      "period_match": null,
+      "proposed_candidate": null,
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 0,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 21,
+      "candidate_status": "missing_row",
+      "case_id": "nvda_fy2025_006",
+      "classification_reasons": [
+        "no_exact_metric_row"
+      ],
+      "competing_candidates": [
+        {
+          "cell_geometry_valid": true,
+          "column_index": 0,
+          "document_id": "nvda_fy2025",
+          "header_excerpt": [
+            "Jan 26, 2025",
+            "Jan 28, 2024",
+            "Jan 29, 2023"
+          ],
+          "header_path": [
+            "Jan 26, 2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 2,
+              "raw_text": "130,497"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 144,
+          "period_score": 1,
+          "raw_cell_text": "Revenue",
+          "raw_column_header": "Jan 26, 2025",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue $",
+          "raw_scale_context": "In millions",
+          "row_index": 3,
+          "row_label_excerpt": [
+            "Revenue $"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "table_header",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:74fa0f1ab8fda1b2400bbd72e2032217491534a65e39622722b4503163bbd235"
+          ],
+          "shadow_row_id": "shadow:21535e01a79c10f5709c0c8f4d354f057095bca09fa43366bf1f2af3e5120f78",
+          "shadow_table_id": "shadow:29b5c7b284f65325fe9aa3049b36748e67a518a02a41d54e31b97196f31437aa",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 0,
+            "raw_text": "Revenue"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 1,
+          "document_id": "nvda_fy2025",
+          "header_excerpt": [
+            "Jan 26, 2025",
+            "Jan 28, 2024",
+            "Jan 29, 2023"
+          ],
+          "header_path": [
+            "Jan 26, 2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 2,
+              "raw_text": "130,497"
+            },
+            {
+              "column_index": 3,
+              "raw_text": "$"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 144,
+          "period_score": 1,
+          "raw_cell_text": "$",
+          "raw_column_header": "Jan 26, 2025",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue $",
+          "raw_scale_context": "In millions",
+          "row_index": 3,
+          "row_label_excerpt": [
+            "Revenue $"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "table_header",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:a5af6e031dd8cfd0ec4358fb13747a1936c922b40a3f845bd2904cd1bc89d3e7"
+          ],
+          "shadow_row_id": "shadow:21535e01a79c10f5709c0c8f4d354f057095bca09fa43366bf1f2af3e5120f78",
+          "shadow_table_id": "shadow:29b5c7b284f65325fe9aa3049b36748e67a518a02a41d54e31b97196f31437aa",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 1,
+            "raw_text": "$"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 2,
+          "document_id": "nvda_fy2025",
+          "header_excerpt": [
+            "Jan 26, 2025",
+            "Jan 28, 2024",
+            "Jan 29, 2023"
+          ],
+          "header_path": [
+            "Jan 26, 2025"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 2,
+              "raw_text": "130,497"
+            },
+            {
+              "column_index": 3,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 4,
+              "raw_text": "60,922"
+            }
+          ],
+          "normalized_base_value": "130497000000",
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2025",
+          "parsed_currency": null,
+          "parsed_numeric_value": "130497",
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 144,
+          "period_score": 1,
+          "raw_cell_text": "130,497",
+          "raw_column_header": "Jan 26, 2025",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue $",
+          "raw_scale_context": "In millions",
+          "row_index": 3,
+          "row_label_excerpt": [
+            "Revenue $"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "table_header",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:7f13ddf78b9da79fddaf7bf17115f20e93b9626dfb29f83d9ce4e39a833996cc"
+          ],
+          "shadow_row_id": "shadow:21535e01a79c10f5709c0c8f4d354f057095bca09fa43366bf1f2af3e5120f78",
+          "shadow_table_id": "shadow:29b5c7b284f65325fe9aa3049b36748e67a518a02a41d54e31b97196f31437aa",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 2,
+            "raw_text": "130,497"
+          },
+          "value_score": 1
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 3,
+          "document_id": "nvda_fy2025",
+          "header_excerpt": [
+            "Jan 26, 2025",
+            "Jan 28, 2024",
+            "Jan 29, 2023"
+          ],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 1,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 2,
+              "raw_text": "130,497"
+            },
+            {
+              "column_index": 3,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 4,
+              "raw_text": "60,922"
+            },
+            {
+              "column_index": 5,
+              "raw_text": "$"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "revenue",
+          "normalized_period": null,
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 144,
+          "period_score": 0,
+          "raw_cell_text": "$",
+          "raw_column_header": null,
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue $",
+          "raw_scale_context": "In millions",
+          "row_index": 3,
+          "row_label_excerpt": [
+            "Revenue $"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "table_header",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:490a6d3dee6f19071797b3c36793d9a8f644c599cc16e7034287172103c44c23"
+          ],
+          "shadow_row_id": "shadow:21535e01a79c10f5709c0c8f4d354f057095bca09fa43366bf1f2af3e5120f78",
+          "shadow_table_id": "shadow:29b5c7b284f65325fe9aa3049b36748e67a518a02a41d54e31b97196f31437aa",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 3,
+            "raw_text": "$"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 4,
+          "document_id": "nvda_fy2025",
+          "header_excerpt": [
+            "Jan 26, 2025",
+            "Jan 28, 2024",
+            "Jan 29, 2023"
+          ],
+          "header_path": [
+            "Jan 28, 2024"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 0.5,
+          "neighbor_cells": [
+            {
+              "column_index": 2,
+              "raw_text": "130,497"
+            },
+            {
+              "column_index": 3,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 4,
+              "raw_text": "60,922"
+            },
+            {
+              "column_index": 5,
+              "raw_text": "$"
+            },
+            {
+              "column_index": 6,
+              "raw_text": "26,974"
+            }
+          ],
+          "normalized_base_value": "60922000000",
+          "normalized_metric": "revenue",
+          "normalized_period": "FY2024",
+          "parsed_currency": null,
+          "parsed_numeric_value": "60922",
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 144,
+          "period_score": 0,
+          "raw_cell_text": "60,922",
+          "raw_column_header": "Jan 28, 2024",
+          "raw_currency_context": "In millions",
+          "raw_row_label": "Revenue $",
+          "raw_scale_context": "In millions",
+          "row_index": 3,
+          "row_label_excerpt": [
+            "Revenue $"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "table_header",
+          "scale_excerpt": "In millions",
+          "shadow_cell_ids": [
+            "shadow:33b33156d85c6a5fb612f728c7a69c989356fde662fe8aad18a867cf45df2c24"
+          ],
+          "shadow_row_id": "shadow:21535e01a79c10f5709c0c8f4d354f057095bca09fa43366bf1f2af3e5120f78",
+          "shadow_table_id": "shadow:29b5c7b284f65325fe9aa3049b36748e67a518a02a41d54e31b97196f31437aa",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 4,
+            "raw_text": "60,922"
+          },
+          "value_score": 0
+        }
+      ],
+      "document_id": "nvda_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Total revenue",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2025",
+      "expected_value": "130497000000",
+      "legacy_candidate_key": "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024",
+      "legacy_evidence_id": "user_1_nvda_fy2025_annual_report.pdf::page_144::table_1::row_4",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 144,
+      "period_match": null,
+      "proposed_candidate": null,
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 1,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 35,
+      "candidate_status": "candidate_pending",
+      "case_id": "pfe_fy2024_006",
+      "classification_reasons": [
+        "unique_metric_period_value_scale_candidate"
+      ],
+      "competing_candidates": [],
+      "document_id": "pfe_fy2024",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Total revenues",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2023",
+      "expected_value": "59553000000",
+      "legacy_candidate_key": "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827",
+      "legacy_evidence_id": "user_1_pfe_fy2024_10k.pdf::page_60::table_1::row_7",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 60,
+      "period_match": null,
+      "proposed_candidate": {
+        "cell_geometry_valid": true,
+        "column_index": 4,
+        "column_path_unique": true,
+        "document_id": "pfe_fy2024",
+        "header_excerpt": [
+          "(MILLIONS, EXCEPT PER SHARE DATA)",
+          "2024",
+          "2023",
+          "2022"
+        ],
+        "header_path": [
+          "2023"
+        ],
+        "header_resolution": "parser_header",
+        "metric_score": 1.0,
+        "neighbor_cells": [
+          {
+            "column_index": 2,
+            "raw_text": "63,627"
+          },
+          {
+            "column_index": 3,
+            "raw_text": ""
+          },
+          {
+            "column_index": 4,
+            "raw_text": "59,553"
+          },
+          {
+            "column_index": 5,
+            "raw_text": ""
+          },
+          {
+            "column_index": 6,
+            "raw_text": "101,175"
+          }
+        ],
+        "normalized_base_value": "59553000000",
+        "normalized_metric": "total revenues",
+        "normalized_period": "FY2023",
+        "parsed_currency": null,
+        "parsed_numeric_value": "59553",
+        "parsed_scale": "million",
+        "parser_flavor": "stream",
+        "parser_name": "camelot",
+        "parser_version": "1.0.9",
+        "pdf_page": 60,
+        "period_score": 1,
+        "raw_cell_text": "59,553",
+        "raw_column_header": "2023",
+        "raw_currency_context": "MILLIONS",
+        "raw_row_label": "Total revenues",
+        "raw_scale_context": "MILLIONS",
+        "row_index": 6,
+        "row_label_excerpt": [
+          "Total revenues"
+        ],
+        "scale_context_bbox": null,
+        "scale_context_distance": null,
+        "scale_context_source": "table_header",
+        "scale_excerpt": "MILLIONS",
+        "shadow_cell_ids": [
+          "shadow:5386caefeaafe1dfb247049115d74774d514873c4f759e7b74ffc924463198a6"
+        ],
+        "shadow_row_id": "shadow:786500784272fb8621fae5993e7029b6cafcbc28f2bbed4729d7d2eca1b7891d",
+        "shadow_table_id": "shadow:78d2fa010558f6b1219110d08adf750023abfed3f66ae5d023dd3b91d7b9b54b",
+        "strict": true,
+        "table_index": 0,
+        "target_cell_excerpt": {
+          "column_index": 4,
+          "raw_text": "59,553"
+        },
+        "value_score": 1
+      },
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 0,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 35,
+      "candidate_status": "candidate_pending",
+      "case_id": "pfe_fy2024_006",
+      "classification_reasons": [
+        "unique_metric_period_value_scale_candidate"
+      ],
+      "competing_candidates": [],
+      "document_id": "pfe_fy2024",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Total revenues",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2024",
+      "expected_value": "63627000000",
+      "legacy_candidate_key": "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827",
+      "legacy_evidence_id": "user_1_pfe_fy2024_10k.pdf::page_60::table_1::row_7",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 60,
+      "period_match": null,
+      "proposed_candidate": {
+        "cell_geometry_valid": true,
+        "column_index": 2,
+        "column_path_unique": true,
+        "document_id": "pfe_fy2024",
+        "header_excerpt": [
+          "(MILLIONS, EXCEPT PER SHARE DATA)",
+          "2024",
+          "2023",
+          "2022"
+        ],
+        "header_path": [
+          "2024"
+        ],
+        "header_resolution": "parser_header",
+        "metric_score": 1.0,
+        "neighbor_cells": [
+          {
+            "column_index": 0,
+            "raw_text": "Total revenues"
+          },
+          {
+            "column_index": 1,
+            "raw_text": ""
+          },
+          {
+            "column_index": 2,
+            "raw_text": "63,627"
+          },
+          {
+            "column_index": 3,
+            "raw_text": ""
+          },
+          {
+            "column_index": 4,
+            "raw_text": "59,553"
+          }
+        ],
+        "normalized_base_value": "63627000000",
+        "normalized_metric": "total revenues",
+        "normalized_period": "FY2024",
+        "parsed_currency": null,
+        "parsed_numeric_value": "63627",
+        "parsed_scale": "million",
+        "parser_flavor": "stream",
+        "parser_name": "camelot",
+        "parser_version": "1.0.9",
+        "pdf_page": 60,
+        "period_score": 1,
+        "raw_cell_text": "63,627",
+        "raw_column_header": "2024",
+        "raw_currency_context": "MILLIONS",
+        "raw_row_label": "Total revenues",
+        "raw_scale_context": "MILLIONS",
+        "row_index": 6,
+        "row_label_excerpt": [
+          "Total revenues"
+        ],
+        "scale_context_bbox": null,
+        "scale_context_distance": null,
+        "scale_context_source": "table_header",
+        "scale_excerpt": "MILLIONS",
+        "shadow_cell_ids": [
+          "shadow:e4366a18b841b524c319921a9c07c9891dd1dad274b75ffa18d66be9f01acb65"
+        ],
+        "shadow_row_id": "shadow:786500784272fb8621fae5993e7029b6cafcbc28f2bbed4729d7d2eca1b7891d",
+        "shadow_table_id": "shadow:78d2fa010558f6b1219110d08adf750023abfed3f66ae5d023dd3b91d7b9b54b",
+        "strict": true,
+        "table_index": 0,
+        "target_cell_excerpt": {
+          "column_index": 2,
+          "raw_text": "63,627"
+        },
+        "value_score": 1
+      },
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 1,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 73,
+      "candidate_status": "missing_period_column",
+      "case_id": "tsla_fy2025_006",
+      "classification_reasons": [
+        "no_explicit_period_header_for_metric_row"
+      ],
+      "competing_candidates": [
+        {
+          "cell_geometry_valid": true,
+          "column_index": 4,
+          "document_id": "tsla_fy2025",
+          "header_excerpt": [],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 2,
+              "raw_text": "94,827"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": "97,690"
+            },
+            {
+              "column_index": 5,
+              "raw_text": ""
+            },
+            {
+              "column_index": 6,
+              "raw_text": "96,773"
+            }
+          ],
+          "normalized_base_value": "97690000000",
+          "normalized_metric": "total revenues",
+          "normalized_period": null,
+          "parsed_currency": null,
+          "parsed_numeric_value": "97690",
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 69,
+          "period_score": 0,
+          "raw_cell_text": "97,690",
+          "raw_column_header": null,
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Total revenues",
+          "raw_scale_context": "in millions",
+          "row_index": 7,
+          "row_label_excerpt": [
+            "Total revenues"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:646555c79e4fba5010d48826be1fe1be632bbcf6c57b4e707a53397e84105d96"
+          ],
+          "shadow_row_id": "shadow:8cc656219fc0336d0b4de9ff0fe51d0f71eb54cd0fb3e73329d688f242680ca9",
+          "shadow_table_id": "shadow:88b2bbb9a683475340db9a4840666c9fd6fcba63563046d43913a5258ea21fe6",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 4,
+            "raw_text": "97,690"
+          },
+          "value_score": 1
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 5,
+          "document_id": "tsla_fy2025",
+          "header_excerpt": [
+            "Revenues"
+          ],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": ""
+            },
+            {
+              "column_index": 5,
+              "raw_text": "97,690"
+            },
+            {
+              "column_index": 6,
+              "raw_text": ""
+            },
+            {
+              "column_index": 7,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": "97690000000",
+          "normalized_metric": "total revenues",
+          "normalized_period": null,
+          "parsed_currency": null,
+          "parsed_numeric_value": "97690",
+          "parsed_scale": "million",
+          "parser_flavor": null,
+          "parser_name": "pymupdf",
+          "parser_version": "1.26.6",
+          "pdf_page": 69,
+          "period_score": 0,
+          "raw_cell_text": "97,690",
+          "raw_column_header": null,
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Total revenues",
+          "raw_scale_context": "in millions",
+          "row_index": 7,
+          "row_label_excerpt": [
+            "Total revenues"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text_unlocated",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:d86d8dfbc56cdb67d0d5726483c352173de27201e4d75d0bb90573be7d630c18"
+          ],
+          "shadow_row_id": "shadow:50abecde554c8f53cfbef51cba7fc51ca7291bd6e85750151502dd7b58126ec7",
+          "shadow_table_id": "shadow:da3d41d26c360e70c6a0b6cf9960fe52d6192e21751692dc77dd39eed2a8459d",
+          "strict": false,
+          "table_index": 1,
+          "target_cell_excerpt": {
+            "column_index": 5,
+            "raw_text": "97,690"
+          },
+          "value_score": 1
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 0,
+          "document_id": "tsla_fy2025",
+          "header_excerpt": [],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Total automotive revenues"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "69,526"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "total automotive revenues",
+          "normalized_period": null,
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 69,
+          "period_score": 0,
+          "raw_cell_text": "Total automotive revenues",
+          "raw_column_header": null,
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Total automotive revenues",
+          "raw_scale_context": "in millions",
+          "row_index": 4,
+          "row_label_excerpt": [
+            "Total automotive revenues"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:9c5d899ae2e08920ffd6e2c89152b3a57fb7a64aafe684b705f29851685bc44a"
+          ],
+          "shadow_row_id": "shadow:22cf1263e578a637fe79e71e79df876eeb6e66d638d661a81c5cb53c327e6464",
+          "shadow_table_id": "shadow:88b2bbb9a683475340db9a4840666c9fd6fcba63563046d43913a5258ea21fe6",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 0,
+            "raw_text": "Total automotive revenues"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 1,
+          "document_id": "tsla_fy2025",
+          "header_excerpt": [],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Total automotive revenues"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "69,526"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "total automotive revenues",
+          "normalized_period": null,
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 69,
+          "period_score": 0,
+          "raw_cell_text": "",
+          "raw_column_header": null,
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Total automotive revenues",
+          "raw_scale_context": "in millions",
+          "row_index": 4,
+          "row_label_excerpt": [
+            "Total automotive revenues"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:be25ac0e1c3c9f124d9b145022755643039859c902048a4f0f5ce033b95a8b55"
+          ],
+          "shadow_row_id": "shadow:22cf1263e578a637fe79e71e79df876eeb6e66d638d661a81c5cb53c327e6464",
+          "shadow_table_id": "shadow:88b2bbb9a683475340db9a4840666c9fd6fcba63563046d43913a5258ea21fe6",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 1,
+            "raw_text": ""
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 2,
+          "document_id": "tsla_fy2025",
+          "header_excerpt": [],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Total automotive revenues"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "69,526"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": "77,070"
+            }
+          ],
+          "normalized_base_value": "69526000000",
+          "normalized_metric": "total automotive revenues",
+          "normalized_period": null,
+          "parsed_currency": null,
+          "parsed_numeric_value": "69526",
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 69,
+          "period_score": 0,
+          "raw_cell_text": "69,526",
+          "raw_column_header": null,
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Total automotive revenues",
+          "raw_scale_context": "in millions",
+          "row_index": 4,
+          "row_label_excerpt": [
+            "Total automotive revenues"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:598207f071f9039094540d1ac8c62257355335f6e9194882d4ce475f9b50cc1f"
+          ],
+          "shadow_row_id": "shadow:22cf1263e578a637fe79e71e79df876eeb6e66d638d661a81c5cb53c327e6464",
+          "shadow_table_id": "shadow:88b2bbb9a683475340db9a4840666c9fd6fcba63563046d43913a5258ea21fe6",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 2,
+            "raw_text": "69,526"
+          },
+          "value_score": 0
+        }
+      ],
+      "document_id": "tsla_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Total revenues",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2024",
+      "expected_value": "97690000000",
+      "legacy_candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+      "legacy_evidence_id": "user_1_tsla_fy2025_10k.pdf::page_69::layout_table_2::row_7",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 69,
+      "period_match": null,
+      "proposed_candidate": null,
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 0,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 73,
+      "candidate_status": "missing_period_column",
+      "case_id": "tsla_fy2025_006",
+      "classification_reasons": [
+        "no_explicit_period_header_for_metric_row"
+      ],
+      "competing_candidates": [
+        {
+          "cell_geometry_valid": true,
+          "column_index": 2,
+          "document_id": "tsla_fy2025",
+          "header_excerpt": [],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Total revenues"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "94,827"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": "97,690"
+            }
+          ],
+          "normalized_base_value": "94827000000",
+          "normalized_metric": "total revenues",
+          "normalized_period": null,
+          "parsed_currency": null,
+          "parsed_numeric_value": "94827",
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 69,
+          "period_score": 0,
+          "raw_cell_text": "94,827",
+          "raw_column_header": null,
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Total revenues",
+          "raw_scale_context": "in millions",
+          "row_index": 7,
+          "row_label_excerpt": [
+            "Total revenues"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:51a53ecd14be095de0c904b67ee38514a84eb450d2430258034ef3ad2b3aeed0"
+          ],
+          "shadow_row_id": "shadow:8cc656219fc0336d0b4de9ff0fe51d0f71eb54cd0fb3e73329d688f242680ca9",
+          "shadow_table_id": "shadow:88b2bbb9a683475340db9a4840666c9fd6fcba63563046d43913a5258ea21fe6",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 2,
+            "raw_text": "94,827"
+          },
+          "value_score": 1
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 1,
+          "document_id": "tsla_fy2025",
+          "header_excerpt": [
+            "Revenues"
+          ],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Total revenues"
+            },
+            {
+              "column_index": 1,
+              "raw_text": "94,827"
+            },
+            {
+              "column_index": 2,
+              "raw_text": ""
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": "94827000000",
+          "normalized_metric": "total revenues",
+          "normalized_period": null,
+          "parsed_currency": null,
+          "parsed_numeric_value": "94827",
+          "parsed_scale": "million",
+          "parser_flavor": null,
+          "parser_name": "pymupdf",
+          "parser_version": "1.26.6",
+          "pdf_page": 69,
+          "period_score": 0,
+          "raw_cell_text": "94,827",
+          "raw_column_header": null,
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Total revenues",
+          "raw_scale_context": "in millions",
+          "row_index": 7,
+          "row_label_excerpt": [
+            "Total revenues"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text_unlocated",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:b6fae6489cf2856cfc9ad1989330f31ac615f24432811405f429259a6941ea57"
+          ],
+          "shadow_row_id": "shadow:50abecde554c8f53cfbef51cba7fc51ca7291bd6e85750151502dd7b58126ec7",
+          "shadow_table_id": "shadow:da3d41d26c360e70c6a0b6cf9960fe52d6192e21751692dc77dd39eed2a8459d",
+          "strict": false,
+          "table_index": 1,
+          "target_cell_excerpt": {
+            "column_index": 1,
+            "raw_text": "94,827"
+          },
+          "value_score": 1
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 0,
+          "document_id": "tsla_fy2025",
+          "header_excerpt": [],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Total automotive revenues"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "69,526"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "total automotive revenues",
+          "normalized_period": null,
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 69,
+          "period_score": 0,
+          "raw_cell_text": "Total automotive revenues",
+          "raw_column_header": null,
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Total automotive revenues",
+          "raw_scale_context": "in millions",
+          "row_index": 4,
+          "row_label_excerpt": [
+            "Total automotive revenues"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:9c5d899ae2e08920ffd6e2c89152b3a57fb7a64aafe684b705f29851685bc44a"
+          ],
+          "shadow_row_id": "shadow:22cf1263e578a637fe79e71e79df876eeb6e66d638d661a81c5cb53c327e6464",
+          "shadow_table_id": "shadow:88b2bbb9a683475340db9a4840666c9fd6fcba63563046d43913a5258ea21fe6",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 0,
+            "raw_text": "Total automotive revenues"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 1,
+          "document_id": "tsla_fy2025",
+          "header_excerpt": [],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Total automotive revenues"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "69,526"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "total automotive revenues",
+          "normalized_period": null,
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 69,
+          "period_score": 0,
+          "raw_cell_text": "",
+          "raw_column_header": null,
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Total automotive revenues",
+          "raw_scale_context": "in millions",
+          "row_index": 4,
+          "row_label_excerpt": [
+            "Total automotive revenues"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:be25ac0e1c3c9f124d9b145022755643039859c902048a4f0f5ce033b95a8b55"
+          ],
+          "shadow_row_id": "shadow:22cf1263e578a637fe79e71e79df876eeb6e66d638d661a81c5cb53c327e6464",
+          "shadow_table_id": "shadow:88b2bbb9a683475340db9a4840666c9fd6fcba63563046d43913a5258ea21fe6",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 1,
+            "raw_text": ""
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 2,
+          "document_id": "tsla_fy2025",
+          "header_excerpt": [],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Total automotive revenues"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "69,526"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": "77,070"
+            }
+          ],
+          "normalized_base_value": "69526000000",
+          "normalized_metric": "total automotive revenues",
+          "normalized_period": null,
+          "parsed_currency": null,
+          "parsed_numeric_value": "69526",
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 69,
+          "period_score": 0,
+          "raw_cell_text": "69,526",
+          "raw_column_header": null,
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Total automotive revenues",
+          "raw_scale_context": "in millions",
+          "row_index": 4,
+          "row_label_excerpt": [
+            "Total automotive revenues"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:598207f071f9039094540d1ac8c62257355335f6e9194882d4ce475f9b50cc1f"
+          ],
+          "shadow_row_id": "shadow:22cf1263e578a637fe79e71e79df876eeb6e66d638d661a81c5cb53c327e6464",
+          "shadow_table_id": "shadow:88b2bbb9a683475340db9a4840666c9fd6fcba63563046d43913a5258ea21fe6",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 2,
+            "raw_text": "69,526"
+          },
+          "value_score": 0
+        }
+      ],
+      "document_id": "tsla_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Total revenues",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2025",
+      "expected_value": "94827000000",
+      "legacy_candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+      "legacy_evidence_id": "user_1_tsla_fy2025_10k.pdf::page_69::layout_table_2::row_7",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 69,
+      "period_match": null,
+      "proposed_candidate": null,
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 1,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 123,
+      "candidate_status": "candidate_pending",
+      "case_id": "tsla_fy2025_007",
+      "classification_reasons": [
+        "unique_metric_period_value_scale_candidate"
+      ],
+      "competing_candidates": [],
+      "document_id": "tsla_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Total automotive revenues",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2025",
+      "expected_value": "69526000000",
+      "legacy_candidate_key": "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52",
+      "legacy_evidence_id": "user_1_tsla_fy2025_10k.pdf::page_55::layout_table_1::row_5",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 55,
+      "period_match": null,
+      "proposed_candidate": {
+        "cell_geometry_valid": true,
+        "column_index": 2,
+        "column_path_unique": true,
+        "document_id": "tsla_fy2025",
+        "header_excerpt": [
+          "(Dollars in millions)",
+          "2025",
+          "2024",
+          "2023",
+          "$",
+          "%",
+          "$",
+          "%"
+        ],
+        "header_path": [
+          "2025"
+        ],
+        "header_resolution": "parser_header",
+        "metric_score": 1.0,
+        "neighbor_cells": [
+          {
+            "column_index": 0,
+            "raw_text": "Total automotive revenues"
+          },
+          {
+            "column_index": 1,
+            "raw_text": ""
+          },
+          {
+            "column_index": 2,
+            "raw_text": "69,526"
+          },
+          {
+            "column_index": 3,
+            "raw_text": ""
+          },
+          {
+            "column_index": 4,
+            "raw_text": "77,070"
+          }
+        ],
+        "normalized_base_value": "69526000000",
+        "normalized_metric": "total automotive revenues",
+        "normalized_period": "FY2025",
+        "parsed_currency": "USD",
+        "parsed_numeric_value": "69526",
+        "parsed_scale": "million",
+        "parser_flavor": "stream",
+        "parser_name": "camelot",
+        "parser_version": "1.0.9",
+        "pdf_page": 55,
+        "period_score": 1,
+        "raw_cell_text": "69,526",
+        "raw_column_header": "2025",
+        "raw_currency_context": "Dollars in millions",
+        "raw_row_label": "Total automotive revenues",
+        "raw_scale_context": "Dollars in millions",
+        "row_index": 5,
+        "row_label_excerpt": [
+          "Total automotive revenues"
+        ],
+        "scale_context_bbox": null,
+        "scale_context_distance": null,
+        "scale_context_source": "table_header",
+        "scale_excerpt": "Dollars in millions",
+        "shadow_cell_ids": [
+          "shadow:55f42bfdc866ea4a20c084e52d3bf82782dd105f8e1f4297ae7d582a14f9f57c"
+        ],
+        "shadow_row_id": "shadow:6ef77ae57066c3f51c1699c0baa6ad556f8eae7d456035f7302db8fd1c3f62d1",
+        "shadow_table_id": "shadow:5b15413d2f8ae508a1408988174f3f8c423c68f9717331fcc25f47e5d90d0252",
+        "strict": true,
+        "table_index": 0,
+        "target_cell_excerpt": {
+          "column_index": 2,
+          "raw_text": "69,526"
+        },
+        "value_score": 1
+      },
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 0,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 96,
+      "candidate_status": "missing_period_column",
+      "case_id": "tsla_fy2025_007",
+      "classification_reasons": [
+        "no_explicit_period_header_for_metric_row"
+      ],
+      "competing_candidates": [
+        {
+          "cell_geometry_valid": true,
+          "column_index": 2,
+          "document_id": "tsla_fy2025",
+          "header_excerpt": [
+            "Automotive sales",
+            "$",
+            "65,821",
+            "$",
+            "72,480",
+            "$",
+            "78,509",
+            "$"
+          ],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Energy generation and\nstorage segment revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "12,771"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": "12771000000",
+          "normalized_metric": "energy generation and storage segment revenue",
+          "normalized_period": null,
+          "parsed_currency": "USD",
+          "parsed_numeric_value": "12771",
+          "parsed_scale": "million",
+          "parser_flavor": null,
+          "parser_name": "pymupdf",
+          "parser_version": "1.26.6",
+          "pdf_page": 55,
+          "period_score": 0,
+          "raw_cell_text": "12,771",
+          "raw_column_header": null,
+          "raw_currency_context": "Dollars in millions",
+          "raw_row_label": "Energy generation and\nstorage segment revenue",
+          "raw_scale_context": "Dollars in millions",
+          "row_index": 6,
+          "row_label_excerpt": [
+            "Energy generation and\nstorage segment revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text_unlocated",
+          "scale_excerpt": "Dollars in millions",
+          "shadow_cell_ids": [
+            "shadow:d6e5087da7befbf5ea735bca055ae3d47eca609ba49eeb5dbb40a1a57cf8bdd5"
+          ],
+          "shadow_row_id": "shadow:a391c185e20e1d53645d8a5e9e3e01ae4eff135ca4169041e7b158bdcccd03f5",
+          "shadow_table_id": "shadow:44b8f1e9bfa9f7a2a0c810821e31b18a510c4d68a9ddeec48d0fe0a7b3bb7578",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 2,
+            "raw_text": "12,771"
+          },
+          "value_score": 1
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 0,
+          "document_id": "tsla_fy2025",
+          "header_excerpt": [
+            "Automotive sales",
+            "$",
+            "65,821",
+            "$",
+            "72,480",
+            "$",
+            "78,509",
+            "$"
+          ],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Energy generation and\nstorage segment revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "12,771"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "energy generation and storage segment revenue",
+          "normalized_period": null,
+          "parsed_currency": "USD",
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": null,
+          "parser_name": "pymupdf",
+          "parser_version": "1.26.6",
+          "pdf_page": 55,
+          "period_score": 0,
+          "raw_cell_text": "Energy generation and\nstorage segment revenue",
+          "raw_column_header": null,
+          "raw_currency_context": "Dollars in millions",
+          "raw_row_label": "Energy generation and\nstorage segment revenue",
+          "raw_scale_context": "Dollars in millions",
+          "row_index": 6,
+          "row_label_excerpt": [
+            "Energy generation and\nstorage segment revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text_unlocated",
+          "scale_excerpt": "Dollars in millions",
+          "shadow_cell_ids": [
+            "shadow:b88f315991563a0504f726a70a4023d46b61e9c5dbba40d32a352e16b43381f4"
+          ],
+          "shadow_row_id": "shadow:a391c185e20e1d53645d8a5e9e3e01ae4eff135ca4169041e7b158bdcccd03f5",
+          "shadow_table_id": "shadow:44b8f1e9bfa9f7a2a0c810821e31b18a510c4d68a9ddeec48d0fe0a7b3bb7578",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 0,
+            "raw_text": "Energy generation and\nstorage segment revenue"
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 1,
+          "document_id": "tsla_fy2025",
+          "header_excerpt": [
+            "Automotive sales",
+            "$",
+            "65,821",
+            "$",
+            "72,480",
+            "$",
+            "78,509",
+            "$"
+          ],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 0,
+              "raw_text": "Energy generation and\nstorage segment revenue"
+            },
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "12,771"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "energy generation and storage segment revenue",
+          "normalized_period": null,
+          "parsed_currency": "USD",
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": null,
+          "parser_name": "pymupdf",
+          "parser_version": "1.26.6",
+          "pdf_page": 55,
+          "period_score": 0,
+          "raw_cell_text": "",
+          "raw_column_header": null,
+          "raw_currency_context": "Dollars in millions",
+          "raw_row_label": "Energy generation and\nstorage segment revenue",
+          "raw_scale_context": "Dollars in millions",
+          "row_index": 6,
+          "row_label_excerpt": [
+            "Energy generation and\nstorage segment revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text_unlocated",
+          "scale_excerpt": "Dollars in millions",
+          "shadow_cell_ids": [
+            "shadow:76f7d1313aa4c33a0a3f23ea5230f8a21774ad32ac97210db9045ff71eafe7ae"
+          ],
+          "shadow_row_id": "shadow:a391c185e20e1d53645d8a5e9e3e01ae4eff135ca4169041e7b158bdcccd03f5",
+          "shadow_table_id": "shadow:44b8f1e9bfa9f7a2a0c810821e31b18a510c4d68a9ddeec48d0fe0a7b3bb7578",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 1,
+            "raw_text": ""
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": false,
+          "column_index": 3,
+          "document_id": "tsla_fy2025",
+          "header_excerpt": [
+            "Automotive sales",
+            "$",
+            "65,821",
+            "$",
+            "72,480",
+            "$",
+            "78,509",
+            "$"
+          ],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 1,
+              "raw_text": ""
+            },
+            {
+              "column_index": 2,
+              "raw_text": "12,771"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": ""
+            },
+            {
+              "column_index": 5,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "energy generation and storage segment revenue",
+          "normalized_period": null,
+          "parsed_currency": "USD",
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": null,
+          "parser_name": "pymupdf",
+          "parser_version": "1.26.6",
+          "pdf_page": 55,
+          "period_score": 0,
+          "raw_cell_text": "",
+          "raw_column_header": null,
+          "raw_currency_context": "Dollars in millions",
+          "raw_row_label": "Energy generation and\nstorage segment revenue",
+          "raw_scale_context": "Dollars in millions",
+          "row_index": 6,
+          "row_label_excerpt": [
+            "Energy generation and\nstorage segment revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text_unlocated",
+          "scale_excerpt": "Dollars in millions",
+          "shadow_cell_ids": [
+            "shadow:436a195f1a63276b8edb073506e24d32c1af3cd0abb4a9b31e8b2ea850229ac5"
+          ],
+          "shadow_row_id": "shadow:a391c185e20e1d53645d8a5e9e3e01ae4eff135ca4169041e7b158bdcccd03f5",
+          "shadow_table_id": "shadow:44b8f1e9bfa9f7a2a0c810821e31b18a510c4d68a9ddeec48d0fe0a7b3bb7578",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 3,
+            "raw_text": ""
+          },
+          "value_score": 0
+        },
+        {
+          "cell_geometry_valid": true,
+          "column_index": 4,
+          "document_id": "tsla_fy2025",
+          "header_excerpt": [
+            "Automotive sales",
+            "$",
+            "65,821",
+            "$",
+            "72,480",
+            "$",
+            "78,509",
+            "$"
+          ],
+          "header_path": [],
+          "header_resolution": "unresolved",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 2,
+              "raw_text": "12,771"
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": ""
+            },
+            {
+              "column_index": 5,
+              "raw_text": ""
+            },
+            {
+              "column_index": 6,
+              "raw_text": "10,086"
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "energy generation and storage segment revenue",
+          "normalized_period": null,
+          "parsed_currency": "USD",
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": null,
+          "parser_name": "pymupdf",
+          "parser_version": "1.26.6",
+          "pdf_page": 55,
+          "period_score": 0,
+          "raw_cell_text": "",
+          "raw_column_header": null,
+          "raw_currency_context": "Dollars in millions",
+          "raw_row_label": "Energy generation and\nstorage segment revenue",
+          "raw_scale_context": "Dollars in millions",
+          "row_index": 6,
+          "row_label_excerpt": [
+            "Energy generation and\nstorage segment revenue"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "page_text_unlocated",
+          "scale_excerpt": "Dollars in millions",
+          "shadow_cell_ids": [
+            "shadow:33239f8286eef15f754711925f968bfe6485869ba753345c534fa4f8975dbd74"
+          ],
+          "shadow_row_id": "shadow:a391c185e20e1d53645d8a5e9e3e01ae4eff135ca4169041e7b158bdcccd03f5",
+          "shadow_table_id": "shadow:44b8f1e9bfa9f7a2a0c810821e31b18a510c4d68a9ddeec48d0fe0a7b3bb7578",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 4,
+            "raw_text": ""
+          },
+          "value_score": 0
+        }
+      ],
+      "document_id": "tsla_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Energy generation and storage segment revenue",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2025",
+      "expected_value": "12771000000",
+      "legacy_candidate_key": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+      "legacy_evidence_id": "user_1_tsla_fy2025_10k.pdf::page_55::table_1",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 55,
+      "period_match": null,
+      "proposed_candidate": null,
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 1,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 12,
+      "candidate_status": "numeric_parse_failed",
+      "case_id": "v_fy2025_006",
+      "classification_reasons": [
+        "matching_metric_period_cell_is_not_numeric"
+      ],
+      "competing_candidates": [
+        {
+          "cell_geometry_valid": true,
+          "column_index": 3,
+          "document_id": "v_fy2025",
+          "header_excerpt": [
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "header_path": [
+            "2024"
+          ],
+          "header_resolution": "parser_header",
+          "metric_score": 1.0,
+          "neighbor_cells": [
+            {
+              "column_index": 1,
+              "raw_text": "40,000"
+            },
+            {
+              "column_index": 2,
+              "raw_text": ""
+            },
+            {
+              "column_index": 3,
+              "raw_text": ""
+            },
+            {
+              "column_index": 4,
+              "raw_text": ""
+            },
+            {
+              "column_index": 5,
+              "raw_text": ""
+            }
+          ],
+          "normalized_base_value": null,
+          "normalized_metric": "net revenue",
+          "normalized_period": "FY2024",
+          "parsed_currency": null,
+          "parsed_numeric_value": null,
+          "parsed_scale": "million",
+          "parser_flavor": "stream",
+          "parser_name": "camelot",
+          "parser_version": "1.0.9",
+          "pdf_page": 75,
+          "period_score": 1,
+          "raw_cell_text": "",
+          "raw_column_header": "2024",
+          "raw_currency_context": "in millions",
+          "raw_row_label": "Net revenue...............................................................................................................................  $",
+          "raw_scale_context": "in millions",
+          "row_index": 3,
+          "row_label_excerpt": [
+            "Net revenue...............................................................................................................................  $"
+          ],
+          "scale_context_bbox": null,
+          "scale_context_distance": null,
+          "scale_context_source": "table_header",
+          "scale_excerpt": "in millions",
+          "shadow_cell_ids": [
+            "shadow:3b040b9b381e2ecd3cb74455bb4ed6ba64a086f141a759d6824e2d4ab99fcef9"
+          ],
+          "shadow_row_id": "shadow:d8a3bd59b727d17f9f262f836bb4c41e8de1bb70e8d89c7e6f63d8e9bfaa1b61",
+          "shadow_table_id": "shadow:9752abcbba8c98c5e1225ddd91c7544a9a645fb1c31f911d7f48d208a8347ca3",
+          "strict": false,
+          "table_index": 0,
+          "target_cell_excerpt": {
+            "column_index": 3,
+            "raw_text": ""
+          },
+          "value_score": 0
+        }
+      ],
+      "document_id": "v_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Net revenue",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2024",
+      "expected_value": "35926000000",
+      "legacy_candidate_key": "candidate:v1:21f924b9c1b33d1e7caa949ac3dcca366d20e99a1aacf2b9d84be8e762ad6240",
+      "legacy_evidence_id": "user_1_v_fy2025_annual_report.pdf::page_75::table_1",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 75,
+      "period_match": null,
+      "proposed_candidate": null,
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 0,
+      "value_match": null,
+      "verified": false
+    },
+    {
+      "candidate_count": 12,
+      "candidate_status": "candidate_pending",
+      "case_id": "v_fy2025_006",
+      "classification_reasons": [
+        "unique_metric_period_value_scale_candidate"
+      ],
+      "competing_candidates": [],
+      "document_id": "v_fy2025",
+      "document_match": null,
+      "expected_currency": null,
+      "expected_metric": "Net revenue",
+      "expected_normalized_scale": "1",
+      "expected_period": "FY2025",
+      "expected_value": "40000000000",
+      "legacy_candidate_key": "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83",
+      "legacy_evidence_id": "user_1_v_fy2025_annual_report.pdf::page_75::table_1::row_4",
+      "metric_match": null,
+      "page_match": null,
+      "pdf_page": 75,
+      "period_match": null,
+      "proposed_candidate": {
+        "cell_geometry_valid": true,
+        "column_index": 1,
+        "column_path_unique": true,
+        "document_id": "v_fy2025",
+        "header_excerpt": [
+          "2025",
+          "2024",
+          "2023"
+        ],
+        "header_path": [
+          "2025"
+        ],
+        "header_resolution": "parser_header",
+        "metric_score": 1.0,
+        "neighbor_cells": [
+          {
+            "column_index": 0,
+            "raw_text": "Net revenue...............................................................................................................................  $"
+          },
+          {
+            "column_index": 1,
+            "raw_text": "40,000"
+          },
+          {
+            "column_index": 2,
+            "raw_text": ""
+          },
+          {
+            "column_index": 3,
+            "raw_text": ""
+          }
+        ],
+        "normalized_base_value": "40000000000",
+        "normalized_metric": "net revenue",
+        "normalized_period": "FY2025",
+        "parsed_currency": null,
+        "parsed_numeric_value": "40000",
+        "parsed_scale": "million",
+        "parser_flavor": "stream",
+        "parser_name": "camelot",
+        "parser_version": "1.0.9",
+        "pdf_page": 75,
+        "period_score": 1,
+        "raw_cell_text": "40,000",
+        "raw_column_header": "2025",
+        "raw_currency_context": "in millions",
+        "raw_row_label": "Net revenue...............................................................................................................................  $",
+        "raw_scale_context": "in millions",
+        "row_index": 3,
+        "row_label_excerpt": [
+          "Net revenue...............................................................................................................................  $"
+        ],
+        "scale_context_bbox": null,
+        "scale_context_distance": null,
+        "scale_context_source": "table_header",
+        "scale_excerpt": "in millions",
+        "shadow_cell_ids": [
+          "shadow:f5a719ec01a22849d8793d1d9319be94a53b7ff0c65f1fdda8b08b9a5eadc8ed"
+        ],
+        "shadow_row_id": "shadow:d8a3bd59b727d17f9f262f836bb4c41e8de1bb70e8d89c7e6f63d8e9bfaa1b61",
+        "shadow_table_id": "shadow:9752abcbba8c98c5e1225ddd91c7544a9a645fb1c31f911d7f48d208a8347ca3",
+        "strict": true,
+        "table_index": 0,
+        "target_cell_excerpt": {
+          "column_index": 1,
+          "raw_text": "40,000"
+        },
+        "value_score": 1
+      },
+      "review_status": "pending",
+      "reviewed_at": null,
+      "reviewer": null,
+      "scale_match": null,
+      "source_index": 1,
+      "value_match": null,
+      "verified": false
+    }
+  ]
+}

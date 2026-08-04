@@ -1,0 +1,12 @@
+{
+  "binder_implementation": "frozen_pair_identity_binding.v1",
+  "calculator_implementation": "src.finance.primitive_tools.growth_rate",
+  "decimal_precision": 4,
+  "input_sha256": {
+    "nf_opt_09_binder": "4b6de9d900988865a227f5dc0dceb40c9081bb397c39c2086e98b93d3af716ea",
+    "nf_opt_10_calculator": "4ef9dbed04557ffe06fdd32a69f9fc44fc3ad233091a705aff88b628d5456d36",
+    "r5_complete_pairs": "a4e3c3b386b46efa166a066acfce22decde90df5465d4466f966b537dd83e9f5"
+  },
+  "operation_registry_version": "growth_rate.v1",
+  "rounding": "Decimal quantize existing calculator"
+}

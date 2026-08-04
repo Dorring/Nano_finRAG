@@ -1,0 +1,293 @@
+{
+  "golden_hashes": {
+    "actual": {
+      "corpus_hash": "edd4e8c1aac89ea1480dcb723857b487cb6038218d0a924b749eb6ec8fd13448",
+      "golden_manifest_sha256": "e6a0d344b9034c0661fb9c42f410ee73dde8917e155c10473ffa49f648d9664f",
+      "negative_evidence_hash": "bbfac5cf45cb515250df42148ade28a97a7c21a0cefdcfb1cd414eaa5086e707",
+      "question_hash": "3b1433ea7546020ec7ab90a9cb700bb58d90aa040f65e6610d6bc5b1330e97b7",
+      "reference_answer_hash": "181c9ed45ae904353431ef6d427b139e1d5f0b8f437c2fdd9f25e2f9b7abb7a7",
+      "review_status_hash": "398d0653886f3d573e43002d3dc93ad8a5cd7ae3b0768f5087a4897b6750146f",
+      "source_identity_hash": "18eb4461f135cba49ae2565f444cc8ca61a26df80b17cd30759d67ff71fcf19c"
+    },
+    "expected": {
+      "corpus_hash": "edd4e8c1aac89ea1480dcb723857b487cb6038218d0a924b749eb6ec8fd13448",
+      "negative_evidence_hash": "bbfac5cf45cb515250df42148ade28a97a7c21a0cefdcfb1cd414eaa5086e707",
+      "question_hash": "3b1433ea7546020ec7ab90a9cb700bb58d90aa040f65e6610d6bc5b1330e97b7",
+      "reference_answer_hash": "181c9ed45ae904353431ef6d427b139e1d5f0b8f437c2fdd9f25e2f9b7abb7a7",
+      "review_status_hash": "398d0653886f3d573e43002d3dc93ad8a5cd7ae3b0768f5087a4897b6750146f",
+      "source_identity_hash": "18eb4461f135cba49ae2565f444cc8ca61a26df80b17cd30759d67ff71fcf19c"
+    },
+    "matches": {
+      "corpus_hash": true,
+      "golden_manifest_sha256": true,
+      "negative_evidence_hash": true,
+      "question_hash": true,
+      "reference_answer_hash": true,
+      "review_status_hash": true,
+      "source_identity_hash": true
+    }
+  },
+  "passed": true,
+  "pdf_integrity": {
+    "acceptance": {
+      "document_count": 8,
+      "duplicate_document_count": 0,
+      "file_hash_match_count": 8,
+      "passed": true,
+      "production_document_record_count": 8,
+      "registry_hash_match_count": 8,
+      "source_file_count": 8
+    },
+    "artifact_schema": "nf-eval-02/source-file-audit/v1",
+    "benchmark_id": "financial-rag-v1",
+    "corpus_hash": "edd4e8c1aac89ea1480dcb723857b487cb6038218d0a924b749eb6ec8fd13448",
+    "documents": [
+      {
+        "chunk_count": 2433,
+        "company": "Apple",
+        "document_id": "aapl_fy2025",
+        "duplicate_document_count": 0,
+        "file_hash_matches_manifest": true,
+        "file_sha256": "108590052c3ba5400c63660d787fe7ed4e43868292946d7a7facebe9ab7d1aab",
+        "file_size_bytes": 816938,
+        "filename": "aapl_fy2025_10k.pdf",
+        "manifest_file_sha256": "108590052c3ba5400c63660d787fe7ed4e43868292946d7a7facebe9ab7d1aab",
+        "page_count": 80,
+        "passed": true,
+        "production_document_record": true,
+        "registry_chunk_count": 2433,
+        "registry_document_ids": [
+          "22ae9c99e7164a5da4ef6f29b57ee59c"
+        ],
+        "registry_file_hash_matches_manifest": true,
+        "registry_file_hashes": [
+          "108590052c3ba5400c63660d787fe7ed4e43868292946d7a7facebe9ab7d1aab"
+        ],
+        "registry_page_count": 80,
+        "registry_ready_count": 1,
+        "runtime_manifest_matches_corpus": true,
+        "source_file_present": true,
+        "source_path_field_available": false,
+        "source_resolution": "runtime_manifest_pdf_directory",
+        "tenant_id": 1
+      },
+      {
+        "chunk_count": 14677,
+        "company": "JPMorganChase",
+        "document_id": "jpm_fy2025",
+        "duplicate_document_count": 0,
+        "file_hash_matches_manifest": true,
+        "file_sha256": "2a3ee9733eafd01e7667c5540fbd797c4cc688d14f00638a877f5623d1316d9d",
+        "file_size_bytes": 4928865,
+        "filename": "jpm_fy2025_annual_report.pdf",
+        "manifest_file_sha256": "2a3ee9733eafd01e7667c5540fbd797c4cc688d14f00638a877f5623d1316d9d",
+        "page_count": 364,
+        "passed": true,
+        "production_document_record": true,
+        "registry_chunk_count": 14677,
+        "registry_document_ids": [
+          "d99de8373d5b4442a89eef10aa2d04b9"
+        ],
+        "registry_file_hash_matches_manifest": true,
+        "registry_file_hashes": [
+          "2a3ee9733eafd01e7667c5540fbd797c4cc688d14f00638a877f5623d1316d9d"
+        ],
+        "registry_page_count": 364,
+        "registry_ready_count": 1,
+        "runtime_manifest_matches_corpus": true,
+        "source_file_present": true,
+        "source_path_field_available": false,
+        "source_resolution": "runtime_manifest_pdf_directory",
+        "tenant_id": 1
+      },
+      {
+        "chunk_count": 5921,
+        "company": "The Coca-Cola Company",
+        "document_id": "ko_fy2025",
+        "duplicate_document_count": 0,
+        "file_hash_matches_manifest": true,
+        "file_sha256": "3cf15f041ac30a094d868f383272d5129762dc4ef457413b95dcdae09e560015",
+        "file_size_bytes": 8335449,
+        "filename": "ko_fy2025_10k.pdf",
+        "manifest_file_sha256": "3cf15f041ac30a094d868f383272d5129762dc4ef457413b95dcdae09e560015",
+        "page_count": 192,
+        "passed": true,
+        "production_document_record": true,
+        "registry_chunk_count": 5921,
+        "registry_document_ids": [
+          "a2a4b3cb6a14439aa48c684b968f7598"
+        ],
+        "registry_file_hash_matches_manifest": true,
+        "registry_file_hashes": [
+          "3cf15f041ac30a094d868f383272d5129762dc4ef457413b95dcdae09e560015"
+        ],
+        "registry_page_count": 192,
+        "registry_ready_count": 1,
+        "runtime_manifest_matches_corpus": true,
+        "source_file_present": true,
+        "source_path_field_available": false,
+        "source_resolution": "runtime_manifest_pdf_directory",
+        "tenant_id": 1
+      },
+      {
+        "chunk_count": 2128,
+        "company": "Microsoft",
+        "document_id": "msft_fy2025",
+        "duplicate_document_count": 0,
+        "file_hash_matches_manifest": true,
+        "file_sha256": "1fb4c08a3aa6de381aec07aab6588964534c1a291d66046f950153ccdb84c3d4",
+        "file_size_bytes": 625531,
+        "filename": "msft_fy2025_annual_report.pdf",
+        "manifest_file_sha256": "1fb4c08a3aa6de381aec07aab6588964534c1a291d66046f950153ccdb84c3d4",
+        "page_count": 90,
+        "passed": true,
+        "production_document_record": true,
+        "registry_chunk_count": 2128,
+        "registry_document_ids": [
+          "350f17f270b441188497bf005bf0154c"
+        ],
+        "registry_file_hash_matches_manifest": true,
+        "registry_file_hashes": [
+          "1fb4c08a3aa6de381aec07aab6588964534c1a291d66046f950153ccdb84c3d4"
+        ],
+        "registry_page_count": 90,
+        "registry_ready_count": 1,
+        "runtime_manifest_matches_corpus": true,
+        "source_file_present": true,
+        "source_path_field_available": false,
+        "source_resolution": "runtime_manifest_pdf_directory",
+        "tenant_id": 1
+      },
+      {
+        "chunk_count": 5983,
+        "company": "NVIDIA",
+        "document_id": "nvda_fy2025",
+        "duplicate_document_count": 0,
+        "file_hash_matches_manifest": true,
+        "file_sha256": "757b344ab62ba282f6e44e0702e8ce5f190d88fb23b5e0a2beaf4cb277a395cc",
+        "file_size_bytes": 49970589,
+        "filename": "nvda_fy2025_annual_report.pdf",
+        "manifest_file_sha256": "757b344ab62ba282f6e44e0702e8ce5f190d88fb23b5e0a2beaf4cb277a395cc",
+        "page_count": 181,
+        "passed": true,
+        "production_document_record": true,
+        "registry_chunk_count": 5983,
+        "registry_document_ids": [
+          "ef6ad44ce43a4d479807bbe0a3a22c6f"
+        ],
+        "registry_file_hash_matches_manifest": true,
+        "registry_file_hashes": [
+          "757b344ab62ba282f6e44e0702e8ce5f190d88fb23b5e0a2beaf4cb277a395cc"
+        ],
+        "registry_page_count": 181,
+        "registry_ready_count": 1,
+        "runtime_manifest_matches_corpus": true,
+        "source_file_present": true,
+        "source_path_field_available": false,
+        "source_resolution": "runtime_manifest_pdf_directory",
+        "tenant_id": 1
+      },
+      {
+        "chunk_count": 5837,
+        "company": "Pfizer",
+        "document_id": "pfe_fy2024",
+        "duplicate_document_count": 0,
+        "file_hash_matches_manifest": true,
+        "file_sha256": "8ee0b08f2f2c9326a3fab44642507c7907b53e75cc5a12839e8cde2228ed0229",
+        "file_size_bytes": 2134236,
+        "filename": "pfe_fy2024_10k.pdf",
+        "manifest_file_sha256": "8ee0b08f2f2c9326a3fab44642507c7907b53e75cc5a12839e8cde2228ed0229",
+        "page_count": 165,
+        "passed": true,
+        "production_document_record": true,
+        "registry_chunk_count": 5837,
+        "registry_document_ids": [
+          "8d3ea9226598445286d9ccc05cce875f"
+        ],
+        "registry_file_hash_matches_manifest": true,
+        "registry_file_hashes": [
+          "8ee0b08f2f2c9326a3fab44642507c7907b53e75cc5a12839e8cde2228ed0229"
+        ],
+        "registry_page_count": 165,
+        "registry_ready_count": 1,
+        "runtime_manifest_matches_corpus": true,
+        "source_file_present": true,
+        "source_path_field_available": false,
+        "source_resolution": "runtime_manifest_pdf_directory",
+        "tenant_id": 1
+      },
+      {
+        "chunk_count": 4419,
+        "company": "Tesla",
+        "document_id": "tsla_fy2025",
+        "duplicate_document_count": 0,
+        "file_hash_matches_manifest": true,
+        "file_sha256": "5e33e314f47e85380f2e6a7d84481bd965e528f6614363c6b8fbce1a1d6df523",
+        "file_size_bytes": 583500,
+        "filename": "tsla_fy2025_10k.pdf",
+        "manifest_file_sha256": "5e33e314f47e85380f2e6a7d84481bd965e528f6614363c6b8fbce1a1d6df523",
+        "page_count": 140,
+        "passed": true,
+        "production_document_record": true,
+        "registry_chunk_count": 4419,
+        "registry_document_ids": [
+          "c190f3b76fd646cebc383c2f7c836ade"
+        ],
+        "registry_file_hash_matches_manifest": true,
+        "registry_file_hashes": [
+          "5e33e314f47e85380f2e6a7d84481bd965e528f6614363c6b8fbce1a1d6df523"
+        ],
+        "registry_page_count": 140,
+        "registry_ready_count": 1,
+        "runtime_manifest_matches_corpus": true,
+        "source_file_present": true,
+        "source_path_field_available": false,
+        "source_resolution": "runtime_manifest_pdf_directory",
+        "tenant_id": 1
+      },
+      {
+        "chunk_count": 3210,
+        "company": "Visa",
+        "document_id": "v_fy2025",
+        "duplicate_document_count": 0,
+        "file_hash_matches_manifest": true,
+        "file_sha256": "1fb927051da5346b0f5c3a9447a3bdf42c5ea9259000c94398db5965ddbcc7dd",
+        "file_size_bytes": 11310316,
+        "filename": "v_fy2025_annual_report.pdf",
+        "manifest_file_sha256": "1fb927051da5346b0f5c3a9447a3bdf42c5ea9259000c94398db5965ddbcc7dd",
+        "page_count": 136,
+        "passed": true,
+        "production_document_record": true,
+        "registry_chunk_count": 3210,
+        "registry_document_ids": [
+          "4e30dfa10b2c4bcb9669aedc60dcec85"
+        ],
+        "registry_file_hash_matches_manifest": true,
+        "registry_file_hashes": [
+          "1fb927051da5346b0f5c3a9447a3bdf42c5ea9259000c94398db5965ddbcc7dd"
+        ],
+        "registry_page_count": 136,
+        "registry_ready_count": 1,
+        "runtime_manifest_matches_corpus": true,
+        "source_file_present": true,
+        "source_path_field_available": false,
+        "source_resolution": "runtime_manifest_pdf_directory",
+        "tenant_id": 1
+      }
+    ],
+    "registry_path_type": "local_document_registry",
+    "registry_source_path_field_available": false,
+    "runtime_manifest_path_type": "runtime_corpus_manifest",
+    "tenant_id": 1
+  },
+  "recomputed_page_counts": {
+    "aapl_fy2025": 80,
+    "jpm_fy2025": 364,
+    "ko_fy2025": 192,
+    "msft_fy2025": 90,
+    "nvda_fy2025": 181,
+    "pfe_fy2024": 165,
+    "tsla_fy2025": 140,
+    "v_fy2025": 136
+  }
+}

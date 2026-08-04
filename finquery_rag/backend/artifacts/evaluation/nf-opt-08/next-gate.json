@@ -1,0 +1,7 @@
+{
+  "decision": "structured_reingestion_parser_mapping_blocked",
+  "next_gate": "manual_shadow_evidence_mapping_review",
+  "production_switch_allowed": false,
+  "reason": "gate_a_blocked_pending_manual_old_to_new_evidence_mapping",
+  "supersedes": "default_conda_parser_unavailable_conclusion"
+}

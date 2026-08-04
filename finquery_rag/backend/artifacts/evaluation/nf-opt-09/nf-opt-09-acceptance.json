@@ -1,0 +1,14 @@
+{
+  "decision": "complete_pair_binder_shadow_recorded",
+  "binder_allowed": "shadow_complete_pairs_only",
+  "calculator_allowed": false,
+  "production_switch_allowed": false,
+  "case_attempted": 4,
+  "strict_binding_pass_count": 4,
+  "expected_answer_used_for_binding": false,
+  "expected_operand_used_for_binding": false,
+  "calculator_calls": 0,
+  "model_calls": 0,
+  "answer_generation_calls": 0,
+  "production_index_writes": 0
+}
