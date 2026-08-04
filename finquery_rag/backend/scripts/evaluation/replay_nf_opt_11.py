@@ -1,7 +1,8 @@
 """Read-only replay for the reviewed complete-pair Binder/Calculator shadows."""
 
 from __future__ import annotations
-import hashlib, json
+import hashlib
+import json
 from decimal import Decimal
 from pathlib import Path
 from src.finance.primitive_tools import growth_rate
