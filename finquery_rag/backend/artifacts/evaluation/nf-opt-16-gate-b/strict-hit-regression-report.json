@@ -1,0 +1,27 @@
+{
+  "new_source_instances": [
+    [
+      "pfe_fy2024_003",
+      0
+    ]
+  ],
+  "regressed_all_gold_cases": [
+    "ko_fy2025_003",
+    "msft_fy2025_009",
+    "tsla_fy2025_001"
+  ],
+  "regressed_source_instances": [
+    [
+      "ko_fy2025_003",
+      0
+    ],
+    [
+      "msft_fy2025_009",
+      0
+    ],
+    [
+      "tsla_fy2025_001",
+      0
+    ]
+  ]
+}

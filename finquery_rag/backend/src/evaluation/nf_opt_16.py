@@ -59,3 +59,42 @@ def stable_smoke_sample(rows: Sequence[Mapping[str, Any]], *, limit: int = 8) ->
     if len(ordered) < limit:
         raise ValueError(f"expected at least {limit} usable candidate rows")
     return ordered[:limit]
+
+
+def build_sparse_inverted_index(
+    lexical_rows: Sequence[Mapping[str, float]],
+) -> dict[str, list[tuple[int, float]]]:
+    """Build a deterministic in-memory inverted index from lexical weights."""
+    inverted: dict[str, list[tuple[int, float]]] = {}
+    for row_index, weights in enumerate(lexical_rows):
+        for token_id, weight in weights.items():
+            numeric_weight = float(weight)
+            if numeric_weight <= 0.0:
+                continue
+            inverted.setdefault(str(token_id), []).append((row_index, numeric_weight))
+    return inverted
+
+
+def sparse_rank(
+    *,
+    query_weights: Mapping[str, float],
+    inverted_index: Mapping[str, Sequence[tuple[int, float]]],
+    candidate_keys: Sequence[str],
+    limit: int,
+) -> list[tuple[int, float]]:
+    """Score a lexical query by sparse dot product with stable tie-breaking."""
+    scores: dict[int, float] = {}
+    for token_id, query_weight in query_weights.items():
+        if float(query_weight) <= 0.0:
+            continue
+        for row_index, candidate_weight in inverted_index.get(str(token_id), ()):
+            scores[row_index] = scores.get(row_index, 0.0) + float(query_weight) * candidate_weight
+    ordered = sorted(scores.items(), key=lambda item: (-item[1], candidate_keys[item[0]]))
+    return ordered[:limit]
+
+
+def rank_scores(scores: Sequence[float], candidate_keys: Sequence[str], *, limit: int) -> list[tuple[int, float]]:
+    """Rank an already-scored candidate set with the same stable identity tie-break."""
+    if len(scores) != len(candidate_keys):
+        raise ValueError("score and candidate-key counts must match")
+    return sorted(enumerate(float(score) for score in scores), key=lambda item: (-item[1], candidate_keys[item[0]]))[:limit]

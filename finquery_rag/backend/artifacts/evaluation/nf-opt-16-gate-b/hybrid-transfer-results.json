@@ -1,0 +1,73 @@
+{
+  "final_top_k": 5,
+  "metrics": {
+    "baseline_control_source_recall_at_5": {
+      "matched_sources": 13,
+      "source_count": 80
+    },
+    "baseline_final_all_gold_case_count": 10,
+    "baseline_final_source_recall_at_5": {
+      "matched_sources": 13,
+      "source_count": 80
+    },
+    "bge_m3_sparse_source_recall_at_20": {
+      "matched_sources": 12,
+      "source_count": 80
+    },
+    "bge_m3_sparse_source_recall_at_200": {
+      "matched_sources": 37,
+      "source_count": 80
+    },
+    "bge_m3_sparse_source_recall_at_40": {
+      "matched_sources": 14,
+      "source_count": 80
+    },
+    "hybrid_rrf_source_recall_at_40": {
+      "matched_sources": 16,
+      "source_count": 80
+    },
+    "new_final_hits": 1,
+    "regressed_final_all_gold_cases": 3,
+    "regressed_final_hits": 3,
+    "shadow_final_all_gold_case_count": 8,
+    "shadow_final_source_recall_at_5": {
+      "matched_sources": 11,
+      "source_count": 80
+    }
+  },
+  "no_answer_cases": [
+    {
+      "case_id": "aapl_fy2025_008",
+      "final_behavior": "baseline_unchanged"
+    },
+    {
+      "case_id": "jpm_fy2025_008",
+      "final_behavior": "baseline_unchanged"
+    },
+    {
+      "case_id": "ko_fy2025_008",
+      "final_behavior": "baseline_unchanged"
+    },
+    {
+      "case_id": "msft_fy2025_008",
+      "final_behavior": "baseline_unchanged"
+    },
+    {
+      "case_id": "nvda_fy2025_008",
+      "final_behavior": "baseline_unchanged"
+    },
+    {
+      "case_id": "pfe_fy2024_008",
+      "final_behavior": "baseline_unchanged"
+    },
+    {
+      "case_id": "tsla_fy2025_008",
+      "final_behavior": "baseline_unchanged"
+    },
+    {
+      "case_id": "v_fy2025_008",
+      "final_behavior": "baseline_unchanged"
+    }
+  ],
+  "reranker_input_source": "rrf_all"
+}
