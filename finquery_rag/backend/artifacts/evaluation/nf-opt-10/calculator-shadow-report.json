@@ -1,0 +1,88 @@
+{
+  "records": [
+    {
+      "case_id": "aapl_fy2025_006",
+      "operation": "growth_rate",
+      "binding_status": "bound",
+      "calculator_status": "executed",
+      "result_ratio": "0.0643",
+      "result_percent": "6.4300",
+      "unit": "ratio",
+      "details": {
+        "current": "416161000000",
+        "previous": "391035000000"
+      },
+      "evidence_identity": [
+        [
+          "shadow:bc46756af5962c863789ceb1467cb78b30e1bfe781cefdb0279400dfe7101f7f"
+        ],
+        [
+          "shadow:bd8768e92b9ef1e1bcc32919badf4e716321e26a1516cb3aab25e21119b95b38"
+        ]
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "operation": "growth_rate",
+      "binding_status": "bound",
+      "calculator_status": "executed",
+      "result_ratio": "0.1054",
+      "result_percent": "10.5400",
+      "unit": "ratio",
+      "details": {
+        "current": "4424900000000",
+        "previous": "4002814000000"
+      },
+      "evidence_identity": [
+        [
+          "shadow:40a266ada71a5e8a71b08f8504de233aedcd344d5ab4f15b0c510d222267ee37"
+        ],
+        [
+          "shadow:369a511985b40c16ad4fd3bc7dd11a5fc21a70af49eb1df0d15fdb744e1d8b31"
+        ]
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "operation": "growth_rate",
+      "binding_status": "bound",
+      "calculator_status": "executed",
+      "result_ratio": "0.0187",
+      "result_percent": "1.8700",
+      "unit": "ratio",
+      "details": {
+        "current": "47941000000",
+        "previous": "47061000000"
+      },
+      "evidence_identity": [
+        [
+          "shadow:7b52ac9d515207d80956bff8a2ab8c870602183ae9cfad2f8d9b47ba1994836b"
+        ],
+        [
+          "shadow:690c598c2933cf3bf1e4adde98806bbff13f21d296e01a55907de889759297a8"
+        ]
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_006",
+      "operation": "growth_rate",
+      "binding_status": "bound",
+      "calculator_status": "executed",
+      "result_ratio": "0.0684",
+      "result_percent": "6.8400",
+      "unit": "ratio",
+      "details": {
+        "current": "63627000000",
+        "previous": "59553000000"
+      },
+      "evidence_identity": [
+        [
+          "shadow:5386caefeaafe1dfb247049115d74774d514873c4f759e7b74ffc924463198a6"
+        ],
+        [
+          "shadow:e4366a18b841b524c319921a9c07c9891dd1dad274b75ffa18d66be9f01acb65"
+        ]
+      ]
+    }
+  ]
+}
