@@ -1,0 +1,13 @@
+{
+  "cuda_visible_devices": "4",
+  "dense_mode_requested": false,
+  "device": "cuda:0",
+  "model_inputs_exclude_expected_fields": true,
+  "model_name": "BAAI/bge-m3",
+  "model_snapshot_path": "/mnt/disk/mxf/.cache/huggingface/hub/models--BAAI--bge-m3/snapshots/5617a9f61b028005a4858fdac845db406aefb181",
+  "model_snapshot_sha256": "26159e7ad065073448460117eb24b7a4572f6f4e78eadff65dc0a11c052449fa",
+  "multi_vector_mode_requested": true,
+  "offline_mode": true,
+  "sparse_mode_requested": true,
+  "use_fp16": true
+}
