@@ -1,0 +1,22 @@
+{
+  "answer_generation_calls": 0,
+  "answerable_case_count": 64,
+  "artifact_schema": "nf-opt-16/gate-a/acceptance/v1",
+  "baseline_master_merge_commit": "4d5bcaf8bdc459bbc0329b0666949d6297592958",
+  "baseline_tree_sha": "6c7410e6984b3234f9bbaa02ea7f7edbf98ffa57",
+  "candidate_store_access_mode": "sqlite_read_only",
+  "decision": "bge_m3_sparse_shadow_capability_validated",
+  "embedding_model_calls": 2,
+  "gold_fields_read_for_model_inputs": false,
+  "input_hashes": {
+    "corpus_sha256": "0969f1a73ded67f71c427cf4bfe41fbff475353ee90eb56fc3a575353228dc4c",
+    "questions_sha256": "fd3d9df48c642bbace9b114ca43461dae1717cab94d7fe6d12ffb95bf3ffe4f0"
+  },
+  "model_network_calls": 0,
+  "next_gate": "nf-opt-16-gate-b-frozen-sparse-shadow",
+  "no_answer_case_count": 8,
+  "production_behavior_changed": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "question_count": 72
+}

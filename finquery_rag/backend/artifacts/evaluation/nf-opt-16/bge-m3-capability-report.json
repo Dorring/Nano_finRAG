@@ -1,0 +1,30 @@
+{
+  "candidate_output": {
+    "colbert_row_count": 8,
+    "colbert_token_count": 399,
+    "dense_output_ignored": true,
+    "returned_keys": [
+      "colbert_vecs",
+      "dense_vecs",
+      "lexical_weights"
+    ],
+    "sparse_nonzero_count": 285,
+    "sparse_row_count": 8
+  },
+  "elapsed_ms": 6318.571996176615,
+  "multi_vector_full_corpus_index_built": false,
+  "multi_vector_next_step": "measure_only_after_frozen_sparse_shadow_result",
+  "query_output": {
+    "colbert_row_count": 1,
+    "colbert_token_count": 14,
+    "dense_output_ignored": true,
+    "returned_keys": [
+      "colbert_vecs",
+      "dense_vecs",
+      "lexical_weights"
+    ],
+    "sparse_nonzero_count": 13,
+    "sparse_row_count": 1
+  },
+  "sparse_shadow_retrieval_eligible": true
+}

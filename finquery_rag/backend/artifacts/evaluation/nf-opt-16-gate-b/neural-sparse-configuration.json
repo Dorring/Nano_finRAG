@@ -1,0 +1,15 @@
+{
+  "batch_size": 8,
+  "candidate_corpus": "existing chunk_store read-only, eight frozen documents",
+  "colbert_vectors_used": false,
+  "configuration_frozen_before_benchmark_run": true,
+  "dense_vectors_used": false,
+  "final_top_k": 5,
+  "hybrid": "current Dense Top-20 + BGE-M3 Sparse Top-20, equal RRF k=60",
+  "passage_max_length": 192,
+  "reranker": "current heuristic reranker, RRF full ordered list",
+  "retriever": "BAAI/bge-m3 lexical_weights only",
+  "scope": "frozen question document_scope",
+  "sparse_score": "sum(query_lexical_weight * candidate_lexical_weight)",
+  "sparse_top_k": 200
+}

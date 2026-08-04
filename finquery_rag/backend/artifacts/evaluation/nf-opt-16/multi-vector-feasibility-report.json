@@ -1,0 +1,28 @@
+{
+  "candidate_colbert": {
+    "colbert_row_count": 8,
+    "colbert_token_count": 399,
+    "dense_output_ignored": true,
+    "returned_keys": [
+      "colbert_vecs",
+      "dense_vecs",
+      "lexical_weights"
+    ],
+    "sparse_nonzero_count": 285,
+    "sparse_row_count": 8
+  },
+  "query_colbert": {
+    "colbert_row_count": 1,
+    "colbert_token_count": 14,
+    "dense_output_ignored": true,
+    "returned_keys": [
+      "colbert_vecs",
+      "dense_vecs",
+      "lexical_weights"
+    ],
+    "sparse_nonzero_count": 13,
+    "sparse_row_count": 1
+  },
+  "reason": "Gate A validates output semantics only; full-corpus late-interaction indexing is a separate frozen decision.",
+  "status": "capability_confirmed_not_indexed"
+}

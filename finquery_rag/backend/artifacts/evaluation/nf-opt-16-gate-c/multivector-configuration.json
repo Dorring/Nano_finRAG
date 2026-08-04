@@ -1,0 +1,7 @@
+{
+  "configuration_frozen_before_benchmark_run": true,
+  "dense_vectors_used": false,
+  "first_stage": "BGE-M3 sparse lexical top-200",
+  "gold_fields_read_for_selection": false,
+  "second_stage": "BGE-M3 ColBERT late interaction top-20"
+}
