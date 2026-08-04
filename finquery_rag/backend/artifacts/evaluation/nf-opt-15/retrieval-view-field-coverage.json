@@ -1,0 +1,139 @@
+{
+  "by_evidence_type": {
+    "front_matter": {
+      "currency": {
+        "present": 0,
+        "total": 6
+      },
+      "document_fiscal_year": {
+        "present": 6,
+        "total": 6
+      },
+      "metric": {
+        "present": 0,
+        "total": 6
+      },
+      "period": {
+        "present": 2,
+        "total": 6
+      },
+      "scale": {
+        "present": 0,
+        "total": 6
+      },
+      "statement_or_section": {
+        "present": 0,
+        "total": 6
+      },
+      "view_count": 6
+    },
+    "table": {
+      "currency": {
+        "present": 788,
+        "total": 1532
+      },
+      "document_fiscal_year": {
+        "present": 1532,
+        "total": 1532
+      },
+      "metric": {
+        "present": 0,
+        "total": 1532
+      },
+      "period": {
+        "present": 1032,
+        "total": 1532
+      },
+      "scale": {
+        "present": 630,
+        "total": 1532
+      },
+      "statement_or_section": {
+        "present": 0,
+        "total": 1532
+      },
+      "view_count": 1532
+    },
+    "table_cell": {
+      "currency": {
+        "present": 1109,
+        "total": 6289
+      },
+      "document_fiscal_year": {
+        "present": 6289,
+        "total": 6289
+      },
+      "metric": {
+        "present": 0,
+        "total": 6289
+      },
+      "period": {
+        "present": 2053,
+        "total": 6289
+      },
+      "scale": {
+        "present": 2036,
+        "total": 6289
+      },
+      "statement_or_section": {
+        "present": 0,
+        "total": 6289
+      },
+      "view_count": 6289
+    },
+    "table_row": {
+      "currency": {
+        "present": 3596,
+        "total": 16451
+      },
+      "document_fiscal_year": {
+        "present": 16451,
+        "total": 16451
+      },
+      "metric": {
+        "present": 3052,
+        "total": 16451
+      },
+      "period": {
+        "present": 1284,
+        "total": 16451
+      },
+      "scale": {
+        "present": 2322,
+        "total": 16451
+      },
+      "statement_or_section": {
+        "present": 0,
+        "total": 16451
+      },
+      "view_count": 16451
+    },
+    "text": {
+      "currency": {
+        "present": 2564,
+        "total": 20330
+      },
+      "document_fiscal_year": {
+        "present": 20330,
+        "total": 20330
+      },
+      "metric": {
+        "present": 0,
+        "total": 20330
+      },
+      "period": {
+        "present": 4915,
+        "total": 20330
+      },
+      "scale": {
+        "present": 2059,
+        "total": 20330
+      },
+      "statement_or_section": {
+        "present": 7651,
+        "total": 20330
+      },
+      "view_count": 20330
+    }
+  }
+}

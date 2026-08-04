@@ -1,0 +1,28 @@
+{
+  "candidate_identity_preserved": true,
+  "citation_identity": [
+    "candidate_key",
+    "evidence_id",
+    "document_id",
+    "pdf_page"
+  ],
+  "view_fields": [
+    "document_field",
+    "section_field",
+    "metric_field",
+    "period_field",
+    "unit_field",
+    "value_field",
+    "field_lineage"
+  ],
+  "view_identity_inputs_exclude": [
+    "case_id",
+    "expected_source",
+    "expected_metric",
+    "expected_period",
+    "expected_value",
+    "reference_answer",
+    "benchmark_source_index"
+  ],
+  "view_schema": "nf-opt-15/retrieval-view/v1"
+}
