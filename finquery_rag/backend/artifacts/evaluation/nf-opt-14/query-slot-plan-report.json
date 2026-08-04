@@ -1,0 +1,1738 @@
+{
+  "case_count": 64,
+  "cases": [
+    {
+      "case_id": "aapl_fy2025_001",
+      "contract_status": "complete",
+      "document_scope": [
+        "aapl_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "total net sales",
+          "normalized_metric_tokens": [
+            "total",
+            "net",
+            "sales"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "aapl_fy2025_002",
+      "contract_status": "complete",
+      "document_scope": [
+        "aapl_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Services net sales",
+          "normalized_metric_tokens": [
+            "services",
+            "net",
+            "sales"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "aapl_fy2025_003",
+      "contract_status": "complete",
+      "document_scope": [
+        "aapl_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "gross margin percentage",
+          "normalized_metric_tokens": [
+            "gross",
+            "margin",
+            "percentage"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "aapl_fy2025_004",
+      "contract_status": "complete",
+      "document_scope": [
+        "aapl_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "iPhone net sales",
+          "normalized_metric_tokens": [
+            "iphone",
+            "net",
+            "sales"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "aapl_fy2025_005",
+      "contract_status": "complete",
+      "document_scope": [
+        "aapl_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Mac net sales",
+          "normalized_metric_tokens": [
+            "mac",
+            "net",
+            "sales"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "aapl_fy2025_006",
+      "contract_status": "incomplete",
+      "document_scope": [
+        "aapl_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": "growth_rate",
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 0,
+      "slots": []
+    },
+    {
+      "case_id": "aapl_fy2025_007",
+      "contract_status": "incomplete",
+      "document_scope": [
+        "aapl_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 0,
+      "slots": []
+    },
+    {
+      "case_id": "aapl_fy2025_009",
+      "contract_status": "complete",
+      "document_scope": [
+        "aapl_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 2,
+      "slots": [
+        {
+          "metric_phrase": "iPhone net sales",
+          "normalized_metric_tokens": [
+            "iphone",
+            "net",
+            "sales"
+          ],
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "fact_period_1"
+        },
+        {
+          "metric_phrase": "iPhone net sales",
+          "normalized_metric_tokens": [
+            "iphone",
+            "net",
+            "sales"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact_period_2"
+        }
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_001",
+      "contract_status": "complete",
+      "document_scope": [
+        "jpm_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "total assets",
+          "normalized_metric_tokens": [
+            "total",
+            "assets"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_002",
+      "contract_status": "complete",
+      "document_scope": [
+        "jpm_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "total liabilities",
+          "normalized_metric_tokens": [
+            "total",
+            "liabilities"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_003",
+      "contract_status": "complete",
+      "document_scope": [
+        "jpm_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "net income",
+          "normalized_metric_tokens": [
+            "net",
+            "income"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_004",
+      "contract_status": "complete",
+      "document_scope": [
+        "jpm_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Consumer & Community Banking net income",
+          "normalized_metric_tokens": [
+            "consumer",
+            "community",
+            "banking",
+            "net",
+            "income"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_005",
+      "contract_status": "complete",
+      "document_scope": [
+        "jpm_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Commercial & Investment Bank net income",
+          "normalized_metric_tokens": [
+            "commercial",
+            "investment",
+            "bank",
+            "net",
+            "income"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "contract_status": "incomplete",
+      "document_scope": [
+        "jpm_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": "growth_rate",
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 0,
+      "slots": []
+    },
+    {
+      "case_id": "jpm_fy2025_007",
+      "contract_status": "incomplete",
+      "document_scope": [
+        "jpm_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 0,
+      "slots": []
+    },
+    {
+      "case_id": "jpm_fy2025_009",
+      "contract_status": "complete",
+      "document_scope": [
+        "jpm_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 2,
+      "slots": [
+        {
+          "metric_phrase": "Consumer & Community Banking net income",
+          "normalized_metric_tokens": [
+            "consumer",
+            "community",
+            "banking",
+            "net",
+            "income"
+          ],
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "fact_period_1"
+        },
+        {
+          "metric_phrase": "Consumer & Community Banking net income",
+          "normalized_metric_tokens": [
+            "consumer",
+            "community",
+            "banking",
+            "net",
+            "income"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact_period_2"
+        }
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_001",
+      "contract_status": "complete",
+      "document_scope": [
+        "ko_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "net operating revenues",
+          "normalized_metric_tokens": [
+            "net",
+            "operating",
+            "revenues"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_002",
+      "contract_status": "complete",
+      "document_scope": [
+        "ko_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "operating income",
+          "normalized_metric_tokens": [
+            "operating",
+            "income"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_003",
+      "contract_status": "complete",
+      "document_scope": [
+        "ko_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "net income attributable to shareowners of The Coca-Cola Company",
+          "normalized_metric_tokens": [
+            "net",
+            "income",
+            "attributable",
+            "shareowners",
+            "the",
+            "coca",
+            "cola",
+            "company"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_004",
+      "contract_status": "complete",
+      "document_scope": [
+        "ko_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "EMEA total net operating revenues",
+          "normalized_metric_tokens": [
+            "emea",
+            "total",
+            "net",
+            "operating",
+            "revenues"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_005",
+      "contract_status": "complete",
+      "document_scope": [
+        "ko_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "North America total net operating revenues",
+          "normalized_metric_tokens": [
+            "north",
+            "america",
+            "total",
+            "net",
+            "operating",
+            "revenues"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "contract_status": "incomplete",
+      "document_scope": [
+        "ko_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": "growth_rate",
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 0,
+      "slots": []
+    },
+    {
+      "case_id": "ko_fy2025_007",
+      "contract_status": "incomplete",
+      "document_scope": [
+        "ko_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": "percentage_share",
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 0,
+      "slots": []
+    },
+    {
+      "case_id": "ko_fy2025_009",
+      "contract_status": "complete",
+      "document_scope": [
+        "ko_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "EMEA total net operating revenues",
+          "normalized_metric_tokens": [
+            "emea",
+            "total",
+            "net",
+            "operating",
+            "revenues"
+          ],
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_001",
+      "contract_status": "complete",
+      "document_scope": [
+        "msft_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "total revenue",
+          "normalized_metric_tokens": [
+            "total",
+            "revenue"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_002",
+      "contract_status": "complete",
+      "document_scope": [
+        "msft_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Productivity and Business Processes revenue",
+          "normalized_metric_tokens": [
+            "productivity",
+            "and",
+            "business",
+            "processes",
+            "revenue"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_003",
+      "contract_status": "complete",
+      "document_scope": [
+        "msft_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "More Personal Computing revenue",
+          "normalized_metric_tokens": [
+            "more",
+            "personal",
+            "computing",
+            "revenue"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_004",
+      "contract_status": "complete",
+      "document_scope": [
+        "msft_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Intelligent Cloud revenue",
+          "normalized_metric_tokens": [
+            "intelligent",
+            "cloud",
+            "revenue"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_005",
+      "contract_status": "complete",
+      "document_scope": [
+        "msft_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Productivity and Business Processes operating income",
+          "normalized_metric_tokens": [
+            "productivity",
+            "and",
+            "business",
+            "processes",
+            "operating",
+            "income"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "contract_status": "incomplete",
+      "document_scope": [
+        "msft_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": "growth_rate",
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 0,
+      "slots": []
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "contract_status": "incomplete",
+      "document_scope": [
+        "msft_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": "percentage_share",
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 0,
+      "slots": []
+    },
+    {
+      "case_id": "msft_fy2025_009",
+      "contract_status": "complete",
+      "document_scope": [
+        "msft_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 2,
+      "slots": [
+        {
+          "metric_phrase": "Intelligent Cloud revenue",
+          "normalized_metric_tokens": [
+            "intelligent",
+            "cloud",
+            "revenue"
+          ],
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "fact_period_1"
+        },
+        {
+          "metric_phrase": "Intelligent Cloud revenue",
+          "normalized_metric_tokens": [
+            "intelligent",
+            "cloud",
+            "revenue"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact_period_2"
+        }
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_001",
+      "contract_status": "complete",
+      "document_scope": [
+        "nvda_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "total revenue",
+          "normalized_metric_tokens": [
+            "total",
+            "revenue"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_002",
+      "contract_status": "complete",
+      "document_scope": [
+        "nvda_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Gaming revenue",
+          "normalized_metric_tokens": [
+            "gaming",
+            "revenue"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_003",
+      "contract_status": "complete",
+      "document_scope": [
+        "nvda_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "GAAP gross margin percentage",
+          "normalized_metric_tokens": [
+            "gaap",
+            "gross",
+            "margin",
+            "percentage"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_004",
+      "contract_status": "complete",
+      "document_scope": [
+        "nvda_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Data Center revenue",
+          "normalized_metric_tokens": [
+            "data",
+            "center",
+            "revenue"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_005",
+      "contract_status": "complete",
+      "document_scope": [
+        "nvda_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Automotive revenue",
+          "normalized_metric_tokens": [
+            "automotive",
+            "revenue"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_006",
+      "contract_status": "incomplete",
+      "document_scope": [
+        "nvda_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": "growth_rate",
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 0,
+      "slots": []
+    },
+    {
+      "case_id": "nvda_fy2025_007",
+      "contract_status": "incomplete",
+      "document_scope": [
+        "nvda_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 0,
+      "slots": []
+    },
+    {
+      "case_id": "nvda_fy2025_009",
+      "contract_status": "complete",
+      "document_scope": [
+        "nvda_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 2,
+      "slots": [
+        {
+          "metric_phrase": "Data Center revenue",
+          "normalized_metric_tokens": [
+            "data",
+            "center",
+            "revenue"
+          ],
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "fact_period_1"
+        },
+        {
+          "metric_phrase": "Data Center revenue",
+          "normalized_metric_tokens": [
+            "data",
+            "center",
+            "revenue"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact_period_2"
+        }
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_001",
+      "contract_status": "complete",
+      "document_scope": [
+        "pfe_fy2024"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "total revenues",
+          "normalized_metric_tokens": [
+            "total",
+            "revenues"
+          ],
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_002",
+      "contract_status": "complete",
+      "document_scope": [
+        "pfe_fy2024"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Comirnaty revenue",
+          "normalized_metric_tokens": [
+            "comirnaty",
+            "revenue"
+          ],
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_003",
+      "contract_status": "complete",
+      "document_scope": [
+        "pfe_fy2024"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Eliquis revenue",
+          "normalized_metric_tokens": [
+            "eliquis",
+            "revenue"
+          ],
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_004",
+      "contract_status": "complete",
+      "document_scope": [
+        "pfe_fy2024"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Paxlovid revenue",
+          "normalized_metric_tokens": [
+            "paxlovid",
+            "revenue"
+          ],
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_005",
+      "contract_status": "complete",
+      "document_scope": [
+        "pfe_fy2024"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Prevnar family revenue",
+          "normalized_metric_tokens": [
+            "prevnar",
+            "family",
+            "revenue"
+          ],
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_006",
+      "contract_status": "incomplete",
+      "document_scope": [
+        "pfe_fy2024"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": "growth_rate",
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 0,
+      "slots": []
+    },
+    {
+      "case_id": "pfe_fy2024_007",
+      "contract_status": "incomplete",
+      "document_scope": [
+        "pfe_fy2024"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 0,
+      "slots": []
+    },
+    {
+      "case_id": "pfe_fy2024_009",
+      "contract_status": "complete",
+      "document_scope": [
+        "pfe_fy2024"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 2,
+      "slots": [
+        {
+          "metric_phrase": "Paxlovid revenue",
+          "normalized_metric_tokens": [
+            "paxlovid",
+            "revenue"
+          ],
+          "period": "FY2023",
+          "role": "fact",
+          "slot_id": "fact_period_1"
+        },
+        {
+          "metric_phrase": "Paxlovid revenue",
+          "normalized_metric_tokens": [
+            "paxlovid",
+            "revenue"
+          ],
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "fact_period_2"
+        }
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_001",
+      "contract_status": "complete",
+      "document_scope": [
+        "tsla_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "total revenues",
+          "normalized_metric_tokens": [
+            "total",
+            "revenues"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_002",
+      "contract_status": "complete",
+      "document_scope": [
+        "tsla_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Services and other revenue",
+          "normalized_metric_tokens": [
+            "services",
+            "and",
+            "other",
+            "revenue"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_003",
+      "contract_status": "complete",
+      "document_scope": [
+        "tsla_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Automotive regulatory credits revenue",
+          "normalized_metric_tokens": [
+            "automotive",
+            "regulatory",
+            "credits",
+            "revenue"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_004",
+      "contract_status": "complete",
+      "document_scope": [
+        "tsla_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Tesla's Total automotive revenues",
+          "normalized_metric_tokens": [
+            "tesla",
+            "total",
+            "automotive",
+            "revenues"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_005",
+      "contract_status": "complete",
+      "document_scope": [
+        "tsla_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Energy generation and storage segment revenue",
+          "normalized_metric_tokens": [
+            "energy",
+            "generation",
+            "and",
+            "storage",
+            "segment",
+            "revenue"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_006",
+      "contract_status": "incomplete",
+      "document_scope": [
+        "tsla_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": "growth_rate",
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 0,
+      "slots": []
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "contract_status": "incomplete",
+      "document_scope": [
+        "tsla_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 0,
+      "slots": []
+    },
+    {
+      "case_id": "tsla_fy2025_009",
+      "contract_status": "complete",
+      "document_scope": [
+        "tsla_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Tesla's Total automotive revenues",
+          "normalized_metric_tokens": [
+            "tesla",
+            "total",
+            "automotive",
+            "revenues"
+          ],
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "v_fy2025_001",
+      "contract_status": "complete",
+      "document_scope": [
+        "v_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "net revenue",
+          "normalized_metric_tokens": [
+            "net",
+            "revenue"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "v_fy2025_002",
+      "contract_status": "complete",
+      "document_scope": [
+        "v_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "total volume",
+          "normalized_metric_tokens": [
+            "total",
+            "volume"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "v_fy2025_003",
+      "contract_status": "incomplete",
+      "document_scope": [
+        "v_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 0,
+      "slots": []
+    },
+    {
+      "case_id": "v_fy2025_004",
+      "contract_status": "complete",
+      "document_scope": [
+        "v_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "payments volume",
+          "normalized_metric_tokens": [
+            "payments",
+            "volume"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "v_fy2025_005",
+      "contract_status": "complete",
+      "document_scope": [
+        "v_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 1,
+      "slots": [
+        {
+          "metric_phrase": "Visa's GAAP net income",
+          "normalized_metric_tokens": [
+            "visa",
+            "gaap",
+            "net",
+            "income"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact"
+        }
+      ]
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "contract_status": "incomplete",
+      "document_scope": [
+        "v_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": "growth_rate",
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 0,
+      "slots": []
+    },
+    {
+      "case_id": "v_fy2025_007",
+      "contract_status": "incomplete",
+      "document_scope": [
+        "v_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 0,
+      "slots": []
+    },
+    {
+      "case_id": "v_fy2025_009",
+      "contract_status": "complete",
+      "document_scope": [
+        "v_fy2025"
+      ],
+      "expected_fields_read": false,
+      "one_candidate_may_cover_multiple_slots": true,
+      "operation": null,
+      "query_fields_read": [
+        "case_id",
+        "question",
+        "document_scope"
+      ],
+      "required_evidence_count": 2,
+      "slots": [
+        {
+          "metric_phrase": "payments volume",
+          "normalized_metric_tokens": [
+            "payments",
+            "volume"
+          ],
+          "period": "FY2024",
+          "role": "fact",
+          "slot_id": "fact_period_1"
+        },
+        {
+          "metric_phrase": "payments volume",
+          "normalized_metric_tokens": [
+            "payments",
+            "volume"
+          ],
+          "period": "FY2025",
+          "role": "fact",
+          "slot_id": "fact_period_2"
+        }
+      ]
+    }
+  ]
+}

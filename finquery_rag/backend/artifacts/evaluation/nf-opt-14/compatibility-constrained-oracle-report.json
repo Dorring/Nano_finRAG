@@ -1,0 +1,18 @@
+{
+  "baseline_strict_final_source_recall_at_5": {
+    "matched_sources": 13,
+    "source_count": 80
+  },
+  "compatibility_constrained_oracle_at_5": {
+    "matched_sources": 10,
+    "source_count": 80
+  },
+  "deterministic_selector_recall_at_5": {
+    "matched_sources": 13,
+    "source_count": 80
+  },
+  "gold_promoted_reranker_pool_ceiling_at_5": {
+    "matched_sources": 24,
+    "source_count": 80
+  }
+}
