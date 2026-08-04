@@ -1,0 +1,18 @@
+{
+  "alignment_status_counts": {
+    "ambiguous_alignment": 118,
+    "exact_alignment": 247,
+    "missing_native_span": 1051
+  },
+  "answer_generation_calls": 0,
+  "automatic_verified_count": 0,
+  "binder_calls": 0,
+  "calculator_calls": 0,
+  "decision": "mineru_native_geometry_alignment_recorded",
+  "gold_fields_used_for_alignment": false,
+  "input_hashes_verified": true,
+  "manual_review_allowed": false,
+  "model_calls": 0,
+  "production_index_writes": 0,
+  "production_switch_allowed": false
+}
