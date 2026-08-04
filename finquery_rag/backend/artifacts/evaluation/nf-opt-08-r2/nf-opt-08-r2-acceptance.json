@@ -6,9 +6,24 @@
   "calculator_calls": 0,
   "case_source_unique": true,
   "control_set_hash": "3cf02bba3b5eda155b5204522b7018693d2a74847552227c0c303636946db7a5",
+  "cross_artifact_identity_references_valid": true,
   "decision": "structured_reingestion_parser_mapping_blocked",
+  "gap_status_counts": {
+    "ambiguous": 0,
+    "candidate_pending": 0,
+    "missing_period_column": 3,
+    "missing_row": 7,
+    "missing_scale": 8,
+    "numeric_parse_failed": 4,
+    "wrong_table_candidate": 0
+  },
   "input_hashes_verified": true,
+  "manual_review_allowed": false,
   "model_calls": 0,
   "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "reviewed_at_non_null_count": 0,
+  "reviewer_non_null_count": 0,
+  "sorted_by_case_source": true,
   "source_count": 22
 }

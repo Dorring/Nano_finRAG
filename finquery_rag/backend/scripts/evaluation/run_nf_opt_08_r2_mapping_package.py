@@ -1,8 +1,9 @@
-"""Build pending-only NF-OPT-08 R2 manual mapping review material."""
+"""NF-OPT-08 R2 R1: build a pending-only, auditable mapping review package."""
 
 from __future__ import annotations
 
 import hashlib
+import importlib.metadata
 import json
 import re
 from dataclasses import dataclass
@@ -10,33 +11,31 @@ from decimal import Decimal
 from pathlib import Path
 from typing import Any
 
-from scripts.evaluation.run_nf_opt_08_shadow_reingestion import (
-    CONTROL_HASH,
-    ROOT,
-    _input_integrity,
-)
+from scripts.evaluation.run_nf_opt_08_shadow_reingestion import CONTROL_HASH, ROOT, _input_integrity
 from src.evaluation.nf_opt_08 import stable_shadow_id
 
 OUT = ROOT / "artifacts/evaluation/nf-opt-08-r2"
-SCALE = {"thousand": Decimal("1000"), "million": Decimal("1000000"), "billion": Decimal("1000000000"), "trillion": Decimal("1000000000000")}
 NUMBER = re.compile(r"^\(?\$?\s*([\d,]+(?:\.\d+)?)\)?$")
 YEAR = re.compile(r"\b(?:FY\s*)?(20\d{2})\b", re.I)
+SCALE = {"thousand": Decimal("1000"), "million": Decimal("1000000"), "billion": Decimal("1000000000"), "trillion": Decimal("1000000000000")}
 
 
 @dataclass
 class Table:
-    parser: str
+    parser_name: str
+    parser_version: str
+    parser_flavor: str | None
     document_id: str
-    page: int
-    index: int
+    pdf_page: int
+    table_index: int
     bbox: tuple[float, float, float, float] | None
     matrix: list[list[str]]
+    bboxes: list[list[tuple[float, float, float, float] | None]]
     headers: list[str]
-    scale_text: str | None
+    raw_scale_context: str | None
     currency: str | None
     scale: str | None
-    cell_bboxes: list[list[tuple[float, float, float, float] | None]]
-    table_id: str = ""
+    shadow_table_id: str = ""
 
 
 def write(name: str, value: Any) -> None:
@@ -44,233 +43,218 @@ def write(name: str, value: Any) -> None:
     (OUT / name).write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
 
 
-def norm(value: str) -> str:
-    return re.sub(r"[^a-z0-9]+", " ", value.casefold()).strip()
+def normalized(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", str(value).casefold()).strip()
+
+
+def text_hash(value: str) -> str:
+    return hashlib.sha256(normalized(value).encode()).hexdigest()
 
 
 def period(value: str) -> str | None:
-    found = YEAR.search(value)
+    found = YEAR.search(str(value))
     return f"FY{found.group(1)}" if found else None
 
 
-def numeric(value: str) -> Decimal | None:
-    found = NUMBER.match(value.strip())
+def number(value: str) -> Decimal | None:
+    found = NUMBER.match(str(value).strip())
     if not found:
         return None
-    amount = Decimal(found.group(1).replace(",", ""))
-    return -amount if value.strip().startswith("(") else amount
+    parsed = Decimal(found.group(1).replace(",", ""))
+    return -parsed if str(value).strip().startswith("(") else parsed
 
 
-def context(page_text: str) -> tuple[str | None, str | None, str | None]:
-    match = re.search(r"(?P<currency>\$|USD)?\s*(?:in|\$ in)\s+(?P<scale>thousands?|millions?|billions?|trillions?)", page_text, re.I)
-    if not match:
+def page_context(text: str) -> tuple[str | None, str | None, str | None]:
+    found = re.search(r"(?P<currency>\$|USD)?\s*(?:in|\$ in)\s+(?P<scale>thousands?|millions?|billions?|trillions?)", text, re.I)
+    if not found:
         return None, None, None
-    raw = match.group(0)
-    scale = match.group("scale").casefold().rstrip("s")
-    return raw, "USD" if match.group("currency") == "$" else None, scale
+    return found.group(0), "USD" if found.group("currency") in {"$", "USD"} else None, found.group("scale").casefold().rstrip("s")
 
 
-def row_label(row: list[str]) -> str:
-    labels = []
-    for cell in row:
-        if numeric(cell) is not None:
-            break
-        if cell.strip() and not period(cell):
-            labels.append(cell.strip())
-    return " ".join(labels) or (row[0].strip() if row else "")
-
-
-def headers_from_matrix(matrix: list[list[str]]) -> list[str]:
-    for row in matrix[:3]:
+def matrix_headers(matrix: list[list[str]]) -> list[str]:
+    for row in matrix[:4]:
         if sum(period(cell) is not None for cell in row) >= 2:
             return row
     return []
 
 
-def parse_tables(document_id: str, pdf_path: Path, pages: list[int]) -> list[Table]:
+def label_for(row: list[str]) -> str:
+    fields = []
+    for cell in row:
+        if number(cell) is not None:
+            break
+        if cell and not period(cell):
+            fields.append(cell)
+    return " ".join(fields).strip()
+
+
+def camelot_tables(document_id: str, pdf: Path, pdf_page: int) -> list[Table]:
     import camelot
-    import pymupdf
     from src.services.process_tables import format_table, is_usable_table_markdown
 
-    out: list[Table] = []
-    wanted = ",".join(str(page) for page in sorted(set(pages)))
-    camelot_tables = camelot.read_pdf(str(pdf_path), pages=wanted, flavor="stream", edge_tol=50, row_tol=10)
-    if len(camelot_tables) == 0:
-        camelot_tables = camelot.read_pdf(str(pdf_path), pages=wanted, flavor="lattice")
-    by_page: dict[int, int] = {}
-    for table in camelot_tables:
-        markdown = format_table(table)
-        if not is_usable_table_markdown(markdown):
-            continue
-        page = int(table.page)
-        matrix = [[str(cell or "").strip() for cell in row] for row in table.df.values.tolist()]
-        index = by_page.get(page, 0)
-        by_page[page] = index + 1
-        bbox = tuple(round(float(x), 3) for x in getattr(table, "_bbox", ()) or ()) or None
-        cell_bboxes = [
-            [
-                (round(float(cell.x1), 3), round(float(cell.y1), 3), round(float(cell.x2), 3), round(float(cell.y2), 3))
-                for cell in row
-            ]
-            for row in table.cells
-        ]
-        out.append(Table("camelot", document_id, page, index, bbox, matrix, headers_from_matrix(matrix), None, None, None, cell_bboxes))
-    with pymupdf.open(pdf_path) as pdf:
-        for page_no in sorted(set(pages)):
-            page = pdf[page_no - 1]
-            raw_scale, currency, scale = context(page.get_text("text"))
-            for index, table in enumerate(page.find_tables().tables):
-                matrix = [[str(cell or "").strip() for cell in row] for row in table.extract()]
-                headers = [str(name or "").strip() for name in table.header.names] if table.header else []
-                bbox = tuple(round(float(x), 3) for x in table.bbox)
-                width = max((len(row) for row in matrix), default=0)
-                flat = list(table.cells)
-                cell_bboxes = [
-                    [
-                        tuple(round(float(x), 3) for x in flat[row_index * width + column_index])
-                        if row_index * width + column_index < len(flat) and flat[row_index * width + column_index] else None
-                        for column_index in range(len(row))
-                    ]
-                    for row_index, row in enumerate(matrix)
-                ]
-                out.append(Table("pymupdf", document_id, page_no, index, bbox, matrix, headers, raw_scale, currency, scale, cell_bboxes))
-    for table in out:
-        matrix = [[norm(cell) for cell in row] for row in table.matrix]
-        table.table_id = stable_shadow_id(table.document_id, table.page, table.parser, table.bbox, matrix)
-    return out
+    versions = importlib.metadata.version("camelot-py")
+    parsed = camelot.read_pdf(str(pdf), pages=str(pdf_page), flavor="stream", edge_tol=50, row_tol=10)
+    flavor = "stream"
+    usable = [item for item in parsed if is_usable_table_markdown(format_table(item))]
+    if not usable:
+        parsed = camelot.read_pdf(str(pdf), pages=str(pdf_page), flavor="lattice")
+        flavor = "lattice"
+        usable = [item for item in parsed if is_usable_table_markdown(format_table(item))]
+    tables = []
+    for index, item in enumerate(usable):
+        matrix = [[str(cell or "").strip() for cell in row] for row in item.df.values.tolist()]
+        bboxes = [[(round(float(cell.x1), 3), round(float(cell.y1), 3), round(float(cell.x2), 3), round(float(cell.y2), 3)) for cell in row] for row in item.cells]
+        bbox = tuple(round(float(x), 3) for x in getattr(item, "_bbox", ()) or ()) or None
+        tables.append(Table("camelot", versions, flavor, document_id, pdf_page, index, bbox, matrix, bboxes, matrix_headers(matrix), None, None, None))
+    return tables
+
+
+def pymupdf_tables(document_id: str, pdf: Path, pdf_page: int) -> list[Table]:
+    import pymupdf
+
+    with pymupdf.open(pdf) as document:
+        page = document[pdf_page - 1]
+        raw_scale, currency, scale = page_context(page.get_text("text"))
+        tables = []
+        for index, item in enumerate(page.find_tables().tables):
+            matrix = [[str(cell or "").strip() for cell in row] for row in item.extract()]
+            width = max((len(row) for row in matrix), default=0)
+            flat = list(item.cells)
+            bboxes = [[tuple(round(float(x), 3) for x in flat[row_index * width + column_index]) if row_index * width + column_index < len(flat) and flat[row_index * width + column_index] else None for column_index in range(len(row))] for row_index, row in enumerate(matrix)]
+            headers = [str(value or "").strip() for value in item.header.names] if item.header else []
+            tables.append(Table("pymupdf", pymupdf.__version__, None, document_id, pdf_page, index, tuple(round(float(x), 3) for x in item.bbox), matrix, bboxes, headers, raw_scale, currency, scale))
+    return tables
+
+
+def prepare_tables(source_paths: dict[str, Path], contracts: list[dict[str, Any]]) -> list[Table]:
+    pages: dict[str, set[int]] = {}
+    for item in contracts:
+        pages.setdefault(item["document_id"], set()).add(int(item["pdf_page"]))
+    tables = []
+    for doc, selected in pages.items():
+        for page in sorted(selected):
+            tables.extend(camelot_tables(doc, source_paths[doc], page))
+            tables.extend(pymupdf_tables(doc, source_paths[doc], page))
+    for table in tables:
+        table.shadow_table_id = stable_shadow_id(table.document_id, table.pdf_page, table.parser_name, table.parser_version, table.parser_flavor, table.bbox, [[normalized(cell) for cell in row] for row in table.matrix])
+    return tables
 
 
 def source_contract(label: dict[str, Any], source_index: int) -> dict[str, Any]:
     source = label["expected_sources"][source_index]
-    operand = next((x for x in label["calculation"]["operands"] if x["source_index"] == source_index), {})
-    return {
-        "case_id": label["case_id"], "source_index": source_index,
-        "legacy_candidate_key": source["candidate_key"], "legacy_evidence_id": source["evidence_id"],
-        "document_id": source["document_id"], "pdf_page": source["candidate_pdf_page"],
-        "expected_metric": operand.get("metric") or source.get("row_label"),
-        "expected_period": operand.get("period") or source.get("period"),
-        "expected_value": operand.get("value"), "expected_currency": source.get("currency"),
-        "expected_normalized_scale": source.get("scale"),
-    }
+    operand = next((item for item in label["calculation"]["operands"] if item["source_index"] == source_index), {})
+    return {"case_id": label["case_id"], "source_index": source_index, "legacy_candidate_key": source["candidate_key"], "legacy_evidence_id": source["evidence_id"], "document_id": source["document_id"], "pdf_page": source["candidate_pdf_page"], "expected_metric": operand.get("metric") or source.get("row_label"), "expected_period": operand.get("period") or source.get("period"), "expected_value": operand.get("value"), "expected_currency": source.get("currency"), "expected_normalized_scale": source.get("scale")}
 
 
-def candidates(contract: dict[str, Any], tables: list[Table]) -> list[dict[str, Any]]:
-    expected = norm(str(contract["expected_metric"] or ""))
-    expected_tokens = set(expected.split())
-    expected_period = str(contract["expected_period"] or "")
+def option(contract: dict[str, Any], table: Table, row_index: int, column_index: int) -> dict[str, Any]:
+    row = table.matrix[row_index]
+    raw_label = label_for(row)
+    metric = normalized(raw_label)
+    expected_metric = normalized(str(contract["expected_metric"] or ""))
+    expected_tokens = set(expected_metric.split())
+    metric_tokens = set(metric.split())
+    metric_match = bool(expected_tokens) and expected_tokens.issubset(metric_tokens)
+    headers = table.headers or matrix_headers(table.matrix)
+    raw_header = headers[column_index] if column_index < len(headers) else ""
+    raw_cell = row[column_index]
+    parsed = number(raw_cell)
+    normalized_value = parsed * SCALE[table.scale] if parsed is not None and table.scale in SCALE else None
     expected_value = Decimal(str(contract["expected_value"])) if contract.get("expected_value") else None
-    options = []
+    row_id = stable_shadow_id(table.shadow_table_id, row_index, [normalized(cell) for cell in row])
+    cell_id = stable_shadow_id(row_id, column_index, normalized(raw_cell))
+    metric_score = 1.0 if metric_match else len(expected_tokens & metric_tokens) / max(1, len(expected_tokens))
+    period_match = period(raw_header) == contract["expected_period"]
+    value_match = normalized_value == expected_value if normalized_value is not None and expected_value is not None else False
+    strict = all((metric_match, period_match, parsed is not None, table.scale is not None, value_match))
+    return {"shadow_table_id": table.shadow_table_id, "shadow_row_id": row_id, "shadow_cell_ids": [cell_id], "parser_name": table.parser_name, "parser_version": table.parser_version, "parser_flavor": table.parser_flavor, "table_index": table.table_index, "row_index": row_index, "column_index": column_index, "raw_row_label": raw_label, "normalized_metric": metric, "raw_column_header": raw_header, "normalized_period": period(raw_header), "raw_cell_text": raw_cell, "parsed_numeric_value": str(parsed) if parsed is not None else None, "raw_currency_context": table.raw_scale_context, "parsed_currency": table.currency, "raw_scale_context": table.raw_scale_context, "parsed_scale": table.scale, "normalized_base_value": str(normalized_value) if normalized_value is not None else None, "metric_score": metric_score, "period_score": int(period_match), "value_score": int(value_match), "header_excerpt": [value for value in headers if value][:8], "row_excerpt": [value for value in row if value][:8], "scale_excerpt": table.raw_scale_context, "strict": strict}
+
+
+def options_for(contract: dict[str, Any], tables: list[Table]) -> list[dict[str, Any]]:
+    output = []
     for table in tables:
-        if table.document_id != contract["document_id"] or table.page != contract["pdf_page"]:
+        if table.document_id != contract["document_id"] or table.pdf_page != contract["pdf_page"]:
             continue
-        headers = table.headers or headers_from_matrix(table.matrix)
         for row_index, row in enumerate(table.matrix):
-            label = row_label(row)
-            tokens = set(norm(label).split())
-            metric_score = len(tokens & expected_tokens) / max(1, len(expected_tokens))
-            if metric_score < 0.5:
-                continue
-            for column_index, cell in enumerate(row):
-                raw = cell.strip()
-                value = numeric(raw)
-                if value is None:
-                    continue
-                header = headers[column_index] if column_index < len(headers) else ""
-                found_period = period(header)
-                normalized = value * SCALE[table.scale] if table.scale in SCALE else None
-                value_score = int(normalized == expected_value) if normalized is not None and expected_value is not None else 0
-                period_score = int(found_period == expected_period)
-                row_id = stable_shadow_id(table.table_id, row_index, [norm(x) for x in row])
-                cell_id = stable_shadow_id(row_id, column_index, norm(raw))
-                options.append({
-                    "score": metric_score + period_score + value_score,
-                    "shadow_table_id": table.table_id, "shadow_row_id": row_id, "shadow_cell_ids": [cell_id],
-                    "parser_name": table.parser, "table_index": table.index, "row_index": row_index, "column_index": column_index,
-                    "raw_row_label": label, "normalized_metric": norm(label),
-                    "raw_column_header": header, "normalized_period": found_period,
-                    "raw_cell_text": raw, "parsed_numeric_value": str(value),
-                    "raw_currency_context": table.scale_text, "parsed_currency": table.currency,
-                    "raw_scale_context": table.scale_text, "parsed_scale": table.scale,
-                    "normalized_base_value": str(normalized) if normalized is not None else None,
-                    "header_excerpt": [x for x in headers if x][:6],
-                    "row_excerpt": [x for x in row if x][:8],
-                    "scale_excerpt": table.scale_text,
-                })
-    return sorted(options, key=lambda x: (-x["score"], x["parser_name"], x["shadow_table_id"], x["row_index"], x["column_index"]))
+            for column_index in range(len(row)):
+                item = option(contract, table, row_index, column_index)
+                # Keep non-numeric cells from a matching row as audit evidence.
+                # Classification must distinguish an absent numeric cell from a bad
+                # normalized value; it may not silently discard the former.
+                if item["metric_score"] >= 0.5:
+                    output.append(item)
+    return sorted(output, key=lambda item: (-int(item["strict"]), -item["metric_score"], -item["period_score"], -item["value_score"], item["shadow_table_id"], item["row_index"], item["column_index"]))
+
+
+def classify(contract: dict[str, Any], options: list[dict[str, Any]]) -> tuple[str, list[str], dict[str, Any] | None, list[dict[str, Any]]]:
+    metric = [item for item in options if item["metric_score"] == 1.0]
+    if not metric:
+        return "missing_row", ["no_exact_metric_row"], None, []
+    with_period = [item for item in metric if item["normalized_period"] == contract["expected_period"]]
+    if not with_period:
+        return "missing_period_column", ["no_explicit_period_header_for_metric_row"], None, metric[:5]
+    numeric = [item for item in with_period if item["parsed_numeric_value"] is not None]
+    if not numeric:
+        return "numeric_parse_failed", ["matching_metric_period_cell_is_not_numeric"], None, with_period[:5]
+    with_scale = [item for item in numeric if item["parsed_scale"]]
+    if not with_scale:
+        return "missing_scale", ["no_explicit_scale_context"], None, numeric[:5]
+    with_value = [item for item in with_scale if item["normalized_base_value"] == str(contract["expected_value"])]
+    if not with_value:
+        return "wrong_table_candidate", ["no_metric_period_scale_candidate_has_expected_value"], None, with_scale[:5]
+    strict = [item for item in with_value if item["strict"]]
+    unique = {(item["shadow_table_id"], item["shadow_row_id"], tuple(item["shadow_cell_ids"])) for item in strict}
+    if len(unique) != 1:
+        return "ambiguous", ["multiple_strict_candidates"], None, strict[:8]
+    return "candidate_pending", ["unique_metric_period_value_scale_candidate"], strict[0], []
+
+
+def table_record(table: Table) -> dict[str, Any]:
+    rows = []
+    for row_index, row in enumerate(table.matrix):
+        row_id = stable_shadow_id(table.shadow_table_id, row_index, [normalized(cell) for cell in row])
+        rows.append({"shadow_row_id": row_id, "row_index": row_index, "cells": [{"shadow_cell_id": stable_shadow_id(row_id, column_index, normalized(cell)), "row_index": row_index, "column_index": column_index, "raw_text": cell, "normalized_text": normalized(cell), "normalized_text_hash": text_hash(cell), "bbox": table.bboxes[row_index][column_index] if row_index < len(table.bboxes) and column_index < len(table.bboxes[row_index]) else None} for column_index, cell in enumerate(row)]})
+    return {"parser_name": table.parser_name, "parser_version": table.parser_version, "parser_flavor": table.parser_flavor, "document_id": table.document_id, "pdf_page": table.pdf_page, "shadow_table_id": table.shadow_table_id, "table_index": table.table_index, "table_bbox": table.bbox, "row_count": len(table.matrix), "column_count": max((len(row) for row in table.matrix), default=0), "rows": rows, "parser_artifact_hash": hashlib.sha256(json.dumps([[normalized(cell) for cell in row] for row in table.matrix], sort_keys=True).encode()).hexdigest()}
 
 
 def main() -> int:
     inputs, source_paths, integrity = _input_integrity()
-    pages: dict[str, list[int]] = {}
-    contracts = []
-    for label in inputs.labels_by_id.values():
-        if label.get("calculation"):
-            for index in range(len(label["expected_sources"])):
-                item = source_contract(label, index)
-                contracts.append(item)
-                pages.setdefault(item["document_id"], []).append(int(item["pdf_page"]))
-    tables = [table for doc, selected in pages.items() for table in parse_tables(doc, source_paths[doc], selected)]
-    by_source = {}
-    package = []
-    ambiguities = []
-    for contract in sorted(contracts, key=lambda x: (x["case_id"], x["source_index"])):
-        options = candidates(contract, tables)
-        best = options[0] if options else {}
-        status = "candidate_pending" if len(options) == 1 or (len(options) > 1 and options[0]["score"] > options[1]["score"]) else ("ambiguous" if options else "missing_row")
-        record = {
-            **contract, **best,
-            "document_match": None, "page_match": None, "metric_match": None, "period_match": None, "value_match": None, "scale_match": None,
-            "candidate_status": status, "review_status": "pending", "reviewer": None, "reviewed_at": None, "verified": False,
-        }
+    contracts = [source_contract(label, index) for label in inputs.labels_by_id.values() if label.get("calculation") for index in range(len(label["expected_sources"]))]
+    contracts = sorted(contracts, key=lambda item: (item["case_id"], item["source_index"]))
+    tables = prepare_tables(source_paths, contracts)
+    # The generator imports only parser and label modules.  These counters are
+    # owned by this run so the acceptance artifact is tied to its execution path,
+    # rather than copied from a prior evaluation artifact.
+    execution_counts = {
+        "model_calls": 0,
+        "answer_generation_calls": 0,
+        "binder_calls": 0,
+        "calculator_calls": 0,
+        "production_index_writes": 0,
+    }
+    package, ambiguity = [], []
+    for contract in contracts:
+        options = options_for(contract, tables)
+        status, reasons, proposed, competing = classify(contract, options)
+        record = {**contract, "candidate_count": len(options), "proposed_candidate": proposed, "competing_candidates": competing, "classification_reasons": reasons, "candidate_status": status, "document_match": None, "page_match": None, "metric_match": None, "period_match": None, "value_match": None, "scale_match": None, "review_status": "pending", "reviewer": None, "reviewed_at": None, "verified": False}
         package.append(record)
         if status != "candidate_pending":
-            ambiguities.append({"case_id": contract["case_id"], "source_index": contract["source_index"], "status": status, "candidate_count": len(options)})
-        by_source[(contract["case_id"], contract["source_index"])] = best
-    structures = []
-    selected_ids = {r.get("shadow_table_id") for r in package if r.get("shadow_table_id")}
-    for table in tables:
-        if table.table_id not in selected_ids:
-            continue
-        structures.append({
-            "parser_name": table.parser, "parser_version": "1.26.6" if table.parser == "pymupdf" else "camelot-current",
-            "document_id": table.document_id, "pdf_page": table.page, "shadow_table_id": table.table_id,
-            "table_index": table.index, "table_bbox": table.bbox, "row_count": len(table.matrix),
-            "column_count": max((len(row) for row in table.matrix), default=0),
-            "header_excerpt": [x for x in (table.headers or headers_from_matrix(table.matrix)) if x][:8],
-            "rows": [
-                {
-                    "shadow_row_id": stable_shadow_id(table.table_id, row_index, [norm(cell) for cell in row]),
-                    "row_index": row_index,
-                    "cells": [
-                        {
-                            "shadow_cell_id": stable_shadow_id(
-                                stable_shadow_id(table.table_id, row_index, [norm(value) for value in row]),
-                                column_index,
-                                norm(cell),
-                            ),
-                            "row_index": row_index,
-                            "column_index": column_index,
-                            "normalized_text_hash": hashlib.sha256(norm(cell).encode()).hexdigest(),
-                            "bbox": (
-                                table.cell_bboxes[row_index][column_index]
-                                if row_index < len(table.cell_bboxes)
-                                and column_index < len(table.cell_bboxes[row_index])
-                                else None
-                            ),
-                        }
-                        for column_index, cell in enumerate(row)
-                    ],
-                }
-                for row_index, row in enumerate(table.matrix)
-            ],
-            "parser_artifact_hash": hashlib.sha256(json.dumps([[norm(c) for c in r] for r in table.matrix], sort_keys=True).encode()).hexdigest(),
-        })
-    write("parser-table-structures.json", {"table_count": len(structures), "records": sorted(structures, key=lambda x: (x["document_id"], x["pdf_page"], x["parser_name"], x["table_index"]))})
+            ambiguity.append({"case_id": contract["case_id"], "source_index": contract["source_index"], "status": status, "candidate_count": len(options), "classification_reasons": reasons, "competing_candidates": competing})
+    structures = [table_record(table) for table in tables]
+    table_ids = {item["shadow_table_id"] for item in structures}
+    row_ids = {row["shadow_row_id"] for item in structures for row in item["rows"]}
+    cell_ids = {cell["shadow_cell_id"] for item in structures for row in item["rows"] for cell in row["cells"]}
+    referenced = [record["proposed_candidate"] for record in package if record["proposed_candidate"]] + [item for record in package for item in record["competing_candidates"]]
+    cross_refs = all(item["shadow_table_id"] in table_ids and item["shadow_row_id"] in row_ids and all(cell in cell_ids for cell in item["shadow_cell_ids"]) for item in referenced)
+    counts = {status: sum(record["candidate_status"] == status for record in package) for status in ("candidate_pending", "ambiguous", "missing_row", "missing_period_column", "missing_scale", "numeric_parse_failed", "wrong_table_candidate")}
+    write("parser-table-structures.json", {"table_count": len(structures), "pymupdf_table_count": sum(item["parser_name"] == "pymupdf" for item in structures), "camelot_stream_table_count": sum(item["parser_name"] == "camelot" and item["parser_flavor"] == "stream" for item in structures), "camelot_lattice_table_count": sum(item["parser_name"] == "camelot" and item["parser_flavor"] == "lattice" for item in structures), "cell_count": sum(len(row["cells"]) for item in structures for row in item["rows"]), "records": structures})
     write("manual-mapping-review-package.json", {"record_count": len(package), "records": package})
-    write("mapping-candidate-generation-report.json", {"source_count": 22, "candidate_pending_count": sum(x["candidate_status"] == "candidate_pending" for x in package), "gap_or_ambiguity_count": len(ambiguities), "automatic_verified_count": 0, "parser_inputs_contained_gold_answers": False})
-    write("mapping-ambiguity-report.json", {"records": ambiguities})
-    write("nf-opt-08-r2-acceptance.json", {"decision": "structured_reingestion_parser_mapping_blocked", "source_count": len(package), "case_source_unique": len({(x["case_id"],x["source_index"]) for x in package}) == 22, "all_review_status_pending": all(x["review_status"] == "pending" for x in package), "automatic_verified_count": 0, "model_calls": 0, "answer_generation_calls": 0, "binder_calls": 0, "calculator_calls": 0, "production_index_writes": 0, "input_hashes_verified": integrity["passed"], "control_set_hash": CONTROL_HASH})
-    print(json.dumps({"records": len(package), "tables": len(structures), "pending": sum(x["candidate_status"] == "candidate_pending" for x in package), "gaps": len(ambiguities)}, indent=2))
+    write("mapping-candidate-generation-report.json", {"source_count": 22, "status_counts": counts, "parser_extraction_used_gold_fields": False, "candidate_ranking_used_expected_metric": True, "candidate_ranking_used_expected_period": True, "candidate_ranking_used_expected_value": True, "candidate_ranking_can_auto_verify": False, "automatic_verified_count": 0})
+    write("mapping-ambiguity-report.json", {"records": ambiguity})
+    acceptance = {"decision": "structured_reingestion_parser_mapping_blocked", "production_switch_allowed": False, "manual_review_allowed": False, "source_count": len(package), "case_source_unique": len({(record["case_id"], record["source_index"]) for record in package}) == 22, "sorted_by_case_source": package == sorted(package, key=lambda item: (item["case_id"], item["source_index"])), "all_review_status_pending": all(record["review_status"] == "pending" for record in package), "reviewer_non_null_count": sum(record["reviewer"] is not None for record in package), "reviewed_at_non_null_count": sum(record["reviewed_at"] is not None for record in package), "automatic_verified_count": sum(record["verified"] for record in package), "cross_artifact_identity_references_valid": cross_refs, "gap_status_counts": counts, **execution_counts, "input_hashes_verified": integrity["passed"], "control_set_hash": CONTROL_HASH}
+    if not (acceptance["case_source_unique"] and acceptance["sorted_by_case_source"] and acceptance["all_review_status_pending"] and acceptance["automatic_verified_count"] == 0 and cross_refs):
+        raise RuntimeError("review package acceptance failed")
+    write("nf-opt-08-r2-acceptance.json", acceptance)
+    print(json.dumps({"tables": len(structures), "sources": len(package), "status_counts": counts}, indent=2))
     return 0
 
 if __name__ == "__main__":
