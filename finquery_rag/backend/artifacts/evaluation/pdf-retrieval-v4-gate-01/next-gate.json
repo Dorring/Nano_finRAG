@@ -1,6 +1,6 @@
 {
-  "decision": "mineru_probe_execution_blocked",
-  "next_gate": "fix_mineru_runtime",
+  "decision": "mineru_capability_insufficient",
+  "next_gate": "stop_and_classify_visual_failures",
   "production_switch_allowed": false,
   "reason": "fixed dual-backend capability probe",
   "selected_backend": null

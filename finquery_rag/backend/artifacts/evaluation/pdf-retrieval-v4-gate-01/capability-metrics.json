@@ -1,21 +1,21 @@
 {
   "hybrid_high": {
     "adjacent_page_count": 20,
-    "adjacent_page_structural_signal_rate": 0.0,
-    "cross_page_fragment_detection": 0.0,
+    "adjacent_page_structural_signal_rate": 0.9,
+    "cross_page_fragment_detection": 0.9,
     "cross_page_metric_status": "shadow_selection_diagnostic_not_manual_continuation_label",
-    "oracle_metric_text_recovery": 0.0,
-    "oracle_numeric_text_accuracy": 0.0,
-    "oracle_numeric_text_recovery": 0.0,
+    "oracle_metric_text_recovery": 1.0,
+    "oracle_numeric_text_accuracy": 0.45454545454545453,
+    "oracle_numeric_text_recovery": 0.45454545454545453,
     "oracle_pages_missing_from_probe": [],
-    "oracle_period_header_availability": 0.0,
-    "oracle_row_text_recovery": 0.0,
-    "oracle_scale_header_availability": 0.0,
+    "oracle_period_header_availability": 1.0,
+    "oracle_row_text_recovery": 1.0,
+    "oracle_scale_header_availability": 0.8181818181818182,
     "oracle_source_denominator": 22,
-    "oracle_table_detection_recall": 0.0,
-    "total_numeric_rows_detected": 0,
-    "total_parser_pages_observed": 0,
-    "total_tables_detected": 0
+    "oracle_table_detection_recall": 1.0,
+    "total_numeric_rows_detected": 1366,
+    "total_parser_pages_observed": 87,
+    "total_tables_detected": 117
   },
   "pipeline_auto_ocr": {
     "adjacent_page_count": 20,

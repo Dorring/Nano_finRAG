@@ -1,16 +1,761 @@
 {
   "hybrid_high": {
-    "content_list_count": 0,
-    "content_list_path": null,
-    "middle_json_count": 0,
-    "middle_path": null,
-    "model_json_count": 0,
-    "raw_file_count": 1,
+    "content_list_count": 1,
+    "content_list_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-retrieval-v4-gate-01/hybrid_high/probe-input-87-pages/hybrid_auto/probe-input-87-pages_content_list.json",
+    "middle_json_count": 1,
+    "middle_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-retrieval-v4-gate-01/hybrid_high/probe-input-87-pages/hybrid_auto/probe-input-87-pages_middle.json",
+    "model_json_count": 1,
+    "raw_file_count": 150,
     "raw_files": [
       {
         "path": "mineru.log",
-        "sha256": "67f0a6af741f65969c2c8e5f4abdba0cc6714e165f45d93cdfcb162ace1a6cf3",
-        "size_bytes": 12827
+        "sha256": "1f7068eee229ac2ae3eb447c9afc71229e1475cbef5423ecd1bd6dece7d76040",
+        "size_bytes": 13341
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/00b01056421fb8142ead140c5bf09a7561b2a5e3864443e6a72892f770815262.jpg",
+        "sha256": "b99fe41b0fd49cc9266f13dc819e7587a6790a70b1559bf1fd7a0f2858cd7006",
+        "size_bytes": 21790
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/02406e93679f6af7c27c0bddc5c70fc1433ff7ca0a8cb06f67db18e0408eec23.jpg",
+        "sha256": "14666b455a63f3cbf562af2608316170e9731f810a881931d91c6a995372532f",
+        "size_bytes": 1310
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/042fb90c6c89774e0084d0a9a38711c7f72280255c4e685923c91992dd62b778.jpg",
+        "sha256": "cd33f6eb8d67992ef8ef4394576bf6f2dbbcd8757460f04c3d452008d625a3e5",
+        "size_bytes": 1471
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/045aadbcb127145b523c584b3955a8504d26ac518eb08c15ac7b0e03215a982e.jpg",
+        "sha256": "94c8ae32f2a0ea09d5402f0bb27fb66f370d09bf1c065ecc57c7b197c4588555",
+        "size_bytes": 1495
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/067ce4e6a00f7d6ff6f28b6bc283b98bae9b75d958b733361b6375a4e07011a4.jpg",
+        "sha256": "ec3b17a42fad4362cf4df1e82a6125f6a5b35df5caf7629d1ffb025b4d016781",
+        "size_bytes": 60063
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/0688fd96909f81528409eef373d9dec594fa3696e0a27a94048eb7c5ac165b9c.jpg",
+        "sha256": "f770f30fbb15f79da9a46f95f9e4b020a0ae037efc0790c7dfd46142ea1133c6",
+        "size_bytes": 8916
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/08e735e12121da325a48d582ba4eb5ec78fb4af96485bb91854a8978a0579786.jpg",
+        "sha256": "103f3ae1c61f14df1e6b7757b0597cafb9b5e60409209f44b7144fe7d44cb1f9",
+        "size_bytes": 32154
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/0994995eb952be346ac70f7e8104dc1a842ba42364945762c6b17bdfa00e86bd.jpg",
+        "sha256": "7350e4515507bd100f3c4251588bf9a4b2d4c2a8b908d2f8a9d336b9d8adbb13",
+        "size_bytes": 25662
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/0d765e528d5523ea913a5d55935320ad82d1a30957386a496e1da261a4b5a9f8.jpg",
+        "sha256": "f99d69a3771c236b49637c5bdc8fd2109530a8030a349c09df5d487b5188a4ff",
+        "size_bytes": 231272
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/0f3a90dc3c264dd0b8c1cd006872b937a2a7616eb886c1c19a9de41d16988f48.jpg",
+        "sha256": "f2f51294e5d38b7619afa1d71ebea277b618a2931fcd6ef6399b518a1985e946",
+        "size_bytes": 190384
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/0f5b4f34879c51eb2f14a8a09354f53a5233f6f8e2b7f0f11de24ef6c287a22a.jpg",
+        "sha256": "614b4d5d0df35795a32a5a58e08787f8ed484ff7fd75cbc7d785368dbd4b8104",
+        "size_bytes": 58947
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/0ff4cd57c8d873420056d93a41dbdfdbf2568b0417686afb4d56befda2c46547.jpg",
+        "sha256": "b7b4bb722b7e277dba824a9e8d07f0ad8346330ecfe00e541aef5c21b7e7d28b",
+        "size_bytes": 168312
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/10e09dbba94a5f6fd714a6a66dea50c6699f080aeacf028cb58080844fb621e7.jpg",
+        "sha256": "b85d547c9f32ada1764140e527c3a87d6c1ff7895f0a1e2a8d43eca9fde5e2b8",
+        "size_bytes": 10872
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/130d09a78718975f1f352f1c98d54aa012c46c74baf186842548de78986698aa.jpg",
+        "sha256": "48d491cf6182da90a619050d7737317900cc8c6aceb3da4c1df838280269f3c9",
+        "size_bytes": 218650
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/131e1c9067c6b430f9b2ec20a269cb244467e62e648cbff4def78ece971e5650.jpg",
+        "sha256": "ab0145ba8503a3a53f11ac86a30c742d45fb6f4d34dfd463a8cbfaf089d93d2e",
+        "size_bytes": 38298
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/1439e9b0a8fe201395f54b0c981327669163942bba5914160558660c6c2410b7.jpg",
+        "sha256": "5cb276134df8986288b24f3b9ece1d3289b328dcf1a676b79bbad4dc44fe5ab1",
+        "size_bytes": 22065
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/185c4947b2f66ab734c4e686c3ea76361751479f7abb0360129a1fab50f2d0cc.jpg",
+        "sha256": "5cd5c3570308161ef78a2b9c13265e25d5a69c9b39e6036f721bd64753eb3eae",
+        "size_bytes": 68643
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/1b24c920c0ea11c4964bcb44ce33d5659e2bc2383ecc467400685850801db82f.jpg",
+        "sha256": "17ed0924c0d757e72dc13051a1711311019fa1d8440e5035afea24f9e527eaf8",
+        "size_bytes": 22749
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/1b567faa6d2979ea9c090bcbb59794b3c383aeddd82d7e967a30ee07255713db.jpg",
+        "sha256": "e410864d79162731fba92c017911892464b1b0c62da22f06207ca6c4fa497192",
+        "size_bytes": 160424
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/1ba434bdc0b6623fdfbb2936204a2d52f3bbbca126d3c19c230df74dbea5b996.jpg",
+        "sha256": "b9c6ba07fcce17a53cf02cf0ce4466236a06a9e33e094c17a1ac05d98096e50f",
+        "size_bytes": 65470
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/1c7ad1c9b32739d82e8d66bc45f9126d1e64d46646a35b132fc6143ff49d388d.jpg",
+        "sha256": "8f96b54f20c146061423ce1d8648ef170e7c117de802d7581bd92a98dc4088f6",
+        "size_bytes": 23674
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/2141e09962dee3e4f7d3a22d8ebbc00285f8bab137e7f1a7a752947b193296f4.jpg",
+        "sha256": "5b1e5fb69c78f651fd9452af6afc8c07830892c369cc2e781c07e551b3ad25d1",
+        "size_bytes": 19795
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/24be28471eb4b5298a1263e91eb6e32e8352cce147d8b2e9b638979774edd108.jpg",
+        "sha256": "9514994004c20c1987ace9e3c95016f8f3cf9197a9650ce36319b539c10fd0b2",
+        "size_bytes": 90893
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/24d8f8a5a8cd69af048a9ac6ac8858ccd4275e5d02b108005098b86f3531ec3a.jpg",
+        "sha256": "3623fd830645b35ed0e34fb7bbcff86010a6067f069a92d75e1da443961902fc",
+        "size_bytes": 54916
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/253c78b5e9495571b2ae6a8de962b6ae4621957099799a3a05de1339c717a78c.jpg",
+        "sha256": "c1299e64c51a28b58219412e100151dd9851088b5358ec1083167bbbfd8628b8",
+        "size_bytes": 1504
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/2c0b18cd8317a42e4ac683ad4bb761eeec03bb8f91052347d00d10a34b2439bb.jpg",
+        "sha256": "8d2cc608f0d0e835ba3f8ffa4e8577c2635beba34dfe007e701731c872cdc2ae",
+        "size_bytes": 309302
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/2d2743e307ccdefe70c4560f52617d4732fc434aeb245da5e263adc5fb570441.jpg",
+        "sha256": "28d1f31a1e99f8f7879405bd33849e5a81d5961660a8dba39988dc82236f124c",
+        "size_bytes": 28409
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/2f72c4c038a51ae1edb07f6d9241a5da2a3a7926e125f8a8541bbd02de999104.jpg",
+        "sha256": "ab832110e570018f76ed3b96ee13232d4be66772ad31838142ce984f7a7197b0",
+        "size_bytes": 36992
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/32e9a788687b6bafd56f72a197a00f7477fbbf549402956c0211629afa67ef22.jpg",
+        "sha256": "7229fe5adba687149b69c94085d450f8110313f8707707e3de35b3abc2971488",
+        "size_bytes": 48301
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/3368e1363cb40a14b83dfd6bb30f267a0f7021e23d42232c9477570a77fa83b7.jpg",
+        "sha256": "b8d37cb60b554000a612bf30b1e84a4bed67dc70c693024ed26c96d2ee083b0c",
+        "size_bytes": 1567
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/34548b18dfcfb75f82117ded1c36ec74f29659290ed4fbb88b678d276b613ae5.jpg",
+        "sha256": "ce1257e818d15563c564bcd6402ccd00b7a197e03c446d771b340ba3cdfd5bd8",
+        "size_bytes": 30553
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/34ca1b5164290cbda2463a297de1c72efb1f49c63218cd7157c4c9478436b03b.jpg",
+        "sha256": "9e5c3d33636a4916a380f5204c0b5af753e2053f0466b6a1c1beb5e97c3cf737",
+        "size_bytes": 150622
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/35959a5ca5d930abcce7b6828a351db56784791da5e5ed5eca17641a391383eb.jpg",
+        "sha256": "1efc0e6402f0639b29d5125473dab0961e98782c622f8569562c291ea0b6e1e0",
+        "size_bytes": 48928
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/37811d58437995d90d018905c4c93cc91f702b8e0c491b420c5d7fa488379b37.jpg",
+        "sha256": "8b7678a4124f1e938612fe2c52b288c33692a7b5242f0a0e44738ca41e105fe5",
+        "size_bytes": 1514
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/384bd616e75782b54f4d9d5e639d2f20a26e7b435252777a22ef2eb20218b79c.jpg",
+        "sha256": "a417f454bbee1073a8094300abc4d599f9d57cbd4e17a17b1b30fba4827e7b3b",
+        "size_bytes": 166676
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/397ad272e6c68117729b62aaebc90640f7c3442b3fe409a941587b18c2f4bc74.jpg",
+        "sha256": "0b6154c4a17294a2697f59dca46b3dc1d01c509f4ec7002b4ce75b4610f44195",
+        "size_bytes": 85827
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/3a6bdc5bb898221c1cb577428f2d7268f939b6db4ad258fa052b4ad98b5d1fae.jpg",
+        "sha256": "582cae1f7bb7be97fc958ddd701a6b43fca5ce68d6101e231519d46fea178ddf",
+        "size_bytes": 24600
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/3af1c6e017b7a129f25b2e4251c2a53b02e9d76be79528c1edd0346eec05973e.jpg",
+        "sha256": "5c9e01face17e3772f6b49ca39c60383104f0908edf5b6497965469d8b401640",
+        "size_bytes": 24227
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/3bc478e08a64ae1fd587072e8a58ccbd2a8098fe600c73c95298a9d097d92873.jpg",
+        "sha256": "4c783f29b3e26d7b9b76f90a01df8d4907b2886262620c4a5b281cfeee2ea609",
+        "size_bytes": 50638
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/3fcd3f689da3373f9d84b6c67f02e590d57a0dfad4152aaa4e103ff7e3822883.jpg",
+        "sha256": "37d7c24b74a7f7d565f82764a2b4c50218a16d7639678a19fbba2288735a9b9e",
+        "size_bytes": 92481
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/4202eaa4391a080703a4f7b6e10d4aa09f2e16502f41353b31f52146a20b0cf2.jpg",
+        "sha256": "4763f2cca8644c84ee804497a1f2d59487d14557caec0162d73b13b850aefd94",
+        "size_bytes": 113150
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/4225228f23f09339675ed0a937b097ca7e31cb3ec48646cbf33ecfb5ebae2118.jpg",
+        "sha256": "cc78661834c0fc66d8d99b4ed8aae167255be2a6e2bedbad3e58b34c47873e98",
+        "size_bytes": 31043
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/4282d92bcb7d45c4fd5ff060960a714f7ed6827e9fc117512cdae015f839794e.jpg",
+        "sha256": "b76ecea239dc7f245b923fe81b5af9858079e91b449dc7badcaca63a7123b487",
+        "size_bytes": 1456
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/487edcbe9a6e58dabe8c09deb97ccf17a1533fac13917bc1205a064ed0e56e80.jpg",
+        "sha256": "8f3356837aa793ccdfd95319dd8bc5e508513f886488d6cd343b3ccb7377dbce",
+        "size_bytes": 208477
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/4ae8dccb0c6f89e00f0de2d575d262dcdbc1913a50a39666e6e19771db249dc6.jpg",
+        "sha256": "0a43fbdb5fbe53fcc23989a7cf89e53c565eb53e6ffcde02d789db124c50b545",
+        "size_bytes": 31392
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/4f3eebb336280e8e92e9426c3d7ee5ebf710c4d52e11e6ed4f844f31fe94e554.jpg",
+        "sha256": "6d254f4f74b90a40af34bd2e3cf6f374b0dbdd70c9fa4d5304152c7f1a1cbbc3",
+        "size_bytes": 88624
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/516e99620df3b1209a94046c4e966d7d833b66747ce669d8a4e8e22fef0b3dec.jpg",
+        "sha256": "ecdee9cd1064a1e5040137ea580b299be2611b4eba8819227fb48577977e9281",
+        "size_bytes": 1541
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/5196ce1ec3f26ac7015512961e62f6033a01cf2792ec4065f77e20ecc94e23b8.jpg",
+        "sha256": "91fd4397db37c13734051ec7cb9bd88924a917b8c4d5caa36e2e88bef33c81e9",
+        "size_bytes": 45028
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/521e90c3e51dd18e6438804058bca52c60345e5bb1052256f3bb8eb7b5e93c1f.jpg",
+        "sha256": "857acb87115d835ef613159e8bc65d3b6d99c7683fdd5fcdcb5425c2dc5b7d96",
+        "size_bytes": 32353
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/58d29cf8858d42be5123af328bc4e081cc9aef4e22edf224e17b9fb4e97ea2e4.jpg",
+        "sha256": "3e3099beef9ac45a324945c58386b1fc05e7c169c7a4b4a40859beba79422ae7",
+        "size_bytes": 60542
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/59669790daeaa2030d828f8ba9212d5dee1e2f9eb7d3e0255fa3874776eb2207.jpg",
+        "sha256": "47c6eec1e6f6e76049721db672816639255154844b8a6ea6e1620a0cb32ef0fe",
+        "size_bytes": 49089
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/59bf04e1e4f0102e157c06386f5abc7fb1f949629fb1d96b22e4efa2174b0448.jpg",
+        "sha256": "54212a05b453082d56fa2eb060c60e05addfa1fb6021fee551dd86f41d096ae7",
+        "size_bytes": 46387
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/5abcd6dad2c1fd31ce8b669d4c9ddbe21d4ebe708c1e28b99465b6e98f6c8e49.jpg",
+        "sha256": "d3dfdb9a3872e0bf01a0191d2a0546c4c1e99dbdd128134f1e6a57d5cb18dc6c",
+        "size_bytes": 28003
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/5b48a7031fdbce1942bd20002eb3118bf821ce7a89bf1b6c309f7c4c3d01f052.jpg",
+        "sha256": "15ebfd1c025545218e4ed7c06506bba551c03d42187defeeb2e86b004d265a89",
+        "size_bytes": 34357
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/5dd14ff18106fd9746e11e41b5fa6e86b220d8507255cb28a0ed5b1328d7fe0b.jpg",
+        "sha256": "234ca38a56463a9e3216e74475d92678e0432ffb49e43e36485a92d082ddb73b",
+        "size_bytes": 1426
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/5e228cdeb7cb3fbd5dd11cb609d410a46b3b221427adb9a730f379497de84667.jpg",
+        "sha256": "a81f0029bf20da1dc6532d8021328acf00482980d0f251bb1e5028f0ca9f85df",
+        "size_bytes": 222246
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/608c370ae7b6eee91bc0a2a52a6c16c81e430e64142d54a69867b3fcf1e36da1.jpg",
+        "sha256": "33450c052ff6ac90ddcc065f06421b8e51291c5b43b8fd6c8afb228eace23cd0",
+        "size_bytes": 154949
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/66c5c90ed9ed15e321ccc8e692ef3a93aad7627deeaf3cc168a519c80c8f56e4.jpg",
+        "sha256": "75b11ab034c5f77146e1bb2071403c238be607a2f6ba91c945c8a89257c8fd38",
+        "size_bytes": 38056
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/69096f794fd6bb9e865652e717b3b5eecdd466d5daf698a2d848f78ce137e53b.jpg",
+        "sha256": "a65d89efe4e329230ba239325b1ca6838c86c7adb16712e71336a54920dff7b6",
+        "size_bytes": 312124
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/69b17258e1c95418e0d65e3d6af59129461d706b0a3d6340f4472f56990f03d5.jpg",
+        "sha256": "16f267551251813b014d76f3d229993dc3d39aa780a625dab7abb6224e6c0c37",
+        "size_bytes": 35894
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/6b72c55fd5a42abf269c0526ebe690f5f075f9dad54fcfa25bbde7d75bbf2961.jpg",
+        "sha256": "fd9df05bf7c2f7114cbd2da0e2a8d5b34660b2603090140e9fca237616d24c78",
+        "size_bytes": 40679
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/6ed4c9c095d14ef46ee56475fcaa0c2f0321ac61bd1c3fe649aea51a408a8113.jpg",
+        "sha256": "5846bbe64d9a0157f6cf1c5ff63e3c9c0e3f925daa35ca09979af5dd1bc8c796",
+        "size_bytes": 1598
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/6fa8498e5e9c7c35941bc2d0f0ad8ed7a00e421ac3db36fc4c1fc696af2fee22.jpg",
+        "sha256": "e67df47aa5e863a65ba3df149718a104e136a04255e31e29a9d5b4ab4d3e6961",
+        "size_bytes": 38627
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/70901723246aed18f5bd9782588b2b8f298724613608c19cc87f7c4a499b1ac1.jpg",
+        "sha256": "81c79c0d0edf6559f1bbc2c92733ad968f6c099cd0af2e40895096de03993ca7",
+        "size_bytes": 46635
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/7091e5437bd8153d65355cf5dfba3abd92d7c2d9ee078fd27c59a3755aeda3d0.jpg",
+        "sha256": "b260968b5c2f435155946cbec6b1cc590928274f9b981fffacf982351c7bcd6c",
+        "size_bytes": 28763
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/7219cdde6264e3981fb85a567674becae8b9f227945950ff1a404a03d5b308d1.jpg",
+        "sha256": "084197e35f847b9bcda1c4a6d1dcabfcd01a9f40eaa5018d1046b9ae2a5afbe2",
+        "size_bytes": 30241
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/7344946247c525e130afd97fedd21e1606e2ad9d8f366929cccad8d38320c081.jpg",
+        "sha256": "619f6eaf139a8274742d4c51b138d115abefd462d926ca016f453a38ff7edfe4",
+        "size_bytes": 1460
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/743f87d12ba763211cdb46a46582ad3029b9e24b949884269a8402c5f6f5f63e.jpg",
+        "sha256": "c8379b3f38433f5533a4684cb73df3ab36f616aded4e59df7a5ffd82798df3a7",
+        "size_bytes": 47245
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/746b5e176a8f1369af9db07e605d4fe878d1c075b0780b2a65ab7ed3dd323d43.jpg",
+        "sha256": "c347d373ca209574e74b0252adc8e640336728d9a380aee3a0c66999143ad264",
+        "size_bytes": 269409
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/7bc30acfdcdff64938ac9288eda8574536eae454e003f053c09eba15cb5190c5.jpg",
+        "sha256": "19ab50b4e4e9479f1df9e3319f9412e46be41f93f97ce60a6fa0f3abc1dba977",
+        "size_bytes": 37019
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/7ce4f6131bc915b82315ccfee2dc76731b940d79b5f5fd72f4c57d7720e7f855.jpg",
+        "sha256": "cd1d932b73122bbd4a844e78f9c51e298ea5189f95bfccdcda8285c4985742fc",
+        "size_bytes": 85521
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/7f45fefd495fa38ac239e745db5f77ad1ba85c538fed5348f504db9cb07f519e.jpg",
+        "sha256": "88f355e1d4ccc8a550f5079d7c203283f52b255aa8b8639846115d3e8812aed9",
+        "size_bytes": 1565
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/86e87dd1b37fe76c663b6c98af92d19cccd3b7de25fe2a1a56da5e7b5b95d85e.jpg",
+        "sha256": "11c4f69173d2926b805f8b14fadc20beeafcc7300dfdd54575f0014ae5fd489e",
+        "size_bytes": 92998
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/8a05ddaed79506732512dad10d18453c4bd6c0ad63d902be0f6f592a3162a9c9.jpg",
+        "sha256": "fa65b08a1768ee64378870b86dc5b981774fdd62b319cc07ae80dcfa1e35f9c6",
+        "size_bytes": 84278
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/8b9442b7d08e2fc5473b56b107f2cb25e902c0ea99596fd098becf84d091fc7c.jpg",
+        "sha256": "d4d236c3b4166ec99c14692ef0de6b45b7aa46722502e8d03195e9464f8c109b",
+        "size_bytes": 39043
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/8d2983e7dfe5733adcf269c61a45bfd7121b475c6a2c28178095e744e60c1d0d.jpg",
+        "sha256": "edbb37b5fc83e3f2166b6675ed32814ea03a468e165c24917102252a21dcc4c8",
+        "size_bytes": 110186
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/8e59a5e58bbb093a21a5567b9f91b9aa8fd63ad292d5dae9fd949ff4ea3c86f2.jpg",
+        "sha256": "a262ecdc22daa4da0eb6e7f706e4758bf078dcf8b5fe6e1804af3e1e1c70b5f8",
+        "size_bytes": 74125
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/8f3866cf03b0d65113374669e1a784b95a31f93ba3e0fb87fb1e003af42cf915.jpg",
+        "sha256": "1fd9ef7d2d23965d37b1043f97294165d1c34ffa276034f5fca633b29adb7756",
+        "size_bytes": 203146
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/8fbd22f77c1b81ded779b8c456157f26d05da8ef8d829c287fd47222bf996af1.jpg",
+        "sha256": "4b6b59e5a3c2884de7e3a0f7707531321f62c4b44fe87829e87c9a3aa7ff12d0",
+        "size_bytes": 301022
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/91158a9dd21bd34791b955b285a4c84be727d53601c1c1f9e88fd51e4deefa6a.jpg",
+        "sha256": "4450fbd73fba565c553cfe2908bbf62725a42661a27600e0e91dadfd0f67b895",
+        "size_bytes": 38522
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/9505d4e5afdbbdb6d5ee8a2be316075e2ac9e1a4cd53a5bd1b6da8283de2984f.jpg",
+        "sha256": "b6a8f2ea10b7e2f445c24c14062a6916a2091c0a268ae8c41f668a4f51494f25",
+        "size_bytes": 191481
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/95197ad16a4548930da036d177f8b4fe52038877ca38fb6de52d450b149c8717.jpg",
+        "sha256": "317d9bd662579afac3c8be8e636049bc7ce7687912d7a06656978222dcd80df0",
+        "size_bytes": 1541
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/981f882c3d551d0b8e79844f605cc92215cd10f1ee5ec70182ec2bb6ae0c24fa.jpg",
+        "sha256": "1c32ec79f37c6c3d65f75f85e209508cca8f85a61ea7360d20e8b4b6b1a40842",
+        "size_bytes": 266768
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/99558153bee2e56a7e682bef4bd4c3aca6399af405e2d8bd3edf586bbace9392.jpg",
+        "sha256": "14c41834a9a10a952b94ac11845bd12f0f331bf652dc883b6ed89ff43bb52d5e",
+        "size_bytes": 1589
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/9ab343e0b82bae7279cf62b2ffc9dca84b82441538ea9b2037de869871125b21.jpg",
+        "sha256": "9dfd14c6850baa6b04fa5a771e99984847dc0cc7959eaffbae151140ef0393fa",
+        "size_bytes": 23303
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/9aedd4260906f8fdfce70d1425804dbcf1b1c704c389f427be3f7284467053d7.jpg",
+        "sha256": "e7182e9b15b19437d4a7326f22b4c1d113fac40c298cef39ccd651aa1b1b366a",
+        "size_bytes": 1452
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/9b92ef8b978dacc6a13ed25618a90cbd9cd3920d27d68b038457322784f5f069.jpg",
+        "sha256": "bb885409c7dd4f334da1891ef79c88b8d27623d8839f8eb778ac67ef3d2646f6",
+        "size_bytes": 22628
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/9bab94ef8b76f5bb18838b3f6e8559b7d8792a65d95139b1d31c72305e609051.jpg",
+        "sha256": "4941ffba072ed55448d4adc4c1bd609760434ce2367b3e49ec62c2308472c082",
+        "size_bytes": 41586
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/9cf582c63f53d5b6427572c01bef400de2e50f37ab27899ea6940a2e98da62d0.jpg",
+        "sha256": "9d04a97a1a791b4c211b7b41d87b68e587260774f7e6a27386d11e5ee206e526",
+        "size_bytes": 40792
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/a6322f1899e0d03b3939ab69f150963205d5bbfed8832b463688669e5319ebb5.jpg",
+        "sha256": "8c93fb9868027822ff481defdac3cbcd5c03e3afdbc29a0bea2a603c2c5b97d6",
+        "size_bytes": 21015
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/a831394f7f1e4ac37b5f1ea4e8dd7bf9b8b58bf0887f5dd636590e94bd8c878f.jpg",
+        "sha256": "d6a8d3b9a790830936d556e6f07ec24d2bc5b3488c61dde37e58f6179e069f0a",
+        "size_bytes": 22125
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/a85826e34ce540ad68134de16257369507fc3b775e5827252e3a17b96d8aa2f1.jpg",
+        "sha256": "34fd7cc57471ed72e384a3a545187eecff5d8f0e882f0df75ddece8422e0034f",
+        "size_bytes": 43088
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/a9ab9bc840339bf302c3ec9a6aa0957a8abcb00555dd34cdbfb632983a2c78c2.jpg",
+        "sha256": "dab6a0618ef1161576416c94d121c93ab7d966aa7236409b1a7d62a56904bee8",
+        "size_bytes": 1574
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/b01d8fafc67a5a239985319398e18c0769b023adb2f384237d01abed4a6b78db.jpg",
+        "sha256": "f8152e69325afd827f6c91e91240b90f9d03df06ea19189c79def98953c4304a",
+        "size_bytes": 46437
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/b44c00ac8851840e92ad46a695e6ccd408eb4eb48fa7b9eb961c2af844f1d463.jpg",
+        "sha256": "97c85a237ae4fc2f81ba6e140a7873c9eb303de2574a0bdbb969d2af0abc22ea",
+        "size_bytes": 25679
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/b64b1e5bd52d8c69fbea81f18ca027f5c69dae48702296444ab9386e306378a0.jpg",
+        "sha256": "8e918cfb6394f31530312aa0581859eff913e2de50aabf5971632ad085e49c91",
+        "size_bytes": 1330
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/b9bc993f17a80d2c6d4e6f6fc6debd572c0605c91fd372c8895a8f4b6ae6b985.jpg",
+        "sha256": "97363897634a013ba64cd63ed7ef412c353b963f16817e34249ee303c95e63ae",
+        "size_bytes": 115399
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/b9c71de7a1a0739dd2ede38d60fb21f64606eed1892f503d5ee996a0e79c0234.jpg",
+        "sha256": "72fd25cc91ccb9d6cd8e99a2eaf56c22ed42c3ae9be6880e0679686c36fca646",
+        "size_bytes": 1528
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/b9dfaf91eb85e0cc449089050d8223b39e85a23fdf4b6bcceaaff24febcdecde.jpg",
+        "sha256": "86d8d796d7d14f9cc190d624a2fff9ec06167c4b336e847e9718c88a03103d6b",
+        "size_bytes": 58096
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/bb0415135c17de7dece417cb9d3d8109db3d90ba2a06dc8a9802ede3f1d52d2e.jpg",
+        "sha256": "d34a1bc1973efc3a084da5ab9cebe43e153118dc49b80bbe50eaf2018174a091",
+        "size_bytes": 26600
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/be622b09fe7b6fd5bfbd007bed59beda80808f57b3ac11dbe16ddbd8790ef93d.jpg",
+        "sha256": "6033784067379713842984fd6226184ccefa8541070a87cbbb259cafd1e2e108",
+        "size_bytes": 157360
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/be64174e70dcf21e8b6cd483ae7c97c8bfb7ef37711a1abda09b69bd583578d0.jpg",
+        "sha256": "36a70d5f4099607e331446683c52dba58790f10c053a60e15cb4907ce8aa13d2",
+        "size_bytes": 22173
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/bf23fd189cec3c885d96640fd7862f98f729633330e892bcd7a06975a726c75e.jpg",
+        "sha256": "7edc15f012a49f64bd3f21b33d1146b48132a92014c09b021278236ab027b81a",
+        "size_bytes": 1494
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/c615b0fccd26bbb9627aa48ff77820685ffea43e4a6e44eb381bba077eb619e5.jpg",
+        "sha256": "cf1cd0ac4b83418267b3758458d4dafc35f9bb830b34452abb663859f751c038",
+        "size_bytes": 37987
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/c6eef3c2823c5d43e35ae348c7fc502e58e718dbe1d9df0d9890790a538f9799.jpg",
+        "sha256": "312791e6b0182f2147bafb2ca3e195927bfb0fa9a2fba3a44ce8b1608e1a8f76",
+        "size_bytes": 126195
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/c7b59da2ca36a211e94ef7437611fc94a42bf3fff2eb90581ca1a735fc8ec831.jpg",
+        "sha256": "63d3969caed1f2755fe9920aefa5915d690c9fb43d57479171e1913d4dadf69f",
+        "size_bytes": 1525
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/c91ee2b686c8118289aa44edbd852c38aa3089e9b5f9d6154e8d5a8c484105a8.jpg",
+        "sha256": "06ab1e2f66c55b7c483cbce983c5a1bbbea3da47dba4ff1f459fcd33a92e1466",
+        "size_bytes": 49038
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/c9ad71e0feb62d079a93deb7765ff0794f8bc9cdd37eea6df64910866a136888.jpg",
+        "sha256": "7e1b7f64bb39f3aa31a06be55ffb86ba117b1d320e778f2344d8a9debf3743ca",
+        "size_bytes": 41338
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/cb924e73293c3cc22da63b70f53efdc98cd5e920c3c8de013b13e8806ee05153.jpg",
+        "sha256": "ccd2d0114e157a087b45d4ed3f8573cf0e25eba95c0181a9ad02c30a77693aa8",
+        "size_bytes": 1169
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/cbb0b5c0e3a2f55229020a950718f27c7fe62ccb80fcdf6c622ef15cd6113748.jpg",
+        "sha256": "aca086d5ba7e3b8d3a065ff7ce42f20b7ad0aadec4a3ab38f1b32ed1d31c8183",
+        "size_bytes": 149291
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/ce736c57a7d18dc1447869dc7e1ffcb35b7d93ce2a11c7f8ea48e1ada63f9456.jpg",
+        "sha256": "a457d6b42f34e1b109234a4e9b4e515b227a9a15a74496cdd66a61cdfb85c487",
+        "size_bytes": 233537
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/ce7b74ff7099e7b7f10ded2aca19e9c89d1ee9aa0bfc593347f5031758151f3b.jpg",
+        "sha256": "f06fa2e5eced9939c9325c042d721de805ac6fafca0065edc935fc93b0b218b1",
+        "size_bytes": 110833
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/d0b91608ee199682dc6980efed5f3f9176bbaf940062a17cdf78cf7939d2b302.jpg",
+        "sha256": "3024bd532efb05526a0e3e0cf8c1fca1f6a1186e450c0771dbba69d273459731",
+        "size_bytes": 159418
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/d608e7476c1c453a0db684e344147c4e72dcedf4525558d3f9ee03fb3a39ecd4.jpg",
+        "sha256": "cd23a00ed0237b7ea90d0effecd936677b8a1f1974ff59db6f16d3731bae894c",
+        "size_bytes": 105097
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/d87823cdf4c322c3f48490cea22bf2aca78eb99fd74279356d8e3e1e9f0e3812.jpg",
+        "sha256": "ae6e6bada438635184c559f873c8131a89ad802bc04815ac6915d658d393eda3",
+        "size_bytes": 1537
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/daa08670d184ae64a283cf0cc5d418f986a5cdf970f011b5591a16648b083b4f.jpg",
+        "sha256": "8ebf2af57b8ddd2ac89628044e5b204a566d397f44a7509f8b848f90c3ca8ccd",
+        "size_bytes": 90825
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/dc0addd31bb8c166ac7a819ccc0ba139b620cb979ab2e54db9a1b107c817dfe4.jpg",
+        "sha256": "5bda9d46f2d8b32acfb4c90a51cf0297654934fdcf53572d917ed49b3ef00428",
+        "size_bytes": 370937
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/dc5afe1bc8cb2342ded3256923823ba6b5b5bfc093ef05ec965cd31da3d66d71.jpg",
+        "sha256": "6b691238d230c88f3e4694a6aab13875e7fbe3ff2d35f7660b9ee138cb526ae4",
+        "size_bytes": 163067
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/ddb2835cb5314d5c771bd3b064918870ca8983030b581feca2d061a0a3431e1e.jpg",
+        "sha256": "6c8b1802d3f4b6c3c73e6cc7cbcdebad14ab96bf7b28ecb71df61f3b421c37cb",
+        "size_bytes": 45749
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/e0ca8cf6d1a0997712fb5b7a91f0b8d84f09d40a9ec01e9a961c9e4bbe925514.jpg",
+        "sha256": "64bf556712fbd1f8b857ecc37ef7c6c57ea25638e1ff235e6156c0f8bdbc7980",
+        "size_bytes": 23137
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/e127146536b7a913c4a070f33bbca7058b1734b99df9294111a4a2b98e0e8d90.jpg",
+        "sha256": "40e66abac88c91c4d1d2ff719f091a42378bbdd9a3fd508a792992f9a1d4c142",
+        "size_bytes": 84901
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/e4e53366f62cc36a2dbafd180736af4f5893c1fd0cb9ae6948c336eab9b1906a.jpg",
+        "sha256": "ed2a0691ed7562dba9f45a2c046db79351fab7fb80e71168c5fcd218fa0f76e6",
+        "size_bytes": 161073
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/e51a1c29887fc89593431c7a11bd71600aa35e1079c178fe25edc9b96a72a9b1.jpg",
+        "sha256": "56264818a9236e36134b9ea8762ac625498c7bf38bf8a89de5491da235ec9a7b",
+        "size_bytes": 170129
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/e5c5bc5decf9d251fee7169665b234914549cbf8cfc12469526b3085c2a6661f.jpg",
+        "sha256": "7cbd6d9d013769f973db214d32acbd419313c8fe19ccc0e8792e661a94ad8e3c",
+        "size_bytes": 76435
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/e5d9aad4fbc94f2a0a38ae3d30fd8be72d9e569661c1745cb95d0755e907d80f.jpg",
+        "sha256": "bda942f4f5d69327adfc507339e5df7697587dc05b30ddb9c69a0eac3bd59b11",
+        "size_bytes": 183222
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/e74701a7b94e3b70acbc631ab09e96b882de935087063d7c0fe8ffca660728d8.jpg",
+        "sha256": "29950525146fdbc3595b181cb9c172df4c59ead627805133d1304c8f78fc2c93",
+        "size_bytes": 65952
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/e9a54c20e25203b574ea86dc688ecfc903663d80272cfe74dd3d0541a3bb9e8e.jpg",
+        "sha256": "78dc64e3109a3ce78acac769632923f63ffa8095ee4adcd92fb8ee331eb6f3c7",
+        "size_bytes": 33055
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/ea43d0a23c7f52ea0ff631563fda033f9cee91f1909ae5cc8cdf47d7fba00735.jpg",
+        "sha256": "ec8369480d1ecea0d9d45c609cc2a93d218625cbc5aeb9b1fc17e9e283654ebb",
+        "size_bytes": 47834
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/eb3cf989085ed237cc68ace3de6bda2553f5b0c7a59d8941c318bb74ec97e6ac.jpg",
+        "sha256": "0fc0c4b7cb3ed01711723342905ba3127b1cdbffb7b56185892787db60b497f4",
+        "size_bytes": 35305
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/ec583e83fcc0d62e55bad3a31b7e34712616c7ed0ecf60ebe47e0d14dd379d0d.jpg",
+        "sha256": "02f994ec078e091d1e02d7ef3bd3ff38708dfa5270604e59d3cd978497957861",
+        "size_bytes": 52260
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/ef7d870f31e7575282152d7a28a085c35e1e6f6ff536607c89a9b2e2d2bc0a0f.jpg",
+        "sha256": "30d4020b781abb80a37696d26ec6a4dc07a15b29bafe6de8227697474cd800a8",
+        "size_bytes": 1473
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/f29aa7db3a21b78135bc1d6f2b9dfe5946453c04062fa133b83f6183a74420ea.jpg",
+        "sha256": "5e153e8acfc3b5a89b6494f3df6e90c49aca5a99b4ee83e2b6c0a39fc4606b7b",
+        "size_bytes": 1241
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/f350de0424ef7b1233e0dd36ea5438d9cf6f98ca8a7388732ba6b3080aa20733.jpg",
+        "sha256": "607b98e8c22a5fc0a994bc7c779241a05414e8752847b47d32bd9cdee1fc7e3d",
+        "size_bytes": 3276
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/f3f133cca0784d59c67a6c6496b6aba2ec32327df192bfc07f1145166f8c425c.jpg",
+        "sha256": "d853ed7be9e90091c464de3d0b10aad14f1740b5d4c79f5f25a7fa6d49c87fb7",
+        "size_bytes": 24199
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/f499bf8fcc0cfbfd9a896f69f51eb37ee73535979301ceb80658f2727022faf6.jpg",
+        "sha256": "1a0c9a4b279f3dc1672435595d6fe63592be22201865ffe8e1d6b4aa374f773f",
+        "size_bytes": 230524
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/f4fad72b8db3d04a23fa1bea383742f924d06d69373f41a2ce33c4dd6f464a8d.jpg",
+        "sha256": "f40e795c3c7fd6d5a367123cf6d12b0b7598d425002d898274f16f755c32760f",
+        "size_bytes": 73654
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/f76ba7c5ffbef6807b25b38ede148254fb364fa9d871f536be4ff6dadbe7d383.jpg",
+        "sha256": "56d9f4d72f0c13598a9c6e628ed406da4de3945f92fd9c77292744a95f5791d1",
+        "size_bytes": 61227
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/f8e98f39d64d10b9de0c940eec269fd34b97111d8090ecda8d6041069ec05164.jpg",
+        "sha256": "a2c00b754a6c25ac4f82361173916a483677a0c4aee2191712f8bab61b20fa2a",
+        "size_bytes": 436245
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/f9451e41230396734cd9ea66fbcd7b5376d73938122cf02e82b419f4ff810a9a.jpg",
+        "sha256": "d902b35d39d02a5ab326eadda517ea1c1c52be8088aa4643b760874bd4a1b7cd",
+        "size_bytes": 32418
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/f95d6734f25117496f9dee3dec7df54fc0da1ae68b0288d66b13d82df23944b2.jpg",
+        "sha256": "6f43b95de309e6d62e4b34d342c417820afaaa3c0d79d67259968946dd68557f",
+        "size_bytes": 58249
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/fb730baafc86477a83c74f6c32a36133948b3e9b3cc86a78df6945974b76bb6f.jpg",
+        "sha256": "071b9d24b8800f42f4d05934dede20d92065ce76d129aa70e4ec796762a47a55",
+        "size_bytes": 337575
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/images/fb7da0753e95a099fb3ee129e447ea74afe357324e72fec47e58257ecf4dc162.jpg",
+        "sha256": "37c742ff44164d60d0417f849567d131a3a9b2252a69ca887af1dc55c3171b7c",
+        "size_bytes": 68833
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/probe-input-87-pages.md",
+        "sha256": "2d42dcf3d253aa45f9a8ad83b144ff7238eb424e6c7fb4ed569f39045bbe134c",
+        "size_bytes": 331217
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/probe-input-87-pages_content_list.json",
+        "sha256": "dadf11a25dbee882a2c2a284696540543bc30e068d9f5238d8b74f2f0f8fc20a",
+        "size_bytes": 492525
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/probe-input-87-pages_content_list_v2.json",
+        "sha256": "967d734b5bcd400770d8e68888a00978a78fe765bd411016352b612d669552c7",
+        "size_bytes": 720888
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/probe-input-87-pages_layout.pdf",
+        "sha256": "6f0b3fc89bc00ca3efc4c82b521af0445a0001c227115802445a8dd4e9dcf98a",
+        "size_bytes": 5636165
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/probe-input-87-pages_middle.json",
+        "sha256": "2f0697596867be0df74f6067842b7ebb91c13ad3846e1deb16f8ac5543496980",
+        "size_bytes": 5658583
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/probe-input-87-pages_model.json",
+        "sha256": "ef46dfb9402868ecf0c3792b24fca7ae1553957fec8e7e49743b8b36d2068d65",
+        "size_bytes": 989849
+      },
+      {
+        "path": "probe-input-87-pages/hybrid_auto/probe-input-87-pages_origin.pdf",
+        "sha256": "04d4e13b56090e2ab67917add1053b08a182b27bcd1b014e73d03b4e4d14b828",
+        "size_bytes": 2135537
       }
     ]
   },
@@ -24,8 +769,8 @@
     "raw_files": [
       {
         "path": "mineru.log",
-        "sha256": "0905a71c931990eb9a6063a0b356b1b9680ac0d40d344285ac05e5e4a4215599",
-        "size_bytes": 35325
+        "sha256": "c354b5898400def4143cc891d89b39285aadf0ac3dd464a89b5463eae682e332",
+        "size_bytes": 33396
       },
       {
         "path": "probe-input-87-pages/auto/images/01012df73d69ac48a1ca51abfad3a9d7f50104a82fdf6be869a7c89789c9ac84.jpg",
@@ -634,7 +1379,7 @@
       },
       {
         "path": "probe-input-87-pages/auto/probe-input-87-pages_origin.pdf",
-        "sha256": "7c5dd447feb7fb79d4c5082be0f2879b3be06235e8ba12665cc7b6db27449cf3",
+        "sha256": "2222ecb474052f89d26f93f1299df1b962f9d844d512212064406e58876f191a",
         "size_bytes": 2135537
       },
       {

@@ -11,7 +11,7 @@
     "auto"
   ],
   "cuda_visible_devices": "0",
-  "elapsed_seconds": 39.352,
+  "elapsed_seconds": 43.12,
   "error": null,
   "mineru_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/mineru-venv-cu126/bin/mineru",
   "mineru_runtime": {
@@ -64,7 +64,7 @@
       },
       {
         "path": "aapl_fy2025-p26/auto/aapl_fy2025-p26_origin.pdf",
-        "sha256": "da90233e07a036b79b6bd75bb49abe34aafc5d4c91e06d447d9c7bcb6d4b3fb3",
+        "sha256": "bf468cbadd400b4f1b90913d218232d6a512317cfbe333371e6267eca2c0c981",
         "size_bytes": 92619
       },
       {
@@ -79,13 +79,13 @@
       },
       {
         "path": "mineru-smoke.log",
-        "sha256": "08932d46de2e4f3503774f5838d87b758d3ab4509899752ff39caf7335f60fb2",
-        "size_bytes": 4323
+        "sha256": "4ffebcc9015f89069c1352d18da10111a63f8da9fca7adf06f9adf6d2648bf25",
+        "size_bytes": 4314
       }
     ]
   },
   "return_code": 0,
   "smoke_input": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-retrieval-v4-gate-01/smoke/aapl_fy2025-p26.pdf",
-  "smoke_input_sha256": "355d69efdf8bab05470c6f0de9c92f2c7847098c1f4218ad6b19f8182a4c4f6d",
+  "smoke_input_sha256": "43a917052873fdb6dc0c3e29fcaa1482f3cac51c821bc002caf38d4a52ef3fba",
   "smoke_output": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-retrieval-v4-gate-01/smoke/output"
 }
