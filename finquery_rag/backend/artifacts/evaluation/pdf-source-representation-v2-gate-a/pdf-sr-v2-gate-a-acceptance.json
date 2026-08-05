@@ -1,0 +1,29 @@
+{
+  "answer_generation_calls": 0,
+  "coverage_threshold_results": {
+    "geometry_cell_coverage": true,
+    "metric_period_row_coverage": false,
+    "metric_row_coverage": true,
+    "period_row_coverage": false,
+    "statement_row_coverage": false
+  },
+  "coverage_thresholds": {
+    "geometry_cell_coverage": 0.7,
+    "metric_period_row_coverage": 0.7,
+    "metric_row_coverage": 0.8,
+    "period_row_coverage": 0.7,
+    "statement_row_coverage": 0.7
+  },
+  "decision": "pdf_sr_v2_structure_resolver_coverage_blocked",
+  "development_pdf_count": 3,
+  "frozen_72_question_reads": 0,
+  "gate_passed": false,
+  "gold_label_reads": 0,
+  "model_calls": 0,
+  "next_gate": "stop_and_analyze_header_statement_lineage",
+  "production_behavior_changed": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "resolver_structure_runtime_sha256": "e26ca87f24dcad0d4b43c953eabc0f62b9c551fc860c17894942047bda20599e",
+  "schema": "pdf-source-representation-v2/gate-a/acceptance/v1"
+}

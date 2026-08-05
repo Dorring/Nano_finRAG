@@ -1,0 +1,31 @@
+{
+  "documents": [
+    {
+      "document_id": "walmart_fy2026_pdf_dev",
+      "issuer": "Walmart Inc.",
+      "pdf_bytes": 14805939,
+      "pdf_sha256": "550eaf563e00aa4862eb26f2a738b9c95968f3aa39e12f31e7076824e9ba9a8d",
+      "runtime_pdf_committed": false,
+      "selected_page_count": 29,
+      "table_count": 25
+    },
+    {
+      "document_id": "adobe_fy2025_pdf_dev",
+      "issuer": "Adobe Inc.",
+      "pdf_bytes": 11487117,
+      "pdf_sha256": "ca8a40304d233a9a9023beaa5d93fc969949d8e2105eee58c7a5e8f3e9bea9ce",
+      "runtime_pdf_committed": false,
+      "selected_page_count": 43,
+      "table_count": 39
+    },
+    {
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "issuer": "Salesforce, Inc.",
+      "pdf_bytes": 1562778,
+      "pdf_sha256": "2659583a6d2b82b16d8bf017223dc12efc05e4aef6e073c37e625a5240d6fd9c",
+      "runtime_pdf_committed": false,
+      "selected_page_count": 32,
+      "table_count": 42
+    }
+  ]
+}

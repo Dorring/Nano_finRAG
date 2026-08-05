@@ -1,0 +1,21 @@
+{
+  "runtime_structures_committed": false,
+  "table_fields": [
+    "table_id",
+    "document_id",
+    "pdf_page",
+    "table_index",
+    "parser_name",
+    "parser_flavor",
+    "bbox",
+    "statement",
+    "scale",
+    "scale_context_hash",
+    "scale_source",
+    "period_headers",
+    "row_count",
+    "numeric_cell_count",
+    "period_cell_count",
+    "geometry_cell_count"
+  ]
+}
