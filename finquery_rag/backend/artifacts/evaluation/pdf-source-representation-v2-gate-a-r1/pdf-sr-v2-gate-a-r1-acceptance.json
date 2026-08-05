@@ -1,0 +1,24 @@
+{
+  "decision": "pdf_sr_v2_native_resolver_failure_attributed",
+  "failed_page_count": 49,
+  "frozen_72_question_reads": 0,
+  "gold_label_reads": 0,
+  "mineru_required_now": false,
+  "mineru_targeted_fallback_possible": false,
+  "model_calls": 0,
+  "native_text_absence_rate": 0.0,
+  "next_gate": "header_grid_and_statement_lineage_resolver",
+  "period_failure_row_count": 525,
+  "primary_bottleneck": [
+    "header_resolution",
+    "statement_lineage",
+    "parser_result_arbitration"
+  ],
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "recall_evaluation_run": false,
+  "resolver_behavior_changed": false,
+  "schema": "pdf-source-representation-v2/gate-a-r1/acceptance/v1",
+  "source_gate_a_sha256": "bfd731dd2260ccdd4d6b223420bfd80408e5d6ef2eb74bf4fb1556571e44aeee",
+  "statement_failure_row_count": 514
+}

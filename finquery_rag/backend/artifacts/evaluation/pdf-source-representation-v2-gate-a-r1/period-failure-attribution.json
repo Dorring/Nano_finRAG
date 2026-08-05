@@ -1,0 +1,46 @@
+{
+  "by_document": {
+    "adobe_fy2025_pdf_dev": {
+      "period_header_on_previous_page": 24,
+      "period_multilevel_header": 159,
+      "period_single_year_global_header": 6,
+      "period_year_in_matrix_unresolved": 13,
+      "period_year_in_nearby_page_text": 5
+    },
+    "salesforce_fy2026_pdf_dev": {
+      "period_header_on_previous_page": 80,
+      "period_multilevel_header": 70,
+      "period_single_year_global_header": 3,
+      "period_year_in_matrix_unresolved": 12,
+      "period_year_in_nearby_page_text": 78
+    },
+    "walmart_fy2026_pdf_dev": {
+      "period_multilevel_header": 22,
+      "period_year_in_matrix_unresolved": 48,
+      "period_year_in_nearby_page_text": 5
+    }
+  },
+  "by_parser": {
+    "camelot_stream": {
+      "period_header_on_previous_page": 24,
+      "period_multilevel_header": 193,
+      "period_single_year_global_header": 6,
+      "period_year_in_matrix_unresolved": 61,
+      "period_year_in_nearby_page_text": 5
+    },
+    "pymupdf": {
+      "period_header_on_previous_page": 80,
+      "period_multilevel_header": 58,
+      "period_single_year_global_header": 3,
+      "period_year_in_matrix_unresolved": 12,
+      "period_year_in_nearby_page_text": 83
+    }
+  },
+  "counts": {
+    "period_header_on_previous_page": 104,
+    "period_multilevel_header": 251,
+    "period_single_year_global_header": 9,
+    "period_year_in_matrix_unresolved": 73,
+    "period_year_in_nearby_page_text": 88
+  }
+}

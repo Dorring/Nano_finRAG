@@ -1,0 +1,42 @@
+{
+  "by_document": {
+    "adobe_fy2025_pdf_dev": {
+      "statement_marker_in_table_header": 1,
+      "statement_marker_on_page_but_outside_180": 52,
+      "statement_unrecognized_title": 161
+    },
+    "salesforce_fy2026_pdf_dev": {
+      "statement_marker_on_page_but_outside_180": 72,
+      "statement_on_previous_page": 19,
+      "statement_unknown": 1,
+      "statement_unrecognized_title": 54
+    },
+    "walmart_fy2026_pdf_dev": {
+      "statement_marker_in_table_header": 10,
+      "statement_marker_on_page_but_outside_180": 118,
+      "statement_unknown": 3,
+      "statement_unrecognized_title": 23
+    }
+  },
+  "by_parser": {
+    "camelot_stream": {
+      "statement_marker_in_table_header": 11,
+      "statement_marker_on_page_but_outside_180": 168,
+      "statement_unknown": 3,
+      "statement_unrecognized_title": 193
+    },
+    "pymupdf": {
+      "statement_marker_on_page_but_outside_180": 74,
+      "statement_on_previous_page": 19,
+      "statement_unknown": 1,
+      "statement_unrecognized_title": 45
+    }
+  },
+  "counts": {
+    "statement_marker_in_table_header": 11,
+    "statement_marker_on_page_but_outside_180": 242,
+    "statement_on_previous_page": 19,
+    "statement_unknown": 4,
+    "statement_unrecognized_title": 238
+  }
+}

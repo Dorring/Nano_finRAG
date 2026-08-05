@@ -12,6 +12,22 @@ from src.evaluation.pdf_source_representation_v2 import (
 )
 
 
+def test_multilevel_year_rows_are_not_resolved_by_baseline() -> None:
+    matrix = [
+        ["Years ended January 31", "", ""],
+        ["", "2026", ""],
+        ["", "", "2025"],
+    ]
+
+    assert resolve_period_headers(matrix, 3) == [None, None, None]
+
+
+def test_single_period_single_value_remains_explicit_r1_gap() -> None:
+    matrix = [["Year ended 2025", ""], ["Revenue", "100"]]
+
+    assert resolve_period_headers(matrix, 2) == [None, None]
+
+
 def test_header_grid_resolves_explicit_period_columns() -> None:
     matrix = [["", "2025", "2024", "2023"], ["Revenue", "100", "90", "80"]]
     assert resolve_period_headers(matrix, 4) == [None, "FY2025", "FY2024", "FY2023"]

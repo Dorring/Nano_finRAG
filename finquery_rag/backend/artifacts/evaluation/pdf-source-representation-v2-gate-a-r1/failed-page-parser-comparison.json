@@ -1,0 +1,1253 @@
+{
+  "failed_page_count": 49,
+  "parser_totals": {
+    "camelot_lattice": {
+      "metric_row_count": 0,
+      "numeric_row_count": 0,
+      "page_with_table_count": 0,
+      "period_row_count": 0,
+      "table_count": 0
+    },
+    "camelot_stream": {
+      "metric_row_count": 585,
+      "numeric_row_count": 631,
+      "page_with_table_count": 49,
+      "period_row_count": 231,
+      "table_count": 63
+    },
+    "pymupdf": {
+      "metric_row_count": 252,
+      "numeric_row_count": 258,
+      "page_with_table_count": 18,
+      "period_row_count": 22,
+      "table_count": 34
+    }
+  },
+  "records": [
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 3,
+        "numeric_row_count": 3,
+        "period_row_count": 1,
+        "period_row_coverage": 0.3333333333333333,
+        "table_count": 1
+      },
+      "document_id": "walmart_fy2026_pdf_dev",
+      "pdf_page": 37,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 11,
+        "numeric_row_count": 12,
+        "period_row_count": 12,
+        "period_row_coverage": 1.0,
+        "table_count": 1
+      },
+      "document_id": "walmart_fy2026_pdf_dev",
+      "pdf_page": 45,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 1
+      },
+      "document_id": "walmart_fy2026_pdf_dev",
+      "pdf_page": 46,
+      "pymupdf": {
+        "metric_row_count": 3,
+        "numeric_row_count": 3,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 22,
+        "numeric_row_count": 22,
+        "period_row_count": 22,
+        "period_row_coverage": 1.0,
+        "table_count": 1
+      },
+      "document_id": "walmart_fy2026_pdf_dev",
+      "pdf_page": 54,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 10,
+        "numeric_row_count": 10,
+        "period_row_count": 10,
+        "period_row_coverage": 1.0,
+        "table_count": 1
+      },
+      "document_id": "walmart_fy2026_pdf_dev",
+      "pdf_page": 55,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 29,
+        "numeric_row_count": 29,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      },
+      "document_id": "walmart_fy2026_pdf_dev",
+      "pdf_page": 57,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 18,
+        "numeric_row_count": 18,
+        "period_row_count": 18,
+        "period_row_coverage": 1.0,
+        "table_count": 1
+      },
+      "document_id": "walmart_fy2026_pdf_dev",
+      "pdf_page": 58,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 7,
+        "numeric_row_count": 7,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      },
+      "document_id": "walmart_fy2026_pdf_dev",
+      "pdf_page": 61,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 9,
+        "numeric_row_count": 9,
+        "period_row_count": 1,
+        "period_row_coverage": 0.1111111111111111,
+        "table_count": 1
+      },
+      "document_id": "walmart_fy2026_pdf_dev",
+      "pdf_page": 65,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 5,
+        "numeric_row_count": 5,
+        "period_row_count": 1,
+        "period_row_coverage": 0.2,
+        "table_count": 2
+      },
+      "document_id": "walmart_fy2026_pdf_dev",
+      "pdf_page": 66,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 17,
+        "numeric_row_count": 22,
+        "period_row_count": 2,
+        "period_row_coverage": 0.09090909090909091,
+        "table_count": 3
+      },
+      "document_id": "walmart_fy2026_pdf_dev",
+      "pdf_page": 70,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 4,
+        "numeric_row_count": 4,
+        "period_row_count": 4,
+        "period_row_coverage": 1.0,
+        "table_count": 1
+      },
+      "document_id": "walmart_fy2026_pdf_dev",
+      "pdf_page": 71,
+      "pymupdf": {
+        "metric_row_count": 2,
+        "numeric_row_count": 2,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 15,
+        "numeric_row_count": 15,
+        "period_row_count": 15,
+        "period_row_coverage": 1.0,
+        "table_count": 1
+      },
+      "document_id": "walmart_fy2026_pdf_dev",
+      "pdf_page": 74,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 8,
+        "numeric_row_count": 8,
+        "period_row_count": 8,
+        "period_row_coverage": 1.0,
+        "table_count": 1
+      },
+      "document_id": "walmart_fy2026_pdf_dev",
+      "pdf_page": 75,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 5,
+        "numeric_row_count": 5,
+        "period_row_count": 5,
+        "period_row_coverage": 1.0,
+        "table_count": 1
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 39,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 10,
+        "numeric_row_count": 10,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 51,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 21,
+        "numeric_row_count": 21,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 52,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 16,
+        "numeric_row_count": 16,
+        "period_row_count": 7,
+        "period_row_coverage": 0.4375,
+        "table_count": 2
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 61,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 11,
+        "numeric_row_count": 11,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 64,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 16,
+        "numeric_row_count": 16,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 2
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 65,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 11,
+        "numeric_row_count": 11,
+        "period_row_count": 11,
+        "period_row_coverage": 1.0,
+        "table_count": 1
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 70,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 9,
+        "numeric_row_count": 9,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 71,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 18,
+        "numeric_row_count": 18,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 3
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 72,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 10,
+        "numeric_row_count": 10,
+        "period_row_count": 1,
+        "period_row_coverage": 0.1,
+        "table_count": 1
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 73,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 29,
+        "numeric_row_count": 29,
+        "period_row_count": 11,
+        "period_row_coverage": 0.3793103448275862,
+        "table_count": 2
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 74,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 9,
+        "numeric_row_count": 9,
+        "period_row_count": 1,
+        "period_row_coverage": 0.1111111111111111,
+        "table_count": 2
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 75,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 6,
+        "numeric_row_count": 6,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 78,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 9,
+        "numeric_row_count": 9,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 80,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 15,
+        "numeric_row_count": 15,
+        "period_row_count": 8,
+        "period_row_coverage": 0.5333333333333333,
+        "table_count": 2
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 81,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 23,
+        "numeric_row_count": 23,
+        "period_row_count": 1,
+        "period_row_coverage": 0.043478260869565216,
+        "table_count": 2
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 84,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 11,
+        "numeric_row_count": 11,
+        "period_row_count": 1,
+        "period_row_coverage": 0.09090909090909091,
+        "table_count": 1
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 86,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 8,
+        "numeric_row_count": 24,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 2
+      },
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 91,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 7,
+        "numeric_row_count": 7,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 34,
+      "pymupdf": {
+        "metric_row_count": 7,
+        "numeric_row_count": 7,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 18,
+        "numeric_row_count": 20,
+        "period_row_count": 19,
+        "period_row_coverage": 0.95,
+        "table_count": 1
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 43,
+      "pymupdf": {
+        "metric_row_count": 25,
+        "numeric_row_count": 25,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 3
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 9,
+        "numeric_row_count": 9,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 52,
+      "pymupdf": {
+        "metric_row_count": 12,
+        "numeric_row_count": 12,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 2
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 22,
+        "numeric_row_count": 24,
+        "period_row_count": 1,
+        "period_row_coverage": 0.041666666666666664,
+        "table_count": 1
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 59,
+      "pymupdf": {
+        "metric_row_count": 29,
+        "numeric_row_count": 30,
+        "period_row_count": 19,
+        "period_row_coverage": 0.6333333333333333,
+        "table_count": 3
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 7,
+        "numeric_row_count": 8,
+        "period_row_count": 1,
+        "period_row_coverage": 0.125,
+        "table_count": 1
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 60,
+      "pymupdf": {
+        "metric_row_count": 7,
+        "numeric_row_count": 7,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 6,
+        "numeric_row_count": 6,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 61,
+      "pymupdf": {
+        "metric_row_count": 22,
+        "numeric_row_count": 22,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 32,
+        "numeric_row_count": 34,
+        "period_row_count": 33,
+        "period_row_coverage": 0.9705882352941176,
+        "table_count": 1
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 62,
+      "pymupdf": {
+        "metric_row_count": 32,
+        "numeric_row_count": 32,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 2,
+        "numeric_row_count": 4,
+        "period_row_count": 2,
+        "period_row_coverage": 0.5,
+        "table_count": 1
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 63,
+      "pymupdf": {
+        "metric_row_count": 2,
+        "numeric_row_count": 2,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 5,
+        "numeric_row_count": 7,
+        "period_row_count": 1,
+        "period_row_coverage": 0.14285714285714285,
+        "table_count": 1
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 71,
+      "pymupdf": {
+        "metric_row_count": 8,
+        "numeric_row_count": 11,
+        "period_row_count": 3,
+        "period_row_coverage": 0.2727272727272727,
+        "table_count": 2
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 9,
+        "numeric_row_count": 9,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 73,
+      "pymupdf": {
+        "metric_row_count": 24,
+        "numeric_row_count": 25,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 4
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 9,
+        "numeric_row_count": 9,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 78,
+      "pymupdf": {
+        "metric_row_count": 11,
+        "numeric_row_count": 11,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 2
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 6,
+        "numeric_row_count": 7,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 80,
+      "pymupdf": {
+        "metric_row_count": 6,
+        "numeric_row_count": 6,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 2
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 11,
+        "numeric_row_count": 11,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 81,
+      "pymupdf": {
+        "metric_row_count": 19,
+        "numeric_row_count": 19,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 3
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 17,
+        "numeric_row_count": 17,
+        "period_row_count": 11,
+        "period_row_coverage": 0.6470588235294118,
+        "table_count": 2
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 83,
+      "pymupdf": {
+        "metric_row_count": 18,
+        "numeric_row_count": 18,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 3
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 24,
+        "numeric_row_count": 27,
+        "period_row_count": 21,
+        "period_row_coverage": 0.7777777777777778,
+        "table_count": 2
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 88,
+      "pymupdf": {
+        "metric_row_count": 24,
+        "numeric_row_count": 25,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 2
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 1,
+        "numeric_row_count": 3,
+        "period_row_count": 2,
+        "period_row_coverage": 0.6666666666666666,
+        "table_count": 1
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 91,
+      "pymupdf": {
+        "metric_row_count": 1,
+        "numeric_row_count": 1,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      }
+    },
+    {
+      "camelot_lattice": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      },
+      "camelot_stream": {
+        "metric_row_count": 5,
+        "numeric_row_count": 12,
+        "period_row_count": 0,
+        "period_row_coverage": 0.0,
+        "table_count": 1
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 97,
+      "pymupdf": {
+        "metric_row_count": 0,
+        "numeric_row_count": 0,
+        "period_row_count": 0,
+        "period_row_coverage": 0,
+        "table_count": 0
+      }
+    }
+  ]
+}
