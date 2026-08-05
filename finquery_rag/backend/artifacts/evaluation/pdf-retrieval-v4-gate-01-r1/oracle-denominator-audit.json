@@ -1,0 +1,65 @@
+{
+  "duplicate_groups": [
+    {
+      "record_count": 2,
+      "record_indexes": [
+        0,
+        1
+      ],
+      "unique_identity": "e93b22fec8d69c9469cd0dd6f1aefadd714b160a630be384622bb13cd3eb12ec"
+    },
+    {
+      "record_count": 2,
+      "record_indexes": [
+        2,
+        3
+      ],
+      "unique_identity": "2455c2da79e6be7aa919ba32500882df21c111e9adf2d8928ce6a82204325382"
+    },
+    {
+      "record_count": 2,
+      "record_indexes": [
+        4,
+        5
+      ],
+      "unique_identity": "dc0d6e785300d69a7ffc23ecaf8e03d86ee9cafab115438981532e66ac5b0a88"
+    },
+    {
+      "record_count": 3,
+      "record_indexes": [
+        8,
+        9,
+        11
+      ],
+      "unique_identity": "877e8b8ec66eb164121593945cbc85ee0f9219b2a948ec96e6f76722bc89a51f"
+    },
+    {
+      "record_count": 2,
+      "record_indexes": [
+        12,
+        13
+      ],
+      "unique_identity": "955fa6bbc3e27cec495d6ce03b3704146e7df5b4b174bf3b2b5b2f56a606f76b"
+    },
+    {
+      "record_count": 2,
+      "record_indexes": [
+        14,
+        15
+      ],
+      "unique_identity": "6a8555847e9554c5b0d536dacff7f8237bb38d10bc5b4472cee95e855832ea06"
+    },
+    {
+      "record_count": 2,
+      "record_indexes": [
+        16,
+        17
+      ],
+      "unique_identity": "7c808b92ebace6c3f73880f51e7a7aeef84cd3c8553e618093087cea9175ddb0"
+    }
+  ],
+  "duplicate_record_count": 8,
+  "identity_formula": "sha256(document_id + newline + pdf_page + newline + legacy_candidate_key)",
+  "oracle_record_count": 22,
+  "unique_source_identity_count": 14
+}

@@ -1,0 +1,21 @@
+{
+  "adapter_builds": 0,
+  "answer_generation_calls": 0,
+  "decision": "mineru_structure_native_text_composite_capability_passed",
+  "gate_passed": true,
+  "index_builds": 0,
+  "mineru_reruns": 0,
+  "new_visual_model_calls": 0,
+  "next_gate": "unified_structured_adapter",
+  "oracle_annotations_read_posthoc": 22,
+  "original_probe_metrics_unchanged": true,
+  "per_record_backend_selection": false,
+  "previous_decision": "mineru_capability_insufficient",
+  "production_behavior_changed": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "runtime_gold_reads": 0,
+  "runtime_governance_reads": 0
+}

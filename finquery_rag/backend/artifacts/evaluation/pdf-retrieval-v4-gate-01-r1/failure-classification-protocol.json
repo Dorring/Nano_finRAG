@@ -1,0 +1,16 @@
+{
+  "adapter_builds": 0,
+  "answer_generation_calls": 0,
+  "expected_values_not_used_for_parser_rules": true,
+  "index_builds": 0,
+  "mineru_reruns": 0,
+  "new_visual_model_calls": 0,
+  "numeric_match_rule": "Decimal(observed)==Decimal(expected)",
+  "oracle_used": "posthoc_only",
+  "previous_decision": "mineru_capability_insufficient",
+  "production_index_writes": 0,
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "stage": "PDF SR-V2 Gate A R1",
+  "title": "MinerU Failure Classification and Native Recoverability Audit"
+}

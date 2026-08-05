@@ -1,0 +1,101 @@
+{
+  "diagnostic_counts": {
+    "mineru_span_recoverable": 9,
+    "normalization_only_recoverable": 0,
+    "numeric_failure_count": 12,
+    "oracle_mapping_issue_count": 0,
+    "pymupdf_native_recoverable": 9,
+    "scale_failure_count": 4,
+    "scale_truly_absent_count": 0,
+    "true_visual_failure_count": 0
+  },
+  "original_metric_audit": {
+    "hybrid_high": {
+      "expected": {
+        "numeric": [
+          10,
+          22
+        ],
+        "scale": [
+          18,
+          22
+        ]
+      },
+      "observed": {
+        "numeric": [
+          10,
+          22
+        ],
+        "scale": [
+          18,
+          22
+        ]
+      },
+      "unchanged": true
+    },
+    "pipeline_auto_ocr": {
+      "expected": {
+        "numeric": [
+          10,
+          22
+        ],
+        "scale": [
+          16,
+          22
+        ]
+      },
+      "observed": {
+        "numeric": [
+          10,
+          22
+        ],
+        "scale": [
+          16,
+          22
+        ]
+      },
+      "unchanged": true
+    }
+  },
+  "original_probe_metrics_unchanged": true,
+  "record_level": {
+    "hybrid_numeric": [
+      10,
+      22
+    ],
+    "hybrid_scale": [
+      18,
+      22
+    ],
+    "oracle_records": 22,
+    "pipeline_numeric": [
+      10,
+      22
+    ],
+    "pipeline_scale": [
+      16,
+      22
+    ]
+  },
+  "record_level_composite": {
+    "composite_numeric_recoverable": [
+      22,
+      22
+    ],
+    "composite_scale_recoverable": [
+      22,
+      22
+    ]
+  },
+  "unique_identity_level": {
+    "composite_numeric_recoverable": [
+      14,
+      14
+    ],
+    "composite_scale_recoverable": [
+      14,
+      14
+    ],
+    "oracle_unique_sources": 14
+  }
+}

@@ -1,0 +1,3463 @@
+{
+  "entries": [
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 6,
+            "row_text": "Total net sales | $ 416,161 | 6 % | $ 391,035 | 2 % | $ 383,285",
+            "table_index": 0,
+            "token": {
+              "decimal": "391035",
+              "normalized": "391035",
+              "percent": false,
+              "raw": "$ 391,035 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 6,
+            "row_text": "Total net sales | $ 416,161 | 6 % | $ 391,035 | 2 % | $ 383,285",
+            "table_index": 1,
+            "token": {
+              "decimal": "391035",
+              "normalized": "391035",
+              "percent": false,
+              "raw": "$ 391,035 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 1,
+        "page_text_excerpt": "Products and Services Performance The following table shows net sales by category for 2025, 2024 and 2023 (dollars in millions): iPhone iPhone net sales increased during 2025 compared to 2024 due to higher net sales of Pro models. Mac Mac net sales increased during 2025 compared to 2024 primarily due to higher net sales of laptops and desktops. iPad iPad net sales increased during 2025 compared to 2024 primarily due to higher net sales of iPad Air, iPad mini and iPad, partially offset by lower net sales of iPad Pro. Wearables, Home and Accessories Wearables, Home and Accessories net sales decreased during 2025 compared to 2024 primarily due to lower net sales of Accessories and Wearables. Services Services net sales increased during 2025 compared to 2024 primarily due to higher net sales from advertising, the App Store and cloud services. Apple Inc. | 2025 Form 10-K | 23",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "391035",
+            "normalized": "391035",
+            "percent": false,
+            "raw": "$ 391,035",
+            "valid": true
+          },
+          {
+            "decimal": "391035",
+            "normalized": "391035",
+            "percent": false,
+            "raw": "$ 391,035",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            16.0,
+            105.0,
+            596.0,
+            191.0
+          ],
+          [
+            26.0,
+            132.0,
+            973.0,
+            241.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": " 2025 Change 2024 Change 2023 iPhone $ 209,586 4 % $ 201,183 — % $ 200,583 Mac 33,708 12 % 29,984 2 % 29,357 iPad 28,023 5 % 26,694 (6)% 28,300 Wearables, Home and Accessories 35,686 (4)% 37,005 (7)% 39,845 Services (1) 109,158 14 % 96,169 13 % 85,200 Total net sales $ 416,161 6 % $ 391,035 2 % $ 383,285  2025 Change 2024 Change 2023 iPhone $ 209,586 4 % $ 201,183 — % $ 200,583 Mac 33,708 12 % 29,984 2 % 29,357 iPad 28,023 5 % 26,694 (6)% 28,300 Wearables, Home and Accessories 35,686 (4)% 37,005 (7)% 39,845 Services (1) 109,158 14 % 96,169 13 % 85,200 Total net sales $ 416,161 6 % $ 391,035 2 % $ 383,285"
+      },
+      "numeric_class": "not_applicable",
+      "oracle_record_id": 0,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 6,
+            "row_text": "Total net sales | $ 416,161 | 6 % $ | 391,035 | 2 % $ | 383,285",
+            "table_index": 0,
+            "token": {
+              "decimal": "391035",
+              "normalized": "391035",
+              "percent": false,
+              "raw": " 391,035 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 6,
+            "row_text": "Total net sales | $ 416,161 | 6 % $ | 391,035 | 2 % $ | 383,285",
+            "table_index": 1,
+            "token": {
+              "decimal": "391035",
+              "normalized": "391035",
+              "percent": false,
+              "raw": " 391,035 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 1,
+        "page_text_excerpt": "Products and Services Performance The following table shows net sales by category for 2025, 2024 and 2023 (dollars in millions): (1) Services net sales include amortization of the deferred value of services bundled in the sales price of certain products iPhone iPhone net sales increased during 2025 compared to 2024 due to higher net sales of Pro models. Mac Mac net sales increased during 2025 compared to 2024 primarily due to higher net sales of laptops and desktops. iPad iPad net sales increased during 2025 compared to 2024 primarily due to higher net sales of iPad Air, iPad mini and iPad, partially offset by lower net sales of iPad Pro. Wearables, Home and Accessories Wearables, Home and Accessories net sales decreased during 2025 compared to 2024 primarily due to lower net sales of Accessories and Wearables. Services Services net sales increased during 2025 compared to 2024 primarily due to higher net sales from advertising, the App Store and cloud services.",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "391035",
+            "normalized": "391035",
+            "percent": false,
+            "raw": "391,035",
+            "valid": true
+          },
+          {
+            "decimal": "391035",
+            "normalized": "391035",
+            "percent": false,
+            "raw": "391,035",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            16.0,
+            104.0,
+            594.0,
+            189.0
+          ],
+          [
+            26.0,
+            131.0,
+            970.0,
+            238.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": "iPhone 2025 Change 2024 Change 2023 $ 209,586 4 % $ 201,183 % $ 200,583 Mac 33,708 12 % 29,984 2 % 29,357 iPad 28,023 5 % 26,694 (6)% 28,300 Wearables, Home and Accessories 35,686 (4)% 37,005 (7)% 39,845 Services (1) 109,158 14 % 96,169 13 % 85,200 Total net sales $ 416,161 6 % $ 391,035 2 % $ 383,285 iPhone 2025 Change 2024 Change 2023 $ 209,586 4 % $ 201,183 % $ 200,583 Mac 33,708 12 % 29,984 2 % 29,357 iPad 28,023 5 % 26,694 (6)% 28,300 Wearables, Home and Accessories 35,686 (4)% 37,005 (7)% 39,845 Services (1) 109,158 14 % 96,169 13 % 85,200 Total net sales $ 416,161 6 % $ 391,035 2 % $ 383,285"
+      },
+      "unique_source_identity": "e93b22fec8d69c9469cd0dd6f1aefadd714b160a630be384622bb13cd3eb12ec"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 6,
+            "row_text": "Total net sales | $ 416,161 | 6 % | $ 391,035 | 2 % | $ 383,285",
+            "table_index": 0,
+            "token": {
+              "decimal": "416161",
+              "normalized": "416161",
+              "percent": false,
+              "raw": "$ 416,161 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 6,
+            "row_text": "Total net sales | $ 416,161 | 6 % | $ 391,035 | 2 % | $ 383,285",
+            "table_index": 1,
+            "token": {
+              "decimal": "416161",
+              "normalized": "416161",
+              "percent": false,
+              "raw": "$ 416,161 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 1,
+        "page_text_excerpt": "Products and Services Performance The following table shows net sales by category for 2025, 2024 and 2023 (dollars in millions): iPhone iPhone net sales increased during 2025 compared to 2024 due to higher net sales of Pro models. Mac Mac net sales increased during 2025 compared to 2024 primarily due to higher net sales of laptops and desktops. iPad iPad net sales increased during 2025 compared to 2024 primarily due to higher net sales of iPad Air, iPad mini and iPad, partially offset by lower net sales of iPad Pro. Wearables, Home and Accessories Wearables, Home and Accessories net sales decreased during 2025 compared to 2024 primarily due to lower net sales of Accessories and Wearables. Services Services net sales increased during 2025 compared to 2024 primarily due to higher net sales from advertising, the App Store and cloud services. Apple Inc. | 2025 Form 10-K | 23",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "416161",
+            "normalized": "416161",
+            "percent": false,
+            "raw": "$ 416,161",
+            "valid": true
+          },
+          {
+            "decimal": "416161",
+            "normalized": "416161",
+            "percent": false,
+            "raw": "$ 416,161",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            16.0,
+            105.0,
+            596.0,
+            191.0
+          ],
+          [
+            26.0,
+            132.0,
+            973.0,
+            241.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": " 2025 Change 2024 Change 2023 iPhone $ 209,586 4 % $ 201,183 — % $ 200,583 Mac 33,708 12 % 29,984 2 % 29,357 iPad 28,023 5 % 26,694 (6)% 28,300 Wearables, Home and Accessories 35,686 (4)% 37,005 (7)% 39,845 Services (1) 109,158 14 % 96,169 13 % 85,200 Total net sales $ 416,161 6 % $ 391,035 2 % $ 383,285  2025 Change 2024 Change 2023 iPhone $ 209,586 4 % $ 201,183 — % $ 200,583 Mac 33,708 12 % 29,984 2 % 29,357 iPad 28,023 5 % 26,694 (6)% 28,300 Wearables, Home and Accessories 35,686 (4)% 37,005 (7)% 39,845 Services (1) 109,158 14 % 96,169 13 % 85,200 Total net sales $ 416,161 6 % $ 391,035 2 % $ 383,285"
+      },
+      "numeric_class": "not_applicable",
+      "oracle_record_id": 1,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 6,
+            "row_text": "Total net sales | $ 416,161 | 6 % $ | 391,035 | 2 % $ | 383,285",
+            "table_index": 0,
+            "token": {
+              "decimal": "416161",
+              "normalized": "416161",
+              "percent": false,
+              "raw": "$ 416,161 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 6,
+            "row_text": "Total net sales | $ 416,161 | 6 % $ | 391,035 | 2 % $ | 383,285",
+            "table_index": 1,
+            "token": {
+              "decimal": "416161",
+              "normalized": "416161",
+              "percent": false,
+              "raw": "$ 416,161 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 1,
+        "page_text_excerpt": "Products and Services Performance The following table shows net sales by category for 2025, 2024 and 2023 (dollars in millions): (1) Services net sales include amortization of the deferred value of services bundled in the sales price of certain products iPhone iPhone net sales increased during 2025 compared to 2024 due to higher net sales of Pro models. Mac Mac net sales increased during 2025 compared to 2024 primarily due to higher net sales of laptops and desktops. iPad iPad net sales increased during 2025 compared to 2024 primarily due to higher net sales of iPad Air, iPad mini and iPad, partially offset by lower net sales of iPad Pro. Wearables, Home and Accessories Wearables, Home and Accessories net sales decreased during 2025 compared to 2024 primarily due to lower net sales of Accessories and Wearables. Services Services net sales increased during 2025 compared to 2024 primarily due to higher net sales from advertising, the App Store and cloud services.",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "416161",
+            "normalized": "416161",
+            "percent": false,
+            "raw": "$ 416,161",
+            "valid": true
+          },
+          {
+            "decimal": "416161",
+            "normalized": "416161",
+            "percent": false,
+            "raw": "$ 416,161",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            16.0,
+            104.0,
+            594.0,
+            189.0
+          ],
+          [
+            26.0,
+            131.0,
+            970.0,
+            238.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": "iPhone 2025 Change 2024 Change 2023 $ 209,586 4 % $ 201,183 % $ 200,583 Mac 33,708 12 % 29,984 2 % 29,357 iPad 28,023 5 % 26,694 (6)% 28,300 Wearables, Home and Accessories 35,686 (4)% 37,005 (7)% 39,845 Services (1) 109,158 14 % 96,169 13 % 85,200 Total net sales $ 416,161 6 % $ 391,035 2 % $ 383,285 iPhone 2025 Change 2024 Change 2023 $ 209,586 4 % $ 201,183 % $ 200,583 Mac 33,708 12 % 29,984 2 % 29,357 iPad 28,023 5 % 26,694 (6)% 28,300 Wearables, Home and Accessories 35,686 (4)% 37,005 (7)% 39,845 Services (1) 109,158 14 % 96,169 13 % 85,200 Total net sales $ 416,161 6 % $ 391,035 2 % $ 383,285"
+      },
+      "unique_source_identity": "e93b22fec8d69c9469cd0dd6f1aefadd714b160a630be384622bb13cd3eb12ec"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 17,
+            "row_text": "Total assets(a) | $ 4,424,900 | $ 4,002,814",
+            "table_index": 0,
+            "token": {
+              "decimal": "4002814",
+              "normalized": "4002814",
+              "percent": false,
+              "raw": "$ 4,002,814",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 36,
+            "row_text": "Total liabilities and stockholders' equity | $ 4,424,900 | $ 4,002,814",
+            "table_index": 0,
+            "token": {
+              "decimal": "4002814",
+              "normalized": "4002814",
+              "percent": false,
+              "raw": "$ 4,002,814",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 17,
+            "row_text": "Total assets(a) | $ 4,424,900 | $ 4,002,814",
+            "table_index": 2,
+            "token": {
+              "decimal": "4002814",
+              "normalized": "4002814",
+              "percent": false,
+              "raw": "$ 4,002,814",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 36,
+            "row_text": "Total liabilities and stockholders' equity | $ 4,424,900 | $ 4,002,814",
+            "table_index": 2,
+            "token": {
+              "decimal": "4002814",
+              "normalized": "4002814",
+              "percent": false,
+              "raw": "$ 4,002,814",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 20,
+        "page_text_excerpt": "The Notes to Consolidated Financial Statements are an integral part of these statements.",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "4002814",
+            "normalized": "4002814",
+            "percent": false,
+            "raw": "$ 4,002,814",
+            "valid": true
+          },
+          {
+            "decimal": "4002814",
+            "normalized": "4002814",
+            "percent": false,
+            "raw": "$ 4,002,814",
+            "valid": true
+          },
+          {
+            "decimal": "4002814",
+            "normalized": "4002814",
+            "percent": false,
+            "raw": "$ 4,002,814",
+            "valid": true
+          },
+          {
+            "decimal": "4002814",
+            "normalized": "4002814",
+            "percent": false,
+            "raw": "$ 4,002,814",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            47.0,
+            43.0,
+            563.0,
+            541.0
+          ],
+          [
+            48.0,
+            590.0,
+            563.0,
+            720.0
+          ],
+          [
+            76.0,
+            54.0,
+            919.0,
+            683.0
+          ],
+          [
+            78.0,
+            744.0,
+            919.0,
+            909.0
+          ]
+        ],
+        "table_count": 4,
+        "table_text_excerpt": "December 31, (in millions, except share data) 2025 2024 Assets Cash and due from banks $ 21,742 $ 23,372 Deposits with banks 321,596 445,945 Federal funds sold and securities purchased under resale agreements (included $327,018 and $286,771 at fair value) 336,426 295,001 Securities borrowed (included $98,111 and $83,962 at fair value) 286,191 219,546 Trading assets (included assets pledged of $165,927 and $136,070) 802,873 637,784 Available-for-sale securities (amortized cost of $507,226 and $411,045; included assets pledged of $7,735 and $10,162) 507,198 406,852 Held-to-maturity securities 270,134 274,468 Investment securities, net of allowance for credit losses 777,332 681,320 Loans (included $70,684 and $41,350 at fair value) 1,493,429 1,347,988 Allowance for loan losses (25,765) (24,345) Loans, net of allowance for loan losses 1,467,664 1,323,643 Accrued interest and accounts receivable 111,599 101,223 Premises and equipment 36,244 32,223 Goodwill, MSRs and other intangible assets 64,458 64,560 Other assets (included $15,849 and $15,122 at fair value and assets pledged of $11,984 and $6,288) 198,775 178,197 Total assets(a) $ 4,424,900 $ 4,002,814 Liabilities Deposits (included "
+      },
+      "numeric_class": "not_applicable",
+      "oracle_record_id": 2,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 19,
+            "row_text": "Total assets(a) | $ 4,424,900 $ | 4,002,814",
+            "table_index": 0,
+            "token": {
+              "decimal": "4002814",
+              "normalized": "4002814",
+              "percent": false,
+              "raw": " 4,002,814",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 39,
+            "row_text": "Total liabilities and stockholders' equity | $4,424,900 | $ 4,002,814",
+            "table_index": 0,
+            "token": {
+              "decimal": "4002814",
+              "normalized": "4002814",
+              "percent": false,
+              "raw": "$ 4,002,814",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 19,
+            "row_text": "Total assets(a) | $ 4,424,900 $ | 4,002,814",
+            "table_index": 2,
+            "token": {
+              "decimal": "4002814",
+              "normalized": "4002814",
+              "percent": false,
+              "raw": " 4,002,814",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 39,
+            "row_text": "Total liabilities and stockholders' equity | $4,424,900 | $ 4,002,814",
+            "table_index": 2,
+            "token": {
+              "decimal": "4002814",
+              "normalized": "4002814",
+              "percent": false,
+              "raw": "$ 4,002,814",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 20,
+        "page_text_excerpt": "(a) The following table presents information on assets and liabilities related to VIEs that are consolidated by the Firm at December 31, 2025 and 2024. The assets of the consolidated VIEs are used to settle the liabilities of those entities. The holders of the beneficial interests generally do not have recourse to the general credit of JPMorganChase. The assets and liabilities in the table below include third-party assets and liabilities of consolidated VIEs and exclude intercompany balances that eliminate in consolidation. Refer to Note 14 for a further discussion. The Notes to Consolidated Financial Statements are an integral part of these statements.",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "4002814",
+            "normalized": "4002814",
+            "percent": false,
+            "raw": "4,002,814",
+            "valid": true
+          },
+          {
+            "decimal": "4002814",
+            "normalized": "4002814",
+            "percent": false,
+            "raw": "$ 4,002,814",
+            "valid": true
+          },
+          {
+            "decimal": "4002814",
+            "normalized": "4002814",
+            "percent": false,
+            "raw": "4,002,814",
+            "valid": true
+          },
+          {
+            "decimal": "4002814",
+            "normalized": "4002814",
+            "percent": false,
+            "raw": "$ 4,002,814",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            48.0,
+            43.0,
+            563.0,
+            541.0
+          ],
+          [
+            47.0,
+            590.0,
+            563.0,
+            719.0
+          ],
+          [
+            78.0,
+            54.0,
+            919.0,
+            683.0
+          ],
+          [
+            76.0,
+            744.0,
+            919.0,
+            907.0
+          ]
+        ],
+        "table_count": 4,
+        "table_text_excerpt": "December 31, (in millions, except share data) 2025 2024 Assets $ $  Cash and due from banks 21,742 23,372 Deposits with banks 321,596 445,945 Federal funds sold and securities purchased under resale agreements (included $327,018 and $286,771 at fair value) 336,426 295,001 Securities borrowed (included $98,111 and $83,962 at fair value) 286,191 219,546 Trading assets (included assets pledged of $165,927 and $136,070)   Available-for-sale securities (amortized cost of $507,226 and $411,045; included assets pledged of $7,735 and 802,873 637,784 $10,162) 507,198 406,852 Held-to-maturity securities 270,134 274,468 Investment securities, net of allowance for credit losses 777,332 681,320 Loans (included $70,684 and $41,350 at fair value) 1,493,429  Allowance for loan losses  1,347,988 Loans, net of allowance for loan losses (25,765) (24,345) Accrued interest and accounts receivable 1,467,664 1,323,643 Premises and equipment 111,599 101,223 Goodwill, MSRs and other intangible assets 36,244 32,223  64,458 64,560 Other assets (included $15,849 and $15,122 at fair value and assets pledged of $11,984 and $6,288) 198,775 178,197 Total assets(a) $ 4,424,900 $ 4,002,814 Liabilities Deposits (inc"
+      },
+      "unique_source_identity": "2455c2da79e6be7aa919ba32500882df21c111e9adf2d8928ce6a82204325382"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 17,
+            "row_text": "Total assets(a) | $ 4,424,900 | $ 4,002,814",
+            "table_index": 0,
+            "token": {
+              "decimal": "4424900",
+              "normalized": "4424900",
+              "percent": false,
+              "raw": "$ 4,424,900 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 36,
+            "row_text": "Total liabilities and stockholders' equity | $ 4,424,900 | $ 4,002,814",
+            "table_index": 0,
+            "token": {
+              "decimal": "4424900",
+              "normalized": "4424900",
+              "percent": false,
+              "raw": "$ 4,424,900 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 17,
+            "row_text": "Total assets(a) | $ 4,424,900 | $ 4,002,814",
+            "table_index": 2,
+            "token": {
+              "decimal": "4424900",
+              "normalized": "4424900",
+              "percent": false,
+              "raw": "$ 4,424,900 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 36,
+            "row_text": "Total liabilities and stockholders' equity | $ 4,424,900 | $ 4,002,814",
+            "table_index": 2,
+            "token": {
+              "decimal": "4424900",
+              "normalized": "4424900",
+              "percent": false,
+              "raw": "$ 4,424,900 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 20,
+        "page_text_excerpt": "The Notes to Consolidated Financial Statements are an integral part of these statements.",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "4424900",
+            "normalized": "4424900",
+            "percent": false,
+            "raw": "$ 4,424,900",
+            "valid": true
+          },
+          {
+            "decimal": "4424900",
+            "normalized": "4424900",
+            "percent": false,
+            "raw": "$ 4,424,900",
+            "valid": true
+          },
+          {
+            "decimal": "4424900",
+            "normalized": "4424900",
+            "percent": false,
+            "raw": "$ 4,424,900",
+            "valid": true
+          },
+          {
+            "decimal": "4424900",
+            "normalized": "4424900",
+            "percent": false,
+            "raw": "$ 4,424,900",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            47.0,
+            43.0,
+            563.0,
+            541.0
+          ],
+          [
+            48.0,
+            590.0,
+            563.0,
+            720.0
+          ],
+          [
+            76.0,
+            54.0,
+            919.0,
+            683.0
+          ],
+          [
+            78.0,
+            744.0,
+            919.0,
+            909.0
+          ]
+        ],
+        "table_count": 4,
+        "table_text_excerpt": "December 31, (in millions, except share data) 2025 2024 Assets Cash and due from banks $ 21,742 $ 23,372 Deposits with banks 321,596 445,945 Federal funds sold and securities purchased under resale agreements (included $327,018 and $286,771 at fair value) 336,426 295,001 Securities borrowed (included $98,111 and $83,962 at fair value) 286,191 219,546 Trading assets (included assets pledged of $165,927 and $136,070) 802,873 637,784 Available-for-sale securities (amortized cost of $507,226 and $411,045; included assets pledged of $7,735 and $10,162) 507,198 406,852 Held-to-maturity securities 270,134 274,468 Investment securities, net of allowance for credit losses 777,332 681,320 Loans (included $70,684 and $41,350 at fair value) 1,493,429 1,347,988 Allowance for loan losses (25,765) (24,345) Loans, net of allowance for loan losses 1,467,664 1,323,643 Accrued interest and accounts receivable 111,599 101,223 Premises and equipment 36,244 32,223 Goodwill, MSRs and other intangible assets 64,458 64,560 Other assets (included $15,849 and $15,122 at fair value and assets pledged of $11,984 and $6,288) 198,775 178,197 Total assets(a) $ 4,424,900 $ 4,002,814 Liabilities Deposits (included "
+      },
+      "numeric_class": "not_applicable",
+      "oracle_record_id": 3,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 19,
+            "row_text": "Total assets(a) | $ 4,424,900 $ | 4,002,814",
+            "table_index": 0,
+            "token": {
+              "decimal": "4424900",
+              "normalized": "4424900",
+              "percent": false,
+              "raw": "$ 4,424,900 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 39,
+            "row_text": "Total liabilities and stockholders' equity | $4,424,900 | $ 4,002,814",
+            "table_index": 0,
+            "token": {
+              "decimal": "4424900",
+              "normalized": "4424900",
+              "percent": false,
+              "raw": "$4,424,900 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 19,
+            "row_text": "Total assets(a) | $ 4,424,900 $ | 4,002,814",
+            "table_index": 2,
+            "token": {
+              "decimal": "4424900",
+              "normalized": "4424900",
+              "percent": false,
+              "raw": "$ 4,424,900 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 39,
+            "row_text": "Total liabilities and stockholders' equity | $4,424,900 | $ 4,002,814",
+            "table_index": 2,
+            "token": {
+              "decimal": "4424900",
+              "normalized": "4424900",
+              "percent": false,
+              "raw": "$4,424,900 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 20,
+        "page_text_excerpt": "(a) The following table presents information on assets and liabilities related to VIEs that are consolidated by the Firm at December 31, 2025 and 2024. The assets of the consolidated VIEs are used to settle the liabilities of those entities. The holders of the beneficial interests generally do not have recourse to the general credit of JPMorganChase. The assets and liabilities in the table below include third-party assets and liabilities of consolidated VIEs and exclude intercompany balances that eliminate in consolidation. Refer to Note 14 for a further discussion. The Notes to Consolidated Financial Statements are an integral part of these statements.",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "4424900",
+            "normalized": "4424900",
+            "percent": false,
+            "raw": "$ 4,424,900 ",
+            "valid": true
+          },
+          {
+            "decimal": "4424900",
+            "normalized": "4424900",
+            "percent": false,
+            "raw": "$4,424,900",
+            "valid": true
+          },
+          {
+            "decimal": "4424900",
+            "normalized": "4424900",
+            "percent": false,
+            "raw": "$ 4,424,900 ",
+            "valid": true
+          },
+          {
+            "decimal": "4424900",
+            "normalized": "4424900",
+            "percent": false,
+            "raw": "$4,424,900",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            48.0,
+            43.0,
+            563.0,
+            541.0
+          ],
+          [
+            47.0,
+            590.0,
+            563.0,
+            719.0
+          ],
+          [
+            78.0,
+            54.0,
+            919.0,
+            683.0
+          ],
+          [
+            76.0,
+            744.0,
+            919.0,
+            907.0
+          ]
+        ],
+        "table_count": 4,
+        "table_text_excerpt": "December 31, (in millions, except share data) 2025 2024 Assets $ $  Cash and due from banks 21,742 23,372 Deposits with banks 321,596 445,945 Federal funds sold and securities purchased under resale agreements (included $327,018 and $286,771 at fair value) 336,426 295,001 Securities borrowed (included $98,111 and $83,962 at fair value) 286,191 219,546 Trading assets (included assets pledged of $165,927 and $136,070)   Available-for-sale securities (amortized cost of $507,226 and $411,045; included assets pledged of $7,735 and 802,873 637,784 $10,162) 507,198 406,852 Held-to-maturity securities 270,134 274,468 Investment securities, net of allowance for credit losses 777,332 681,320 Loans (included $70,684 and $41,350 at fair value) 1,493,429  Allowance for loan losses  1,347,988 Loans, net of allowance for loan losses (25,765) (24,345) Accrued interest and accounts receivable 1,467,664 1,323,643 Premises and equipment 111,599 101,223 Goodwill, MSRs and other intangible assets 36,244 32,223  64,458 64,560 Other assets (included $15,849 and $15,122 at fair value and assets pledged of $11,984 and $6,288) 198,775 178,197 Total assets(a) $ 4,424,900 $ 4,002,814 Liabilities Deposits (inc"
+      },
+      "unique_source_identity": "2455c2da79e6be7aa919ba32500882df21c111e9adf2d8928ce6a82204325382"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 1,
+            "row_text": "Net Operating Revenues | $ | 47,941 | $ 47,061 | $ 45,754",
+            "table_index": 0,
+            "token": {
+              "decimal": "47061",
+              "normalized": "47061",
+              "percent": false,
+              "raw": "$ 47,061 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 1,
+            "row_text": "Net Operating Revenues | $ | 47,941 | $ 47,061 | $ 45,754",
+            "table_index": 1,
+            "token": {
+              "decimal": "47061",
+              "normalized": "47061",
+              "percent": false,
+              "raw": "$ 47,061 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 29,
+        "page_text_excerpt": "THE COCA-COLA COMPANY AND SUBSIDIARIESCONSOLIDATED STATEMENTS OF INCOME (In millions except per share data)",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "47061",
+            "normalized": "47061",
+            "percent": false,
+            "raw": "$ 47,061",
+            "valid": true
+          },
+          {
+            "decimal": "47061",
+            "normalized": "47061",
+            "percent": false,
+            "raw": "$ 47,061",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            21.0,
+            114.0,
+            589.0,
+            342.0
+          ],
+          [
+            34.0,
+            143.0,
+            962.0,
+            431.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": "Year Ended December 31,  2025 2024 2023 Net Operating Revenues $ 47,941 $ 47,061 $ 45,754 Cost of goods sold  18,397 18,324 18,520 Gross Profit  29,544 28,737 27,234 Selling, general and administrative expenses  14,521 14,582 13,972 Other operating charges  1,261 4,163 1,951 Operating Income  13,762 9,992 11,311 Interest income  786 988 907 Interest expense  1,654 1,656 1,527 Equity income (loss) — net  2,031 1,770 1,691 Other income (loss) — net  1,073 1,992 570 Income Before Income Taxes  15,998 13,086 12,952 Income taxes  2,861 2,437 2,249 Consolidated Net Income  13,137 10,649 10,703 Less: Net income (loss) attributable to noncontrolling interests  30 18 (11) Net Income Attributable to Shareowners of The Coca-Cola Company $ 13,107 $ 10,631 $ 10,714 Basic Net Income Per Share1 $ 3.05 $ 2.47 $ 2.48 Diluted Net Income Per Share1 $ 3.04 $ 2.46 $ 2.47 Average Shares Outstanding — Basic  4,303 4,309 4,323 Effect of dilutive securities  10 11 16 Average Shares Outstanding — Diluted  4,313 4,320 4,339 Year Ended December 31,  2025 2024 2023 Net Operating Revenues $ 47,941 $ 47,061 $ 45,754 Cost of goods sold  18,397 18,324 18,520 Gross Profit  29,544 28,737 27,234 Selling, general and "
+      },
+      "numeric_class": "not_applicable",
+      "oracle_record_id": 4,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 1,
+            "row_text": "Net Operating Revenues $ | 47,941 $ | 47,061 $ | 45,754",
+            "table_index": 0,
+            "token": {
+              "decimal": "47061",
+              "normalized": "47061",
+              "percent": false,
+              "raw": " 47,061 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 1,
+            "row_text": "Net Operating Revenues $ | 47,941 $ | 47,061 $ | 45,754",
+            "table_index": 1,
+            "token": {
+              "decimal": "47061",
+              "normalized": "47061",
+              "percent": false,
+              "raw": " 47,061 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 29,
+        "page_text_excerpt": "THE COCA-COLA COMPANY AND SUBSIDIARIES CONSOLIDATED STATEMENTS OF INCOME (In millions except per share data)",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "47061",
+            "normalized": "47061",
+            "percent": false,
+            "raw": "47,061 ",
+            "valid": true
+          },
+          {
+            "decimal": "47061",
+            "normalized": "47061",
+            "percent": false,
+            "raw": "47,061 ",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            21.0,
+            113.0,
+            589.0,
+            342.0
+          ],
+          [
+            34.0,
+            142.0,
+            962.0,
+            431.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": "Year Ended December 31, 2025 2024 2023 Net Operating Revenues $ 47,941 $ 47,061 $ 45,754 Cost of goods sold 18,397 18,324 18,520 Gross Profit 29,544 28,737 27,234 Selling, general and administrative expenses 14,521 14,582 13,972 Other operating charges 1,261 4,163 1,951 Operating Income 13,762 9,992 11,311 Interest income 786 988 907 Interest expense 1,654 1,656 1,527 Equity income (loss) — net 2,031 1,770 1,691 Other income (loss) — net 1,073 1,992 570 Income Before Income Taxes 15,998 13,086 12,952 Income taxes 2,861 2,437 2,249 Consolidated Net Income 13,137 10,649 10,703 Less: Net income (loss) attributable to noncontrolling interests 30 18 (11) Net Income Attributable to Shareowners of The Coca-Cola Company $ 13,107 $ 10,631 $ 10,714 Basic Net Income Per Share1 S 3.05 $ 2.47 $ 2.48 Diluted Net Income Per Share $ 3.04 $ 2.46 $ 2.47 Average Shares Outstanding — Basic 4,303 4,309 4,323 Effect of dilutive securities 10 11  Average Shares Outstanding — Diluted 4,313 4,320 16 4,339 Year Ended December 31, 2025 2024 2023 Net Operating Revenues $ 47,941 $ 47,061 $ 45,754 Cost of goods sold 18,397 18,324 18,520 Gross Profit 29,544 28,737 27,234 Selling, general and administrative expen"
+      },
+      "unique_source_identity": "dc0d6e785300d69a7ffc23ecaf8e03d86ee9cafab115438981532e66ac5b0a88"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 1,
+            "row_text": "Net Operating Revenues | $ | 47,941 | $ 47,061 | $ 45,754",
+            "table_index": 0,
+            "token": {
+              "decimal": "47941",
+              "normalized": "47941",
+              "percent": false,
+              "raw": " 47,941 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 1,
+            "row_text": "Net Operating Revenues | $ | 47,941 | $ 47,061 | $ 45,754",
+            "table_index": 1,
+            "token": {
+              "decimal": "47941",
+              "normalized": "47941",
+              "percent": false,
+              "raw": " 47,941 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 29,
+        "page_text_excerpt": "THE COCA-COLA COMPANY AND SUBSIDIARIESCONSOLIDATED STATEMENTS OF INCOME (In millions except per share data)",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "47941",
+            "normalized": "47941",
+            "percent": false,
+            "raw": "47,941",
+            "valid": true
+          },
+          {
+            "decimal": "47941",
+            "normalized": "47941",
+            "percent": false,
+            "raw": "47,941",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            21.0,
+            114.0,
+            589.0,
+            342.0
+          ],
+          [
+            34.0,
+            143.0,
+            962.0,
+            431.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": "Year Ended December 31,  2025 2024 2023 Net Operating Revenues $ 47,941 $ 47,061 $ 45,754 Cost of goods sold  18,397 18,324 18,520 Gross Profit  29,544 28,737 27,234 Selling, general and administrative expenses  14,521 14,582 13,972 Other operating charges  1,261 4,163 1,951 Operating Income  13,762 9,992 11,311 Interest income  786 988 907 Interest expense  1,654 1,656 1,527 Equity income (loss) — net  2,031 1,770 1,691 Other income (loss) — net  1,073 1,992 570 Income Before Income Taxes  15,998 13,086 12,952 Income taxes  2,861 2,437 2,249 Consolidated Net Income  13,137 10,649 10,703 Less: Net income (loss) attributable to noncontrolling interests  30 18 (11) Net Income Attributable to Shareowners of The Coca-Cola Company $ 13,107 $ 10,631 $ 10,714 Basic Net Income Per Share1 $ 3.05 $ 2.47 $ 2.48 Diluted Net Income Per Share1 $ 3.04 $ 2.46 $ 2.47 Average Shares Outstanding — Basic  4,303 4,309 4,323 Effect of dilutive securities  10 11 16 Average Shares Outstanding — Diluted  4,313 4,320 4,339 Year Ended December 31,  2025 2024 2023 Net Operating Revenues $ 47,941 $ 47,061 $ 45,754 Cost of goods sold  18,397 18,324 18,520 Gross Profit  29,544 28,737 27,234 Selling, general and "
+      },
+      "numeric_class": "not_applicable",
+      "oracle_record_id": 5,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 1,
+            "row_text": "Net Operating Revenues $ | 47,941 $ | 47,061 $ | 45,754",
+            "table_index": 0,
+            "token": {
+              "decimal": "47941",
+              "normalized": "47941",
+              "percent": false,
+              "raw": " 47,941 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 1,
+            "row_text": "Net Operating Revenues $ | 47,941 $ | 47,061 $ | 45,754",
+            "table_index": 1,
+            "token": {
+              "decimal": "47941",
+              "normalized": "47941",
+              "percent": false,
+              "raw": " 47,941 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 29,
+        "page_text_excerpt": "THE COCA-COLA COMPANY AND SUBSIDIARIES CONSOLIDATED STATEMENTS OF INCOME (In millions except per share data)",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "47941",
+            "normalized": "47941",
+            "percent": false,
+            "raw": "47,941 ",
+            "valid": true
+          },
+          {
+            "decimal": "47941",
+            "normalized": "47941",
+            "percent": false,
+            "raw": "47,941 ",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            21.0,
+            113.0,
+            589.0,
+            342.0
+          ],
+          [
+            34.0,
+            142.0,
+            962.0,
+            431.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": "Year Ended December 31, 2025 2024 2023 Net Operating Revenues $ 47,941 $ 47,061 $ 45,754 Cost of goods sold 18,397 18,324 18,520 Gross Profit 29,544 28,737 27,234 Selling, general and administrative expenses 14,521 14,582 13,972 Other operating charges 1,261 4,163 1,951 Operating Income 13,762 9,992 11,311 Interest income 786 988 907 Interest expense 1,654 1,656 1,527 Equity income (loss) — net 2,031 1,770 1,691 Other income (loss) — net 1,073 1,992 570 Income Before Income Taxes 15,998 13,086 12,952 Income taxes 2,861 2,437 2,249 Consolidated Net Income 13,137 10,649 10,703 Less: Net income (loss) attributable to noncontrolling interests 30 18 (11) Net Income Attributable to Shareowners of The Coca-Cola Company $ 13,107 $ 10,631 $ 10,714 Basic Net Income Per Share1 S 3.05 $ 2.47 $ 2.48 Diluted Net Income Per Share $ 3.04 $ 2.46 $ 2.47 Average Shares Outstanding — Basic 4,303 4,309 4,323 Effect of dilutive securities 10 11  Average Shares Outstanding — Diluted 4,313 4,320 16 4,339 Year Ended December 31, 2025 2024 2023 Net Operating Revenues $ 47,941 $ 47,061 $ 45,754 Cost of goods sold 18,397 18,324 18,520 Gross Profit 29,544 28,737 27,234 Selling, general and administrative expen"
+      },
+      "unique_source_identity": "dc0d6e785300d69a7ffc23ecaf8e03d86ee9cafab115438981532e66ac5b0a88"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 3,
+            "row_text": "Third party | $ 10,833 | $ 6,331 | $ 19,579 | $ 5,328 | $ 5,726 | $ 47,797 | $ 144 | $ — | $ 47,941",
+            "table_index": 0,
+            "token": {
+              "decimal": "10833",
+              "normalized": "10833",
+              "percent": false,
+              "raw": "$ 10,833 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 3,
+            "row_text": "Third party | $ 10,833 | $ 6,331 | $ 19,579 | $ 5,328 | $ 5,726 | $ 47,797 | $ 144 | $ — | $ 47,941",
+            "table_index": 1,
+            "token": {
+              "decimal": "10833",
+              "normalized": "10833",
+              "percent": false,
+              "raw": "$ 10,833 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 3,
+            "row_text": "Third party | $ 10,833 | $ 6,331 | $ 19,579 | $ 5,328 | $ 5,726 | $ 47,797 | $ 144 | $ — | $ 47,941",
+            "table_index": 2,
+            "token": {
+              "decimal": "10833",
+              "normalized": "10833",
+              "percent": false,
+              "raw": "$ 10,833 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 38,
+        "page_text_excerpt": "",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "10833",
+            "normalized": "10833",
+            "percent": false,
+            "raw": "$ 10,833",
+            "valid": true
+          },
+          {
+            "decimal": "10833",
+            "normalized": "10833",
+            "percent": false,
+            "raw": "$ 10,833",
+            "valid": true
+          },
+          {
+            "decimal": "10833",
+            "normalized": "10833",
+            "percent": false,
+            "raw": "$ 10,833",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            21.0,
+            79.0,
+            589.0,
+            432.0
+          ],
+          [
+            21.0,
+            79.0,
+            589.0,
+            432.0
+          ],
+          [
+            34.0,
+            99.0,
+            962.0,
+            545.0
+          ]
+        ],
+        "table_count": 3,
+        "table_text_excerpt": " EMEA Latin America North America Asia Pacific Bottling Investments Operating Segments Total Corporate Eliminations Consolidated Year Ended December 31, 2025 Net operating revenues: Third party $ 10,833 $ 6,331 $ 19,579 $ 5,328 $ 5,726 $ 47,797 $ 144 $ — $ 47,941 Intersegment 680 3 7 310 9 1,009 — (1,009) — Total net operating revenues 11,513 6,334 19,586 5,638 5,735 48,806 144 (1,009) 47,941 Cost of goods sold 3,294 1,109 9,438 1,788 3,948 19,577 (171) (1,009) 18,397 Selling, general and administrative expenses 3,921 1,439 4,118 1,767 1,361 12,606 1,915 — 14,521 Other operating charges — 44 960 41 — 1,045 216 — 1,261 Operating income (loss) $ 4,298 $ 3,742 $ 5,070 $ 2,042 $ 426 $ 15,578 $ (1,816) $ — $ 13,762 Interest income         786 Interest expense         1,654 Equity income (loss) — net         2,031 Other income (loss) — net         1,073 Income before income taxes         $ 15,998 Other segment information: Capital expenditures $ 237 $ 2 $ 669 $ 72 $ 547 $ 1,527 $ 585 $ — $ 2,112 Depreciation and amortization 173 32 326 47 313 891 159 — 1,050 Year Ended December 31, 2024 Net operating revenues: Third party $ 10,278 $ 6,471 $ 18,860 $ 5,127 $ 6,215 $ 46,951 $ 110 $ — $ 47,"
+      },
+      "numeric_class": "cell_alignment_error",
+      "oracle_record_id": 6,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 3,
+            "row_text": "Third party | 10,833 $ | 6,331 $ | 19,579$ | 5,328 $ | 5,726 $ | 47,797 $ | 144 $ | $ | 47,941",
+            "table_index": 0,
+            "token": {
+              "decimal": "10833",
+              "normalized": "10833",
+              "percent": false,
+              "raw": " 10,833 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 3,
+            "row_text": "Third party | 10,833 $ | 6,331 $ | 19,579$ | 5,328 $ | 5,726 $ | 47,797 $ | 144 $ | $ | 47,941",
+            "table_index": 1,
+            "token": {
+              "decimal": "10833",
+              "normalized": "10833",
+              "percent": false,
+              "raw": " 10,833 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 3,
+            "row_text": "Third party | 10,833 $ | 6,331 $ | 19,579$ | 5,328 $ | 5,726 $ | 47,797 $ | 144 $ | $ | 47,941",
+            "table_index": 2,
+            "token": {
+              "decimal": "10833",
+              "normalized": "10833",
+              "percent": false,
+              "raw": " 10,833 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 38,
+        "page_text_excerpt": "",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "10833",
+            "normalized": "10833",
+            "percent": false,
+            "raw": "10,833 ",
+            "valid": true
+          },
+          {
+            "decimal": "10833",
+            "normalized": "10833",
+            "percent": false,
+            "raw": "10,833 ",
+            "valid": true
+          },
+          {
+            "decimal": "10833",
+            "normalized": "10833",
+            "percent": false,
+            "raw": "10,833 ",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            21.0,
+            79.0,
+            589.0,
+            430.0
+          ],
+          [
+            21.0,
+            79.0,
+            589.0,
+            430.0
+          ],
+          [
+            34.0,
+            99.0,
+            962.0,
+            542.0
+          ]
+        ],
+        "table_count": 3,
+        "table_text_excerpt": " EMEA Latin America North America Asia Pacific Bottling Investments Operating Segments Total Corporate Eliminations Consolidated Year Ended December 31, 2025          Net operating revenues:          Third party 10,833 $ 6,331 $ 19,579$ 5,328 $ 5,726 $ 47,797 $ 144 $ $ 47,941 Intersegment 680 3  310 9 1,009  (1,009)  Total net operating revenues 11,513 6,334 19,586 5,638 5,735 48,806 144 (1,009) 47,941 Cost of goods sold 3,294 1,109 9,438 1,788 3,948 19,577 (171) (1,009) 18,397 Selling, general and administrative expenses 3,921 1,439 4,118 1,767 1,361 12,606 1,915  14,521 Other operating charges  44 960 41  1,045 216  1,261 Operating income (loss) 4,298 $ 3,742 $ 5,070 $      13,762 Interest income    2,042 $ 426 $ 15,578 $ (1,816) $ - $  Interest expense         786 Equity income (loss) — net         1,654 Other income (loss) — net         2,031 Income before income taxes        $ 1,073 15,998           Other segment information:          Capital expenditures 237 $ 2 $ 669 $ 72 $ 547 $ 1,527 $ 585 $ - $ 2,112 Depreciation and amortization 173 32 326 47 313 891 159  1,050 Year Ended December 31, 2024          Net operating revenues:          Third party 10,278 $ 6,471 $ 18,860 $ 5,"
+      },
+      "unique_source_identity": "27f6220c098187f8cc2675c7fc08d18525c74552a71c9acbbcd50835f3af79e3"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 3,
+            "row_text": "Third party | $ 10,833 | $ 6,331 | $ 19,579 | $ 5,328 | $ 5,726 | $ 47,797 | $ 144 | $ — | $ 47,941",
+            "table_index": 0,
+            "token": {
+              "decimal": "47941",
+              "normalized": "47941",
+              "percent": false,
+              "raw": "$ 47,941",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 5,
+            "row_text": "Total net operating revenues | 11,513 | 6,334 | 19,586 | 5,638 | 5,735 | 48,806 | 144 | (1,009) | 47,941",
+            "table_index": 0,
+            "token": {
+              "decimal": "47941",
+              "normalized": "47941",
+              "percent": false,
+              "raw": " 47,941",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 3,
+            "row_text": "Third party | $ 10,833 | $ 6,331 | $ 19,579 | $ 5,328 | $ 5,726 | $ 47,797 | $ 144 | $ — | $ 47,941",
+            "table_index": 1,
+            "token": {
+              "decimal": "47941",
+              "normalized": "47941",
+              "percent": false,
+              "raw": "$ 47,941",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 5,
+            "row_text": "Total net operating revenues | 11,513 | 6,334 | 19,586 | 5,638 | 5,735 | 48,806 | 144 | (1,009) | 47,941",
+            "table_index": 1,
+            "token": {
+              "decimal": "47941",
+              "normalized": "47941",
+              "percent": false,
+              "raw": " 47,941",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 3,
+            "row_text": "Third party | $ 10,833 | $ 6,331 | $ 19,579 | $ 5,328 | $ 5,726 | $ 47,797 | $ 144 | $ — | $ 47,941",
+            "table_index": 2,
+            "token": {
+              "decimal": "47941",
+              "normalized": "47941",
+              "percent": false,
+              "raw": "$ 47,941",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 5,
+            "row_text": "Total net operating revenues | 11,513 | 6,334 | 19,586 | 5,638 | 5,735 | 48,806 | 144 | (1,009) | 47,941",
+            "table_index": 2,
+            "token": {
+              "decimal": "47941",
+              "normalized": "47941",
+              "percent": false,
+              "raw": " 47,941",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 38,
+        "page_text_excerpt": "",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "47941",
+            "normalized": "47941",
+            "percent": false,
+            "raw": "$ 47,941",
+            "valid": true
+          },
+          {
+            "decimal": "47941",
+            "normalized": "47941",
+            "percent": false,
+            "raw": "47,941",
+            "valid": true
+          },
+          {
+            "decimal": "47941",
+            "normalized": "47941",
+            "percent": false,
+            "raw": "$ 47,941",
+            "valid": true
+          },
+          {
+            "decimal": "47941",
+            "normalized": "47941",
+            "percent": false,
+            "raw": "47,941",
+            "valid": true
+          },
+          {
+            "decimal": "47941",
+            "normalized": "47941",
+            "percent": false,
+            "raw": "$ 47,941",
+            "valid": true
+          },
+          {
+            "decimal": "47941",
+            "normalized": "47941",
+            "percent": false,
+            "raw": "47,941",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            21.0,
+            79.0,
+            589.0,
+            432.0
+          ],
+          [
+            21.0,
+            79.0,
+            589.0,
+            432.0
+          ],
+          [
+            34.0,
+            99.0,
+            962.0,
+            545.0
+          ]
+        ],
+        "table_count": 3,
+        "table_text_excerpt": " EMEA Latin America North America Asia Pacific Bottling Investments Operating Segments Total Corporate Eliminations Consolidated Year Ended December 31, 2025 Net operating revenues: Third party $ 10,833 $ 6,331 $ 19,579 $ 5,328 $ 5,726 $ 47,797 $ 144 $ — $ 47,941 Intersegment 680 3 7 310 9 1,009 — (1,009) — Total net operating revenues 11,513 6,334 19,586 5,638 5,735 48,806 144 (1,009) 47,941 Cost of goods sold 3,294 1,109 9,438 1,788 3,948 19,577 (171) (1,009) 18,397 Selling, general and administrative expenses 3,921 1,439 4,118 1,767 1,361 12,606 1,915 — 14,521 Other operating charges — 44 960 41 — 1,045 216 — 1,261 Operating income (loss) $ 4,298 $ 3,742 $ 5,070 $ 2,042 $ 426 $ 15,578 $ (1,816) $ — $ 13,762 Interest income         786 Interest expense         1,654 Equity income (loss) — net         2,031 Other income (loss) — net         1,073 Income before income taxes         $ 15,998 Other segment information: Capital expenditures $ 237 $ 2 $ 669 $ 72 $ 547 $ 1,527 $ 585 $ — $ 2,112 Depreciation and amortization 173 32 326 47 313 891 159 — 1,050 Year Ended December 31, 2024 Net operating revenues: Third party $ 10,278 $ 6,471 $ 18,860 $ 5,127 $ 6,215 $ 46,951 $ 110 $ — $ 47,"
+      },
+      "numeric_class": "cell_alignment_error",
+      "oracle_record_id": 7,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 3,
+            "row_text": "Third party | 10,833 $ | 6,331 $ | 19,579$ | 5,328 $ | 5,726 $ | 47,797 $ | 144 $ | $ | 47,941",
+            "table_index": 0,
+            "token": {
+              "decimal": "47941",
+              "normalized": "47941",
+              "percent": false,
+              "raw": " 47,941",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 5,
+            "row_text": "Total net operating revenues | 11,513 | 6,334 | 19,586 | 5,638 | 5,735 | 48,806 | 144 | (1,009) | 47,941",
+            "table_index": 0,
+            "token": {
+              "decimal": "47941",
+              "normalized": "47941",
+              "percent": false,
+              "raw": " 47,941",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 3,
+            "row_text": "Third party | 10,833 $ | 6,331 $ | 19,579$ | 5,328 $ | 5,726 $ | 47,797 $ | 144 $ | $ | 47,941",
+            "table_index": 1,
+            "token": {
+              "decimal": "47941",
+              "normalized": "47941",
+              "percent": false,
+              "raw": " 47,941",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 5,
+            "row_text": "Total net operating revenues | 11,513 | 6,334 | 19,586 | 5,638 | 5,735 | 48,806 | 144 | (1,009) | 47,941",
+            "table_index": 1,
+            "token": {
+              "decimal": "47941",
+              "normalized": "47941",
+              "percent": false,
+              "raw": " 47,941",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 3,
+            "row_text": "Third party | 10,833 $ | 6,331 $ | 19,579$ | 5,328 $ | 5,726 $ | 47,797 $ | 144 $ | $ | 47,941",
+            "table_index": 2,
+            "token": {
+              "decimal": "47941",
+              "normalized": "47941",
+              "percent": false,
+              "raw": " 47,941",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 5,
+            "row_text": "Total net operating revenues | 11,513 | 6,334 | 19,586 | 5,638 | 5,735 | 48,806 | 144 | (1,009) | 47,941",
+            "table_index": 2,
+            "token": {
+              "decimal": "47941",
+              "normalized": "47941",
+              "percent": false,
+              "raw": " 47,941",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 38,
+        "page_text_excerpt": "",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "47941",
+            "normalized": "47941",
+            "percent": false,
+            "raw": "47,941",
+            "valid": true
+          },
+          {
+            "decimal": "47941",
+            "normalized": "47941",
+            "percent": false,
+            "raw": "47,941",
+            "valid": true
+          },
+          {
+            "decimal": "47941",
+            "normalized": "47941",
+            "percent": false,
+            "raw": "47,941",
+            "valid": true
+          },
+          {
+            "decimal": "47941",
+            "normalized": "47941",
+            "percent": false,
+            "raw": "47,941",
+            "valid": true
+          },
+          {
+            "decimal": "47941",
+            "normalized": "47941",
+            "percent": false,
+            "raw": "47,941",
+            "valid": true
+          },
+          {
+            "decimal": "47941",
+            "normalized": "47941",
+            "percent": false,
+            "raw": "47,941",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            21.0,
+            79.0,
+            589.0,
+            430.0
+          ],
+          [
+            21.0,
+            79.0,
+            589.0,
+            430.0
+          ],
+          [
+            34.0,
+            99.0,
+            962.0,
+            542.0
+          ]
+        ],
+        "table_count": 3,
+        "table_text_excerpt": " EMEA Latin America North America Asia Pacific Bottling Investments Operating Segments Total Corporate Eliminations Consolidated Year Ended December 31, 2025          Net operating revenues:          Third party 10,833 $ 6,331 $ 19,579$ 5,328 $ 5,726 $ 47,797 $ 144 $ $ 47,941 Intersegment 680 3  310 9 1,009  (1,009)  Total net operating revenues 11,513 6,334 19,586 5,638 5,735 48,806 144 (1,009) 47,941 Cost of goods sold 3,294 1,109 9,438 1,788 3,948 19,577 (171) (1,009) 18,397 Selling, general and administrative expenses 3,921 1,439 4,118 1,767 1,361 12,606 1,915  14,521 Other operating charges  44 960 41  1,045 216  1,261 Operating income (loss) 4,298 $ 3,742 $ 5,070 $      13,762 Interest income    2,042 $ 426 $ 15,578 $ (1,816) $ - $  Interest expense         786 Equity income (loss) — net         1,654 Other income (loss) — net         2,031 Income before income taxes        $ 1,073 15,998           Other segment information:          Capital expenditures 237 $ 2 $ 669 $ 72 $ 547 $ 1,527 $ 585 $ - $ 2,112 Depreciation and amortization 173 32 326 47 313 891 159  1,050 Year Ended December 31, 2024          Net operating revenues:          Third party 10,278 $ 6,471 $ 18,860 $ 5,"
+      },
+      "unique_source_identity": "f8a776d31019a4d464395cb3d382322d5b3a51f8747fe4884e861689c2791c35"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 20,
+            "row_text": " | $ 4 | $ 245,122 | $ 211,915",
+            "table_index": 0,
+            "token": {
+              "decimal": "245122",
+              "normalized": "245122",
+              "percent": false,
+              "raw": "$ 245,122 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 5,
+            "row_text": "Total | 281,72$ 4 | $ 245,122 | $ 211,915",
+            "table_index": 2,
+            "token": {
+              "decimal": "245122",
+              "normalized": "245122",
+              "percent": false,
+              "raw": "$ 245,122 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 20,
+            "row_text": " | $ 4 | $ 245,122 | $ 211,915",
+            "table_index": 3,
+            "token": {
+              "decimal": "245122",
+              "normalized": "245122",
+              "percent": false,
+              "raw": "$ 245,122 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 5,
+            "row_text": "Total | 281,72$ 4 | $ 245,122 | $ 211,915",
+            "table_index": 4,
+            "token": {
+              "decimal": "245122",
+              "normalized": "245122",
+              "percent": false,
+              "raw": "$ 245,122 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 43,
+        "page_text_excerpt": "Segment revenue, cost of revenue, operating expenses, and operating income were as follows during the periods presented: No sales to an individual customer or country other than the United States accounted for more than 10% of revenue for fiscal years 2025, 2024, or 2023. Revenue, classified by the major geographic areas in which our customers were located, was as follows:",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "245122",
+            "normalized": "245122",
+            "percent": false,
+            "raw": "$ 245,122",
+            "valid": true
+          },
+          {
+            "decimal": "245122",
+            "normalized": "245122",
+            "percent": false,
+            "raw": "$ 245,122",
+            "valid": true
+          },
+          {
+            "decimal": "245122",
+            "normalized": "245122",
+            "percent": false,
+            "raw": "$ 245,122",
+            "valid": true
+          },
+          {
+            "decimal": "245122",
+            "normalized": "245122",
+            "percent": false,
+            "raw": "$ 245,122",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            32.0,
+            97.0,
+            575.0,
+            577.0
+          ],
+          [
+            32.0,
+            658.0,
+            575.0,
+            721.0
+          ],
+          [
+            32.0,
+            658.0,
+            575.0,
+            721.0
+          ],
+          [
+            52.0,
+            122.0,
+            939.0,
+            728.0
+          ],
+          [
+            52.0,
+            830.0,
+            939.0,
+            910.0
+          ]
+        ],
+        "table_count": 5,
+        "table_text_excerpt": "Year Ended June 30, 2025 2024 2023 Productivity and Business Processes    Revenue 120,81    $ 0 $ 106,820 $ 94,151 Cost of revenue 22,422 19,611 17,202 Operating expenses 28,615 27,548 26,875 Operating Income $ 69,773 $ 59,661 $ 50,074 Intelligent Cloud    Revenue 106,26    $ 5 $ 87,464 $ 72,944 Cost of revenue 40,171 29,611 24,109 Operating expenses 21,505 20,040 20,424 Operating Income $ 44,589 $ 37,813 $ 28,411 More Personal Computing    Revenue $ 54,649 $ 50,838 $ 44,820 Cost of revenue 25,238 24,892 24,552 Operating expenses 15,245 13,987 10,230 Operating Income $ 14,166 $ 11,959 $ 10,038 Total    Revenue 281,72    $ 4 $ 245,122 $ 211,915 Cost of revenue 87,831 74,114 65,863 Operating expenses 65,365 61,575 57,529 Operating Income 128,52    $ 8 $ 109,433 $ 88,523 Year Ended June 30, 2025 2024 2023 United States(a) 144,54    $ 6 $ 124,704 $ 106,744 Year Ended June 30, 2025 2024 2023 United States(a) 144,54    $ 6 $ 124,704 $ 106,744 (In millions) Other countries 137,178 120,418 105,171 Total 281,72$ 4 $ 245,122 $ 211,915 Year Ended June 30, 2025 2024 2023 Productivity and Business Processes    Revenue 120,81    $ 0 $ 106,820 $ 94,151 Cost of revenue 22,422 19,611 17,202 Operati"
+      },
+      "numeric_class": "cell_alignment_error",
+      "oracle_record_id": 8,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 26,
+            "row_text": " | $ | 4 | $245,122 | $ 211,915",
+            "table_index": 0,
+            "token": {
+              "decimal": "245122",
+              "normalized": "245122",
+              "percent": false,
+              "raw": "$245,122 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 9,
+            "row_text": "$ 4 | $245,122 | $ 211,915",
+            "table_index": 2,
+            "token": {
+              "decimal": "245122",
+              "normalized": "245122",
+              "percent": false,
+              "raw": "$245,122 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 26,
+            "row_text": " | $ | 4 | $245,122 | $ 211,915",
+            "table_index": 3,
+            "token": {
+              "decimal": "245122",
+              "normalized": "245122",
+              "percent": false,
+              "raw": "$245,122 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 9,
+            "row_text": "$ 4 | $245,122 | $ 211,915",
+            "table_index": 4,
+            "token": {
+              "decimal": "245122",
+              "normalized": "245122",
+              "percent": false,
+              "raw": "$245,122 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 43,
+        "page_text_excerpt": "Segment revenue, cost of revenue, operating expenses, and operating income were as follows during the periods presented: No sales to an individual customer or country other than the United States accounted for more than 10% of revenue for fiscal years 2025, 2024, or 2023. Revenue, classified by the major geographic areas in which our customers were located, was as follows:",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "245122",
+            "normalized": "245122",
+            "percent": false,
+            "raw": "$245,122",
+            "valid": true
+          },
+          {
+            "decimal": "245122",
+            "normalized": "245122",
+            "percent": false,
+            "raw": "$245,122",
+            "valid": true
+          },
+          {
+            "decimal": "245122",
+            "normalized": "245122",
+            "percent": false,
+            "raw": "$245,122",
+            "valid": true
+          },
+          {
+            "decimal": "245122",
+            "normalized": "245122",
+            "percent": false,
+            "raw": "$245,122",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            31.0,
+            98.0,
+            574.0,
+            573.0
+          ],
+          [
+            31.0,
+            647.0,
+            574.0,
+            720.0
+          ],
+          [
+            31.0,
+            647.0,
+            574.0,
+            720.0
+          ],
+          [
+            50.0,
+            123.0,
+            937.0,
+            723.0
+          ],
+          [
+            50.0,
+            816.0,
+            937.0,
+            909.0
+          ]
+        ],
+        "table_count": 5,
+        "table_text_excerpt": " Year Ended June 30, 2025  2024 2023 Productivity and Business Processes Revenue 120,81 $ 106,820  94,151 $ 0 Cost of revenue   19,611 $ 17,202 Operating expenses 22,422  27,548 26,875  28,615    Operating Income $ 69,773 $ 59,661 $ 50,074      Intelligent Cloud Revenue      106,26 $ 5 $ 87,464 $ 72,944 Cost of revenue 40,171  29,611 24,109 Operating expenses 21,505  20,040 20,424 Operating Income      $ 44,589 $ 37,813 $ 28,411      More Personal Computing     Revenue Cost of revenue $ 54,649 $ 50,838 $ 44,820 Operating expenses 25,238  24,892 24,552  15,245  13,987 10,230 Operating Income      $ 14,166 $ 11,959 $ 10,038      Total     Revenue 281,72     $ 4 $245,122 $ 211,915 Cost of revenue 87,831  74,114 65,863 Operating expenses 65,365  61,575 57,529           Operating Income      128,52     $ 8 $ 109,433 $ 88,523 (In millions)     Year Ended June 30, 2025 2024 2023 United States (a) 144,54   $ 6 $ 124,704 $ 106,744  (In millions)     Year Ended June 30, 2025 2024 2023 United States (a) 144,54   $ 6 $ 124,704 $ 106,744  (In millions) Other countries 137,17 8 120,418 105,171 Total    281,72   $ 4 $245,122 $ 211,915  Year Ended June 30, 2025  2024 2023 Productivity and Business"
+      },
+      "unique_source_identity": "877e8b8ec66eb164121593945cbc85ee0f9219b2a948ec96e6f76722bc89a51f"
+    },
+    {
+      "hybrid": {
+        "html_matches": [],
+        "html_normalized_match": false,
+        "page_index": 43,
+        "page_text_excerpt": "Segment revenue, cost of revenue, operating expenses, and operating income were as follows during the periods presented: No sales to an individual customer or country other than the United States accounted for more than 10% of revenue for fiscal years 2025, 2024, or 2023. Revenue, classified by the major geographic areas in which our customers were located, was as follows:",
+        "span_or_html_numeric_matches": [],
+        "table_bboxes": [
+          [
+            32.0,
+            97.0,
+            575.0,
+            577.0
+          ],
+          [
+            32.0,
+            658.0,
+            575.0,
+            721.0
+          ],
+          [
+            32.0,
+            658.0,
+            575.0,
+            721.0
+          ],
+          [
+            52.0,
+            122.0,
+            939.0,
+            728.0
+          ],
+          [
+            52.0,
+            830.0,
+            939.0,
+            910.0
+          ]
+        ],
+        "table_count": 5,
+        "table_text_excerpt": "Year Ended June 30, 2025 2024 2023 Productivity and Business Processes    Revenue 120,81    $ 0 $ 106,820 $ 94,151 Cost of revenue 22,422 19,611 17,202 Operating expenses 28,615 27,548 26,875 Operating Income $ 69,773 $ 59,661 $ 50,074 Intelligent Cloud    Revenue 106,26    $ 5 $ 87,464 $ 72,944 Cost of revenue 40,171 29,611 24,109 Operating expenses 21,505 20,040 20,424 Operating Income $ 44,589 $ 37,813 $ 28,411 More Personal Computing    Revenue $ 54,649 $ 50,838 $ 44,820 Cost of revenue 25,238 24,892 24,552 Operating expenses 15,245 13,987 10,230 Operating Income $ 14,166 $ 11,959 $ 10,038 Total    Revenue 281,72    $ 4 $ 245,122 $ 211,915 Cost of revenue 87,831 74,114 65,863 Operating expenses 65,365 61,575 57,529 Operating Income 128,52    $ 8 $ 109,433 $ 88,523 Year Ended June 30, 2025 2024 2023 United States(a) 144,54    $ 6 $ 124,704 $ 106,744 Year Ended June 30, 2025 2024 2023 United States(a) 144,54    $ 6 $ 124,704 $ 106,744 (In millions) Other countries 137,178 120,418 105,171 Total 281,72$ 4 $ 245,122 $ 211,915 Year Ended June 30, 2025 2024 2023 Productivity and Business Processes    Revenue 120,81    $ 0 $ 106,820 $ 94,151 Cost of revenue 22,422 19,611 17,202 Operati"
+      },
+      "numeric_class": "native_table_present_row_mapping_missing",
+      "oracle_record_id": 9,
+      "pipeline": {
+        "html_matches": [],
+        "html_normalized_match": false,
+        "page_index": 43,
+        "page_text_excerpt": "Segment revenue, cost of revenue, operating expenses, and operating income were as follows during the periods presented: No sales to an individual customer or country other than the United States accounted for more than 10% of revenue for fiscal years 2025, 2024, or 2023. Revenue, classified by the major geographic areas in which our customers were located, was as follows:",
+        "span_or_html_numeric_matches": [],
+        "table_bboxes": [
+          [
+            31.0,
+            98.0,
+            574.0,
+            573.0
+          ],
+          [
+            31.0,
+            647.0,
+            574.0,
+            720.0
+          ],
+          [
+            31.0,
+            647.0,
+            574.0,
+            720.0
+          ],
+          [
+            50.0,
+            123.0,
+            937.0,
+            723.0
+          ],
+          [
+            50.0,
+            816.0,
+            937.0,
+            909.0
+          ]
+        ],
+        "table_count": 5,
+        "table_text_excerpt": " Year Ended June 30, 2025  2024 2023 Productivity and Business Processes Revenue 120,81 $ 106,820  94,151 $ 0 Cost of revenue   19,611 $ 17,202 Operating expenses 22,422  27,548 26,875  28,615    Operating Income $ 69,773 $ 59,661 $ 50,074      Intelligent Cloud Revenue      106,26 $ 5 $ 87,464 $ 72,944 Cost of revenue 40,171  29,611 24,109 Operating expenses 21,505  20,040 20,424 Operating Income      $ 44,589 $ 37,813 $ 28,411      More Personal Computing     Revenue Cost of revenue $ 54,649 $ 50,838 $ 44,820 Operating expenses 25,238  24,892 24,552  15,245  13,987 10,230 Operating Income      $ 14,166 $ 11,959 $ 10,038      Total     Revenue 281,72     $ 4 $245,122 $ 211,915 Cost of revenue 87,831  74,114 65,863 Operating expenses 65,365  61,575 57,529           Operating Income      128,52     $ 8 $ 109,433 $ 88,523 (In millions)     Year Ended June 30, 2025 2024 2023 United States (a) 144,54   $ 6 $ 124,704 $ 106,744  (In millions)     Year Ended June 30, 2025 2024 2023 United States (a) 144,54   $ 6 $ 124,704 $ 106,744  (In millions) Other countries 137,17 8 120,418 105,171 Total    281,72   $ 4 $245,122 $ 211,915  Year Ended June 30, 2025  2024 2023 Productivity and Business"
+      },
+      "unique_source_identity": "877e8b8ec66eb164121593945cbc85ee0f9219b2a948ec96e6f76722bc89a51f"
+    },
+    {
+      "hybrid": {
+        "html_matches": [],
+        "html_normalized_match": false,
+        "page_index": 43,
+        "page_text_excerpt": "Segment revenue, cost of revenue, operating expenses, and operating income were as follows during the periods presented: No sales to an individual customer or country other than the United States accounted for more than 10% of revenue for fiscal years 2025, 2024, or 2023. Revenue, classified by the major geographic areas in which our customers were located, was as follows:",
+        "span_or_html_numeric_matches": [],
+        "table_bboxes": [
+          [
+            32.0,
+            97.0,
+            575.0,
+            577.0
+          ],
+          [
+            32.0,
+            658.0,
+            575.0,
+            721.0
+          ],
+          [
+            32.0,
+            658.0,
+            575.0,
+            721.0
+          ],
+          [
+            52.0,
+            122.0,
+            939.0,
+            728.0
+          ],
+          [
+            52.0,
+            830.0,
+            939.0,
+            910.0
+          ]
+        ],
+        "table_count": 5,
+        "table_text_excerpt": "Year Ended June 30, 2025 2024 2023 Productivity and Business Processes    Revenue 120,81    $ 0 $ 106,820 $ 94,151 Cost of revenue 22,422 19,611 17,202 Operating expenses 28,615 27,548 26,875 Operating Income $ 69,773 $ 59,661 $ 50,074 Intelligent Cloud    Revenue 106,26    $ 5 $ 87,464 $ 72,944 Cost of revenue 40,171 29,611 24,109 Operating expenses 21,505 20,040 20,424 Operating Income $ 44,589 $ 37,813 $ 28,411 More Personal Computing    Revenue $ 54,649 $ 50,838 $ 44,820 Cost of revenue 25,238 24,892 24,552 Operating expenses 15,245 13,987 10,230 Operating Income $ 14,166 $ 11,959 $ 10,038 Total    Revenue 281,72    $ 4 $ 245,122 $ 211,915 Cost of revenue 87,831 74,114 65,863 Operating expenses 65,365 61,575 57,529 Operating Income 128,52    $ 8 $ 109,433 $ 88,523 Year Ended June 30, 2025 2024 2023 United States(a) 144,54    $ 6 $ 124,704 $ 106,744 Year Ended June 30, 2025 2024 2023 United States(a) 144,54    $ 6 $ 124,704 $ 106,744 (In millions) Other countries 137,178 120,418 105,171 Total 281,72$ 4 $ 245,122 $ 211,915 Year Ended June 30, 2025 2024 2023 Productivity and Business Processes    Revenue 120,81    $ 0 $ 106,820 $ 94,151 Cost of revenue 22,422 19,611 17,202 Operati"
+      },
+      "numeric_class": "native_table_present_row_mapping_missing",
+      "oracle_record_id": 10,
+      "pipeline": {
+        "html_matches": [],
+        "html_normalized_match": false,
+        "page_index": 43,
+        "page_text_excerpt": "Segment revenue, cost of revenue, operating expenses, and operating income were as follows during the periods presented: No sales to an individual customer or country other than the United States accounted for more than 10% of revenue for fiscal years 2025, 2024, or 2023. Revenue, classified by the major geographic areas in which our customers were located, was as follows:",
+        "span_or_html_numeric_matches": [],
+        "table_bboxes": [
+          [
+            31.0,
+            98.0,
+            574.0,
+            573.0
+          ],
+          [
+            31.0,
+            647.0,
+            574.0,
+            720.0
+          ],
+          [
+            31.0,
+            647.0,
+            574.0,
+            720.0
+          ],
+          [
+            50.0,
+            123.0,
+            937.0,
+            723.0
+          ],
+          [
+            50.0,
+            816.0,
+            937.0,
+            909.0
+          ]
+        ],
+        "table_count": 5,
+        "table_text_excerpt": " Year Ended June 30, 2025  2024 2023 Productivity and Business Processes Revenue 120,81 $ 106,820  94,151 $ 0 Cost of revenue   19,611 $ 17,202 Operating expenses 22,422  27,548 26,875  28,615    Operating Income $ 69,773 $ 59,661 $ 50,074      Intelligent Cloud Revenue      106,26 $ 5 $ 87,464 $ 72,944 Cost of revenue 40,171  29,611 24,109 Operating expenses 21,505  20,040 20,424 Operating Income      $ 44,589 $ 37,813 $ 28,411      More Personal Computing     Revenue Cost of revenue $ 54,649 $ 50,838 $ 44,820 Operating expenses 25,238  24,892 24,552  15,245  13,987 10,230 Operating Income      $ 14,166 $ 11,959 $ 10,038      Total     Revenue 281,72     $ 4 $245,122 $ 211,915 Cost of revenue 87,831  74,114 65,863 Operating expenses 65,365  61,575 57,529           Operating Income      128,52     $ 8 $ 109,433 $ 88,523 (In millions)     Year Ended June 30, 2025 2024 2023 United States (a) 144,54   $ 6 $ 124,704 $ 106,744  (In millions)     Year Ended June 30, 2025 2024 2023 United States (a) 144,54   $ 6 $ 124,704 $ 106,744  (In millions) Other countries 137,17 8 120,418 105,171 Total    281,72   $ 4 $245,122 $ 211,915  Year Ended June 30, 2025  2024 2023 Productivity and Business"
+      },
+      "unique_source_identity": "58087037397b2f4b9c64144ff12a2f504d2cd08ac3f6735cf826cade3101b6e2"
+    },
+    {
+      "hybrid": {
+        "html_matches": [],
+        "html_normalized_match": false,
+        "page_index": 43,
+        "page_text_excerpt": "Segment revenue, cost of revenue, operating expenses, and operating income were as follows during the periods presented: No sales to an individual customer or country other than the United States accounted for more than 10% of revenue for fiscal years 2025, 2024, or 2023. Revenue, classified by the major geographic areas in which our customers were located, was as follows:",
+        "span_or_html_numeric_matches": [],
+        "table_bboxes": [
+          [
+            32.0,
+            97.0,
+            575.0,
+            577.0
+          ],
+          [
+            32.0,
+            658.0,
+            575.0,
+            721.0
+          ],
+          [
+            32.0,
+            658.0,
+            575.0,
+            721.0
+          ],
+          [
+            52.0,
+            122.0,
+            939.0,
+            728.0
+          ],
+          [
+            52.0,
+            830.0,
+            939.0,
+            910.0
+          ]
+        ],
+        "table_count": 5,
+        "table_text_excerpt": "Year Ended June 30, 2025 2024 2023 Productivity and Business Processes    Revenue 120,81    $ 0 $ 106,820 $ 94,151 Cost of revenue 22,422 19,611 17,202 Operating expenses 28,615 27,548 26,875 Operating Income $ 69,773 $ 59,661 $ 50,074 Intelligent Cloud    Revenue 106,26    $ 5 $ 87,464 $ 72,944 Cost of revenue 40,171 29,611 24,109 Operating expenses 21,505 20,040 20,424 Operating Income $ 44,589 $ 37,813 $ 28,411 More Personal Computing    Revenue $ 54,649 $ 50,838 $ 44,820 Cost of revenue 25,238 24,892 24,552 Operating expenses 15,245 13,987 10,230 Operating Income $ 14,166 $ 11,959 $ 10,038 Total    Revenue 281,72    $ 4 $ 245,122 $ 211,915 Cost of revenue 87,831 74,114 65,863 Operating expenses 65,365 61,575 57,529 Operating Income 128,52    $ 8 $ 109,433 $ 88,523 Year Ended June 30, 2025 2024 2023 United States(a) 144,54    $ 6 $ 124,704 $ 106,744 Year Ended June 30, 2025 2024 2023 United States(a) 144,54    $ 6 $ 124,704 $ 106,744 (In millions) Other countries 137,178 120,418 105,171 Total 281,72$ 4 $ 245,122 $ 211,915 Year Ended June 30, 2025 2024 2023 Productivity and Business Processes    Revenue 120,81    $ 0 $ 106,820 $ 94,151 Cost of revenue 22,422 19,611 17,202 Operati"
+      },
+      "numeric_class": "native_table_present_row_mapping_missing",
+      "oracle_record_id": 11,
+      "pipeline": {
+        "html_matches": [],
+        "html_normalized_match": false,
+        "page_index": 43,
+        "page_text_excerpt": "Segment revenue, cost of revenue, operating expenses, and operating income were as follows during the periods presented: No sales to an individual customer or country other than the United States accounted for more than 10% of revenue for fiscal years 2025, 2024, or 2023. Revenue, classified by the major geographic areas in which our customers were located, was as follows:",
+        "span_or_html_numeric_matches": [],
+        "table_bboxes": [
+          [
+            31.0,
+            98.0,
+            574.0,
+            573.0
+          ],
+          [
+            31.0,
+            647.0,
+            574.0,
+            720.0
+          ],
+          [
+            31.0,
+            647.0,
+            574.0,
+            720.0
+          ],
+          [
+            50.0,
+            123.0,
+            937.0,
+            723.0
+          ],
+          [
+            50.0,
+            816.0,
+            937.0,
+            909.0
+          ]
+        ],
+        "table_count": 5,
+        "table_text_excerpt": " Year Ended June 30, 2025  2024 2023 Productivity and Business Processes Revenue 120,81 $ 106,820  94,151 $ 0 Cost of revenue   19,611 $ 17,202 Operating expenses 22,422  27,548 26,875  28,615    Operating Income $ 69,773 $ 59,661 $ 50,074      Intelligent Cloud Revenue      106,26 $ 5 $ 87,464 $ 72,944 Cost of revenue 40,171  29,611 24,109 Operating expenses 21,505  20,040 20,424 Operating Income      $ 44,589 $ 37,813 $ 28,411      More Personal Computing     Revenue Cost of revenue $ 54,649 $ 50,838 $ 44,820 Operating expenses 25,238  24,892 24,552  15,245  13,987 10,230 Operating Income      $ 14,166 $ 11,959 $ 10,038      Total     Revenue 281,72     $ 4 $245,122 $ 211,915 Cost of revenue 87,831  74,114 65,863 Operating expenses 65,365  61,575 57,529           Operating Income      128,52     $ 8 $ 109,433 $ 88,523 (In millions)     Year Ended June 30, 2025 2024 2023 United States (a) 144,54   $ 6 $ 124,704 $ 106,744  (In millions)     Year Ended June 30, 2025 2024 2023 United States (a) 144,54   $ 6 $ 124,704 $ 106,744  (In millions) Other countries 137,17 8 120,418 105,171 Total    281,72   $ 4 $245,122 $ 211,915  Year Ended June 30, 2025  2024 2023 Productivity and Business"
+      },
+      "unique_source_identity": "877e8b8ec66eb164121593945cbc85ee0f9219b2a948ec96e6f76722bc89a51f"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 2,
+            "row_text": "Revenue | $ 130,497 | $ 60,922 | $ 26,974",
+            "table_index": 0,
+            "token": {
+              "decimal": "60922",
+              "normalized": "60922",
+              "percent": false,
+              "raw": "$ 60,922 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 2,
+            "row_text": "Revenue | $ 130,497 | $ 60,922 | $ 26,974",
+            "table_index": 1,
+            "token": {
+              "decimal": "60922",
+              "normalized": "60922",
+              "percent": false,
+              "raw": "$ 60,922 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 50,
+        "page_text_excerpt": "",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "60922",
+            "normalized": "60922",
+            "percent": false,
+            "raw": "$ 60,922",
+            "valid": true
+          },
+          {
+            "decimal": "60922",
+            "normalized": "60922",
+            "percent": false,
+            "raw": "$ 60,922",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            43.0,
+            69.0,
+            551.0,
+            448.0
+          ],
+          [
+            72.0,
+            89.0,
+            927.0,
+            578.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": " Year Ended  Jan 26, 2025 Jan 28, 2024 Jan 29, 2023 Revenue $ 130,497 $ 60,922 $ 26,974 Cost of revenue 32,639 16,621 11,618 Gross profit 97,858 44,301 15,356 Operating expenses    Research and development 12,914 8,675 7,339 Sales, general and administrative 3,491 2,654 2,440 Acquisition termination cost — — 1,353 Total operating expenses 16,405 11,329 11,132 Operating income 81,453 32,972 4,224 Interest income 1,786 866 267 Interest expense (247) (257) (262) Other, net 1,034 237 (48) Other income (expense), net 2,573 846 (43) Income before income tax 84,026 33,818 4,181 Income tax expense (benefit) 11,146 4,058 (187) Net income $ 72,880 $ 29,760 $ 4,368 Net income per share:    Basic $ 2.97 $ 1.21 $ 0.18 Diluted $ 2.94 $ 1.19 $ 0.17 Weighted average shares used in per share computation:    Basic 24,555 24,690 24,870 Diluted 24,804 24,940 25,070  Year Ended  Jan 26, 2025 Jan 28, 2024 Jan 29, 2023 Revenue $ 130,497 $ 60,922 $ 26,974 Cost of revenue 32,639 16,621 11,618 Gross profit 97,858 44,301 15,356 Operating expenses    Research and development 12,914 8,675 7,339 Sales, general and administrative 3,491 2,654 2,440 Acquisition termination cost — — 1,353 Total operating expenses 1"
+      },
+      "numeric_class": "cell_alignment_error",
+      "oracle_record_id": 12,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 2,
+            "row_text": "Revenue | $ 130,497 | $ 60,922 | $ 26,974",
+            "table_index": 0,
+            "token": {
+              "decimal": "60922",
+              "normalized": "60922",
+              "percent": false,
+              "raw": "$ 60,922 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 2,
+            "row_text": "Revenue | $ 130,497 | $ 60,922 | $ 26,974",
+            "table_index": 1,
+            "token": {
+              "decimal": "60922",
+              "normalized": "60922",
+              "percent": false,
+              "raw": "$ 60,922 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 50,
+        "page_text_excerpt": "",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "60922",
+            "normalized": "60922",
+            "percent": false,
+            "raw": "$     60,922",
+            "valid": true
+          },
+          {
+            "decimal": "60922",
+            "normalized": "60922",
+            "percent": false,
+            "raw": "$     60,922",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            43.0,
+            70.0,
+            550.0,
+            447.0
+          ],
+          [
+            72.0,
+            90.0,
+            925.0,
+            577.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": "Year Ended  Jan 26, 2025 Jan 28, 2024 Jan 29, 2023 Revenue $ 130,497 $ 60,922 $ 26,974 Cost of revenue 32,639 16,621 11,618 Gross profit 97,858 44,301 15,356 Operating expenses    Research and development 12,914 8,675 7,339 Sales, general and administrative 3,491 2,654 2,440 Acquisition termination cost   1,353 Total operating expenses 16,405 11,329 11,132 Operating income 81,453 32,972 4,224 Interest income 1,786 866 267 Interest expense (247) (257) (262) Other, net 1,034 237 (48) Other income (expense), net 2,573 846 (43) Income before income tax 84,026 33,818 4,181 Income tax expense (benefit) 11,146 4,058 (187) Net income $ 72,880 $ 29,760 $ 4,368     Net income per share:    Basic $ 2.97 $ 1.21 $ 0.18 Diluted $ 2.94 $ 1.19 $ 0.17     Weighted average shares used in per share computation:    BasicDiluted 24,555 24,690 24,870 24,804 24,940 25,070 Year Ended  Jan 26, 2025 Jan 28, 2024 Jan 29, 2023 Revenue $ 130,497 $ 60,922 $ 26,974 Cost of revenue 32,639 16,621 11,618 Gross profit 97,858 44,301 15,356 Operating expenses    Research and development 12,914 8,675 7,339 Sales, general and administrative 3,491 2,654 2,440 Acquisition termination cost   1,353 Total operating expenses "
+      },
+      "unique_source_identity": "955fa6bbc3e27cec495d6ce03b3704146e7df5b4b174bf3b2b5b2f56a606f76b"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 2,
+            "row_text": "Revenue | $ 130,497 | $ 60,922 | $ 26,974",
+            "table_index": 0,
+            "token": {
+              "decimal": "130497",
+              "normalized": "130497",
+              "percent": false,
+              "raw": "$ 130,497 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 2,
+            "row_text": "Revenue | $ 130,497 | $ 60,922 | $ 26,974",
+            "table_index": 1,
+            "token": {
+              "decimal": "130497",
+              "normalized": "130497",
+              "percent": false,
+              "raw": "$ 130,497 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 50,
+        "page_text_excerpt": "",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "130497",
+            "normalized": "130497",
+            "percent": false,
+            "raw": "$ 130,497",
+            "valid": true
+          },
+          {
+            "decimal": "130497",
+            "normalized": "130497",
+            "percent": false,
+            "raw": "$ 130,497",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            43.0,
+            69.0,
+            551.0,
+            448.0
+          ],
+          [
+            72.0,
+            89.0,
+            927.0,
+            578.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": " Year Ended  Jan 26, 2025 Jan 28, 2024 Jan 29, 2023 Revenue $ 130,497 $ 60,922 $ 26,974 Cost of revenue 32,639 16,621 11,618 Gross profit 97,858 44,301 15,356 Operating expenses    Research and development 12,914 8,675 7,339 Sales, general and administrative 3,491 2,654 2,440 Acquisition termination cost — — 1,353 Total operating expenses 16,405 11,329 11,132 Operating income 81,453 32,972 4,224 Interest income 1,786 866 267 Interest expense (247) (257) (262) Other, net 1,034 237 (48) Other income (expense), net 2,573 846 (43) Income before income tax 84,026 33,818 4,181 Income tax expense (benefit) 11,146 4,058 (187) Net income $ 72,880 $ 29,760 $ 4,368 Net income per share:    Basic $ 2.97 $ 1.21 $ 0.18 Diluted $ 2.94 $ 1.19 $ 0.17 Weighted average shares used in per share computation:    Basic 24,555 24,690 24,870 Diluted 24,804 24,940 25,070  Year Ended  Jan 26, 2025 Jan 28, 2024 Jan 29, 2023 Revenue $ 130,497 $ 60,922 $ 26,974 Cost of revenue 32,639 16,621 11,618 Gross profit 97,858 44,301 15,356 Operating expenses    Research and development 12,914 8,675 7,339 Sales, general and administrative 3,491 2,654 2,440 Acquisition termination cost — — 1,353 Total operating expenses 1"
+      },
+      "numeric_class": "cell_alignment_error",
+      "oracle_record_id": 13,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 2,
+            "row_text": "Revenue | $ 130,497 | $ 60,922 | $ 26,974",
+            "table_index": 0,
+            "token": {
+              "decimal": "130497",
+              "normalized": "130497",
+              "percent": false,
+              "raw": "$ 130,497 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 2,
+            "row_text": "Revenue | $ 130,497 | $ 60,922 | $ 26,974",
+            "table_index": 1,
+            "token": {
+              "decimal": "130497",
+              "normalized": "130497",
+              "percent": false,
+              "raw": "$ 130,497 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 50,
+        "page_text_excerpt": "",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "130497",
+            "normalized": "130497",
+            "percent": false,
+            "raw": "$   130,497",
+            "valid": true
+          },
+          {
+            "decimal": "130497",
+            "normalized": "130497",
+            "percent": false,
+            "raw": "$   130,497",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            43.0,
+            70.0,
+            550.0,
+            447.0
+          ],
+          [
+            72.0,
+            90.0,
+            925.0,
+            577.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": "Year Ended  Jan 26, 2025 Jan 28, 2024 Jan 29, 2023 Revenue $ 130,497 $ 60,922 $ 26,974 Cost of revenue 32,639 16,621 11,618 Gross profit 97,858 44,301 15,356 Operating expenses    Research and development 12,914 8,675 7,339 Sales, general and administrative 3,491 2,654 2,440 Acquisition termination cost   1,353 Total operating expenses 16,405 11,329 11,132 Operating income 81,453 32,972 4,224 Interest income 1,786 866 267 Interest expense (247) (257) (262) Other, net 1,034 237 (48) Other income (expense), net 2,573 846 (43) Income before income tax 84,026 33,818 4,181 Income tax expense (benefit) 11,146 4,058 (187) Net income $ 72,880 $ 29,760 $ 4,368     Net income per share:    Basic $ 2.97 $ 1.21 $ 0.18 Diluted $ 2.94 $ 1.19 $ 0.17     Weighted average shares used in per share computation:    BasicDiluted 24,555 24,690 24,870 24,804 24,940 25,070 Year Ended  Jan 26, 2025 Jan 28, 2024 Jan 29, 2023 Revenue $ 130,497 $ 60,922 $ 26,974 Cost of revenue 32,639 16,621 11,618 Gross profit 97,858 44,301 15,356 Operating expenses    Research and development 12,914 8,675 7,339 Sales, general and administrative 3,491 2,654 2,440 Acquisition termination cost   1,353 Total operating expenses "
+      },
+      "unique_source_identity": "955fa6bbc3e27cec495d6ce03b3704146e7df5b4b174bf3b2b5b2f56a606f76b"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 6,
+            "row_text": "Total revenues | 63,627 | 59,553 | 101,175",
+            "table_index": 0,
+            "token": {
+              "decimal": "59553",
+              "normalized": "59553",
+              "percent": false,
+              "raw": " 59,553 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 6,
+            "row_text": "Total revenues | 63,627 | 59,553 | 101,175",
+            "table_index": 1,
+            "token": {
+              "decimal": "59553",
+              "normalized": "59553",
+              "percent": false,
+              "raw": " 59,553 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 56,
+        "page_text_excerpt": "See Accompanying Notes.",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "59553",
+            "normalized": "59553",
+            "percent": false,
+            "raw": "59,553",
+            "valid": true
+          },
+          {
+            "decimal": "59553",
+            "normalized": "59553",
+            "percent": false,
+            "raw": "59,553",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            16.0,
+            87.0,
+            572.0,
+            471.0
+          ],
+          [
+            26.0,
+            109.0,
+            934.0,
+            594.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": " Year Ended December 31, (MILLIONS, EXCEPT PER SHARE DATA) 2024 2023 2022 Revenues:    Product revenues $ 53,816 $ 50,914 $ 91,793 Alliance revenues 8,388 7,582 8,537 Royalty revenues^{(a)} 1,423 1,058 845 Total revenues 63,627 59,553 101,175 Costs and expenses:    Cost of sales^{(b), (c)} 17,851 24,954 34,344 Selling, informational and administrative expenses(b) 14,730 14,771 13,677 Research and development expenses(b) 10,822 10,679 11,428 Acquired in-process research and development expenses 108 194 953 Amortization of intangible assets 5,286 4,733 3,609 Restructuring charges and certain acquisition-related costs 2,419 2,943 1,375 Other (income)/deductions—net 4,388 222 1,062 Income from continuing operations before provision/(benefit) for taxes on income 8,023 1,058 34,729 Provision/(benefit) for taxes on income (28) (1,115) 3,328 Income from continuing operations 8,051 2,172 31,401 Discontinued operations—net of tax 11 (15) 6 Net income before allocation to noncontrolling interests 8,062 2,158 31,407 Less: Net income attributable to noncontrolling interests 31 39 35 Net income attributable to Pfizer Inc. common shareholders $ 8,031 $ 2,119 $ 31,372 Earnings per common share—bas"
+      },
+      "numeric_class": "not_applicable",
+      "oracle_record_id": 14,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 6,
+            "row_text": "Total revenues | 63,627 |  | 59,553 | 101,175",
+            "table_index": 0,
+            "token": {
+              "decimal": "59553",
+              "normalized": "59553",
+              "percent": false,
+              "raw": " 59,553 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 6,
+            "row_text": "Total revenues | 63,627 |  | 59,553 | 101,175",
+            "table_index": 1,
+            "token": {
+              "decimal": "59553",
+              "normalized": "59553",
+              "percent": false,
+              "raw": " 59,553 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 56,
+        "page_text_excerpt": "",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "59553",
+            "normalized": "59553",
+            "percent": false,
+            "raw": "59,553",
+            "valid": true
+          },
+          {
+            "decimal": "59553",
+            "normalized": "59553",
+            "percent": false,
+            "raw": "59,553",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            15.0,
+            87.0,
+            571.0,
+            470.0
+          ],
+          [
+            24.0,
+            109.0,
+            933.0,
+            593.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": " Year Ended December 31, (MILLIONS, EXCEPT PER SHARE DATA) 2024  2023 2022 Revenues:   $  Product revenues 53,816  50,914 91,793 Alliance revenues 8,388  7,582 8,537 Royalty revenues(a) 1,423  1,058 845 Total revenues 63,627  59,553 101,175 Costs and expenses:     Cost of sales(b), (c) 17,851  24,954 34,344 Selling, informational and administrative expenses(b) 14,730  14,771 13,677 Research and development expenses(b) 10,822  10,679 11,428 Acquired in-process research and development expenses 108  194 953 Amortization of intangible assets 5,286  4,733 3,609 Restructuring charges and certain acquisition-related costs Other (income)/deductions—net 2,419 4,388  2,943 1,375 Income from continuing operations before provision/(benefit) for taxes on income   222 1,062  8,023  1,058 34,729 Provision/(benefit) for taxes on income (28)  (1,115) 3,328 Income from continuing operations 8,051  2,172 31,401 Discontinued operations——net of tax 11  (15) 6 Net income before allocation to noncontrolling interests 8,062 31  2,158 31,407 Less: Net income attributable to noncontrolling interests   39 35 Net income attributable to Pfizer Inc. common shareholders 8,031 $ 2,119 31,372 Earnings per common "
+      },
+      "unique_source_identity": "6a8555847e9554c5b0d536dacff7f8237bb38d10bc5b4472cee95e855832ea06"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 6,
+            "row_text": "Total revenues | 63,627 | 59,553 | 101,175",
+            "table_index": 0,
+            "token": {
+              "decimal": "63627",
+              "normalized": "63627",
+              "percent": false,
+              "raw": " 63,627 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 6,
+            "row_text": "Total revenues | 63,627 | 59,553 | 101,175",
+            "table_index": 1,
+            "token": {
+              "decimal": "63627",
+              "normalized": "63627",
+              "percent": false,
+              "raw": " 63,627 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 56,
+        "page_text_excerpt": "See Accompanying Notes.",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "63627",
+            "normalized": "63627",
+            "percent": false,
+            "raw": "63,627",
+            "valid": true
+          },
+          {
+            "decimal": "63627",
+            "normalized": "63627",
+            "percent": false,
+            "raw": "63,627",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            16.0,
+            87.0,
+            572.0,
+            471.0
+          ],
+          [
+            26.0,
+            109.0,
+            934.0,
+            594.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": " Year Ended December 31, (MILLIONS, EXCEPT PER SHARE DATA) 2024 2023 2022 Revenues:    Product revenues $ 53,816 $ 50,914 $ 91,793 Alliance revenues 8,388 7,582 8,537 Royalty revenues^{(a)} 1,423 1,058 845 Total revenues 63,627 59,553 101,175 Costs and expenses:    Cost of sales^{(b), (c)} 17,851 24,954 34,344 Selling, informational and administrative expenses(b) 14,730 14,771 13,677 Research and development expenses(b) 10,822 10,679 11,428 Acquired in-process research and development expenses 108 194 953 Amortization of intangible assets 5,286 4,733 3,609 Restructuring charges and certain acquisition-related costs 2,419 2,943 1,375 Other (income)/deductions—net 4,388 222 1,062 Income from continuing operations before provision/(benefit) for taxes on income 8,023 1,058 34,729 Provision/(benefit) for taxes on income (28) (1,115) 3,328 Income from continuing operations 8,051 2,172 31,401 Discontinued operations—net of tax 11 (15) 6 Net income before allocation to noncontrolling interests 8,062 2,158 31,407 Less: Net income attributable to noncontrolling interests 31 39 35 Net income attributable to Pfizer Inc. common shareholders $ 8,031 $ 2,119 $ 31,372 Earnings per common share—bas"
+      },
+      "numeric_class": "not_applicable",
+      "oracle_record_id": 15,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 6,
+            "row_text": "Total revenues | 63,627 |  | 59,553 | 101,175",
+            "table_index": 0,
+            "token": {
+              "decimal": "63627",
+              "normalized": "63627",
+              "percent": false,
+              "raw": " 63,627 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 6,
+            "row_text": "Total revenues | 63,627 |  | 59,553 | 101,175",
+            "table_index": 1,
+            "token": {
+              "decimal": "63627",
+              "normalized": "63627",
+              "percent": false,
+              "raw": " 63,627 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 56,
+        "page_text_excerpt": "",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "63627",
+            "normalized": "63627",
+            "percent": false,
+            "raw": "63,627",
+            "valid": true
+          },
+          {
+            "decimal": "63627",
+            "normalized": "63627",
+            "percent": false,
+            "raw": "63,627",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            15.0,
+            87.0,
+            571.0,
+            470.0
+          ],
+          [
+            24.0,
+            109.0,
+            933.0,
+            593.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": " Year Ended December 31, (MILLIONS, EXCEPT PER SHARE DATA) 2024  2023 2022 Revenues:   $  Product revenues 53,816  50,914 91,793 Alliance revenues 8,388  7,582 8,537 Royalty revenues(a) 1,423  1,058 845 Total revenues 63,627  59,553 101,175 Costs and expenses:     Cost of sales(b), (c) 17,851  24,954 34,344 Selling, informational and administrative expenses(b) 14,730  14,771 13,677 Research and development expenses(b) 10,822  10,679 11,428 Acquired in-process research and development expenses 108  194 953 Amortization of intangible assets 5,286  4,733 3,609 Restructuring charges and certain acquisition-related costs Other (income)/deductions—net 2,419 4,388  2,943 1,375 Income from continuing operations before provision/(benefit) for taxes on income   222 1,062  8,023  1,058 34,729 Provision/(benefit) for taxes on income (28)  (1,115) 3,328 Income from continuing operations 8,051  2,172 31,401 Discontinued operations——net of tax 11  (15) 6 Net income before allocation to noncontrolling interests 8,062 31  2,158 31,407 Less: Net income attributable to noncontrolling interests   39 35 Net income attributable to Pfizer Inc. common shareholders 8,031 $ 2,119 31,372 Earnings per common "
+      },
+      "unique_source_identity": "6a8555847e9554c5b0d536dacff7f8237bb38d10bc5b4472cee95e855832ea06"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 8,
+            "row_text": "Total revenues | 94,827 | 97,690 | 96,773",
+            "table_index": 2,
+            "token": {
+              "decimal": "97690",
+              "normalized": "97690",
+              "percent": false,
+              "raw": " 97,690 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 8,
+            "row_text": "Total revenues | 94,827 | 97,690 | 96,773",
+            "table_index": 3,
+            "token": {
+              "decimal": "97690",
+              "normalized": "97690",
+              "percent": false,
+              "raw": " 97,690 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 8,
+            "row_text": "Total revenues | 94,827 | 97,690 | 96,773",
+            "table_index": 6,
+            "token": {
+              "decimal": "97690",
+              "normalized": "97690",
+              "percent": false,
+              "raw": " 97,690 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 70,
+        "page_text_excerpt": "Tesla, Inc. Consolidated Statements of Operations (in millions, except per share data)",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "97690",
+            "normalized": "97690",
+            "percent": false,
+            "raw": "97,690",
+            "valid": true
+          },
+          {
+            "decimal": "97690",
+            "normalized": "97690",
+            "percent": false,
+            "raw": "97,690",
+            "valid": true
+          },
+          {
+            "decimal": "97690",
+            "normalized": "97690",
+            "percent": false,
+            "raw": "97,690",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            54.0,
+            26.0,
+            567.0,
+            40.0
+          ],
+          [
+            46.0,
+            79.0,
+            567.0,
+            340.0
+          ],
+          [
+            53.0,
+            553.0,
+            567.0,
+            781.0
+          ],
+          [
+            53.0,
+            553.0,
+            567.0,
+            781.0
+          ],
+          [
+            90.0,
+            30.0,
+            952.0,
+            47.0
+          ],
+          [
+            77.0,
+            93.0,
+            952.0,
+            404.0
+          ],
+          [
+            89.0,
+            657.0,
+            952.0,
+            928.0
+          ]
+        ],
+        "table_count": 7,
+        "table_text_excerpt": "Redeemable noncontrolling interests in subsidiaries 58 63 Stockholders’ equity   Preferred stock; $0.001 par value; 100 shares authorized; no shares issued and outstanding — — Common stock; $0.001 par value; 6,000 shares authorized; 3,751 and 3,216 shares issued and outstanding as of December 31, 2025 and 2024, respectively 3 3 Additional paid-in capital 42,770 38,371 Accumulated other comprehensive income (loss) 361 (670) Retained earnings 39,003 35,209 Total stockholders’ equity 82,137 72,913 Noncontrolling interests in subsidiaries 670 704 Total liabilities and equity $ 137,806 $ 122,070  2025 2024 2023 Revenues    Automotive sales $ 65,821 $ 72,480 $ 78,509 Automotive regulatory credits 1,993 2,763 1,790 Automotive leasing 1,712 1,827 2,120 Total automotive revenues 69,526 77,070 82,419 Energy generation and storage 12,771 10,086 6,035 Services and other 12,530 10,534 8,319 Total revenues 94,827 97,690 96,773  2025 2024 2023 Revenues    Automotive sales $ 65,821 $ 72,480 $ 78,509 Automotive regulatory credits 1,993 2,763 1,790 Automotive leasing 1,712 1,827 2,120 Total automotive revenues 69,526 77,070 82,419 Energy generation and storage 12,771 10,086 6,035 Services and other "
+      },
+      "numeric_class": "cell_alignment_error",
+      "oracle_record_id": 16,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 13,
+            "row_text": "94,827 | 97,690 | 96,773",
+            "table_index": 1,
+            "token": {
+              "decimal": "97690",
+              "normalized": "97690",
+              "percent": false,
+              "raw": " 97,690 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 13,
+            "row_text": "94,827 | 97,690 | 96,773",
+            "table_index": 2,
+            "token": {
+              "decimal": "97690",
+              "normalized": "97690",
+              "percent": false,
+              "raw": " 97,690 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 13,
+            "row_text": "94,827 | 97,690 | 96,773",
+            "table_index": 4,
+            "token": {
+              "decimal": "97690",
+              "normalized": "97690",
+              "percent": false,
+              "raw": " 97,690 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 70,
+        "page_text_excerpt": "Tesla, Inc. Consolidated Statements of Operations",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "97690",
+            "normalized": "97690",
+            "percent": false,
+            "raw": "97,690",
+            "valid": true
+          },
+          {
+            "decimal": "97690",
+            "normalized": "97690",
+            "percent": false,
+            "raw": "97,690",
+            "valid": true
+          },
+          {
+            "decimal": "97690",
+            "normalized": "97690",
+            "percent": false,
+            "raw": "97,690",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            53.0,
+            25.0,
+            567.0,
+            338.0
+          ],
+          [
+            54.0,
+            529.0,
+            568.0,
+            783.0
+          ],
+          [
+            54.0,
+            529.0,
+            568.0,
+            783.0
+          ],
+          [
+            89.0,
+            29.0,
+            952.0,
+            401.0
+          ],
+          [
+            90.0,
+            629.0,
+            954.0,
+            931.0
+          ]
+        ],
+        "table_count": 5,
+        "table_text_excerpt": "Redeemable noncontrolling interests in subsidiaries 58 63 Equity   Stockholders' equity   referred stock; $0.001 par value; 100 shares authorized; no shares issued and outstanding   ommon stock; $0.001 par value; 6,000 shares authorized; 3,751 and 3,216 shares issued and outstanding as of December 31, 2025 and 2024, respectively 3 3 Additional paid-in capital 42,770 38,371 Accumulated other comprehensive income (loss) 361 (670) Retained earnings 39,003 35,209 Total stockholders' equity 82,137 72,913 Noncontrolling interests in subsidiaries 670 704 Total liabilities and equity 137,806 122,070 Year Ended December 31,2025 2024 2023Revenues Automotive sales $ 65,821 $ 72,480 $ 78,509   Automotive regulatory credits 1,993 2,763 1,790   Automotive leasing 1,712 1,827 2,120    Total automotive revenuesEnergy generation and storage 69,526 77,070 82,419    12,771 10,086 6,035  Services and otherTotal revenues 12,530 10,534 8,319    94,827 97,690 96,773 Year Ended December 31,2025 2024 2023Revenues Automotive sales $ 65,821 $ 72,480 $ 78,509   Automotive regulatory credits 1,993 2,763 1,790   Automotive leasing 1,712 1,827 2,120    Total automotive revenuesEnergy generation and storage 69,52"
+      },
+      "unique_source_identity": "7c808b92ebace6c3f73880f51e7a7aeef84cd3c8553e618093087cea9175ddb0"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 8,
+            "row_text": "Total revenues | 94,827 | 97,690 | 96,773",
+            "table_index": 2,
+            "token": {
+              "decimal": "94827",
+              "normalized": "94827",
+              "percent": false,
+              "raw": " 94,827 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 8,
+            "row_text": "Total revenues | 94,827 | 97,690 | 96,773",
+            "table_index": 3,
+            "token": {
+              "decimal": "94827",
+              "normalized": "94827",
+              "percent": false,
+              "raw": " 94,827 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 8,
+            "row_text": "Total revenues | 94,827 | 97,690 | 96,773",
+            "table_index": 6,
+            "token": {
+              "decimal": "94827",
+              "normalized": "94827",
+              "percent": false,
+              "raw": " 94,827 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 70,
+        "page_text_excerpt": "Tesla, Inc. Consolidated Statements of Operations (in millions, except per share data)",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "94827",
+            "normalized": "94827",
+            "percent": false,
+            "raw": "94,827",
+            "valid": true
+          },
+          {
+            "decimal": "94827",
+            "normalized": "94827",
+            "percent": false,
+            "raw": "94,827",
+            "valid": true
+          },
+          {
+            "decimal": "94827",
+            "normalized": "94827",
+            "percent": false,
+            "raw": "94,827",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            54.0,
+            26.0,
+            567.0,
+            40.0
+          ],
+          [
+            46.0,
+            79.0,
+            567.0,
+            340.0
+          ],
+          [
+            53.0,
+            553.0,
+            567.0,
+            781.0
+          ],
+          [
+            53.0,
+            553.0,
+            567.0,
+            781.0
+          ],
+          [
+            90.0,
+            30.0,
+            952.0,
+            47.0
+          ],
+          [
+            77.0,
+            93.0,
+            952.0,
+            404.0
+          ],
+          [
+            89.0,
+            657.0,
+            952.0,
+            928.0
+          ]
+        ],
+        "table_count": 7,
+        "table_text_excerpt": "Redeemable noncontrolling interests in subsidiaries 58 63 Stockholders’ equity   Preferred stock; $0.001 par value; 100 shares authorized; no shares issued and outstanding — — Common stock; $0.001 par value; 6,000 shares authorized; 3,751 and 3,216 shares issued and outstanding as of December 31, 2025 and 2024, respectively 3 3 Additional paid-in capital 42,770 38,371 Accumulated other comprehensive income (loss) 361 (670) Retained earnings 39,003 35,209 Total stockholders’ equity 82,137 72,913 Noncontrolling interests in subsidiaries 670 704 Total liabilities and equity $ 137,806 $ 122,070  2025 2024 2023 Revenues    Automotive sales $ 65,821 $ 72,480 $ 78,509 Automotive regulatory credits 1,993 2,763 1,790 Automotive leasing 1,712 1,827 2,120 Total automotive revenues 69,526 77,070 82,419 Energy generation and storage 12,771 10,086 6,035 Services and other 12,530 10,534 8,319 Total revenues 94,827 97,690 96,773  2025 2024 2023 Revenues    Automotive sales $ 65,821 $ 72,480 $ 78,509 Automotive regulatory credits 1,993 2,763 1,790 Automotive leasing 1,712 1,827 2,120 Total automotive revenues 69,526 77,070 82,419 Energy generation and storage 12,771 10,086 6,035 Services and other "
+      },
+      "numeric_class": "cell_alignment_error",
+      "oracle_record_id": 17,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 13,
+            "row_text": "94,827 | 97,690 | 96,773",
+            "table_index": 1,
+            "token": {
+              "decimal": "94827",
+              "normalized": "94827",
+              "percent": false,
+              "raw": "94,827 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 13,
+            "row_text": "94,827 | 97,690 | 96,773",
+            "table_index": 2,
+            "token": {
+              "decimal": "94827",
+              "normalized": "94827",
+              "percent": false,
+              "raw": "94,827 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 13,
+            "row_text": "94,827 | 97,690 | 96,773",
+            "table_index": 4,
+            "token": {
+              "decimal": "94827",
+              "normalized": "94827",
+              "percent": false,
+              "raw": "94,827 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 70,
+        "page_text_excerpt": "Tesla, Inc. Consolidated Statements of Operations",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "94827",
+            "normalized": "94827",
+            "percent": false,
+            "raw": "94,827",
+            "valid": true
+          },
+          {
+            "decimal": "94827",
+            "normalized": "94827",
+            "percent": false,
+            "raw": "94,827",
+            "valid": true
+          },
+          {
+            "decimal": "94827",
+            "normalized": "94827",
+            "percent": false,
+            "raw": "94,827",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            53.0,
+            25.0,
+            567.0,
+            338.0
+          ],
+          [
+            54.0,
+            529.0,
+            568.0,
+            783.0
+          ],
+          [
+            54.0,
+            529.0,
+            568.0,
+            783.0
+          ],
+          [
+            89.0,
+            29.0,
+            952.0,
+            401.0
+          ],
+          [
+            90.0,
+            629.0,
+            954.0,
+            931.0
+          ]
+        ],
+        "table_count": 5,
+        "table_text_excerpt": "Redeemable noncontrolling interests in subsidiaries 58 63 Equity   Stockholders' equity   referred stock; $0.001 par value; 100 shares authorized; no shares issued and outstanding   ommon stock; $0.001 par value; 6,000 shares authorized; 3,751 and 3,216 shares issued and outstanding as of December 31, 2025 and 2024, respectively 3 3 Additional paid-in capital 42,770 38,371 Accumulated other comprehensive income (loss) 361 (670) Retained earnings 39,003 35,209 Total stockholders' equity 82,137 72,913 Noncontrolling interests in subsidiaries 670 704 Total liabilities and equity 137,806 122,070 Year Ended December 31,2025 2024 2023Revenues Automotive sales $ 65,821 $ 72,480 $ 78,509   Automotive regulatory credits 1,993 2,763 1,790   Automotive leasing 1,712 1,827 2,120    Total automotive revenuesEnergy generation and storage 69,526 77,070 82,419    12,771 10,086 6,035  Services and otherTotal revenues 12,530 10,534 8,319    94,827 97,690 96,773 Year Ended December 31,2025 2024 2023Revenues Automotive sales $ 65,821 $ 72,480 $ 78,509   Automotive regulatory credits 1,993 2,763 1,790   Automotive leasing 1,712 1,827 2,120    Total automotive revenuesEnergy generation and storage 69,52"
+      },
+      "unique_source_identity": "7c808b92ebace6c3f73880f51e7a7aeef84cd3c8553e618093087cea9175ddb0"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 5,
+            "row_text": "Total automotive revenues | 69,526 | 77,070 | 82,419 | (7,544) | (10) % | (5,349) | (6) %",
+            "table_index": 0,
+            "token": {
+              "decimal": "69526",
+              "normalized": "69526",
+              "percent": false,
+              "raw": " 69,526 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 5,
+            "row_text": "Total automotive revenues | 69,526 | 77,070 | 82,419 | (7,544) | (10) % | (5,349) | (6) %",
+            "table_index": 1,
+            "token": {
+              "decimal": "69526",
+              "normalized": "69526",
+              "percent": false,
+              "raw": " 69,526 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 66,
+        "page_text_excerpt": "Revenues Automotive sales revenue includes revenues related to cash and financing deliveries of new vehicles, including internet connectivity, access to our FSD (Supervised) features and their ongoing maintenance, free Supercharging programs and overthe-air software updates. These deliveries are vehicles that are not subject to lease accounting. Automotive regulatory credits includes sales of regulatory credits to other automotive manufacturers. Our revenue from automotive regulatory credits is directly related to our new vehicle production, sales and pricing negotiated with our customers. We monetize them proactively as new vehicles are sold based on standing arrangements with buyers of such credits, typically as close as possible to the production and delivery of the vehicle or changes in regulation impacting the credits Automotive leasing revenue includes the amortization of revenue for vehicles under direct operating lease agreements and lease buyout revenue. Additionally, automotive leasing revenue includes direct sales-type leasing programs where we recognize all revenue associated with the sales-type lease upon delivery to the customer. Services and other revenue consists of",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "69526",
+            "normalized": "69526",
+            "percent": false,
+            "raw": "69,526",
+            "valid": true
+          },
+          {
+            "decimal": "69526",
+            "normalized": "69526",
+            "percent": false,
+            "raw": "69,526",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            53.0,
+            109.0,
+            569.0,
+            428.0
+          ],
+          [
+            89.0,
+            129.0,
+            956.0,
+            508.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": "(Dollars in millions) Year Ended December 31, 2025 vs. 2024 Change 2024 vs. 2023 Change 2025 2024 2023 $ % $ % Automotive sales $ 65,821 $ 72,480 $ 78,509 $ (6,659) (9) % $ (6,029) (8) % Automotive regulatory credits 1,993 2,763 1,790 (770) (28) % 973 54 % Automotive leasing 1,712 1,827 2,120 (115) (6) % (293) (14) % Total automotive revenues 69,526 77,070 82,419 (7,544) (10) % (5,349) (6) % Services and other 12,530 10,534 8,319 1,996 19 % 2,215 27 % Total automotive & services and other segment revenue 82,056 87,604 90,738 (5,548) (6) % (3,134) (3) % Energy generation and storage segment revenue 12,771 10,086 6,035 2,685 27 % 4,051 67 % Total revenues $ 94,827 $ 97,690 $ 96,773 $ (2,863) (3) % $ 917 1 % (Dollars in millions) Year Ended December 31, 2025 vs. 2024 Change 2024 vs. 2023 Change 2025 2024 2023 $ % $ % Automotive sales $ 65,821 $ 72,480 $ 78,509 $ (6,659) (9) % $ (6,029) (8) % Automotive regulatory credits 1,993 2,763 1,790 (770) (28) % 973 54 % Automotive leasing 1,712 1,827 2,120 (115) (6) % (293) (14) % Total automotive revenues 69,526 77,070 82,419 (7,544) (10) % (5,349) (6) % Services and other 12,530 10,534 8,319 1,996 19 % 2,215 27 % Total automotive & services a"
+      },
+      "numeric_class": "not_applicable",
+      "oracle_record_id": 18,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 5,
+            "row_text": "Total automotive revenues | 69,526 |  | 77,070 | 82,419 | (7,544) | (10) % |  | (5,349) | (6) %",
+            "table_index": 0,
+            "token": {
+              "decimal": "69526",
+              "normalized": "69526",
+              "percent": false,
+              "raw": " 69,526 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 5,
+            "row_text": "Total automotive revenues | 69,526 |  | 77,070 | 82,419 | (7,544) | (10) % |  | (5,349) | (6) %",
+            "table_index": 1,
+            "token": {
+              "decimal": "69526",
+              "normalized": "69526",
+              "percent": false,
+              "raw": " 69,526 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 66,
+        "page_text_excerpt": "Automotive sales revenue includes revenues related to cash and financing deliveries of new vehicles, including internet connectivity, access to our FSD (Supervised) features and their ongoing maintenance, free Supercharging programs and overthe-air software updates. These deliveries are vehicles that are not subject to lease accounting. Automotive regulatory credits includes sales of regulatory credits to other automotive manufacturers. Our revenue from automotive regulatory credits is directly related to our new vehicle production, sales and pricing negotiated with our customers. We monetize them proactively as new vehicles are sold based on standing arrangements with buyers of such credits, typically as close as possible to the production and delivery of the vehicle or changes in regulation impacting the credits. Automotive leasing revenue includes the amortization of revenue for vehicles under direct operating lease agreements and lease buyout revenue. Additionally, automotive leasing revenue includes direct sales-type leasing programs where we recognize all revenue associated with the sales-type lease upon delivery to the customer. Services and other revenue consists of sales o",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "69526",
+            "normalized": "69526",
+            "percent": false,
+            "raw": "69,526",
+            "valid": true
+          },
+          {
+            "decimal": "69526",
+            "normalized": "69526",
+            "percent": false,
+            "raw": "69,526",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            53.0,
+            114.0,
+            569.0,
+            428.0
+          ],
+          [
+            89.0,
+            135.0,
+            956.0,
+            508.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": " Year Ended December 31, 2025 vs. 2024 Change 2024 vs. 2023 Change (Dollars in millions) 2025  2024 2023 $ %  $ % Automotive sales $ 65,821  $ 72,480 $ 78,509 $ (6,659) (9) % $ (6,029) (8) % Automotive regulatory credits 1,993  2,763 1,790 (770) (28) %  973 54 % Automotive leasing 1,712  1,827 2,120 (115) (6) %  (293) (14)% Total automotive revenues 69,526  77,070 82,419 (7,544) (10) %  (5,349) (6) % Services and other 12,530  10,534 8,319 1,996 19%  2,215 27 % Total automotive & services and other segment revenue 82,056  87,604 90,738 (5,548) (6) %  (3,134) (3) % Energy generation and storage segment revenue  12,771 10,086 6,035 2,685 27 %  4,051 67 % Total revenues $ 94,827 $ 97,690 $ 96,773 $ (2,863)  (3) % $ 917 1 %  Year Ended December 31, 2025 vs. 2024 Change 2024 vs. 2023 Change (Dollars in millions) 2025  2024 2023 $ %  $ % Automotive sales $ 65,821  $ 72,480 $ 78,509 $ (6,659) (9) % $ (6,029) (8) % Automotive regulatory credits 1,993  2,763 1,790 (770) (28) %  973 54 % Automotive leasing 1,712  1,827 2,120 (115) (6) %  (293) (14)% Total automotive revenues 69,526  77,070 82,419 (7,544) (10) %  (5,349) (6) % Services and other 12,530  10,534 8,319 1,996 19%  2,215 27 % Tota"
+      },
+      "unique_source_identity": "3de236c7d0ff14c00217429ad33e3c7adc295c9e103294500491916796398ae4"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 8,
+            "row_text": "Energy generation and storage segment revenue | 12,771 | 10,086 | 6,035 | 2,685 | 27 % | 4,051 | 67 %",
+            "table_index": 0,
+            "token": {
+              "decimal": "12771",
+              "normalized": "12771",
+              "percent": false,
+              "raw": " 12,771 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 8,
+            "row_text": "Energy generation and storage segment revenue | 12,771 | 10,086 | 6,035 | 2,685 | 27 % | 4,051 | 67 %",
+            "table_index": 1,
+            "token": {
+              "decimal": "12771",
+              "normalized": "12771",
+              "percent": false,
+              "raw": " 12,771 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 66,
+        "page_text_excerpt": "Revenues Automotive sales revenue includes revenues related to cash and financing deliveries of new vehicles, including internet connectivity, access to our FSD (Supervised) features and their ongoing maintenance, free Supercharging programs and overthe-air software updates. These deliveries are vehicles that are not subject to lease accounting. Automotive regulatory credits includes sales of regulatory credits to other automotive manufacturers. Our revenue from automotive regulatory credits is directly related to our new vehicle production, sales and pricing negotiated with our customers. We monetize them proactively as new vehicles are sold based on standing arrangements with buyers of such credits, typically as close as possible to the production and delivery of the vehicle or changes in regulation impacting the credits Automotive leasing revenue includes the amortization of revenue for vehicles under direct operating lease agreements and lease buyout revenue. Additionally, automotive leasing revenue includes direct sales-type leasing programs where we recognize all revenue associated with the sales-type lease upon delivery to the customer. Services and other revenue consists of",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "12771",
+            "normalized": "12771",
+            "percent": false,
+            "raw": "12,771",
+            "valid": true
+          },
+          {
+            "decimal": "12771",
+            "normalized": "12771",
+            "percent": false,
+            "raw": "12,771",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            53.0,
+            109.0,
+            569.0,
+            428.0
+          ],
+          [
+            89.0,
+            129.0,
+            956.0,
+            508.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": "(Dollars in millions) Year Ended December 31, 2025 vs. 2024 Change 2024 vs. 2023 Change 2025 2024 2023 $ % $ % Automotive sales $ 65,821 $ 72,480 $ 78,509 $ (6,659) (9) % $ (6,029) (8) % Automotive regulatory credits 1,993 2,763 1,790 (770) (28) % 973 54 % Automotive leasing 1,712 1,827 2,120 (115) (6) % (293) (14) % Total automotive revenues 69,526 77,070 82,419 (7,544) (10) % (5,349) (6) % Services and other 12,530 10,534 8,319 1,996 19 % 2,215 27 % Total automotive & services and other segment revenue 82,056 87,604 90,738 (5,548) (6) % (3,134) (3) % Energy generation and storage segment revenue 12,771 10,086 6,035 2,685 27 % 4,051 67 % Total revenues $ 94,827 $ 97,690 $ 96,773 $ (2,863) (3) % $ 917 1 % (Dollars in millions) Year Ended December 31, 2025 vs. 2024 Change 2024 vs. 2023 Change 2025 2024 2023 $ % $ % Automotive sales $ 65,821 $ 72,480 $ 78,509 $ (6,659) (9) % $ (6,029) (8) % Automotive regulatory credits 1,993 2,763 1,790 (770) (28) % 973 54 % Automotive leasing 1,712 1,827 2,120 (115) (6) % (293) (14) % Total automotive revenues 69,526 77,070 82,419 (7,544) (10) % (5,349) (6) % Services and other 12,530 10,534 8,319 1,996 19 % 2,215 27 % Total automotive & services a"
+      },
+      "numeric_class": "cell_alignment_error",
+      "oracle_record_id": 19,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 8,
+            "row_text": "Energy generation and storage segment revenue |  | 12,771 | 10,086 | 6,035 | 2,685 | 27 % |  | 4,051 | 67 %",
+            "table_index": 0,
+            "token": {
+              "decimal": "12771",
+              "normalized": "12771",
+              "percent": false,
+              "raw": " 12,771 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 8,
+            "row_text": "Energy generation and storage segment revenue |  | 12,771 | 10,086 | 6,035 | 2,685 | 27 % |  | 4,051 | 67 %",
+            "table_index": 1,
+            "token": {
+              "decimal": "12771",
+              "normalized": "12771",
+              "percent": false,
+              "raw": " 12,771 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 66,
+        "page_text_excerpt": "Automotive sales revenue includes revenues related to cash and financing deliveries of new vehicles, including internet connectivity, access to our FSD (Supervised) features and their ongoing maintenance, free Supercharging programs and overthe-air software updates. These deliveries are vehicles that are not subject to lease accounting. Automotive regulatory credits includes sales of regulatory credits to other automotive manufacturers. Our revenue from automotive regulatory credits is directly related to our new vehicle production, sales and pricing negotiated with our customers. We monetize them proactively as new vehicles are sold based on standing arrangements with buyers of such credits, typically as close as possible to the production and delivery of the vehicle or changes in regulation impacting the credits. Automotive leasing revenue includes the amortization of revenue for vehicles under direct operating lease agreements and lease buyout revenue. Additionally, automotive leasing revenue includes direct sales-type leasing programs where we recognize all revenue associated with the sales-type lease upon delivery to the customer. Services and other revenue consists of sales o",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "12771",
+            "normalized": "12771",
+            "percent": false,
+            "raw": "12,771",
+            "valid": true
+          },
+          {
+            "decimal": "12771",
+            "normalized": "12771",
+            "percent": false,
+            "raw": "12,771",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            53.0,
+            114.0,
+            569.0,
+            428.0
+          ],
+          [
+            89.0,
+            135.0,
+            956.0,
+            508.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": " Year Ended December 31, 2025 vs. 2024 Change 2024 vs. 2023 Change (Dollars in millions) 2025  2024 2023 $ %  $ % Automotive sales $ 65,821  $ 72,480 $ 78,509 $ (6,659) (9) % $ (6,029) (8) % Automotive regulatory credits 1,993  2,763 1,790 (770) (28) %  973 54 % Automotive leasing 1,712  1,827 2,120 (115) (6) %  (293) (14)% Total automotive revenues 69,526  77,070 82,419 (7,544) (10) %  (5,349) (6) % Services and other 12,530  10,534 8,319 1,996 19%  2,215 27 % Total automotive & services and other segment revenue 82,056  87,604 90,738 (5,548) (6) %  (3,134) (3) % Energy generation and storage segment revenue  12,771 10,086 6,035 2,685 27 %  4,051 67 % Total revenues $ 94,827 $ 97,690 $ 96,773 $ (2,863)  (3) % $ 917 1 %  Year Ended December 31, 2025 vs. 2024 Change 2024 vs. 2023 Change (Dollars in millions) 2025  2024 2023 $ %  $ % Automotive sales $ 65,821  $ 72,480 $ 78,509 $ (6,659) (9) % $ (6,029) (8) % Automotive regulatory credits 1,993  2,763 1,790 (770) (28) %  973 54 % Automotive leasing 1,712  1,827 2,120 (115) (6) %  (293) (14)% Total automotive revenues 69,526  77,070 82,419 (7,544) (10) %  (5,349) (6) % Services and other 12,530  10,534 8,319 1,996 19%  2,215 27 % Tota"
+      },
+      "unique_source_identity": "043004785ce70e73105a86409c4de1fdefc12cafb79f0f23b43b1bd6032013a4"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 3,
+            "row_text": "Net revenue | $ 40,000 | $ 35,926 | $ 32,653",
+            "table_index": 0,
+            "token": {
+              "decimal": "35926",
+              "normalized": "35926",
+              "percent": false,
+              "raw": "$ 35,926 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 3,
+            "row_text": "Net revenue | $ 40,000 | $ 35,926 | $ 32,653",
+            "table_index": 1,
+            "token": {
+              "decimal": "35926",
+              "normalized": "35926",
+              "percent": false,
+              "raw": "$ 35,926 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 80,
+        "page_text_excerpt": "",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "35926",
+            "normalized": "35926",
+            "percent": false,
+            "raw": "$ 35,926",
+            "valid": true
+          },
+          {
+            "decimal": "35926",
+            "normalized": "35926",
+            "percent": false,
+            "raw": "$ 35,926",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            58.0,
+            93.0,
+            534.0,
+            608.0
+          ],
+          [
+            97.0,
+            120.0,
+            898.0,
+            785.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": " For the Years Ended September 30, 2025 2024 2023 (in millions, except per share data) Net revenue $ 40,000 $ 35,926 $ 32,653 Operating Expenses Personnel 6,961 6,264 5,831 Marketing 1,684 1,560 1,341 Network and processing 894 778 736 Professional fees 759 635 545 Depreciation and amortization 1,220 1,034 943 General and administrative 1,926 1,598 1,330 Litigation provision 2,562 462 927 Total operating expenses 16,006 12,331 11,653 Operating income 23,994 23,595 21,000 Non-operating Income (Expense) Interest expense (589) (641) (644) Investment income (expense) and other 789 962 681 Total non-operating income (expense) 200 321 37 Income before income taxes 24,194 23,916 21,037 Income tax provision 4,136 4,173 3,764 Net income $ 20,058 $ 19,743 $ 17,273 Basic Earnings Per Share Class A common stock $ 10.22 $ 9.74 $ 8.29 Class B-1 common stock $ 15.97 $ 15.46 $ 13.26 Class B-2 common stock(1) $ 15.72 $ 15.45 $ — Class C common stock $ 40.87 $ 38.97 $ 33.17 Basic Weighted-average Shares Outstanding Class A common stock 1,714 1,621 1,618 Class B-1 common stock 5 148 245 Class B-2 common stock(1) 120 49 — Class C common stock 9 16 10 Diluted Earnings Per Share Class A common stock $ 1"
+      },
+      "numeric_class": "cell_alignment_error",
+      "oracle_record_id": 20,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 3,
+            "row_text": "Net revenue. | $ 40,000 $ | 35,926 $ | 32,653",
+            "table_index": 0,
+            "token": {
+              "decimal": "35926",
+              "normalized": "35926",
+              "percent": false,
+              "raw": " 35,926 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 3,
+            "row_text": "Net revenue. | $ 40,000 $ | 35,926 $ | 32,653",
+            "table_index": 1,
+            "token": {
+              "decimal": "35926",
+              "normalized": "35926",
+              "percent": false,
+              "raw": " 35,926 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 80,
+        "page_text_excerpt": "VISACONSOLIDATED STATEMENTS OF OPERATIONS",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "35926",
+            "normalized": "35926",
+            "percent": false,
+            "raw": "35,926 ",
+            "valid": true
+          },
+          {
+            "decimal": "35926",
+            "normalized": "35926",
+            "percent": false,
+            "raw": "35,926 ",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            59.0,
+            93.0,
+            534.0,
+            607.0
+          ],
+          [
+            99.0,
+            120.0,
+            898.0,
+            784.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": " For the Years Ended September 30, 2025 2024 2023 (in millions, except per share data) Net revenue. $ 40,000 $ 35,926 $ 32,653  Operating Expenses    Personnel 6,961 6,264 5,831 Marketing 1,684 1,560 1,341 Network and processing 894 778 736 Professional fees 759 635 545 Depreciation and amortization 1,220 1,034 943 General and administrative 1,926 1,598 1,330 Litigation provision 2,562 462 927 Total operating expenses 16,006 12,331 11,653 Operating income 23,994 23,595 21,000  Non-operating Income (Expense)    Interest expense Investment income (expense) and other (589) 789 (641) 962 (644) 681  200 321 37 Total non-operating income (expense)  23,916 21,037 Income before income taxes 24,194   Income tax provision $ 4,136 4,173 3,764 Net income 20,058 $ 19,743 $ 17,273 Basic Earnings Per Share     Class A common stock $ 10.22 $ $ 9.74 $ 8.29 Class B-1 common stock 15.97 $ $ 15.46 $ 13.26 Class B-2 common stock(1) 15.72 $ 15.45 $  Class C common stock $ 40.87 $ 38.97 $ 33.17 Basic Weighted-average Shares Outstanding     Class A common stock 1,714 1,621 1,618 Class B-1 common stock 5 148 245 Class B-2 common stock(1) 120 49  Class C common stock. 9 16 10 Diluted Earnings Per Share     "
+      },
+      "unique_source_identity": "c8f4879fa90caed97ed38b2e23fe12ddd26445fe5ea996f410acb2198d3de502"
+    },
+    {
+      "hybrid": {
+        "html_matches": [
+          {
+            "row_index": 3,
+            "row_text": "Net revenue | $ 40,000 | $ 35,926 | $ 32,653",
+            "table_index": 0,
+            "token": {
+              "decimal": "40000",
+              "normalized": "40000",
+              "percent": false,
+              "raw": "$ 40,000 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 3,
+            "row_text": "Net revenue | $ 40,000 | $ 35,926 | $ 32,653",
+            "table_index": 1,
+            "token": {
+              "decimal": "40000",
+              "normalized": "40000",
+              "percent": false,
+              "raw": "$ 40,000 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 80,
+        "page_text_excerpt": "",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "40000",
+            "normalized": "40000",
+            "percent": false,
+            "raw": "$ 40,000",
+            "valid": true
+          },
+          {
+            "decimal": "40000",
+            "normalized": "40000",
+            "percent": false,
+            "raw": "$ 40,000",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            58.0,
+            93.0,
+            534.0,
+            608.0
+          ],
+          [
+            97.0,
+            120.0,
+            898.0,
+            785.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": " For the Years Ended September 30, 2025 2024 2023 (in millions, except per share data) Net revenue $ 40,000 $ 35,926 $ 32,653 Operating Expenses Personnel 6,961 6,264 5,831 Marketing 1,684 1,560 1,341 Network and processing 894 778 736 Professional fees 759 635 545 Depreciation and amortization 1,220 1,034 943 General and administrative 1,926 1,598 1,330 Litigation provision 2,562 462 927 Total operating expenses 16,006 12,331 11,653 Operating income 23,994 23,595 21,000 Non-operating Income (Expense) Interest expense (589) (641) (644) Investment income (expense) and other 789 962 681 Total non-operating income (expense) 200 321 37 Income before income taxes 24,194 23,916 21,037 Income tax provision 4,136 4,173 3,764 Net income $ 20,058 $ 19,743 $ 17,273 Basic Earnings Per Share Class A common stock $ 10.22 $ 9.74 $ 8.29 Class B-1 common stock $ 15.97 $ 15.46 $ 13.26 Class B-2 common stock(1) $ 15.72 $ 15.45 $ — Class C common stock $ 40.87 $ 38.97 $ 33.17 Basic Weighted-average Shares Outstanding Class A common stock 1,714 1,621 1,618 Class B-1 common stock 5 148 245 Class B-2 common stock(1) 120 49 — Class C common stock 9 16 10 Diluted Earnings Per Share Class A common stock $ 1"
+      },
+      "numeric_class": "not_applicable",
+      "oracle_record_id": 21,
+      "pipeline": {
+        "html_matches": [
+          {
+            "row_index": 3,
+            "row_text": "Net revenue. | $ 40,000 $ | 35,926 $ | 32,653",
+            "table_index": 0,
+            "token": {
+              "decimal": "40000",
+              "normalized": "40000",
+              "percent": false,
+              "raw": "$ 40,000 ",
+              "valid": true
+            }
+          },
+          {
+            "row_index": 3,
+            "row_text": "Net revenue. | $ 40,000 $ | 35,926 $ | 32,653",
+            "table_index": 1,
+            "token": {
+              "decimal": "40000",
+              "normalized": "40000",
+              "percent": false,
+              "raw": "$ 40,000 ",
+              "valid": true
+            }
+          }
+        ],
+        "html_normalized_match": true,
+        "page_index": 80,
+        "page_text_excerpt": "VISACONSOLIDATED STATEMENTS OF OPERATIONS",
+        "span_or_html_numeric_matches": [
+          {
+            "decimal": "40000",
+            "normalized": "40000",
+            "percent": false,
+            "raw": "$ 40,000 ",
+            "valid": true
+          },
+          {
+            "decimal": "40000",
+            "normalized": "40000",
+            "percent": false,
+            "raw": "$ 40,000 ",
+            "valid": true
+          }
+        ],
+        "table_bboxes": [
+          [
+            59.0,
+            93.0,
+            534.0,
+            607.0
+          ],
+          [
+            99.0,
+            120.0,
+            898.0,
+            784.0
+          ]
+        ],
+        "table_count": 2,
+        "table_text_excerpt": " For the Years Ended September 30, 2025 2024 2023 (in millions, except per share data) Net revenue. $ 40,000 $ 35,926 $ 32,653  Operating Expenses    Personnel 6,961 6,264 5,831 Marketing 1,684 1,560 1,341 Network and processing 894 778 736 Professional fees 759 635 545 Depreciation and amortization 1,220 1,034 943 General and administrative 1,926 1,598 1,330 Litigation provision 2,562 462 927 Total operating expenses 16,006 12,331 11,653 Operating income 23,994 23,595 21,000  Non-operating Income (Expense)    Interest expense Investment income (expense) and other (589) 789 (641) 962 (644) 681  200 321 37 Total non-operating income (expense)  23,916 21,037 Income before income taxes 24,194   Income tax provision $ 4,136 4,173 3,764 Net income 20,058 $ 19,743 $ 17,273 Basic Earnings Per Share     Class A common stock $ 10.22 $ $ 9.74 $ 8.29 Class B-1 common stock 15.97 $ $ 15.46 $ 13.26 Class B-2 common stock(1) 15.72 $ 15.45 $  Class C common stock $ 40.87 $ 38.97 $ 33.17 Basic Weighted-average Shares Outstanding     Class A common stock 1,714 1,621 1,618 Class B-1 common stock 5 148 245 Class B-2 common stock(1) 120 49  Class C common stock. 9 16 10 Diluted Earnings Per Share     "
+      },
+      "unique_source_identity": "a11c05cc59afd2fc9ea72e716ae9232c8a8dd4f639babf215cd70294c20590c9"
+    }
+  ],
+  "function": "normalize_financial_numeric_text",
+  "rules": [
+    "unicode_minus",
+    "parentheses_negative",
+    "currency_symbols",
+    "comma_separator",
+    "html_entity",
+    "footnote_suffix",
+    "percentage",
+    "no_digit_repair"
+  ]
+}
