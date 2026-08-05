@@ -1,0 +1,15 @@
+{
+  "case_count": 90,
+  "document_counts": {
+    "adobe_fy2025_pdf_dev": 30,
+    "salesforce_fy2026_pdf_dev": 30,
+    "walmart_fy2026_pdf_dev": 30
+  },
+  "paraphrase_method_counts": {
+    "generic_financial_alias": 4,
+    "generic_modifier_elision": 26,
+    "natural_question_wrapper": 60
+  },
+  "runtime_query_text_committed": false,
+  "statement_omitted_count": 90
+}
