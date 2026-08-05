@@ -1,0 +1,31 @@
+{
+  "documents": [
+    {
+      "document_id": "adobe_fy2025_pdf_dev",
+      "fold": 1,
+      "issuer": "Adobe"
+    },
+    {
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "fold": 2,
+      "issuer": "Salesforce"
+    },
+    {
+      "document_id": "walmart_fy2026_pdf_dev",
+      "fold": 3,
+      "issuer": "Walmart"
+    }
+  ],
+  "frozen_transfer_documents": [
+    "apple",
+    "coca-cola",
+    "jpmorgan",
+    "microsoft",
+    "nvidia",
+    "pfizer",
+    "tesla",
+    "visa"
+  ],
+  "split_frozen_before_query_generation": true,
+  "strategy": "three_fold_leave_one_issuer_out"
+}

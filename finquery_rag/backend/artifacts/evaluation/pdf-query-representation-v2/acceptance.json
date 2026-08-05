@@ -1,0 +1,30 @@
+{
+  "answer_generation_calls": 0,
+  "concept_gate_passed": true,
+  "concept_metrics": {
+    "mrr": 0.9583333333333333,
+    "no_answer_concept_intrusion_rate": 0.0,
+    "query_count": 120,
+    "top_1_accuracy": 0.9416666666666667,
+    "top_3_recall": 0.9916666666666667,
+    "wrong_concept_family_rate": 0.041666666666666664
+  },
+  "concept_registry_sha256": "b8eb2206b8dc8fe1fa9ca0f6735a7b90f39d22e397497a14046296d12de2309f",
+  "decision": "concept_resolution_gate_passed",
+  "development_target_identity_reads_for_posthoc_scoring": 120,
+  "document_split_sha256": "2d3653db9e74b7a0f557bca391bfa80f11176e2d2f2b2163ca270c7f1ca75efb",
+  "expected_value_reads": 0,
+  "frozen_72_question_reads": 0,
+  "frozen_gold_source_reads": 0,
+  "frozen_transfer_allowed": false,
+  "human_reviewed": false,
+  "hybrid_retrieval_runs": 0,
+  "model_training_calls": 0,
+  "natural_query_set_sha256": "801238136ce400d0a831f856b781d46c2ccbcc01e6d3d7553f83bd7b0784690f",
+  "production_behavior_changed": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "review_mode": "ai_assisted_independent_development_annotation",
+  "runtime_views_sha256": "a485e236d8d7ee52c1061fd45f60599596752d856e054bfb4b034cfd5d018759",
+  "schema": "pdf-query-representation-v2/acceptance/v1"
+}

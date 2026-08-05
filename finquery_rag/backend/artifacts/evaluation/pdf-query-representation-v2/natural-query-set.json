@@ -1,0 +1,2393 @@
+{
+  "no_answer_controls": [
+    {
+      "document_id": "adobe_fy2025_pdf_dev",
+      "expected_route": "no_answer",
+      "human_reviewed": false,
+      "metric_phrase": "lunar mining royalties",
+      "query_id": "pdf-query-v2-no-answer:8f53027cddfc4c874d8e557533f3a1aa579552cba535774c4e60fa5c6fbbb03b",
+      "review_status": "ai_assisted_pending_human_review"
+    },
+    {
+      "document_id": "adobe_fy2025_pdf_dev",
+      "expected_route": "no_answer",
+      "human_reviewed": false,
+      "metric_phrase": "quantum battery inventory",
+      "query_id": "pdf-query-v2-no-answer:6b0162a0c7ec0030ce29b9b116ff13b17788fe979613989aa163bdac2ce84bab",
+      "review_status": "ai_assisted_pending_human_review"
+    },
+    {
+      "document_id": "adobe_fy2025_pdf_dev",
+      "expected_route": "no_answer",
+      "human_reviewed": false,
+      "metric_phrase": "Martian payroll costs",
+      "query_id": "pdf-query-v2-no-answer:5daf13deabf93896d04019e5d7425a9b1cab9b83b3acc0353ed7eaeebf509609",
+      "review_status": "ai_assisted_pending_human_review"
+    },
+    {
+      "document_id": "adobe_fy2025_pdf_dev",
+      "expected_route": "no_answer",
+      "human_reviewed": false,
+      "metric_phrase": "underwater data center assets",
+      "query_id": "pdf-query-v2-no-answer:8b23ec7cc588ff5e05bce8885c1c322e259d0e346395f40f379da1de383b071f",
+      "review_status": "ai_assisted_pending_human_review"
+    },
+    {
+      "document_id": "adobe_fy2025_pdf_dev",
+      "expected_route": "no_answer",
+      "human_reviewed": false,
+      "metric_phrase": "teleportation revenue",
+      "query_id": "pdf-query-v2-no-answer:ec9064e2b8e19e8efe0b2c88fee56ba36ab7a0989bb02274f46c9bec344c8aec",
+      "review_status": "ai_assisted_pending_human_review"
+    },
+    {
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "expected_route": "no_answer",
+      "human_reviewed": false,
+      "metric_phrase": "lunar mining royalties",
+      "query_id": "pdf-query-v2-no-answer:d09e405c085cc5f168e667a435566458c419e1d1c80eebd7d0704a954707793b",
+      "review_status": "ai_assisted_pending_human_review"
+    },
+    {
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "expected_route": "no_answer",
+      "human_reviewed": false,
+      "metric_phrase": "quantum battery inventory",
+      "query_id": "pdf-query-v2-no-answer:448b2a89ebfd4b1877e316b9fd683ef8a9d18129422e25332b31c36d5939ae5d",
+      "review_status": "ai_assisted_pending_human_review"
+    },
+    {
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "expected_route": "no_answer",
+      "human_reviewed": false,
+      "metric_phrase": "Martian payroll costs",
+      "query_id": "pdf-query-v2-no-answer:3c2ca1e6997cfdd8808286b4141cb5d12128321a54d84986c96da78c036449da",
+      "review_status": "ai_assisted_pending_human_review"
+    },
+    {
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "expected_route": "no_answer",
+      "human_reviewed": false,
+      "metric_phrase": "underwater data center assets",
+      "query_id": "pdf-query-v2-no-answer:cd0a7c2b1e01fb71d11f0049b631481363079da1a22d36f3d1ad2eaec186d6b2",
+      "review_status": "ai_assisted_pending_human_review"
+    },
+    {
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "expected_route": "no_answer",
+      "human_reviewed": false,
+      "metric_phrase": "teleportation revenue",
+      "query_id": "pdf-query-v2-no-answer:5e24de2d05e9cec218cee6dcfb106666be398bd2533e55b4ea3c350103aa38d6",
+      "review_status": "ai_assisted_pending_human_review"
+    },
+    {
+      "document_id": "walmart_fy2026_pdf_dev",
+      "expected_route": "no_answer",
+      "human_reviewed": false,
+      "metric_phrase": "lunar mining royalties",
+      "query_id": "pdf-query-v2-no-answer:4ad287720062362bb29d41832312fa5a8b838ea77ef42633d65c03559a5fe893",
+      "review_status": "ai_assisted_pending_human_review"
+    },
+    {
+      "document_id": "walmart_fy2026_pdf_dev",
+      "expected_route": "no_answer",
+      "human_reviewed": false,
+      "metric_phrase": "quantum battery inventory",
+      "query_id": "pdf-query-v2-no-answer:c64dcce167998098a7a512b9f2d5cc641b9c147f8ccbbfcf2b0b38921ae1cdf4",
+      "review_status": "ai_assisted_pending_human_review"
+    },
+    {
+      "document_id": "walmart_fy2026_pdf_dev",
+      "expected_route": "no_answer",
+      "human_reviewed": false,
+      "metric_phrase": "Martian payroll costs",
+      "query_id": "pdf-query-v2-no-answer:343c4df527492e54f657a5be5c8ae45e5c9635293dd7f13c10e9cc239dea6dc5",
+      "review_status": "ai_assisted_pending_human_review"
+    },
+    {
+      "document_id": "walmart_fy2026_pdf_dev",
+      "expected_route": "no_answer",
+      "human_reviewed": false,
+      "metric_phrase": "underwater data center assets",
+      "query_id": "pdf-query-v2-no-answer:4fea9cf1a763c609cf205b777ff24792f790bf433331f4ae86117fa5d327629c",
+      "review_status": "ai_assisted_pending_human_review"
+    },
+    {
+      "document_id": "walmart_fy2026_pdf_dev",
+      "expected_route": "no_answer",
+      "human_reviewed": false,
+      "metric_phrase": "teleportation revenue",
+      "query_id": "pdf-query-v2-no-answer:f75a839f3e98f6d71a29c2cc3adc94a1d26d6ead13f05b5f46e697f22016deb7",
+      "review_status": "ai_assisted_pending_human_review"
+    }
+  ],
+  "no_answer_count": 15,
+  "queries": [
+    {
+      "allowed_concept_ids": [
+        "financial-concept:565c9baa6648b834141124be8abce83ae8f69ae47cbda81b886ea54d910e86d2"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:0f886c90b68e3f30fc503bfd7d740f6608f060d09bc935762307ea7682be52b7",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "assets",
+      "issuer": "Adobe",
+      "metric_phrase": "asset backed securities",
+      "natural_question": "What was Adobe's asset backed securities in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:d5350dbe0c01913368b49126dc39de7480354ed358113c4bd9032c16885afefc",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:6c12372c6890f37b707a77bd6bc43357662b174240abf5e6d4981d0b1731a66c"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:832d3153206e9dc092612b4c15f6332afa72f0b827898c8135c82f28ca2d2fef",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "assets",
+      "issuer": "Adobe",
+      "metric_phrase": "intangible assets",
+      "natural_question": "What was Adobe's intangible assets in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:6b3672e0d058cf62f147f422a8f725f5506a98b1eb50a862dfe3ae01096b78e1",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:14556fd5b0db705506ad4a06365e3b16f7a14cafb3c3ab9fe08303791bd06ad7"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:08b43379068da96e5703674e558f4cc1e56e15ab21b3abec85bf2dedd3ae46c5",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "assets",
+      "issuer": "Adobe",
+      "metric_phrase": "deferred tax assets",
+      "natural_question": "What was Adobe's deferred tax assets in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:b9531e265c44a734b4b0c940d8d078e9d9b6b9ceae2969aeb658a77678ba3320",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:a55190216de5a6af12caba4896cd11a25a577f1a6967b7f970b5265a1028e368"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:a7451d222139d39da5bcc7639fbf9c3bb5520c5f94989aa58401f23f737c1e14",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "assets",
+      "issuer": "Adobe",
+      "metric_phrase": "assets",
+      "natural_question": "What was Adobe's assets in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:361cc72bf96447911f5c4935f542f36e56c6280a90ef4e70ca000a21980a8e60",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:bb72111879f539e7a79612fedb149656a32aecad271a09ac77c0b1c06a86b4d8"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:357ed149a885c0673d92ce6482295c92824db842fcc0eeae43c7c122355837bf",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Adobe",
+      "metric_phrase": "cash",
+      "natural_question": "What was Adobe's cash in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:00fb6f93f1f97be88e557d1a52a012c164e1da51c3f96196a5fad2c953e76c79",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:1daf2a9ff580bd520551021273db1b397fe9b257bbdc1dcc09c9900032c7bf43"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:19f22afa4a9958f38594433b551f5160ca6cf7e557dcf3f3c302925ba664bd73",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Adobe",
+      "metric_phrase": "cash and cash equivalents",
+      "natural_question": "What was Adobe's cash and cash equivalents in fiscal 2023?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:58cae735babaa65efafc1f0ede8f60bf9aba073690db2ef97164c12649b61b2d",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:347bbb0e6abe8d70ddd373c0f99760063ae99bc3d70b9d54435b62b77d15aa46",
+        "financial-concept:2cfbab3955ddc3604563d38f2457df966ad64329b90ed8908f64a9201c9425d7"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:3e3056fa5ef664a349b2f4715157885ed8c4925309d5278ba476fce946379b34",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Adobe",
+      "metric_phrase": "cash generated by normal operations",
+      "natural_question": "What was Adobe's cash generated by normal operations in fiscal 2023?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:774a823bcfb54a4d82a6715c83d5049713529aae1a9a188dde5bcb89dc6d1bc4",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:57e9e7f918bebe550ad4a351294a315b9fdaee060940756329a901d198f070d2"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:bd48ebb277b73795323ca9e1244ed1df9e031034ea1e46287ce29ebe22da5371",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Adobe",
+      "metric_phrase": "operating lease right of use assets",
+      "natural_question": "What was Adobe's operating lease right of use assets in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:3ec3ada82766157f23345a4e17685900505fc7f56abc72f499bf44655262f12a",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:42544162cd7151c2f8ab90537d5d42292378c552c020651cde769c77792b61ab"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:c2dbf249c73a5e90519875af632a39792c9d34b7f91c45af5d37515b76743fcf",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Adobe",
+      "metric_phrase": "investing activities",
+      "natural_question": "What was Adobe's investing activities in fiscal 2023?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:2234e0470a61eba38fb33eb8da422fb039fc7f3aa58ec0933e7d6ce97a148823",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:150648d2fd60625dac55dc35f5fedc4bcfd22643a4f6e4d94b05a4b8e5d1d650"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:556e06046d99b7d22720b9e52fb8626f465a24793e0cd23c9cfc4467962b77ec",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "expenses",
+      "issuer": "Adobe",
+      "metric_phrase": "operating expenses",
+      "natural_question": "What was Adobe's operating expenses in fiscal 2023?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:8efd3b1048783b40bd2ffdc37c9b6cc869560fd6b020e90ebabae7af97d6e7af",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:ab464ad7f5e5bcf1c27a18cc57a04780b60bdf9c310b1d59c3da10e379a9cff0",
+        "financial-concept:3c0cef065209fa9b414b9801b44f2bd3de221dc431f9b0a36e123daf46a646ff",
+        "financial-concept:09f23c224f30ded7ce2674a82343d581775576fdabf14beeaa5e21372155d1b1",
+        "financial-concept:36f204125ce117db1f9b4f40e0273bd5e955f3669b17482833872ebc3a965ca1",
+        "financial-concept:aecd9c5eacf99ea5b3dae47f740c93232cada63bc1276430d5c1b5190062dfd3",
+        "financial-concept:03bb53f2ca970219e2714eaf6651f1d7aee6d085aeadfdcacc449d6e8e30fe7e",
+        "financial-concept:c8cc6dec4f697f53d3d9f6c16ad5170851439b5706484f5f226459a7c3785330",
+        "financial-concept:57e2e88059aac39577e827e04b8cac5625ca445002f99b028d206b3415fd5468",
+        "financial-concept:910e2739aa86cbfb5d1e78e07e4ae525ba7e7e7b996a5eeb41896d00968a169f",
+        "financial-concept:41f223a385067bf5f02110d05b36ef86ff5c69400feb68c0fe72dcbf751649c9",
+        "financial-concept:d90400496201d209e04fca4efc313163c4a7268be0d5992c8c15c53b47927587",
+        "financial-concept:9e3cd3825c5ea563df4964a27602d4b4d4958a6cc485519cc4047eb28ade51d0",
+        "financial-concept:9e29a5ef47ee9b1d5d5b1d79a1e9fdbb82d39a457d4b8527423e1d058f13c695"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:3aee6ba6f6173d56fb346ade7496dcff51c3d3c498bc1995d7d183462bd440d0",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Adobe",
+      "metric_phrase": "bottom line profit",
+      "natural_question": "What was Adobe's bottom line profit in fiscal 2023?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:9a9bb715f78757c5eb4eb10c4c2badd8f6f8eef8a0db256a1661c1c2780ea8cc",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:14467ebba29abc5495296985867438609f8817eb3d996bf19826d7e63c7bb41c"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:de3e9f153a119433743f3b29903dc2d96fb41eb5b2939f43af77078b5d55b0a4",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Adobe",
+      "metric_phrase": "deferred income taxes",
+      "natural_question": "What was Adobe's deferred income taxes in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:305793e3366103e91da66d252a3c5dcc3f35f4a81724bca87a1f3409fbe47dfe",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:ab464ad7f5e5bcf1c27a18cc57a04780b60bdf9c310b1d59c3da10e379a9cff0",
+        "financial-concept:3c0cef065209fa9b414b9801b44f2bd3de221dc431f9b0a36e123daf46a646ff",
+        "financial-concept:09f23c224f30ded7ce2674a82343d581775576fdabf14beeaa5e21372155d1b1",
+        "financial-concept:36f204125ce117db1f9b4f40e0273bd5e955f3669b17482833872ebc3a965ca1",
+        "financial-concept:aecd9c5eacf99ea5b3dae47f740c93232cada63bc1276430d5c1b5190062dfd3",
+        "financial-concept:03bb53f2ca970219e2714eaf6651f1d7aee6d085aeadfdcacc449d6e8e30fe7e",
+        "financial-concept:c8cc6dec4f697f53d3d9f6c16ad5170851439b5706484f5f226459a7c3785330",
+        "financial-concept:57e2e88059aac39577e827e04b8cac5625ca445002f99b028d206b3415fd5468",
+        "financial-concept:910e2739aa86cbfb5d1e78e07e4ae525ba7e7e7b996a5eeb41896d00968a169f",
+        "financial-concept:41f223a385067bf5f02110d05b36ef86ff5c69400feb68c0fe72dcbf751649c9",
+        "financial-concept:d90400496201d209e04fca4efc313163c4a7268be0d5992c8c15c53b47927587",
+        "financial-concept:9e3cd3825c5ea563df4964a27602d4b4d4958a6cc485519cc4047eb28ade51d0",
+        "financial-concept:9e29a5ef47ee9b1d5d5b1d79a1e9fdbb82d39a457d4b8527423e1d058f13c695"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:df2374e3a6c54f4a3dc5826f56f1bee3f9f4a6eeacbdc3f67ce84fd69409aef6",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Adobe",
+      "metric_phrase": "bottom line profit",
+      "natural_question": "What was Adobe's bottom line profit in fiscal 2023?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:c4656fad2e6917ecdef3954db98e52adb8ac7cf8df266198200cf825def8e0e6",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:f51be6c4856c13143ca4132cdde18e4977878457ba50ece99b4ae90ae03abab5"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:a5dd952f748139c4e03203ab95f36cf9d20b544886376fe785bcaa1978479a97",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Adobe",
+      "metric_phrase": "profit after direct costs",
+      "natural_question": "What was Adobe's profit after direct costs?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": null,
+      "query_id": "pdf-query-v2:579b152802ad0c462d4d634eafb5c56fdd3a354b03e004abde02985270330088",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:20f0519902f3ee672b694fec5b659383ff939299f80f1f736b1df2dcd9e722fc"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:106cda3f335e1bb63d52e7dea3ba670065d072f696ad63edf981bf35b0c64875",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Adobe",
+      "metric_phrase": "income before income taxes",
+      "natural_question": "What was Adobe's income before income taxes in fiscal 2023?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:5822010c116c7de977c2d00950f087c43960c005efc27fe95d7e26e99801b7d1",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:7c3fa62ec31e464b9b51975597d1391929696b7d5a68e7553d0b0078a68b7236"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:ab27fe2779b7a444aa72515867eb46d02fb74f3f23de617e6392d8e291d1b065",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Adobe",
+      "metric_phrase": "interest income",
+      "natural_question": "What was Adobe's interest income in fiscal 2023?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:172f570563423f62a32144ae05d2062a7cfb7ba4a83a4527f2e4cdb45971fcd8",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:ab464ad7f5e5bcf1c27a18cc57a04780b60bdf9c310b1d59c3da10e379a9cff0",
+        "financial-concept:3c0cef065209fa9b414b9801b44f2bd3de221dc431f9b0a36e123daf46a646ff",
+        "financial-concept:09f23c224f30ded7ce2674a82343d581775576fdabf14beeaa5e21372155d1b1",
+        "financial-concept:36f204125ce117db1f9b4f40e0273bd5e955f3669b17482833872ebc3a965ca1",
+        "financial-concept:aecd9c5eacf99ea5b3dae47f740c93232cada63bc1276430d5c1b5190062dfd3",
+        "financial-concept:03bb53f2ca970219e2714eaf6651f1d7aee6d085aeadfdcacc449d6e8e30fe7e",
+        "financial-concept:c8cc6dec4f697f53d3d9f6c16ad5170851439b5706484f5f226459a7c3785330",
+        "financial-concept:57e2e88059aac39577e827e04b8cac5625ca445002f99b028d206b3415fd5468",
+        "financial-concept:910e2739aa86cbfb5d1e78e07e4ae525ba7e7e7b996a5eeb41896d00968a169f",
+        "financial-concept:41f223a385067bf5f02110d05b36ef86ff5c69400feb68c0fe72dcbf751649c9",
+        "financial-concept:d90400496201d209e04fca4efc313163c4a7268be0d5992c8c15c53b47927587",
+        "financial-concept:9e3cd3825c5ea563df4964a27602d4b4d4958a6cc485519cc4047eb28ade51d0",
+        "financial-concept:9e29a5ef47ee9b1d5d5b1d79a1e9fdbb82d39a457d4b8527423e1d058f13c695"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:6e93a4eadcec4aeabaee85ddd216b0280c436752a5197feafa8a705584c7e408",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Adobe",
+      "metric_phrase": "bottom line profit",
+      "natural_question": "What was Adobe's bottom line profit in fiscal 2023?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:83af6189d1bc381e20baec0b3c164d70574590678a96f186f08372f1bafad2aa",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:c126b347659d3c26aca0cd7cc828f8819ac1d276368071aca29f479b61d058fb"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:1bf250259a73d7a88bd0ee8ef09d8e34d78e5d301406ad7086eb114393e75b15",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Adobe",
+      "metric_phrase": "provision for income taxes",
+      "natural_question": "What was Adobe's provision for income taxes in fiscal 2023?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:d71cde13b44e1160eb7f73b3ae980454a022e54d69b16d46de35245da2629f8c",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:172a9291fc9574d571f70a7a02ad6a43d6c6249ca5bbc1746a975ec7778b3179"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:7e4a188ab1118af3fd457da4cacdabd634539a9d2ec00d526a995cae953fbbf9",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "liabilities",
+      "issuer": "Adobe",
+      "metric_phrase": "accrued liabilities",
+      "natural_question": "What was Adobe's accrued liabilities in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:3e1356b804ccff7386e6e2d0924aebc8d9368c9a032eb76c41c05a3fbd30a44e",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:913a805c8214a285389c085c9ce867127a8776147a92bf11017a4c0bf7c17a7b"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:3734bed6bc61745fae7550242d5291cc0839da298be56a96a38833c6dbd24af3",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "liabilities",
+      "issuer": "Adobe",
+      "metric_phrase": "debt",
+      "natural_question": "What was Adobe's debt in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:59279574b54555cc889b330b0bf2e9f58fccea5725ff634a64e8660518656fb2",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:a6b0d3a38392c598a77bca02e66738d036237cfa19bf9fef4969638dcf0ddc33"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:09787388340f2c11978d9d56bfbc75b7c7d427bb3bf464b8a9dc31ddc9a58693",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "liabilities",
+      "issuer": "Adobe",
+      "metric_phrase": "deferred tax liabilities",
+      "natural_question": "What was Adobe's deferred tax liabilities in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:485113feca50f8f7eeb39bcd7023e11025848cacf34d19ab795709c60e358ca6",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:ca92ae4745b312596cc53bff0928ef8c317ff23a12f2bcb4a80dc1b17edbbb06"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:e5dd4ae795777b1cd260899451d8586e0635e45948ac80340798a640181ceadc",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "liabilities",
+      "issuer": "Adobe",
+      "metric_phrase": "operating lease liabilities",
+      "natural_question": "What was Adobe's operating lease liabilities in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:e99d2fde66b8ec480c982bba5d8c1c9fab57a373dd802ff5c847fdbbc00c9c1e",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:bfdbfb736649e57f1a4d9790cb26b5e57bf628f39888c427c9d43799f2f92a78"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:21d95dbb2527885d0c77d6c93143671790a038af064f7c90d00435f0da463f6e",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "liabilities",
+      "issuer": "Adobe",
+      "metric_phrase": "carrying value of debt",
+      "natural_question": "What was Adobe's carrying value of debt in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:4477330d7efd6aee0cdef3d070e7a0e1991e5e78f0e147f27cddf33678b08e8f",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:dc331c414ee5f821464539303dc3ada50cb0e489f05669660d4bc5f439a988eb"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:421a2db24aaf1603402d9b369ba3a4035cc5539056b5eb9a4a57b82b9326d24c",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Adobe",
+      "metric_phrase": "acquisitions",
+      "natural_question": "What was Adobe's acquisitions?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:28ba71abefb968142730c21dc8c6f8a08b2eca757e958862f98d734e70f11279",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:9984b0e65385dc48d84fd1d0bee9d27476580a43d44a91d85dde53aacfe92797"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:922887728b984d7b0d1b2df7559ad5c95fe97a0ae9f3fba17bc95181242b5724",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Adobe",
+      "metric_phrase": "americas",
+      "natural_question": "What was Adobe's americas in fiscal 2023?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:35c3edd0f579665d65684531f26faa7224b8fb6ca4130657d6c57fc9a8139910",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:d09dd2c9cf1b6ea3f2088ee8096ced3648fb3239d58f8ef56f617513f30f9c7f"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:eb1abec3679661ea214c0bd860ad1886f02efab44201701d6fbc5d2d8adbb25f",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Adobe",
+      "metric_phrase": "depreciation and amortization",
+      "natural_question": "What was Adobe's depreciation and amortization in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:efd67d8f1803f9a9016502a509ed1209bd100d3e2592103fffe2afbd348fab5e",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:dd4525cce34b5b31cb73a0a6b1bd9e9b97f00c82d7e8d4902fc2e494db8c960e"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:6c384ac334475001f00cb17b070a3694e33524ea8bc8176775b4ba2aa71a89c0",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Adobe",
+      "metric_phrase": "general and administrative",
+      "natural_question": "What was Adobe's general and administrative in fiscal 2023?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:80a815014d616d1978b002a7f4a2f19834a3301e762edc26fffcfa078dcbacb3",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:76e8e5014dafec0d61ebc4914a30ec87d986aacc12f958b6dc60b0c105db1b00"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:5196ab508861aa431d8ac8e1c5a38c7d27f09916023df717430c04a35b115c55",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Adobe",
+      "metric_phrase": "goodwill",
+      "natural_question": "What was Adobe's goodwill in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:d4fa1640a8b4ee4250d450403832e0bc958e1a957a5754c940b79543de6471cf",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:a5fd9d0c546f24a4d58d86385c586b5f6dd3ebbf01d1917c6eaeb7242177f9f3"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:08282d6fac3e8d63d8ff6e57796084813a7d561c4bd139d03e78188afdfafd57",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Adobe",
+      "metric_phrase": "less imputed interest",
+      "natural_question": "What was Adobe's less imputed interest in fiscal 2023?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:686136622c2c4ed78efe43c16cd54d6634e74fa62d01efdfd776d0c643001595",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:7e11f2903838419c588af7a02c0d289c040b0620e2e2f8fc82ba38f9c5e19a7c"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:9e12861bbd8e57d07d7bfd3e5e26ed32516237b1b09bcfef4bff72f6282bb32d",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Adobe",
+      "metric_phrase": "other",
+      "natural_question": "What was Adobe's other in fiscal 2023?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:9300be11d005f2ce93775609445b045b92aa662e9c9b38699be3418d5bc6755a",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:d94ab88bcb29457e2310db27f32cfb8aa5a7a54838fd5ee5bb7c5b2b0692cd1f"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:a8d068a86cec7c2b6deca61dfef81293268f515bddd3c8d2cd96811db9da5d2c",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Adobe",
+      "metric_phrase": "property and equipment",
+      "natural_question": "What was Adobe's property and equipment in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:83ce233c22994f0185d31da0a9b1a15c3867a4886742e41414d76f698ee9c3de",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:5d235ff3e65282f6d104f2e73012cf30738d6edd817eb39858b481f8a39eecc8"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:56c2817314096fcb9503780d50e07a3cccceb3a2e2537d644a4f2d5a04a69b77",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Adobe",
+      "metric_phrase": "repurchases of common stock",
+      "natural_question": "What was Adobe's repurchases of common stock in fiscal 2022?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2022",
+      "query_id": "pdf-query-v2:316e15b6abc785e384da6b3cb970eba0d872febbae5414c44d5735f896887d37",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:44164a7eb4c323830de0bf627e326047c31db221749975d71b1b926d7dd9c906"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:473997d7bd3cadd207f6ce2c00b69bac13ea80614c3ac29b01fc12d8c54d4af3",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Adobe",
+      "metric_phrase": "research and development",
+      "natural_question": "What was Adobe's research and development in fiscal 2023?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:cd20dff07c31b57b6f9b59a4c9bf0ac1b86a671525066d3726ee811295ca27d8",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:813d90d3c399eae1b61b1fcad8904d5f9ad3d775f5bdaa8d6c075dcfeb4765ab"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:afcc6bcbc7216a7eb6818f2ee8c393639adb207d7496d7446187e459ca66aedf",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Adobe",
+      "metric_phrase": "stock based compensation",
+      "natural_question": "What was Adobe's stock based compensation in fiscal 2022?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2022",
+      "query_id": "pdf-query-v2:11cf2e8ffaa26bbfc7c27f7f317c836be9cd5973b9ea29989b604406131cf863",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:8de20122822cb5c2e55fca69ed53ba0a6f94d5dc79b94842de545cc37cfa7884"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:9fc2740c5583abb8c5b249e15e4300a546be12875834bf919899f01c2ea1d0f5",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Adobe",
+      "metric_phrase": "thereafter",
+      "natural_question": "What was Adobe's thereafter in fiscal 2023?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:b5f0a94c17835dcd82bf214c676c0963e4fb3184d9bddb885ffda955a366e933",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:4702dbe0448b7d426dbdbe4df684cd8112e519e2d00b0adb70b6dd660a92e7ca"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:c1e9e00de26050246f2ee28c1c8dca8f1f436ac4e53153a8f740a21006f2509c",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Adobe",
+      "metric_phrase": "total",
+      "natural_question": "What was Adobe's total in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:4e7940509a72804ce6eca634e893ac3b86a1a38a2757633fd4dbe3889096914b",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:a1bec01fd4963633dfd752fdc110f97390cd9dcd4f951de88c75754c9462d16b"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:0b9669f45779bba58a5d12d7ec0e51789a9b93783485d50e035bab3567ac55da",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Adobe",
+      "metric_phrase": "u s treasury securities",
+      "natural_question": "What was Adobe's u s treasury securities in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:30b95dc107816a2c4552c1cbc26268348aab69ac631135ba9cab7498511fd741",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:c14ac4c978778c4b6262357279b98bf8b80e5b1479c8ae11100761a1ed141109"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:6b37e4021b4f74e0610b518ed3904fea74f56b3148fa56a11126c9fca8861dca",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "revenue",
+      "issuer": "Adobe",
+      "metric_phrase": "sales and marketing",
+      "natural_question": "What was Adobe's sales and marketing in fiscal 2023?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:db40bf9cca50ef5740c1e781f0b5695fada0e915a247a2c4e7fcff4e7c9c23aa",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:565c9baa6648b834141124be8abce83ae8f69ae47cbda81b886ea54d910e86d2"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:0f886c90b68e3f30fc503bfd7d740f6608f060d09bc935762307ea7682be52b7",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "assets",
+      "issuer": "Adobe",
+      "metric_phrase": "asset backed securities",
+      "natural_question": "What was Adobe's asset backed securities in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:8ed54d6b7450259ecb01f9e0f058115aea3bea5f17186058b07cc6da7aa69358",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:6c12372c6890f37b707a77bd6bc43357662b174240abf5e6d4981d0b1731a66c"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:832d3153206e9dc092612b4c15f6332afa72f0b827898c8135c82f28ca2d2fef",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "assets",
+      "issuer": "Adobe",
+      "metric_phrase": "intangible assets",
+      "natural_question": "What was Adobe's intangible assets in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:a014a478ec587e746ad84afe64a13fa92abf6dd8d0ddcfa0646e4d9064d6c240",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:565c9baa6648b834141124be8abce83ae8f69ae47cbda81b886ea54d910e86d2"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:8e91238d357d54cf6e596c2f169c6cf6410b17cb621d2d8e7067c5b9d5a08b90",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "assets",
+      "issuer": "Salesforce",
+      "metric_phrase": "asset backed securities",
+      "natural_question": "What was Salesforce's asset backed securities?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:f3dd9d64bd275ff35c271e89d6c60f8bdba34fc2abf536f63bf156543f400e61",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:6c12372c6890f37b707a77bd6bc43357662b174240abf5e6d4981d0b1731a66c"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:6e20e446dd698eaedf41efd3eeee81991d3eb11b928ebb8bb5e2067dcb6676c1",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "assets",
+      "issuer": "Salesforce",
+      "metric_phrase": "intangible assets",
+      "natural_question": "What was Salesforce's intangible assets?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:88e2ae48aacc6e8dcdbbaa5106d5c532cdfbd805cf0a19dbaeef41d943e9bd79",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:a55190216de5a6af12caba4896cd11a25a577f1a6967b7f970b5265a1028e368"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:a79efd84a21e40e504d7f9b3e149a9bbeebac1b6219c5d1d95693e3062166cf9",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "assets",
+      "issuer": "Salesforce",
+      "metric_phrase": "assets",
+      "natural_question": "What was Salesforce's assets?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:3c36f5a1a7801d08d0f7f5c64a5ed73341917302ee098a73f9d2e19a3bed3b59",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:bb72111879f539e7a79612fedb149656a32aecad271a09ac77c0b1c06a86b4d8"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:c72cfbc4a219be530b862f24c481b1581f49df81ac62fe6843a33560130e2d6a",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Salesforce",
+      "metric_phrase": "cash",
+      "natural_question": "What was Salesforce's cash?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:0823a965b018042b644146747aac70b09df2b188241f1fbcd4688bfb33868e5d",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:1daf2a9ff580bd520551021273db1b397fe9b257bbdc1dcc09c9900032c7bf43"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:a3c2856e58df5074469dd15d792e304c0867532f76e8544caf15e004bee439e7",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Salesforce",
+      "metric_phrase": "cash and cash equivalents",
+      "natural_question": "What was Salesforce's cash and cash equivalents?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:3089d2fc4b15746714068fe479812cf1ef86776361eeb4f216dae3d3bc20677d",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:6a48820e09114f08bb22b39d078d4cde6575029d1fb7fde811521fda69fb1762"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:e28476b41a6ef0a04b1d07b252411e1316afff49915652698aa05d16e05fac23",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Salesforce",
+      "metric_phrase": "cash dividends declared",
+      "natural_question": "What was Salesforce's cash dividends declared?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:a3ce54fe31f005f24413c4fe2eb8c8486bcc98a48aa7557945941ac86f798fb3",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:347bbb0e6abe8d70ddd373c0f99760063ae99bc3d70b9d54435b62b77d15aa46",
+        "financial-concept:2cfbab3955ddc3604563d38f2457df966ad64329b90ed8908f64a9201c9425d7"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:7fc49ce6d3ef4136585cb6d0af848db307d4859cf2365b4610fb16c879e79d71",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Salesforce",
+      "metric_phrase": "cash generated by normal operations",
+      "natural_question": "What was Salesforce's cash generated by normal operations in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:422c0491fb933fe98234bccf1f3022e123ae24045e4713ff112e0882fc641f66",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:a6801b51977f603fdfa7767e971776d9b66980dac812fcc191ce4f600c056b05"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:46cfbe741213b2c5d4a5369b2205bdd89ec34fda3609fcd5a0515b6c6c868be7",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Salesforce",
+      "metric_phrase": "cash flow from financing",
+      "natural_question": "What was Salesforce's cash flow from financing in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:2d9405e033a79c7fd678b457eccd4b5ac88365f8e4d530e5b58ae64e340f0fd1",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:c93eaac9d90fb51af5c4f02a14b6fa0a7c0e11743ed8efd76daf810278aadcfd"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:070da3eb8f61e97b182ce0f2fbb7b0c764f7c4c0d8d4c7e785145064bc4136e0",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Salesforce",
+      "metric_phrase": "cash flow from investing",
+      "natural_question": "What was Salesforce's cash flow from investing in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:703dc8a3459f3593206335c8a110dbd340aa51e554b572ac4d4aba529707b5c7",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:57e9e7f918bebe550ad4a351294a315b9fdaee060940756329a901d198f070d2"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:0b4ddee419c9127ddc06453ef795afd0f152551536186904f1c5f100e483c351",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Salesforce",
+      "metric_phrase": "operating lease right of use assets",
+      "natural_question": "What was Salesforce's operating lease right of use assets?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:4949b0913897ab2e0f437b32baed0b93502a87938434ba02f0a8112b33d9da47",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:150648d2fd60625dac55dc35f5fedc4bcfd22643a4f6e4d94b05a4b8e5d1d650"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:2b71faf99166da6d046373c36ccf388adb6276ca695fdca2419e1f9ec0c49787",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "expenses",
+      "issuer": "Salesforce",
+      "metric_phrase": "operating expenses",
+      "natural_question": "What was Salesforce's operating expenses in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:d6d94a321ee2da2049f8bff6fcf6600c70b7fe05dd18fcc7e008fd88fb2fb7bc",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:ab464ad7f5e5bcf1c27a18cc57a04780b60bdf9c310b1d59c3da10e379a9cff0",
+        "financial-concept:3c0cef065209fa9b414b9801b44f2bd3de221dc431f9b0a36e123daf46a646ff",
+        "financial-concept:09f23c224f30ded7ce2674a82343d581775576fdabf14beeaa5e21372155d1b1",
+        "financial-concept:36f204125ce117db1f9b4f40e0273bd5e955f3669b17482833872ebc3a965ca1",
+        "financial-concept:aecd9c5eacf99ea5b3dae47f740c93232cada63bc1276430d5c1b5190062dfd3",
+        "financial-concept:03bb53f2ca970219e2714eaf6651f1d7aee6d085aeadfdcacc449d6e8e30fe7e",
+        "financial-concept:c8cc6dec4f697f53d3d9f6c16ad5170851439b5706484f5f226459a7c3785330",
+        "financial-concept:57e2e88059aac39577e827e04b8cac5625ca445002f99b028d206b3415fd5468",
+        "financial-concept:910e2739aa86cbfb5d1e78e07e4ae525ba7e7e7b996a5eeb41896d00968a169f",
+        "financial-concept:41f223a385067bf5f02110d05b36ef86ff5c69400feb68c0fe72dcbf751649c9",
+        "financial-concept:d90400496201d209e04fca4efc313163c4a7268be0d5992c8c15c53b47927587",
+        "financial-concept:9e3cd3825c5ea563df4964a27602d4b4d4958a6cc485519cc4047eb28ade51d0",
+        "financial-concept:9e29a5ef47ee9b1d5d5b1d79a1e9fdbb82d39a457d4b8527423e1d058f13c695"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:f57d0ea13a42f7160a5294527c6a3537d0077ca0abc002929c40bf66a25e14cb",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Salesforce",
+      "metric_phrase": "bottom line profit",
+      "natural_question": "What was Salesforce's bottom line profit in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:cfd940596b439c012e01ad387532907f949609e1238f06280ce87ac3867459e5",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:ab464ad7f5e5bcf1c27a18cc57a04780b60bdf9c310b1d59c3da10e379a9cff0",
+        "financial-concept:3c0cef065209fa9b414b9801b44f2bd3de221dc431f9b0a36e123daf46a646ff",
+        "financial-concept:09f23c224f30ded7ce2674a82343d581775576fdabf14beeaa5e21372155d1b1",
+        "financial-concept:36f204125ce117db1f9b4f40e0273bd5e955f3669b17482833872ebc3a965ca1",
+        "financial-concept:aecd9c5eacf99ea5b3dae47f740c93232cada63bc1276430d5c1b5190062dfd3",
+        "financial-concept:03bb53f2ca970219e2714eaf6651f1d7aee6d085aeadfdcacc449d6e8e30fe7e",
+        "financial-concept:c8cc6dec4f697f53d3d9f6c16ad5170851439b5706484f5f226459a7c3785330",
+        "financial-concept:57e2e88059aac39577e827e04b8cac5625ca445002f99b028d206b3415fd5468",
+        "financial-concept:910e2739aa86cbfb5d1e78e07e4ae525ba7e7e7b996a5eeb41896d00968a169f",
+        "financial-concept:41f223a385067bf5f02110d05b36ef86ff5c69400feb68c0fe72dcbf751649c9",
+        "financial-concept:d90400496201d209e04fca4efc313163c4a7268be0d5992c8c15c53b47927587",
+        "financial-concept:9e3cd3825c5ea563df4964a27602d4b4d4958a6cc485519cc4047eb28ade51d0",
+        "financial-concept:9e29a5ef47ee9b1d5d5b1d79a1e9fdbb82d39a457d4b8527423e1d058f13c695"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:c5cda581a84f56ca0911ceee30237780dcf9ab496467d7418febfecf53bcb8e9",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Salesforce",
+      "metric_phrase": "bottom line profit",
+      "natural_question": "What was Salesforce's bottom line profit in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:1e0252b2a812583ad7d2e0eb82b21f0e01dac9868a3d9d3c5c1ceb48a3510ea1",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:f51be6c4856c13143ca4132cdde18e4977878457ba50ece99b4ae90ae03abab5"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:fd2db4f7d28cf2fe8f70b869491be15b0c2fa7798157ae52588f0e5ac6b0a2a2",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Salesforce",
+      "metric_phrase": "profit after direct costs",
+      "natural_question": "What was Salesforce's profit after direct costs in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:d02c21118ff2ecae043c174786d84ced2e8a37f3533318d675e410f3229100a5",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:ab464ad7f5e5bcf1c27a18cc57a04780b60bdf9c310b1d59c3da10e379a9cff0",
+        "financial-concept:3c0cef065209fa9b414b9801b44f2bd3de221dc431f9b0a36e123daf46a646ff",
+        "financial-concept:09f23c224f30ded7ce2674a82343d581775576fdabf14beeaa5e21372155d1b1",
+        "financial-concept:36f204125ce117db1f9b4f40e0273bd5e955f3669b17482833872ebc3a965ca1",
+        "financial-concept:aecd9c5eacf99ea5b3dae47f740c93232cada63bc1276430d5c1b5190062dfd3",
+        "financial-concept:03bb53f2ca970219e2714eaf6651f1d7aee6d085aeadfdcacc449d6e8e30fe7e",
+        "financial-concept:c8cc6dec4f697f53d3d9f6c16ad5170851439b5706484f5f226459a7c3785330",
+        "financial-concept:57e2e88059aac39577e827e04b8cac5625ca445002f99b028d206b3415fd5468",
+        "financial-concept:910e2739aa86cbfb5d1e78e07e4ae525ba7e7e7b996a5eeb41896d00968a169f",
+        "financial-concept:41f223a385067bf5f02110d05b36ef86ff5c69400feb68c0fe72dcbf751649c9",
+        "financial-concept:d90400496201d209e04fca4efc313163c4a7268be0d5992c8c15c53b47927587",
+        "financial-concept:9e3cd3825c5ea563df4964a27602d4b4d4958a6cc485519cc4047eb28ade51d0",
+        "financial-concept:9e29a5ef47ee9b1d5d5b1d79a1e9fdbb82d39a457d4b8527423e1d058f13c695"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:6e15fab8fd18df2efdc06345c12ba14a7036b3d60b23139d4cb05f86546d6939",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Salesforce",
+      "metric_phrase": "bottom line profit",
+      "natural_question": "What was Salesforce's bottom line profit in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:dcced7fcc0e0c60c3c37267e1fba584d93041471c7f5f2f8d1b131b67de40c5f",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:c126b347659d3c26aca0cd7cc828f8819ac1d276368071aca29f479b61d058fb"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:45af40fe702c5acd58aa24311e645b7b280f81151ab729c0779667d2c18211bf",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Salesforce",
+      "metric_phrase": "provision for income taxes",
+      "natural_question": "What was Salesforce's provision for income taxes in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:494ab6c08db5809819bc473ef88bb58dbfd207a30e7804237df111d152ca1cc7",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:ca92ae4745b312596cc53bff0928ef8c317ff23a12f2bcb4a80dc1b17edbbb06"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:05249165568fdffcc42473a23e98c3089a1783de02445044b03fc04b6458a0da",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "liabilities",
+      "issuer": "Salesforce",
+      "metric_phrase": "operating lease liabilities",
+      "natural_question": "What was Salesforce's operating lease liabilities in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:3d64bcf913363df5502a219ea215ef19db176a7f27f1118acd94060d3c703ee9",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:bfdbfb736649e57f1a4d9790cb26b5e57bf628f39888c427c9d43799f2f92a78"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:3e7d5141177e0359408130b0debd0092f1bd5a200ae91892a0ac6a353ddf6e84",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "liabilities",
+      "issuer": "Salesforce",
+      "metric_phrase": "carrying value of debt",
+      "natural_question": "What was Salesforce's carrying value of debt in fiscal 2025?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2025",
+      "query_id": "pdf-query-v2:7d577137002bf912ce4df776d6fdfc2764440f4aa378a06be4d9a8cfc65758ca",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:9984b0e65385dc48d84fd1d0bee9d27476580a43d44a91d85dde53aacfe92797"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:1d84970da39b85f881733b1ee609eb6b0e78d23f67c041aa103e400fa8f2ea4a",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Salesforce",
+      "metric_phrase": "americas",
+      "natural_question": "What was Salesforce's americas in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:7712f7ebca07f80619887e70c8cd166cb95d283827303267bd0ebd6dcaf1c0ee",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:d09dd2c9cf1b6ea3f2088ee8096ced3648fb3239d58f8ef56f617513f30f9c7f"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:fcb707aa4c77b7c9423bed03df4a266fb0cfeb29db93ba660d3974fed12f5d0c",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Salesforce",
+      "metric_phrase": "depreciation and amortization",
+      "natural_question": "What was Salesforce's depreciation and amortization in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:7ff27a4451192f552c325ee2bed3587ae78da6e92b59b453e6f5219e7ca44388",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:dd4525cce34b5b31cb73a0a6b1bd9e9b97f00c82d7e8d4902fc2e494db8c960e"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:b79ea65845a32d7ddc3ed3b817d8c44b03f286431d25ffe1fcb9bf1d0d7feeb3",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Salesforce",
+      "metric_phrase": "general and administrative",
+      "natural_question": "What was Salesforce's general and administrative in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:9842d5370d38953b2739e48c4cad395c96859a2a493f2ca4ee449708a27aa571",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:76e8e5014dafec0d61ebc4914a30ec87d986aacc12f958b6dc60b0c105db1b00"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:353180ebaf9dbc0937ede57bc6e2d9c32fb2acf3b738a2ca6638e45aa63c0f24",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Salesforce",
+      "metric_phrase": "goodwill",
+      "natural_question": "What was Salesforce's goodwill?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:039764991e56f6f9abdd5a273d42f387a3c4d702dd16b210ed931cd77da347fb",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:0d18070da93e87c7c2aa4f2297e97324695dc269704d6bcc908cc6b365a6239e"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:b22cc37327c8b71e076bd934db5b1001e2ef1326e8cce71a11d4e18bf94d4e63",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Salesforce",
+      "metric_phrase": "interest",
+      "natural_question": "What was Salesforce's interest in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:ba27f581657a969c5d4df9b1db46e71d04e9d36edca2721b1a826202e9b7ceff",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:a5fd9d0c546f24a4d58d86385c586b5f6dd3ebbf01d1917c6eaeb7242177f9f3"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:4197ef1f094ab6af6cbcc1fdd892f03fa9aff972cb12696c2ce05a27f3f84b9a",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Salesforce",
+      "metric_phrase": "less imputed interest",
+      "natural_question": "What was Salesforce's less imputed interest in fiscal 2025?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2025",
+      "query_id": "pdf-query-v2:8b5358434c82df16de1b06e56a5ce5e5bbfe2935b50ee5b1e6f4b04b5b445cf8",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:7e11f2903838419c588af7a02c0d289c040b0620e2e2f8fc82ba38f9c5e19a7c"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:752721af7e6f610961810fa0cb71d0a79643b45669c5f7210e2e70fc6332d2c6",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Salesforce",
+      "metric_phrase": "other",
+      "natural_question": "What was Salesforce's other?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:59266f588aa388d6d7369db44508c4de5fec7ba318e2cd90a8fdaf60496e52af",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:5d235ff3e65282f6d104f2e73012cf30738d6edd817eb39858b481f8a39eecc8"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:828e928ab42aa32ca0d05408a2f114f11b6fc36757bd0c40b51a622b25cdfa27",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Salesforce",
+      "metric_phrase": "repurchases of common stock",
+      "natural_question": "What was Salesforce's repurchases of common stock in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:2ccfda9c0cf8cdb01cfabc482815604b1f2f5ac6fe236ad5198b1b56eb97bc53",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:44164a7eb4c323830de0bf627e326047c31db221749975d71b1b926d7dd9c906"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:40f71e49d527382aff685053810b0e405941c81d57278d851fa60d4a88c6b92b",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Salesforce",
+      "metric_phrase": "research and development",
+      "natural_question": "What was Salesforce's research and development in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:0c5bbb4b115af60965d0fd01670151eee13bd62cb5dc8828250da16dc72681b7",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:813d90d3c399eae1b61b1fcad8904d5f9ad3d775f5bdaa8d6c075dcfeb4765ab"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:427dc3f0f59fe4e1cf6a3bebe5e36b91c3bad8fe1d640a9fd5d7b7d18895af39",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Salesforce",
+      "metric_phrase": "stock based compensation",
+      "natural_question": "What was Salesforce's stock based compensation?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:1d245b690b21d78435ad453a301b4dbd8d1516430db0ed2ef6783be5373baca5",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:8de20122822cb5c2e55fca69ed53ba0a6f94d5dc79b94842de545cc37cfa7884"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:1fb566ce23299913ab9f6dda95bb70de1ff4e6c35e69c54920ba5244fd3aba0c",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Salesforce",
+      "metric_phrase": "thereafter",
+      "natural_question": "What was Salesforce's thereafter in fiscal 2025?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2025",
+      "query_id": "pdf-query-v2:f84d3e0d86fe303599cfb63d2ff9155e9837a02504da7d24939696f9994b9548",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:4702dbe0448b7d426dbdbe4df684cd8112e519e2d00b0adb70b6dd660a92e7ca"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:ff84853af5cc3879468f8977c30bdd7df544f4530bb2d9cf79ab150cb39728dc",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Salesforce",
+      "metric_phrase": "total",
+      "natural_question": "What was Salesforce's total in fiscal 2025?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2025",
+      "query_id": "pdf-query-v2:62c2c07a4f4fcae9e945c3307fa101fe9d0e3f7b887eef924efd4c72d6b4ee38",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:a1bec01fd4963633dfd752fdc110f97390cd9dcd4f951de88c75754c9462d16b"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:674b844c58e1831b7dc97b9addb24a72253b9417fb8c9527b3e01e4aec90deef",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Salesforce",
+      "metric_phrase": "u s treasury securities",
+      "natural_question": "What was Salesforce's u s treasury securities?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:0b66d99862147a9c83ad0ae6891c1817895073910b254e1b6039ca4f201544d3",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:c14ac4c978778c4b6262357279b98bf8b80e5b1479c8ae11100761a1ed141109"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:8e73b204353b0bb763683c6ea52a9469ba43da705a39eabbafb3d7b56fbf41d0",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "revenue",
+      "issuer": "Salesforce",
+      "metric_phrase": "sales and marketing",
+      "natural_question": "What was Salesforce's sales and marketing in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:f3573430072f6eab758e6b137855af534564ec122dea2036d5e6641f48e7885f",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:a2b494afa9d43c0ef1987a0ac3c3720ec135b852b29064318015b81a18c82fa3",
+        "financial-concept:2f56db10ca67af026d5a92d6313c83b7a307f29b4877869cc00da158da5aaeca",
+        "financial-concept:eee16f2ad96ca104a327d4a926d19f09f129564ef05832f6296c8e1381e443dd"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:e974f1e093c8c4b1695a562e5fff6de44af28f372c297122eea1af68f40c1cb1",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "revenue",
+      "issuer": "Salesforce",
+      "metric_phrase": "company revenue",
+      "natural_question": "What was Salesforce's company revenue in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:debcef7cb265d502b6d9d364f83fb2d8b5b8a4eb20dc6e1a9ba7afa0b5997c9b",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:565c9baa6648b834141124be8abce83ae8f69ae47cbda81b886ea54d910e86d2"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:8e91238d357d54cf6e596c2f169c6cf6410b17cb621d2d8e7067c5b9d5a08b90",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "assets",
+      "issuer": "Salesforce",
+      "metric_phrase": "asset backed securities",
+      "natural_question": "What was Salesforce's asset backed securities?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:7939a8620edab373c702a2e3e2991a6a78883cadaa658746ccb0c068976ce051",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:6c12372c6890f37b707a77bd6bc43357662b174240abf5e6d4981d0b1731a66c"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:6e20e446dd698eaedf41efd3eeee81991d3eb11b928ebb8bb5e2067dcb6676c1",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "assets",
+      "issuer": "Salesforce",
+      "metric_phrase": "intangible assets",
+      "natural_question": "What was Salesforce's intangible assets?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:e7a438f5ddc1b5f28d3a9dc275650dc9a5ec24395c46b455a77ec859f2bfede9",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:a55190216de5a6af12caba4896cd11a25a577f1a6967b7f970b5265a1028e368"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:a79efd84a21e40e504d7f9b3e149a9bbeebac1b6219c5d1d95693e3062166cf9",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "assets",
+      "issuer": "Salesforce",
+      "metric_phrase": "assets",
+      "natural_question": "What was Salesforce's assets?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:0589b59ac2469896b9eabd3d6a5acaf7557b4d59158ab68bda6e796e24f1e528",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:bb72111879f539e7a79612fedb149656a32aecad271a09ac77c0b1c06a86b4d8"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:c72cfbc4a219be530b862f24c481b1581f49df81ac62fe6843a33560130e2d6a",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Salesforce",
+      "metric_phrase": "cash",
+      "natural_question": "What was Salesforce's cash?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:813990c3546069105b7cdce54f99e491146d07366c7595f93c2db6a160588ed5",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:1daf2a9ff580bd520551021273db1b397fe9b257bbdc1dcc09c9900032c7bf43"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:a3c2856e58df5074469dd15d792e304c0867532f76e8544caf15e004bee439e7",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Salesforce",
+      "metric_phrase": "cash and cash equivalents",
+      "natural_question": "What was Salesforce's cash and cash equivalents?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:3c0329f28e5f0fd26cbb949e913a3772e2cd882d5eabaef4366f4fa61efa7168",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:6a48820e09114f08bb22b39d078d4cde6575029d1fb7fde811521fda69fb1762"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:e28476b41a6ef0a04b1d07b252411e1316afff49915652698aa05d16e05fac23",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Salesforce",
+      "metric_phrase": "cash dividends declared",
+      "natural_question": "What was Salesforce's cash dividends declared?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": null,
+      "query_id": "pdf-query-v2:9462f27114801b4aa8fa07f31a33126ccc8386bc9fddd0e7913f4bdb0249cffc",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:347bbb0e6abe8d70ddd373c0f99760063ae99bc3d70b9d54435b62b77d15aa46",
+        "financial-concept:2cfbab3955ddc3604563d38f2457df966ad64329b90ed8908f64a9201c9425d7"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:7fc49ce6d3ef4136585cb6d0af848db307d4859cf2365b4610fb16c879e79d71",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Salesforce",
+      "metric_phrase": "cash generated by normal operations",
+      "natural_question": "What was Salesforce's cash generated by normal operations in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:4f6301aa74215f09d0634555c0e662a40f1195a5d7d43cf384855bfdf87b2c5b",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:14556fd5b0db705506ad4a06365e3b16f7a14cafb3c3ab9fe08303791bd06ad7"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:ad11770b56010b56781c683f171e2f5001f0287a2fb4f4ce69fed73568d3f74f",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "assets",
+      "issuer": "Walmart",
+      "metric_phrase": "deferred tax assets",
+      "natural_question": "What was Walmart's deferred tax assets in fiscal 2025?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2025",
+      "query_id": "pdf-query-v2:7d98f2fd203909c13f24c83081d24221305a5777ffe00ab94b84e975bfd0fff3",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:6a48820e09114f08bb22b39d078d4cde6575029d1fb7fde811521fda69fb1762"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:e1566a78b0aac162242e535f294631fd6b8a2b0af4fc2c40d9318e33277c9f31",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Walmart",
+      "metric_phrase": "cash dividends declared",
+      "natural_question": "What was Walmart's cash dividends declared in fiscal 2023?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:179bb473e3d10894f37b13ee20e04f4fdeb3915afa2d8d73960010d55a0a7cce",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:347bbb0e6abe8d70ddd373c0f99760063ae99bc3d70b9d54435b62b77d15aa46",
+        "financial-concept:2cfbab3955ddc3604563d38f2457df966ad64329b90ed8908f64a9201c9425d7"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:899aca655b26b7913971ed937b6239f3fe56e67a876d7346f7bc604eeb9054b0",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Walmart",
+      "metric_phrase": "cash generated by normal operations",
+      "natural_question": "What was Walmart's cash generated by normal operations in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:fc948ff4d89f18d2ce3bc1cd571d773370dc6d13abe78b42c9953e782898b401",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:a6801b51977f603fdfa7767e971776d9b66980dac812fcc191ce4f600c056b05"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:106e270e04363ac77d3696e965a554e7f3b3514a42ca6d72538a6971310627f3",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Walmart",
+      "metric_phrase": "cash flow from financing",
+      "natural_question": "What was Walmart's cash flow from financing in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:0c4c607ed7a42cc6d0a2a14838b40d540dff400d0f4016349127c59db18411f8",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:c93eaac9d90fb51af5c4f02a14b6fa0a7c0e11743ed8efd76daf810278aadcfd"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:5adf70abff0868d7687fd660abc88f5c3b403ac4d290b064336c92f726c3fef9",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Walmart",
+      "metric_phrase": "cash flow from investing",
+      "natural_question": "What was Walmart's cash flow from investing in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:90f10f0c934e15859b9f44cdb2e7da6ee3e0aec0249f5b7d1a0fce5149990a32",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:42544162cd7151c2f8ab90537d5d42292378c552c020651cde769c77792b61ab"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:3cdc43fb2db541c416e86a0cd795f237932d3b35ab738403d1d3d22cd7b1a239",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Walmart",
+      "metric_phrase": "investing activities",
+      "natural_question": "What was Walmart's investing activities in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:8c7aaffc409834230e743b0485ffddd30b393eb23f58c211ff4703b31fa85ae9",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:14467ebba29abc5495296985867438609f8817eb3d996bf19826d7e63c7bb41c"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:4ea7b50dc45a04cf29c55ebf8f7705df5886e794ee3391f13da8bb89629e6692",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Walmart",
+      "metric_phrase": "deferred income taxes",
+      "natural_question": "What was Walmart's deferred income taxes in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:70dd62c82553a808ba89e80a5f7d3d75d7f1b173c9f8f58105cbbe1b66de5f03",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:20f0519902f3ee672b694fec5b659383ff939299f80f1f736b1df2dcd9e722fc"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:6fb533afd443b249ed9bb00939f9829148aa2597fa61dd9c602af2e0cad18617",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Walmart",
+      "metric_phrase": "income before income taxes",
+      "natural_question": "What was Walmart's income before income taxes in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:3789201697914a7ef0489aabd2ed33e2cc1c4b77fe63bf4d4b7018416fc376c9",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:7c3fa62ec31e464b9b51975597d1391929696b7d5a68e7553d0b0078a68b7236"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:aa972d410195fe6421ef3ea71e27196beeab95963d3374c76a957e8a164132e4",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Walmart",
+      "metric_phrase": "interest income",
+      "natural_question": "What was Walmart's interest income in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:0439c2391bd8531626dbd734199655c516cb87e0a36f5af467662c77c9844d3a",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:ab464ad7f5e5bcf1c27a18cc57a04780b60bdf9c310b1d59c3da10e379a9cff0",
+        "financial-concept:3c0cef065209fa9b414b9801b44f2bd3de221dc431f9b0a36e123daf46a646ff",
+        "financial-concept:09f23c224f30ded7ce2674a82343d581775576fdabf14beeaa5e21372155d1b1",
+        "financial-concept:36f204125ce117db1f9b4f40e0273bd5e955f3669b17482833872ebc3a965ca1",
+        "financial-concept:aecd9c5eacf99ea5b3dae47f740c93232cada63bc1276430d5c1b5190062dfd3",
+        "financial-concept:03bb53f2ca970219e2714eaf6651f1d7aee6d085aeadfdcacc449d6e8e30fe7e",
+        "financial-concept:c8cc6dec4f697f53d3d9f6c16ad5170851439b5706484f5f226459a7c3785330",
+        "financial-concept:57e2e88059aac39577e827e04b8cac5625ca445002f99b028d206b3415fd5468",
+        "financial-concept:910e2739aa86cbfb5d1e78e07e4ae525ba7e7e7b996a5eeb41896d00968a169f",
+        "financial-concept:41f223a385067bf5f02110d05b36ef86ff5c69400feb68c0fe72dcbf751649c9",
+        "financial-concept:d90400496201d209e04fca4efc313163c4a7268be0d5992c8c15c53b47927587",
+        "financial-concept:9e3cd3825c5ea563df4964a27602d4b4d4958a6cc485519cc4047eb28ade51d0",
+        "financial-concept:9e29a5ef47ee9b1d5d5b1d79a1e9fdbb82d39a457d4b8527423e1d058f13c695"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:bb903b8fcffea763cd406758ea308d3dfbc145b07e7b21369cd8256d674ece22",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Walmart",
+      "metric_phrase": "bottom line profit",
+      "natural_question": "What was Walmart's bottom line profit in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:a9d6f52cc2f9a9dd0af262e0bbf03752951daf9e66fde7e1cdceb34b91a6ed71",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:c126b347659d3c26aca0cd7cc828f8819ac1d276368071aca29f479b61d058fb"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:98d634c3b88167f048bb36d52a91a8a2f374f8c86178680450c1c64a28d8a928",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Walmart",
+      "metric_phrase": "provision for income taxes",
+      "natural_question": "What was Walmart's provision for income taxes in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:dfc1b5aff4cdaeb477c28cd19a5500af86631b85f212d02061a4854169d0cc5a",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:172a9291fc9574d571f70a7a02ad6a43d6c6249ca5bbc1746a975ec7778b3179"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:398a43f16cc4f77d68a4c41f25791b27ef5eeb4f87b7ead0f6c11a87f6afbf6c",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "liabilities",
+      "issuer": "Walmart",
+      "metric_phrase": "accrued liabilities",
+      "natural_question": "What was Walmart's accrued liabilities in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:ac30d12fcbf5f8e07b7626bffd390a48afc01ab183111a10ea63ae17bedd7935",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:913a805c8214a285389c085c9ce867127a8776147a92bf11017a4c0bf7c17a7b"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:bfeab8608dca8d878e990b9beee35dbb7964117bc7eb1f5a73c453a1d97bebc8",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "liabilities",
+      "issuer": "Walmart",
+      "metric_phrase": "debt",
+      "natural_question": "What was Walmart's debt in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:f74677a045513c8e4d213edb6fe1eaaefa4ba8035b04258128e2153f95b207c3",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:a6b0d3a38392c598a77bca02e66738d036237cfa19bf9fef4969638dcf0ddc33"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:80109ec5dfea8eb653c2046fb19466b235c18b2eabfa33d86ad0d9ee3d9660e9",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "liabilities",
+      "issuer": "Walmart",
+      "metric_phrase": "deferred tax liabilities",
+      "natural_question": "What was Walmart's deferred tax liabilities in fiscal 2025?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2025",
+      "query_id": "pdf-query-v2:eb1dd94b839bf5d2874ae90268d97eeae3f5e7ed1d96516df0057f0336a3f578",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:dc331c414ee5f821464539303dc3ada50cb0e489f05669660d4bc5f439a988eb"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:37e84b20cd7d770507d2f44b85dcf60a7603434638a6dc64a3b7e7e5f127233a",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Walmart",
+      "metric_phrase": "acquisitions",
+      "natural_question": "What was Walmart's acquisitions in fiscal 2026?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2026",
+      "query_id": "pdf-query-v2:fa839eda1a980ec6976df2b6f82d52fbe090b171af313bda6842527a59c17e92",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:d09dd2c9cf1b6ea3f2088ee8096ced3648fb3239d58f8ef56f617513f30f9c7f"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:cf2015de4fc8f42f44588ea7533bc7235d010a7539204eb7882805475390bdfb",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Walmart",
+      "metric_phrase": "depreciation and amortization",
+      "natural_question": "What was Walmart's depreciation and amortization in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:365cb985d69c8e890adbdf9ffe9b52b2100dbeb1f8fb634537a73528bc650d36",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:0d18070da93e87c7c2aa4f2297e97324695dc269704d6bcc908cc6b365a6239e"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:3376e7156ff4e0172cfa18aad1cf0541940f86384d547d0a36be6f1afb969cc4",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Walmart",
+      "metric_phrase": "interest",
+      "natural_question": "What was Walmart's interest in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:e07d1d56d77c297a0de7032c04e7cb622e4c7cdbf118b61ae79b41b72f64f58c",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:7e11f2903838419c588af7a02c0d289c040b0620e2e2f8fc82ba38f9c5e19a7c"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:43f279fdcf8127c8333635ca1ef4ee9c8cebe5bfe215049d5d0a3fae3fa778b9",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Walmart",
+      "metric_phrase": "other",
+      "natural_question": "What was Walmart's other in fiscal 2023?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:74424d59abba47598557e33929e4002735b688429b9bf04c061e88e997c93660",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:d94ab88bcb29457e2310db27f32cfb8aa5a7a54838fd5ee5bb7c5b2b0692cd1f"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:ef0606eb3e312eb53b4fe01fce4bf02172d9565749f5b8625334c2b2cba4a540",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Walmart",
+      "metric_phrase": "property and equipment",
+      "natural_question": "What was Walmart's property and equipment in fiscal 2025?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2025",
+      "query_id": "pdf-query-v2:d6f2a9e71ec82de328b534376396e6d15ee9716f269609f3119cf79237a5729a",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:8de20122822cb5c2e55fca69ed53ba0a6f94d5dc79b94842de545cc37cfa7884"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:da6e5c27bfa37255d8ca3c6e2c31633e6de71ef0050a512aa8c8f113b24f61b9",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Walmart",
+      "metric_phrase": "thereafter",
+      "natural_question": "What was Walmart's thereafter in fiscal 2026?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2026",
+      "query_id": "pdf-query-v2:aa2fe13901782e2cb545357819a8a96d529e67f5a61f7f67314bcc9d098de81d",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:4702dbe0448b7d426dbdbe4df684cd8112e519e2d00b0adb70b6dd660a92e7ca"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:8210c80a6f9b5733aa3169b8e63112d70da4a9495148b4cac826afeb763551ff",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Walmart",
+      "metric_phrase": "total",
+      "natural_question": "What was Walmart's total in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:3bde893bdddab8ffe32164d5d5314e183c05ebe9b7af79209524125d22cac5ed",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:a2b494afa9d43c0ef1987a0ac3c3720ec135b852b29064318015b81a18c82fa3",
+        "financial-concept:2f56db10ca67af026d5a92d6313c83b7a307f29b4877869cc00da158da5aaeca",
+        "financial-concept:eee16f2ad96ca104a327d4a926d19f09f129564ef05832f6296c8e1381e443dd"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:fe37d193f6bc46e0903a81c788f79e2f2225cf79aa1efc366b4b48d85fac9491",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "revenue",
+      "issuer": "Walmart",
+      "metric_phrase": "company revenue",
+      "natural_question": "What was Walmart's company revenue in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:036534d357a86e5872d5ff97671e923cd64c49b1983eb0feac32edd34355207d",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:14556fd5b0db705506ad4a06365e3b16f7a14cafb3c3ab9fe08303791bd06ad7"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:ad11770b56010b56781c683f171e2f5001f0287a2fb4f4ce69fed73568d3f74f",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "assets",
+      "issuer": "Walmart",
+      "metric_phrase": "deferred tax assets",
+      "natural_question": "What was Walmart's deferred tax assets in fiscal 2025?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2025",
+      "query_id": "pdf-query-v2:10d72b7634f2581887a32213ef9e961a89a59b4e02e3e67c75509aedca226bf8",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:6a48820e09114f08bb22b39d078d4cde6575029d1fb7fde811521fda69fb1762"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:e1566a78b0aac162242e535f294631fd6b8a2b0af4fc2c40d9318e33277c9f31",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Walmart",
+      "metric_phrase": "cash dividends declared",
+      "natural_question": "What was Walmart's cash dividends declared in fiscal 2023?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:57468abbd26d0147a35f5e9147d6e5d84b589ec837a4f864ea22ba92f91e74c9",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:347bbb0e6abe8d70ddd373c0f99760063ae99bc3d70b9d54435b62b77d15aa46",
+        "financial-concept:2cfbab3955ddc3604563d38f2457df966ad64329b90ed8908f64a9201c9425d7"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:899aca655b26b7913971ed937b6239f3fe56e67a876d7346f7bc604eeb9054b0",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Walmart",
+      "metric_phrase": "cash generated by normal operations",
+      "natural_question": "What was Walmart's cash generated by normal operations in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:5dcc9136aa4e108320296ed1e2b8fe14fb4b77393ad7ffd0da8e08735764ce14",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:a6801b51977f603fdfa7767e971776d9b66980dac812fcc191ce4f600c056b05"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:106e270e04363ac77d3696e965a554e7f3b3514a42ca6d72538a6971310627f3",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Walmart",
+      "metric_phrase": "cash flow from financing",
+      "natural_question": "What was Walmart's cash flow from financing in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:5af2f7d4d576ad61f3ee05023fb05a1bdb287a591720fa2264ded07da4810f3b",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:c93eaac9d90fb51af5c4f02a14b6fa0a7c0e11743ed8efd76daf810278aadcfd"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:5adf70abff0868d7687fd660abc88f5c3b403ac4d290b064336c92f726c3fef9",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Walmart",
+      "metric_phrase": "cash flow from investing",
+      "natural_question": "What was Walmart's cash flow from investing in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:066013d6999e0699dde9ea34f532734e83ba45159e00a82f1ce3fcaea547aa75",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:42544162cd7151c2f8ab90537d5d42292378c552c020651cde769c77792b61ab"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:3cdc43fb2db541c416e86a0cd795f237932d3b35ab738403d1d3d22cd7b1a239",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "cash_flow",
+      "issuer": "Walmart",
+      "metric_phrase": "investing activities",
+      "natural_question": "What was Walmart's investing activities in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:cbf07da08df8a36ce5ad554496ddeb7a674888ad8fb8a212b4197ec7fc702392",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:14467ebba29abc5495296985867438609f8817eb3d996bf19826d7e63c7bb41c"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:4ea7b50dc45a04cf29c55ebf8f7705df5886e794ee3391f13da8bb89629e6692",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Walmart",
+      "metric_phrase": "deferred income taxes",
+      "natural_question": "What was Walmart's deferred income taxes in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:c57632171660f7ab357dec5c68e626a5e830d4e1767334cea9e80f4e0d80b00b",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:20f0519902f3ee672b694fec5b659383ff939299f80f1f736b1df2dcd9e722fc"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:6fb533afd443b249ed9bb00939f9829148aa2597fa61dd9c602af2e0cad18617",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Walmart",
+      "metric_phrase": "income before income taxes",
+      "natural_question": "What was Walmart's income before income taxes in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:6a884dc3001a1c43c832ef2f26d8a2521fcb3c2bcdb4530476db52a085574fa5",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:7c3fa62ec31e464b9b51975597d1391929696b7d5a68e7553d0b0078a68b7236"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:aa972d410195fe6421ef3ea71e27196beeab95963d3374c76a957e8a164132e4",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Walmart",
+      "metric_phrase": "interest income",
+      "natural_question": "What was Walmart's interest income in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:28e4d8452ba9e627c6a373bfb3b868041f444b5f025b210a80fdbd4be4f87ae9",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:ab464ad7f5e5bcf1c27a18cc57a04780b60bdf9c310b1d59c3da10e379a9cff0",
+        "financial-concept:3c0cef065209fa9b414b9801b44f2bd3de221dc431f9b0a36e123daf46a646ff",
+        "financial-concept:09f23c224f30ded7ce2674a82343d581775576fdabf14beeaa5e21372155d1b1",
+        "financial-concept:36f204125ce117db1f9b4f40e0273bd5e955f3669b17482833872ebc3a965ca1",
+        "financial-concept:aecd9c5eacf99ea5b3dae47f740c93232cada63bc1276430d5c1b5190062dfd3",
+        "financial-concept:03bb53f2ca970219e2714eaf6651f1d7aee6d085aeadfdcacc449d6e8e30fe7e",
+        "financial-concept:c8cc6dec4f697f53d3d9f6c16ad5170851439b5706484f5f226459a7c3785330",
+        "financial-concept:57e2e88059aac39577e827e04b8cac5625ca445002f99b028d206b3415fd5468",
+        "financial-concept:910e2739aa86cbfb5d1e78e07e4ae525ba7e7e7b996a5eeb41896d00968a169f",
+        "financial-concept:41f223a385067bf5f02110d05b36ef86ff5c69400feb68c0fe72dcbf751649c9",
+        "financial-concept:d90400496201d209e04fca4efc313163c4a7268be0d5992c8c15c53b47927587",
+        "financial-concept:9e3cd3825c5ea563df4964a27602d4b4d4958a6cc485519cc4047eb28ade51d0",
+        "financial-concept:9e29a5ef47ee9b1d5d5b1d79a1e9fdbb82d39a457d4b8527423e1d058f13c695"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:bb903b8fcffea763cd406758ea308d3dfbc145b07e7b21369cd8256d674ece22",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Walmart",
+      "metric_phrase": "bottom line profit",
+      "natural_question": "What was Walmart's bottom line profit in fiscal 2024?",
+      "paraphrase_method": "generic_financial_alias",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:d56d1160f395d1a3ec6bd7aa08cbb4995ca0b560722502b41348f6bc44745e86",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:c126b347659d3c26aca0cd7cc828f8819ac1d276368071aca29f479b61d058fb"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:98d634c3b88167f048bb36d52a91a8a2f374f8c86178680450c1c64a28d8a928",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "income",
+      "issuer": "Walmart",
+      "metric_phrase": "provision for income taxes",
+      "natural_question": "What was Walmart's provision for income taxes in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:a6a7a20aa7759b0124b7fb50260b284c69c61bd0a847444757d319ea950c209c",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:172a9291fc9574d571f70a7a02ad6a43d6c6249ca5bbc1746a975ec7778b3179"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:398a43f16cc4f77d68a4c41f25791b27ef5eeb4f87b7ead0f6c11a87f6afbf6c",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "liabilities",
+      "issuer": "Walmart",
+      "metric_phrase": "accrued liabilities",
+      "natural_question": "What was Walmart's accrued liabilities in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:69dd9e768d34d81377e47c062322c8ae6f2c4b7888e5ae532443b87be3b83679",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:913a805c8214a285389c085c9ce867127a8776147a92bf11017a4c0bf7c17a7b"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:bfeab8608dca8d878e990b9beee35dbb7964117bc7eb1f5a73c453a1d97bebc8",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "liabilities",
+      "issuer": "Walmart",
+      "metric_phrase": "debt",
+      "natural_question": "What was Walmart's debt in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:4819538645716497966db400d85bfae4525d96c118d20bd121f5ddcbbdd3a9d2",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:a6b0d3a38392c598a77bca02e66738d036237cfa19bf9fef4969638dcf0ddc33"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:80109ec5dfea8eb653c2046fb19466b235c18b2eabfa33d86ad0d9ee3d9660e9",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "liabilities",
+      "issuer": "Walmart",
+      "metric_phrase": "deferred tax liabilities",
+      "natural_question": "What was Walmart's deferred tax liabilities in fiscal 2025?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2025",
+      "query_id": "pdf-query-v2:69f80ee14369a6dc65b584832e4d512cf470da3d80e1516b461cf05eb90628fa",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:dc331c414ee5f821464539303dc3ada50cb0e489f05669660d4bc5f439a988eb"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:37e84b20cd7d770507d2f44b85dcf60a7603434638a6dc64a3b7e7e5f127233a",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Walmart",
+      "metric_phrase": "acquisitions",
+      "natural_question": "What was Walmart's acquisitions in fiscal 2026?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2026",
+      "query_id": "pdf-query-v2:6659bf0ba5fbfc8ee02bf34207ebaee14472224831065869f31ee78407eb4c90",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:d09dd2c9cf1b6ea3f2088ee8096ced3648fb3239d58f8ef56f617513f30f9c7f"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:cf2015de4fc8f42f44588ea7533bc7235d010a7539204eb7882805475390bdfb",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Walmart",
+      "metric_phrase": "depreciation and amortization",
+      "natural_question": "What was Walmart's depreciation and amortization in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:453d4f347529257b4c2b2f8f89e7c79aba9ff3239c858b1a68c4b9f4348264cf",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:0d18070da93e87c7c2aa4f2297e97324695dc269704d6bcc908cc6b365a6239e"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:3376e7156ff4e0172cfa18aad1cf0541940f86384d547d0a36be6f1afb969cc4",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Walmart",
+      "metric_phrase": "interest",
+      "natural_question": "What was Walmart's interest in fiscal 2024?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2024",
+      "query_id": "pdf-query-v2:53ed2efcdbf3f8e9702b770d85ef87e7c6389d50ce835c9fb8eeca9dcf59f087",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    },
+    {
+      "allowed_concept_ids": [
+        "financial-concept:7e11f2903838419c588af7a02c0d289c040b0620e2e2f8fc82ba38f9c5e19a7c"
+      ],
+      "development_target_candidate_key": "pdf-v2-lite-row:43f279fdcf8127c8333635ca1ef4ee9c8cebe5bfe215049d5d0a3fae3fa778b9",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "forbidden_nearby_concepts": [],
+      "human_reviewed": false,
+      "intended_concept_family": "other",
+      "issuer": "Walmart",
+      "metric_phrase": "other",
+      "natural_question": "What was Walmart's other in fiscal 2023?",
+      "paraphrase_method": "generic_modifier_elision",
+      "period": "FY2023",
+      "query_id": "pdf-query-v2:f1c722d337da7d13228f742cf8a063e799ca81388076dc982f0c730ec48705c9",
+      "review_status": "ai_assisted_pending_human_review",
+      "statement_hint": null
+    }
+  ],
+  "query_count": 120
+}

@@ -1,0 +1,15 @@
+{
+  "executed_in_gate": [
+    "concept_resolution_only"
+  ],
+  "query_level_rrf": {
+    "k": 60,
+    "parameter_search": false,
+    "weights": "uniform"
+  },
+  "variants": [
+    "raw_query",
+    "top_1_canonical_query",
+    "raw_plus_top_3_concept_query"
+  ]
+}
