@@ -372,7 +372,7 @@ def build_annotation_contract() -> dict[str, Any]:
             "content",
             "metadata",
         ],
-        "required_negative_taxonomy": [
+        "supported_negative_taxonomy": [
             "same_page_wrong_row",
             "same_table_wrong_metric",
             "same_row_wrong_period",
@@ -380,6 +380,7 @@ def build_annotation_contract() -> dict[str, Any]:
             "same_metric_wrong_statement",
             "same_issuer_wrong_fiscal_period",
         ],
+        "gate_b_required_negative_types": sorted(CORE_NEGATIVE_TYPES),
         "forbidden_fields": sorted(EXCLUDED_ANNOTATION_FIELDS),
         "training_allowed": False,
         "production_index_writes_allowed": False,

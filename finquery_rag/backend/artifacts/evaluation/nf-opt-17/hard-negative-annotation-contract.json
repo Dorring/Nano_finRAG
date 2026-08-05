@@ -25,8 +25,13 @@
     "source_index"
   ],
   "frozen_benchmark_read_allowed": false,
+  "gate_b_required_negative_types": [
+    "same_row_wrong_period",
+    "same_table_wrong_metric"
+  ],
   "production_index_writes_allowed": false,
-  "required_negative_taxonomy": [
+  "schema": "nf-opt-17/hard-negative-annotation/v1",
+  "supported_negative_taxonomy": [
     "same_page_wrong_row",
     "same_table_wrong_metric",
     "same_row_wrong_period",
@@ -34,6 +39,5 @@
     "same_metric_wrong_statement",
     "same_issuer_wrong_fiscal_period"
   ],
-  "schema": "nf-opt-17/hard-negative-annotation/v1",
   "training_allowed": false
 }

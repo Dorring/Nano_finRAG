@@ -48,6 +48,13 @@ def run(args: argparse.Namespace) -> int:
     corpus = json.loads(args.corpus.read_text(encoding="utf-8"))
     frozen_filenames = [str(item["filename"]) for item in corpus["documents"]]
     validate_development_sources(PINNED_DEVELOPMENT_SOURCES, frozen_filenames=frozen_filenames)
+    previous_documents: dict[str, dict[str, object]] = {}
+    previous_manifest = args.out_dir / "development-corpus-manifest.json"
+    if previous_manifest.exists():
+        previous_documents = {
+            str(item.get("cik")): dict(item)
+            for item in json.loads(previous_manifest.read_text(encoding="utf-8")).get("documents", [])
+        }
 
     records = []
     for source in PINNED_DEVELOPMENT_SOURCES:
@@ -58,10 +65,17 @@ def run(args: argparse.Namespace) -> int:
         record["content_bytes"] = None
         record["content_type"] = None
         if args.download:
-            content, content_type = _download(source.archive_url, user_agent=args.user_agent)
             runtime_path = args.runtime_dir / source.cik / source.primary_document
-            runtime_path.parent.mkdir(parents=True, exist_ok=True)
-            runtime_path.write_bytes(content)
+            previous = previous_documents.get(source.cik, {})
+            cached_content = runtime_path.read_bytes() if runtime_path.exists() else b""
+            cached_hash = _sha(cached_content) if cached_content else None
+            if cached_hash and cached_hash == previous.get("content_sha256"):
+                content = cached_content
+                content_type = str(previous.get("content_type") or "text/html; cached")
+            else:
+                content, content_type = _download(source.archive_url, user_agent=args.user_agent)
+                runtime_path.parent.mkdir(parents=True, exist_ok=True)
+                runtime_path.write_bytes(content)
             record.update(
                 {
                     "downloaded": True,
