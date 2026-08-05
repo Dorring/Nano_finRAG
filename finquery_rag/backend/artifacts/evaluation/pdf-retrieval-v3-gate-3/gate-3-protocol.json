@@ -1,6 +1,6 @@
 {
   "candidate_db_sha256": "b5bc4740839561deb583c2a972148cd8b652adf5867f0ba61fdd5270e2301193",
-  "code_commit": "53fbfee50124ec5542545c77cbaa24ddbca08209",
+  "code_commit": "f4619ce16f0cdfbe89f805bc3d1804a51fafc7cc",
   "concept_registry_sha256": "b8eb2206b8dc8fe1fa9ca0f6735a7b90f39d22e397497a14046296d12de2309f",
   "evaluation_type": "post_benchmark_iterative_evaluation",
   "forbidden": [
@@ -14,7 +14,14 @@
     "parameter_scan"
   ],
   "gate": "pdf_retrieval_v3_gate_3",
+  "gate_0_current_production_snapshot": {
+    "bm25_source_recall_at_200": 37,
+    "dense_source_recall_at_200": 14,
+    "rrf_source_recall_at_40": 20,
+    "strict_final_source_recall_at_5": 13
+  },
   "gate_0_snapshot_sha256": "f074755d1fca67b1402f2e6f6e2680ec65d1d855ad3579ce85a169ff99d3191a",
+  "gate_0_snapshot_validated_before_prediction": true,
   "gate_2_prediction_sha256": "60809e27a4cb8882861c580d496a0c1b79b4ebdeaddcc6a440a864e8d3bd12c7",
   "rrf_k": 60,
   "structured_bm25_top_k": 40,
