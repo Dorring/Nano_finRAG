@@ -189,7 +189,8 @@
         ],
         "requires_multiple_sources": true,
         "routing_reasons": [
-          "calculation_intent",
+          "calculation_router",
+          "derived_value_named_metric",
           "growth rate",
           "year-over-year growth"
         ],
@@ -489,7 +490,8 @@
         ],
         "requires_multiple_sources": true,
         "routing_reasons": [
-          "calculation_intent",
+          "calculation_router",
+          "derived_value_named_metric",
           "growth rate",
           "year-over-year growth"
         ],
@@ -789,7 +791,8 @@
         ],
         "requires_multiple_sources": true,
         "routing_reasons": [
-          "calculation_intent",
+          "calculation_router",
+          "derived_value_named_metric",
           "growth rate",
           "year-over-year growth"
         ],
@@ -823,7 +826,8 @@
         ],
         "requires_multiple_sources": true,
         "routing_reasons": [
-          "calculation_intent",
+          "calculation_router",
+          "derived_value_named_metric",
           "what percentage of",
           "came from"
         ],
@@ -1086,7 +1090,8 @@
         ],
         "requires_multiple_sources": true,
         "routing_reasons": [
-          "calculation_intent",
+          "calculation_router",
+          "derived_value_named_metric",
           "growth rate",
           "year-over-year growth"
         ],
@@ -1120,7 +1125,8 @@
         ],
         "requires_multiple_sources": true,
         "routing_reasons": [
-          "calculation_intent",
+          "calculation_router",
+          "derived_value_named_metric",
           "what percentage of",
           "came from"
         ],
@@ -1383,7 +1389,8 @@
         ],
         "requires_multiple_sources": true,
         "routing_reasons": [
-          "calculation_intent",
+          "calculation_router",
+          "derived_value_named_metric",
           "growth rate",
           "year-over-year growth"
         ],
@@ -1683,7 +1690,8 @@
         ],
         "requires_multiple_sources": true,
         "routing_reasons": [
-          "calculation_intent",
+          "calculation_router",
+          "derived_value_named_metric",
           "growth rate",
           "year-over-year growth"
         ],
@@ -1988,7 +1996,8 @@
         ],
         "requires_multiple_sources": true,
         "routing_reasons": [
-          "calculation_intent",
+          "calculation_router",
+          "derived_value_named_metric",
           "growth rate",
           "year-over-year growth"
         ],
@@ -2027,7 +2036,8 @@
         ],
         "requires_multiple_sources": true,
         "routing_reasons": [
-          "calculation_intent",
+          "calculation_router",
+          "derived_value_intent",
           "by how much"
         ],
         "statement_hint": null,
@@ -2294,7 +2304,8 @@
         ],
         "requires_multiple_sources": true,
         "routing_reasons": [
-          "calculation_intent",
+          "calculation_router",
+          "derived_value_named_metric",
           "growth rate",
           "year-over-year growth"
         ],

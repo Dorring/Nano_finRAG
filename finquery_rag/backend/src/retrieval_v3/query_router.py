@@ -5,6 +5,7 @@ from __future__ import annotations
 import re
 
 from src.finance.calculation_intent import detect_calculation_intent
+from src.finance.operation_router import route_calculation
 from src.retrieval_v3.models import QueryProfile
 from src.retrieval_v3.query_features import extract_metric_phrases, extract_periods, extract_statement_hint, normalize_question
 
@@ -23,9 +24,15 @@ def route_question(question: str, *, document_scope: tuple[str, ...] = ()) -> Qu
     if not normalized:
         return QueryProfile("unsupported", issuer, (), (), None, 0, False, None, False, True, (), ("empty_question",))
     calculation = detect_calculation_intent(normalized)
+    calculation_route = route_calculation(
+        normalized,
+        {"intent": "financial_calculation"},
+        allow_derived_document_qa=True,
+    )
     if calculation.requires_calculation and calculation.operation is not None:
-        count = int(calculation.expected_operand_count or 0)
-        return QueryProfile("calculation_multi_operand" if count else "unsupported", issuer, metrics, periods, calculation.operation.value if count else None, count, count > 1, statement_hint, False, True, ("calculation_intent", *calculation.matched_signals), unresolved if count else (*unresolved, "calculation_operand_count_unresolved"))
+        count = int(calculation.expected_operand_count or len(calculation_route.operand_roles) or 0)
+        operation = calculation_route.operation or calculation.operation
+        return QueryProfile("calculation_multi_operand" if count else "unsupported", issuer, metrics, periods, operation.value if count else None, count, count > 1, statement_hint, False, True, ("calculation_router", calculation_route.reason, *calculation.matched_signals), unresolved if count else (*unresolved, "calculation_operand_count_unresolved"))
     lowered = normalized.lower()
     if any(signal in lowered for signal in _COMPARISON) and len(metrics) >= 2:
         return QueryProfile("multi_metric_comparison", issuer, metrics, periods, None, len(metrics), True, statement_hint, False, True, ("explicit_comparison",), unresolved)
