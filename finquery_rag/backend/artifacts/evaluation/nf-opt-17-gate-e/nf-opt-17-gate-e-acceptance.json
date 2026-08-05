@@ -1,0 +1,20 @@
+{
+  "annotation_count": 80,
+  "annotation_input_sha256": "036f452acb6c771a990e453ea1cac8eacfc5eb8edf1df5a109ea2f6cd306c4cb",
+  "answer_generation_calls": 0,
+  "candidate_count": 173,
+  "candidate_input_sha256": "788df420bbcdafe38098d3c4f89c56a9df650f8209c75bd41c0fbb45c5cafe65",
+  "decision": "frozen_reranker_contract_zero_shot_measured",
+  "elapsed_seconds": 10.325,
+  "expected_field_reads": 0,
+  "frozen_benchmark_question_or_label_reads": 0,
+  "model_inference_calls": 80,
+  "model_scores_finite": true,
+  "model_training_steps": 0,
+  "next_gate": "nf-opt-17-gate-f-single-pre_registered_training_run",
+  "production_behavior_changed": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "python_version": "3.12.2",
+  "schema": "nf-opt-17/gate-e/acceptance/v1"
+}

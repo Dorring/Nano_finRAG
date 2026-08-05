@@ -1,0 +1,5 @@
+{
+  "decision": "hard_negative_reranker_training_gain_insufficient",
+  "next_gate": "stop_hard_negative_reranker_training",
+  "production_switch_allowed": false
+}

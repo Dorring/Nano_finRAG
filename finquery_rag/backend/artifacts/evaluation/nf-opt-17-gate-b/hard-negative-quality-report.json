@@ -1,0 +1,13 @@
+{
+  "annotation_count": 80,
+  "expected_answer_stored": false,
+  "hard_negative_count": 160,
+  "human_review_status": "not_reviewed",
+  "negative_type_counts": {
+    "same_row_wrong_period": 80,
+    "same_table_wrong_metric": 80
+  },
+  "positive_count": 80,
+  "unique_positive_candidate_count": 80,
+  "unique_query_count": 80
+}

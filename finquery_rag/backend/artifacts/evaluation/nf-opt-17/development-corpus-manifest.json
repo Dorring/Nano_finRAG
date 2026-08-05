@@ -1,0 +1,69 @@
+{
+  "documents": [
+    {
+      "accession_number": "0001652044-26-000018",
+      "archive_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm",
+      "cik": "1652044",
+      "content_bytes": 2616499,
+      "content_sha256": "c2f6301004f35411a20611c14ff01d80a85c0bcbab6053c80d8cc7f6fc747161",
+      "content_type": "text/html",
+      "downloaded": true,
+      "filing_date": "2026-02-05",
+      "form": "10-K",
+      "issuer": "Alphabet Inc.",
+      "primary_document": "goog-20251231.htm",
+      "runtime_filename": "1652044/goog-20251231.htm",
+      "source_identity_sha256": "03f4a823da427d261f7bc4550c18ae020f5daf466a7bb0ba2fa32ac086b6ebb5"
+    },
+    {
+      "accession_number": "0001018724-26-000004",
+      "archive_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+      "cik": "1018724",
+      "content_bytes": 1968342,
+      "content_sha256": "beb1bfc28558135e76882db0cf36ba72a1ab44e2144fe37534f4da1e120ddb57",
+      "content_type": "text/html",
+      "downloaded": true,
+      "filing_date": "2026-02-06",
+      "form": "10-K",
+      "issuer": "AMAZON COM INC",
+      "primary_document": "amzn-20251231.htm",
+      "runtime_filename": "1018724/amzn-20251231.htm",
+      "source_identity_sha256": "c8c3cfa0360690dba6865f826075cfc0d1a8f9cc31ac4ed8f4fd9694693077ab"
+    },
+    {
+      "accession_number": "0001628280-26-003942",
+      "archive_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "cik": "1326801",
+      "content_bytes": 2371750,
+      "content_sha256": "97d1a65e8f28c8d2878a1f73218b89f8da3be83e6517c5cffdd81845c8ce40be",
+      "content_type": "text/html",
+      "downloaded": true,
+      "filing_date": "2026-01-29",
+      "form": "10-K",
+      "issuer": "Meta Platforms, Inc.",
+      "primary_document": "meta-20251231.htm",
+      "runtime_filename": "1326801/meta-20251231.htm",
+      "source_identity_sha256": "852e0b5c803c1651a84afaae28184da61f32f800e62b927e9b25169332c51ccc"
+    },
+    {
+      "accession_number": "0001065280-26-000034",
+      "archive_url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528026000034/nflx-20251231.htm",
+      "cik": "1065280",
+      "content_bytes": 2137739,
+      "content_sha256": "47f992a70276ea6a071fe82960de58bab9d1bb74b0ca8e0fbd09f03a25187603",
+      "content_type": "text/html",
+      "downloaded": true,
+      "filing_date": "2026-01-23",
+      "form": "10-K",
+      "issuer": "NETFLIX INC",
+      "primary_document": "nflx-20251231.htm",
+      "runtime_filename": "1065280/nflx-20251231.htm",
+      "source_identity_sha256": "4d8107798fa5033066c5f1a161cc23b6a3da4c48473b747fd721b9dff41ae998"
+    }
+  ],
+  "download_mode": "runtime_shadow_only",
+  "runtime_dir_committed": false,
+  "schema": "nf-opt-17/development-corpus-manifest/v1",
+  "source": "SEC EDGAR primary documents",
+  "source_manifest_sha256": "a4854ed278f2b025f442a9f3df46855e3f757455dea2dba7e5930182b1891eb1"
+}

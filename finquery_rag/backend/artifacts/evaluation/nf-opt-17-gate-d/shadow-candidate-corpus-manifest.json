@@ -1,0 +1,2777 @@
+{
+  "candidate_count": 173,
+  "candidate_records": [
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-1221",
+      "content_sha256": "5001f2fda798dcdd5a1fcdb9aa31487356bc4b78e929302002a21475c878777c",
+      "context_id": "c-4",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 4,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 64,
+      "xbrl_concept": "us-gaap:CurrentFederalTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-1222",
+      "content_sha256": "5001f2fda798dcdd5a1fcdb9aa31487356bc4b78e929302002a21475c878777c",
+      "context_id": "c-1",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 4,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 64,
+      "xbrl_concept": "us-gaap:CurrentFederalTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-1240",
+      "content_sha256": "5b3f0650ffceb5b9993f79d039045684de9e5ff7bb39614bb0b0c1c41148a4ea",
+      "context_id": "c-1",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 12,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 64,
+      "xbrl_concept": "us-gaap:CurrentForeignTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-139",
+      "content_sha256": "568b4e103f11f130e3c12771da779f452cdd8c8cb4c8500e815a5bc1cafe460b",
+      "context_id": "c-4",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 37,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 34,
+      "xbrl_concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-140",
+      "content_sha256": "568b4e103f11f130e3c12771da779f452cdd8c8cb4c8500e815a5bc1cafe460b",
+      "context_id": "c-1",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 37,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 34,
+      "xbrl_concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-154",
+      "content_sha256": "a318e84693b9ddff047be792cb66fdac06ea7fdf814a3d09a58ca58354639924",
+      "context_id": "c-4",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 7,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 35,
+      "xbrl_concept": "us-gaap:CostOfGoodsAndServicesSold"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-155",
+      "content_sha256": "a318e84693b9ddff047be792cb66fdac06ea7fdf814a3d09a58ca58354639924",
+      "context_id": "c-1",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 7,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 35,
+      "xbrl_concept": "us-gaap:CostOfGoodsAndServicesSold"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-172",
+      "content_sha256": "5a04239e583e28c5862b657f394cddcae030ff2e4b3d376632b662a37ac80330",
+      "context_id": "c-4",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 13,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 35,
+      "xbrl_concept": "us-gaap:CostsAndExpenses"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-173",
+      "content_sha256": "5a04239e583e28c5862b657f394cddcae030ff2e4b3d376632b662a37ac80330",
+      "context_id": "c-1",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 13,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 35,
+      "xbrl_concept": "us-gaap:CostsAndExpenses"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-202",
+      "content_sha256": "6536167bb62c3cb1b7c3f40b786a5a20e7dc868abb61214bb7ad5a3e6149573e",
+      "context_id": "c-4",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 23,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 35,
+      "xbrl_concept": "us-gaap:EarningsPerShareBasic"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-203",
+      "content_sha256": "6536167bb62c3cb1b7c3f40b786a5a20e7dc868abb61214bb7ad5a3e6149573e",
+      "context_id": "c-1",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 23,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 35,
+      "xbrl_concept": "us-gaap:EarningsPerShareBasic"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-215",
+      "content_sha256": "72796e441e43a056b57d84734623b8d1b7b91b25943e6f57618f0df1e9448518",
+      "context_id": "c-1",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 3,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 36,
+      "xbrl_concept": "us-gaap:NetIncomeLoss"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-247",
+      "content_sha256": "ebb5004389be4fb4fed434eff54baa5409909464c5510b0ed7fea4c1b43e7f98",
+      "context_id": "c-4",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 15,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 36,
+      "xbrl_concept": "us-gaap:ComprehensiveIncomeNetOfTax"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-248",
+      "content_sha256": "ebb5004389be4fb4fed434eff54baa5409909464c5510b0ed7fea4c1b43e7f98",
+      "context_id": "c-1",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 15,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 36,
+      "xbrl_concept": "us-gaap:ComprehensiveIncomeNetOfTax"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-249",
+      "content_sha256": "252d4b19873dd78abeffd84bd96660c6f05412230c19413cf1b6a444c2062785",
+      "context_id": "c-7",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 5,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-250",
+      "content_sha256": "252d4b19873dd78abeffd84bd96660c6f05412230c19413cf1b6a444c2062785",
+      "context_id": "c-9",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 5,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-255",
+      "content_sha256": "ebdd6752d876a6e93e55399f102fbde48915dcbdb7b1f5df0dd25b719533e09d",
+      "context_id": "c-7",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 8,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:AccountsReceivableNetCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-256",
+      "content_sha256": "ebdd6752d876a6e93e55399f102fbde48915dcbdb7b1f5df0dd25b719533e09d",
+      "context_id": "c-9",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 8,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:AccountsReceivableNetCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-257",
+      "content_sha256": "1a364b09031eef25a0cf81f8a4bb18028d19577b01bd68caaeeccaa4dda5e3fe",
+      "context_id": "c-7",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 9,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:AssetsCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-258",
+      "content_sha256": "1a364b09031eef25a0cf81f8a4bb18028d19577b01bd68caaeeccaa4dda5e3fe",
+      "context_id": "c-9",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 9,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:AssetsCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-269",
+      "content_sha256": "439ff150b3fbeeec247b81c54dc8747816ecd467650dcd586f15bbd3a9f2448d",
+      "context_id": "c-7",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 17,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:AccountsPayableCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-270",
+      "content_sha256": "439ff150b3fbeeec247b81c54dc8747816ecd467650dcd586f15bbd3a9f2448d",
+      "context_id": "c-9",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 17,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:AccountsPayableCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-271",
+      "content_sha256": "53f0b8d78debea04c6b52b77242fb1b4e3680a23f4b17b5bf3d19ec85d1b5830",
+      "context_id": "c-7",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 18,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:AccruedLiabilitiesCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-272",
+      "content_sha256": "53f0b8d78debea04c6b52b77242fb1b4e3680a23f4b17b5bf3d19ec85d1b5830",
+      "context_id": "c-9",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 18,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:AccruedLiabilitiesCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-273",
+      "content_sha256": "967f33fa0ba90f8c2b63ea7f4d7ed53b33c56c88514160970562a392d91ef56c",
+      "context_id": "c-7",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 19,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:ContractWithCustomerLiabilityCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-274",
+      "content_sha256": "967f33fa0ba90f8c2b63ea7f4d7ed53b33c56c88514160970562a392d91ef56c",
+      "context_id": "c-9",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 19,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:ContractWithCustomerLiabilityCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-295",
+      "content_sha256": "13d16b8a2cc50b094537bcd53e64fcdb75b5f5f7e06e2e5105246471dc4c6b62",
+      "context_id": "c-9",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 27,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:CommonStockParOrStatedValuePerShare"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-296",
+      "content_sha256": "13d16b8a2cc50b094537bcd53e64fcdb75b5f5f7e06e2e5105246471dc4c6b62",
+      "context_id": "c-7",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 27,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:CommonStockParOrStatedValuePerShare"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-297",
+      "content_sha256": "13d16b8a2cc50b094537bcd53e64fcdb75b5f5f7e06e2e5105246471dc4c6b62",
+      "context_id": "c-7",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 27,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:CommonStockSharesAuthorized"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-298",
+      "content_sha256": "13d16b8a2cc50b094537bcd53e64fcdb75b5f5f7e06e2e5105246471dc4c6b62",
+      "context_id": "c-9",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 27,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:CommonStockSharesAuthorized"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-299",
+      "content_sha256": "13d16b8a2cc50b094537bcd53e64fcdb75b5f5f7e06e2e5105246471dc4c6b62",
+      "context_id": "c-7",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 27,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:CommonStockSharesIssued"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-300",
+      "content_sha256": "13d16b8a2cc50b094537bcd53e64fcdb75b5f5f7e06e2e5105246471dc4c6b62",
+      "context_id": "c-9",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 27,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:CommonStockSharesIssued"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-301",
+      "content_sha256": "13d16b8a2cc50b094537bcd53e64fcdb75b5f5f7e06e2e5105246471dc4c6b62",
+      "context_id": "c-7",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 27,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:CommonStockSharesOutstanding"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-302",
+      "content_sha256": "13d16b8a2cc50b094537bcd53e64fcdb75b5f5f7e06e2e5105246471dc4c6b62",
+      "context_id": "c-9",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 27,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:CommonStockSharesOutstanding"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-303",
+      "content_sha256": "13d16b8a2cc50b094537bcd53e64fcdb75b5f5f7e06e2e5105246471dc4c6b62",
+      "context_id": "c-7",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 27,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:CommonStockValue"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-304",
+      "content_sha256": "13d16b8a2cc50b094537bcd53e64fcdb75b5f5f7e06e2e5105246471dc4c6b62",
+      "context_id": "c-9",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 27,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:CommonStockValue"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-309",
+      "content_sha256": "4bb5137b701e5d2478c8f4e444d451f35c79a0123fb006ff6f63dd8ee7f3e559",
+      "context_id": "c-7",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 30,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-310",
+      "content_sha256": "4bb5137b701e5d2478c8f4e444d451f35c79a0123fb006ff6f63dd8ee7f3e559",
+      "context_id": "c-9",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 30,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 37,
+      "xbrl_concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-666",
+      "content_sha256": "252d4b19873dd78abeffd84bd96660c6f05412230c19413cf1b6a444c2062785",
+      "context_id": "c-9",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 2,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 47,
+      "xbrl_concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-671",
+      "content_sha256": "4ee66d407c99c54d847b53a52f9e4a40a2400e395826013ec8e2f28bc19a6a1d",
+      "context_id": "c-7",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 5,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 47,
+      "xbrl_concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-672",
+      "content_sha256": "4ee66d407c99c54d847b53a52f9e4a40a2400e395826013ec8e2f28bc19a6a1d",
+      "context_id": "c-9",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 5,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 47,
+      "xbrl_concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-687",
+      "content_sha256": "806048b48f546d0777a75a3e948af0bd8cfa6601b2bf2d3c6ae81fe4f74cae16",
+      "context_id": "c-9",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 10,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 48,
+      "xbrl_concept": "us-gaap:PropertyPlantAndEquipmentGross"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-688",
+      "content_sha256": "e7f5eac3a55cf391603a0c87467cf3f9aa082149e4cb747f9857d671a82b18ed",
+      "context_id": "c-7",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 11,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 48,
+      "xbrl_concept": "us-gaap:AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-689",
+      "content_sha256": "e7f5eac3a55cf391603a0c87467cf3f9aa082149e4cb747f9857d671a82b18ed",
+      "context_id": "c-9",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 11,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 48,
+      "xbrl_concept": "us-gaap:AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment"
+    },
+    {
+      "candidate_key": "dev:sec:1018724:0001018724-26-000004:f-74",
+      "content_sha256": "49981e79cc349bb57d31abaa1b32a970922595f7d9e52cf3c56321bd4cae0861",
+      "context_id": "c-1",
+      "issuer": "AMAZON COM INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 11,
+      "source_document": {
+        "accession_number": "0001018724-26-000004",
+        "cik": "1018724",
+        "primary_document": "amzn-20251231.htm"
+      },
+      "table_index": 34,
+      "xbrl_concept": "us-gaap:DeferredIncomeTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-121",
+      "content_sha256": "753b692061cb67ba8497e16fc9ef1545d750310238b33f819e6c6fa901148bf1",
+      "context_id": "c-1",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 17,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 30,
+      "xbrl_concept": "us-gaap:EarningsPerShareBasic"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-122",
+      "content_sha256": "753b692061cb67ba8497e16fc9ef1545d750310238b33f819e6c6fa901148bf1",
+      "context_id": "c-16",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 17,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 30,
+      "xbrl_concept": "us-gaap:EarningsPerShareBasic"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-1224",
+      "content_sha256": "eaea24f0ad3c9a2790644f1fb628538cffbb8a59306d68141b9554ba07d76d4a",
+      "context_id": "c-1",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 5,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 66,
+      "xbrl_concept": "us-gaap:CurrentFederalTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-1225",
+      "content_sha256": "eaea24f0ad3c9a2790644f1fb628538cffbb8a59306d68141b9554ba07d76d4a",
+      "context_id": "c-16",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 5,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 66,
+      "xbrl_concept": "us-gaap:CurrentFederalTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-1230",
+      "content_sha256": "ec2e5ee153593f30818c33a54f4c2de3bc9c1f76dc5f972ceec523f8dce1efe1",
+      "context_id": "c-1",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 7,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 66,
+      "xbrl_concept": "us-gaap:CurrentForeignTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-1231",
+      "content_sha256": "ec2e5ee153593f30818c33a54f4c2de3bc9c1f76dc5f972ceec523f8dce1efe1",
+      "context_id": "c-16",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 7,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 66,
+      "xbrl_concept": "us-gaap:CurrentForeignTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-1233",
+      "content_sha256": "07afce295efedb2775c4f989c1b5456fb8cd1d44bdac500e95d073304b5172e6",
+      "context_id": "c-1",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 8,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 66,
+      "xbrl_concept": "us-gaap:CurrentIncomeTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-1234",
+      "content_sha256": "07afce295efedb2775c4f989c1b5456fb8cd1d44bdac500e95d073304b5172e6",
+      "context_id": "c-16",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 8,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 66,
+      "xbrl_concept": "us-gaap:CurrentIncomeTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-133",
+      "content_sha256": "c79e272b31546f98117217729503fb5477c72493393653d5425982323021b6c3",
+      "context_id": "c-1",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 3,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 31,
+      "xbrl_concept": "us-gaap:NetIncomeLoss"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-169",
+      "content_sha256": "35818b44a2ffff35422fa56268cac988231543e96231450787262d88156a880d",
+      "context_id": "c-1",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 14,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 31,
+      "xbrl_concept": "us-gaap:ComprehensiveIncomeNetOfTax"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-170",
+      "content_sha256": "35818b44a2ffff35422fa56268cac988231543e96231450787262d88156a880d",
+      "context_id": "c-16",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 14,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 31,
+      "xbrl_concept": "us-gaap:ComprehensiveIncomeNetOfTax"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-217",
+      "content_sha256": "be31d6253f52f0a07cf0de032c9f1c7f05ae03902810541dac6b6b40a5e48589",
+      "context_id": "c-1",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 22,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 32,
+      "xbrl_concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-218",
+      "content_sha256": "be31d6253f52f0a07cf0de032c9f1c7f05ae03902810541dac6b6b40a5e48589",
+      "context_id": "c-16",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 22,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 32,
+      "xbrl_concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-256",
+      "content_sha256": "eb90becc2836bd91379d7cd45896cfa9a202791c9ba08346b40ff73a48062eb7",
+      "context_id": "c-1",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 38,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 32,
+      "xbrl_concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-257",
+      "content_sha256": "eb90becc2836bd91379d7cd45896cfa9a202791c9ba08346b40ff73a48062eb7",
+      "context_id": "c-16",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 38,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 32,
+      "xbrl_concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-268",
+      "content_sha256": "717adb3f1628f3fb37c1f2b132c991bf548e5d06f57f3b1fc35d9958041a570f",
+      "context_id": "c-3",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 5,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-269",
+      "content_sha256": "717adb3f1628f3fb37c1f2b132c991bf548e5d06f57f3b1fc35d9958041a570f",
+      "context_id": "c-18",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 5,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-274",
+      "content_sha256": "f778cecc69911355bc82d8dda8aeb93df0507f0b8847acb967e719f98cfa81eb",
+      "context_id": "c-3",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 8,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:AssetsCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-275",
+      "content_sha256": "f778cecc69911355bc82d8dda8aeb93df0507f0b8847acb967e719f98cfa81eb",
+      "context_id": "c-18",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 8,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:AssetsCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-286",
+      "content_sha256": "4653c56920dddfd9f822df1d799336e21c21e1405f74434d9d3099f615d323bd",
+      "context_id": "c-3",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 16,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:AccountsPayableCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-287",
+      "content_sha256": "4653c56920dddfd9f822df1d799336e21c21e1405f74434d9d3099f615d323bd",
+      "context_id": "c-18",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 16,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:AccountsPayableCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-288",
+      "content_sha256": "dfb3b7fd0bf62ddb2a398760fae412d8cb668c9ec97834cc90b0886cbf458723",
+      "context_id": "c-3",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 17,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:AccruedLiabilitiesCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-289",
+      "content_sha256": "dfb3b7fd0bf62ddb2a398760fae412d8cb668c9ec97834cc90b0886cbf458723",
+      "context_id": "c-18",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 17,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:AccruedLiabilitiesCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-290",
+      "content_sha256": "9cd30285c37856cd04d3651a8e60edcfb889e1f01ccb2923df9db7aa45471f9b",
+      "context_id": "c-3",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 18,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:ContractWithCustomerLiabilityCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-291",
+      "content_sha256": "9cd30285c37856cd04d3651a8e60edcfb889e1f01ccb2923df9db7aa45471f9b",
+      "context_id": "c-18",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 18,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:ContractWithCustomerLiabilityCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-316",
+      "content_sha256": "9ca9a82f86ef87ce03a8303f19d725e5ef7090898992f7ed676a5c583d0f76e8",
+      "context_id": "c-3",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 28,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:CommonStockParOrStatedValuePerShare"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-317",
+      "content_sha256": "9ca9a82f86ef87ce03a8303f19d725e5ef7090898992f7ed676a5c583d0f76e8",
+      "context_id": "c-18",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 28,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:CommonStockParOrStatedValuePerShare"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-318",
+      "content_sha256": "9ca9a82f86ef87ce03a8303f19d725e5ef7090898992f7ed676a5c583d0f76e8",
+      "context_id": "c-18",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 28,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:CommonStockSharesAuthorized"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-319",
+      "content_sha256": "9ca9a82f86ef87ce03a8303f19d725e5ef7090898992f7ed676a5c583d0f76e8",
+      "context_id": "c-3",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 28,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:CommonStockSharesAuthorized"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-320",
+      "content_sha256": "9ca9a82f86ef87ce03a8303f19d725e5ef7090898992f7ed676a5c583d0f76e8",
+      "context_id": "c-3",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 28,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:CommonStockSharesOutstanding"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-321",
+      "content_sha256": "9ca9a82f86ef87ce03a8303f19d725e5ef7090898992f7ed676a5c583d0f76e8",
+      "context_id": "c-3",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 28,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:CommonStockSharesIssued"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-322",
+      "content_sha256": "9ca9a82f86ef87ce03a8303f19d725e5ef7090898992f7ed676a5c583d0f76e8",
+      "context_id": "c-18",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 28,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:CommonStockSharesIssued"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-323",
+      "content_sha256": "9ca9a82f86ef87ce03a8303f19d725e5ef7090898992f7ed676a5c583d0f76e8",
+      "context_id": "c-18",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 28,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:CommonStockSharesOutstanding"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-324",
+      "content_sha256": "9ca9a82f86ef87ce03a8303f19d725e5ef7090898992f7ed676a5c583d0f76e8",
+      "context_id": "c-3",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 28,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:CommonStockValue"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-325",
+      "content_sha256": "9ca9a82f86ef87ce03a8303f19d725e5ef7090898992f7ed676a5c583d0f76e8",
+      "context_id": "c-18",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 28,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:CommonStockValue"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-330",
+      "content_sha256": "6fe20245e6cc46a89aeea8b7cee1069ec98312e4a16475ba83d72c8038525251",
+      "context_id": "c-3",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 30,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-331",
+      "content_sha256": "6fe20245e6cc46a89aeea8b7cee1069ec98312e4a16475ba83d72c8038525251",
+      "context_id": "c-18",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 30,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 33,
+      "xbrl_concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-619",
+      "content_sha256": "b7a7912bccf3f5a8af854d14396f5cafa0ad0ac7094b06df112ade6176d13d3b",
+      "context_id": "c-3",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 12,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 42,
+      "xbrl_concept": "us-gaap:PropertyPlantAndEquipmentGross"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-621",
+      "content_sha256": "b27356ac2585558730ebd70bdaa0e2a5d57378ccb048f190bf5660685d75659c",
+      "context_id": "c-3",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 13,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 42,
+      "xbrl_concept": "us-gaap:AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-622",
+      "content_sha256": "b27356ac2585558730ebd70bdaa0e2a5d57378ccb048f190bf5660685d75659c",
+      "context_id": "c-18",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 13,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 42,
+      "xbrl_concept": "us-gaap:AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-91",
+      "content_sha256": "92b0223f7e91e1d98689b25c1d12f002ebe5be187959b143f170b6068eaaec37",
+      "context_id": "c-1",
+      "issuer": "NETFLIX INC",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 4,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 30,
+      "xbrl_concept": "us-gaap:CostOfRevenue"
+    },
+    {
+      "candidate_key": "dev:sec:1065280:0001065280-26-000034:f-92",
+      "content_sha256": "92b0223f7e91e1d98689b25c1d12f002ebe5be187959b143f170b6068eaaec37",
+      "context_id": "c-16",
+      "issuer": "NETFLIX INC",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 4,
+      "source_document": {
+        "accession_number": "0001065280-26-000034",
+        "cik": "1065280",
+        "primary_document": "nflx-20251231.htm"
+      },
+      "table_index": 30,
+      "xbrl_concept": "us-gaap:CostOfRevenue"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-1116",
+      "content_sha256": "065bda1be6cfbb687f43240da5d1dfdb1ad11de3ea4c27a52a76077257c5f049",
+      "context_id": "c-1",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 4,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 58,
+      "xbrl_concept": "us-gaap:CurrentFederalTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-1117",
+      "content_sha256": "065bda1be6cfbb687f43240da5d1dfdb1ad11de3ea4c27a52a76077257c5f049",
+      "context_id": "c-11",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 4,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 58,
+      "xbrl_concept": "us-gaap:CurrentFederalTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-1119",
+      "content_sha256": "9eaabb356081d70aaaa206f72eb9f564282a6a66726ba540e1b205a12bea8c55",
+      "context_id": "c-1",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 5,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 58,
+      "xbrl_concept": "us-gaap:CurrentStateAndLocalTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-1120",
+      "content_sha256": "9eaabb356081d70aaaa206f72eb9f564282a6a66726ba540e1b205a12bea8c55",
+      "context_id": "c-11",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 5,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 58,
+      "xbrl_concept": "us-gaap:CurrentStateAndLocalTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-1122",
+      "content_sha256": "cb815940d62e5098bf4c9f45488e40acf4e110e5634a104c4f2199349cfdff4f",
+      "context_id": "c-1",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 6,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 58,
+      "xbrl_concept": "us-gaap:CurrentForeignTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-1123",
+      "content_sha256": "cb815940d62e5098bf4c9f45488e40acf4e110e5634a104c4f2199349cfdff4f",
+      "context_id": "c-11",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 6,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 58,
+      "xbrl_concept": "us-gaap:CurrentForeignTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-1125",
+      "content_sha256": "0d08ebebdf43f33261e0907890e641cfe40c7ffbb56231261708e9dfcca5ba6a",
+      "context_id": "c-1",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 7,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 58,
+      "xbrl_concept": "us-gaap:CurrentIncomeTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-1126",
+      "content_sha256": "0d08ebebdf43f33261e0907890e641cfe40c7ffbb56231261708e9dfcca5ba6a",
+      "context_id": "c-11",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 7,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 58,
+      "xbrl_concept": "us-gaap:CurrentIncomeTaxExpenseBenefit"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-115",
+      "content_sha256": "7ebeecf9008cc95d6eb759f127b0bdaf75a8e2837a40f524567ddd33c2585bbd",
+      "context_id": "c-5",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 30,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 25,
+      "xbrl_concept": "us-gaap:CommonStockValue"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-116",
+      "content_sha256": "7ebeecf9008cc95d6eb759f127b0bdaf75a8e2837a40f524567ddd33c2585bbd",
+      "context_id": "c-6",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 30,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 25,
+      "xbrl_concept": "us-gaap:CommonStockValue"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-119",
+      "content_sha256": "b93b9df9311bb989c4d1aca6e05f5bbea76dbb13832c290e8753c104190a9ce6",
+      "context_id": "c-5",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 32,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 25,
+      "xbrl_concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-120",
+      "content_sha256": "b93b9df9311bb989c4d1aca6e05f5bbea76dbb13832c290e8753c104190a9ce6",
+      "context_id": "c-6",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 32,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 25,
+      "xbrl_concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-130",
+      "content_sha256": "9416c94cba95a0b747d97df473571256797a6bb92fc1e552f964f3e034ada532",
+      "context_id": "c-1",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 5,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 26,
+      "xbrl_concept": "us-gaap:CostOfRevenue"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-131",
+      "content_sha256": "9416c94cba95a0b747d97df473571256797a6bb92fc1e552f964f3e034ada532",
+      "context_id": "c-11",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 5,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 26,
+      "xbrl_concept": "us-gaap:CostOfRevenue"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-142",
+      "content_sha256": "66689785e1c10f722fa5e16843a71c8c0a42c0c3c62cc49f92a35ab4f16ce46f",
+      "context_id": "c-1",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 9,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 26,
+      "xbrl_concept": "us-gaap:CostsAndExpenses"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-143",
+      "content_sha256": "66689785e1c10f722fa5e16843a71c8c0a42c0c3c62cc49f92a35ab4f16ce46f",
+      "context_id": "c-11",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 9,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 26,
+      "xbrl_concept": "us-gaap:CostsAndExpenses"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-160",
+      "content_sha256": "562b1819ee2badb63be1b71e580f313f95d6b21c2d2eeb16f55cfbaf43aab42f",
+      "context_id": "c-1",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 16,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 26,
+      "xbrl_concept": "us-gaap:EarningsPerShareBasic"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-161",
+      "content_sha256": "562b1819ee2badb63be1b71e580f313f95d6b21c2d2eeb16f55cfbaf43aab42f",
+      "context_id": "c-11",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 16,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 26,
+      "xbrl_concept": "us-gaap:EarningsPerShareBasic"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-172",
+      "content_sha256": "4c7168f96ef6853c6994497fa4140db2a9d9c00dc936afde28d3cb2ff6f69235",
+      "context_id": "c-1",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 3,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 27,
+      "xbrl_concept": "us-gaap:NetIncomeLoss"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-181",
+      "content_sha256": "1d07e16af7fdbb3ec0b1dd012e7788455a5c2a2a165957c4a042694766b9c01b",
+      "context_id": "c-1",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 7,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 27,
+      "xbrl_concept": "us-gaap:ComprehensiveIncomeNetOfTax"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-182",
+      "content_sha256": "1d07e16af7fdbb3ec0b1dd012e7788455a5c2a2a165957c4a042694766b9c01b",
+      "context_id": "c-11",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 7,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 27,
+      "xbrl_concept": "us-gaap:ComprehensiveIncomeNetOfTax"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-304",
+      "content_sha256": "c6ce6a1da8eb45201b9a9bbddf86eeb5bd34327e490f5fc12326ff6a988f2f1f",
+      "context_id": "c-1",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 24,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 29,
+      "xbrl_concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-305",
+      "content_sha256": "c6ce6a1da8eb45201b9a9bbddf86eeb5bd34327e490f5fc12326ff6a988f2f1f",
+      "context_id": "c-11",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 24,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 29,
+      "xbrl_concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-355",
+      "content_sha256": "7aae505e2e71733f9c870e182c51e2dad8ab24cc1babf8189a0cc204b5cb700f",
+      "context_id": "c-1",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 43,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 29,
+      "xbrl_concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-356",
+      "content_sha256": "7aae505e2e71733f9c870e182c51e2dad8ab24cc1babf8189a0cc204b5cb700f",
+      "context_id": "c-11",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 43,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 29,
+      "xbrl_concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-358",
+      "content_sha256": "ddf787075510f4795ee5ab0a438f45a97b99a0aa9789a73379b71b5be3f78360",
+      "context_id": "c-6",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 44,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 29,
+      "xbrl_concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-359",
+      "content_sha256": "ddf787075510f4795ee5ab0a438f45a97b99a0aa9789a73379b71b5be3f78360",
+      "context_id": "c-26",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2023-12-31",
+      "period_kind": "instant",
+      "row_index": 44,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 29,
+      "xbrl_concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-365",
+      "content_sha256": "372a321293ac00be49f827e5b1b359e0d7278810e4629619656c470803e05e7f",
+      "context_id": "c-6",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 47,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 29,
+      "xbrl_concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-57",
+      "content_sha256": "082292b17716a756d10c0d1677cfcd1d030c9da07a9084dbecf43a768d1c5568",
+      "context_id": "c-5",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 5,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 25,
+      "xbrl_concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-58",
+      "content_sha256": "082292b17716a756d10c0d1677cfcd1d030c9da07a9084dbecf43a768d1c5568",
+      "context_id": "c-6",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 5,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 25,
+      "xbrl_concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-61",
+      "content_sha256": "aa06478b5fd1060f43dc622ada9011ac5bbc34d4c8d977f874b9aca3988eb670",
+      "context_id": "c-5",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 7,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 25,
+      "xbrl_concept": "us-gaap:AccountsReceivableNetCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-62",
+      "content_sha256": "aa06478b5fd1060f43dc622ada9011ac5bbc34d4c8d977f874b9aca3988eb670",
+      "context_id": "c-6",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 7,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 25,
+      "xbrl_concept": "us-gaap:AccountsReceivableNetCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-65",
+      "content_sha256": "5952a2e00857c3a3d17b9cf410884488f466da3655b0cfbe41ad78102c742f33",
+      "context_id": "c-5",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 9,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 25,
+      "xbrl_concept": "us-gaap:AssetsCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-66",
+      "content_sha256": "5952a2e00857c3a3d17b9cf410884488f466da3655b0cfbe41ad78102c742f33",
+      "context_id": "c-6",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 9,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 25,
+      "xbrl_concept": "us-gaap:AssetsCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-79",
+      "content_sha256": "dffd6e388db2506b323e68298511165e941ab8095b56d69bfb900f4da3fe891b",
+      "context_id": "c-5",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 19,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 25,
+      "xbrl_concept": "us-gaap:AccountsPayableTradeCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-80",
+      "content_sha256": "dffd6e388db2506b323e68298511165e941ab8095b56d69bfb900f4da3fe891b",
+      "context_id": "c-6",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 19,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 25,
+      "xbrl_concept": "us-gaap:AccountsPayableTradeCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-83",
+      "content_sha256": "cac58683a874455e6ab191b770a0a2ac45da49aa338c867b7a6aa829a3769e03",
+      "context_id": "c-5",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 21,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 25,
+      "xbrl_concept": "us-gaap:AccruedLiabilitiesCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-84",
+      "content_sha256": "cac58683a874455e6ab191b770a0a2ac45da49aa338c867b7a6aa829a3769e03",
+      "context_id": "c-6",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 21,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 25,
+      "xbrl_concept": "us-gaap:AccruedLiabilitiesCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-91",
+      "content_sha256": "bbe83e23519e00e03abc856ca903733eb8034df0646d89e6850fcb26e6f7af1e",
+      "context_id": "c-5",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 25,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 25,
+      "xbrl_concept": "us-gaap:AccruedIncomeTaxesNoncurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-92",
+      "content_sha256": "bbe83e23519e00e03abc856ca903733eb8034df0646d89e6850fcb26e6f7af1e",
+      "context_id": "c-6",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 25,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 25,
+      "xbrl_concept": "us-gaap:AccruedIncomeTaxesNoncurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-939",
+      "content_sha256": "505596460b31e0eb2179b0100077bbdbf4dce473b4491bf93f6c522d190b753a",
+      "context_id": "c-5",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 6,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 50,
+      "xbrl_concept": "us-gaap:DebtInstrumentCarryingAmount"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-940",
+      "content_sha256": "505596460b31e0eb2179b0100077bbdbf4dce473b4491bf93f6c522d190b753a",
+      "context_id": "c-6",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 6,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 50,
+      "xbrl_concept": "us-gaap:DebtInstrumentCarryingAmount"
+    },
+    {
+      "candidate_key": "dev:sec:1326801:0001628280-26-003942:f-941",
+      "content_sha256": "28207e79aced2e9fe3dc4eb741d1402da42a0cbf97775c012727d697a4d1f969",
+      "context_id": "c-5",
+      "issuer": "Meta Platforms, Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 7,
+      "source_document": {
+        "accession_number": "0001628280-26-003942",
+        "cik": "1326801",
+        "primary_document": "meta-20251231.htm"
+      },
+      "table_index": 50,
+      "xbrl_concept": "us-gaap:DebtInstrumentUnamortizedDiscountPremiumAndDebtIssuanceCostsNet"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-102",
+      "content_sha256": "1abe3236fc52318d5f61b69336313ffd9e1171da23d96b65ca8d8ecf6aa545f1",
+      "context_id": "c-19",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 10,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:AssetsCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-103",
+      "content_sha256": "1abe3236fc52318d5f61b69336313ffd9e1171da23d96b65ca8d8ecf6aa545f1",
+      "context_id": "c-20",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 10,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:AssetsCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-1143",
+      "content_sha256": "3da341c434c400bd720f2f30007321cf8f32a33d05a464ed873e12e9d74f1413",
+      "context_id": "c-19",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 6,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 132,
+      "xbrl_concept": "us-gaap:CommissionsPayableToBrokerDealersAndClearingOrganizations"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-1144",
+      "content_sha256": "3da341c434c400bd720f2f30007321cf8f32a33d05a464ed873e12e9d74f1413",
+      "context_id": "c-20",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 6,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 132,
+      "xbrl_concept": "us-gaap:CommissionsPayableToBrokerDealersAndClearingOrganizations"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-1145",
+      "content_sha256": "7f3cd93265da43733b361dadc637cd55ec08ee6de1bd0a0dd42cf72ecdcedcaa",
+      "context_id": "c-19",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 7,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 132,
+      "xbrl_concept": "us-gaap:AccruedIncomeTaxesCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-1146",
+      "content_sha256": "7f3cd93265da43733b361dadc637cd55ec08ee6de1bd0a0dd42cf72ecdcedcaa",
+      "context_id": "c-20",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 7,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 132,
+      "xbrl_concept": "us-gaap:AccruedIncomeTaxesCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-1150",
+      "content_sha256": "51ea806e3c1e050b7a558dc099063e76e2d724c05744206548ee0f129baff326",
+      "context_id": "c-20",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 9,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 132,
+      "xbrl_concept": "us-gaap:AccruedLiabilitiesCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-118",
+      "content_sha256": "c6612d16128a0f6b33888ae43489242021fd5ca8898cd08d7ad49f1a498831d6",
+      "context_id": "c-19",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 20,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:AccountsPayableCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-119",
+      "content_sha256": "c6612d16128a0f6b33888ae43489242021fd5ca8898cd08d7ad49f1a498831d6",
+      "context_id": "c-20",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 20,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:AccountsPayableCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-122",
+      "content_sha256": "1d8d7004d75669509e0ab128c6f43c585e443a18bf09589fc10baa2258b2e4b0",
+      "context_id": "c-19",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 23,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:AccruedLiabilitiesCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-123",
+      "content_sha256": "1d8d7004d75669509e0ab128c6f43c585e443a18bf09589fc10baa2258b2e4b0",
+      "context_id": "c-20",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 23,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:AccruedLiabilitiesCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-126",
+      "content_sha256": "7fde0978386ed0248ce2159334a9c381dadfa6e19db9ef08eb429aa20fde0456",
+      "context_id": "c-19",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 25,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:ContractWithCustomerLiabilityCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-127",
+      "content_sha256": "7fde0978386ed0248ce2159334a9c381dadfa6e19db9ef08eb429aa20fde0456",
+      "context_id": "c-20",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 25,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:ContractWithCustomerLiabilityCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-132",
+      "content_sha256": "bb3a0446a84ec48903dd72f12b6f9f9ac95a30f0aa52507d13640896c5dba135",
+      "context_id": "c-19",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 28,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:AccruedIncomeTaxesNoncurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-133",
+      "content_sha256": "bb3a0446a84ec48903dd72f12b6f9f9ac95a30f0aa52507d13640896c5dba135",
+      "context_id": "c-20",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 28,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:AccruedIncomeTaxesNoncurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-152",
+      "content_sha256": "24f6eceb78762d8078bb689dd7a2e25488fdb1411c5d29f593b8941535c250e6",
+      "context_id": "c-20",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 35,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:CommonStockParOrStatedValuePerShare"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-153",
+      "content_sha256": "24f6eceb78762d8078bb689dd7a2e25488fdb1411c5d29f593b8941535c250e6",
+      "context_id": "c-19",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 35,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:CommonStockParOrStatedValuePerShare"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-154",
+      "content_sha256": "24f6eceb78762d8078bb689dd7a2e25488fdb1411c5d29f593b8941535c250e6",
+      "context_id": "c-19",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 35,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:CommonStockSharesAuthorized"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-155",
+      "content_sha256": "24f6eceb78762d8078bb689dd7a2e25488fdb1411c5d29f593b8941535c250e6",
+      "context_id": "c-20",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 35,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:CommonStockSharesAuthorized"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-162",
+      "content_sha256": "24f6eceb78762d8078bb689dd7a2e25488fdb1411c5d29f593b8941535c250e6",
+      "context_id": "c-19",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 35,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:CommonStockSharesIssued"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-163",
+      "content_sha256": "24f6eceb78762d8078bb689dd7a2e25488fdb1411c5d29f593b8941535c250e6",
+      "context_id": "c-19",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 35,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:CommonStockSharesOutstanding"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-170",
+      "content_sha256": "24f6eceb78762d8078bb689dd7a2e25488fdb1411c5d29f593b8941535c250e6",
+      "context_id": "c-20",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 35,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:CommonStockSharesOutstanding"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-171",
+      "content_sha256": "24f6eceb78762d8078bb689dd7a2e25488fdb1411c5d29f593b8941535c250e6",
+      "context_id": "c-20",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 35,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:CommonStockSharesIssued"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-178",
+      "content_sha256": "24f6eceb78762d8078bb689dd7a2e25488fdb1411c5d29f593b8941535c250e6",
+      "context_id": "c-19",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 35,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:CommonStocksIncludingAdditionalPaidInCapital"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-179",
+      "content_sha256": "24f6eceb78762d8078bb689dd7a2e25488fdb1411c5d29f593b8941535c250e6",
+      "context_id": "c-20",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 35,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:CommonStocksIncludingAdditionalPaidInCapital"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-180",
+      "content_sha256": "e37087ae2ea72b4180333b1a44a9f39a34275d7341d13e64ea72ae176fcee76f",
+      "context_id": "c-19",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 36,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-181",
+      "content_sha256": "e37087ae2ea72b4180333b1a44a9f39a34275d7341d13e64ea72ae176fcee76f",
+      "context_id": "c-20",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 36,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-193",
+      "content_sha256": "1164b44070e998436d6558d15268cd3b748418448e04c5140a4b1e873601728c",
+      "context_id": "c-1",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 5,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 79,
+      "xbrl_concept": "us-gaap:CostOfRevenue"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-222",
+      "content_sha256": "e43d0160bc600af23c20f3ae3cf8ab45bd6ae0f6248bb80c809a83727b6f7e60",
+      "context_id": "c-28",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 23,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 79,
+      "xbrl_concept": "us-gaap:EarningsPerShareBasic"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-223",
+      "content_sha256": "e43d0160bc600af23c20f3ae3cf8ab45bd6ae0f6248bb80c809a83727b6f7e60",
+      "context_id": "c-1",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 23,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 79,
+      "xbrl_concept": "us-gaap:EarningsPerShareBasic"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-229",
+      "content_sha256": "55ce90a1b08a42e38d068c21985cdc6846686147ac6e89886302b93e9895793a",
+      "context_id": "c-1",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 3,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 81,
+      "xbrl_concept": "us-gaap:NetIncomeLoss"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-264",
+      "content_sha256": "e1a85592b0904a8b1da58b3505ad0a46729cbb962fdd4b5aa10967f500a6ff24",
+      "context_id": "c-28",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 15,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 81,
+      "xbrl_concept": "us-gaap:ComprehensiveIncomeNetOfTax"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-265",
+      "content_sha256": "e1a85592b0904a8b1da58b3505ad0a46729cbb962fdd4b5aa10967f500a6ff24",
+      "context_id": "c-1",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 15,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 81,
+      "xbrl_concept": "us-gaap:ComprehensiveIncomeNetOfTax"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-383",
+      "content_sha256": "350f524478058dcb25e69fc0db1b727f643c1f242c249b132cea48d08c1d6e22",
+      "context_id": "c-28",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 21,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 85,
+      "xbrl_concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-384",
+      "content_sha256": "350f524478058dcb25e69fc0db1b727f643c1f242c249b132cea48d08c1d6e22",
+      "context_id": "c-1",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 21,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 85,
+      "xbrl_concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-431",
+      "content_sha256": "4c185ea5846a6b0fc3d7673159415766aed0bf5f61003917102b76349292954c",
+      "context_id": "c-28",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "duration",
+      "row_index": 38,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 85,
+      "xbrl_concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-432",
+      "content_sha256": "4c185ea5846a6b0fc3d7673159415766aed0bf5f61003917102b76349292954c",
+      "context_id": "c-1",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "duration",
+      "row_index": 38,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 85,
+      "xbrl_concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-92",
+      "content_sha256": "1002726f3c3ae87d99fdb664b4d6bf0c782373f4b7912b4df411189d30ba51f1",
+      "context_id": "c-19",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 5,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-93",
+      "content_sha256": "1002726f3c3ae87d99fdb664b4d6bf0c782373f4b7912b4df411189d30ba51f1",
+      "context_id": "c-20",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 5,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-96",
+      "content_sha256": "53d15a0e3f6d311895d2afc7c7893fb1d11bbd6848a10dc38370529564663de5",
+      "context_id": "c-19",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 7,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:CashCashEquivalentsAndShortTermInvestments"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-97",
+      "content_sha256": "53d15a0e3f6d311895d2afc7c7893fb1d11bbd6848a10dc38370529564663de5",
+      "context_id": "c-20",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 7,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:CashCashEquivalentsAndShortTermInvestments"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-98",
+      "content_sha256": "2ddf3d3876152affb9462930adbebd5899f021b87e7a5da525e695c63ef6420d",
+      "context_id": "c-19",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2024-12-31",
+      "period_kind": "instant",
+      "row_index": 8,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:AccountsReceivableNetCurrent"
+    },
+    {
+      "candidate_key": "dev:sec:1652044:0001652044-26-000018:f-99",
+      "content_sha256": "2ddf3d3876152affb9462930adbebd5899f021b87e7a5da525e695c63ef6420d",
+      "context_id": "c-20",
+      "issuer": "Alphabet Inc.",
+      "period_end": "2025-12-31",
+      "period_kind": "instant",
+      "row_index": 8,
+      "source_document": {
+        "accession_number": "0001652044-26-000018",
+        "cik": "1652044",
+        "primary_document": "goog-20251231.htm"
+      },
+      "table_index": 77,
+      "xbrl_concept": "us-gaap:AccountsReceivableNetCurrent"
+    }
+  ],
+  "lineage_record_count": 240,
+  "runtime_candidate_corpus_committed": false,
+  "runtime_candidate_corpus_sha256": "788df420bbcdafe38098d3c4f89c56a9df650f8209c75bd41c0fbb45c5cafe65",
+  "schema": "nf-opt-17/shadow-candidate-corpus-manifest/v1"
+}

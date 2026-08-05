@@ -1,0 +1,969 @@
+{
+  "annotation_count": 80,
+  "authorized_by_user": true,
+  "review_records": [
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:01a2df4ad331d7f755a65345ba968ce1f2d94404b18bce2c8dff09f73888e016",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-119",
+        "dev:sec:1652044:0001652044-26-000018:f-163"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-170",
+      "query_sha256": "65ebf97d51448145bda20916909551324dde642d0cd280585e1527d7552844af",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:06d3d347728169098b9145266583d301b5794b6d560928d3f0726e2b7d843d45",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-270",
+        "dev:sec:1018724:0001018724-26-000004:f-299"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-300",
+      "query_sha256": "1d60f881024c1902411c6a758f00712fd00d13957b8467bdd6047c7ca1744e22",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:0d4118dbb60ccb7ceb3fe5876a95853310f9443f885a543af04bf9e8bf7f1336",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-286",
+        "dev:sec:1065280:0001065280-26-000034:f-331"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-330",
+      "query_sha256": "f5c980ddf76be08c3a6ff4efe4e38d13430509f344caf25b5943b27537d73886",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:12ed6e81825d50d68119c50ff359d742d035069c5bfbb3328f9a718d6cc10b25",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-1224",
+        "dev:sec:1065280:0001065280-26-000034:f-1231"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-1230",
+      "query_sha256": "09239bc3e13457d6d93ffaac6f618f95c3e6e5690f4e87e11d893b045cafc3b8",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:15a9771ee203af3bd640e8b4f9b2981578847ce91176eef7bba98afa86eba85b",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-131",
+        "dev:sec:1326801:0001628280-26-003942:f-160"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-130",
+      "query_sha256": "822aaaab18a01e03a6eebb12356b2a3ddce51baf0fd416619c33bfadc2b2cf86",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:1bf3b1b8cec8e5e2a45b3c9ab19bb74c6b62f52606c686a2a539a233500f28ff",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-687",
+        "dev:sec:1018724:0001018724-26-000004:f-688"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-689",
+      "query_sha256": "a4f6a54424db38bf89a2da86cb661db65c933f331930f178bef87bf82eeade57",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:1ed33aec72daad4024b13efd0f52d56da788a22697b9e6063d54a72ed32f234c",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-122",
+        "dev:sec:1065280:0001065280-26-000034:f-91"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-121",
+      "query_sha256": "e622e8cab0d8f2ae57c882db121c35a57bd18f10120d2e70682fef04556869b8",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:1f70bc381879229026de42065f99d530d35dec89969a5ab70b33dea2aa38650e",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-119",
+        "dev:sec:1652044:0001652044-26-000018:f-98"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-99",
+      "query_sha256": "0f5ae0aae9a46a582478468e5df32e96459a9cae91c55821d1fe579630b1e961",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:20978e3403ff3695eef26b114e526bd22d38277216b4beb45010294a001e88b0",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-1117",
+        "dev:sec:1326801:0001628280-26-003942:f-1122"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-1116",
+      "query_sha256": "9d3a3cdf54b07e3d5c7d4d5688a6f94e7c2eab95c167d4a75da1f19b70dcc10b",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:264478c4151acb12caef22c9772e53307519ade0da9c226c4618f3f0032bda87",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-133",
+        "dev:sec:1065280:0001065280-26-000034:f-170"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-169",
+      "query_sha256": "159a24db748c8b66bf7416996bd5232233e024c09b65bed026445ff2cd5c99b4",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:26ff350c5d1f4efaf067c4be3e114e2f548a1d2219e826d0760e1e167da25147",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-384",
+        "dev:sec:1652044:0001652044-26-000018:f-431"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-432",
+      "query_sha256": "514a83882e5624755eece75dc5bd75b643a2cc18c6493df230c87eecae18faf5",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:2a2857c3562bf2e41ef9c2f730821a6e89aa8ed8cdaca4c999387ab9888c28e2",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-172",
+        "dev:sec:1326801:0001628280-26-003942:f-182"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-181",
+      "query_sha256": "ee3f31e88ae0ff60256aad9e6f38002927ac1598bcc67790aa1a69ab51855caa",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:2b11afabceed775bf0232c06d5d515e42428af9d5ffc968016d1c3b478d6ccf3",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-1143",
+        "dev:sec:1652044:0001652044-26-000018:f-1146"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-1144",
+      "query_sha256": "bdde5f312340c262291ef861fca617ef504f7de86735fd3b011c5de6414d3f7c",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:2f147e90bf8c931d6661581a31f2c32005bc380f7fe3bb67efe135a44bed62b5",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-119",
+        "dev:sec:1652044:0001652044-26-000018:f-126"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-127",
+      "query_sha256": "4b3073f82a649b79c7d47178c3d7bae788b308a5cc00fe2b9bafc9523aeb7b29",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:318435faa5ff23ca48f84db21542e2ca2401e66b1673c5a7de6e73b513e2b2a5",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-286",
+        "dev:sec:1065280:0001065280-26-000034:f-322"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-321",
+      "query_sha256": "2d81b21ce370abe90d145b976fde361cd030453e15520b04996b6221c07091c0",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:3337d4948e3b30ee88b9ada6b3fbc1638b34de1584f030be3b94dc594c62feb4",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-249",
+        "dev:sec:1018724:0001018724-26-000004:f-270"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-250",
+      "query_sha256": "ee17a5abd46365678c6a0a8c886edd6f441e1df957fdcb7c217f9903dce09951",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:3555ffc270dabac62376934c608d4db90e7aa726d5d6cb4b23f90a35a7f0ae92",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-270",
+        "dev:sec:1018724:0001018724-26-000004:f-309"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-310",
+      "query_sha256": "6fea361b906b512702754873253d1e149ea77b81645d971275e9ffa9aa8bb3d6",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:3c01bd014288156ba54455540883e5a9ee41b4797cb1a27c879756d0e4c370bf",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-119",
+        "dev:sec:1652044:0001652044-26-000018:f-180"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-181",
+      "query_sha256": "12f79af778554a90a0785e94177d8fa75ac0d98207cfdb6121a04d6f01550c9c",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:3c15db1191eb045c2e787db83910f376314b1d722574a893a4738aafc7b50cf4",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-256",
+        "dev:sec:1018724:0001018724-26-000004:f-269"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-270",
+      "query_sha256": "ffe70afd77bcb6417f1fbc00028dfe671678e8fdd5e5532186302baf39653bde",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:3e3751a86075dc66c1f184a6777d800fcf58cbcfb7e6546bd127ef9ce4f9909b",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-304",
+        "dev:sec:1326801:0001628280-26-003942:f-356"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-355",
+      "query_sha256": "b2281f8787d366599faf21c727f3ecb9079f4f0d1b3b9fc3edf36bf38af1332f",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:3f0bbed7b748c82311635ad6fefb8c6d594f28423ae1d9a82e0113a71fa981bd",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-305",
+        "dev:sec:1326801:0001628280-26-003942:f-355"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-304",
+      "query_sha256": "dd37f13d8cb60a5c070327f294c2f799af7778820513145e50bf0d8bc41b6ce1",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:46f2830bbd5b0cf5fdd79fe33b785eaede5c6cb890914ebf29bd59505115bc81",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-139",
+        "dev:sec:1018724:0001018724-26-000004:f-74"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-140",
+      "query_sha256": "babd4ffccfffb200d9340e69643f9def0b198b409a5b050554de0e60e7a6e7ff",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:48aea44cee3be9f396461e971a685ef04fb244abb8665b338fa4ea1643e3325f",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-118",
+        "dev:sec:1652044:0001652044-26-000018:f-99"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-119",
+      "query_sha256": "f06f4e7e974a2f16185d8c177fdcac5e994aa90f3ca000c9d710e593e68edb70",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:4975d80d52ef73ff7a049f62338c833a1550f6f366a3f2344c10abfe570ecb7d",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-359",
+        "dev:sec:1326801:0001628280-26-003942:f-365"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-358",
+      "query_sha256": "2a749b41fcb6192882500d34a1a6d787eac92f5094655a98dde27fd769864a15",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:4bc012f8e17dcfdece638199e2c6a7cbc43e7c713a4339e8f87d1c99c6e227ad",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-255",
+        "dev:sec:1018724:0001018724-26-000004:f-270"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-256",
+      "query_sha256": "55435043add410b95d59d8ba9941332014277eff082be6fcc945ad85727dd919",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:4fc51e742a380708804381bbd4c1f2dde4c1aec8c7ce81b5d1f7f1b2f962e900",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-1116",
+        "dev:sec:1326801:0001628280-26-003942:f-1126"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-1125",
+      "query_sha256": "41054b5476fcf047cb2fe004aa6fc395e26feef0f4cbc015755662c7a5dd1f89",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:518ee455dd3a52008ed05d53551fde8bc8eebb51da3963122f121ee293c78fe2",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-193",
+        "dev:sec:1652044:0001652044-26-000018:f-222"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-223",
+      "query_sha256": "92efe9d06b6e7f71e19cf5fedb6da62aee32bd03b4c538b8b58f9f4f1c9b7db5",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:55d238f552b4a0b07fb9255fd4123c565339b4be0c4efd7a61cca56e42af98a9",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-119",
+        "dev:sec:1652044:0001652044-26-000018:f-153"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-152",
+      "query_sha256": "fa10a9f71b89002ddca959c0c1bfb38bcdf6c1bbaf85b5d38c9ecf2c5e2e7636",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:56277864dc6b9c17119db404a9aa98e4419537ea50709ea20469bda43918032e",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-79",
+        "dev:sec:1326801:0001628280-26-003942:f-92"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-91",
+      "query_sha256": "b8b317c3662b5a7177727b2e6ce973285f301a8e4827aadc0277f9a28c150116",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:598fff07560c39f37cf301cb01ff451321f3f92bb53499bf920c6f6eb730a757",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-119",
+        "dev:sec:1652044:0001652044-26-000018:f-132"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-133",
+      "query_sha256": "3772264122c290d9870244316bfbd9659a04842a9050c60703c585cf977cafe6",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:5a3fdab535e61abc612b4013aba1135db30b5f37f9fc35538d5e7bf1d7d11e8a",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-215",
+        "dev:sec:1018724:0001018724-26-000004:f-247"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-248",
+      "query_sha256": "fc7a5fe68ab3476cf2b42b723d0f5b61184f360b5b7b877d7c649380937f141b",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:5b312ab851abab076bce91aac965c0abd39c05ad1521340b20d19b8e60a533d9",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-287",
+        "dev:sec:1065280:0001065280-26-000034:f-288"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-286",
+      "query_sha256": "a38b9d353e7ce1ec7a5f34a7a6ba928d0e515d76ca03af2ce84aab8eb4d0c0c4",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:5d4ec47d7ffac15eb91bbcc82dbb1fb53eed307a32031a61ad1b2bcc50de9ff2",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-286",
+        "dev:sec:1065280:0001065280-26-000034:f-289"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-288",
+      "query_sha256": "18d8be018e27f1b19a0587a3b25a620a590d27d02818080349686120826cd635",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:655403b1b718a98ac999071f380ef263a5e5ffa16112f2665cd93d654f08e0a8",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-217",
+        "dev:sec:1065280:0001065280-26-000034:f-257"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-256",
+      "query_sha256": "f94aa061442cd197d4abb36fe5a5c0527d7ca44694db926352d8e06a25433a0d",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:68ceccdbe94d2d564ca442f9c670c61d8d454c24fef516aea7c5c35a57a9220b",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-79",
+        "dev:sec:1326801:0001628280-26-003942:f-84"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-83",
+      "query_sha256": "e0c08ac1ad3288de937372c1ce91c5345de6056b4726a44b7fed14333ce82f74",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:6c555e56d5c1424bdcd2d68f644c58b95ab24429df21f3627c8bd0bc91ed05e2",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-269",
+        "dev:sec:1065280:0001065280-26-000034:f-286"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-268",
+      "query_sha256": "f1b2feb08fb5afa7fad71e93d8d9865b2e676e3b6d959484f488fc8189b3c173",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:71b79ad959283a93bf959596e97bc69a5e374621a0c78af4517f6d8e9cbeb7f4",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-619",
+        "dev:sec:1065280:0001065280-26-000034:f-622"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-621",
+      "query_sha256": "2857ff4ce2c81a5f823bbbc17505907618a79af1e5a9f06676ad853059105eba",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:73501f2b03545d45a878ff100b7051fd2cc366fdd9dfbe563707e95a2f79052c",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-270",
+        "dev:sec:1018724:0001018724-26-000004:f-273"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-274",
+      "query_sha256": "82ca1ab1b7e22323573db46e4786fe4e11729a13ccc54570deeb8f87226ceac7",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:73cd7fa45ad79a6ae48a63306e0739bb77e7fb93f2bec62599eff714a01334cb",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-275",
+        "dev:sec:1065280:0001065280-26-000034:f-286"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-274",
+      "query_sha256": "65d06c597375e7e3575bce0394ea99fa824a445629bfdfbe80cd5b518ac44ade",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:7803d82aa578f63420b31012822ea651c31ddf87fe5e7752c9904c0e4b2e56a9",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-119",
+        "dev:sec:1652044:0001652044-26-000018:f-162"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-171",
+      "query_sha256": "ccbe8526be51cd4f912b888a3a84786cc3eaff11e927389963617706523ca99b",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:79b6a1eaacf3660636b174ad7ee9ab3910ddf6ffd9aa6f6729f5da8696176fef",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-286",
+        "dev:sec:1065280:0001065280-26-000034:f-317"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-316",
+      "query_sha256": "3218c893a009559d1cd167abd47e41baaa26b594cb268688dc3f594dbb7cc759",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:7d3eb4ed969cc70530bf8c1eb8480d2643cbfe9db256982edfe5d23c10bf6d06",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-102",
+        "dev:sec:1652044:0001652044-26-000018:f-119"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-103",
+      "query_sha256": "0eb98dc9705917878a462e289390518f4765b43c584a33229cb45b7f24ae516e",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:83cdb8c3778c669020efc3cafaeee908209f89a3c6d67cf0b907755d7b3cff40",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-286",
+        "dev:sec:1065280:0001065280-26-000034:f-323"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-320",
+      "query_sha256": "b382c7467414d845cc0e16c5e3ca12914bb285dbedd7f6aa243f158d79722b46",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:8403d5475cfcd1ff9581c84d414564f425f7eb65055d174dd003f553a53c70a8",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-1224",
+        "dev:sec:1065280:0001065280-26-000034:f-1234"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-1233",
+      "query_sha256": "d4e598c695c92dcee3868daca6bf82bb5f93220f688273d47228917ab1810693",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:8c2b2f7db243d24325d8b1ff003d9103da7005614c812770545c92e64eee119e",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-120",
+        "dev:sec:1326801:0001628280-26-003942:f-79"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-119",
+      "query_sha256": "3a24f7077eb428f1a9c2567287bba5943fe6434701ee76775fbe3d8581983bfa",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:8c6b5c56c86e7e7b214abd620bac38d4b903199531310f52cd7448160eb749a8",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-286",
+        "dev:sec:1065280:0001065280-26-000034:f-318"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-319",
+      "query_sha256": "fdd73a2b44e314847db260af80a1ea527d8b06ca0425a4495b04c2818b81c787",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:9140b3294b6cb029c511f1d89d7fcfcb51ef9d6c821c1e5ce276febf647ace6f",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-666",
+        "dev:sec:1018724:0001018724-26-000004:f-671"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-672",
+      "query_sha256": "ef8726bd3c74e7cfe7f6fc04536f7ad30af1c7b6d24d62961f3669e4e8e33134",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:97276519c3aab74c7069a972db4dc34d44e46e758608bd0afd969d3e6d1193a5",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-229",
+        "dev:sec:1652044:0001652044-26-000018:f-264"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-265",
+      "query_sha256": "afeb01e2b9689bf1ae4e3bdf72fb2dc435a3d8bc82d049e10c715c36b27f721a",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:9817cd0890e1710a3569e62c2f26253696cf5d4ac22e0dd45251fd661411bdde",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-1145",
+        "dev:sec:1652044:0001652044-26-000018:f-1150"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-1146",
+      "query_sha256": "c901dda834092dc935ceaa9dbcccfb74323a5e073346e23446e49f993da245d6",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:9ce166dd3ab42828e5f1cb69d4acde708efbeab8f4cdf78ceb1786ccc4f7164b",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-154",
+        "dev:sec:1018724:0001018724-26-000004:f-203"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-155",
+      "query_sha256": "d28de919f9701f923c1babf5d8679fc66aa08c59ef968d1f17cdcc3c2cbd1944",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:9f0c5071641bbf8c8bc2df53e53ea1d0f693c8db71a48eeadefd55848037e220",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-270",
+        "dev:sec:1018724:0001018724-26-000004:f-271"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-272",
+      "query_sha256": "577495814587cba1a9450db97b211cf0388fe9c22ea5a5258f91a52ca14a5526",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:9fcce943f70e4f425a125a223e62a825c62efcf46a98882009d71944c49cb2ee",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-1225",
+        "dev:sec:1065280:0001065280-26-000034:f-1230"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-1224",
+      "query_sha256": "ee62ce889fca59a9fe6848bbe1aba11031a542525ad907cd1c9edb4795ea5021",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:a8432af6f3ee35a81a9685f927a9fdcd38b9b36d33000854afb90ebe6fd397a9",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-270",
+        "dev:sec:1018724:0001018724-26-000004:f-296"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-295",
+      "query_sha256": "06c9dba08124b712e79561436154f068317b82d72dff14680cb3ee83f090a32b",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:a940f429ba0380b5552fbaa40ffd6642818bbc8751307a863ca6400a01cd450c",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-383",
+        "dev:sec:1652044:0001652044-26-000018:f-432"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-384",
+      "query_sha256": "1f40c0ca353d2ab1623af62a93fe0696894e6e40a0b2f735a6d515bb7fdf3f67",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:aa6926a17a416df09eae0b005fcb3f5eaa412057c3ce17b9a3da90f2d5a4fdea",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-119",
+        "dev:sec:1652044:0001652044-26-000018:f-122"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-123",
+      "query_sha256": "37301ec20cc84bde6dcaf01a58ef0b2cf80dd0917d56634647049bc4cbc87ef4",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:ad5775c144992e2b6937d494a9b9f8faa103f294d5320ea07371262a9b18ba07",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-119",
+        "dev:sec:1652044:0001652044-26-000018:f-154"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-155",
+      "query_sha256": "f6c429072be8e4d8799b2df4d2978e109ebd7cf4de99c3811aacafcf079d7b4f",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:b0aa4fd7a5b56afb2bf248f20c31be76402f9da30a22ffff2a55213016843aa8",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-172",
+        "dev:sec:1018724:0001018724-26-000004:f-203"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-173",
+      "query_sha256": "9fb9900afe3e234bb7ee128a540429b6fb59618aa889a3f9a9f7cd65f4ad3bf2",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:b1a7aa0773c64fbfbdc78a05c06136dab5ae35a449bbf7278a2e82d053317deb",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-66",
+        "dev:sec:1326801:0001628280-26-003942:f-79"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-65",
+      "query_sha256": "f1bd57f230d3a855f28f48e87d8eca3f5c5b729c76eea539c8d0601f8c2f16c3",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:b8c203b5f08ab7aa84e1604aec30cf9ab2a84fd2bad1c63ab1d5dbcfc6cf240f",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-58",
+        "dev:sec:1326801:0001628280-26-003942:f-79"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-57",
+      "query_sha256": "e61d21bcb4daedbdafd90a712c97a86f7da67ad3abdd83b397ecceafc5e4d909",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:ba9253c8a5d53bad0247af0535254ab9ccb2489f1f5f17c3256c885b5e509c40",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-286",
+        "dev:sec:1065280:0001065280-26-000034:f-291"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-290",
+      "query_sha256": "1ae41158da39b8238538eb817f1888e48fced91f62a87d8760ce561150c7abd8",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:bb1feb112aa65beda9de5a56af06fcf6df836a0e68fd8093f95d74a3d4989f22",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-940",
+        "dev:sec:1326801:0001628280-26-003942:f-941"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-939",
+      "query_sha256": "dea3a5ba2b6612cc0bda784163f0511acbb3284dcaf86ec7967ee1446d83704c",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:bfc18defaaa6011ee4670e7ac9befbda8a597f71b1e3688442e061a67461e375",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-257",
+        "dev:sec:1018724:0001018724-26-000004:f-270"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-258",
+      "query_sha256": "8b0346003d7fda0da73a70422f82fd71e4cbfadf4605aa136d2be190e90c20cb",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:c34b7fe3b62417388dc35ca6723466fc5f8e65f10448976d4b8024597fe5a270",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-121",
+        "dev:sec:1065280:0001065280-26-000034:f-92"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-91",
+      "query_sha256": "44b1690255c887c9026b4d13e3ad5852a4d735ecb39b083f3f09232be6013ad5",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:cef6696c1f4f0181b0697bc02ecb0235b45c6a31556448a884036eb5602b0add",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-270",
+        "dev:sec:1018724:0001018724-26-000004:f-303"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-304",
+      "query_sha256": "31a4e6b22936056dab423f3a648a9b8a71ceec14037b8a4a4f6643b040626a4c",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:d0196ab4bb8f3a6093b32f8bd27efda34dc021e3e25bcce8e205ab63dc7ccdce",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-218",
+        "dev:sec:1065280:0001065280-26-000034:f-256"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-217",
+      "query_sha256": "638a24be6fd39ecd87840915095eeb66d20018c94f545ffbbb1c2beca8e7335a",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:d240fe61b12713cad9d0555a5f2d4ff0b412bcb8b4f8469b39b5b7a1a256ca7a",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-155",
+        "dev:sec:1018724:0001018724-26-000004:f-202"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-203",
+      "query_sha256": "2e6e21f5d8820f50a293eac9db5fa146adfbd5b5a72325d70ac55f50e115bebc",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:d3aa5075129e6dc8e6e5024ce3505d7b265188e5944e3996f5ce3474f3ebcca3",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-1116",
+        "dev:sec:1326801:0001628280-26-003942:f-1120"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-1119",
+      "query_sha256": "534963d64cc2c76329d1fe45d54c4785799919e2965de9004d897c15ff4d17f1",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:d3ac84a5d36a0a46565b03cd90db7a5696fe02289398d61e7e5f6b84a8837509",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-119",
+        "dev:sec:1652044:0001652044-26-000018:f-178"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-179",
+      "query_sha256": "24f77e39f5738cc5a20161a601433fd6a93874dc3c584915cf5d356970816cad",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:d6b0d8214079c6c0a9ff50c1fa752cb56ef3a25521b555a17a84e64003cc39e8",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-116",
+        "dev:sec:1326801:0001628280-26-003942:f-79"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-115",
+      "query_sha256": "25254df8b6ff2af84ebbf2c0643d3d17bab100f2aa4f91538ea75d40b20d4e24",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:da340d12312c1c1ea8c86e57c073e4bcd9ff5c87b6e1d67451b7594a91efc735",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-130",
+        "dev:sec:1326801:0001628280-26-003942:f-161"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-160",
+      "query_sha256": "dc65fb6e1e332cfdc18e1ba978270dc6ecea20c4a4a8104352e2854b44ea9815",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:da36b44f069388b73e6fd610f4b94c7cbca36202f52a86803d985705bdb7d1f1",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-270",
+        "dev:sec:1018724:0001018724-26-000004:f-301"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-302",
+      "query_sha256": "566e925f13cfb3d4a92b192a658b9f650de32be2e197acb39f1ab4322a67373b",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:da4c2c785eafb733cb9a6160fbf1e797204c045a5ef024e8b1f3e466edd4e8d3",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-1221",
+        "dev:sec:1018724:0001018724-26-000004:f-1240"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-1222",
+      "query_sha256": "7428bce4cb1508247eb52d36e54b89677d644bc10cdbaa4351c9aaab26ffe94d",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:dc10892888e396a10298c03fc6327aefc3bb54f7f75f3d4186612f4438c79d6b",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-143",
+        "dev:sec:1326801:0001628280-26-003942:f-160"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-142",
+      "query_sha256": "9c870e96b34676290153e102720f3ca5894d5e8f88f0afc389085c8329a05f15",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:e749df3ef66a234db6f44f04c437d948738a8aee56c3d6705a459f1efab2303f",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-1116",
+        "dev:sec:1326801:0001628280-26-003942:f-1123"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-1122",
+      "query_sha256": "2b9386afdada58179e792093a11b81f77966f6640e059162c46e74c3be4636c1",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:e8276be545e1b6193de2558e3adbad74fc0cfb1be70ab62dd373d44d9796504f",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-61",
+        "dev:sec:1326801:0001628280-26-003942:f-80"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-79",
+      "query_sha256": "d3b9e2abe64026a0f519f568e5f4e651fd318939412d0e69373d789df53ccd39",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:ec76d6437804c39a1033e95beedf6db10fbb7ee2f32ec1cffaec77e5b02bffdb",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-286",
+        "dev:sec:1065280:0001065280-26-000034:f-325"
+      ],
+      "positive_candidate_key": "dev:sec:1065280:0001065280-26-000034:f-324",
+      "query_sha256": "97fbe692eefc761e8e984404a1b7e8607e9ca5389a4a98d9f24585aec00a2a84",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:f7cc412bc49f3da88b13a534ae3687fe1194fa0c290b8f08f111a0c53bae6a3c",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-62",
+        "dev:sec:1326801:0001628280-26-003942:f-79"
+      ],
+      "positive_candidate_key": "dev:sec:1326801:0001628280-26-003942:f-61",
+      "query_sha256": "93ade3b9456f15e77d31fd6f42741067b58313e654dce224a5f43b4fb505d2ac",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:f9be1b1069bc065ce4233623f71fc9f4f315e0249068865b7211db01af4324ad",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-119",
+        "dev:sec:1652044:0001652044-26-000018:f-92"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-93",
+      "query_sha256": "c2424562d48136fffd15dde0475cd85cc56138daa722129c69e8d505cd4dd1e6",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:fa07c1ca37b91ef53e9742ba6098ad5434143ca101e1039d9573da0856b3e377",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-270",
+        "dev:sec:1018724:0001018724-26-000004:f-297"
+      ],
+      "positive_candidate_key": "dev:sec:1018724:0001018724-26-000004:f-298",
+      "query_sha256": "7d636abf9507b0739050bb61c4a2ef7bd9bcea5210421baa4c0299af1aa1db7c",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    },
+    {
+      "ai_review_status": "structural_and_lexical_pass",
+      "annotation_id": "dev-annotation:fa53dadcf84acc103d630850f208214131a8721c873f894a4b4bba6f1f911be0",
+      "human_review_status": "not_reviewed",
+      "negative_candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-119",
+        "dev:sec:1652044:0001652044-26-000018:f-96"
+      ],
+      "positive_candidate_key": "dev:sec:1652044:0001652044-26-000018:f-97",
+      "query_sha256": "39172f2af66d31a7b1bdcb404bcbeaa3c337ece4454ab112a1197e8ecf66106a",
+      "review_mode": "authorized_ai_assisted_independent_review"
+    }
+  ],
+  "reviewer_id": "authorized_ai_assisted_annotation_reviewer",
+  "reviewer_type": "ai_reviewer",
+  "schema": "nf-opt-17/independent-annotation-review/v1"
+}

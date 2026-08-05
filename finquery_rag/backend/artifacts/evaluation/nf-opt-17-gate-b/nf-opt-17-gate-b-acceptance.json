@@ -1,0 +1,16 @@
+{
+  "annotation_count": 80,
+  "answer_generation_calls": 0,
+  "decision": "independent_hard_negative_development_set_generated",
+  "development_document_count": 4,
+  "expected_answer_stored": false,
+  "frozen_benchmark_question_or_label_reads": 0,
+  "hard_negative_count": 160,
+  "model_calls": 0,
+  "next_gate": "nf-opt-17-gate-c-independent_annotation_review",
+  "production_behavior_changed": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "schema": "nf-opt-17/gate-b/acceptance/v1",
+  "source_manifest_sha256": "a4854ed278f2b025f442a9f3df46855e3f757455dea2dba7e5930182b1891eb1"
+}

@@ -1,0 +1,18 @@
+{
+  "annotation_input_sha256": "036f452acb6c771a990e453ea1cac8eacfc5eb8edf1df5a109ea2f6cd306c4cb",
+  "answer_generation_calls": 0,
+  "candidate_input_sha256": "788df420bbcdafe38098d3c4f89c56a9df650f8209c75bd41c0fbb45c5cafe65",
+  "decision": "hard_negative_reranker_training_gain_insufficient",
+  "expected_field_reads": 0,
+  "frozen_benchmark_question_or_label_reads": 0,
+  "hyperparameter_scan_count": 0,
+  "issuer_overlap_count": 0,
+  "next_gate": "stop_hard_negative_reranker_training",
+  "optimizer_steps": 24,
+  "production_behavior_changed": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "schema": "nf-opt-17/gate-f/acceptance/v1",
+  "training_gate_passed": false,
+  "training_run_count": 1
+}
