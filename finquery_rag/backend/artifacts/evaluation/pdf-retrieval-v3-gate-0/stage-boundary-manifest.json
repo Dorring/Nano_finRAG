@@ -1,0 +1,1955 @@
+{
+  "contract": {
+    "bm25_requested_k": 200,
+    "dense_requested_k": 200,
+    "final_selector_input": "second production reranker invocation receives the same full RRF list",
+    "final_selector_output": "Top-5",
+    "reranker_input": "the full RRF list, not the diagnostic RRF@40 projection",
+    "reranker_output": "first production invocation is Top-20",
+    "rrf_actual_output": "full fused list passed into each production reranker invocation",
+    "rrf_metric_k": 40
+  },
+  "per_case": [
+    {
+      "bm25_actual_returned_count": 96,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 36,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 36,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 36,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 36,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 36,
+      "rrf_debug_output_count": 36,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 96,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 35,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 35,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 35,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 35,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 35,
+      "rrf_debug_output_count": 35,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 96,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 71,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 71,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 71,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 71,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 71,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 33,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 33,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 33,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 33,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 33,
+      "rrf_debug_output_count": 33,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 31,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 31,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 31,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 31,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 31,
+      "rrf_debug_output_count": 31,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 97,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 66,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 66,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 66,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 66,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 66,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 35,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 35,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 35,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 35,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 35,
+      "rrf_debug_output_count": 35,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 37,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 37,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 37,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 37,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 37,
+      "rrf_debug_output_count": 37,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 33,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 33,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 33,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 33,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 33,
+      "rrf_debug_output_count": 33,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 93,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 74,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 74,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 74,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 74,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 74,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 99,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 73,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 73,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 73,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 73,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 73,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 94,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 77,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 77,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 77,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 77,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 77,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 81,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 69,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 69,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 69,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 69,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 69,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 63,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 70,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 70,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 70,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 70,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 70,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 98,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 79,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 79,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 79,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 79,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 79,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 83,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 79,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 79,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 79,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 79,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 79,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 81,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 77,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 77,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 77,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 77,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 77,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 81,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 71,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 71,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 71,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 71,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 71,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 94,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 75,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 75,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 75,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 75,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 75,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 68,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 71,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 71,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 71,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 71,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 71,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 74,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 75,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 75,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 75,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 75,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 75,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 78,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 72,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 72,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 72,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 72,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 72,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 67,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 76,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 76,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 76,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 76,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 76,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 94,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 73,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 73,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 73,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 73,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 73,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 94,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 72,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 72,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 72,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 72,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 72,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 94,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 39,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 39,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 39,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 39,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 39,
+      "rrf_debug_output_count": 39,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 91,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 71,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 71,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 71,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 71,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 71,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 65,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 65,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 65,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 65,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 65,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 73,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 73,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 73,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 73,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 73,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 60,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 60,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 60,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 60,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 60,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 61,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 61,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 61,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 61,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 61,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 71,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 71,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 71,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 71,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 71,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 65,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 65,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 65,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 65,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 65,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 63,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 63,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 63,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 63,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 63,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 72,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 72,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 72,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 72,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 72,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 57,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 57,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 57,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 57,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 57,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 95,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 76,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 76,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 76,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 76,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 76,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 95,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 75,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 75,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 75,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 75,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 75,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 95,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 71,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 71,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 71,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 71,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 71,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 99,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 69,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 69,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 69,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 69,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 69,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 83,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 73,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 73,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 73,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 73,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 73,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 88,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 73,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 73,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 73,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 73,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 73,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 99,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 74,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 74,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 74,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 74,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 74,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 95,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 77,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 77,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 77,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 77,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 77,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 99,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 65,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 65,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 65,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 65,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 65,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 38,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 76,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 76,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 76,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 76,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 76,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 76,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 76,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 76,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 76,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 76,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 79,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 79,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 79,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 79,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 79,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 95,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 65,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 65,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 65,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 65,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 65,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 86,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 74,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 74,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 74,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 74,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 74,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 55,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 79,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 79,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 79,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 79,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 79,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 76,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 76,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 76,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 76,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 76,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 38,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 38,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 38,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 38,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 38,
+      "rrf_debug_output_count": 38,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 61,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 61,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 61,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 61,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 61,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 99,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 69,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 69,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 69,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 69,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 69,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 99,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 74,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 74,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 74,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 74,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 74,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 73,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 73,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 73,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 73,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 73,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 73,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 73,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 73,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 73,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 73,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 62,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 62,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 62,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 62,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 62,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 98,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 75,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 75,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 75,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 75,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 75,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 67,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 67,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 67,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 67,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 67,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 38,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 38,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 38,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 38,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 38,
+      "rrf_debug_output_count": 38,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 73,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 73,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 73,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 73,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 73,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 67,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 67,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 67,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 67,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 67,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 92,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 40,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 40,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 40,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 40,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 40,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 98,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 69,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 69,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 69,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 69,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 69,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 80,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 29,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 29,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 29,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 29,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 29,
+      "rrf_debug_output_count": 29,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 61,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 61,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 61,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 61,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 61,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 100,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 70,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 70,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 70,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 70,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 70,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 92,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 34,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 34,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 34,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 34,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 34,
+      "rrf_debug_output_count": 34,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 92,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 40,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 40,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 40,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 40,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 40,
+      "rrf_debug_output_count": 40,
+      "rrf_metric_k": 40
+    },
+    {
+      "bm25_actual_returned_count": 80,
+      "bm25_requested_k": 200,
+      "dense_actual_returned_count": 200,
+      "dense_requested_k": 200,
+      "final_selector_input_count": 32,
+      "final_selector_output_count": 5,
+      "reranker_calls": [
+        {
+          "input_count": 32,
+          "output_count": 20,
+          "top_k": 20
+        },
+        {
+          "input_count": 32,
+          "output_count": 5,
+          "top_k": 5
+        }
+      ],
+      "reranker_input_count": 32,
+      "reranker_output_count": 20,
+      "rrf_actual_output_count": 32,
+      "rrf_debug_output_count": 32,
+      "rrf_metric_k": 40
+    }
+  ],
+  "summary": {
+    "bm25_actual_returned_count": [
+      38,
+      55,
+      63,
+      67,
+      68,
+      74,
+      78,
+      80,
+      81,
+      83,
+      86,
+      88,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100
+    ],
+    "dense_actual_returned_count": [
+      200
+    ],
+    "final_selector_input_count": [
+      29,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      57,
+      60,
+      61,
+      62,
+      63,
+      65,
+      66,
+      67,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      79
+    ],
+    "final_selector_output_count": [
+      5
+    ],
+    "reranker_input_count": [
+      29,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      57,
+      60,
+      61,
+      62,
+      63,
+      65,
+      66,
+      67,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      79
+    ],
+    "reranker_output_count": [
+      20
+    ],
+    "rrf_actual_output_count": [
+      29,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      57,
+      60,
+      61,
+      62,
+      63,
+      65,
+      66,
+      67,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      79
+    ],
+    "rrf_debug_output_count": [
+      29,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40
+    ]
+  }
+}

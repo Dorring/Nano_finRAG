@@ -1,0 +1,108 @@
+{
+  "records": [
+    {
+      "candidate_universe_hash": "b5bc4740839561deb583c2a972148cd8b652adf5867f0ba61fdd5270e2301193",
+      "code_commit": "a603e0aed6fbf67fa598561428d3b324715163d4-gate0-r1",
+      "evaluation_role": "current_production_snapshot",
+      "index_hash": "b5bc4740839561deb583c2a972148cd8b652adf5867f0ba61fdd5270e2301193",
+      "metric_name": "BM25 Source Recall@200",
+      "production_promoted": true,
+      "query_processing": "production QueryProcessor expansion",
+      "requested_k": 200,
+      "retriever": "production_bm25",
+      "source_artifact": "artifacts/evaluation/pdf-retrieval-v3-gate-0/production-stage-replay.json",
+      "value": "37/80"
+    },
+    {
+      "candidate_universe_hash": "b5bc4740839561deb583c2a972148cd8b652adf5867f0ba61fdd5270e2301193",
+      "code_commit": "a603e0aed6fbf67fa598561428d3b324715163d4-gate0-r1",
+      "evaluation_role": "current_production_snapshot",
+      "index_hash": "b5bc4740839561deb583c2a972148cd8b652adf5867f0ba61fdd5270e2301193",
+      "metric_name": "Dense Source Recall@200",
+      "production_promoted": true,
+      "query_processing": "production QueryProcessor expansion",
+      "requested_k": 200,
+      "retriever": "production_dense",
+      "source_artifact": "artifacts/evaluation/pdf-retrieval-v3-gate-0/production-stage-replay.json",
+      "value": "14/80"
+    },
+    {
+      "candidate_universe_hash": "b5bc4740839561deb583c2a972148cd8b652adf5867f0ba61fdd5270e2301193",
+      "code_commit": "a603e0aed6fbf67fa598561428d3b324715163d4-gate0-r1",
+      "evaluation_role": "current_production_snapshot",
+      "index_hash": "b5bc4740839561deb583c2a972148cd8b652adf5867f0ba61fdd5270e2301193",
+      "metric_name": "RRF Source Recall@40",
+      "production_promoted": true,
+      "query_processing": "production retrieval pipeline",
+      "requested_k": 40,
+      "retriever": "production_rrf_diagnostic_cut",
+      "source_artifact": "artifacts/evaluation/pdf-retrieval-v3-gate-0/production-stage-replay.json",
+      "value": "20/80"
+    },
+    {
+      "candidate_universe_hash": "b5bc4740839561deb583c2a972148cd8b652adf5867f0ba61fdd5270e2301193",
+      "code_commit": "a603e0aed6fbf67fa598561428d3b324715163d4-gate0-r1",
+      "evaluation_role": "current_production_snapshot",
+      "index_hash": "b5bc4740839561deb583c2a972148cd8b652adf5867f0ba61fdd5270e2301193",
+      "metric_name": "Strict Final Source Recall@5",
+      "production_promoted": true,
+      "query_processing": "production retrieval pipeline",
+      "requested_k": 5,
+      "retriever": "production_final_selector",
+      "source_artifact": "artifacts/evaluation/pdf-retrieval-v3-gate-0/production-stage-replay.json",
+      "value": "13/80"
+    },
+    {
+      "candidate_universe_hash": "not_available_in_artifact",
+      "code_commit": "not_available_in_artifact",
+      "evaluation_role": "historical_diagnostic_current_window",
+      "index_hash": "not_available_in_artifact",
+      "metric_name": "BM25 Source Recall@200",
+      "production_promoted": false,
+      "query_processing": "NF-OPT-03 current_production window diagnostic",
+      "requested_k": 200,
+      "retriever": "bm25_variant_a",
+      "source_artifact": "artifacts/evaluation/nf-opt-03/bm25-comparison.json#/A/rank_metrics/@200",
+      "value": "24/80"
+    },
+    {
+      "candidate_universe_hash": "not_available_in_artifact",
+      "code_commit": "not_available_in_artifact",
+      "evaluation_role": "historical_shadow_extended_window",
+      "index_hash": "not_available_in_artifact",
+      "metric_name": "BM25 Source Recall@200",
+      "production_promoted": false,
+      "query_processing": "NF-OPT-03 extended BM25 window experiment",
+      "requested_k": 200,
+      "retriever": "bm25_variant_b200",
+      "source_artifact": "artifacts/evaluation/nf-opt-03/bm25-comparison.json#/B200/rank_metrics/@200",
+      "value": "48/80"
+    },
+    {
+      "candidate_universe_hash": "not_available_in_artifact",
+      "code_commit": "not_available_in_artifact",
+      "evaluation_role": "historical_diagnostic_current_index",
+      "index_hash": "not_available_in_artifact",
+      "metric_name": "Dense Source Recall@200",
+      "production_promoted": false,
+      "query_processing": "NF-OPT-01 dense rank diagnostic",
+      "requested_k": 200,
+      "retriever": "dense_current",
+      "source_artifact": "artifacts/evaluation/nf-opt-01/dense-rank-comparison.json#/current/@200",
+      "value": "14/80"
+    },
+    {
+      "candidate_universe_hash": "not_available_in_artifact",
+      "code_commit": "not_available_in_artifact",
+      "evaluation_role": "historical_shadow_superset",
+      "index_hash": "not_available_in_artifact",
+      "metric_name": "Dense Source Recall@200",
+      "production_promoted": false,
+      "query_processing": "NF-OPT-01 dense canonical/superset shadow",
+      "requested_k": 200,
+      "retriever": "dense_superset",
+      "source_artifact": "artifacts/evaluation/nf-opt-01/dense-rank-comparison.json#/superset/@200",
+      "value": "52/80"
+    }
+  ]
+}

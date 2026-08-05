@@ -14,12 +14,20 @@ def test_production_final_identity_parity_is_exact() -> None:
     assert parity["unexpected_hits"] == []
 
 
-def test_gate_blocks_when_stage_200_history_cannot_be_replayed() -> None:
+def test_gate_uses_current_production_snapshot_not_historical_shadows() -> None:
     acceptance = json.loads((OUT / "acceptance.json").read_text())
     replay = json.loads((OUT / "production-stage-replay.json").read_text())["metrics"]
+    ledger = json.loads((OUT / "metric-provenance-ledger.json").read_text())["records"]
+    nestedness = json.loads((OUT / "stage-nestedness-audit.json").read_text())
     assert replay["strict_final_source_recall_at_5"] == 13
     assert replay["rrf_source_recall_at_40"] == 20
-    assert replay["bm25_source_recall_at_200"] != 48
-    assert replay["dense_source_recall_at_200"] != 52
-    assert acceptance["gate_passed"] is False
-    assert acceptance["next_gate"] == "stop_and_fix_harness"
+    assert replay["bm25_source_recall_at_200"] == 37
+    assert replay["dense_source_recall_at_200"] == 14
+    assert acceptance["gate_passed"] is True
+    assert acceptance["next_gate"] == "benchmark_governance"
+    assert all(
+        not record["production_promoted"]
+        for record in ledger
+        if record["evaluation_role"].startswith("historical_shadow")
+    )
+    assert nestedness["unexplained_transition_count"] == 0

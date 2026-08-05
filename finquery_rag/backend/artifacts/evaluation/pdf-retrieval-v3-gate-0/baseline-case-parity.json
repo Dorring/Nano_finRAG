@@ -63,7 +63,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 1,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -75,7 +77,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -91,7 +95,9 @@
         "dense": 0,
         "final": 1,
         "reranker": 1,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -103,7 +109,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -115,7 +123,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -127,7 +137,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 1,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -139,7 +151,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 1,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -151,7 +165,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -163,7 +179,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -175,7 +193,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -187,7 +207,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -199,7 +221,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -211,7 +235,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -227,7 +253,9 @@
         "dense": 0,
         "final": 1,
         "reranker": 1,
-        "rrf": 0
+        "reranker_input": 1,
+        "rrf": 0,
+        "rrf_full": 1
       }
     },
     {
@@ -239,7 +267,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -251,7 +281,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -263,7 +295,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -275,7 +309,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -287,7 +323,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -299,7 +337,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -315,7 +355,9 @@
         "dense": 0,
         "final": 1,
         "reranker": 1,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -327,7 +369,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -339,7 +383,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -351,7 +397,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -363,7 +411,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -375,7 +425,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -387,7 +439,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -403,7 +457,9 @@
         "dense": 1,
         "final": 1,
         "reranker": 1,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -415,7 +471,9 @@
         "dense": 1,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 1,
+        "rrf": 0,
+        "rrf_full": 1
       }
     },
     {
@@ -427,7 +485,9 @@
         "dense": 1,
         "final": 0,
         "reranker": 0,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -439,7 +499,9 @@
         "dense": 1,
         "final": 0,
         "reranker": 0,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -451,7 +513,9 @@
         "dense": 1,
         "final": 0,
         "reranker": 1,
-        "rrf": 0
+        "reranker_input": 1,
+        "rrf": 0,
+        "rrf_full": 1
       }
     },
     {
@@ -467,7 +531,9 @@
         "dense": 1,
         "final": 1,
         "reranker": 1,
-        "rrf": 0
+        "reranker_input": 1,
+        "rrf": 0,
+        "rrf_full": 1
       }
     },
     {
@@ -483,7 +549,9 @@
         "dense": 2,
         "final": 1,
         "reranker": 1,
-        "rrf": 1
+        "reranker_input": 2,
+        "rrf": 1,
+        "rrf_full": 2
       }
     },
     {
@@ -495,7 +563,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -511,7 +581,9 @@
         "dense": 1,
         "final": 1,
         "reranker": 1,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -523,7 +595,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -535,7 +609,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -547,7 +623,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 1,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -559,7 +637,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 1,
-        "rrf": 0
+        "reranker_input": 1,
+        "rrf": 0,
+        "rrf_full": 1
       }
     },
     {
@@ -571,7 +651,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -583,7 +665,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -595,7 +679,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 1,
-        "rrf": 0
+        "reranker_input": 1,
+        "rrf": 0,
+        "rrf_full": 1
       }
     },
     {
@@ -607,7 +693,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -619,7 +707,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 1,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -631,7 +721,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -643,7 +735,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -655,7 +749,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -667,7 +763,9 @@
         "dense": 1,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -679,7 +777,9 @@
         "dense": 1,
         "final": 0,
         "reranker": 0,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -691,7 +791,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -703,7 +805,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 1,
-        "rrf": 0
+        "reranker_input": 1,
+        "rrf": 0,
+        "rrf_full": 1
       }
     },
     {
@@ -715,7 +819,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -727,7 +833,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -743,7 +851,9 @@
         "dense": 0,
         "final": 1,
         "reranker": 1,
-        "rrf": 0
+        "reranker_input": 1,
+        "rrf": 0,
+        "rrf_full": 1
       }
     },
     {
@@ -755,7 +865,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -767,7 +879,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 1,
+        "rrf": 0,
+        "rrf_full": 1
       }
     },
     {
@@ -783,7 +897,9 @@
         "dense": 0,
         "final": 1,
         "reranker": 1,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -795,7 +911,9 @@
         "dense": 1,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -807,7 +925,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -823,7 +943,9 @@
         "dense": 1,
         "final": 1,
         "reranker": 1,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -835,7 +957,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -851,7 +975,9 @@
         "dense": 0,
         "final": 1,
         "reranker": 1,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -863,7 +989,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -875,7 +1003,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -891,7 +1021,9 @@
         "dense": 0,
         "final": 1,
         "reranker": 1,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -903,7 +1035,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -915,7 +1049,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -927,7 +1063,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -939,7 +1077,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 1,
-        "rrf": 1
+        "reranker_input": 1,
+        "rrf": 1,
+        "rrf_full": 1
       }
     },
     {
@@ -951,7 +1091,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     },
     {
@@ -963,7 +1105,9 @@
         "dense": 0,
         "final": 0,
         "reranker": 0,
-        "rrf": 0
+        "reranker_input": 0,
+        "rrf": 0,
+        "rrf_full": 0
       }
     }
   ],
