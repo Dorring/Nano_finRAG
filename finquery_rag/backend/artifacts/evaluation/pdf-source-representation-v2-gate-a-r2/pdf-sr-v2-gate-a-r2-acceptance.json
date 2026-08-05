@@ -1,0 +1,39 @@
+{
+  "answer_generation_calls": 0,
+  "arbitrated_logical_table_count": 115,
+  "candidate_construction_run": false,
+  "coverage_threshold_results": {
+    "geometry_cell_coverage": true,
+    "lineage_row_coverage": true,
+    "metric_period_row_coverage": false,
+    "metric_row_coverage": true,
+    "period_row_coverage": false,
+    "scale_row_coverage": true
+  },
+  "coverage_thresholds": {
+    "geometry_cell_coverage": 0.99,
+    "lineage_row_coverage": 0.7,
+    "metric_period_row_coverage": 0.65,
+    "metric_row_coverage": 0.94,
+    "period_row_coverage": 0.7,
+    "scale_row_coverage": 0.89
+  },
+  "decision": "pdf_sr_v2_native_resolver_coverage_blocked",
+  "duplicate_logical_table_id_count": 0,
+  "embedding_calls": 0,
+  "frozen_72_question_reads": 0,
+  "frozen_page_count": 104,
+  "gate_a_sha256": "bfd731dd2260ccdd4d6b223420bfd80408e5d6ef2eb74bf4fb1556571e44aeee",
+  "gate_passed": false,
+  "next_gate": "stop_and_review_unresolved_native_structure",
+  "parser_arbitration_ambiguity_count": 0,
+  "parser_arbitration_gold_reads": 0,
+  "production_behavior_changed": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "r1_sha256": "d138c00e625b773e13b9f9abb5367eed8a37bfd0dd550694c6f00804484c4419",
+  "recall_evaluation_run": false,
+  "resolver_gold_reads": 0,
+  "resolver_only_table_count": 106,
+  "schema": "pdf-source-representation-v2/gate-a-r2/acceptance/v1"
+}

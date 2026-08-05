@@ -1,0 +1,11 @@
+{
+  "fields": [
+    "column_index",
+    "header_path",
+    "normalized_period",
+    "period_kind",
+    "resolution_method",
+    "source_bboxes"
+  ],
+  "gold_fields_used": false
+}

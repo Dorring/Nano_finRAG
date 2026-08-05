@@ -1,0 +1,2242 @@
+{
+  "records": [
+    {
+      "logical_table_id": "pdf-r2-logical-table:688d54f185c05d1fa8f7801fcf8742b5c0c12e5ac847a3bb88ee749eb24529cc",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:97c59eaf13ca38ff2a2049a7635dd2690715ed1ae9b208080207b4042bdf7432"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          0,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:97c59eaf13ca38ff2a2049a7635dd2690715ed1ae9b208080207b4042bdf7432"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:2917e091d3f8f12131db8dece49c2e76e1ba74bd66cbee3c8d1324768ae2c1b5",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:b7458a22f72d055e0575a4dbed8a76cabbf2843c4fcaf407478794563a833e2a"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          0,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:b7458a22f72d055e0575a4dbed8a76cabbf2843c4fcaf407478794563a833e2a"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:d7ac985925294a22e1a28100bd501a05bdd0f0f7271467016afa4bc695f75c0f",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:81f0bf48d53dcd8edadec81ccd167fc09535296136d6714b80434f39c21d12b5"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          0,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:81f0bf48d53dcd8edadec81ccd167fc09535296136d6714b80434f39c21d12b5"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:34de889a633adfeee7cd54eeff4a95fb478c66908687418b8fef9f554b5f6147",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:d2fce37215435b08e31480e685a4c046b4e750e6ef4aa735a3665d1c9fdb37ed"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.3333333333333333,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:d2fce37215435b08e31480e685a4c046b4e750e6ef4aa735a3665d1c9fdb37ed"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:8ed69f0e342180336cd2beaff83e9d77d279abea95f74bf57e6a4db36ac8a48c",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:38ddc61053516d8fe9fbc0d65ecdbb7e04654ec4fc75fa0cc2f41fc09eb7e14a"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:38ddc61053516d8fe9fbc0d65ecdbb7e04654ec4fc75fa0cc2f41fc09eb7e14a"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:1af9374e1918ca42844b1201085f6153c2eaa17504625808cea51c7c6531897b",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:1761c3170db1faa73e0ed3324d29fe7f210fbb50bf4549e8653d5a8a53f6e146"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          0.9166666666666666,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:1761c3170db1faa73e0ed3324d29fe7f210fbb50bf4549e8653d5a8a53f6e146"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:9ab788a54379dfa3fbcd402d49f8d6625c835ffe66a8308ee049b9a808acc9fe",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:eee6ae0e2214ae33acf182e292f31090cb687a60f9a6706b20816c36a812c3ce"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          1.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:eee6ae0e2214ae33acf182e292f31090cb687a60f9a6706b20816c36a812c3ce"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:c475f718cda201e4b9952a111039129b652d1c2814a063cd8ad81d854b2a2cff",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:77484c336a7a228a3655f69d75a34128bb5dff1b02ef6c5cbca9726581367f89"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          0,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:77484c336a7a228a3655f69d75a34128bb5dff1b02ef6c5cbca9726581367f89"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:d4fa3ee23e9e085c69fe90f2c0b278b0d008a4db875b7915469346b65932c1a7",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:8dc3e6dbb712b1d7e0fac15a96d668b52dd11615dd4aa16b5e997fdf5569b105"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          1,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:8dc3e6dbb712b1d7e0fac15a96d668b52dd11615dd4aa16b5e997fdf5569b105"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:f8703fdae91da6825f1da52abf37823eea263bd2e497314b02eb90a63b74b6b5",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:577860a6732b70846b9342a7c3635ec056187ff39a8fd1b32d42db18de70349e"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:577860a6732b70846b9342a7c3635ec056187ff39a8fd1b32d42db18de70349e"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:5ac7a16663968302643e2c5d41bd3b08648c6e6024fa2532c13b66ebf00af459",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:b18af35638c4181700e5fc98ab60f4bda7dd0b9375f747913c70954f02db1a9f"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:b18af35638c4181700e5fc98ab60f4bda7dd0b9375f747913c70954f02db1a9f"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:60ab65ad3afb02f89509814997f4573c44ccb92eae3f331f06e1ad489a4421bd",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:a005ccc9a44cc507b344e4e639388afd204af30e30312ed1e9a9313989a4150c"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:a005ccc9a44cc507b344e4e639388afd204af30e30312ed1e9a9313989a4150c"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:51e9c3f467e415b2a58010ce0429cd0f2367038ea419bc2e792fcecc36361b9d",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:a3e04391fbee8b5b992f8a4d90929194d110e5bdce7ccfee95d82963448b6c5f"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:a3e04391fbee8b5b992f8a4d90929194d110e5bdce7ccfee95d82963448b6c5f"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:7677265416b89e8dd9d2c2a80bca1cdc507f5122e28678b18f56e127ebe81b85",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:127559ce67c78039f5388221477fb5538614cf4c23b7bae5e3a114266a2db69e"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:127559ce67c78039f5388221477fb5538614cf4c23b7bae5e3a114266a2db69e"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:400d857dbb172ab4b31bb6e3a957040e1fe80b909c4d7036883b27b676ea6da7",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:2de55c06e21ae689ebd722de3296e1c85437048037dff9daf076f0f65476b883"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:2de55c06e21ae689ebd722de3296e1c85437048037dff9daf076f0f65476b883"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:74d1a048bb0676f8a9ca64e3d5f08b4cc7cd510bfcb5c925985212b71e760c66",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:23b402b5bdb398e55559fbba5b68c11a2c50928976d4503266e180b1c2624033"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:23b402b5bdb398e55559fbba5b68c11a2c50928976d4503266e180b1c2624033"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:dbd736bd11bf41bae74874289895cfeaea6cfe7e2d9835299159de5a10579f7e",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:6ec20beece922897c8bee10b2f3d3742d3913b7283ecbd8956b72d1a63818ca0"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:6ec20beece922897c8bee10b2f3d3742d3913b7283ecbd8956b72d1a63818ca0"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:7a72b72b64f7b68fe3c7aca6ecff93ee07f693c407783c94c67ddb17f4305044",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:7a3168c0b0c3855b53b84537b74c55a7e83646cea0b11cf4c647835f24a70cd7"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          1,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:7a3168c0b0c3855b53b84537b74c55a7e83646cea0b11cf4c647835f24a70cd7"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:a5925a12241ad09b1ff1899e08a6510fa2fb9efe1d0173c86ff48c4ac253aa80",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:11dc865b01123871397ec15dafebc7428fc352567b9c42befbdc698285726e9e"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:11dc865b01123871397ec15dafebc7428fc352567b9c42befbdc698285726e9e"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:8eb8ef4d6d259ef13f8be401fdf757ff81d9b50aecb4f8da314c215115ffd3a9",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:33195602c1b26ae5fc8de739673b7c898b0794d62844d9712f44f48643f03029"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0.9090909090909091,
+          0.18181818181818182,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:33195602c1b26ae5fc8de739673b7c898b0794d62844d9712f44f48643f03029"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:76db695b25fe0369c141e2ec9e71695c6800200f89124c35b8e51f4d9e4d9958",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:d2795c4344e14c523f1710feaa9b7c29c3568133cd32ad7c8e616b74d617b64e"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0.8823529411764706,
+          0.0,
+          0.16666666666666666,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:d2795c4344e14c523f1710feaa9b7c29c3568133cd32ad7c8e616b74d617b64e"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:c58aa0c708c616517e8418a9b7d47d6b5ba09c11f9eaa069d8621673cd09027a",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:d0ee782d4312a60bbde99ff216457cc22f96180a4db63a6cc2b4687c68e02288"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          0.5,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:d0ee782d4312a60bbde99ff216457cc22f96180a4db63a6cc2b4687c68e02288"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:f656b56fc554e6aeb50b2cf456488f72aa16961f792db8aadb7ae7fdc9b652c3",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:b05de33ee75fad7356e4b9765d928851f395818ac0fc5d19762bf510006e8a8b"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:b05de33ee75fad7356e4b9765d928851f395818ac0fc5d19762bf510006e8a8b"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:81fa1e631e8f9dcf40708af18aca88c7f275b1910dc78aff466c9f1f058ccd28",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:b227783b4b694e308f4c04216a5cc9415f3a9d2de5fce291fa09ff18d0c749e9"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:b227783b4b694e308f4c04216a5cc9415f3a9d2de5fce291fa09ff18d0c749e9"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:2c8ed8611b3b7002d50baab87166c0578ed51e7d4393b471d891a9e39345f2a4",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:f4641c10c4772ea12bdb7cab106f73b2c7dfe34057799a42e313ac9548ec0111"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:f4641c10c4772ea12bdb7cab106f73b2c7dfe34057799a42e313ac9548ec0111"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:d440b8a6a9ac08d31448b90ca37c55c1dd9cace1a40359c181d069e95a3d29be",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:f6a40dcd48e1a4ddd87da5994e2885cd6acef6207cd5b6fff9acec0aeae597c6"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          0,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:f6a40dcd48e1a4ddd87da5994e2885cd6acef6207cd5b6fff9acec0aeae597c6"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:4064c48ed6da31837accc4f5b516e79f7b1b5989bffe4f983107e6208ab8ea3f",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:545ef64dccf6523fc173a948a5d706db5f0ea12701921b83247868bd8a0e2550"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          0,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:545ef64dccf6523fc173a948a5d706db5f0ea12701921b83247868bd8a0e2550"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:f7cce66956d6f72db23a6abb858c04e505caa14fe22faa46d1291d8ab7f7d2c0",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:1f67ebf25b06ff27abe6bc5e9d5828dccbf68193cc106934d369712cfbe4e27e"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:1f67ebf25b06ff27abe6bc5e9d5828dccbf68193cc106934d369712cfbe4e27e"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:466ff1daf92901533e655f3c3c4ff8c67aca932f7878586651ad40b2ecefafb1",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:6b7dca100dea5957f0483711fc2b05fc1d474e6aa348ddf55660b3ef4d47713e"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          1,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:6b7dca100dea5957f0483711fc2b05fc1d474e6aa348ddf55660b3ef4d47713e"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:41199883c2028491996f8cbb5b1a3ea7bc46dc6e7aee70a0dcd2805f3a979ee2",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:9159d590ea7cbfc6a9a27c2be4e8596a2603d2bfe888d444397c2a7ea009a60e"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:9159d590ea7cbfc6a9a27c2be4e8596a2603d2bfe888d444397c2a7ea009a60e"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:e4c7c3c6d1c20f42a126ad4d45d3bb36967e3e335f931d9dfc4a36f4aaab0f95",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:52f15efa2133547796e647138694c62089176e94a052b6116053f5192ab8342e"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:52f15efa2133547796e647138694c62089176e94a052b6116053f5192ab8342e"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:f437179930a66bda1ce1ce01ee7557eba2fdd5e49e94fb9559581808cd7d6148",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:e0ed160c458198cbcede46e4a39f96d55ec4290a6f81c55f5ad162fd37675213"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:e0ed160c458198cbcede46e4a39f96d55ec4290a6f81c55f5ad162fd37675213"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:cf408993c1cfab3e98b66c47952b796d8956186bb541ff47d795f6d1f765f304",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:e8a6b7f48cad34b72ca11d0268c0928ffe663a66f3e48531ee8b8cd593cbb28c"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:e8a6b7f48cad34b72ca11d0268c0928ffe663a66f3e48531ee8b8cd593cbb28c"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:1245985a6efb205bb626df6d51a3b26e91a338a28b8a04d20b3e4b3306a167ee",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:b2b1dabc7d8606f40928ec1e483689f151162deea0658ba9e613d9250f85e6b2"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:b2b1dabc7d8606f40928ec1e483689f151162deea0658ba9e613d9250f85e6b2"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:3adf0c945d1570ae86226b95a7a5ec755970686eac9012c6b2d0bd2abd49a34c",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:a3c52fe4496cc1a2046a732699a75e6dbc7699a9eab19bf24e39a56daf04094b"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:a3c52fe4496cc1a2046a732699a75e6dbc7699a9eab19bf24e39a56daf04094b"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:c1ab7eb68022c3ba8b45e187d53051399915a39fa35e3ca9e78887ad25c91634",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:b368cddb396eddaf5347612faabba41e7b0605952e6f4af7b2dde90fcd9a9ddd"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          1,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:b368cddb396eddaf5347612faabba41e7b0605952e6f4af7b2dde90fcd9a9ddd"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:9f2bd6e19affa08a0b55f6e79c6bbe57d1efa87583f70395ac71724a7da36dd0",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:fbec306246dcd2ccc36048e3ff7f6efcb72e299ae836391b46deab7604bb434d"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          1,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:fbec306246dcd2ccc36048e3ff7f6efcb72e299ae836391b46deab7604bb434d"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:c92aa032fd32da7c030109fdf417f242f0ddc6754196d6fddad860a0fdce9b3f",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:d515074f03a6a2169daec3363a677d88221e573928774b4a279520b174177a03"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:d515074f03a6a2169daec3363a677d88221e573928774b4a279520b174177a03"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:d14348a249eefc8f2d10e29eca68ae7b9c9c8fa6903712365a1893df5c572eb3",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:f3dab5acdeba222d7c694a3cd610c90963674b2689d8e6ba4eb9144b14c22bf3"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:f3dab5acdeba222d7c694a3cd610c90963674b2689d8e6ba4eb9144b14c22bf3"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:6739ebfffb999dafd1d2d3ec4efc91dd8ed4988ea4ea87d6088ecbf6f03b949c",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:ba6e2b4dd891c73afb6b1f872bcb61037a5b5efb30bb94e9e8742a4d36a9d22a"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          1,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:ba6e2b4dd891c73afb6b1f872bcb61037a5b5efb30bb94e9e8742a4d36a9d22a"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:4f616cabb49aaf429115e69ad6c76f41f6cbb2e93177c4dd34fb64f0931220f6",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:bfe5821198fe7fc4d64276ef2d4dec85ac1e3ec8b2512fa2d001e0ddff7d9682"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:bfe5821198fe7fc4d64276ef2d4dec85ac1e3ec8b2512fa2d001e0ddff7d9682"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:627550a74fa7cf27feb94a96f3448196f36578266ea089891d1557955401598f",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:d89c5b0465245e96639ceaceb3757f895eb22ebe8ac0f91b415563ace7168cce"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:d89c5b0465245e96639ceaceb3757f895eb22ebe8ac0f91b415563ace7168cce"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:98ba0f7063c6ccd9cb1e17b78eb68707f551de2eaa70b8e8eae015a430cdd0db",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:63bee906051571765f1dfeab580f018b7665ef6369750672f8835b55740478d1"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0.6666666666666666,
+          0.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:63bee906051571765f1dfeab580f018b7665ef6369750672f8835b55740478d1"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:72f40ce98190ef39dafa8e9e2a7342ab37fc9023661fcde54f688ef029dd1fa5",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:4fe56b94f11427c45302f4f2b3a1bc48ea0267ca0a241aa83935a8de30275600"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:4fe56b94f11427c45302f4f2b3a1bc48ea0267ca0a241aa83935a8de30275600"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:4be07ffcbef7178aa112b9c0bcad586e4f7b85e01ac1852335cc8c35863cbea3",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:0792523009f3672d1b42143c0f3eb86e1ef855f66243e86c213511377ee3932d"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:0792523009f3672d1b42143c0f3eb86e1ef855f66243e86c213511377ee3932d"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:c5271c0ae965e0fb833d9e95f8c1d238cbd220145b8401fd91f7cbeb2a59ee2b",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:ef8a8912bc933d0233d2785790981b809dcfd3f7594486d794ea850ce1d51009"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:ef8a8912bc933d0233d2785790981b809dcfd3f7594486d794ea850ce1d51009"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:1f9d5947594e9d88dc16b8b80dabeddd96ed41bc83e4ea028fb6a83fd883cba0",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:fa37aca0acb7aac7bfc86eb3543def26770a6854b8cb23c104bd870fdbfe1746"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:fa37aca0acb7aac7bfc86eb3543def26770a6854b8cb23c104bd870fdbfe1746"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:75cb348bbff578981e6aaf785f412f7997e7761d65baffa3658889272f45a1b7",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:3f1f1a7ade1fd2cb8cabc6132818335f4eee8c26b24b9523e2a00280b28abb80"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:3f1f1a7ade1fd2cb8cabc6132818335f4eee8c26b24b9523e2a00280b28abb80"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:eeaf96fb30a02a3323c18287e3382e8388b131757cb3e63501afa87debed1f70",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:bed6daff544a57ce943b87c36bda7b33105e92edfd19260115448d280f5504fa"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:bed6daff544a57ce943b87c36bda7b33105e92edfd19260115448d280f5504fa"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:c1b6432cf182d3ec82c982ae8b43cac21ec3dba2fc81d0c69648229ec8ef0a4f",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:4e456727fa98e0e93bb81418e086a01bd5c42c89ed92c0c5a619d3bc66ea71d6"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:4e456727fa98e0e93bb81418e086a01bd5c42c89ed92c0c5a619d3bc66ea71d6"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:35f549a9cd025ab87f3885456a0249ce6a7a24cd026bca998f6c8886a3754757",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:4ac35c0e7d783b60fb47ffa8a5d40802beba9cc7df6d9a3340ed058a5a1a7179"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.05263157894736842,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:4ac35c0e7d783b60fb47ffa8a5d40802beba9cc7df6d9a3340ed058a5a1a7179"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:787c49aaf5849f8df4be2a24763cc742d7c428246c5de9978dbbe12b9e67eefa",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:f8456f42b653cd7b124ce78b67c300e7f3102bd3390d6072c17b85948a5fea1c"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0.0,
+          0.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:f8456f42b653cd7b124ce78b67c300e7f3102bd3390d6072c17b85948a5fea1c"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:73a4533b87c0c81b24cc6d2cbb421344ec51f67e8cbb1819cdbaffaa7bc749c9",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:c1ae52cde36b096f1ebd9688f1c91dbb26388abd4ec3478665e3c29c02a360aa"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0.8666666666666667,
+          0.125,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:c1ae52cde36b096f1ebd9688f1c91dbb26388abd4ec3478665e3c29c02a360aa"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:fb8c4a8d6e83cb25910b129b44f28adf839735385d06b423fec3c60e024d8bf9",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:38f220bd9d206cb8d78b3668ec2c92290af7ec22c5e95f86f0564c636da674eb"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:38f220bd9d206cb8d78b3668ec2c92290af7ec22c5e95f86f0564c636da674eb"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:f7201ab9f5aa7f0ddb1f3c2c64762d155d6a83f70fc799135bbb1ccf96402f51",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:0a0f2b3c73afe380f531a9ddfd18a9efd5801d27550525dead689e4cbc54c7cf"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          1,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:0a0f2b3c73afe380f531a9ddfd18a9efd5801d27550525dead689e4cbc54c7cf"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:30eba884ca7c2c8bb429915235a8c57865c80d54ad0ed11d74efdb111d100efd",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:e57716c14c97aa72034d32d36c4646ed11f06243fa6f57149968f08901af3476"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:e57716c14c97aa72034d32d36c4646ed11f06243fa6f57149968f08901af3476"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:dc425b6007c1326855e661033d819f444cf6131a58904937396caf30f006c72a",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:e1aaf5599b9a49e3abcfdb71d7aa6e7013fc3722578e431f63f00825bc81ab02"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:e1aaf5599b9a49e3abcfdb71d7aa6e7013fc3722578e431f63f00825bc81ab02"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:5d7a60e56fa81757e5eae5e31a53c29c368ca0bffac3fce6734e7bf45499957f",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:3412d4d411d2bfc53887bd1715d36afde2c970191f7fefdbd253e7f80c4ff98d"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:3412d4d411d2bfc53887bd1715d36afde2c970191f7fefdbd253e7f80c4ff98d"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:72a2147119e3c9b05a865ab424324af5a8061233219f5147ee3a0a77e5295fb4",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:78bca84365b81af128ccb2436d1d98e05f7b366738e46420dcdc0ce5ba7b59b4"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:78bca84365b81af128ccb2436d1d98e05f7b366738e46420dcdc0ce5ba7b59b4"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:6bf2ad04bdba1bcf44cef5963fc6d11e6d0e49a781a2ccda3e83eec4ed55bc9c",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:70ab02284ab287d67c19181fccdede04820ebcbcffa6570a11a2434a82aeb2de"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          1,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:70ab02284ab287d67c19181fccdede04820ebcbcffa6570a11a2434a82aeb2de"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:3d85aeb19691a0c601fb3dbe580c6205f8a481c54d36d6cbb1920ba2e421dc67",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:b1cccee13db12b67f3c6192c4c5cccf7860e12ec0a76921d58488582b68fe09f"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0.9310344827586207,
+          0.08333333333333333,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:b1cccee13db12b67f3c6192c4c5cccf7860e12ec0a76921d58488582b68fe09f"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:4ece6f816845d31587912d15be591e6ea39d742c2b02cfc4c668733d4680d9fb",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:10e1c0e21e6573dcbb4aea7e16af62e376188b96e0c0332fdd23e396b6e3f6f3"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0.9375,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:10e1c0e21e6573dcbb4aea7e16af62e376188b96e0c0332fdd23e396b6e3f6f3"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:4362422b3a1006c1623d2b1c995794e6370a9a6ea9cd772ebe25eb508aaa52f1",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:debed77d061904c6451d9df174ffb8546007667a65a8f218bb7e70916b3c1a00"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.09090909090909091,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:debed77d061904c6451d9df174ffb8546007667a65a8f218bb7e70916b3c1a00"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:9425f7b185c544db0234391ce9e483841817e148675e827fa19f40ea4561ecdd",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:2e515e44ed2fa315be89de60ec117eb7c2e6ecd83d240acb4f4af3f3efc36423"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          1,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:2e515e44ed2fa315be89de60ec117eb7c2e6ecd83d240acb4f4af3f3efc36423"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:48ef4ddac8206d2b8a917e16010ad847d8328e05a884a5535947a109d11e61fd",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:811e7485bdda66221919e278e9332a12c4afdc1a1eeb940d766c7181f863034f"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.14285714285714285,
+          0.5714285714285714,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:811e7485bdda66221919e278e9332a12c4afdc1a1eeb940d766c7181f863034f"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:a0c8fab89ee18b7f0d4ddb0b814a86e46493f72a09e22fa3dc8d5c77e0b7bc3d",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:69e85758322f5951dfe0fb9bdfc89ec21354f78256f5b5f18111ab7183fe24c6"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          0.23529411764705882,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:69e85758322f5951dfe0fb9bdfc89ec21354f78256f5b5f18111ab7183fe24c6"
+    },
+    {
+      "bbox_iou": 0.5186179448817373,
+      "logical_table_id": "pdf-r2-logical-table:259f7949d30fa49d0a0122a11d427c67f3838c2514e68ddaeef6eb0388ec1aa8",
+      "match_status": "unique",
+      "member_table_ids": [
+        "pdf-r2-table:1418437d845401457b501fee1deb2ef116c00a2190b45612176d639004216e88",
+        "pdf-r2-table:fef5ced647254f704a025c01c60296d8a6f8df07e7009289a243ca511df512f7"
+      ],
+      "numeric_fingerprint_similarity": 1.0,
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ],
+        "pymupdf": [
+          1.0,
+          0.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "row_fingerprint_similarity": 0.7,
+      "selected_table_id": "pdf-r2-table:fef5ced647254f704a025c01c60296d8a6f8df07e7009289a243ca511df512f7"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:92e697bbd532528fd09baeb9848069ecf44c0922b039b7325e6258e7f076cbfd",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:3b687c4e6fcd9eaf6cc0e248a1e1eb8b3199d51a9efece62551eae97980523e4"
+      ],
+      "quality": {
+        "pymupdf": [
+          0,
+          0,
+          0,
+          0,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:3b687c4e6fcd9eaf6cc0e248a1e1eb8b3199d51a9efece62551eae97980523e4"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:4ee3de927ba0a89d9bd3eb17e99aa28c5b44977d71a6f9019ab64197d9f71279",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:2bc8982bf11448ed19ed37a6d6a62d8cc2f51d82cb8d6da86d9f4d58df9c2d3a"
+      ],
+      "quality": {
+        "pymupdf": [
+          0,
+          0,
+          0,
+          0,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:2bc8982bf11448ed19ed37a6d6a62d8cc2f51d82cb8d6da86d9f4d58df9c2d3a"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:0d1d20e6fdd67fe458837f072ad180a726f66b62f9f67cb87fa24f7dbe9f2c18",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:459a4a110293d1f98204ee327d2e99eda5c7e184e5add57f203db320e249ffc3"
+      ],
+      "quality": {
+        "pymupdf": [
+          0,
+          0,
+          0,
+          0,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:459a4a110293d1f98204ee327d2e99eda5c7e184e5add57f203db320e249ffc3"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:f7f29e27169197ff1d890089e146752791e0b7b94ba57c7e0fdcffb1915f91e0",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:2318dac1bdcc7595edf74f4d6d5fdbeea6b28ff8b8170cbfd1e5661acc13ce01"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          0,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:2318dac1bdcc7595edf74f4d6d5fdbeea6b28ff8b8170cbfd1e5661acc13ce01"
+    },
+    {
+      "bbox_iou": 0.8399038923455799,
+      "logical_table_id": "pdf-r2-logical-table:2d554b01835857f2ed399a09a762f0f6075c5aef9ba6b51a700f1f93407325b8",
+      "match_status": "unique",
+      "member_table_ids": [
+        "pdf-r2-table:b5ff463083e5accdc4e16e2a0ad79305b1d0e6882fc0cab499e0f0d7fecc5814",
+        "pdf-r2-table:01381464088da7082d96d42d62cef45389c521a00871c8f66956e7d028138cf9"
+      ],
+      "numeric_fingerprint_similarity": 0.9101123595505618,
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.95,
+          0.9,
+          1,
+          1.0,
+          0
+        ],
+        "pymupdf": [
+          1.0,
+          0.8888888888888888,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "row_fingerprint_similarity": 1.0,
+      "selected_table_id": "pdf-r2-table:01381464088da7082d96d42d62cef45389c521a00871c8f66956e7d028138cf9"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:85f003e44ab08e9e1421f0f468194f1ad1d6f25bfadcc766fa12fba482e496e3",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:9d0b462d42bc5c3ab942dbadfa0aa7e761f7f2e1adc86687ec92224b9345d84f"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          0.5,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:9d0b462d42bc5c3ab942dbadfa0aa7e761f7f2e1adc86687ec92224b9345d84f"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:483a4b27c311e4a40b0c3374784cbcc3ebda9d4a2809f0edac2609eb39b1dc43",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:1222a44cc83f03da433c120e21d42be585e311d06c6edef3ccdd243609b37a2c"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          0.2,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:1222a44cc83f03da433c120e21d42be585e311d06c6edef3ccdd243609b37a2c"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:a2dd952d4f89b1b78fe48281ba9bf795978ce2bbe622715482921cdd9c30996e",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:7587a7213852be22a82df8d3b148985c869ce9f6b2e77842118841b5d1d1e1ce"
+      ],
+      "quality": {
+        "pymupdf": [
+          0,
+          0,
+          0,
+          0,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:7587a7213852be22a82df8d3b148985c869ce9f6b2e77842118841b5d1d1e1ce"
+    },
+    {
+      "bbox_iou": 0.6363220881033804,
+      "logical_table_id": "pdf-r2-logical-table:67a76444ab044b22b9cf028df1c7de44991b805b25906ea42da7f87136394222",
+      "match_status": "unique",
+      "member_table_ids": [
+        "pdf-r2-table:4aa6dae40dd43326d201aba91678904441cf06dc1ce6296ef979686a9d601150",
+        "pdf-r2-table:fc9a9900e1cd105649e1192e3d197e7ff69d444fc8a309827196dafdf42e34bf"
+      ],
+      "numeric_fingerprint_similarity": 1.0,
+      "quality": {
+        "camelot_stream": [
+          0.5294117647058824,
+          1.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ],
+        "pymupdf": [
+          1.0,
+          0.1111111111111111,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "row_fingerprint_similarity": 0.75,
+      "selected_table_id": "pdf-r2-table:4aa6dae40dd43326d201aba91678904441cf06dc1ce6296ef979686a9d601150"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:bd0dfe6526c74e939b3edadeffa6d3521c35db8177a3f7f38519c4446335abbe",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:be1f55113db1c0b2278ac780b4781de0cf77573add56843983d2f4fec79e2f17"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          0.6666666666666666,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:be1f55113db1c0b2278ac780b4781de0cf77573add56843983d2f4fec79e2f17"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:9020d23c11bc8a28d2cffc1b458df184b75ee35178cc49080af912968a18f7f8",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:1aa594cc2689569cf1e58f6aedf11138fefbbc7704b562d28a9181320a1f68e9"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          1,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:1aa594cc2689569cf1e58f6aedf11138fefbbc7704b562d28a9181320a1f68e9"
+    },
+    {
+      "bbox_iou": 0.8853238247728306,
+      "logical_table_id": "pdf-r2-logical-table:7bb2764d0e05cb702dc85f0e1aa30358ca314fa44a97acafb5d559e467bfe009",
+      "match_status": "unique",
+      "member_table_ids": [
+        "pdf-r2-table:19faffab549f6c2fc32f4c719f7d6240d7c58fbad4fc3341d71f34871a71ca63",
+        "pdf-r2-table:1ab948f7ddfb6ccfa9283215d67adb9f8833fcaeca59687788e8f5e687621fef"
+      ],
+      "numeric_fingerprint_similarity": 0.9855072463768116,
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.041666666666666664,
+          0.9166666666666666,
+          1,
+          1.0,
+          0
+        ],
+        "pymupdf": [
+          1.0,
+          0.8260869565217391,
+          0.9565217391304348,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "row_fingerprint_similarity": 0.9583333333333334,
+      "selected_table_id": "pdf-r2-table:19faffab549f6c2fc32f4c719f7d6240d7c58fbad4fc3341d71f34871a71ca63"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:0d942d1eb4d7f64f53691ad9f5c2ecf68d4c937a3b99d8d26d8d67099ce9660b",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:3fed22d65f9b2c61973def5f6b0138dc1326d5fad6dc43c007bbfb273cb1a40e"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          0.5,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:3fed22d65f9b2c61973def5f6b0138dc1326d5fad6dc43c007bbfb273cb1a40e"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:4b5616f5fdbcdf50773c3888a985608a968cc1f073634babd9dae2146a6cb4c6",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:cfc22bb57d8021f1cf91b2d64cd7999f5d8a791b1090c1a013c51fc94d218f51"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          0.2,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:cfc22bb57d8021f1cf91b2d64cd7999f5d8a791b1090c1a013c51fc94d218f51"
+    },
+    {
+      "bbox_iou": 0.6380835770468947,
+      "logical_table_id": "pdf-r2-logical-table:c6546f09ab5b9d9b1824fcf871efac3913a9ee6677a177fe8f1293b5d7e692aa",
+      "match_status": "unique",
+      "member_table_ids": [
+        "pdf-r2-table:87102def35ce8bb43ed81b1cc3b93cb82ac3ce96d83ea2344a550de5827d2344",
+        "pdf-r2-table:8cbba32e3b8d0386b4ee64af45fa8add713208456f7a687a4f18c22542d6b8d2"
+      ],
+      "numeric_fingerprint_similarity": 0.84,
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.125,
+          0.875,
+          1,
+          1.0,
+          0
+        ],
+        "pymupdf": [
+          1.0,
+          0.2857142857142857,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "row_fingerprint_similarity": 0.8,
+      "selected_table_id": "pdf-r2-table:87102def35ce8bb43ed81b1cc3b93cb82ac3ce96d83ea2344a550de5827d2344"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:316a7a23b89be5acce7a0a5f6229b31a352ec80e433a962a7e27c95e1bd24f9f",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:dc057360cc5a1453ed0d0a18a13f883d06384cd4bb9789424ea12fdf818175ff"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          0.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:dc057360cc5a1453ed0d0a18a13f883d06384cd4bb9789424ea12fdf818175ff"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:5be9de0fd7c1f13e44e237a24dac04b5a2d3b1226b14f73873d818d5b5fdc0ff",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:3e92a6aa4dde07df29a346f699da41f39e294cba04d6c6f0cdf8a09dcc0a16b7"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:3e92a6aa4dde07df29a346f699da41f39e294cba04d6c6f0cdf8a09dcc0a16b7"
+    },
+    {
+      "bbox_iou": 0.8868797829917829,
+      "logical_table_id": "pdf-r2-logical-table:3688697c1d0ff28525f79e48223d15161f462772526d9e9db72ecd3eb4397519",
+      "match_status": "unique",
+      "member_table_ids": [
+        "pdf-r2-table:4a68dd053e2f5cb7323f82883ca960f9349b040d553022d861dc386bac97900b",
+        "pdf-r2-table:bc08c9566d1d5b269238830a2c6fefc427e4f7ad3ae89441fc37918b7a1ee9cc"
+      ],
+      "numeric_fingerprint_similarity": 0.956989247311828,
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.9705882352941176,
+          0.9411764705882353,
+          1,
+          1.0,
+          0
+        ],
+        "pymupdf": [
+          1.0,
+          0.9375,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "row_fingerprint_similarity": 0.9736842105263158,
+      "selected_table_id": "pdf-r2-table:bc08c9566d1d5b269238830a2c6fefc427e4f7ad3ae89441fc37918b7a1ee9cc"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:ec3b2b0dc9ba9c0aede3a123a3b0497fcbf7744facaf34bde05df53dd5324bab",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:70651f1da1cdbcc7b69c8f8fbee81a76b9431afa894702405a9a03d8d9ab8dd9"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          0.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:70651f1da1cdbcc7b69c8f8fbee81a76b9431afa894702405a9a03d8d9ab8dd9"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:2553f576a13ed01f30d5170694b8a8fd4e0d7067db02a7813d9c2042f90ccf5f",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:1ab8c40ce5987758342152b350eacdc5ebb14b194e6fc1e0c1f51d3fa2f644d8"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.5,
+          0.5,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:1ab8c40ce5987758342152b350eacdc5ebb14b194e6fc1e0c1f51d3fa2f644d8"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:1333ede029ed97349da4f8d00b7bf11e6c374aa0e49c9ce5e7176e1fc1a840cd",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:56dc3071a107ab5f78e3398720f46e25ecfad0449c9fb3008e705f2497095823"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          1,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:56dc3071a107ab5f78e3398720f46e25ecfad0449c9fb3008e705f2497095823"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:9800a0ffa883aceb94d2c722dd4b766c2b501dec649e2cb77e16e2e4a426c1d8",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:87a921d53c624dfdbe3fb48a95838b17caf28d4f70bb473bc492de0e078ada62"
+      ],
+      "quality": {
+        "pymupdf": [
+          0,
+          0,
+          0,
+          1,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:87a921d53c624dfdbe3fb48a95838b17caf28d4f70bb473bc492de0e078ada62"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:b36bb7d68469186692fb279ae501cc082c4304ba8838a209812b01780f65fb00",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:40826736099296bb27cccee19ff40dc63cffca21a465a9a026398eb5d04fd960"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          1,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:40826736099296bb27cccee19ff40dc63cffca21a465a9a026398eb5d04fd960"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:8789740c013742bbf287c9194949d6b9b1a1863859887b299600c01f12d58649",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:49639c89467b8130b355e6d4052d46d3a296e921801013ece3225f041e2a0e3a"
+      ],
+      "quality": {
+        "pymupdf": [
+          0,
+          0,
+          0,
+          1,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:49639c89467b8130b355e6d4052d46d3a296e921801013ece3225f041e2a0e3a"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:78bb1151897f46b1e1552425eae5219b5de2c4a6d7d95be317bca8d6bc315ec8",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:907c728e3746f9af23a46de3856642f804e655345f15bdae658d075448f65def"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          0,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:907c728e3746f9af23a46de3856642f804e655345f15bdae658d075448f65def"
+    },
+    {
+      "bbox_iou": 0.6680049677448857,
+      "logical_table_id": "pdf-r2-logical-table:d23990c6071d44a905b965699bffb27b7a71bd9b08676c1a1d25782c223a0e31",
+      "match_status": "unique",
+      "member_table_ids": [
+        "pdf-r2-table:67bccb02771515afa33edf69db07862afe717778a8a60b6e52242e7d6a57a5c9",
+        "pdf-r2-table:3db68bb937fc64936050e83bed26c399434d94fd30aa574799701be385a2d2a7"
+      ],
+      "numeric_fingerprint_similarity": 0.8571428571428571,
+      "quality": {
+        "camelot_stream": [
+          0.8571428571428571,
+          0.14285714285714285,
+          0.7142857142857143,
+          1,
+          1.0,
+          0
+        ],
+        "pymupdf": [
+          1.0,
+          0.0,
+          0.8333333333333334,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "row_fingerprint_similarity": 0.625,
+      "selected_table_id": "pdf-r2-table:67bccb02771515afa33edf69db07862afe717778a8a60b6e52242e7d6a57a5c9"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:7f13da4c6c0abfa93a378fa8c185fe7ce305d0e17bf0f0a855cb7d764ec67680",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:20a9bcdd401bdc40ca73349ee6d1d14d4244ee6ef0b052672dcbc0cf0f270add"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          0.6,
+          0.6,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:20a9bcdd401bdc40ca73349ee6d1d14d4244ee6ef0b052672dcbc0cf0f270add"
+    },
+    {
+      "bbox_iou": 0.6643534628016375,
+      "logical_table_id": "pdf-r2-logical-table:88776b1e40c4706939acc7735b12de32d6a8ef0699d5793689f9d6e7b2baace1",
+      "match_status": "unique",
+      "member_table_ids": [
+        "pdf-r2-table:9943e8015b792b8e0587c509ab59c5b00397d8e03eaa1cb06e4bc5888870a3b1",
+        "pdf-r2-table:a7a673e1f013b3904086c6d98447de5985fc4dae6139912d535254efe3f4895b"
+      ],
+      "numeric_fingerprint_similarity": 0.6153846153846154,
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ],
+        "pymupdf": [
+          1.0,
+          0.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "row_fingerprint_similarity": 0.75,
+      "selected_table_id": "pdf-r2-table:9943e8015b792b8e0587c509ab59c5b00397d8e03eaa1cb06e4bc5888870a3b1"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:f61c6c5200370350dae4447d54a98c97d96faf041e247065504c1d85773371fa",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:86e4f7d947790ffe25a8747fe12a89ce2e94ca3b9e3c1cb911ad299659944805"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          0.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:86e4f7d947790ffe25a8747fe12a89ce2e94ca3b9e3c1cb911ad299659944805"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:8281ebc25d403e08f54b95591a2da8b9cd99f2d43c9901859893d3dd2208ff78",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:609537d4514fc583c448f307fb41f8476719e472e92ac35c375daa11abd29ec1"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          0.5,
+          0.75,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:609537d4514fc583c448f307fb41f8476719e472e92ac35c375daa11abd29ec1"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:f5ce40df83fdf90b0c7f82ced2ca4195558fb6b966d48beb2e8b4899d659becc",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:68ec59fa261a61d0a63cc55bc5d6966353bd4689ce5131c19cce3dbc52c35ca7"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          0.6666666666666666,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:68ec59fa261a61d0a63cc55bc5d6966353bd4689ce5131c19cce3dbc52c35ca7"
+    },
+    {
+      "bbox_iou": 0.7258715839983353,
+      "logical_table_id": "pdf-r2-logical-table:95ea9ced053f20674ea19ad60156615e1fb6473d467a82bcec18fe2bab6c5b46",
+      "match_status": "unique",
+      "member_table_ids": [
+        "pdf-r2-table:136acd18c3cd5e571596a93daff687728057ec5fb03af82d69503935a5511613",
+        "pdf-r2-table:3e2ede749c146a4b8d490789487408441b5f5e76516a7df9fa0a23f9ef3c8504"
+      ],
+      "numeric_fingerprint_similarity": 0.5,
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ],
+        "pymupdf": [
+          1.0,
+          0.7777777777777778,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "row_fingerprint_similarity": 0.05,
+      "selected_table_id": "pdf-r2-table:136acd18c3cd5e571596a93daff687728057ec5fb03af82d69503935a5511613"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:b81d53b8f1f5fa5d45fafb67263960136dd3c880ea104bf337b8fe9b05116c03",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:89b1d8187d08a612a1ac259bfc8d92d7ad3d266506afa0a7f03b1ae0634fd59f"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          1.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:89b1d8187d08a612a1ac259bfc8d92d7ad3d266506afa0a7f03b1ae0634fd59f"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:9d6c98b479f47f52a3bae3bb4bf159cf1edcd19cedabf14d25ab54fa95c45888",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:c8955470110eca86a7414242b5a24880e6a0215666a7ef26702ac757e9e7bf61"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          0.3333333333333333,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:c8955470110eca86a7414242b5a24880e6a0215666a7ef26702ac757e9e7bf61"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:c32078979fd44ac3e7e67ceafce9c399a0f0081c380e9141a21fb4666a1fcd06",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:762290c70089c658a5b2b85784ea9a4466b9bba75686f71711d43fd23b16decf"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          0.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:762290c70089c658a5b2b85784ea9a4466b9bba75686f71711d43fd23b16decf"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:72f3d5ed3598c0d9396ab216b4b8a90ad2a3dd83c2644b9314a96e747ac52d88",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:607324fa653770f06403bec5df3be7d5d267fb19d5d0ac0e30b38b4a333ecac5"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          0.8571428571428571,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:607324fa653770f06403bec5df3be7d5d267fb19d5d0ac0e30b38b4a333ecac5"
+    },
+    {
+      "bbox_iou": 0.7228650614954892,
+      "logical_table_id": "pdf-r2-logical-table:1ec8808ac23acd7257e8cc4e30c3432d18a24826353bc84d7b90190c820362fa",
+      "match_status": "unique",
+      "member_table_ids": [
+        "pdf-r2-table:94c9d15591eff8e6f7256fe8fa56d6c9fd7225895ee722ce5489fd89c5c3df7d",
+        "pdf-r2-table:756315bae49a03c14ce27b5eaab873a26cb41207c6015139ce625f4dfbd6dcc5"
+      ],
+      "numeric_fingerprint_similarity": 1.0,
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ],
+        "pymupdf": [
+          1.0,
+          0.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "row_fingerprint_similarity": 0.6428571428571429,
+      "selected_table_id": "pdf-r2-table:94c9d15591eff8e6f7256fe8fa56d6c9fd7225895ee722ce5489fd89c5c3df7d"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:ff2b4870e279f625e30eb6fd7b08ed20dd9b7964e8879a3e2d208851d7f3f292",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:daa55d4031cb2904e1dabfae81458efd82f07a4dc80255d58a3590214f1ab568"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          0.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:daa55d4031cb2904e1dabfae81458efd82f07a4dc80255d58a3590214f1ab568"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:e6a397892bae575d587c44915de0fde322e370e483ce0f25dfd540c760a6e07c",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:b514b488f63ac467c6aa85b7398d5f5031e7a21a1a229a2c73506baf1c08ca21"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:b514b488f63ac467c6aa85b7398d5f5031e7a21a1a229a2c73506baf1c08ca21"
+    },
+    {
+      "bbox_iou": 0.6999278657413638,
+      "logical_table_id": "pdf-r2-logical-table:9e7ea6933600b348b2845e33acaaee57abcec7a2dfe6c9c41dc2b95e7d790769",
+      "match_status": "unique",
+      "member_table_ids": [
+        "pdf-r2-table:d962884d5e5c5a69f538c4f8aa07c5981174239ea703f812faf707059d21ae54",
+        "pdf-r2-table:14d3a713c5917499a987a6a14fd4a3b5d965daf7de1ec54b3a216ac69f82438e"
+      ],
+      "numeric_fingerprint_similarity": 1.0,
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ],
+        "pymupdf": [
+          1.0,
+          0.9090909090909091,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "row_fingerprint_similarity": 0.6666666666666666,
+      "selected_table_id": "pdf-r2-table:14d3a713c5917499a987a6a14fd4a3b5d965daf7de1ec54b3a216ac69f82438e"
+    },
+    {
+      "bbox_iou": 0.4824441112820117,
+      "logical_table_id": "pdf-r2-logical-table:758a37bb322da33856e7a90bb394989c8e3e3db767006ce180f97fec4f8cffe0",
+      "match_status": "unique",
+      "member_table_ids": [
+        "pdf-r2-table:31751e4a67502765e8b7132b8da005ee5dff7a6b2716078403b17d3a34953fac",
+        "pdf-r2-table:77511baa3e531365f882ae32e02f722228fad6c4cf0d5e7db6921a64461b2682"
+      ],
+      "numeric_fingerprint_similarity": 0.8,
+      "quality": {
+        "camelot_stream": [
+          0.8333333333333334,
+          0.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ],
+        "pymupdf": [
+          1.0,
+          0.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "row_fingerprint_similarity": 0.5454545454545454,
+      "selected_table_id": "pdf-r2-table:31751e4a67502765e8b7132b8da005ee5dff7a6b2716078403b17d3a34953fac"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:ed70312f5c44f79168bdc522e3fc65d26e63c10845a66a60a2880bb4f3c52c7c",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:e8f906ad52a2ac6c93f5ae01cac568ad292a47a1b0e6b91edc4f2201958df4e5"
+      ],
+      "quality": {
+        "pymupdf": [
+          0,
+          0,
+          0,
+          0,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:e8f906ad52a2ac6c93f5ae01cac568ad292a47a1b0e6b91edc4f2201958df4e5"
+    },
+    {
+      "bbox_iou": 0.8250186386680542,
+      "logical_table_id": "pdf-r2-logical-table:6990357776ca1453bf93cbb7740d74b8baf6416d035e635130b0695831a34efd",
+      "match_status": "unique",
+      "member_table_ids": [
+        "pdf-r2-table:bec62a47737d22a5df56faf52c8b326bc4ba0a2a3d31e1df73a1034a05895773",
+        "pdf-r2-table:b5b75731cc6cf0eb91e394f8eaed183e788e19b51a8b00140b3f288f54ebc7d9"
+      ],
+      "numeric_fingerprint_similarity": 0.9222222222222223,
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          1.0,
+          0.95,
+          1,
+          1.0,
+          0
+        ],
+        "pymupdf": [
+          1.0,
+          1.0,
+          1.0,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "row_fingerprint_similarity": 0.9166666666666666,
+      "selected_table_id": "pdf-r2-table:bec62a47737d22a5df56faf52c8b326bc4ba0a2a3d31e1df73a1034a05895773"
+    },
+    {
+      "bbox_iou": 0.6015951387376018,
+      "logical_table_id": "pdf-r2-logical-table:a4dc57bef41c99961372eef199bd1b36607b94317f7d5e9f7d00202b888cb111",
+      "match_status": "unique",
+      "member_table_ids": [
+        "pdf-r2-table:9632a906caf347e4640d5a4fff2b679658d500e46c9575c190ab68611738d022",
+        "pdf-r2-table:22d40bd82c418edd8b083e4582eb1d7f68ca06b3f19b14c9b1d858b166c3d367"
+      ],
+      "numeric_fingerprint_similarity": 0.6666666666666666,
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.14285714285714285,
+          0.7142857142857143,
+          1,
+          1.0,
+          0
+        ],
+        "pymupdf": [
+          1.0,
+          0.8333333333333334,
+          0.8333333333333334,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "row_fingerprint_similarity": 0.8571428571428571,
+      "selected_table_id": "pdf-r2-table:9632a906caf347e4640d5a4fff2b679658d500e46c9575c190ab68611738d022"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:5296a47d9478386aa3f439719af053f5379bcafb4caa3c48049d6649ea01a29b",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:a183141fb28d0f10c2a1c9d997a258164a93eb258c2fad1e0cecfd0e658f604e"
+      ],
+      "quality": {
+        "pymupdf": [
+          1.0,
+          1.0,
+          1.0,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:a183141fb28d0f10c2a1c9d997a258164a93eb258c2fad1e0cecfd0e658f604e"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:adf1dbdb00cc1b0644b11d27727a7a2ef011fe611db62231916a1d67032eaa7a",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:b00153bc8c2c6d8c2ba5dded0ce6638efe693739215628c7b56ccec387544c20"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.6666666666666666,
+          0.3333333333333333,
+          0,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:b00153bc8c2c6d8c2ba5dded0ce6638efe693739215628c7b56ccec387544c20"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:2955993a1315396b5d69f4850c4b131633296ab2bb1f473a7ddb0169293f5ba9",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:a6e012ba15301ff5565fc79138b9681ac48f9b21369ca645331ab4474c06f28e"
+      ],
+      "quality": {
+        "camelot_stream": [
+          1.0,
+          0.0,
+          0.4166666666666667,
+          1,
+          1.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:a6e012ba15301ff5565fc79138b9681ac48f9b21369ca645331ab4474c06f28e"
+    },
+    {
+      "logical_table_id": "pdf-r2-logical-table:a56636c9685fcfc3cf24bc2da30accc2802eac317c11a037ec1f8d6269b6986f",
+      "match_status": "unmatched",
+      "member_table_ids": [
+        "pdf-r2-table:db677218b6bb7b18c9f539b263ddd924df2abc1f35019518f49205026d3ae8a8"
+      ],
+      "quality": {
+        "camelot_stream": [
+          0,
+          0,
+          0,
+          0,
+          0.0,
+          0
+        ]
+      },
+      "selected_table_id": "pdf-r2-table:db677218b6bb7b18c9f539b263ddd924df2abc1f35019518f49205026d3ae8a8"
+    }
+  ]
+}
