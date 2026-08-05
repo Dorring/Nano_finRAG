@@ -1,0 +1,22 @@
+{
+  "baseline_raw_row": {
+    "case_count": 120,
+    "hit_count_at_200": 119,
+    "hit_count_at_40": 114,
+    "hit_count_at_5": 101,
+    "mrr": 0.680018525646274,
+    "recall_at_200": 0.9916666666666667,
+    "recall_at_40": 0.95,
+    "recall_at_5": 0.8416666666666667
+  },
+  "header_enriched_row": {
+    "case_count": 120,
+    "hit_count_at_200": 120,
+    "hit_count_at_40": 120,
+    "hit_count_at_5": 120,
+    "mrr": 0.9833333333333333,
+    "recall_at_200": 1.0,
+    "recall_at_40": 1.0,
+    "recall_at_5": 1.0
+  }
+}

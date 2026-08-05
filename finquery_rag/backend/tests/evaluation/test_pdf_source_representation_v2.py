@@ -12,6 +12,7 @@ from src.evaluation.pdf_source_representation_v2 import (
     stable_identity,
     statement_from_lines,
 )
+from scripts.evaluation.run_pdf_retrieval_v2_lite import _bm25
 
 
 def test_multilevel_year_rows_are_not_resolved_by_baseline() -> None:
@@ -72,6 +73,15 @@ def test_v2_period_keeps_duration_semantics() -> None:
 
     assert resolved[1]["normalized_period"] == "FY2025"
     assert resolved[1]["period_kind"] == "duration"
+
+
+def test_v2_lite_bm25_uses_header_terms_without_gold() -> None:
+    documents = [
+        "metric net sales table periods FY2025 FY2024 row 416161 391035",
+        "metric operating income table periods FY2025 FY2024 row 133050 123216",
+    ]
+
+    assert _bm25("net sales FY2025", documents)[0] == 0
 
 
 def test_header_grid_resolves_explicit_period_columns() -> None:

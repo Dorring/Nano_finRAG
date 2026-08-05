@@ -1,0 +1,17 @@
+{
+  "allowed_fields": [
+    "metric",
+    "statement_or_section",
+    "table_period_tokens",
+    "period_binding_status",
+    "scale",
+    "raw_row_text",
+    "source_table_id"
+  ],
+  "forbidden_claims": [
+    "unverified_cell_period",
+    "unverified_cell_value_semantics",
+    "calculator_eligibility_for_table_level_only"
+  ],
+  "production_candidate_identity_modified": false
+}

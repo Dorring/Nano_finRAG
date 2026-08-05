@@ -1,0 +1,14 @@
+{
+  "annotation_mode": "deterministic_unique_signature",
+  "benchmark_limit_per_document": 40,
+  "benchmark_semantics": "row_retrieval_capability_not_open_domain_pdf_recall",
+  "case_count": 120,
+  "document_counts": {
+    "adobe_fy2025_pdf_dev": 40,
+    "salesforce_fy2026_pdf_dev": 40,
+    "walmart_fy2026_pdf_dev": 40
+  },
+  "independent_human_annotation": false,
+  "queries_derived_from_view_fields": true,
+  "runtime_case_content_committed": false
+}
