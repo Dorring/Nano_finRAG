@@ -1,9 +1,9 @@
 {
   "answer_generation_calls": 0,
   "case_count": 100,
-  "case_file_sha256": "ce784cd8faf8b967e7c418c6ccd753a85cd4a9aaa5d35671ab9535c7465c7041",
+  "case_file_sha256": "d9698e535c039d534f7f61ed66c7a3b067fe616444ed8e6bb70a7c00c2f8d293",
   "case_slot_field_reads_by_retriever": 0,
-  "decision": "structured_fact_v2_development_measured",
+  "decision": "structured_fact_v2_holdout_measured_once",
   "fact_corpus_sha256": "f07e310db14883c4b5bc656e8d4f5b2842ece451d00ab2241d2593528913509d",
   "frozen_72_question_reads": 0,
   "gold_fact_count": 120,
@@ -13,5 +13,5 @@
   "production_index_writes": 0,
   "production_switch_allowed": false,
   "schema": "structured-financial-fact-v2/benchmark-acceptance/v1",
-  "split": "development"
+  "split": "holdout"
 }

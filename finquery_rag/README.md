@@ -199,3 +199,9 @@ The current audited production baseline remains frozen at strict Final Source Re
 NF-OPT-17 built an issuer-isolated development set from four independent SEC 10-K filings: 80 queries, 80 positive candidates, and 160 lineage-preserving hard negatives. The zero-shot reranker reached `70/80` Top-1 and `150/160` pairwise accuracy. A single pre-registered classification-head-only run produced no gain on the Netflix issuer holdout (`17/20` Top-1 before and after), so training was stopped without reading the frozen 72-question benchmark.
 
 These are development diagnostics, not production answer-accuracy claims. The remaining retrieval bottleneck is upstream source representation and candidate retrievability; future work should build a native structured Table → Row → Column → Cell representation on independent development filings before one frozen benchmark transfer.
+
+### Native Structured Fact V2 benchmark
+
+An isolated Inline XBRL experiment keeps the PDF metric unchanged while measuring a narrower structured-fact task. It uses Walmart, Adobe, and Salesforce for development and Costco, Home Depot, and PepsiCo for a frozen holdout. The question-only deterministic retriever achieved strict Fact Recall@5 of `120/120`, single-fact Recall@5 of `60/60`, complete two-period pair Recall@5 of `30/30`, and no-answer accuracy of `10/10`.
+
+This is a template-constrained native XBRL benchmark with exact document, concept-label, and period semantics. It is not an open-domain PDF RAG score and does not replace the strict PDF Final Source Recall@5 baseline of `13/80`.

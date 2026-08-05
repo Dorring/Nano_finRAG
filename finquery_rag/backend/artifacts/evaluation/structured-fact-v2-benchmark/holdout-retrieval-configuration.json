@@ -9,7 +9,7 @@
   "reranker": null,
   "retrieval_input": "question_text_only",
   "schema": "structured-financial-fact-v2/retrieval-config/v1",
-  "split": "development",
+  "split": "holdout",
   "top_k": 5,
   "weights": {
     "document_and_metric": 9.0,

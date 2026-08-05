@@ -9,6 +9,7 @@ from src.evaluation.structured_fact_v2 import (
     fact_identity,
     normalize_concept_label,
     parse_numeric_value,
+    parse_structured_fact_query,
     structured_fact_score,
     validate_v2_sources,
 )
@@ -49,3 +50,12 @@ def test_structured_fact_score_requires_document_and_metric_and_rewards_period()
     assert structured_fact_score(query_issuer="Issuer", query_metric="Net Income Loss", query_periods=("2025-12-31",), fact=fact) == 12.0
     assert structured_fact_score(query_issuer="Other", query_metric="Net Income Loss", query_periods=("2025-12-31",), fact=fact) is None
     assert structured_fact_score(query_issuer="Issuer", query_metric="Revenue", query_periods=("2025-12-31",), fact=fact) is None
+
+
+def test_structured_query_parser_reads_question_text_only() -> None:
+    assert parse_structured_fact_query(
+        "According to Issuer's Form 10-K, what was net income loss for the periods ended 2024-12-31 and 2025-12-31?"
+    ) == ("Issuer", "net income loss", ("2024-12-31", "2025-12-31"))
+    assert parse_structured_fact_query(
+        "According to Issuer's Form 10-K, what was nonexistent lunar reserve metric for 2099?"
+    ) is None

@@ -1,0 +1,11 @@
+{
+  "corrected_before_final_claim": true,
+  "corrected_retrieval_input": "question_text_only",
+  "correction_reason": "The first local holdout execution read pre-parsed case issuer, metric, and period fields. That execution was invalidated before any final metric claim.",
+  "invalidated_execution_metric": "120/120",
+  "invalidated_execution_published_as_final": false,
+  "invalidated_retrieval_input": "case_structured_slot_fields",
+  "parameter_or_rule_tuning_after_invalidated_run": false,
+  "rerun_reason": "evaluation_semantics_correction",
+  "schema": "structured-financial-fact-v2/evaluation-semantic-closure/v1"
+}

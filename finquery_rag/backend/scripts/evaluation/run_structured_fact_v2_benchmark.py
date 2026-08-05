@@ -9,7 +9,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-from src.evaluation.structured_fact_v2 import structured_fact_score
+from src.evaluation.structured_fact_v2 import parse_structured_fact_query, structured_fact_score
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_OUT = ROOT / "artifacts/evaluation/structured-fact-v2-benchmark"
@@ -115,15 +115,18 @@ def evaluate(cases: list[dict[str, Any]], facts: list[dict[str, Any]], *, split:
     records = []
     for case in cases:
         scored = []
-        for fact in corpus:
-            score = structured_fact_score(
-                query_issuer=str(case["issuer"]),
-                query_metric=str(case["metric"]),
-                query_periods=tuple(case["periods"]),
-                fact=fact,
-            )
-            if score is not None:
-                scored.append((score, str(fact["fact_identity"])))
+        parsed_query = parse_structured_fact_query(str(case["question"]))
+        if parsed_query is not None:
+            query_issuer, query_metric, query_periods = parsed_query
+            for fact in corpus:
+                score = structured_fact_score(
+                    query_issuer=query_issuer,
+                    query_metric=query_metric,
+                    query_periods=query_periods,
+                    fact=fact,
+                )
+                if score is not None:
+                    scored.append((score, str(fact["fact_identity"])))
         ranked = [identity for _score, identity in sorted(scored, key=lambda item: (-item[0], item[1]))[:5]]
         gold = set(case["gold_fact_identities"])
         hit_count = len(gold.intersection(ranked))
@@ -135,6 +138,7 @@ def evaluate(cases: list[dict[str, Any]], facts: list[dict[str, Any]], *, split:
                 "hit_count_at_5": hit_count,
                 "all_gold_at_5": bool(gold) and hit_count == len(gold),
                 "abstained": not ranked,
+                "query_parsed": parsed_query is not None,
                 "ranked_fact_identities": ranked,
             }
         )
@@ -184,6 +188,8 @@ def run(args: argparse.Namespace) -> int:
         "embedding_model": None,
         "reranker": None,
         "parameter_scan_performed": False,
+        "retrieval_input": "question_text_only",
+        "case_slot_fields_read_by_retriever": False,
     }
     acceptance = {
         "schema": "structured-financial-fact-v2/benchmark-acceptance/v1",
@@ -194,6 +200,7 @@ def run(args: argparse.Namespace) -> int:
         "gold_fact_count": results["gold_fact_count"],
         "frozen_72_question_reads": 0,
         "prior_development_query_reads": 0,
+        "case_slot_field_reads_by_retriever": 0,
         "model_calls": 0,
         "answer_generation_calls": 0,
         "production_index_writes": 0,

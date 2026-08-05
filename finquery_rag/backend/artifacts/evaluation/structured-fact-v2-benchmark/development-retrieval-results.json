@@ -16,6 +16,7 @@
       "case_type": "no_answer",
       "gold_count": 0,
       "hit_count_at_5": 0,
+      "query_parsed": false,
       "ranked_fact_identities": []
     },
     {
@@ -25,6 +26,7 @@
       "case_type": "no_answer",
       "gold_count": 0,
       "hit_count_at_5": 0,
+      "query_parsed": false,
       "ranked_fact_identities": []
     },
     {
@@ -34,6 +36,7 @@
       "case_type": "no_answer",
       "gold_count": 0,
       "hit_count_at_5": 0,
+      "query_parsed": false,
       "ranked_fact_identities": []
     },
     {
@@ -43,6 +46,7 @@
       "case_type": "no_answer",
       "gold_count": 0,
       "hit_count_at_5": 0,
+      "query_parsed": false,
       "ranked_fact_identities": []
     },
     {
@@ -52,6 +56,7 @@
       "case_type": "no_answer",
       "gold_count": 0,
       "hit_count_at_5": 0,
+      "query_parsed": false,
       "ranked_fact_identities": []
     },
     {
@@ -61,6 +66,7 @@
       "case_type": "no_answer",
       "gold_count": 0,
       "hit_count_at_5": 0,
+      "query_parsed": false,
       "ranked_fact_identities": []
     },
     {
@@ -70,6 +76,7 @@
       "case_type": "no_answer",
       "gold_count": 0,
       "hit_count_at_5": 0,
+      "query_parsed": false,
       "ranked_fact_identities": []
     },
     {
@@ -79,6 +86,7 @@
       "case_type": "no_answer",
       "gold_count": 0,
       "hit_count_at_5": 0,
+      "query_parsed": false,
       "ranked_fact_identities": []
     },
     {
@@ -88,6 +96,7 @@
       "case_type": "no_answer",
       "gold_count": 0,
       "hit_count_at_5": 0,
+      "query_parsed": false,
       "ranked_fact_identities": []
     },
     {
@@ -97,6 +106,7 @@
       "case_type": "no_answer",
       "gold_count": 0,
       "hit_count_at_5": 0,
+      "query_parsed": false,
       "ranked_fact_identities": []
     },
     {
@@ -106,6 +116,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:45c44e170fc793b0c68b6e87d0f2a889861c9f3a13c68934d54482b9fd6b7139",
         "fact:v2:da6a892eef0237b8e0261a2bf4fef7b4a549db3d009fc6d45934de956d47992f",
@@ -119,6 +130,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:825539ba323c3e8dc08b13c878d9029f23d5c6adf3c443e3cea8856eec4af984",
         "fact:v2:f674c2980bc966ecbae9db1836647f2cfd0a556ee5e760e69c0640609e0139dc",
@@ -133,6 +145,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:7a895fe4b0f61df187cd97f3718f6af087f75bcf372db4880a497e0327af6d37",
         "fact:v2:8266079aa2d61532e5b81f19437a8f6eee15fef2d2b9516a3907b17c01f1d178"
@@ -145,6 +158,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:5e74471b415d3e00a36f56336efc79829b34672034ac5941ad79e3eb0c1eb8c2",
         "fact:v2:cb5c5ff508d45f45bd5cd7600d8d8f915309523afe38012164c9e2cef57df8ca"
@@ -157,6 +171,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:1933af296a57be34db25d4f9ea1f68e31d4c5094e43c72b1dfd96f44cb421f9d",
         "fact:v2:c50f5223125ae2052503257ee239c18e7ca4667f105b71e701ed89048ceba139",
@@ -170,6 +185,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:04d09d0869252df59fe31a92f4fab7e277aa8674f574d01480bf7c44bd8a41d3",
         "fact:v2:3af9afe9d227ec9a88e68d8e26fa444eabda258adeea26f873b74755d4109509"
@@ -182,6 +198,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:0f10a6c9ef76d5df0f02390d012fe96162efb14f271f383a210a4a145760dc28",
         "fact:v2:6ae7adcfe9beb9f03f1ee20ccd922e1e39f3b72eda60b64d04af76547aa663e0",
@@ -195,6 +212,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:883e5fe0166ba352adb9a01e188355ea4a37d933af3ccaf8c384020a5e481d24",
         "fact:v2:dbc4feabe664ae90a330a35b65fd64cb6dac284b72ac1ea47756407bb2ec4993"
@@ -207,6 +225,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:b71fa34ec1d2030187b4fd787c9d42ae115bf4606d83db5678bbe56dedf85eb6",
         "fact:v2:ec52479a9d890cf6e3012fbdbe52d781423027e8da13e9f568d86d5accfe3c34",
@@ -220,6 +239,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:051277af6e654e7c70acdd818acc647d5dbfd95c632248f54fc335d0b3538f9d",
         "fact:v2:c6c61532654079b500788069774fcfa7f47a6f7cb798238f29c82e0761ea72b6"
@@ -232,6 +252,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:314f7da462cfc8e0052511fe63156fc5e3b5c933dc871f68f31b23a5dd9a189c",
         "fact:v2:a30ae782d27b93491e48e06d7c4ef3084af74045e69ddcf600de4c3cce75db5b",
@@ -245,6 +266,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:4d8becce34f289dbdd65a3f8291e65bb9826b6f35e6e166c2950eb09c586961a",
         "fact:v2:abb1f3a5a28cca0dca96c3247bc424a6e3b9181b8d94e1b6769982cabbd07700"
@@ -257,6 +279,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:9b33de56cd77cd807ac3981c95c74e98c0e4459e62d8588d77362edce4e804a2",
         "fact:v2:c9fec058f1cfdfeb6e3e6f75dfe212c8f7c60bac06b7bfa806038abd76ef2a46"
@@ -269,6 +292,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:28c5189275b0ed41805ab36be3fcdbcf9a0fdf2cfaff388d962e51cceabba26a",
         "fact:v2:9b670127865c7dec112648c383d2163057cd9d8c96655d4ad443bd6eeba285a2",
@@ -282,6 +306,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:0425df0654d5c6714dba0594424c58b7ec48448ef42831f8fa948c674be287f9",
         "fact:v2:75e88b6ceda71d76db5390cdbdab7835d98a73fb8c90a7a1e0a41f470dfb47a7",
@@ -295,6 +320,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:27a9e111e7a8ee0e3dfaea209827ff14a81e76272a370d156a6ffdf95c0d3a0e",
         "fact:v2:a22d0ec426ab0e0143eed20052329e87f1aa63761708d0d6eed8c9e58e9909a5"
@@ -307,6 +333,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:9a5055a487174a77e7d3f3dec0ce4b494d9359dd3a390bdb22da251f811d51e5",
         "fact:v2:b07662e13eee68387bb4ed0dbc60d00acd02c77acd648df52311d9714579b084",
@@ -320,6 +347,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:169eb5532993ebabf09009e1b1f11a1e40b2c39ac7d793ad0312be27a731d85d",
         "fact:v2:622df5bfac2f849797324ce2989b6a4905cb11e8dbed1aa9e538255d2372a9d3"
@@ -332,6 +360,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:3871fba7f9a571f5a814bd9ac373a94334b13fa02a8d3d27fd7e4b896f3ddd2f",
         "fact:v2:59d58c1d152c3e62148b89c3c3c6c23281b358e6f0e4f60ff132b86a8316fbf7"
@@ -344,6 +373,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:e995f0782b61ed3371e7ac4ad76121cf89ee2bb2d8005ecbfb691323650a162a",
         "fact:v2:f0722f6429ee8a162835e404a424a2531ada97d8d73ef872a7f82f61f7c0e45c",
@@ -357,6 +387,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:3aab9932ed1358779c3fdbfd3cb8c23a99566083a1aaf648411d2fa28ea9b2a2",
         "fact:v2:4ba1fda9016f7eaf5ec3edf099670f5c98ccf627f8131f107a39bf003eff7d6e",
@@ -370,6 +401,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:219caeb05883b4c2043286bedd42dadcf5036f3c7128597070586aa66af6d7d4",
         "fact:v2:f51d54db5a041ded1733b903fb5530e3fc4c36f9e3724995c52e8d7c9f0bfbe7"
@@ -382,6 +414,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:1237da5b9d8a6d9eee7563c19bcf8d51729cbdde8a5fe826951d4af969aad7ee",
         "fact:v2:2acf7c644d19385ff83beeebd116b2794db3e3f878585e9ec79a3ec37b4b99ed",
@@ -395,6 +428,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:0289210618e79ef35486cd6772a656f250b2551a0dea46b6d461360e154dce96",
         "fact:v2:794e3b47f0236a60dd9426f03bf1a9a07ca181f2d993a67d109d209b6937a7fb",
@@ -408,6 +442,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:b06c6589f5956770aa7c514351e8e76069db81f193579d6301b48e01790bede3",
         "fact:v2:e1584b69d153daef6a71360d82b6d4a5220917abe5786f381dddff62466b3768"
@@ -420,6 +455,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:1cea86cafc05f69bdf4f9b9d6e5b9f5106984897659e2990844acad9281cb578",
         "fact:v2:ea18409ac1cd4586058d6e5ea7d7111ffa61562d1d37fcb318309f0c6910b186"
@@ -432,6 +468,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:db9c4c3add51c613c3b712ba40eee14e43b4994bae7c8e191283cc743bdaccc4",
         "fact:v2:f167b99133673a34ed411a7e0966b444b08dc4fdd67336aa5f30109b50db2e90",
@@ -445,6 +482,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:614f46dd9a12be27d64562afa3aab342eeddb8cc287ebc8676d8ffb42778d578",
         "fact:v2:913a67e6e7040c3b2a86db7af0b16bb81e1627003f53459fe03fc90eaf9258b4",
@@ -458,6 +496,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:2a4697d8234be538901f5fe47e41e01de0cfa132df3dfded5c45c62582662f2f",
         "fact:v2:5a9884dfb00594afa83f877d5b8e58f4620c31d537a89ff0a4b28dc6713b0d2a",
@@ -471,6 +510,7 @@
       "case_type": "period_pair",
       "gold_count": 2,
       "hit_count_at_5": 2,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:264d41ac58e36ec376e5a816640868496dc3b8211807c1de0c926b657c931ce9",
         "fact:v2:6c2ecad65d6e78219b082442b1cb601f1b1053555123f9c31ae352129dcbd58a"
@@ -483,6 +523,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:ef4fcbc4a53800e071b773400898ebc00a50d90ff0bf42e1ede5f4e184deb523",
         "fact:v2:6252f94dd819f145e7705138b67044ee5482b22c8dfdf1d91d53ea6c75441a52",
@@ -496,6 +537,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:563aff8bb37ff858b695247afba3603f7a8db11e8b6ea1ea81236b08057df768",
         "fact:v2:6d8af88fd1216b2581ed9e9b5b15a9c9aa2c3db3459e870381a34601e66ae52e"
@@ -508,6 +550,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:68bf4f8ab434080be0929a4066197721edd929efb6af63c090b4276d2989aa5f",
         "fact:v2:26c6b42699be3a8a25127aa25524041d09ba8e30b21a7e68c5108809e7dd1dbe",
@@ -521,6 +564,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:8174a4386422a1d1cd44a4ef0d4a218f6d048a09b4fed20b4555415c2a049d41",
         "fact:v2:b824026b430d8b2c2c5e8be708dbb2890c49a0c56055690be9cb2c496258c054"
@@ -533,6 +577,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:df73798c6ae45b36e9125e643e3fa293fb0ad9e3ad66112d1bbdd930e7d6c2d9",
         "fact:v2:6c66d70596824c0a60c47ba5aeaf40cabe24d76b318e2df2dbcce9c6bf40d4f9",
@@ -546,6 +591,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:650c9e8c5599964e4773441bd68bddefafba5d76b436a2bc169adff65371ea15",
         "fact:v2:01351dcd91daa80ed4baa73d69e917753a9b6414a0fb94f8b14df1f53bee382f",
@@ -559,6 +605,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:8678b1717b8e84b598f8a685c407cd9e655ccc14dbb0cb27b57f31b5a131e99e",
         "fact:v2:cb7c288f9e1b30b1cde2ebf0398c4450bb8d03c4bb35432c65b42c3dbb711998",
@@ -572,6 +619,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:507cef79fdfcebee008fdcaca9c275fc327dff4adb4c30e86a8f41a43f74bf79",
         "fact:v2:43d382901068130340dd9e4c0faa3e02da42ff97ba0f4992660b948ceea74331",
@@ -586,6 +634,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:777366289d97ae5757972826d5aa6f8b8055efe815e2c490592431da719a42b7"
       ]
@@ -597,6 +646,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:7bd7c114c2046221fcaf117e8d29893230bcbe4b94581ff50d35c154835f9a9d",
         "fact:v2:9293a220f01525a8b07f87e5989ac3479e3dd58a93d96de8eca9edbb515f51e4"
@@ -609,6 +659,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:0f01f1b3bebbc874059d66a88c0cdf078c8d1195f3657f9620d852f2b8671de5",
         "fact:v2:95c78fd6031f8108d5e34e80dad9f58a23ca7327a1746ac78db780e707e5bb53"
@@ -621,6 +672,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:85f77452131e5f10b344e2fdc40bcde02d8e67911eee74f9a87f87a28037c935",
         "fact:v2:a270af97060e083148e27ac1cffe34b93c78071b9200d47570da75c71d2af68d",
@@ -634,6 +686,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:36395cdfc6e60252c4926edb3b7e74bd89736ef8cc950861c9c03f6746e3ef5c",
         "fact:v2:59cfc80d957af05c8f13b61db214d68988bc63a7dc06497c059fda5001b49cf2"
@@ -646,6 +699,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:7aacb9443576ba7ce1d16723ac5f0ae087ec87a0640888ed28b838844370cbea",
         "fact:v2:1eb481f10aaec47f7b281ce4736eea05faea76ec68696969886c5c2a6fe44b4f",
@@ -659,6 +713,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:df136622805e3044da8a5854b8dc2e30f6d647499dbafc43fc3a95940dab8f4c",
         "fact:v2:523699a1bcc224c2543266d972ce016986bd2958be5789b03944c3fc77b835ad",
@@ -672,6 +727,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:ee89037f2643405462c0738fd676cb67d61ef5b3c51255c1eec7d00f69b459ba",
         "fact:v2:6ce1acbdbabe75c1484d2959280b2918d7a27c5e9f4d666be78cd593c26d1393",
@@ -685,6 +741,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:81c1973e31aeb4ea7d4528d55e32c539e263dd611f692fe4230135a5462ff29c",
         "fact:v2:39be1e4e6766e2e91ffed2b30816189de5e944729481076af701d0e07dc13dab",
@@ -698,6 +755,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:4a123260e9191309eeb1d829718c50317d15c0967f9130733d32b06c920a11d1"
       ]
@@ -709,6 +767,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:9f9f1cbb38b9bb9ec4478a12006991e75e3aa19e7593b033e21c21dd49a198bf",
         "fact:v2:e72db67316886accbfc031effb383203b7073dbb0e5a8f3b8100f5e966259b6b"
@@ -721,6 +780,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:e24a88c455178cbaac9f952ac09c4c4cec88dca65b354500d46933abe8f33b7b",
         "fact:v2:147369a5290a9ba48cbfdc55f16c661394f48dc6335defe0931e6a37e0326589"
@@ -733,6 +793,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:3d0694b56edc27ae63c0be7dbfad41a59dba884ba8406cff045e0671515284ee",
         "fact:v2:ccdd5ef9056287d68a4d7dcb1354d22befbc5cf7cc91c01178e6098707762cf6",
@@ -746,6 +807,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:77d7254e4726d432f83cd609866bc3ae9818c701ad3050266a8c523a80f072ea",
         "fact:v2:4c9518f8cd07d30dea4e566745b167d5772c3c7d106048b1c0c81ecda8667c86",
@@ -759,6 +821,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:e08106d27ae2e6185d25e5e3a5df6e822d9fb0972644a1e6b69c9b3ade710af7",
         "fact:v2:35d35488f41d929c02b35d115684e79957d86f173e9a7bc090d4a571ce0df2aa",
@@ -772,6 +835,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:a8cd08d00748a09a2cd87a2f351e6c12b32279c345d896a2a335aeac501f9db6",
         "fact:v2:4231daaedc60beb9db423f8cd50ca2f7986d5255907db5cbb6183ec0e2d16dcf"
@@ -784,6 +848,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:51de09094bcd41c1b96800bfcbb1756df6ba51f156c62d0b5300e01d9fcdd011",
         "fact:v2:11ad42165a50d126a609fa16187944058aa88257ae577d8e382d0da4c40a7f6d",
@@ -797,6 +862,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:8ca72d61de2c563592fb22d0c597d84d721b9feaaffafb0645474595d63310a6",
         "fact:v2:b2fbc10a8b54877488b28de27c04085bd740fc42f72205e34eaa79e9fc59cc8f"
@@ -809,6 +875,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:916c750d09d2acfbb6c7bde2687d34e0ecae073227186043cc53c81ecebfba65",
         "fact:v2:8358bcc706f7e98838937aea56be91c9792cef608d0357061f86eede7bf45046"
@@ -821,6 +888,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:4c47f5e05f8e07e4bf33b6b2236dcff0277eb851b90e6074fbcc715994ddb76a",
         "fact:v2:662208dd7a2b3e1861fc9c385f28b449e6dd0ba2c2374f08b577341c08a5e3c3",
@@ -834,6 +902,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:c941123bfc0c85870fae7ea649b1fac09b5584295ca3772787e51b9ed3c4bffc",
         "fact:v2:c254fe4fe0ca981a160d2e72a509669ec9b7766a6102353314a9d5daff4ffc93",
@@ -847,6 +916,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:7588d8f337111eeca08e4904db976582d5ea42b839468b36b9db040825cf01ae",
         "fact:v2:fa49b82e165546cc0757a9ec4c7739e1446798b236f20ea361f41d9ad4040cb2"
@@ -859,6 +929,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:dc94a2f316914153694f7d044aeec842ed2230843a61516835c013df2b3dcdec"
       ]
@@ -870,6 +941,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:036624d30a7191b0267dc0fad5f472b4d8f66647de3317d37371071840e68818",
         "fact:v2:020ccc387937887191fac9925dd99193e27db20589933bbac7320737413c06f7",
@@ -883,6 +955,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:01df1adc70afffb24c3a6e09ef3f52b0f901e1d0f6630f5ddda1b86d163d2abb",
         "fact:v2:9089db6a46334f6859cfd47c9a8066008535e259c1d48e86ebe7c6309751dcf9",
@@ -896,6 +969,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:9a3ed3b64f943cdc2e71a5308f5a65ecb65df66ecc950d251a333d1754e3b161",
         "fact:v2:bbf766d06f737b4079a375e88adf78c6300637e0208be618d20b4342214bf235",
@@ -909,6 +983,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:8510a56b754119d88c13906180501bbb3f40615c9128134aedbcadb43c01d348",
         "fact:v2:b8e037b93c3e9c2cd4f364f20c5e16bd50278ccbd6beeb86360cf6a46c689f13"
@@ -921,6 +996,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:8b7a4f993783a52f450150e60e0dfe105dbd54317d547387105147fd105ba5bf",
         "fact:v2:d61242283332adf1d2bd3a0807dac930cc2c981bee62402a6464210c4e0d80d3",
@@ -934,6 +1010,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:210a6cda428f84e56291a7a0aa8dc048ed7913421e6e8944f000c98ba748e83e"
       ]
@@ -945,6 +1022,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:c04957efc29b8a1d7d5bb77efe95ad78410086ee6b7b8dce62e758b8f850f732",
         "fact:v2:2149b405fcb55e1aa93283735bd02e12d6369a482bca373c81c7dc34f5660460",
@@ -958,6 +1036,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:56394a63dba5bf8fc55234e21c7c7374bc1495ce08bbf8e18b8ccf26d75de211",
         "fact:v2:7cb4f34637adf6e072caf5d4ded6c83208dd7ec04702f1237d01743cfd467c8c"
@@ -970,6 +1049,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:ba2595e6cff364aa4203626eab3e2ab2fb157d089d33caf2c26f9e834ace257d",
         "fact:v2:88375a88a521f73f74f37392e4094d0f3c2c73290b6559fdfc7d7a37ee42b99a"
@@ -982,6 +1062,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:fda403baf2af2c457dfd08ba4d180848e03c5be83e7c42460e77247f83a3df63",
         "fact:v2:0c4c798484c17e71e679d87a9a28aa51c645de4e9837c6d54a72a84c25081059"
@@ -994,6 +1075,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:83535a92aa22922398c737d4229fbd8b1939abb7653f3a3055794e18fc5ffe72",
         "fact:v2:92f711abf376f222f57b386c013334d35506a0e6df907592f095e548597bcc23"
@@ -1006,6 +1088,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:bf4dfdf81675f32ccafdb76ceb8c6ff2d9fddcfb7feaaf5043826b518e466651",
         "fact:v2:3ed13370f470ef805e9a17149c6848578959f04843031ba8aee51bca8710507d",
@@ -1019,6 +1102,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:11ab5b99b51c4d4f9f9fee151b5bc9c017b18ccbc60d84b4438a656006f5a7ae",
         "fact:v2:06a9ae202b2df50a48a60125e7f0dde4544541f80939e47cb38fdc927b08b66e",
@@ -1032,6 +1116,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:11ca8d99b2d9a1c3f215f8393a520acd9fb98ac997f4c5d85d2656d53f522e16",
         "fact:v2:73f6f1082a6633036ba238516e4ba6bffb989bfe811e9c390600f29ca4876e86",
@@ -1045,6 +1130,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:efc77d1d9cf904e78662efa877330d715c2e9d552626479df4d8d4501ad209b2",
         "fact:v2:31199d84213c5f3f76552bffa3d09f5f473353acc7c240bad327f9a6d96d61d6"
@@ -1057,6 +1143,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:ff7c4754546deb88199c348efcedfcf2daeae4ceb1e7ca25f97832a367f82840",
         "fact:v2:458ed8e99f3005e2cf4c24f42804096333bca3dd344edde0723cac29871649ed",
@@ -1070,6 +1157,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:525cc90dcd1f4085f8c6452b1da9f947bc8cd44bfd738dc857a9ec743ecf1311",
         "fact:v2:0676d72fc5197a6f5e8e54f54ff8f46bdb7419ebe8646f05b672db32e656b7ba",
@@ -1083,6 +1171,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:22c00dc559322af78484e7a4a9d4c2e33da38734472a3fe92fd36e9a66aa2537",
         "fact:v2:6513510de52792a5cbc74959518d41b881578b86c8407b3a463b665050a47c97",
@@ -1096,6 +1185,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:dbfc4722e34eff38a84e1db64464324f6dfc7e3887d6707b1a5b60c24e3c3d23",
         "fact:v2:00a9363452d5afe964ef25bceb24ce33663f5781755e2cecd9dbff075abefdd4",
@@ -1109,6 +1199,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:d6c5e34dea49538dca484f05fa15fba80df0423dbb82635b3ab487c256eb0a29",
         "fact:v2:23103f926ccd42c7f0f7ae8c2e924420ffab195265619e1984ea6d1e6d5f3e7d",
@@ -1122,6 +1213,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:bcf47f125e4ab1c36ba996b7f941f15b52dd7cf756b11fdbe466309cf661fb53",
         "fact:v2:1b8ccac636972f7d635fc5c618c5723ce56bcd407506f5094202d6ce30d085bd",
@@ -1135,6 +1227,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:d6fbd34a9b2d86bd4c44954c636153279413a70054f97afa3ef628fc6f4be0a6",
         "fact:v2:95fe849fbabc5970d5d8d43ceeb61993c3722c5001cac831ab23d47809eec383",
@@ -1148,6 +1241,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:b521de40f1dcbe7884da14023fd443d3bc7f2bf64b60e306e88b7c5c534f9dda",
         "fact:v2:463e2c6c87234a63ac4e4522feaa3d6e0bc2b4c6b9af1282e62f68a978708f7d",
@@ -1161,6 +1255,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:895dd6cb13325e2d8639f9e4dfd943b2bfa902382fc6f0be136888f84c27b225",
         "fact:v2:41bf992ad5a194e5d40e64b423d0236f112df6a4171a4b95ab6d9a3ad4c014c9"
@@ -1173,6 +1268,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:e78d8bae07c8ad50f9bcf99ea1dc04e03d437b2d08e8228e74e584d96f1280ae",
         "fact:v2:e434d54414b6ca2ae7bb1eb31b16d673716aa4cbb9e72016fe72bb042f650d06",
@@ -1186,6 +1282,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:831a2acc36b6fb7498577a879b80402e16ab12aa761ea047a7cc571f2ac6da37",
         "fact:v2:489264e672da3e8063edc65af08b7f0b2e31ef2bf212da7c3f8dbab6aba10a75",
@@ -1199,6 +1296,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:efc49eb12e6f292b2a367e1c7c05c14f9d5b280446e80067130fe9ddd4988dc4",
         "fact:v2:7cd17a5c8dc5cf42cbd246a8bb7b16ebe5b96ccb72428fca4e1d8a864f37d025",
@@ -1212,6 +1310,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:9b33de56cd77cd807ac3981c95c74e98c0e4459e62d8588d77362edce4e804a2",
         "fact:v2:c9fec058f1cfdfeb6e3e6f75dfe212c8f7c60bac06b7bfa806038abd76ef2a46"
@@ -1224,6 +1323,7 @@
       "case_type": "single_fact",
       "gold_count": 1,
       "hit_count_at_5": 1,
+      "query_parsed": true,
       "ranked_fact_identities": [
         "fact:v2:08baa7cea74005b363419f2f3d5dd6a0ac9c13e6ed5e6814c96d77c847652bc4",
         "fact:v2:e9e16198012281552d4b8dd71ff67e69b9228d3e02cd3cadb61fb0179d56e8ac"

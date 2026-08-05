@@ -113,3 +113,25 @@
 - `artifacts/evaluation/nf-opt-17-gate-e/zero-shot-development-results.json`
 - `artifacts/evaluation/nf-opt-17-gate-f/issuer-disjoint-training-result.json`
 - `artifacts/evaluation/nf-opt-17-gate-f/nf-opt-17-gate-f-acceptance.json`
+
+---
+
+## Structured Financial Fact Retrieval V2
+
+可用于简历的严谨表述：
+
+> 构建PDF混合检索与原生Inline XBRL结构化Fact双口径评测：PDF严格Candidate Identity第一阶段Dense Source Recall@200为65%；在由Costco、Home Depot和PepsiCo三家全新10-K组成的模板约束留出集上，Structured Fact Recall@5达到120/120，并实现双期间Complete Pair Recall@5 30/30。
+
+必须同时保留以下边界：
+
+- `120/120`仅适用于原生Inline XBRL、固定Question模板和精确Document/Concept/Period检索。
+- 它不覆盖PDF叙述、附注语义、开放式问题或同义Metric改写，不能写成“金融RAG Recall@5=100%”。
+- 旧PDF严格Final Source Recall@5仍为`13/80`，没有被V2指标替换。
+- 留出集包含100题：60条单事实、30条双期间、10条拒答；共120条Gold Fact。
+- 第一次本地留出执行因读取预解析Case Slot而作废；最终结果来自Question-only修正版，修正过程已单独留档。
+
+来源：
+
+- `artifacts/evaluation/structured-fact-v2-benchmark/holdout-retrieval-results.json`
+- `artifacts/evaluation/structured-fact-v2-benchmark/holdout-acceptance.json`
+- `artifacts/evaluation/structured-fact-v2-benchmark/evaluation-semantic-closure.json`

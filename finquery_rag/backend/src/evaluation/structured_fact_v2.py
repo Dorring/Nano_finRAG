@@ -130,3 +130,17 @@ def structured_fact_score(
         return None
     period_match = str(fact["period_end"]) in query_periods
     return 9.0 + (3.0 if period_match else 0.0)
+
+
+def parse_structured_fact_query(question: str) -> tuple[str, str, tuple[str, ...]] | None:
+    """Parse only the frozen public benchmark question template."""
+    match = re.fullmatch(
+        r"According to (.+?)'s Form 10-K, what was (.+?) for the periods? ended "
+        r"(\d{4}-\d{2}-\d{2})(?: and (\d{4}-\d{2}-\d{2}))?\?",
+        question,
+    )
+    if match is None:
+        return None
+    issuer, metric, first_period, second_period = match.groups()
+    periods = (first_period,) if second_period is None else (first_period, second_period)
+    return issuer, metric, periods

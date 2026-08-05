@@ -234,3 +234,17 @@ Hard Negative分别覆盖“同一行错误期间”和“同一表错误Metric�
 这个结果只能说明当前冻结Head-only方案没有泛化收益，不能推断所有金融Reranker微调都无效。它也不能把开发集Pairwise指标解释成生产Recall。工程上的价值是及时停止无收益路线，并把瓶颈重新定位到上游Source Representation与Candidate可检索性。
 
 当前严格边界：生产Final Source Recall@5仍为`13/80`；冻结Benchmark未被训练读取；生产Reranker未修改。
+
+---
+
+## Q12：为什么Structured Fact Recall@5是100%，而PDF Final Recall@5只有16.25%？
+
+### 30秒回答
+
+> 两者是不同范围、不能替换的指标。PDF基线要求从非结构化Chunk中以严格Candidate Identity找证据，第一阶段Dense Recall@200为65%，最终Top-5为16.25%。Structured Fact V2直接检索Inline XBRL原生的Document、Concept和Period字段，在三家全新公司、固定Question模板的留出集上达到120/120 Fact Recall@5。这个100%证明结构保真对精确金融Fact检索有效，不代表开放域PDF RAG达到100%。
+
+### 展开说明
+
+V2使用Walmart、Adobe和Salesforce作为开发文档，Costco、Home Depot和PepsiCo作为一次性留出文档，共冻结100条留出问题：60条单事实、30条双期间和10条No-answer。检索只读取Question文本，通过固定解析器得到公司、Metric和Period；不使用Embedding、Reranker或Case里的Gold Slot字段。
+
+最终Strict Fact Recall@5为120/120，Single-fact为60/60，Complete Pair为30/30，No-answer为10/10。由于问题由固定模板生成、Metric使用XBRL Concept Label，这一结果的适用范围是“模板约束的原生结构化金融事实检索”，不包括同义表达、叙述性事实和PDF附注语义。
