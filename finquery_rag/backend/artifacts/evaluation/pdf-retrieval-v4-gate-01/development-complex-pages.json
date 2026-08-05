@@ -1,0 +1,54 @@
+{
+  "pages": [
+    {
+      "document_id": "adobe_fy2025_pdf_dev",
+      "pdf_page": 50,
+      "probe_page_index": 84,
+      "scope": "development_complex",
+      "selection_reasons": [
+        "consolidated_income_statement_with_multi_year_header"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-source-representation-v2/adobe_fy2025_pdf_dev.pdf"
+    },
+    {
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "pdf_page": 45,
+      "probe_page_index": 85,
+      "scope": "development_complex",
+      "selection_reasons": [
+        "subscription_support_revenue_table"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-source-representation-v2/salesforce_fy2026_pdf_dev.pdf"
+    },
+    {
+      "document_id": "walmart_fy2026_pdf_dev",
+      "pdf_page": 54,
+      "probe_page_index": 86,
+      "scope": "development_complex",
+      "selection_reasons": [
+        "consolidated_income_statement_with_multi_year_header"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-source-representation-v2/walmart_fy2026_pdf_dev.pdf"
+    }
+  ],
+  "policy": {
+    "adobe_fy2025_pdf_dev": {
+      "filename": "adobe_fy2025_pdf_dev.pdf",
+      "pdf_page": 50,
+      "reason": "consolidated_income_statement_with_multi_year_header"
+    },
+    "salesforce_fy2026_pdf_dev": {
+      "filename": "salesforce_fy2026_pdf_dev.pdf",
+      "pdf_page": 45,
+      "reason": "subscription_support_revenue_table"
+    },
+    "walmart_fy2026_pdf_dev": {
+      "filename": "walmart_fy2026_pdf_dev.pdf",
+      "pdf_page": 54,
+      "reason": "consolidated_income_statement_with_multi_year_header"
+    }
+  }
+}

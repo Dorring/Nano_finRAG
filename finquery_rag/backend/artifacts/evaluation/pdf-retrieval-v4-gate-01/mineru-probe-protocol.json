@@ -1,0 +1,70 @@
+{
+  "adapter_builds": 0,
+  "answer_generation_calls": 0,
+  "binder_calls": 0,
+  "calculator_calls": 0,
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "fixed_backends": {
+    "hybrid_high": {
+      "backend": "hybrid-engine",
+      "effort": "high",
+      "method": "auto"
+    },
+    "pipeline_auto_ocr": {
+      "backend": "pipeline",
+      "method": "auto",
+      "ocr_mode": "auto"
+    }
+  },
+  "gate": "pdf_retrieval_v4_gate_01",
+  "index_builds": 0,
+  "input_contract": {
+    "benchmark_shadow_pages": 84,
+    "combined_probe_pages": 87,
+    "development_complex_pages": 3,
+    "oracle_source_records": 22,
+    "shadow_page_set_hash": "4a811033400e451d44df8d5c64f26c47eb2eb1f868e077cae81c4acdc549529c"
+  },
+  "mineru_runtime": {
+    "mineru_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/mineru-venv-cu126/bin/mineru",
+    "mineru_version": "mineru, version 3.4.4",
+    "python_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/mineru-venv-cu126/bin/python",
+    "torch_cuda_available": true,
+    "torch_cuda_version": "12.6",
+    "torch_return_code": 0,
+    "torch_version": "2.7.1+cu126",
+    "version_return_code": 0
+  },
+  "nvidia_smi_before_run": {
+    "command": [
+      "nvidia-smi",
+      "--query-gpu=index,name,memory.total,memory.used,memory.free",
+      "--format=csv,noheader"
+    ],
+    "error": "",
+    "output": "0, NVIDIA RTX A6000, 49140 MiB, 39282 MiB, 9269 MiB\n1, NVIDIA RTX A6000, 49140 MiB, 47599 MiB, 952 MiB\n2, NVIDIA RTX A6000, 49140 MiB, 45471 MiB, 3080 MiB\n3, NVIDIA RTX A6000, 49140 MiB, 45800 MiB, 2751 MiB\n4, NVIDIA RTX A6000, 49140 MiB, 45846 MiB, 2706 MiB\n5, NVIDIA RTX A6000, 49140 MiB, 45471 MiB, 3080 MiB\n6, NVIDIA RTX A6000, 49140 MiB, 45837 MiB, 2714 MiB\n7, NVIDIA RTX A6000, 49140 MiB, 43673 MiB, 4879 MiB",
+    "return_code": 0
+  },
+  "oracle_annotations_read_posthoc": 22,
+  "parameter_scan": false,
+  "per_query_oracle": false,
+  "production_index_write": false,
+  "retrieval_runs": 0,
+  "runbook": {
+    "cuda_visible_devices": "0",
+    "isolated_mineru_environment": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/mineru-venv-cu126",
+    "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/docs/operations/runtime-environment-runbook.md",
+    "project_tmpdir": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-retrieval-v4-gate-01/finquery_tmp",
+    "sha256": "d7ac049aad49e9bbd2c3167f6ee0f4bda76982323e30b70f9129d73dcfc4f9d6"
+  },
+  "runtime_gold_reads": 0,
+  "schema": "pdf-retrieval-v4/gate-01/protocol/v1",
+  "thresholds": {
+    "cross_page_fragment_detection": 0.8,
+    "oracle_numeric_text_accuracy": 0.98,
+    "oracle_period_header_availability": 0.85,
+    "oracle_row_text_recovery": 0.9,
+    "oracle_scale_header_availability": 0.9,
+    "oracle_table_detection_recall": 0.95
+  }
+}

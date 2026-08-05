@@ -1,0 +1,7 @@
+{
+  "decision": "mineru_probe_execution_blocked",
+  "next_gate": "fix_mineru_runtime",
+  "production_switch_allowed": false,
+  "reason": "fixed dual-backend capability probe",
+  "selected_backend": null
+}

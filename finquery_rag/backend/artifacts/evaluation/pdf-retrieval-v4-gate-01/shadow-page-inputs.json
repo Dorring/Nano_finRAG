@@ -1,0 +1,1073 @@
+{
+  "pages": [
+    {
+      "document_id": "aapl_fy2025",
+      "pdf_page": 25,
+      "probe_page_index": 0,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/aapl_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "aapl_fy2025",
+      "pdf_page": 26,
+      "probe_page_index": 1,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_source_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/aapl_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "aapl_fy2025",
+      "pdf_page": 27,
+      "probe_page_index": 2,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/aapl_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "aapl_fy2025",
+      "pdf_page": 43,
+      "probe_page_index": 3,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:0097c34865532bc88e1e3b50cc9a5082a0c8e827f7260990d8ecc829a2db7118"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/aapl_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "aapl_fy2025",
+      "pdf_page": 77,
+      "probe_page_index": 4,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:0030e6d72536080a9859e19ad5565a56d0bf63c605773cbe94ef9491fe7e4c66"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/aapl_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 2,
+      "probe_page_index": 5,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:0080d98a8bd8580d735cb9823733adf9fcc283578462331c223ff1754f48cde1"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 10,
+      "probe_page_index": 6,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:0095ff2552fc2813ba34faf916d6927e50332ff0db51314172638f7116a436cd"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 11,
+      "probe_page_index": 7,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:00ad823b35d5ff3ccf3553c6d732d56d7111ad5a0e2b8d3ffdf2cfbe1ceadfc3"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 32,
+      "probe_page_index": 8,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:00164dba6e260617ba82a3a6323eea5b694026a666a0e4e173c115b6e472c930"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 62,
+      "probe_page_index": 9,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:0079e5963a9227cc260fe4a4ff88d58f092fe9bf3f6d55da44b4d58ab4649381"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 76,
+      "probe_page_index": 10,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:002b8bb7d73917b881810845316aeea9c3229bcb17fc1bf9438d3b9dcd5cba08",
+        "candidate:v1:0070a16e0830d1f42588ddecaf3597a2e8e5c23a4b54b44f96dc988f667491f1"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 104,
+      "probe_page_index": 11,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:00a98f051d82b886548ed3ddeb801654514b2e4586338e6ce7f6f47499ba5687"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 126,
+      "probe_page_index": 12,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:006c3923ddf43ef55b05b37fc71272321c04f378c3c010e587f723397b2d8713"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 128,
+      "probe_page_index": 13,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:000c605da64beea9487438827c2721316b6669413057546cecadd8b0482c66bf"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 134,
+      "probe_page_index": 14,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:007c5be4b251e2ee6592295e7ffd3ee39b261507e69edb48596f63df33a32625"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 143,
+      "probe_page_index": 15,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:007def2e6eb13d560a54916c402380f6b61c3138351eb383c0d0a857091bf4f9"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 148,
+      "probe_page_index": 16,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:0082508f620286c2c0fd1e9d8556c0151dea71c420ff6c9f3abf9852291ef1e1"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 152,
+      "probe_page_index": 17,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:00b15dabf57d17a8c5939e27ff8ffe179f1f72e5a24502a79771aa374cc78756"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 161,
+      "probe_page_index": 18,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:001800891cc1ba8bfa43c3f6b468adb368d0bcf14b457ad976b1ed68565aadba"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 198,
+      "probe_page_index": 19,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 199,
+      "probe_page_index": 20,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_source_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 200,
+      "probe_page_index": 21,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 201,
+      "probe_page_index": 22,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:00abcb0b19dd5146e3057d30699fd63f1e44bae4cccb39aefe9baa62c817c414"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 221,
+      "probe_page_index": 23,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:006ef0e037da70385eadc71189c799491ee95b0aac02f89355cadf0cd0a7a3e6",
+        "candidate:v1:00a3fb9fe4238b8c20ce09a427a603fad30b145a4bb2f34078b687eabedde4aa"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 255,
+      "probe_page_index": 24,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:007df591f016383f98cdd621553fa2e1381f1d02595e656c9611d14fca050242"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 272,
+      "probe_page_index": 25,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:00b2ccf6daafddec482c62ef4b3ad517db87acdb1261481569c396ebf731e39a"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 276,
+      "probe_page_index": 26,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:0033d4e6c745454242cc400ca6bf2488111cc7a49232a9b185c4903a3fa2242a"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "pdf_page": 315,
+      "probe_page_index": 27,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:003fe20b0de179fb8e8b5cb6ddc5aa0ab0a06b2a8cd3977ad5c85174f2ea0139"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "ko_fy2025",
+      "pdf_page": 62,
+      "probe_page_index": 28,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/ko_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "ko_fy2025",
+      "pdf_page": 63,
+      "probe_page_index": 29,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page",
+        "oracle_source_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:008c94e8d0d0d9764ede4c5b653a6bffe4348248d87eb7e0e86cfed37e5477b8",
+        "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/ko_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "ko_fy2025",
+      "pdf_page": 64,
+      "probe_page_index": 30,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/ko_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "ko_fy2025",
+      "pdf_page": 78,
+      "probe_page_index": 31,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:00a44be5fb0da3d879ac85d7e35685f2fab6f1b2489a72ab62abfd7196e2457e"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/ko_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "ko_fy2025",
+      "pdf_page": 80,
+      "probe_page_index": 32,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:0032360969c1fe19e52f1f0ac41e293a012afa2b7bcef6a7e68fec467fc34bcd"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/ko_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "ko_fy2025",
+      "pdf_page": 99,
+      "probe_page_index": 33,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:00846c5b7c8efcb18670a758294814727bb3840b364e9a25e1146b5f9f5ebf87"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/ko_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "ko_fy2025",
+      "pdf_page": 102,
+      "probe_page_index": 34,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:00179f311a1ceec30083b535b5412c3052ac7f0e0f23b71d7b920bfcbd69ad89"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/ko_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "ko_fy2025",
+      "pdf_page": 109,
+      "probe_page_index": 35,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:0092b962ff84e807c7b6f52943f13a647ed500e7675d2fad3f7f00347984728e"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/ko_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "ko_fy2025",
+      "pdf_page": 116,
+      "probe_page_index": 36,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:00149d12c746beef8f9454226c344b45797df801951de57031c45c41065db095"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/ko_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "ko_fy2025",
+      "pdf_page": 118,
+      "probe_page_index": 37,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/ko_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "ko_fy2025",
+      "pdf_page": 119,
+      "probe_page_index": 38,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_source_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:214ce6712de95bbe235ef407a4a41b42d0ba38080b13d80a418493656e357a9b",
+        "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/ko_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "ko_fy2025",
+      "pdf_page": 120,
+      "probe_page_index": 39,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/ko_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "ko_fy2025",
+      "pdf_page": 146,
+      "probe_page_index": 40,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:002494a3be6912681eaae68e5c2f9d4bddeb111aede5076b8ede9cf027642e7b"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/ko_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "msft_fy2025",
+      "pdf_page": 58,
+      "probe_page_index": 41,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:000434f1ee2f00faf085427bfd75859a0af333110689f8c197a11b6a1a9313b7"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/msft_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "msft_fy2025",
+      "pdf_page": 79,
+      "probe_page_index": 42,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/msft_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "msft_fy2025",
+      "pdf_page": 80,
+      "probe_page_index": 43,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_source_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+        "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/msft_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "msft_fy2025",
+      "pdf_page": 81,
+      "probe_page_index": 44,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/msft_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "pdf_page": 36,
+      "probe_page_index": 45,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:009c7b9564964f97dc0703032997e3b614f057dcd5664f90e49c63d4ab73d99b"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/nvda_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "pdf_page": 38,
+      "probe_page_index": 46,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:0008cef7ec235f3460cba0db7726441e9c6d19dffbecfeb7f51787b78e00bcfb"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/nvda_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "pdf_page": 123,
+      "probe_page_index": 47,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:000257bca2712d85831d93bbaf5716fa9ecb3734f7cadbd6c2622f8dc46dfe1a"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/nvda_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "pdf_page": 132,
+      "probe_page_index": 48,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:004555d502deb5ab04fed5f258b8e4356fa6e579ea414e5eba7edeb7cc2ed4ea"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/nvda_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "pdf_page": 143,
+      "probe_page_index": 49,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/nvda_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "pdf_page": 144,
+      "probe_page_index": 50,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_source_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/nvda_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "pdf_page": 145,
+      "probe_page_index": 51,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/nvda_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "pdf_page": 163,
+      "probe_page_index": 52,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:008f8d95c702580f2e3cc96e8354c89abc9c1f95283b932c287129e5579fd8e2"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/nvda_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "pdf_page": 173,
+      "probe_page_index": 53,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:00362cf448ad9de02f9319a75105b4823eb207bc3fc1d48436932e691aac5166"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/nvda_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "pfe_fy2024",
+      "pdf_page": 47,
+      "probe_page_index": 54,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:000b23533b4f4efd74b60a432964b14663a277ce67dc8d3e1c22d2e2a9b592f3"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/pfe_fy2024_10k.pdf"
+    },
+    {
+      "document_id": "pfe_fy2024",
+      "pdf_page": 59,
+      "probe_page_index": 55,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/pfe_fy2024_10k.pdf"
+    },
+    {
+      "document_id": "pfe_fy2024",
+      "pdf_page": 60,
+      "probe_page_index": 56,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_source_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/pfe_fy2024_10k.pdf"
+    },
+    {
+      "document_id": "pfe_fy2024",
+      "pdf_page": 61,
+      "probe_page_index": 57,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page",
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:0010ccb6263c570afc8e58b515087c7bda371ea3a119fe45bf1cb364fa126ab4"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/pfe_fy2024_10k.pdf"
+    },
+    {
+      "document_id": "pfe_fy2024",
+      "pdf_page": 85,
+      "probe_page_index": 58,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:0018b0d1956e6f85d9a2b58f03b6a44bd867bd6f69f87dd592151dc2b7189c06",
+        "candidate:v1:00bda119506a6cb9105712bd8b5d66e6791677cf1a913c8308bac679f6e1a607"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/pfe_fy2024_10k.pdf"
+    },
+    {
+      "document_id": "pfe_fy2024",
+      "pdf_page": 119,
+      "probe_page_index": 59,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:00013edc2aec5c21de1f1ab42eb718ee22f7eac081866de15a25e36a2040f505"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/pfe_fy2024_10k.pdf"
+    },
+    {
+      "document_id": "pfe_fy2024",
+      "pdf_page": 133,
+      "probe_page_index": 60,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:000088bc91d825a040c49bf4b5eecda6fff0c35838107661340136ba3952348f"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/pfe_fy2024_10k.pdf"
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "pdf_page": 2,
+      "probe_page_index": 61,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:0070fe8b3d9ee8eff5c48612dfe5d607654ae6b61d1edb12620d670ad30aff94"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/tsla_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "pdf_page": 3,
+      "probe_page_index": 62,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:006758c7cfc09916eaec26815009069bbd60ea35e368f31ad0d732c51f797f9c"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/tsla_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "pdf_page": 16,
+      "probe_page_index": 63,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:000db2851cd69f0f8d5958bc34532d38a35846b1f5f79510a4458d7f595f2fb2"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/tsla_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "pdf_page": 37,
+      "probe_page_index": 64,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:00018ca8b6f9a85bba3614fb75b2537b0a39a37be553836ee924efd24a9f6c5d"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/tsla_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "pdf_page": 54,
+      "probe_page_index": 65,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/tsla_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "pdf_page": 55,
+      "probe_page_index": 66,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_source_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52",
+        "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/tsla_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "pdf_page": 56,
+      "probe_page_index": 67,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/tsla_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "pdf_page": 60,
+      "probe_page_index": 68,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:000dab63790251b7cda6a3d541bdbe3d9e670123526eeef7ccbc94624bb94692"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/tsla_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "pdf_page": 68,
+      "probe_page_index": 69,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page",
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:0000c44f7788e8158287907329801f2913610aa67d5fc82305a5334507212229"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/tsla_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "pdf_page": 69,
+      "probe_page_index": 70,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_source_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/tsla_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "pdf_page": 70,
+      "probe_page_index": 71,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/tsla_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "pdf_page": 78,
+      "probe_page_index": 72,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:002a51480b0c80e8ba05731bfbdb45c4eaad6a58d823ce00f22549e094963f54"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/tsla_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "pdf_page": 108,
+      "probe_page_index": 73,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:0000a7500a8cfd549066a8a42a0c3d360cb727d8b50b0eff17aca560fde5265e"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/tsla_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "pdf_page": 112,
+      "probe_page_index": 74,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:00166d64421db37ad6e1a5d5ada7722c699d2be8e8b945d3f28cae2cc9855998"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/tsla_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "pdf_page": 120,
+      "probe_page_index": 75,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:007fafa12d0f0260bdf14164389a827cb4c389546eb321990329f95cf3f8f3b5"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/tsla_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "pdf_page": 135,
+      "probe_page_index": 76,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:003e22f2f3c95eab276d81222c801640b8e62ab180fd1f56b06733abd8a992de"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/tsla_fy2025_10k.pdf"
+    },
+    {
+      "document_id": "v_fy2025",
+      "pdf_page": 55,
+      "probe_page_index": 77,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:005d25be94b8a703e9fba3cd44f870ecec056d2b1fe57b79c15ff01ed3e8cf2d"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/v_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "v_fy2025",
+      "pdf_page": 64,
+      "probe_page_index": 78,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:004f065f77403dac8b30a185f218d4ff90e113ccda89658725170bc9cf808e04"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/v_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "v_fy2025",
+      "pdf_page": 74,
+      "probe_page_index": 79,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/v_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "v_fy2025",
+      "pdf_page": 75,
+      "probe_page_index": 80,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_source_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:21f924b9c1b33d1e7caa949ac3dcca366d20e99a1aacf2b9d84be8e762ad6240",
+        "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/v_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "v_fy2025",
+      "pdf_page": 76,
+      "probe_page_index": 81,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "oracle_adjacent_page"
+      ],
+      "source_candidate_keys": [],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/v_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "v_fy2025",
+      "pdf_page": 88,
+      "probe_page_index": 82,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:000250259120b494c7c46c493a5684feed6a843adee122f0d1df420bfb56049c"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/v_fy2025_annual_report.pdf"
+    },
+    {
+      "document_id": "v_fy2025",
+      "pdf_page": 95,
+      "probe_page_index": 83,
+      "scope": "benchmark_shadow",
+      "selection_reasons": [
+        "nf_opt_07_control_page"
+      ],
+      "source_candidate_keys": [
+        "candidate:v1:0059a97ccb946a16b382e8a4ad8ab0d137625f95d0f48d9eaf3e7b3098745d7c"
+      ],
+      "source_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/v_fy2025_annual_report.pdf"
+    }
+  ],
+  "shadow_manifest": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/nf-opt-08/shadow-page-set-manifest.json",
+  "shadow_page_set_hash": "4a811033400e451d44df8d5c64f26c47eb2eb1f868e077cae81c4acdc549529c"
+}

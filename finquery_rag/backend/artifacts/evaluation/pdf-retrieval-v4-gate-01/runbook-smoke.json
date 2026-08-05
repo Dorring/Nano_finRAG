@@ -1,0 +1,91 @@
+{
+  "command": [
+    "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/mineru-venv-cu126/bin/mineru",
+    "-p",
+    "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-retrieval-v4-gate-01/smoke/aapl_fy2025-p26.pdf",
+    "-o",
+    "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-retrieval-v4-gate-01/smoke/output",
+    "-b",
+    "pipeline",
+    "-m",
+    "auto"
+  ],
+  "cuda_visible_devices": "0",
+  "elapsed_seconds": 39.352,
+  "error": null,
+  "mineru_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/mineru-venv-cu126/bin/mineru",
+  "mineru_runtime": {
+    "mineru_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/mineru-venv-cu126/bin/mineru",
+    "mineru_version": "mineru, version 3.4.4",
+    "python_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/mineru-venv-cu126/bin/python",
+    "torch_cuda_available": true,
+    "torch_cuda_version": "12.6",
+    "torch_return_code": 0,
+    "torch_version": "2.7.1+cu126",
+    "version_return_code": 0
+  },
+  "raw_output_inventory": {
+    "content_list_count": 1,
+    "content_list_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-retrieval-v4-gate-01/smoke/output/aapl_fy2025-p26/auto/aapl_fy2025-p26_content_list.json",
+    "middle_json_count": 1,
+    "middle_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-retrieval-v4-gate-01/smoke/output/aapl_fy2025-p26/auto/aapl_fy2025-p26_middle.json",
+    "model_json_count": 1,
+    "raw_file_count": 10,
+    "raw_files": [
+      {
+        "path": "aapl_fy2025-p26/auto/aapl_fy2025-p26.md",
+        "sha256": "6ffd60816e84fc6d229e77a8ea1135163f67a1666f1e070c58753f0c7afe845a",
+        "size_bytes": 1728
+      },
+      {
+        "path": "aapl_fy2025-p26/auto/aapl_fy2025-p26_content_list.json",
+        "sha256": "78d3812def064f82378b390a2426ebe7a135ae0d8de14c413c35929c2dfc6c89",
+        "size_bytes": 4817
+      },
+      {
+        "path": "aapl_fy2025-p26/auto/aapl_fy2025-p26_content_list_v2.json",
+        "sha256": "399e79edff483f8de15afe190e55bd954bd4c0a8901a920f05acd7f65529c462",
+        "size_bytes": 8274
+      },
+      {
+        "path": "aapl_fy2025-p26/auto/aapl_fy2025-p26_layout.pdf",
+        "sha256": "ee792b9b98b13b3f3a7bc07f189b608ad85c5d246f0f68e8c23818ac63fafdfc",
+        "size_bytes": 109703
+      },
+      {
+        "path": "aapl_fy2025-p26/auto/aapl_fy2025-p26_middle.json",
+        "sha256": "018bb43615cf7329d063c6c379b25efaaf7cfc5b94ffea3ced9a6c4a0b3c075c",
+        "size_bytes": 43803
+      },
+      {
+        "path": "aapl_fy2025-p26/auto/aapl_fy2025-p26_model.json",
+        "sha256": "a03be9fae9dea919dfc3130b0b8411888d5491d9be5d09f48cf30151ef12c105",
+        "size_bytes": 10005
+      },
+      {
+        "path": "aapl_fy2025-p26/auto/aapl_fy2025-p26_origin.pdf",
+        "sha256": "da90233e07a036b79b6bd75bb49abe34aafc5d4c91e06d447d9c7bcb6d4b3fb3",
+        "size_bytes": 92619
+      },
+      {
+        "path": "aapl_fy2025-p26/auto/aapl_fy2025-p26_span.pdf",
+        "sha256": "ca8224295ec3962410b609a24e1619f52a53653596873f2aafceb90053ba5510",
+        "size_bytes": 108340
+      },
+      {
+        "path": "aapl_fy2025-p26/auto/images/ba6cfb2f11e1b24c52cfec734e305dd7023d1dafe7073089e1150046ab96af36.jpg",
+        "sha256": "8a0cf8e307450c1163b0aa890f5d376cac4727e90316d82de1d6a250691d2882",
+        "size_bytes": 47555
+      },
+      {
+        "path": "mineru-smoke.log",
+        "sha256": "08932d46de2e4f3503774f5838d87b758d3ab4509899752ff39caf7335f60fb2",
+        "size_bytes": 4323
+      }
+    ]
+  },
+  "return_code": 0,
+  "smoke_input": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-retrieval-v4-gate-01/smoke/aapl_fy2025-p26.pdf",
+  "smoke_input_sha256": "355d69efdf8bab05470c6f0de9c92f2c7847098c1f4218ad6b19f8182a4c4f6d",
+  "smoke_output": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-retrieval-v4-gate-01/smoke/output"
+}
