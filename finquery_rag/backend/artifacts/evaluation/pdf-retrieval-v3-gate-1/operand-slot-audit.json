@@ -1,0 +1,1286 @@
+{
+  "all_slots_complete": true,
+  "case_count": 72,
+  "records": [
+    {
+      "case_id": "aapl_fy2025_001",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Total net sales",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Operations"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "aapl_fy2025_002",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Services",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Products and Services Performance"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "aapl_fy2025_003",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Total gross margin percentage",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Gross Margin"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "aapl_fy2025_004",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "iPhone",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Products and Services Performance"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "aapl_fy2025_005",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Mac",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Products and Services Performance"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "aapl_fy2025_006",
+      "minimum_evidence_count": 2,
+      "operand_slots": [
+        {
+          "metric": "Total net sales",
+          "period": "FY2024",
+          "role": "previous_period",
+          "slot_id": "previous",
+          "source_index": 0,
+          "statement_hint": null
+        },
+        {
+          "metric": "Total net sales",
+          "period": "FY2025",
+          "role": "current_period",
+          "slot_id": "current",
+          "source_index": 1,
+          "statement_hint": null
+        }
+      ],
+      "operation": "growth_rate",
+      "query_type": "calculation_multi_operand",
+      "slot_count": 2
+    },
+    {
+      "case_id": "aapl_fy2025_007",
+      "minimum_evidence_count": 2,
+      "operand_slots": [
+        {
+          "metric": "iPhone",
+          "period": "FY2025",
+          "role": "minuend",
+          "slot_id": "left",
+          "source_index": 0,
+          "statement_hint": "Products and Services Performance"
+        },
+        {
+          "metric": "Services",
+          "period": "FY2025",
+          "role": "subtrahend",
+          "slot_id": "right",
+          "source_index": 1,
+          "statement_hint": "Products and Services Performance"
+        }
+      ],
+      "operation": null,
+      "query_type": "multi_metric_comparison",
+      "slot_count": 2
+    },
+    {
+      "case_id": "aapl_fy2025_008",
+      "minimum_evidence_count": 0,
+      "operand_slots": [],
+      "operation": null,
+      "query_type": "no_answer",
+      "slot_count": 0
+    },
+    {
+      "case_id": "aapl_fy2025_009",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "iPhone",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Products and Services Performance"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "jpm_fy2025_001",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Total assets",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated balance sheets"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "jpm_fy2025_002",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Total liabilities",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated balance sheets"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "jpm_fy2025_003",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Net income",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated statements of income"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "jpm_fy2025_004",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Net income",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consumer & Community Banking"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "jpm_fy2025_005",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Net income",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Commercial & Investment Bank"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "minimum_evidence_count": 2,
+      "operand_slots": [
+        {
+          "metric": "Total assets",
+          "period": "FY2024",
+          "role": "previous_period",
+          "slot_id": "previous",
+          "source_index": 0,
+          "statement_hint": null
+        },
+        {
+          "metric": "Total assets",
+          "period": "FY2025",
+          "role": "current_period",
+          "slot_id": "current",
+          "source_index": 1,
+          "statement_hint": null
+        }
+      ],
+      "operation": "growth_rate",
+      "query_type": "calculation_multi_operand",
+      "slot_count": 2
+    },
+    {
+      "case_id": "jpm_fy2025_007",
+      "minimum_evidence_count": 2,
+      "operand_slots": [
+        {
+          "metric": "Net income",
+          "period": "FY2025",
+          "role": "minuend",
+          "slot_id": "left",
+          "source_index": 0,
+          "statement_hint": "Consumer & Community Banking"
+        },
+        {
+          "metric": "Total liabilities",
+          "period": "FY2025",
+          "role": "subtrahend",
+          "slot_id": "right",
+          "source_index": 1,
+          "statement_hint": "Consolidated balance sheets"
+        }
+      ],
+      "operation": null,
+      "query_type": "multi_metric_comparison",
+      "slot_count": 2
+    },
+    {
+      "case_id": "jpm_fy2025_008",
+      "minimum_evidence_count": 0,
+      "operand_slots": [],
+      "operation": null,
+      "query_type": "no_answer",
+      "slot_count": 0
+    },
+    {
+      "case_id": "jpm_fy2025_009",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Net income",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consumer & Community Banking"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "ko_fy2025_001",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Net Operating Revenues",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Income"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "ko_fy2025_002",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Operating Income",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Income"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "ko_fy2025_003",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Net Income Attributable to Shareowners of The Coca-Cola Company",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Income"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "ko_fy2025_004",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Total net operating revenues",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Operating segments"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "ko_fy2025_005",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Total net operating revenues",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Operating segments"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "minimum_evidence_count": 2,
+      "operand_slots": [
+        {
+          "metric": "Net operating revenues",
+          "period": "FY2024",
+          "role": "previous_period",
+          "slot_id": "previous",
+          "source_index": 0,
+          "statement_hint": null
+        },
+        {
+          "metric": "Net operating revenues",
+          "period": "FY2025",
+          "role": "current_period",
+          "slot_id": "current",
+          "source_index": 1,
+          "statement_hint": null
+        }
+      ],
+      "operation": "growth_rate",
+      "query_type": "calculation_multi_operand",
+      "slot_count": 2
+    },
+    {
+      "case_id": "ko_fy2025_007",
+      "minimum_evidence_count": 2,
+      "operand_slots": [
+        {
+          "metric": "EMEA third-party revenue",
+          "period": "FY2025",
+          "role": "operand_1",
+          "slot_id": "operand_1",
+          "source_index": 0,
+          "statement_hint": null
+        },
+        {
+          "metric": "Net operating revenues",
+          "period": "FY2025",
+          "role": "operand_2",
+          "slot_id": "operand_2",
+          "source_index": 1,
+          "statement_hint": null
+        }
+      ],
+      "operation": "ratio",
+      "query_type": "calculation_multi_operand",
+      "slot_count": 2
+    },
+    {
+      "case_id": "ko_fy2025_008",
+      "minimum_evidence_count": 0,
+      "operand_slots": [],
+      "operation": null,
+      "query_type": "no_answer",
+      "slot_count": 0
+    },
+    {
+      "case_id": "ko_fy2025_009",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Total net operating revenues",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Operating segments"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "msft_fy2025_001",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Total revenue",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Segment Information and Geographic Data"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "msft_fy2025_002",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Productivity and Business Processes revenue",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Segment Information and Geographic Data"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "msft_fy2025_003",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "More Personal Computing revenue",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Segment Information and Geographic Data"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "msft_fy2025_004",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Intelligent Cloud revenue",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Segment Information and Geographic Data"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "msft_fy2025_005",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Productivity and Business Processes operating income",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Segment Information and Geographic Data"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "minimum_evidence_count": 2,
+      "operand_slots": [
+        {
+          "metric": "Total revenue",
+          "period": "FY2024",
+          "role": "previous_period",
+          "slot_id": "previous",
+          "source_index": 0,
+          "statement_hint": null
+        },
+        {
+          "metric": "Total revenue",
+          "period": "FY2025",
+          "role": "current_period",
+          "slot_id": "current",
+          "source_index": 1,
+          "statement_hint": null
+        }
+      ],
+      "operation": "growth_rate",
+      "query_type": "calculation_multi_operand",
+      "slot_count": 2
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "minimum_evidence_count": 2,
+      "operand_slots": [
+        {
+          "metric": "Intelligent Cloud revenue",
+          "period": "FY2025",
+          "role": "operand_1",
+          "slot_id": "operand_1",
+          "source_index": 0,
+          "statement_hint": null
+        },
+        {
+          "metric": "Total revenue",
+          "period": "FY2025",
+          "role": "operand_2",
+          "slot_id": "operand_2",
+          "source_index": 1,
+          "statement_hint": null
+        }
+      ],
+      "operation": "ratio",
+      "query_type": "calculation_multi_operand",
+      "slot_count": 2
+    },
+    {
+      "case_id": "msft_fy2025_008",
+      "minimum_evidence_count": 0,
+      "operand_slots": [],
+      "operation": null,
+      "query_type": "no_answer",
+      "slot_count": 0
+    },
+    {
+      "case_id": "msft_fy2025_009",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Intelligent Cloud revenue",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Segment Information and Geographic Data"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "nvda_fy2025_001",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Revenue",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Income"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "nvda_fy2025_002",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Gaming",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Revenue by End Market"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "nvda_fy2025_003",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Gross margin",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Fiscal Year 2025 Summary"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "nvda_fy2025_004",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Data Center",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Revenue by End Market"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "nvda_fy2025_005",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Automotive",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Revenue by End Market"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "nvda_fy2025_006",
+      "minimum_evidence_count": 2,
+      "operand_slots": [
+        {
+          "metric": "Total revenue",
+          "period": "FY2024",
+          "role": "previous_period",
+          "slot_id": "previous",
+          "source_index": 0,
+          "statement_hint": null
+        },
+        {
+          "metric": "Total revenue",
+          "period": "FY2025",
+          "role": "current_period",
+          "slot_id": "current",
+          "source_index": 1,
+          "statement_hint": null
+        }
+      ],
+      "operation": "growth_rate",
+      "query_type": "calculation_multi_operand",
+      "slot_count": 2
+    },
+    {
+      "case_id": "nvda_fy2025_007",
+      "minimum_evidence_count": 2,
+      "operand_slots": [
+        {
+          "metric": "Data Center",
+          "period": "FY2025",
+          "role": "minuend",
+          "slot_id": "left",
+          "source_index": 0,
+          "statement_hint": "Revenue by End Market"
+        },
+        {
+          "metric": "Gross margin",
+          "period": "FY2025",
+          "role": "subtrahend",
+          "slot_id": "right",
+          "source_index": 1,
+          "statement_hint": "Fiscal Year 2025 Summary"
+        }
+      ],
+      "operation": null,
+      "query_type": "multi_metric_comparison",
+      "slot_count": 2
+    },
+    {
+      "case_id": "nvda_fy2025_008",
+      "minimum_evidence_count": 0,
+      "operand_slots": [],
+      "operation": null,
+      "query_type": "no_answer",
+      "slot_count": 0
+    },
+    {
+      "case_id": "nvda_fy2025_009",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Data Center",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Revenue by End Market"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "pfe_fy2024_001",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Total revenues",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Operations"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "pfe_fy2024_002",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Comirnaty - Worldwide",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Total Revenues - Selected Product Discussion"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "pfe_fy2024_003",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Eliquis - Worldwide",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Total Revenues - Selected Product Discussion"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "pfe_fy2024_004",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Paxlovid - Worldwide",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Total Revenues - Selected Product Discussion"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "pfe_fy2024_005",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Prevnar family - Worldwide",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Total Revenues - Selected Product Discussion"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "pfe_fy2024_006",
+      "minimum_evidence_count": 2,
+      "operand_slots": [
+        {
+          "metric": "Total revenues",
+          "period": "FY2023",
+          "role": "previous_period",
+          "slot_id": "previous",
+          "source_index": 0,
+          "statement_hint": null
+        },
+        {
+          "metric": "Total revenues",
+          "period": "FY2024",
+          "role": "current_period",
+          "slot_id": "current",
+          "source_index": 1,
+          "statement_hint": null
+        }
+      ],
+      "operation": "growth_rate",
+      "query_type": "calculation_multi_operand",
+      "slot_count": 2
+    },
+    {
+      "case_id": "pfe_fy2024_007",
+      "minimum_evidence_count": 2,
+      "operand_slots": [
+        {
+          "metric": "Comirnaty - Worldwide",
+          "period": "FY2024",
+          "role": "minuend",
+          "slot_id": "left",
+          "source_index": 0,
+          "statement_hint": "Total Revenues - Selected Product Discussion"
+        },
+        {
+          "metric": "Research and development expenses",
+          "period": "FY2024",
+          "role": "subtrahend",
+          "slot_id": "right",
+          "source_index": 1,
+          "statement_hint": "Consolidated Statements of Operations"
+        }
+      ],
+      "operation": null,
+      "query_type": "multi_metric_comparison",
+      "slot_count": 2
+    },
+    {
+      "case_id": "pfe_fy2024_008",
+      "minimum_evidence_count": 0,
+      "operand_slots": [],
+      "operation": null,
+      "query_type": "no_answer",
+      "slot_count": 0
+    },
+    {
+      "case_id": "pfe_fy2024_009",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Paxlovid - Worldwide",
+          "period": "FY2023",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Total Revenues - Selected Product Discussion"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "tsla_fy2025_001",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Total revenues",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Operations"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "tsla_fy2025_002",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Services and other",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Operations"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "tsla_fy2025_003",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Automotive regulatory credits",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Operations"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "tsla_fy2025_004",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Total automotive revenues",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Results of Operations - Revenues"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "tsla_fy2025_005",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Energy generation and storage segment revenue",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Results of Operations - Revenues"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "tsla_fy2025_006",
+      "minimum_evidence_count": 2,
+      "operand_slots": [
+        {
+          "metric": "Total revenues",
+          "period": "FY2024",
+          "role": "previous_period",
+          "slot_id": "previous",
+          "source_index": 0,
+          "statement_hint": null
+        },
+        {
+          "metric": "Total revenues",
+          "period": "FY2025",
+          "role": "current_period",
+          "slot_id": "current",
+          "source_index": 1,
+          "statement_hint": null
+        }
+      ],
+      "operation": "growth_rate",
+      "query_type": "calculation_multi_operand",
+      "slot_count": 2
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "minimum_evidence_count": 2,
+      "operand_slots": [
+        {
+          "metric": "Total automotive revenues",
+          "period": "FY2025",
+          "role": "minuend",
+          "slot_id": "left",
+          "source_index": 0,
+          "statement_hint": null
+        },
+        {
+          "metric": "Energy generation and storage segment revenue",
+          "period": "FY2025",
+          "role": "subtrahend",
+          "slot_id": "right",
+          "source_index": 1,
+          "statement_hint": null
+        }
+      ],
+      "operation": "difference",
+      "query_type": "calculation_multi_operand",
+      "slot_count": 2
+    },
+    {
+      "case_id": "tsla_fy2025_008",
+      "minimum_evidence_count": 0,
+      "operand_slots": [],
+      "operation": null,
+      "query_type": "no_answer",
+      "slot_count": 0
+    },
+    {
+      "case_id": "tsla_fy2025_009",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Total automotive revenues",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Results of Operations - Revenues"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "v_fy2025_001",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Net revenue",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Operations"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "v_fy2025_002",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Total volume",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Operational highlights"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "v_fy2025_003",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Transactions processed on Visa's networks",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Operational highlights"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "v_fy2025_004",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Payments volume",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Operational highlights"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "v_fy2025_005",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Net income",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Operations"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "minimum_evidence_count": 2,
+      "operand_slots": [
+        {
+          "metric": "Net revenue",
+          "period": "FY2024",
+          "role": "previous_period",
+          "slot_id": "previous",
+          "source_index": 0,
+          "statement_hint": null
+        },
+        {
+          "metric": "Net revenue",
+          "period": "FY2025",
+          "role": "current_period",
+          "slot_id": "current",
+          "source_index": 1,
+          "statement_hint": null
+        }
+      ],
+      "operation": "growth_rate",
+      "query_type": "calculation_multi_operand",
+      "slot_count": 2
+    },
+    {
+      "case_id": "v_fy2025_007",
+      "minimum_evidence_count": 2,
+      "operand_slots": [
+        {
+          "metric": "Payments volume",
+          "period": "FY2025",
+          "role": "minuend",
+          "slot_id": "left",
+          "source_index": 0,
+          "statement_hint": "Operational highlights"
+        },
+        {
+          "metric": "Transactions processed on Visa's networks",
+          "period": "FY2025",
+          "role": "subtrahend",
+          "slot_id": "right",
+          "source_index": 1,
+          "statement_hint": "Operational highlights"
+        }
+      ],
+      "operation": null,
+      "query_type": "multi_metric_comparison",
+      "slot_count": 2
+    },
+    {
+      "case_id": "v_fy2025_008",
+      "minimum_evidence_count": 0,
+      "operand_slots": [],
+      "operation": null,
+      "query_type": "no_answer",
+      "slot_count": 0
+    },
+    {
+      "case_id": "v_fy2025_009",
+      "minimum_evidence_count": 1,
+      "operand_slots": [
+        {
+          "metric": "Payments volume",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Operational highlights"
+        }
+      ],
+      "operation": null,
+      "query_type": "table_single_fact",
+      "slot_count": 1
+    }
+  ]
+}

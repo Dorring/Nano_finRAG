@@ -1,0 +1,43 @@
+{
+  "benchmark_files_modified": false,
+  "benchmark_pdf_sha256": [
+    {
+      "document_id": "aapl_fy2025",
+      "file_sha256": "108590052c3ba5400c63660d787fe7ed4e43868292946d7a7facebe9ab7d1aab"
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "file_sha256": "2a3ee9733eafd01e7667c5540fbd797c4cc688d14f00638a877f5623d1316d9d"
+    },
+    {
+      "document_id": "ko_fy2025",
+      "file_sha256": "3cf15f041ac30a094d868f383272d5129762dc4ef457413b95dcdae09e560015"
+    },
+    {
+      "document_id": "msft_fy2025",
+      "file_sha256": "1fb4c08a3aa6de381aec07aab6588964534c1a291d66046f950153ccdb84c3d4"
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "file_sha256": "757b344ab62ba282f6e44e0702e8ce5f190d88fb23b5e0a2beaf4cb277a395cc"
+    },
+    {
+      "document_id": "pfe_fy2024",
+      "file_sha256": "8ee0b08f2f2c9326a3fab44642507c7907b53e75cc5a12839e8cde2228ed0229"
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "file_sha256": "5e33e314f47e85380f2e6a7d84481bd965e528f6614363c6b8fbce1a1d6df523"
+    },
+    {
+      "document_id": "v_fy2025",
+      "file_sha256": "1fb927051da5346b0f5c3a9447a3bdf42c5ea9259000c94398db5965ddbcc7dd"
+    }
+  ],
+  "case_id_set_hash": "d0caf274e9388804534d46a3f0c30f3f28591f8ee8fa7448abdf8b841c3b7258",
+  "labels_golden_sha256": "22092a7a00a3d22f0a2838d81e983fe94bca2abe14ec6954ffeb289261794df6",
+  "labels_unchanged": true,
+  "questions_golden_sha256": "fd3d9df48c642bbace9b114ca43461dae1717cab94d7fe6d12ffb95bf3ffe4f0",
+  "questions_unchanged": true,
+  "strict_gold_source_identity_set_hash": "73e9eef1883d2809a8564439ffb23ffb7e7955dcc4ce47411751847b43b3f737"
+}

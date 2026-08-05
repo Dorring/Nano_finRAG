@@ -1,9 +1,11 @@
 {
+  "baseline_strict_candidate_recall_at_5": "13/80",
   "benchmark_files_modified": false,
   "benchmark_id": "financial-rag-v1",
   "candidate_family_conflict_count": 0,
   "candidate_multi_family_membership_count": 4,
   "case_count": 72,
+  "conflict_count": 0,
   "family_count": 43,
   "gold_expansion_count": 0,
   "gold_source_count": 80,

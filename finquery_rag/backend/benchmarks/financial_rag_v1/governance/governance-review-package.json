@@ -7,9 +7,10 @@
         {
           "metric": "Total net sales",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Operations"
         }
       ],
       "operation": null,
@@ -36,9 +37,10 @@
         {
           "metric": "Services",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Products and Services Performance"
         }
       ],
       "operation": null,
@@ -65,9 +67,10 @@
         {
           "metric": "Total gross margin percentage",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Gross Margin"
         }
       ],
       "operation": null,
@@ -94,9 +97,10 @@
         {
           "metric": "iPhone",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Products and Services Performance"
         }
       ],
       "operation": null,
@@ -123,9 +127,10 @@
         {
           "metric": "Mac",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Products and Services Performance"
         }
       ],
       "operation": null,
@@ -152,16 +157,18 @@
         {
           "metric": "Total net sales",
           "period": "FY2024",
-          "role": "previous",
+          "role": "previous_period",
           "slot_id": "previous",
-          "source_index": 0
+          "source_index": 0,
+          "statement_hint": null
         },
         {
           "metric": "Total net sales",
           "period": "FY2025",
-          "role": "current",
+          "role": "current_period",
           "slot_id": "current",
-          "source_index": 1
+          "source_index": 1,
+          "statement_hint": null
         }
       ],
       "operation": "growth_rate",
@@ -196,16 +203,18 @@
         {
           "metric": "iPhone",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "minuend",
+          "slot_id": "left",
+          "source_index": 0,
+          "statement_hint": "Products and Services Performance"
         },
         {
           "metric": "Services",
           "period": "FY2025",
-          "role": "operand_2",
-          "slot_id": "operand_2",
-          "source_index": 1
+          "role": "subtrahend",
+          "slot_id": "right",
+          "source_index": 1,
+          "statement_hint": "Products and Services Performance"
         }
       ],
       "operation": null,
@@ -252,9 +261,10 @@
         {
           "metric": "iPhone",
           "period": "FY2024",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Products and Services Performance"
         }
       ],
       "operation": null,
@@ -281,9 +291,10 @@
         {
           "metric": "Total assets",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated balance sheets"
         }
       ],
       "operation": null,
@@ -310,9 +321,10 @@
         {
           "metric": "Total liabilities",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated balance sheets"
         }
       ],
       "operation": null,
@@ -339,9 +351,10 @@
         {
           "metric": "Net income",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated statements of income"
         }
       ],
       "operation": null,
@@ -368,9 +381,10 @@
         {
           "metric": "Net income",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consumer & Community Banking"
         }
       ],
       "operation": null,
@@ -397,9 +411,10 @@
         {
           "metric": "Net income",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Commercial & Investment Bank"
         }
       ],
       "operation": null,
@@ -426,16 +441,18 @@
         {
           "metric": "Total assets",
           "period": "FY2024",
-          "role": "previous",
+          "role": "previous_period",
           "slot_id": "previous",
-          "source_index": 0
+          "source_index": 0,
+          "statement_hint": null
         },
         {
           "metric": "Total assets",
           "period": "FY2025",
-          "role": "current",
+          "role": "current_period",
           "slot_id": "current",
-          "source_index": 1
+          "source_index": 1,
+          "statement_hint": null
         }
       ],
       "operation": "growth_rate",
@@ -470,16 +487,18 @@
         {
           "metric": "Net income",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "minuend",
+          "slot_id": "left",
+          "source_index": 0,
+          "statement_hint": "Consumer & Community Banking"
         },
         {
           "metric": "Total liabilities",
           "period": "FY2025",
-          "role": "operand_2",
-          "slot_id": "operand_2",
-          "source_index": 1
+          "role": "subtrahend",
+          "slot_id": "right",
+          "source_index": 1,
+          "statement_hint": "Consolidated balance sheets"
         }
       ],
       "operation": null,
@@ -526,9 +545,10 @@
         {
           "metric": "Net income",
           "period": "FY2024",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consumer & Community Banking"
         }
       ],
       "operation": null,
@@ -555,9 +575,10 @@
         {
           "metric": "Net Operating Revenues",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Income"
         }
       ],
       "operation": null,
@@ -584,9 +605,10 @@
         {
           "metric": "Operating Income",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Income"
         }
       ],
       "operation": null,
@@ -613,9 +635,10 @@
         {
           "metric": "Net Income Attributable to Shareowners of The Coca-Cola Company",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Income"
         }
       ],
       "operation": null,
@@ -642,9 +665,10 @@
         {
           "metric": "Total net operating revenues",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Operating segments"
         }
       ],
       "operation": null,
@@ -671,9 +695,10 @@
         {
           "metric": "Total net operating revenues",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Operating segments"
         }
       ],
       "operation": null,
@@ -700,16 +725,18 @@
         {
           "metric": "Net operating revenues",
           "period": "FY2024",
-          "role": "previous",
+          "role": "previous_period",
           "slot_id": "previous",
-          "source_index": 0
+          "source_index": 0,
+          "statement_hint": null
         },
         {
           "metric": "Net operating revenues",
           "period": "FY2025",
-          "role": "current",
+          "role": "current_period",
           "slot_id": "current",
-          "source_index": 1
+          "source_index": 1,
+          "statement_hint": null
         }
       ],
       "operation": "growth_rate",
@@ -746,14 +773,16 @@
           "period": "FY2025",
           "role": "operand_1",
           "slot_id": "operand_1",
-          "source_index": 0
+          "source_index": 0,
+          "statement_hint": null
         },
         {
           "metric": "Net operating revenues",
           "period": "FY2025",
           "role": "operand_2",
           "slot_id": "operand_2",
-          "source_index": 1
+          "source_index": 1,
+          "statement_hint": null
         }
       ],
       "operation": "ratio",
@@ -800,9 +829,10 @@
         {
           "metric": "Total net operating revenues",
           "period": "FY2024",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Operating segments"
         }
       ],
       "operation": null,
@@ -829,9 +859,10 @@
         {
           "metric": "Total revenue",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Segment Information and Geographic Data"
         }
       ],
       "operation": null,
@@ -858,9 +889,10 @@
         {
           "metric": "Productivity and Business Processes revenue",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Segment Information and Geographic Data"
         }
       ],
       "operation": null,
@@ -887,9 +919,10 @@
         {
           "metric": "More Personal Computing revenue",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Segment Information and Geographic Data"
         }
       ],
       "operation": null,
@@ -916,9 +949,10 @@
         {
           "metric": "Intelligent Cloud revenue",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Segment Information and Geographic Data"
         }
       ],
       "operation": null,
@@ -945,9 +979,10 @@
         {
           "metric": "Productivity and Business Processes operating income",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Segment Information and Geographic Data"
         }
       ],
       "operation": null,
@@ -974,16 +1009,18 @@
         {
           "metric": "Total revenue",
           "period": "FY2024",
-          "role": "previous",
+          "role": "previous_period",
           "slot_id": "previous",
-          "source_index": 0
+          "source_index": 0,
+          "statement_hint": null
         },
         {
           "metric": "Total revenue",
           "period": "FY2025",
-          "role": "current",
+          "role": "current_period",
           "slot_id": "current",
-          "source_index": 1
+          "source_index": 1,
+          "statement_hint": null
         }
       ],
       "operation": "growth_rate",
@@ -1020,14 +1057,16 @@
           "period": "FY2025",
           "role": "operand_1",
           "slot_id": "operand_1",
-          "source_index": 0
+          "source_index": 0,
+          "statement_hint": null
         },
         {
           "metric": "Total revenue",
           "period": "FY2025",
           "role": "operand_2",
           "slot_id": "operand_2",
-          "source_index": 1
+          "source_index": 1,
+          "statement_hint": null
         }
       ],
       "operation": "ratio",
@@ -1074,9 +1113,10 @@
         {
           "metric": "Intelligent Cloud revenue",
           "period": "FY2024",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Segment Information and Geographic Data"
         }
       ],
       "operation": null,
@@ -1103,9 +1143,10 @@
         {
           "metric": "Revenue",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Income"
         }
       ],
       "operation": null,
@@ -1132,9 +1173,10 @@
         {
           "metric": "Gaming",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Revenue by End Market"
         }
       ],
       "operation": null,
@@ -1161,9 +1203,10 @@
         {
           "metric": "Gross margin",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Fiscal Year 2025 Summary"
         }
       ],
       "operation": null,
@@ -1190,9 +1233,10 @@
         {
           "metric": "Data Center",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Revenue by End Market"
         }
       ],
       "operation": null,
@@ -1219,9 +1263,10 @@
         {
           "metric": "Automotive",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Revenue by End Market"
         }
       ],
       "operation": null,
@@ -1248,16 +1293,18 @@
         {
           "metric": "Total revenue",
           "period": "FY2024",
-          "role": "previous",
+          "role": "previous_period",
           "slot_id": "previous",
-          "source_index": 0
+          "source_index": 0,
+          "statement_hint": null
         },
         {
           "metric": "Total revenue",
           "period": "FY2025",
-          "role": "current",
+          "role": "current_period",
           "slot_id": "current",
-          "source_index": 1
+          "source_index": 1,
+          "statement_hint": null
         }
       ],
       "operation": "growth_rate",
@@ -1292,16 +1339,18 @@
         {
           "metric": "Data Center",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "minuend",
+          "slot_id": "left",
+          "source_index": 0,
+          "statement_hint": "Revenue by End Market"
         },
         {
           "metric": "Gross margin",
           "period": "FY2025",
-          "role": "operand_2",
-          "slot_id": "operand_2",
-          "source_index": 1
+          "role": "subtrahend",
+          "slot_id": "right",
+          "source_index": 1,
+          "statement_hint": "Fiscal Year 2025 Summary"
         }
       ],
       "operation": null,
@@ -1348,9 +1397,10 @@
         {
           "metric": "Data Center",
           "period": "FY2024",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Revenue by End Market"
         }
       ],
       "operation": null,
@@ -1377,9 +1427,10 @@
         {
           "metric": "Total revenues",
           "period": "FY2024",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Operations"
         }
       ],
       "operation": null,
@@ -1406,9 +1457,10 @@
         {
           "metric": "Comirnaty - Worldwide",
           "period": "FY2024",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Total Revenues - Selected Product Discussion"
         }
       ],
       "operation": null,
@@ -1435,9 +1487,10 @@
         {
           "metric": "Eliquis - Worldwide",
           "period": "FY2024",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Total Revenues - Selected Product Discussion"
         }
       ],
       "operation": null,
@@ -1464,9 +1517,10 @@
         {
           "metric": "Paxlovid - Worldwide",
           "period": "FY2024",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Total Revenues - Selected Product Discussion"
         }
       ],
       "operation": null,
@@ -1493,9 +1547,10 @@
         {
           "metric": "Prevnar family - Worldwide",
           "period": "FY2024",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Total Revenues - Selected Product Discussion"
         }
       ],
       "operation": null,
@@ -1522,16 +1577,18 @@
         {
           "metric": "Total revenues",
           "period": "FY2023",
-          "role": "previous",
+          "role": "previous_period",
           "slot_id": "previous",
-          "source_index": 0
+          "source_index": 0,
+          "statement_hint": null
         },
         {
           "metric": "Total revenues",
           "period": "FY2024",
-          "role": "current",
+          "role": "current_period",
           "slot_id": "current",
-          "source_index": 1
+          "source_index": 1,
+          "statement_hint": null
         }
       ],
       "operation": "growth_rate",
@@ -1566,16 +1623,18 @@
         {
           "metric": "Comirnaty - Worldwide",
           "period": "FY2024",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "minuend",
+          "slot_id": "left",
+          "source_index": 0,
+          "statement_hint": "Total Revenues - Selected Product Discussion"
         },
         {
           "metric": "Research and development expenses",
           "period": "FY2024",
-          "role": "operand_2",
-          "slot_id": "operand_2",
-          "source_index": 1
+          "role": "subtrahend",
+          "slot_id": "right",
+          "source_index": 1,
+          "statement_hint": "Consolidated Statements of Operations"
         }
       ],
       "operation": null,
@@ -1622,9 +1681,10 @@
         {
           "metric": "Paxlovid - Worldwide",
           "period": "FY2023",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Total Revenues - Selected Product Discussion"
         }
       ],
       "operation": null,
@@ -1651,9 +1711,10 @@
         {
           "metric": "Total revenues",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Operations"
         }
       ],
       "operation": null,
@@ -1680,9 +1741,10 @@
         {
           "metric": "Services and other",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Operations"
         }
       ],
       "operation": null,
@@ -1709,9 +1771,10 @@
         {
           "metric": "Automotive regulatory credits",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Operations"
         }
       ],
       "operation": null,
@@ -1738,9 +1801,10 @@
         {
           "metric": "Total automotive revenues",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Results of Operations - Revenues"
         }
       ],
       "operation": null,
@@ -1767,9 +1831,10 @@
         {
           "metric": "Energy generation and storage segment revenue",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Results of Operations - Revenues"
         }
       ],
       "operation": null,
@@ -1796,16 +1861,18 @@
         {
           "metric": "Total revenues",
           "period": "FY2024",
-          "role": "previous",
+          "role": "previous_period",
           "slot_id": "previous",
-          "source_index": 0
+          "source_index": 0,
+          "statement_hint": null
         },
         {
           "metric": "Total revenues",
           "period": "FY2025",
-          "role": "current",
+          "role": "current_period",
           "slot_id": "current",
-          "source_index": 1
+          "source_index": 1,
+          "statement_hint": null
         }
       ],
       "operation": "growth_rate",
@@ -1840,16 +1907,18 @@
         {
           "metric": "Total automotive revenues",
           "period": "FY2025",
-          "role": "left",
+          "role": "minuend",
           "slot_id": "left",
-          "source_index": 0
+          "source_index": 0,
+          "statement_hint": null
         },
         {
           "metric": "Energy generation and storage segment revenue",
           "period": "FY2025",
-          "role": "right",
+          "role": "subtrahend",
           "slot_id": "right",
-          "source_index": 1
+          "source_index": 1,
+          "statement_hint": null
         }
       ],
       "operation": "difference",
@@ -1896,9 +1965,10 @@
         {
           "metric": "Total automotive revenues",
           "period": "FY2024",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Results of Operations - Revenues"
         }
       ],
       "operation": null,
@@ -1925,9 +1995,10 @@
         {
           "metric": "Net revenue",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Operations"
         }
       ],
       "operation": null,
@@ -1954,9 +2025,10 @@
         {
           "metric": "Total volume",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Operational highlights"
         }
       ],
       "operation": null,
@@ -1983,9 +2055,10 @@
         {
           "metric": "Transactions processed on Visa's networks",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Operational highlights"
         }
       ],
       "operation": null,
@@ -2012,9 +2085,10 @@
         {
           "metric": "Payments volume",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Operational highlights"
         }
       ],
       "operation": null,
@@ -2041,9 +2115,10 @@
         {
           "metric": "Net income",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Consolidated Statements of Operations"
         }
       ],
       "operation": null,
@@ -2070,16 +2145,18 @@
         {
           "metric": "Net revenue",
           "period": "FY2024",
-          "role": "previous",
+          "role": "previous_period",
           "slot_id": "previous",
-          "source_index": 0
+          "source_index": 0,
+          "statement_hint": null
         },
         {
           "metric": "Net revenue",
           "period": "FY2025",
-          "role": "current",
+          "role": "current_period",
           "slot_id": "current",
-          "source_index": 1
+          "source_index": 1,
+          "statement_hint": null
         }
       ],
       "operation": "growth_rate",
@@ -2114,16 +2191,18 @@
         {
           "metric": "Payments volume",
           "period": "FY2025",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "minuend",
+          "slot_id": "left",
+          "source_index": 0,
+          "statement_hint": "Operational highlights"
         },
         {
           "metric": "Transactions processed on Visa's networks",
           "period": "FY2025",
-          "role": "operand_2",
-          "slot_id": "operand_2",
-          "source_index": 1
+          "role": "subtrahend",
+          "slot_id": "right",
+          "source_index": 1,
+          "statement_hint": "Operational highlights"
         }
       ],
       "operation": null,
@@ -2170,9 +2249,10 @@
         {
           "metric": "Payments volume",
           "period": "FY2024",
-          "role": "operand_1",
-          "slot_id": "operand_1",
-          "source_index": 0
+          "role": "value",
+          "slot_id": "fact",
+          "source_index": 0,
+          "statement_hint": "Operational highlights"
         }
       ],
       "operation": null,

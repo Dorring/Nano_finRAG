@@ -1,0 +1,372 @@
+{
+  "evidence_family_recall_at_5": "13/80",
+  "final_all_gold_coverage_at_5": "10/64",
+  "final_case_hit_at_5": "12/64",
+  "page_evidence_recall_at_5": "40/80",
+  "per_case": [
+    {
+      "case_id": "aapl_fy2025_001",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "aapl_fy2025_002",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "aapl_fy2025_003",
+      "expected_source_count": 1,
+      "strict_source_hits": 1
+    },
+    {
+      "case_id": "aapl_fy2025_004",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "aapl_fy2025_005",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "aapl_fy2025_006",
+      "expected_source_count": 2,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "aapl_fy2025_007",
+      "expected_source_count": 2,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "aapl_fy2025_008",
+      "expected_source_count": 0,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "aapl_fy2025_009",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "jpm_fy2025_001",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "jpm_fy2025_002",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "jpm_fy2025_003",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "jpm_fy2025_004",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "jpm_fy2025_005",
+      "expected_source_count": 1,
+      "strict_source_hits": 1
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "expected_source_count": 2,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "jpm_fy2025_007",
+      "expected_source_count": 2,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "jpm_fy2025_008",
+      "expected_source_count": 0,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "jpm_fy2025_009",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "ko_fy2025_001",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "ko_fy2025_002",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "ko_fy2025_003",
+      "expected_source_count": 1,
+      "strict_source_hits": 1
+    },
+    {
+      "case_id": "ko_fy2025_004",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "ko_fy2025_005",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "expected_source_count": 2,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "ko_fy2025_007",
+      "expected_source_count": 2,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "ko_fy2025_008",
+      "expected_source_count": 0,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "ko_fy2025_009",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "msft_fy2025_001",
+      "expected_source_count": 1,
+      "strict_source_hits": 1
+    },
+    {
+      "case_id": "msft_fy2025_002",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "msft_fy2025_003",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "msft_fy2025_004",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "msft_fy2025_005",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "expected_source_count": 2,
+      "strict_source_hits": 2
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "expected_source_count": 2,
+      "strict_source_hits": 1
+    },
+    {
+      "case_id": "msft_fy2025_008",
+      "expected_source_count": 0,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "msft_fy2025_009",
+      "expected_source_count": 1,
+      "strict_source_hits": 1
+    },
+    {
+      "case_id": "nvda_fy2025_001",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "nvda_fy2025_002",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "nvda_fy2025_003",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "nvda_fy2025_004",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "nvda_fy2025_005",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "nvda_fy2025_006",
+      "expected_source_count": 2,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "nvda_fy2025_007",
+      "expected_source_count": 2,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "nvda_fy2025_008",
+      "expected_source_count": 0,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "nvda_fy2025_009",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "pfe_fy2024_001",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "pfe_fy2024_002",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "pfe_fy2024_003",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "pfe_fy2024_004",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "pfe_fy2024_005",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "pfe_fy2024_006",
+      "expected_source_count": 2,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "pfe_fy2024_007",
+      "expected_source_count": 2,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "pfe_fy2024_008",
+      "expected_source_count": 0,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "pfe_fy2024_009",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "tsla_fy2025_001",
+      "expected_source_count": 1,
+      "strict_source_hits": 1
+    },
+    {
+      "case_id": "tsla_fy2025_002",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "tsla_fy2025_003",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "tsla_fy2025_004",
+      "expected_source_count": 1,
+      "strict_source_hits": 1
+    },
+    {
+      "case_id": "tsla_fy2025_005",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "tsla_fy2025_006",
+      "expected_source_count": 2,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "expected_source_count": 2,
+      "strict_source_hits": 1
+    },
+    {
+      "case_id": "tsla_fy2025_008",
+      "expected_source_count": 0,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "tsla_fy2025_009",
+      "expected_source_count": 1,
+      "strict_source_hits": 1
+    },
+    {
+      "case_id": "v_fy2025_001",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "v_fy2025_002",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "v_fy2025_003",
+      "expected_source_count": 1,
+      "strict_source_hits": 1
+    },
+    {
+      "case_id": "v_fy2025_004",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "v_fy2025_005",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "expected_source_count": 2,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "v_fy2025_007",
+      "expected_source_count": 2,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "v_fy2025_008",
+      "expected_source_count": 0,
+      "strict_source_hits": 0
+    },
+    {
+      "case_id": "v_fy2025_009",
+      "expected_source_count": 1,
+      "strict_source_hits": 0
+    }
+  ],
+  "retrieval_runs": 0,
+  "source_artifact": "artifacts/evaluation/nf-eval-03-r2/case-results.json",
+  "source_denominator": 80,
+  "strict_candidate_recall_at_5": "13/80"
+}
