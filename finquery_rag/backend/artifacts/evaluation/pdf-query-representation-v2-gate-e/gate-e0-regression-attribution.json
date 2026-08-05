@@ -1,0 +1,1045 @@
+{
+  "record_count": 26,
+  "records": [
+    {
+      "canonical_ranks": {
+        "bm25": 13,
+        "dense": 30,
+        "reranker": 2,
+        "rrf": 16
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "cash",
+      "natural_question": "What was Adobe's cash in fiscal 2024?",
+      "query_id": "pdf-query-v2:00fb6f93f1f97be88e557d1a52a012c164e1da51c3f96196a5fad2c953e76c79",
+      "raw_ranks": {
+        "bm25": 73,
+        "dense": 88,
+        "reranker": null,
+        "rrf": null
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "cash",
+        "concept_family": "cash_flow",
+        "concept_id": "financial-concept:bb72111879f539e7a79612fedb149656a32aecad271a09ac77c0b1c06a86b4d8",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "cash and cash equivalents",
+        "concept_family": "cash_flow",
+        "concept_id": "financial-concept:1daf2a9ff580bd520551021273db1b397fe9b257bbdc1dcc09c9900032c7bf43",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Cash and cash equivalents",
+        "Cash ...........................................................................................",
+        "Cash ...........................................................................................",
+        "Total cash and cash equivalents .................................................",
+        "Cash and cash equivalents ...................................................................................................................."
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 11,
+        "dense": 25,
+        "reranker": 7,
+        "rrf": 10
+      },
+      "change_type": "regression",
+      "metric_phrase": "assets",
+      "natural_question": "What was Salesforce's assets?",
+      "query_id": "pdf-query-v2:0589b59ac2469896b9eabd3d6a5acaf7557b4d59158ab68bda6e796e24f1e528",
+      "raw_ranks": {
+        "bm25": 5,
+        "dense": 11,
+        "reranker": 1,
+        "rrf": 2
+      },
+      "regression_reason": "wrong_top1_concept",
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "acquired intangible assets",
+        "concept_family": "assets",
+        "concept_id": "financial-concept:6e74b1ca6f9bc11841d06e2dc1b386488b0f97e30204310ad24049846e0632e8",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "intangible assets",
+        "concept_family": "assets",
+        "concept_id": "financial-concept:6c12372c6890f37b707a77bd6bc43357662b174240abf5e6d4981d0b1731a66c",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Acquired intangible assets ...................................................................................................",
+        "Intangible assets",
+        "Other purchased intangible assets",
+        "Total intangible assets subject to amortization",
+        "Intangible assets ..................................................................................................................."
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 1,
+        "dense": 66,
+        "reranker": 4,
+        "rrf": 22
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "stock based compensation",
+      "natural_question": "What was Adobe's stock based compensation in fiscal 2022?",
+      "query_id": "pdf-query-v2:11cf2e8ffaa26bbfc7c27f7f317c836be9cd5973b9ea29989b604406131cf863",
+      "raw_ranks": {
+        "bm25": 1,
+        "dense": 132,
+        "reranker": 9,
+        "rrf": 14
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "stock based compensation",
+        "concept_family": "other",
+        "concept_id": "financial-concept:813d90d3c399eae1b61b1fcad8904d5f9ad3d775f5bdaa8d6c075dcfeb4765ab",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "stock based compensation expense",
+        "concept_family": "expenses",
+        "concept_id": "financial-concept:0f1fe2170951e462af40935bbe3b9d2a7f477443c724193ffcd221f4204ffe1d",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Stock-based compensation ............. — —",
+        "Stock-based compensation ............. — —",
+        "Stock-based compensation ..................................................................................................",
+        "Stock-based compensation ............. — —",
+        "Stock-based compensation ..................................................................................."
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 1,
+        "dense": 15,
+        "reranker": 2,
+        "rrf": 1
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "investing activities",
+      "natural_question": "What was Adobe's investing activities in fiscal 2023?",
+      "query_id": "pdf-query-v2:2234e0470a61eba38fb33eb8da422fb039fc7f3aa58ec0933e7d6ce97a148823",
+      "raw_ranks": {
+        "bm25": 2,
+        "dense": 128,
+        "reranker": 6,
+        "rrf": 5
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "other investing activities",
+        "concept_family": "cash_flow",
+        "concept_id": "financial-concept:42544162cd7151c2f8ab90537d5d42292378c552c020651cde769c77792b61ab",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "net cash used in investing activities",
+        "concept_family": "cash_flow",
+        "concept_id": "financial-concept:c93eaac9d90fb51af5c4f02a14b6fa0a7c0e11743ed8efd76daf810278aadcfd",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Other investing activities",
+        "Other investing activities, net ........................................................................................",
+        "Net cash used in investing activities",
+        "Net cash provided by (used for) investing activities .........................................",
+        "Net cash used in investing activities"
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 1,
+        "dense": 187,
+        "reranker": 1,
+        "rrf": 7
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "americas",
+      "natural_question": "What was Adobe's americas in fiscal 2023?",
+      "query_id": "pdf-query-v2:35c3edd0f579665d65684531f26faa7224b8fb6ca4130657d6c57fc9a8139910",
+      "raw_ranks": {
+        "bm25": 1,
+        "dense": 274,
+        "reranker": null,
+        "rrf": 2
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "americas",
+        "concept_family": "other",
+        "concept_id": "financial-concept:9984b0e65385dc48d84fd1d0bee9d27476580a43d44a91d85dde53aacfe92797",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "cash",
+        "concept_family": "cash_flow",
+        "concept_id": "financial-concept:bb72111879f539e7a79612fedb149656a32aecad271a09ac77c0b1c06a86b4d8",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Americas ..............................................................................................",
+        "Americas",
+        "Total Americas ..............................................................................................",
+        "10.2C Form of 2023 Performance Share Award Grant Notice and Award Agreement pursuant to 2023 Performance 8-K 1/26/23",
+        "10.2C Form of 2023 Performance Share Award Grant Notice and Award Agreement pursuant to 2023 Performance 8-K 1/26/23"
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 1,
+        "dense": 31,
+        "reranker": 2,
+        "rrf": 4
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "total",
+      "natural_question": "What was Walmart's total in fiscal 2024?",
+      "query_id": "pdf-query-v2:3bde893bdddab8ffe32164d5d5314e183c05ebe9b7af79209524125d22cac5ed",
+      "raw_ranks": {
+        "bm25": 22,
+        "dense": 69,
+        "reranker": 6,
+        "rrf": 41
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "total",
+        "concept_family": "other",
+        "concept_id": "financial-concept:4702dbe0448b7d426dbdbe4df684cd8112e519e2d00b0adb70b6dd660a92e7ca",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "total cash equivalents",
+        "concept_family": "cash_flow",
+        "concept_id": "financial-concept:3ea398946a0422e844b809110653297b4c31dccb92d91b0afd7ef658bc1c2467",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Total revenues",
+        "Total",
+        "Consolidated net income attributable to Walmart",
+        "Total $",
+        "Total"
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 11,
+        "dense": 25,
+        "reranker": 7,
+        "rrf": 10
+      },
+      "change_type": "regression",
+      "metric_phrase": "assets",
+      "natural_question": "What was Salesforce's assets?",
+      "query_id": "pdf-query-v2:3c36f5a1a7801d08d0f7f5c64a5ed73341917302ee098a73f9d2e19a3bed3b59",
+      "raw_ranks": {
+        "bm25": 5,
+        "dense": 11,
+        "reranker": 1,
+        "rrf": 2
+      },
+      "regression_reason": "wrong_top1_concept",
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "acquired intangible assets",
+        "concept_family": "assets",
+        "concept_id": "financial-concept:6e74b1ca6f9bc11841d06e2dc1b386488b0f97e30204310ad24049846e0632e8",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "intangible assets",
+        "concept_family": "assets",
+        "concept_id": "financial-concept:6c12372c6890f37b707a77bd6bc43357662b174240abf5e6d4981d0b1731a66c",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Acquired intangible assets ...................................................................................................",
+        "Intangible assets",
+        "Other purchased intangible assets",
+        "Total intangible assets subject to amortization",
+        "Intangible assets ..................................................................................................................."
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 1,
+        "dense": 4,
+        "reranker": 1,
+        "rrf": 1
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "debt",
+      "natural_question": "What was Walmart's debt in fiscal 2024?",
+      "query_id": "pdf-query-v2:4819538645716497966db400d85bfae4525d96c118d20bd121f5ddcbbdd3a9d2",
+      "raw_ranks": {
+        "bm25": 16,
+        "dense": 9,
+        "reranker": 9,
+        "rrf": 8
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "debt",
+        "concept_family": "liabilities",
+        "concept_id": "financial-concept:913a805c8214a285389c085c9ce867127a8776147a92bf11017a4c0bf7c17a7b",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "repayment of debt",
+        "concept_family": "liabilities",
+        "concept_id": "financial-concept:312820b58ede19eaeaf60d25330ae54407ecf5a1038a4339f3d9513ad55bb314",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Debt",
+        "Consolidated net income attributable to Walmart",
+        "Repayments of long-term debt",
+        "Reclassifications of long-term debt",
+        "Debt ...................................................................................................................................................... —"
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 5,
+        "dense": 5,
+        "reranker": 6,
+        "rrf": 5
+      },
+      "change_type": "regression",
+      "metric_phrase": "deferred tax liabilities",
+      "natural_question": "What was Adobe's deferred tax liabilities in fiscal 2024?",
+      "query_id": "pdf-query-v2:485113feca50f8f7eeb39bcd7023e11025848cacf34d19ab795709c60e358ca6",
+      "raw_ranks": {
+        "bm25": 1,
+        "dense": 3,
+        "reranker": 3,
+        "rrf": 1
+      },
+      "regression_reason": "wrong_top1_concept",
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "total deferred tax assets",
+        "concept_family": "assets",
+        "concept_id": "financial-concept:14556fd5b0db705506ad4a06365e3b16f7a14cafb3c3ab9fe08303791bd06ad7",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "deferred tax assets net of valuation allowances",
+        "concept_family": "assets",
+        "concept_id": "financial-concept:9d3da3208add7e77b41def09fb65ace54910130f40989f72b3741820b89a5f2f",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Total deferred tax assets",
+        "Total deferred tax assets .........................................................................................................",
+        "Total deferred tax liabilities",
+        "Total gross deferred tax assets ........................................................................................",
+        "Deferred tax assets, net of valuation allowances"
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 2,
+        "dense": 4,
+        "reranker": 2,
+        "rrf": 1
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "interest",
+      "natural_question": "What was Walmart's interest in fiscal 2024?",
+      "query_id": "pdf-query-v2:53ed2efcdbf3f8e9702b770d85ef87e7c6389d50ce835c9fb8eeca9dcf59f087",
+      "raw_ranks": {
+        "bm25": 16,
+        "dense": 84,
+        "reranker": null,
+        "rrf": 26
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "interest",
+        "concept_family": "other",
+        "concept_id": "financial-concept:0d18070da93e87c7c2aa4f2297e97324695dc269704d6bcc908cc6b365a6239e",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "cash paid for interest",
+        "concept_family": "cash_flow",
+        "concept_id": "financial-concept:0f2478eefb6c73dca7860aae82393c86dde59753822055064e2ac89cfaed5af6",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Interest income",
+        "Interest, net",
+        "Consolidated net income attributable to noncontrolling interest",
+        "Consolidated net income attributable to Walmart",
+        "Comprehensive income attributable to noncontrolling interest"
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 1,
+        "dense": 13,
+        "reranker": 3,
+        "rrf": 3
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "profit after direct costs",
+      "natural_question": "What was Adobe's profit after direct costs?",
+      "query_id": "pdf-query-v2:579b152802ad0c462d4d634eafb5c56fdd3a354b03e004abde02985270330088",
+      "raw_ranks": {
+        "bm25": 10,
+        "dense": 26,
+        "reranker": 18,
+        "rrf": 3
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "gross profit",
+        "concept_family": "income",
+        "concept_id": "financial-concept:f51be6c4856c13143ca4132cdde18e4977878457ba50ece99b4ae90ae03abab5",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "net assets acquired",
+        "concept_family": "assets",
+        "concept_id": "financial-concept:de7aef40506f44114d3399aea684794f0c9c887409e674bc0fd7dbb9722dcd7a",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Gross profit ...................................................................................",
+        "Gross profit ...................................................................................",
+        "Gross profit ...................................................................................",
+        "Gross profit",
+        "Gross profit"
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 7,
+        "dense": 17,
+        "reranker": 1,
+        "rrf": 8
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "debt",
+      "natural_question": "What was Adobe's debt in fiscal 2024?",
+      "query_id": "pdf-query-v2:59279574b54555cc889b330b0bf2e9f58fccea5725ff634a64e8660518656fb2",
+      "raw_ranks": {
+        "bm25": 39,
+        "dense": 56,
+        "reranker": null,
+        "rrf": 72
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "debt",
+        "concept_family": "liabilities",
+        "concept_id": "financial-concept:913a805c8214a285389c085c9ce867127a8776147a92bf11017a4c0bf7c17a7b",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "repayments of debt",
+        "concept_family": "liabilities",
+        "concept_id": "financial-concept:6eaf3d2c3e50f338e3dd86fecdd541daa798d5091c4009aad46020712b05ff8c",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Debt ...................................................................................................................................................... —",
+        "Debt",
+        "Total noncurrent debt",
+        "Unamortized discount and debt issuance costs ....................................................................... —",
+        "Corporate debt securities ......................................................."
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 4,
+        "dense": 1,
+        "reranker": 4,
+        "rrf": 2
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "cash generated by normal operations",
+      "natural_question": "What was Walmart's cash generated by normal operations in fiscal 2024?",
+      "query_id": "pdf-query-v2:5dcc9136aa4e108320296ed1e2b8fe14fb4b77393ad7ffd0da8e08735764ce14",
+      "raw_ranks": {
+        "bm25": 7,
+        "dense": 1,
+        "reranker": null,
+        "rrf": 2
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "net cash provided by operating activities",
+        "concept_family": "cash_flow",
+        "concept_id": "financial-concept:347bbb0e6abe8d70ddd373c0f99760063ae99bc3d70b9d54435b62b77d15aa46",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "net cash provided by operating activities 10 031",
+        "concept_family": "cash_flow",
+        "concept_id": "financial-concept:2cfbab3955ddc3604563d38f2457df966ad64329b90ed8908f64a9201c9425d7",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Net cash provided by operating activities",
+        "Net cash provided by operating activities",
+        "Net cash provided by operating activities .........................................................",
+        "Net cash provided by operating activities",
+        "Net cash provided by (used for) investing activities ........................................."
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 1,
+        "dense": 15,
+        "reranker": 2,
+        "rrf": 5
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "total",
+      "natural_question": "What was Salesforce's total in fiscal 2025?",
+      "query_id": "pdf-query-v2:62c2c07a4f4fcae9e945c3307fa101fe9d0e3f7b887eef924efd4c72d6b4ee38",
+      "raw_ranks": {
+        "bm25": 41,
+        "dense": 211,
+        "reranker": null,
+        "rrf": null
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "total",
+        "concept_family": "other",
+        "concept_id": "financial-concept:4702dbe0448b7d426dbdbe4df684cd8112e519e2d00b0adb70b6dd660a92e7ca",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "total cash equivalents",
+        "concept_family": "cash_flow",
+        "concept_id": "financial-concept:3ea398946a0422e844b809110653297b4c31dccb92d91b0afd7ef658bc1c2467",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Total $",
+        "Total",
+        "Total",
+        "Total revenues",
+        "Total revenues $ 42,853 $"
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 7,
+        "dense": 4,
+        "reranker": 8,
+        "rrf": 4
+      },
+      "change_type": "regression",
+      "metric_phrase": "deferred tax liabilities",
+      "natural_question": "What was Walmart's deferred tax liabilities in fiscal 2025?",
+      "query_id": "pdf-query-v2:69f80ee14369a6dc65b584832e4d512cf470da3d80e1516b461cf05eb90628fa",
+      "raw_ranks": {
+        "bm25": 1,
+        "dense": 2,
+        "reranker": 1,
+        "rrf": 1
+      },
+      "regression_reason": "wrong_top1_concept",
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "net deferred tax assets",
+        "concept_family": "assets",
+        "concept_id": "financial-concept:14556fd5b0db705506ad4a06365e3b16f7a14cafb3c3ab9fe08303791bd06ad7",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "total gross deferred tax assets",
+        "concept_family": "assets",
+        "concept_id": "financial-concept:2bc76cf4ec9b33bd553a7e15bc8e480d8f1f3a6c8b3e18aacf05d71cec28244a",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Deferred tax assets, net of valuation allowances",
+        "Total deferred tax assets",
+        "Net deferred tax liabilities",
+        "Net deferred tax assets .........................................................................................................",
+        "Total deferred tax assets ........................................................................................................."
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 1,
+        "dense": 3,
+        "reranker": 2,
+        "rrf": 1
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "cash generated by normal operations",
+      "natural_question": "What was Adobe's cash generated by normal operations in fiscal 2023?",
+      "query_id": "pdf-query-v2:774a823bcfb54a4d82a6715c83d5049713529aae1a9a188dde5bcb89dc6d1bc4",
+      "raw_ranks": {
+        "bm25": 4,
+        "dense": 26,
+        "reranker": 12,
+        "rrf": 1
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "net cash provided by operating activities",
+        "concept_family": "cash_flow",
+        "concept_id": "financial-concept:347bbb0e6abe8d70ddd373c0f99760063ae99bc3d70b9d54435b62b77d15aa46",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "cash",
+        "concept_family": "cash_flow",
+        "concept_id": "financial-concept:bb72111879f539e7a79612fedb149656a32aecad271a09ac77c0b1c06a86b4d8",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Net cash provided by operating activities",
+        "Net cash provided by operating activities .........................................................",
+        "Net cash provided by operating activities",
+        "Net cash provided by operating activities",
+        "Net cash provided by operating activities .............................................................. $ 10,031"
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 1,
+        "dense": 19,
+        "reranker": 5,
+        "rrf": 1
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "general and administrative",
+      "natural_question": "What was Adobe's general and administrative in fiscal 2023?",
+      "query_id": "pdf-query-v2:80a815014d616d1978b002a7f4a2f19834a3301e762edc26fffcfa078dcbacb3",
+      "raw_ranks": {
+        "bm25": 2,
+        "dense": 38,
+        "reranker": 6,
+        "rrf": 1
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "general and administrative",
+        "concept_family": "other",
+        "concept_id": "financial-concept:dd4525cce34b5b31cb73a0a6b1bd9e9b97f00c82d7e8d4902fc2e494db8c960e",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "operating selling general and administrative expenses",
+        "concept_family": "expenses",
+        "concept_id": "financial-concept:9e54d0d4c3feca3057fbde01b1cc554f3be9c6d21c8d09416127338777a59bec",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "General and administrative",
+        "General and administrative",
+        "General and administrative",
+        "General and administrative",
+        "General and administrative ..............................................................................."
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 1,
+        "dense": 52,
+        "reranker": 3,
+        "rrf": 7
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "thereafter",
+      "natural_question": "What was Adobe's thereafter in fiscal 2023?",
+      "query_id": "pdf-query-v2:b5f0a94c17835dcd82bf214c676c0963e4fb3184d9bddb885ffda955a366e933",
+      "raw_ranks": {
+        "bm25": 2,
+        "dense": 219,
+        "reranker": 19,
+        "rrf": 3
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "thereafter",
+        "concept_family": "other",
+        "concept_id": "financial-concept:8de20122822cb5c2e55fca69ed53ba0a6f94d5dc79b94842de545cc37cfa7884",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "other assets",
+        "concept_family": "assets",
+        "concept_id": "financial-concept:a55190216de5a6af12caba4896cd11a25a577f1a6967b7f970b5265a1028e368",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Thereafter",
+        "Thereafter",
+        "Thereafter ....................................................................................................................................................",
+        "Thereafter .................................................................................................................................................",
+        "Thereafter ........................................................................................................................................................"
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 1,
+        "dense": 13,
+        "reranker": 5,
+        "rrf": 1
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "research and development",
+      "natural_question": "What was Adobe's research and development in fiscal 2023?",
+      "query_id": "pdf-query-v2:cd20dff07c31b57b6f9b59a4c9bf0ac1b86a671525066d3726ee811295ca27d8",
+      "raw_ranks": {
+        "bm25": 2,
+        "dense": 33,
+        "reranker": 6,
+        "rrf": 1
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "research and development",
+        "concept_family": "other",
+        "concept_id": "financial-concept:44164a7eb4c323830de0bf627e326047c31db221749975d71b1b926d7dd9c906",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "research and development tax credits",
+        "concept_family": "other",
+        "concept_id": "financial-concept:ff3e6d1123d484e76c0e8b8486891cd295eb86d8ed54e191379d8823667cd523",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Research and development",
+        "Research and development",
+        "Research and development",
+        "Research and development",
+        "Research and development ..............................................................................."
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 5,
+        "dense": 1,
+        "reranker": 5,
+        "rrf": 2
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "profit after direct costs",
+      "natural_question": "What was Salesforce's profit after direct costs in fiscal 2024?",
+      "query_id": "pdf-query-v2:d02c21118ff2ecae043c174786d84ced2e8a37f3533318d675e410f3229100a5",
+      "raw_ranks": {
+        "bm25": 43,
+        "dense": 27,
+        "reranker": null,
+        "rrf": 50
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "gross profit",
+        "concept_family": "income",
+        "concept_id": "financial-concept:f51be6c4856c13143ca4132cdde18e4977878457ba50ece99b4ae90ae03abab5",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "g ross profit",
+        "concept_family": "income",
+        "concept_id": "financial-concept:f750fe2ecf2264f0a1dab49e911d241bd4ed247b515af37885a0c371628aba82",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Gross profit ...................................................................................",
+        "Gross profit ...................................................................................",
+        "Gross profit ...................................................................................",
+        "Gross profit",
+        "Gross profit"
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 1,
+        "dense": 6,
+        "reranker": 2,
+        "rrf": 1
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "goodwill",
+      "natural_question": "What was Adobe's goodwill in fiscal 2024?",
+      "query_id": "pdf-query-v2:d4fa1640a8b4ee4250d450403832e0bc958e1a957a5754c940b79543de6471cf",
+      "raw_ranks": {
+        "bm25": 1,
+        "dense": 160,
+        "reranker": null,
+        "rrf": 1
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "goodwill",
+        "concept_family": "other",
+        "concept_id": "financial-concept:76e8e5014dafec0d61ebc4914a30ec87d986aacc12f958b6dc60b0c105db1b00",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "other assets",
+        "concept_family": "assets",
+        "concept_id": "financial-concept:a55190216de5a6af12caba4896cd11a25a577f1a6967b7f970b5265a1028e368",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Goodwill",
+        "Goodwill ..................................................................................................................................................",
+        "Thereafter ........................................................................................................................................................",
+        "2026 .................................................................................................................................................................",
+        "2029 ................................................................................................................................................................."
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 2,
+        "dense": 4,
+        "reranker": 2,
+        "rrf": 1
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "interest",
+      "natural_question": "What was Walmart's interest in fiscal 2024?",
+      "query_id": "pdf-query-v2:e07d1d56d77c297a0de7032c04e7cb622e4c7cdbf118b61ae79b41b72f64f58c",
+      "raw_ranks": {
+        "bm25": 16,
+        "dense": 84,
+        "reranker": null,
+        "rrf": 26
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "interest",
+        "concept_family": "other",
+        "concept_id": "financial-concept:0d18070da93e87c7c2aa4f2297e97324695dc269704d6bcc908cc6b365a6239e",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "cash paid for interest",
+        "concept_family": "cash_flow",
+        "concept_id": "financial-concept:0f2478eefb6c73dca7860aae82393c86dde59753822055064e2ac89cfaed5af6",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Interest income",
+        "Interest, net",
+        "Consolidated net income attributable to noncontrolling interest",
+        "Consolidated net income attributable to Walmart",
+        "Comprehensive income attributable to noncontrolling interest"
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 7,
+        "dense": 4,
+        "reranker": 8,
+        "rrf": 4
+      },
+      "change_type": "regression",
+      "metric_phrase": "deferred tax liabilities",
+      "natural_question": "What was Walmart's deferred tax liabilities in fiscal 2025?",
+      "query_id": "pdf-query-v2:eb1dd94b839bf5d2874ae90268d97eeae3f5e7ed1d96516df0057f0336a3f578",
+      "raw_ranks": {
+        "bm25": 1,
+        "dense": 2,
+        "reranker": 1,
+        "rrf": 1
+      },
+      "regression_reason": "wrong_top1_concept",
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "net deferred tax assets",
+        "concept_family": "assets",
+        "concept_id": "financial-concept:14556fd5b0db705506ad4a06365e3b16f7a14cafb3c3ab9fe08303791bd06ad7",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "total gross deferred tax assets",
+        "concept_family": "assets",
+        "concept_id": "financial-concept:2bc76cf4ec9b33bd553a7e15bc8e480d8f1f3a6c8b3e18aacf05d71cec28244a",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Deferred tax assets, net of valuation allowances",
+        "Total deferred tax assets",
+        "Net deferred tax liabilities",
+        "Net deferred tax assets .........................................................................................................",
+        "Total deferred tax assets ........................................................................................................."
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 1,
+        "dense": 4,
+        "reranker": 1,
+        "rrf": 1
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "debt",
+      "natural_question": "What was Walmart's debt in fiscal 2024?",
+      "query_id": "pdf-query-v2:f74677a045513c8e4d213edb6fe1eaaefa4ba8035b04258128e2153f95b207c3",
+      "raw_ranks": {
+        "bm25": 16,
+        "dense": 9,
+        "reranker": 9,
+        "rrf": 8
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "debt",
+        "concept_family": "liabilities",
+        "concept_id": "financial-concept:913a805c8214a285389c085c9ce867127a8776147a92bf11017a4c0bf7c17a7b",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "repayment of debt",
+        "concept_family": "liabilities",
+        "concept_id": "financial-concept:312820b58ede19eaeaf60d25330ae54407ecf5a1038a4339f3d9513ad55bb314",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Debt",
+        "Consolidated net income attributable to Walmart",
+        "Repayments of long-term debt",
+        "Reclassifications of long-term debt",
+        "Debt ...................................................................................................................................................... —"
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 1,
+        "dense": 298,
+        "reranker": 1,
+        "rrf": 8
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "thereafter",
+      "natural_question": "What was Salesforce's thereafter in fiscal 2025?",
+      "query_id": "pdf-query-v2:f84d3e0d86fe303599cfb63d2ff9155e9837a02504da7d24939696f9994b9548",
+      "raw_ranks": {
+        "bm25": 2,
+        "dense": 703,
+        "reranker": 13,
+        "rrf": 13
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "thereafter",
+        "concept_family": "other",
+        "concept_id": "financial-concept:8de20122822cb5c2e55fca69ed53ba0a6f94d5dc79b94842de545cc37cfa7884",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "other assets",
+        "concept_family": "assets",
+        "concept_id": "financial-concept:a55190216de5a6af12caba4896cd11a25a577f1a6967b7f970b5265a1028e368",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Thereafter",
+        "Thereafter",
+        "Thereafter ....................................................................................................................................................",
+        "Thereafter ........................................................................................................................................................",
+        "Thereafter ................................................................................................................................................."
+      ]
+    },
+    {
+      "canonical_ranks": {
+        "bm25": 4,
+        "dense": 1,
+        "reranker": 4,
+        "rrf": 2
+      },
+      "change_type": "new_hit",
+      "metric_phrase": "cash generated by normal operations",
+      "natural_question": "What was Walmart's cash generated by normal operations in fiscal 2024?",
+      "query_id": "pdf-query-v2:fc948ff4d89f18d2ce3bc1cd571d773370dc6d13abe78b42c9953e782898b401",
+      "raw_ranks": {
+        "bm25": 7,
+        "dense": 1,
+        "reranker": null,
+        "rrf": 2
+      },
+      "regression_reason": null,
+      "score_margin_status": "resolver_scores_not_exported",
+      "top_1_concept": {
+        "canonical_label": "net cash provided by operating activities",
+        "concept_family": "cash_flow",
+        "concept_id": "financial-concept:347bbb0e6abe8d70ddd373c0f99760063ae99bc3d70b9d54435b62b77d15aa46",
+        "rank": 1
+      },
+      "top_1_top_2_score_margin": null,
+      "top_2_concept": {
+        "canonical_label": "net cash provided by operating activities 10 031",
+        "concept_family": "cash_flow",
+        "concept_id": "financial-concept:2cfbab3955ddc3604563d38f2457df966ad64329b90ed8908f64a9201c9425d7",
+        "rank": 2
+      },
+      "top_5_competing_metrics": [
+        "Net cash provided by operating activities",
+        "Net cash provided by operating activities",
+        "Net cash provided by operating activities .........................................................",
+        "Net cash provided by operating activities",
+        "Net cash provided by (used for) investing activities ........................................."
+      ]
+    }
+  ]
+}

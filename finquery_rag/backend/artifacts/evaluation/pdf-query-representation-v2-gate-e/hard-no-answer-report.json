@@ -1,0 +1,9 @@
+{
+  "abstention_f1": null,
+  "false_retrieval_at_5": null,
+  "no_answer_precision": null,
+  "no_answer_recall": null,
+  "reason": "no_unused_issuer_corpus_and_no_abstention_contract_in_current_hybrid_pipeline",
+  "status": "not_run",
+  "synthetic_out_of_domain_controls_are_not_counted_as_hard_no_answer": true
+}

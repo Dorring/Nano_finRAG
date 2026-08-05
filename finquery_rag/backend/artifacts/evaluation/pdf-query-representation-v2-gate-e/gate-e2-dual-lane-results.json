@@ -1,0 +1,13 @@
+{
+  "case_count": 120,
+  "equal_weights": true,
+  "final_5_hit_count": 80,
+  "final_5_recall": 0.6666666666666666,
+  "final_recall_at_5_gain": 0.025,
+  "lane_count": 4,
+  "new_strict_hit_count": 4,
+  "per_lane_top_k": 40,
+  "regressed_strict_hit_count": 1,
+  "rrf_k": 60,
+  "variant": "raw_canonical_four_lane_raw_rerank"
+}

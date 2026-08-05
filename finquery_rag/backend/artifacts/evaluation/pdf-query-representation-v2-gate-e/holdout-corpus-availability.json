@@ -1,0 +1,16 @@
+{
+  "already_used_for_strategy_development": [
+    "Adobe",
+    "Salesforce",
+    "Walmart"
+  ],
+  "available_full_pdf_issuers": [
+    "Adobe",
+    "Salesforce",
+    "Walmart"
+  ],
+  "eligible_additional_nonbenchmark_issuer_count": 0,
+  "frozen_benchmark_issuers_excluded": 8,
+  "holdout_validation_possible": false,
+  "test_pdf_excluded_reason": "not_a_frozen_financial_issuer_corpus"
+}

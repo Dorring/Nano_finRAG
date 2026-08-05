@@ -56,6 +56,7 @@ def _run_variant(
     embeddings: dict[str, Any],
     query_vectors: Any,
     reranker_text_field: str,
+    reranker_queries: list[str] | None = None,
 ) -> dict[str, object]:
     keys = [str(view["candidate_key"]) for view in views]
     key_to_index = {key: index for index, key in enumerate(keys)}
@@ -91,16 +92,17 @@ def _run_variant(
             }
             for index, score in fused
         ]
-        reranked = reranker.rerank(str(case["query"]), chunks, top_k=20)
+        reranker_query = reranker_queries[case_index] if reranker_queries is not None else str(case["query"])
+        reranked = reranker.rerank(reranker_query, chunks, top_k=20)
         reranked_keys = [item["doc_id"] for item in reranked]
-        final = reranker.rerank(str(case["query"]), chunks, top_k=5)
+        final = reranker.rerank(reranker_query, chunks, top_k=5)
         final_keys = [item["doc_id"] for item in final]
         stage_counts["reranker_20"] += int(str(case["gold_candidate_key"]) in reranked_keys)
         final_hit = str(case["gold_candidate_key"]) in final_keys
         stage_counts["final_5"] += int(final_hit)
         if final_hit:
             final_hits.append(str(case["gold_candidate_key"]))
-        traces.append({"case_id": case["case_id"], "bm25_rank": bm25.index(gold_index) + 1, "dense_rank": dense.index(gold_index) + 1, "rrf_rank": fused_indices.index(gold_index) + 1 if gold_index in fused_indices else None, "reranker_rank": reranked_keys.index(str(case["gold_candidate_key"])) + 1 if str(case["gold_candidate_key"]) in reranked_keys else None, "final_hit": final_hit})
+        traces.append({"case_id": case["case_id"], "bm25_rank": bm25.index(gold_index) + 1, "dense_rank": dense.index(gold_index) + 1, "rrf_rank": fused_indices.index(gold_index) + 1 if gold_index in fused_indices else None, "reranker_rank": reranked_keys.index(str(case["gold_candidate_key"])) + 1 if str(case["gold_candidate_key"]) in reranked_keys else None, "final_hit": final_hit, "final_candidate_keys": final_keys})
     count = len(cases)
     return {"variant": name, "bm25_field": bm25_field, "dense_field": dense_field, "reranker_text_field": reranker_text_field, "case_count": count, "stage_hit_counts": stage_counts, "stage_recalls": {key: value / count if count else 0 for key, value in stage_counts.items()}, "final_hit_keys": final_hits, "traces": traces}
 

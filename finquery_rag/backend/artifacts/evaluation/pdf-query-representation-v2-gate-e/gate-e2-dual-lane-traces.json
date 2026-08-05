@@ -1,0 +1,1444 @@
+{
+  "records": [
+    {
+      "case_id": "pdf-query-v2:d5350dbe0c01913368b49126dc39de7480354ed358113c4bd9032c16885afefc",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:8e91238d357d54cf6e596c2f169c6cf6410b17cb621d2d8e7067c5b9d5a08b90",
+        "pdf-v2-lite-row:0f886c90b68e3f30fc503bfd7d740f6608f060d09bc935762307ea7682be52b7",
+        "pdf-v2-lite-row:4ab56a0d4ab0c5f14ab29f38663db4ebd3daf6ae62964274661def77965e25d4",
+        "pdf-v2-lite-row:674b844c58e1831b7dc97b9addb24a72253b9417fb8c9527b3e01e4aec90deef",
+        "pdf-v2-lite-row:9213a93a665ac4fae2ee4a9cb2898d240793ba2330f972c6949f4318590781bf"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:6b3672e0d058cf62f147f422a8f725f5506a98b1eb50a862dfe3ae01096b78e1",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:6e20e446dd698eaedf41efd3eeee81991d3eb11b928ebb8bb5e2067dcb6676c1",
+        "pdf-v2-lite-row:4f17525e1e02b032c5bb05ddf16f36f428edd3b8fe3a968981753b8ac8045b15",
+        "pdf-v2-lite-row:4d041682dfd2af9f4aeefae5ce58e8860edbca962cf6ecd5e252fce1de817a01",
+        "pdf-v2-lite-row:832d3153206e9dc092612b4c15f6332afa72f0b827898c8135c82f28ca2d2fef",
+        "pdf-v2-lite-row:2033d0e9d75a052301e6ef682ac44378b510cdb028be14043892fa363646ea25"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:b9531e265c44a734b4b0c940d8d078e9d9b6b9ceae2969aeb658a77678ba3320",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:ad11770b56010b56781c683f171e2f5001f0287a2fb4f4ce69fed73568d3f74f",
+        "pdf-v2-lite-row:08b43379068da96e5703674e558f4cc1e56e15ab21b3abec85bf2dedd3ae46c5",
+        "pdf-v2-lite-row:d3d3341666c97d4b7a3ba759b225a46ade9d6142f57d80028b09e042903cfa4c",
+        "pdf-v2-lite-row:5e46e5d27f551cfb30605803b41303234f0ac4236abe1a77b2932db74c17beff",
+        "pdf-v2-lite-row:bd193a1d1a31f267a29f7b437e63c1f552dcdcbb3d80df5980135470eaeaa3c0"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:361cc72bf96447911f5c4935f542f36e56c6280a90ef4e70ca000a21980a8e60",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:00fb6f93f1f97be88e557d1a52a012c164e1da51c3f96196a5fad2c953e76c79",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:58cae735babaa65efafc1f0ede8f60bf9aba073690db2ef97164c12649b61b2d",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:a3c2856e58df5074469dd15d792e304c0867532f76e8544caf15e004bee439e7",
+        "pdf-v2-lite-row:0100e412ea0263a6a1bdfc7ba8b6385c24af886e8bbffa675d3f8945d0307e2b",
+        "pdf-v2-lite-row:b4775d025719b0a7d58b338effc763fa9a8d84cf87697130fc14d469df219aa2",
+        "pdf-v2-lite-row:d454034c44163849c1d2b9cfe99a56641d842dbe6b875f7ae95774ecd4cd6b7e",
+        "pdf-v2-lite-row:eb7edd4c8311bcdee54404ccafb82aeffca5f8b6470fcfb92b25ca93b31ca28f"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:774a823bcfb54a4d82a6715c83d5049713529aae1a9a188dde5bcb89dc6d1bc4",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:3ec3ada82766157f23345a4e17685900505fc7f56abc72f499bf44655262f12a",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:610afd7edd17c1de063e4a3375451aecfbe16784adfd9d4f848525b88fd445c5",
+        "pdf-v2-lite-row:0b4ddee419c9127ddc06453ef795afd0f152551536186904f1c5f100e483c351",
+        "pdf-v2-lite-row:bd48ebb277b73795323ca9e1244ed1df9e031034ea1e46287ce29ebe22da5371",
+        "pdf-v2-lite-row:afde34a96f0bc216978d67dbfc9211e779aa3722e4cbbe36851f9b91674d2635",
+        "pdf-v2-lite-row:f9124d960cc109f8653b37d7402d386dcd6b636e7ca7240727f3d7136951c73c"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:2234e0470a61eba38fb33eb8da422fb039fc7f3aa58ec0933e7d6ce97a148823",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:b1f107f254ef2b1e5b522820769139b9c88c6848376a84214e12431bd0ff1c52",
+        "pdf-v2-lite-row:3cdc43fb2db541c416e86a0cd795f237932d3b35ab738403d1d3d22cd7b1a239",
+        "pdf-v2-lite-row:070da3eb8f61e97b182ce0f2fbb7b0c764f7c4c0d8d4c7e785145064bc4136e0",
+        "pdf-v2-lite-row:c2dbf249c73a5e90519875af632a39792c9d34b7f91c45af5d37515b76743fcf",
+        "pdf-v2-lite-row:7fd05843977b06ee5ba55a4457819b16944575b7da34c84731f4b436ccd6b8e6"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:8efd3b1048783b40bd2ffdc37c9b6cc869560fd6b020e90ebabae7af97d6e7af",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:556e06046d99b7d22720b9e52fb8626f465a24793e0cd23c9cfc4467962b77ec",
+        "pdf-v2-lite-row:68905b3e371c43bb7be429ccf9853421f3436796c8db760de7fb4e015f1b62ae",
+        "pdf-v2-lite-row:2b71faf99166da6d046373c36ccf388adb6276ca695fdca2419e1f9ec0c49787",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:9a9bb715f78757c5eb4eb10c4c2badd8f6f8eef8a0db256a1661c1c2780ea8cc",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5",
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:305793e3366103e91da66d252a3c5dcc3f35f4a81724bca87a1f3409fbe47dfe",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:4ea7b50dc45a04cf29c55ebf8f7705df5886e794ee3391f13da8bb89629e6692",
+        "pdf-v2-lite-row:e5fb0507f574de0c5587343d8de6d4fc2645c9fc93f8d988b0af9f9d4b585705",
+        "pdf-v2-lite-row:de3e9f153a119433743f3b29903dc2d96fb41eb5b2939f43af77078b5d55b0a4",
+        "pdf-v2-lite-row:4f53caf7b1304a8cc5146dd4314f7534d2ea6b7e8ca35d54270f27b5412df7ba",
+        "pdf-v2-lite-row:69af1c6f0a7428841e9a9fe27d9d46e32565419453fe793da4e29e7fca4e20d9"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:c4656fad2e6917ecdef3954db98e52adb8ac7cf8df266198200cf825def8e0e6",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5",
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:579b152802ad0c462d4d634eafb5c56fdd3a354b03e004abde02985270330088",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:aee34aa08bcc9f9965111508c935df14f3a7cfd79ec9093ba1ed45f8217f0b62",
+        "pdf-v2-lite-row:0ad5ea6e74b388c4077a8674540079743e75a78f87150452372f1cdae942d6d6",
+        "pdf-v2-lite-row:a5dd952f748139c4e03203ab95f36cf9d20b544886376fe785bcaa1978479a97",
+        "pdf-v2-lite-row:da6e5c27bfa37255d8ca3c6e2c31633e6de71ef0050a512aa8c8f113b24f61b9",
+        "pdf-v2-lite-row:da612d0be2ad15a788f068a5e73b0d9936b0cfd1d5f42bf44c1f09f53115bb32"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:5822010c116c7de977c2d00950f087c43960c005efc27fe95d7e26e99801b7d1",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:106cda3f335e1bb63d52e7dea3ba670065d072f696ad63edf981bf35b0c64875",
+        "pdf-v2-lite-row:6fb533afd443b249ed9bb00939f9829148aa2597fa61dd9c602af2e0cad18617",
+        "pdf-v2-lite-row:566a66b08bed41f95b38fdff152746fa18ad9305e58e63b89468b3f08abca771",
+        "pdf-v2-lite-row:ea9115d43aea60513de23f2e12a4a956089513a2273107eae784eb9f0835746e",
+        "pdf-v2-lite-row:1bf250259a73d7a88bd0ee8ef09d8e34d78e5d301406ad7086eb114393e75b15"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:172f570563423f62a32144ae05d2062a7cfb7ba4a83a4527f2e4cdb45971fcd8",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:aa972d410195fe6421ef3ea71e27196beeab95963d3374c76a957e8a164132e4",
+        "pdf-v2-lite-row:ab27fe2779b7a444aa72515867eb46d02fb74f3f23de617e6392d8e291d1b065",
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:83af6189d1bc381e20baec0b3c164d70574590678a96f186f08372f1bafad2aa",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5",
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:d71cde13b44e1160eb7f73b3ae980454a022e54d69b16d46de35245da2629f8c",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:1bf250259a73d7a88bd0ee8ef09d8e34d78e5d301406ad7086eb114393e75b15",
+        "pdf-v2-lite-row:98d634c3b88167f048bb36d52a91a8a2f374f8c86178680450c1c64a28d8a928",
+        "pdf-v2-lite-row:566a66b08bed41f95b38fdff152746fa18ad9305e58e63b89468b3f08abca771",
+        "pdf-v2-lite-row:501ba835cb4829c8e916573a1286d2bc27c0b6a3740958fab630a145e9f26425",
+        "pdf-v2-lite-row:9960d32807f833c161e9f4a79d8f42f5fea699d50fcd7c1e6dd50a0e6147176e"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:3e1356b804ccff7386e6e2d0924aebc8d9368c9a032eb76c41c05a3fbd30a44e",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:2b053adfb7d02075d225999914f33709afdc3e4f9e0771edf0391f2c127bacd3",
+        "pdf-v2-lite-row:398a43f16cc4f77d68a4c41f25791b27ef5eeb4f87b7ead0f6c11a87f6afbf6c",
+        "pdf-v2-lite-row:7e4a188ab1118af3fd457da4cacdabd634539a9d2ec00d526a995cae953fbbf9",
+        "pdf-v2-lite-row:a7b8d5aec848a00c59a8ac98bea0a4f80715f4a756e3ca28a407d9476ed030a8",
+        "pdf-v2-lite-row:7bc0d71fc98cf678a35b1a709e14168641617444e4679fec0e8adfc71e4e192e"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:59279574b54555cc889b330b0bf2e9f58fccea5725ff634a64e8660518656fb2",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:485113feca50f8f7eeb39bcd7023e11025848cacf34d19ab795709c60e358ca6",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:264e2ee3d56644a3483f6c29109eb9a1999a98bbb9e19277f0dd4e1c56b869c0",
+        "pdf-v2-lite-row:80109ec5dfea8eb653c2046fb19466b235c18b2eabfa33d86ad0d9ee3d9660e9",
+        "pdf-v2-lite-row:09787388340f2c11978d9d56bfbc75b7c7d427bb3bf464b8a9dc31ddc9a58693",
+        "pdf-v2-lite-row:ad11770b56010b56781c683f171e2f5001f0287a2fb4f4ce69fed73568d3f74f",
+        "pdf-v2-lite-row:08b43379068da96e5703674e558f4cc1e56e15ab21b3abec85bf2dedd3ae46c5"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:e99d2fde66b8ec480c982bba5d8c1c9fab57a373dd802ff5c847fdbbc00c9c1e",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:74be829ea0c6f3ebcdb6bbf69830a20146a84115e1e6b643c6cab15c570126c1",
+        "pdf-v2-lite-row:e5dd4ae795777b1cd260899451d8586e0635e45948ac80340798a640181ceadc",
+        "pdf-v2-lite-row:ddf8ed231cba826b7ee931d3646fb0b5f48a17ff6fb4731744a036d9f1e390f9",
+        "pdf-v2-lite-row:0981f3af5b6b925203882bd116bb6cb4adafe542d3cdd4d64087337b391ad98a",
+        "pdf-v2-lite-row:05249165568fdffcc42473a23e98c3089a1783de02445044b03fc04b6458a0da"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:4477330d7efd6aee0cdef3d070e7a0e1991e5e78f0e147f27cddf33678b08e8f",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:3e7d5141177e0359408130b0debd0092f1bd5a200ae91892a0ac6a353ddf6e84",
+        "pdf-v2-lite-row:21d95dbb2527885d0c77d6c93143671790a038af064f7c90d00435f0da463f6e",
+        "pdf-v2-lite-row:c28a969aedca6c1d5943d67b68b145af7a660a8d2a30f9860073131ec5cff3bc",
+        "pdf-v2-lite-row:8ea1cefa2a02a37986424ac0671ff8ccb83e934ee4958e88fb61d4ca8295a76a",
+        "pdf-v2-lite-row:e4e2ded9db5478c6646b789be875197341d4cb458997cfc8134e885d575ecc4d"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:28ba71abefb968142730c21dc8c6f8a08b2eca757e958862f98d734e70f11279",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:43453e412eb8d68c614ee4bd78bc55c7d6441ff6e1e4adc8d20a68af7a0c0485",
+        "pdf-v2-lite-row:37e84b20cd7d770507d2f44b85dcf60a7603434638a6dc64a3b7e7e5f127233a",
+        "pdf-v2-lite-row:421a2db24aaf1603402d9b369ba3a4035cc5539056b5eb9a4a57b82b9326d24c",
+        "pdf-v2-lite-row:447ba721402263513a9e35891a0c0598e6f9eab6dbb616f3ac54d61072de87fd",
+        "pdf-v2-lite-row:85ca08705626f94fb25eb153ecd06de6318b3c0e0ae1540509906600b9a257b9"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:35c3edd0f579665d65684531f26faa7224b8fb6ca4130657d6c57fc9a8139910",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:efd67d8f1803f9a9016502a509ed1209bd100d3e2592103fffe2afbd348fab5e",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:fcb707aa4c77b7c9423bed03df4a266fb0cfeb29db93ba660d3974fed12f5d0c",
+        "pdf-v2-lite-row:eb1abec3679661ea214c0bd860ad1886f02efab44201701d6fbc5d2d8adbb25f",
+        "pdf-v2-lite-row:cf2015de4fc8f42f44588ea7533bc7235d010a7539204eb7882805475390bdfb",
+        "pdf-v2-lite-row:43fe3546ee9be315202cde8ae491f40b118fecc6154cc92b6034ea245d1c9179",
+        "pdf-v2-lite-row:0e3b615edf35cfdebdc37059f4f42acd6db547a82b179d409febe9fc9c0e4b3d"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:80a815014d616d1978b002a7f4a2f19834a3301e762edc26fffcfa078dcbacb3",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:0d8452db4706124968832443f0f2074678f7dcc68a7835f0bff2cb9a3fef5e6c",
+        "pdf-v2-lite-row:872c9ec67b6adc96dd5d5ffa8601b3ae54898abe37f39691be5589acb0f38940",
+        "pdf-v2-lite-row:b79ea65845a32d7ddc3ed3b817d8c44b03f286431d25ffe1fcb9bf1d0d7feeb3",
+        "pdf-v2-lite-row:708fe764a2a51509f21a794c0d450294b66a54a91e7c11066013ec6cd006f9b9"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:d4fa1640a8b4ee4250d450403832e0bc958e1a957a5754c940b79543de6471cf",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:686136622c2c4ed78efe43c16cd54d6634e74fa62d01efdfd776d0c643001595",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:4197ef1f094ab6af6cbcc1fdd892f03fa9aff972cb12696c2ce05a27f3f84b9a",
+        "pdf-v2-lite-row:08282d6fac3e8d63d8ff6e57796084813a7d561c4bd139d03e78188afdfafd57",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:9300be11d005f2ce93775609445b045b92aa662e9c9b38699be3418d5bc6755a",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:83ce233c22994f0185d31da0a9b1a15c3867a4886742e41414d76f698ee9c3de",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:8c6ea785eeabf0432adab1975be650adee54f7b65fab3176b00db22c3c247d41",
+        "pdf-v2-lite-row:d4cef4c2545c4357b2249b3ad6855de31cf66f3dadc5e1e34eac4a55c668267f",
+        "pdf-v2-lite-row:8b0a214a5b2855021a1c16868699ffc11da770a7d25a80d9fc17d033622a0a39",
+        "pdf-v2-lite-row:a237d060d7f7e9bd86bb2809be9401bdd8440473a882c51a5096c773421bb7ee",
+        "pdf-v2-lite-row:a1dc4c72f3243c442fbc0567f4e74396814838fa616936d5818dfbac2d43f666"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:316e15b6abc785e384da6b3cb970eba0d872febbae5414c44d5735f896887d37",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:51e09242829765d8575a780298ef90368d5601ec9e165fe1388f37bd17486ce9",
+        "pdf-v2-lite-row:e0fe4290a7c78459889c46eb1c9583f2bf0a02bbd5bad1f78327667d9b0aa4b2",
+        "pdf-v2-lite-row:56c2817314096fcb9503780d50e07a3cccceb3a2e2537d644a4f2d5a04a69b77",
+        "pdf-v2-lite-row:d5bc7ec8a6c561e2b0b36beb5bd77ca6b7c58aafd950cea9211312930987e3ce",
+        "pdf-v2-lite-row:828e928ab42aa32ca0d05408a2f114f11b6fc36757bd0c40b51a622b25cdfa27"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:cd20dff07c31b57b6f9b59a4c9bf0ac1b86a671525066d3726ee811295ca27d8",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5",
+        "pdf-v2-lite-row:33c681a7de946671463a12fc81595dd2243f73e28bae7d7afad3c17993b1d4c8",
+        "pdf-v2-lite-row:11f63afab6188f3ff963f6cc740788c547d4978fbd6e2c05572005cafb446d7a",
+        "pdf-v2-lite-row:40f71e49d527382aff685053810b0e405941c81d57278d851fa60d4a88c6b92b",
+        "pdf-v2-lite-row:9b02542564c28d2a2f48fbcc4cd9ee51bc4928475b4a3b75b9891ba52c748932"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:11cf2e8ffaa26bbfc7c27f7f317c836be9cd5973b9ea29989b604406131cf863",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5",
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:b5f0a94c17835dcd82bf214c676c0963e4fb3184d9bddb885ffda955a366e933",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:4e7940509a72804ce6eca634e893ac3b86a1a38a2757633fd4dbe3889096914b",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:30b95dc107816a2c4552c1cbc26268348aab69ac631135ba9cab7498511fd741",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:0b9669f45779bba58a5d12d7ec0e51789a9b93783485d50e035bab3567ac55da",
+        "pdf-v2-lite-row:45ccf04cdeac7b03c4deee50ba49c1aa73e6bddebefd2ce3d6a7bd25a001fd55",
+        "pdf-v2-lite-row:9213a93a665ac4fae2ee4a9cb2898d240793ba2330f972c6949f4318590781bf",
+        "pdf-v2-lite-row:674b844c58e1831b7dc97b9addb24a72253b9417fb8c9527b3e01e4aec90deef",
+        "pdf-v2-lite-row:fd23d7634d1db53d91effa986cd82a8759d446bd2d22dc02126a7dfb17bb72eb"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:db40bf9cca50ef5740c1e781f0b5695fada0e915a247a2c4e7fcff4e7c9c23aa",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:6ce7ce9b69da3e4c525589f9acf38bfb313d80152610ba2fdf431d08a74a85c7",
+        "pdf-v2-lite-row:62832038630e1165caf26f2b51b97b337846d46e5f2e4192d8d28e00f9aa9e59",
+        "pdf-v2-lite-row:6015cdc2642ad7f576b499ab55c17b9534d0a657c2166bb277363a02b6099a24",
+        "pdf-v2-lite-row:8e73b204353b0bb763683c6ea52a9469ba43da705a39eabbafb3d7b56fbf41d0"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:8ed54d6b7450259ecb01f9e0f058115aea3bea5f17186058b07cc6da7aa69358",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:8e91238d357d54cf6e596c2f169c6cf6410b17cb621d2d8e7067c5b9d5a08b90",
+        "pdf-v2-lite-row:0f886c90b68e3f30fc503bfd7d740f6608f060d09bc935762307ea7682be52b7",
+        "pdf-v2-lite-row:4ab56a0d4ab0c5f14ab29f38663db4ebd3daf6ae62964274661def77965e25d4",
+        "pdf-v2-lite-row:674b844c58e1831b7dc97b9addb24a72253b9417fb8c9527b3e01e4aec90deef",
+        "pdf-v2-lite-row:9213a93a665ac4fae2ee4a9cb2898d240793ba2330f972c6949f4318590781bf"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:a014a478ec587e746ad84afe64a13fa92abf6dd8d0ddcfa0646e4d9064d6c240",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:6e20e446dd698eaedf41efd3eeee81991d3eb11b928ebb8bb5e2067dcb6676c1",
+        "pdf-v2-lite-row:4f17525e1e02b032c5bb05ddf16f36f428edd3b8fe3a968981753b8ac8045b15",
+        "pdf-v2-lite-row:4d041682dfd2af9f4aeefae5ce58e8860edbca962cf6ecd5e252fce1de817a01",
+        "pdf-v2-lite-row:832d3153206e9dc092612b4c15f6332afa72f0b827898c8135c82f28ca2d2fef",
+        "pdf-v2-lite-row:2033d0e9d75a052301e6ef682ac44378b510cdb028be14043892fa363646ea25"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:f3dd9d64bd275ff35c271e89d6c60f8bdba34fc2abf536f63bf156543f400e61",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:8e91238d357d54cf6e596c2f169c6cf6410b17cb621d2d8e7067c5b9d5a08b90",
+        "pdf-v2-lite-row:4ab56a0d4ab0c5f14ab29f38663db4ebd3daf6ae62964274661def77965e25d4",
+        "pdf-v2-lite-row:0f886c90b68e3f30fc503bfd7d740f6608f060d09bc935762307ea7682be52b7",
+        "pdf-v2-lite-row:674b844c58e1831b7dc97b9addb24a72253b9417fb8c9527b3e01e4aec90deef",
+        "pdf-v2-lite-row:9213a93a665ac4fae2ee4a9cb2898d240793ba2330f972c6949f4318590781bf"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:88e2ae48aacc6e8dcdbbaa5106d5c532cdfbd805cf0a19dbaeef41d943e9bd79",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:6e20e446dd698eaedf41efd3eeee81991d3eb11b928ebb8bb5e2067dcb6676c1",
+        "pdf-v2-lite-row:4d041682dfd2af9f4aeefae5ce58e8860edbca962cf6ecd5e252fce1de817a01",
+        "pdf-v2-lite-row:2033d0e9d75a052301e6ef682ac44378b510cdb028be14043892fa363646ea25",
+        "pdf-v2-lite-row:832d3153206e9dc092612b4c15f6332afa72f0b827898c8135c82f28ca2d2fef",
+        "pdf-v2-lite-row:4f17525e1e02b032c5bb05ddf16f36f428edd3b8fe3a968981753b8ac8045b15"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:3c36f5a1a7801d08d0f7f5c64a5ed73341917302ee098a73f9d2e19a3bed3b59",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:6e20e446dd698eaedf41efd3eeee81991d3eb11b928ebb8bb5e2067dcb6676c1",
+        "pdf-v2-lite-row:a79efd84a21e40e504d7f9b3e149a9bbeebac1b6219c5d1d95693e3062166cf9",
+        "pdf-v2-lite-row:19df1aaa4967f6360635b0518dc590b1a9bd2439add2e1d5a43ebd2c5bb20514",
+        "pdf-v2-lite-row:f6e851da584e54b6fc8511fc1bb5092c1225ec4ba1a9a4ad29cdd042eb2b3d11",
+        "pdf-v2-lite-row:4d041682dfd2af9f4aeefae5ce58e8860edbca962cf6ecd5e252fce1de817a01"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:0823a965b018042b644146747aac70b09df2b188241f1fbcd4688bfb33868e5d",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:03e7e250cdc6bc4ce022f1d4fd62153a7bf14cc8742f175cc0293dc2a4b1c1fc",
+        "pdf-v2-lite-row:a3c2856e58df5074469dd15d792e304c0867532f76e8544caf15e004bee439e7",
+        "pdf-v2-lite-row:a1e1668604b32e2b2c2e85ffa139845cf590835c736726f494a54b3b44450375",
+        "pdf-v2-lite-row:4bd09712eeca92e82b966a6065abfc16a13c68fcf45f83ec54520da6a3eb8948",
+        "pdf-v2-lite-row:7fc49ce6d3ef4136585cb6d0af848db307d4859cf2365b4610fb16c879e79d71"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:3089d2fc4b15746714068fe479812cf1ef86776361eeb4f216dae3d3bc20677d",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:a3c2856e58df5074469dd15d792e304c0867532f76e8544caf15e004bee439e7",
+        "pdf-v2-lite-row:b4775d025719b0a7d58b338effc763fa9a8d84cf87697130fc14d469df219aa2",
+        "pdf-v2-lite-row:eb7edd4c8311bcdee54404ccafb82aeffca5f8b6470fcfb92b25ca93b31ca28f",
+        "pdf-v2-lite-row:d454034c44163849c1d2b9cfe99a56641d842dbe6b875f7ae95774ecd4cd6b7e",
+        "pdf-v2-lite-row:4bd09712eeca92e82b966a6065abfc16a13c68fcf45f83ec54520da6a3eb8948"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:a3ce54fe31f005f24413c4fe2eb8c8486bcc98a48aa7557945941ac86f798fb3",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e1566a78b0aac162242e535f294631fd6b8a2b0af4fc2c40d9318e33277c9f31",
+        "pdf-v2-lite-row:122741e20e9c0a93261e56605e642872f7d1a30dab1b05c8885853e400ac9a65",
+        "pdf-v2-lite-row:326c333bf45bbad3eb7fb90f70f597322c6f549108bf8c84c2bce100d18c24e0",
+        "pdf-v2-lite-row:e28476b41a6ef0a04b1d07b252411e1316afff49915652698aa05d16e05fac23",
+        "pdf-v2-lite-row:98a321d28aae66c9441cf7a59bdc9e270187473c8e21553a8661e13bedf25959"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:422c0491fb933fe98234bccf1f3022e123ae24045e4713ff112e0882fc641f66",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e094aed70187174fb65e7f5ade75eb6742c9650550963bbf7a8ae1ac4eb46179",
+        "pdf-v2-lite-row:7fc49ce6d3ef4136585cb6d0af848db307d4859cf2365b4610fb16c879e79d71",
+        "pdf-v2-lite-row:3e3056fa5ef664a349b2f4715157885ed8c4925309d5278ba476fce946379b34",
+        "pdf-v2-lite-row:070da3eb8f61e97b182ce0f2fbb7b0c764f7c4c0d8d4c7e785145064bc4136e0",
+        "pdf-v2-lite-row:47b7d5a885483f4d55c7603c4b10e9df31d5319dad540fa8c9f5a2bfe191599c"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:2d9405e033a79c7fd678b457eccd4b5ac88365f8e4d530e5b58ae64e340f0fd1",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:f55870bbaf26f2111ddad07d88875dbc6fc551c45bec5d7d6883a235d8919483",
+        "pdf-v2-lite-row:f4864f552ca46577cdca9c1fc5f00f2d210d9dfcbad36585cd33422ba43cbf65",
+        "pdf-v2-lite-row:106e270e04363ac77d3696e965a554e7f3b3514a42ca6d72538a6971310627f3",
+        "pdf-v2-lite-row:46cfbe741213b2c5d4a5369b2205bdd89ec34fda3609fcd5a0515b6c6c868be7",
+        "pdf-v2-lite-row:ba9f394226d0c4b256bcc53be3493c7e9970f3c682a3e21bbdc96d6a8d14e922"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:703dc8a3459f3593206335c8a110dbd340aa51e554b572ac4d4aba529707b5c7",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:f55870bbaf26f2111ddad07d88875dbc6fc551c45bec5d7d6883a235d8919483",
+        "pdf-v2-lite-row:f4864f552ca46577cdca9c1fc5f00f2d210d9dfcbad36585cd33422ba43cbf65",
+        "pdf-v2-lite-row:5adf70abff0868d7687fd660abc88f5c3b403ac4d290b064336c92f726c3fef9",
+        "pdf-v2-lite-row:b1f107f254ef2b1e5b522820769139b9c88c6848376a84214e12431bd0ff1c52",
+        "pdf-v2-lite-row:070da3eb8f61e97b182ce0f2fbb7b0c764f7c4c0d8d4c7e785145064bc4136e0"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:4949b0913897ab2e0f437b32baed0b93502a87938434ba02f0a8112b33d9da47",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:610afd7edd17c1de063e4a3375451aecfbe16784adfd9d4f848525b88fd445c5",
+        "pdf-v2-lite-row:0b4ddee419c9127ddc06453ef795afd0f152551536186904f1c5f100e483c351",
+        "pdf-v2-lite-row:bd48ebb277b73795323ca9e1244ed1df9e031034ea1e46287ce29ebe22da5371",
+        "pdf-v2-lite-row:afde34a96f0bc216978d67dbfc9211e779aa3722e4cbbe36851f9b91674d2635",
+        "pdf-v2-lite-row:f9124d960cc109f8653b37d7402d386dcd6b636e7ca7240727f3d7136951c73c"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:d6d94a321ee2da2049f8bff6fcf6600c70b7fe05dd18fcc7e008fd88fb2fb7bc",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:556e06046d99b7d22720b9e52fb8626f465a24793e0cd23c9cfc4467962b77ec",
+        "pdf-v2-lite-row:68905b3e371c43bb7be429ccf9853421f3436796c8db760de7fb4e015f1b62ae",
+        "pdf-v2-lite-row:2b71faf99166da6d046373c36ccf388adb6276ca695fdca2419e1f9ec0c49787",
+        "pdf-v2-lite-row:0efdc4b6078663710c17aab8d26b7ccb159242ba6f43813f843f6eae35c6fd9b",
+        "pdf-v2-lite-row:ff80348499695ca2b87d517ab94e7ea05afb0896cda67db4273dcdf705e6ee31"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:cfd940596b439c012e01ad387532907f949609e1238f06280ce87ac3867459e5",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:6c02560253253400f25f569f65f968d3c587918659be85f5da8559632a6b6c77",
+        "pdf-v2-lite-row:de56bb966454bdcaa7bd90de2f3c5ce203be08a936b0d193d5709cd930da9cc4"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:1e0252b2a812583ad7d2e0eb82b21f0e01dac9868a3d9d3c5c1ceb48a3510ea1",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:6c02560253253400f25f569f65f968d3c587918659be85f5da8559632a6b6c77",
+        "pdf-v2-lite-row:de56bb966454bdcaa7bd90de2f3c5ce203be08a936b0d193d5709cd930da9cc4"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:d02c21118ff2ecae043c174786d84ced2e8a37f3533318d675e410f3229100a5",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5",
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:dcced7fcc0e0c60c3c37267e1fba584d93041471c7f5f2f8d1b131b67de40c5f",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:6c02560253253400f25f569f65f968d3c587918659be85f5da8559632a6b6c77",
+        "pdf-v2-lite-row:de56bb966454bdcaa7bd90de2f3c5ce203be08a936b0d193d5709cd930da9cc4"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:494ab6c08db5809819bc473ef88bb58dbfd207a30e7804237df111d152ca1cc7",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:1bf250259a73d7a88bd0ee8ef09d8e34d78e5d301406ad7086eb114393e75b15",
+        "pdf-v2-lite-row:98d634c3b88167f048bb36d52a91a8a2f374f8c86178680450c1c64a28d8a928",
+        "pdf-v2-lite-row:501ba835cb4829c8e916573a1286d2bc27c0b6a3740958fab630a145e9f26425",
+        "pdf-v2-lite-row:566a66b08bed41f95b38fdff152746fa18ad9305e58e63b89468b3f08abca771",
+        "pdf-v2-lite-row:45af40fe702c5acd58aa24311e645b7b280f81151ab729c0779667d2c18211bf"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:3d64bcf913363df5502a219ea215ef19db176a7f27f1118acd94060d3c703ee9",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:74be829ea0c6f3ebcdb6bbf69830a20146a84115e1e6b643c6cab15c570126c1",
+        "pdf-v2-lite-row:e5dd4ae795777b1cd260899451d8586e0635e45948ac80340798a640181ceadc",
+        "pdf-v2-lite-row:ddf8ed231cba826b7ee931d3646fb0b5f48a17ff6fb4731744a036d9f1e390f9",
+        "pdf-v2-lite-row:05249165568fdffcc42473a23e98c3089a1783de02445044b03fc04b6458a0da",
+        "pdf-v2-lite-row:0981f3af5b6b925203882bd116bb6cb4adafe542d3cdd4d64087337b391ad98a"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:7d577137002bf912ce4df776d6fdfc2764440f4aa378a06be4d9a8cfc65758ca",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:3e7d5141177e0359408130b0debd0092f1bd5a200ae91892a0ac6a353ddf6e84",
+        "pdf-v2-lite-row:21d95dbb2527885d0c77d6c93143671790a038af064f7c90d00435f0da463f6e",
+        "pdf-v2-lite-row:c28a969aedca6c1d5943d67b68b145af7a660a8d2a30f9860073131ec5cff3bc",
+        "pdf-v2-lite-row:e4e2ded9db5478c6646b789be875197341d4cb458997cfc8134e885d575ecc4d",
+        "pdf-v2-lite-row:585590341af3b620b6fede62376b3e44d656e8af5625abb7fc1524e2c0ca70e1"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:7712f7ebca07f80619887e70c8cd166cb95d283827303267bd0ebd6dcaf1c0ee",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:1d84970da39b85f881733b1ee609eb6b0e78d23f67c041aa103e400fa8f2ea4a",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:7ff27a4451192f552c325ee2bed3587ae78da6e92b59b453e6f5219e7ca44388",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:fcb707aa4c77b7c9423bed03df4a266fb0cfeb29db93ba660d3974fed12f5d0c",
+        "pdf-v2-lite-row:cf2015de4fc8f42f44588ea7533bc7235d010a7539204eb7882805475390bdfb",
+        "pdf-v2-lite-row:eb1abec3679661ea214c0bd860ad1886f02efab44201701d6fbc5d2d8adbb25f",
+        "pdf-v2-lite-row:43fe3546ee9be315202cde8ae491f40b118fecc6154cc92b6034ea245d1c9179",
+        "pdf-v2-lite-row:0e3b615edf35cfdebdc37059f4f42acd6db547a82b179d409febe9fc9c0e4b3d"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:9842d5370d38953b2739e48c4cad395c96859a2a493f2ca4ee449708a27aa571",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:0d8452db4706124968832443f0f2074678f7dcc68a7835f0bff2cb9a3fef5e6c",
+        "pdf-v2-lite-row:872c9ec67b6adc96dd5d5ffa8601b3ae54898abe37f39691be5589acb0f38940",
+        "pdf-v2-lite-row:b79ea65845a32d7ddc3ed3b817d8c44b03f286431d25ffe1fcb9bf1d0d7feeb3",
+        "pdf-v2-lite-row:708fe764a2a51509f21a794c0d450294b66a54a91e7c11066013ec6cd006f9b9"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:039764991e56f6f9abdd5a273d42f387a3c4d702dd16b210ed931cd77da347fb",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:353180ebaf9dbc0937ede57bc6e2d9c32fb2acf3b738a2ca6638e45aa63c0f24",
+        "pdf-v2-lite-row:5196ab508861aa431d8ac8e1c5a38c7d27f09916023df717430c04a35b115c55",
+        "pdf-v2-lite-row:6517f856228616aa966be549829d013ae4258dd3e893347c0707ae6aa66b0d9e",
+        "pdf-v2-lite-row:782aedadc56d6e2ea8429a0f20765e5282795710bcef2e8c440d11ec0ca31972",
+        "pdf-v2-lite-row:aaff3b122dd40b1417a9a4941c15fce73683a17ef44b0ee2c165adc8f1b6b655"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:ba27f581657a969c5d4df9b1db46e71d04e9d36edca2721b1a826202e9b7ceff",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:ff80348499695ca2b87d517ab94e7ea05afb0896cda67db4273dcdf705e6ee31",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:ab3435a22d425324e7c684ff01a24df7e0903698a49c78d8e7c193cc27434d2c"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:8b5358434c82df16de1b06e56a5ce5e5bbfe2935b50ee5b1e6f4b04b5b445cf8",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:4197ef1f094ab6af6cbcc1fdd892f03fa9aff972cb12696c2ce05a27f3f84b9a",
+        "pdf-v2-lite-row:08282d6fac3e8d63d8ff6e57796084813a7d561c4bd139d03e78188afdfafd57",
+        "pdf-v2-lite-row:ff80348499695ca2b87d517ab94e7ea05afb0896cda67db4273dcdf705e6ee31",
+        "pdf-v2-lite-row:35eab1fbdba69826401a6de480e73508b4bca08ba41e192fbc78939743134791",
+        "pdf-v2-lite-row:ab3435a22d425324e7c684ff01a24df7e0903698a49c78d8e7c193cc27434d2c"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:59266f588aa388d6d7369db44508c4de5fec7ba318e2cd90a8fdaf60496e52af",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:a79efd84a21e40e504d7f9b3e149a9bbeebac1b6219c5d1d95693e3062166cf9",
+        "pdf-v2-lite-row:752721af7e6f610961810fa0cb71d0a79643b45669c5f7210e2e70fc6332d2c6",
+        "pdf-v2-lite-row:f48d153df9d64e9f0b6495563b945c4896e0c36e423eb8cd9a068c881dd6dce6",
+        "pdf-v2-lite-row:4d041682dfd2af9f4aeefae5ce58e8860edbca962cf6ecd5e252fce1de817a01",
+        "pdf-v2-lite-row:6fcfecf6872599905dcfbacda6782c0c55c0669ab650f6678018de6f7d1d7594"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:2ccfda9c0cf8cdb01cfabc482815604b1f2f5ac6fe236ad5198b1b56eb97bc53",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:56c2817314096fcb9503780d50e07a3cccceb3a2e2537d644a4f2d5a04a69b77",
+        "pdf-v2-lite-row:51e09242829765d8575a780298ef90368d5601ec9e165fe1388f37bd17486ce9",
+        "pdf-v2-lite-row:e0fe4290a7c78459889c46eb1c9583f2bf0a02bbd5bad1f78327667d9b0aa4b2",
+        "pdf-v2-lite-row:828e928ab42aa32ca0d05408a2f114f11b6fc36757bd0c40b51a622b25cdfa27",
+        "pdf-v2-lite-row:d5bc7ec8a6c561e2b0b36beb5bd77ca6b7c58aafd950cea9211312930987e3ce"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:0c5bbb4b115af60965d0fd01670151eee13bd62cb5dc8828250da16dc72681b7",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5",
+        "pdf-v2-lite-row:33c681a7de946671463a12fc81595dd2243f73e28bae7d7afad3c17993b1d4c8",
+        "pdf-v2-lite-row:11f63afab6188f3ff963f6cc740788c547d4978fbd6e2c05572005cafb446d7a",
+        "pdf-v2-lite-row:40f71e49d527382aff685053810b0e405941c81d57278d851fa60d4a88c6b92b",
+        "pdf-v2-lite-row:9b02542564c28d2a2f48fbcc4cd9ee51bc4928475b4a3b75b9891ba52c748932"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:1d245b690b21d78435ad453a301b4dbd8d1516430db0ed2ef6783be5373baca5",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:a561cfb8c536975b4eb8c2fbbf554c1a5169e7cd270020faa25c55d4b779c6d0",
+        "pdf-v2-lite-row:afcc6bcbc7216a7eb6818f2ee8c393639adb207d7496d7446187e459ca66aedf",
+        "pdf-v2-lite-row:427dc3f0f59fe4e1cf6a3bebe5e36b91c3bad8fe1d640a9fd5d7b7d18895af39",
+        "pdf-v2-lite-row:1c01f42974f27f0cefff9d6d834499afd432722aac76468b93be4104631b7002",
+        "pdf-v2-lite-row:e4ee94f580bf2ee331df67e180a711c213c5a99a1329a8bd9841ad4e0ba10d9d"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:f84d3e0d86fe303599cfb63d2ff9155e9837a02504da7d24939696f9994b9548",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:91da367486ef3579427980af775bfd68774db859f471ebd11ed1c7d0480423a8",
+        "pdf-v2-lite-row:de56bb966454bdcaa7bd90de2f3c5ce203be08a936b0d193d5709cd930da9cc4",
+        "pdf-v2-lite-row:dde5c5b4f056a95a42c9634f911055160e46be9f94e2845d5f052015e46cb711",
+        "pdf-v2-lite-row:0b452521f83de0276e3a45619564d980f2d07494396d4c32c313b7d01e422396",
+        "pdf-v2-lite-row:6c02560253253400f25f569f65f968d3c587918659be85f5da8559632a6b6c77"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:62c2c07a4f4fcae9e945c3307fa101fe9d0e3f7b887eef924efd4c72d6b4ee38",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:0b66d99862147a9c83ad0ae6891c1817895073910b254e1b6039ca4f201544d3",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:674b844c58e1831b7dc97b9addb24a72253b9417fb8c9527b3e01e4aec90deef",
+        "pdf-v2-lite-row:9213a93a665ac4fae2ee4a9cb2898d240793ba2330f972c6949f4318590781bf",
+        "pdf-v2-lite-row:0b9669f45779bba58a5d12d7ec0e51789a9b93783485d50e035bab3567ac55da",
+        "pdf-v2-lite-row:45ccf04cdeac7b03c4deee50ba49c1aa73e6bddebefd2ce3d6a7bd25a001fd55",
+        "pdf-v2-lite-row:fd23d7634d1db53d91effa986cd82a8759d446bd2d22dc02126a7dfb17bb72eb"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:f3573430072f6eab758e6b137855af534564ec122dea2036d5e6641f48e7885f",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:62832038630e1165caf26f2b51b97b337846d46e5f2e4192d8d28e00f9aa9e59",
+        "pdf-v2-lite-row:6ce7ce9b69da3e4c525589f9acf38bfb313d80152610ba2fdf431d08a74a85c7",
+        "pdf-v2-lite-row:6015cdc2642ad7f576b499ab55c17b9534d0a657c2166bb277363a02b6099a24",
+        "pdf-v2-lite-row:8e73b204353b0bb763683c6ea52a9469ba43da705a39eabbafb3d7b56fbf41d0"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:debcef7cb265d502b6d9d364f83fb2d8b5b8a4eb20dc6e1a9ba7afa0b5997c9b",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:da6e5c27bfa37255d8ca3c6e2c31633e6de71ef0050a512aa8c8f113b24f61b9",
+        "pdf-v2-lite-row:beb46198072837a21204a505fe6f8daf18d37dace03ba93dbfcdc7776886976f"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:7939a8620edab373c702a2e3e2991a6a78883cadaa658746ccb0c068976ce051",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:8e91238d357d54cf6e596c2f169c6cf6410b17cb621d2d8e7067c5b9d5a08b90",
+        "pdf-v2-lite-row:4ab56a0d4ab0c5f14ab29f38663db4ebd3daf6ae62964274661def77965e25d4",
+        "pdf-v2-lite-row:0f886c90b68e3f30fc503bfd7d740f6608f060d09bc935762307ea7682be52b7",
+        "pdf-v2-lite-row:674b844c58e1831b7dc97b9addb24a72253b9417fb8c9527b3e01e4aec90deef",
+        "pdf-v2-lite-row:9213a93a665ac4fae2ee4a9cb2898d240793ba2330f972c6949f4318590781bf"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:e7a438f5ddc1b5f28d3a9dc275650dc9a5ec24395c46b455a77ec859f2bfede9",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:6e20e446dd698eaedf41efd3eeee81991d3eb11b928ebb8bb5e2067dcb6676c1",
+        "pdf-v2-lite-row:4d041682dfd2af9f4aeefae5ce58e8860edbca962cf6ecd5e252fce1de817a01",
+        "pdf-v2-lite-row:2033d0e9d75a052301e6ef682ac44378b510cdb028be14043892fa363646ea25",
+        "pdf-v2-lite-row:832d3153206e9dc092612b4c15f6332afa72f0b827898c8135c82f28ca2d2fef",
+        "pdf-v2-lite-row:4f17525e1e02b032c5bb05ddf16f36f428edd3b8fe3a968981753b8ac8045b15"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:0589b59ac2469896b9eabd3d6a5acaf7557b4d59158ab68bda6e796e24f1e528",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:6e20e446dd698eaedf41efd3eeee81991d3eb11b928ebb8bb5e2067dcb6676c1",
+        "pdf-v2-lite-row:a79efd84a21e40e504d7f9b3e149a9bbeebac1b6219c5d1d95693e3062166cf9",
+        "pdf-v2-lite-row:19df1aaa4967f6360635b0518dc590b1a9bd2439add2e1d5a43ebd2c5bb20514",
+        "pdf-v2-lite-row:f6e851da584e54b6fc8511fc1bb5092c1225ec4ba1a9a4ad29cdd042eb2b3d11",
+        "pdf-v2-lite-row:4d041682dfd2af9f4aeefae5ce58e8860edbca962cf6ecd5e252fce1de817a01"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:813990c3546069105b7cdce54f99e491146d07366c7595f93c2db6a160588ed5",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:03e7e250cdc6bc4ce022f1d4fd62153a7bf14cc8742f175cc0293dc2a4b1c1fc",
+        "pdf-v2-lite-row:a3c2856e58df5074469dd15d792e304c0867532f76e8544caf15e004bee439e7",
+        "pdf-v2-lite-row:a1e1668604b32e2b2c2e85ffa139845cf590835c736726f494a54b3b44450375",
+        "pdf-v2-lite-row:4bd09712eeca92e82b966a6065abfc16a13c68fcf45f83ec54520da6a3eb8948",
+        "pdf-v2-lite-row:7fc49ce6d3ef4136585cb6d0af848db307d4859cf2365b4610fb16c879e79d71"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:3c0329f28e5f0fd26cbb949e913a3772e2cd882d5eabaef4366f4fa61efa7168",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:a3c2856e58df5074469dd15d792e304c0867532f76e8544caf15e004bee439e7",
+        "pdf-v2-lite-row:b4775d025719b0a7d58b338effc763fa9a8d84cf87697130fc14d469df219aa2",
+        "pdf-v2-lite-row:eb7edd4c8311bcdee54404ccafb82aeffca5f8b6470fcfb92b25ca93b31ca28f",
+        "pdf-v2-lite-row:d454034c44163849c1d2b9cfe99a56641d842dbe6b875f7ae95774ecd4cd6b7e",
+        "pdf-v2-lite-row:4bd09712eeca92e82b966a6065abfc16a13c68fcf45f83ec54520da6a3eb8948"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:9462f27114801b4aa8fa07f31a33126ccc8386bc9fddd0e7913f4bdb0249cffc",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e1566a78b0aac162242e535f294631fd6b8a2b0af4fc2c40d9318e33277c9f31",
+        "pdf-v2-lite-row:122741e20e9c0a93261e56605e642872f7d1a30dab1b05c8885853e400ac9a65",
+        "pdf-v2-lite-row:326c333bf45bbad3eb7fb90f70f597322c6f549108bf8c84c2bce100d18c24e0",
+        "pdf-v2-lite-row:e28476b41a6ef0a04b1d07b252411e1316afff49915652698aa05d16e05fac23",
+        "pdf-v2-lite-row:98a321d28aae66c9441cf7a59bdc9e270187473c8e21553a8661e13bedf25959"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:4f6301aa74215f09d0634555c0e662a40f1195a5d7d43cf384855bfdf87b2c5b",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e094aed70187174fb65e7f5ade75eb6742c9650550963bbf7a8ae1ac4eb46179",
+        "pdf-v2-lite-row:7fc49ce6d3ef4136585cb6d0af848db307d4859cf2365b4610fb16c879e79d71",
+        "pdf-v2-lite-row:3e3056fa5ef664a349b2f4715157885ed8c4925309d5278ba476fce946379b34",
+        "pdf-v2-lite-row:070da3eb8f61e97b182ce0f2fbb7b0c764f7c4c0d8d4c7e785145064bc4136e0",
+        "pdf-v2-lite-row:47b7d5a885483f4d55c7603c4b10e9df31d5319dad540fa8c9f5a2bfe191599c"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:7d98f2fd203909c13f24c83081d24221305a5777ffe00ab94b84e975bfd0fff3",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:ad11770b56010b56781c683f171e2f5001f0287a2fb4f4ce69fed73568d3f74f",
+        "pdf-v2-lite-row:bd193a1d1a31f267a29f7b437e63c1f552dcdcbb3d80df5980135470eaeaa3c0",
+        "pdf-v2-lite-row:08b43379068da96e5703674e558f4cc1e56e15ab21b3abec85bf2dedd3ae46c5",
+        "pdf-v2-lite-row:d3d3341666c97d4b7a3ba759b225a46ade9d6142f57d80028b09e042903cfa4c",
+        "pdf-v2-lite-row:5e46e5d27f551cfb30605803b41303234f0ac4236abe1a77b2932db74c17beff"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:179bb473e3d10894f37b13ee20e04f4fdeb3915afa2d8d73960010d55a0a7cce",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e1566a78b0aac162242e535f294631fd6b8a2b0af4fc2c40d9318e33277c9f31",
+        "pdf-v2-lite-row:122741e20e9c0a93261e56605e642872f7d1a30dab1b05c8885853e400ac9a65",
+        "pdf-v2-lite-row:326c333bf45bbad3eb7fb90f70f597322c6f549108bf8c84c2bce100d18c24e0",
+        "pdf-v2-lite-row:e28476b41a6ef0a04b1d07b252411e1316afff49915652698aa05d16e05fac23",
+        "pdf-v2-lite-row:98a321d28aae66c9441cf7a59bdc9e270187473c8e21553a8661e13bedf25959"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:fc948ff4d89f18d2ce3bc1cd571d773370dc6d13abe78b42c9953e782898b401",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:134728410bbb5eb68eaabaf108e81336ed10e73c077ead590f9044137446d2ba",
+        "pdf-v2-lite-row:bee00bad72517d70a5139cf3d409e822a5601e82d3d7e9728e25f880d159bb02",
+        "pdf-v2-lite-row:ba9f394226d0c4b256bcc53be3493c7e9970f3c682a3e21bbdc96d6a8d14e922",
+        "pdf-v2-lite-row:47b7d5a885483f4d55c7603c4b10e9df31d5319dad540fa8c9f5a2bfe191599c",
+        "pdf-v2-lite-row:1c76c722a8e33316d46426ccb347cb319318726b6cd50dd7923e26e0935df20f"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:0c4c607ed7a42cc6d0a2a14838b40d540dff400d0f4016349127c59db18411f8",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:f4864f552ca46577cdca9c1fc5f00f2d210d9dfcbad36585cd33422ba43cbf65",
+        "pdf-v2-lite-row:f55870bbaf26f2111ddad07d88875dbc6fc551c45bec5d7d6883a235d8919483",
+        "pdf-v2-lite-row:ba9f394226d0c4b256bcc53be3493c7e9970f3c682a3e21bbdc96d6a8d14e922",
+        "pdf-v2-lite-row:106e270e04363ac77d3696e965a554e7f3b3514a42ca6d72538a6971310627f3",
+        "pdf-v2-lite-row:bee00bad72517d70a5139cf3d409e822a5601e82d3d7e9728e25f880d159bb02"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:90f10f0c934e15859b9f44cdb2e7da6ee3e0aec0249f5b7d1a0fce5149990a32",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:f4864f552ca46577cdca9c1fc5f00f2d210d9dfcbad36585cd33422ba43cbf65",
+        "pdf-v2-lite-row:f55870bbaf26f2111ddad07d88875dbc6fc551c45bec5d7d6883a235d8919483",
+        "pdf-v2-lite-row:b1f107f254ef2b1e5b522820769139b9c88c6848376a84214e12431bd0ff1c52",
+        "pdf-v2-lite-row:5adf70abff0868d7687fd660abc88f5c3b403ac4d290b064336c92f726c3fef9",
+        "pdf-v2-lite-row:070da3eb8f61e97b182ce0f2fbb7b0c764f7c4c0d8d4c7e785145064bc4136e0"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:8c7aaffc409834230e743b0485ffddd30b393eb23f58c211ff4703b31fa85ae9",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:b1f107f254ef2b1e5b522820769139b9c88c6848376a84214e12431bd0ff1c52",
+        "pdf-v2-lite-row:3cdc43fb2db541c416e86a0cd795f237932d3b35ab738403d1d3d22cd7b1a239",
+        "pdf-v2-lite-row:5adf70abff0868d7687fd660abc88f5c3b403ac4d290b064336c92f726c3fef9",
+        "pdf-v2-lite-row:070da3eb8f61e97b182ce0f2fbb7b0c764f7c4c0d8d4c7e785145064bc4136e0",
+        "pdf-v2-lite-row:7fd05843977b06ee5ba55a4457819b16944575b7da34c84731f4b436ccd6b8e6"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:70dd62c82553a808ba89e80a5f7d3d75d7f1b173c9f8f58105cbbe1b66de5f03",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:4ea7b50dc45a04cf29c55ebf8f7705df5886e794ee3391f13da8bb89629e6692",
+        "pdf-v2-lite-row:de3e9f153a119433743f3b29903dc2d96fb41eb5b2939f43af77078b5d55b0a4",
+        "pdf-v2-lite-row:e5fb0507f574de0c5587343d8de6d4fc2645c9fc93f8d988b0af9f9d4b585705",
+        "pdf-v2-lite-row:139cd9ae6bcd4132c7d916f008b529f37c3265febe20f50408e12fe1bd4e08f0",
+        "pdf-v2-lite-row:6fb533afd443b249ed9bb00939f9829148aa2597fa61dd9c602af2e0cad18617"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:3789201697914a7ef0489aabd2ed33e2cc1c4b77fe63bf4d4b7018416fc376c9",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:6fb533afd443b249ed9bb00939f9829148aa2597fa61dd9c602af2e0cad18617",
+        "pdf-v2-lite-row:106cda3f335e1bb63d52e7dea3ba670065d072f696ad63edf981bf35b0c64875",
+        "pdf-v2-lite-row:566a66b08bed41f95b38fdff152746fa18ad9305e58e63b89468b3f08abca771",
+        "pdf-v2-lite-row:ea9115d43aea60513de23f2e12a4a956089513a2273107eae784eb9f0835746e",
+        "pdf-v2-lite-row:98d634c3b88167f048bb36d52a91a8a2f374f8c86178680450c1c64a28d8a928"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:0439c2391bd8531626dbd734199655c516cb87e0a36f5af467662c77c9844d3a",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:aa972d410195fe6421ef3ea71e27196beeab95963d3374c76a957e8a164132e4",
+        "pdf-v2-lite-row:ab27fe2779b7a444aa72515867eb46d02fb74f3f23de617e6392d8e291d1b065",
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:a9d6f52cc2f9a9dd0af262e0bbf03752951daf9e66fde7e1cdceb34b91a6ed71",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5",
+        "pdf-v2-lite-row:de56bb966454bdcaa7bd90de2f3c5ce203be08a936b0d193d5709cd930da9cc4"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:dfc1b5aff4cdaeb477c28cd19a5500af86631b85f212d02061a4854169d0cc5a",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:98d634c3b88167f048bb36d52a91a8a2f374f8c86178680450c1c64a28d8a928",
+        "pdf-v2-lite-row:1bf250259a73d7a88bd0ee8ef09d8e34d78e5d301406ad7086eb114393e75b15",
+        "pdf-v2-lite-row:501ba835cb4829c8e916573a1286d2bc27c0b6a3740958fab630a145e9f26425",
+        "pdf-v2-lite-row:566a66b08bed41f95b38fdff152746fa18ad9305e58e63b89468b3f08abca771",
+        "pdf-v2-lite-row:45af40fe702c5acd58aa24311e645b7b280f81151ab729c0779667d2c18211bf"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:ac30d12fcbf5f8e07b7626bffd390a48afc01ab183111a10ea63ae17bedd7935",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:2b053adfb7d02075d225999914f33709afdc3e4f9e0771edf0391f2c127bacd3",
+        "pdf-v2-lite-row:398a43f16cc4f77d68a4c41f25791b27ef5eeb4f87b7ead0f6c11a87f6afbf6c",
+        "pdf-v2-lite-row:7e4a188ab1118af3fd457da4cacdabd634539a9d2ec00d526a995cae953fbbf9",
+        "pdf-v2-lite-row:4794dfa6b4fe4312c7dc0196ed6b3c5cb63b76bb029955d990843dca14c2f024",
+        "pdf-v2-lite-row:139cd9ae6bcd4132c7d916f008b529f37c3265febe20f50408e12fe1bd4e08f0"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:f74677a045513c8e4d213edb6fe1eaaefa4ba8035b04258128e2153f95b207c3",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:eb1dd94b839bf5d2874ae90268d97eeae3f5e7ed1d96516df0057f0336a3f578",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:264e2ee3d56644a3483f6c29109eb9a1999a98bbb9e19277f0dd4e1c56b869c0",
+        "pdf-v2-lite-row:80109ec5dfea8eb653c2046fb19466b235c18b2eabfa33d86ad0d9ee3d9660e9",
+        "pdf-v2-lite-row:09787388340f2c11978d9d56bfbc75b7c7d427bb3bf464b8a9dc31ddc9a58693",
+        "pdf-v2-lite-row:ad11770b56010b56781c683f171e2f5001f0287a2fb4f4ce69fed73568d3f74f",
+        "pdf-v2-lite-row:bd193a1d1a31f267a29f7b437e63c1f552dcdcbb3d80df5980135470eaeaa3c0"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:fa839eda1a980ec6976df2b6f82d52fbe090b171af313bda6842527a59c17e92",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:43453e412eb8d68c614ee4bd78bc55c7d6441ff6e1e4adc8d20a68af7a0c0485",
+        "pdf-v2-lite-row:37e84b20cd7d770507d2f44b85dcf60a7603434638a6dc64a3b7e7e5f127233a",
+        "pdf-v2-lite-row:d6d61784e82ab63e54148cb61d544c69bd7227ddcd8582f3b7fa83b70bd53418",
+        "pdf-v2-lite-row:735c844dee40217d9d35db0da673af9ca9078f179afdc2d960804363f737b82d",
+        "pdf-v2-lite-row:d930c520b4ea769962565571a39366d3922393060ba775c833c783352ed149bd"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:365cb985d69c8e890adbdf9ffe9b52b2100dbeb1f8fb634537a73528bc650d36",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:fcb707aa4c77b7c9423bed03df4a266fb0cfeb29db93ba660d3974fed12f5d0c",
+        "pdf-v2-lite-row:cf2015de4fc8f42f44588ea7533bc7235d010a7539204eb7882805475390bdfb",
+        "pdf-v2-lite-row:eb1abec3679661ea214c0bd860ad1886f02efab44201701d6fbc5d2d8adbb25f",
+        "pdf-v2-lite-row:0e3b615edf35cfdebdc37059f4f42acd6db547a82b179d409febe9fc9c0e4b3d",
+        "pdf-v2-lite-row:43fe3546ee9be315202cde8ae491f40b118fecc6154cc92b6034ea245d1c9179"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:e07d1d56d77c297a0de7032c04e7cb622e4c7cdbf118b61ae79b41b72f64f58c",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:da612d0be2ad15a788f068a5e73b0d9936b0cfd1d5f42bf44c1f09f53115bb32",
+        "pdf-v2-lite-row:aa972d410195fe6421ef3ea71e27196beeab95963d3374c76a957e8a164132e4",
+        "pdf-v2-lite-row:d923c844d48ab0130606c8f58a86217114fe0706193ec5ef514a87ea7f8f0550",
+        "pdf-v2-lite-row:3376e7156ff4e0172cfa18aad1cf0541940f86384d547d0a36be6f1afb969cc4",
+        "pdf-v2-lite-row:fa6e4fcc759b4065eb8284bb366c7e351829e1a991389600210dd3ada2cf3753"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:74424d59abba47598557e33929e4002735b688429b9bf04c061e88e997c93660",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:d6f2a9e71ec82de328b534376396e6d15ee9716f269609f3119cf79237a5729a",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:8c6ea785eeabf0432adab1975be650adee54f7b65fab3176b00db22c3c247d41",
+        "pdf-v2-lite-row:53d39d9d0a663b0a88321de2186041ca50f795296d1b5dc92b99913916613f0b",
+        "pdf-v2-lite-row:6f64d49bea3adcc910f543e5dad07a53e828173b4019c25e4583bfa706a37939",
+        "pdf-v2-lite-row:d4cef4c2545c4357b2249b3ad6855de31cf66f3dadc5e1e34eac4a55c668267f",
+        "pdf-v2-lite-row:8b0a214a5b2855021a1c16868699ffc11da770a7d25a80d9fc17d033622a0a39"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:aa2fe13901782e2cb545357819a8a96d529e67f5a61f7f67314bcc9d098de81d",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:1fb566ce23299913ab9f6dda95bb70de1ff4e6c35e69c54920ba5244fd3aba0c",
+        "pdf-v2-lite-row:91da367486ef3579427980af775bfd68774db859f471ebd11ed1c7d0480423a8",
+        "pdf-v2-lite-row:de56bb966454bdcaa7bd90de2f3c5ce203be08a936b0d193d5709cd930da9cc4",
+        "pdf-v2-lite-row:dde5c5b4f056a95a42c9634f911055160e46be9f94e2845d5f052015e46cb711",
+        "pdf-v2-lite-row:2e27d350c9b99d777fa16e8b3469a85b97e2fb79fa6a3cf8e9cf4fe771a91f3a"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:3bde893bdddab8ffe32164d5d5314e183c05ebe9b7af79209524125d22cac5ed",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:036534d357a86e5872d5ff97671e923cd64c49b1983eb0feac32edd34355207d",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:134728410bbb5eb68eaabaf108e81336ed10e73c077ead590f9044137446d2ba",
+        "pdf-v2-lite-row:da6e5c27bfa37255d8ca3c6e2c31633e6de71ef0050a512aa8c8f113b24f61b9",
+        "pdf-v2-lite-row:da612d0be2ad15a788f068a5e73b0d9936b0cfd1d5f42bf44c1f09f53115bb32"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:10d72b7634f2581887a32213ef9e961a89a59b4e02e3e67c75509aedca226bf8",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:ad11770b56010b56781c683f171e2f5001f0287a2fb4f4ce69fed73568d3f74f",
+        "pdf-v2-lite-row:bd193a1d1a31f267a29f7b437e63c1f552dcdcbb3d80df5980135470eaeaa3c0",
+        "pdf-v2-lite-row:08b43379068da96e5703674e558f4cc1e56e15ab21b3abec85bf2dedd3ae46c5",
+        "pdf-v2-lite-row:d3d3341666c97d4b7a3ba759b225a46ade9d6142f57d80028b09e042903cfa4c",
+        "pdf-v2-lite-row:5e46e5d27f551cfb30605803b41303234f0ac4236abe1a77b2932db74c17beff"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:57468abbd26d0147a35f5e9147d6e5d84b589ec837a4f864ea22ba92f91e74c9",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e1566a78b0aac162242e535f294631fd6b8a2b0af4fc2c40d9318e33277c9f31",
+        "pdf-v2-lite-row:122741e20e9c0a93261e56605e642872f7d1a30dab1b05c8885853e400ac9a65",
+        "pdf-v2-lite-row:326c333bf45bbad3eb7fb90f70f597322c6f549108bf8c84c2bce100d18c24e0",
+        "pdf-v2-lite-row:e28476b41a6ef0a04b1d07b252411e1316afff49915652698aa05d16e05fac23",
+        "pdf-v2-lite-row:98a321d28aae66c9441cf7a59bdc9e270187473c8e21553a8661e13bedf25959"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:5dcc9136aa4e108320296ed1e2b8fe14fb4b77393ad7ffd0da8e08735764ce14",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:134728410bbb5eb68eaabaf108e81336ed10e73c077ead590f9044137446d2ba",
+        "pdf-v2-lite-row:bee00bad72517d70a5139cf3d409e822a5601e82d3d7e9728e25f880d159bb02",
+        "pdf-v2-lite-row:ba9f394226d0c4b256bcc53be3493c7e9970f3c682a3e21bbdc96d6a8d14e922",
+        "pdf-v2-lite-row:47b7d5a885483f4d55c7603c4b10e9df31d5319dad540fa8c9f5a2bfe191599c",
+        "pdf-v2-lite-row:1c76c722a8e33316d46426ccb347cb319318726b6cd50dd7923e26e0935df20f"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:5af2f7d4d576ad61f3ee05023fb05a1bdb287a591720fa2264ded07da4810f3b",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:f4864f552ca46577cdca9c1fc5f00f2d210d9dfcbad36585cd33422ba43cbf65",
+        "pdf-v2-lite-row:f55870bbaf26f2111ddad07d88875dbc6fc551c45bec5d7d6883a235d8919483",
+        "pdf-v2-lite-row:ba9f394226d0c4b256bcc53be3493c7e9970f3c682a3e21bbdc96d6a8d14e922",
+        "pdf-v2-lite-row:106e270e04363ac77d3696e965a554e7f3b3514a42ca6d72538a6971310627f3",
+        "pdf-v2-lite-row:bee00bad72517d70a5139cf3d409e822a5601e82d3d7e9728e25f880d159bb02"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:066013d6999e0699dde9ea34f532734e83ba45159e00a82f1ce3fcaea547aa75",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:f4864f552ca46577cdca9c1fc5f00f2d210d9dfcbad36585cd33422ba43cbf65",
+        "pdf-v2-lite-row:f55870bbaf26f2111ddad07d88875dbc6fc551c45bec5d7d6883a235d8919483",
+        "pdf-v2-lite-row:b1f107f254ef2b1e5b522820769139b9c88c6848376a84214e12431bd0ff1c52",
+        "pdf-v2-lite-row:5adf70abff0868d7687fd660abc88f5c3b403ac4d290b064336c92f726c3fef9",
+        "pdf-v2-lite-row:070da3eb8f61e97b182ce0f2fbb7b0c764f7c4c0d8d4c7e785145064bc4136e0"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:cbf07da08df8a36ce5ad554496ddeb7a674888ad8fb8a212b4197ec7fc702392",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:b1f107f254ef2b1e5b522820769139b9c88c6848376a84214e12431bd0ff1c52",
+        "pdf-v2-lite-row:3cdc43fb2db541c416e86a0cd795f237932d3b35ab738403d1d3d22cd7b1a239",
+        "pdf-v2-lite-row:5adf70abff0868d7687fd660abc88f5c3b403ac4d290b064336c92f726c3fef9",
+        "pdf-v2-lite-row:070da3eb8f61e97b182ce0f2fbb7b0c764f7c4c0d8d4c7e785145064bc4136e0",
+        "pdf-v2-lite-row:7fd05843977b06ee5ba55a4457819b16944575b7da34c84731f4b436ccd6b8e6"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:c57632171660f7ab357dec5c68e626a5e830d4e1767334cea9e80f4e0d80b00b",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:4ea7b50dc45a04cf29c55ebf8f7705df5886e794ee3391f13da8bb89629e6692",
+        "pdf-v2-lite-row:de3e9f153a119433743f3b29903dc2d96fb41eb5b2939f43af77078b5d55b0a4",
+        "pdf-v2-lite-row:e5fb0507f574de0c5587343d8de6d4fc2645c9fc93f8d988b0af9f9d4b585705",
+        "pdf-v2-lite-row:139cd9ae6bcd4132c7d916f008b529f37c3265febe20f50408e12fe1bd4e08f0",
+        "pdf-v2-lite-row:6fb533afd443b249ed9bb00939f9829148aa2597fa61dd9c602af2e0cad18617"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:6a884dc3001a1c43c832ef2f26d8a2521fcb3c2bcdb4530476db52a085574fa5",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:6fb533afd443b249ed9bb00939f9829148aa2597fa61dd9c602af2e0cad18617",
+        "pdf-v2-lite-row:106cda3f335e1bb63d52e7dea3ba670065d072f696ad63edf981bf35b0c64875",
+        "pdf-v2-lite-row:566a66b08bed41f95b38fdff152746fa18ad9305e58e63b89468b3f08abca771",
+        "pdf-v2-lite-row:ea9115d43aea60513de23f2e12a4a956089513a2273107eae784eb9f0835746e",
+        "pdf-v2-lite-row:98d634c3b88167f048bb36d52a91a8a2f374f8c86178680450c1c64a28d8a928"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:28e4d8452ba9e627c6a373bfb3b868041f444b5f025b210a80fdbd4be4f87ae9",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:aa972d410195fe6421ef3ea71e27196beeab95963d3374c76a957e8a164132e4",
+        "pdf-v2-lite-row:ab27fe2779b7a444aa72515867eb46d02fb74f3f23de617e6392d8e291d1b065",
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:d56d1160f395d1a3ec6bd7aa08cbb4995ca0b560722502b41348f6bc44745e86",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5",
+        "pdf-v2-lite-row:de56bb966454bdcaa7bd90de2f3c5ce203be08a936b0d193d5709cd930da9cc4"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:a6a7a20aa7759b0124b7fb50260b284c69c61bd0a847444757d319ea950c209c",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:98d634c3b88167f048bb36d52a91a8a2f374f8c86178680450c1c64a28d8a928",
+        "pdf-v2-lite-row:1bf250259a73d7a88bd0ee8ef09d8e34d78e5d301406ad7086eb114393e75b15",
+        "pdf-v2-lite-row:501ba835cb4829c8e916573a1286d2bc27c0b6a3740958fab630a145e9f26425",
+        "pdf-v2-lite-row:566a66b08bed41f95b38fdff152746fa18ad9305e58e63b89468b3f08abca771",
+        "pdf-v2-lite-row:45af40fe702c5acd58aa24311e645b7b280f81151ab729c0779667d2c18211bf"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:69dd9e768d34d81377e47c062322c8ae6f2c4b7888e5ae532443b87be3b83679",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:2b053adfb7d02075d225999914f33709afdc3e4f9e0771edf0391f2c127bacd3",
+        "pdf-v2-lite-row:398a43f16cc4f77d68a4c41f25791b27ef5eeb4f87b7ead0f6c11a87f6afbf6c",
+        "pdf-v2-lite-row:7e4a188ab1118af3fd457da4cacdabd634539a9d2ec00d526a995cae953fbbf9",
+        "pdf-v2-lite-row:4794dfa6b4fe4312c7dc0196ed6b3c5cb63b76bb029955d990843dca14c2f024",
+        "pdf-v2-lite-row:139cd9ae6bcd4132c7d916f008b529f37c3265febe20f50408e12fe1bd4e08f0"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:4819538645716497966db400d85bfae4525d96c118d20bd121f5ddcbbdd3a9d2",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:69f80ee14369a6dc65b584832e4d512cf470da3d80e1516b461cf05eb90628fa",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:264e2ee3d56644a3483f6c29109eb9a1999a98bbb9e19277f0dd4e1c56b869c0",
+        "pdf-v2-lite-row:80109ec5dfea8eb653c2046fb19466b235c18b2eabfa33d86ad0d9ee3d9660e9",
+        "pdf-v2-lite-row:09787388340f2c11978d9d56bfbc75b7c7d427bb3bf464b8a9dc31ddc9a58693",
+        "pdf-v2-lite-row:ad11770b56010b56781c683f171e2f5001f0287a2fb4f4ce69fed73568d3f74f",
+        "pdf-v2-lite-row:bd193a1d1a31f267a29f7b437e63c1f552dcdcbb3d80df5980135470eaeaa3c0"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:6659bf0ba5fbfc8ee02bf34207ebaee14472224831065869f31ee78407eb4c90",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:43453e412eb8d68c614ee4bd78bc55c7d6441ff6e1e4adc8d20a68af7a0c0485",
+        "pdf-v2-lite-row:37e84b20cd7d770507d2f44b85dcf60a7603434638a6dc64a3b7e7e5f127233a",
+        "pdf-v2-lite-row:d6d61784e82ab63e54148cb61d544c69bd7227ddcd8582f3b7fa83b70bd53418",
+        "pdf-v2-lite-row:735c844dee40217d9d35db0da673af9ca9078f179afdc2d960804363f737b82d",
+        "pdf-v2-lite-row:d930c520b4ea769962565571a39366d3922393060ba775c833c783352ed149bd"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:453d4f347529257b4c2b2f8f89e7c79aba9ff3239c858b1a68c4b9f4348264cf",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:fcb707aa4c77b7c9423bed03df4a266fb0cfeb29db93ba660d3974fed12f5d0c",
+        "pdf-v2-lite-row:cf2015de4fc8f42f44588ea7533bc7235d010a7539204eb7882805475390bdfb",
+        "pdf-v2-lite-row:eb1abec3679661ea214c0bd860ad1886f02efab44201701d6fbc5d2d8adbb25f",
+        "pdf-v2-lite-row:0e3b615edf35cfdebdc37059f4f42acd6db547a82b179d409febe9fc9c0e4b3d",
+        "pdf-v2-lite-row:43fe3546ee9be315202cde8ae491f40b118fecc6154cc92b6034ea245d1c9179"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:53ed2efcdbf3f8e9702b770d85ef87e7c6389d50ce835c9fb8eeca9dcf59f087",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:da612d0be2ad15a788f068a5e73b0d9936b0cfd1d5f42bf44c1f09f53115bb32",
+        "pdf-v2-lite-row:aa972d410195fe6421ef3ea71e27196beeab95963d3374c76a957e8a164132e4",
+        "pdf-v2-lite-row:d923c844d48ab0130606c8f58a86217114fe0706193ec5ef514a87ea7f8f0550",
+        "pdf-v2-lite-row:3376e7156ff4e0172cfa18aad1cf0541940f86384d547d0a36be6f1afb969cc4",
+        "pdf-v2-lite-row:fa6e4fcc759b4065eb8284bb366c7e351829e1a991389600210dd3ada2cf3753"
+      ],
+      "final_hit": true,
+      "gold_in_four_lane_pool": true
+    },
+    {
+      "case_id": "pdf-query-v2:f1c722d337da7d13228f742cf8a063e799ca81388076dc982f0c730ec48705c9",
+      "final_candidate_keys": [
+        "pdf-v2-lite-row:cd3bbe6a8b2163f5c479ff5b8363e8b83d076f6f909dbaeff1cd60f6b1e7f65b",
+        "pdf-v2-lite-row:e9ac5dddddc9b42edf8aa53d889a4670d0120ca2b48d84fa5e5b759a99100f5f",
+        "pdf-v2-lite-row:13025d18eb5008af6a0104810bc6eb2bfdd101819babe9a3fbc72eac5709a5ff",
+        "pdf-v2-lite-row:fb5aee121bce110000ecca5d68bc04d1fccce4faf827550008b9b69c7e9214a9",
+        "pdf-v2-lite-row:60de1610acd1864550201e3b89a8f6b51389fdc715fa542243400ecebc8d01d5"
+      ],
+      "final_hit": false,
+      "gold_in_four_lane_pool": true
+    }
+  ]
+}
