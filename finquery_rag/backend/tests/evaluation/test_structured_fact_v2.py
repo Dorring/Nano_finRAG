@@ -9,6 +9,7 @@ from src.evaluation.structured_fact_v2 import (
     fact_identity,
     normalize_concept_label,
     parse_numeric_value,
+    structured_fact_score,
     validate_v2_sources,
 )
 
@@ -41,3 +42,10 @@ def test_numeric_value_respects_inline_xbrl_scale_and_sign() -> None:
 
 def test_concept_label_normalization_is_generic() -> None:
     assert normalize_concept_label("us-gaap:NetIncomeLoss") == "net income loss"
+
+
+def test_structured_fact_score_requires_document_and_metric_and_rewards_period() -> None:
+    fact = {"issuer": "Issuer", "label": "net income loss", "period_end": "2025-12-31"}
+    assert structured_fact_score(query_issuer="Issuer", query_metric="Net Income Loss", query_periods=("2025-12-31",), fact=fact) == 12.0
+    assert structured_fact_score(query_issuer="Other", query_metric="Net Income Loss", query_periods=("2025-12-31",), fact=fact) is None
+    assert structured_fact_score(query_issuer="Issuer", query_metric="Revenue", query_periods=("2025-12-31",), fact=fact) is None

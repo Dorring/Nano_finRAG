@@ -1,0 +1,1238 @@
+{
+  "answerable_case_count": 90,
+  "case_count": 100,
+  "complete_pair_count_at_5": 30,
+  "complete_pair_recall_at_5": 1.0,
+  "gold_fact_count": 120,
+  "no_answer_accuracy": 1.0,
+  "no_answer_case_count": 10,
+  "no_answer_correct_count": 10,
+  "pair_case_count": 30,
+  "records": [
+    {
+      "abstained": true,
+      "all_gold_at_5": false,
+      "case_id": "development:no-answer:00",
+      "case_type": "no_answer",
+      "gold_count": 0,
+      "hit_count_at_5": 0,
+      "ranked_fact_identities": []
+    },
+    {
+      "abstained": true,
+      "all_gold_at_5": false,
+      "case_id": "development:no-answer:01",
+      "case_type": "no_answer",
+      "gold_count": 0,
+      "hit_count_at_5": 0,
+      "ranked_fact_identities": []
+    },
+    {
+      "abstained": true,
+      "all_gold_at_5": false,
+      "case_id": "development:no-answer:02",
+      "case_type": "no_answer",
+      "gold_count": 0,
+      "hit_count_at_5": 0,
+      "ranked_fact_identities": []
+    },
+    {
+      "abstained": true,
+      "all_gold_at_5": false,
+      "case_id": "development:no-answer:03",
+      "case_type": "no_answer",
+      "gold_count": 0,
+      "hit_count_at_5": 0,
+      "ranked_fact_identities": []
+    },
+    {
+      "abstained": true,
+      "all_gold_at_5": false,
+      "case_id": "development:no-answer:04",
+      "case_type": "no_answer",
+      "gold_count": 0,
+      "hit_count_at_5": 0,
+      "ranked_fact_identities": []
+    },
+    {
+      "abstained": true,
+      "all_gold_at_5": false,
+      "case_id": "development:no-answer:05",
+      "case_type": "no_answer",
+      "gold_count": 0,
+      "hit_count_at_5": 0,
+      "ranked_fact_identities": []
+    },
+    {
+      "abstained": true,
+      "all_gold_at_5": false,
+      "case_id": "development:no-answer:06",
+      "case_type": "no_answer",
+      "gold_count": 0,
+      "hit_count_at_5": 0,
+      "ranked_fact_identities": []
+    },
+    {
+      "abstained": true,
+      "all_gold_at_5": false,
+      "case_id": "development:no-answer:07",
+      "case_type": "no_answer",
+      "gold_count": 0,
+      "hit_count_at_5": 0,
+      "ranked_fact_identities": []
+    },
+    {
+      "abstained": true,
+      "all_gold_at_5": false,
+      "case_id": "development:no-answer:08",
+      "case_type": "no_answer",
+      "gold_count": 0,
+      "hit_count_at_5": 0,
+      "ranked_fact_identities": []
+    },
+    {
+      "abstained": true,
+      "all_gold_at_5": false,
+      "case_id": "development:no-answer:09",
+      "case_type": "no_answer",
+      "gold_count": 0,
+      "hit_count_at_5": 0,
+      "ranked_fact_identities": []
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:052cb77a94945e3b63abc54486fe4e9ce53e3fc991b72f5421fbd2a2cb3c0ebe",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:45c44e170fc793b0c68b6e87d0f2a889861c9f3a13c68934d54482b9fd6b7139",
+        "fact:v2:da6a892eef0237b8e0261a2bf4fef7b4a549db3d009fc6d45934de956d47992f",
+        "fact:v2:f2289f869918c6c7ded4e775cf5eec7f22fd3633f0fd770bba48d18decde3a91"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:08ac741ca8f4895ee4cd106698330dfe0c28635d8a5dd82d3c84f990db194c31",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:825539ba323c3e8dc08b13c878d9029f23d5c6adf3c443e3cea8856eec4af984",
+        "fact:v2:f674c2980bc966ecbae9db1836647f2cfd0a556ee5e760e69c0640609e0139dc",
+        "fact:v2:2586d863dba5458f4392a9d749cab339d79ee882a5a716a7b0ee7de7c888b4fb",
+        "fact:v2:eb9cee9b0a42a3b0b2a3373c68c9ee1b299a7fd9ae826b729ca4e7011b74782b"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:0b46edbea2c0553b28ae815185a374932099dfe4d4872a6959edde23937a3eae",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:7a895fe4b0f61df187cd97f3718f6af087f75bcf372db4880a497e0327af6d37",
+        "fact:v2:8266079aa2d61532e5b81f19437a8f6eee15fef2d2b9516a3907b17c01f1d178"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:10131a7af41ba4de5c3e0d8b55cf5e459283c3ed55033db3e909a1bc14e8b525",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:5e74471b415d3e00a36f56336efc79829b34672034ac5941ad79e3eb0c1eb8c2",
+        "fact:v2:cb5c5ff508d45f45bd5cd7600d8d8f915309523afe38012164c9e2cef57df8ca"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:1571631b51eec1c8ee54735192f71fbf3faa3aca4d17c8127404aaf7e6aa2b14",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:1933af296a57be34db25d4f9ea1f68e31d4c5094e43c72b1dfd96f44cb421f9d",
+        "fact:v2:c50f5223125ae2052503257ee239c18e7ca4667f105b71e701ed89048ceba139",
+        "fact:v2:8cf5c79dcb470169221ea895aecac980572a4b71bc0190a3f4430f8e9c61a9d9"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:23a09178344eeb8d48986f8c3c23df91565faa6498218dea1bc2399ec52a0479",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:04d09d0869252df59fe31a92f4fab7e277aa8674f574d01480bf7c44bd8a41d3",
+        "fact:v2:3af9afe9d227ec9a88e68d8e26fa444eabda258adeea26f873b74755d4109509"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:2a230dc392b9a9e5b9dadef21066de64690c56ebdc0acf79ff236a4bad1464cb",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:0f10a6c9ef76d5df0f02390d012fe96162efb14f271f383a210a4a145760dc28",
+        "fact:v2:6ae7adcfe9beb9f03f1ee20ccd922e1e39f3b72eda60b64d04af76547aa663e0",
+        "fact:v2:d582659cf3e7558a0e5180746b4e7f7833be5c34333aa5c60f4cd7f7e09f796d"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:491b44a77986aa7994ded8a44d6fe9fc09ad3b07ec1d12a9c0eb08238f3c84b1",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:883e5fe0166ba352adb9a01e188355ea4a37d933af3ccaf8c384020a5e481d24",
+        "fact:v2:dbc4feabe664ae90a330a35b65fd64cb6dac284b72ac1ea47756407bb2ec4993"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:4fbe9afd1d727d5fe32d6bc4ff0fe59dae5fde567dca9efb30639591a5549fe8",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:b71fa34ec1d2030187b4fd787c9d42ae115bf4606d83db5678bbe56dedf85eb6",
+        "fact:v2:ec52479a9d890cf6e3012fbdbe52d781423027e8da13e9f568d86d5accfe3c34",
+        "fact:v2:e9518918fa4a470ab113df476086d2000af12ad8ec365ffa85e37a2fddb1ff8a"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:51e1f2fc3725a69398d1f2c0cdba2fd187d0109e4f5888c4d88bb5714f3a9843",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:051277af6e654e7c70acdd818acc647d5dbfd95c632248f54fc335d0b3538f9d",
+        "fact:v2:c6c61532654079b500788069774fcfa7f47a6f7cb798238f29c82e0761ea72b6"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:545cb8ecc9bbb20ad2b41b5590849650ea48928b4b0e917c34f009f789afe5ae",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:314f7da462cfc8e0052511fe63156fc5e3b5c933dc871f68f31b23a5dd9a189c",
+        "fact:v2:a30ae782d27b93491e48e06d7c4ef3084af74045e69ddcf600de4c3cce75db5b",
+        "fact:v2:28cff5cd765aec92984c7a41281122427ca923a3ec5941a43f56e570597df97b"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:571cb21085b0d462831c75752a512c359bfd088d086f67acb1929b4943cd16c1",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:4d8becce34f289dbdd65a3f8291e65bb9826b6f35e6e166c2950eb09c586961a",
+        "fact:v2:abb1f3a5a28cca0dca96c3247bc424a6e3b9181b8d94e1b6769982cabbd07700"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:5c7b6ffa468f28e0e312c1efe6bed6fd93261f0bf41631189b3f256a13bf0904",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:9b33de56cd77cd807ac3981c95c74e98c0e4459e62d8588d77362edce4e804a2",
+        "fact:v2:c9fec058f1cfdfeb6e3e6f75dfe212c8f7c60bac06b7bfa806038abd76ef2a46"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:6143f02448ebabba8e0a5d8750edb8a00d78dbd3919f2dcea5ddb990c223c124",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:28c5189275b0ed41805ab36be3fcdbcf9a0fdf2cfaff388d962e51cceabba26a",
+        "fact:v2:9b670127865c7dec112648c383d2163057cd9d8c96655d4ad443bd6eeba285a2",
+        "fact:v2:2a97fb56fb179045e3ee35e8bfb4137afca0728512f4ac4559164a53db2365cb"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:6cffa889a93387eb2c3c529cdc00be78769db991c2f3e6f413939f0f9f3d50ab",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:0425df0654d5c6714dba0594424c58b7ec48448ef42831f8fa948c674be287f9",
+        "fact:v2:75e88b6ceda71d76db5390cdbdab7835d98a73fb8c90a7a1e0a41f470dfb47a7",
+        "fact:v2:287446a49dfe3bcac2ae68aa088fa346df5c4d272825c1db53c6dbf8052b48b4"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:78768d2c94ff2e7f66e54af305ab7d28876dcdde460923fda7cf31e7daaf698c",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:27a9e111e7a8ee0e3dfaea209827ff14a81e76272a370d156a6ffdf95c0d3a0e",
+        "fact:v2:a22d0ec426ab0e0143eed20052329e87f1aa63761708d0d6eed8c9e58e9909a5"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:80cace0091c99b8a877ed61f73b5864f7439634e8dfe9eb4a801a537c7ec13f8",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:9a5055a487174a77e7d3f3dec0ce4b494d9359dd3a390bdb22da251f811d51e5",
+        "fact:v2:b07662e13eee68387bb4ed0dbc60d00acd02c77acd648df52311d9714579b084",
+        "fact:v2:ae43dd0a49935fc200fc054442d16e80baf8f4a97216814ee0ed9ac470db7527"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:9927c760fe6dad2d6d52294c6d67c8bc4c1c822d3bf6cf0e4e739686c61f87e9",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:169eb5532993ebabf09009e1b1f11a1e40b2c39ac7d793ad0312be27a731d85d",
+        "fact:v2:622df5bfac2f849797324ce2989b6a4905cb11e8dbed1aa9e538255d2372a9d3"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:a5bc9c90f5d62123eff7b22e01cda820ad02970c6795249e263f3b905bd874a3",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:3871fba7f9a571f5a814bd9ac373a94334b13fa02a8d3d27fd7e4b896f3ddd2f",
+        "fact:v2:59d58c1d152c3e62148b89c3c3c6c23281b358e6f0e4f60ff132b86a8316fbf7"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:acd49c62a91346fb557f3a2009198cf9ff497762082c87af31fd9829ed38c5d7",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:e995f0782b61ed3371e7ac4ad76121cf89ee2bb2d8005ecbfb691323650a162a",
+        "fact:v2:f0722f6429ee8a162835e404a424a2531ada97d8d73ef872a7f82f61f7c0e45c",
+        "fact:v2:0fe9095380cefdefe69e57416a2ce33aea12262e7100ce905233799f5574657e"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:b35e837b0e872c04c66a48f92eefb978e3caab377fb18510409f3efed670a30b",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:3aab9932ed1358779c3fdbfd3cb8c23a99566083a1aaf648411d2fa28ea9b2a2",
+        "fact:v2:4ba1fda9016f7eaf5ec3edf099670f5c98ccf627f8131f107a39bf003eff7d6e",
+        "fact:v2:302418d76f83991450c7e92af4f8876c80a8162a8e6f3fb23ecc2347ee723a90"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:b94c70fc380ce586f01ed0ea6f49b7e713b066d6144533fc9bb0b74220be5d2e",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:219caeb05883b4c2043286bedd42dadcf5036f3c7128597070586aa66af6d7d4",
+        "fact:v2:f51d54db5a041ded1733b903fb5530e3fc4c36f9e3724995c52e8d7c9f0bfbe7"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:b9db3b0861a0b9d927cae05de86664682eebad895ec5e796952d82457e3743e5",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:1237da5b9d8a6d9eee7563c19bcf8d51729cbdde8a5fe826951d4af969aad7ee",
+        "fact:v2:2acf7c644d19385ff83beeebd116b2794db3e3f878585e9ec79a3ec37b4b99ed",
+        "fact:v2:a1f7dbf18a930ad768950a72eb8db647897da9d792792c5d5e9bd0f3d93063ad"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:bbb98de25ac0e038d5b7066aaafa8e10a10b16ab5fee0b9a9e22da79ccf67a65",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:0289210618e79ef35486cd6772a656f250b2551a0dea46b6d461360e154dce96",
+        "fact:v2:794e3b47f0236a60dd9426f03bf1a9a07ca181f2d993a67d109d209b6937a7fb",
+        "fact:v2:8462d79583d434d6203802e84a17ca1586bc1922bb66a0f6677c217560173914"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:c3f51fe1b419ef2cbdfe21c87ffa409f75ea10b7cada93ce592d2a9d88753604",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:b06c6589f5956770aa7c514351e8e76069db81f193579d6301b48e01790bede3",
+        "fact:v2:e1584b69d153daef6a71360d82b6d4a5220917abe5786f381dddff62466b3768"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:c59b468f51ae1f305a792b466eef673a7ce61e31330b0f8877574ee05a9c3f53",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:1cea86cafc05f69bdf4f9b9d6e5b9f5106984897659e2990844acad9281cb578",
+        "fact:v2:ea18409ac1cd4586058d6e5ea7d7111ffa61562d1d37fcb318309f0c6910b186"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:cb4e51f5d0a40abd94a36956d5736ef163521e608502d387679eaf56bbe4fa69",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:db9c4c3add51c613c3b712ba40eee14e43b4994bae7c8e191283cc743bdaccc4",
+        "fact:v2:f167b99133673a34ed411a7e0966b444b08dc4fdd67336aa5f30109b50db2e90",
+        "fact:v2:fa55680b983ae6f6e445c35d3a3372de597dc0e2db9f4da969ac29bbe1543086"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:d6092623730e3c50509ca1c0f2127964528064df91604428ebc1f81813103f89",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:614f46dd9a12be27d64562afa3aab342eeddb8cc287ebc8676d8ffb42778d578",
+        "fact:v2:913a67e6e7040c3b2a86db7af0b16bb81e1627003f53459fe03fc90eaf9258b4",
+        "fact:v2:4d8bb8f45544fc8526b8e7e68ba30f8f2e1933b8454d02b44d6f10680488e90a"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:fb17dc37c022d8043b1e527434d1426e1b07a3ee21c95a9b9fe2fd3505c0b84d",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:2a4697d8234be538901f5fe47e41e01de0cfa132df3dfded5c45c62582662f2f",
+        "fact:v2:5a9884dfb00594afa83f877d5b8e58f4620c31d537a89ff0a4b28dc6713b0d2a",
+        "fact:v2:6666823799aff4e27175b7edbfa4fd3b5deead9b530801f8619226fca38f9bc8"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:pair:fc4aae8379f0dfc548f003ad1436c95bedd56118c69b79d33b634b03b143affd",
+      "case_type": "period_pair",
+      "gold_count": 2,
+      "hit_count_at_5": 2,
+      "ranked_fact_identities": [
+        "fact:v2:264d41ac58e36ec376e5a816640868496dc3b8211807c1de0c926b657c931ce9",
+        "fact:v2:6c2ecad65d6e78219b082442b1cb601f1b1053555123f9c31ae352129dcbd58a"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:016a6738e8f59bf58d91371b4f724e0bdd44b114ada6cf932f814b653b411917",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:ef4fcbc4a53800e071b773400898ebc00a50d90ff0bf42e1ede5f4e184deb523",
+        "fact:v2:6252f94dd819f145e7705138b67044ee5482b22c8dfdf1d91d53ea6c75441a52",
+        "fact:v2:7d03cd9266f4f0b2e252bdf4d395e20450f2bd8e32d721eab20b2eaabd3fbfef"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:070ea1ce12272ff6b72a41112303159be7c42db442188d149ace25ac818cab94",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:563aff8bb37ff858b695247afba3603f7a8db11e8b6ea1ea81236b08057df768",
+        "fact:v2:6d8af88fd1216b2581ed9e9b5b15a9c9aa2c3db3459e870381a34601e66ae52e"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:0b6fc403e64f2b06a0baaeb0d4e8412688779b9830a5f7c43781beb293d3f2de",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:68bf4f8ab434080be0929a4066197721edd929efb6af63c090b4276d2989aa5f",
+        "fact:v2:26c6b42699be3a8a25127aa25524041d09ba8e30b21a7e68c5108809e7dd1dbe",
+        "fact:v2:ddf316951afcc90d0e3bc4984400310945b1385ee879e68b12388b9c5acc3f84"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:0d64cf3273befb6076f73a968651a71629b99f2018b06e2eca85984c272d6a37",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:8174a4386422a1d1cd44a4ef0d4a218f6d048a09b4fed20b4555415c2a049d41",
+        "fact:v2:b824026b430d8b2c2c5e8be708dbb2890c49a0c56055690be9cb2c496258c054"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:0e386c15d4f7f162498972196cfd1a9e55803a714c0271d829f82ecd02eba2bb",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:df73798c6ae45b36e9125e643e3fa293fb0ad9e3ad66112d1bbdd930e7d6c2d9",
+        "fact:v2:6c66d70596824c0a60c47ba5aeaf40cabe24d76b318e2df2dbcce9c6bf40d4f9",
+        "fact:v2:8270f601e1c7609f59c7be80c1073f5cb72420ad5d38278b5f1c34f4c0403b14"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:12f3619c1b43740af228d13b0783c8e36f17fbf8157cd170c7b6fd26d90ffeca",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:650c9e8c5599964e4773441bd68bddefafba5d76b436a2bc169adff65371ea15",
+        "fact:v2:01351dcd91daa80ed4baa73d69e917753a9b6414a0fb94f8b14df1f53bee382f",
+        "fact:v2:064b20e7906555ca2f67b89f41f2ae764ddcd5e28e78df9bbbfac97018dd426a"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:15c4372dbbf64acf5d0131fb9afcba6d4a0455fab2d330bd02b130bd78cb0f76",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:8678b1717b8e84b598f8a685c407cd9e655ccc14dbb0cb27b57f31b5a131e99e",
+        "fact:v2:cb7c288f9e1b30b1cde2ebf0398c4450bb8d03c4bb35432c65b42c3dbb711998",
+        "fact:v2:ddd37b011d9db9c9ea30d367a6810c89fecd361816e9370c1a3e8e101adc9cd6"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:15f311fff630a5408aa5175968e41431cefd26d50707cfdcd5fec3ab0b34f807",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:507cef79fdfcebee008fdcaca9c275fc327dff4adb4c30e86a8f41a43f74bf79",
+        "fact:v2:43d382901068130340dd9e4c0faa3e02da42ff97ba0f4992660b948ceea74331",
+        "fact:v2:a5e7a4346d75abb3872fcc68dd106c1ce42ec7338032e9fd66cfc830e751cc8a",
+        "fact:v2:eceabe451330d4b470242fbd1230b058454365be87e7611f2ce204df87176bfb"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:174b6925cef9c64e4139031c981afa4abc9ebb1df23fc33ae6f1fbcc07fce198",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:777366289d97ae5757972826d5aa6f8b8055efe815e2c490592431da719a42b7"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:1b1f067da037cafc808aae0e9f962725729d9c0367a5903776783b607e6b52fc",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:7bd7c114c2046221fcaf117e8d29893230bcbe4b94581ff50d35c154835f9a9d",
+        "fact:v2:9293a220f01525a8b07f87e5989ac3479e3dd58a93d96de8eca9edbb515f51e4"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:306581c73e8191d9656ec9badca2923a23ffa704081ed56a5c147f7081fcf4a9",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:0f01f1b3bebbc874059d66a88c0cdf078c8d1195f3657f9620d852f2b8671de5",
+        "fact:v2:95c78fd6031f8108d5e34e80dad9f58a23ca7327a1746ac78db780e707e5bb53"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:30a908486143d68e22b7b6bc6c97c97e574db8585f5ab6da7dcb712fb30bd05e",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:85f77452131e5f10b344e2fdc40bcde02d8e67911eee74f9a87f87a28037c935",
+        "fact:v2:a270af97060e083148e27ac1cffe34b93c78071b9200d47570da75c71d2af68d",
+        "fact:v2:b8a8503364aecbc6e6abd36460b4065a4d84a6e9c3862542c4df0b9be761588a"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:3233fbe8071fbd91d1dffcc831eb80bb2cf20380ce84a5740540b334a02715cd",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:36395cdfc6e60252c4926edb3b7e74bd89736ef8cc950861c9c03f6746e3ef5c",
+        "fact:v2:59cfc80d957af05c8f13b61db214d68988bc63a7dc06497c059fda5001b49cf2"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:360b1890bd5dc4ef7124152a52debc4ac5457c06de4c8c4eb5a6794e073389cc",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:7aacb9443576ba7ce1d16723ac5f0ae087ec87a0640888ed28b838844370cbea",
+        "fact:v2:1eb481f10aaec47f7b281ce4736eea05faea76ec68696969886c5c2a6fe44b4f",
+        "fact:v2:feb04533a833336864ae797b9fc1a58da2eaea0fecc8bcd6fe9b1231d9d3dea0"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:3c2657d29664f394f5adae965e890b8ce9661cf109448b2ba9ce132b7ba5f0dc",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:df136622805e3044da8a5854b8dc2e30f6d647499dbafc43fc3a95940dab8f4c",
+        "fact:v2:523699a1bcc224c2543266d972ce016986bd2958be5789b03944c3fc77b835ad",
+        "fact:v2:c128f8cf9aa1ce9f645acbb7a33580feebe7a0ffbe2a7121a2513ebab5ad1990"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:4336755c3f6fcdbab2e7b95185c88e82475e6032e84c73915df12df4e6e6d652",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:ee89037f2643405462c0738fd676cb67d61ef5b3c51255c1eec7d00f69b459ba",
+        "fact:v2:6ce1acbdbabe75c1484d2959280b2918d7a27c5e9f4d666be78cd593c26d1393",
+        "fact:v2:b76d19bc5c915f8f4a5d9a970e648cf7f401acdc64b538ac9b42172406dd4e69"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:4b8054963ce334273c277200de86c21f5fa42c6f1f4737e5f527f9525e70e05d",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:81c1973e31aeb4ea7d4528d55e32c539e263dd611f692fe4230135a5462ff29c",
+        "fact:v2:39be1e4e6766e2e91ffed2b30816189de5e944729481076af701d0e07dc13dab",
+        "fact:v2:4bd187cd7d5e3bc17f763603028ba8292513656310d77df4c5044108cfed9a7c"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:4cee4e85fd94c7cd635b8a340eca5de2c97e3d6122ff38f30e40924629b87454",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:4a123260e9191309eeb1d829718c50317d15c0967f9130733d32b06c920a11d1"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:5128c3f3a2b64ac498df7d37573e0ea7c97f3aa9ec6a9fd8c2641aaccd840964",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:9f9f1cbb38b9bb9ec4478a12006991e75e3aa19e7593b033e21c21dd49a198bf",
+        "fact:v2:e72db67316886accbfc031effb383203b7073dbb0e5a8f3b8100f5e966259b6b"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:5503c80dcaacf09ead391fcfa033c5e80704212355f46228e352b2dad3ef75ab",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:e24a88c455178cbaac9f952ac09c4c4cec88dca65b354500d46933abe8f33b7b",
+        "fact:v2:147369a5290a9ba48cbfdc55f16c661394f48dc6335defe0931e6a37e0326589"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:58a372823f16f564a0fe5ac988f23f5867736b6fdb1c039d22f49046536a5a73",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:3d0694b56edc27ae63c0be7dbfad41a59dba884ba8406cff045e0671515284ee",
+        "fact:v2:ccdd5ef9056287d68a4d7dcb1354d22befbc5cf7cc91c01178e6098707762cf6",
+        "fact:v2:f80d5837ac03cfa46311c45123c06a30c3a008595e5f6d899f7780dcf0a6e197"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:66af9dc4d689b7fb2af60f8015737e4313c98ed5aad5cee8d61ebb7601fc620d",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:77d7254e4726d432f83cd609866bc3ae9818c701ad3050266a8c523a80f072ea",
+        "fact:v2:4c9518f8cd07d30dea4e566745b167d5772c3c7d106048b1c0c81ecda8667c86",
+        "fact:v2:e895ad54c23ce64d1d644567a9c6bda0d573de3ec957adaf954232eec577425d"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:6ab11dd4fc2981c12f5165f18a5d2c03a1f5fb2bfb47bac29abf26a2295907fa",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:e08106d27ae2e6185d25e5e3a5df6e822d9fb0972644a1e6b69c9b3ade710af7",
+        "fact:v2:35d35488f41d929c02b35d115684e79957d86f173e9a7bc090d4a571ce0df2aa",
+        "fact:v2:558528e66883bfb6f1a5ff321bb57e416f5d735f366989f99cac07fe46524420"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:6afd3aaa7b104472d38188f7d405b0540829d3a92b6e0b725d04ba266aa04f3c",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:a8cd08d00748a09a2cd87a2f351e6c12b32279c345d896a2a335aeac501f9db6",
+        "fact:v2:4231daaedc60beb9db423f8cd50ca2f7986d5255907db5cbb6183ec0e2d16dcf"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:6b85dcc6dbff96d5ba1062a89135ae6dbb18f4cca91d0e3476110f18d8b985ba",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:51de09094bcd41c1b96800bfcbb1756df6ba51f156c62d0b5300e01d9fcdd011",
+        "fact:v2:11ad42165a50d126a609fa16187944058aa88257ae577d8e382d0da4c40a7f6d",
+        "fact:v2:2a12753e6dd9a59bd7623f6cabad3dbe48011e6ff621cbafab22f7175723b51e"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:6be5814f1f0d7f2ed30224a59418c3d7a03519377f0de09ead040b61c85e1a47",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:8ca72d61de2c563592fb22d0c597d84d721b9feaaffafb0645474595d63310a6",
+        "fact:v2:b2fbc10a8b54877488b28de27c04085bd740fc42f72205e34eaa79e9fc59cc8f"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:707efb547e88c4f92363b6fbe508c4f3f7d337746cc58eeef55929e33c0362a8",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:916c750d09d2acfbb6c7bde2687d34e0ecae073227186043cc53c81ecebfba65",
+        "fact:v2:8358bcc706f7e98838937aea56be91c9792cef608d0357061f86eede7bf45046"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:7ffa65d710af1d7e5155a8358c5ba29f1af2f365a3ed7e9d6f856cbfe1f8ba1a",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:4c47f5e05f8e07e4bf33b6b2236dcff0277eb851b90e6074fbcc715994ddb76a",
+        "fact:v2:662208dd7a2b3e1861fc9c385f28b449e6dd0ba2c2374f08b577341c08a5e3c3",
+        "fact:v2:d80be0398a896c20cd04cc4839cdc725306be1de13d8aac068de5245dd8a62ba"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:81dc92d3900ecd0e1678f5cfabca0caed68bbc8765e573ebfbaa1c4644e54e3a",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:c941123bfc0c85870fae7ea649b1fac09b5584295ca3772787e51b9ed3c4bffc",
+        "fact:v2:c254fe4fe0ca981a160d2e72a509669ec9b7766a6102353314a9d5daff4ffc93",
+        "fact:v2:dfca072a7ddaa221dd2ce4f42887674e636fb6ae9fb6d6081f1bea102f907c50"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:86a9d585543259e2228d8b01edaa14bb373d1523c15da81885016a15fc5d9376",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:7588d8f337111eeca08e4904db976582d5ea42b839468b36b9db040825cf01ae",
+        "fact:v2:fa49b82e165546cc0757a9ec4c7739e1446798b236f20ea361f41d9ad4040cb2"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:8e1092efcc9f382e98f6f1c01401fdf8497293e045396b99fe2a17a377f1e880",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:dc94a2f316914153694f7d044aeec842ed2230843a61516835c013df2b3dcdec"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:8f68a12b502348999f25d32ef200d2f1075795f124187520df8df0f8da12838d",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:036624d30a7191b0267dc0fad5f472b4d8f66647de3317d37371071840e68818",
+        "fact:v2:020ccc387937887191fac9925dd99193e27db20589933bbac7320737413c06f7",
+        "fact:v2:d232bbf24c3e65355accd9e77136f29f91b020f352a6661418b852acd97c3293"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:91961ed587534bee8ad94bf8c7b43edef10f529c4e8a64c0a7e1a0a98aeda478",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:01df1adc70afffb24c3a6e09ef3f52b0f901e1d0f6630f5ddda1b86d163d2abb",
+        "fact:v2:9089db6a46334f6859cfd47c9a8066008535e259c1d48e86ebe7c6309751dcf9",
+        "fact:v2:d39fdb1a0ff9d1c4d96248da06b7347a4b9f64ab5e89e6b8f1a75d4c6339daf2"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:92b93b26ed87ff5412f0172dc95f264447f0ab4758e6e7b3f854c9741994c518",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:9a3ed3b64f943cdc2e71a5308f5a65ecb65df66ecc950d251a333d1754e3b161",
+        "fact:v2:bbf766d06f737b4079a375e88adf78c6300637e0208be618d20b4342214bf235",
+        "fact:v2:cf2d9b98350853711306dfe5ad434fdfe784a760d1472d5b14612842fd565ad0"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:955ce061a8fcabd760e04ced394aadbe8ecd074ba86cb0c55dc7b3fbfbc84898",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:8510a56b754119d88c13906180501bbb3f40615c9128134aedbcadb43c01d348",
+        "fact:v2:b8e037b93c3e9c2cd4f364f20c5e16bd50278ccbd6beeb86360cf6a46c689f13"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:9d11a451a92361b5b32868c150d5ac7b983aefb35e3525b00e05ced0a4e3d250",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:8b7a4f993783a52f450150e60e0dfe105dbd54317d547387105147fd105ba5bf",
+        "fact:v2:d61242283332adf1d2bd3a0807dac930cc2c981bee62402a6464210c4e0d80d3",
+        "fact:v2:fe6b8e02978eecd8aaa854fbf760db6c376e7c39fc4cdb2a2ead64e4481eb56d"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:a12c31920b2c5ee34b6ff6fc76a8caba3466a074c5694f792986433c1822dc57",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:210a6cda428f84e56291a7a0aa8dc048ed7913421e6e8944f000c98ba748e83e"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:a2b2dbe97a724651c41ccae7b537c69918fd4067b9637e1d7e2de4efc24f5034",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:c04957efc29b8a1d7d5bb77efe95ad78410086ee6b7b8dce62e758b8f850f732",
+        "fact:v2:2149b405fcb55e1aa93283735bd02e12d6369a482bca373c81c7dc34f5660460",
+        "fact:v2:2851167f427c9f9056e431d8f6ca3f5c01341a4b038dc1dc2a806fe854d6daec"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:a37fb229b98e6477e6f36430fd43b75b8692c5f862288fd75ab29f77618b6050",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:56394a63dba5bf8fc55234e21c7c7374bc1495ce08bbf8e18b8ccf26d75de211",
+        "fact:v2:7cb4f34637adf6e072caf5d4ded6c83208dd7ec04702f1237d01743cfd467c8c"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:a6a14e7650ce6285b5d38304b26050a72a374fe1191a8ffeb0e1dd52f804944f",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:ba2595e6cff364aa4203626eab3e2ab2fb157d089d33caf2c26f9e834ace257d",
+        "fact:v2:88375a88a521f73f74f37392e4094d0f3c2c73290b6559fdfc7d7a37ee42b99a"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:a985e53c827ee39c29294b5f5e50e65672af7fe9bfef7c0023223e9e9bde7dd9",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:fda403baf2af2c457dfd08ba4d180848e03c5be83e7c42460e77247f83a3df63",
+        "fact:v2:0c4c798484c17e71e679d87a9a28aa51c645de4e9837c6d54a72a84c25081059"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:b8e870b8adaa4d7dbabcf712ec9d13b2be4eff8ae2dd68dab25758a0bfe17c1d",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:83535a92aa22922398c737d4229fbd8b1939abb7653f3a3055794e18fc5ffe72",
+        "fact:v2:92f711abf376f222f57b386c013334d35506a0e6df907592f095e548597bcc23"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:bcad8c02a1f082b3c0345d157676082a146e83a88a925c7c4c362d1d0f781edb",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:bf4dfdf81675f32ccafdb76ceb8c6ff2d9fddcfb7feaaf5043826b518e466651",
+        "fact:v2:3ed13370f470ef805e9a17149c6848578959f04843031ba8aee51bca8710507d",
+        "fact:v2:76139fc5e1d58b8c8bca47c39c942f92b331a0196d230d7ab3ad9fcefead65c6"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:be5267f9ad509f5cfb4114cc699fb240f383752655378c08b2a1983885d2fc1d",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:11ab5b99b51c4d4f9f9fee151b5bc9c017b18ccbc60d84b4438a656006f5a7ae",
+        "fact:v2:06a9ae202b2df50a48a60125e7f0dde4544541f80939e47cb38fdc927b08b66e",
+        "fact:v2:c4632607d2f14f092bf191896ca78eeb2f52e84503465e7539a702ac9747df1b"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:c343d01eaefdc2d016a428a4ac51fbff1333140086ac7e095dcabae57d4accf5",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:11ca8d99b2d9a1c3f215f8393a520acd9fb98ac997f4c5d85d2656d53f522e16",
+        "fact:v2:73f6f1082a6633036ba238516e4ba6bffb989bfe811e9c390600f29ca4876e86",
+        "fact:v2:88cf69a6a0d233ea7aa81074b42080edcdd6548e236a8b5a3e630d0ddf4b20d6"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:c3d90a91468f748694670ea91cf711767724f7a978d8d8bea60dea22681a3092",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:efc77d1d9cf904e78662efa877330d715c2e9d552626479df4d8d4501ad209b2",
+        "fact:v2:31199d84213c5f3f76552bffa3d09f5f473353acc7c240bad327f9a6d96d61d6"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:c5d402e8739df3e4f0ebc28b79af9e351db049a5e5a0f65369d8514b8a2bd29b",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:ff7c4754546deb88199c348efcedfcf2daeae4ceb1e7ca25f97832a367f82840",
+        "fact:v2:458ed8e99f3005e2cf4c24f42804096333bca3dd344edde0723cac29871649ed",
+        "fact:v2:52583d1580eaaaf0fea2c687eca3db5eedf9df84a395d7fbabe1b5a3a9f5c2b8"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:c6a299e5af5bfd082236a4931067e9a745ce2a3a0dacdac6773ef52c7effc53c",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:525cc90dcd1f4085f8c6452b1da9f947bc8cd44bfd738dc857a9ec743ecf1311",
+        "fact:v2:0676d72fc5197a6f5e8e54f54ff8f46bdb7419ebe8646f05b672db32e656b7ba",
+        "fact:v2:3eda457685bf1e2a65410a1cd424434a80dbf097cc250ca44d2e0296e07b6b63"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:ccbc3de9f04fbe0fa18d83527bffab30524d360babc440bc1a09a6a4af8fee30",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:22c00dc559322af78484e7a4a9d4c2e33da38734472a3fe92fd36e9a66aa2537",
+        "fact:v2:6513510de52792a5cbc74959518d41b881578b86c8407b3a463b665050a47c97",
+        "fact:v2:92da383748c1a26dfa2dad57275ed078ba4a2d11f33a02df9baf662134295966"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:d021f5b995b87fa4379c48cd3be97f2867afac5c49338f2f35f1f969341e5ee1",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:dbfc4722e34eff38a84e1db64464324f6dfc7e3887d6707b1a5b60c24e3c3d23",
+        "fact:v2:00a9363452d5afe964ef25bceb24ce33663f5781755e2cecd9dbff075abefdd4",
+        "fact:v2:277d9e0f63a378803343c07ff7bd6b9adb1069fb19fa31aa6871146483093019"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:d296a1f75a469c4b4beecf06649963e6e31146e2bb86cc1e89d004ea71ab8b34",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:d6c5e34dea49538dca484f05fa15fba80df0423dbb82635b3ab487c256eb0a29",
+        "fact:v2:23103f926ccd42c7f0f7ae8c2e924420ffab195265619e1984ea6d1e6d5f3e7d",
+        "fact:v2:25907d960efd431c19ce0b88a262c89ca863495430a946c8b32c9b65fcc530aa"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:d9c493eec84c535d666055447048fc8fe980e098df924e8df43d4a83d0e0c4c7",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:bcf47f125e4ab1c36ba996b7f941f15b52dd7cf756b11fdbe466309cf661fb53",
+        "fact:v2:1b8ccac636972f7d635fc5c618c5723ce56bcd407506f5094202d6ce30d085bd",
+        "fact:v2:a03488995841651f73fe7aac4e733ad0e9b671632d45abeeb82d996c95e6d0ef"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:dba324b05c15788ba339a91f620bdaf0a36f466b54655ca1581a813cee08aa0f",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:d6fbd34a9b2d86bd4c44954c636153279413a70054f97afa3ef628fc6f4be0a6",
+        "fact:v2:95fe849fbabc5970d5d8d43ceeb61993c3722c5001cac831ab23d47809eec383",
+        "fact:v2:d2c1417982cac3bb8947650a414e0b10f58095940ad0bbd65c35cf854f0c3ae0"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:e8e7342308d70c749c0e98724abbeeba23bfb05c1e0f024b29b856e0dee09210",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:b521de40f1dcbe7884da14023fd443d3bc7f2bf64b60e306e88b7c5c534f9dda",
+        "fact:v2:463e2c6c87234a63ac4e4522feaa3d6e0bc2b4c6b9af1282e62f68a978708f7d",
+        "fact:v2:949939cfe6cde775c89078f256e1d3bd99c0bbae8cd69471008ffe29e7c6d7c4"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:e92322c63107086b69f60eb5ebb641503c90795f9939ba40643ff184a4f5f855",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:895dd6cb13325e2d8639f9e4dfd943b2bfa902382fc6f0be136888f84c27b225",
+        "fact:v2:41bf992ad5a194e5d40e64b423d0236f112df6a4171a4b95ab6d9a3ad4c014c9"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:f00830f854235493d4353a35bb839cf1794aa0a69f63362bc69ff4ca6771af80",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:e78d8bae07c8ad50f9bcf99ea1dc04e03d437b2d08e8228e74e584d96f1280ae",
+        "fact:v2:e434d54414b6ca2ae7bb1eb31b16d673716aa4cbb9e72016fe72bb042f650d06",
+        "fact:v2:eef8c81dea4d0eb4bcd8240cc02edb79df6d3083a23da00b4b34ba54bca4e92c"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:f791242c98ad63a32f96fdc07c9219ae54a1e97018a33755650b5ceb22c98e56",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:831a2acc36b6fb7498577a879b80402e16ab12aa761ea047a7cc571f2ac6da37",
+        "fact:v2:489264e672da3e8063edc65af08b7f0b2e31ef2bf212da7c3f8dbab6aba10a75",
+        "fact:v2:80fd755c76833df438c593c819d57c978fddeca4d0b767c4caceb3d3d9eb6bda"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:f892af787d039a5aa0b3ebfd436479a598ce9007b392019fab04349f5e0d1ece",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:efc49eb12e6f292b2a367e1c7c05c14f9d5b280446e80067130fe9ddd4988dc4",
+        "fact:v2:7cd17a5c8dc5cf42cbd246a8bb7b16ebe5b96ccb72428fca4e1d8a864f37d025",
+        "fact:v2:88d37621f27966ee268b5cca5b253f7c1cfa556b23c7ff20b64b48b8f080164f"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:f98bbad4b8fc84f0497c1adec2b16295aadb784cd7423be4bc848c36849c860d",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:9b33de56cd77cd807ac3981c95c74e98c0e4459e62d8588d77362edce4e804a2",
+        "fact:v2:c9fec058f1cfdfeb6e3e6f75dfe212c8f7c60bac06b7bfa806038abd76ef2a46"
+      ]
+    },
+    {
+      "abstained": false,
+      "all_gold_at_5": true,
+      "case_id": "development:single:ff365e5840f746f0774ac39b153e2309c61b3df8b96d01680515f8c2dc74da07",
+      "case_type": "single_fact",
+      "gold_count": 1,
+      "hit_count_at_5": 1,
+      "ranked_fact_identities": [
+        "fact:v2:08baa7cea74005b363419f2f3d5dd6a0ac9c13e6ed5e6814c96d77c847652bc4",
+        "fact:v2:e9e16198012281552d4b8dd71ff67e69b9228d3e02cd3cadb61fb0179d56e8ac"
+      ]
+    }
+  ],
+  "single_fact_case_count": 60,
+  "single_fact_hit_count_at_5": 60,
+  "single_fact_recall_at_5": 1.0,
+  "strict_fact_hit_count_at_5": 120,
+  "strict_fact_recall_at_5": 1.0
+}

@@ -1,0 +1,16 @@
+{
+  "answer_generation_calls": 0,
+  "case_count": 100,
+  "case_file_sha256": "ce784cd8faf8b967e7c418c6ccd753a85cd4a9aaa5d35671ab9535c7465c7041",
+  "decision": "structured_fact_v2_development_measured",
+  "fact_corpus_sha256": "f07e310db14883c4b5bc656e8d4f5b2842ece451d00ab2241d2593528913509d",
+  "frozen_72_question_reads": 0,
+  "gold_fact_count": 120,
+  "model_calls": 0,
+  "prior_development_query_reads": 0,
+  "production_behavior_changed": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "schema": "structured-financial-fact-v2/benchmark-acceptance/v1",
+  "split": "development"
+}

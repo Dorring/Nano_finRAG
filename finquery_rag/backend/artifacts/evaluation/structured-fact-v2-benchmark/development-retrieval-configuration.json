@@ -1,0 +1,16 @@
+{
+  "alias_table": null,
+  "document_match": "exact issuer",
+  "embedding_model": null,
+  "metric_match": "exact normalized concept-label token set",
+  "parameter_scan_performed": false,
+  "period_match": "exact period_end",
+  "reranker": null,
+  "schema": "structured-financial-fact-v2/retrieval-config/v1",
+  "split": "development",
+  "top_k": 5,
+  "weights": {
+    "document_and_metric": 9.0,
+    "period": 3.0
+  }
+}

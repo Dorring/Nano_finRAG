@@ -107,3 +107,26 @@ def parse_numeric_value(raw: str, *, sign: str | None, scale: str | None) -> tup
 def fact_identity(*, document_id: str, concept: str, context_id: str, unit_ref: str | None, source_fact_id: str) -> str:
     payload = "|".join(("structured-fact-v2/v1", document_id, concept, context_id, unit_ref or "", source_fact_id))
     return f"fact:v2:{sha256(payload.encode('utf-8')).hexdigest()}"
+
+
+def metric_tokens(value: str) -> frozenset[str]:
+    """Tokenize a concept label without issuer- or benchmark-specific aliases."""
+    return frozenset(re.findall(r"[a-z0-9]+", value.casefold()))
+
+
+def structured_fact_score(
+    *,
+    query_issuer: str,
+    query_metric: str,
+    query_periods: tuple[str, ...],
+    fact: dict[str, Any],
+) -> float | None:
+    """Apply the single frozen V2 document/metric/period scoring contract."""
+    if str(fact["issuer"]).casefold() != query_issuer.casefold():
+        return None
+    query_metric_tokens = metric_tokens(query_metric)
+    fact_metric_tokens = metric_tokens(str(fact["label"]))
+    if not query_metric_tokens or query_metric_tokens != fact_metric_tokens:
+        return None
+    period_match = str(fact["period_end"]) in query_periods
+    return 9.0 + (3.0 if period_match else 0.0)
