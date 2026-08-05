@@ -1,0 +1,1026 @@
+{
+  "authoritative_final_hits": [
+    {
+      "case_id": "aapl_fy2025_003",
+      "source_index": 0
+    },
+    {
+      "case_id": "jpm_fy2025_005",
+      "source_index": 0
+    },
+    {
+      "case_id": "ko_fy2025_003",
+      "source_index": 0
+    },
+    {
+      "case_id": "msft_fy2025_001",
+      "source_index": 0
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "source_index": 0
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "source_index": 1
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "source_index": 1
+    },
+    {
+      "case_id": "msft_fy2025_009",
+      "source_index": 0
+    },
+    {
+      "case_id": "tsla_fy2025_001",
+      "source_index": 0
+    },
+    {
+      "case_id": "tsla_fy2025_004",
+      "source_index": 0
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "source_index": 1
+    },
+    {
+      "case_id": "tsla_fy2025_009",
+      "source_index": 0
+    },
+    {
+      "case_id": "v_fy2025_003",
+      "source_index": 0
+    }
+  ],
+  "cases": [
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "aapl_fy2025_001",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 1,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "aapl_fy2025_002",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [
+        "candidate:v1:f06ee04f963d52481ef27a335b7a6c09674546d3ab590a90c2a4a033f8ea34d8"
+      ],
+      "case_id": "aapl_fy2025_003",
+      "replayed_final_hits": [
+        "candidate:v1:f06ee04f963d52481ef27a335b7a6c09674546d3ab590a90c2a4a033f8ea34d8"
+      ],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 1,
+        "reranker": 1,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "aapl_fy2025_004",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "aapl_fy2025_005",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "aapl_fy2025_006",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 1,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "aapl_fy2025_007",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 1,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "aapl_fy2025_008",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "aapl_fy2025_009",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "jpm_fy2025_001",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "jpm_fy2025_002",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "jpm_fy2025_003",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "jpm_fy2025_004",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [
+        "candidate:v1:a9325e992895567a4c2721f66a3bc3c24b663ddeade06999ff5c87755159932c"
+      ],
+      "case_id": "jpm_fy2025_005",
+      "replayed_final_hits": [
+        "candidate:v1:a9325e992895567a4c2721f66a3bc3c24b663ddeade06999ff5c87755159932c"
+      ],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 1,
+        "reranker": 1,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "jpm_fy2025_006",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "jpm_fy2025_007",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "jpm_fy2025_008",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "jpm_fy2025_009",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "ko_fy2025_001",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "ko_fy2025_002",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [
+        "candidate:v1:1b48a73c57594dcf8a511dbd4d5aa5f5cd6c3bc4657d5cafb6ea00b67adc8572"
+      ],
+      "case_id": "ko_fy2025_003",
+      "replayed_final_hits": [
+        "candidate:v1:1b48a73c57594dcf8a511dbd4d5aa5f5cd6c3bc4657d5cafb6ea00b67adc8572"
+      ],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 1,
+        "reranker": 1,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "ko_fy2025_004",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "ko_fy2025_005",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "ko_fy2025_006",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "ko_fy2025_007",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "ko_fy2025_008",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "ko_fy2025_009",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [
+        "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a"
+      ],
+      "case_id": "msft_fy2025_001",
+      "replayed_final_hits": [
+        "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a"
+      ],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 1,
+        "final": 1,
+        "reranker": 1,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "msft_fy2025_002",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 1,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "msft_fy2025_003",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 1,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "msft_fy2025_004",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 1,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "msft_fy2025_005",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 1,
+        "final": 0,
+        "reranker": 1,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [
+        "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a"
+      ],
+      "case_id": "msft_fy2025_006",
+      "replayed_final_hits": [
+        "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a"
+      ],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 1,
+        "final": 1,
+        "reranker": 1,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [
+        "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a"
+      ],
+      "case_id": "msft_fy2025_007",
+      "replayed_final_hits": [
+        "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a"
+      ],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 2,
+        "final": 1,
+        "reranker": 1,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "msft_fy2025_008",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [
+        "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d"
+      ],
+      "case_id": "msft_fy2025_009",
+      "replayed_final_hits": [
+        "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d"
+      ],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 1,
+        "final": 1,
+        "reranker": 1,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "nvda_fy2025_001",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "nvda_fy2025_002",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "nvda_fy2025_003",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 1,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "nvda_fy2025_004",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 1,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "nvda_fy2025_005",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "nvda_fy2025_006",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "nvda_fy2025_007",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 2,
+        "dense": 0,
+        "final": 0,
+        "reranker": 1,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "nvda_fy2025_008",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "nvda_fy2025_009",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 1,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "pfe_fy2024_001",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "pfe_fy2024_002",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "pfe_fy2024_003",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "pfe_fy2024_004",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 1,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "pfe_fy2024_005",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 1,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "pfe_fy2024_006",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "pfe_fy2024_007",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 1,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "pfe_fy2024_008",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "pfe_fy2024_009",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [
+        "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0"
+      ],
+      "case_id": "tsla_fy2025_001",
+      "replayed_final_hits": [
+        "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0"
+      ],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 1,
+        "reranker": 1,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "tsla_fy2025_002",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "tsla_fy2025_003",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [
+        "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52"
+      ],
+      "case_id": "tsla_fy2025_004",
+      "replayed_final_hits": [
+        "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52"
+      ],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 1,
+        "reranker": 1,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "tsla_fy2025_005",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 1,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "tsla_fy2025_006",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [
+        "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81"
+      ],
+      "case_id": "tsla_fy2025_007",
+      "replayed_final_hits": [
+        "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81"
+      ],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 1,
+        "final": 1,
+        "reranker": 1,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "tsla_fy2025_008",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [
+        "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52"
+      ],
+      "case_id": "tsla_fy2025_009",
+      "replayed_final_hits": [
+        "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52"
+      ],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 1,
+        "reranker": 1,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "v_fy2025_001",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "v_fy2025_002",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [
+        "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68"
+      ],
+      "case_id": "v_fy2025_003",
+      "replayed_final_hits": [
+        "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68"
+      ],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 1,
+        "reranker": 1,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "v_fy2025_004",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "v_fy2025_005",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "v_fy2025_006",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "v_fy2025_007",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 1,
+        "dense": 0,
+        "final": 0,
+        "reranker": 1,
+        "rrf": 1
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "v_fy2025_008",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    },
+    {
+      "authoritative_final_gold_hits": [],
+      "case_id": "v_fy2025_009",
+      "replayed_final_hits": [],
+      "stage_hit_counts": {
+        "bm25": 0,
+        "dense": 0,
+        "final": 0,
+        "reranker": 0,
+        "rrf": 0
+      }
+    }
+  ],
+  "missing_hits": [],
+  "replayed_final_hits": [
+    {
+      "case_id": "aapl_fy2025_003",
+      "source_index": 0
+    },
+    {
+      "case_id": "jpm_fy2025_005",
+      "source_index": 0
+    },
+    {
+      "case_id": "ko_fy2025_003",
+      "source_index": 0
+    },
+    {
+      "case_id": "msft_fy2025_001",
+      "source_index": 0
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "source_index": 0
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "source_index": 1
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "source_index": 1
+    },
+    {
+      "case_id": "msft_fy2025_009",
+      "source_index": 0
+    },
+    {
+      "case_id": "tsla_fy2025_001",
+      "source_index": 0
+    },
+    {
+      "case_id": "tsla_fy2025_004",
+      "source_index": 0
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "source_index": 1
+    },
+    {
+      "case_id": "tsla_fy2025_009",
+      "source_index": 0
+    },
+    {
+      "case_id": "v_fy2025_003",
+      "source_index": 0
+    }
+  ],
+  "unexpected_hits": []
+}

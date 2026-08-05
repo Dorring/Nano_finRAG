@@ -1,0 +1,14 @@
+{
+  "answer_generation_calls": 0,
+  "decision": "production_baseline_parity_blocked",
+  "expected_value_runtime_reads": 0,
+  "gate": "pdf_retrieval_v3_gate_0",
+  "gate_passed": false,
+  "gold_source_runtime_reads": 0,
+  "model_chat_completion_requests": 0,
+  "next_gate": "stop_and_fix_harness",
+  "parameter_scan": false,
+  "per_query_oracle_selection": false,
+  "production_default_config_modified": false,
+  "production_index_writes": 0
+}

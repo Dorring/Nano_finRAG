@@ -1,0 +1,14 @@
+{
+  "code_commit": "ca1039176f967d90781bd80d3ef88c51f0a8952f",
+  "embedding_model": null,
+  "final_k": 5,
+  "production_components_called": [
+    "QueryProcessor",
+    "BM25Retriever",
+    "DenseRetriever",
+    "candidate_fusion.rrf",
+    "Reranker",
+    "FinalSelector"
+  ],
+  "retrieval_candidate_multiplier": 4
+}
