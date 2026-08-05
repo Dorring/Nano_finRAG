@@ -1,0 +1,39 @@
+{
+  "allowed_candidate_fields": [
+    "candidate_key",
+    "document_id",
+    "page",
+    "evidence_type",
+    "content",
+    "metadata"
+  ],
+  "allowed_query_fields": [
+    "query_id",
+    "question",
+    "issuer",
+    "form",
+    "fiscal_period"
+  ],
+  "development_only": true,
+  "forbidden_fields": [
+    "case_id",
+    "expected_answer",
+    "expected_sources",
+    "expected_value",
+    "gold_source",
+    "reference_answer",
+    "source_index"
+  ],
+  "frozen_benchmark_read_allowed": false,
+  "production_index_writes_allowed": false,
+  "required_negative_taxonomy": [
+    "same_page_wrong_row",
+    "same_table_wrong_metric",
+    "same_row_wrong_period",
+    "same_value_wrong_metric",
+    "same_metric_wrong_statement",
+    "same_issuer_wrong_fiscal_period"
+  ],
+  "schema": "nf-opt-17/hard-negative-annotation/v1",
+  "training_allowed": false
+}
