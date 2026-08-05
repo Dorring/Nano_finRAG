@@ -1,0 +1,16 @@
+{
+  "answer_generation_calls": 0,
+  "baseline_master_commit": "69d390bf46c024af13d797e91210fc0daa00dbf0",
+  "decision": "structured_fact_v2_corpus_frozen",
+  "development_document_count": 3,
+  "document_count": 6,
+  "frozen_72_question_reads": 0,
+  "holdout_document_count": 3,
+  "model_calls": 0,
+  "next_gate": "structured_fact_v2_native_ixbrl_fact_extraction",
+  "prior_issuer_overlap_count": 0,
+  "production_behavior_changed": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "schema": "structured-financial-fact-v2/gate-a/acceptance/v1"
+}

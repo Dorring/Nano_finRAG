@@ -1,0 +1,86 @@
+{
+  "corpus_sha256": "f7acfabcb5c31098c3db8d12072721dddf03ebd98ce425da430686a5c101164f",
+  "documents": [
+    {
+      "accession_number": "0000104169-26-000055",
+      "archive_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/wmt-20260131.htm",
+      "cik": "104169",
+      "content_bytes": 2323981,
+      "content_sha256": "276a6accff6066f00342ba03b390c6c2bd51aa7246f0346df22df0b839a5bf5c",
+      "filing_date": "2026-03-13",
+      "issuer": "Walmart Inc.",
+      "primary_document": "wmt-20260131.htm",
+      "report_date": "2026-01-31",
+      "runtime_filename": "development/104169/wmt-20260131.htm",
+      "split": "development"
+    },
+    {
+      "accession_number": "0000796343-26-000003",
+      "archive_url": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000003/adbe-20251128.htm",
+      "cik": "796343",
+      "content_bytes": 2321176,
+      "content_sha256": "05096f93de2ef568d1c47955dd58800d7d24a3c771514c6d49402c43bcbf6158",
+      "filing_date": "2026-01-15",
+      "issuer": "ADOBE INC.",
+      "primary_document": "adbe-20251128.htm",
+      "report_date": "2025-11-28",
+      "runtime_filename": "development/796343/adbe-20251128.htm",
+      "split": "development"
+    },
+    {
+      "accession_number": "0001108524-26-000060",
+      "archive_url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/crm-20260131.htm",
+      "cik": "1108524",
+      "content_bytes": 2570278,
+      "content_sha256": "d606b8cc64176cbfa8c75355a9c935ec83f6b8374a87f94f3747941633fa8d25",
+      "filing_date": "2026-03-02",
+      "issuer": "Salesforce, Inc.",
+      "primary_document": "crm-20260131.htm",
+      "report_date": "2026-01-31",
+      "runtime_filename": "development/1108524/crm-20260131.htm",
+      "split": "development"
+    },
+    {
+      "accession_number": "0000909832-25-000101",
+      "archive_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm",
+      "cik": "909832",
+      "content_bytes": 1438962,
+      "content_sha256": "2cf71f4336c8f36b008a584403551d95ab3b7e4addc9179a99b62029810f7c9a",
+      "filing_date": "2025-10-08",
+      "issuer": "COSTCO WHOLESALE CORP /NEW",
+      "primary_document": "cost-20250831.htm",
+      "report_date": "2025-08-31",
+      "runtime_filename": "holdout/909832/cost-20250831.htm",
+      "split": "holdout"
+    },
+    {
+      "accession_number": "0001628280-26-019436",
+      "archive_url": "https://www.sec.gov/Archives/edgar/data/354950/000162828026019436/hd-20260201.htm",
+      "cik": "354950",
+      "content_bytes": 2314728,
+      "content_sha256": "7a108cae33600d3ebc1ea24d363d38066ad5703aeb437b8b5fc7a20fad71ef18",
+      "filing_date": "2026-03-18",
+      "issuer": "HOME DEPOT, INC.",
+      "primary_document": "hd-20260201.htm",
+      "report_date": "2026-02-01",
+      "runtime_filename": "holdout/354950/hd-20260201.htm",
+      "split": "holdout"
+    },
+    {
+      "accession_number": "0000077476-26-000007",
+      "archive_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747626000007/pep-20251227.htm",
+      "cik": "77476",
+      "content_bytes": 3681486,
+      "content_sha256": "7b93bbae6ad51b622e028281184f3756c9420ff87e03b2ebebc4a44ec51df22a",
+      "filing_date": "2026-02-03",
+      "issuer": "PEPSICO INC",
+      "primary_document": "pep-20251227.htm",
+      "report_date": "2025-12-27",
+      "runtime_filename": "holdout/77476/pep-20251227.htm",
+      "split": "holdout"
+    }
+  ],
+  "runtime_documents_committed": false,
+  "schema": "structured-financial-fact-v2/corpus/v1",
+  "source": "SEC EDGAR Inline XBRL primary documents"
+}

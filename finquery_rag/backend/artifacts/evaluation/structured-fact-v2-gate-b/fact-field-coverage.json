@@ -1,0 +1,21 @@
+{
+  "by_document": {
+    "104169": 1063,
+    "1108524": 1236,
+    "354950": 1199,
+    "77476": 2158,
+    "796343": 1145,
+    "909832": 738
+  },
+  "by_split": {
+    "development": 3444,
+    "holdout": 4095
+  },
+  "currency_present": 6684,
+  "fact_count": 7539,
+  "label_present": 7539,
+  "normalized_value_present": 7112,
+  "period_present": 7539,
+  "statement_present": 2561,
+  "unit_present": 7539
+}

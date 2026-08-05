@@ -1,0 +1,18 @@
+{
+  "answer_generation_calls": 0,
+  "corpus_manifest_sha256": "8143ba1fae7fe6acf6557c533b80622b08055e0acea25d9e80260e3a70ecbc92",
+  "decision": "native_ixbrl_fact_extraction_ready",
+  "development_holdout_identity_overlap_count": 0,
+  "fact_count": 7539,
+  "fact_identity_collision_count": 0,
+  "frozen_72_question_reads": 0,
+  "gold_field_reads": 0,
+  "model_calls": 0,
+  "next_gate": "structured_fact_v2_query_and_benchmark_contract",
+  "production_behavior_changed": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "runtime_fact_corpus_committed": false,
+  "runtime_fact_corpus_sha256": "f07e310db14883c4b5bc656e8d4f5b2842ece451d00ab2241d2593528913509d",
+  "schema": "structured-financial-fact-v2/gate-b/acceptance/v1"
+}

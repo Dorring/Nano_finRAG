@@ -1,0 +1,24 @@
+{
+  "fields": [
+    "fact_identity",
+    "document_id",
+    "issuer",
+    "cik",
+    "accession_number",
+    "concept",
+    "label",
+    "statement",
+    "context_id",
+    "period_start",
+    "period_end",
+    "period_kind",
+    "unit_ref",
+    "unit_measure",
+    "currency",
+    "scale_power",
+    "raw_value",
+    "normalized_value",
+    "source_fact_id"
+  ],
+  "schema": "structured-financial-fact-v2/fact/v1"
+}
