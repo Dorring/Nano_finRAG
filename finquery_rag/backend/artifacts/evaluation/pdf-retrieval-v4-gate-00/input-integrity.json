@@ -3,11 +3,7 @@
   "benchmark_pdf_issues": [],
   "corpus_sha256": "0969f1a73ded67f71c427cf4bfe41fbff475353ee90eb56fc3a575353228dc4c",
   "development_pdf_count": 3,
-  "development_pdf_issues": [
-    "missing:adobe_fy2025_pdf_dev",
-    "missing:salesforce_fy2026_pdf_dev",
-    "missing:walmart_fy2026_pdf_dev"
-  ],
+  "development_pdf_issues": [],
   "label_case_count": 72,
   "labels_sha256_opaque": "22092a7a00a3d22f0a2838d81e983fe94bca2abe14ec6954ffeb289261794df6",
   "original_benchmark_files_modified": false,

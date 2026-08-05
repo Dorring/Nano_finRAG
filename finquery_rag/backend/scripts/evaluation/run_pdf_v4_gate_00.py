@@ -22,8 +22,10 @@ BENCHMARK = ROOT / "benchmarks/financial_rag_v1"
 DATA = BENCHMARK / "data"
 GOVERNANCE = BENCHMARK / "governance"
 DEFAULT_OUT = ROOT / "artifacts/evaluation/pdf-retrieval-v4-gate-00"
-DEFAULT_BENCHMARK_PDFS = ROOT / "runtime/benchmark/financial_rag_v1/review-package/pdfs"
-DEFAULT_DEVELOPMENT_PDFS = ROOT / "runtime/benchmark/financial_rag_v1/development-pdfs"
+MAIN_BACKEND = ROOT.parents[3] / "backend"
+SHARED_NANOCHAT_ROOT = ROOT.parents[4]
+DEFAULT_BENCHMARK_PDFS = MAIN_BACKEND / "runtime/benchmark/financial_rag_v1/review-package/pdfs"
+DEFAULT_DEVELOPMENT_PDFS = SHARED_NANOCHAT_ROOT / ".runtime/pdf-source-representation-v2"
 
 
 def sha256_file(path: Path) -> str:

@@ -74,37 +74,37 @@
     }
   ],
   "candidate_universe_hash": "b5bc4740839561deb583c2a972148cd8b652adf5867f0ba61fdd5270e2301193",
-  "code_commit": "54bfcbfedc54950fd6e521548b33d85d1856e59e",
+  "code_commit": "19d9b163d4c115837dcff52410e4479fda2e996a",
   "development_pdf_hashes": [
     {
       "document_id": "adobe_fy2025_pdf_dev",
-      "exists": false,
+      "exists": true,
       "filename": "adobe_fy2025_pdf_dev.pdf",
       "fold": 1,
       "issuer": "Adobe",
-      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/runtime/benchmark/financial_rag_v1/development-pdfs/adobe_fy2025_pdf_dev.pdf",
-      "sha256": null,
-      "size_bytes": null
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-source-representation-v2/adobe_fy2025_pdf_dev.pdf",
+      "sha256": "ca8a40304d233a9a9023beaa5d93fc969949d8e2105eee58c7a5e8f3e9bea9ce",
+      "size_bytes": 11487117
     },
     {
       "document_id": "salesforce_fy2026_pdf_dev",
-      "exists": false,
+      "exists": true,
       "filename": "salesforce_fy2026_pdf_dev.pdf",
       "fold": 2,
       "issuer": "Salesforce",
-      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/runtime/benchmark/financial_rag_v1/development-pdfs/salesforce_fy2026_pdf_dev.pdf",
-      "sha256": null,
-      "size_bytes": null
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-source-representation-v2/salesforce_fy2026_pdf_dev.pdf",
+      "sha256": "2659583a6d2b82b16d8bf017223dc12efc05e4aef6e073c37e625a5240d6fd9c",
+      "size_bytes": 1562778
     },
     {
       "document_id": "walmart_fy2026_pdf_dev",
-      "exists": false,
+      "exists": true,
       "filename": "walmart_fy2026_pdf_dev.pdf",
       "fold": 3,
       "issuer": "Walmart",
-      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/runtime/benchmark/financial_rag_v1/development-pdfs/walmart_fy2026_pdf_dev.pdf",
-      "sha256": null,
-      "size_bytes": null
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-source-representation-v2/walmart_fy2026_pdf_dev.pdf",
+      "sha256": "550eaf563e00aa4862eb26f2a738b9c95968f3aa39e12f31e7076824e9ba9a8d",
+      "size_bytes": 14805939
     }
   ],
   "embedding_model": "5.2.0",

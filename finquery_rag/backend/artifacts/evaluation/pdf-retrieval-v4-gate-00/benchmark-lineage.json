@@ -27,7 +27,7 @@
       "issuer": "Walmart"
     }
   ],
-  "lineage_status": "blocked_missing_or_mismatched_input",
+  "lineage_status": "frozen",
   "prior_gates": {
     "gate0_acceptance": {
       "exists": true,
