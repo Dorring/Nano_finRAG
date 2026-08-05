@@ -189,3 +189,13 @@ The app should be running now and accessible at [http://localhost:5173/](http://
 <p align="center">
   Built with 💙 by <a href="https://github.com/datalordstephen"><b>datalordstephen</b></a>
 </p>
+
+---
+
+## Retrieval Evaluation Status
+
+The current audited production baseline remains frozen at strict Final Source Recall@5 of `13/80`. Candidate-window expansion, final-budget expansion, family/slot selection, structured BM25F, neural sparse, late interaction, and the scoped hard-negative reranker experiment did not meet the pre-registered no-regression transfer gates. None of these shadow variants changed production defaults.
+
+NF-OPT-17 built an issuer-isolated development set from four independent SEC 10-K filings: 80 queries, 80 positive candidates, and 160 lineage-preserving hard negatives. The zero-shot reranker reached `70/80` Top-1 and `150/160` pairwise accuracy. A single pre-registered classification-head-only run produced no gain on the Netflix issuer holdout (`17/20` Top-1 before and after), so training was stopped without reading the frozen 72-question benchmark.
+
+These are development diagnostics, not production answer-accuracy claims. The remaining retrieval bottleneck is upstream source representation and candidate retrievability; future work should build a native structured Table → Row → Column → Cell representation on independent development filings before one frozen benchmark transfer.

@@ -218,3 +218,19 @@
 > - 无实时数据接入
 >
 > 详见 `docs/release/limitations-and-risks.md` 和 `docs/deployment/known-limitations.md`。
+
+---
+
+## Q11：为什么Reranker训练没有继续做下去？
+
+### 30秒回答
+
+> 我们没有用冻结Benchmark反复调参，而是从4份独立SEC 10-K构建了80题、160条Hard Negative的开发集。现有Reranker Zero-shot Top-1为87.5%、Pairwise为93.75%；唯一一次Issuer-disjoint Head-only训练在Netflix留出集上的Top-1仍为17/20，净提升为0。因此按预注册门禁停止训练，也没有运行冻结72题Transfer或修改生产配置。
+
+### 展开说明
+
+Hard Negative分别覆盖“同一行错误期间”和“同一表错误Metric”，所有Candidate保留稳定Identity和Annotation Lineage。训练使用Alphabet、Amazon、Meta共60题，Netflix 20题作为独立Issuer留出集，只更新1,050,625个Classification Head参数，执行24个Optimizer Steps且没有超参数搜索。
+
+这个结果只能说明当前冻结Head-only方案没有泛化收益，不能推断所有金融Reranker微调都无效。它也不能把开发集Pairwise指标解释成生产Recall。工程上的价值是及时停止无收益路线，并把瓶颈重新定位到上游Source Representation与Candidate可检索性。
+
+当前严格边界：生产Final Source Recall@5仍为`13/80`；冻结Benchmark未被训练读取；生产Reranker未修改。

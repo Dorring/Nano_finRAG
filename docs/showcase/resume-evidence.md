@@ -91,3 +91,25 @@
 - [demo-guide.md](demo-guide.md) — 演示场景操作指南
 - [interview-guide.md](interview-guide.md) — 面试 Q&A
 - [known-claims.md](known-claims.md) — 不应做的声明
+
+---
+
+## NF-OPT-17：独立金融 Hard-negative 评测
+
+可用于简历的严谨表述：
+
+> 构建80题、160条可追溯金融Hard Negative的跨公司隔离评测集，完成Issuer-disjoint Reranker诊断；通用Reranker Zero-shot Top-1达到87.5%、Pairwise达到93.75%，并以预注册门禁控制训练与生产切换，避免测试集过拟合。
+
+证据边界：
+
+- 80题来自Alphabet、Amazon、Meta和Netflix四份独立SEC 10-K，不是冻结72题Benchmark。
+- Pairwise 93.75%是三候选开发任务指标，不是生产Final Recall@5。
+- 唯一有效训练仅更新Classification Head；Netflix留出集净提升为0，因此停止训练。
+- 当前生产严格Final Source Recall@5继续冻结为`13/80`，没有切换Reranker。
+- 不得声称“金融Reranker准确率93.75%”或“微调后获得提升”。
+
+来源：
+
+- `artifacts/evaluation/nf-opt-17-gate-e/zero-shot-development-results.json`
+- `artifacts/evaluation/nf-opt-17-gate-f/issuer-disjoint-training-result.json`
+- `artifacts/evaluation/nf-opt-17-gate-f/nf-opt-17-gate-f-acceptance.json`
