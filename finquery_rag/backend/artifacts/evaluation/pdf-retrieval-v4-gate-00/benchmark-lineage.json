@@ -1,0 +1,53 @@
+{
+  "benchmark_documents": [
+    "aapl_fy2025",
+    "jpm_fy2025",
+    "ko_fy2025",
+    "msft_fy2025",
+    "nvda_fy2025",
+    "pfe_fy2024",
+    "tsla_fy2025",
+    "v_fy2025"
+  ],
+  "benchmark_id": "financial-rag-v1",
+  "development_documents": [
+    {
+      "document_id": "adobe_fy2025_pdf_dev",
+      "fold": 1,
+      "issuer": "Adobe"
+    },
+    {
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "fold": 2,
+      "issuer": "Salesforce"
+    },
+    {
+      "document_id": "walmart_fy2026_pdf_dev",
+      "fold": 3,
+      "issuer": "Walmart"
+    }
+  ],
+  "lineage_status": "blocked_missing_or_mismatched_input",
+  "prior_gates": {
+    "gate0_acceptance": {
+      "exists": true,
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v3-gate-0/acceptance.json",
+      "sha256": "616240f81bfa2de2643b7e1ff28abe9e2c6311f4e55da810a1ae96bc872af371"
+    },
+    "gate1_acceptance": {
+      "exists": true,
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v3-gate-1/acceptance.json",
+      "sha256": "e02698c5941362c1628c42d3be217a0961c3d5fac4a43b142332ac508f773a1d"
+    },
+    "gate2_prediction_seal": {
+      "exists": true,
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v3-gate-2/router-prediction-seal.json",
+      "sha256": "0075a2c601ae37079d58d7e8038e1c0d4906cc638879c09ed8aa5f340921dc8b"
+    },
+    "gate3_prediction_seal": {
+      "exists": true,
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v3-gate-3/gate-3-prediction-seal.json",
+      "sha256": "7af7657f6c26779e8ef9a30031021c09ad0e510a9e314eacac25b19a36c601b3"
+    }
+  }
+}
