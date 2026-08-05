@@ -1,0 +1,511 @@
+{
+  "noneligible_pool_changed_cases": [],
+  "raw_full_pool_candidate_loss_count": 0,
+  "raw_full_pool_order_change_count": 0,
+  "records": [
+    {
+      "candidate_count": 36,
+      "case_id": "aapl_fy2025_001",
+      "hash_after": "60f1c80f20dcb0d02daf2b4913cd1856d3c64415be8b8f8f680c6eabe2cb6995",
+      "hash_before": "60f1c80f20dcb0d02daf2b4913cd1856d3c64415be8b8f8f680c6eabe2cb6995",
+      "identical": true
+    },
+    {
+      "candidate_count": 35,
+      "case_id": "aapl_fy2025_002",
+      "hash_after": "dae37f8adad6278a6729c32f4c5491fff2b2c26713c1599ed4f25f00449f3cc4",
+      "hash_before": "dae37f8adad6278a6729c32f4c5491fff2b2c26713c1599ed4f25f00449f3cc4",
+      "identical": true
+    },
+    {
+      "candidate_count": 71,
+      "case_id": "aapl_fy2025_003",
+      "hash_after": "fbb4419c53dfd109b33c64dc08beff6ed5e2bb3279cf72a68f0eb6bab867c3bd",
+      "hash_before": "fbb4419c53dfd109b33c64dc08beff6ed5e2bb3279cf72a68f0eb6bab867c3bd",
+      "identical": true
+    },
+    {
+      "candidate_count": 33,
+      "case_id": "aapl_fy2025_004",
+      "hash_after": "131f39822926e71162264614f75c77d89cf87e8ddc2c5c0e5f117ca839fe50db",
+      "hash_before": "131f39822926e71162264614f75c77d89cf87e8ddc2c5c0e5f117ca839fe50db",
+      "identical": true
+    },
+    {
+      "candidate_count": 31,
+      "case_id": "aapl_fy2025_005",
+      "hash_after": "f7a34c4ea7e6aaf0c08ba1f3aadac366125d68028b554858c5055a598f9d0645",
+      "hash_before": "f7a34c4ea7e6aaf0c08ba1f3aadac366125d68028b554858c5055a598f9d0645",
+      "identical": true
+    },
+    {
+      "candidate_count": 66,
+      "case_id": "aapl_fy2025_006",
+      "hash_after": "b819baf38247b8ca3a6de1cee4f98e2ab1b98f61c7e7fca04610e800c9a51b47",
+      "hash_before": "b819baf38247b8ca3a6de1cee4f98e2ab1b98f61c7e7fca04610e800c9a51b47",
+      "identical": true
+    },
+    {
+      "candidate_count": 35,
+      "case_id": "aapl_fy2025_007",
+      "hash_after": "45bd550d232f03df1edcbb9fec849f3568265db5edee053a08ac81f99ac971a7",
+      "hash_before": "45bd550d232f03df1edcbb9fec849f3568265db5edee053a08ac81f99ac971a7",
+      "identical": true
+    },
+    {
+      "candidate_count": 37,
+      "case_id": "aapl_fy2025_008",
+      "hash_after": "5dde484ed11bcfe67d4529666394cbcc618aaa01a08b514608ba1e43c0e6f083",
+      "hash_before": "5dde484ed11bcfe67d4529666394cbcc618aaa01a08b514608ba1e43c0e6f083",
+      "identical": true
+    },
+    {
+      "candidate_count": 33,
+      "case_id": "aapl_fy2025_009",
+      "hash_after": "bac4446ba4f5c4722ad118c44d982f2dda043b7e180e38a3510d0e51c32cf3e2",
+      "hash_before": "bac4446ba4f5c4722ad118c44d982f2dda043b7e180e38a3510d0e51c32cf3e2",
+      "identical": true
+    },
+    {
+      "candidate_count": 74,
+      "case_id": "jpm_fy2025_001",
+      "hash_after": "7ae381055f46c36bcffdcddeb3bbf235a7b3666e4b7d2d6b2fe86ab1cd154e08",
+      "hash_before": "7ae381055f46c36bcffdcddeb3bbf235a7b3666e4b7d2d6b2fe86ab1cd154e08",
+      "identical": true
+    },
+    {
+      "candidate_count": 73,
+      "case_id": "jpm_fy2025_002",
+      "hash_after": "6c2e35413c5ca0e9b526989b135a22f307a70818ee22fd8530b80c4dca67be7e",
+      "hash_before": "6c2e35413c5ca0e9b526989b135a22f307a70818ee22fd8530b80c4dca67be7e",
+      "identical": true
+    },
+    {
+      "candidate_count": 77,
+      "case_id": "jpm_fy2025_003",
+      "hash_after": "af294e50e33b99f7efee7105280922f175e30ae6d811f76dbb1ff8ad9575ff1d",
+      "hash_before": "af294e50e33b99f7efee7105280922f175e30ae6d811f76dbb1ff8ad9575ff1d",
+      "identical": true
+    },
+    {
+      "candidate_count": 69,
+      "case_id": "jpm_fy2025_004",
+      "hash_after": "a70e9593d37a159fbcf742a285b6848988e1f99508789c68aebacc6cbe31c7d9",
+      "hash_before": "a70e9593d37a159fbcf742a285b6848988e1f99508789c68aebacc6cbe31c7d9",
+      "identical": true
+    },
+    {
+      "candidate_count": 70,
+      "case_id": "jpm_fy2025_005",
+      "hash_after": "b88837baaec998f4719768b53cc1a6cccad2d9604605e7ec215170941dba3a7e",
+      "hash_before": "b88837baaec998f4719768b53cc1a6cccad2d9604605e7ec215170941dba3a7e",
+      "identical": true
+    },
+    {
+      "candidate_count": 79,
+      "case_id": "jpm_fy2025_006",
+      "hash_after": "24808d755682bde51d1c73e602baace4684f04c97d231c67e883f41d544578ed",
+      "hash_before": "24808d755682bde51d1c73e602baace4684f04c97d231c67e883f41d544578ed",
+      "identical": true
+    },
+    {
+      "candidate_count": 79,
+      "case_id": "jpm_fy2025_007",
+      "hash_after": "616bb65371d6d176fab2f16b7ebecf271ded720ee46377b40c7e835b58a7430d",
+      "hash_before": "616bb65371d6d176fab2f16b7ebecf271ded720ee46377b40c7e835b58a7430d",
+      "identical": true
+    },
+    {
+      "candidate_count": 77,
+      "case_id": "jpm_fy2025_008",
+      "hash_after": "da2aa0aa18a599437f98eecf3ac5cc7f5d9eb9fc26956a30e62d5c46b50cf5c9",
+      "hash_before": "da2aa0aa18a599437f98eecf3ac5cc7f5d9eb9fc26956a30e62d5c46b50cf5c9",
+      "identical": true
+    },
+    {
+      "candidate_count": 71,
+      "case_id": "jpm_fy2025_009",
+      "hash_after": "90c4a175829194b6b82e871d2ace9a980e483d68695720158f03270307dbb96b",
+      "hash_before": "90c4a175829194b6b82e871d2ace9a980e483d68695720158f03270307dbb96b",
+      "identical": true
+    },
+    {
+      "candidate_count": 75,
+      "case_id": "ko_fy2025_001",
+      "hash_after": "b7208249c23e5bb67cedac89d3b12d7b64f54092c09b72c33145f76a8f46ff94",
+      "hash_before": "b7208249c23e5bb67cedac89d3b12d7b64f54092c09b72c33145f76a8f46ff94",
+      "identical": true
+    },
+    {
+      "candidate_count": 71,
+      "case_id": "ko_fy2025_002",
+      "hash_after": "475a20ef8ab3f1f483a3f19bb15a6a472611152e6b226660a0b9ae3aa2ea59ae",
+      "hash_before": "475a20ef8ab3f1f483a3f19bb15a6a472611152e6b226660a0b9ae3aa2ea59ae",
+      "identical": true
+    },
+    {
+      "candidate_count": 75,
+      "case_id": "ko_fy2025_003",
+      "hash_after": "a63a3b97aeee14df982f2cec94414ac4a3168b7ad757bca9299889e9626a9ac4",
+      "hash_before": "a63a3b97aeee14df982f2cec94414ac4a3168b7ad757bca9299889e9626a9ac4",
+      "identical": true
+    },
+    {
+      "candidate_count": 72,
+      "case_id": "ko_fy2025_004",
+      "hash_after": "d8ba128cf71a93bfdd4caba7cbb97b1750c38e6a206199361c4d772b5e375d70",
+      "hash_before": "d8ba128cf71a93bfdd4caba7cbb97b1750c38e6a206199361c4d772b5e375d70",
+      "identical": true
+    },
+    {
+      "candidate_count": 76,
+      "case_id": "ko_fy2025_005",
+      "hash_after": "f088dac159fb8c5bbb3d5f38bd3f5a4cec5372060c002e5607c96e42d89d2fac",
+      "hash_before": "f088dac159fb8c5bbb3d5f38bd3f5a4cec5372060c002e5607c96e42d89d2fac",
+      "identical": true
+    },
+    {
+      "candidate_count": 73,
+      "case_id": "ko_fy2025_006",
+      "hash_after": "51e42e7b9dbe20f5983fabba269a4ccba9d5fd40621d0fa8459d7afbf1ada72e",
+      "hash_before": "51e42e7b9dbe20f5983fabba269a4ccba9d5fd40621d0fa8459d7afbf1ada72e",
+      "identical": true
+    },
+    {
+      "candidate_count": 72,
+      "case_id": "ko_fy2025_007",
+      "hash_after": "a34d261923986db736db5ae5163884dab3fc9af77af30bbf7f3f914b625b962a",
+      "hash_before": "a34d261923986db736db5ae5163884dab3fc9af77af30bbf7f3f914b625b962a",
+      "identical": true
+    },
+    {
+      "candidate_count": 39,
+      "case_id": "ko_fy2025_008",
+      "hash_after": "4767c7f41b3baa3bd24fc7a03b8bedcf42f47a783564af1e3b4bf81c84cc0230",
+      "hash_before": "4767c7f41b3baa3bd24fc7a03b8bedcf42f47a783564af1e3b4bf81c84cc0230",
+      "identical": true
+    },
+    {
+      "candidate_count": 71,
+      "case_id": "ko_fy2025_009",
+      "hash_after": "031af2b12e0baf2fc503f4964300129dc8df3191b8869547b4e684098b6660e5",
+      "hash_before": "031af2b12e0baf2fc503f4964300129dc8df3191b8869547b4e684098b6660e5",
+      "identical": true
+    },
+    {
+      "candidate_count": 65,
+      "case_id": "msft_fy2025_001",
+      "hash_after": "052d5be188f109ce3321ff50bc8db8adda4e74484bda6ce9b7210bd0a915390f",
+      "hash_before": "052d5be188f109ce3321ff50bc8db8adda4e74484bda6ce9b7210bd0a915390f",
+      "identical": true
+    },
+    {
+      "candidate_count": 73,
+      "case_id": "msft_fy2025_002",
+      "hash_after": "30723a6f5f15534e94adde424d05f990e2e05f832fcc8d37aba36aeae9829052",
+      "hash_before": "30723a6f5f15534e94adde424d05f990e2e05f832fcc8d37aba36aeae9829052",
+      "identical": true
+    },
+    {
+      "candidate_count": 60,
+      "case_id": "msft_fy2025_003",
+      "hash_after": "14817c1abb91bebbf43ac896b65a1191f5c220feafbecfdd0ac77b685c21741c",
+      "hash_before": "14817c1abb91bebbf43ac896b65a1191f5c220feafbecfdd0ac77b685c21741c",
+      "identical": true
+    },
+    {
+      "candidate_count": 61,
+      "case_id": "msft_fy2025_004",
+      "hash_after": "5f590a904b180215f21d7c03fb0a5bde939b23e205af1a0f0fe5132ab16637c1",
+      "hash_before": "5f590a904b180215f21d7c03fb0a5bde939b23e205af1a0f0fe5132ab16637c1",
+      "identical": true
+    },
+    {
+      "candidate_count": 71,
+      "case_id": "msft_fy2025_005",
+      "hash_after": "df5c9812148ee0b8d611c9ca05c5e5038f1c5b2659f7a2578e9873c323b3d1da",
+      "hash_before": "df5c9812148ee0b8d611c9ca05c5e5038f1c5b2659f7a2578e9873c323b3d1da",
+      "identical": true
+    },
+    {
+      "candidate_count": 65,
+      "case_id": "msft_fy2025_006",
+      "hash_after": "36573a47089001eec40796a1faa952e392539381aa1f846dcdf1deb05bcd1653",
+      "hash_before": "36573a47089001eec40796a1faa952e392539381aa1f846dcdf1deb05bcd1653",
+      "identical": true
+    },
+    {
+      "candidate_count": 63,
+      "case_id": "msft_fy2025_007",
+      "hash_after": "5d15c35b36574f5f7a31d738d4eb8ab83fbf78f2ac7541fa337359357e7f58c7",
+      "hash_before": "5d15c35b36574f5f7a31d738d4eb8ab83fbf78f2ac7541fa337359357e7f58c7",
+      "identical": true
+    },
+    {
+      "candidate_count": 72,
+      "case_id": "msft_fy2025_008",
+      "hash_after": "c1c478ef7d94e8d0be7084f55e22dce2305ea873e7e54db805f8e2cbecae49eb",
+      "hash_before": "c1c478ef7d94e8d0be7084f55e22dce2305ea873e7e54db805f8e2cbecae49eb",
+      "identical": true
+    },
+    {
+      "candidate_count": 57,
+      "case_id": "msft_fy2025_009",
+      "hash_after": "cdb66183b3a8d89c7f85aca7201df29515ab873abf642c1eeec433dbb2b2f6eb",
+      "hash_before": "cdb66183b3a8d89c7f85aca7201df29515ab873abf642c1eeec433dbb2b2f6eb",
+      "identical": true
+    },
+    {
+      "candidate_count": 76,
+      "case_id": "nvda_fy2025_001",
+      "hash_after": "20124cc890d4db63b8fcc88ebc9a4b393b909bf58e74cef9184275464e33d0ea",
+      "hash_before": "20124cc890d4db63b8fcc88ebc9a4b393b909bf58e74cef9184275464e33d0ea",
+      "identical": true
+    },
+    {
+      "candidate_count": 75,
+      "case_id": "nvda_fy2025_002",
+      "hash_after": "75f43b1158e65bf8235a877848af08be9fe97ca04d675866fc99afc3eac61327",
+      "hash_before": "75f43b1158e65bf8235a877848af08be9fe97ca04d675866fc99afc3eac61327",
+      "identical": true
+    },
+    {
+      "candidate_count": 71,
+      "case_id": "nvda_fy2025_003",
+      "hash_after": "e9a0a75703aab2947c5ca0632579d73fe79aedb45ba2f0e899ec3069c6b6a3ab",
+      "hash_before": "e9a0a75703aab2947c5ca0632579d73fe79aedb45ba2f0e899ec3069c6b6a3ab",
+      "identical": true
+    },
+    {
+      "candidate_count": 69,
+      "case_id": "nvda_fy2025_004",
+      "hash_after": "55cc7e419f4bd3c731136cc26dd45a6527b2674c5965d2a05db4591ae8fbff24",
+      "hash_before": "55cc7e419f4bd3c731136cc26dd45a6527b2674c5965d2a05db4591ae8fbff24",
+      "identical": true
+    },
+    {
+      "candidate_count": 73,
+      "case_id": "nvda_fy2025_005",
+      "hash_after": "fa702a6c1307c39ffd0143bf37475e1edc050d63e0d1dd0ccbb76656ec825dd7",
+      "hash_before": "fa702a6c1307c39ffd0143bf37475e1edc050d63e0d1dd0ccbb76656ec825dd7",
+      "identical": true
+    },
+    {
+      "candidate_count": 73,
+      "case_id": "nvda_fy2025_006",
+      "hash_after": "8e43059509d0c878f6aa7ac5ee2ad254229a70ac346763f5be57ea307e8df28c",
+      "hash_before": "8e43059509d0c878f6aa7ac5ee2ad254229a70ac346763f5be57ea307e8df28c",
+      "identical": true
+    },
+    {
+      "candidate_count": 74,
+      "case_id": "nvda_fy2025_007",
+      "hash_after": "6f5f9f87db32d42548b173c454451c6dad208e34354140621f55359ebeb7143a",
+      "hash_before": "6f5f9f87db32d42548b173c454451c6dad208e34354140621f55359ebeb7143a",
+      "identical": true
+    },
+    {
+      "candidate_count": 77,
+      "case_id": "nvda_fy2025_008",
+      "hash_after": "eb4893fcfd8c2f167c259add16a49a618dd6702c1251127cb6e08648ff897dde",
+      "hash_before": "eb4893fcfd8c2f167c259add16a49a618dd6702c1251127cb6e08648ff897dde",
+      "identical": true
+    },
+    {
+      "candidate_count": 65,
+      "case_id": "nvda_fy2025_009",
+      "hash_after": "37c4c85ef56f6f173194ba2a35003c92e2c22412945dedf2912961c6ece6e9ed",
+      "hash_before": "37c4c85ef56f6f173194ba2a35003c92e2c22412945dedf2912961c6ece6e9ed",
+      "identical": true
+    },
+    {
+      "candidate_count": 76,
+      "case_id": "pfe_fy2024_001",
+      "hash_after": "985a88754a91eb2c0520b39c8aeb414112de03262b81c70ee6e9a7fa71c4b649",
+      "hash_before": "985a88754a91eb2c0520b39c8aeb414112de03262b81c70ee6e9a7fa71c4b649",
+      "identical": true
+    },
+    {
+      "candidate_count": 76,
+      "case_id": "pfe_fy2024_002",
+      "hash_after": "e65e2daff17280b603f8f54337a5ba3ae8560a1a1b08980cd02f23ad7715b9bf",
+      "hash_before": "e65e2daff17280b603f8f54337a5ba3ae8560a1a1b08980cd02f23ad7715b9bf",
+      "identical": true
+    },
+    {
+      "candidate_count": 79,
+      "case_id": "pfe_fy2024_003",
+      "hash_after": "a60425c07e6d694b1e8cc581a7be7c763199d75acf58b3a62a4e67976eeb0785",
+      "hash_before": "a60425c07e6d694b1e8cc581a7be7c763199d75acf58b3a62a4e67976eeb0785",
+      "identical": true
+    },
+    {
+      "candidate_count": 65,
+      "case_id": "pfe_fy2024_004",
+      "hash_after": "708fba4a232df01217c3e92d289a4fc1ea150f9736d525055f25b83c272ae434",
+      "hash_before": "708fba4a232df01217c3e92d289a4fc1ea150f9736d525055f25b83c272ae434",
+      "identical": true
+    },
+    {
+      "candidate_count": 74,
+      "case_id": "pfe_fy2024_005",
+      "hash_after": "cd117f3cc2e746e01b3e2ef475fdcad5e63970e0db14693072c90908ab8ff93e",
+      "hash_before": "cd117f3cc2e746e01b3e2ef475fdcad5e63970e0db14693072c90908ab8ff93e",
+      "identical": true
+    },
+    {
+      "candidate_count": 79,
+      "case_id": "pfe_fy2024_006",
+      "hash_after": "84f21508b44d75cc50d5fd7e816cc1e4f9e32c64b8a9cf59b415678b739c07ad",
+      "hash_before": "84f21508b44d75cc50d5fd7e816cc1e4f9e32c64b8a9cf59b415678b739c07ad",
+      "identical": true
+    },
+    {
+      "candidate_count": 76,
+      "case_id": "pfe_fy2024_007",
+      "hash_after": "3c2e426ad47d2dd5e01007b913fcb592a2f16d51dbbc0516e7676692ceeae920",
+      "hash_before": "3c2e426ad47d2dd5e01007b913fcb592a2f16d51dbbc0516e7676692ceeae920",
+      "identical": true
+    },
+    {
+      "candidate_count": 38,
+      "case_id": "pfe_fy2024_008",
+      "hash_after": "50e54cf5910d833f12e454333c5ed44c013c3c042f20c6333a59236743ba8b85",
+      "hash_before": "50e54cf5910d833f12e454333c5ed44c013c3c042f20c6333a59236743ba8b85",
+      "identical": true
+    },
+    {
+      "candidate_count": 61,
+      "case_id": "pfe_fy2024_009",
+      "hash_after": "b52a033d7395d88c4190663dd8559d9807dc5b8f25b648b8352afd0221b3454e",
+      "hash_before": "b52a033d7395d88c4190663dd8559d9807dc5b8f25b648b8352afd0221b3454e",
+      "identical": true
+    },
+    {
+      "candidate_count": 69,
+      "case_id": "tsla_fy2025_001",
+      "hash_after": "f7ec17bb8dc93464986e11d0f5830e2a5e9b55967a6e13463c18649d0ae1c5c5",
+      "hash_before": "f7ec17bb8dc93464986e11d0f5830e2a5e9b55967a6e13463c18649d0ae1c5c5",
+      "identical": true
+    },
+    {
+      "candidate_count": 74,
+      "case_id": "tsla_fy2025_002",
+      "hash_after": "34b532984e5ef5b899694dbf14e627a1c4e111f38ec60f4bca6afcb83d5c4d2a",
+      "hash_before": "34b532984e5ef5b899694dbf14e627a1c4e111f38ec60f4bca6afcb83d5c4d2a",
+      "identical": true
+    },
+    {
+      "candidate_count": 73,
+      "case_id": "tsla_fy2025_003",
+      "hash_after": "5878f830009a9174c70ad48c4b131eb0edaf5ec48ff136c674540eb591b450ae",
+      "hash_before": "5878f830009a9174c70ad48c4b131eb0edaf5ec48ff136c674540eb591b450ae",
+      "identical": true
+    },
+    {
+      "candidate_count": 73,
+      "case_id": "tsla_fy2025_004",
+      "hash_after": "eb5df2798c5b35d285ab758909195693562dcf5d593536ca7d195f7cbf363c1e",
+      "hash_before": "eb5df2798c5b35d285ab758909195693562dcf5d593536ca7d195f7cbf363c1e",
+      "identical": true
+    },
+    {
+      "candidate_count": 62,
+      "case_id": "tsla_fy2025_005",
+      "hash_after": "b7b0c57db499c9b0011ef10e371bc6865d6cfd19148fb9c4834b92cf846ae87c",
+      "hash_before": "b7b0c57db499c9b0011ef10e371bc6865d6cfd19148fb9c4834b92cf846ae87c",
+      "identical": true
+    },
+    {
+      "candidate_count": 75,
+      "case_id": "tsla_fy2025_006",
+      "hash_after": "13a5abdfd9503bec81bc54e6ef48a5041fa59d15c36e2ac419d4e1ca5a4eb7db",
+      "hash_before": "13a5abdfd9503bec81bc54e6ef48a5041fa59d15c36e2ac419d4e1ca5a4eb7db",
+      "identical": true
+    },
+    {
+      "candidate_count": 67,
+      "case_id": "tsla_fy2025_007",
+      "hash_after": "912ddf486e9e27b422000013251c1b7f6981707069d5faad1e64b34aaa2324db",
+      "hash_before": "912ddf486e9e27b422000013251c1b7f6981707069d5faad1e64b34aaa2324db",
+      "identical": true
+    },
+    {
+      "candidate_count": 38,
+      "case_id": "tsla_fy2025_008",
+      "hash_after": "366af48acd2b868c3bc49ad6bcb5f1db45b597a062535892027985c61a477a14",
+      "hash_before": "366af48acd2b868c3bc49ad6bcb5f1db45b597a062535892027985c61a477a14",
+      "identical": true
+    },
+    {
+      "candidate_count": 73,
+      "case_id": "tsla_fy2025_009",
+      "hash_after": "a8c5d9a639702365b9671c758a218dc61d17c45c2895e76dcc9f73f3993500bc",
+      "hash_before": "a8c5d9a639702365b9671c758a218dc61d17c45c2895e76dcc9f73f3993500bc",
+      "identical": true
+    },
+    {
+      "candidate_count": 67,
+      "case_id": "v_fy2025_001",
+      "hash_after": "2ee7d35b7dc86ac6b05ccbad956eb26ce1c8d9940dddf39b0c0c9626dff9625d",
+      "hash_before": "2ee7d35b7dc86ac6b05ccbad956eb26ce1c8d9940dddf39b0c0c9626dff9625d",
+      "identical": true
+    },
+    {
+      "candidate_count": 40,
+      "case_id": "v_fy2025_002",
+      "hash_after": "fa2aa3b87715d38f601a14ab0024056edd43f2babad1c6343a0a12b479882b23",
+      "hash_before": "fa2aa3b87715d38f601a14ab0024056edd43f2babad1c6343a0a12b479882b23",
+      "identical": true
+    },
+    {
+      "candidate_count": 69,
+      "case_id": "v_fy2025_003",
+      "hash_after": "e8090056b4c75d33438980169bfafc8d925ee7436eb89d7d2c6fd4cdc4db4333",
+      "hash_before": "e8090056b4c75d33438980169bfafc8d925ee7436eb89d7d2c6fd4cdc4db4333",
+      "identical": true
+    },
+    {
+      "candidate_count": 29,
+      "case_id": "v_fy2025_004",
+      "hash_after": "db6afa41db9cc4d68e6ee662352839e43e7fe604617a70a62dddb5a3ebbd7698",
+      "hash_before": "db6afa41db9cc4d68e6ee662352839e43e7fe604617a70a62dddb5a3ebbd7698",
+      "identical": true
+    },
+    {
+      "candidate_count": 61,
+      "case_id": "v_fy2025_005",
+      "hash_after": "2d61c38a02c777923b726b85cd4f58cf29cadb85d65340399addd184793093b9",
+      "hash_before": "2d61c38a02c777923b726b85cd4f58cf29cadb85d65340399addd184793093b9",
+      "identical": true
+    },
+    {
+      "candidate_count": 70,
+      "case_id": "v_fy2025_006",
+      "hash_after": "9f8db24e6168543e4bff7491980758e8ff95db03aae306f1ea071a6a86ef161c",
+      "hash_before": "9f8db24e6168543e4bff7491980758e8ff95db03aae306f1ea071a6a86ef161c",
+      "identical": true
+    },
+    {
+      "candidate_count": 34,
+      "case_id": "v_fy2025_007",
+      "hash_after": "6658bc92fe1e9f39de8721544116011fbdd960a45d509ec97d59435e333c9985",
+      "hash_before": "6658bc92fe1e9f39de8721544116011fbdd960a45d509ec97d59435e333c9985",
+      "identical": true
+    },
+    {
+      "candidate_count": 40,
+      "case_id": "v_fy2025_008",
+      "hash_after": "d424f563357a2a2e864fa5e1c4dab2925e2434fd5ba9d378685940570e2308ff",
+      "hash_before": "d424f563357a2a2e864fa5e1c4dab2925e2434fd5ba9d378685940570e2308ff",
+      "identical": true
+    },
+    {
+      "candidate_count": 32,
+      "case_id": "v_fy2025_009",
+      "hash_after": "2bbd27d83105b5d25f11fa912abda053f9d81f34b9b5e78a154d85865dc9a26f",
+      "hash_before": "2bbd27d83105b5d25f11fa912abda053f9d81f34b9b5e78a154d85865dc9a26f",
+      "identical": true
+    }
+  ]
+}

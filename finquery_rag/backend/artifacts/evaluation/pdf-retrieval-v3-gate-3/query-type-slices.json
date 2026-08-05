@@ -1,0 +1,30 @@
+{
+  "calculation_multi_operand": {
+    "case_count": 11,
+    "combined_hits": 7,
+    "expected_sources": 22,
+    "pool_changed_case_count": 0,
+    "raw_full_hits": 7
+  },
+  "multi_metric_comparison": {
+    "case_count": 5,
+    "combined_hits": 4,
+    "expected_sources": 10,
+    "pool_changed_case_count": 0,
+    "raw_full_hits": 4
+  },
+  "no_answer": {
+    "case_count": 8,
+    "combined_hits": 0,
+    "expected_sources": 0,
+    "pool_changed_case_count": 2,
+    "raw_full_hits": 0
+  },
+  "table_single_fact": {
+    "case_count": 48,
+    "combined_hits": 22,
+    "expected_sources": 48,
+    "pool_changed_case_count": 42,
+    "raw_full_hits": 20
+  }
+}

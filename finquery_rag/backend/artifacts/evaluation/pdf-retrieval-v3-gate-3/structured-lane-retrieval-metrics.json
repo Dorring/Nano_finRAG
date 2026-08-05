@@ -1,0 +1,8 @@
+{
+  "bm25_and_dense_top_k": 40,
+  "denominator": 80,
+  "eligible_case_count": 50,
+  "empty_lane_after_concept_resolution": 6,
+  "rrf_top_k": 20,
+  "strict_source_hits": 6
+}

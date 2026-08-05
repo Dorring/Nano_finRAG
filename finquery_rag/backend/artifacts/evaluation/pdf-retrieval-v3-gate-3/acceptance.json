@@ -1,0 +1,35 @@
+{
+  "answer_generation_calls": 0,
+  "decision": "structured_lane_pool_gain_insufficient",
+  "final_selector_calls": 0,
+  "gate": "pdf_retrieval_v3_gate_3",
+  "gate_passed": false,
+  "metrics": {
+    "combined_full_pool_evidence_family_recall": "33/80",
+    "combined_full_pool_page_recall": "75/80",
+    "combined_full_pool_strict_recall": "33/80",
+    "eligible_case_count": 50,
+    "final_13_retained_in_combined_pool": true,
+    "new_strict_gold_count": 2,
+    "raw_full_rrf_pool_strict_recall": "31/80",
+    "raw_rrf_at_40_strict_recall": "20/80",
+    "raw_strict_gold_lost": 0,
+    "structured_lane_empty_after_resolution_count": 6,
+    "structured_rrf_at_20_strict_recall_eligible_scope": "6/80"
+  },
+  "next_gate": "stop_structured_lane",
+  "posthoc_gold_source_reads": 80,
+  "production_default_config_modified": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "reranker_calls": 0,
+  "runtime_gold_reads": 0,
+  "runtime_governance_reads": 0,
+  "safety": {
+    "candidate_identity_conflicts": 0,
+    "duplicate_candidates": 0,
+    "noneligible_pool_changes": 0,
+    "raw_pool_loss": 0,
+    "raw_pool_order_changes": 0
+  }
+}
