@@ -1,0 +1,18 @@
+{
+  "batch_size": 16,
+  "candidate_input_template": "issuer + xbrl_concept + period_end + period_kind + evidence_excerpt",
+  "candidate_input_uses_expected_fields": false,
+  "candidate_input_uses_frozen_benchmark_fields": false,
+  "device": "cuda:0",
+  "fp16": true,
+  "hyperparameter_scan_allowed": false,
+  "issuer_grouped_validation": true,
+  "max_length": 512,
+  "model_config_sha256": "13dcd6c31d9fec9d1d8e158702072f62d7fa7d312a64b9fe057bec9a08cfe41a",
+  "model_family": "BAAI/bge-reranker-v2-m3",
+  "model_snapshot_path_committed": false,
+  "offline": true,
+  "schema": "nf-opt-17/frozen-reranker-config/v1",
+  "seed": 20260805,
+  "training_performed": false
+}

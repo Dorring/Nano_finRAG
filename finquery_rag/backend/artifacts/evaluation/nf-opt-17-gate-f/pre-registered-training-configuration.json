@@ -1,0 +1,25 @@
+{
+  "batch_queries": 2,
+  "epochs": 3,
+  "fp16": true,
+  "frozen_benchmark_read_allowed": false,
+  "gradient_accumulation": 4,
+  "hyperparameter_scan_performed": false,
+  "learning_rate": 1e-05,
+  "max_grad_norm": 1.0,
+  "max_length": 512,
+  "objective": "three_way_positive_first_cross_entropy",
+  "schema": "nf-opt-17/pre-registered-training-config/v1",
+  "seed": 20260805,
+  "train_issuers": [
+    "Alphabet Inc.",
+    "AMAZON COM INC",
+    "Meta Platforms, Inc."
+  ],
+  "train_query_count": 60,
+  "trainable_parameter_count": 1050625,
+  "trainable_parameter_scope": "classification_head_only",
+  "validation_issuer": "NETFLIX INC",
+  "validation_query_count": 20,
+  "weight_decay": 0.01
+}

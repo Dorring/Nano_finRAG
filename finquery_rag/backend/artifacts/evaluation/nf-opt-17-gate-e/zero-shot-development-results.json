@@ -1,0 +1,2432 @@
+{
+  "by_issuer": {
+    "AMAZON COM INC": {
+      "mrr": 1.0,
+      "pairwise_accuracy": 1.0,
+      "pairwise_by_negative_type": {
+        "same_row_wrong_period": {
+          "accuracy": 1.0,
+          "correct": 20,
+          "count": 20
+        },
+        "same_table_wrong_metric": {
+          "accuracy": 1.0,
+          "correct": 20,
+          "count": 20
+        }
+      },
+      "pairwise_correct_count": 40,
+      "pairwise_count": 40,
+      "query_count": 20,
+      "top1_accuracy": 1.0,
+      "top1_count": 20
+    },
+    "Alphabet Inc.": {
+      "mrr": 0.95,
+      "pairwise_accuracy": 0.95,
+      "pairwise_by_negative_type": {
+        "same_row_wrong_period": {
+          "accuracy": 0.95,
+          "correct": 19,
+          "count": 20
+        },
+        "same_table_wrong_metric": {
+          "accuracy": 0.95,
+          "correct": 19,
+          "count": 20
+        }
+      },
+      "pairwise_correct_count": 38,
+      "pairwise_count": 40,
+      "query_count": 20,
+      "top1_accuracy": 0.9,
+      "top1_count": 18
+    },
+    "Meta Platforms, Inc.": {
+      "mrr": 0.875,
+      "pairwise_accuracy": 0.875,
+      "pairwise_by_negative_type": {
+        "same_row_wrong_period": {
+          "accuracy": 1.0,
+          "correct": 20,
+          "count": 20
+        },
+        "same_table_wrong_metric": {
+          "accuracy": 0.75,
+          "correct": 15,
+          "count": 20
+        }
+      },
+      "pairwise_correct_count": 35,
+      "pairwise_count": 40,
+      "query_count": 20,
+      "top1_accuracy": 0.75,
+      "top1_count": 15
+    },
+    "NETFLIX INC": {
+      "mrr": 0.925,
+      "pairwise_accuracy": 0.925,
+      "pairwise_by_negative_type": {
+        "same_row_wrong_period": {
+          "accuracy": 1.0,
+          "correct": 20,
+          "count": 20
+        },
+        "same_table_wrong_metric": {
+          "accuracy": 0.85,
+          "correct": 17,
+          "count": 20
+        }
+      },
+      "pairwise_correct_count": 37,
+      "pairwise_count": 40,
+      "query_count": 20,
+      "top1_accuracy": 0.85,
+      "top1_count": 17
+    }
+  },
+  "overall": {
+    "mrr": 0.9375,
+    "pairwise_accuracy": 0.9375,
+    "pairwise_by_negative_type": {
+      "same_row_wrong_period": {
+        "accuracy": 0.9875,
+        "correct": 79,
+        "count": 80
+      },
+      "same_table_wrong_metric": {
+        "accuracy": 0.8875,
+        "correct": 71,
+        "count": 80
+      }
+    },
+    "pairwise_correct_count": 150,
+    "pairwise_count": 160,
+    "query_count": 80,
+    "top1_accuracy": 0.875,
+    "top1_count": 70
+  },
+  "records": [
+    {
+      "annotation_id": "dev-annotation:06d3d347728169098b9145266583d301b5794b6d560928d3f0726e2b7d843d45",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-300",
+        "dev:sec:1018724:0001018724-26-000004:f-299",
+        "dev:sec:1018724:0001018724-26-000004:f-270"
+      ],
+      "input_sha256": [
+        "07284c25ce8c15d7d10d256379b678e57e86cb4e8fc41a2a629f39350601a90b",
+        "a4ee44096ef9f413de6ed08f6532136277c23d27fbc1ba7eacb1eedc328502cd",
+        "92196417637af07c649445068583c6a0fbd1d1837cf681b1e50911c7d2ffeee8"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:06d3d347728169098b9145266583d301b5794b6d560928d3f0726e2b7d843d45",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.05078125,
+        3.74023438,
+        0.82275391
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:1bf3b1b8cec8e5e2a45b3c9ab19bb74c6b62f52606c686a2a539a233500f28ff",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-689",
+        "dev:sec:1018724:0001018724-26-000004:f-688",
+        "dev:sec:1018724:0001018724-26-000004:f-687"
+      ],
+      "input_sha256": [
+        "961dec9ae82da5a7dffbfa2439cbc6c9cc463bf5cce3fd5b3451df3a515e2b03",
+        "0a4112beb9f693254496869b19f1417d41bcf5fdc375e1533a2f8019362ce951",
+        "abde29be077b916edb54c97f9c1fc7836c6752b9fc085a2fb3bb2ff2c585fb30"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:1bf3b1b8cec8e5e2a45b3c9ab19bb74c6b62f52606c686a2a539a233500f28ff",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        4.05859375,
+        3.50390625,
+        0.45605469
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:3337d4948e3b30ee88b9ada6b3fbc1638b34de1584f030be3b94dc594c62feb4",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-250",
+        "dev:sec:1018724:0001018724-26-000004:f-249",
+        "dev:sec:1018724:0001018724-26-000004:f-270"
+      ],
+      "input_sha256": [
+        "e19f4f25ed0c862c833430ea8d10baf4b66274d712bf94f3ee811387b0f365ee",
+        "326fae64b11702304fadad88a727ed13834e192af6bcd3bafbfa86330d9ecb05",
+        "92196417637af07c649445068583c6a0fbd1d1837cf681b1e50911c7d2ffeee8"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:3337d4948e3b30ee88b9ada6b3fbc1638b34de1584f030be3b94dc594c62feb4",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.25,
+        5.1015625,
+        1.81347656
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:3555ffc270dabac62376934c608d4db90e7aa726d5d6cb4b23f90a35a7f0ae92",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-310",
+        "dev:sec:1018724:0001018724-26-000004:f-309",
+        "dev:sec:1018724:0001018724-26-000004:f-270"
+      ],
+      "input_sha256": [
+        "ac12acdf3d8ae71589f9c7b798d4ece6b9db82b37e6e09b2f76c35eb9bdf0efe",
+        "ae5ceb73a67536bef50a4abcb7fa0c57b43533e3d1af0e5fd2e7e383cbdc35f7",
+        "92196417637af07c649445068583c6a0fbd1d1837cf681b1e50911c7d2ffeee8"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:3555ffc270dabac62376934c608d4db90e7aa726d5d6cb4b23f90a35a7f0ae92",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.6484375,
+        4.78125,
+        -0.95703125
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:3c15db1191eb045c2e787db83910f376314b1d722574a893a4738aafc7b50cf4",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-270",
+        "dev:sec:1018724:0001018724-26-000004:f-269",
+        "dev:sec:1018724:0001018724-26-000004:f-256"
+      ],
+      "input_sha256": [
+        "92196417637af07c649445068583c6a0fbd1d1837cf681b1e50911c7d2ffeee8",
+        "1ee13032d1371c8bdcca4ec0a834f7d0f8f900b05f0850aa4c0b7135f0818485",
+        "289b3b0c463f51531095d4d2e9e9ed6da0507d1a9d48aa144db510c15a8d23d4"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:3c15db1191eb045c2e787db83910f376314b1d722574a893a4738aafc7b50cf4",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.828125,
+        4.7265625,
+        3.15234375
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:46f2830bbd5b0cf5fdd79fe33b785eaede5c6cb890914ebf29bd59505115bc81",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-140",
+        "dev:sec:1018724:0001018724-26-000004:f-139",
+        "dev:sec:1018724:0001018724-26-000004:f-74"
+      ],
+      "input_sha256": [
+        "ba4c7abd22b0b1ff321c76c23cc347e7ca05bce8a6247389f854febae60e7b31",
+        "b7f1749e46d9fcf4d41940c28e55e63eee5a228fa434f558210a709aa2de9296",
+        "2e043f8d4e4f6337a086de2c2a29f16dcfb95a1ef54247a9e4450dc34bd5841c"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:46f2830bbd5b0cf5fdd79fe33b785eaede5c6cb890914ebf29bd59505115bc81",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        3.734375,
+        3.35546875,
+        -1.29785156
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:4bc012f8e17dcfdece638199e2c6a7cbc43e7c713a4339e8f87d1c99c6e227ad",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-256",
+        "dev:sec:1018724:0001018724-26-000004:f-255",
+        "dev:sec:1018724:0001018724-26-000004:f-270"
+      ],
+      "input_sha256": [
+        "289b3b0c463f51531095d4d2e9e9ed6da0507d1a9d48aa144db510c15a8d23d4",
+        "66e586d57b66961e7ba9cefac0139c6e33f4cf1c31a94b5e9383f530cd77f9a7",
+        "92196417637af07c649445068583c6a0fbd1d1837cf681b1e50911c7d2ffeee8"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:4bc012f8e17dcfdece638199e2c6a7cbc43e7c713a4339e8f87d1c99c6e227ad",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        4.96875,
+        4.078125,
+        4.55859375
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:5a3fdab535e61abc612b4013aba1135db30b5f37f9fc35538d5e7bf1d7d11e8a",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-248",
+        "dev:sec:1018724:0001018724-26-000004:f-247",
+        "dev:sec:1018724:0001018724-26-000004:f-215"
+      ],
+      "input_sha256": [
+        "92a08e19a81118527c5179cc0520620e291c90839c042d534e142e91cbc69956",
+        "475899fe0cde7aafe4b5ee937e73511491da734c2014c5e387b586a2f7c15d9f",
+        "a2be4fdeb9030d00dd136de0a1266a7fb97c1249ffd137379e6a0c77abe9354e"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:5a3fdab535e61abc612b4013aba1135db30b5f37f9fc35538d5e7bf1d7d11e8a",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.90234375,
+        5.828125,
+        3.5859375
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:73501f2b03545d45a878ff100b7051fd2cc366fdd9dfbe563707e95a2f79052c",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-274",
+        "dev:sec:1018724:0001018724-26-000004:f-273",
+        "dev:sec:1018724:0001018724-26-000004:f-270"
+      ],
+      "input_sha256": [
+        "8e0a99d4e13aaca02e779b6b402df5f4310a299fab6975a6033e4d7c3ef3fdac",
+        "03f97098156d4feeb200c201bb4ee766dc69414a433c2c2e0a3144df68b02764",
+        "92196417637af07c649445068583c6a0fbd1d1837cf681b1e50911c7d2ffeee8"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:73501f2b03545d45a878ff100b7051fd2cc366fdd9dfbe563707e95a2f79052c",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        3.43164062,
+        3.2109375,
+        0.83154297
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:9140b3294b6cb029c511f1d89d7fcfcb51ef9d6c821c1e5ce276febf647ace6f",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-672",
+        "dev:sec:1018724:0001018724-26-000004:f-671",
+        "dev:sec:1018724:0001018724-26-000004:f-666"
+      ],
+      "input_sha256": [
+        "2c50dfc3e9108bc5212b1722486bba35c65f2c36f2b0da7ffabaef653f078b40",
+        "26f09732b5debd66aed6f38d6481b40da849dd2ad248a46efb52596b9137cad0",
+        "e19f4f25ed0c862c833430ea8d10baf4b66274d712bf94f3ee811387b0f365ee"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:9140b3294b6cb029c511f1d89d7fcfcb51ef9d6c821c1e5ce276febf647ace6f",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.08984375,
+        4.3671875,
+        3.10742188
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:9ce166dd3ab42828e5f1cb69d4acde708efbeab8f4cdf78ceb1786ccc4f7164b",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-155",
+        "dev:sec:1018724:0001018724-26-000004:f-154",
+        "dev:sec:1018724:0001018724-26-000004:f-203"
+      ],
+      "input_sha256": [
+        "633d817ed8d8656a6949bdb01b478699e8cf9634cc7c531f342776f4b077db35",
+        "ce258a4a4971a9fcbb689b08607336628ae9b051b742e8deecc466480c367e39",
+        "1339eb40a1b262df1fa42bdf4b102ce28d935e2479289384a7a4c2802149c7b4"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:9ce166dd3ab42828e5f1cb69d4acde708efbeab8f4cdf78ceb1786ccc4f7164b",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.00390625,
+        4.07421875,
+        0.34619141
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:9f0c5071641bbf8c8bc2df53e53ea1d0f693c8db71a48eeadefd55848037e220",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-272",
+        "dev:sec:1018724:0001018724-26-000004:f-271",
+        "dev:sec:1018724:0001018724-26-000004:f-270"
+      ],
+      "input_sha256": [
+        "97a298d0dea3f7df8eb7700dab7f8403e8c9aaa7424a319ac760ef0ed09ff7fa",
+        "cf86db64549876bfbeefa96883eecbd62a6381a68e8060045a0ce4cb7e9451e0",
+        "92196417637af07c649445068583c6a0fbd1d1837cf681b1e50911c7d2ffeee8"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:9f0c5071641bbf8c8bc2df53e53ea1d0f693c8db71a48eeadefd55848037e220",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        4.28515625,
+        3.52929688,
+        2.13085938
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:a8432af6f3ee35a81a9685f927a9fdcd38b9b36d33000854afb90ebe6fd397a9",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-295",
+        "dev:sec:1018724:0001018724-26-000004:f-296",
+        "dev:sec:1018724:0001018724-26-000004:f-270"
+      ],
+      "input_sha256": [
+        "ed77f2cdf52cb95cd0b90d86102d84cc4eefa8a75357a30c3e5c38ac43ed38ff",
+        "7ca2d1a75588af3c3eb3ad5bd5922640ed9b025785e6b13e96c5ed49d40480b5",
+        "92196417637af07c649445068583c6a0fbd1d1837cf681b1e50911c7d2ffeee8"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:a8432af6f3ee35a81a9685f927a9fdcd38b9b36d33000854afb90ebe6fd397a9",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.9375,
+        5.6796875,
+        0.71386719
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:b0aa4fd7a5b56afb2bf248f20c31be76402f9da30a22ffff2a55213016843aa8",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-173",
+        "dev:sec:1018724:0001018724-26-000004:f-172",
+        "dev:sec:1018724:0001018724-26-000004:f-203"
+      ],
+      "input_sha256": [
+        "f23acb3bcd6a66f01c240bd9f2ec6ee6d7640cdaad75e49a8d4ea581960d9c01",
+        "6a9a9c9cf975de603afccd99566cb0ca89bedfeb31a02439da820f1c73babb51",
+        "1339eb40a1b262df1fa42bdf4b102ce28d935e2479289384a7a4c2802149c7b4"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:b0aa4fd7a5b56afb2bf248f20c31be76402f9da30a22ffff2a55213016843aa8",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.83203125,
+        4.48828125,
+        0.85400391
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:bfc18defaaa6011ee4670e7ac9befbda8a597f71b1e3688442e061a67461e375",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-258",
+        "dev:sec:1018724:0001018724-26-000004:f-257",
+        "dev:sec:1018724:0001018724-26-000004:f-270"
+      ],
+      "input_sha256": [
+        "9f0abaef7967f5f9d23819a997f595aa1e00d5af36b40cc6d34e03a6d3a1a4d3",
+        "2d21eda6e1a7cdc372e0147eec2ea5ccda52bcca59a2743dfb676db831dbb918",
+        "92196417637af07c649445068583c6a0fbd1d1837cf681b1e50911c7d2ffeee8"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:bfc18defaaa6011ee4670e7ac9befbda8a597f71b1e3688442e061a67461e375",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.58203125,
+        4.2109375,
+        3.22265625
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:cef6696c1f4f0181b0697bc02ecb0235b45c6a31556448a884036eb5602b0add",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-304",
+        "dev:sec:1018724:0001018724-26-000004:f-303",
+        "dev:sec:1018724:0001018724-26-000004:f-270"
+      ],
+      "input_sha256": [
+        "79313ec8bd35e23459c554b093aa456aa57141b9aee5b423661c6ae122751d2a",
+        "7928d3f732f36ebb668ee3204bbe0f27b69cf1310eabf4069af1cd29011f6da9",
+        "92196417637af07c649445068583c6a0fbd1d1837cf681b1e50911c7d2ffeee8"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:cef6696c1f4f0181b0697bc02ecb0235b45c6a31556448a884036eb5602b0add",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.03125,
+        4.1484375,
+        1.16113281
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:d240fe61b12713cad9d0555a5f2d4ff0b412bcb8b4f8469b39b5b7a1a256ca7a",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-203",
+        "dev:sec:1018724:0001018724-26-000004:f-202",
+        "dev:sec:1018724:0001018724-26-000004:f-155"
+      ],
+      "input_sha256": [
+        "1339eb40a1b262df1fa42bdf4b102ce28d935e2479289384a7a4c2802149c7b4",
+        "d93466b94abbd9ef9853bff13668c14bac061c7d29e874ee2e103e8c532e164a",
+        "633d817ed8d8656a6949bdb01b478699e8cf9634cc7c531f342776f4b077db35"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:d240fe61b12713cad9d0555a5f2d4ff0b412bcb8b4f8469b39b5b7a1a256ca7a",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.99609375,
+        5.7265625,
+        -1.28027344
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:da36b44f069388b73e6fd610f4b94c7cbca36202f52a86803d985705bdb7d1f1",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-302",
+        "dev:sec:1018724:0001018724-26-000004:f-301",
+        "dev:sec:1018724:0001018724-26-000004:f-270"
+      ],
+      "input_sha256": [
+        "aea164d03943cec07efd1a6c2671c326e5a54eda800a905ffbb48964e152bafd",
+        "29837a09c8ecfb32a3785e73388a53f4176a07ecca99b7cd48a94985c5666a24",
+        "92196417637af07c649445068583c6a0fbd1d1837cf681b1e50911c7d2ffeee8"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:da36b44f069388b73e6fd610f4b94c7cbca36202f52a86803d985705bdb7d1f1",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.80078125,
+        4.32421875,
+        0.89257812
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:da4c2c785eafb733cb9a6160fbf1e797204c045a5ef024e8b1f3e466edd4e8d3",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-1222",
+        "dev:sec:1018724:0001018724-26-000004:f-1221",
+        "dev:sec:1018724:0001018724-26-000004:f-1240"
+      ],
+      "input_sha256": [
+        "89c05f442efde1f3a5491014c0cce412cbd87b918d8ec70a3e07b20739d79e59",
+        "4ef60ee97d2e81fc03780179c4a4003bc5590a1f9f3b6350cfda19695184509b",
+        "673b548fa53cda4623f6ac629be8cb5892cee529bd6b79dfa11fd9cd9b822161"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:da4c2c785eafb733cb9a6160fbf1e797204c045a5ef024e8b1f3e466edd4e8d3",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.18359375,
+        5.5,
+        2.19921875
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:fa07c1ca37b91ef53e9742ba6098ad5434143ca101e1039d9573da0856b3e377",
+      "candidate_keys": [
+        "dev:sec:1018724:0001018724-26-000004:f-298",
+        "dev:sec:1018724:0001018724-26-000004:f-297",
+        "dev:sec:1018724:0001018724-26-000004:f-270"
+      ],
+      "input_sha256": [
+        "76ca32fe3419d8ee2a41e016c917b0f47dfa1ff93e4586e9b44618a59547aa8e",
+        "6ab541931cad4989b3b5648364c663f116ce959c7f67322fdc7e0b82aff2eedd",
+        "92196417637af07c649445068583c6a0fbd1d1837cf681b1e50911c7d2ffeee8"
+      ],
+      "issuer": "AMAZON COM INC",
+      "query_id": "dev-query:fa07c1ca37b91ef53e9742ba6098ad5434143ca101e1039d9573da0856b3e377",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.75,
+        4.390625,
+        -0.16564941
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:0d4118dbb60ccb7ceb3fe5876a95853310f9443f885a543af04bf9e8bf7f1336",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-330",
+        "dev:sec:1065280:0001065280-26-000034:f-331",
+        "dev:sec:1065280:0001065280-26-000034:f-286"
+      ],
+      "input_sha256": [
+        "03a94015e183423dbcb1445e56002b123b39b7a072300155bdffd73113cab37e",
+        "b62af893ce908166b6c5063ee2e9b8edea5d99776bd8805b1f44a2e4b79adae6",
+        "efadb427bb47c272590e7376cfaf320af3172fd386f93ef3b93f41834e0d3712"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:0d4118dbb60ccb7ceb3fe5876a95853310f9443f885a543af04bf9e8bf7f1336",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.1328125,
+        5.11328125,
+        -2.73242188
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:12ed6e81825d50d68119c50ff359d742d035069c5bfbb3328f9a718d6cc10b25",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-1230",
+        "dev:sec:1065280:0001065280-26-000034:f-1231",
+        "dev:sec:1065280:0001065280-26-000034:f-1224"
+      ],
+      "input_sha256": [
+        "6df9e39215faa55727c12c9b77167ac4f236fe71e2688cb9e703efe815699640",
+        "cbb85a30f3a4b5ffca5ca9484f2ba82f62d74c19d2cbb6afb8ea4119799979fd",
+        "df5fa45f17666fb8791c9922203e5580ba401490a8388ed7f9789eb91d167214"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:12ed6e81825d50d68119c50ff359d742d035069c5bfbb3328f9a718d6cc10b25",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": false
+        },
+        "positive_rank": 2,
+        "positive_top1": false,
+        "reciprocal_rank": 0.5
+      },
+      "scores": [
+        2.328125,
+        1.98339844,
+        2.86914062
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:1ed33aec72daad4024b13efd0f52d56da788a22697b9e6063d54a72ed32f234c",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-121",
+        "dev:sec:1065280:0001065280-26-000034:f-122",
+        "dev:sec:1065280:0001065280-26-000034:f-91"
+      ],
+      "input_sha256": [
+        "2a97d96e451e0183606b4e0a88b83ca097032bf8a6bf9294916fffeadcf551fd",
+        "5404e1e4d5fb198f1377f46f415ba18e8e565deda3ffe867d7c31f26256ad3b1",
+        "f1e3b0f3d727ff7971074956c0d245d293d85ef48c019f79e6385327026cc490"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:1ed33aec72daad4024b13efd0f52d56da788a22697b9e6063d54a72ed32f234c",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.07421875,
+        4.859375,
+        -0.72949219
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:264478c4151acb12caef22c9772e53307519ade0da9c226c4618f3f0032bda87",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-169",
+        "dev:sec:1065280:0001065280-26-000034:f-170",
+        "dev:sec:1065280:0001065280-26-000034:f-133"
+      ],
+      "input_sha256": [
+        "8de9be1c428cd8aa024c9c393de5bb21abfd89c8dbb50ed26e3950993c28e48f",
+        "53eb04ca3eae7d856014c8dd08d36395c531a6c78612e6bd85732d4bb87b5fa1",
+        "cb51fdb17e2ba948764675723e3b62dde207756ebc360c9f0b907566dd416aec"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:264478c4151acb12caef22c9772e53307519ade0da9c226c4618f3f0032bda87",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.42578125,
+        5.1796875,
+        3.55859375
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:318435faa5ff23ca48f84db21542e2ca2401e66b1673c5a7de6e73b513e2b2a5",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-321",
+        "dev:sec:1065280:0001065280-26-000034:f-322",
+        "dev:sec:1065280:0001065280-26-000034:f-286"
+      ],
+      "input_sha256": [
+        "58d45a0eb39cd566db21c3f86e5b5410b442b79355321abf7fb9695f09707a76",
+        "1058be7c0c5e2ae65610597245c2257c491f2ce6069006574920f7fbc895c056",
+        "efadb427bb47c272590e7376cfaf320af3172fd386f93ef3b93f41834e0d3712"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:318435faa5ff23ca48f84db21542e2ca2401e66b1673c5a7de6e73b513e2b2a5",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.52734375,
+        5.4296875,
+        -0.90478516
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:5b312ab851abab076bce91aac965c0abd39c05ad1521340b20d19b8e60a533d9",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-286",
+        "dev:sec:1065280:0001065280-26-000034:f-287",
+        "dev:sec:1065280:0001065280-26-000034:f-288"
+      ],
+      "input_sha256": [
+        "efadb427bb47c272590e7376cfaf320af3172fd386f93ef3b93f41834e0d3712",
+        "6bc9aadba88eab0ff1e79d40f0051d40accde3055d963cded1d7bbecd794fe38",
+        "fcbd415ca2412a0a4e2991cd57db241f0e67032d169c0c75f4be769494d07e20"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:5b312ab851abab076bce91aac965c0abd39c05ad1521340b20d19b8e60a533d9",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        4.89453125,
+        3.75390625,
+        1.72363281
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:5d4ec47d7ffac15eb91bbcc82dbb1fb53eed307a32031a61ad1b2bcc50de9ff2",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-288",
+        "dev:sec:1065280:0001065280-26-000034:f-289",
+        "dev:sec:1065280:0001065280-26-000034:f-286"
+      ],
+      "input_sha256": [
+        "fcbd415ca2412a0a4e2991cd57db241f0e67032d169c0c75f4be769494d07e20",
+        "2a93fb2c843fb736f1574e2b6925ad893ab4e24d5e8771562c203dd9377a07d1",
+        "efadb427bb47c272590e7376cfaf320af3172fd386f93ef3b93f41834e0d3712"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:5d4ec47d7ffac15eb91bbcc82dbb1fb53eed307a32031a61ad1b2bcc50de9ff2",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.33984375,
+        4.2734375,
+        0.83398438
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:655403b1b718a98ac999071f380ef263a5e5ffa16112f2665cd93d654f08e0a8",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-256",
+        "dev:sec:1065280:0001065280-26-000034:f-257",
+        "dev:sec:1065280:0001065280-26-000034:f-217"
+      ],
+      "input_sha256": [
+        "bb7782c88e693db6862e849db8bbfef31d07b4c09be8493d3a31fd8d59568e81",
+        "e141a1fd09b62647fb5c4da52b3f07bd619fb0d700eebed3d11443f95e4e46f9",
+        "d06e029dca2b45c47515ac6500b865e8a8a665c832438daa550ddbf07bfc01c2"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:655403b1b718a98ac999071f380ef263a5e5ffa16112f2665cd93d654f08e0a8",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        4.03515625,
+        3.5546875,
+        -2.09570312
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:6c555e56d5c1424bdcd2d68f644c58b95ab24429df21f3627c8bd0bc91ed05e2",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-268",
+        "dev:sec:1065280:0001065280-26-000034:f-269",
+        "dev:sec:1065280:0001065280-26-000034:f-286"
+      ],
+      "input_sha256": [
+        "52b52eb7cdba8473a7a4dc313b9ca62428f0a2d014f9603c10cbe46514ceb349",
+        "2771c07e3b2fd1e7b21e1c42cf63ca1f507602c500ebd3a627bf0c0cc5298605",
+        "efadb427bb47c272590e7376cfaf320af3172fd386f93ef3b93f41834e0d3712"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:6c555e56d5c1424bdcd2d68f644c58b95ab24429df21f3627c8bd0bc91ed05e2",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.25390625,
+        4.7734375,
+        -1.65234375
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:71b79ad959283a93bf959596e97bc69a5e374621a0c78af4517f6d8e9cbeb7f4",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-621",
+        "dev:sec:1065280:0001065280-26-000034:f-622",
+        "dev:sec:1065280:0001065280-26-000034:f-619"
+      ],
+      "input_sha256": [
+        "202260674bb023d202dbf003e05553b25ea26fb8238c4498bcb401f07df27427",
+        "aa3d2757f34679757b4b0618d9af2e8ef64944cc1800c3ced643085a35f7d1a8",
+        "ffac13d78dd1cde22d29b208ff60591e01b7a163cef2fe495f3ebdd609b30fd6"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:71b79ad959283a93bf959596e97bc69a5e374621a0c78af4517f6d8e9cbeb7f4",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        2.84375,
+        2.43164062,
+        0.43579102
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:73cd7fa45ad79a6ae48a63306e0739bb77e7fb93f2bec62599eff714a01334cb",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-274",
+        "dev:sec:1065280:0001065280-26-000034:f-275",
+        "dev:sec:1065280:0001065280-26-000034:f-286"
+      ],
+      "input_sha256": [
+        "94eb7fe705b2a9f4c6dccd34fa6d083c37ea9ca18990d74fafeed5cb0c19e511",
+        "d84d3730e53d544d4d380575b43df7cae41e9e30fe5bd5a3821b300ab5513e5f",
+        "efadb427bb47c272590e7376cfaf320af3172fd386f93ef3b93f41834e0d3712"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:73cd7fa45ad79a6ae48a63306e0739bb77e7fb93f2bec62599eff714a01334cb",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.48828125,
+        4.0703125,
+        1.95117188
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:79b6a1eaacf3660636b174ad7ee9ab3910ddf6ffd9aa6f6729f5da8696176fef",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-316",
+        "dev:sec:1065280:0001065280-26-000034:f-317",
+        "dev:sec:1065280:0001065280-26-000034:f-286"
+      ],
+      "input_sha256": [
+        "b02852cd7ff5381669c0498c254761c39b5a349d5bc8cbee81b2279c43945a60",
+        "d4c4e39ce56655aa44072324234c38200089280f1298dcc36ca60f9941b9640d",
+        "efadb427bb47c272590e7376cfaf320af3172fd386f93ef3b93f41834e0d3712"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:79b6a1eaacf3660636b174ad7ee9ab3910ddf6ffd9aa6f6729f5da8696176fef",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        7.359375,
+        7.2890625,
+        -1.07421875
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:83cdb8c3778c669020efc3cafaeee908209f89a3c6d67cf0b907755d7b3cff40",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-320",
+        "dev:sec:1065280:0001065280-26-000034:f-323",
+        "dev:sec:1065280:0001065280-26-000034:f-286"
+      ],
+      "input_sha256": [
+        "43d38d2d504ae2b62fd33827807ec4234bbf62de7d2042a3f62a8b41bde10e93",
+        "52c113c4f3ac522a9f9420bee1c2c206f5ed2d2541b69da8006f93780c93a7b4",
+        "efadb427bb47c272590e7376cfaf320af3172fd386f93ef3b93f41834e0d3712"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:83cdb8c3778c669020efc3cafaeee908209f89a3c6d67cf0b907755d7b3cff40",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.3671875,
+        6.2578125,
+        -0.25292969
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:8403d5475cfcd1ff9581c84d414564f425f7eb65055d174dd003f553a53c70a8",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-1233",
+        "dev:sec:1065280:0001065280-26-000034:f-1234",
+        "dev:sec:1065280:0001065280-26-000034:f-1224"
+      ],
+      "input_sha256": [
+        "5f5e28e7e9d078ab1b24faeb885672ee90ed00fa2853791947493baf6cab7d51",
+        "0e0559b980fd8c06b8396e4225c87f434232a0d2a2fdc5e0d46e75347b4569a0",
+        "df5fa45f17666fb8791c9922203e5580ba401490a8388ed7f9789eb91d167214"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:8403d5475cfcd1ff9581c84d414564f425f7eb65055d174dd003f553a53c70a8",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": false
+        },
+        "positive_rank": 2,
+        "positive_top1": false,
+        "reciprocal_rank": 0.5
+      },
+      "scores": [
+        2.1171875,
+        1.57421875,
+        4.01953125
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:8c6b5c56c86e7e7b214abd620bac38d4b903199531310f52cd7448160eb749a8",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-319",
+        "dev:sec:1065280:0001065280-26-000034:f-318",
+        "dev:sec:1065280:0001065280-26-000034:f-286"
+      ],
+      "input_sha256": [
+        "a32d06c9428c1c6998266da69774791a8502aa3e8426ed389ab96039f792d533",
+        "770872717083cc978bc238b1aa2e43e01a4d1b57e78e74d6f13d2e6e71190a9e",
+        "efadb427bb47c272590e7376cfaf320af3172fd386f93ef3b93f41834e0d3712"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:8c6b5c56c86e7e7b214abd620bac38d4b903199531310f52cd7448160eb749a8",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.390625,
+        6.3828125,
+        -1.57519531
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:9fcce943f70e4f425a125a223e62a825c62efcf46a98882009d71944c49cb2ee",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-1224",
+        "dev:sec:1065280:0001065280-26-000034:f-1225",
+        "dev:sec:1065280:0001065280-26-000034:f-1230"
+      ],
+      "input_sha256": [
+        "df5fa45f17666fb8791c9922203e5580ba401490a8388ed7f9789eb91d167214",
+        "b7ca0a16cea59ddea80cbff89254da19101570eb400a48c90a0bd7cba4652e8f",
+        "6df9e39215faa55727c12c9b77167ac4f236fe71e2688cb9e703efe815699640"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:9fcce943f70e4f425a125a223e62a825c62efcf46a98882009d71944c49cb2ee",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.59765625,
+        5.05859375,
+        0.20275879
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:ba9253c8a5d53bad0247af0535254ab9ccb2489f1f5f17c3256c885b5e509c40",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-290",
+        "dev:sec:1065280:0001065280-26-000034:f-291",
+        "dev:sec:1065280:0001065280-26-000034:f-286"
+      ],
+      "input_sha256": [
+        "adfa86ccfd51d4f50b83c4289dfe70d982223113c3533c3ebd4f42412cc90b60",
+        "4a0b7f1c935cb2a23f03468b8e08c3ebd8cf59149933c32e6afda12118921dd3",
+        "efadb427bb47c272590e7376cfaf320af3172fd386f93ef3b93f41834e0d3712"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:ba9253c8a5d53bad0247af0535254ab9ccb2489f1f5f17c3256c885b5e509c40",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        3.09375,
+        2.87109375,
+        -0.2824707
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:c34b7fe3b62417388dc35ca6723466fc5f8e65f10448976d4b8024597fe5a270",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-91",
+        "dev:sec:1065280:0001065280-26-000034:f-92",
+        "dev:sec:1065280:0001065280-26-000034:f-121"
+      ],
+      "input_sha256": [
+        "f1e3b0f3d727ff7971074956c0d245d293d85ef48c019f79e6385327026cc490",
+        "94c2b95e1f2514584fd8e1ce9b58ce543713316a9dbbd41942740eeb69173d99",
+        "2a97d96e451e0183606b4e0a88b83ca097032bf8a6bf9294916fffeadcf551fd"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:c34b7fe3b62417388dc35ca6723466fc5f8e65f10448976d4b8024597fe5a270",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.03125,
+        3.4140625,
+        2.28710938
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:d0196ab4bb8f3a6093b32f8bd27efda34dc021e3e25bcce8e205ab63dc7ccdce",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-217",
+        "dev:sec:1065280:0001065280-26-000034:f-218",
+        "dev:sec:1065280:0001065280-26-000034:f-256"
+      ],
+      "input_sha256": [
+        "d06e029dca2b45c47515ac6500b865e8a8a665c832438daa550ddbf07bfc01c2",
+        "2a90a55a29d9f98e4b9a290aaa001fb77709fcb633f2fea36363811f6d6cb754",
+        "bb7782c88e693db6862e849db8bbfef31d07b4c09be8493d3a31fd8d59568e81"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:d0196ab4bb8f3a6093b32f8bd27efda34dc021e3e25bcce8e205ab63dc7ccdce",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": false
+        },
+        "positive_rank": 2,
+        "positive_top1": false,
+        "reciprocal_rank": 0.5
+      },
+      "scores": [
+        -1.3046875,
+        -1.81445312,
+        -0.3918457
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:ec76d6437804c39a1033e95beedf6db10fbb7ee2f32ec1cffaec77e5b02bffdb",
+      "candidate_keys": [
+        "dev:sec:1065280:0001065280-26-000034:f-324",
+        "dev:sec:1065280:0001065280-26-000034:f-325",
+        "dev:sec:1065280:0001065280-26-000034:f-286"
+      ],
+      "input_sha256": [
+        "b69d88c6ecd5d770cf0a91b5f8fa132d0306e6a6780afc757c230869d58952dc",
+        "40405f8dbb0ba65ad814c9d2167e47864f2fc2a4bf429f500a33880dcd027255",
+        "efadb427bb47c272590e7376cfaf320af3172fd386f93ef3b93f41834e0d3712"
+      ],
+      "issuer": "NETFLIX INC",
+      "query_id": "dev-query:ec76d6437804c39a1033e95beedf6db10fbb7ee2f32ec1cffaec77e5b02bffdb",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.73828125,
+        6.5859375,
+        -0.32739258
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:15a9771ee203af3bd640e8b4f9b2981578847ce91176eef7bba98afa86eba85b",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-130",
+        "dev:sec:1326801:0001628280-26-003942:f-131",
+        "dev:sec:1326801:0001628280-26-003942:f-160"
+      ],
+      "input_sha256": [
+        "5437a5515b3f6f020f66a020c4e11f1fe2cbc52e08201703690298a0e0f77621",
+        "b4ba9ea6f61bcac1caaa7289eb30fc6c25100f1c3e278f2924a76b164025e909",
+        "0f911af5556de8646106d40d9d30d5f339835a4f1796a2e23f48641cff850f55"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:15a9771ee203af3bd640e8b4f9b2981578847ce91176eef7bba98afa86eba85b",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.53515625,
+        4.3359375,
+        2.9921875
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:20978e3403ff3695eef26b114e526bd22d38277216b4beb45010294a001e88b0",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-1116",
+        "dev:sec:1326801:0001628280-26-003942:f-1117",
+        "dev:sec:1326801:0001628280-26-003942:f-1122"
+      ],
+      "input_sha256": [
+        "eae187dbbf2593daa1ed11c73aa1fc07d4c6a3e8f862a11986ead67e7d64c83a",
+        "863867a0ee50d70ad42aca69cd2df9f036c6ce2e245d3e2021e0573512fec804",
+        "e98550fd6a2c30d8cfc30e176444e8e6b08020534628a7728bb508ac51b6c3ea"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:20978e3403ff3695eef26b114e526bd22d38277216b4beb45010294a001e88b0",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.46875,
+        5.96484375,
+        1.30957031
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:2a2857c3562bf2e41ef9c2f730821a6e89aa8ed8cdaca4c999387ab9888c28e2",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-181",
+        "dev:sec:1326801:0001628280-26-003942:f-182",
+        "dev:sec:1326801:0001628280-26-003942:f-172"
+      ],
+      "input_sha256": [
+        "eb92094bc163430357ac7183db9e3318b3b74a3e494953180792da59b3d51105",
+        "75d0ff77a466ec9b3daa747eb987ffa93899536228b2cff9a4bef1de6bf93879",
+        "a96d5d3c0695e459a5e6ee7b504f3cb3e33373e1eab724fcb62157b539dc2e93"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:2a2857c3562bf2e41ef9c2f730821a6e89aa8ed8cdaca4c999387ab9888c28e2",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.85546875,
+        5.78515625,
+        4.0546875
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:3e3751a86075dc66c1f184a6777d800fcf58cbcfb7e6546bd127ef9ce4f9909b",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-355",
+        "dev:sec:1326801:0001628280-26-003942:f-356",
+        "dev:sec:1326801:0001628280-26-003942:f-304"
+      ],
+      "input_sha256": [
+        "483986adf1d085591ee408da20aef422f5b2d6efbc9186b2dd246a932db00eed",
+        "a32905c2c321024114d6813ef6dbd2dd8b9f08ba8d33a5c0adc9bb73c1de954a",
+        "9d6b2f1ed6b8561d37b9b5130a1f6b6cbbf909792ff27899f2b610bc1951a355"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:3e3751a86075dc66c1f184a6777d800fcf58cbcfb7e6546bd127ef9ce4f9909b",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        3.22070312,
+        2.671875,
+        -1.25097656
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:3f0bbed7b748c82311635ad6fefb8c6d594f28423ae1d9a82e0113a71fa981bd",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-304",
+        "dev:sec:1326801:0001628280-26-003942:f-305",
+        "dev:sec:1326801:0001628280-26-003942:f-355"
+      ],
+      "input_sha256": [
+        "9d6b2f1ed6b8561d37b9b5130a1f6b6cbbf909792ff27899f2b610bc1951a355",
+        "9a9e281e242949b1e9ecd45102ec3cadf8db3143978931820bbd21776fd2648d",
+        "483986adf1d085591ee408da20aef422f5b2d6efbc9186b2dd246a932db00eed"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:3f0bbed7b748c82311635ad6fefb8c6d594f28423ae1d9a82e0113a71fa981bd",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": false
+        },
+        "positive_rank": 2,
+        "positive_top1": false,
+        "reciprocal_rank": 0.5
+      },
+      "scores": [
+        -0.78564453,
+        -1.44140625,
+        -0.37158203
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:4975d80d52ef73ff7a049f62338c833a1550f6f366a3f2344c10abfe570ecb7d",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-358",
+        "dev:sec:1326801:0001628280-26-003942:f-359",
+        "dev:sec:1326801:0001628280-26-003942:f-365"
+      ],
+      "input_sha256": [
+        "75142f0f05cf1882e04ab6fcab1d43122a3785a2e23a5ad387ce2731702a0c4b",
+        "7c762b44542da7e041f66a2eb71ab82a364c919aee177180a8bcd095a8db8890",
+        "7f8991f2624092b268e66bdbfd1b53c7ac5125c1dbc8b7d2403afe2a000c6282"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:4975d80d52ef73ff7a049f62338c833a1550f6f366a3f2344c10abfe570ecb7d",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": false
+        },
+        "positive_rank": 2,
+        "positive_top1": false,
+        "reciprocal_rank": 0.5
+      },
+      "scores": [
+        2.68164062,
+        2.23828125,
+        3.73242188
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:4fc51e742a380708804381bbd4c1f2dde4c1aec8c7ce81b5d1f7f1b2f962e900",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-1125",
+        "dev:sec:1326801:0001628280-26-003942:f-1126",
+        "dev:sec:1326801:0001628280-26-003942:f-1116"
+      ],
+      "input_sha256": [
+        "c7ff867159b725cbc891d7cd70e796e117a0f933fc677b76545feacd09246aea",
+        "c359a2caab667b8572e0c9f8d992aeb29bfc08a294824201a1924934116621e5",
+        "eae187dbbf2593daa1ed11c73aa1fc07d4c6a3e8f862a11986ead67e7d64c83a"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:4fc51e742a380708804381bbd4c1f2dde4c1aec8c7ce81b5d1f7f1b2f962e900",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": false
+        },
+        "positive_rank": 2,
+        "positive_top1": false,
+        "reciprocal_rank": 0.5
+      },
+      "scores": [
+        5.296875,
+        4.734375,
+        5.3515625
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:56277864dc6b9c17119db404a9aa98e4419537ea50709ea20469bda43918032e",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-91",
+        "dev:sec:1326801:0001628280-26-003942:f-92",
+        "dev:sec:1326801:0001628280-26-003942:f-79"
+      ],
+      "input_sha256": [
+        "61ce7f067b6822dcc11a15fe786a9485c2e9e2e37c4c8463ae871e89f9b327d4",
+        "85e2efdd63ac043a624fc0f0a470970c0e8f5540457ab5d6c19a291906e4910b",
+        "da23fc1848483f62d9b9b384298aa8f90434fa1a7c51c203cf5b74b834b29640"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:56277864dc6b9c17119db404a9aa98e4419537ea50709ea20469bda43918032e",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        3.65429688,
+        3.3046875,
+        0.61572266
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:68ceccdbe94d2d564ca442f9c670c61d8d454c24fef516aea7c5c35a57a9220b",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-83",
+        "dev:sec:1326801:0001628280-26-003942:f-84",
+        "dev:sec:1326801:0001628280-26-003942:f-79"
+      ],
+      "input_sha256": [
+        "72dc3c135cd2e6ad71918324c31e6a49bdc933af000dec12de2cc53fcf2894c1",
+        "b88a3728e8f6086deed08f9ce0da3872dcb96351f7329084c6ea1d0834edb221",
+        "da23fc1848483f62d9b9b384298aa8f90434fa1a7c51c203cf5b74b834b29640"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:68ceccdbe94d2d564ca442f9c670c61d8d454c24fef516aea7c5c35a57a9220b",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.99609375,
+        5.078125,
+        1.81445312
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:8c2b2f7db243d24325d8b1ff003d9103da7005614c812770545c92e64eee119e",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-119",
+        "dev:sec:1326801:0001628280-26-003942:f-120",
+        "dev:sec:1326801:0001628280-26-003942:f-79"
+      ],
+      "input_sha256": [
+        "874401247a7f6b4cd3572e48a31c994bb65fd0ef15b35f3c5b2749558b0c0050",
+        "171de39d61d792fa3f16bcd90507e9f81222fdf04d8e9db462060e69232f826e",
+        "da23fc1848483f62d9b9b384298aa8f90434fa1a7c51c203cf5b74b834b29640"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:8c2b2f7db243d24325d8b1ff003d9103da7005614c812770545c92e64eee119e",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.03125,
+        5.1484375,
+        -0.20983887
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:b1a7aa0773c64fbfbdc78a05c06136dab5ae35a449bbf7278a2e82d053317deb",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-65",
+        "dev:sec:1326801:0001628280-26-003942:f-66",
+        "dev:sec:1326801:0001628280-26-003942:f-79"
+      ],
+      "input_sha256": [
+        "e0991f691cf00e5f3e650005ed03efe3865481957eef63c50799ce77177f97ab",
+        "7fa14f0d13da76459e48bf8bbe57667da894cff920484206dc7e91f40e9513ca",
+        "da23fc1848483f62d9b9b384298aa8f90434fa1a7c51c203cf5b74b834b29640"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:b1a7aa0773c64fbfbdc78a05c06136dab5ae35a449bbf7278a2e82d053317deb",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.09375,
+        4.84375,
+        2.6953125
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:b8c203b5f08ab7aa84e1604aec30cf9ab2a84fd2bad1c63ab1d5dbcfc6cf240f",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-57",
+        "dev:sec:1326801:0001628280-26-003942:f-58",
+        "dev:sec:1326801:0001628280-26-003942:f-79"
+      ],
+      "input_sha256": [
+        "dfdd2815f024764db05539a0dd2afc416dd89370caf78fcc962c3de6557a966c",
+        "7e5c1b2b7d75efd6ba01f44c63042fe85ec4dcfe31b504767fef2561f6e107d1",
+        "da23fc1848483f62d9b9b384298aa8f90434fa1a7c51c203cf5b74b834b29640"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:b8c203b5f08ab7aa84e1604aec30cf9ab2a84fd2bad1c63ab1d5dbcfc6cf240f",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.56640625,
+        5.453125,
+        1.99609375
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:bb1feb112aa65beda9de5a56af06fcf6df836a0e68fd8093f95d74a3d4989f22",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-939",
+        "dev:sec:1326801:0001628280-26-003942:f-940",
+        "dev:sec:1326801:0001628280-26-003942:f-941"
+      ],
+      "input_sha256": [
+        "7be6ea6c62c85633320ced2b3c66c3020a4575f372fdf5d423cc87fcd68d89bd",
+        "a61e455c11e20e18d61aaded94475a5daf310c297bf85b444f10560e527836e4",
+        "ff77251c97159a3f14510e9c68bd478a6145c7d658a507dd29949982942add82"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:bb1feb112aa65beda9de5a56af06fcf6df836a0e68fd8093f95d74a3d4989f22",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.9296875,
+        5.05078125,
+        -0.00891113
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:d3aa5075129e6dc8e6e5024ce3505d7b265188e5944e3996f5ce3474f3ebcca3",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-1119",
+        "dev:sec:1326801:0001628280-26-003942:f-1120",
+        "dev:sec:1326801:0001628280-26-003942:f-1116"
+      ],
+      "input_sha256": [
+        "477eb01aa8bfac2f0e3a78f2b6e375ec04daee0559264a738fd21411b5931244",
+        "cfcdd83269dc712bf7336714a01edeaa71257654618807a59d6c47a776264916",
+        "eae187dbbf2593daa1ed11c73aa1fc07d4c6a3e8f862a11986ead67e7d64c83a"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:d3aa5075129e6dc8e6e5024ce3505d7b265188e5944e3996f5ce3474f3ebcca3",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": false
+        },
+        "positive_rank": 2,
+        "positive_top1": false,
+        "reciprocal_rank": 0.5
+      },
+      "scores": [
+        1.80566406,
+        1.53808594,
+        3.71875
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:d6b0d8214079c6c0a9ff50c1fa752cb56ef3a25521b555a17a84e64003cc39e8",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-115",
+        "dev:sec:1326801:0001628280-26-003942:f-116",
+        "dev:sec:1326801:0001628280-26-003942:f-79"
+      ],
+      "input_sha256": [
+        "ef88104834571a72c65629ea9f8435670b9b522666a42a4482c4bf06c7c8a9fe",
+        "51f7e7d217fdbce1b40b0a07ec779ce30779fbf24b0f0aee9969dba64c147903",
+        "da23fc1848483f62d9b9b384298aa8f90434fa1a7c51c203cf5b74b834b29640"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:d6b0d8214079c6c0a9ff50c1fa752cb56ef3a25521b555a17a84e64003cc39e8",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        7.27734375,
+        7.11328125,
+        1.28710938
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:da340d12312c1c1ea8c86e57c073e4bcd9ff5c87b6e1d67451b7594a91efc735",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-160",
+        "dev:sec:1326801:0001628280-26-003942:f-161",
+        "dev:sec:1326801:0001628280-26-003942:f-130"
+      ],
+      "input_sha256": [
+        "0f911af5556de8646106d40d9d30d5f339835a4f1796a2e23f48641cff850f55",
+        "bff5de978afdcb53fcca56a2cac1bfa53b7bb61d8ba74253d990f261329b808b",
+        "5437a5515b3f6f020f66a020c4e11f1fe2cbc52e08201703690298a0e0f77621"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:da340d12312c1c1ea8c86e57c073e4bcd9ff5c87b6e1d67451b7594a91efc735",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.91015625,
+        5.765625,
+        -0.05166626
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:dc10892888e396a10298c03fc6327aefc3bb54f7f75f3d4186612f4438c79d6b",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-142",
+        "dev:sec:1326801:0001628280-26-003942:f-143",
+        "dev:sec:1326801:0001628280-26-003942:f-160"
+      ],
+      "input_sha256": [
+        "29f82ab5d64c99bedd84bb8ce1ec58213943770c9de69d4b990552ea8b97cb64",
+        "b36c0cec8ed19f0c12b639ae02245e94c99879f983884a7fb6a6fdbdbed6d426",
+        "0f911af5556de8646106d40d9d30d5f339835a4f1796a2e23f48641cff850f55"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:dc10892888e396a10298c03fc6327aefc3bb54f7f75f3d4186612f4438c79d6b",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.08203125,
+        4.75390625,
+        2.41992188
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:e749df3ef66a234db6f44f04c437d948738a8aee56c3d6705a459f1efab2303f",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-1122",
+        "dev:sec:1326801:0001628280-26-003942:f-1123",
+        "dev:sec:1326801:0001628280-26-003942:f-1116"
+      ],
+      "input_sha256": [
+        "e98550fd6a2c30d8cfc30e176444e8e6b08020534628a7728bb508ac51b6c3ea",
+        "bb4c8dafaae844bc5e093d4291a5fb33c69fad301303af9899a7874d42feda97",
+        "eae187dbbf2593daa1ed11c73aa1fc07d4c6a3e8f862a11986ead67e7d64c83a"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:e749df3ef66a234db6f44f04c437d948738a8aee56c3d6705a459f1efab2303f",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": false
+        },
+        "positive_rank": 2,
+        "positive_top1": false,
+        "reciprocal_rank": 0.5
+      },
+      "scores": [
+        3.57421875,
+        3.19140625,
+        4.1796875
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:e8276be545e1b6193de2558e3adbad74fc0cfb1be70ab62dd373d44d9796504f",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-79",
+        "dev:sec:1326801:0001628280-26-003942:f-80",
+        "dev:sec:1326801:0001628280-26-003942:f-61"
+      ],
+      "input_sha256": [
+        "da23fc1848483f62d9b9b384298aa8f90434fa1a7c51c203cf5b74b834b29640",
+        "5def6ad6b41ba5b2d0ba1e9a748cd412430dee53f13efdbf5cd99c2e7d3e5b36",
+        "aa2f46de5fb65db064202760f4e3178eddbc14ae085442cbf4430d8e32694da7"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:e8276be545e1b6193de2558e3adbad74fc0cfb1be70ab62dd373d44d9796504f",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.65625,
+        4.9375,
+        2.15625
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:f7cc412bc49f3da88b13a534ae3687fe1194fa0c290b8f08f111a0c53bae6a3c",
+      "candidate_keys": [
+        "dev:sec:1326801:0001628280-26-003942:f-61",
+        "dev:sec:1326801:0001628280-26-003942:f-62",
+        "dev:sec:1326801:0001628280-26-003942:f-79"
+      ],
+      "input_sha256": [
+        "aa2f46de5fb65db064202760f4e3178eddbc14ae085442cbf4430d8e32694da7",
+        "303750c5dca59c097135d4bf4f73286d301a312fff6e545dc7f43dbe109ac285",
+        "da23fc1848483f62d9b9b384298aa8f90434fa1a7c51c203cf5b74b834b29640"
+      ],
+      "issuer": "Meta Platforms, Inc.",
+      "query_id": "dev-query:f7cc412bc49f3da88b13a534ae3687fe1194fa0c290b8f08f111a0c53bae6a3c",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.5234375,
+        5.828125,
+        3.95117188
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:01a2df4ad331d7f755a65345ba968ce1f2d94404b18bce2c8dff09f73888e016",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-170",
+        "dev:sec:1652044:0001652044-26-000018:f-163",
+        "dev:sec:1652044:0001652044-26-000018:f-119"
+      ],
+      "input_sha256": [
+        "6cb61415905e66f9f5744471e0cca07a46feda6d83f4d018ca65e01fc5b87773",
+        "c71f7df4c9e78362a73db3c188af8b69e2e22ce31e12cffe5b7fffc2bd277aff",
+        "27215244b65dbb22d4ef98f44c21b2bea209c98de46bf5bb724d86cdcb74f295"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:01a2df4ad331d7f755a65345ba968ce1f2d94404b18bce2c8dff09f73888e016",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.54296875,
+        4.3828125,
+        0.25634766
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:1f70bc381879229026de42065f99d530d35dec89969a5ab70b33dea2aa38650e",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-99",
+        "dev:sec:1652044:0001652044-26-000018:f-98",
+        "dev:sec:1652044:0001652044-26-000018:f-119"
+      ],
+      "input_sha256": [
+        "f605b5d16a03005f5f2d0b8d878c839fa368efaf5feef2bbe43c1e43579c5d43",
+        "b5611bb5f70d19c64175bf3e6ed2f5a478127fc02d9070cc43e09a8c0a77e50c",
+        "27215244b65dbb22d4ef98f44c21b2bea209c98de46bf5bb724d86cdcb74f295"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:1f70bc381879229026de42065f99d530d35dec89969a5ab70b33dea2aa38650e",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.3984375,
+        5.28125,
+        4.32421875
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:26ff350c5d1f4efaf067c4be3e114e2f548a1d2219e826d0760e1e167da25147",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-432",
+        "dev:sec:1652044:0001652044-26-000018:f-431",
+        "dev:sec:1652044:0001652044-26-000018:f-384"
+      ],
+      "input_sha256": [
+        "5f5060490267caabd3433cc10687c01a752c1965a53dd44d2f4c126c541e82d7",
+        "84529282f4752089f2dde8ac2156fa478ed06f92ced22e9769a088f0eaf516db",
+        "b8c406c638e69ed56af89b5459de2c77c2a41c222a73d275a9a1ad7171a32a45"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:26ff350c5d1f4efaf067c4be3e114e2f548a1d2219e826d0760e1e167da25147",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        3.83984375,
+        3.07226562,
+        -1.65039062
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:2b11afabceed775bf0232c06d5d515e42428af9d5ffc968016d1c3b478d6ccf3",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-1144",
+        "dev:sec:1652044:0001652044-26-000018:f-1143",
+        "dev:sec:1652044:0001652044-26-000018:f-1146"
+      ],
+      "input_sha256": [
+        "d525c352b9c61189b45067a39b49b72f3662e7a14b0b56c67445a9cba905e270",
+        "ae4860f0a1c60c3be180138ae70fb34a1727493d7f2712d32add3769634346a2",
+        "ff8633affc9cf2f4870f434faa16afeff1633e22b2e2ddd8a789aa10b6eb897c"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:2b11afabceed775bf0232c06d5d515e42428af9d5ffc968016d1c3b478d6ccf3",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        3.13867188,
+        3.09179688,
+        -0.61083984
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:2f147e90bf8c931d6661581a31f2c32005bc380f7fe3bb67efe135a44bed62b5",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-127",
+        "dev:sec:1652044:0001652044-26-000018:f-126",
+        "dev:sec:1652044:0001652044-26-000018:f-119"
+      ],
+      "input_sha256": [
+        "10d21879ae3d6d4e7f3c62baaae570d3029f54b538e797ed610a3547c7c35daf",
+        "04734b821c008a84e806d639905cb4b84dd7f2538d0798daa1616334f7d669d1",
+        "27215244b65dbb22d4ef98f44c21b2bea209c98de46bf5bb724d86cdcb74f295"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:2f147e90bf8c931d6661581a31f2c32005bc380f7fe3bb67efe135a44bed62b5",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": false,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 2,
+        "positive_top1": false,
+        "reciprocal_rank": 0.5
+      },
+      "scores": [
+        2.81445312,
+        3.03515625,
+        0.76708984
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:3c01bd014288156ba54455540883e5a9ee41b4797cb1a27c879756d0e4c370bf",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-181",
+        "dev:sec:1652044:0001652044-26-000018:f-180",
+        "dev:sec:1652044:0001652044-26-000018:f-119"
+      ],
+      "input_sha256": [
+        "3bbc7ec66553ca0cae63cefcc29cf725ba1f9a965750d8fafc4e003874083f1e",
+        "913c1ced985813722916b2795ae07929f4adbf6c9cc95f00ece42d0f2490fc65",
+        "27215244b65dbb22d4ef98f44c21b2bea209c98de46bf5bb724d86cdcb74f295"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:3c01bd014288156ba54455540883e5a9ee41b4797cb1a27c879756d0e4c370bf",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.22265625,
+        4.3125,
+        -0.79296875
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:48aea44cee3be9f396461e971a685ef04fb244abb8665b338fa4ea1643e3325f",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-119",
+        "dev:sec:1652044:0001652044-26-000018:f-118",
+        "dev:sec:1652044:0001652044-26-000018:f-99"
+      ],
+      "input_sha256": [
+        "27215244b65dbb22d4ef98f44c21b2bea209c98de46bf5bb724d86cdcb74f295",
+        "879986d34646c43284cb9aac8ceba2e6dea0aeb58b715be6146e5eb4c85e8141",
+        "f605b5d16a03005f5f2d0b8d878c839fa368efaf5feef2bbe43c1e43579c5d43"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:48aea44cee3be9f396461e971a685ef04fb244abb8665b338fa4ea1643e3325f",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.44140625,
+        4.5,
+        4.109375
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:518ee455dd3a52008ed05d53551fde8bc8eebb51da3963122f121ee293c78fe2",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-223",
+        "dev:sec:1652044:0001652044-26-000018:f-222",
+        "dev:sec:1652044:0001652044-26-000018:f-193"
+      ],
+      "input_sha256": [
+        "53e780958b3fa3dc347b8395546b399bcd6091caf865c589d3b94b4e70a69e72",
+        "6839480e34ce9316fbe2c2a416c4c56e69c6293148c9c1cf3221bf5c5bc3ed39",
+        "dd5c441ae732c7cd48ac53017874134fcfdace6b04122c8e485b179e4956f657"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:518ee455dd3a52008ed05d53551fde8bc8eebb51da3963122f121ee293c78fe2",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.4140625,
+        5.15234375,
+        -0.71337891
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:55d238f552b4a0b07fb9255fd4123c565339b4be0c4efd7a61cca56e42af98a9",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-152",
+        "dev:sec:1652044:0001652044-26-000018:f-153",
+        "dev:sec:1652044:0001652044-26-000018:f-119"
+      ],
+      "input_sha256": [
+        "acf8be740cc70fff6d31937a724197a691119db01e6c751bc5b32979ce7441c4",
+        "5013868eb6e940f517dd4760c962f163daec5f3ff43788a1031bf02dde7dcf08",
+        "27215244b65dbb22d4ef98f44c21b2bea209c98de46bf5bb724d86cdcb74f295"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:55d238f552b4a0b07fb9255fd4123c565339b4be0c4efd7a61cca56e42af98a9",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.8515625,
+        5.66796875,
+        0.86425781
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:598fff07560c39f37cf301cb01ff451321f3f92bb53499bf920c6f6eb730a757",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-133",
+        "dev:sec:1652044:0001652044-26-000018:f-132",
+        "dev:sec:1652044:0001652044-26-000018:f-119"
+      ],
+      "input_sha256": [
+        "47dd7b225a81f337bbea2b5027c8a555af994dd49dbd8e1d8902c2a5ce398a4d",
+        "314b7522026ce402ae18591380acd8cca4c19749d79bba749df5cef58b49171b",
+        "27215244b65dbb22d4ef98f44c21b2bea209c98de46bf5bb724d86cdcb74f295"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:598fff07560c39f37cf301cb01ff451321f3f92bb53499bf920c6f6eb730a757",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        4.453125,
+        3.578125,
+        0.00914001
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:7803d82aa578f63420b31012822ea651c31ddf87fe5e7752c9904c0e4b2e56a9",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-171",
+        "dev:sec:1652044:0001652044-26-000018:f-162",
+        "dev:sec:1652044:0001652044-26-000018:f-119"
+      ],
+      "input_sha256": [
+        "c67749bf36c4b3737d06b00777351dcace244e423e457763874d85516e294b0f",
+        "e4068cf7364c975eb77df804c40205667b8981f841442cadf513753cf76f0b52",
+        "27215244b65dbb22d4ef98f44c21b2bea209c98de46bf5bb724d86cdcb74f295"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:7803d82aa578f63420b31012822ea651c31ddf87fe5e7752c9904c0e4b2e56a9",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        3.36914062,
+        2.40820312,
+        0.64404297
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:7d3eb4ed969cc70530bf8c1eb8480d2643cbfe9db256982edfe5d23c10bf6d06",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-103",
+        "dev:sec:1652044:0001652044-26-000018:f-102",
+        "dev:sec:1652044:0001652044-26-000018:f-119"
+      ],
+      "input_sha256": [
+        "e45893d2a0f9548e8aa8c61ee9f3ee276c132f1a6aeeb892d941b03dca608405",
+        "f47ea7b6c0667852f6119b8ec61f3400151773216d2dc462f39a86bccbc92b6a",
+        "27215244b65dbb22d4ef98f44c21b2bea209c98de46bf5bb724d86cdcb74f295"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:7d3eb4ed969cc70530bf8c1eb8480d2643cbfe9db256982edfe5d23c10bf6d06",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.12109375,
+        3.93554688,
+        2.44140625
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:97276519c3aab74c7069a972db4dc34d44e46e758608bd0afd969d3e6d1193a5",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-265",
+        "dev:sec:1652044:0001652044-26-000018:f-264",
+        "dev:sec:1652044:0001652044-26-000018:f-229"
+      ],
+      "input_sha256": [
+        "423d41e556938902a719317894bbd9b9dd072da51fe32269276660b5c005d040",
+        "caaceecb0172353c71fca5b7141546fc1071e7d3d50049eb64a6b15406af9790",
+        "5d8ce69c6b67b6e01aef29085739209c13fb754d7bc927e96cba121b24f028a7"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:97276519c3aab74c7069a972db4dc34d44e46e758608bd0afd969d3e6d1193a5",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        6.26953125,
+        5.1875,
+        3.265625
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:9817cd0890e1710a3569e62c2f26253696cf5d4ac22e0dd45251fd661411bdde",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-1146",
+        "dev:sec:1652044:0001652044-26-000018:f-1145",
+        "dev:sec:1652044:0001652044-26-000018:f-1150"
+      ],
+      "input_sha256": [
+        "ff8633affc9cf2f4870f434faa16afeff1633e22b2e2ddd8a789aa10b6eb897c",
+        "fbd30a41133b4edd4fdcf152534dfe4cad81b8eca0cfbcaa167fe05cad24fff1",
+        "c01df53b705f59bb39959f0b10cebe12617bf88ca4d4034670078c4b62d25f5f"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:9817cd0890e1710a3569e62c2f26253696cf5d4ac22e0dd45251fd661411bdde",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        4.67578125,
+        3.5625,
+        2.984375
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:a940f429ba0380b5552fbaa40ffd6642818bbc8751307a863ca6400a01cd450c",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-384",
+        "dev:sec:1652044:0001652044-26-000018:f-383",
+        "dev:sec:1652044:0001652044-26-000018:f-432"
+      ],
+      "input_sha256": [
+        "b8c406c638e69ed56af89b5459de2c77c2a41c222a73d275a9a1ad7171a32a45",
+        "26bcc46f979f1c762a896c595f684a0703f8ae81a8fe1f3f259cb8c82a55a2b6",
+        "5f5060490267caabd3433cc10687c01a752c1965a53dd44d2f4c126c541e82d7"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:a940f429ba0380b5552fbaa40ffd6642818bbc8751307a863ca6400a01cd450c",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": false
+        },
+        "positive_rank": 2,
+        "positive_top1": false,
+        "reciprocal_rank": 0.5
+      },
+      "scores": [
+        -1.36914062,
+        -1.97167969,
+        -0.67333984
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:aa6926a17a416df09eae0b005fcb3f5eaa412057c3ce17b9a3da90f2d5a4fdea",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-123",
+        "dev:sec:1652044:0001652044-26-000018:f-122",
+        "dev:sec:1652044:0001652044-26-000018:f-119"
+      ],
+      "input_sha256": [
+        "a9406f705bf0e16b7a7673b0b25f7f20952c03a42a36851fd869dbbea1ad67f4",
+        "df9927cdc457208241f580d513cd14f4cb594f04b912c551d24a77c2df79efd9",
+        "27215244b65dbb22d4ef98f44c21b2bea209c98de46bf5bb724d86cdcb74f295"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:aa6926a17a416df09eae0b005fcb3f5eaa412057c3ce17b9a3da90f2d5a4fdea",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.734375,
+        4.79296875,
+        1.58496094
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:ad5775c144992e2b6937d494a9b9f8faa103f294d5320ea07371262a9b18ba07",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-155",
+        "dev:sec:1652044:0001652044-26-000018:f-154",
+        "dev:sec:1652044:0001652044-26-000018:f-119"
+      ],
+      "input_sha256": [
+        "56683b39d0726a79ca744f8085b11706c2bbba7c2d8c53f4d08e2843d4a39e4a",
+        "dfff8d295d7d336dafcfd1dd88a2642fb1164465d5b23c1de866c243a8f5da51",
+        "27215244b65dbb22d4ef98f44c21b2bea209c98de46bf5bb724d86cdcb74f295"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:ad5775c144992e2b6937d494a9b9f8faa103f294d5320ea07371262a9b18ba07",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.1875,
+        4.1875,
+        -0.0198822
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:d3ac84a5d36a0a46565b03cd90db7a5696fe02289398d61e7e5f6b84a8837509",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-179",
+        "dev:sec:1652044:0001652044-26-000018:f-178",
+        "dev:sec:1652044:0001652044-26-000018:f-119"
+      ],
+      "input_sha256": [
+        "44043b8d59d68fbcd6ce960d39d72d69ea833cd43a68c0dd970048a4cd102aa5",
+        "cb41c0f7bd1877c0d5d46ef79519183564ace0aa15ba15571d00f11b68eb16f2",
+        "27215244b65dbb22d4ef98f44c21b2bea209c98de46bf5bb724d86cdcb74f295"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:d3ac84a5d36a0a46565b03cd90db7a5696fe02289398d61e7e5f6b84a8837509",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        4.94140625,
+        4.1796875,
+        -1.32714844
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:f9be1b1069bc065ce4233623f71fc9f4f315e0249068865b7211db01af4324ad",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-93",
+        "dev:sec:1652044:0001652044-26-000018:f-92",
+        "dev:sec:1652044:0001652044-26-000018:f-119"
+      ],
+      "input_sha256": [
+        "bab02edb9938fda23240928b956f3b1cb1709a15a2a6e37c164a66ac49b122a6",
+        "bb53d38f4d3a02c591bf348791241b7507c8490cf7e146a974efcd12a67455ea",
+        "27215244b65dbb22d4ef98f44c21b2bea209c98de46bf5bb724d86cdcb74f295"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:f9be1b1069bc065ce4233623f71fc9f4f315e0249068865b7211db01af4324ad",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        5.9609375,
+        4.9765625,
+        1.59960938
+      ]
+    },
+    {
+      "annotation_id": "dev-annotation:fa53dadcf84acc103d630850f208214131a8721c873f894a4b4bba6f1f911be0",
+      "candidate_keys": [
+        "dev:sec:1652044:0001652044-26-000018:f-97",
+        "dev:sec:1652044:0001652044-26-000018:f-96",
+        "dev:sec:1652044:0001652044-26-000018:f-119"
+      ],
+      "input_sha256": [
+        "aa181b0e529d60b715e67cb5437b6ebf2f354ccbfc1fc8471b15b7d946f49c9c",
+        "c4df345fa658dced1b98dd6c622099d13a7f622a479e565218e9d53034117844",
+        "27215244b65dbb22d4ef98f44c21b2bea209c98de46bf5bb724d86cdcb74f295"
+      ],
+      "issuer": "Alphabet Inc.",
+      "query_id": "dev-query:fa53dadcf84acc103d630850f208214131a8721c873f894a4b4bba6f1f911be0",
+      "ranking": {
+        "pairwise": {
+          "same_row_wrong_period": true,
+          "same_table_wrong_metric": true
+        },
+        "positive_rank": 1,
+        "positive_top1": true,
+        "reciprocal_rank": 1.0
+      },
+      "scores": [
+        4.42578125,
+        3.81054688,
+        0.4230957
+      ]
+    }
+  ],
+  "schema": "nf-opt-17/zero-shot-development-baseline/v1"
+}

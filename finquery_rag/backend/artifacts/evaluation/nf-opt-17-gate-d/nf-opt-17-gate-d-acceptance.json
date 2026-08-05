@@ -1,0 +1,16 @@
+{
+  "annotation_count": 80,
+  "answer_generation_calls": 0,
+  "decision": "hard_negative_shadow_candidate_corpus_ready",
+  "frozen_benchmark_question_or_label_reads": 0,
+  "lineage_record_count": 240,
+  "missing_candidate_lineage_count": 0,
+  "model_calls": 0,
+  "next_gate": "nf-opt-17-gate-e-frozen-reranker-training-config",
+  "production_behavior_changed": false,
+  "production_candidate_identity_count": 0,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "schema": "nf-opt-17/gate-d/acceptance/v1",
+  "shadow_candidate_count": 173
+}

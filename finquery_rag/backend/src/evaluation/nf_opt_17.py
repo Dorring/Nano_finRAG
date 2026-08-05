@@ -309,6 +309,65 @@ def validate_generated_annotation(record: Mapping[str, Any]) -> None:
         raise ValueError("generated annotation candidate identities are invalid")
 
 
+def build_shadow_candidate_corpus(
+    annotations: Sequence[Mapping[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Materialize a dev-only candidate corpus while preserving label lineage.
+
+    The corpus is derived solely from the independently generated development
+    annotations. It is never allowed to reuse production candidate identities.
+    """
+    candidates: dict[str, dict[str, Any]] = {}
+    lineage: list[dict[str, Any]] = []
+    for annotation in annotations:
+        validate_generated_annotation(annotation)
+        source_document = annotation["source_document"]
+        roles = [("positive", annotation["positive_candidate"])]
+        roles.extend(
+            (str(negative["negative_type"]), negative["candidate"])
+            for negative in annotation["hard_negatives"]
+        )
+        for role, candidate in roles:
+            if not isinstance(candidate, Mapping):
+                raise ValueError("annotation candidate is not a mapping")
+            candidate_key = str(candidate.get("candidate_key") or "")
+            if not candidate_key.startswith("dev:sec:"):
+                raise ValueError("development candidate identity must use the dev:sec namespace")
+            evidence_excerpt = str(candidate.get("evidence_excerpt") or "")
+            candidate_hash = str(candidate.get("candidate_content_sha256") or "")
+            if not evidence_excerpt or candidate_hash != sha256(evidence_excerpt.encode("utf-8")).hexdigest():
+                raise ValueError("development candidate content hash mismatch")
+            materialized = {
+                "candidate_key": candidate_key,
+                "issuer": annotation["issuer"],
+                "source_document": source_document,
+                "xbrl_concept": candidate["xbrl_concept"],
+                "context_id": candidate["context_id"],
+                "period_end": candidate["period_end"],
+                "period_kind": candidate["period_kind"],
+                "table_index": candidate["table_index"],
+                "row_index": candidate["row_index"],
+                "content": evidence_excerpt,
+                "content_sha256": candidate_hash,
+            }
+            previous = candidates.get(candidate_key)
+            if previous and previous != materialized:
+                raise ValueError(f"candidate identity collision: {candidate_key}")
+            candidates[candidate_key] = materialized
+            lineage.append(
+                {
+                    "annotation_id": annotation["annotation_id"],
+                    "candidate_key": candidate_key,
+                    "role": role,
+                    "content_sha256": candidate_hash,
+                }
+            )
+    return (
+        [candidates[key] for key in sorted(candidates)],
+        sorted(lineage, key=lambda row: (str(row["annotation_id"]), str(row["role"]), str(row["candidate_key"]))),
+    )
+
+
 def source_manifest_hash(sources: Sequence[SecFilingSource]) -> str:
     """Return a stable identity hash without downloading filing content."""
     serialized = "\n".join(
