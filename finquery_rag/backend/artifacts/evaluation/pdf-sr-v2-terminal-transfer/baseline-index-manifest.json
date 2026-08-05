@@ -1,0 +1,59 @@
+{
+  "bm25": {
+    "b": 0.75,
+    "k1": 1.2
+  },
+  "candidate_count": 38319,
+  "dense_top_k": 200,
+  "document_scope_count": 8,
+  "embedding_model": "/mnt/disk/mxf/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "final_top_k": 5,
+  "per_document_manifests": {
+    "baseline:aapl_fy2025": {
+      "candidate_count": 2168,
+      "candidate_identity_sha256": "9c32c28b14edbf744e44fa53fc309aec7edb471f9de4b4408021a4f8c963647c",
+      "retrieval_text_sha256": "bdd6244b95dd90c426a7cc7068a4d8da1f5799aec37ca665db1cdc9fcd8e4fd4"
+    },
+    "baseline:jpm_fy2025": {
+      "candidate_count": 11670,
+      "candidate_identity_sha256": "e0207d762dadce8245bf834a6e6ecb62bf5a9b288b6d3b98518b102702164433",
+      "retrieval_text_sha256": "0dc87b6ac5ca981b0e9062dbf10be96f5b691e707e4b02e19bea75d374336d32"
+    },
+    "baseline:ko_fy2025": {
+      "candidate_count": 5334,
+      "candidate_identity_sha256": "d2f2a44453047ad0be6124add344b14635773e137054bb00266799dfc87ffa8d",
+      "retrieval_text_sha256": "6a6038254baffa3f615299aa9f03a549a0206798db75da00a271eff76c2ad786"
+    },
+    "baseline:msft_fy2025": {
+      "candidate_count": 1979,
+      "candidate_identity_sha256": "3253982d99bee240b503ad190d946f10849955fea6456b46cd2f5707f8e2a530",
+      "retrieval_text_sha256": "05321e5c8bd9890714dee089fb3a909b96a9af28a05b01786f6eccb83e7e6cc9"
+    },
+    "baseline:nvda_fy2025": {
+      "candidate_count": 5252,
+      "candidate_identity_sha256": "d08385b9fbdba26426fd2c094ab12e29c5c738927e85ce8ca77fb9afa1a712a0",
+      "retrieval_text_sha256": "79e76af178c8806169151de1f78232c20acb9372c49dcf16284a3ed345032c16"
+    },
+    "baseline:pfe_fy2024": {
+      "candidate_count": 5157,
+      "candidate_identity_sha256": "9a4bac03c3d6dc471af69162f3900caf8dba4bc19316b83ec6f379802dcd8f76",
+      "retrieval_text_sha256": "4e9f8273811c2efbeedf201dea0fa506bf3f92f59ad1b534f00f9feb304ed705"
+    },
+    "baseline:tsla_fy2025": {
+      "candidate_count": 3958,
+      "candidate_identity_sha256": "7a3d25f19be946bf56af13991cdf25fb3bea57f32fdb408198c934263b313770",
+      "retrieval_text_sha256": "7097984df2bc9341bf6263b1bf2eeaa0f1f8dd61d836662eb33984d9a40f2c9c"
+    },
+    "baseline:v_fy2025": {
+      "candidate_count": 2801,
+      "candidate_identity_sha256": "8578b6cd31c65c2d0aea4849c1f9d5974e474e2f3cfdf1945565a157ddd89f4d",
+      "retrieval_text_sha256": "fa7178f58736f48fb640e9dde8be252d4d2f332614f3849400d8fab5df414249"
+    }
+  },
+  "persistent_index_written": false,
+  "reranker_top_k": 20,
+  "rrf_k": 60,
+  "rrf_top_k": 40,
+  "storage": "shadow_indexes/baseline/ephemeral_read_only",
+  "variant": "baseline"
+}

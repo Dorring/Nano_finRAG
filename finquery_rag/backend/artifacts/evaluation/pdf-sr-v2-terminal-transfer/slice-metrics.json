@@ -1,0 +1,80 @@
+{
+  "answer_type": {
+    "comparison": {
+      "baseline_all_gold": 0,
+      "baseline_cases": 6,
+      "baseline_final_hits": 1,
+      "e1_all_gold": 0,
+      "e1_cases": 6,
+      "e1_final_hits": 0
+    },
+    "currency": {
+      "baseline_all_gold": 5,
+      "baseline_cases": 42,
+      "baseline_final_hits": 5,
+      "e1_all_gold": 12,
+      "e1_cases": 42,
+      "e1_final_hits": 12
+    },
+    "financial_volume": {
+      "baseline_all_gold": 0,
+      "baseline_cases": 3,
+      "baseline_final_hits": 0,
+      "e1_all_gold": 0,
+      "e1_cases": 3,
+      "e1_final_hits": 0
+    },
+    "numeric": {
+      "baseline_all_gold": 1,
+      "baseline_cases": 1,
+      "baseline_final_hits": 1,
+      "e1_all_gold": 0,
+      "e1_cases": 1,
+      "e1_final_hits": 0
+    },
+    "percentage": {
+      "baseline_all_gold": 1,
+      "baseline_cases": 12,
+      "baseline_final_hits": 1,
+      "e1_all_gold": 1,
+      "e1_cases": 12,
+      "e1_final_hits": 1
+    }
+  },
+  "requires_calculation": {
+    "false": {
+      "baseline_all_gold": 7,
+      "baseline_cases": 53,
+      "baseline_final_hits": 7,
+      "e1_all_gold": 13,
+      "e1_cases": 53,
+      "e1_final_hits": 13
+    },
+    "true": {
+      "baseline_all_gold": 0,
+      "baseline_cases": 11,
+      "baseline_final_hits": 1,
+      "e1_all_gold": 0,
+      "e1_cases": 11,
+      "e1_final_hits": 0
+    }
+  },
+  "requires_multiple_sources": {
+    "false": {
+      "baseline_all_gold": 7,
+      "baseline_cases": 56,
+      "baseline_final_hits": 7,
+      "e1_all_gold": 13,
+      "e1_cases": 56,
+      "e1_final_hits": 13
+    },
+    "true": {
+      "baseline_all_gold": 0,
+      "baseline_cases": 8,
+      "baseline_final_hits": 1,
+      "e1_all_gold": 0,
+      "e1_cases": 8,
+      "e1_final_hits": 0
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "answer_generation_calls": 0,
+  "binder_calls": 0,
+  "calculator_calls": 0,
+  "decision": "pdf_sr_v2_terminal_transfer_failed",
+  "evaluation_type": "one_shot_terminal_diagnostic_transfer",
+  "gate_passed": false,
+  "model_training_calls": 0,
+  "next_gate": "stop_pdf_sr_v2_terminal_transfer",
+  "parameter_scan": false,
+  "per_query_oracle_selection": false,
+  "post_score_tuning_allowed": false,
+  "production_behavior_modified": false,
+  "production_config_modified": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "protocol_precondition_clean": false,
+  "schema": "pdf-sr-v2/terminal-transfer/acceptance/v1",
+  "seal_verified_before_gold_load": true,
+  "thresholds": {
+    "baseline_replay_parity_13_of_80": false,
+    "candidate_identity_integrity": true,
+    "final_all_gold": false,
+    "multi_evidence_not_decreased": true,
+    "original_hit_regressions": false,
+    "rrf_source_recall_at_40": false,
+    "strict_final_source_recall_at_5": false
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "baseline": {
+    "answerable_case_count": 64,
+    "bm25_source_recall_at_200": 0.6,
+    "dense_source_recall_at_200": 0.625,
+    "final_all_gold_coverage": 0.109375,
+    "final_case_hit_at_5": 0.125,
+    "gold_source_count": 80,
+    "hit_counts": {
+      "all_gold": 7,
+      "bm25_200": 48,
+      "case_hit": 8,
+      "dense_200": 50,
+      "final_5": 8,
+      "reranker_20": 23,
+      "rrf_40": 33,
+      "union_200": 48
+    },
+    "mrr_at_5": 0.06770833333333333,
+    "multi_evidence_case_count": 16,
+    "multi_evidence_complete_coverage": 0.0,
+    "reranker_source_recall_at_20": 0.2875,
+    "rrf_source_recall_at_40": 0.4125,
+    "strict_final_source_recall_at_5": 0.1,
+    "union_source_recall_at_200": 0.6
+  },
+  "deltas": {
+    "bm25_source_recall_at_200": -0.2375,
+    "dense_source_recall_at_200": -0.2625,
+    "final_all_gold_coverage": 0.09375,
+    "final_case_hit_at_5": 0.078125,
+    "mrr_at_5": 0.07916666666666665,
+    "multi_evidence_complete_coverage": 0.0,
+    "reranker_source_recall_at_20": -0.08749999999999997,
+    "rrf_source_recall_at_40": -0.21249999999999997,
+    "strict_final_source_recall_at_5": 0.0625,
+    "union_source_recall_at_200": -0.2375
+  },
+  "e1": {
+    "answerable_case_count": 64,
+    "bm25_source_recall_at_200": 0.3625,
+    "dense_source_recall_at_200": 0.3625,
+    "final_all_gold_coverage": 0.203125,
+    "final_case_hit_at_5": 0.203125,
+    "gold_source_count": 80,
+    "hit_counts": {
+      "all_gold": 13,
+      "bm25_200": 29,
+      "case_hit": 13,
+      "dense_200": 29,
+      "final_5": 13,
+      "reranker_20": 16,
+      "rrf_40": 16,
+      "union_200": 29
+    },
+    "mrr_at_5": 0.14687499999999998,
+    "multi_evidence_case_count": 16,
+    "multi_evidence_complete_coverage": 0.0,
+    "reranker_source_recall_at_20": 0.2,
+    "rrf_source_recall_at_40": 0.2,
+    "strict_final_source_recall_at_5": 0.1625,
+    "union_source_recall_at_200": 0.3625
+  }
+}
