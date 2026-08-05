@@ -1,0 +1,19 @@
+{
+  "code_commit": "f7f316e2bddada9378b4236fb1aa6e642b3b74ef-gate2-dirty",
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "forbidden_inputs": [
+    "benchmark-governance.jsonl",
+    "labels.golden.jsonl",
+    "gold_source",
+    "expected_value",
+    "reference_answer"
+  ],
+  "gate": "pdf_retrieval_v3_gate_2",
+  "parameter_scan": false,
+  "prediction_inputs": [
+    "question_text",
+    "document_scope"
+  ],
+  "questions_sha256": "fd3d9df48c642bbace9b114ca43461dae1717cab94d7fe6d12ffb95bf3ffe4f0",
+  "retrieval_calls": 0
+}

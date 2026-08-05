@@ -1,0 +1,34 @@
+{
+  "cells": [
+    {
+      "actual": "calculation_multi_operand",
+      "count": 11,
+      "expected": "calculation_multi_operand"
+    },
+    {
+      "actual": "multi_metric_comparison",
+      "count": 5,
+      "expected": "multi_metric_comparison"
+    },
+    {
+      "actual": "general_single_fact",
+      "count": 4,
+      "expected": "no_answer"
+    },
+    {
+      "actual": "single_metric_multi_period",
+      "count": 2,
+      "expected": "no_answer"
+    },
+    {
+      "actual": "table_single_fact",
+      "count": 2,
+      "expected": "no_answer"
+    },
+    {
+      "actual": "table_single_fact",
+      "count": 48,
+      "expected": "table_single_fact"
+    }
+  ]
+}

@@ -1,0 +1,2409 @@
+{
+  "predictions": [
+    {
+      "case_id": "aapl_fy2025_001",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "aapl_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "total net sales",
+            "raw_text": "total net sales",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was total net sales reported by Apple in FY2025?"
+    },
+    {
+      "case_id": "aapl_fy2025_002",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "aapl_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "services net sales",
+            "raw_text": "Services net sales",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was Services net sales reported by Apple in FY2025?"
+    },
+    {
+      "case_id": "aapl_fy2025_003",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "aapl_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "gross margin percentage",
+            "raw_text": "gross margin percentage",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was gross margin percentage reported by Apple in FY2025?"
+    },
+    {
+      "case_id": "aapl_fy2025_004",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "aapl_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "iphone net sales",
+            "raw_text": "iPhone net sales",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "In the Net sales by product and service table, what was iPhone net sales in FY2025?"
+    },
+    {
+      "case_id": "aapl_fy2025_005",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "aapl_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "mac net sales",
+            "raw_text": "Mac net sales",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "In the Net sales by product and service table, what was Mac net sales in FY2025?"
+    },
+    {
+      "case_id": "aapl_fy2025_006",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "aapl_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "of total net sales",
+            "raw_text": "of total net sales",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": "growth_rate",
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          },
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "calculation_intent",
+          "growth rate",
+          "year-over-year growth"
+        ],
+        "statement_hint": null,
+        "task_type": "calculation_multi_operand",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was the year-over-year growth rate of total net sales reported by Apple from FY2024 to FY2025?"
+    },
+    {
+      "case_id": "aapl_fy2025_007",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "aapl_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "iphone net sales",
+            "raw_text": "iPhone net sales",
+            "role": null
+          },
+          {
+            "normalized_text": "services net sales",
+            "raw_text": "Services net sales",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "explicit_comparison"
+        ],
+        "statement_hint": null,
+        "task_type": "multi_metric_comparison",
+        "unresolved_reasons": []
+      },
+      "raw_question": "Report both Apple's FY2025 iPhone net sales and Services net sales."
+    },
+    {
+      "case_id": "aapl_fy2025_008",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "aapl_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "report disclose accuracy of proprietary internal ai model",
+            "raw_text": "report disclose accuracy of proprietary internal AI model",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "general_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "Does Apple's FY2025 report disclose the accuracy of a proprietary internal AI model?"
+    },
+    {
+      "case_id": "aapl_fy2025_009",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "aapl_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "iphone net sales",
+            "raw_text": "iPhone net sales",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was iPhone net sales in FY2024 rather than FY2025?"
+    },
+    {
+      "case_id": "jpm_fy2025_001",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "jpm_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "total assets",
+            "raw_text": "total assets",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was total assets reported by JPMorgan in FY2025?"
+    },
+    {
+      "case_id": "jpm_fy2025_002",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "jpm_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "total liabilities",
+            "raw_text": "total liabilities",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was total liabilities reported by JPMorgan in FY2025?"
+    },
+    {
+      "case_id": "jpm_fy2025_003",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "jpm_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "net income",
+            "raw_text": "net income",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was net income reported by JPMorgan in FY2025?"
+    },
+    {
+      "case_id": "jpm_fy2025_004",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "jpm_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "consumer & community banking net income",
+            "raw_text": "Consumer & Community Banking net income",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "In the Consumer & Community Banking financial results table, what was Consumer & Community Banking net income in FY2025?"
+    },
+    {
+      "case_id": "jpm_fy2025_005",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "jpm_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "commercial & investment bank net income",
+            "raw_text": "Commercial & Investment Bank net income",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "In the Commercial & Investment Bank financial results table, what was Commercial & Investment Bank net income in FY2025?"
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "jpm_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "of total assets",
+            "raw_text": "of total assets",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": "growth_rate",
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          },
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "calculation_intent",
+          "growth rate",
+          "year-over-year growth"
+        ],
+        "statement_hint": null,
+        "task_type": "calculation_multi_operand",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was the year-over-year growth rate of total assets reported by JPMorgan from FY2024 to FY2025?"
+    },
+    {
+      "case_id": "jpm_fy2025_007",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "jpm_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "consumer & community banking net income",
+            "raw_text": "Consumer & Community Banking net income",
+            "role": null
+          },
+          {
+            "normalized_text": "total liabilities",
+            "raw_text": "total liabilities",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "explicit_comparison"
+        ],
+        "statement_hint": null,
+        "task_type": "multi_metric_comparison",
+        "unresolved_reasons": []
+      },
+      "raw_question": "Report both JPMorgan's FY2025 Consumer & Community Banking net income and total liabilities."
+    },
+    {
+      "case_id": "jpm_fy2025_008",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "jpm_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "report disclose customer-level contract amount for individual client",
+            "raw_text": "report disclose customer-level contract amount for individual client",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "Does JPMorgan's FY2025 report disclose a customer-level contract amount for an individual client?"
+    },
+    {
+      "case_id": "jpm_fy2025_009",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "jpm_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "consumer & community banking net income",
+            "raw_text": "Consumer & Community Banking net income",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was Consumer & Community Banking net income in FY2024 rather than FY2025?"
+    },
+    {
+      "case_id": "ko_fy2025_001",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "ko_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "net operating revenues",
+            "raw_text": "net operating revenues",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was net operating revenues reported by The Coca-Cola Company in FY2025?"
+    },
+    {
+      "case_id": "ko_fy2025_002",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "ko_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "operating income",
+            "raw_text": "operating income",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was operating income reported by The Coca-Cola Company in FY2025?"
+    },
+    {
+      "case_id": "ko_fy2025_003",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "ko_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "net income attributable to shareowners of",
+            "raw_text": "net income attributable to shareowners of",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was net income attributable to shareowners of The Coca-Cola Company in FY2025?"
+    },
+    {
+      "case_id": "ko_fy2025_004",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "ko_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "emea total net operating revenues",
+            "raw_text": "EMEA total net operating revenues",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "In the operating segment net operating revenues table, what were EMEA total net operating revenues in FY2025?"
+    },
+    {
+      "case_id": "ko_fy2025_005",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "ko_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "north america total net operating revenues",
+            "raw_text": "North America total net operating revenues",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "In the operating segment net operating revenues table, what were North America total net operating revenues in FY2025?"
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "ko_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "of net operating revenues",
+            "raw_text": "of net operating revenues",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": "growth_rate",
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          },
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "calculation_intent",
+          "growth rate",
+          "year-over-year growth"
+        ],
+        "statement_hint": null,
+        "task_type": "calculation_multi_operand",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was the year-over-year growth rate of net operating revenues reported by The Coca-Cola Company from FY2024 to FY2025?"
+    },
+    {
+      "case_id": "ko_fy2025_007",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "ko_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "s consolidated net operating revenues came from emea third-party revenue",
+            "raw_text": "s consolidated net operating revenues came from EMEA third-party revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": "percentage_share",
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "calculation_intent",
+          "what percentage of",
+          "came from"
+        ],
+        "statement_hint": null,
+        "task_type": "calculation_multi_operand",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What percentage of The Coca-Cola Company's FY2025 consolidated net operating revenues came from EMEA third-party revenue?"
+    },
+    {
+      "case_id": "ko_fy2025_008",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "ko_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "s report disclose exact output of one named manufacturing plant",
+            "raw_text": "s report disclose exact output of one named manufacturing plant",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "general_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "Does The Coca-Cola Company's FY2025 report disclose the exact output of one named manufacturing plant?"
+    },
+    {
+      "case_id": "ko_fy2025_009",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "ko_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "emea total net operating revenues",
+            "raw_text": "EMEA total net operating revenues",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What were EMEA total net operating revenues in FY2024?"
+    },
+    {
+      "case_id": "msft_fy2025_001",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "msft_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "total revenue",
+            "raw_text": "total revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was total revenue reported by Microsoft in FY2025?"
+    },
+    {
+      "case_id": "msft_fy2025_002",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "msft_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "productivity and business processes revenue",
+            "raw_text": "Productivity and Business Processes revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was Productivity and Business Processes revenue reported by Microsoft in FY2025?"
+    },
+    {
+      "case_id": "msft_fy2025_003",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "msft_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "more personal computing revenue",
+            "raw_text": "More Personal Computing revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was More Personal Computing revenue reported by Microsoft in FY2025?"
+    },
+    {
+      "case_id": "msft_fy2025_004",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "msft_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "intelligent cloud revenue",
+            "raw_text": "Intelligent Cloud revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "In the Revenue by segment table, what was Intelligent Cloud revenue in FY2025?"
+    },
+    {
+      "case_id": "msft_fy2025_005",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "msft_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "productivity and business processes operating income",
+            "raw_text": "Productivity and Business Processes operating income",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "In the reportable segment table, what was Productivity and Business Processes operating income in FY2025?"
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "msft_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "of total revenue",
+            "raw_text": "of total revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": "growth_rate",
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          },
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "calculation_intent",
+          "growth rate",
+          "year-over-year growth"
+        ],
+        "statement_hint": null,
+        "task_type": "calculation_multi_operand",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was the year-over-year growth rate of total revenue reported by Microsoft from FY2024 to FY2025?"
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "msft_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "total revenue came from intelligent cloud",
+            "raw_text": "total revenue came from Intelligent Cloud",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": "percentage_share",
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "calculation_intent",
+          "what percentage of",
+          "came from"
+        ],
+        "statement_hint": null,
+        "task_type": "calculation_multi_operand",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What percentage of Microsoft's total FY2025 revenue came from Intelligent Cloud?"
+    },
+    {
+      "case_id": "msft_fy2025_008",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "msft_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "report disclose customer-level contract renewal rate",
+            "raw_text": "report disclose customer-level contract renewal rate",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "general_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "Does Microsoft's FY2025 report disclose a customer-level contract renewal rate?"
+    },
+    {
+      "case_id": "msft_fy2025_009",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "msft_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "intelligent cloud revenue",
+            "raw_text": "Intelligent Cloud revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was Intelligent Cloud revenue in FY2024 rather than FY2025?"
+    },
+    {
+      "case_id": "nvda_fy2025_001",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "nvda_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "total revenue",
+            "raw_text": "total revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was total revenue reported by NVIDIA in FY2025?"
+    },
+    {
+      "case_id": "nvda_fy2025_002",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "nvda_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "gaming revenue",
+            "raw_text": "Gaming revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was Gaming revenue reported by NVIDIA in FY2025?"
+    },
+    {
+      "case_id": "nvda_fy2025_003",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "nvda_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "gaap gross margin percentage",
+            "raw_text": "GAAP gross margin percentage",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was GAAP gross margin percentage reported by NVIDIA in FY2025?"
+    },
+    {
+      "case_id": "nvda_fy2025_004",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "nvda_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "data center revenue",
+            "raw_text": "Data Center revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "In the Revenue by End Market table, what was Data Center revenue in FY2025?"
+    },
+    {
+      "case_id": "nvda_fy2025_005",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "nvda_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "automotive revenue",
+            "raw_text": "Automotive revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "In the Revenue by End Market table, what was Automotive revenue in FY2025?"
+    },
+    {
+      "case_id": "nvda_fy2025_006",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "nvda_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "of total revenue",
+            "raw_text": "of total revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": "growth_rate",
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          },
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "calculation_intent",
+          "growth rate",
+          "year-over-year growth"
+        ],
+        "statement_hint": null,
+        "task_type": "calculation_multi_operand",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was the year-over-year growth rate of total revenue reported by NVIDIA from FY2024 to FY2025?"
+    },
+    {
+      "case_id": "nvda_fy2025_007",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "nvda_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "data center revenue",
+            "raw_text": "Data Center revenue",
+            "role": null
+          },
+          {
+            "normalized_text": "gaap gross margin percentage",
+            "raw_text": "GAAP gross margin percentage",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "explicit_comparison"
+        ],
+        "statement_hint": null,
+        "task_type": "multi_metric_comparison",
+        "unresolved_reasons": []
+      },
+      "raw_question": "Report both NVIDIA's FY2025 Data Center revenue and GAAP gross margin percentage."
+    },
+    {
+      "case_id": "nvda_fy2025_008",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "nvda_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "report disclose customer-level data center revenue amount",
+            "raw_text": "report disclose customer-level Data Center revenue amount",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "Does NVIDIA's FY2025 report disclose a customer-level Data Center revenue amount?"
+    },
+    {
+      "case_id": "nvda_fy2025_009",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "nvda_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "data center revenue",
+            "raw_text": "Data Center revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was Data Center revenue in FY2024 rather than FY2025?"
+    },
+    {
+      "case_id": "pfe_fy2024_001",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "pfe_fy2024",
+        "metric_phrases": [
+          {
+            "normalized_text": "total revenues",
+            "raw_text": "total revenues",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was total revenues reported by Pfizer in FY2024?"
+    },
+    {
+      "case_id": "pfe_fy2024_002",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "pfe_fy2024",
+        "metric_phrases": [
+          {
+            "normalized_text": "comirnaty revenue",
+            "raw_text": "Comirnaty revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was Comirnaty revenue reported by Pfizer in FY2024?"
+    },
+    {
+      "case_id": "pfe_fy2024_003",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "pfe_fy2024",
+        "metric_phrases": [
+          {
+            "normalized_text": "eliquis revenue",
+            "raw_text": "Eliquis revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was Eliquis revenue reported by Pfizer in FY2024?"
+    },
+    {
+      "case_id": "pfe_fy2024_004",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "pfe_fy2024",
+        "metric_phrases": [
+          {
+            "normalized_text": "paxlovid revenue",
+            "raw_text": "Paxlovid revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "In the Selected product revenues table, what was Paxlovid revenue in FY2024?"
+    },
+    {
+      "case_id": "pfe_fy2024_005",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "pfe_fy2024",
+        "metric_phrases": [
+          {
+            "normalized_text": "prevnar family revenue",
+            "raw_text": "Prevnar family revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "In the Selected product revenues table, what was Prevnar family revenue in FY2024?"
+    },
+    {
+      "case_id": "pfe_fy2024_006",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "pfe_fy2024",
+        "metric_phrases": [
+          {
+            "normalized_text": "of total revenues",
+            "raw_text": "of total revenues",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": "growth_rate",
+        "periods": [
+          {
+            "normalized_period": "FY2023",
+            "raw_text": "FY2023",
+            "role": null
+          },
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "calculation_intent",
+          "growth rate",
+          "year-over-year growth"
+        ],
+        "statement_hint": null,
+        "task_type": "calculation_multi_operand",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was the year-over-year growth rate of total revenues reported by Pfizer from FY2023 to FY2024?"
+    },
+    {
+      "case_id": "pfe_fy2024_007",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "pfe_fy2024",
+        "metric_phrases": [
+          {
+            "normalized_text": "comirnaty revenue",
+            "raw_text": "Comirnaty revenue",
+            "role": null
+          },
+          {
+            "normalized_text": "research and development expense",
+            "raw_text": "research and development expense",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "explicit_comparison"
+        ],
+        "statement_hint": null,
+        "task_type": "multi_metric_comparison",
+        "unresolved_reasons": []
+      },
+      "raw_question": "Report both Pfizer's FY2024 Comirnaty revenue and research and development expense."
+    },
+    {
+      "case_id": "pfe_fy2024_008",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "pfe_fy2024",
+        "metric_phrases": [
+          {
+            "normalized_text": "report disclose guaranteed financial result",
+            "raw_text": "report disclose guaranteed financial result",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          },
+          {
+            "normalized_period": "FY2026",
+            "raw_text": "FY2026",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "multiple_explicit_periods"
+        ],
+        "statement_hint": null,
+        "task_type": "single_metric_multi_period",
+        "unresolved_reasons": []
+      },
+      "raw_question": "Does Pfizer's FY2024 report disclose a guaranteed FY2026 financial result?"
+    },
+    {
+      "case_id": "pfe_fy2024_009",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "pfe_fy2024",
+        "metric_phrases": [
+          {
+            "normalized_text": "paxlovid revenue",
+            "raw_text": "Paxlovid revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2023",
+            "raw_text": "FY2023",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was Paxlovid revenue in FY2023 rather than FY2024?"
+    },
+    {
+      "case_id": "tsla_fy2025_001",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "tsla_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "total revenues",
+            "raw_text": "total revenues",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was total revenues reported by Tesla in FY2025?"
+    },
+    {
+      "case_id": "tsla_fy2025_002",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "tsla_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "services and other revenue",
+            "raw_text": "Services and other revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was Services and other revenue reported by Tesla in FY2025?"
+    },
+    {
+      "case_id": "tsla_fy2025_003",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "tsla_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "automotive regulatory credits revenue",
+            "raw_text": "Automotive regulatory credits revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was Automotive regulatory credits revenue reported by Tesla in FY2025?"
+    },
+    {
+      "case_id": "tsla_fy2025_004",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "tsla_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "total automotive revenues",
+            "raw_text": "Total automotive revenues",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What were Tesla's Total automotive revenues in FY2025?"
+    },
+    {
+      "case_id": "tsla_fy2025_005",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "tsla_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "energy generation and storage segment revenue",
+            "raw_text": "Energy generation and storage segment revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "In the Results of Operations revenue table, what was Energy generation and storage segment revenue in FY2025?"
+    },
+    {
+      "case_id": "tsla_fy2025_006",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "tsla_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "of total revenues",
+            "raw_text": "of total revenues",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": "growth_rate",
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          },
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "calculation_intent",
+          "growth rate",
+          "year-over-year growth"
+        ],
+        "statement_hint": null,
+        "task_type": "calculation_multi_operand",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was the year-over-year growth rate of total revenues reported by Tesla from FY2024 to FY2025?"
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "tsla_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "total automotive revenues",
+            "raw_text": "Total automotive revenues",
+            "role": null
+          },
+          {
+            "normalized_text": "energy generation and storage segment revenue",
+            "raw_text": "Energy generation and storage segment revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": "difference",
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "calculation_intent",
+          "by how much"
+        ],
+        "statement_hint": null,
+        "task_type": "calculation_multi_operand",
+        "unresolved_reasons": []
+      },
+      "raw_question": "Which was higher in FY2025: Tesla's Total automotive revenues or Energy generation and storage segment revenue, and by how much?"
+    },
+    {
+      "case_id": "tsla_fy2025_008",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "tsla_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "report disclose guaranteed customer-specific vehicle purchase price",
+            "raw_text": "report disclose guaranteed customer-specific vehicle purchase price",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          },
+          {
+            "normalized_period": "FY2026",
+            "raw_text": "FY2026",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "multiple_explicit_periods"
+        ],
+        "statement_hint": null,
+        "task_type": "single_metric_multi_period",
+        "unresolved_reasons": []
+      },
+      "raw_question": "Does Tesla's FY2025 report disclose a guaranteed customer-specific vehicle purchase price for FY2026?"
+    },
+    {
+      "case_id": "tsla_fy2025_009",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "tsla_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "total automotive revenues",
+            "raw_text": "Total automotive revenues",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What were Tesla's Total automotive revenues in FY2024?"
+    },
+    {
+      "case_id": "v_fy2025_001",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "v_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "net revenue",
+            "raw_text": "net revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was net revenue reported by Visa in FY2025?"
+    },
+    {
+      "case_id": "v_fy2025_002",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "v_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "total volume",
+            "raw_text": "total volume",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was total volume reported by Visa in FY2025?"
+    },
+    {
+      "case_id": "v_fy2025_003",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "v_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "transactions processed on networks",
+            "raw_text": "transactions processed on networks",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "How many transactions were processed on Visa's networks in FY2025?"
+    },
+    {
+      "case_id": "v_fy2025_004",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "v_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "payments volume",
+            "raw_text": "payments volume",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "In the Operational highlights table, what was payments volume in FY2025?"
+    },
+    {
+      "case_id": "v_fy2025_005",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "v_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "gaap net income",
+            "raw_text": "GAAP net income",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "In the Consolidated statements of operations table, what was Visa's GAAP net income in FY2025?"
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "v_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "of net revenue",
+            "raw_text": "of net revenue",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": "growth_rate",
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          },
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "calculation_intent",
+          "growth rate",
+          "year-over-year growth"
+        ],
+        "statement_hint": null,
+        "task_type": "calculation_multi_operand",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was the year-over-year growth rate of net revenue reported by Visa from FY2024 to FY2025?"
+    },
+    {
+      "case_id": "v_fy2025_007",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 2,
+        "issuer": "v_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "payments volume",
+            "raw_text": "payments volume",
+            "role": null
+          },
+          {
+            "normalized_text": "number of transactions processed on networks",
+            "raw_text": "number of transactions processed on networks",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": true,
+        "routing_reasons": [
+          "explicit_comparison"
+        ],
+        "statement_hint": null,
+        "task_type": "multi_metric_comparison",
+        "unresolved_reasons": []
+      },
+      "raw_question": "Report both Visa's FY2025 payments volume and the number of transactions processed on Visa's networks."
+    },
+    {
+      "case_id": "v_fy2025_008",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "v_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "report disclose internal employee performance accuracy metric",
+            "raw_text": "report disclose internal employee performance accuracy metric",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2025",
+            "raw_text": "FY2025",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "general_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "Does Visa's FY2025 report disclose an internal employee performance accuracy metric?"
+    },
+    {
+      "case_id": "v_fy2025_009",
+      "profile": {
+        "answerability_check_required": true,
+        "expected_operand_count": 1,
+        "issuer": "v_fy2025",
+        "metric_phrases": [
+          {
+            "normalized_text": "payments volume",
+            "raw_text": "payments volume",
+            "role": null
+          }
+        ],
+        "narrative_intent": false,
+        "operation": null,
+        "periods": [
+          {
+            "normalized_period": "FY2024",
+            "raw_text": "FY2024",
+            "role": null
+          }
+        ],
+        "requires_multiple_sources": false,
+        "routing_reasons": [
+          "single_fact"
+        ],
+        "statement_hint": null,
+        "task_type": "table_single_fact",
+        "unresolved_reasons": []
+      },
+      "raw_question": "What was payments volume in FY2024 rather than FY2025?"
+    }
+  ]
+}

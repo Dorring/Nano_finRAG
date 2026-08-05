@@ -1,0 +1,15 @@
+{
+  "calculation_route_recall": "11/11",
+  "direct_fact_to_calculation_count": 0,
+  "metric_phrase_count_accuracy": "70/72",
+  "multi_source_route_recall": "16/16",
+  "narrative_to_structured_count": 0,
+  "no_answer_cases_answerability_check_required": "8/8",
+  "no_answer_cases_directly_classified_as_no_answer": 0,
+  "no_answer_cases_structurally_valid": "8/8",
+  "operand_count_accuracy": "72/72",
+  "operation_accuracy": "70/72",
+  "period_set_exact_match": "72/72",
+  "task_type_accuracy": "72/72",
+  "unsupported_rate": "0/72"
+}

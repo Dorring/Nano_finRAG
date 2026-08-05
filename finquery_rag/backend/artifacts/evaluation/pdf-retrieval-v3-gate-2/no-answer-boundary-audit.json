@@ -1,0 +1,44 @@
+{
+  "records": [
+    {
+      "answerability_check_required": true,
+      "case_id": "aapl_fy2025_008",
+      "task_type": "general_single_fact"
+    },
+    {
+      "answerability_check_required": true,
+      "case_id": "jpm_fy2025_008",
+      "task_type": "table_single_fact"
+    },
+    {
+      "answerability_check_required": true,
+      "case_id": "ko_fy2025_008",
+      "task_type": "general_single_fact"
+    },
+    {
+      "answerability_check_required": true,
+      "case_id": "msft_fy2025_008",
+      "task_type": "general_single_fact"
+    },
+    {
+      "answerability_check_required": true,
+      "case_id": "nvda_fy2025_008",
+      "task_type": "table_single_fact"
+    },
+    {
+      "answerability_check_required": true,
+      "case_id": "pfe_fy2024_008",
+      "task_type": "single_metric_multi_period"
+    },
+    {
+      "answerability_check_required": true,
+      "case_id": "tsla_fy2025_008",
+      "task_type": "single_metric_multi_period"
+    },
+    {
+      "answerability_check_required": true,
+      "case_id": "v_fy2025_008",
+      "task_type": "general_single_fact"
+    }
+  ]
+}

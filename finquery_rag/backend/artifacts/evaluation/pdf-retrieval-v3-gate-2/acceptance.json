@@ -1,0 +1,17 @@
+{
+  "answer_generation_calls": 0,
+  "decision": "query_profile_router_passed",
+  "embedding_calls": 0,
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "gate": "pdf_retrieval_v3_gate_2",
+  "gate_passed": true,
+  "next_gate": "raw_protected_structured_lane",
+  "production_default_config_modified": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "reranker_calls": 0,
+  "retrieval_calls": 0,
+  "runtime_gold_reads": 0,
+  "runtime_governance_reads": 0,
+  "scoring_governance_reads": 72
+}

@@ -1,0 +1,17 @@
+{
+  "error_count": 2,
+  "errors": [
+    {
+      "actual_task_type": "calculation_multi_operand",
+      "case_id": "ko_fy2025_007",
+      "error_type": "metric_phrase_merge_error",
+      "expected_task_type": "calculation_multi_operand"
+    },
+    {
+      "actual_task_type": "calculation_multi_operand",
+      "case_id": "msft_fy2025_007",
+      "error_type": "metric_phrase_merge_error",
+      "expected_task_type": "calculation_multi_operand"
+    }
+  ]
+}
