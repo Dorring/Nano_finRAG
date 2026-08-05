@@ -171,7 +171,17 @@ def main() -> int:
     corpus = json.loads(args.corpus.read_text(encoding="utf-8"))
     questions = _jsonl(args.questions)
     profiles = {item["case_id"]: item for item in json.loads(args.gate_2.read_text(encoding="utf-8"))["predictions"]}
-    raw_cases = {item["case_id"]: item for item in json.loads(args.gate_0.read_text(encoding="utf-8"))["cases"]}
+    gate_0 = json.loads(args.gate_0.read_text(encoding="utf-8"))
+    baseline_snapshot = dict(gate_0["metrics"])
+    expected_snapshot = {
+        "bm25_source_recall_at_200": 37,
+        "dense_source_recall_at_200": 14,
+        "rrf_source_recall_at_40": 20,
+        "strict_final_source_recall_at_5": 13,
+    }
+    if any(baseline_snapshot.get(name) != value for name, value in expected_snapshot.items()):
+        raise RuntimeError("Gate 0 current-production snapshot is not the required 37/14/20/13 baseline")
+    raw_cases = {item["case_id"]: item for item in gate_0["cases"]}
     if len(questions) != 72 or set(profiles) != {item["case_id"] for item in questions}:
         raise RuntimeError("expected complete sealed 72-question Gate 2 profile set")
     args.runtime_dir.mkdir(parents=True, exist_ok=True)
@@ -264,7 +274,7 @@ def main() -> int:
             "structured_duplicate_in_raw_pool_count": merged.duplicate_count,
         })
     corpus_hash = payload_hash([{key: item[key] for key in ("candidate_key", "evidence_id", "retrieval_text", "representation_level")} for item in views])
-    _write(args.out_dir / "gate-3-protocol.json", {"gate": "pdf_retrieval_v3_gate_3", "evaluation_type": "post_benchmark_iterative_evaluation", "code_commit": args.code_commit, "candidate_db_sha256": _sha(args.candidate_db), "gate_0_snapshot_sha256": _sha(args.gate_0), "gate_2_prediction_sha256": _sha(args.gate_2), "concept_registry_sha256": _sha(args.concept_registry), "structured_query_scope": "table_single_fact_only", "structured_bm25_top_k": 40, "structured_dense_top_k": 40, "structured_rrf_top_k": 20, "rrf_k": 60, "forbidden": ["gold", "governance", "labels", "reranker", "final_selector", "answer_generation", "per_query_oracle", "parameter_scan"]})
+    _write(args.out_dir / "gate-3-protocol.json", {"gate": "pdf_retrieval_v3_gate_3", "evaluation_type": "post_benchmark_iterative_evaluation", "code_commit": args.code_commit, "candidate_db_sha256": _sha(args.candidate_db), "gate_0_snapshot_sha256": _sha(args.gate_0), "gate_0_current_production_snapshot": expected_snapshot, "gate_0_snapshot_validated_before_prediction": True, "gate_2_prediction_sha256": _sha(args.gate_2), "concept_registry_sha256": _sha(args.concept_registry), "structured_query_scope": "table_single_fact_only", "structured_bm25_top_k": 40, "structured_dense_top_k": 40, "structured_rrf_top_k": 20, "rrf_k": 60, "forbidden": ["gold", "governance", "labels", "reranker", "final_selector", "answer_generation", "per_query_oracle", "parameter_scan"]})
     _write(args.out_dir / "structured-corpus-manifest.json", {"source_candidate_store_row_count": source_rows, "structured_candidate_count": len(views), "structured_candidate_identity_hash": payload_hash([item["candidate_key"] for item in views]), "retrieval_text_hash": payload_hash([item["retrieval_text"] for item in views]), "representation_levels": {name: sum(item["representation_level"] == name for item in views) for name in ("strict_cell_aware", "retrieval_only")}, "cell_period_claim_count": 0, "production_candidate_modified": False, "production_index_writes": 0})
     _write(args.out_dir / "structured-candidate-integrity.json", {"original_identity_count": len(views), "structured_view_count": len(views), "identity_loss_count": 0, "identity_conflict_count": identity_conflicts, "duplicate_view_count": 0, "views_missing_source_lineage": sum(not item["field_lineage"] for item in views), "false_cell_to_period_claim_count": 0})
     common_manifest = {"candidate_count": len(views), "candidate_identity_hash": payload_hash([item["candidate_key"] for item in views]), "retrieval_text_hash": payload_hash([item["retrieval_text"] for item in views]), "production_index_writes": 0, "top_k": 40}
