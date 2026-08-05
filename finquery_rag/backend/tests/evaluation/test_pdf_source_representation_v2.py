@@ -62,6 +62,18 @@ def test_lineage_classifies_statement_and_note_without_company_rules() -> None:
     assert note["lineage_type"] == "note_section"
 
 
+def test_v2_period_keeps_duration_semantics() -> None:
+    matrix = [
+        ["Three Months Ended", "2025", "2024"],
+        ["Revenue", "100", "90"],
+    ]
+
+    resolved = resolve_period_headers_v2(matrix, 3)
+
+    assert resolved[1]["normalized_period"] == "FY2025"
+    assert resolved[1]["period_kind"] == "duration"
+
+
 def test_header_grid_resolves_explicit_period_columns() -> None:
     matrix = [["", "2025", "2024", "2023"], ["Revenue", "100", "90", "80"]]
     assert resolve_period_headers(matrix, 4) == [None, "FY2025", "FY2024", "FY2023"]
