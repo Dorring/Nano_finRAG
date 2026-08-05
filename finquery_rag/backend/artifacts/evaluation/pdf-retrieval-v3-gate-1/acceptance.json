@@ -1,0 +1,18 @@
+{
+  "answer_generation_calls": 0,
+  "candidate_family_conflict_count": 0,
+  "decision": "benchmark_governance_passed",
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "gate": "pdf_retrieval_v3_gate_1",
+  "gate_passed": true,
+  "gold_expansion_count": 0,
+  "gold_source_mapping_count": 80,
+  "manifest_question_hash_status": "legacy_manifest_mismatch_recorded_no_mutation",
+  "next_gate": "query_profile_router",
+  "operand_slot_count_consistent": true,
+  "production_default_config_modified": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "retrieval_calls": 0,
+  "task_classification_count": 72
+}

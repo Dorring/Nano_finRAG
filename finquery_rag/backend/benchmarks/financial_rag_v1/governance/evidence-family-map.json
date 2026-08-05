@@ -1,0 +1,1188 @@
+{
+  "families": [
+    {
+      "document_id": "ko_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:00ca61e6e2200f5a0eebd049199206b80416d623eb3a6b568b8fc49c09886b86",
+      "logical_table_id": "logical-table:53a44339fce7f90add1e4cde91d40d113bf4457dfec7840ec6aa63d060f6537a",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:5a25663abb16c0b92c93f62a32e2decdd60aad7b65e2ce937ace826a22a136c9",
+          "evidence_id": "user_1_ko_fy2025_10k.pdf::page_63::layout_table_1::row_5",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:5a25663abb16c0b92c93f62a32e2decdd60aad7b65e2ce937ace826a22a136c9"
+      ],
+      "metric": "Operating Income",
+      "pdf_page": 63,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "aapl_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:02f2c5f2e8339ff039df7cb9961ea380335a2eb71e7c66e27c6b59a1e2303134",
+      "logical_table_id": "logical-table:e5401d00a67256092a523e9d995039cb272881b2d41e1625ba747075480497f0",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d",
+          "evidence_id": "user_1_aapl_fy2025_10k.pdf::page_26::layout_table_1::row_3",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d",
+          "evidence_id": "user_1_aapl_fy2025_10k.pdf::page_26::layout_table_1::row_3",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d"
+      ],
+      "metric": "Services",
+      "pdf_page": 26,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:0e792fc6a403cc2ea0a3a1b9c0d40acc54d185c6f104ad5729079167ae6c44d2",
+      "logical_table_id": "logical-table:2e34a71c982d884579e9ab78451b93747beff356556d216f8af543fac6e35028",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+          "evidence_id": "user_1_tsla_fy2025_10k.pdf::page_69::layout_table_2::row_7",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        },
+        {
+          "candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+          "evidence_id": "user_1_tsla_fy2025_10k.pdf::page_69::layout_table_2::row_7",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+          "evidence_id": "user_1_tsla_fy2025_10k.pdf::page_69::layout_table_2::row_7",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0"
+      ],
+      "metric": "Total revenues",
+      "pdf_page": 69,
+      "periods": [
+        "FY2024",
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:0ee0f57867303e2a0e7a36094e05f3af63713eeff8a925418c6d1941d644399b",
+      "logical_table_id": "logical-table:2e34a71c982d884579e9ab78451b93747beff356556d216f8af543fac6e35028",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:7fcc2dc3de8832dfab1fe0b8a08e25a303a996470fa598765b1e08144018e9f7",
+          "evidence_id": "user_1_tsla_fy2025_10k.pdf::page_69::layout_table_2::row_2",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:7fcc2dc3de8832dfab1fe0b8a08e25a303a996470fa598765b1e08144018e9f7"
+      ],
+      "metric": "Automotive regulatory credits",
+      "pdf_page": 69,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "msft_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:1202051eb285004c4c01fd41c514462d7d7a554cf8527c00238fb1b6b1e750d4",
+      "logical_table_id": "logical-table:8591ea6a5cd12deee2a25169cc5f6492c98aaab8f01198ca6ca88785de0a9bdf",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+          "evidence_id": "user_1_msft_fy2025_annual_report.pdf::page_80::table_1",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3"
+      ],
+      "metric": "Productivity and Business Processes revenue",
+      "pdf_page": 80,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:123a8c23df97b6aad3493f5f1e50b738d1a9926491891c6b37ff9023da19053d",
+      "logical_table_id": "logical-table:2ea8d555de56503cfa29b996993318caac1b5ed75c24b01bcee2ab3525405dbe",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:84ecbba7da14d18cf2bb3b171d9bff27fa45ad1c75d4ae77545b1b0046f0b92e",
+          "evidence_id": "user_1_nvda_fy2025_annual_report.pdf::page_172::table_1::row_9",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:84ecbba7da14d18cf2bb3b171d9bff27fa45ad1c75d4ae77545b1b0046f0b92e"
+      ],
+      "metric": "Automotive",
+      "pdf_page": 172,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "pfe_fy2024",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:14f91ef24b5f2c89527699b700c879efe7ab337e7e0d09ea06ce6b3394a30d33",
+      "logical_table_id": "logical-table:10b37fdc2b2a7b05c672644b64b094687302736712bad4ce3e9d485182e7f0c2",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e",
+          "evidence_id": "user_1_pfe_fy2024_10k.pdf::page_44::table_3",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e"
+      ],
+      "metric": "Prevnar family - Worldwide",
+      "pdf_page": 44,
+      "periods": [
+        "FY2024"
+      ]
+    },
+    {
+      "document_id": "ko_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:301f3379185e33e3768a7068659cb6f763ce48525f5715e2447addb435adc9c2",
+      "logical_table_id": "logical-table:fed93a3def0c32ffcc094386b6944c858c243566dc4e502521178e84ef81bf54",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:2615a8131b1b84e1f788cfb9c9292fa6b20c9688723ff3bc555f21d4590d95d8",
+          "evidence_id": "user_1_ko_fy2025_10k.pdf::page_119::layout_table_2::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:2615a8131b1b84e1f788cfb9c9292fa6b20c9688723ff3bc555f21d4590d95d8"
+      ],
+      "metric": "Total net operating revenues",
+      "pdf_page": 119,
+      "periods": [
+        "FY2024"
+      ]
+    },
+    {
+      "document_id": "v_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:39ab05a76f63bae93b4bb656c2fad05781d2092ad5716e506120fa18fab1f560",
+      "logical_table_id": "logical-table:e284fc7585aa6c153dfabc772a98f7e88b61625f69f165cf531860e4b93a8ee7",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:fd7d3044411973c1af57bf015ca3fd14efb235afbe07f01c8ff1d8d9259536db",
+          "evidence_id": "user_1_v_fy2025_annual_report.pdf::page_4::table_1::row_3",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:fd7d3044411973c1af57bf015ca3fd14efb235afbe07f01c8ff1d8d9259536db"
+      ],
+      "metric": "Total volume",
+      "pdf_page": 4,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:3c4f71e77c0584060c6ff945803ceb275fed1dfe3744a9c8a384938d208ea030",
+      "logical_table_id": "logical-table:2ea8d555de56503cfa29b996993318caac1b5ed75c24b01bcee2ab3525405dbe",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d",
+          "evidence_id": "user_1_nvda_fy2025_annual_report.pdf::page_172::table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        },
+        {
+          "candidate_key": "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d",
+          "evidence_id": "user_1_nvda_fy2025_annual_report.pdf::page_172::table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d",
+          "evidence_id": "user_1_nvda_fy2025_annual_report.pdf::page_172::table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d"
+      ],
+      "metric": "Data Center",
+      "pdf_page": 172,
+      "periods": [
+        "FY2024",
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "msft_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:4db7d6452915a1889c0276e5b4dd06198b4c6e21f78a70bd319a69d090fe73fa",
+      "logical_table_id": "logical-table:eff98729ed514c2cea9cd881d349463bc4d57c3f70b95872e8745a577a5e91c8",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
+          "evidence_id": "user_1_msft_fy2025_annual_report.pdf::page_80::chunk_91_1",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        },
+        {
+          "candidate_key": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
+          "evidence_id": "user_1_msft_fy2025_annual_report.pdf::page_80::chunk_91_1",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
+          "evidence_id": "user_1_msft_fy2025_annual_report.pdf::page_80::chunk_91_1",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d"
+      ],
+      "metric": "Intelligent Cloud revenue",
+      "pdf_page": 80,
+      "periods": [
+        "FY2024",
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "pfe_fy2024",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:4fb7fc6d017ee3f846ca37bfce5c1c1e023f3a830e7e7e169e8ea753b66057d0",
+      "logical_table_id": "logical-table:7b4a14cb0fc132ed9a92ed5c311557c5773c12caeb470dd0a874a38a32010541",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+          "evidence_id": "user_1_pfe_fy2024_10k.pdf::page_45::table_1",
+          "evidence_type": "table_row",
+          "period": "FY2023"
+        },
+        {
+          "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+          "evidence_id": "user_1_pfe_fy2024_10k.pdf::page_45::table_1",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2"
+      ],
+      "metric": "Paxlovid - Worldwide",
+      "pdf_page": 45,
+      "periods": [
+        "FY2023",
+        "FY2024"
+      ]
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:51ffafcac16c8abf1b02aec458168e11bdfbd75ccb9aa8bfa0c3bf62b81c5b9d",
+      "logical_table_id": "logical-table:2883f93f441f6ec1dab78ce9308d956fad1d74a188d9c63a752d86df437dd9e2",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+          "evidence_id": "user_1_jpm_fy2025_annual_report.pdf::page_199::table_1::row_19",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        },
+        {
+          "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+          "evidence_id": "user_1_jpm_fy2025_annual_report.pdf::page_199::table_1::row_19",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+          "evidence_id": "user_1_jpm_fy2025_annual_report.pdf::page_199::table_1::row_19",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07"
+      ],
+      "metric": "Total assets",
+      "pdf_page": 199,
+      "periods": [
+        "FY2024",
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "v_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:54f361b00313ec6c250c84d6684dc69c14343faacf5a66e78ebec0ff0a1895d5",
+      "logical_table_id": "logical-table:0e850910dfb562dd6ec364cd46e5d24dc18db073dc926fec098486ca35709c54",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:21f924b9c1b33d1e7caa949ac3dcca366d20e99a1aacf2b9d84be8e762ad6240",
+          "evidence_id": "user_1_v_fy2025_annual_report.pdf::page_75::table_1",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        },
+        {
+          "candidate_key": "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83",
+          "evidence_id": "user_1_v_fy2025_annual_report.pdf::page_75::table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83",
+          "evidence_id": "user_1_v_fy2025_annual_report.pdf::page_75::table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:21f924b9c1b33d1e7caa949ac3dcca366d20e99a1aacf2b9d84be8e762ad6240",
+        "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83"
+      ],
+      "metric": "Net revenue",
+      "pdf_page": 75,
+      "periods": [
+        "FY2024",
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "pfe_fy2024",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:56a47856cb6f2013c51b0061f581448ad55b9d90c79806b18ed01ef2f42757ef",
+      "logical_table_id": "logical-table:1122d831ff83ac7cd5029657ecf5be53fa7fc6a6f4b84ad8963eab6ae229b98c",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:4886dcb9c5a4bd430f3888bc77cf033b0745509bd1bc968682ea31caef7b5c56",
+          "evidence_id": "user_1_pfe_fy2024_10k.pdf::page_60::table_1::row_11",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:4886dcb9c5a4bd430f3888bc77cf033b0745509bd1bc968682ea31caef7b5c56"
+      ],
+      "metric": "Research and development expenses",
+      "pdf_page": 60,
+      "periods": [
+        "FY2024"
+      ]
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:6c786a16c2a5d68116c2789e4bfbe17d94da8960355fd926a822c0ba860240c5",
+      "logical_table_id": "logical-table:2e34a71c982d884579e9ab78451b93747beff356556d216f8af543fac6e35028",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:764e51106a705bd6f16af004eeb7f0126c4209a0c62a5319d13153dc95987982",
+          "evidence_id": "user_1_tsla_fy2025_10k.pdf::page_69::layout_table_2::row_6",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:764e51106a705bd6f16af004eeb7f0126c4209a0c62a5319d13153dc95987982"
+      ],
+      "metric": "Services and other",
+      "pdf_page": 69,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "msft_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:6cc8f541fe5f285ec1680cfb3393490500c89bb3e8c82689a6408b94ae920fc0",
+      "logical_table_id": "logical-table:8591ea6a5cd12deee2a25169cc5f6492c98aaab8f01198ca6ca88785de0a9bdf",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+          "evidence_id": "user_1_msft_fy2025_annual_report.pdf::page_80::table_1",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3"
+      ],
+      "metric": "Productivity and Business Processes operating income",
+      "pdf_page": 80,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "ko_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:6ec0cf0280d0aae8ea5e61d2508121bde17c8516b8cc0b1cf40a37b65e1c709f",
+      "logical_table_id": "logical-table:57f16fbf004948c71c1cde37c3ca2446a0577b8e2e07fbaa64b8269db1263ea8",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:214ce6712de95bbe235ef407a4a41b42d0ba38080b13d80a418493656e357a9b",
+          "evidence_id": "user_1_ko_fy2025_10k.pdf::page_119::layout_table_1::row_2",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:214ce6712de95bbe235ef407a4a41b42d0ba38080b13d80a418493656e357a9b"
+      ],
+      "metric": "Third party",
+      "pdf_page": 119,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:6f868f36370706c9c77b0e5c2dbb5548b961d6ae966c10bea838e0cc6e80ee61",
+      "logical_table_id": "logical-table:2883f93f441f6ec1dab78ce9308d956fad1d74a188d9c63a752d86df437dd9e2",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:d822718dbec99a61ac7b4c914ac8b09a7bf97aa5ece318730b7c97c26821848e",
+          "evidence_id": "user_1_jpm_fy2025_annual_report.pdf::page_199::table_1::row_28",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:d822718dbec99a61ac7b4c914ac8b09a7bf97aa5ece318730b7c97c26821848e",
+          "evidence_id": "user_1_jpm_fy2025_annual_report.pdf::page_199::table_1::row_28",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:d822718dbec99a61ac7b4c914ac8b09a7bf97aa5ece318730b7c97c26821848e"
+      ],
+      "metric": "Total liabilities",
+      "pdf_page": 199,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "msft_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:6fa3a8d3ce6bc4c7a16a0dc8647771f6e45c96df018cfa766864b17f6b604d21",
+      "logical_table_id": "logical-table:d72df571af828cf7b1c856fd38f8f30806076aae47b55e6556f4a85392c15bcc",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+          "evidence_id": "user_1_msft_fy2025_annual_report.pdf::page_80::chunk_91_2",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a"
+      ],
+      "metric": "More Personal Computing revenue",
+      "pdf_page": 80,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:83071988b577a4ef2d743a72cbd86552ea911e41125a7deea44993a279351fa7",
+      "logical_table_id": "logical-table:395bb60a58af5e98e50fbaea9cb4068e59a8e61cf1fb316afdd92236c1674330",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:a9325e992895567a4c2721f66a3bc3c24b663ddeade06999ff5c87755159932c",
+          "evidence_id": "user_1_jpm_fy2025_annual_report.pdf::page_101::table_2::row_46",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:a9325e992895567a4c2721f66a3bc3c24b663ddeade06999ff5c87755159932c"
+      ],
+      "metric": "Net income",
+      "pdf_page": 101,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "v_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:9149cd4b5cf7573d5dd5d874475c7eaf45c774a2f317978ca1bf915d2721c40c",
+      "logical_table_id": "logical-table:0e850910dfb562dd6ec364cd46e5d24dc18db073dc926fec098486ca35709c54",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:4c11889fb53c1b1a3194a2e6518b9d94a910cfa71ea99f8e25c4ef206e06613b",
+          "evidence_id": "user_1_v_fy2025_annual_report.pdf::page_75::table_1::row_19",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:4c11889fb53c1b1a3194a2e6518b9d94a910cfa71ea99f8e25c4ef206e06613b"
+      ],
+      "metric": "Net income",
+      "pdf_page": 75,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:92135b0bf1dc772c125ed5b8357ca06125c8046121ab549186148c59eb546bd1",
+      "logical_table_id": "logical-table:dbdfc682ef924eaf8026fba7c9b0e85fbda1b4fee8fb75fa8a35ed2b636eeea3",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024",
+          "evidence_id": "user_1_nvda_fy2025_annual_report.pdf::page_144::table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        },
+        {
+          "candidate_key": "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024",
+          "evidence_id": "user_1_nvda_fy2025_annual_report.pdf::page_144::table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024",
+          "evidence_id": "user_1_nvda_fy2025_annual_report.pdf::page_144::table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024"
+      ],
+      "metric": "Revenue",
+      "pdf_page": 144,
+      "periods": [
+        "FY2024",
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "aapl_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:955d4ec9f7bc54ea899591a877a2ad4516dd56949e89eca84f6ae65dcd64f2cb",
+      "logical_table_id": "logical-table:e5401d00a67256092a523e9d995039cb272881b2d41e1625ba747075480497f0",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563",
+          "evidence_id": "user_1_aapl_fy2025_10k.pdf::page_26::layout_table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        },
+        {
+          "candidate_key": "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563",
+          "evidence_id": "user_1_aapl_fy2025_10k.pdf::page_26::layout_table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563"
+      ],
+      "metric": "Total net sales",
+      "pdf_page": 26,
+      "periods": [
+        "FY2024",
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:9bfd371042b02efcbb7bcd01f35aee51e09381c5641d4d77c672109485d8dfec",
+      "logical_table_id": "logical-table:716c546efdb26ed80330a1071253b3cc80add7a220991204e888800d9b8fbd4a",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
+          "evidence_id": "user_1_jpm_fy2025_annual_report.pdf::page_97::table_1::row_24",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        },
+        {
+          "candidate_key": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
+          "evidence_id": "user_1_jpm_fy2025_annual_report.pdf::page_97::table_1::row_24",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
+          "evidence_id": "user_1_jpm_fy2025_annual_report.pdf::page_97::table_1::row_24",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8"
+      ],
+      "metric": "Net income",
+      "pdf_page": 97,
+      "periods": [
+        "FY2024",
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "pfe_fy2024",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:9cc4fcd66a980b78b6f6912ea0848133416a2e4438cedaf80b71e764086deb30",
+      "logical_table_id": "logical-table:10b37fdc2b2a7b05c672644b64b094687302736712bad4ce3e9d485182e7f0c2",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e",
+          "evidence_id": "user_1_pfe_fy2024_10k.pdf::page_44::table_3",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e"
+      ],
+      "metric": "Eliquis - Worldwide",
+      "pdf_page": 44,
+      "periods": [
+        "FY2024"
+      ]
+    },
+    {
+      "document_id": "v_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:aa7f77bfd3b5149f0a7b4e12a96f33fe61079627b2184baec2cf2cdd93334354",
+      "logical_table_id": "logical-table:e284fc7585aa6c153dfabc772a98f7e88b61625f69f165cf531860e4b93a8ee7",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+          "evidence_id": "user_1_v_fy2025_annual_report.pdf::page_4::table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        },
+        {
+          "candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+          "evidence_id": "user_1_v_fy2025_annual_report.pdf::page_4::table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+          "evidence_id": "user_1_v_fy2025_annual_report.pdf::page_4::table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186"
+      ],
+      "metric": "Payments volume",
+      "pdf_page": 4,
+      "periods": [
+        "FY2024",
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:b228d4bdf7d9251234cf76449530c4ae082f374480ae7d2a7222155cc2247b25",
+      "logical_table_id": "logical-table:243dd3ec93be315f95f832d418783d8ec3b988d5f6ad79f48198cddff9e43ddc",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:b5494e22a29663edc6ff9f1ce1b126c4c9f32d6933a1479b696a5c93a3e45135",
+          "evidence_id": "user_1_jpm_fy2025_annual_report.pdf::page_197::table_1::row_28",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:b5494e22a29663edc6ff9f1ce1b126c4c9f32d6933a1479b696a5c93a3e45135"
+      ],
+      "metric": "Net income",
+      "pdf_page": 197,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "ko_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:c1256a9bcb8913d8fb2a6969cf66858f7a261162b0f1d4d61633d148b1955aa9",
+      "logical_table_id": "logical-table:53a44339fce7f90add1e4cde91d40d113bf4457dfec7840ec6aa63d060f6537a",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+          "evidence_id": "user_1_ko_fy2025_10k.pdf::page_63::layout_table_1::row_0",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        },
+        {
+          "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+          "evidence_id": "user_1_ko_fy2025_10k.pdf::page_63::layout_table_1::row_0",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+          "evidence_id": "user_1_ko_fy2025_10k.pdf::page_63::layout_table_1::row_0",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195"
+      ],
+      "metric": "Net Operating Revenues",
+      "pdf_page": 63,
+      "periods": [
+        "FY2024",
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "ko_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:c4dfbe7ef11dc5c6410baa70f4ea7905e2a8f33482b6a72c99ef26ef1814b369",
+      "logical_table_id": "logical-table:53a44339fce7f90add1e4cde91d40d113bf4457dfec7840ec6aa63d060f6537a",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:1b48a73c57594dcf8a511dbd4d5aa5f5cd6c3bc4657d5cafb6ea00b67adc8572",
+          "evidence_id": "user_1_ko_fy2025_10k.pdf::page_63::layout_table_1::row_14",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:1b48a73c57594dcf8a511dbd4d5aa5f5cd6c3bc4657d5cafb6ea00b67adc8572"
+      ],
+      "metric": "Net Income Attributable to Shareowners of The Coca-Cola Company",
+      "pdf_page": 63,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "pfe_fy2024",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:c80dc2b5f11b72119a7630e89e6aac7f3030d7f366c6db0dee2a9bb547581630",
+      "logical_table_id": "logical-table:1122d831ff83ac7cd5029657ecf5be53fa7fc6a6f4b84ad8963eab6ae229b98c",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827",
+          "evidence_id": "user_1_pfe_fy2024_10k.pdf::page_60::table_1::row_7",
+          "evidence_type": "table_row",
+          "period": "FY2023"
+        },
+        {
+          "candidate_key": "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827",
+          "evidence_id": "user_1_pfe_fy2024_10k.pdf::page_60::table_1::row_7",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        },
+        {
+          "candidate_key": "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827",
+          "evidence_id": "user_1_pfe_fy2024_10k.pdf::page_60::table_1::row_7",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827"
+      ],
+      "metric": "Total revenues",
+      "pdf_page": 60,
+      "periods": [
+        "FY2023",
+        "FY2024"
+      ]
+    },
+    {
+      "document_id": "aapl_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:cb7d0de7bf6f2ce6025e81cc265ee4b8e29333f958fb16bca44512530909846b",
+      "logical_table_id": "logical-table:d73f3f03e3a125b424bcc064b219ba6393d811be57e2b079f054412604ff4a6b",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:79ac51e245c5b62256797393cbdd8c14497c5800b1c7afa77995957d747c223c",
+          "evidence_id": "user_1_aapl_fy2025_10k.pdf::page_32::layout_table_1::row_2",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:79ac51e245c5b62256797393cbdd8c14497c5800b1c7afa77995957d747c223c"
+      ],
+      "metric": "Total net sales",
+      "pdf_page": 32,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:d66d8ded1f3d9dd443a39efc9c09d3a5d45288436db0c61a7e4385b5db727d86",
+      "logical_table_id": "logical-table:c357985f92e10072c012205591187b0ecaf21e66aaea0aefba1e35da12f94b0c",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52",
+          "evidence_id": "user_1_tsla_fy2025_10k.pdf::page_55::layout_table_1::row_5",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        },
+        {
+          "candidate_key": "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52",
+          "evidence_id": "user_1_tsla_fy2025_10k.pdf::page_55::layout_table_1::row_5",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52",
+          "evidence_id": "user_1_tsla_fy2025_10k.pdf::page_55::layout_table_1::row_5",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52"
+      ],
+      "metric": "Total automotive revenues",
+      "pdf_page": 55,
+      "periods": [
+        "FY2024",
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:d7db45ea83c593471a3c7f65b031c35be6bf13f15c78e07eabeac78937457bff",
+      "logical_table_id": "logical-table:636f3ffba750e118625938a99c5fb76b03feeb103324774d24a3c88b64f1242f",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+          "evidence_id": "user_1_tsla_fy2025_10k.pdf::page_55::table_1",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+          "evidence_id": "user_1_tsla_fy2025_10k.pdf::page_55::table_1",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81"
+      ],
+      "metric": "Energy generation and storage segment revenue",
+      "pdf_page": 55,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "ko_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:dc283ab83ed70aa63482530392b6ba8745c99e45c0f1f911c299fcc1991ea088",
+      "logical_table_id": "logical-table:57f16fbf004948c71c1cde37c3ca2446a0577b8e2e07fbaa64b8269db1263ea8",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+          "evidence_id": "user_1_ko_fy2025_10k.pdf::page_119::layout_table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+          "evidence_id": "user_1_ko_fy2025_10k.pdf::page_119::layout_table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+          "evidence_id": "user_1_ko_fy2025_10k.pdf::page_119::layout_table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0"
+      ],
+      "metric": "Total net operating revenues",
+      "pdf_page": 119,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:e951a43e5453c286097ff3f99c0d699058a89915e2a2129b0d53ce5a5db7ef32",
+      "logical_table_id": "logical-table:2ea8d555de56503cfa29b996993318caac1b5ed75c24b01bcee2ab3525405dbe",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:c03a713affc5c00b9d7416a69608d071305fa17362b7668a963dc1f2b5cc8697",
+          "evidence_id": "user_1_nvda_fy2025_annual_report.pdf::page_172::table_1::row_7",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:c03a713affc5c00b9d7416a69608d071305fa17362b7668a963dc1f2b5cc8697"
+      ],
+      "metric": "Gaming",
+      "pdf_page": 172,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "aapl_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:ead3e0256fc8060824aefbb120812ed2fcea43086df2444acd0c17de70b68f21",
+      "logical_table_id": "logical-table:e5401d00a67256092a523e9d995039cb272881b2d41e1625ba747075480497f0",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:d8d06e11d524ce4ec4c95ca728ef61ba568965f41b623d7033faf672eea17989",
+          "evidence_id": "user_1_aapl_fy2025_10k.pdf::page_26::layout_table_1::row_0",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:d8d06e11d524ce4ec4c95ca728ef61ba568965f41b623d7033faf672eea17989"
+      ],
+      "metric": "Mac",
+      "pdf_page": 26,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "v_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:eebeef4806f756fafb664d3311098e4019692e0f4967c1d0bc9b9405acedf44a",
+      "logical_table_id": "logical-table:e284fc7585aa6c153dfabc772a98f7e88b61625f69f165cf531860e4b93a8ee7",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+          "evidence_id": "user_1_v_fy2025_annual_report.pdf::page_4::table_1::row_5",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+          "evidence_id": "user_1_v_fy2025_annual_report.pdf::page_4::table_1::row_5",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68"
+      ],
+      "metric": "Transactions processed on Visa's networks",
+      "pdf_page": 4,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "pfe_fy2024",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:f0a042c0d027481305dbed395bc4a63d56bb1f12a44c621b76bcc608badb5fa0",
+      "logical_table_id": "logical-table:7b4a14cb0fc132ed9a92ed5c311557c5773c12caeb470dd0a874a38a32010541",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+          "evidence_id": "user_1_pfe_fy2024_10k.pdf::page_45::table_1",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        },
+        {
+          "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+          "evidence_id": "user_1_pfe_fy2024_10k.pdf::page_45::table_1",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2"
+      ],
+      "metric": "Comirnaty - Worldwide",
+      "pdf_page": 45,
+      "periods": [
+        "FY2024"
+      ]
+    },
+    {
+      "document_id": "msft_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:f116fcdc900785dc336efb1a23e953d496da34e9f3613c292d2d55672b1e8a97",
+      "logical_table_id": "logical-table:d72df571af828cf7b1c856fd38f8f30806076aae47b55e6556f4a85392c15bcc",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+          "evidence_id": "user_1_msft_fy2025_annual_report.pdf::page_80::chunk_91_2",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        },
+        {
+          "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+          "evidence_id": "user_1_msft_fy2025_annual_report.pdf::page_80::chunk_91_2",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+          "evidence_id": "user_1_msft_fy2025_annual_report.pdf::page_80::chunk_91_2",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+          "evidence_id": "user_1_msft_fy2025_annual_report.pdf::page_80::chunk_91_2",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a"
+      ],
+      "metric": "Total revenue",
+      "pdf_page": 80,
+      "periods": [
+        "FY2024",
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:f6f163f2092f4f87dbeab0bc67aba51f6ef9f11f968aba617dc78b345ca83a3a",
+      "logical_table_id": "logical-table:9adc5bfc7882a62b93b7adbbd85d48a6d19d80811efc03f31b3d41d14873ab49",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf",
+          "evidence_id": "user_1_nvda_fy2025_annual_report.pdf::page_130::table_2::row_5",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf",
+          "evidence_id": "user_1_nvda_fy2025_annual_report.pdf::page_130::table_2::row_5",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf"
+      ],
+      "metric": "Gross margin",
+      "pdf_page": 130,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "aapl_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:fa99d7534cff7153c23c6afebcf77eabc4615254ed17e7ff604ec596a95e7bc1",
+      "logical_table_id": "logical-table:efbca3dabec5a38f11876e7079cbbf6bef5a6a33f879037ebbafa7a15500f794",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:f06ee04f963d52481ef27a335b7a6c09674546d3ab590a90c2a4a033f8ea34d8",
+          "evidence_id": "user_1_aapl_fy2025_10k.pdf::page_27::layout_table_2::row_2",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:f06ee04f963d52481ef27a335b7a6c09674546d3ab590a90c2a4a033f8ea34d8"
+      ],
+      "metric": "Total gross margin percentage",
+      "pdf_page": 27,
+      "periods": [
+        "FY2025"
+      ]
+    },
+    {
+      "document_id": "aapl_fy2025",
+      "equivalence_reason": "same_financial_row_or_block_lineage",
+      "evidence_family_id": "family:v1:fee99aea8260549aa82a40fd36c81860e00a81129c4302a9a6b31b0a2025fb4b",
+      "logical_table_id": "logical-table:66399ca92bc4bb5df05a41baa28ff44bbe341072c36ab53daec8db1f0080d38c",
+      "member_bindings": [
+        {
+          "candidate_key": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
+          "evidence_id": "user_1_aapl_fy2025_10k.pdf::page_26::table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2024"
+        },
+        {
+          "candidate_key": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
+          "evidence_id": "user_1_aapl_fy2025_10k.pdf::page_26::table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        },
+        {
+          "candidate_key": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
+          "evidence_id": "user_1_aapl_fy2025_10k.pdf::page_26::table_1::row_4",
+          "evidence_type": "table_row",
+          "period": "FY2025"
+        }
+      ],
+      "member_candidate_keys": [
+        "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324"
+      ],
+      "metric": "iPhone",
+      "pdf_page": 26,
+      "periods": [
+        "FY2024",
+        "FY2025"
+      ]
+    }
+  ]
+}
