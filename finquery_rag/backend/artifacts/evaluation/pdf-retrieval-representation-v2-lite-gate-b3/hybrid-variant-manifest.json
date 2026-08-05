@@ -1,0 +1,29 @@
+{
+  "parameter_scan": false,
+  "variants": [
+    {
+      "bm25_field": "raw_row_text",
+      "dense_field": "raw_row_text",
+      "name": "baseline_raw_bm25_raw_dense",
+      "reranker_field": "raw_row_text"
+    },
+    {
+      "bm25_field": "enriched_retrieval_text",
+      "dense_field": "raw_row_text",
+      "name": "a_enriched_bm25_raw_dense",
+      "reranker_field": "raw_row_text"
+    },
+    {
+      "bm25_field": "raw_row_text",
+      "dense_field": "enriched_retrieval_text",
+      "name": "b_raw_bm25_enriched_dense",
+      "reranker_field": "raw_row_text"
+    },
+    {
+      "bm25_field": "enriched_retrieval_text",
+      "dense_field": "enriched_retrieval_text",
+      "name": "c_enriched_bm25_enriched_dense",
+      "reranker_field": "raw_row_text"
+    }
+  ]
+}

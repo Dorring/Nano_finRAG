@@ -13,6 +13,7 @@ from src.evaluation.pdf_source_representation_v2 import (
     statement_from_lines,
 )
 from scripts.evaluation.run_pdf_retrieval_v2_lite import _bm25
+from scripts.evaluation.run_pdf_v2_lite_gate_b3 import _rrf
 
 
 def test_multilevel_year_rows_are_not_resolved_by_baseline() -> None:
@@ -82,6 +83,12 @@ def test_v2_lite_bm25_uses_header_terms_without_gold() -> None:
     ]
 
     assert _bm25("net sales FY2025", documents)[0] == 0
+
+
+def test_v2_lite_rrf_uses_fixed_equal_rank_fusion() -> None:
+    fused = _rrf([0, 1, 2], [1, 0, 3], cutoff=3, k=60)
+
+    assert [index for index, _ in fused[:2]] == [0, 1]
 
 
 def test_header_grid_resolves_explicit_period_columns() -> None:
