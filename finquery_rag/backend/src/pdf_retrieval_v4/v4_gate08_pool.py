@@ -78,7 +78,7 @@ class ProductionCandidateMapper:
         return hashlib.sha256(str(content).replace("\r\n", "\n").replace("\r", "\n").encode()).hexdigest()
 
     def _load(self, tenant_id: int) -> None:
-        connection = sqlite3.connect(f"file:{self.db_path.resolve().as_posix()}?mode=ro", uri=True)
+        connection = sqlite3.connect(f"file:{self.db_path.absolute().as_posix()}?mode=ro", uri=True)
         try:
             rows = connection.execute(
                 "SELECT doc_id, content, metadata_json, user_id, doc_name FROM chunk_store WHERE user_id=?",
