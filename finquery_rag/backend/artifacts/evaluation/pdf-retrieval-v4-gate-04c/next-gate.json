@@ -1,5 +1,7 @@
 {
-  "decision": "pending_posthoc_scoring",
+  "automatic_merge_policy_unchanged": true,
+  "decision": "cross_page_stitching_shadow_known_positive_coverage_passed",
   "gate_05_blocked": false,
-  "next_gate": "score_continuation_shadow"
+  "next_gate": "evidence_unit_generation",
+  "production_switch_allowed": false
 }
