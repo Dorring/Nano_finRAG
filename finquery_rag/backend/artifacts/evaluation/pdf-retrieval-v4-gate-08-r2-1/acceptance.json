@@ -1,0 +1,34 @@
+{
+  "ablation_recall": {
+    "E0_raw_plus_structured": "42/80",
+    "E1_E0_plus_candidate_raw": "46/80",
+    "E2_E0_plus_candidate_structured": "46/80",
+    "E3_E0_plus_full_candidate": "47/80"
+  },
+  "b_class_ablation_recall": {
+    "E0": "0/22",
+    "E1_raw_only": "2/22",
+    "E2_structured_only": "4/22",
+    "E3_full": "5/22"
+  },
+  "decision": "lane_contribution_audit_complete",
+  "gate": "pdf_retrieval_v4_gate_08_r2_1",
+  "next_gate": "gate_08_r1_2_independent_structural_presence_audit",
+  "pool_truncation_count": 6,
+  "primary_bottleneck": "structured_view_coverage_insufficient",
+  "production_switch_allowed": false,
+  "r2_seal_verified": true,
+  "raw_gold_retained": "31/31",
+  "recovered_gold_support": {
+    "fusion_only": 0,
+    "raw_and_structured": 0,
+    "raw_only": 0,
+    "structured_only": 5
+  },
+  "unrecovered_analysis": {
+    "raw_only": 17,
+    "structured_lane_completely_missed": 0,
+    "structured_lane_top50": 0,
+    "structured_view_exists": 0
+  }
+}

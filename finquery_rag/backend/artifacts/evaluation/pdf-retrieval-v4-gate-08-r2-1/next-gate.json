@@ -1,0 +1,21 @@
+{
+  "ablation_summary": {
+    "E0": 42,
+    "E1": 46,
+    "E2": 46,
+    "E3": 47,
+    "total_gold": 80
+  },
+  "b_class_summary": {
+    "E0": 0,
+    "E1": 2,
+    "E2": 4,
+    "E3": 5,
+    "total": 22
+  },
+  "current_gate": "pdf_retrieval_v4_gate_08_r2_1",
+  "decision": "lane_contribution_audit_complete",
+  "next_gate": "gate_08_r1_2_independent_structural_presence_audit",
+  "primary_bottleneck": "structured_view_coverage_insufficient",
+  "production_switch_allowed": false
+}

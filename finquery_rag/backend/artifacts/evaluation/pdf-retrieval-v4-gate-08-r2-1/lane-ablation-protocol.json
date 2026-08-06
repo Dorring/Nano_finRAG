@@ -1,0 +1,47 @@
+{
+  "ablation_groups": {
+    "E0": "raw_production + existing_structured",
+    "E1": "E0 + candidate_raw (bm25+dense RRF Top-40)",
+    "E2": "E0 + candidate_structured (bm25+dense RRF Top-40)",
+    "E3": "E0 + candidate_raw + candidate_structured (R2 combined)"
+  },
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "forbidden_inputs": [
+    "expected_value",
+    "reference_answer",
+    "gate_1_governance_fields"
+  ],
+  "gate": "pdf_retrieval_v4_gate_08_r2_1",
+  "inputs": [
+    "sealed_r2_predictions",
+    "sealed_r2_prediction_seal",
+    "r2_b_class_detail",
+    "r2_failure_attribution",
+    "r2_scoring_report",
+    "r2_candidate_metadata",
+    "gate_08_raw_parity",
+    "gate_08_sealed_predictions",
+    "r1_1_coverage_classification",
+    "labels_golden"
+  ],
+  "lane_k": 50,
+  "pool_k": 40,
+  "prediction_rerun": false,
+  "purpose": "lane_contribution_and_coverage_audit",
+  "r2_gold_reads_before_seal": 0,
+  "r2_governance_reads_before_seal": 0,
+  "r2_prediction_hash": "20c21e3bb012c2c0c7086c3d9c7d97c5da7200f2b2d9b581cc97392a9188a80a",
+  "r2_seal_verified": true,
+  "raw_lanes": [
+    "candidate_raw_bm25",
+    "candidate_raw_dense"
+  ],
+  "re_encoding": false,
+  "re_indexing": false,
+  "re_retrieval": false,
+  "rrf_k": 60,
+  "structured_lanes": [
+    "candidate_structured_bm25",
+    "candidate_structured_dense"
+  ]
+}
