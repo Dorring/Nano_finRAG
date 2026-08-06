@@ -1,7 +1,10 @@
 {
   "answer_generation_calls": 0,
   "candidate_generation_recall": 1.0,
+  "candidate_identity_conflicts": 0,
+  "cross_page_merged": false,
   "decision": "cross_page_stitching_shadow_known_positive_coverage_passed",
+  "duplicate_views": 0,
   "expected_value_reads_runtime": 0,
   "false_soft_link_count": 0,
   "gate": "pdf_retrieval_v4_gate_04c",
@@ -13,6 +16,7 @@
   "merge_applied": false,
   "mineru_reruns": 0,
   "model_training_calls": 0,
+  "next_gate": "evidence_unit_generation",
   "ocr_calls": 0,
   "parameter_scan": false,
   "per_query_oracle": false,
@@ -24,5 +28,6 @@
   "retrieval_runs": 0,
   "review_labels_read_after_seal": true,
   "runtime_gold_reads": 0,
-  "runtime_governance_reads": 0
+  "runtime_governance_reads": 0,
+  "runtime_oracle_reads": 0
 }
