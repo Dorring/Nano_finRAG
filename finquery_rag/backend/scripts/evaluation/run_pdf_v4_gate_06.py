@@ -191,6 +191,8 @@ def _build_views(units: list[dict[str, Any]], shadow_dir: Path) -> tuple[dict[st
         if not _traceback_complete(trace):
             reasons.append("incomplete_source_traceback")
         if typ == "cell":
+            if unit.get("fact_eligible") is False:
+                reasons.append("fact_not_eligible")
             if unit.get("evidence_level") != "A":
                 reasons.append("not_level_a")
             if unit.get("binding_status") != "complete":
@@ -202,6 +204,8 @@ def _build_views(units: list[dict[str, Any]], shadow_dir: Path) -> tuple[dict[st
             if not _text(unit.get("raw_value")):
                 reasons.append("empty_resolved_text")
         if typ == "fact":
+            if unit.get("fact_eligible") is False:
+                reasons.append("fact_not_eligible")
             if unit.get("evidence_level") != "A" or unit.get("binding_status") != "complete":
                 reasons.append("fact_not_level_a_complete")
             if not ctx["metric_path"]:
@@ -401,15 +405,20 @@ def _fact_admission_audit(units: list[dict[str, Any]], views_by_type: dict[str, 
         if not _text(fact.get("raw_value")):
             missing_field_counts["raw_value"] += 1
     total = len(facts)
+    eligible = [fact for fact in facts if fact.get("fact_eligibility_class") != "non_fact_numeric"]
+    eligible_total = len(eligible)
     indexed = len(views_by_type.get("fact", []))
-    rate = indexed / max(1, total)
+    historical_rate = indexed / max(1, total)
+    rate = indexed / max(1, eligible_total)
     threshold = 0.90
     blocked = rate < threshold
     return {
         "fact_total_count": total,
+        "eligible_fact_total_count": eligible_total,
         "fact_indexed_count": indexed,
         "fact_excluded_count": total - indexed,
         "fact_indexed_rate": rate,
+        "historical_fact_indexed_rate_over_all": historical_rate,
         "minimum_fact_indexed_rate": threshold,
         "admission_blocked": blocked,
         "level_counts": dict(sorted(level_counts.items())),
@@ -499,8 +508,10 @@ def main() -> int:
     roundtrip = _roundtrip(all_views, runtime_safe, metadata_path, {"views_by_type": view_counts})
     _write(args.out / "index-roundtrip-audit.json", roundtrip)
     identity_integrity = {"evidence_unit_count": len(units), "retrieval_view_count": len(all_views), "duplicate_view_id_count": duplicate_view_id_count, "source_traceback_missing_count": source_traceback_missing, "source_group_member_count": sum(len(values) for values in source_group_members.values()), "source_group_count": len(source_group_members), "identity_conflict_count": 0, "soft_edge_endpoint_errors": 0, "physical_cross_page_merge_count": 0, "excluded_by_type": view_aux["exclusions"], "cell_total_count": sum(unit.get("unit_type") == "cell" for unit in units), "cell_indexed_count": len(views_by_type["cell"]), "fact_total_count": sum(unit.get("unit_type") == "fact" for unit in units), "fact_indexed_count": len(views_by_type["fact"]), "fact_indexed_rate": len(views_by_type["fact"]) / max(1, sum(unit.get("unit_type") == "fact" for unit in units))}
-    _write(args.out / "index-identity-integrity.json", identity_integrity)
     fact_audit = _fact_admission_audit(units, views_by_type, view_aux["exclusions"])
+    identity_integrity["eligible_fact_total_count"] = fact_audit["eligible_fact_total_count"]
+    identity_integrity["fact_indexed_rate_over_eligible"] = fact_audit["fact_indexed_rate"]
+    _write(args.out / "index-identity-integrity.json", identity_integrity)
     _write(args.out / "fact-admission-audit.json", fact_audit)
     current_replay = {"retrieval_view_hash": _hash([[view["retrieval_view_id"], view["retrieval_text"]] for view in all_views]), "metadata_store_hash": metadata_manifest["serialized_store_hash"], "bm25_index_hashes": {typ: item["serialized_index_hash"] for typ, item in bm25_manifests.items()}, "dense_semantic_replay_hashes": {typ: item["semantic_replay_hash"] for typ, item in dense_manifests.items()}}
     replay_matches = bool(previous and previous.get("metadata") == current_replay["metadata_store_hash"] and previous.get("bm25") == current_replay["bm25_index_hashes"] and previous.get("dense") == current_replay["dense_semantic_replay_hashes"])
@@ -520,7 +531,7 @@ def main() -> int:
     else:
         decision = "multi_granularity_shadow_index_passed"
         next_gate = "v4_query_planner"
-    _write(args.out / "acceptance.json", {"gate": "pdf_retrieval_v4_gate_06", "gate_passed": passed, "decision": decision, "next_gate": next_gate, "r0_manifest_integrity": True, "question_reads": 0, "runtime_gold_reads": 0, "runtime_governance_reads": 0, "expected_value_reads": 0, "reference_answer_reads": 0, "retrieval_runs": 0, "reranker_calls": 0, "answer_generation_calls": 0, "parameter_scan": False, "per_query_oracle": False, "production_index_writes": 0, "production_default_config_modified": False, "production_switch_allowed": False, "candidate_identity_conflicts": identity_integrity["identity_conflict_count"], "duplicate_views": identity_integrity["duplicate_view_id_count"], "dense_model": model_config["embedding_model"], "fact_indexed_rate": identity_integrity["fact_indexed_rate"], "fact_admission_blocked": fact_blocked, "deterministic_replay_stable": replay_matches})
+    _write(args.out / "acceptance.json", {"gate": "pdf_retrieval_v4_gate_06", "gate_passed": passed, "decision": decision, "next_gate": next_gate, "r0_manifest_integrity": True, "question_reads": 0, "runtime_gold_reads": 0, "runtime_governance_reads": 0, "expected_value_reads": 0, "reference_answer_reads": 0, "retrieval_runs": 0, "reranker_calls": 0, "answer_generation_calls": 0, "parameter_scan": False, "per_query_oracle": False, "production_index_writes": 0, "production_default_config_modified": False, "production_switch_allowed": False, "candidate_identity_conflicts": identity_integrity["identity_conflict_count"], "duplicate_views": identity_integrity["duplicate_view_id_count"], "dense_model": model_config["embedding_model"], "fact_indexed_rate": identity_integrity["fact_indexed_rate"], "fact_indexed_rate_over_eligible": fact_audit["fact_indexed_rate"], "eligible_fact_total_count": fact_audit["eligible_fact_total_count"], "fact_admission_blocked": fact_blocked, "deterministic_replay_stable": replay_matches})
     _write(args.out / "next-gate.json", {"decision": decision, "next_gate": next_gate, "production_switch_allowed": False})
     print(json.dumps({"decision": decision, "next_gate": next_gate, "view_counts": view_counts, "cell_indexed_count": identity_integrity["cell_indexed_count"], "fact_indexed_count": identity_integrity["fact_indexed_count"], "deterministic_replay_stable": replay_matches, "runtime": str(runtime_safe)}, ensure_ascii=False))
     return 0 if passed else 2

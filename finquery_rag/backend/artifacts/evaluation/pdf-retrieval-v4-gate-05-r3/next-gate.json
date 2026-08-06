@@ -1,0 +1,6 @@
+{
+  "decision": "fact_period_binding_coverage_insufficient",
+  "next_gate": "gate_06_shadow_index_rebuild_fact_audit",
+  "post_score_tuning_allowed": false,
+  "production_switch_allowed": false
+}

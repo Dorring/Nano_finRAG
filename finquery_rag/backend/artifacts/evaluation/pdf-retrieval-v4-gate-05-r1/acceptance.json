@@ -1,0 +1,14 @@
+{
+  "decision": "fact_failure_taxonomy_complete",
+  "expected_value_reads": 0,
+  "gate": "pdf_retrieval_v4_gate_05_r1",
+  "gate_passed": true,
+  "gold_reads": 0,
+  "index_builds": 0,
+  "next_gate": "fact_integrity_period_metric_recovery",
+  "parameter_scan": false,
+  "per_query_oracle": false,
+  "production_index_writes": 0,
+  "question_reads": 0,
+  "retrieval_runs": 0
+}

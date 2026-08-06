@@ -1,0 +1,22 @@
+{
+  "all_fact_class_counts": {
+    "eligible_recoverable": 3156,
+    "eligible_row_only": 763,
+    "non_fact_numeric": 335,
+    "structurally_blocked": 0,
+    "unresolved": 0
+  },
+  "eligible_complete_fact_count": 3156,
+  "eligible_financial_fact_count": 3919,
+  "excluded_class_counts": {
+    "eligible_recoverable": 95,
+    "eligible_row_only": 763,
+    "non_fact_numeric": 170,
+    "structurally_blocked": 0,
+    "unresolved": 0
+  },
+  "excluded_fact_count": 1028,
+  "excluded_fact_id_hash": "438720035257473a5b0c43d38549bec22c69ba1a977b1527b5cc92c098dd88f1",
+  "fact_record_count": 4254,
+  "records_included": "excluded-facts.jsonl.gz"
+}

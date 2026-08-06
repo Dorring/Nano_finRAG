@@ -1,0 +1,30 @@
+{
+  "binding_status_counts": {
+    "complete": 3109,
+    "non_fact_numeric": 335,
+    "row_only": 810
+  },
+  "classification_missing_count": 0,
+  "eligibility_class_counts": {
+    "eligible_recoverable": 3156,
+    "eligible_row_only": 763,
+    "non_fact_numeric": 335
+  },
+  "fact_admission_rate_over_all_facts": 0.730841560883874,
+  "fact_classification_map_missing": 0,
+  "fact_eligibility_rate": 0.7933146210768053,
+  "fact_eligible_count": 3109,
+  "fact_eligible_total_count": 3919,
+  "fact_recovered_count": 0,
+  "fact_recovery_source_counts": {},
+  "fact_total_count": 4254,
+  "false_binding_guard_count": 0,
+  "metric_recovery_count": 0,
+  "period_candidate_counts": {
+    "cell_header_path": 0,
+    "stable_column_schema": 0,
+    "unique_table_period_candidate": 287,
+    "unresolved": 548
+  },
+  "soft_continuation_period_inheritance_count": 0
+}

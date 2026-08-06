@@ -1,0 +1,43 @@
+{
+  "blank_line_count": 0,
+  "compressed_sha256": "65e47789475ac983e4d2f67b7eb462ace1421ca002d7f574b54019793f97a34e",
+  "duplicate_unit_id_count": 0,
+  "expected_type_counts": {
+    "cell": 7136,
+    "fact": 4254,
+    "row": 1581,
+    "section": 117,
+    "table": 117
+  },
+  "five_type_sum": 13205,
+  "gate_passed": true,
+  "gzip_physical_line_count": 13206,
+  "header_line_count": 1,
+  "invalid_json_count": 0,
+  "manifest_compressed_sha256": "65e47789475ac983e4d2f67b7eb462ace1421ca002d7f574b54019793f97a34e",
+  "manifest_deterministic_flag": true,
+  "manifest_matches_parsed_records": true,
+  "manifest_record_count": 13205,
+  "manifest_uncompressed_sha256": "deb790108f5cb270f04521fe796a76ab2094b059f3d78b02a0cc0b6997957ce4",
+  "metrics_matches_parsed_records": true,
+  "metrics_unit_count": 13205,
+  "missing_unit_id_count": 0,
+  "nonempty_line_count": 13206,
+  "nonempty_record_count": 13205,
+  "parsed_record_count": 13205,
+  "prediction_evidence_stream_equal": true,
+  "prediction_seal_storage": "evidence-unit-predictions.jsonl.gz",
+  "prediction_seal_verified": true,
+  "prediction_stream_hash": "8f7307d8fd377f2d0ab6278555eca2f67bbf15276ea2b8867ee8d55bbd12f0db",
+  "prediction_stream_uncompressed_sha256": "deb790108f5cb270f04521fe796a76ab2094b059f3d78b02a0cc0b6997957ce4",
+  "stream_path": "evidence-units.jsonl.gz",
+  "type_counts": {
+    "cell": 7136,
+    "fact": 4254,
+    "row": 1581,
+    "section": 117,
+    "table": 117
+  },
+  "uncompressed_sha256": "deb790108f5cb270f04521fe796a76ab2094b059f3d78b02a0cc0b6997957ce4",
+  "unknown_type_count": 0
+}

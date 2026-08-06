@@ -220,8 +220,16 @@ def main() -> int:
         "source_traceback": counts["source_traceback"] >= 21,
         "integrity": integrity_ok,
     }
+    fact_recovery_path = root / "fact-recovery-audit.json"
+    fact_recovery = json.loads(fact_recovery_path.read_text(encoding="utf-8")) if fact_recovery_path.is_file() else None
+    if fact_recovery is not None:
+        fact_rate = float(fact_recovery.get("fact_eligibility_rate", fact_recovery.get("fact_admission_rate_over_all_facts", 0.0)))
+        thresholds["fact_eligibility"] = fact_rate >= 0.90
     passed = all(thresholds.values())
-    decision, next_gate = ("evidence_unit_generation_passed", "multi_granularity_shadow_index") if passed else ("evidence_unit_generation_blocked", "stop_and_fix_evidence_units")
+    if not passed and fact_recovery is not None and all(value for key, value in thresholds.items() if key != "fact_eligibility"):
+        decision, next_gate = "fact_period_binding_coverage_insufficient", "gate_06_shadow_index_rebuild_fact_audit"
+    else:
+        decision, next_gate = ("evidence_unit_generation_passed", "multi_granularity_shadow_index") if passed else ("evidence_unit_generation_blocked", "stop_and_fix_evidence_units")
     scoring = {
         "evaluation_type": "post_benchmark_iterative_evaluation",
         "prediction_seal_verified": True,
@@ -234,6 +242,7 @@ def main() -> int:
         "thresholds": thresholds,
         "runtime_oracle_reads": 0,
         "posthoc_oracle_records_read": len(scored),
+        "fact_eligibility": fact_recovery,
     }
     _write(root / "oracle-evidence-audit.json", {"record_results": scored, "unique_source_results": unique_scored})
     _write(root / "evidence-unit-scoring.json", scoring)
@@ -264,6 +273,9 @@ def main() -> int:
         "source_traceback_missing": integrity.get("source_traceback_missing_count", 0),
         "reference_answer_reads_runtime": 0,
         "production_switch_allowed": False,
+        "fact_eligibility_gate_passed": thresholds.get("fact_eligibility", True),
+        "fact_eligibility_rate": fact_recovery.get("fact_eligibility_rate") if fact_recovery else None,
+        "fact_admission_rate_over_all_facts": fact_recovery.get("fact_admission_rate_over_all_facts") if fact_recovery else None,
     })
     _write(root / "next-gate.json", {"decision": decision, "next_gate": next_gate, "production_switch_allowed": False, "post_score_tuning_allowed": False})
     print(json.dumps({"decision": decision, "record_metrics": counts, "unique_source_metrics": unique_counts, "unit_count": len(units), "thresholds": thresholds}, ensure_ascii=False))

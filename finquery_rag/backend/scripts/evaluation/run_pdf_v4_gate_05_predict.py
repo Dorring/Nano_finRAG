@@ -15,6 +15,7 @@ DEFAULT_GRAPH = ROOT / "artifacts/evaluation/pdf-retrieval-v4-gate-03"
 DEFAULT_LOGICAL = ROOT / "artifacts/evaluation/pdf-retrieval-v4-gate-04"
 DEFAULT_SHADOW = ROOT / "artifacts/evaluation/pdf-retrieval-v4-gate-04c"
 DEFAULT_OUT = ROOT / "artifacts/evaluation/pdf-retrieval-v4-gate-05"
+DEFAULT_R1_CLASSIFICATION = ROOT / "artifacts/evaluation/pdf-retrieval-v4-gate-05-r1/fact-classification-map.jsonl.gz"
 
 
 def _sha(path: Path) -> str:
@@ -60,6 +61,7 @@ def main() -> int:
     parser.add_argument("--logical", type=Path, default=DEFAULT_LOGICAL)
     parser.add_argument("--shadow", type=Path, default=DEFAULT_SHADOW)
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
+    parser.add_argument("--fact-recovery-audit", type=Path, default=None)
     parser.add_argument("--code-commit", default="working-tree")
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
@@ -77,6 +79,16 @@ def main() -> int:
     if not logical_seal.get("predictions_sealed") or logical_seal.get("prediction_hash") != _sha(gate04_pred):
         raise RuntimeError("gate_04_prediction_seal_invalid")
     source = json.loads(graph_pred.read_text(encoding="utf-8"))
+    recovery_summary: dict[str, Any] = {}
+    if args.fact_recovery_audit:
+        try:
+            from scripts.evaluation.fact_recovery import recover_graph
+        except ModuleNotFoundError:
+            from fact_recovery import recover_graph
+
+        if not args.fact_recovery_audit.is_file():
+            raise RuntimeError(f"missing_fact_recovery_classification:{args.fact_recovery_audit}")
+        source, recovery_summary = recover_graph(source, args.fact_recovery_audit)
     logical_tables = json.loads(logical_pred.read_text(encoding="utf-8")).get("logical_tables", [])
     fragment_to_logical = {fragment_id: logical["logical_table_id"] for logical in logical_tables for fragment_id in logical.get("fragment_ids", [])}
     soft_groups: dict[str, str | None] = {}
@@ -122,11 +134,28 @@ def main() -> int:
                 level = "A" if cell.get("binding_status") == "complete" and cell.get("normalized_metric_path") and cell.get("normalized_period") and cell.get("parsed_value") is not None else ("B" if cell.get("normalized_metric_path") and cell.get("parsed_value") is not None else "D")
                 cell_unit_id = "cell:" + _hash([logical_id, fragment_id, cell.get("cell_id")])
                 units.append({"evidence_unit_id": cell_unit_id, "unit_type": "cell", "evidence_level": level, "document_id": table.get("document_id"), "logical_table_id": logical_id, "fragment_id": fragment_id, "continuation_group_id": continuation_group_id, "cross_page_merged": False, "source_pages": source_pages, "row_id": cell.get("row_id"), "cell_id": cell.get("cell_id"), "metric_path": cell.get("metric_path", []), "normalized_metric_path": cell.get("normalized_metric_path"), "header_path": cell.get("header_path", []), "normalized_period": cell.get("normalized_period"), "period_type": cell.get("period_type"), "raw_value": cell.get("raw_text"), "parsed_value": cell.get("parsed_value"), "scale": cell.get("scale"), "currency": cell.get("currency"), "value_kind": cell.get("value_kind"), "binding_status": cell.get("binding_status"), "retrieval_text": " | ".join(filter(None, [str(table.get("document_id")), str(cell.get("normalized_metric_path") or ""), str(cell.get("normalized_period") or ""), str(cell.get("raw_text") or ""), str(cell.get("scale") or "")])), "source_traceback": _source(table, row=row, cell=cell, fact=fact)})
+                if args.fact_recovery_audit:
+                    units[-1].update({"period_source": cell.get("period_source"), "period_confidence": cell.get("period_confidence"), "metric_source": cell.get("metric_source"), "fact_eligible": bool(cell.get("fact_eligible", level == "A")), "fact_eligibility_class": cell.get("fact_eligibility_class")})
                 if fact:
                     fact_unit_id = "fact:" + _hash([logical_id, fragment_id, fact.get("fact_id")])
                     units.append({"evidence_unit_id": fact_unit_id, "unit_type": "fact", "evidence_level": "A" if fact.get("binding_status") == "complete" else "B", "document_id": table.get("document_id"), "logical_table_id": logical_id, "fragment_id": fragment_id, "continuation_group_id": continuation_group_id, "cross_page_merged": False, "source_pages": source_pages, "fact_id": fact.get("fact_id"), "cell_id": fact.get("cell_id"), "row_id": fact.get("row_id"), "metric_path": fact.get("metric_path", []), "normalized_metric": fact.get("normalized_metric"), "period": fact.get("period"), "raw_value": fact.get("raw_value"), "parsed_value": fact.get("parsed_value"), "scale": fact.get("scale"), "currency": fact.get("currency"), "base_value": fact.get("base_value"), "binding_status": fact.get("binding_status"), "retrieval_text": " | ".join(filter(None, [str(table.get("document_id")), str(fact.get("normalized_metric") or ""), str(fact.get("period") or ""), str(fact.get("raw_value") or ""), str(fact.get("scale") or "")])), "source_traceback": _source(table, row=row, cell=cell, fact=fact)})
+    if args.fact_recovery_audit:
+        recovered_facts = {fact.get("fact_id"): fact for page in source.get("pages", []) for table in page.get("tables", []) for fact in table.get("facts", [])}
+        recovered_cells = {cell.get("cell_id"): cell for page in source.get("pages", []) for table in page.get("tables", []) for cell in table.get("cells", [])}
+        for unit in units:
+            if unit.get("unit_type") == "fact":
+                fact = recovered_facts.get(unit.get("fact_id"), {})
+                unit.update({"evidence_level": "A" if fact.get("fact_eligible") else ("B" if fact.get("binding_status") == "row_only" else "D"), "period_source": fact.get("period_source"), "period_confidence": fact.get("period_confidence"), "metric_source": fact.get("metric_source"), "fact_eligible": bool(fact.get("fact_eligible")), "fact_eligibility_class": fact.get("fact_eligibility_class"), "fact_exclusion_reason": None if fact.get("fact_eligible") else fact.get("fact_eligibility_class")})
+            elif unit.get("unit_type") == "cell":
+                cell = recovered_cells.get(unit.get("cell_id"), {})
+                unit.update({"period_source": cell.get("period_source"), "period_confidence": cell.get("period_confidence"), "metric_source": cell.get("metric_source"), "fact_eligible": bool(cell.get("fact_eligible", unit.get("evidence_level") == "A")), "fact_eligibility_class": cell.get("fact_eligibility_class")})
     ids = [unit["evidence_unit_id"] for unit in units]
     integrity = {"unit_count": len(units), "section_count": sum(unit["unit_type"] == "section" for unit in units), "table_count": sum(unit["unit_type"] == "table" for unit in units), "row_count": sum(unit["unit_type"] == "row" for unit in units), "cell_count": sum(unit["unit_type"] == "cell" for unit in units), "fact_count": sum(unit["unit_type"] == "fact" for unit in units), "level_a_count": sum(unit["evidence_level"] == "A" for unit in units), "level_b_count": sum(unit["evidence_level"] == "B" for unit in units), "level_c_count": sum(unit["evidence_level"] == "C" for unit in units), "level_d_count": sum(unit["evidence_level"] == "D" for unit in units), "duplicate_unit_id_count": len(ids) - len(set(ids)), "source_traceback_missing_count": sum(not unit.get("source_traceback", {}).get("document_id") for unit in units), "cross_page_merged_count": sum(unit.get("cross_page_merged") for unit in units), "soft_continuation_unit_count": sum(bool(unit.get("continuation_group_id")) for unit in units)}
+    if args.fact_recovery_audit:
+        integrity["fact_eligible_count"] = sum(unit.get("unit_type") == "fact" and unit.get("fact_eligible") for unit in units)
+        integrity["fact_eligible_total"] = sum(unit.get("unit_type") == "fact" and unit.get("fact_eligibility_class") != "non_fact_numeric" for unit in units)
+        integrity["fact_eligibility_rate"] = integrity["fact_eligible_count"] / max(1, integrity["fact_eligible_total"])
+        integrity["recovery_summary"] = recovery_summary
     protocol = {"gate": "pdf_retrieval_v4_gate_05", "evaluation_type": "post_benchmark_iterative_evaluation", "code_commit": args.code_commit, "input_gate": "pdf_retrieval_v4_gate_04", "gate_03_prediction_hash": _sha(graph_pred), "gate_04_prediction_hash": _sha(gate04_pred), "gate_04c_shadow_optional": shadow_pred.is_file(), "cross_page_merged": False, "soft_continuation_links_allowed": True, "oracle_blind": True, "question_reads": 0, "governance_reads": 0, "oracle_reads": 0, "expected_value_reads": 0, "index_builds": 0, "retrieval_runs": 0, "reranker_calls": 0, "production_index_writes": 0, "production_switch_allowed": False}
     input_integrity = {"gate_03_prediction_sha256": _sha(graph_pred), "gate_03_seal_sha256": _sha(args.graph / "header-graph-prediction-seal.json"), "gate_04_prediction_sha256": _sha(gate04_pred), "gate_04_seal_sha256": _sha(args.logical / "gate-04-prediction-seal.json"), "gate_04_logical_integrity_sha256": _sha(args.logical / "logical-table-integrity.json"), "gate_04c_prediction_sha256": _sha(shadow_pred) if shadow_pred.is_file() else None, "source_table_count": len(tables)}
     _write(args.out / "gate-05-protocol.json", protocol)
@@ -144,8 +173,22 @@ def main() -> int:
     _write(args.out / "evidence-units-manifest.json", {"storage": evidence_path.name, "record_count": len(units), "physical_line_count": len(units) + 1, "header_line_count": 1, "compressed_sha256": _sha(evidence_path), "uncompressed_sha256": uncompressed_hash, "compression": "gzip", "deterministic": True})
     _write(args.out / "evidence-unit-integrity.json", integrity)
     _write(args.out / "evidence-unit-metrics.json", integrity)
+    if args.fact_recovery_audit:
+        protocol = json.loads((args.out / "gate-05-protocol.json").read_text(encoding="utf-8"))
+        protocol.update({"gate": "pdf_retrieval_v4_gate_05_r3", "fact_recovery_classification_sha256": _sha(args.fact_recovery_audit), "expected_value_reads": 0, "parameter_scan": False, "per_query_oracle": False})
+        _write(args.out / "gate-05-protocol.json", protocol)
+        input_integrity = json.loads((args.out / "gate-05-input-integrity.json").read_text(encoding="utf-8"))
+        input_integrity["fact_recovery_classification_sha256"] = _sha(args.fact_recovery_audit)
+        _write(args.out / "gate-05-input-integrity.json", input_integrity)
+        recovery_summary["fact_eligible_total_count"] = integrity.get("fact_eligible_total")
+        recovery_summary["fact_eligibility_rate"] = integrity.get("fact_eligibility_rate")
+        _write(args.out / "fact-recovery-audit.json", recovery_summary)
     _write(args.out / "evidence-unit-prediction-seal.json", {"prediction_count": len(tables), "unit_count": len(units), "oracle_reads_before_seal": 0, "question_reads": 0, "governance_reads": 0, "input_hash": _sha(args.out / "gate-05-input-integrity.json"), "protocol_hash": _sha(args.out / "gate-05-protocol.json"), "prediction_hash": _sha(prediction_path), "prediction_storage": prediction_path.name, "prediction_uncompressed_sha256": uncompressed_hash, "predictions_sealed": True, "cross_page_merged": False})
     _write(args.out / "acceptance.json", {"gate": "pdf_retrieval_v4_gate_05", "prediction_sealed": True, "decision": "pending_posthoc_scoring", "next_gate": "score_evidence_units", "cross_page_merged": False, "oracle_reads_runtime": 0, "question_reads": 0, "governance_reads": 0, "index_builds": 0, "retrieval_runs": 0, "production_index_writes": 0, "production_switch_allowed": False})
+    if args.fact_recovery_audit:
+        acceptance = json.loads((args.out / "acceptance.json").read_text(encoding="utf-8"))
+        acceptance.update({"gate": "pdf_retrieval_v4_gate_05_r3", "expected_value_reads": 0, "parameter_scan": False, "per_query_oracle": False, "fact_eligible_count": integrity.get("fact_eligible_count"), "fact_eligible_total": integrity.get("fact_eligible_total"), "fact_eligibility_rate": integrity.get("fact_eligibility_rate")})
+        _write(args.out / "acceptance.json", acceptance)
     _write(args.out / "next-gate.json", {"decision": "pending_posthoc_scoring", "next_gate": "score_evidence_units", "production_switch_allowed": False})
     print(json.dumps({"table_fragments": len(tables), "unit_count": len(units), "counts": integrity, "cross_page_merged": False}, ensure_ascii=False))
     return 0

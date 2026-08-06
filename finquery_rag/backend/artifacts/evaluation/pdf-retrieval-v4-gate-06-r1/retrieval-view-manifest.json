@@ -1,0 +1,35 @@
+{
+  "excluded_counts": {
+    "cell": {
+      "binding_not_complete": 4027,
+      "empty_resolved_text": 819,
+      "fact_not_eligible": 4027,
+      "missing_metric_path": 127,
+      "missing_period": 2417,
+      "not_level_a": 4027
+    },
+    "fact": {
+      "fact_not_eligible": 1145,
+      "fact_not_level_a_complete": 1145,
+      "missing_metric_path": 73,
+      "missing_period": 835
+    },
+    "row": {},
+    "section": {},
+    "table": {}
+  },
+  "physical_cross_page_merge": false,
+  "retrieval_view_id_hash": "96a0ceedb2c2dc85eb23ad6a6523318c75b6858d64d57ad558ba135caa1a726d",
+  "schema_version": "pdf-v4-retrieval-view-v1",
+  "soft_continuation_generalization_established": false,
+  "soft_continuation_group_count": 2,
+  "source_group_count": 4807,
+  "total_view_count": 8033,
+  "view_counts": {
+    "cell": 3109,
+    "fact": 3109,
+    "row": 1581,
+    "section": 117,
+    "table": 117
+  }
+}

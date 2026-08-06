@@ -1,0 +1,19 @@
+{
+  "classification_count_sum": 1028,
+  "classification_counts": {
+    "eligible_recoverable": 95,
+    "eligible_row_only": 763,
+    "non_fact_numeric": 170,
+    "structurally_blocked": 0,
+    "unresolved": 0
+  },
+  "classification_mutually_exclusive": true,
+  "duplicate_fact_id_count": 0,
+  "excluded_fact_count": 1028,
+  "expected_excluded_count": 1028,
+  "fact_mutations": 0,
+  "gold_reads": 0,
+  "question_reads": 0,
+  "source_traceback_missing_count": 0,
+  "unknown_class_count": 0
+}

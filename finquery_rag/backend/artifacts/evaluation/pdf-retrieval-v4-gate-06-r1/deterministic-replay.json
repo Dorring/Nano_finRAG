@@ -1,0 +1,40 @@
+{
+  "current": {
+    "bm25_index_hashes": {
+      "cell": "fc5e5093ebf6b3ae26b7d5c12d0869ccc3424f4324e4b7de065ce57841cca9c0",
+      "fact": "6084aff424e76de1b7f47c4fba958e1d138c47c2b0f1f319259557b20b201703",
+      "row": "1be255fb15e09f6fa4d672d6a0fa94a0a38e1965b4518df7f0fdefabacc00a4d",
+      "section": "d2a6fc055654bde8e4455efea9774a7170dcee501dae794d50cf8ddd6d1ed2b7",
+      "table": "23f60c1389a70046d50c16db16804a565f3f1701fed77593fc6c667c2290a71d"
+    },
+    "dense_semantic_replay_hashes": {
+      "cell": "02fba6928fa8359faf7dcc760bd26397aae02c1e02b4bb1c5d6e2c4c4854991c",
+      "fact": "d2cfdd356dae90cf63b9305090883c565621ae84f14797f959bb70ab79ac32b0",
+      "row": "b84eb0accb8de1c26995989c4602c9a0bc7117a556d0a4d80b9791dbe5f5aac7",
+      "section": "86ca79d015e316b76e91dc243855efeb3d853d5af6bcfed2bc1d50db3efe17b9",
+      "table": "d1f307d205bea45347a7e4108fdae7b1d1c1c53a94a6bd58680b948fde0503b3"
+    },
+    "metadata_store_hash": "e6ff36fd48745f13bc93062960bbaa85fb2629c6662b79ea334716828a2a7c7a",
+    "retrieval_view_hash": "1755da888d6f16bd93d5bdf2871142b267f9acfc8b99383556184191a6a2faaf"
+  },
+  "first_run_requires_second_replay": false,
+  "previous": {
+    "bm25": {
+      "cell": "fc5e5093ebf6b3ae26b7d5c12d0869ccc3424f4324e4b7de065ce57841cca9c0",
+      "fact": "6084aff424e76de1b7f47c4fba958e1d138c47c2b0f1f319259557b20b201703",
+      "row": "1be255fb15e09f6fa4d672d6a0fa94a0a38e1965b4518df7f0fdefabacc00a4d",
+      "section": "d2a6fc055654bde8e4455efea9774a7170dcee501dae794d50cf8ddd6d1ed2b7",
+      "table": "23f60c1389a70046d50c16db16804a565f3f1701fed77593fc6c667c2290a71d"
+    },
+    "dense": {
+      "cell": "02fba6928fa8359faf7dcc760bd26397aae02c1e02b4bb1c5d6e2c4c4854991c",
+      "fact": "d2cfdd356dae90cf63b9305090883c565621ae84f14797f959bb70ab79ac32b0",
+      "row": "b84eb0accb8de1c26995989c4602c9a0bc7117a556d0a4d80b9791dbe5f5aac7",
+      "section": "86ca79d015e316b76e91dc243855efeb3d853d5af6bcfed2bc1d50db3efe17b9",
+      "table": "d1f307d205bea45347a7e4108fdae7b1d1c1c53a94a6bd58680b948fde0503b3"
+    },
+    "metadata": "e6ff36fd48745f13bc93062960bbaa85fb2629c6662b79ea334716828a2a7c7a"
+  },
+  "replay_attempted": true,
+  "replay_stable": true
+}

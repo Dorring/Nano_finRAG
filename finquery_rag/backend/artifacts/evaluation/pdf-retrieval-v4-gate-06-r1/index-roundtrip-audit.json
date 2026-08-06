@@ -1,0 +1,23 @@
+{
+  "bm25_document_counts": {
+    "cell": 3109,
+    "fact": 3109,
+    "row": 1581,
+    "section": 117,
+    "table": 117
+  },
+  "bm25_roundtrip_rate": 1.0,
+  "dense_roundtrip_rate": 1.0,
+  "dense_vector_counts": {
+    "cell": 3109,
+    "fact": 3109,
+    "row": 1581,
+    "section": 117,
+    "table": 117
+  },
+  "metadata_roundtrip_failure_ids": [],
+  "metadata_roundtrip_failures": 0,
+  "source_traceback_roundtrip_rate": 1.0,
+  "view_roundtrip_count": 8033,
+  "view_roundtrip_expected": 8033
+}

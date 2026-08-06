@@ -1,0 +1,33 @@
+{
+  "admission_blocked": true,
+  "binding_status_counts": {
+    "complete": 3109,
+    "non_fact_numeric": 335,
+    "row_only": 810
+  },
+  "decision": "fact_evidence_admission_blocked",
+  "downstream_query_planner_allowed": false,
+  "eligible_fact_total_count": 3919,
+  "exclusion_reasons": {
+    "fact_not_eligible": 1145,
+    "fact_not_level_a_complete": 1145,
+    "missing_metric_path": 73,
+    "missing_period": 835
+  },
+  "fact_excluded_count": 1145,
+  "fact_indexed_count": 3109,
+  "fact_indexed_rate": 0.7933146210768053,
+  "fact_total_count": 4254,
+  "historical_fact_indexed_rate_over_all": 0.730841560883874,
+  "level_counts": {
+    "A": 3109,
+    "B": 810,
+    "D": 335
+  },
+  "minimum_fact_indexed_rate": 0.9,
+  "missing_field_counts": {
+    "metric_path": 73,
+    "period": 835,
+    "raw_value": 0
+  }
+}

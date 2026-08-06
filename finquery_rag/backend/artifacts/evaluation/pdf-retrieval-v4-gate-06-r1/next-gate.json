@@ -1,0 +1,5 @@
+{
+  "decision": "fact_evidence_admission_blocked",
+  "next_gate": "stop_and_fix_gate_05_fact_integrity",
+  "production_switch_allowed": false
+}

@@ -1,0 +1,4415 @@
+{
+  "class_counts": {
+    "row_label_empty": 73,
+    "row_metric_available": 0
+  },
+  "record_count": 73,
+  "records": [
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:49b5ab130a4febffa42e96edbe3a8f57964b059d2287a2230e49838459cc4b49",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:009e72c863dff5d691fd7e762f9d09ac6f79670ae7910195a53942855345b75d",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "8",
+      "pdf_page": 80,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "8",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:96f92476b099cd2f0e33328ee054e5f8b16966cb9663c9534fbbfaecdd167581",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:49b5ab130a4febffa42e96edbe3a8f57964b059d2287a2230e49838459cc4b49",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:009e72c863dff5d691fd7e762f9d09ac6f79670ae7910195a53942855345b75d",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:96f92476b099cd2f0e33328ee054e5f8b16966cb9663c9534fbbfaecdd167581",
+        "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90"
+      },
+      "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:60941a0a92df9173eb86aea4e7c777db00448103af223d8c2c3cceedf767f8d7",
+      "column_index": 6,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": null,
+      "document_id": "pfe_fy2024",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:0339a0e453d919cd5a5213821c70575677e798df0b8a1274e8b7fb850695e1f9",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "As of December 31, 2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "150",
+      "pdf_page": 85,
+      "period": "FY2023",
+      "period_type": "instant",
+      "raw_value": "150",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:0000c3e94a2a50ac59cd6490715d04c172cf8e06628f6f841a3598ed031f8366",
+      "row_period_set": [
+        "FY2023"
+      ],
+      "row_role": "separator",
+      "scale": "billion",
+      "source_traceback": {
+        "cell_id": "cell:60941a0a92df9173eb86aea4e7c777db00448103af223d8c2c3cceedf767f8d7",
+        "document_id": "pfe_fy2024",
+        "fact_id": "fact:0339a0e453d919cd5a5213821c70575677e798df0b8a1274e8b7fb850695e1f9",
+        "logical_table_id": null,
+        "pdf_page": 85,
+        "row_id": "row:0000c3e94a2a50ac59cd6490715d04c172cf8e06628f6f841a3598ed031f8366",
+        "table_fragment_id": "table:457ee024e7517c080544e4e19cf39456d471c1b2f7db5fb0b75218373f6f1973"
+      },
+      "table_fragment_id": "table:457ee024e7517c080544e4e19cf39456d471c1b2f7db5fb0b75218373f6f1973",
+      "table_period_set": [
+        "FY2023",
+        "FY2024"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:88cc9f82791396ceb917214fa53d0e21268feb2f85f24c0b4f45782b37f3b112",
+      "column_index": 3,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:0618633a9f94230f29e7b6207fd4631b45c7e23603427a75ad13c62d1e2d3c7b",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "106744",
+      "pdf_page": 80,
+      "period": "FY2023",
+      "period_type": "annual_duration",
+      "raw_value": "106744",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:109ad4d37d8019a14c3beaf8052aa1a1d1fb8fa5ae3f0b7ce95ee497fc1f3303",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:88cc9f82791396ceb917214fa53d0e21268feb2f85f24c0b4f45782b37f3b112",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:0618633a9f94230f29e7b6207fd4631b45c7e23603427a75ad13c62d1e2d3c7b",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:109ad4d37d8019a14c3beaf8052aa1a1d1fb8fa5ae3f0b7ce95ee497fc1f3303",
+        "table_fragment_id": "table:ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508"
+      },
+      "table_fragment_id": "table:ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:641cc9b20d8f4e85b26697e2e91f2ac026b906865bae9124b9434a624e9a0587",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "v_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:0b41acae112100e9f05b6997a28dc6bfa3e88cbf30a0f566eb9b13322bfaecf1",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2025",
+      "pdf_page": 95,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "2025",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:f05076e40e90b48ef56b3c1fcf9fbd6e56523c577eb5f63a5aed986693e1e218",
+      "row_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:641cc9b20d8f4e85b26697e2e91f2ac026b906865bae9124b9434a624e9a0587",
+        "document_id": "v_fy2025",
+        "fact_id": "fact:0b41acae112100e9f05b6997a28dc6bfa3e88cbf30a0f566eb9b13322bfaecf1",
+        "logical_table_id": null,
+        "pdf_page": 95,
+        "row_id": "row:f05076e40e90b48ef56b3c1fcf9fbd6e56523c577eb5f63a5aed986693e1e218",
+        "table_fragment_id": "table:40eb0fb4af8a7149eeaa5056da2cc9906149236afed1aa4706dd2f6e2edda519"
+      },
+      "table_fragment_id": "table:40eb0fb4af8a7149eeaa5056da2cc9906149236afed1aa4706dd2f6e2edda519",
+      "table_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:ed4b3512dba056a9277bdbec0b2d6893cf8e51a74f53000577b4c6ba670b9604",
+      "column_index": 4,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": null,
+      "document_id": "pfe_fy2024",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:0ba9eaf3ebdb24a134bc5caf1d9ad656db627744ede18c9484574e7fa4f23d8b",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "As of December 31, 2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "150",
+      "pdf_page": 85,
+      "period": "FY2023",
+      "period_type": "instant",
+      "raw_value": "150",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:0000c3e94a2a50ac59cd6490715d04c172cf8e06628f6f841a3598ed031f8366",
+      "row_period_set": [
+        "FY2023"
+      ],
+      "row_role": "separator",
+      "scale": "billion",
+      "source_traceback": {
+        "cell_id": "cell:ed4b3512dba056a9277bdbec0b2d6893cf8e51a74f53000577b4c6ba670b9604",
+        "document_id": "pfe_fy2024",
+        "fact_id": "fact:0ba9eaf3ebdb24a134bc5caf1d9ad656db627744ede18c9484574e7fa4f23d8b",
+        "logical_table_id": null,
+        "pdf_page": 85,
+        "row_id": "row:0000c3e94a2a50ac59cd6490715d04c172cf8e06628f6f841a3598ed031f8366",
+        "table_fragment_id": "table:457ee024e7517c080544e4e19cf39456d471c1b2f7db5fb0b75218373f6f1973"
+      },
+      "table_fragment_id": "table:457ee024e7517c080544e4e19cf39456d471c1b2f7db5fb0b75218373f6f1973",
+      "table_period_set": [
+        "FY2023",
+        "FY2024"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:c21e34d93aa8fa95351800652f5f83b144c3924807b907d95932d995684cb0e5",
+      "column_index": 4,
+      "column_period_candidates": {
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "v_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:0d8a2bec0e9d28c9de9f3d47b32fee771e08ad1a881e891a1b12046a6243c6b6",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "% Change(1)",
+        "2025 vs. 2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "1",
+      "pdf_page": 55,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "1",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:62d6059e3b41d40c11e8917ca674642323aae3cd1af1563b838332c042a292d3",
+      "row_period_set": [
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:c21e34d93aa8fa95351800652f5f83b144c3924807b907d95932d995684cb0e5",
+        "document_id": "v_fy2025",
+        "fact_id": "fact:0d8a2bec0e9d28c9de9f3d47b32fee771e08ad1a881e891a1b12046a6243c6b6",
+        "logical_table_id": null,
+        "pdf_page": 55,
+        "row_id": "row:62d6059e3b41d40c11e8917ca674642323aae3cd1af1563b838332c042a292d3",
+        "table_fragment_id": "table:a2b6b99ae6d9e7df75bafbe29c0b2b5dbbdfca535652b3580561fc8e72fbbd6b"
+      },
+      "table_fragment_id": "table:a2b6b99ae6d9e7df75bafbe29c0b2b5dbbdfca535652b3580561fc8e72fbbd6b",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "percentage"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:943c9b2914661ec4e6e197b884951c13dbbc62baaf496eac3efba6238f648dee",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:0e51b71ef33db92be80e55b64bee46197160a4c275009f245c3313da94f2c926",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "5",
+      "pdf_page": 80,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "5",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:26eb53655cefb58a04f088ba6d31ff2b9c546817a5694dc17c741d9743b8de88",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:943c9b2914661ec4e6e197b884951c13dbbc62baaf496eac3efba6238f648dee",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:0e51b71ef33db92be80e55b64bee46197160a4c275009f245c3313da94f2c926",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:26eb53655cefb58a04f088ba6d31ff2b9c546817a5694dc17c741d9743b8de88",
+        "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90"
+      },
+      "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:b33724187c865bf164d4a18eb1b9b1b2af70025a7d6cde700e281419e2c9a394",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "tsla_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:0fe75fd9818da25fde940b3a571e01da52a100ec8d73b993e27f8c51be9b4004",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2025",
+      "pdf_page": 78,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "2025",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:3acf122cf1da9be48b092d128d6fc37f8751908fa14ac614acfaef95ef4367b1",
+      "row_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:b33724187c865bf164d4a18eb1b9b1b2af70025a7d6cde700e281419e2c9a394",
+        "document_id": "tsla_fy2025",
+        "fact_id": "fact:0fe75fd9818da25fde940b3a571e01da52a100ec8d73b993e27f8c51be9b4004",
+        "logical_table_id": null,
+        "pdf_page": 78,
+        "row_id": "row:3acf122cf1da9be48b092d128d6fc37f8751908fa14ac614acfaef95ef4367b1",
+        "table_fragment_id": "table:688d0eba067093a8fdf32fdbf39b11de357138b2da291eb5520fa218dd796647"
+      },
+      "table_fragment_id": "table:688d0eba067093a8fdf32fdbf39b11de357138b2da291eb5520fa218dd796647",
+      "table_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:3414101b91dacbb1055bfd608c7f1e1a775ca9a7fab1b7a2c499122d5203014f",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "tsla_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:12ea088ac6d784eeec1a2c0b498390d08dac5717ae77d50487cd61329d85a6b4",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "Year Ended December 31,",
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "31",
+      "pdf_page": 60,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "31",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:96a8110ad1e5dd6eac9e8ec3d5ab1013a3788c902b2da9adf5902bcb198a53f9",
+      "row_period_set": [
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:3414101b91dacbb1055bfd608c7f1e1a775ca9a7fab1b7a2c499122d5203014f",
+        "document_id": "tsla_fy2025",
+        "fact_id": "fact:12ea088ac6d784eeec1a2c0b498390d08dac5717ae77d50487cd61329d85a6b4",
+        "logical_table_id": null,
+        "pdf_page": 60,
+        "row_id": "row:96a8110ad1e5dd6eac9e8ec3d5ab1013a3788c902b2da9adf5902bcb198a53f9",
+        "table_fragment_id": "table:3b8e16909c385eea5c50050e410eba4afc6f89ff665b26d7c1be358748469b50"
+      },
+      "table_fragment_id": "table:3b8e16909c385eea5c50050e410eba4afc6f89ff665b26d7c1be358748469b50",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:0de9a45638a418cba2745c88f01bbc7a1edd9f1b39db4c4fc23469919e3282ab",
+      "column_index": 3,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": null,
+      "document_id": "aapl_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:133b2e7f0e899b0c4f8f83a5ecd73d31af4613d82b64f7280781ead8f5573319",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2023",
+      "pdf_page": 43,
+      "period": "FY2023",
+      "period_type": "annual_duration",
+      "raw_value": "2023",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:e8cc8502161b953a454ed005db9fbeae4a7bb47149e16b86f667f04d3bcc42d6",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "billion",
+      "source_traceback": {
+        "cell_id": "cell:0de9a45638a418cba2745c88f01bbc7a1edd9f1b39db4c4fc23469919e3282ab",
+        "document_id": "aapl_fy2025",
+        "fact_id": "fact:133b2e7f0e899b0c4f8f83a5ecd73d31af4613d82b64f7280781ead8f5573319",
+        "logical_table_id": null,
+        "pdf_page": 43,
+        "row_id": "row:e8cc8502161b953a454ed005db9fbeae4a7bb47149e16b86f667f04d3bcc42d6",
+        "table_fragment_id": "table:ea0aa7988e5fc3b4d0bfbefbd35e7bf83f0c3dd391d91a45a1bb0b4fe18ac1f6"
+      },
+      "table_fragment_id": "table:ea0aa7988e5fc3b4d0bfbefbd35e7bf83f0c3dd391d91a45a1bb0b4fe18ac1f6",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:96f744888977ffd1e0a720ff5657ca820fd722e451a6a8770b3aa63962c10787",
+      "column_index": 3,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2022"
+        ],
+        "column_header_schema": [
+          "FY2022"
+        ],
+        "existing_fact": [
+          "FY2022"
+        ]
+      },
+      "currency": null,
+      "document_id": "pfe_fy2024",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:1d9602eb1d1ef93e608d3d3a6afe730d20f49159a94ac69c8bd8d3ccf614c38d",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "Year Ended December 31,",
+        "2022"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "-166",
+      "pdf_page": 61,
+      "period": "FY2022",
+      "period_type": "annual_duration",
+      "raw_value": "-166",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:3377717af948bd29e8c5147ae3465f10e1d7c5688a24eed950a90d0891ef7ae1",
+      "row_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:96f744888977ffd1e0a720ff5657ca820fd722e451a6a8770b3aa63962c10787",
+        "document_id": "pfe_fy2024",
+        "fact_id": "fact:1d9602eb1d1ef93e608d3d3a6afe730d20f49159a94ac69c8bd8d3ccf614c38d",
+        "logical_table_id": null,
+        "pdf_page": 61,
+        "row_id": "row:3377717af948bd29e8c5147ae3465f10e1d7c5688a24eed950a90d0891ef7ae1",
+        "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de"
+      },
+      "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de",
+      "table_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:a659bc38ed2a9e086740c010c93527a663041f9451fc2fd577b9726348f3b422",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "aapl_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:2ed835661f5611a144e58e866612b9b6e912268e6e34113f167e26bbdea9b2cd",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2025",
+      "pdf_page": 43,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "2025",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:99d47fe57135215938526eb794ce83a843aca847221197cedd6638ee5a0d825b",
+      "row_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": null,
+      "source_traceback": {
+        "cell_id": "cell:a659bc38ed2a9e086740c010c93527a663041f9451fc2fd577b9726348f3b422",
+        "document_id": "aapl_fy2025",
+        "fact_id": "fact:2ed835661f5611a144e58e866612b9b6e912268e6e34113f167e26bbdea9b2cd",
+        "logical_table_id": null,
+        "pdf_page": 43,
+        "row_id": "row:99d47fe57135215938526eb794ce83a843aca847221197cedd6638ee5a0d825b",
+        "table_fragment_id": "table:a4c43c2873dc6c82f075e8d833e482e838ed64ac63e54c647b9a3ff59e2b7428"
+      },
+      "table_fragment_id": "table:a4c43c2873dc6c82f075e8d833e482e838ed64ac63e54c647b9a3ff59e2b7428",
+      "table_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "unknown_numeric"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:a7bf07157d696e93fdc1645208c56a7dbfd8d43b4020d5aad7b1b685fac0f855",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": null,
+      "document_id": "pfe_fy2024",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:2f31bd4343c26c842e3f3a75dfa19a32773191d014184c0db82ebdaf9ee95925",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "Year Ended December 31,",
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "84",
+      "pdf_page": 61,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "84",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:3377717af948bd29e8c5147ae3465f10e1d7c5688a24eed950a90d0891ef7ae1",
+      "row_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:a7bf07157d696e93fdc1645208c56a7dbfd8d43b4020d5aad7b1b685fac0f855",
+        "document_id": "pfe_fy2024",
+        "fact_id": "fact:2f31bd4343c26c842e3f3a75dfa19a32773191d014184c0db82ebdaf9ee95925",
+        "logical_table_id": null,
+        "pdf_page": 61,
+        "row_id": "row:3377717af948bd29e8c5147ae3465f10e1d7c5688a24eed950a90d0891ef7ae1",
+        "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de"
+      },
+      "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de",
+      "table_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:7b825de7bc671cdc3d4b6f08973b19244caf18106302274cb342dd243f5fdf75",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": null,
+      "document_id": "aapl_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:2fe316db7a9990defcf2904a66b04eb76bef92ad7e91bba90da4b2842d3f07c9",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2024",
+      "pdf_page": 27,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "2024",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:f3772e27dc189131a3aca6d98cfb8c0f73713033eff53d7b2b6496f0240bf5b7",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:7b825de7bc671cdc3d4b6f08973b19244caf18106302274cb342dd243f5fdf75",
+        "document_id": "aapl_fy2025",
+        "fact_id": "fact:2fe316db7a9990defcf2904a66b04eb76bef92ad7e91bba90da4b2842d3f07c9",
+        "logical_table_id": null,
+        "pdf_page": 27,
+        "row_id": "row:f3772e27dc189131a3aca6d98cfb8c0f73713033eff53d7b2b6496f0240bf5b7",
+        "table_fragment_id": "table:60d96702c3d70da2d4d2c1a1fbeae60472c537ac7054ab2a66c3b44b179ae821"
+      },
+      "table_fragment_id": "table:60d96702c3d70da2d4d2c1a1fbeae60472c537ac7054ab2a66c3b44b179ae821",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:f31a0ddab6211ce9e6c8c4f1b7ecb7cb92a0b778edbf5c16d733714705971648",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:32b9c8c9f39dac2cd5028c92c9431c094ac8dc3539b3d7058110f9b3dcb3fe82",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "0",
+      "pdf_page": 80,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "0",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:f3c13a026aef73a349324692a9a63c76add106a8a330b0d856eec02872eca6d1",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:f31a0ddab6211ce9e6c8c4f1b7ecb7cb92a0b778edbf5c16d733714705971648",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:32b9c8c9f39dac2cd5028c92c9431c094ac8dc3539b3d7058110f9b3dcb3fe82",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:f3c13a026aef73a349324692a9a63c76add106a8a330b0d856eec02872eca6d1",
+        "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90"
+      },
+      "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:84e7a14a4d368fad081f004650f74c169e952786056a59341ff10c04168c1216",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:3588fc568cf15045d900b6590cf7519072bf01e06a49a8e02b86332bd4f1b325",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "124704",
+      "pdf_page": 80,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "124704",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:109ad4d37d8019a14c3beaf8052aa1a1d1fb8fa5ae3f0b7ce95ee497fc1f3303",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:84e7a14a4d368fad081f004650f74c169e952786056a59341ff10c04168c1216",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:3588fc568cf15045d900b6590cf7519072bf01e06a49a8e02b86332bd4f1b325",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:109ad4d37d8019a14c3beaf8052aa1a1d1fb8fa5ae3f0b7ce95ee497fc1f3303",
+        "table_fragment_id": "table:ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508"
+      },
+      "table_fragment_id": "table:ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:0624cc70ac0b9df09da886005093f7bf40c900fe8c411eabc2019a5712d8b70e",
+      "column_index": 4,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": null,
+      "document_id": "pfe_fy2024",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:3d22015052d6a62b21a68bbde70ff29f181104822c1dcf461ae6295f0050aefe",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "As of December 31, 2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "4400",
+      "pdf_page": 85,
+      "period": "FY2023",
+      "period_type": "instant",
+      "raw_value": "4400",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:601aa41a63a1835548467dfb6e1b23822bae1b35d8e5ea335cb1f0cbcef689f7",
+      "row_period_set": [
+        "FY2023",
+        "FY2024"
+      ],
+      "row_role": "separator",
+      "scale": "billion",
+      "source_traceback": {
+        "cell_id": "cell:0624cc70ac0b9df09da886005093f7bf40c900fe8c411eabc2019a5712d8b70e",
+        "document_id": "pfe_fy2024",
+        "fact_id": "fact:3d22015052d6a62b21a68bbde70ff29f181104822c1dcf461ae6295f0050aefe",
+        "logical_table_id": null,
+        "pdf_page": 85,
+        "row_id": "row:601aa41a63a1835548467dfb6e1b23822bae1b35d8e5ea335cb1f0cbcef689f7",
+        "table_fragment_id": "table:457ee024e7517c080544e4e19cf39456d471c1b2f7db5fb0b75218373f6f1973"
+      },
+      "table_fragment_id": "table:457ee024e7517c080544e4e19cf39456d471c1b2f7db5fb0b75218373f6f1973",
+      "table_period_set": [
+        "FY2023",
+        "FY2024"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:3c7f37f6089b9e9d9a44927cc26f0198d6e6c57f98189a1d709b4df8afc500d4",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": null,
+      "document_id": "v_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:405f8e64cd0506e3eedfea3a888c7b87c6f60e72783e5f535bb9bf6ebe6bee4e",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2024",
+      "pdf_page": 95,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "2024",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:75e496b6b7e68ce878d098d2a51b6f36c2e6e920142b75fe578a755bf3acf175",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:3c7f37f6089b9e9d9a44927cc26f0198d6e6c57f98189a1d709b4df8afc500d4",
+        "document_id": "v_fy2025",
+        "fact_id": "fact:405f8e64cd0506e3eedfea3a888c7b87c6f60e72783e5f535bb9bf6ebe6bee4e",
+        "logical_table_id": null,
+        "pdf_page": 95,
+        "row_id": "row:75e496b6b7e68ce878d098d2a51b6f36c2e6e920142b75fe578a755bf3acf175",
+        "table_fragment_id": "table:b532260ec69578426ada4edd285ca80a371c9481c2664cab4361335942287e9f"
+      },
+      "table_fragment_id": "table:b532260ec69578426ada4edd285ca80a371c9481c2664cab4361335942287e9f",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:b4351ddf8a3c8501f4a7cd1b2d89a30403a329ee263cae0d97ae18c6311c56ff",
+      "column_index": 3,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": null,
+      "document_id": "pfe_fy2024",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:46ba293cb89033f3b58e62174f5d28b30b8e6256c8bd49c91c3b42292aeede37",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "As of December 31, 2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "10881",
+      "pdf_page": 85,
+      "period": "FY2024",
+      "period_type": "instant",
+      "raw_value": "10881",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:601aa41a63a1835548467dfb6e1b23822bae1b35d8e5ea335cb1f0cbcef689f7",
+      "row_period_set": [
+        "FY2023",
+        "FY2024"
+      ],
+      "row_role": "separator",
+      "scale": "billion",
+      "source_traceback": {
+        "cell_id": "cell:b4351ddf8a3c8501f4a7cd1b2d89a30403a329ee263cae0d97ae18c6311c56ff",
+        "document_id": "pfe_fy2024",
+        "fact_id": "fact:46ba293cb89033f3b58e62174f5d28b30b8e6256c8bd49c91c3b42292aeede37",
+        "logical_table_id": null,
+        "pdf_page": 85,
+        "row_id": "row:601aa41a63a1835548467dfb6e1b23822bae1b35d8e5ea335cb1f0cbcef689f7",
+        "table_fragment_id": "table:457ee024e7517c080544e4e19cf39456d471c1b2f7db5fb0b75218373f6f1973"
+      },
+      "table_fragment_id": "table:457ee024e7517c080544e4e19cf39456d471c1b2f7db5fb0b75218373f6f1973",
+      "table_period_set": [
+        "FY2023",
+        "FY2024"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:76b140d478b13bd07f58257477018eb0ab383f048e1f3b19504f5439898e8742",
+      "column_index": 3,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": null,
+      "document_id": "v_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:490552ec1654deeb7c0edcf23973139907cf5804111b77f51b366e2a4db18aa3",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2023",
+      "pdf_page": 95,
+      "period": "FY2023",
+      "period_type": "annual_duration",
+      "raw_value": "2023",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:75e496b6b7e68ce878d098d2a51b6f36c2e6e920142b75fe578a755bf3acf175",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:76b140d478b13bd07f58257477018eb0ab383f048e1f3b19504f5439898e8742",
+        "document_id": "v_fy2025",
+        "fact_id": "fact:490552ec1654deeb7c0edcf23973139907cf5804111b77f51b366e2a4db18aa3",
+        "logical_table_id": null,
+        "pdf_page": 95,
+        "row_id": "row:75e496b6b7e68ce878d098d2a51b6f36c2e6e920142b75fe578a755bf3acf175",
+        "table_fragment_id": "table:b532260ec69578426ada4edd285ca80a371c9481c2664cab4361335942287e9f"
+      },
+      "table_fragment_id": "table:b532260ec69578426ada4edd285ca80a371c9481c2664cab4361335942287e9f",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:f26707305aa44a1bc4b6a20ea1e43876df37bd8166ef05782f9d1f778fd34835",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "v_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:4afd8d8eb49cb29829e041e789b009d18534048b3994603b3a3768fa8c4aaefc",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "30",
+      "pdf_page": 88,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "30",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:2d8a1ff28282c1f8eb644fffa9dad8ab558643894b59ca7b5011301971c48e7e",
+      "row_period_set": [
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:f26707305aa44a1bc4b6a20ea1e43876df37bd8166ef05782f9d1f778fd34835",
+        "document_id": "v_fy2025",
+        "fact_id": "fact:4afd8d8eb49cb29829e041e789b009d18534048b3994603b3a3768fa8c4aaefc",
+        "logical_table_id": null,
+        "pdf_page": 88,
+        "row_id": "row:2d8a1ff28282c1f8eb644fffa9dad8ab558643894b59ca7b5011301971c48e7e",
+        "table_fragment_id": "table:eccc8499dcfda60d507d415e218f6c4af978f9a261dbf1ad61142936e0c8adbd"
+      },
+      "table_fragment_id": "table:eccc8499dcfda60d507d415e218f6c4af978f9a261dbf1ad61142936e0c8adbd",
+      "table_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:a6c9390687a4c87973bdcf8b6aff11654bb5f410310430f1fc3268e6b98a833d",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "v_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:4b96ecb8a28f5a1ffbba4f751508b03f72115a4a4e11abb6ff038f74ded07a52",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "For the Years Ended September 30,",
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "30",
+      "pdf_page": 88,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "30",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:e729130f7e63deef8bbf254b1ec16f0012960df0558ba8e33f569923ad8f8dee",
+      "row_period_set": [
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "billion",
+      "source_traceback": {
+        "cell_id": "cell:a6c9390687a4c87973bdcf8b6aff11654bb5f410310430f1fc3268e6b98a833d",
+        "document_id": "v_fy2025",
+        "fact_id": "fact:4b96ecb8a28f5a1ffbba4f751508b03f72115a4a4e11abb6ff038f74ded07a52",
+        "logical_table_id": null,
+        "pdf_page": 88,
+        "row_id": "row:e729130f7e63deef8bbf254b1ec16f0012960df0558ba8e33f569923ad8f8dee",
+        "table_fragment_id": "table:1b8d2cad1c8adbc4bc63dbcbb528c862e53e3f11c96167fe1eb194033bd21886"
+      },
+      "table_fragment_id": "table:1b8d2cad1c8adbc4bc63dbcbb528c862e53e3f11c96167fe1eb194033bd21886",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:712e86e09884cd62d8a8f52023a68aa77a9ba2b4f20eab50bd10b3801d4ab8f1",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:4d0c4a1d41ef5117ef3366b669a472af69df5dcab8f573b33a0853250d04c6d6",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "87464",
+      "pdf_page": 80,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "87464",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:26eb53655cefb58a04f088ba6d31ff2b9c546817a5694dc17c741d9743b8de88",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:712e86e09884cd62d8a8f52023a68aa77a9ba2b4f20eab50bd10b3801d4ab8f1",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:4d0c4a1d41ef5117ef3366b669a472af69df5dcab8f573b33a0853250d04c6d6",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:26eb53655cefb58a04f088ba6d31ff2b9c546817a5694dc17c741d9743b8de88",
+        "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90"
+      },
+      "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:66ec4b8f906d31cdc7403ca2e960f946b094a997860d43713eaac995be63764f",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": null,
+      "document_id": "tsla_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:4d70dc1436fe68391e47f4ef50f2a9f31092352a7f21aea0355aff2489697605",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2024",
+      "pdf_page": 69,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "2024",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:cfb45ddc15c1541038d971452a3105ae6e962fc3c344cf67f91fdabf3eb624e8",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:66ec4b8f906d31cdc7403ca2e960f946b094a997860d43713eaac995be63764f",
+        "document_id": "tsla_fy2025",
+        "fact_id": "fact:4d70dc1436fe68391e47f4ef50f2a9f31092352a7f21aea0355aff2489697605",
+        "logical_table_id": null,
+        "pdf_page": 69,
+        "row_id": "row:cfb45ddc15c1541038d971452a3105ae6e962fc3c344cf67f91fdabf3eb624e8",
+        "table_fragment_id": "table:f1b0e9770f9618fd8c6e5abc858cf37e9701f666eae7f9875e39790bb66bd895"
+      },
+      "table_fragment_id": "table:f1b0e9770f9618fd8c6e5abc858cf37e9701f666eae7f9875e39790bb66bd895",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:8ef9ddbfac3d4766acc5d5f1a6278b108ed7275261dd4b938599ccbf4e98ea6f",
+      "column_index": 3,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:5a8d29014a7da72391654cf32ddcc5274175f7322ad29fb260d4b04939eceafb",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "88523",
+      "pdf_page": 80,
+      "period": "FY2023",
+      "period_type": "annual_duration",
+      "raw_value": "88523",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:96f92476b099cd2f0e33328ee054e5f8b16966cb9663c9534fbbfaecdd167581",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:8ef9ddbfac3d4766acc5d5f1a6278b108ed7275261dd4b938599ccbf4e98ea6f",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:5a8d29014a7da72391654cf32ddcc5274175f7322ad29fb260d4b04939eceafb",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:96f92476b099cd2f0e33328ee054e5f8b16966cb9663c9534fbbfaecdd167581",
+        "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90"
+      },
+      "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:536fc6ac6fda006c9954686f191af098709fa477a48c0e6d13789a5160780c8b",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "tsla_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:5c5ed4863cb1aa4e1059e6835fc331e5c3345ca1fd678defa4a0a0aeb1f8ab48",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2025",
+      "pdf_page": 69,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "2025",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:7cd843da4e17b09f52b00b2e95c82d0a4794b803cb76943e823dc32c47f6d647",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:536fc6ac6fda006c9954686f191af098709fa477a48c0e6d13789a5160780c8b",
+        "document_id": "tsla_fy2025",
+        "fact_id": "fact:5c5ed4863cb1aa4e1059e6835fc331e5c3345ca1fd678defa4a0a0aeb1f8ab48",
+        "logical_table_id": null,
+        "pdf_page": 69,
+        "row_id": "row:7cd843da4e17b09f52b00b2e95c82d0a4794b803cb76943e823dc32c47f6d647",
+        "table_fragment_id": "table:e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049"
+      },
+      "table_fragment_id": "table:e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:222592254bd4eb801bb776243ae80b7d1415e518cb0276a785562b5e8b732bb8",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:5d8c661a69e05473fb9744bc76709ef2e75b0b49ea44065d3a64ddcd74b96637",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "245122",
+      "pdf_page": 80,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "245122",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:f3b506413b7b2ec8f158941a8cf6b327f539f653f4e1ea319cab8d587d41d2cf",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:222592254bd4eb801bb776243ae80b7d1415e518cb0276a785562b5e8b732bb8",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:5d8c661a69e05473fb9744bc76709ef2e75b0b49ea44065d3a64ddcd74b96637",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:f3b506413b7b2ec8f158941a8cf6b327f539f653f4e1ea319cab8d587d41d2cf",
+        "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90"
+      },
+      "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:ffe7a44b6ef61bb5f269ac745930c9fd8b63dc937da8a34fabd25c9062c8bca7",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": null,
+      "document_id": "pfe_fy2024",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:5dc62725077f21f5ab2a58863bb4dc10a6b3c16f2306473ef4011202ae275f2f",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "As of December 31, 2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "10881",
+      "pdf_page": 85,
+      "period": "FY2024",
+      "period_type": "instant",
+      "raw_value": "10881",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:601aa41a63a1835548467dfb6e1b23822bae1b35d8e5ea335cb1f0cbcef689f7",
+      "row_period_set": [
+        "FY2023",
+        "FY2024"
+      ],
+      "row_role": "separator",
+      "scale": "billion",
+      "source_traceback": {
+        "cell_id": "cell:ffe7a44b6ef61bb5f269ac745930c9fd8b63dc937da8a34fabd25c9062c8bca7",
+        "document_id": "pfe_fy2024",
+        "fact_id": "fact:5dc62725077f21f5ab2a58863bb4dc10a6b3c16f2306473ef4011202ae275f2f",
+        "logical_table_id": null,
+        "pdf_page": 85,
+        "row_id": "row:601aa41a63a1835548467dfb6e1b23822bae1b35d8e5ea335cb1f0cbcef689f7",
+        "table_fragment_id": "table:457ee024e7517c080544e4e19cf39456d471c1b2f7db5fb0b75218373f6f1973"
+      },
+      "table_fragment_id": "table:457ee024e7517c080544e4e19cf39456d471c1b2f7db5fb0b75218373f6f1973",
+      "table_period_set": [
+        "FY2023",
+        "FY2024"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:a77a4a1dedd447f39efb4615bc44109f292ea024bb83ec94c7866c3698a274f4",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": null,
+      "document_id": "pfe_fy2024",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:6029af90a99af8ed6fdfafd029116f97ff821b22c6ce0ff753ab15c725aceaee",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "Year Ended December 31,",
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "-111",
+      "pdf_page": 61,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "-111",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:95f70f302d63a31dc6a9776e4732911c64de5cd6ef353d14975d77346324cf68",
+      "row_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:a77a4a1dedd447f39efb4615bc44109f292ea024bb83ec94c7866c3698a274f4",
+        "document_id": "pfe_fy2024",
+        "fact_id": "fact:6029af90a99af8ed6fdfafd029116f97ff821b22c6ce0ff753ab15c725aceaee",
+        "logical_table_id": null,
+        "pdf_page": 61,
+        "row_id": "row:95f70f302d63a31dc6a9776e4732911c64de5cd6ef353d14975d77346324cf68",
+        "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de"
+      },
+      "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de",
+      "table_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:b6b81701267d82d31a199022378d5d3e876dbf80e9abcd75e63b295746a44a0d",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:612ad939b576d12e83a8fd3bf697903811fe08f6d6c76778a721b5d6eebdf4fb",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "106820",
+      "pdf_page": 80,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "106820",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:f3c13a026aef73a349324692a9a63c76add106a8a330b0d856eec02872eca6d1",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:b6b81701267d82d31a199022378d5d3e876dbf80e9abcd75e63b295746a44a0d",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:612ad939b576d12e83a8fd3bf697903811fe08f6d6c76778a721b5d6eebdf4fb",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:f3c13a026aef73a349324692a9a63c76add106a8a330b0d856eec02872eca6d1",
+        "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90"
+      },
+      "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:7bb5ee541f81d87b13810255f1eb09314f04d3d4c57711a5dd90d5b77753b107",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:62f6636c107c0bfef59e2c48ccce10ae749fab7513423e94624e9f842ce8a549",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "124704",
+      "pdf_page": 80,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "124704",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:1eb44f1c1ab4c5e418e30952fc6fabbb55b390149e8fb44d52db1621d63eb271",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:7bb5ee541f81d87b13810255f1eb09314f04d3d4c57711a5dd90d5b77753b107",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:62f6636c107c0bfef59e2c48ccce10ae749fab7513423e94624e9f842ce8a549",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:1eb44f1c1ab4c5e418e30952fc6fabbb55b390149e8fb44d52db1621d63eb271",
+        "table_fragment_id": "table:f79e79eede2810c9b7ff5a4bb1332eb096c3ef2f46f2030a86416f24e1d65260"
+      },
+      "table_fragment_id": "table:f79e79eede2810c9b7ff5a4bb1332eb096c3ef2f46f2030a86416f24e1d65260",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:5bd3860f6926fa83d046788652d8cac83e947838053b55f2ee312248411db55b",
+      "column_index": 3,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": null,
+      "document_id": "aapl_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:646209371fdc5358830c6adc41f12633c5dd1dfa4e8ccaf3b0b93778c861d6ba",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2023",
+      "pdf_page": 27,
+      "period": "FY2023",
+      "period_type": "annual_duration",
+      "raw_value": "2023",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:f3772e27dc189131a3aca6d98cfb8c0f73713033eff53d7b2b6496f0240bf5b7",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:5bd3860f6926fa83d046788652d8cac83e947838053b55f2ee312248411db55b",
+        "document_id": "aapl_fy2025",
+        "fact_id": "fact:646209371fdc5358830c6adc41f12633c5dd1dfa4e8ccaf3b0b93778c861d6ba",
+        "logical_table_id": null,
+        "pdf_page": 27,
+        "row_id": "row:f3772e27dc189131a3aca6d98cfb8c0f73713033eff53d7b2b6496f0240bf5b7",
+        "table_fragment_id": "table:60d96702c3d70da2d4d2c1a1fbeae60472c537ac7054ab2a66c3b44b179ae821"
+      },
+      "table_fragment_id": "table:60d96702c3d70da2d4d2c1a1fbeae60472c537ac7054ab2a66c3b44b179ae821",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:549ae94a1b7ed326ea3843d2da1fe901df348adf2fb0e7d331d0cd9bbd3080f3",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": null,
+      "document_id": "tsla_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:65d604dc3f6d2d8af94bf612a446dd716e49a1df4510bc69f0a1b3122418c488",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2024",
+      "pdf_page": 78,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "2024",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:3acf122cf1da9be48b092d128d6fc37f8751908fa14ac614acfaef95ef4367b1",
+      "row_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:549ae94a1b7ed326ea3843d2da1fe901df348adf2fb0e7d331d0cd9bbd3080f3",
+        "document_id": "tsla_fy2025",
+        "fact_id": "fact:65d604dc3f6d2d8af94bf612a446dd716e49a1df4510bc69f0a1b3122418c488",
+        "logical_table_id": null,
+        "pdf_page": 78,
+        "row_id": "row:3acf122cf1da9be48b092d128d6fc37f8751908fa14ac614acfaef95ef4367b1",
+        "table_fragment_id": "table:688d0eba067093a8fdf32fdbf39b11de357138b2da291eb5520fa218dd796647"
+      },
+      "table_fragment_id": "table:688d0eba067093a8fdf32fdbf39b11de357138b2da291eb5520fa218dd796647",
+      "table_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:c700a498e1357c73b7292fa9bcfb2c38a70466a94fd5b1eda44efe433a2d1f78",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "v_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:66f58c1147e9957a554f4ddb4a005375a0bb4565e80ce4c5dfef47e9d4a97c81",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "For the Years Ended September 30,",
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "30",
+      "pdf_page": 55,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "30",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:62d6059e3b41d40c11e8917ca674642323aae3cd1af1563b838332c042a292d3",
+      "row_period_set": [
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:c700a498e1357c73b7292fa9bcfb2c38a70466a94fd5b1eda44efe433a2d1f78",
+        "document_id": "v_fy2025",
+        "fact_id": "fact:66f58c1147e9957a554f4ddb4a005375a0bb4565e80ce4c5dfef47e9d4a97c81",
+        "logical_table_id": null,
+        "pdf_page": 55,
+        "row_id": "row:62d6059e3b41d40c11e8917ca674642323aae3cd1af1563b838332c042a292d3",
+        "table_fragment_id": "table:a2b6b99ae6d9e7df75bafbe29c0b2b5dbbdfca535652b3580561fc8e72fbbd6b"
+      },
+      "table_fragment_id": "table:a2b6b99ae6d9e7df75bafbe29c0b2b5dbbdfca535652b3580561fc8e72fbbd6b",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:795cd1916b043d457d227f7a5fcf3dcb8dd42ad0633224652c040873274ee560",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": null,
+      "document_id": "pfe_fy2024",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:683823b8c9d226240be293a553151dcda65f123af1e4ffbb5c8d015299aaafef",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "Year Ended December 31,",
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "31",
+      "pdf_page": 60,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "31",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:86872a08bed95b2bda6bf7647a883f5f6a1dc6aa8af9028539cf3bff47126acf",
+      "row_period_set": [
+        "FY2024"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:795cd1916b043d457d227f7a5fcf3dcb8dd42ad0633224652c040873274ee560",
+        "document_id": "pfe_fy2024",
+        "fact_id": "fact:683823b8c9d226240be293a553151dcda65f123af1e4ffbb5c8d015299aaafef",
+        "logical_table_id": null,
+        "pdf_page": 60,
+        "row_id": "row:86872a08bed95b2bda6bf7647a883f5f6a1dc6aa8af9028539cf3bff47126acf",
+        "table_fragment_id": "table:a8055121fa63f48f32fb0fa7fd624ea6541155fef3395d279e4de69bfc94c3de"
+      },
+      "table_fragment_id": "table:a8055121fa63f48f32fb0fa7fd624ea6541155fef3395d279e4de69bfc94c3de",
+      "table_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:1b338fc684bdf1de7cf62e04f1bd3c52921df987ad90af6a8d5a6faa5f559584",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": null,
+      "document_id": "pfe_fy2024",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:695e5e1146586b98a03d2b5d52788d99f48ab3ab455cf8e190f8a1c38479f550",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "Year Ended December 31,",
+        "2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "-261",
+      "pdf_page": 61,
+      "period": "FY2023",
+      "period_type": "annual_duration",
+      "raw_value": "-261",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:95f70f302d63a31dc6a9776e4732911c64de5cd6ef353d14975d77346324cf68",
+      "row_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:1b338fc684bdf1de7cf62e04f1bd3c52921df987ad90af6a8d5a6faa5f559584",
+        "document_id": "pfe_fy2024",
+        "fact_id": "fact:695e5e1146586b98a03d2b5d52788d99f48ab3ab455cf8e190f8a1c38479f550",
+        "logical_table_id": null,
+        "pdf_page": 61,
+        "row_id": "row:95f70f302d63a31dc6a9776e4732911c64de5cd6ef353d14975d77346324cf68",
+        "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de"
+      },
+      "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de",
+      "table_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:fd2dee6601bb213c3dc5288b0546832688d2a6fe1db9aa308cc814583dfbcd0e",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "v_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:6f7f63a64df67aa57083d20c59e6e5902619be888bf341fa6afcc3d292f7a1cc",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2025",
+      "pdf_page": 95,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "2025",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:75e496b6b7e68ce878d098d2a51b6f36c2e6e920142b75fe578a755bf3acf175",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:fd2dee6601bb213c3dc5288b0546832688d2a6fe1db9aa308cc814583dfbcd0e",
+        "document_id": "v_fy2025",
+        "fact_id": "fact:6f7f63a64df67aa57083d20c59e6e5902619be888bf341fa6afcc3d292f7a1cc",
+        "logical_table_id": null,
+        "pdf_page": 95,
+        "row_id": "row:75e496b6b7e68ce878d098d2a51b6f36c2e6e920142b75fe578a755bf3acf175",
+        "table_fragment_id": "table:b532260ec69578426ada4edd285ca80a371c9481c2664cab4361335942287e9f"
+      },
+      "table_fragment_id": "table:b532260ec69578426ada4edd285ca80a371c9481c2664cab4361335942287e9f",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:c54867f5aa2d658689dad0473cbbdf993c411e5c784dcf04bd8a228969c5b891",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "v_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:71d35e434f2a224aab31b8c74d5baf5aeb1aa882132c9c9af2c8282b5b04f513",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "For the Years Ended September 30,",
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "30",
+      "pdf_page": 76,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "30",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:fa9fde69e1647b883db58d6c26b6dd785887b6c0cd4e9b65d9ca5b164bfc8f6d",
+      "row_period_set": [
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:c54867f5aa2d658689dad0473cbbdf993c411e5c784dcf04bd8a228969c5b891",
+        "document_id": "v_fy2025",
+        "fact_id": "fact:71d35e434f2a224aab31b8c74d5baf5aeb1aa882132c9c9af2c8282b5b04f513",
+        "logical_table_id": null,
+        "pdf_page": 76,
+        "row_id": "row:fa9fde69e1647b883db58d6c26b6dd785887b6c0cd4e9b65d9ca5b164bfc8f6d",
+        "table_fragment_id": "table:f6edfbc307c5a0b39b9db3ec6df8fb232ead8dff268585bf2d20236bfd6c8d27"
+      },
+      "table_fragment_id": "table:f6edfbc307c5a0b39b9db3ec6df8fb232ead8dff268585bf2d20236bfd6c8d27",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:fc28e8645a7cedcc019b7e5cdd8180178f52feef3e26d13ae19fe270d7b79875",
+      "column_index": 3,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:751280adf7decc75ccbbf3464f4ebcd12ab7e95b338a9e058a2a4e4e6b8ebcd3",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "211915",
+      "pdf_page": 80,
+      "period": "FY2023",
+      "period_type": "annual_duration",
+      "raw_value": "211915",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:f3b506413b7b2ec8f158941a8cf6b327f539f653f4e1ea319cab8d587d41d2cf",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:fc28e8645a7cedcc019b7e5cdd8180178f52feef3e26d13ae19fe270d7b79875",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:751280adf7decc75ccbbf3464f4ebcd12ab7e95b338a9e058a2a4e4e6b8ebcd3",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:f3b506413b7b2ec8f158941a8cf6b327f539f653f4e1ea319cab8d587d41d2cf",
+        "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90"
+      },
+      "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:cd1e936cedb519f885f882bf0bebb4d63c12d3121e6d4e4f6ed94a299084f0a1",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": null,
+      "document_id": "aapl_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:7970d0fce1d1aaba6c1f538e3a44214b60ed37d82b04c8a3fef2b3df33498ed8",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2024",
+      "pdf_page": 43,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "2024",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:8fc1b4ece28053c8ecbf0da334059578f3c8e7dae9cc603b70cc7c4fa910aecd",
+      "row_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:cd1e936cedb519f885f882bf0bebb4d63c12d3121e6d4e4f6ed94a299084f0a1",
+        "document_id": "aapl_fy2025",
+        "fact_id": "fact:7970d0fce1d1aaba6c1f538e3a44214b60ed37d82b04c8a3fef2b3df33498ed8",
+        "logical_table_id": null,
+        "pdf_page": 43,
+        "row_id": "row:8fc1b4ece28053c8ecbf0da334059578f3c8e7dae9cc603b70cc7c4fa910aecd",
+        "table_fragment_id": "table:0047abd2c5de037a6eff1d56f728226a36120b86c9365ec18e885ce830a88dce"
+      },
+      "table_fragment_id": "table:0047abd2c5de037a6eff1d56f728226a36120b86c9365ec18e885ce830a88dce",
+      "table_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:8fb001f6f961d984938250be474e4d49e2ade2067bc914b3cb023a9ff0651086",
+      "column_index": 3,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": null,
+      "document_id": "tsla_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:7f2934d83623cf1a2f58fb43e5ea6f514f7a5fd78383a439d0a802cb7b922001",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2023",
+      "pdf_page": 69,
+      "period": "FY2023",
+      "period_type": "annual_duration",
+      "raw_value": "2023",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:7cd843da4e17b09f52b00b2e95c82d0a4794b803cb76943e823dc32c47f6d647",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:8fb001f6f961d984938250be474e4d49e2ade2067bc914b3cb023a9ff0651086",
+        "document_id": "tsla_fy2025",
+        "fact_id": "fact:7f2934d83623cf1a2f58fb43e5ea6f514f7a5fd78383a439d0a802cb7b922001",
+        "logical_table_id": null,
+        "pdf_page": 69,
+        "row_id": "row:7cd843da4e17b09f52b00b2e95c82d0a4794b803cb76943e823dc32c47f6d647",
+        "table_fragment_id": "table:e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049"
+      },
+      "table_fragment_id": "table:e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:d6996680c6612bbbb1eb10614dced14cfa02edb93a36b8c6a86d11ad2d4b540b",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": null,
+      "document_id": "pfe_fy2024",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:81af181858a9ededdfe117899d0c17ba6f3ce2fb2fd88cc0ba50835c620dc04e",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "Year Ended December 31,",
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "341",
+      "pdf_page": 61,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "341",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:b3b7e0d8d28370f7aa895600257800910c9039f07b5e368f6c8ecc586a56c5e6",
+      "row_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:d6996680c6612bbbb1eb10614dced14cfa02edb93a36b8c6a86d11ad2d4b540b",
+        "document_id": "pfe_fy2024",
+        "fact_id": "fact:81af181858a9ededdfe117899d0c17ba6f3ce2fb2fd88cc0ba50835c620dc04e",
+        "logical_table_id": null,
+        "pdf_page": 61,
+        "row_id": "row:b3b7e0d8d28370f7aa895600257800910c9039f07b5e368f6c8ecc586a56c5e6",
+        "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de"
+      },
+      "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de",
+      "table_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:e047d010e9c3b5f437332d78adcf2dcafe3b5d23cc2a4de1f23650c9d28b714b",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:86b9313efcb083d5d0f5808b984a707c52613ca1cd6fdbf7b244e2e3b20b8e3f",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "6",
+      "pdf_page": 80,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "6",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:109ad4d37d8019a14c3beaf8052aa1a1d1fb8fa5ae3f0b7ce95ee497fc1f3303",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:e047d010e9c3b5f437332d78adcf2dcafe3b5d23cc2a4de1f23650c9d28b714b",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:86b9313efcb083d5d0f5808b984a707c52613ca1cd6fdbf7b244e2e3b20b8e3f",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:109ad4d37d8019a14c3beaf8052aa1a1d1fb8fa5ae3f0b7ce95ee497fc1f3303",
+        "table_fragment_id": "table:ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508"
+      },
+      "table_fragment_id": "table:ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:fff25b58dbac2f32d44654c311de9aea843f6c466f517a260d5263787e4cbebc",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2026"
+        ],
+        "column_header_schema": [
+          "FY2026"
+        ],
+        "existing_fact": [
+          "FY2026"
+        ]
+      },
+      "currency": null,
+      "document_id": "walmart_fy2026_pdf_dev",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:89ebf6e7d2908130142fb7403f944c2e1e240af424f4b14a35e85207626e73cf",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "Fiscal Years Ended January 31,",
+        "2026"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "31",
+      "pdf_page": 54,
+      "period": "FY2026",
+      "period_type": "annual_duration",
+      "raw_value": "31",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:ec20fe55a633d39a65766eb4ae6a4b453f5b1c6336e6a7f8abf5731902c7947f",
+      "row_period_set": [
+        "FY2026"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:fff25b58dbac2f32d44654c311de9aea843f6c466f517a260d5263787e4cbebc",
+        "document_id": "walmart_fy2026_pdf_dev",
+        "fact_id": "fact:89ebf6e7d2908130142fb7403f944c2e1e240af424f4b14a35e85207626e73cf",
+        "logical_table_id": null,
+        "pdf_page": 54,
+        "row_id": "row:ec20fe55a633d39a65766eb4ae6a4b453f5b1c6336e6a7f8abf5731902c7947f",
+        "table_fragment_id": "table:d0821896d1666fbeac3300ab1707a86c7fa331284cfcfe3e2026b44c22feb0c9"
+      },
+      "table_fragment_id": "table:d0821896d1666fbeac3300ab1707a86c7fa331284cfcfe3e2026b44c22feb0c9",
+      "table_period_set": [
+        "FY2024",
+        "FY2025",
+        "FY2026"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:39f3aece48fc7f64d442da821c31a0546098a00e433f4130dd024132ea96acc4",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "v_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:8a580fd638a48d0b742dd9bc592f034db2fc74b986c00175438d2d8cd3fcbf10",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2025",
+      "pdf_page": 64,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "2025",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:fdc966bd03b1dd0e897f344a7fdc133fff373fc31f87b469e180d7599dabd923",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:39f3aece48fc7f64d442da821c31a0546098a00e433f4130dd024132ea96acc4",
+        "document_id": "v_fy2025",
+        "fact_id": "fact:8a580fd638a48d0b742dd9bc592f034db2fc74b986c00175438d2d8cd3fcbf10",
+        "logical_table_id": null,
+        "pdf_page": 64,
+        "row_id": "row:fdc966bd03b1dd0e897f344a7fdc133fff373fc31f87b469e180d7599dabd923",
+        "table_fragment_id": "table:693a68fb4af1853d8854aea73102d7e66cf92c2a0ed6bbd607196366ade59493"
+      },
+      "table_fragment_id": "table:693a68fb4af1853d8854aea73102d7e66cf92c2a0ed6bbd607196366ade59493",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:07fef400ba7af6ac394f16133eff2e4eeedc5b15e737cb013961a138fa3b89da",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": null,
+      "document_id": "tsla_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:905015c8f9fa25460bcabb882937484f2f2b2d02d9f0c200b5445387a67c24a4",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2024",
+      "pdf_page": 69,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "2024",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:7cd843da4e17b09f52b00b2e95c82d0a4794b803cb76943e823dc32c47f6d647",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:07fef400ba7af6ac394f16133eff2e4eeedc5b15e737cb013961a138fa3b89da",
+        "document_id": "tsla_fy2025",
+        "fact_id": "fact:905015c8f9fa25460bcabb882937484f2f2b2d02d9f0c200b5445387a67c24a4",
+        "logical_table_id": null,
+        "pdf_page": 69,
+        "row_id": "row:7cd843da4e17b09f52b00b2e95c82d0a4794b803cb76943e823dc32c47f6d647",
+        "table_fragment_id": "table:e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049"
+      },
+      "table_fragment_id": "table:e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:efad1f5b0e8723a22b0de258758f5eb32ddabf98bed8ab3f0ea07744b7ed7bc0",
+      "column_index": 3,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": null,
+      "document_id": "v_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:9758b79a85ea99001cd27bc17d77f7db643818fa0f0f53388ed6e6abe19c4f20",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2023",
+      "pdf_page": 64,
+      "period": "FY2023",
+      "period_type": "annual_duration",
+      "raw_value": "2023",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:fdc966bd03b1dd0e897f344a7fdc133fff373fc31f87b469e180d7599dabd923",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:efad1f5b0e8723a22b0de258758f5eb32ddabf98bed8ab3f0ea07744b7ed7bc0",
+        "document_id": "v_fy2025",
+        "fact_id": "fact:9758b79a85ea99001cd27bc17d77f7db643818fa0f0f53388ed6e6abe19c4f20",
+        "logical_table_id": null,
+        "pdf_page": 64,
+        "row_id": "row:fdc966bd03b1dd0e897f344a7fdc133fff373fc31f87b469e180d7599dabd923",
+        "table_fragment_id": "table:693a68fb4af1853d8854aea73102d7e66cf92c2a0ed6bbd607196366ade59493"
+      },
+      "table_fragment_id": "table:693a68fb4af1853d8854aea73102d7e66cf92c2a0ed6bbd607196366ade59493",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:908767a57c3b88fb2de9d6c16ded3f8124c24145b969b26ca0d01706f78ebd61",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "v_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:976b5a58879c2d6e8ba4398e77f715da50f426167cfb6684d6003a9e97bf0ea7",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "For the Years Ended September 30,",
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "30",
+      "pdf_page": 88,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "30",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:c5d52bf01bb5ef74e381bb7fd9d83529b1ede32b47ac5cee8268bdae7a536450",
+      "row_period_set": [
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:908767a57c3b88fb2de9d6c16ded3f8124c24145b969b26ca0d01706f78ebd61",
+        "document_id": "v_fy2025",
+        "fact_id": "fact:976b5a58879c2d6e8ba4398e77f715da50f426167cfb6684d6003a9e97bf0ea7",
+        "logical_table_id": null,
+        "pdf_page": 88,
+        "row_id": "row:c5d52bf01bb5ef74e381bb7fd9d83529b1ede32b47ac5cee8268bdae7a536450",
+        "table_fragment_id": "table:3e1604d9a66e7c770786b54a6b20ed94fefd21e3b18d2af6bcd9455c7a7638db"
+      },
+      "table_fragment_id": "table:3e1604d9a66e7c770786b54a6b20ed94fefd21e3b18d2af6bcd9455c7a7638db",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:668fe6cb2bf56f732996f18bbb94797e70a6bf2a06bcfb966830ebcccb8b2de5",
+      "column_index": 3,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:a29bdbd0537b5919cf0baf7acb7ea3e86030fa5fda279046f073ad4e491cf350",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "94151",
+      "pdf_page": 80,
+      "period": "FY2023",
+      "period_type": "annual_duration",
+      "raw_value": "94151",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:f3c13a026aef73a349324692a9a63c76add106a8a330b0d856eec02872eca6d1",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:668fe6cb2bf56f732996f18bbb94797e70a6bf2a06bcfb966830ebcccb8b2de5",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:a29bdbd0537b5919cf0baf7acb7ea3e86030fa5fda279046f073ad4e491cf350",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:f3c13a026aef73a349324692a9a63c76add106a8a330b0d856eec02872eca6d1",
+        "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90"
+      },
+      "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:18c7e585294eac1d5d9dd4d616f9d94180c49ad987916b7c4d7bd6b3786f7d6e",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "v_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:a49cbc201e947ce4c3dcc2b8d5b35640cf7c90740c4b54598748f80bd1b9bad2",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "For the Years Ended September 30,",
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "30",
+      "pdf_page": 75,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "30",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:6a8cfe19a86ae3aeedc67c89ef859f21b417dfa998c29c1ac93ad7e0fe49953f",
+      "row_period_set": [
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:18c7e585294eac1d5d9dd4d616f9d94180c49ad987916b7c4d7bd6b3786f7d6e",
+        "document_id": "v_fy2025",
+        "fact_id": "fact:a49cbc201e947ce4c3dcc2b8d5b35640cf7c90740c4b54598748f80bd1b9bad2",
+        "logical_table_id": null,
+        "pdf_page": 75,
+        "row_id": "row:6a8cfe19a86ae3aeedc67c89ef859f21b417dfa998c29c1ac93ad7e0fe49953f",
+        "table_fragment_id": "table:047c6a56c7f09d391ac993d738c97b84bae5339ad9a1873ff5d6dd98ff693439"
+      },
+      "table_fragment_id": "table:047c6a56c7f09d391ac993d738c97b84bae5339ad9a1873ff5d6dd98ff693439",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:e7ac34a0913783432fabdc4a35afb79a3874e7ee5c2b10908880eb1a67c40caa",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "aapl_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:ac8f049c6e482479d40a024ee847c04b088d1891b9b1c07ca6ef03c89364f373",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2025",
+      "pdf_page": 43,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "2025",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:8fc1b4ece28053c8ecbf0da334059578f3c8e7dae9cc603b70cc7c4fa910aecd",
+      "row_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:e7ac34a0913783432fabdc4a35afb79a3874e7ee5c2b10908880eb1a67c40caa",
+        "document_id": "aapl_fy2025",
+        "fact_id": "fact:ac8f049c6e482479d40a024ee847c04b088d1891b9b1c07ca6ef03c89364f373",
+        "logical_table_id": null,
+        "pdf_page": 43,
+        "row_id": "row:8fc1b4ece28053c8ecbf0da334059578f3c8e7dae9cc603b70cc7c4fa910aecd",
+        "table_fragment_id": "table:0047abd2c5de037a6eff1d56f728226a36120b86c9365ec18e885ce830a88dce"
+      },
+      "table_fragment_id": "table:0047abd2c5de037a6eff1d56f728226a36120b86c9365ec18e885ce830a88dce",
+      "table_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:1929869ee282aa3002d14833e9217e4b3d2c6c41616deb4690c703e10d2d75eb",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": null,
+      "document_id": "aapl_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:ad327d052f09a1eca4ab199e33a3e868ad04454d56ae8e9fd13b94170629eb7e",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2024",
+      "pdf_page": 43,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "2024",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:e8cc8502161b953a454ed005db9fbeae4a7bb47149e16b86f667f04d3bcc42d6",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "billion",
+      "source_traceback": {
+        "cell_id": "cell:1929869ee282aa3002d14833e9217e4b3d2c6c41616deb4690c703e10d2d75eb",
+        "document_id": "aapl_fy2025",
+        "fact_id": "fact:ad327d052f09a1eca4ab199e33a3e868ad04454d56ae8e9fd13b94170629eb7e",
+        "logical_table_id": null,
+        "pdf_page": 43,
+        "row_id": "row:e8cc8502161b953a454ed005db9fbeae4a7bb47149e16b86f667f04d3bcc42d6",
+        "table_fragment_id": "table:ea0aa7988e5fc3b4d0bfbefbd35e7bf83f0c3dd391d91a45a1bb0b4fe18ac1f6"
+      },
+      "table_fragment_id": "table:ea0aa7988e5fc3b4d0bfbefbd35e7bf83f0c3dd391d91a45a1bb0b4fe18ac1f6",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:5026a58fd26737e9cf47d43d77a41605ffb884617dc577a8e23c27cfa784d0a2",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": null,
+      "document_id": "v_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:ad9dc44cf5f6f0f91c230c6574f4b0543ae42b91583586e8c67d838e3447ce70",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2024",
+      "pdf_page": 64,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "2024",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:fdc966bd03b1dd0e897f344a7fdc133fff373fc31f87b469e180d7599dabd923",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:5026a58fd26737e9cf47d43d77a41605ffb884617dc577a8e23c27cfa784d0a2",
+        "document_id": "v_fy2025",
+        "fact_id": "fact:ad9dc44cf5f6f0f91c230c6574f4b0543ae42b91583586e8c67d838e3447ce70",
+        "logical_table_id": null,
+        "pdf_page": 64,
+        "row_id": "row:fdc966bd03b1dd0e897f344a7fdc133fff373fc31f87b469e180d7599dabd923",
+        "table_fragment_id": "table:693a68fb4af1853d8854aea73102d7e66cf92c2a0ed6bbd607196366ade59493"
+      },
+      "table_fragment_id": "table:693a68fb4af1853d8854aea73102d7e66cf92c2a0ed6bbd607196366ade59493",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:06bd539fc0503578f59aa5e95e8dc56f74207602d52f3bd70652c0944abea01b",
+      "column_index": 3,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2022"
+        ],
+        "column_header_schema": [
+          "FY2022"
+        ],
+        "existing_fact": [
+          "FY2022"
+        ]
+      },
+      "currency": null,
+      "document_id": "pfe_fy2024",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:aeff8aaf7030fe6dc83cfdff7ffa9020e287a65e0ce800bb270ba1435fbc0d83",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "Year Ended December 31,",
+        "2022"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "502",
+      "pdf_page": 61,
+      "period": "FY2022",
+      "period_type": "annual_duration",
+      "raw_value": "502",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:95f70f302d63a31dc6a9776e4732911c64de5cd6ef353d14975d77346324cf68",
+      "row_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:06bd539fc0503578f59aa5e95e8dc56f74207602d52f3bd70652c0944abea01b",
+        "document_id": "pfe_fy2024",
+        "fact_id": "fact:aeff8aaf7030fe6dc83cfdff7ffa9020e287a65e0ce800bb270ba1435fbc0d83",
+        "logical_table_id": null,
+        "pdf_page": 61,
+        "row_id": "row:95f70f302d63a31dc6a9776e4732911c64de5cd6ef353d14975d77346324cf68",
+        "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de"
+      },
+      "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de",
+      "table_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:2d61c30261d4d1ce72fc003c13c9f9a8c6e5108b8bc56be99a7d1fd1ed1ed5e2",
+      "column_index": 3,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2022"
+        ],
+        "column_header_schema": [
+          "FY2022"
+        ],
+        "existing_fact": [
+          "FY2022"
+        ]
+      },
+      "currency": null,
+      "document_id": "pfe_fy2024",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:b09fa2c26c00613330a54519c0544c27c70849ec10f69ce76a54a01c5aa9bd44",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "Year Ended December 31,",
+        "2022"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "-618",
+      "pdf_page": 61,
+      "period": "FY2022",
+      "period_type": "annual_duration",
+      "raw_value": "-618",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:b3b7e0d8d28370f7aa895600257800910c9039f07b5e368f6c8ecc586a56c5e6",
+      "row_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:2d61c30261d4d1ce72fc003c13c9f9a8c6e5108b8bc56be99a7d1fd1ed1ed5e2",
+        "document_id": "pfe_fy2024",
+        "fact_id": "fact:b09fa2c26c00613330a54519c0544c27c70849ec10f69ce76a54a01c5aa9bd44",
+        "logical_table_id": null,
+        "pdf_page": 61,
+        "row_id": "row:b3b7e0d8d28370f7aa895600257800910c9039f07b5e368f6c8ecc586a56c5e6",
+        "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de"
+      },
+      "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de",
+      "table_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:6b22379590f599fb11ca78b72f86d49ca4f9fb595a242316d905cda33ffce6f9",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "tsla_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:b1da50023eabd1bbb56123840da481bfb8b40f9e37cc79943b1578145f59ccc6",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2025",
+      "pdf_page": 69,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "2025",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:cfb45ddc15c1541038d971452a3105ae6e962fc3c344cf67f91fdabf3eb624e8",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:6b22379590f599fb11ca78b72f86d49ca4f9fb595a242316d905cda33ffce6f9",
+        "document_id": "tsla_fy2025",
+        "fact_id": "fact:b1da50023eabd1bbb56123840da481bfb8b40f9e37cc79943b1578145f59ccc6",
+        "logical_table_id": null,
+        "pdf_page": 69,
+        "row_id": "row:cfb45ddc15c1541038d971452a3105ae6e962fc3c344cf67f91fdabf3eb624e8",
+        "table_fragment_id": "table:f1b0e9770f9618fd8c6e5abc858cf37e9701f666eae7f9875e39790bb66bd895"
+      },
+      "table_fragment_id": "table:f1b0e9770f9618fd8c6e5abc858cf37e9701f666eae7f9875e39790bb66bd895",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:e1fac871f7836a2ebd75702c33a95b3e93006f09c7cb2db9bfdd2f24dfe0a9e2",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:b81d06e51975e959c046b3f44ab9dbb7d3e18704c2b2900d1b84f2c3f8d2fa5b",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "6",
+      "pdf_page": 80,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "6",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:1eb44f1c1ab4c5e418e30952fc6fabbb55b390149e8fb44d52db1621d63eb271",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:e1fac871f7836a2ebd75702c33a95b3e93006f09c7cb2db9bfdd2f24dfe0a9e2",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:b81d06e51975e959c046b3f44ab9dbb7d3e18704c2b2900d1b84f2c3f8d2fa5b",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:1eb44f1c1ab4c5e418e30952fc6fabbb55b390149e8fb44d52db1621d63eb271",
+        "table_fragment_id": "table:f79e79eede2810c9b7ff5a4bb1332eb096c3ef2f46f2030a86416f24e1d65260"
+      },
+      "table_fragment_id": "table:f79e79eede2810c9b7ff5a4bb1332eb096c3ef2f46f2030a86416f24e1d65260",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:4f62204f098b5ea9c84c063f9b69756e14dba6654ebb481b53b325369637a0bc",
+      "column_index": 3,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:b889d770fdd826932ff34344475bffa268a2ef0b02abfbc7744ff716d41b4a1f",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "72944",
+      "pdf_page": 80,
+      "period": "FY2023",
+      "period_type": "annual_duration",
+      "raw_value": "72944",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:26eb53655cefb58a04f088ba6d31ff2b9c546817a5694dc17c741d9743b8de88",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:4f62204f098b5ea9c84c063f9b69756e14dba6654ebb481b53b325369637a0bc",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:b889d770fdd826932ff34344475bffa268a2ef0b02abfbc7744ff716d41b4a1f",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:26eb53655cefb58a04f088ba6d31ff2b9c546817a5694dc17c741d9743b8de88",
+        "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90"
+      },
+      "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:f5efda4df365e7194935bcaaf0fd05d4603c440b773d2d7110e99c8c31803f80",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "aapl_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:c0f4438ab3c3e473ac89da445030cc61808a5c0bd28a09888ad4b9fe225cc6d1",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2025",
+      "pdf_page": 27,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "2025",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:f3772e27dc189131a3aca6d98cfb8c0f73713033eff53d7b2b6496f0240bf5b7",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:f5efda4df365e7194935bcaaf0fd05d4603c440b773d2d7110e99c8c31803f80",
+        "document_id": "aapl_fy2025",
+        "fact_id": "fact:c0f4438ab3c3e473ac89da445030cc61808a5c0bd28a09888ad4b9fe225cc6d1",
+        "logical_table_id": null,
+        "pdf_page": 27,
+        "row_id": "row:f3772e27dc189131a3aca6d98cfb8c0f73713033eff53d7b2b6496f0240bf5b7",
+        "table_fragment_id": "table:60d96702c3d70da2d4d2c1a1fbeae60472c537ac7054ab2a66c3b44b179ae821"
+      },
+      "table_fragment_id": "table:60d96702c3d70da2d4d2c1a1fbeae60472c537ac7054ab2a66c3b44b179ae821",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:300b5887267f37d7c0ab3b02a4aea417e867d2380271063081833138574c679b",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": null,
+      "document_id": "pfe_fy2024",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:c3d89cded7df54095ee7f7d6291836cc8550359ccd153963096285c698e3dc48",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "Year Ended December 31,",
+        "2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "-157",
+      "pdf_page": 61,
+      "period": "FY2023",
+      "period_type": "annual_duration",
+      "raw_value": "-157",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:3377717af948bd29e8c5147ae3465f10e1d7c5688a24eed950a90d0891ef7ae1",
+      "row_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:300b5887267f37d7c0ab3b02a4aea417e867d2380271063081833138574c679b",
+        "document_id": "pfe_fy2024",
+        "fact_id": "fact:c3d89cded7df54095ee7f7d6291836cc8550359ccd153963096285c698e3dc48",
+        "logical_table_id": null,
+        "pdf_page": 61,
+        "row_id": "row:3377717af948bd29e8c5147ae3465f10e1d7c5688a24eed950a90d0891ef7ae1",
+        "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de"
+      },
+      "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de",
+      "table_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:b308f2acfa5e57be12df3ed801179e729099f25e2e1bb7581c25431e2f3e6d19",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": null,
+      "document_id": "pfe_fy2024",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:c7499189e3066ca9a77c1cc78f55b01702b1629a2309c860c5485e5ac249fb90",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "Year Ended December 31,",
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "31",
+      "pdf_page": 61,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "31",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:99b3ffedead8ae57789685a093446b5fc60d11ea685c46f389ba528f9b592f25",
+      "row_period_set": [
+        "FY2024"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:b308f2acfa5e57be12df3ed801179e729099f25e2e1bb7581c25431e2f3e6d19",
+        "document_id": "pfe_fy2024",
+        "fact_id": "fact:c7499189e3066ca9a77c1cc78f55b01702b1629a2309c860c5485e5ac249fb90",
+        "logical_table_id": null,
+        "pdf_page": 61,
+        "row_id": "row:99b3ffedead8ae57789685a093446b5fc60d11ea685c46f389ba528f9b592f25",
+        "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de"
+      },
+      "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de",
+      "table_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:04bc8908f3e000aad56547165ab54dd0bd89a48b45abbcf3d3d04e80be984fcd",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": null,
+      "document_id": "aapl_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:d2a7b5b29e640b03b6f2878efe78e238964231bc02e4c8b231a7a50ecaf072f9",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2024",
+      "pdf_page": 43,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "2024",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:99d47fe57135215938526eb794ce83a843aca847221197cedd6638ee5a0d825b",
+      "row_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": null,
+      "source_traceback": {
+        "cell_id": "cell:04bc8908f3e000aad56547165ab54dd0bd89a48b45abbcf3d3d04e80be984fcd",
+        "document_id": "aapl_fy2025",
+        "fact_id": "fact:d2a7b5b29e640b03b6f2878efe78e238964231bc02e4c8b231a7a50ecaf072f9",
+        "logical_table_id": null,
+        "pdf_page": 43,
+        "row_id": "row:99d47fe57135215938526eb794ce83a843aca847221197cedd6638ee5a0d825b",
+        "table_fragment_id": "table:a4c43c2873dc6c82f075e8d833e482e838ed64ac63e54c647b9a3ff59e2b7428"
+      },
+      "table_fragment_id": "table:a4c43c2873dc6c82f075e8d833e482e838ed64ac63e54c647b9a3ff59e2b7428",
+      "table_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "unknown_numeric"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:533a9e47136a2de2d3b6582e42af42f4aa0122d506b799585698d347b887b551",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "v_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:d4ca9f6b063394b46087fb0ef83484e9282ae7bd52d4f2af96532c09b9b4cdee",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "30",
+      "pdf_page": 74,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "30",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:bace1b0bc46c674a66bb490ed050ee873f314642a3e05167288a9c42b1158496",
+      "row_period_set": [
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:533a9e47136a2de2d3b6582e42af42f4aa0122d506b799585698d347b887b551",
+        "document_id": "v_fy2025",
+        "fact_id": "fact:d4ca9f6b063394b46087fb0ef83484e9282ae7bd52d4f2af96532c09b9b4cdee",
+        "logical_table_id": null,
+        "pdf_page": 74,
+        "row_id": "row:bace1b0bc46c674a66bb490ed050ee873f314642a3e05167288a9c42b1158496",
+        "table_fragment_id": "table:df89ce2c4fbef45b7eb45a425c72c80aea38b38bcbaa7e6efed7ada17a4d7c37"
+      },
+      "table_fragment_id": "table:df89ce2c4fbef45b7eb45a425c72c80aea38b38bcbaa7e6efed7ada17a4d7c37",
+      "table_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:5fb7d4a32935b238e24b3e7e1778259350fd32f5b2659238e83a0fbe3bcde7b7",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:d98039c4794e2d3c9903d0861c0362d1d75373c043b39e70ec8e670c8c5c7703",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "109433",
+      "pdf_page": 80,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "109433",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:96f92476b099cd2f0e33328ee054e5f8b16966cb9663c9534fbbfaecdd167581",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:5fb7d4a32935b238e24b3e7e1778259350fd32f5b2659238e83a0fbe3bcde7b7",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:d98039c4794e2d3c9903d0861c0362d1d75373c043b39e70ec8e670c8c5c7703",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:96f92476b099cd2f0e33328ee054e5f8b16966cb9663c9534fbbfaecdd167581",
+        "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90"
+      },
+      "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:99ba0cee6f2e3b594b233863981e54b1aa16b9514c2e28d35fe30e8bb360f882",
+      "column_index": 3,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": null,
+      "document_id": "tsla_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:e3a8583d1570e892e27d85e0b0915d4235aa3fe0017fa936773f41455ca6d3bc",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2023",
+      "pdf_page": 69,
+      "period": "FY2023",
+      "period_type": "annual_duration",
+      "raw_value": "2023",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:cfb45ddc15c1541038d971452a3105ae6e962fc3c344cf67f91fdabf3eb624e8",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:99ba0cee6f2e3b594b233863981e54b1aa16b9514c2e28d35fe30e8bb360f882",
+        "document_id": "tsla_fy2025",
+        "fact_id": "fact:e3a8583d1570e892e27d85e0b0915d4235aa3fe0017fa936773f41455ca6d3bc",
+        "logical_table_id": null,
+        "pdf_page": 69,
+        "row_id": "row:cfb45ddc15c1541038d971452a3105ae6e962fc3c344cf67f91fdabf3eb624e8",
+        "table_fragment_id": "table:f1b0e9770f9618fd8c6e5abc858cf37e9701f666eae7f9875e39790bb66bd895"
+      },
+      "table_fragment_id": "table:f1b0e9770f9618fd8c6e5abc858cf37e9701f666eae7f9875e39790bb66bd895",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:9612e831997bac120d3885a06aea23572b8f17487db7fcfe36224b1b5fb07963",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:e476821a9b1a5c4d8a27d99f74f990c4608530d3583c5e21099ea1efe237b35b",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "4",
+      "pdf_page": 80,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "4",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:f3b506413b7b2ec8f158941a8cf6b327f539f653f4e1ea319cab8d587d41d2cf",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:9612e831997bac120d3885a06aea23572b8f17487db7fcfe36224b1b5fb07963",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:e476821a9b1a5c4d8a27d99f74f990c4608530d3583c5e21099ea1efe237b35b",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:f3b506413b7b2ec8f158941a8cf6b327f539f653f4e1ea319cab8d587d41d2cf",
+        "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90"
+      },
+      "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:0dbbda10a48fbc0d7e5603285d937bdf35241258c83e955c18034fa554564c72",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "tsla_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:ea59d83aacc23eb23214fba664ac43e8b851aa87f515d9c288f107c3826bc313",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "Year Ended December 31,",
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "31",
+      "pdf_page": 60,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "31",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:dbb2624fa55a52a56287b8b22d618cad70833e8eba6771612e377638376d4a6f",
+      "row_period_set": [
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:0dbbda10a48fbc0d7e5603285d937bdf35241258c83e955c18034fa554564c72",
+        "document_id": "tsla_fy2025",
+        "fact_id": "fact:ea59d83aacc23eb23214fba664ac43e8b851aa87f515d9c288f107c3826bc313",
+        "logical_table_id": null,
+        "pdf_page": 60,
+        "row_id": "row:dbb2624fa55a52a56287b8b22d618cad70833e8eba6771612e377638376d4a6f",
+        "table_fragment_id": "table:c610c44763ff2a919a7bd15cc316406e998bf82e0860cd9e10dee580b508b1d2"
+      },
+      "table_fragment_id": "table:c610c44763ff2a919a7bd15cc316406e998bf82e0860cd9e10dee580b508b1d2",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:e65701b427e658f6dd630025f7ee85728fbf06c4af283b9418c1fa8c521103cc",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": null,
+      "document_id": "pfe_fy2024",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:ee826cb335bd6ae938727dd5e9a67e892c11aa921e1c9ab5c6efefae428f39b6",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "Year Ended December 31,",
+        "2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "213",
+      "pdf_page": 61,
+      "period": "FY2023",
+      "period_type": "annual_duration",
+      "raw_value": "213",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:b3b7e0d8d28370f7aa895600257800910c9039f07b5e368f6c8ecc586a56c5e6",
+      "row_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:e65701b427e658f6dd630025f7ee85728fbf06c4af283b9418c1fa8c521103cc",
+        "document_id": "pfe_fy2024",
+        "fact_id": "fact:ee826cb335bd6ae938727dd5e9a67e892c11aa921e1c9ab5c6efefae428f39b6",
+        "logical_table_id": null,
+        "pdf_page": 61,
+        "row_id": "row:b3b7e0d8d28370f7aa895600257800910c9039f07b5e368f6c8ecc586a56c5e6",
+        "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de"
+      },
+      "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de",
+      "table_period_set": [
+        "FY2022",
+        "FY2023",
+        "FY2024"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:4d8bf17c46e32288432f1e39c6aa838f4aaa6318e24c147e7cc36c409efc9377",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "v_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:f7429e260127ab7c4f42f52c0017db2c1593793779c25dd6539c66a423066f9e",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "30",
+      "pdf_page": 95,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "30",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:baedd864c706c060f331d14c702b5fbcd592b0fb9e5829331dfd693a694243fc",
+      "row_period_set": [
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:4d8bf17c46e32288432f1e39c6aa838f4aaa6318e24c147e7cc36c409efc9377",
+        "document_id": "v_fy2025",
+        "fact_id": "fact:f7429e260127ab7c4f42f52c0017db2c1593793779c25dd6539c66a423066f9e",
+        "logical_table_id": null,
+        "pdf_page": 95,
+        "row_id": "row:baedd864c706c060f331d14c702b5fbcd592b0fb9e5829331dfd693a694243fc",
+        "table_fragment_id": "table:40eb0fb4af8a7149eeaa5056da2cc9906149236afed1aa4706dd2f6e2edda519"
+      },
+      "table_fragment_id": "table:40eb0fb4af8a7149eeaa5056da2cc9906149236afed1aa4706dd2f6e2edda519",
+      "table_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:aa05d1973fce7ce890f177b7afc2367b6d3f69de91854ff81a18c180c21f5a51",
+      "column_index": 2,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2024"
+        ],
+        "column_header_schema": [
+          "FY2024"
+        ],
+        "existing_fact": [
+          "FY2024"
+        ]
+      },
+      "currency": null,
+      "document_id": "v_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:f7948f5f12a3eff3a19849330da46d233fe897bab0e334ccdb7a89b0fcf58906",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2024"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2024",
+      "pdf_page": 95,
+      "period": "FY2024",
+      "period_type": "annual_duration",
+      "raw_value": "2024",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:f05076e40e90b48ef56b3c1fcf9fbd6e56523c577eb5f63a5aed986693e1e218",
+      "row_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:aa05d1973fce7ce890f177b7afc2367b6d3f69de91854ff81a18c180c21f5a51",
+        "document_id": "v_fy2025",
+        "fact_id": "fact:f7948f5f12a3eff3a19849330da46d233fe897bab0e334ccdb7a89b0fcf58906",
+        "logical_table_id": null,
+        "pdf_page": 95,
+        "row_id": "row:f05076e40e90b48ef56b3c1fcf9fbd6e56523c577eb5f63a5aed986693e1e218",
+        "table_fragment_id": "table:40eb0fb4af8a7149eeaa5056da2cc9906149236afed1aa4706dd2f6e2edda519"
+      },
+      "table_fragment_id": "table:40eb0fb4af8a7149eeaa5056da2cc9906149236afed1aa4706dd2f6e2edda519",
+      "table_period_set": [
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:745b65c0bc5a22f95ed9c0090719f3f482ca5750ca59f4ea1e5745e77c1376e4",
+      "column_index": 3,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": "USD",
+      "document_id": "msft_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:fa5f3dc4dd7afa09799c770ecd4b506067709b532b92943e8890c1e1558998f3",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "106744",
+      "pdf_page": 80,
+      "period": "FY2023",
+      "period_type": "annual_duration",
+      "raw_value": "106744",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:1eb44f1c1ab4c5e418e30952fc6fabbb55b390149e8fb44d52db1621d63eb271",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "million",
+      "source_traceback": {
+        "cell_id": "cell:745b65c0bc5a22f95ed9c0090719f3f482ca5750ca59f4ea1e5745e77c1376e4",
+        "document_id": "msft_fy2025",
+        "fact_id": "fact:fa5f3dc4dd7afa09799c770ecd4b506067709b532b92943e8890c1e1558998f3",
+        "logical_table_id": null,
+        "pdf_page": 80,
+        "row_id": "row:1eb44f1c1ab4c5e418e30952fc6fabbb55b390149e8fb44d52db1621d63eb271",
+        "table_fragment_id": "table:f79e79eede2810c9b7ff5a4bb1332eb096c3ef2f46f2030a86416f24e1d65260"
+      },
+      "table_fragment_id": "table:f79e79eede2810c9b7ff5a4bb1332eb096c3ef2f46f2030a86416f24e1d65260",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:59f9df3dedf4bed972ab5079f46000e5d7a8dd728721133869cad3b5e7f0a330",
+      "column_index": 6,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2023"
+        ],
+        "column_header_schema": [
+          "FY2023"
+        ],
+        "existing_fact": [
+          "FY2023"
+        ]
+      },
+      "currency": null,
+      "document_id": "pfe_fy2024",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:fb0a56a5d72a1c67fe0ee1a0c9e24e09ab4ffb02592cd33f3cae1e033d683814",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "As of December 31, 2023"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "4400",
+      "pdf_page": 85,
+      "period": "FY2023",
+      "period_type": "instant",
+      "raw_value": "4400",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:601aa41a63a1835548467dfb6e1b23822bae1b35d8e5ea335cb1f0cbcef689f7",
+      "row_period_set": [
+        "FY2023",
+        "FY2024"
+      ],
+      "row_role": "separator",
+      "scale": "billion",
+      "source_traceback": {
+        "cell_id": "cell:59f9df3dedf4bed972ab5079f46000e5d7a8dd728721133869cad3b5e7f0a330",
+        "document_id": "pfe_fy2024",
+        "fact_id": "fact:fb0a56a5d72a1c67fe0ee1a0c9e24e09ab4ffb02592cd33f3cae1e033d683814",
+        "logical_table_id": null,
+        "pdf_page": 85,
+        "row_id": "row:601aa41a63a1835548467dfb6e1b23822bae1b35d8e5ea335cb1f0cbcef689f7",
+        "table_fragment_id": "table:457ee024e7517c080544e4e19cf39456d471c1b2f7db5fb0b75218373f6f1973"
+      },
+      "table_fragment_id": "table:457ee024e7517c080544e4e19cf39456d471c1b2f7db5fb0b75218373f6f1973",
+      "table_period_set": [
+        "FY2023",
+        "FY2024"
+      ],
+      "value_kind": "currency"
+    },
+    {
+      "binding_status": "blocked",
+      "cell_id": "cell:44d4b6be717492de2f1586016c10e226bf8680fda9e29b15e7c529dab6e3d46e",
+      "column_index": 1,
+      "column_period_candidates": {
+        "cell_header_path": [
+          "FY2025"
+        ],
+        "column_header_schema": [
+          "FY2025"
+        ],
+        "existing_fact": [
+          "FY2025"
+        ]
+      },
+      "currency": null,
+      "document_id": "aapl_fy2025",
+      "eligibility_class": "non_fact_numeric",
+      "evidence_level": "B",
+      "fact_id": "fact:fb227c06a6d0291caa682ca491b5e974caa717ec31c625eb814b589159f737c6",
+      "failure_reasons": [
+        "binding_status_blocked",
+        "missing_metric_path"
+      ],
+      "header_path": [
+        "2025"
+      ],
+      "logical_table_id": null,
+      "metric_path": [],
+      "normalized_metric": "",
+      "parsed_value": "2025",
+      "pdf_page": 43,
+      "period": "FY2025",
+      "period_type": "annual_duration",
+      "raw_value": "2025",
+      "recoverability_class": "header_or_separator_row",
+      "row_id": "row:e8cc8502161b953a454ed005db9fbeae4a7bb47149e16b86f667f04d3bcc42d6",
+      "row_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "row_role": "separator",
+      "scale": "billion",
+      "source_traceback": {
+        "cell_id": "cell:44d4b6be717492de2f1586016c10e226bf8680fda9e29b15e7c529dab6e3d46e",
+        "document_id": "aapl_fy2025",
+        "fact_id": "fact:fb227c06a6d0291caa682ca491b5e974caa717ec31c625eb814b589159f737c6",
+        "logical_table_id": null,
+        "pdf_page": 43,
+        "row_id": "row:e8cc8502161b953a454ed005db9fbeae4a7bb47149e16b86f667f04d3bcc42d6",
+        "table_fragment_id": "table:ea0aa7988e5fc3b4d0bfbefbd35e7bf83f0c3dd391d91a45a1bb0b4fe18ac1f6"
+      },
+      "table_fragment_id": "table:ea0aa7988e5fc3b4d0bfbefbd35e7bf83f0c3dd391d91a45a1bb0b4fe18ac1f6",
+      "table_period_set": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "value_kind": "currency"
+    }
+  ]
+}

@@ -1,0 +1,1109 @@
+{
+  "table_count": 98,
+  "tables": [
+    {
+      "class_counts": {
+        "eligible_row_only": 12
+      },
+      "document_id": "aapl_fy2025",
+      "fact_count": 12,
+      "missing_metric_count": 0,
+      "missing_period_count": 12,
+      "pdf_page": 25,
+      "table_fragment_id": "table:21f6fd90e1ac0e3cfdb3849324019617dc23f5c21057ab9de57ed4fc785d4243"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 11,
+        "non_fact_numeric": 1
+      },
+      "document_id": "aapl_fy2025",
+      "fact_count": 12,
+      "missing_metric_count": 0,
+      "missing_period_count": 12,
+      "pdf_page": 26,
+      "table_fragment_id": "table:f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 3
+      },
+      "document_id": "aapl_fy2025",
+      "fact_count": 3,
+      "missing_metric_count": 3,
+      "missing_period_count": 0,
+      "pdf_page": 27,
+      "table_fragment_id": "table:60d96702c3d70da2d4d2c1a1fbeae60472c537ac7054ab2a66c3b44b179ae821"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 6
+      },
+      "document_id": "aapl_fy2025",
+      "fact_count": 6,
+      "missing_metric_count": 0,
+      "missing_period_count": 6,
+      "pdf_page": 27,
+      "table_fragment_id": "table:a24ead98b9749a8d419a35cfdb84a8d52f8b88d4ae995e03205494f64611311c"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 2
+      },
+      "document_id": "aapl_fy2025",
+      "fact_count": 2,
+      "missing_metric_count": 2,
+      "missing_period_count": 0,
+      "pdf_page": 43,
+      "table_fragment_id": "table:0047abd2c5de037a6eff1d56f728226a36120b86c9365ec18e885ce830a88dce"
+    },
+    {
+      "class_counts": {
+        "eligible_recoverable": 8,
+        "non_fact_numeric": 2
+      },
+      "document_id": "aapl_fy2025",
+      "fact_count": 10,
+      "missing_metric_count": 2,
+      "missing_period_count": 0,
+      "pdf_page": 43,
+      "table_fragment_id": "table:a4c43c2873dc6c82f075e8d833e482e838ed64ac63e54c647b9a3ff59e2b7428"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 3
+      },
+      "document_id": "aapl_fy2025",
+      "fact_count": 3,
+      "missing_metric_count": 3,
+      "missing_period_count": 0,
+      "pdf_page": 43,
+      "table_fragment_id": "table:ea0aa7988e5fc3b4d0bfbefbd35e7bf83f0c3dd391d91a45a1bb0b4fe18ac1f6"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 2,
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 3,
+      "missing_metric_count": 0,
+      "missing_period_count": 3,
+      "pdf_page": 2,
+      "table_fragment_id": "table:22657ec90fe1003ef67092934621ee9560bbda15d5ad8719ffa21638faad8db0"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 11,
+        "non_fact_numeric": 4
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 15,
+      "missing_metric_count": 0,
+      "missing_period_count": 11,
+      "pdf_page": 10,
+      "table_fragment_id": "table:67822511246053d6b8464bd85f5460dfbab4e397467532986aa1cb0146d58570"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 1,
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 2,
+      "missing_metric_count": 0,
+      "missing_period_count": 2,
+      "pdf_page": 76,
+      "table_fragment_id": "table:21628df58826aff5bba4db351f4f8717cb070f77a8161dd7764aa1b09229448a"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 104,
+      "table_fragment_id": "table:689513c5b4a4a49880875af2585f8886c779a7f3617b40562624206a2650c2d6"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 104,
+      "table_fragment_id": "table:c35b558d71d5be1c0893ce62e43b0c5896bde1f39b4e36d415fb1be70db32f1d"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 3
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 3,
+      "missing_metric_count": 0,
+      "missing_period_count": 3,
+      "pdf_page": 126,
+      "table_fragment_id": "table:25593454cca61c64480100313321b4e456fa616cc0989dedb85a94a6e029f9bf"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 8
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 8,
+      "missing_metric_count": 0,
+      "missing_period_count": 8,
+      "pdf_page": 126,
+      "table_fragment_id": "table:404b8304379ee7fe56fdd4c11626693c90c4f007ad2193e075b8b510286a52a9"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 34
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 34,
+      "missing_metric_count": 0,
+      "missing_period_count": 34,
+      "pdf_page": 128,
+      "table_fragment_id": "table:6552b257824063522ee0971ca3133545ad9d1d1bd808069fa7d31bc19b95759e"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 128,
+      "table_fragment_id": "table:ec5ee37dd67c3ba257e2033da350c955252a34c61259f6c11de83334aee3eb99"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 143,
+      "table_fragment_id": "table:059df72636ae9578a65fca5137d9d8880865bfc26ac587b0e31b55f37730a477"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 143,
+      "table_fragment_id": "table:606a5dd563d682bc89bf1590ab48ae9c8367acc393a8821c1fb7d5820a062ee8"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 143,
+      "table_fragment_id": "table:e7688f6a8f723de9496c85801ef27b69bef4dcfa5c9c8e61086ff92c41f82a33"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 148,
+      "table_fragment_id": "table:009746fa143808144fa3db91012452cb94955eec5f89327578f35dfa2c24b9f7"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 148,
+      "table_fragment_id": "table:20ab85855dbbce37f795ace417fe71e3629c93def8dfc90369594f0bde32d1c0"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 169
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 169,
+      "missing_metric_count": 0,
+      "missing_period_count": 169,
+      "pdf_page": 152,
+      "table_fragment_id": "table:c0ee3fa7d4dbe9b3ed86c4945f4290d4dd2eb4897664b94a80969c3aafff36ff"
+    },
+    {
+      "class_counts": {
+        "eligible_recoverable": 18
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 18,
+      "missing_metric_count": 0,
+      "missing_period_count": 0,
+      "pdf_page": 161,
+      "table_fragment_id": "table:576096c79abb6f86d17c4b6409cd16665720a625fc0221b77d340a1b9714bfeb"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 198,
+      "table_fragment_id": "table:673ead3ce91ec6cc5337b6c6101478dad2771052c7162ac2e2590ad67292f9e2"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 199,
+      "table_fragment_id": "table:59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 199,
+      "table_fragment_id": "table:6a9e23328c2b8ef01e079a956381d640a58c852d398289e87aa49b2c7b0b3fd3"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 10,
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 11,
+      "missing_metric_count": 0,
+      "missing_period_count": 11,
+      "pdf_page": 200,
+      "table_fragment_id": "table:e7df9db601f4ae6102ef9b2128835cacf5c72329f8b0fe727f5312988bc0df9d"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 201,
+      "table_fragment_id": "table:6ec00fa3d0319f449aaf549c56717e2be2db8f5eee82efdcd0a2e7214441f0f0"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 255,
+      "table_fragment_id": "table:2f7532f4d60f1940c0ea4a55ec9a2441c488cd9ee0b1e1bdce2adb6e3855de19"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 255,
+      "table_fragment_id": "table:3ebd76dee673bfbf84dcce27cc9954d960074e12bf53f9ad77b1faa55584d9de"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 9
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 9,
+      "missing_metric_count": 0,
+      "missing_period_count": 9,
+      "pdf_page": 272,
+      "table_fragment_id": "table:36e4e3b4a5d7d84d8a20f47a41d18bfa9334e23594629323d5662198dff917b2"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 272,
+      "table_fragment_id": "table:dad06d8c025baa8aeeba10511b8c83e7cd17cf758ac3aa1f4e9b251cf5cf6c9f"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 1,
+        "non_fact_numeric": 1
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 2,
+      "missing_metric_count": 0,
+      "missing_period_count": 2,
+      "pdf_page": 276,
+      "table_fragment_id": "table:6fef8f170d10958bd5038d56ae2c5fd7d11f5ba70fbf169b182407ee46f53948"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 12
+      },
+      "document_id": "jpm_fy2025",
+      "fact_count": 12,
+      "missing_metric_count": 0,
+      "missing_period_count": 12,
+      "pdf_page": 315,
+      "table_fragment_id": "table:49e5a0b50cceb92138197175ad3faab5638b2c174e98e20ed77b849ee387b8b7"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 2,
+        "non_fact_numeric": 30
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 32,
+      "missing_metric_count": 0,
+      "missing_period_count": 32,
+      "pdf_page": 62,
+      "table_fragment_id": "table:39aefc2b3d27cde2b4b53c71d3abfac973564aefe6fbff7a84b8892bdcc8c276"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 2,
+        "non_fact_numeric": 1
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 3,
+      "missing_metric_count": 0,
+      "missing_period_count": 3,
+      "pdf_page": 63,
+      "table_fragment_id": "table:4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 64,
+      "table_fragment_id": "table:449390bcf7e2fc995ffe009d70590314ff40139de33d136f2b137270196ad03a"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 27
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 27,
+      "missing_metric_count": 0,
+      "missing_period_count": 27,
+      "pdf_page": 78,
+      "table_fragment_id": "table:3ac078a50e266b0c3de200102e6eea9308c166e83ee80f65f95ad303fd05411c"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 12
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 12,
+      "missing_metric_count": 0,
+      "missing_period_count": 12,
+      "pdf_page": 80,
+      "table_fragment_id": "table:e3043f53cb4f3a64f42c1ce59e77ade71d4c45b8dbc85dd6cb88561c20ba4e04"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 80,
+      "table_fragment_id": "table:f6c7ad94ec9e9b7a6b2e4584b2232b64debd4ac403eb8dbc2ecb53d87291ae18"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 1
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 99,
+      "table_fragment_id": "table:4665cb001f15c28fde1317e6b7d1586f19eba9933b18e8d7de9e219a422fd3cd"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 1
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 99,
+      "table_fragment_id": "table:7ee8bd86bf2d6a102761699ad6d70dabf71620eab82b80acc4812e3239770a80"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 3
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 3,
+      "missing_metric_count": 0,
+      "missing_period_count": 3,
+      "pdf_page": 99,
+      "table_fragment_id": "table:c351444757bd8b4be23a816e1901a3c97f41218dae109f16611bd8285a4b71f0"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 1
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 99,
+      "table_fragment_id": "table:edbc39882c85f2fb645209fa723034b89eeb3c8fc7788cbc2b2aef06f7d4b398"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 102,
+      "table_fragment_id": "table:4951470264beb9c1dfe7c262755786c1b14c53d1742a73792a99e43e450be3ea"
+    },
+    {
+      "class_counts": {
+        "eligible_recoverable": 8,
+        "eligible_row_only": 1,
+        "non_fact_numeric": 4
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 13,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 102,
+      "table_fragment_id": "table:59ffd91ea15c3963229ca211df7d63828761f6355ee77d9b85cee59b587118fd"
+    },
+    {
+      "class_counts": {
+        "eligible_recoverable": 18,
+        "non_fact_numeric": 7
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 25,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 102,
+      "table_fragment_id": "table:7b70fa26b825f4ca8a6c8af2d1aae0346a4c3acb51860fb44877a7ffeae0967b"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 1
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 102,
+      "table_fragment_id": "table:ead4eed82a458577e8187a94e8f6311825543fa646840159f72cc52dd39adf3d"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 33
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 33,
+      "missing_metric_count": 0,
+      "missing_period_count": 33,
+      "pdf_page": 116,
+      "table_fragment_id": "table:2869549bb79758d3aeffaf062ae5aed45b1676b0d98d05b4aed44482bcf48e1d"
+    },
+    {
+      "class_counts": {
+        "eligible_recoverable": 9,
+        "non_fact_numeric": 4
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 13,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 118,
+      "table_fragment_id": "table:8f417bc9d4f723137973d7d5e5c952594307981eb0e45b2866d4a7e5e11940a2"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 2
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 2,
+      "missing_metric_count": 0,
+      "missing_period_count": 2,
+      "pdf_page": 118,
+      "table_fragment_id": "table:9b17c98732f1153422a5b5cbaf8fad697f18b3fa1c7da1f76c31b82f2487510e"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 118,
+      "table_fragment_id": "table:dd20265ddef36bf9442116ba1021d7d6bf5964fba11264ee229869b078081569"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 2,
+        "non_fact_numeric": 1
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 3,
+      "missing_metric_count": 0,
+      "missing_period_count": 3,
+      "pdf_page": 120,
+      "table_fragment_id": "table:f540df9c36017d5ed3ed60519257ef7d2c1c68e82e5c637a8a6a4521d0fad462"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 74
+      },
+      "document_id": "ko_fy2025",
+      "fact_count": 74,
+      "missing_metric_count": 0,
+      "missing_period_count": 74,
+      "pdf_page": 120,
+      "table_fragment_id": "table:f96ff640e6c277c3832f3a20c006502007197bf68230e29d199f74b39be74a3d"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 32
+      },
+      "document_id": "msft_fy2025",
+      "fact_count": 32,
+      "missing_metric_count": 0,
+      "missing_period_count": 32,
+      "pdf_page": 58,
+      "table_fragment_id": "table:946aa52947a6143b9212721de37f856ef30d223f893d64e15a59eb0b1084687a"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 4
+      },
+      "document_id": "msft_fy2025",
+      "fact_count": 4,
+      "missing_metric_count": 3,
+      "missing_period_count": 1,
+      "pdf_page": 80,
+      "table_fragment_id": "table:ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 13
+      },
+      "document_id": "msft_fy2025",
+      "fact_count": 13,
+      "missing_metric_count": 12,
+      "missing_period_count": 1,
+      "pdf_page": 80,
+      "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 4
+      },
+      "document_id": "msft_fy2025",
+      "fact_count": 4,
+      "missing_metric_count": 3,
+      "missing_period_count": 1,
+      "pdf_page": 80,
+      "table_fragment_id": "table:f79e79eede2810c9b7ff5a4bb1332eb096c3ef2f46f2030a86416f24e1d65260"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 5
+      },
+      "document_id": "msft_fy2025",
+      "fact_count": 5,
+      "missing_metric_count": 0,
+      "missing_period_count": 5,
+      "pdf_page": 81,
+      "table_fragment_id": "table:4a4e7ab7af80d4c6079221084a7e6685cb7d9b049c29130d20aa2f54ff74a122"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 1,
+        "non_fact_numeric": 1
+      },
+      "document_id": "nvda_fy2025",
+      "fact_count": 2,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 36,
+      "table_fragment_id": "table:23a799b88884f9e17757d939f0d3a718cd4991ae85cacbfc0864a866136007d4"
+    },
+    {
+      "class_counts": {
+        "eligible_recoverable": 1,
+        "non_fact_numeric": 2
+      },
+      "document_id": "nvda_fy2025",
+      "fact_count": 3,
+      "missing_metric_count": 0,
+      "missing_period_count": 0,
+      "pdf_page": 36,
+      "table_fragment_id": "table:4db14dc4f56a9b7295cf580b5aa0ca8068c45e5a748509e3394774a1833f00a4"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 1,
+        "non_fact_numeric": 1
+      },
+      "document_id": "nvda_fy2025",
+      "fact_count": 2,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 38,
+      "table_fragment_id": "table:04043cdde646cccbb1978d8772d7a45c13fdc4ed07fccd3cff8e7d97579ba894"
+    },
+    {
+      "class_counts": {
+        "eligible_recoverable": 1,
+        "non_fact_numeric": 2
+      },
+      "document_id": "nvda_fy2025",
+      "fact_count": 3,
+      "missing_metric_count": 0,
+      "missing_period_count": 0,
+      "pdf_page": 38,
+      "table_fragment_id": "table:a6902330576d9fb7a8de66d73f281715343bf98e568add26f5e1841137bad4b3"
+    },
+    {
+      "class_counts": {
+        "eligible_recoverable": 26,
+        "non_fact_numeric": 2
+      },
+      "document_id": "nvda_fy2025",
+      "fact_count": 28,
+      "missing_metric_count": 0,
+      "missing_period_count": 0,
+      "pdf_page": 132,
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 2
+      },
+      "document_id": "nvda_fy2025",
+      "fact_count": 2,
+      "missing_metric_count": 0,
+      "missing_period_count": 2,
+      "pdf_page": 163,
+      "table_fragment_id": "table:00219bd304bbaa58ff6f6b06831a50731a66ce39867abce85a556b3d6d265b4d"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 11
+      },
+      "document_id": "nvda_fy2025",
+      "fact_count": 11,
+      "missing_metric_count": 0,
+      "missing_period_count": 11,
+      "pdf_page": 173,
+      "table_fragment_id": "table:0ac279273e2ec83e44cfb636f44fc8fafc9914484570e7eeb816bb100340578c"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 1
+      },
+      "document_id": "pfe_fy2024",
+      "fact_count": 1,
+      "missing_metric_count": 0,
+      "missing_period_count": 1,
+      "pdf_page": 47,
+      "table_fragment_id": "table:2cc473a35ef3f8ade738625124bbaba88356633259371e38b0163f0c12ea2ad6"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "pfe_fy2024",
+      "fact_count": 1,
+      "missing_metric_count": 1,
+      "missing_period_count": 0,
+      "pdf_page": 60,
+      "table_fragment_id": "table:a8055121fa63f48f32fb0fa7fd624ea6541155fef3395d279e4de69bfc94c3de"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 10
+      },
+      "document_id": "pfe_fy2024",
+      "fact_count": 10,
+      "missing_metric_count": 10,
+      "missing_period_count": 0,
+      "pdf_page": 61,
+      "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 6
+      },
+      "document_id": "pfe_fy2024",
+      "fact_count": 6,
+      "missing_metric_count": 6,
+      "missing_period_count": 0,
+      "pdf_page": 85,
+      "table_fragment_id": "table:457ee024e7517c080544e4e19cf39456d471c1b2f7db5fb0b75218373f6f1973"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 18
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "fact_count": 18,
+      "missing_metric_count": 0,
+      "missing_period_count": 18,
+      "pdf_page": 45,
+      "table_fragment_id": "table:302d39fa3548de9c6d5fdf1f642918bb501b638005eaada057a5be10fd109bbd"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 9
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "fact_count": 9,
+      "missing_metric_count": 0,
+      "missing_period_count": 9,
+      "pdf_page": 45,
+      "table_fragment_id": "table:4c329d7bc38471b47c3dad6a48e55457edec75f8f0ec5d7c9cabadbce0edd582"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 12
+      },
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "fact_count": 12,
+      "missing_metric_count": 0,
+      "missing_period_count": 12,
+      "pdf_page": 45,
+      "table_fragment_id": "table:cb3250602f05e01215c71b58292427994786185e6a786f1d78cb631236b08021"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "tsla_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 1,
+      "missing_period_count": 0,
+      "pdf_page": 60,
+      "table_fragment_id": "table:3b8e16909c385eea5c50050e410eba4afc6f89ff665b26d7c1be358748469b50"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "tsla_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 1,
+      "missing_period_count": 0,
+      "pdf_page": 60,
+      "table_fragment_id": "table:c610c44763ff2a919a7bd15cc316406e998bf82e0860cd9e10dee580b508b1d2"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 46
+      },
+      "document_id": "tsla_fy2025",
+      "fact_count": 46,
+      "missing_metric_count": 0,
+      "missing_period_count": 46,
+      "pdf_page": 68,
+      "table_fragment_id": "table:0b9beb9842caead53ac5b7e2ec305537b737ee6a151563ed41d3eec9d0456531"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 12,
+        "non_fact_numeric": 2
+      },
+      "document_id": "tsla_fy2025",
+      "fact_count": 14,
+      "missing_metric_count": 0,
+      "missing_period_count": 14,
+      "pdf_page": 69,
+      "table_fragment_id": "table:1bd9dcd91a7199d74c0b6b7a0e9ad749b35d9f565ee927cc91fda6c70717da9b"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 2
+      },
+      "document_id": "tsla_fy2025",
+      "fact_count": 2,
+      "missing_metric_count": 0,
+      "missing_period_count": 2,
+      "pdf_page": 69,
+      "table_fragment_id": "table:bb88700695f7618247f3aea95f40f7d35eff8f0f3786c7509c988905d5f6695e"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 3
+      },
+      "document_id": "tsla_fy2025",
+      "fact_count": 3,
+      "missing_metric_count": 3,
+      "missing_period_count": 0,
+      "pdf_page": 69,
+      "table_fragment_id": "table:e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 3
+      },
+      "document_id": "tsla_fy2025",
+      "fact_count": 3,
+      "missing_metric_count": 3,
+      "missing_period_count": 0,
+      "pdf_page": 69,
+      "table_fragment_id": "table:f1b0e9770f9618fd8c6e5abc858cf37e9701f666eae7f9875e39790bb66bd895"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 59,
+        "non_fact_numeric": 9
+      },
+      "document_id": "tsla_fy2025",
+      "fact_count": 68,
+      "missing_metric_count": 0,
+      "missing_period_count": 68,
+      "pdf_page": 70,
+      "table_fragment_id": "table:ff78621b5b76c2e142047c7b7da4f7c1617945f4544eb19b77d66d4a5bf721ae"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 2
+      },
+      "document_id": "tsla_fy2025",
+      "fact_count": 2,
+      "missing_metric_count": 2,
+      "missing_period_count": 0,
+      "pdf_page": 78,
+      "table_fragment_id": "table:688d0eba067093a8fdf32fdbf39b11de357138b2da291eb5520fa218dd796647"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 2
+      },
+      "document_id": "tsla_fy2025",
+      "fact_count": 2,
+      "missing_metric_count": 0,
+      "missing_period_count": 2,
+      "pdf_page": 108,
+      "table_fragment_id": "table:4cb45a96f6421d71673e7de673aab443c5e54e33e22715891b57dbda116ef2f6"
+    },
+    {
+      "class_counts": {
+        "eligible_recoverable": 5,
+        "eligible_row_only": 12
+      },
+      "document_id": "tsla_fy2025",
+      "fact_count": 17,
+      "missing_metric_count": 0,
+      "missing_period_count": 12,
+      "pdf_page": 108,
+      "table_fragment_id": "table:74f8361f46e991b506e3cc0f5d63bac95b48930051347309864342a589bbde04"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 37,
+        "non_fact_numeric": 1
+      },
+      "document_id": "tsla_fy2025",
+      "fact_count": 38,
+      "missing_metric_count": 0,
+      "missing_period_count": 38,
+      "pdf_page": 112,
+      "table_fragment_id": "table:2d8595348498723c2e4253382e92f7a54bd7f1f2e594cc469756f6ac404aac05"
+    },
+    {
+      "class_counts": {
+        "eligible_recoverable": 1,
+        "eligible_row_only": 31
+      },
+      "document_id": "tsla_fy2025",
+      "fact_count": 32,
+      "missing_metric_count": 0,
+      "missing_period_count": 31,
+      "pdf_page": 135,
+      "table_fragment_id": "table:302e527db8e77518e09b875415c81dd8b767bdb5f78018033a32b2d594c68715"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 3,
+        "non_fact_numeric": 2
+      },
+      "document_id": "v_fy2025",
+      "fact_count": 5,
+      "missing_metric_count": 2,
+      "missing_period_count": 3,
+      "pdf_page": 55,
+      "table_fragment_id": "table:a2b6b99ae6d9e7df75bafbe29c0b2b5dbbdfca535652b3580561fc8e72fbbd6b"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 3
+      },
+      "document_id": "v_fy2025",
+      "fact_count": 3,
+      "missing_metric_count": 3,
+      "missing_period_count": 0,
+      "pdf_page": 64,
+      "table_fragment_id": "table:693a68fb4af1853d8854aea73102d7e66cf92c2a0ed6bbd607196366ade59493"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "v_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 1,
+      "missing_period_count": 0,
+      "pdf_page": 74,
+      "table_fragment_id": "table:df89ce2c4fbef45b7eb45a425c72c80aea38b38bcbaa7e6efed7ada17a4d7c37"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 4,
+        "non_fact_numeric": 1
+      },
+      "document_id": "v_fy2025",
+      "fact_count": 5,
+      "missing_metric_count": 1,
+      "missing_period_count": 4,
+      "pdf_page": 75,
+      "table_fragment_id": "table:047c6a56c7f09d391ac993d738c97b84bae5339ad9a1873ff5d6dd98ff693439"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "v_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 1,
+      "missing_period_count": 0,
+      "pdf_page": 76,
+      "table_fragment_id": "table:f6edfbc307c5a0b39b9db3ec6df8fb232ead8dff268585bf2d20236bfd6c8d27"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "v_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 1,
+      "missing_period_count": 0,
+      "pdf_page": 88,
+      "table_fragment_id": "table:1b8d2cad1c8adbc4bc63dbcbb528c862e53e3f11c96167fe1eb194033bd21886"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "v_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 1,
+      "missing_period_count": 0,
+      "pdf_page": 88,
+      "table_fragment_id": "table:3e1604d9a66e7c770786b54a6b20ed94fefd21e3b18d2af6bcd9455c7a7638db"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "v_fy2025",
+      "fact_count": 1,
+      "missing_metric_count": 1,
+      "missing_period_count": 0,
+      "pdf_page": 88,
+      "table_fragment_id": "table:eccc8499dcfda60d507d415e218f6c4af978f9a261dbf1ad61142936e0c8adbd"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 3
+      },
+      "document_id": "v_fy2025",
+      "fact_count": 3,
+      "missing_metric_count": 3,
+      "missing_period_count": 0,
+      "pdf_page": 95,
+      "table_fragment_id": "table:40eb0fb4af8a7149eeaa5056da2cc9906149236afed1aa4706dd2f6e2edda519"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 3
+      },
+      "document_id": "v_fy2025",
+      "fact_count": 3,
+      "missing_metric_count": 3,
+      "missing_period_count": 0,
+      "pdf_page": 95,
+      "table_fragment_id": "table:b532260ec69578426ada4edd285ca80a371c9481c2664cab4361335942287e9f"
+    },
+    {
+      "class_counts": {
+        "eligible_row_only": 11
+      },
+      "document_id": "v_fy2025",
+      "fact_count": 11,
+      "missing_metric_count": 0,
+      "missing_period_count": 11,
+      "pdf_page": 95,
+      "table_fragment_id": "table:c40c7ef2a0ccba555ff903234b4aab98d263f5be3bbc088ad593091a6a14ce59"
+    },
+    {
+      "class_counts": {
+        "non_fact_numeric": 1
+      },
+      "document_id": "walmart_fy2026_pdf_dev",
+      "fact_count": 1,
+      "missing_metric_count": 1,
+      "missing_period_count": 0,
+      "pdf_page": 54,
+      "table_fragment_id": "table:d0821896d1666fbeac3300ab1707a86c7fa331284cfcfe3e2026b44c22feb0c9"
+    }
+  ]
+}

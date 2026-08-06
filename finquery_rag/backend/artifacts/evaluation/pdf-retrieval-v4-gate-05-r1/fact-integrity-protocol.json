@@ -1,0 +1,14 @@
+{
+  "classification_only": true,
+  "code_commit": "2af9525",
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "expected_value_reads": 0,
+  "fact_mutations": 0,
+  "gate": "pdf_retrieval_v4_gate_05_r1",
+  "gold_reads": 0,
+  "index_builds": 0,
+  "input_gate": "pdf_retrieval_v4_gate_05",
+  "parameter_scan": false,
+  "question_reads": 0,
+  "retrieval_runs": 0
+}
