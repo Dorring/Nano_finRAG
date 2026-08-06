@@ -1,0 +1,23 @@
+{
+  "candidate_generation_recall": 1.0,
+  "candidate_pair_count": 36,
+  "false_soft_link_count": 0,
+  "generalization_established": false,
+  "integrity": {
+    "cell_loss_count": 0,
+    "fact_loss_count": 0,
+    "fragment_loss_count": 0,
+    "identity_conflict_count": 0,
+    "logical_table_modified": false,
+    "merge_applied": false,
+    "row_loss_count": 0,
+    "source_traceback_rate": 1.0
+  },
+  "known_positive_covered_count": 2,
+  "known_positive_recall": 1.0,
+  "merge_applied_count": 0,
+  "positive_continuation_count": 2,
+  "prediction_replay_hash": "db6de8d41d90a85d015583cf0d1a6dfe6bb1f10a48876d8d02e800cdbd35c15f",
+  "review_label_reads_after_seal": 1,
+  "soft_continuation_link_count": 2
+}

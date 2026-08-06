@@ -1,6 +1,23 @@
 {
-  "automatic_blocked_ambiguous_count": 14,
-  "automatic_do_not_merge_count": 22,
   "automatic_merge_count": 0,
-  "candidate_pair_count": 36
+  "blocked_ambiguous_count": 14,
+  "candidate_generation_recall": 1.0,
+  "candidate_pair_count": 36,
+  "currency_inheritance_accuracy": null,
+  "do_not_merge_count": 22,
+  "false_header_inheritance": 0,
+  "false_merge_count": 0,
+  "false_scale_inheritance": 0,
+  "header_inheritance_accuracy": null,
+  "merge_f1": null,
+  "merge_precision": null,
+  "merge_recall": 0.0,
+  "merge_true_positive_count": 0,
+  "missed_continuation_count": 2,
+  "negative_candidate_count": 34,
+  "positive_continuation_count": 2,
+  "review_label_reads_after_seal": 1,
+  "review_pending_count": 0,
+  "reviewed_count": 36,
+  "scale_inheritance_accuracy": null
 }

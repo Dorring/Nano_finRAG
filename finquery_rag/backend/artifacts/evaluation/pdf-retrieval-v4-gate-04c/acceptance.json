@@ -1,0 +1,14 @@
+{
+  "decision": "pending_posthoc_scoring",
+  "gate": "pdf_retrieval_v4_gate_04c",
+  "gate_05_blocked": false,
+  "index_builds": 0,
+  "merge_applied": false,
+  "mineru_reruns": 0,
+  "next_gate": "score_continuation_shadow",
+  "ocr_calls": 0,
+  "prediction_sealed": true,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "retrieval_runs": 0
+}
