@@ -142,6 +142,10 @@ class StructuralGoldMapper:
     def mapped_candidate_count(self) -> int:
         return len(self._views_by_candidate_key)
 
+    def views_for_candidate(self, candidate_key: str) -> list[dict[str, Any]]:
+        """Return all V4 structural views strictly mapped to a candidate key."""
+        return list(self._views_by_candidate_key.get(str(candidate_key), []))
+
     def universe_candidate_map_records(self) -> list[dict[str, Any]]:
         """Generate universe-candidate-map records for all views."""
         records: list[dict[str, Any]] = []

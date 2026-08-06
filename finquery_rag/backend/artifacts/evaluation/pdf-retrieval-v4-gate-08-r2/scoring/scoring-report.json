@@ -1,0 +1,155 @@
+{
+  "a_class_recovered": 42,
+  "b_class_recovered": 5,
+  "b_class_total": 22,
+  "candidate_direct_recall_b_class": "5/22",
+  "combined_strict_recall": "47/80",
+  "combined_strict_recall_a_plus_b": "47/80",
+  "coverage_class_counts": {
+    "recovered_strict": 42,
+    "strict_mapped_not_retrieved": 22,
+    "structurally_absent": 16
+  },
+  "existing_structured_recall": "25/80",
+  "gate": "pdf_retrieval_v4_gate_08_r2",
+  "gold_reads_before_seal": 0,
+  "gold_source_count": 80,
+  "governance_reads_before_seal": 0,
+  "multi_evidence": {
+    "complete_evidence_availability": "6/16",
+    "multi_evidence_case_count": 16,
+    "records": [
+      {
+        "case_id": "aapl_fy2025_006",
+        "complete_evidence_available": true,
+        "gold_in_combined_pool": 2,
+        "gold_in_slot_pools": 2,
+        "gold_source_count": 2,
+        "required_slot_count": 2
+      },
+      {
+        "case_id": "aapl_fy2025_007",
+        "complete_evidence_available": false,
+        "gold_in_combined_pool": 1,
+        "gold_in_slot_pools": 1,
+        "gold_source_count": 2,
+        "required_slot_count": 2
+      },
+      {
+        "case_id": "jpm_fy2025_006",
+        "complete_evidence_available": true,
+        "gold_in_combined_pool": 2,
+        "gold_in_slot_pools": 2,
+        "gold_source_count": 2,
+        "required_slot_count": 2
+      },
+      {
+        "case_id": "jpm_fy2025_007",
+        "complete_evidence_available": false,
+        "gold_in_combined_pool": 1,
+        "gold_in_slot_pools": 1,
+        "gold_source_count": 2,
+        "required_slot_count": 2
+      },
+      {
+        "case_id": "ko_fy2025_006",
+        "complete_evidence_available": false,
+        "gold_in_combined_pool": 0,
+        "gold_in_slot_pools": 2,
+        "gold_source_count": 2,
+        "required_slot_count": 2
+      },
+      {
+        "case_id": "ko_fy2025_007",
+        "complete_evidence_available": true,
+        "gold_in_combined_pool": 2,
+        "gold_in_slot_pools": 2,
+        "gold_source_count": 2,
+        "required_slot_count": 2
+      },
+      {
+        "case_id": "msft_fy2025_006",
+        "complete_evidence_available": true,
+        "gold_in_combined_pool": 2,
+        "gold_in_slot_pools": 2,
+        "gold_source_count": 2,
+        "required_slot_count": 2
+      },
+      {
+        "case_id": "msft_fy2025_007",
+        "complete_evidence_available": true,
+        "gold_in_combined_pool": 2,
+        "gold_in_slot_pools": 2,
+        "gold_source_count": 2,
+        "required_slot_count": 2
+      },
+      {
+        "case_id": "nvda_fy2025_006",
+        "complete_evidence_available": false,
+        "gold_in_combined_pool": 0,
+        "gold_in_slot_pools": 0,
+        "gold_source_count": 2,
+        "required_slot_count": 2
+      },
+      {
+        "case_id": "nvda_fy2025_007",
+        "complete_evidence_available": false,
+        "gold_in_combined_pool": 1,
+        "gold_in_slot_pools": 2,
+        "gold_source_count": 2,
+        "required_slot_count": 2
+      },
+      {
+        "case_id": "pfe_fy2024_006",
+        "complete_evidence_available": true,
+        "gold_in_combined_pool": 2,
+        "gold_in_slot_pools": 2,
+        "gold_source_count": 2,
+        "required_slot_count": 2
+      },
+      {
+        "case_id": "pfe_fy2024_007",
+        "complete_evidence_available": false,
+        "gold_in_combined_pool": 1,
+        "gold_in_slot_pools": 1,
+        "gold_source_count": 2,
+        "required_slot_count": 2
+      },
+      {
+        "case_id": "tsla_fy2025_006",
+        "complete_evidence_available": false,
+        "gold_in_combined_pool": 0,
+        "gold_in_slot_pools": 0,
+        "gold_source_count": 2,
+        "required_slot_count": 2
+      },
+      {
+        "case_id": "tsla_fy2025_007",
+        "complete_evidence_available": false,
+        "gold_in_combined_pool": 1,
+        "gold_in_slot_pools": 2,
+        "gold_source_count": 2,
+        "required_slot_count": 2
+      },
+      {
+        "case_id": "v_fy2025_006",
+        "complete_evidence_available": false,
+        "gold_in_combined_pool": 1,
+        "gold_in_slot_pools": 2,
+        "gold_source_count": 2,
+        "required_slot_count": 2
+      },
+      {
+        "case_id": "v_fy2025_007",
+        "complete_evidence_available": false,
+        "gold_in_combined_pool": 1,
+        "gold_in_slot_pools": 2,
+        "gold_source_count": 2,
+        "required_slot_count": 2
+      }
+    ]
+  },
+  "prediction_count": 72,
+  "prediction_seal_verified": true,
+  "raw_full_pool_recall": "31/80"
+}

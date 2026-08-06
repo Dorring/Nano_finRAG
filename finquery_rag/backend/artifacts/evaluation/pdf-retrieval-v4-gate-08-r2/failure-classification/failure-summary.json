@@ -1,0 +1,26 @@
+{
+  "b_class_total": 22,
+  "failure_stage_counts": {
+    "candidate_not_in_any_top50": 11,
+    "candidate_rank_41_to_50": 3,
+    "multi_slot_budget_truncated": 3,
+    "recovered": 5
+  },
+  "gate": "pdf_retrieval_v4_gate_08_r2",
+  "primary_failure_stages": [
+    {
+      "count": 11,
+      "stage": "candidate_not_in_any_top50"
+    },
+    {
+      "count": 3,
+      "stage": "candidate_rank_41_to_50"
+    },
+    {
+      "count": 3,
+      "stage": "multi_slot_budget_truncated"
+    }
+  ],
+  "recovered": 5,
+  "unrecovered": 17
+}

@@ -1,0 +1,10 @@
+{
+  "b_class_recovered": 5,
+  "b_class_still_missing": 17,
+  "b_class_total": 22,
+  "current_gate": "pdf_retrieval_v4_gate_08_r2",
+  "decision": "candidate_aligned_direct_retrieval_insufficient",
+  "gate_passed": false,
+  "next_gate": "gate_08_r1_2_independent_structural_presence_audit",
+  "production_switch_allowed": false
+}
