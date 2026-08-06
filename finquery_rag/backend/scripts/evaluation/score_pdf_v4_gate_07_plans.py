@@ -58,6 +58,7 @@ def main() -> int:
 
     task_ok = validation_ok = operation_ok = operand_ok = period_ok = multi_ok = 0
     raw_protection = narrative_leak = unsupported_structured = bucket_recall = comparison_recall = 0
+    bucket_total = comparison_total = 0
     no_answer_outcome = soft_expansion = 0
     errors: list[dict[str, object]] = []
     confusion = Counter()
@@ -92,9 +93,11 @@ def main() -> int:
             unsupported_structured += int(bool(route_types - {"raw_production"}))
         has_bucket = any(slot.get("bucket_label") for slot in plan.get("operand_slots", []))
         if has_bucket:
+            bucket_total += 1
             bucket_recall += int("bucket_fact" in route_types)
         has_comparison = "comparison_fact" in plan.get("evidence_shapes", [])
         if has_comparison:
+            comparison_total += 1
             comparison_recall += int("comparison_fact" in route_types)
         no_answer_outcome += int(actual_type == "no_answer")
         soft_expansion += int(any(plan.get("constraints", {}).get(k) for k in ("soft_continuation_expansion", "follow_soft_link", "merge_neighbor_table", "inherit_previous_header")))
@@ -118,8 +121,8 @@ def main() -> int:
         "raw_protection_coverage": _ratio(raw_protection, total),
         "narrative_structured_leakage": narrative_leak,
         "unsupported_structured_route": unsupported_structured,
-        "bucket_route_recall": bucket_recall,
-        "comparison_route_recall": comparison_recall,
+        "bucket_route_recall": _ratio(bucket_recall, bucket_total),
+        "comparison_route_recall": _ratio(comparison_recall, comparison_total),
         "no_answer_outcome_predictions": no_answer_outcome,
         "soft_continuation_expansion_count": soft_expansion,
         "blocked_plan_count": sum(by_case[c]["plan"].get("plan_status") == "blocked" for c in by_case),
