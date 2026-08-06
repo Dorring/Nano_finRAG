@@ -1,0 +1,38 @@
+{
+  "answer_generation_calls": 0,
+  "code_commit": "c9055b6",
+  "concept_registry_sha256": "b8eb2206b8dc8fe1fa9ca0f6735a7b90f39d22e397497a14046296d12de2309f",
+  "document_scope_sha256": "404ca375f757e92350950f4d1651dbdeb05a0ad593f9ca142dc8d7d928a6d76c",
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "forbidden_inputs": [
+    "benchmark-governance.jsonl",
+    "labels.golden.jsonl",
+    "gold_source",
+    "expected_value",
+    "reference_answer",
+    "evidence-family-map.json",
+    "runtime_indexes"
+  ],
+  "gate": "pdf_retrieval_v4_gate_07",
+  "gate2_prediction_seal_sha256": "0075a2c601ae37079d58d7e8038e1c0d4906cc638879c09ed8aa5f340921dc8b",
+  "gate2_router_inputs": [
+    "question_text",
+    "document_scope"
+  ],
+  "index_reads": 0,
+  "index_type_manifest_sha256": "986ea373cd10d5b8ef834e98308f50c5a5acae3782b5bf4411fe6431597cf82d",
+  "parameter_scan": false,
+  "per_query_oracle": false,
+  "plan_version": "pdf-v4-query-plan-v1",
+  "prediction_inputs": [
+    "question_text",
+    "document_scope",
+    "gate2_runtime_router",
+    "concept_registry"
+  ],
+  "production_index_writes": 0,
+  "questions_sha256": "fd3d9df48c642bbace9b114ca43461dae1717cab94d7fe6d12ffb95bf3ffe4f0",
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "temporal_schema_sha256": "cf99b7ceb951fbc3d3b2fbc0d11c699f0292501d58a4761c8ac2adeaeb2b0f2c"
+}

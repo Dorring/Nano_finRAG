@@ -1,0 +1,18 @@
+{
+  "answer_generation_calls": 0,
+  "decision": "v4_query_planner_passed",
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "gate": "pdf_retrieval_v4_gate_07",
+  "gate_passed": true,
+  "index_reads": 0,
+  "next_gate": "hierarchical_retrieval_pool_gate",
+  "no_answer_outcome_predictions": 0,
+  "production_default_config_modified": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "runtime_gold_reads": 0,
+  "runtime_governance_reads": 0,
+  "soft_continuation_expansions": 0
+}

@@ -1,0 +1,20 @@
+{
+  "blocked_plan_count": 0,
+  "bucket_route_recall": "0/0",
+  "calculation_operation": "11/11",
+  "comparison_route_recall": "9/9",
+  "multi_source_plan_recall": "16/16",
+  "narrative_structured_leakage": 0,
+  "no_answer_outcome_predictions": 0,
+  "operand_count_exact": "72/72",
+  "operation_exact": "72/72",
+  "period_set_exact": "72/72",
+  "plan_generation_success": "72/72",
+  "plan_validation_pass_rate": "72/72",
+  "raw_protection_coverage": "72/72",
+  "required_route_coverage": "72/72",
+  "soft_continuation_expansion_count": 0,
+  "task_type_consistency": "72/72",
+  "unresolved_plan_count": 0,
+  "unsupported_structured_route": 0
+}
