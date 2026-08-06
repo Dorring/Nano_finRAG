@@ -1,0 +1,16 @@
+{
+  "answer_generation_calls": 0,
+  "calculator_calls": 0,
+  "gold_reads_before_seal": 0,
+  "governance_reads_before_seal": 0,
+  "index_reads_before_seal": 72,
+  "parameter_scan": false,
+  "per_query_oracle": false,
+  "prediction_count": 72,
+  "prediction_hash": "4b47135fd86f4112f84080faf7e84b7412c31efc8853aa7890bf902933a3983f",
+  "protocol_hash": "ffd6020def801a4b78dc452ee5f26ae63c4e4fb010f782132028b8a6b62bf3ce",
+  "reference_answer_reads_before_seal": 0,
+  "reranker_calls": 0,
+  "retrieval_runs": 72,
+  "sealed": true
+}

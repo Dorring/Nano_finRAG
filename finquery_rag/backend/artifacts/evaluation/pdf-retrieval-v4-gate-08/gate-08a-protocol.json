@@ -1,0 +1,32 @@
+{
+  "answer_generation_calls": 0,
+  "artifact_seal_commit": "working-tree",
+  "authoritative_metrics": {
+    "bm25_source_recall_at_200": 37,
+    "dense_source_recall_at_200": 14,
+    "raw_full_pool_recall": "score_after_prediction_seal",
+    "rrf_source_recall_at_40": 20
+  },
+  "calculator_calls": 0,
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "forbidden_reads": [
+    "labels.golden.jsonl",
+    "benchmark-governance.jsonl",
+    "gold_source",
+    "expected_value",
+    "reference_answer"
+  ],
+  "gate": "pdf_retrieval_v4_gate_08a",
+  "implementation_commit": "working-tree",
+  "parameter_scan": false,
+  "per_query_oracle": false,
+  "prediction_reads": [
+    "frozen_gate_0_production_stage_replay"
+  ],
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "replay_sha256": "f074755d1fca67b1402f2e6f6e2680ec65d1d855ad3579ce85a169ff99d3191a",
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "schema": "pdf-retrieval-v4/gate-08a/raw-parity/v1"
+}

@@ -1,0 +1,26 @@
+{
+  "calculation_multi_operand": {
+    "combined": 11,
+    "gold": 22,
+    "raw": 7,
+    "structured": 9
+  },
+  "multi_metric_comparison": {
+    "combined": 4,
+    "gold": 10,
+    "raw": 4,
+    "structured": 2
+  },
+  "no_answer": {
+    "combined": 0,
+    "gold": 0,
+    "raw": 0,
+    "structured": 0
+  },
+  "table_single_fact": {
+    "combined": 27,
+    "gold": 48,
+    "raw": 20,
+    "structured": 14
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "answer_generation_calls": 0,
+  "artifact_seal_commit": "working-tree",
+  "budgets": {
+    "atomic_slot_k": 20,
+    "bucket_slot_k": 10,
+    "comparison_slot_k": 10,
+    "local_row_pool_cap": 40,
+    "local_rows_bm25_k": 5,
+    "local_rows_dense_k": 5,
+    "rrf_k": 60,
+    "section_bm25_k": 20,
+    "section_dense_k": 20,
+    "section_fused_k": 10,
+    "structured_strict_pool_k": 40,
+    "table_bm25_k": 20,
+    "table_dense_k": 20,
+    "table_fused_k": 10
+  },
+  "calculator_calls": 0,
+  "embedding_model": "all-MiniLM-L6-v2",
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "forbidden_inputs": [
+    "labels.golden.jsonl",
+    "benchmark-governance.jsonl",
+    "evidence-family-map.json",
+    "expected_value",
+    "reference_answer",
+    "original_final_hit_identity"
+  ],
+  "gate": "pdf_retrieval_v4_gate_08b",
+  "gold_reads_before_seal": 0,
+  "governance_reads_before_seal": 0,
+  "implementation_commit": "working-tree",
+  "input_hashes": {
+    "plans": "e1c6e5af104ebda3687c2844fa8549d00b3b89eb649d369f92fb1504920de13f",
+    "raw_parity": "d40fbfd82d845d62caee1ea892c2d4fd84275509220940335760c7648c7b8756"
+  },
+  "parameter_scan": false,
+  "per_query_oracle": false,
+  "prediction_inputs": [
+    "question_text_in_sealed_plan",
+    "document_scope",
+    "gate_07_query_plan",
+    "gate_06_r2_shadow_index",
+    "gate_0_raw_replay",
+    "production_candidate_store_identity_only"
+  ],
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "raw_protection": "raw_full_pool_prefix_unchanged_plus_structured_residual",
+  "reference_answer_reads_before_seal": 0,
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "rrf": {
+    "bm25_weight": 1,
+    "dense_weight": 1,
+    "k": 60
+  },
+  "schema": "pdf-retrieval-v4/gate-08/prediction/v1",
+  "soft_continuation_expansion": false
+}

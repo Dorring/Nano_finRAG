@@ -1,0 +1,13 @@
+{
+  "both_gold": 14,
+  "combined_raw_protected_pool_recall": "42/80",
+  "gold_source_count": 80,
+  "raw_full_pool_recall": "31/80",
+  "raw_gold_loss": 0,
+  "raw_gold_retained": "31/31",
+  "raw_only_gold": 17,
+  "record_level": true,
+  "still_missing_gold": 38,
+  "structured_residual_gold_gain": 11,
+  "structured_strict_source_recall": "25/80"
+}
