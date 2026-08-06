@@ -1,0 +1,41 @@
+{
+  "answer_generation_calls": 0,
+  "code_commit": "gate06-working-tree",
+  "dense_model_config": {
+    "device": "cpu",
+    "embedding_model": "all-MiniLM-L6-v2",
+    "embedding_provider": "sentence-transformers",
+    "normalization": "unit_cosine",
+    "pooling": "model_default",
+    "precision": "float32",
+    "revision": "local_cached_model",
+    "sentence_transformers_version": "5.2.0",
+    "torch_version": "2.9.1+cu128"
+  },
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "expected_value_reads": 0,
+  "gate": "pdf_retrieval_v4_gate_06",
+  "input_gate": "pdf_retrieval_v4_gate_05",
+  "parameter_scan": false,
+  "per_query_oracle": false,
+  "physical_cross_page_merge": false,
+  "production_bm25_semantics": {
+    "implementation": "sqlite_fts5",
+    "lowercase": true,
+    "max_match_tokens": 32,
+    "production_content_tokenizer": "jieba_fast.cut_for_search",
+    "score_direction": "bm25_fts5_negated",
+    "tokenizer": "unicode61"
+  },
+  "production_default_config_modified": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "question_reads": 0,
+  "reference_answer_reads": 0,
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "retrieval_view_schema_version": "pdf-v4-retrieval-view-v1",
+  "runtime_gold_reads": 0,
+  "runtime_governance_reads": 0,
+  "soft_continuation_metadata_only": true
+}

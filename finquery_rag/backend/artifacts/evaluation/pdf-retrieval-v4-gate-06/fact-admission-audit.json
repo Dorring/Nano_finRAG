@@ -1,0 +1,29 @@
+{
+  "admission_blocked": true,
+  "binding_status_counts": {
+    "blocked": 77,
+    "complete": 3226,
+    "row_only": 951
+  },
+  "decision": "fact_evidence_admission_blocked",
+  "downstream_query_planner_allowed": false,
+  "exclusion_reasons": {
+    "fact_not_level_a_complete": 1028,
+    "missing_metric_path": 73,
+    "missing_period": 835
+  },
+  "fact_excluded_count": 1028,
+  "fact_indexed_count": 3226,
+  "fact_indexed_rate": 0.7583450869769629,
+  "fact_total_count": 4254,
+  "level_counts": {
+    "A": 3226,
+    "B": 1028
+  },
+  "minimum_fact_indexed_rate": 0.9,
+  "missing_field_counts": {
+    "metric_path": 73,
+    "period": 835,
+    "raw_value": 0
+  }
+}

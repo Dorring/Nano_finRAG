@@ -1,0 +1,73 @@
+{
+  "document_counts": {
+    "cell": 3226,
+    "fact": 3226,
+    "row": 1581,
+    "section": 117,
+    "table": 117
+  },
+  "index_hashes": {
+    "cell": "7368f00977d32ae6b818152ee14068622cad3c8ee8530692a7c1dcff2d60c4c6",
+    "fact": "2f8fa82152ee0b9b51ad7c0646c81dc6d8bd23a4f6052d0bd715029841fced7d",
+    "row": "1be255fb15e09f6fa4d672d6a0fa94a0a38e1965b4518df7f0fdefabacc00a4d",
+    "section": "d2a6fc055654bde8e4455efea9774a7170dcee501dae794d50cf8ddd6d1ed2b7",
+    "table": "23f60c1389a70046d50c16db16804a565f3f1701fed77593fc6c667c2290a71d"
+  },
+  "manifests": {
+    "cell": {
+      "bm25_config_hash": "8d960159c9bc7952671db3091ed859930fcb61982d22d93e566d171cb19f422f",
+      "document_count": 3226,
+      "index_type": "cell_bm25",
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/runtime/pdf-retrieval-v4-gate-06/cell/bm25/index.sqlite",
+      "retrieval_text_hash": "d7d4df4eaf109e2cc4aeee0d73829778717d66ade9241384582b49f2b79f44c2",
+      "retrieval_view_id_hash": "416fd6f6987b193746a242f449a58ef129d2fed36ec2e9da9b95ca5aee9abe70",
+      "serialized_index_hash": "7368f00977d32ae6b818152ee14068622cad3c8ee8530692a7c1dcff2d60c4c6",
+      "tokenizer_config_hash": "a94c9f8488c2cd84c95a950fe5839c4cb190bc545e97189610f40d6fec99fe4d",
+      "unit_type": "cell"
+    },
+    "fact": {
+      "bm25_config_hash": "8d960159c9bc7952671db3091ed859930fcb61982d22d93e566d171cb19f422f",
+      "document_count": 3226,
+      "index_type": "fact_bm25",
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/runtime/pdf-retrieval-v4-gate-06/fact/bm25/index.sqlite",
+      "retrieval_text_hash": "3c6d8b08ccdd44c7356b4288df9c3783071db45edbe55597d559e1026af2ecdc",
+      "retrieval_view_id_hash": "ba1b1ea5e1aa5853cacf8d16695305ae1243f9ec8422286a01e3f2c9ab51441b",
+      "serialized_index_hash": "2f8fa82152ee0b9b51ad7c0646c81dc6d8bd23a4f6052d0bd715029841fced7d",
+      "tokenizer_config_hash": "a94c9f8488c2cd84c95a950fe5839c4cb190bc545e97189610f40d6fec99fe4d",
+      "unit_type": "fact"
+    },
+    "row": {
+      "bm25_config_hash": "8d960159c9bc7952671db3091ed859930fcb61982d22d93e566d171cb19f422f",
+      "document_count": 1581,
+      "index_type": "row_bm25",
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/runtime/pdf-retrieval-v4-gate-06/row/bm25/index.sqlite",
+      "retrieval_text_hash": "62c51552f33f5f1456863c0d0d869ceab1a8f2aa14a7b136307b17b88e06b3d8",
+      "retrieval_view_id_hash": "71cc8cf656b5fac1d4aab28e4cbb33416cdf16fa73d9d87e6d5bcf3d311e8d80",
+      "serialized_index_hash": "1be255fb15e09f6fa4d672d6a0fa94a0a38e1965b4518df7f0fdefabacc00a4d",
+      "tokenizer_config_hash": "a94c9f8488c2cd84c95a950fe5839c4cb190bc545e97189610f40d6fec99fe4d",
+      "unit_type": "row"
+    },
+    "section": {
+      "bm25_config_hash": "8d960159c9bc7952671db3091ed859930fcb61982d22d93e566d171cb19f422f",
+      "document_count": 117,
+      "index_type": "section_bm25",
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/runtime/pdf-retrieval-v4-gate-06/section/bm25/index.sqlite",
+      "retrieval_text_hash": "dd3e84910a0a333f5dc6fb173521759ac13fec27620896e144835c9e20dc7008",
+      "retrieval_view_id_hash": "7e53134b5e9d1dffa500d1efcc081ad274c0793e8ec52757a6fc98c7d4b5cf2a",
+      "serialized_index_hash": "d2a6fc055654bde8e4455efea9774a7170dcee501dae794d50cf8ddd6d1ed2b7",
+      "tokenizer_config_hash": "a94c9f8488c2cd84c95a950fe5839c4cb190bc545e97189610f40d6fec99fe4d",
+      "unit_type": "section"
+    },
+    "table": {
+      "bm25_config_hash": "8d960159c9bc7952671db3091ed859930fcb61982d22d93e566d171cb19f422f",
+      "document_count": 117,
+      "index_type": "table_bm25",
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/runtime/pdf-retrieval-v4-gate-06/table/bm25/index.sqlite",
+      "retrieval_text_hash": "836545a86ccc4fbfdd5ac3377d0487a16dd5622b0e870138436bcb7934e5b2c1",
+      "retrieval_view_id_hash": "ebe4ebf0bf2effde9fd6451f601f2ed5605f98e1e75857b81007de29cefce27f",
+      "serialized_index_hash": "23f60c1389a70046d50c16db16804a565f3f1701fed77593fc6c667c2290a71d",
+      "tokenizer_config_hash": "a94c9f8488c2cd84c95a950fe5839c4cb190bc545e97189610f40d6fec99fe4d",
+      "unit_type": "table"
+    }
+  }
+}

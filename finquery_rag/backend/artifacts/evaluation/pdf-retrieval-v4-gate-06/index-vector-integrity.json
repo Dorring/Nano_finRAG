@@ -1,0 +1,84 @@
+{
+  "by_type": {
+    "cell": {
+      "dimension": 384,
+      "inf_vector_count": 0,
+      "max_norm": 1.0000001192092896,
+      "mean_norm": 1.0,
+      "min_norm": 0.9999998807907104,
+      "nan_vector_count": 0,
+      "nonfinite_matrix": false,
+      "self_id_miss_count": 0,
+      "unit_type": "cell",
+      "vector_count": 3226,
+      "zero_vector_count": 0
+    },
+    "fact": {
+      "dimension": 384,
+      "inf_vector_count": 0,
+      "max_norm": 1.0000001192092896,
+      "mean_norm": 1.0,
+      "min_norm": 0.9999998807907104,
+      "nan_vector_count": 0,
+      "nonfinite_matrix": false,
+      "self_id_miss_count": 0,
+      "unit_type": "fact",
+      "vector_count": 3226,
+      "zero_vector_count": 0
+    },
+    "row": {
+      "dimension": 384,
+      "inf_vector_count": 0,
+      "max_norm": 1.0000001192092896,
+      "mean_norm": 1.0,
+      "min_norm": 0.9999998807907104,
+      "nan_vector_count": 0,
+      "nonfinite_matrix": false,
+      "self_id_miss_count": 0,
+      "unit_type": "row",
+      "vector_count": 1581,
+      "zero_vector_count": 0
+    },
+    "section": {
+      "dimension": 384,
+      "inf_vector_count": 0,
+      "max_norm": 1.0000001192092896,
+      "mean_norm": 1.0,
+      "min_norm": 0.9999999403953552,
+      "nan_vector_count": 0,
+      "nonfinite_matrix": false,
+      "self_id_miss_count": 0,
+      "unit_type": "section",
+      "vector_count": 117,
+      "zero_vector_count": 0
+    },
+    "table": {
+      "dimension": 384,
+      "inf_vector_count": 0,
+      "max_norm": 1.0000001192092896,
+      "mean_norm": 1.0,
+      "min_norm": 0.9999999403953552,
+      "nan_vector_count": 0,
+      "nonfinite_matrix": false,
+      "self_id_miss_count": 0,
+      "unit_type": "table",
+      "vector_count": 117,
+      "zero_vector_count": 0
+    }
+  },
+  "inf_vector_count": 0,
+  "model_config": {
+    "device": "cpu",
+    "embedding_model": "all-MiniLM-L6-v2",
+    "embedding_provider": "sentence-transformers",
+    "normalization": "unit_cosine",
+    "pooling": "model_default",
+    "precision": "float32",
+    "revision": "local_cached_model",
+    "sentence_transformers_version": "5.2.0",
+    "torch_version": "2.9.1+cu128"
+  },
+  "nan_vector_count": 0,
+  "self_id_miss_count": 0,
+  "zero_vector_count": 0
+}

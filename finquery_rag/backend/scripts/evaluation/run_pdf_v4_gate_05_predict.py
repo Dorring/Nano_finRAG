@@ -141,7 +141,7 @@ def main() -> int:
     _write_jsonl_gz(prediction_path, stream_header, units)
     _write_jsonl_gz(evidence_path, stream_header, units)
     uncompressed_hash = _hash(prediction_payload)
-    _write(args.out / "evidence-units-manifest.json", {"storage": evidence_path.name, "record_count": len(units) + 1, "compressed_sha256": _sha(evidence_path), "uncompressed_sha256": uncompressed_hash, "compression": "gzip", "deterministic": True})
+    _write(args.out / "evidence-units-manifest.json", {"storage": evidence_path.name, "record_count": len(units), "physical_line_count": len(units) + 1, "header_line_count": 1, "compressed_sha256": _sha(evidence_path), "uncompressed_sha256": uncompressed_hash, "compression": "gzip", "deterministic": True})
     _write(args.out / "evidence-unit-integrity.json", integrity)
     _write(args.out / "evidence-unit-metrics.json", integrity)
     _write(args.out / "evidence-unit-prediction-seal.json", {"prediction_count": len(tables), "unit_count": len(units), "oracle_reads_before_seal": 0, "question_reads": 0, "governance_reads": 0, "input_hash": _sha(args.out / "gate-05-input-integrity.json"), "protocol_hash": _sha(args.out / "gate-05-protocol.json"), "prediction_hash": _sha(prediction_path), "prediction_storage": prediction_path.name, "prediction_uncompressed_sha256": uncompressed_hash, "predictions_sealed": True, "cross_page_merged": False})
