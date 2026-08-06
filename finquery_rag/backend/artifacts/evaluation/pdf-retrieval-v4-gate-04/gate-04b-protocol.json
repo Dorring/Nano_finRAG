@@ -1,0 +1,21 @@
+{
+  "candidate_hash": "f78f067bb8e9f25fdb8ea43ef84cf1821cd7ff56eba541e76fd997d3aac7e78b",
+  "code_commit": "gate04b-tightened",
+  "column_band_similarity_threshold": 0.9,
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "gate": "pdf_retrieval_v4_gate_04b",
+  "gate_03_prediction_hash": "c970a61d3fb311d39e0f85ab685faffdef638f6cb3a742fc7f70136a472f63ba",
+  "index_builds": 0,
+  "input_gate": "pdf_retrieval_v4_gate_03",
+  "mineru_reruns": 0,
+  "ocr_calls": 0,
+  "path_b_required_features": {
+    "header_fingerprint_equal": true,
+    "minimum_context_signals": 8,
+    "title_or_continued_marker_required": true
+  },
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "reranker_calls": 0,
+  "retrieval_runs": 0
+}

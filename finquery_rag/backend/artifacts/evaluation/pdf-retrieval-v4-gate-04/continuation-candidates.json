@@ -1,0 +1,1616 @@
+{
+  "candidate_count": 36,
+  "candidates": [
+    {
+      "candidate_pair_id": "continuation-candidate:a16cb4cf1b1f69587cb740a33058a82adc0a232dd5654b231fc13c3a7db91187",
+      "document_id": "aapl_fy2025",
+      "features": {
+        "column_band_similarity": 0.997029,
+        "column_count_compatible": true,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [],
+        "header_fingerprint_equal": true,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [],
+      "left_fragment_id": "table:21f6fd90e1ac0e3cfdb3849324019617dc23f5c21057ab9de57ed4fc785d4243",
+      "left_page": 25,
+      "page_gap": 1,
+      "right_fragment_id": "table:f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486",
+      "right_page": 26
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:64a74857e1823f8ede922084d5008bbb6a613c4b6e09f2ce62ef646c8b266022",
+      "document_id": "aapl_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict"
+      ],
+      "left_fragment_id": "table:f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486",
+      "left_page": 26,
+      "page_gap": 1,
+      "right_fragment_id": "table:60d96702c3d70da2d4d2c1a1fbeae60472c537ac7054ab2a66c3b44b179ae821",
+      "right_page": 27
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:a7d4165d78fdb6c8b2bf2e7a107cfb8e7fb017a8d06271a587a4bd864eaf29b7",
+      "document_id": "aapl_fy2025",
+      "features": {
+        "column_band_similarity": 0.969476,
+        "column_count_compatible": true,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [],
+        "header_fingerprint_equal": true,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": false,
+        "right_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [],
+      "left_fragment_id": "table:f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486",
+      "left_page": 26,
+      "page_gap": 1,
+      "right_fragment_id": "table:a24ead98b9749a8d419a35cfdb84a8d52f8b88d4ae995e03205494f64611311c",
+      "right_page": 27
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:0f4c4bf5600ba78a8b5361c9fb835c4e86f8f09a6e42764886050499036dda50",
+      "document_id": "jpm_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict",
+          "period_structure_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": false,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict",
+        "period_structure_conflict"
+      ],
+      "left_fragment_id": "table:673ead3ce91ec6cc5337b6c6101478dad2771052c7162ac2e2590ad67292f9e2",
+      "left_page": 198,
+      "page_gap": 1,
+      "right_fragment_id": "table:59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd",
+      "right_page": 199
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:80e64d94d36eac0063d992bbd41e94704d7393e419c40fded222597033fdeb33",
+      "document_id": "jpm_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict",
+          "period_structure_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": false,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": false,
+        "right_periods": [
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict",
+        "period_structure_conflict"
+      ],
+      "left_fragment_id": "table:673ead3ce91ec6cc5337b6c6101478dad2771052c7162ac2e2590ad67292f9e2",
+      "left_page": 198,
+      "page_gap": 1,
+      "right_fragment_id": "table:6a9e23328c2b8ef01e079a956381d640a58c852d398289e87aa49b2c7b0b3fd3",
+      "right_page": 199
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:ff39ebaf3b27188f5d1c04c6a0a916459c84393dc9778bdd143f1b1f69394a90",
+      "document_id": "jpm_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict",
+          "period_structure_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": false,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict",
+        "period_structure_conflict"
+      ],
+      "left_fragment_id": "table:59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd",
+      "left_page": 199,
+      "page_gap": 1,
+      "right_fragment_id": "table:e7df9db601f4ae6102ef9b2128835cacf5c72329f8b0fe727f5312988bc0df9d",
+      "right_page": 200
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:1abec6cef60310aec36bbe965d78b410b5e437a80c017435a4a10d77afaedd15",
+      "document_id": "jpm_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict",
+          "period_structure_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": false,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict",
+        "period_structure_conflict"
+      ],
+      "left_fragment_id": "table:6a9e23328c2b8ef01e079a956381d640a58c852d398289e87aa49b2c7b0b3fd3",
+      "left_page": 199,
+      "page_gap": 1,
+      "right_fragment_id": "table:e7df9db601f4ae6102ef9b2128835cacf5c72329f8b0fe727f5312988bc0df9d",
+      "right_page": 200
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:e19a3594d4f47151b612e230fa3e232d047a5839bddaedf55311a160a6e62d63",
+      "document_id": "jpm_fy2025",
+      "features": {
+        "column_band_similarity": 0.98491,
+        "column_count_compatible": true,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [],
+      "left_fragment_id": "table:e7df9db601f4ae6102ef9b2128835cacf5c72329f8b0fe727f5312988bc0df9d",
+      "left_page": 200,
+      "page_gap": 1,
+      "right_fragment_id": "table:6ec00fa3d0319f449aaf549c56717e2be2db8f5eee82efdcd0a2e7214441f0f0",
+      "right_page": 201
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:ab831d4773cbf5a2e0a7546b3e64d2c145b482fe3feec2e966f7299f23c32652",
+      "document_id": "ko_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [],
+        "left_scale": null,
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": false,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict"
+      ],
+      "left_fragment_id": "table:39aefc2b3d27cde2b4b53c71d3abfac973564aefe6fbff7a84b8892bdcc8c276",
+      "left_page": 62,
+      "page_gap": 1,
+      "right_fragment_id": "table:4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd",
+      "right_page": 63
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:71cb9749534160764e5b084fcdcde0684b74fe628944ee3725cde07f865bc535",
+      "document_id": "ko_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict"
+      ],
+      "left_fragment_id": "table:4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd",
+      "left_page": 63,
+      "page_gap": 1,
+      "right_fragment_id": "table:449390bcf7e2fc995ffe009d70590314ff40139de33d136f2b137270196ad03a",
+      "right_page": 64
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:1a3e5572f1091e44d102f9db9223b2a897e69afa1bab20abb387a0b1f67136ac",
+      "document_id": "ko_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict",
+          "period_structure_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": false,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": null,
+        "left_title": "",
+        "period_set_compatible": false,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict",
+        "period_structure_conflict"
+      ],
+      "left_fragment_id": "table:8f417bc9d4f723137973d7d5e5c952594307981eb0e45b2866d4a7e5e11940a2",
+      "left_page": 118,
+      "page_gap": 1,
+      "right_fragment_id": "table:642658a8e5c709cc385ee5b110fb89c197aa3cd83a54c0e5f1f8d79d9a0b7ef8",
+      "right_page": 119
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:8cc71f5c174ba47e28ddf5d16a9b219ed26c3cff910f84216c74121d8eec3388",
+      "document_id": "ko_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict",
+          "period_structure_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": false,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": null,
+        "left_title": "",
+        "period_set_compatible": false,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict",
+        "period_structure_conflict"
+      ],
+      "left_fragment_id": "table:8f417bc9d4f723137973d7d5e5c952594307981eb0e45b2866d4a7e5e11940a2",
+      "left_page": 118,
+      "page_gap": 1,
+      "right_fragment_id": "table:59badb3c3199e62a5901bf648850fe1e928cf09957865f39ff315ee5ccc3913c",
+      "right_page": 119
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:8cfaa99d16eaa3a18e9a015235eec33edb1fe5f058478500929622dcca83b9ba",
+      "document_id": "ko_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict",
+          "period_structure_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": false,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict",
+        "period_structure_conflict"
+      ],
+      "left_fragment_id": "table:dd20265ddef36bf9442116ba1021d7d6bf5964fba11264ee229869b078081569",
+      "left_page": 118,
+      "page_gap": 1,
+      "right_fragment_id": "table:642658a8e5c709cc385ee5b110fb89c197aa3cd83a54c0e5f1f8d79d9a0b7ef8",
+      "right_page": 119
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:c1609b9c309b70f1cfccc86f8997b3000c4792f35672463bbf4e4868b8ca3f80",
+      "document_id": "ko_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict",
+          "period_structure_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": false,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict",
+        "period_structure_conflict"
+      ],
+      "left_fragment_id": "table:dd20265ddef36bf9442116ba1021d7d6bf5964fba11264ee229869b078081569",
+      "left_page": 118,
+      "page_gap": 1,
+      "right_fragment_id": "table:59badb3c3199e62a5901bf648850fe1e928cf09957865f39ff315ee5ccc3913c",
+      "right_page": 119
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:9d0c4b2e6e4c631d45abf787667f2c7d70877d468d29af47847eb09ed50478f0",
+      "document_id": "ko_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict",
+          "period_structure_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": false,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict",
+        "period_structure_conflict"
+      ],
+      "left_fragment_id": "table:9b17c98732f1153422a5b5cbaf8fad697f18b3fa1c7da1f76c31b82f2487510e",
+      "left_page": 118,
+      "page_gap": 1,
+      "right_fragment_id": "table:642658a8e5c709cc385ee5b110fb89c197aa3cd83a54c0e5f1f8d79d9a0b7ef8",
+      "right_page": 119
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:4b34ab84cb9f879e62eabc680a62941eb8014fea35e8343e50162291640c45d4",
+      "document_id": "ko_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict",
+          "period_structure_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": false,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict",
+        "period_structure_conflict"
+      ],
+      "left_fragment_id": "table:9b17c98732f1153422a5b5cbaf8fad697f18b3fa1c7da1f76c31b82f2487510e",
+      "left_page": 118,
+      "page_gap": 1,
+      "right_fragment_id": "table:59badb3c3199e62a5901bf648850fe1e928cf09957865f39ff315ee5ccc3913c",
+      "right_page": 119
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:d85afb74f54ce8f73546fb991e4bf716d3b4e218a19ac0e38b1bff53ae995d9f",
+      "document_id": "ko_fy2025",
+      "features": {
+        "column_band_similarity": 0.943667,
+        "column_count_compatible": true,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "period_structure_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": false,
+        "repeated_header_detected": false,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2023"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "period_structure_conflict"
+      ],
+      "left_fragment_id": "table:642658a8e5c709cc385ee5b110fb89c197aa3cd83a54c0e5f1f8d79d9a0b7ef8",
+      "left_page": 119,
+      "page_gap": 1,
+      "right_fragment_id": "table:f96ff640e6c277c3832f3a20c006502007197bf68230e29d199f74b39be74a3d",
+      "right_page": 120
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:1ef9bc8dedf70182fb66824155154ade9a33703ef33a7f0380cafd9a8ff1214c",
+      "document_id": "ko_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict",
+          "period_structure_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": false,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": false,
+        "right_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict",
+        "period_structure_conflict"
+      ],
+      "left_fragment_id": "table:642658a8e5c709cc385ee5b110fb89c197aa3cd83a54c0e5f1f8d79d9a0b7ef8",
+      "left_page": 119,
+      "page_gap": 1,
+      "right_fragment_id": "table:f540df9c36017d5ed3ed60519257ef7d2c1c68e82e5c637a8a6a4521d0fad462",
+      "right_page": 120
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:36c697847458c040a171fff27659c1c9ea44c9bfa008d6371a09a26654903ee5",
+      "document_id": "ko_fy2025",
+      "features": {
+        "column_band_similarity": 0.981763,
+        "column_count_compatible": true,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "period_structure_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": false,
+        "repeated_header_detected": false,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2023"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "period_structure_conflict"
+      ],
+      "left_fragment_id": "table:59badb3c3199e62a5901bf648850fe1e928cf09957865f39ff315ee5ccc3913c",
+      "left_page": 119,
+      "page_gap": 1,
+      "right_fragment_id": "table:f96ff640e6c277c3832f3a20c006502007197bf68230e29d199f74b39be74a3d",
+      "right_page": 120
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:37afa79e62e061e603a642ebe6e8af98350d2ea17f8975d7a83aba278ae3beea",
+      "document_id": "ko_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict",
+          "period_structure_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": false,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": false,
+        "right_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict",
+        "period_structure_conflict"
+      ],
+      "left_fragment_id": "table:59badb3c3199e62a5901bf648850fe1e928cf09957865f39ff315ee5ccc3913c",
+      "left_page": 119,
+      "page_gap": 1,
+      "right_fragment_id": "table:f540df9c36017d5ed3ed60519257ef7d2c1c68e82e5c637a8a6a4521d0fad462",
+      "right_page": 120
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:dae16f49f70cb0a0565e0263107d811bd2e5f713cacfd2d4992b5584daa1c329",
+      "document_id": "msft_fy2025",
+      "features": {
+        "column_band_similarity": 0.986403,
+        "column_count_compatible": true,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": false,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [],
+      "left_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90",
+      "left_page": 80,
+      "page_gap": 1,
+      "right_fragment_id": "table:4a4e7ab7af80d4c6079221084a7e6685cb7d9b049c29130d20aa2f54ff74a122",
+      "right_page": 81
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:b6077ced8e595cdeb96001ae3a5278227ad0f010f254291210d5806f638a5e54",
+      "document_id": "msft_fy2025",
+      "features": {
+        "column_band_similarity": 0.990858,
+        "column_count_compatible": true,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": false,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": false,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [],
+      "left_fragment_id": "table:f79e79eede2810c9b7ff5a4bb1332eb096c3ef2f46f2030a86416f24e1d65260",
+      "left_page": 80,
+      "page_gap": 1,
+      "right_fragment_id": "table:4a4e7ab7af80d4c6079221084a7e6685cb7d9b049c29130d20aa2f54ff74a122",
+      "right_page": 81
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:a5c517c6d69967bc75a5fce0e897c042b2f2f9f49116dca39d413a347de93ff2",
+      "document_id": "msft_fy2025",
+      "features": {
+        "column_band_similarity": 0.809158,
+        "column_count_compatible": true,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": false,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [],
+      "left_fragment_id": "table:ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508",
+      "left_page": 80,
+      "page_gap": 1,
+      "right_fragment_id": "table:4a4e7ab7af80d4c6079221084a7e6685cb7d9b049c29130d20aa2f54ff74a122",
+      "right_page": 81
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:4c77b6da42a5beb118619f381cdb2d1c799bd95beac1ed2dd7ba57a92b3d36df",
+      "document_id": "nvda_fy2025",
+      "features": {
+        "column_band_similarity": 0.982256,
+        "column_count_compatible": true,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [],
+      "left_fragment_id": "table:e433fb5d9deee46642d7803cdce597685d5abf8216fe7fe97fc2059ac27789a8",
+      "left_page": 144,
+      "page_gap": 1,
+      "right_fragment_id": "table:d844d918d6f0f64d3c1eefee75bded4899fe188809c5a08c9d0bdf6ba109315c",
+      "right_page": 145
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:795a17dade34bc07a340fcffc2ca66f4d6caa9f9b209717a4245fe6fae8ff895",
+      "document_id": "pfe_fy2024",
+      "features": {
+        "column_band_similarity": 0.967906,
+        "column_count_compatible": true,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2022",
+          "FY2023",
+          "FY2024"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2022",
+          "FY2023",
+          "FY2024"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [],
+      "left_fragment_id": "table:a8055121fa63f48f32fb0fa7fd624ea6541155fef3395d279e4de69bfc94c3de",
+      "left_page": 60,
+      "page_gap": 1,
+      "right_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de",
+      "right_page": 61
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:5dd367a55d394344f221c29182e2cfa27bea1213b76bdf2ef3a4af489f951560",
+      "document_id": "tsla_fy2025",
+      "features": {
+        "column_band_similarity": 0.989377,
+        "column_count_compatible": true,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [],
+        "header_fingerprint_equal": true,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [],
+      "left_fragment_id": "table:11b13f579ed57a803e1ae5b27345556d8a402edf45fcf4fded3c6bf9acc325d0",
+      "left_page": 55,
+      "page_gap": 1,
+      "right_fragment_id": "table:43db179fda1d82495b0a73cc48926b860573c6a8183abdbaf10100c2f2754351",
+      "right_page": 56
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:b6dd726b469bd8acdcd94dbb0981dd8b20ab131859ed73679bdd5f781177aa16",
+      "document_id": "tsla_fy2025",
+      "features": {
+        "column_band_similarity": 0.958014,
+        "column_count_compatible": true,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [],
+        "left_scale": null,
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": false,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [],
+        "right_scale": null,
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [],
+      "left_fragment_id": "table:0b9beb9842caead53ac5b7e2ec305537b737ee6a151563ed41d3eec9d0456531",
+      "left_page": 68,
+      "page_gap": 1,
+      "right_fragment_id": "table:bb88700695f7618247f3aea95f40f7d35eff8f0f3786c7509c988905d5f6695e",
+      "right_page": 69
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:594fb5f7deb8a35ce27b13b30a5a0493ed3d3d1ac0f778f00a786c24b872c338",
+      "document_id": "tsla_fy2025",
+      "features": {
+        "column_band_similarity": 0.990816,
+        "column_count_compatible": true,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [],
+        "left_scale": null,
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": false,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2025"
+        ],
+        "right_scale": null,
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [],
+      "left_fragment_id": "table:0b9beb9842caead53ac5b7e2ec305537b737ee6a151563ed41d3eec9d0456531",
+      "left_page": 68,
+      "page_gap": 1,
+      "right_fragment_id": "table:1bd9dcd91a7199d74c0b6b7a0e9ad749b35d9f565ee927cc91fda6c70717da9b",
+      "right_page": 69
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:08ead516d6be47dce1d62be0723d1b4b54c2c4afa4fd1623e30bdef6c6505fbe",
+      "document_id": "tsla_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [],
+        "left_scale": null,
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": false,
+        "right_currency": null,
+        "right_near_page_top": false,
+        "right_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict"
+      ],
+      "left_fragment_id": "table:0b9beb9842caead53ac5b7e2ec305537b737ee6a151563ed41d3eec9d0456531",
+      "left_page": 68,
+      "page_gap": 1,
+      "right_fragment_id": "table:e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049",
+      "right_page": 69
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:dbafc5b0cabeda7d626af78c05c3f202cc74c8c39630860ec4fc328f6312d6e2",
+      "document_id": "tsla_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [],
+        "left_scale": null,
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": false,
+        "right_currency": null,
+        "right_near_page_top": false,
+        "right_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict"
+      ],
+      "left_fragment_id": "table:0b9beb9842caead53ac5b7e2ec305537b737ee6a151563ed41d3eec9d0456531",
+      "left_page": 68,
+      "page_gap": 1,
+      "right_fragment_id": "table:f1b0e9770f9618fd8c6e5abc858cf37e9701f666eae7f9875e39790bb66bd895",
+      "right_page": 69
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:1d5d4a4524ae6917bc34b4dc70bee3faac2793b8af6cfd9147ba9c5178e8cccc",
+      "document_id": "tsla_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": false,
+        "left_periods": [],
+        "left_scale": null,
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": false,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [],
+        "right_scale": null,
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict"
+      ],
+      "left_fragment_id": "table:bb88700695f7618247f3aea95f40f7d35eff8f0f3786c7509c988905d5f6695e",
+      "left_page": 69,
+      "page_gap": 1,
+      "right_fragment_id": "table:ff78621b5b76c2e142047c7b7da4f7c1617945f4544eb19b77d66d4a5bf721ae",
+      "right_page": 70
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:3a2c3f29d395f4c991e219ab3ca7fea76eddc38c42524f8f45754c962c884bec",
+      "document_id": "tsla_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": false,
+        "left_periods": [
+          "FY2025"
+        ],
+        "left_scale": null,
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": false,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [],
+        "right_scale": null,
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict"
+      ],
+      "left_fragment_id": "table:1bd9dcd91a7199d74c0b6b7a0e9ad749b35d9f565ee927cc91fda6c70717da9b",
+      "left_page": 69,
+      "page_gap": 1,
+      "right_fragment_id": "table:ff78621b5b76c2e142047c7b7da4f7c1617945f4544eb19b77d66d4a5bf721ae",
+      "right_page": 70
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:81f59c4317872e500f4c14e63288741a7fef4961ee1f98f58208db509528a897",
+      "document_id": "tsla_fy2025",
+      "features": {
+        "column_band_similarity": 0.992806,
+        "column_count_compatible": true,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": false,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [],
+        "right_scale": null,
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [],
+      "left_fragment_id": "table:e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049",
+      "left_page": 69,
+      "page_gap": 1,
+      "right_fragment_id": "table:ff78621b5b76c2e142047c7b7da4f7c1617945f4544eb19b77d66d4a5bf721ae",
+      "right_page": 70
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:83c5d3652196f9082612d4350972f5fc0d307bc72605d5fa4b9c88d85e535996",
+      "document_id": "tsla_fy2025",
+      "features": {
+        "column_band_similarity": 0.826912,
+        "column_count_compatible": true,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": false,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [],
+        "right_scale": null,
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [],
+      "left_fragment_id": "table:f1b0e9770f9618fd8c6e5abc858cf37e9701f666eae7f9875e39790bb66bd895",
+      "left_page": 69,
+      "page_gap": 1,
+      "right_fragment_id": "table:ff78621b5b76c2e142047c7b7da4f7c1617945f4544eb19b77d66d4a5bf721ae",
+      "right_page": 70
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:cefe8520c38c6afa6e9ab4fa4485a8b1115de5512c8800da3e5281e1c8c195d2",
+      "document_id": "v_fy2025",
+      "features": {
+        "column_band_similarity": 0.0,
+        "column_count_compatible": false,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [
+          "column_count_conflict",
+          "column_order_or_geometry_conflict",
+          "period_structure_conflict"
+        ],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": false,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [
+        "column_count_conflict",
+        "column_order_or_geometry_conflict",
+        "period_structure_conflict"
+      ],
+      "left_fragment_id": "table:df89ce2c4fbef45b7eb45a425c72c80aea38b38bcbaa7e6efed7ada17a4d7c37",
+      "left_page": 74,
+      "page_gap": 1,
+      "right_fragment_id": "table:047c6a56c7f09d391ac993d738c97b84bae5339ad9a1873ff5d6dd98ff693439",
+      "right_page": 75
+    },
+    {
+      "candidate_pair_id": "continuation-candidate:48ce81bdb9f292256a21e58677cdb1c43904d643d812bad6366fd8cbc235d9d4",
+      "document_id": "v_fy2025",
+      "features": {
+        "column_band_similarity": 0.986356,
+        "column_count_compatible": true,
+        "continued_marker": false,
+        "currency_compatible": true,
+        "hard_blockers": [],
+        "header_fingerprint_equal": false,
+        "left_currency": null,
+        "left_near_page_bottom": true,
+        "left_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "left_scale": "million",
+        "left_title": "",
+        "period_set_compatible": true,
+        "repeated_header_detected": true,
+        "right_currency": null,
+        "right_near_page_top": true,
+        "right_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "right_scale": "million",
+        "right_title": "",
+        "row_label_style_compatible": true,
+        "same_or_compatible_title": true,
+        "same_section": true,
+        "same_statement": true,
+        "scale_compatible": true
+      },
+      "hard_blockers": [],
+      "left_fragment_id": "table:047c6a56c7f09d391ac993d738c97b84bae5339ad9a1873ff5d6dd98ff693439",
+      "left_page": 75,
+      "page_gap": 1,
+      "right_fragment_id": "table:f6edfbc307c5a0b39b9db3ec6df8fb232ead8dff268585bf2d20236bfd6c8d27",
+      "right_page": 76
+    }
+  ]
+}
