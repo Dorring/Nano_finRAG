@@ -1,0 +1,2985 @@
+{
+  "axes": [
+    {
+      "derived_measure_axes": [
+        {
+          "column_index": 2,
+          "labels": [
+            "Change"
+          ]
+        },
+        {
+          "column_index": 4,
+          "labels": [
+            "Change"
+          ]
+        }
+      ],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        3,
+        5
+      ],
+      "schema_reasons": [
+        "explicit_change_axis_with_period_columns"
+      ],
+      "schema_type": "comparison_change_table",
+      "table_fragment_id": "table:21f6fd90e1ac0e3cfdb3849324019617dc23f5c21057ab9de57ed4fc785d4243"
+    },
+    {
+      "derived_measure_axes": [
+        {
+          "column_index": 2,
+          "labels": [
+            "Change"
+          ]
+        },
+        {
+          "column_index": 4,
+          "labels": [
+            "Change"
+          ]
+        }
+      ],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        3,
+        5
+      ],
+      "schema_reasons": [
+        "explicit_change_axis_with_period_columns"
+      ],
+      "schema_type": "comparison_change_table",
+      "table_fragment_id": "table:f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:60d96702c3d70da2d4d2c1a1fbeae60472c537ac7054ab2a66c3b44b179ae821"
+    },
+    {
+      "derived_measure_axes": [
+        {
+          "column_index": 2,
+          "labels": [
+            "Change"
+          ]
+        },
+        {
+          "column_index": 4,
+          "labels": [
+            "Change"
+          ]
+        }
+      ],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        3,
+        5
+      ],
+      "schema_reasons": [
+        "explicit_change_axis_with_period_columns"
+      ],
+      "schema_type": "comparison_change_table",
+      "table_fragment_id": "table:a24ead98b9749a8d419a35cfdb84a8d52f8b88d4ae995e03205494f64611311c"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0047abd2c5de037a6eff1d56f728226a36120b86c9365ec18e885ce830a88dce"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:a4c43c2873dc6c82f075e8d833e482e838ed64ac63e54c647b9a3ff59e2b7428"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:ea0aa7988e5fc3b4d0bfbefbd35e7bf83f0c3dd391d91a45a1bb0b4fe18ac1f6"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "As of or for the year ended December 31,(in millions, except per share, ratio data and employees)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "opening_closing_activity_row_labels"
+      ],
+      "schema_type": "roll_forward",
+      "table_fragment_id": "table:22657ec90fe1003ef67092934621ee9560bbda15d5ad8719ffa21638faad8db0"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Consumer & Community Banking"
+          ]
+        },
+        {
+          "column_index": 1,
+          "labels": [
+            "% of digital noncard payments ^5"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "schema_reasons": [
+        "bucket_or_maturity_axis"
+      ],
+      "schema_type": "maturity_or_bucket_table",
+      "table_fragment_id": "table:67822511246053d6b8464bd85f5460dfbab4e397467532986aa1cb0146d58570"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "As of or for the year ended December 31,(in millions, except per share, ratio, employee data and where otherwise noted)"
+          ]
+        },
+        {
+          "column_index": 1,
+          "labels": [
+            "As of or for the year ended December 31,(in millions, except per share, ratio, employee data and where otherwise noted)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        2,
+        3,
+        4
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:21628df58826aff5bba4db351f4f8717cb070f77a8161dd7764aa1b09229448a"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "As of or for the year ended December 31, (in millions, except employees)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:689513c5b4a4a49880875af2585f8886c779a7f3617b40562624206a2650c2d6"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "As of or for the year ended December 31, (in millions, except ratios)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:c35b558d71d5be1c0893ce62e43b0c5896bde1f39b4e36d415fb1be70db32f1d"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "(in millions, except ratios)"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "Capital ratio requirements(d)"
+          ]
+        },
+        {
+          "column_index": 7,
+          "labels": [
+            "Capital ratio requirements(d)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        4,
+        6
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:404b8304379ee7fe56fdd4c11626693c90c4f007ad2193e075b8b510286a52a9"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Three months ended(in millions, except ratios)"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "Capital ratio requirements(c)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:25593454cca61c64480100313321b4e456fa616cc0989dedb85a94a6e029f9bf"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 1,
+          "labels": [
+            "Standardized",
+            "Credit risk RWA^{(c)}",
+            "$ 1,672,763",
+            "$ 1,889,409"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "Standardized",
+            "Market riskRWA",
+            "$ 84,697",
+            "$ 92,283"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "Standardized",
+            "Total RWA",
+            "$ 1,757,460",
+            "$ 1,981,692"
+          ]
+        },
+        {
+          "column_index": 4,
+          "labels": [
+            "Advanced",
+            "Credit risk RWA^{(c)(d)}",
+            "$ 1,218,005",
+            "$ 1,493,805"
+          ]
+        },
+        {
+          "column_index": 5,
+          "labels": [
+            "Advanced",
+            "Market riskRWA",
+            "$ 85,132",
+            "$ 92,998"
+          ]
+        },
+        {
+          "column_index": 6,
+          "labels": [
+            "Advanced",
+            "Operational riskRWA",
+            "$ 437,292",
+            "$ 458,446"
+          ]
+        },
+        {
+          "column_index": 7,
+          "labels": [
+            "Advanced",
+            "Total RWA",
+            "$ 1,740,429",
+            "$ 2,045,249"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        0
+      ],
+      "schema_reasons": [
+        "explicit_periods_on_row_axis"
+      ],
+      "schema_type": "period_on_rows",
+      "table_fragment_id": "table:6552b257824063522ee0971ca3133545ad9d1d1bd808069fa7d31bc19b95759e"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Three months ended(in millions, except ratio)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:ec5ee37dd67c3ba257e2033da350c955252a34c61259f6c11de83334aee3eb99"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "(in billions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:25555027c81fea75620a35e0e257236de09f40438ab8ba4f3a817ba38efbf14c"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "December 31,(in millions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:e7688f6a8f723de9496c85801ef27b69bef4dcfa5c9c8e61086ff92c41f82a33"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "December 31,(in millions, except ratios)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:606a5dd563d682bc89bf1590ab48ae9c8367acc393a8821c1fb7d5820a062ee8"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "December 31,(in millions, except ratios)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:059df72636ae9578a65fca5137d9d8880865bfc26ac587b0e31b55f37730a477"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "December 31,(in millions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:009746fa143808144fa3db91012452cb94955eec5f89327578f35dfa2c24b9f7"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year ended December 31,(in millions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "opening_closing_activity_row_labels"
+      ],
+      "schema_type": "roll_forward",
+      "table_fragment_id": "table:20ab85855dbbce37f795ace417fe71e3629c93def8dfc90369594f0bde32d1c0"
+    },
+    {
+      "derived_measure_axes": [
+        {
+          "column_index": 6,
+          "labels": [
+            "Selected metrics",
+            "30 days or more past due and accruing loans"
+          ]
+        }
+      ],
+      "dimension_axes": [
+        {
+          "column_index": 1,
+          "labels": [
+            "Credit exposure(f)(g)"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "Investment-grade"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "Noninvestment-grade",
+            "Noncriticized"
+          ]
+        },
+        {
+          "column_index": 4,
+          "labels": [
+            "Noninvestment-grade",
+            "Criticized performing"
+          ]
+        },
+        {
+          "column_index": 5,
+          "labels": [
+            "Noninvestment-grade",
+            "Criticized nonperforming"
+          ]
+        },
+        {
+          "column_index": 6,
+          "labels": [
+            "Selected metrics",
+            "30 days or more past due and accruing loans"
+          ]
+        },
+        {
+          "column_index": 7,
+          "labels": [
+            "Selected metrics",
+            "Net charge-offs/ (recoveries)"
+          ]
+        },
+        {
+          "column_index": 8,
+          "labels": [
+            "Selected metrics",
+            "Credit derivative and credit-related notes(h)"
+          ]
+        },
+        {
+          "column_index": 9,
+          "labels": [
+            "Selected metrics",
+            "Liquid securities and other cash collateral held against derivative receivables"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        0
+      ],
+      "schema_reasons": [
+        "bucket_or_maturity_axis"
+      ],
+      "schema_type": "maturity_or_bucket_table",
+      "table_fragment_id": "table:c0ee3fa7d4dbe9b3ed86c4945f4290d4dd2eb4897664b94a80969c3aafff36ff"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:576096c79abb6f86d17c4b6409cd16665720a625fc0221b77d340a1b9714bfeb"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year ended December 31, (in millions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "bucket_or_maturity_axis"
+      ],
+      "schema_type": "maturity_or_bucket_table",
+      "table_fragment_id": "table:673ead3ce91ec6cc5337b6c6101478dad2771052c7162ac2e2590ad67292f9e2"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "December 31, (in millions, except share data)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "December 31, (in millions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:6a9e23328c2b8ef01e079a956381d640a58c852d398289e87aa49b2c7b0b3fd3"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year ended December 31, (in millions, except per share data)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "opening_closing_activity_row_labels"
+      ],
+      "schema_type": "roll_forward",
+      "table_fragment_id": "table:e7df9db601f4ae6102ef9b2128835cacf5c72329f8b0fe727f5312988bc0df9d"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year ended December 31, (in millions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "opening_closing_activity_row_labels"
+      ],
+      "schema_type": "roll_forward",
+      "table_fragment_id": "table:6ec00fa3d0319f449aaf549c56717e2be2db8f5eee82efdcd0a2e7214441f0f0"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "As of or for the year ended December 31,(in millions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:3ebd76dee673bfbf84dcce27cc9954d960074e12bf53f9ad77b1faa55584d9de"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year ended December 31, (in millions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:2f7532f4d60f1940c0ea4a55ec9a2441c488cd9ee0b1e1bdce2adb6e3855de19"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 1,
+          "labels": [
+            "Consumer, excluding credit card"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "Credit card"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "Wholesale"
+          ]
+        },
+        {
+          "column_index": 4,
+          "labels": [
+            "Total"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        0
+      ],
+      "schema_reasons": [
+        "explicit_periods_on_row_axis"
+      ],
+      "schema_type": "period_on_rows",
+      "table_fragment_id": "table:36e4e3b4a5d7d84d8a20f47a41d18bfa9334e23594629323d5662198dff917b2"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year ended December 31,(in millions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:dad06d8c025baa8aeeba10511b8c83e7cd17cf758ac3aa1f4e9b251cf5cf6c9f"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year ended December 31,(in millions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "bucket_or_maturity_axis"
+      ],
+      "schema_type": "maturity_or_bucket_table",
+      "table_fragment_id": "table:6fef8f170d10958bd5038d56ae2c5fd7d11f5ba70fbf169b182407ee46f53948"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Series DD",
+            "Series EE",
+            "Series GG",
+            "Series JJ"
+          ]
+        },
+        {
+          "column_index": 8,
+          "labels": [
+            "Floating annualized rate^{(c)}",
+            "NA"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:49e5a0b50cceb92138197175ad3faab5638b2c174e98e20ed77b849ee387b8b7"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 2,
+          "labels": [
+            "Page"
+          ]
+        }
+      ],
+      "period_axis_indexes": [],
+      "schema_reasons": [
+        "bucket_or_maturity_axis"
+      ],
+      "schema_type": "maturity_or_bucket_table",
+      "table_fragment_id": "table:39aefc2b3d27cde2b4b53c71d3abfac973564aefe6fbff7a84b8892bdcc8c276"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year Ended December 31,"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        2,
+        3,
+        4
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year Ended December 31,"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:449390bcf7e2fc995ffe009d70590314ff40139de33d136f2b137270196ad03a"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 1,
+          "labels": [
+            "United States"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "International"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "Total"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        0
+      ],
+      "schema_reasons": [
+        "explicit_periods_on_row_axis"
+      ],
+      "schema_type": "period_on_rows",
+      "table_fragment_id": "table:3ac078a50e266b0c3de200102e6eea9308c166e83ee80f65f95ad303fd05411c"
+    },
+    {
+      "derived_measure_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Within 1 year",
+            "After 1 year through 5 years"
+          ]
+        }
+      ],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Within 1 year",
+            "After 1 year through 5 years"
+          ]
+        },
+        {
+          "column_index": 1,
+          "labels": [
+            "$"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "Cost",
+            "417",
+            "1,182"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "Estimated Fair Value",
+            "415",
+            "1,147"
+          ]
+        }
+      ],
+      "period_axis_indexes": [],
+      "schema_reasons": [
+        "bucket_or_maturity_axis"
+      ],
+      "schema_type": "maturity_or_bucket_table",
+      "table_fragment_id": "table:e3043f53cb4f3a64f42c1ce59e77ade71d4c45b8dbc85dd6cb88561c20ba4e04"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year Ended December 31,"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        2,
+        3,
+        4
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:f6c7ad94ec9e9b7a6b2e4584b2232b64debd4ac403eb8dbc2ecb53d87291ae18"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "December 31,"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:4665cb001f15c28fde1317e6b7d1586f19eba9933b18e8d7de9e219a422fd3cd"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "December 31,"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:7ee8bd86bf2d6a102761699ad6d70dabf71620eab82b80acc4812e3239770a80"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "December 31,"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:edbc39882c85f2fb645209fa723034b89eeb3c8fc7788cbc2b2aef06f7d4b398"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "December 31,"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:c351444757bd8b4be23a816e1901a3c97f41218dae109f16611bd8285a4b71f0"
+    },
+    {
+      "derived_measure_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year Ended December 31,",
+            "Balance in AOCI at beginning of year",
+            "Prior service credit (cost) occurring during the year",
+            "Net actuarial gain (loss) occurring during the year"
+          ]
+        }
+      ],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "schema_reasons": [
+        "explicit_change_axis_with_period_columns"
+      ],
+      "schema_type": "comparison_change_table",
+      "table_fragment_id": "table:4951470264beb9c1dfe7c262755786c1b14c53d1742a73792a99e43e450be3ea"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "December 31,",
+            "Balance in AOCI at end of year"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "schema_reasons": [
+        "opening_closing_activity_row_labels"
+      ],
+      "schema_type": "roll_forward",
+      "table_fragment_id": "table:ead4eed82a458577e8187a94e8f6311825543fa646840159f72cc52dd39adf3d"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "December 31,"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:59ffd91ea15c3963229ca211df7d63828761f6355ee77d9b85cee59b587118fd"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year Ended December 31,"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:7b70fa26b825f4ca8a6c8af2d1aae0346a4c3acb51860fb44877a7ffeae0967b"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "bucket_or_maturity_axis"
+      ],
+      "schema_type": "maturity_or_bucket_table",
+      "table_fragment_id": "table:bb8a1dd35eeb025b65783e4faae98aad701f88decd86d44e79f93d37f0e80b9c"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 1,
+          "labels": [
+            "$ 32",
+            "$ 30"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "$ 27",
+            "$ 17"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "$ 323",
+            "$ 311"
+          ]
+        },
+        {
+          "column_index": 4,
+          "labels": [
+            "$ 382",
+            "$ 358"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        0
+      ],
+      "schema_reasons": [
+        "opening_closing_activity_row_labels"
+      ],
+      "schema_type": "roll_forward",
+      "table_fragment_id": "table:2869549bb79758d3aeffaf062ae5aed45b1676b0d98d05b4aed44482bcf48e1d"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year Ended December 31,"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:8f417bc9d4f723137973d7d5e5c952594307981eb0e45b2866d4a7e5e11940a2"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year Ended December 31,"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:dd20265ddef36bf9442116ba1021d7d6bf5964fba11264ee229869b078081569"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "December 31,"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:9b17c98732f1153422a5b5cbaf8fad697f18b3fa1c7da1f76c31b82f2487510e"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:642658a8e5c709cc385ee5b110fb89c197aa3cd83a54c0e5f1f8d79d9a0b7ef8"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:59badb3c3199e62a5901bf648850fe1e928cf09957865f39ff315ee5ccc3913c"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 1,
+          "labels": [
+            "EMEA"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "Latin America"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "North America"
+          ]
+        },
+        {
+          "column_index": 4,
+          "labels": [
+            "Asia Pacific"
+          ]
+        },
+        {
+          "column_index": 5,
+          "labels": [
+            "Bottling Investments"
+          ]
+        },
+        {
+          "column_index": 6,
+          "labels": [
+            "Operating Segments Total"
+          ]
+        },
+        {
+          "column_index": 7,
+          "labels": [
+            "Corporate"
+          ]
+        },
+        {
+          "column_index": 8,
+          "labels": [
+            "Eliminations"
+          ]
+        },
+        {
+          "column_index": 9,
+          "labels": [
+            "Consolidated"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        0
+      ],
+      "schema_reasons": [
+        "explicit_periods_on_row_axis"
+      ],
+      "schema_type": "period_on_rows",
+      "table_fragment_id": "table:f96ff640e6c277c3832f3a20c006502007197bf68230e29d199f74b39be74a3d"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year Ended December 31,"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:f540df9c36017d5ed3ed60519257ef7d2c1c68e82e5c637a8a6a4521d0fad462"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "(In millions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:19a1cf276524f70fab1987d229f94c0d90600af8d411090560bd40f489ff9c0f"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 1,
+          "labels": [
+            "Derivative Assets"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "Derivative Assets"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        2,
+        4
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:946aa52947a6143b9212721de37f856ef30d223f893d64e15a59eb0b1084687a"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year Ended June 30,"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:dbc8770c2cc60c8604fc97494fcfa1bd7851865a179a70924895f024321f1f90"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year Ended June 30,"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:f79e79eede2810c9b7ff5a4bb1332eb096c3ef2f46f2030a86416f24e1d65260"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Year Ended June 30,"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "(In millions)"
+          ]
+        },
+        {
+          "column_index": 1,
+          "labels": [
+            "(In millions)"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "(In millions)"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "(In millions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [],
+      "schema_reasons": [],
+      "schema_type": "mixed_or_unsupported",
+      "table_fragment_id": "table:4a4e7ab7af80d4c6079221084a7e6685cb7d9b049c29130d20aa2f54ff74a122"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Age: 72"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "Committees: AC, NCGC"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1
+      ],
+      "schema_reasons": [
+        "multiple_non_temporal_dimension_headers"
+      ],
+      "schema_type": "metric_by_segment_matrix",
+      "table_fragment_id": "table:23a799b88884f9e17757d939f0d3a718cd4991ae85cacbfc0864a866136007d4"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 1,
+          "labels": [
+            "Senior Leadership & Operations Experience"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "Industry & Technical"
+          ]
+        },
+        {
+          "column_index": 5,
+          "labels": [
+            "Financial/Financial Community"
+          ]
+        }
+      ],
+      "period_axis_indexes": [],
+      "schema_reasons": [
+        "ratio_or_percentage_semantics"
+      ],
+      "schema_type": "ratio_percentage_table",
+      "table_fragment_id": "table:d3f4f3c82c6cb367642b90ee7a150f71a4be462ffaad3a4f23d3aa575348424a"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 2,
+          "labels": [
+            "Committees: AC",
+            "Financial Expert"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        0,
+        1
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:4db14dc4f56a9b7295cf580b5aa0ca8068c45e5a748509e3394774a1833f00a4"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 1,
+          "labels": [
+            "Senior Leadership & Operations Experience"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "Financial/Financial Community"
+          ]
+        },
+        {
+          "column_index": 5,
+          "labels": [
+            "Governance & Public Company Board"
+          ]
+        }
+      ],
+      "period_axis_indexes": [],
+      "schema_reasons": [
+        "ratio_or_percentage_semantics"
+      ],
+      "schema_type": "ratio_percentage_table",
+      "table_fragment_id": "table:601a8b152ad250a4229dc5c1386dfab56815b3d0a3acdd68cb76429982fef52d"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 2,
+          "labels": [
+            "Committees: AC",
+            "Financial Expert"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        0,
+        1
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:a6902330576d9fb7a8de66d73f281715343bf98e568add26f5e1841137bad4b3"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 1,
+          "labels": [
+            "Senior Leadership & Operations Experience"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "Financial/Financial Community"
+          ]
+        },
+        {
+          "column_index": 5,
+          "labels": [
+            "Governance & Public Company Board"
+          ]
+        }
+      ],
+      "period_axis_indexes": [],
+      "schema_reasons": [
+        "ratio_or_percentage_semantics"
+      ],
+      "schema_type": "ratio_percentage_table",
+      "table_fragment_id": "table:a7275135fd39a0df74f136dc1dc318aba8e31bbeda56e1cda790700dd0dda270"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Age: 60"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "Committees: AC, CC"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1
+      ],
+      "schema_reasons": [
+        "multiple_non_temporal_dimension_headers"
+      ],
+      "schema_type": "metric_by_segment_matrix",
+      "table_fragment_id": "table:04043cdde646cccbb1978d8772d7a45c13fdc4ed07fccd3cff8e7d97579ba894"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 1,
+          "labels": [
+            "Senior Leadership & Operations Experience"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "Industry & Technical"
+          ]
+        },
+        {
+          "column_index": 5,
+          "labels": [
+            "Governance & Public Company Board"
+          ]
+        }
+      ],
+      "period_axis_indexes": [],
+      "schema_reasons": [
+        "ratio_or_percentage_semantics"
+      ],
+      "schema_type": "ratio_percentage_table",
+      "table_fragment_id": "table:12b437d1ab6c510dcfc2899f1ec7d8c30da084137fc21bb3054123f71cc88542"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:e433fb5d9deee46642d7803cdce597685d5abf8216fe7fe97fc2059ac27789a8"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:d844d918d6f0f64d3c1eefee75bded4899fe188809c5a08c9d0bdf6ba109315c"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "opening_closing_activity_row_labels"
+      ],
+      "schema_type": "roll_forward",
+      "table_fragment_id": "table:00219bd304bbaa58ff6f6b06831a50731a66ce39867abce85a556b3d6d265b4d"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:4b3789737ff1d0414b7db33012a9c6b0244f4a1408f263a36a31eeda4a0728a4"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 1,
+          "labels": [
+            "$ 354",
+            "331",
+            "337",
+            "301",
+            "226"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        0
+      ],
+      "schema_reasons": [
+        "bucket_or_maturity_axis"
+      ],
+      "schema_type": "maturity_or_bucket_table",
+      "table_fragment_id": "table:0ac279273e2ec83e44cfb636f44fc8fafc9914484570e7eeb816bb100340578c"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:444f083a9b44564dacc2736cc517c6a883334831608cbee14e1014f5faad5a53"
+    },
+    {
+      "derived_measure_axes": [
+        {
+          "column_index": 4,
+          "labels": [
+            "% Change",
+            "24/23"
+          ]
+        },
+        {
+          "column_index": 5,
+          "labels": [
+            "% Change",
+            "23/22"
+          ]
+        }
+      ],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "(MILLIONS)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "explicit_change_axis_with_period_columns"
+      ],
+      "schema_type": "comparison_change_table",
+      "table_fragment_id": "table:2cc473a35ef3f8ade738625124bbaba88356633259371e38b0163f0c12ea2ad6"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "(MILLIONS, EXCEPT PER SHARE DATA)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:a8055121fa63f48f32fb0fa7fd624ea6541155fef3395d279e4de69bfc94c3de"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "(MILLIONS)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:49dbde54d03c8b10b9567f4990afe810443f58d26355a57849416453e25d49de"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "(MILLIONS)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:457ee024e7517c080544e4e19cf39456d471c1b2f7db5fb0b75218373f6f1973"
+    },
+    {
+      "derived_measure_axes": [
+        {
+          "column_index": 4,
+          "labels": [
+            "2025 vs. 2024 Change",
+            "$"
+          ]
+        },
+        {
+          "column_index": 5,
+          "labels": [
+            "2025 vs. 2024 Change",
+            "%"
+          ]
+        },
+        {
+          "column_index": 6,
+          "labels": [
+            "2024 vs. 2023 Change",
+            "$"
+          ]
+        },
+        {
+          "column_index": 7,
+          "labels": [
+            "2024 vs. 2023 Change",
+            "%"
+          ]
+        }
+      ],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "(Dollars in millions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "explicit_change_axis_with_period_columns"
+      ],
+      "schema_type": "comparison_change_table",
+      "table_fragment_id": "table:11b13f579ed57a803e1ae5b27345556d8a402edf45fcf4fded3c6bf9acc325d0"
+    },
+    {
+      "derived_measure_axes": [
+        {
+          "column_index": 4,
+          "labels": [
+            "2025 vs. 2024 Change",
+            "$"
+          ]
+        },
+        {
+          "column_index": 5,
+          "labels": [
+            "2025 vs. 2024 Change",
+            "%"
+          ]
+        },
+        {
+          "column_index": 6,
+          "labels": [
+            "2024 vs. 2023 Change",
+            "$"
+          ]
+        },
+        {
+          "column_index": 7,
+          "labels": [
+            "2024 vs. 2023 Change",
+            "%"
+          ]
+        }
+      ],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "(Dollars in millions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "explicit_change_axis_with_period_columns"
+      ],
+      "schema_type": "comparison_change_table",
+      "table_fragment_id": "table:43db179fda1d82495b0a73cc48926b860573c6a8183abdbaf10100c2f2754351"
+    },
+    {
+      "derived_measure_axes": [
+        {
+          "column_index": 4,
+          "labels": [
+            "2025 vs. 2024 Change",
+            "$"
+          ]
+        },
+        {
+          "column_index": 5,
+          "labels": [
+            "2025 vs. 2024 Change",
+            "%"
+          ]
+        },
+        {
+          "column_index": 6,
+          "labels": [
+            "2024 vs. 2023 Change",
+            "$"
+          ]
+        },
+        {
+          "column_index": 7,
+          "labels": [
+            "2024 vs. 2023 Change",
+            "%"
+          ]
+        }
+      ],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "(Dollars in millions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "explicit_change_axis_with_period_columns"
+      ],
+      "schema_type": "comparison_change_table",
+      "table_fragment_id": "table:3b8e16909c385eea5c50050e410eba4afc6f89ff665b26d7c1be358748469b50"
+    },
+    {
+      "derived_measure_axes": [
+        {
+          "column_index": 4,
+          "labels": [
+            "2025 vs. 2024 Change",
+            "$"
+          ]
+        },
+        {
+          "column_index": 5,
+          "labels": [
+            "2025 vs. 2024 Change",
+            "%"
+          ]
+        },
+        {
+          "column_index": 6,
+          "labels": [
+            "2024 vs. 2023 Change",
+            "$"
+          ]
+        },
+        {
+          "column_index": 7,
+          "labels": [
+            "2024 vs. 2023 Change",
+            "%"
+          ]
+        }
+      ],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "(Dollars in millions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "explicit_change_axis_with_period_columns"
+      ],
+      "schema_type": "comparison_change_table",
+      "table_fragment_id": "table:4a65ba69a03e8bb7751ad8b759efb9663dd295a18ed212e4771080e9783da5c7"
+    },
+    {
+      "derived_measure_axes": [
+        {
+          "column_index": 4,
+          "labels": [
+            "2025 vs. 2024 Change",
+            "$"
+          ]
+        },
+        {
+          "column_index": 5,
+          "labels": [
+            "2025 vs. 2024 Change",
+            "%"
+          ]
+        },
+        {
+          "column_index": 6,
+          "labels": [
+            "2024 vs. 2023 Change",
+            "$"
+          ]
+        },
+        {
+          "column_index": 7,
+          "labels": [
+            "2024 vs. 2023 Change",
+            "%"
+          ]
+        }
+      ],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "(Dollars in millions)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "explicit_change_axis_with_period_columns"
+      ],
+      "schema_type": "comparison_change_table",
+      "table_fragment_id": "table:c610c44763ff2a919a7bd15cc316406e998bf82e0860cd9e10dee580b508b1d2"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Cash and cash equivalents"
+          ]
+        },
+        {
+          "column_index": 1,
+          "labels": [
+            "$ 16,513"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "$ 16,139"
+          ]
+        }
+      ],
+      "period_axis_indexes": [],
+      "schema_reasons": [
+        "multiple_non_temporal_dimension_headers"
+      ],
+      "schema_type": "metric_by_segment_matrix",
+      "table_fragment_id": "table:0b9beb9842caead53ac5b7e2ec305537b737ee6a151563ed41d3eec9d0456531"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Redeemable noncontrolling interests in subsidiaries"
+          ]
+        },
+        {
+          "column_index": 1,
+          "labels": [
+            "58"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "63"
+          ]
+        }
+      ],
+      "period_axis_indexes": [],
+      "schema_reasons": [
+        "multiple_non_temporal_dimension_headers"
+      ],
+      "schema_type": "metric_by_segment_matrix",
+      "table_fragment_id": "table:bb88700695f7618247f3aea95f40f7d35eff8f0f3786c7509c988905d5f6695e"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Common stock; $0.001 par value; 6,000 shares authorized; 3,751 and 3,216 shares issued and outstanding as of December 31, 2025 and 2024, respectively"
+          ]
+        },
+        {
+          "column_index": 1,
+          "labels": [
+            "3"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "3"
+          ]
+        }
+      ],
+      "period_axis_indexes": [],
+      "schema_reasons": [
+        "multiple_non_temporal_dimension_headers"
+      ],
+      "schema_type": "metric_by_segment_matrix",
+      "table_fragment_id": "table:1bd9dcd91a7199d74c0b6b7a0e9ad749b35d9f565ee927cc91fda6c70717da9b"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:f1b0e9770f9618fd8c6e5abc858cf37e9701f666eae7f9875e39790bb66bd895"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Cost of revenues"
+          ]
+        },
+        {
+          "column_index": 1,
+          "labels": [
+            "Cost of revenues"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "Cost of revenues"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "Cost of revenues"
+          ]
+        }
+      ],
+      "period_axis_indexes": [],
+      "schema_reasons": [],
+      "schema_type": "mixed_or_unsupported",
+      "table_fragment_id": "table:ff78621b5b76c2e142047c7b7da4f7c1617945f4544eb19b77d66d4a5bf721ae"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "opening_closing_activity_row_labels"
+      ],
+      "schema_type": "roll_forward",
+      "table_fragment_id": "table:688d0eba067093a8fdf32fdbf39b11de357138b2da291eb5520fa218dd796647"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Long-term portion of lease obligations"
+          ]
+        },
+        {
+          "column_index": 1,
+          "labels": [
+            "$ 5,389"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "$ 152"
+          ]
+        }
+      ],
+      "period_axis_indexes": [],
+      "schema_reasons": [
+        "multiple_non_temporal_dimension_headers"
+      ],
+      "schema_type": "metric_by_segment_matrix",
+      "table_fragment_id": "table:4cb45a96f6421d71673e7de673aab443c5e54e33e22715891b57dbda116ef2f6"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 1,
+          "labels": [
+            "Operating Leases",
+            "$ 1,045",
+            "709",
+            "363",
+            "210",
+            "203"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "Sales-type Leases",
+            "$ 144",
+            "83",
+            "27",
+            "5",
+            "—"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        0
+      ],
+      "schema_reasons": [
+        "bucket_or_maturity_axis"
+      ],
+      "schema_type": "maturity_or_bucket_table",
+      "table_fragment_id": "table:74f8361f46e991b506e3cc0f5d63bac95b48930051347309864342a589bbde04"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Tranche #"
+          ]
+        },
+        {
+          "column_index": 1,
+          "labels": [
+            "Number of Shares Subject to Tranche"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "Market Capitalization Milestones (2)"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "Operational Milestones"
+          ]
+        },
+        {
+          "column_index": 4,
+          "labels": [
+            "Achievement Status"
+          ]
+        }
+      ],
+      "period_axis_indexes": [],
+      "schema_reasons": [
+        "ratio_or_percentage_semantics"
+      ],
+      "schema_type": "ratio_percentage_table",
+      "table_fragment_id": "table:2d8595348498723c2e4253382e92f7a54bd7f1f2e594cc469756f6ac404aac05"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:7f51a754f3829e2ad78533200ff7eddba2e2b199f50978f849d59cb6676869b6"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "4.7",
+            "4.8",
+            "4.9",
+            "4.10",
+            "4.11",
+            "4.12",
+            "4.13",
+            "4.14"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "S-1/A",
+            "8-K"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "333-174466",
+            "001-34756"
+          ]
+        },
+        {
+          "column_index": 4,
+          "labels": [
+            "4.2E",
+            "4.1",
+            "4.2"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        5
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:302e527db8e77518e09b875415c81dd8b767bdb5f78018033a32b2d594c68715"
+    },
+    {
+      "derived_measure_axes": [
+        {
+          "column_index": 4,
+          "labels": [
+            "% Change(1)",
+            "2025 vs. 2024"
+          ]
+        },
+        {
+          "column_index": 5,
+          "labels": [
+            "% Change(1)",
+            "2024 vs. 2023"
+          ]
+        }
+      ],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "explicit_change_axis_with_period_columns"
+      ],
+      "schema_type": "comparison_change_table",
+      "table_fragment_id": "table:a2b6b99ae6d9e7df75bafbe29c0b2b5dbbdfca535652b3580561fc8e72fbbd6b"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:693a68fb4af1853d8854aea73102d7e66cf92c2a0ed6bbd607196366ade59493"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:df89ce2c4fbef45b7eb45a425c72c80aea38b38bcbaa7e6efed7ada17a4d7c37"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:047c6a56c7f09d391ac993d738c97b84bae5339ad9a1873ff5d6dd98ff693439"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:f6edfbc307c5a0b39b9db3ec6df8fb232ead8dff268585bf2d20236bfd6c8d27"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:3e1604d9a66e7c770786b54a6b20ed94fefd21e3b18d2af6bcd9455c7a7638db"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:1b8d2cad1c8adbc4bc63dbcbb528c862e53e3f11c96167fe1eb194033bd21886"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:eccc8499dcfda60d507d415e218f6c4af978f9a261dbf1ad61142936e0c8adbd"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 1,
+          "labels": [
+            "Amortized Cost"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "Gross Unrealized"
+          ]
+        },
+        {
+          "column_index": 3,
+          "labels": [
+            "Gross Unrealized"
+          ]
+        },
+        {
+          "column_index": 4,
+          "labels": [
+            "Fair Value"
+          ]
+        }
+      ],
+      "period_axis_indexes": [],
+      "schema_reasons": [
+        "multiple_non_temporal_dimension_headers"
+      ],
+      "schema_type": "metric_by_segment_matrix",
+      "table_fragment_id": "table:c40c7ef2a0ccba555ff903234b4aab98d263f5be3bbc088ad593091a6a14ce59"
+    },
+    {
+      "derived_measure_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Due within one year",
+            "Due after one year through five years"
+          ]
+        }
+      ],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "Due within one year",
+            "Due after one year through five years"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1
+      ],
+      "schema_reasons": [
+        "bucket_or_maturity_axis"
+      ],
+      "schema_type": "maturity_or_bucket_table",
+      "table_fragment_id": "table:038d2379e5a2b0e19c8cfe46504cc99a40a50e655eccb693fe3982d30ef81cb0"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:40eb0fb4af8a7149eeaa5056da2cc9906149236afed1aa4706dd2f6e2edda519"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:b532260ec69578426ada4edd285ca80a371c9481c2664cab4361335942287e9f"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:6d06a058384902f846ad4a9c5ce73a1491fdf58c1971db6f054108489e619b09"
+    },
+    {
+      "derived_measure_axes": [
+        {
+          "column_index": 5,
+          "labels": [
+            "Growth Rate"
+          ]
+        }
+      ],
+      "dimension_axes": [
+        {
+          "column_index": 2,
+          "labels": [
+            "As a % of Total Subscription and Support Revenues"
+          ]
+        },
+        {
+          "column_index": 4,
+          "labels": [
+            "As a % of Total Subscription and Support Revenues"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        3
+      ],
+      "schema_reasons": [
+        "explicit_change_axis_with_period_columns"
+      ],
+      "schema_type": "comparison_change_table",
+      "table_fragment_id": "table:302d39fa3548de9c6d5fdf1f642918bb501b638005eaada057a5be10fd109bbd"
+    },
+    {
+      "derived_measure_axes": [
+        {
+          "column_index": 5,
+          "labels": [
+            "Growth Rate"
+          ]
+        }
+      ],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "(in millions)"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "As a % of Total Revenues"
+          ]
+        },
+        {
+          "column_index": 4,
+          "labels": [
+            "As a % of Total Revenues"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        3
+      ],
+      "schema_reasons": [
+        "explicit_change_axis_with_period_columns"
+      ],
+      "schema_type": "comparison_change_table",
+      "table_fragment_id": "table:cb3250602f05e01215c71b58292427994786185e6a786f1d78cb631236b08021"
+    },
+    {
+      "derived_measure_axes": [
+        {
+          "column_index": 5,
+          "labels": [
+            "Variance Dollars"
+          ]
+        }
+      ],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "(in millions)"
+          ]
+        },
+        {
+          "column_index": 2,
+          "labels": [
+            "As a % of Total Revenues"
+          ]
+        },
+        {
+          "column_index": 4,
+          "labels": [
+            "As a % of Total Revenues"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        3
+      ],
+      "schema_reasons": [
+        "explicit_change_axis_with_period_columns"
+      ],
+      "schema_type": "comparison_change_table",
+      "table_fragment_id": "table:4c329d7bc38471b47c3dad6a48e55457edec75f8f0ec5d7c9cabadbce0edd582"
+    },
+    {
+      "derived_measure_axes": [],
+      "dimension_axes": [
+        {
+          "column_index": 0,
+          "labels": [
+            "(Amounts in millions, except per share data)"
+          ]
+        }
+      ],
+      "period_axis_indexes": [
+        1,
+        2,
+        3
+      ],
+      "schema_reasons": [
+        "multiple_period_headers_on_column_axis"
+      ],
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:d0821896d1666fbeac3300ab1707a86c7fa331284cfcfe3e2026b44c22feb0c9"
+    }
+  ],
+  "schema_counts": {
+    "comparison_change_table": 14,
+    "maturity_or_bucket_table": 10,
+    "metric_by_segment_matrix": 7,
+    "mixed_or_unsupported": 2,
+    "period_on_columns": 67,
+    "period_on_rows": 4,
+    "ratio_percentage_table": 5,
+    "roll_forward": 8
+  },
+  "table_count": 117
+}

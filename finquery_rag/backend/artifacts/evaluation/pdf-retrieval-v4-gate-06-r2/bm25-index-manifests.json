@@ -1,0 +1,99 @@
+{
+  "document_counts": {
+    "atomic_fact": 2725,
+    "bucket_fact": 267,
+    "cell": 3115,
+    "comparison_fact": 123,
+    "row": 1581,
+    "section": 117,
+    "table": 117
+  },
+  "index_hashes": {
+    "atomic_fact": "c8a334e21a52d5d10915903520dba434cc5bf2bc8106ab8a333aa05051fbac45",
+    "bucket_fact": "c7d86279d29e047348bfc275a9fc900be1b732e1190f0fb2555df54141d6500c",
+    "cell": "512ed55dc866e074a59521a5b14b2bcaff2891b4c44fefac0d01b3f61acd82ba",
+    "comparison_fact": "9d684815ec862223e14c475d940542a28e9f3d13956d8a0ed446b3d35a785e26",
+    "row": "2e3c3d4a38690b5c24de170b93c5027b304e76c4e6b33add2ee31a3754905f15",
+    "section": "7a6c9e1a89190f02e3b1a5ab3a343537eceb04c213bc4d1b5235d5ce33576b07",
+    "table": "0e6e4e1b9d934cd82f3bd068a1127aa791374afd87332ff9c7e2560ddf44034b"
+  },
+  "manifests": {
+    "atomic_fact": {
+      "bm25_config_hash": "8d960159c9bc7952671db3091ed859930fcb61982d22d93e566d171cb19f422f",
+      "document_count": 2725,
+      "index_type": "atomic_fact_bm25",
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/runtime/pdf-retrieval-v4-gate-06-r2/atomic_fact/bm25/index.sqlite",
+      "retrieval_text_hash": "7df36022d42ef657b3c4119a5b409bd225521aa614fca93e813e6af5fcabb795",
+      "retrieval_view_id_hash": "80bade845763189bbac8b846f15a2a789233e0653c60b5d11172239266159849",
+      "serialized_index_hash": "c8a334e21a52d5d10915903520dba434cc5bf2bc8106ab8a333aa05051fbac45",
+      "tokenizer_config_hash": "a94c9f8488c2cd84c95a950fe5839c4cb190bc545e97189610f40d6fec99fe4d",
+      "unit_type": "atomic_fact"
+    },
+    "bucket_fact": {
+      "bm25_config_hash": "8d960159c9bc7952671db3091ed859930fcb61982d22d93e566d171cb19f422f",
+      "document_count": 267,
+      "index_type": "bucket_fact_bm25",
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/runtime/pdf-retrieval-v4-gate-06-r2/bucket_fact/bm25/index.sqlite",
+      "retrieval_text_hash": "8ab067fa7e01051d5c80c4d711cf33141d7680385df8c1d5f276f9c3c6ccae57",
+      "retrieval_view_id_hash": "4c4aa3f28e937493c0de6ecb055113a03a421636b76eb0d9631142d580d79d61",
+      "serialized_index_hash": "c7d86279d29e047348bfc275a9fc900be1b732e1190f0fb2555df54141d6500c",
+      "tokenizer_config_hash": "a94c9f8488c2cd84c95a950fe5839c4cb190bc545e97189610f40d6fec99fe4d",
+      "unit_type": "bucket_fact"
+    },
+    "cell": {
+      "bm25_config_hash": "8d960159c9bc7952671db3091ed859930fcb61982d22d93e566d171cb19f422f",
+      "document_count": 3115,
+      "index_type": "cell_bm25",
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/runtime/pdf-retrieval-v4-gate-06-r2/cell/bm25/index.sqlite",
+      "retrieval_text_hash": "3bc8b4750fe654520c855ea903470b100b08c7dba62c912471525ab6a495f8ac",
+      "retrieval_view_id_hash": "21242a94f00a94b6237752034ea74fced0e443ca19ac5c698e0e1b9dfecb715f",
+      "serialized_index_hash": "512ed55dc866e074a59521a5b14b2bcaff2891b4c44fefac0d01b3f61acd82ba",
+      "tokenizer_config_hash": "a94c9f8488c2cd84c95a950fe5839c4cb190bc545e97189610f40d6fec99fe4d",
+      "unit_type": "cell"
+    },
+    "comparison_fact": {
+      "bm25_config_hash": "8d960159c9bc7952671db3091ed859930fcb61982d22d93e566d171cb19f422f",
+      "document_count": 123,
+      "index_type": "comparison_fact_bm25",
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/runtime/pdf-retrieval-v4-gate-06-r2/comparison_fact/bm25/index.sqlite",
+      "retrieval_text_hash": "e46da53c12f11091d41cffb56b7f5c279ac82dd3244ce6ae67b6dca11a1487d7",
+      "retrieval_view_id_hash": "760e9aa54ce43b3974f149b9161c7c6d2d005be15636984a008b20ccf743c52c",
+      "serialized_index_hash": "9d684815ec862223e14c475d940542a28e9f3d13956d8a0ed446b3d35a785e26",
+      "tokenizer_config_hash": "a94c9f8488c2cd84c95a950fe5839c4cb190bc545e97189610f40d6fec99fe4d",
+      "unit_type": "comparison_fact"
+    },
+    "row": {
+      "bm25_config_hash": "8d960159c9bc7952671db3091ed859930fcb61982d22d93e566d171cb19f422f",
+      "document_count": 1581,
+      "index_type": "row_bm25",
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/runtime/pdf-retrieval-v4-gate-06-r2/row/bm25/index.sqlite",
+      "retrieval_text_hash": "76cf23caa267c890e122c0894cb23ec5764cc359b0ad1ddb707aff2f212ac14b",
+      "retrieval_view_id_hash": "38f1ea963ac8a35b1faea7b2f8740bf988460fc84232cfc79ceec77d9f03ca68",
+      "serialized_index_hash": "2e3c3d4a38690b5c24de170b93c5027b304e76c4e6b33add2ee31a3754905f15",
+      "tokenizer_config_hash": "a94c9f8488c2cd84c95a950fe5839c4cb190bc545e97189610f40d6fec99fe4d",
+      "unit_type": "row"
+    },
+    "section": {
+      "bm25_config_hash": "8d960159c9bc7952671db3091ed859930fcb61982d22d93e566d171cb19f422f",
+      "document_count": 117,
+      "index_type": "section_bm25",
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/runtime/pdf-retrieval-v4-gate-06-r2/section/bm25/index.sqlite",
+      "retrieval_text_hash": "e37923b9d7d4fd2355bb2ddadb4cc9230d280ff6269d48618c408568adb28ed7",
+      "retrieval_view_id_hash": "5ad0a7514e7027ef0bc0b01779746a58eb42d0286ed0024d4102d12395e48c22",
+      "serialized_index_hash": "7a6c9e1a89190f02e3b1a5ab3a343537eceb04c213bc4d1b5235d5ce33576b07",
+      "tokenizer_config_hash": "a94c9f8488c2cd84c95a950fe5839c4cb190bc545e97189610f40d6fec99fe4d",
+      "unit_type": "section"
+    },
+    "table": {
+      "bm25_config_hash": "8d960159c9bc7952671db3091ed859930fcb61982d22d93e566d171cb19f422f",
+      "document_count": 117,
+      "index_type": "table_bm25",
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/runtime/pdf-retrieval-v4-gate-06-r2/table/bm25/index.sqlite",
+      "retrieval_text_hash": "89d0ddc860eae6af4124f508155a038bcc4f35bdd440992ab6e2d4b18898907a",
+      "retrieval_view_id_hash": "6861567056d1f0150b7da524ba713983dbbc4aa6e777132bf76d34eedae63a2a",
+      "serialized_index_hash": "0e6e4e1b9d934cd82f3bd068a1127aa791374afd87332ff9c7e2560ddf44034b",
+      "tokenizer_config_hash": "a94c9f8488c2cd84c95a950fe5839c4cb190bc545e97189610f40d6fec99fe4d",
+      "unit_type": "table"
+    }
+  }
+}

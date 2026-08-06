@@ -1,0 +1,48 @@
+{
+  "current": {
+    "bm25_index_hashes": {
+      "atomic_fact": "c8a334e21a52d5d10915903520dba434cc5bf2bc8106ab8a333aa05051fbac45",
+      "bucket_fact": "c7d86279d29e047348bfc275a9fc900be1b732e1190f0fb2555df54141d6500c",
+      "cell": "512ed55dc866e074a59521a5b14b2bcaff2891b4c44fefac0d01b3f61acd82ba",
+      "comparison_fact": "9d684815ec862223e14c475d940542a28e9f3d13956d8a0ed446b3d35a785e26",
+      "row": "2e3c3d4a38690b5c24de170b93c5027b304e76c4e6b33add2ee31a3754905f15",
+      "section": "7a6c9e1a89190f02e3b1a5ab3a343537eceb04c213bc4d1b5235d5ce33576b07",
+      "table": "0e6e4e1b9d934cd82f3bd068a1127aa791374afd87332ff9c7e2560ddf44034b"
+    },
+    "dense_semantic_replay_hashes": {
+      "atomic_fact": "4d0a400d59d943d788ae9041b7d166992f9da96dea4d284b5f74dd0c72a22950",
+      "bucket_fact": "96c07c2f8d0970ecff639baa0c176b9690830655c0f78b0eebfde1f69665576f",
+      "cell": "f94b6b33e29d960d23d466e973d44522e04c7a0455ae619809f4f001e891dd7f",
+      "comparison_fact": "fdc4940a0830952f76d58b9259112af5c566cc05e50426a8aece835e1d11e121",
+      "row": "849232285426f3883e81e04a7d7a3eda0f9016eb3f39f4e0fa1bfc35b39b597c",
+      "section": "064e4eb75be9afdd6a5ad1fe4367a6ff2becbfdc69e11c003dbe1a6aa571b7c5",
+      "table": "66866b5badf6d949eeef640cfe677af123734680625d57b65850e3aee19211bc"
+    },
+    "metadata_store_hash": "21c36b037de806968bab5cb51625d3932cf48875b0c5d1c72b9f2df072ba6dd0",
+    "retrieval_view_hash": "4f2c12f607f4a8e9da770236817d2928e723ff10b6cc0a3b2b68df18d6e6711f"
+  },
+  "first_run_requires_second_replay": false,
+  "previous": {
+    "bm25": {
+      "atomic_fact": "c8a334e21a52d5d10915903520dba434cc5bf2bc8106ab8a333aa05051fbac45",
+      "bucket_fact": "c7d86279d29e047348bfc275a9fc900be1b732e1190f0fb2555df54141d6500c",
+      "cell": "512ed55dc866e074a59521a5b14b2bcaff2891b4c44fefac0d01b3f61acd82ba",
+      "comparison_fact": "9d684815ec862223e14c475d940542a28e9f3d13956d8a0ed446b3d35a785e26",
+      "row": "2e3c3d4a38690b5c24de170b93c5027b304e76c4e6b33add2ee31a3754905f15",
+      "section": "7a6c9e1a89190f02e3b1a5ab3a343537eceb04c213bc4d1b5235d5ce33576b07",
+      "table": "0e6e4e1b9d934cd82f3bd068a1127aa791374afd87332ff9c7e2560ddf44034b"
+    },
+    "dense": {
+      "atomic_fact": "4d0a400d59d943d788ae9041b7d166992f9da96dea4d284b5f74dd0c72a22950",
+      "bucket_fact": "96c07c2f8d0970ecff639baa0c176b9690830655c0f78b0eebfde1f69665576f",
+      "cell": "f94b6b33e29d960d23d466e973d44522e04c7a0455ae619809f4f001e891dd7f",
+      "comparison_fact": "fdc4940a0830952f76d58b9259112af5c566cc05e50426a8aece835e1d11e121",
+      "row": "849232285426f3883e81e04a7d7a3eda0f9016eb3f39f4e0fa1bfc35b39b597c",
+      "section": "064e4eb75be9afdd6a5ad1fe4367a6ff2becbfdc69e11c003dbe1a6aa571b7c5",
+      "table": "66866b5badf6d949eeef640cfe677af123734680625d57b65850e3aee19211bc"
+    },
+    "metadata": "21c36b037de806968bab5cb51625d3932cf48875b0c5d1c72b9f2df072ba6dd0"
+  },
+  "replay_attempted": true,
+  "replay_stable": true
+}

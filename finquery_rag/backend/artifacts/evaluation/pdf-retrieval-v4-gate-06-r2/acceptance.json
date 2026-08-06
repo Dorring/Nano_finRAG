@@ -1,0 +1,19 @@
+{
+  "answer_generation_calls": 0,
+  "candidate_identity_conflicts": 0,
+  "decision": "multi_granularity_shadow_index_r2_passed",
+  "deterministic_replay_stable": true,
+  "duplicate_views": 0,
+  "gate": "pdf_retrieval_v4_gate_06_r2",
+  "gate_passed": true,
+  "next_gate": "v4_query_planner",
+  "production_default_config_modified": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "question_reads": 0,
+  "r4_typed_admission": true,
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "runtime_gold_reads": 0,
+  "runtime_governance_reads": 0
+}

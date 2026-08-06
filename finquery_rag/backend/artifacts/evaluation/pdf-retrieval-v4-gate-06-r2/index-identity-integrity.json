@@ -1,0 +1,14 @@
+{
+  "duplicate_view_id_count": 0,
+  "evidence_unit_count": 13205,
+  "fact_type_counts": {
+    "atomic_fact": 2725,
+    "bucket_fact": 267,
+    "comparison_fact": 123
+  },
+  "identity_conflict_count": 0,
+  "physical_cross_page_merge_count": 0,
+  "retrieval_view_count": 8045,
+  "soft_edge_endpoint_errors": 0,
+  "source_traceback_missing_count": 0
+}

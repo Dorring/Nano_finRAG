@@ -1,0 +1,39 @@
+{
+  "classification_sha256": "71b378a2594d918aaa9360ffb7a57981803d61e4a2d8130ef74f6de98017c5c4",
+  "code_commit": "2f7de72",
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "expected_value_reads": 0,
+  "gate": "pdf_retrieval_v4_gate_05_r4",
+  "gate_05_r3_prediction_sha256": "8f7307d8fd377f2d0ab6278555eca2f67bbf15276ea2b8867ee8d55bbd12f0db",
+  "gold_reads": 0,
+  "index_builds": 0,
+  "input_graph_sha256": "c970a61d3fb311d39e0f85ab685faffdef638f6cb3a742fc7f70136a472f63ba",
+  "oracle_reads": 0,
+  "parameter_scan": false,
+  "per_query_oracle": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "question_reads": 0,
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "schema_types": [
+    "period_on_columns",
+    "period_on_rows",
+    "single_period_snapshot",
+    "metric_by_segment_matrix",
+    "period_by_segment_matrix",
+    "roll_forward",
+    "comparison_change_table",
+    "maturity_or_bucket_table",
+    "ratio_percentage_table",
+    "mixed_or_unsupported"
+  ],
+  "temporal_binding_union": [
+    "point",
+    "duration",
+    "comparison",
+    "bucket",
+    "period_set",
+    "not_applicable"
+  ]
+}

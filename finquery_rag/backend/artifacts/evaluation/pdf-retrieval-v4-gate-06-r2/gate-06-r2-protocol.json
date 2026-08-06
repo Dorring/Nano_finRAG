@@ -1,0 +1,24 @@
+{
+  "answer_generation_calls": 0,
+  "code_commit": "2f7de72",
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "gate": "pdf_retrieval_v4_gate_06_r2",
+  "production_default_config_modified": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "question_reads": 0,
+  "r4_typed_admission_required": true,
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "runtime_gold_reads": 0,
+  "runtime_governance_reads": 0,
+  "unit_types": [
+    "section",
+    "table",
+    "row",
+    "cell",
+    "atomic_fact",
+    "comparison_fact",
+    "bucket_fact"
+  ]
+}

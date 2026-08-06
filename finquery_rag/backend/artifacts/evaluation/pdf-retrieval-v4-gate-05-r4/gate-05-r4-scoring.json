@@ -1,0 +1,426 @@
+{
+  "atomic_fact": {
+    "admission_rate": 0.8778994845360825,
+    "count": 2725,
+    "eligible": 3104
+  },
+  "bucket_fact": {
+    "admission_rate": 1.0,
+    "count": 267,
+    "eligible": 267
+  },
+  "comparison_fact": {
+    "admission_rate": 0.9919354838709677,
+    "count": 123,
+    "eligible": 124
+  },
+  "complete_predicate_gap": {
+    "atomic_recovery": 0,
+    "classified": 47,
+    "safe_typed_recovery": 47
+  },
+  "eligible_financial_evidence_count": 3919,
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "oracle_regression": {
+    "r3_all_required_thresholds": true,
+    "r3_metrics": {
+      "metric_exact": [
+        21,
+        22
+      ],
+      "metric_period": [
+        21,
+        22
+      ],
+      "metric_period_value": [
+        21,
+        22
+      ],
+      "numeric_exact": [
+        22,
+        22
+      ],
+      "period_exact": [
+        22,
+        22
+      ],
+      "row_recovery": [
+        22,
+        22
+      ],
+      "scale_exact": [
+        22,
+        22
+      ],
+      "source_traceback": [
+        22,
+        22
+      ],
+      "table_recovery": [
+        22,
+        22
+      ]
+    },
+    "r3_oracle_record_count": 22,
+    "r4_false_metric_binding_count": 0,
+    "r4_false_temporal_binding_count": 0,
+    "r4_metric_match_count": 22,
+    "r4_temporal_match_count": 22,
+    "record_audit": [
+      {
+        "expected_metric": "Total net sales",
+        "expected_period": "FY2024",
+        "fact_id": "fact:99012558a67c79434db02945c45ec01df05fff591aeb126793eff35211e6a142",
+        "metric_match": true,
+        "normalized_metric": "total net sales",
+        "oracle_record_id": 0,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2024",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "e93b22fec8d69c9469cd0dd6f1aefadd714b160a630be384622bb13cd3eb12ec"
+      },
+      {
+        "expected_metric": "Total net sales",
+        "expected_period": "FY2025",
+        "fact_id": "fact:ad2ba700cda4c5f2ae7b6a454f6cc4ceb13638daebc5c349823307961c80d714",
+        "metric_match": true,
+        "normalized_metric": "total net sales",
+        "oracle_record_id": 1,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2025",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "e93b22fec8d69c9469cd0dd6f1aefadd714b160a630be384622bb13cd3eb12ec"
+      },
+      {
+        "expected_metric": "Total assets",
+        "expected_period": "FY2024",
+        "fact_id": "fact:f02c51b06aee53834cbef1cb385196f5090d97dd025fa4e4640bf1a86e78c4f6",
+        "metric_match": true,
+        "normalized_metric": "total assets(a)",
+        "oracle_record_id": 2,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2024",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "2455c2da79e6be7aa919ba32500882df21c111e9adf2d8928ce6a82204325382"
+      },
+      {
+        "expected_metric": "Total assets",
+        "expected_period": "FY2025",
+        "fact_id": "fact:d1599ed6792ddbfc9b471e8d68aca29f7d94636471d1998e46ec50a043f8e9dd",
+        "metric_match": true,
+        "normalized_metric": "total assets(a)",
+        "oracle_record_id": 3,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2025",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "2455c2da79e6be7aa919ba32500882df21c111e9adf2d8928ce6a82204325382"
+      },
+      {
+        "expected_metric": "Net operating revenues",
+        "expected_period": "FY2024",
+        "fact_id": "fact:38c7bea6c341b81cb4255c47f714015d2d03b1bce6882858bfde0c42c62b24da",
+        "metric_match": true,
+        "normalized_metric": "net operating revenues",
+        "oracle_record_id": 4,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2024",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "dc0d6e785300d69a7ffc23ecaf8e03d86ee9cafab115438981532e66ac5b0a88"
+      },
+      {
+        "expected_metric": "Net operating revenues",
+        "expected_period": "FY2025",
+        "fact_id": "fact:9376941bc7eae3e05fc8aa518e28579091b92fd250158677dabfd8d20ce2f696",
+        "metric_match": true,
+        "normalized_metric": "net operating revenues",
+        "oracle_record_id": 5,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2025",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "dc0d6e785300d69a7ffc23ecaf8e03d86ee9cafab115438981532e66ac5b0a88"
+      },
+      {
+        "expected_metric": "EMEA third-party revenue",
+        "expected_period": "FY2025",
+        "fact_id": "fact:ab4d01c9117310fbb747d58ef138f8cb36d1d924b202bfbe431d684178addc04",
+        "metric_match": true,
+        "normalized_metric": "emea / net operating revenues / third party",
+        "oracle_record_id": 6,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2025",
+          "period_type": "instant"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "27f6220c098187f8cc2675c7fc08d18525c74552a71c9acbbcd50835f3af79e3"
+      },
+      {
+        "expected_metric": "Net operating revenues",
+        "expected_period": "FY2025",
+        "fact_id": "fact:8ad50d4271ec9bf7821796214486e4e6284da8a34e1577dfd5ebd71e5d5aafd6",
+        "metric_match": true,
+        "normalized_metric": "consolidated / total net operating revenues",
+        "oracle_record_id": 7,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2025",
+          "period_type": "instant"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "f8a776d31019a4d464395cb3d382322d5b3a51f8747fe4884e861689c2791c35"
+      },
+      {
+        "expected_metric": "Total revenue",
+        "expected_period": "FY2024",
+        "fact_id": "fact:28b42b22c844423b1a685cdf393c180ff09817bb5738e923cd3c843ba40f0b98",
+        "metric_match": true,
+        "normalized_metric": "total",
+        "oracle_record_id": 8,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2024",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "877e8b8ec66eb164121593945cbc85ee0f9219b2a948ec96e6f76722bc89a51f"
+      },
+      {
+        "expected_metric": "Total revenue",
+        "expected_period": "FY2025",
+        "fact_id": "fact:2d184d29493942ca29561e72120a5be3a84d9ef89e7af5fe422e54611d2b1ca8",
+        "metric_match": true,
+        "normalized_metric": "total / revenue",
+        "oracle_record_id": 9,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2025",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "877e8b8ec66eb164121593945cbc85ee0f9219b2a948ec96e6f76722bc89a51f"
+      },
+      {
+        "expected_metric": "Intelligent Cloud revenue",
+        "expected_period": "FY2025",
+        "fact_id": "fact:c729ce81874ea3169441332fd34a075c7f49d549e5936eff06cbb230f086b878",
+        "metric_match": true,
+        "normalized_metric": "intelligent cloud / revenue",
+        "oracle_record_id": 10,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2025",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "58087037397b2f4b9c64144ff12a2f504d2cd08ac3f6735cf826cade3101b6e2"
+      },
+      {
+        "expected_metric": "Total revenue",
+        "expected_period": "FY2025",
+        "fact_id": "fact:2d184d29493942ca29561e72120a5be3a84d9ef89e7af5fe422e54611d2b1ca8",
+        "metric_match": true,
+        "normalized_metric": "total / revenue",
+        "oracle_record_id": 11,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2025",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "877e8b8ec66eb164121593945cbc85ee0f9219b2a948ec96e6f76722bc89a51f"
+      },
+      {
+        "expected_metric": "Total revenue",
+        "expected_period": "FY2024",
+        "fact_id": "fact:02f01bd4d1656862144637a6ca66359bc442eed9d5545cd601b7df9a4e5643ee",
+        "metric_match": true,
+        "normalized_metric": "total / revenue",
+        "oracle_record_id": 12,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2024",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "955fa6bbc3e27cec495d6ce03b3704146e7df5b4b174bf3b2b5b2f56a606f76b"
+      },
+      {
+        "expected_metric": "Total revenue",
+        "expected_period": "FY2025",
+        "fact_id": "fact:ebb07848e401a87ca0856c621e9cdbdd2871777a79e26e181a062b279524857a",
+        "metric_match": true,
+        "normalized_metric": "total / revenue",
+        "oracle_record_id": 13,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2025",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "955fa6bbc3e27cec495d6ce03b3704146e7df5b4b174bf3b2b5b2f56a606f76b"
+      },
+      {
+        "expected_metric": "Total revenues",
+        "expected_period": "FY2023",
+        "fact_id": "fact:42ec59f88d0d78cada38952433d35c387219b8e229026ca73c50cbff407a78b9",
+        "metric_match": true,
+        "normalized_metric": "total revenues",
+        "oracle_record_id": 14,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2023",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "6a8555847e9554c5b0d536dacff7f8237bb38d10bc5b4472cee95e855832ea06"
+      },
+      {
+        "expected_metric": "Total revenues",
+        "expected_period": "FY2024",
+        "fact_id": "fact:8de10a2cd73b1366fd9314061acb3e44237222034c123a7a16f5c1766b6ad72b",
+        "metric_match": true,
+        "normalized_metric": "total revenues",
+        "oracle_record_id": 15,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2024",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "6a8555847e9554c5b0d536dacff7f8237bb38d10bc5b4472cee95e855832ea06"
+      },
+      {
+        "expected_metric": "Total revenues",
+        "expected_period": "FY2024",
+        "fact_id": "fact:ad4881a261fdeb382f90e59c6319cdec0e098dc3c59412d4c266daca6300e1a2",
+        "metric_match": true,
+        "normalized_metric": "total revenues",
+        "oracle_record_id": 16,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2024",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "7c808b92ebace6c3f73880f51e7a7aeef84cd3c8553e618093087cea9175ddb0"
+      },
+      {
+        "expected_metric": "Total revenues",
+        "expected_period": "FY2025",
+        "fact_id": "fact:76fb705931ca03b2920b26242d1d1b8b666d1e7d6050314a3b7ccef1b6447e01",
+        "metric_match": true,
+        "normalized_metric": "total revenues",
+        "oracle_record_id": 17,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2025",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "7c808b92ebace6c3f73880f51e7a7aeef84cd3c8553e618093087cea9175ddb0"
+      },
+      {
+        "expected_metric": "Total automotive revenues",
+        "expected_period": "FY2025",
+        "fact_id": "fact:c9bbffb36d127b93dd4533c9971b37421dc60cc93260287119260a862c9f6880",
+        "metric_match": true,
+        "normalized_metric": "total automotive revenues",
+        "oracle_record_id": 18,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2025",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "3de236c7d0ff14c00217429ad33e3c7adc295c9e103294500491916796398ae4"
+      },
+      {
+        "expected_metric": "Energy generation and storage segment revenue",
+        "expected_period": "FY2025",
+        "fact_id": "fact:659784960b5f8a64ed4f0b173f85e325b93df7323b06a2678463c6e651794700",
+        "metric_match": true,
+        "normalized_metric": "and energy generation storage segment revenue",
+        "oracle_record_id": 19,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2025",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "043004785ce70e73105a86409c4de1fdefc12cafb79f0f23b43b1bd6032013a4"
+      },
+      {
+        "expected_metric": "Net revenue",
+        "expected_period": "FY2024",
+        "fact_id": "fact:a0ecfeef5fce1fce45941a0bc83c557a094163455ade575a81aaf1e35feff197",
+        "metric_match": true,
+        "normalized_metric": "(in millions, except per share data) / revenue............................................................................................................................... net",
+        "oracle_record_id": 20,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2024",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "c8f4879fa90caed97ed38b2e23fe12ddd26445fe5ea996f410acb2198d3de502"
+      },
+      {
+        "expected_metric": "Net revenue",
+        "expected_period": "FY2025",
+        "fact_id": "fact:08285baf091e92a50e8f899fe7f057ccc7a140e09cc4a45be3c1bb3155c05ed2",
+        "metric_match": true,
+        "normalized_metric": "(in millions, except per share data) / revenue............................................................................................................................... net",
+        "oracle_record_id": 21,
+        "temporal_binding": {
+          "kind": "duration",
+          "period": "FY2025",
+          "period_type": "annual_duration"
+        },
+        "temporal_match": true,
+        "unique_source_identity": "a11c05cc59afd2fc9ea72e716ae9232c8a8dd4f639babf215cd70294c20590c9"
+      }
+    ]
+  },
+  "posthoc_oracle_records_read": 22,
+  "prediction_seal_verified": true,
+  "production_index_writes": 0,
+  "question_reads": 0,
+  "record_count": 4254,
+  "row_matrix_evidence": {
+    "admission_rate": 0.18607988519492943,
+    "count": 778,
+    "eligible": 4181
+  },
+  "runtime_gold_reads": 0,
+  "temporally_typed_evidence_admission_rate": 0.9933656545037,
+  "thresholds": {
+    "atomic_fact_admission": true,
+    "bucket_fact_admission": true,
+    "comparison_fact_admission": true,
+    "complete_predicate_gap_classified": true,
+    "complete_predicate_gap_safe_recovery": true,
+    "false_metric_binding": true,
+    "false_temporal_binding": true,
+    "oracle_regression": true,
+    "temporally_typed_admission": true
+  },
+  "typed_admitted_count": 3893
+}

@@ -1,0 +1,31 @@
+{
+  "excluded_counts": {
+    "atomic_fact": {},
+    "bucket_fact": {},
+    "cell": {
+      "not_typed_index_admissible": 4021
+    },
+    "comparison_fact": {},
+    "fact": {
+      "not_typed_index_admissible": 1139
+    },
+    "row": {},
+    "section": {},
+    "table": {}
+  },
+  "physical_cross_page_merge": false,
+  "retrieval_view_id_hash": "12e0b52f30c487b5ae981fff4e49f0976fe934a92c8cee778ddb222c6132e147",
+  "schema_version": "pdf-v4-retrieval-view-r2",
+  "soft_continuation_generalization_established": false,
+  "soft_continuation_group_count": 2,
+  "total_view_count": 8045,
+  "view_counts": {
+    "atomic_fact": 2725,
+    "bucket_fact": 267,
+    "cell": 3115,
+    "comparison_fact": 123,
+    "row": 1581,
+    "section": 117,
+    "table": 117
+  }
+}

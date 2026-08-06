@@ -1,0 +1,22 @@
+{
+  "atomic_fact_admission_rate": 0.8778994845360825,
+  "bucket_fact_admission_rate": 1.0,
+  "comparison_fact_admission_rate": 0.9919354838709677,
+  "complete_predicate_gap_safe_recovery": 47,
+  "decision": "financial_temporal_binding_graph_passed",
+  "false_metric_binding_count": 0,
+  "false_temporal_binding_count": 0,
+  "gate": "pdf_retrieval_v4_gate_05_r4",
+  "gate_passed": true,
+  "index_builds": 0,
+  "next_gate": "multi_granularity_shadow_index_r2",
+  "posthoc_oracle_records_read": 22,
+  "prediction_seal_verified": true,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "question_reads": 0,
+  "retrieval_runs": 0,
+  "row_matrix_evidence_count": 778,
+  "runtime_gold_reads": 0,
+  "temporally_typed_evidence_admission_rate": 0.9933656545037
+}

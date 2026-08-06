@@ -1,0 +1,977 @@
+{
+  "atomic_recovery_count": 0,
+  "candidate_count": 47,
+  "classified_count": 47,
+  "expected_candidate_count": 47,
+  "gap_reason_counts": {
+    "invalid_value_kind": 43,
+    "missing_scale_for_currency": 4
+  },
+  "gold_reads": 0,
+  "question_reads": 0,
+  "records": [
+    {
+      "cell_id": "cell:27c5fa91dcae1f795662c1e4b1bdc442c06174bccfa23f48cc94bec270887050",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:0a19739ed9ff4b9879ce341afc75144481fac7679f10f31417b2b57fe7bb204b",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:1ea1b8a8f921dad8b6dccc2a5b056d3107eed4752ac28a2b50a9d17b785c712e",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:bf91986653f71bd08b997738f164e1031b4ab96f1e075c34eff6c4e961b5c99a",
+      "current_binding_status": "row_only",
+      "document_id": "tsla_fy2025",
+      "fact_id": "fact:0c3f7b8feea89567029a88194eab8fe34a99072b1acefb7f4b3dd74445325c39",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 108,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:c2e60375d836efeee3c2822b496bec06127aa351eb45c2660a37e427db8e3b94",
+      "schema_type": "maturity_or_bucket_table",
+      "table_fragment_id": "table:74f8361f46e991b506e3cc0f5d63bac95b48930051347309864342a589bbde04",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2026",
+          "FY2027",
+          "FY2028",
+          "FY2029",
+          "FY2030"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:2d04f9030b936e34b76d88bb3a9174574ae70cc0da22b1d4752639bf2ad8e1b0",
+      "current_binding_status": "row_only",
+      "document_id": "ko_fy2025",
+      "fact_id": "fact:100452cd3b859a3f6146c7ae33c43120e83a171884743997c9e16cdf9a64ff55",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 118,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:b0a6aac6f3c77854af2c7be10e37b5b18a02bfa1d90716d474dfd4357d9cdd93",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:8f417bc9d4f723137973d7d5e5c952594307981eb0e45b2866d4a7e5e11940a2",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:8203140be6d21a546558cac9154343398e87e68a66dca558cc1ab1dcd288ff68",
+      "current_binding_status": "row_only",
+      "document_id": "jpm_fy2025",
+      "fact_id": "fact:1391cf67a4bbb8fa40ff3336c98a75c1aff9194eca083dcdcd04c2e2508ae729",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 161,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:a44d24501cd14fb693bcf8d96e3f51ea3b9eb434894309ae3b8a0a848c082098",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:576096c79abb6f86d17c4b6409cd16665720a625fc0221b77d340a1b9714bfeb",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:38674a04add7b9e7540bfa90957a9b63d6948a84d7d5049f87fdc8b42455821f",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:15d55c14cc85aa60beac666a9a88f66aa51a781e8c697c9ab2eb1dfeb086b38f",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:f2035dc95a39a94b31702baa855f9823d0d8b8e5642b43c7611da6f1c75e860b",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:8a48de17fcd276c2a33e0db093c223f4ecb88f4aa8340c3f6dcd5684c6954fd2",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:1a8dc0f142ee4803d72d3505dcf1f9a4dda55aa0d80fc4df173eca9b17b3f5e8",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:e71d267584ed0b8e4ee9a1f3f89e91e7d008e9a5aea26a45efeae5f514a7ccb0",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:354bf2a4f9cce5200b09afced70f6549481a07ad8e9090db7ac1e1103b09a248",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:1c356cb92c01e3a4de78e70f97a93f30ecaf8babcbfab54e29983471465dbce3",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:11b8d1b3eef542311999f9e54830694cb5f3a02328a1a27f55aafe4844c64e2a",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:3f9d3e73ef068c54963dc1b032fa4e240305b58b76e029d1652fd2fae331984e",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:21f80363d6c081bb5654f9ea9848f446d6ef64fa8fc506a3761d11198d37cb6f",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:5fccd79bd6a7c5f67116dd326e14ffb3e7d36012b3399b331048eeed9d72a238",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:73d18f5f0ec3f3894d32b8207641b44cb929cdb5dc0f2cafe807f2c4ad34e4ea",
+      "current_binding_status": "row_only",
+      "document_id": "tsla_fy2025",
+      "fact_id": "fact:3338bb26a9d5688ebaec462f51225fa55c4ca9bdd81da9ae29c40525ca829d03",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 108,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:1b2c91fbd1f058520d358cab6628442a0b545d2cf897698774451832f572cf05",
+      "schema_type": "maturity_or_bucket_table",
+      "table_fragment_id": "table:74f8361f46e991b506e3cc0f5d63bac95b48930051347309864342a589bbde04",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2026",
+          "FY2027",
+          "FY2028",
+          "FY2029",
+          "FY2030"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:a3c47d5f576b405b6916a0fc39b763ce35e63441744b04abbfd463b2e49d73c6",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:431cb25ad849382bd656120866fb6bbfa4b5f0e1b7f6c5e7cdbdb07d4f2cfd49",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:089718f30b0a741de1ffd16a3ab04da0e75e00c512789bd3575f28f28a5e4627",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:fa91fe4a920e5b364c45d9f38094e07beb8c0005ed613d23bf4f639e2c14f24c",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:47cbe062286acadf211149733e0da656f51995362eeca727c1a8c6c45c16c001",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:7cb4d5d9919e0f7f8a6b0f4d61a9a59b12f8083424fa04dab6b9f3517038bed1",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:47fbfe5723e9ad5bc32df2a49025921f2cb8f7684c018001921ad973f46e0bb7",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:4ce042de0225952ac243013225bbfd83b6db778a3613417285883b9c1604562e",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:7cb4d5d9919e0f7f8a6b0f4d61a9a59b12f8083424fa04dab6b9f3517038bed1",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:d1b9c2310ae11503bf09469232495e00cc57916887ce1c6b37d637f7b46ba08e",
+      "current_binding_status": "row_only",
+      "document_id": "tsla_fy2025",
+      "fact_id": "fact:4e42d618b83505967eab5f6a910dec5260102d2deaa2b8ea4f7b72f17f354781",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 108,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:1998515f68a9450d79ae5293013869f3def16a1d0374aef6739c2a0f191e279d",
+      "schema_type": "maturity_or_bucket_table",
+      "table_fragment_id": "table:74f8361f46e991b506e3cc0f5d63bac95b48930051347309864342a589bbde04",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2026",
+          "FY2027",
+          "FY2028",
+          "FY2029",
+          "FY2030"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:4c651c776c6370eb8872b19241a75bea4eedb73995f8630679817f323192fefa",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:55d2424606939fe7de0d157235db1c2eef075bc15c3bd975efe7ad81d8a650fc",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:dcfbb9f2d8ec4132935d0e7dc34be90f30d80a79d1b37a626730ff8b96f10062",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:7d80bea6bbe8d3c3524222d27a04a3e83d22d1bee506be823fccdd28fc968420",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:5f062f946c988be933f61386f5304b7569debb1de35f61181ec77521401d61e5",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:f2035dc95a39a94b31702baa855f9823d0d8b8e5642b43c7611da6f1c75e860b",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:140fd8629adba960b0e3e94bf1da3de72edb50c656ed42b1119208a707c77bd1",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:6aa50f486a0a8fc4289623aac1a0bd18eaf69744d0c3d2b3d613286966d0120b",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:dcfbb9f2d8ec4132935d0e7dc34be90f30d80a79d1b37a626730ff8b96f10062",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:dbd61a4ba909efe774264c46fc207b8dd4f5b45a617669dce43b9e052106e4ab",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:6d86a8901f179ee4ece6f92826ca1cdb08ada9699187440286da21f0c68e7805",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:552efe97c5e168df9e93fbf4eb91e9c7c97f8140cf8c0558f4784f50286a1845",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:79315a5faad46964edacc1a1921cd5c55c9541c33be894fd6c0fb360f9804a6d",
+      "current_binding_status": "row_only",
+      "document_id": "jpm_fy2025",
+      "fact_id": "fact:714021ee5fb3d5a92b3b1ccc9cd66c84a0415bde16009dcb2c8fa91dca906a7b",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 161,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:a44d24501cd14fb693bcf8d96e3f51ea3b9eb434894309ae3b8a0a848c082098",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:576096c79abb6f86d17c4b6409cd16665720a625fc0221b77d340a1b9714bfeb",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:7a47e98615e61c7e659237f6076885660c1259dedc31a080b9f1727e36af677a",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:716d5b570c3e44e5579d687b91a5ab9079eefddeab7fc274abaf7c862c52b22d",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:1ea1b8a8f921dad8b6dccc2a5b056d3107eed4752ac28a2b50a9d17b785c712e",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:f716e1a91e423ef4ac7c7d8dba8f39ee922a63f93791e941ffecc401dd98e453",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:727f3986a6b016f949ff775d504cdae85573d922e46d009b2158212137aa67ea",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:089718f30b0a741de1ffd16a3ab04da0e75e00c512789bd3575f28f28a5e4627",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:98508b1d2089a79c0811484efcc3efaf08a4b448093a19749037a43d13addd70",
+      "current_binding_status": "row_only",
+      "document_id": "jpm_fy2025",
+      "fact_id": "fact:756189706838219491532a4e5464c0702cc6b7e5362d78f5da5285aebbeb69e4",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 161,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:3838491e0f51ef51b724b5605e6696252bafbbe2acea1117931724286a6f52c9",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:576096c79abb6f86d17c4b6409cd16665720a625fc0221b77d340a1b9714bfeb",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:f21102324e5d07fd3ce02c0c89a970c4856005e503da70a94b93cd7daeea2134",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:75fd414acd44aa4a0ef651fe9a00efba5c2f6b3f1b39274909d765b9d7667b46",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 38,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:eee01de491e35bcf977feadaa8625e8d55e43fad28c47d68e4596470db660b93",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:a6902330576d9fb7a8de66d73f281715343bf98e568add26f5e1841137bad4b3",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY1997",
+          "FY2017"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:837fcca0a253370f9dc68851e6e96e57572b7dc5ecbce36b6533acbfba75406a",
+      "current_binding_status": "row_only",
+      "document_id": "ko_fy2025",
+      "fact_id": "fact:77ec41a4604765d0f29afd7f929b82255fc9306ca358841fa1a9ba25b18f5698",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 118,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:b0a6aac6f3c77854af2c7be10e37b5b18a02bfa1d90716d474dfd4357d9cdd93",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:8f417bc9d4f723137973d7d5e5c952594307981eb0e45b2866d4a7e5e11940a2",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:c0e9dd1baa5b8768457cbc40a5b86712e07d5ed938b6f28c292e9a9e6db0075c",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:7ae18c9ee1433f7fcdf101d28b679b84b9acb3d79b88f8116c19124a7dbc57e0",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:6a0ae14815196e259286aba2794e10055047e9d5bb80906557742a1615d3a89c",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:30137f4ccfdb7599a40883f9f85c59782c632e93c8004f9401cce0d72ecb449b",
+      "current_binding_status": "row_only",
+      "document_id": "aapl_fy2025",
+      "fact_id": "fact:7be9b3f03967e59069b2a5290cd7cefffa96e14b839c5af7809a32d8c7259cec",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 43,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:cfa4cfb31095c2529b3e81a7ba33e2472cde6df5e665103d9ffd3570b86c9f73",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:a4c43c2873dc6c82f075e8d833e482e838ed64ac63e54c647b9a3ff59e2b7428",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:68871b7fe7498edd5e4c895a375c5d8e40a54e4b9b85a4bf247605d75964c0da",
+      "current_binding_status": "row_only",
+      "document_id": "jpm_fy2025",
+      "fact_id": "fact:7ff215092410d4f43a03c6e5e07b09b682ab59adad1db6663fa36e9d292011a4",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 161,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:3838491e0f51ef51b724b5605e6696252bafbbe2acea1117931724286a6f52c9",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:576096c79abb6f86d17c4b6409cd16665720a625fc0221b77d340a1b9714bfeb",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:d88a80ffd5a85306a03a7c7bf90cccaf0abb73978154e10a9a624133a75cb336",
+      "current_binding_status": "row_only",
+      "document_id": "aapl_fy2025",
+      "fact_id": "fact:8d26e180fdb157034c830693a55574c0501e1bbf53aecd3e5c61104f321fe967",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 43,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:cfa4cfb31095c2529b3e81a7ba33e2472cde6df5e665103d9ffd3570b86c9f73",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:a4c43c2873dc6c82f075e8d833e482e838ed64ac63e54c647b9a3ff59e2b7428",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:08c4de9f0e856b5b4e0d9b69e6599d34af65cc1138e65ba184ddeff8b722139d",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:8ea7bf687d5fc8a22c624d25468164ccc241eef987d0bd0f6fffef9df6727918",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:6a0ae14815196e259286aba2794e10055047e9d5bb80906557742a1615d3a89c",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:f68d9f5258e9bf65a8b745a9a41565b2ff4094b98a14cee3b5e40db6e260fc67",
+      "current_binding_status": "row_only",
+      "document_id": "tsla_fy2025",
+      "fact_id": "fact:9b018f66d33c74b092817d00b0286917ebbcd17b732386905c57bf0614341d07",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 108,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:f9859be923291fced92ab10d7e0f26b89db8039d4befb1428591b871439b6046",
+      "schema_type": "maturity_or_bucket_table",
+      "table_fragment_id": "table:74f8361f46e991b506e3cc0f5d63bac95b48930051347309864342a589bbde04",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2026",
+          "FY2027",
+          "FY2028",
+          "FY2029",
+          "FY2030"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:d059cdbc8f3b1069e501d70d79ef82199f521cdf0d65cd84b167fa00edbb0fc8",
+      "current_binding_status": "row_only",
+      "document_id": "jpm_fy2025",
+      "fact_id": "fact:a14166be36656cffc23ce93507a881cc1f11129af2321a8717ec19b8659a0dfe",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 161,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:3838491e0f51ef51b724b5605e6696252bafbbe2acea1117931724286a6f52c9",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:576096c79abb6f86d17c4b6409cd16665720a625fc0221b77d340a1b9714bfeb",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:cd76a55fbe27beaf20264cb29687ec16d13351f6256c69bebc6b1d4bb962d10b",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:a16fc87b4eba6a11ebc45fdabaa3452ca4e65fcff8332275c2e41fa663a4956d",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:0c18c5db8b64e1d5fa3805720b4fcd7cc3124cf9de8f0f6a830c42abfbe668be",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:53476337d4e92f7f36d0f021e75a3e9c0c4a7a57b5dc2dec5f37fce26e2e4b34",
+      "current_binding_status": "row_only",
+      "document_id": "aapl_fy2025",
+      "fact_id": "fact:a6fc743d211f6ea434def1b48fa7c505353d9d9041928928a9bf338155c628c2",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 43,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:ba8c6e578dfc94a7febbd0c7cc9fef38c09a8b862759d097fa6e3d5fb3fde092",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:a4c43c2873dc6c82f075e8d833e482e838ed64ac63e54c647b9a3ff59e2b7428",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:9f006c50091a6e0a1a89df19e816374b2b3405d91896301efd9173ee8b22432b",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:aca698d17cae855c7f9427af10ce73cd4e1c10b9fe4dc36881888f0ce36fd624",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 36,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:99f9c87e1b3397a36886f3be953afec1b3bd7668c5f26726611f110136122165",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:4db14dc4f56a9b7295cf580b5aa0ca8068c45e5a748509e3394774a1833f00a4",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2019",
+          "FY2023"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:58e529865d6ccfd7046ebbb7080852ce23c7e81ddf517349687cd8112c147280",
+      "current_binding_status": "row_only",
+      "document_id": "tsla_fy2025",
+      "fact_id": "fact:adf08d363e708c7280709a66b40cacbc0256b4689180da803cf2a767b644eff1",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 108,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:70510596da0074edf07e7e7847b7e6e484387791955f7b9e915c1ff9a06c48fa",
+      "schema_type": "maturity_or_bucket_table",
+      "table_fragment_id": "table:74f8361f46e991b506e3cc0f5d63bac95b48930051347309864342a589bbde04",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2026",
+          "FY2027",
+          "FY2028",
+          "FY2029",
+          "FY2030"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:7094237fbfef16f58a2680027ed4f290d00744ad83b187ff0f9d444cc522061b",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:b311cb46b2859f846f3df96a45f9062e7319be14afdb57a20a9b8b8ba0d4681c",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:552efe97c5e168df9e93fbf4eb91e9c7c97f8140cf8c0558f4784f50286a1845",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:bbe17110ea50713a2c7a639731dfe75e0f339ddc8932201732f7f17244017696",
+      "current_binding_status": "row_only",
+      "document_id": "aapl_fy2025",
+      "fact_id": "fact:be109f8bbd3dc3afe0d0f201cb33c276718695a92169a80c2336a69f9273da44",
+      "gap_reason": "missing_scale_for_currency",
+      "pdf_page": 43,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:7385495c0cb311fe185ea466c8e43d4ee4661707e35460a782359ce1d351d7f9",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:a4c43c2873dc6c82f075e8d833e482e838ed64ac63e54c647b9a3ff59e2b7428",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:09feca704ed478b558c80cdd17916b0f5c5d7d82b1160d4988b1d9c47c1dcb5a",
+      "current_binding_status": "row_only",
+      "document_id": "aapl_fy2025",
+      "fact_id": "fact:ca6c044523a7bbf0997512abbf01a502936add73801335f83542b411402f8909",
+      "gap_reason": "missing_scale_for_currency",
+      "pdf_page": 43,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:57d698940f48ec83c03ffba988aac70bde5ddd93f2092e123f02225a1bf3ab1d",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:a4c43c2873dc6c82f075e8d833e482e838ed64ac63e54c647b9a3ff59e2b7428",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:4fec42e6194b963aeb600c03de04e8256356b3b2665376c51fc40b8538d7248c",
+      "current_binding_status": "row_only",
+      "document_id": "aapl_fy2025",
+      "fact_id": "fact:d5be7e015c0f00d3e68d47dabcff9d5c16cf649adab49e378cdc6eafa2fe4f90",
+      "gap_reason": "missing_scale_for_currency",
+      "pdf_page": 43,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:57d698940f48ec83c03ffba988aac70bde5ddd93f2092e123f02225a1bf3ab1d",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:a4c43c2873dc6c82f075e8d833e482e838ed64ac63e54c647b9a3ff59e2b7428",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:c436ac12989e8ebe7896b23246bab26c12ae32b3de6b0b6cb2788f2b96f34f7a",
+      "current_binding_status": "row_only",
+      "document_id": "jpm_fy2025",
+      "fact_id": "fact:e1161d72b2ec88f132f24fdfe025e845ca277800425967002b56ae98fb4b3820",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 161,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:a44d24501cd14fb693bcf8d96e3f51ea3b9eb434894309ae3b8a0a848c082098",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:576096c79abb6f86d17c4b6409cd16665720a625fc0221b77d340a1b9714bfeb",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:344fc1b7a098e6fdd3d8c6db5204b5bd6636e52490fb86b5df499e05d4584571",
+      "current_binding_status": "row_only",
+      "document_id": "ko_fy2025",
+      "fact_id": "fact:e86c5dc3ce869c8e11024258c40e52ac6c4537634f4131abc8b24d63c5820546",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 118,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:b0a6aac6f3c77854af2c7be10e37b5b18a02bfa1d90716d474dfd4357d9cdd93",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:8f417bc9d4f723137973d7d5e5c952594307981eb0e45b2866d4a7e5e11940a2",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:5c0a82d72a4e85227400abd7c10e133bacd492040ee09f75f09b4481a1b8ac0a",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:e90a8868e53730c11ef48388ca9befedb1a899a90acc1271cd73f4887c687d54",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:e71d267584ed0b8e4ee9a1f3f89e91e7d008e9a5aea26a45efeae5f514a7ccb0",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:8a1d290fd8229f688101362f59dfa3602d17e885d642cdaffdffbcd1ea04d9b8",
+      "current_binding_status": "row_only",
+      "document_id": "aapl_fy2025",
+      "fact_id": "fact:eebedcc02cf5595038e2efd9b3bfa757428ccc68dcd8ca8a2585413ca1c2337b",
+      "gap_reason": "missing_scale_for_currency",
+      "pdf_page": 43,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:7385495c0cb311fe185ea466c8e43d4ee4661707e35460a782359ce1d351d7f9",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:a4c43c2873dc6c82f075e8d833e482e838ed64ac63e54c647b9a3ff59e2b7428",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:0829b8f5c72fdd16708dff28c1ce8e467f07f28b4c7236f28c29e8cb65813d23",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:efe1bd9ca7f115996e9b4a79fbf31f5eafcc1f8080f1ebcb76662167f49a49a4",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:11b8d1b3eef542311999f9e54830694cb5f3a02328a1a27f55aafe4844c64e2a",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:c6f60006840aa33f7e8eba749f94dd46f659a7ff335521f8518ec535d964380d",
+      "current_binding_status": "row_only",
+      "document_id": "tsla_fy2025",
+      "fact_id": "fact:f04b63ca8c9516ad92b6c96b5aeff8257c461f48333242520e3904473ec13ea9",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 135,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:dcc3c6ed24d36f38447b7d212e7dde773ab5df0f7126055d010de9f9f8e62c86",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:302e527db8e77518e09b875415c81dd8b767bdb5f78018033a32b2d594c68715",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2011",
+          "FY2013",
+          "FY2015",
+          "FY2016",
+          "FY2017",
+          "FY2019"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:2e0789ebdec385654ec33e9c7d244362ef9ed680d05161faaa4173c8a35fc5cc",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:f28d1392d67ea1d3a171e482439bc31038b398f57a17c731a9e9f533ee0b3e74",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:0c18c5db8b64e1d5fa3805720b4fcd7cc3124cf9de8f0f6a830c42abfbe668be",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:ed4cc36179dffd6287f399b99b4689671c24d48c0fb2a26401e0908ba6487933",
+      "current_binding_status": "row_only",
+      "document_id": "nvda_fy2025",
+      "fact_id": "fact:f795603ba80b6f2b9108c6da3d9df650edad3b812a6b12b24e45683c477d9ee4",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 132,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:5fccd79bd6a7c5f67116dd326e14ffb3e7d36012b3399b331048eeed9d72a238",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    },
+    {
+      "cell_id": "cell:c70af4aebe78276fe095db8aacf6b1c451a187add7614f427c2e47f5106f2e2b",
+      "current_binding_status": "row_only",
+      "document_id": "aapl_fy2025",
+      "fact_id": "fact:f8c99019f828e31a3e6d84af30d25b913f1aec52bc1410c02c8edd02c93a995d",
+      "gap_reason": "invalid_value_kind",
+      "pdf_page": 43,
+      "recovered_semantic_type": "row_matrix_evidence",
+      "recovery_status": "safe_typed_evidence",
+      "row_id": "row:ba8c6e578dfc94a7febbd0c7cc9fef38c09a8b862759d097fa6e3d5fb3fde092",
+      "schema_type": "period_on_columns",
+      "table_fragment_id": "table:a4c43c2873dc6c82f075e8d833e482e838ed64ac63e54c647b9a3ff59e2b7428",
+      "temporal_binding": {
+        "kind": "period_set",
+        "periods": [
+          "FY2024",
+          "FY2025"
+        ]
+      }
+    }
+  ],
+  "safe_typed_recovery_count": 47
+}

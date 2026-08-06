@@ -1,0 +1,19 @@
+{
+  "cell_index_count": 3115,
+  "evidence_unit_count": 8045,
+  "fact_index_count": 3115,
+  "foreign_key_audit": {
+    "cell_row_missing": 0,
+    "fact_cell_missing": 0,
+    "row_table_missing": 0
+  },
+  "foreign_key_failures": 0,
+  "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/runtime/pdf-retrieval-v4-gate-06-r2/metadata/metadata.sqlite",
+  "retrieval_view_count": 8045,
+  "row_index_count": 1581,
+  "schema_version": "sqlite-v1",
+  "serialized_store_hash": "21c36b037de806968bab5cb51625d3932cf48875b0c5d1c72b9f2df072ba6dd0",
+  "soft_continuation_edge_count": 2,
+  "source_group_count": 4813,
+  "unit_count": 8045
+}
