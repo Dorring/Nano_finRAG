@@ -1,0 +1,33 @@
+{
+  "adapter": "automatic_mineru_html_pymupdf_native_alignment",
+  "adapter_builds": 1,
+  "binding_precedence": [
+    "native_word_center_or_overlap",
+    "same_text_line_and_column_order",
+    "mineru_text_fallback"
+  ],
+  "code_commit": "8169779ae3bc1139ad3b248fa5a3a02fd226ce8b",
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "expected_value_reads": 0,
+  "forbidden": [
+    "oracle",
+    "gold",
+    "expected_value",
+    "question",
+    "case_id",
+    "retrieval",
+    "index",
+    "reranker",
+    "answer_generation"
+  ],
+  "gate": "pdf_retrieval_v4_gate_02",
+  "index_builds": 0,
+  "input_middle_sha256": "2f0697596867be0df74f6067842b7ebb91c13ad3846e1deb16f8ac5543496980",
+  "per_record_backend_selection": false,
+  "probe_manifest_sha256": "f5860effddc6e98cb4ee41517de22b210e7564e9999aa918e43e94ca8dc95382",
+  "production_index_writes": 0,
+  "retrieval_runs": 0,
+  "runtime_oracle_reads": 0,
+  "runtime_question_reads": 0,
+  "structural_backend": "mineru_hybrid_high"
+}

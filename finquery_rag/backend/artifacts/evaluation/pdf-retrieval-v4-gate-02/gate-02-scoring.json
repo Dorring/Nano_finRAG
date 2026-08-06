@@ -1,0 +1,55 @@
+{
+  "duplicate_source_record_count": 8,
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "metrics": {
+    "false_numeric_binding": [
+      0,
+      22
+    ],
+    "false_period_binding": [
+      0,
+      22
+    ],
+    "metric_period_value_recovery": [
+      21,
+      22
+    ],
+    "numeric_exact_recovery": [
+      21,
+      22
+    ],
+    "row_recovery": [
+      22,
+      22
+    ],
+    "scale_recovery": [
+      22,
+      22
+    ],
+    "source_auto_backtrace": [
+      21,
+      22
+    ],
+    "table_recovery": [
+      22,
+      22
+    ]
+  },
+  "oracle_record_count": 22,
+  "posthoc_oracle_records_read": 22,
+  "prediction_seal_verified": true,
+  "runtime_oracle_reads": 0,
+  "thresholds": {
+    "duplicate_cell_view": true,
+    "false_numeric_binding": true,
+    "false_period_binding": true,
+    "identity_conflicts": true,
+    "metric_period_value_recovery": true,
+    "numeric_exact_recovery": true,
+    "row_recovery": true,
+    "scale_recovery": true,
+    "source_auto_backtrace": true,
+    "table_recovery": true
+  },
+  "unique_source_identity_count": 14
+}

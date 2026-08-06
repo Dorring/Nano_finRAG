@@ -1,0 +1,19 @@
+{
+  "adapter_builds": 1,
+  "decision": "unified_structured_adapter_passed",
+  "duplicate_views": 0,
+  "expected_value_reads_runtime": 0,
+  "gate": "pdf_retrieval_v4_gate_02",
+  "gate_passed": true,
+  "identity_conflicts": 0,
+  "index_builds": 0,
+  "next_gate": "financial_header_graph",
+  "posthoc_oracle_records_read": 22,
+  "prediction_seal_verified": true,
+  "production_behavior_changed": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "retrieval_runs": 0,
+  "runtime_governance_reads": 0,
+  "runtime_oracle_reads": 0
+}
