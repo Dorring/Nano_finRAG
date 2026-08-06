@@ -1,0 +1,130 @@
+{
+  "duplicate_source_record_count": 8,
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "full_structure": {
+    "blocked_fact_count": 277,
+    "complete_fact_count": 3226,
+    "cross_table_parent_count": 0,
+    "duplicate_fact_id_count": 0,
+    "false_metric_parent_binding_count": 0,
+    "false_scale_binding_count": 0,
+    "header_parent_cycle_count": 0,
+    "header_path_coverage": 0.9957341715312079,
+    "metric_parent_cycle_count": 0,
+    "numeric_row_metric_path_coverage": 0.9677891654465594,
+    "period_conflict_count": 0,
+    "row_only_fact_count": 951,
+    "table_only_fact_count": 0
+  },
+  "oracle_record_count": 22,
+  "posthoc_oracle_records_read": 22,
+  "prediction_seal_verified": true,
+  "record_metrics": {
+    "false_metric_parent_binding": [
+      0,
+      22
+    ],
+    "false_period_binding": [
+      0,
+      22
+    ],
+    "metric_exact": [
+      21,
+      22
+    ],
+    "metric_period": [
+      21,
+      22
+    ],
+    "metric_period_value": [
+      21,
+      22
+    ],
+    "numeric_exact": [
+      22,
+      22
+    ],
+    "period_exact": [
+      22,
+      22
+    ],
+    "row_recovery": [
+      22,
+      22
+    ],
+    "scale_exact": [
+      22,
+      22
+    ],
+    "source_traceback": [
+      22,
+      22
+    ],
+    "table_recovery": [
+      22,
+      22
+    ]
+  },
+  "runtime_oracle_reads": 0,
+  "thresholds": {
+    "cross_table_parent": true,
+    "duplicate_facts": true,
+    "false_metric_parent_binding": true,
+    "false_period_binding": true,
+    "false_scale_binding": true,
+    "header_parent_cycles": true,
+    "header_path_coverage": true,
+    "metric_exact": true,
+    "metric_parent_cycles": true,
+    "metric_period": true,
+    "metric_period_value": true,
+    "msft_hierarchy": true,
+    "numeric_exact": true,
+    "numeric_row_metric_path_coverage": true,
+    "period_conflicts": true,
+    "period_exact": true,
+    "row_recovery": true,
+    "scale_exact": true,
+    "source_traceback": true,
+    "table_recovery": true
+  },
+  "unique_source_identity_count": 14,
+  "unique_source_metrics": {
+    "metric_exact": [
+      14,
+      14
+    ],
+    "metric_period": [
+      14,
+      14
+    ],
+    "metric_period_value": [
+      14,
+      14
+    ],
+    "numeric_exact": [
+      14,
+      14
+    ],
+    "period_exact": [
+      14,
+      14
+    ],
+    "row_recovery": [
+      14,
+      14
+    ],
+    "scale_exact": [
+      14,
+      14
+    ],
+    "source_traceback": [
+      14,
+      14
+    ],
+    "table_recovery": [
+      14,
+      14
+    ]
+  }
+}

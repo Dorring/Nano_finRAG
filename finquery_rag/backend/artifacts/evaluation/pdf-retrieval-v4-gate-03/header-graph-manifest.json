@@ -1,0 +1,33 @@
+{
+  "cell_count": 7136,
+  "cell_identity_hash": "3401615d93f629b4cc8f80cbbb2e046b2e40a521326dfe610e3ea420bcd8481e",
+  "fact_count": 4254,
+  "fact_identity_hash": "77432fa5f43a21934de231dec419aa71ae5203d8ff35e9d62ca39d28f3cd9ea9",
+  "graph_integrity": {
+    "blocked_fact_count": 277,
+    "cell_count": 7136,
+    "cross_table_parent_count": 0,
+    "duplicate_fact_id_count": 0,
+    "fact_count": 4254,
+    "false_metric_parent_binding_count": 0,
+    "false_scale_binding_count": 0,
+    "header_parent_cycle_count": 0,
+    "metric_parent_cycle_count": 0,
+    "numeric_cell_complete_fact_count": 3226,
+    "numeric_cell_count": 4454,
+    "numeric_cell_header_path_count": 4435,
+    "numeric_row_count": 1366,
+    "numeric_row_metric_path_count": 1322,
+    "orphan_parent_reference_count": 0,
+    "period_conflict_count": 0,
+    "row_count": 1581,
+    "row_only_fact_count": 951,
+    "table_count": 117
+  },
+  "prediction_page_count": 87,
+  "production_index_writes": 0,
+  "row_count": 1581,
+  "row_identity_hash": "dd68dce76204427780b9dcadbab276dee3abdc038d764f89661c9a9b7154246b",
+  "table_count": 117,
+  "table_identity_hash": "0b66f14d3b1f6ae1253423c73df4f2d5fba00a2587441d4aafde6ad5c708cbba"
+}

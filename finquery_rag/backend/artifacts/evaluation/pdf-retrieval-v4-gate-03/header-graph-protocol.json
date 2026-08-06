@@ -1,0 +1,32 @@
+{
+  "backend": "mineru_hybrid_high",
+  "code_commit": "c9dcce243d1632b08c531071f0bda5bd8a919143",
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "expected_value_reads": 0,
+  "forbidden": [
+    "question",
+    "case_id",
+    "gold",
+    "oracle",
+    "expected_metric",
+    "expected_period",
+    "expected_value",
+    "reference_answer",
+    "index",
+    "retrieval",
+    "reranker"
+  ],
+  "gate": "pdf_retrieval_v4_gate_03",
+  "gate_02_commit": "8169779ae3bc1139ad3b248fa5a3a02fd226ce8b",
+  "identity_integrity_hash": "8f69aebf0a80f9b9da6d1e0969f4ca209c104bdca0b48fb99771f8f838bd6775",
+  "index_builds": 0,
+  "input_gate": "pdf_retrieval_v4_gate_02",
+  "manifest_hash": "466436e8c8a776c4b15cfd208d87bf749b110c1089db539d1d4bf08f5409a30f",
+  "mineru_reruns": 0,
+  "prediction_hash": "853723a4da8e724481b011783e9ef1fc529574977085302bc4cca896f605ff55",
+  "production_index_writes": 0,
+  "retrieval_runs": 0,
+  "runtime_governance_reads": 0,
+  "runtime_oracle_reads": 0,
+  "runtime_question_reads": 0
+}
