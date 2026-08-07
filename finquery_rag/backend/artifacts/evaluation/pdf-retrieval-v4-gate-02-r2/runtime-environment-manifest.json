@@ -1,0 +1,26 @@
+{
+  "accelerate_version": "1.14.0",
+  "backend": "hybrid-engine",
+  "config_hash": "d84a444b7f12c91f3f2cd5f825d57c73174e38f29ce12361f0f4920d8ccd1d87",
+  "cuda_visible_devices": "5",
+  "effort": "high",
+  "method": "auto",
+  "mineru_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/mineru-venv-cu126/bin/mineru",
+  "mineru_version": "mineru, version 3.4.4",
+  "nvidia_smi": {
+    "command": [
+      "nvidia-smi",
+      "--query-gpu=index,name,memory.total,memory.used,memory.free,utilization.gpu",
+      "--format=csv,noheader"
+    ],
+    "output": "0, NVIDIA RTX A6000, 49140 MiB, 35973 MiB, 12578 MiB, 100 %\n1, NVIDIA RTX A6000, 49140 MiB, 42989 MiB, 5562 MiB, 100 %\n2, NVIDIA RTX A6000, 49140 MiB, 41287 MiB, 7264 MiB, 0 %\n3, NVIDIA RTX A6000, 49140 MiB, 45800 MiB, 2751 MiB, 100 %\n4, NVIDIA RTX A6000, 49140 MiB, 43089 MiB, 5462 MiB, 42 %\n5, NVIDIA RTX A6000, 49140 MiB, 31186 MiB, 17365 MiB, 74 %\n6, NVIDIA RTX A6000, 49140 MiB, 46216 MiB, 2335 MiB, 100 %\n7, NVIDIA RTX A6000, 49140 MiB, 33697 MiB, 14854 MiB, 100 %",
+    "return_code": 0
+  },
+  "pip_freeze_hash": null,
+  "python_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/mineru-venv-cu126/bin/python",
+  "python_version": "Python 3.12.11",
+  "runbook_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/docs/operations/runtime-environment-runbook.md",
+  "torch_cuda_available": true,
+  "torch_cuda_version": "12.6",
+  "torch_version": "2.7.1+cu126"
+}

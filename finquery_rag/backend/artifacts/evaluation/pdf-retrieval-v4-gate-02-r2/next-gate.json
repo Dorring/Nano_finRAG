@@ -1,0 +1,8 @@
+{
+  "current_gate": "pdf_retrieval_v4_gate_02_r2",
+  "decision": "full_corpus_structured_ingestion_passed",
+  "next_gate": "full_corpus_unified_structured_adapter",
+  "production_switch_allowed": false,
+  "schema": "pdf-retrieval-v4/gate-02-r2/next-gate/v1",
+  "stop": true
+}

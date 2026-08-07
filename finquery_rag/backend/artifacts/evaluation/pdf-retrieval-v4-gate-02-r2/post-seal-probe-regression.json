@@ -1,0 +1,406 @@
+{
+  "gate": "pdf_retrieval_v4_gate_02_r2",
+  "gate_checks": {
+    "period_22_22": true,
+    "raw_numeric_ge_10": true,
+    "raw_scale_ge_18": true,
+    "row_recovery_22_22": true,
+    "table_recovery_22_22": true
+  },
+  "metrics": {
+    "period_header_availability": 1.0,
+    "raw_numeric_recovery": 1.0,
+    "raw_scale_recovery": 0.8181818181818182,
+    "row_recovery": 1.0,
+    "table_recovery": 1.0
+  },
+  "missing_oracle_pages": [],
+  "oracle_record_count": 22,
+  "oracle_records_read_after_seal": true,
+  "oracle_records_scored": 22,
+  "oracle_scoring_posthoc": true,
+  "per_oracle": [
+    {
+      "document_id": "aapl_fy2025",
+      "expected_metric": "Total net sales",
+      "expected_numeric": "391035",
+      "expected_period": "FY2024",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 0,
+      "pdf_page": 26
+    },
+    {
+      "document_id": "aapl_fy2025",
+      "expected_metric": "Total net sales",
+      "expected_numeric": "416161",
+      "expected_period": "FY2025",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 1,
+      "pdf_page": 26
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "expected_metric": "Total assets",
+      "expected_numeric": "4002814",
+      "expected_period": "FY2024",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 2,
+      "pdf_page": 199
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "expected_metric": "Total assets",
+      "expected_numeric": "4424900",
+      "expected_period": "FY2025",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 3,
+      "pdf_page": 199
+    },
+    {
+      "document_id": "ko_fy2025",
+      "expected_metric": "Net operating revenues",
+      "expected_numeric": "47061",
+      "expected_period": "FY2024",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 4,
+      "pdf_page": 63
+    },
+    {
+      "document_id": "ko_fy2025",
+      "expected_metric": "Net operating revenues",
+      "expected_numeric": "47941",
+      "expected_period": "FY2025",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 5,
+      "pdf_page": 63
+    },
+    {
+      "document_id": "ko_fy2025",
+      "expected_metric": "EMEA third-party revenue",
+      "expected_numeric": "10833",
+      "expected_period": "FY2025",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": false,
+        "table_detected": true
+      },
+      "oracle_record_id": 6,
+      "pdf_page": 119
+    },
+    {
+      "document_id": "ko_fy2025",
+      "expected_metric": "Net operating revenues",
+      "expected_numeric": "47941",
+      "expected_period": "FY2025",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": false,
+        "table_detected": true
+      },
+      "oracle_record_id": 7,
+      "pdf_page": 119
+    },
+    {
+      "document_id": "msft_fy2025",
+      "expected_metric": "Total revenue",
+      "expected_numeric": "245122",
+      "expected_period": "FY2024",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 8,
+      "pdf_page": 80
+    },
+    {
+      "document_id": "msft_fy2025",
+      "expected_metric": "Total revenue",
+      "expected_numeric": "281724",
+      "expected_period": "FY2025",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 9,
+      "pdf_page": 80
+    },
+    {
+      "document_id": "msft_fy2025",
+      "expected_metric": "Intelligent Cloud revenue",
+      "expected_numeric": "106265",
+      "expected_period": "FY2025",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 10,
+      "pdf_page": 80
+    },
+    {
+      "document_id": "msft_fy2025",
+      "expected_metric": "Total revenue",
+      "expected_numeric": "281724",
+      "expected_period": "FY2025",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 11,
+      "pdf_page": 80
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "expected_metric": "Total revenue",
+      "expected_numeric": "60922",
+      "expected_period": "FY2024",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": false,
+        "table_detected": true
+      },
+      "oracle_record_id": 12,
+      "pdf_page": 144
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "expected_metric": "Total revenue",
+      "expected_numeric": "130497",
+      "expected_period": "FY2025",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": false,
+        "table_detected": true
+      },
+      "oracle_record_id": 13,
+      "pdf_page": 144
+    },
+    {
+      "document_id": "pfe_fy2024",
+      "expected_metric": "Total revenues",
+      "expected_numeric": "59553",
+      "expected_period": "FY2023",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 14,
+      "pdf_page": 60
+    },
+    {
+      "document_id": "pfe_fy2024",
+      "expected_metric": "Total revenues",
+      "expected_numeric": "63627",
+      "expected_period": "FY2024",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 15,
+      "pdf_page": 60
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "expected_metric": "Total revenues",
+      "expected_numeric": "97690",
+      "expected_period": "FY2024",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 16,
+      "pdf_page": 69
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "expected_metric": "Total revenues",
+      "expected_numeric": "94827",
+      "expected_period": "FY2025",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 17,
+      "pdf_page": 69
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "expected_metric": "Total automotive revenues",
+      "expected_numeric": "69526",
+      "expected_period": "FY2025",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 18,
+      "pdf_page": 55
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "expected_metric": "Energy generation and storage segment revenue",
+      "expected_numeric": "12771",
+      "expected_period": "FY2025",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 19,
+      "pdf_page": 55
+    },
+    {
+      "document_id": "v_fy2025",
+      "expected_metric": "Net revenue",
+      "expected_numeric": "35926",
+      "expected_period": "FY2024",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 20,
+      "pdf_page": 75
+    },
+    {
+      "document_id": "v_fy2025",
+      "expected_metric": "Net revenue",
+      "expected_numeric": "40000",
+      "expected_period": "FY2025",
+      "observed": {
+        "metric_text_recovered": true,
+        "numeric_text_accurate": true,
+        "numeric_text_recovered": true,
+        "period_header_available": true,
+        "row_text_recovered": true,
+        "scale_header_available": true,
+        "table_detected": true
+      },
+      "oracle_record_id": 21,
+      "pdf_page": 75
+    }
+  ],
+  "raw_counts": {
+    "period_header_availability": "22/22",
+    "raw_numeric_recovery": "22/22",
+    "raw_scale_recovery": "18/22",
+    "row_recovery": "22/22",
+    "table_recovery": "22/22"
+  },
+  "structural_regression": false
+}

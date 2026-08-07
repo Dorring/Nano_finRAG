@@ -1,0 +1,60 @@
+{
+  "all_passed": true,
+  "decision": "full_corpus_structured_ingestion_passed",
+  "execution_gate": {
+    "completed_documents": "8/8",
+    "duplicate_pages": 0,
+    "expected_pages_recorded": "100%",
+    "fatal_parser_errors": 0,
+    "missing_pages": 0,
+    "passed": true
+  },
+  "gate": "pdf_retrieval_v4_gate_02_r2",
+  "input_gate": {
+    "frozen_documents": "8/8",
+    "page_count_match": "8/8",
+    "passed": true,
+    "pdf_hash_match": "8/8",
+    "unexpected_documents": 0
+  },
+  "output_gate": {
+    "invalid_json": 0,
+    "missing_artifact_references": 0,
+    "output_manifest_complete": true,
+    "passed": true,
+    "seal_hash_verified": true,
+    "zero_byte_required_files": 0
+  },
+  "probe_regression_gate": {
+    "decision": "passed",
+    "numeric_passed": true,
+    "passed": true,
+    "period": "22/22",
+    "period_passed": true,
+    "raw_numeric": "22/22",
+    "raw_scale": "18/22",
+    "row_passed": true,
+    "row_recovery": "22/22",
+    "scale_passed": true,
+    "structural_regression": false,
+    "table_passed": true,
+    "table_recovery": "22/22"
+  },
+  "safety_gate": {
+    "adapter_runs": 0,
+    "gold_reads_before_seal": 0,
+    "governance_reads_before_seal": 0,
+    "index_builds": 0,
+    "passed": true,
+    "production_index_writes": 0,
+    "question_reads": 0,
+    "retrieval_runs": 0
+  },
+  "schema": "pdf-retrieval-v4/gate-02-r2/acceptance/v1",
+  "structural_diff_summary": {
+    "pages_compared": 87,
+    "pages_missing_in_new": 5,
+    "pages_with_table_bbox_changed": 4,
+    "pages_with_table_html_changed": 13
+  }
+}

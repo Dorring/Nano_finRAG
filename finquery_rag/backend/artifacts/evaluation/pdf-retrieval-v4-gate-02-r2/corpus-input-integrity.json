@@ -1,0 +1,95 @@
+{
+  "actual_document_count": 8,
+  "actual_total_pages": 1348,
+  "all_page_counts_match": true,
+  "all_sha256_match": true,
+  "documents": [
+    {
+      "actual_page_count": 80,
+      "actual_sha256": "108590052c3ba5400c63660d787fe7ed4e43868292946d7a7facebe9ab7d1aab",
+      "document_id": "aapl_fy2025",
+      "expected_page_count": 80,
+      "expected_sha256": "108590052c3ba5400c63660d787fe7ed4e43868292946d7a7facebe9ab7d1aab",
+      "filename": "aapl_fy2025_10k.pdf",
+      "integrity_passed": true,
+      "pdf_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/aapl_fy2025_10k.pdf"
+    },
+    {
+      "actual_page_count": 364,
+      "actual_sha256": "2a3ee9733eafd01e7667c5540fbd797c4cc688d14f00638a877f5623d1316d9d",
+      "document_id": "jpm_fy2025",
+      "expected_page_count": 364,
+      "expected_sha256": "2a3ee9733eafd01e7667c5540fbd797c4cc688d14f00638a877f5623d1316d9d",
+      "filename": "jpm_fy2025_annual_report.pdf",
+      "integrity_passed": true,
+      "pdf_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/jpm_fy2025_annual_report.pdf"
+    },
+    {
+      "actual_page_count": 192,
+      "actual_sha256": "3cf15f041ac30a094d868f383272d5129762dc4ef457413b95dcdae09e560015",
+      "document_id": "ko_fy2025",
+      "expected_page_count": 192,
+      "expected_sha256": "3cf15f041ac30a094d868f383272d5129762dc4ef457413b95dcdae09e560015",
+      "filename": "ko_fy2025_10k.pdf",
+      "integrity_passed": true,
+      "pdf_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/ko_fy2025_10k.pdf"
+    },
+    {
+      "actual_page_count": 90,
+      "actual_sha256": "1fb4c08a3aa6de381aec07aab6588964534c1a291d66046f950153ccdb84c3d4",
+      "document_id": "msft_fy2025",
+      "expected_page_count": 90,
+      "expected_sha256": "1fb4c08a3aa6de381aec07aab6588964534c1a291d66046f950153ccdb84c3d4",
+      "filename": "msft_fy2025_annual_report.pdf",
+      "integrity_passed": true,
+      "pdf_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/msft_fy2025_annual_report.pdf"
+    },
+    {
+      "actual_page_count": 181,
+      "actual_sha256": "757b344ab62ba282f6e44e0702e8ce5f190d88fb23b5e0a2beaf4cb277a395cc",
+      "document_id": "nvda_fy2025",
+      "expected_page_count": 181,
+      "expected_sha256": "757b344ab62ba282f6e44e0702e8ce5f190d88fb23b5e0a2beaf4cb277a395cc",
+      "filename": "nvda_fy2025_annual_report.pdf",
+      "integrity_passed": true,
+      "pdf_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/nvda_fy2025_annual_report.pdf"
+    },
+    {
+      "actual_page_count": 165,
+      "actual_sha256": "8ee0b08f2f2c9326a3fab44642507c7907b53e75cc5a12839e8cde2228ed0229",
+      "document_id": "pfe_fy2024",
+      "expected_page_count": 165,
+      "expected_sha256": "8ee0b08f2f2c9326a3fab44642507c7907b53e75cc5a12839e8cde2228ed0229",
+      "filename": "pfe_fy2024_10k.pdf",
+      "integrity_passed": true,
+      "pdf_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/pfe_fy2024_10k.pdf"
+    },
+    {
+      "actual_page_count": 140,
+      "actual_sha256": "5e33e314f47e85380f2e6a7d84481bd965e528f6614363c6b8fbce1a1d6df523",
+      "document_id": "tsla_fy2025",
+      "expected_page_count": 140,
+      "expected_sha256": "5e33e314f47e85380f2e6a7d84481bd965e528f6614363c6b8fbce1a1d6df523",
+      "filename": "tsla_fy2025_10k.pdf",
+      "integrity_passed": true,
+      "pdf_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/tsla_fy2025_10k.pdf"
+    },
+    {
+      "actual_page_count": 136,
+      "actual_sha256": "1fb927051da5346b0f5c3a9447a3bdf42c5ea9259000c94398db5965ddbcc7dd",
+      "document_id": "v_fy2025",
+      "expected_page_count": 136,
+      "expected_sha256": "1fb927051da5346b0f5c3a9447a3bdf42c5ea9259000c94398db5965ddbcc7dd",
+      "filename": "v_fy2025_annual_report.pdf",
+      "integrity_passed": true,
+      "pdf_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs/v_fy2025_annual_report.pdf"
+    }
+  ],
+  "expected_document_count": 8,
+  "expected_total_pages": 1348,
+  "integrity_passed": true,
+  "no_duplicate_document_ids": true,
+  "no_duplicate_pdf_hashes": true,
+  "no_missing_pdfs": true,
+  "no_unexpected_pdfs": true
+}

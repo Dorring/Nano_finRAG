@@ -1,0 +1,39 @@
+{
+  "adapter_runs": 0,
+  "answer_generation_calls": 0,
+  "calculator_calls": 0,
+  "corpus_manifest": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/benchmarks/financial_rag_v1/corpus.json",
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "evidence_unit_builds": 0,
+  "expected_value_reads_before_seal": 0,
+  "fixed_config": {
+    "backend": "hybrid-engine",
+    "config_hash": "d84a444b7f12c91f3f2cd5f825d57c73174e38f29ce12361f0f4920d8ccd1d87",
+    "effort": "high",
+    "method": "auto"
+  },
+  "gate": "pdf_retrieval_v4_gate_02_r2",
+  "gold_reads_before_seal": 0,
+  "governance_reads_before_seal": 0,
+  "header_graph_runs": 0,
+  "index_builds": 0,
+  "mineru_only": true,
+  "parameter_scan": false,
+  "per_document_backend_selection": false,
+  "per_page_backend_selection": false,
+  "production_config_modified": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "purpose": "full_benchmark_corpus_structured_ingestion",
+  "question_reads": 0,
+  "reference_answer_reads_before_seal": 0,
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "runbook": {
+    "cuda_visible_devices": "5",
+    "isolated_mineru_environment": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/mineru-venv-cu126",
+    "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/docs/operations/runtime-environment-runbook.md",
+    "project_tmpdir": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.runtime/pdf-retrieval-v4-gate-02-r2/finquery_tmp"
+  },
+  "schema": "pdf-retrieval-v4/gate-02-r2/protocol/v1"
+}
