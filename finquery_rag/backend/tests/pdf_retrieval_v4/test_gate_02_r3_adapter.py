@@ -863,6 +863,112 @@ class TestTargetStructuralAlignment:
 
 
 # ---------------------------------------------------------------------------
+# 11.3 Structural Ambiguity Closure R1 (audit_structural_ambiguity_r32_r1)
+# ---------------------------------------------------------------------------
+
+
+R32_R1_SCRIPT = ROOT / "scripts/evaluation/audit_structural_ambiguity_r32_r1.py"
+
+
+class TestStructuralAmbiguityClosureR1:
+    """Gate 02 R3.2 R1: Structural Ambiguity Closure."""
+
+    def test_script_is_observation_only(self) -> None:
+        source = R32_R1_SCRIPT.read_text(encoding="utf-8")
+        assert "manual-mapping-review-package" not in source
+        assert "labels.golden" not in source
+        assert "questions.golden" not in source
+
+    def test_script_does_not_rerun_adapter(self) -> None:
+        source = R32_R1_SCRIPT.read_text(encoding="utf-8")
+        assert "adapter-prediction-seal.json" in source
+        assert "does NOT modify the adapter" in source
+
+    def test_script_requires_r32_closure(self) -> None:
+        source = R32_R1_SCRIPT.read_text(encoding="utf-8")
+        assert "target-structural-alignment.json" in source
+        assert "target_structural_alignment_closed" in source
+
+    def test_tiebreak_disambiguation_present(self) -> None:
+        source = R32_R1_SCRIPT.read_text(encoding="utf-8")
+        assert "_disambiguate_tiebreak" in source
+        for status in ("equivalent_set", "unique", "ambiguous"):
+            assert status in source
+
+    def test_low_tr_enhancement_present(self) -> None:
+        source = R32_R1_SCRIPT.read_text(encoding="utf-8")
+        assert "_audit_low_tr" in source
+        for signal in (
+            "row_label_compatible",
+            "header_path_compatible",
+            "table_title_compatible",
+            "period_axis_compatible",
+            "bbox_strong",
+            "block_signature_unique",
+        ):
+            assert signal in source
+
+    def test_decision_thresholds_present(self) -> None:
+        source = R32_R1_SCRIPT.read_text(encoding="utf-8")
+        assert "target_structural_alignment_ambiguity_closed" in source
+        assert "target_structural_alignment_ambiguity_insufficient" in source
+        assert "full_corpus_financial_semantic_graph" in source
+        assert "stop_and_classify_missing_evidence_shapes" in source
+
+    def test_artifact_fields(self) -> None:
+        out_path = R3_OUT / "target-structural-alignment-r1.json"
+        if not out_path.is_file():
+            pytest.skip("R3.2 R1 alignment artifact not yet generated")
+        data = json.loads(out_path.read_text(encoding="utf-8"))
+        assert data["seal_verified"] is True
+        assert data["r32_closure_verified"] is True
+        assert data["d_class_metrics"]["total"] == 16
+        assert data["b_class_metrics"]["total"] == 17
+        assert "false_structural_alignment" in data
+        assert "arbitrary_row_index_resolutions" in data
+        assert data["production_switch_allowed"] is False
+
+    def test_acceptance_gate_passed(self) -> None:
+        out_path = R3_OUT / "r3-2-r1-acceptance.json"
+        if not out_path.is_file():
+            pytest.skip("R3.2 R1 acceptance not yet generated")
+        data = json.loads(out_path.read_text(encoding="utf-8"))
+        assert data["all_passed"] is True
+        assert data["decision"] == "target_structural_alignment_ambiguity_closed"
+        assert data["strength"] in ("strong", "acceptable")
+        assert data["next_gate"] == "full_corpus_financial_semantic_graph"
+        assert data["production_switch_allowed"] is False
+
+    def test_no_arbitrary_row_index_resolution(self) -> None:
+        out_path = R3_OUT / "target-structural-alignment-r1.json"
+        if not out_path.is_file():
+            pytest.skip("R3.2 R1 alignment artifact not yet generated")
+        data = json.loads(out_path.read_text(encoding="utf-8"))
+        assert data["arbitrary_row_index_resolutions"] == 0
+        assert data["false_structural_alignment"] == 0
+
+    def test_ambiguity_closure_no_ambiguous(self) -> None:
+        out_path = R3_OUT / "ambiguity-closure.json"
+        if not out_path.is_file():
+            pytest.skip("R3.2 R1 ambiguity-closure not yet generated")
+        data = json.loads(out_path.read_text(encoding="utf-8"))
+        assert data["ambiguous_count"] == 0
+        for record in data["records"]:
+            assert record["alignment_status"] in ("equivalent_set", "unique")
+            assert record["structure_recoverable"] is True
+
+    def test_relaxed_text_match_no_downgrade(self) -> None:
+        out_path = R3_OUT / "relaxed-text-match-audit.json"
+        if not out_path.is_file():
+            pytest.skip("R3.2 R1 relaxed-text-match not yet generated")
+        data = json.loads(out_path.read_text(encoding="utf-8"))
+        assert data["enhanced_grade_b"] == 0
+        for record in data["records"]:
+            assert record["enhanced_grade"] == "A"
+            assert record["structure_recoverable"] is True
+
+
+# ---------------------------------------------------------------------------
 # 12. Finalize acceptance gates (finalize_pdf_v4_gate_02_r3)
 # ---------------------------------------------------------------------------
 

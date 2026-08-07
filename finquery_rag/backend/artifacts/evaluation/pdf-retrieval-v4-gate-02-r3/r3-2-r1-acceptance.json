@@ -1,0 +1,39 @@
+{
+  "all_passed": true,
+  "decision": "target_structural_alignment_ambiguity_closed",
+  "gate": "pdf_retrieval_v4_gate_02_r3_2_r1",
+  "metrics": {
+    "arbitrary_row_index_resolutions": 0,
+    "b_class": {
+      "ambiguous": 0,
+      "equivalent_set": 3,
+      "grade_a": 17,
+      "grade_b": 0,
+      "structure_recoverable": 17,
+      "total": 17,
+      "unique": 14
+    },
+    "d_class": {
+      "ambiguous": 0,
+      "equivalent_set": 0,
+      "grade_a": 16,
+      "grade_b": 0,
+      "structure_recoverable": 16,
+      "total": 16,
+      "unique": 16
+    },
+    "false_structural_alignment": 0,
+    "total_recoverable": "33/33",
+    "total_safe": "33/33"
+  },
+  "next_gate": "full_corpus_financial_semantic_graph",
+  "production_switch_allowed": false,
+  "schema": "pdf-retrieval-v4/gate-02-r3.2-r1/acceptance/v1",
+  "strength": "strong",
+  "thresholds": {
+    "arbitrary_resolutions": "= 0",
+    "false_alignment": "= 0",
+    "target_structurally_recoverable": ">= 30/33",
+    "unique_or_equivalent_safe": ">= 30/33"
+  }
+}

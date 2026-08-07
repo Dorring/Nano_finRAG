@@ -1,0 +1,237 @@
+{
+  "enhanced_grade_a": 7,
+  "enhanced_grade_b": 0,
+  "low_tr_records_count": 7,
+  "records": [
+    {
+      "alignment_status": "unique",
+      "benchmark_class": "D",
+      "case_id": "nvda_fy2025_002",
+      "document_id": "nvda_fy2025",
+      "enhanced_grade": "A",
+      "enhancement_evidence": {
+        "bbox_strong": true,
+        "block_signature_unique": true,
+        "cell_header_tokens_count": 3,
+        "cell_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "fallback_used": false,
+        "gold_data_label": "gaming",
+        "header_path_compatible": true,
+        "period_axis_compatible": true,
+        "row_label_compatible": true,
+        "row_metric_text": "gaming",
+        "supporting_signal_count": 5,
+        "table_title_compatible": false,
+        "tied_row_count": 1
+      },
+      "matched_row_id": "row:54b3d0bc1b1a829f98c993a327969efb7c89a36139ee456f910a644da86ee836",
+      "matched_table_id": "table:956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736",
+      "pdf_page": 172,
+      "r32_metric_token_recall": 0.3333,
+      "r32_numeric_recall": 1.0,
+      "risk_type": "low_tr",
+      "structure_recoverable": true
+    },
+    {
+      "alignment_status": "unique",
+      "benchmark_class": "D",
+      "case_id": "nvda_fy2025_005",
+      "document_id": "nvda_fy2025",
+      "enhanced_grade": "A",
+      "enhancement_evidence": {
+        "bbox_strong": true,
+        "block_signature_unique": true,
+        "cell_header_tokens_count": 3,
+        "cell_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "fallback_used": false,
+        "gold_data_label": "automotive",
+        "header_path_compatible": true,
+        "period_axis_compatible": true,
+        "row_label_compatible": true,
+        "row_metric_text": "automotive",
+        "supporting_signal_count": 5,
+        "table_title_compatible": false,
+        "tied_row_count": 1
+      },
+      "matched_row_id": "row:820594b426cf4db2964355d510d493947079072c7cc07b77f56a727db044e5dc",
+      "matched_table_id": "table:956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736",
+      "pdf_page": 172,
+      "r32_metric_token_recall": 0.3333,
+      "r32_numeric_recall": 1.0,
+      "risk_type": "low_tr",
+      "structure_recoverable": true
+    },
+    {
+      "alignment_status": "unique",
+      "benchmark_class": "D",
+      "case_id": "nvda_fy2025_007",
+      "document_id": "nvda_fy2025",
+      "enhanced_grade": "A",
+      "enhancement_evidence": {
+        "bbox_strong": true,
+        "block_signature_unique": true,
+        "cell_header_tokens_count": 3,
+        "cell_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "fallback_used": true,
+        "gold_data_label": "gross margin",
+        "header_path_compatible": true,
+        "period_axis_compatible": true,
+        "row_label_compatible": false,
+        "row_metric_text": "data center",
+        "supporting_signal_count": 4,
+        "table_title_compatible": false,
+        "tied_row_count": 0
+      },
+      "matched_row_id": "row:7e731d3eb8975007be3386499df660bfd01fa67dfec355c09fb4e82dab3eb64e",
+      "matched_table_id": "table:956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736",
+      "pdf_page": 172,
+      "r32_metric_token_recall": 0.5,
+      "r32_numeric_recall": 1.0,
+      "risk_type": "low_tr",
+      "structure_recoverable": true
+    },
+    {
+      "alignment_status": "unique",
+      "benchmark_class": "B",
+      "case_id": "ko_fy2025_009",
+      "document_id": "ko_fy2025",
+      "enhanced_grade": "A",
+      "enhancement_evidence": {
+        "bbox_strong": true,
+        "block_signature_unique": true,
+        "cell_header_tokens_count": 3,
+        "cell_periods": [
+          "FY2025"
+        ],
+        "fallback_used": true,
+        "gold_data_label": "total net operating revenues",
+        "header_path_compatible": false,
+        "period_axis_compatible": true,
+        "row_label_compatible": false,
+        "row_metric_text": "year ended december 31 2024",
+        "supporting_signal_count": 3,
+        "table_title_compatible": false,
+        "tied_row_count": 0
+      },
+      "matched_row_id": "row:b89e8430dec705b8eecbf9e7ec994e8f57c1becdee4152ee3c288226938228fb",
+      "matched_table_id": "table:642658a8e5c709cc385ee5b110fb89c197aa3cd83a54c0e5f1f8d79d9a0b7ef8",
+      "pdf_page": 119,
+      "r32_metric_token_recall": 0.7,
+      "r32_numeric_recall": 1.0,
+      "risk_type": "low_tr",
+      "structure_recoverable": true
+    },
+    {
+      "alignment_status": "unique",
+      "benchmark_class": "B",
+      "case_id": "nvda_fy2025_001",
+      "document_id": "nvda_fy2025",
+      "enhanced_grade": "A",
+      "enhancement_evidence": {
+        "bbox_strong": true,
+        "block_signature_unique": true,
+        "cell_header_tokens_count": 3,
+        "cell_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "fallback_used": false,
+        "gold_data_label": "revenue",
+        "header_path_compatible": false,
+        "period_axis_compatible": true,
+        "row_label_compatible": true,
+        "row_metric_text": "revenue",
+        "supporting_signal_count": 4,
+        "table_title_compatible": false,
+        "tied_row_count": 1
+      },
+      "matched_row_id": "row:3e288cd26f17e72802b2edf25af82fb54cfad3fb1067bd9839c78ff3e0b6934a",
+      "matched_table_id": "table:e433fb5d9deee46642d7803cdce597685d5abf8216fe7fe97fc2059ac27789a8",
+      "pdf_page": 144,
+      "r32_metric_token_recall": 0.3333,
+      "r32_numeric_recall": 1.0,
+      "risk_type": "low_tr",
+      "structure_recoverable": true
+    },
+    {
+      "alignment_status": "unique",
+      "benchmark_class": "B",
+      "case_id": "nvda_fy2025_006",
+      "document_id": "nvda_fy2025",
+      "enhanced_grade": "A",
+      "enhancement_evidence": {
+        "bbox_strong": true,
+        "block_signature_unique": true,
+        "cell_header_tokens_count": 3,
+        "cell_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "fallback_used": false,
+        "gold_data_label": "revenue",
+        "header_path_compatible": false,
+        "period_axis_compatible": true,
+        "row_label_compatible": true,
+        "row_metric_text": "revenue",
+        "supporting_signal_count": 4,
+        "table_title_compatible": false,
+        "tied_row_count": 1
+      },
+      "matched_row_id": "row:3e288cd26f17e72802b2edf25af82fb54cfad3fb1067bd9839c78ff3e0b6934a",
+      "matched_table_id": "table:e433fb5d9deee46642d7803cdce597685d5abf8216fe7fe97fc2059ac27789a8",
+      "pdf_page": 144,
+      "r32_metric_token_recall": 0.3333,
+      "r32_numeric_recall": 1.0,
+      "risk_type": "low_tr",
+      "structure_recoverable": true
+    },
+    {
+      "alignment_status": "unique",
+      "benchmark_class": "B",
+      "case_id": "nvda_fy2025_006",
+      "document_id": "nvda_fy2025",
+      "enhanced_grade": "A",
+      "enhancement_evidence": {
+        "bbox_strong": true,
+        "block_signature_unique": true,
+        "cell_header_tokens_count": 3,
+        "cell_periods": [
+          "FY2023",
+          "FY2024",
+          "FY2025"
+        ],
+        "fallback_used": false,
+        "gold_data_label": "revenue",
+        "header_path_compatible": false,
+        "period_axis_compatible": true,
+        "row_label_compatible": true,
+        "row_metric_text": "revenue",
+        "supporting_signal_count": 4,
+        "table_title_compatible": false,
+        "tied_row_count": 1
+      },
+      "matched_row_id": "row:3e288cd26f17e72802b2edf25af82fb54cfad3fb1067bd9839c78ff3e0b6934a",
+      "matched_table_id": "table:e433fb5d9deee46642d7803cdce597685d5abf8216fe7fe97fc2059ac27789a8",
+      "pdf_page": 144,
+      "r32_metric_token_recall": 0.3333,
+      "r32_numeric_recall": 1.0,
+      "risk_type": "low_tr",
+      "structure_recoverable": true
+    }
+  ],
+  "schema": "pdf-retrieval-v4/gate-02-r3.2-r1/relaxed-text-match-audit/v1"
+}

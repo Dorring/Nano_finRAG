@@ -1,0 +1,303 @@
+{
+  "ambiguous_count": 0,
+  "equivalent_set_count": 3,
+  "records": [
+    {
+      "alignment_status": "equivalent_set",
+      "benchmark_class": "B",
+      "case_id": "tsla_fy2025_002",
+      "disambiguation_evidence": {
+        "different_row_ids": 2,
+        "different_table_bboxes": 1,
+        "different_table_fragments": 2,
+        "reason": "duplicate_table_fragments_with_identical_row",
+        "same_header_paths": true,
+        "same_metric": true,
+        "same_periods": true,
+        "same_text": true
+      },
+      "document_id": "tsla_fy2025",
+      "equivalent_row_ids": [
+        "row:bf41fde5e6a82068d53448468b1069bd7f1724516e583efa9f971110ccd95785",
+        "row:bebc80c6e1ac4e9c83ba3ba18cf777c026f389958aed18d896a5b98538863390"
+      ],
+      "pdf_page": 69,
+      "risk_type": "tiebreak",
+      "row_evidence": [
+        {
+          "header_paths": [
+            [
+              "2023"
+            ],
+            [
+              "2024"
+            ],
+            [
+              "2025"
+            ]
+          ],
+          "metric_text": "Services and other",
+          "normalized_periods": [
+            "FY2023",
+            "FY2024",
+            "FY2025"
+          ],
+          "period_kinds": [],
+          "row_bbox": [
+            53.0,
+            730.3333333333333,
+            567.0,
+            755.6666666666666
+          ],
+          "row_id": "row:bf41fde5e6a82068d53448468b1069bd7f1724516e583efa9f971110ccd95785",
+          "row_index": 7,
+          "row_text": "Services and other | 12,530 | 10,534 | 8,319",
+          "table_bbox": [
+            53.0,
+            553.0,
+            567.0,
+            781.0
+          ],
+          "table_fragment_id": "table:e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049"
+        },
+        {
+          "header_paths": [
+            [
+              "2023"
+            ],
+            [
+              "2024"
+            ],
+            [
+              "2025"
+            ]
+          ],
+          "metric_text": "Services and other",
+          "normalized_periods": [
+            "FY2023",
+            "FY2024",
+            "FY2025"
+          ],
+          "period_kinds": [],
+          "row_bbox": [
+            53.0,
+            596.1351351351351,
+            567.0,
+            602.2972972972973
+          ],
+          "row_id": "row:bebc80c6e1ac4e9c83ba3ba18cf777c026f389958aed18d896a5b98538863390",
+          "row_index": 7,
+          "row_text": "Services and other | 12,530 | 10,534 | 8,319",
+          "table_bbox": [
+            53.0,
+            553.0,
+            567.0,
+            781.0
+          ],
+          "table_fragment_id": "table:cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0"
+        }
+      ],
+      "structure_recoverable": true,
+      "tied_row_count": 2
+    },
+    {
+      "alignment_status": "equivalent_set",
+      "benchmark_class": "B",
+      "case_id": "tsla_fy2025_006",
+      "disambiguation_evidence": {
+        "different_row_ids": 2,
+        "different_table_bboxes": 1,
+        "different_table_fragments": 2,
+        "reason": "duplicate_table_fragments_with_identical_row",
+        "same_header_paths": true,
+        "same_metric": true,
+        "same_periods": true,
+        "same_text": true
+      },
+      "document_id": "tsla_fy2025",
+      "equivalent_row_ids": [
+        "row:f20abee34148bde89c04a65354601bb96e1a3f1b2cf23fbd12c0ec150fac7da4",
+        "row:5bd592c61ea501109cb3f3cdb92219c5d2da792b01856e4c2ae2af7477a92c74"
+      ],
+      "pdf_page": 69,
+      "risk_type": "tiebreak",
+      "row_evidence": [
+        {
+          "header_paths": [
+            [
+              "2023"
+            ],
+            [
+              "2024"
+            ],
+            [
+              "2025"
+            ]
+          ],
+          "metric_text": "Total revenues",
+          "normalized_periods": [
+            "FY2023",
+            "FY2024",
+            "FY2025"
+          ],
+          "period_kinds": [],
+          "row_bbox": [
+            53.0,
+            755.6666666666666,
+            567.0,
+            781.0
+          ],
+          "row_id": "row:f20abee34148bde89c04a65354601bb96e1a3f1b2cf23fbd12c0ec150fac7da4",
+          "row_index": 8,
+          "row_text": "Total revenues | 94,827 | 97,690 | 96,773",
+          "table_bbox": [
+            53.0,
+            553.0,
+            567.0,
+            781.0
+          ],
+          "table_fragment_id": "table:e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049"
+        },
+        {
+          "header_paths": [
+            [
+              "2023"
+            ],
+            [
+              "2024"
+            ],
+            [
+              "2025"
+            ]
+          ],
+          "metric_text": "Total revenues",
+          "normalized_periods": [
+            "FY2023",
+            "FY2024",
+            "FY2025"
+          ],
+          "period_kinds": [],
+          "row_bbox": [
+            53.0,
+            602.2972972972973,
+            567.0,
+            608.4594594594595
+          ],
+          "row_id": "row:5bd592c61ea501109cb3f3cdb92219c5d2da792b01856e4c2ae2af7477a92c74",
+          "row_index": 8,
+          "row_text": "Total revenues | 94,827 | 97,690 | 96,773",
+          "table_bbox": [
+            53.0,
+            553.0,
+            567.0,
+            781.0
+          ],
+          "table_fragment_id": "table:cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0"
+        }
+      ],
+      "structure_recoverable": true,
+      "tied_row_count": 2
+    },
+    {
+      "alignment_status": "equivalent_set",
+      "benchmark_class": "B",
+      "case_id": "tsla_fy2025_006",
+      "disambiguation_evidence": {
+        "different_row_ids": 2,
+        "different_table_bboxes": 1,
+        "different_table_fragments": 2,
+        "reason": "duplicate_table_fragments_with_identical_row",
+        "same_header_paths": true,
+        "same_metric": true,
+        "same_periods": true,
+        "same_text": true
+      },
+      "document_id": "tsla_fy2025",
+      "equivalent_row_ids": [
+        "row:f20abee34148bde89c04a65354601bb96e1a3f1b2cf23fbd12c0ec150fac7da4",
+        "row:5bd592c61ea501109cb3f3cdb92219c5d2da792b01856e4c2ae2af7477a92c74"
+      ],
+      "pdf_page": 69,
+      "risk_type": "tiebreak",
+      "row_evidence": [
+        {
+          "header_paths": [
+            [
+              "2023"
+            ],
+            [
+              "2024"
+            ],
+            [
+              "2025"
+            ]
+          ],
+          "metric_text": "Total revenues",
+          "normalized_periods": [
+            "FY2023",
+            "FY2024",
+            "FY2025"
+          ],
+          "period_kinds": [],
+          "row_bbox": [
+            53.0,
+            755.6666666666666,
+            567.0,
+            781.0
+          ],
+          "row_id": "row:f20abee34148bde89c04a65354601bb96e1a3f1b2cf23fbd12c0ec150fac7da4",
+          "row_index": 8,
+          "row_text": "Total revenues | 94,827 | 97,690 | 96,773",
+          "table_bbox": [
+            53.0,
+            553.0,
+            567.0,
+            781.0
+          ],
+          "table_fragment_id": "table:e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049"
+        },
+        {
+          "header_paths": [
+            [
+              "2023"
+            ],
+            [
+              "2024"
+            ],
+            [
+              "2025"
+            ]
+          ],
+          "metric_text": "Total revenues",
+          "normalized_periods": [
+            "FY2023",
+            "FY2024",
+            "FY2025"
+          ],
+          "period_kinds": [],
+          "row_bbox": [
+            53.0,
+            602.2972972972973,
+            567.0,
+            608.4594594594595
+          ],
+          "row_id": "row:5bd592c61ea501109cb3f3cdb92219c5d2da792b01856e4c2ae2af7477a92c74",
+          "row_index": 8,
+          "row_text": "Total revenues | 94,827 | 97,690 | 96,773",
+          "table_bbox": [
+            53.0,
+            553.0,
+            567.0,
+            781.0
+          ],
+          "table_fragment_id": "table:cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0"
+        }
+      ],
+      "structure_recoverable": true,
+      "tied_row_count": 2
+    }
+  ],
+  "schema": "pdf-retrieval-v4/gate-02-r3.2-r1/ambiguity-closure/v1",
+  "tiebreak_records_count": 3,
+  "unique_count": 0
+}
