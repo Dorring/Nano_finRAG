@@ -1,0 +1,47 @@
+{
+  "adapter": "automatic_mineru_html_pymupdf_native_alignment",
+  "answer_generation_calls": 0,
+  "bbox_tolerance": {
+    "cell_bbox_fallback": "estimated_from_column_bands_and_row_height",
+    "description": "Rows/cells without native word bbox use table geometry fallback",
+    "row_bbox_fallback": "estimated_from_table_bbox_and_row_index"
+  },
+  "binding_precedence": [
+    "native_word_center_or_overlap",
+    "same_text_line_and_column_order",
+    "mineru_text_fallback"
+  ],
+  "code_commit": "working-tree",
+  "evaluation_type": "full_corpus_unified_structured_adapter",
+  "evidence_unit_builds": 0,
+  "expected_value_reads": 0,
+  "forbidden": [
+    "oracle",
+    "gold",
+    "expected_value",
+    "question",
+    "case_id",
+    "retrieval",
+    "index",
+    "reranker",
+    "answer_generation",
+    "header_graph",
+    "evidence_unit",
+    "candidate_view",
+    "temporal_binding",
+    "metric_hierarchy"
+  ],
+  "gate": "pdf_retrieval_v4_gate_02_r3",
+  "header_graph_runs": 0,
+  "index_builds": 0,
+  "input_r2_commit": "6f5990f",
+  "production_config_modified": false,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "runtime_governance_reads": 0,
+  "runtime_oracle_reads": 0,
+  "runtime_question_reads": 0,
+  "structural_backend": "mineru_hybrid_high"
+}

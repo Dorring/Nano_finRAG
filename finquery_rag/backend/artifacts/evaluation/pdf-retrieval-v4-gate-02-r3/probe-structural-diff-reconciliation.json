@@ -1,0 +1,68 @@
+{
+  "adapter_blocking": false,
+  "reconciled_pages": [
+    {
+      "adapter_blocking": false,
+      "difference_class": "empty_page_no_content",
+      "document_id": "tsla_fy2025",
+      "mineru_content_present": true,
+      "new_table_count": 0,
+      "new_text_block_count": 0,
+      "old_table_count": 0,
+      "old_text_block_count": 0,
+      "page_record_present": true,
+      "pdf_page": 2
+    },
+    {
+      "adapter_blocking": false,
+      "difference_class": "empty_page_no_content",
+      "document_id": "tsla_fy2025",
+      "mineru_content_present": true,
+      "new_table_count": 0,
+      "new_text_block_count": 0,
+      "old_table_count": 0,
+      "old_text_block_count": 0,
+      "page_record_present": true,
+      "pdf_page": 3
+    },
+    {
+      "adapter_blocking": false,
+      "difference_class": "corpus_scope_difference",
+      "document_id": "adobe_fy2025_pdf_dev",
+      "mineru_content_present": false,
+      "new_table_count": 0,
+      "new_text_block_count": 0,
+      "old_table_count": 1,
+      "old_text_block_count": 3,
+      "page_record_present": true,
+      "pdf_page": 50
+    },
+    {
+      "adapter_blocking": false,
+      "difference_class": "corpus_scope_difference",
+      "document_id": "salesforce_fy2026_pdf_dev",
+      "mineru_content_present": false,
+      "new_table_count": 0,
+      "new_text_block_count": 0,
+      "old_table_count": 3,
+      "old_text_block_count": 5,
+      "page_record_present": true,
+      "pdf_page": 45
+    },
+    {
+      "adapter_blocking": false,
+      "difference_class": "corpus_scope_difference",
+      "document_id": "walmart_fy2026_pdf_dev",
+      "mineru_content_present": false,
+      "new_table_count": 0,
+      "new_text_block_count": 0,
+      "old_table_count": 1,
+      "old_text_block_count": 0,
+      "page_record_present": true,
+      "pdf_page": 54
+    }
+  ],
+  "schema": "pdf-retrieval-v4/gate-02-r3/probe-structural-diff-reconciliation/v1",
+  "total_pages_missing_in_r2_diff": 5,
+  "true_missing_page_count": 0
+}

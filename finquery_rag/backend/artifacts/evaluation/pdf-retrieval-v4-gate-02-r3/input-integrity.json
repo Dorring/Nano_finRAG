@@ -1,0 +1,72 @@
+{
+  "all_documents_present": true,
+  "all_middle_json_present": true,
+  "document_count": 8,
+  "documents": [
+    {
+      "document_id": "aapl_fy2025",
+      "expected_page_count": 80,
+      "expected_pdf_sha256": "",
+      "middle_json_present": true,
+      "middle_json_sha256": "b675ad8c57bc53b3bc76010258f3e8f31e19fac75f8203ccd8c2f18a810aca0f",
+      "mineru_output_present": true
+    },
+    {
+      "document_id": "jpm_fy2025",
+      "expected_page_count": 364,
+      "expected_pdf_sha256": "",
+      "middle_json_present": true,
+      "middle_json_sha256": "ab00417baae7bf37ff4b264ce4d6a5d607ab5abcd00b6706c6ec375bd03eef38",
+      "mineru_output_present": true
+    },
+    {
+      "document_id": "ko_fy2025",
+      "expected_page_count": 192,
+      "expected_pdf_sha256": "",
+      "middle_json_present": true,
+      "middle_json_sha256": "6d75fc1dc58deb1a5c697237aaf985808bdf0517446716ddc948e67bcf6656fc",
+      "mineru_output_present": true
+    },
+    {
+      "document_id": "msft_fy2025",
+      "expected_page_count": 90,
+      "expected_pdf_sha256": "",
+      "middle_json_present": true,
+      "middle_json_sha256": "feb8227e03b7db17891b419604fa5a8ffc1aae40642019e6ae51787992f644ac",
+      "mineru_output_present": true
+    },
+    {
+      "document_id": "nvda_fy2025",
+      "expected_page_count": 181,
+      "expected_pdf_sha256": "",
+      "middle_json_present": true,
+      "middle_json_sha256": "c3186f1ca728f273a8d08e96f18aec103eb56b12d293133c6de45d4989cd8d78",
+      "mineru_output_present": true
+    },
+    {
+      "document_id": "pfe_fy2024",
+      "expected_page_count": 165,
+      "expected_pdf_sha256": "",
+      "middle_json_present": true,
+      "middle_json_sha256": "dcfbdc0373bc802269ba2ff86e8e6dbc9b6bd9bd454f0c182de7eda0ae44b755",
+      "mineru_output_present": true
+    },
+    {
+      "document_id": "tsla_fy2025",
+      "expected_page_count": 140,
+      "expected_pdf_sha256": "",
+      "middle_json_present": true,
+      "middle_json_sha256": "3d772a28748bf7ddc27bccc2c336e659010505139529da39d95bee07ffd4b1ef",
+      "mineru_output_present": true
+    },
+    {
+      "document_id": "v_fy2025",
+      "expected_page_count": 136,
+      "expected_pdf_sha256": "",
+      "middle_json_present": true,
+      "middle_json_sha256": "c4b0559e34d121626ccda47a29e3311112f9110f99d77192738a4f08a7a7dadf",
+      "mineru_output_present": true
+    }
+  ],
+  "r2_seal_sha256": "b5d81f8dc7bba9ec15b2291911f8cd8a501ab4f0bb608bc0e1b61db0a8993691"
+}

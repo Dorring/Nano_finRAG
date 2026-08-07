@@ -1,0 +1,20 @@
+{
+  "b_class_row_cell_exists": 1,
+  "b_class_total": 1,
+  "d_class_page_present": 0,
+  "d_class_row_present": 0,
+  "d_class_table_present": 0,
+  "d_class_total": 0,
+  "per_record": [
+    {
+      "case_id": "msft_fy2025_007",
+      "document_id": "msft_fy2025",
+      "expected_metric": "Intelligent Cloud revenue",
+      "oracle_record_id": 10,
+      "page_present": true,
+      "pdf_page": 80,
+      "row_cell_structure_exists": true
+    }
+  ],
+  "schema": "pdf-retrieval-v4/gate-02-r3/d-class-structural-presence/v1"
+}

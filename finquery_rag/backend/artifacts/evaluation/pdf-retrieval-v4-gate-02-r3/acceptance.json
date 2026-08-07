@@ -1,0 +1,54 @@
+{
+  "all_passed": true,
+  "coverage_gate": {
+    "documents": "8/8",
+    "missing_pages": 0,
+    "pages": "1348/1348",
+    "passed": true
+  },
+  "d_class_presence_summary": {
+    "b_class_row_cell_exists": 1,
+    "b_class_total": 1,
+    "d_class_page_present": 0,
+    "d_class_row_present": 0,
+    "d_class_table_present": 0,
+    "d_class_total": 0
+  },
+  "decision": "full_corpus_unified_structured_adapter_passed",
+  "gate": "pdf_retrieval_v4_gate_02_r3",
+  "identity_gate": {
+    "broken_fk": 0,
+    "cell_id_conflict": 0,
+    "passed": true,
+    "row_id_conflict": 0,
+    "table_id_conflict": 0
+  },
+  "oracle_gate": {
+    "numeric": "22/22",
+    "numeric_passed": true,
+    "passed": true,
+    "row": "22/22",
+    "row_passed": true,
+    "scale": "22/22",
+    "scale_passed": true,
+    "source_traceback": "22/22",
+    "source_traceback_passed": true,
+    "table": "22/22",
+    "table_passed": true
+  },
+  "regression_gate": {
+    "full_document_context_actual_regression": 0,
+    "old_probe_true_regression": 0,
+    "passed": true
+  },
+  "safety_gate": {
+    "gold_reads": 0,
+    "governance_reads": 0,
+    "index_builds": 0,
+    "passed": true,
+    "production_writes": 0,
+    "question_reads": 0,
+    "retrieval": 0
+  },
+  "schema": "pdf-retrieval-v4/gate-02-r3/acceptance/v1"
+}

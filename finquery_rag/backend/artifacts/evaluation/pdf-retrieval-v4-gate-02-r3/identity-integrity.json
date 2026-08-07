@@ -1,0 +1,31 @@
+{
+  "all_passed": true,
+  "bbox_integrity": {
+    "invalid_cell_bbox": 0,
+    "invalid_row_bbox": 0,
+    "invalid_table_bbox": 0,
+    "out_of_page_bbox": 0,
+    "passed": true
+  },
+  "identity_integrity": {
+    "cell_to_row_missing": 0,
+    "duplicate_cell_id": 0,
+    "duplicate_row_id": 0,
+    "duplicate_table_id": 0,
+    "passed": true,
+    "row_to_table_missing": 0
+  },
+  "page_integrity": {
+    "duplicate_page_records": 0,
+    "expected_pages": 1348,
+    "missing_page_records": 0,
+    "page_records": 1348,
+    "passed": true
+  },
+  "text_integrity": {
+    "invalid_numeric_parse": 0,
+    "native_alignment_failed": 31131,
+    "numeric_cell_native_loss": 0,
+    "unresolved_cells": 0
+  }
+}

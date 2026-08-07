@@ -1,0 +1,745 @@
+{
+  "gate_checks": {
+    "numeric_22_22": true,
+    "row_22_22": true,
+    "scale_22_22": true,
+    "source_traceback_22_22": true,
+    "table_22_22": true
+  },
+  "numeric_exact": "22/22",
+  "oracle_record_count": 22,
+  "passed": true,
+  "per_record": [
+    {
+      "candidate_counts": {
+        "complete": 1,
+        "metric_row": 1,
+        "numeric": 1,
+        "table": 1
+      },
+      "case_id": "aapl_fy2025_006",
+      "document_id": "aapl_fy2025",
+      "expected_metric": "Total net sales",
+      "expected_numeric": "391035",
+      "expected_period": "FY2024",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 0,
+      "pdf_page": 26,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          306.0,
+          178.71428571428572,
+          402.6666666666667,
+          191.0
+        ],
+        "cell_id": "cell:4b53bcb88893cf4042e4fca21ee1e7a454e6d2c1196d845f8d1563ceca18d620",
+        "cell_period": "FY2024",
+        "row_id": "row:9fbbb1acea0877e077919653899299d518a3ad774428b896b7876eb0663be0be",
+        "table_fragment_id": "table:f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 1,
+        "metric_row": 1,
+        "numeric": 1,
+        "table": 1
+      },
+      "case_id": "aapl_fy2025_006",
+      "document_id": "aapl_fy2025",
+      "expected_metric": "Total net sales",
+      "expected_numeric": "416161",
+      "expected_period": "FY2025",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 1,
+      "pdf_page": 26,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          112.66666666666667,
+          178.71428571428572,
+          209.33333333333334,
+          191.0
+        ],
+        "cell_id": "cell:b4efd10716f00997b8aaafc6b72497821e983984bec3cc329eb1619502d43134",
+        "cell_period": "FY2025",
+        "row_id": "row:9fbbb1acea0877e077919653899299d518a3ad774428b896b7876eb0663be0be",
+        "table_fragment_id": "table:f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 4,
+        "metric_row": 13,
+        "numeric": 4,
+        "table": 2
+      },
+      "case_id": "jpm_fy2025_006",
+      "document_id": "jpm_fy2025",
+      "expected_metric": "Total assets",
+      "expected_numeric": "4002814",
+      "expected_period": "FY2024",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 2,
+      "pdf_page": 199,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          391.0,
+          271.81081081081084,
+          563.0,
+          285.27027027027026
+        ],
+        "cell_id": "cell:8f7cd55b17f5d1900483b8a4e65ed8ef2a5f883c7342fa04c4f07f26085b4e81",
+        "cell_period": "FY2024",
+        "row_id": "row:de77113848571c091c5ef6f78187698f7cee62ff867f9232e0bcc9b6ea9316f8",
+        "table_fragment_id": "table:59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 4,
+        "metric_row": 13,
+        "numeric": 4,
+        "table": 2
+      },
+      "case_id": "jpm_fy2025_006",
+      "document_id": "jpm_fy2025",
+      "expected_metric": "Total assets",
+      "expected_numeric": "4424900",
+      "expected_period": "FY2025",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 3,
+      "pdf_page": 199,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          219.0,
+          271.81081081081084,
+          391.0,
+          285.27027027027026
+        ],
+        "cell_id": "cell:fa5d817f59019487495e2c34839accd2cce1a2f27f8c772a33e97991da6ab56e",
+        "cell_period": "FY2025",
+        "row_id": "row:de77113848571c091c5ef6f78187698f7cee62ff867f9232e0bcc9b6ea9316f8",
+        "table_fragment_id": "table:59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 1,
+        "metric_row": 1,
+        "numeric": 1,
+        "table": 1
+      },
+      "case_id": "ko_fy2025_006",
+      "document_id": "ko_fy2025",
+      "expected_metric": "Net operating revenues",
+      "expected_numeric": "47061",
+      "expected_period": "FY2024",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 4,
+      "pdf_page": 63,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          361.79999999999995,
+          124.85714285714286,
+          475.4,
+          135.71428571428572
+        ],
+        "cell_id": "cell:a09a15317ad442eb1d5e7c844c00606e143be2a796ac26d5ff5130ba6c6c1f1c",
+        "cell_period": "FY2024",
+        "row_id": "row:78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d",
+        "table_fragment_id": "table:4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 1,
+        "metric_row": 1,
+        "numeric": 1,
+        "table": 1
+      },
+      "case_id": "ko_fy2025_006",
+      "document_id": "ko_fy2025",
+      "expected_metric": "Net operating revenues",
+      "expected_numeric": "47941",
+      "expected_period": "FY2025",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 5,
+      "pdf_page": 63,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          248.2,
+          124.85714285714286,
+          361.79999999999995,
+          135.71428571428572
+        ],
+        "cell_id": "cell:ccc776f56cd4dba7671abe4c20007ad2e0dc08765b4e716a0607121cec7a46d2",
+        "cell_period": "FY2025",
+        "row_id": "row:78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d",
+        "table_fragment_id": "table:4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 2,
+        "metric_row": 5,
+        "numeric": 2,
+        "table": 2
+      },
+      "case_id": "ko_fy2025_007",
+      "document_id": "ko_fy2025",
+      "expected_metric": "EMEA third-party revenue",
+      "expected_numeric": "10833",
+      "expected_period": "FY2025",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 6,
+      "pdf_page": 119,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          77.8,
+          109.25714285714285,
+          134.6,
+          119.34285714285714
+        ],
+        "cell_id": "cell:dbb47c23507cf7a89f13a98c2c4359dffca25c68bc5300e895fb2d7018b8854b",
+        "cell_period": "FY2025",
+        "row_id": "row:510010d80fdd51a42ab8cb25cf47ebbed9f076c76b5d22ce4e4777da1356a9e0",
+        "table_fragment_id": "table:642658a8e5c709cc385ee5b110fb89c197aa3cd83a54c0e5f1f8d79d9a0b7ef8"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 4,
+        "metric_row": 10,
+        "numeric": 4,
+        "table": 2
+      },
+      "case_id": "ko_fy2025_007",
+      "document_id": "ko_fy2025",
+      "expected_metric": "Net operating revenues",
+      "expected_numeric": "47941",
+      "expected_period": "FY2025",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 7,
+      "pdf_page": 119,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          532.2,
+          109.25714285714285,
+          589.0,
+          119.34285714285714
+        ],
+        "cell_id": "cell:ec6f6c0be67961f31f93e6d469a1aab1184f29753c2f281178987540993e3f49",
+        "cell_period": "FY2025",
+        "row_id": "row:510010d80fdd51a42ab8cb25cf47ebbed9f076c76b5d22ce4e4777da1356a9e0",
+        "table_fragment_id": "table:642658a8e5c709cc385ee5b110fb89c197aa3cd83a54c0e5f1f8d79d9a0b7ef8"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 3,
+        "metric_row": 10,
+        "numeric": 3,
+        "table": 2
+      },
+      "case_id": "msft_fy2025_006",
+      "document_id": "msft_fy2025",
+      "expected_metric": "Total revenue",
+      "expected_numeric": "245122",
+      "expected_period": "FY2024",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 8,
+      "pdf_page": 80,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          303.5,
+          710.5,
+          439.25,
+          721.0
+        ],
+        "cell_id": "cell:a24400d83e649d3223f000e959ba41e9fdad7e2d0b52cbf806d6b02eaf5331da",
+        "cell_period": "FY2024",
+        "row_id": "row:45ea8a24806d9aeff69ab5ce95236fcb71ba8a87e653fd1c13c85f9c151a7ec6",
+        "table_fragment_id": "table:ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 3,
+        "metric_row": 10,
+        "numeric": 3,
+        "table": 2
+      },
+      "case_id": "msft_fy2025_006",
+      "document_id": "msft_fy2025",
+      "expected_metric": "Total revenue",
+      "expected_numeric": "281724",
+      "expected_period": "FY2025",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 9,
+      "pdf_page": 80,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          167.75,
+          710.5,
+          303.5,
+          721.0
+        ],
+        "cell_id": "cell:c3f912253d56121be8c4a0b1cf66b4af14e5bf32b09f01629dde21fe357e719b",
+        "cell_period": "FY2025",
+        "row_id": "row:45ea8a24806d9aeff69ab5ce95236fcb71ba8a87e653fd1c13c85f9c151a7ec6",
+        "table_fragment_id": "table:ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 1,
+        "metric_row": 1,
+        "numeric": 1,
+        "table": 1
+      },
+      "case_id": "msft_fy2025_007",
+      "document_id": "msft_fy2025",
+      "expected_metric": "Intelligent Cloud revenue",
+      "expected_numeric": "106265",
+      "expected_period": "FY2025",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 10,
+      "pdf_page": 80,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          167.75,
+          257.0,
+          303.5,
+          279.8571428571429
+        ],
+        "cell_id": "cell:07f726d4849fdb7c4d4c4b998af66d02dacf2cac1f8f4173231064994dd039df",
+        "cell_period": "FY2025",
+        "row_id": "row:481a08c44c197b197039cd84c271cebf999244f8c379968bb3293cc2a579f101",
+        "table_fragment_id": "table:be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 3,
+        "metric_row": 10,
+        "numeric": 3,
+        "table": 2
+      },
+      "case_id": "msft_fy2025_007",
+      "document_id": "msft_fy2025",
+      "expected_metric": "Total revenue",
+      "expected_numeric": "281724",
+      "expected_period": "FY2025",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 11,
+      "pdf_page": 80,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          167.75,
+          710.5,
+          303.5,
+          721.0
+        ],
+        "cell_id": "cell:c3f912253d56121be8c4a0b1cf66b4af14e5bf32b09f01629dde21fe357e719b",
+        "cell_period": "FY2025",
+        "row_id": "row:45ea8a24806d9aeff69ab5ce95236fcb71ba8a87e653fd1c13c85f9c151a7ec6",
+        "table_fragment_id": "table:ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 1,
+        "metric_row": 3,
+        "numeric": 1,
+        "table": 1
+      },
+      "case_id": "nvda_fy2025_006",
+      "document_id": "nvda_fy2025",
+      "expected_metric": "Total revenue",
+      "expected_numeric": "60922",
+      "expected_period": "FY2024",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 12,
+      "pdf_page": 144,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          297.0,
+          100.58333333333333,
+          424.0,
+          116.375
+        ],
+        "cell_id": "cell:d04ffcee04a4d833c764ee15c9f75a7cb0ac6f81d9b54819d607f48c5d061ad5",
+        "cell_period": "FY2024",
+        "row_id": "row:3e288cd26f17e72802b2edf25af82fb54cfad3fb1067bd9839c78ff3e0b6934a",
+        "table_fragment_id": "table:e433fb5d9deee46642d7803cdce597685d5abf8216fe7fe97fc2059ac27789a8"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 1,
+        "metric_row": 3,
+        "numeric": 1,
+        "table": 1
+      },
+      "case_id": "nvda_fy2025_006",
+      "document_id": "nvda_fy2025",
+      "expected_metric": "Total revenue",
+      "expected_numeric": "130497",
+      "expected_period": "FY2025",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 13,
+      "pdf_page": 144,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          170.0,
+          100.58333333333333,
+          297.0,
+          116.375
+        ],
+        "cell_id": "cell:38b1e189f6d05f6c09a1347bcf66c019473829ecccdfc290816142d9b9116703",
+        "cell_period": "FY2025",
+        "row_id": "row:3e288cd26f17e72802b2edf25af82fb54cfad3fb1067bd9839c78ff3e0b6934a",
+        "table_fragment_id": "table:e433fb5d9deee46642d7803cdce597685d5abf8216fe7fe97fc2059ac27789a8"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 2,
+        "metric_row": 5,
+        "numeric": 2,
+        "table": 1
+      },
+      "case_id": "pfe_fy2024_006",
+      "document_id": "pfe_fy2024",
+      "expected_metric": "Total revenues",
+      "expected_numeric": "59553",
+      "expected_period": "FY2023",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 14,
+      "pdf_page": 60,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          294.0,
+          159.0,
+          433.0,
+          171.0
+        ],
+        "cell_id": "cell:d137d7046d5b7ae3cf013cfd44f712d9fc632433c288d2e6feda2162252bf09c",
+        "cell_period": "FY2023",
+        "row_id": "row:2c334e07f01a1b28862425a9ab134cc77aaf32695d42bd3863a9466770286454",
+        "table_fragment_id": "table:a8055121fa63f48f32fb0fa7fd624ea6541155fef3395d279e4de69bfc94c3de"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 2,
+        "metric_row": 5,
+        "numeric": 2,
+        "table": 1
+      },
+      "case_id": "pfe_fy2024_006",
+      "document_id": "pfe_fy2024",
+      "expected_metric": "Total revenues",
+      "expected_numeric": "63627",
+      "expected_period": "FY2024",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 15,
+      "pdf_page": 60,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          155.0,
+          159.0,
+          294.0,
+          171.0
+        ],
+        "cell_id": "cell:8f2c7dc3f6ec8076a36dceb7b8a387ec888639301a471fd39ece4247897ac1d0",
+        "cell_period": "FY2024",
+        "row_id": "row:2c334e07f01a1b28862425a9ab134cc77aaf32695d42bd3863a9466770286454",
+        "table_fragment_id": "table:a8055121fa63f48f32fb0fa7fd624ea6541155fef3395d279e4de69bfc94c3de"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 2,
+        "metric_row": 12,
+        "numeric": 2,
+        "table": 3
+      },
+      "case_id": "tsla_fy2025_006",
+      "document_id": "tsla_fy2025",
+      "expected_metric": "Total revenues",
+      "expected_numeric": "97690",
+      "expected_period": "FY2024",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 16,
+      "pdf_page": 69,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          310.0,
+          755.6666666666666,
+          438.5,
+          781.0
+        ],
+        "cell_id": "cell:2a420f9c083d2fe0013e17327e881748cfa5363b845b5b592ffc2d322bd3ce15",
+        "cell_period": "FY2024",
+        "row_id": "row:f20abee34148bde89c04a65354601bb96e1a3f1b2cf23fbd12c0ec150fac7da4",
+        "table_fragment_id": "table:e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 2,
+        "metric_row": 12,
+        "numeric": 2,
+        "table": 3
+      },
+      "case_id": "tsla_fy2025_006",
+      "document_id": "tsla_fy2025",
+      "expected_metric": "Total revenues",
+      "expected_numeric": "94827",
+      "expected_period": "FY2025",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 17,
+      "pdf_page": 69,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          181.5,
+          755.6666666666666,
+          310.0,
+          781.0
+        ],
+        "cell_id": "cell:f0102ee4def9114beacd7e5c328faa644645b73a9929ae1353ed6c28461b943b",
+        "cell_period": "FY2025",
+        "row_id": "row:f20abee34148bde89c04a65354601bb96e1a3f1b2cf23fbd12c0ec150fac7da4",
+        "table_fragment_id": "table:e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 1,
+        "metric_row": 3,
+        "numeric": 1,
+        "table": 1
+      },
+      "case_id": "tsla_fy2025_007",
+      "document_id": "tsla_fy2025",
+      "expected_metric": "Total automotive revenues",
+      "expected_numeric": "69526",
+      "expected_period": "FY2025",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 18,
+      "pdf_page": 55,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          117.5,
+          268.5,
+          182.0,
+          300.4
+        ],
+        "cell_id": "cell:bbaa1e637363dbd6ec9e71cda9aa4107b3f2671bf0fe25e6cf53f42835a037c9",
+        "cell_period": "FY2025",
+        "row_id": "row:05ef0bffccf1a8e8ba0a0a539c3c7bc8bb31cc1467a1c5db16153b2fc452d267",
+        "table_fragment_id": "table:11b13f579ed57a803e1ae5b27345556d8a402edf45fcf4fded3c6bf9acc325d0"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 2,
+        "metric_row": 2,
+        "numeric": 2,
+        "table": 1
+      },
+      "case_id": "tsla_fy2025_007",
+      "document_id": "tsla_fy2025",
+      "expected_metric": "Energy generation and storage segment revenue",
+      "expected_numeric": "12771",
+      "expected_period": "FY2025",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 19,
+      "pdf_page": 55,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          117.5,
+          364.2,
+          182.0,
+          396.09999999999997
+        ],
+        "cell_id": "cell:2d1e92b64aa53d6a5735688178a2840c6c00bd50cc80eea8931347b8ef6ca2a3",
+        "cell_period": "FY2025",
+        "row_id": "row:1f8315922f2291e932238ff4eb90372c8d6925362b1fe391d0121f5b7a517fd9",
+        "table_fragment_id": "table:11b13f579ed57a803e1ae5b27345556d8a402edf45fcf4fded3c6bf9acc325d0"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 1,
+        "metric_row": 2,
+        "numeric": 1,
+        "table": 1
+      },
+      "case_id": "v_fy2025_006",
+      "document_id": "v_fy2025",
+      "expected_metric": "Net revenue",
+      "expected_numeric": "35926",
+      "expected_period": "FY2024",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 20,
+      "pdf_page": 75,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          296.0,
+          130.6829268292683,
+          415.0,
+          143.2439024390244
+        ],
+        "cell_id": "cell:2b39d167803b361339559c4609f1741bca1b02f9cfc3b1d6e2ae7908daeb9ece",
+        "cell_period": "FY2024",
+        "row_id": "row:9cea965a621d0707927d0252efb5f95117adc2b590b495799bd051d069bd2eae",
+        "table_fragment_id": "table:047c6a56c7f09d391ac993d738c97b84bae5339ad9a1873ff5d6dd98ff693439"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    },
+    {
+      "candidate_counts": {
+        "complete": 1,
+        "metric_row": 2,
+        "numeric": 1,
+        "table": 1
+      },
+      "case_id": "v_fy2025_006",
+      "document_id": "v_fy2025",
+      "expected_metric": "Net revenue",
+      "expected_numeric": "40000",
+      "expected_period": "FY2025",
+      "metric_period_value_recovery": true,
+      "numeric_exact": true,
+      "oracle_record_id": 21,
+      "pdf_page": 75,
+      "row_recovery": true,
+      "scale_recoverability": true,
+      "selected": {
+        "cell_bbox": [
+          177.0,
+          130.6829268292683,
+          296.0,
+          143.2439024390244
+        ],
+        "cell_id": "cell:55187d94d56f05c410e6bb3ae41ebec4a0492ee70e1fa146e8d11feb2d2ad82c",
+        "cell_period": "FY2025",
+        "row_id": "row:9cea965a621d0707927d0252efb5f95117adc2b590b495799bd051d069bd2eae",
+        "table_fragment_id": "table:047c6a56c7f09d391ac993d738c97b84bae5339ad9a1873ff5d6dd98ff693439"
+      },
+      "source_traceback": true,
+      "table_recovery": true
+    }
+  ],
+  "row_recovery": "22/22",
+  "scale_recoverability": "22/22",
+  "schema": "pdf-retrieval-v4/gate-02-r3/oracle-regression/v1",
+  "source_traceback": "22/22",
+  "table_recovery": "22/22"
+}
