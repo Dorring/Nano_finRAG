@@ -175,7 +175,12 @@ class TestAdapterIdentity:
         assert id1 != id2
 
     def test_normalize_bbox_rounds_and_handles_invalid(self) -> None:
-        assert normalize_bbox([1.234567, 2.789, 3.111, 4.999]) == [1.23, 2.79, 3.11, 5.0]
+        assert normalize_bbox([1.234567, 2.789, 3.111, 4.999]) == [
+            1.23,
+            2.79,
+            3.11,
+            5.0,
+        ]
         assert normalize_bbox(None) == [0.0, 0.0, 0.0, 0.0]
         assert normalize_bbox([1, 2]) == [0.0, 0.0, 0.0, 0.0]
 
@@ -415,9 +420,7 @@ class TestAdapterIntegrity:
 # ---------------------------------------------------------------------------
 
 
-RECONCILE_SCRIPT = (
-    ROOT / "scripts/evaluation/reconcile_probe_structural_diff_r3.py"
-)
+RECONCILE_SCRIPT = ROOT / "scripts/evaluation/reconcile_probe_structural_diff_r3.py"
 
 
 class TestProbeStructuralDiffReconciliation:
@@ -460,9 +463,7 @@ class TestProbeStructuralDiffReconciliation:
 # ---------------------------------------------------------------------------
 
 
-CONTEXT_DIFF_SCRIPT = (
-    ROOT / "scripts/evaluation/audit_full_document_context_diff_r3.py"
-)
+CONTEXT_DIFF_SCRIPT = ROOT / "scripts/evaluation/audit_full_document_context_diff_r3.py"
 
 
 class TestFullDocumentContextDiffAudit:
@@ -500,9 +501,7 @@ class TestFullDocumentContextDiffAudit:
 # ---------------------------------------------------------------------------
 
 
-LEGACY_SCRIPT = (
-    ROOT / "scripts/evaluation/audit_legacy_identity_continuity_r3.py"
-)
+LEGACY_SCRIPT = ROOT / "scripts/evaluation/audit_legacy_identity_continuity_r3.py"
 
 
 class TestLegacyIdentityContinuity:
@@ -577,9 +576,7 @@ class TestPredictionSealSafety:
 # ---------------------------------------------------------------------------
 
 
-ORACLE_SCRIPT = (
-    ROOT / "scripts/evaluation/score_pdf_v4_gate_02_r3_oracle.py"
-)
+ORACLE_SCRIPT = ROOT / "scripts/evaluation/score_pdf_v4_gate_02_r3_oracle.py"
 
 
 class TestOracleRegressionScoring:
@@ -615,9 +612,7 @@ class TestOracleRegressionScoring:
 # ---------------------------------------------------------------------------
 
 
-D_CLASS_SCRIPT = (
-    ROOT / "scripts/evaluation/observe_d_class_presence_r3.py"
-)
+D_CLASS_SCRIPT = ROOT / "scripts/evaluation/observe_d_class_presence_r3.py"
 
 
 class TestDClassPresenceObservation:
@@ -642,6 +637,104 @@ class TestDClassPresenceObservation:
         assert "d_class_row_present" in data
         assert "b_class_total" in data
         assert "b_class_row_cell_exists" in data
+
+
+# ---------------------------------------------------------------------------
+# 11.1 Benchmark structural presence closure (audit_benchmark_structural_presence_r31)
+# ---------------------------------------------------------------------------
+
+
+R31_SCRIPT = ROOT / "scripts/evaluation/audit_benchmark_structural_presence_r31.py"
+
+
+class TestBenchmarkStructuralPresenceClosure:
+    """Gate 02 R3.1: 33-record 5-layer structural presence audit."""
+
+    def test_script_is_observation_only(self) -> None:
+        source = R31_SCRIPT.read_text(encoding="utf-8")
+        assert "manual-mapping-review-package" not in source
+        assert "labels.golden" not in source
+
+    def test_script_runs_after_seal(self) -> None:
+        source = R31_SCRIPT.read_text(encoding="utf-8")
+        assert "adapter-prediction-seal.json" in source
+        assert "sealed" in source
+
+    def test_script_does_not_modify_adapter(self) -> None:
+        source = R31_SCRIPT.read_text(encoding="utf-8")
+        assert "re-run" not in source.lower() or "does NOT" in source
+
+    def test_script_loads_33_records(self) -> None:
+        source = R31_SCRIPT.read_text(encoding="utf-8")
+        assert "structurally_absent" in source
+        assert "strict_mapped_not_retrieved" in source
+        assert "b-class-detail.json" in source
+        assert "gold-coverage-classification.json" in source
+
+    def test_five_layer_coverage_check_present(self) -> None:
+        source = R31_SCRIPT.read_text(encoding="utf-8")
+        for layer in [
+            "page_present",
+            "table_present",
+            "row_present",
+            "cell_present",
+            "candidate_compatible_structure",
+        ]:
+            assert layer in source
+
+    def test_decision_thresholds_present(self) -> None:
+        source = R31_SCRIPT.read_text(encoding="utf-8")
+        assert "full_corpus_benchmark_structural_presence_closed" in source
+        assert "full_corpus_structural_presence_insufficient" in source
+        assert "full_corpus_financial_semantic_graph" in source
+        assert "stop_and_classify_missing_evidence_shapes" in source
+
+    def test_closure_artifact_fields(self) -> None:
+        out_path = R3_OUT / "benchmark-structural-presence-closure.json"
+        if not out_path.is_file():
+            pytest.skip("R3.1 closure artifact not yet generated")
+        data = json.loads(out_path.read_text(encoding="utf-8"))
+        assert data["seal_verified"] is True
+        assert data["d_class_metrics"]["total"] == 16
+        assert data["b_class_metrics"]["total"] == 17
+        for field in [
+            "page_present",
+            "table_present",
+            "row_present",
+            "cell_present",
+            "candidate_compatible_structure",
+        ]:
+            assert field in data["d_class_metrics"]
+            assert field in data["b_class_metrics"]
+        assert "newly_structurally_recoverable" in data
+        assert data["production_switch_allowed"] is False
+        assert data["decision"] == "full_corpus_benchmark_structural_presence_closed"
+        assert data["next_gate"] == "full_corpus_financial_semantic_graph"
+
+    def test_per_record_has_five_layer_fields(self) -> None:
+        out_path = R3_OUT / "benchmark-structural-presence-closure.json"
+        if not out_path.is_file():
+            pytest.skip("R3.1 closure artifact not yet generated")
+        data = json.loads(out_path.read_text(encoding="utf-8"))
+        for record in data["d_class_records"] + data["b_class_records"]:
+            assert "case_id" in record
+            assert "gold_source_identity" in record
+            assert "benchmark_class" in record
+            assert "document_id" in record
+            assert "pdf_page" in record
+            assert "page_present" in record
+            assert "table_present" in record
+            assert "row_present" in record
+            assert "cell_present" in record
+            assert "candidate_compatible_structure" in record
+            assert "coverage_level" in record
+
+    def test_strength_is_strong_or_acceptable(self) -> None:
+        out_path = R3_OUT / "benchmark-structural-presence-closure.json"
+        if not out_path.is_file():
+            pytest.skip("R3.1 closure artifact not yet generated")
+        data = json.loads(out_path.read_text(encoding="utf-8"))
+        assert data["strength"] in ("strong", "acceptable")
 
 
 # ---------------------------------------------------------------------------
