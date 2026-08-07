@@ -738,6 +738,131 @@ class TestBenchmarkStructuralPresenceClosure:
 
 
 # ---------------------------------------------------------------------------
+# 11.2 Target-specific Structural Alignment (audit_target_structural_alignment_r32)
+# ---------------------------------------------------------------------------
+
+
+R32_SCRIPT = ROOT / "scripts/evaluation/audit_target_structural_alignment_r32.py"
+
+
+class TestTargetStructuralAlignment:
+    """Gate 02 R3.2: Target-specific structural alignment audit."""
+
+    def test_script_is_observation_only(self) -> None:
+        source = R32_SCRIPT.read_text(encoding="utf-8")
+        assert "manual-mapping-review-package" not in source
+        assert "labels.golden" not in source
+
+    def test_script_runs_after_seal(self) -> None:
+        source = R32_SCRIPT.read_text(encoding="utf-8")
+        assert "adapter-prediction-seal.json" in source
+        assert "sealed" in source
+
+    def test_script_does_not_modify_adapter(self) -> None:
+        source = R32_SCRIPT.read_text(encoding="utf-8")
+        assert "re-run" not in source.lower() or "does NOT" in source
+
+    def test_script_requires_r31_closure(self) -> None:
+        source = R32_SCRIPT.read_text(encoding="utf-8")
+        assert "benchmark-structural-presence-closure.json" in source
+
+    def test_script_loads_33_records(self) -> None:
+        source = R32_SCRIPT.read_text(encoding="utf-8")
+        assert "structurally_absent" in source
+        assert "gold-coverage-classification.json" in source
+        assert "b-class-detail.json" in source
+
+    def test_five_layer_t0_t4_present(self) -> None:
+        source = R32_SCRIPT.read_text(encoding="utf-8")
+        for layer in [
+            "target_page_present",
+            "target_block_present",
+            "target_row_present",
+            "target_cells_present",
+            "target_candidate_alignable",
+        ]:
+            assert layer in source
+
+    def test_numeric_and_text_matching_present(self) -> None:
+        source = R32_SCRIPT.read_text(encoding="utf-8")
+        assert "_extract_numeric_tokens" in source
+        assert "_extract_text_tokens" in source
+        assert "numeric_recall" in source
+        assert "metric_token_recall" in source
+        assert "_counter_recall" in source
+
+    def test_match_strategies_present(self) -> None:
+        source = R32_SCRIPT.read_text(encoding="utf-8")
+        assert "single_row" in source
+        assert "table_block" in source
+        assert "multi_row_block" in source
+        assert "_score_table_match" in source
+        assert "_score_multi_row_match" in source
+
+    def test_decision_thresholds_present(self) -> None:
+        source = R32_SCRIPT.read_text(encoding="utf-8")
+        assert "target_structural_alignment_closed" in source
+        assert "target_structural_alignment_insufficient" in source
+        assert "full_corpus_financial_semantic_graph" in source
+        assert "stop_and_classify_missing_evidence_shapes" in source
+
+    def test_failure_reasons_classified(self) -> None:
+        source = R32_SCRIPT.read_text(encoding="utf-8")
+        for reason in [
+            "target_table_missing",
+            "target_row_missing",
+            "target_numeric_cells_missing",
+            "multiple_structural_matches",
+            "candidate_is_multi_row_block",
+            "candidate_is_narrative",
+        ]:
+            assert reason in source
+
+    def test_alignment_artifact_fields(self) -> None:
+        out_path = R3_OUT / "target-structural-alignment.json"
+        if not out_path.is_file():
+            pytest.skip("R3.2 alignment artifact not yet generated")
+        data = json.loads(out_path.read_text(encoding="utf-8"))
+        assert data["seal_verified"] is True
+        assert data["r31_closure_verified"] is True
+        assert data["d_class_metrics"]["total"] == 16
+        assert data["b_class_metrics"]["total"] == 17
+        assert "false_structural_alignment" in data
+        assert data["production_switch_allowed"] is False
+        assert data["decision"] == "target_structural_alignment_closed"
+        assert data["next_gate"] == "full_corpus_financial_semantic_graph"
+
+    def test_per_record_has_match_evidence(self) -> None:
+        out_path = R3_OUT / "target-structural-alignment.json"
+        if not out_path.is_file():
+            pytest.skip("R3.2 alignment artifact not yet generated")
+        data = json.loads(out_path.read_text(encoding="utf-8"))
+        for record in data["d_class_records"] + data["b_class_records"]:
+            assert "alignment_grade" in record
+            assert "match_evidence" in record
+            ev = record["match_evidence"]
+            assert "numeric_recall" in ev
+            assert "metric_token_recall" in ev
+            assert "match_strategy" in ev
+            assert "ambiguous" in ev
+            assert "tiebreak_used" in ev
+
+    def test_no_false_structural_alignment(self) -> None:
+        out_path = R3_OUT / "target-structural-alignment.json"
+        if not out_path.is_file():
+            pytest.skip("R3.2 alignment artifact not yet generated")
+        data = json.loads(out_path.read_text(encoding="utf-8"))
+        assert data["false_structural_alignment"] == 0
+
+    def test_strength_is_strong_or_acceptable(self) -> None:
+        out_path = R3_OUT / "target-structural-alignment.json"
+        if not out_path.is_file():
+            pytest.skip("R3.2 alignment artifact not yet generated")
+        data = json.loads(out_path.read_text(encoding="utf-8"))
+        assert data["strength"] in ("strong", "acceptable")
+
+
+# ---------------------------------------------------------------------------
 # 12. Finalize acceptance gates (finalize_pdf_v4_gate_02_r3)
 # ---------------------------------------------------------------------------
 
