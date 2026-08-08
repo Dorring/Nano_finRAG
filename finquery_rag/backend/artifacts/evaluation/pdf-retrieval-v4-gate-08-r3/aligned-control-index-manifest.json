@@ -1,0 +1,79 @@
+{
+  "gate": "gate-08-r3-r0",
+  "structured_text_version": "gate06-r4-v1",
+  "encoder_model": "all-MiniLM-L6-v2",
+  "gates": {
+    "control_keyset_is_k_common": true,
+    "expanded_keyset_is_19500": true,
+    "control_count_is_common_count": true,
+    "bm25_ok": true,
+    "dense_ok": true,
+    "s_legacy_exists": true,
+    "s_expanded_exists": true,
+    "dense_model_same": true,
+    "question_reads": true,
+    "gold_reads": true,
+    "retrieval_runs": true
+  },
+  "all_gates_passed": true,
+  "keysets": {
+    "legacy_count": 628,
+    "new_count": 19500,
+    "common_count": 464,
+    "removed_count": 164,
+    "added_count": 19036
+  },
+  "s_legacy": {
+    "source": "Gate 08 R2 candidate-indexes",
+    "index_dir": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r2/candidate-indexes",
+    "view_count": 628,
+    "view_id_hash": "fc0fea3e425f8ce8",
+    "text_hash": "e073dff5c6fe1114",
+    "serializer": "gate08-r2-v1 (old R2 template)"
+  },
+  "s_control": {
+    "source": "NEW (K_common + gate06-r4-v1 serializer)",
+    "index_dir": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r3/control-indexes",
+    "view_count": 464,
+    "view_id_hash": "79c5b7648e453ccc",
+    "text_hash": "fbd4d86076d7bdac",
+    "serializer": "gate06-r4-v1",
+    "bm25": {
+      "lane": "candidate_structured_bm25",
+      "view_count": 464,
+      "doc_count": 464,
+      "fts_count": 464,
+      "ok": true,
+      "db_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r3/control-indexes/candidate_structured_bm25/bm25/index.sqlite"
+    },
+    "dense": {
+      "lane": "candidate_structured_dense",
+      "view_count": 464,
+      "vector_count": 464,
+      "vector_dim": 384,
+      "nan_count": 0,
+      "inf_count": 0,
+      "zero_vector_count": 0,
+      "ok": true,
+      "ids_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r3/control-indexes/candidate_structured_dense/dense/ids.json",
+      "vector_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r3/control-indexes/candidate_structured_dense/dense/vectors.npy"
+    }
+  },
+  "s_expanded": {
+    "source": "Gate 06 R4 candidate-indexes",
+    "index_dir": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-06-r4/candidate-indexes",
+    "view_count": 19500,
+    "view_id_hash": "a2f363b29ea2947f",
+    "text_hash": "d6d056c623c914f6",
+    "serializer": "gate06-r4-v1"
+  },
+  "security": {
+    "question_reads": 0,
+    "gold_reads": 0,
+    "governance_reads": 0,
+    "retrieval_runs": 0,
+    "reranker_calls": 0,
+    "production_index_writes": 0,
+    "production_switch_allowed": false
+  }
+}

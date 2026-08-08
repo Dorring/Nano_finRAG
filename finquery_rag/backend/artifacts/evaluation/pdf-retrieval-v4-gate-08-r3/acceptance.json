@@ -1,0 +1,59 @@
+{
+  "gate": "pdf_retrieval_v4_gate_08_r3",
+  "e3_expanded_score": "52/80",
+  "e3_expanded_numeric": 52,
+  "decision": "coverage_expansion_small_gain",
+  "category": "Small Gain",
+  "thresholds": {
+    "strong": 68,
+    "pass": 60,
+    "meaningful_gain": 55,
+    "small_gain": 50
+  },
+  "raw_parity_verified": true,
+  "historical_parity_verified": true,
+  "deltas": {
+    "representation_gain": 0,
+    "pure_coverage_gain": 11,
+    "full_system_gain": 5,
+    "raw_protected_gain": 10
+  },
+  "structured_lane_conversion": "49/68",
+  "combined_conversion": "46/68",
+  "rank_regression": {
+    "improved": 0,
+    "unchanged": 1,
+    "worsened": 17
+  },
+  "all_gates_passed": false,
+  "ablation_scores": {
+    "e0": 42,
+    "e1": 47,
+    "e2_legacy": 46,
+    "e3_legacy": 47,
+    "e3_expanded": 52
+  },
+  "raw_parity": {
+    "bm25_recall_200": 31,
+    "rrf_recall_40": 20,
+    "raw_full_pool": 31
+  },
+  "newly_bridged_count": 22,
+  "first_failure_summary": {
+    "total_gold_sources": 80,
+    "in_pool": 52,
+    "missed": 28,
+    "outside_universe": 6,
+    "in_universe_missed": 22,
+    "failure_stage_counts": {
+      "structured_bm25_and_dense_top50_miss": 12,
+      "structured_fused_top40_but_post_filter_excluded": 7,
+      "structured_fused_rank_41_to_50": 1,
+      "slot_budget_truncated": 2,
+      "outside_grade_a_universe": 6
+    }
+  },
+  "competition_summary": {
+    "audited_count": 22
+  }
+}

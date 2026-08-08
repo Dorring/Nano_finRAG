@@ -1,0 +1,89 @@
+{
+  "gate": "gate-08-r3-a",
+  "description": "Retriever config parity check before R3 prediction",
+  "r2_protocol_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r2/gate-08-r2-protocol.json",
+  "r2_protocol_hash": "2cee15cc1ce16b79a704f83668b0c5827f069f5c597a78df3e153478c9511f22",
+  "expected_config": {
+    "budgets": {
+      "rrf_k": 60,
+      "lane_k": 50,
+      "final_pool_k": 40,
+      "candidate_pool_k": 40
+    },
+    "rrf": {
+      "k": 60,
+      "lane_weights": "all_1.0"
+    },
+    "slot_pool": {
+      "slot_top_k": 20,
+      "slot_min_budget": 10,
+      "total_k": 40
+    },
+    "embedding_model": "all-MiniLM-L6-v2",
+    "parameter_scan": false,
+    "per_query_oracle": false
+  },
+  "r2_config": {
+    "budgets": {
+      "candidate_pool_k": 40,
+      "final_pool_k": 40,
+      "lane_k": 50,
+      "rrf_k": 60
+    },
+    "rrf": {
+      "k": 60,
+      "lane_weights": "all_1.0"
+    },
+    "embedding_model": "all-MiniLM-L6-v2",
+    "parameter_scan": false,
+    "per_query_oracle": false
+  },
+  "input_hashes": {
+    "gate07_plans": "e1c6e5af104ebda3687c2844fa8549d00b3b89eb649d369f92fb1504920de13f",
+    "gate07_plans_r2_match": true,
+    "gate08_raw_parity": "d40fbfd82d845d62caee1ea892c2d4fd84275509220940335760c7648c7b8756",
+    "gate08_raw_parity_r2_match": true
+  },
+  "source_hashes": {
+    "candidate_direct_retriever.py": "b234c16257ffc9a33f37207f599071f76beb80acd2e01a61cc73cc9c8bc497b0",
+    "candidate_query_builder.py": "b050826e91cb5e0cbb4a4e64fe44d0554012976f87eed57e77721c8906dbfc2d",
+    "candidate_rrf.py": "fd7e13db3d38eff2e93b079f9d4525a0daf2aed6bbb4846fe031c6fee0a9137b",
+    "candidate_slot_pool.py": "3f5e1d029918afa191835a636eff33b14254530324dc9ef2049a1aecdc05db7d",
+    "candidate_view_index.py": "87e795b506bdf43fa2585c800fa48fe72afc887e7b0b96fe1cb890b01124bce6",
+    "candidate_aligned_view.py": "0bc24474c0fe442edeb2163613c44a9969219db0f2cc52f66292586cd2044784",
+    "query_plan_models.py": "6829a78743c12af430169b956f55e935717dc10097c3173a86c89fdee5d91ea9"
+  },
+  "r2_prediction": {
+    "manifest_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r2/prediction-manifest.json",
+    "prediction_sha256": "20c21e3bb012c2c0c7086c3d9c7d97c5da7200f2b2d9b581cc97392a9188a80a",
+    "record_count": 72
+  },
+  "gates": {
+    "budgets_match": true,
+    "rrf_match": true,
+    "embedding_match": true,
+    "no_parameter_scan": true,
+    "no_per_query_oracle": true,
+    "plans_hash_matches_r2": true,
+    "raw_parity_hash_matches_r2": true,
+    "r2_record_count_is_72": true,
+    "slot_top_k_is_20": true,
+    "slot_min_budget_is_10": true,
+    "total_k_is_40": true,
+    "reranker_calls_zero": true,
+    "calculator_calls_zero": true,
+    "answer_generation_zero": true,
+    "production_index_writes_zero": true,
+    "production_switch_false": true
+  },
+  "all_gates_passed": true,
+  "security": {
+    "reranker_calls": 0,
+    "calculator_calls": 0,
+    "answer_generation_calls": 0,
+    "production_index_writes": 0,
+    "production_switch_allowed": false,
+    "parameter_scan": false,
+    "per_query_tuning": false
+  }
+}

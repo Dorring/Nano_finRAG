@@ -1,0 +1,16 @@
+{
+  "answer_generation_calls": 0,
+  "calculator_calls": 0,
+  "expected_value_reads_before_seal": 0,
+  "gold_reads_before_seal": 0,
+  "governance_reads_before_seal": 0,
+  "parameter_scan": false,
+  "per_query_tuning": false,
+  "prediction_count": 72,
+  "prediction_hash": "c5b78e83d6b0726a260436db2fb9ed55b0f1bcc75a294deca92264ad4452ee1c",
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "reference_answer_reads_before_seal": 0,
+  "reranker_calls": 0,
+  "sealed": true
+}

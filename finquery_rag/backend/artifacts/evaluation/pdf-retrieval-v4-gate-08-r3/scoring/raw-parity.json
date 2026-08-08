@@ -1,0 +1,524 @@
+{
+  "bm25_source_recall_200": "31/80",
+  "bm25_source_recall_200_hits": 31,
+  "dense_source_recall_200": null,
+  "per_case": [
+    {
+      "bm25_hits": 1,
+      "case_id": "aapl_fy2025_001",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "aapl_fy2025_002",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "aapl_fy2025_003",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "aapl_fy2025_004",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "aapl_fy2025_005",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 2,
+      "case_id": "aapl_fy2025_006",
+      "dense_hits": null,
+      "gold_count": 2,
+      "raw_full_hits": 2,
+      "rrf_top40_hits": 2
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "aapl_fy2025_007",
+      "dense_hits": null,
+      "gold_count": 2,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "aapl_fy2025_009",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "jpm_fy2025_001",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "jpm_fy2025_002",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "jpm_fy2025_003",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "jpm_fy2025_004",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "jpm_fy2025_005",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "jpm_fy2025_006",
+      "dense_hits": null,
+      "gold_count": 2,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "jpm_fy2025_007",
+      "dense_hits": null,
+      "gold_count": 2,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "jpm_fy2025_009",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "ko_fy2025_001",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "ko_fy2025_002",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "ko_fy2025_003",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "ko_fy2025_004",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "ko_fy2025_005",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "ko_fy2025_006",
+      "dense_hits": null,
+      "gold_count": 2,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "ko_fy2025_007",
+      "dense_hits": null,
+      "gold_count": 2,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "ko_fy2025_009",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "msft_fy2025_001",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "msft_fy2025_002",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "msft_fy2025_003",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "msft_fy2025_004",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "msft_fy2025_005",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 2,
+      "case_id": "msft_fy2025_006",
+      "dense_hits": null,
+      "gold_count": 2,
+      "raw_full_hits": 2,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 2,
+      "case_id": "msft_fy2025_007",
+      "dense_hits": null,
+      "gold_count": 2,
+      "raw_full_hits": 2,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "msft_fy2025_009",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "nvda_fy2025_001",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "nvda_fy2025_002",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "nvda_fy2025_003",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "nvda_fy2025_004",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "nvda_fy2025_005",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "nvda_fy2025_006",
+      "dense_hits": null,
+      "gold_count": 2,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "nvda_fy2025_007",
+      "dense_hits": null,
+      "gold_count": 2,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "nvda_fy2025_009",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "pfe_fy2024_001",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "pfe_fy2024_002",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "pfe_fy2024_003",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "pfe_fy2024_004",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "pfe_fy2024_005",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "pfe_fy2024_006",
+      "dense_hits": null,
+      "gold_count": 2,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "pfe_fy2024_007",
+      "dense_hits": null,
+      "gold_count": 2,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "pfe_fy2024_009",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "tsla_fy2025_001",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "tsla_fy2025_002",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "tsla_fy2025_003",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "tsla_fy2025_004",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "tsla_fy2025_005",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "tsla_fy2025_006",
+      "dense_hits": null,
+      "gold_count": 2,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "tsla_fy2025_007",
+      "dense_hits": null,
+      "gold_count": 2,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "tsla_fy2025_009",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "v_fy2025_001",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "v_fy2025_002",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "v_fy2025_003",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "v_fy2025_004",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "v_fy2025_005",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "v_fy2025_006",
+      "dense_hits": null,
+      "gold_count": 2,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    },
+    {
+      "bm25_hits": 1,
+      "case_id": "v_fy2025_007",
+      "dense_hits": null,
+      "gold_count": 2,
+      "raw_full_hits": 1,
+      "rrf_top40_hits": 1
+    },
+    {
+      "bm25_hits": 0,
+      "case_id": "v_fy2025_009",
+      "dense_hits": null,
+      "gold_count": 1,
+      "raw_full_hits": 0,
+      "rrf_top40_hits": 0
+    }
+  ],
+  "raw_full_pool": "31/80",
+  "raw_full_pool_hits": 31,
+  "rrf_recall_40": "20/80",
+  "rrf_recall_40_hits": 20,
+  "total_gold": 80
+}

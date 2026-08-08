@@ -1,0 +1,12 @@
+{
+  "current_gate": "pdf_retrieval_v4_gate_08_r3",
+  "decision": "coverage_expansion_small_gain",
+  "next_gate": "field_aware_retrieval",
+  "rationale": "E3-Expanded score is 52/80, classified as 'Small Gain'. Structured lane conversion is 49/68. Full system gain over E3-Legacy: 5. Pure coverage gain over E0: 11. Raw protected gain over raw full pool: 10.",
+  "recommended_actions": [
+    "Audit first-failure stages to identify structural retrieval gaps",
+    "Review candidate competition in top-20 pool for missed golds",
+    "Investigate structured BM25/dense miss patterns",
+    "Primary failure stage is 'structured_bm25_and_dense_top50_miss' (12 golds) - focus remediation here"
+  ]
+}

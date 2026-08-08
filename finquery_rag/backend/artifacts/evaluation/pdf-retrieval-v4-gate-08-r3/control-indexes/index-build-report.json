@@ -1,0 +1,37 @@
+{
+  "total_views": 464,
+  "lanes": {
+    "candidate_structured_bm25": {
+      "lane": "candidate_structured_bm25",
+      "view_count": 464,
+      "doc_count": 464,
+      "fts_count": 464,
+      "ok": true,
+      "db_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r3/control-indexes/candidate_structured_bm25/bm25/index.sqlite"
+    },
+    "candidate_structured_dense": {
+      "lane": "candidate_structured_dense",
+      "view_count": 464,
+      "vector_count": 464,
+      "vector_dim": 384,
+      "nan_count": 0,
+      "inf_count": 0,
+      "zero_vector_count": 0,
+      "ok": true,
+      "ids_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r3/control-indexes/candidate_structured_dense/dense/ids.json",
+      "vector_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r3/control-indexes/candidate_structured_dense/dense/vectors.npy"
+    }
+  },
+  "metadata": {
+    "metadata_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r3/control-indexes/candidate-metadata.sqlite",
+    "lane_counts": {
+      "candidate_structured_bm25": 464,
+      "candidate_structured_dense": 464
+    }
+  },
+  "integrity": {
+    "bm25_ok": true,
+    "dense_ok": true,
+    "ok": true
+  }
+}
