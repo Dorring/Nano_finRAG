@@ -538,3 +538,133 @@ def emit_narrative_evidence(
         facts.append(fact)
 
     return facts
+
+
+# ---------------------------------------------------------------------------
+# 6. Admission Outcome Tracking (pre-emission denominator)
+# ---------------------------------------------------------------------------
+
+# Axis kinds that are eligible for Atomic Fact emission
+ATOMIC_ELIGIBLE_KINDS = frozenset({"point", "duration", "comparison"})
+
+# Axis kinds that are eligible for any Typed Evidence
+TYPED_ELIGIBLE_KINDS = frozenset(
+    {"point", "duration", "comparison", "bucket", "segment", "category"}
+)
+
+# Outcomes indicating successful admission
+ADMITTED_OUTCOMES = frozenset({"atomic", "comparison", "bucket", "row_matrix_member"})
+
+
+def compute_admission_outcomes(
+    semantic_rows: list[SemanticRow],
+    metric_paths: list[MetricPath],
+    axis_bindings: list[SemanticAxisBinding],
+    all_cells: list[dict[str, Any]],
+    atomic_facts: list[AtomicFact],
+    comparison_facts: list[ComparisonFact],
+    bucket_facts: list[BucketFact],
+    row_matrices: list[RowMatrix],
+) -> list[dict[str, Any]]:
+    """Compute admission outcome for each eligible numeric cell.
+
+    An **eligible numeric cell** is one where:
+      - The row is a financial data row (metric_row / subtotal / total)
+      - ``column_index > 0``
+      - ``parsed_numeric`` is non-empty
+
+    Returns a list of dicts, each with keys:
+      ``cell_id``, ``row_id``, ``table_fragment_id``, ``document_id``,
+      ``temporal_kind`` (str | None), ``outcomes`` (set[str])
+
+    The ``outcomes`` set contains zero or more of:
+      ``atomic``, ``comparison``, ``bucket``, ``row_matrix_member``  (admitted)
+      ``unsupported_non_temporal``, ``unresolved_axis``,
+      ``missing_metric``, ``numeric_parse_failure``, ``unresolved_other``  (not admitted)
+    """
+    sr_by_id: dict[str, SemanticRow] = {sr.row_id: sr for sr in semantic_rows}
+    mp_by_row: dict[str, MetricPath] = {mp.row_id: mp for mp in metric_paths}
+    axis_by_cell: dict[str, SemanticAxisBinding] = {
+        ab.cell_id: ab for ab in axis_bindings
+    }
+
+    # Build sets of admitted cell_ids
+    atomic_cell_ids: set[str] = {af.cell_id for af in atomic_facts}
+
+    comparison_cell_ids: set[str] = set()
+    for cf in comparison_facts:
+        cid = cf.source_traceback.get("cell_id")
+        if cid:
+            comparison_cell_ids.add(str(cid))
+
+    bucket_cell_ids: set[str] = {bf.cell_id for bf in bucket_facts}
+
+    row_matrix_cell_ids: set[str] = set()
+    for rm in row_matrices:
+        for dim in rm.dimensions:
+            cid = dim.get("cell_id")
+            if cid:
+                row_matrix_cell_ids.add(str(cid))
+
+    results: list[dict[str, Any]] = []
+
+    for cell in all_cells:
+        col = int(cell.get("column_index") or 0)
+        if col == 0:
+            continue
+
+        row_id = str(cell.get("row_id") or "")
+        cell_id = str(cell.get("cell_id") or "")
+
+        sr = sr_by_id.get(row_id)
+        if not sr or not sr.is_financial_data_row:
+            continue
+
+        parsed = cell.get("parsed_numeric") or []
+        if not parsed:
+            continue
+
+        # --- This is an eligible numeric cell ---
+        axis = axis_by_cell.get(cell_id)
+        mp = mp_by_row.get(row_id)
+        temporal_kind = axis.temporal_kind if axis else None
+
+        outcomes: set[str] = set()
+
+        # Check what it was admitted as
+        if cell_id in atomic_cell_ids:
+            outcomes.add("atomic")
+        if cell_id in comparison_cell_ids:
+            outcomes.add("comparison")
+        if cell_id in bucket_cell_ids:
+            outcomes.add("bucket")
+        if cell_id in row_matrix_cell_ids:
+            outcomes.add("row_matrix_member")
+
+        # If not admitted, determine why
+        if not outcomes:
+            if not axis or axis.temporal_kind == "unknown":
+                outcomes.add("unresolved_axis")
+            elif axis.temporal_kind == "non_temporal":
+                outcomes.add("unsupported_non_temporal")
+            elif not mp or mp.metric_status == "missing":
+                outcomes.add("missing_metric")
+            else:
+                raw_val, norm_val = _get_numeric_value(cell)
+                if not norm_val:
+                    outcomes.add("numeric_parse_failure")
+                else:
+                    outcomes.add("unresolved_other")
+
+        results.append(
+            {
+                "cell_id": cell_id,
+                "row_id": row_id,
+                "table_fragment_id": sr.table_fragment_id,
+                "document_id": sr.document_id,
+                "temporal_kind": temporal_kind,
+                "outcomes": outcomes,
+            }
+        )
+
+    return results

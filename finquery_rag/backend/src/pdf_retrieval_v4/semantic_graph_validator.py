@@ -2,17 +2,17 @@
 
 Validates the semantic graph against gate thresholds:
 
-  Metric Path Coverage              >= 95%
-  Typed Evidence Admission          >= 97%
-  Atomic Fact Admission             >= 85%
-  Identity Conflict                 = 0
-  Duplicate Semantic Fact           = 0
-  Missing Source Traceback          = 0
-  Equivalent-set Double Counting    = 0
-  Metric Parent Cycle               = 0
-  Conflicting Parent Assignment     = 0
-  False Scale Binding               = 0
-  Scale Conflict Auto-resolution    = 0
+  Resolved Metric Path Coverage       >= 95%
+  Typed Evidence Admission            >= 97%
+  Atomic Fact Admission               >= 85%
+  Identity Conflict                   = 0
+  Duplicate Semantic Fact             = 0
+  Missing Source Traceback            = 0
+  Equivalent-set Double Counting      = 0
+  Metric Parent Cycle                 = 0
+  Conflicting Parent Assignment       = 0
+  False Scale Binding                 = 0
+  Scale Conflict Auto-resolution      = 0
 """
 
 from __future__ import annotations
@@ -30,10 +30,27 @@ from src.pdf_retrieval_v4.semantic_graph_models import (
     SemanticAxisBinding,
     SemanticRow,
 )
+from src.pdf_retrieval_v4.semantic_scale_resolver import resolve_scale_keyword
+from src.pdf_retrieval_v4.typed_evidence_emitters import (
+    ADMITTED_OUTCOMES,
+    ATOMIC_ELIGIBLE_KINDS,
+    TYPED_ELIGIBLE_KINDS,
+    compute_admission_outcomes,
+)
 
 
 def _safe_get(traceback: dict[str, Any], key: str) -> Any:
     return traceback.get(key)
+
+
+def _has_conflicting_scale_candidates(sr: ScaleResolution) -> bool:
+    """Check if raw_candidates contain keywords resolving to different units."""
+    units: set[str] = set()
+    for kw in sr.raw_candidates:
+        resolved = resolve_scale_keyword(kw)
+        if resolved:
+            units.add(resolved[1])
+    return len(units) > 1
 
 
 def validate_semantic_graph(
@@ -47,11 +64,19 @@ def validate_semantic_graph(
     bucket_facts: list[BucketFact],
     row_matrices: list[RowMatrix],
     narrative_evidence: list[NarrativeEvidence],
+    all_cells: list[dict[str, Any]],
     equivalent_double_counting: int = 0,
     parent_cycles: int = 0,
     conflicting_parents: int = 0,
 ) -> dict[str, Any]:
     """Run all validation checks and return a metrics + gates dict.
+
+    Parameters
+    ----------
+    all_cells
+        All raw cell dicts from adapter predictions (flattened across all
+        tables).  Used to compute the pre-emission eligible numeric cell
+        denominator for admission metrics.
 
     Returns a dict with:
     - ``metrics``: raw counts and ratios
@@ -62,47 +87,63 @@ def validate_semantic_graph(
     eligible_rows = [sr for sr in semantic_rows if sr.is_financial_data_row]
     eligible_count = len(eligible_rows)
 
-    # --- Metric Path Coverage ---
-    resolved_paths = [
+    # --- Metric Path Coverage (split: present / resolved / ambiguous / missing) ---
+    present_paths = [
         mp for mp in metric_paths if mp.metric_status in ("resolved", "ambiguous")
     ]
-    metric_path_coverage = (
+    resolved_paths = [mp for mp in metric_paths if mp.metric_status == "resolved"]
+    ambiguous_paths = [mp for mp in metric_paths if mp.metric_status == "ambiguous"]
+    missing_paths = [mp for mp in metric_paths if mp.metric_status == "missing"]
+
+    metric_path_present_coverage = (
+        len(present_paths) / eligible_count if eligible_count > 0 else 0.0
+    )
+    metric_path_resolved_coverage = (
         len(resolved_paths) / eligible_count if eligible_count > 0 else 0.0
     )
 
-    # --- Numeric cells ---
-    # Count cells with parsed_numeric in value columns (col > 0)
-    # This is approximated from axis_bindings with numeric-producing kinds
-    numeric_cell_count = sum(
-        1
-        for ab in axis_bindings
-        if ab.temporal_kind
-        in ("point", "duration", "comparison", "bucket", "segment", "category")
+    # --- Admission Outcomes (pre-emission denominator) ---
+    admission_outcomes = compute_admission_outcomes(
+        semantic_rows=semantic_rows,
+        metric_paths=metric_paths,
+        axis_bindings=axis_bindings,
+        all_cells=all_cells,
+        atomic_facts=atomic_facts,
+        comparison_facts=comparison_facts,
+        bucket_facts=bucket_facts,
+        row_matrices=row_matrices,
     )
 
-    # --- Atomic Fact Admission ---
-    # Atomic facts with a non-null value_normalized and resolved metric_path
-    admitted_atomic = [
-        af for af in atomic_facts if af.value_normalized is not None and af.metric_path
+    eligible_numeric_cells = len(admission_outcomes)
+
+    atomic_eligible_cells = [
+        ao for ao in admission_outcomes if ao["temporal_kind"] in ATOMIC_ELIGIBLE_KINDS
     ]
-    atomic_admission = len(admitted_atomic) / len(atomic_facts) if atomic_facts else 0.0
+    atomic_eligible_count = len(atomic_eligible_cells)
 
-    # --- Typed Evidence Admission ---
-    total_typed = (
-        len(atomic_facts)
-        + len(comparison_facts)
-        + len(bucket_facts)
-        + len(row_matrices)
-    )
-    admitted_typed = (
-        len(admitted_atomic)
-        + len(comparison_facts)
-        + len(bucket_facts)
-        + len(row_matrices)
-    )
-    typed_admission = admitted_typed / total_typed if total_typed > 0 else 0.0
+    typed_eligible_cells = [
+        ao for ao in admission_outcomes if ao["temporal_kind"] in TYPED_ELIGIBLE_KINDS
+    ]
+    typed_eligible_count = len(typed_eligible_cells)
 
-    # --- Identity Conflict ---
+    atomic_admitted_count = sum(
+        1 for ao in admission_outcomes if "atomic" in ao["outcomes"]
+    )
+
+    typed_covered_count = sum(
+        1 for ao in admission_outcomes if ao["outcomes"] & ADMITTED_OUTCOMES
+    )
+
+    atomic_admission = (
+        atomic_admitted_count / atomic_eligible_count
+        if atomic_eligible_count > 0
+        else 0.0
+    )
+    typed_admission = (
+        typed_covered_count / typed_eligible_count if typed_eligible_count > 0 else 0.0
+    )
+
+    # --- Identity Conflict (duplicate semantic_fact_id) ---
     all_fact_ids: list[str] = []
     all_fact_ids.extend(af.semantic_fact_id for af in atomic_facts)
     all_fact_ids.extend(cf.semantic_fact_id for cf in comparison_facts)
@@ -115,18 +156,13 @@ def validate_semantic_graph(
         id_counts[fid] = id_counts.get(fid, 0) + 1
     identity_conflict = sum(1 for c in id_counts.values() if c > 1)
 
-    # --- Duplicate Semantic Fact ---
-    # Check for duplicate (metric_path, temporal_kind, normalized_period, value_raw)
-    seen_facts: dict[tuple, int] = {}
+    # --- Duplicate Semantic Fact (duplicate semantic_fact_id within atomic) ---
+    atomic_id_counts: dict[str, int] = {}
     for af in atomic_facts:
-        key = (
-            af.metric_path,
-            af.temporal_kind,
-            af.normalized_period or "",
-            af.value_raw,
+        atomic_id_counts[af.semantic_fact_id] = (
+            atomic_id_counts.get(af.semantic_fact_id, 0) + 1
         )
-        seen_facts[key] = seen_facts.get(key, 0) + 1
-    duplicate_semantic_facts = sum(1 for c in seen_facts.values() if c > 1)
+    duplicate_semantic_facts = sum(1 for c in atomic_id_counts.values() if c > 1)
 
     # --- Missing Source Traceback ---
     all_facts_with_trace = (
@@ -152,20 +188,27 @@ def validate_semantic_graph(
         for sr in scale_resolutions
         if sr.scale_status == "resolved" and sr.scale_level in ("S5", "S6")
     )
+
     scale_conflict_auto_resolution = sum(
         1
         for sr in scale_resolutions
-        if sr.scale_status == "resolved" and sr.scale_status == "conflict"
+        if sr.scale_status == "resolved" and _has_conflicting_scale_candidates(sr)
     )
+
     scale_resolved = sum(1 for sr in scale_resolutions if sr.scale_status == "resolved")
     scale_candidate_only = sum(
         1 for sr in scale_resolutions if sr.scale_status == "candidate"
     )
     scale_conflict = sum(1 for sr in scale_resolutions if sr.scale_status == "conflict")
+    scale_missing = sum(1 for sr in scale_resolutions if sr.scale_status == "missing")
+
+    scale_conflict_detected = sum(
+        1 for sr in scale_resolutions if _has_conflicting_scale_candidates(sr)
+    )
 
     # --- Gates ---
     gates: dict[str, bool] = {
-        "metric_path_coverage": metric_path_coverage >= 0.95,
+        "metric_path_resolved_coverage": metric_path_resolved_coverage >= 0.95,
         "typed_evidence_admission": typed_admission >= 0.97,
         "atomic_fact_admission": atomic_admission >= 0.85,
         "identity_conflict": identity_conflict == 0,
@@ -178,25 +221,36 @@ def validate_semantic_graph(
         "scale_conflict_auto_resolution": scale_conflict_auto_resolution == 0,
     }
 
+    # Admission outcome breakdown
+    outcome_breakdown: dict[str, int] = {}
+    for ao in admission_outcomes:
+        for outcome in ao["outcomes"]:
+            outcome_breakdown[outcome] = outcome_breakdown.get(outcome, 0) + 1
+
     metrics = {
         "logical_table_count": len(logical_tables),
         "semantic_row_count": len(semantic_rows),
         "eligible_financial_data_rows": eligible_count,
         "metric_path_count": len(metric_paths),
-        "resolved_metric_paths": len(resolved_paths),
-        "metric_path_coverage": round(metric_path_coverage, 4),
-        "numeric_cell_count": numeric_cell_count,
+        "metric_path_present": len(present_paths),
+        "metric_path_resolved": len(resolved_paths),
+        "metric_path_ambiguous": len(ambiguous_paths),
+        "metric_path_missing": len(missing_paths),
+        "metric_path_present_coverage": round(metric_path_present_coverage, 4),
+        "metric_path_resolved_coverage": round(metric_path_resolved_coverage, 4),
+        "eligible_numeric_cells": eligible_numeric_cells,
+        "atomic_eligible_cells": atomic_eligible_count,
+        "typed_eligible_cells": typed_eligible_count,
+        "atomic_admitted": atomic_admitted_count,
+        "typed_covered": typed_covered_count,
+        "atomic_fact_admission": round(atomic_admission, 4),
+        "typed_evidence_admission": round(typed_admission, 4),
         "axis_binding_count": len(axis_bindings),
         "atomic_fact_count": len(atomic_facts),
-        "admitted_atomic_count": len(admitted_atomic),
-        "atomic_fact_admission": round(atomic_admission, 4),
         "comparison_fact_count": len(comparison_facts),
         "bucket_fact_count": len(bucket_facts),
         "row_matrix_count": len(row_matrices),
         "narrative_evidence_count": len(narrative_evidence),
-        "total_typed_evidence": total_typed,
-        "admitted_typed_evidence": admitted_typed,
-        "typed_evidence_admission": round(typed_admission, 4),
         "identity_conflict": identity_conflict,
         "duplicate_semantic_fact": duplicate_semantic_facts,
         "missing_source_traceback": missing_traceback,
@@ -206,8 +260,11 @@ def validate_semantic_graph(
         "scale_resolved": scale_resolved,
         "scale_candidate_only": scale_candidate_only,
         "scale_conflict": scale_conflict,
+        "scale_missing": scale_missing,
+        "scale_conflict_detected": scale_conflict_detected,
         "false_scale_binding": false_scale_binding,
         "scale_conflict_auto_resolution": scale_conflict_auto_resolution,
+        "admission_outcome_breakdown": outcome_breakdown,
     }
 
     all_passed = all(gates.values())

@@ -281,11 +281,16 @@ def build_semantic_graph(
         metric_paths_all.extend(mps)
 
     eligible_count = sum(1 for sr in semantic_rows_all if sr.is_financial_data_row)
-    resolved_paths = sum(
-        1 for mp in metric_paths_all if mp.metric_status in ("resolved", "ambiguous")
+    resolved_count = sum(1 for mp in metric_paths_all if mp.metric_status == "resolved")
+    ambiguous_count = sum(
+        1 for mp in metric_paths_all if mp.metric_status == "ambiguous"
     )
-    metric_coverage = resolved_paths / eligible_count if eligible_count > 0 else 0.0
-    print(f"  Metric paths: {len(metric_paths_all)}, coverage: {metric_coverage:.2%}")
+    metric_coverage = resolved_count / eligible_count if eligible_count > 0 else 0.0
+    print(
+        f"  Metric paths: {len(metric_paths_all)}, "
+        f"resolved: {resolved_count}, ambiguous: {ambiguous_count}, "
+        f"resolved coverage: {metric_coverage:.2%}"
+    )
 
     parent_cycles = detect_parent_cycles(metric_paths_all, semantic_rows_all)
     conflicting_parents = detect_conflicting_parents(metric_paths_all)
@@ -411,25 +416,20 @@ def build_semantic_graph(
                 )
             )
 
-    # --- Deduplicate atomic facts by semantic key ---
-    # Same (metric_path, temporal_kind, normalized_period, value_raw) from
-    # different physical tables are semantic duplicates - keep first occurrence.
-    seen_atomic_keys: set[tuple[str, str, str, str]] = set()
+    # --- Deduplicate atomic facts by semantic_fact_id ---
+    # Only equivalent_set collapsing (R3.2 R1) is allowed to produce
+    # canonical ids across physical rows; different documents/tables/rows
+    # must never be merged by semantic content alone.
+    seen_atomic_ids: set[str] = set()
     deduped_atomic: list[Any] = []
     for af in all_atomic_facts:
-        key = (
-            af.metric_path,
-            af.temporal_kind,
-            af.normalized_period or "",
-            af.value_raw,
-        )
-        if key in seen_atomic_keys:
+        if af.semantic_fact_id in seen_atomic_ids:
             continue
-        seen_atomic_keys.add(key)
+        seen_atomic_ids.add(af.semantic_fact_id)
         deduped_atomic.append(af)
     if len(deduped_atomic) < len(all_atomic_facts):
         removed = len(all_atomic_facts) - len(deduped_atomic)
-        print(f"  Deduped atomic facts: removed {removed} semantic duplicates")
+        print(f"  Deduped atomic facts: removed {removed} duplicate ids")
     all_atomic_facts = deduped_atomic
 
     # --- Deduplicate row matrices by metric_path + table_fragment_id + row_id ---
@@ -473,6 +473,12 @@ def build_semantic_graph(
         atomic_dicts, equivalence_map
     )
 
+    # --- Collect all cells for pre-emission admission denominator ---
+    all_cells: list[dict[str, Any]] = []
+    for page in pages:
+        for table in page.get("tables") or []:
+            all_cells.extend(table.get("cells") or [])
+
     # --- Validation ---
     print("[Validation] Running gate checks...")
     validation = validate_semantic_graph(
@@ -486,15 +492,24 @@ def build_semantic_graph(
         bucket_facts=all_bucket_facts,
         row_matrices=all_row_matrices,
         narrative_evidence=all_narrative,
+        all_cells=all_cells,
         equivalent_double_counting=equiv_double_counting,
         parent_cycles=parent_cycles,
         conflicting_parents=conflicting_parents,
     )
 
     metrics = validation["metrics"]
-    print(f"  Metric Path Coverage: {metrics['metric_path_coverage']:.2%}")
-    print(f"  Typed Evidence Admission: {metrics['typed_evidence_admission']:.2%}")
-    print(f"  Atomic Fact Admission: {metrics['atomic_fact_admission']:.2%}")
+    print(
+        f"  Metric Path Present Coverage:  {metrics['metric_path_present_coverage']:.2%}"
+    )
+    print(
+        f"  Metric Path Resolved Coverage: {metrics['metric_path_resolved_coverage']:.2%}"
+    )
+    print(f"  Typed Evidence Admission:      {metrics['typed_evidence_admission']:.2%}")
+    print(f"  Atomic Fact Admission:         {metrics['atomic_fact_admission']:.2%}")
+    print(f"  Eligible numeric cells:        {metrics['eligible_numeric_cells']}")
+    print(f"  Atomic-eligible cells:         {metrics['atomic_eligible_cells']}")
+    print(f"  Typed-eligible cells:          {metrics['typed_eligible_cells']}")
     print(f"  All gates passed: {validation['all_passed']}")
 
     return {
@@ -634,19 +649,43 @@ def main() -> int:
     print("Gate 03 R2 Build Summary")
     print("=" * 70)
     print(f"  All gates passed: {v['all_passed']}")
-    print(f"  Metric Path Coverage:      {v['metrics']['metric_path_coverage']:.2%}")
     print(
-        f"  Typed Evidence Admission:  {v['metrics']['typed_evidence_admission']:.2%}"
+        f"  Metric Path Resolved Coverage: {v['metrics']['metric_path_resolved_coverage']:.2%}"
     )
-    print(f"  Atomic Fact Admission:     {v['metrics']['atomic_fact_admission']:.2%}")
-    print(f"  Atomic facts:              {v['metrics']['atomic_fact_count']}")
-    print(f"  Comparison facts:          {v['metrics']['comparison_fact_count']}")
-    print(f"  Bucket facts:              {v['metrics']['bucket_fact_count']}")
-    print(f"  Row matrices:              {v['metrics']['row_matrix_count']}")
-    print(f"  Narrative evidence:        {v['metrics']['narrative_evidence_count']}")
-    print(f"  Equivalent groups:         {graph['equivalent_group_count']}")
+    print(
+        f"  Metric Path Present Coverage:  {v['metrics']['metric_path_present_coverage']:.2%}"
+    )
+    print(
+        f"  Typed Evidence Admission:      {v['metrics']['typed_evidence_admission']:.2%}"
+    )
+    print(
+        f"  Atomic Fact Admission:         {v['metrics']['atomic_fact_admission']:.2%}"
+    )
+    print(f"  Eligible numeric cells:        {v['metrics']['eligible_numeric_cells']}")
+    print(f"  Atomic-eligible cells:         {v['metrics']['atomic_eligible_cells']}")
+    print(f"  Typed-eligible cells:          {v['metrics']['typed_eligible_cells']}")
+    print(f"  Atomic facts:                  {v['metrics']['atomic_fact_count']}")
+    print(f"  Comparison facts:              {v['metrics']['comparison_fact_count']}")
+    print(f"  Bucket facts:                  {v['metrics']['bucket_fact_count']}")
+    print(f"  Row matrices:                  {v['metrics']['row_matrix_count']}")
+    print(
+        f"  Narrative evidence:            {v['metrics']['narrative_evidence_count']}"
+    )
+    print(f"  Equivalent groups:             {graph['equivalent_group_count']}")
+    print(
+        f"  Scale: resolved={v['metrics']['scale_resolved']}, "
+        f"candidate={v['metrics']['scale_candidate_only']}, "
+        f"conflict={v['metrics']['scale_conflict']}, "
+        f"missing={v['metrics']['scale_missing']}"
+    )
+    print(f"  Scale conflict detected:       {v['metrics']['scale_conflict_detected']}")
+    print(
+        f"  Scale conflict auto-resolution: {v['metrics']['scale_conflict_auto_resolution']}"
+    )
 
-    return 0 if v["all_passed"] else 0  # Return 0 even if gates fail — report results
+    # Exit codes: 0 = gates passed, 2 = build completed but gates failed,
+    #             1 = execution/input error
+    return 0 if v["all_passed"] else 2
 
 
 if __name__ == "__main__":

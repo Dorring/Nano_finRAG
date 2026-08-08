@@ -848,6 +848,7 @@ def test_gate_03_r2_contracts_import_production_modules() -> None:
         "from src.pdf_retrieval_v4.semantic_currency_resolver import",
         "from src.pdf_retrieval_v4.semantic_equivalence import",
         "from src.pdf_retrieval_v4.semantic_graph_models import",
+        "from src.pdf_retrieval_v4.semantic_graph_validator import",
         "from src.pdf_retrieval_v4.semantic_scale_resolver import",
         "from src.pdf_retrieval_v4.typed_evidence_emitters import",
     ]
@@ -897,3 +898,559 @@ def test_gate_03_r2_contracts_import_production_modules() -> None:
     assert "return SemanticAxisBinding(" in source
     # _make_cell returns a plain dict (test input data, not a production type)
     assert "return {" in source
+
+
+# ---------------------------------------------------------------------------
+# R0 — Pre-run Metric Contract Fix tests
+# ---------------------------------------------------------------------------
+
+
+def test_atomic_admission_uses_pre_emission_denominator() -> None:
+    """Atomic Fact Admission must use atomic-eligible numeric cells as denominator,
+    not the count of emitted atomic facts."""
+    from src.pdf_retrieval_v4.semantic_graph_models import AtomicFact, MetricPath
+    from src.pdf_retrieval_v4.typed_evidence_emitters import compute_admission_outcomes
+
+    # 3 cells on financial-data rows with parsed_numeric; 2 have point axis
+    rows = [
+        _make_row("row:0", 0, "metric_row", "Revenue"),
+    ]
+    cells = [
+        _make_cell("cell:0:1", 0, 1, "100", row_id="row:0", numeric="100"),
+        _make_cell("cell:0:2", 0, 2, "200", row_id="row:0", numeric="200"),
+        _make_cell("cell:0:3", 0, 3, "300", row_id="row:0", numeric="300"),
+    ]
+    axes = [
+        _make_axis("cell:0:1", "row:0", 1, "point", "FY2025"),
+        _make_axis("cell:0:2", "row:0", 2, "point", "FY2024"),
+        # cell:0:3 has no axis → unresolved
+    ]
+    mps = [
+        MetricPath(
+            row_id="row:0",
+            table_fragment_id="table:test",
+            raw_row_label="Revenue",
+            leaf_metric="Revenue",
+            metric_path="Revenue",
+            metric_path_segments=("Revenue",),
+            metric_depth=1,
+            parent_metric_row_id=None,
+            metric_status="resolved",
+        )
+    ]
+    # Only 1 atomic fact emitted (cell:0:1), but 2 are atomic-eligible
+    atomic_facts = [
+        AtomicFact(
+            semantic_fact_id="af:doc:test:table:test:row:0:cell:0:1",
+            document_id="doc:test",
+            table_fragment_id="table:test",
+            row_id="row:0",
+            cell_id="cell:0:1",
+            metric_path="Revenue",
+            leaf_metric="Revenue",
+            temporal_kind="point",
+            normalized_period="FY2025",
+            period_start=None,
+            period_end=None,
+            value_raw="100",
+            value_normalized="100",
+            scale=1e6,
+            scale_unit="millions",
+            currency_code=None,
+            equivalent_group_id=None,
+            source_traceback={
+                "document_id": "doc:test",
+                "pdf_page": 1,
+                "table_fragment_id": "table:test",
+                "row_id": "row:0",
+                "cell_id": "cell:0:1",
+                "bbox": None,
+                "raw_text": "100",
+            },
+        )
+    ]
+
+    outcomes = compute_admission_outcomes(
+        semantic_rows=rows,
+        metric_paths=mps,
+        axis_bindings=axes,
+        all_cells=cells,
+        atomic_facts=atomic_facts,
+        comparison_facts=[],
+        bucket_facts=[],
+        row_matrices=[],
+    )
+
+    # 3 eligible numeric cells (all have parsed_numeric on financial-data row)
+    assert len(outcomes) == 3
+    # 2 atomic-eligible (cell:0:1 and cell:0:2 have point axis)
+    atomic_eligible = [
+        o for o in outcomes if o["temporal_kind"] in ("point", "duration", "comparison")
+    ]
+    assert len(atomic_eligible) == 2
+    # Only 1 admitted as atomic
+    atomic_admitted = [o for o in outcomes if "atomic" in o["outcomes"]]
+    assert len(atomic_admitted) == 1
+    # cell:0:3 should have unresolved_axis
+    cell3 = next(o for o in outcomes if o["cell_id"] == "cell:0:3")
+    assert "unresolved_axis" in cell3["outcomes"]
+
+
+def test_typed_admission_uses_eligible_cell_denominator() -> None:
+    """Typed Evidence Admission must use typed-eligible numeric cells as denominator,
+    not the count of emitted typed evidence objects."""
+    from src.pdf_retrieval_v4.typed_evidence_emitters import compute_admission_outcomes
+
+    rows = [_make_row("row:0", 0, "metric_row", "Revenue")]
+    cells = [
+        _make_cell("cell:0:1", 0, 1, "100", row_id="row:0", numeric="100"),
+        _make_cell("cell:0:2", 0, 2, "200", row_id="row:0", numeric="200"),
+    ]
+    axes = [
+        _make_axis("cell:0:1", "row:0", 1, "point", "FY2025"),
+        _make_axis("cell:0:2", "row:0", 2, "bucket", bucket_label="1-3 years"),
+    ]
+    from src.pdf_retrieval_v4.semantic_graph_models import MetricPath
+
+    mps = [
+        MetricPath(
+            row_id="row:0",
+            table_fragment_id="table:test",
+            raw_row_label="Revenue",
+            leaf_metric="Revenue",
+            metric_path="Revenue",
+            metric_path_segments=("Revenue",),
+            metric_depth=1,
+            parent_metric_row_id=None,
+            metric_status="resolved",
+        )
+    ]
+
+    # No facts emitted at all — all cells should show non-admitted outcomes
+    outcomes = compute_admission_outcomes(
+        semantic_rows=rows,
+        metric_paths=mps,
+        axis_bindings=axes,
+        all_cells=cells,
+        atomic_facts=[],
+        comparison_facts=[],
+        bucket_facts=[],
+        row_matrices=[],
+    )
+
+    # 2 typed-eligible cells (point + bucket)
+    typed_eligible = [
+        o
+        for o in outcomes
+        if o["temporal_kind"]
+        in ("point", "duration", "comparison", "bucket", "segment", "category")
+    ]
+    assert len(typed_eligible) == 2
+    # 0 covered
+    from src.pdf_retrieval_v4.typed_evidence_emitters import ADMITTED_OUTCOMES
+
+    typed_covered = [o for o in outcomes if o["outcomes"] & ADMITTED_OUTCOMES]
+    assert len(typed_covered) == 0
+
+
+def test_row_matrix_does_not_shrink_denominator() -> None:
+    """A RowMatrix covering 3 cells must count as 3 covered cells, not 1."""
+    from src.pdf_retrieval_v4.semantic_graph_models import MetricPath, RowMatrix
+    from src.pdf_retrieval_v4.typed_evidence_emitters import compute_admission_outcomes
+
+    rows = [_make_row("row:0", 0, "metric_row", "Revenue")]
+    cells = [
+        _make_cell("cell:0:1", 0, 1, "100", row_id="row:0", numeric="100"),
+        _make_cell("cell:0:2", 0, 2, "200", row_id="row:0", numeric="200"),
+        _make_cell("cell:0:3", 0, 3, "300", row_id="row:0", numeric="300"),
+    ]
+    axes = [
+        _make_axis("cell:0:1", "row:0", 1, "point", "FY2025"),
+        _make_axis("cell:0:2", "row:0", 2, "point", "FY2024"),
+        _make_axis("cell:0:3", "row:0", 3, "point", "FY2023"),
+    ]
+    mps = [
+        MetricPath(
+            row_id="row:0",
+            table_fragment_id="table:test",
+            raw_row_label="Revenue",
+            leaf_metric="Revenue",
+            metric_path="Revenue",
+            metric_path_segments=("Revenue",),
+            metric_depth=1,
+            parent_metric_row_id=None,
+            metric_status="resolved",
+        )
+    ]
+    # One RowMatrix covering all 3 cells
+    rm = RowMatrix(
+        semantic_fact_id="rm:doc:test:table:test:row:0",
+        document_id="doc:test",
+        table_fragment_id="table:test",
+        row_id="row:0",
+        metric_path="Revenue",
+        leaf_metric="Revenue",
+        dimensions=(
+            {
+                "cell_id": "cell:0:1",
+                "column_index": 1,
+                "temporal_kind": "point",
+                "normalized_period": "FY2025",
+                "period_start": None,
+                "period_end": None,
+                "comparison_role": None,
+                "bucket_label": None,
+                "segment_label": None,
+                "value_raw": "100",
+                "value_normalized": "100",
+            },
+            {
+                "cell_id": "cell:0:2",
+                "column_index": 2,
+                "temporal_kind": "point",
+                "normalized_period": "FY2024",
+                "period_start": None,
+                "period_end": None,
+                "comparison_role": None,
+                "bucket_label": None,
+                "segment_label": None,
+                "value_raw": "200",
+                "value_normalized": "200",
+            },
+            {
+                "cell_id": "cell:0:3",
+                "column_index": 3,
+                "temporal_kind": "point",
+                "normalized_period": "FY2023",
+                "period_start": None,
+                "period_end": None,
+                "comparison_role": None,
+                "bucket_label": None,
+                "segment_label": None,
+                "value_raw": "300",
+                "value_normalized": "300",
+            },
+        ),
+        scale=1e6,
+        scale_unit="millions",
+        currency_code=None,
+        equivalent_group_id=None,
+        source_traceback={
+            "document_id": "doc:test",
+            "pdf_page": 1,
+            "table_fragment_id": "table:test",
+            "row_id": "row:0",
+            "cell_id": None,
+            "bbox": None,
+            "raw_text": None,
+        },
+    )
+
+    outcomes = compute_admission_outcomes(
+        semantic_rows=rows,
+        metric_paths=mps,
+        axis_bindings=axes,
+        all_cells=cells,
+        atomic_facts=[],
+        comparison_facts=[],
+        bucket_facts=[],
+        row_matrices=[rm],
+    )
+
+    # All 3 cells should be covered by row_matrix_member
+    covered = [o for o in outcomes if "row_matrix_member" in o["outcomes"]]
+    assert len(covered) == 3, (
+        f"RowMatrix covering 3 cells must count as 3 covered, got {len(covered)}"
+    )
+
+
+def test_ambiguous_metric_not_counted_as_resolved() -> None:
+    """Validator must report metric_path_resolved and metric_path_ambiguous separately,
+    and the gate must use resolved (not present) coverage."""
+    from src.pdf_retrieval_v4.semantic_graph_validator import validate_semantic_graph
+    from src.pdf_retrieval_v4.semantic_graph_models import MetricPath
+
+    # 2 eligible rows, 1 resolved + 1 ambiguous
+    rows = [
+        _make_row("row:0", 0, "metric_row", "Revenue"),
+        _make_row("row:1", 1, "metric_row", "Cost"),
+    ]
+    mps = [
+        MetricPath(
+            row_id="row:0",
+            table_fragment_id="table:test",
+            raw_row_label="Revenue",
+            leaf_metric="Revenue",
+            metric_path="Revenue",
+            metric_path_segments=("Revenue",),
+            metric_depth=1,
+            parent_metric_row_id=None,
+            metric_status="resolved",
+        ),
+        MetricPath(
+            row_id="row:1",
+            table_fragment_id="table:test",
+            raw_row_label="Cost",
+            leaf_metric="Cost",
+            metric_path="Cost",
+            metric_path_segments=("Cost",),
+            metric_depth=1,
+            parent_metric_row_id=None,
+            metric_status="ambiguous",
+        ),
+    ]
+
+    result = validate_semantic_graph(
+        logical_tables=[],
+        semantic_rows=rows,
+        metric_paths=mps,
+        axis_bindings=[],
+        scale_resolutions=[],
+        atomic_facts=[],
+        comparison_facts=[],
+        bucket_facts=[],
+        row_matrices=[],
+        narrative_evidence=[],
+        all_cells=[],
+    )
+
+    m = result["metrics"]
+    assert m["metric_path_resolved"] == 1
+    assert m["metric_path_ambiguous"] == 1
+    assert m["metric_path_present"] == 2
+    # Resolved coverage = 1/2 = 0.5
+    assert m["metric_path_resolved_coverage"] == 0.5
+    # Present coverage = 2/2 = 1.0
+    assert m["metric_path_present_coverage"] == 1.0
+    # Gate must use resolved coverage, not present
+    assert result["gates"]["metric_path_resolved_coverage"] is False
+
+
+def test_same_metric_period_value_across_documents_not_deduped() -> None:
+    """Two AtomicFacts from different documents with same metric/period/value
+    must have different semantic_fact_ids and must NOT be deduplicated."""
+    from src.pdf_retrieval_v4.semantic_graph_models import AtomicFact
+
+    af1 = AtomicFact(
+        semantic_fact_id="af:doc:apple:table:t1:row:r1:cell:c1",
+        document_id="doc:apple",
+        table_fragment_id="table:t1",
+        row_id="row:r1",
+        cell_id="cell:c1",
+        metric_path="Revenue",
+        leaf_metric="Revenue",
+        temporal_kind="point",
+        normalized_period="FY2025",
+        period_start=None,
+        period_end=None,
+        value_raw="100",
+        value_normalized="100",
+        scale=1e6,
+        scale_unit="millions",
+        currency_code=None,
+        equivalent_group_id=None,
+        source_traceback={
+            "document_id": "doc:apple",
+            "pdf_page": 1,
+            "table_fragment_id": "table:t1",
+            "row_id": "row:r1",
+            "cell_id": "cell:c1",
+            "bbox": None,
+            "raw_text": "100",
+        },
+    )
+    af2 = AtomicFact(
+        semantic_fact_id="af:doc:microsoft:table:t2:row:r2:cell:c2",
+        document_id="doc:microsoft",
+        table_fragment_id="table:t2",
+        row_id="row:r2",
+        cell_id="cell:c2",
+        metric_path="Revenue",
+        leaf_metric="Revenue",
+        temporal_kind="point",
+        normalized_period="FY2025",
+        period_start=None,
+        period_end=None,
+        value_raw="100",
+        value_normalized="100",
+        scale=1e6,
+        scale_unit="millions",
+        currency_code=None,
+        equivalent_group_id=None,
+        source_traceback={
+            "document_id": "doc:microsoft",
+            "pdf_page": 1,
+            "table_fragment_id": "table:t2",
+            "row_id": "row:r2",
+            "cell_id": "cell:c2",
+            "bbox": None,
+            "raw_text": "100",
+        },
+    )
+
+    # Different semantic_fact_ids
+    assert af1.semantic_fact_id != af2.semantic_fact_id
+
+    # Dedup by semantic_fact_id must keep both
+    seen: set[str] = set()
+    deduped: list[AtomicFact] = []
+    for af in [af1, af2]:
+        if af.semantic_fact_id in seen:
+            continue
+        seen.add(af.semantic_fact_id)
+        deduped.append(af)
+    assert len(deduped) == 2, "Cross-document facts must not be deduplicated"
+
+    # Validator must report 0 duplicate_semantic_facts
+    from src.pdf_retrieval_v4.semantic_graph_validator import validate_semantic_graph
+
+    result = validate_semantic_graph(
+        logical_tables=[],
+        semantic_rows=[],
+        metric_paths=[],
+        axis_bindings=[],
+        scale_resolutions=[],
+        atomic_facts=[af1, af2],
+        comparison_facts=[],
+        bucket_facts=[],
+        row_matrices=[],
+        narrative_evidence=[],
+        all_cells=[],
+    )
+    assert result["metrics"]["duplicate_semantic_fact"] == 0
+
+
+def test_equivalent_set_can_dedup() -> None:
+    """Equivalent-set rows (same canonical_semantic_fact_id) must be deduplicated
+    to exactly one canonical fact."""
+    from src.pdf_retrieval_v4.semantic_equivalence import (
+        build_equivalence_map,
+        detect_equivalent_set_double_counting,
+    )
+
+    # 3 physical rows in same equivalent set
+    equivalent_sets = [
+        {
+            "equivalent_group_id": "eq:tesla:revenue",
+            "physical_row_ids": ["row:0", "row:1", "row:2"],
+        }
+    ]
+    equiv_map = build_equivalence_map(equivalent_sets)
+
+    # All 3 rows map to same group
+    assert equiv_map["row:0"] == equiv_map["row:1"] == equiv_map["row:2"]
+
+    # If we emit 3 atomic facts with same semantic_fact_id (canonical),
+    # dedup by semantic_fact_id should reduce to 1
+    canonical_id = "af:canonical:tesla:revenue"
+    from src.pdf_retrieval_v4.semantic_graph_models import AtomicFact
+
+    facts = [
+        AtomicFact(
+            semantic_fact_id=canonical_id,
+            document_id="doc:tesla",
+            table_fragment_id="table:t1",
+            row_id=f"row:{i}",
+            cell_id=f"cell:{i}",
+            metric_path="Revenue",
+            leaf_metric="Revenue",
+            temporal_kind="point",
+            normalized_period="FY2025",
+            period_start=None,
+            period_end=None,
+            value_raw="100",
+            value_normalized="100",
+            scale=1e6,
+            scale_unit="millions",
+            currency_code=None,
+            equivalent_group_id="eq:tesla:revenue",
+            source_traceback={
+                "document_id": "doc:tesla",
+                "pdf_page": 1,
+                "table_fragment_id": "table:t1",
+                "row_id": f"row:{i}",
+                "cell_id": f"cell:{i}",
+                "bbox": None,
+                "raw_text": "100",
+            },
+        )
+        for i in range(3)
+    ]
+
+    # Dedup by semantic_fact_id
+    seen: set[str] = set()
+    deduped: list[AtomicFact] = []
+    for af in facts:
+        if af.semantic_fact_id in seen:
+            continue
+        seen.add(af.semantic_fact_id)
+        deduped.append(af)
+    assert len(deduped) == 1, "Equivalent-set facts must dedup to 1 canonical"
+
+    # Double counting detection should flag 3 dicts with same equivalent_group_id
+    fact_dicts = [af.to_dict() for af in facts]
+    double_count = detect_equivalent_set_double_counting(fact_dicts, equiv_map)
+    assert double_count > 0, (
+        "3 facts from same equiv set before dedup = double counting"
+    )
+
+
+def test_scale_conflict_resolution_violation_detectable() -> None:
+    """Validator must detect when a scale resolution has conflicting candidate
+    units but was still resolved (safety violation)."""
+    from src.pdf_retrieval_v4.semantic_graph_validator import validate_semantic_graph
+
+    # A ScaleResolution with conflicting candidates but status="resolved"
+    # (this should never happen in practice — it's a resolver bug)
+    conflict_resolved = ScaleResolution(
+        table_fragment_id="table:buggy",
+        scale=1e6,
+        scale_unit="millions",
+        scale_level="S0",
+        scale_status="resolved",
+        raw_candidates=("in millions", "in thousands"),
+        source="S0:in millions",
+    )
+
+    result = validate_semantic_graph(
+        logical_tables=[],
+        semantic_rows=[],
+        metric_paths=[],
+        axis_bindings=[],
+        scale_resolutions=[conflict_resolved],
+        atomic_facts=[],
+        comparison_facts=[],
+        bucket_facts=[],
+        row_matrices=[],
+        narrative_evidence=[],
+        all_cells=[],
+    )
+
+    # Must detect the violation
+    assert result["metrics"]["scale_conflict_auto_resolution"] == 1, (
+        "Scale resolved with conflicting candidates must be flagged as auto-resolution"
+    )
+    assert result["gates"]["scale_conflict_auto_resolution"] is False
+    assert result["metrics"]["scale_conflict_detected"] == 1
+
+
+def test_build_nonzero_exit_when_gate_fails() -> None:
+    """Build script must return exit code 2 when gates fail, not 0."""
+    import ast
+
+    source = BUILD_SCRIPT.read_text(encoding="utf-8")
+    tree = ast.parse(source)
+
+    # Find the main function and check its return statement
+    for node in ast.walk(tree):
+        if isinstance(node, ast.FunctionDef) and node.name == "main":
+            for child in ast.walk(node):
+                if isinstance(child, ast.Return) and child.value:
+                    # Should contain "else 2" not "else 0"
+                    return_src = ast.get_source_segment(source, child)
+                    if return_src and "all_passed" in return_src:
+                        assert "2" in return_src, (
+                            f"Build exit code must be 2 on gate failure, got: {return_src}"
+                        )
+                        return
+    raise AssertionError("Could not find return statement with all_passed in main()")

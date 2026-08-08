@@ -56,6 +56,11 @@ def _resolve_scale_keyword(keyword: str) -> tuple[float, str] | None:
     return _SCALE_MAP_LOWER.get(keyword.lower())
 
 
+def resolve_scale_keyword(keyword: str) -> tuple[float, str] | None:
+    """Public alias for :func:`_resolve_scale_keyword`."""
+    return _resolve_scale_keyword(keyword)
+
+
 def _detect_scale_conflict(
     candidates: list[str],
 ) -> bool:
