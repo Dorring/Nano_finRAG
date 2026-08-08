@@ -127,11 +127,11 @@ def validate_semantic_graph(
     typed_eligible_count = len(typed_eligible_cells)
 
     atomic_admitted_count = sum(
-        1 for ao in admission_outcomes if "atomic" in ao["outcomes"]
+        1 for ao in atomic_eligible_cells if "atomic" in ao["outcomes"]
     )
 
     typed_covered_count = sum(
-        1 for ao in admission_outcomes if ao["outcomes"] & ADMITTED_OUTCOMES
+        1 for ao in typed_eligible_cells if ao["outcomes"] & ADMITTED_OUTCOMES
     )
 
     atomic_admission = (

@@ -1454,3 +1454,104 @@ def test_build_nonzero_exit_when_gate_fails() -> None:
                         )
                         return
     raise AssertionError("Could not find return statement with all_passed in main()")
+
+
+def test_typed_admission_never_exceeds_100_percent() -> None:
+    """Typed Evidence Admission must never exceed 100% even when non-typed-eligible
+    cells (e.g. unknown temporal kind) have admitted outcomes like row_matrix_member."""
+    from src.pdf_retrieval_v4.semantic_graph_models import MetricPath, RowMatrix
+    from src.pdf_retrieval_v4.typed_evidence_emitters import compute_admission_outcomes
+
+    rows = [_make_row("row:0", 0, "metric_row", "Revenue")]
+    cells = [
+        _make_cell("cell:0:1", 0, 1, "100", row_id="row:0", numeric="100"),
+        _make_cell("cell:0:2", 0, 2, "200", row_id="row:0", numeric="200"),
+    ]
+    # cell:0:1 is point (typed-eligible), cell:0:2 is unknown (NOT typed-eligible)
+    axes = [
+        _make_axis("cell:0:1", "row:0", 1, "point", "FY2025"),
+        _make_axis("cell:0:2", "row:0", 2, "unknown"),
+    ]
+    mps = [
+        MetricPath(
+            row_id="row:0",
+            table_fragment_id="table:test",
+            raw_row_label="Revenue",
+            leaf_metric="Revenue",
+            metric_path="Revenue",
+            metric_path_segments=("Revenue",),
+            metric_depth=1,
+            parent_metric_row_id=None,
+            metric_status="resolved",
+        )
+    ]
+
+    # RowMatrix covers BOTH cells -- but only cell:0:1 is typed-eligible
+    rm = RowMatrix(
+        semantic_fact_id="rm:doc:test:table:test:row:0",
+        document_id="doc:test",
+        table_fragment_id="table:test",
+        row_id="row:0",
+        metric_path="Revenue",
+        leaf_metric="Revenue",
+        dimensions=(
+            {
+                "cell_id": "cell:0:1",
+                "column_index": 1,
+                "temporal_kind": "point",
+                "normalized_period": "FY2025",
+                "period_start": None,
+                "period_end": None,
+                "comparison_role": None,
+                "bucket_label": None,
+                "segment_label": None,
+                "value_raw": "100",
+                "value_normalized": "100",
+            },
+            {
+                "cell_id": "cell:0:2",
+                "column_index": 2,
+                "temporal_kind": "unknown",
+                "normalized_period": None,
+                "period_start": None,
+                "period_end": None,
+                "comparison_role": None,
+                "bucket_label": None,
+                "segment_label": None,
+                "value_raw": "200",
+                "value_normalized": "200",
+            },
+        ),
+        scale=None,
+        scale_unit=None,
+        currency_code=None,
+        equivalent_group_id=None,
+        source_traceback={},
+    )
+
+    outcomes = compute_admission_outcomes(
+        semantic_rows=rows,
+        metric_paths=mps,
+        axis_bindings=axes,
+        all_cells=cells,
+        atomic_facts=[],
+        comparison_facts=[],
+        bucket_facts=[],
+        row_matrices=[rm],
+    )
+
+    from src.pdf_retrieval_v4.typed_evidence_emitters import (
+        ADMITTED_OUTCOMES,
+        TYPED_ELIGIBLE_KINDS,
+    )
+
+    typed_eligible = [o for o in outcomes if o["temporal_kind"] in TYPED_ELIGIBLE_KINDS]
+    typed_covered = [o for o in typed_eligible if o["outcomes"] & ADMITTED_OUTCOMES]
+
+    # Only 1 typed-eligible cell (cell:0:1 with point), 1 covered
+    assert len(typed_eligible) == 1
+    assert len(typed_covered) == 1
+
+    # Typed admission = 1/1 = 100%, NOT 2/1 = 200%
+    admission = len(typed_covered) / len(typed_eligible) if typed_eligible else 0.0
+    assert admission <= 1.0, f"Typed admission {admission} exceeds 100%"
