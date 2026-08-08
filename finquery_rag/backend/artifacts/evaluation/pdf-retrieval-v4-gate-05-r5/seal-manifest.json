@@ -1,0 +1,30 @@
+{
+  "schema": "pdf-retrieval-v4/gate-05-r5/seal/v1",
+  "candidate_count": 38319,
+  "structured_eligible_count": 38313,
+  "grade_a_bridge_count": 19500,
+  "grade_b_bridge_count": 6354,
+  "unmapped_count": 12465,
+  "grade_counts": {
+    "unmapped": 12465,
+    "A5_narrative": 13994,
+    "B_ambiguous": 6354,
+    "A1_direct": 239,
+    "A3_row_signature": 5064,
+    "A4_multirow": 203
+  },
+  "question_reads": 0,
+  "gold_reads_before_seal": 0,
+  "governance_reads_before_seal": 0,
+  "bm25_builds": 0,
+  "dense_builds": 0,
+  "retrieval_runs": 0,
+  "reranker_calls": 0,
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "pre_seal_validation_passed": true,
+  "violation_count": 0,
+  "bridge_manifest_hash": "1558207b79d41aaf081d97ddce525a6e9ea2a05345d60ae3c7a49f94887e7060",
+  "candidate_view_hash": "4afeedfef3b9fb5989f90a35f726e569983bcb37c50903c3b0778a41d1fd9cfd",
+  "sealed": true
+}

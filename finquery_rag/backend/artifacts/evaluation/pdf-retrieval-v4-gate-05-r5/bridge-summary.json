@@ -1,0 +1,22 @@
+{
+  "total_candidates": 38319,
+  "grade_counts": {
+    "unmapped": 12465,
+    "A5_narrative": 13994,
+    "B_ambiguous": 6354,
+    "A1_direct": 239,
+    "A3_row_signature": 5064,
+    "A4_multirow": 203
+  },
+  "grade_a_count": 19500,
+  "grade_b_count": 6354,
+  "unmapped_count": 12465,
+  "failure_stage_counts": {
+    "candidate_type_unsupported": 6,
+    "narrative_bridge_missing": 3844,
+    "multiple_equal_matches": 6354,
+    "candidate_text_signature_mismatch": 6368,
+    "numeric_signature_mismatch": 2228,
+    "period_signature_mismatch": 19
+  }
+}

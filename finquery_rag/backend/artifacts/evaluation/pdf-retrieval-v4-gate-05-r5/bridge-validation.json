@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "violations": [],
+  "metrics": {
+    "candidate_key_conflict_count": 0,
+    "structured_view_duplicate_count": 0,
+    "bridge_cross_document_count": 0,
+    "bridge_cross_page_count": 0,
+    "missing_evidence_traceback_count": 0,
+    "equivalent_set_double_count": 0,
+    "ambiguous_in_grade_a_count": 0,
+    "gold_reads": 0,
+    "question_reads": 0,
+    "semantic_evidence_fanout_count": 4430,
+    "top_fanout": {
+      "narrative:e872aa85012b6a192136e26d6beca35e81c0cd389f8e97ca10": 32,
+      "row:ceb04fa7b443dd72beba22ab8ec6ffbe80504c13f10c1b6afdc1a42e": 27,
+      "narrative:6ed5a2715729077533a7d015f9be482ac0a1955af5ac3addea": 24,
+      "narrative:b8d451f2359b385be8d24cdf47d289ead39071f98c2c9bc172": 23,
+      "narrative:90c79260c70a91f6009bf96f0cc3010e5cc505c5eb3fb96272": 22,
+      "narrative:db43ef780b16a8f8d0298190aa0a7cb0e5362e28338e10f1aa": 20,
+      "row:c01a81bf3c19aba9c0cca6b6e937bd7ae5aab96f3cfe67246d02e47f": 20,
+      "narrative:dc1edb20fc5e25dfff041cf8f2ac8527baada9e24d8fd2d33f": 18,
+      "narrative:292fdcbe3417b5a3b04c8cf718a4bf804c679f252f2db5e161": 17,
+      "narrative:1770a03bc8be72738d5916a0bb2681bc5bf7b3e820d1c1652c": 16
+    }
+  }
+}

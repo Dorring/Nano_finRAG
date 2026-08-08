@@ -1,0 +1,208 @@
+{
+  "total_unmapped_gold": 12,
+  "failure_stage_counts": {
+    "multiple_equal_matches": 8,
+    "numeric_signature_mismatch": 4
+  },
+  "failures": [
+    {
+      "case_id": "jpm_fy2025_005",
+      "gold_candidate_key": "candidate:v1:a9325e992895567a4c2721f66a3bc3c24b663ddeade06999ff5c87755159932c",
+      "gold_document_id": "jpm_fy2025",
+      "gold_page": 101,
+      "gold_metric": "Net income",
+      "gold_period": "FY2025",
+      "gold_row_label": "Net income",
+      "first_failure_stage": "numeric_signature_mismatch",
+      "bridge_grade": "unmapped",
+      "bridge_reasons": [
+        "best_score=0.478",
+        "numeric_recall=0.750",
+        "text_coverage=0.061"
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_007",
+      "gold_candidate_key": "candidate:v1:214ce6712de95bbe235ef407a4a41b42d0ba38080b13d80a418493656e357a9b",
+      "gold_document_id": "ko_fy2025",
+      "gold_page": 119,
+      "gold_metric": "Third party",
+      "gold_period": "FY2025",
+      "gold_row_label": "Third party",
+      "first_failure_stage": "multiple_equal_matches",
+      "bridge_grade": "B_ambiguous",
+      "bridge_reasons": [
+        "top_score=0.574",
+        "second_score=0.574",
+        "score_gap_below_threshold"
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_009",
+      "gold_candidate_key": "candidate:v1:2615a8131b1b84e1f788cfb9c9292fa6b20c9688723ff3bc555f21d4590d95d8",
+      "gold_document_id": "ko_fy2025",
+      "gold_page": 119,
+      "gold_metric": "Total net operating revenues",
+      "gold_period": "FY2024",
+      "gold_row_label": "Total net operating revenues",
+      "first_failure_stage": "multiple_equal_matches",
+      "bridge_grade": "B_ambiguous",
+      "bridge_reasons": [
+        "top_score=0.615",
+        "second_score=0.615",
+        "score_gap_below_threshold"
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_004",
+      "gold_candidate_key": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
+      "gold_document_id": "msft_fy2025",
+      "gold_page": 80,
+      "gold_metric": "Intelligent Cloud revenue",
+      "gold_period": "FY2025",
+      "gold_row_label": "Intelligent Cloud revenue",
+      "first_failure_stage": "multiple_equal_matches",
+      "bridge_grade": "B_ambiguous",
+      "bridge_reasons": [
+        "top_score=0.269",
+        "second_score=0.223",
+        "score_gap_below_threshold"
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "gold_candidate_key": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
+      "gold_document_id": "msft_fy2025",
+      "gold_page": 80,
+      "gold_metric": "Intelligent Cloud revenue",
+      "gold_period": "FY2025",
+      "gold_row_label": "Intelligent Cloud revenue",
+      "first_failure_stage": "multiple_equal_matches",
+      "bridge_grade": "B_ambiguous",
+      "bridge_reasons": [
+        "top_score=0.269",
+        "second_score=0.223",
+        "score_gap_below_threshold"
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_009",
+      "gold_candidate_key": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
+      "gold_document_id": "msft_fy2025",
+      "gold_page": 80,
+      "gold_metric": "Intelligent Cloud revenue",
+      "gold_period": "FY2024",
+      "gold_row_label": "Intelligent Cloud revenue",
+      "first_failure_stage": "multiple_equal_matches",
+      "bridge_grade": "B_ambiguous",
+      "bridge_reasons": [
+        "top_score=0.269",
+        "second_score=0.223",
+        "score_gap_below_threshold"
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_001",
+      "gold_candidate_key": "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024",
+      "gold_document_id": "nvda_fy2025",
+      "gold_page": 144,
+      "gold_metric": "Revenue",
+      "gold_period": "FY2025",
+      "gold_row_label": "Revenue",
+      "first_failure_stage": "numeric_signature_mismatch",
+      "bridge_grade": "unmapped",
+      "bridge_reasons": [
+        "best_score=0.494",
+        "numeric_recall=0.750",
+        "text_coverage=0.125"
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_006",
+      "gold_candidate_key": "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024",
+      "gold_document_id": "nvda_fy2025",
+      "gold_page": 144,
+      "gold_metric": "Revenue",
+      "gold_period": "FY2024",
+      "gold_row_label": "Revenue",
+      "first_failure_stage": "numeric_signature_mismatch",
+      "bridge_grade": "unmapped",
+      "bridge_reasons": [
+        "best_score=0.494",
+        "numeric_recall=0.750",
+        "text_coverage=0.125"
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_006",
+      "gold_candidate_key": "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024",
+      "gold_document_id": "nvda_fy2025",
+      "gold_page": 144,
+      "gold_metric": "Revenue",
+      "gold_period": "FY2025",
+      "gold_row_label": "Revenue",
+      "first_failure_stage": "numeric_signature_mismatch",
+      "bridge_grade": "unmapped",
+      "bridge_reasons": [
+        "best_score=0.494",
+        "numeric_recall=0.750",
+        "text_coverage=0.125"
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_003",
+      "gold_candidate_key": "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e",
+      "gold_document_id": "pfe_fy2024",
+      "gold_page": 44,
+      "gold_metric": "Eliquis - Worldwide",
+      "gold_period": "FY2024",
+      "gold_row_label": "Eliquis - Worldwide",
+      "first_failure_stage": "multiple_equal_matches",
+      "bridge_grade": "B_ambiguous",
+      "bridge_reasons": [
+        "top_score=0.808",
+        "second_score=0.785",
+        "score_gap_below_threshold"
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_005",
+      "gold_candidate_key": "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e",
+      "gold_document_id": "pfe_fy2024",
+      "gold_page": 44,
+      "gold_metric": "Prevnar family - Worldwide",
+      "gold_period": "FY2024",
+      "gold_row_label": "Prevnar family - Worldwide",
+      "first_failure_stage": "multiple_equal_matches",
+      "bridge_grade": "B_ambiguous",
+      "bridge_reasons": [
+        "top_score=0.808",
+        "second_score=0.785",
+        "score_gap_below_threshold"
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_003",
+      "gold_candidate_key": "candidate:v1:7fcc2dc3de8832dfab1fe0b8a08e25a303a996470fa598765b1e08144018e9f7",
+      "gold_document_id": "tsla_fy2025",
+      "gold_page": 69,
+      "gold_metric": "Automotive regulatory credits",
+      "gold_period": "FY2025",
+      "gold_row_label": "Automotive regulatory credits",
+      "first_failure_stage": "multiple_equal_matches",
+      "bridge_grade": "B_ambiguous",
+      "bridge_reasons": [
+        "top_score=0.800",
+        "second_score=0.800",
+        "score_gap_below_threshold"
+      ]
+    }
+  ],
+  "universe_context": {
+    "total_gold": 80,
+    "mapped": 68,
+    "unmapped": 0,
+    "ambiguous": 8,
+    "raw_only": 4
+  }
+}
