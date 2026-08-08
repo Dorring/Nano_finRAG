@@ -1,4 +1,5 @@
 {
+  "scoring_version": "r5.1_strict_frozen_equivalence",
   "b_class": {
     "total": 17,
     "passed": 14,
@@ -12,9 +13,9 @@
         "matched_row_ids": [
           "row:c0019e060b35e7a6a39bc58c5807265813cd6a2b87e0ba8be5b7712734fcad95"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d",
           "candidate:v1:7f4094b93468958c2fe7e1640c0d139c3ece8d91accb71a4b977173a175442ec"
@@ -26,9 +27,9 @@
         "matched_row_ids": [
           "row:271be7bf8da3393526d553e9d485c47d9789cabfda569564cdd6ac65b9d4ee29"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:d8d06e11d524ce4ec4c95ca728ef61ba568965f41b623d7033faf672eea17989",
           "candidate:v1:9a4997eac335e2bf1490b5c26a1104fcb8ac5b8d3a85e59000a4c8e02358df4d"
@@ -40,9 +41,9 @@
         "matched_row_ids": [
           "row:c0019e060b35e7a6a39bc58c5807265813cd6a2b87e0ba8be5b7712734fcad95"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d",
           "candidate:v1:7f4094b93468958c2fe7e1640c0d139c3ece8d91accb71a4b977173a175442ec"
@@ -54,9 +55,9 @@
         "matched_row_ids": [
           "row:78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
           "candidate:v1:54a535ad1d270b975d34014b615381a6984b677d452dec53b223ca69a380c129"
@@ -68,9 +69,9 @@
         "matched_row_ids": [
           "row:a5da46248aad27275bd61916b2d7361095d322449898216f1e1df8fbb2013236"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:5a25663abb16c0b92c93f62a32e2decdd60aad7b65e2ce937ace826a22a136c9",
           "candidate:v1:5e8062de72fa06868963b6b15204a8fb0d537d18ad5a44a32853b776da127489"
@@ -82,9 +83,9 @@
         "matched_row_ids": [
           "row:78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
           "candidate:v1:54a535ad1d270b975d34014b615381a6984b677d452dec53b223ca69a380c129"
@@ -96,9 +97,9 @@
         "matched_row_ids": [
           "row:78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
           "candidate:v1:54a535ad1d270b975d34014b615381a6984b677d452dec53b223ca69a380c129"
@@ -112,12 +113,11 @@
           "row:923e9c0df6dee549d77a436e711e3e95b141981242c9c000235f9885ae488b04",
           "row:082f391bc44c5a48ddf2a212e381d8d364f784ef9057fd56b22f9ea0c33a2006"
         ],
-        "expanded_row_count": 22,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
-          "candidate:v1:1c09241b281c8ad1e2413e491193efdae9dc110808de7173bc20fad9b0e18118",
           "candidate:v1:c35b17984af0d9d3229d3d42655cfa586759a8d59e2db7c3c091e70f0da7cf86"
         ]
       },
@@ -129,9 +129,9 @@
           "row:4a835c487d4268d9edd8d75cb4ac99dca206cf4bfecb5ceaa7786300de1603ff",
           "row:3e288cd26f17e72802b2edf25af82fb54cfad3fb1067bd9839c78ff3e0b6934a"
         ],
-        "expanded_row_count": 3,
         "status": "not_covered",
-        "match_method": null,
+        "formal_match_method": null,
+        "diagnostic_match_method": null,
         "covering_views": []
       },
       {
@@ -142,9 +142,9 @@
           "row:4a835c487d4268d9edd8d75cb4ac99dca206cf4bfecb5ceaa7786300de1603ff",
           "row:3e288cd26f17e72802b2edf25af82fb54cfad3fb1067bd9839c78ff3e0b6934a"
         ],
-        "expanded_row_count": 3,
         "status": "not_covered",
-        "match_method": null,
+        "formal_match_method": null,
+        "diagnostic_match_method": null,
         "covering_views": []
       },
       {
@@ -155,9 +155,9 @@
           "row:4a835c487d4268d9edd8d75cb4ac99dca206cf4bfecb5ceaa7786300de1603ff",
           "row:3e288cd26f17e72802b2edf25af82fb54cfad3fb1067bd9839c78ff3e0b6934a"
         ],
-        "expanded_row_count": 3,
         "status": "not_covered",
-        "match_method": null,
+        "formal_match_method": null,
+        "diagnostic_match_method": null,
         "covering_views": []
       },
       {
@@ -166,9 +166,9 @@
         "matched_row_ids": [
           "row:bf41fde5e6a82068d53448468b1069bd7f1724516e583efa9f971110ccd95785"
         ],
-        "expanded_row_count": 3,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "canonical_equivalent_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:764e51106a705bd6f16af004eeb7f0126c4209a0c62a5319d13153dc95987982",
           "candidate:v1:54453bd73944dd01ed473feadc8bbf756d03ff2093cfb5ebc7dcfb464a6f1f34"
@@ -180,9 +180,9 @@
         "matched_row_ids": [
           "row:f20abee34148bde89c04a65354601bb96e1a3f1b2cf23fbd12c0ec150fac7da4"
         ],
-        "expanded_row_count": 2,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "canonical_equivalent_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
           "candidate:v1:e5db5875f847679804e54eb018575f0a40ae8b3b211c5a1c208df49b2838107e"
@@ -194,9 +194,9 @@
         "matched_row_ids": [
           "row:f20abee34148bde89c04a65354601bb96e1a3f1b2cf23fbd12c0ec150fac7da4"
         ],
-        "expanded_row_count": 2,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "canonical_equivalent_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
           "candidate:v1:e5db5875f847679804e54eb018575f0a40ae8b3b211c5a1c208df49b2838107e"
@@ -208,9 +208,9 @@
         "matched_row_ids": [
           "row:05ef0bffccf1a8e8ba0a0a539c3c7bc8bb31cc1467a1c5db16153b2fc452d267"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52",
           "candidate:v1:d29466f16f77143c80d6af94c8e99be200f9d27c3dd22849061f400a8d66b127"
@@ -222,9 +222,9 @@
         "matched_row_ids": [
           "row:9cea965a621d0707927d0252efb5f95117adc2b590b495799bd051d069bd2eae"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83"
         ]
@@ -235,9 +235,9 @@
         "matched_row_ids": [
           "row:9cea965a621d0707927d0252efb5f95117adc2b590b495799bd051d069bd2eae"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83"
         ]
@@ -257,9 +257,9 @@
         "matched_row_ids": [
           "row:ef0323f842c202392cff0b97eb59a691936f83857f89bcc192ca50105a3105c8"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:b5494e22a29663edc6ff9f1ce1b126c4c9f32d6933a1479b696a5c93a3e45135"
         ]
@@ -270,9 +270,9 @@
         "matched_row_ids": [
           "row:12ac1e2aac5c0f56f83b76cdc2116005758d8910fa439b48a084e8717ab2f89a"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8"
         ]
@@ -283,9 +283,9 @@
         "matched_row_ids": [
           "row:12ac1e2aac5c0f56f83b76cdc2116005758d8910fa439b48a084e8717ab2f89a"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8"
         ]
@@ -296,9 +296,9 @@
         "matched_row_ids": [
           "row:12ac1e2aac5c0f56f83b76cdc2116005758d8910fa439b48a084e8717ab2f89a"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8"
         ]
@@ -309,9 +309,9 @@
         "matched_row_ids": [
           "row:54b3d0bc1b1a829f98c993a327969efb7c89a36139ee456f910a644da86ee836"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:c03a713affc5c00b9d7416a69608d071305fa17362b7668a963dc1f2b5cc8697"
         ]
@@ -322,9 +322,9 @@
         "matched_row_ids": [
           "row:820594b426cf4db2964355d510d493947079072c7cc07b77f56a727db044e5dc"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:84ecbba7da14d18cf2bb3b171d9bff27fa45ad1c75d4ae77545b1b0046f0b92e"
         ]
@@ -335,9 +335,9 @@
         "matched_row_ids": [
           "row:7e731d3eb8975007be3386499df660bfd01fa67dfec355c09fb4e82dab3eb64e"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d"
         ]
@@ -350,13 +350,11 @@
           "row:7dd7371014ec19d73a76cf6cb4ea2770c9b356075bee1cf0b1451b709ca20a80",
           "row:7740903622172fe8664012a2506744d77bd08b423e85a8e1b6d88c8ba70e3bcb"
         ],
-        "expanded_row_count": 13,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
-          "candidate:v1:b39951ef221c459defd483f832eba25ba99d0583908c3df961d609d3855ceed2",
-          "candidate:v1:72adb108f62b1c9052138b1407dd5980be3e269e6785d804a2197e165a1bd2ed",
-          "candidate:v1:61d9d2b82c28fff2342c6c77951bd49618c51274fd1660e943dfa426ad131d56"
+          "candidate:v1:b39951ef221c459defd483f832eba25ba99d0583908c3df961d609d3855ceed2"
         ]
       },
       {
@@ -367,9 +365,9 @@
           "row:6b3dca6b86392585406073bd7d4b4ca32881aadb70fa4eb73cbf31fa2234eda5",
           "row:0e5f9c81a0c73c3704eec865a631bda79c4f9b65e046e96d24d1acbddf5efeb1"
         ],
-        "expanded_row_count": 18,
         "status": "not_covered",
-        "match_method": null,
+        "formal_match_method": null,
+        "diagnostic_match_method": null,
         "covering_views": []
       },
       {
@@ -380,13 +378,11 @@
           "row:7dd7371014ec19d73a76cf6cb4ea2770c9b356075bee1cf0b1451b709ca20a80",
           "row:7740903622172fe8664012a2506744d77bd08b423e85a8e1b6d88c8ba70e3bcb"
         ],
-        "expanded_row_count": 13,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
-          "candidate:v1:b39951ef221c459defd483f832eba25ba99d0583908c3df961d609d3855ceed2",
-          "candidate:v1:72adb108f62b1c9052138b1407dd5980be3e269e6785d804a2197e165a1bd2ed",
-          "candidate:v1:61d9d2b82c28fff2342c6c77951bd49618c51274fd1660e943dfa426ad131d56"
+          "candidate:v1:b39951ef221c459defd483f832eba25ba99d0583908c3df961d609d3855ceed2"
         ]
       },
       {
@@ -397,13 +393,11 @@
           "row:7dd7371014ec19d73a76cf6cb4ea2770c9b356075bee1cf0b1451b709ca20a80",
           "row:7740903622172fe8664012a2506744d77bd08b423e85a8e1b6d88c8ba70e3bcb"
         ],
-        "expanded_row_count": 13,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
-          "candidate:v1:b39951ef221c459defd483f832eba25ba99d0583908c3df961d609d3855ceed2",
-          "candidate:v1:72adb108f62b1c9052138b1407dd5980be3e269e6785d804a2197e165a1bd2ed",
-          "candidate:v1:61d9d2b82c28fff2342c6c77951bd49618c51274fd1660e943dfa426ad131d56"
+          "candidate:v1:b39951ef221c459defd483f832eba25ba99d0583908c3df961d609d3855ceed2"
         ]
       },
       {
@@ -414,13 +408,11 @@
           "row:7dd7371014ec19d73a76cf6cb4ea2770c9b356075bee1cf0b1451b709ca20a80",
           "row:7740903622172fe8664012a2506744d77bd08b423e85a8e1b6d88c8ba70e3bcb"
         ],
-        "expanded_row_count": 13,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
-          "candidate:v1:b39951ef221c459defd483f832eba25ba99d0583908c3df961d609d3855ceed2",
-          "candidate:v1:72adb108f62b1c9052138b1407dd5980be3e269e6785d804a2197e165a1bd2ed",
-          "candidate:v1:61d9d2b82c28fff2342c6c77951bd49618c51274fd1660e943dfa426ad131d56"
+          "candidate:v1:b39951ef221c459defd483f832eba25ba99d0583908c3df961d609d3855ceed2"
         ]
       },
       {
@@ -429,9 +421,9 @@
         "matched_row_ids": [
           "row:7581db60143049afe1acbb2a768d7c5dc5ea5eb7f463a04cdbe3900c8da403a6"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:fd7d3044411973c1af57bf015ca3fd14efb235afbe07f01c8ff1d8d9259536db"
         ]
@@ -442,9 +434,9 @@
         "matched_row_ids": [
           "row:93925e15ad34715a4b43601361d4ca1d949e380955f4fe20f934d71fd8c8a869"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186"
         ]
@@ -455,9 +447,9 @@
         "matched_row_ids": [
           "row:93925e15ad34715a4b43601361d4ca1d949e380955f4fe20f934d71fd8c8a869"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186"
         ]
@@ -468,9 +460,9 @@
         "matched_row_ids": [
           "row:93925e15ad34715a4b43601361d4ca1d949e380955f4fe20f934d71fd8c8a869"
         ],
-        "expanded_row_count": 1,
         "status": "covered",
-        "match_method": "row_id_expanded",
+        "formal_match_method": "direct_row_match",
+        "diagnostic_match_method": null,
         "covering_views": [
           "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186"
         ]
@@ -483,5 +475,18 @@
     "threshold_strong": 29,
     "threshold_pass": 26
   },
-  "gate_status": "pass"
+  "gate_status": "pass",
+  "formal_match_methods": {
+    "b_class": {
+      "direct_row_match": 11,
+      "canonical_equivalent_match": 3
+    },
+    "d_class": {
+      "direct_row_match": 15
+    }
+  },
+  "diagnostic_match_methods": {
+    "b_class": {},
+    "d_class": {}
+  }
 }
