@@ -1,0 +1,6 @@
+{
+  "decision": "bounded_candidate_raw_regression_blocked",
+  "next_gate": "stop_and_fix_raw_family_retention",
+  "production_switch_allowed": false,
+  "reranker_allowed": false
+}
