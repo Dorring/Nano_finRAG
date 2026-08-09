@@ -1,0 +1,32 @@
+{
+  "bm25_searches": 0,
+  "calculator_calls": 0,
+  "candidate_bridge_runs": 0,
+  "candidate_pool_mutation": false,
+  "candidate_pool_source": "gate08_r7_sealed_final_pool",
+  "dense_searches": 0,
+  "embedding_calls": 0,
+  "gate": "pdf_retrieval_v4_gate_09",
+  "generator_calls": 0,
+  "gold_reads_before_seal": 0,
+  "governance_reads_before_seal": 0,
+  "index_builds": 0,
+  "index_reads": 0,
+  "input_hashes": {
+    "query_plans": "e1c6e5af104ebda3687c2844fa8549d00b3b89eb649d369f92fb1504920de13f",
+    "r7_prediction": "d8cd323eab187948b1e2a5a3c15ee0e79561d4860c46e60de23eed12da9cf309",
+    "r7_seal": "cb6a7646f1819dd49d68bb996088cd0ad042ea524a7030c0b14b787cad66d5be",
+    "structured_views": "d711ca42fd61e53cd867f5db39a0ab18d7636e3dc97b1b835105f2637655a572"
+  },
+  "parameter_scan": false,
+  "prediction_count": 72,
+  "prediction_sha256": "2a7adb9b994874fbad3d14b202d4918316c7d7acb758a2ad70d2adafe7bdd679",
+  "production_switch_allowed": false,
+  "production_writes": 0,
+  "query_plan_mutations": 0,
+  "query_rebuilds": 0,
+  "reranker_calls": 0,
+  "schema": "deterministic-evidence-set-v1",
+  "sealed": true,
+  "semantic_graph_runs": 0
+}

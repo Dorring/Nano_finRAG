@@ -1,0 +1,22 @@
+{
+  "decision": "evidence_set_construction_insufficient",
+  "gate": "pdf_retrieval_v4_gate_09",
+  "metrics": {
+    "calculation": {
+      "ready": "11/11"
+    },
+    "cross_document_binding": 0,
+    "false_slot_binding": 0,
+    "query_plan_multi_slot": {
+      "candidate_pool_complete": "12/18",
+      "pool_to_set_conversion": "6/12",
+      "primary_set_complete": "6/18"
+    },
+    "raw_typed_operand": 0,
+    "status_counts": {
+      "complete": 72
+    }
+  },
+  "next_gate": "stop_and_fix_evidence_set_contract",
+  "production_switch_allowed": false
+}

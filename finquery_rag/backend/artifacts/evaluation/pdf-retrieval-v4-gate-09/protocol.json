@@ -1,0 +1,23 @@
+{
+  "bm25_searches": 0,
+  "calculator_calls": 0,
+  "candidate_bridge_runs": 0,
+  "candidate_pool_mutation": false,
+  "candidate_pool_source": "gate08_r7_sealed_final_pool",
+  "dense_searches": 0,
+  "embedding_calls": 0,
+  "gate": "pdf_retrieval_v4_gate_09",
+  "generator_calls": 0,
+  "gold_reads_before_seal": 0,
+  "governance_reads_before_seal": 0,
+  "index_builds": 0,
+  "index_reads": 0,
+  "parameter_scan": false,
+  "production_switch_allowed": false,
+  "production_writes": 0,
+  "query_plan_mutations": 0,
+  "query_rebuilds": 0,
+  "reranker_calls": 0,
+  "schema": "deterministic-evidence-set-v1",
+  "semantic_graph_runs": 0
+}
