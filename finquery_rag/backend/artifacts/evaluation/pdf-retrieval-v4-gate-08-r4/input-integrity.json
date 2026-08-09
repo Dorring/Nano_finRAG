@@ -1,12 +1,23 @@
 {
-  "blocker": "sealed_r3_missing_slot_local_family_rankings",
+  "blocker": null,
   "combined_pool_preserves_slot_trace": false,
   "combined_pool_serialization_contract": "candidate_key/source/rank only; slot_id, slot_rank, supporting_slots are discarded by R3 _build_combined_pool",
+  "composite_input": {
+    "composite_manifest_sha256": "a968a6f7d5e9e733d18a70cda5ab6a611d21368979437724dc8f4fece9b48948",
+    "coverage_verified": true,
+    "hashes_verified": true,
+    "parity_verified": true,
+    "present": true,
+    "sealed": true,
+    "sidecar_prediction_sha256": "828c9b94d884a1b57fdb55ab3107cdef821e4b7c08316776845b36d17e9c1472",
+    "sidecar_records_verified": true,
+    "sidecar_seal_sha256": "c9a002631170258f5b9bafdeacce36e79f931dcf836c28b380abb2bf9166a81c"
+  },
   "f1_single_slot_replayable": true,
-  "f2_full_lane_preserving_replayable": false,
+  "f2_full_lane_preserving_replayable": true,
   "family_rank_fields_missing": [],
   "family_rank_fields_missing_count": 0,
-  "formal_prediction_seal_allowed": false,
+  "formal_prediction_seal_allowed": true,
   "multi_slot_case_count": 18,
   "multi_slot_missing_slot_definitions": [
     "aapl_fy2025_006",

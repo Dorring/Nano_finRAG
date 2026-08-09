@@ -1,6 +1,7 @@
 {
   "bm25_searches": 0,
   "calculator_calls": 0,
+  "composite_input_sha256": "a968a6f7d5e9e733d18a70cda5ab6a611d21368979437724dc8f4fece9b48948",
   "dense_searches": 0,
   "embedding_calls": 0,
   "final_pool_k": 40,
@@ -13,11 +14,15 @@
   "index_reads": 0,
   "multi_slot_structured_opportunity_k": 1,
   "parameter_scan": false,
+  "prediction_count": 72,
+  "prediction_sha256": "948d36968464b51319ed1c78d619a602cfcbaa8db0e4fde19cdf0f6296445bb0",
   "production_index_writes": 0,
   "production_switch_allowed": false,
   "quota_scan": false,
+  "raw_e0_prefix_exact_cases": 72,
   "reranker_calls": 0,
   "rrf_k": 60,
+  "sealed": true,
   "slot_top_k": 20,
   "structured_protected_k": 20
 }

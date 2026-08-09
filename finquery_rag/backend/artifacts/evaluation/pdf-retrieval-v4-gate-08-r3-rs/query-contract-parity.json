@@ -1,0 +1,26 @@
+{
+  "all_source_hashes_exact": true,
+  "files": [
+    {
+      "current_sha256": "b050826e91cb5e0cbb4a4e64fe44d0554012976f87eed57e77721c8906dbfc2d",
+      "exact": true,
+      "path": "src/pdf_retrieval_v4/candidate_query_builder.py",
+      "r3_commit_sha256": "b050826e91cb5e0cbb4a4e64fe44d0554012976f87eed57e77721c8906dbfc2d"
+    },
+    {
+      "current_sha256": "fd7e13db3d38eff2e93b079f9d4525a0daf2aed6bbb4846fe031c6fee0a9137b",
+      "exact": true,
+      "path": "src/pdf_retrieval_v4/candidate_rrf.py",
+      "r3_commit_sha256": "fd7e13db3d38eff2e93b079f9d4525a0daf2aed6bbb4846fe031c6fee0a9137b"
+    },
+    {
+      "current_sha256": "3f5e1d029918afa191835a636eff33b14254530324dc9ef2049a1aecdc05db7d",
+      "exact": true,
+      "path": "src/pdf_retrieval_v4/candidate_slot_pool.py",
+      "r3_commit_sha256": "3f5e1d029918afa191835a636eff33b14254530324dc9ef2049a1aecdc05db7d"
+    }
+  ],
+  "git_diff": "",
+  "r3_commit": "f9e9cdb",
+  "semantic_diff_empty": true
+}

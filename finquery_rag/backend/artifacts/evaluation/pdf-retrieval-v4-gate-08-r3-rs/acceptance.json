@@ -1,0 +1,33 @@
+{
+  "decision": "slot_local_family_rankings_resealed",
+  "gate": "pdf_retrieval_v4_gate_08_r3_rs",
+  "gate_passed": true,
+  "gold_reads": 0,
+  "governance_reads": 0,
+  "next_gate": "lane_preserving_fusion",
+  "original_r3_prediction_immutable": true,
+  "parameter_scan": false,
+  "production_switch_allowed": false,
+  "quota_scan": false,
+  "raw_family_rankings_present": "18/18",
+  "search_accounting": {
+    "index_builds": 0,
+    "index_reads": 144,
+    "logical_query_embedding_requests": 72,
+    "multi_slot_cases": 18,
+    "raw_bm25_searches": 36,
+    "raw_dense_searches": 36,
+    "structured_bm25_searches": 36,
+    "structured_dense_searches": 36,
+    "total_lane_searches": 144,
+    "total_slots": 36,
+    "unique_query_embeddings_with_reader_cache": 33
+  },
+  "slot_definitions_persisted": "18/18",
+  "slot_replay_parity": {
+    "e1": "18/18",
+    "e2_expanded": "18/18",
+    "e3_expanded": "18/18"
+  },
+  "structured_family_rankings_present": "18/18"
+}

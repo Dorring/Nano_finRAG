@@ -1,0 +1,22 @@
+{
+  "coverage": {
+    "multi_slot_cases": 18,
+    "single_slot_cases": 54,
+    "total_cases": 72
+  },
+  "original_r3": {
+    "prediction_sha256": "c5b78e83d6b0726a260436db2fb9ed55b0f1bcc75a294deca92264ad4452ee1c",
+    "seal_sha256": "c731b2f90c1a0c3d3bbf2a6ac025fac4f9ac9ccb548faf847cd52bb1adecaf22"
+  },
+  "schema": "pdf-retrieval-v4/gate-08-r4/composite-input/v1",
+  "sealed": true,
+  "slot_local_sidecar": {
+    "prediction_sha256": "828c9b94d884a1b57fdb55ab3107cdef821e4b7c08316776845b36d17e9c1472",
+    "seal_sha256": "c9a002631170258f5b9bafdeacce36e79f931dcf836c28b380abb2bf9166a81c"
+  },
+  "slot_replay_parity": {
+    "e1": "18/18",
+    "e2_expanded": "18/18",
+    "e3_expanded": "18/18"
+  }
+}

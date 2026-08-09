@@ -17,6 +17,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
 R3_DIR = ROOT / "artifacts/evaluation/pdf-retrieval-v4-gate-08-r3"
+R3_RS_DIR = ROOT / "artifacts/evaluation/pdf-retrieval-v4-gate-08-r3-rs"
 R4_DIR = ROOT / "artifacts/evaluation/pdf-retrieval-v4-gate-08-r4"
 
 RRF_K = 60
@@ -124,6 +125,79 @@ def audit_r3_inputs(
     }
 
 
+def validate_composite_input(
+    composite_path: Path,
+    *,
+    original_prediction_path: Path,
+    original_seal_path: Path,
+) -> dict[str, Any]:
+    """Validate the sealed R3 + R3-RS composite without reading indexes."""
+    if not composite_path.is_file():
+        return {
+            "present": False,
+            "sealed": False,
+            "hashes_verified": False,
+            "coverage_verified": False,
+            "parity_verified": False,
+            "sidecar_records_verified": False,
+        }
+
+    composite = _load_json(composite_path)
+    sidecar_path = composite_path.parent / "slot-local-rankings.jsonl.gz"
+    sidecar_seal_path = composite_path.parent / "prediction-seal.json"
+    if not sidecar_path.is_file() or not sidecar_seal_path.is_file():
+        return {
+            "present": True,
+            "sealed": False,
+            "hashes_verified": False,
+            "coverage_verified": False,
+            "parity_verified": False,
+            "sidecar_records_verified": False,
+        }
+    sidecar_seal = _load_json(sidecar_seal_path)
+    original = composite.get("original_r3") or {}
+    sidecar = composite.get("slot_local_sidecar") or {}
+    coverage = composite.get("coverage") or {}
+    parity = composite.get("slot_replay_parity") or {}
+    hashes_verified = (
+        original.get("prediction_sha256") == _sha256(original_prediction_path)
+        and original.get("seal_sha256") == _sha256(original_seal_path)
+        and sidecar.get("prediction_sha256") == _sha256(sidecar_path)
+        and sidecar.get("seal_sha256") == _sha256(sidecar_seal_path)
+        and sidecar_seal.get("slot_sidecar_sha256") == _sha256(sidecar_path)
+    )
+    coverage_verified = coverage == {
+        "single_slot_cases": 54,
+        "multi_slot_cases": 18,
+        "total_cases": 72,
+    }
+    parity_verified = parity == {
+        "e1": "18/18",
+        "e2_expanded": "18/18",
+        "e3_expanded": "18/18",
+    }
+    records_verified = sidecar_seal.get("slot_sidecar_records") == 18
+    sealed = (
+        composite.get("sealed") is True
+        and sidecar_seal.get("sealed") is True
+        and hashes_verified
+        and coverage_verified
+        and parity_verified
+        and records_verified
+    )
+    return {
+        "present": True,
+        "sealed": sealed,
+        "hashes_verified": hashes_verified,
+        "coverage_verified": coverage_verified,
+        "parity_verified": parity_verified,
+        "sidecar_records_verified": records_verified,
+        "composite_manifest_sha256": _sha256(composite_path),
+        "sidecar_prediction_sha256": _sha256(sidecar_path),
+        "sidecar_seal_sha256": _sha256(sidecar_seal_path),
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -136,6 +210,11 @@ def main() -> int:
         type=Path,
         default=R3_DIR / "prediction-seal.json",
     )
+    parser.add_argument(
+        "--composite",
+        type=Path,
+        default=R3_RS_DIR / "r4-composite-input-manifest.json",
+    )
     parser.add_argument("--out-dir", type=Path, default=R4_DIR)
     args = parser.parse_args()
 
@@ -146,13 +225,23 @@ def main() -> int:
         prediction_path=args.predictions,
         seal=seal,
     )
+    composite_integrity = validate_composite_input(
+        args.composite,
+        original_prediction_path=args.predictions,
+        original_seal_path=args.seal,
+    )
+    integrity["composite_input"] = composite_integrity
+    if composite_integrity["sealed"]:
+        integrity["f2_full_lane_preserving_replayable"] = True
+        integrity["formal_prediction_seal_allowed"] = True
+        integrity["blocker"] = None
 
     protocol = {
         "schema": "pdf-retrieval-v4/gate-08-r4/preflight/v1",
         "gate": "pdf_retrieval_v4_gate_08_r4",
         "phase": "lane_preserving_fusion_input_preflight",
         "evaluation_type": "post_benchmark_iterative_evaluation",
-        "frozen_inputs": ["gate_08_r3_sealed_predictions"],
+        "frozen_inputs": ["gate_08_r3_r4_composite_seal"],
         "required_r3_fields": [
             "candidate_raw.fused",
             "structured_expanded.fused",
@@ -196,7 +285,7 @@ def main() -> int:
         "gate": "pdf_retrieval_v4_gate_08_r4",
         "decision": decision,
         "next_gate": next_gate,
-        "gate_passed": False,
+        "gate_passed": not blocked,
         "prediction_generated": False,
         "prediction_sealed": False,
         "frozen_metrics": {
@@ -215,6 +304,7 @@ def main() -> int:
             "full_f2_replayable": integrity[
                 "f2_full_lane_preserving_replayable"
             ],
+            "composite_seal_verified": composite_integrity["sealed"],
             "multi_slot_case_count": integrity["multi_slot_case_count"],
             "missing_slot_family_rankings": integrity[
                 "multi_slot_missing_slot_family_rankings_count"
@@ -239,7 +329,9 @@ def main() -> int:
                 "quota_scan",
             )
         },
-        "blocking_rationale": (
+        "blocking_rationale": None
+        if not blocked
+        else (
             "F2 requires slot-local Raw/Structured family rankings before the "
             "unchanged build_slot_pool round-robin. R3 sealed predictions contain "
             "neither slot definitions nor slot-local family rankings for all "
@@ -267,10 +359,10 @@ def main() -> int:
         "production_switch_allowed": False,
     }
 
-    _write_json(args.out_dir / "protocol.json", protocol)
+    _write_json(args.out_dir / "input-protocol.json", protocol)
     _write_json(args.out_dir / "input-integrity.json", integrity)
-    _write_json(args.out_dir / "acceptance.json", acceptance)
-    _write_json(args.out_dir / "next-gate.json", next_gate_payload)
+    _write_json(args.out_dir / "input-acceptance.json", acceptance)
+    _write_json(args.out_dir / "input-next-gate.json", next_gate_payload)
 
     print(f"decision={decision}")
     print(f"multi_slot_cases={integrity['multi_slot_case_count']}")

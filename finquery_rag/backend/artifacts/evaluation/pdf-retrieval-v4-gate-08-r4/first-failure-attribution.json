@@ -1,0 +1,12 @@
+{
+  "lane_preserving_fusion_budget_loss": 7,
+  "recovered": 1,
+  "recovered_by_r3_1_category": {
+    "duplicate_candidate_budget_waste": 1
+  },
+  "remaining_by_r3_1_category": {
+    "multi_slot_family_budget_loss": 4,
+    "raw_rank_preserved_but_structured_competition": 1,
+    "structured_rank_preserved_but_raw_competition": 2
+  }
+}

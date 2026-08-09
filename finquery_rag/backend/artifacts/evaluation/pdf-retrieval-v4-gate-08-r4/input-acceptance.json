@@ -1,0 +1,43 @@
+{
+  "blocking_rationale": null,
+  "decision": "lane_preserving_fusion_input_contract_passed",
+  "frozen_metrics": {
+    "e0": "42/80",
+    "e1_candidate_raw": "47/80",
+    "e2_expanded": "57/80",
+    "e3_early_fusion": "52/80",
+    "family_union": "58/80",
+    "fusion_synergy_gain": 2,
+    "gross_fusion_loss": 8,
+    "net_union_gap": 6
+  },
+  "gate": "pdf_retrieval_v4_gate_08_r4",
+  "gate_passed": true,
+  "input_integrity": {
+    "composite_seal_verified": true,
+    "full_f2_replayable": true,
+    "missing_slot_family_rankings": 18,
+    "multi_slot_case_count": 18,
+    "r3_seal_verified": true,
+    "single_slot_f1_replayable": true
+  },
+  "next_gate": "run_lane_preserving_fusion_prediction",
+  "prediction_generated": false,
+  "prediction_sealed": false,
+  "safety": {
+    "bm25_searches": 0,
+    "calculator_calls": 0,
+    "dense_searches": 0,
+    "embedding_calls": 0,
+    "generator_calls": 0,
+    "gold_reads": 0,
+    "governance_reads": 0,
+    "index_builds": 0,
+    "index_reads": 0,
+    "parameter_scan": false,
+    "production_index_writes": 0,
+    "production_switch_allowed": false,
+    "quota_scan": false,
+    "reranker_calls": 0
+  }
+}

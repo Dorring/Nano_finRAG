@@ -1,0 +1,46 @@
+{
+  "allowed_inputs": [
+    "gate07_query_plans",
+    "original_r3_sealed_prediction",
+    "gate06_r4_expanded_candidate_index"
+  ],
+  "bridge_mutations": 0,
+  "calculator_calls": 0,
+  "evaluation_type": "trace_replay_not_recall_experiment",
+  "forbidden_inputs": [
+    "gold",
+    "governance",
+    "labels",
+    "expected_value",
+    "reference_answer"
+  ],
+  "gate": "pdf_retrieval_v4_gate_08_r3_rs",
+  "generator_calls": 0,
+  "index_builds": 0,
+  "index_mutations": 0,
+  "parameter_scan": false,
+  "phase": "slot_local_family_ranking_reseal",
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "quota_scan": false,
+  "replay_scope": "18_multi_slot_cases_only",
+  "reranker_calls": 0,
+  "retrieval_config": {
+    "bm25_weight": 1.0,
+    "dense_weight": 1.0,
+    "embedding_model": "all-MiniLM-L6-v2",
+    "final_pool_k": 40,
+    "lane_k": 50,
+    "lanes": [
+      "candidate_raw_bm25",
+      "candidate_raw_dense",
+      "candidate_structured_bm25",
+      "candidate_structured_dense"
+    ],
+    "rrf_k": 60,
+    "slot_min_budget": 10,
+    "slot_top_k": 20,
+    "slot_total_k": 40
+  },
+  "schema": "pdf-retrieval-v4/gate-08-r3-rs/protocol/v1"
+}

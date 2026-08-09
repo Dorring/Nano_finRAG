@@ -1,0 +1,26 @@
+{
+  "added": [
+    [
+      "aapl_fy2025_005",
+      0,
+      "candidate:v1:d8d06e11d524ce4ec4c95ca728ef61ba568965f41b623d7033faf672eea17989"
+    ],
+    [
+      "ko_fy2025_006",
+      0,
+      "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195"
+    ],
+    [
+      "ko_fy2025_006",
+      1,
+      "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195"
+    ]
+  ],
+  "regressed": [
+    [
+      "nvda_fy2025_005",
+      0,
+      "candidate:v1:84ecbba7da14d18cf2bb3b171d9bff27fa45ad1c75d4ae77545b1b0046f0b92e"
+    ]
+  ]
+}

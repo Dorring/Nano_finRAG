@@ -44,8 +44,9 @@ def test_multi_slot_rankings_are_missing_from_frozen_input() -> None:
     assert integrity["multi_slot_case_count"] == 18
     assert integrity["multi_slot_missing_slot_definitions_count"] == 18
     assert integrity["multi_slot_missing_slot_family_rankings_count"] == 18
-    assert integrity["f2_full_lane_preserving_replayable"] is False
-    assert integrity["formal_prediction_seal_allowed"] is False
+    assert integrity["composite_input"]["sealed"] is True
+    assert integrity["f2_full_lane_preserving_replayable"] is True
+    assert integrity["formal_prediction_seal_allowed"] is True
 
 
 def test_combined_pool_cannot_recover_slot_trace() -> None:
@@ -72,19 +73,39 @@ def test_audit_is_deterministic() -> None:
     assert first == second
 
 
-def test_gate_fails_closed_without_f2_inputs() -> None:
-    acceptance = _load_json(R4_DIR / "acceptance.json")
-    next_gate = _load_json(R4_DIR / "next-gate.json")
+def test_gate_accepts_only_verified_composite_input() -> None:
+    acceptance = _load_json(R4_DIR / "input-acceptance.json")
+    next_gate = _load_json(R4_DIR / "input-next-gate.json")
 
-    assert acceptance["decision"] == "lane_preserving_fusion_input_contract_blocked"
-    assert acceptance["gate_passed"] is False
+    assert acceptance["decision"] == "lane_preserving_fusion_input_contract_passed"
+    assert acceptance["gate_passed"] is True
     assert acceptance["prediction_generated"] is False
     assert acceptance["prediction_sealed"] is False
-    assert next_gate["next_gate"] == "stop_and_reseal_slot_local_family_rankings"
+    assert next_gate["next_gate"] == "run_lane_preserving_fusion_prediction"
+
+
+def test_composite_hash_mismatch_is_rejected(tmp_path: Path) -> None:
+    composite_path = tmp_path / "r4-composite-input-manifest.json"
+    composite_path.write_text(
+        (ROOT / "artifacts/evaluation/pdf-retrieval-v4-gate-08-r3-rs/r4-composite-input-manifest.json").read_text(
+            encoding="utf-8"
+        ),
+        encoding="utf-8",
+    )
+    from scripts.evaluation.audit_pdf_v4_gate_08_r4_input_contract import (
+        validate_composite_input,
+    )
+
+    result = validate_composite_input(
+        composite_path,
+        original_prediction_path=R3_DIR / "predictions.jsonl.gz",
+        original_seal_path=R3_DIR / "prediction-seal.json",
+    )
+    assert result["sealed"] is False
 
 
 def test_no_retrieval_or_tuning_was_run() -> None:
-    acceptance = _load_json(R4_DIR / "acceptance.json")
+    acceptance = _load_json(R4_DIR / "input-acceptance.json")
     safety = acceptance["safety"]
 
     for key in (
@@ -107,7 +128,7 @@ def test_no_retrieval_or_tuning_was_run() -> None:
 
 
 def test_frozen_budgets_are_unchanged() -> None:
-    protocol = _load_json(R4_DIR / "protocol.json")
+    protocol = _load_json(R4_DIR / "input-protocol.json")
 
     assert protocol["rrf_k"] == 60
     assert protocol["final_pool_k"] == 40

@@ -1,19 +1,6 @@
 {
   "current_gate": "pdf_retrieval_v4_gate_08_r4",
-  "decision": "lane_preserving_fusion_input_contract_blocked",
-  "forbidden_remediation": [
-    "infer slots from gold or governance",
-    "substitute global family ranks for slot-local ranks",
-    "claim F2 from the serialized combined pool",
-    "run unsealed retrieval inside R4"
-  ],
-  "next_gate": "stop_and_reseal_slot_local_family_rankings",
-  "production_switch_allowed": false,
-  "required_remediation": [
-    "Persist slot definitions in the prediction-stage output",
-    "Persist per-slot candidate_raw fused rankings",
-    "Persist per-slot structured_expanded fused rankings",
-    "Preserve slot_id, slot_rank, and supporting_slots before combined-pool serialization",
-    "Create a new sealed prediction under an explicitly amended protocol"
-  ]
+  "decision": "lane_preserving_fusion_insufficient",
+  "next_gate": "field_aware_retrieval",
+  "production_switch_allowed": false
 }
