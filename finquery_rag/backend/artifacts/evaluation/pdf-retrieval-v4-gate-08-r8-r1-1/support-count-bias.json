@@ -1,0 +1,66 @@
+{
+  "lost_gold_with_better_best_rank_than_boundary": 4,
+  "records": [
+    {
+      "boundary_best_family_rank": 23,
+      "boundary_candidate_key": "candidate:v1:3b4fc736e4daf04a2d0d4313528f610be5058581723193e1228a3fd4f660caf3",
+      "boundary_support_count": 2,
+      "candidate_key": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+      "case_id": "ko_fy2025_007",
+      "gold_best_family_rank": 7,
+      "gold_support_count": 1,
+      "lost_gold_with_better_best_rank_than_boundary": true
+    },
+    {
+      "boundary_best_family_rank": 49,
+      "boundary_candidate_key": "candidate:v1:5099d3ddb24bf5d8143a8e5a3587e8129f844dc3340995623f814ecf5745942e",
+      "boundary_support_count": 2,
+      "candidate_key": "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e",
+      "case_id": "pfe_fy2024_005",
+      "gold_best_family_rank": 27,
+      "gold_support_count": 1,
+      "lost_gold_with_better_best_rank_than_boundary": true
+    },
+    {
+      "boundary_best_family_rank": 66,
+      "boundary_candidate_key": "candidate:v1:88bb93017555799bbe3a0fdc4dfe3bad9396f2cf9f227f29af34481296aeb5c1",
+      "boundary_support_count": 2,
+      "candidate_key": "candidate:v1:7fcc2dc3de8832dfab1fe0b8a08e25a303a996470fa598765b1e08144018e9f7",
+      "case_id": "tsla_fy2025_003",
+      "gold_best_family_rank": 39,
+      "gold_support_count": 1,
+      "lost_gold_with_better_best_rank_than_boundary": true
+    },
+    {
+      "boundary_best_family_rank": 10,
+      "boundary_candidate_key": "candidate:v1:0959870d243d70123126047782883d4c19452eb694cbee2c919f858093988d92",
+      "boundary_support_count": 1,
+      "candidate_key": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+      "case_id": "tsla_fy2025_005",
+      "gold_best_family_rank": 70,
+      "gold_support_count": 1,
+      "lost_gold_with_better_best_rank_than_boundary": false
+    },
+    {
+      "boundary_best_family_rank": 111,
+      "boundary_candidate_key": "candidate:v1:f49fd8da023c8ef942cc6286a3abbd7578023a10e39842376004e2f813c3ce23",
+      "boundary_support_count": 2,
+      "candidate_key": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+      "case_id": "tsla_fy2025_007",
+      "gold_best_family_rank": 49,
+      "gold_support_count": 2,
+      "lost_gold_with_better_best_rank_than_boundary": true
+    },
+    {
+      "boundary_best_family_rank": 16,
+      "boundary_candidate_key": "candidate:v1:aa401d967930420c381dff04b9dc352785256f6ae1bfe821b1c11f793c861dce",
+      "boundary_support_count": 1,
+      "candidate_key": "candidate:v1:fd7d3044411973c1af57bf015ca3fd14efb235afbe07f01c8ff1d8d9259536db",
+      "case_id": "v_fy2025_002",
+      "gold_best_family_rank": 17,
+      "gold_support_count": 1,
+      "lost_gold_with_better_best_rank_than_boundary": false
+    }
+  ],
+  "support_count_bias_confirmed": true
+}

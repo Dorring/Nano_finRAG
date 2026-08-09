@@ -1,0 +1,101 @@
+{
+  "gate1_governance": {
+    "bounded_top50": "50/80",
+    "gross_loss": 6,
+    "identity_count": 73,
+    "net_gap": 5,
+    "selector_synergy": 1,
+    "unbounded_presence": "55/80"
+  },
+  "identity_contract_consistent": false,
+  "identity_disagreement_count": 13,
+  "identity_disagreements": [
+    {
+      "case_id": "aapl_fy2025_006",
+      "governance_candidate_key": null,
+      "labels_candidate_key": "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563",
+      "source_index": 1
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "governance_candidate_key": null,
+      "labels_candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+      "source_index": 1
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "governance_candidate_key": null,
+      "labels_candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "source_index": 1
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "governance_candidate_key": null,
+      "labels_candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "source_index": 1
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "governance_candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "labels_candidate_key": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
+      "source_index": 0
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "governance_candidate_key": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
+      "labels_candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "source_index": 1
+    },
+    {
+      "case_id": "nvda_fy2025_006",
+      "governance_candidate_key": null,
+      "labels_candidate_key": "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024",
+      "source_index": 1
+    },
+    {
+      "case_id": "nvda_fy2025_007",
+      "governance_candidate_key": "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf",
+      "labels_candidate_key": "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d",
+      "source_index": 0
+    },
+    {
+      "case_id": "nvda_fy2025_007",
+      "governance_candidate_key": "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d",
+      "labels_candidate_key": "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf",
+      "source_index": 1
+    },
+    {
+      "case_id": "pfe_fy2024_006",
+      "governance_candidate_key": null,
+      "labels_candidate_key": "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827",
+      "source_index": 1
+    },
+    {
+      "case_id": "tsla_fy2025_006",
+      "governance_candidate_key": null,
+      "labels_candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+      "source_index": 1
+    },
+    {
+      "case_id": "v_fy2025_007",
+      "governance_candidate_key": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+      "labels_candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+      "source_index": 0
+    },
+    {
+      "case_id": "v_fy2025_007",
+      "governance_candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+      "labels_candidate_key": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+      "source_index": 1
+    }
+  ],
+  "labels_golden": {
+    "bounded_top50": "55/80",
+    "gross_loss": 6,
+    "identity_count": 80,
+    "net_gap": 5,
+    "selector_synergy": 1,
+    "unbounded_presence": "60/80"
+  },
+  "reason": "60/80 and 50/80 were scored from different strict identity catalogs"
+}

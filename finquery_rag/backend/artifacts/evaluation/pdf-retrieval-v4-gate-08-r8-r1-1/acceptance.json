@@ -1,0 +1,14 @@
+{
+  "decision": "boundary_loss_identity_contract_blocked",
+  "fusion_reruns": 0,
+  "gate": "pdf_retrieval_v4_gate_08_r8_r1_1",
+  "gold_reads_before_original_seal": 0,
+  "identity_contract_consistent": false,
+  "losses_classified": "6/6_within_labels_identity_contract",
+  "next_gate": "stop_and_fix_strict_gold_identity_contract",
+  "original_r8_r1_prediction_sha256": "10b67adaceaf777a854df4b0cdebeaaad6e306c3ffb78e6e90562134fd1d728c",
+  "prediction_reruns": 0,
+  "production_switch_allowed": false,
+  "requested_ten_loss_audit_completed": false,
+  "retrieval_runs": 0
+}
