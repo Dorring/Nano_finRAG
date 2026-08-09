@@ -1,0 +1,29 @@
+{
+  "batch_size": 1,
+  "cuda_version": "12.8",
+  "device": "cuda:0",
+  "device_name": "NVIDIA RTX A6000",
+  "dtype": "bfloat16",
+  "file_sha256": {
+    "config.json": "38bff5eac700032a185745e4076eccad7aa453473cafc2a27de412cdb7b79e19",
+    "model-00001-of-00002.safetensors": "cf2e87cbf71fa628961532232e04dd6c19702a0a057f5e2aff95ea1aca4fd488",
+    "model-00002-of-00002.safetensors": "78946d22b7f6456ea7a5358dbdf3982de36c5bac1f166a5fd58e18e31db8048a",
+    "tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+    "tokenizer_config.json": "253153d0738ceb4c668d2eff957714dd2bea0b56de772a9fdccd96cbf517e6a0"
+  },
+  "generation": false,
+  "instruction_sha256": "10eb2881eb41a3c21c9d57fc5afbb6520f385adc78eb43785f2df1e86fbc4328",
+  "max_length": 8192,
+  "model_id": "Qwen/Qwen3-Reranker-4B",
+  "model_revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+  "padding_side": "left",
+  "pair_count": 7200,
+  "prediction_count": 72,
+  "prediction_sha256": "7e058da966f554c8e898cecfd5401ce735e995daec1852f7750fa8d8e9e88da6",
+  "python_version": "3.12.2",
+  "r3_1a_views_sha256": "82ea6c75dae8607e7bda462c39745abcff9ac991611c271c70e34fa318fc6dc1",
+  "tokenizer_revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+  "top100_sha256": "ced014c357a3c8862a5ae3723a4c618556156542fd63aa2a8fd4bf766b60f01a",
+  "torch_version": "2.9.1+cu128",
+  "transformers_version": "4.57.3"
+}
