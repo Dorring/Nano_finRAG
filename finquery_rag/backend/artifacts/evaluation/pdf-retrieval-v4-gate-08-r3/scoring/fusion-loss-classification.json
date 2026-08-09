@@ -1,0 +1,108 @@
+{
+  "categories": [
+    "cross_family_rrf_displacement",
+    "structured_rank_preserved_but_raw_competition",
+    "raw_rank_preserved_but_structured_competition",
+    "multi_slot_family_budget_loss",
+    "duplicate_candidate_budget_waste",
+    "candidate_family_score_tie"
+  ],
+  "classification_counts": {
+    "duplicate_candidate_budget_waste": 1,
+    "multi_slot_family_budget_loss": 4,
+    "raw_rank_preserved_but_structured_competition": 1,
+    "structured_rank_preserved_but_raw_competition": 2
+  },
+  "classification_details": [
+    {
+      "candidate_key": "candidate:v1:d8d06e11d524ce4ec4c95ca728ef61ba568965f41b623d7033faf672eea17989",
+      "case_id": "aapl_fy2025_005",
+      "cross_family_rrf_rank": 42,
+      "fusion_loss_category": "duplicate_candidate_budget_waste",
+      "in_e1": true,
+      "in_e2_expanded": true,
+      "raw_candidate_rank": 39,
+      "source_index": 0,
+      "structured_expanded_rank": 36
+    },
+    {
+      "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+      "case_id": "jpm_fy2025_006",
+      "cross_family_rrf_rank": 130,
+      "fusion_loss_category": "multi_slot_family_budget_loss",
+      "in_e1": false,
+      "in_e2_expanded": true,
+      "raw_candidate_rank": null,
+      "source_index": 0,
+      "structured_expanded_rank": 71
+    },
+    {
+      "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+      "case_id": "jpm_fy2025_006",
+      "cross_family_rrf_rank": 130,
+      "fusion_loss_category": "multi_slot_family_budget_loss",
+      "in_e1": false,
+      "in_e2_expanded": true,
+      "raw_candidate_rank": null,
+      "source_index": 1,
+      "structured_expanded_rank": 71
+    },
+    {
+      "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "case_id": "ko_fy2025_001",
+      "cross_family_rrf_rank": 58,
+      "fusion_loss_category": "structured_rank_preserved_but_raw_competition",
+      "in_e1": false,
+      "in_e2_expanded": true,
+      "raw_candidate_rank": null,
+      "source_index": 0,
+      "structured_expanded_rank": 21
+    },
+    {
+      "candidate_key": "candidate:v1:2615a8131b1b84e1f788cfb9c9292fa6b20c9688723ff3bc555f21d4590d95d8",
+      "case_id": "ko_fy2025_009",
+      "cross_family_rrf_rank": 50,
+      "fusion_loss_category": "raw_rank_preserved_but_structured_competition",
+      "in_e1": true,
+      "in_e2_expanded": false,
+      "raw_candidate_rank": 25,
+      "source_index": 0,
+      "structured_expanded_rank": null
+    },
+    {
+      "candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+      "case_id": "tsla_fy2025_006",
+      "cross_family_rrf_rank": 4,
+      "fusion_loss_category": "multi_slot_family_budget_loss",
+      "in_e1": false,
+      "in_e2_expanded": true,
+      "raw_candidate_rank": 53,
+      "source_index": 0,
+      "structured_expanded_rank": 1
+    },
+    {
+      "candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+      "case_id": "tsla_fy2025_006",
+      "cross_family_rrf_rank": 4,
+      "fusion_loss_category": "multi_slot_family_budget_loss",
+      "in_e1": false,
+      "in_e2_expanded": true,
+      "raw_candidate_rank": 53,
+      "source_index": 1,
+      "structured_expanded_rank": 1
+    },
+    {
+      "candidate_key": "candidate:v1:fd7d3044411973c1af57bf015ca3fd14efb235afbe07f01c8ff1d8d9259536db",
+      "case_id": "v_fy2025_002",
+      "cross_family_rrf_rank": 46,
+      "fusion_loss_category": "structured_rank_preserved_but_raw_competition",
+      "in_e1": false,
+      "in_e2_expanded": true,
+      "raw_candidate_rank": null,
+      "source_index": 0,
+      "structured_expanded_rank": 24
+    }
+  ],
+  "mutually_exclusive": true,
+  "total_fusion_losses": 8
+}

@@ -1,0 +1,17 @@
+{
+  "current_gate": "pdf_retrieval_v4_gate_08_r3_1",
+  "decision": "fusion_attribution_closure_recommends_r4",
+  "e3_expanded_gold": 52,
+  "family_union_gold": 58,
+  "fusion_budget_loss": 8,
+  "next_gate": "candidate_family_fusion_closure",
+  "rationale": "Fusion Budget Loss = 8 (>= 3). Worth doing Lane-Preserving Candidate Family Fusion (R4) before modifying Retriever.",
+  "recommended_actions": [
+    "Implement Lane-Preserving Candidate Family Fusion (R4)",
+    "Use Structured-Protected Late Fusion with slot_top_k=20 protection",
+    "Maintain total candidate residual budget = 40",
+    "No BM25/Dense search changes, no embedding changes",
+    "Address structured_rank_preserved_but_raw_competition (2 cases) via structured family protection",
+    "Address duplicate_candidate_budget_waste (1 cases) via cross-family dedup"
+  ]
+}

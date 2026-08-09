@@ -1,0 +1,31 @@
+{
+  "corrected_raw_parity": {
+    "bm25_source_recall_200": "37/80",
+    "dense_source_recall_200": "14/80",
+    "raw_full_pool": "31/80",
+    "rrf_recall_40": "20/80"
+  },
+  "decision": "fusion_attribution_closure_recommends_r4",
+  "diagnostic_only": true,
+  "e3_expanded_gold": 52,
+  "family_union_gold": 58,
+  "fixes_applied": {
+    "fix_1_rank_regression_renamed": true,
+    "fix_2_post_filter_renamed": true,
+    "fix_3_raw_bm25_parity_corrected": true
+  },
+  "frozen_decision": "coverage_expansion_small_gain",
+  "frozen_e3_expanded_score": "52/80",
+  "fusion_budget_loss": 8,
+  "fusion_loss_classification": {
+    "duplicate_candidate_budget_waste": 1,
+    "multi_slot_family_budget_loss": 4,
+    "raw_rank_preserved_but_structured_competition": 1,
+    "structured_rank_preserved_but_raw_competition": 2
+  },
+  "gate": "pdf_retrieval_v4_gate_08_r3_1",
+  "next_gate": "candidate_family_fusion_closure",
+  "phase": "fusion_attribution_closure",
+  "raw_recovered_but_e3_lost": 2,
+  "structured_recovered_but_e3_lost": 7
+}

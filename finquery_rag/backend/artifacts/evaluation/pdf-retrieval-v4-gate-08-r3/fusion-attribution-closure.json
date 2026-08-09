@@ -1,0 +1,105 @@
+{
+  "bm25_searches": 0,
+  "core_judgment": {
+    "decision": "fusion_attribution_closure_recommends_r4",
+    "fusion_budget_loss": 8,
+    "next_gate": "candidate_family_fusion_closure",
+    "rationale": "Fusion Budget Loss = 8 (>= 3). Worth doing Lane-Preserving Candidate Family Fusion (R4) before modifying Retriever.",
+    "threshold_r4": 3,
+    "threshold_skip": 1
+  },
+  "dense_searches": 0,
+  "diagnostic_only": true,
+  "embedding_calls": 0,
+  "family_union_ceiling": {
+    "both": 46,
+    "e1_only": 1,
+    "e2_expanded_only": 11,
+    "e3_expanded_gold": 52,
+    "family_union_gold": 58,
+    "fusion_budget_loss": 8,
+    "neither": 22,
+    "note": "Diagnostic only. Family Union has no 40-budget limit.",
+    "total_gold": 80
+  },
+  "fix_1_structured_expansion_rank_regression": {
+    "both_absent": 9,
+    "dropped_out": 12,
+    "improved": 0,
+    "metric_name": "structured_expansion_rank_regression",
+    "new_entry": 16,
+    "note": "Measures structured_expansion rank regression, NOT raw_lane_dilution.",
+    "unchanged": 1,
+    "worsened": 17
+  },
+  "fix_2_corrected_failure_attribution": {
+    "failure_stage_counts": {
+      "outside_grade_a_universe": 6,
+      "slot_budget_truncated": 4,
+      "structured_bm25_and_dense_top50_miss": 12,
+      "structured_fused_rank_41_to_50": 1,
+      "structured_top40_lost_after_cross_family_fusion": 5
+    },
+    "in_pool": 52,
+    "in_universe_missed": 22,
+    "missed": 28,
+    "outside_universe": 6,
+    "rename_notes": {
+      "structured_fused_top40_but_post_filter_excluded": "structured_top40_lost_after_cross_family_fusion",
+      "verification": "structured_rank <= 40 AND cross_family_rrf_rank > 40"
+    },
+    "total_gold_sources": 80
+  },
+  "fix_3_corrected_raw_parity": {
+    "bm25_authoritative_baseline": 37,
+    "bm25_recomputed": false,
+    "bm25_source_recall_200": "37/80",
+    "correction_note": "R3 scoring derived BM25@200=31/80 from raw_full_rrf_candidates which cannot represent BM25@200. Authoritative values read from gate08/raw-parity.json#authoritative_metrics.",
+    "dense_source_recall_200": "14/80",
+    "raw_full_pool": "31/80",
+    "rrf_recall_40": "20/80"
+  },
+  "frozen_conclusions": {
+    "combined_conversion": "46/68",
+    "current_full_system_gain": 5,
+    "e0": 42,
+    "e1_raw_candidate": 47,
+    "e2_control": 46,
+    "e2_expanded": 57,
+    "e2_legacy": 46,
+    "e3_expanded": 52,
+    "e3_legacy": 47,
+    "gate_08_r3_commit": "f9e9cdb",
+    "pure_structured_coverage_gain": 11,
+    "representation_gain": 0,
+    "strict_candidate_universe": 68,
+    "structured_lane_conversion": "49/68"
+  },
+  "fusion_loss_classification": {
+    "categories": [
+      "cross_family_rrf_displacement",
+      "structured_rank_preserved_but_raw_competition",
+      "raw_rank_preserved_but_structured_competition",
+      "multi_slot_family_budget_loss",
+      "duplicate_candidate_budget_waste",
+      "candidate_family_score_tie"
+    ],
+    "classification_counts": {
+      "duplicate_candidate_budget_waste": 1,
+      "multi_slot_family_budget_loss": 4,
+      "raw_rank_preserved_but_structured_competition": 1,
+      "structured_rank_preserved_but_raw_competition": 2
+    },
+    "mutually_exclusive": true,
+    "total_fusion_losses": 8
+  },
+  "gate": "pdf_retrieval_v4_gate_08_r3_1",
+  "gold_fusion_loss_matrix": {
+    "raw_recovered_but_e3_lost": 2,
+    "structured_recovered_but_e3_lost": 7,
+    "total_gold_sources": 80
+  },
+  "new_index_builds": 0,
+  "phase": "fusion_attribution_closure",
+  "seal_verified": true
+}
