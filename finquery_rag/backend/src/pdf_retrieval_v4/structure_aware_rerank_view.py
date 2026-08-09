@@ -52,6 +52,12 @@ def build_rerank_query_view(plan: dict[str, Any]) -> str:
     return "\n".join(lines).strip()
 
 
+def build_slot_rerank_query_view(plan: dict[str, Any], slot: dict[str, Any]) -> str:
+    """Build the preregistered slot-local view without executing or scoring it."""
+    slot_plan = {**plan, "operand_slots": [slot]}
+    return build_rerank_query_view(slot_plan)
+
+
 def build_rerank_document_view(
     candidate: dict[str, Any], authoritative_evidence: list[dict[str, Any]]
 ) -> str:

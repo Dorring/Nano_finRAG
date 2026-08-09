@@ -1,0 +1,6 @@
+{
+  "decision": "full_context_cross_encoder_insufficient",
+  "final_retrieval_target_reached": false,
+  "next_gate": "qwen3_reranker_4b_capacity_escalation",
+  "production_switch_allowed": false
+}

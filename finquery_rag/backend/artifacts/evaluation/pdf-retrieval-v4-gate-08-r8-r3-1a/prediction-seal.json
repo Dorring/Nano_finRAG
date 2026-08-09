@@ -1,0 +1,43 @@
+{
+  "bm25_searches": 0,
+  "bridge_runs": 0,
+  "candidate_added": 0,
+  "candidate_metadata_sha256": "e04dc40c5e338753f50583814c8662ec2ab3a1e2aa0187efc8ce48d84090d9fc",
+  "candidate_mutation": 0,
+  "candidate_occurrences": 7200,
+  "candidate_removed": 0,
+  "cases": 72,
+  "context_sha256": "8c7e808ef4d0c4e19b8820a69f4724c8fb3f9340bb93148ceabc9ac54ca8c481",
+  "context_status_counts": {
+    "ambiguous_not_attached": 887,
+    "authoritative_structured": 5251,
+    "unmapped": 1062
+  },
+  "dense_searches": 0,
+  "embedding_calls": 0,
+  "expected_value_reads": 0,
+  "gate": "pdf_retrieval_v4_gate_08_r8_r3_1a",
+  "gate03_input_hashes": {
+    "atomic-facts.jsonl": "04e023a2c8519ba02f985a58b6efffdd2057a3c3b9da85470fc19db85ac3c75c",
+    "bucket-facts.jsonl": "43505a1876c960e25e0372c158ad96fc85f736d48aa89c8ea2b5dbf5c60a7896",
+    "comparison-facts.jsonl": "d1924e14517d5cd3ec3fa2941a9e41958a5395953d7d96df9d5a85ad927894b9",
+    "narrative-evidence.jsonl": "1c74279a9402f6b23e8c35f84a03659a3367d1220aebd202e3a2196ce50c0c5e",
+    "row-matrices.jsonl": "226e5ba78728eff9089a27f7423842e2c7b7dd783b67aad90812ad9def2e0d54"
+  },
+  "gate05_bridge_results_sha256": "042d882d116bb328deb80f9106baa82190dbe6b0227092ffa791762974203ae1",
+  "gate05_structured_views_sha256": "d711ca42fd61e53cd867f5db39a0ab18d7636e3dc97b1b835105f2637655a572",
+  "gold_reads_before_seal": 0,
+  "governance_reads_before_seal": 0,
+  "grade_a_occurrences": 5251,
+  "grade_a_with_authoritative_context": 5251,
+  "instruction_sha256": "10eb2881eb41a3c21c9d57fc5afbb6520f385adc78eb43785f2df1e86fbc4328",
+  "model_calls": 0,
+  "p0_views_sha256": "3227ad35c0937813bb260f0708aae0bb129f44e8649dfc8bb4d34428621fbfc6",
+  "production_writes": 0,
+  "reference_answer_reads": 0,
+  "rerank_input_views_v2_sha256": "82ea6c75dae8607e7bda462c39745abcff9ac991611c271c70e34fa318fc6dc1",
+  "retrieval_runs": 0,
+  "sealed": true,
+  "semantic_graph_runs": 0,
+  "top100_sha256": "ced014c357a3c8862a5ae3723a4c618556156542fd63aa2a8fd4bf766b60f01a"
+}

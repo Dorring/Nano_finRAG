@@ -1,0 +1,23 @@
+{
+  "batch_size": 8,
+  "context_v2_sha256": "8c7e808ef4d0c4e19b8820a69f4724c8fb3f9340bb93148ceabc9ac54ca8c481",
+  "cuda_version": "12.8",
+  "device": "cuda:0",
+  "device_name": "NVIDIA RTX A6000",
+  "dtype": "bfloat16",
+  "generation": false,
+  "instruction_sha256": "10eb2881eb41a3c21c9d57fc5afbb6520f385adc78eb43785f2df1e86fbc4328",
+  "max_length": 8192,
+  "model_id": "Qwen/Qwen3-Reranker-0.6B",
+  "model_revision": "e61197ed45024b0ed8a2d74b80b4d909f1255473",
+  "padding_side": "left",
+  "pair_count": 7200,
+  "prediction_count": 72,
+  "prediction_sha256": "de7d6637f3b58d9592368b3aba7fb2d3490be0f0f350655d512b3f118d539c68",
+  "python_version": "3.12.2",
+  "r3_1a_views_sha256": "82ea6c75dae8607e7bda462c39745abcff9ac991611c271c70e34fa318fc6dc1",
+  "tokenizer_revision": "e61197ed45024b0ed8a2d74b80b4d909f1255473",
+  "top100_sha256": "ced014c357a3c8862a5ae3723a4c618556156542fd63aa2a8fd4bf766b60f01a",
+  "torch_version": "2.9.1+cu128",
+  "transformers_version": "4.57.3"
+}
