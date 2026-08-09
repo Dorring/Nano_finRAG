@@ -1,0 +1,515 @@
+{
+  "counts": {
+    "canonical_ambiguity": 1,
+    "complete_set_ranked_below_wrong_complete_set": 2,
+    "not_pool_complete": 6,
+    "set_cover_not_generated": 6,
+    "strict_primary_complete": 3
+  },
+  "records": {
+    "aapl_fy2025_001": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": true
+    },
+    "aapl_fy2025_002": {
+      "candidate_pool_complete": false,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "aapl_fy2025_003": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "aapl_fy2025_004": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "aapl_fy2025_005": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "aapl_fy2025_006": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "aapl_fy2025_007": {
+      "candidate_pool_complete": false,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "aapl_fy2025_008": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "aapl_fy2025_009": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "jpm_fy2025_001": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "jpm_fy2025_002": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "jpm_fy2025_003": {
+      "candidate_pool_complete": false,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "jpm_fy2025_004": {
+      "candidate_pool_complete": false,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "jpm_fy2025_005": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "jpm_fy2025_006": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "jpm_fy2025_007": {
+      "candidate_pool_complete": false,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "jpm_fy2025_008": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "jpm_fy2025_009": {
+      "candidate_pool_complete": false,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "ko_fy2025_001": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "ko_fy2025_002": {
+      "candidate_pool_complete": false,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "ko_fy2025_003": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "ko_fy2025_004": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "ko_fy2025_005": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "ko_fy2025_006": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": true
+    },
+    "ko_fy2025_007": {
+      "candidate_pool_complete": false,
+      "primary_status": "partial",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "ko_fy2025_008": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "ko_fy2025_009": {
+      "candidate_pool_complete": false,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "msft_fy2025_001": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": true
+    },
+    "msft_fy2025_002": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "msft_fy2025_003": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "msft_fy2025_004": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "msft_fy2025_005": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "msft_fy2025_006": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": true
+    },
+    "msft_fy2025_007": {
+      "candidate_pool_complete": true,
+      "primary_status": "partial",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "msft_fy2025_008": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "msft_fy2025_009": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "nvda_fy2025_001": {
+      "candidate_pool_complete": false,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "nvda_fy2025_002": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "nvda_fy2025_003": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "nvda_fy2025_004": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "nvda_fy2025_005": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "nvda_fy2025_006": {
+      "candidate_pool_complete": false,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "nvda_fy2025_007": {
+      "candidate_pool_complete": true,
+      "primary_status": "partial",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "nvda_fy2025_008": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "nvda_fy2025_009": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "pfe_fy2024_001": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "pfe_fy2024_002": {
+      "candidate_pool_complete": false,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "pfe_fy2024_003": {
+      "candidate_pool_complete": false,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "pfe_fy2024_004": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "pfe_fy2024_005": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "pfe_fy2024_006": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": true
+    },
+    "pfe_fy2024_007": {
+      "candidate_pool_complete": false,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "pfe_fy2024_008": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "pfe_fy2024_009": {
+      "candidate_pool_complete": false,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "tsla_fy2025_001": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": true
+    },
+    "tsla_fy2025_002": {
+      "candidate_pool_complete": false,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "tsla_fy2025_003": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "tsla_fy2025_004": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": true
+    },
+    "tsla_fy2025_005": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "tsla_fy2025_006": {
+      "candidate_pool_complete": false,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "tsla_fy2025_007": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "tsla_fy2025_008": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "tsla_fy2025_009": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": true
+    },
+    "v_fy2025_001": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": true
+    },
+    "v_fy2025_002": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "v_fy2025_003": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "v_fy2025_004": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "v_fy2025_005": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "v_fy2025_006": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "slot_binding_contract_valid": true,
+      "typed_runtime_ready": true,
+      "unique_primary_complete": false
+    },
+    "v_fy2025_007": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "v_fy2025_008": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    },
+    "v_fy2025_009": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "slot_binding_contract_valid": false,
+      "typed_runtime_ready": false,
+      "unique_primary_complete": false
+    }
+  }
+}

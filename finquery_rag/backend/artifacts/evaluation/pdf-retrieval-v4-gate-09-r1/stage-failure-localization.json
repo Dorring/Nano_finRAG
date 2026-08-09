@@ -1,0 +1,144 @@
+{
+  "counts": {
+    "gold_attachment_without_compatible_evidence": 3,
+    "gold_complete_set_co_primary_ambiguous": 2,
+    "gold_complete_set_generated_but_not_primary": 2,
+    "gold_complete_set_not_generated": 1,
+    "strict_primary_complete": 4
+  },
+  "records": [
+    {
+      "ambiguous_primary": false,
+      "any_co_primary_gold_complete": false,
+      "candidate_pool_gold_complete": true,
+      "case_id": "aapl_fy2025_006",
+      "first_failure_stage": "gold_complete_set_generated_but_not_primary",
+      "gold_complete_set_exists": true,
+      "strict_primary_gold_complete": false,
+      "union_diagnostic_only": true,
+      "union_of_co_primary_gold_complete": false
+    },
+    {
+      "ambiguous_primary": false,
+      "any_co_primary_gold_complete": false,
+      "candidate_pool_gold_complete": true,
+      "case_id": "jpm_fy2025_006",
+      "first_failure_stage": "gold_complete_set_generated_but_not_primary",
+      "gold_complete_set_exists": true,
+      "strict_primary_gold_complete": false,
+      "union_diagnostic_only": true,
+      "union_of_co_primary_gold_complete": false
+    },
+    {
+      "ambiguous_primary": true,
+      "any_co_primary_gold_complete": true,
+      "candidate_pool_gold_complete": true,
+      "case_id": "ko_fy2025_006",
+      "first_failure_stage": "gold_complete_set_co_primary_ambiguous",
+      "gold_complete_set_exists": true,
+      "strict_primary_gold_complete": false,
+      "union_diagnostic_only": true,
+      "union_of_co_primary_gold_complete": true
+    },
+    {
+      "ambiguous_primary": false,
+      "any_co_primary_gold_complete": true,
+      "candidate_pool_gold_complete": true,
+      "case_id": "msft_fy2025_006",
+      "first_failure_stage": "strict_primary_complete",
+      "gold_complete_set_exists": true,
+      "strict_primary_gold_complete": true,
+      "union_diagnostic_only": true,
+      "union_of_co_primary_gold_complete": true
+    },
+    {
+      "ambiguous_primary": false,
+      "any_co_primary_gold_complete": false,
+      "candidate_pool_gold_complete": true,
+      "case_id": "msft_fy2025_007",
+      "first_failure_stage": "gold_attachment_without_compatible_evidence",
+      "gold_complete_set_exists": false,
+      "strict_primary_gold_complete": false,
+      "union_diagnostic_only": true,
+      "union_of_co_primary_gold_complete": false
+    },
+    {
+      "ambiguous_primary": true,
+      "any_co_primary_gold_complete": true,
+      "candidate_pool_gold_complete": true,
+      "case_id": "nvda_fy2025_007",
+      "first_failure_stage": "gold_complete_set_co_primary_ambiguous",
+      "gold_complete_set_exists": true,
+      "strict_primary_gold_complete": false,
+      "union_diagnostic_only": true,
+      "union_of_co_primary_gold_complete": true
+    },
+    {
+      "ambiguous_primary": false,
+      "any_co_primary_gold_complete": true,
+      "candidate_pool_gold_complete": true,
+      "case_id": "pfe_fy2024_006",
+      "first_failure_stage": "strict_primary_complete",
+      "gold_complete_set_exists": true,
+      "strict_primary_gold_complete": true,
+      "union_diagnostic_only": true,
+      "union_of_co_primary_gold_complete": true
+    },
+    {
+      "ambiguous_primary": false,
+      "any_co_primary_gold_complete": true,
+      "candidate_pool_gold_complete": true,
+      "case_id": "pfe_fy2024_008",
+      "first_failure_stage": "strict_primary_complete",
+      "gold_complete_set_exists": true,
+      "strict_primary_gold_complete": true,
+      "union_diagnostic_only": true,
+      "union_of_co_primary_gold_complete": true
+    },
+    {
+      "ambiguous_primary": true,
+      "any_co_primary_gold_complete": false,
+      "candidate_pool_gold_complete": true,
+      "case_id": "tsla_fy2025_007",
+      "first_failure_stage": "gold_attachment_without_compatible_evidence",
+      "gold_complete_set_exists": false,
+      "strict_primary_gold_complete": false,
+      "union_diagnostic_only": true,
+      "union_of_co_primary_gold_complete": false
+    },
+    {
+      "ambiguous_primary": false,
+      "any_co_primary_gold_complete": true,
+      "candidate_pool_gold_complete": true,
+      "case_id": "tsla_fy2025_008",
+      "first_failure_stage": "strict_primary_complete",
+      "gold_complete_set_exists": true,
+      "strict_primary_gold_complete": true,
+      "union_diagnostic_only": true,
+      "union_of_co_primary_gold_complete": true
+    },
+    {
+      "ambiguous_primary": false,
+      "any_co_primary_gold_complete": false,
+      "candidate_pool_gold_complete": true,
+      "case_id": "v_fy2025_006",
+      "first_failure_stage": "gold_attachment_without_compatible_evidence",
+      "gold_complete_set_exists": false,
+      "strict_primary_gold_complete": false,
+      "union_diagnostic_only": true,
+      "union_of_co_primary_gold_complete": false
+    },
+    {
+      "ambiguous_primary": true,
+      "any_co_primary_gold_complete": false,
+      "candidate_pool_gold_complete": true,
+      "case_id": "v_fy2025_007",
+      "first_failure_stage": "gold_complete_set_not_generated",
+      "gold_complete_set_exists": false,
+      "strict_primary_gold_complete": false,
+      "union_diagnostic_only": true,
+      "union_of_co_primary_gold_complete": false
+    }
+  ],
+  "scope": "12_pool_complete_multi_slot_cases"
+}

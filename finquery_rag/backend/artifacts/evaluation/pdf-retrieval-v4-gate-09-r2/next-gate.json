@@ -1,0 +1,5 @@
+{
+  "decision": "evidence_set_contract_repair_insufficient",
+  "next_gate": "stop_and_fix_evidence_set_contract",
+  "production_switch_allowed": false
+}

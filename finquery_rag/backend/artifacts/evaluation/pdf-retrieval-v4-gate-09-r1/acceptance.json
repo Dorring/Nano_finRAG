@@ -1,0 +1,40 @@
+{
+  "benchmark_multi_evidence": {
+    "any_co_primary_complete": 4,
+    "candidate_pool_complete": 10,
+    "denominator": 16,
+    "pool_to_set": "2/10",
+    "strict_unique_primary_complete": 2,
+    "union_of_co_primary_complete_diagnostic": 4
+  },
+  "calculation": {
+    "any_co_primary_complete": 3,
+    "c0_typed_numeric_presence_ready": "11/11",
+    "c1_unique_primary_operand_complete": 8,
+    "c3_strict_calculation_evidence_complete": 2,
+    "candidate_pool_complete": 8,
+    "denominator": 11,
+    "pool_to_set": "2/8",
+    "strict_unique_primary_complete": 2,
+    "union_of_co_primary_complete_diagnostic": 3
+  },
+  "decision": "evidence_set_failure_contract_closed",
+  "first_failure_exhaustive": true,
+  "gate": "pdf_retrieval_v4_gate_09_r1",
+  "multi_slot": {
+    "any_co_primary_complete": 6,
+    "candidate_pool_complete": 12,
+    "denominator": 18,
+    "pool_to_set": "4/12",
+    "strict_unique_primary_complete": 4,
+    "union_of_co_primary_complete_diagnostic": 6
+  },
+  "next_gate": "deterministic_evidence_set_contract_repair",
+  "original_attachment_sha256": "15c3383491b1fa5bd8431083a371791eae1a9f10f5e0ef375c6c57dc0ff02e02",
+  "original_gate09_immutable": true,
+  "original_prediction_sha256": "2a7adb9b994874fbad3d14b202d4918316c7d7acb758a2ad70d2adafe7bdd679",
+  "production_switch_allowed": false,
+  "retrieval_runs": 0,
+  "set_generator_runs": 0,
+  "slot_matcher_runs": 0
+}

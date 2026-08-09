@@ -1,0 +1,41 @@
+{
+  "attachment_positions": 7292,
+  "benchmark_multi_evidence": {
+    "ambiguous_pool_complete": 1,
+    "candidate_pool_complete": 10,
+    "denominator": 16,
+    "pool_to_set": "3/10",
+    "unique_primary_complete": 3
+  },
+  "calculation": {
+    "ambiguous_pool_complete": 1,
+    "candidate_pool_complete": 8,
+    "denominator": 11,
+    "pool_to_set": "3/8",
+    "typed_runtime_ready": 7,
+    "unique_primary_complete": 3
+  },
+  "canonical_evidence_count": 12638,
+  "decision": "evidence_set_contract_repair_insufficient",
+  "false_bindings": {
+    "cross_document_set": 0,
+    "false_bucket_binding": 0,
+    "false_currency_binding": 0,
+    "false_matrix_cover": 0,
+    "false_metric_binding": 0,
+    "false_period_binding": 0,
+    "false_scale_binding": 0,
+    "false_segment_binding": 0,
+    "raw_typed_operand": 0
+  },
+  "gate": "pdf_retrieval_v4_gate_09_r2",
+  "multi_slot": {
+    "ambiguous_pool_complete": 1,
+    "candidate_pool_complete": 12,
+    "denominator": 18,
+    "pool_to_set": "3/12",
+    "unique_primary_complete": 3
+  },
+  "next_gate": "stop_and_fix_evidence_set_contract",
+  "production_switch_allowed": false
+}
