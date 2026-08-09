@@ -1,0 +1,20 @@
+{
+  "bm25_searches": 0,
+  "dense_searches": 0,
+  "embedding_calls": 0,
+  "final_pool_k": 40,
+  "gate": "pdf_retrieval_v4_gate_08_r6",
+  "gold_reads_before_seal": 0,
+  "governance_reads_before_seal": 0,
+  "index_builds": 0,
+  "index_reads": 0,
+  "parameter_scan": false,
+  "production_switch_allowed": false,
+  "production_writes": 0,
+  "query_plan_mutation": 0,
+  "question_regeneration": 0,
+  "quota_scan": false,
+  "rrf_k": 60,
+  "slot_candidate_horizon": 40,
+  "slot_min_budget": 10
+}

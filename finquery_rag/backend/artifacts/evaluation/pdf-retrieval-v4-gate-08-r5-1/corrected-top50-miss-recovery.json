@@ -1,0 +1,93 @@
+{
+  "frozen_r3_top50_misses": 12,
+  "records": [
+    {
+      "candidate_key": "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d",
+      "case_id": "aapl_fy2025_002",
+      "category": "recovered_beyond_top50_only",
+      "new_rank": 99,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d",
+      "case_id": "aapl_fy2025_007",
+      "category": "recovered_beyond_top50_only",
+      "new_rank": 101,
+      "source_index": 1
+    },
+    {
+      "candidate_key": "candidate:v1:b5494e22a29663edc6ff9f1ce1b126c4c9f32d6933a1479b696a5c93a3e45135",
+      "case_id": "jpm_fy2025_003",
+      "category": "recovered_beyond_top50_only",
+      "new_rank": 116,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
+      "case_id": "jpm_fy2025_004",
+      "category": "recovered_beyond_top50_only",
+      "new_rank": 85,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
+      "case_id": "jpm_fy2025_007",
+      "category": "recovered_beyond_top50_only",
+      "new_rank": 167,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:d822718dbec99a61ac7b4c914ac8b09a7bf97aa5ece318730b7c97c26821848e",
+      "case_id": "jpm_fy2025_007",
+      "category": "still_absent",
+      "new_rank": null,
+      "source_index": 1
+    },
+    {
+      "candidate_key": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
+      "case_id": "jpm_fy2025_009",
+      "category": "recovered_beyond_top50_only",
+      "new_rank": 84,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:5a25663abb16c0b92c93f62a32e2decdd60aad7b65e2ce937ace826a22a136c9",
+      "case_id": "ko_fy2025_002",
+      "category": "recovered_beyond_top50_only",
+      "new_rank": 74,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+      "case_id": "pfe_fy2024_002",
+      "category": "still_absent",
+      "new_rank": null,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+      "case_id": "pfe_fy2024_007",
+      "category": "still_absent",
+      "new_rank": null,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+      "case_id": "pfe_fy2024_009",
+      "category": "still_absent",
+      "new_rank": null,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:764e51106a705bd6f16af004eeb7f0126c4209a0c62a5319d13153dc95987982",
+      "case_id": "tsla_fy2025_002",
+      "category": "recovered_beyond_top50_only",
+      "new_rank": 69,
+      "source_index": 0
+    }
+  ],
+  "recovered_beyond_top50_only": 8,
+  "recovered_to_top40": 0,
+  "recovered_to_top50": 0,
+  "still_absent": 4
+}

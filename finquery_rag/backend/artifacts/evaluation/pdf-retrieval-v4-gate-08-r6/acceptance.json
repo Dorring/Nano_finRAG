@@ -1,0 +1,25 @@
+{
+  "bm25_searches": 0,
+  "decision": "slot_aware_composition_gain_real_but_insufficient",
+  "dense_searches": 0,
+  "embedding_calls": 0,
+  "gate": "pdf_retrieval_v4_gate_08_r6",
+  "index_reads": 0,
+  "metrics": {
+    "c0": "57/80",
+    "c1": "59/80",
+    "diagnostic_unbounded_slot_union": "24/80",
+    "full_grade_a_recall": "53/68",
+    "full_inside_universe_miss": 15,
+    "gain": 2,
+    "net_gain": 2,
+    "regression": 0
+  },
+  "multi_evidence": "12/18",
+  "next_gate": "field_support_normalization",
+  "parameter_scan": false,
+  "production_switch_allowed": false,
+  "quota_scan": false,
+  "raw_gold_retained": "31/31",
+  "single_slot_exact_parity": "54/54"
+}

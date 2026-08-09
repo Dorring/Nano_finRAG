@@ -1,0 +1,46 @@
+{
+  "frozen_slot_budget_losses": 4,
+  "records": [
+    {
+      "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+      "case_id": "jpm_fy2025_006",
+      "new_final_rank": 40,
+      "new_selected": true,
+      "old_main_query_rank": 21,
+      "old_rejected_reason": "slot_pool_budget_truncated",
+      "old_slot_rank": 30,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+      "case_id": "jpm_fy2025_006",
+      "new_final_rank": 40,
+      "new_selected": true,
+      "old_main_query_rank": 21,
+      "old_rejected_reason": "slot_pool_budget_truncated",
+      "old_slot_rank": 30,
+      "source_index": 1
+    },
+    {
+      "candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+      "case_id": "tsla_fy2025_006",
+      "new_final_rank": null,
+      "new_selected": false,
+      "old_main_query_rank": 5,
+      "old_rejected_reason": "slot_pool_budget_truncated",
+      "old_slot_rank": null,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+      "case_id": "tsla_fy2025_006",
+      "new_final_rank": null,
+      "new_selected": false,
+      "old_main_query_rank": 5,
+      "old_rejected_reason": "slot_pool_budget_truncated",
+      "old_slot_rank": null,
+      "source_index": 1
+    }
+  ],
+  "recovered": "2/4"
+}

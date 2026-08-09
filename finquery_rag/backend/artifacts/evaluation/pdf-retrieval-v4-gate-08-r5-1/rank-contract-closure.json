@@ -1,0 +1,14 @@
+{
+  "bm25_searches": 0,
+  "decision": "field_aware_diagnostic_contract_closed",
+  "dense_searches": 0,
+  "embedding_calls": 0,
+  "gate": "pdf_retrieval_v4_gate_08_r5_1",
+  "index_builds": 0,
+  "index_reads": 0,
+  "next_gate": "slot_aware_candidate_composition",
+  "original_r5_immutable": true,
+  "original_r5_prediction_sha256": "f5afaefec18faeb736f508541d7d257dde486c86ac35178f8cd6bfb8d022ec24",
+  "original_r5_seal_sha256": "fa802475131462880c805526e889686e4d14ce4a69d2dda2200dd000df204ae7",
+  "prediction_reruns": 0
+}

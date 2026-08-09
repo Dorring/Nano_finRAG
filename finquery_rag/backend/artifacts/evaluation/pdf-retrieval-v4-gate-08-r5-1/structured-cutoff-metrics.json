@@ -1,0 +1,37 @@
+{
+  "s0": {
+    "presence_any": "49/68",
+    "recall_at_10": "23/68",
+    "recall_at_20": "27/68",
+    "recall_at_40": "40/68",
+    "recall_at_50": "42/68"
+  },
+  "s1": {
+    "presence_any": "61/68",
+    "recall_at_10": "39/68",
+    "recall_at_20": "43/68",
+    "recall_at_40": "54/68",
+    "recall_at_50": "56/68"
+  },
+  "s2": {
+    "presence_any": "61/68",
+    "recall_at_10": "37/68",
+    "recall_at_20": "43/68",
+    "recall_at_40": "50/68",
+    "recall_at_50": "52/68"
+  },
+  "s3": {
+    "presence_any": "61/68",
+    "recall_at_10": "30/68",
+    "recall_at_20": "39/68",
+    "recall_at_40": "44/68",
+    "recall_at_50": "50/68"
+  },
+  "s4": {
+    "presence_any": "61/68",
+    "recall_at_10": "31/68",
+    "recall_at_20": "37/68",
+    "recall_at_40": "43/68",
+    "recall_at_50": "44/68"
+  }
+}
