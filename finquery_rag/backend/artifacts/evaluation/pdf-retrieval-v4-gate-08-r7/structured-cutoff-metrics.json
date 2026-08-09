@@ -1,0 +1,16 @@
+{
+  "h0": {
+    "presence_any": "61/68",
+    "recall_at_10": "31/68",
+    "recall_at_20": "37/68",
+    "recall_at_40": "43/68",
+    "recall_at_50": "44/68"
+  },
+  "h1": {
+    "presence_any": "61/68",
+    "recall_at_10": "32/68",
+    "recall_at_20": "42/68",
+    "recall_at_40": "46/68",
+    "recall_at_50": "49/68"
+  }
+}

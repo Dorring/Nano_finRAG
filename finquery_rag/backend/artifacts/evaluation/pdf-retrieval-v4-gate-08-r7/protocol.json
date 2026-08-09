@@ -1,0 +1,23 @@
+{
+  "architecture_scan": false,
+  "bm25_searches": 0,
+  "dense_searches": 0,
+  "embedding_calls": 0,
+  "final_pool_k": 40,
+  "gate": "pdf_retrieval_v4_gate_08_r7",
+  "gold_reads_before_seal": 0,
+  "governance_reads_before_seal": 0,
+  "index_builds": 0,
+  "index_reads": 0,
+  "parameter_scan": false,
+  "primary": "h1_hierarchical_field_family",
+  "production_switch_allowed": false,
+  "production_writes": 0,
+  "query_plan_mutations": 0,
+  "query_rebuilds": 0,
+  "rrf_k": 60,
+  "slot_candidate_horizon": 40,
+  "slot_min_budget": 10,
+  "topk_scan": false,
+  "weight_scan": false
+}

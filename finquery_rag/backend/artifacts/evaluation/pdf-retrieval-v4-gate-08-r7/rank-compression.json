@@ -1,0 +1,694 @@
+{
+  "family_to_structured_loss": {
+    "median": -30,
+    "p75": -4,
+    "p90": 77
+  },
+  "field_to_family_loss": {
+    "median": 42,
+    "p75": 49,
+    "p90": 60
+  },
+  "records": [
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 7,
+      "candidate_key": "candidate:v1:79ac51e245c5b62256797393cbdd8c14497c5800b1c7afa77995957d747c223c",
+      "case_id": "aapl_fy2025_001",
+      "field_family_rank": 56,
+      "source_index": 0,
+      "structured_h1_rank": 9,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 14,
+      "candidate_key": "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d",
+      "case_id": "aapl_fy2025_002",
+      "field_family_rank": 63,
+      "source_index": 0,
+      "structured_h1_rank": 134,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 2,
+      "candidate_key": "candidate:v1:f06ee04f963d52481ef27a335b7a6c09674546d3ab590a90c2a4a033f8ea34d8",
+      "case_id": "aapl_fy2025_003",
+      "field_family_rank": 34,
+      "source_index": 0,
+      "structured_h1_rank": 2,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 1,
+      "candidate_key": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
+      "case_id": "aapl_fy2025_004",
+      "field_family_rank": 15,
+      "source_index": 0,
+      "structured_h1_rank": 1,
+      "supporting_field_count": 2
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 3,
+      "candidate_key": "candidate:v1:d8d06e11d524ce4ec4c95ca728ef61ba568965f41b623d7033faf672eea17989",
+      "case_id": "aapl_fy2025_005",
+      "field_family_rank": 40,
+      "source_index": 0,
+      "structured_h1_rank": 34,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 8,
+      "candidate_key": "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563",
+      "case_id": "aapl_fy2025_006",
+      "field_family_rank": 52,
+      "source_index": 0,
+      "structured_h1_rank": 4,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 8,
+      "candidate_key": "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563",
+      "case_id": "aapl_fy2025_006",
+      "field_family_rank": 52,
+      "source_index": 1,
+      "structured_h1_rank": 4,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 1,
+      "candidate_key": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
+      "case_id": "aapl_fy2025_007",
+      "field_family_rank": 19,
+      "source_index": 0,
+      "structured_h1_rank": 1,
+      "supporting_field_count": 2
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 16,
+      "candidate_key": "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d",
+      "case_id": "aapl_fy2025_007",
+      "field_family_rank": 69,
+      "source_index": 1,
+      "structured_h1_rank": 142,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 1,
+      "candidate_key": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
+      "case_id": "aapl_fy2025_009",
+      "field_family_rank": 16,
+      "source_index": 0,
+      "structured_h1_rank": 2,
+      "supporting_field_count": 2
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 11,
+      "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+      "case_id": "jpm_fy2025_001",
+      "field_family_rank": 58,
+      "source_index": 0,
+      "structured_h1_rank": 10,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 7,
+      "candidate_key": "candidate:v1:d822718dbec99a61ac7b4c914ac8b09a7bf97aa5ece318730b7c97c26821848e",
+      "case_id": "jpm_fy2025_002",
+      "field_family_rank": 46,
+      "source_index": 0,
+      "structured_h1_rank": 12,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 18,
+      "candidate_key": "candidate:v1:b5494e22a29663edc6ff9f1ce1b126c4c9f32d6933a1479b696a5c93a3e45135",
+      "case_id": "jpm_fy2025_003",
+      "field_family_rank": 77,
+      "source_index": 0,
+      "structured_h1_rank": 172,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 13,
+      "candidate_key": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
+      "case_id": "jpm_fy2025_004",
+      "field_family_rank": 61,
+      "source_index": 0,
+      "structured_h1_rank": 147,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 11,
+      "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+      "case_id": "jpm_fy2025_006",
+      "field_family_rank": 47,
+      "source_index": 0,
+      "structured_h1_rank": 10,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 11,
+      "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+      "case_id": "jpm_fy2025_006",
+      "field_family_rank": 47,
+      "source_index": 1,
+      "structured_h1_rank": 10,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 29,
+      "candidate_key": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
+      "case_id": "jpm_fy2025_007",
+      "field_family_rank": 113,
+      "source_index": 0,
+      "structured_h1_rank": 203,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": null,
+      "best_field_rank": null,
+      "candidate_key": "candidate:v1:d822718dbec99a61ac7b4c914ac8b09a7bf97aa5ece318730b7c97c26821848e",
+      "case_id": "jpm_fy2025_007",
+      "field_family_rank": null,
+      "source_index": 1,
+      "structured_h1_rank": null,
+      "supporting_field_count": 0
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 13,
+      "candidate_key": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
+      "case_id": "jpm_fy2025_009",
+      "field_family_rank": 60,
+      "source_index": 0,
+      "structured_h1_rank": 148,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 4,
+      "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "case_id": "ko_fy2025_001",
+      "field_family_rank": 45,
+      "source_index": 0,
+      "structured_h1_rank": 15,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 4,
+      "candidate_key": "candidate:v1:5a25663abb16c0b92c93f62a32e2decdd60aad7b65e2ce937ace826a22a136c9",
+      "case_id": "ko_fy2025_002",
+      "field_family_rank": 48,
+      "source_index": 0,
+      "structured_h1_rank": 125,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 10,
+      "candidate_key": "candidate:v1:1b48a73c57594dcf8a511dbd4d5aa5f5cd6c3bc4657d5cafb6ea00b67adc8572",
+      "case_id": "ko_fy2025_003",
+      "field_family_rank": 58,
+      "source_index": 0,
+      "structured_h1_rank": 1,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 10,
+      "candidate_key": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+      "case_id": "ko_fy2025_004",
+      "field_family_rank": 60,
+      "source_index": 0,
+      "structured_h1_rank": 26,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 16,
+      "candidate_key": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+      "case_id": "ko_fy2025_005",
+      "field_family_rank": 72,
+      "source_index": 0,
+      "structured_h1_rank": 139,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 4,
+      "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "case_id": "ko_fy2025_006",
+      "field_family_rank": 38,
+      "source_index": 0,
+      "structured_h1_rank": 14,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 4,
+      "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "case_id": "ko_fy2025_006",
+      "field_family_rank": 38,
+      "source_index": 1,
+      "structured_h1_rank": 14,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 33,
+      "candidate_key": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+      "case_id": "ko_fy2025_007",
+      "field_family_rank": 116,
+      "source_index": 1,
+      "structured_h1_rank": 191,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 23,
+      "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "case_id": "msft_fy2025_001",
+      "field_family_rank": 84,
+      "source_index": 0,
+      "structured_h1_rank": 8,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": null,
+      "best_field_rank": null,
+      "candidate_key": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+      "case_id": "msft_fy2025_002",
+      "field_family_rank": null,
+      "source_index": 0,
+      "structured_h1_rank": 45,
+      "supporting_field_count": 0
+    },
+    {
+      "best_field": null,
+      "best_field_rank": null,
+      "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "case_id": "msft_fy2025_003",
+      "field_family_rank": null,
+      "source_index": 0,
+      "structured_h1_rank": 5,
+      "supporting_field_count": 0
+    },
+    {
+      "best_field": null,
+      "best_field_rank": null,
+      "candidate_key": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+      "case_id": "msft_fy2025_005",
+      "field_family_rank": null,
+      "source_index": 0,
+      "structured_h1_rank": 22,
+      "supporting_field_count": 0
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 23,
+      "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "case_id": "msft_fy2025_006",
+      "field_family_rank": 86,
+      "source_index": 0,
+      "structured_h1_rank": 41,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 23,
+      "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "case_id": "msft_fy2025_006",
+      "field_family_rank": 86,
+      "source_index": 1,
+      "structured_h1_rank": 41,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 25,
+      "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "case_id": "msft_fy2025_007",
+      "field_family_rank": 85,
+      "source_index": 1,
+      "structured_h1_rank": 145,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 1,
+      "candidate_key": "candidate:v1:c03a713affc5c00b9d7416a69608d071305fa17362b7668a963dc1f2b5cc8697",
+      "case_id": "nvda_fy2025_002",
+      "field_family_rank": 45,
+      "source_index": 0,
+      "structured_h1_rank": 2,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 1,
+      "candidate_key": "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf",
+      "case_id": "nvda_fy2025_003",
+      "field_family_rank": 43,
+      "source_index": 0,
+      "structured_h1_rank": 1,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 1,
+      "candidate_key": "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d",
+      "case_id": "nvda_fy2025_004",
+      "field_family_rank": 46,
+      "source_index": 0,
+      "structured_h1_rank": 1,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 1,
+      "candidate_key": "candidate:v1:84ecbba7da14d18cf2bb3b171d9bff27fa45ad1c75d4ae77545b1b0046f0b92e",
+      "case_id": "nvda_fy2025_005",
+      "field_family_rank": 45,
+      "source_index": 0,
+      "structured_h1_rank": 16,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 1,
+      "candidate_key": "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d",
+      "case_id": "nvda_fy2025_007",
+      "field_family_rank": 46,
+      "source_index": 0,
+      "structured_h1_rank": 10,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 2,
+      "candidate_key": "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf",
+      "case_id": "nvda_fy2025_007",
+      "field_family_rank": 48,
+      "source_index": 1,
+      "structured_h1_rank": 9,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 1,
+      "candidate_key": "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d",
+      "case_id": "nvda_fy2025_009",
+      "field_family_rank": 43,
+      "source_index": 0,
+      "structured_h1_rank": 1,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 3,
+      "candidate_key": "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827",
+      "case_id": "pfe_fy2024_001",
+      "field_family_rank": 39,
+      "source_index": 0,
+      "structured_h1_rank": 4,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": null,
+      "best_field_rank": null,
+      "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+      "case_id": "pfe_fy2024_002",
+      "field_family_rank": null,
+      "source_index": 0,
+      "structured_h1_rank": null,
+      "supporting_field_count": 0
+    },
+    {
+      "best_field": null,
+      "best_field_rank": null,
+      "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+      "case_id": "pfe_fy2024_004",
+      "field_family_rank": null,
+      "source_index": 0,
+      "structured_h1_rank": 33,
+      "supporting_field_count": 0
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 3,
+      "candidate_key": "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827",
+      "case_id": "pfe_fy2024_006",
+      "field_family_rank": 39,
+      "source_index": 0,
+      "structured_h1_rank": 5,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 3,
+      "candidate_key": "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827",
+      "case_id": "pfe_fy2024_006",
+      "field_family_rank": 39,
+      "source_index": 1,
+      "structured_h1_rank": 5,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": null,
+      "best_field_rank": null,
+      "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+      "case_id": "pfe_fy2024_007",
+      "field_family_rank": null,
+      "source_index": 0,
+      "structured_h1_rank": null,
+      "supporting_field_count": 0
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 3,
+      "candidate_key": "candidate:v1:4886dcb9c5a4bd430f3888bc77cf033b0745509bd1bc968682ea31caef7b5c56",
+      "case_id": "pfe_fy2024_007",
+      "field_family_rank": 38,
+      "source_index": 1,
+      "structured_h1_rank": 9,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": null,
+      "best_field_rank": null,
+      "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+      "case_id": "pfe_fy2024_009",
+      "field_family_rank": null,
+      "source_index": 0,
+      "structured_h1_rank": null,
+      "supporting_field_count": 0
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 16,
+      "candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+      "case_id": "tsla_fy2025_001",
+      "field_family_rank": 74,
+      "source_index": 0,
+      "structured_h1_rank": 2,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 5,
+      "candidate_key": "candidate:v1:764e51106a705bd6f16af004eeb7f0126c4209a0c62a5319d13153dc95987982",
+      "case_id": "tsla_fy2025_002",
+      "field_family_rank": 46,
+      "source_index": 0,
+      "structured_h1_rank": 132,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 8,
+      "candidate_key": "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52",
+      "case_id": "tsla_fy2025_004",
+      "field_family_rank": 50,
+      "source_index": 0,
+      "structured_h1_rank": 5,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": null,
+      "best_field_rank": null,
+      "candidate_key": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+      "case_id": "tsla_fy2025_005",
+      "field_family_rank": null,
+      "source_index": 0,
+      "structured_h1_rank": null,
+      "supporting_field_count": 0
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 16,
+      "candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+      "case_id": "tsla_fy2025_006",
+      "field_family_rank": 66,
+      "source_index": 0,
+      "structured_h1_rank": 3,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 16,
+      "candidate_key": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+      "case_id": "tsla_fy2025_006",
+      "field_family_rank": 66,
+      "source_index": 1,
+      "structured_h1_rank": 3,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 23,
+      "candidate_key": "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52",
+      "case_id": "tsla_fy2025_007",
+      "field_family_rank": 19,
+      "source_index": 0,
+      "structured_h1_rank": 13,
+      "supporting_field_count": 2
+    },
+    {
+      "best_field": null,
+      "best_field_rank": null,
+      "candidate_key": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+      "case_id": "tsla_fy2025_007",
+      "field_family_rank": null,
+      "source_index": 1,
+      "structured_h1_rank": null,
+      "supporting_field_count": 0
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 8,
+      "candidate_key": "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52",
+      "case_id": "tsla_fy2025_009",
+      "field_family_rank": 47,
+      "source_index": 0,
+      "structured_h1_rank": 5,
+      "supporting_field_count": 1
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 2,
+      "candidate_key": "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83",
+      "case_id": "v_fy2025_001",
+      "field_family_rank": 4,
+      "source_index": 0,
+      "structured_h1_rank": 1,
+      "supporting_field_count": 3
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 39,
+      "candidate_key": "candidate:v1:fd7d3044411973c1af57bf015ca3fd14efb235afbe07f01c8ff1d8d9259536db",
+      "case_id": "v_fy2025_002",
+      "field_family_rank": 51,
+      "source_index": 0,
+      "structured_h1_rank": 18,
+      "supporting_field_count": 2
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 1,
+      "candidate_key": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+      "case_id": "v_fy2025_003",
+      "field_family_rank": 16,
+      "source_index": 0,
+      "structured_h1_rank": 1,
+      "supporting_field_count": 2
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 6,
+      "candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+      "case_id": "v_fy2025_004",
+      "field_family_rank": 22,
+      "source_index": 0,
+      "structured_h1_rank": 18,
+      "supporting_field_count": 2
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 12,
+      "candidate_key": "candidate:v1:4c11889fb53c1b1a3194a2e6518b9d94a910cfa71ea99f8e25c4ef206e06613b",
+      "case_id": "v_fy2025_005",
+      "field_family_rank": 30,
+      "source_index": 0,
+      "structured_h1_rank": 86,
+      "supporting_field_count": 2
+    },
+    {
+      "best_field": null,
+      "best_field_rank": null,
+      "candidate_key": "candidate:v1:21f924b9c1b33d1e7caa949ac3dcca366d20e99a1aacf2b9d84be8e762ad6240",
+      "case_id": "v_fy2025_006",
+      "field_family_rank": null,
+      "source_index": 0,
+      "structured_h1_rank": null,
+      "supporting_field_count": 0
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 2,
+      "candidate_key": "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83",
+      "case_id": "v_fy2025_006",
+      "field_family_rank": 15,
+      "source_index": 1,
+      "structured_h1_rank": 16,
+      "supporting_field_count": 2
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 8,
+      "candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+      "case_id": "v_fy2025_007",
+      "field_family_rank": 25,
+      "source_index": 0,
+      "structured_h1_rank": 11,
+      "supporting_field_count": 2
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 1,
+      "candidate_key": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+      "case_id": "v_fy2025_007",
+      "field_family_rank": 18,
+      "source_index": 1,
+      "structured_h1_rank": 1,
+      "supporting_field_count": 2
+    },
+    {
+      "best_field": "structured_metric_bm25",
+      "best_field_rank": 6,
+      "candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+      "case_id": "v_fy2025_009",
+      "field_family_rank": 20,
+      "source_index": 0,
+      "structured_h1_rank": 7,
+      "supporting_field_count": 2
+    }
+  ]
+}

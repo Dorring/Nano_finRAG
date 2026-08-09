@@ -1,0 +1,38 @@
+{
+  "baseline_parity": true,
+  "candidate_pool_recall_target_reached": true,
+  "decision": "field_support_normalization_passed",
+  "full_system": {
+    "grade_a_full_recall": "54/68",
+    "inside_universe_miss": 14,
+    "net_gain": 1,
+    "new_gold_added": 1,
+    "original_r6_gold_retained": "59/59",
+    "r6_baseline": "59/80",
+    "r7_full": "60/80",
+    "raw_gold_retained": "31/31",
+    "regressed": 0
+  },
+  "gate": "pdf_retrieval_v4_gate_08_r7",
+  "multi_evidence": "12/18",
+  "next_gate": "evidence_set_construction",
+  "production_switch_allowed": false,
+  "raw_gold_retained": "31/31",
+  "structured": {
+    "h0": {
+      "presence_any": "61/68",
+      "recall_at_10": "31/68",
+      "recall_at_20": "37/68",
+      "recall_at_40": "43/68",
+      "recall_at_50": "44/68"
+    },
+    "h1": {
+      "presence_any": "61/68",
+      "recall_at_10": "32/68",
+      "recall_at_20": "42/68",
+      "recall_at_40": "46/68",
+      "recall_at_50": "49/68"
+    }
+  },
+  "structured_recommended_at40_gate": false
+}
