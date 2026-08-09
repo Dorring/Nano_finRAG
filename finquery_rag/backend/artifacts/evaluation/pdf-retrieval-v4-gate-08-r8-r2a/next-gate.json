@@ -1,0 +1,6 @@
+{
+  "decision": "deep_supply_recovered_but_top50_compression_insufficient",
+  "next_gate": "supply_aware_compression_audit",
+  "production_switch_allowed": false,
+  "reranker_allowed": false
+}
