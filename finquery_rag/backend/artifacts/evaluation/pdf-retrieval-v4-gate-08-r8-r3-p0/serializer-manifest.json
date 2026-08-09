@@ -1,0 +1,19 @@
+{
+  "authoritative_attachment_sha256": "effa166e071da6bd8c7b98817c096507892c2f9a352c9e9d4ec5a85e6afb709e",
+  "candidate_added": 0,
+  "candidate_metadata_sha256": "e04dc40c5e338753f50583814c8662ec2ab3a1e2aa0187efc8ce48d84090d9fc",
+  "candidate_mutation": 0,
+  "candidate_removed": 0,
+  "candidates": 7200,
+  "candidates_per_case": 100,
+  "cases": 72,
+  "duplicate_candidates": 0,
+  "gold_derived_fields": 0,
+  "instruction_sha256": "10eb2881eb41a3c21c9d57fc5afbb6520f385adc78eb43785f2df1e86fbc4328",
+  "query_plan_sha256": "e1c6e5af104ebda3687c2844fa8549d00b3b89eb649d369f92fb1504920de13f",
+  "rerank_input_views_sha256": "3227ad35c0937813bb260f0708aae0bb129f44e8649dfc8bb4d34428621fbfc6",
+  "schema": "pdf-retrieval-v4/structure-aware-rerank-input/v1",
+  "serializer_deterministic": true,
+  "serializer_sha256": "066a60d2a1390ad727297924ca8cc9a277fbf6cacde4d938f8bf89bacf960671",
+  "top100_sha256": "ced014c357a3c8862a5ae3723a4c618556156542fd63aa2a8fd4bf766b60f01a"
+}

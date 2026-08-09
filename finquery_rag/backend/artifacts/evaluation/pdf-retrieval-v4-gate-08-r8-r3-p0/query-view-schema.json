@@ -1,0 +1,13 @@
+{
+  "forbidden": [
+    "case_id",
+    "source_index",
+    "gold",
+    "reference_answer",
+    "expected_value"
+  ],
+  "sections": [
+    "QUESTION",
+    "QUERY PLAN"
+  ]
+}

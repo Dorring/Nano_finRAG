@@ -1,0 +1,11 @@
+{
+  "missing_field_policy": "omit_line",
+  "raw_only_supported": true,
+  "schema": "StructureAwareRerankDocumentV1",
+  "sections": [
+    "DOCUMENT",
+    "STRUCTURE",
+    "EVIDENCE",
+    "CONTENT"
+  ]
+}

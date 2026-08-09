@@ -1,0 +1,6 @@
+{
+  "decision": "structure_aware_cross_encoder_insufficient",
+  "final_retrieval_target_reached": false,
+  "next_gate": "rerank_failure_audit",
+  "production_switch_allowed": false
+}
