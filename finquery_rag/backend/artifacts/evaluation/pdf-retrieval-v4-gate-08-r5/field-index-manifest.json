@@ -1,0 +1,24 @@
+{
+  "lanes": {
+    "structured_axis_bm25": {
+      "document_count": 19500,
+      "nonempty_count": 8374,
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r5/field-indexes/structured_axis_bm25/bm25/index.sqlite"
+    },
+    "structured_context_bm25": {
+      "document_count": 19500,
+      "nonempty_count": 19500,
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r5/field-indexes/structured_context_bm25/bm25/index.sqlite"
+    },
+    "structured_evidence_bm25": {
+      "document_count": 19500,
+      "nonempty_count": 18918,
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r5/field-indexes/structured_evidence_bm25/bm25/index.sqlite"
+    },
+    "structured_metric_bm25": {
+      "document_count": 19500,
+      "nonempty_count": 4924,
+      "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r5/field-indexes/structured_metric_bm25/bm25/index.sqlite"
+    }
+  }
+}

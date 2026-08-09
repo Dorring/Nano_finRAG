@@ -1,0 +1,14 @@
+{
+  "candidate_bridge_runs": 0,
+  "field_schema_version": "candidate-field-v1",
+  "gate": "pdf_retrieval_v4_gate_08_r5_r0",
+  "gold_reads": 0,
+  "grade_a_input": 19500,
+  "parameter_scan": false,
+  "production_switch_allowed": false,
+  "question_reads": 0,
+  "retrieval_runs": 0,
+  "semantic_graph_runs": 0,
+  "topk_scan": false,
+  "weight_scan": false
+}

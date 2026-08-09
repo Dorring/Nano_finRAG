@@ -1,0 +1,14 @@
+{
+  "candidate_key_conflicts": 0,
+  "duplicate_field_view_ids": 0,
+  "field_keysets_exact": {
+    "axis": true,
+    "context": true,
+    "evidence": true,
+    "metric": true
+  },
+  "grade_a_exact": true,
+  "grade_b_included": 0,
+  "source_traceback_missing": 0,
+  "unmapped_included": 0
+}

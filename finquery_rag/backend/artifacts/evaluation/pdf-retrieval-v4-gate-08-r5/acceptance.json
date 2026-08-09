@@ -1,0 +1,26 @@
+{
+  "decision": "field_aware_structured_gain_real_but_full_system_insufficient",
+  "e2_expanded": {
+    "s0": "57/80",
+    "s1": "64/80",
+    "s2": "62/80",
+    "s3": "59/80",
+    "s4": "59/80"
+  },
+  "gate": "pdf_retrieval_v4_gate_08_r5",
+  "next_gate": "slot_aware_candidate_composition",
+  "parameter_scan": false,
+  "production_switch_allowed": false,
+  "r5_full": "57/80",
+  "raw_gold_retained": "31/31",
+  "s0_parity": true,
+  "structured_conversion": {
+    "s0": "49/68",
+    "s1": "61/68",
+    "s2": "61/68",
+    "s3": "61/68",
+    "s4": "61/68"
+  },
+  "topk_scan": false,
+  "weight_scan": false
+}

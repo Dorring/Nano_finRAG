@@ -1,0 +1,68 @@
+{
+  "recovered_gold": [
+    [
+      "aapl_fy2025_002",
+      0,
+      "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d"
+    ],
+    [
+      "aapl_fy2025_007",
+      1,
+      "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d"
+    ],
+    [
+      "jpm_fy2025_003",
+      0,
+      "candidate:v1:b5494e22a29663edc6ff9f1ce1b126c4c9f32d6933a1479b696a5c93a3e45135"
+    ],
+    [
+      "jpm_fy2025_004",
+      0,
+      "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8"
+    ],
+    [
+      "jpm_fy2025_007",
+      0,
+      "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8"
+    ],
+    [
+      "jpm_fy2025_009",
+      0,
+      "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8"
+    ],
+    [
+      "ko_fy2025_002",
+      0,
+      "candidate:v1:5a25663abb16c0b92c93f62a32e2decdd60aad7b65e2ce937ace826a22a136c9"
+    ],
+    [
+      "ko_fy2025_005",
+      0,
+      "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0"
+    ],
+    [
+      "ko_fy2025_007",
+      1,
+      "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0"
+    ],
+    [
+      "msft_fy2025_007",
+      1,
+      "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a"
+    ],
+    [
+      "tsla_fy2025_002",
+      0,
+      "candidate:v1:764e51106a705bd6f16af004eeb7f0126c4209a0c62a5319d13153dc95987982"
+    ],
+    [
+      "v_fy2025_005",
+      0,
+      "candidate:v1:4c11889fb53c1b1a3194a2e6518b9d94a910cfa71ea99f8e25c4ef206e06613b"
+    ]
+  ],
+  "supporting_lane_counts": {
+    "structured_context_bm25": 1,
+    "structured_metric_bm25": 12
+  }
+}
