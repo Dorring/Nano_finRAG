@@ -1,0 +1,21 @@
+{
+  "bridge_runs": 0,
+  "candidate_added": 0,
+  "candidate_removed": 0,
+  "embedding_calls": 0,
+  "expected_value_reads": 0,
+  "final_top_k": 5,
+  "gate": "pdf_retrieval_v4_gate_08_r8_r3_3",
+  "gold_reads_before_seal": 0,
+  "governance_reads_before_seal": 0,
+  "index_reads": 0,
+  "model_8b": false,
+  "model_scan": false,
+  "production_switch_allowed": false,
+  "production_writes": 0,
+  "prompt_scan": false,
+  "reference_answer_reads": 0,
+  "retrieval_runs": 0,
+  "slot_quota_scan": false,
+  "slot_top_n": 1
+}

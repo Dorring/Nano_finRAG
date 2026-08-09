@@ -1,0 +1,23 @@
+{
+  "candidate_mutation": 0,
+  "decision": "queryplan_guided_reranking_below_physical_source_target",
+  "final_retrieval_target_reached": false,
+  "gate": "pdf_retrieval_v4_gate_08_r8_r3_3",
+  "gold_reads_before_seal": 0,
+  "metrics": {
+    "answerable_question_hit_at_5": "39/72",
+    "calculation_complete_at_5": "4/11",
+    "calculation_input_ceiling": "9/11",
+    "multi_evidence_complete_at_5": "4/16",
+    "multi_evidence_input_ceiling": "12/16",
+    "single_source_question_hit_at_5": "30/56",
+    "single_source_regression_vs_r3_2": 0,
+    "slot_aware_demoted_gold": 0,
+    "slot_aware_promoted_gold": 0,
+    "strict_source_binding_recall_at_100": "68/80",
+    "strict_source_binding_recall_at_5": "43/80",
+    "top100_to_top5_conversion": "43/68"
+  },
+  "next_gate": "semantic_evidence_recall_contract",
+  "production_switch_allowed": false
+}

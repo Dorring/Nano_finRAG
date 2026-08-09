@@ -38,6 +38,8 @@ def build_rerank_query_view(plan: dict[str, Any]) -> str:
         lines.append(f"Task: {value}")
     if value := _clean(plan.get("operation")):
         lines.append(f"Operation: {value}")
+    if value := _clean(plan.get("statement_hint")):
+        lines.append(f"Statement Hint: {value}")
     lines.append("Required evidence:")
     for index, slot in enumerate(plan.get("operand_slots", []), 1):
         fields = []
@@ -53,9 +55,29 @@ def build_rerank_query_view(plan: dict[str, Any]) -> str:
 
 
 def build_slot_rerank_query_view(plan: dict[str, Any], slot: dict[str, Any]) -> str:
-    """Build the preregistered slot-local view without executing or scoring it."""
-    slot_plan = {**plan, "operand_slots": [slot]}
-    return build_rerank_query_view(slot_plan)
+    """Build an operand-focused view that rejects evidence for other operands."""
+    lines = ["[QUESTION]", _clean(plan["raw_question"]), "", "[QUERY PLAN]"]
+    if value := _clean(plan.get("task_type")):
+        lines.append(f"Task: {value}")
+    if value := _clean(plan.get("operation")):
+        lines.append(f"Operation: {value}")
+    if value := _clean(plan.get("statement_hint")):
+        lines.append(f"Statement Hint: {value}")
+    lines.extend(["", "[FOCUS OPERAND]", "Judge candidate relevance ONLY for this required operand."])
+    for label, key in (
+        ("Role", "role"), ("Metric", "raw_metric_phrase"),
+        ("Concepts", "concept_candidates"), ("Period", "period"),
+        ("Temporal Kind", "temporal_kind"), ("Segment", "segment_label"),
+        ("Bucket", "bucket_label"), ("Shape", "required_evidence_shape"),
+    ):
+        if value := _clean(slot.get(key)):
+            lines.append(f"{label}: {value}")
+    lines.extend([
+        "",
+        "The candidate is relevant only if it directly supports this focused operand. "
+        "Evidence supporting only another operand in the original question is not sufficient.",
+    ])
+    return "\n".join(lines).strip()
 
 
 def build_rerank_document_view(

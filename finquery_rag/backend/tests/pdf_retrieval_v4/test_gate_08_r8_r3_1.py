@@ -92,5 +92,7 @@ def test_slot_query_builder_is_implemented_but_not_scored() -> None:
     slot = {"raw_metric_phrase": "revenue", "period": "FY2025", "required_evidence_shape": "atomic_fact"}
     view = build_slot_rerank_query_view(plan, slot)
     assert "revenue" in view and "FY2025" in view
-    assert view == build_rerank_query_view({**plan, "operand_slots": [slot]})
+    assert view != build_rerank_query_view({**plan, "operand_slots": [slot]})
+    assert "[FOCUS OPERAND]" in view
+    assert "Evidence supporting only another operand" in view
     assert not (R31 / "slot-aware-score.json").exists()

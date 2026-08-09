@@ -1,0 +1,6 @@
+{
+  "decision": "queryplan_guided_reranking_below_physical_source_target",
+  "final_retrieval_target_reached": false,
+  "next_gate": "semantic_evidence_recall_contract",
+  "production_switch_allowed": false
+}
