@@ -1,0 +1,35 @@
+{
+  "bm25_searches": 0,
+  "calculator_calls": 0,
+  "dense_searches": 0,
+  "embedding_calls": 0,
+  "evaluation_type": "post_benchmark_iterative_evaluation",
+  "final_pool_k": 40,
+  "frozen_inputs": [
+    "gate_08_r3_sealed_predictions"
+  ],
+  "gate": "pdf_retrieval_v4_gate_08_r4",
+  "generator_calls": 0,
+  "gold_reads": 0,
+  "governance_reads": 0,
+  "index_builds": 0,
+  "index_reads": 0,
+  "parameter_scan": false,
+  "phase": "lane_preserving_fusion_input_preflight",
+  "production_index_writes": 0,
+  "production_switch_allowed": false,
+  "quota_scan": false,
+  "required_r3_fields": [
+    "candidate_raw.fused",
+    "structured_expanded.fused",
+    "is_multi_slot",
+    "slot_definitions",
+    "slot_family_rankings.raw",
+    "slot_family_rankings.structured"
+  ],
+  "reranker_calls": 0,
+  "rrf_k": 60,
+  "schema": "pdf-retrieval-v4/gate-08-r4/preflight/v1",
+  "slot_top_k": 20,
+  "structured_protected_k": 20
+}
