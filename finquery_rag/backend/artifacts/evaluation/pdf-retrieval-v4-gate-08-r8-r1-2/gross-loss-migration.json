@@ -1,0 +1,64 @@
+{
+  "records": [
+    {
+      "candidate_key": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+      "case_id": "ko_fy2025_007",
+      "h0_final_rank": null,
+      "h1_final_rank": null,
+      "original_failure_category": "main_query_residual_displacement",
+      "recovered_to_top50": false,
+      "source_index": 1,
+      "still_lost": true
+    },
+    {
+      "candidate_key": "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e",
+      "case_id": "pfe_fy2024_005",
+      "h0_final_rank": null,
+      "h1_final_rank": null,
+      "original_failure_category": "top_level_consensus_displacement",
+      "recovered_to_top50": false,
+      "source_index": 0,
+      "still_lost": true
+    },
+    {
+      "candidate_key": "candidate:v1:7fcc2dc3de8832dfab1fe0b8a08e25a303a996470fa598765b1e08144018e9f7",
+      "case_id": "tsla_fy2025_003",
+      "h0_final_rank": null,
+      "h1_final_rank": null,
+      "original_failure_category": "top_level_consensus_displacement",
+      "recovered_to_top50": false,
+      "source_index": 0,
+      "still_lost": true
+    },
+    {
+      "candidate_key": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+      "case_id": "tsla_fy2025_005",
+      "h0_final_rank": null,
+      "h1_final_rank": null,
+      "original_failure_category": "structured_family_internal_demotion",
+      "recovered_to_top50": false,
+      "source_index": 0,
+      "still_lost": true
+    },
+    {
+      "candidate_key": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+      "case_id": "tsla_fy2025_007",
+      "h0_final_rank": null,
+      "h1_final_rank": 45,
+      "original_failure_category": "main_query_residual_displacement",
+      "recovered_to_top50": true,
+      "source_index": 1,
+      "still_lost": false
+    },
+    {
+      "candidate_key": "candidate:v1:fd7d3044411973c1af57bf015ca3fd14efb235afbe07f01c8ff1d8d9259536db",
+      "case_id": "v_fy2025_002",
+      "h0_final_rank": null,
+      "h1_final_rank": null,
+      "original_failure_category": "top_level_consensus_displacement",
+      "recovered_to_top50": false,
+      "source_index": 0,
+      "still_lost": true
+    }
+  ]
+}

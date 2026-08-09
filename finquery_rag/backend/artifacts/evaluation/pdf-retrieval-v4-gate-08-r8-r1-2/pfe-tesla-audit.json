@@ -1,0 +1,35 @@
+{
+  "pfe_fy2024_005": {
+    "candidate_key": "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e",
+    "case_id": "pfe_fy2024_005",
+    "h0_final_rank": null,
+    "h1_final_rank": null,
+    "h1_main_top_level_rank": 83,
+    "h1_raw_family_rank": 47,
+    "h1_slot_local_ranks": {},
+    "minimum_coverage_selected": null,
+    "original_failure_category": "top_level_consensus_displacement",
+    "recovered_to_top50": false,
+    "residual_rrf_score": null,
+    "source_index": 0,
+    "still_lost": true
+  },
+  "tsla_fy2025_007": {
+    "candidate_key": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+    "case_id": "tsla_fy2025_007",
+    "h0_final_rank": null,
+    "h1_final_rank": 45,
+    "h1_main_top_level_rank": 11,
+    "h1_raw_family_rank": 18,
+    "h1_slot_local_ranks": {
+      "minuend": null,
+      "subtrahend": null
+    },
+    "minimum_coverage_selected": false,
+    "original_failure_category": "main_query_residual_displacement",
+    "recovered_to_top50": true,
+    "residual_rrf_score": 0.014084507042253521,
+    "source_index": 1,
+    "still_lost": false
+  }
+}
