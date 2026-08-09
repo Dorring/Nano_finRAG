@@ -1,0 +1,172 @@
+{
+  "counts": {
+    "other": 2,
+    "priority_rank_above_100": 3,
+    "residual_budget_displacement": 4,
+    "slot_minimum_coverage_displacement": 1
+  },
+  "deep_present_top100_missing": 10,
+  "records": [
+    {
+      "binding_id": "binding:v1:f09baea7a9725d1371c66e123014d4f553bcf42793942d58d6b1efbb0c4845fc",
+      "candidate_key": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
+      "case_id": "jpm_fy2025_007",
+      "document_id": "jpm_fy2025",
+      "evidence_family_id": "family:v1:9bfd371042b02efcbb7bcd01f35aee51e09381c5641d4d77c672109485d8dfec",
+      "evidence_id": "user_1_jpm_fy2025_annual_report.pdf::page_97::table_1::row_24",
+      "first_failure": "residual_budget_displacement",
+      "main_priority_rank": 110,
+      "minimum_coverage_selected_count": 16,
+      "page": 97,
+      "slot_priority_ranks": {
+        "metric_left": 63,
+        "metric_right": 55
+      },
+      "source_index": 0
+    },
+    {
+      "binding_id": "binding:v1:305dbc7c74aa6448957b12ce28ab9acbed68c106e861acb4b285b38afea3ec3f",
+      "candidate_key": "candidate:v1:d822718dbec99a61ac7b4c914ac8b09a7bf97aa5ece318730b7c97c26821848e",
+      "case_id": "jpm_fy2025_007",
+      "document_id": "jpm_fy2025",
+      "evidence_family_id": "family:v1:6f868f36370706c9c77b0e5c2dbb5548b961d6ae966c10bea838e0cc6e80ee61",
+      "evidence_id": "user_1_jpm_fy2025_annual_report.pdf::page_199::table_1::row_28",
+      "first_failure": "residual_budget_displacement",
+      "main_priority_rank": 176,
+      "minimum_coverage_selected_count": 16,
+      "page": 199,
+      "slot_priority_ranks": {
+        "metric_left": 105,
+        "metric_right": 73
+      },
+      "source_index": 1
+    },
+    {
+      "binding_id": "binding:v1:9cc9d448d1cd6c3b1d11284b0c9ad283cc6bb9e7da1f06daa7d07c3d024f5542",
+      "candidate_key": "candidate:v1:214ce6712de95bbe235ef407a4a41b42d0ba38080b13d80a418493656e357a9b",
+      "case_id": "ko_fy2025_007",
+      "document_id": "ko_fy2025",
+      "evidence_family_id": "family:v1:6ec0cf0280d0aae8ea5e61d2508121bde17c8516b8cc0b1cf40a37b65e1c709f",
+      "evidence_id": "user_1_ko_fy2025_10k.pdf::page_119::layout_table_1::row_2",
+      "first_failure": "other",
+      "main_priority_rank": null,
+      "minimum_coverage_selected_count": 15,
+      "page": 119,
+      "slot_priority_ranks": {
+        "denominator": null,
+        "numerator": 110
+      },
+      "source_index": 0
+    },
+    {
+      "binding_id": "binding:v1:3a5c170c50de2578fa994acfb66bf78227719175c8e339a20f68b5b1c6ccc726",
+      "candidate_key": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+      "case_id": "ko_fy2025_007",
+      "document_id": "ko_fy2025",
+      "evidence_family_id": "family:v1:dc283ab83ed70aa63482530392b6ba8745c99e45c0f1f911c299fcc1991ea088",
+      "evidence_id": "user_1_ko_fy2025_10k.pdf::page_119::layout_table_1::row_4",
+      "first_failure": "slot_minimum_coverage_displacement",
+      "main_priority_rank": 74,
+      "minimum_coverage_selected_count": 15,
+      "page": 119,
+      "slot_priority_ranks": {
+        "denominator": 58,
+        "numerator": 45
+      },
+      "source_index": 1
+    },
+    {
+      "binding_id": "binding:v1:a08f5727d9cf62829059c9984e647c534b967fab4432223701c521f28e9a7e61",
+      "candidate_key": "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024",
+      "case_id": "nvda_fy2025_001",
+      "document_id": "nvda_fy2025",
+      "evidence_family_id": "family:v1:92135b0bf1dc772c125ed5b8357ca06125c8046121ab549186148c59eb546bd1",
+      "evidence_id": "user_1_nvda_fy2025_annual_report.pdf::page_144::table_1::row_4",
+      "first_failure": "priority_rank_above_100",
+      "main_priority_rank": 443,
+      "minimum_coverage_selected_count": 0,
+      "page": 144,
+      "slot_priority_ranks": {},
+      "source_index": 0
+    },
+    {
+      "binding_id": "binding:v1:81b269df69977640d181af102951e547da0f5206efdb82a6f11de1ae275aaa04",
+      "candidate_key": "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024",
+      "case_id": "nvda_fy2025_006",
+      "document_id": "nvda_fy2025",
+      "evidence_family_id": "family:v1:92135b0bf1dc772c125ed5b8357ca06125c8046121ab549186148c59eb546bd1",
+      "evidence_id": "user_1_nvda_fy2025_annual_report.pdf::page_144::table_1::row_4",
+      "first_failure": "residual_budget_displacement",
+      "main_priority_rank": 370,
+      "minimum_coverage_selected_count": 10,
+      "page": 144,
+      "slot_priority_ranks": {
+        "base_period": 97,
+        "current_period": 137
+      },
+      "source_index": 0
+    },
+    {
+      "binding_id": "binding:v1:0be5d0fab0e5acd7146e7a2a53a8b85199a53059882127f86c8e448f4aeb0be9",
+      "candidate_key": "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024",
+      "case_id": "nvda_fy2025_006",
+      "document_id": "nvda_fy2025",
+      "evidence_family_id": "family:v1:92135b0bf1dc772c125ed5b8357ca06125c8046121ab549186148c59eb546bd1",
+      "evidence_id": "user_1_nvda_fy2025_annual_report.pdf::page_144::table_1::row_4",
+      "first_failure": "residual_budget_displacement",
+      "main_priority_rank": 370,
+      "minimum_coverage_selected_count": 10,
+      "page": 144,
+      "slot_priority_ranks": {
+        "base_period": 97,
+        "current_period": 137
+      },
+      "source_index": 1
+    },
+    {
+      "binding_id": "binding:v1:a8843b0e03ee4eefd72381649c102e842d704983a33e628e73970ebf6e2dbc81",
+      "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+      "case_id": "pfe_fy2024_002",
+      "document_id": "pfe_fy2024",
+      "evidence_family_id": "family:v1:f0a042c0d027481305dbed395bc4a63d56bb1f12a44c621b76bcc608badb5fa0",
+      "evidence_id": "user_1_pfe_fy2024_10k.pdf::page_45::table_1",
+      "first_failure": "priority_rank_above_100",
+      "main_priority_rank": 643,
+      "minimum_coverage_selected_count": 0,
+      "page": 45,
+      "slot_priority_ranks": {},
+      "source_index": 0
+    },
+    {
+      "binding_id": "binding:v1:8bcea702b32a07457490fb787710de4b05c74129da47c20276ce098bc4c1cc95",
+      "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+      "case_id": "pfe_fy2024_007",
+      "document_id": "pfe_fy2024",
+      "evidence_family_id": "family:v1:f0a042c0d027481305dbed395bc4a63d56bb1f12a44c621b76bcc608badb5fa0",
+      "evidence_id": "user_1_pfe_fy2024_10k.pdf::page_45::table_1",
+      "first_failure": "other",
+      "main_priority_rank": null,
+      "minimum_coverage_selected_count": 14,
+      "page": 45,
+      "slot_priority_ranks": {
+        "metric_left": 447,
+        "metric_right": null
+      },
+      "source_index": 0
+    },
+    {
+      "binding_id": "binding:v1:b7ef25e673cb960cc82a511a575af339bb885f632c770d97ecab3b7bc9097bca",
+      "candidate_key": "candidate:v1:7fcc2dc3de8832dfab1fe0b8a08e25a303a996470fa598765b1e08144018e9f7",
+      "case_id": "tsla_fy2025_003",
+      "document_id": "tsla_fy2025",
+      "evidence_family_id": "family:v1:0ee0f57867303e2a0e7a36094e05f3af63713eeff8a925418c6d1941d644399b",
+      "evidence_id": "user_1_tsla_fy2025_10k.pdf::page_69::layout_table_2::row_2",
+      "first_failure": "priority_rank_above_100",
+      "main_priority_rank": 101,
+      "minimum_coverage_selected_count": 0,
+      "page": 69,
+      "slot_priority_ranks": {},
+      "source_index": 0
+    }
+  ]
+}

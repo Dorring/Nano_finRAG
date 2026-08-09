@@ -1,0 +1,6 @@
+{
+  "decision": "bounded_top100_rerank_input_passed",
+  "next_gate": "structure_aware_cross_encoder",
+  "production_switch_allowed": false,
+  "reranker_allowed": true
+}

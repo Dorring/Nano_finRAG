@@ -1,0 +1,23 @@
+{
+  "decision": "bounded_top100_rerank_input_passed",
+  "gate": "pdf_retrieval_v4_gate_08_r8_r2a_2",
+  "metrics": {
+    "calculation_complete_at_100": "9/11",
+    "deep_supply_presence": "78/80",
+    "deep_to_top100_conversion": "68/78",
+    "deep_to_top100_conversion_rate": 0.871795,
+    "multi_evidence_complete_at_100": "12/16",
+    "production_raw_own_recall_at_100": "31/80",
+    "raw_regression": 1,
+    "raw_retained_at_100": "30/31",
+    "recall_at_10": "32/80",
+    "recall_at_100": "68/80",
+    "recall_at_20": "42/80",
+    "recall_at_40": "56/80",
+    "recall_at_5": "20/80",
+    "recall_at_50": "59/80"
+  },
+  "next_gate": "structure_aware_cross_encoder",
+  "production_switch_allowed": false,
+  "reranker_allowed": true
+}

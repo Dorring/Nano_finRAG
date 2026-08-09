@@ -1,0 +1,15 @@
+{
+  "candidate_count_le_100": "72/72",
+  "input_hashes": {
+    "r2a_input_integrity": "34b0d4c9f7cddfc40ffad8de4d31a91c88b5a6053bdbc3acb8abfb69735f2cdf",
+    "r2a_prediction": "63dd2f91f078d6101e564c06d174e5772be11b82ba91e8a2c7416d9512dc6ee9",
+    "r2a_prediction_seal": "b78c732d2d869d40f5a7beb8120679137e257279e9acdb5ec6791c9054b8cde0",
+    "strict_source_contract": "0a5b04444c20f49f94c0896a1f225553dc8803893cc13e25eab86c7c5c2bed9d",
+    "support_invariant_selector": "665873dbb92d0e4cb34ea444c961342ca32c701a6cb4f028f0fb618f84e57c7d",
+    "top100_selector": "cf520159bdbda425c675da4f51036db5564e52ebe7b785d0a18de991293d45ff"
+  },
+  "input_union_shortfall_cases": 0,
+  "prediction_count": 72,
+  "prediction_file": "bounded-top100-predictions.jsonl.gz",
+  "prediction_sha256": "ced014c357a3c8862a5ae3723a4c618556156542fd63aa2a8fd4bf766b60f01a"
+}
