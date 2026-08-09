@@ -1,0 +1,15 @@
+{
+  "attachment_sha256": "effa166e071da6bd8c7b98817c096507892c2f9a352c9e9d4ec5a85e6afb709e",
+  "catalog_hashes": {
+    "atomic-facts.jsonl": "04e023a2c8519ba02f985a58b6efffdd2057a3c3b9da85470fc19db85ac3c75c",
+    "bucket-facts.jsonl": "43505a1876c960e25e0372c158ad96fc85f736d48aa89c8ea2b5dbf5c60a7896",
+    "comparison-facts.jsonl": "d1924e14517d5cd3ec3fa2941a9e41958a5395953d7d96df9d5a85ad927894b9",
+    "narrative-evidence.jsonl": "1c74279a9402f6b23e8c35f84a03659a3367d1220aebd202e3a2196ce50c0c5e",
+    "row-matrices.jsonl": "226e5ba78728eff9089a27f7423842e2c7b7dd783b67aad90812ad9def2e0d54"
+  },
+  "input_hashes": {
+    "gate09_attachment": "15c3383491b1fa5bd8431083a371791eae1a9f10f5e0ef375c6c57dc0ff02e02",
+    "gate09_prediction": "2a7adb9b994874fbad3d14b202d4918316c7d7acb758a2ad70d2adafe7bdd679"
+  },
+  "prediction_count": 72
+}

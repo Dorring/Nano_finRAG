@@ -1,0 +1,26 @@
+{
+  "decision": "authoritative_evidence_attachment_rehydrated",
+  "edge_parity": {
+    "candidate_evidence_edge_count": 14451,
+    "candidate_key_rank_mutations": 0,
+    "candidate_position_count": 7292,
+    "canonical_evidence_count": 12638,
+    "new_evidence_ids": 0,
+    "removed_evidence_ids": 0
+  },
+  "next_gate": "context_disambiguatability_audit",
+  "payload_authority": {
+    "document_disagreement": 0,
+    "evidence_type_disagreement": 0,
+    "missing_authoritative_payload": 0,
+    "type_counts": {
+      "atomic_fact": 5175,
+      "bucket_fact": 188,
+      "comparison_fact": 422,
+      "narrative_evidence": 2125,
+      "raw_candidate": 2986,
+      "row_matrix": 1742
+    }
+  },
+  "production_switch_allowed": false
+}

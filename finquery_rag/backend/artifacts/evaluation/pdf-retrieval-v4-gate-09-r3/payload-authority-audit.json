@@ -1,0 +1,13 @@
+{
+  "document_disagreement": 0,
+  "evidence_type_disagreement": 0,
+  "missing_authoritative_payload": 0,
+  "type_counts": {
+    "atomic_fact": 5175,
+    "bucket_fact": 188,
+    "comparison_fact": 422,
+    "narrative_evidence": 2125,
+    "raw_candidate": 2986,
+    "row_matrix": 1742
+  }
+}

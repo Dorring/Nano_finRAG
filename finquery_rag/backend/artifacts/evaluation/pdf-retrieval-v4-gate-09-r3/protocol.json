@@ -1,0 +1,18 @@
+{
+  "bm25_searches": 0,
+  "calculator_calls": 0,
+  "candidate_bridge_runs": 0,
+  "dense_searches": 0,
+  "embedding_calls": 0,
+  "gate": "pdf_retrieval_v4_gate_09_r3",
+  "generator_calls": 0,
+  "gold_reads": 0,
+  "governance_reads": 0,
+  "index_builds": 0,
+  "index_reads": 0,
+  "parameter_scan": false,
+  "production_switch_allowed": false,
+  "production_writes": 0,
+  "retrieval_runs": 0,
+  "semantic_graph_runs": 0
+}

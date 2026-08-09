@@ -1,0 +1,513 @@
+{
+  "counts": {
+    "not_pool_complete": 6,
+    "query_silent_source_ambiguity": 5,
+    "strict_source_runtime_underdetermined": 7
+  },
+  "records": {
+    "aapl_fy2025_001": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "aapl_fy2025_002": {
+      "candidate_pool_complete": false,
+      "primary_status": "unique",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": true
+    },
+    "aapl_fy2025_003": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": true
+    },
+    "aapl_fy2025_004": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": true
+    },
+    "aapl_fy2025_005": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": true
+    },
+    "aapl_fy2025_006": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "aapl_fy2025_007": {
+      "candidate_pool_complete": false,
+      "primary_status": "unique",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": true
+    },
+    "aapl_fy2025_008": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "aapl_fy2025_009": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "jpm_fy2025_001": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "jpm_fy2025_002": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "jpm_fy2025_003": {
+      "candidate_pool_complete": false,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "jpm_fy2025_004": {
+      "candidate_pool_complete": false,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "jpm_fy2025_005": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "jpm_fy2025_006": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "jpm_fy2025_007": {
+      "candidate_pool_complete": false,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "jpm_fy2025_008": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "jpm_fy2025_009": {
+      "candidate_pool_complete": false,
+      "primary_status": "unique",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": true
+    },
+    "ko_fy2025_001": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "ko_fy2025_002": {
+      "candidate_pool_complete": false,
+      "primary_status": "unique",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": true
+    },
+    "ko_fy2025_003": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "ko_fy2025_004": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "ko_fy2025_005": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "ko_fy2025_006": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "ko_fy2025_007": {
+      "candidate_pool_complete": false,
+      "primary_status": "partial",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "ko_fy2025_008": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "ko_fy2025_009": {
+      "candidate_pool_complete": false,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "msft_fy2025_001": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "msft_fy2025_002": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "msft_fy2025_003": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "msft_fy2025_004": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "msft_fy2025_005": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "msft_fy2025_006": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "msft_fy2025_007": {
+      "candidate_pool_complete": true,
+      "primary_status": "partial",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "msft_fy2025_008": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "msft_fy2025_009": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "nvda_fy2025_001": {
+      "candidate_pool_complete": false,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "nvda_fy2025_002": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "nvda_fy2025_003": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "nvda_fy2025_004": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "nvda_fy2025_005": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "nvda_fy2025_006": {
+      "candidate_pool_complete": false,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "nvda_fy2025_007": {
+      "candidate_pool_complete": true,
+      "primary_status": "partial",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "nvda_fy2025_008": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "nvda_fy2025_009": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "pfe_fy2024_001": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "pfe_fy2024_002": {
+      "candidate_pool_complete": false,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "pfe_fy2024_003": {
+      "candidate_pool_complete": false,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "pfe_fy2024_004": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "pfe_fy2024_005": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "pfe_fy2024_006": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "pfe_fy2024_007": {
+      "candidate_pool_complete": false,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "pfe_fy2024_008": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "pfe_fy2024_009": {
+      "candidate_pool_complete": false,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "tsla_fy2025_001": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "tsla_fy2025_002": {
+      "candidate_pool_complete": false,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "tsla_fy2025_003": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "tsla_fy2025_004": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": true,
+      "typed_runtime_ready": true
+    },
+    "tsla_fy2025_005": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": true
+    },
+    "tsla_fy2025_006": {
+      "candidate_pool_complete": false,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "tsla_fy2025_007": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": true
+    },
+    "tsla_fy2025_008": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "tsla_fy2025_009": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": true,
+      "typed_runtime_ready": true
+    },
+    "v_fy2025_001": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "v_fy2025_002": {
+      "candidate_pool_complete": true,
+      "primary_status": "unique",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": true
+    },
+    "v_fy2025_003": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "v_fy2025_004": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "v_fy2025_005": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "v_fy2025_006": {
+      "candidate_pool_complete": true,
+      "primary_status": "ambiguous",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "v_fy2025_007": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "v_fy2025_008": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    },
+    "v_fy2025_009": {
+      "candidate_pool_complete": true,
+      "primary_status": "empty",
+      "runtime_disambiguatable": false,
+      "strict_unique_primary_complete": false,
+      "typed_runtime_ready": false
+    }
+  }
+}

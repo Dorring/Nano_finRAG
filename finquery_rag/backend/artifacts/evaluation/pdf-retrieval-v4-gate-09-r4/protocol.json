@@ -1,0 +1,19 @@
+{
+  "attachment_edge_mutations": 0,
+  "bm25_searches": 0,
+  "calculator_calls": 0,
+  "candidate_pool_mutations": 0,
+  "dense_searches": 0,
+  "embedding_calls": 0,
+  "evidence_identity_mutations": 0,
+  "gate": "pdf_retrieval_v4_gate_09_r4",
+  "generator_calls": 0,
+  "gold_reads_before_seal": 0,
+  "governance_reads_before_seal": 0,
+  "index_builds": 0,
+  "index_reads": 0,
+  "parameter_scan": false,
+  "production_switch_allowed": false,
+  "production_writes": 0,
+  "retrieval_runs": 0
+}

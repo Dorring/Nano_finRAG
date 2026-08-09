@@ -1,0 +1,51 @@
+{
+  "benchmark_multi_evidence": {
+    "ambiguous_pool_complete": 5,
+    "candidate_pool_complete": 10,
+    "denominator": 16,
+    "formal_pool_to_set": "0/10",
+    "runtime_conversion": "not_evaluable",
+    "runtime_disambiguatable": 0,
+    "runtime_resolved": 0,
+    "strict_unique_primary": 0
+  },
+  "calculation": {
+    "ambiguous_pool_complete": 5,
+    "candidate_pool_complete": 8,
+    "denominator": 11,
+    "formal_pool_to_set": "0/8",
+    "runtime_conversion": "not_evaluable",
+    "runtime_disambiguatable": 0,
+    "runtime_resolved": 0,
+    "strict_unique_primary": 0,
+    "typed_runtime_ready": 1
+  },
+  "calculator_allowed": false,
+  "candidate_positions": 7292,
+  "decision": "context_aware_evidence_set_insufficient",
+  "evidence_identities": 12638,
+  "false_bindings": {
+    "cross_document_set": 0,
+    "false_context_binding": 0,
+    "false_currency_binding": 0,
+    "false_matrix_cover": 0,
+    "false_metric_binding": 0,
+    "false_period_binding": 0,
+    "false_scale_binding": 0,
+    "raw_typed_operand": 0,
+    "silent_ambiguity_resolution": 0
+  },
+  "gate": "pdf_retrieval_v4_gate_09_r4",
+  "multi_slot": {
+    "ambiguous_pool_complete": 5,
+    "candidate_pool_complete": 12,
+    "denominator": 18,
+    "formal_pool_to_set": "0/12",
+    "runtime_conversion": "not_evaluable",
+    "runtime_disambiguatable": 0,
+    "runtime_resolved": 0,
+    "strict_unique_primary": 0
+  },
+  "next_gate": "stop_and_fix_context_or_slot_contract",
+  "production_switch_allowed": false
+}

@@ -1,0 +1,176 @@
+{
+  "counts": {
+    "context_unresolved": 12,
+    "query_silent_source_ambiguity": 12
+  },
+  "records": [
+    {
+      "case_id": "aapl_fy2025_006",
+      "classifications": [
+        {
+          "category": "query_silent_source_ambiguity",
+          "slot_id": "current_period"
+        },
+        {
+          "category": "query_silent_source_ambiguity",
+          "slot_id": "base_period"
+        }
+      ],
+      "runtime_disambiguatable": false
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "classifications": [
+        {
+          "category": "context_unresolved",
+          "slot_id": "current_period"
+        },
+        {
+          "category": "context_unresolved",
+          "slot_id": "base_period"
+        }
+      ],
+      "runtime_disambiguatable": false
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "classifications": [
+        {
+          "category": "query_silent_source_ambiguity",
+          "slot_id": "current_period"
+        },
+        {
+          "category": "query_silent_source_ambiguity",
+          "slot_id": "base_period"
+        }
+      ],
+      "runtime_disambiguatable": false
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "classifications": [
+        {
+          "category": "query_silent_source_ambiguity",
+          "slot_id": "current_period"
+        },
+        {
+          "category": "query_silent_source_ambiguity",
+          "slot_id": "base_period"
+        }
+      ],
+      "runtime_disambiguatable": false
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "classifications": [
+        {
+          "category": "context_unresolved",
+          "slot_id": "numerator"
+        },
+        {
+          "category": "query_silent_source_ambiguity",
+          "slot_id": "denominator"
+        }
+      ],
+      "runtime_disambiguatable": false
+    },
+    {
+      "case_id": "nvda_fy2025_007",
+      "classifications": [
+        {
+          "category": "context_unresolved",
+          "slot_id": "metric_left"
+        },
+        {
+          "category": "context_unresolved",
+          "slot_id": "metric_right"
+        }
+      ],
+      "runtime_disambiguatable": false
+    },
+    {
+      "case_id": "pfe_fy2024_006",
+      "classifications": [
+        {
+          "category": "query_silent_source_ambiguity",
+          "slot_id": "current_period"
+        },
+        {
+          "category": "query_silent_source_ambiguity",
+          "slot_id": "base_period"
+        }
+      ],
+      "runtime_disambiguatable": false
+    },
+    {
+      "case_id": "pfe_fy2024_008",
+      "classifications": [
+        {
+          "category": "context_unresolved",
+          "slot_id": "period_1"
+        },
+        {
+          "category": "context_unresolved",
+          "slot_id": "period_2"
+        }
+      ],
+      "runtime_disambiguatable": false
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "classifications": [
+        {
+          "category": "query_silent_source_ambiguity",
+          "slot_id": "minuend"
+        },
+        {
+          "category": "context_unresolved",
+          "slot_id": "subtrahend"
+        }
+      ],
+      "runtime_disambiguatable": false
+    },
+    {
+      "case_id": "tsla_fy2025_008",
+      "classifications": [
+        {
+          "category": "context_unresolved",
+          "slot_id": "period_1"
+        },
+        {
+          "category": "context_unresolved",
+          "slot_id": "period_2"
+        }
+      ],
+      "runtime_disambiguatable": false
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "classifications": [
+        {
+          "category": "query_silent_source_ambiguity",
+          "slot_id": "current_period"
+        },
+        {
+          "category": "query_silent_source_ambiguity",
+          "slot_id": "base_period"
+        }
+      ],
+      "runtime_disambiguatable": false
+    },
+    {
+      "case_id": "v_fy2025_007",
+      "classifications": [
+        {
+          "category": "context_unresolved",
+          "slot_id": "metric_left"
+        },
+        {
+          "category": "context_unresolved",
+          "slot_id": "metric_right"
+        }
+      ],
+      "runtime_disambiguatable": false
+    }
+  ]
+}

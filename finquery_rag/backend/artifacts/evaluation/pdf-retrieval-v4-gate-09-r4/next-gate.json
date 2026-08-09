@@ -1,0 +1,5 @@
+{
+  "decision": "context_aware_evidence_set_insufficient",
+  "next_gate": "stop_and_fix_context_or_slot_contract",
+  "production_switch_allowed": false
+}

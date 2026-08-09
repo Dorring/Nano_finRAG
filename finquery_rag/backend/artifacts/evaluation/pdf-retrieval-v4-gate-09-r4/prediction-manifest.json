@@ -1,0 +1,16 @@
+{
+  "candidate_positions": 7292,
+  "evidence_identities": 12638,
+  "input_hashes": {
+    "original_gate09": "2a7adb9b994874fbad3d14b202d4918316c7d7acb758a2ad70d2adafe7bdd679",
+    "query_plans": "e1c6e5af104ebda3687c2844fa8549d00b3b89eb649d369f92fb1504920de13f",
+    "r3_attachment": "effa166e071da6bd8c7b98817c096507892c2f9a352c9e9d4ec5a85e6afb709e"
+  },
+  "prediction_count": 72,
+  "prediction_sha256": "a3f3de5b258c9dba0c9e19d16c9bc994ad6e670be4157c48f756444d6d784138",
+  "source_hashes": {
+    "matcher_v3": "192bac669c92a5937f53067615eb04079f82baac722880e004c2cba98287af5a",
+    "operand_v2": "b4c837d7839f888ae1849738baa5fa97ea5f5a59643be7bd49e699f4318479a8",
+    "set_cover_v3": "0c1521fd591a2c614bf83c5ee750a19fa5cbda281eeee2a874874d8b6a19835d"
+  }
+}

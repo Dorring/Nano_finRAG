@@ -1,0 +1,8 @@
+{
+  "attachment_mutations": 0,
+  "decision": "context_disambiguatability_audited",
+  "gold_reads_after_r3_seal": true,
+  "next_gate": "context_aware_evidence_set_replay",
+  "production_switch_allowed": false,
+  "runtime_disambiguatable_multi_slot_cases": []
+}
