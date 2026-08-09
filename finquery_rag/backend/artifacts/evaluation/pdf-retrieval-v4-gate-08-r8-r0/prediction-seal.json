@@ -1,0 +1,30 @@
+{
+  "bm25_reruns": 0,
+  "bridge_changes": 0,
+  "dense_reruns": 0,
+  "depths": [
+    5,
+    10,
+    20,
+    40,
+    50
+  ],
+  "embedding_reruns": 0,
+  "gate": "pdf_retrieval_v4_gate_08_r8_r0",
+  "gold_reads_before_seal": 0,
+  "prediction_count": 72,
+  "prediction_sha256": "8659de6b9486cb696e0d0179a646b0f9ea73086c55e071f39f2aef025d6d6d6a",
+  "production_switch_allowed": false,
+  "query_changes": 0,
+  "query_plan_changes": 0,
+  "r7_prediction_sha256": "d8cd323eab187948b1e2a5a3c15ee0e79561d4860c46e60de23eed12da9cf309",
+  "r7_seal_sha256": "cb6a7646f1819dd49d68bb996088cd0ad042ea524a7030c0b14b787cad66d5be",
+  "reranker_calls": 0,
+  "sealed": true,
+  "sealed_pool_length": {
+    "count_below_50": 0,
+    "max": 144,
+    "mean": 101.27777777777777,
+    "min": 62
+  }
+}

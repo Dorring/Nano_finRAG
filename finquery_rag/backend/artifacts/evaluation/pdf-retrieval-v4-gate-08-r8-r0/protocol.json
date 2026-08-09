@@ -1,0 +1,19 @@
+{
+  "bm25_reruns": 0,
+  "bridge_changes": 0,
+  "dense_reruns": 0,
+  "depths": [
+    5,
+    10,
+    20,
+    40,
+    50
+  ],
+  "embedding_reruns": 0,
+  "gate": "pdf_retrieval_v4_gate_08_r8_r0",
+  "gold_reads_before_seal": 0,
+  "production_switch_allowed": false,
+  "query_changes": 0,
+  "query_plan_changes": 0,
+  "reranker_calls": 0
+}
