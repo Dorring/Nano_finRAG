@@ -1,0 +1,23 @@
+{
+  "atomic_to_family_delta": {
+    "count": 75,
+    "max": 235,
+    "median": 5,
+    "p75": 13,
+    "p90": 44
+  },
+  "family_to_main_delta": {
+    "count": 76,
+    "max": 264,
+    "median": 9,
+    "p75": 23,
+    "p90": 44
+  },
+  "main_to_final_delta": {
+    "count": 57,
+    "max": 34,
+    "median": 0,
+    "p75": 0,
+    "p90": 0
+  }
+}

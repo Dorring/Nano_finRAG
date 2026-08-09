@@ -1,0 +1,16 @@
+{
+  "bounded_top50": "57/80",
+  "bridge_recovery_needed": false,
+  "compression_gap": 21,
+  "decision": "top50_heuristic_compression_ceiling_reached",
+  "deep_present": "78/80",
+  "embedding_change_allowed": false,
+  "first_failure_classified": "21/21",
+  "gate": "pdf_retrieval_v4_gate_08_r8_r2a_1",
+  "next_gate": "bounded_top100_rerank_input",
+  "production_switch_allowed": false,
+  "provenance_diagnostic_at50": "59/80",
+  "r2a_prediction_sha256": "63dd2f91f078d6101e564c06d174e5772be11b82ba91e8a2c7416d9512dc6ee9",
+  "rerank_input_accessibility_at100": "73/80",
+  "reranker_allowed": false
+}

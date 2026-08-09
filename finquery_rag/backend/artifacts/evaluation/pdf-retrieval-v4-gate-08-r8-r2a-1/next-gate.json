@@ -1,0 +1,6 @@
+{
+  "decision": "top50_heuristic_compression_ceiling_reached",
+  "next_gate": "bounded_top100_rerank_input",
+  "production_switch_allowed": false,
+  "reranker_allowed": false
+}
