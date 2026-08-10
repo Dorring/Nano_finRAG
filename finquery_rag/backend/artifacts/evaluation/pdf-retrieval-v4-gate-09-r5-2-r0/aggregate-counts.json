@@ -1,0 +1,26 @@
+{
+  "blocked_slot_count": 18,
+  "calculation_case_count": 11,
+  "candidate_fact_metric_tier_counts": {
+    "M0_exact_path": 126,
+    "M1_exact_leaf": 8
+  },
+  "first_failure_counts": {
+    "multiple_operand_tuples": 12,
+    "other": 4,
+    "true_metric_absence": 6
+  },
+  "metric_representation_significant": false,
+  "multiple_operand_tuples_significant": true,
+  "r5_1_case_status_counts": {
+    "deterministic_ready": 2,
+    "runtime_operand_ambiguity": 6,
+    "undercovered": 3
+  },
+  "required_slot_count": 22,
+  "significance_threshold": 4,
+  "slot_metric_tier_counts": {
+    "M0_exact_path": 16,
+    "no_match": 6
+  }
+}

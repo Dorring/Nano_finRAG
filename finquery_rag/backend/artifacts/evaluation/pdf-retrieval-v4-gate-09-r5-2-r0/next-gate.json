@@ -1,0 +1,6 @@
+{
+  "decision": "multiple_operand_tuple_failure_dominant",
+  "next_gate": "structural_joint_binder_repair",
+  "production_switch_allowed": false,
+  "recommended_ablation": "B2"
+}

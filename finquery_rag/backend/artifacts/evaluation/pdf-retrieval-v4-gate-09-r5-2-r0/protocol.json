@@ -1,0 +1,29 @@
+{
+  "binder_mutation": 0,
+  "calculator_calls": 0,
+  "canonical_metric_allowed_operations": [
+    "casefold",
+    "punctuation_and_path_separator_normalization",
+    "whitespace_normalization",
+    "closed_english_morphology_map",
+    "remove_the_of_for"
+  ],
+  "canonical_metric_forbidden": [
+    "synonym",
+    "concept_candidate",
+    "embedding",
+    "fuzzy",
+    "subset",
+    "llm"
+  ],
+  "canonical_metric_used_for_binding": false,
+  "embedding_calls": 0,
+  "gate": "pdf_retrieval_v4_gate_09_r5_2_r0",
+  "prediction_rerun": 0,
+  "query_plan_mutation": 0,
+  "rank_resolves_ambiguity": false,
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "stage": "post_seal_diagnostic_only",
+  "unit_contract_mutation": 0
+}

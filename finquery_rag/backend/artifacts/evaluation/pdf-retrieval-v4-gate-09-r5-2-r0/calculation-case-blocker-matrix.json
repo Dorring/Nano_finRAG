@@ -1,0 +1,806 @@
+{
+  "cases": [
+    {
+      "case_id": "aapl_fy2025_006",
+      "joint_assignment_diagnostic": {
+        "assignment_count": 16,
+        "logical_table_identity_is_distinct_from_fragment_identity": true,
+        "operand_tuple_count": 16,
+        "same_fragment_assignment_count": 5,
+        "same_fragment_operand_tuple_count": 5,
+        "same_logical_table_assignment_count": 2,
+        "same_logical_table_operand_tuple_count": 2,
+        "same_row_assignment_count": 5,
+        "same_row_operand_tuple_count": 5
+      },
+      "operation": "growth_rate",
+      "r5_1_binding_status": "runtime_operand_ambiguity",
+      "slot_blockers": [
+        {
+          "first_failure": "multiple_operand_tuples",
+          "slot_id": "current_period"
+        },
+        {
+          "first_failure": "multiple_operand_tuples",
+          "slot_id": "base_period"
+        }
+      ],
+      "slot_metrics": [
+        {
+          "canonical_metric_id": "e3544cfecb860f70d294fc40335d9b134f5531b77ce332c69d785af80b585677",
+          "canonical_metric_tokens": [
+            "net",
+            "sale",
+            "total"
+          ],
+          "case_id": "aapl_fy2025_006",
+          "first_failure": "multiple_operand_tuples",
+          "m0_m1_dimension_match_count": 4,
+          "m0_m1_metric_match_count": 11,
+          "m0_m1_operand_tuple_count": 4,
+          "m0_m1_shape_match_count": 4,
+          "m2_diagnostic_dimension_match_count": 4,
+          "m2_diagnostic_metric_match_count": 11,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 4,
+          "m2_diagnostic_shape_match_count": 4,
+          "raw_metric_phrase": "total net sales",
+          "role": "current_period",
+          "slot_id": "current_period",
+          "slot_metric_tier": "M0_exact_path"
+        },
+        {
+          "canonical_metric_id": "e3544cfecb860f70d294fc40335d9b134f5531b77ce332c69d785af80b585677",
+          "canonical_metric_tokens": [
+            "net",
+            "sale",
+            "total"
+          ],
+          "case_id": "aapl_fy2025_006",
+          "first_failure": "multiple_operand_tuples",
+          "m0_m1_dimension_match_count": 4,
+          "m0_m1_metric_match_count": 11,
+          "m0_m1_operand_tuple_count": 4,
+          "m0_m1_shape_match_count": 4,
+          "m2_diagnostic_dimension_match_count": 4,
+          "m2_diagnostic_metric_match_count": 11,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 4,
+          "m2_diagnostic_shape_match_count": 4,
+          "raw_metric_phrase": "total net sales",
+          "role": "base_period",
+          "slot_id": "base_period",
+          "slot_metric_tier": "M0_exact_path"
+        }
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "joint_assignment_diagnostic": {
+        "assignment_count": 49,
+        "logical_table_identity_is_distinct_from_fragment_identity": true,
+        "operand_tuple_count": 49,
+        "same_fragment_assignment_count": 15,
+        "same_fragment_operand_tuple_count": 15,
+        "same_logical_table_assignment_count": 2,
+        "same_logical_table_operand_tuple_count": 2,
+        "same_row_assignment_count": 15,
+        "same_row_operand_tuple_count": 15
+      },
+      "operation": "growth_rate",
+      "r5_1_binding_status": "runtime_operand_ambiguity",
+      "slot_blockers": [
+        {
+          "first_failure": "multiple_operand_tuples",
+          "slot_id": "current_period"
+        },
+        {
+          "first_failure": "multiple_operand_tuples",
+          "slot_id": "base_period"
+        }
+      ],
+      "slot_metrics": [
+        {
+          "canonical_metric_id": "b62f2a555c0f8709cdd432e4da2df309da88a6eecb7da29500bac519c05d2b92",
+          "canonical_metric_tokens": [
+            "asset",
+            "total"
+          ],
+          "case_id": "jpm_fy2025_006",
+          "first_failure": "multiple_operand_tuples",
+          "m0_m1_dimension_match_count": 7,
+          "m0_m1_metric_match_count": 19,
+          "m0_m1_operand_tuple_count": 7,
+          "m0_m1_shape_match_count": 7,
+          "m2_diagnostic_dimension_match_count": 5,
+          "m2_diagnostic_metric_match_count": 15,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 5,
+          "m2_diagnostic_shape_match_count": 5,
+          "raw_metric_phrase": "total assets",
+          "role": "current_period",
+          "slot_id": "current_period",
+          "slot_metric_tier": "M0_exact_path"
+        },
+        {
+          "canonical_metric_id": "b62f2a555c0f8709cdd432e4da2df309da88a6eecb7da29500bac519c05d2b92",
+          "canonical_metric_tokens": [
+            "asset",
+            "total"
+          ],
+          "case_id": "jpm_fy2025_006",
+          "first_failure": "multiple_operand_tuples",
+          "m0_m1_dimension_match_count": 7,
+          "m0_m1_metric_match_count": 19,
+          "m0_m1_operand_tuple_count": 7,
+          "m0_m1_shape_match_count": 7,
+          "m2_diagnostic_dimension_match_count": 5,
+          "m2_diagnostic_metric_match_count": 15,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 5,
+          "m2_diagnostic_shape_match_count": 5,
+          "raw_metric_phrase": "total assets",
+          "role": "base_period",
+          "slot_id": "base_period",
+          "slot_metric_tier": "M0_exact_path"
+        }
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "joint_assignment_diagnostic": {
+        "assignment_count": 4,
+        "logical_table_identity_is_distinct_from_fragment_identity": true,
+        "operand_tuple_count": 4,
+        "same_fragment_assignment_count": 2,
+        "same_fragment_operand_tuple_count": 2,
+        "same_logical_table_assignment_count": 1,
+        "same_logical_table_operand_tuple_count": 1,
+        "same_row_assignment_count": 2,
+        "same_row_operand_tuple_count": 2
+      },
+      "operation": "growth_rate",
+      "r5_1_binding_status": "runtime_operand_ambiguity",
+      "slot_blockers": [
+        {
+          "first_failure": "multiple_operand_tuples",
+          "slot_id": "current_period"
+        },
+        {
+          "first_failure": "multiple_operand_tuples",
+          "slot_id": "base_period"
+        }
+      ],
+      "slot_metrics": [
+        {
+          "canonical_metric_id": "e146356ecc557b77485e32636785c063e7824ecf24196e02bee25b09885531cc",
+          "canonical_metric_tokens": [
+            "net",
+            "operation",
+            "revenue"
+          ],
+          "case_id": "ko_fy2025_006",
+          "first_failure": "multiple_operand_tuples",
+          "m0_m1_dimension_match_count": 2,
+          "m0_m1_metric_match_count": 6,
+          "m0_m1_operand_tuple_count": 2,
+          "m0_m1_shape_match_count": 2,
+          "m2_diagnostic_dimension_match_count": 2,
+          "m2_diagnostic_metric_match_count": 6,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 2,
+          "m2_diagnostic_shape_match_count": 2,
+          "raw_metric_phrase": "net operating revenues",
+          "role": "current_period",
+          "slot_id": "current_period",
+          "slot_metric_tier": "M0_exact_path"
+        },
+        {
+          "canonical_metric_id": "e146356ecc557b77485e32636785c063e7824ecf24196e02bee25b09885531cc",
+          "canonical_metric_tokens": [
+            "net",
+            "operation",
+            "revenue"
+          ],
+          "case_id": "ko_fy2025_006",
+          "first_failure": "multiple_operand_tuples",
+          "m0_m1_dimension_match_count": 2,
+          "m0_m1_metric_match_count": 6,
+          "m0_m1_operand_tuple_count": 2,
+          "m0_m1_shape_match_count": 2,
+          "m2_diagnostic_dimension_match_count": 2,
+          "m2_diagnostic_metric_match_count": 6,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 2,
+          "m2_diagnostic_shape_match_count": 2,
+          "raw_metric_phrase": "net operating revenues",
+          "role": "base_period",
+          "slot_id": "base_period",
+          "slot_metric_tier": "M0_exact_path"
+        }
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_007",
+      "joint_assignment_diagnostic": {
+        "assignment_count": 0,
+        "operand_tuple_count": 0,
+        "same_fragment_assignment_count": 0,
+        "same_fragment_operand_tuple_count": 0,
+        "same_logical_table_assignment_count": 0,
+        "same_logical_table_operand_tuple_count": 0,
+        "same_row_assignment_count": 0,
+        "same_row_operand_tuple_count": 0
+      },
+      "operation": "percentage_share",
+      "r5_1_binding_status": "undercovered",
+      "slot_blockers": [
+        {
+          "first_failure": "true_metric_absence",
+          "slot_id": "numerator"
+        },
+        {
+          "first_failure": "true_metric_absence",
+          "slot_id": "denominator"
+        }
+      ],
+      "slot_metrics": [
+        {
+          "canonical_metric_id": "63559e03bdc786ad0e5620ea2a7f9266e002db4e4d9334d77ee8b4cd68371980",
+          "canonical_metric_tokens": [
+            "emea",
+            "party",
+            "revenue",
+            "third"
+          ],
+          "case_id": "ko_fy2025_007",
+          "first_failure": "true_metric_absence",
+          "m0_m1_dimension_match_count": 0,
+          "m0_m1_metric_match_count": 0,
+          "m0_m1_operand_tuple_count": 0,
+          "m0_m1_shape_match_count": 0,
+          "m2_diagnostic_dimension_match_count": 0,
+          "m2_diagnostic_metric_match_count": 0,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 0,
+          "m2_diagnostic_shape_match_count": 0,
+          "raw_metric_phrase": "EMEA third-party revenue",
+          "role": "numerator",
+          "slot_id": "numerator",
+          "slot_metric_tier": "no_match"
+        },
+        {
+          "canonical_metric_id": "d281791a92849237909d80dc344f85eccd2b21d36c6de9a6d38aca0712e10b64",
+          "canonical_metric_tokens": [
+            "consolidated",
+            "net",
+            "operation",
+            "revenue"
+          ],
+          "case_id": "ko_fy2025_007",
+          "first_failure": "true_metric_absence",
+          "m0_m1_dimension_match_count": 0,
+          "m0_m1_metric_match_count": 0,
+          "m0_m1_operand_tuple_count": 0,
+          "m0_m1_shape_match_count": 0,
+          "m2_diagnostic_dimension_match_count": 0,
+          "m2_diagnostic_metric_match_count": 0,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 0,
+          "m2_diagnostic_shape_match_count": 0,
+          "raw_metric_phrase": "consolidated net operating revenues",
+          "role": "denominator",
+          "slot_id": "denominator",
+          "slot_metric_tier": "no_match"
+        }
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "joint_assignment_diagnostic": {
+        "assignment_count": 0,
+        "operand_tuple_count": 0,
+        "same_fragment_assignment_count": 0,
+        "same_fragment_operand_tuple_count": 0,
+        "same_logical_table_assignment_count": 0,
+        "same_logical_table_operand_tuple_count": 0,
+        "same_row_assignment_count": 0,
+        "same_row_operand_tuple_count": 0
+      },
+      "operation": "growth_rate",
+      "r5_1_binding_status": "undercovered",
+      "slot_blockers": [
+        {
+          "first_failure": "true_metric_absence",
+          "slot_id": "current_period"
+        },
+        {
+          "first_failure": "true_metric_absence",
+          "slot_id": "base_period"
+        }
+      ],
+      "slot_metrics": [
+        {
+          "canonical_metric_id": "546ec1e0b3de2037bfffb8ffe7cd242a390ebb9028a1f6ed51eec083f8aef51f",
+          "canonical_metric_tokens": [
+            "revenue",
+            "total"
+          ],
+          "case_id": "msft_fy2025_006",
+          "first_failure": "true_metric_absence",
+          "m0_m1_dimension_match_count": 0,
+          "m0_m1_metric_match_count": 0,
+          "m0_m1_operand_tuple_count": 0,
+          "m0_m1_shape_match_count": 0,
+          "m2_diagnostic_dimension_match_count": 0,
+          "m2_diagnostic_metric_match_count": 0,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 0,
+          "m2_diagnostic_shape_match_count": 0,
+          "raw_metric_phrase": "total revenue",
+          "role": "current_period",
+          "slot_id": "current_period",
+          "slot_metric_tier": "no_match"
+        },
+        {
+          "canonical_metric_id": "546ec1e0b3de2037bfffb8ffe7cd242a390ebb9028a1f6ed51eec083f8aef51f",
+          "canonical_metric_tokens": [
+            "revenue",
+            "total"
+          ],
+          "case_id": "msft_fy2025_006",
+          "first_failure": "true_metric_absence",
+          "m0_m1_dimension_match_count": 0,
+          "m0_m1_metric_match_count": 0,
+          "m0_m1_operand_tuple_count": 0,
+          "m0_m1_shape_match_count": 0,
+          "m2_diagnostic_dimension_match_count": 0,
+          "m2_diagnostic_metric_match_count": 0,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 0,
+          "m2_diagnostic_shape_match_count": 0,
+          "raw_metric_phrase": "total revenue",
+          "role": "base_period",
+          "slot_id": "base_period",
+          "slot_metric_tier": "no_match"
+        }
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "joint_assignment_diagnostic": {
+        "assignment_count": 0,
+        "operand_tuple_count": 0,
+        "same_fragment_assignment_count": 0,
+        "same_fragment_operand_tuple_count": 0,
+        "same_logical_table_assignment_count": 0,
+        "same_logical_table_operand_tuple_count": 0,
+        "same_row_assignment_count": 0,
+        "same_row_operand_tuple_count": 0
+      },
+      "operation": "percentage_share",
+      "r5_1_binding_status": "undercovered",
+      "slot_blockers": [
+        {
+          "first_failure": "true_metric_absence",
+          "slot_id": "numerator"
+        },
+        {
+          "first_failure": "true_metric_absence",
+          "slot_id": "denominator"
+        }
+      ],
+      "slot_metrics": [
+        {
+          "canonical_metric_id": "a5be084ddad37eb996de156e385cbcc551710dd24fb274fdfebc91c4fe7939a3",
+          "canonical_metric_tokens": [
+            "cloud",
+            "intelligent"
+          ],
+          "case_id": "msft_fy2025_007",
+          "first_failure": "true_metric_absence",
+          "m0_m1_dimension_match_count": 0,
+          "m0_m1_metric_match_count": 0,
+          "m0_m1_operand_tuple_count": 0,
+          "m0_m1_shape_match_count": 0,
+          "m2_diagnostic_dimension_match_count": 0,
+          "m2_diagnostic_metric_match_count": 0,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 0,
+          "m2_diagnostic_shape_match_count": 0,
+          "raw_metric_phrase": "Intelligent Cloud",
+          "role": "numerator",
+          "slot_id": "numerator",
+          "slot_metric_tier": "no_match"
+        },
+        {
+          "canonical_metric_id": "546ec1e0b3de2037bfffb8ffe7cd242a390ebb9028a1f6ed51eec083f8aef51f",
+          "canonical_metric_tokens": [
+            "revenue",
+            "total"
+          ],
+          "case_id": "msft_fy2025_007",
+          "first_failure": "true_metric_absence",
+          "m0_m1_dimension_match_count": 0,
+          "m0_m1_metric_match_count": 0,
+          "m0_m1_operand_tuple_count": 0,
+          "m0_m1_shape_match_count": 0,
+          "m2_diagnostic_dimension_match_count": 0,
+          "m2_diagnostic_metric_match_count": 0,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 0,
+          "m2_diagnostic_shape_match_count": 0,
+          "raw_metric_phrase": "total revenue",
+          "role": "denominator",
+          "slot_id": "denominator",
+          "slot_metric_tier": "no_match"
+        }
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_006",
+      "joint_assignment_diagnostic": {
+        "assignment_count": 1,
+        "logical_table_identity_is_distinct_from_fragment_identity": true,
+        "operand_tuple_count": 1,
+        "same_fragment_assignment_count": 1,
+        "same_fragment_operand_tuple_count": 1,
+        "same_logical_table_assignment_count": 0,
+        "same_logical_table_operand_tuple_count": 0,
+        "same_row_assignment_count": 1,
+        "same_row_operand_tuple_count": 1
+      },
+      "operation": "growth_rate",
+      "r5_1_binding_status": "deterministic_ready",
+      "slot_blockers": [
+        {
+          "first_failure": "other",
+          "slot_id": "current_period"
+        },
+        {
+          "first_failure": "other",
+          "slot_id": "base_period"
+        }
+      ],
+      "slot_metrics": [
+        {
+          "canonical_metric_id": "546ec1e0b3de2037bfffb8ffe7cd242a390ebb9028a1f6ed51eec083f8aef51f",
+          "canonical_metric_tokens": [
+            "revenue",
+            "total"
+          ],
+          "case_id": "nvda_fy2025_006",
+          "first_failure": "other",
+          "m0_m1_dimension_match_count": 1,
+          "m0_m1_metric_match_count": 3,
+          "m0_m1_operand_tuple_count": 1,
+          "m0_m1_shape_match_count": 1,
+          "m2_diagnostic_dimension_match_count": 1,
+          "m2_diagnostic_metric_match_count": 3,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 1,
+          "m2_diagnostic_shape_match_count": 1,
+          "raw_metric_phrase": "total revenue",
+          "role": "current_period",
+          "slot_id": "current_period",
+          "slot_metric_tier": "M0_exact_path"
+        },
+        {
+          "canonical_metric_id": "546ec1e0b3de2037bfffb8ffe7cd242a390ebb9028a1f6ed51eec083f8aef51f",
+          "canonical_metric_tokens": [
+            "revenue",
+            "total"
+          ],
+          "case_id": "nvda_fy2025_006",
+          "first_failure": "other",
+          "m0_m1_dimension_match_count": 1,
+          "m0_m1_metric_match_count": 3,
+          "m0_m1_operand_tuple_count": 1,
+          "m0_m1_shape_match_count": 1,
+          "m2_diagnostic_dimension_match_count": 1,
+          "m2_diagnostic_metric_match_count": 3,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 1,
+          "m2_diagnostic_shape_match_count": 1,
+          "raw_metric_phrase": "total revenue",
+          "role": "base_period",
+          "slot_id": "base_period",
+          "slot_metric_tier": "M0_exact_path"
+        }
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_006",
+      "joint_assignment_diagnostic": {
+        "assignment_count": 1,
+        "logical_table_identity_is_distinct_from_fragment_identity": true,
+        "operand_tuple_count": 1,
+        "same_fragment_assignment_count": 1,
+        "same_fragment_operand_tuple_count": 1,
+        "same_logical_table_assignment_count": 1,
+        "same_logical_table_operand_tuple_count": 1,
+        "same_row_assignment_count": 1,
+        "same_row_operand_tuple_count": 1
+      },
+      "operation": "growth_rate",
+      "r5_1_binding_status": "deterministic_ready",
+      "slot_blockers": [
+        {
+          "first_failure": "other",
+          "slot_id": "current_period"
+        },
+        {
+          "first_failure": "other",
+          "slot_id": "base_period"
+        }
+      ],
+      "slot_metrics": [
+        {
+          "canonical_metric_id": "546ec1e0b3de2037bfffb8ffe7cd242a390ebb9028a1f6ed51eec083f8aef51f",
+          "canonical_metric_tokens": [
+            "revenue",
+            "total"
+          ],
+          "case_id": "pfe_fy2024_006",
+          "first_failure": "other",
+          "m0_m1_dimension_match_count": 1,
+          "m0_m1_metric_match_count": 3,
+          "m0_m1_operand_tuple_count": 1,
+          "m0_m1_shape_match_count": 1,
+          "m2_diagnostic_dimension_match_count": 1,
+          "m2_diagnostic_metric_match_count": 3,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 1,
+          "m2_diagnostic_shape_match_count": 1,
+          "raw_metric_phrase": "total revenues",
+          "role": "current_period",
+          "slot_id": "current_period",
+          "slot_metric_tier": "M0_exact_path"
+        },
+        {
+          "canonical_metric_id": "546ec1e0b3de2037bfffb8ffe7cd242a390ebb9028a1f6ed51eec083f8aef51f",
+          "canonical_metric_tokens": [
+            "revenue",
+            "total"
+          ],
+          "case_id": "pfe_fy2024_006",
+          "first_failure": "other",
+          "m0_m1_dimension_match_count": 1,
+          "m0_m1_metric_match_count": 3,
+          "m0_m1_operand_tuple_count": 1,
+          "m0_m1_shape_match_count": 1,
+          "m2_diagnostic_dimension_match_count": 1,
+          "m2_diagnostic_metric_match_count": 3,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 1,
+          "m2_diagnostic_shape_match_count": 1,
+          "raw_metric_phrase": "total revenues",
+          "role": "base_period",
+          "slot_id": "base_period",
+          "slot_metric_tier": "M0_exact_path"
+        }
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_006",
+      "joint_assignment_diagnostic": {
+        "assignment_count": 16,
+        "logical_table_identity_is_distinct_from_fragment_identity": true,
+        "operand_tuple_count": 16,
+        "same_fragment_assignment_count": 10,
+        "same_fragment_operand_tuple_count": 10,
+        "same_logical_table_assignment_count": 9,
+        "same_logical_table_operand_tuple_count": 9,
+        "same_row_assignment_count": 10,
+        "same_row_operand_tuple_count": 10
+      },
+      "operation": "growth_rate",
+      "r5_1_binding_status": "runtime_operand_ambiguity",
+      "slot_blockers": [
+        {
+          "first_failure": "multiple_operand_tuples",
+          "slot_id": "current_period"
+        },
+        {
+          "first_failure": "multiple_operand_tuples",
+          "slot_id": "base_period"
+        }
+      ],
+      "slot_metrics": [
+        {
+          "canonical_metric_id": "546ec1e0b3de2037bfffb8ffe7cd242a390ebb9028a1f6ed51eec083f8aef51f",
+          "canonical_metric_tokens": [
+            "revenue",
+            "total"
+          ],
+          "case_id": "tsla_fy2025_006",
+          "first_failure": "multiple_operand_tuples",
+          "m0_m1_dimension_match_count": 4,
+          "m0_m1_metric_match_count": 10,
+          "m0_m1_operand_tuple_count": 4,
+          "m0_m1_shape_match_count": 4,
+          "m2_diagnostic_dimension_match_count": 4,
+          "m2_diagnostic_metric_match_count": 10,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 4,
+          "m2_diagnostic_shape_match_count": 4,
+          "raw_metric_phrase": "total revenues",
+          "role": "current_period",
+          "slot_id": "current_period",
+          "slot_metric_tier": "M0_exact_path"
+        },
+        {
+          "canonical_metric_id": "546ec1e0b3de2037bfffb8ffe7cd242a390ebb9028a1f6ed51eec083f8aef51f",
+          "canonical_metric_tokens": [
+            "revenue",
+            "total"
+          ],
+          "case_id": "tsla_fy2025_006",
+          "first_failure": "multiple_operand_tuples",
+          "m0_m1_dimension_match_count": 4,
+          "m0_m1_metric_match_count": 10,
+          "m0_m1_operand_tuple_count": 4,
+          "m0_m1_shape_match_count": 4,
+          "m2_diagnostic_dimension_match_count": 4,
+          "m2_diagnostic_metric_match_count": 10,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 4,
+          "m2_diagnostic_shape_match_count": 4,
+          "raw_metric_phrase": "total revenues",
+          "role": "base_period",
+          "slot_id": "base_period",
+          "slot_metric_tier": "M0_exact_path"
+        }
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "joint_assignment_diagnostic": {
+        "assignment_count": 9,
+        "logical_table_identity_is_distinct_from_fragment_identity": true,
+        "operand_tuple_count": 9,
+        "same_fragment_assignment_count": 9,
+        "same_fragment_operand_tuple_count": 9,
+        "same_logical_table_assignment_count": 9,
+        "same_logical_table_operand_tuple_count": 9,
+        "same_row_assignment_count": 0,
+        "same_row_operand_tuple_count": 0
+      },
+      "operation": "difference",
+      "r5_1_binding_status": "runtime_operand_ambiguity",
+      "slot_blockers": [
+        {
+          "first_failure": "multiple_operand_tuples",
+          "slot_id": "minuend"
+        },
+        {
+          "first_failure": "multiple_operand_tuples",
+          "slot_id": "subtrahend"
+        }
+      ],
+      "slot_metrics": [
+        {
+          "canonical_metric_id": "6452ef1a609ffb96882cf09c1367ccd68457855b4ec0b1b3e2aa3af9f922de89",
+          "canonical_metric_tokens": [
+            "automotive",
+            "revenue",
+            "total"
+          ],
+          "case_id": "tsla_fy2025_007",
+          "first_failure": "multiple_operand_tuples",
+          "m0_m1_dimension_match_count": 3,
+          "m0_m1_metric_match_count": 7,
+          "m0_m1_operand_tuple_count": 3,
+          "m0_m1_shape_match_count": 3,
+          "m2_diagnostic_dimension_match_count": 3,
+          "m2_diagnostic_metric_match_count": 7,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 3,
+          "m2_diagnostic_shape_match_count": 3,
+          "raw_metric_phrase": "Total automotive revenues",
+          "role": "minuend",
+          "slot_id": "minuend",
+          "slot_metric_tier": "M0_exact_path"
+        },
+        {
+          "canonical_metric_id": "36a7df3465b91cc4f7ffeca0e461b1d139430c9aa3c1c9271c9682bbb0af24bd",
+          "canonical_metric_tokens": [
+            "and",
+            "energy",
+            "generation",
+            "revenue",
+            "segment",
+            "storage"
+          ],
+          "case_id": "tsla_fy2025_007",
+          "first_failure": "multiple_operand_tuples",
+          "m0_m1_dimension_match_count": 3,
+          "m0_m1_metric_match_count": 7,
+          "m0_m1_operand_tuple_count": 3,
+          "m0_m1_shape_match_count": 3,
+          "m2_diagnostic_dimension_match_count": 3,
+          "m2_diagnostic_metric_match_count": 7,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 3,
+          "m2_diagnostic_shape_match_count": 3,
+          "raw_metric_phrase": "Energy generation and storage segment revenue",
+          "role": "subtrahend",
+          "slot_id": "subtrahend",
+          "slot_metric_tier": "M0_exact_path"
+        }
+      ]
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "joint_assignment_diagnostic": {
+        "assignment_count": 9,
+        "logical_table_identity_is_distinct_from_fragment_identity": true,
+        "operand_tuple_count": 9,
+        "same_fragment_assignment_count": 5,
+        "same_fragment_operand_tuple_count": 5,
+        "same_logical_table_assignment_count": 5,
+        "same_logical_table_operand_tuple_count": 5,
+        "same_row_assignment_count": 5,
+        "same_row_operand_tuple_count": 5
+      },
+      "operation": "growth_rate",
+      "r5_1_binding_status": "runtime_operand_ambiguity",
+      "slot_blockers": [
+        {
+          "first_failure": "multiple_operand_tuples",
+          "slot_id": "current_period"
+        },
+        {
+          "first_failure": "multiple_operand_tuples",
+          "slot_id": "base_period"
+        }
+      ],
+      "slot_metrics": [
+        {
+          "canonical_metric_id": "6cf0c2f4ecdb53b34ac9a68dbb5ad7fde9d3177062920a951b7a3b22d7ef1544",
+          "canonical_metric_tokens": [
+            "net",
+            "revenue"
+          ],
+          "case_id": "v_fy2025_006",
+          "first_failure": "multiple_operand_tuples",
+          "m0_m1_dimension_match_count": 3,
+          "m0_m1_metric_match_count": 8,
+          "m0_m1_operand_tuple_count": 3,
+          "m0_m1_shape_match_count": 3,
+          "m2_diagnostic_dimension_match_count": 3,
+          "m2_diagnostic_metric_match_count": 8,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 3,
+          "m2_diagnostic_shape_match_count": 3,
+          "raw_metric_phrase": "net revenue",
+          "role": "current_period",
+          "slot_id": "current_period",
+          "slot_metric_tier": "M0_exact_path"
+        },
+        {
+          "canonical_metric_id": "6cf0c2f4ecdb53b34ac9a68dbb5ad7fde9d3177062920a951b7a3b22d7ef1544",
+          "canonical_metric_tokens": [
+            "net",
+            "revenue"
+          ],
+          "case_id": "v_fy2025_006",
+          "first_failure": "multiple_operand_tuples",
+          "m0_m1_dimension_match_count": 3,
+          "m0_m1_metric_match_count": 8,
+          "m0_m1_operand_tuple_count": 3,
+          "m0_m1_shape_match_count": 3,
+          "m2_diagnostic_dimension_match_count": 3,
+          "m2_diagnostic_metric_match_count": 8,
+          "m2_diagnostic_only": true,
+          "m2_diagnostic_operand_tuple_count": 3,
+          "m2_diagnostic_shape_match_count": 3,
+          "raw_metric_phrase": "net revenue",
+          "role": "base_period",
+          "slot_id": "base_period",
+          "slot_metric_tier": "M0_exact_path"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "binder_mutation": 0,
+  "blocked_slot_count": 18,
+  "calculation_case_count": 11,
+  "candidate_fact_metric_tier_counts": {
+    "M0_exact_path": 126,
+    "M1_exact_leaf": 8
+  },
+  "decision": "multiple_operand_tuple_failure_dominant",
+  "first_failure_counts": {
+    "multiple_operand_tuples": 12,
+    "other": 4,
+    "true_metric_absence": 6
+  },
+  "gate": "pdf_retrieval_v4_gate_09_r5_2_r0",
+  "metric_representation_significant": false,
+  "multiple_operand_tuples_significant": true,
+  "next_gate": "structural_joint_binder_repair",
+  "prediction_mutation": 0,
+  "production_switch_allowed": false,
+  "query_plan_mutation": 0,
+  "r5_1_case_status_counts": {
+    "deterministic_ready": 2,
+    "runtime_operand_ambiguity": 6,
+    "undercovered": 3
+  },
+  "recommended_ablation": "B2",
+  "required_slot_count": 22,
+  "significance_threshold": 4,
+  "slot_metric_tier_counts": {
+    "M0_exact_path": 16,
+    "no_match": 6
+  },
+  "unit_contract_mutation": 0
+}

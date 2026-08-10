@@ -1,0 +1,15 @@
+{
+  "candidate_mutation": 0,
+  "logical_tables_sha256": "b1362dc62cf7f8cfc8163d5907cb10649d3ddd4fdb152dff73ff7518e8e3a5fc",
+  "query_plan_sha256": "e1c6e5af104ebda3687c2844fa8549d00b3b89eb649d369f92fb1504920de13f",
+  "r5_1_output_hashes_exact": true,
+  "r5_1_output_sha256": {
+    "classes_v2": "d373939a717e1d2e27e6ae2a0a33c31b2507897f16228ee81024a817ddc2d171",
+    "joint_bindings": "4853e8f353a0c13f5f1dcdcc239f04f634e4efcb58adda619c11cda1be87a6ad",
+    "metric_bindings": "754e21233eb922e44c4928ef6e0bc961256163e58357dfdcebe50b005c968d56",
+    "projections_v2": "ec8ee6931ab2a51a2c7e9db83011e11233fb977f9082d8b430a42a22f16168ee",
+    "sets_v2": "cc70b8d6e6ffca5314d8c54106183bfe9abe5b1c109de6ca37c6036b0d45d123"
+  },
+  "r5_1_prediction_seal_sha256": "c3a84835ff9051c1c6f80900c3bca4c53c4d6ec483d26d7f2c1ee3791724d664",
+  "semantic_registry_mutation": 0
+}

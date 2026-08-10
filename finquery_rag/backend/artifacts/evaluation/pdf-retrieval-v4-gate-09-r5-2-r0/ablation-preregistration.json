@@ -1,0 +1,11 @@
+{
+  "diagnostic_only": true,
+  "groups": {
+    "B0": "R5.1 exact metric plus current structural binder",
+    "B1": "M2 canonical metric only",
+    "B2": "logical-table and canonical-row structural binder only",
+    "B3": "M2 canonical metric plus structural binder"
+  },
+  "no_ablation_executed_in_r0": true,
+  "recommended_next_group": "B2"
+}
