@@ -206,7 +206,15 @@ def runtime_manifest(tokenizer: Any, torch: Any, transformers: Any, model: Any) 
         "gpu_model": gpu.name,
         "gpu_index": 0,
         "cuda_visible_devices": os.environ.get("CUDA_VISIBLE_DEVICES"),
-        "device_map": os.environ.get("T2_QWEN_DEVICE_MAP", "single_gpu"),
+        "device_map": (
+            "explicit_layer_split"
+            if os.environ.get("T2_QWEN_LAYER_SPLIT")
+            else os.environ.get("T2_QWEN_DEVICE_MAP", "single_gpu")
+        ),
+        "layer_split": os.environ.get("T2_QWEN_LAYER_SPLIT"),
+        "cpu_tail_layers": os.environ.get("T2_QWEN_CPU_TAIL_LAYERS"),
+        "max_memory_gib": os.environ.get("T2_QWEN_MAX_MEMORY_GIB"),
+        "cpu_memory_gib": os.environ.get("T2_QWEN_CPU_MEMORY_GIB"),
         "attention_implementation": os.environ.get("T2_QWEN_ATTN", "eager"),
         "dtype": DTYPE_NAME,
         "device": DEVICE,
@@ -243,7 +251,7 @@ def score_batch(model: Any, tokenizer: Any, torch: Any, pairs: list[str]) -> tup
 def load_qwen_runtime() -> tuple[Any, Any, Any, Any]:
     import torch
     import transformers
-    from transformers import AutoModelForCausalLM, AutoTokenizer
+    from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer
 
     if not torch.cuda.is_available():
         raise RuntimeError("cuda_unavailable")
@@ -265,6 +273,46 @@ def load_qwen_runtime() -> tuple[Any, Any, Any, Any]:
     }
     if os.environ.get("T2_QWEN_DEVICE_MAP") == "auto":
         load_kwargs["device_map"] = "auto"
+        max_memory_gib = os.environ.get("T2_QWEN_MAX_MEMORY_GIB")
+        if max_memory_gib:
+            caps = [part.strip() for part in max_memory_gib.split(",") if part.strip()]
+            visible_devices = os.environ.get("CUDA_VISIBLE_DEVICES", "0").split(",")
+            if len(caps) == 1:
+                caps *= len(visible_devices)
+            if len(caps) != len(visible_devices):
+                raise RuntimeError("max_memory_gpu_count_contract")
+            load_kwargs["max_memory"] = {
+                index: f"{cap}GiB" for index, cap in enumerate(caps)
+            }
+            load_kwargs["max_memory"]["cpu"] = os.environ.get(
+                "T2_QWEN_CPU_MEMORY_GIB", "64GiB"
+            )
+    layer_split = os.environ.get("T2_QWEN_LAYER_SPLIT")
+    visible_devices = os.environ.get("CUDA_VISIBLE_DEVICES", "0").split(",")
+    if layer_split and len(visible_devices) >= 2:
+        config = AutoConfig.from_pretrained(
+            str(MODEL_SNAPSHOT),
+            revision=MODEL_REVISION,
+            local_files_only=True,
+        )
+        split = int(layer_split)
+        if not 1 <= split < int(config.num_hidden_layers):
+            raise RuntimeError("layer_split_contract")
+        device_map = {
+            "model.embed_tokens": 0,
+            "model.norm": 0,
+            "model.rotary_emb": 0,
+            "lm_head": 0,
+        }
+        cpu_tail = int(os.environ.get("T2_QWEN_CPU_TAIL_LAYERS", "0"))
+        if not 0 <= cpu_tail < int(config.num_hidden_layers) - split:
+            raise RuntimeError("cpu_tail_layer_contract")
+        for index in range(int(config.num_hidden_layers)):
+            if index >= int(config.num_hidden_layers) - cpu_tail:
+                device_map[f"model.layers.{index}"] = "cpu"
+            else:
+                device_map[f"model.layers.{index}"] = 0 if index < split else 1
+        load_kwargs["device_map"] = device_map
     if os.environ.get("T2_QWEN_ATTN"):
         load_kwargs["attn_implementation"] = os.environ["T2_QWEN_ATTN"]
     model = AutoModelForCausalLM.from_pretrained(str(MODEL_SNAPSHOT), **load_kwargs)
