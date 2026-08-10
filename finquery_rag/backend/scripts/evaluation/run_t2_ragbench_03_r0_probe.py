@@ -10,6 +10,7 @@ import traceback
 from pathlib import Path
 
 from t2_ragbench_03_common import (
+    BATCH_SIZE,
     CANDIDATE_DEPTH,
     EXPECTED_DATASET_COMMIT,
     EXPECTED_MODEL_ID,
@@ -124,8 +125,18 @@ def main() -> int:
                 format_pair(INSTRUCTION, str(query["query"]), contexts[item["context_id"]])
                 for item in bm25_row["ranked_contexts"]
             ]
+            scores: list[float] = []
+            token_meta: list[dict[str, int | bool]] = []
             try:
-                scores, token_meta = score_batch(model, tokenizer, torch, pairs)
+                for offset in range(0, len(pairs), BATCH_SIZE):
+                    batch_scores, batch_meta = score_batch(
+                        model,
+                        tokenizer,
+                        torch,
+                        pairs[offset : offset + BATCH_SIZE],
+                    )
+                    scores.extend(batch_scores)
+                    token_meta.extend(batch_meta)
             except Exception as exc:  # pragma: no cover - exercised only on a blocked runtime
                 runtime_errors.append(f"{query_id}:{type(exc).__name__}:{exc}")
                 break
