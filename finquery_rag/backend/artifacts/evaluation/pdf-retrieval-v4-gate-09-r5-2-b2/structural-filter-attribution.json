@@ -1,0 +1,15 @@
+{
+  "b2_calculation_status_counts": {
+    "deterministic_ready": 3,
+    "runtime_operand_ambiguity": 5,
+    "undercovered": 3
+  },
+  "r5_1_calculation_status_counts": {
+    "deterministic_ready": 2,
+    "runtime_operand_ambiguity": 6,
+    "undercovered": 3
+  },
+  "recovered_by": {
+    "canonical_row": 1
+  }
+}

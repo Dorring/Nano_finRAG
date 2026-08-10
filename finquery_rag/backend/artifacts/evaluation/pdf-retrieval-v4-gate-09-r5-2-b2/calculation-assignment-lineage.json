@@ -1,0 +1,130 @@
+{
+  "cases": [
+    {
+      "after_same_canonical_row": {
+        "operand_tuples": 2,
+        "physical_assignments": 2
+      },
+      "after_same_logical_table": {
+        "operand_tuples": 2,
+        "physical_assignments": 2
+      },
+      "after_semantic_tuple_collapse": {
+        "operand_tuples": 2
+      },
+      "before": {
+        "operand_tuples": 16,
+        "physical_assignments": 16
+      },
+      "canonical_row_filter_applied": true,
+      "case_id": "aapl_fy2025_006",
+      "final_status": "runtime_operand_ambiguity",
+      "logical_table_filter_applied": true
+    },
+    {
+      "after_same_canonical_row": {
+        "operand_tuples": 2,
+        "physical_assignments": 2
+      },
+      "after_same_logical_table": {
+        "operand_tuples": 2,
+        "physical_assignments": 2
+      },
+      "after_semantic_tuple_collapse": {
+        "operand_tuples": 2
+      },
+      "before": {
+        "operand_tuples": 49,
+        "physical_assignments": 49
+      },
+      "canonical_row_filter_applied": true,
+      "case_id": "jpm_fy2025_006",
+      "final_status": "runtime_operand_ambiguity",
+      "logical_table_filter_applied": true
+    },
+    {
+      "after_same_canonical_row": {
+        "operand_tuples": 1,
+        "physical_assignments": 1
+      },
+      "after_same_logical_table": {
+        "operand_tuples": 1,
+        "physical_assignments": 1
+      },
+      "after_semantic_tuple_collapse": {
+        "operand_tuples": 1
+      },
+      "before": {
+        "operand_tuples": 4,
+        "physical_assignments": 4
+      },
+      "canonical_row_filter_applied": true,
+      "case_id": "ko_fy2025_006",
+      "final_status": "deterministic_ready",
+      "logical_table_filter_applied": true
+    },
+    {
+      "after_same_canonical_row": {
+        "operand_tuples": 9,
+        "physical_assignments": 9
+      },
+      "after_same_logical_table": {
+        "operand_tuples": 9,
+        "physical_assignments": 9
+      },
+      "after_semantic_tuple_collapse": {
+        "operand_tuples": 9
+      },
+      "before": {
+        "operand_tuples": 16,
+        "physical_assignments": 16
+      },
+      "canonical_row_filter_applied": true,
+      "case_id": "tsla_fy2025_006",
+      "final_status": "runtime_operand_ambiguity",
+      "logical_table_filter_applied": true
+    },
+    {
+      "after_same_canonical_row": {
+        "operand_tuples": 9,
+        "physical_assignments": 9
+      },
+      "after_same_logical_table": {
+        "operand_tuples": 9,
+        "physical_assignments": 9
+      },
+      "after_semantic_tuple_collapse": {
+        "operand_tuples": 9
+      },
+      "before": {
+        "operand_tuples": 9,
+        "physical_assignments": 9
+      },
+      "canonical_row_filter_applied": false,
+      "case_id": "tsla_fy2025_007",
+      "final_status": "runtime_operand_ambiguity",
+      "logical_table_filter_applied": true
+    },
+    {
+      "after_same_canonical_row": {
+        "operand_tuples": 5,
+        "physical_assignments": 5
+      },
+      "after_same_logical_table": {
+        "operand_tuples": 5,
+        "physical_assignments": 5
+      },
+      "after_semantic_tuple_collapse": {
+        "operand_tuples": 5
+      },
+      "before": {
+        "operand_tuples": 9,
+        "physical_assignments": 9
+      },
+      "canonical_row_filter_applied": true,
+      "case_id": "v_fy2025_006",
+      "final_status": "runtime_operand_ambiguity",
+      "logical_table_filter_applied": true
+    }
+  ]
+}

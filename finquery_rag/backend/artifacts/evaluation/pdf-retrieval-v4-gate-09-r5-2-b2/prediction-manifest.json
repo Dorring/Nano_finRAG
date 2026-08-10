@@ -1,0 +1,28 @@
+{
+  "binder_b2_source_sha256": "ae14795c2200489f97855b75ed700025968df1a05c85ca95120876c8d0bd5ee6",
+  "logical_tables_sha256": "b1362dc62cf7f8cfc8163d5907cb10649d3ddd4fdb152dff73ff7518e8e3a5fc",
+  "metric_contract_source_sha256": "41e4047ccc7a509516bdc5e0d4b69c70af148e280211bfbc2f186d4fa386bb2f",
+  "output_sha256": {
+    "assignment_lineage": "ef97543d13d0cc12e7fb22750a3ee873f04b1eb04db82b01c9c48a24c06e8194",
+    "canonical_row_registry": "3360e710a0137ec2843ac688d04f8fce1397f3000e5254b5baa02b0cb32fecf3",
+    "hydrated_classes": "f2db06989023a9474bcedfe88db117b694c20e5bd6858e204c7badb9d9be46e2",
+    "joint_bindings_b2": "39e7281114366b2e3213455d2187eb165b43e93772b455d1fdeab1345f6b8c87",
+    "logical_table_hydration": "ff3b8708368114d558363451235fc55c7ff8514df331070bc059e4b8801239fd",
+    "projections_b2": "3fbf833ec220b3883b590fb98ac9790ae9221861844326f26aad4c3056015d93",
+    "sets_b2": "e5c13438ed2fd239eb0239923cc79bc95014c1c13b5393a856ffb19257ca6e7d",
+    "structural_filter_attribution": "630ebe7d2a4113dc161f636089afd14397b568266ba8c92e4d5877b3ecb179bd"
+  },
+  "prediction_source_sha256": "1a25593058f67c9642797a0f9272067b4fd5efc38aa0e99dda4c02d3f89871ab",
+  "query_plan_sha256": "e1c6e5af104ebda3687c2844fa8549d00b3b89eb649d369f92fb1504920de13f",
+  "r5_1_output_sha256": {
+    "classes_v2": "d373939a717e1d2e27e6ae2a0a33c31b2507897f16228ee81024a817ddc2d171",
+    "joint_bindings": "4853e8f353a0c13f5f1dcdcc239f04f634e4efcb58adda619c11cda1be87a6ad",
+    "metric_bindings": "754e21233eb922e44c4928ef6e0bc961256163e58357dfdcebe50b005c968d56",
+    "projections_v2": "ec8ee6931ab2a51a2c7e9db83011e11233fb977f9082d8b430a42a22f16168ee",
+    "sets_v2": "cc70b8d6e6ffca5314d8c54106183bfe9abe5b1c109de6ca37c6036b0d45d123"
+  },
+  "r5_1_prediction_seal_sha256": "c3a84835ff9051c1c6f80900c3bca4c53c4d6ec483d26d7f2c1ee3791724d664",
+  "r5_2_r0_input_integrity_sha256": "c69754342d5675104f90bc12e1cc1f5cfb780d15028ff23f59736a0c991e5142",
+  "semantic_rows_sha256": "f71090ef3a64080e1df28cab93b2135fdb95340cde672b471a4bcc0df9a702be",
+  "unit_contract_source_sha256": "c4f392510f0f9f204e87b3d73a0c628a061fcfc105f264ff9463925feff02984"
+}

@@ -1,0 +1,20 @@
+{
+  "bridge_runs": 0,
+  "calculator_calls": 0,
+  "concept_candidate_deterministic": false,
+  "embedding_calls": 0,
+  "evidence_access_mutation": 0,
+  "gate": "pdf_retrieval_v4_gate_09_r5_2_b2",
+  "gold_reads_before_seal": 0,
+  "m2_canonical_metric": false,
+  "max_evidence_items": 5,
+  "metric_contract": "R5.1_M0_M1_exact",
+  "only_variable": "logical_table_and_canonical_row_structural_binding",
+  "query_plan_mutation": 0,
+  "rank_resolves_ambiguity": false,
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "semantic_registry_mutation": 0,
+  "strict_binding_reads_before_seal": 0,
+  "unit_contract_mutation": 0
+}

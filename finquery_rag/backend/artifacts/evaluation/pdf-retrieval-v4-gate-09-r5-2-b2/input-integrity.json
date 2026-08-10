@@ -1,0 +1,17 @@
+{
+  "binding_status_counts": {
+    "deterministic_ready": 14,
+    "runtime_operand_ambiguity": 11,
+    "undercovered": 47
+  },
+  "calculation_case_count": 11,
+  "calculation_status_counts": {
+    "deterministic_ready": 3,
+    "runtime_operand_ambiguity": 5,
+    "undercovered": 3
+  },
+  "candidate_mutation": 0,
+  "case_count": 72,
+  "max_evidence_set_size": 1,
+  "semantic_registry_mutation": 0
+}

@@ -1,0 +1,30 @@
+{
+  "calculation_runtime_ambiguous": "5/11",
+  "calculation_runtime_ready": "3/11",
+  "calculation_undercovered": "3/11",
+  "calculation_unit_blocked": "0/11",
+  "candidate_mutation": 0,
+  "decision": "structural_joint_binding_gain_confirmed",
+  "false_slot_binding": 0,
+  "gate": "pdf_retrieval_v4_gate_09_r5_2_b2",
+  "max_evidence_set_size": 1,
+  "metric_contract_mutation": 0,
+  "next_gate": "deterministic_calculator_shadow",
+  "production_switch_allowed": false,
+  "query_plan_mutation": 0,
+  "r5_1_runtime_ambiguous": "6/11",
+  "r5_1_runtime_ready": "2/11",
+  "required_slot_status_counts": {
+    "ambiguous": 10,
+    "deterministic": 6,
+    "undercovered": 6
+  },
+  "retrieval_runs": 0,
+  "runtime_ready_case_ids": [
+    "ko_fy2025_006",
+    "nvda_fy2025_006",
+    "pfe_fy2024_006"
+  ],
+  "semantic_registry_mutation": 0,
+  "unit_contract_mutation": 0
+}
