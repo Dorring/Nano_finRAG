@@ -27,7 +27,9 @@ INSTRUCTION = (
 )
 MAX_LENGTH = 8192
 CANDIDATE_DEPTH = 50
-BATCH_SIZE = 1
+BATCH_SIZE = int(os.environ.get("T2_QWEN_BATCH_SIZE", "1"))
+if BATCH_SIZE < 1:
+    raise RuntimeError("batch_size_contract")
 DTYPE_NAME = "bfloat16"
 DEVICE = "cuda:0"
 SYSTEM_PREFIX = (

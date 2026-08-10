@@ -12,17 +12,18 @@ def read_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def test_t2_03_r0_blocks_before_gold_and_full_prediction() -> None:
+def test_t2_03_r0_passes_before_full_prediction() -> None:
     probe = read_json(OUTPUT / "r0-runtime-probe.json")
     assert probe["gate"] == "T2-03R0"
-    assert probe["decision"] == "t2_03_runtime_blocked"
+    assert probe["decision"] == "reranker_runtime_probe_passed"
     assert probe["query_count"] == 256
     assert probe["expected_pairs"] == 256 * 50
+    assert probe["pairs_processed"] == probe["expected_pairs"]
     assert probe["candidate_depth"] == 50
     assert probe["gold_reads_before_seal"] == 0
     assert probe["candidate_identity_mutation"] == 0
     assert probe["model_revision"] == "22e683669bc0f0bd69640a1354a6d0aebcfeede5"
-    assert any("OutOfMemoryError" in error for error in probe["runtime_errors"])
+    assert probe["runtime_errors"] == []
 
 
 def test_t2_03_r0_input_and_instruction_contracts_are_sealed() -> None:
