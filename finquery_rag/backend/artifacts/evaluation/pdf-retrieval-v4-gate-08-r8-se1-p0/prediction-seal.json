@@ -1,0 +1,55 @@
+{
+  "bridge_results_sha256": "042d882d116bb328deb80f9106baa82190dbe6b0227092ffa791762974203ae1",
+  "bridge_runs": 0,
+  "candidate_added": 0,
+  "candidate_mutation": 0,
+  "candidate_occurrence_count": 7200,
+  "candidate_occurrences_per_case": {
+    "max": 100,
+    "min": 100
+  },
+  "candidate_removed": 0,
+  "case_count": 72,
+  "context_status_counts": {
+    "ambiguous_not_attached": 375,
+    "authoritative_structured": 1120,
+    "raw_only": 2,
+    "structured_without_expandable_fact": 1095,
+    "unmapped": 564
+  },
+  "embedding_calls": 0,
+  "expansion_status_counts": {
+    "expanded": 5202,
+    "insufficient_for_expansion": 238,
+    "semantic_expansion_not_supported": 884
+  },
+  "expected_value_reads_before_seal": 0,
+  "gate": "pdf_retrieval_v4_gate_08_r8_se1_p0",
+  "gate03_catalog_sha256": {
+    "atomic-facts.jsonl": "04e023a2c8519ba02f985a58b6efffdd2057a3c3b9da85470fc19db85ac3c75c",
+    "bucket-facts.jsonl": "43505a1876c960e25e0372c158ad96fc85f736d48aa89c8ea2b5dbf5c60a7896",
+    "comparison-facts.jsonl": "d1924e14517d5cd3ec3fa2941a9e41958a5395953d7d96df9d5a85ad927894b9",
+    "narrative-evidence.jsonl": "1c74279a9402f6b23e8c35f84a03659a3367d1220aebd202e3a2196ce50c0c5e",
+    "row-matrices.jsonl": "226e5ba78728eff9089a27f7423842e2c7b7dd783b67aad90812ad9def2e0d54"
+  },
+  "gold_reads_before_seal": 0,
+  "historical_strict_physical_source_recall_at_5": "43/80",
+  "missing_authoritative_evidence": 0,
+  "needed_authoritative_evidence": 4753,
+  "post_benchmark_diagnostic": true,
+  "r3_3_commit": "c8a4ef33103e40625ed7e0853d4c93cc7f6b18cd",
+  "r3_3_main_prediction_sha256": "26b901607e99a27cf6afd86e278ab2b2216ab740f4537ba7a81974dc108cac22",
+  "r3_3_prediction_seal_sha256": "bb53c9890838e7859d5e688fa10ab750912696b8e893b697ba545a09d4d517e5",
+  "reference_answer_reads_before_seal": 0,
+  "registry_builder_source_sha256": "04139d284a99e9a073ae8f0f5050781d2a4bdf33bb5283ff98e717a22db5c8d6",
+  "registry_record_count": 3156,
+  "registry_sha256": "b3609e8d09e2c9e785f9037591466b6927a0eea39a38ec5794e969336211382f",
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "sealed": true,
+  "semantic_graph_runs": 0,
+  "semantic_identity_source_sha256": "5a660377c67a10378309a5656cefe74a33cfc5d7e2493662562423eb8487792e",
+  "strict_source_binding_reads_before_seal": 0,
+  "structured_views_sha256": "d711ca42fd61e53cd867f5db39a0ab18d7636e3dc97b1b835105f2637655a572",
+  "unique_candidate_count": 3156
+}

@@ -1,0 +1,37 @@
+{
+  "bridge_runs": 0,
+  "candidate_added": 0,
+  "candidate_mutation": 0,
+  "candidate_occurrence_count": 7200,
+  "candidate_occurrences_per_case": {
+    "max": 100,
+    "min": 100
+  },
+  "candidate_removed": 0,
+  "case_count": 72,
+  "context_status_counts": {
+    "ambiguous_not_attached": 375,
+    "authoritative_structured": 1120,
+    "raw_only": 2,
+    "structured_without_expandable_fact": 1095,
+    "unmapped": 564
+  },
+  "embedding_calls": 0,
+  "expansion_status_counts": {
+    "expanded": 5202,
+    "insufficient_for_expansion": 238,
+    "semantic_expansion_not_supported": 884
+  },
+  "expected_value_reads_before_seal": 0,
+  "gate": "pdf_retrieval_v4_gate_08_r8_se1_p0",
+  "gold_reads_before_seal": 0,
+  "missing_authoritative_evidence": 0,
+  "needed_authoritative_evidence": 4753,
+  "reference_answer_reads_before_seal": 0,
+  "registry_record_count": 3156,
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "semantic_graph_runs": 0,
+  "strict_source_binding_reads_before_seal": 0,
+  "unique_candidate_count": 3156
+}

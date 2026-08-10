@@ -1,0 +1,32 @@
+{
+  "metric_table_at_5": [
+    {
+      "metric": "Strict Physical Source Recall",
+      "score": "43/80"
+    },
+    {
+      "metric": "Conservative Evidence Family Recall",
+      "score": "43/80"
+    },
+    {
+      "metric": "Semantic Fact Recall",
+      "score": "49/80"
+    },
+    {
+      "metric": "Multi-evidence Physical Complete",
+      "score": "4/16"
+    },
+    {
+      "metric": "Multi-evidence Semantic Complete",
+      "score": "5/16"
+    },
+    {
+      "metric": "Calculation Physical Complete",
+      "score": "4/11"
+    },
+    {
+      "metric": "Calculation Semantic Complete",
+      "score": "5/11"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "automatic_false_equivalence": 0,
+  "decision": "semantic_evidence_recall_below_top5_target",
+  "evidence_family_recall_at_5": "43/80",
+  "gate": "pdf_retrieval_v4_gate_08_r8_se1",
+  "historical_strict_physical_source_recall_at_5": "43/80",
+  "next_gate": "top10_evidence_set_contract",
+  "post_benchmark_diagnostic": true,
+  "production_switch_allowed": false,
+  "retrieval_optimization_stopped": true,
+  "semantic_calculation_complete_at_5": "5/11",
+  "semantic_fact_recall_at_10": "61/80",
+  "semantic_fact_recall_at_5": "49/80",
+  "semantic_multi_evidence_complete_at_5": "5/16",
+  "semantic_rescue_count_at_5": 6,
+  "semantic_target_coverage": "48/80"
+}

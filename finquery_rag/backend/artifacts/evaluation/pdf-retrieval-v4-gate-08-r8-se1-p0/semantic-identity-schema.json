@@ -1,0 +1,30 @@
+{
+  "comparison_expansion": "exact_two_operands_or_fail_closed",
+  "excluded_physical_fields": [
+    "candidate_key",
+    "pdf_page",
+    "table_id",
+    "table_fragment_id",
+    "row_id",
+    "evidence_id",
+    "bbox",
+    "retrieval_rank"
+  ],
+  "fuzzy_matching": false,
+  "identity_fields": [
+    "document_id",
+    "normalized_metric",
+    "normalized_period",
+    "normalized_segment",
+    "normalized_bucket",
+    "normalized_base_value",
+    "normalized_scale",
+    "normalized_currency"
+  ],
+  "identity_function": "sha256(unit-separator-joined normalized fields in declared order)",
+  "llm_equivalence": false,
+  "narrative_expansion": "strict_lineage_only",
+  "numeric_tolerance": false,
+  "row_matrix_expansion": "cell_level_dimension",
+  "schema": "pdf-retrieval-v4/runtime-semantic-fact/v1"
+}

@@ -1,0 +1,5 @@
+{
+  "decision": "semantic_evidence_recall_below_top5_target",
+  "next_gate": "top10_evidence_set_contract",
+  "production_switch_allowed": false
+}
