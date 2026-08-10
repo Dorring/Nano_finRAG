@@ -1,0 +1,22 @@
+{
+  "binding_status_counts": {
+    "deterministic_ready": 9,
+    "runtime_operand_ambiguity": 16,
+    "undercovered": 47
+  },
+  "calculation_runtime_ready": "2/11",
+  "calculation_semantic_complete": "1/11",
+  "candidate_mutation": 0,
+  "decision": "deterministic_operand_binding_insufficient",
+  "false_slot_binding": 0,
+  "gate": "pdf_retrieval_v4_gate_09_r5_1",
+  "max_evidence_set_size": 1,
+  "multi_semantic_complete": "1/16",
+  "next_gate": "joint_operand_ambiguity_contract_repair",
+  "production_switch_allowed": false,
+  "retrieval_runs": 0,
+  "semantic_evidence_set_recall": "7/80",
+  "semantic_registry_mutation": 0,
+  "slot_augmented_semantic_access": "62/80",
+  "top10_to_evidence_set_retention": "7/62"
+}

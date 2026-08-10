@@ -1,0 +1,29 @@
+{
+  "authoritative_evidence_catalog_sha256": {
+    "atomic-facts.jsonl": "04e023a2c8519ba02f985a58b6efffdd2057a3c3b9da85470fc19db85ac3c75c",
+    "bucket-facts.jsonl": "43505a1876c960e25e0372c158ad96fc85f736d48aa89c8ea2b5dbf5c60a7896",
+    "comparison-facts.jsonl": "d1924e14517d5cd3ec3fa2941a9e41958a5395953d7d96df9d5a85ad927894b9",
+    "narrative-evidence.jsonl": "1c74279a9402f6b23e8c35f84a03659a3367d1220aebd202e3a2196ce50c0c5e",
+    "row-matrices.jsonl": "226e5ba78728eff9089a27f7423842e2c7b7dd783b67aad90812ad9def2e0d54"
+  },
+  "currency_resolutions_sha256": "169ccd654ff01a8a24fa0182df016d6047b8ba1ba50bf2ac32d6ab878ac8812a",
+  "output_sha256": {
+    "classes_v2": "d373939a717e1d2e27e6ae2a0a33c31b2507897f16228ee81024a817ddc2d171",
+    "joint_bindings": "4853e8f353a0c13f5f1dcdcc239f04f634e4efcb58adda619c11cda1be87a6ad",
+    "metric_bindings": "754e21233eb922e44c4928ef6e0bc961256163e58357dfdcebe50b005c968d56",
+    "projections_v2": "ec8ee6931ab2a51a2c7e9db83011e11233fb977f9082d8b430a42a22f16168ee",
+    "sets_v2": "cc70b8d6e6ffca5314d8c54106183bfe9abe5b1c109de6ca37c6036b0d45d123"
+  },
+  "prediction_source_sha256": "c76d63ef694b5da818095187035620ebb372ba6e5d3d0bd7bb790470fc00c4ab",
+  "query_plan_sha256": "e1c6e5af104ebda3687c2844fa8549d00b3b89eb649d369f92fb1504920de13f",
+  "r5_access_universe_sha256": "5547cd1ee9e5d6d36de259a7114727b4ef0b52ba04812c8001106c76ae334694",
+  "r5_prediction_seal_sha256": "1d8d501c8b0d438088c14a1fcbcabceaa7d899f20e0cff6b221d7f761a2f20f7",
+  "r5_semantic_classes_sha256": "9d0dd6a9f3b23e7129735b0d8628c6107e320f29d9aebdb8a27abbd906bf4257",
+  "scale_resolutions_sha256": "8d297708e78886186275fdfb348cc5f4a66c6d5dfc7c2b4c57a8f2d9ab44f0a4",
+  "source_sha256": {
+    "joint_operand_binder.py": "e2ff9c1afbf0ccd6d292a13761bdcf5f73267b79008507571957ff9901c148b8",
+    "metric_binding_contract_v2.py": "41e4047ccc7a509516bdc5e0d4b69c70af148e280211bfbc2f186d4fa386bb2f",
+    "operation_unit_contract.py": "c4f392510f0f9f204e87b3d73a0c628a061fcfc105f264ff9463925feff02984",
+    "unit_context_resolver.py": "0f2cbfbdfb69ae509c445e3e3fb916f7e3c06084e9307fb6ed6d7835b892833a"
+  }
+}

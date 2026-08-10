@@ -1,0 +1,22 @@
+{
+  "bridge_runs": 0,
+  "candidate_mutation": 0,
+  "concept_candidates": "support_hint_only",
+  "embedding_calls": 0,
+  "expected_value_reads_before_seal": 0,
+  "gate": "pdf_retrieval_v4_gate_09_r5_1",
+  "gold_reads_before_seal": 0,
+  "joint_operand_binding": true,
+  "max_evidence_items": 5,
+  "measurement_kind_hard_conflict": true,
+  "metric_contract": "M0_exact_path_or_M1_exact_leaf",
+  "operation_aware_units": true,
+  "production_writes": 0,
+  "rank_resolves_ambiguity": false,
+  "reference_answer_reads_before_seal": 0,
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "rule_scan": false,
+  "semantic_registry_mutation": 0,
+  "strict_binding_reads_before_seal": 0
+}

@@ -1,0 +1,14 @@
+{
+  "binding_status_counts": {
+    "deterministic_ready": 9,
+    "runtime_operand_ambiguity": 16,
+    "undercovered": 47
+  },
+  "calculation_runtime_ready": "2/11",
+  "evidence_set_semantic_complete": "1/11",
+  "runtime_ready_case_ids": [
+    "nvda_fy2025_006",
+    "pfe_fy2024_006"
+  ],
+  "slot_augmented_semantic_complete": "8/11"
+}

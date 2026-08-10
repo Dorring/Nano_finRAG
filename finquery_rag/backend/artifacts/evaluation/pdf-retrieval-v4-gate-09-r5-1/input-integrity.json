@@ -1,0 +1,18 @@
+{
+  "binding_status_counts": {
+    "deterministic_ready": 9,
+    "runtime_operand_ambiguity": 16,
+    "undercovered": 47
+  },
+  "candidate_mutation": 0,
+  "candidate_outside_r5_access": 0,
+  "case_count": 72,
+  "concept_hint_only_occurrences": 77,
+  "max_evidence_set_size": 1,
+  "semantic_registry_mutation": 0,
+  "unit_resolution_status_counts": {
+    "partial": 722,
+    "resolved": 27,
+    "unresolved": 275
+  }
+}

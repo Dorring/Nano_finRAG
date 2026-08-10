@@ -1,0 +1,5 @@
+{
+  "decision": "deterministic_operand_binding_insufficient",
+  "next_gate": "joint_operand_ambiguity_contract_repair",
+  "production_switch_allowed": false
+}
