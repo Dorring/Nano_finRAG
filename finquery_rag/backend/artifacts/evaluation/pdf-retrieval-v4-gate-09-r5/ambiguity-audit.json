@@ -1,0 +1,9 @@
+{
+  "rank_used_to_resolve_semantic_ambiguity": false,
+  "runtime_operand_ambiguity_explicit": true,
+  "slot_status_counts": {
+    "deterministic": 16,
+    "runtime_operand_ambiguity": 30,
+    "undercovered": 44
+  }
+}

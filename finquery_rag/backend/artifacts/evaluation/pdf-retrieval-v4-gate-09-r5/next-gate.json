@@ -1,0 +1,5 @@
+{
+  "decision": "top10_semantic_evidence_set_insufficient",
+  "next_gate": "deterministic_operand_binding_contract_repair",
+  "production_switch_allowed": false
+}

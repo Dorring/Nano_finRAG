@@ -1,0 +1,18 @@
+{
+  "access_candidate_count_max": 15,
+  "access_candidate_count_min": 10,
+  "calculation_runtime_ready_preseal_count": 0,
+  "candidate_mutation": 0,
+  "candidate_outside_frozen_rankings": 0,
+  "case_count": 72,
+  "evidence_set_size_max": 1,
+  "multi_slot_case_count": 18,
+  "semantic_registry_mutation": 0,
+  "single_slot_case_count": 54,
+  "slot_ranking_count": 36,
+  "slot_status_counts": {
+    "deterministic": 16,
+    "runtime_operand_ambiguity": 30,
+    "undercovered": 44
+  }
+}

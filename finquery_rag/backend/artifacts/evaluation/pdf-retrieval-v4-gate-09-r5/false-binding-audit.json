@@ -1,0 +1,15 @@
+{
+  "decision": "blocked",
+  "false_slot_binding": 1,
+  "records": [
+    {
+      "case_id": "nvda_fy2025_003",
+      "failure": "false_slot_binding",
+      "gold_semantic_fact_id": "76f6670b03a31c5516407c07826abcb1b6159df81d186e4cec0c902fba8aa866",
+      "selected_semantic_fact_id": "ac5e39d2b5230d4965e7d07ffec974942de97b329be66109fd18b9dfab29c5b6",
+      "slot_id": "fact",
+      "source_index": 0
+    }
+  ],
+  "unresolved_gold_targets_not_used_to_claim_false_binding_zero": true
+}

@@ -1,0 +1,21 @@
+{
+  "calculation_runtime_ready": "0/11",
+  "calculation_semantic_complete": "2/11",
+  "candidate_mutation": 0,
+  "decision": "top10_semantic_evidence_set_insufficient",
+  "false_slot_binding": 1,
+  "gate": "pdf_retrieval_v4_gate_09_r5",
+  "main_only_semantic_access": "61/80",
+  "main_to_slot_augmented_gain": 1,
+  "max_evidence_set_size": 1,
+  "multi_semantic_complete": "2/16",
+  "next_gate": "deterministic_operand_binding_contract_repair",
+  "production_switch_allowed": false,
+  "retrieval_optimization_stopped": true,
+  "runtime_operand_ambiguity_explicit": true,
+  "semantic_evidence_set_recall": "11/80",
+  "semantic_registry_mutation": 0,
+  "slot_augmented_semantic_access": "62/80",
+  "top10_to_evidence_set_conversion": 0.177419,
+  "top10_to_evidence_set_retention": "11/62"
+}

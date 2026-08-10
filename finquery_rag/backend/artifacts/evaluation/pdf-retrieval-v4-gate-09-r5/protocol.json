@@ -1,0 +1,23 @@
+{
+  "bridge_runs": 0,
+  "candidate_mutation": 0,
+  "embedding_calls": 0,
+  "evidence_budget_scan": false,
+  "expected_value_reads_before_seal": 0,
+  "gate": "pdf_retrieval_v4_gate_09_r5",
+  "gold_reads_before_seal": 0,
+  "main_access_top_k": 10,
+  "max_evidence_items": 5,
+  "multi_slot_route": "U1_main_top10_union_each_slot_top10",
+  "parameter_scan": false,
+  "production_writes": 0,
+  "query_plan_runs": 0,
+  "reference_answer_reads_before_seal": 0,
+  "reranker_calls": 0,
+  "retrieval_runs": 0,
+  "semantic_registry_mutation": 0,
+  "single_slot_route": "U0_main_top10",
+  "slot_access_top_k": 10,
+  "slot_binding": "strict_semantic_fact_exact",
+  "strict_binding_reads_before_seal": 0
+}
