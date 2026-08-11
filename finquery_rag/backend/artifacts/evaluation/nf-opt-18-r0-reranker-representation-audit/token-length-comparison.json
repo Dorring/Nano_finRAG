@@ -1,0 +1,49 @@
+{
+  "internal": {
+    "candidate_final_tokens": {
+      "count": 7200,
+      "max": 3505.0,
+      "p50": 315.0,
+      "p90": 440.0,
+      "p95": 680.0,
+      "p99": 1522.0100000000002
+    },
+    "candidate_raw_tokens": {
+      "count": 7200,
+      "max": 2372.0,
+      "p50": 81.0,
+      "p90": 183.0,
+      "p95": 420.0,
+      "p99": 1230.0
+    },
+    "query_tokens": {
+      "status": "not present in frozen R3.3 prediction artifact"
+    },
+    "total_tokens": {
+      "status": "not separately present"
+    }
+  },
+  "interpretation": "token length is diagnostic only; representation content is audited independently",
+  "t2": {
+    "candidate_or_pair_tokens_after_truncation": {
+      "count": 114550,
+      "max": 4449.0,
+      "p50": 1172.0,
+      "p90": 1773.0,
+      "p95": 2121.0,
+      "p99": 2670.0
+    },
+    "candidate_or_pair_tokens_before_truncation": {
+      "count": 114550,
+      "max": 4449.0,
+      "p50": 1172.0,
+      "p90": 1773.0,
+      "p95": 2121.0,
+      "p99": 2670.0
+    },
+    "query_tokens": {
+      "status": "not separately present"
+    },
+    "source": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/t2-ragbench-05-qwen3-strong-reranker/predictions.jsonl.gz"
+  }
+}

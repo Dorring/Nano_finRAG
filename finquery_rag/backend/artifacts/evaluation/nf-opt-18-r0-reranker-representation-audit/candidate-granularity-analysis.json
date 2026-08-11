@@ -1,0 +1,21 @@
+{
+  "C0": {
+    "paragraph_chunk": 3,
+    "row_fragment": 2,
+    "semantic_evidence": 35,
+    "table_fragment": 3
+  },
+  "C1": {
+    "semantic_evidence": 21,
+    "table_fragment": 4
+  },
+  "C2": {},
+  "candidate_granularity_contract": "whole-context T2 documents versus mixed PDF-derived paragraph/table/row/semantic candidates internally",
+  "overall": {
+    "paragraph_chunk": 820,
+    "row_fragment": 974,
+    "semantic_evidence": 4895,
+    "table_fragment": 506,
+    "unknown": 5
+  }
+}

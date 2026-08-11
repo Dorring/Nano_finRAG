@@ -1,0 +1,1112 @@
+{
+  "C0_top5_success": {
+    "count": 43,
+    "distribution": {
+      "high": 20,
+      "medium": 23
+    },
+    "high_rate": 0.46511627906976744,
+    "rows": [
+      {
+        "case_id": "aapl_fy2025_003",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "aapl_fy2025_004",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "yes",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 2,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "aapl_fy2025_005",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "aapl_fy2025_006",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "unknown",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "aapl_fy2025_006",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "unknown",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 1
+      },
+      {
+        "case_id": "aapl_fy2025_007",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "yes",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 2,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "aapl_fy2025_009",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "yes",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 2,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "jpm_fy2025_001",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "no",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "jpm_fy2025_002",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "yes",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "jpm_fy2025_003",
+        "comparisons": {
+          "currency": "no",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "jpm_fy2025_005",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "unknown",
+          "row": "yes",
+          "scale": "unknown",
+          "statement": "unknown",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 2,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "ko_fy2025_002",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "ko_fy2025_003",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "unknown",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "ko_fy2025_004",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "no",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "ko_fy2025_005",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "no",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "ko_fy2025_009",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "yes",
+          "row": "partial",
+          "scale": "partial",
+          "statement": "unknown",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "msft_fy2025_001",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "partial",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "msft_fy2025_003",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "msft_fy2025_004",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "msft_fy2025_007",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "msft_fy2025_009",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "yes",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 2,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "nvda_fy2025_002",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "nvda_fy2025_003",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "nvda_fy2025_004",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "nvda_fy2025_005",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "nvda_fy2025_007",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "nvda_fy2025_009",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "pfe_fy2024_001",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "pfe_fy2024_005",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "unknown",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "pfe_fy2024_006",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "pfe_fy2024_006",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 1
+      },
+      {
+        "case_id": "pfe_fy2024_007",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 1
+      },
+      {
+        "case_id": "tsla_fy2025_001",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "unknown",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "tsla_fy2025_004",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "unknown",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "tsla_fy2025_005",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "no",
+          "row": "unknown",
+          "scale": "yes",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 2,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "tsla_fy2025_006",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "tsla_fy2025_006",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 1
+      },
+      {
+        "case_id": "tsla_fy2025_007",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "tsla_fy2025_007",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 1
+      },
+      {
+        "case_id": "v_fy2025_001",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "v_fy2025_002",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "v_fy2025_004",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "v_fy2025_007",
+        "comparisons": {
+          "currency": "unknown",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 1
+      }
+    ]
+  },
+  "C1_top100_present_top5_miss": {
+    "count": 25,
+    "distribution": {
+      "high": 10,
+      "low": 2,
+      "medium": 13
+    },
+    "high_rate": 0.4,
+    "rows": [
+      {
+        "case_id": "aapl_fy2025_001",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "unknown",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "aapl_fy2025_002",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "aapl_fy2025_007",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 1
+      },
+      {
+        "case_id": "jpm_fy2025_004",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "unknown",
+          "row": "partial",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "jpm_fy2025_006",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "yes",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "jpm_fy2025_006",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "yes",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 1
+      },
+      {
+        "case_id": "jpm_fy2025_009",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "ko_fy2025_001",
+        "comparisons": {
+          "currency": "no",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "unknown",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "ko_fy2025_006",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "ko_fy2025_006",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 1
+      },
+      {
+        "case_id": "msft_fy2025_002",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "msft_fy2025_005",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "partial",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "msft_fy2025_006",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "yes",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "yes",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 3,
+        "representation_ambiguity": "low",
+        "source_index": 0
+      },
+      {
+        "case_id": "msft_fy2025_006",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "yes",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "yes",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 3,
+        "representation_ambiguity": "low",
+        "source_index": 1
+      },
+      {
+        "case_id": "msft_fy2025_007",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "yes",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 2,
+        "representation_ambiguity": "medium",
+        "source_index": 1
+      },
+      {
+        "case_id": "nvda_fy2025_007",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 1
+      },
+      {
+        "case_id": "pfe_fy2024_004",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "tsla_fy2025_002",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "tsla_fy2025_009",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "no",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "v_fy2025_003",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "v_fy2025_005",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "v_fy2025_006",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "yes",
+          "row": "unknown",
+          "scale": "partial",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 2,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      },
+      {
+        "case_id": "v_fy2025_006",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 1
+      },
+      {
+        "case_id": "v_fy2025_007",
+        "comparisons": {
+          "currency": "partial",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 0,
+        "representation_ambiguity": "high",
+        "source_index": 0
+      },
+      {
+        "case_id": "v_fy2025_009",
+        "comparisons": {
+          "currency": "yes",
+          "header": "unknown",
+          "metric": "unknown",
+          "period": "partial",
+          "row": "unknown",
+          "scale": "unknown",
+          "statement": "partial",
+          "table": "unknown"
+        },
+        "discriminating_dimensions": 1,
+        "representation_ambiguity": "medium",
+        "source_index": 0
+      }
+    ]
+  },
+  "rule": "0 discriminating key dimensions=high; 1-2=medium; >=3=low; key dimensions metric/period/table/row/header/scale/currency/statement"
+}

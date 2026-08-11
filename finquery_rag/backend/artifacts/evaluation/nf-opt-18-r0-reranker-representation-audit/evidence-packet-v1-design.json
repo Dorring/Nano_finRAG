@@ -1,0 +1,26 @@
+{
+  "canonical_serialization": "Document -> Location -> Metric -> Period -> Unit -> Evidence -> Local Context",
+  "constraints": {
+    "candidate_identity_preserving": true,
+    "deterministic": true,
+    "gold_independent": true,
+    "no_expected_answer": true,
+    "no_expected_period_injection": true,
+    "no_expected_value_injection": true,
+    "no_gold_metric_injection": true,
+    "same_format_for_all_candidates": true
+  },
+  "execution": "design_only_not_run",
+  "fields": [
+    "[Document] company/file/page",
+    "[Location] section/table title",
+    "[Metric] metric path/row label",
+    "[Period] column header/normalized period",
+    "[Unit] currency/scale",
+    "[Evidence] raw cell/row/chunk text",
+    "[Local Context] limited parent table and neighboring row context"
+  ],
+  "local_context_rule": "same row and same table header plus a fixed limited neighboring-row/parent-block context; no page-wide expansion",
+  "name": "Evidence Packet V1",
+  "query": "original question only; no Gold or reference answer"
+}

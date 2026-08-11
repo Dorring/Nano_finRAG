@@ -1,0 +1,18 @@
+{
+  "bounded_top100_identity_mismatches": 0,
+  "bounded_top100_prediction_sha256": "ced014c357a3c8862a5ae3723a4c618556156542fd63aa2a8fd4bf766b60f01a",
+  "candidate_mutation": 0,
+  "gate": "NF-OPT-18-R0",
+  "gold_reads_before_seal": 0,
+  "input_hashes": {
+    "pdf-retrieval-v4-gate-08-r8-r2a-2/bounded-top100-predictions.jsonl.gz": "ced014c357a3c8862a5ae3723a4c618556156542fd63aa2a8fd4bf766b60f01a",
+    "pdf-retrieval-v4-gate-08-r8-r3-1a/top100-authoritative-context-v2.jsonl.gz": "8c7e808ef4d0c4e19b8820a69f4724c8fb3f9340bb93148ceabc9ac54ca8c481",
+    "pdf-retrieval-v4-gate-08-r8-r3-3-p0/queryplan-rerank-input-views.jsonl.gz": "91bafe5612fab14d1229c877c9dd1bc290b815a8d73f7f014427ce916cdf1705",
+    "pdf-retrieval-v4-gate-08-r8-r3-3/main_rerank_predictions.jsonl.gz": "26b901607e99a27cf6afd86e278ab2b2216ab740f4537ba7a81974dc108cac22"
+  },
+  "model_execution": false,
+  "prediction_cases": 72,
+  "retrieval_rerun": false,
+  "sealed_sha256": "508c74169006683b15f188ba81451925a7b5c8a347855b54b4b101735a90e296",
+  "view_occurrences": 7200
+}

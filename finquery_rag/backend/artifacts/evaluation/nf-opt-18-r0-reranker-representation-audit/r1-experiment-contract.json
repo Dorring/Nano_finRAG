@@ -1,0 +1,25 @@
+{
+  "execution": "not_run",
+  "frozen": {
+    "candidate_ids": "exactly frozen Top100",
+    "candidate_universe": "same bounded Top100",
+    "instruction_sha256": "10eb2881eb41a3c21c9d57fc5afbb6520f385adc78eb43785f2df1e86fbc4328",
+    "model_id": "Qwen/Qwen3-Reranker-4B",
+    "model_revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5"
+  },
+  "gate": "NF-OPT-18-R1",
+  "metrics": [
+    "strict physical R@1/3/5/10/20/50/100",
+    "semantic fact R@5/10",
+    "multi-evidence access",
+    "calculation operand access",
+    "old_hit_to_packet_miss",
+    "old_miss_to_packet_hit"
+  ],
+  "only_variable": "old candidate serialization versus Evidence Packet V1",
+  "stop_rule": {
+    "insufficient": "gain <3 sources or damage >= rescue",
+    "marginal": "3-4 source gain",
+    "material_gain": ">=5 strict source hits and damage <= rescue"
+  }
+}

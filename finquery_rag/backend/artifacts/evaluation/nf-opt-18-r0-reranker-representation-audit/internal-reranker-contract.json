@@ -1,0 +1,272 @@
+{
+  "candidate_serialization": {
+    "actual_field_status_rule": "present=typed serialized field; partial=only visible in raw Source; absent=not in model input",
+    "fields": {
+      "cell_value": {
+        "count": 7200,
+        "coverage": 0.8945833333333333,
+        "included_in_model_input": true,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "partial",
+        "status_counts": {
+          "absent": 759,
+          "partial": 6441
+        },
+        "typed_present": 0
+      },
+      "column_header": {
+        "count": 7200,
+        "coverage": 0.0,
+        "included_in_model_input": false,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "absent",
+        "status_counts": {
+          "absent": 7200
+        },
+        "typed_present": 0
+      },
+      "company_entity": {
+        "count": 7200,
+        "coverage": 1.0,
+        "included_in_model_input": true,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "present",
+        "status_counts": {
+          "partial": 7200
+        },
+        "typed_present": 0
+      },
+      "currency": {
+        "count": 7200,
+        "coverage": 0.3676388888888889,
+        "included_in_model_input": true,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "partial",
+        "status_counts": {
+          "absent": 4553,
+          "partial": 2647
+        },
+        "typed_present": 0
+      },
+      "document_identity": {
+        "count": 7200,
+        "coverage": 1.0,
+        "included_in_model_input": true,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "present",
+        "status_counts": {
+          "present": 7200
+        },
+        "typed_present": 7200
+      },
+      "file_name": {
+        "count": 7200,
+        "coverage": 0.0,
+        "included_in_model_input": false,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "absent",
+        "status_counts": {
+          "absent": 7200
+        },
+        "typed_present": 0
+      },
+      "logical_table": {
+        "count": 7200,
+        "coverage": 0.0,
+        "included_in_model_input": false,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "absent",
+        "status_counts": {
+          "absent": 7200
+        },
+        "typed_present": 0
+      },
+      "metric": {
+        "count": 7200,
+        "coverage": 0.5268055555555555,
+        "included_in_model_input": true,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "partial",
+        "status_counts": {
+          "absent": 3407,
+          "present": 3793
+        },
+        "typed_present": 3793
+      },
+      "metric_path": {
+        "count": 7200,
+        "coverage": 0.5268055555555555,
+        "included_in_model_input": true,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "partial",
+        "status_counts": {
+          "absent": 3407,
+          "present": 3793
+        },
+        "typed_present": 3793
+      },
+      "neighbor_text": {
+        "count": 7200,
+        "coverage": 0.0,
+        "included_in_model_input": false,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "absent",
+        "status_counts": {
+          "absent": 7200
+        },
+        "typed_present": 0
+      },
+      "page": {
+        "count": 7200,
+        "coverage": 1.0,
+        "included_in_model_input": true,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "present",
+        "status_counts": {
+          "present": 7200
+        },
+        "typed_present": 7200
+      },
+      "period": {
+        "count": 7200,
+        "coverage": 0.4111111111111111,
+        "included_in_model_input": true,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "partial",
+        "status_counts": {
+          "absent": 4240,
+          "partial": 1654,
+          "present": 1306
+        },
+        "typed_present": 1306
+      },
+      "raw_text": {
+        "count": 7200,
+        "coverage": 1.0,
+        "included_in_model_input": true,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "present",
+        "status_counts": {
+          "present": 7200
+        },
+        "typed_present": 7200
+      },
+      "row_label": {
+        "count": 7200,
+        "coverage": 0.5738888888888889,
+        "included_in_model_input": true,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "partial",
+        "status_counts": {
+          "absent": 3068,
+          "partial": 974,
+          "present": 3158
+        },
+        "typed_present": 3158
+      },
+      "scale": {
+        "count": 7200,
+        "coverage": 0.1275,
+        "included_in_model_input": true,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "partial",
+        "status_counts": {
+          "absent": 6282,
+          "partial": 918
+        },
+        "typed_present": 0
+      },
+      "section": {
+        "count": 7200,
+        "coverage": 0.14930555555555555,
+        "included_in_model_input": true,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "partial",
+        "status_counts": {
+          "absent": 6125,
+          "present": 1075
+        },
+        "typed_present": 1075
+      },
+      "structured_semantic_evidence": {
+        "count": 7200,
+        "coverage": 0.7293055555555555,
+        "included_in_model_input": true,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "partial",
+        "status_counts": {
+          "absent": 1949,
+          "present": 5251
+        },
+        "typed_present": 5251
+      },
+      "table_context": {
+        "count": 7200,
+        "coverage": 1.0,
+        "included_in_model_input": true,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "present",
+        "status_counts": {
+          "present": 7200
+        },
+        "typed_present": 7200
+      },
+      "table_title": {
+        "count": 7200,
+        "coverage": 0.24833333333333332,
+        "included_in_model_input": true,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "partial",
+        "status_counts": {
+          "absent": 5412,
+          "present": 1788
+        },
+        "typed_present": 1788
+      },
+      "temporal_axis": {
+        "count": 7200,
+        "coverage": 0.18138888888888888,
+        "included_in_model_input": true,
+        "source": "frozen R3.3 document_view actual-input scan",
+        "status": "partial",
+        "status_counts": {
+          "absent": 5894,
+          "present": 1306
+        },
+        "typed_present": 1306
+      }
+    },
+    "template": "[DOCUMENT] + [STRUCTURE] + [EVIDENCE] + [CONTENT]"
+  },
+  "candidate_source": "bounded Top100 frozen R8-R2A.2 / R3.3 input views",
+  "candidate_type": "mixed PDF-derived chunks and structured evidence views",
+  "gate": "NF-OPT-18-R0",
+  "instruction": {
+    "sha256": "10eb2881eb41a3c21c9d57fc5afbb6520f385adc78eb43785f2df1e86fbc4328",
+    "source": "RERANK_INSTRUCTION in structure_aware_rerank_view.py",
+    "text": "Given a financial-report question and its structured query plan, judge whether the candidate evidence directly supports answering the question. Prioritize exact financial metric, reporting period, entity or segment, statement/table semantics, and factual numeric evidence. For multi-part questions, evidence supporting any required operand is relevant. Do not reward generic financial-topic similarity."
+  },
+  "model": {
+    "batch_size": 1,
+    "dtype": "bfloat16",
+    "max_length": 8192,
+    "model_id": "Qwen/Qwen3-Reranker-4B",
+    "revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+    "scoring": "last-position full-vocabulary causal-lm yes/no logits; log_softmax(no, yes) yes probability"
+  },
+  "model_execution": false,
+  "production_switch_allowed": false,
+  "query_serialization": {
+    "gold_independent": true,
+    "statement_hint": "optional; frozen R3.3 manifest reports nonempty=0",
+    "template": "[QUESTION] raw_question + [QUERY PLAN] Task/Operation/Statement Hint/Required evidence slots"
+  },
+  "retrieval_rerun": false,
+  "source": {
+    "frozen_input_views": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r8-r3-3-p0/queryplan-rerank-input-views.jsonl.gz",
+    "model_manifest": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r8-r3-2/model-manifest.json",
+    "prediction_artifact": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r8-r3-3/main_rerank_predictions.jsonl.gz",
+    "serializer_code": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/src/pdf_retrieval_v4/structure_aware_rerank_view.py",
+    "serializer_code_sha256": "eb72d80d24322eb08f8e0699b1426edc524a3ff33d6b511edf463f0702617bc0"
+  }
+}

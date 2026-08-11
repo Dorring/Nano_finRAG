@@ -1,0 +1,577 @@
+{
+  "candidate_universe": "R3.3 frozen 72x100 views",
+  "gold_candidates": {
+    "candidate_occurrences": 62,
+    "context_status": {
+      "ambiguous_not_attached": 5,
+      "authoritative_structured": 56,
+      "unmapped": 1
+    },
+    "field_coverage": {
+      "cell_value": {
+        "count": 62,
+        "coverage": 1.0,
+        "status_counts": {
+          "partial": 62
+        },
+        "typed_present": 0
+      },
+      "column_header": {
+        "count": 62,
+        "coverage": 0.0,
+        "status_counts": {
+          "absent": 62
+        },
+        "typed_present": 0
+      },
+      "company_entity": {
+        "count": 62,
+        "coverage": 1.0,
+        "status_counts": {
+          "partial": 62
+        },
+        "typed_present": 0
+      },
+      "currency": {
+        "count": 62,
+        "coverage": 0.5967741935483871,
+        "status_counts": {
+          "absent": 25,
+          "partial": 37
+        },
+        "typed_present": 0
+      },
+      "document_identity": {
+        "count": 62,
+        "coverage": 1.0,
+        "status_counts": {
+          "present": 62
+        },
+        "typed_present": 62
+      },
+      "file_name": {
+        "count": 62,
+        "coverage": 0.0,
+        "status_counts": {
+          "absent": 62
+        },
+        "typed_present": 0
+      },
+      "logical_table": {
+        "count": 62,
+        "coverage": 0.0,
+        "status_counts": {
+          "absent": 62
+        },
+        "typed_present": 0
+      },
+      "metric": {
+        "count": 62,
+        "coverage": 0.9354838709677419,
+        "status_counts": {
+          "absent": 4,
+          "present": 58
+        },
+        "typed_present": 58
+      },
+      "metric_path": {
+        "count": 62,
+        "coverage": 0.9354838709677419,
+        "status_counts": {
+          "absent": 4,
+          "present": 58
+        },
+        "typed_present": 58
+      },
+      "neighbor_text": {
+        "count": 62,
+        "coverage": 0.0,
+        "status_counts": {
+          "absent": 62
+        },
+        "typed_present": 0
+      },
+      "page": {
+        "count": 62,
+        "coverage": 1.0,
+        "status_counts": {
+          "present": 62
+        },
+        "typed_present": 62
+      },
+      "period": {
+        "count": 62,
+        "coverage": 0.43548387096774194,
+        "status_counts": {
+          "absent": 35,
+          "partial": 3,
+          "present": 24
+        },
+        "typed_present": 24
+      },
+      "raw_text": {
+        "count": 62,
+        "coverage": 1.0,
+        "status_counts": {
+          "present": 62
+        },
+        "typed_present": 62
+      },
+      "row_label": {
+        "count": 62,
+        "coverage": 0.8387096774193549,
+        "status_counts": {
+          "absent": 10,
+          "partial": 2,
+          "present": 50
+        },
+        "typed_present": 50
+      },
+      "scale": {
+        "count": 62,
+        "coverage": 0.04838709677419355,
+        "status_counts": {
+          "absent": 59,
+          "partial": 3
+        },
+        "typed_present": 0
+      },
+      "section": {
+        "count": 62,
+        "coverage": 0.0,
+        "status_counts": {
+          "absent": 62
+        },
+        "typed_present": 0
+      },
+      "structured_semantic_evidence": {
+        "count": 62,
+        "coverage": 0.9032258064516129,
+        "status_counts": {
+          "absent": 6,
+          "present": 56
+        },
+        "typed_present": 56
+      },
+      "table_context": {
+        "count": 62,
+        "coverage": 1.0,
+        "status_counts": {
+          "present": 62
+        },
+        "typed_present": 62
+      },
+      "table_title": {
+        "count": 62,
+        "coverage": 0.3548387096774194,
+        "status_counts": {
+          "absent": 40,
+          "present": 22
+        },
+        "typed_present": 22
+      },
+      "temporal_axis": {
+        "count": 62,
+        "coverage": 0.3870967741935484,
+        "status_counts": {
+          "absent": 38,
+          "present": 24
+        },
+        "typed_present": 24
+      }
+    },
+    "granularity": {
+      "paragraph_chunk": 3,
+      "row_fragment": 2,
+      "semantic_evidence": 50,
+      "table_fragment": 7
+    },
+    "strict_source_binding_occurrences": 80,
+    "unique_candidate_keys": 37
+  },
+  "non_gold_candidates": {
+    "candidate_occurrences": 7138,
+    "context_status": {
+      "ambiguous_not_attached": 882,
+      "authoritative_structured": 5195,
+      "unmapped": 1061
+    },
+    "field_coverage": {
+      "cell_value": {
+        "count": 7138,
+        "coverage": 0.8936676940319417,
+        "status_counts": {
+          "absent": 759,
+          "partial": 6379
+        },
+        "typed_present": 0
+      },
+      "column_header": {
+        "count": 7138,
+        "coverage": 0.0,
+        "status_counts": {
+          "absent": 7138
+        },
+        "typed_present": 0
+      },
+      "company_entity": {
+        "count": 7138,
+        "coverage": 1.0,
+        "status_counts": {
+          "partial": 7138
+        },
+        "typed_present": 0
+      },
+      "currency": {
+        "count": 7138,
+        "coverage": 0.36564864107593165,
+        "status_counts": {
+          "absent": 4528,
+          "partial": 2610
+        },
+        "typed_present": 0
+      },
+      "document_identity": {
+        "count": 7138,
+        "coverage": 1.0,
+        "status_counts": {
+          "present": 7138
+        },
+        "typed_present": 7138
+      },
+      "file_name": {
+        "count": 7138,
+        "coverage": 0.0,
+        "status_counts": {
+          "absent": 7138
+        },
+        "typed_present": 0
+      },
+      "logical_table": {
+        "count": 7138,
+        "coverage": 0.0,
+        "status_counts": {
+          "absent": 7138
+        },
+        "typed_present": 0
+      },
+      "metric": {
+        "count": 7138,
+        "coverage": 0.5232558139534884,
+        "status_counts": {
+          "absent": 3403,
+          "present": 3735
+        },
+        "typed_present": 3735
+      },
+      "metric_path": {
+        "count": 7138,
+        "coverage": 0.5232558139534884,
+        "status_counts": {
+          "absent": 3403,
+          "present": 3735
+        },
+        "typed_present": 3735
+      },
+      "neighbor_text": {
+        "count": 7138,
+        "coverage": 0.0,
+        "status_counts": {
+          "absent": 7138
+        },
+        "typed_present": 0
+      },
+      "page": {
+        "count": 7138,
+        "coverage": 1.0,
+        "status_counts": {
+          "present": 7138
+        },
+        "typed_present": 7138
+      },
+      "period": {
+        "count": 7138,
+        "coverage": 0.4108994115998879,
+        "status_counts": {
+          "absent": 4205,
+          "partial": 1651,
+          "present": 1282
+        },
+        "typed_present": 1282
+      },
+      "raw_text": {
+        "count": 7138,
+        "coverage": 1.0,
+        "status_counts": {
+          "present": 7138
+        },
+        "typed_present": 7138
+      },
+      "row_label": {
+        "count": 7138,
+        "coverage": 0.5715886803026058,
+        "status_counts": {
+          "absent": 3058,
+          "partial": 972,
+          "present": 3108
+        },
+        "typed_present": 3108
+      },
+      "scale": {
+        "count": 7138,
+        "coverage": 0.12818716727374616,
+        "status_counts": {
+          "absent": 6223,
+          "partial": 915
+        },
+        "typed_present": 0
+      },
+      "section": {
+        "count": 7138,
+        "coverage": 0.15060240963855423,
+        "status_counts": {
+          "absent": 6063,
+          "present": 1075
+        },
+        "typed_present": 1075
+      },
+      "structured_semantic_evidence": {
+        "count": 7138,
+        "coverage": 0.727794900532362,
+        "status_counts": {
+          "absent": 1943,
+          "present": 5195
+        },
+        "typed_present": 5195
+      },
+      "table_context": {
+        "count": 7138,
+        "coverage": 1.0,
+        "status_counts": {
+          "present": 7138
+        },
+        "typed_present": 7138
+      },
+      "table_title": {
+        "count": 7138,
+        "coverage": 0.24740823760156908,
+        "status_counts": {
+          "absent": 5372,
+          "present": 1766
+        },
+        "typed_present": 1766
+      },
+      "temporal_axis": {
+        "count": 7138,
+        "coverage": 0.17960212944802464,
+        "status_counts": {
+          "absent": 5856,
+          "present": 1282
+        },
+        "typed_present": 1282
+      }
+    },
+    "granularity": {
+      "paragraph_chunk": 817,
+      "row_fragment": 972,
+      "semantic_evidence": 4845,
+      "table_fragment": 499,
+      "unknown": 5
+    },
+    "strict_source_binding_occurrences": null,
+    "unique_candidate_keys": 3143
+  },
+  "overall": {
+    "candidate_occurrences": 7200,
+    "context_status": {
+      "ambiguous_not_attached": 887,
+      "authoritative_structured": 5251,
+      "unmapped": 1062
+    },
+    "field_coverage": {
+      "cell_value": {
+        "count": 7200,
+        "coverage": 0.8945833333333333,
+        "status_counts": {
+          "absent": 759,
+          "partial": 6441
+        },
+        "typed_present": 0
+      },
+      "column_header": {
+        "count": 7200,
+        "coverage": 0.0,
+        "status_counts": {
+          "absent": 7200
+        },
+        "typed_present": 0
+      },
+      "company_entity": {
+        "count": 7200,
+        "coverage": 1.0,
+        "status_counts": {
+          "partial": 7200
+        },
+        "typed_present": 0
+      },
+      "currency": {
+        "count": 7200,
+        "coverage": 0.3676388888888889,
+        "status_counts": {
+          "absent": 4553,
+          "partial": 2647
+        },
+        "typed_present": 0
+      },
+      "document_identity": {
+        "count": 7200,
+        "coverage": 1.0,
+        "status_counts": {
+          "present": 7200
+        },
+        "typed_present": 7200
+      },
+      "file_name": {
+        "count": 7200,
+        "coverage": 0.0,
+        "status_counts": {
+          "absent": 7200
+        },
+        "typed_present": 0
+      },
+      "logical_table": {
+        "count": 7200,
+        "coverage": 0.0,
+        "status_counts": {
+          "absent": 7200
+        },
+        "typed_present": 0
+      },
+      "metric": {
+        "count": 7200,
+        "coverage": 0.5268055555555555,
+        "status_counts": {
+          "absent": 3407,
+          "present": 3793
+        },
+        "typed_present": 3793
+      },
+      "metric_path": {
+        "count": 7200,
+        "coverage": 0.5268055555555555,
+        "status_counts": {
+          "absent": 3407,
+          "present": 3793
+        },
+        "typed_present": 3793
+      },
+      "neighbor_text": {
+        "count": 7200,
+        "coverage": 0.0,
+        "status_counts": {
+          "absent": 7200
+        },
+        "typed_present": 0
+      },
+      "page": {
+        "count": 7200,
+        "coverage": 1.0,
+        "status_counts": {
+          "present": 7200
+        },
+        "typed_present": 7200
+      },
+      "period": {
+        "count": 7200,
+        "coverage": 0.4111111111111111,
+        "status_counts": {
+          "absent": 4240,
+          "partial": 1654,
+          "present": 1306
+        },
+        "typed_present": 1306
+      },
+      "raw_text": {
+        "count": 7200,
+        "coverage": 1.0,
+        "status_counts": {
+          "present": 7200
+        },
+        "typed_present": 7200
+      },
+      "row_label": {
+        "count": 7200,
+        "coverage": 0.5738888888888889,
+        "status_counts": {
+          "absent": 3068,
+          "partial": 974,
+          "present": 3158
+        },
+        "typed_present": 3158
+      },
+      "scale": {
+        "count": 7200,
+        "coverage": 0.1275,
+        "status_counts": {
+          "absent": 6282,
+          "partial": 918
+        },
+        "typed_present": 0
+      },
+      "section": {
+        "count": 7200,
+        "coverage": 0.14930555555555555,
+        "status_counts": {
+          "absent": 6125,
+          "present": 1075
+        },
+        "typed_present": 1075
+      },
+      "structured_semantic_evidence": {
+        "count": 7200,
+        "coverage": 0.7293055555555555,
+        "status_counts": {
+          "absent": 1949,
+          "present": 5251
+        },
+        "typed_present": 5251
+      },
+      "table_context": {
+        "count": 7200,
+        "coverage": 1.0,
+        "status_counts": {
+          "present": 7200
+        },
+        "typed_present": 7200
+      },
+      "table_title": {
+        "count": 7200,
+        "coverage": 0.24833333333333332,
+        "status_counts": {
+          "absent": 5412,
+          "present": 1788
+        },
+        "typed_present": 1788
+      },
+      "temporal_axis": {
+        "count": 7200,
+        "coverage": 0.18138888888888888,
+        "status_counts": {
+          "absent": 5894,
+          "present": 1306
+        },
+        "typed_present": 1306
+      }
+    },
+    "granularity": {
+      "paragraph_chunk": 820,
+      "row_fragment": 974,
+      "semantic_evidence": 4895,
+      "table_fragment": 506,
+      "unknown": 5
+    },
+    "strict_source_binding_occurrences": null,
+    "unique_candidate_keys": 3156
+  },
+  "strict_gold_identity": "(case_id, source_index, candidate_key); physical source binding only"
+}

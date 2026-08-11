@@ -1,0 +1,274 @@
+{
+  "fields": {
+    "cell_value": {
+      "available_count": 0,
+      "consumed_count": 6441,
+      "consumed_on_available_count": 0,
+      "consumed_status_counts": {
+        "absent": 759,
+        "partial": 6441
+      },
+      "consumption_rate_over_available": 0.0
+    },
+    "column_header": {
+      "available_count": 1012,
+      "consumed_count": 0,
+      "consumed_on_available_count": 0,
+      "consumed_status_counts": {
+        "absent": 7200
+      },
+      "consumption_rate_over_available": 0.0
+    },
+    "company_entity": {
+      "available_count": 0,
+      "consumed_count": 7200,
+      "consumed_on_available_count": 0,
+      "consumed_status_counts": {
+        "partial": 7200
+      },
+      "consumption_rate_over_available": 0.0
+    },
+    "currency": {
+      "available_count": 0,
+      "consumed_count": 2647,
+      "consumed_on_available_count": 0,
+      "consumed_status_counts": {
+        "absent": 4553,
+        "partial": 2647
+      },
+      "consumption_rate_over_available": 0.0
+    },
+    "document_identity": {
+      "available_count": 5251,
+      "consumed_count": 7200,
+      "consumed_on_available_count": 5251,
+      "consumed_status_counts": {
+        "present": 7200
+      },
+      "consumption_rate_over_available": 1.0
+    },
+    "file_name": {
+      "available_count": 0,
+      "consumed_count": 0,
+      "consumed_on_available_count": 0,
+      "consumed_status_counts": {
+        "absent": 7200
+      },
+      "consumption_rate_over_available": 0.0
+    },
+    "logical_table": {
+      "available_count": 1059,
+      "consumed_count": 0,
+      "consumed_on_available_count": 0,
+      "consumed_status_counts": {
+        "absent": 7200
+      },
+      "consumption_rate_over_available": 0.0
+    },
+    "metric": {
+      "available_count": 3487,
+      "consumed_count": 3793,
+      "consumed_on_available_count": 3487,
+      "consumed_status_counts": {
+        "absent": 3407,
+        "present": 3793
+      },
+      "consumption_rate_over_available": 1.0
+    },
+    "metric_path": {
+      "available_count": 3487,
+      "consumed_count": 3793,
+      "consumed_on_available_count": 3487,
+      "consumed_status_counts": {
+        "absent": 3407,
+        "present": 3793
+      },
+      "consumption_rate_over_available": 1.0
+    },
+    "neighbor_text": {
+      "available_count": 0,
+      "consumed_count": 0,
+      "consumed_on_available_count": 0,
+      "consumed_status_counts": {
+        "absent": 7200
+      },
+      "consumption_rate_over_available": 0.0
+    },
+    "page": {
+      "available_count": 5251,
+      "consumed_count": 7200,
+      "consumed_on_available_count": 5251,
+      "consumed_status_counts": {
+        "present": 7200
+      },
+      "consumption_rate_over_available": 1.0
+    },
+    "period": {
+      "available_count": 1012,
+      "consumed_count": 2960,
+      "consumed_on_available_count": 1012,
+      "consumed_status_counts": {
+        "absent": 4240,
+        "partial": 1654,
+        "present": 1306
+      },
+      "consumption_rate_over_available": 1.0
+    },
+    "raw_text": {
+      "available_count": 5251,
+      "consumed_count": 7200,
+      "consumed_on_available_count": 5251,
+      "consumed_status_counts": {
+        "present": 7200
+      },
+      "consumption_rate_over_available": 1.0
+    },
+    "row_label": {
+      "available_count": 3158,
+      "consumed_count": 4132,
+      "consumed_on_available_count": 3158,
+      "consumed_status_counts": {
+        "absent": 3068,
+        "partial": 974,
+        "present": 3158
+      },
+      "consumption_rate_over_available": 1.0
+    },
+    "scale": {
+      "available_count": 0,
+      "consumed_count": 918,
+      "consumed_on_available_count": 0,
+      "consumed_status_counts": {
+        "absent": 6282,
+        "partial": 918
+      },
+      "consumption_rate_over_available": 0.0
+    },
+    "section": {
+      "available_count": 0,
+      "consumed_count": 1075,
+      "consumed_on_available_count": 0,
+      "consumed_status_counts": {
+        "absent": 6125,
+        "present": 1075
+      },
+      "consumption_rate_over_available": 0.0
+    },
+    "structured_semantic_evidence": {
+      "available_count": 5251,
+      "consumed_count": 5251,
+      "consumed_on_available_count": 5251,
+      "consumed_status_counts": {
+        "absent": 1949,
+        "present": 5251
+      },
+      "consumption_rate_over_available": 1.0
+    },
+    "table_context": {
+      "available_count": 3613,
+      "consumed_count": 7200,
+      "consumed_on_available_count": 3613,
+      "consumed_status_counts": {
+        "present": 7200
+      },
+      "consumption_rate_over_available": 1.0
+    },
+    "table_title": {
+      "available_count": 1788,
+      "consumed_count": 1788,
+      "consumed_on_available_count": 1788,
+      "consumed_status_counts": {
+        "absent": 5412,
+        "present": 1788
+      },
+      "consumption_rate_over_available": 1.0
+    },
+    "temporal_axis": {
+      "available_count": 858,
+      "consumed_count": 1306,
+      "consumed_on_available_count": 858,
+      "consumed_status_counts": {
+        "absent": 5894,
+        "present": 1306
+      },
+      "consumption_rate_over_available": 1.0
+    }
+  },
+  "gold_reads_before_feature_or_representation_seal": 0,
+  "graph_corpus_counts": {
+    "atomic_facts": 18542,
+    "axis_bindings": 52035,
+    "bucket_facts": 886,
+    "cell_count": 52035,
+    "cell_count_method": "axis-bindings records (cell/axis identity)",
+    "comparison_facts": 835,
+    "corpus_field_availability": {
+      "column_header": {
+        "asset_counts": {
+          "axis-bindings": 28454
+        },
+        "nonempty_record_count_sum": 28454
+      },
+      "currency": {
+        "asset_counts": {
+          "atomic-facts": 943,
+          "bucket-facts": 58,
+          "currency-resolutions": 31,
+          "row-matrices": 438
+        },
+        "nonempty_record_count_sum": 1470
+      },
+      "logical_table": {
+        "asset_counts": {
+          "logical-tables": 942,
+          "row-matrices": 7801
+        },
+        "nonempty_record_count_sum": 8743
+      },
+      "metric_path": {
+        "asset_counts": {
+          "atomic-facts": 18542,
+          "bucket-facts": 886,
+          "comparison-facts": 835,
+          "metric-paths": 8424,
+          "row-matrices": 7801
+        },
+        "nonempty_record_count_sum": 36488
+      },
+      "period": {
+        "asset_counts": {
+          "atomic-facts": 17977,
+          "axis-bindings": 28454
+        },
+        "nonempty_record_count_sum": 46431
+      },
+      "row_label": {
+        "asset_counts": {
+          "metric-paths": 8424
+        },
+        "nonempty_record_count_sum": 8424
+      },
+      "scale": {
+        "asset_counts": {
+          "atomic-facts": 13275,
+          "bucket-facts": 590,
+          "row-matrices": 5552,
+          "scale-resolutions": 631
+        },
+        "nonempty_record_count_sum": 20048
+      },
+      "table_title": {
+        "asset_counts": {
+          "logical-tables": 630
+        },
+        "nonempty_record_count_sum": 630
+      }
+    },
+    "currency_resolutions": 942,
+    "row_matrices": 7801,
+    "rows": 11607,
+    "scale_resolutions": 942,
+    "tables": 942
+  },
+  "occurrence_count": 7200
+}
