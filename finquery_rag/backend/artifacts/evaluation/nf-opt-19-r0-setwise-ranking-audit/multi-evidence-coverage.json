@@ -1,0 +1,100 @@
+{
+  "denominator": 16,
+  "k": {
+    "10": {
+      "semantic_fact": {
+        "all_count": 9,
+        "all_rate_over_16": 0.5625,
+        "all_rate_resolved_only": 0.75,
+        "any_count": 11,
+        "any_rate_over_16": 0.6875,
+        "average_required_fact_coverage_resolved": 0.8333333333333334,
+        "resolved_cases": 12,
+        "unresolved_cases": 4
+      },
+      "strict_physical": {
+        "all_count": 9,
+        "all_rate": 0.5625,
+        "any_count": 13,
+        "any_rate": 0.8125,
+        "average_required_source_coverage": 0.6875
+      }
+    },
+    "100": {
+      "semantic_fact": {
+        "all_count": 11,
+        "all_rate_over_16": 0.6875,
+        "all_rate_resolved_only": 0.9166666666666666,
+        "any_count": 11,
+        "any_rate_over_16": 0.6875,
+        "average_required_fact_coverage_resolved": 0.9166666666666666,
+        "resolved_cases": 12,
+        "unresolved_cases": 4
+      },
+      "strict_physical": {
+        "all_count": 12,
+        "all_rate": 0.75,
+        "any_count": 13,
+        "any_rate": 0.8125,
+        "average_required_source_coverage": 0.78125
+      }
+    },
+    "20": {
+      "semantic_fact": {
+        "all_count": 10,
+        "all_rate_over_16": 0.625,
+        "all_rate_resolved_only": 0.8333333333333334,
+        "any_count": 11,
+        "any_rate_over_16": 0.6875,
+        "average_required_fact_coverage_resolved": 0.875,
+        "resolved_cases": 12,
+        "unresolved_cases": 4
+      },
+      "strict_physical": {
+        "all_count": 10,
+        "all_rate": 0.625,
+        "any_count": 13,
+        "any_rate": 0.8125,
+        "average_required_source_coverage": 0.71875
+      }
+    },
+    "5": {
+      "semantic_fact": {
+        "all_count": 6,
+        "all_rate_over_16": 0.375,
+        "all_rate_resolved_only": 0.5,
+        "any_count": 9,
+        "any_rate_over_16": 0.5625,
+        "average_required_fact_coverage_resolved": 0.625,
+        "resolved_cases": 12,
+        "unresolved_cases": 4
+      },
+      "strict_physical": {
+        "all_count": 4,
+        "all_rate": 0.25,
+        "any_count": 9,
+        "any_rate": 0.5625,
+        "average_required_source_coverage": 0.40625
+      }
+    },
+    "50": {
+      "semantic_fact": {
+        "all_count": 11,
+        "all_rate_over_16": 0.6875,
+        "all_rate_resolved_only": 0.9166666666666666,
+        "any_count": 11,
+        "any_rate_over_16": 0.6875,
+        "average_required_fact_coverage_resolved": 0.9166666666666666,
+        "resolved_cases": 12,
+        "unresolved_cases": 4
+      },
+      "strict_physical": {
+        "all_count": 12,
+        "all_rate": 0.75,
+        "any_count": 13,
+        "any_rate": 0.8125,
+        "average_required_source_coverage": 0.78125
+      }
+    }
+  }
+}

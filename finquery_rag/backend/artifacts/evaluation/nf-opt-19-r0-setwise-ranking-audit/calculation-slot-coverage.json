@@ -1,0 +1,422 @@
+{
+  "cases": [
+    {
+      "case_id": "aapl_fy2025_006",
+      "k": {
+        "10": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "100": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "20": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "5": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "50": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        }
+      },
+      "required_semantic_fact_ids": [
+        "380e6f833251d34feab34d6e8e494765e5e71ce8f0a7658da1e50ce8c4b4fad1",
+        "e6012ce4e5f30c61b636e87ae0ca03c1f889ef3d3f6be8224b01553bd1af631a"
+      ],
+      "required_slot_count": 2
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "k": {
+        "10": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "100": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "20": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "5": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 2
+        },
+        "50": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        }
+      },
+      "required_semantic_fact_ids": [
+        "208a643173ca52ae006e6a292182bc73779967b8968e4a313aaa265d575e815d",
+        "fc2b02ab9805d533c58305b970c6619084343b14ab436fccb93bca115ca9fb0b"
+      ],
+      "required_slot_count": 2
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "k": {
+        "10": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "100": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "20": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "5": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "50": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        }
+      },
+      "required_semantic_fact_ids": [
+        "4e771d48a606d2352542a769e1a6bebefd7072fc76c21c71b4a3dfdc6447627e",
+        "8d604cc15cf4716462b82621c0ec5e118f9475829ed389c5b69ca77bccbf13a8"
+      ],
+      "required_slot_count": 2
+    },
+    {
+      "case_id": "ko_fy2025_007",
+      "k": {
+        "10": {
+          "all_slots": true,
+          "represented_slots": 1,
+          "required_slots": 1
+        },
+        "100": {
+          "all_slots": true,
+          "represented_slots": 1,
+          "required_slots": 1
+        },
+        "20": {
+          "all_slots": true,
+          "represented_slots": 1,
+          "required_slots": 1
+        },
+        "5": {
+          "all_slots": true,
+          "represented_slots": 1,
+          "required_slots": 1
+        },
+        "50": {
+          "all_slots": true,
+          "represented_slots": 1,
+          "required_slots": 1
+        }
+      },
+      "required_semantic_fact_ids": [
+        "c08a22db7079c71d9e35a90094f891a0d6997ab8183c28e8d4f253958fd1ec6f"
+      ],
+      "required_slot_count": 1
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "k": {
+        "10": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        },
+        "100": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        },
+        "20": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        },
+        "5": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        },
+        "50": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        }
+      },
+      "required_semantic_fact_ids": [],
+      "required_slot_count": 0
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "k": {
+        "10": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        },
+        "100": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        },
+        "20": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        },
+        "5": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        },
+        "50": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        }
+      },
+      "required_semantic_fact_ids": [],
+      "required_slot_count": 0
+    },
+    {
+      "case_id": "nvda_fy2025_006",
+      "k": {
+        "10": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        },
+        "100": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        },
+        "20": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        },
+        "5": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        },
+        "50": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        }
+      },
+      "required_semantic_fact_ids": [],
+      "required_slot_count": 0
+    },
+    {
+      "case_id": "pfe_fy2024_006",
+      "k": {
+        "10": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "100": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "20": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "5": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "50": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        }
+      },
+      "required_semantic_fact_ids": [
+        "435e551c61511e936ce4dbc91a24a567a8c60cc982ac9bd1184dadd5edfcedbf",
+        "a2ea0319b2290d34b8a822fb8ca8daf0ed39b924daeeb61a79ea89cf7e06a377"
+      ],
+      "required_slot_count": 2
+    },
+    {
+      "case_id": "tsla_fy2025_006",
+      "k": {
+        "10": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "100": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "20": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "5": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        },
+        "50": {
+          "all_slots": true,
+          "represented_slots": 2,
+          "required_slots": 2
+        }
+      },
+      "required_semantic_fact_ids": [
+        "73eecbdabc070a7034bb12d2d475aaefe497dc80c082db02440d3af4248c426b",
+        "b39be628b18e7ea5c474597a53d94f80925091f02e11fd5c5eccbb643fa03d07"
+      ],
+      "required_slot_count": 2
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "k": {
+        "10": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        },
+        "100": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        },
+        "20": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        },
+        "5": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        },
+        "50": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 0
+        }
+      },
+      "required_semantic_fact_ids": [],
+      "required_slot_count": 0
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "k": {
+        "10": {
+          "all_slots": true,
+          "represented_slots": 1,
+          "required_slots": 1
+        },
+        "100": {
+          "all_slots": true,
+          "represented_slots": 1,
+          "required_slots": 1
+        },
+        "20": {
+          "all_slots": true,
+          "represented_slots": 1,
+          "required_slots": 1
+        },
+        "5": {
+          "all_slots": false,
+          "represented_slots": 0,
+          "required_slots": 1
+        },
+        "50": {
+          "all_slots": true,
+          "represented_slots": 1,
+          "required_slots": 1
+        }
+      },
+      "required_semantic_fact_ids": [
+        "8e34d77c7fd5786a2e1817247b68633496465e5458d1529c26f7c2e8e679e757"
+      ],
+      "required_slot_count": 1
+    }
+  ],
+  "denominator": 11,
+  "k": {
+    "10": {
+      "all_slots_cases": 7,
+      "all_slots_rate_over_11": 0.6363636363636364,
+      "represented_slots": 12,
+      "required_slots": 12,
+      "resolved_cases": 7,
+      "slot_coverage_rate": 1.0
+    },
+    "100": {
+      "all_slots_cases": 7,
+      "all_slots_rate_over_11": 0.6363636363636364,
+      "represented_slots": 12,
+      "required_slots": 12,
+      "resolved_cases": 7,
+      "slot_coverage_rate": 1.0
+    },
+    "20": {
+      "all_slots_cases": 7,
+      "all_slots_rate_over_11": 0.6363636363636364,
+      "represented_slots": 12,
+      "required_slots": 12,
+      "resolved_cases": 7,
+      "slot_coverage_rate": 1.0
+    },
+    "5": {
+      "all_slots_cases": 5,
+      "all_slots_rate_over_11": 0.45454545454545453,
+      "represented_slots": 9,
+      "required_slots": 12,
+      "resolved_cases": 7,
+      "slot_coverage_rate": 0.75
+    },
+    "50": {
+      "all_slots_cases": 7,
+      "all_slots_rate_over_11": 0.6363636363636364,
+      "represented_slots": 12,
+      "required_slots": 12,
+      "resolved_cases": 7,
+      "slot_coverage_rate": 1.0
+    }
+  },
+  "set_compression_failures": [
+    "jpm_fy2025_006",
+    "v_fy2025_006"
+  ]
+}

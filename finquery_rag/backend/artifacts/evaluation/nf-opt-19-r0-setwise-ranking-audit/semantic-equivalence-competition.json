@@ -1,0 +1,377 @@
+{
+  "c1_semantic_target_resolved": 15,
+  "c1_total": 25,
+  "c1_with_semantic_equivalent_top5": 5,
+  "c1_without_semantic_equivalent_top5": 20,
+  "records": [
+    {
+      "best_semantic_equivalent_rank": 1,
+      "candidate_key": "candidate:v1:79ac51e245c5b62256797393cbdd8c14497c5800b1c7afa77995957d747c223c",
+      "case_id": "aapl_fy2025_001",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [
+        "e6012ce4e5f30c61b636e87ae0ca03c1f889ef3d3f6be8224b01553bd1af631a"
+      ],
+      "qwen_rank": 6,
+      "semantic_equivalence_status": "resolved",
+      "semantic_equivalent_top5": true,
+      "semantic_group_members_top5": [
+        "candidate:v1:448b00001ff3f3ae68e9d3b3004a5ddf7b7670797d94e4694e386cca63ad6444",
+        "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563",
+        "candidate:v1:d847b1ef143c9fa2857f8461a8120129bb8c91fc3b6a934affc99652d0b3de68"
+      ],
+      "semantic_group_size_top100": 6,
+      "source_index": 0
+    },
+    {
+      "best_semantic_equivalent_rank": 11,
+      "candidate_key": "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d",
+      "case_id": "aapl_fy2025_002",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [
+        "05397bf33552a6caefcb3067e84fceb7b0b3ec369cd76aeadefb2189666c85e4"
+      ],
+      "qwen_rank": 11,
+      "semantic_equivalence_status": "resolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 2,
+      "source_index": 0
+    },
+    {
+      "best_semantic_equivalent_rank": 18,
+      "candidate_key": "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d",
+      "case_id": "aapl_fy2025_007",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [
+        "05397bf33552a6caefcb3067e84fceb7b0b3ec369cd76aeadefb2189666c85e4"
+      ],
+      "qwen_rank": 18,
+      "semantic_equivalence_status": "resolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 2,
+      "source_index": 1
+    },
+    {
+      "best_semantic_equivalent_rank": null,
+      "candidate_key": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
+      "case_id": "jpm_fy2025_004",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [],
+      "qwen_rank": 18,
+      "semantic_equivalence_status": "unresolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 0,
+      "source_index": 0
+    },
+    {
+      "best_semantic_equivalent_rank": 7,
+      "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+      "case_id": "jpm_fy2025_006",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [
+        "208a643173ca52ae006e6a292182bc73779967b8968e4a313aaa265d575e815d"
+      ],
+      "qwen_rank": 7,
+      "semantic_equivalence_status": "resolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 1,
+      "source_index": 0
+    },
+    {
+      "best_semantic_equivalent_rank": 7,
+      "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+      "case_id": "jpm_fy2025_006",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [
+        "fc2b02ab9805d533c58305b970c6619084343b14ab436fccb93bca115ca9fb0b"
+      ],
+      "qwen_rank": 7,
+      "semantic_equivalence_status": "resolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 1,
+      "source_index": 1
+    },
+    {
+      "best_semantic_equivalent_rank": null,
+      "candidate_key": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
+      "case_id": "jpm_fy2025_009",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [],
+      "qwen_rank": 23,
+      "semantic_equivalence_status": "unresolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 0,
+      "source_index": 0
+    },
+    {
+      "best_semantic_equivalent_rank": 1,
+      "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "case_id": "ko_fy2025_001",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [
+        "8d604cc15cf4716462b82621c0ec5e118f9475829ed389c5b69ca77bccbf13a8"
+      ],
+      "qwen_rank": 8,
+      "semantic_equivalence_status": "resolved",
+      "semantic_equivalent_top5": true,
+      "semantic_group_members_top5": [
+        "candidate:v1:f84aed9c61ef711cf7e1e916c6fef1e308f02dd5e031f77625276265a43bd2bb",
+        "candidate:v1:436c74d6e686838d3297f02fb99eab13f3c1b3aa92021a29ee724be168fa7413"
+      ],
+      "semantic_group_size_top100": 4,
+      "source_index": 0
+    },
+    {
+      "best_semantic_equivalent_rank": 5,
+      "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "case_id": "ko_fy2025_006",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [
+        "4e771d48a606d2352542a769e1a6bebefd7072fc76c21c71b4a3dfdc6447627e"
+      ],
+      "qwen_rank": 9,
+      "semantic_equivalence_status": "resolved",
+      "semantic_equivalent_top5": true,
+      "semantic_group_members_top5": [
+        "candidate:v1:436c74d6e686838d3297f02fb99eab13f3c1b3aa92021a29ee724be168fa7413"
+      ],
+      "semantic_group_size_top100": 4,
+      "source_index": 0
+    },
+    {
+      "best_semantic_equivalent_rank": 5,
+      "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "case_id": "ko_fy2025_006",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [
+        "8d604cc15cf4716462b82621c0ec5e118f9475829ed389c5b69ca77bccbf13a8"
+      ],
+      "qwen_rank": 9,
+      "semantic_equivalence_status": "resolved",
+      "semantic_equivalent_top5": true,
+      "semantic_group_members_top5": [
+        "candidate:v1:436c74d6e686838d3297f02fb99eab13f3c1b3aa92021a29ee724be168fa7413"
+      ],
+      "semantic_group_size_top100": 4,
+      "source_index": 1
+    },
+    {
+      "best_semantic_equivalent_rank": null,
+      "candidate_key": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+      "case_id": "msft_fy2025_002",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [],
+      "qwen_rank": 9,
+      "semantic_equivalence_status": "unresolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 0,
+      "source_index": 0
+    },
+    {
+      "best_semantic_equivalent_rank": null,
+      "candidate_key": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+      "case_id": "msft_fy2025_005",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [],
+      "qwen_rank": 7,
+      "semantic_equivalence_status": "unresolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 0,
+      "source_index": 0
+    },
+    {
+      "best_semantic_equivalent_rank": null,
+      "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "case_id": "msft_fy2025_006",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [],
+      "qwen_rank": 10,
+      "semantic_equivalence_status": "unresolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 0,
+      "source_index": 0
+    },
+    {
+      "best_semantic_equivalent_rank": null,
+      "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "case_id": "msft_fy2025_006",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [],
+      "qwen_rank": 10,
+      "semantic_equivalence_status": "unresolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 0,
+      "source_index": 1
+    },
+    {
+      "best_semantic_equivalent_rank": null,
+      "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "case_id": "msft_fy2025_007",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [],
+      "qwen_rank": 10,
+      "semantic_equivalence_status": "unresolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 0,
+      "source_index": 1
+    },
+    {
+      "best_semantic_equivalent_rank": 21,
+      "candidate_key": "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf",
+      "case_id": "nvda_fy2025_007",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [
+        "76f6670b03a31c5516407c07826abcb1b6159df81d186e4cec0c902fba8aa866"
+      ],
+      "qwen_rank": 21,
+      "semantic_equivalence_status": "resolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 1,
+      "source_index": 1
+    },
+    {
+      "best_semantic_equivalent_rank": null,
+      "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+      "case_id": "pfe_fy2024_004",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [],
+      "qwen_rank": 6,
+      "semantic_equivalence_status": "unresolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 0,
+      "source_index": 0
+    },
+    {
+      "best_semantic_equivalent_rank": 3,
+      "candidate_key": "candidate:v1:764e51106a705bd6f16af004eeb7f0126c4209a0c62a5319d13153dc95987982",
+      "case_id": "tsla_fy2025_002",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [
+        "ec8b0b1b57f67890d3baa7f585c22c1f152444c283548100aa05b62deb8302d7"
+      ],
+      "qwen_rank": 7,
+      "semantic_equivalence_status": "resolved",
+      "semantic_equivalent_top5": true,
+      "semantic_group_members_top5": [
+        "candidate:v1:60d254f55133e3d40d065fb1b4f3c657b97423305674b845aa688064f09d8ab7",
+        "candidate:v1:54453bd73944dd01ed473feadc8bbf756d03ff2093cfb5ebc7dcfb464a6f1f34"
+      ],
+      "semantic_group_size_top100": 4,
+      "source_index": 0
+    },
+    {
+      "best_semantic_equivalent_rank": null,
+      "candidate_key": "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52",
+      "case_id": "tsla_fy2025_009",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [],
+      "qwen_rank": 30,
+      "semantic_equivalence_status": "unresolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 0,
+      "source_index": 0
+    },
+    {
+      "best_semantic_equivalent_rank": 9,
+      "candidate_key": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+      "case_id": "v_fy2025_003",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [
+        "c6e25446bae2968b425fb3876a27dd2631b56c43f20bfe91e36d6b94ff8628d9"
+      ],
+      "qwen_rank": 9,
+      "semantic_equivalence_status": "resolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 1,
+      "source_index": 0
+    },
+    {
+      "best_semantic_equivalent_rank": 30,
+      "candidate_key": "candidate:v1:4c11889fb53c1b1a3194a2e6518b9d94a910cfa71ea99f8e25c4ef206e06613b",
+      "case_id": "v_fy2025_005",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [
+        "457c2db1e1f3d6e18f80d1755cf781d6e2299648bc589f2510da9e17ffec3d40"
+      ],
+      "qwen_rank": 30,
+      "semantic_equivalence_status": "resolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 1,
+      "source_index": 0
+    },
+    {
+      "best_semantic_equivalent_rank": null,
+      "candidate_key": "candidate:v1:21f924b9c1b33d1e7caa949ac3dcca366d20e99a1aacf2b9d84be8e762ad6240",
+      "case_id": "v_fy2025_006",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [],
+      "qwen_rank": 43,
+      "semantic_equivalence_status": "unresolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 0,
+      "source_index": 0
+    },
+    {
+      "best_semantic_equivalent_rank": 10,
+      "candidate_key": "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83",
+      "case_id": "v_fy2025_006",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [
+        "8e34d77c7fd5786a2e1817247b68633496465e5458d1529c26f7c2e8e679e757"
+      ],
+      "qwen_rank": 10,
+      "semantic_equivalence_status": "resolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 1,
+      "source_index": 1
+    },
+    {
+      "best_semantic_equivalent_rank": 6,
+      "candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+      "case_id": "v_fy2025_007",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [
+        "b54ed81d78f29a72c64933f8b22fcbc61b6cda392b10319887b52c8ffe5bdbba"
+      ],
+      "qwen_rank": 6,
+      "semantic_equivalence_status": "resolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 1,
+      "source_index": 0
+    },
+    {
+      "best_semantic_equivalent_rank": 10,
+      "candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+      "case_id": "v_fy2025_009",
+      "cohort": "c1",
+      "gold_semantic_fact_ids": [
+        "92ccc311aa012ad20206b581e1ddc8df71950e1cf9ba6e402c447358029c26e3"
+      ],
+      "qwen_rank": 10,
+      "semantic_equivalence_status": "resolved",
+      "semantic_equivalent_top5": false,
+      "semantic_group_members_top5": [],
+      "semantic_group_size_top100": 1,
+      "source_index": 0
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "counts": {
+    "clear_loss": 12,
+    "near_boundary": 13
+  },
+  "records": [
+    {
+      "candidate_key": "candidate:v1:79ac51e245c5b62256797393cbdd8c14497c5800b1c7afa77995957d747c223c",
+      "case_id": "aapl_fy2025_001",
+      "cohort": "near_boundary",
+      "gold_score": -0.009167483076453209,
+      "qwen_rank": 6,
+      "rank5_cutoff_score": -0.008614521473646164,
+      "score_margin": 0.000552961602807045,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d",
+      "case_id": "aapl_fy2025_002",
+      "cohort": "near_boundary",
+      "gold_score": -0.05832047387957573,
+      "qwen_rank": 11,
+      "rank5_cutoff_score": -0.023245446383953094,
+      "score_margin": 0.035075027495622635,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d",
+      "case_id": "aapl_fy2025_007",
+      "cohort": "clear_loss",
+      "gold_score": -0.38687101006507874,
+      "qwen_rank": 18,
+      "rank5_cutoff_score": -0.07428312301635742,
+      "score_margin": 0.3125878870487213,
+      "source_index": 1
+    },
+    {
+      "candidate_key": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
+      "case_id": "jpm_fy2025_004",
+      "cohort": "clear_loss",
+      "gold_score": -0.575939416885376,
+      "qwen_rank": 18,
+      "rank5_cutoff_score": -0.16972702741622925,
+      "score_margin": 0.40621238946914673,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+      "case_id": "jpm_fy2025_006",
+      "cohort": "near_boundary",
+      "gold_score": -0.03577728569507599,
+      "qwen_rank": 7,
+      "rank5_cutoff_score": -0.029750416055321693,
+      "score_margin": 0.006026869639754295,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+      "case_id": "jpm_fy2025_006",
+      "cohort": "near_boundary",
+      "gold_score": -0.03577728569507599,
+      "qwen_rank": 7,
+      "rank5_cutoff_score": -0.029750416055321693,
+      "score_margin": 0.006026869639754295,
+      "source_index": 1
+    },
+    {
+      "candidate_key": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
+      "case_id": "jpm_fy2025_009",
+      "cohort": "clear_loss",
+      "gold_score": -3.4086456298828125,
+      "qwen_rank": 23,
+      "rank5_cutoff_score": -0.8981232643127441,
+      "score_margin": 2.5105223655700684,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "case_id": "ko_fy2025_001",
+      "cohort": "near_boundary",
+      "gold_score": -0.011047743260860443,
+      "qwen_rank": 8,
+      "rank5_cutoff_score": -0.008094719611108303,
+      "score_margin": 0.00295302364975214,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "case_id": "ko_fy2025_006",
+      "cohort": "near_boundary",
+      "gold_score": -0.04044583439826965,
+      "qwen_rank": 9,
+      "rank5_cutoff_score": -0.029750416055321693,
+      "score_margin": 0.01069541834294796,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "case_id": "ko_fy2025_006",
+      "cohort": "near_boundary",
+      "gold_score": -0.04044583439826965,
+      "qwen_rank": 9,
+      "rank5_cutoff_score": -0.029750416055321693,
+      "score_margin": 0.01069541834294796,
+      "source_index": 1
+    },
+    {
+      "candidate_key": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+      "case_id": "msft_fy2025_002",
+      "cohort": "near_boundary",
+      "gold_score": -0.016034230589866638,
+      "qwen_rank": 9,
+      "rank5_cutoff_score": -0.007606116589158773,
+      "score_margin": 0.008428114000707865,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+      "case_id": "msft_fy2025_005",
+      "cohort": "near_boundary",
+      "gold_score": -0.02630021423101425,
+      "qwen_rank": 7,
+      "rank5_cutoff_score": -0.0071468655951321125,
+      "score_margin": 0.01915334863588214,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "case_id": "msft_fy2025_006",
+      "cohort": "clear_loss",
+      "gold_score": -0.4981345236301422,
+      "qwen_rank": 10,
+      "rank5_cutoff_score": -0.25192904472351074,
+      "score_margin": 0.24620547890663147,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "case_id": "msft_fy2025_006",
+      "cohort": "clear_loss",
+      "gold_score": -0.4981345236301422,
+      "qwen_rank": 10,
+      "rank5_cutoff_score": -0.25192904472351074,
+      "score_margin": 0.24620547890663147,
+      "source_index": 1
+    },
+    {
+      "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "case_id": "msft_fy2025_007",
+      "cohort": "clear_loss",
+      "gold_score": -1.0537006855010986,
+      "qwen_rank": 10,
+      "rank5_cutoff_score": -0.06196761503815651,
+      "score_margin": 0.9917330704629421,
+      "source_index": 1
+    },
+    {
+      "candidate_key": "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf",
+      "case_id": "nvda_fy2025_007",
+      "cohort": "clear_loss",
+      "gold_score": -1.6506099700927734,
+      "qwen_rank": 21,
+      "rank5_cutoff_score": -0.575939416885376,
+      "score_margin": 1.0746705532073975,
+      "source_index": 1
+    },
+    {
+      "candidate_key": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+      "case_id": "pfe_fy2024_004",
+      "cohort": "near_boundary",
+      "gold_score": -0.06993623077869415,
+      "qwen_rank": 6,
+      "rank5_cutoff_score": -0.051641397178173065,
+      "score_margin": 0.018294833600521088,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:764e51106a705bd6f16af004eeb7f0126c4209a0c62a5319d13153dc95987982",
+      "case_id": "tsla_fy2025_002",
+      "cohort": "near_boundary",
+      "gold_score": -0.013310973532497883,
+      "qwen_rank": 7,
+      "rank5_cutoff_score": -0.011047743260860443,
+      "score_margin": 0.0022632302716374397,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52",
+      "case_id": "tsla_fy2025_009",
+      "cohort": "clear_loss",
+      "gold_score": -4.0181498527526855,
+      "qwen_rank": 30,
+      "rank5_cutoff_score": -0.6931471824645996,
+      "score_margin": 3.325002670288086,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+      "case_id": "v_fy2025_003",
+      "cohort": "near_boundary",
+      "gold_score": -0.029750416055321693,
+      "qwen_rank": 9,
+      "rank5_cutoff_score": -0.016034230589866638,
+      "score_margin": 0.013716185465455055,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:4c11889fb53c1b1a3194a2e6518b9d94a910cfa71ea99f8e25c4ef206e06613b",
+      "case_id": "v_fy2025_005",
+      "cohort": "clear_loss",
+      "gold_score": -1.857227087020874,
+      "qwen_rank": 30,
+      "rank5_cutoff_score": -0.266189843416214,
+      "score_margin": 1.59103724360466,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:21f924b9c1b33d1e7caa949ac3dcca366d20e99a1aacf2b9d84be8e762ad6240",
+      "case_id": "v_fy2025_006",
+      "cohort": "clear_loss",
+      "gold_score": -2.578889846801758,
+      "qwen_rank": 43,
+      "rank5_cutoff_score": -0.04570977762341499,
+      "score_margin": 2.533180069178343,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83",
+      "case_id": "v_fy2025_006",
+      "cohort": "clear_loss",
+      "gold_score": -0.1902991682291031,
+      "qwen_rank": 10,
+      "rank5_cutoff_score": -0.04570977762341499,
+      "score_margin": 0.1445893906056881,
+      "source_index": 1
+    },
+    {
+      "candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+      "case_id": "v_fy2025_007",
+      "cohort": "near_boundary",
+      "gold_score": -0.12692804634571075,
+      "qwen_rank": 6,
+      "rank5_cutoff_score": -0.10020658373832703,
+      "score_margin": 0.026721462607383728,
+      "source_index": 0
+    },
+    {
+      "candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+      "case_id": "v_fy2025_009",
+      "cohort": "clear_loss",
+      "gold_score": -2.0720865726470947,
+      "qwen_rank": 10,
+      "rank5_cutoff_score": -1.0537006855010986,
+      "score_margin": 1.018385887145996,
+      "source_index": 0
+    }
+  ],
+  "rule": "near_boundary iff C1 margin <= median(C1 margins)",
+  "threshold": 0.035075027495622635
+}

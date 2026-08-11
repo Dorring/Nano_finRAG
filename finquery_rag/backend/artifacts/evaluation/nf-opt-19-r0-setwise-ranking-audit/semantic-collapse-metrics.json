@@ -1,0 +1,48 @@
+{
+  "calculation_all_slots_at_5": {
+    "after": 5,
+    "before": 5,
+    "denominator": 11
+  },
+  "gold_reads_before_seal": 0,
+  "movement": {
+    "damaged": 9,
+    "net": -6,
+    "rescued": 3,
+    "unchanged_hit": 34,
+    "unchanged_miss": 34
+  },
+  "multi_evidence_all_at_5": {
+    "denominator": 16,
+    "semantic_after": 6,
+    "semantic_before": 6,
+    "strict_after": 3,
+    "strict_before": 4
+  },
+  "semantic_recall_at_5": {
+    "after": {
+      "hits": 51,
+      "rate_over_80": 0.6375,
+      "resolved_targets": 48,
+      "total": 80
+    },
+    "before": {
+      "hits": 49,
+      "rate_over_80": 0.6125,
+      "resolved_targets": 48,
+      "total": 80
+    }
+  },
+  "strict_physical_recall_at_5": {
+    "after": {
+      "hits": 37,
+      "rate": 0.4625,
+      "total": 80
+    },
+    "before": {
+      "hits": 43,
+      "rate": 0.5375,
+      "total": 80
+    }
+  }
+}

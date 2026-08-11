@@ -1,0 +1,12 @@
+{
+  "artifact": "semantic-collapse-predictions.jsonl.gz",
+  "candidate_added": 0,
+  "case_count": 72,
+  "gate": "NF-OPT-19-R0",
+  "gold_reads_before_seal": 0,
+  "prediction_sha256": "3eafd585f26288d244ca06bea59b63f7ec3106c1e1d80242402e201371ace696",
+  "ranking_mutation": false,
+  "sealed": true,
+  "source_qwen_sha256": "26b901607e99a27cf6afd86e278ab2b2216ab740f4537ba7a81974dc108cac22",
+  "source_registry_sha256": "b3609e8d09e2c9e785f9037591466b6927a0eea39a38ec5794e969336211382f"
+}

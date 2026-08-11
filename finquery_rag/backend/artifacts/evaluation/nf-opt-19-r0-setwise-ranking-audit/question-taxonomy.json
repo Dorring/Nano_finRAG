@@ -1,0 +1,111 @@
+{
+  "calculation_is_subset_of_multi_evidence": true,
+  "categories": {
+    "calculation": {
+      "queries": 11,
+      "recall_at_10": {
+        "hits": 17,
+        "rate": 0.7727272727272727,
+        "total": 22
+      },
+      "recall_at_100": {
+        "hits": 18,
+        "rate": 0.8181818181818182,
+        "total": 22
+      },
+      "recall_at_20": {
+        "hits": 17,
+        "rate": 0.7727272727272727,
+        "total": 22
+      },
+      "recall_at_5": {
+        "hits": 9,
+        "rate": 0.4090909090909091,
+        "total": 22
+      },
+      "recall_at_50": {
+        "hits": 18,
+        "rate": 0.8181818181818182,
+        "total": 22
+      },
+      "required_physical_sources": 22,
+      "sources": 22
+    },
+    "multi_evidence": {
+      "queries": 16,
+      "recall_at_10": {
+        "hits": 22,
+        "rate": 0.6875,
+        "total": 32
+      },
+      "recall_at_100": {
+        "hits": 25,
+        "rate": 0.78125,
+        "total": 32
+      },
+      "recall_at_20": {
+        "hits": 23,
+        "rate": 0.71875,
+        "total": 32
+      },
+      "recall_at_5": {
+        "hits": 13,
+        "rate": 0.40625,
+        "total": 32
+      },
+      "recall_at_50": {
+        "hits": 25,
+        "rate": 0.78125,
+        "total": 32
+      },
+      "required_physical_sources": 32,
+      "sources": 32
+    },
+    "single_evidence": {
+      "queries": 56,
+      "recall_at_10": {
+        "hits": 38,
+        "rate": 0.7916666666666666,
+        "total": 48
+      },
+      "recall_at_100": {
+        "hits": 43,
+        "rate": 0.8958333333333334,
+        "total": 48
+      },
+      "recall_at_20": {
+        "hits": 40,
+        "rate": 0.8333333333333334,
+        "total": 48
+      },
+      "recall_at_5": {
+        "hits": 30,
+        "rate": 0.625,
+        "total": 48
+      },
+      "recall_at_50": {
+        "hits": 43,
+        "rate": 0.8958333333333334,
+        "total": 48
+      },
+      "required_physical_sources": 48,
+      "sources": 48
+    }
+  },
+  "counts": {
+    "calculation": 11,
+    "multi_evidence": 16,
+    "single_evidence": 56
+  },
+  "missing_r3_3_taxonomy_cases_filled_from_queryplan": [
+    "aapl_fy2025_008",
+    "jpm_fy2025_008",
+    "ko_fy2025_008",
+    "msft_fy2025_008",
+    "nvda_fy2025_008",
+    "pfe_fy2024_008",
+    "tsla_fy2025_008",
+    "v_fy2025_008"
+  ],
+  "multi_evidence_non_calculation": 5
+}

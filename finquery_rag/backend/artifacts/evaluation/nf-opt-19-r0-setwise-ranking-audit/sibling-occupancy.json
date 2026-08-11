@@ -1,0 +1,1427 @@
+{
+  "gold_independent_grouping": true,
+  "records": [
+    {
+      "case_id": "aapl_fy2025_001",
+      "duplicate_sibling_slots": 4,
+      "semantic_group_ids": [
+        "candidate:aapl_fy2025_001:candidate:v1:d4767aa59643b2da3cbf8c1e22e7c10d6550b4305b3a9c2a05f8e9f3f5de91f3",
+        "semantic:0efab87c70f3c0019c830a573b3f67e9c4884a5507c671e24fac2333a746ccf8",
+        "semantic:380e6f833251d34feab34d6e8e494765e5e71ce8f0a7658da1e50ce8c4b4fad1",
+        "semantic:5f564f275560eddfdcf232447642a49923a30b984688789645b066535b871d77",
+        "semantic:a63fa7e2eb773969de7264b39d871fe68a11e7a0cbf4ef7802f89b0ab5cdaa3f",
+        "semantic:cdd6e134c127f84cca63e11eae1f567fb164e98b74359254e78d4f9a30721ee0",
+        "semantic:dc348c4e9f52a720302587c458495dcd0ddd2d9106545536c956a51c708a8723",
+        "semantic:e16e7470b13e5609b110685f8bd8dd0f5c5b960afecb57199cb93a54db7099ce",
+        "semantic:e6012ce4e5f30c61b636e87ae0ca03c1f889ef3d3f6be8224b01553bd1af631a"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 4,
+      "top5_sibling_group_count": 9
+    },
+    {
+      "case_id": "aapl_fy2025_002",
+      "duplicate_sibling_slots": 3,
+      "semantic_group_ids": [
+        "candidate:aapl_fy2025_002:candidate:v1:d4767aa59643b2da3cbf8c1e22e7c10d6550b4305b3a9c2a05f8e9f3f5de91f3",
+        "semantic:065e7b264524e30156eaf73d5f5e28b40f79a702f93e59e18bc10cbcc5f569aa",
+        "semantic:1decf4814e5570d70a72564d02b3560785902f13632ae700d2f9b621a6864e37",
+        "semantic:201c23b32246c29e6f1e3e33641f4a4dc7ffa514bd5a8a48680c9eaac165d1a4",
+        "semantic:623e1250fc16efa03278fb26f419cf7379e73865f95ea5afa8a0f95332a64721",
+        "semantic:67600e3c660cde90645bf9218fbc0a689d871ad020c37f008b717fa16f03aea4",
+        "semantic:87ec236451dcb2a730e1da7dffc87a626e7ced9abec24f19fe99f1c9ae680cb9",
+        "semantic:b22fd768d8c51a1509fa94921929a671921366335c41b545493f5fe91d54e820",
+        "semantic:ea6abf3b1c47e9def2778126cc63ee6f9d3dab0f3cd78427cf0411ab8f60d275",
+        "semantic:f582dcbd9d3176a7cf242a6d71808d09208ef869c1d6127fcd17f47fbcc67e38"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 3,
+      "top5_sibling_group_count": 10
+    },
+    {
+      "case_id": "aapl_fy2025_003",
+      "duplicate_sibling_slots": 6,
+      "semantic_group_ids": [
+        "candidate:aapl_fy2025_003:candidate:v1:10d2e736760e22f4a445887485ed2a0514d8af46583560e3211ff5453a9553cd",
+        "semantic:0016fd38f213aa07ef0045081d3edba8e5ae7e21bbd404803a15ddde5a280883",
+        "semantic:181215edf26813189ecab7481ab8cc2f8069e519545f7708725be200f2bcb909",
+        "semantic:39d75fcab866613c96870257378bd3bdc3248e83cd8f59a032e5e006b5f0b59d",
+        "semantic:554d6c41e389b78faab198e41f134e0281cc27c9a85aa5c061b6a8fea6badb2d",
+        "semantic:aba0fccbadaef2707c19e6f4df9904ac444fea1e0ca7d9cb69404df201aa58af",
+        "semantic:b969364b8c865b931a18ed03e78ff4cfeaa40678a74d0a8c0431f4691f275fbe"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 6,
+      "top5_sibling_group_count": 7
+    },
+    {
+      "case_id": "aapl_fy2025_004",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:aapl_fy2025_004:candidate:v1:bfb0e1291fb4e01e452c752bda8ab618078725a1e99f5596d553890eb820f5fe",
+        "candidate:aapl_fy2025_004:candidate:v1:d4767aa59643b2da3cbf8c1e22e7c10d6550b4305b3a9c2a05f8e9f3f5de91f3",
+        "candidate:aapl_fy2025_004:candidate:v1:f5441db7e52d1240b3c70a3357c33d9e5cb6113a93938c6b60b469c88a72f508",
+        "semantic:4d369e2c9c6d3d8ca284b74160ba7bbafad6f0fd39496290f5bc8abf084f00c2",
+        "semantic:7032676d328e6bc519c82bf6a80b202c3dcfdf1c5a4b8e2e82d7a578163f217e",
+        "semantic:aa230ca98d407107609636382c4260a7230ef69d416855d1763fc388462c8c45",
+        "semantic:dee3f6b38d71892aab86f2cea989e02c71ed288eb46b2d56c5e39cebe5782bd0",
+        "semantic:e4800b1bbb3d39ca20f2c28c6453453303511fd5f4e3b5b323ec60f38fd8b90b",
+        "semantic:ef92fe64c7d070713d546f244e33ffd376128d5d581eed12d66c0e3da3d2c65b"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 9
+    },
+    {
+      "case_id": "aapl_fy2025_005",
+      "duplicate_sibling_slots": 3,
+      "semantic_group_ids": [
+        "candidate:aapl_fy2025_005:candidate:v1:bfb0e1291fb4e01e452c752bda8ab618078725a1e99f5596d553890eb820f5fe",
+        "candidate:aapl_fy2025_005:candidate:v1:d4767aa59643b2da3cbf8c1e22e7c10d6550b4305b3a9c2a05f8e9f3f5de91f3",
+        "semantic:0dfaf01d57a1a8474ece9e2f4383a786055e3af609ae8992b7db564346fc83e6",
+        "semantic:2e8248c801c502c9d0878519d0cba34f060c8f79aaaacc5b38dd8eb29f5d476c",
+        "semantic:8c1c901926efc7c8b050512bcbd6cad1b53dfec461caddc8d0960d7e79bd97cb",
+        "semantic:cbf1a75bdfa303dd0979252041bfa51ce49bd97b9376f9fac62369b76d411f47",
+        "semantic:d0a50f45b02d2d4f62825d176ad9169600a694811ef74d107a83d6773788d027",
+        "semantic:d531838ad28dda78256bb0d20937d332c01d73b9d16286fe2e97ea140b9202f2"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 3,
+      "top5_sibling_group_count": 8
+    },
+    {
+      "case_id": "aapl_fy2025_006",
+      "duplicate_sibling_slots": 4,
+      "semantic_group_ids": [
+        "candidate:aapl_fy2025_006:candidate:v1:d4767aa59643b2da3cbf8c1e22e7c10d6550b4305b3a9c2a05f8e9f3f5de91f3",
+        "semantic:0efab87c70f3c0019c830a573b3f67e9c4884a5507c671e24fac2333a746ccf8",
+        "semantic:380e6f833251d34feab34d6e8e494765e5e71ce8f0a7658da1e50ce8c4b4fad1",
+        "semantic:5f564f275560eddfdcf232447642a49923a30b984688789645b066535b871d77",
+        "semantic:a63fa7e2eb773969de7264b39d871fe68a11e7a0cbf4ef7802f89b0ab5cdaa3f",
+        "semantic:cdd6e134c127f84cca63e11eae1f567fb164e98b74359254e78d4f9a30721ee0",
+        "semantic:dc348c4e9f52a720302587c458495dcd0ddd2d9106545536c956a51c708a8723",
+        "semantic:e16e7470b13e5609b110685f8bd8dd0f5c5b960afecb57199cb93a54db7099ce",
+        "semantic:e6012ce4e5f30c61b636e87ae0ca03c1f889ef3d3f6be8224b01553bd1af631a"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 4,
+      "top5_sibling_group_count": 9
+    },
+    {
+      "case_id": "aapl_fy2025_007",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:aapl_fy2025_007:candidate:v1:510babee1c2f49e9ff335d9475f45042190d1387ffaf56dd256af39277f96092",
+        "candidate:aapl_fy2025_007:candidate:v1:bfb0e1291fb4e01e452c752bda8ab618078725a1e99f5596d553890eb820f5fe",
+        "candidate:aapl_fy2025_007:candidate:v1:d4767aa59643b2da3cbf8c1e22e7c10d6550b4305b3a9c2a05f8e9f3f5de91f3",
+        "semantic:4d369e2c9c6d3d8ca284b74160ba7bbafad6f0fd39496290f5bc8abf084f00c2",
+        "semantic:623e1250fc16efa03278fb26f419cf7379e73865f95ea5afa8a0f95332a64721",
+        "semantic:67600e3c660cde90645bf9218fbc0a689d871ad020c37f008b717fa16f03aea4",
+        "semantic:87ec236451dcb2a730e1da7dffc87a626e7ced9abec24f19fe99f1c9ae680cb9",
+        "semantic:aa230ca98d407107609636382c4260a7230ef69d416855d1763fc388462c8c45",
+        "semantic:dee3f6b38d71892aab86f2cea989e02c71ed288eb46b2d56c5e39cebe5782bd0"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 9
+    },
+    {
+      "case_id": "aapl_fy2025_008",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:aapl_fy2025_008:candidate:v1:03d65fd4e8259aff5556945b5bc2aeed9dfbbbef3aac7d8f11db5429b4662ac8",
+        "candidate:aapl_fy2025_008:candidate:v1:36ada891a467347de044a15d54fe0c5aa60287c5858ff649e2bd0d8a00f3d47b",
+        "candidate:aapl_fy2025_008:candidate:v1:a4d185d3937f4483bb1d38aff2d81dbcf5feba1268d8ec0bcba02488ab6040d1",
+        "candidate:aapl_fy2025_008:candidate:v1:b7cd7fa83a2c68f577a462fc8b48361956afc22945d852bcae278625c442e194",
+        "candidate:aapl_fy2025_008:candidate:v1:cb89e7b5f80d528f8b719401fcb32a390ec5bc7ec1e6480ee7a6d47172c3ddbc"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "aapl_fy2025_009",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:aapl_fy2025_009:candidate:v1:4c1b4b98efa7e6ea0f5c0bc253263e9dbca6c5ca91872bbb5ed8f540eb9f6313",
+        "candidate:aapl_fy2025_009:candidate:v1:bfb0e1291fb4e01e452c752bda8ab618078725a1e99f5596d553890eb820f5fe",
+        "candidate:aapl_fy2025_009:candidate:v1:d4767aa59643b2da3cbf8c1e22e7c10d6550b4305b3a9c2a05f8e9f3f5de91f3",
+        "semantic:4d369e2c9c6d3d8ca284b74160ba7bbafad6f0fd39496290f5bc8abf084f00c2",
+        "semantic:7032676d328e6bc519c82bf6a80b202c3dcfdf1c5a4b8e2e82d7a578163f217e",
+        "semantic:aa230ca98d407107609636382c4260a7230ef69d416855d1763fc388462c8c45",
+        "semantic:dee3f6b38d71892aab86f2cea989e02c71ed288eb46b2d56c5e39cebe5782bd0",
+        "semantic:e4800b1bbb3d39ca20f2c28c6453453303511fd5f4e3b5b323ec60f38fd8b90b",
+        "semantic:ef92fe64c7d070713d546f244e33ffd376128d5d581eed12d66c0e3da3d2c65b"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 9
+    },
+    {
+      "case_id": "jpm_fy2025_001",
+      "duplicate_sibling_slots": 3,
+      "semantic_group_ids": [
+        "semantic:04b55478ee90c1a1e2832acebeee52c193a4abb805484d2aa9256d583cbc7008",
+        "semantic:09d62d9d8f7fcc9bb49fe1e3c2986a23ce46843c6b701eac73e013a5f4cd08a8",
+        "semantic:208a643173ca52ae006e6a292182bc73779967b8968e4a313aaa265d575e815d",
+        "semantic:28334be57c885fb0b12f884bd84838a2864e2f7c0f2501a6d53c2240035169b0",
+        "semantic:40bbc1c8be889f388af1be772d47ddd16f42008017d90dde6b2a1af18cb97acc",
+        "semantic:43ec7f0f27817eab1c10da096c4690f85b5734ca599bbeb0dc0c8d52ca9f25f3",
+        "semantic:63ac5d8f1d8a6cbeb0acb4fb353481d2b0e3cbdcff63ff268602d2052320274d",
+        "semantic:6e6af235544860a319176aabf0771587e81c624c767f22d29f5cc70b6d7048f4",
+        "semantic:7b57934af17d1ffec08936642e7935749bc3eeb7844af5757ac5806b9a11ef23",
+        "semantic:9b2ef6b271663cd761603539fda6b4dc1bed1de9ac62190a6bd841bc78959472",
+        "semantic:a7fba8bf6c8075552f573ba93451bc9c56e14df8ca3daeb4866817cef9915431",
+        "semantic:cd25037e54ca838e8b0e2f339ca011c8935f4e05d76363b69306ce024a429bf5",
+        "semantic:d8ce0cf9059f92fc28d479dd63bf44b593017cdc0b76ff49d3616c94947afb06",
+        "semantic:d8ceb049611e8871ec39528365897c05d0123418e30150ad917202d79ef9dec0",
+        "semantic:f75aa0a588d53f9a47aaea96221486450951030a83aec5fdc956f04544ae86fd",
+        "semantic:fc2b02ab9805d533c58305b970c6619084343b14ab436fccb93bca115ca9fb0b"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 3,
+      "top5_sibling_group_count": 16
+    },
+    {
+      "case_id": "jpm_fy2025_002",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:jpm_fy2025_002:candidate:v1:b9840a52d375b86d7737de632ca89b10334ada1af2b8edd0da1e67085ed44f3c",
+        "candidate:jpm_fy2025_002:candidate:v1:e0e7d17150e7f69931e9e45242fa965c9a3381f3c74c95b17822d242f5f5fa03",
+        "semantic:3fb06d3504f1691aa6ea764a3faa5b05c581be49de348f1ced417b65ef59e4ea",
+        "semantic:46e2985e01168b652b1d3714640a6239d60332006615d2d6c0d91f1c445a6495",
+        "semantic:8261cbc3331262ee6457c2fbaaa599460dd7d16942c14469fd7bc4eca800ad13",
+        "semantic:958a896e986efd2e08df8b6433ce3b1cfa662a42a79bd9c986af354e35776a5e",
+        "semantic:c4736a1c976d6c9a242a29c181e5114a4d94964edcad22baeb151aa669f107e9",
+        "semantic:c47b8decb67af8ef375b4699c9a91246869ee59a879d69a2f6599992055ff32c",
+        "semantic:d1264858ab9cecedfc24b84fd3f7675657b6479133a6a992047350df16081336",
+        "semantic:d7f36836f446608f52db478bc8d3d3ce7bba05ad085e184b773c9703e540ba2b",
+        "semantic:e573a2654d981ab4ea6c66a4d8645165298da974f8c55878c35d2b69ce5948c5",
+        "semantic:f3c4867c906d3a14a55fc84c5dff3eff43c609be2557e39fd37674ef84626f1e"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 12
+    },
+    {
+      "case_id": "jpm_fy2025_003",
+      "duplicate_sibling_slots": 3,
+      "semantic_group_ids": [
+        "candidate:jpm_fy2025_003:candidate:v1:1d5826e02ef83ee8856724f5de68a3e3b89aa8bad3d244bb48710afb8b8a87b3",
+        "semantic:027584e99a13ac926f8ed3a32212019bd20db4b8da1d3f5411b64af1661acec5",
+        "semantic:201f76c457f8601da111fc262897196ba0a1699b16cfb023c0f4c2787bba6876",
+        "semantic:3612035d9df2d98ae71d1d5d7fbdc7a83e6f9d7cfb07a4618c71815891d9b808",
+        "semantic:532ab6fbed19a5b05af825773b7bcd880751edad31edc745ef2a79e998ad9b37",
+        "semantic:5d1b9da193f62263528724d6a7a61004aad66ccc4df6a2185901794aae027a7c",
+        "semantic:730ff6cb44680b04afaa29db3f4551f5e6bbeabceb0d5bdc95d7adc469c55702",
+        "semantic:79d05c55dc77bcc932330e02de071d8794731b38a197a50ee72e7a791f1ea16b",
+        "semantic:7ed919270994124c4cbb131a6a2e92652414e3b6858e1755d4d472a3ea768910",
+        "semantic:8782d4cf31479db22203cfb8cbba05bc540f318f587de21e112854aa95a2ec01"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 3,
+      "top5_sibling_group_count": 10
+    },
+    {
+      "case_id": "jpm_fy2025_004",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:jpm_fy2025_004:candidate:v1:0abeff32554b6246d76d3024ebbfc79ac98ace396f4ca1a93c16a538ee777285",
+        "candidate:jpm_fy2025_004:candidate:v1:bf7ec316f6d712f05409cc2e13afbfbcb876869636356174d3bc88f97c41de04",
+        "candidate:jpm_fy2025_004:candidate:v1:dac093c72505ff48f698b1d1430fc91d24d712b709ac6856bc1656aebc7a7a96",
+        "candidate:jpm_fy2025_004:candidate:v1:db5bda96c7d07dc05d336c6f54080fd2384e609035fe0392d2cac5df2ac0ff77",
+        "candidate:jpm_fy2025_004:candidate:v1:dd83590f4fd5e4f70cb3e883337c887e58496b1f21e9ebd7145c4059b84f9960"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "jpm_fy2025_005",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:jpm_fy2025_005:candidate:v1:08ce9252eb8e621620aadd8c996b4ab6edbdfdac8782581f3273ff44da2682dc",
+        "candidate:jpm_fy2025_005:candidate:v1:0abeff32554b6246d76d3024ebbfc79ac98ace396f4ca1a93c16a538ee777285",
+        "candidate:jpm_fy2025_005:candidate:v1:85925a5afd15afded8092bbddefe4735a10ad59303366b69e2c6019ce9552bbd",
+        "candidate:jpm_fy2025_005:candidate:v1:a9325e992895567a4c2721f66a3bc3c24b663ddeade06999ff5c87755159932c",
+        "candidate:jpm_fy2025_005:candidate:v1:dd83590f4fd5e4f70cb3e883337c887e58496b1f21e9ebd7145c4059b84f9960"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "duplicate_sibling_slots": 6,
+      "semantic_group_ids": [
+        "semantic:09d62d9d8f7fcc9bb49fe1e3c2986a23ce46843c6b701eac73e013a5f4cd08a8",
+        "semantic:28334be57c885fb0b12f884bd84838a2864e2f7c0f2501a6d53c2240035169b0",
+        "semantic:3fb06d3504f1691aa6ea764a3faa5b05c581be49de348f1ced417b65ef59e4ea",
+        "semantic:40bbc1c8be889f388af1be772d47ddd16f42008017d90dde6b2a1af18cb97acc",
+        "semantic:43ec7f0f27817eab1c10da096c4690f85b5734ca599bbeb0dc0c8d52ca9f25f3",
+        "semantic:4fcf798d8f778d640a8c9dd88be4d9f04e66b3766b731799f8102b2eb44ba8e3",
+        "semantic:63ac5d8f1d8a6cbeb0acb4fb353481d2b0e3cbdcff63ff268602d2052320274d",
+        "semantic:6e6af235544860a319176aabf0771587e81c624c767f22d29f5cc70b6d7048f4",
+        "semantic:7b57934af17d1ffec08936642e7935749bc3eeb7844af5757ac5806b9a11ef23",
+        "semantic:8261cbc3331262ee6457c2fbaaa599460dd7d16942c14469fd7bc4eca800ad13",
+        "semantic:93fceb9ae9eb734463976c96bccdb984fa115c0a50f3870ff9577104d657ac79",
+        "semantic:958a896e986efd2e08df8b6433ce3b1cfa662a42a79bd9c986af354e35776a5e",
+        "semantic:9b2ef6b271663cd761603539fda6b4dc1bed1de9ac62190a6bd841bc78959472",
+        "semantic:a77cf6f13f4d38dcd83430aca42734e09388819c80ba7f9790018e9bf4b7a308",
+        "semantic:a7fba8bf6c8075552f573ba93451bc9c56e14df8ca3daeb4866817cef9915431",
+        "semantic:c4736a1c976d6c9a242a29c181e5114a4d94964edcad22baeb151aa669f107e9",
+        "semantic:cd25037e54ca838e8b0e2f339ca011c8935f4e05d76363b69306ce024a429bf5",
+        "semantic:d8ceb049611e8871ec39528365897c05d0123418e30150ad917202d79ef9dec0",
+        "semantic:e573a2654d981ab4ea6c66a4d8645165298da974f8c55878c35d2b69ce5948c5",
+        "semantic:f3c4867c906d3a14a55fc84c5dff3eff43c609be2557e39fd37674ef84626f1e",
+        "semantic:f75aa0a588d53f9a47aaea96221486450951030a83aec5fdc956f04544ae86fd"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 6,
+      "top5_sibling_group_count": 21
+    },
+    {
+      "case_id": "jpm_fy2025_007",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:jpm_fy2025_007:candidate:v1:451f6fbcca0cad75afaf1f239638dac05c54b0c8db5d70c78461fa934f23082b",
+        "candidate:jpm_fy2025_007:candidate:v1:bf7ec316f6d712f05409cc2e13afbfbcb876869636356174d3bc88f97c41de04",
+        "candidate:jpm_fy2025_007:candidate:v1:dd83590f4fd5e4f70cb3e883337c887e58496b1f21e9ebd7145c4059b84f9960",
+        "semantic:1b650b398bf24f39f620d66ac3f1f8f3873fd0c9d4d02fa05cad397bed1800c7",
+        "semantic:27e59c42359516306a962fdd3ebee7dabf85764339cdc5285bad9967beaf8ceb",
+        "semantic:2d301716bd7271a92f38305f73e1eeb43b15083886d1a3adef9335e4d5bf98e1",
+        "semantic:36066e111ebad56003a9cbb97a7391a3bef3eb740c54d846c3fa819391af8399",
+        "semantic:5b6fc1ad84df23fe6b6565345ec88ca88de4f762529181534e65f1c82702f815",
+        "semantic:867799bb73d4bf1607fb94e80d3f9bba563fe0ba54cb958def312bc97305c2b6",
+        "semantic:943036c4d03e792bb376ab106fdfd707897a7ebbb672ff1c9a00112d773d2784",
+        "semantic:9c549515f4c5b3a39c0a44a1cd1b6e76563055a91098a166f16eed90f6915f57",
+        "semantic:a5c046724025c9e4d95dd5c8f5f461a370db8bae3a689cd1775884184fca5b0a",
+        "semantic:bd9abbc21ba0cf41b01708e6cfb3700afaf92c0cbf7adb56ac4286dc3c35095c",
+        "semantic:d08e652771f81bb12d45d57938cf7cbab3b380173b33c1ab1c5c581348853f43",
+        "semantic:f6ca8d5370776a9b470ff9a3a4695620b3d85d5fd3699b63d8207a94d6a40938"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 15
+    },
+    {
+      "case_id": "jpm_fy2025_008",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:jpm_fy2025_008:candidate:v1:0ec891d0136c451faf3eaba7f0a6bd7d00eab6e20b8da08fdb855057c8256af3",
+        "candidate:jpm_fy2025_008:candidate:v1:426d29fa40df946ad3980d714677f27aa8ce6b538251bd6cbe9eecee7e4791ed",
+        "candidate:jpm_fy2025_008:candidate:v1:523d0f47fad78f95f812332626277353d92c8bdd7a2f94764acfe0f145e1bfce",
+        "candidate:jpm_fy2025_008:candidate:v1:87bd534fdab020999f0a05fb5bd42feff5307424c24a1b5db0c0d5639f220aa0",
+        "candidate:jpm_fy2025_008:candidate:v1:9b6beb70bd7e017dcc7eeda1f4d549b65aed06788ec326a71c4254401d31dd3c"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "jpm_fy2025_009",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:jpm_fy2025_009:candidate:v1:24c390f8402f458252d8b7794480cafac58b1c6c4c1073e1ddb485fc2c2705ce",
+        "candidate:jpm_fy2025_009:candidate:v1:bf7ec316f6d712f05409cc2e13afbfbcb876869636356174d3bc88f97c41de04",
+        "candidate:jpm_fy2025_009:candidate:v1:db5bda96c7d07dc05d336c6f54080fd2384e609035fe0392d2cac5df2ac0ff77",
+        "candidate:jpm_fy2025_009:candidate:v1:dd83590f4fd5e4f70cb3e883337c887e58496b1f21e9ebd7145c4059b84f9960",
+        "semantic:1b650b398bf24f39f620d66ac3f1f8f3873fd0c9d4d02fa05cad397bed1800c7",
+        "semantic:27e59c42359516306a962fdd3ebee7dabf85764339cdc5285bad9967beaf8ceb",
+        "semantic:2d301716bd7271a92f38305f73e1eeb43b15083886d1a3adef9335e4d5bf98e1",
+        "semantic:36066e111ebad56003a9cbb97a7391a3bef3eb740c54d846c3fa819391af8399",
+        "semantic:5b6fc1ad84df23fe6b6565345ec88ca88de4f762529181534e65f1c82702f815",
+        "semantic:867799bb73d4bf1607fb94e80d3f9bba563fe0ba54cb958def312bc97305c2b6",
+        "semantic:a5c046724025c9e4d95dd5c8f5f461a370db8bae3a689cd1775884184fca5b0a",
+        "semantic:bd9abbc21ba0cf41b01708e6cfb3700afaf92c0cbf7adb56ac4286dc3c35095c",
+        "semantic:f6ca8d5370776a9b470ff9a3a4695620b3d85d5fd3699b63d8207a94d6a40938"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 13
+    },
+    {
+      "case_id": "ko_fy2025_001",
+      "duplicate_sibling_slots": 3,
+      "semantic_group_ids": [
+        "candidate:ko_fy2025_001:candidate:v1:cfdb9ac205850853e4ded656b0a3d2edd54e4992818a70775ac3a6b0acb80269",
+        "semantic:0a0fa77f9422335ab2ed89888241358efa2017ccd90fe375dffaa754d9f7e333",
+        "semantic:0dcfde0f6891537dee86fe2826eeca7664d6514e871902a8081552018f141656",
+        "semantic:11886b2f7757e716f0e61c5dc50ea9e35326b2d06e817e34ecb86e105537de41",
+        "semantic:2da254cb2c99293b9a99aeaf4b040db9877abb054fdad6616f550fe4af8d90e4",
+        "semantic:4e771d48a606d2352542a769e1a6bebefd7072fc76c21c71b4a3dfdc6447627e",
+        "semantic:8d2815a1259208232d10cb532a75f32ed364834e0c43ccc8aa273683ab0f510b",
+        "semantic:8d604cc15cf4716462b82621c0ec5e118f9475829ed389c5b69ca77bccbf13a8",
+        "semantic:8e350deb7e9c246e20d4aee9580e11eb85a8b8f28b1dd92f9f3976e72052fe99",
+        "semantic:a0f4506c605f063ea5e6362658ae5208071e47c977515f82d33598eba94796d1",
+        "semantic:af142339b13c53432d92a3778fb7d8afa4084769ee6b986ace5c6d9416d53744",
+        "semantic:b3667dbb0dd6457d1efd34833b847df986de299a62f7fab64e22bd898cc2fa47",
+        "semantic:c08a22db7079c71d9e35a90094f891a0d6997ab8183c28e8d4f253958fd1ec6f",
+        "semantic:c708b4527270e55681861a2cff64e1e6af5eb2813b8bcf23d5829f1cc0626b59",
+        "semantic:c8f98e3ee2db4e2fcca0966b6d123c94a13e796061723c09b554e10cc3fb321c",
+        "semantic:e9db52de329444bab5b78bf112043afbf8759fc87f2794a2598083678e773090",
+        "semantic:ff877a76f3181bf2fdf6b48a8ab5dc518c4c2040551d7e61938d3bda5a228458"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 3,
+      "top5_sibling_group_count": 17
+    },
+    {
+      "case_id": "ko_fy2025_002",
+      "duplicate_sibling_slots": 3,
+      "semantic_group_ids": [
+        "candidate:ko_fy2025_002:candidate:v1:cfdb9ac205850853e4ded656b0a3d2edd54e4992818a70775ac3a6b0acb80269",
+        "semantic:00c8f17bda3b024574b7f9eb05b31e2043d15266248e12cadc8767e55b56eaa1",
+        "semantic:09270f28d19a8a505705221f97fbdd8a787f65278dc649a1d5f3f17ba4882106",
+        "semantic:0d04c3ffef2ff14d1e6570b535c4f88036cb9ccda5dbd81af10269a61c5e9d71",
+        "semantic:2ecc28f8f369ab070aa640633a09df16d8dea8138989c9b42f78cf0ecaeef33a",
+        "semantic:33e9e9acad90c71d2c7629dbf907e8bf5b29f54b0a7f3419a31bc7b563d11530",
+        "semantic:379010d14113664a5f2d648c71310d882ed64ae790dea7bd72293cc3b02b6cfb",
+        "semantic:37e929f69b33ce24283f28ee4f5f7ddb2b1ddde8cd704c29cfe40b2b5fe4ea15",
+        "semantic:3d80e4c528bcad4bc7ad023bed83fff337fc35ea7c509b858dc3dc6e90b2c961",
+        "semantic:86294bb64eede0b2261e19644c5e72993b15b4fdd885e18a95011a381afb407c",
+        "semantic:983697a9b74a059a08319af18af3a74b437c7fe56d019d90f9178c8c54054818",
+        "semantic:ad49388bfd5e39be1820085be9ed5a6f0847238b2bc2fdfd738754848c5019b0",
+        "semantic:e9d05781766f17a6bfe14421f7da2050cef33074fdc33bc64e7329ebca8273c9",
+        "semantic:f24790c070958447af77fda32a08320073a48e1fe0e50812e9df7f52eb562141",
+        "semantic:f6ae0fb7b03a8a66bebde64b00d422f86f375e27e6c7223518dddadab04cc414",
+        "semantic:f7dfd5651737d8d0a82ed2db455c9be920bad5f3d021929e2c69bdc60cb73cfb"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 3,
+      "top5_sibling_group_count": 16
+    },
+    {
+      "case_id": "ko_fy2025_003",
+      "duplicate_sibling_slots": 3,
+      "semantic_group_ids": [
+        "candidate:ko_fy2025_003:candidate:v1:213cccdcaae9264136a413a6b1ca6a68f46c9baf9722a9d40d29ab2a3f4072e1",
+        "candidate:ko_fy2025_003:candidate:v1:9606529fd11aa1b1d50a8ed03f654faf10bda51eae3ca97ba8909bbceb2eb427",
+        "candidate:ko_fy2025_003:candidate:v1:cfdb9ac205850853e4ded656b0a3d2edd54e4992818a70775ac3a6b0acb80269",
+        "semantic:00f9034c2091c46e0716e88a688444354b5f9b826403a82696b58eecea7a52d2",
+        "semantic:3abcf9cfc11509710515e1bfd377a3edd44ddd582c549534234ecb2f7f7e8297",
+        "semantic:476cba80e85d7d374c94f7725d23a60a15ebd909e070cd3532d543d69e627a58"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 3,
+      "top5_sibling_group_count": 6
+    },
+    {
+      "case_id": "ko_fy2025_004",
+      "duplicate_sibling_slots": 10,
+      "semantic_group_ids": [
+        "candidate:ko_fy2025_004:candidate:v1:496ad0a9230a40c84ab60567affe6a2f00803e69d5b0f2f022d049ecd7f9ce5b",
+        "candidate:ko_fy2025_004:candidate:v1:c2c89531251cdcc4402b18a403d12695c4c901fce65b0a1a28a0100322952758",
+        "semantic:00ff0092a10e2d2849f5bca00fedc54290fe9777eb05c0da7b905e88008a795c",
+        "semantic:0c31d2f91e2ffd2bf238903d84ef3407bbe36bfb822505c59f32edd81a003886",
+        "semantic:10472b3b0bf4ba753c87551ef5ce987c7ffecea9acabdb041a01d110f8ffcf84",
+        "semantic:11886b2f7757e716f0e61c5dc50ea9e35326b2d06e817e34ecb86e105537de41",
+        "semantic:119b0bf910323c91940b61595939087fdd0264d1fcfc9307cfa765cdd173ed05",
+        "semantic:13fde3d803abae8ca759f1256bcea5019a2b62e68ee7b5044606f51feba3a6dc",
+        "semantic:1513feb4fc28e850aa15f185cace0988c1c42d077e81970297162a0619947394",
+        "semantic:16601089bf2509a8db0afc2c011edaae66501991086bdc0cab69ebe1ff021f72",
+        "semantic:1678891ebc9faa00b92223a1a1b20eb62195992de58cb5ccf3c3449088090b9b",
+        "semantic:19267ba088cf936b49658cc2fdd998879dadebb9e4b103848294064845c6d665",
+        "semantic:2c9436bee161689e078867db30ba7861a792be1bded2d55acc74b31312ecd768",
+        "semantic:2da254cb2c99293b9a99aeaf4b040db9877abb054fdad6616f550fe4af8d90e4",
+        "semantic:3025ab8f65fecb841698e4bd57a64ab611f53a67a0987b7100535eb8a92249bc",
+        "semantic:35984235375f0e2c66ce0785299c6b4196e6f8465aece954a1a2ef42b4f8b7bd",
+        "semantic:39e7b0d7e69fbdd5d55634cacf7869e7a6bff2d3fe3bfbebba2f7a7aa8cab8da",
+        "semantic:40f20b20ff1389a4058772c8848a3665f603520bb6a820d67b8a9b495d0d7081",
+        "semantic:43199db16f844154cd2f1afc37332f8795990c3306682a72512f9bb32f693e95",
+        "semantic:43dca1e699e3221eb9018c8e17ce65340472fdfded555c554947510bd7858729",
+        "semantic:462f5e71dd646d661277353b8904a2ac368f5fc6d04ad93aef49c4f5804b1d5a",
+        "semantic:4efd1450c22293063199e051936659965994be6eab153f26c3b53598db6a07c6",
+        "semantic:512f4f8282940fb5842ffbeedc66f0a237bb1e57b338fb783911ae60a3b183d9",
+        "semantic:532e8e5982d39e0e9b588c981369169cd2641692037fd136f147456b6575ea74",
+        "semantic:541de0e28953513a4096b1a9e0ebada34d66f2e5ca3d539b58f5003e8feed5f0",
+        "semantic:56967e945c5ee5d9013a60f851046b0e10dc752abf7d7bc0de53e925b156e08a",
+        "semantic:57d4ca04f4c0acc176a09b9da3c7ef473a723d85ecbebb0911003b818642c3ef",
+        "semantic:59b2f90a8feb243fb388acde289bca66230ff05a31c32d501de51cc83e4c655f",
+        "semantic:5c243df3449973f0cf83a4ff3992af0d47e6d2800dbb7dfa6c90da9a718eda54",
+        "semantic:691bd8a1f6ee64bee3af850da549396df44e1620b3ac548e2540bf7e52040a9b",
+        "semantic:721b4a1d54b5cd88f3936f4928c3579e4266a97fec666e0164a0fa2d9de717d5",
+        "semantic:74903a4b72d78ef695617a14efb80726a5dc9c1d7f545dd6656f2795b3cc2c53",
+        "semantic:764b05ae98d2d24b63212916f220acae85beb6418ee7e752a81ea9e77be8c357",
+        "semantic:76bbde58eef0dbc630243b722e0d2a2d80f3ddb4e89d92201f1411dd99bf7237",
+        "semantic:7c0d6dd6a4b85ea9ef925c021c7aa821a981649ff9500d725e0b20b65298a3a6",
+        "semantic:8972770efdc8b4423eb542f1322ea07c26a5a1e430f4da161f165c8cee5f39a8",
+        "semantic:8a08292b56df4928d625e211831e5448eec56f274939f4426241dde3745f115c",
+        "semantic:8bd37246eb098539adc450df7474dbf21fe5b51e2ceabcf7166108b9e8b66b00",
+        "semantic:8e350deb7e9c246e20d4aee9580e11eb85a8b8f28b1dd92f9f3976e72052fe99",
+        "semantic:8ea8b192e8de9ff1c3804bd53186f1b8a36642077752d499fbaa7b47a6a14f3d",
+        "semantic:9313aeb4986a1d4216765d2786e1f55110cc95dfa4ae8ef104ea6c20cade5193",
+        "semantic:933d0812dff46d8a5002f85c0c659cac2a4fc30e5677d2666f6092f438e1a160",
+        "semantic:9714264921cd9df6fa549aa31b1af516a84a68c1515f05f3f3acbc0c9f3c9e82",
+        "semantic:9b634f6a414e6f4d369c21f92c09c50606ad3b5148c43c8fe01025fce8c85a04",
+        "semantic:a0f4506c605f063ea5e6362658ae5208071e47c977515f82d33598eba94796d1",
+        "semantic:a2920d8f4c046cfa3117d6d38ea7eefcd975c83ad755020d4952ea18fd53107b",
+        "semantic:ab870100f18d76ccf0dcb511de594b8de34c8445dfc176e8d342a29effe09da6",
+        "semantic:ac264694d5b53a5a169a024429795c987a089a2e52dabbe0ab1f1aaa2391f86d",
+        "semantic:accae35be04ee9db70b16dc7ed58b04c8210bbc9b6b3bde649d3f160e0a617c1",
+        "semantic:af142339b13c53432d92a3778fb7d8afa4084769ee6b986ace5c6d9416d53744",
+        "semantic:b3667dbb0dd6457d1efd34833b847df986de299a62f7fab64e22bd898cc2fa47",
+        "semantic:b375c72e64976ce4359f98b18c5dbd40a1bdf2de62dfe800a6765f0bff766c06",
+        "semantic:bcc182a68681f32b84db95ca7770fbb05c93b7e86ee276c050c526e2be257ac4",
+        "semantic:c0773f4db335a5407e53ccc184f96170ee0eaab493690c76484e2f1fd6ef5fa4",
+        "semantic:c08a22db7079c71d9e35a90094f891a0d6997ab8183c28e8d4f253958fd1ec6f",
+        "semantic:c1fc830370f889a14892305551af2554b1f64b0cd3d8b91ceefa636d522936db",
+        "semantic:c32f6c91dade7edfd73b7e9d62fff14dd09fc74300804cd29d9fe4cec608da45",
+        "semantic:c5f081a1682250b4eee54da37cf2cb86cab4259b0328b5e6cbdfc11251b64817",
+        "semantic:c708b4527270e55681861a2cff64e1e6af5eb2813b8bcf23d5829f1cc0626b59",
+        "semantic:c8f98e3ee2db4e2fcca0966b6d123c94a13e796061723c09b554e10cc3fb321c",
+        "semantic:cfe297f05f1a3af96f45fba9ef70094dbb6ad9026b0c5235e050c81ef06d03b8",
+        "semantic:d61c27c674c914f79f1d68ccf354fbad28350d6aa83b77aca8466f38e8b6dc38",
+        "semantic:da62f888fee93dc839278039cf8cc9712a0bffba91c7d8a25e15d93e5b61b037",
+        "semantic:e3fbf12da5b9d544c927cf6140b6240ec00bd175410a7a5a3b633d98fa27bd45",
+        "semantic:e531a6ecc404ccf1a613ec84477714cb28f9c0c080d25dc865b74d36213966f4",
+        "semantic:ec8a84b7a1dc2ac76f2243065f3951b849846bb9857ee9f86bb63b07a4f98267",
+        "semantic:ecf1e7b78590423fb935fe14e601767a1edd010cbd07ee4bf54f5c2b08cd683e",
+        "semantic:ed414d9c6bd1a6c2afbe531fae6a9fa94f22830e9154c9404c9d697ebaff7cf7",
+        "semantic:eda4b178150af3e3b28d994da09ee248af192b6b85c67b56d35953086793ca34",
+        "semantic:ff877a76f3181bf2fdf6b48a8ab5dc518c4c2040551d7e61938d3bda5a228458"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 10,
+      "top5_sibling_group_count": 70
+    },
+    {
+      "case_id": "ko_fy2025_005",
+      "duplicate_sibling_slots": 10,
+      "semantic_group_ids": [
+        "candidate:ko_fy2025_005:candidate:v1:496ad0a9230a40c84ab60567affe6a2f00803e69d5b0f2f022d049ecd7f9ce5b",
+        "candidate:ko_fy2025_005:candidate:v1:c2c89531251cdcc4402b18a403d12695c4c901fce65b0a1a28a0100322952758",
+        "candidate:ko_fy2025_005:candidate:v1:e410f42c6788280e6e3a365bb681939fc3e0a9fa9c6c8a70b27dc81cd566639f",
+        "semantic:10472b3b0bf4ba753c87551ef5ce987c7ffecea9acabdb041a01d110f8ffcf84",
+        "semantic:11886b2f7757e716f0e61c5dc50ea9e35326b2d06e817e34ecb86e105537de41",
+        "semantic:1513feb4fc28e850aa15f185cace0988c1c42d077e81970297162a0619947394",
+        "semantic:16601089bf2509a8db0afc2c011edaae66501991086bdc0cab69ebe1ff021f72",
+        "semantic:19267ba088cf936b49658cc2fdd998879dadebb9e4b103848294064845c6d665",
+        "semantic:2da254cb2c99293b9a99aeaf4b040db9877abb054fdad6616f550fe4af8d90e4",
+        "semantic:39e7b0d7e69fbdd5d55634cacf7869e7a6bff2d3fe3bfbebba2f7a7aa8cab8da",
+        "semantic:43199db16f844154cd2f1afc37332f8795990c3306682a72512f9bb32f693e95",
+        "semantic:43dca1e699e3221eb9018c8e17ce65340472fdfded555c554947510bd7858729",
+        "semantic:462f5e71dd646d661277353b8904a2ac368f5fc6d04ad93aef49c4f5804b1d5a",
+        "semantic:4efd1450c22293063199e051936659965994be6eab153f26c3b53598db6a07c6",
+        "semantic:512f4f8282940fb5842ffbeedc66f0a237bb1e57b338fb783911ae60a3b183d9",
+        "semantic:541de0e28953513a4096b1a9e0ebada34d66f2e5ca3d539b58f5003e8feed5f0",
+        "semantic:59b2f90a8feb243fb388acde289bca66230ff05a31c32d501de51cc83e4c655f",
+        "semantic:691bd8a1f6ee64bee3af850da549396df44e1620b3ac548e2540bf7e52040a9b",
+        "semantic:76bbde58eef0dbc630243b722e0d2a2d80f3ddb4e89d92201f1411dd99bf7237",
+        "semantic:8972770efdc8b4423eb542f1322ea07c26a5a1e430f4da161f165c8cee5f39a8",
+        "semantic:8a08292b56df4928d625e211831e5448eec56f274939f4426241dde3745f115c",
+        "semantic:8bd37246eb098539adc450df7474dbf21fe5b51e2ceabcf7166108b9e8b66b00",
+        "semantic:8e350deb7e9c246e20d4aee9580e11eb85a8b8f28b1dd92f9f3976e72052fe99",
+        "semantic:9313aeb4986a1d4216765d2786e1f55110cc95dfa4ae8ef104ea6c20cade5193",
+        "semantic:9714264921cd9df6fa549aa31b1af516a84a68c1515f05f3f3acbc0c9f3c9e82",
+        "semantic:9b634f6a414e6f4d369c21f92c09c50606ad3b5148c43c8fe01025fce8c85a04",
+        "semantic:a0f4506c605f063ea5e6362658ae5208071e47c977515f82d33598eba94796d1",
+        "semantic:a2920d8f4c046cfa3117d6d38ea7eefcd975c83ad755020d4952ea18fd53107b",
+        "semantic:ac264694d5b53a5a169a024429795c987a089a2e52dabbe0ab1f1aaa2391f86d",
+        "semantic:accae35be04ee9db70b16dc7ed58b04c8210bbc9b6b3bde649d3f160e0a617c1",
+        "semantic:af142339b13c53432d92a3778fb7d8afa4084769ee6b986ace5c6d9416d53744",
+        "semantic:b3667dbb0dd6457d1efd34833b847df986de299a62f7fab64e22bd898cc2fa47",
+        "semantic:b375c72e64976ce4359f98b18c5dbd40a1bdf2de62dfe800a6765f0bff766c06",
+        "semantic:c08a22db7079c71d9e35a90094f891a0d6997ab8183c28e8d4f253958fd1ec6f",
+        "semantic:c1fc830370f889a14892305551af2554b1f64b0cd3d8b91ceefa636d522936db",
+        "semantic:c708b4527270e55681861a2cff64e1e6af5eb2813b8bcf23d5829f1cc0626b59",
+        "semantic:c8f98e3ee2db4e2fcca0966b6d123c94a13e796061723c09b554e10cc3fb321c",
+        "semantic:d61c27c674c914f79f1d68ccf354fbad28350d6aa83b77aca8466f38e8b6dc38",
+        "semantic:e3fbf12da5b9d544c927cf6140b6240ec00bd175410a7a5a3b633d98fa27bd45",
+        "semantic:ec8a84b7a1dc2ac76f2243065f3951b849846bb9857ee9f86bb63b07a4f98267",
+        "semantic:ff877a76f3181bf2fdf6b48a8ab5dc518c4c2040551d7e61938d3bda5a228458"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 10,
+      "top5_sibling_group_count": 41
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:ko_fy2025_006:candidate:v1:496ad0a9230a40c84ab60567affe6a2f00803e69d5b0f2f022d049ecd7f9ce5b",
+        "candidate:ko_fy2025_006:candidate:v1:50b6c3248a4d42580d90205af2f31cb553812aebb0ba7221c4269d705e205c57",
+        "semantic:0a0fa77f9422335ab2ed89888241358efa2017ccd90fe375dffaa754d9f7e333",
+        "semantic:0dcfde0f6891537dee86fe2826eeca7664d6514e871902a8081552018f141656",
+        "semantic:11886b2f7757e716f0e61c5dc50ea9e35326b2d06e817e34ecb86e105537de41",
+        "semantic:2da254cb2c99293b9a99aeaf4b040db9877abb054fdad6616f550fe4af8d90e4",
+        "semantic:4e771d48a606d2352542a769e1a6bebefd7072fc76c21c71b4a3dfdc6447627e",
+        "semantic:8d2815a1259208232d10cb532a75f32ed364834e0c43ccc8aa273683ab0f510b",
+        "semantic:8d604cc15cf4716462b82621c0ec5e118f9475829ed389c5b69ca77bccbf13a8",
+        "semantic:8e350deb7e9c246e20d4aee9580e11eb85a8b8f28b1dd92f9f3976e72052fe99",
+        "semantic:a0f4506c605f063ea5e6362658ae5208071e47c977515f82d33598eba94796d1",
+        "semantic:af142339b13c53432d92a3778fb7d8afa4084769ee6b986ace5c6d9416d53744",
+        "semantic:b3667dbb0dd6457d1efd34833b847df986de299a62f7fab64e22bd898cc2fa47",
+        "semantic:c08a22db7079c71d9e35a90094f891a0d6997ab8183c28e8d4f253958fd1ec6f",
+        "semantic:c708b4527270e55681861a2cff64e1e6af5eb2813b8bcf23d5829f1cc0626b59",
+        "semantic:c8f98e3ee2db4e2fcca0966b6d123c94a13e796061723c09b554e10cc3fb321c",
+        "semantic:e9db52de329444bab5b78bf112043afbf8759fc87f2794a2598083678e773090",
+        "semantic:ff877a76f3181bf2fdf6b48a8ab5dc518c4c2040551d7e61938d3bda5a228458"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 18
+    },
+    {
+      "case_id": "ko_fy2025_007",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:ko_fy2025_007:candidate:v1:496ad0a9230a40c84ab60567affe6a2f00803e69d5b0f2f022d049ecd7f9ce5b",
+        "candidate:ko_fy2025_007:candidate:v1:cfdb9ac205850853e4ded656b0a3d2edd54e4992818a70775ac3a6b0acb80269",
+        "semantic:00ff0092a10e2d2849f5bca00fedc54290fe9777eb05c0da7b905e88008a795c",
+        "semantic:0c31d2f91e2ffd2bf238903d84ef3407bbe36bfb822505c59f32edd81a003886",
+        "semantic:10472b3b0bf4ba753c87551ef5ce987c7ffecea9acabdb041a01d110f8ffcf84",
+        "semantic:11886b2f7757e716f0e61c5dc50ea9e35326b2d06e817e34ecb86e105537de41",
+        "semantic:119b0bf910323c91940b61595939087fdd0264d1fcfc9307cfa765cdd173ed05",
+        "semantic:13fde3d803abae8ca759f1256bcea5019a2b62e68ee7b5044606f51feba3a6dc",
+        "semantic:1513feb4fc28e850aa15f185cace0988c1c42d077e81970297162a0619947394",
+        "semantic:16601089bf2509a8db0afc2c011edaae66501991086bdc0cab69ebe1ff021f72",
+        "semantic:1678891ebc9faa00b92223a1a1b20eb62195992de58cb5ccf3c3449088090b9b",
+        "semantic:16ad65b1827ba43b4e12e63411495e2c04b9f0fca93b437fd7cd640595f48fac",
+        "semantic:28326891133f0065887bfc0c8b75237d3f0dc35544e1e5ed75c14b7c48e06eef",
+        "semantic:283ff5517cfb3162664dfb0d88af3d692e4cfc2f00fea9d41a3615a5b974599c",
+        "semantic:2c9436bee161689e078867db30ba7861a792be1bded2d55acc74b31312ecd768",
+        "semantic:2da254cb2c99293b9a99aeaf4b040db9877abb054fdad6616f550fe4af8d90e4",
+        "semantic:3025ab8f65fecb841698e4bd57a64ab611f53a67a0987b7100535eb8a92249bc",
+        "semantic:35984235375f0e2c66ce0785299c6b4196e6f8465aece954a1a2ef42b4f8b7bd",
+        "semantic:38b5f5671325811363083bf86e5a00ef1a76b57ef99ac9ebcb821b0d6f775604",
+        "semantic:39e7b0d7e69fbdd5d55634cacf7869e7a6bff2d3fe3bfbebba2f7a7aa8cab8da",
+        "semantic:3d84da460e4f1230a8375caa0d777bba8efb9a2916ecb339d5a1a6b4ab4cb0c7",
+        "semantic:3dc571e8f0a3b99fd68772850c31fc86aa925ee90c94d1596e6ca37196862c72",
+        "semantic:40f20b20ff1389a4058772c8848a3665f603520bb6a820d67b8a9b495d0d7081",
+        "semantic:4226d69edf5af9f63dbdf306e8b75bce58a1686c155e88b57bbc8819a7f2e416",
+        "semantic:43dca1e699e3221eb9018c8e17ce65340472fdfded555c554947510bd7858729",
+        "semantic:4efd1450c22293063199e051936659965994be6eab153f26c3b53598db6a07c6",
+        "semantic:532e8e5982d39e0e9b588c981369169cd2641692037fd136f147456b6575ea74",
+        "semantic:56967e945c5ee5d9013a60f851046b0e10dc752abf7d7bc0de53e925b156e08a",
+        "semantic:57d4ca04f4c0acc176a09b9da3c7ef473a723d85ecbebb0911003b818642c3ef",
+        "semantic:59b2f90a8feb243fb388acde289bca66230ff05a31c32d501de51cc83e4c655f",
+        "semantic:5c243df3449973f0cf83a4ff3992af0d47e6d2800dbb7dfa6c90da9a718eda54",
+        "semantic:5d54d7db3f498da842917c840fecf1315e07d14b80b928d497b8ffeef52068dc",
+        "semantic:5fc72152a374fbc9be5365e9212b4037d7c3481aecf8a7ee9dd4f7a6a6e7bad9",
+        "semantic:691bd8a1f6ee64bee3af850da549396df44e1620b3ac548e2540bf7e52040a9b",
+        "semantic:6dd25d293b7bfe5d65439da1ec6d29fbc3066cff919197a0b12ff07118259ed1",
+        "semantic:721b4a1d54b5cd88f3936f4928c3579e4266a97fec666e0164a0fa2d9de717d5",
+        "semantic:72dc13d59e5766b8d8b02f47412c3ca8178affe4acbe7945506c6e991688a281",
+        "semantic:74903a4b72d78ef695617a14efb80726a5dc9c1d7f545dd6656f2795b3cc2c53",
+        "semantic:764b05ae98d2d24b63212916f220acae85beb6418ee7e752a81ea9e77be8c357",
+        "semantic:7b6daa08c2bc1da19f4b865efe76836e316c10eb865ad404a53246f79689df91",
+        "semantic:7c0d6dd6a4b85ea9ef925c021c7aa821a981649ff9500d725e0b20b65298a3a6",
+        "semantic:8972770efdc8b4423eb542f1322ea07c26a5a1e430f4da161f165c8cee5f39a8",
+        "semantic:8a08292b56df4928d625e211831e5448eec56f274939f4426241dde3745f115c",
+        "semantic:8d42b47e5729b771ca89eab10b7242342cd589e4cf18c18180442c5565f744a4",
+        "semantic:8e350deb7e9c246e20d4aee9580e11eb85a8b8f28b1dd92f9f3976e72052fe99",
+        "semantic:8ea8b192e8de9ff1c3804bd53186f1b8a36642077752d499fbaa7b47a6a14f3d",
+        "semantic:9313aeb4986a1d4216765d2786e1f55110cc95dfa4ae8ef104ea6c20cade5193",
+        "semantic:933d0812dff46d8a5002f85c0c659cac2a4fc30e5677d2666f6092f438e1a160",
+        "semantic:9714264921cd9df6fa549aa31b1af516a84a68c1515f05f3f3acbc0c9f3c9e82",
+        "semantic:9b634f6a414e6f4d369c21f92c09c50606ad3b5148c43c8fe01025fce8c85a04",
+        "semantic:9cdfacbca6ff90bae42d4a725c08bba612caa66409f19eb2a8559531c1e555d1",
+        "semantic:a0f4506c605f063ea5e6362658ae5208071e47c977515f82d33598eba94796d1",
+        "semantic:a3017a95cd8319d01019eebba514ed9791de4544aebac723e52fafeac5ce9896",
+        "semantic:a5a4c982dce84a578010ec951ed93727cf1014144098a53677980fabac1c0ee6",
+        "semantic:a7affd809cbf4201e136637e6107db82a0af634d830e93d0ff0812920fc9c987",
+        "semantic:a9504ff4c86e0337c7c455a39f09fdeaef3aad5442672a3ccc3a8eeb92e32498",
+        "semantic:ab870100f18d76ccf0dcb511de594b8de34c8445dfc176e8d342a29effe09da6",
+        "semantic:ac264694d5b53a5a169a024429795c987a089a2e52dabbe0ab1f1aaa2391f86d",
+        "semantic:accae35be04ee9db70b16dc7ed58b04c8210bbc9b6b3bde649d3f160e0a617c1",
+        "semantic:af142339b13c53432d92a3778fb7d8afa4084769ee6b986ace5c6d9416d53744",
+        "semantic:b3667dbb0dd6457d1efd34833b847df986de299a62f7fab64e22bd898cc2fa47",
+        "semantic:b375c72e64976ce4359f98b18c5dbd40a1bdf2de62dfe800a6765f0bff766c06",
+        "semantic:bcc182a68681f32b84db95ca7770fbb05c93b7e86ee276c050c526e2be257ac4",
+        "semantic:c0773f4db335a5407e53ccc184f96170ee0eaab493690c76484e2f1fd6ef5fa4",
+        "semantic:c08a22db7079c71d9e35a90094f891a0d6997ab8183c28e8d4f253958fd1ec6f",
+        "semantic:c1fc830370f889a14892305551af2554b1f64b0cd3d8b91ceefa636d522936db",
+        "semantic:c32f6c91dade7edfd73b7e9d62fff14dd09fc74300804cd29d9fe4cec608da45",
+        "semantic:c5f081a1682250b4eee54da37cf2cb86cab4259b0328b5e6cbdfc11251b64817",
+        "semantic:c708b4527270e55681861a2cff64e1e6af5eb2813b8bcf23d5829f1cc0626b59",
+        "semantic:c8f98e3ee2db4e2fcca0966b6d123c94a13e796061723c09b554e10cc3fb321c",
+        "semantic:cecf576a555b1d3615408ea39802546294b86229bb70a2375ef0e09f52f6332c",
+        "semantic:cfe297f05f1a3af96f45fba9ef70094dbb6ad9026b0c5235e050c81ef06d03b8",
+        "semantic:da62f888fee93dc839278039cf8cc9712a0bffba91c7d8a25e15d93e5b61b037",
+        "semantic:da648f0d699b18c7990371bd8ee50299584ca1040dbc1a8640729ce3b5c62cf6",
+        "semantic:dbbfe06fbc724f32c0edbd376c7beacf7916834fffdcf1c4a8c03e95e375eae0",
+        "semantic:dec4372c6ab54961f5be59fd48fb1bf3aab5d65ab008bc8432ead3c80dabfcbf",
+        "semantic:e1176edd1cc103b970689054bfa0d415cc886a9e722bf957299c56cb9fdb2c46",
+        "semantic:e40ef63148ae6793aa6d54da3ab11e0f5d8a71dc673bb2979c7ee12c50baf410",
+        "semantic:e531a6ecc404ccf1a613ec84477714cb28f9c0c080d25dc865b74d36213966f4",
+        "semantic:ec8a84b7a1dc2ac76f2243065f3951b849846bb9857ee9f86bb63b07a4f98267",
+        "semantic:ecf1e7b78590423fb935fe14e601767a1edd010cbd07ee4bf54f5c2b08cd683e",
+        "semantic:ed414d9c6bd1a6c2afbe531fae6a9fa94f22830e9154c9404c9d697ebaff7cf7",
+        "semantic:ed487556e3c0a93f829cad1e6bb92de33d6a119718209e2562c50a0679a2c23f",
+        "semantic:eda4b178150af3e3b28d994da09ee248af192b6b85c67b56d35953086793ca34",
+        "semantic:f085ea8b216705c60edf4ea755b65cf521ecce3c7ed99c7157da3194b037d24f",
+        "semantic:f605df9ade248caef244bdcbacd149b72360efddf4a961489c0344042c45d377",
+        "semantic:ff877a76f3181bf2fdf6b48a8ab5dc518c4c2040551d7e61938d3bda5a228458"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 87
+    },
+    {
+      "case_id": "ko_fy2025_008",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:ko_fy2025_008:candidate:v1:11e8a87d5bc620908fd6cb3c59e7bd039ace9db8403a2f78411c9384477fe63d",
+        "candidate:ko_fy2025_008:candidate:v1:4364310cbed20fe64b6f0a4f801f0ce90e40ee375c4179bf2d2b5fd3f334fea8",
+        "candidate:ko_fy2025_008:candidate:v1:c8df6f3d618466f8c93fcf47c4bfeb56a78b4d46ebc09d76eee16fcb34062733",
+        "candidate:ko_fy2025_008:candidate:v1:eb984fcb0324e99adc0bbe263468c3474be1bbba8a7eb8d53cadf1a100005427",
+        "candidate:ko_fy2025_008:candidate:v1:ec7ca26999e28515974dcf25599dd4bf15fbdfe1ecb245f28edd657af4bbb6b1"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "ko_fy2025_009",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:ko_fy2025_009:candidate:v1:2615a8131b1b84e1f788cfb9c9292fa6b20c9688723ff3bc555f21d4590d95d8",
+        "candidate:ko_fy2025_009:candidate:v1:496ad0a9230a40c84ab60567affe6a2f00803e69d5b0f2f022d049ecd7f9ce5b",
+        "candidate:ko_fy2025_009:candidate:v1:7e7931a3a067f686c6b137289a968a856874910ebb1c2ca2b1384ab37668ed8e",
+        "candidate:ko_fy2025_009:candidate:v1:95b7585c2ab2b04486337d13fe557d1eaca7394d57f358c0d3eb38a8e01c3d86",
+        "candidate:ko_fy2025_009:candidate:v1:c2c89531251cdcc4402b18a403d12695c4c901fce65b0a1a28a0100322952758"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "msft_fy2025_001",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:msft_fy2025_001:candidate:v1:5ab6dad1769fb8e161ff54d502289095ba60d7b40e2e0a3fc462c6409b0cb5ad",
+        "candidate:msft_fy2025_001:candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+        "semantic:25adf685bed30e5ddc97d4acc9ddf2f33dbb6115a16debc2226fa2a7ef728f9c",
+        "semantic:3c1ba697bd550ab3b417f00b0b3987d91e9b8a083c12bcd29c0d8cd0851309d5",
+        "semantic:41153aaeac283c0db034eac963b218b226094f19267dfa941f561b453427746e",
+        "semantic:5c8f775136ea0585f15a11df03cad96868152d2b172564809c381331afa7fa8e",
+        "semantic:83dd6b0accefa30cdf33f402d09d4b17cb5f6f61c1b57efe6374b3f538418966",
+        "semantic:8516686e9dd2228a2486c77f827acc569852bec97a6514987e63dacd6654f788",
+        "semantic:af8c6b18e2ddcc76b4d587b69b6768675b8d84cf1e6d50a74d425a1e0cfd918a"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 9
+    },
+    {
+      "case_id": "msft_fy2025_002",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:msft_fy2025_002:candidate:v1:46956970796b75dbdd9b3507234c0ab89cb96b5748ed1e9d00000d6250fd200b",
+        "semantic:2b05a2dc7961e3a5185988bf26ef42b24c58bb132d44e740b4c0618ba2ed4306",
+        "semantic:4ec93c276c184a219ae8bfdd94011d37d39fa0e4d83d0cc90f600724a416411f",
+        "semantic:6cc29c15f0a9b50a36a109c80f0c6dffa72b130243b9adf822f40cf88a4ee412",
+        "semantic:948afc68651156cb2df1cd7fac32ed7c95583d8788e259a53bfa730e0ecc2a7b",
+        "semantic:ddad11f92d9d9be8ae87b523c62729001b00a5cf378145ddf4566458e91e8eb3",
+        "semantic:fd6842b39df42808a0324c23c82d246497b1b81675d2d7b6f386670a975ffe13"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 7
+    },
+    {
+      "case_id": "msft_fy2025_003",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:msft_fy2025_003:candidate:v1:1920608fe3af81c972c55894f45bcd4f996737e197324210bee2389eb68a8fb4",
+        "candidate:msft_fy2025_003:candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+        "candidate:msft_fy2025_003:candidate:v1:ccc9cb078c69f9c015c683992d915a581ca4362bd94bfccd29d27228e0d65f0f",
+        "candidate:msft_fy2025_003:candidate:v1:fb7668b430a54a0e301eb8b3efa6d9dcaa2f51167a22831c33ffc120968cf5f1",
+        "semantic:41153aaeac283c0db034eac963b218b226094f19267dfa941f561b453427746e",
+        "semantic:83dd6b0accefa30cdf33f402d09d4b17cb5f6f61c1b57efe6374b3f538418966",
+        "semantic:8516686e9dd2228a2486c77f827acc569852bec97a6514987e63dacd6654f788"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 7
+    },
+    {
+      "case_id": "msft_fy2025_004",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:msft_fy2025_004:candidate:v1:90a20811aae4ce028446569f741e10ab35b8488817c6df622adcf2031f628eab",
+        "candidate:msft_fy2025_004:candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+        "candidate:msft_fy2025_004:candidate:v1:c17d7ea340aa1a3a0fa259d812b281043bf4f2900fe80b3f1eb27bcd1218f521",
+        "candidate:msft_fy2025_004:candidate:v1:ccc9cb078c69f9c015c683992d915a581ca4362bd94bfccd29d27228e0d65f0f",
+        "candidate:msft_fy2025_004:candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "msft_fy2025_005",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:msft_fy2025_005:candidate:v1:35c39077687d3da3448f02e0f2ff259355cd91ee01b787f1c91ad64bf6194a4b",
+        "semantic:1207205fe118cf925da87a6f413b0d99c77eb93265256a4a1a55fdb1743003d9",
+        "semantic:14f9f1a3dd758d7518a7c2be162c306aac2b82c9f251198f1fe196cef8ec0759",
+        "semantic:906e235a5de0fd97fb2dfadd2618b5ed97be9c8fa2feacbc674cac46ee92c38e",
+        "semantic:af04d00757a8805af24755893e2410bf780093f1344b69c121a909c9ac5e6d38",
+        "semantic:ca313f7c39599ba7546f8fd33623756a6993f3700855ffe084a4f6d86ce388f7",
+        "semantic:e1d282ad48426406607303d8c2103804e0c7d1424a98ebfe13c837d7c56a750c",
+        "semantic:ed83a5ab67c1330d04a9bc94569fadb2db044fe8244f305e11b01612b52a2620"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 8
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:msft_fy2025_006:candidate:v1:8f93176949547cf023f573bbcd6763aa1557ec7104960989bf50d3214d790e96",
+        "candidate:msft_fy2025_006:candidate:v1:9294900ef4c81b14c8ed0f1474616a1753ac8b999313b51d57e4c0c558fbd51b",
+        "candidate:msft_fy2025_006:candidate:v1:9d300b400b00c2325d98f8d5515f688048e94ad2a925cba530f44751be23f5ed",
+        "candidate:msft_fy2025_006:candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+        "semantic:25adf685bed30e5ddc97d4acc9ddf2f33dbb6115a16debc2226fa2a7ef728f9c",
+        "semantic:3c1ba697bd550ab3b417f00b0b3987d91e9b8a083c12bcd29c0d8cd0851309d5",
+        "semantic:5c8f775136ea0585f15a11df03cad96868152d2b172564809c381331afa7fa8e"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 7
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:msft_fy2025_007:candidate:v1:4bbe9f8614c04027aeba6bcad53949865c2646fc137f535506514f9e009b0ae0",
+        "candidate:msft_fy2025_007:candidate:v1:90a20811aae4ce028446569f741e10ab35b8488817c6df622adcf2031f628eab",
+        "candidate:msft_fy2025_007:candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+        "candidate:msft_fy2025_007:candidate:v1:c17d7ea340aa1a3a0fa259d812b281043bf4f2900fe80b3f1eb27bcd1218f521",
+        "candidate:msft_fy2025_007:candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "msft_fy2025_008",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:msft_fy2025_008:candidate:v1:9d300b400b00c2325d98f8d5515f688048e94ad2a925cba530f44751be23f5ed",
+        "candidate:msft_fy2025_008:candidate:v1:be9a102649e49fd34dc1982f3b0619d18f63b3a9764dc7c7dc2b3eb28caaf224",
+        "candidate:msft_fy2025_008:candidate:v1:e65e378e7cd0ce50c85dca76f1084f4b2470e9ff7a7fcb2c38d1aa020a99a6da",
+        "semantic:03be0c6760b64d80f091ebc545a5007127287328e50bdc6e4d007c69fd372d9e",
+        "semantic:34f863d9c1e27f4f850684816f8ace7dc8953fde4ad1b3c0485b5dc891ee97ba",
+        "semantic:9a243357ef4d7442b59c3a6b3f66802d7ea28183601f34c5df3e0db557e672ee",
+        "semantic:b25283edc7151c4be76b7f04fea57580d414711601314e058a4150f4ea31747a"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 7
+    },
+    {
+      "case_id": "msft_fy2025_009",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:msft_fy2025_009:candidate:v1:90a20811aae4ce028446569f741e10ab35b8488817c6df622adcf2031f628eab",
+        "candidate:msft_fy2025_009:candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+        "candidate:msft_fy2025_009:candidate:v1:c172bbc005784c309167d68d1ac7a713f6ad613d6d427d134f67ae623a5d2ac9",
+        "candidate:msft_fy2025_009:candidate:v1:c17d7ea340aa1a3a0fa259d812b281043bf4f2900fe80b3f1eb27bcd1218f521",
+        "candidate:msft_fy2025_009:candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "nvda_fy2025_001",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:nvda_fy2025_001:candidate:v1:0158ae320e21a62f17ddea2fec37a84b9fdfbc12bd8346701509a8930b5d1ced",
+        "candidate:nvda_fy2025_001:candidate:v1:d3619860560a971a46783464ba654d172e2ed2a78e0c577b5ce33fddf82e48d0",
+        "candidate:nvda_fy2025_001:candidate:v1:df73fa007530e24a7ff27d3a8075bec8c4f60c42097a3350d4dd98b518a7a86c",
+        "candidate:nvda_fy2025_001:candidate:v1:f9323ac21b1cae987e5ddb44190b20f002eeed4f33f11ea2238dfc367d82fbf4",
+        "candidate:nvda_fy2025_001:candidate:v1:fc1a5ac9f62e94971c053dee36d960ceac09ee794751d36bdc6b0b3505656818"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "nvda_fy2025_002",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:nvda_fy2025_002:candidate:v1:64acc2cf347507a9a10fe1ee44dc0e3b3f6a38caa0e6f1701c0ed3b2cce64644",
+        "candidate:nvda_fy2025_002:candidate:v1:c3698b5d5424bb660f21efa1dd37cf83793cc36dcdb1fa2d65f4de331a648c5a",
+        "candidate:nvda_fy2025_002:candidate:v1:df73fa007530e24a7ff27d3a8075bec8c4f60c42097a3350d4dd98b518a7a86c",
+        "candidate:nvda_fy2025_002:candidate:v1:fc1a5ac9f62e94971c053dee36d960ceac09ee794751d36bdc6b0b3505656818",
+        "semantic:165ad91e983f931324bf3d26e4602838f0c8e7278c9761ede48b8a29b622b27b",
+        "semantic:22a5d65606cab49099b8538602c1e7120806a8a9076fb6c3f7bfd3d0e751b9d4",
+        "semantic:fa4223e195eedb1726d3195165409d2de573a2096bca9e8ab511cc8d5e3e91f3"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 7
+    },
+    {
+      "case_id": "nvda_fy2025_003",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:nvda_fy2025_003:candidate:v1:7fb144e059597cb8a0315923d8c51956ead9ea55ff367cb1f7b46597b63b87bc",
+        "candidate:nvda_fy2025_003:candidate:v1:81fa896e6e8b5037d484debbbac10f6af5ebb44b8d7d2b8c4182f235704c93da",
+        "candidate:nvda_fy2025_003:candidate:v1:df73fa007530e24a7ff27d3a8075bec8c4f60c42097a3350d4dd98b518a7a86c",
+        "candidate:nvda_fy2025_003:candidate:v1:ed34f8c3d3d3c7cf80d4ca5ba308edb821fac4ec8f18428b048f77b6289d0927",
+        "semantic:184fbb27dc779bdfdfc01ca959c0e577975dac7c2e104770b162b0cf79dd6ee3",
+        "semantic:76f6670b03a31c5516407c07826abcb1b6159df81d186e4cec0c902fba8aa866"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 6
+    },
+    {
+      "case_id": "nvda_fy2025_004",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:nvda_fy2025_004:candidate:v1:3553d495da47ccaaf7e89291d92707246f6329d4dbcac2e51f65453118a1a74b",
+        "candidate:nvda_fy2025_004:candidate:v1:4e408948d1cb61462bb828018da23e3b9eb149392eff0aeadf5bcc3ed92cdc41",
+        "candidate:nvda_fy2025_004:candidate:v1:c3698b5d5424bb660f21efa1dd37cf83793cc36dcdb1fa2d65f4de331a648c5a",
+        "candidate:nvda_fy2025_004:candidate:v1:f513df96160f5af01d982a5642366e809260abd9115361111aa142f9e536eb50",
+        "semantic:15804e6c9470806c9a8ace7d2eeb45b78db68dd8c0a674d5ca1e5a9c1a21495f",
+        "semantic:8d5f7f10edc99c5cfed1c7ee1fbd7020523ba92983c61ec9174640986f53eefc",
+        "semantic:bf19eeed14b301b376724be0f37652c1d9415ffb6b28130cc9b3892aeed0d903"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 7
+    },
+    {
+      "case_id": "nvda_fy2025_005",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:nvda_fy2025_005:candidate:v1:4e408948d1cb61462bb828018da23e3b9eb149392eff0aeadf5bcc3ed92cdc41",
+        "candidate:nvda_fy2025_005:candidate:v1:57a748499d11d127a281c2702d8557c411293d9dfeb043ef239caab15bbdb96b",
+        "candidate:nvda_fy2025_005:candidate:v1:9cd18db2682708a79b8143871c521ce2f9285d59c524356a75d44aff88132cf6",
+        "candidate:nvda_fy2025_005:candidate:v1:d05129e4b5534e82fe53212c2d83d353fff6024af60e606826a2498e6e1da0b0",
+        "semantic:12f7d9b483283bde808edc1db690fbe6e5c429ab8d1383fa45c07fce195214f1",
+        "semantic:1af930ce5a25868e0683e583723c34d4629c90b67747cac020657d74e433003e",
+        "semantic:5c0d5a51a840a02de8f7baf9626515d3c23d99d9f7e057d2ec2a8731883d383d"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 7
+    },
+    {
+      "case_id": "nvda_fy2025_006",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:nvda_fy2025_006:candidate:v1:81fa896e6e8b5037d484debbbac10f6af5ebb44b8d7d2b8c4182f235704c93da",
+        "candidate:nvda_fy2025_006:candidate:v1:d3619860560a971a46783464ba654d172e2ed2a78e0c577b5ce33fddf82e48d0",
+        "candidate:nvda_fy2025_006:candidate:v1:f9323ac21b1cae987e5ddb44190b20f002eeed4f33f11ea2238dfc367d82fbf4",
+        "candidate:nvda_fy2025_006:candidate:v1:fc1a5ac9f62e94971c053dee36d960ceac09ee794751d36bdc6b0b3505656818",
+        "candidate:nvda_fy2025_006:candidate:v1:fc687ef13661ea155433b41f5e9a6d2a17ccda1840caa47e2e6f844bfd93eae6"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "nvda_fy2025_007",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:nvda_fy2025_007:candidate:v1:4e408948d1cb61462bb828018da23e3b9eb149392eff0aeadf5bcc3ed92cdc41",
+        "candidate:nvda_fy2025_007:candidate:v1:81fa896e6e8b5037d484debbbac10f6af5ebb44b8d7d2b8c4182f235704c93da",
+        "candidate:nvda_fy2025_007:candidate:v1:c3698b5d5424bb660f21efa1dd37cf83793cc36dcdb1fa2d65f4de331a648c5a",
+        "candidate:nvda_fy2025_007:candidate:v1:ed34f8c3d3d3c7cf80d4ca5ba308edb821fac4ec8f18428b048f77b6289d0927",
+        "semantic:15804e6c9470806c9a8ace7d2eeb45b78db68dd8c0a674d5ca1e5a9c1a21495f",
+        "semantic:8d5f7f10edc99c5cfed1c7ee1fbd7020523ba92983c61ec9174640986f53eefc",
+        "semantic:bf19eeed14b301b376724be0f37652c1d9415ffb6b28130cc9b3892aeed0d903"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 7
+    },
+    {
+      "case_id": "nvda_fy2025_008",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:nvda_fy2025_008:candidate:v1:3553d495da47ccaaf7e89291d92707246f6329d4dbcac2e51f65453118a1a74b",
+        "candidate:nvda_fy2025_008:candidate:v1:92469dbfcbaa897e8cc1662aa4ea3f8628117ba927b199243a4b469987b30e9f",
+        "candidate:nvda_fy2025_008:candidate:v1:c3698b5d5424bb660f21efa1dd37cf83793cc36dcdb1fa2d65f4de331a648c5a",
+        "candidate:nvda_fy2025_008:candidate:v1:f513df96160f5af01d982a5642366e809260abd9115361111aa142f9e536eb50",
+        "semantic:15804e6c9470806c9a8ace7d2eeb45b78db68dd8c0a674d5ca1e5a9c1a21495f",
+        "semantic:8d5f7f10edc99c5cfed1c7ee1fbd7020523ba92983c61ec9174640986f53eefc",
+        "semantic:bf19eeed14b301b376724be0f37652c1d9415ffb6b28130cc9b3892aeed0d903"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 7
+    },
+    {
+      "case_id": "nvda_fy2025_009",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:nvda_fy2025_009:candidate:v1:4e408948d1cb61462bb828018da23e3b9eb149392eff0aeadf5bcc3ed92cdc41",
+        "candidate:nvda_fy2025_009:candidate:v1:92469dbfcbaa897e8cc1662aa4ea3f8628117ba927b199243a4b469987b30e9f",
+        "candidate:nvda_fy2025_009:candidate:v1:c3698b5d5424bb660f21efa1dd37cf83793cc36dcdb1fa2d65f4de331a648c5a",
+        "candidate:nvda_fy2025_009:candidate:v1:f513df96160f5af01d982a5642366e809260abd9115361111aa142f9e536eb50",
+        "semantic:15804e6c9470806c9a8ace7d2eeb45b78db68dd8c0a674d5ca1e5a9c1a21495f",
+        "semantic:8d5f7f10edc99c5cfed1c7ee1fbd7020523ba92983c61ec9174640986f53eefc",
+        "semantic:bf19eeed14b301b376724be0f37652c1d9415ffb6b28130cc9b3892aeed0d903"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 7
+    },
+    {
+      "case_id": "pfe_fy2024_001",
+      "duplicate_sibling_slots": 6,
+      "semantic_group_ids": [
+        "candidate:pfe_fy2024_001:candidate:v1:01d5d6b399137f061fb8f326e40aa2fbc31d0d4901aa8c1c8fa2d97e8083cff5",
+        "candidate:pfe_fy2024_001:candidate:v1:f78898225c02389deb9c500eb56b414adea85395c78ed064d54a52fbf9354d1c",
+        "semantic:3b19b300cf69cd1eb01dd6afafd95702caa4f407d75f21cabce672f0f99ec231",
+        "semantic:435e551c61511e936ce4dbc91a24a567a8c60cc982ac9bd1184dadd5edfcedbf",
+        "semantic:a2ea0319b2290d34b8a822fb8ca8daf0ed39b924daeeb61a79ea89cf7e06a377"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 6,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "pfe_fy2024_002",
+      "duplicate_sibling_slots": 3,
+      "semantic_group_ids": [
+        "candidate:pfe_fy2024_002:candidate:v1:39b673fde1d65f1bd2b9d41572edaf109b2c6ed453388ec7877e6030f73223ca",
+        "candidate:pfe_fy2024_002:candidate:v1:d8324d7b263269a3c24e586f22cd6ea24018ec882dac49bcdd86b23a0c9ad58c",
+        "candidate:pfe_fy2024_002:candidate:v1:ee1b6e8d28ff9d00c690e672570b9077a14828fb6d85f2b59ea014540cc05a85",
+        "semantic:3e3a72613411ac1c75b1c9cf7f1a2bd7fdccad0a814f12570daca285592d1819",
+        "semantic:466f2dcbd31559d93716af3d6dfe72aaae371c1fc6833c5ae9163ca071bd431b",
+        "semantic:4919d09b269ae5e90aa1f9638f085475a70c6ada16c124779f8744941fb8be02"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 3,
+      "top5_sibling_group_count": 6
+    },
+    {
+      "case_id": "pfe_fy2024_003",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:pfe_fy2024_003:candidate:v1:68973af06a9d66846b8f35f78d4bd6b6c95190757c1a26b64fb6a2407f122371",
+        "candidate:pfe_fy2024_003:candidate:v1:93dc06432e5e40d5a2e8f3dd61a1301d377100c785c43382da7a59ed7fc5c5d5",
+        "candidate:pfe_fy2024_003:candidate:v1:9da936a93c3ff4360a4301b109ef753d18d56334151ba9483c5a71b4f72a03f0",
+        "candidate:pfe_fy2024_003:candidate:v1:a96a103b490236806a0c1cdcabe4e04874e63887148c7c76162a20de6f7ae717",
+        "candidate:pfe_fy2024_003:candidate:v1:c427230bd25049379c1e4fb181026861f9c82b99b6a4067e48abced51b24fa1b"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "pfe_fy2024_004",
+      "duplicate_sibling_slots": 6,
+      "semantic_group_ids": [
+        "candidate:pfe_fy2024_004:candidate:v1:43241648e04d404117ac9de4eb1c0aac6018c228ab20dcaf5d19cb7c3eb0d77d",
+        "semantic:3aa9ebba9e0eedfebf2e08c8ebd67ebbe044e41e45d753e4d6f9269d37b5270c",
+        "semantic:4ffebc3d6fdf735c509a45354a1137df1f8395e78f9756139b6edf0340595076",
+        "semantic:6800a4b538138181a61d39b236c95277c0ce1b6419028b080a68a1f8cb795a86",
+        "semantic:75ba66e1895dc7fb8d82338f17fd8a3c5437035f073f1e333c4276d0642c45af",
+        "semantic:82988ac740e5f6efb57004d2454a9e7bbbcea74919bb87e36a9f738cd0b1c2d4",
+        "semantic:c39a6af889b0b5d976500a58491d495530c0d0589e73b89c3623729408f71acd"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 6,
+      "top5_sibling_group_count": 7
+    },
+    {
+      "case_id": "pfe_fy2024_005",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:pfe_fy2024_005:candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e",
+        "candidate:pfe_fy2024_005:candidate:v1:27c5028435fbbf8f429867611c55cf3b20e7ea994885c531ca9f8df874e6a307",
+        "candidate:pfe_fy2024_005:candidate:v1:748fc8c019668a82a8f1481462f18b8399f1e01d64a2b4134b8be76f814ef5d1",
+        "candidate:pfe_fy2024_005:candidate:v1:9da936a93c3ff4360a4301b109ef753d18d56334151ba9483c5a71b4f72a03f0",
+        "candidate:pfe_fy2024_005:candidate:v1:fa84e78d7470fdbc87c942c777e360dbeca57c5245ad8d1b7185cf8252985dd0"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "pfe_fy2024_006",
+      "duplicate_sibling_slots": 6,
+      "semantic_group_ids": [
+        "candidate:pfe_fy2024_006:candidate:v1:01d5d6b399137f061fb8f326e40aa2fbc31d0d4901aa8c1c8fa2d97e8083cff5",
+        "candidate:pfe_fy2024_006:candidate:v1:f78898225c02389deb9c500eb56b414adea85395c78ed064d54a52fbf9354d1c",
+        "semantic:3b19b300cf69cd1eb01dd6afafd95702caa4f407d75f21cabce672f0f99ec231",
+        "semantic:435e551c61511e936ce4dbc91a24a567a8c60cc982ac9bd1184dadd5edfcedbf",
+        "semantic:a2ea0319b2290d34b8a822fb8ca8daf0ed39b924daeeb61a79ea89cf7e06a377"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 6,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "pfe_fy2024_007",
+      "duplicate_sibling_slots": 3,
+      "semantic_group_ids": [
+        "candidate:pfe_fy2024_007:candidate:v1:7ad670b370b979abab1916b174ef6234889ecfffc237864bb816aa96287b6649",
+        "candidate:pfe_fy2024_007:candidate:v1:7c19d0eb78877ce5771fce5624d354ec71d963eda026ac3a7e31f053b684eeb5",
+        "semantic:3c3187536b0d9231a731941afb05ca2935051740c88cbbc447b6b20e499ff01d",
+        "semantic:3e3a72613411ac1c75b1c9cf7f1a2bd7fdccad0a814f12570daca285592d1819",
+        "semantic:466f2dcbd31559d93716af3d6dfe72aaae371c1fc6833c5ae9163ca071bd431b",
+        "semantic:4919d09b269ae5e90aa1f9638f085475a70c6ada16c124779f8744941fb8be02",
+        "semantic:cbb5d9a637d4630ceb1731d6125464fe3e3f0c36a472a7cde528fa000de431dc",
+        "semantic:ecb41c9e619b225c5bc75403c292a048764ee95ec70d12934d83d5524f2cabae"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 3,
+      "top5_sibling_group_count": 8
+    },
+    {
+      "case_id": "pfe_fy2024_008",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:pfe_fy2024_008:candidate:v1:0fcec3f721563bb2f7a1c086430b6bf9569fc921ac21975eef6e03abcfb60668",
+        "candidate:pfe_fy2024_008:candidate:v1:3626aec3386a385719b2bcfa78c3d84b4a26df36fafdfbb8e8fa45cb082f76c0",
+        "candidate:pfe_fy2024_008:candidate:v1:72decce9752e50f95f8590569412fa363c6129f8c1c609c392b346e1a5264c7e",
+        "candidate:pfe_fy2024_008:candidate:v1:85022d266c770742daa988a2b7c9552016206a3c0209da2997b6b64ab6f5e379",
+        "candidate:pfe_fy2024_008:candidate:v1:c1aa851f1ecc09969b3b744779a2608320987891abfbe5bad1a28f24f27d9c1f"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "pfe_fy2024_009",
+      "duplicate_sibling_slots": 6,
+      "semantic_group_ids": [
+        "candidate:pfe_fy2024_009:candidate:v1:43241648e04d404117ac9de4eb1c0aac6018c228ab20dcaf5d19cb7c3eb0d77d",
+        "semantic:3aa9ebba9e0eedfebf2e08c8ebd67ebbe044e41e45d753e4d6f9269d37b5270c",
+        "semantic:4ffebc3d6fdf735c509a45354a1137df1f8395e78f9756139b6edf0340595076",
+        "semantic:6800a4b538138181a61d39b236c95277c0ce1b6419028b080a68a1f8cb795a86",
+        "semantic:75ba66e1895dc7fb8d82338f17fd8a3c5437035f073f1e333c4276d0642c45af",
+        "semantic:82988ac740e5f6efb57004d2454a9e7bbbcea74919bb87e36a9f738cd0b1c2d4",
+        "semantic:c39a6af889b0b5d976500a58491d495530c0d0589e73b89c3623729408f71acd"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 6,
+      "top5_sibling_group_count": 7
+    },
+    {
+      "case_id": "tsla_fy2025_001",
+      "duplicate_sibling_slots": 3,
+      "semantic_group_ids": [
+        "candidate:tsla_fy2025_001:candidate:v1:8e622843b60ae20937357afd183bd90e19f6484ed9b2302d157971402e57e5a7",
+        "candidate:tsla_fy2025_001:candidate:v1:9bb8f9210f5e71df2c49a5f8bb6f4924e3565ad07f9464204c82fb05cd7d218b",
+        "candidate:tsla_fy2025_001:candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+        "semantic:73eecbdabc070a7034bb12d2d475aaefe497dc80c082db02440d3af4248c426b",
+        "semantic:b39be628b18e7ea5c474597a53d94f80925091f02e11fd5c5eccbb643fa03d07",
+        "semantic:f07d2bba3046ca0c510bc51c1d1c4d7d84d8467dc80de9fd646f506d8c4b2251"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 3,
+      "top5_sibling_group_count": 6
+    },
+    {
+      "case_id": "tsla_fy2025_002",
+      "duplicate_sibling_slots": 11,
+      "semantic_group_ids": [
+        "semantic:07f4c0c5c86f102dd6633d27cd7aa9858c75732c6251b8925a53f12539b9fba5",
+        "semantic:162a766dc082767a1c22e221235c75f2f8eb060a9c35820db8e210b5031cb9d7",
+        "semantic:25c4cb6c05fbf025ea1b85a9b06ea6abd26869818eedc74b2c2bcc09c4f112b1",
+        "semantic:5e85abbcf4e381ef2e4d21e9302e598b063521c3fe89e2ae75ea690a65427c2d",
+        "semantic:6b99a2e652d3be3526221d78404111b854733cbae891574204407e5045d71877",
+        "semantic:7bc4eca68905afeee0f2b18158783a5ff430f98313fee18b6b3046e580255bbe",
+        "semantic:85b03a761e443d714ad43b358d22311a9c724346fd6afa8ae29c53dec9648a4f",
+        "semantic:9ce02ae83c75032a141e0da74ef09c7c13702ba343833104219d2b2539a59f49",
+        "semantic:a5428673966bcaedb0f29cfa4bc43b9cffde775131e6aacc7af00875f4b1de67",
+        "semantic:d0a4de9429a6d73a538b75913a77ad855144de6ed72e002c75b0576b1b3d376e",
+        "semantic:d339625d043fbb2d3821794d065aa9c53e33f2b4a10340c1818c317d24265fca",
+        "semantic:d559b2022464e3f2ecbb0b4df5078c71d7658fac76277a5c810eff9756015051",
+        "semantic:dd359e5d5dc1ec65796c08fa8096ee77d0c5d54cd010bde4094738b0f0cb3d3c",
+        "semantic:e1ae0a21605fe7d6903828ac4387d99a1304c0953155dc8a21087f9016bbf4fd",
+        "semantic:e359687d3650a35a106909a3ae27e88da722676bc3035aa0ebf56cd5e9555a31",
+        "semantic:ec8b0b1b57f67890d3baa7f585c22c1f152444c283548100aa05b62deb8302d7"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 11,
+      "top5_sibling_group_count": 16
+    },
+    {
+      "case_id": "tsla_fy2025_003",
+      "duplicate_sibling_slots": 3,
+      "semantic_group_ids": [
+        "candidate:tsla_fy2025_003:candidate:v1:8e622843b60ae20937357afd183bd90e19f6484ed9b2302d157971402e57e5a7",
+        "candidate:tsla_fy2025_003:candidate:v1:9bb8f9210f5e71df2c49a5f8bb6f4924e3565ad07f9464204c82fb05cd7d218b",
+        "candidate:tsla_fy2025_003:candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+        "semantic:4b2f4fe70135da6f246e8a215b554139652db9951d1240d0d7fd764284b65c1f",
+        "semantic:9cbb7f37fc22e649a38f1a8130c408248bc6e5d9362fce0c3e9ae0f07a17cc9b",
+        "semantic:b1bb844deb3356e2c99ae36a14dbf36182c0fc7f263e94c34a3e55b768a01c02"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 3,
+      "top5_sibling_group_count": 6
+    },
+    {
+      "case_id": "tsla_fy2025_004",
+      "duplicate_sibling_slots": 7,
+      "semantic_group_ids": [
+        "candidate:tsla_fy2025_004:candidate:v1:8e622843b60ae20937357afd183bd90e19f6484ed9b2302d157971402e57e5a7",
+        "candidate:tsla_fy2025_004:candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+        "candidate:tsla_fy2025_004:candidate:v1:feca2e7566ca09595e7b5f19f83b73ed92bbf2959e469045fcf09a927a2dcf44",
+        "semantic:0a3e41aee53a8d4128c116529537951c91b7e407404d26d25a940e56f179d5b5",
+        "semantic:c90c55be25ab164496a642e08fdf44609a0edd770103b3cf7b52ac3529d6a415",
+        "semantic:cca7444a5a21b7218b2b30670002e498ec7690357dad135f4aa52107b3cb4026",
+        "semantic:d9529fee4a71ff45cab5c5a74434dc7ce5ae6d94992c40800ef1673c73773c70",
+        "semantic:e0eda8a51cb581383ba2a1ab44c35acdf0c2c0e75597312ec565dbd298a0751a",
+        "semantic:fb9521536effb34c9e91cc94d5ba58bcf4c2015d4027ecb72763e0af1ce0231e",
+        "semantic:fda98eb922ae41380cf50a51ebf2671011041557ddf39a65ac47d216b10f0330"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 7,
+      "top5_sibling_group_count": 10
+    },
+    {
+      "case_id": "tsla_fy2025_005",
+      "duplicate_sibling_slots": 2,
+      "semantic_group_ids": [
+        "candidate:tsla_fy2025_005:candidate:v1:7b625a4cdf18b8c7025cf32be4a8a1b3d9a059f5638881e5c4841e61e5940a57",
+        "candidate:tsla_fy2025_005:candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+        "semantic:1d114311b301143050acc4d04702dae29f3ced0405ec7ee5a877d813fd05f4ba",
+        "semantic:60d6a3c84706a63fb9079bb187bcf3b2b06f6224f32146f09daf7bc2162a4fd3",
+        "semantic:65f50cb3a6de388619c404d9b751071c848b38b2ab98aa8ac22ede0141ec7d7c",
+        "semantic:6cf7efc22fc2613be48c6d49dd3e4e9601d1aa64316665a06def1c00678f8f41",
+        "semantic:a5e176552856134c7bcecf915ae271bd268762cb46fb52385cfad787a45d408e",
+        "semantic:b3863deb0ca4c57d026723acaa02b2e1a7f870612b09da074348babb61ba0cf5",
+        "semantic:c123f5eb170984c47e659756e0dfe1b1029f25aa8e5b681b6abec358d5bdd044",
+        "semantic:c4ac59bd78d8bd72e1a411d29d4873a11e10e813aa616595b4934860bce8b526",
+        "semantic:d239db632811dafe79d7c393c386f0dc408a0f95b96783d685ec49cd19f96c85"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 2,
+      "top5_sibling_group_count": 11
+    },
+    {
+      "case_id": "tsla_fy2025_006",
+      "duplicate_sibling_slots": 6,
+      "semantic_group_ids": [
+        "candidate:tsla_fy2025_006:candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+        "semantic:0bfd860d1279261ee639038c318ff2860a67639f53def331c81b243ab7f64eb2",
+        "semantic:6d627bdcf24b337cdb69368e2da5b132385d94b68ea5c9049ce46e9c30502e99",
+        "semantic:73eecbdabc070a7034bb12d2d475aaefe497dc80c082db02440d3af4248c426b",
+        "semantic:9805cc1cfedc16c9fb4c07398d9d3c6083916e8c922aef098271cfaf7715d0c8",
+        "semantic:b39be628b18e7ea5c474597a53d94f80925091f02e11fd5c5eccbb643fa03d07",
+        "semantic:b407ebb78505e01e82a4b8a488d2fb73000e563959867c3a4ed8ff46ef22d4f0",
+        "semantic:d83b141335ad671836d977719a34e800aea92b50b398dec2c78f742c5fa66fbb",
+        "semantic:db1b403ccfc1f17a42e5519cf7b052cd96cbcede5d973cd5985c7314d30cc2e5",
+        "semantic:e473751ddff5aa08b8312add9050d3cc6b0e4c447e3310dc82cd0e37463f4cf4",
+        "semantic:f07d2bba3046ca0c510bc51c1d1c4d7d84d8467dc80de9fd646f506d8c4b2251"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 6,
+      "top5_sibling_group_count": 11
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:tsla_fy2025_007:candidate:v1:0e74c8f483e329b64ec9a1c2db555591f8bc65c1c321918d6ab07d0b9b2d9487",
+        "candidate:tsla_fy2025_007:candidate:v1:8e622843b60ae20937357afd183bd90e19f6484ed9b2302d157971402e57e5a7",
+        "candidate:tsla_fy2025_007:candidate:v1:9bb8f9210f5e71df2c49a5f8bb6f4924e3565ad07f9464204c82fb05cd7d218b",
+        "candidate:tsla_fy2025_007:candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+        "semantic:0a3e41aee53a8d4128c116529537951c91b7e407404d26d25a940e56f179d5b5",
+        "semantic:c90c55be25ab164496a642e08fdf44609a0edd770103b3cf7b52ac3529d6a415",
+        "semantic:cca7444a5a21b7218b2b30670002e498ec7690357dad135f4aa52107b3cb4026",
+        "semantic:d9529fee4a71ff45cab5c5a74434dc7ce5ae6d94992c40800ef1673c73773c70",
+        "semantic:e0eda8a51cb581383ba2a1ab44c35acdf0c2c0e75597312ec565dbd298a0751a",
+        "semantic:fb9521536effb34c9e91cc94d5ba58bcf4c2015d4027ecb72763e0af1ce0231e",
+        "semantic:fda98eb922ae41380cf50a51ebf2671011041557ddf39a65ac47d216b10f0330"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 11
+    },
+    {
+      "case_id": "tsla_fy2025_008",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:tsla_fy2025_008:candidate:v1:1ccdebde6b7a5139ab1b9d0523471af9f98a36fc64fd3d584ff0fc970bcd2f3e",
+        "candidate:tsla_fy2025_008:candidate:v1:2f1284759bdd3a363f8d2f0f8e7ac28f244dcf4859e0a9ceab0e949985e4f7e1",
+        "candidate:tsla_fy2025_008:candidate:v1:369aec19067df02adc485ce8443f7811a84ee66e6285b70f081f9e4a3094081c",
+        "candidate:tsla_fy2025_008:candidate:v1:3e6f3d15bb62b5bb50f9cc020acb29f447685e9ff7492647af76abfde1efec94",
+        "candidate:tsla_fy2025_008:candidate:v1:c18e1cb37edf01d0b110f3edbfc1411f2146abd479ce55e1d8e2456f31198465"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "tsla_fy2025_009",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:tsla_fy2025_009:candidate:v1:0e74c8f483e329b64ec9a1c2db555591f8bc65c1c321918d6ab07d0b9b2d9487",
+        "candidate:tsla_fy2025_009:candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+        "candidate:tsla_fy2025_009:candidate:v1:d7f47617901cd3682490d5d1a733981413447ff4ec775e84ef4f7288bbbc3782",
+        "semantic:0a3e41aee53a8d4128c116529537951c91b7e407404d26d25a940e56f179d5b5",
+        "semantic:399863c2d8df42ee134b42b35fe7b07ae151209f01da87ed5cf3c762b0e3c124",
+        "semantic:91fd2af3e1e3ecee17a59b75954c968d1977ea239a69d787a23826c6af712722",
+        "semantic:9542e80d3b30f47e7253416d27c3ca4691ba2c5e3a3933249bee721bd5c20769",
+        "semantic:9d7101373df447f54eca2b4d353c6bfbf86b46e4ca9f87667405abcb49bc52e8",
+        "semantic:c90c55be25ab164496a642e08fdf44609a0edd770103b3cf7b52ac3529d6a415",
+        "semantic:cca7444a5a21b7218b2b30670002e498ec7690357dad135f4aa52107b3cb4026",
+        "semantic:d9529fee4a71ff45cab5c5a74434dc7ce5ae6d94992c40800ef1673c73773c70",
+        "semantic:da4643da594c70120a1b11cc7c8f7967ccc26d0c1aaf37c72af3c6562d3339db",
+        "semantic:e0eda8a51cb581383ba2a1ab44c35acdf0c2c0e75597312ec565dbd298a0751a",
+        "semantic:f523119660ff25f5d124efa7391b2af4c8778a3773105c207b752ef8927c523d",
+        "semantic:f9081f2996ebcc6d727fe624ac855ce1d309dcf8d619e94a0b5ade67fb04695e",
+        "semantic:fb9521536effb34c9e91cc94d5ba58bcf4c2015d4027ecb72763e0af1ce0231e",
+        "semantic:fda98eb922ae41380cf50a51ebf2671011041557ddf39a65ac47d216b10f0330"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 17
+    },
+    {
+      "case_id": "v_fy2025_001",
+      "duplicate_sibling_slots": 10,
+      "semantic_group_ids": [
+        "candidate:v_fy2025_001:candidate:v1:09206bf27c17b48bc5747e3a5b3f9afdd3e212b9410d1e2bf7d2030eafc7b7e4",
+        "semantic:0fab782e7da59219c5c8ce3b7beb70204603a45a411b0e9e8c24c8d89bc54a0c",
+        "semantic:3134bbe15d516e85784e317f6ee9ea1559f616f201869049b889d61f78577f6f",
+        "semantic:49016a4f10ca002dc64c1fc9cb60e61a544189f78350869f4c72faef4f389879",
+        "semantic:8e34d77c7fd5786a2e1817247b68633496465e5458d1529c26f7c2e8e679e757",
+        "semantic:8f7bd734d1442590acbfda4b888533e0cd46e35f388ec0136e46584c3e54869e",
+        "semantic:ced30a6d0f61f78bfb834aff3fa8046f713bffa9304ef129c242359ab40c1f8b",
+        "semantic:f00970e46709fadb8ca85f7f9b4410e55308efa745705bb18af903ab57e0429b",
+        "semantic:f992f6487ada360aab331199daa456142c541146d29205babc061fbb6eadd29f"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 10,
+      "top5_sibling_group_count": 9
+    },
+    {
+      "case_id": "v_fy2025_002",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:v_fy2025_002:candidate:v1:089a8762602f596e352f08bbf9d10d63d629bfa1a0f0dc1b0e320cc7852ae400",
+        "candidate:v_fy2025_002:candidate:v1:2e573845630248665263f5503bce8eb3815d73d372ecab41aecfe8678973fe6c",
+        "candidate:v_fy2025_002:candidate:v1:afabc70140880921e2cd83bf27791b1123e4028643dda6356851edf99bcdcd5b",
+        "candidate:v_fy2025_002:candidate:v1:c593d5540dbf23ca283ab634852a5b25c4b6016348ec65f1c1027dd5f5b970ac",
+        "semantic:280675e736c3635508ce257b1d0399834ec52002b56b55590373470a1fe1f46a",
+        "semantic:2b9b2a7229ff192d083fd8454078d82fdace783b18aca44369dc11348da06421",
+        "semantic:dc37d8fe4236e9df55205d90d794cef78051c40687a1bde093b886d6e9f35ecf"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 7
+    },
+    {
+      "case_id": "v_fy2025_003",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:v_fy2025_003:candidate:v1:01b7736344ebc7ebc999c05e7d8912828fb2e4859d3bcbdb59657a31e72e7735",
+        "candidate:v_fy2025_003:candidate:v1:2e573845630248665263f5503bce8eb3815d73d372ecab41aecfe8678973fe6c",
+        "candidate:v_fy2025_003:candidate:v1:3d161966fba1d9dce03b2984f6c48ea06896dd6e6abb686b1a81fb2df84bf85e",
+        "candidate:v_fy2025_003:candidate:v1:579881a7b9f9a7ef2bf92c2f009d2ca2346b80d0e587c8100ca9d3b7184b511c",
+        "candidate:v_fy2025_003:candidate:v1:8c03c3b732665d783f0e7a754c30a326882f2fbacfbf6a8dbaa381165b97017e"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "v_fy2025_004",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:v_fy2025_004:candidate:v1:06f2c5ddf51f8ac89ab17da3f637c84edb6c8f5f836be7564015c784237103d1",
+        "candidate:v_fy2025_004:candidate:v1:2e573845630248665263f5503bce8eb3815d73d372ecab41aecfe8678973fe6c",
+        "candidate:v_fy2025_004:candidate:v1:afabc70140880921e2cd83bf27791b1123e4028643dda6356851edf99bcdcd5b",
+        "candidate:v_fy2025_004:candidate:v1:ceb10b9a11e84947839edde9533249e9a95ca4a60c297c67d1efef5bd7ea85c8",
+        "semantic:7047779c1968f53af090ef6a8dd3a1ca74517a5e8b121f848fbc628cb6913965",
+        "semantic:92ccc311aa012ad20206b581e1ddc8df71950e1cf9ba6e402c447358029c26e3",
+        "semantic:b54ed81d78f29a72c64933f8b22fcbc61b6cda392b10319887b52c8ffe5bdbba"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 7
+    },
+    {
+      "case_id": "v_fy2025_005",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:v_fy2025_005:candidate:v1:232d50b8764e914452a5f06bfc8764382d72cf770a3199cd4a4e5fa3eeca2d0c",
+        "candidate:v_fy2025_005:candidate:v1:4cb04689d9e0405fd792b72d04dec48a1c29204ffc31a09af41f9423504fbd71",
+        "candidate:v_fy2025_005:candidate:v1:9989ef7e77422fab07c5a4e7d5fd9f2a03eafc214683509acaeaa0e3b63d411a",
+        "semantic:11e703913a17c55bdd5a129db3dd0b35dc0aa1687b9f6c117b1592c6704fcfae",
+        "semantic:2eed176b47923b8272ba166b3add31069e058b2e0615afbb0646a6b333b3db1e",
+        "semantic:5c55425a01d9e03b3ffef0d6aac672720a5bd0b827a2fa4fb89ece66345d8ad2",
+        "semantic:62e0702dfa7874801f369a02e0c0e645e676c9704ba27dfaa54ced628e506798"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 7
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "duplicate_sibling_slots": 5,
+      "semantic_group_ids": [
+        "candidate:v_fy2025_006:candidate:v1:09206bf27c17b48bc5747e3a5b3f9afdd3e212b9410d1e2bf7d2030eafc7b7e4",
+        "candidate:v_fy2025_006:candidate:v1:8c03c3b732665d783f0e7a754c30a326882f2fbacfbf6a8dbaa381165b97017e",
+        "candidate:v_fy2025_006:candidate:v1:b2987005af36131181bdb0e817c344d81b41ca0f511a7df00b49a32f8fb07c46",
+        "semantic:0fab782e7da59219c5c8ce3b7beb70204603a45a411b0e9e8c24c8d89bc54a0c",
+        "semantic:3134bbe15d516e85784e317f6ee9ea1559f616f201869049b889d61f78577f6f",
+        "semantic:49016a4f10ca002dc64c1fc9cb60e61a544189f78350869f4c72faef4f389879",
+        "semantic:ced30a6d0f61f78bfb834aff3fa8046f713bffa9304ef129c242359ab40c1f8b",
+        "semantic:f992f6487ada360aab331199daa456142c541146d29205babc061fbb6eadd29f"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 5,
+      "top5_sibling_group_count": 8
+    },
+    {
+      "case_id": "v_fy2025_007",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:v_fy2025_007:candidate:v1:06f2c5ddf51f8ac89ab17da3f637c84edb6c8f5f836be7564015c784237103d1",
+        "candidate:v_fy2025_007:candidate:v1:089a8762602f596e352f08bbf9d10d63d629bfa1a0f0dc1b0e320cc7852ae400",
+        "candidate:v_fy2025_007:candidate:v1:2e573845630248665263f5503bce8eb3815d73d372ecab41aecfe8678973fe6c",
+        "candidate:v_fy2025_007:candidate:v1:579881a7b9f9a7ef2bf92c2f009d2ca2346b80d0e587c8100ca9d3b7184b511c",
+        "semantic:8741937edddc2f4df87df8a904afac50e17b28de99a8fbf176a7b2dc4a9fd584",
+        "semantic:c4beffdf29f47442882317ca44f6d1cc6adfbe7bba1146ecc6623c8e0558f14f",
+        "semantic:c6e25446bae2968b425fb3876a27dd2631b56c43f20bfe91e36d6b94ff8628d9"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 7
+    },
+    {
+      "case_id": "v_fy2025_008",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:v_fy2025_008:candidate:v1:4cb04689d9e0405fd792b72d04dec48a1c29204ffc31a09af41f9423504fbd71",
+        "candidate:v_fy2025_008:candidate:v1:9903793f25e1322ed5225ddcef709c099e445e0d12d1dea9faf05ba0f8254e03",
+        "candidate:v_fy2025_008:candidate:v1:9f551cc6c795cb056ca56eafb7f125e15c3db0dbc48d9eb125182ce0a0dd9667",
+        "candidate:v_fy2025_008:candidate:v1:d3eae6b4bf1e4ccae6e7e096510775c4d6d9a054c5ca1877a9e547e48b775fca",
+        "candidate:v_fy2025_008:candidate:v1:d54497c5ec5a63184af04be7c5e4347ce0c06918a4998340144b0fcad00835b0"
+      ],
+      "strict_top5_all_sources": true,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 5
+    },
+    {
+      "case_id": "v_fy2025_009",
+      "duplicate_sibling_slots": 0,
+      "semantic_group_ids": [
+        "candidate:v_fy2025_009:candidate:v1:06f2c5ddf51f8ac89ab17da3f637c84edb6c8f5f836be7564015c784237103d1",
+        "candidate:v_fy2025_009:candidate:v1:259f9ce55dbdcc571e7e6ab285bfb07febc6a2a3ebaa5d44140b95429e2b88eb",
+        "candidate:v_fy2025_009:candidate:v1:6aad436bd7fd9978f096030b1e2dd0dd7737a07db69940e630a7ca777dd5072a",
+        "candidate:v_fy2025_009:candidate:v1:e8b774fa3a3c0577c520a656587580f4000d19d2f5d75f41ac5510cda2333aba",
+        "semantic:4e89d5ac5a3b41d9d125be509eac724bf5a29594aadd2b1f0e4e6199695e05d7",
+        "semantic:56ad7f77d1ba90a027fd3502539f1253f48becf1a52518c76002afdb5dc1160e",
+        "semantic:66fe92921460be615f799f2828c3b10fb0d6f6f5e83b11810e81394690802561",
+        "semantic:6aef04e6e9b9b1a76caa52a76f8b858d92a5e0f0b79013ead1d7d1aca4b4a067",
+        "semantic:871162f227ac95920930e0dd02ca05402aa5b846a2f68c9969149f2adfe69440",
+        "semantic:c5cbc1bfef4eadfde98a9380e09f055e06cd13790114b567e56496b4f407bb78",
+        "semantic:d20882ecbd7fa5924013a1f19a154182399e80db0a9f20ce5e1501642594c1dd",
+        "semantic:df86c8443da802409a9401662fab9ebb8d4972e62b8dd43f018410e507f0f252",
+        "semantic:f2e17aed3b7522d39670ede8d647b1a8a8c2a05e852365d5bfce7db765685787"
+      ],
+      "strict_top5_all_sources": false,
+      "top5_positions_consumed_by_duplicate_siblings": 0,
+      "top5_sibling_group_count": 13
+    }
+  ]
+}
