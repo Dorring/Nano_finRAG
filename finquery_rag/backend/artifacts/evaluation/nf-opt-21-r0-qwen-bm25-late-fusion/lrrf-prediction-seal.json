@@ -1,0 +1,12 @@
+{
+  "candidate_count_per_query": 100,
+  "fusion_candidate_depth": 10,
+  "gate": "NF-OPT-21-R0",
+  "gold_reads_during_prediction": 0,
+  "model_execution": false,
+  "prediction_sha256": "be452558d398fc3824246c1a1811f624e3cf6f1b5cb2d9ae747ddefbc868228d",
+  "retrieval_rerun": false,
+  "rows": 72,
+  "sealed": true,
+  "variant": "lrrf_v1"
+}

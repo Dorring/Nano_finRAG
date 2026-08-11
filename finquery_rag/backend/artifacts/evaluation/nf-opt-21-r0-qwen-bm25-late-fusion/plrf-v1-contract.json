@@ -1,0 +1,21 @@
+{
+  "candidate_source": "frozen_qwen_top10",
+  "gate": "NF-OPT-21-R0",
+  "gold_reads_during_prediction": 0,
+  "max_slot_mutations_per_query": 1,
+  "method": "Protected Qwen-BM25 Boundary Fusion V1",
+  "prediction_sha256": "6499900b19d66f09343724f3d96674b131dd1f24bbed983c25c11f24d06b2c09",
+  "rank1_4_preserved": true,
+  "rrf_k": 60,
+  "short_name": "PLRF-V1",
+  "tie_break": [
+    "late_rrf_score_desc",
+    "original_qwen_rank_asc",
+    "original_bm25_rank_asc",
+    "candidate_key_asc"
+  ],
+  "weights": {
+    "bm25": 1.0,
+    "qwen": 1.0
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "candidate_source": "frozen_qwen_top10",
+  "gate": "NF-OPT-21-R0",
+  "gold_reads_during_prediction": 0,
+  "max_slot_mutations_per_query": 10,
+  "method": "Qwen-BM25 Late RRF V1",
+  "prediction_sha256": "be452558d398fc3824246c1a1811f624e3cf6f1b5cb2d9ae747ddefbc868228d",
+  "rank1_4_preserved": false,
+  "rrf_k": 60,
+  "short_name": "LRRF-V1",
+  "tie_break": [
+    "late_rrf_score_desc",
+    "original_qwen_rank_asc",
+    "original_bm25_rank_asc",
+    "candidate_key_asc"
+  ],
+  "weights": {
+    "bm25": 1.0,
+    "qwen": 1.0
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "lrrf_v1": {
+    "calculation_all_slots_at_5": 6,
+    "damaged": 6,
+    "gain_pp": 3.75,
+    "gain_sources": 3,
+    "marginal": true,
+    "material": false,
+    "multi_all_at_5": 7,
+    "net": 3,
+    "rescued": 9,
+    "safe_metrics": true,
+    "semantic_r5": {
+      "hits": 51,
+      "rate": 0.6375,
+      "total": 80
+    },
+    "strict_r5": {
+      "hits": 46,
+      "rate": 0.575,
+      "total": 80
+    }
+  },
+  "plrf_v1": {
+    "calculation_all_slots_at_5": 5,
+    "damaged": 6,
+    "gain_pp": -6.25,
+    "gain_sources": -5,
+    "marginal": false,
+    "material": false,
+    "multi_all_at_5": 4,
+    "net": -5,
+    "rescued": 1,
+    "safe_metrics": false,
+    "semantic_r5": {
+      "hits": 46,
+      "rate": 0.575,
+      "total": 80
+    },
+    "strict_r5": {
+      "hits": 38,
+      "rate": 0.475,
+      "total": 80
+    }
+  }
+}

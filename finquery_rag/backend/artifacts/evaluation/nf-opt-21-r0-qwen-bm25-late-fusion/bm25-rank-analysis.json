@@ -1,0 +1,34 @@
+{
+  "lrrf_v1": {
+    "damaged": {
+      "count": 6,
+      "direction": "damaged",
+      "mean": 79.5,
+      "p50": 81.5,
+      "p90": 92.5
+    },
+    "rescued": {
+      "count": 9,
+      "direction": "rescued",
+      "mean": 12.444444444444445,
+      "p50": 10.0,
+      "p90": 22.0
+    }
+  },
+  "plrf_v1": {
+    "damaged": {
+      "count": 6,
+      "direction": "damaged",
+      "mean": 48,
+      "p50": 41.5,
+      "p90": 92.5
+    },
+    "rescued": {
+      "count": 1,
+      "direction": "rescued",
+      "mean": 1,
+      "p50": 1.0,
+      "p90": 1.0
+    }
+  }
+}
