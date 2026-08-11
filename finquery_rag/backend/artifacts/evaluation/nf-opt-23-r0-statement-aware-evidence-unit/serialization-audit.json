@@ -1,0 +1,19 @@
+{
+  "candidate_type_counts": {
+    "mixed": 34,
+    "narrative_text": 884,
+    "table_fragment_backed": 82,
+    "table_row_backed": 1215,
+    "unresolved": 941
+  },
+  "currency_present": 44,
+  "gold_reads_before_prediction_seal": 0,
+  "header_value_binding_present": 1048,
+  "metric_path_present": 1242,
+  "period_value_binding_present": 1048,
+  "relational_structure_available": 1048,
+  "row_present": 1249,
+  "scale_present": 615,
+  "statement_present": 1331,
+  "unique_candidates": 3156
+}

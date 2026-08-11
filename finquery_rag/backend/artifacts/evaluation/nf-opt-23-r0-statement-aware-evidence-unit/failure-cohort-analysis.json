@@ -1,0 +1,52 @@
+{
+  "calculation_operand_competition": {
+    "cases": 8,
+    "damaged": 0,
+    "mean_rank_delta": 6.625,
+    "net": 5,
+    "rank_improved": 8,
+    "rank_worsened": 0,
+    "rescued": 5,
+    "unchanged": 0
+  },
+  "multi_slot_competition": {
+    "cases": 12,
+    "damaged": 0,
+    "mean_rank_delta": 6.583333333333333,
+    "net": 6,
+    "rank_improved": 11,
+    "rank_worsened": 1,
+    "rescued": 6,
+    "unchanged": 0
+  },
+  "same_document_wrong_evidence": {
+    "cases": 8,
+    "damaged": 0,
+    "mean_rank_delta": 5.75,
+    "net": 2,
+    "rank_improved": 7,
+    "rank_worsened": 0,
+    "rescued": 2,
+    "unchanged": 1
+  },
+  "same_metric_wrong_row": {
+    "cases": 8,
+    "damaged": 0,
+    "mean_rank_delta": 5.75,
+    "net": 6,
+    "rank_improved": 8,
+    "rank_worsened": 0,
+    "rescued": 6,
+    "unchanged": 0
+  },
+  "wrong_period": {
+    "cases": 17,
+    "damaged": 0,
+    "mean_rank_delta": 6.411764705882353,
+    "net": 7,
+    "rank_improved": 15,
+    "rank_worsened": 1,
+    "rescued": 7,
+    "unchanged": 1
+  }
+}

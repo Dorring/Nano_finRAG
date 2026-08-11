@@ -1,0 +1,11 @@
+{
+  "candidate_budget": 100,
+  "candidate_identity_unchanged": true,
+  "candidate_mismatch": 0,
+  "candidate_source": "frozen_internal_bounded_top100",
+  "candidates_per_case": 100,
+  "cases": 72,
+  "expected_top100_sha256": "ced014c357a3c8862a5ae3723a4c618556156542fd63aa2a8fd4bf766b60f01a",
+  "gold_reads_before_prediction_seal": 0,
+  "top100_sha256": "ced014c357a3c8862a5ae3723a4c618556156542fd63aa2a8fd4bf766b60f01a"
+}

@@ -1,0 +1,15 @@
+{
+  "base_commit": "18e2a21baac3c5eacf19547e0a2492dabd9b6c90",
+  "batch_size": 1,
+  "dtype": "bfloat16",
+  "gate": "NF-OPT-23-R0",
+  "instruction_sha256": "10eb2881eb41a3c21c9d57fc5afbb6520f385adc78eb43785f2df1e86fbc4328",
+  "instruction_unchanged": true,
+  "max_length": 8192,
+  "model": "Qwen/Qwen3-Reranker-4B",
+  "model_execution": true,
+  "model_revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+  "query_unchanged": true,
+  "retrieval_rerun": false,
+  "scoring": "last-position full-vocabulary causal-lm yes/no logits; log_softmax(no, yes) yes probability"
+}

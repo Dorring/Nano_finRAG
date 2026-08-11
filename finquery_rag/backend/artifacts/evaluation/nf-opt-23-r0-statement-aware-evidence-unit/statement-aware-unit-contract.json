@@ -1,0 +1,15 @@
+{
+  "candidate_identity_mutation": 0,
+  "full_row_preserved": true,
+  "gate": "NF-OPT-23-R0",
+  "gold_independent": true,
+  "instruction_sha256": "10eb2881eb41a3c21c9d57fc5afbb6520f385adc78eb43785f2df1e86fbc4328",
+  "max_length": 8192,
+  "method": "Statement-Aware Financial Evidence Unit V1",
+  "missing_structure_policy": "fail_closed_to_baseline_serialization",
+  "narrative_policy": "retain_original_text",
+  "original_column_order_preserved": true,
+  "query_independent": true,
+  "query_period_filtering": false,
+  "query_view_sha256": "91bafe5612fab14d1229c877c9dd1bc290b815a8d73f7f014427ce916cdf1705"
+}

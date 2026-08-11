@@ -1,0 +1,31 @@
+{
+  "gold_reads_after_prediction_seal": true,
+  "types": {
+    "mixed": {
+      "gold_candidate": 1,
+      "non_gold_candidate": 33,
+      "overall": 34
+    },
+    "narrative_text": {
+      "gold_candidate": 0,
+      "non_gold_candidate": 884,
+      "overall": 884
+    },
+    "table_fragment_backed": {
+      "gold_candidate": 4,
+      "non_gold_candidate": 78,
+      "overall": 82
+    },
+    "table_row_backed": {
+      "gold_candidate": 28,
+      "non_gold_candidate": 1187,
+      "overall": 1215
+    },
+    "unresolved": {
+      "gold_candidate": 6,
+      "non_gold_candidate": 935,
+      "overall": 941
+    }
+  },
+  "unique_candidates": 3156
+}
