@@ -1,0 +1,14 @@
+{
+  "base_commit": "135607002e2f74e67425a9480a3abc051b528719",
+  "candidate_depth": 10,
+  "candidate_source": "historical_r1_qwen_top10",
+  "gold_reads_before_stage_a": 0,
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "production_switch_allowed": false,
+  "query_count": 72,
+  "qwen_prediction_sha256": "26b901607e99a27cf6afd86e278ab2b2216ab740f4537ba7a81974dc108cac22",
+  "r1_max_new_tokens": 128,
+  "semantic_prompt_sha": "01ab63296cf5b3581281eb5c0c55dd81be75f6bbc8c8bbeac5101a2f5151b645",
+  "semantic_prompt_unchanged": true
+}

@@ -1,0 +1,35 @@
+{
+  "counts": {
+    "A0_exact_contract_json": 0,
+    "A10_empty_or_generation_failure": 1,
+    "A11_other": 8,
+    "A1_markdown_fenced_json": 0,
+    "A2_embedded_json": 0,
+    "A3_json_wrong_scalar_type": 1,
+    "A4_explicit_candidate_id_list_non_json": 0,
+    "A5_more_than_five_explicit_ids": 0,
+    "A6_fewer_than_five_explicit_ids": 1,
+    "A7_duplicate_candidate_ids": 0,
+    "A8_invalid_or_out_of_top10_ids": 45,
+    "A9_natural_language_without_complete_selection": 16
+  },
+  "exact_valid": 0,
+  "percentages": {
+    "A0_exact_contract_json": 0.0,
+    "A10_empty_or_generation_failure": 0.013888888888888888,
+    "A11_other": 0.1111111111111111,
+    "A1_markdown_fenced_json": 0.0,
+    "A2_embedded_json": 0.0,
+    "A3_json_wrong_scalar_type": 0.013888888888888888,
+    "A4_explicit_candidate_id_list_non_json": 0.0,
+    "A5_more_than_five_explicit_ids": 0.0,
+    "A6_fewer_than_five_explicit_ids": 0.013888888888888888,
+    "A7_duplicate_candidate_ids": 0.0,
+    "A8_invalid_or_out_of_top10_ids": 0.625,
+    "A9_natural_language_without_complete_selection": 0.2222222222222222
+  },
+  "recoverable_rate": 0.0,
+  "recoverable_total": 0,
+  "tolerant_recoverable": 0,
+  "unrecoverable": 72
+}

@@ -1,0 +1,17 @@
+{
+  "allowed": [
+    "exact_json",
+    "markdown_fenced_json",
+    "embedded_unique_json",
+    "explicit_five_id_list"
+  ],
+  "autofill": false,
+  "gold_reads": 0,
+  "invent_ids": false,
+  "normalization": [
+    "trim_whitespace",
+    "strip_quotes_backticks",
+    "case_insensitive_unique_resolution"
+  ],
+  "parser": "TOP-V1"
+}
