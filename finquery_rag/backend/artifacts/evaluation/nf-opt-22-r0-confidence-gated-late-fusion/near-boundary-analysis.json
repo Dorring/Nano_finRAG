@@ -1,0 +1,14 @@
+{
+  "clear_loss": {
+    "cglrrf_v1": 0,
+    "lrrf_v1": 4,
+    "qwen": 0
+  },
+  "clear_loss_sources": 12,
+  "near_boundary": {
+    "cglrrf_v1": 5,
+    "lrrf_v1": 5,
+    "qwen": 0
+  },
+  "near_boundary_sources": 13
+}

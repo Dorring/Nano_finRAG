@@ -1,0 +1,12 @@
+{
+  "candidate_depth": 100,
+  "fusion_candidate_depth": 10,
+  "gate": "NF-OPT-22-R0",
+  "gold_reads_during_prediction": 0,
+  "model_execution": false,
+  "prediction_sha256": "068c7a125b9454a1db4ce9cbbf56abcaeb0761b7370332eeb1e3743e8d7e93b4",
+  "queries": 72,
+  "retrieval_rerun": false,
+  "sealed": true,
+  "training": false
+}

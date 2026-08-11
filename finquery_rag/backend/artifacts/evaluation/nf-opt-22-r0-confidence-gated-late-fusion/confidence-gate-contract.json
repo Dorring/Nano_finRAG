@@ -1,0 +1,30 @@
+{
+  "border_pool": "original_qwen_top10_only",
+  "border_rule": "-near_boundary_threshold <= margin <= near_boundary_threshold",
+  "candidate_generation": false,
+  "gate": "NF-OPT-22-R0",
+  "gold_reads_during_prediction": 0,
+  "low_candidate_rule": "original_qwen_order_fallback_only",
+  "low_rule": "margin > near_boundary_threshold",
+  "margin_definition": "rank5_score - candidate_score",
+  "method": "Confidence-Gated Qwen/BM25 Late Fusion V1",
+  "model_execution": false,
+  "near_boundary_rule": "near_boundary iff C1 margin <= median(C1 margins)",
+  "near_boundary_threshold": 0.035075027495622635,
+  "protected_rule": "margin < -near_boundary_threshold",
+  "protected_top5_preserved": true,
+  "retrieval_rerun": false,
+  "rrf_k": 60,
+  "short_name": "CGLRRF-V1",
+  "tie_break": [
+    "fusion_score_desc",
+    "original_qwen_rank_asc",
+    "original_bm25_rank_asc",
+    "candidate_key_asc"
+  ],
+  "training": false,
+  "weights": {
+    "bm25": 1.0,
+    "qwen": 1.0
+  }
+}

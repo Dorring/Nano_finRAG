@@ -1,0 +1,38 @@
+{
+  "damage_prevention_rate": 0.5,
+  "historical_damages": 6,
+  "prevented": 3,
+  "records": [
+    {
+      "candidate_key": "candidate:v1:b5494e22a29663edc6ff9f1ce1b126c4c9f32d6933a1479b696a5c93a3e45135",
+      "case_id": "jpm_fy2025_003",
+      "prevented": false
+    },
+    {
+      "candidate_key": "candidate:v1:a9325e992895567a4c2721f66a3bc3c24b663ddeade06999ff5c87755159932c",
+      "case_id": "jpm_fy2025_005",
+      "prevented": false
+    },
+    {
+      "candidate_key": "candidate:v1:2615a8131b1b84e1f788cfb9c9292fa6b20c9688723ff3bc555f21d4590d95d8",
+      "case_id": "ko_fy2025_009",
+      "prevented": true
+    },
+    {
+      "candidate_key": "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e",
+      "case_id": "pfe_fy2024_005",
+      "prevented": true
+    },
+    {
+      "candidate_key": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+      "case_id": "tsla_fy2025_005",
+      "prevented": true
+    },
+    {
+      "candidate_key": "candidate:v1:fd7d3044411973c1af57bf015ca3fd14efb235afbe07f01c8ff1d8d9259536db",
+      "case_id": "v_fy2025_002",
+      "prevented": false
+    }
+  ],
+  "still_damaged": 3
+}

@@ -1,0 +1,59 @@
+{
+  "denominator": 16,
+  "variants": {
+    "cglrrf_v1": {
+      "@10": {
+        "all": 9,
+        "all_rate": 0.5625,
+        "any": 13,
+        "any_rate": 0.8125,
+        "average_required_source_coverage": 0.6875,
+        "queries": 16
+      },
+      "@5": {
+        "all": 5,
+        "all_rate": 0.3125,
+        "any": 10,
+        "any_rate": 0.625,
+        "average_required_source_coverage": 0.46875,
+        "queries": 16
+      }
+    },
+    "lrrf_v1": {
+      "@10": {
+        "all": 9,
+        "all_rate": 0.5625,
+        "any": 13,
+        "any_rate": 0.8125,
+        "average_required_source_coverage": 0.6875,
+        "queries": 16
+      },
+      "@5": {
+        "all": 7,
+        "all_rate": 0.4375,
+        "any": 12,
+        "any_rate": 0.75,
+        "average_required_source_coverage": 0.59375,
+        "queries": 16
+      }
+    },
+    "qwen": {
+      "@10": {
+        "all": 9,
+        "all_rate": 0.5625,
+        "any": 13,
+        "any_rate": 0.8125,
+        "average_required_source_coverage": 0.6875,
+        "queries": 16
+      },
+      "@5": {
+        "all": 4,
+        "all_rate": 0.25,
+        "any": 9,
+        "any_rate": 0.5625,
+        "average_required_source_coverage": 0.40625,
+        "queries": 16
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "historical_rescues": 9,
+  "lost": 5,
+  "records": [
+    {
+      "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "case_id": "ko_fy2025_006",
+      "retained": true
+    },
+    {
+      "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "case_id": "ko_fy2025_006",
+      "retained": true
+    },
+    {
+      "candidate_key": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+      "case_id": "msft_fy2025_005",
+      "retained": true
+    },
+    {
+      "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "case_id": "msft_fy2025_006",
+      "retained": false
+    },
+    {
+      "candidate_key": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "case_id": "msft_fy2025_006",
+      "retained": false
+    },
+    {
+      "candidate_key": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+      "case_id": "v_fy2025_003",
+      "retained": true
+    },
+    {
+      "candidate_key": "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83",
+      "case_id": "v_fy2025_006",
+      "retained": false
+    },
+    {
+      "candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+      "case_id": "v_fy2025_007",
+      "retained": false
+    },
+    {
+      "candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+      "case_id": "v_fy2025_009",
+      "retained": false
+    }
+  ],
+  "retained": 4
+}
