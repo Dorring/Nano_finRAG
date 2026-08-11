@@ -1,0 +1,100 @@
+{
+  "listwise": {
+    "@1": {
+      "hits": 10,
+      "rate": 0.125,
+      "total": 80
+    },
+    "@10": {
+      "hits": 60,
+      "rate": 0.75,
+      "source": "original_qwen_top10_candidate_supply_invariant",
+      "total": 80
+    },
+    "@3": {
+      "hits": 29,
+      "rate": 0.3625,
+      "total": 80
+    },
+    "@5": {
+      "hits": 43,
+      "rate": 0.5375,
+      "total": 80
+    }
+  },
+  "lrrf_v1": {
+    "@1": {
+      "hits": 13,
+      "rate": 0.1625,
+      "total": 80
+    },
+    "@10": {
+      "hits": 60,
+      "rate": 0.75,
+      "total": 80
+    },
+    "@100": {
+      "hits": 68,
+      "rate": 0.85,
+      "total": 80
+    },
+    "@20": {
+      "hits": 63,
+      "rate": 0.7875,
+      "total": 80
+    },
+    "@3": {
+      "hits": 31,
+      "rate": 0.3875,
+      "total": 80
+    },
+    "@5": {
+      "hits": 46,
+      "rate": 0.575,
+      "total": 80
+    },
+    "@50": {
+      "hits": 68,
+      "rate": 0.85,
+      "total": 80
+    }
+  },
+  "qwen": {
+    "@1": {
+      "hits": 10,
+      "rate": 0.125,
+      "total": 80
+    },
+    "@10": {
+      "hits": 60,
+      "rate": 0.75,
+      "total": 80
+    },
+    "@100": {
+      "hits": 68,
+      "rate": 0.85,
+      "total": 80
+    },
+    "@20": {
+      "hits": 63,
+      "rate": 0.7875,
+      "total": 80
+    },
+    "@3": {
+      "hits": 29,
+      "rate": 0.3625,
+      "total": 80
+    },
+    "@5": {
+      "hits": 43,
+      "rate": 0.5375,
+      "total": 80
+    },
+    "@50": {
+      "hits": 68,
+      "rate": 0.85,
+      "total": 80
+    }
+  },
+  "qwen_top10_supply": 60
+}

@@ -1,0 +1,17 @@
+{
+  "damaged": 0,
+  "listwise_strict_r5": {
+    "hits": 43,
+    "rate": 0.5375,
+    "total": 80
+  },
+  "net": 0,
+  "reference": "qwen_pointwise",
+  "rescued": 0,
+  "selection_efficiency": 0.7166666666666667,
+  "strict_r5": {
+    "hits": 43,
+    "rate": 0.5375,
+    "total": 80
+  }
+}

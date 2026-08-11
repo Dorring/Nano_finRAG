@@ -1,0 +1,65 @@
+{
+  "gold_reads_after_seal": true,
+  "records": {
+    "calculation_operand_competition": {
+      "damaged": 0,
+      "eligible_top10": 7,
+      "rescued": 0,
+      "unchanged": 7
+    },
+    "multi_slot_competition": {
+      "damaged": 0,
+      "eligible_top10": 9,
+      "rescued": 0,
+      "unchanged": 9
+    },
+    "numerically_similar_wrong_fact": {
+      "damaged": 0,
+      "eligible_top10": 5,
+      "rescued": 0,
+      "unchanged": 5
+    },
+    "same_document_wrong_evidence": {
+      "damaged": 0,
+      "eligible_top10": 6,
+      "rescued": 0,
+      "unchanged": 6
+    },
+    "same_metric_wrong_row": {
+      "damaged": 0,
+      "eligible_top10": 6,
+      "rescued": 0,
+      "unchanged": 6
+    },
+    "same_metric_wrong_statement": {
+      "damaged": 0,
+      "eligible_top10": 4,
+      "rescued": 0,
+      "unchanged": 4
+    },
+    "same_metric_wrong_table": {
+      "damaged": 0,
+      "eligible_top10": 4,
+      "rescued": 0,
+      "unchanged": 4
+    },
+    "same_period_wrong_metric": {
+      "damaged": 0,
+      "eligible_top10": 1,
+      "rescued": 0,
+      "unchanged": 1
+    },
+    "strict_source_sibling_confusion": {
+      "damaged": 0,
+      "eligible_top10": 5,
+      "rescued": 0,
+      "unchanged": 5
+    },
+    "wrong_period": {
+      "damaged": 0,
+      "eligible_top10": 11,
+      "rescued": 0,
+      "unchanged": 11
+    }
+  }
+}

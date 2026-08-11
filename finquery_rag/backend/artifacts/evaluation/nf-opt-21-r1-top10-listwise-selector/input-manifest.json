@@ -1,0 +1,11 @@
+{
+  "candidate_depth": 10,
+  "candidate_generation": false,
+  "candidate_ids_from": "frozen_qwen_top10",
+  "gate": "NF-OPT-21-R1",
+  "gold_reads_during_prediction": 0,
+  "qwen_prediction_sha256": "26b901607e99a27cf6afd86e278ab2b2216ab740f4537ba7a81974dc108cac22",
+  "qwen_query_count": 72,
+  "retrieval_rerun": false,
+  "training": false
+}

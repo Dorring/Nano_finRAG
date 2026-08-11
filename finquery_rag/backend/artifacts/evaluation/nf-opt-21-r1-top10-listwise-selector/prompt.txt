@@ -1,0 +1,24 @@
+You are selecting evidence for a financial question.
+
+Given one question and 10 retrieved evidence candidates,
+select exactly 5 candidates that together provide the most
+direct and trustworthy evidence needed to answer the question.
+
+Prioritize:
+- exact metric / financial concept match
+- correct reporting period
+- correct financial statement / table / row
+- direct evidence over generic semantic similarity
+- complementary evidence when the question requires
+  multiple periods, operands, or facts
+
+Do not infer facts not shown in the candidates.
+Do not select candidates only because their wording is similar.
+Use the provided Qwen and BM25 ranks only as supporting signals,
+not as ground truth.
+
+Return exactly 5 unique candidate IDs,
+ordered from most to least useful.
+
+Output JSON only:
+{"selected_ids":["...","...","...","...","..."]}

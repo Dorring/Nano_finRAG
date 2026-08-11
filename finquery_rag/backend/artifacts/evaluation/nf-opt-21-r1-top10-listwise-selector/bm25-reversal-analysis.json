@@ -1,0 +1,157 @@
+{
+  "frozen_cohort_total": 15,
+  "listwise_recovered": 0,
+  "lrrf_recovered": 8,
+  "records": [
+    {
+      "case_id": "aapl_fy2025_002",
+      "competitor_bm25_rank": 55,
+      "competitor_candidate_id": "candidate:v1:d4767aa59643b2da3cbf8c1e22e7c10d6550b4305b3a9c2a05f8e9f3f5de91f3",
+      "competitor_qwen_rank": 1,
+      "gold_bm25_rank": 51,
+      "gold_candidate_id": "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d",
+      "gold_qwen_rank": 11,
+      "source_index": 0
+    },
+    {
+      "case_id": "jpm_fy2025_009",
+      "competitor_bm25_rank": 77,
+      "competitor_candidate_id": "candidate:v1:24c390f8402f458252d8b7794480cafac58b1c6c4c1073e1ddb485fc2c2705ce",
+      "competitor_qwen_rank": 1,
+      "gold_bm25_rank": 47,
+      "gold_candidate_id": "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
+      "gold_qwen_rank": 23,
+      "source_index": 0
+    },
+    {
+      "case_id": "ko_fy2025_001",
+      "competitor_bm25_rank": 22,
+      "competitor_candidate_id": "candidate:v1:f84aed9c61ef711cf7e1e916c6fef1e308f02dd5e031f77625276265a43bd2bb",
+      "competitor_qwen_rank": 1,
+      "gold_bm25_rank": 14,
+      "gold_candidate_id": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "gold_qwen_rank": 8,
+      "source_index": 0
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "competitor_bm25_rank": 68,
+      "competitor_candidate_id": "candidate:v1:50b6c3248a4d42580d90205af2f31cb553812aebb0ba7221c4269d705e205c57",
+      "competitor_qwen_rank": 1,
+      "gold_bm25_rank": 10,
+      "gold_candidate_id": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "gold_qwen_rank": 9,
+      "source_index": 0
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "competitor_bm25_rank": 68,
+      "competitor_candidate_id": "candidate:v1:50b6c3248a4d42580d90205af2f31cb553812aebb0ba7221c4269d705e205c57",
+      "competitor_qwen_rank": 1,
+      "gold_bm25_rank": 10,
+      "gold_candidate_id": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+      "gold_qwen_rank": 9,
+      "source_index": 1
+    },
+    {
+      "case_id": "msft_fy2025_005",
+      "competitor_bm25_rank": 41,
+      "competitor_candidate_id": "candidate:v1:35c39077687d3da3448f02e0f2ff259355cd91ee01b787f1c91ad64bf6194a4b",
+      "competitor_qwen_rank": 1,
+      "gold_bm25_rank": 8,
+      "gold_candidate_id": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+      "gold_qwen_rank": 7,
+      "source_index": 0
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "competitor_bm25_rank": 71,
+      "competitor_candidate_id": "candidate:v1:8f93176949547cf023f573bbcd6763aa1557ec7104960989bf50d3214d790e96",
+      "competitor_qwen_rank": 1,
+      "gold_bm25_rank": 22,
+      "gold_candidate_id": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "gold_qwen_rank": 10,
+      "source_index": 0
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "competitor_bm25_rank": 71,
+      "competitor_candidate_id": "candidate:v1:8f93176949547cf023f573bbcd6763aa1557ec7104960989bf50d3214d790e96",
+      "competitor_qwen_rank": 1,
+      "gold_bm25_rank": 22,
+      "gold_candidate_id": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "gold_qwen_rank": 10,
+      "source_index": 1
+    },
+    {
+      "case_id": "nvda_fy2025_007",
+      "competitor_bm25_rank": 29,
+      "competitor_candidate_id": "candidate:v1:81fa896e6e8b5037d484debbbac10f6af5ebb44b8d7d2b8c4182f235704c93da",
+      "competitor_qwen_rank": 1,
+      "gold_bm25_rank": 10,
+      "gold_candidate_id": "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf",
+      "gold_qwen_rank": 21,
+      "source_index": 1
+    },
+    {
+      "case_id": "tsla_fy2025_009",
+      "competitor_bm25_rank": 18,
+      "competitor_candidate_id": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+      "competitor_qwen_rank": 1,
+      "gold_bm25_rank": 16,
+      "gold_candidate_id": "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52",
+      "gold_qwen_rank": 30,
+      "source_index": 0
+    },
+    {
+      "case_id": "v_fy2025_003",
+      "competitor_bm25_rank": 38,
+      "competitor_candidate_id": "candidate:v1:8c03c3b732665d783f0e7a754c30a326882f2fbacfbf6a8dbaa381165b97017e",
+      "competitor_qwen_rank": 1,
+      "gold_bm25_rank": 1,
+      "gold_candidate_id": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+      "gold_qwen_rank": 9,
+      "source_index": 0
+    },
+    {
+      "case_id": "v_fy2025_005",
+      "competitor_bm25_rank": 41,
+      "competitor_candidate_id": "candidate:v1:232d50b8764e914452a5f06bfc8764382d72cf770a3199cd4a4e5fa3eeca2d0c",
+      "competitor_qwen_rank": 1,
+      "gold_bm25_rank": 30,
+      "gold_candidate_id": "candidate:v1:4c11889fb53c1b1a3194a2e6518b9d94a910cfa71ea99f8e25c4ef206e06613b",
+      "gold_qwen_rank": 30,
+      "source_index": 0
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "competitor_bm25_rank": 32,
+      "competitor_candidate_id": "candidate:v1:8c03c3b732665d783f0e7a754c30a326882f2fbacfbf6a8dbaa381165b97017e",
+      "competitor_qwen_rank": 1,
+      "gold_bm25_rank": 26,
+      "gold_candidate_id": "candidate:v1:21f924b9c1b33d1e7caa949ac3dcca366d20e99a1aacf2b9d84be8e762ad6240",
+      "gold_qwen_rank": 43,
+      "source_index": 0
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "competitor_bm25_rank": 32,
+      "competitor_candidate_id": "candidate:v1:8c03c3b732665d783f0e7a754c30a326882f2fbacfbf6a8dbaa381165b97017e",
+      "competitor_qwen_rank": 1,
+      "gold_bm25_rank": 3,
+      "gold_candidate_id": "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83",
+      "gold_qwen_rank": 10,
+      "source_index": 1
+    },
+    {
+      "case_id": "v_fy2025_009",
+      "competitor_bm25_rank": 54,
+      "competitor_candidate_id": "candidate:v1:06f2c5ddf51f8ac89ab17da3f637c84edb6c8f5f836be7564015c784237103d1",
+      "competitor_qwen_rank": 1,
+      "gold_bm25_rank": 22,
+      "gold_candidate_id": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+      "gold_qwen_rank": 10,
+      "source_index": 0
+    }
+  ]
+}

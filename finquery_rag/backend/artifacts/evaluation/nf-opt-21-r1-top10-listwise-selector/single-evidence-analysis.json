@@ -1,0 +1,26 @@
+{
+  "listwise": {
+    "query_count": 56,
+    "strict_r5": {
+      "hits": 30,
+      "rate": 0.625,
+      "total": 48
+    }
+  },
+  "lrrf_v1": {
+    "query_count": 56,
+    "strict_r5": {
+      "hits": 27,
+      "rate": 0.5625,
+      "total": 48
+    }
+  },
+  "qwen": {
+    "query_count": 56,
+    "strict_r5": {
+      "hits": 30,
+      "rate": 0.625,
+      "total": 48
+    }
+  }
+}
