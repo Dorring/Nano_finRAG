@@ -1,0 +1,284 @@
+{
+  "clear_loss": {
+    "calculation_operand_competition": 4,
+    "multi_slot_competition": 7,
+    "same_document_wrong_evidence": 2,
+    "same_metric_wrong_row": 4,
+    "same_metric_wrong_statement": 2,
+    "wrong_period": 10
+  },
+  "near_boundary": {
+    "calculation_operand_competition": 4,
+    "multi_slot_competition": 5,
+    "numerically_similar_wrong_fact": 6,
+    "same_document_wrong_evidence": 6,
+    "same_metric_wrong_row": 4,
+    "same_metric_wrong_statement": 2,
+    "same_metric_wrong_table": 4,
+    "same_period_wrong_metric": 1,
+    "strict_source_sibling_confusion": 5,
+    "wrong_period": 7
+  },
+  "overall": {
+    "calculation_operand_competition": 8,
+    "multi_slot_competition": 12,
+    "numerically_similar_wrong_fact": 6,
+    "same_document_wrong_evidence": 8,
+    "same_metric_wrong_row": 8,
+    "same_metric_wrong_statement": 4,
+    "same_metric_wrong_table": 4,
+    "same_period_wrong_metric": 1,
+    "strict_source_sibling_confusion": 5,
+    "wrong_period": 17
+  },
+  "records": [
+    {
+      "case_id": "aapl_fy2025_001",
+      "cohort": "near_boundary",
+      "source_index": 0,
+      "tags": [
+        "numerically_similar_wrong_fact",
+        "same_document_wrong_evidence",
+        "strict_source_sibling_confusion"
+      ]
+    },
+    {
+      "case_id": "aapl_fy2025_002",
+      "cohort": "near_boundary",
+      "source_index": 0,
+      "tags": [
+        "numerically_similar_wrong_fact",
+        "same_metric_wrong_row",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "aapl_fy2025_007",
+      "cohort": "clear_loss",
+      "source_index": 1,
+      "tags": [
+        "multi_slot_competition",
+        "same_document_wrong_evidence",
+        "same_metric_wrong_row"
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_004",
+      "cohort": "clear_loss",
+      "source_index": 0,
+      "tags": [
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "cohort": "near_boundary",
+      "source_index": 0,
+      "tags": [
+        "calculation_operand_competition",
+        "multi_slot_competition",
+        "numerically_similar_wrong_fact",
+        "same_metric_wrong_row",
+        "same_metric_wrong_statement",
+        "same_metric_wrong_table"
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "cohort": "near_boundary",
+      "source_index": 1,
+      "tags": [
+        "calculation_operand_competition",
+        "multi_slot_competition",
+        "numerically_similar_wrong_fact",
+        "same_metric_wrong_row",
+        "same_metric_wrong_statement",
+        "same_metric_wrong_table"
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_009",
+      "cohort": "clear_loss",
+      "source_index": 0,
+      "tags": [
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_001",
+      "cohort": "near_boundary",
+      "source_index": 0,
+      "tags": [
+        "numerically_similar_wrong_fact",
+        "same_document_wrong_evidence",
+        "same_metric_wrong_row",
+        "strict_source_sibling_confusion"
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "cohort": "near_boundary",
+      "source_index": 0,
+      "tags": [
+        "calculation_operand_competition",
+        "multi_slot_competition",
+        "same_document_wrong_evidence",
+        "strict_source_sibling_confusion",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "cohort": "near_boundary",
+      "source_index": 1,
+      "tags": [
+        "calculation_operand_competition",
+        "multi_slot_competition",
+        "same_document_wrong_evidence",
+        "strict_source_sibling_confusion",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_002",
+      "cohort": "near_boundary",
+      "source_index": 0,
+      "tags": [
+        "same_metric_wrong_table",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_005",
+      "cohort": "near_boundary",
+      "source_index": 0,
+      "tags": [
+        "same_metric_wrong_table",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "cohort": "clear_loss",
+      "source_index": 0,
+      "tags": [
+        "calculation_operand_competition",
+        "multi_slot_competition",
+        "same_metric_wrong_row",
+        "same_metric_wrong_statement",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "cohort": "clear_loss",
+      "source_index": 1,
+      "tags": [
+        "calculation_operand_competition",
+        "multi_slot_competition",
+        "same_metric_wrong_row",
+        "same_metric_wrong_statement",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "cohort": "clear_loss",
+      "source_index": 1,
+      "tags": [
+        "multi_slot_competition",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_007",
+      "cohort": "clear_loss",
+      "source_index": 1,
+      "tags": [
+        "multi_slot_competition",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_004",
+      "cohort": "near_boundary",
+      "source_index": 0,
+      "tags": [
+        "same_document_wrong_evidence"
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_002",
+      "cohort": "near_boundary",
+      "source_index": 0,
+      "tags": [
+        "numerically_similar_wrong_fact",
+        "same_document_wrong_evidence",
+        "strict_source_sibling_confusion"
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_009",
+      "cohort": "clear_loss",
+      "source_index": 0,
+      "tags": [
+        "same_document_wrong_evidence"
+      ]
+    },
+    {
+      "case_id": "v_fy2025_003",
+      "cohort": "near_boundary",
+      "source_index": 0,
+      "tags": [
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "v_fy2025_005",
+      "cohort": "clear_loss",
+      "source_index": 0,
+      "tags": [
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "cohort": "clear_loss",
+      "source_index": 0,
+      "tags": [
+        "calculation_operand_competition",
+        "multi_slot_competition",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "cohort": "clear_loss",
+      "source_index": 1,
+      "tags": [
+        "calculation_operand_competition",
+        "multi_slot_competition",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "v_fy2025_007",
+      "cohort": "near_boundary",
+      "source_index": 0,
+      "tags": [
+        "multi_slot_competition",
+        "same_period_wrong_metric",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "v_fy2025_009",
+      "cohort": "clear_loss",
+      "source_index": 0,
+      "tags": [
+        "same_metric_wrong_row",
+        "wrong_period"
+      ]
+    }
+  ]
+}

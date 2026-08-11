@@ -1,0 +1,361 @@
+{
+  "categories": {
+    "calculation": {
+      "c1_count": 9,
+      "clear_loss": 5,
+      "near_boundary": 4,
+      "near_boundary_rate": 0.4444444444444444,
+      "recoverability_counts": {
+        "P1": 4,
+        "P2": 5
+      },
+      "taxonomy_counts": {
+        "calculation_operand_competition": 8,
+        "multi_slot_competition": 9,
+        "numerically_similar_wrong_fact": 2,
+        "same_document_wrong_evidence": 2,
+        "same_metric_wrong_row": 4,
+        "same_metric_wrong_statement": 4,
+        "same_metric_wrong_table": 2,
+        "strict_source_sibling_confusion": 2,
+        "wrong_period": 7
+      }
+    },
+    "multi_evidence": {
+      "c1_count": 3,
+      "clear_loss": 2,
+      "near_boundary": 1,
+      "near_boundary_rate": 0.3333333333333333,
+      "recoverability_counts": {
+        "P1": 1,
+        "P2": 2
+      },
+      "taxonomy_counts": {
+        "multi_slot_competition": 3,
+        "same_document_wrong_evidence": 1,
+        "same_metric_wrong_row": 1,
+        "same_period_wrong_metric": 1,
+        "wrong_period": 2
+      }
+    },
+    "single_evidence": {
+      "c1_count": 13,
+      "clear_loss": 5,
+      "near_boundary": 8,
+      "near_boundary_rate": 0.6153846153846154,
+      "recoverability_counts": {
+        "P1": 5,
+        "P2": 5,
+        "P4": 3
+      },
+      "taxonomy_counts": {
+        "numerically_similar_wrong_fact": 4,
+        "same_document_wrong_evidence": 5,
+        "same_metric_wrong_row": 3,
+        "same_metric_wrong_table": 2,
+        "strict_source_sibling_confusion": 3,
+        "wrong_period": 8
+      }
+    }
+  },
+  "records": [
+    {
+      "case_id": "aapl_fy2025_001",
+      "category": "single_evidence",
+      "cohort": "near_boundary",
+      "recoverability_class": "P4",
+      "source_index": 0,
+      "tags": [
+        "numerically_similar_wrong_fact",
+        "same_document_wrong_evidence",
+        "strict_source_sibling_confusion"
+      ]
+    },
+    {
+      "case_id": "aapl_fy2025_002",
+      "category": "single_evidence",
+      "cohort": "near_boundary",
+      "recoverability_class": "P1",
+      "source_index": 0,
+      "tags": [
+        "numerically_similar_wrong_fact",
+        "same_metric_wrong_row",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "aapl_fy2025_007",
+      "category": "multi_evidence",
+      "cohort": "clear_loss",
+      "recoverability_class": "P2",
+      "source_index": 1,
+      "tags": [
+        "multi_slot_competition",
+        "same_document_wrong_evidence",
+        "same_metric_wrong_row"
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_004",
+      "category": "single_evidence",
+      "cohort": "clear_loss",
+      "recoverability_class": "P2",
+      "source_index": 0,
+      "tags": [
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "category": "calculation",
+      "cohort": "near_boundary",
+      "recoverability_class": "P1",
+      "source_index": 0,
+      "tags": [
+        "calculation_operand_competition",
+        "multi_slot_competition",
+        "numerically_similar_wrong_fact",
+        "same_metric_wrong_row",
+        "same_metric_wrong_statement",
+        "same_metric_wrong_table"
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "category": "calculation",
+      "cohort": "near_boundary",
+      "recoverability_class": "P1",
+      "source_index": 1,
+      "tags": [
+        "calculation_operand_competition",
+        "multi_slot_competition",
+        "numerically_similar_wrong_fact",
+        "same_metric_wrong_row",
+        "same_metric_wrong_statement",
+        "same_metric_wrong_table"
+      ]
+    },
+    {
+      "case_id": "jpm_fy2025_009",
+      "category": "single_evidence",
+      "cohort": "clear_loss",
+      "recoverability_class": "P2",
+      "source_index": 0,
+      "tags": [
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_001",
+      "category": "single_evidence",
+      "cohort": "near_boundary",
+      "recoverability_class": "P1",
+      "source_index": 0,
+      "tags": [
+        "numerically_similar_wrong_fact",
+        "same_document_wrong_evidence",
+        "same_metric_wrong_row",
+        "strict_source_sibling_confusion"
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "category": "calculation",
+      "cohort": "near_boundary",
+      "recoverability_class": "P1",
+      "source_index": 0,
+      "tags": [
+        "calculation_operand_competition",
+        "multi_slot_competition",
+        "same_document_wrong_evidence",
+        "strict_source_sibling_confusion",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "category": "calculation",
+      "cohort": "near_boundary",
+      "recoverability_class": "P1",
+      "source_index": 1,
+      "tags": [
+        "calculation_operand_competition",
+        "multi_slot_competition",
+        "same_document_wrong_evidence",
+        "strict_source_sibling_confusion",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_002",
+      "category": "single_evidence",
+      "cohort": "near_boundary",
+      "recoverability_class": "P1",
+      "source_index": 0,
+      "tags": [
+        "same_metric_wrong_table",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_005",
+      "category": "single_evidence",
+      "cohort": "near_boundary",
+      "recoverability_class": "P1",
+      "source_index": 0,
+      "tags": [
+        "same_metric_wrong_table",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "category": "calculation",
+      "cohort": "clear_loss",
+      "recoverability_class": "P2",
+      "source_index": 0,
+      "tags": [
+        "calculation_operand_competition",
+        "multi_slot_competition",
+        "same_metric_wrong_row",
+        "same_metric_wrong_statement",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "category": "calculation",
+      "cohort": "clear_loss",
+      "recoverability_class": "P2",
+      "source_index": 1,
+      "tags": [
+        "calculation_operand_competition",
+        "multi_slot_competition",
+        "same_metric_wrong_row",
+        "same_metric_wrong_statement",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "category": "calculation",
+      "cohort": "clear_loss",
+      "recoverability_class": "P2",
+      "source_index": 1,
+      "tags": [
+        "multi_slot_competition",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "nvda_fy2025_007",
+      "category": "multi_evidence",
+      "cohort": "clear_loss",
+      "recoverability_class": "P2",
+      "source_index": 1,
+      "tags": [
+        "multi_slot_competition",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "pfe_fy2024_004",
+      "category": "single_evidence",
+      "cohort": "near_boundary",
+      "recoverability_class": "P4",
+      "source_index": 0,
+      "tags": [
+        "same_document_wrong_evidence"
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_002",
+      "category": "single_evidence",
+      "cohort": "near_boundary",
+      "recoverability_class": "P4",
+      "source_index": 0,
+      "tags": [
+        "numerically_similar_wrong_fact",
+        "same_document_wrong_evidence",
+        "strict_source_sibling_confusion"
+      ]
+    },
+    {
+      "case_id": "tsla_fy2025_009",
+      "category": "single_evidence",
+      "cohort": "clear_loss",
+      "recoverability_class": "P2",
+      "source_index": 0,
+      "tags": [
+        "same_document_wrong_evidence"
+      ]
+    },
+    {
+      "case_id": "v_fy2025_003",
+      "category": "single_evidence",
+      "cohort": "near_boundary",
+      "recoverability_class": "P1",
+      "source_index": 0,
+      "tags": [
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "v_fy2025_005",
+      "category": "single_evidence",
+      "cohort": "clear_loss",
+      "recoverability_class": "P2",
+      "source_index": 0,
+      "tags": [
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "category": "calculation",
+      "cohort": "clear_loss",
+      "recoverability_class": "P2",
+      "source_index": 0,
+      "tags": [
+        "calculation_operand_competition",
+        "multi_slot_competition",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "category": "calculation",
+      "cohort": "clear_loss",
+      "recoverability_class": "P2",
+      "source_index": 1,
+      "tags": [
+        "calculation_operand_competition",
+        "multi_slot_competition",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "v_fy2025_007",
+      "category": "multi_evidence",
+      "cohort": "near_boundary",
+      "recoverability_class": "P1",
+      "source_index": 0,
+      "tags": [
+        "multi_slot_competition",
+        "same_period_wrong_metric",
+        "wrong_period"
+      ]
+    },
+    {
+      "case_id": "v_fy2025_009",
+      "category": "single_evidence",
+      "cohort": "clear_loss",
+      "recoverability_class": "P2",
+      "source_index": 0,
+      "tags": [
+        "same_metric_wrong_row",
+        "wrong_period"
+      ]
+    }
+  ]
+}

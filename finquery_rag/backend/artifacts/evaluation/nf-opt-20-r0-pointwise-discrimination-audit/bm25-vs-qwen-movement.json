@@ -1,0 +1,10 @@
+{
+  "bm25_correct_qwen_wrong_rate": 0.6,
+  "denominator": 25,
+  "overall": {
+    "bm25_correct_qwen_correct": 0,
+    "bm25_correct_qwen_wrong": 15,
+    "bm25_wrong_qwen_correct": 0,
+    "bm25_wrong_qwen_wrong": 10
+  }
+}

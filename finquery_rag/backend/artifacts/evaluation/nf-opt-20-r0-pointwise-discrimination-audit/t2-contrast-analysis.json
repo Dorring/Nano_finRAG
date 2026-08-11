@@ -1,0 +1,61 @@
+{
+  "period_cohort": {
+    "no_period_requirement": {
+      "bm25_r_at_5_pct": 74.603175,
+      "damaged_at_5": 0,
+      "gain_pp": 14.285714000000013,
+      "query_count": 63,
+      "qwen_r_at_5_pct": 88.888889,
+      "rescued_at_5": 9
+    },
+    "period_required": {
+      "bm25_r_at_5_pct": 73.698384,
+      "damaged_at_5": 25,
+      "gain_pp": 14.856374000000002,
+      "query_count": 2228,
+      "qwen_r_at_5_pct": 88.554758,
+      "rescued_at_5": 356
+    }
+  },
+  "query_types": {
+    "difference": {
+      "bm25_r_at_5_pct": 79.844961,
+      "gain_pp": 12.403101000000007,
+      "query_count": 129,
+      "qwen_r_at_5_pct": 92.248062
+    },
+    "percentage": {
+      "bm25_r_at_5_pct": 82.122905,
+      "gain_pp": 13.128491999999994,
+      "query_count": 358,
+      "qwen_r_at_5_pct": 95.251397
+    },
+    "percentage_change": {
+      "bm25_r_at_5_pct": 75.339367,
+      "gain_pp": 14.932126000000011,
+      "query_count": 442,
+      "qwen_r_at_5_pct": 90.271493
+    },
+    "ratio": {
+      "bm25_r_at_5_pct": 80.0,
+      "gain_pp": 10.769231000000005,
+      "query_count": 325,
+      "qwen_r_at_5_pct": 90.769231
+    }
+  },
+  "source": "sealed_t2_05_aggregate_artifacts",
+  "subsets": {
+    "FinQA": {
+      "bm25_r_at_5_pct": 87.00959,
+      "gain_pp": 10.026155000000003,
+      "query_count": 1147,
+      "qwen_r_at_5_pct": 97.035745
+    },
+    "TAT-DQA": {
+      "bm25_r_at_5_pct": 60.402098,
+      "gain_pp": 19.667831999999997,
+      "query_count": 1144,
+      "qwen_r_at_5_pct": 80.06993
+    }
+  }
+}

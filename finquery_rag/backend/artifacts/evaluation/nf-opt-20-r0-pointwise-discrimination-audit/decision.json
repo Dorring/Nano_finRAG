@@ -1,0 +1,91 @@
+{
+  "base_commit": "4106488",
+  "bm25_correct_qwen_wrong": 15,
+  "bm25_correct_qwen_wrong_rate": 0.6,
+  "c0": 43,
+  "c1": 25,
+  "c1_cases": 25,
+  "c2": 12,
+  "candidate_identity_mismatch": 0,
+  "clear_loss": 12,
+  "decision_rule": {
+    "near_boundary_definition": "sealed NF-OPT-19 median score-margin cohort",
+    "p1_min": 8,
+    "p2_majority_min": 13,
+    "p3_significant_min": 8
+  },
+  "dominant_failure_tags": [
+    {
+      "count": 17,
+      "rate": 0.68,
+      "tag": "wrong_period"
+    },
+    {
+      "count": 12,
+      "rate": 0.48,
+      "tag": "multi_slot_competition"
+    },
+    {
+      "count": 8,
+      "rate": 0.32,
+      "tag": "same_document_wrong_evidence"
+    },
+    {
+      "count": 8,
+      "rate": 0.32,
+      "tag": "same_metric_wrong_row"
+    },
+    {
+      "count": 8,
+      "rate": 0.32,
+      "tag": "calculation_operand_competition"
+    },
+    {
+      "count": 6,
+      "rate": 0.24,
+      "tag": "numerically_similar_wrong_fact"
+    },
+    {
+      "count": 5,
+      "rate": 0.2,
+      "tag": "strict_source_sibling_confusion"
+    },
+    {
+      "count": 4,
+      "rate": 0.16,
+      "tag": "same_metric_wrong_statement"
+    },
+    {
+      "count": 4,
+      "rate": 0.16,
+      "tag": "same_metric_wrong_table"
+    },
+    {
+      "count": 1,
+      "rate": 0.04,
+      "tag": "same_period_wrong_metric"
+    }
+  ],
+  "gate": "NF-OPT-20-R0",
+  "model_execution": false,
+  "model_semantic_error_dominant": false,
+  "near_boundary": 13,
+  "next_gate": "nf_opt_20_r1_frozen_secondary_discriminator_shadow_test",
+  "p1_potentially_calibratable": 10,
+  "p2_model_semantic_error": 12,
+  "p3_strict_source_indistinguishable": 0,
+  "p4_other": 3,
+  "pointwise_calibration_route_supported": true,
+  "production_switch_allowed": false,
+  "qwen_rank_mismatch": 0,
+  "qwen_ranks_unchanged": true,
+  "qwen_scores_unchanged": true,
+  "qwen_sha256": "26b901607e99a27cf6afd86e278ab2b2216ab740f4537ba7a81974dc108cac22",
+  "qwen_sha_expected": "26b901607e99a27cf6afd86e278ab2b2216ab740f4537ba7a81974dc108cac22",
+  "ranking_mutation": false,
+  "retrieval_rerun": false,
+  "strict_source_granularity_gap_supported": false,
+  "strict_sources": 80,
+  "top100_sha256": "ced014c357a3c8862a5ae3723a4c618556156542fd63aa2a8fd4bf766b60f01a",
+  "top100_sha_expected": "ced014c357a3c8862a5ae3723a4c618556156542fd63aa2a8fd4bf766b60f01a"
+}
