@@ -259,6 +259,30 @@ def movement(bindings: list[dict[str, Any]], before: dict[str, list[dict[str, An
     return {"rescued": rescued, "damaged": damaged, "net": rescued - damaged, "unchanged_hit": unchanged_hit, "unchanged_miss": unchanged_miss, "rows": rows}
 
 
+def semantic_movement(
+    bindings: list[dict[str, Any]],
+    before: dict[str, list[dict[str, Any]]],
+    after: dict[str, list[dict[str, Any]]],
+    facts: dict[str, dict[str, set[str]]],
+    targets: dict[str, dict[str, Any]],
+) -> dict[str, Any]:
+    rescued = damaged = unchanged_hit = unchanged_miss = 0
+    for binding in bindings:
+        case_id = binding["case_id"]
+        target_ids = semantic_ids_for(binding, targets)
+        before_hit = binding["candidate_key"] in set(top_keys(before[case_id], 5)) or bool(target_ids & semantic_union(case_id, before[case_id], 5, facts))
+        after_hit = binding["candidate_key"] in set(top_keys(after[case_id], 5)) or bool(target_ids & semantic_union(case_id, after[case_id], 5, facts))
+        if not before_hit and after_hit:
+            rescued += 1
+        elif before_hit and not after_hit:
+            damaged += 1
+        elif before_hit:
+            unchanged_hit += 1
+        else:
+            unchanged_miss += 1
+    return {"rescued": rescued, "damaged": damaged, "net": rescued - damaged, "unchanged_hit": unchanged_hit, "unchanged_miss": unchanged_miss}
+
+
 def source_category(bindings_by_case: dict[str, list[dict[str, Any]]], query_plans: dict[str, dict[str, Any]], calc_ids: set[str], case_id: str) -> str:
     if case_id in calc_ids:
         return "calculation"
@@ -389,6 +413,12 @@ def main() -> int:
     write_json(out_dir / "semantic-metrics.json", semantic_output)
 
     movements = {variant: movement(strict_rows, qwen_ranked, ranked) for variant, ranked in variant_ranked.items()}
+    semantic_movements = {variant: semantic_movement(strict_rows, qwen_ranked, ranked, facts, targets) for variant, ranked in variant_ranked.items()}
+    for variant, ranked in variant_ranked.items():
+        changed = sum(top_keys(qwen_ranked[case_id], 5) != top_keys(ranked[case_id], 5) for case_id in case_ids)
+        movements[variant]["queries_top5_changed"] = changed
+        movements[variant]["queries_top5_unchanged"] = len(case_ids) - changed
+        movements[variant]["semantic_movement"] = semantic_movements[variant]
     write_json(out_dir / "rank-movement.json", {"baseline": "qwen", "variants": movements, "queries": len(case_ids), "source_denominator": len(strict_rows)})
 
     # Post-seal cohort accounting.
@@ -459,8 +489,12 @@ def main() -> int:
             key = (binding["case_id"], int(binding.get("source_index", 0)))
             old = rank_map(qwen_ranked[binding["case_id"]]).get(binding["candidate_key"], 101)
             new = rank_map(ranked[binding["case_id"]]).get(binding["candidate_key"], 101)
-            records.append({"case_id": key[0], "source_index": key[1], "recoverability_class": recoverability.get(key), "cohort": taxonomy.get(key), "before_rank": old, "after_rank": new, "outcome": "rescued" if old > 5 and new <= 5 else "damaged" if old <= 5 and new > 5 else "unchanged"})
-        cohort_output[variant] = {name: {"total": sum(row["recoverability_class"] == name for row in records), "rescued": sum(row["recoverability_class"] == name and row["outcome"] == "rescued" for row in records), "damaged": sum(row["recoverability_class"] == name and row["outcome"] == "damaged" for row in records)} for name in ("P1", "P2", "P4", "C0", "C1", "C2")}
+            before_cohort = "C0" if old <= 5 else "C1" if old <= 100 else "C2"
+            records.append({"case_id": key[0], "source_index": key[1], "recoverability_class": recoverability.get(key), "cohort": taxonomy.get(key), "strict_cohort": before_cohort, "before_rank": old, "after_rank": new, "outcome": "rescued" if old > 5 and new <= 5 else "damaged" if old <= 5 and new > 5 else "unchanged"})
+        class_summary = {name: {"total": sum(row["recoverability_class"] == name for row in records), "rescued": sum(row["recoverability_class"] == name and row["outcome"] == "rescued" for row in records), "damaged": sum(row["recoverability_class"] == name and row["outcome"] == "damaged" for row in records)} for name in ("P1", "P2", "P4")}
+        source_summary = {name: {"total": sum(row["strict_cohort"] == name for row in records), "rescued": sum(row["strict_cohort"] == name and row["outcome"] == "rescued" for row in records), "damaged": sum(row["strict_cohort"] == name and row["outcome"] == "damaged" for row in records), "unchanged": sum(row["strict_cohort"] == name and row["outcome"] == "unchanged" for row in records)} for name in ("C0", "C1", "C2")}
+        cohort_summary = {name: {"total": sum(row["cohort"] == name for row in records), "rescued": sum(row["cohort"] == name and row["outcome"] == "rescued" for row in records), "damaged": sum(row["cohort"] == name and row["outcome"] == "damaged" for row in records)} for name in ("near_boundary", "clear_loss")}
+        cohort_output[variant] = {"recoverability": class_summary, "strict_cohorts": source_summary, "qwen_cohorts": cohort_summary}
     write_json(out_dir / "cohort-analysis.json", cohort_output)
 
     safe_baseline_multi = 4

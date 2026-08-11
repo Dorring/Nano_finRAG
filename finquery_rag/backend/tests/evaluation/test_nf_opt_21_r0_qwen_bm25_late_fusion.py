@@ -77,7 +77,7 @@ def test_candidate_set_invariants_and_c2_not_rescued():
     assert decision["top100_candidate_set_invariant"] is True
     cohort = load_json("cohort-analysis.json")
     for variant in ("lrrf_v1", "plrf_v1"):
-        assert cohort[variant]["C2"]["rescued"] == 0
+        assert cohort[variant]["strict_cohorts"]["C2"]["rescued"] == 0
 
 
 def test_frozen_rrf_and_selection_contract():

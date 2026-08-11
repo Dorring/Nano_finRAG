@@ -3,67 +3,105 @@
   "C1": 25,
   "C2": 12,
   "lrrf_v1": {
-    "C0": {
-      "damaged": 0,
-      "rescued": 0,
-      "total": 0
+    "qwen_cohorts": {
+      "clear_loss": {
+        "damaged": 0,
+        "rescued": 4,
+        "total": 12
+      },
+      "near_boundary": {
+        "damaged": 0,
+        "rescued": 5,
+        "total": 13
+      }
     },
-    "C1": {
-      "damaged": 0,
-      "rescued": 0,
-      "total": 0
+    "recoverability": {
+      "P1": {
+        "damaged": 0,
+        "rescued": 5,
+        "total": 10
+      },
+      "P2": {
+        "damaged": 0,
+        "rescued": 4,
+        "total": 12
+      },
+      "P4": {
+        "damaged": 0,
+        "rescued": 0,
+        "total": 3
+      }
     },
-    "C2": {
-      "damaged": 0,
-      "rescued": 0,
-      "total": 0
-    },
-    "P1": {
-      "damaged": 0,
-      "rescued": 5,
-      "total": 10
-    },
-    "P2": {
-      "damaged": 0,
-      "rescued": 4,
-      "total": 12
-    },
-    "P4": {
-      "damaged": 0,
-      "rescued": 0,
-      "total": 3
+    "strict_cohorts": {
+      "C0": {
+        "damaged": 6,
+        "rescued": 0,
+        "total": 43,
+        "unchanged": 37
+      },
+      "C1": {
+        "damaged": 0,
+        "rescued": 9,
+        "total": 25,
+        "unchanged": 16
+      },
+      "C2": {
+        "damaged": 0,
+        "rescued": 0,
+        "total": 12,
+        "unchanged": 12
+      }
     }
   },
   "plrf_v1": {
-    "C0": {
-      "damaged": 0,
-      "rescued": 0,
-      "total": 0
+    "qwen_cohorts": {
+      "clear_loss": {
+        "damaged": 0,
+        "rescued": 0,
+        "total": 12
+      },
+      "near_boundary": {
+        "damaged": 0,
+        "rescued": 1,
+        "total": 13
+      }
     },
-    "C1": {
-      "damaged": 0,
-      "rescued": 0,
-      "total": 0
+    "recoverability": {
+      "P1": {
+        "damaged": 0,
+        "rescued": 1,
+        "total": 10
+      },
+      "P2": {
+        "damaged": 0,
+        "rescued": 0,
+        "total": 12
+      },
+      "P4": {
+        "damaged": 0,
+        "rescued": 0,
+        "total": 3
+      }
     },
-    "C2": {
-      "damaged": 0,
-      "rescued": 0,
-      "total": 0
-    },
-    "P1": {
-      "damaged": 0,
-      "rescued": 1,
-      "total": 10
-    },
-    "P2": {
-      "damaged": 0,
-      "rescued": 0,
-      "total": 12
-    },
-    "P4": {
-      "damaged": 0,
-      "rescued": 0,
-      "total": 3
+    "strict_cohorts": {
+      "C0": {
+        "damaged": 6,
+        "rescued": 0,
+        "total": 43,
+        "unchanged": 37
+      },
+      "C1": {
+        "damaged": 0,
+        "rescued": 1,
+        "total": 25,
+        "unchanged": 24
+      },
+      "C2": {
+        "damaged": 0,
+        "rescued": 0,
+        "total": 12,
+        "unchanged": 12
+      }
     }
   }
 }

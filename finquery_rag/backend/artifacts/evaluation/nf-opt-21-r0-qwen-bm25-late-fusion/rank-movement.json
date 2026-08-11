@@ -6,6 +6,8 @@
     "lrrf_v1": {
       "damaged": 6,
       "net": 3,
+      "queries_top5_changed": 72,
+      "queries_top5_unchanged": 0,
       "rescued": 9,
       "rows": [
         {
@@ -649,12 +651,21 @@
           "source_index": 0
         }
       ],
+      "semantic_movement": {
+        "damaged": 5,
+        "net": 2,
+        "rescued": 7,
+        "unchanged_hit": 44,
+        "unchanged_miss": 24
+      },
       "unchanged_hit": 37,
       "unchanged_miss": 28
     },
     "plrf_v1": {
       "damaged": 6,
       "net": -5,
+      "queries_top5_changed": 46,
+      "queries_top5_unchanged": 26,
       "rescued": 1,
       "rows": [
         {
@@ -1298,6 +1309,13 @@
           "source_index": 0
         }
       ],
+      "semantic_movement": {
+        "damaged": 4,
+        "net": -3,
+        "rescued": 1,
+        "unchanged_hit": 45,
+        "unchanged_miss": 30
+      },
       "unchanged_hit": 37,
       "unchanged_miss": 36
     }
