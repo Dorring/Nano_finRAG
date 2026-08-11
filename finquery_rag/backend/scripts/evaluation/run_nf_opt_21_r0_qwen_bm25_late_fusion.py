@@ -180,6 +180,7 @@ def calc_coverage(
 ) -> dict[str, Any]:
     represented_total = 0
     required_total = 0
+    any_count = 0
     all_count = 0
     records: list[dict[str, Any]] = []
     for row in calc_rows:
@@ -188,9 +189,10 @@ def calc_coverage(
         represented = sum(value in union for value in required)
         represented_total += represented
         required_total += len(required)
+        any_count += int(represented > 0)
         all_count += int(bool(required) and represented == len(required))
         records.append({"case_id": row["case_id"], "required_slots": len(required), "represented_slots": represented, "all_slots": bool(required) and represented == len(required)})
-    return {"queries": len(calc_rows), "all_slots": all_count, "all_slots_rate": rate(all_count, len(calc_rows)), "represented_slots": represented_total, "required_slots": required_total, "average_slot_coverage": rate(represented_total, required_total), "records": records}
+    return {"queries": len(calc_rows), "any_slots": any_count, "any_slots_rate": rate(any_count, len(calc_rows)), "all_slots": all_count, "all_slots_rate": rate(all_count, len(calc_rows)), "represented_slots": represented_total, "required_slots": required_total, "average_slot_coverage": rate(represented_total, required_total), "records": records}
 
 
 def make_late_score(item: dict[str, Any]) -> tuple[float, int, int, str]:
