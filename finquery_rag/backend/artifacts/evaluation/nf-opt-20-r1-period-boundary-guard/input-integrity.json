@@ -1,0 +1,12 @@
+{
+  "bounded_qwen_identity_mismatch": 0,
+  "bounded_top100_sha256": "ced014c357a3c8862a5ae3723a4c618556156542fd63aa2a8fd4bf766b60f01a",
+  "bounded_top100_sha_expected": "ced014c357a3c8862a5ae3723a4c618556156542fd63aa2a8fd4bf766b60f01a",
+  "candidate_identity_mismatch": 0,
+  "qwen_prediction_sha256": "26b901607e99a27cf6afd86e278ab2b2216ab740f4537ba7a81974dc108cac22",
+  "qwen_prediction_sha_expected": "26b901607e99a27cf6afd86e278ab2b2216ab740f4537ba7a81974dc108cac22",
+  "qwen_scores_unchanged": true,
+  "ranking_mutation": false,
+  "top100_candidate_set_invariant": true,
+  "top10_candidate_set_invariant": true
+}

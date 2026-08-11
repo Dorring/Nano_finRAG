@@ -1,0 +1,61 @@
+{
+  "calculation_is_subset_of_multi_evidence": true,
+  "case_counts": {
+    "calculation": 11,
+    "multi_evidence": 16,
+    "single_evidence": 56
+  },
+  "categories": {
+    "calculation": {
+      "all_at_5_after": 4,
+      "all_at_5_before": 4,
+      "any_at_5_after": 5,
+      "any_at_5_before": 5,
+      "query_count": 11,
+      "strict_after": {
+        "hits": 9,
+        "rate": 0.4090909090909091,
+        "total": 22
+      },
+      "strict_before": {
+        "hits": 9,
+        "rate": 0.4090909090909091,
+        "total": 22
+      }
+    },
+    "multi_evidence": {
+      "all_at_5_after": 4,
+      "all_at_5_before": 4,
+      "any_at_5_after": 9,
+      "any_at_5_before": 9,
+      "query_count": 16,
+      "strict_after": {
+        "hits": 13,
+        "rate": 0.40625,
+        "total": 32
+      },
+      "strict_before": {
+        "hits": 13,
+        "rate": 0.40625,
+        "total": 32
+      }
+    },
+    "single_evidence": {
+      "all_at_5_after": 30,
+      "all_at_5_before": 30,
+      "any_at_5_after": 30,
+      "any_at_5_before": 30,
+      "query_count": 56,
+      "strict_after": {
+        "hits": 30,
+        "rate": 0.625,
+        "total": 48
+      },
+      "strict_before": {
+        "hits": 30,
+        "rate": 0.625,
+        "total": 48
+      }
+    }
+  }
+}

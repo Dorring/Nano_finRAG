@@ -1,0 +1,28 @@
+{
+  "candidate_source": "frozen_qwen_top100",
+  "explicit_conflict": "candidate_period_metadata_present_without_required_period_overlap",
+  "feature_seal": "frozen_financial_semantic_graph_and_candidate_metadata",
+  "full_match": "all_required_periods_present",
+  "gold_reads_during_prediction": 0,
+  "max_promotions_per_query": 1,
+  "method": "Qwen Top5 Boundary Period Guard V1",
+  "near_boundary_rule": "near_boundary iff C1 margin <= median(C1 margins)",
+  "near_boundary_threshold": 0.035075027495622635,
+  "neutral": "no_resolvable_candidate_period_metadata",
+  "partial_match": "some_but_not_all_required_periods_present",
+  "query_period_status": [
+    "explicit_single_period",
+    "explicit_multi_period",
+    "no_explicit_period",
+    "unresolved"
+  ],
+  "rank1_4_never_displaced": true,
+  "ranking_change": "swap_original_rank5_with_best_rank6_10_eligible_challenger",
+  "scope": "original_qwen_ranks_1_10",
+  "short_name": "BPG-V1",
+  "tie_break": [
+    "reranker_score_desc",
+    "original_bm25_rank_asc",
+    "candidate_key_lexical_asc"
+  ]
+}

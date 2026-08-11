@@ -1,0 +1,179 @@
+{
+  "damaged": 0,
+  "eligible": 0,
+  "records": [
+    {
+      "after_hit": false,
+      "before_hit": false,
+      "case_id": "aapl_fy2025_002",
+      "class": "P1",
+      "mutated_query": false,
+      "outcome": "unchanged_miss",
+      "source_index": 0,
+      "wrong_period": true
+    },
+    {
+      "after_hit": false,
+      "before_hit": false,
+      "case_id": "jpm_fy2025_004",
+      "class": "P2",
+      "mutated_query": false,
+      "outcome": "unchanged_miss",
+      "source_index": 0,
+      "wrong_period": true
+    },
+    {
+      "after_hit": false,
+      "before_hit": false,
+      "case_id": "jpm_fy2025_009",
+      "class": "P2",
+      "mutated_query": false,
+      "outcome": "unchanged_miss",
+      "source_index": 0,
+      "wrong_period": true
+    },
+    {
+      "after_hit": false,
+      "before_hit": false,
+      "case_id": "ko_fy2025_006",
+      "class": "P1",
+      "mutated_query": false,
+      "outcome": "unchanged_miss",
+      "source_index": 0,
+      "wrong_period": true
+    },
+    {
+      "after_hit": false,
+      "before_hit": false,
+      "case_id": "ko_fy2025_006",
+      "class": "P1",
+      "mutated_query": false,
+      "outcome": "unchanged_miss",
+      "source_index": 1,
+      "wrong_period": true
+    },
+    {
+      "after_hit": false,
+      "before_hit": false,
+      "case_id": "msft_fy2025_002",
+      "class": "P1",
+      "mutated_query": false,
+      "outcome": "unchanged_miss",
+      "source_index": 0,
+      "wrong_period": true
+    },
+    {
+      "after_hit": false,
+      "before_hit": false,
+      "case_id": "msft_fy2025_005",
+      "class": "P1",
+      "mutated_query": false,
+      "outcome": "unchanged_miss",
+      "source_index": 0,
+      "wrong_period": true
+    },
+    {
+      "after_hit": false,
+      "before_hit": false,
+      "case_id": "msft_fy2025_006",
+      "class": "P2",
+      "mutated_query": false,
+      "outcome": "unchanged_miss",
+      "source_index": 0,
+      "wrong_period": true
+    },
+    {
+      "after_hit": false,
+      "before_hit": false,
+      "case_id": "msft_fy2025_006",
+      "class": "P2",
+      "mutated_query": false,
+      "outcome": "unchanged_miss",
+      "source_index": 1,
+      "wrong_period": true
+    },
+    {
+      "after_hit": false,
+      "before_hit": false,
+      "case_id": "msft_fy2025_007",
+      "class": "P2",
+      "mutated_query": false,
+      "outcome": "unchanged_miss",
+      "source_index": 1,
+      "wrong_period": true
+    },
+    {
+      "after_hit": false,
+      "before_hit": false,
+      "case_id": "nvda_fy2025_007",
+      "class": "P2",
+      "mutated_query": false,
+      "outcome": "unchanged_miss",
+      "source_index": 1,
+      "wrong_period": true
+    },
+    {
+      "after_hit": false,
+      "before_hit": false,
+      "case_id": "v_fy2025_003",
+      "class": "P1",
+      "mutated_query": false,
+      "outcome": "unchanged_miss",
+      "source_index": 0,
+      "wrong_period": true
+    },
+    {
+      "after_hit": false,
+      "before_hit": false,
+      "case_id": "v_fy2025_005",
+      "class": "P2",
+      "mutated_query": false,
+      "outcome": "unchanged_miss",
+      "source_index": 0,
+      "wrong_period": true
+    },
+    {
+      "after_hit": false,
+      "before_hit": false,
+      "case_id": "v_fy2025_006",
+      "class": "P2",
+      "mutated_query": false,
+      "outcome": "unchanged_miss",
+      "source_index": 0,
+      "wrong_period": true
+    },
+    {
+      "after_hit": false,
+      "before_hit": false,
+      "case_id": "v_fy2025_006",
+      "class": "P2",
+      "mutated_query": false,
+      "outcome": "unchanged_miss",
+      "source_index": 1,
+      "wrong_period": true
+    },
+    {
+      "after_hit": false,
+      "before_hit": false,
+      "case_id": "v_fy2025_007",
+      "class": "P1",
+      "mutated_query": false,
+      "outcome": "unchanged_miss",
+      "source_index": 0,
+      "wrong_period": true
+    },
+    {
+      "after_hit": false,
+      "before_hit": false,
+      "case_id": "v_fy2025_009",
+      "class": "P2",
+      "mutated_query": false,
+      "outcome": "unchanged_miss",
+      "source_index": 0,
+      "wrong_period": true
+    }
+  ],
+  "rescued": 0,
+  "total": 17,
+  "unchanged": 17
+}

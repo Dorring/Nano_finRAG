@@ -1,0 +1,1340 @@
+{
+  "gold_reads_before_seal": 0,
+  "queries": 72,
+  "queries_mutated": 0,
+  "records": [
+    {
+      "case_id": "aapl_fy2025_001",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:79ac51e245c5b62256797393cbdd8c14497c5800b1c7afa77995957d747c223c",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.009167483076453209
+        },
+        {
+          "candidate_key": "candidate:v1:48c2cbae5951bc9475ecf98f7a080fe27912825baccc4c6209f6f86ba41b08d1",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.009755908511579037
+        },
+        {
+          "candidate_key": "candidate:v1:5e9eb324c09aae84fdcf5a7aa6814b9dbf496f9309339cdcad1befd45ae7be6f",
+          "near_boundary": true,
+          "original_qwen_rank": 8,
+          "period_status": "FULL_MATCH",
+          "score": -0.009755908511579037
+        },
+        {
+          "candidate_key": "candidate:v1:2ae910bcdd2fab358b49ee4ae1d177ce76265fc1d106cf8ea3447e1e06f7c5b9",
+          "near_boundary": true,
+          "original_qwen_rank": 9,
+          "period_status": "FULL_MATCH",
+          "score": -0.013310973532497883
+        },
+        {
+          "candidate_key": "candidate:v1:bfb0e1291fb4e01e452c752bda8ab618078725a1e99f5596d553890eb820f5fe",
+          "near_boundary": true,
+          "original_qwen_rank": 10,
+          "period_status": "FULL_MATCH",
+          "score": -0.013310973532497883
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:ec42462775466cc5860de3ffed100f0021f4fb96343aa438d9f079b0f3c0a301",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "aapl_fy2025_002",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:79203141b33b9cce55a4d9e870f2a18c1471733998cced3301b1f9c665647ad7",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.03577728569507599
+        },
+        {
+          "candidate_key": "candidate:v1:bfb0e1291fb4e01e452c752bda8ab618078725a1e99f5596d553890eb820f5fe",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.03577728569507599
+        },
+        {
+          "candidate_key": "candidate:v1:c17b02efcce761775badc7796a2052d89cd5c59fe83b2093351e08be17931872",
+          "near_boundary": true,
+          "original_qwen_rank": 8,
+          "period_status": "FULL_MATCH",
+          "score": -0.03577728569507599
+        },
+        {
+          "candidate_key": "candidate:v1:44b207b0c613181f3d577b5dc9ac423408743c4749a354a11b1a565d817a39f8",
+          "near_boundary": true,
+          "original_qwen_rank": 9,
+          "period_status": "FULL_MATCH",
+          "score": -0.04044583439826965
+        },
+        {
+          "candidate_key": "candidate:v1:d8713901742f86c0d5d5ace6cf547cac631ac3516e016f418aa43190e8f5989c",
+          "near_boundary": true,
+          "original_qwen_rank": 10,
+          "period_status": "FULL_MATCH",
+          "score": -0.05832047387957573
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:82d566364c4d3dd5a6149ec9b3bd5e3e2eb4cdc22b1378bd412014eb206edbb7",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "aapl_fy2025_003",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:06af0c67784c7ac6621c9fa629040925178a32f9f1fdf9e30627123f3f722e4b",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "aapl_fy2025_004",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:f5441db7e52d1240b3c70a3357c33d9e5cb6113a93938c6b60b469c88a72f508",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "aapl_fy2025_005",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:e035dfdf8e767ff768b01d82f0a57d334eebbbbb95b6ad34f5d44e4b9857cc98",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.0944129079580307
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:d8d06e11d524ce4ec4c95ca728ef61ba568965f41b623d7033faf672eea17989",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "aapl_fy2025_006",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:79ac51e245c5b62256797393cbdd8c14497c5800b1c7afa77995957d747c223c",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.027972843497991562
+        },
+        {
+          "candidate_key": "candidate:v1:d847b1ef143c9fa2857f8461a8120129bb8c91fc3b6a934affc99652d0b3de68",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.029750416055321693
+        },
+        {
+          "candidate_key": "candidate:v1:48c2cbae5951bc9475ecf98f7a080fe27912825baccc4c6209f6f86ba41b08d1",
+          "near_boundary": true,
+          "original_qwen_rank": 8,
+          "period_status": "FULL_MATCH",
+          "score": -0.03163906931877136
+        },
+        {
+          "candidate_key": "candidate:v1:2ae910bcdd2fab358b49ee4ae1d177ce76265fc1d106cf8ea3447e1e06f7c5b9",
+          "near_boundary": true,
+          "original_qwen_rank": 9,
+          "period_status": "FULL_MATCH",
+          "score": -0.03577728569507599
+        },
+        {
+          "candidate_key": "candidate:v1:63760345d3cd576b088022fb9e4fca7f04661838cc6d7af331a4a0812abdeb0b",
+          "near_boundary": true,
+          "original_qwen_rank": 10,
+          "period_status": "FULL_MATCH",
+          "score": -0.04858732968568802
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_multi_period",
+      "rank5_candidate": "candidate:v1:5e9eb324c09aae84fdcf5a7aa6814b9dbf496f9309339cdcad1befd45ae7be6f",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "aapl_fy2025_007",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:6d686484dacdec1b1a219b118eeed92f1b0c805bf696711ad9d189447a2561fc",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.08893945813179016
+        },
+        {
+          "candidate_key": "candidate:v1:f5441db7e52d1240b3c70a3357c33d9e5cb6113a93938c6b60b469c88a72f508",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.10020658373832703
+        },
+        {
+          "candidate_key": "candidate:v1:1c61ad4c4f9ce012268e9ef37cc919fb910de86cdf368a8e4dc7b5c968bc302e",
+          "near_boundary": true,
+          "original_qwen_rank": 8,
+          "period_status": "FULL_MATCH",
+          "score": -0.10633727163076401
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:144a715a975725e71e5f616b756bba84d9056eae15d2ea841d26703ffc18abd6",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "aapl_fy2025_008",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:b7cd7fa83a2c68f577a462fc8b48361956afc22945d852bcae278625c442e194",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "aapl_fy2025_009",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:4c1b4b98efa7e6ea0f5c0bc253263e9dbca6c5ca91872bbb5ed8f540eb9f6313",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "jpm_fy2025_001",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:02c12b805dc1767e91dd1aad0e3b9ea879bd14dc000513eb1874aee71c3a9dbf",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.009167483076453209
+        },
+        {
+          "candidate_key": "candidate:v1:019ed51f780eab3af69c619c2c1d834ec0ab076f64ca914bcfffad267fcaa5e3",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.011047743260860443
+        },
+        {
+          "candidate_key": "candidate:v1:b9840a52d375b86d7737de632ca89b10334ada1af2b8edd0da1e67085ed44f3c",
+          "near_boundary": true,
+          "original_qwen_rank": 9,
+          "period_status": "FULL_MATCH",
+          "score": -0.012509571388363838
+        },
+        {
+          "candidate_key": "candidate:v1:49d959885c8f1702428d54f5d5d3f76bc313cf0cf65f9c9a3c78f022f7ce446e",
+          "near_boundary": true,
+          "original_qwen_rank": 10,
+          "period_status": "FULL_MATCH",
+          "score": -0.019309287890791893
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "jpm_fy2025_002",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:2aa8cd687867146541346e101c0df97530b7088bcf5b1061a99cc3c976fbf7be",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.017059607431292534
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:a4381b1d5abb1ab099be099751bfa8ead52d069377eeaf6c1942755689562463",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "jpm_fy2025_003",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:49d959885c8f1702428d54f5d5d3f76bc313cf0cf65f9c9a3c78f022f7ce446e",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.006715348921716213
+        },
+        {
+          "candidate_key": "candidate:v1:a5652a1d7642b66ef0c90ed2c03606394abab37895f84a81e0dbdd5cc6076281",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.006715348921716213
+        },
+        {
+          "candidate_key": "candidate:v1:9baf1f6522e48911d7c0ea7d33d7bbde841b771c6a14c41e172b8f36006dcc22",
+          "near_boundary": true,
+          "original_qwen_rank": 8,
+          "period_status": "FULL_MATCH",
+          "score": -0.0071468655951321125
+        },
+        {
+          "candidate_key": "candidate:v1:018b0711182a54ae88ecbb5b553fbd60672f60f954c9391284df5d73859ece8f",
+          "near_boundary": true,
+          "original_qwen_rank": 9,
+          "period_status": "FULL_MATCH",
+          "score": -0.008094719611108303
+        },
+        {
+          "candidate_key": "candidate:v1:e8369e0caacd2e9161077866b5f62011a4d21d250affb8f465e9fdbc3ff62571",
+          "near_boundary": true,
+          "original_qwen_rank": 10,
+          "period_status": "FULL_MATCH",
+          "score": -0.009167483076453209
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:f75615bc70507c60ad6cbd7cc59d4c4e192d991656f63a48ca5de4f80aef6be2",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "jpm_fy2025_004",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:db5bda96c7d07dc05d336c6f54080fd2384e609035fe0392d2cac5df2ac0ff77",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "jpm_fy2025_005",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:dd83590f4fd5e4f70cb3e883337c887e58496b1f21e9ebd7145c4059b84f9960",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "jpm_fy2025_006",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:03ad61272dab56a8a666c9c181e059c8168b91ff158a371f8baf4b687185f5b8",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.03163906931877136
+        },
+        {
+          "candidate_key": "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.03577728569507599
+        },
+        {
+          "candidate_key": "candidate:v1:ea10aeefac1a819d3032584e1e3cc5ad7564e673b0a61a61d50e74ea7a04b655",
+          "near_boundary": true,
+          "original_qwen_rank": 8,
+          "period_status": "FULL_MATCH",
+          "score": -0.04858732968568802
+        },
+        {
+          "candidate_key": "candidate:v1:49d959885c8f1702428d54f5d5d3f76bc313cf0cf65f9c9a3c78f022f7ce446e",
+          "near_boundary": true,
+          "original_qwen_rank": 9,
+          "period_status": "FULL_MATCH",
+          "score": -0.05488219112157822
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_multi_period",
+      "rank5_candidate": "candidate:v1:019ed51f780eab3af69c619c2c1d834ec0ab076f64ca914bcfffad267fcaa5e3",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "jpm_fy2025_007",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:451f6fbcca0cad75afaf1f239638dac05c54b0c8db5d70c78461fa934f23082b",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "jpm_fy2025_008",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:523d0f47fad78f95f812332626277353d92c8bdd7a2f94764acfe0f145e1bfce",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "jpm_fy2025_009",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:db5bda96c7d07dc05d336c6f54080fd2384e609035fe0392d2cac5df2ac0ff77",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "ko_fy2025_001",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:41d202957222e0f117d383701e0fd3e70d596429b94dc6481c5cb96e53dab12d",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.008614521473646164
+        },
+        {
+          "candidate_key": "candidate:v1:54a535ad1d270b975d34014b615381a6984b677d452dec53b223ca69a380c129",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.009167483076453209
+        },
+        {
+          "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+          "near_boundary": true,
+          "original_qwen_rank": 8,
+          "period_status": "FULL_MATCH",
+          "score": -0.011047743260860443
+        },
+        {
+          "candidate_key": "candidate:v1:496ad0a9230a40c84ab60567affe6a2f00803e69d5b0f2f022d049ecd7f9ce5b",
+          "near_boundary": true,
+          "original_qwen_rank": 9,
+          "period_status": "FULL_MATCH",
+          "score": -0.01416344940662384
+        },
+        {
+          "candidate_key": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+          "near_boundary": true,
+          "original_qwen_rank": 10,
+          "period_status": "FULL_MATCH",
+          "score": -0.016034230589866638
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:1c09241b281c8ad1e2413e491193efdae9dc110808de7173bc20fad9b0e18118",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "ko_fy2025_002",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:c5243ccb39b4f71c98323ec4cf802c86d6e5c2cb8ceade7ce3ab52b607ab3463",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.011047743260860443
+        },
+        {
+          "candidate_key": "candidate:v1:3721ce4dfd506cac8af2aa7b12df87b1c6bce3fe96b4a15447a9b78fa7c2b9f9",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.024726316332817078
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:5a25663abb16c0b92c93f62a32e2decdd60aad7b65e2ce937ace826a22a136c9",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "ko_fy2025_003",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:928ee41e16b5ac55c7acd5daee05f5ae974ed66fb088399509890619516a6662",
+          "near_boundary": true,
+          "original_qwen_rank": 8,
+          "period_status": "FULL_MATCH",
+          "score": -0.024726316332817078
+        },
+        {
+          "candidate_key": "candidate:v1:d87f06d39f47f7b6b0ed782cb0f821865767416e543c506fd56dfce14c24d8e5",
+          "near_boundary": true,
+          "original_qwen_rank": 9,
+          "period_status": "FULL_MATCH",
+          "score": -0.024726316332817078
+        },
+        {
+          "candidate_key": "candidate:v1:6c33f1ded983ec16f143e4deac64108770c1a63290218db1ece4c8dbb1b541db",
+          "near_boundary": true,
+          "original_qwen_rank": 10,
+          "period_status": "FULL_MATCH",
+          "score": -0.024726316332817078
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:213cccdcaae9264136a413a6b1ca6a68f46c9baf9722a9d40d29ab2a3f4072e1",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "ko_fy2025_004",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:69b4b3cf63e7accf0c055bf7a77129fc7a5dfaff5346e48ef778c55c2be092e8",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.12692804634571075
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:62536c64f9e77d611bcbb13a7991690e2101dcfc7a9dea742fff56d9274ae4db",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "ko_fy2025_005",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:62536c64f9e77d611bcbb13a7991690e2101dcfc7a9dea742fff56d9274ae4db",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.10633727163076401
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:e410f42c6788280e6e3a365bb681939fc3e0a9fa9c6c8a70b27dc81cd566639f",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "ko_fy2025_006",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:cfdb9ac205850853e4ded656b0a3d2edd54e4992818a70775ac3a6b0acb80269",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.03163906931877136
+        },
+        {
+          "candidate_key": "candidate:v1:e9dc799e5ffc0c9dee63d6c6ff8e04e099ac041a1dcecba009401aec80517d68",
+          "near_boundary": true,
+          "original_qwen_rank": 8,
+          "period_status": "FULL_MATCH",
+          "score": -0.03804141283035278
+        },
+        {
+          "candidate_key": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+          "near_boundary": true,
+          "original_qwen_rank": 9,
+          "period_status": "FULL_MATCH",
+          "score": -0.04044583439826965
+        },
+        {
+          "candidate_key": "candidate:v1:f84aed9c61ef711cf7e1e916c6fef1e308f02dd5e031f77625276265a43bd2bb",
+          "near_boundary": true,
+          "original_qwen_rank": 10,
+          "period_status": "FULL_MATCH",
+          "score": -0.042999111115932465
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_multi_period",
+      "rank5_candidate": "candidate:v1:436c74d6e686838d3297f02fb99eab13f3c1b3aa92021a29ee724be168fa7413",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "ko_fy2025_007",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:cfdb9ac205850853e4ded656b0a3d2edd54e4992818a70775ac3a6b0acb80269",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "ko_fy2025_008",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:fa876c0da84490cc5c15ecc4e7e92531defa2a6de7172c06e32a91b891c57387",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.825939416885376
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:11e8a87d5bc620908fd6cb3c59e7bd039ace9db8403a2f78411c9384477fe63d",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "ko_fy2025_009",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:2615a8131b1b84e1f788cfb9c9292fa6b20c9688723ff3bc555f21d4590d95d8",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "msft_fy2025_001",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:9d300b400b00c2325d98f8d5515f688048e94ad2a925cba530f44751be23f5ed",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.10020658373832703
+        },
+        {
+          "candidate_key": "candidate:v1:ebaad37cf41a7a63624f981911edc9ec15b15459346bb41471ca0f1a77ce2782",
+          "near_boundary": true,
+          "original_qwen_rank": 8,
+          "period_status": "FULL_MATCH",
+          "score": -0.11282224208116531
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "msft_fy2025_002",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+          "near_boundary": true,
+          "original_qwen_rank": 9,
+          "period_status": "FULL_MATCH",
+          "score": -0.016034230589866638
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:46956970796b75dbdd9b3507234c0ab89cb96b5748ed1e9d00000d6250fd200b",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "msft_fy2025_003",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:ccc9cb078c69f9c015c683992d915a581ca4362bd94bfccd29d27228e0d65f0f",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "msft_fy2025_004",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:90a20811aae4ce028446569f741e10ab35b8488817c6df622adcf2031f628eab",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "msft_fy2025_005",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.02630021423101425
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:74969015d6ce96639f5bf6bfe7ac40aeb21027b8e966bdb3a86158bf0ac98880",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "msft_fy2025_006",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_multi_period",
+      "rank5_candidate": "candidate:v1:52ffe3c4ae15de18bc722c8571d0354d0f9935f12a727b2f5dce4d1d3f65270b",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "msft_fy2025_007",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:4bbe9f8614c04027aeba6bcad53949865c2646fc137f535506514f9e009b0ae0",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "msft_fy2025_008",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:141e262eb9bd12fcdffd8616c45d119738d7053de1ad7c101e52de8e6aa958eb",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "msft_fy2025_009",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:c17d7ea340aa1a3a0fa259d812b281043bf4f2900fe80b3f1eb27bcd1218f521",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "nvda_fy2025_001",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:df73fa007530e24a7ff27d3a8075bec8c4f60c42097a3350d4dd98b518a7a86c",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "nvda_fy2025_002",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:df73fa007530e24a7ff27d3a8075bec8c4f60c42097a3350d4dd98b518a7a86c",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "nvda_fy2025_003",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:df73fa007530e24a7ff27d3a8075bec8c4f60c42097a3350d4dd98b518a7a86c",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "nvda_fy2025_004",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:3553d495da47ccaaf7e89291d92707246f6329d4dbcac2e51f65453118a1a74b",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "nvda_fy2025_005",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:57a748499d11d127a281c2702d8557c411293d9dfeb043ef239caab15bbdb96b",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "nvda_fy2025_006",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_multi_period",
+      "rank5_candidate": "candidate:v1:fc687ef13661ea155433b41f5e9a6d2a17ccda1840caa47e2e6f844bfd93eae6",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "nvda_fy2025_007",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:c3698b5d5424bb660f21efa1dd37cf83793cc36dcdb1fa2d65f4de331a648c5a",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "nvda_fy2025_008",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:92469dbfcbaa897e8cc1662aa4ea3f8628117ba927b199243a4b469987b30e9f",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "nvda_fy2025_009",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:f513df96160f5af01d982a5642366e809260abd9115361111aa142f9e536eb50",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "pfe_fy2024_001",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:7c19d0eb78877ce5771fce5624d354ec71d963eda026ac3a7e31f053b684eeb5",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.024726316332817078
+        },
+        {
+          "candidate_key": "candidate:v1:9d6fbabf63a145fbcb6aac1019a1a9812e0274f221469a60c7d4312ba3f5ffff",
+          "near_boundary": true,
+          "original_qwen_rank": 10,
+          "period_status": "FULL_MATCH",
+          "score": -0.03364565595984459
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:f78898225c02389deb9c500eb56b414adea85395c78ed064d54a52fbf9354d1c",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "pfe_fy2024_002",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:d8324d7b263269a3c24e586f22cd6ea24018ec882dac49bcdd86b23a0c9ad58c",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "pfe_fy2024_003",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:93dc06432e5e40d5a2e8f3dd61a1301d377100c785c43382da7a59ed7fc5c5d5",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "pfe_fy2024_004",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:43241648e04d404117ac9de4eb1c0aac6018c228ab20dcaf5d19cb7c3eb0d77d",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "pfe_fy2024_005",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:fa84e78d7470fdbc87c942c777e360dbeca57c5245ad8d1b7185cf8252985dd0",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "pfe_fy2024_006",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:7c19d0eb78877ce5771fce5624d354ec71d963eda026ac3a7e31f053b684eeb5",
+          "near_boundary": true,
+          "original_qwen_rank": 9,
+          "period_status": "FULL_MATCH",
+          "score": -0.12692804634571075
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_multi_period",
+      "rank5_candidate": "candidate:v1:f78898225c02389deb9c500eb56b414adea85395c78ed064d54a52fbf9354d1c",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "pfe_fy2024_007",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:4886dcb9c5a4bd430f3888bc77cf033b0745509bd1bc968682ea31caef7b5c56",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "pfe_fy2024_008",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_multi_period",
+      "rank5_candidate": "candidate:v1:72decce9752e50f95f8590569412fa363c6129f8c1c609c392b346e1a5264c7e",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "pfe_fy2024_009",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:0569e0f748ddc3feceaf810c75c2d667dcfc523de0f8b97fce0b779da379525c",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "tsla_fy2025_001",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:5fb94003d231cc377716334fb4b2d1baf4e513dff694e7ff93138eb333107041",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.008614521473646164
+        },
+        {
+          "candidate_key": "candidate:v1:bc86f25c80ec26940d079686b594fe881ed30775348a3546c2e4b3a5d26d927f",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.009755908511579037
+        },
+        {
+          "candidate_key": "candidate:v1:e5db5875f847679804e54eb018575f0a40ae8b3b211c5a1c208df49b2838107e",
+          "near_boundary": true,
+          "original_qwen_rank": 8,
+          "period_status": "FULL_MATCH",
+          "score": -0.009755908511579037
+        },
+        {
+          "candidate_key": "candidate:v1:7e3a79893ba55ee89dc9e7a3a8145fd8a1b036ed1fbadd5d10ca497c59c2191b",
+          "near_boundary": true,
+          "original_qwen_rank": 9,
+          "period_status": "FULL_MATCH",
+          "score": -0.016034230589866638
+        },
+        {
+          "candidate_key": "candidate:v1:3734783e7fc139aa01721b669ed58493a45b7c6b086b92ce5e87654a365d6f96",
+          "near_boundary": true,
+          "original_qwen_rank": 10,
+          "period_status": "FULL_MATCH",
+          "score": -0.02630021423101425
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "tsla_fy2025_002",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.011047743260860443
+        },
+        {
+          "candidate_key": "candidate:v1:764e51106a705bd6f16af004eeb7f0126c4209a0c62a5319d13153dc95987982",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.013310973532497883
+        },
+        {
+          "candidate_key": "candidate:v1:de6c0385b3644e9541aba0322dbc3dca51de8cccdd3bfaa972ef622f7429c512",
+          "near_boundary": true,
+          "original_qwen_rank": 8,
+          "period_status": "FULL_MATCH",
+          "score": -0.015070038847625256
+        },
+        {
+          "candidate_key": "candidate:v1:87267a48bc8d4c7917ef2681dbf8a02f39db25f2518aec89555f41403936a30e",
+          "near_boundary": true,
+          "original_qwen_rank": 9,
+          "period_status": "FULL_MATCH",
+          "score": -0.020541900768876076
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:54453bd73944dd01ed473feadc8bbf756d03ff2093cfb5ebc7dcfb464a6f1f34",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "tsla_fy2025_003",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:bd0ef4be188dfbd1a4498b33d2b88ac917e07b544ef0f688874d34d729e9b1e7",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.016034230589866638
+        },
+        {
+          "candidate_key": "candidate:v1:574e5a0cfff16321380102475ebe8845c77789dded07ffffc3eb5c01f38576e1",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.020541900768876076
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:4096d760bcb9e4a5a668d65262cadbaa39e45d4cbe1b283fe4e1172edf48e98d",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "tsla_fy2025_004",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:82595970a6dd4773004ac2a7b5dbdb8d5969da93a3815050703178512fea8039",
+          "near_boundary": true,
+          "original_qwen_rank": 8,
+          "period_status": "FULL_MATCH",
+          "score": -0.03163906931877136
+        },
+        {
+          "candidate_key": "candidate:v1:0e74c8f483e329b64ec9a1c2db555591f8bc65c1c321918d6ab07d0b9b2d9487",
+          "near_boundary": true,
+          "original_qwen_rank": 9,
+          "period_status": "FULL_MATCH",
+          "score": -0.03577728569507599
+        },
+        {
+          "candidate_key": "candidate:v1:58b040bf89f24fdd215e533ab2971e481a738a2082fe65e3a6ce93ee108b5941",
+          "near_boundary": true,
+          "original_qwen_rank": 10,
+          "period_status": "FULL_MATCH",
+          "score": -0.04044583439826965
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:feca2e7566ca09595e7b5f19f83b73ed92bbf2959e469045fcf09a927a2dcf44",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "tsla_fy2025_005",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "tsla_fy2025_006",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:bc86f25c80ec26940d079686b594fe881ed30775348a3546c2e4b3a5d26d927f",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.042999111115932465
+        },
+        {
+          "candidate_key": "candidate:v1:5fb94003d231cc377716334fb4b2d1baf4e513dff694e7ff93138eb333107041",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.051641397178173065
+        },
+        {
+          "candidate_key": "candidate:v1:3734783e7fc139aa01721b669ed58493a45b7c6b086b92ce5e87654a365d6f96",
+          "near_boundary": true,
+          "original_qwen_rank": 8,
+          "period_status": "FULL_MATCH",
+          "score": -0.06196761503815651
+        },
+        {
+          "candidate_key": "candidate:v1:7713136515570c1f3c7f05e8c607c2ef8cfdd085e8257013c7c837060361cb4a",
+          "near_boundary": true,
+          "original_qwen_rank": 9,
+          "period_status": "FULL_MATCH",
+          "score": -0.06993623077869415
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_multi_period",
+      "rank5_candidate": "candidate:v1:e5db5875f847679804e54eb018575f0a40ae8b3b211c5a1c208df49b2838107e",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "tsla_fy2025_007",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:d29466f16f77143c80d6af94c8e99be200f9d27c3dd22849061f400a8d66b127",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.05832047387957573
+        },
+        {
+          "candidate_key": "candidate:v1:4087eb69386e6286e9f83b07ca3cbfdd78f07552c4ff013aab94587698017f1d",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.06993623077869415
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:0e74c8f483e329b64ec9a1c2db555591f8bc65c1c321918d6ab07d0b9b2d9487",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "tsla_fy2025_008",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_multi_period",
+      "rank5_candidate": "candidate:v1:3e6f3d15bb62b5bb50f9cc020acb29f447685e9ff7492647af76abfde1efec94",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "tsla_fy2025_009",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:0e74c8f483e329b64ec9a1c2db555591f8bc65c1c321918d6ab07d0b9b2d9487",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "v_fy2025_001",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:747783bcac47c8f71b61c289a33c8b6b6b7121f23d39f8487eade7fc23fe3154",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.018149960786104202
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:faf09e16325eadc4e0d87adcd77a9ae2f0c8188d250850a63daf113536b81832",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "v_fy2025_002",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:111af67406298d9b53f1a1107f6a97762b904c686ce564882535d2ef390cc7fc",
+          "near_boundary": true,
+          "original_qwen_rank": 8,
+          "period_status": "FULL_MATCH",
+          "score": -0.08377019315958023
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:fd7d3044411973c1af57bf015ca3fd14efb235afbe07f01c8ff1d8d9259536db",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "v_fy2025_003",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+          "near_boundary": true,
+          "original_qwen_rank": 9,
+          "period_status": "FULL_MATCH",
+          "score": -0.029750416055321693
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:2e573845630248665263f5503bce8eb3815d73d372ecab41aecfe8678973fe6c",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "v_fy2025_004",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:afabc70140880921e2cd83bf27791b1123e4028643dda6356851edf99bcdcd5b",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "v_fy2025_005",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:4cb04689d9e0405fd792b72d04dec48a1c29204ffc31a09af41f9423504fbd71",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "v_fy2025_006",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:747783bcac47c8f71b61c289a33c8b6b6b7121f23d39f8487eade7fc23fe3154",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.04858732968568802
+        },
+        {
+          "candidate_key": "candidate:v1:1360b5ebea3eec01f428ede6db02ec4a235ef9d67b03c02f93b140a70ad5a3b7",
+          "near_boundary": true,
+          "original_qwen_rank": 7,
+          "period_status": "FULL_MATCH",
+          "score": -0.05488219112157822
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_multi_period",
+      "rank5_candidate": "candidate:v1:b2987005af36131181bdb0e817c344d81b41ca0f511a7df00b49a32f8fb07c46",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "v_fy2025_007",
+      "eligible_challengers": [
+        {
+          "candidate_key": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+          "near_boundary": true,
+          "original_qwen_rank": 6,
+          "period_status": "FULL_MATCH",
+          "score": -0.12692804634571075
+        }
+      ],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "v_fy2025_008",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:d54497c5ec5a63184af04be7c5e4347ce0c06918a4998340144b0fcad00835b0",
+      "rank5_period_status": "NEUTRAL",
+      "selected_challenger": null
+    },
+    {
+      "case_id": "v_fy2025_009",
+      "eligible_challengers": [],
+      "max_promotions_per_query": 1,
+      "mutated": false,
+      "query_period_status": "explicit_single_period",
+      "rank5_candidate": "candidate:v1:094cb4dab475e4b1f475cb76990215d113f3b486d7a578c411d817d39101b5f1",
+      "rank5_period_status": "FULL_MATCH",
+      "selected_challenger": null
+    }
+  ]
+}

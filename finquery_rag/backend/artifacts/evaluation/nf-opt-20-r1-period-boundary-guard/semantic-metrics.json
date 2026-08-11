@@ -1,0 +1,31 @@
+{
+  "after_bpg": {
+    "@10": {
+      "hits": 61,
+      "rate_over_80": 0.7625,
+      "resolved_targets": 48,
+      "total": 80
+    },
+    "@5": {
+      "hits": 49,
+      "rate_over_80": 0.6125,
+      "resolved_targets": 48,
+      "total": 80
+    }
+  },
+  "before_qwen": {
+    "@10": {
+      "hits": 61,
+      "rate_over_80": 0.7625,
+      "resolved_targets": 48,
+      "total": 80
+    },
+    "@5": {
+      "hits": 49,
+      "rate_over_80": 0.6125,
+      "resolved_targets": 48,
+      "total": 80
+    }
+  },
+  "semantic_fact_contract": "SE1 exact target intersection; physical hit remains semantic hit"
+}
