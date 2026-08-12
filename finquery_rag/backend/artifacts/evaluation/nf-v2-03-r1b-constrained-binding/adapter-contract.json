@@ -1,0 +1,13 @@
+{
+  "gold_access": false,
+  "input": "BinderSelectionDTOv1",
+  "operations": [
+    "handle_to_existing_fact_id",
+    "preserve_exact_slot_id",
+    "derive_query_status",
+    "reshape"
+  ],
+  "output": "frozen EvidenceBinding",
+  "semantic_matching": false,
+  "source_selection": false
+}

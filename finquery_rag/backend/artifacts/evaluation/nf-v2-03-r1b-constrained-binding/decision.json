@@ -1,0 +1,21 @@
+{
+  "base_commit": "5a18284a268ace5e01c81688a790192e7a551619",
+  "binder_fact_view_required": true,
+  "binder_model": "qwen3.7-plus",
+  "cardinality_old_instances": 54,
+  "direct_reviewed_strict_bindable": 23,
+  "audit_model_calls": 0,
+  "synthetic_protocol_model_calls": 5,
+  "formal_attempt_5": "executed_structural_failure",
+  "formal_attempt_5_formal_run_complete": false,
+  "formal_attempt_5_prediction_seal": "not_created",
+  "formal_attempt_5_failure": "BOUND cardinality violation for slot_1 on aapl_fy2025_001",
+  "gate": "NF-V2-03-R1B",
+  "historical_reviewed_strict_bindable": 17,
+  "model_calls": 6,
+  "next_gate": "v2_03_binder_protocol_failure_review",
+  "old_validator_pass": 10,
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "unknown_slot_old_instances": 96
+}

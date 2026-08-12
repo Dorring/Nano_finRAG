@@ -1,0 +1,88 @@
+{
+  "additionalProperties": false,
+  "allowed_statuses": [
+    "BOUND",
+    "MISSING",
+    "AMBIGUOUS"
+  ],
+  "cardinality": {
+    "AMBIGUOUS": "at_least_two",
+    "BOUND": "exactly_one",
+    "MISSING": "zero"
+  },
+  "dto": "BinderSelectionDTOv1",
+  "example_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "slots": {
+        "additionalProperties": false,
+        "properties": {
+          "slot_1": {
+            "additionalProperties": false,
+            "properties": {
+              "fact_handles": {
+                "items": {
+                  "enum": [
+                    "F01",
+                    "F02",
+                    "F03",
+                    "F04",
+                    "F05",
+                    "F06",
+                    "F07",
+                    "F08",
+                    "F09",
+                    "F10",
+                    "F11",
+                    "F12",
+                    "F13",
+                    "F14",
+                    "F15",
+                    "F16",
+                    "F17",
+                    "F18",
+                    "F19",
+                    "F20"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "status": {
+                "enum": [
+                  "BOUND",
+                  "MISSING",
+                  "AMBIGUOUS"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "status",
+              "fact_handles"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "slot_1"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [
+      "slots"
+    ],
+    "type": "object"
+  },
+  "model": "qwen3.7-plus",
+  "provider": "Alibaba Bailian",
+  "query_level_status_from_model": false,
+  "slot_fields": [
+    "status",
+    "fact_handles"
+  ],
+  "top_level_fields": [
+    "slots"
+  ]
+}

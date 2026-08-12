@@ -1,0 +1,19 @@
+{
+  "allowed_source_fields": [
+    "raw_metric",
+    "normalized_metric",
+    "raw_period",
+    "normalized_period",
+    "value",
+    "unit",
+    "currency",
+    "row_label",
+    "column_header",
+    "table_title",
+    "statement_context",
+    "physical_provenance_summary"
+  ],
+  "decision": "defer_until_protocol_and_compatibility_review",
+  "financial_fact_v1_modified": false,
+  "required": true
+}

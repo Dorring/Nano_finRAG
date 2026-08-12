@@ -1,0 +1,20 @@
+{
+  "gate": "NF-V2-03-R1B",
+  "attempt": 5,
+  "base_commit": "5a18284a268ace5e01c81688a790192e7a551619",
+  "provider": "Alibaba Bailian",
+  "model": "qwen3.7-plus",
+  "model_role": "strong_general_llm",
+  "thinking": false,
+  "temperature": 0.0,
+  "max_retries": 0,
+  "http_timeout_seconds": 180,
+  "concurrency": 1,
+  "transport_retry_budget": 1,
+  "semantic_attempt_budget": 1,
+  "gold_reads_before_prediction_seal": 0,
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "credentials_persisted": false,
+  "formal_run_complete": false
+}

@@ -1,0 +1,452 @@
+{
+  "delta": {
+    "largest": -1200,
+    "median": -455,
+    "p95": -898
+  },
+  "new": {
+    "largest": 14947,
+    "median": 6403,
+    "p95": 11692
+  },
+  "old": {
+    "largest": 16147,
+    "median": 6858,
+    "p95": 12590
+  },
+  "rows": [
+    {
+      "delta": -651,
+      "new_estimated_tokens": 8448,
+      "old_estimated_tokens": 9099,
+      "question_id": "aapl_fy2025_001"
+    },
+    {
+      "delta": -623,
+      "new_estimated_tokens": 8039,
+      "old_estimated_tokens": 8662,
+      "question_id": "aapl_fy2025_002"
+    },
+    {
+      "delta": -767,
+      "new_estimated_tokens": 10242,
+      "old_estimated_tokens": 11009,
+      "question_id": "aapl_fy2025_003"
+    },
+    {
+      "delta": -732,
+      "new_estimated_tokens": 9188,
+      "old_estimated_tokens": 9920,
+      "question_id": "aapl_fy2025_004"
+    },
+    {
+      "delta": -724,
+      "new_estimated_tokens": 9189,
+      "old_estimated_tokens": 9913,
+      "question_id": "aapl_fy2025_005"
+    },
+    {
+      "delta": -542,
+      "new_estimated_tokens": 7256,
+      "old_estimated_tokens": 7798,
+      "question_id": "aapl_fy2025_006"
+    },
+    {
+      "delta": -844,
+      "new_estimated_tokens": 10491,
+      "old_estimated_tokens": 11335,
+      "question_id": "aapl_fy2025_007"
+    },
+    {
+      "delta": 50,
+      "new_estimated_tokens": 298,
+      "old_estimated_tokens": 248,
+      "question_id": "aapl_fy2025_008"
+    },
+    {
+      "delta": -1111,
+      "new_estimated_tokens": 13673,
+      "old_estimated_tokens": 14784,
+      "question_id": "aapl_fy2025_009"
+    },
+    {
+      "delta": -494,
+      "new_estimated_tokens": 6815,
+      "old_estimated_tokens": 7309,
+      "question_id": "jpm_fy2025_001"
+    },
+    {
+      "delta": -159,
+      "new_estimated_tokens": 2873,
+      "old_estimated_tokens": 3032,
+      "question_id": "jpm_fy2025_002"
+    },
+    {
+      "delta": -996,
+      "new_estimated_tokens": 12684,
+      "old_estimated_tokens": 13680,
+      "question_id": "jpm_fy2025_003"
+    },
+    {
+      "delta": -792,
+      "new_estimated_tokens": 10174,
+      "old_estimated_tokens": 10966,
+      "question_id": "jpm_fy2025_004"
+    },
+    {
+      "delta": -470,
+      "new_estimated_tokens": 6435,
+      "old_estimated_tokens": 6905,
+      "question_id": "jpm_fy2025_005"
+    },
+    {
+      "delta": -542,
+      "new_estimated_tokens": 7294,
+      "old_estimated_tokens": 7836,
+      "question_id": "jpm_fy2025_006"
+    },
+    {
+      "delta": -373,
+      "new_estimated_tokens": 5374,
+      "old_estimated_tokens": 5747,
+      "question_id": "jpm_fy2025_007"
+    },
+    {
+      "delta": 50,
+      "new_estimated_tokens": 302,
+      "old_estimated_tokens": 252,
+      "question_id": "jpm_fy2025_008"
+    },
+    {
+      "delta": -1200,
+      "new_estimated_tokens": 14947,
+      "old_estimated_tokens": 16147,
+      "question_id": "jpm_fy2025_009"
+    },
+    {
+      "delta": -475,
+      "new_estimated_tokens": 6403,
+      "old_estimated_tokens": 6878,
+      "question_id": "ko_fy2025_001"
+    },
+    {
+      "delta": -406,
+      "new_estimated_tokens": 5585,
+      "old_estimated_tokens": 5991,
+      "question_id": "ko_fy2025_002"
+    },
+    {
+      "delta": -486,
+      "new_estimated_tokens": 6641,
+      "old_estimated_tokens": 7127,
+      "question_id": "ko_fy2025_003"
+    },
+    {
+      "delta": -515,
+      "new_estimated_tokens": 7196,
+      "old_estimated_tokens": 7711,
+      "question_id": "ko_fy2025_004"
+    },
+    {
+      "delta": -539,
+      "new_estimated_tokens": 7174,
+      "old_estimated_tokens": 7713,
+      "question_id": "ko_fy2025_005"
+    },
+    {
+      "delta": -578,
+      "new_estimated_tokens": 7623,
+      "old_estimated_tokens": 8201,
+      "question_id": "ko_fy2025_006"
+    },
+    {
+      "delta": -451,
+      "new_estimated_tokens": 6407,
+      "old_estimated_tokens": 6858,
+      "question_id": "ko_fy2025_007"
+    },
+    {
+      "delta": 50,
+      "new_estimated_tokens": 301,
+      "old_estimated_tokens": 251,
+      "question_id": "ko_fy2025_008"
+    },
+    {
+      "delta": -795,
+      "new_estimated_tokens": 10422,
+      "old_estimated_tokens": 11217,
+      "question_id": "ko_fy2025_009"
+    },
+    {
+      "delta": -538,
+      "new_estimated_tokens": 7158,
+      "old_estimated_tokens": 7696,
+      "question_id": "msft_fy2025_001"
+    },
+    {
+      "delta": -302,
+      "new_estimated_tokens": 4216,
+      "old_estimated_tokens": 4518,
+      "question_id": "msft_fy2025_002"
+    },
+    {
+      "delta": -224,
+      "new_estimated_tokens": 3555,
+      "old_estimated_tokens": 3779,
+      "question_id": "msft_fy2025_003"
+    },
+    {
+      "delta": 50,
+      "new_estimated_tokens": 293,
+      "old_estimated_tokens": 243,
+      "question_id": "msft_fy2025_004"
+    },
+    {
+      "delta": -188,
+      "new_estimated_tokens": 3046,
+      "old_estimated_tokens": 3234,
+      "question_id": "msft_fy2025_005"
+    },
+    {
+      "delta": -539,
+      "new_estimated_tokens": 7192,
+      "old_estimated_tokens": 7731,
+      "question_id": "msft_fy2025_006"
+    },
+    {
+      "delta": -365,
+      "new_estimated_tokens": 5251,
+      "old_estimated_tokens": 5616,
+      "question_id": "msft_fy2025_007"
+    },
+    {
+      "delta": 50,
+      "new_estimated_tokens": 294,
+      "old_estimated_tokens": 244,
+      "question_id": "msft_fy2025_008"
+    },
+    {
+      "delta": -802,
+      "new_estimated_tokens": 10051,
+      "old_estimated_tokens": 10853,
+      "question_id": "msft_fy2025_009"
+    },
+    {
+      "delta": -296,
+      "new_estimated_tokens": 4381,
+      "old_estimated_tokens": 4677,
+      "question_id": "nvda_fy2025_001"
+    },
+    {
+      "delta": -126,
+      "new_estimated_tokens": 2313,
+      "old_estimated_tokens": 2439,
+      "question_id": "nvda_fy2025_002"
+    },
+    {
+      "delta": -82,
+      "new_estimated_tokens": 1930,
+      "old_estimated_tokens": 2012,
+      "question_id": "nvda_fy2025_003"
+    },
+    {
+      "delta": -56,
+      "new_estimated_tokens": 1510,
+      "old_estimated_tokens": 1566,
+      "question_id": "nvda_fy2025_004"
+    },
+    {
+      "delta": -48,
+      "new_estimated_tokens": 1499,
+      "old_estimated_tokens": 1547,
+      "question_id": "nvda_fy2025_005"
+    },
+    {
+      "delta": -479,
+      "new_estimated_tokens": 6467,
+      "old_estimated_tokens": 6946,
+      "question_id": "nvda_fy2025_006"
+    },
+    {
+      "delta": -265,
+      "new_estimated_tokens": 3990,
+      "old_estimated_tokens": 4255,
+      "question_id": "nvda_fy2025_007"
+    },
+    {
+      "delta": -56,
+      "new_estimated_tokens": 1504,
+      "old_estimated_tokens": 1560,
+      "question_id": "nvda_fy2025_008"
+    },
+    {
+      "delta": -725,
+      "new_estimated_tokens": 9359,
+      "old_estimated_tokens": 10084,
+      "question_id": "nvda_fy2025_009"
+    },
+    {
+      "delta": -187,
+      "new_estimated_tokens": 3056,
+      "old_estimated_tokens": 3243,
+      "question_id": "pfe_fy2024_001"
+    },
+    {
+      "delta": -898,
+      "new_estimated_tokens": 11692,
+      "old_estimated_tokens": 12590,
+      "question_id": "pfe_fy2024_002"
+    },
+    {
+      "delta": -734,
+      "new_estimated_tokens": 9649,
+      "old_estimated_tokens": 10383,
+      "question_id": "pfe_fy2024_003"
+    },
+    {
+      "delta": -328,
+      "new_estimated_tokens": 4745,
+      "old_estimated_tokens": 5073,
+      "question_id": "pfe_fy2024_004"
+    },
+    {
+      "delta": -226,
+      "new_estimated_tokens": 3506,
+      "old_estimated_tokens": 3732,
+      "question_id": "pfe_fy2024_005"
+    },
+    {
+      "delta": -396,
+      "new_estimated_tokens": 5560,
+      "old_estimated_tokens": 5956,
+      "question_id": "pfe_fy2024_006"
+    },
+    {
+      "delta": -627,
+      "new_estimated_tokens": 8474,
+      "old_estimated_tokens": 9101,
+      "question_id": "pfe_fy2024_007"
+    },
+    {
+      "delta": 17,
+      "new_estimated_tokens": 697,
+      "old_estimated_tokens": 680,
+      "question_id": "pfe_fy2024_008"
+    },
+    {
+      "delta": -851,
+      "new_estimated_tokens": 10986,
+      "old_estimated_tokens": 11837,
+      "question_id": "pfe_fy2024_009"
+    },
+    {
+      "delta": -681,
+      "new_estimated_tokens": 8907,
+      "old_estimated_tokens": 9588,
+      "question_id": "tsla_fy2025_001"
+    },
+    {
+      "delta": -411,
+      "new_estimated_tokens": 5680,
+      "old_estimated_tokens": 6091,
+      "question_id": "tsla_fy2025_002"
+    },
+    {
+      "delta": -483,
+      "new_estimated_tokens": 6539,
+      "old_estimated_tokens": 7022,
+      "question_id": "tsla_fy2025_003"
+    },
+    {
+      "delta": -535,
+      "new_estimated_tokens": 7303,
+      "old_estimated_tokens": 7838,
+      "question_id": "tsla_fy2025_004"
+    },
+    {
+      "delta": -189,
+      "new_estimated_tokens": 3166,
+      "old_estimated_tokens": 3355,
+      "question_id": "tsla_fy2025_005"
+    },
+    {
+      "delta": -777,
+      "new_estimated_tokens": 10178,
+      "old_estimated_tokens": 10955,
+      "question_id": "tsla_fy2025_006"
+    },
+    {
+      "delta": -534,
+      "new_estimated_tokens": 7321,
+      "old_estimated_tokens": 7855,
+      "question_id": "tsla_fy2025_007"
+    },
+    {
+      "delta": 50,
+      "new_estimated_tokens": 306,
+      "old_estimated_tokens": 256,
+      "question_id": "tsla_fy2025_008"
+    },
+    {
+      "delta": -851,
+      "new_estimated_tokens": 10985,
+      "old_estimated_tokens": 11836,
+      "question_id": "tsla_fy2025_009"
+    },
+    {
+      "delta": -132,
+      "new_estimated_tokens": 2316,
+      "old_estimated_tokens": 2448,
+      "question_id": "v_fy2025_001"
+    },
+    {
+      "delta": -54,
+      "new_estimated_tokens": 1505,
+      "old_estimated_tokens": 1559,
+      "question_id": "v_fy2025_002"
+    },
+    {
+      "delta": -90,
+      "new_estimated_tokens": 1909,
+      "old_estimated_tokens": 1999,
+      "question_id": "v_fy2025_003"
+    },
+    {
+      "delta": -55,
+      "new_estimated_tokens": 1484,
+      "old_estimated_tokens": 1539,
+      "question_id": "v_fy2025_004"
+    },
+    {
+      "delta": 50,
+      "new_estimated_tokens": 298,
+      "old_estimated_tokens": 248,
+      "question_id": "v_fy2025_005"
+    },
+    {
+      "delta": -132,
+      "new_estimated_tokens": 2361,
+      "old_estimated_tokens": 2493,
+      "question_id": "v_fy2025_006"
+    },
+    {
+      "delta": -161,
+      "new_estimated_tokens": 2729,
+      "old_estimated_tokens": 2890,
+      "question_id": "v_fy2025_007"
+    },
+    {
+      "delta": 50,
+      "new_estimated_tokens": 294,
+      "old_estimated_tokens": 244,
+      "question_id": "v_fy2025_008"
+    },
+    {
+      "delta": -263,
+      "new_estimated_tokens": 3912,
+      "old_estimated_tokens": 4175,
+      "question_id": "v_fy2025_009"
+    }
+  ],
+  "tokenizer": "cl100k_base deterministic estimate"
+}
