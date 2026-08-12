@@ -1,0 +1,14 @@
+{
+  "estimated_binder_input": "all Top20 materialized provenance-complete facts; no binder was called",
+  "financial_fact_count_increase": 276,
+  "materialization_wall_time_ms": 12829.038,
+  "mean_facts_per_query": 13.25,
+  "p95_facts_per_query": 28,
+  "top20_candidate_occurrences": 1440,
+  "top20_fact_artifact_bytes": 152552,
+  "top20_unique_candidates": 776,
+  "top5_candidate_occurrences": 360,
+  "top5_fact_artifact_bytes": 55316,
+  "top5_unique_candidates": 241,
+  "unique_candidate_increase": 535
+}

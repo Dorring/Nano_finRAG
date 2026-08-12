@@ -1,0 +1,376 @@
+{
+  "denominator": 46,
+  "rows": [
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 24,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 24,
+      "question_id": "aapl_fy2025_003",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 16,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 16,
+      "question_id": "jpm_fy2025_001",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 6,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 6,
+      "question_id": "jpm_fy2025_002",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 30,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 30,
+      "question_id": "jpm_fy2025_003",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 24,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 24,
+      "question_id": "jpm_fy2025_004",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 15,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 15,
+      "question_id": "jpm_fy2025_005",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 12,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 12,
+      "question_id": "jpm_fy2025_007",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": false,
+      "financial_fact_count": 0,
+      "provenance_complete_fact_available": false,
+      "provenance_complete_fact_count": 0,
+      "question_id": "jpm_fy2025_008",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 36,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 36,
+      "question_id": "jpm_fy2025_009",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 15,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 15,
+      "question_id": "ko_fy2025_001",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 13,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 13,
+      "question_id": "ko_fy2025_002",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 15,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 15,
+      "question_id": "ko_fy2025_003",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 17,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 17,
+      "question_id": "ko_fy2025_004",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 17,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 17,
+      "question_id": "ko_fy2025_005",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 25,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 25,
+      "question_id": "ko_fy2025_009",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 17,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 17,
+      "question_id": "msft_fy2025_001",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 10,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 10,
+      "question_id": "msft_fy2025_002",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 8,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 8,
+      "question_id": "msft_fy2025_003",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": false,
+      "financial_fact_count": 0,
+      "provenance_complete_fact_available": false,
+      "provenance_complete_fact_count": 0,
+      "question_id": "msft_fy2025_004",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 7,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 7,
+      "question_id": "msft_fy2025_005",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": false,
+      "financial_fact_count": 0,
+      "provenance_complete_fact_available": false,
+      "provenance_complete_fact_count": 0,
+      "question_id": "msft_fy2025_008",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 24,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 24,
+      "question_id": "msft_fy2025_009",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 10,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 10,
+      "question_id": "nvda_fy2025_001",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 5,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 5,
+      "question_id": "nvda_fy2025_002",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 4,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 4,
+      "question_id": "nvda_fy2025_003",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 3,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 3,
+      "question_id": "nvda_fy2025_004",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 3,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 3,
+      "question_id": "nvda_fy2025_005",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 9,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 9,
+      "question_id": "nvda_fy2025_007",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 3,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 3,
+      "question_id": "nvda_fy2025_008",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 22,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 22,
+      "question_id": "nvda_fy2025_009",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 7,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 7,
+      "question_id": "pfe_fy2024_001",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 28,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 28,
+      "question_id": "pfe_fy2024_002",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 23,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 23,
+      "question_id": "pfe_fy2024_003",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 11,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 11,
+      "question_id": "pfe_fy2024_004",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 8,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 8,
+      "question_id": "pfe_fy2024_005",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 20,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 20,
+      "question_id": "pfe_fy2024_007",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 26,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 26,
+      "question_id": "pfe_fy2024_009",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 21,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 21,
+      "question_id": "tsla_fy2025_001",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 13,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 13,
+      "question_id": "tsla_fy2025_002",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 15,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 15,
+      "question_id": "tsla_fy2025_003",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 17,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 17,
+      "question_id": "tsla_fy2025_004",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 7,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 7,
+      "question_id": "tsla_fy2025_005",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 26,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 26,
+      "question_id": "tsla_fy2025_009",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 5,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 5,
+      "question_id": "v_fy2025_001",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": true,
+      "financial_fact_count": 4,
+      "provenance_complete_fact_available": true,
+      "provenance_complete_fact_count": 4,
+      "question_id": "v_fy2025_003",
+      "top20_candidate_count": 20
+    },
+    {
+      "financial_fact_available": false,
+      "financial_fact_count": 0,
+      "provenance_complete_fact_available": false,
+      "provenance_complete_fact_count": 0,
+      "question_id": "v_fy2025_005",
+      "top20_candidate_count": 20
+    }
+  ],
+  "top20_financial_fact_available": 42,
+  "top20_provenance_complete": "42/46",
+  "top5_provenance_complete": "39/46"
+}

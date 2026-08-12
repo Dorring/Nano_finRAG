@@ -1,0 +1,14 @@
+{
+  "contract_sha256": "7a253b443962c5f372dd897c49c057a19b553e92314faadc31eefc82b27b54eb",
+  "financial_fact_v1_modified": false,
+  "gold_reads_during_materialization": 0,
+  "query_independent_api": "materialize_candidate(candidate, atomic_index)",
+  "query_reads_during_materialization": 0,
+  "schema": "FinancialFactV1",
+  "schema_sha256": "6cf54227583ef01f2cca7825834b657c0f7301638af6875271318d3fea255c17",
+  "sffm_source": "scripts/evaluation/run_nf_e2e_09_r0_structured_fact_representation.py::materialize_candidate",
+  "sffm_v1_modified": false,
+  "top5_fact_artifact_sha256": "82e38f7d0c816dba8629523a599c3b0f90872da2ca9f86f955ec8189a77f4e30",
+  "top5_fact_count": 169,
+  "top5_provenance_complete_facts": 169
+}
