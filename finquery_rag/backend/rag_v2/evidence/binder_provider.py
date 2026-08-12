@@ -150,8 +150,11 @@ class BailianBinderProvider:
                 "temperature": self.temperature,
                 "response_format": BINDER_RESPONSE_FORMAT,
             }
-            if self.enable_thinking:
-                body["extra_body"] = {"enable_thinking": True}
+            # Bailian's Qwen endpoint defaults to thinking enabled when this
+            # extension is omitted.  The frozen Binder configuration is
+            # thinking=false, so send the setting explicitly for both values
+            # instead of relying on the endpoint default.
+            body["extra_body"] = {"enable_thinking": self.enable_thinking}
             response = self.client.chat.completions.create(**body)
             message = response.choices[0].message if response.choices else None
             content = getattr(message, "content", None) if message is not None else None

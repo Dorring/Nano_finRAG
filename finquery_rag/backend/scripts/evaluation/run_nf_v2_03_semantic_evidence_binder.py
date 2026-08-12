@@ -541,7 +541,7 @@ def main() -> int:
     schema_path = OUT / "binder-schema.json"
     write_json(schema_path, BINDER_SCHEMA)
     write_json(OUT / "binder-provider-contract.json", {"provider": "bailian", "provider_name": "Alibaba Bailian", "provider_role": "evidence_binder", "model": MODEL, "model_role": "strong_general_llm", "enable_thinking": False, "temperature": 0.0, "max_retries": 0, "structured_output": BINDER_RESPONSE_FORMAT, "request_calls_per_query": 1, "retry": 0, "api_key_persisted": False})
-    write_json(OUT / "provider-config-seal.json", {"provider": "bailian", "provider_role": "evidence_binder", "model": MODEL, "model_role": "strong_general_llm", "base_url_region": config["base_url"].split("/compatible-mode", 1)[0], "enable_thinking": False, "temperature": 0.0, "max_retries": 0, "api_key_persisted": False, "smoke_pass": True})
+    write_json(OUT / "provider-config-seal.json", {"provider": "bailian", "provider_role": "evidence_binder", "model": MODEL, "model_role": "strong_general_llm", "base_url_region": config["base_url_region"], "enable_thinking": False, "temperature": 0.0, "max_retries": 0, "api_key_persisted": False, "smoke_pass": True})
     (OUT / "binder-prompt.sha256").write_text(sha256_file(prompt_path) + "\n", encoding="utf-8")
     (OUT / "binder-schema.sha256").write_text(sha256_file(schema_path) + "\n", encoding="utf-8")
     predictions, runtime = run_formal({**config, "base_url": os.getenv("V2_SUPERVISOR_BASE_URL", "").strip()}, frozen)
