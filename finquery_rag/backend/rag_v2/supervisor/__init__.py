@@ -6,6 +6,7 @@ from .local_provider import LocalProvider
 from .plan_validator import validate_plan, validate_plan_v2_01
 from .provider import SupervisorCallMetadata, SupervisorProvider, SupervisorProviderError
 from .service import SupervisorRun, SupervisorService
+from .strong_general_provider import StrongGeneralAPIProvider
 
 __all__ = [
     "APIProvider",
@@ -16,6 +17,7 @@ __all__ = [
     "SupervisorProviderError",
     "SupervisorRun",
     "SupervisorService",
+    "StrongGeneralAPIProvider",
     "validate_plan",
     "validate_plan_v2_01",
 ]

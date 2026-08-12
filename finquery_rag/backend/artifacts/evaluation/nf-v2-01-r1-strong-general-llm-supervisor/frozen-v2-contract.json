@@ -1,0 +1,19 @@
+{
+  "base_commit": "df771c08d2deea23f4c0ed451856a386202899e7",
+  "binder_calls": 0,
+  "block_reason": "V2_SUPERVISOR_BASE_URL is not configured; no Strong General LLM endpoint is available",
+  "calculator_calls": 0,
+  "evaluation_role": "development_shadow_v2_strong_general_llm_supervisor",
+  "formal_evaluation_status": "infrastructure_blocked",
+  "fresh_blind_evaluation": false,
+  "gate": "NF-V2-01-R1",
+  "generator_calls": 0,
+  "model_role": "strong_general_llm",
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "question_count": 72,
+  "reranker_calls": 0,
+  "retrieval_calls": 0,
+  "v2_00_base_contract": "938a32573ba9ebbca56d55404a54747f36d34981",
+  "validator_calls": 0
+}

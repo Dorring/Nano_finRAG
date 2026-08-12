@@ -1,0 +1,26 @@
+{
+  "dominant_failure": "supervisor_model_role_mismatch",
+  "evidence": {
+    "SP10_schema_invalid": 17,
+    "SP11_answer_leakage": 55,
+    "answer_leakage": "55/72",
+    "downstream_calls": 0,
+    "gate": "NF-V2-01-R0",
+    "gold_reads_before_prediction_seal": 0,
+    "model_calls": 0,
+    "parse_failure": "72/72",
+    "plan_validator_pass": "0/72",
+    "reranker_calls": 0,
+    "retrieval_calls": 0,
+    "schema_valid": "0/72"
+  },
+  "financial_sft_as_supervisor_effective": false,
+  "fresh_blind_evaluation": false,
+  "gate": "NF-V2-01-R0-closure",
+  "general_llm_supervisor_effective": "not_evaluated",
+  "interpretation": "The Financial SFT model was trained/positioned as a domain generator rather than an Agent control-plane model. Because no valid SupervisorPlan was produced, downstream routing and slot metrics are not valid estimates of a Strong General LLM Supervisor's semantic capability.",
+  "model_calls": 0,
+  "production_switch_allowed": false,
+  "retrieval_calls": 0,
+  "supervisor_model_role_match": false
+}

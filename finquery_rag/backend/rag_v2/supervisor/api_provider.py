@@ -34,6 +34,9 @@ class APIProvider:
         temperature: float = 0.0,
         max_tokens: int = 512,
         timeout: float = 120.0,
+        provider_role: str = "supervisor",
+        model_role: str = "strong_general_llm",
+        structured_output: bool = False,
     ) -> None:
         if OpenAI is None:
             raise RuntimeError("the API Supervisor provider requires the openai package")
@@ -41,18 +44,24 @@ class APIProvider:
         self.model_name = model_name
         self.temperature = temperature
         self.max_tokens = max_tokens
+        self.provider_role = provider_role
+        self.model_role = model_role
+        self.structured_output = structured_output
         self.last_call: SupervisorCallMetadata | None = None
 
     def plan(self, question: str) -> SupervisorPlan:
         started = time.perf_counter()
         raw: str | None = None
         try:
-            response = self.client.chat.completions.create(
-                model=self.model_name,
-                messages=build_messages(question),
-                temperature=self.temperature,
-                max_tokens=self.max_tokens,
-            )
+            request: dict[str, Any] = {
+                "model": self.model_name,
+                "messages": build_messages(question),
+                "temperature": self.temperature,
+                "max_tokens": self.max_tokens,
+            }
+            if self.structured_output:
+                request["response_format"] = {"type": "json_object"}
+            response = self.client.chat.completions.create(**request)
             content = response.choices[0].message.content if response.choices else None
             raw = content if isinstance(content, str) else None
             if not raw or not raw.strip():
@@ -87,6 +96,8 @@ class APIProvider:
                 model=self.model_name,
                 latency_ms=(time.perf_counter() - started) * 1000,
                 raw_response=raw,
+                provider_role=self.provider_role,
+                model_role=self.model_role,
                 error=f"{type(exc).__name__}: {exc}",
             )
             raise SupervisorProviderError("Supervisor API call failed") from exc
@@ -106,6 +117,8 @@ class APIProvider:
             model=self.model_name,
             latency_ms=(time.perf_counter() - started) * 1000,
             raw_response=raw,
+            provider_role=self.provider_role,
+            model_role=self.model_role,
             input_tokens=_usage_value(usage, "prompt_tokens"),
             output_tokens=_usage_value(usage, "completion_tokens"),
             total_tokens=_usage_value(usage, "total_tokens"),

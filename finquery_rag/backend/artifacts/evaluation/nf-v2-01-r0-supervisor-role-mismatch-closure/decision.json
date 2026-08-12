@@ -1,0 +1,13 @@
+{
+  "dominant_failure": "supervisor_model_role_mismatch",
+  "evaluation_role": "development_shadow_v2_r0_role_mismatch_closure",
+  "financial_sft_as_supervisor_effective": false,
+  "gate": "NF-V2-01-R0-closure",
+  "general_llm_supervisor_effective": "not_evaluated",
+  "model_calls": 0,
+  "next_gate": "NF-V2-01-R1",
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "retrieval_calls": 0,
+  "supervisor_model_role_match": false
+}

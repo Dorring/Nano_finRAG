@@ -1,0 +1,16 @@
+{
+  "base_url": null,
+  "fallback_provider": null,
+  "financial_sft_fallback_forbidden": true,
+  "formal_evaluation_status": "infrastructure_blocked",
+  "gate": "NF-V2-01-R1",
+  "max_supervisor_calls_per_question": 1,
+  "max_tokens": 512,
+  "model": null,
+  "model_role": "strong_general_llm",
+  "provider": "strong_general_api",
+  "provider_role": "supervisor",
+  "retry": false,
+  "structured_output": "strict_json_parsing",
+  "temperature": 0.0
+}

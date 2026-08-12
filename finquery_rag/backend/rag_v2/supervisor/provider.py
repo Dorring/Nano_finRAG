@@ -16,6 +16,8 @@ class SupervisorCallMetadata:
     model: str
     latency_ms: float
     raw_response: str | None
+    provider_role: str = "supervisor"
+    model_role: str = "strong_general_llm"
     input_tokens: int | None = None
     output_tokens: int | None = None
     total_tokens: int | None = None
@@ -26,6 +28,8 @@ class SupervisorCallMetadata:
         return {
             "provider": self.provider,
             "model": self.model,
+            "provider_role": self.provider_role,
+            "model_role": self.model_role,
             "latency_ms": round(self.latency_ms, 3),
             "raw_response": self.raw_response,
             "input_tokens": self.input_tokens,

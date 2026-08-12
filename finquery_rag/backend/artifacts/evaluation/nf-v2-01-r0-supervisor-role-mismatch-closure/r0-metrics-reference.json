@@ -1,0 +1,14 @@
+{
+  "SP10_schema_invalid": 17,
+  "SP11_answer_leakage": 55,
+  "answer_leakage": "55/72",
+  "downstream_calls": 0,
+  "gate": "NF-V2-01-R0",
+  "gold_reads_before_prediction_seal": 0,
+  "model_calls": 0,
+  "parse_failure": "72/72",
+  "plan_validator_pass": "0/72",
+  "reranker_calls": 0,
+  "retrieval_calls": 0,
+  "schema_valid": "0/72"
+}

@@ -1,0 +1,15 @@
+{
+  "financial_sft_r0": {
+    "answer_leakage": "55/72",
+    "calculation_recall": "N/A",
+    "metric_slot": "N/A",
+    "note": "Not semantically evaluable because 0/72 valid SupervisorPlans were produced.",
+    "period_slot": "N/A",
+    "plan_validator_pass": "0/72",
+    "schema_valid": "0/72"
+  },
+  "strong_general_r1": {
+    "reason": "V2_SUPERVISOR_BASE_URL is not configured; no Strong General LLM endpoint is available",
+    "status": "infrastructure_blocked"
+  }
+}

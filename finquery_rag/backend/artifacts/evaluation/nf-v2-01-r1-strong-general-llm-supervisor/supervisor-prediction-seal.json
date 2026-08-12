@@ -1,0 +1,18 @@
+{
+  "binder_calls": 0,
+  "block_reason": "V2_SUPERVISOR_BASE_URL is not configured; no Strong General LLM endpoint is available",
+  "calculator_calls": 0,
+  "formal_evaluation_status": "infrastructure_blocked",
+  "gate": "NF-V2-01-R1",
+  "generator_calls": 0,
+  "gold_reads_before_prediction_seal": 0,
+  "model_calls": 0,
+  "plans_sha256": "1897974ef25a0c55989acc189171670ec6e334e4086e9eba85fc061e3e908d90",
+  "prompt_sha256": "53fa8dc9487d8334b98cf4b4d4633c4d67988c412b1c9c2a212581ecc7df337b",
+  "questions": 72,
+  "reference_answer_reads_before_prediction_seal": 0,
+  "reranker_calls": 0,
+  "retrieval_calls": 0,
+  "sealed": true,
+  "validator_calls": 0
+}
