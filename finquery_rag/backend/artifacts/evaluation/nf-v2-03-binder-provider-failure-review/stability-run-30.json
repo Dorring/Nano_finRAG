@@ -1,0 +1,9 @@
+{
+  "api_timeout": null,
+  "calls": 0,
+  "http_failure": null,
+  "reason": "No infrastructure-only fix was applied; the observed failure is a strict schema-output mismatch and the gate requires stopping without parser relaxation or model/prompt changes.",
+  "run": "not_run",
+  "schema_valid": null,
+  "structured_output": null
+}

@@ -1,0 +1,26 @@
+{
+  "base_commit": "8bb7a8c",
+  "benchmark_replayed": false,
+  "dominant_failure": "HTTP_2xx_schema_invalid",
+  "formal_72_rerun": false,
+  "gate": "NF-V2-03-Binder-Provider-Failure-Review",
+  "gold_read": false,
+  "historical_failures": {
+    "BT2_read_timeout_text_only": 1,
+    "BT7_http_2xx_schema_invalid": 1
+  },
+  "historical_formal_prediction_sealed": false,
+  "infrastructure_ready": false,
+  "max_retries": 0,
+  "model": "qwen3.7-flash-2026-07-15",
+  "model_change_during_review": false,
+  "next_gate": "manual_binder_schema_or_model_review",
+  "production_switch_allowed": false,
+  "synthetic_api_timeouts": 0,
+  "synthetic_calls": 15,
+  "synthetic_http_failures": 0,
+  "synthetic_schema_valid": "0/15",
+  "synthetic_structured_output_success": "0/15",
+  "synthetic_success": "0/15",
+  "timeout_changed": false
+}

@@ -1,0 +1,46 @@
+{
+  "base_commit": "8bb7a8c",
+  "calls_attempted": 72,
+  "failures": [
+    {
+      "available_evidence": "runner error string only",
+      "classification": "BT2_read_timeout",
+      "classification_confidence": "timeout_text_only",
+      "error": "Request timed out.",
+      "exception_cause": null,
+      "exception_class": null,
+      "facts_in_packet": null,
+      "finish_reason": null,
+      "http_status": null,
+      "input_tokens": null,
+      "latency_ms": null,
+      "question_id": "aapl_fy2025_002",
+      "question_index": 2,
+      "raw_content_length": null,
+      "read_timeout_demonstrated": false
+    },
+    {
+      "available_evidence": "provider returned a response but frozen schema conversion failed; HTTP status not persisted",
+      "classification": "BT7_HTTP_2xx_schema_invalid",
+      "classification_confidence": "high_from_provider_response_path",
+      "error": "EvidenceBinding response failed frozen contract validation",
+      "exception_cause": null,
+      "exception_class": "BinderProviderError",
+      "facts_in_packet": null,
+      "finish_reason": null,
+      "http_status": null,
+      "input_tokens": null,
+      "latency_ms": null,
+      "question_id": "jpm_fy2025_003",
+      "question_index": 12,
+      "raw_content_length": null,
+      "read_timeout_demonstrated": false
+    }
+  ],
+  "formal_model": "qwen3.7-max-2026-06-08",
+  "formal_run_complete": false,
+  "gate": "NF-V2-03",
+  "gold_reads_before_prediction_seal": 0,
+  "prediction_sealed": false,
+  "semantic_scoring": "not_performed"
+}

@@ -1,0 +1,36 @@
+{
+  "by_size": {
+    "14": {
+      "calls": 5,
+      "failure_counts": {
+        "BT7_HTTP_2xx_schema_invalid": 5
+      },
+      "p50_latency_ms": 969.27,
+      "p95_latency_ms": 983.805,
+      "success": 0
+    },
+    "28": {
+      "calls": 5,
+      "failure_counts": {
+        "BT7_HTTP_2xx_schema_invalid": 5
+      },
+      "p50_latency_ms": 781.942,
+      "p95_latency_ms": 876.305,
+      "success": 0
+    },
+    "36": {
+      "calls": 5,
+      "failure_counts": {
+        "BT7_HTTP_2xx_schema_invalid": 5
+      },
+      "p50_latency_ms": 887.137,
+      "p95_latency_ms": 989.156,
+      "success": 0
+    }
+  },
+  "calls": 15,
+  "failure_counts": {
+    "BT7_HTTP_2xx_schema_invalid": 15
+  },
+  "success": 0
+}

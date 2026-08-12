@@ -35,6 +35,13 @@ class BinderCallMetadata:
     total_tokens: int | None = None
     reasoning_tokens: int | None = None
     error: str | None = None
+    exception_type: str | None = None
+    exception_cause_type: str | None = None
+    exception_cause_message: str | None = None
+    errno: int | str | None = None
+    http_status: int | None = None
+    finish_reason: str | None = None
+    raw_content_length: int | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -50,6 +57,13 @@ class BinderCallMetadata:
             "total_tokens": self.total_tokens,
             "reasoning_tokens": self.reasoning_tokens,
             "error": self.error,
+            "exception_type": self.exception_type,
+            "exception_cause_type": self.exception_cause_type,
+            "exception_cause_message": self.exception_cause_message,
+            "errno": self.errno,
+            "http_status": self.http_status,
+            "finish_reason": self.finish_reason,
+            "raw_content_length": self.raw_content_length,
         }
 
 
@@ -143,6 +157,7 @@ class BailianBinderProvider:
     def bind(self, request: Mapping[str, Any]) -> BinderProviderResult:
         started = time.perf_counter()
         self.last_raw_response = None
+        response: Any | None = None
         try:
             body: dict[str, Any] = {
                 "model": self.model_name,
@@ -167,15 +182,38 @@ class BailianBinderProvider:
             except json.JSONDecodeError as exc:
                 raise BinderProviderError("Bailian response was not strict JSON") from exc
             binding = _binding_from_payload(payload)
-            metadata = self._metadata(response, started, structured=True)
+            metadata = self._metadata(response, started, structured=True, raw_content_length=len(raw))
             self.last_call = metadata
             return BinderProviderResult(binding=binding, metadata=metadata, raw_response=raw)
         except BinderProviderError as exc:
-            metadata = self._metadata(None, started, structured=False, error=str(exc), provider_success=False)
+            cause = exc.__cause__ or exc.__context__
+            metadata = self._metadata(
+                response,
+                started,
+                structured=False,
+                error=str(exc),
+                provider_success=response is not None,
+                exception_type=type(exc).__name__,
+                exception_cause_type=type(cause).__name__ if cause is not None else None,
+                exception_cause_message=_safe_message(cause) if cause is not None else None,
+                raw_content_length=len(self.last_raw_response or ""),
+            )
             self.last_call = metadata
             raise
         except Exception as exc:
-            metadata = self._metadata(None, started, structured=False, error=_safe_message(exc), provider_success=False)
+            cause = exc.__cause__ or exc.__context__
+            metadata = self._metadata(
+                response,
+                started,
+                structured=False,
+                error=_safe_message(exc),
+                provider_success=False,
+                exception_type=type(exc).__name__,
+                exception_cause_type=type(cause).__name__ if cause is not None else None,
+                exception_cause_message=_safe_message(cause) if cause is not None else None,
+                errno=getattr(exc, "errno", None),
+                raw_content_length=len(self.last_raw_response or ""),
+            )
             self.last_call = metadata
             raise BinderProviderError(f"Bailian binder API call failed: {_safe_message(exc)}") from exc
 
@@ -187,10 +225,18 @@ class BailianBinderProvider:
         structured: bool,
         error: str | None = None,
         provider_success: bool = True,
+        exception_type: str | None = None,
+        exception_cause_type: str | None = None,
+        exception_cause_message: str | None = None,
+        errno: int | str | None = None,
+        raw_content_length: int | None = None,
     ) -> BinderCallMetadata:
         usage = getattr(response, "usage", None) if response is not None else None
         details = getattr(usage, "completion_tokens_details", None) if usage is not None else None
         reasoning = getattr(details, "reasoning_tokens", None) if details is not None else None
+        choice = response.choices[0] if response is not None and getattr(response, "choices", None) else None
+        finish_reason = getattr(choice, "finish_reason", None) if choice is not None else None
+        http_status = getattr(response, "status_code", None) if response is not None else None
         return BinderCallMetadata(
             provider=self.provider_name,
             model=self.model_name,
@@ -204,4 +250,11 @@ class BailianBinderProvider:
             total_tokens=_usage_int(usage, "total_tokens"),
             reasoning_tokens=int(reasoning) if isinstance(reasoning, (int, float)) else None,
             error=error,
+            exception_type=exception_type,
+            exception_cause_type=exception_cause_type,
+            exception_cause_message=exception_cause_message,
+            errno=errno if isinstance(errno, (int, str)) else None,
+            http_status=int(http_status) if isinstance(http_status, (int, float)) else None,
+            finish_reason=str(finish_reason) if finish_reason is not None else None,
+            raw_content_length=raw_content_length,
         )
