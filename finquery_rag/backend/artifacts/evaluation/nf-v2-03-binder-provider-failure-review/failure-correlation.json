@@ -1,67 +1,67 @@
 {
   "interpretation": {
-    "facts_vs_failure": "all packet sizes failed with the same BT7 schema-invalid class; no packet-size-dependent timeout boundary observed",
-    "input_tokens_vs_failure": "input tokens increased from approximately 2889 to 7047 as packet size grew, while failure class and 100% failure rate remained unchanged",
-    "latency_vs_failure": "latencies remained sub-second-to-low-second and did not show timeout behavior; failures occurred after HTTP 2xx response",
-    "transport_boundary": "raw transport and provider response succeeded; failure is in strict EvidenceBinding schema acceptance"
+    "facts_vs_failure": "14, 28 and 36 fact packets were all successful; no packet-size-dependent failure observed.",
+    "input_tokens_vs_failure": "Input tokens increased monotonically with packet size (2889, 5535, 7047); all 15 calls remained successful.",
+    "latency_vs_failure": "No failure occurred. Baseline latency P50/P95 remained within the configured 180-second timeout by a wide margin.",
+    "transport_boundary": "Provider response, structured output and frozen EvidenceBinding schema validation all passed for 15/15 calls."
   },
-  "model": "qwen3.7-flash-2026-07-15",
+  "model": "qwen3.7-max",
   "observations": {
     "14": {
       "calls": 5,
       "facts_in_packet": 14,
       "failure_counts": {
-        "BT7_HTTP_2xx_schema_invalid": 5
+        "BT0_success": 5
       },
       "http_failures": 0,
       "input_tokens_max": 2889,
       "input_tokens_mean": 2889,
       "input_tokens_min": 2889,
-      "latency_max_ms": 1158.627,
-      "latency_p50_ms": 969.27,
-      "latency_p95_ms": 983.805,
+      "latency_max_ms": 2604.71,
+      "latency_p50_ms": 1881.314,
+      "latency_p95_ms": 2039.824,
       "provider_response_success": 5,
-      "schema_valid": 0,
-      "structured_output_success": 0,
-      "success": 0,
+      "schema_valid": 5,
+      "structured_output_success": 5,
+      "success": 5,
       "timeout_failures": 0
     },
     "28": {
       "calls": 5,
       "facts_in_packet": 28,
       "failure_counts": {
-        "BT7_HTTP_2xx_schema_invalid": 5
+        "BT0_success": 5
       },
       "http_failures": 0,
       "input_tokens_max": 5535,
       "input_tokens_mean": 5535,
       "input_tokens_min": 5535,
-      "latency_max_ms": 978.934,
-      "latency_p50_ms": 781.942,
-      "latency_p95_ms": 876.305,
+      "latency_max_ms": 2326.183,
+      "latency_p50_ms": 2216.188,
+      "latency_p95_ms": 2260.728,
       "provider_response_success": 5,
-      "schema_valid": 0,
-      "structured_output_success": 0,
-      "success": 0,
+      "schema_valid": 5,
+      "structured_output_success": 5,
+      "success": 5,
       "timeout_failures": 0
     },
     "36": {
       "calls": 5,
       "facts_in_packet": 36,
       "failure_counts": {
-        "BT7_HTTP_2xx_schema_invalid": 5
+        "BT0_success": 5
       },
       "http_failures": 0,
       "input_tokens_max": 7047,
       "input_tokens_mean": 7047,
       "input_tokens_min": 7047,
-      "latency_max_ms": 1202.272,
-      "latency_p50_ms": 887.137,
-      "latency_p95_ms": 989.156,
+      "latency_max_ms": 2019.69,
+      "latency_p50_ms": 1995.472,
+      "latency_p95_ms": 2006.826,
       "provider_response_success": 5,
-      "schema_valid": 0,
-      "structured_output_success": 0,
-      "success": 0,
+      "schema_valid": 5,
+      "structured_output_success": 5,
+      "success": 5,
       "timeout_failures": 0
     }
   }

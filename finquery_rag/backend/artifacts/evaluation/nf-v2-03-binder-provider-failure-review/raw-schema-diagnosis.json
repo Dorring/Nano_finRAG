@@ -1,28 +1,9 @@
 {
-  "expected_slot_bindings_type": "object_mapping_slot_id_to_array_fact_id",
-  "expected_top_level_keys": [
-    "status",
-    "slot_bindings",
-    "missing_slots",
-    "ambiguous_slots",
-    "invalid_reasons"
-  ],
-  "finish_reason": "stop",
-  "http_status": null,
-  "model": "qwen3.7-flash-2026-07-15",
-  "provider_response_success": true,
-  "raw_content_length": 116,
-  "raw_content_persisted": false,
-  "raw_json_parse": "valid_json",
-  "sample_packet_size": 14,
-  "schema_failure": "BT7_HTTP_2xx_schema_invalid",
-  "slot_binding_item_keys": [
-    "slot_id",
-    "status",
-    "fact_id"
-  ],
-  "slot_bindings_type": "array",
-  "top_level_keys": [
-    "slot_bindings"
-  ]
+  "current_stress_http_2xx_schema_invalid": 0,
+  "current_stress_raw_json_failures": 0,
+  "current_stress_schema_failures": 0,
+  "historical_formal_raw_content_available": false,
+  "historical_formal_schema_failure": "EvidenceBinding response failed frozen contract validation; raw content and HTTP status were not persisted by the failed runner.",
+  "model": "qwen3.7-max",
+  "parser_or_schema_relaxation_applied": false
 }

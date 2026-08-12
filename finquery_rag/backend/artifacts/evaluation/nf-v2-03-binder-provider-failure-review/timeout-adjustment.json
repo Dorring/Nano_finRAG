@@ -2,7 +2,7 @@
   "historical_timeout_subtype_persisted": false,
   "max_retries": 0,
   "read_timeout_demonstrated": false,
-  "reason": "No ReadTimeout cause chain was persisted; synthetic failures were HTTP 2xx schema-invalid, so timeout was not adjusted.",
+  "reason": "No ReadTimeout cause chain was persisted in the historical attempt; qwen3.7-max synthetic stress had zero timeout failures across 45 calls.",
   "stress_timeout_failures": 0,
   "timeout_changed": false,
   "timeout_seconds_after": 180.0,
