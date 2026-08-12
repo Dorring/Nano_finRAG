@@ -1,0 +1,8 @@
+{
+  "max_retries": 0,
+  "policy": "Only adopt an extended timeout when the same exact request succeeds consistently under it; no retry added.",
+  "read_timeout_demonstrated": false,
+  "timeout_changed": false,
+  "timeout_seconds_after": 180.0,
+  "timeout_seconds_before": 180.0
+}

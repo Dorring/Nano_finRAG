@@ -1,0 +1,59 @@
+{
+  "by_failure_class": {
+    "BT0_success": {
+      "calls": 5,
+      "facts": [
+        19
+      ],
+      "input_tokens": [
+        12006
+      ],
+      "latency_p50_ms": 5728.211
+    }
+  },
+  "gold_reads": 0,
+  "interpretation": {
+    "facts_vs_failure": "All five exact calls used the same 19-fact packet and all succeeded; no fact-count-correlated failure was observed.",
+    "input_tokens_vs_failure": "Observed provider input tokens were 12006-12006, above the prior synthetic maximum of 7047; no failure occurred.",
+    "latency_vs_failure": "Observed latency P50/P95 were 5224.268/5728.211 ms and all calls were successful.",
+    "semantic_inspection": false
+  },
+  "question_id": "aapl_fy2025_002",
+  "rows": [
+    {
+      "call_index": 1,
+      "facts_in_packet": 19,
+      "failure_class": "BT0_success",
+      "input_tokens": 12006,
+      "latency_ms": 4591.694
+    },
+    {
+      "call_index": 2,
+      "facts_in_packet": 19,
+      "failure_class": "BT0_success",
+      "input_tokens": 12006,
+      "latency_ms": 5224.268
+    },
+    {
+      "call_index": 3,
+      "facts_in_packet": 19,
+      "failure_class": "BT0_success",
+      "input_tokens": 12006,
+      "latency_ms": 5263.4
+    },
+    {
+      "call_index": 4,
+      "facts_in_packet": 19,
+      "failure_class": "BT0_success",
+      "input_tokens": 12006,
+      "latency_ms": 5728.211
+    },
+    {
+      "call_index": 5,
+      "facts_in_packet": 19,
+      "failure_class": "BT0_success",
+      "input_tokens": 12006,
+      "latency_ms": 5217.398
+    }
+  ]
+}

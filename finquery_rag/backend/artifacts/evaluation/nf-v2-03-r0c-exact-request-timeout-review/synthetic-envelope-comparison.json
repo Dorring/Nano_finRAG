@@ -1,0 +1,22 @@
+{
+  "actual_input_tokens_max_observed": 12006,
+  "actual_input_tokens_min_observed": 12006,
+  "artifact": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend/artifacts/evaluation/nf-v2-03-binder-provider-failure-review/synthetic-stress-15.json",
+  "artifact_sha256": "6778e377dd8dc78808a809b56b05d7f3d49e1c911e72842ef208d420b7a263df",
+  "comparison_note": "The exact request is compared descriptively; no timeout cause is inferred from fact count alone.",
+  "model": "qwen3.7-max",
+  "synthetic_fact_max": 36,
+  "synthetic_fact_min": 14,
+  "synthetic_input_tokens_max": 7047,
+  "synthetic_input_tokens_min": 2889,
+  "target_above_synthetic_max_fact": false,
+  "target_above_synthetic_max_tokens_actual": true,
+  "target_above_synthetic_max_tokens_estimate": false,
+  "target_actual_input_tokens": 12006,
+  "target_estimated_input_tokens": 5867,
+  "target_fact_count": 19,
+  "token_comparison_note": "Provider usage tokens are authoritative; the exact request is materially above the prior synthetic 36-fact token maximum despite having 19 facts.",
+  "within_synthetic_fact_range": true,
+  "within_synthetic_token_range_actual": false,
+  "within_synthetic_token_range_estimate": true
+}

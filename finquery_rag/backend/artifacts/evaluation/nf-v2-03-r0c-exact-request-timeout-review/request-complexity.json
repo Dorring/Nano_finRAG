@@ -1,0 +1,14 @@
+{
+  "distinct_pages": 5,
+  "distinct_tables": 5,
+  "duplicate_or_similar_metric_groups": 2,
+  "duplicate_or_similar_metric_rows": 16,
+  "fact_count": 19,
+  "facts_with_long_serialized_text_over_1000_bytes": 19,
+  "gold_reads": 0,
+  "max_fact_serialized_length_bytes": 1093,
+  "operation": null,
+  "question_id": "aapl_fy2025_002",
+  "required_slot_count": 1,
+  "total_fact_text_bytes": 11967
+}

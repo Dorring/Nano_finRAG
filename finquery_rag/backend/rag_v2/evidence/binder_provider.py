@@ -42,6 +42,8 @@ class BinderCallMetadata:
     http_status: int | None = None
     finish_reason: str | None = None
     raw_content_length: int | None = None
+    request_id: str | None = None
+    exception_chain: tuple[dict[str, Any], ...] = ()
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -64,6 +66,8 @@ class BinderCallMetadata:
             "http_status": self.http_status,
             "finish_reason": self.finish_reason,
             "raw_content_length": self.raw_content_length,
+            "request_id": self.request_id,
+            "exception_chain": [dict(item) for item in self.exception_chain],
         }
 
 
@@ -90,6 +94,25 @@ def _safe_message(value: Any) -> str | None:
     text = re.sub(r"(?i)bearer\s+[^\s,;]+", "Bearer [REDACTED]", text)
     text = re.sub(r"(?i)sk-[A-Za-z0-9_-]+", "[REDACTED]", text)
     return text[:500]
+
+
+def _exception_chain(value: BaseException | None) -> tuple[dict[str, Any], ...]:
+    """Return a short, secret-redacted exception chain for transport diagnostics."""
+    chain: list[dict[str, Any]] = []
+    seen: set[int] = set()
+    current = value
+    while current is not None and id(current) not in seen and len(chain) < 4:
+        seen.add(id(current))
+        item: dict[str, Any] = {
+            "type": type(current).__name__,
+            "message": _safe_message(current),
+        }
+        errno = getattr(current, "errno", None)
+        if isinstance(errno, (int, str)):
+            item["errno"] = errno
+        chain.append(item)
+        current = current.__cause__ or current.__context__
+    return tuple(chain)
 
 
 def _usage_int(usage: Any, name: str) -> int | None:
@@ -182,7 +205,13 @@ class BailianBinderProvider:
             except json.JSONDecodeError as exc:
                 raise BinderProviderError("Bailian response was not strict JSON") from exc
             binding = _binding_from_payload(payload)
-            metadata = self._metadata(response, started, structured=True, raw_content_length=len(raw))
+            metadata = self._metadata(
+                response,
+                started,
+                structured=True,
+                raw_content_length=len(raw),
+                request_id=getattr(response, "id", None),
+            )
             self.last_call = metadata
             return BinderProviderResult(binding=binding, metadata=metadata, raw_response=raw)
         except BinderProviderError as exc:
@@ -197,6 +226,8 @@ class BailianBinderProvider:
                 exception_cause_type=type(cause).__name__ if cause is not None else None,
                 exception_cause_message=_safe_message(cause) if cause is not None else None,
                 raw_content_length=len(self.last_raw_response or ""),
+                request_id=getattr(response, "id", None),
+                exception_chain=_exception_chain(exc),
             )
             self.last_call = metadata
             raise
@@ -213,6 +244,8 @@ class BailianBinderProvider:
                 exception_cause_message=_safe_message(cause) if cause is not None else None,
                 errno=getattr(exc, "errno", None),
                 raw_content_length=len(self.last_raw_response or ""),
+                request_id=getattr(response, "id", None),
+                exception_chain=_exception_chain(exc),
             )
             self.last_call = metadata
             raise BinderProviderError(f"Bailian binder API call failed: {_safe_message(exc)}") from exc
@@ -230,6 +263,8 @@ class BailianBinderProvider:
         exception_cause_message: str | None = None,
         errno: int | str | None = None,
         raw_content_length: int | None = None,
+        request_id: str | None = None,
+        exception_chain: tuple[dict[str, Any], ...] = (),
     ) -> BinderCallMetadata:
         usage = getattr(response, "usage", None) if response is not None else None
         details = getattr(usage, "completion_tokens_details", None) if usage is not None else None
@@ -257,4 +292,6 @@ class BailianBinderProvider:
             http_status=int(http_status) if isinstance(http_status, (int, float)) else None,
             finish_reason=str(finish_reason) if finish_reason is not None else None,
             raw_content_length=raw_content_length,
+            request_id=request_id,
+            exception_chain=exception_chain,
         )
