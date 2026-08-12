@@ -1,0 +1,19 @@
+{
+  "evaluation_role": "development_shadow_v2_architecture_contract_freeze",
+  "fresh_blind_evaluation": false,
+  "gate": "V2-00",
+  "illegal_state_transitions_rejected": true,
+  "model_calls": 0,
+  "next_gate": "v2_01_general_llm_supervisor",
+  "production_default": "v1",
+  "production_switch_allowed": false,
+  "question_schema_loaded": "72/72",
+  "repair_budget": {
+    "generation_repair_max": 1,
+    "retrieval_repair_max": 1,
+    "total_tool_steps_max": 8
+  },
+  "retrieval_calls": 0,
+  "stop_rule": "pause before supervisor/model execution",
+  "v2_00_contract_frozen": true
+}

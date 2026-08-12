@@ -1,0 +1,83 @@
+{
+  "allowed": [
+    {
+      "event": "PLAN",
+      "from": "RECEIVED",
+      "to": "PLANNED"
+    },
+    {
+      "action": "RETRIEVE",
+      "from": "PLANNED",
+      "to": "RETRIEVED"
+    },
+    {
+      "event": "MATERIALIZE",
+      "from": "RETRIEVED",
+      "to": "MATERIALIZED"
+    },
+    {
+      "action": "BIND",
+      "from": "RETRIEVED|MATERIALIZED",
+      "guard": "EvidenceBinding.status=BOUND",
+      "to": "BOUND"
+    },
+    {
+      "action": "CALCULATE",
+      "from": "BOUND",
+      "guard": "plan.intent=CALCULATION",
+      "to": "CALCULATED"
+    },
+    {
+      "action": "GENERATE",
+      "from": "BOUND|CALCULATED",
+      "guard": "complete bound evidence",
+      "to": "GENERATED"
+    },
+    {
+      "event": "VALIDATE",
+      "from": "GENERATED",
+      "to": "VALIDATED"
+    },
+    {
+      "event": "RELEASE",
+      "from": "VALIDATED",
+      "guard": "ValidationDecision.PASS",
+      "to": "RELEASED"
+    },
+    {
+      "event": "BEGIN_REPAIR",
+      "from": "VALIDATED",
+      "guard": "repair budget available",
+      "to": "REPAIRING"
+    },
+    {
+      "action": "REPAIR_RETRIEVAL",
+      "from": "REPAIRING",
+      "guard": "retrieval repair budget",
+      "to": "RETRIEVED"
+    },
+    {
+      "action": "REPAIR_GENERATION",
+      "from": "REPAIRING",
+      "guard": "generation repair budget",
+      "to": "GENERATED"
+    },
+    {
+      "action": "ABSTAIN",
+      "from": "ANY_NONTERMINAL",
+      "to": "ABSTAINED"
+    },
+    {
+      "action": "STOP",
+      "from": "ANY_NONTERMINAL",
+      "to": "FAILED"
+    }
+  ],
+  "gate": "V2-00",
+  "illegal_transition_behavior": "reject; no silent repair",
+  "terminal_states": [
+    "RELEASED",
+    "ABSTAINED",
+    "FAILED"
+  ]
+}

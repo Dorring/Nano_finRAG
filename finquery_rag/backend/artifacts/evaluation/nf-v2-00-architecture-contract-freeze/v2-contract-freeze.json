@@ -1,0 +1,72 @@
+{
+  "actions": [
+    "RETRIEVE",
+    "BIND",
+    "REPAIR_RETRIEVAL",
+    "CALCULATE",
+    "GENERATE",
+    "REPAIR_GENERATION",
+    "ABSTAIN",
+    "STOP"
+  ],
+  "base_commit": "d5422bbaa4b74722be8644ac98573cb0e150a0e7",
+  "contracts": [
+    "QuestionEnvelope",
+    "SupervisorPlan",
+    "RequiredSlot",
+    "EvidenceBinding",
+    "VerifiedEvidencePacket",
+    "CalculationResultPacket",
+    "CanonicalAnswer",
+    "AnswerEnvelope",
+    "ValidationResult"
+  ],
+  "evaluation_role": "development_shadow_v2_architecture_contract_freeze",
+  "fresh_blind_evaluation": false,
+  "gate": "V2-00",
+  "hard_rules": {
+    "bound_required_before_generate": true,
+    "complete_operands_required_before_calculate": true,
+    "llm_proposes_only": true,
+    "repair_budget_exhaustion_abstains": true,
+    "state_machine_executes_only_validated_actions": true,
+    "validation_pass_required_before_release": true
+  },
+  "intents": [
+    "DIRECT_FACT",
+    "MULTI_EVIDENCE",
+    "CALCULATION"
+  ],
+  "model_calls": 0,
+  "no_answer_intent": false,
+  "production_architecture": "v1",
+  "production_switch_allowed": false,
+  "question_schema": {
+    "answer_fields_loaded": false,
+    "gold_fields_loaded": false,
+    "loaded": 72,
+    "unique_ids": 72
+  },
+  "repair_budget": {
+    "generation_repair_max": 1,
+    "retrieval_repair_max": 1,
+    "total_tool_steps_max": 8
+  },
+  "reranker_calls": 0,
+  "retrieval_calls": 0,
+  "shadow_architecture": "v2",
+  "states": [
+    "RECEIVED",
+    "PLANNED",
+    "RETRIEVED",
+    "MATERIALIZED",
+    "BOUND",
+    "CALCULATED",
+    "GENERATED",
+    "VALIDATED",
+    "REPAIRING",
+    "RELEASED",
+    "ABSTAINED",
+    "FAILED"
+  ]
+}
