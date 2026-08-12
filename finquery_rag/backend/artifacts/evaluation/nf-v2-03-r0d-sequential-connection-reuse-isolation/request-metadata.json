@@ -1,0 +1,25 @@
+{
+  "gold_reads": 0,
+  "q1": {
+    "fact_count": 20,
+    "gold_reads": 0,
+    "input_tokens_estimated": 6172,
+    "input_tokens_observed": [
+      12656
+    ],
+    "question_id": "aapl_fy2025_001",
+    "request_sha256": "8f6b01876df13e5d6acd9432784a71c2b328cdfd902b861e2a280f58c4eccefa",
+    "serialized_bytes": 22048
+  },
+  "q2": {
+    "fact_count": 19,
+    "gold_reads": 0,
+    "input_tokens_estimated": 5867,
+    "input_tokens_observed": [
+      12006
+    ],
+    "question_id": "aapl_fy2025_002",
+    "request_sha256": "9938c77c99368bd912411ca11246cc025a700f7ba5bf1b5ea6a91aafb773bc3b",
+    "serialized_bytes": 20898
+  }
+}

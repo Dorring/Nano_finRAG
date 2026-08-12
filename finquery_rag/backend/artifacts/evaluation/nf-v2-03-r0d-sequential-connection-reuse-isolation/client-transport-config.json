@@ -1,0 +1,29 @@
+{
+  "client_config": {
+    "connect_timeout": 180.0,
+    "http2_enabled": false,
+    "http_client_type": "openai._base_client.SyncHttpxClientWrapper",
+    "limits": {
+      "keepalive_expiry": 5.0,
+      "max_connections": 1000,
+      "max_keepalive_connections": 100
+    },
+    "openai_client_type": "openai.OpenAI",
+    "pool_timeout": 180.0,
+    "read_timeout": 180.0,
+    "timeout_seconds": 180.0,
+    "transport_type": "httpx.HTTPTransport",
+    "trust_env": true,
+    "write_timeout": 180.0
+  },
+  "client_lifetime": "one BailianBinderProvider per matrix client scope",
+  "credentials_persisted": false,
+  "http_client_lifetime": "one OpenAI SyncHttpxClientWrapper per provider",
+  "httpcore_version": "1.0.9",
+  "httpx_version": "0.28.1",
+  "max_retries": 0,
+  "openai_version": "2.38.0",
+  "python_version": "3.12.2 | packaged by conda-forge | (main, Feb 16 2024, 20:50:58) [GCC 12.3.0]",
+  "timeout_seconds": 180.0,
+  "trust_env": true
+}

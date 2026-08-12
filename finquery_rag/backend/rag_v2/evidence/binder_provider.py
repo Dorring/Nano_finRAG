@@ -162,10 +162,19 @@ class BailianBinderProvider:
         temperature: float = 0.0,
         timeout: float = 180.0,
         max_retries: int = 0,
+        http_client: Any | None = None,
     ) -> None:
         if OpenAI is None:
             raise RuntimeError("the Bailian binder requires the openai package")
-        self.client = OpenAI(base_url=base_url, api_key=api_key, timeout=timeout, max_retries=max_retries)
+        client_kwargs: dict[str, Any] = {
+            "base_url": base_url,
+            "api_key": api_key,
+            "timeout": timeout,
+            "max_retries": max_retries,
+        }
+        if http_client is not None:
+            client_kwargs["http_client"] = http_client
+        self.client = OpenAI(**client_kwargs)
         self.model_name = model_name
         self.enable_thinking = enable_thinking
         self.temperature = temperature

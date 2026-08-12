@@ -1,0 +1,16 @@
+{
+  "async_tasks": false,
+  "cross_event_loop_reuse": false,
+  "explicit_close_after_scope": true,
+  "formal_runner_concurrency": 1,
+  "gold_reads": 0,
+  "http_client_instance_ids_recorded": true,
+  "http_client_scope": "one SyncHttpxClientWrapper per OpenAI client",
+  "multiprocessing": false,
+  "openai_client_instance_ids_recorded": true,
+  "openai_client_scope": "one OpenAI client per provider/matrix client scope",
+  "provider_instance_ids_recorded": true,
+  "response_consumption_before_reuse": true,
+  "streaming": false,
+  "threads": false
+}
