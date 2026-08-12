@@ -1,0 +1,553 @@
+{
+  "calculation": {
+    "gold_compatible_candidate_retained": 11,
+    "operand_slots": 12,
+    "rows": [
+      {
+        "correct_candidate_rank": 1,
+        "gold_handles": [
+          "F01",
+          "F02",
+          "F03"
+        ],
+        "question_id": "aapl_fy2025_006",
+        "retained_gold_handles": [
+          "F03"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "slot_1"
+      },
+      {
+        "correct_candidate_rank": 2,
+        "gold_handles": [
+          "F01",
+          "F02",
+          "F03"
+        ],
+        "question_id": "aapl_fy2025_006",
+        "retained_gold_handles": [
+          "F01"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "slot_2"
+      },
+      {
+        "correct_candidate_rank": 5,
+        "gold_handles": [
+          "F10",
+          "F11"
+        ],
+        "question_id": "jpm_fy2025_006",
+        "retained_gold_handles": [
+          "F10"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "1"
+      },
+      {
+        "correct_candidate_rank": 5,
+        "gold_handles": [
+          "F10",
+          "F11"
+        ],
+        "question_id": "jpm_fy2025_006",
+        "retained_gold_handles": [
+          "F11"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "2"
+      },
+      {
+        "correct_candidate_rank": 3,
+        "gold_handles": [
+          "F07",
+          "F08",
+          "F09"
+        ],
+        "question_id": "ko_fy2025_006",
+        "retained_gold_handles": [
+          "F08"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "slot_1"
+      },
+      {
+        "correct_candidate_rank": 3,
+        "gold_handles": [
+          "F07",
+          "F08",
+          "F09"
+        ],
+        "question_id": "ko_fy2025_006",
+        "retained_gold_handles": [
+          "F09"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "slot_2"
+      },
+      {
+        "correct_candidate_rank": 1,
+        "gold_handles": [
+          "F01",
+          "F02",
+          "F03"
+        ],
+        "question_id": "pfe_fy2024_006",
+        "retained_gold_handles": [
+          "F01"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "1"
+      },
+      {
+        "correct_candidate_rank": 1,
+        "gold_handles": [
+          "F01",
+          "F02",
+          "F03"
+        ],
+        "question_id": "pfe_fy2024_006",
+        "retained_gold_handles": [
+          "F03"
+        ],
+        "shortlist_size": 4,
+        "slot_id": "2"
+      },
+      {
+        "correct_candidate_rank": 2,
+        "gold_handles": [
+          "F04",
+          "F05",
+          "F06"
+        ],
+        "question_id": "tsla_fy2025_006",
+        "retained_gold_handles": [
+          "F04"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "rev_fy2025"
+      },
+      {
+        "correct_candidate_rank": 2,
+        "gold_handles": [
+          "F04",
+          "F05",
+          "F06"
+        ],
+        "question_id": "tsla_fy2025_006",
+        "retained_gold_handles": [
+          "F05"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "rev_fy2024"
+      },
+      {
+        "correct_candidate_rank": 1,
+        "gold_handles": [
+          "F02",
+          "F03",
+          "F04"
+        ],
+        "question_id": "v_fy2025_006",
+        "retained_gold_handles": [
+          "F02"
+        ],
+        "shortlist_size": 1,
+        "slot_id": "s1"
+      },
+      {
+        "correct_candidate_rank": null,
+        "gold_handles": [],
+        "question_id": "v_fy2025_006",
+        "retained_gold_handles": [],
+        "shortlist_size": 1,
+        "slot_id": "s2"
+      }
+    ]
+  },
+  "correct_candidate_rank": {
+    "Top1": 18,
+    "Top2": 26,
+    "Top3": 29,
+    "Top5": 37
+  },
+  "direct": {
+    "gold_compatible_candidate_retained": 19,
+    "questions": 21,
+    "rows": [
+      {
+        "correct_candidate_rank": 2,
+        "gold_handles": [
+          "F04",
+          "F05",
+          "F06"
+        ],
+        "question_id": "aapl_fy2025_001",
+        "retained_gold_handles": [
+          "F06"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "slot_1"
+      },
+      {
+        "correct_candidate_rank": null,
+        "gold_handles": [
+          "F10",
+          "F11",
+          "F12"
+        ],
+        "question_id": "aapl_fy2025_002",
+        "retained_gold_handles": [],
+        "shortlist_size": 5,
+        "slot_id": "1"
+      },
+      {
+        "correct_candidate_rank": 4,
+        "gold_handles": [
+          "F01",
+          "F02",
+          "F03"
+        ],
+        "question_id": "aapl_fy2025_004",
+        "retained_gold_handles": [
+          "F03"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "1"
+      },
+      {
+        "correct_candidate_rank": 4,
+        "gold_handles": [
+          "F01",
+          "F02",
+          "F03"
+        ],
+        "question_id": "aapl_fy2025_009",
+        "retained_gold_handles": [
+          "F02"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "1"
+      },
+      {
+        "correct_candidate_rank": 5,
+        "gold_handles": [
+          "F19",
+          "F20"
+        ],
+        "question_id": "jpm_fy2025_001",
+        "retained_gold_handles": [
+          "F19"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "1"
+      },
+      {
+        "correct_candidate_rank": 1,
+        "gold_handles": [
+          "F01",
+          "F02"
+        ],
+        "question_id": "jpm_fy2025_002",
+        "retained_gold_handles": [
+          "F01"
+        ],
+        "shortlist_size": 3,
+        "slot_id": "1"
+      },
+      {
+        "correct_candidate_rank": 4,
+        "gold_handles": [
+          "F13",
+          "F14",
+          "F15"
+        ],
+        "question_id": "jpm_fy2025_003",
+        "retained_gold_handles": [
+          "F14"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "slot_1"
+      },
+      {
+        "correct_candidate_rank": 5,
+        "gold_handles": [
+          "F31",
+          "F32",
+          "F33"
+        ],
+        "question_id": "jpm_fy2025_004",
+        "retained_gold_handles": [
+          "F33"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "slot_1"
+      },
+      {
+        "correct_candidate_rank": null,
+        "gold_handles": [
+          "F34",
+          "F35",
+          "F36"
+        ],
+        "question_id": "jpm_fy2025_009",
+        "retained_gold_handles": [],
+        "shortlist_size": 5,
+        "slot_id": "1"
+      },
+      {
+        "correct_candidate_rank": 1,
+        "gold_handles": [
+          "F01",
+          "F02",
+          "F03"
+        ],
+        "question_id": "ko_fy2025_001",
+        "retained_gold_handles": [
+          "F02"
+        ],
+        "shortlist_size": 4,
+        "slot_id": "slot_1"
+      },
+      {
+        "correct_candidate_rank": 1,
+        "gold_handles": [
+          "F01",
+          "F02",
+          "F03"
+        ],
+        "question_id": "ko_fy2025_002",
+        "retained_gold_handles": [
+          "F01"
+        ],
+        "shortlist_size": 4,
+        "slot_id": "1"
+      },
+      {
+        "correct_candidate_rank": 2,
+        "gold_handles": [
+          "F01",
+          "F02",
+          "F03"
+        ],
+        "question_id": "ko_fy2025_003",
+        "retained_gold_handles": [
+          "F02"
+        ],
+        "shortlist_size": 4,
+        "slot_id": "slot_1"
+      },
+      {
+        "correct_candidate_rank": 5,
+        "gold_handles": [
+          "F04",
+          "F05",
+          "F06"
+        ],
+        "question_id": "msft_fy2025_001",
+        "retained_gold_handles": [
+          "F05"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "1"
+      },
+      {
+        "correct_candidate_rank": 3,
+        "gold_handles": [
+          "F01",
+          "F02",
+          "F03"
+        ],
+        "question_id": "msft_fy2025_003",
+        "retained_gold_handles": [
+          "F02"
+        ],
+        "shortlist_size": 3,
+        "slot_id": "1"
+      },
+      {
+        "correct_candidate_rank": 2,
+        "gold_handles": [
+          "F01",
+          "F02",
+          "F03"
+        ],
+        "question_id": "nvda_fy2025_002",
+        "retained_gold_handles": [
+          "F02"
+        ],
+        "shortlist_size": 2,
+        "slot_id": "1"
+      },
+      {
+        "correct_candidate_rank": 1,
+        "gold_handles": [
+          "F01",
+          "F02"
+        ],
+        "question_id": "nvda_fy2025_003",
+        "retained_gold_handles": [
+          "F01"
+        ],
+        "shortlist_size": 2,
+        "slot_id": "slot_1"
+      },
+      {
+        "correct_candidate_rank": 1,
+        "gold_handles": [
+          "F01",
+          "F02",
+          "F03"
+        ],
+        "question_id": "nvda_fy2025_004",
+        "retained_gold_handles": [
+          "F02"
+        ],
+        "shortlist_size": 1,
+        "slot_id": "data_center_revenue_fy2025"
+      },
+      {
+        "correct_candidate_rank": 1,
+        "gold_handles": [
+          "F01",
+          "F02",
+          "F03"
+        ],
+        "question_id": "nvda_fy2025_005",
+        "retained_gold_handles": [
+          "F01"
+        ],
+        "shortlist_size": 1,
+        "slot_id": "automotive_revenue_fy2025"
+      },
+      {
+        "correct_candidate_rank": 1,
+        "gold_handles": [
+          "F01",
+          "F02",
+          "F03"
+        ],
+        "question_id": "nvda_fy2025_009",
+        "retained_gold_handles": [
+          "F03"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "1"
+      },
+      {
+        "correct_candidate_rank": 2,
+        "gold_handles": [
+          "F04",
+          "F05",
+          "F06"
+        ],
+        "question_id": "pfe_fy2024_001",
+        "retained_gold_handles": [
+          "F04"
+        ],
+        "shortlist_size": 3,
+        "slot_id": "total_revenues_fy2024"
+      },
+      {
+        "correct_candidate_rank": 2,
+        "gold_handles": [
+          "F05",
+          "F06",
+          "F07"
+        ],
+        "question_id": "tsla_fy2025_001",
+        "retained_gold_handles": [
+          "F05"
+        ],
+        "shortlist_size": 5,
+        "slot_id": "1"
+      }
+    ]
+  },
+  "gold_reads_after_shortlist_seal": true,
+  "hard_gate": false,
+  "indistinguishable": {
+    "plausible_candidates_retained": 2,
+    "questions": 6,
+    "rows": [
+      {
+        "plausible_candidates_retained": true,
+        "question_id": "aapl_fy2025_003",
+        "shortlist_size": 5
+      },
+      {
+        "plausible_candidates_retained": false,
+        "question_id": "v_fy2025_001",
+        "shortlist_size": 1
+      },
+      {
+        "plausible_candidates_retained": false,
+        "question_id": "v_fy2025_002",
+        "shortlist_size": 1
+      },
+      {
+        "plausible_candidates_retained": false,
+        "question_id": "v_fy2025_003",
+        "shortlist_size": 1
+      },
+      {
+        "plausible_candidates_retained": false,
+        "question_id": "v_fy2025_004",
+        "shortlist_size": 1
+      },
+      {
+        "plausible_candidates_retained": true,
+        "question_id": "v_fy2025_009",
+        "shortlist_size": 3
+      }
+    ]
+  },
+  "shortlist_size": {
+    "distribution": {
+      "0": 0,
+      "1": 8,
+      "2": 4,
+      "3": 4,
+      "4": 7,
+      "5": 24
+    },
+    "max": 5,
+    "mean": 3.74468085106383,
+    "median": 5,
+    "p95": 5.0
+  },
+  "unbindable": {
+    "questions": 7,
+    "rows": [
+      {
+        "question_id": "jpm_fy2025_005",
+        "zero_eligible": false
+      },
+      {
+        "question_id": "msft_fy2025_002",
+        "zero_eligible": false
+      },
+      {
+        "question_id": "nvda_fy2025_007",
+        "zero_eligible": false
+      },
+      {
+        "question_id": "pfe_fy2024_002",
+        "zero_eligible": false
+      },
+      {
+        "question_id": "pfe_fy2024_004",
+        "zero_eligible": false
+      },
+      {
+        "question_id": "v_fy2025_006",
+        "zero_eligible": false
+      },
+      {
+        "question_id": "v_fy2025_007",
+        "zero_eligible": false
+      }
+    ],
+    "zero_eligible": 0
+  }
+}

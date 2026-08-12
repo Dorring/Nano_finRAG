@@ -1,0 +1,13 @@
+{
+  "additional_properties": false,
+  "decisions": [
+    "SELECT",
+    "NONE",
+    "AMBIGUOUS"
+  ],
+  "formulation": "deterministic_shortlist_comparative_v1",
+  "model": "qwen3.7-plus",
+  "one_provider_request_per_query": true,
+  "query_level_status": false,
+  "reasoning": false
+}

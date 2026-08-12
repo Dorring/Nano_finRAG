@@ -1,0 +1,22 @@
+{
+  "component": "BinderCandidateShortlistV1",
+  "formulation": "deterministic_shortlist_comparative_v1",
+  "gold_used": false,
+  "hard_rejection_rules": [
+    "provenance_invalid",
+    "explicit_period_conflict",
+    "explicit_unit_conflict"
+  ],
+  "max_candidates_per_slot": 5,
+  "model_calls": 0,
+  "preferred_candidates_per_slot": 3,
+  "ranking_weights": {
+    "normalized_metric_overlap": 5.0,
+    "period_exactness": 4.0,
+    "raw_metric_overlap": 3.0,
+    "row_header_overlap": 3.0,
+    "scope_overlap": 3.0,
+    "section_overlap": 1.0,
+    "statement_table_overlap": 2.0
+  }
+}

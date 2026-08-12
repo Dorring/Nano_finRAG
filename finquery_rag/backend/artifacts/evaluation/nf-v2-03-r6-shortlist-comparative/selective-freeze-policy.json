@@ -1,0 +1,18 @@
+{
+  "gold_conditioned_rules": 0,
+  "model": "qwen3.7-plus",
+  "otherwise": "MISSING_OR_AMBIGUOUS",
+  "policy": "selective_fail_closed_v1",
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "question_specific_rules": 0,
+  "reason": "R6 shortlist recall gate failure",
+  "release_bound_requires": [
+    "all_required_slots_have_exactly_one_shortlist_candidate",
+    "comparative_decision_SELECT",
+    "selected_handle_in_shortlist",
+    "Binding Validator pass"
+  ],
+  "released_bound_queries": 0,
+  "released_question_ids": []
+}

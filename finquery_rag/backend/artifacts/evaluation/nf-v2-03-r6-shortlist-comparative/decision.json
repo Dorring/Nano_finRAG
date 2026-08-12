@@ -1,0 +1,42 @@
+{
+  "base_commit": "bda77108dfaf545854041584336c8ea86767aac5",
+  "binder_formulation_effective": false,
+  "binder_model_frozen": "qwen3.7-plus",
+  "binder_task_formulation_frozen": false,
+  "diagnostic": "not_run",
+  "dominant_failure": "shortlist_recall_failure",
+  "formal_attempt_9": "not_run",
+  "formulation": "deterministic_shortlist_comparative_v1",
+  "gate": "NF-V2-03-R6",
+  "gold_reads_before_prediction_seal": 0,
+  "indistinguishable_safe": "not_run",
+  "model": "qwen3.7-plus",
+  "model_calls": 0,
+  "next_gate": "v2_03_selective_binder_freeze_review",
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "provider_calls_per_query": 0,
+  "shortlist_calculation_retention": "11/12",
+  "shortlist_direct_retention": "19/21",
+  "shortlist_distribution": {
+    "0": 0,
+    "1": 8,
+    "2": 4,
+    "3": 4,
+    "4": 7,
+    "5": 24
+  },
+  "shortlist_gate_thresholds": {
+    "calculation": "12/12",
+    "direct": "20/21"
+  },
+  "shortlist_hard_gate": false,
+  "shortlist_mean": 3.74468085106383,
+  "shortlist_median": 5,
+  "shortlist_p95": 5.0,
+  "shortlist_unbindable_zero_eligible": "0/7",
+  "structural_violations": "not_run",
+  "synthetic": "not_run",
+  "token_delta": "not_run",
+  "unbindable_false_binding": "not_run"
+}
