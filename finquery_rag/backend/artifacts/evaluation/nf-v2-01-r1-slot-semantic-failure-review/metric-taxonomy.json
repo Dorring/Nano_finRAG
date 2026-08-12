@@ -1,0 +1,22 @@
+{
+  "contract_normalization_recoverable": 15,
+  "counts": {
+    "SM0_evaluator_format_only": 7,
+    "SM10_derived_metric_misidentified": 0,
+    "SM11_multi_metric_slot_alignment_error": 2,
+    "SM12_other": 0,
+    "SM1_singular_plural_or_surface_form": 0,
+    "SM2_financial_synonym_same_semantics": 0,
+    "SM3_missing_metric_qualifier": 0,
+    "SM4_extra_metric_qualifier": 8,
+    "SM5_hierarchical_metric_too_broad": 0,
+    "SM6_hierarchical_metric_too_narrow": 0,
+    "SM7_wrong_financial_metric": 0,
+    "SM8_row_header_composition_loss": 0,
+    "SM9_segment_or_scope_loss": 0
+  },
+  "intrinsically_ambiguous": 0,
+  "prompt_extractable_semantic_error": 2,
+  "semantic_correct_evaluator_mismatch": 15,
+  "true_semantic_errors": 0
+}

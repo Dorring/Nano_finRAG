@@ -1,0 +1,68 @@
+{
+  "errors": [
+    {
+      "gold_slot_count": 2,
+      "gold_slots": [
+        {
+          "period": "FY2024",
+          "role": "period_1",
+          "target": "disclose guaranteed financial result"
+        },
+        {
+          "period": "FY2026",
+          "role": "period_2",
+          "target": "disclose guaranteed financial result"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "predicted_slot_count": 1,
+      "predicted_slots": [
+        {
+          "metric": "guaranteed FY2026 financial result",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SSC0_missing_slot",
+      "question": "Does Pfizer's FY2024 report disclose a guaranteed FY2026 financial result?",
+      "question_id": "pfe_fy2024_008",
+      "review_note": "two-period disclosure question was under-decomposed into one slot"
+    },
+    {
+      "gold_slot_count": 2,
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "period_1",
+          "target": "disclose guaranteed customer-specific vehicle purchase price"
+        },
+        {
+          "period": "FY2026",
+          "role": "period_2",
+          "target": "disclose guaranteed customer-specific vehicle purchase price"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "predicted_slot_count": 1,
+      "predicted_slots": [
+        {
+          "metric": "guaranteed customer-specific vehicle purchase price for FY2026",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SSC0_missing_slot",
+      "question": "Does Tesla's FY2025 report disclose a guaranteed customer-specific vehicle purchase price for FY2026?",
+      "question_id": "tsla_fy2025_008",
+      "review_note": "two-period disclosure question was under-decomposed into one slot"
+    }
+  ],
+  "slot_count_correct": 70,
+  "slot_count_total": 72
+}

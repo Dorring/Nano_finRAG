@@ -1,0 +1,20 @@
+{
+  "canonical_only_projected_accuracy": {
+    "accuracy": 0.9777777777777777,
+    "correct": 88,
+    "total": 90
+  },
+  "raw_metric_accuracy": {
+    "accuracy": 0.8111111111111111,
+    "correct": 73,
+    "total": 90
+  },
+  "semantic_correct_error_slots": 15,
+  "semantic_metric_accuracy": {
+    "accuracy": 0.9777777777777777,
+    "correct": 88,
+    "total": 90
+  },
+  "semantic_review_scope": "All 15 non-missing raw metric mismatches were manually judged financially equivalent; the two missing slots are structural decomposition failures rather than wrong metric semantics.",
+  "true_semantic_error_slots": 0
+}

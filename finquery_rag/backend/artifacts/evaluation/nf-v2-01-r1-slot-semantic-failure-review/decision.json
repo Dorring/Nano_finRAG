@@ -1,0 +1,17 @@
+{
+  "canonical_only_projected_accuracy": 0.9777777777777777,
+  "dominant_failure": "metric_evaluation_contract",
+  "evaluation_role": "development_shadow_v2_supervisor_slot_semantic_review",
+  "frozen_predictions_preserved": true,
+  "gate": "NF-V2-01-R1-slot-semantic-failure-review",
+  "model_calls": 0,
+  "model_switch_review_warranted": false,
+  "next_gate": "v2_01_metric_evaluation_contract_review",
+  "prompt_r2_warranted": false,
+  "prompt_recoverable_projected_accuracy": 1.0,
+  "raw_metric_accuracy": 0.8111111111111111,
+  "reranker_calls": 0,
+  "retrieval_calls": 0,
+  "semantic_metric_accuracy": 0.9777777777777777,
+  "supervisor_semantic_capability_sufficient": true
+}
