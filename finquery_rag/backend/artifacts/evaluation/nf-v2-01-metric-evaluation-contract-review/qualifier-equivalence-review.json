@@ -1,0 +1,88 @@
+{
+  "accepted_non_conflicting": 8,
+  "question_id_rules_added": 0,
+  "reviewed_cases": [
+    {
+      "apply_as_question_specific_alias": false,
+      "decision": "A_preserves_exact_requested_metric_identity",
+      "gold_metric": "gross margin",
+      "match_type": "NON_CONFLICTING_QUALIFIER_EQUIVALENT",
+      "predicted_metric": "gross margin percentage",
+      "question_id": "aapl_fy2025_003",
+      "rule_id": "qualifier_margin_percentage",
+      "slot_index": 0
+    },
+    {
+      "apply_as_question_specific_alias": false,
+      "decision": "A_preserves_exact_requested_metric_identity",
+      "gold_metric": "Intelligent Cloud",
+      "match_type": "NON_CONFLICTING_QUALIFIER_EQUIVALENT",
+      "predicted_metric": "Intelligent Cloud revenue",
+      "question_id": "msft_fy2025_007",
+      "rule_id": "qualifier_segment_revenue",
+      "slot_index": 0
+    },
+    {
+      "apply_as_question_specific_alias": false,
+      "decision": "A_preserves_exact_requested_metric_identity",
+      "gold_metric": "GAAP gross margin",
+      "match_type": "NON_CONFLICTING_QUALIFIER_EQUIVALENT",
+      "predicted_metric": "GAAP gross margin percentage",
+      "question_id": "nvda_fy2025_003",
+      "rule_id": "qualifier_margin_percentage",
+      "slot_index": 0
+    },
+    {
+      "apply_as_question_specific_alias": false,
+      "decision": "A_preserves_exact_requested_metric_identity",
+      "gold_metric": "GAAP gross margin",
+      "match_type": "NON_CONFLICTING_QUALIFIER_EQUIVALENT",
+      "predicted_metric": "GAAP gross margin percentage",
+      "question_id": "nvda_fy2025_007",
+      "rule_id": "qualifier_margin_percentage",
+      "slot_index": 1
+    },
+    {
+      "apply_as_question_specific_alias": false,
+      "decision": "A_preserves_exact_requested_metric_identity",
+      "gold_metric": "disclose guaranteed financial result",
+      "match_type": "NON_CONFLICTING_QUALIFIER_EQUIVALENT",
+      "predicted_metric": "guaranteed FY2026 financial result",
+      "question_id": "pfe_fy2024_008",
+      "rule_id": "qualifier_period_token",
+      "slot_index": 0
+    },
+    {
+      "apply_as_question_specific_alias": false,
+      "decision": "A_preserves_exact_requested_metric_identity",
+      "gold_metric": "disclose guaranteed customer-specific vehicle purchase price",
+      "match_type": "NON_CONFLICTING_QUALIFIER_EQUIVALENT",
+      "predicted_metric": "guaranteed customer-specific vehicle purchase price for FY2026",
+      "question_id": "tsla_fy2025_008",
+      "rule_id": "qualifier_period_token",
+      "slot_index": 0
+    },
+    {
+      "apply_as_question_specific_alias": false,
+      "decision": "A_preserves_exact_requested_metric_identity",
+      "gold_metric": "transactions processed on networks",
+      "match_type": "NON_CONFLICTING_QUALIFIER_EQUIVALENT",
+      "predicted_metric": "transactions processed on Visa's networks",
+      "question_id": "v_fy2025_003",
+      "rule_id": "qualifier_possessive_scope",
+      "slot_index": 0
+    },
+    {
+      "apply_as_question_specific_alias": false,
+      "decision": "A_preserves_exact_requested_metric_identity",
+      "gold_metric": "number of transactions processed on networks",
+      "match_type": "NON_CONFLICTING_QUALIFIER_EQUIVALENT",
+      "predicted_metric": "number of transactions processed on Visa's networks",
+      "question_id": "v_fy2025_007",
+      "rule_id": "qualifier_possessive_scope",
+      "slot_index": 1
+    }
+  ],
+  "reviewed_count": 8,
+  "scope_changing_rejected": 0
+}

@@ -1,0 +1,24 @@
+{
+  "frozen_prediction_unchanged": true,
+  "metric": {
+    "accuracy": 0.8111111111111111,
+    "correct": 73,
+    "total": 90
+  },
+  "period": {
+    "accuracy": 0.9777777777777777,
+    "correct": 88,
+    "total": 90
+  },
+  "prediction_sha256": "a8e6f256a12fe4b399ba6d9ed6bde611c321df7870533240a84f94f3fb3ce156",
+  "role": {
+    "accuracy": 0.8444444444444444,
+    "correct": 76,
+    "total": 90
+  },
+  "slot_count": {
+    "accuracy": 0.9722222222222222,
+    "correct": 70,
+    "total": 72
+  }
+}

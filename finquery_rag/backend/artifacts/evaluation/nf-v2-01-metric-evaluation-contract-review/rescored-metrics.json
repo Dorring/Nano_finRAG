@@ -1,0 +1,1409 @@
+{
+  "calculation_role_accuracy": {
+    "accuracy": 1.0,
+    "correct": 22,
+    "total": 22
+  },
+  "metric_match_breakdown": {
+    "CANONICAL_EQUIVALENT": 7,
+    "EXACT": 73,
+    "NON_CONFLICTING_QUALIFIER_EQUIVALENT": 8,
+    "NOT_EQUIVALENT": 2,
+    "SURFACE_NORMALIZED": 0
+  },
+  "metric_matches": [
+    {
+      "gold_metric": "total net sales",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total net sale",
+        "reference_normalized": "total net sale",
+        "rule_id": null
+      },
+      "predicted_metric": "total net sales",
+      "question": "What was total net sales reported by Apple in FY2025?",
+      "question_id": "aapl_fy2025_001",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Services net sales",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "service net sale",
+        "reference_normalized": "service net sale",
+        "rule_id": null
+      },
+      "predicted_metric": "Services net sales",
+      "question": "What was Services net sales reported by Apple in FY2025?",
+      "question_id": "aapl_fy2025_002",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "gross margin",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "NON_CONFLICTING_QUALIFIER_EQUIVALENT",
+        "matched": true,
+        "predicted_normalized": "gross margin percentage",
+        "reference_normalized": "gross margin",
+        "rule_id": "qualifier_margin_percentage"
+      },
+      "predicted_metric": "gross margin percentage",
+      "question": "What was gross margin percentage reported by Apple in FY2025?",
+      "question_id": "aapl_fy2025_003",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "iPhone net sales",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "iphone net sale",
+        "reference_normalized": "iphone net sale",
+        "rule_id": null
+      },
+      "predicted_metric": "iPhone net sales",
+      "question": "In the Net sales by product and service table, what was iPhone net sales in FY2025?",
+      "question_id": "aapl_fy2025_004",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Mac net sales",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "mac net sale",
+        "reference_normalized": "mac net sale",
+        "rule_id": null
+      },
+      "predicted_metric": "Mac net sales",
+      "question": "In the Net sales by product and service table, what was Mac net sales in FY2025?",
+      "question_id": "aapl_fy2025_005",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total net sales",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total net sale",
+        "reference_normalized": "total net sale",
+        "rule_id": null
+      },
+      "predicted_metric": "total net sales",
+      "question": "What was the year-over-year growth rate of total net sales reported by Apple from FY2024 to FY2025?",
+      "question_id": "aapl_fy2025_006",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total net sales",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total net sale",
+        "reference_normalized": "total net sale",
+        "rule_id": null
+      },
+      "predicted_metric": "total net sales",
+      "question": "What was the year-over-year growth rate of total net sales reported by Apple from FY2024 to FY2025?",
+      "question_id": "aapl_fy2025_006",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "iPhone net sales",
+      "intent": "MULTI_EVIDENCE",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "iphone net sale",
+        "reference_normalized": "iphone net sale",
+        "rule_id": null
+      },
+      "predicted_metric": "iPhone net sales",
+      "question": "Report both Apple's FY2025 iPhone net sales and Services net sales.",
+      "question_id": "aapl_fy2025_007",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Services net sales",
+      "intent": "MULTI_EVIDENCE",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "service net sale",
+        "reference_normalized": "service net sale",
+        "rule_id": null
+      },
+      "predicted_metric": "Services net sales",
+      "question": "Report both Apple's FY2025 iPhone net sales and Services net sales.",
+      "question_id": "aapl_fy2025_007",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "disclose accuracy of proprietary internal AI model",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "CANONICAL_EQUIVALENT",
+        "matched": true,
+        "predicted_normalized": "accuracy of proprietary internal ai model",
+        "reference_normalized": "disclose accuracy of proprietary internal ai model",
+        "rule_id": "canonical_disclosure_predicate_elision"
+      },
+      "predicted_metric": "accuracy of a proprietary internal AI model",
+      "question": "Does Apple's FY2025 report disclose the accuracy of a proprietary internal AI model?",
+      "question_id": "aapl_fy2025_008",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "iPhone net sales",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "iphone net sale",
+        "reference_normalized": "iphone net sale",
+        "rule_id": null
+      },
+      "predicted_metric": "iPhone net sales",
+      "question": "What was iPhone net sales in FY2024 rather than FY2025?",
+      "question_id": "aapl_fy2025_009",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total assets",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total asset",
+        "reference_normalized": "total asset",
+        "rule_id": null
+      },
+      "predicted_metric": "total assets",
+      "question": "What was total assets reported by JPMorgan in FY2025?",
+      "question_id": "jpm_fy2025_001",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total liabilities",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total liability",
+        "reference_normalized": "total liability",
+        "rule_id": null
+      },
+      "predicted_metric": "total liabilities",
+      "question": "What was total liabilities reported by JPMorgan in FY2025?",
+      "question_id": "jpm_fy2025_002",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "net income",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "net income",
+        "reference_normalized": "net income",
+        "rule_id": null
+      },
+      "predicted_metric": "net income",
+      "question": "What was net income reported by JPMorgan in FY2025?",
+      "question_id": "jpm_fy2025_003",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Consumer & Community Banking net income",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "consumer community banking net income",
+        "reference_normalized": "consumer community banking net income",
+        "rule_id": null
+      },
+      "predicted_metric": "Consumer & Community Banking net income",
+      "question": "In the Consumer & Community Banking financial results table, what was Consumer & Community Banking net income in FY2025?",
+      "question_id": "jpm_fy2025_004",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Commercial & Investment Bank net income",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "commercial investment bank net income",
+        "reference_normalized": "commercial investment bank net income",
+        "rule_id": null
+      },
+      "predicted_metric": "Commercial & Investment Bank net income",
+      "question": "In the Commercial & Investment Bank financial results table, what was Commercial & Investment Bank net income in FY2025?",
+      "question_id": "jpm_fy2025_005",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total assets",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total asset",
+        "reference_normalized": "total asset",
+        "rule_id": null
+      },
+      "predicted_metric": "total assets",
+      "question": "What was the year-over-year growth rate of total assets reported by JPMorgan from FY2024 to FY2025?",
+      "question_id": "jpm_fy2025_006",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total assets",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total asset",
+        "reference_normalized": "total asset",
+        "rule_id": null
+      },
+      "predicted_metric": "total assets",
+      "question": "What was the year-over-year growth rate of total assets reported by JPMorgan from FY2024 to FY2025?",
+      "question_id": "jpm_fy2025_006",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "Consumer & Community Banking net income",
+      "intent": "MULTI_EVIDENCE",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "consumer community banking net income",
+        "reference_normalized": "consumer community banking net income",
+        "rule_id": null
+      },
+      "predicted_metric": "Consumer & Community Banking net income",
+      "question": "Report both JPMorgan's FY2025 Consumer & Community Banking net income and total liabilities.",
+      "question_id": "jpm_fy2025_007",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total liabilities",
+      "intent": "MULTI_EVIDENCE",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total liability",
+        "reference_normalized": "total liability",
+        "rule_id": null
+      },
+      "predicted_metric": "total liabilities",
+      "question": "Report both JPMorgan's FY2025 Consumer & Community Banking net income and total liabilities.",
+      "question_id": "jpm_fy2025_007",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "disclose customer-level contract amount for individual client",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "CANONICAL_EQUIVALENT",
+        "matched": true,
+        "predicted_normalized": "customer level contract amount for individual client",
+        "reference_normalized": "disclose customer level contract amount for individual client",
+        "rule_id": "canonical_disclosure_predicate_elision"
+      },
+      "predicted_metric": "customer-level contract amount for an individual client",
+      "question": "Does JPMorgan's FY2025 report disclose a customer-level contract amount for an individual client?",
+      "question_id": "jpm_fy2025_008",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Consumer & Community Banking net income",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "consumer community banking net income",
+        "reference_normalized": "consumer community banking net income",
+        "rule_id": null
+      },
+      "predicted_metric": "Consumer & Community Banking net income",
+      "question": "What was Consumer & Community Banking net income in FY2024 rather than FY2025?",
+      "question_id": "jpm_fy2025_009",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "net operating revenues",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "net operating revenue",
+        "reference_normalized": "net operating revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "net operating revenues",
+      "question": "What was net operating revenues reported by The Coca-Cola Company in FY2025?",
+      "question_id": "ko_fy2025_001",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "operating income",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "operating income",
+        "reference_normalized": "operating income",
+        "rule_id": null
+      },
+      "predicted_metric": "operating income",
+      "question": "What was operating income reported by The Coca-Cola Company in FY2025?",
+      "question_id": "ko_fy2025_002",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "net income attributable to shareowners of",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "CANONICAL_EQUIVALENT",
+        "matched": true,
+        "predicted_normalized": "net income attributable to shareowner",
+        "reference_normalized": "net income attributable to shareowner of",
+        "rule_id": "canonical_terminal_function_word_elision"
+      },
+      "predicted_metric": "net income attributable to shareowners",
+      "question": "What was net income attributable to shareowners of The Coca-Cola Company in FY2025?",
+      "question_id": "ko_fy2025_003",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "EMEA total net operating revenues",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "emea total net operating revenue",
+        "reference_normalized": "emea total net operating revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "EMEA total net operating revenues",
+      "question": "In the operating segment net operating revenues table, what were EMEA total net operating revenues in FY2025?",
+      "question_id": "ko_fy2025_004",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "North America total net operating revenues",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "north america total net operating revenue",
+        "reference_normalized": "north america total net operating revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "North America total net operating revenues",
+      "question": "In the operating segment net operating revenues table, what were North America total net operating revenues in FY2025?",
+      "question_id": "ko_fy2025_005",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "net operating revenues",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "net operating revenue",
+        "reference_normalized": "net operating revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "net operating revenues",
+      "question": "What was the year-over-year growth rate of net operating revenues reported by The Coca-Cola Company from FY2024 to FY2025?",
+      "question_id": "ko_fy2025_006",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "net operating revenues",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "net operating revenue",
+        "reference_normalized": "net operating revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "net operating revenues",
+      "question": "What was the year-over-year growth rate of net operating revenues reported by The Coca-Cola Company from FY2024 to FY2025?",
+      "question_id": "ko_fy2025_006",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "EMEA third-party revenue",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "emea third party revenue",
+        "reference_normalized": "emea third party revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "EMEA third-party revenue",
+      "question": "What percentage of The Coca-Cola Company's FY2025 consolidated net operating revenues came from EMEA third-party revenue?",
+      "question_id": "ko_fy2025_007",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "consolidated net operating revenues",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "consolidated net operating revenue",
+        "reference_normalized": "consolidated net operating revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "consolidated net operating revenues",
+      "question": "What percentage of The Coca-Cola Company's FY2025 consolidated net operating revenues came from EMEA third-party revenue?",
+      "question_id": "ko_fy2025_007",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "s disclose exact output of one named manufacturing plant",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "CANONICAL_EQUIVALENT",
+        "matched": true,
+        "predicted_normalized": "exact output of one named manufacturing plant",
+        "reference_normalized": "s disclose exact output of one named manufacturing plant",
+        "rule_id": "canonical_disclosure_predicate_elision"
+      },
+      "predicted_metric": "exact output of one named manufacturing plant",
+      "question": "Does The Coca-Cola Company's FY2025 report disclose the exact output of one named manufacturing plant?",
+      "question_id": "ko_fy2025_008",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "EMEA total net operating revenues",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "emea total net operating revenue",
+        "reference_normalized": "emea total net operating revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "EMEA total net operating revenues",
+      "question": "What were EMEA total net operating revenues in FY2024?",
+      "question_id": "ko_fy2025_009",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total revenue",
+        "reference_normalized": "total revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "total revenue",
+      "question": "What was total revenue reported by Microsoft in FY2025?",
+      "question_id": "msft_fy2025_001",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Productivity and Business Processes revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "productivity and business process revenue",
+        "reference_normalized": "productivity and business process revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Productivity and Business Processes revenue",
+      "question": "What was Productivity and Business Processes revenue reported by Microsoft in FY2025?",
+      "question_id": "msft_fy2025_002",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "More Personal Computing revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "more personal computing revenue",
+        "reference_normalized": "more personal computing revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "More Personal Computing revenue",
+      "question": "What was More Personal Computing revenue reported by Microsoft in FY2025?",
+      "question_id": "msft_fy2025_003",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Intelligent Cloud revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "intelligent cloud revenue",
+        "reference_normalized": "intelligent cloud revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Intelligent Cloud revenue",
+      "question": "In the Revenue by segment table, what was Intelligent Cloud revenue in FY2025?",
+      "question_id": "msft_fy2025_004",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Productivity and Business Processes operating income",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "productivity and business process operating income",
+        "reference_normalized": "productivity and business process operating income",
+        "rule_id": null
+      },
+      "predicted_metric": "Productivity and Business Processes operating income",
+      "question": "In the reportable segment table, what was Productivity and Business Processes operating income in FY2025?",
+      "question_id": "msft_fy2025_005",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total revenue",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total revenue",
+        "reference_normalized": "total revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "total revenue",
+      "question": "What was the year-over-year growth rate of total revenue reported by Microsoft from FY2024 to FY2025?",
+      "question_id": "msft_fy2025_006",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total revenue",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total revenue",
+        "reference_normalized": "total revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "total revenue",
+      "question": "What was the year-over-year growth rate of total revenue reported by Microsoft from FY2024 to FY2025?",
+      "question_id": "msft_fy2025_006",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "Intelligent Cloud",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "NON_CONFLICTING_QUALIFIER_EQUIVALENT",
+        "matched": true,
+        "predicted_normalized": "intelligent cloud revenue",
+        "reference_normalized": "intelligent cloud",
+        "rule_id": "qualifier_segment_revenue"
+      },
+      "predicted_metric": "Intelligent Cloud revenue",
+      "question": "What percentage of Microsoft's total FY2025 revenue came from Intelligent Cloud?",
+      "question_id": "msft_fy2025_007",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total revenue",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total revenue",
+        "reference_normalized": "total revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "total revenue",
+      "question": "What percentage of Microsoft's total FY2025 revenue came from Intelligent Cloud?",
+      "question_id": "msft_fy2025_007",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "disclose customer-level contract renewal rate",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "CANONICAL_EQUIVALENT",
+        "matched": true,
+        "predicted_normalized": "customer level contract renewal rate",
+        "reference_normalized": "disclose customer level contract renewal rate",
+        "rule_id": "canonical_disclosure_predicate_elision"
+      },
+      "predicted_metric": "customer-level contract renewal rate",
+      "question": "Does Microsoft's FY2025 report disclose a customer-level contract renewal rate?",
+      "question_id": "msft_fy2025_008",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Intelligent Cloud revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "intelligent cloud revenue",
+        "reference_normalized": "intelligent cloud revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Intelligent Cloud revenue",
+      "question": "What was Intelligent Cloud revenue in FY2024 rather than FY2025?",
+      "question_id": "msft_fy2025_009",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total revenue",
+        "reference_normalized": "total revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "total revenue",
+      "question": "What was total revenue reported by NVIDIA in FY2025?",
+      "question_id": "nvda_fy2025_001",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Gaming revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "gaming revenue",
+        "reference_normalized": "gaming revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Gaming revenue",
+      "question": "What was Gaming revenue reported by NVIDIA in FY2025?",
+      "question_id": "nvda_fy2025_002",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "GAAP gross margin",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "NON_CONFLICTING_QUALIFIER_EQUIVALENT",
+        "matched": true,
+        "predicted_normalized": "gaap gross margin percentage",
+        "reference_normalized": "gaap gross margin",
+        "rule_id": "qualifier_margin_percentage"
+      },
+      "predicted_metric": "GAAP gross margin percentage",
+      "question": "What was GAAP gross margin percentage reported by NVIDIA in FY2025?",
+      "question_id": "nvda_fy2025_003",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Data Center revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "data center revenue",
+        "reference_normalized": "data center revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Data Center revenue",
+      "question": "In the Revenue by End Market table, what was Data Center revenue in FY2025?",
+      "question_id": "nvda_fy2025_004",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Automotive revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "automotive revenue",
+        "reference_normalized": "automotive revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Automotive revenue",
+      "question": "In the Revenue by End Market table, what was Automotive revenue in FY2025?",
+      "question_id": "nvda_fy2025_005",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total revenue",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total revenue",
+        "reference_normalized": "total revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "total revenue",
+      "question": "What was the year-over-year growth rate of total revenue reported by NVIDIA from FY2024 to FY2025?",
+      "question_id": "nvda_fy2025_006",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total revenue",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total revenue",
+        "reference_normalized": "total revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "total revenue",
+      "question": "What was the year-over-year growth rate of total revenue reported by NVIDIA from FY2024 to FY2025?",
+      "question_id": "nvda_fy2025_006",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "Data Center revenue",
+      "intent": "MULTI_EVIDENCE",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "data center revenue",
+        "reference_normalized": "data center revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Data Center revenue",
+      "question": "Report both NVIDIA's FY2025 Data Center revenue and GAAP gross margin percentage.",
+      "question_id": "nvda_fy2025_007",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "GAAP gross margin",
+      "intent": "MULTI_EVIDENCE",
+      "match": {
+        "match_type": "NON_CONFLICTING_QUALIFIER_EQUIVALENT",
+        "matched": true,
+        "predicted_normalized": "gaap gross margin percentage",
+        "reference_normalized": "gaap gross margin",
+        "rule_id": "qualifier_margin_percentage"
+      },
+      "predicted_metric": "GAAP gross margin percentage",
+      "question": "Report both NVIDIA's FY2025 Data Center revenue and GAAP gross margin percentage.",
+      "question_id": "nvda_fy2025_007",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "disclose customer-level Data Center revenue amount",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "CANONICAL_EQUIVALENT",
+        "matched": true,
+        "predicted_normalized": "customer level data center revenue amount",
+        "reference_normalized": "disclose customer level data center revenue amount",
+        "rule_id": "canonical_disclosure_predicate_elision"
+      },
+      "predicted_metric": "customer-level Data Center revenue amount",
+      "question": "Does NVIDIA's FY2025 report disclose a customer-level Data Center revenue amount?",
+      "question_id": "nvda_fy2025_008",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Data Center revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "data center revenue",
+        "reference_normalized": "data center revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Data Center revenue",
+      "question": "What was Data Center revenue in FY2024 rather than FY2025?",
+      "question_id": "nvda_fy2025_009",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total revenues",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total revenue",
+        "reference_normalized": "total revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "total revenues",
+      "question": "What was total revenues reported by Pfizer in FY2024?",
+      "question_id": "pfe_fy2024_001",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Comirnaty revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "comirnaty revenue",
+        "reference_normalized": "comirnaty revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Comirnaty revenue",
+      "question": "What was Comirnaty revenue reported by Pfizer in FY2024?",
+      "question_id": "pfe_fy2024_002",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Eliquis revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "eliqui revenue",
+        "reference_normalized": "eliqui revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Eliquis revenue",
+      "question": "What was Eliquis revenue reported by Pfizer in FY2024?",
+      "question_id": "pfe_fy2024_003",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Paxlovid revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "paxlovid revenue",
+        "reference_normalized": "paxlovid revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Paxlovid revenue",
+      "question": "In the Selected product revenues table, what was Paxlovid revenue in FY2024?",
+      "question_id": "pfe_fy2024_004",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Prevnar family revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "prevnar family revenue",
+        "reference_normalized": "prevnar family revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Prevnar family revenue",
+      "question": "In the Selected product revenues table, what was Prevnar family revenue in FY2024?",
+      "question_id": "pfe_fy2024_005",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total revenues",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total revenue",
+        "reference_normalized": "total revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "total revenues",
+      "question": "What was the year-over-year growth rate of total revenues reported by Pfizer from FY2023 to FY2024?",
+      "question_id": "pfe_fy2024_006",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total revenues",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total revenue",
+        "reference_normalized": "total revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "total revenues",
+      "question": "What was the year-over-year growth rate of total revenues reported by Pfizer from FY2023 to FY2024?",
+      "question_id": "pfe_fy2024_006",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "Comirnaty revenue",
+      "intent": "MULTI_EVIDENCE",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "comirnaty revenue",
+        "reference_normalized": "comirnaty revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Comirnaty revenue",
+      "question": "Report both Pfizer's FY2024 Comirnaty revenue and research and development expense.",
+      "question_id": "pfe_fy2024_007",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "research and development expense",
+      "intent": "MULTI_EVIDENCE",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "research and development expense",
+        "reference_normalized": "research and development expense",
+        "rule_id": null
+      },
+      "predicted_metric": "research and development expense",
+      "question": "Report both Pfizer's FY2024 Comirnaty revenue and research and development expense.",
+      "question_id": "pfe_fy2024_007",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "disclose guaranteed financial result",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "NON_CONFLICTING_QUALIFIER_EQUIVALENT",
+        "matched": true,
+        "predicted_normalized": "guaranteed fy2026 financial result",
+        "reference_normalized": "disclose guaranteed financial result",
+        "rule_id": "qualifier_period_token"
+      },
+      "predicted_metric": "guaranteed FY2026 financial result",
+      "question": "Does Pfizer's FY2024 report disclose a guaranteed FY2026 financial result?",
+      "question_id": "pfe_fy2024_008",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "disclose guaranteed financial result",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "NOT_EQUIVALENT",
+        "matched": false,
+        "predicted_normalized": "",
+        "reference_normalized": "disclose guaranteed financial result",
+        "rule_id": null
+      },
+      "predicted_metric": null,
+      "question": "Does Pfizer's FY2024 report disclose a guaranteed FY2026 financial result?",
+      "question_id": "pfe_fy2024_008",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "Paxlovid revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "paxlovid revenue",
+        "reference_normalized": "paxlovid revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Paxlovid revenue",
+      "question": "What was Paxlovid revenue in FY2023 rather than FY2024?",
+      "question_id": "pfe_fy2024_009",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total revenues",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total revenue",
+        "reference_normalized": "total revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "total revenues",
+      "question": "What was total revenues reported by Tesla in FY2025?",
+      "question_id": "tsla_fy2025_001",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Services and other revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "service and other revenue",
+        "reference_normalized": "service and other revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Services and other revenue",
+      "question": "What was Services and other revenue reported by Tesla in FY2025?",
+      "question_id": "tsla_fy2025_002",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Automotive regulatory credits revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "automotive regulatory credit revenue",
+        "reference_normalized": "automotive regulatory credit revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Automotive regulatory credits revenue",
+      "question": "What was Automotive regulatory credits revenue reported by Tesla in FY2025?",
+      "question_id": "tsla_fy2025_003",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Total automotive revenues",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total automotive revenue",
+        "reference_normalized": "total automotive revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Total automotive revenues",
+      "question": "What were Tesla's Total automotive revenues in FY2025?",
+      "question_id": "tsla_fy2025_004",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Energy generation and storage segment revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "energy generation and storage segment revenue",
+        "reference_normalized": "energy generation and storage segment revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Energy generation and storage segment revenue",
+      "question": "In the Results of Operations revenue table, what was Energy generation and storage segment revenue in FY2025?",
+      "question_id": "tsla_fy2025_005",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total revenues",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total revenue",
+        "reference_normalized": "total revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "total revenues",
+      "question": "What was the year-over-year growth rate of total revenues reported by Tesla from FY2024 to FY2025?",
+      "question_id": "tsla_fy2025_006",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total revenues",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total revenue",
+        "reference_normalized": "total revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "total revenues",
+      "question": "What was the year-over-year growth rate of total revenues reported by Tesla from FY2024 to FY2025?",
+      "question_id": "tsla_fy2025_006",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "Total automotive revenues",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total automotive revenue",
+        "reference_normalized": "total automotive revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Total automotive revenues",
+      "question": "Which was higher in FY2025: Tesla's Total automotive revenues or Energy generation and storage segment revenue, and by how much?",
+      "question_id": "tsla_fy2025_007",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "Energy generation and storage segment revenue",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "energy generation and storage segment revenue",
+        "reference_normalized": "energy generation and storage segment revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Energy generation and storage segment revenue",
+      "question": "Which was higher in FY2025: Tesla's Total automotive revenues or Energy generation and storage segment revenue, and by how much?",
+      "question_id": "tsla_fy2025_007",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "disclose guaranteed customer-specific vehicle purchase price",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "NON_CONFLICTING_QUALIFIER_EQUIVALENT",
+        "matched": true,
+        "predicted_normalized": "guaranteed customer specific vehicle purchase price for fy2026",
+        "reference_normalized": "disclose guaranteed customer specific vehicle purchase price",
+        "rule_id": "qualifier_period_token"
+      },
+      "predicted_metric": "guaranteed customer-specific vehicle purchase price for FY2026",
+      "question": "Does Tesla's FY2025 report disclose a guaranteed customer-specific vehicle purchase price for FY2026?",
+      "question_id": "tsla_fy2025_008",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "disclose guaranteed customer-specific vehicle purchase price",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "NOT_EQUIVALENT",
+        "matched": false,
+        "predicted_normalized": "",
+        "reference_normalized": "disclose guaranteed customer specific vehicle purchase price",
+        "rule_id": null
+      },
+      "predicted_metric": null,
+      "question": "Does Tesla's FY2025 report disclose a guaranteed customer-specific vehicle purchase price for FY2026?",
+      "question_id": "tsla_fy2025_008",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "Total automotive revenues",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total automotive revenue",
+        "reference_normalized": "total automotive revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "Total automotive revenues",
+      "question": "What were Tesla's Total automotive revenues in FY2024?",
+      "question_id": "tsla_fy2025_009",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "net revenue",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "net revenue",
+        "reference_normalized": "net revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "net revenue",
+      "question": "What was net revenue reported by Visa in FY2025?",
+      "question_id": "v_fy2025_001",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "total volume",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "total volume",
+        "reference_normalized": "total volume",
+        "rule_id": null
+      },
+      "predicted_metric": "total volume",
+      "question": "What was total volume reported by Visa in FY2025?",
+      "question_id": "v_fy2025_002",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "transactions processed on networks",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "NON_CONFLICTING_QUALIFIER_EQUIVALENT",
+        "matched": true,
+        "predicted_normalized": "transaction processed on visa's network",
+        "reference_normalized": "transaction processed on network",
+        "rule_id": "qualifier_possessive_scope"
+      },
+      "predicted_metric": "transactions processed on Visa's networks",
+      "question": "How many transactions were processed on Visa's networks in FY2025?",
+      "question_id": "v_fy2025_003",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "payments volume",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "payment volume",
+        "reference_normalized": "payment volume",
+        "rule_id": null
+      },
+      "predicted_metric": "payments volume",
+      "question": "In the Operational highlights table, what was payments volume in FY2025?",
+      "question_id": "v_fy2025_004",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "GAAP net income",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "gaap net income",
+        "reference_normalized": "gaap net income",
+        "rule_id": null
+      },
+      "predicted_metric": "GAAP net income",
+      "question": "In the Consolidated statements of operations table, what was Visa's GAAP net income in FY2025?",
+      "question_id": "v_fy2025_005",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "net revenue",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "net revenue",
+        "reference_normalized": "net revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "net revenue",
+      "question": "What was the year-over-year growth rate of net revenue reported by Visa from FY2024 to FY2025?",
+      "question_id": "v_fy2025_006",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "net revenue",
+      "intent": "CALCULATION",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "net revenue",
+        "reference_normalized": "net revenue",
+        "rule_id": null
+      },
+      "predicted_metric": "net revenue",
+      "question": "What was the year-over-year growth rate of net revenue reported by Visa from FY2024 to FY2025?",
+      "question_id": "v_fy2025_006",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "payments volume",
+      "intent": "MULTI_EVIDENCE",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "payment volume",
+        "reference_normalized": "payment volume",
+        "rule_id": null
+      },
+      "predicted_metric": "payments volume",
+      "question": "Report both Visa's FY2025 payments volume and the number of transactions processed on Visa's networks.",
+      "question_id": "v_fy2025_007",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "number of transactions processed on networks",
+      "intent": "MULTI_EVIDENCE",
+      "match": {
+        "match_type": "NON_CONFLICTING_QUALIFIER_EQUIVALENT",
+        "matched": true,
+        "predicted_normalized": "number of transaction processed on visa's network",
+        "reference_normalized": "number of transaction processed on network",
+        "rule_id": "qualifier_possessive_scope"
+      },
+      "predicted_metric": "number of transactions processed on Visa's networks",
+      "question": "Report both Visa's FY2025 payments volume and the number of transactions processed on Visa's networks.",
+      "question_id": "v_fy2025_007",
+      "slot_index": 1
+    },
+    {
+      "gold_metric": "disclose internal employee performance accuracy metric",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "CANONICAL_EQUIVALENT",
+        "matched": true,
+        "predicted_normalized": "internal employee performance accuracy metric",
+        "reference_normalized": "disclose internal employee performance accuracy metric",
+        "rule_id": "canonical_disclosure_predicate_elision"
+      },
+      "predicted_metric": "internal employee performance accuracy metric",
+      "question": "Does Visa's FY2025 report disclose an internal employee performance accuracy metric?",
+      "question_id": "v_fy2025_008",
+      "slot_index": 0
+    },
+    {
+      "gold_metric": "payments volume",
+      "intent": "DIRECT_FACT",
+      "match": {
+        "match_type": "EXACT",
+        "matched": true,
+        "predicted_normalized": "payment volume",
+        "reference_normalized": "payment volume",
+        "rule_id": null
+      },
+      "predicted_metric": "payments volume",
+      "question": "What was payments volume in FY2024 rather than FY2025?",
+      "question_id": "v_fy2025_009",
+      "slot_index": 0
+    }
+  ],
+  "operational_role_accuracy": {
+    "accuracy": 1.0,
+    "correct": 6,
+    "total": 6
+  },
+  "period_accuracy": {
+    "accuracy": 0.9777777777777777,
+    "correct": 88,
+    "total": 90
+  },
+  "prediction_sha256": "a8e6f256a12fe4b399ba6d9ed6bde611c321df7870533240a84f94f3fb3ce156",
+  "raw_metrics": {
+    "metric": {
+      "accuracy": 0.8111111111111111,
+      "correct": 73,
+      "total": 90
+    },
+    "period": {
+      "accuracy": 0.9777777777777777,
+      "correct": 88,
+      "total": 90
+    },
+    "role": {
+      "accuracy": 0.8444444444444444,
+      "correct": 76,
+      "total": 90
+    },
+    "slot_count": {
+      "accuracy": 0.9722222222222222,
+      "correct": 70,
+      "total": 72
+    }
+  },
+  "semantic_metric_accuracy_v2": {
+    "accuracy": 0.9777777777777777,
+    "correct": 88,
+    "total": 90
+  },
+  "slot_count_accuracy": {
+    "accuracy": 0.9722222222222222,
+    "correct": 70,
+    "total": 72
+  }
+}

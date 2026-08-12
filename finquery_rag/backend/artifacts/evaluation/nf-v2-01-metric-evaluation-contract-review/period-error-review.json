@@ -1,0 +1,26 @@
+{
+  "errors": [
+    {
+      "gold_period": "FY2026",
+      "intent": "DIRECT_FACT",
+      "predicted_period": null,
+      "primary_taxonomy": "SPER4_missing_period",
+      "question": "Does Pfizer's FY2024 report disclose a guaranteed FY2026 financial result?",
+      "question_id": "pfe_fy2024_008",
+      "review_note": "missing second period is caused by slot under-decomposition, not a fiscal/calendar normalization error",
+      "slot_index": 1
+    },
+    {
+      "gold_period": "FY2026",
+      "intent": "DIRECT_FACT",
+      "predicted_period": null,
+      "primary_taxonomy": "SPER4_missing_period",
+      "question": "Does Tesla's FY2025 report disclose a guaranteed customer-specific vehicle purchase price for FY2026?",
+      "question_id": "tsla_fy2025_008",
+      "review_note": "missing second period is caused by slot under-decomposition, not a fiscal/calendar normalization error",
+      "slot_index": 1
+    }
+  ],
+  "period_correct": 88,
+  "period_total": 90
+}

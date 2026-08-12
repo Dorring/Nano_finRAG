@@ -1,0 +1,87 @@
+{
+  "all_benchmark_specific_alias_false": true,
+  "all_gold_value_dependency_false": true,
+  "all_question_id_dependency_false": true,
+  "rules": [
+    {
+      "benchmark_specific_alias": false,
+      "generalizable": true,
+      "gold_value_dependency": false,
+      "question_id_dependency": false,
+      "rule_id": "surface_nfkc_case_whitespace",
+      "rule_type": "surface_normalization"
+    },
+    {
+      "benchmark_specific_alias": false,
+      "generalizable": true,
+      "gold_value_dependency": false,
+      "question_id_dependency": false,
+      "rule_id": "surface_punctuation_normalization",
+      "rule_type": "surface_normalization"
+    },
+    {
+      "benchmark_specific_alias": false,
+      "generalizable": true,
+      "gold_value_dependency": false,
+      "question_id_dependency": false,
+      "rule_id": "surface_simple_singular_plural",
+      "rule_type": "surface_normalization"
+    },
+    {
+      "benchmark_specific_alias": false,
+      "generalizable": true,
+      "gold_value_dependency": false,
+      "question_id_dependency": false,
+      "rule_id": "surface_grammatical_article_elision",
+      "rule_type": "surface_normalization"
+    },
+    {
+      "benchmark_specific_alias": false,
+      "generalizable": true,
+      "gold_value_dependency": false,
+      "question_id_dependency": false,
+      "rule_id": "canonical_disclosure_predicate_elision",
+      "rule_type": "canonical_equivalence"
+    },
+    {
+      "benchmark_specific_alias": false,
+      "generalizable": true,
+      "gold_value_dependency": false,
+      "question_id_dependency": false,
+      "rule_id": "canonical_terminal_function_word_elision",
+      "rule_type": "canonical_equivalence"
+    },
+    {
+      "benchmark_specific_alias": false,
+      "generalizable": true,
+      "gold_value_dependency": false,
+      "question_id_dependency": false,
+      "rule_id": "qualifier_margin_percentage",
+      "rule_type": "non_conflicting_qualifier"
+    },
+    {
+      "benchmark_specific_alias": false,
+      "generalizable": true,
+      "gold_value_dependency": false,
+      "question_id_dependency": false,
+      "rule_id": "qualifier_segment_revenue",
+      "rule_type": "non_conflicting_qualifier"
+    },
+    {
+      "benchmark_specific_alias": false,
+      "generalizable": true,
+      "gold_value_dependency": false,
+      "question_id_dependency": false,
+      "rule_id": "qualifier_possessive_scope",
+      "rule_type": "non_conflicting_qualifier"
+    },
+    {
+      "benchmark_specific_alias": false,
+      "generalizable": true,
+      "gold_value_dependency": false,
+      "question_id_dependency": false,
+      "rule_id": "qualifier_period_token",
+      "rule_type": "non_conflicting_qualifier"
+    }
+  ]
+}

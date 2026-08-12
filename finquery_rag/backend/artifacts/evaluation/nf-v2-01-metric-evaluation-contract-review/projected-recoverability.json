@@ -1,0 +1,27 @@
+{
+  "canonical_only_projected_accuracy": {
+    "accuracy": 0.9777777777777777,
+    "correct": 88,
+    "total": 90
+  },
+  "prompt_recoverable_projected_accuracy": {
+    "accuracy": 1.0,
+    "correct": 90,
+    "total": 90
+  },
+  "raw_metric_accuracy": {
+    "accuracy": 0.8111111111111111,
+    "correct": 73,
+    "total": 90
+  },
+  "recovery_buckets_no_double_count": {
+    "canonical_only_increment": 15,
+    "prompt_only_increment": 2,
+    "raw_strict": 73
+  },
+  "semantic_metric_accuracy": {
+    "accuracy": 0.9777777777777777,
+    "correct": 88,
+    "total": 90
+  }
+}

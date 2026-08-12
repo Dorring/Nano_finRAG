@@ -1,0 +1,12 @@
+{
+  "match_types": [
+    "EXACT",
+    "SURFACE_NORMALIZED",
+    "CANONICAL_EQUIVALENT",
+    "NON_CONFLICTING_QUALIFIER_EQUIVALENT",
+    "NOT_EQUIVALENT"
+  ],
+  "matching": "deterministic normalized equality, canonical contract, and reviewed non-conflicting qualifier rules; no fuzzy score, embeddings, LLM judge, or substring matching",
+  "metric_total": 90,
+  "sealed_predictions_only": true
+}

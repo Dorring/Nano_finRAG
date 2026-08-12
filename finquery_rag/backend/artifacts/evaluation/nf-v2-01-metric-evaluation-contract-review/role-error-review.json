@@ -1,0 +1,543 @@
+{
+  "calculation": {
+    "accuracy": 1.0,
+    "correct": 22,
+    "total": 22
+  },
+  "errors": [
+    {
+      "gold_role": "left",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "left",
+          "target": "iPhone net sales"
+        },
+        {
+          "period": "FY2025",
+          "role": "right",
+          "target": "Services net sales"
+        }
+      ],
+      "intent": "MULTI_EVIDENCE",
+      "predicted_role": "value",
+      "predicted_slots": [
+        {
+          "metric": "iPhone net sales",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "1",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "Services net sales",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "2",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SR1_surface_role_name_mismatch",
+      "question": "Report both Apple's FY2025 iPhone net sales and Services net sales.",
+      "question_id": "aapl_fy2025_007",
+      "review_note": "multi-evidence positional left role emitted as generic value",
+      "slot_index": 0
+    },
+    {
+      "gold_role": "right",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "left",
+          "target": "iPhone net sales"
+        },
+        {
+          "period": "FY2025",
+          "role": "right",
+          "target": "Services net sales"
+        }
+      ],
+      "intent": "MULTI_EVIDENCE",
+      "predicted_role": "value",
+      "predicted_slots": [
+        {
+          "metric": "iPhone net sales",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "1",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "Services net sales",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "2",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SR1_surface_role_name_mismatch",
+      "question": "Report both Apple's FY2025 iPhone net sales and Services net sales.",
+      "question_id": "aapl_fy2025_007",
+      "review_note": "multi-evidence positional right role emitted as generic value",
+      "slot_index": 1
+    },
+    {
+      "gold_role": "left",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "left",
+          "target": "Consumer & Community Banking net income"
+        },
+        {
+          "period": "FY2025",
+          "role": "right",
+          "target": "total liabilities"
+        }
+      ],
+      "intent": "MULTI_EVIDENCE",
+      "predicted_role": "value",
+      "predicted_slots": [
+        {
+          "metric": "Consumer & Community Banking net income",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "total liabilities",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_2",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SR1_surface_role_name_mismatch",
+      "question": "Report both JPMorgan's FY2025 Consumer & Community Banking net income and total liabilities.",
+      "question_id": "jpm_fy2025_007",
+      "review_note": "multi-evidence positional left role emitted as generic value",
+      "slot_index": 0
+    },
+    {
+      "gold_role": "right",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "left",
+          "target": "Consumer & Community Banking net income"
+        },
+        {
+          "period": "FY2025",
+          "role": "right",
+          "target": "total liabilities"
+        }
+      ],
+      "intent": "MULTI_EVIDENCE",
+      "predicted_role": "value",
+      "predicted_slots": [
+        {
+          "metric": "Consumer & Community Banking net income",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "total liabilities",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_2",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SR1_surface_role_name_mismatch",
+      "question": "Report both JPMorgan's FY2025 Consumer & Community Banking net income and total liabilities.",
+      "question_id": "jpm_fy2025_007",
+      "review_note": "multi-evidence positional right role emitted as generic value",
+      "slot_index": 1
+    },
+    {
+      "gold_role": "left",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "left",
+          "target": "Data Center revenue"
+        },
+        {
+          "period": "FY2025",
+          "role": "right",
+          "target": "GAAP gross margin"
+        }
+      ],
+      "intent": "MULTI_EVIDENCE",
+      "predicted_role": "value",
+      "predicted_slots": [
+        {
+          "metric": "Data Center revenue",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "GAAP gross margin percentage",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_2",
+          "unit": null,
+          "value_type": "percentage"
+        }
+      ],
+      "primary_taxonomy": "SR1_surface_role_name_mismatch",
+      "question": "Report both NVIDIA's FY2025 Data Center revenue and GAAP gross margin percentage.",
+      "question_id": "nvda_fy2025_007",
+      "review_note": "multi-evidence positional left role emitted as generic value",
+      "slot_index": 0
+    },
+    {
+      "gold_role": "right",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "left",
+          "target": "Data Center revenue"
+        },
+        {
+          "period": "FY2025",
+          "role": "right",
+          "target": "GAAP gross margin"
+        }
+      ],
+      "intent": "MULTI_EVIDENCE",
+      "predicted_role": "value",
+      "predicted_slots": [
+        {
+          "metric": "Data Center revenue",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "GAAP gross margin percentage",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_2",
+          "unit": null,
+          "value_type": "percentage"
+        }
+      ],
+      "primary_taxonomy": "SR1_surface_role_name_mismatch",
+      "question": "Report both NVIDIA's FY2025 Data Center revenue and GAAP gross margin percentage.",
+      "question_id": "nvda_fy2025_007",
+      "review_note": "multi-evidence positional right role emitted as generic value",
+      "slot_index": 1
+    },
+    {
+      "gold_role": "left",
+      "gold_slots": [
+        {
+          "period": "FY2024",
+          "role": "left",
+          "target": "Comirnaty revenue"
+        },
+        {
+          "period": "FY2024",
+          "role": "right",
+          "target": "research and development expense"
+        }
+      ],
+      "intent": "MULTI_EVIDENCE",
+      "predicted_role": "value",
+      "predicted_slots": [
+        {
+          "metric": "Comirnaty revenue",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "1",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "research and development expense",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "2",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SR1_surface_role_name_mismatch",
+      "question": "Report both Pfizer's FY2024 Comirnaty revenue and research and development expense.",
+      "question_id": "pfe_fy2024_007",
+      "review_note": "multi-evidence positional left role emitted as generic value",
+      "slot_index": 0
+    },
+    {
+      "gold_role": "right",
+      "gold_slots": [
+        {
+          "period": "FY2024",
+          "role": "left",
+          "target": "Comirnaty revenue"
+        },
+        {
+          "period": "FY2024",
+          "role": "right",
+          "target": "research and development expense"
+        }
+      ],
+      "intent": "MULTI_EVIDENCE",
+      "predicted_role": "value",
+      "predicted_slots": [
+        {
+          "metric": "Comirnaty revenue",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "1",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "research and development expense",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "2",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SR1_surface_role_name_mismatch",
+      "question": "Report both Pfizer's FY2024 Comirnaty revenue and research and development expense.",
+      "question_id": "pfe_fy2024_007",
+      "review_note": "multi-evidence positional right role emitted as generic value",
+      "slot_index": 1
+    },
+    {
+      "gold_role": "period_1",
+      "gold_slots": [
+        {
+          "period": "FY2024",
+          "role": "period_1",
+          "target": "disclose guaranteed financial result"
+        },
+        {
+          "period": "FY2026",
+          "role": "period_2",
+          "target": "disclose guaranteed financial result"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "predicted_role": "value",
+      "predicted_slots": [
+        {
+          "metric": "guaranteed FY2026 financial result",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SR1_surface_role_name_mismatch",
+      "question": "Does Pfizer's FY2024 report disclose a guaranteed FY2026 financial result?",
+      "question_id": "pfe_fy2024_008",
+      "review_note": "period_1 role was collapsed to generic value",
+      "slot_index": 0
+    },
+    {
+      "gold_role": "period_2",
+      "gold_slots": [
+        {
+          "period": "FY2024",
+          "role": "period_1",
+          "target": "disclose guaranteed financial result"
+        },
+        {
+          "period": "FY2026",
+          "role": "period_2",
+          "target": "disclose guaranteed financial result"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "predicted_role": null,
+      "predicted_slots": [
+        {
+          "metric": "guaranteed FY2026 financial result",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SR6_role_missing",
+      "question": "Does Pfizer's FY2024 report disclose a guaranteed FY2026 financial result?",
+      "question_id": "pfe_fy2024_008",
+      "review_note": "period_2 slot and role were omitted",
+      "slot_index": 1
+    },
+    {
+      "gold_role": "period_1",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "period_1",
+          "target": "disclose guaranteed customer-specific vehicle purchase price"
+        },
+        {
+          "period": "FY2026",
+          "role": "period_2",
+          "target": "disclose guaranteed customer-specific vehicle purchase price"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "predicted_role": "value",
+      "predicted_slots": [
+        {
+          "metric": "guaranteed customer-specific vehicle purchase price for FY2026",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SR1_surface_role_name_mismatch",
+      "question": "Does Tesla's FY2025 report disclose a guaranteed customer-specific vehicle purchase price for FY2026?",
+      "question_id": "tsla_fy2025_008",
+      "review_note": "period_1 role was collapsed to generic value",
+      "slot_index": 0
+    },
+    {
+      "gold_role": "period_2",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "period_1",
+          "target": "disclose guaranteed customer-specific vehicle purchase price"
+        },
+        {
+          "period": "FY2026",
+          "role": "period_2",
+          "target": "disclose guaranteed customer-specific vehicle purchase price"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "predicted_role": null,
+      "predicted_slots": [
+        {
+          "metric": "guaranteed customer-specific vehicle purchase price for FY2026",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SR6_role_missing",
+      "question": "Does Tesla's FY2025 report disclose a guaranteed customer-specific vehicle purchase price for FY2026?",
+      "question_id": "tsla_fy2025_008",
+      "review_note": "period_2 slot and role were omitted",
+      "slot_index": 1
+    },
+    {
+      "gold_role": "left",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "left",
+          "target": "payments volume"
+        },
+        {
+          "period": "FY2025",
+          "role": "right",
+          "target": "number of transactions processed on networks"
+        }
+      ],
+      "intent": "MULTI_EVIDENCE",
+      "predicted_role": "value",
+      "predicted_slots": [
+        {
+          "metric": "payments volume",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "1",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "number of transactions processed on Visa's networks",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "2",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SR1_surface_role_name_mismatch",
+      "question": "Report both Visa's FY2025 payments volume and the number of transactions processed on Visa's networks.",
+      "question_id": "v_fy2025_007",
+      "review_note": "multi-evidence positional left role emitted as generic value",
+      "slot_index": 0
+    },
+    {
+      "gold_role": "right",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "left",
+          "target": "payments volume"
+        },
+        {
+          "period": "FY2025",
+          "role": "right",
+          "target": "number of transactions processed on networks"
+        }
+      ],
+      "intent": "MULTI_EVIDENCE",
+      "predicted_role": "value",
+      "predicted_slots": [
+        {
+          "metric": "payments volume",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "1",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "number of transactions processed on Visa's networks",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "2",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SR1_surface_role_name_mismatch",
+      "question": "Report both Visa's FY2025 payments volume and the number of transactions processed on Visa's networks.",
+      "question_id": "v_fy2025_007",
+      "review_note": "multi-evidence positional right role emitted as generic value",
+      "slot_index": 1
+    }
+  ],
+  "non_calculation": {
+    "accuracy": 0.7941176470588235,
+    "correct": 54,
+    "total": 68
+  },
+  "reconciliation": "Overall role errors are entirely outside calculation roles; All Operand Slots 10/11 loses one calculation case on metric lexical mismatch (Intelligent Cloud vs Intelligent Cloud revenue), not on role."
+}

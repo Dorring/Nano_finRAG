@@ -1,0 +1,22 @@
+{
+  "benchmark_specific_alias": false,
+  "question_id_dependency": false,
+  "rules": [
+    {
+      "affected_count": 0,
+      "rule_id": "surface_nfkc_case_whitespace"
+    },
+    {
+      "affected_count": 0,
+      "rule_id": "surface_punctuation_normalization"
+    },
+    {
+      "affected_count": 0,
+      "rule_id": "surface_simple_singular_plural"
+    },
+    {
+      "affected_count": 0,
+      "rule_id": "surface_grammatical_article_elision"
+    }
+  ]
+}

@@ -1,0 +1,592 @@
+{
+  "errors": [
+    {
+      "contract_normalization_recoverable": true,
+      "gold_metric": "gross margin",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "value",
+          "target": "gross margin"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "intrinsically_ambiguous": false,
+      "predicted_metric": "gross margin percentage",
+      "predicted_slots": [
+        {
+          "metric": "gross margin percentage",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "1",
+          "unit": null,
+          "value_type": "percentage"
+        }
+      ],
+      "primary_taxonomy": "SM4_extra_metric_qualifier",
+      "prompt_extractable_semantic_error": false,
+      "question": "What was gross margin percentage reported by Apple in FY2025?",
+      "question_id": "aapl_fy2025_003",
+      "review_note": "percentage is an explicit value-type qualifier for gross margin",
+      "semantic_correct_evaluator_mismatch": true,
+      "slot_index": 0
+    },
+    {
+      "contract_normalization_recoverable": true,
+      "gold_metric": "disclose accuracy of proprietary internal AI model",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "value",
+          "target": "disclose accuracy of proprietary internal AI model"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "intrinsically_ambiguous": false,
+      "predicted_metric": "accuracy of a proprietary internal AI model",
+      "predicted_slots": [
+        {
+          "metric": "accuracy of a proprietary internal AI model",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SM0_evaluator_format_only",
+      "prompt_extractable_semantic_error": false,
+      "question": "Does Apple's FY2025 report disclose the accuracy of a proprietary internal AI model?",
+      "question_id": "aapl_fy2025_008",
+      "review_note": "disclose predicate omitted; requested fact semantics unchanged",
+      "semantic_correct_evaluator_mismatch": true,
+      "slot_index": 0
+    },
+    {
+      "contract_normalization_recoverable": true,
+      "gold_metric": "disclose customer-level contract amount for individual client",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "value",
+          "target": "disclose customer-level contract amount for individual client"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "intrinsically_ambiguous": false,
+      "predicted_metric": "customer-level contract amount for an individual client",
+      "predicted_slots": [
+        {
+          "metric": "customer-level contract amount for an individual client",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SM0_evaluator_format_only",
+      "prompt_extractable_semantic_error": false,
+      "question": "Does JPMorgan's FY2025 report disclose a customer-level contract amount for an individual client?",
+      "question_id": "jpm_fy2025_008",
+      "review_note": "disclose predicate omitted; requested fact semantics unchanged",
+      "semantic_correct_evaluator_mismatch": true,
+      "slot_index": 0
+    },
+    {
+      "contract_normalization_recoverable": true,
+      "gold_metric": "net income attributable to shareowners of",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "value",
+          "target": "net income attributable to shareowners of"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "intrinsically_ambiguous": false,
+      "predicted_metric": "net income attributable to shareowners",
+      "predicted_slots": [
+        {
+          "metric": "net income attributable to shareowners",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SM0_evaluator_format_only",
+      "prompt_extractable_semantic_error": false,
+      "question": "What was net income attributable to shareowners of The Coca-Cola Company in FY2025?",
+      "question_id": "ko_fy2025_003",
+      "review_note": "trailing of is a surface annotation difference",
+      "semantic_correct_evaluator_mismatch": true,
+      "slot_index": 0
+    },
+    {
+      "contract_normalization_recoverable": true,
+      "gold_metric": "s disclose exact output of one named manufacturing plant",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "value",
+          "target": "s disclose exact output of one named manufacturing plant"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "intrinsically_ambiguous": false,
+      "predicted_metric": "exact output of one named manufacturing plant",
+      "predicted_slots": [
+        {
+          "metric": "exact output of one named manufacturing plant",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SM0_evaluator_format_only",
+      "prompt_extractable_semantic_error": false,
+      "question": "Does The Coca-Cola Company's FY2025 report disclose the exact output of one named manufacturing plant?",
+      "question_id": "ko_fy2025_008",
+      "review_note": "annotation contains a malformed leading s; requested disclosure fact is preserved",
+      "semantic_correct_evaluator_mismatch": true,
+      "slot_index": 0
+    },
+    {
+      "contract_normalization_recoverable": true,
+      "gold_metric": "Intelligent Cloud",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "numerator",
+          "target": "Intelligent Cloud"
+        },
+        {
+          "period": "FY2025",
+          "role": "denominator",
+          "target": "total revenue"
+        }
+      ],
+      "intent": "CALCULATION",
+      "intrinsically_ambiguous": false,
+      "predicted_metric": "Intelligent Cloud revenue",
+      "predicted_slots": [
+        {
+          "metric": "Intelligent Cloud revenue",
+          "period": "FY2025",
+          "role": "numerator",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "total revenue",
+          "period": "FY2025",
+          "role": "denominator",
+          "slot_id": "slot_2",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SM4_extra_metric_qualifier",
+      "prompt_extractable_semantic_error": false,
+      "question": "What percentage of Microsoft's total FY2025 revenue came from Intelligent Cloud?",
+      "question_id": "msft_fy2025_007",
+      "review_note": "Intelligent Cloud revenue names the segment revenue numerator",
+      "semantic_correct_evaluator_mismatch": true,
+      "slot_index": 0
+    },
+    {
+      "contract_normalization_recoverable": true,
+      "gold_metric": "disclose customer-level contract renewal rate",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "value",
+          "target": "disclose customer-level contract renewal rate"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "intrinsically_ambiguous": false,
+      "predicted_metric": "customer-level contract renewal rate",
+      "predicted_slots": [
+        {
+          "metric": "customer-level contract renewal rate",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "percentage"
+        }
+      ],
+      "primary_taxonomy": "SM0_evaluator_format_only",
+      "prompt_extractable_semantic_error": false,
+      "question": "Does Microsoft's FY2025 report disclose a customer-level contract renewal rate?",
+      "question_id": "msft_fy2025_008",
+      "review_note": "disclose predicate omitted; requested fact semantics unchanged",
+      "semantic_correct_evaluator_mismatch": true,
+      "slot_index": 0
+    },
+    {
+      "contract_normalization_recoverable": true,
+      "gold_metric": "GAAP gross margin",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "value",
+          "target": "GAAP gross margin"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "intrinsically_ambiguous": false,
+      "predicted_metric": "GAAP gross margin percentage",
+      "predicted_slots": [
+        {
+          "metric": "GAAP gross margin percentage",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "percentage"
+        }
+      ],
+      "primary_taxonomy": "SM4_extra_metric_qualifier",
+      "prompt_extractable_semantic_error": false,
+      "question": "What was GAAP gross margin percentage reported by NVIDIA in FY2025?",
+      "question_id": "nvda_fy2025_003",
+      "review_note": "percentage is an explicit value-type qualifier for GAAP gross margin",
+      "semantic_correct_evaluator_mismatch": true,
+      "slot_index": 0
+    },
+    {
+      "contract_normalization_recoverable": true,
+      "gold_metric": "GAAP gross margin",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "left",
+          "target": "Data Center revenue"
+        },
+        {
+          "period": "FY2025",
+          "role": "right",
+          "target": "GAAP gross margin"
+        }
+      ],
+      "intent": "MULTI_EVIDENCE",
+      "intrinsically_ambiguous": false,
+      "predicted_metric": "GAAP gross margin percentage",
+      "predicted_slots": [
+        {
+          "metric": "Data Center revenue",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "GAAP gross margin percentage",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_2",
+          "unit": null,
+          "value_type": "percentage"
+        }
+      ],
+      "primary_taxonomy": "SM4_extra_metric_qualifier",
+      "prompt_extractable_semantic_error": false,
+      "question": "Report both NVIDIA's FY2025 Data Center revenue and GAAP gross margin percentage.",
+      "question_id": "nvda_fy2025_007",
+      "review_note": "percentage is an explicit value-type qualifier for GAAP gross margin",
+      "semantic_correct_evaluator_mismatch": true,
+      "slot_index": 1
+    },
+    {
+      "contract_normalization_recoverable": true,
+      "gold_metric": "disclose customer-level Data Center revenue amount",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "value",
+          "target": "disclose customer-level Data Center revenue amount"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "intrinsically_ambiguous": false,
+      "predicted_metric": "customer-level Data Center revenue amount",
+      "predicted_slots": [
+        {
+          "metric": "customer-level Data Center revenue amount",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SM0_evaluator_format_only",
+      "prompt_extractable_semantic_error": false,
+      "question": "Does NVIDIA's FY2025 report disclose a customer-level Data Center revenue amount?",
+      "question_id": "nvda_fy2025_008",
+      "review_note": "disclose predicate omitted; requested fact semantics unchanged",
+      "semantic_correct_evaluator_mismatch": true,
+      "slot_index": 0
+    },
+    {
+      "contract_normalization_recoverable": true,
+      "gold_metric": "disclose guaranteed financial result",
+      "gold_slots": [
+        {
+          "period": "FY2024",
+          "role": "period_1",
+          "target": "disclose guaranteed financial result"
+        },
+        {
+          "period": "FY2026",
+          "role": "period_2",
+          "target": "disclose guaranteed financial result"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "intrinsically_ambiguous": false,
+      "predicted_metric": "guaranteed FY2026 financial result",
+      "predicted_slots": [
+        {
+          "metric": "guaranteed FY2026 financial result",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SM4_extra_metric_qualifier",
+      "prompt_extractable_semantic_error": false,
+      "question": "Does Pfizer's FY2024 report disclose a guaranteed FY2026 financial result?",
+      "question_id": "pfe_fy2024_008",
+      "review_note": "FY2026 qualifies the same guaranteed-result metric; second period slot is separately missing",
+      "semantic_correct_evaluator_mismatch": true,
+      "slot_index": 0
+    },
+    {
+      "contract_normalization_recoverable": false,
+      "gold_metric": "disclose guaranteed financial result",
+      "gold_slots": [
+        {
+          "period": "FY2024",
+          "role": "period_1",
+          "target": "disclose guaranteed financial result"
+        },
+        {
+          "period": "FY2026",
+          "role": "period_2",
+          "target": "disclose guaranteed financial result"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "intrinsically_ambiguous": false,
+      "predicted_metric": null,
+      "predicted_slots": [
+        {
+          "metric": "guaranteed FY2026 financial result",
+          "period": "FY2024",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SM11_multi_metric_slot_alignment_error",
+      "prompt_extractable_semantic_error": true,
+      "question": "Does Pfizer's FY2024 report disclose a guaranteed FY2026 financial result?",
+      "question_id": "pfe_fy2024_008",
+      "review_note": "the second required period slot was not emitted",
+      "semantic_correct_evaluator_mismatch": false,
+      "slot_index": 1
+    },
+    {
+      "contract_normalization_recoverable": true,
+      "gold_metric": "disclose guaranteed customer-specific vehicle purchase price",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "period_1",
+          "target": "disclose guaranteed customer-specific vehicle purchase price"
+        },
+        {
+          "period": "FY2026",
+          "role": "period_2",
+          "target": "disclose guaranteed customer-specific vehicle purchase price"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "intrinsically_ambiguous": false,
+      "predicted_metric": "guaranteed customer-specific vehicle purchase price for FY2026",
+      "predicted_slots": [
+        {
+          "metric": "guaranteed customer-specific vehicle purchase price for FY2026",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SM4_extra_metric_qualifier",
+      "prompt_extractable_semantic_error": false,
+      "question": "Does Tesla's FY2025 report disclose a guaranteed customer-specific vehicle purchase price for FY2026?",
+      "question_id": "tsla_fy2025_008",
+      "review_note": "FY2026 qualifies the same guaranteed-price metric; second period slot is separately missing",
+      "semantic_correct_evaluator_mismatch": true,
+      "slot_index": 0
+    },
+    {
+      "contract_normalization_recoverable": false,
+      "gold_metric": "disclose guaranteed customer-specific vehicle purchase price",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "period_1",
+          "target": "disclose guaranteed customer-specific vehicle purchase price"
+        },
+        {
+          "period": "FY2026",
+          "role": "period_2",
+          "target": "disclose guaranteed customer-specific vehicle purchase price"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "intrinsically_ambiguous": false,
+      "predicted_metric": null,
+      "predicted_slots": [
+        {
+          "metric": "guaranteed customer-specific vehicle purchase price for FY2026",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SM11_multi_metric_slot_alignment_error",
+      "prompt_extractable_semantic_error": true,
+      "question": "Does Tesla's FY2025 report disclose a guaranteed customer-specific vehicle purchase price for FY2026?",
+      "question_id": "tsla_fy2025_008",
+      "review_note": "the second required period slot was not emitted",
+      "semantic_correct_evaluator_mismatch": false,
+      "slot_index": 1
+    },
+    {
+      "contract_normalization_recoverable": true,
+      "gold_metric": "transactions processed on networks",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "value",
+          "target": "transactions processed on networks"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "intrinsically_ambiguous": false,
+      "predicted_metric": "transactions processed on Visa's networks",
+      "predicted_slots": [
+        {
+          "metric": "transactions processed on Visa's networks",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SM4_extra_metric_qualifier",
+      "prompt_extractable_semantic_error": false,
+      "question": "How many transactions were processed on Visa's networks in FY2025?",
+      "question_id": "v_fy2025_003",
+      "review_note": "Visa's is an explicit company scope qualifier",
+      "semantic_correct_evaluator_mismatch": true,
+      "slot_index": 0
+    },
+    {
+      "contract_normalization_recoverable": true,
+      "gold_metric": "number of transactions processed on networks",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "left",
+          "target": "payments volume"
+        },
+        {
+          "period": "FY2025",
+          "role": "right",
+          "target": "number of transactions processed on networks"
+        }
+      ],
+      "intent": "MULTI_EVIDENCE",
+      "intrinsically_ambiguous": false,
+      "predicted_metric": "number of transactions processed on Visa's networks",
+      "predicted_slots": [
+        {
+          "metric": "payments volume",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "1",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "number of transactions processed on Visa's networks",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "2",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SM4_extra_metric_qualifier",
+      "prompt_extractable_semantic_error": false,
+      "question": "Report both Visa's FY2025 payments volume and the number of transactions processed on Visa's networks.",
+      "question_id": "v_fy2025_007",
+      "review_note": "Visa's is an explicit company scope qualifier",
+      "semantic_correct_evaluator_mismatch": true,
+      "slot_index": 1
+    },
+    {
+      "contract_normalization_recoverable": true,
+      "gold_metric": "disclose internal employee performance accuracy metric",
+      "gold_slots": [
+        {
+          "period": "FY2025",
+          "role": "value",
+          "target": "disclose internal employee performance accuracy metric"
+        }
+      ],
+      "intent": "DIRECT_FACT",
+      "intrinsically_ambiguous": false,
+      "predicted_metric": "internal employee performance accuracy metric",
+      "predicted_slots": [
+        {
+          "metric": "internal employee performance accuracy metric",
+          "period": "FY2025",
+          "role": "value",
+          "slot_id": "slot_1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "primary_taxonomy": "SM0_evaluator_format_only",
+      "prompt_extractable_semantic_error": false,
+      "question": "Does Visa's FY2025 report disclose an internal employee performance accuracy metric?",
+      "question_id": "v_fy2025_008",
+      "review_note": "disclose predicate omitted; requested fact semantics unchanged",
+      "semantic_correct_evaluator_mismatch": true,
+      "slot_index": 0
+    }
+  ],
+  "raw_metric_correct": 73,
+  "raw_metric_total": 90
+}

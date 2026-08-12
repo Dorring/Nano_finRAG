@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "complete_set_match": false,
+      "predicted_slot_count": 1,
+      "question_id": "pfe_fy2024_008",
+      "slot_count": 2,
+      "unmatched_predicted": [],
+      "unmatched_reference": [
+        1
+      ]
+    },
+    {
+      "complete_set_match": false,
+      "predicted_slot_count": 1,
+      "question_id": "tsla_fy2025_008",
+      "slot_count": 2,
+      "unmatched_predicted": [],
+      "unmatched_reference": [
+        1
+      ]
+    }
+  ],
+  "matching_contract": "deterministic set/bipartite matching by metric, period, and operational role; non-operational surface labels do not impose order",
+  "missing_slot_decomposition": 2,
+  "order_only": 0,
+  "permutation_invariant": true,
+  "true_association_error": 0
+}

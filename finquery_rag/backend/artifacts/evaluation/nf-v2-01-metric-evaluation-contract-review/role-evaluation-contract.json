@@ -1,0 +1,31 @@
+{
+  "calculation_role_accuracy": {
+    "accuracy": 1.0,
+    "correct": 22,
+    "total": 22
+  },
+  "non_operational_role_accuracy": {
+    "accuracy": 0.8333333333333334,
+    "correct": 70,
+    "total": 84
+  },
+  "operational_role_accuracy": {
+    "accuracy": 1.0,
+    "correct": 6,
+    "total": 6
+  },
+  "operational_roles": [
+    "current",
+    "denominator",
+    "minuend",
+    "numerator",
+    "prior",
+    "subtrahend"
+  ],
+  "raw_non_operational_labels_are_not_silently_marked_correct": true,
+  "raw_role_accuracy": {
+    "accuracy": 0.8444444444444444,
+    "correct": 76,
+    "total": 90
+  }
+}

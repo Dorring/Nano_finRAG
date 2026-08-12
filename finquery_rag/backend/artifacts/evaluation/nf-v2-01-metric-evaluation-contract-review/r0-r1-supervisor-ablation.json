@@ -1,0 +1,18 @@
+{
+  "financial_sft_r0": {
+    "answer_leakage": "55/72",
+    "parse_failure": "72/72",
+    "plan_validator_pass": "0/72",
+    "schema_valid": "0/72",
+    "semantic_metrics": "NOT EVALUABLE"
+  },
+  "qwen_r1": {
+    "calculation_role": "22/22",
+    "period": "88/90",
+    "plan_validator_pass": "72/72",
+    "raw_metric": "73/90",
+    "schema_valid": "72/72",
+    "semantic_metric_v2": "88/90",
+    "slot_count": "70/72"
+  }
+}
