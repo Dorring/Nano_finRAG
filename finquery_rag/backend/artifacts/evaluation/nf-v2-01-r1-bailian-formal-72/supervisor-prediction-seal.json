@@ -1,0 +1,29 @@
+{
+  "binder_calls": 0,
+  "calculator_calls": 0,
+  "concurrency": 1,
+  "formal_evaluation_status": "runner_integration_failure",
+  "formal_run_complete": false,
+  "gate": "NF-V2-01-R1",
+  "generator_calls": 0,
+  "gold_reads_before_prediction_seal": 0,
+  "infrastructure_failure": {
+    "exception_message": "too many values to unpack (expected 2)",
+    "exception_type": "ValueError",
+    "gold_reads_before_prediction_seal": 0,
+    "model_calls_completed": 72,
+    "phase": "post_model_replay_serialization",
+    "predictions_recoverable": false
+  },
+  "max_calls_per_question": 1,
+  "model_calls": 72,
+  "plans_sha256": "7b61147cc6f44ce3ac0730ff6aaeb85c58426dce03a9b98fae048957efadd07b",
+  "predictions_written": 0,
+  "questions_expected": 72,
+  "reference_answer_reads_before_prediction_seal": 0,
+  "reranker_calls": 0,
+  "retrieval_calls": 0,
+  "retry": 0,
+  "sealed": true,
+  "validator_calls": 0
+}

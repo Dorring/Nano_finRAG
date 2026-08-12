@@ -1,0 +1,8 @@
+{
+  "exception_message": "too many values to unpack (expected 2)",
+  "exception_type": "ValueError",
+  "gold_reads_before_prediction_seal": 0,
+  "model_calls_completed": 72,
+  "phase": "post_model_replay_serialization",
+  "predictions_recoverable": false
+}

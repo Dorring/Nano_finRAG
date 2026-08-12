@@ -1,0 +1,13 @@
+{
+  "bailian_r1": {
+    "formal_evaluation_status": "runner_integration_failure",
+    "semantic_metrics": "NOT EVALUABLE"
+  },
+  "financial_sft_r0": {
+    "answer_leakage": "55/72",
+    "parse_failure": "72/72",
+    "plan_validator_pass": "0/72",
+    "schema_valid": "0/72",
+    "semantic_metrics": "NOT EVALUABLE"
+  }
+}

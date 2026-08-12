@@ -1,0 +1,4 @@
+{
+  "formal_evaluation_status": "runner_integration_failure",
+  "reason": "Formal runner integration failure after 72 provider calls: run_formal returned three values but main attempted two-value unpack; no predictions were serialized and no Gold annotations were read."
+}

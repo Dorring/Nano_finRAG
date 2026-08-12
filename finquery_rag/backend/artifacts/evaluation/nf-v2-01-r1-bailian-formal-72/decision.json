@@ -1,0 +1,21 @@
+{
+  "base_commit": "2861ac1d8494afb800f1a90f102dd42c0cfd1abb",
+  "dominant_failure": "runner_integration_failure",
+  "evaluation_role": "development_shadow_v2_strong_general_llm_supervisor",
+  "formal_evaluation_status": "runner_integration_failure",
+  "formal_run_complete": false,
+  "gate": "NF-V2-01-R1",
+  "general_llm_supervisor_effective": null,
+  "gold_reads_before_prediction_seal": 0,
+  "max_retries": 0,
+  "model": "qwen3.7-max-2026-06-08",
+  "model_role": "strong_general_llm",
+  "next_gate": "v2_01_r1_failure_review",
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "provider": "Alibaba Bailian",
+  "supervisor_calls": 72,
+  "supervisor_frozen": false,
+  "temperature": 0.0,
+  "thinking": false
+}
