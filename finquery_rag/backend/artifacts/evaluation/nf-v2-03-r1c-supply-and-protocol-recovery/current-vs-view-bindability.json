@@ -1,0 +1,32 @@
+{
+  "binder_fact_view_metric_compatible": 29,
+  "binder_fact_view_period_compatible": 27,
+  "binder_fact_view_strict_bindable": 27,
+  "current_binder_visible_strict_bindable": 23,
+  "current_definition": "R1B visible FinancialFact fields and reviewed strict contract",
+  "direct_total": 56,
+  "generic_recovered_metric_questions": [
+    "aapl_fy2025_003",
+    "ko_fy2025_001",
+    "ko_fy2025_002",
+    "tsla_fy2025_001"
+  ],
+  "generic_recovered_period_questions": [
+    "aapl_fy2025_003",
+    "ko_fy2025_001",
+    "ko_fy2025_002",
+    "tsla_fy2025_001"
+  ],
+  "generic_recovered_strict_questions": [
+    "aapl_fy2025_003",
+    "ko_fy2025_001",
+    "ko_fy2025_002",
+    "tsla_fy2025_001"
+  ],
+  "identity_check_over_d3": true,
+  "new_d3": 33,
+  "old_d3": 25,
+  "still_not_bindable": 0,
+  "view_definition": "source-derived BinderFactViewV1 context plus recovered generic facts",
+  "view_only_recovered": 2
+}

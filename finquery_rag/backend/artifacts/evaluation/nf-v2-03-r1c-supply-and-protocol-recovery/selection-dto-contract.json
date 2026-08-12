@@ -1,0 +1,23 @@
+{
+  "dto": "BinderSelectionDTOv1",
+  "query_status_derivation": "all bound => BOUND; any ambiguous => AMBIGUOUS; otherwise MISSING",
+  "selection_only": true,
+  "slot_values": {
+    "items_enum": "exact query-local F01..Fn",
+    "type": "array",
+    "uniqueItems": true
+  },
+  "status_derivation": {
+    "one": "BOUND",
+    "two_or_more": "AMBIGUOUS",
+    "zero": "MISSING"
+  },
+  "status_from_model": false,
+  "top_level": {
+    "additionalProperties": false,
+    "required": [
+      "slots"
+    ],
+    "type": "object"
+  }
+}

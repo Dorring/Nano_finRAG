@@ -1,0 +1,461 @@
+{
+  "D0": 56,
+  "D1": 48,
+  "D2": 43,
+  "D3_new": 33,
+  "D3_old": 25,
+  "D4_binder_fact_view": 29,
+  "D5_period_compatible": 27,
+  "D6_strict_bindable": 27,
+  "old_reviewed_strict_bindable": 23,
+  "rows": [
+    {
+      "expected_source_count": 1,
+      "question_id": "aapl_fy2025_001",
+      "slot_count": 1,
+      "slots_compatible": 1,
+      "source_facts": 3,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "aapl_fy2025_002",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 3,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "aapl_fy2025_003",
+      "slot_count": 1,
+      "slots_compatible": 1,
+      "source_facts": 3,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "aapl_fy2025_004",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 3,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "aapl_fy2025_005",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 3,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 0,
+      "question_id": "aapl_fy2025_008",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "aapl_fy2025_009",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 3,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "jpm_fy2025_001",
+      "slot_count": 1,
+      "slots_compatible": 1,
+      "source_facts": 2,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "jpm_fy2025_002",
+      "slot_count": 1,
+      "slots_compatible": 1,
+      "source_facts": 2,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "jpm_fy2025_003",
+      "slot_count": 1,
+      "slots_compatible": 1,
+      "source_facts": 3,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "jpm_fy2025_004",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 3,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "jpm_fy2025_005",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 0,
+      "question_id": "jpm_fy2025_008",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "jpm_fy2025_009",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 3,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "ko_fy2025_001",
+      "slot_count": 1,
+      "slots_compatible": 1,
+      "source_facts": 3,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "ko_fy2025_002",
+      "slot_count": 1,
+      "slots_compatible": 1,
+      "source_facts": 3,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "ko_fy2025_003",
+      "slot_count": 1,
+      "slots_compatible": 1,
+      "source_facts": 3,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "ko_fy2025_004",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 4,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "ko_fy2025_005",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 4,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 0,
+      "question_id": "ko_fy2025_008",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "ko_fy2025_009",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "msft_fy2025_001",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 3,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "msft_fy2025_002",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "msft_fy2025_003",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 3,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "msft_fy2025_004",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "msft_fy2025_005",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 0,
+      "question_id": "msft_fy2025_008",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "msft_fy2025_009",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "nvda_fy2025_001",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "nvda_fy2025_002",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 3,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "nvda_fy2025_003",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 2,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "nvda_fy2025_004",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 3,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "nvda_fy2025_005",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 3,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 0,
+      "question_id": "nvda_fy2025_008",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "nvda_fy2025_009",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 3,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "pfe_fy2024_001",
+      "slot_count": 1,
+      "slots_compatible": 1,
+      "source_facts": 3,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "pfe_fy2024_002",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "pfe_fy2024_003",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "pfe_fy2024_004",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "pfe_fy2024_005",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 0,
+      "question_id": "pfe_fy2024_008",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "pfe_fy2024_009",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "tsla_fy2025_001",
+      "slot_count": 1,
+      "slots_compatible": 1,
+      "source_facts": 3,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "tsla_fy2025_002",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 3,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "tsla_fy2025_003",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "tsla_fy2025_004",
+      "slot_count": 1,
+      "slots_compatible": 1,
+      "source_facts": 1,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "tsla_fy2025_005",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 0,
+      "question_id": "tsla_fy2025_008",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "tsla_fy2025_009",
+      "slot_count": 1,
+      "slots_compatible": 1,
+      "source_facts": 1,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "v_fy2025_001",
+      "slot_count": 1,
+      "slots_compatible": 1,
+      "source_facts": 3,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "v_fy2025_002",
+      "slot_count": 1,
+      "slots_compatible": 1,
+      "source_facts": 3,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "v_fy2025_003",
+      "slot_count": 1,
+      "slots_compatible": 1,
+      "source_facts": 3,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "v_fy2025_004",
+      "slot_count": 1,
+      "slots_compatible": 1,
+      "source_facts": 3,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "v_fy2025_005",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 0,
+      "question_id": "v_fy2025_008",
+      "slot_count": 1,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "v_fy2025_009",
+      "slot_count": 1,
+      "slots_compatible": 1,
+      "source_facts": 3,
+      "strict_bindable": true
+    }
+  ]
+}

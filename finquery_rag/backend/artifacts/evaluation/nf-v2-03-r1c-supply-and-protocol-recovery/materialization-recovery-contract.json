@@ -1,0 +1,14 @@
+{
+  "allowed_rules": [
+    "generic table row+column relation",
+    "generic row/header preservation",
+    "generic period propagation",
+    "existing atomic numeric normalization"
+  ],
+  "financial_fact_v1_schema_modified": false,
+  "gold_access_during_materialization": false,
+  "input": "sealed SADA Top20 candidate serialization + gate03 atomic-facts.jsonl",
+  "query_independent": true,
+  "revision": "NF-V2-02.1-generic-source-relation-recovery",
+  "sffm_v1_overwritten": false
+}

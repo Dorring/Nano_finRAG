@@ -1,0 +1,33 @@
+{
+  "financial_fact_v1_modified": false,
+  "new_semantic_labels": false,
+  "query_independent": true,
+  "source_derived_fields": [
+    "fact_handle",
+    "raw_metric",
+    "normalized_metric",
+    "raw_period",
+    "normalized_period",
+    "raw_value",
+    "parsed_numeric_value",
+    "raw_scale",
+    "normalized_scale",
+    "currency",
+    "unit",
+    "row_label",
+    "row_hierarchy",
+    "column_header",
+    "column_header_path",
+    "table_title",
+    "statement_title",
+    "section_heading",
+    "table_id",
+    "row_id",
+    "column_id",
+    "cell_id",
+    "physical_source_id",
+    "document_id",
+    "pdf_page"
+  ],
+  "view": "BinderFactViewV1"
+}

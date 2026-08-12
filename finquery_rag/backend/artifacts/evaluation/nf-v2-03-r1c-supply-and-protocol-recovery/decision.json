@@ -1,0 +1,29 @@
+{
+  "base_commit": "f6869ad24605917dc514cd5356e9b861358f9195",
+  "binder_model": "qwen3.7-plus",
+  "calculation_new_fact_supply_complete": 6,
+  "direct_current_visible_strict_bindable": 23,
+  "direct_new_d3": 33,
+  "direct_view_only_recovered": 2,
+  "direct_view_visible_strict_bindable": 27,
+  "dominant_failure": "financial_fact_materialization_supply",
+  "fabricated_cross_candidate_facts": 0,
+  "financial_fact_v1_schema_modified": false,
+  "formal_attempt_6": "not_run",
+  "gate": "NF-V2-03-R1C / NF-V2-02.1",
+  "gold_assisted_materialization": 0,
+  "model_calls": 10,
+  "multi_evidence_new_strict_bindable_complete": 0,
+  "next_gate": "nf_v2_03_r1c_selection_protocol_failure_review",
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "question_specific_rules": 0,
+  "relation_integrity_fail": 0,
+  "synthetic_protocol": {
+    "required": "5/5",
+    "result": "0/5",
+    "diagnostic_repeat": "0/5",
+    "http_status": 400,
+    "failure": "Bailian structured-output schema rejects uniqueItems on array"
+  }
+}

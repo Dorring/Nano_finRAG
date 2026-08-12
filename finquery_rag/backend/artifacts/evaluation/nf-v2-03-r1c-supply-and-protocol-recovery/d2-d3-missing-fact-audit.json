@@ -1,0 +1,974 @@
+{
+  "gold_source_admitted": 43,
+  "gold_used_only_for_post_recovery_attribution": true,
+  "missing_count": 18,
+  "old_gold_source_financial_fact": 25,
+  "rows": [
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:f06ee04f963d52481ef27a335b7a6c09674546d3ab590a90c2a4a033f8ea34d8",
+            "candidate_rank": 3,
+            "cell_id": null,
+            "column_header": [
+              "FY2025",
+              "FY2024",
+              "FY2023"
+            ],
+            "currency": null,
+            "document_id": "aapl_fy2025",
+            "metric": "Total gross margin percentage",
+            "normalized_metric": "Total gross margin percentage",
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 27,
+            "period_value_bindings": [
+              "FY2025 = 46.9% millions",
+              "FY2024 = 46.2% millions",
+              "FY2023 = 44.1% millions"
+            ],
+            "physical_source_id": "60d96702c3d70da2d4d2c1a1fbeae60472c537ac7054ab2a66c3b44b179ae821:251cf6076494ea086c40b4475b866b3b22b1e91876d943db6bd575c092b78390:27",
+            "physical_source_identity_complete": true,
+            "raw_value": null,
+            "row_id": "251cf6076494ea086c40b4475b866b3b22b1e91876d943db6bd575c092b78390",
+            "row_label": "Total gross margin percentage",
+            "scale": "millions",
+            "source_text": "[DOCUMENT]\nDocument: aapl_fy2025\nPage: 27\n\n[STRUCTURE]\nStatement: income_statement\nMetric Path: Total gross margin percentage\nRow: Total gross margin percentage\n\n[EVIDENCE]\nType: table_row_backed\nColumn Headers: FY2025 | FY2024 | FY2023\nPeriod / Value:\n- FY2025 = 46.9% millions\n- FY2024 = 46.2% millions\n- FY2023 = 44.1% millions\nScale: millions\n\n[CONTENT]\nTotal gross margin percentage | 46.9% | 46.2% | 44.1%\n\n[SOURCE]\ntable:60d96702c3d70da2d4d2c1a1fbeae60472c537ac7054ab2a66c3b44b179ae821 | row:251cf6076494ea086c40b4475b866b3b22b1e91876d943db6bd575c092b78390 | page:27",
+            "statement_id": "income_statement",
+            "statement_serialization_sha256": "57c903b49c001a7b52061b108338e070d9222a88fbec476a939e63fc34a36b68",
+            "table_id": "60d96702c3d70da2d4d2c1a1fbeae60472c537ac7054ab2a66c3b44b179ae821",
+            "table_title": "income_statement",
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:f06ee04f963d52481ef27a335b7a6c09674546d3ab590a90c2a4a033f8ea34d8",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:f06ee04f963d52481ef27a335b7a6c09674546d3ab590a90c2a4a033f8ea34d8",
+              "generic_rule": true,
+              "recovered_fact_count": 0,
+              "recovery": "existing_fact"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:f06ee04f963d52481ef27a335b7a6c09674546d3ab590a90c2a4a033f8ea34d8"
+      ],
+      "generic_recoverable": true,
+      "new_fact_available": true,
+      "primary_category": "FM0_fact_exists_evaluator_source_relation_missed",
+      "question": "What was gross margin percentage reported by Apple in FY2025?",
+      "question_id": "aapl_fy2025_003"
+    },
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:d8d06e11d524ce4ec4c95ca728ef61ba568965f41b623d7033faf672eea17989",
+            "candidate_rank": 5,
+            "cell_id": null,
+            "column_header": [
+              "FY2025",
+              "FY2024",
+              "FY2023"
+            ],
+            "currency": null,
+            "document_id": "aapl_fy2025",
+            "metric": "Mac",
+            "normalized_metric": "Mac",
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 26,
+            "period_value_bindings": [
+              "FY2025 = 33,708 millions",
+              "FY2024 = 29,984 millions",
+              "FY2023 = 29,357 millions"
+            ],
+            "physical_source_id": "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486:271be7bf8da3393526d553e9d485c47d9789cabfda569564cdd6ac65b9d4ee29:26",
+            "physical_source_identity_complete": true,
+            "raw_value": null,
+            "row_id": "271be7bf8da3393526d553e9d485c47d9789cabfda569564cdd6ac65b9d4ee29",
+            "row_label": "Mac",
+            "scale": "millions",
+            "source_text": "[DOCUMENT]\nDocument: aapl_fy2025\nPage: 26\n\n[STRUCTURE]\nStatement: income_statement\nMetric Path: Mac\nRow: Mac\n\n[EVIDENCE]\nType: table_row_backed\nColumn Headers: FY2025 | FY2024 | FY2023\nPeriod / Value:\n- FY2025 = 33,708 millions\n- FY2024 = 29,984 millions\n- FY2023 = 29,357 millions\nScale: millions\n\n[CONTENT]\nMac | 33,708 | 12 % | 29,984 | 2 % | 29,357\n\n[SOURCE]\ntable:f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486 | row:271be7bf8da3393526d553e9d485c47d9789cabfda569564cdd6ac65b9d4ee29 | page:26",
+            "statement_id": "income_statement",
+            "statement_serialization_sha256": "847072fc0fa564a22b5f09a0d6926e44ed77bbfe277120ced014ea919ecea9be",
+            "table_id": "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486",
+            "table_title": "income_statement",
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:d8d06e11d524ce4ec4c95ca728ef61ba568965f41b623d7033faf672eea17989",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:d8d06e11d524ce4ec4c95ca728ef61ba568965f41b623d7033faf672eea17989",
+              "generic_rule": true,
+              "recovered_fact_count": 0,
+              "recovery": "existing_fact"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:d8d06e11d524ce4ec4c95ca728ef61ba568965f41b623d7033faf672eea17989"
+      ],
+      "generic_recoverable": true,
+      "new_fact_available": true,
+      "primary_category": "FM0_fact_exists_evaluator_source_relation_missed",
+      "question": "In the Net sales by product and service table, what was Mac net sales in FY2025?",
+      "question_id": "aapl_fy2025_005"
+    },
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:a9325e992895567a4c2721f66a3bc3c24b663ddeade06999ff5c87755159932c",
+            "candidate_rank": 6,
+            "cell_id": null,
+            "column_header": [],
+            "currency": null,
+            "document_id": "jpm_fy2025",
+            "metric": null,
+            "normalized_metric": null,
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 101,
+            "period_value_bindings": [],
+            "physical_source_id": "101",
+            "physical_source_identity_complete": false,
+            "raw_value": null,
+            "row_id": null,
+            "row_label": null,
+            "scale": null,
+            "source_text": "[DOCUMENT]\nDocument: jpm_fy2025\n\n[CONTENT]\nDocument: jpm_fy2025\nPage: 101\nBlock Type: table_row\n\nSource:\n| The Commercial & Investment Bank is comprised of      | (a) Included taxable-equivalent adjustments primarily from income tax credits from investments in alternative energy, affordable  |\n| the Banking & Payments and Markets & Securities       | housing and new markets, income from tax-exempt securities                                                                        |\n| Services businesses. These businesses offer           | and loans, and the related amortization and other tax benefits of the investments in alternative energy and affordable housing of |\n| Net income $ 27,761 $ 24,846 $ 20,272                 |                                                                                                                                   |",
+            "statement_id": null,
+            "statement_serialization_sha256": "717152ac0c3d7aaf4b84d5c5abe1c0a7abde69bd6ac37bb9234c06af1e2b470c",
+            "table_id": null,
+            "table_title": null,
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:a9325e992895567a4c2721f66a3bc3c24b663ddeade06999ff5c87755159932c",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:a9325e992895567a4c2721f66a3bc3c24b663ddeade06999ff5c87755159932c",
+              "generic_rule": true,
+              "reason": "No source-linked atomic numeric cell with a safe metric and period.",
+              "recovered_fact_count": 0,
+              "recovery": "FM7_not_financial_fact_materializable"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:a9325e992895567a4c2721f66a3bc3c24b663ddeade06999ff5c87755159932c"
+      ],
+      "generic_recoverable": false,
+      "new_fact_available": false,
+      "primary_category": "FM7_not_financial_fact_materializable",
+      "question": "In the Commercial & Investment Bank financial results table, what was Commercial & Investment Bank net income in FY2025?",
+      "question_id": "jpm_fy2025_005"
+    },
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+            "candidate_rank": 6,
+            "cell_id": null,
+            "column_header": [
+              "FY2025",
+              "FY2024",
+              "FY2023"
+            ],
+            "currency": null,
+            "document_id": "ko_fy2025",
+            "metric": "Net Operating Revenues",
+            "normalized_metric": "Net Operating Revenues",
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 63,
+            "period_value_bindings": [
+              "FY2025 = 47,941 millions",
+              "FY2024 = $ 47,061 millions",
+              "FY2023 = $ 45,754 millions"
+            ],
+            "physical_source_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d:63",
+            "physical_source_identity_complete": true,
+            "raw_value": null,
+            "row_id": "78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d",
+            "row_label": "Net Operating Revenues",
+            "scale": "millions",
+            "source_text": "[DOCUMENT]\nDocument: ko_fy2025\nPage: 63\n\n[STRUCTURE]\nStatement: income_statement\nTable: Year Ended December 31,\nMetric Path: Net Operating Revenues\nRow: Net Operating Revenues\n\n[EVIDENCE]\nType: table_row_backed\nColumn Headers: FY2025 | FY2024 | FY2023\nPeriod / Value:\n- FY2025 = 47,941 millions\n- FY2024 = $ 47,061 millions\n- FY2023 = $ 45,754 millions\nScale: millions\n\n[CONTENT]\nNet Operating Revenues | $ | 47,941 $ | 47,061 $ | 45,754\n\n[SOURCE]\ntable:4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd | row:78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d | page:63",
+            "statement_id": "income_statement",
+            "statement_serialization_sha256": "b55288cd814cea321aa98d0defd8ea0c5bb6a3bfb0f1523fa642acafcd7b1a32",
+            "table_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd",
+            "table_title": "income_statement",
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195",
+              "generic_rule": true,
+              "recovered_fact_count": 0,
+              "recovery": "existing_fact"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195"
+      ],
+      "generic_recoverable": true,
+      "new_fact_available": true,
+      "primary_category": "FM0_fact_exists_evaluator_source_relation_missed",
+      "question": "What was net operating revenues reported by The Coca-Cola Company in FY2025?",
+      "question_id": "ko_fy2025_001"
+    },
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:5a25663abb16c0b92c93f62a32e2decdd60aad7b65e2ce937ace826a22a136c9",
+            "candidate_rank": 2,
+            "cell_id": null,
+            "column_header": [
+              "FY2025",
+              "FY2024",
+              "FY2023"
+            ],
+            "currency": null,
+            "document_id": "ko_fy2025",
+            "metric": "Operating Income",
+            "normalized_metric": "Operating Income",
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 63,
+            "period_value_bindings": [
+              "FY2025 = 13,762 millions",
+              "FY2024 = 9,992 millions",
+              "FY2023 = 11,311 millions"
+            ],
+            "physical_source_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:a5da46248aad27275bd61916b2d7361095d322449898216f1e1df8fbb2013236:63",
+            "physical_source_identity_complete": true,
+            "raw_value": null,
+            "row_id": "a5da46248aad27275bd61916b2d7361095d322449898216f1e1df8fbb2013236",
+            "row_label": "Operating Income",
+            "scale": "millions",
+            "source_text": "[DOCUMENT]\nDocument: ko_fy2025\nPage: 63\n\n[STRUCTURE]\nStatement: income_statement\nTable: Year Ended December 31,\nMetric Path: Operating Income\nRow: Operating Income\n\n[EVIDENCE]\nType: table_row_backed\nColumn Headers: FY2025 | FY2024 | FY2023\nPeriod / Value:\n- FY2025 = 13,762 millions\n- FY2024 = 9,992 millions\n- FY2023 = 11,311 millions\nScale: millions\n\n[CONTENT]\nOperating Income | 13,762 | 9,992 | 11,311\n\n[SOURCE]\ntable:4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd | row:a5da46248aad27275bd61916b2d7361095d322449898216f1e1df8fbb2013236 | page:63",
+            "statement_id": "income_statement",
+            "statement_serialization_sha256": "e43ad28bce7333eb7ad783f8ef7fc3f68c54b3732fc39ab828b1f6a02b6b0f21",
+            "table_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd",
+            "table_title": "income_statement",
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:5a25663abb16c0b92c93f62a32e2decdd60aad7b65e2ce937ace826a22a136c9",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:5a25663abb16c0b92c93f62a32e2decdd60aad7b65e2ce937ace826a22a136c9",
+              "generic_rule": true,
+              "recovered_fact_count": 0,
+              "recovery": "existing_fact"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:5a25663abb16c0b92c93f62a32e2decdd60aad7b65e2ce937ace826a22a136c9"
+      ],
+      "generic_recoverable": true,
+      "new_fact_available": true,
+      "primary_category": "FM0_fact_exists_evaluator_source_relation_missed",
+      "question": "What was operating income reported by The Coca-Cola Company in FY2025?",
+      "question_id": "ko_fy2025_002"
+    },
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+            "candidate_rank": 11,
+            "cell_id": null,
+            "column_header": [
+              "FY2025"
+            ],
+            "currency": null,
+            "document_id": "ko_fy2025",
+            "metric": "Intersegment | Total net operating revenues",
+            "normalized_metric": "Intersegment | Total net operating revenues",
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 119,
+            "period_value_bindings": [
+              "FY2025 = 680 millions",
+              "FY2025 = 3 millions",
+              "FY2025 = 7 millions",
+              "FY2025 = 310 millions",
+              "FY2025 = 9 millions",
+              "FY2025 = 1,009 millions",
+              "FY2025 = — millions",
+              "FY2025 = (1,009) millions",
+              "FY2025 = — millions"
+            ],
+            "physical_source_id": "642658a8e5c709cc385ee5b110fb89c197aa3cd83a54c0e5f1f8d79d9a0b7ef8:190f8d640521d13ea988a14d96737dd83346df09e34535ff4d3dbe0433889bc6:119",
+            "physical_source_identity_complete": true,
+            "raw_value": null,
+            "row_id": "190f8d640521d13ea988a14d96737dd83346df09e34535ff4d3dbe0433889bc6",
+            "row_label": "Intersegment",
+            "scale": "millions",
+            "source_text": "[DOCUMENT]\nDocument: ko_fy2025\nPage: 119\n\n[STRUCTURE]\nStatement: income_statement\nMetric Path: Intersegment | Total net operating revenues\nRow: Intersegment\n\n[EVIDENCE]\nType: table_row_backed\nColumn Headers: FY2025\nPeriod / Value:\n- FY2025 = 680 millions\n- FY2025 = 3 millions\n- FY2025 = 7 millions\n- FY2025 = 310 millions\n- FY2025 = 9 millions\n- FY2025 = 1,009 millions\n- FY2025 = — millions\n- FY2025 = (1,009) millions\n- FY2025 = — millions\nScale: millions\n\n[CONTENT]\nTotal net operating revenues | 11,513 | 6,334 | 19,586 | 5,638 | 5,735 | 48,806 | 144 | (1,009) | 47,941 Table column context: Year Ended December 31, 2025\n\n[SOURCE]\ntable:642658a8e5c709cc385ee5b110fb89c197aa3cd83a54c0e5f1f8d79d9a0b7ef8 | row:190f8d640521d13ea988a14d96737dd83346df09e34535ff4d3dbe0433889bc6 | page:119",
+            "statement_id": "income_statement",
+            "statement_serialization_sha256": "24402a36f530b5f92188e9e5e934021421195815df90aa6ac2ede0a7dafbb33c",
+            "table_id": "642658a8e5c709cc385ee5b110fb89c197aa3cd83a54c0e5f1f8d79d9a0b7ef8",
+            "table_title": "income_statement",
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+              "generic_rule": true,
+              "reason": "Existing row/header/table context and atomic metric path preserve source composition.",
+              "recovered_fact_count": 4,
+              "recovery": "FM2_row_header_composition_generically_recoverable"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0"
+      ],
+      "generic_recoverable": true,
+      "new_fact_available": true,
+      "primary_category": "FM2_row_header_composition_generically_recoverable",
+      "question": "In the operating segment net operating revenues table, what were EMEA total net operating revenues in FY2025?",
+      "question_id": "ko_fy2025_004"
+    },
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+            "candidate_rank": 11,
+            "cell_id": null,
+            "column_header": [
+              "FY2025"
+            ],
+            "currency": null,
+            "document_id": "ko_fy2025",
+            "metric": "Intersegment | Total net operating revenues",
+            "normalized_metric": "Intersegment | Total net operating revenues",
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 119,
+            "period_value_bindings": [
+              "FY2025 = 680 millions",
+              "FY2025 = 3 millions",
+              "FY2025 = 7 millions",
+              "FY2025 = 310 millions",
+              "FY2025 = 9 millions",
+              "FY2025 = 1,009 millions",
+              "FY2025 = — millions",
+              "FY2025 = (1,009) millions",
+              "FY2025 = — millions"
+            ],
+            "physical_source_id": "642658a8e5c709cc385ee5b110fb89c197aa3cd83a54c0e5f1f8d79d9a0b7ef8:190f8d640521d13ea988a14d96737dd83346df09e34535ff4d3dbe0433889bc6:119",
+            "physical_source_identity_complete": true,
+            "raw_value": null,
+            "row_id": "190f8d640521d13ea988a14d96737dd83346df09e34535ff4d3dbe0433889bc6",
+            "row_label": "Intersegment",
+            "scale": "millions",
+            "source_text": "[DOCUMENT]\nDocument: ko_fy2025\nPage: 119\n\n[STRUCTURE]\nStatement: income_statement\nMetric Path: Intersegment | Total net operating revenues\nRow: Intersegment\n\n[EVIDENCE]\nType: table_row_backed\nColumn Headers: FY2025\nPeriod / Value:\n- FY2025 = 680 millions\n- FY2025 = 3 millions\n- FY2025 = 7 millions\n- FY2025 = 310 millions\n- FY2025 = 9 millions\n- FY2025 = 1,009 millions\n- FY2025 = — millions\n- FY2025 = (1,009) millions\n- FY2025 = — millions\nScale: millions\n\n[CONTENT]\nTotal net operating revenues | 11,513 | 6,334 | 19,586 | 5,638 | 5,735 | 48,806 | 144 | (1,009) | 47,941 Table column context: Year Ended December 31, 2025\n\n[SOURCE]\ntable:642658a8e5c709cc385ee5b110fb89c197aa3cd83a54c0e5f1f8d79d9a0b7ef8 | row:190f8d640521d13ea988a14d96737dd83346df09e34535ff4d3dbe0433889bc6 | page:119",
+            "statement_id": "income_statement",
+            "statement_serialization_sha256": "24402a36f530b5f92188e9e5e934021421195815df90aa6ac2ede0a7dafbb33c",
+            "table_id": "642658a8e5c709cc385ee5b110fb89c197aa3cd83a54c0e5f1f8d79d9a0b7ef8",
+            "table_title": "income_statement",
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0",
+              "generic_rule": true,
+              "reason": "Existing row/header/table context and atomic metric path preserve source composition.",
+              "recovered_fact_count": 4,
+              "recovery": "FM2_row_header_composition_generically_recoverable"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0"
+      ],
+      "generic_recoverable": true,
+      "new_fact_available": true,
+      "primary_category": "FM2_row_header_composition_generically_recoverable",
+      "question": "In the operating segment net operating revenues table, what were North America total net operating revenues in FY2025?",
+      "question_id": "ko_fy2025_005"
+    },
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+            "candidate_rank": 3,
+            "cell_id": null,
+            "column_header": [],
+            "currency": null,
+            "document_id": "msft_fy2025",
+            "metric": null,
+            "normalized_metric": null,
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 80,
+            "period_value_bindings": [],
+            "physical_source_id": "80",
+            "physical_source_identity_complete": false,
+            "raw_value": null,
+            "row_id": null,
+            "row_label": null,
+            "scale": null,
+            "source_text": "[DOCUMENT]\nDocument: msft_fy2025\nPage: 80\n\n[STRUCTURE]\nStatement: income_statement\nTable: Year Ended June 30,\n\n[EVIDENCE]\nType: table_fragment_backed\n\n[CONTENT]\n| Year Ended June 30, | | 2025 | 2024 | 2023 | |:------------------------------------|:---|:---------|:----------------------|:-------| | Productivity and Business Processes | | | | | | Revenue | | 120,81 | | | | | $ | | 0 $ 106,820 $ | 94,151 | | Cost of revenue | | 22,422 | 19,611 | 17,202 | | Operating expenses | | 28,615 | 27,548 | 26,875 | | Operating Income | $ | 69,773 $ | 59,661 $ | 50,074 | | I ntelligent Cloud | | | | | | Revenue | | 106,26 | | | | | $ | 5 $ | 87,464 $ | 72,944 | | Cost of revenue | | 40,171 | 29,611 | 24,109 | | Operating expenses | | 21,505 | 20,040 | 20,424 | | Operating Income | $ | 44,589 $ | 37,813 $ | 28,411 | | M ore Personal Computing | | | | | | Revenue | $ | 54,649 $ | 50,838 $ | 44,820 | | Cost of revenue | | 25,238 | 24,892 | 24,552 | | Operating expenses | | 15,245 | 13,987 | 10,230 | | Operating Income | $ | 14,166 $ | 11,959 $ | 10,038 | | T otal | | | | | | Revenue | | 281,72 | | | | | $ | | 4 $ 245,122 $ 211,915 | | | Cost of revenue | | 87,831 | 74,114 | 65,863 | | Operating expenses | | 65,365 | 61,575 | 57,529 | | Operating Income | | 128,52 | | | | | $ | | 8 $ 109,433 $ | 88,523 |\n\n[SOURCE]\ntable:be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211 | page:80",
+            "statement_id": "income_statement",
+            "statement_serialization_sha256": "527c0f9f50ae16ae853ca885dbcff540daf9d65f9b83d7c5f2601196611063da",
+            "table_id": null,
+            "table_title": "income_statement",
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+              "generic_rule": true,
+              "reason": "No source-linked atomic numeric cell with a safe metric and period.",
+              "recovered_fact_count": 0,
+              "recovery": "FM7_not_financial_fact_materializable"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3"
+      ],
+      "generic_recoverable": false,
+      "new_fact_available": false,
+      "primary_category": "FM7_not_financial_fact_materializable",
+      "question": "What was Productivity and Business Processes revenue reported by Microsoft in FY2025?",
+      "question_id": "msft_fy2025_002"
+    },
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
+            "candidate_rank": 9,
+            "cell_id": null,
+            "column_header": [],
+            "currency": null,
+            "document_id": "msft_fy2025",
+            "metric": "Intelligent Cloud / Revenue",
+            "normalized_metric": "Intelligent Cloud / Revenue",
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 80,
+            "period_value_bindings": [],
+            "physical_source_id": "80",
+            "physical_source_identity_complete": false,
+            "raw_value": null,
+            "row_id": null,
+            "row_label": "Intelligent Cloud / Revenue",
+            "scale": null,
+            "source_text": "[DOCUMENT]\nDocument: msft_fy2025\n\n[STRUCTURE]\nMetric Path: Intelligent Cloud / Revenue\n\n[EVIDENCE]\nPeriod: FY2025\n\n[CONTENT]\nDocument: msft_fy2025\nPage: 80\nBlock Type: text\n\nSource:\nOperating Income$69,773 $59,661 $50,074  \nIntelligent Cloud  \nRevenue  \n$  \n106,26  \n5 $87,464 $72,944Cost of revenue40,171 29,611 24,109Operating expenses21,505 20,040 20,424  \nOperating Income$44,589 $37,813 $28,411  \nMore Personal Computing",
+            "statement_id": null,
+            "statement_serialization_sha256": "1c2ba66dc590a1d456f613afefdbbbb10e125b6eb494b5c7263fff5d4fe10c89",
+            "table_id": null,
+            "table_title": null,
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
+              "generic_rule": true,
+              "reason": "No source-linked atomic numeric cell with a safe metric and period.",
+              "recovered_fact_count": 0,
+              "recovery": "FM7_not_financial_fact_materializable"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d"
+      ],
+      "generic_recoverable": false,
+      "new_fact_available": false,
+      "primary_category": "FM7_not_financial_fact_materializable",
+      "question": "In the Revenue by segment table, what was Intelligent Cloud revenue in FY2025?",
+      "question_id": "msft_fy2025_004"
+    },
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+            "candidate_rank": 3,
+            "cell_id": null,
+            "column_header": [],
+            "currency": null,
+            "document_id": "msft_fy2025",
+            "metric": null,
+            "normalized_metric": null,
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 80,
+            "period_value_bindings": [],
+            "physical_source_id": "80",
+            "physical_source_identity_complete": false,
+            "raw_value": null,
+            "row_id": null,
+            "row_label": null,
+            "scale": null,
+            "source_text": "[DOCUMENT]\nDocument: msft_fy2025\nPage: 80\n\n[STRUCTURE]\nStatement: income_statement\nTable: Year Ended June 30,\n\n[EVIDENCE]\nType: table_fragment_backed\n\n[CONTENT]\n| Year Ended June 30, | | 2025 | 2024 | 2023 | |:------------------------------------|:---|:---------|:----------------------|:-------| | Productivity and Business Processes | | | | | | Revenue | | 120,81 | | | | | $ | | 0 $ 106,820 $ | 94,151 | | Cost of revenue | | 22,422 | 19,611 | 17,202 | | Operating expenses | | 28,615 | 27,548 | 26,875 | | Operating Income | $ | 69,773 $ | 59,661 $ | 50,074 | | I ntelligent Cloud | | | | | | Revenue | | 106,26 | | | | | $ | 5 $ | 87,464 $ | 72,944 | | Cost of revenue | | 40,171 | 29,611 | 24,109 | | Operating expenses | | 21,505 | 20,040 | 20,424 | | Operating Income | $ | 44,589 $ | 37,813 $ | 28,411 | | M ore Personal Computing | | | | | | Revenue | $ | 54,649 $ | 50,838 $ | 44,820 | | Cost of revenue | | 25,238 | 24,892 | 24,552 | | Operating expenses | | 15,245 | 13,987 | 10,230 | | Operating Income | $ | 14,166 $ | 11,959 $ | 10,038 | | T otal | | | | | | Revenue | | 281,72 | | | | | $ | | 4 $ 245,122 $ 211,915 | | | Cost of revenue | | 87,831 | 74,114 | 65,863 | | Operating expenses | | 65,365 | 61,575 | 57,529 | | Operating Income | | 128,52 | | | | | $ | | 8 $ 109,433 $ | 88,523 |\n\n[SOURCE]\ntable:be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211 | page:80",
+            "statement_id": "income_statement",
+            "statement_serialization_sha256": "527c0f9f50ae16ae853ca885dbcff540daf9d65f9b83d7c5f2601196611063da",
+            "table_id": null,
+            "table_title": "income_statement",
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3",
+              "generic_rule": true,
+              "reason": "No source-linked atomic numeric cell with a safe metric and period.",
+              "recovered_fact_count": 0,
+              "recovery": "FM7_not_financial_fact_materializable"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3"
+      ],
+      "generic_recoverable": false,
+      "new_fact_available": false,
+      "primary_category": "FM7_not_financial_fact_materializable",
+      "question": "In the reportable segment table, what was Productivity and Business Processes operating income in FY2025?",
+      "question_id": "msft_fy2025_005"
+    },
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
+            "candidate_rank": 9,
+            "cell_id": null,
+            "column_header": [],
+            "currency": null,
+            "document_id": "msft_fy2025",
+            "metric": "Intelligent Cloud / Revenue",
+            "normalized_metric": "Intelligent Cloud / Revenue",
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 80,
+            "period_value_bindings": [],
+            "physical_source_id": "80",
+            "physical_source_identity_complete": false,
+            "raw_value": null,
+            "row_id": null,
+            "row_label": "Intelligent Cloud / Revenue",
+            "scale": null,
+            "source_text": "[DOCUMENT]\nDocument: msft_fy2025\n\n[STRUCTURE]\nMetric Path: Intelligent Cloud / Revenue\n\n[EVIDENCE]\nPeriod: FY2025\n\n[CONTENT]\nDocument: msft_fy2025\nPage: 80\nBlock Type: text\n\nSource:\nOperating Income$69,773 $59,661 $50,074  \nIntelligent Cloud  \nRevenue  \n$  \n106,26  \n5 $87,464 $72,944Cost of revenue40,171 29,611 24,109Operating expenses21,505 20,040 20,424  \nOperating Income$44,589 $37,813 $28,411  \nMore Personal Computing",
+            "statement_id": null,
+            "statement_serialization_sha256": "1c2ba66dc590a1d456f613afefdbbbb10e125b6eb494b5c7263fff5d4fe10c89",
+            "table_id": null,
+            "table_title": null,
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d",
+              "generic_rule": true,
+              "reason": "No source-linked atomic numeric cell with a safe metric and period.",
+              "recovered_fact_count": 0,
+              "recovery": "FM7_not_financial_fact_materializable"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d"
+      ],
+      "generic_recoverable": false,
+      "new_fact_available": false,
+      "primary_category": "FM7_not_financial_fact_materializable",
+      "question": "What was Intelligent Cloud revenue in FY2024 rather than FY2025?",
+      "question_id": "msft_fy2025_009"
+    },
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+            "candidate_rank": 20,
+            "cell_id": null,
+            "column_header": [],
+            "currency": null,
+            "document_id": "pfe_fy2024",
+            "metric": null,
+            "normalized_metric": null,
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 45,
+            "period_value_bindings": [],
+            "physical_source_id": "45",
+            "physical_source_identity_complete": false,
+            "raw_value": null,
+            "row_id": null,
+            "row_label": null,
+            "scale": null,
+            "source_text": "[DOCUMENT]\nDocument: pfe_fy2024\nPage: 45\n\n[STRUCTURE]\nStatement: income_statement\nTable: (MILLIONS)\n\n[EVIDENCE]\nType: table_fragment_backed\n\n[CONTENT]\n| | | | | | Revenue | | | | | |:----------------|:----------------|:----------|:---|:--------------------|:----------|:--------|:---------|:------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------| | (MILLIONS) | | | | Year Ended Dec. 31, | | | % Change | | | | Product | Global Revenues | Region | | 2024 | | 2023 | Total | Oper. | Operational Results Commentary | | | | | | | | | | | Growth primarily driven by: • a non-cash revenue reversal of $3.5 billion recorded in the fourth quarter | | | | U.S. | $ | 4,616 | $ | (1,289) | * | | of 2023 (see Note 17C); • a $771 million favorable final adjustment recorded in the first quarter of | | | $5,716 | | | | | | | | 2024 to the estimated non-cash revenue reversal of $3.5 billion recorded in the fourth quarter of 2023; and | | Paxlovid | Up * | | | | | | | | • $442 million from the one-time contractual delivery of treatment courses to the U.S. SNS in the third quarter of 2024, | | | (operationally) | Int’l. | | 1,100 | | 2,568 | (57) | (57) | partially offset by: • lower contractual deliveries in most international markets as a result of | | | | | | | | | | | the transition to traditional commercial market sales; and • lower demand globally, largely in China due to the non-recurrent surge | | | | | | | | | | | in COVID-19 infection during the first quarter of 2023 and transition to the out-of-pocket market in the second quarter of 2023. | | | | Worldwide | $ | 5,716 | $ | 1,279 | * | * | | | | $5,451 | | | | | | | | Growth largely driven by strong demand with continuing uptake in patient | | Vyndaqel family | | U.S. | $ | 3,547 | $ | 1,863 | 90 | | diagnosis, primarily in the U.S. and international developed markets, as | | | Up 65% | Int’l. | | 1,904 | | 1,458 | 31 | 32 | well as increased affordability in the U.S. | | | (operationally) | Worldwide | $ | 5,451 | $ | 3,321 | 64 | 65 | | | | $5,353 | U.S. | $ | 2,004 | $ | 2,404 | (17) | | | | Comirnaty | Down 53% | Int’l. | | 3,349 | | 8,816 | (62) | (62) | Declines largely driven by lower contractual deliveries in international markets as well as a decrease in vaccinations globally. | | | (operationally) | Worldwide | $ | 5,353 | $ | 11,220 | (52) | (53) | | | | $4,367 | U.S. | $ | 2,849 | $ | 3,151 | (10) | | Declines primarily driven by lower demand due to competitive pressures | | Ibrance | Down 8% | Int’l. | | 1,518 | | 1,602 | (5) | (4) | mainly in the U.S., price decreases in certain international developed markets and generic penetration in certain emerging markets. | | | (operationally) | Worldwide | $ | 4,367 | $ | 4,753 | (8) | (8) | | | | $2,039 | U.S. | $ | 2,039 | $ | 1,659 | 23 | | | | Xtandi | Up 23% | Int’l. | | — | | — | — | — | Growth largely driven by strong demand due to uptake of the nmCSPC indication following approval in the fourth quarter of 2023 and increased | | | | | | | | | | | affordability in the U.S. | | | (operationally) | Worldwide | $ | 2,039 | $ | 1,659 | 23 | 23 | | | | $1,588 | U.S. | $ | 1,561 | $ | 53 | * | | | | Padcev | Up * | Int’l. | | 27 | | — | * | * | Growth driven by the acquisition of Seagen in the fourth quarter of 2023 as well as strong demand. | | | (operationally) | Worldwide | $ | 1,588 | $ | 53 | * | * | | | | $1,263 | U.S. | $ | 1,193 | $ | 908 | 31 | | | | Nurtec | Up 36% | Int’l. | | 69 | | 20 | * | * | Growth primarily driven by strong demand in the U.S. and, to a much lesser extent, recent launches in international markets, partially offset by lower net | | ODT/Vydura | | | | | | | | | price in the U.S. due to unfavorable changes in channel mix. | | | (operationally) | Worldwide | $ | 1,263 | $ | 928 | 36 | 36 | | | | $1,168 | U.S. | $ | 680 | $ | 1,154 | (41) | | | | Xeljanz | Down 31% | Int’l. | | 488 | | 549 | (11) | (9) | Declines primarily driven by lower demand globally resulting from ongoing shifts in prescribing patterns related to label changes, as well as lower net | | | | | | | | | | | price in the U.S. and the impact of regulatory exclusivity expiry in Canada. | | | (operationally) | Worldwide | $ | 1,168 | $ | 1,703 | (31) | (31) | | | | $1,089 | U.S. | $ | 1,059 | $ | 56 | * | | | | Adcetris | Up * | Int’l. | | 30 | | — | * | * | Growth driven by the acquisition of Seagen in the fourth quarter of 2023. | | | (operationally) | Worldwide | $ | 1,089 | $ | 56 | * | * | |\n\n[SOURCE]\ntable:2c430320199793a7b760d36d6960516f6681f1c023066cdbda5affd03d55a469 | page:45",
+            "statement_id": "income_statement",
+            "statement_serialization_sha256": "1a3745af0b9de01bfebf2b5ed910486c3ec30defcb38a18bd75dda7910e94aa1",
+            "table_id": null,
+            "table_title": "income_statement",
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+              "generic_rule": true,
+              "reason": "No source-linked atomic numeric cell with a safe metric and period.",
+              "recovered_fact_count": 0,
+              "recovery": "FM7_not_financial_fact_materializable"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2"
+      ],
+      "generic_recoverable": false,
+      "new_fact_available": false,
+      "primary_category": "FM7_not_financial_fact_materializable",
+      "question": "What was Comirnaty revenue reported by Pfizer in FY2024?",
+      "question_id": "pfe_fy2024_002"
+    },
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+            "candidate_rank": 20,
+            "cell_id": null,
+            "column_header": [],
+            "currency": null,
+            "document_id": "pfe_fy2024",
+            "metric": null,
+            "normalized_metric": null,
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 45,
+            "period_value_bindings": [],
+            "physical_source_id": "45",
+            "physical_source_identity_complete": false,
+            "raw_value": null,
+            "row_id": null,
+            "row_label": null,
+            "scale": null,
+            "source_text": "[DOCUMENT]\nDocument: pfe_fy2024\nPage: 45\n\n[STRUCTURE]\nStatement: income_statement\nTable: (MILLIONS)\n\n[EVIDENCE]\nType: table_fragment_backed\n\n[CONTENT]\n| | | | | | Revenue | | | | | |:----------------|:----------------|:----------|:---|:--------------------|:----------|:--------|:---------|:------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------| | (MILLIONS) | | | | Year Ended Dec. 31, | | | % Change | | | | Product | Global Revenues | Region | | 2024 | | 2023 | Total | Oper. | Operational Results Commentary | | | | | | | | | | | Growth primarily driven by: • a non-cash revenue reversal of $3.5 billion recorded in the fourth quarter | | | | U.S. | $ | 4,616 | $ | (1,289) | * | | of 2023 (see Note 17C); • a $771 million favorable final adjustment recorded in the first quarter of | | | $5,716 | | | | | | | | 2024 to the estimated non-cash revenue reversal of $3.5 billion recorded in the fourth quarter of 2023; and | | Paxlovid | Up * | | | | | | | | • $442 million from the one-time contractual delivery of treatment courses to the U.S. SNS in the third quarter of 2024, | | | (operationally) | Int’l. | | 1,100 | | 2,568 | (57) | (57) | partially offset by: • lower contractual deliveries in most international markets as a result of | | | | | | | | | | | the transition to traditional commercial market sales; and • lower demand globally, largely in China due to the non-recurrent surge | | | | | | | | | | | in COVID-19 infection during the first quarter of 2023 and transition to the out-of-pocket market in the second quarter of 2023. | | | | Worldwide | $ | 5,716 | $ | 1,279 | * | * | | | | $5,451 | | | | | | | | Growth largely driven by strong demand with continuing uptake in patient | | Vyndaqel family | | U.S. | $ | 3,547 | $ | 1,863 | 90 | | diagnosis, primarily in the U.S. and international developed markets, as | | | Up 65% | Int’l. | | 1,904 | | 1,458 | 31 | 32 | well as increased affordability in the U.S. | | | (operationally) | Worldwide | $ | 5,451 | $ | 3,321 | 64 | 65 | | | | $5,353 | U.S. | $ | 2,004 | $ | 2,404 | (17) | | | | Comirnaty | Down 53% | Int’l. | | 3,349 | | 8,816 | (62) | (62) | Declines largely driven by lower contractual deliveries in international markets as well as a decrease in vaccinations globally. | | | (operationally) | Worldwide | $ | 5,353 | $ | 11,220 | (52) | (53) | | | | $4,367 | U.S. | $ | 2,849 | $ | 3,151 | (10) | | Declines primarily driven by lower demand due to competitive pressures | | Ibrance | Down 8% | Int’l. | | 1,518 | | 1,602 | (5) | (4) | mainly in the U.S., price decreases in certain international developed markets and generic penetration in certain emerging markets. | | | (operationally) | Worldwide | $ | 4,367 | $ | 4,753 | (8) | (8) | | | | $2,039 | U.S. | $ | 2,039 | $ | 1,659 | 23 | | | | Xtandi | Up 23% | Int’l. | | — | | — | — | — | Growth largely driven by strong demand due to uptake of the nmCSPC indication following approval in the fourth quarter of 2023 and increased | | | | | | | | | | | affordability in the U.S. | | | (operationally) | Worldwide | $ | 2,039 | $ | 1,659 | 23 | 23 | | | | $1,588 | U.S. | $ | 1,561 | $ | 53 | * | | | | Padcev | Up * | Int’l. | | 27 | | — | * | * | Growth driven by the acquisition of Seagen in the fourth quarter of 2023 as well as strong demand. | | | (operationally) | Worldwide | $ | 1,588 | $ | 53 | * | * | | | | $1,263 | U.S. | $ | 1,193 | $ | 908 | 31 | | | | Nurtec | Up 36% | Int’l. | | 69 | | 20 | * | * | Growth primarily driven by strong demand in the U.S. and, to a much lesser extent, recent launches in international markets, partially offset by lower net | | ODT/Vydura | | | | | | | | | price in the U.S. due to unfavorable changes in channel mix. | | | (operationally) | Worldwide | $ | 1,263 | $ | 928 | 36 | 36 | | | | $1,168 | U.S. | $ | 680 | $ | 1,154 | (41) | | | | Xeljanz | Down 31% | Int’l. | | 488 | | 549 | (11) | (9) | Declines primarily driven by lower demand globally resulting from ongoing shifts in prescribing patterns related to label changes, as well as lower net | | | | | | | | | | | price in the U.S. and the impact of regulatory exclusivity expiry in Canada. | | | (operationally) | Worldwide | $ | 1,168 | $ | 1,703 | (31) | (31) | | | | $1,089 | U.S. | $ | 1,059 | $ | 56 | * | | | | Adcetris | Up * | Int’l. | | 30 | | — | * | * | Growth driven by the acquisition of Seagen in the fourth quarter of 2023. | | | (operationally) | Worldwide | $ | 1,089 | $ | 56 | * | * | |\n\n[SOURCE]\ntable:2c430320199793a7b760d36d6960516f6681f1c023066cdbda5affd03d55a469 | page:45",
+            "statement_id": "income_statement",
+            "statement_serialization_sha256": "1a3745af0b9de01bfebf2b5ed910486c3ec30defcb38a18bd75dda7910e94aa1",
+            "table_id": null,
+            "table_title": "income_statement",
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+              "generic_rule": true,
+              "reason": "No source-linked atomic numeric cell with a safe metric and period.",
+              "recovered_fact_count": 0,
+              "recovery": "FM7_not_financial_fact_materializable"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2"
+      ],
+      "generic_recoverable": false,
+      "new_fact_available": false,
+      "primary_category": "FM7_not_financial_fact_materializable",
+      "question": "In the Selected product revenues table, what was Paxlovid revenue in FY2024?",
+      "question_id": "pfe_fy2024_004"
+    },
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e",
+            "candidate_rank": 15,
+            "cell_id": null,
+            "column_header": [],
+            "currency": null,
+            "document_id": "pfe_fy2024",
+            "metric": null,
+            "normalized_metric": null,
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 44,
+            "period_value_bindings": [],
+            "physical_source_id": "44",
+            "physical_source_identity_complete": false,
+            "raw_value": null,
+            "row_id": null,
+            "row_label": null,
+            "scale": null,
+            "source_text": "[DOCUMENT]\nDocument: pfe_fy2024\n\n[CONTENT]\nDocument: pfe_fy2024\nPage: 44\nBlock Type: table\n\nSource:\n|                |                 |           |    |                     | Revenue   |       |          |       |                                                                                                                                                              |\n|:---------------|:----------------|:----------|:---|:--------------------|:----------|:------|:---------|:------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| (MILLIONS)     |                 |           |    | Year Ended Dec. 31, |           |       | % Change |       |                                                                                                                                                              |\n| Product        | Global Revenues | Region    |    | 2024                |           | 2023  | Total    | Oper. | Operational Results Commentary                                                                                                                               |\n|                | $7,366          |           |    |                     |           |       |          |       | Growth driven primarily by continued oral anti-coagulant adoption and                                                                                        |\n| Eliquis        |                 | U.S.      | $  | 4,803               | $         | 4,228 | 14       |       | market share gains in the non-valvular atrial fibrillation indication in the U.S. and certain markets in Europe, partially offset by declines due to loss of |\n|                | Up 10%          | Int’l.    |    | 2,563               |           | 2,519 | 2        | 3     | patent-based exclusivity and generic competition in certain international                                                                                    |\n|                | (operationally) | Worldwide | $  | 7,366               | $         | 6,747 | 9        | 10    | markets.                                                                                                                                                     |\n|                | $6,411          |           |    |                     |           |       |          |       | Declines driven by fewer adult vaccinations in the U.S. and lower pediatric indication sales in most international developed markets and certain             |\n| Prevnar family | Down 1%         | U.S.      | $  | 4,233               | $         | 4,265 | (1)      |       | emerging markets, partially offset by growth in the pediatric indication in the U.S. reflecting recovered market share as a result of the Prevnar 20 launch  |\n|                | (operationally) | Int’l.    |    | 2,178               |           | 2,236 | (3)      | (1)   | in 2023, as well as strong uptake of the adult indication in certain international markets.                                                                  |\n|                |                 | Worldwide | $  | 6,411               | $         | 6,501 | (1)      | (1)   |                                                                                                                                                              |",
+            "statement_id": null,
+            "statement_serialization_sha256": "6be1649d564b826415bcfeedefa09eeb0c2e24968a624d257a5f45157218803b",
+            "table_id": null,
+            "table_title": null,
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e",
+              "generic_rule": true,
+              "reason": "No source-linked atomic numeric cell with a safe metric and period.",
+              "recovered_fact_count": 0,
+              "recovery": "FM7_not_financial_fact_materializable"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e"
+      ],
+      "generic_recoverable": false,
+      "new_fact_available": false,
+      "primary_category": "FM7_not_financial_fact_materializable",
+      "question": "In the Selected product revenues table, what was Prevnar family revenue in FY2024?",
+      "question_id": "pfe_fy2024_005"
+    },
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+            "candidate_rank": 5,
+            "cell_id": null,
+            "column_header": [
+              "FY2025",
+              "FY2024",
+              "FY2023"
+            ],
+            "currency": null,
+            "document_id": "tsla_fy2025",
+            "metric": "Total revenues",
+            "normalized_metric": "Total revenues",
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 69,
+            "period_value_bindings": [
+              "FY2025 = 94,827 millions",
+              "FY2024 = 97,690 millions",
+              "FY2023 = 96,773 millions"
+            ],
+            "physical_source_id": "cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0:5bd592c61ea501109cb3f3cdb92219c5d2da792b01856e4c2ae2af7477a92c74:69",
+            "physical_source_identity_complete": true,
+            "raw_value": null,
+            "row_id": "5bd592c61ea501109cb3f3cdb92219c5d2da792b01856e4c2ae2af7477a92c74",
+            "row_label": "Total revenues",
+            "scale": "millions",
+            "source_text": "[DOCUMENT]\nDocument: tsla_fy2025\nPage: 69\n\n[STRUCTURE]\nStatement: income_statement\nMetric Path: Total revenues\nRow: Total revenues\n\n[EVIDENCE]\nType: table_row_backed\nColumn Headers: FY2025 | FY2024 | FY2023\nPeriod / Value:\n- FY2025 = 94,827 millions\n- FY2024 = 97,690 millions\n- FY2023 = 96,773 millions\nScale: millions\n\n[CONTENT]\nTotal revenues | 94,827 | 97,690 | 96,773\n\n[SOURCE]\ntable:cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0 | row:5bd592c61ea501109cb3f3cdb92219c5d2da792b01856e4c2ae2af7477a92c74 | page:69",
+            "statement_id": "income_statement",
+            "statement_serialization_sha256": "d8b7d7f4babdeebc09ee6a22fa47c66badeb7e9903eab4a772ccc91773cfe619",
+            "table_id": "cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0",
+            "table_title": "income_statement",
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0",
+              "generic_rule": true,
+              "recovered_fact_count": 0,
+              "recovery": "existing_fact"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0"
+      ],
+      "generic_recoverable": true,
+      "new_fact_available": true,
+      "primary_category": "FM0_fact_exists_evaluator_source_relation_missed",
+      "question": "What was total revenues reported by Tesla in FY2025?",
+      "question_id": "tsla_fy2025_001"
+    },
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:764e51106a705bd6f16af004eeb7f0126c4209a0c62a5319d13153dc95987982",
+            "candidate_rank": 6,
+            "cell_id": null,
+            "column_header": [
+              "FY2025",
+              "FY2024",
+              "FY2023"
+            ],
+            "currency": null,
+            "document_id": "tsla_fy2025",
+            "metric": "Services and other",
+            "normalized_metric": "Services and other",
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 69,
+            "period_value_bindings": [
+              "FY2025 = 12,530 millions",
+              "FY2024 = 10,534 millions",
+              "FY2023 = 8,319 millions"
+            ],
+            "physical_source_id": "cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0:bebc80c6e1ac4e9c83ba3ba18cf777c026f389958aed18d896a5b98538863390:69",
+            "physical_source_identity_complete": true,
+            "raw_value": null,
+            "row_id": "bebc80c6e1ac4e9c83ba3ba18cf777c026f389958aed18d896a5b98538863390",
+            "row_label": "Services and other",
+            "scale": "millions",
+            "source_text": "[DOCUMENT]\nDocument: tsla_fy2025\nPage: 69\n\n[STRUCTURE]\nStatement: income_statement\nMetric Path: Services and other\nRow: Services and other\n\n[EVIDENCE]\nType: table_row_backed\nColumn Headers: FY2025 | FY2024 | FY2023\nPeriod / Value:\n- FY2025 = 12,530 millions\n- FY2024 = 10,534 millions\n- FY2023 = 8,319 millions\nScale: millions\n\n[CONTENT]\nServices and other | 12,530 | 10,534 | 8,319\n\n[SOURCE]\ntable:cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0 | row:bebc80c6e1ac4e9c83ba3ba18cf777c026f389958aed18d896a5b98538863390 | page:69",
+            "statement_id": "income_statement",
+            "statement_serialization_sha256": "187cd567e9bc04dbe03b621f71ec7a1d28380da9c66935365dd9c35086c6b80d",
+            "table_id": "cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0",
+            "table_title": "income_statement",
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:764e51106a705bd6f16af004eeb7f0126c4209a0c62a5319d13153dc95987982",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:764e51106a705bd6f16af004eeb7f0126c4209a0c62a5319d13153dc95987982",
+              "generic_rule": true,
+              "recovered_fact_count": 0,
+              "recovery": "existing_fact"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:764e51106a705bd6f16af004eeb7f0126c4209a0c62a5319d13153dc95987982"
+      ],
+      "generic_recoverable": true,
+      "new_fact_available": true,
+      "primary_category": "FM0_fact_exists_evaluator_source_relation_missed",
+      "question": "What was Services and other revenue reported by Tesla in FY2025?",
+      "question_id": "tsla_fy2025_002"
+    },
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:7fcc2dc3de8832dfab1fe0b8a08e25a303a996470fa598765b1e08144018e9f7",
+            "candidate_rank": 6,
+            "cell_id": null,
+            "column_header": [],
+            "currency": null,
+            "document_id": "tsla_fy2025",
+            "metric": null,
+            "normalized_metric": null,
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 69,
+            "period_value_bindings": [],
+            "physical_source_id": "69",
+            "physical_source_identity_complete": false,
+            "raw_value": null,
+            "row_id": null,
+            "row_label": null,
+            "scale": null,
+            "source_text": "[DOCUMENT]\nDocument: tsla_fy2025\nPage: 69\n\n[CONTENT]\nDocument: tsla_fy2025\nPage: 69\nBlock Type: table_row\n\nSource:\nAutomotive regulatory credits | 1,993 | 2,763 | 1,790",
+            "statement_id": null,
+            "statement_serialization_sha256": "80e46a4e0eae246d7a768fbf84a53574a2f6ded015a7758be91df407b9ffaa2c",
+            "table_id": null,
+            "table_title": null,
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:7fcc2dc3de8832dfab1fe0b8a08e25a303a996470fa598765b1e08144018e9f7",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:7fcc2dc3de8832dfab1fe0b8a08e25a303a996470fa598765b1e08144018e9f7",
+              "generic_rule": true,
+              "reason": "No source-linked atomic numeric cell with a safe metric and period.",
+              "recovered_fact_count": 0,
+              "recovery": "FM7_not_financial_fact_materializable"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:7fcc2dc3de8832dfab1fe0b8a08e25a303a996470fa598765b1e08144018e9f7"
+      ],
+      "generic_recoverable": false,
+      "new_fact_available": false,
+      "primary_category": "FM7_not_financial_fact_materializable",
+      "question": "What was Automotive regulatory credits revenue reported by Tesla in FY2025?",
+      "question_id": "tsla_fy2025_003"
+    },
+    {
+      "candidate_details": [
+        {
+          "candidate": {
+            "candidate_id": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+            "candidate_rank": 12,
+            "cell_id": null,
+            "column_header": [],
+            "currency": null,
+            "document_id": "tsla_fy2025",
+            "metric": null,
+            "normalized_metric": null,
+            "normalized_periods": [],
+            "parsed_numeric_value": null,
+            "pdf_page": 55,
+            "period_value_bindings": [],
+            "physical_source_id": "55",
+            "physical_source_identity_complete": false,
+            "raw_value": null,
+            "row_id": null,
+            "row_label": null,
+            "scale": null,
+            "source_text": "[DOCUMENT]\nDocument: tsla_fy2025\nPage: 55\n\n[STRUCTURE]\nStatement: income_statement\nTable: (Dollars in millions)\n\n[EVIDENCE]\nType: table_fragment_backed\n\n[CONTENT]\n| (Dollars in millions) | | 2025 | | 2024 | | 2023 | | $ | % | | $ | % | | |:----------------------------|:---|:-------|:---|:-------|:---|:-------|:---|:--------|:-------|:---|:--------|:-----|:---| | Automotive sales | $ | 65,821 | $ | 72,480 | $ | 78,509 | $ | (6,659) | (9) % | $ | (6,029) | (8) | % | | Automotive regulatory | | 1,993 | | 2,763 | | 1,790 | | (770) | (28) % | | 973 | 54 | % | | credits | | | | | | | | | | | | | | | Automotive leasing | | 1,712 | | 1,827 | | 2,120 | | (115) | (6) % | | (293) | (14) | % | | Total automotive revenues | | 69,526 | | 77,070 | | 82,419 | | (7,544) | (10) % | | (5,349) | (6) | % | | Services and other | | 12,530 | | 10,534 | | 8,319 | | 1,996 | 19 % | | 2,215 | 27 | % | | Total automotive & services | | 82,056 | | 87,604 | | 90,738 | | (5,548) | (6) % | | (3,134) | (3) | % | | and other segment revenue | | | | | | | | | | | | | | | Energy generation and | | 12,771 | | 10,086 | | 6,035 | | 2,685 | 27 % | | 4,051 | 67 | % | | storage segment revenue | | | | | | | | | | | | | | | Total revenues | $ | 94,827 | $ | 97,690 | $ | 96,773 | $ | (2,863) | (3) % | $ | 917 | 1 | % |\n\n[SOURCE]\ntable:11b13f579ed57a803e1ae5b27345556d8a402edf45fcf4fded3c6bf9acc325d0 | page:55",
+            "statement_id": "income_statement",
+            "statement_serialization_sha256": "f967f5c792b94ec41a31b204f6b61d082bf3868b72a3949df430be482e4e80d2",
+            "table_id": null,
+            "table_title": "income_statement",
+            "unit": null
+          },
+          "candidate_id": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+          "recovery_rows": [
+            {
+              "candidate_id": "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81",
+              "generic_rule": true,
+              "reason": "No source-linked atomic numeric cell with a safe metric and period.",
+              "recovered_fact_count": 0,
+              "recovery": "FM7_not_financial_fact_materializable"
+            }
+          ]
+        }
+      ],
+      "expected_source_candidates": [
+        "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81"
+      ],
+      "generic_recoverable": false,
+      "new_fact_available": false,
+      "primary_category": "FM7_not_financial_fact_materializable",
+      "question": "In the Results of Operations revenue table, what was Energy generation and storage segment revenue in FY2025?",
+      "question_id": "tsla_fy2025_005"
+    }
+  ]
+}

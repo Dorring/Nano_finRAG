@@ -1,0 +1,48 @@
+{
+  "binder_executed": false,
+  "new_strict_bindable_complete": 0,
+  "old_complete_supply": 4,
+  "questions": 5,
+  "rows": [
+    {
+      "expected_source_count": 2,
+      "question_id": "aapl_fy2025_007",
+      "slot_count": 2,
+      "slots_compatible": 0,
+      "source_facts": 6,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 2,
+      "question_id": "jpm_fy2025_007",
+      "slot_count": 2,
+      "slots_compatible": 1,
+      "source_facts": 2,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 2,
+      "question_id": "nvda_fy2025_007",
+      "slot_count": 2,
+      "slots_compatible": 0,
+      "source_facts": 5,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 2,
+      "question_id": "pfe_fy2024_007",
+      "slot_count": 2,
+      "slots_compatible": 0,
+      "source_facts": 3,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 2,
+      "question_id": "v_fy2025_007",
+      "slot_count": 2,
+      "slots_compatible": 1,
+      "source_facts": 6,
+      "strict_bindable": false
+    }
+  ]
+}

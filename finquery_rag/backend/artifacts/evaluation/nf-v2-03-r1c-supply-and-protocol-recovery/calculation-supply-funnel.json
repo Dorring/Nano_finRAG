@@ -1,0 +1,97 @@
+{
+  "calculator_executed": false,
+  "new_fact_supply_complete": 6,
+  "new_strict_bindable_all_operands": 6,
+  "old_fact_supply_complete": 6,
+  "questions": 11,
+  "rows": [
+    {
+      "expected_source_count": 1,
+      "question_id": "aapl_fy2025_006",
+      "slot_count": 2,
+      "slots_compatible": 2,
+      "source_facts": 3,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "jpm_fy2025_006",
+      "slot_count": 2,
+      "slots_compatible": 2,
+      "source_facts": 2,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "ko_fy2025_006",
+      "slot_count": 2,
+      "slots_compatible": 2,
+      "source_facts": 3,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 2,
+      "question_id": "ko_fy2025_007",
+      "slot_count": 2,
+      "slots_compatible": 0,
+      "source_facts": 4,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "msft_fy2025_006",
+      "slot_count": 2,
+      "slots_compatible": 0,
+      "source_facts": 3,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 2,
+      "question_id": "msft_fy2025_007",
+      "slot_count": 2,
+      "slots_compatible": 0,
+      "source_facts": 3,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "nvda_fy2025_006",
+      "slot_count": 2,
+      "slots_compatible": 0,
+      "source_facts": 0,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "pfe_fy2024_006",
+      "slot_count": 2,
+      "slots_compatible": 2,
+      "source_facts": 3,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 1,
+      "question_id": "tsla_fy2025_006",
+      "slot_count": 2,
+      "slots_compatible": 2,
+      "source_facts": 3,
+      "strict_bindable": true
+    },
+    {
+      "expected_source_count": 2,
+      "question_id": "tsla_fy2025_007",
+      "slot_count": 2,
+      "slots_compatible": 1,
+      "source_facts": 1,
+      "strict_bindable": false
+    },
+    {
+      "expected_source_count": 2,
+      "question_id": "v_fy2025_006",
+      "slot_count": 2,
+      "slots_compatible": 2,
+      "source_facts": 3,
+      "strict_bindable": true
+    }
+  ]
+}
