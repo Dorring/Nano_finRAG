@@ -1,0 +1,18 @@
+{
+  "alias_table": null,
+  "canonical_metric_id": null,
+  "canonicalizer": null,
+  "extractor_entrypoint": "src.retrieval_v3.query_features.extract_metric_phrases",
+  "gate": "NF-E2E-11-R0",
+  "modified": false,
+  "namespace": "lower-cased cleaned metric phrase",
+  "normalizer_entrypoint": "src.retrieval_v3.query_features.normalize_question plus MetricPhrase.normalized_text=clean.lower()",
+  "side": "query",
+  "source": "NF-E2E-08 existing-query-signal-contract and repository source",
+  "steps": [
+    "NFKC/whitespace normalization",
+    "strip query framing/company/period/operation stop words",
+    "replace non-alphanumeric separators with spaces",
+    "lowercase"
+  ]
+}

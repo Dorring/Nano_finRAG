@@ -1,0 +1,3 @@
+NF-E2E-11 R0 audit policy (no recovery executed)
+
+Compare frozen query metric/period strings with frozen FinancialFactV1 strings only. Do not add aliases, change either canonicalizer, run DFS, use rank/score, use answers or Gold, or perform E2E replay. Classify lexical/synonym differences separately from hierarchy, qualifier, derived-metric, absent-fact, and genuine semantic differences. AM0/AM1 are dedup-recoverable only when physical provenance is identical.

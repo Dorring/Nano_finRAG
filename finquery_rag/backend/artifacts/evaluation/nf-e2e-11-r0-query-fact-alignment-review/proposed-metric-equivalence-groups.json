@@ -1,0 +1,45 @@
+{
+  "gate": "NF-E2E-11-R0",
+  "groups": [
+    {
+      "affected_cases": 4,
+      "apply_now": false,
+      "canonical_recoverable": true,
+      "evidence_source": "common_financial_semantics",
+      "existing_code_support": false,
+      "members": [
+        "comirnaty revenue",
+        "revenues - comirnaty",
+        "paxlovid revenue",
+        "revenues - paxlovid"
+      ],
+      "proposed_group": "product_revenue_label_order"
+    },
+    {
+      "affected_cases": 1,
+      "apply_now": false,
+      "canonical_recoverable": true,
+      "evidence_source": "common_financial_semantics",
+      "existing_code_support": false,
+      "members": [
+        "total revenue",
+        "revenue"
+      ],
+      "proposed_group": "total_revenue_label"
+    },
+    {
+      "affected_cases": 5,
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "evidence_source": "benchmark_only_observation",
+      "existing_code_support": false,
+      "members": [
+        "emea total net operating revenues",
+        "emea",
+        "north america total net operating revenues",
+        "north america"
+      ],
+      "proposed_group": "regional_segment_header_row"
+    }
+  ]
+}

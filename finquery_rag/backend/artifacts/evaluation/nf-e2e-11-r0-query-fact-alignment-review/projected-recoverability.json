@@ -1,0 +1,13 @@
+{
+  "canonical_recoverable_metric_cases": 5,
+  "current_dfs_ready": 1,
+  "dedup_recoverable_ambiguous_cases": 0,
+  "double_count_guard": true,
+  "gate": "NF-E2E-11-R0",
+  "gold_reads": 0,
+  "method": "current ready plus disjoint post-seal canonical/period/dedup classes; no E2E execution",
+  "period_canonical_recoverable_cases": 0,
+  "projected_dfs_ready_after_canonical_only_recovery": 6,
+  "projected_provenance_safe_ready": 5,
+  "recovery_executed": false
+}

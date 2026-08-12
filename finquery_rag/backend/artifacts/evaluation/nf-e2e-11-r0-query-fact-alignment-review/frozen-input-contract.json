@@ -1,0 +1,31 @@
+{
+  "base_commit": "4cd069b8c5d6bc150bcb46a8cc7d4284aef76dc9",
+  "dfs_execution": false,
+  "e2e_replay": false,
+  "evaluation_role": "development_shadow_query_fact_alignment_review",
+  "financial_fact_contract_sha": "7a253b443962c5f372dd897c49c057a19b553e92314faadc31eefc82b27b54eb",
+  "financial_fact_count": 169,
+  "financial_fact_full_provenance_queries": 39,
+  "financial_fact_modified": false,
+  "fresh_blind_evaluation": false,
+  "frozen_top5_order_sha256": "6eac153ef4c896a9dbdbbf3c1ff446ea228b06adb665047d189b9f1ebfa89393",
+  "gate": "NF-E2E-11-R0",
+  "gold_used_before_diagnostic_seal": false,
+  "model_calls": 0,
+  "nf09_top5_order_sha256": "6eac153ef4c896a9dbdbbf3c1ff446ea228b06adb665047d189b9f1ebfa89393",
+  "nf10_frozen_reference": {
+    "answerable_released": 12,
+    "citation_full_recall": 10,
+    "grounded": 3,
+    "wrong_source": 0
+  },
+  "nf10_reference_commit": "24c0bef780b771c19e4a05a79196a43f22efce62",
+  "pdf_reparse": false,
+  "production_switch_allowed": false,
+  "query_extractor_modified": false,
+  "reranker_calls": 0,
+  "retrieval_calls": 0,
+  "top5_ids_unchanged": true,
+  "top5_order_unchanged": true,
+  "training": false
+}

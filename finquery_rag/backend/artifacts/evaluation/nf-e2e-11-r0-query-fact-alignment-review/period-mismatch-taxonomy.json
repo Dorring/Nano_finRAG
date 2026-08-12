@@ -1,0 +1,17 @@
+{
+  "apply_now": false,
+  "counts": {
+    "QP0_format_only_difference": 0,
+    "QP1_fiscal_year_vs_calendar_year": 0,
+    "QP2_quarter_representation_difference": 0,
+    "QP3_period_end_date_equivalence": 0,
+    "QP4_duration_vs_point_in_time": 0,
+    "QP5_financial_fact_period_wrong": 3,
+    "QP6_query_period_extraction_wrong": 0,
+    "QP7_genuine_period_mismatch": 0,
+    "QP8_other": 0
+  },
+  "denominator": 3,
+  "gate": "NF-E2E-11-R0",
+  "period_canonical_recoverable": 0
+}

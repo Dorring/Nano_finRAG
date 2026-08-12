@@ -1,0 +1,77 @@
+{
+  "fields": [
+    {
+      "fact_path": null,
+      "field": "query.raw_metric",
+      "first_loss_stage": "RL5_relation_between_fields_lost",
+      "machine_readable": true,
+      "query_path": "NF-E2E-08 runtime query_signals.metric_phrases.raw_text"
+    },
+    {
+      "fact_path": null,
+      "field": "query.normalized_metric",
+      "first_loss_stage": "RL5_relation_between_fields_lost",
+      "machine_readable": true,
+      "query_path": "MetricPhrase.normalized_text"
+    },
+    {
+      "fact_path": "FinancialFactV1.raw_metric",
+      "field": "fact.raw_metric",
+      "first_loss_stage": "RL0_no_loss",
+      "machine_readable": true,
+      "query_path": null
+    },
+    {
+      "fact_path": "FinancialFactV1.normalized_metric",
+      "field": "fact.normalized_metric",
+      "first_loss_stage": "RL0_no_loss",
+      "machine_readable": true,
+      "query_path": null
+    },
+    {
+      "fact_path": "FinancialFactV1.normalized_period",
+      "field": "fact.period",
+      "first_loss_stage": "RL5_relation_between_fields_lost",
+      "machine_readable": true,
+      "query_path": "NF-E2E-08 runtime query_signals.periods"
+    },
+    {
+      "fact_path": "FinancialFactV1.parsed_numeric_value/raw_value",
+      "field": "fact.value",
+      "first_loss_stage": "RL0_no_loss",
+      "machine_readable": true,
+      "query_path": null
+    },
+    {
+      "fact_path": "FinancialFactV1.relation_provenance.metric_row",
+      "field": "fact.metric_row_relation",
+      "first_loss_stage": "RL0_no_loss",
+      "machine_readable": true,
+      "query_path": null
+    },
+    {
+      "fact_path": "FinancialFactV1.relation_provenance.period_column",
+      "field": "fact.period_column_relation",
+      "first_loss_stage": "RL0_no_loss",
+      "machine_readable": true,
+      "query_path": null
+    },
+    {
+      "fact_path": "FinancialFactV1.relation_provenance.value_cell",
+      "field": "fact.value_cell_relation",
+      "first_loss_stage": "RL0_no_loss",
+      "machine_readable": true,
+      "query_path": null
+    },
+    {
+      "fact_path": "FinancialFactV1.physical_source_id/cell_id",
+      "field": "fact.physical_source_identity",
+      "first_loss_stage": "RL0_no_loss",
+      "machine_readable": true,
+      "query_path": null
+    }
+  ],
+  "gate": "NF-E2E-11-R0",
+  "gold_reads": 0,
+  "query_reads_for_classification": 0
+}

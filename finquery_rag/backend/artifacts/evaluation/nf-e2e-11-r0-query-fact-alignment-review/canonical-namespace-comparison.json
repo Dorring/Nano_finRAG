@@ -1,0 +1,28 @@
+{
+  "examples": [
+    {
+      "case": "msft_fy2025_001",
+      "fact": "revenue",
+      "query": "total revenue"
+    },
+    {
+      "case": "pfe_fy2024_002",
+      "fact": "revenues - comirnaty",
+      "query": "comirnaty revenue"
+    },
+    {
+      "case": "aapl_fy2025_003",
+      "fact": "total gross margin percentage",
+      "query": "gross margin percentage"
+    }
+  ],
+  "fact_normalizer": "src.pdf_retrieval_v4.runtime_semantic_fact_identity.normalize_text",
+  "gate": "NF-E2E-11-R0",
+  "modified": false,
+  "query_normalizer": "src.retrieval_v3.query_features.normalize_question plus MetricPhrase.normalized_text=clean.lower()",
+  "reason": "The two frozen paths use different entrypoints and expose only free-form normalized strings; neither emits a shared alias table or metric ID.",
+  "shared_alias_contract": false,
+  "shared_canonical_namespace": false,
+  "shared_metric_id_system": false,
+  "shared_normalizer": false
+}

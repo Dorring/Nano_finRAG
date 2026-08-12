@@ -1,0 +1,20 @@
+{
+  "apply_now": false,
+  "canonical_recoverable": 5,
+  "counts": {
+    "QM0_same_metric_semantics_string_normalization_only": 0,
+    "QM10_genuine_financial_semantic_difference": 0,
+    "QM11_other": 0,
+    "QM1_abbreviation_or_expansion": 4,
+    "QM2_known_financial_synonym": 1,
+    "QM3_hierarchical_metric_scope_difference": 3,
+    "QM4_metric_with_different_qualifier": 4,
+    "QM5_query_requests_derived_metric_or_ratio": 0,
+    "QM6_requested_metric_not_present_in_financial_facts": 0,
+    "QM7_financial_fact_metric_reconstructed_wrong": 1,
+    "QM8_table_header_or_row_composition_mismatch": 14,
+    "QM9_query_metric_extraction_semantically_wrong": 1
+  },
+  "denominator": 28,
+  "gate": "NF-E2E-11-R0"
+}

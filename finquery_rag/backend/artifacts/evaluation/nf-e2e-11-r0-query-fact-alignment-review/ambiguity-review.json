@@ -1,0 +1,289 @@
+{
+  "denominator": 7,
+  "gate": "NF-E2E-11-R0",
+  "gold_reads": 0,
+  "rows": [
+    {
+      "facts": [
+        {
+          "fact_id": "394411ec7dc43fa13293c826d1e789c036dc8e93ed2810f0492c1647f1243fb5",
+          "period": "FY2025",
+          "physical_source": "86d66bc3ca981023bc28ac3999f26bd9ce2fcf9d38b518b10ec261da7bb2c1c1:76d6427ef929aed0af21ae317300ec47e770a8488d9169e32e8b76827997f067:104",
+          "row": "76d6427ef929aed0af21ae317300ec47e770a8488d9169e32e8b76827997f067",
+          "scale": "1000000",
+          "statement": "balance_sheet",
+          "table": "86d66bc3ca981023bc28ac3999f26bd9ce2fcf9d38b518b10ec261da7bb2c1c1",
+          "unit": null,
+          "value": "2142534"
+        },
+        {
+          "fact_id": "3550152c1027b97c44e4fc2bdc6efb6788e408c0df12f779147af2e60623da0f",
+          "period": "FY2025",
+          "physical_source": "21628df58826aff5bba4db351f4f8717cb070f77a8161dd7764aa1b09229448a:54f3a2e2e56d9d140a49acdeb444ac5623b9a4735546ab1ac4a5f4821f953144:76",
+          "row": "54f3a2e2e56d9d140a49acdeb444ac5623b9a4735546ab1ac4a5f4821f953144",
+          "scale": "1000000",
+          "statement": "income_statement",
+          "table": "21628df58826aff5bba4db351f4f8717cb070f77a8161dd7764aa1b09229448a",
+          "unit": null,
+          "value": "4424900"
+        },
+        {
+          "fact_id": "b2fd71a203f7a32046b2395623c0d5d00d39a45155b3a7430a578da06b61837e",
+          "period": "FY2025",
+          "physical_source": "22657ec90fe1003ef67092934621ee9560bbda15d5ad8719ffa21638faad8db0:eac23a16f0e11db2ecd99c57b490fe1546cfd0805d3ceb124aa7c4985aae2ffe:2",
+          "row": "eac23a16f0e11db2ecd99c57b490fe1546cfd0805d3ceb124aa7c4985aae2ffe",
+          "scale": "1000000",
+          "statement": "income_statement",
+          "table": "22657ec90fe1003ef67092934621ee9560bbda15d5ad8719ffa21638faad8db0",
+          "unit": null,
+          "value": "4424900"
+        }
+      ],
+      "gold_used": false,
+      "matching_fact_count": 3,
+      "physical_identity_count": 3,
+      "primary_category": "AM4_same_metric_across_multiple_statements",
+      "query": "What was total assets reported by JPMorgan in FY2025?",
+      "question_id": "jpm_fy2025_001",
+      "reason": "Matching facts carry distinct physical source/table/cell provenance; treating same labels or values as duplicates would be an unsafe deduplication heuristic.",
+      "recoverable_by_deterministic_dedup": false
+    },
+    {
+      "facts": [
+        {
+          "fact_id": "82ec9a82542c4decda7d7ad15e6ef2d3fc46e6823a3b063b2600a328e0a89c42",
+          "period": "FY2025",
+          "physical_source": "22657ec90fe1003ef67092934621ee9560bbda15d5ad8719ffa21638faad8db0:99c8e04a234a31984bcf797faaa38e251f0df120f36df738c2059fbe215e8efa:2",
+          "row": "99c8e04a234a31984bcf797faaa38e251f0df120f36df738c2059fbe215e8efa",
+          "scale": "1000000",
+          "statement": "income_statement",
+          "table": "22657ec90fe1003ef67092934621ee9560bbda15d5ad8719ffa21638faad8db0",
+          "unit": null,
+          "value": "57048"
+        },
+        {
+          "fact_id": "5f274c6f21e33f2f9ace1ca086c31f4376c16a44646b2a55a9c144d348b7a462",
+          "period": "FY2025",
+          "physical_source": "21628df58826aff5bba4db351f4f8717cb070f77a8161dd7764aa1b09229448a:8421cec239b183cfbfae3de65b5d2fd7fcd29e00797b9ec4bd5dac8e4e0599a7:76",
+          "row": "8421cec239b183cfbfae3de65b5d2fd7fcd29e00797b9ec4bd5dac8e4e0599a7",
+          "scale": "1000000",
+          "statement": "income_statement",
+          "table": "21628df58826aff5bba4db351f4f8717cb070f77a8161dd7764aa1b09229448a",
+          "unit": null,
+          "value": "57048"
+        },
+        {
+          "fact_id": "3c570c06d722b50cfef9d038bc2c591f8e51a054b3b6d2ffc305adc3f2dff2b3",
+          "period": "FY2025",
+          "physical_source": "673ead3ce91ec6cc5337b6c6101478dad2771052c7162ac2e2590ad67292f9e2:7f78108fe13b89dbdc392b224c183245f361e35e620e8e7ad890f7dc675ad4d6:198",
+          "row": "7f78108fe13b89dbdc392b224c183245f361e35e620e8e7ad890f7dc675ad4d6",
+          "scale": "1000000",
+          "statement": "income_statement",
+          "table": "673ead3ce91ec6cc5337b6c6101478dad2771052c7162ac2e2590ad67292f9e2",
+          "unit": null,
+          "value": "57048"
+        },
+        {
+          "fact_id": "4b271f401e1bd73b61d3f7397cef53b624855680178984c7cdf0a49778dee365",
+          "period": "FY2025",
+          "physical_source": "3e2ee1dc250a32c2d5906109ce12aafb33f4f38f2cd95882487eb52385e0ac0c:ef0323f842c202392cff0b97eb59a691936f83857f89bcc192ca50105a3105c8:197",
+          "row": "ef0323f842c202392cff0b97eb59a691936f83857f89bcc192ca50105a3105c8",
+          "scale": "1000000",
+          "statement": "income_statement",
+          "table": "3e2ee1dc250a32c2d5906109ce12aafb33f4f38f2cd95882487eb52385e0ac0c",
+          "unit": null,
+          "value": "57048"
+        }
+      ],
+      "gold_used": false,
+      "matching_fact_count": 4,
+      "physical_identity_count": 4,
+      "primary_category": "AM4_same_metric_across_multiple_statements",
+      "query": "What was net income reported by JPMorgan in FY2025?",
+      "question_id": "jpm_fy2025_003",
+      "reason": "Matching facts carry distinct physical source/table/cell provenance; treating same labels or values as duplicates would be an unsafe deduplication heuristic.",
+      "recoverable_by_deterministic_dedup": false
+    },
+    {
+      "facts": [
+        {
+          "fact_id": "125c81aeaa257db2ae4ed713b8a8554c673f9cb931630521fb69cf0c4e51c3f6",
+          "period": "FY2025",
+          "physical_source": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d:63",
+          "row": "78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d",
+          "scale": "1000000",
+          "statement": "income_statement",
+          "table": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd",
+          "unit": null,
+          "value": "47941"
+        },
+        {
+          "fact_id": "3f1200299bd330cbeb5268ff99e22ecf1780494a6daf6fbdba4c05d50d22bd25",
+          "period": "FY2025",
+          "physical_source": "dd20265ddef36bf9442116ba1021d7d6bf5964fba11264ee229869b078081569:fbf073623d9f03d0c0727fee86db600f51c2a759d986a79dba4e77ef26d35f59:118",
+          "row": "fbf073623d9f03d0c0727fee86db600f51c2a759d986a79dba4e77ef26d35f59",
+          "scale": "1000000",
+          "statement": "income_statement",
+          "table": "dd20265ddef36bf9442116ba1021d7d6bf5964fba11264ee229869b078081569",
+          "unit": null,
+          "value": "47941"
+        },
+        {
+          "fact_id": "5ada67806684fce8a8ad4b637a89f3dd2e61dc8c329cbb79e351e87a02a65696",
+          "period": "FY2025",
+          "physical_source": "9a90ac6dbf971bc6b0a8abb92c7d03fb85b3b767589e0bbe705387e65ce09817:f0adbdf6de87184745a0dbd9ab73568a3e566de4fad2111e1adb84575d890516:87",
+          "row": "f0adbdf6de87184745a0dbd9ab73568a3e566de4fad2111e1adb84575d890516",
+          "scale": "1000000",
+          "statement": "income_statement",
+          "table": "9a90ac6dbf971bc6b0a8abb92c7d03fb85b3b767589e0bbe705387e65ce09817",
+          "unit": null,
+          "value": "102800"
+        }
+      ],
+      "gold_used": false,
+      "matching_fact_count": 3,
+      "physical_identity_count": 3,
+      "primary_category": "AM4_same_metric_across_multiple_statements",
+      "query": "What was net operating revenues reported by The Coca-Cola Company in FY2025?",
+      "question_id": "ko_fy2025_001",
+      "reason": "Matching facts carry distinct physical source/table/cell provenance; treating same labels or values as duplicates would be an unsafe deduplication heuristic.",
+      "recoverable_by_deterministic_dedup": false
+    },
+    {
+      "facts": [
+        {
+          "fact_id": "30aede920be2f2f4102371bd89bb9068cb11a3a556c1a4d284a5393159b7a0cc",
+          "period": "FY2025",
+          "physical_source": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:a5da46248aad27275bd61916b2d7361095d322449898216f1e1df8fbb2013236:63",
+          "row": "a5da46248aad27275bd61916b2d7361095d322449898216f1e1df8fbb2013236",
+          "scale": "1000000",
+          "statement": "income_statement",
+          "table": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd",
+          "unit": null,
+          "value": "13762"
+        },
+        {
+          "fact_id": "1cc0fcc3c451e0cab355ecac4bdd3e6545ddd41623748fd354c43fb3bcafc223",
+          "period": "FY2025",
+          "physical_source": "9a90ac6dbf971bc6b0a8abb92c7d03fb85b3b767589e0bbe705387e65ce09817:c82e0d7a3635338eb14460cd415a76fa3d1988360dfba667cef26c67d5144cc6:87",
+          "row": "c82e0d7a3635338eb14460cd415a76fa3d1988360dfba667cef26c67d5144cc6",
+          "scale": "1000000",
+          "statement": "income_statement",
+          "table": "9a90ac6dbf971bc6b0a8abb92c7d03fb85b3b767589e0bbe705387e65ce09817",
+          "unit": null,
+          "value": "13426"
+        }
+      ],
+      "gold_used": false,
+      "matching_fact_count": 2,
+      "physical_identity_count": 2,
+      "primary_category": "AM4_same_metric_across_multiple_statements",
+      "query": "What was operating income reported by The Coca-Cola Company in FY2025?",
+      "question_id": "ko_fy2025_002",
+      "reason": "Matching facts carry distinct physical source/table/cell provenance; treating same labels or values as duplicates would be an unsafe deduplication heuristic.",
+      "recoverable_by_deterministic_dedup": false
+    },
+    {
+      "facts": [
+        {
+          "fact_id": "e513aecc7dfd490e508e83f2b194cb2ab8d61695b7f689c64350f33539c06bf4",
+          "period": "FY2025",
+          "physical_source": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:2ce54063bbdedeb95f1a279d0c41237e1c6fa479a1a4e4cc49df6a63129b3456:172",
+          "row": "2ce54063bbdedeb95f1a279d0c41237e1c6fa479a1a4e4cc49df6a63129b3456",
+          "scale": "1000000",
+          "statement": "income_statement",
+          "table": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736",
+          "unit": null,
+          "value": "130497"
+        },
+        {
+          "fact_id": "9d894f54dae9df63cb3ab22e4cbe868356e3a72d76906158d35067d89bc6e652",
+          "period": "FY2025",
+          "physical_source": "7dfd18dd365fbd0db662a9b8bfc87e1b4adbf0c102f273dfb592b6d1ae2fb3f2:59cf129520d840a08394aca8127c9629610755e622d2818acb6cb9848bcf36e7:171",
+          "row": "59cf129520d840a08394aca8127c9629610755e622d2818acb6cb9848bcf36e7",
+          "scale": "1000000",
+          "statement": "income_statement",
+          "table": "7dfd18dd365fbd0db662a9b8bfc87e1b4adbf0c102f273dfb592b6d1ae2fb3f2",
+          "unit": null,
+          "value": "130497"
+        }
+      ],
+      "gold_used": false,
+      "matching_fact_count": 2,
+      "physical_identity_count": 2,
+      "primary_category": "AM4_same_metric_across_multiple_statements",
+      "query": "What was total revenue reported by NVIDIA in FY2025?",
+      "question_id": "nvda_fy2025_001",
+      "reason": "Matching facts carry distinct physical source/table/cell provenance; treating same labels or values as duplicates would be an unsafe deduplication heuristic.",
+      "recoverable_by_deterministic_dedup": false
+    },
+    {
+      "facts": [
+        {
+          "fact_id": "b8982f8a92719de674f6bff3f15eb07478aeea7d02fd88ecd10b5d4b24ec4c2c",
+          "period": "FY2024",
+          "physical_source": "78179ebd90114e4886af38071efb20c643efd57d11b9d1a5864fe42aba876818:8378868e8aa980661831490896a6a83237ef320cc3b0968c7dda07489ad43c55:113",
+          "row": "8378868e8aa980661831490896a6a83237ef320cc3b0968c7dda07489ad43c55",
+          "scale": "1000000",
+          "statement": "income_statement",
+          "table": "78179ebd90114e4886af38071efb20c643efd57d11b9d1a5864fe42aba876818",
+          "unit": null,
+          "value": "63627"
+        },
+        {
+          "fact_id": "25b3026c7de0081af13f227eac8511f58d6b28bfdfbcce51b629d011cefc0a58",
+          "period": "FY2024",
+          "physical_source": "a8055121fa63f48f32fb0fa7fd624ea6541155fef3395d279e4de69bfc94c3de:2c334e07f01a1b28862425a9ab134cc77aaf32695d42bd3863a9466770286454:60",
+          "row": "2c334e07f01a1b28862425a9ab134cc77aaf32695d42bd3863a9466770286454",
+          "scale": "1000000",
+          "statement": "income_statement",
+          "table": "a8055121fa63f48f32fb0fa7fd624ea6541155fef3395d279e4de69bfc94c3de",
+          "unit": null,
+          "value": "63627"
+        }
+      ],
+      "gold_used": false,
+      "matching_fact_count": 2,
+      "physical_identity_count": 2,
+      "primary_category": "AM4_same_metric_across_multiple_statements",
+      "query": "What was total revenues reported by Pfizer in FY2024?",
+      "question_id": "pfe_fy2024_001",
+      "reason": "Matching facts carry distinct physical source/table/cell provenance; treating same labels or values as duplicates would be an unsafe deduplication heuristic.",
+      "recoverable_by_deterministic_dedup": false
+    },
+    {
+      "facts": [
+        {
+          "fact_id": "f79884cf4f0f8d6be407ae53f629548e99f9f9b2c1288b86cb5408e4a0657ed8",
+          "period": "FY2025",
+          "physical_source": "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:93d6960e6d70cca7c6156d844781efdb14007565ffb30dfda12383129f83f91c:77",
+          "row": "93d6960e6d70cca7c6156d844781efdb14007565ffb30dfda12383129f83f91c",
+          "scale": "1000000",
+          "statement": "income_statement",
+          "table": "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72",
+          "unit": null,
+          "value": "94827"
+        },
+        {
+          "fact_id": "331719d000ca733cc97eac7e2404b61a3ecf3273e45a230ee1715f8f3351250b",
+          "period": "FY2025",
+          "physical_source": "cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0:5bd592c61ea501109cb3f3cdb92219c5d2da792b01856e4c2ae2af7477a92c74:69",
+          "row": "5bd592c61ea501109cb3f3cdb92219c5d2da792b01856e4c2ae2af7477a92c74",
+          "scale": "1000000",
+          "statement": "income_statement",
+          "table": "cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0",
+          "unit": null,
+          "value": "94827"
+        }
+      ],
+      "gold_used": false,
+      "matching_fact_count": 2,
+      "physical_identity_count": 2,
+      "primary_category": "AM4_same_metric_across_multiple_statements",
+      "query": "What was total revenues reported by Tesla in FY2025?",
+      "question_id": "tsla_fy2025_001",
+      "reason": "Matching facts carry distinct physical source/table/cell provenance; treating same labels or values as duplicates would be an unsafe deduplication heuristic.",
+      "recoverable_by_deterministic_dedup": false
+    }
+  ]
+}

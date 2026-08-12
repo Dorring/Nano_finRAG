@@ -1,0 +1,18 @@
+{
+  "apply_now": false,
+  "counts": {
+    "AM0_duplicate_same_physical_fact": 0,
+    "AM1_duplicate_extraction_different_candidate": 0,
+    "AM2_consolidated_vs_segment": 0,
+    "AM3_total_vs_component": 0,
+    "AM4_same_metric_across_multiple_statements": 7,
+    "AM5_same_metric_period_different_units": 0,
+    "AM6_restated_vs_reported_value": 0,
+    "AM7_genuine_financial_ambiguity": 0,
+    "AM8_other": 0
+  },
+  "dedup_recoverable": 0,
+  "denominator": 7,
+  "gate": "NF-E2E-11-R0",
+  "genuine_ambiguity": 7
+}

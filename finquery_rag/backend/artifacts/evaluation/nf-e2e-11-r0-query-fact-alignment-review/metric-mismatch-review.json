@@ -1,0 +1,1392 @@
+{
+  "denominator": 28,
+  "gate": "NF-E2E-11-R0",
+  "gold_reads": 0,
+  "rows": [
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "09d8a9afdcab52c7758357dd6ca58bff7d5fbd1253ff1950825594a337396565",
+          "normalized_metric": "total gross margin percentage",
+          "period": "FY2024",
+          "raw_metric": "Total gross margin percentage",
+          "source_id": "60d96702c3d70da2d4d2c1a1fbeae60472c537ac7054ab2a66c3b44b179ae821:251cf6076494ea086c40b4475b866b3b22b1e91876d943db6bd575c092b78390:27"
+        },
+        {
+          "fact_id": "731d256f0813839c701f13b3b4e9deeb24dec4bb09f6ff268fc21c17c652e871",
+          "normalized_metric": "total gross margin percentage",
+          "period": "FY2023",
+          "raw_metric": "Total gross margin percentage",
+          "source_id": "60d96702c3d70da2d4d2c1a1fbeae60472c537ac7054ab2a66c3b44b179ae821:251cf6076494ea086c40b4475b866b3b22b1e91876d943db6bd575c092b78390:27"
+        },
+        {
+          "fact_id": "c020b94ff98da3c5c9039108f959cd6ceeb1cbbcd39905369dc424eca18fd2ab",
+          "normalized_metric": "total gross margin percentage",
+          "period": "FY2025",
+          "raw_metric": "Total gross margin percentage",
+          "source_id": "60d96702c3d70da2d4d2c1a1fbeae60472c537ac7054ab2a66c3b44b179ae821:251cf6076494ea086c40b4475b866b3b22b1e91876d943db6bd575c092b78390:27"
+        },
+        {
+          "fact_id": "158317caa5be4d441a4220bc6cf32037c91ca9b10f64fa2ba73a1e2bc76351da",
+          "normalized_metric": "gross margin",
+          "period": "FY2023",
+          "raw_metric": "Gross margin",
+          "source_id": "2016faed04f03df7ef6aad0be8f232521469d6ba19428379e552d55dc23667cd:445b48c193bcf54f55a2269b48e447a3d23f7e93c8fe7c33bde493df7beb0cbf:32"
+        },
+        {
+          "fact_id": "680f4c61361d70e26365e3cc233963b9d8f2262e261fd57a3fab0960c36f3dea",
+          "normalized_metric": "gross margin",
+          "period": "FY2025",
+          "raw_metric": "Gross margin",
+          "source_id": "2016faed04f03df7ef6aad0be8f232521469d6ba19428379e552d55dc23667cd:445b48c193bcf54f55a2269b48e447a3d23f7e93c8fe7c33bde493df7beb0cbf:32"
+        },
+        {
+          "fact_id": "8693b8846c462b717470f63562ecc33781577b8ead0357de9620512706f85cbf",
+          "normalized_metric": "gross margin",
+          "period": "FY2024",
+          "raw_metric": "Gross margin",
+          "source_id": "2016faed04f03df7ef6aad0be8f232521469d6ba19428379e552d55dc23667cd:445b48c193bcf54f55a2269b48e447a3d23f7e93c8fe7c33bde493df7beb0cbf:32"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM4_metric_with_different_qualifier",
+      "query": "What was gross margin percentage reported by Apple in FY2025?",
+      "query_normalized_metric": [
+        "gross margin percentage"
+      ],
+      "query_raw_metric": [
+        "gross margin percentage"
+      ],
+      "question_id": "aapl_fy2025_003"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "880ebd34db6bca5b4427a4bb317ec35f6a44e09f316d2c6c9bbcf07d95703f11",
+          "normalized_metric": "assets / liabilities / total liabilities(a)",
+          "period": "FY2025",
+          "raw_metric": "Assets / Liabilities / Total liabilities(a)",
+          "source_id": "59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd:74eaf76aa9a0ac7d549e7e5a5192b5b1338292218cdc0208beee29b1e21796b3:199"
+        },
+        {
+          "fact_id": "9bc39de106b96b380a9bda50055ca39a97bd6885eb633ef21994d9f82d1694e6",
+          "normalized_metric": "assets / liabilities / total liabilities(a)",
+          "period": "FY2024",
+          "raw_metric": "Assets / Liabilities / Total liabilities(a)",
+          "source_id": "59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd:74eaf76aa9a0ac7d549e7e5a5192b5b1338292218cdc0208beee29b1e21796b3:199"
+        },
+        {
+          "fact_id": "6c81d53f49d854895d6e41e8064f7146735c3e388ceb30cd2d974520d429fc2d",
+          "normalized_metric": "assets / liabilities and stockholders' equity / total liabilities and stockholders' equity",
+          "period": "FY2025",
+          "raw_metric": "Assets / Liabilities and stockholders' equity / Total liabilities and stockholders' equity",
+          "source_id": "71171a7701914054ff706a7a27943bc0cbb3b21bd1126c881889b56b798eb856:21b01d1720834285c00ccb0664bda55ddbf72a9d82b3a4a195d32f0bf17c2f45:342"
+        },
+        {
+          "fact_id": "a2fd4d343f9512269879f4ae25b4765950dc1aeae647258a2a36077936a1b230",
+          "normalized_metric": "assets / liabilities and stockholders' equity / total liabilities and stockholders' equity",
+          "period": "FY2024",
+          "raw_metric": "Assets / Liabilities and stockholders' equity / Total liabilities and stockholders' equity",
+          "source_id": "71171a7701914054ff706a7a27943bc0cbb3b21bd1126c881889b56b798eb856:21b01d1720834285c00ccb0664bda55ddbf72a9d82b3a4a195d32f0bf17c2f45:342"
+        },
+        {
+          "fact_id": "0cb5a1139d1a167273ad7466f75822b0d9b2b4880739d505239758aa1eeca5c4",
+          "normalized_metric": "assets / liabilities / stockholders' equity / total liabilities and stockholders' equity",
+          "period": "FY2025",
+          "raw_metric": "Assets / Liabilities / Stockholders' equity / Total liabilities and stockholders' equity",
+          "source_id": "59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd:ace604aea4915395338eb985d4129be3c85ba4a2083e463c2b1fad84efe2e7cb:199"
+        },
+        {
+          "fact_id": "dedf1a45024efab1b27d599f5f4741f10113c29830994907520583408c5a0e58",
+          "normalized_metric": "assets / liabilities / stockholders' equity / total liabilities and stockholders' equity",
+          "period": "FY2024",
+          "raw_metric": "Assets / Liabilities / Stockholders' equity / Total liabilities and stockholders' equity",
+          "source_id": "59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd:ace604aea4915395338eb985d4129be3c85ba4a2083e463c2b1fad84efe2e7cb:199"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM8_table_header_or_row_composition_mismatch",
+      "query": "What was total liabilities reported by JPMorgan in FY2025?",
+      "query_normalized_metric": [
+        "total liabilities"
+      ],
+      "query_raw_metric": [
+        "total liabilities"
+      ],
+      "question_id": "jpm_fy2025_002"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "20ad5b11d79e2b5c877237ba653525f5c091948413a3136c78494a98f5bda7bc",
+          "normalized_metric": "consumer & community banking",
+          "period": "FY2025",
+          "raw_metric": "Consumer & Community Banking",
+          "source_id": "25555027c81fea75620a35e0e257236de09f40438ab8ba4f3a817ba38efbf14c:9d5e20c6466141c52a19e5c84cc3a6ef865bc6a457f4fa4649716fdf4fb82104:128"
+        },
+        {
+          "fact_id": "246694579c1e893f84f0406ba92f5c47d3678b70a7bdd7f6585d4591565f79bd",
+          "normalized_metric": "consumer & community banking",
+          "period": "FY2024",
+          "raw_metric": "Consumer & Community Banking",
+          "source_id": "25555027c81fea75620a35e0e257236de09f40438ab8ba4f3a817ba38efbf14c:9d5e20c6466141c52a19e5c84cc3a6ef865bc6a457f4fa4649716fdf4fb82104:128"
+        },
+        {
+          "fact_id": "56d4d7536556eedee85512c834a800bbd7f8e628ec3824351aadbc6548c54a88",
+          "normalized_metric": "consumer & community banking",
+          "period": "FY2026",
+          "raw_metric": "Consumer & Community Banking",
+          "source_id": "25555027c81fea75620a35e0e257236de09f40438ab8ba4f3a817ba38efbf14c:9d5e20c6466141c52a19e5c84cc3a6ef865bc6a457f4fa4649716fdf4fb82104:128"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM8_table_header_or_row_composition_mismatch",
+      "query": "In the Consumer & Community Banking financial results table, what was Consumer & Community Banking net income in FY2025?",
+      "query_normalized_metric": [
+        "consumer & community banking net income"
+      ],
+      "query_raw_metric": [
+        "Consumer & Community Banking net income"
+      ],
+      "question_id": "jpm_fy2025_004"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "880ebd34db6bca5b4427a4bb317ec35f6a44e09f316d2c6c9bbcf07d95703f11",
+          "normalized_metric": "assets / liabilities / total liabilities(a)",
+          "period": "FY2025",
+          "raw_metric": "Assets / Liabilities / Total liabilities(a)",
+          "source_id": "59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd:74eaf76aa9a0ac7d549e7e5a5192b5b1338292218cdc0208beee29b1e21796b3:199"
+        },
+        {
+          "fact_id": "9bc39de106b96b380a9bda50055ca39a97bd6885eb633ef21994d9f82d1694e6",
+          "normalized_metric": "assets / liabilities / total liabilities(a)",
+          "period": "FY2024",
+          "raw_metric": "Assets / Liabilities / Total liabilities(a)",
+          "source_id": "59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd:74eaf76aa9a0ac7d549e7e5a5192b5b1338292218cdc0208beee29b1e21796b3:199"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM8_table_header_or_row_composition_mismatch",
+      "query": "Report both JPMorgan's FY2025 Consumer & Community Banking net income and total liabilities.",
+      "query_normalized_metric": [
+        "consumer & community banking net income",
+        "total liabilities"
+      ],
+      "query_raw_metric": [
+        "Consumer & Community Banking net income",
+        "total liabilities"
+      ],
+      "question_id": "jpm_fy2025_007"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "20ad5b11d79e2b5c877237ba653525f5c091948413a3136c78494a98f5bda7bc",
+          "normalized_metric": "consumer & community banking",
+          "period": "FY2025",
+          "raw_metric": "Consumer & Community Banking",
+          "source_id": "25555027c81fea75620a35e0e257236de09f40438ab8ba4f3a817ba38efbf14c:9d5e20c6466141c52a19e5c84cc3a6ef865bc6a457f4fa4649716fdf4fb82104:128"
+        },
+        {
+          "fact_id": "246694579c1e893f84f0406ba92f5c47d3678b70a7bdd7f6585d4591565f79bd",
+          "normalized_metric": "consumer & community banking",
+          "period": "FY2024",
+          "raw_metric": "Consumer & Community Banking",
+          "source_id": "25555027c81fea75620a35e0e257236de09f40438ab8ba4f3a817ba38efbf14c:9d5e20c6466141c52a19e5c84cc3a6ef865bc6a457f4fa4649716fdf4fb82104:128"
+        },
+        {
+          "fact_id": "56d4d7536556eedee85512c834a800bbd7f8e628ec3824351aadbc6548c54a88",
+          "normalized_metric": "consumer & community banking",
+          "period": "FY2026",
+          "raw_metric": "Consumer & Community Banking",
+          "source_id": "25555027c81fea75620a35e0e257236de09f40438ab8ba4f3a817ba38efbf14c:9d5e20c6466141c52a19e5c84cc3a6ef865bc6a457f4fa4649716fdf4fb82104:128"
+        },
+        {
+          "fact_id": "2df50c743c66c1324b473d26b8669014879f1a5d486ffa6dd1c3794dd3e0f14a",
+          "normalized_metric": "consumer & community banking",
+          "period": "FY2023",
+          "raw_metric": "Consumer & Community Banking",
+          "source_id": "da1f070f09bba550678bdbda476039bbb135ae15f33f08a1012fd80d82da1bb0:34fbf9d65ec80cf01117c8201a43f8745f4161d02280cf51a6514232d6c6d664:304"
+        },
+        {
+          "fact_id": "4b43b2b3d275c0b3654547e099e8fa26ec88caaa59a25038e429f1daaaedcb06",
+          "normalized_metric": "consumer & community banking",
+          "period": "FY2024",
+          "raw_metric": "Consumer & Community Banking",
+          "source_id": "da1f070f09bba550678bdbda476039bbb135ae15f33f08a1012fd80d82da1bb0:34fbf9d65ec80cf01117c8201a43f8745f4161d02280cf51a6514232d6c6d664:304"
+        },
+        {
+          "fact_id": "f31a57bba0b8664a9c751d7b3ace7d4abbf09df67e15f323a2266ba330e8bb0a",
+          "normalized_metric": "consumer & community banking",
+          "period": "FY2025",
+          "raw_metric": "Consumer & Community Banking",
+          "source_id": "da1f070f09bba550678bdbda476039bbb135ae15f33f08a1012fd80d82da1bb0:34fbf9d65ec80cf01117c8201a43f8745f4161d02280cf51a6514232d6c6d664:304"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM8_table_header_or_row_composition_mismatch",
+      "query": "What was Consumer & Community Banking net income in FY2024 rather than FY2025?",
+      "query_normalized_metric": [
+        "consumer & community banking net income"
+      ],
+      "query_raw_metric": [
+        "Consumer & Community Banking net income"
+      ],
+      "question_id": "jpm_fy2025_009"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "2abf73829548255fd954013b4c76dbb5e63ce7b82dc09167bea9e8aa2a085cd7",
+          "normalized_metric": "net income attributable to shareowners of the coca-cola company",
+          "period": "FY2023",
+          "raw_metric": "Net Income Attributable to Shareowners of The Coca-Cola Company",
+          "source_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:e1eb470c0324e58ee78ca982d80b6d6c8af589ef1ab8e1ecaef11c527775acb3:63"
+        },
+        {
+          "fact_id": "3af805a9c5af04f1e02d2676a92f883c3be0c4abfa025c66c7d5499210bc6ace",
+          "normalized_metric": "net income attributable to shareowners of the coca-cola company",
+          "period": "FY2025",
+          "raw_metric": "Net Income Attributable to Shareowners of The Coca-Cola Company",
+          "source_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:e1eb470c0324e58ee78ca982d80b6d6c8af589ef1ab8e1ecaef11c527775acb3:63"
+        },
+        {
+          "fact_id": "c7dc0a8950ec9b9ede6dc48372e9b13caa1566e90c3004ffff38e2f3479d1a77",
+          "normalized_metric": "net income attributable to shareowners of the coca-cola company",
+          "period": "FY2024",
+          "raw_metric": "Net Income Attributable to Shareowners of The Coca-Cola Company",
+          "source_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:e1eb470c0324e58ee78ca982d80b6d6c8af589ef1ab8e1ecaef11c527775acb3:63"
+        },
+        {
+          "fact_id": "397e52000e8902e28e7bf9ec5fd331381be38820dbd710fc84d416c47a32b9df",
+          "normalized_metric": "total comprehensive income attributable to shareowners of the coca-cola company",
+          "period": "FY2025",
+          "raw_metric": "Total Comprehensive Income Attributable to Shareowners of The Coca-Cola Company",
+          "source_id": "449390bcf7e2fc995ffe009d70590314ff40139de33d136f2b137270196ad03a:3dcd0a5513c05dfa02840cea49fb3c3c53362b41d086ce91a1d48aa6b083788e:64"
+        },
+        {
+          "fact_id": "4924c94cf68cb0c1c0c3a42d404779be4cf62d99abd5063ff2036394eb5fb96e",
+          "normalized_metric": "total comprehensive income attributable to shareowners of the coca-cola company",
+          "period": "FY2024",
+          "raw_metric": "Total Comprehensive Income Attributable to Shareowners of The Coca-Cola Company",
+          "source_id": "449390bcf7e2fc995ffe009d70590314ff40139de33d136f2b137270196ad03a:3dcd0a5513c05dfa02840cea49fb3c3c53362b41d086ce91a1d48aa6b083788e:64"
+        },
+        {
+          "fact_id": "a3b28224ce0383be0ba92217003a884f6df51a054c66f9c27223be867616b5bf",
+          "normalized_metric": "total comprehensive income attributable to shareowners of the coca-cola company",
+          "period": "FY2023",
+          "raw_metric": "Total Comprehensive Income Attributable to Shareowners of The Coca-Cola Company",
+          "source_id": "449390bcf7e2fc995ffe009d70590314ff40139de33d136f2b137270196ad03a:3dcd0a5513c05dfa02840cea49fb3c3c53362b41d086ce91a1d48aa6b083788e:64"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM4_metric_with_different_qualifier",
+      "query": "What was net income attributable to shareowners of The Coca-Cola Company in FY2025?",
+      "query_normalized_metric": [
+        "net income attributable to shareowners of"
+      ],
+      "query_raw_metric": [
+        "net income attributable to shareowners of"
+      ],
+      "question_id": "ko_fy2025_003"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "4850ec4fbdb04862dd17160882d9753c7fd4ba61f1fdb410f3261ce316be15ae",
+          "normalized_metric": "emea / total",
+          "period": "FY2024",
+          "raw_metric": "EMEA / Total",
+          "source_id": "5e8f0b55efba372edd34726f562bdf4e456be6eeaf4003825b3215618d3fd3b4:c7842b302bbd0fec0860c14e3448efdee8fe5ba45cc15530ff9ee9f8f96eb39d:49"
+        },
+        {
+          "fact_id": "5217bed5a0d970538ca7a7506e2b6443fcc0165034227f64e1d835ed7ccce960",
+          "normalized_metric": "emea / total",
+          "period": "FY2025",
+          "raw_metric": "EMEA / Total",
+          "source_id": "5e8f0b55efba372edd34726f562bdf4e456be6eeaf4003825b3215618d3fd3b4:c7842b302bbd0fec0860c14e3448efdee8fe5ba45cc15530ff9ee9f8f96eb39d:49"
+        },
+        {
+          "fact_id": "59506234d4f102a8b97682f70a338870d7502bcf5522bd52845c146163ee47ea",
+          "normalized_metric": "emea",
+          "period": "FY2025",
+          "raw_metric": "EMEA",
+          "source_id": "081e20e9c3cddcf402a506510e1fed0c0a7cf9a51baee69685865ca7ad2361bc:d565cbf324a563ca6b121896760952ab88b1ff6ce84445bae40061d297b088f5:50"
+        },
+        {
+          "fact_id": "7a853ee5882cf243755fe48a0b66991160903d502df6a54a767b79939befe1f9",
+          "normalized_metric": "emea",
+          "period": "FY2024",
+          "raw_metric": "EMEA",
+          "source_id": "081e20e9c3cddcf402a506510e1fed0c0a7cf9a51baee69685865ca7ad2361bc:d565cbf324a563ca6b121896760952ab88b1ff6ce84445bae40061d297b088f5:50"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM8_table_header_or_row_composition_mismatch",
+      "query": "In the operating segment net operating revenues table, what were EMEA total net operating revenues in FY2025?",
+      "query_normalized_metric": [
+        "emea total net operating revenues"
+      ],
+      "query_raw_metric": [
+        "EMEA total net operating revenues"
+      ],
+      "question_id": "ko_fy2025_004"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "54203b476a21bc3e0cef1c0de47908b2dae658028e3308104a823a43a272b1d6",
+          "normalized_metric": "north america",
+          "period": "FY2024",
+          "raw_metric": "North America",
+          "source_id": "081e20e9c3cddcf402a506510e1fed0c0a7cf9a51baee69685865ca7ad2361bc:325285927e125377815d0d13e47065993d1653d3b72210567ee5eecb93bb852a:50"
+        },
+        {
+          "fact_id": "b0dfdc1fd70fca0042559e39753c4f0185a9f30e53fad4c50ed985e1b8ee7afb",
+          "normalized_metric": "north america",
+          "period": "FY2025",
+          "raw_metric": "North America",
+          "source_id": "081e20e9c3cddcf402a506510e1fed0c0a7cf9a51baee69685865ca7ad2361bc:325285927e125377815d0d13e47065993d1653d3b72210567ee5eecb93bb852a:50"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM8_table_header_or_row_composition_mismatch",
+      "query": "In the operating segment net operating revenues table, what were North America total net operating revenues in FY2025?",
+      "query_normalized_metric": [
+        "north america total net operating revenues"
+      ],
+      "query_raw_metric": [
+        "North America total net operating revenues"
+      ],
+      "question_id": "ko_fy2025_005"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "59506234d4f102a8b97682f70a338870d7502bcf5522bd52845c146163ee47ea",
+          "normalized_metric": "emea",
+          "period": "FY2025",
+          "raw_metric": "EMEA",
+          "source_id": "081e20e9c3cddcf402a506510e1fed0c0a7cf9a51baee69685865ca7ad2361bc:d565cbf324a563ca6b121896760952ab88b1ff6ce84445bae40061d297b088f5:50"
+        },
+        {
+          "fact_id": "7a853ee5882cf243755fe48a0b66991160903d502df6a54a767b79939befe1f9",
+          "normalized_metric": "emea",
+          "period": "FY2024",
+          "raw_metric": "EMEA",
+          "source_id": "081e20e9c3cddcf402a506510e1fed0c0a7cf9a51baee69685865ca7ad2361bc:d565cbf324a563ca6b121896760952ab88b1ff6ce84445bae40061d297b088f5:50"
+        },
+        {
+          "fact_id": "4850ec4fbdb04862dd17160882d9753c7fd4ba61f1fdb410f3261ce316be15ae",
+          "normalized_metric": "emea / total",
+          "period": "FY2024",
+          "raw_metric": "EMEA / Total",
+          "source_id": "5e8f0b55efba372edd34726f562bdf4e456be6eeaf4003825b3215618d3fd3b4:c7842b302bbd0fec0860c14e3448efdee8fe5ba45cc15530ff9ee9f8f96eb39d:49"
+        },
+        {
+          "fact_id": "5217bed5a0d970538ca7a7506e2b6443fcc0165034227f64e1d835ed7ccce960",
+          "normalized_metric": "emea / total",
+          "period": "FY2025",
+          "raw_metric": "EMEA / Total",
+          "source_id": "5e8f0b55efba372edd34726f562bdf4e456be6eeaf4003825b3215618d3fd3b4:c7842b302bbd0fec0860c14e3448efdee8fe5ba45cc15530ff9ee9f8f96eb39d:49"
+        },
+        {
+          "fact_id": "4dbc776299a2481bfcb425c8fea16ad6c2c5a951732f3465f8c9719d759ecd58",
+          "normalized_metric": "emea",
+          "period": "FY2024",
+          "raw_metric": "EMEA",
+          "source_id": "734db94cf723f8dbc533333a5ec7478ec101fcd7507b2e3175ed3804aeb9b14b:10a763d2fa69c44d77fd67722fa52f0fbb45b71dfa3b65d695e5b9c104a1626f:50"
+        },
+        {
+          "fact_id": "b2dc18645ee6a758bd96dd9ef12be9633c2cc5e41ec1db8d22c60df6e5e7fb75",
+          "normalized_metric": "emea",
+          "period": "FY2025",
+          "raw_metric": "EMEA",
+          "source_id": "734db94cf723f8dbc533333a5ec7478ec101fcd7507b2e3175ed3804aeb9b14b:10a763d2fa69c44d77fd67722fa52f0fbb45b71dfa3b65d695e5b9c104a1626f:50"
+        },
+        {
+          "fact_id": "2d5e147bb716fa30293c1058e95d80c8ad0bb2d948aec3efab0dfd644b24c1a9",
+          "normalized_metric": "emea / corporate",
+          "period": "FY2024",
+          "raw_metric": "EMEA / Corporate",
+          "source_id": "5e8f0b55efba372edd34726f562bdf4e456be6eeaf4003825b3215618d3fd3b4:16f7fc7ba9762f73c6782dfffda3fd25c489629f1ef55d4c4ce505a8491d1294:49"
+        },
+        {
+          "fact_id": "5db4d749cf4969506fd2e96329925b88540a78d7367c634b81f0ee6ffb61350c",
+          "normalized_metric": "emea / corporate",
+          "period": "FY2025",
+          "raw_metric": "EMEA / Corporate",
+          "source_id": "5e8f0b55efba372edd34726f562bdf4e456be6eeaf4003825b3215618d3fd3b4:16f7fc7ba9762f73c6782dfffda3fd25c489629f1ef55d4c4ce505a8491d1294:49"
+        },
+        {
+          "fact_id": "0be55529329543e07c8217761927f9d0424ecddb669b37f26bf415066a420ed4",
+          "normalized_metric": "net operating revenues",
+          "period": "FY2023",
+          "raw_metric": "Net Operating Revenues",
+          "source_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d:63"
+        },
+        {
+          "fact_id": "125c81aeaa257db2ae4ed713b8a8554c673f9cb931630521fb69cf0c4e51c3f6",
+          "normalized_metric": "net operating revenues",
+          "period": "FY2025",
+          "raw_metric": "Net Operating Revenues",
+          "source_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d:63"
+        },
+        {
+          "fact_id": "da7f7fa75e8d2a759818e29111a532654de40d60b8e8be1040611305cd22ff4f",
+          "normalized_metric": "net operating revenues",
+          "period": "FY2024",
+          "raw_metric": "Net Operating Revenues",
+          "source_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d:63"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM8_table_header_or_row_composition_mismatch",
+      "query": "What were EMEA total net operating revenues in FY2024?",
+      "query_normalized_metric": [
+        "emea total net operating revenues"
+      ],
+      "query_raw_metric": [
+        "EMEA total net operating revenues"
+      ],
+      "question_id": "ko_fy2025_009"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": true,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "726001f57f268e9a08fe80fac3c54b251ed1be602f131895e4333250cc09e453",
+          "normalized_metric": "revenue",
+          "period": "FY2023",
+          "raw_metric": "Revenue",
+          "source_id": "be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211:d26a5a003c85a67d53f65ea96d4cf25395de414655f87282af2b1957a72b7946:80"
+        },
+        {
+          "fact_id": "a7d19dd7eb8f28d9eb727f9648bffce5c57cab327a1c8b4461bb7bab4d9a67b3",
+          "normalized_metric": "revenue",
+          "period": "FY2024",
+          "raw_metric": "Revenue",
+          "source_id": "be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211:d26a5a003c85a67d53f65ea96d4cf25395de414655f87282af2b1957a72b7946:80"
+        },
+        {
+          "fact_id": "d27437d68d1566cde35a212e14f7ee2e4f30481c68d34884dcdac2541bb701d4",
+          "normalized_metric": "revenue",
+          "period": "FY2025",
+          "raw_metric": "Revenue",
+          "source_id": "be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211:d26a5a003c85a67d53f65ea96d4cf25395de414655f87282af2b1957a72b7946:80"
+        },
+        {
+          "fact_id": "322548686a7659b07a56ab24bf39625540cef21e48950a6f7d30ceee08d73e0b",
+          "normalized_metric": "total",
+          "period": "FY2024",
+          "raw_metric": "Total",
+          "source_id": "ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508:45ea8a24806d9aeff69ab5ce95236fcb71ba8a87e653fd1c13c85f9c151a7ec6:80"
+        },
+        {
+          "fact_id": "81c94875b53e927edfae55a707bd39a0ae10803fdbc1918b4f77507ba714553b",
+          "normalized_metric": "total",
+          "period": "FY2025",
+          "raw_metric": "Total",
+          "source_id": "ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508:45ea8a24806d9aeff69ab5ce95236fcb71ba8a87e653fd1c13c85f9c151a7ec6:80"
+        },
+        {
+          "fact_id": "f6b796c52436a7fc29f50ddba47eb1665f12d141978fef3a514ae04da995f629",
+          "normalized_metric": "total",
+          "period": "FY2023",
+          "raw_metric": "Total",
+          "source_id": "ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508:45ea8a24806d9aeff69ab5ce95236fcb71ba8a87e653fd1c13c85f9c151a7ec6:80"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM2_known_financial_synonym",
+      "query": "What was total revenue reported by Microsoft in FY2025?",
+      "query_normalized_metric": [
+        "total revenue"
+      ],
+      "query_raw_metric": [
+        "total revenue"
+      ],
+      "question_id": "msft_fy2025_001"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "0f423057c441a75c98671d18edc5e721d5490c92a9a7fa1754e6621d648ade6b",
+          "normalized_metric": "revenue",
+          "period": "FY2025",
+          "raw_metric": "Revenue",
+          "source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:5760c88ff4ad1c874efadb6a2af5b2277f856fec19600688543c40d1d248f27b:26"
+        },
+        {
+          "fact_id": "8fe02a6f4bd9788655a7d52d2459ec901e4a908ae386e9ba830c262a7bacc721",
+          "normalized_metric": "revenue",
+          "period": "FY2024",
+          "raw_metric": "Revenue",
+          "source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:5760c88ff4ad1c874efadb6a2af5b2277f856fec19600688543c40d1d248f27b:26"
+        },
+        {
+          "fact_id": "b4b510f88f3297fdcb82f363f0e129f8c71dc0d8a875030502e84637cca41b7b",
+          "normalized_metric": "revenue",
+          "period": "FY2025",
+          "raw_metric": "Revenue",
+          "source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:af0d1dd83473f873c6601028e9eb055ab6af7e81401031551641320e07d9fe73:26"
+        },
+        {
+          "fact_id": "b83a057ed1864a7d850659e5d835fb7c8b85d17417aff36077ddefb45c45016e",
+          "normalized_metric": "revenue",
+          "period": "FY2024",
+          "raw_metric": "Revenue",
+          "source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:af0d1dd83473f873c6601028e9eb055ab6af7e81401031551641320e07d9fe73:26"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM3_hierarchical_metric_scope_difference",
+      "query": "What was Productivity and Business Processes revenue reported by Microsoft in FY2025?",
+      "query_normalized_metric": [
+        "productivity and business processes revenue"
+      ],
+      "query_raw_metric": [
+        "Productivity and Business Processes revenue"
+      ],
+      "question_id": "msft_fy2025_002"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "322548686a7659b07a56ab24bf39625540cef21e48950a6f7d30ceee08d73e0b",
+          "normalized_metric": "total",
+          "period": "FY2024",
+          "raw_metric": "Total",
+          "source_id": "ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508:45ea8a24806d9aeff69ab5ce95236fcb71ba8a87e653fd1c13c85f9c151a7ec6:80"
+        },
+        {
+          "fact_id": "81c94875b53e927edfae55a707bd39a0ae10803fdbc1918b4f77507ba714553b",
+          "normalized_metric": "total",
+          "period": "FY2025",
+          "raw_metric": "Total",
+          "source_id": "ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508:45ea8a24806d9aeff69ab5ce95236fcb71ba8a87e653fd1c13c85f9c151a7ec6:80"
+        },
+        {
+          "fact_id": "f6b796c52436a7fc29f50ddba47eb1665f12d141978fef3a514ae04da995f629",
+          "normalized_metric": "total",
+          "period": "FY2023",
+          "raw_metric": "Total",
+          "source_id": "ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508:45ea8a24806d9aeff69ab5ce95236fcb71ba8a87e653fd1c13c85f9c151a7ec6:80"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM3_hierarchical_metric_scope_difference",
+      "query": "What was More Personal Computing revenue reported by Microsoft in FY2025?",
+      "query_normalized_metric": [
+        "more personal computing revenue"
+      ],
+      "query_raw_metric": [
+        "More Personal Computing revenue"
+      ],
+      "question_id": "msft_fy2025_003"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "3b3e1f72a9c95a989ecd37eb44f74f7322d80b7243cfec29ba72d44c46d9c57b",
+          "normalized_metric": "operating income",
+          "period": "FY2025",
+          "raw_metric": "Operating Income",
+          "source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:06f0f1b4c25da14faaa789fcfd9afe33cf78474656d8595a97f61faefb0c2377:26"
+        },
+        {
+          "fact_id": "6813510fbed401f54b540adb6b604b820a840b17ac1e75c78a1dc1d7b888bdfc",
+          "normalized_metric": "operating income",
+          "period": "FY2024",
+          "raw_metric": "Operating Income",
+          "source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:06f0f1b4c25da14faaa789fcfd9afe33cf78474656d8595a97f61faefb0c2377:26"
+        },
+        {
+          "fact_id": "2b559d76b7810bb8fff33b7605f4ef6b0cf010154fee448ea465aa77fb8533af",
+          "normalized_metric": "operating income",
+          "period": "FY2024",
+          "raw_metric": "Operating Income",
+          "source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:4af66c24ec00d0fadca2d23553041c25308215ee35b9f811bf9a8143d412bc61:26"
+        },
+        {
+          "fact_id": "9ed5a2d63fa6c7346cc2c40aeb1c684ce6681b608abc986b114b78ab20642aab",
+          "normalized_metric": "operating income",
+          "period": "FY2025",
+          "raw_metric": "Operating Income",
+          "source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:4af66c24ec00d0fadca2d23553041c25308215ee35b9f811bf9a8143d412bc61:26"
+        },
+        {
+          "fact_id": "5feadcc69c4405f27f0becaf514672f0aeb01c204bc4dffb97a20526f584b025",
+          "normalized_metric": "operating income",
+          "period": "FY2024",
+          "raw_metric": "Operating Income",
+          "source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:0423f680a42c84b18a29036f90952aae4554bbec27dc011c462bb5b693dec4e4:26"
+        },
+        {
+          "fact_id": "fea880678df2683e3d9b004094c7259cbda02e87fa967271e0b668112c39e7e1",
+          "normalized_metric": "operating income",
+          "period": "FY2025",
+          "raw_metric": "Operating Income",
+          "source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:0423f680a42c84b18a29036f90952aae4554bbec27dc011c462bb5b693dec4e4:26"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM3_hierarchical_metric_scope_difference",
+      "query": "In the reportable segment table, what was Productivity and Business Processes operating income in FY2025?",
+      "query_normalized_metric": [
+        "productivity and business processes operating income"
+      ],
+      "query_raw_metric": [
+        "Productivity and Business Processes operating income"
+      ],
+      "question_id": "msft_fy2025_005"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "7a6f9962cabcb67940b5cb0b799ec9ff149649acdd47bef1f92caee2c08bebfb",
+          "normalized_metric": "gaming",
+          "period": "FY2024",
+          "raw_metric": "Gaming",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:54b3d0bc1b1a829f98c993a327969efb7c89a36139ee456f910a644da86ee836:172"
+        },
+        {
+          "fact_id": "b88d989a5f1c915532cb7f7ab1cd3b1d7b6cd607de63c3bec37ca57c6b408e65",
+          "normalized_metric": "gaming",
+          "period": "FY2025",
+          "raw_metric": "Gaming",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:54b3d0bc1b1a829f98c993a327969efb7c89a36139ee456f910a644da86ee836:172"
+        },
+        {
+          "fact_id": "cd81479285c6d787a7c722ef600b0789817e0a04f15522da775322ede5d46a60",
+          "normalized_metric": "gaming",
+          "period": "FY2023",
+          "raw_metric": "Gaming",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:54b3d0bc1b1a829f98c993a327969efb7c89a36139ee456f910a644da86ee836:172"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM8_table_header_or_row_composition_mismatch",
+      "query": "What was Gaming revenue reported by NVIDIA in FY2025?",
+      "query_normalized_metric": [
+        "gaming revenue"
+      ],
+      "query_raw_metric": [
+        "Gaming revenue"
+      ],
+      "question_id": "nvda_fy2025_002"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "76ea0bd1e273e5b07b57a84390905c6784ac86c9d12bdbbf9c08f7445391359d",
+          "normalized_metric": "gross margin",
+          "period": "FY2025",
+          "raw_metric": "Gross margin",
+          "source_id": "e267f6a2071a589e73db4751f96728efa4e5a637aeb8d619efd27324222283a9:656c5fe2833734f6a10f9157f8d01c980160403f237acba68c56be5c35bf67b6:130"
+        },
+        {
+          "fact_id": "c85ddd3daccbd3f8cf815ed7254e83795a920c332a61a6216268204db3f76863",
+          "normalized_metric": "gross margin",
+          "period": "FY2024",
+          "raw_metric": "Gross margin",
+          "source_id": "e267f6a2071a589e73db4751f96728efa4e5a637aeb8d619efd27324222283a9:656c5fe2833734f6a10f9157f8d01c980160403f237acba68c56be5c35bf67b6:130"
+        },
+        {
+          "fact_id": "072d24b6cbf7ce0574f148d991db0809100e365004ba0a627b3a7c124d85414e",
+          "normalized_metric": "gross profit",
+          "period": "FY2024",
+          "raw_metric": "Gross profit",
+          "source_id": "0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008:0c18c5db8b64e1d5fa3805720b4fcd7cc3124cf9de8f0f6a830c42abfbe668be:132"
+        },
+        {
+          "fact_id": "262da77489856cf68dd24389f6d93d69b65e61678459e6222cd91c5c28933224",
+          "normalized_metric": "gross profit",
+          "period": "FY2025",
+          "raw_metric": "Gross profit",
+          "source_id": "0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008:0c18c5db8b64e1d5fa3805720b4fcd7cc3124cf9de8f0f6a830c42abfbe668be:132"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM4_metric_with_different_qualifier",
+      "query": "What was GAAP gross margin percentage reported by NVIDIA in FY2025?",
+      "query_normalized_metric": [
+        "gaap gross margin percentage"
+      ],
+      "query_raw_metric": [
+        "GAAP gross margin percentage"
+      ],
+      "question_id": "nvda_fy2025_003"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "95451b882435a15e4061b201f224b1302de906578750a22f6dcee01b3cc14b80",
+          "normalized_metric": "data center",
+          "period": "FY2023",
+          "raw_metric": "Data Center",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:7e731d3eb8975007be3386499df660bfd01fa67dfec355c09fb4e82dab3eb64e:172"
+        },
+        {
+          "fact_id": "a35f94b795ba5eb227de96ab46915d61ad88545cde97ff71d0e5ba10d12bb273",
+          "normalized_metric": "data center",
+          "period": "FY2025",
+          "raw_metric": "Data Center",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:7e731d3eb8975007be3386499df660bfd01fa67dfec355c09fb4e82dab3eb64e:172"
+        },
+        {
+          "fact_id": "a3798e1b9f596c81bfac2c6efd9ee5652ed8355f06ef6cc0a2e6a08df2d2e2af",
+          "normalized_metric": "data center",
+          "period": "FY2024",
+          "raw_metric": "Data Center",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:7e731d3eb8975007be3386499df660bfd01fa67dfec355c09fb4e82dab3eb64e:172"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM8_table_header_or_row_composition_mismatch",
+      "query": "In the Revenue by End Market table, what was Data Center revenue in FY2025?",
+      "query_normalized_metric": [
+        "data center revenue"
+      ],
+      "query_raw_metric": [
+        "Data Center revenue"
+      ],
+      "question_id": "nvda_fy2025_004"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "1ddf3f61bafe730d901064e5ccfc91622e014724644cad8370d322b3c9316810",
+          "normalized_metric": "automotive",
+          "period": "FY2025",
+          "raw_metric": "Automotive",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:820594b426cf4db2964355d510d493947079072c7cc07b77f56a727db044e5dc:172"
+        },
+        {
+          "fact_id": "6e9d881dc781ca5499ca9e9161b19246ac09d6757b062fb7924374accae735d9",
+          "normalized_metric": "automotive",
+          "period": "FY2024",
+          "raw_metric": "Automotive",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:820594b426cf4db2964355d510d493947079072c7cc07b77f56a727db044e5dc:172"
+        },
+        {
+          "fact_id": "8e00533e074148ff4bd086a7b77cb6891f5611d4b17d9f713b6d1da847c41937",
+          "normalized_metric": "automotive",
+          "period": "FY2023",
+          "raw_metric": "Automotive",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:820594b426cf4db2964355d510d493947079072c7cc07b77f56a727db044e5dc:172"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM8_table_header_or_row_composition_mismatch",
+      "query": "In the Revenue by End Market table, what was Automotive revenue in FY2025?",
+      "query_normalized_metric": [
+        "automotive revenue"
+      ],
+      "query_raw_metric": [
+        "Automotive revenue"
+      ],
+      "question_id": "nvda_fy2025_005"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "95451b882435a15e4061b201f224b1302de906578750a22f6dcee01b3cc14b80",
+          "normalized_metric": "data center",
+          "period": "FY2023",
+          "raw_metric": "Data Center",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:7e731d3eb8975007be3386499df660bfd01fa67dfec355c09fb4e82dab3eb64e:172"
+        },
+        {
+          "fact_id": "a35f94b795ba5eb227de96ab46915d61ad88545cde97ff71d0e5ba10d12bb273",
+          "normalized_metric": "data center",
+          "period": "FY2025",
+          "raw_metric": "Data Center",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:7e731d3eb8975007be3386499df660bfd01fa67dfec355c09fb4e82dab3eb64e:172"
+        },
+        {
+          "fact_id": "a3798e1b9f596c81bfac2c6efd9ee5652ed8355f06ef6cc0a2e6a08df2d2e2af",
+          "normalized_metric": "data center",
+          "period": "FY2024",
+          "raw_metric": "Data Center",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:7e731d3eb8975007be3386499df660bfd01fa67dfec355c09fb4e82dab3eb64e:172"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM8_table_header_or_row_composition_mismatch",
+      "query": "Report both NVIDIA's FY2025 Data Center revenue and GAAP gross margin percentage.",
+      "query_normalized_metric": [
+        "data center revenue",
+        "gaap gross margin percentage"
+      ],
+      "query_raw_metric": [
+        "Data Center revenue",
+        "GAAP gross margin percentage"
+      ],
+      "question_id": "nvda_fy2025_007"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "95451b882435a15e4061b201f224b1302de906578750a22f6dcee01b3cc14b80",
+          "normalized_metric": "data center",
+          "period": "FY2023",
+          "raw_metric": "Data Center",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:7e731d3eb8975007be3386499df660bfd01fa67dfec355c09fb4e82dab3eb64e:172"
+        },
+        {
+          "fact_id": "a35f94b795ba5eb227de96ab46915d61ad88545cde97ff71d0e5ba10d12bb273",
+          "normalized_metric": "data center",
+          "period": "FY2025",
+          "raw_metric": "Data Center",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:7e731d3eb8975007be3386499df660bfd01fa67dfec355c09fb4e82dab3eb64e:172"
+        },
+        {
+          "fact_id": "a3798e1b9f596c81bfac2c6efd9ee5652ed8355f06ef6cc0a2e6a08df2d2e2af",
+          "normalized_metric": "data center",
+          "period": "FY2024",
+          "raw_metric": "Data Center",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:7e731d3eb8975007be3386499df660bfd01fa67dfec355c09fb4e82dab3eb64e:172"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM9_query_metric_extraction_semantically_wrong",
+      "query": "Does NVIDIA's FY2025 report disclose a customer-level Data Center revenue amount?",
+      "query_normalized_metric": [
+        "report disclose customer-level data center revenue amount"
+      ],
+      "query_raw_metric": [
+        "report disclose customer-level Data Center revenue amount"
+      ],
+      "question_id": "nvda_fy2025_008"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "95451b882435a15e4061b201f224b1302de906578750a22f6dcee01b3cc14b80",
+          "normalized_metric": "data center",
+          "period": "FY2023",
+          "raw_metric": "Data Center",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:7e731d3eb8975007be3386499df660bfd01fa67dfec355c09fb4e82dab3eb64e:172"
+        },
+        {
+          "fact_id": "a35f94b795ba5eb227de96ab46915d61ad88545cde97ff71d0e5ba10d12bb273",
+          "normalized_metric": "data center",
+          "period": "FY2025",
+          "raw_metric": "Data Center",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:7e731d3eb8975007be3386499df660bfd01fa67dfec355c09fb4e82dab3eb64e:172"
+        },
+        {
+          "fact_id": "a3798e1b9f596c81bfac2c6efd9ee5652ed8355f06ef6cc0a2e6a08df2d2e2af",
+          "normalized_metric": "data center",
+          "period": "FY2024",
+          "raw_metric": "Data Center",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:7e731d3eb8975007be3386499df660bfd01fa67dfec355c09fb4e82dab3eb64e:172"
+        },
+        {
+          "fact_id": "06e8b89a6faf67311cba7b4c7847c624819c0ee5b14d5af12d831c017ea1e00b",
+          "normalized_metric": "compute",
+          "period": "FY2024",
+          "raw_metric": "Compute",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:1d0befe290a8669e4b19606f2e608d062631f352e71e459fef77a0ac5f39b07e:172"
+        },
+        {
+          "fact_id": "7d34e59a53b7206ba716e5f247b5580dad287b29afb0908c6c20d9148899aceb",
+          "normalized_metric": "compute",
+          "period": "FY2025",
+          "raw_metric": "Compute",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:1d0befe290a8669e4b19606f2e608d062631f352e71e459fef77a0ac5f39b07e:172"
+        },
+        {
+          "fact_id": "e3aa2550f554aa658b2f353d60351b0054c76d2508ccb231c28101f8899c3fbe",
+          "normalized_metric": "compute",
+          "period": "FY2023",
+          "raw_metric": "Compute",
+          "source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:1d0befe290a8669e4b19606f2e608d062631f352e71e459fef77a0ac5f39b07e:172"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM8_table_header_or_row_composition_mismatch",
+      "query": "What was Data Center revenue in FY2024 rather than FY2025?",
+      "query_normalized_metric": [
+        "data center revenue"
+      ],
+      "query_raw_metric": [
+        "Data Center revenue"
+      ],
+      "question_id": "nvda_fy2025_009"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": true,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "8d6c3deadbe575ea89c965107e28da5a3553ef095de59e525c92cc5872a38262",
+          "normalized_metric": "revenues - comirnaty",
+          "period": "FY2022",
+          "raw_metric": "Revenues - Comirnaty",
+          "source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:15b5941503516157938adcd71ad3966d97c823659ef7607e83d19a6df90ae372:113"
+        },
+        {
+          "fact_id": "9bfd7e02b272b7f734a02f9f55a50b948912d2632400f812bc6c84b751571fa1",
+          "normalized_metric": "revenues - comirnaty",
+          "period": "FY2024",
+          "raw_metric": "Revenues - Comirnaty",
+          "source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:15b5941503516157938adcd71ad3966d97c823659ef7607e83d19a6df90ae372:113"
+        },
+        {
+          "fact_id": "baac01f5ba852b75a1985f977f5b50afe11090278104eb76b55fbea5bdd003e9",
+          "normalized_metric": "revenues - comirnaty",
+          "period": "FY2023",
+          "raw_metric": "Revenues - Comirnaty",
+          "source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:15b5941503516157938adcd71ad3966d97c823659ef7607e83d19a6df90ae372:113"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM1_abbreviation_or_expansion",
+      "query": "What was Comirnaty revenue reported by Pfizer in FY2024?",
+      "query_normalized_metric": [
+        "comirnaty revenue"
+      ],
+      "query_raw_metric": [
+        "Comirnaty revenue"
+      ],
+      "question_id": "pfe_fy2024_002"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "68d426431251ae9ad03ab76c3347e5408c62eae9c2c2d035138811f05347dc34",
+          "normalized_metric": "(millions)",
+          "period": "FY2024",
+          "raw_metric": "(MILLIONS)",
+          "source_id": "78179ebd90114e4886af38071efb20c643efd57d11b9d1a5864fe42aba876818:9fb3355e480762a29d0c766b906404784299c74b7bcf68811648d81932aedfd2:113"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM7_financial_fact_metric_reconstructed_wrong",
+      "query": "What was Eliquis revenue reported by Pfizer in FY2024?",
+      "query_normalized_metric": [
+        "eliquis revenue"
+      ],
+      "query_raw_metric": [
+        "Eliquis revenue"
+      ],
+      "question_id": "pfe_fy2024_003"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": true,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "22d061547299571879907fd2c49c782481a16430e939621ffe07072428ee3cd5",
+          "normalized_metric": "revenues - paxlovid",
+          "period": "FY2024",
+          "raw_metric": "Revenues - Paxlovid",
+          "source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:ac9a270be7eab1fe44d00c0be9321b51ccd0460cc0bba5459d0700d902cb5b78:113"
+        },
+        {
+          "fact_id": "600147525c3c3e3c33c5048c93a6b1ba582d4c2b4561f0305bb0373c96b3ee6a",
+          "normalized_metric": "revenues - paxlovid",
+          "period": "FY2022",
+          "raw_metric": "Revenues - Paxlovid",
+          "source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:ac9a270be7eab1fe44d00c0be9321b51ccd0460cc0bba5459d0700d902cb5b78:113"
+        },
+        {
+          "fact_id": "ad7f77f5a590448025a69f9bd2d2fb4f244691f206e1320e7fdbc30da42a1de5",
+          "normalized_metric": "revenues - paxlovid",
+          "period": "FY2023",
+          "raw_metric": "Revenues - Paxlovid",
+          "source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:ac9a270be7eab1fe44d00c0be9321b51ccd0460cc0bba5459d0700d902cb5b78:113"
+        },
+        {
+          "fact_id": "1cefe1aba5365e950c6348c0a9fd324283289adb0777a511d62bfd2ead7a9174",
+          "normalized_metric": "paxlovid",
+          "period": "FY2024",
+          "raw_metric": "Paxlovid",
+          "source_id": "2c430320199793a7b760d36d6960516f6681f1c023066cdbda5affd03d55a469:893a4dded040490937a7621d45d011dfd34cd983c68f7157516335184dce0b95:45"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM1_abbreviation_or_expansion",
+      "query": "In the Selected product revenues table, what was Paxlovid revenue in FY2024?",
+      "query_normalized_metric": [
+        "paxlovid revenue"
+      ],
+      "query_raw_metric": [
+        "Paxlovid revenue"
+      ],
+      "question_id": "pfe_fy2024_004"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": true,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "9752f78480dc1fb5f79d6634412c6e54273209f6af44d5c72f59ac4b4008df6f",
+          "normalized_metric": "research and development expenses(b)",
+          "period": "FY2023",
+          "raw_metric": "Research and development expenses(b)",
+          "source_id": "a8055121fa63f48f32fb0fa7fd624ea6541155fef3395d279e4de69bfc94c3de:f7993d288f96c863c05afb219c4797a2a5a2f0e6a173fbdc01c4676df6fc185a:60"
+        },
+        {
+          "fact_id": "b0a2602ea3344b4331fff1dd2e97ab45b557ef051eb9a8b443f4f77c323894d9",
+          "normalized_metric": "research and development expenses(b)",
+          "period": "FY2024",
+          "raw_metric": "Research and development expenses(b)",
+          "source_id": "a8055121fa63f48f32fb0fa7fd624ea6541155fef3395d279e4de69bfc94c3de:f7993d288f96c863c05afb219c4797a2a5a2f0e6a173fbdc01c4676df6fc185a:60"
+        },
+        {
+          "fact_id": "e37609521ab25308b13b40071b6597259ba2374a429ba727c12dab176a2b14e7",
+          "normalized_metric": "research and development expenses(b)",
+          "period": "FY2022",
+          "raw_metric": "Research and development expenses(b)",
+          "source_id": "a8055121fa63f48f32fb0fa7fd624ea6541155fef3395d279e4de69bfc94c3de:f7993d288f96c863c05afb219c4797a2a5a2f0e6a173fbdc01c4676df6fc185a:60"
+        },
+        {
+          "fact_id": "8d6c3deadbe575ea89c965107e28da5a3553ef095de59e525c92cc5872a38262",
+          "normalized_metric": "revenues - comirnaty",
+          "period": "FY2022",
+          "raw_metric": "Revenues - Comirnaty",
+          "source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:15b5941503516157938adcd71ad3966d97c823659ef7607e83d19a6df90ae372:113"
+        },
+        {
+          "fact_id": "9bfd7e02b272b7f734a02f9f55a50b948912d2632400f812bc6c84b751571fa1",
+          "normalized_metric": "revenues - comirnaty",
+          "period": "FY2024",
+          "raw_metric": "Revenues - Comirnaty",
+          "source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:15b5941503516157938adcd71ad3966d97c823659ef7607e83d19a6df90ae372:113"
+        },
+        {
+          "fact_id": "baac01f5ba852b75a1985f977f5b50afe11090278104eb76b55fbea5bdd003e9",
+          "normalized_metric": "revenues - comirnaty",
+          "period": "FY2023",
+          "raw_metric": "Revenues - Comirnaty",
+          "source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:15b5941503516157938adcd71ad3966d97c823659ef7607e83d19a6df90ae372:113"
+        },
+        {
+          "fact_id": "0020394a48788b75f8c8d0023a3d3c5c227f4dc7424c7fdd6b983073843c3e4a",
+          "normalized_metric": "research and development expenses",
+          "period": "FY2023",
+          "raw_metric": "Research and development expenses",
+          "source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:2cb04156f030c1a19b6b85b05029e5f241e978839945d8fa02ee1f9b05af4264:113"
+        },
+        {
+          "fact_id": "1581218506036c65fe5951d1e9129f581db94c9878f164fceac193e8d87c3cf2",
+          "normalized_metric": "research and development expenses",
+          "period": "FY2024",
+          "raw_metric": "Research and development expenses",
+          "source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:2cb04156f030c1a19b6b85b05029e5f241e978839945d8fa02ee1f9b05af4264:113"
+        },
+        {
+          "fact_id": "c6b35ffb03a0ea690d95522e916739602e7c7952b515d0fe38cdd8ea0094c93b",
+          "normalized_metric": "research and development expenses",
+          "period": "FY2022",
+          "raw_metric": "Research and development expenses",
+          "source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:2cb04156f030c1a19b6b85b05029e5f241e978839945d8fa02ee1f9b05af4264:113"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM1_abbreviation_or_expansion",
+      "query": "Report both Pfizer's FY2024 Comirnaty revenue and research and development expense.",
+      "query_normalized_metric": [
+        "comirnaty revenue",
+        "research and development expense"
+      ],
+      "query_raw_metric": [
+        "Comirnaty revenue",
+        "research and development expense"
+      ],
+      "question_id": "pfe_fy2024_007"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": true,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "1cefe1aba5365e950c6348c0a9fd324283289adb0777a511d62bfd2ead7a9174",
+          "normalized_metric": "paxlovid",
+          "period": "FY2024",
+          "raw_metric": "Paxlovid",
+          "source_id": "2c430320199793a7b760d36d6960516f6681f1c023066cdbda5affd03d55a469:893a4dded040490937a7621d45d011dfd34cd983c68f7157516335184dce0b95:45"
+        },
+        {
+          "fact_id": "22d061547299571879907fd2c49c782481a16430e939621ffe07072428ee3cd5",
+          "normalized_metric": "revenues - paxlovid",
+          "period": "FY2024",
+          "raw_metric": "Revenues - Paxlovid",
+          "source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:ac9a270be7eab1fe44d00c0be9321b51ccd0460cc0bba5459d0700d902cb5b78:113"
+        },
+        {
+          "fact_id": "600147525c3c3e3c33c5048c93a6b1ba582d4c2b4561f0305bb0373c96b3ee6a",
+          "normalized_metric": "revenues - paxlovid",
+          "period": "FY2022",
+          "raw_metric": "Revenues - Paxlovid",
+          "source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:ac9a270be7eab1fe44d00c0be9321b51ccd0460cc0bba5459d0700d902cb5b78:113"
+        },
+        {
+          "fact_id": "ad7f77f5a590448025a69f9bd2d2fb4f244691f206e1320e7fdbc30da42a1de5",
+          "normalized_metric": "revenues - paxlovid",
+          "period": "FY2023",
+          "raw_metric": "Revenues - Paxlovid",
+          "source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:ac9a270be7eab1fe44d00c0be9321b51ccd0460cc0bba5459d0700d902cb5b78:113"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM1_abbreviation_or_expansion",
+      "query": "What was Paxlovid revenue in FY2023 rather than FY2024?",
+      "query_normalized_metric": [
+        "paxlovid revenue"
+      ],
+      "query_raw_metric": [
+        "Paxlovid revenue"
+      ],
+      "question_id": "pfe_fy2024_009"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "a97814b74854cbc3117f6b20bcec161e02bb81385126ecb4f7d8e54b5a7c72eb",
+          "normalized_metric": "services and other",
+          "period": "FY2023",
+          "raw_metric": "Services and other",
+          "source_id": "11b13f579ed57a803e1ae5b27345556d8a402edf45fcf4fded3c6bf9acc325d0:fc5fada4aa869e61f87494da10481388c75972e04a9d18c0330c1ff3c897b0a5:55"
+        },
+        {
+          "fact_id": "12ee306e2a9fde17605a961d28793bda61a39da2680c9e5f76c3184ddbae39a3",
+          "normalized_metric": "services and other",
+          "period": "FY2023",
+          "raw_metric": "Services and other",
+          "source_id": "cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0:bebc80c6e1ac4e9c83ba3ba18cf777c026f389958aed18d896a5b98538863390:69"
+        },
+        {
+          "fact_id": "be920467510ef9f85b636d17f661adace220e4317b98360f55067992f3bbd82b",
+          "normalized_metric": "services and other",
+          "period": "FY2025",
+          "raw_metric": "Services and other",
+          "source_id": "cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0:bebc80c6e1ac4e9c83ba3ba18cf777c026f389958aed18d896a5b98538863390:69"
+        },
+        {
+          "fact_id": "eb73bc0fccb3609e9fa1b6fd29cb38baa82f1d627b3be377001cae5dd3242510",
+          "normalized_metric": "services and other",
+          "period": "FY2024",
+          "raw_metric": "Services and other",
+          "source_id": "cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0:bebc80c6e1ac4e9c83ba3ba18cf777c026f389958aed18d896a5b98538863390:69"
+        },
+        {
+          "fact_id": "b3bce893d073df16e582fa1ec006b242bf71600c39c57c9b9f5d43679a786b7e",
+          "normalized_metric": "services and other",
+          "period": "FY2023",
+          "raw_metric": "Services and other",
+          "source_id": "43db179fda1d82495b0a73cc48926b860573c6a8183abdbaf10100c2f2754351:ed645c8b35e2334014c503c45b1b8b954d87365e1a7666b11261948bae25c4a8:56"
+        },
+        {
+          "fact_id": "78ac5bc090631cb3f0e018637bd4707c438a94b54fe68e9c2f89c55da17aa6b4",
+          "normalized_metric": "services and other",
+          "period": "FY2023",
+          "raw_metric": "Services and other",
+          "source_id": "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:1827cc11a5e883b721aa26ea68394513e3dd5a556cf6b528a7a8b92b29813093:77"
+        },
+        {
+          "fact_id": "836a4923b8bb36f15b86e4fd8c7de24c6473e89f295d4759f3136a079e3535e2",
+          "normalized_metric": "services and other",
+          "period": "FY2024",
+          "raw_metric": "Services and other",
+          "source_id": "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:1827cc11a5e883b721aa26ea68394513e3dd5a556cf6b528a7a8b92b29813093:77"
+        },
+        {
+          "fact_id": "92adf77d1e8733d420a447d33d2a9aa9e2e067c3b5e079d46d74fc877e188367",
+          "normalized_metric": "services and other",
+          "period": "FY2025",
+          "raw_metric": "Services and other",
+          "source_id": "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:1827cc11a5e883b721aa26ea68394513e3dd5a556cf6b528a7a8b92b29813093:77"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM8_table_header_or_row_composition_mismatch",
+      "query": "What was Services and other revenue reported by Tesla in FY2025?",
+      "query_normalized_metric": [
+        "services and other revenue"
+      ],
+      "query_raw_metric": [
+        "Services and other revenue"
+      ],
+      "question_id": "tsla_fy2025_002"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "cc6f5600953b5b9cfa4a517756ecad3120e47c1e720b211a3086d159909bc16e",
+          "normalized_metric": "automotive regulatory credits",
+          "period": "FY2023",
+          "raw_metric": "Automotive regulatory credits",
+          "source_id": "11b13f579ed57a803e1ae5b27345556d8a402edf45fcf4fded3c6bf9acc325d0:12d1850e35d98e5868e2316cbb231dd98cc2527a584e4e2efe84e6d9892fd1e8:55"
+        },
+        {
+          "fact_id": "128f63c7a80e9575d46f36244699d2c6dbd243f1ee3b1f383219c19b0bb3b0b8",
+          "normalized_metric": "automotive regulatory credits",
+          "period": "FY2024",
+          "raw_metric": "Automotive regulatory credits",
+          "source_id": "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:f4db2810707613f80c0961c9248684a195e74912de802c322d9eed05290fc988:77"
+        },
+        {
+          "fact_id": "312a5480c923b984fe1319fde32cc73b11e6b2ffec05cf048c9e092b35cdad6b",
+          "normalized_metric": "automotive regulatory credits",
+          "period": "FY2025",
+          "raw_metric": "Automotive regulatory credits",
+          "source_id": "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:f4db2810707613f80c0961c9248684a195e74912de802c322d9eed05290fc988:77"
+        },
+        {
+          "fact_id": "3e2853c7b1c7cea77c67c486071d121d5005a624cb22e4958e5967a7e0f2eca6",
+          "normalized_metric": "automotive regulatory credits",
+          "period": "FY2023",
+          "raw_metric": "Automotive regulatory credits",
+          "source_id": "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:f4db2810707613f80c0961c9248684a195e74912de802c322d9eed05290fc988:77"
+        },
+        {
+          "fact_id": "3f9d422fd21c5134e123c15f5a9c9d4c184b5a3bfac1bd217766bceddddfbe2b",
+          "normalized_metric": "automotive regulatory credits",
+          "period": "FY2025",
+          "raw_metric": "Automotive regulatory credits",
+          "source_id": "e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049:de36589969629ac6894c75a8d51c8eee6e4c8d11e42d10dee8c9ebbadd5a3e45:69"
+        },
+        {
+          "fact_id": "b6d8f83a3d3cff00a55396414cd25c532760d78ab7f4a733b9e4e006f8e36051",
+          "normalized_metric": "automotive regulatory credits",
+          "period": "FY2024",
+          "raw_metric": "Automotive regulatory credits",
+          "source_id": "e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049:de36589969629ac6894c75a8d51c8eee6e4c8d11e42d10dee8c9ebbadd5a3e45:69"
+        },
+        {
+          "fact_id": "ceb3363ae07f26d6e086869629db68d272d9c64ebcf99178883dabbb9f15e62f",
+          "normalized_metric": "automotive regulatory credits",
+          "period": "FY2023",
+          "raw_metric": "Automotive regulatory credits",
+          "source_id": "e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049:de36589969629ac6894c75a8d51c8eee6e4c8d11e42d10dee8c9ebbadd5a3e45:69"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM8_table_header_or_row_composition_mismatch",
+      "query": "What was Automotive regulatory credits revenue reported by Tesla in FY2025?",
+      "query_normalized_metric": [
+        "automotive regulatory credits revenue"
+      ],
+      "query_raw_metric": [
+        "Automotive regulatory credits revenue"
+      ],
+      "question_id": "tsla_fy2025_003"
+    },
+    {
+      "apply_now": false,
+      "canonical_recoverable": false,
+      "classification_basis": "post-seal comparison of frozen query/fact strings and provenance fields; no semantic matcher or Gold source used",
+      "financial_fact_metrics_available": [
+        {
+          "fact_id": "0d275e94bd8c411d5cd48e132ed3cfb6207fb60851d3f87598c52a2e822b0a44",
+          "normalized_metric": "transactions processed on visa's networks2",
+          "period": "FY2025",
+          "raw_metric": "Transactions processed on Visa's networks2",
+          "source_id": "de5f2135a73332bc4b56938ced9dbde61886567defe3496a720b7f03cc40b4ab:c48ae62bcaae673a2779f950221850202adeda0cb298d10f377e450231e31e8b:4"
+        },
+        {
+          "fact_id": "74820f5a381a6d55fa1e68cdc001e6e8dc0c490f272b25db121a6fdb376e710d",
+          "normalized_metric": "transactions processed on visa's networks2",
+          "period": "FY2023",
+          "raw_metric": "Transactions processed on Visa's networks2",
+          "source_id": "de5f2135a73332bc4b56938ced9dbde61886567defe3496a720b7f03cc40b4ab:c48ae62bcaae673a2779f950221850202adeda0cb298d10f377e450231e31e8b:4"
+        },
+        {
+          "fact_id": "7abae283bf0c21bc1bfb307f6a75943e456c93d571c8839d3fad4f52880cdc48",
+          "normalized_metric": "transactions processed on visa's networks2",
+          "period": "FY2024",
+          "raw_metric": "Transactions processed on Visa's networks2",
+          "source_id": "de5f2135a73332bc4b56938ced9dbde61886567defe3496a720b7f03cc40b4ab:c48ae62bcaae673a2779f950221850202adeda0cb298d10f377e450231e31e8b:4"
+        }
+      ],
+      "gold_used": false,
+      "primary_category": "QM4_metric_with_different_qualifier",
+      "query": "How many transactions were processed on Visa's networks in FY2025?",
+      "query_normalized_metric": [
+        "transactions processed on networks"
+      ],
+      "query_raw_metric": [
+        "transactions processed on networks"
+      ],
+      "question_id": "v_fy2025_003"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "audit_scope": "field and relation provenance only; no selector/recovery",
+  "fabricated_cross_candidate_facts": 0,
+  "gate": "NF-E2E-11-R0",
+  "relation_integrity_fail": 0,
+  "relation_integrity_pass": 845,
+  "relations": {
+    "cell_physical_source": "preserved in sealed FinancialFactV1",
+    "metric_row": "preserved in sealed FinancialFactV1",
+    "period_column": "preserved in sealed FinancialFactV1",
+    "row_column_cell": "preserved in sealed FinancialFactV1",
+    "value_cell": "preserved in sealed FinancialFactV1"
+  }
+}

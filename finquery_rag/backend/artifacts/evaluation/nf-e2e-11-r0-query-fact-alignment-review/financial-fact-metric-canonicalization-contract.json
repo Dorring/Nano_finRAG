@@ -1,0 +1,16 @@
+{
+  "alias_table": null,
+  "canonical_metric_id": null,
+  "canonicalizer": null,
+  "extractor_entrypoint": "scripts.evaluation.run_nf_e2e_09_r0_structured_fact_representation.materialize_candidate",
+  "gate": "NF-E2E-11-R0",
+  "modified": false,
+  "namespace": "Statement-Aware metric_path/row label normalized by runtime semantic fact identity",
+  "normalizer_entrypoint": "src.pdf_retrieval_v4.runtime_semantic_fact_identity.normalize_text",
+  "side": "financial_fact",
+  "source": "NF-E2E-09 FinancialFactV1 contract and repository source",
+  "steps": [
+    "choose existing metric_path or candidate metric/row label",
+    "lower/collapse whitespace via normalize_text"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "denominator": 3,
+  "gate": "NF-E2E-11-R0",
+  "gold_reads": 0,
+  "rows": [
+    {
+      "available_fact_periods": [
+        {
+          "fact_id": "33625bd2f845a2c949dc83d922e5d3eccd2bb3a166ad0a01e52a487817f747f0",
+          "normalized_metric": "total automotive revenues",
+          "period": "FY2023",
+          "source_id": "11b13f579ed57a803e1ae5b27345556d8a402edf45fcf4fded3c6bf9acc325d0:05ef0bffccf1a8e8ba0a0a539c3c7bc8bb31cc1467a1c5db16153b2fc452d267:55"
+        }
+      ],
+      "canonical_recoverable": false,
+      "gold_used": false,
+      "primary_category": "QP5_financial_fact_period_wrong",
+      "query": "What were Tesla's Total automotive revenues in FY2025?",
+      "query_normalized_period": [
+        "FY2025"
+      ],
+      "query_raw_period": [
+        "FY2025"
+      ],
+      "question_id": "tsla_fy2025_004",
+      "reason": "The matched metric is present only at a different financial period; query extraction is already normalized and no format-equivalent period is available."
+    },
+    {
+      "available_fact_periods": [
+        {
+          "fact_id": "8bfcf2dfdc18bf38322d58c7d0e8fcceb2d97baa3ab900bac15a49757346d0d5",
+          "normalized_metric": "energy generation and storage segment revenue",
+          "period": "FY2023",
+          "source_id": "11b13f579ed57a803e1ae5b27345556d8a402edf45fcf4fded3c6bf9acc325d0:1f8315922f2291e932238ff4eb90372c8d6925362b1fe391d0121f5b7a517fd9:55"
+        }
+      ],
+      "canonical_recoverable": false,
+      "gold_used": false,
+      "primary_category": "QP5_financial_fact_period_wrong",
+      "query": "In the Results of Operations revenue table, what was Energy generation and storage segment revenue in FY2025?",
+      "query_normalized_period": [
+        "FY2025"
+      ],
+      "query_raw_period": [
+        "FY2025"
+      ],
+      "question_id": "tsla_fy2025_005",
+      "reason": "The matched metric is present only at a different financial period; query extraction is already normalized and no format-equivalent period is available."
+    },
+    {
+      "available_fact_periods": [
+        {
+          "fact_id": "33625bd2f845a2c949dc83d922e5d3eccd2bb3a166ad0a01e52a487817f747f0",
+          "normalized_metric": "total automotive revenues",
+          "period": "FY2023",
+          "source_id": "11b13f579ed57a803e1ae5b27345556d8a402edf45fcf4fded3c6bf9acc325d0:05ef0bffccf1a8e8ba0a0a539c3c7bc8bb31cc1467a1c5db16153b2fc452d267:55"
+        }
+      ],
+      "canonical_recoverable": false,
+      "gold_used": false,
+      "primary_category": "QP5_financial_fact_period_wrong",
+      "query": "What were Tesla's Total automotive revenues in FY2024?",
+      "query_normalized_period": [
+        "FY2024"
+      ],
+      "query_raw_period": [
+        "FY2024"
+      ],
+      "question_id": "tsla_fy2025_009",
+      "reason": "The matched metric is present only at a different financial period; query extraction is already normalized and no format-equivalent period is available."
+    }
+  ]
+}
