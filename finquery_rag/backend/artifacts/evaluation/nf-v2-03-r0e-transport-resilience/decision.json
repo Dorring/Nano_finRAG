@@ -1,0 +1,14 @@
+{
+  "base_commit": "0b744b990b01d8772897d43b07cf527b3a3c9051",
+  "formal_attempt_3_started": true,
+  "formal_attempt_3_complete": true,
+  "formal_attempt_3_effective": false,
+  "model": "qwen3.7-plus",
+  "next_gate": "v2_03_semantic_binder_failure_review",
+  "gate": "NF-V2-03-R0E",
+  "gold_reads": 0,
+  "production_switch_allowed": false,
+  "stability_replay": "skipped_by_explicit_user_instruction",
+  "transport_contract_sealed": true,
+  "transport_contract_sha256": "97b9dd3924c80666d3f444f0f6224e88e7fe67056d33f4c015599f75615d5275"
+}

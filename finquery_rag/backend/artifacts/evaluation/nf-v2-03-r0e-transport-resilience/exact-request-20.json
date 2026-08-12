@@ -1,0 +1,10 @@
+{
+  "gate": "NF-V2-03-R0E",
+  "status": "skipped_by_explicit_user_instruction",
+  "reason": "Direct formal Attempt 3 was requested without repeating the prior stability matrix.",
+  "question_id": "aapl_fy2025_002",
+  "calls": 0,
+  "gold_reads": 0,
+  "semantic_inspection": false,
+  "model": "qwen3.7-plus"
+}

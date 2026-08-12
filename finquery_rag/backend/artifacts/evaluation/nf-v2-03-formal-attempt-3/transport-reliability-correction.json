@@ -1,0 +1,13 @@
+{
+  "reason": "Empty fact packets are deterministic MISSING and are not provider attempts.",
+  "model_required_queries": 64,
+  "empty_fact_packets_skipped": 8,
+  "first_attempt_success": "64/64",
+  "first_attempt_transport_failures": 0,
+  "transport_retry_attempts": 0,
+  "transport_retry_recovered": 0,
+  "transport_retry_failed": 0,
+  "final_provider_completion": "64/64",
+  "schema_valid_among_completed": "64/64",
+  "semantic_response_count_max": 1
+}

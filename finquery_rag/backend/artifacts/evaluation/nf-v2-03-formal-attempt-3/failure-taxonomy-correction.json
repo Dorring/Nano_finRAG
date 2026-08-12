@@ -1,0 +1,20 @@
+{
+  "reason": "The frozen scorer emitted EB12_binding_schema_or_validator_failure while its output-key registry used EB12_schema_or_binding_validator_failure. The slot-status audit is authoritative for this diagnostic.",
+  "EB12_schema_or_binding_validator_failure": 77,
+  "other_failure_counts": {
+    "EB0_correct": 0,
+    "EB1_no_relevant_fact_in_packet": 8,
+    "EB2_correct_source_present_but_no_matching_financial_fact": 0,
+    "EB3_metric_semantic_mismatch": 1,
+    "EB4_period_mismatch": 0,
+    "EB5_scope_or_segment_ambiguity": 0,
+    "EB6_multiple_statement_ambiguity": 0,
+    "EB7_multi_slot_association_error": 0,
+    "EB8_wrong_fact_selected": 0,
+    "EB9_wrong_physical_source_selected": 2,
+    "EB10_model_missing_despite_bindable_fact": 0,
+    "EB11_model_ambiguous_despite_unique_fact": 0,
+    "EB13_supervisor_required_slot_defect": 0,
+    "EB14_other": 0
+  }
+}

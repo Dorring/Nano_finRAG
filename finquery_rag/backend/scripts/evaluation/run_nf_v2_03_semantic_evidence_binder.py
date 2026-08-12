@@ -44,6 +44,9 @@ GATE = "NF-V2-03"
 BASE_COMMIT = "7e9cd14f879f2d7613fdd5cd79354cdfe5d7e663"
 SUPPORTED_MODELS = (
     "qwen3.7-max",
+    "qwen3.7-max-preview",
+    "qwen3.7-max-2026-05-17",
+    "qwen3.7-plus",
     "qwen3.7-max-2026-06-08",
     "qwen3.7-flash-2026-07-15",
 )

@@ -115,6 +115,12 @@ def _exception_chain(value: BaseException | None) -> tuple[dict[str, Any], ...]:
     return tuple(chain)
 
 
+def _exception_http_status(value: BaseException | None) -> int | None:
+    response = getattr(value, "response", None) if value is not None else None
+    status = getattr(response, "status_code", None) if response is not None else getattr(value, "status_code", None)
+    return int(status) if isinstance(status, (int, float)) else None
+
+
 def _usage_int(usage: Any, name: str) -> int | None:
     value = getattr(usage, name, None) if usage is not None else None
     return int(value) if isinstance(value, (int, float)) else None
@@ -236,6 +242,7 @@ class BailianBinderProvider:
                 exception_cause_message=_safe_message(cause) if cause is not None else None,
                 raw_content_length=len(self.last_raw_response or ""),
                 request_id=getattr(response, "id", None),
+                http_status=_exception_http_status(exc),
                 exception_chain=_exception_chain(exc),
             )
             self.last_call = metadata
@@ -254,6 +261,7 @@ class BailianBinderProvider:
                 errno=getattr(exc, "errno", None),
                 raw_content_length=len(self.last_raw_response or ""),
                 request_id=getattr(response, "id", None),
+                http_status=_exception_http_status(exc),
                 exception_chain=_exception_chain(exc),
             )
             self.last_call = metadata
@@ -273,6 +281,7 @@ class BailianBinderProvider:
         errno: int | str | None = None,
         raw_content_length: int | None = None,
         request_id: str | None = None,
+        http_status: int | None = None,
         exception_chain: tuple[dict[str, Any], ...] = (),
     ) -> BinderCallMetadata:
         usage = getattr(response, "usage", None) if response is not None else None
@@ -280,7 +289,8 @@ class BailianBinderProvider:
         reasoning = getattr(details, "reasoning_tokens", None) if details is not None else None
         choice = response.choices[0] if response is not None and getattr(response, "choices", None) else None
         finish_reason = getattr(choice, "finish_reason", None) if choice is not None else None
-        http_status = getattr(response, "status_code", None) if response is not None else None
+        response_http_status = getattr(response, "status_code", None) if response is not None else None
+        resolved_http_status = http_status if http_status is not None else response_http_status
         return BinderCallMetadata(
             provider=self.provider_name,
             model=self.model_name,
@@ -298,7 +308,7 @@ class BailianBinderProvider:
             exception_cause_type=exception_cause_type,
             exception_cause_message=exception_cause_message,
             errno=errno if isinstance(errno, (int, str)) else None,
-            http_status=int(http_status) if isinstance(http_status, (int, float)) else None,
+            http_status=int(resolved_http_status) if isinstance(resolved_http_status, (int, float)) else None,
             finish_reason=str(finish_reason) if finish_reason is not None else None,
             raw_content_length=raw_content_length,
             request_id=request_id,

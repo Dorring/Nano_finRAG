@@ -1,0 +1,11 @@
+{
+  "questions": 72,
+  "queries_skipped_no_fact_supply": 8,
+  "model_required_queries": 64,
+  "provider_response_success": "64/64",
+  "structured_output_success": "64/64",
+  "schema_valid": "64/64",
+  "binding_validator_pass": "10/72",
+  "parse_failures": 0,
+  "gold_reads_before_prediction_seal": 0
+}

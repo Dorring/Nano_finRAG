@@ -1,0 +1,17 @@
+{
+  "average_semantic_latency_ms": 4679.086625,
+  "estimated_cost": "not_configured",
+  "formal_wall_time_ms": 299532.938,
+  "input_tokens": 611159,
+  "largest_input_latency_ms": 2373.018,
+  "largest_input_question": "jpm_fy2025_009",
+  "largest_input_tokens": 22585,
+  "max_semantic_latency_ms": 23496.921,
+  "output_tokens": 13128,
+  "p50_semantic_latency_ms": 3728.7225,
+  "p95_semantic_latency_ms": 9888.708,
+  "retry_overhead_wall_time_seconds": 0,
+  "total_provider_attempts": 64,
+  "total_semantic_responses": 64,
+  "total_tokens": 624287
+}

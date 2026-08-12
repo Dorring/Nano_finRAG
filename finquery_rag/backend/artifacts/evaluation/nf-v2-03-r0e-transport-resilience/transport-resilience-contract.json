@@ -1,0 +1,22 @@
+{
+  "gate": "NF-V2-03-R0E",
+  "http_timeout_seconds": 180.0,
+  "model": "qwen3.7-plus",
+  "production_switch_allowed": false,
+  "provider": "Alibaba Bailian",
+  "retry_delay_seconds": 3.0,
+  "retryable_failures": [
+    "APITimeoutError",
+    "APIConnectionError",
+    "ReadTimeout",
+    "ConnectTimeout",
+    "HTTP_429",
+    "HTTP_502",
+    "HTTP_503",
+    "HTTP_504"
+  ],
+  "sdk_max_retries": 0,
+  "semantic_attempt_budget": 1,
+  "semantic_output_retry_allowed": false,
+  "transport_retry_budget": 1
+}

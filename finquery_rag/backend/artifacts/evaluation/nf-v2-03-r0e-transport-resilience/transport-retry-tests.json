@@ -1,0 +1,27 @@
+{
+  "gold_reads": 0,
+  "policy": {
+    "http_timeout_seconds": 180.0,
+    "retry_delay_seconds": 3.0,
+    "retryable_failures": [
+      "APITimeoutError",
+      "APIConnectionError",
+      "ReadTimeout",
+      "ConnectTimeout",
+      "HTTP_429",
+      "HTTP_502",
+      "HTTP_503",
+      "HTTP_504"
+    ],
+    "sdk_max_retries": 0,
+    "semantic_attempt_budget": 1,
+    "semantic_output_retry_allowed": false,
+    "transport_retry_budget": 1
+  },
+  "unit_tests_required": [
+    "attempt_1_success_no_retry",
+    "transport_failure_recovery",
+    "schema_and_semantic_status_no_retry",
+    "request_sha_mismatch_fail_closed"
+  ]
+}

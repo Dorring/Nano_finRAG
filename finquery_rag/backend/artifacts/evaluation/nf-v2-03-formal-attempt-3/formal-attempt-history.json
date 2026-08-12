@@ -1,0 +1,22 @@
+{
+  "attempt_1": {
+    "gold_reads": 0,
+    "reason": "provider_read_timeout",
+    "semantic_metrics": "none",
+    "status": "invalidated"
+  },
+  "attempt_2": {
+    "gold_reads": 0,
+    "reason": "provider_read_timeout",
+    "semantic_metrics": "none",
+    "status": "invalidated"
+  },
+  "attempt_3": {
+    "formal_run_complete": true,
+    "gold_reads_before_seal": 0,
+    "model": "qwen3.7-plus",
+    "prediction_sealed": true,
+    "semantic_scoring": true,
+    "status": "completed_prediction_sealed_and_scored"
+  }
+}

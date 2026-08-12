@@ -1,0 +1,38 @@
+{
+  "call_index": 1,
+  "gold_reads_before_prediction_seal": 0,
+  "question_id": "aapl_fy2025_001",
+  "transport_audit": {
+    "attempt_1": {
+      "attempt_number": 1,
+      "attempted": true,
+      "error": "Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: The value of the enable_thinking parameter is restricted to True.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}, 'id': 'chatcmpl-69fc26d2-56ce-94e9-ab03-92e66ce443ce', 'request_id': '69fc26d2-56ce-94e9-ab03-92e66ce443ce'}",
+      "failure_class": "HTTP_400",
+      "http_status": 400,
+      "input_tokens": null,
+      "latency_ms": 838.4575059753843,
+      "output_tokens": null,
+      "provider_success": false,
+      "request_id": null,
+      "schema_valid": false,
+      "structured_output_success": false
+    },
+    "attempt_2": {
+      "attempted": false,
+      "retry_reason": null
+    },
+    "fact_count": 20,
+    "final_binding_validator_pass": true,
+    "final_latency_ms": 838.458,
+    "final_provider_completion": false,
+    "final_schema_valid": false,
+    "final_structured_output_success": false,
+    "pass_number": null,
+    "question_id": "aapl_fy2025_001",
+    "recovered_by_transport_retry": false,
+    "request_sha256": "8f6b01876df13e5d6acd9432784a71c2b328cdfd902b861e2a280f58c4eccefa",
+    "request_sha_match": true,
+    "semantic_response_count": 0,
+    "sequence": 1
+  }
+}
