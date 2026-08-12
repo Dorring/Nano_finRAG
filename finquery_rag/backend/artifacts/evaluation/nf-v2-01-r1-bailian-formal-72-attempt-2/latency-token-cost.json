@@ -1,0 +1,13 @@
+{
+  "average_latency_ms": 9124.049032376206,
+  "calls": 72,
+  "cost_rate_source": "not_configured",
+  "estimated_cost_usd": null,
+  "input_tokens": 48072,
+  "max_latency_ms": 23981.65128903929,
+  "output_tokens": 33616,
+  "p50_latency_ms": 7520.238202007022,
+  "p95_latency_ms": 17673.050011091986,
+  "total_tokens": 81688,
+  "total_wall_time_ms": 656935.3942740127
+}

@@ -1,0 +1,22 @@
+{
+  "SP0_correct": 0,
+  "SP10_schema_invalid": 0,
+  "SP11_answer_leakage": 0,
+  "SP12_other": 0,
+  "SP1_wrong_intent": 0,
+  "SP2_missing_metric_slot": 0,
+  "SP3_wrong_metric_slot": 0,
+  "SP4_missing_period_slot": 0,
+  "SP5_wrong_period_slot": 0,
+  "SP6_wrong_slot_count": 61,
+  "SP7_wrong_operand_role": 0,
+  "SP8_wrong_operation": 11,
+  "SP9_invalid_action": 0,
+  "invalid_action": 0,
+  "plan_validator_failure": 0,
+  "provider_failure": 0,
+  "schema_failure": 0,
+  "semantic_plan_failure": 72,
+  "structured_output_failure": 0,
+  "unknown_operation": 0
+}

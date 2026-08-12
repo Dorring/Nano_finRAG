@@ -1,0 +1,22 @@
+{
+  "binder_calls": 0,
+  "calculator_calls": 0,
+  "concurrency": 1,
+  "formal_evaluation_status": "completed",
+  "formal_run_complete": true,
+  "gate": "NF-V2-01-R1",
+  "generator_calls": 0,
+  "gold_reads_before_prediction_seal": 0,
+  "infrastructure_failure": null,
+  "max_calls_per_question": 1,
+  "model_calls": 72,
+  "plans_sha256": "a8e6f256a12fe4b399ba6d9ed6bde611c321df7870533240a84f94f3fb3ce156",
+  "predictions_written": 72,
+  "questions_expected": 72,
+  "reference_answer_reads_before_prediction_seal": 0,
+  "reranker_calls": 0,
+  "retrieval_calls": 0,
+  "retry": 0,
+  "sealed": true,
+  "validator_calls": 0
+}

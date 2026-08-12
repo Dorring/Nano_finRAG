@@ -1,0 +1,21 @@
+{
+  "attempt_1": {
+    "base_commit": "2861ac1d8494afb800f1a90f102dd42c0cfd1abb",
+    "calls_attempted": 72,
+    "failure": "runner_integration_failure",
+    "gold_reads": 0,
+    "prediction_sealed": false,
+    "semantic_scoring": false,
+    "valid_for_metrics": false
+  },
+  "attempt_2": {
+    "base_commit": "4cecee834a1e86f48af7da1c0a116b949c212ee3",
+    "calls_attempted": 72,
+    "formal_run_complete": true,
+    "gold_reads_before_seal": 0,
+    "prediction_sealed": true,
+    "prediction_sha256": "a8e6f256a12fe4b399ba6d9ed6bde611c321df7870533240a84f94f3fb3ce156",
+    "semantic_scoring": true,
+    "valid_for_metrics": true
+  }
+}

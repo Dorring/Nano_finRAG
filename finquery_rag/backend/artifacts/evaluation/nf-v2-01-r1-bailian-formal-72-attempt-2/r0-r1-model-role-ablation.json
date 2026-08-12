@@ -1,0 +1,20 @@
+{
+  "bailian_r1": {
+    "answer_leakage": "0/72",
+    "calculation_recall": "11/11",
+    "metric_slot": 0.8111111111111111,
+    "period_slot": 0.9777777777777777,
+    "plan_validator_pass": "72/72",
+    "schema_valid": "72/72"
+  },
+  "financial_sft_r0": {
+    "answer_leakage": "55/72",
+    "calculation_recall": "N/A",
+    "metric_slot": "N/A",
+    "parse_failure": "72/72",
+    "period_slot": "N/A",
+    "plan_validator_pass": "0/72",
+    "schema_valid": "0/72",
+    "semantic_metrics": "NOT EVALUABLE: 0/72 valid SupervisorPlans"
+  }
+}

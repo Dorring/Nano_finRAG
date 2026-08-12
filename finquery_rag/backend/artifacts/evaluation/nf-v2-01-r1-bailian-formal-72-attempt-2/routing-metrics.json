@@ -1,0 +1,23 @@
+{
+  "CALCULATION": {
+    "actual": 11,
+    "correct": 11,
+    "precision": 1.0,
+    "predicted": 11,
+    "recall": 1.0
+  },
+  "DIRECT_FACT": {
+    "actual": 56,
+    "correct": 56,
+    "precision": 1.0,
+    "predicted": 56,
+    "recall": 1.0
+  },
+  "MULTI_EVIDENCE": {
+    "actual": 5,
+    "correct": 5,
+    "precision": 1.0,
+    "predicted": 5,
+    "recall": 1.0
+  }
+}

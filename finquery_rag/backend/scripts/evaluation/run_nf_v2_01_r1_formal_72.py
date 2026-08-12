@@ -14,6 +14,7 @@ import re
 import sys
 import time
 from collections import Counter
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlsplit, urlunsplit
@@ -44,15 +45,30 @@ from scripts.evaluation.run_nf_v2_01_r1_bailian_strong_general_supervisor import
 )
 
 GATE = "NF-V2-01-R1"
-BASE_COMMIT = "2861ac1d8494afb800f1a90f102dd42c0cfd1abb"
+BASE_COMMIT = "4cecee834a1e86f48af7da1c0a116b949c212ee3"
 ROLE = "development_shadow_v2_strong_general_llm_supervisor"
 PROVIDER = "bailian"
 MODEL = "qwen3.7-max-2026-06-08"
-OUT = ROOT / "artifacts/evaluation/nf-v2-01-r1-bailian-formal-72"
+OUT = ROOT / "artifacts/evaluation/nf-v2-01-r1-bailian-formal-72-attempt-2"
 TRANSPORT_SEAL = ROOT / "artifacts/evaluation/nf-v2-01-r1-transport-isolation/transport-seal.json"
 FROZEN_BENCHMARK_CONTRACT = ROOT / "artifacts/evaluation/nf-opt-26-r0-internal-retrieval-freeze/benchmark-freeze-contract.json"
 QUESTION_COUNT = 72
 MAX_RETRIES = 0
+
+
+@dataclass(frozen=True)
+class FormalRunResult:
+    """Typed result returned by the formal runner.
+
+    Attempt 1 returned three positional values while its consumer unpacked
+    only two.  Keeping the aggregation result as a named object makes that
+    producer/consumer contract explicit and prevents another positional
+    unpacking mismatch.
+    """
+
+    records: list[dict[str, Any]]
+    failure: dict[str, Any] | None
+    elapsed_ms: float
 
 
 def stable_json_hash(value: Any) -> str:
@@ -194,6 +210,13 @@ def pre_run_seal(config: dict[str, Any], envelopes: tuple[Any, ...]) -> tuple[bo
         "block_reason": reason,
     }
     write_json(OUT / "formal-run-config.json", artifact)
+    attempt_config = dict(artifact)
+    attempt_config.update({
+        "attempt_number": 2,
+        "previous_attempt_invalidated": True,
+        "runner_serialization_fix_commit": "runner-only fix; commit recorded after sealed evaluation",
+    })
+    write_json(OUT / "formal-attempt-2-config.json", attempt_config)
     write_json(OUT / "frozen-v2-contract.json", {
         "gate": GATE,
         "base_commit": BASE_COMMIT,
@@ -261,11 +284,25 @@ def record_from_run(envelope: Any, run: Any, provider: BailianProvider, started:
     }
 
 
-def write_prediction_seal(records: list[dict[str, Any]], *, complete: bool, status: str, failure: dict[str, Any] | None = None) -> None:
-    path = OUT / "supervisor-plans.jsonl.gz"
+def serialize_prediction_records(records: list[dict[str, Any]], path: Path) -> str:
+    """Write prediction records and return the SHA256 of the gzip JSONL."""
+
     with gzip.open(path, "wt", encoding="utf-8") as handle:
         for record in records:
             handle.write(json.dumps(record, ensure_ascii=False, sort_keys=True) + "\n")
+    return sha256_file(path)
+
+
+def load_prediction_records(path: Path) -> list[dict[str, Any]]:
+    """Load the exact gzip JSONL representation used by formal scoring."""
+
+    with gzip.open(path, "rt", encoding="utf-8") as handle:
+        return [json.loads(line) for line in handle if line.strip()]
+
+
+def write_prediction_seal(records: list[dict[str, Any]], *, complete: bool, status: str, failure: dict[str, Any] | None = None) -> None:
+    path = OUT / "supervisor-plans.jsonl.gz"
+    plans_sha256 = serialize_prediction_records(records, path)
     write_json(OUT / "supervisor-prediction-seal.json", {
         "gate": GATE,
         "formal_run_complete": complete,
@@ -284,7 +321,7 @@ def write_prediction_seal(records: list[dict[str, Any]], *, complete: bool, stat
         "calculator_calls": 0,
         "generator_calls": 0,
         "validator_calls": 0,
-        "plans_sha256": sha256_file(path),
+        "plans_sha256": plans_sha256,
         "infrastructure_failure": failure,
         "sealed": True,
     })
@@ -411,7 +448,7 @@ def class_metrics(records: list[dict[str, Any]], rows: list[dict[str, Any]]) -> 
     return metrics
 
 
-def run_formal(config: dict[str, Any], envelopes: tuple[Any, ...]) -> tuple[list[dict[str, Any]], dict[str, Any] | None]:
+def run_formal(config: dict[str, Any], envelopes: tuple[Any, ...]) -> FormalRunResult:
     provider = BailianProvider(
         base_url=config["base_url"],
         api_key=config["api_key"],
@@ -442,7 +479,7 @@ def run_formal(config: dict[str, Any], envelopes: tuple[Any, ...]) -> tuple[list
     finally:
         provider.close()
     elapsed_ms = (time.perf_counter() - started_all) * 1000
-    return records, failure, elapsed_ms
+    return FormalRunResult(records=records, failure=failure, elapsed_ms=elapsed_ms)
 
 
 def score_and_write(records: list[dict[str, Any]], rows: list[dict[str, Any]], requirements: dict[str, Any], config: dict[str, Any], wall_time_ms: float) -> dict[str, Any]:
@@ -608,19 +645,19 @@ def main() -> int:
         empty_blocked_artifacts(reason or "pre-run seal failed", [])
         print(json.dumps({"formal_evaluation_status": "infrastructure_blocked", "block_reason": reason}, sort_keys=True))
         return 0
-    records, failure, wall_time_ms = run_formal(config, envelopes)
-    write_prediction_seal(records, complete=failure is None and len(records) == QUESTION_COUNT, status="completed" if failure is None else "infrastructure_regression", failure=failure)
-    if failure is not None or len(records) != QUESTION_COUNT:
-        empty_blocked_artifacts("new infrastructure failure during formal replay", records)
+    run_result = run_formal(config, envelopes)
+    write_prediction_seal(run_result.records, complete=run_result.failure is None and len(run_result.records) == QUESTION_COUNT, status="completed" if run_result.failure is None else "infrastructure_regression", failure=run_result.failure)
+    if run_result.failure is not None or len(run_result.records) != QUESTION_COUNT:
+        empty_blocked_artifacts("new infrastructure failure during formal replay", run_result.records)
         # Restore the prediction seal after blocked-artifact writes so it remains
         # the authoritative sealed execution record.
-        write_prediction_seal(records, complete=False, status="infrastructure_regression", failure=failure)
-        print(json.dumps({"formal_evaluation_status": "infrastructure_regression", "formal_run_complete": False, "supervisor_calls": len(records), "failure": failure}, sort_keys=True))
+        write_prediction_seal(run_result.records, complete=False, status="infrastructure_regression", failure=run_result.failure)
+        print(json.dumps({"formal_evaluation_status": "infrastructure_regression", "formal_run_complete": False, "supervisor_calls": len(run_result.records), "failure": run_result.failure}, sort_keys=True))
         return 0
     # Only this branch reads frozen evaluation annotations, after prediction seal.
     rows = [json.loads(line) for line in QUESTIONS.read_text(encoding="utf-8").splitlines() if line.strip()]
     requirements = json.loads(QUERY_REQUIREMENTS.read_text(encoding="utf-8"))
-    decision = score_and_write(records, rows, requirements, config, wall_time_ms)
+    decision = score_and_write(run_result.records, rows, requirements, config, run_result.elapsed_ms)
     print(json.dumps(decision, ensure_ascii=False, sort_keys=True))
     return 0
 

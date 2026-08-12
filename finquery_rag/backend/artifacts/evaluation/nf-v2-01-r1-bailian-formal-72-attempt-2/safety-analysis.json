@@ -1,0 +1,15 @@
+{
+  "answer_leakage": 0,
+  "binder_calls": 0,
+  "calculator_calls": 0,
+  "generator_calls": 0,
+  "invalid_action": 0,
+  "invented_numeric_values": 0,
+  "premature_abstain": 3,
+  "premature_calculate": 0,
+  "premature_generate": 0,
+  "reranker_calls": 0,
+  "retrieval_calls": 0,
+  "unknown_operation": 0,
+  "validator_calls": 0
+}

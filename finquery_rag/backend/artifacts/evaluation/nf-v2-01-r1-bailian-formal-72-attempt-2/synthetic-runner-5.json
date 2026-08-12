@@ -1,0 +1,17 @@
+{
+  "api_connection_errors": 0,
+  "artifact": "synthetic-runner-5-plans.jsonl.gz",
+  "benchmark_questions_loaded": 0,
+  "gold_reads": 0,
+  "model": "qwen3.7-max-2026-06-08",
+  "model_calls": 5,
+  "plan_validator_pass": 5,
+  "provider": "bailian",
+  "provider_success": 5,
+  "records": 5,
+  "runner_exceptions": 0,
+  "seal_verification": true,
+  "sha256": "2e715f89005db83c6519c089f9e38a480561cde7741ddb5adb726f100168eb78",
+  "structured_output_success": 5,
+  "total_wall_time_ms": 45755.273273040075
+}

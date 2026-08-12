@@ -1,0 +1,14 @@
+{
+  "attempt_1_failure": "ValueError: too many values to unpack (expected 2)",
+  "consumer_expected_shape": "FormalRunResult named fields",
+  "consumer_function": "main",
+  "fix": "typed FormalRunResult and named-field consumption",
+  "producer_function": "run_formal",
+  "producer_return_shape": [
+    "records",
+    "failure",
+    "elapsed_ms"
+  ],
+  "producer_return_type": "FormalRunResult",
+  "root_cause": "producer returned three positional values while consumer unpacked two"
+}
