@@ -1,0 +1,27 @@
+{
+  "attempt_1": {
+    "gold_reads": 0,
+    "reason": "provider_read_timeout",
+    "semantic_metrics": "none",
+    "status": "invalidated"
+  },
+  "attempt_2": {
+    "gold_reads": 0,
+    "reason": "provider_read_timeout",
+    "semantic_metrics": "none",
+    "status": "invalidated"
+  },
+  "attempt_3": {
+    "gold_reads_before_seal": 0,
+    "prediction_sealed": true,
+    "semantic_metrics": "superseded_by_binding_contract_audit",
+    "status": "completed_provider_schema_layer"
+  },
+  "attempt_4": {
+    "failure": null,
+    "gold_reads_before_seal": 0,
+    "prediction_sealed": true,
+    "semantic_scoring": true,
+    "status": "completed"
+  }
+}

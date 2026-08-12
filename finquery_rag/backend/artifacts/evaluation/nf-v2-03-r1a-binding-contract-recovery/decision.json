@@ -1,0 +1,17 @@
+{
+  "base_commit": "ead160d",
+  "binder_model": "qwen3.7-plus",
+  "binding_contract_recovered": true,
+  "formal_attempt_4": "executed",
+  "formal_attempt_4_effective": false,
+  "formal_attempt_4_artifact": "artifacts/evaluation/nf-v2-03-formal-attempt-4/decision.json",
+  "gate": "NF-V2-03-R1A",
+  "model_calls": 0,
+  "next_gate": "v2_03_semantic_binder_failure_review",
+  "question_specific_patches": 0,
+  "prediction_sha256_verified": true,
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "source_identity_namespace_mismatch": false,
+  "validator_semantic_leakage": false
+}

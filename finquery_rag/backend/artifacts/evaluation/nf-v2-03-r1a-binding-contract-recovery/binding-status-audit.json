@@ -1,0 +1,35 @@
+{
+  "query_level_final": {
+    "BOUND": 2,
+    "INVALID": 62,
+    "MISSING": 8
+  },
+  "query_level_raw": {
+    "AMBIGUOUS": 9,
+    "BOUND": 43,
+    "MISSING": 20
+  },
+  "schema_valid_plus_validator": {
+    "AMBIGUOUS": {
+      "schema_valid": 9,
+      "validator_fail": 9,
+      "validator_pass": 0
+    },
+    "BOUND": {
+      "schema_valid": 43,
+      "validator_fail": 41,
+      "validator_pass": 2
+    },
+    "MISSING": {
+      "schema_valid": 20,
+      "validator_fail": 12,
+      "validator_pass": 8
+    }
+  },
+  "slot_level_raw": {
+    "AMBIGUOUS": 11,
+    "BOUND": 5,
+    "INVALID": 75,
+    "MISSING": 21
+  }
+}

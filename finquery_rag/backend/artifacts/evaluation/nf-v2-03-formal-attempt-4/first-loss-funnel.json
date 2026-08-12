@@ -1,0 +1,25 @@
+{
+  "calculation": {
+    "all_required_source_supply": "8/11",
+    "binder_all_operands": 0,
+    "fact_supply_complete": "6/11",
+    "questions": 11,
+    "strict_all_operand": 0,
+    "supervisor_operands": 11
+  },
+  "direct_fact": {
+    "binder_bound": 2,
+    "financial_fact_supply": 4,
+    "questions": 56,
+    "strict_bindable": 4,
+    "strict_correct": 0,
+    "supervisor_slot_valid": 56
+  },
+  "multi_evidence": {
+    "binder_complete": 0,
+    "complete_supply": "4/5",
+    "questions": 5,
+    "strict_complete": 0,
+    "supervisor_slots": 5
+  }
+}

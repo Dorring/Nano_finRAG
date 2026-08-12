@@ -1,0 +1,265 @@
+{
+  "ambiguous": 0,
+  "bound": 0,
+  "denominator": 11,
+  "invalid": 11,
+  "missing": 0,
+  "rows": [
+    {
+      "final_binding_status": "INVALID",
+      "intent": "CALCULATION",
+      "question_id": "aapl_fy2025_006",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 1,
+          "strict_correct": false
+        },
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_2",
+          "strict_candidates": 1,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": true,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "CALCULATION",
+      "question_id": "jpm_fy2025_006",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        },
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "2",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "CALCULATION",
+      "question_id": "ko_fy2025_006",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        },
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_2",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "CALCULATION",
+      "question_id": "ko_fy2025_007",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        },
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "2",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "CALCULATION",
+      "question_id": "msft_fy2025_006",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "rev_fy2025",
+          "strict_candidates": 0,
+          "strict_correct": false
+        },
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "rev_fy2024",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "CALCULATION",
+      "question_id": "msft_fy2025_007",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        },
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_2",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "CALCULATION",
+      "question_id": "nvda_fy2025_006",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": "],,,",
+          "slot_id": "rev_fy2025",
+          "strict_candidates": 0,
+          "strict_correct": false
+        },
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "rev_fy2024",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "CALCULATION",
+      "question_id": "pfe_fy2024_006",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 1,
+          "strict_correct": false
+        },
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "2",
+          "strict_candidates": 1,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": true,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "CALCULATION",
+      "question_id": "tsla_fy2025_006",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "rev_fy2025",
+          "strict_candidates": 1,
+          "strict_correct": false
+        },
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "rev_fy2024",
+          "strict_candidates": 1,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": true,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "CALCULATION",
+      "question_id": "tsla_fy2025_007",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        },
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_2",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "CALCULATION",
+      "question_id": "v_fy2025_006",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": "],",
+          "slot_id": "s1",
+          "strict_candidates": 1,
+          "strict_correct": false
+        },
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": "]",
+          "slot_id": "s2",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    }
+  ],
+  "strict_bindable": 3,
+  "strict_complete": 0,
+  "success_given_bindable": 0.0
+}

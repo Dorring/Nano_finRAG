@@ -1,0 +1,103 @@
+{
+  "candidate_key_to_fact_candidate_id_matches": 46,
+  "candidate_key_to_physical_source_id_matches": 0,
+  "canonical_contract": "Gold candidate_key -> FinancialFact candidate_id/candidate_ids; physical_source_id remains separate lineage identity",
+  "compared_expected_sources": 80,
+  "evaluator_source_match_code": "def source_matches(fact: Mapping[str, Any], source: Mapping[str, Any]) -> bool:\n    candidate_ids = {str(fact.get(\"candidate_id\"))} | {str(item) for item in fact.get(\"candidate_ids\", [])}\n    return bool(source.get(\"candidate_key\") and str(source[\"candidate_key\"]) in candidate_ids)\n",
+  "examples": [
+    {
+      "fact_candidate_ids": [
+        "candidate:v1:79ac51e245c5b62256797393cbdd8c14497c5800b1c7afa77995957d747c223c"
+      ],
+      "fact_physical_source_ids": [
+        "2016faed04f03df7ef6aad0be8f232521469d6ba19428379e552d55dc23667cd:05dad73372a24be47526caba2e7bc521ee7727164b25490c8a1572b86455fb9e:32"
+      ],
+      "gold_candidate_key": "candidate:v1:79ac51e245c5b62256797393cbdd8c14497c5800b1c7afa77995957d747c223c",
+      "question_id": "aapl_fy2025_001"
+    },
+    {
+      "fact_candidate_ids": [
+        "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d"
+      ],
+      "fact_physical_source_ids": [
+        "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486:c0019e060b35e7a6a39bc58c5807265813cd6a2b87e0ba8be5b7712734fcad95:26"
+      ],
+      "gold_candidate_key": "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d",
+      "question_id": "aapl_fy2025_002"
+    },
+    {
+      "fact_candidate_ids": [],
+      "fact_physical_source_ids": [],
+      "gold_candidate_key": "candidate:v1:f06ee04f963d52481ef27a335b7a6c09674546d3ab590a90c2a4a033f8ea34d8",
+      "question_id": "aapl_fy2025_003"
+    },
+    {
+      "fact_candidate_ids": [
+        "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324"
+      ],
+      "fact_physical_source_ids": [
+        "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486:7afaa181300abd5d721fd049d03dc1535ea88f659c077f91c0f1fc36be7baf9c:26"
+      ],
+      "gold_candidate_key": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
+      "question_id": "aapl_fy2025_004"
+    },
+    {
+      "fact_candidate_ids": [],
+      "fact_physical_source_ids": [],
+      "gold_candidate_key": "candidate:v1:d8d06e11d524ce4ec4c95ca728ef61ba568965f41b623d7033faf672eea17989",
+      "question_id": "aapl_fy2025_005"
+    },
+    {
+      "fact_candidate_ids": [
+        "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563"
+      ],
+      "fact_physical_source_ids": [
+        "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486:9fbbb1acea0877e077919653899299d518a3ad774428b896b7876eb0663be0be:26"
+      ],
+      "gold_candidate_key": "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563",
+      "question_id": "aapl_fy2025_006"
+    },
+    {
+      "fact_candidate_ids": [
+        "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563"
+      ],
+      "fact_physical_source_ids": [
+        "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486:9fbbb1acea0877e077919653899299d518a3ad774428b896b7876eb0663be0be:26"
+      ],
+      "gold_candidate_key": "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563",
+      "question_id": "aapl_fy2025_006"
+    },
+    {
+      "fact_candidate_ids": [
+        "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324"
+      ],
+      "fact_physical_source_ids": [
+        "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486:7afaa181300abd5d721fd049d03dc1535ea88f659c077f91c0f1fc36be7baf9c:26"
+      ],
+      "gold_candidate_key": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
+      "question_id": "aapl_fy2025_007"
+    },
+    {
+      "fact_candidate_ids": [
+        "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d"
+      ],
+      "fact_physical_source_ids": [
+        "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486:c0019e060b35e7a6a39bc58c5807265813cd6a2b87e0ba8be5b7712734fcad95:26"
+      ],
+      "gold_candidate_key": "candidate:v1:fa920e65414de68e234c9d2fd93ef2310f8400c43b51bda1f4f427d91c945c5d",
+      "question_id": "aapl_fy2025_007"
+    },
+    {
+      "fact_candidate_ids": [
+        "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324"
+      ],
+      "fact_physical_source_ids": [
+        "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486:7afaa181300abd5d721fd049d03dc1535ea88f659c077f91c0f1fc36be7baf9c:26"
+      ],
+      "gold_candidate_key": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
+      "question_id": "aapl_fy2025_009"
+    }
+  ],
+  "legacy_evidence_id_present": 80,
+  "source_identity_namespace_mismatch": false
+}

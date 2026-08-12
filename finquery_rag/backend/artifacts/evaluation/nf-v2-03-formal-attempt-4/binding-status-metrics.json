@@ -1,0 +1,17 @@
+{
+  "binder_calls": 64,
+  "queries_skipped_no_supply": 8,
+  "query_status": {
+    "AMBIGUOUS": 0,
+    "BOUND": 2,
+    "INVALID": 62,
+    "MISSING": 8
+  },
+  "slot_status": {
+    "slots_ambiguous": 0,
+    "slots_bound": 5,
+    "slots_invalid": 78,
+    "slots_missing": 8,
+    "slots_requested": 88
+  }
+}

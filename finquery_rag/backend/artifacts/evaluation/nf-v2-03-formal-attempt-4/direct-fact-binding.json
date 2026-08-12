@@ -1,0 +1,908 @@
+{
+  "ambiguous": 0,
+  "bound": 2,
+  "denominator": 56,
+  "invalid": 46,
+  "missing": 8,
+  "rows": [
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "aapl_fy2025_001",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 1,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": true,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "aapl_fy2025_002",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "aapl_fy2025_003",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "aapl_fy2025_004",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "aapl_fy2025_005",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "MISSING",
+      "intent": "DIRECT_FACT",
+      "question_id": "aapl_fy2025_008",
+      "slot_results": [
+        {
+          "failure": "EB1_no_relevant_fact_in_packet",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "aapl_fy2025_009",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "jpm_fy2025_001",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "jpm_fy2025_002",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "jpm_fy2025_003",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 1,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": true,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "jpm_fy2025_004",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "jpm_fy2025_005",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "MISSING",
+      "intent": "DIRECT_FACT",
+      "question_id": "jpm_fy2025_008",
+      "slot_results": [
+        {
+          "failure": "EB1_no_relevant_fact_in_packet",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "jpm_fy2025_009",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "ko_fy2025_001",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "ko_fy2025_002",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "ko_fy2025_003",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "ko_fy2025_004",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "ko_fy2025_005",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "MISSING",
+      "intent": "DIRECT_FACT",
+      "question_id": "ko_fy2025_008",
+      "slot_results": [
+        {
+          "failure": "EB1_no_relevant_fact_in_packet",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "ko_fy2025_009",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "msft_fy2025_001",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "msft_fy2025_002",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "msft_fy2025_003",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "MISSING",
+      "intent": "DIRECT_FACT",
+      "question_id": "msft_fy2025_004",
+      "slot_results": [
+        {
+          "failure": "EB1_no_relevant_fact_in_packet",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "msft_fy2025_005",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "MISSING",
+      "intent": "DIRECT_FACT",
+      "question_id": "msft_fy2025_008",
+      "slot_results": [
+        {
+          "failure": "EB1_no_relevant_fact_in_packet",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "msft_fy2025_009",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "nvda_fy2025_001",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "BOUND",
+      "intent": "DIRECT_FACT",
+      "question_id": "nvda_fy2025_002",
+      "slot_results": [
+        {
+          "failure": "EB3_metric_semantic_mismatch",
+          "selected_fact_id": "b88d989a5f1c915532cb7f7ab1cd3b1d7b6cd607de63c3bec37ca57c6b408e65",
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "nvda_fy2025_003",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "BOUND",
+      "intent": "DIRECT_FACT",
+      "question_id": "nvda_fy2025_004",
+      "slot_results": [
+        {
+          "failure": "EB3_metric_semantic_mismatch",
+          "selected_fact_id": "a35f94b795ba5eb227de96ab46915d61ad88545cde97ff71d0e5ba10d12bb273",
+          "slot_id": "data_center_revenue_fy2025",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "nvda_fy2025_005",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "automotive_revenue_fy2025",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "nvda_fy2025_008",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "nvda_fy2025_009",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "pfe_fy2024_001",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "total_revenues_fy2024",
+          "strict_candidates": 1,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": true,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "pfe_fy2024_002",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "pfe_fy2024_003",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "pfe_fy2024_004",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "pfe_fy2024_005",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "pfe_fy2024_008",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "pfe_fy2024_009",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "paxlovid_revenue_fy2023",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "tsla_fy2025_001",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "tsla_fy2025_002",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "tsla_fy2025_003",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "tsla_fy2025_004",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "tsla_fy2025_005",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "MISSING",
+      "intent": "DIRECT_FACT",
+      "question_id": "tsla_fy2025_008",
+      "slot_results": [
+        {
+          "failure": "EB1_no_relevant_fact_in_packet",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "tsla_fy2025_009",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "v_fy2025_001",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 1,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": true,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "v_fy2025_002",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "v_fy2025_003",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "v_fy2025_004",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "MISSING",
+      "intent": "DIRECT_FACT",
+      "question_id": "v_fy2025_005",
+      "slot_results": [
+        {
+          "failure": "EB1_no_relevant_fact_in_packet",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "MISSING",
+      "intent": "DIRECT_FACT",
+      "question_id": "v_fy2025_008",
+      "slot_results": [
+        {
+          "failure": "EB1_no_relevant_fact_in_packet",
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "final_binding_status": "INVALID",
+      "intent": "DIRECT_FACT",
+      "question_id": "v_fy2025_009",
+      "slot_results": [
+        {
+          "failure": "EB12_binding_schema_or_validator_failure",
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_candidates": 0,
+          "strict_correct": false
+        }
+      ],
+      "strict_bindable": false,
+      "strict_complete": false
+    }
+  ],
+  "strict_bindable": 4,
+  "strict_complete": 0,
+  "success_given_bindable": 0.0
+}

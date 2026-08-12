@@ -1,0 +1,1117 @@
+{
+  "after_validator_pass": 10,
+  "before_validator_pass": 10,
+  "query_final_status": {
+    "BOUND": 2,
+    "INVALID": 62,
+    "MISSING": 8
+  },
+  "query_reason_counts": {
+    "BV0_PASS": 10,
+    "BV10_cardinality_violation": 0,
+    "BV11_invalid_candidate_source_relation": 0,
+    "BV12_semantic_metric_check_in_validator": 0,
+    "BV13_semantic_period_check_in_validator": 0,
+    "BV14_semantic_role_check_in_validator": 0,
+    "BV15_other": 0,
+    "BV1_unknown_slot_id": 61,
+    "BV2_unknown_fact_id": 1,
+    "BV3_fact_outside_query_packet": 0,
+    "BV4_fact_not_provenance_complete": 0,
+    "BV5_cross_query_fact": 0,
+    "BV6_duplicate_invalid_binding": 0,
+    "BV7_invalid_status_binding_consistency": 0,
+    "BV8_missing_slot_contract_violation": 0,
+    "BV9_ambiguous_slot_contract_violation": 0
+  },
+  "query_status": {
+    "AMBIGUOUS": 9,
+    "BOUND": 43,
+    "MISSING": 20
+  },
+  "reason_counts": {
+    "BV0_PASS": 0,
+    "BV10_cardinality_violation": 54,
+    "BV11_invalid_candidate_source_relation": 0,
+    "BV12_semantic_metric_check_in_validator": 0,
+    "BV13_semantic_period_check_in_validator": 0,
+    "BV14_semantic_role_check_in_validator": 0,
+    "BV15_other": 0,
+    "BV1_unknown_slot_id": 96,
+    "BV2_unknown_fact_id": 6,
+    "BV3_fact_outside_query_packet": 0,
+    "BV4_fact_not_provenance_complete": 0,
+    "BV5_cross_query_fact": 0,
+    "BV6_duplicate_invalid_binding": 1,
+    "BV7_invalid_status_binding_consistency": 13,
+    "BV8_missing_slot_contract_violation": 0,
+    "BV9_ambiguous_slot_contract_violation": 0
+  },
+  "rows": [
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "aapl_fy2025_001",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "aapl_fy2025_002",
+      "raw_status": "AMBIGUOUS",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_ambiguous_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "aapl_fy2025_003",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "aapl_fy2025_004",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "aapl_fy2025_005",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "aapl_fy2025_006",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "unknown_slot::slot_2",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "aapl_fy2025_007",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_slot::2",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [],
+      "final_status": "MISSING",
+      "question_id": "aapl_fy2025_008",
+      "raw_status": "MISSING",
+      "reasons": [],
+      "validator_pass": true
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "aapl_fy2025_009",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "jpm_fy2025_001",
+      "raw_status": "AMBIGUOUS",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_ambiguous_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV7_invalid_status_binding_consistency",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "jpm_fy2025_002",
+      "raw_status": "MISSING",
+      "reasons": [
+        "unknown_slot::1",
+        "empty_fact_binding::1",
+        "unknown_missing_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "jpm_fy2025_003",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV7_invalid_status_binding_consistency",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "jpm_fy2025_004",
+      "raw_status": "MISSING",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "empty_fact_binding::slot_1",
+        "unknown_missing_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV7_invalid_status_binding_consistency",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "jpm_fy2025_005",
+      "raw_status": "MISSING",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "empty_fact_binding::slot_1",
+        "unknown_missing_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "jpm_fy2025_006",
+      "raw_status": "AMBIGUOUS",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_slot::2",
+        "unknown_ambiguous_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV7_invalid_status_binding_consistency",
+        "BV1_unknown_slot_id",
+        "BV7_invalid_status_binding_consistency",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "jpm_fy2025_007",
+      "raw_status": "MISSING",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "empty_fact_binding::slot_1",
+        "unknown_slot::slot_2",
+        "empty_fact_binding::slot_2",
+        "unknown_missing_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [],
+      "final_status": "MISSING",
+      "question_id": "jpm_fy2025_008",
+      "raw_status": "MISSING",
+      "reasons": [],
+      "validator_pass": true
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV7_invalid_status_binding_consistency",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "jpm_fy2025_009",
+      "raw_status": "MISSING",
+      "reasons": [
+        "unknown_slot::1",
+        "empty_fact_binding::1",
+        "unknown_missing_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "ko_fy2025_001",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "ko_fy2025_002",
+      "raw_status": "AMBIGUOUS",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_ambiguous_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "ko_fy2025_003",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "ko_fy2025_004",
+      "raw_status": "AMBIGUOUS",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_ambiguous_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "ko_fy2025_005",
+      "raw_status": "AMBIGUOUS",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "unknown_ambiguous_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "ko_fy2025_006",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "unknown_slot::slot_2",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id",
+        "BV6_duplicate_invalid_binding",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "ko_fy2025_007",
+      "raw_status": "AMBIGUOUS",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_slot::2",
+        "duplicate_fact_across_slots",
+        "unknown_ambiguous_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [],
+      "final_status": "MISSING",
+      "question_id": "ko_fy2025_008",
+      "raw_status": "MISSING",
+      "reasons": [],
+      "validator_pass": true
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "ko_fy2025_009",
+      "raw_status": "AMBIGUOUS",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_ambiguous_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "msft_fy2025_001",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "msft_fy2025_002",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "msft_fy2025_003",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [],
+      "final_status": "MISSING",
+      "question_id": "msft_fy2025_004",
+      "raw_status": "MISSING",
+      "reasons": [],
+      "validator_pass": true
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "msft_fy2025_005",
+      "raw_status": "AMBIGUOUS",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "unknown_ambiguous_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "msft_fy2025_006",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::rev_fy2024",
+        "unknown_slot::rev_fy2025",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id",
+        "BV2_unknown_fact_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "msft_fy2025_007",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "unknown_slot::slot_2",
+        "unknown_fact::",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [],
+      "final_status": "MISSING",
+      "question_id": "msft_fy2025_008",
+      "raw_status": "MISSING",
+      "reasons": [],
+      "validator_pass": true
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV7_invalid_status_binding_consistency",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "msft_fy2025_009",
+      "raw_status": "MISSING",
+      "reasons": [
+        "unknown_slot::1",
+        "empty_fact_binding::1",
+        "unknown_missing_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "nvda_fy2025_001",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "nvda_fy2025_002",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "nvda_fy2025_003",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [],
+      "final_status": "BOUND",
+      "question_id": "nvda_fy2025_004",
+      "raw_status": "BOUND",
+      "reasons": [],
+      "validator_pass": true
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV2_unknown_fact_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "nvda_fy2025_005",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::automotive_revenue_fy2025",
+        "unknown_fact::1ddf3f61bafe730d901064e5ccfc91622e014724644cad8370d322b3c9316810",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "nvda_fy2025_006",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::rev_fy2024",
+        "unknown_slot::rev_fy2025",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "nvda_fy2025_007",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "unknown_slot::slot_2",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV7_invalid_status_binding_consistency",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "nvda_fy2025_008",
+      "raw_status": "MISSING",
+      "reasons": [
+        "unknown_slot::1",
+        "empty_fact_binding::1",
+        "unknown_missing_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "nvda_fy2025_009",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV2_unknown_fact_id",
+        "BV2_unknown_fact_id",
+        "BV10_cardinality_violation",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_001",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::total_revenues_fy2024",
+        "unknown_fact::b8982f8a92719de674f6bff3f15eb07478aeea7d02fd88ecd10b5d4b24ec4c2c",
+        "unknown_fact::25b3026c7de0081af13f227eac8511f58d6b28bfdfbcce51b629d011cefc0a58",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_002",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV7_invalid_status_binding_consistency",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_003",
+      "raw_status": "MISSING",
+      "reasons": [
+        "unknown_slot::1",
+        "empty_fact_binding::1",
+        "unknown_missing_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_004",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV7_invalid_status_binding_consistency",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_005",
+      "raw_status": "MISSING",
+      "reasons": [
+        "unknown_slot::1",
+        "empty_fact_binding::1",
+        "unknown_missing_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_006",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_slot::2",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_007",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_slot::2",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV7_invalid_status_binding_consistency",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_008",
+      "raw_status": "MISSING",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "empty_fact_binding::slot_1",
+        "unknown_missing_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_009",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::paxlovid_revenue_fy2023",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "tsla_fy2025_001",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "tsla_fy2025_002",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "tsla_fy2025_003",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV7_invalid_status_binding_consistency",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "tsla_fy2025_004",
+      "raw_status": "MISSING",
+      "reasons": [
+        "unknown_slot::1",
+        "empty_fact_binding::1",
+        "unknown_missing_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "tsla_fy2025_005",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [],
+      "final_status": "BOUND",
+      "question_id": "tsla_fy2025_006",
+      "raw_status": "BOUND",
+      "reasons": [],
+      "validator_pass": true
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "tsla_fy2025_007",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "unknown_slot::slot_2",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [],
+      "final_status": "MISSING",
+      "question_id": "tsla_fy2025_008",
+      "raw_status": "MISSING",
+      "reasons": [],
+      "validator_pass": true
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV7_invalid_status_binding_consistency",
+        "BV1_unknown_slot_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "tsla_fy2025_009",
+      "raw_status": "MISSING",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "empty_fact_binding::slot_1",
+        "unknown_missing_slot"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "v_fy2025_001",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "v_fy2025_002",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "v_fy2025_003",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "v_fy2025_004",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [],
+      "final_status": "MISSING",
+      "question_id": "v_fy2025_005",
+      "raw_status": "MISSING",
+      "reasons": [],
+      "validator_pass": true
+    },
+    {
+      "categories": [
+        "BV2_unknown_fact_id",
+        "BV2_unknown_fact_id"
+      ],
+      "final_status": "INVALID",
+      "question_id": "v_fy2025_006",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_fact:],",
+        "unknown_fact:]"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "v_fy2025_007",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_slot::2",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    },
+    {
+      "categories": [],
+      "final_status": "MISSING",
+      "question_id": "v_fy2025_008",
+      "raw_status": "MISSING",
+      "reasons": [],
+      "validator_pass": true
+    },
+    {
+      "categories": [
+        "BV1_unknown_slot_id",
+        "BV10_cardinality_violation"
+      ],
+      "final_status": "INVALID",
+      "question_id": "v_fy2025_009",
+      "raw_status": "BOUND",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ],
+      "validator_pass": false
+    }
+  ],
+  "slot_status": {
+    "AMBIGUOUS": 11,
+    "BOUND": 5,
+    "INVALID": 75,
+    "MISSING": 21
+  },
+  "status_matrix": {
+    "AMBIGUOUS": {
+      "schema_valid": 9,
+      "validator_fail": 9,
+      "validator_pass": 0
+    },
+    "BOUND": {
+      "schema_valid": 43,
+      "validator_fail": 41,
+      "validator_pass": 2
+    },
+    "MISSING": {
+      "schema_valid": 20,
+      "validator_fail": 12,
+      "validator_pass": 8
+    }
+  },
+  "validator_semantic_leakage": false,
+  "validator_source_tokens_found": []
+}

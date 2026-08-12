@@ -1,0 +1,671 @@
+{
+  "failed": 62,
+  "passed": 10,
+  "rows": [
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "aapl_fy2025_001",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "aapl_fy2025_002",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_ambiguous_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "aapl_fy2025_003",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "aapl_fy2025_004",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "aapl_fy2025_005",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "aapl_fy2025_006",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "unknown_slot::slot_2",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "aapl_fy2025_007",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_slot::2",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": true,
+      "final_status": "MISSING",
+      "question_id": "aapl_fy2025_008",
+      "reasons": []
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "aapl_fy2025_009",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "jpm_fy2025_001",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_ambiguous_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "jpm_fy2025_002",
+      "reasons": [
+        "unknown_slot::1",
+        "empty_fact_binding::1",
+        "unknown_missing_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "jpm_fy2025_003",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "jpm_fy2025_004",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "empty_fact_binding::slot_1",
+        "unknown_missing_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "jpm_fy2025_005",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "empty_fact_binding::slot_1",
+        "unknown_missing_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "jpm_fy2025_006",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_slot::2",
+        "unknown_ambiguous_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "jpm_fy2025_007",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "empty_fact_binding::slot_1",
+        "unknown_slot::slot_2",
+        "empty_fact_binding::slot_2",
+        "unknown_missing_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": true,
+      "final_status": "MISSING",
+      "question_id": "jpm_fy2025_008",
+      "reasons": []
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "jpm_fy2025_009",
+      "reasons": [
+        "unknown_slot::1",
+        "empty_fact_binding::1",
+        "unknown_missing_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "ko_fy2025_001",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "unknown_ambiguous_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "ko_fy2025_002",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_ambiguous_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "ko_fy2025_003",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "ko_fy2025_004",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_ambiguous_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "ko_fy2025_005",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "unknown_ambiguous_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "ko_fy2025_006",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "unknown_slot::slot_2",
+        "unknown_ambiguous_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "ko_fy2025_007",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_slot::2",
+        "duplicate_fact_across_slots",
+        "unknown_ambiguous_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": true,
+      "final_status": "MISSING",
+      "question_id": "ko_fy2025_008",
+      "reasons": []
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "ko_fy2025_009",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_ambiguous_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "msft_fy2025_001",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "msft_fy2025_002",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "msft_fy2025_003",
+      "reasons": [
+        "unknown_slot::1",
+        "empty_fact_binding::1",
+        "unknown_missing_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": true,
+      "final_status": "MISSING",
+      "question_id": "msft_fy2025_004",
+      "reasons": []
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "msft_fy2025_005",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "unknown_ambiguous_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "msft_fy2025_006",
+      "reasons": [
+        "unknown_slot::rev_fy2025",
+        "unknown_slot::rev_fy2024",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "msft_fy2025_007",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "unknown_slot::slot_2",
+        "unknown_fact::",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": true,
+      "final_status": "MISSING",
+      "question_id": "msft_fy2025_008",
+      "reasons": []
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "msft_fy2025_009",
+      "reasons": [
+        "unknown_slot::1",
+        "empty_fact_binding::1",
+        "unknown_missing_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "nvda_fy2025_001",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": true,
+      "final_status": "BOUND",
+      "question_id": "nvda_fy2025_002",
+      "reasons": []
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "nvda_fy2025_003",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": true,
+      "final_status": "BOUND",
+      "question_id": "nvda_fy2025_004",
+      "reasons": []
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "nvda_fy2025_005",
+      "reasons": [
+        "unknown_slot::automotive_revenue_fy2025",
+        "unknown_fact::1ddf3f61bafe730d901064e5ccfc91622e014724644cad8370d322b3c9316810",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "nvda_fy2025_006",
+      "reasons": [
+        "unknown_fact:],,,",
+        "unknown_slot:: [,,] } }```json{  ",
+        "empty_fact_binding:: [,,] } }```json{  ",
+        "unknown_slot: : [   ]} ```The user wants me to bind the required slots for a financial calculation question. The question asks for the year-over-year growth rate of total revenue from FY2024 to FY2025. The required slots are `rev_fy2025` (current period, total revenue) and `rev_fy2024` (base period, total revenue). I need to find the fact IDs corresponding to these metrics and periods in the provided packet. For `rev_fy2025`, I look for facts with normalized_metric ",
+        "unknown_fact:],",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "nvda_fy2025_007",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "unknown_slot::slot_2",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "nvda_fy2025_008",
+      "reasons": [
+        "unknown_slot::1",
+        "empty_fact_binding::1",
+        "unknown_missing_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "nvda_fy2025_009",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_001",
+      "reasons": [
+        "unknown_slot::total_revenues_fy2024",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_002",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_003",
+      "reasons": [
+        "unknown_slot::1",
+        "empty_fact_binding::1",
+        "unknown_missing_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_004",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_005",
+      "reasons": [
+        "unknown_slot::1",
+        "empty_fact_binding::1",
+        "unknown_missing_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_006",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_slot::2",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_007",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_slot::2",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_008",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "empty_fact_binding::slot_1",
+        "unknown_missing_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "pfe_fy2024_009",
+      "reasons": [
+        "unknown_slot::paxlovid_revenue_fy2023",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "tsla_fy2025_001",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "tsla_fy2025_002",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "tsla_fy2025_003",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "bound_slot_cardinality_mismatch",
+        "bound_fact_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "tsla_fy2025_004",
+      "reasons": [
+        "unknown_slot::1",
+        "empty_fact_binding::1",
+        "unknown_missing_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "tsla_fy2025_005",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "tsla_fy2025_006",
+      "reasons": [
+        "unknown_slot::rev_fy2025",
+        "unknown_slot::rev_fy2024",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "tsla_fy2025_007",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "unknown_slot::slot_2",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": true,
+      "final_status": "MISSING",
+      "question_id": "tsla_fy2025_008",
+      "reasons": []
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "tsla_fy2025_009",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "empty_fact_binding::slot_1",
+        "unknown_missing_slot"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "v_fy2025_001",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "v_fy2025_002",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "v_fy2025_003",
+      "reasons": [
+        "unknown_slot::slot_1",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "v_fy2025_004",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": true,
+      "final_status": "MISSING",
+      "question_id": "v_fy2025_005",
+      "reasons": []
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "v_fy2025_006",
+      "reasons": [
+        "unknown_fact:],",
+        "unknown_fact:]"
+      ]
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "v_fy2025_007",
+      "reasons": [
+        "unknown_slot::1",
+        "unknown_slot::2",
+        "bound_slot_cardinality_mismatch"
+      ]
+    },
+    {
+      "binding_validator_pass": true,
+      "final_status": "MISSING",
+      "question_id": "v_fy2025_008",
+      "reasons": []
+    },
+    {
+      "binding_validator_pass": false,
+      "final_status": "INVALID",
+      "question_id": "v_fy2025_009",
+      "reasons": [
+        "unknown_slot::1",
+        "bound_slot_cardinality_mismatch"
+      ]
+    }
+  ]
+}

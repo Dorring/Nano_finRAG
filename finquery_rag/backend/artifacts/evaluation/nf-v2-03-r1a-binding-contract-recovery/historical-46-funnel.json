@@ -1,0 +1,798 @@
+{
+  "D0_total": 46,
+  "D1_provenance_supply": 42,
+  "D2_gold_source_admitted": 38,
+  "D3_gold_source_fact": 21,
+  "D4_metric_compatible": 5,
+  "D5_period_compatible": 3,
+  "D6_strict_bindable": 3,
+  "denominator": 46,
+  "first_loss_counts": {
+    "D1_provenance_supply": 4,
+    "D2_gold_source_admitted": 5,
+    "D3_gold_source_fact": 16,
+    "D4_metric_compatible": 16,
+    "D5_period_compatible": 2
+  },
+  "rows": [
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 24,
+      "first_loss_stage": "D3_gold_source_fact",
+      "gold_source_keys": [
+        "candidate:v1:f06ee04f963d52481ef27a335b7a6c09674546d3ab590a90c2a4a033f8ea34d8"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "aapl_fy2025_003",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 16,
+      "first_loss_stage": "D4_metric_compatible",
+      "gold_source_keys": [
+        "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "jpm_fy2025_001",
+      "source_fact_count": 2
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 6,
+      "first_loss_stage": "D4_metric_compatible",
+      "gold_source_keys": [
+        "candidate:v1:d822718dbec99a61ac7b4c914ac8b09a7bf97aa5ece318730b7c97c26821848e"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "jpm_fy2025_002",
+      "source_fact_count": 2
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": true,
+      "d5_period_compatible": true,
+      "d6_strict_bindable": true,
+      "fact_count": 30,
+      "first_loss_stage": null,
+      "gold_source_keys": [
+        "candidate:v1:b5494e22a29663edc6ff9f1ce1b126c4c9f32d6933a1479b696a5c93a3e45135"
+      ],
+      "metric_fact_count": 3,
+      "period_fact_count": 1,
+      "question_id": "jpm_fy2025_003",
+      "source_fact_count": 3
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 24,
+      "first_loss_stage": "D4_metric_compatible",
+      "gold_source_keys": [
+        "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "jpm_fy2025_004",
+      "source_fact_count": 3
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 15,
+      "first_loss_stage": "D3_gold_source_fact",
+      "gold_source_keys": [
+        "candidate:v1:a9325e992895567a4c2721f66a3bc3c24b663ddeade06999ff5c87755159932c"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "jpm_fy2025_005",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 12,
+      "first_loss_stage": "D4_metric_compatible",
+      "gold_source_keys": [
+        "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8",
+        "candidate:v1:d822718dbec99a61ac7b4c914ac8b09a7bf97aa5ece318730b7c97c26821848e"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "jpm_fy2025_007",
+      "source_fact_count": 2
+    },
+    {
+      "d1_provenance_supply": false,
+      "d2_gold_source_admitted": false,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 0,
+      "first_loss_stage": "D1_provenance_supply",
+      "gold_source_keys": [],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "jpm_fy2025_008",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 36,
+      "first_loss_stage": "D4_metric_compatible",
+      "gold_source_keys": [
+        "candidate:v1:7e3c17877264d4f789172d51d1d6582c19140be8bb8483755f172fa37e26f8e8"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "jpm_fy2025_009",
+      "source_fact_count": 3
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 15,
+      "first_loss_stage": "D3_gold_source_fact",
+      "gold_source_keys": [
+        "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "ko_fy2025_001",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 13,
+      "first_loss_stage": "D3_gold_source_fact",
+      "gold_source_keys": [
+        "candidate:v1:5a25663abb16c0b92c93f62a32e2decdd60aad7b65e2ce937ace826a22a136c9"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "ko_fy2025_002",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 15,
+      "first_loss_stage": "D4_metric_compatible",
+      "gold_source_keys": [
+        "candidate:v1:1b48a73c57594dcf8a511dbd4d5aa5f5cd6c3bc4657d5cafb6ea00b67adc8572"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "ko_fy2025_003",
+      "source_fact_count": 3
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 17,
+      "first_loss_stage": "D3_gold_source_fact",
+      "gold_source_keys": [
+        "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "ko_fy2025_004",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 17,
+      "first_loss_stage": "D3_gold_source_fact",
+      "gold_source_keys": [
+        "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "ko_fy2025_005",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": false,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 25,
+      "first_loss_stage": "D2_gold_source_admitted",
+      "gold_source_keys": [
+        "candidate:v1:2615a8131b1b84e1f788cfb9c9292fa6b20c9688723ff3bc555f21d4590d95d8"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "ko_fy2025_009",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 17,
+      "first_loss_stage": "D4_metric_compatible",
+      "gold_source_keys": [
+        "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "msft_fy2025_001",
+      "source_fact_count": 3
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 10,
+      "first_loss_stage": "D3_gold_source_fact",
+      "gold_source_keys": [
+        "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "msft_fy2025_002",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 8,
+      "first_loss_stage": "D4_metric_compatible",
+      "gold_source_keys": [
+        "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "msft_fy2025_003",
+      "source_fact_count": 3
+    },
+    {
+      "d1_provenance_supply": false,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 0,
+      "first_loss_stage": "D1_provenance_supply",
+      "gold_source_keys": [
+        "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "msft_fy2025_004",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 7,
+      "first_loss_stage": "D3_gold_source_fact",
+      "gold_source_keys": [
+        "candidate:v1:a1e0f59ea8811d2b02a4cf1aec1725c68951b88e172c89daa5d652c0e031ffa3"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "msft_fy2025_005",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": false,
+      "d2_gold_source_admitted": false,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 0,
+      "first_loss_stage": "D1_provenance_supply",
+      "gold_source_keys": [],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "msft_fy2025_008",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 24,
+      "first_loss_stage": "D3_gold_source_fact",
+      "gold_source_keys": [
+        "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "msft_fy2025_009",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": false,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 10,
+      "first_loss_stage": "D2_gold_source_admitted",
+      "gold_source_keys": [
+        "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "nvda_fy2025_001",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 5,
+      "first_loss_stage": "D4_metric_compatible",
+      "gold_source_keys": [
+        "candidate:v1:c03a713affc5c00b9d7416a69608d071305fa17362b7668a963dc1f2b5cc8697"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "nvda_fy2025_002",
+      "source_fact_count": 3
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 4,
+      "first_loss_stage": "D4_metric_compatible",
+      "gold_source_keys": [
+        "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "nvda_fy2025_003",
+      "source_fact_count": 2
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 3,
+      "first_loss_stage": "D4_metric_compatible",
+      "gold_source_keys": [
+        "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "nvda_fy2025_004",
+      "source_fact_count": 3
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 3,
+      "first_loss_stage": "D4_metric_compatible",
+      "gold_source_keys": [
+        "candidate:v1:84ecbba7da14d18cf2bb3b171d9bff27fa45ad1c75d4ae77545b1b0046f0b92e"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "nvda_fy2025_005",
+      "source_fact_count": 3
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 9,
+      "first_loss_stage": "D4_metric_compatible",
+      "gold_source_keys": [
+        "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf",
+        "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "nvda_fy2025_007",
+      "source_fact_count": 5
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": false,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 3,
+      "first_loss_stage": "D2_gold_source_admitted",
+      "gold_source_keys": [],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "nvda_fy2025_008",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 22,
+      "first_loss_stage": "D4_metric_compatible",
+      "gold_source_keys": [
+        "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "nvda_fy2025_009",
+      "source_fact_count": 3
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": true,
+      "d5_period_compatible": true,
+      "d6_strict_bindable": true,
+      "fact_count": 7,
+      "first_loss_stage": null,
+      "gold_source_keys": [
+        "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827"
+      ],
+      "metric_fact_count": 3,
+      "period_fact_count": 1,
+      "question_id": "pfe_fy2024_001",
+      "source_fact_count": 3
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 28,
+      "first_loss_stage": "D3_gold_source_fact",
+      "gold_source_keys": [
+        "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "pfe_fy2024_002",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": false,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 23,
+      "first_loss_stage": "D2_gold_source_admitted",
+      "gold_source_keys": [
+        "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "pfe_fy2024_003",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 11,
+      "first_loss_stage": "D3_gold_source_fact",
+      "gold_source_keys": [
+        "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "pfe_fy2024_004",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 8,
+      "first_loss_stage": "D3_gold_source_fact",
+      "gold_source_keys": [
+        "candidate:v1:0427b45e38b29ec2c20451a279afbba12337ea80e422f92087e585461b33e74e"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "pfe_fy2024_005",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 20,
+      "first_loss_stage": "D4_metric_compatible",
+      "gold_source_keys": [
+        "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2",
+        "candidate:v1:4886dcb9c5a4bd430f3888bc77cf033b0745509bd1bc968682ea31caef7b5c56"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "pfe_fy2024_007",
+      "source_fact_count": 3
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": false,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 26,
+      "first_loss_stage": "D2_gold_source_admitted",
+      "gold_source_keys": [
+        "candidate:v1:03405ca6bbfd7170021326c60cb007627c1c42714f2b8b364b3a53d366c261b2"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "pfe_fy2024_009",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 21,
+      "first_loss_stage": "D3_gold_source_fact",
+      "gold_source_keys": [
+        "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "tsla_fy2025_001",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 13,
+      "first_loss_stage": "D3_gold_source_fact",
+      "gold_source_keys": [
+        "candidate:v1:764e51106a705bd6f16af004eeb7f0126c4209a0c62a5319d13153dc95987982"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "tsla_fy2025_002",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 15,
+      "first_loss_stage": "D3_gold_source_fact",
+      "gold_source_keys": [
+        "candidate:v1:7fcc2dc3de8832dfab1fe0b8a08e25a303a996470fa598765b1e08144018e9f7"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "tsla_fy2025_003",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": true,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 17,
+      "first_loss_stage": "D5_period_compatible",
+      "gold_source_keys": [
+        "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52"
+      ],
+      "metric_fact_count": 1,
+      "period_fact_count": 0,
+      "question_id": "tsla_fy2025_004",
+      "source_fact_count": 1
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 7,
+      "first_loss_stage": "D3_gold_source_fact",
+      "gold_source_keys": [
+        "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "tsla_fy2025_005",
+      "source_fact_count": 0
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": true,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 26,
+      "first_loss_stage": "D5_period_compatible",
+      "gold_source_keys": [
+        "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52"
+      ],
+      "metric_fact_count": 1,
+      "period_fact_count": 0,
+      "question_id": "tsla_fy2025_009",
+      "source_fact_count": 1
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": true,
+      "d5_period_compatible": true,
+      "d6_strict_bindable": true,
+      "fact_count": 5,
+      "first_loss_stage": null,
+      "gold_source_keys": [
+        "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83"
+      ],
+      "metric_fact_count": 3,
+      "period_fact_count": 1,
+      "question_id": "v_fy2025_001",
+      "source_fact_count": 3
+    },
+    {
+      "d1_provenance_supply": true,
+      "d2_gold_source_admitted": true,
+      "d3_gold_source_fact": true,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 4,
+      "first_loss_stage": "D4_metric_compatible",
+      "gold_source_keys": [
+        "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "v_fy2025_003",
+      "source_fact_count": 3
+    },
+    {
+      "d1_provenance_supply": false,
+      "d2_gold_source_admitted": false,
+      "d3_gold_source_fact": false,
+      "d4_metric_compatible": false,
+      "d5_period_compatible": false,
+      "d6_strict_bindable": false,
+      "fact_count": 0,
+      "first_loss_stage": "D1_provenance_supply",
+      "gold_source_keys": [
+        "candidate:v1:4c11889fb53c1b1a3194a2e6518b9d94a910cfa71ea99f8e25c4ef206e06613b"
+      ],
+      "metric_fact_count": 0,
+      "period_fact_count": 0,
+      "question_id": "v_fy2025_005",
+      "source_fact_count": 0
+    }
+  ]
+}

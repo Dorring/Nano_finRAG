@@ -1,0 +1,18 @@
+{
+  "attempt": 4,
+  "base_commit": "ead160d",
+  "binder_prompt_sha256": "e8b37af8b9b454c5be66b1da3b19a87d0318f53eb834586b983350169f02b4dc",
+  "binder_schema_sha256": "dd2434b73e406898acf421ef211a5f2e52f29577de8afe2c38cc97b8d781f1c5",
+  "calculator_calls": 0,
+  "gate": "NF-V2-03-R1A",
+  "generator_calls": 0,
+  "gold_reads_before_prediction_seal": 0,
+  "prediction_sha256": "59ef754ddbdb64514cd637c52e1ae90e13c59cbc84173af238c9be892f08137a",
+  "predictions_written": 72,
+  "questions_expected": 72,
+  "reranker_calls": 0,
+  "retrieval_calls": 0,
+  "sealed": true,
+  "sealed_before_gold": true,
+  "transport_resilience_contract_sha256": "97b9dd3924c80666d3f444f0f6224e88e7fe67056d33f4c015599f75615d5275"
+}
