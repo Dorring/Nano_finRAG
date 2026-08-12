@@ -1,0 +1,18 @@
+{
+  "global_plus": {
+    "calculation": "1/12",
+    "direct": "8/21"
+  },
+  "pairwise_plus": {
+    "calculation": "1/12",
+    "direct": "7/21",
+    "indistinguishable_abstention": "2/6",
+    "unbindable_false_binding": "6/7"
+  },
+  "slotwise_plus": {
+    "calculation": "5/12",
+    "direct": "9/21",
+    "indistinguishable_abstention": "0/6",
+    "unbindable_false_binding": "6/7"
+  }
+}

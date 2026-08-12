@@ -1,0 +1,25 @@
+{
+  "average_latency_ms": 6781.795794871795,
+  "input_tokens": 597493,
+  "max_latency_ms": 19125.641,
+  "output_tokens": 12429,
+  "p50_latency_ms": 5071.21,
+  "p95_latency_ms": 18069.063,
+  "provider_calls": 39,
+  "provider_calls_per_query": 1,
+  "slotwise_r5_same_cohort": {
+    "average_input_tokens": 15327.333333333334,
+    "input_tokens": 597766,
+    "max_input_tokens": 44459,
+    "p50_input_tokens": 12768,
+    "p95_input_tokens": 37231.0,
+    "provider_calls": 39
+  },
+  "token_delta_pairwise_minus_slotwise": {
+    "max_input_tokens": -7,
+    "mean_input_tokens": -7.0,
+    "p50_input_tokens": -7,
+    "p95_input_tokens": -7.0,
+    "total_input_tokens": -273
+  }
+}

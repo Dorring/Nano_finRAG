@@ -1,0 +1,10 @@
+{
+  "formulation": "batched_pairwise_compatibility_v1",
+  "gate": "NF-V2-03-R5.1",
+  "gold_reads_before_prediction_seal": 0,
+  "model": "qwen3.7-plus",
+  "prediction_count": 39,
+  "prediction_sha256": "02981b465d43edf691eebbe138d4d0c38dfc16b1981ce74c125ef638d43a8f88",
+  "sealed": true,
+  "sealed_before_gold": true
+}

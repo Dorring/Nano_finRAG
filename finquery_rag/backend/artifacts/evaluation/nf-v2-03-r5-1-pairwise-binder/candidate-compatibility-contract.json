@@ -1,0 +1,14 @@
+{
+  "additional_properties": false,
+  "dto": "CandidateCompatibilityDTOv1",
+  "formulation": "batched_pairwise_compatibility_v1",
+  "labels": [
+    "MATCH",
+    "REJECT",
+    "INDETERMINATE"
+  ],
+  "model": "qwen3.7-plus",
+  "one_provider_request_per_query": true,
+  "query_level_status": false,
+  "shared_facts": true
+}

@@ -1,0 +1,7 @@
+{
+  "all_reject": "MISSING",
+  "exactly_one_match": "BOUND",
+  "multiple_matches": "AMBIGUOUS",
+  "semantic_heuristics_after_output": false,
+  "zero_match_with_indeterminate": "AMBIGUOUS"
+}

@@ -1,0 +1,559 @@
+{
+  "category_counts": {
+    "SW0_correct": 17,
+    "SW1_selected_nearest_metric_but_wrong_scope": 1,
+    "SW2_selected_wrong_period": 0,
+    "SW3_selected_wrong_statement": 13,
+    "SW4_selected_parent_or_child_metric": 6,
+    "SW5_selected_lexically_similar_fact": 3,
+    "SW6_selected_one_of_indistinguishable_candidates": 6,
+    "SW7_failed_to_select_unique_best_fact": 0,
+    "SW8_missing_despite_unique_fact": 3,
+    "SW9_other": 0
+  },
+  "cohorts": {
+    "A_direct_visible_unique": 21,
+    "B_calculation_visible_unique": 6,
+    "C_indistinguishable": 6,
+    "D_unbindable_safety": 7
+  },
+  "model_calls": 0,
+  "rows": [
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW3_selected_wrong_statement",
+      "question_id": "aapl_fy2025_001",
+      "selected_handles": [
+        "F03"
+      ],
+      "slot_id": "slot_1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW4_selected_parent_or_child_metric",
+      "question_id": "aapl_fy2025_002",
+      "selected_handles": [
+        "F01"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW0_correct",
+      "question_id": "aapl_fy2025_004",
+      "selected_handles": [
+        "F03",
+        "F05"
+      ],
+      "slot_id": "1",
+      "status": "AMBIGUOUS",
+      "strict_correct": true
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW0_correct",
+      "question_id": "aapl_fy2025_009",
+      "selected_handles": [
+        "F02"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW3_selected_wrong_statement",
+      "question_id": "jpm_fy2025_001",
+      "selected_handles": [
+        "F01"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW0_correct",
+      "question_id": "jpm_fy2025_002",
+      "selected_handles": [
+        "F01"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW3_selected_wrong_statement",
+      "question_id": "jpm_fy2025_003",
+      "selected_handles": [
+        "F01"
+      ],
+      "slot_id": "slot_1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW8_missing_despite_unique_fact",
+      "question_id": "jpm_fy2025_004",
+      "selected_handles": [],
+      "slot_id": "slot_1",
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW8_missing_despite_unique_fact",
+      "question_id": "jpm_fy2025_009",
+      "selected_handles": [],
+      "slot_id": "1",
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW0_correct",
+      "question_id": "ko_fy2025_001",
+      "selected_handles": [
+        "F02",
+        "F05",
+        "F07",
+        "F11"
+      ],
+      "slot_id": "slot_1",
+      "status": "AMBIGUOUS",
+      "strict_correct": true
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW0_correct",
+      "question_id": "ko_fy2025_002",
+      "selected_handles": [
+        "F01"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW0_correct",
+      "question_id": "ko_fy2025_003",
+      "selected_handles": [
+        "F02"
+      ],
+      "slot_id": "slot_1",
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW4_selected_parent_or_child_metric",
+      "question_id": "msft_fy2025_001",
+      "selected_handles": [
+        "F03"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW8_missing_despite_unique_fact",
+      "question_id": "msft_fy2025_003",
+      "selected_handles": [],
+      "slot_id": "1",
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW0_correct",
+      "question_id": "nvda_fy2025_002",
+      "selected_handles": [
+        "F02"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW0_correct",
+      "question_id": "nvda_fy2025_003",
+      "selected_handles": [
+        "F01"
+      ],
+      "slot_id": "slot_1",
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW0_correct",
+      "question_id": "nvda_fy2025_004",
+      "selected_handles": [
+        "F02"
+      ],
+      "slot_id": "data_center_revenue_fy2025",
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW0_correct",
+      "question_id": "nvda_fy2025_005",
+      "selected_handles": [
+        "F01"
+      ],
+      "slot_id": "automotive_revenue_fy2025",
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW0_correct",
+      "question_id": "nvda_fy2025_009",
+      "selected_handles": [
+        "F03"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW3_selected_wrong_statement",
+      "question_id": "pfe_fy2024_001",
+      "selected_handles": [
+        "F02",
+        "F04"
+      ],
+      "slot_id": "total_revenues_fy2024",
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "cohort": "A_direct_visible_unique",
+      "primary_category": "SW3_selected_wrong_statement",
+      "question_id": "tsla_fy2025_001",
+      "selected_handles": [
+        "F03"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "B_calculation_visible_unique",
+      "primary_category": "SW0_correct",
+      "question_id": "aapl_fy2025_006",
+      "selected_handles": [
+        "F03"
+      ],
+      "slot_id": "slot_1",
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "cohort": "B_calculation_visible_unique",
+      "primary_category": "SW0_correct",
+      "question_id": "aapl_fy2025_006",
+      "selected_handles": [
+        "F01"
+      ],
+      "slot_id": "slot_2",
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "cohort": "B_calculation_visible_unique",
+      "primary_category": "SW3_selected_wrong_statement",
+      "question_id": "jpm_fy2025_006",
+      "selected_handles": [
+        "F01"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "B_calculation_visible_unique",
+      "primary_category": "SW3_selected_wrong_statement",
+      "question_id": "jpm_fy2025_006",
+      "selected_handles": [
+        "F02"
+      ],
+      "slot_id": "2",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "B_calculation_visible_unique",
+      "primary_category": "SW3_selected_wrong_statement",
+      "question_id": "ko_fy2025_006",
+      "selected_handles": [
+        "F02"
+      ],
+      "slot_id": "slot_1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "B_calculation_visible_unique",
+      "primary_category": "SW3_selected_wrong_statement",
+      "question_id": "ko_fy2025_006",
+      "selected_handles": [
+        "F01"
+      ],
+      "slot_id": "slot_2",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "B_calculation_visible_unique",
+      "primary_category": "SW0_correct",
+      "question_id": "pfe_fy2024_006",
+      "selected_handles": [
+        "F01"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "cohort": "B_calculation_visible_unique",
+      "primary_category": "SW0_correct",
+      "question_id": "pfe_fy2024_006",
+      "selected_handles": [
+        "F03"
+      ],
+      "slot_id": "2",
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "cohort": "B_calculation_visible_unique",
+      "primary_category": "SW3_selected_wrong_statement",
+      "question_id": "tsla_fy2025_006",
+      "selected_handles": [
+        "F03"
+      ],
+      "slot_id": "rev_fy2025",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "B_calculation_visible_unique",
+      "primary_category": "SW3_selected_wrong_statement",
+      "question_id": "tsla_fy2025_006",
+      "selected_handles": [
+        "F02"
+      ],
+      "slot_id": "rev_fy2024",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "B_calculation_visible_unique",
+      "primary_category": "SW0_correct",
+      "question_id": "v_fy2025_006",
+      "selected_handles": [
+        "F02"
+      ],
+      "slot_id": "s1",
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "cohort": "B_calculation_visible_unique",
+      "primary_category": "SW3_selected_wrong_statement",
+      "question_id": "v_fy2025_006",
+      "selected_handles": [
+        "F04"
+      ],
+      "slot_id": "s2",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "C_indistinguishable",
+      "primary_category": "SW6_selected_one_of_indistinguishable_candidates",
+      "question_id": "aapl_fy2025_003",
+      "selected_handles": [
+        "F03"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "C_indistinguishable",
+      "primary_category": "SW6_selected_one_of_indistinguishable_candidates",
+      "question_id": "v_fy2025_001",
+      "selected_handles": [
+        "F01"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "C_indistinguishable",
+      "primary_category": "SW6_selected_one_of_indistinguishable_candidates",
+      "question_id": "v_fy2025_002",
+      "selected_handles": [
+        "F01"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "C_indistinguishable",
+      "primary_category": "SW6_selected_one_of_indistinguishable_candidates",
+      "question_id": "v_fy2025_003",
+      "selected_handles": [
+        "F01"
+      ],
+      "slot_id": "slot_1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "C_indistinguishable",
+      "primary_category": "SW6_selected_one_of_indistinguishable_candidates",
+      "question_id": "v_fy2025_004",
+      "selected_handles": [
+        "F02"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "C_indistinguishable",
+      "primary_category": "SW6_selected_one_of_indistinguishable_candidates",
+      "question_id": "v_fy2025_009",
+      "selected_handles": [
+        "F01"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "D_unbindable_safety",
+      "primary_category": "SW0_correct",
+      "question_id": "jpm_fy2025_005",
+      "selected_handles": [],
+      "slot_id": "slot_1",
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "cohort": "D_unbindable_safety",
+      "primary_category": "SW4_selected_parent_or_child_metric",
+      "question_id": "msft_fy2025_002",
+      "selected_handles": [
+        "F03"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "D_unbindable_safety",
+      "primary_category": "SW4_selected_parent_or_child_metric",
+      "question_id": "nvda_fy2025_007",
+      "selected_handles": [
+        "F02"
+      ],
+      "slot_id": "slot_1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "D_unbindable_safety",
+      "primary_category": "SW4_selected_parent_or_child_metric",
+      "question_id": "nvda_fy2025_007",
+      "selected_handles": [
+        "F04"
+      ],
+      "slot_id": "slot_2",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "D_unbindable_safety",
+      "primary_category": "SW5_selected_lexically_similar_fact",
+      "question_id": "pfe_fy2024_002",
+      "selected_handles": [
+        "F02"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "D_unbindable_safety",
+      "primary_category": "SW5_selected_lexically_similar_fact",
+      "question_id": "pfe_fy2024_004",
+      "selected_handles": [
+        "F01"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "D_unbindable_safety",
+      "primary_category": "SW1_selected_nearest_metric_but_wrong_scope",
+      "question_id": "v_fy2025_006",
+      "selected_handles": [
+        "F02"
+      ],
+      "slot_id": "s1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "D_unbindable_safety",
+      "primary_category": "SW3_selected_wrong_statement",
+      "question_id": "v_fy2025_006",
+      "selected_handles": [
+        "F04"
+      ],
+      "slot_id": "s2",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "D_unbindable_safety",
+      "primary_category": "SW4_selected_parent_or_child_metric",
+      "question_id": "v_fy2025_007",
+      "selected_handles": [
+        "F05"
+      ],
+      "slot_id": "1",
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "cohort": "D_unbindable_safety",
+      "primary_category": "SW5_selected_lexically_similar_fact",
+      "question_id": "v_fy2025_007",
+      "selected_handles": [
+        "F01"
+      ],
+      "slot_id": "2",
+      "status": "BOUND",
+      "strict_correct": false
+    }
+  ]
+}

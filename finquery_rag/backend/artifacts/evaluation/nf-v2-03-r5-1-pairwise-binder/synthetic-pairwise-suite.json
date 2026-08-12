@@ -1,0 +1,1540 @@
+{
+  "adapter_valid": 14,
+  "benchmark_questions_used": 0,
+  "binding_validator": 14,
+  "calculation_correct_slots": 12,
+  "calculation_groups_correct": 6,
+  "calculation_groups_total": 6,
+  "calculation_total_slots": 12,
+  "dto_valid": 14,
+  "formulation": "batched_pairwise_compatibility_v1",
+  "gate": "NF-V2-03-R5.1",
+  "indistinguishable_safe": 2,
+  "indistinguishable_total": 2,
+  "model": "qwen3.7-plus",
+  "pass": true,
+  "provider_calls": 14,
+  "provider_success": 14,
+  "rows": [
+    {
+      "actual": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "adapter_valid": true,
+      "ambiguous_slots": [],
+      "binder_model_status": "BOUND",
+      "binding": {
+        "ambiguous_slots": [],
+        "invalid_reasons": [],
+        "missing_slots": [],
+        "slot_bindings": {
+          "s1": [
+            "f01"
+          ]
+        },
+        "status": "BOUND"
+      },
+      "binding_schema_valid": true,
+      "binding_validator_pass": true,
+      "calculation_correct_slots": 0,
+      "calculation_total_slots": 0,
+      "dto_valid": true,
+      "expected": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "fact_count": 2,
+      "false_binding": false,
+      "final_binding_status": "BOUND",
+      "groups": [
+        "synthetic"
+      ],
+      "intent": "DIRECT_FACT",
+      "invalid_reasons": [],
+      "metadata": {
+        "errno": null,
+        "error": null,
+        "exception_cause_message": null,
+        "exception_cause_type": null,
+        "exception_chain": [],
+        "exception_type": null,
+        "finish_reason": "stop",
+        "http_status": null,
+        "input_tokens": 729,
+        "latency_ms": 2163.474,
+        "model": "qwen3.7-plus",
+        "model_role": "strong_general_llm",
+        "output_tokens": 39,
+        "provider": "bailian",
+        "provider_response_success": true,
+        "provider_role": "evidence_binder",
+        "raw_content_length": 71,
+        "reasoning_tokens": null,
+        "request_id": "chatcmpl-2702bb6d-6c25-9d21-9d22-aaf17a7e9615",
+        "structured_output_success": true,
+        "total_tokens": 768
+      },
+      "missing_slots": [],
+      "operation": null,
+      "pairwise_outcomes": {
+        "s1": {
+          "F01": "MATCH",
+          "F02": "REJECT"
+        }
+      },
+      "provider_response_success": true,
+      "question": "Select the supplied revenue fact.",
+      "question_id": "v2_syn_01",
+      "raw_response": "{\n  \"tasks\": {\n   \"s1\": {\n   \"F01\": \"MATCH\",\n   \"F02\": \"REJECT\"\n  }\n}\n}",
+      "required_slots": [
+        {
+          "metric": "revenue",
+          "period": "FY2026",
+          "role": "value",
+          "slot_id": "s1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "safe_indistinguishable": false,
+      "selected_fact_ids": [
+        "f01"
+      ],
+      "semantic_correct": true,
+      "skipped_no_fact_supply": false,
+      "slots_ambiguous": 0,
+      "slots_bound": 1,
+      "slots_missing": 0,
+      "slots_requested": 1,
+      "structured_output_success": true,
+      "tags": [],
+      "validation_reasons": []
+    },
+    {
+      "actual": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "adapter_valid": true,
+      "ambiguous_slots": [],
+      "binder_model_status": "BOUND",
+      "binding": {
+        "ambiguous_slots": [],
+        "invalid_reasons": [],
+        "missing_slots": [],
+        "slot_bindings": {
+          "s1": [
+            "f01"
+          ]
+        },
+        "status": "BOUND"
+      },
+      "binding_schema_valid": true,
+      "binding_validator_pass": true,
+      "calculation_correct_slots": 0,
+      "calculation_total_slots": 0,
+      "dto_valid": true,
+      "expected": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "fact_count": 2,
+      "false_binding": false,
+      "final_binding_status": "BOUND",
+      "groups": [
+        "synthetic"
+      ],
+      "intent": "DIRECT_FACT",
+      "invalid_reasons": [],
+      "metadata": {
+        "errno": null,
+        "error": null,
+        "exception_cause_message": null,
+        "exception_cause_type": null,
+        "exception_chain": [],
+        "exception_type": null,
+        "finish_reason": "stop",
+        "http_status": null,
+        "input_tokens": 743,
+        "latency_ms": 1530.473,
+        "model": "qwen3.7-plus",
+        "model_role": "strong_general_llm",
+        "output_tokens": 39,
+        "provider": "bailian",
+        "provider_response_success": true,
+        "provider_role": "evidence_binder",
+        "raw_content_length": 71,
+        "reasoning_tokens": null,
+        "request_id": "chatcmpl-eaad070e-aeaf-91b1-8d1f-0cdd4fed880f",
+        "structured_output_success": true,
+        "total_tokens": 782
+      },
+      "missing_slots": [],
+      "operation": null,
+      "pairwise_outcomes": {
+        "s1": {
+          "F01": "MATCH",
+          "F02": "REJECT"
+        }
+      },
+      "provider_response_success": true,
+      "question": "Select the operating income from the correct statement.",
+      "question_id": "v2_syn_02",
+      "raw_response": "{\n  \"tasks\": {\n   \"s1\": {\n   \"F01\": \"MATCH\",\n   \"F02\": \"REJECT\"\n  }\n}\n}",
+      "required_slots": [
+        {
+          "metric": "operating income",
+          "period": "FY2026",
+          "role": "value",
+          "slot_id": "s1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "safe_indistinguishable": false,
+      "selected_fact_ids": [
+        "f01"
+      ],
+      "semantic_correct": true,
+      "skipped_no_fact_supply": false,
+      "slots_ambiguous": 0,
+      "slots_bound": 1,
+      "slots_missing": 0,
+      "slots_requested": 1,
+      "structured_output_success": true,
+      "tags": [],
+      "validation_reasons": []
+    },
+    {
+      "actual": {
+        "s1": [
+          "F01",
+          "F02"
+        ]
+      },
+      "adapter_valid": true,
+      "ambiguous_slots": [
+        "s1"
+      ],
+      "binder_model_status": "AMBIGUOUS",
+      "binding": {
+        "ambiguous_slots": [
+          "s1"
+        ],
+        "invalid_reasons": [],
+        "missing_slots": [],
+        "slot_bindings": {
+          "s1": [
+            "f01",
+            "f02"
+          ]
+        },
+        "status": "AMBIGUOUS"
+      },
+      "binding_schema_valid": true,
+      "binding_validator_pass": true,
+      "calculation_correct_slots": 0,
+      "calculation_total_slots": 0,
+      "dto_valid": true,
+      "expected": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "fact_count": 2,
+      "false_binding": false,
+      "final_binding_status": "AMBIGUOUS",
+      "groups": [
+        "synthetic"
+      ],
+      "intent": "DIRECT_FACT",
+      "invalid_reasons": [],
+      "metadata": {
+        "errno": null,
+        "error": null,
+        "exception_cause_message": null,
+        "exception_cause_type": null,
+        "exception_chain": [],
+        "exception_type": null,
+        "finish_reason": "stop",
+        "http_status": null,
+        "input_tokens": 739,
+        "latency_ms": 1378.285,
+        "model": "qwen3.7-plus",
+        "model_role": "strong_general_llm",
+        "output_tokens": 39,
+        "provider": "bailian",
+        "provider_response_success": true,
+        "provider_role": "evidence_binder",
+        "raw_content_length": 73,
+        "reasoning_tokens": null,
+        "request_id": "chatcmpl-377ed121-1cf8-9d8e-b74d-e2fb643a21d8",
+        "structured_output_success": true,
+        "total_tokens": 778
+      },
+      "missing_slots": [],
+      "operation": null,
+      "pairwise_outcomes": {
+        "s1": {
+          "F01": "MATCH",
+          "F02": "MATCH"
+        }
+      },
+      "provider_response_success": true,
+      "question": "Select the regional row.",
+      "question_id": "v2_syn_03",
+      "raw_response": "{\n  \"tasks\": {\n   \"s1\": {\n   \"F01\": \"MATCH\",\n   \"F02\": \"MATCH\"\n   }\n  }\n}",
+      "required_slots": [
+        {
+          "metric": "revenue",
+          "period": "FY2026",
+          "role": "value",
+          "slot_id": "s1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "safe_indistinguishable": false,
+      "selected_fact_ids": [
+        "f01",
+        "f02"
+      ],
+      "semantic_correct": false,
+      "skipped_no_fact_supply": false,
+      "slots_ambiguous": 1,
+      "slots_bound": 1,
+      "slots_missing": 0,
+      "slots_requested": 1,
+      "structured_output_success": true,
+      "tags": [],
+      "validation_reasons": []
+    },
+    {
+      "actual": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "adapter_valid": true,
+      "ambiguous_slots": [],
+      "binder_model_status": "BOUND",
+      "binding": {
+        "ambiguous_slots": [],
+        "invalid_reasons": [],
+        "missing_slots": [],
+        "slot_bindings": {
+          "s1": [
+            "f01"
+          ]
+        },
+        "status": "BOUND"
+      },
+      "binding_schema_valid": true,
+      "binding_validator_pass": true,
+      "calculation_correct_slots": 0,
+      "calculation_total_slots": 0,
+      "dto_valid": true,
+      "expected": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "fact_count": 2,
+      "false_binding": false,
+      "final_binding_status": "BOUND",
+      "groups": [
+        "synthetic"
+      ],
+      "intent": "DIRECT_FACT",
+      "invalid_reasons": [],
+      "metadata": {
+        "errno": null,
+        "error": null,
+        "exception_cause_message": null,
+        "exception_cause_type": null,
+        "exception_chain": [],
+        "exception_type": null,
+        "finish_reason": "stop",
+        "http_status": null,
+        "input_tokens": 737,
+        "latency_ms": 1898.167,
+        "model": "qwen3.7-plus",
+        "model_role": "strong_general_llm",
+        "output_tokens": 39,
+        "provider": "bailian",
+        "provider_response_success": true,
+        "provider_role": "evidence_binder",
+        "raw_content_length": 71,
+        "reasoning_tokens": null,
+        "request_id": "chatcmpl-316d38a8-7df2-9cd0-93cf-a34256992091",
+        "structured_output_success": true,
+        "total_tokens": 776
+      },
+      "missing_slots": [],
+      "operation": null,
+      "pairwise_outcomes": {
+        "s1": {
+          "F01": "MATCH",
+          "F02": "REJECT"
+        }
+      },
+      "provider_response_success": true,
+      "question": "Select the fact under the current header.",
+      "question_id": "v2_syn_04",
+      "raw_response": "{\n  \"tasks\": {\n   \"s1\": {\n   \"F01\": \"MATCH\",\n   \"F02\": \"REJECT\"\n  }\n}\n}",
+      "required_slots": [
+        {
+          "metric": "units",
+          "period": "FY2026",
+          "role": "value",
+          "slot_id": "s1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "safe_indistinguishable": false,
+      "selected_fact_ids": [
+        "f01"
+      ],
+      "semantic_correct": true,
+      "skipped_no_fact_supply": false,
+      "slots_ambiguous": 0,
+      "slots_bound": 1,
+      "slots_missing": 0,
+      "slots_requested": 1,
+      "structured_output_success": true,
+      "tags": [],
+      "validation_reasons": []
+    },
+    {
+      "actual": {
+        "current": [
+          "F01"
+        ],
+        "prior": [
+          "F02"
+        ]
+      },
+      "adapter_valid": true,
+      "ambiguous_slots": [],
+      "binder_model_status": "BOUND",
+      "binding": {
+        "ambiguous_slots": [],
+        "invalid_reasons": [],
+        "missing_slots": [],
+        "slot_bindings": {
+          "current": [
+            "f01"
+          ],
+          "prior": [
+            "f02"
+          ]
+        },
+        "status": "BOUND"
+      },
+      "binding_schema_valid": true,
+      "binding_validator_pass": true,
+      "calculation_correct_slots": 2,
+      "calculation_total_slots": 2,
+      "dto_valid": true,
+      "expected": {
+        "current": [
+          "F01"
+        ],
+        "prior": [
+          "F02"
+        ]
+      },
+      "fact_count": 2,
+      "false_binding": false,
+      "final_binding_status": "BOUND",
+      "groups": [
+        "synthetic"
+      ],
+      "intent": "CALCULATION",
+      "invalid_reasons": [],
+      "metadata": {
+        "errno": null,
+        "error": null,
+        "exception_cause_message": null,
+        "exception_cause_type": null,
+        "exception_chain": [],
+        "exception_type": null,
+        "finish_reason": "stop",
+        "http_status": null,
+        "input_tokens": 775,
+        "latency_ms": 2133.31,
+        "model": "qwen3.7-plus",
+        "model_role": "strong_general_llm",
+        "output_tokens": 69,
+        "provider": "bailian",
+        "provider_response_success": true,
+        "provider_role": "evidence_binder",
+        "raw_content_length": 124,
+        "reasoning_tokens": null,
+        "request_id": "chatcmpl-08a6c3d1-f8dd-9a63-8610-d91bf819b04b",
+        "structured_output_success": true,
+        "total_tokens": 844
+      },
+      "missing_slots": [],
+      "operation": "growth_rate",
+      "pairwise_outcomes": {
+        "current": {
+          "F01": "MATCH",
+          "F02": "REJECT"
+        },
+        "prior": {
+          "F01": "REJECT",
+          "F02": "MATCH"
+        }
+      },
+      "provider_response_success": true,
+      "question": "Select current and prior independently.",
+      "question_id": "v2_syn_05",
+      "raw_response": "{\n  \"tasks\": {\n   \"current\": {\n  \"F01\": \"MATCH\",\n  \"F02\": \"REJECT\"\n},\n\"prior\": {\n  \"F01\": \"REJECT\",\n  \"F02\": \"MATCH\"\n}\n  }\n}",
+      "required_slots": [
+        {
+          "metric": "sales",
+          "period": "FY2026",
+          "role": "current",
+          "slot_id": "current",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "sales",
+          "period": "FY2025",
+          "role": "prior",
+          "slot_id": "prior",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "safe_indistinguishable": false,
+      "selected_fact_ids": [
+        "f01",
+        "f02"
+      ],
+      "semantic_correct": true,
+      "skipped_no_fact_supply": false,
+      "slots_ambiguous": 0,
+      "slots_bound": 2,
+      "slots_missing": 0,
+      "slots_requested": 2,
+      "structured_output_success": true,
+      "tags": [
+        "calculation"
+      ],
+      "validation_reasons": []
+    },
+    {
+      "actual": {
+        "denominator": [
+          "F02"
+        ],
+        "numerator": [
+          "F01"
+        ]
+      },
+      "adapter_valid": true,
+      "ambiguous_slots": [],
+      "binder_model_status": "BOUND",
+      "binding": {
+        "ambiguous_slots": [],
+        "invalid_reasons": [],
+        "missing_slots": [],
+        "slot_bindings": {
+          "denominator": [
+            "f02"
+          ],
+          "numerator": [
+            "f01"
+          ]
+        },
+        "status": "BOUND"
+      },
+      "binding_schema_valid": true,
+      "binding_validator_pass": true,
+      "calculation_correct_slots": 2,
+      "calculation_total_slots": 2,
+      "dto_valid": true,
+      "expected": {
+        "denominator": [
+          "F02"
+        ],
+        "numerator": [
+          "F01"
+        ]
+      },
+      "fact_count": 2,
+      "false_binding": false,
+      "final_binding_status": "BOUND",
+      "groups": [
+        "synthetic"
+      ],
+      "intent": "CALCULATION",
+      "invalid_reasons": [],
+      "metadata": {
+        "errno": null,
+        "error": null,
+        "exception_cause_message": null,
+        "exception_cause_type": null,
+        "exception_chain": [],
+        "exception_type": null,
+        "finish_reason": "stop",
+        "http_status": null,
+        "input_tokens": 791,
+        "latency_ms": 1839.553,
+        "model": "qwen3.7-plus",
+        "model_role": "strong_general_llm",
+        "output_tokens": 63,
+        "provider": "bailian",
+        "provider_response_success": true,
+        "provider_role": "evidence_binder",
+        "raw_content_length": 124,
+        "reasoning_tokens": null,
+        "request_id": "chatcmpl-61515579-ae30-9f0c-a611-53c2d868f301",
+        "structured_output_success": true,
+        "total_tokens": 854
+      },
+      "missing_slots": [],
+      "operation": "percentage_share",
+      "pairwise_outcomes": {
+        "denominator": {
+          "F01": "REJECT",
+          "F02": "MATCH"
+        },
+        "numerator": {
+          "F01": "MATCH",
+          "F02": "REJECT"
+        }
+      },
+      "provider_response_success": true,
+      "question": "Select numerator and denominator.",
+      "question_id": "v2_syn_06",
+      "raw_response": "{\n  \"tasks\": {\n   \"numerator\": {\n\"F01\": \"MATCH\",\n\"F02\": \"REJECT\"\n},\n\"denominator\": {\n\"F01\": \"REJECT\",\n\"F02\": \"MATCH\"\n}\n  }\n}",
+      "required_slots": [
+        {
+          "metric": "gross profit",
+          "period": "FY2026",
+          "role": "numerator",
+          "slot_id": "numerator",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "sales",
+          "period": "FY2026",
+          "role": "denominator",
+          "slot_id": "denominator",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "safe_indistinguishable": false,
+      "selected_fact_ids": [
+        "f01",
+        "f02"
+      ],
+      "semantic_correct": true,
+      "skipped_no_fact_supply": false,
+      "slots_ambiguous": 0,
+      "slots_bound": 2,
+      "slots_missing": 0,
+      "slots_requested": 2,
+      "structured_output_success": true,
+      "tags": [
+        "calculation"
+      ],
+      "validation_reasons": []
+    },
+    {
+      "actual": {},
+      "adapter_valid": true,
+      "ambiguous_slots": [],
+      "binder_model_status": "MISSING",
+      "binding": {
+        "ambiguous_slots": [],
+        "invalid_reasons": [],
+        "missing_slots": [
+          "s1"
+        ],
+        "slot_bindings": {},
+        "status": "MISSING"
+      },
+      "binding_schema_valid": true,
+      "binding_validator_pass": true,
+      "calculation_correct_slots": 0,
+      "calculation_total_slots": 0,
+      "dto_valid": true,
+      "expected": {
+        "s1": []
+      },
+      "fact_count": 2,
+      "false_binding": false,
+      "final_binding_status": "MISSING",
+      "groups": [
+        "synthetic"
+      ],
+      "intent": "DIRECT_FACT",
+      "invalid_reasons": [],
+      "metadata": {
+        "errno": null,
+        "error": null,
+        "exception_cause_message": null,
+        "exception_cause_type": null,
+        "exception_chain": [],
+        "exception_type": null,
+        "finish_reason": "stop",
+        "http_status": null,
+        "input_tokens": 729,
+        "latency_ms": 1382.644,
+        "model": "qwen3.7-plus",
+        "model_role": "strong_general_llm",
+        "output_tokens": 40,
+        "provider": "bailian",
+        "provider_response_success": true,
+        "provider_role": "evidence_binder",
+        "raw_content_length": 72,
+        "reasoning_tokens": null,
+        "request_id": "chatcmpl-1d5ddb32-f7af-9c57-8dc2-9f084761c8d1",
+        "structured_output_success": true,
+        "total_tokens": 769
+      },
+      "missing_slots": [
+        "s1"
+      ],
+      "operation": null,
+      "pairwise_outcomes": {
+        "s1": {
+          "F01": "REJECT",
+          "F02": "REJECT"
+        }
+      },
+      "provider_response_success": true,
+      "question": "No supplied fact has the requested scope.",
+      "question_id": "v2_syn_07",
+      "raw_response": "{\n  \"tasks\": {\n   \"s1\": {\n   \"F01\": \"REJECT\",\n   \"F02\": \"REJECT\"\n  }\n}\n}",
+      "required_slots": [
+        {
+          "metric": "regional margin",
+          "period": "FY2026",
+          "role": "value",
+          "slot_id": "s1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "safe_indistinguishable": false,
+      "selected_fact_ids": [],
+      "semantic_correct": true,
+      "skipped_no_fact_supply": false,
+      "slots_ambiguous": 0,
+      "slots_bound": 0,
+      "slots_missing": 1,
+      "slots_requested": 1,
+      "structured_output_success": true,
+      "tags": [
+        "unbindable"
+      ],
+      "validation_reasons": []
+    },
+    {
+      "actual": {
+        "s1": [
+          "F01",
+          "F02"
+        ]
+      },
+      "adapter_valid": true,
+      "ambiguous_slots": [
+        "s1"
+      ],
+      "binder_model_status": "AMBIGUOUS",
+      "binding": {
+        "ambiguous_slots": [
+          "s1"
+        ],
+        "invalid_reasons": [],
+        "missing_slots": [],
+        "slot_bindings": {
+          "s1": [
+            "f01",
+            "f02"
+          ]
+        },
+        "status": "AMBIGUOUS"
+      },
+      "binding_schema_valid": true,
+      "binding_validator_pass": true,
+      "calculation_correct_slots": 0,
+      "calculation_total_slots": 0,
+      "dto_valid": true,
+      "expected": {
+        "s1": [
+          "F01",
+          "F02"
+        ]
+      },
+      "fact_count": 2,
+      "false_binding": false,
+      "final_binding_status": "AMBIGUOUS",
+      "groups": [
+        "synthetic"
+      ],
+      "intent": "DIRECT_FACT",
+      "invalid_reasons": [],
+      "metadata": {
+        "errno": null,
+        "error": null,
+        "exception_cause_message": null,
+        "exception_cause_type": null,
+        "exception_chain": [],
+        "exception_type": null,
+        "finish_reason": "stop",
+        "http_status": null,
+        "input_tokens": 719,
+        "latency_ms": 1511.623,
+        "model": "qwen3.7-plus",
+        "model_role": "strong_general_llm",
+        "output_tokens": 39,
+        "provider": "bailian",
+        "provider_response_success": true,
+        "provider_role": "evidence_binder",
+        "raw_content_length": 73,
+        "reasoning_tokens": null,
+        "request_id": "chatcmpl-645adfd7-4b44-9010-a941-3fe7e27cbcf9",
+        "structured_output_success": true,
+        "total_tokens": 758
+      },
+      "missing_slots": [],
+      "operation": null,
+      "pairwise_outcomes": {
+        "s1": {
+          "F01": "MATCH",
+          "F02": "MATCH"
+        }
+      },
+      "provider_response_success": true,
+      "question": "Two identical statements remain ambiguous.",
+      "question_id": "v2_syn_08",
+      "raw_response": "{\n  \"tasks\": {\n   \"s1\": {\n   \"F01\": \"MATCH\",\n   \"F02\": \"MATCH\"\n   }\n  }\n}",
+      "required_slots": [
+        {
+          "metric": "cash",
+          "period": "FY2026",
+          "role": "value",
+          "slot_id": "s1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "safe_indistinguishable": true,
+      "selected_fact_ids": [
+        "f01",
+        "f02"
+      ],
+      "semantic_correct": true,
+      "skipped_no_fact_supply": false,
+      "slots_ambiguous": 1,
+      "slots_bound": 1,
+      "slots_missing": 0,
+      "slots_requested": 1,
+      "structured_output_success": true,
+      "tags": [
+        "indistinguishable"
+      ],
+      "validation_reasons": []
+    },
+    {
+      "actual": {
+        "s1": [
+          "F01",
+          "F02"
+        ]
+      },
+      "adapter_valid": true,
+      "ambiguous_slots": [
+        "s1"
+      ],
+      "binder_model_status": "AMBIGUOUS",
+      "binding": {
+        "ambiguous_slots": [
+          "s1"
+        ],
+        "invalid_reasons": [],
+        "missing_slots": [],
+        "slot_bindings": {
+          "s1": [
+            "pw09a",
+            "pw09b"
+          ]
+        },
+        "status": "AMBIGUOUS"
+      },
+      "binding_schema_valid": true,
+      "binding_validator_pass": true,
+      "calculation_correct_slots": 0,
+      "calculation_total_slots": 0,
+      "dto_valid": true,
+      "expected": {
+        "s1": "AMBIGUOUS"
+      },
+      "fact_count": 2,
+      "false_binding": false,
+      "final_binding_status": "AMBIGUOUS",
+      "groups": [
+        "synthetic"
+      ],
+      "intent": "DIRECT_FACT",
+      "invalid_reasons": [],
+      "metadata": {
+        "errno": null,
+        "error": null,
+        "exception_cause_message": null,
+        "exception_cause_type": null,
+        "exception_chain": [],
+        "exception_type": null,
+        "finish_reason": "stop",
+        "http_status": null,
+        "input_tokens": 737,
+        "latency_ms": 1663.977,
+        "model": "qwen3.7-plus",
+        "model_role": "strong_general_llm",
+        "output_tokens": 39,
+        "provider": "bailian",
+        "provider_response_success": true,
+        "provider_role": "evidence_binder",
+        "raw_content_length": 73,
+        "reasoning_tokens": null,
+        "request_id": "chatcmpl-d3e7707c-f7a3-90cc-8ffd-e4455c6712e8",
+        "structured_output_success": true,
+        "total_tokens": 776
+      },
+      "missing_slots": [],
+      "operation": null,
+      "pairwise_outcomes": {
+        "s1": {
+          "F01": "MATCH",
+          "F02": "MATCH"
+        }
+      },
+      "provider_response_success": true,
+      "question": "Two supplied records lack enough structural context to distinguish the requested revenue.",
+      "question_id": "pair_syn_09",
+      "raw_response": "{\n  \"tasks\": {\n   \"s1\": {\n   \"F01\": \"MATCH\",\n   \"F02\": \"MATCH\"\n   }\n  }\n}",
+      "required_slots": [
+        {
+          "metric": "revenue",
+          "period": "FY2026",
+          "role": "value",
+          "slot_id": "s1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "safe_indistinguishable": true,
+      "selected_fact_ids": [
+        "pw09a",
+        "pw09b"
+      ],
+      "semantic_correct": true,
+      "skipped_no_fact_supply": false,
+      "slots_ambiguous": 1,
+      "slots_bound": 1,
+      "slots_missing": 0,
+      "slots_requested": 1,
+      "structured_output_success": true,
+      "tags": [
+        "indistinguishable"
+      ],
+      "validation_reasons": []
+    },
+    {
+      "actual": {},
+      "adapter_valid": true,
+      "ambiguous_slots": [],
+      "binder_model_status": "MISSING",
+      "binding": {
+        "ambiguous_slots": [],
+        "invalid_reasons": [],
+        "missing_slots": [
+          "s1"
+        ],
+        "slot_bindings": {},
+        "status": "MISSING"
+      },
+      "binding_schema_valid": true,
+      "binding_validator_pass": true,
+      "calculation_correct_slots": 0,
+      "calculation_total_slots": 0,
+      "dto_valid": true,
+      "expected": {
+        "s1": "MISSING"
+      },
+      "fact_count": 2,
+      "false_binding": false,
+      "final_binding_status": "MISSING",
+      "groups": [
+        "synthetic"
+      ],
+      "intent": "DIRECT_FACT",
+      "invalid_reasons": [],
+      "metadata": {
+        "errno": null,
+        "error": null,
+        "exception_cause_message": null,
+        "exception_cause_type": null,
+        "exception_chain": [],
+        "exception_type": null,
+        "finish_reason": "stop",
+        "http_status": null,
+        "input_tokens": 742,
+        "latency_ms": 1552.618,
+        "model": "qwen3.7-plus",
+        "model_role": "strong_general_llm",
+        "output_tokens": 40,
+        "provider": "bailian",
+        "provider_response_success": true,
+        "provider_role": "evidence_binder",
+        "raw_content_length": 72,
+        "reasoning_tokens": null,
+        "request_id": "chatcmpl-311a889e-a407-9df3-bf30-13be6b3c098b",
+        "structured_output_success": true,
+        "total_tokens": 782
+      },
+      "missing_slots": [
+        "s1"
+      ],
+      "operation": null,
+      "pairwise_outcomes": {
+        "s1": {
+          "F01": "REJECT",
+          "F02": "REJECT"
+        }
+      },
+      "provider_response_success": true,
+      "question": "No supplied record proves the requested regional margin.",
+      "question_id": "pair_syn_10",
+      "raw_response": "{\n  \"tasks\": {\n   \"s1\": {\n   \"F01\": \"REJECT\",\n   \"F02\": \"REJECT\"\n  }\n}\n}",
+      "required_slots": [
+        {
+          "metric": "regional margin",
+          "period": "FY2026",
+          "role": "value",
+          "slot_id": "s1",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "safe_indistinguishable": false,
+      "selected_fact_ids": [],
+      "semantic_correct": true,
+      "skipped_no_fact_supply": false,
+      "slots_ambiguous": 0,
+      "slots_bound": 0,
+      "slots_missing": 1,
+      "slots_requested": 1,
+      "structured_output_success": true,
+      "tags": [
+        "unbindable"
+      ],
+      "validation_reasons": []
+    },
+    {
+      "actual": {
+        "component": [
+          "F01"
+        ],
+        "total": [
+          "F02"
+        ]
+      },
+      "adapter_valid": true,
+      "ambiguous_slots": [],
+      "binder_model_status": "BOUND",
+      "binding": {
+        "ambiguous_slots": [],
+        "invalid_reasons": [],
+        "missing_slots": [],
+        "slot_bindings": {
+          "component": [
+            "pw11a"
+          ],
+          "total": [
+            "pw11b"
+          ]
+        },
+        "status": "BOUND"
+      },
+      "binding_schema_valid": true,
+      "binding_validator_pass": true,
+      "calculation_correct_slots": 2,
+      "calculation_total_slots": 2,
+      "dto_valid": true,
+      "expected": {
+        "component": [
+          "F01"
+        ],
+        "total": [
+          "F02"
+        ]
+      },
+      "fact_count": 2,
+      "false_binding": false,
+      "final_binding_status": "BOUND",
+      "groups": [
+        "synthetic"
+      ],
+      "intent": "CALCULATION",
+      "invalid_reasons": [],
+      "metadata": {
+        "errno": null,
+        "error": null,
+        "exception_cause_message": null,
+        "exception_cause_type": null,
+        "exception_chain": [],
+        "exception_type": null,
+        "finish_reason": "stop",
+        "http_status": null,
+        "input_tokens": 796,
+        "latency_ms": 1933.915,
+        "model": "qwen3.7-plus",
+        "model_role": "strong_general_llm",
+        "output_tokens": 69,
+        "provider": "bailian",
+        "provider_response_success": true,
+        "provider_role": "evidence_binder",
+        "raw_content_length": 126,
+        "reasoning_tokens": null,
+        "request_id": "chatcmpl-ce68e79e-1e2b-998a-a616-137ca850bb4b",
+        "structured_output_success": true,
+        "total_tokens": 865
+      },
+      "missing_slots": [],
+      "operation": "percentage_share",
+      "pairwise_outcomes": {
+        "component": {
+          "F01": "MATCH",
+          "F02": "REJECT"
+        },
+        "total": {
+          "F01": "REJECT",
+          "F02": "MATCH"
+        }
+      },
+      "provider_response_success": true,
+      "question": "Select component and total independently.",
+      "question_id": "pair_syn_11",
+      "raw_response": "{\n  \"tasks\": {\n   \"component\": {\n  \"F01\": \"MATCH\",\n  \"F02\": \"REJECT\"\n},\n\"total\": {\n  \"F01\": \"REJECT\",\n  \"F02\": \"MATCH\"\n}\n  }\n}",
+      "required_slots": [
+        {
+          "metric": "gross profit",
+          "period": "FY2026",
+          "role": "component",
+          "slot_id": "component",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "sales",
+          "period": "FY2026",
+          "role": "total",
+          "slot_id": "total",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "safe_indistinguishable": false,
+      "selected_fact_ids": [
+        "pw11a",
+        "pw11b"
+      ],
+      "semantic_correct": true,
+      "skipped_no_fact_supply": false,
+      "slots_ambiguous": 0,
+      "slots_bound": 2,
+      "slots_missing": 0,
+      "slots_requested": 2,
+      "structured_output_success": true,
+      "tags": [
+        "calculation"
+      ],
+      "validation_reasons": []
+    },
+    {
+      "actual": {
+        "denominator": [
+          "F02"
+        ],
+        "numerator": [
+          "F01"
+        ]
+      },
+      "adapter_valid": true,
+      "ambiguous_slots": [],
+      "binder_model_status": "BOUND",
+      "binding": {
+        "ambiguous_slots": [],
+        "invalid_reasons": [],
+        "missing_slots": [],
+        "slot_bindings": {
+          "denominator": [
+            "pw12b"
+          ],
+          "numerator": [
+            "pw12a"
+          ]
+        },
+        "status": "BOUND"
+      },
+      "binding_schema_valid": true,
+      "binding_validator_pass": true,
+      "calculation_correct_slots": 2,
+      "calculation_total_slots": 2,
+      "dto_valid": true,
+      "expected": {
+        "denominator": [
+          "F02"
+        ],
+        "numerator": [
+          "F01"
+        ]
+      },
+      "fact_count": 2,
+      "false_binding": false,
+      "final_binding_status": "BOUND",
+      "groups": [
+        "synthetic"
+      ],
+      "intent": "CALCULATION",
+      "invalid_reasons": [],
+      "metadata": {
+        "errno": null,
+        "error": null,
+        "exception_cause_message": null,
+        "exception_cause_type": null,
+        "exception_chain": [],
+        "exception_type": null,
+        "finish_reason": "stop",
+        "http_status": null,
+        "input_tokens": 801,
+        "latency_ms": 2056.04,
+        "model": "qwen3.7-plus",
+        "model_role": "strong_general_llm",
+        "output_tokens": 71,
+        "provider": "bailian",
+        "provider_response_success": true,
+        "provider_role": "evidence_binder",
+        "raw_content_length": 132,
+        "reasoning_tokens": null,
+        "request_id": "chatcmpl-277a9e92-4d43-9fe9-aacc-b628be39d945",
+        "structured_output_success": true,
+        "total_tokens": 872
+      },
+      "missing_slots": [],
+      "operation": "percentage_share",
+      "pairwise_outcomes": {
+        "denominator": {
+          "F01": "REJECT",
+          "F02": "MATCH"
+        },
+        "numerator": {
+          "F01": "MATCH",
+          "F02": "REJECT"
+        }
+      },
+      "provider_response_success": true,
+      "question": "Select numerator and denominator independently.",
+      "question_id": "pair_syn_12",
+      "raw_response": "{\n  \"tasks\": {\n   \"numerator\": {\n  \"F01\": \"MATCH\",\n  \"F02\": \"REJECT\"\n},\n\"denominator\": {\n  \"F01\": \"REJECT\",\n  \"F02\": \"MATCH\"\n}\n  }\n}",
+      "required_slots": [
+        {
+          "metric": "net income",
+          "period": "FY2026",
+          "role": "numerator",
+          "slot_id": "numerator",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "sales",
+          "period": "FY2026",
+          "role": "denominator",
+          "slot_id": "denominator",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "safe_indistinguishable": false,
+      "selected_fact_ids": [
+        "pw12a",
+        "pw12b"
+      ],
+      "semantic_correct": true,
+      "skipped_no_fact_supply": false,
+      "slots_ambiguous": 0,
+      "slots_bound": 2,
+      "slots_missing": 0,
+      "slots_requested": 2,
+      "structured_output_success": true,
+      "tags": [
+        "calculation"
+      ],
+      "validation_reasons": []
+    },
+    {
+      "actual": {
+        "minuend": [
+          "F01"
+        ],
+        "subtrahend": [
+          "F02"
+        ]
+      },
+      "adapter_valid": true,
+      "ambiguous_slots": [],
+      "binder_model_status": "BOUND",
+      "binding": {
+        "ambiguous_slots": [],
+        "invalid_reasons": [],
+        "missing_slots": [],
+        "slot_bindings": {
+          "minuend": [
+            "pw13a"
+          ],
+          "subtrahend": [
+            "pw13b"
+          ]
+        },
+        "status": "BOUND"
+      },
+      "binding_schema_valid": true,
+      "binding_validator_pass": true,
+      "calculation_correct_slots": 2,
+      "calculation_total_slots": 2,
+      "dto_valid": true,
+      "expected": {
+        "minuend": [
+          "F01"
+        ],
+        "subtrahend": [
+          "F02"
+        ]
+      },
+      "fact_count": 2,
+      "false_binding": false,
+      "final_binding_status": "BOUND",
+      "groups": [
+        "synthetic"
+      ],
+      "intent": "CALCULATION",
+      "invalid_reasons": [],
+      "metadata": {
+        "errno": null,
+        "error": null,
+        "exception_cause_message": null,
+        "exception_cause_type": null,
+        "exception_chain": [],
+        "exception_type": null,
+        "finish_reason": "stop",
+        "http_status": null,
+        "input_tokens": 808,
+        "latency_ms": 2024.821,
+        "model": "qwen3.7-plus",
+        "model_role": "strong_general_llm",
+        "output_tokens": 74,
+        "provider": "bailian",
+        "provider_response_success": true,
+        "provider_role": "evidence_binder",
+        "raw_content_length": 129,
+        "reasoning_tokens": null,
+        "request_id": "chatcmpl-2fe7e157-be55-93f8-a74c-48479c7b10f8",
+        "structured_output_success": true,
+        "total_tokens": 882
+      },
+      "missing_slots": [],
+      "operation": "difference",
+      "pairwise_outcomes": {
+        "minuend": {
+          "F01": "MATCH",
+          "F02": "REJECT"
+        },
+        "subtrahend": {
+          "F01": "REJECT",
+          "F02": "MATCH"
+        }
+      },
+      "provider_response_success": true,
+      "question": "Select minuend and subtrahend independently.",
+      "question_id": "pair_syn_13",
+      "raw_response": "{\n  \"tasks\": {\n   \"minuend\": {\n  \"F01\": \"MATCH\",\n  \"F02\": \"REJECT\"\n},\n\"subtrahend\": {\n  \"F01\": \"REJECT\",\n  \"F02\": \"MATCH\"\n}\n  }\n}",
+      "required_slots": [
+        {
+          "metric": "sales",
+          "period": "FY2026",
+          "role": "minuend",
+          "slot_id": "minuend",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "sales",
+          "period": "FY2025",
+          "role": "subtrahend",
+          "slot_id": "subtrahend",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "safe_indistinguishable": false,
+      "selected_fact_ids": [
+        "pw13a",
+        "pw13b"
+      ],
+      "semantic_correct": true,
+      "skipped_no_fact_supply": false,
+      "slots_ambiguous": 0,
+      "slots_bound": 2,
+      "slots_missing": 0,
+      "slots_requested": 2,
+      "structured_output_success": true,
+      "tags": [
+        "calculation"
+      ],
+      "validation_reasons": []
+    },
+    {
+      "actual": {
+        "current": [
+          "F01"
+        ],
+        "prior": [
+          "F02"
+        ]
+      },
+      "adapter_valid": true,
+      "ambiguous_slots": [],
+      "binder_model_status": "BOUND",
+      "binding": {
+        "ambiguous_slots": [],
+        "invalid_reasons": [],
+        "missing_slots": [],
+        "slot_bindings": {
+          "current": [
+            "pw14a"
+          ],
+          "prior": [
+            "pw14b"
+          ]
+        },
+        "status": "BOUND"
+      },
+      "binding_schema_valid": true,
+      "binding_validator_pass": true,
+      "calculation_correct_slots": 2,
+      "calculation_total_slots": 2,
+      "dto_valid": true,
+      "expected": {
+        "current": [
+          "F01"
+        ],
+        "prior": [
+          "F02"
+        ]
+      },
+      "fact_count": 2,
+      "false_binding": false,
+      "final_binding_status": "BOUND",
+      "groups": [
+        "synthetic"
+      ],
+      "intent": "CALCULATION",
+      "invalid_reasons": [],
+      "metadata": {
+        "errno": null,
+        "error": null,
+        "exception_cause_message": null,
+        "exception_cause_type": null,
+        "exception_chain": [],
+        "exception_type": null,
+        "finish_reason": "stop",
+        "http_status": null,
+        "input_tokens": 791,
+        "latency_ms": 2166.004,
+        "model": "qwen3.7-plus",
+        "model_role": "strong_general_llm",
+        "output_tokens": 69,
+        "provider": "bailian",
+        "provider_response_success": true,
+        "provider_role": "evidence_binder",
+        "raw_content_length": 124,
+        "reasoning_tokens": null,
+        "request_id": "chatcmpl-0ec70702-ef48-9ae2-9deb-360a99de7521",
+        "structured_output_success": true,
+        "total_tokens": 860
+      },
+      "missing_slots": [],
+      "operation": "difference",
+      "pairwise_outcomes": {
+        "current": {
+          "F01": "MATCH",
+          "F02": "REJECT"
+        },
+        "prior": {
+          "F01": "REJECT",
+          "F02": "MATCH"
+        }
+      },
+      "provider_response_success": true,
+      "question": "Select current and prior balances independently.",
+      "question_id": "pair_syn_14",
+      "raw_response": "{\n  \"tasks\": {\n   \"current\": {\n  \"F01\": \"MATCH\",\n  \"F02\": \"REJECT\"\n},\n\"prior\": {\n  \"F01\": \"REJECT\",\n  \"F02\": \"MATCH\"\n}\n  }\n}",
+      "required_slots": [
+        {
+          "metric": "cash",
+          "period": "FY2026",
+          "role": "current",
+          "slot_id": "current",
+          "unit": null,
+          "value_type": "numeric"
+        },
+        {
+          "metric": "cash",
+          "period": "FY2025",
+          "role": "prior",
+          "slot_id": "prior",
+          "unit": null,
+          "value_type": "numeric"
+        }
+      ],
+      "safe_indistinguishable": false,
+      "selected_fact_ids": [
+        "pw14a",
+        "pw14b"
+      ],
+      "semantic_correct": true,
+      "skipped_no_fact_supply": false,
+      "slots_ambiguous": 0,
+      "slots_bound": 2,
+      "slots_missing": 0,
+      "slots_requested": 2,
+      "structured_output_success": true,
+      "tags": [
+        "calculation"
+      ],
+      "validation_reasons": []
+    }
+  ],
+  "semantic_correct": 13,
+  "semantic_total": 14,
+  "structural_healthy": true,
+  "structured_output": 14,
+  "unbindable_false_binding": 0,
+  "unbindable_total": 2
+}
