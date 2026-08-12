@@ -1,0 +1,57 @@
+{
+  "attempt_1": {
+    "base_commit": "ce69c29",
+    "calls_attempted": "2/72",
+    "failed_question": "aapl_fy2025_002",
+    "failure": "intermittent_provider_read_timeout",
+    "formal_run_complete": false,
+    "gold_reads": 0,
+    "prediction_seal": "not_created",
+    "valid_for_semantic_metrics": false
+  },
+  "attempt_2": {
+    "base_commit": "b64ccd9645fffe7a48e4aa189d7f6f40d082c138",
+    "calls_attempted": 2,
+    "failure": {
+      "call_index": 2,
+      "error": "Request timed out.",
+      "exception_cause_message": "The read operation timed out",
+      "exception_cause_type": "ReadTimeout",
+      "exception_chain": [
+        {
+          "message": "Request timed out.",
+          "type": "APITimeoutError"
+        },
+        {
+          "message": "The read operation timed out",
+          "type": "ReadTimeout"
+        },
+        {
+          "message": "The read operation timed out",
+          "type": "ReadTimeout"
+        },
+        {
+          "message": "The read operation timed out",
+          "type": "TimeoutError"
+        }
+      ],
+      "exception_type": "APITimeoutError",
+      "fact_count": 19,
+      "finish_reason": null,
+      "formal_run_complete": false,
+      "gold_reads_before_prediction_seal": 0,
+      "http_status": null,
+      "input_tokens": null,
+      "latency_ms": 180098.79,
+      "prediction_seal": "not_created",
+      "question_id": "aapl_fy2025_002",
+      "raw_content_length": 0,
+      "semantic_scoring": false
+    },
+    "formal_run_complete": false,
+    "gold_reads_before_seal": 0,
+    "prediction_seal": "not_created",
+    "semantic_scoring": false,
+    "valid_for_semantic_metrics": false
+  }
+}

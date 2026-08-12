@@ -1,0 +1,19 @@
+{
+  "base_commit": "b64ccd9645fffe7a48e4aa189d7f6f40d082c138",
+  "binder_calls_attempted": 2,
+  "dominant_failure": "provider_read_timeout",
+  "evaluation_role": "development_shadow_v2_semantic_evidence_binder_attempt_2",
+  "failed_question": "aapl_fy2025_002",
+  "formal_run_complete": false,
+  "gate": "NF-V2-03",
+  "gold_reads_before_prediction_seal": 0,
+  "model": "qwen3.7-max",
+  "next_gate": "nf_v2_03_provider_failure_review",
+  "prediction_sealed": false,
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "provider": "Alibaba Bailian",
+  "semantic_binder_frozen": false,
+  "semantic_evidence_binder_effective": "not_evaluated",
+  "semantic_scoring": false
+}
