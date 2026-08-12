@@ -166,11 +166,12 @@ def run_formal(
     system_prompt: str | None = None,
     fact_view_version: str = "v1",
     source_metadata_by_candidate: Mapping[str, Mapping[str, Any]] | None = None,
+    model_name: str = MODEL,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     provider = BailianConstrainedBinderProvider(
         base_url=config["base_url"],
         api_key=config["api_key"],
-        model_name=MODEL,
+        model_name=model_name,
         enable_thinking=False,
         temperature=0.0,
         timeout=180.0,

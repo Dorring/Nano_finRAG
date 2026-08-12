@@ -1,0 +1,373 @@
+{
+  "evaluation_role": "development_shadow_binder_model_selection",
+  "fresh_blind": false,
+  "gate": "NF-V2-03-R4",
+  "gold_reads_before_prediction_seal": 0,
+  "groups": {
+    "A_direct_visible_unique": [
+      "aapl_fy2025_001",
+      "aapl_fy2025_002",
+      "aapl_fy2025_004",
+      "aapl_fy2025_009",
+      "jpm_fy2025_001",
+      "jpm_fy2025_002",
+      "jpm_fy2025_003",
+      "jpm_fy2025_004",
+      "jpm_fy2025_009",
+      "ko_fy2025_001",
+      "ko_fy2025_002",
+      "ko_fy2025_003",
+      "msft_fy2025_001",
+      "msft_fy2025_003",
+      "nvda_fy2025_002",
+      "nvda_fy2025_003",
+      "nvda_fy2025_004",
+      "nvda_fy2025_005",
+      "nvda_fy2025_009",
+      "pfe_fy2024_001",
+      "tsla_fy2025_001"
+    ],
+    "B_calculation_visible_unique": [
+      "aapl_fy2025_006",
+      "jpm_fy2025_006",
+      "ko_fy2025_006",
+      "pfe_fy2024_006",
+      "tsla_fy2025_006",
+      "v_fy2025_006"
+    ],
+    "C_indistinguishable": [
+      "aapl_fy2025_003",
+      "v_fy2025_001",
+      "v_fy2025_002",
+      "v_fy2025_003",
+      "v_fy2025_004",
+      "v_fy2025_009"
+    ],
+    "D_unbindable_safety": [
+      "jpm_fy2025_005",
+      "msft_fy2025_002",
+      "nvda_fy2025_007",
+      "pfe_fy2024_002",
+      "pfe_fy2024_004",
+      "v_fy2025_006",
+      "v_fy2025_007"
+    ]
+  },
+  "model": "qwen3.7-max",
+  "requests": {
+    "aapl_fy2025_001": {
+      "fact_count": 20,
+      "operation": null,
+      "question_id": "aapl_fy2025_001",
+      "request_sha256": "2020388e3b0ee8bffc3dbdee7a81b97a4b911b1767a2f6b7b9f1d640ada0358f",
+      "required_slot_count": 1
+    },
+    "aapl_fy2025_002": {
+      "fact_count": 19,
+      "operation": null,
+      "question_id": "aapl_fy2025_002",
+      "request_sha256": "0834dc1a58f5e1669293b77f3f714fe44c8f0889334f6f8ce7b1a1ee5844b18a",
+      "required_slot_count": 1
+    },
+    "aapl_fy2025_003": {
+      "fact_count": 24,
+      "operation": null,
+      "question_id": "aapl_fy2025_003",
+      "request_sha256": "0bf9b81fb236de1cf0250099edae1a3c0c1b349e088cfa71efb6e796219fe98f",
+      "required_slot_count": 1
+    },
+    "aapl_fy2025_004": {
+      "fact_count": 22,
+      "operation": null,
+      "question_id": "aapl_fy2025_004",
+      "request_sha256": "711b6c08042601b786b2e6f308ca9c035632023566465f4dc8ab730de4b8a18e",
+      "required_slot_count": 1
+    },
+    "aapl_fy2025_006": {
+      "fact_count": 17,
+      "operation": "growth_rate",
+      "question_id": "aapl_fy2025_006",
+      "request_sha256": "8a5b851e58fe03403f926756cee5e2731d7f7e36cbb3a8ac33a1f4855993a176",
+      "required_slot_count": 2
+    },
+    "aapl_fy2025_009": {
+      "fact_count": 33,
+      "operation": null,
+      "question_id": "aapl_fy2025_009",
+      "request_sha256": "23eb48a63e047396b935b07d7ce656d2c99142f5c876e1b1d572c6170f71084a",
+      "required_slot_count": 1
+    },
+    "jpm_fy2025_001": {
+      "fact_count": 41,
+      "operation": null,
+      "question_id": "jpm_fy2025_001",
+      "request_sha256": "10ca7fde0ea85832e8c04ec7e9435676e7b60f22ba2d41345f721e7ad0f1c57c",
+      "required_slot_count": 1
+    },
+    "jpm_fy2025_002": {
+      "fact_count": 19,
+      "operation": null,
+      "question_id": "jpm_fy2025_002",
+      "request_sha256": "e649821a8216ee827f36f6e0cb616ecc81597ac1f0e40fbb7ba5fd1c8382a5c4",
+      "required_slot_count": 1
+    },
+    "jpm_fy2025_003": {
+      "fact_count": 42,
+      "operation": null,
+      "question_id": "jpm_fy2025_003",
+      "request_sha256": "f6086053a75fb136c2f1692636a66ff2c3efb99165e4cd175412b4400184a6a6",
+      "required_slot_count": 1
+    },
+    "jpm_fy2025_004": {
+      "fact_count": 45,
+      "operation": null,
+      "question_id": "jpm_fy2025_004",
+      "request_sha256": "c3229ea17db29de0de8a627d69315597bcd7416a839990f128d85b867f2b5aa1",
+      "required_slot_count": 1
+    },
+    "jpm_fy2025_005": {
+      "fact_count": 30,
+      "operation": null,
+      "question_id": "jpm_fy2025_005",
+      "request_sha256": "0914c43569fce1939e82131cd367955fecd1ad4580c1329d865a7757a3054ea9",
+      "required_slot_count": 1
+    },
+    "jpm_fy2025_006": {
+      "fact_count": 42,
+      "operation": "growth_rate",
+      "question_id": "jpm_fy2025_006",
+      "request_sha256": "147827628e0b341e6105ba277b42c54561a958be25d1eed80b34a78cf0a8c24b",
+      "required_slot_count": 2
+    },
+    "jpm_fy2025_009": {
+      "fact_count": 57,
+      "operation": null,
+      "question_id": "jpm_fy2025_009",
+      "request_sha256": "403cf9e19ac8f6d325c4d221e48967874b25dc534a39b9a2ade7b346a36041e8",
+      "required_slot_count": 1
+    },
+    "ko_fy2025_001": {
+      "fact_count": 36,
+      "operation": null,
+      "question_id": "ko_fy2025_001",
+      "request_sha256": "2b2f157ed44001de893bd6301c577281de69d2a0576d5fbfd86a8fabf1e64fd9",
+      "required_slot_count": 1
+    },
+    "ko_fy2025_002": {
+      "fact_count": 35,
+      "operation": null,
+      "question_id": "ko_fy2025_002",
+      "request_sha256": "5951275ff2c41a402ca9e746862ac38722230267cb9b7f44580efd8d9f578caa",
+      "required_slot_count": 1
+    },
+    "ko_fy2025_003": {
+      "fact_count": 15,
+      "operation": null,
+      "question_id": "ko_fy2025_003",
+      "request_sha256": "41d8149975b723561ba06b984eea8034331cf19977861898e8725d6cb5e3c601",
+      "required_slot_count": 1
+    },
+    "ko_fy2025_006": {
+      "fact_count": 34,
+      "operation": "growth_rate",
+      "question_id": "ko_fy2025_006",
+      "request_sha256": "15cf350cda87a2aaab37c7f3cfc84010fcddbb33ecb4dee4c3f273dcad2777d6",
+      "required_slot_count": 2
+    },
+    "msft_fy2025_001": {
+      "fact_count": 17,
+      "operation": null,
+      "question_id": "msft_fy2025_001",
+      "request_sha256": "f25ebf7a3841cb3cef303e899fb98d1715bebd34d937174bb61b0cf29cfcab43",
+      "required_slot_count": 1
+    },
+    "msft_fy2025_002": {
+      "fact_count": 10,
+      "operation": null,
+      "question_id": "msft_fy2025_002",
+      "request_sha256": "36617db2ba08cc406960051b61363845d66e4f84d41d3ae92b49c716b5f0310e",
+      "required_slot_count": 1
+    },
+    "msft_fy2025_003": {
+      "fact_count": 8,
+      "operation": null,
+      "question_id": "msft_fy2025_003",
+      "request_sha256": "92747bb58ddd42906deda14ebb5bd098f56e5f4615aa693a035df18f727ac484",
+      "required_slot_count": 1
+    },
+    "nvda_fy2025_002": {
+      "fact_count": 5,
+      "operation": null,
+      "question_id": "nvda_fy2025_002",
+      "request_sha256": "f1e81deba091b33fc8144870b6fb7f6120ded32f94355739f6b14c5d692e854f",
+      "required_slot_count": 1
+    },
+    "nvda_fy2025_003": {
+      "fact_count": 4,
+      "operation": null,
+      "question_id": "nvda_fy2025_003",
+      "request_sha256": "5ce7236401fb5dcd85c75c253898630c58b73f02640bacf28390dcbab2d9517e",
+      "required_slot_count": 1
+    },
+    "nvda_fy2025_004": {
+      "fact_count": 3,
+      "operation": null,
+      "question_id": "nvda_fy2025_004",
+      "request_sha256": "dc507187ae9ac7f302dc74b56a4188d5fe563f708fbd6f29741b367ae68ec0fa",
+      "required_slot_count": 1
+    },
+    "nvda_fy2025_005": {
+      "fact_count": 3,
+      "operation": null,
+      "question_id": "nvda_fy2025_005",
+      "request_sha256": "c0dda9a8af32db36439eac9339185e7957316f84fcf568d47145fb4d32cebeb3",
+      "required_slot_count": 1
+    },
+    "nvda_fy2025_007": {
+      "fact_count": 9,
+      "operation": null,
+      "question_id": "nvda_fy2025_007",
+      "request_sha256": "851a51bfe61071cee677da40aa66d021804a7697c4d8fec7edb8b00f0c7a23a3",
+      "required_slot_count": 2
+    },
+    "nvda_fy2025_009": {
+      "fact_count": 22,
+      "operation": null,
+      "question_id": "nvda_fy2025_009",
+      "request_sha256": "02821663dac3ed8e30716b8a1106203f9321289792f40cc963f548af14ab1868",
+      "required_slot_count": 1
+    },
+    "pfe_fy2024_001": {
+      "fact_count": 67,
+      "operation": null,
+      "question_id": "pfe_fy2024_001",
+      "request_sha256": "54ea8aeecd55ecf3e0646d622426d33519fe5bb05a1859bf95282e1ee3c6c390",
+      "required_slot_count": 1
+    },
+    "pfe_fy2024_002": {
+      "fact_count": 33,
+      "operation": null,
+      "question_id": "pfe_fy2024_002",
+      "request_sha256": "5269c79e601003229d6d438bc3a45cbe9b9c0359d91c448451917bfee08d9115",
+      "required_slot_count": 1
+    },
+    "pfe_fy2024_004": {
+      "fact_count": 13,
+      "operation": null,
+      "question_id": "pfe_fy2024_004",
+      "request_sha256": "59295a21c510c3e6f895a5323eb5df5211832ea86a90b891ef08a3e8800cc8d8",
+      "required_slot_count": 1
+    },
+    "pfe_fy2024_006": {
+      "fact_count": 49,
+      "operation": "growth_rate",
+      "question_id": "pfe_fy2024_006",
+      "request_sha256": "dce13ef408611980b773975b6881b2e7ebdfe28a4fe41085ba73c411089c4d11",
+      "required_slot_count": 2
+    },
+    "tsla_fy2025_001": {
+      "fact_count": 21,
+      "operation": null,
+      "question_id": "tsla_fy2025_001",
+      "request_sha256": "1ec2e318c89942971dca91665dc86a4b09bf2d9b397ceef75cb1679a003f7b47",
+      "required_slot_count": 1
+    },
+    "tsla_fy2025_006": {
+      "fact_count": 24,
+      "operation": "growth_rate",
+      "question_id": "tsla_fy2025_006",
+      "request_sha256": "5117453511cc599c47a6ec3ce55daf335d1ed6cc04a3f979188adf31b7390bef",
+      "required_slot_count": 2
+    },
+    "v_fy2025_001": {
+      "fact_count": 8,
+      "operation": null,
+      "question_id": "v_fy2025_001",
+      "request_sha256": "abe7dfee42d192cff26ae180712d1dbc053c0a16c670d53b4a6f5c502ef27f34",
+      "required_slot_count": 1
+    },
+    "v_fy2025_002": {
+      "fact_count": 3,
+      "operation": null,
+      "question_id": "v_fy2025_002",
+      "request_sha256": "7b22b69482be9ea730c0e81ca589cf51fbcb9a3dc66e652e4fa7bf22a6b0d243",
+      "required_slot_count": 1
+    },
+    "v_fy2025_003": {
+      "fact_count": 4,
+      "operation": null,
+      "question_id": "v_fy2025_003",
+      "request_sha256": "3afb7e78b7eb88242ff8a5d95977224301f22ef5ca987e653027af90d048fa74",
+      "required_slot_count": 1
+    },
+    "v_fy2025_004": {
+      "fact_count": 19,
+      "operation": null,
+      "question_id": "v_fy2025_004",
+      "request_sha256": "85c67a5548a5854f0dbd947084fcb91b2d2638d19c084705131c5658b13803cf",
+      "required_slot_count": 1
+    },
+    "v_fy2025_006": {
+      "fact_count": 13,
+      "operation": "growth_rate",
+      "question_id": "v_fy2025_006",
+      "request_sha256": "eb18abfe90f101cb6da21b39bf7bbe542f00645a219314964186b5e5413f52b2",
+      "required_slot_count": 2
+    },
+    "v_fy2025_007": {
+      "fact_count": 6,
+      "operation": null,
+      "question_id": "v_fy2025_007",
+      "request_sha256": "1d17e2255a382069979e73803dfc03adf96f62872356a19eb23f2fcb027033b9",
+      "required_slot_count": 2
+    },
+    "v_fy2025_009": {
+      "fact_count": 68,
+      "operation": null,
+      "question_id": "v_fy2025_009",
+      "request_sha256": "9443282f1ce6feaca25bf5a7f9c3ebf9d4a28e74f7c65150bde893f461e15328",
+      "required_slot_count": 1
+    }
+  },
+  "unique_question_ids": [
+    "aapl_fy2025_001",
+    "aapl_fy2025_002",
+    "aapl_fy2025_003",
+    "aapl_fy2025_004",
+    "aapl_fy2025_006",
+    "aapl_fy2025_009",
+    "jpm_fy2025_001",
+    "jpm_fy2025_002",
+    "jpm_fy2025_003",
+    "jpm_fy2025_004",
+    "jpm_fy2025_005",
+    "jpm_fy2025_006",
+    "jpm_fy2025_009",
+    "ko_fy2025_001",
+    "ko_fy2025_002",
+    "ko_fy2025_003",
+    "ko_fy2025_006",
+    "msft_fy2025_001",
+    "msft_fy2025_002",
+    "msft_fy2025_003",
+    "nvda_fy2025_002",
+    "nvda_fy2025_003",
+    "nvda_fy2025_004",
+    "nvda_fy2025_005",
+    "nvda_fy2025_007",
+    "nvda_fy2025_009",
+    "pfe_fy2024_001",
+    "pfe_fy2024_002",
+    "pfe_fy2024_004",
+    "pfe_fy2024_006",
+    "tsla_fy2025_001",
+    "tsla_fy2025_006",
+    "v_fy2025_001",
+    "v_fy2025_002",
+    "v_fy2025_003",
+    "v_fy2025_004",
+    "v_fy2025_006",
+    "v_fy2025_007",
+    "v_fy2025_009"
+  ]
+}

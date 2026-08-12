@@ -1,0 +1,15 @@
+{
+  "qwen3.7-max": {
+    "calculation_operands": "0/12",
+    "direct_visible_unique": "8/21"
+  },
+  "qwen3.7-plus": {
+    "calculation_operands": "1/12",
+    "direct_visible_unique": "8/21",
+    "latency": {
+      "average_ms": 1958.06,
+      "p50_ms": 1832.37,
+      "p95_ms": 3545.01
+    }
+  }
+}

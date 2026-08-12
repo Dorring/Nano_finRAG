@@ -1,0 +1,63 @@
+{
+  "adapter": 5,
+  "calculation_leakage": 0,
+  "dto": 5,
+  "model": "qwen3.7-max",
+  "model_calls": 5,
+  "pass": true,
+  "provider": 5,
+  "rows": [
+    {
+      "adapter_valid": true,
+      "calculation_leakage": 0,
+      "dto_valid": true,
+      "latency_ms": 1274.6553689939901,
+      "provider_success": true,
+      "question_id": "v2_syn_01",
+      "unknown_ids": 0,
+      "validator_pass": true
+    },
+    {
+      "adapter_valid": true,
+      "calculation_leakage": 0,
+      "dto_valid": true,
+      "latency_ms": 795.5579650006257,
+      "provider_success": true,
+      "question_id": "v2_syn_02",
+      "unknown_ids": 0,
+      "validator_pass": true
+    },
+    {
+      "adapter_valid": true,
+      "calculation_leakage": 0,
+      "dto_valid": true,
+      "latency_ms": 635.1280309609137,
+      "provider_success": true,
+      "question_id": "v2_syn_03",
+      "unknown_ids": 0,
+      "validator_pass": true
+    },
+    {
+      "adapter_valid": true,
+      "calculation_leakage": 0,
+      "dto_valid": true,
+      "latency_ms": 715.1885209605098,
+      "provider_success": true,
+      "question_id": "v2_syn_04",
+      "unknown_ids": 0,
+      "validator_pass": true
+    },
+    {
+      "adapter_valid": true,
+      "calculation_leakage": 0,
+      "dto_valid": true,
+      "latency_ms": 766.0279410192743,
+      "provider_success": true,
+      "question_id": "v2_syn_05",
+      "unknown_ids": 0,
+      "validator_pass": true
+    }
+  ],
+  "unknown_ids": 0,
+  "validator": 5
+}
