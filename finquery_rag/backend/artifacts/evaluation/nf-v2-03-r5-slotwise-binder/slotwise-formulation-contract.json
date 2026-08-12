@@ -1,0 +1,14 @@
+{
+  "cohort_sha256": "a00e6121c6c3c204d0106bb2ca5853ad9dd3942c74a5940329e0ba84add3b629",
+  "duplicate_handles_rejected_after_parse": true,
+  "fact_prefilter": false,
+  "formulation": "slotwise_discriminative_v1",
+  "independent_slot_decisions": true,
+  "model": "qwen3.7-plus",
+  "one_provider_request_per_query": true,
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "provider_schema_unique_items": false,
+  "query_level_semantic_decision": false,
+  "shared_facts": true
+}

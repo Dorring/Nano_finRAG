@@ -1,0 +1,658 @@
+{
+  "A": {
+    "ambiguous": 3,
+    "correct": 9,
+    "false_binding": 6,
+    "missing": 3,
+    "questions": 21,
+    "wrong": 6
+  },
+  "B": {
+    "all_operands_correct": 2,
+    "ambiguous_operand_slots": 0,
+    "correct_operand_slots": 5,
+    "false_operand_binding": 7,
+    "missing_operand_slots": 0,
+    "operand_slots": 12,
+    "questions": 6,
+    "wrong_operand_slots": 7
+  },
+  "C": {
+    "appropriate_abstention": 0,
+    "questions": 6,
+    "unsafe_bound": 6
+  },
+  "D": {
+    "false_binding": 6,
+    "questions": 7,
+    "safe_missing_or_ambiguous": 1
+  },
+  "rows": {
+    "aapl_fy2025_001": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "aapl_fy2025_001",
+      "slot_results": [
+        {
+          "selected_fact_id": "79d91a2553e82d687736806cba8af0410b778fe3eef63aed96994f5d46472050",
+          "slot_id": "slot_1",
+          "strict_correct": false
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": false
+    },
+    "aapl_fy2025_002": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "aapl_fy2025_002",
+      "slot_results": [
+        {
+          "selected_fact_id": "a1b63f98f5d5a613b5394e38db3bc0a85b0174cee3a373e617bc7397baa4b13e",
+          "slot_id": "1",
+          "strict_correct": false
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": false
+    },
+    "aapl_fy2025_003": {
+      "groups": [
+        "C_indistinguishable"
+      ],
+      "question_id": "aapl_fy2025_003",
+      "slot_results": [
+        {
+          "selected_fact_id": "c020b94ff98da3c5c9039108f959cd6ceeb1cbbcd39905369dc424eca18fd2ab",
+          "slot_id": "1",
+          "strict_correct": true
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": true
+    },
+    "aapl_fy2025_004": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "aapl_fy2025_004",
+      "slot_results": [
+        {
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_correct": false
+        }
+      ],
+      "status": "AMBIGUOUS",
+      "strict_complete": false
+    },
+    "aapl_fy2025_006": {
+      "groups": [
+        "B_calculation_visible_unique"
+      ],
+      "question_id": "aapl_fy2025_006",
+      "slot_results": [
+        {
+          "selected_fact_id": "79d91a2553e82d687736806cba8af0410b778fe3eef63aed96994f5d46472050",
+          "slot_id": "slot_1",
+          "strict_correct": true
+        },
+        {
+          "selected_fact_id": "1dca7d500d015ae664048ced7246285062e2165bfb9ef71f56a7735b0c18621e",
+          "slot_id": "slot_2",
+          "strict_correct": true
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": true
+    },
+    "aapl_fy2025_009": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "aapl_fy2025_009",
+      "slot_results": [
+        {
+          "selected_fact_id": "a8d0ec68b8b74b9ad4cd4f1cb9095110a193cc3ab816f8bb94a2e53d178fbe05",
+          "slot_id": "1",
+          "strict_correct": true
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": true
+    },
+    "jpm_fy2025_001": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "jpm_fy2025_001",
+      "slot_results": [
+        {
+          "selected_fact_id": "394411ec7dc43fa13293c826d1e789c036dc8e93ed2810f0492c1647f1243fb5",
+          "slot_id": "1",
+          "strict_correct": false
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": false
+    },
+    "jpm_fy2025_002": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "jpm_fy2025_002",
+      "slot_results": [
+        {
+          "selected_fact_id": "880ebd34db6bca5b4427a4bb317ec35f6a44e09f316d2c6c9bbcf07d95703f11",
+          "slot_id": "1",
+          "strict_correct": true
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": true
+    },
+    "jpm_fy2025_003": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "jpm_fy2025_003",
+      "slot_results": [
+        {
+          "selected_fact_id": "82ec9a82542c4decda7d7ad15e6ef2d3fc46e6823a3b063b2600a328e0a89c42",
+          "slot_id": "slot_1",
+          "strict_correct": false
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": false
+    },
+    "jpm_fy2025_004": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "jpm_fy2025_004",
+      "slot_results": [
+        {
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_correct": false
+        }
+      ],
+      "status": "MISSING",
+      "strict_complete": false
+    },
+    "jpm_fy2025_005": {
+      "groups": [
+        "D_unbindable_safety"
+      ],
+      "question_id": "jpm_fy2025_005",
+      "slot_results": [
+        {
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_correct": false
+        }
+      ],
+      "status": "MISSING",
+      "strict_complete": false
+    },
+    "jpm_fy2025_006": {
+      "groups": [
+        "B_calculation_visible_unique"
+      ],
+      "question_id": "jpm_fy2025_006",
+      "slot_results": [
+        {
+          "selected_fact_id": "394411ec7dc43fa13293c826d1e789c036dc8e93ed2810f0492c1647f1243fb5",
+          "slot_id": "1",
+          "strict_correct": false
+        },
+        {
+          "selected_fact_id": "85e82834ba925ee7339baadfa46c38e177763d8e1d8634b35f2231aca5962ecb",
+          "slot_id": "2",
+          "strict_correct": false
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": false
+    },
+    "jpm_fy2025_009": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "jpm_fy2025_009",
+      "slot_results": [
+        {
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_correct": false
+        }
+      ],
+      "status": "MISSING",
+      "strict_complete": false
+    },
+    "ko_fy2025_001": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "ko_fy2025_001",
+      "slot_results": [
+        {
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_correct": false
+        }
+      ],
+      "status": "AMBIGUOUS",
+      "strict_complete": false
+    },
+    "ko_fy2025_002": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "ko_fy2025_002",
+      "slot_results": [
+        {
+          "selected_fact_id": "30aede920be2f2f4102371bd89bb9068cb11a3a556c1a4d284a5393159b7a0cc",
+          "slot_id": "1",
+          "strict_correct": true
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": true
+    },
+    "ko_fy2025_003": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "ko_fy2025_003",
+      "slot_results": [
+        {
+          "selected_fact_id": "3af805a9c5af04f1e02d2676a92f883c3be0c4abfa025c66c7d5499210bc6ace",
+          "slot_id": "slot_1",
+          "strict_correct": true
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": true
+    },
+    "ko_fy2025_006": {
+      "groups": [
+        "B_calculation_visible_unique"
+      ],
+      "question_id": "ko_fy2025_006",
+      "slot_results": [
+        {
+          "selected_fact_id": "3f1200299bd330cbeb5268ff99e22ecf1780494a6daf6fbdba4c05d50d22bd25",
+          "slot_id": "slot_1",
+          "strict_correct": false
+        },
+        {
+          "selected_fact_id": "37d8ab77749acede6baf69e4586f67e83e8a4ecc6d857b1794d90553e82a69bf",
+          "slot_id": "slot_2",
+          "strict_correct": false
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": false
+    },
+    "msft_fy2025_001": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "msft_fy2025_001",
+      "slot_results": [
+        {
+          "selected_fact_id": "d27437d68d1566cde35a212e14f7ee2e4f30481c68d34884dcdac2541bb701d4",
+          "slot_id": "1",
+          "strict_correct": false
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": false
+    },
+    "msft_fy2025_002": {
+      "groups": [
+        "D_unbindable_safety"
+      ],
+      "question_id": "msft_fy2025_002",
+      "slot_results": [
+        {
+          "selected_fact_id": "b4b510f88f3297fdcb82f363f0e129f8c71dc0d8a875030502e84637cca41b7b",
+          "slot_id": "1",
+          "strict_correct": false
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": false
+    },
+    "msft_fy2025_003": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "msft_fy2025_003",
+      "slot_results": [
+        {
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_correct": false
+        }
+      ],
+      "status": "MISSING",
+      "strict_complete": false
+    },
+    "nvda_fy2025_002": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "nvda_fy2025_002",
+      "slot_results": [
+        {
+          "selected_fact_id": "b88d989a5f1c915532cb7f7ab1cd3b1d7b6cd607de63c3bec37ca57c6b408e65",
+          "slot_id": "1",
+          "strict_correct": true
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": true
+    },
+    "nvda_fy2025_003": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "nvda_fy2025_003",
+      "slot_results": [
+        {
+          "selected_fact_id": "76ea0bd1e273e5b07b57a84390905c6784ac86c9d12bdbbf9c08f7445391359d",
+          "slot_id": "slot_1",
+          "strict_correct": true
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": true
+    },
+    "nvda_fy2025_004": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "nvda_fy2025_004",
+      "slot_results": [
+        {
+          "selected_fact_id": "a35f94b795ba5eb227de96ab46915d61ad88545cde97ff71d0e5ba10d12bb273",
+          "slot_id": "data_center_revenue_fy2025",
+          "strict_correct": true
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": true
+    },
+    "nvda_fy2025_005": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "nvda_fy2025_005",
+      "slot_results": [
+        {
+          "selected_fact_id": "1ddf3f61bafe730d901064e5ccfc91622e014724644cad8370d322b3c9316810",
+          "slot_id": "automotive_revenue_fy2025",
+          "strict_correct": true
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": true
+    },
+    "nvda_fy2025_007": {
+      "groups": [
+        "D_unbindable_safety"
+      ],
+      "question_id": "nvda_fy2025_007",
+      "slot_results": [
+        {
+          "selected_fact_id": "a35f94b795ba5eb227de96ab46915d61ad88545cde97ff71d0e5ba10d12bb273",
+          "slot_id": "slot_1",
+          "strict_correct": false
+        },
+        {
+          "selected_fact_id": "76ea0bd1e273e5b07b57a84390905c6784ac86c9d12bdbbf9c08f7445391359d",
+          "slot_id": "slot_2",
+          "strict_correct": false
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": false
+    },
+    "nvda_fy2025_009": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "nvda_fy2025_009",
+      "slot_results": [
+        {
+          "selected_fact_id": "a3798e1b9f596c81bfac2c6efd9ee5652ed8355f06ef6cc0a2e6a08df2d2e2af",
+          "slot_id": "1",
+          "strict_correct": true
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": true
+    },
+    "pfe_fy2024_001": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "pfe_fy2024_001",
+      "slot_results": [
+        {
+          "selected_fact_id": null,
+          "slot_id": "total_revenues_fy2024",
+          "strict_correct": false
+        }
+      ],
+      "status": "AMBIGUOUS",
+      "strict_complete": false
+    },
+    "pfe_fy2024_002": {
+      "groups": [
+        "D_unbindable_safety"
+      ],
+      "question_id": "pfe_fy2024_002",
+      "slot_results": [
+        {
+          "selected_fact_id": "9bfd7e02b272b7f734a02f9f55a50b948912d2632400f812bc6c84b751571fa1",
+          "slot_id": "1",
+          "strict_correct": false
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": false
+    },
+    "pfe_fy2024_004": {
+      "groups": [
+        "D_unbindable_safety"
+      ],
+      "question_id": "pfe_fy2024_004",
+      "slot_results": [
+        {
+          "selected_fact_id": "22d061547299571879907fd2c49c782481a16430e939621ffe07072428ee3cd5",
+          "slot_id": "1",
+          "strict_correct": false
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": false
+    },
+    "pfe_fy2024_006": {
+      "groups": [
+        "B_calculation_visible_unique"
+      ],
+      "question_id": "pfe_fy2024_006",
+      "slot_results": [
+        {
+          "selected_fact_id": "25b3026c7de0081af13f227eac8511f58d6b28bfdfbcce51b629d011cefc0a58",
+          "slot_id": "1",
+          "strict_correct": true
+        },
+        {
+          "selected_fact_id": "700de90b4df433e55ba036695dd691115c0bb6a85113f5f396ad9463a4d42231",
+          "slot_id": "2",
+          "strict_correct": true
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": true
+    },
+    "tsla_fy2025_001": {
+      "groups": [
+        "A_direct_visible_unique"
+      ],
+      "question_id": "tsla_fy2025_001",
+      "slot_results": [
+        {
+          "selected_fact_id": "f79884cf4f0f8d6be407ae53f629548e99f9f9b2c1288b86cb5408e4a0657ed8",
+          "slot_id": "1",
+          "strict_correct": false
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": false
+    },
+    "tsla_fy2025_006": {
+      "groups": [
+        "B_calculation_visible_unique"
+      ],
+      "question_id": "tsla_fy2025_006",
+      "slot_results": [
+        {
+          "selected_fact_id": "f79884cf4f0f8d6be407ae53f629548e99f9f9b2c1288b86cb5408e4a0657ed8",
+          "slot_id": "rev_fy2025",
+          "strict_correct": false
+        },
+        {
+          "selected_fact_id": "d05bc6d04f3ac3e2eed496474e64d340c53d704bf6e3f8d58527139e3beacd30",
+          "slot_id": "rev_fy2024",
+          "strict_correct": false
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": false
+    },
+    "v_fy2025_001": {
+      "groups": [
+        "C_indistinguishable"
+      ],
+      "question_id": "v_fy2025_001",
+      "slot_results": [
+        {
+          "selected_fact_id": "2a4da6647be88d9aa9a04e8c7e015e7a277ea028374f3dbe8778b5a6b97de9c3",
+          "slot_id": "1",
+          "strict_correct": true
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": true
+    },
+    "v_fy2025_002": {
+      "groups": [
+        "C_indistinguishable"
+      ],
+      "question_id": "v_fy2025_002",
+      "slot_results": [
+        {
+          "selected_fact_id": "1e029025fdb3d7a21173e4625d794ee6fd2e14c91147b6cfa6cad84d66e0e404",
+          "slot_id": "1",
+          "strict_correct": true
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": true
+    },
+    "v_fy2025_003": {
+      "groups": [
+        "C_indistinguishable"
+      ],
+      "question_id": "v_fy2025_003",
+      "slot_results": [
+        {
+          "selected_fact_id": "0d275e94bd8c411d5cd48e132ed3cfb6207fb60851d3f87598c52a2e822b0a44",
+          "slot_id": "slot_1",
+          "strict_correct": true
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": true
+    },
+    "v_fy2025_004": {
+      "groups": [
+        "C_indistinguishable"
+      ],
+      "question_id": "v_fy2025_004",
+      "slot_results": [
+        {
+          "selected_fact_id": "71bd06d15b6465ce3cc482db9381a3216507716c6a627de5f6408bab3999e909",
+          "slot_id": "1",
+          "strict_correct": true
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": true
+    },
+    "v_fy2025_006": {
+      "groups": [
+        "B_calculation_visible_unique",
+        "D_unbindable_safety"
+      ],
+      "question_id": "v_fy2025_006",
+      "slot_results": [
+        {
+          "selected_fact_id": "2a4da6647be88d9aa9a04e8c7e015e7a277ea028374f3dbe8778b5a6b97de9c3",
+          "slot_id": "s1",
+          "strict_correct": true
+        },
+        {
+          "selected_fact_id": "c8d61066a50fdbd0b76129b27af245ed97f4a3a38bb4cf26e81b824be4377759",
+          "slot_id": "s2",
+          "strict_correct": false
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": false
+    },
+    "v_fy2025_007": {
+      "groups": [
+        "D_unbindable_safety"
+      ],
+      "question_id": "v_fy2025_007",
+      "slot_results": [
+        {
+          "selected_fact_id": "71bd06d15b6465ce3cc482db9381a3216507716c6a627de5f6408bab3999e909",
+          "slot_id": "1",
+          "strict_correct": true
+        },
+        {
+          "selected_fact_id": "0d275e94bd8c411d5cd48e132ed3cfb6207fb60851d3f87598c52a2e822b0a44",
+          "slot_id": "2",
+          "strict_correct": false
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": false
+    },
+    "v_fy2025_009": {
+      "groups": [
+        "C_indistinguishable"
+      ],
+      "question_id": "v_fy2025_009",
+      "slot_results": [
+        {
+          "selected_fact_id": "4c35227ee925f1d09de33e0714c5e05c89c4beba383342a0e254bd37fa691a61",
+          "slot_id": "1",
+          "strict_correct": true
+        }
+      ],
+      "status": "BOUND",
+      "strict_complete": true
+    }
+  }
+}

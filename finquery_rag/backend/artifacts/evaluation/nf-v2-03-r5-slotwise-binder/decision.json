@@ -1,0 +1,28 @@
+{
+  "binder_model_frozen": "qwen3.7-plus",
+  "binder_task_formulation_frozen": false,
+  "diagnostic_all_operands": "2/6",
+  "diagnostic_calculation": "5/12",
+  "diagnostic_direct": "9/21",
+  "diagnostic_provider_calls": 39,
+  "formal_attempt_9": "not_run",
+  "formulation": "slotwise_discriminative_v1",
+  "gate": "NF-V2-03-R5",
+  "indistinguishable_abstention": "0/6",
+  "model": "qwen3.7-plus",
+  "next_gate": "v2_03_slotwise_failure_review",
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "provider_calls_per_query": 1,
+  "slotwise_binder_effective": "partial",
+  "structural_violations": 0,
+  "synthetic": "11/12",
+  "token_delta": {
+    "max_input_tokens": 366,
+    "mean_input_tokens": 41.5897435897441,
+    "p50_input_tokens": -26,
+    "p95_input_tokens": 278.0,
+    "total_input_tokens": 1622
+  },
+  "unbindable_false_binding": "6/7"
+}

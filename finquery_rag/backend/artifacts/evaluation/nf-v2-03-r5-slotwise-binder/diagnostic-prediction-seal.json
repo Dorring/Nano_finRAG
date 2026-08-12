@@ -1,0 +1,10 @@
+{
+  "formulation": "slotwise_discriminative_v1",
+  "gate": "NF-V2-03-R5",
+  "gold_reads_before_prediction_seal": 0,
+  "model": "qwen3.7-plus",
+  "prediction_count": 39,
+  "prediction_sha256": "07c02faa50fbb9d810a1b7103fd19bcddda3a03fbb2aa99e594504f0ce464dbf",
+  "sealed": true,
+  "sealed_before_gold": true
+}
