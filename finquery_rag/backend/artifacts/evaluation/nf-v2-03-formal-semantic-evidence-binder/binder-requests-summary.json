@@ -1,0 +1,656 @@
+{
+  "denominator": 72,
+  "fact_prefilter": false,
+  "full_fact_pool": true,
+  "gold_reads_before_prediction_seal": 0,
+  "rows": [
+    {
+      "candidate_count": 20,
+      "fact_count": 20,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "aapl_fy2025_001",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 19,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "aapl_fy2025_002",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 24,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "aapl_fy2025_003",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 22,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "aapl_fy2025_004",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 22,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "aapl_fy2025_005",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 17,
+      "intent": "CALCULATION",
+      "operation": "growth_rate",
+      "question_id": "aapl_fy2025_006",
+      "required_slot_count": 2,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 25,
+      "intent": "MULTI_EVIDENCE",
+      "operation": null,
+      "question_id": "aapl_fy2025_007",
+      "required_slot_count": 2,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 0,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "aapl_fy2025_008",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": true
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 33,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "aapl_fy2025_009",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 16,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "jpm_fy2025_001",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 6,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "jpm_fy2025_002",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 30,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "jpm_fy2025_003",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 24,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "jpm_fy2025_004",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 15,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "jpm_fy2025_005",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 17,
+      "intent": "CALCULATION",
+      "operation": "growth_rate",
+      "question_id": "jpm_fy2025_006",
+      "required_slot_count": 2,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 12,
+      "intent": "MULTI_EVIDENCE",
+      "operation": null,
+      "question_id": "jpm_fy2025_007",
+      "required_slot_count": 2,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 0,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "jpm_fy2025_008",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": true
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 36,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "jpm_fy2025_009",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 15,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "ko_fy2025_001",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 13,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "ko_fy2025_002",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 15,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "ko_fy2025_003",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 17,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "ko_fy2025_004",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 17,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "ko_fy2025_005",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 18,
+      "intent": "CALCULATION",
+      "operation": "growth_rate",
+      "question_id": "ko_fy2025_006",
+      "required_slot_count": 2,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 15,
+      "intent": "CALCULATION",
+      "operation": "percentage_share",
+      "question_id": "ko_fy2025_007",
+      "required_slot_count": 2,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 0,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "ko_fy2025_008",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": true
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 25,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "ko_fy2025_009",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 17,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "msft_fy2025_001",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 10,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "msft_fy2025_002",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 8,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "msft_fy2025_003",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 0,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "msft_fy2025_004",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": true
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 7,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "msft_fy2025_005",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 17,
+      "intent": "CALCULATION",
+      "operation": "growth_rate",
+      "question_id": "msft_fy2025_006",
+      "required_slot_count": 2,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 12,
+      "intent": "CALCULATION",
+      "operation": "percentage_share",
+      "question_id": "msft_fy2025_007",
+      "required_slot_count": 2,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 0,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "msft_fy2025_008",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": true
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 24,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "msft_fy2025_009",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 10,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "nvda_fy2025_001",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 5,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "nvda_fy2025_002",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 4,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "nvda_fy2025_003",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 3,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "nvda_fy2025_004",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 3,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "nvda_fy2025_005",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 15,
+      "intent": "CALCULATION",
+      "operation": "growth_rate",
+      "question_id": "nvda_fy2025_006",
+      "required_slot_count": 2,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 9,
+      "intent": "MULTI_EVIDENCE",
+      "operation": null,
+      "question_id": "nvda_fy2025_007",
+      "required_slot_count": 2,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 3,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "nvda_fy2025_008",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 22,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "nvda_fy2025_009",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 7,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "pfe_fy2024_001",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 28,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "pfe_fy2024_002",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 23,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "pfe_fy2024_003",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 11,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "pfe_fy2024_004",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 8,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "pfe_fy2024_005",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 13,
+      "intent": "CALCULATION",
+      "operation": "growth_rate",
+      "question_id": "pfe_fy2024_006",
+      "required_slot_count": 2,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 20,
+      "intent": "MULTI_EVIDENCE",
+      "operation": null,
+      "question_id": "pfe_fy2024_007",
+      "required_slot_count": 2,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 1,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "pfe_fy2024_008",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 26,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "pfe_fy2024_009",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 21,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "tsla_fy2025_001",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 13,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "tsla_fy2025_002",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 15,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "tsla_fy2025_003",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 17,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "tsla_fy2025_004",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 7,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "tsla_fy2025_005",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 24,
+      "intent": "CALCULATION",
+      "operation": "growth_rate",
+      "question_id": "tsla_fy2025_006",
+      "required_slot_count": 2,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 17,
+      "intent": "CALCULATION",
+      "operation": "difference",
+      "question_id": "tsla_fy2025_007",
+      "required_slot_count": 2,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 0,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "tsla_fy2025_008",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": true
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 26,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "tsla_fy2025_009",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 5,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "v_fy2025_001",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 3,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "v_fy2025_002",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 4,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "v_fy2025_003",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 3,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "v_fy2025_004",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 0,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "v_fy2025_005",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": true
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 5,
+      "intent": "CALCULATION",
+      "operation": "growth_rate",
+      "question_id": "v_fy2025_006",
+      "required_slot_count": 2,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 6,
+      "intent": "MULTI_EVIDENCE",
+      "operation": null,
+      "question_id": "v_fy2025_007",
+      "required_slot_count": 2,
+      "skipped_no_fact_supply": false
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 0,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "v_fy2025_008",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": true
+    },
+    {
+      "candidate_count": 20,
+      "fact_count": 9,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "question_id": "v_fy2025_009",
+      "required_slot_count": 1,
+      "skipped_no_fact_supply": false
+    }
+  ]
+}

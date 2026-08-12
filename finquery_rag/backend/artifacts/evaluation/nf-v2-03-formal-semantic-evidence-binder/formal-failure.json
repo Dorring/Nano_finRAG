@@ -1,0 +1,36 @@
+{
+  "base_commit": "cf76feb",
+  "calculator_calls": 0,
+  "calls_attempted": 2,
+  "concurrency": 1,
+  "failure_reason": "provider_api_failure",
+  "failures": [
+    {
+      "error": "Request timed out.",
+      "exception_cause": null,
+      "exception_class": "Request timed out",
+      "facts_in_packet": null,
+      "failure_class": "BT2_read_timeout",
+      "finish_reason": null,
+      "http_status": null,
+      "input_tokens": null,
+      "latency_ms": null,
+      "question_id": "aapl_fy2025_002",
+      "question_index": 2,
+      "raw_content_length": null,
+      "schema_failure_stage": "provider_transport"
+    }
+  ],
+  "formal_run_complete": false,
+  "gate": "NF-V2-03",
+  "generator_calls": 0,
+  "gold_reads_before_prediction_seal": 0,
+  "max_calls_per_query": 1,
+  "model": "qwen3.7-max",
+  "prediction_sealed": false,
+  "provider": "Alibaba Bailian",
+  "reranker_calls": 0,
+  "retrieval_calls": 0,
+  "retry": 0,
+  "semantic_scoring": "not_performed"
+}
