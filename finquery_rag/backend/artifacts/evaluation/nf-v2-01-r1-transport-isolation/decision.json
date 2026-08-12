@@ -1,0 +1,10 @@
+{
+  "base_commit": "b24133aab455207091ee7827487b056dd9aa3ea2",
+  "benchmark_loaded": false,
+  "dominant_failure": null,
+  "formal_72_run": false,
+  "gate": "NF-V2-01-R1-TRANSPORT",
+  "infrastructure_ready": true,
+  "model_calls": 30,
+  "next_gate": "resume_nf_v2_01_r1_formal_72_evaluation"
+}

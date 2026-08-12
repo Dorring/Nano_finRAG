@@ -64,6 +64,11 @@ def load_env_config() -> tuple[dict[str, Any] | None, str | None]:
     model = os.environ.get("V2_SUPERVISOR_MODEL")
     base_url = os.environ.get("V2_SUPERVISOR_BASE_URL")
     api_key = os.environ.get("V2_SUPERVISOR_API_KEY")
+    # Process-level environment injection can carry a trailing CRLF when the
+    # secret is piped through a Windows SSH client. API keys are opaque tokens;
+    # remove only surrounding transport whitespace before constructing headers.
+    if api_key is not None:
+        api_key = api_key.strip()
     thinking_raw = os.environ.get("V2_SUPERVISOR_ENABLE_THINKING")
     temperature_raw = os.environ.get("V2_SUPERVISOR_TEMPERATURE")
     missing = [name for name, value in {
@@ -235,8 +240,14 @@ def write_blocked_artifacts(reason: str, smoke: dict[str, Any]) -> dict[str, Any
     return decision
 
 
-def run_smoke(config: dict[str, Any]) -> dict[str, Any]:
-    question = "What was ExampleCorp's revenue in FY2025?"
+def run_smoke(
+    config: dict[str, Any],
+    *,
+    question: str = "What was ExampleCorp's revenue in FY2025?",
+    expected_metric: str | None = "revenue",
+    expected_period: str | None = "FY2025",
+) -> dict[str, Any]:
+    provider: BailianProvider | None = None
     try:
         provider = BailianProvider(
             base_url=config["base_url"],
@@ -244,16 +255,17 @@ def run_smoke(config: dict[str, Any]) -> dict[str, Any]:
             model_name=config["model"],
             enable_thinking=False,
             temperature=0.0,
+            max_retries=0,
         )
+        context = provider.transport_context(call_sequence_number=1)
         run = SupervisorService(provider).plan(question)
         plan = run.plan.to_dict() if run.plan else None
         slot = plan["required_slots"][0] if plan and plan.get("required_slots") else {}
-        semantic = bool(
-            plan and plan.get("intent") == Intent.DIRECT_FACT.value
-            and norm(slot.get("metric")) == "revenue"
-            and norm(slot.get("period")) == "fy2025"
-            and plan.get("next_action") == Action.RETRIEVE.value
-        )
+        semantic = bool(plan and plan.get("intent") == Intent.DIRECT_FACT.value and plan.get("next_action") == Action.RETRIEVE.value)
+        if expected_metric is not None:
+            semantic = semantic and norm(slot.get("metric")) == norm(expected_metric)
+        if expected_period is not None:
+            semantic = semantic and norm(slot.get("period")) == norm(expected_period)
         leakage = is_answer_leakage(run.metadata.raw_response if run.metadata else None)
         status = "pass" if run.plan_valid and semantic and not leakage else "fail"
         return {
@@ -267,9 +279,14 @@ def run_smoke(config: dict[str, Any]) -> dict[str, Any]:
             "semantic_shape": semantic,
             "model_calls": 1,
             "error": run.error,
+            "runner_context": context | {
+                "client_closed_after_call": provider.transport_context(call_sequence_number=1).get("client_closed_before_call"),
+            },
+            "exception_chain": provider.last_exception_chain,
         }
     except Exception as exc:
-        return {"status": "fail", "question": question, "provider_response_success": False, "structured_output_success": False, "schema_valid": False, "plan_validator_pass": False, "answer_leakage": False, "semantic_shape": False, "model_calls": 1, "error": f"{type(exc).__name__}: {exc}"}
+        context = provider.transport_context(call_sequence_number=1) if provider is not None else {"process_id": os.getpid()}
+        return {"status": "fail", "question": question, "provider_response_success": False, "structured_output_success": False, "schema_valid": False, "plan_validator_pass": False, "answer_leakage": False, "semantic_shape": False, "model_calls": 1, "error": f"{type(exc).__name__}: {exc}", "runner_context": context, "exception_chain": provider.last_exception_chain if provider is not None else []}
 
 
 def norm(value: Any) -> str:
@@ -283,6 +300,7 @@ def run_formal(config: dict[str, Any]) -> dict[str, Any]:
         model_name=config["model"],
         enable_thinking=False,
         temperature=0.0,
+        max_retries=0,
     )
     service = SupervisorService(provider)
     questions = load_question_envelopes(QUESTIONS)

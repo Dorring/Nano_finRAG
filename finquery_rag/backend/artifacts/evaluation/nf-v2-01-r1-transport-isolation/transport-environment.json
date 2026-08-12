@@ -1,0 +1,14 @@
+{
+  "ALL_PROXY_present": false,
+  "HTTPS_PROXY_present": false,
+  "HTTP_PROXY_present": false,
+  "NO_PROXY_present": false,
+  "custom_http_client": false,
+  "httpcore_version": "1.0.9",
+  "httpx_version": "0.28.1",
+  "openai_default_trust_env": true,
+  "openai_version": "2.8.1",
+  "python_version": "3.12.2",
+  "raw_httpx_trust_env": true,
+  "sdk_max_retries": 0
+}

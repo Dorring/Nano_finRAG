@@ -1,0 +1,6 @@
+{
+  "applied": "strip surrounding CRLF/whitespace from V2_SUPERVISOR_API_KEY at runner environment boundary",
+  "observed_root_cause": "Windows SSH stdin injection left a trailing CR in the Authorization header",
+  "sdk_max_retries": 0,
+  "semantic_behavior_changed": false
+}

@@ -1,0 +1,14 @@
+{
+  "actual_concurrency": 1,
+  "async_tasks": false,
+  "client_reuse_defect": false,
+  "configured_concurrency": 1,
+  "cross_event_loop_defect": false,
+  "explicit_close": false,
+  "formal_runner_provider_scope": "one BailianProvider per synthetic run_smoke call; one provider for formal 72 replay",
+  "openai_client_scope": "one synchronous OpenAI client per BailianProvider",
+  "processes": false,
+  "proxy_env_difference": false,
+  "sync_async": "synchronous",
+  "threads": false
+}
