@@ -1,0 +1,253 @@
+{
+  "calculation": {
+    "HV0_already_visible_enough": 0,
+    "HV1_recoverable_with_existing_hidden_row_context": 0,
+    "HV2_recoverable_with_existing_hidden_header_context": 0,
+    "HV3_recoverable_with_statement_context": 12,
+    "HV4_recoverable_with_section_context": 0,
+    "HV5_not_recoverable_from_existing_source_metadata": 0,
+    "reason": "All twelve bindable operands have same-metric/same-period competitors separated only by hidden statement/table context in the current packet representation."
+  },
+  "direct": {
+    "HV0_already_visible_enough": 4,
+    "HV1_recoverable_with_existing_hidden_row_context": 0,
+    "HV2_recoverable_with_existing_hidden_header_context": 6,
+    "HV3_recoverable_with_statement_context": 9,
+    "HV4_recoverable_with_section_context": 2,
+    "HV5_not_recoverable_from_existing_source_metadata": 6,
+    "rows": [
+      {
+        "additional_existing_fields": [
+          "table_title",
+          "statement_title"
+        ],
+        "classification": "HV3_recoverable_with_statement_context",
+        "current_classification": "CD5_materially_indistinguishable_conflicting_facts",
+        "question_id": "aapl_fy2025_001"
+      },
+      {
+        "additional_existing_fields": [
+          "row_hierarchy",
+          "column_header_path",
+          "table_title"
+        ],
+        "classification": "HV2_recoverable_with_existing_hidden_header_context",
+        "current_classification": "CD6_gold_fact_missing_required_scope_context",
+        "question_id": "aapl_fy2025_002"
+      },
+      {
+        "additional_existing_fields": [
+          "none_sufficient_for_physical_deduplication"
+        ],
+        "classification": "HV5_not_recoverable_from_existing_source_metadata",
+        "current_classification": "CD3_duplicate_equivalent_same_statement",
+        "question_id": "aapl_fy2025_003"
+      },
+      {
+        "additional_existing_fields": [
+          "table_title",
+          "statement_title"
+        ],
+        "classification": "HV3_recoverable_with_statement_context",
+        "current_classification": "CD5_materially_indistinguishable_conflicting_facts",
+        "question_id": "aapl_fy2025_004"
+      },
+      {
+        "additional_existing_fields": [
+          "table_title",
+          "statement_title"
+        ],
+        "classification": "HV3_recoverable_with_statement_context",
+        "current_classification": "CD5_materially_indistinguishable_conflicting_facts",
+        "question_id": "aapl_fy2025_009"
+      },
+      {
+        "additional_existing_fields": [
+          "table_title",
+          "statement_title"
+        ],
+        "classification": "HV3_recoverable_with_statement_context",
+        "current_classification": "CD5_materially_indistinguishable_conflicting_facts",
+        "question_id": "jpm_fy2025_001"
+      },
+      {
+        "additional_existing_fields": [],
+        "classification": "HV0_already_visible_enough",
+        "current_classification": "CD0_unique_visible_match",
+        "question_id": "jpm_fy2025_002"
+      },
+      {
+        "additional_existing_fields": [
+          "table_title",
+          "statement_title"
+        ],
+        "classification": "HV3_recoverable_with_statement_context",
+        "current_classification": "CD5_materially_indistinguishable_conflicting_facts",
+        "question_id": "jpm_fy2025_003"
+      },
+      {
+        "additional_existing_fields": [
+          "section_heading",
+          "statement_title"
+        ],
+        "classification": "HV4_recoverable_with_section_context",
+        "current_classification": "CD6_gold_fact_missing_required_scope_context",
+        "question_id": "jpm_fy2025_004"
+      },
+      {
+        "additional_existing_fields": [
+          "section_heading",
+          "statement_title"
+        ],
+        "classification": "HV4_recoverable_with_section_context",
+        "current_classification": "CD6_gold_fact_missing_required_scope_context",
+        "question_id": "jpm_fy2025_009"
+      },
+      {
+        "additional_existing_fields": [
+          "table_title",
+          "statement_title"
+        ],
+        "classification": "HV3_recoverable_with_statement_context",
+        "current_classification": "CD5_materially_indistinguishable_conflicting_facts",
+        "question_id": "ko_fy2025_001"
+      },
+      {
+        "additional_existing_fields": [
+          "table_title",
+          "statement_title"
+        ],
+        "classification": "HV3_recoverable_with_statement_context",
+        "current_classification": "CD5_materially_indistinguishable_conflicting_facts",
+        "question_id": "ko_fy2025_002"
+      },
+      {
+        "additional_existing_fields": [],
+        "classification": "HV0_already_visible_enough",
+        "current_classification": "CD0_unique_visible_match",
+        "question_id": "ko_fy2025_003"
+      },
+      {
+        "additional_existing_fields": [
+          "row_hierarchy",
+          "column_header_path",
+          "table_title"
+        ],
+        "classification": "HV2_recoverable_with_existing_hidden_header_context",
+        "current_classification": "CD6_gold_fact_missing_required_scope_context",
+        "question_id": "msft_fy2025_001"
+      },
+      {
+        "additional_existing_fields": [
+          "row_hierarchy",
+          "column_header_path",
+          "table_title"
+        ],
+        "classification": "HV2_recoverable_with_existing_hidden_header_context",
+        "current_classification": "CD6_gold_fact_missing_required_scope_context",
+        "question_id": "msft_fy2025_003"
+      },
+      {
+        "additional_existing_fields": [],
+        "classification": "HV0_already_visible_enough",
+        "current_classification": "CD0_unique_visible_match",
+        "question_id": "nvda_fy2025_002"
+      },
+      {
+        "additional_existing_fields": [],
+        "classification": "HV0_already_visible_enough",
+        "current_classification": "CD0_unique_visible_match",
+        "question_id": "nvda_fy2025_003"
+      },
+      {
+        "additional_existing_fields": [
+          "row_hierarchy",
+          "column_header_path",
+          "table_title"
+        ],
+        "classification": "HV2_recoverable_with_existing_hidden_header_context",
+        "current_classification": "CD6_gold_fact_missing_required_scope_context",
+        "question_id": "nvda_fy2025_004"
+      },
+      {
+        "additional_existing_fields": [
+          "row_hierarchy",
+          "column_header_path",
+          "table_title"
+        ],
+        "classification": "HV2_recoverable_with_existing_hidden_header_context",
+        "current_classification": "CD6_gold_fact_missing_required_scope_context",
+        "question_id": "nvda_fy2025_005"
+      },
+      {
+        "additional_existing_fields": [
+          "row_hierarchy",
+          "column_header_path",
+          "table_title"
+        ],
+        "classification": "HV2_recoverable_with_existing_hidden_header_context",
+        "current_classification": "CD6_gold_fact_missing_required_scope_context",
+        "question_id": "nvda_fy2025_009"
+      },
+      {
+        "additional_existing_fields": [
+          "table_title",
+          "statement_title"
+        ],
+        "classification": "HV3_recoverable_with_statement_context",
+        "current_classification": "CD5_materially_indistinguishable_conflicting_facts",
+        "question_id": "pfe_fy2024_001"
+      },
+      {
+        "additional_existing_fields": [
+          "table_title",
+          "statement_title"
+        ],
+        "classification": "HV3_recoverable_with_statement_context",
+        "current_classification": "CD5_materially_indistinguishable_conflicting_facts",
+        "question_id": "tsla_fy2025_001"
+      },
+      {
+        "additional_existing_fields": [
+          "none_sufficient_for_physical_deduplication"
+        ],
+        "classification": "HV5_not_recoverable_from_existing_source_metadata",
+        "current_classification": "CD3_duplicate_equivalent_same_statement",
+        "question_id": "v_fy2025_001"
+      },
+      {
+        "additional_existing_fields": [
+          "none_sufficient_for_physical_deduplication"
+        ],
+        "classification": "HV5_not_recoverable_from_existing_source_metadata",
+        "current_classification": "CD3_duplicate_equivalent_same_statement",
+        "question_id": "v_fy2025_002"
+      },
+      {
+        "additional_existing_fields": [
+          "none_sufficient_for_physical_deduplication"
+        ],
+        "classification": "HV5_not_recoverable_from_existing_source_metadata",
+        "current_classification": "CD3_duplicate_equivalent_same_statement",
+        "question_id": "v_fy2025_003"
+      },
+      {
+        "additional_existing_fields": [
+          "none_sufficient_for_physical_deduplication"
+        ],
+        "classification": "HV5_not_recoverable_from_existing_source_metadata",
+        "current_classification": "CD3_duplicate_equivalent_same_statement",
+        "question_id": "v_fy2025_004"
+      },
+      {
+        "additional_existing_fields": [
+          "none_sufficient_for_physical_deduplication"
+        ],
+        "classification": "HV5_not_recoverable_from_existing_source_metadata",
+        "current_classification": "CD3_duplicate_equivalent_same_statement",
+        "question_id": "v_fy2025_009"
+      }
+    ]
+  },
+  "model_calls": 0
+}

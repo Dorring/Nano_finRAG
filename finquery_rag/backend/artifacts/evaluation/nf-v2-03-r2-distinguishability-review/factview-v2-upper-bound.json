@@ -1,0 +1,19 @@
+{
+  "assumptions": [
+    "No new semantic label is invented.",
+    "Only existing source-derived row/header/table/statement context is projected.",
+    "Gold is not used as a selection feature."
+  ],
+  "calculation": {
+    "additional_recoverable_from_hidden_metadata": 12,
+    "current_visible_unique_operands": "0/12",
+    "projected_factview_v2_unique_operands": "12/12"
+  },
+  "direct": {
+    "additional_recoverable_from_hidden_metadata": 17,
+    "current_visible_unique": "4/27",
+    "projected_factview_v2_unique": "21/27"
+  },
+  "model_calls": 0,
+  "projection_only": true
+}

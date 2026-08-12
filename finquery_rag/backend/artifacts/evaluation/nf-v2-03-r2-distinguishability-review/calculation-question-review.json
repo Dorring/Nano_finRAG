@@ -1,0 +1,49 @@
+{
+  "binder_all_operand_success_among_theoretically_solvable": "0/0",
+  "model_calls": 0,
+  "questions_theoretically_solvable_with_current_factview": "0/6",
+  "rows": [
+    {
+      "classification": "CQ2_multiple_operands_indistinguishable",
+      "operation": "growth_rate",
+      "question_id": "aapl_fy2025_006",
+      "status": "AMBIGUOUS",
+      "theoretically_solvable_with_current_factview": false
+    },
+    {
+      "classification": "CQ2_multiple_operands_indistinguishable",
+      "operation": "growth_rate",
+      "question_id": "jpm_fy2025_006",
+      "status": "AMBIGUOUS",
+      "theoretically_solvable_with_current_factview": false
+    },
+    {
+      "classification": "CQ2_multiple_operands_indistinguishable",
+      "operation": "growth_rate",
+      "question_id": "ko_fy2025_006",
+      "status": "AMBIGUOUS",
+      "theoretically_solvable_with_current_factview": false
+    },
+    {
+      "classification": "CQ2_multiple_operands_indistinguishable",
+      "operation": "growth_rate",
+      "question_id": "pfe_fy2024_006",
+      "status": "AMBIGUOUS",
+      "theoretically_solvable_with_current_factview": false
+    },
+    {
+      "classification": "CQ2_multiple_operands_indistinguishable",
+      "operation": "growth_rate",
+      "question_id": "tsla_fy2025_006",
+      "status": "AMBIGUOUS",
+      "theoretically_solvable_with_current_factview": false
+    },
+    {
+      "classification": "CQ2_multiple_operands_indistinguishable",
+      "operation": "growth_rate",
+      "question_id": "v_fy2025_006",
+      "status": "BOUND",
+      "theoretically_solvable_with_current_factview": false
+    }
+  ]
+}

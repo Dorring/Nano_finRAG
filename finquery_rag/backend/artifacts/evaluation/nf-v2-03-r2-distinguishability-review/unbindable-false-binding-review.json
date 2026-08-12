@@ -1,0 +1,93 @@
+{
+  "alternative_support_candidates": [
+    "pfe_fy2024_002",
+    "pfe_fy2024_004",
+    "v_fy2025_007"
+  ],
+  "attempt7_false_binding_on_unbindable_aggregate": 7,
+  "classification_counts": {
+    "UF0_near_metric_wrong_scope": 1,
+    "UF1_wrong_period": 0,
+    "UF2_wrong_statement": 0,
+    "UF3_parent_child_metric_substitution": 1,
+    "UF4_alternative_support_candidate": 3,
+    "UF5_fact_packet_missing_critical_disambiguator": 1,
+    "UF6_other": 1
+  },
+  "model_calls": 0,
+  "rows": [
+    {
+      "classification": "UF0_near_metric_wrong_scope",
+      "intent": "DIRECT_FACT",
+      "note": "Offline audit annotation only; Gold was not broadened.",
+      "question_id": "jpm_fy2025_005",
+      "selected_fact_handles": [
+        "F13"
+      ],
+      "status": "BOUND"
+    },
+    {
+      "classification": "UF3_parent_child_metric_substitution",
+      "intent": "DIRECT_FACT",
+      "note": "Offline audit annotation only; Gold was not broadened.",
+      "question_id": "msft_fy2025_002",
+      "selected_fact_handles": [
+        "F03"
+      ],
+      "status": "BOUND"
+    },
+    {
+      "classification": "UF4_alternative_support_candidate",
+      "intent": "DIRECT_FACT",
+      "note": "Offline audit annotation only; Gold was not broadened.",
+      "question_id": "pfe_fy2024_002",
+      "selected_fact_handles": [
+        "F02"
+      ],
+      "status": "BOUND"
+    },
+    {
+      "classification": "UF4_alternative_support_candidate",
+      "intent": "DIRECT_FACT",
+      "note": "Offline audit annotation only; Gold was not broadened.",
+      "question_id": "pfe_fy2024_004",
+      "selected_fact_handles": [
+        "F01"
+      ],
+      "status": "BOUND"
+    },
+    {
+      "classification": "UF6_other",
+      "intent": "CALCULATION",
+      "note": "The aggregate Attempt-7 unbindable count includes one calculation-bindable false operand (v_fy2025_006); it is retained for reconciliation and not relabeled as a direct unbindable case.",
+      "question_id": "v_fy2025_006",
+      "selected_fact_handles": [
+        "F02",
+        "F04"
+      ],
+      "status": "BOUND"
+    },
+    {
+      "classification": "UF5_fact_packet_missing_critical_disambiguator",
+      "intent": "MULTI_EVIDENCE",
+      "note": "Offline audit annotation only; Gold was not broadened.",
+      "question_id": "nvda_fy2025_007",
+      "selected_fact_handles": [
+        "F02",
+        "F04"
+      ],
+      "status": "BOUND"
+    },
+    {
+      "classification": "UF4_alternative_support_candidate",
+      "intent": "MULTI_EVIDENCE",
+      "note": "Offline audit annotation only; Gold was not broadened.",
+      "question_id": "v_fy2025_007",
+      "selected_fact_handles": [
+        "F05",
+        "F01"
+      ],
+      "status": "BOUND"
+    }
+  ]
+}
