@@ -42,7 +42,11 @@ LABELS = ROOT / "benchmarks/financial_rag_v1/data/labels.golden.jsonl"
 
 GATE = "NF-V2-03"
 BASE_COMMIT = "7e9cd14f879f2d7613fdd5cd79354cdfe5d7e663"
-MODEL = "qwen3.7-max-2026-06-08"
+SUPPORTED_MODELS = (
+    "qwen3.7-max-2026-06-08",
+    "qwen3.7-flash-2026-07-15",
+)
+MODEL = os.getenv("V2_SUPERVISOR_MODEL", SUPPORTED_MODELS[0]).strip()
 FACT_CONTRACT_SHA = "7a253b443962c5f372dd897c49c057a19b553e92314faadc31eefc82b27b54eb"
 QUESTION_TOTAL = 72
 DIRECT_TOTAL = 56
@@ -117,8 +121,8 @@ def load_config() -> dict[str, Any]:
     temperature = os.getenv("V2_SUPERVISOR_TEMPERATURE")
     if provider != "bailian":
         raise RuntimeError("V2_SUPERVISOR_PROVIDER must be bailian")
-    if model != MODEL:
-        raise RuntimeError(f"V2_SUPERVISOR_MODEL must be {MODEL}")
+    if model not in SUPPORTED_MODELS:
+        raise RuntimeError(f"V2_SUPERVISOR_MODEL must be one of {SUPPORTED_MODELS}")
     if not base_url:
         raise RuntimeError("V2_SUPERVISOR_BASE_URL is not configured")
     if not api_key:
