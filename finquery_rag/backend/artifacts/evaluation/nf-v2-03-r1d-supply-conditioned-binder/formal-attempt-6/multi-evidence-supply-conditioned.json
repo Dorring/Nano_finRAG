@@ -1,0 +1,111 @@
+{
+  "absolute_complete_upper_bound": "0/5",
+  "ambiguous_given_bindable": 0,
+  "missed_bindable": 0,
+  "missing_given_bindable": 0,
+  "questions": 5,
+  "rows": [
+    {
+      "intent": "MULTI_EVIDENCE",
+      "question_id": "aapl_fy2025_007",
+      "slot_results": [
+        {
+          "selected_fact_id": null,
+          "slot_id": "1",
+          "strict_correct": false
+        },
+        {
+          "selected_fact_id": null,
+          "slot_id": "2",
+          "strict_correct": false
+        }
+      ],
+      "status": "AMBIGUOUS",
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "intent": "MULTI_EVIDENCE",
+      "question_id": "jpm_fy2025_007",
+      "slot_results": [
+        {
+          "selected_fact_id": null,
+          "slot_id": "slot_1",
+          "strict_correct": false
+        },
+        {
+          "selected_fact_id": null,
+          "slot_id": "slot_2",
+          "strict_correct": false
+        }
+      ],
+      "status": "MISSING",
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "intent": "MULTI_EVIDENCE",
+      "question_id": "nvda_fy2025_007",
+      "slot_results": [
+        {
+          "selected_fact_id": "a35f94b795ba5eb227de96ab46915d61ad88545cde97ff71d0e5ba10d12bb273",
+          "slot_id": "slot_1",
+          "strict_correct": false
+        },
+        {
+          "selected_fact_id": "76ea0bd1e273e5b07b57a84390905c6784ac86c9d12bdbbf9c08f7445391359d",
+          "slot_id": "slot_2",
+          "strict_correct": false
+        }
+      ],
+      "status": "BOUND",
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "intent": "MULTI_EVIDENCE",
+      "question_id": "pfe_fy2024_007",
+      "slot_results": [
+        {
+          "selected_fact_id": "9bfd7e02b272b7f734a02f9f55a50b948912d2632400f812bc6c84b751571fa1",
+          "slot_id": "1",
+          "strict_correct": false
+        },
+        {
+          "selected_fact_id": null,
+          "slot_id": "2",
+          "strict_correct": false
+        }
+      ],
+      "status": "AMBIGUOUS",
+      "strict_bindable": false,
+      "strict_complete": false
+    },
+    {
+      "intent": "MULTI_EVIDENCE",
+      "question_id": "v_fy2025_007",
+      "slot_results": [
+        {
+          "selected_fact_id": "71bd06d15b6465ce3cc482db9381a3216507716c6a627de5f6408bab3999e909",
+          "slot_id": "1",
+          "strict_correct": true
+        },
+        {
+          "selected_fact_id": "0d275e94bd8c411d5cd48e132ed3cfb6207fb60851d3f87598c52a2e822b0a44",
+          "slot_id": "2",
+          "strict_correct": false
+        }
+      ],
+      "status": "BOUND",
+      "strict_bindable": false,
+      "strict_complete": false
+    }
+  ],
+  "semantic_evaluation": "not_evaluable",
+  "strict_bindable": 0,
+  "strict_complete": 0,
+  "strict_correct_given_bindable": 0,
+  "success_given_bindable_percent": 0.0,
+  "supply_ceiling": "0/5",
+  "wrong_fact_given_bindable": 0
+}

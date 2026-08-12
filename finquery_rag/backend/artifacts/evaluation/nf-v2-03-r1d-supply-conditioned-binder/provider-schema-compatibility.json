@@ -1,0 +1,16 @@
+{
+  "gate": "NF-V2-03-R1D",
+  "provider": "Alibaba Bailian",
+  "model": "qwen3.7-plus",
+  "provider_schema_keyword_removed": "uniqueItems",
+  "uniqueItems_removed": true,
+  "provider_schema_strict": true,
+  "selection_only": true,
+  "slot_properties": "exact RequiredSlot IDs",
+  "fact_handle_items_enum": "exact query-local F01..Fn",
+  "additionalProperties": false,
+  "provider_http_400_synthetic": 0,
+  "semantic_contract_changed": false,
+  "internal_evidence_binding_changed": false,
+  "gold_reads": 0
+}

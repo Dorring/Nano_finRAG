@@ -19,11 +19,20 @@ from .binder_provider import (
 from .binder_service import BinderRequest
 from .binder_selection import (
     BinderSelectionDTOv1,
+    DuplicateFactHandleError,
     build_selection_messages,
     parse_selection,
     provider_request,
     selection_to_binding,
 )
+
+
+class BinderAdapterError(BinderProviderError):
+    """The provider response parsed, but deterministic adaptation failed."""
+
+    schema_valid = True
+    adapter_failure = True
+    classification = DuplicateFactHandleError.classification
 
 
 class BailianConstrainedBinderProvider(BailianBinderProvider):
@@ -94,6 +103,24 @@ class BailianConstrainedBinderProvider(BailianBinderProvider):
             )
             self.last_call = metadata
             return BinderProviderResult(binding=binding, metadata=metadata, raw_response=self.last_raw_response)
+        except DuplicateFactHandleError as exc:
+            cause = exc.__cause__ or exc.__context__
+            metadata = self._metadata(
+                response,
+                started,
+                structured=True,
+                error=str(exc),
+                provider_success=response is not None,
+                exception_type=type(exc).__name__,
+                exception_cause_type=type(cause).__name__ if cause is not None else None,
+                exception_cause_message=_safe_message(cause) if cause is not None else None,
+                raw_content_length=len(self.last_raw_response or ""),
+                request_id=getattr(response, "id", None),
+                http_status=_exception_http_status(exc),
+                exception_chain=_exception_chain(exc),
+            )
+            self.last_call = metadata
+            raise BinderAdapterError(f"{DuplicateFactHandleError.classification}:{exc}") from exc
         except BinderProviderError as exc:
             cause = exc.__cause__ or exc.__context__
             metadata = self._metadata(

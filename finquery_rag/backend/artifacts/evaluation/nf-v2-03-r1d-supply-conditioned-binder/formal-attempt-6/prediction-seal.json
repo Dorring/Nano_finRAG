@@ -1,0 +1,12 @@
+{
+  "financial_fact_supply_sha256": "51954973fd3ed2395fc1367fa9e5302d241b742466b6c5aafe218e312a644e8a",
+  "gate": "NF-V2-03-R1D",
+  "gold_reads_before_prediction_seal": 0,
+  "max_calls_per_query": 1,
+  "prediction_sha256": "f5b1f35875b0d4b4721cce5697f7aa654532491c748fa4a813c38dc1df98d543",
+  "predictions_written": 72,
+  "provider_model_calls": 65,
+  "questions_expected": 72,
+  "sealed": true,
+  "sealed_before_gold": true
+}

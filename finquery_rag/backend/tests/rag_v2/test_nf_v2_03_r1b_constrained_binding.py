@@ -6,6 +6,7 @@ from rag_v2.contracts.plan import Action, Intent, RequiredSlot, SupervisorPlan
 from rag_v2.evidence.binder_service import BinderRequest
 from rag_v2.evidence.binder_fact_view import build_binder_fact_view
 from rag_v2.evidence.binder_selection import (
+    DuplicateFactHandleError,
     build_selection_messages,
     fact_handle_map,
     parse_selection,
@@ -56,7 +57,7 @@ def test_dynamic_schema_has_exact_slots_and_handles() -> None:
     assert slots["required"] == ["slot_1", "slot_2"]
     assert slots["additionalProperties"] is False
     assert slots["properties"]["slot_1"]["type"] == "array"
-    assert slots["properties"]["slot_1"]["uniqueItems"] is True
+    assert "uniqueItems" not in slots["properties"]["slot_1"]
     assert slots["properties"]["slot_1"]["items"]["enum"] == list(handles)
     assert "status" not in slots["properties"]["slot_1"]
 
@@ -92,7 +93,6 @@ def test_ambiguous_adapter_and_validator_pass() -> None:
     [
         {"slots": {"wrong": ["F01"]}},
         {"slots": {"slot_1": ["F99"]}},
-        {"slots": {"slot_1": ["F01", "F01"]}},
         {"slots": {"slot_1": {"fact_handles": ["F01"]}}},
         {"slots": {"slot_1": "F01"}},
     ],
@@ -101,6 +101,13 @@ def test_invalid_provider_shape_fails_closed(payload: dict[str, object]) -> None
     req = request("slot_1")
     with pytest.raises(ValueError):
         parse_selection(payload, req.plan, fact_handle_map(req))
+
+
+def test_duplicate_handles_parse_but_adapter_fails_closed() -> None:
+    req = request("slot_1")
+    dto = parse_selection({"slots": {"slot_1": ["F01", "F01"]}}, req.plan, fact_handle_map(req))
+    with pytest.raises(DuplicateFactHandleError, match="duplicate_fact_handle"):
+        selection_to_binding(dto, req, fact_handle_map(req))
 
 
 def test_provider_prompt_has_no_answer_or_calculation_fields() -> None:

@@ -1,0 +1,13 @@
+{
+  "gate": "NF-V2-03-R1D",
+  "provider_schema_uniqueItems": false,
+  "dto_parse_accepts_duplicate_handles": true,
+  "adapter_enforces_uniqueness": true,
+  "duplicate_classification": "duplicate_fact_handle",
+  "duplicate_scope": "within_each_slot_fact_handles_array",
+  "on_duplicate": "fail_closed",
+  "silent_deduplication": false,
+  "automatic_fact_choice": false,
+  "synthetic_duplicate_handles": 0,
+  "unit_test": "test_duplicate_handles_parse_but_adapter_fails_closed"
+}

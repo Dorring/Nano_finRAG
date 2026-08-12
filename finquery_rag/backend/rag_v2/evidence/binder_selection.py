@@ -26,6 +26,12 @@ class BinderSelectionDTOv1:
     slots: Mapping[str, tuple[str, ...]]
 
 
+class DuplicateFactHandleError(ValueError):
+    """A parsed selection repeated a handle within one slot."""
+
+    classification = "duplicate_fact_handle"
+
+
 def fact_handle_map(request: BinderRequest) -> dict[str, str]:
     """Assign F01..Fn in frozen packet order, without filtering or ranking."""
     return {f"F{index:02d}": str(fact["fact_id"]) for index, fact in enumerate(request.facts, 1)}
@@ -38,7 +44,6 @@ def reverse_fact_handle_map(request: BinderRequest) -> dict[str, str]:
 def selection_schema(plan: SupervisorPlan, handles: Mapping[str, str]) -> dict[str, Any]:
     slot_schema = {
         "type": "array",
-        "uniqueItems": True,
         "items": {"type": "string", "enum": list(handles)},
     }
     slot_ids = [slot.slot_id for slot in plan.required_slots]
@@ -100,8 +105,6 @@ def parse_selection(payload: Any, plan: SupervisorPlan, handles: Mapping[str, st
         fact_values = payload["slots"][slot_id]
         if not isinstance(fact_values, list) or any(item not in handles for item in fact_values):
             raise ValueError(f"invalid selection value for {slot_id}")
-        if len(fact_values) != len(set(fact_values)):
-            raise ValueError(f"duplicate fact handle for {slot_id}")
         values[slot_id] = tuple(fact_values)
     return BinderSelectionDTOv1(values)
 
@@ -115,6 +118,8 @@ def selection_to_binding(dto: BinderSelectionDTOv1, request: BinderRequest, hand
     ambiguous: list[str] = []
     for slot_id in (slot.slot_id for slot in request.plan.required_slots):
         selected_handles = dto.slots[slot_id]
+        if len(selected_handles) != len(set(selected_handles)):
+            raise DuplicateFactHandleError(f"duplicate_fact_handle:{slot_id}")
         fact_ids = tuple(handles[handle] for handle in selected_handles)
         if len(fact_ids) == 1:
             slot_bindings[slot_id] = fact_ids

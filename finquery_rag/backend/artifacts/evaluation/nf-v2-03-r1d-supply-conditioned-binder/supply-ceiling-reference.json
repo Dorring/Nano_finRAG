@@ -1,0 +1,21 @@
+{
+  "gate": "NF-V2-03-R1D",
+  "source_artifact": "nf-v2-03-r1c-supply-and-protocol-recovery",
+  "financial_fact_recovery_rerun": false,
+  "direct_questions": 56,
+  "direct_reviewed_strict_bindable": "27/56",
+  "calculation_questions": 11,
+  "calculation_strict_bindable": "6/11",
+  "multi_evidence_questions": 5,
+  "multi_evidence_strict_bindable": "0/5",
+  "old_direct_reviewed_strict_bindable": "23/56",
+  "old_gold_source_financial_fact": "25/56",
+  "new_gold_source_financial_fact": "33/56",
+  "top20_unchanged": true,
+  "financial_fact_v1_unchanged": true,
+  "binder_fact_view_unchanged": true,
+  "gold_used_to_generate_facts": 0,
+  "question_specific_rules": 0,
+  "production_default": "V1",
+  "production_switch_allowed": false
+}

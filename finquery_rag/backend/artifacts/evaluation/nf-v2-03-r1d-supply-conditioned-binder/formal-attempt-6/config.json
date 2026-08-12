@@ -1,0 +1,35 @@
+{
+  "api_key_persisted": false,
+  "base_commit": "e96cc0fba54ab69caa4fc7d2ecaad91db893938c",
+  "binder_fact_view_sha256": "71cad925c9357403a0148c3b64312417672c6ecf1102b0a1aed626f793dd4dc9",
+  "financial_fact_supply_sha256": "51954973fd3ed2395fc1367fa9e5302d241b742466b6c5aafe218e312a644e8a",
+  "gate": "NF-V2-03-R1D",
+  "gold_reads_before_prediction_seal": 0,
+  "http_timeout_seconds": 180,
+  "max_retries": 0,
+  "model": "qwen3.7-plus",
+  "model_role": "strong_general_llm",
+  "no_supply_queries": 7,
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "provider": "Alibaba Bailian",
+  "provider_role": "evidence_binder",
+  "selection_dto": "BinderSelectionDTOv1",
+  "selection_schema_sha256": "abcbe977472b1d5d5d92a38cf8a3603dc35a05ef2954b385126b818f72fb5e51",
+  "supervisor_prediction_sha256": "a8e6f256a12fe4b399ba6d9ed6bde611c321df7870533240a84f94f3fb3ce156",
+  "supply_ceiling": {
+    "calculation": "6/11",
+    "direct": "27/56",
+    "multi_evidence": "0/5"
+  },
+  "temperature": 0.0,
+  "thinking": false,
+  "top20_order_sha256": "f1bb60a1ab876617ae5f63765e3a41597d06c4d99af659eb4caee1874d2edb47",
+  "transport_resilience": {
+    "http_timeout_seconds": 180,
+    "retry_delay_seconds": 3,
+    "sdk_max_retries": 0,
+    "semantic_attempt_budget": 1,
+    "transport_retry_budget": 1
+  }
+}

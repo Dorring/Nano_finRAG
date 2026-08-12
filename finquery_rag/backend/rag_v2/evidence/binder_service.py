@@ -95,10 +95,12 @@ class SemanticBinderService:
             return BinderRun(request, binding, validation, result.metadata, raw_response=result.raw_response, schema_valid=True)
         except BinderProviderError as exc:
             metadata = getattr(self.provider, "last_call", None)
+            classification = getattr(exc, "classification", None)
+            failure_reason = f"adapter_failure:{classification}" if classification else f"provider_failure:{type(exc).__name__}"
             binding = EvidenceBinding(
                 status=BindingStatus.INVALID.value,
                 slot_bindings={},
-                invalid_reasons=(f"provider_failure:{type(exc).__name__}",),
+                invalid_reasons=(failure_reason,),
             )
             validation = validate_binding(binding, request.plan, request.facts)
-            return BinderRun(request, binding, validation, metadata, schema_valid=False)
+            return BinderRun(request, binding, validation, metadata, schema_valid=bool(getattr(exc, "schema_valid", False)))

@@ -1,0 +1,15 @@
+{
+  "average_latency_ms": 1925.5229692307691,
+  "binder_calls": 65,
+  "estimated_cost": "not_configured",
+  "input_tokens": 758977,
+  "max_facts_per_call": 173.0,
+  "max_latency_ms": 3660.774,
+  "mean_facts_per_call": 24.661538461538463,
+  "output_tokens": 2340,
+  "p50_latency_ms": 1733.73,
+  "p95_facts_per_call": 57.0,
+  "p95_latency_ms": 2979.974,
+  "total_tokens": 761317,
+  "total_wall_time_ms": 125183.305
+}
