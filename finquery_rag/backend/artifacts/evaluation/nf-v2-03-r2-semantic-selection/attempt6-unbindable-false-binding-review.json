@@ -1,0 +1,151 @@
+{
+  "counts": {
+    "BU0_correct_missing_or_ambiguous": 8,
+    "BU1_over_binding_nearest_metric": 0,
+    "BU2_over_binding_wrong_period": 0,
+    "BU3_over_binding_wrong_scope": 0,
+    "BU4_over_binding_wrong_statement": 5,
+    "BU5_other": 0
+  },
+  "direct_false_binding_on_unbindable": 5,
+  "false_binding_on_bindable": 2,
+  "false_binding_on_unbindable": 9,
+  "false_binding_reconciles": true,
+  "false_binding_total_reference": 11,
+  "rows": [
+    {
+      "primary_category": "BU0_correct_missing_or_ambiguous",
+      "question": "In the Net sales by product and service table, what was Mac net sales in FY2025?",
+      "question_id": "aapl_fy2025_005",
+      "selected_fact_ids": [
+        "d7f67ec792e6be22a5f11685284c88e91892024ca1b6879f0c510eee9adcb7ea",
+        "3202485f5697743d4a9446f42ae4a8781a3af3dc5c1301a667e70d45a3ca330b"
+      ],
+      "status": "AMBIGUOUS"
+    },
+    {
+      "primary_category": "BU4_over_binding_wrong_statement",
+      "question": "In the Commercial & Investment Bank financial results table, what was Commercial & Investment Bank net income in FY2025?",
+      "question_id": "jpm_fy2025_005",
+      "selected_fact_ids": [
+        "3a87eb42cdeafb7a8399df436de9f6bfbb7cc666a2ae1acb2eaebca76a89c13e"
+      ],
+      "status": "BOUND"
+    },
+    {
+      "primary_category": "BU0_correct_missing_or_ambiguous",
+      "question": "In the operating segment net operating revenues table, what were EMEA total net operating revenues in FY2025?",
+      "question_id": "ko_fy2025_004",
+      "selected_fact_ids": [
+        "5217bed5a0d970538ca7a7506e2b6443fcc0165034227f64e1d835ed7ccce960",
+        "59506234d4f102a8b97682f70a338870d7502bcf5522bd52845c146163ee47ea",
+        "b2dc18645ee6a758bd96dd9ef12be9633c2cc5e41ec1db8d22c60df6e5e7fb75",
+        "b3fb6dee2a35032ccf389c97155568296b4b5901fa099cbd6438cc57c4fe84f1",
+        "125c81aeaa257db2ae4ed713b8a8554c673f9cb931630521fb69cf0c4e51c3f6"
+      ],
+      "status": "AMBIGUOUS"
+    },
+    {
+      "primary_category": "BU0_correct_missing_or_ambiguous",
+      "question": "In the operating segment net operating revenues table, what were North America total net operating revenues in FY2025?",
+      "question_id": "ko_fy2025_005",
+      "selected_fact_ids": [
+        "b0dfdc1fd70fca0042559e39753c4f0185a9f30e53fad4c50ed985e1b8ee7afb",
+        "3bc764e767a4a3f7743e8fc16b30fc8a70c25cb371895e92ae27a1a6f993d192",
+        "da9e536c279f1f75fadd3a11ff5ce8e36c79cb0587bcaeb2a2b9a279243e0e96"
+      ],
+      "status": "AMBIGUOUS"
+    },
+    {
+      "primary_category": "BU4_over_binding_wrong_statement",
+      "question": "What was Productivity and Business Processes revenue reported by Microsoft in FY2025?",
+      "question_id": "msft_fy2025_002",
+      "selected_fact_ids": [
+        "b4b510f88f3297fdcb82f363f0e129f8c71dc0d8a875030502e84637cca41b7b"
+      ],
+      "status": "BOUND"
+    },
+    {
+      "primary_category": "BU0_correct_missing_or_ambiguous",
+      "question": "What was total revenue reported by NVIDIA in FY2025?",
+      "question_id": "nvda_fy2025_001",
+      "selected_fact_ids": [
+        "e513aecc7dfd490e508e83f2b194cb2ab8d61695b7f689c64350f33539c06bf4",
+        "9d894f54dae9df63cb3ab22e4cbe868356e3a72d76906158d35067d89bc6e652",
+        "0137139c29b40cff03bd922f75b9a67b0a046f5ddbae4b48e70c7f9fc6ccf7f8"
+      ],
+      "status": "AMBIGUOUS"
+    },
+    {
+      "primary_category": "BU4_over_binding_wrong_statement",
+      "question": "What was Comirnaty revenue reported by Pfizer in FY2024?",
+      "question_id": "pfe_fy2024_002",
+      "selected_fact_ids": [
+        "9bfd7e02b272b7f734a02f9f55a50b948912d2632400f812bc6c84b751571fa1"
+      ],
+      "status": "BOUND"
+    },
+    {
+      "primary_category": "BU0_correct_missing_or_ambiguous",
+      "question": "What was Eliquis revenue reported by Pfizer in FY2024?",
+      "question_id": "pfe_fy2024_003",
+      "selected_fact_ids": [
+        "614d36a35234d55c672f8a8ac4890c6f78270c39c9f0db9f083ba8e4c06a62a1",
+        "fc6e511cce0a8e27b40cc3c66c810137ec0013734281af6025f5f0b66ad8a196",
+        "584247b2c421096522add9f1a721e4786c4ec6ea6db77e567031058794802a47",
+        "0afa439028b93b283cf28ea7cf5d4547ea4e4b6161941c158cabf221f779b962",
+        "f4f61f290c8b964bab4673a0ecbd933846f86fa9bb777bca4512c2a26e3217c1"
+      ],
+      "status": "AMBIGUOUS"
+    },
+    {
+      "primary_category": "BU4_over_binding_wrong_statement",
+      "question": "In the Selected product revenues table, what was Paxlovid revenue in FY2024?",
+      "question_id": "pfe_fy2024_004",
+      "selected_fact_ids": [
+        "22d061547299571879907fd2c49c782481a16430e939621ffe07072428ee3cd5"
+      ],
+      "status": "BOUND"
+    },
+    {
+      "primary_category": "BU0_correct_missing_or_ambiguous",
+      "question": "What was Paxlovid revenue in FY2023 rather than FY2024?",
+      "question_id": "pfe_fy2024_009",
+      "selected_fact_ids": [
+        "ad7f77f5a590448025a69f9bd2d2fb4f244691f206e1320e7fdbc30da42a1de5",
+        "c31bec21e358d8ea223b5ba2dc3566ff9c6af015eff9b8885444ce6312c21f55",
+        "b67993a2427005790ef77c239a747a32f7885d7e6665fc3db7221dc5e51c8389"
+      ],
+      "status": "AMBIGUOUS"
+    },
+    {
+      "primary_category": "BU0_correct_missing_or_ambiguous",
+      "question": "What was Services and other revenue reported by Tesla in FY2025?",
+      "question_id": "tsla_fy2025_002",
+      "selected_fact_ids": [
+        "be920467510ef9f85b636d17f661adace220e4317b98360f55067992f3bbd82b",
+        "92adf77d1e8733d420a447d33d2a9aa9e2e067c3b5e079d46d74fc877e188367"
+      ],
+      "status": "AMBIGUOUS"
+    },
+    {
+      "primary_category": "BU0_correct_missing_or_ambiguous",
+      "question": "What was Automotive regulatory credits revenue reported by Tesla in FY2025?",
+      "question_id": "tsla_fy2025_003",
+      "selected_fact_ids": [
+        "312a5480c923b984fe1319fde32cc73b11e6b2ffec05cf048c9e092b35cdad6b",
+        "3f9d422fd21c5134e123c15f5a9c9d4c184b5a3bfac1bd217766bceddddfbe2b"
+      ],
+      "status": "AMBIGUOUS"
+    },
+    {
+      "primary_category": "BU4_over_binding_wrong_statement",
+      "question": "In the Results of Operations revenue table, what was Energy generation and storage segment revenue in FY2025?",
+      "question_id": "tsla_fy2025_005",
+      "selected_fact_ids": [
+        "09272a85eaf20bcbb1ff728ceb466ab3fe9a6b0c4158086b376324e325978f52"
+      ],
+      "status": "BOUND"
+    }
+  ]
+}

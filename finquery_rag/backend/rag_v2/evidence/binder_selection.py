@@ -75,9 +75,14 @@ def provider_request(request: BinderRequest) -> tuple[dict[str, Any], dict[str, 
     return payload, handles, selection_schema(request.plan, handles)
 
 
-def build_selection_messages(request: BinderRequest, payload: Mapping[str, Any]) -> list[dict[str, str]]:
+def build_selection_messages(
+    request: BinderRequest,
+    payload: Mapping[str, Any],
+    *,
+    system_prompt: str | None = None,
+) -> list[dict[str, str]]:
     body = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
-    system = BINDER_SYSTEM_PROMPT_V1.replace(
+    system = (system_prompt or BINDER_SYSTEM_PROMPT_V1).replace(
         "Return only the strict\nEvidenceBinding JSON schema.",
         "Return only the strict BinderSelectionDTOv1 JSON schema.",
     ).replace(

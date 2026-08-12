@@ -1,0 +1,311 @@
+{
+  "counts": {
+    "BS0_correct": 12,
+    "BS1_over_ambiguous_despite_unique_best_fact": 11,
+    "BS2_missing_despite_bindable_fact": 2,
+    "BS3_wrong_fact_selected": 0,
+    "BS4_metric_scope_confusion": 0,
+    "BS5_period_confusion": 0,
+    "BS6_segment_or_statement_confusion": 2,
+    "BS7_duplicate_statement_confusion": 0,
+    "BS8_multiple_candidates_genuinely_ambiguous": 0,
+    "BS9_other": 0
+  },
+  "denominator": 27,
+  "false_binding_on_bindable": 2,
+  "rows": [
+    {
+      "primary_category": "BS1_over_ambiguous_despite_unique_best_fact",
+      "question": "What was total net sales reported by Apple in FY2025?",
+      "question_id": "aapl_fy2025_001",
+      "selected_fact_ids": [
+        "79d91a2553e82d687736806cba8af0410b778fe3eef63aed96994f5d46472050",
+        "67ff5c02a5b006df163f569e909e243dcd03af9f8fb2c5cd453068974b41d279",
+        "5a7c010dc7c1d81f96587b93934b787490d561bcd32e8e90507838e2ee5f078d",
+        "aad6d3c273873f37429ec2d6c3942f1767337f9c39186f57e5cfb229cef8763a",
+        "c13f9a1ff37e5a751d69cc91467b5ffa5780189a7869f8bc042d2a73f0ba4d3e"
+      ],
+      "status": "AMBIGUOUS",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS1_over_ambiguous_despite_unique_best_fact",
+      "question": "What was Services net sales reported by Apple in FY2025?",
+      "question_id": "aapl_fy2025_002",
+      "selected_fact_ids": [
+        "40671817f86355bab6493fa2951f71ca41ed2d34d6224977fb87fdba64263759",
+        "39a2e87d3dd095f7362156c323379ba3b1f15e25f4665e6f47403d64a5a62a60",
+        "de835eeaa0b9ff74ad02aebdfa8802a244320f4e683bb4ef9bc34b99ddbdc24a",
+        "c1f324c1e8eaa4af3061b07e64e1812e52ae5d42d475844414a5d9bad4dac128"
+      ],
+      "status": "AMBIGUOUS",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS0_correct",
+      "question": "What was gross margin percentage reported by Apple in FY2025?",
+      "question_id": "aapl_fy2025_003",
+      "selected_fact_ids": [
+        "c020b94ff98da3c5c9039108f959cd6ceeb1cbbcd39905369dc424eca18fd2ab"
+      ],
+      "status": "BOUND",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS1_over_ambiguous_despite_unique_best_fact",
+      "question": "In the Net sales by product and service table, what was iPhone net sales in FY2025?",
+      "question_id": "aapl_fy2025_004",
+      "selected_fact_ids": [
+        "c41c7734bb0e25fda4877e0c763a2c466ea8ccc488ff8030a25747cd2a78a0d1",
+        "626e64665bd96348567b8e4e585a66b1ed450d823cd96c1eaa38c5c518bc6b8f"
+      ],
+      "status": "AMBIGUOUS",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS1_over_ambiguous_despite_unique_best_fact",
+      "question": "What was iPhone net sales in FY2024 rather than FY2025?",
+      "question_id": "aapl_fy2025_009",
+      "selected_fact_ids": [
+        "a8d0ec68b8b74b9ad4cd4f1cb9095110a193cc3ab816f8bb94a2e53d178fbe05",
+        "11b10f86cb0a3d1fe1ac594a5cb8f261947b38e8a41c93894c72942aa0a43d61"
+      ],
+      "status": "AMBIGUOUS",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS1_over_ambiguous_despite_unique_best_fact",
+      "question": "What was total assets reported by JPMorgan in FY2025?",
+      "question_id": "jpm_fy2025_001",
+      "selected_fact_ids": [
+        "394411ec7dc43fa13293c826d1e789c036dc8e93ed2810f0492c1647f1243fb5",
+        "3550152c1027b97c44e4fc2bdc6efb6788e408c0df12f779147af2e60623da0f",
+        "b2fd71a203f7a32046b2395623c0d5d00d39a45155b3a7430a578da06b61837e",
+        "10f9876ef2977f5865232bd979ac95423897ed61f181cc80b1c13b122dcfbe13",
+        "7037d4ef4c5846bda5cb4f1f8804f6f9c50da33d89952ffc330033b6b6bcedd2",
+        "bd02009a07502c6efcca9d43cf929b5828fff0cd051a26a139a72b21e84ae0fc"
+      ],
+      "status": "AMBIGUOUS",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS2_missing_despite_bindable_fact",
+      "question": "What was total liabilities reported by JPMorgan in FY2025?",
+      "question_id": "jpm_fy2025_002",
+      "selected_fact_ids": [],
+      "status": "MISSING",
+      "valid_selected_count": 0
+    },
+    {
+      "primary_category": "BS1_over_ambiguous_despite_unique_best_fact",
+      "question": "What was net income reported by JPMorgan in FY2025?",
+      "question_id": "jpm_fy2025_003",
+      "selected_fact_ids": [
+        "82ec9a82542c4decda7d7ad15e6ef2d3fc46e6823a3b063b2600a328e0a89c42",
+        "5f274c6f21e33f2f9ace1ca086c31f4376c16a44646b2a55a9c144d348b7a462",
+        "3c570c06d722b50cfef9d038bc2c591f8e51a054b3b6d2ffc305adc3f2dff2b3",
+        "4b271f401e1bd73b61d3f7397cef53b624855680178984c7cdf0a49778dee365",
+        "16ebf0a75ed3bb4dd9d09d5d58e93cc116b8968481216d56f8dade854f2058c8",
+        "27f3418e141830c8b5e3808a9eede6a40c265cccc5cd85839714ace41b3ca88b"
+      ],
+      "status": "AMBIGUOUS",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS6_segment_or_statement_confusion",
+      "question": "In the Consumer & Community Banking financial results table, what was Consumer & Community Banking net income in FY2025?",
+      "question_id": "jpm_fy2025_004",
+      "selected_fact_ids": [
+        "f31a57bba0b8664a9c751d7b3ace7d4abbf09df67e15f323a2266ba330e8bb0a"
+      ],
+      "status": "BOUND",
+      "valid_selected_count": 0
+    },
+    {
+      "primary_category": "BS2_missing_despite_bindable_fact",
+      "question": "What was Consumer & Community Banking net income in FY2024 rather than FY2025?",
+      "question_id": "jpm_fy2025_009",
+      "selected_fact_ids": [],
+      "status": "MISSING",
+      "valid_selected_count": 0
+    },
+    {
+      "primary_category": "BS1_over_ambiguous_despite_unique_best_fact",
+      "question": "What was net operating revenues reported by The Coca-Cola Company in FY2025?",
+      "question_id": "ko_fy2025_001",
+      "selected_fact_ids": [
+        "125c81aeaa257db2ae4ed713b8a8554c673f9cb931630521fb69cf0c4e51c3f6",
+        "3f1200299bd330cbeb5268ff99e22ecf1780494a6daf6fbdba4c05d50d22bd25",
+        "5ada67806684fce8a8ad4b637a89f3dd2e61dc8c329cbb79e351e87a02a65696"
+      ],
+      "status": "AMBIGUOUS",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS1_over_ambiguous_despite_unique_best_fact",
+      "question": "What was operating income reported by The Coca-Cola Company in FY2025?",
+      "question_id": "ko_fy2025_002",
+      "selected_fact_ids": [
+        "30aede920be2f2f4102371bd89bb9068cb11a3a556c1a4d284a5393159b7a0cc",
+        "1cc0fcc3c451e0cab355ecac4bdd3e6545ddd41623748fd354c43fb3bcafc223"
+      ],
+      "status": "AMBIGUOUS",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS0_correct",
+      "question": "What was net income attributable to shareowners of The Coca-Cola Company in FY2025?",
+      "question_id": "ko_fy2025_003",
+      "selected_fact_ids": [
+        "3af805a9c5af04f1e02d2676a92f883c3be0c4abfa025c66c7d5499210bc6ace"
+      ],
+      "status": "BOUND",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS1_over_ambiguous_despite_unique_best_fact",
+      "question": "What was total revenue reported by Microsoft in FY2025?",
+      "question_id": "msft_fy2025_001",
+      "selected_fact_ids": [
+        "d27437d68d1566cde35a212e14f7ee2e4f30481c68d34884dcdac2541bb701d4",
+        "b4b510f88f3297fdcb82f363f0e129f8c71dc0d8a875030502e84637cca41b7b"
+      ],
+      "status": "AMBIGUOUS",
+      "valid_selected_count": 0
+    },
+    {
+      "primary_category": "BS6_segment_or_statement_confusion",
+      "question": "What was More Personal Computing revenue reported by Microsoft in FY2025?",
+      "question_id": "msft_fy2025_003",
+      "selected_fact_ids": [
+        "0f423057c441a75c98671d18edc5e721d5490c92a9a7fa1754e6621d648ade6b"
+      ],
+      "status": "BOUND",
+      "valid_selected_count": 0
+    },
+    {
+      "primary_category": "BS0_correct",
+      "question": "What was Gaming revenue reported by NVIDIA in FY2025?",
+      "question_id": "nvda_fy2025_002",
+      "selected_fact_ids": [
+        "b88d989a5f1c915532cb7f7ab1cd3b1d7b6cd607de63c3bec37ca57c6b408e65"
+      ],
+      "status": "BOUND",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS0_correct",
+      "question": "What was GAAP gross margin percentage reported by NVIDIA in FY2025?",
+      "question_id": "nvda_fy2025_003",
+      "selected_fact_ids": [
+        "76ea0bd1e273e5b07b57a84390905c6784ac86c9d12bdbbf9c08f7445391359d"
+      ],
+      "status": "BOUND",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS0_correct",
+      "question": "In the Revenue by End Market table, what was Data Center revenue in FY2025?",
+      "question_id": "nvda_fy2025_004",
+      "selected_fact_ids": [
+        "a35f94b795ba5eb227de96ab46915d61ad88545cde97ff71d0e5ba10d12bb273"
+      ],
+      "status": "BOUND",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS0_correct",
+      "question": "In the Revenue by End Market table, what was Automotive revenue in FY2025?",
+      "question_id": "nvda_fy2025_005",
+      "selected_fact_ids": [
+        "1ddf3f61bafe730d901064e5ccfc91622e014724644cad8370d322b3c9316810"
+      ],
+      "status": "BOUND",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS0_correct",
+      "question": "What was Data Center revenue in FY2024 rather than FY2025?",
+      "question_id": "nvda_fy2025_009",
+      "selected_fact_ids": [
+        "a3798e1b9f596c81bfac2c6efd9ee5652ed8355f06ef6cc0a2e6a08df2d2e2af"
+      ],
+      "status": "BOUND",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS1_over_ambiguous_despite_unique_best_fact",
+      "question": "What was total revenues reported by Pfizer in FY2024?",
+      "question_id": "pfe_fy2024_001",
+      "selected_fact_ids": [
+        "b8982f8a92719de674f6bff3f15eb07478aeea7d02fd88ecd10b5d4b24ec4c2c",
+        "25b3026c7de0081af13f227eac8511f58d6b28bfdfbcce51b629d011cefc0a58",
+        "7953a0c6324978a105226dece6803d30dcfabe48dfb73cd8b1a729c67fb84d78"
+      ],
+      "status": "AMBIGUOUS",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS1_over_ambiguous_despite_unique_best_fact",
+      "question": "What was total revenues reported by Tesla in FY2025?",
+      "question_id": "tsla_fy2025_001",
+      "selected_fact_ids": [
+        "f79884cf4f0f8d6be407ae53f629548e99f9f9b2c1288b86cb5408e4a0657ed8",
+        "331719d000ca733cc97eac7e2404b61a3ecf3273e45a230ee1715f8f3351250b",
+        "b7a121895be97205d429d42cca533847baa862f422ce35a007a5c7b4901f8463"
+      ],
+      "status": "AMBIGUOUS",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS0_correct",
+      "question": "What was net revenue reported by Visa in FY2025?",
+      "question_id": "v_fy2025_001",
+      "selected_fact_ids": [
+        "2a4da6647be88d9aa9a04e8c7e015e7a277ea028374f3dbe8778b5a6b97de9c3"
+      ],
+      "status": "BOUND",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS0_correct",
+      "question": "What was total volume reported by Visa in FY2025?",
+      "question_id": "v_fy2025_002",
+      "selected_fact_ids": [
+        "1e029025fdb3d7a21173e4625d794ee6fd2e14c91147b6cfa6cad84d66e0e404"
+      ],
+      "status": "BOUND",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS0_correct",
+      "question": "How many transactions were processed on Visa's networks in FY2025?",
+      "question_id": "v_fy2025_003",
+      "selected_fact_ids": [
+        "0d275e94bd8c411d5cd48e132ed3cfb6207fb60851d3f87598c52a2e822b0a44"
+      ],
+      "status": "BOUND",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS0_correct",
+      "question": "In the Operational highlights table, what was payments volume in FY2025?",
+      "question_id": "v_fy2025_004",
+      "selected_fact_ids": [
+        "71bd06d15b6465ce3cc482db9381a3216507716c6a627de5f6408bab3999e909"
+      ],
+      "status": "BOUND",
+      "valid_selected_count": 1
+    },
+    {
+      "primary_category": "BS0_correct",
+      "question": "What was payments volume in FY2024 rather than FY2025?",
+      "question_id": "v_fy2025_009",
+      "selected_fact_ids": [
+        "4c35227ee925f1d09de33e0714c5e05c89c4beba383342a0e254bd37fa691a61"
+      ],
+      "status": "BOUND",
+      "valid_selected_count": 1
+    }
+  ]
+}

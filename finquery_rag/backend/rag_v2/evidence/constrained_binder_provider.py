@@ -40,6 +40,10 @@ class BailianConstrainedBinderProvider(BailianBinderProvider):
 
     provider_role = "evidence_binder"
 
+    def __init__(self, *args: Any, system_prompt: str | None = None, **kwargs: Any) -> None:
+        super().__init__(*args, **kwargs)
+        self.system_prompt = system_prompt
+
     @staticmethod
     def _coerce_request(request: Any) -> BinderRequest:
         if isinstance(request, BinderRequest):
@@ -70,7 +74,7 @@ class BailianConstrainedBinderProvider(BailianBinderProvider):
         try:
             body = {
                 "model": self.model_name,
-                "messages": build_selection_messages(request, payload),
+                "messages": build_selection_messages(request, payload, system_prompt=self.system_prompt),
                 "temperature": self.temperature,
                 "response_format": {
                     "type": "json_schema",

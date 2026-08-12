@@ -159,7 +159,12 @@ def provider_schema_contract_sha() -> str:
     })
 
 
-def run_formal(config: dict[str, Any], frozen: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+def run_formal(
+    config: dict[str, Any],
+    frozen: dict[str, Any],
+    *,
+    system_prompt: str | None = None,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     provider = BailianConstrainedBinderProvider(
         base_url=config["base_url"],
         api_key=config["api_key"],
@@ -168,6 +173,7 @@ def run_formal(config: dict[str, Any], frozen: dict[str, Any]) -> tuple[list[dic
         temperature=0.0,
         timeout=180.0,
         max_retries=0,
+        system_prompt=system_prompt,
     )
     service = SemanticBinderService(provider)
     predictions: list[dict[str, Any]] = []

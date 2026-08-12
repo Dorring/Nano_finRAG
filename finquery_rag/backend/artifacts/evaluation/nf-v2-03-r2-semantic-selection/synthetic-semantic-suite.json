@@ -1,0 +1,411 @@
+{
+  "adapter_valid": 12,
+  "benchmark_questions_used": 0,
+  "binding_validator_pass": 12,
+  "calculation_complete": 3,
+  "calculation_total": 3,
+  "cardinality_violations": 0,
+  "dto_valid": 12,
+  "false_binding": 0,
+  "gate": "NF-V2-03-R2",
+  "gold_reads": 0,
+  "model": "qwen3.7-plus",
+  "model_calls": 12,
+  "pass": true,
+  "prompt_sha256": "d9ef559fe850eb0e8b787107a8c869802f04b5d24847ddfaa51432df621f4b04",
+  "provider_response_success": 12,
+  "rows": [
+    {
+      "actual": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "adapter_valid": true,
+      "binding_status": "BOUND",
+      "binding_validator_pass": true,
+      "calculation_case": false,
+      "calculation_complete": null,
+      "case_index": 1,
+      "dto_valid": true,
+      "elapsed_ms": 1834.874,
+      "expected": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "false_binding": false,
+      "input_tokens": 854,
+      "intent": "DIRECT_FACT",
+      "latency_ms": 1834.70148203196,
+      "output_tokens": 26,
+      "provider_response_success": true,
+      "question_id": "semantic_01",
+      "semantic_correct": true,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "s1": [
+          "F02"
+        ]
+      },
+      "adapter_valid": true,
+      "binding_status": "BOUND",
+      "binding_validator_pass": true,
+      "calculation_case": false,
+      "calculation_complete": null,
+      "case_index": 2,
+      "dto_valid": true,
+      "elapsed_ms": 1479.413,
+      "expected": {
+        "s1": [
+          "F02"
+        ]
+      },
+      "false_binding": false,
+      "input_tokens": 854,
+      "intent": "DIRECT_FACT",
+      "latency_ms": 1479.1809330345131,
+      "output_tokens": 26,
+      "provider_response_success": true,
+      "question_id": "semantic_02",
+      "semantic_correct": true,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "s1": [
+          "F02"
+        ]
+      },
+      "adapter_valid": true,
+      "binding_status": "BOUND",
+      "binding_validator_pass": true,
+      "calculation_case": false,
+      "calculation_complete": null,
+      "case_index": 3,
+      "dto_valid": true,
+      "elapsed_ms": 1356.645,
+      "expected": {
+        "s1": [
+          "F02"
+        ]
+      },
+      "false_binding": false,
+      "input_tokens": 858,
+      "intent": "DIRECT_FACT",
+      "latency_ms": 1356.4447229728103,
+      "output_tokens": 27,
+      "provider_response_success": true,
+      "question_id": "semantic_03",
+      "semantic_correct": true,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "s1": [
+          "F01",
+          "F02"
+        ]
+      },
+      "adapter_valid": true,
+      "binding_status": "AMBIGUOUS",
+      "binding_validator_pass": true,
+      "calculation_case": false,
+      "calculation_complete": null,
+      "case_index": 4,
+      "dto_valid": true,
+      "elapsed_ms": 1390.333,
+      "expected": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "false_binding": false,
+      "input_tokens": 868,
+      "intent": "DIRECT_FACT",
+      "latency_ms": 1390.177830005996,
+      "output_tokens": 33,
+      "provider_response_success": true,
+      "question_id": "semantic_04",
+      "semantic_correct": false,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "s1": [
+          "F01",
+          "F02"
+        ]
+      },
+      "adapter_valid": true,
+      "binding_status": "AMBIGUOUS",
+      "binding_validator_pass": true,
+      "calculation_case": false,
+      "calculation_complete": null,
+      "case_index": 5,
+      "dto_valid": true,
+      "elapsed_ms": 1511.718,
+      "expected": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "false_binding": false,
+      "input_tokens": 872,
+      "intent": "DIRECT_FACT",
+      "latency_ms": 1511.5842840168625,
+      "output_tokens": 31,
+      "provider_response_success": true,
+      "question_id": "semantic_05",
+      "semantic_correct": false,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "s1": [
+          "F01",
+          "F02"
+        ]
+      },
+      "adapter_valid": true,
+      "binding_status": "AMBIGUOUS",
+      "binding_validator_pass": true,
+      "calculation_case": false,
+      "calculation_complete": null,
+      "case_index": 6,
+      "dto_valid": true,
+      "elapsed_ms": 1275.707,
+      "expected": {
+        "s1": [
+          "F01",
+          "F02"
+        ]
+      },
+      "false_binding": false,
+      "input_tokens": 853,
+      "intent": "DIRECT_FACT",
+      "latency_ms": 1275.5734369857237,
+      "output_tokens": 31,
+      "provider_response_success": true,
+      "question_id": "semantic_06",
+      "semantic_correct": true,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "s1": []
+      },
+      "adapter_valid": true,
+      "binding_status": "MISSING",
+      "binding_validator_pass": true,
+      "calculation_case": false,
+      "calculation_complete": null,
+      "case_index": 7,
+      "dto_valid": true,
+      "elapsed_ms": 2507.488,
+      "expected": {
+        "s1": []
+      },
+      "false_binding": false,
+      "input_tokens": 854,
+      "intent": "DIRECT_FACT",
+      "latency_ms": 2507.315977010876,
+      "output_tokens": 18,
+      "provider_response_success": true,
+      "question_id": "semantic_07",
+      "semantic_correct": true,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "adapter_valid": true,
+      "binding_status": "BOUND",
+      "binding_validator_pass": true,
+      "calculation_case": false,
+      "calculation_complete": null,
+      "case_index": 8,
+      "dto_valid": true,
+      "elapsed_ms": 1352.445,
+      "expected": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "false_binding": false,
+      "input_tokens": 1031,
+      "intent": "DIRECT_FACT",
+      "latency_ms": 1352.2381669608876,
+      "output_tokens": 26,
+      "provider_response_success": true,
+      "question_id": "semantic_08",
+      "semantic_correct": true,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "current": [
+          "F01"
+        ],
+        "prior": [
+          "F02"
+        ]
+      },
+      "adapter_valid": true,
+      "binding_status": "BOUND",
+      "binding_validator_pass": true,
+      "calculation_case": true,
+      "calculation_complete": true,
+      "case_index": 9,
+      "dto_valid": true,
+      "elapsed_ms": 1497.599,
+      "expected": {
+        "current": [
+          "F01"
+        ],
+        "prior": [
+          "F02"
+        ]
+      },
+      "false_binding": false,
+      "input_tokens": 883,
+      "intent": "CALCULATION",
+      "latency_ms": 1497.3804960027337,
+      "output_tokens": 41,
+      "provider_response_success": true,
+      "question_id": "semantic_09",
+      "semantic_correct": true,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "denominator": [
+          "F02"
+        ],
+        "numerator": [
+          "F01"
+        ]
+      },
+      "adapter_valid": true,
+      "binding_status": "BOUND",
+      "binding_validator_pass": true,
+      "calculation_case": true,
+      "calculation_complete": true,
+      "case_index": 10,
+      "dto_valid": true,
+      "elapsed_ms": 1274.976,
+      "expected": {
+        "denominator": [
+          "F02"
+        ],
+        "numerator": [
+          "F01"
+        ]
+      },
+      "false_binding": false,
+      "input_tokens": 890,
+      "intent": "CALCULATION",
+      "latency_ms": 1274.7545519960113,
+      "output_tokens": 43,
+      "provider_response_success": true,
+      "question_id": "semantic_10",
+      "semantic_correct": true,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "current": [
+          "F01"
+        ],
+        "prior": [
+          "F02"
+        ]
+      },
+      "adapter_valid": true,
+      "binding_status": "BOUND",
+      "binding_validator_pass": true,
+      "calculation_case": true,
+      "calculation_complete": true,
+      "case_index": 11,
+      "dto_valid": true,
+      "elapsed_ms": 2924.414,
+      "expected": {
+        "current": [
+          "F01"
+        ],
+        "prior": [
+          "F02"
+        ]
+      },
+      "false_binding": false,
+      "input_tokens": 882,
+      "intent": "CALCULATION",
+      "latency_ms": 2924.194354971405,
+      "output_tokens": 41,
+      "provider_response_success": true,
+      "question_id": "semantic_11",
+      "semantic_correct": true,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "s1": []
+      },
+      "adapter_valid": true,
+      "binding_status": "MISSING",
+      "binding_validator_pass": true,
+      "calculation_case": false,
+      "calculation_complete": null,
+      "case_index": 12,
+      "dto_valid": true,
+      "elapsed_ms": 2228.411,
+      "expected": {
+        "s1": []
+      },
+      "false_binding": false,
+      "input_tokens": 868,
+      "intent": "DIRECT_FACT",
+      "latency_ms": 2228.2105089980178,
+      "output_tokens": 18,
+      "provider_response_success": true,
+      "question_id": "semantic_12",
+      "semantic_correct": true,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    }
+  ],
+  "semantic_correct": 10,
+  "semantic_total": 12,
+  "status_violations": 0,
+  "structured_output_success": 12,
+  "unknown_fact": 0,
+  "unknown_slot": 0
+}

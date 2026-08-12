@@ -1,0 +1,12 @@
+{
+  "attempt6_structural_health_preserved": true,
+  "calculation_success_given_bindable_attempt6": "0/6",
+  "direct_success_given_bindable_attempt6": "12/27",
+  "false_binding_reconciles": true,
+  "false_binding_total_attempt6": 11,
+  "gate": "NF-V2-03-R2",
+  "model_calls": 0,
+  "next_stage": "synthetic_semantic_suite",
+  "prompt_r2_authorized": true,
+  "prompt_sha256": "d9ef559fe850eb0e8b787107a8c869802f04b5d24847ddfaa51432df621f4b04"
+}
