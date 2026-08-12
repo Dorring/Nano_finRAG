@@ -1,0 +1,169 @@
+{
+  "direct": [
+    {
+      "competing_fact_handles": [
+        "F05",
+        "F08",
+        "F11",
+        "F14",
+        "F16",
+        "F21",
+        "F24"
+      ],
+      "competitor_visible_signatures": [
+        "2e323326cf8e73beb93dc0f70a49ff8279b66567a072a72ac5d0e8a05a58a1e2",
+        "9c453949f1319c4152c25596d2919f72df35cf39868c271c6ecf097c14a52fa6",
+        "a3bd7d3240a429c987182ce1708f8e5d6dffb4a385bf7f9662f32c2e517c5aa2",
+        "b6fb95d1e8d22e1b4658cc33f20350cc980a4f6d8c234133534a638d709ff226",
+        "bd74dddc6a8127d594164c7df86ce099ed0bc7d56d1f26e113aa5d2b3271520a",
+        "d56f1e4dc0711df577c778f8725017ddb1ce641f855594905d2ef347067c8177",
+        "f55ca6706892f8ddb2e75b21cb51f8ac9ae2a469e841c66766f9fbf9339a05d3"
+      ],
+      "gold_compatible_fact_handles": [
+        "F03"
+      ],
+      "gold_visible_signatures": [
+        "e0355bce681cb89442c0271c50a3a45c18d671b5ca1570bfad9ad4bbeccf042e"
+      ],
+      "question_id": "aapl_fy2025_003",
+      "v1_classification": "CD3_duplicate_equivalent_same_statement",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": false
+    },
+    {
+      "competing_fact_handles": [],
+      "competitor_visible_signatures": [],
+      "gold_compatible_fact_handles": [
+        "F01"
+      ],
+      "gold_visible_signatures": [
+        "a87c27f329bb2742aeffa3ad164aaa00daa4673628c34a6b5cd8a415c3b9d376"
+      ],
+      "question_id": "v_fy2025_001",
+      "v1_classification": "CD3_duplicate_equivalent_same_statement",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": false
+    },
+    {
+      "competing_fact_handles": [],
+      "competitor_visible_signatures": [],
+      "gold_compatible_fact_handles": [
+        "F01"
+      ],
+      "gold_visible_signatures": [
+        "31837034c6e34536259b05d534c27def1b906c069f9ef6c78e4fc9a62c2e6aa9"
+      ],
+      "question_id": "v_fy2025_002",
+      "v1_classification": "CD3_duplicate_equivalent_same_statement",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": false
+    },
+    {
+      "competing_fact_handles": [],
+      "competitor_visible_signatures": [],
+      "gold_compatible_fact_handles": [
+        "F01"
+      ],
+      "gold_visible_signatures": [
+        "5678e7ca3990146449c7a2c559e88eb4047215d072bcad2a9bdcdb66892d8dc0"
+      ],
+      "question_id": "v_fy2025_003",
+      "v1_classification": "CD3_duplicate_equivalent_same_statement",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": false
+    },
+    {
+      "competing_fact_handles": [],
+      "competitor_visible_signatures": [],
+      "gold_compatible_fact_handles": [
+        "F02"
+      ],
+      "gold_visible_signatures": [
+        "1d646f4304bc8be4a1ed843bf1d105096f058ae6225c2de1e388b0ac8b25ed86"
+      ],
+      "question_id": "v_fy2025_004",
+      "v1_classification": "CD3_duplicate_equivalent_same_statement",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": false
+    },
+    {
+      "competing_fact_handles": [
+        "F31",
+        "F50"
+      ],
+      "competitor_visible_signatures": [
+        "0731061a21b8635e817c1d3e7a14123fb54db6831ea8996abf0c18c0ce7d9f3b",
+        "9eef4e8ffc38f609d53c2626287c78af7987b10a09d393b31f04ef19310e7647"
+      ],
+      "gold_compatible_fact_handles": [
+        "F01"
+      ],
+      "gold_visible_signatures": [
+        "efc57cf360e9e39ad7f577c73a8c5ed7f1ffc50c93d3dd33e70f9263e92bcfe6"
+      ],
+      "question_id": "v_fy2025_009",
+      "v1_classification": "CD3_duplicate_equivalent_same_statement",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": false
+    }
+  ],
+  "model_calls": 0,
+  "reclassification": {
+    "FV2-0": 17,
+    "FV2-1": 6,
+    "FV2-2": 0,
+    "FV2-3": 0,
+    "FV2-4": 0,
+    "FV2-5": 0,
+    "FV2-6": 0,
+    "FV2-7": 0
+  }
+}

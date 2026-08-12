@@ -1,0 +1,551 @@
+{
+  "bindable_questions": "6/6",
+  "operand_slots": "12/12",
+  "questions_all_operands_v2_unique": "6/6",
+  "rows": [
+    {
+      "all_operands_v2_visible_unique": true,
+      "question_id": "aapl_fy2025_006",
+      "slots": [
+        {
+          "classification": "CC0_unique_visible_operand",
+          "competing_fact_handles": [
+            "F04",
+            "F05",
+            "F06",
+            "F07",
+            "F08",
+            "F09",
+            "F10",
+            "F11",
+            "F12",
+            "F13",
+            "F14",
+            "F15",
+            "F16",
+            "F17"
+          ],
+          "gold_compatible_fact_handles": [
+            "F03"
+          ],
+          "required": {
+            "metric": "total net sales",
+            "period": "FY2025",
+            "role": "current_period",
+            "scope": null
+          },
+          "role": "current_period",
+          "slot_id": "slot_1",
+          "v2_visible_unique_operand": true,
+          "visible_discriminators": [
+            "statement",
+            "table",
+            "row/header",
+            "section"
+          ]
+        },
+        {
+          "classification": "CC0_unique_visible_operand",
+          "competing_fact_handles": [
+            "F04",
+            "F05",
+            "F06",
+            "F07",
+            "F08",
+            "F09",
+            "F10",
+            "F11",
+            "F12",
+            "F13",
+            "F14",
+            "F15",
+            "F16",
+            "F17"
+          ],
+          "gold_compatible_fact_handles": [
+            "F01"
+          ],
+          "required": {
+            "metric": "total net sales",
+            "period": "FY2024",
+            "role": "base_period",
+            "scope": null
+          },
+          "role": "base_period",
+          "slot_id": "slot_2",
+          "v2_visible_unique_operand": true,
+          "visible_discriminators": [
+            "statement",
+            "table",
+            "row/header",
+            "section"
+          ]
+        }
+      ]
+    },
+    {
+      "all_operands_v2_visible_unique": true,
+      "question_id": "jpm_fy2025_006",
+      "slots": [
+        {
+          "classification": "CC0_unique_visible_operand",
+          "competing_fact_handles": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06",
+            "F07",
+            "F08",
+            "F09",
+            "F12",
+            "F13",
+            "F14",
+            "F15",
+            "F16",
+            "F17",
+            "F18",
+            "F19",
+            "F20",
+            "F21",
+            "F22",
+            "F23",
+            "F24",
+            "F25",
+            "F26",
+            "F27",
+            "F28",
+            "F29",
+            "F30",
+            "F31",
+            "F32",
+            "F33",
+            "F34",
+            "F35",
+            "F36",
+            "F37",
+            "F38",
+            "F39",
+            "F40",
+            "F41",
+            "F42"
+          ],
+          "gold_compatible_fact_handles": [
+            "F10"
+          ],
+          "required": {
+            "metric": "total assets",
+            "period": "FY2025",
+            "role": "current_period",
+            "scope": null
+          },
+          "role": "current_period",
+          "slot_id": "1",
+          "v2_visible_unique_operand": true,
+          "visible_discriminators": [
+            "statement",
+            "table",
+            "row/header",
+            "section"
+          ]
+        },
+        {
+          "classification": "CC0_unique_visible_operand",
+          "competing_fact_handles": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06",
+            "F07",
+            "F08",
+            "F09",
+            "F12",
+            "F13",
+            "F14",
+            "F15",
+            "F16",
+            "F17",
+            "F18",
+            "F19",
+            "F20",
+            "F21",
+            "F22",
+            "F23",
+            "F24",
+            "F25",
+            "F26",
+            "F27",
+            "F28",
+            "F29",
+            "F30",
+            "F31",
+            "F32",
+            "F33",
+            "F34",
+            "F35",
+            "F36",
+            "F37",
+            "F38",
+            "F39",
+            "F40",
+            "F41",
+            "F42"
+          ],
+          "gold_compatible_fact_handles": [
+            "F11"
+          ],
+          "required": {
+            "metric": "total assets",
+            "period": "FY2024",
+            "role": "base_period",
+            "scope": null
+          },
+          "role": "base_period",
+          "slot_id": "2",
+          "v2_visible_unique_operand": true,
+          "visible_discriminators": [
+            "statement",
+            "table",
+            "row/header",
+            "section"
+          ]
+        }
+      ]
+    },
+    {
+      "all_operands_v2_visible_unique": true,
+      "question_id": "ko_fy2025_006",
+      "slots": [
+        {
+          "classification": "CC0_unique_visible_operand",
+          "competing_fact_handles": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06",
+            "F10",
+            "F11",
+            "F12",
+            "F13",
+            "F14",
+            "F15"
+          ],
+          "gold_compatible_fact_handles": [
+            "F08"
+          ],
+          "required": {
+            "metric": "net operating revenues",
+            "period": "FY2025",
+            "role": "current_period",
+            "scope": null
+          },
+          "role": "current_period",
+          "slot_id": "slot_1",
+          "v2_visible_unique_operand": true,
+          "visible_discriminators": [
+            "statement",
+            "table",
+            "row/header",
+            "section"
+          ]
+        },
+        {
+          "classification": "CC0_unique_visible_operand",
+          "competing_fact_handles": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06",
+            "F10",
+            "F11",
+            "F12",
+            "F13",
+            "F14",
+            "F15"
+          ],
+          "gold_compatible_fact_handles": [
+            "F09"
+          ],
+          "required": {
+            "metric": "net operating revenues",
+            "period": "FY2024",
+            "role": "base_period",
+            "scope": null
+          },
+          "role": "base_period",
+          "slot_id": "slot_2",
+          "v2_visible_unique_operand": true,
+          "visible_discriminators": [
+            "statement",
+            "table",
+            "row/header",
+            "section"
+          ]
+        }
+      ]
+    },
+    {
+      "all_operands_v2_visible_unique": true,
+      "question_id": "pfe_fy2024_006",
+      "slots": [
+        {
+          "classification": "CC0_unique_visible_operand",
+          "competing_fact_handles": [
+            "F04",
+            "F05",
+            "F06",
+            "F07",
+            "F08",
+            "F09",
+            "F10",
+            "F11",
+            "F12",
+            "F20",
+            "F24",
+            "F27",
+            "F29",
+            "F32",
+            "F37",
+            "F42",
+            "F45",
+            "F49"
+          ],
+          "gold_compatible_fact_handles": [
+            "F01"
+          ],
+          "required": {
+            "metric": "total revenues",
+            "period": "FY2024",
+            "role": "current_period",
+            "scope": null
+          },
+          "role": "current_period",
+          "slot_id": "1",
+          "v2_visible_unique_operand": true,
+          "visible_discriminators": [
+            "statement",
+            "table",
+            "row/header",
+            "section"
+          ]
+        },
+        {
+          "classification": "CC0_unique_visible_operand",
+          "competing_fact_handles": [
+            "F04",
+            "F05",
+            "F06",
+            "F07",
+            "F08",
+            "F09",
+            "F10",
+            "F11",
+            "F12",
+            "F20",
+            "F24",
+            "F27",
+            "F29",
+            "F32",
+            "F37",
+            "F42",
+            "F45",
+            "F49"
+          ],
+          "gold_compatible_fact_handles": [
+            "F03"
+          ],
+          "required": {
+            "metric": "total revenues",
+            "period": "FY2023",
+            "role": "base_period",
+            "scope": null
+          },
+          "role": "base_period",
+          "slot_id": "2",
+          "v2_visible_unique_operand": true,
+          "visible_discriminators": [
+            "statement",
+            "table",
+            "row/header",
+            "section"
+          ]
+        }
+      ]
+    },
+    {
+      "all_operands_v2_visible_unique": true,
+      "question_id": "tsla_fy2025_006",
+      "slots": [
+        {
+          "classification": "CC0_unique_visible_operand",
+          "competing_fact_handles": [
+            "F01",
+            "F02",
+            "F03",
+            "F07",
+            "F08",
+            "F09",
+            "F10",
+            "F11",
+            "F12",
+            "F13",
+            "F14",
+            "F15",
+            "F16",
+            "F17",
+            "F18",
+            "F19",
+            "F20",
+            "F21",
+            "F22",
+            "F23",
+            "F24"
+          ],
+          "gold_compatible_fact_handles": [
+            "F04"
+          ],
+          "required": {
+            "metric": "total revenues",
+            "period": "FY2025",
+            "role": "current_period",
+            "scope": null
+          },
+          "role": "current_period",
+          "slot_id": "rev_fy2025",
+          "v2_visible_unique_operand": true,
+          "visible_discriminators": [
+            "statement",
+            "table",
+            "row/header",
+            "section"
+          ]
+        },
+        {
+          "classification": "CC0_unique_visible_operand",
+          "competing_fact_handles": [
+            "F01",
+            "F02",
+            "F03",
+            "F07",
+            "F08",
+            "F09",
+            "F10",
+            "F11",
+            "F12",
+            "F13",
+            "F14",
+            "F15",
+            "F16",
+            "F17",
+            "F18",
+            "F19",
+            "F20",
+            "F21",
+            "F22",
+            "F23",
+            "F24"
+          ],
+          "gold_compatible_fact_handles": [
+            "F05"
+          ],
+          "required": {
+            "metric": "total revenues",
+            "period": "FY2024",
+            "role": "base_period",
+            "scope": null
+          },
+          "role": "base_period",
+          "slot_id": "rev_fy2024",
+          "v2_visible_unique_operand": true,
+          "visible_discriminators": [
+            "statement",
+            "table",
+            "row/header",
+            "section"
+          ]
+        }
+      ]
+    },
+    {
+      "all_operands_v2_visible_unique": true,
+      "question_id": "v_fy2025_006",
+      "slots": [
+        {
+          "classification": "CC0_unique_visible_operand",
+          "competing_fact_handles": [
+            "F01",
+            "F05",
+            "F06",
+            "F07",
+            "F08",
+            "F09",
+            "F10",
+            "F11",
+            "F12",
+            "F13"
+          ],
+          "gold_compatible_fact_handles": [
+            "F02"
+          ],
+          "required": {
+            "metric": "net revenue",
+            "period": "FY2025",
+            "role": "current_period",
+            "scope": null
+          },
+          "role": "current_period",
+          "slot_id": "s1",
+          "v2_visible_unique_operand": true,
+          "visible_discriminators": [
+            "statement",
+            "table",
+            "row/header",
+            "section"
+          ]
+        },
+        {
+          "classification": "CC0_unique_visible_operand",
+          "competing_fact_handles": [
+            "F01",
+            "F05",
+            "F06",
+            "F07",
+            "F08",
+            "F09",
+            "F10",
+            "F11",
+            "F12",
+            "F13"
+          ],
+          "gold_compatible_fact_handles": [
+            "F04"
+          ],
+          "required": {
+            "metric": "net revenue",
+            "period": "FY2024",
+            "role": "base_period",
+            "scope": null
+          },
+          "role": "base_period",
+          "slot_id": "s2",
+          "v2_visible_unique_operand": true,
+          "visible_discriminators": [
+            "statement",
+            "table",
+            "row/header",
+            "section"
+          ]
+        }
+      ]
+    }
+  ],
+  "v1_visible_unique": "0/12",
+  "v2_visible_unique": "12/12"
+}

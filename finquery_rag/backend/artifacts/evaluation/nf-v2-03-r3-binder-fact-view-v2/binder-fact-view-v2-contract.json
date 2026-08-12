@@ -1,0 +1,33 @@
+{
+  "allowed_source_fields": [
+    "row_label",
+    "row_path",
+    "row_hierarchy",
+    "column_label",
+    "column_header_path",
+    "multi_level_column_headers",
+    "table_title",
+    "statement_title",
+    "statement_type",
+    "section_title",
+    "section_path",
+    "page",
+    "table_id",
+    "row_id",
+    "column_id",
+    "cell_id",
+    "physical_source_id",
+    "document_id",
+    "pdf_page",
+    "period_value_bindings"
+  ],
+  "builder": "build_binder_fact_view_v2(financial_fact, source_metadata, fact_handle)",
+  "cross_candidate_context_composition": 0,
+  "fabricated_context_fields": 0,
+  "financial_fact_v1_modified": false,
+  "gold_conditioned_fields": 0,
+  "query_independent": true,
+  "question_conditioned_fields": 0,
+  "source_text_parsing": "label-preserving only",
+  "version": "BinderFactViewV2"
+}

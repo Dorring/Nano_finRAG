@@ -4,7 +4,11 @@ import pytest
 
 from rag_v2.contracts.plan import Action, Intent, RequiredSlot, SupervisorPlan
 from rag_v2.evidence.binder_service import BinderRequest
-from rag_v2.evidence.binder_fact_view import build_binder_fact_view
+from rag_v2.evidence.binder_fact_view import (
+    binder_fact_view_v2_field_provenance,
+    build_binder_fact_view,
+    build_binder_fact_view_v2,
+)
 from rag_v2.evidence.binder_selection import (
     DuplicateFactHandleError,
     build_selection_messages,
@@ -130,3 +134,43 @@ def test_fact_view_preserves_source_context_without_new_metric_label() -> None:
     assert view["column_header"] == ["FY2025"]
     assert "fact_id" not in view
     assert "canonical_metric" not in view
+
+
+def test_fact_view_v2_exposes_only_linked_structural_context() -> None:
+    source = {
+        "candidate_id": "candidate:one",
+        "statement_id": "income_statement",
+        "table_title": "Revenue by segment",
+        "row_label": "Data Center",
+        "column_header": ["FY2025", "Revenue"],
+        "source_text": "[STRUCTURE]\nStatement: income_statement\nMetric Path: Data Center > Revenue\nColumn Headers: FY2025 | Revenue\n",
+        "table_id": "table:one",
+        "pdf_page": 7,
+    }
+    source_fact = fact("fact_1")
+    view = build_binder_fact_view_v2(source_fact, source, "F01")
+    assert view["fact_handle"] == "F01"
+    assert view["statement_title"] == "income_statement"
+    assert view["row_path"] == ["Data Center", "Revenue"]
+    assert view["column_header_path"] == ["FY2025", "Revenue"]
+    assert view["table_title"] == "Revenue by segment"
+    assert "fact_id" not in view
+    assert "canonical_metric" not in view
+    provenance = binder_fact_view_v2_field_provenance(source_fact, source)
+    assert provenance["statement_title"]["source_candidate_id"] == "candidate:one"
+    assert all(item["source_candidate_id"] == "candidate:one" for item in provenance.values() if item["origin"] == "source_candidate")
+
+
+def test_fact_view_v2_does_not_accept_question_or_gold() -> None:
+    source_fact = fact("fact_1")
+    with pytest.raises(TypeError):
+        build_binder_fact_view_v2(source_fact, {"candidate_id": "candidate:one"}, "F01", "question")  # type: ignore[call-arg]
+
+
+def test_v2_provider_request_keeps_exact_handles_and_slots() -> None:
+    req = request("slot_1")
+    payload, handles, schema = provider_request(req, fact_view_version="v2", source_by_candidate={"candidate:one": {"statement_id": "income_statement", "table_title": "Revenue"}})
+    assert [item["fact_handle"] for item in payload["binder_fact_views"]] == ["F01", "F02", "F03"]
+    assert payload["binder_fact_views"][0]["statement_title"] == "income_statement"
+    assert schema["properties"]["slots"]["required"] == ["slot_1"]
+    assert handles == fact_handle_map(req)

@@ -1,0 +1,16 @@
+{
+  "base_commit": "fcd8032bba270eb24a4530a6900dd20ff0ea5b5c",
+  "binder_fact_view_version": "v2",
+  "financial_fact_v1_modified": false,
+  "gate": "NF-V2-03-R3",
+  "gold_reads_before_prediction_seal": 0,
+  "http_timeout_seconds": 180,
+  "max_retries": 0,
+  "model": "qwen3.7-plus",
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "prompt_sha256": "d9ef559fe850eb0e8b787107a8c869802f04b5d24847ddfaa51432df621f4b04",
+  "provider": "Alibaba Bailian",
+  "temperature": 0.0,
+  "thinking": false
+}

@@ -15,7 +15,7 @@ from rag_v2.contracts.evidence import BindingStatus, EvidenceBinding
 from rag_v2.contracts.plan import SupervisorPlan
 
 from .binder_service import BinderRequest
-from .binder_fact_view import build_binder_fact_views
+from .binder_fact_view import build_binder_fact_views, build_binder_fact_views_v2
 from .prompt import BINDER_SYSTEM_PROMPT_V1
 
 
@@ -62,9 +62,19 @@ def selection_schema(plan: SupervisorPlan, handles: Mapping[str, str]) -> dict[s
     }
 
 
-def provider_request(request: BinderRequest) -> tuple[dict[str, Any], dict[str, str], dict[str, Any]]:
+def provider_request(
+    request: BinderRequest,
+    *,
+    fact_view_version: str = "v1",
+    source_by_candidate: Mapping[str, Mapping[str, Any]] | None = None,
+) -> tuple[dict[str, Any], dict[str, str], dict[str, Any]]:
     handles = fact_handle_map(request)
-    public_facts = build_binder_fact_views(list(request.facts))
+    if fact_view_version == "v1":
+        public_facts = build_binder_fact_views(list(request.facts))
+    elif fact_view_version == "v2":
+        public_facts = build_binder_fact_views_v2(list(request.facts), source_by_candidate)
+    else:
+        raise ValueError(f"unsupported BinderFactView version: {fact_view_version}")
     payload = {
         "question": request.question,
         "intent": request.plan.intent.value,

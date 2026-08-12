@@ -164,6 +164,8 @@ def run_formal(
     frozen: dict[str, Any],
     *,
     system_prompt: str | None = None,
+    fact_view_version: str = "v1",
+    source_metadata_by_candidate: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     provider = BailianConstrainedBinderProvider(
         base_url=config["base_url"],
@@ -174,6 +176,8 @@ def run_formal(
         timeout=180.0,
         max_retries=0,
         system_prompt=system_prompt,
+        fact_view_version=fact_view_version,
+        source_metadata_by_candidate=source_metadata_by_candidate,
     )
     service = SemanticBinderService(provider)
     predictions: list[dict[str, Any]] = []

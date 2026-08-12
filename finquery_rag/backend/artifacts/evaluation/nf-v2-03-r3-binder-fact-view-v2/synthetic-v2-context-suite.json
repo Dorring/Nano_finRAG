@@ -1,0 +1,219 @@
+{
+  "adapter_valid": 8,
+  "benchmark_questions_used": 0,
+  "binding_validator_pass": 8,
+  "dto_valid": 8,
+  "false_binding": 0,
+  "gate": "NF-V2-03-R3",
+  "model": "qwen3.7-plus",
+  "model_calls": 8,
+  "pass": true,
+  "provider_response_success": 8,
+  "rows": [
+    {
+      "actual": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "adapter_valid": true,
+      "binding_validator_pass": true,
+      "dto_valid": true,
+      "elapsed_ms": 2434.011,
+      "expected": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "false_binding": false,
+      "latency_ms": 2433.7751399725676,
+      "provider_response_success": true,
+      "question_id": "v2_syn_01",
+      "semantic_correct": true,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "adapter_valid": true,
+      "binding_validator_pass": true,
+      "dto_valid": true,
+      "elapsed_ms": 1543.766,
+      "expected": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "false_binding": false,
+      "latency_ms": 1543.5748330201022,
+      "provider_response_success": true,
+      "question_id": "v2_syn_02",
+      "semantic_correct": true,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "s1": []
+      },
+      "adapter_valid": true,
+      "binding_validator_pass": true,
+      "dto_valid": true,
+      "elapsed_ms": 1325.894,
+      "expected": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "false_binding": false,
+      "latency_ms": 1325.7398040150292,
+      "provider_response_success": true,
+      "question_id": "v2_syn_03",
+      "semantic_correct": false,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "adapter_valid": true,
+      "binding_validator_pass": true,
+      "dto_valid": true,
+      "elapsed_ms": 2071.561,
+      "expected": {
+        "s1": [
+          "F01"
+        ]
+      },
+      "false_binding": false,
+      "latency_ms": 2071.381793997716,
+      "provider_response_success": true,
+      "question_id": "v2_syn_04",
+      "semantic_correct": true,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "current": [
+          "F01"
+        ],
+        "prior": [
+          "F02"
+        ]
+      },
+      "adapter_valid": true,
+      "binding_validator_pass": true,
+      "dto_valid": true,
+      "elapsed_ms": 1618.75,
+      "expected": {
+        "current": [
+          "F01"
+        ],
+        "prior": [
+          "F02"
+        ]
+      },
+      "false_binding": false,
+      "latency_ms": 1618.5388889862224,
+      "provider_response_success": true,
+      "question_id": "v2_syn_05",
+      "semantic_correct": true,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "denominator": [
+          "F02"
+        ],
+        "numerator": [
+          "F01"
+        ]
+      },
+      "adapter_valid": true,
+      "binding_validator_pass": true,
+      "dto_valid": true,
+      "elapsed_ms": 1758.433,
+      "expected": {
+        "denominator": [
+          "F02"
+        ],
+        "numerator": [
+          "F01"
+        ]
+      },
+      "false_binding": false,
+      "latency_ms": 1758.265346987173,
+      "provider_response_success": true,
+      "question_id": "v2_syn_06",
+      "semantic_correct": true,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "s1": []
+      },
+      "adapter_valid": true,
+      "binding_validator_pass": true,
+      "dto_valid": true,
+      "elapsed_ms": 1078.84,
+      "expected": {
+        "s1": []
+      },
+      "false_binding": false,
+      "latency_ms": 1078.676521021407,
+      "provider_response_success": true,
+      "question_id": "v2_syn_07",
+      "semantic_correct": true,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    },
+    {
+      "actual": {
+        "s1": [
+          "F01",
+          "F02"
+        ]
+      },
+      "adapter_valid": true,
+      "binding_validator_pass": true,
+      "dto_valid": true,
+      "elapsed_ms": 1382.007,
+      "expected": {
+        "s1": [
+          "F01",
+          "F02"
+        ]
+      },
+      "false_binding": false,
+      "latency_ms": 1381.8550960277207,
+      "provider_response_success": true,
+      "question_id": "v2_syn_08",
+      "semantic_correct": true,
+      "structured_output_success": true,
+      "unknown_fact": 0,
+      "unknown_slot": 0
+    }
+  ],
+  "semantic_correct": 7,
+  "semantic_total": 8,
+  "structured_output_success": 8,
+  "unknown_fact": 0,
+  "unknown_slot": 0
+}

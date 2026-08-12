@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import time
-from typing import Any
+from typing import Any, Mapping
 
 from rag_v2.contracts.plan import SupervisorPlan
 
@@ -40,9 +40,18 @@ class BailianConstrainedBinderProvider(BailianBinderProvider):
 
     provider_role = "evidence_binder"
 
-    def __init__(self, *args: Any, system_prompt: str | None = None, **kwargs: Any) -> None:
+    def __init__(
+        self,
+        *args: Any,
+        system_prompt: str | None = None,
+        fact_view_version: str = "v1",
+        source_metadata_by_candidate: Mapping[str, Mapping[str, Any]] | None = None,
+        **kwargs: Any,
+    ) -> None:
         super().__init__(*args, **kwargs)
         self.system_prompt = system_prompt
+        self.fact_view_version = fact_view_version
+        self.source_metadata_by_candidate = dict(source_metadata_by_candidate or {})
 
     @staticmethod
     def _coerce_request(request: Any) -> BinderRequest:
@@ -70,7 +79,11 @@ class BailianConstrainedBinderProvider(BailianBinderProvider):
         started = time.perf_counter()
         self.last_raw_response = None
         response: Any | None = None
-        payload, handles, schema = provider_request(request)
+        payload, handles, schema = provider_request(
+            request,
+            fact_view_version=self.fact_view_version,
+            source_by_candidate=self.source_metadata_by_candidate,
+        )
         try:
             body = {
                 "model": self.model_name,

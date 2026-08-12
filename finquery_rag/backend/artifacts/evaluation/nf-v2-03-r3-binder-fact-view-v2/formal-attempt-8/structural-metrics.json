@@ -1,0 +1,15 @@
+{
+  "adapter_valid": 65,
+  "binding_validator_pass": 72,
+  "calculation_leakage": 0,
+  "cardinality_violations": 0,
+  "dto_valid": 65,
+  "duplicate_handles": 0,
+  "gold_reads_before_prediction_seal": 0,
+  "provider_responses": 65,
+  "questions": 72,
+  "status_violations": 0,
+  "structured_output": 65,
+  "unknown_facts": 0,
+  "unknown_slots": 0
+}

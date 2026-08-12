@@ -1,0 +1,826 @@
+{
+  "reclassification": {
+    "FV2-0": 17,
+    "FV2-1": 6,
+    "FV2-2": 0,
+    "FV2-3": 0,
+    "FV2-4": 0,
+    "FV2-5": 0,
+    "FV2-6": 0,
+    "FV2-7": 0
+  },
+  "reviewed_strict_bindable": "27/27",
+  "rows": [
+    {
+      "competing_fact_handles": [
+        "F03",
+        "F08",
+        "F13",
+        "F14",
+        "F15",
+        "F20"
+      ],
+      "competitor_visible_signatures": [
+        "07b7948d0c076eaeb07e24e557b5303b52e76327d225d4cf2d2ea44ef522fce1",
+        "0e257eecb552850cdd7d02dae2cf6ef1710654e1cff08cc29b2949e41004dba9",
+        "12783aae570c1a1f8be1f65118a66ca114bef8b169ab134b163488ad9325dd9d",
+        "24c7175157b452f11f663c9b17d4796b55e27ff79346af9116a8c0b8a0da12d3",
+        "7aa228e13d3c77aa5124a5325ef3e8df7a71b0b2a157f33eb3827dda4dd79053",
+        "b12f12dc1758964ab03b6498bc1c3dc559bc1d1e4da9a2c9bdae8d10b37f25f0"
+      ],
+      "gold_compatible_fact_handles": [
+        "F06"
+      ],
+      "gold_visible_signatures": [
+        "de80e92b94394c7fc73e4ac83a0289cde29513809a7de8e0fc71027590ef66f3"
+      ],
+      "question_id": "aapl_fy2025_001",
+      "v1_classification": "CD5_materially_indistinguishable_conflicting_facts",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F01",
+        "F04",
+        "F08",
+        "F13",
+        "F17",
+        "F19"
+      ],
+      "competitor_visible_signatures": [
+        "12783aae570c1a1f8be1f65118a66ca114bef8b169ab134b163488ad9325dd9d",
+        "370bdea47340153879fb92294cb58fc75e813964975db5d083ff1045efd381f1",
+        "a3bd7d3240a429c987182ce1708f8e5d6dffb4a385bf7f9662f32c2e517c5aa2",
+        "aef6ffc7187fcf7b1a59f3592afc95e41d375dfba7b633ba5bd69a632a63b567",
+        "bd74dddc6a8127d594164c7df86ce099ed0bc7d56d1f26e113aa5d2b3271520a",
+        "e1b086a9d6bbbe737d9aa2e29e7265d708070c8628c7dbb83237b8a9bc97a9ae"
+      ],
+      "gold_compatible_fact_handles": [
+        "F12"
+      ],
+      "gold_visible_signatures": [
+        "c97250a7637f84ac47968f9df0351760c29090b153119ae5af2ea9b2c331de95"
+      ],
+      "question_id": "aapl_fy2025_002",
+      "v1_classification": "CD6_gold_fact_missing_required_scope_context",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F05",
+        "F08",
+        "F11",
+        "F14",
+        "F16",
+        "F21",
+        "F24"
+      ],
+      "competitor_visible_signatures": [
+        "2e323326cf8e73beb93dc0f70a49ff8279b66567a072a72ac5d0e8a05a58a1e2",
+        "9c453949f1319c4152c25596d2919f72df35cf39868c271c6ecf097c14a52fa6",
+        "a3bd7d3240a429c987182ce1708f8e5d6dffb4a385bf7f9662f32c2e517c5aa2",
+        "b6fb95d1e8d22e1b4658cc33f20350cc980a4f6d8c234133534a638d709ff226",
+        "bd74dddc6a8127d594164c7df86ce099ed0bc7d56d1f26e113aa5d2b3271520a",
+        "d56f1e4dc0711df577c778f8725017ddb1ce641f855594905d2ef347067c8177",
+        "f55ca6706892f8ddb2e75b21cb51f8ac9ae2a469e841c66766f9fbf9339a05d3"
+      ],
+      "gold_compatible_fact_handles": [
+        "F03"
+      ],
+      "gold_visible_signatures": [
+        "e0355bce681cb89442c0271c50a3a45c18d671b5ca1570bfad9ad4bbeccf042e"
+      ],
+      "question_id": "aapl_fy2025_003",
+      "v1_classification": "CD3_duplicate_equivalent_same_statement",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": false
+    },
+    {
+      "competing_fact_handles": [
+        "F05",
+        "F07",
+        "F19",
+        "F22"
+      ],
+      "competitor_visible_signatures": [
+        "07b7948d0c076eaeb07e24e557b5303b52e76327d225d4cf2d2ea44ef522fce1",
+        "12783aae570c1a1f8be1f65118a66ca114bef8b169ab134b163488ad9325dd9d",
+        "24c7175157b452f11f663c9b17d4796b55e27ff79346af9116a8c0b8a0da12d3",
+        "b6e4b68fb05caedaffdbb09d678e7febd9f5c922412c4b0481af441f6c90ef83"
+      ],
+      "gold_compatible_fact_handles": [
+        "F03"
+      ],
+      "gold_visible_signatures": [
+        "1950d069d27cfd32f6567b6c1bc6f192e7c442b970a3ebb5917e18c51ed44ac4"
+      ],
+      "question_id": "aapl_fy2025_004",
+      "v1_classification": "CD5_materially_indistinguishable_conflicting_facts",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F04",
+        "F19",
+        "F28",
+        "F31"
+      ],
+      "competitor_visible_signatures": [
+        "4992d592e1f29c82b7583e1936f3d7d2bdf2633723a86e2e779ea465fb4b3f29",
+        "6808fc06a2623b5128dc1ad96cfc9fa22a296131f69a607ce527db73cd9c4390",
+        "9de7bab7dd0a04f4cb2493ee07093ac4af91d0452548654d7db83afd1aa1987d",
+        "e0292abe833fedaa914251b45d79dbe8af656da5242a1ef860c03aba7bb14a23"
+      ],
+      "gold_compatible_fact_handles": [
+        "F02"
+      ],
+      "gold_visible_signatures": [
+        "13af189d02302f256d542cfc398af8dfb370892fe6b4b64986a005e4c0a5dda3"
+      ],
+      "question_id": "aapl_fy2025_009",
+      "v1_classification": "CD5_materially_indistinguishable_conflicting_facts",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F01",
+        "F04",
+        "F09",
+        "F21"
+      ],
+      "competitor_visible_signatures": [
+        "1c5689147fad711133969052a03ae44dc207089b930f82ecd4d5111d39ef53f9",
+        "1fa4471cb5044d255eb4d7314b5f47c5d9d220390b6ea59aea6a0d5db372dd78",
+        "552163575632791b87a0587cc634ae4775821768f2575b7092a568b7c80e9adc",
+        "bdf5f9615011baf6458dfdae48c091d9ecef7236ba150c1ac6d5c260b77b85e2"
+      ],
+      "gold_compatible_fact_handles": [
+        "F19"
+      ],
+      "gold_visible_signatures": [
+        "453aa7a51980500167ab824dff9c76dcc8833c7f2b0dbd16e52956c7e7cfec04"
+      ],
+      "question_id": "jpm_fy2025_001",
+      "v1_classification": "CD5_materially_indistinguishable_conflicting_facts",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F03",
+        "F05"
+      ],
+      "competitor_visible_signatures": [
+        "11406e7f2d029c84f96253924f9e03e3c28c8923b62189e24d7b01338aa883a2",
+        "a2359f480e87895e59018d9c0c436df2be75c70da754e0ad4bb1f811c9af3057"
+      ],
+      "gold_compatible_fact_handles": [
+        "F01"
+      ],
+      "gold_visible_signatures": [
+        "193953d249e026ea25d4ed23fb0cf54812a7cdecac928062faa99773600d9f5a"
+      ],
+      "question_id": "jpm_fy2025_002",
+      "v1_classification": "CD0_unique_visible_match",
+      "v1_visible_unique_bindable": true,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F01",
+        "F05",
+        "F08",
+        "F10",
+        "F24",
+        "F27",
+        "F28",
+        "F37",
+        "F41"
+      ],
+      "competitor_visible_signatures": [
+        "1f0f280cc077f8cbb214bacce25eb5151d40e74793056f0e19cb1cfd383a91fe",
+        "2302824a51c42662b5f7accda3e7f6db84388ec1aa278c75b628353df82cfc86",
+        "313c53c2e97463636377149bc53650758491591af9411c8f94657a11f0d434d6",
+        "5a0c152651c42ea106421c9674387caab9fb57c3a071e72f5857dfade452fad2",
+        "8faa0b4db53f004a569db1ffca663e164b8b041959e6f14efda5b19968b137a3",
+        "b411bbbd82322d5835d2b8b255138650fc6c04b2e253550d4a82a4bd637d6a9d",
+        "c79ffdfba06915ced25738c9c38f2feb7ac20181ee2218b7dc28c38922d92d66",
+        "e098b17a173820a235314dbe67a6c63d2241225318a5657d518c5aaadefbe417",
+        "e1a9420b5296bebb9eae8736eda5882da9ad98aaf4eaf3c09053c5ca81447288"
+      ],
+      "gold_compatible_fact_handles": [
+        "F14"
+      ],
+      "gold_visible_signatures": [
+        "da0cffafcb51eeaad74824ebe3e140680e6c024ac6ff225e52c02a4a6c58723e"
+      ],
+      "question_id": "jpm_fy2025_003",
+      "v1_classification": "CD5_materially_indistinguishable_conflicting_facts",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F01",
+        "F06",
+        "F22",
+        "F26",
+        "F28",
+        "F40",
+        "F44"
+      ],
+      "competitor_visible_signatures": [
+        "313c53c2e97463636377149bc53650758491591af9411c8f94657a11f0d434d6",
+        "8fee6d949d039cb16b952cf2706a5fcdd3c1f4112369de4d7131b8e2161d9f76",
+        "9ac98afe2be917dc0bcb4df7bd5cef43ac653c8a4767f83bb7a358739350806f",
+        "b411bbbd82322d5835d2b8b255138650fc6c04b2e253550d4a82a4bd637d6a9d",
+        "c79ffdfba06915ced25738c9c38f2feb7ac20181ee2218b7dc28c38922d92d66",
+        "e098b17a173820a235314dbe67a6c63d2241225318a5657d518c5aaadefbe417",
+        "e1a9420b5296bebb9eae8736eda5882da9ad98aaf4eaf3c09053c5ca81447288"
+      ],
+      "gold_compatible_fact_handles": [
+        "F33"
+      ],
+      "gold_visible_signatures": [
+        "5a0c152651c42ea106421c9674387caab9fb57c3a071e72f5857dfade452fad2"
+      ],
+      "question_id": "jpm_fy2025_004",
+      "v1_classification": "CD6_gold_fact_missing_required_scope_context",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F02",
+        "F05",
+        "F14",
+        "F21",
+        "F24",
+        "F37",
+        "F47",
+        "F54"
+      ],
+      "competitor_visible_signatures": [
+        "01760ba361c9dee59ad105cd9c1cd0cfc283e45d15a8e63c322dff87c9d6fe4c",
+        "30fdb84ba230f5246f49cf490a32ec37cd567e50ee3f61e4839adc06a302393f",
+        "400e96a391844240897255c3479cd282f74a4c3c2b1b77d9300e1de4967b2ab9",
+        "78b931d93c69f6a2376ac36b6bf3683c3a06fc2f667f72f4b96c8e8dc1d8445f",
+        "82c5aef7deb4f6e9b3fc47c2845ec33de4ef1ac809bb2578b6abf252020deb71",
+        "bdd8ac3694dd06efe89f497710b5078b45a8cc3e698ab2fe702d0f13c77600a6",
+        "c1dac7590ce042b0fd02df3ed742493c04c79317625c6d5e18cbd5ea6e56fe0c",
+        "d4b8910a7a855109dcece3cd8a5e49a53958c7b991dd3bb05d215c9301d31227"
+      ],
+      "gold_compatible_fact_handles": [
+        "F34"
+      ],
+      "gold_visible_signatures": [
+        "d866b421bb68591262ba119a388e543412c6e1ac751a65f9a677c2a1feb055ee"
+      ],
+      "question_id": "jpm_fy2025_009",
+      "v1_classification": "CD6_gold_fact_missing_required_scope_context",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F05",
+        "F07"
+      ],
+      "competitor_visible_signatures": [
+        "738206eeb57f2472316dc0ba5cd8db74788ed8da8b39d75e6a4b11de75f76476",
+        "afeaa2c6c1e27d0766cac77ab8b2f429d51bfe47caaa19d0fc7acfbee2bfd36d"
+      ],
+      "gold_compatible_fact_handles": [
+        "F02"
+      ],
+      "gold_visible_signatures": [
+        "ebb2868409914b378637868b1d9467c98ffe7cd698024bf5961ea97a07a5ab4e"
+      ],
+      "question_id": "ko_fy2025_001",
+      "v1_classification": "CD5_materially_indistinguishable_conflicting_facts",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F04",
+        "F18"
+      ],
+      "competitor_visible_signatures": [
+        "0e5b0f3e45a78867face0b628c3990a064492ee72af1032ad5eca5c981df7389",
+        "92596a2e82fe07696ad30520f44a68e805cc50bf9b605fba7e12e2d36e354af7"
+      ],
+      "gold_compatible_fact_handles": [
+        "F01"
+      ],
+      "gold_visible_signatures": [
+        "856fa0e29fac12993e666eb6436ebf091e07c25126f51f101edd1f3e938eac01"
+      ],
+      "question_id": "ko_fy2025_002",
+      "v1_classification": "CD5_materially_indistinguishable_conflicting_facts",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F04",
+        "F07"
+      ],
+      "competitor_visible_signatures": [
+        "3570051b86c510b088137a3d2f9f047ad1813d5a7fa6ca96e97d93c4001a5bc0",
+        "cf4a0496bf7b9b29788983672920da47c9d190e96a37ba6cfbf6c4173c7f06df"
+      ],
+      "gold_compatible_fact_handles": [
+        "F02"
+      ],
+      "gold_visible_signatures": [
+        "11e235cf9944df5b90d16bf0ae852df11aa2b65b71317095c29f5bc22b9b46ba"
+      ],
+      "question_id": "ko_fy2025_003",
+      "v1_classification": "CD0_unique_visible_match",
+      "v1_visible_unique_bindable": true,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F03",
+        "F07",
+        "F09",
+        "F11",
+        "F14",
+        "F16"
+      ],
+      "competitor_visible_signatures": [
+        "26364c9369fa52d305ac763bbee12b999b01fc6abb81a123df5e3e33647c86c9",
+        "383f5344a2868c9412e3587a6d1ece342d33281541541f80cebbc63cf5c34351",
+        "46b6a9b20591b1036a30a2c5a9bb34a9dc3cbaf5369eab701b254e8deabc9c92",
+        "53f0316771697bbf7b3262ba3028c690c789e423b4a68cec803cd7e5b201d345",
+        "788ed143c674f873010bf0338da7860ff506454d80ef35a326926d86518151cf",
+        "a35f34481f6adc9c46592f5735e36abea207174bb29105fef400ba368e7e294b"
+      ],
+      "gold_compatible_fact_handles": [
+        "F05"
+      ],
+      "gold_visible_signatures": [
+        "b972cbcc17612ad9f2e4411f787468a448ddf9f1daf1d08a93a74c72130ec4d6"
+      ],
+      "question_id": "msft_fy2025_001",
+      "v1_classification": "CD6_gold_fact_missing_required_scope_context",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F06",
+        "F07"
+      ],
+      "competitor_visible_signatures": [
+        "26364c9369fa52d305ac763bbee12b999b01fc6abb81a123df5e3e33647c86c9",
+        "788ed143c674f873010bf0338da7860ff506454d80ef35a326926d86518151cf"
+      ],
+      "gold_compatible_fact_handles": [
+        "F02"
+      ],
+      "gold_visible_signatures": [
+        "b972cbcc17612ad9f2e4411f787468a448ddf9f1daf1d08a93a74c72130ec4d6"
+      ],
+      "question_id": "msft_fy2025_003",
+      "v1_classification": "CD6_gold_fact_missing_required_scope_context",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F04"
+      ],
+      "competitor_visible_signatures": [
+        "bc1f4785ebb9030b194fed6f87cf5de397ff941df309b178759d00cc10417300"
+      ],
+      "gold_compatible_fact_handles": [
+        "F02"
+      ],
+      "gold_visible_signatures": [
+        "750e315027e8d50fd30eb910da9b83800a275a069bfb8692ecc2e873593d68de"
+      ],
+      "question_id": "nvda_fy2025_002",
+      "v1_classification": "CD0_unique_visible_match",
+      "v1_visible_unique_bindable": true,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F04"
+      ],
+      "competitor_visible_signatures": [
+        "dbdf96f69fcf95b40c651a6b433a1a9d88f3fa12e3882f07ed5ce669755d2354"
+      ],
+      "gold_compatible_fact_handles": [
+        "F01"
+      ],
+      "gold_visible_signatures": [
+        "3092848c9bc97c86860459b8f1641cb2004e73f07238c907c89848f2f448e060"
+      ],
+      "question_id": "nvda_fy2025_003",
+      "v1_classification": "CD0_unique_visible_match",
+      "v1_visible_unique_bindable": true,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [],
+      "competitor_visible_signatures": [],
+      "gold_compatible_fact_handles": [
+        "F02"
+      ],
+      "gold_visible_signatures": [
+        "aea9ddc74c3e04f46bd89f66d255065b2970a0ee1478840904283264a0401929"
+      ],
+      "question_id": "nvda_fy2025_004",
+      "v1_classification": "CD6_gold_fact_missing_required_scope_context",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [],
+      "competitor_visible_signatures": [],
+      "gold_compatible_fact_handles": [
+        "F01"
+      ],
+      "gold_visible_signatures": [
+        "140b0bcf40bda13f8225c90c719a28aa8713394fa7b29069e15990de87a3e38f"
+      ],
+      "question_id": "nvda_fy2025_005",
+      "v1_classification": "CD6_gold_fact_missing_required_scope_context",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F04",
+        "F13",
+        "F16",
+        "F22"
+      ],
+      "competitor_visible_signatures": [
+        "4f368c0687e39b9ee09b31d3b86be211d9bffe503e542d37cf15a293e836f2b1",
+        "88f8eb7f0365583d2a8973a98c3027e2f0ed77ce17592c12ad5eb76f82128225",
+        "9db3e2ed216c022c72502b2b885892118ed148cf275966aa857e251236ebe7c4",
+        "b7bdd13d1c1ca40d7cddb3b0330504976c5550173476ec95538f340e91f78349"
+      ],
+      "gold_compatible_fact_handles": [
+        "F03"
+      ],
+      "gold_visible_signatures": [
+        "7c9d2db9d9521ee6b28a667f0cf31fd252ecbfa76879b01ea169bc19c3c13b64"
+      ],
+      "question_id": "nvda_fy2025_009",
+      "v1_classification": "CD6_gold_fact_missing_required_scope_context",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F02"
+      ],
+      "competitor_visible_signatures": [
+        "880670c42ddf6e3413f6f46786bd668c1232528474dcae1058a9d0614d7af9fd"
+      ],
+      "gold_compatible_fact_handles": [
+        "F04"
+      ],
+      "gold_visible_signatures": [
+        "1e6b6bf3307b1138a89048b6565405d4f7ce67f11af50a7bb2b2eca1e813e5e2"
+      ],
+      "question_id": "pfe_fy2024_001",
+      "v1_classification": "CD5_materially_indistinguishable_conflicting_facts",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [
+        "F03",
+        "F10",
+        "F11",
+        "F14",
+        "F18",
+        "F20"
+      ],
+      "competitor_visible_signatures": [
+        "0e3879c41423395805aa609d18a5c1eee339e76502620b1617ec2f5bca7c9db0",
+        "2a4302d39bc3baa33c0863ca748bc843357c5822803303832b306aa68d1b1c65",
+        "5f91331cbed5ad6bbd19103a6a3aa342b49818b59f9c75c4b98ce014faa15f55",
+        "6e98947ca40aaaf31cb5db26e2b18dca2522985b39df047c3f5ab675e6cae843",
+        "9f175a0b0a9bb1ef477ca93dbbfb8cc8ade277539793a492749a2552c6af0fb7",
+        "ea0f59018747b44d3fb936f611579ea1e1ff8f8f820693118ec258e81a76d6e1"
+      ],
+      "gold_compatible_fact_handles": [
+        "F05"
+      ],
+      "gold_visible_signatures": [
+        "40a9d576d0f1753cc683de716c32f71edf24a8de39dfa2a5c6017ae9fbc8a336"
+      ],
+      "question_id": "tsla_fy2025_001",
+      "v1_classification": "CD5_materially_indistinguishable_conflicting_facts",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": true
+    },
+    {
+      "competing_fact_handles": [],
+      "competitor_visible_signatures": [],
+      "gold_compatible_fact_handles": [
+        "F01"
+      ],
+      "gold_visible_signatures": [
+        "a87c27f329bb2742aeffa3ad164aaa00daa4673628c34a6b5cd8a415c3b9d376"
+      ],
+      "question_id": "v_fy2025_001",
+      "v1_classification": "CD3_duplicate_equivalent_same_statement",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": false
+    },
+    {
+      "competing_fact_handles": [],
+      "competitor_visible_signatures": [],
+      "gold_compatible_fact_handles": [
+        "F01"
+      ],
+      "gold_visible_signatures": [
+        "31837034c6e34536259b05d534c27def1b906c069f9ef6c78e4fc9a62c2e6aa9"
+      ],
+      "question_id": "v_fy2025_002",
+      "v1_classification": "CD3_duplicate_equivalent_same_statement",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": false
+    },
+    {
+      "competing_fact_handles": [],
+      "competitor_visible_signatures": [],
+      "gold_compatible_fact_handles": [
+        "F01"
+      ],
+      "gold_visible_signatures": [
+        "5678e7ca3990146449c7a2c559e88eb4047215d072bcad2a9bdcdb66892d8dc0"
+      ],
+      "question_id": "v_fy2025_003",
+      "v1_classification": "CD3_duplicate_equivalent_same_statement",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": false
+    },
+    {
+      "competing_fact_handles": [],
+      "competitor_visible_signatures": [],
+      "gold_compatible_fact_handles": [
+        "F02"
+      ],
+      "gold_visible_signatures": [
+        "1d646f4304bc8be4a1ed843bf1d105096f058ae6225c2de1e388b0ac8b25ed86"
+      ],
+      "question_id": "v_fy2025_004",
+      "v1_classification": "CD3_duplicate_equivalent_same_statement",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": false
+    },
+    {
+      "competing_fact_handles": [
+        "F31",
+        "F50"
+      ],
+      "competitor_visible_signatures": [
+        "0731061a21b8635e817c1d3e7a14123fb54db6831ea8996abf0c18c0ce7d9f3b",
+        "9eef4e8ffc38f609d53c2626287c78af7987b10a09d393b31f04ef19310e7647"
+      ],
+      "gold_compatible_fact_handles": [
+        "F01"
+      ],
+      "gold_visible_signatures": [
+        "efc57cf360e9e39ad7f577c73a8c5ed7f1ffc50c93d3dd33e70f9263e92bcfe6"
+      ],
+      "question_id": "v_fy2025_009",
+      "v1_classification": "CD3_duplicate_equivalent_same_statement",
+      "v1_visible_unique_bindable": false,
+      "v2_fields_used": [
+        "metric",
+        "period",
+        "row/header",
+        "table",
+        "statement",
+        "section"
+      ],
+      "v2_visible_unique_bindable": false
+    }
+  ],
+  "v1_visible_unique": "4/27",
+  "v2_still_indistinguishable": "6/27",
+  "v2_visible_unique": "21/27"
+}
