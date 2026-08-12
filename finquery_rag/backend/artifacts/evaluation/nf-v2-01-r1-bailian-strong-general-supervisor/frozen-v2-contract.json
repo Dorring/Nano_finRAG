@@ -1,0 +1,19 @@
+{
+  "base_commit": "faa17f1ccd5b81e55968dce43df45a4237c3d9a5",
+  "binder_calls": 0,
+  "block_reason": null,
+  "calculator_calls": 0,
+  "evaluation_role": "development_shadow_v2_bailian_strong_general_llm_supervisor",
+  "formal_evaluation_status": "smoke_pending",
+  "fresh_blind_evaluation": false,
+  "gate": "NF-V2-01-R1",
+  "generator_calls": 0,
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "question_count": 72,
+  "reranker_calls": 0,
+  "retrieval_calls": 0,
+  "v2_00_contract_artifact": "artifacts/evaluation/nf-v2-00-architecture-contract-freeze/v2-contract-freeze.json",
+  "v2_00_contract_sha256": "11455bdf00d27b0c4b92d2744df6989a0d070759dcb8d6d33d8397df82abd9e6",
+  "validator_calls": 0
+}

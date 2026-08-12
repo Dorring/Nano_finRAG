@@ -1,0 +1,96 @@
+{
+  "json_schema": {
+    "name": "SupervisorPlan",
+    "schema": {
+      "additionalProperties": false,
+      "properties": {
+        "intent": {
+          "enum": [
+            "DIRECT_FACT",
+            "MULTI_EVIDENCE",
+            "CALCULATION"
+          ],
+          "type": "string"
+        },
+        "next_action": {
+          "enum": [
+            "RETRIEVE",
+            "ABSTAIN"
+          ],
+          "type": "string"
+        },
+        "operation": {
+          "enum": [
+            "difference",
+            "growth_rate",
+            "percentage_share",
+            "sum",
+            "average",
+            "gross_margin",
+            "net_margin",
+            "debt_ratio",
+            "scale_conversion",
+            null
+          ],
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "required_slots": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "metric": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "period": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "role": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "slot_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "unit": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "value_type": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "slot_id",
+              "metric",
+              "period",
+              "role",
+              "value_type",
+              "unit"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "intent",
+        "required_slots",
+        "operation",
+        "next_action"
+      ],
+      "type": "object"
+    },
+    "strict": true
+  },
+  "type": "json_schema"
+}

@@ -1,0 +1,8 @@
+{
+  "financial_sft_fallback_forbidden": true,
+  "model": "qwen3.7-max-2026-06-08",
+  "model_role": "strong_general_llm",
+  "provider": "bailian",
+  "provider_role": "supervisor",
+  "role_match": true
+}

@@ -1,0 +1,16 @@
+{
+  "bailian_r1": {
+    "formal_evaluation_status": "infrastructure_blocked",
+    "reason": "Bailian synthetic smoke test failed"
+  },
+  "financial_sft_r0": {
+    "answer_leakage": "55/72",
+    "calculation_recall": "N/A",
+    "metric_slot": "N/A",
+    "note": "Not semantically evaluable because 0/72 valid SupervisorPlans were produced.",
+    "parse_failure": "72/72",
+    "period_slot": "N/A",
+    "plan_validator_pass": "0/72",
+    "schema_valid": "0/72"
+  }
+}

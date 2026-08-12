@@ -1,0 +1,14 @@
+{
+  "api_key_serialized": false,
+  "base_url": "https://llm-kwsmkwarae9581k9.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+  "block_reason": "Bailian synthetic smoke test failed",
+  "enable_thinking": false,
+  "formal_evaluation_status": "infrastructure_blocked",
+  "gate": "NF-V2-01-R1",
+  "model": "qwen3.7-max-2026-06-08",
+  "model_role": "strong_general_llm",
+  "provider": "bailian",
+  "provider_role": "supervisor",
+  "smoke_status": "fail",
+  "temperature": 0.0
+}

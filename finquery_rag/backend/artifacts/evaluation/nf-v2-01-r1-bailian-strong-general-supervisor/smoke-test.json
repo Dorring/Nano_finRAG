@@ -1,0 +1,12 @@
+{
+  "answer_leakage": false,
+  "error": "Bailian API call failed (APIConnectionError; status=None; code=None; param=None)",
+  "model_calls": 1,
+  "plan_validator_pass": false,
+  "provider_response_success": false,
+  "question": "What was ExampleCorp's revenue in FY2025?",
+  "schema_valid": false,
+  "semantic_shape": false,
+  "status": "fail",
+  "structured_output_success": false
+}

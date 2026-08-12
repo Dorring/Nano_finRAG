@@ -98,6 +98,8 @@ class APIProvider:
                 raw_response=raw,
                 provider_role=self.provider_role,
                 model_role=self.model_role,
+                provider_response_success=False,
+                structured_output_success=False,
                 error=f"{type(exc).__name__}: {exc}",
             )
             raise SupervisorProviderError("Supervisor API call failed") from exc
@@ -119,6 +121,8 @@ class APIProvider:
             raw_response=raw,
             provider_role=self.provider_role,
             model_role=self.model_role,
+            provider_response_success=True,
+            structured_output_success=parse_failure is None,
             input_tokens=_usage_value(usage, "prompt_tokens"),
             output_tokens=_usage_value(usage, "completion_tokens"),
             total_tokens=_usage_value(usage, "total_tokens"),

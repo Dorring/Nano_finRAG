@@ -1,0 +1,17 @@
+{
+  "binder_calls": 0,
+  "block_reason": "Bailian synthetic smoke test failed",
+  "calculator_calls": 0,
+  "formal_evaluation_status": "infrastructure_blocked",
+  "gate": "NF-V2-01-R1",
+  "generator_calls": 0,
+  "gold_reads_before_prediction_seal": 0,
+  "max_calls_per_question": 1,
+  "model_calls": 0,
+  "plans_sha256": "18eef7964e988a554ed4564ee990573f2f623386617126ff15072e3a6d969781",
+  "questions": 72,
+  "reranker_calls": 0,
+  "retrieval_calls": 0,
+  "sealed": true,
+  "validator_calls": 0
+}
