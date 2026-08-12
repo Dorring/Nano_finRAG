@@ -1,0 +1,12 @@
+{
+  "base_url": "http://127.0.0.1:18001/v1",
+  "downstream_execution": false,
+  "gate": "NF-V2-01",
+  "max_supervisor_calls_per_question": 1,
+  "max_tokens": 512,
+  "model": "finquery-finance-v2-lr010-150",
+  "provider": "local",
+  "retry": false,
+  "structured_output": "strict_json_parsing",
+  "temperature": 0.0
+}

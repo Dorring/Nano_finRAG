@@ -1,0 +1,16 @@
+{
+  "binder_calls": 0,
+  "calculator_calls": 0,
+  "gate": "NF-V2-01",
+  "generator_calls": 0,
+  "gold_reads_before_prediction_seal": 0,
+  "model_calls": 72,
+  "plans_sha256": "3eb3c1a1fa9c36a9b26169cca4823b59cec3da9e1821585e894780b814ec1a9f",
+  "prompt_sha256": "53fa8dc9487d8334b98cf4b4d4633c4d67988c412b1c9c2a212581ecc7df337b",
+  "questions": 72,
+  "reference_answer_reads_before_prediction_seal": 0,
+  "reranker_calls": 0,
+  "retrieval_calls": 0,
+  "sealed": true,
+  "validator_calls": 0
+}

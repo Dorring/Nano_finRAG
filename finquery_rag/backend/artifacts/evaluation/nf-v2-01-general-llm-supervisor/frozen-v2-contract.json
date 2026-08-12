@@ -1,0 +1,23 @@
+{
+  "base_commit": "938a32573ba9ebbca56d55404a54747f36d34981",
+  "binder_calls": 0,
+  "calculator_calls": 0,
+  "evaluation_role": "development_shadow_v2_general_llm_supervisor",
+  "fresh_blind_evaluation": false,
+  "gate": "NF-V2-01",
+  "generator_calls": 0,
+  "gold_fields_loaded_before_seal": false,
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "question_count": 72,
+  "question_fields_loaded": [
+    "question_id",
+    "question",
+    "document_scope"
+  ],
+  "reranker_calls": 0,
+  "retrieval_calls": 0,
+  "v2_00_contract_artifact": "artifacts/evaluation/nf-v2-00-architecture-contract-freeze/v2-contract-freeze.json",
+  "v2_00_contract_sha256": "11455bdf00d27b0c4b92d2744df6989a0d070759dcb8d6d33d8397df82abd9e6",
+  "validator_calls": 0
+}

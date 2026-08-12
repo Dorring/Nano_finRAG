@@ -1,0 +1,15 @@
+{
+  "SP0_correct": 0,
+  "SP10_schema_invalid": 17,
+  "SP11_answer_leakage": 55,
+  "SP12_other": 0,
+  "SP1_wrong_intent": 0,
+  "SP2_missing_metric_slot": 0,
+  "SP3_wrong_metric_slot": 0,
+  "SP4_missing_period_slot": 0,
+  "SP5_wrong_period_slot": 0,
+  "SP6_wrong_slot_count": 0,
+  "SP7_wrong_operand_role": 0,
+  "SP8_wrong_operation": 0,
+  "SP9_invalid_action": 0
+}

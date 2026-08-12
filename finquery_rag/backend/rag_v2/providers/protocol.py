@@ -6,11 +6,7 @@ from rag_v2.contracts.plan import SupervisorPlan
 
 
 class SupervisorProvider(Protocol):
-    """Provider abstraction reserved for V2-01.
+    """Provider abstraction for a single V2-01 question-to-plan call."""
 
-    Implementations may propose a plan, but the deterministic plan validator
-    and state machine remain authoritative.
-    """
-
-    def propose_plan(self, question: str) -> SupervisorPlan:
-        """Return a supervisor proposal for a question."""
+    def plan(self, question: str) -> SupervisorPlan:
+        """Return one supervisor proposal; downstream tools are not executed."""
