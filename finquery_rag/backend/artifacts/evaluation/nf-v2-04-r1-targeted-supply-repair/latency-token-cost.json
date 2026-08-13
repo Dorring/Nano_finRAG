@@ -1,0 +1,12 @@
+{
+  "actual_retrieval_calls": 18,
+  "added_latency_ms_average_per_repair": 252.774,
+  "added_latency_ms_p50": 144.319,
+  "added_latency_ms_p95": 759.95,
+  "added_latency_ms_total": 1516.641,
+  "binder_calls": 0,
+  "cost_per_new_safe_bound": "undefined/infinite",
+  "input_tokens": 0,
+  "materialization_only_repairs": 15,
+  "output_tokens": 0
+}
