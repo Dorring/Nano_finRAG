@@ -1,0 +1,330 @@
+{
+  "abstained": 1,
+  "model_calls": 0,
+  "queries": 4,
+  "released": 3,
+  "retrieval_calls": 0,
+  "rows": [
+    {
+      "answer_text": null,
+      "attempt_count": 1,
+      "citation_ids": [],
+      "generation_model": null,
+      "generation_provider": null,
+      "query_id": "nvda_fy2025_004",
+      "route": "DIRECT_FACT",
+      "status": "ABSTAINED",
+      "terminal_reason": "TR3_PRIMARY_VALIDATION_FAIL_NO_FALLBACK",
+      "trace": {
+        "evidence_source": "runtime_trusted_v2",
+        "fallback_provider": null,
+        "fallback_triggered": false,
+        "generation_attempts": [
+          {
+            "answer_envelope": {
+              "answer_text": "In FY2025, Data Center revenue was 115,186 (scale: 1,000,000) [EV-1].",
+              "attempt_index": 0,
+              "citation_ids": [
+                "EV-1"
+              ],
+              "generation_status": "complete",
+              "generator_model": "qwen3.7-plus",
+              "generator_provider": "replay_general",
+              "metadata": {},
+              "query_id": "nvda_fy2025_004",
+              "route": "DIRECT"
+            },
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.15605502994731069,
+            "model_id": "qwen3.7-plus",
+            "output_token_count": null,
+            "provider_id": "replay_general",
+            "query_id": "nvda_fy2025_004",
+            "recovery_reason": null,
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [
+                "GV3_NUMERIC_FIDELITY"
+              ],
+              "findings": [
+                {
+                  "code": "GV3_NUMERIC_FIDELITY",
+                  "message": "unsupported material number(s): ['1000000']",
+                  "severity": "HARD_FAIL"
+                }
+              ],
+              "status": "HARD_FAIL"
+            }
+          }
+        ],
+        "latencies_ms": [
+          0.15605502994731069
+        ],
+        "primary_provider": "replay_general",
+        "query_id": "nvda_fy2025_004",
+        "released": false,
+        "route": "DIRECT_FACT",
+        "supervisor_plan_valid": true,
+        "terminal_reason": "TR3_PRIMARY_VALIDATION_FAIL_NO_FALLBACK",
+        "token_counts": [],
+        "trace_id": "8dcfb3c4c92544bcacac8fad11ab33be",
+        "trusted_evidence_available": true,
+        "validator_codes": [
+          [
+            "GV3_NUMERIC_FIDELITY"
+          ]
+        ]
+      },
+      "trace_id": "8dcfb3c4c92544bcacac8fad11ab33be",
+      "used_fallback": false,
+      "validation_status": "HARD_FAIL"
+    },
+    {
+      "answer_text": "Automotive revenue in FY2025 was 1,694 million [EV-1].",
+      "attempt_count": 1,
+      "citation_ids": [
+        "EV-1"
+      ],
+      "generation_model": "qwen3.7-plus",
+      "generation_provider": "replay_general",
+      "query_id": "nvda_fy2025_005",
+      "route": "DIRECT_FACT",
+      "status": "RELEASED",
+      "terminal_reason": "TR0_RELEASED_PRIMARY",
+      "trace": {
+        "evidence_source": "runtime_trusted_v2",
+        "fallback_provider": null,
+        "fallback_triggered": false,
+        "generation_attempts": [
+          {
+            "answer_envelope": {
+              "answer_text": "Automotive revenue in FY2025 was 1,694 million [EV-1].",
+              "attempt_index": 0,
+              "citation_ids": [
+                "EV-1"
+              ],
+              "generation_status": "complete",
+              "generator_model": "qwen3.7-plus",
+              "generator_provider": "replay_general",
+              "metadata": {},
+              "query_id": "nvda_fy2025_005",
+              "route": "DIRECT"
+            },
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.0662800157442689,
+            "model_id": "qwen3.7-plus",
+            "output_token_count": null,
+            "provider_id": "replay_general",
+            "query_id": "nvda_fy2025_005",
+            "recovery_reason": null,
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [],
+              "findings": [],
+              "status": "PASS"
+            }
+          }
+        ],
+        "latencies_ms": [
+          0.0662800157442689
+        ],
+        "primary_provider": "replay_general",
+        "query_id": "nvda_fy2025_005",
+        "released": true,
+        "route": "DIRECT_FACT",
+        "supervisor_plan_valid": true,
+        "terminal_reason": "TR0_RELEASED_PRIMARY",
+        "token_counts": [],
+        "trace_id": "ca6ce4b99158411da1d112a723afa510",
+        "trusted_evidence_available": true,
+        "validator_codes": [
+          []
+        ]
+      },
+      "trace_id": "ca6ce4b99158411da1d112a723afa510",
+      "used_fallback": false,
+      "validation_status": "PASS"
+    },
+    {
+      "answer_text": "The total volume reported by Visa in FY2025 was 16.7 [EV-1].",
+      "attempt_count": 1,
+      "citation_ids": [
+        "EV-1"
+      ],
+      "generation_model": "qwen3.7-plus",
+      "generation_provider": "replay_general",
+      "query_id": "v_fy2025_002",
+      "route": "DIRECT_FACT",
+      "status": "RELEASED",
+      "terminal_reason": "TR0_RELEASED_PRIMARY",
+      "trace": {
+        "evidence_source": "runtime_trusted_v2",
+        "fallback_provider": null,
+        "fallback_triggered": false,
+        "generation_attempts": [
+          {
+            "answer_envelope": {
+              "answer_text": "The total volume reported by Visa in FY2025 was 16.7 [EV-1].",
+              "attempt_index": 0,
+              "citation_ids": [
+                "EV-1"
+              ],
+              "generation_status": "complete",
+              "generator_model": "qwen3.7-plus",
+              "generator_provider": "replay_general",
+              "metadata": {},
+              "query_id": "v_fy2025_002",
+              "route": "DIRECT"
+            },
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.05113700171932578,
+            "model_id": "qwen3.7-plus",
+            "output_token_count": null,
+            "provider_id": "replay_general",
+            "query_id": "v_fy2025_002",
+            "recovery_reason": null,
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [],
+              "findings": [],
+              "status": "PASS"
+            }
+          }
+        ],
+        "latencies_ms": [
+          0.05113700171932578
+        ],
+        "primary_provider": "replay_general",
+        "query_id": "v_fy2025_002",
+        "released": true,
+        "route": "DIRECT_FACT",
+        "supervisor_plan_valid": true,
+        "terminal_reason": "TR0_RELEASED_PRIMARY",
+        "token_counts": [],
+        "trace_id": "73c3f623a4fa462d832aa7b268f45c9e",
+        "trusted_evidence_available": true,
+        "validator_codes": [
+          []
+        ]
+      },
+      "trace_id": "73c3f623a4fa462d832aa7b268f45c9e",
+      "used_fallback": false,
+      "validation_status": "PASS"
+    },
+    {
+      "answer_text": "In FY2025, 257.5 transactions were processed on Visa's networks [EV-1].",
+      "attempt_count": 1,
+      "citation_ids": [
+        "EV-1"
+      ],
+      "generation_model": "qwen3.7-plus",
+      "generation_provider": "replay_general",
+      "query_id": "v_fy2025_003",
+      "route": "DIRECT_FACT",
+      "status": "RELEASED",
+      "terminal_reason": "TR0_RELEASED_PRIMARY",
+      "trace": {
+        "evidence_source": "runtime_trusted_v2",
+        "fallback_provider": null,
+        "fallback_triggered": false,
+        "generation_attempts": [
+          {
+            "answer_envelope": {
+              "answer_text": "In FY2025, 257.5 transactions were processed on Visa's networks [EV-1].",
+              "attempt_index": 0,
+              "citation_ids": [
+                "EV-1"
+              ],
+              "generation_status": "complete",
+              "generator_model": "qwen3.7-plus",
+              "generator_provider": "replay_general",
+              "metadata": {},
+              "query_id": "v_fy2025_003",
+              "route": "DIRECT"
+            },
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.04605000140145421,
+            "model_id": "qwen3.7-plus",
+            "output_token_count": null,
+            "provider_id": "replay_general",
+            "query_id": "v_fy2025_003",
+            "recovery_reason": null,
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [],
+              "findings": [],
+              "status": "PASS"
+            }
+          }
+        ],
+        "latencies_ms": [
+          0.04605000140145421
+        ],
+        "primary_provider": "replay_general",
+        "query_id": "v_fy2025_003",
+        "released": true,
+        "route": "DIRECT_FACT",
+        "supervisor_plan_valid": true,
+        "terminal_reason": "TR0_RELEASED_PRIMARY",
+        "token_counts": [],
+        "trace_id": "3b6c0d9dbc6e487e9f3dad9da968c9d6",
+        "trusted_evidence_available": true,
+        "validator_codes": [
+          []
+        ]
+      },
+      "trace_id": "3b6c0d9dbc6e487e9f3dad9da968c9d6",
+      "used_fallback": false,
+      "validation_status": "PASS"
+    }
+  ],
+  "validation_failures": 1
+}

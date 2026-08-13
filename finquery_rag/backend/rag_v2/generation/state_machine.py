@@ -113,7 +113,8 @@ class TrustedGenerationStateMachineV1:
                 trace.append(self._trace(generation_input, primary.metadata.provider_id, 0, report,
                                          RecoveryAction.NO_RECOVERY, state, True, latency))
                 return GenerationRunResultV1(state, True, envelope, report, tuple(attempts), RecoveryAction.NO_RECOVERY, tuple(trace))
-            action = self.recovery_policy.choose(report.failure_codes if report else ("PROVIDER_ERROR",))
+            action = self.recovery_policy.choose(report.failure_codes if report else ("PROVIDER_ERROR",),
+                                                 report.status if report else None)
 
         if action is not RecoveryAction.FALLBACK_PROVIDER or not self.recovery_policy.fallback_provider:
             state = GenerationState.ABSTAINED

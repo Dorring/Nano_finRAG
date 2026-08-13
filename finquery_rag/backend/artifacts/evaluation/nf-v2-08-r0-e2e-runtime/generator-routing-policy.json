@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "routing": {
+    "CALCULATION": {
+      "fallback": null,
+      "fallback_on_soft_fail": true,
+      "primary": null
+    },
+    "DIRECT_FACT": {
+      "fallback": null,
+      "fallback_on_soft_fail": true,
+      "primary": "replay_general"
+    },
+    "MULTI_EVIDENCE": {
+      "fallback": null,
+      "fallback_on_soft_fail": true,
+      "primary": null
+    }
+  }
+}

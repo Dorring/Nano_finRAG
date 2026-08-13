@@ -1,0 +1,26 @@
+{
+  "metrics": [
+    "average_attempts_per_query",
+    "fallback_rate",
+    "fallback_success_rate",
+    "final_abstention_rate",
+    "final_release_rate",
+    "financial_fallback_rate",
+    "financial_final_release",
+    "financial_primary_attempts",
+    "financial_primary_pass",
+    "financial_primary_pass_rate",
+    "financial_to_general_fallback",
+    "general_fallback_success",
+    "generator_invocation_rate",
+    "hard_validation_failure_rate",
+    "no_answer_generator_false_positive",
+    "primary_pass_rate",
+    "provider_error_rate",
+    "queries_total",
+    "route_distribution",
+    "trusted_evidence_rate"
+  ],
+  "semantic_benchmark_metrics": "N/A",
+  "type": "RuntimeMetricAggregatorV1"
+}

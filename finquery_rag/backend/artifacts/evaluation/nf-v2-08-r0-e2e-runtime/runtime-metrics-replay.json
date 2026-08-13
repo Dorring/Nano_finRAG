@@ -1,0 +1,26 @@
+{
+  "average_attempts_per_query": 0.14285714285714285,
+  "fallback_rate": 0.0,
+  "fallback_success_rate": 0.0,
+  "final_abstention_rate": 0.8928571428571429,
+  "final_release_rate": 0.10714285714285714,
+  "financial_fallback_rate": null,
+  "financial_final_release": null,
+  "financial_primary_attempts": null,
+  "financial_primary_pass": null,
+  "financial_primary_pass_rate": null,
+  "financial_to_general_fallback": null,
+  "general_fallback_success": null,
+  "generator_invocation_rate": 0.14285714285714285,
+  "hard_validation_failure_rate": 0.03571428571428571,
+  "no_answer_generator_false_positive": 0,
+  "primary_pass_rate": 0.75,
+  "provider_error_rate": 0.0,
+  "queries_total": 28,
+  "route_distribution": {
+    "CALCULATION": 11,
+    "DIRECT_FACT": 4,
+    "MULTI_EVIDENCE": 5
+  },
+  "trusted_evidence_rate": 0.14285714285714285
+}

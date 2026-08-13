@@ -1,0 +1,14 @@
+{
+  "required": [
+    "query_id",
+    "route",
+    "supervisor_plan_valid",
+    "trusted_evidence_available",
+    "generation_attempts",
+    "validator_codes",
+    "released",
+    "terminal_reason"
+  ],
+  "secrets_logged": false,
+  "type": "RuntimeTraceV1"
+}

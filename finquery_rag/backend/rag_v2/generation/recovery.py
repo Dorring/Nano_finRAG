@@ -6,6 +6,8 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Any
 
+from .contracts import ValidationSeverity
+
 
 class RecoveryAction(str, Enum):
     NO_RECOVERY = "NO_RECOVERY"
@@ -20,6 +22,7 @@ class GenerationRecoveryPolicyV1:
     action: RecoveryAction = RecoveryAction.NO_RECOVERY
     same_provider_repair_enabled: bool = False
     fallback_budget: int = 1
+    fallback_on_soft_fail: bool = True
 
     def __post_init__(self) -> None:
         if self.action is RecoveryAction.FALLBACK_PROVIDER and not self.fallback_provider:
@@ -29,8 +32,10 @@ class GenerationRecoveryPolicyV1:
         if self.fallback_budget not in (0, 1):
             raise ValueError("fallback_budget must be 0 or 1")
 
-    def choose(self, failure_codes: tuple[str, ...]) -> RecoveryAction:
+    def choose(self, failure_codes: tuple[str, ...], validation_status: ValidationSeverity | None = None) -> RecoveryAction:
         del failure_codes
+        if validation_status is ValidationSeverity.SOFT_FAIL and not self.fallback_on_soft_fail:
+            return RecoveryAction.NO_RECOVERY
         if self.action is RecoveryAction.FALLBACK_PROVIDER and self.fallback_budget:
             return RecoveryAction.FALLBACK_PROVIDER
         if self.action is RecoveryAction.SAME_PROVIDER_REPAIR and self.same_provider_repair_enabled:
@@ -40,5 +45,5 @@ class GenerationRecoveryPolicyV1:
     def to_dict(self) -> dict[str, Any]:
         return {"primary_provider": self.primary_provider, "fallback_provider": self.fallback_provider,
                 "action": self.action.value, "same_provider_repair_enabled": self.same_provider_repair_enabled,
-                "fallback_budget": self.fallback_budget, "generation_attempt_budget": 2,
-                "recovery_attempt_budget": 1}
+            "fallback_budget": self.fallback_budget, "generation_attempt_budget": 2,
+            "recovery_attempt_budget": 1, "fallback_on_soft_fail": self.fallback_on_soft_fail}

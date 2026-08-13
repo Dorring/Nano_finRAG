@@ -1,0 +1,8 @@
+{
+  "input": "TrustedRAGQueryV2",
+  "model_calls": 0,
+  "output": "TrustedRAGResponseV2",
+  "retrieval_calls": 0,
+  "runtime": "TrustedRAGRuntimeV2",
+  "trusted_evidence_gate": "validation_status=VERIFIED + route/provenance contract"
+}

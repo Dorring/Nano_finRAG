@@ -1,0 +1,659 @@
+{
+  "passed": 6,
+  "rows": {
+    "primary_hard_fail_fallback_fail": {
+      "answer_text": null,
+      "attempt_count": 2,
+      "citation_ids": [],
+      "generation_model": null,
+      "generation_provider": null,
+      "query_id": "fixture",
+      "route": "DIRECT_FACT",
+      "status": "ABSTAINED",
+      "terminal_reason": "TR4_FALLBACK_VALIDATION_FAIL",
+      "trace": {
+        "evidence_source": "synthetic_runtime_fixture",
+        "fallback_provider": "fallback",
+        "fallback_triggered": true,
+        "generation_attempts": [
+          {
+            "answer_envelope": {
+              "answer_text": "101 USD in FY2025 [EV-1].",
+              "attempt_index": 0,
+              "citation_ids": [
+                "EV-1"
+              ],
+              "generation_status": "complete",
+              "generator_model": "mock",
+              "generator_provider": "primary",
+              "metadata": {},
+              "query_id": "fixture",
+              "route": "DIRECT"
+            },
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.03680604277178645,
+            "model_id": "mock",
+            "output_token_count": null,
+            "provider_id": "primary",
+            "query_id": "fixture",
+            "recovery_reason": null,
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [
+                "GV3_NUMERIC_FIDELITY"
+              ],
+              "findings": [
+                {
+                  "code": "GV3_NUMERIC_FIDELITY",
+                  "message": "unsupported material number(s): ['101']",
+                  "severity": "HARD_FAIL"
+                }
+              ],
+              "status": "HARD_FAIL"
+            }
+          },
+          {
+            "answer_envelope": {
+              "answer_text": "101 USD in FY2025 [EV-1].",
+              "attempt_index": 1,
+              "citation_ids": [
+                "EV-1"
+              ],
+              "generation_status": "complete",
+              "generator_model": "mock",
+              "generator_provider": "fallback",
+              "metadata": {},
+              "query_id": "fixture",
+              "route": "DIRECT"
+            },
+            "attempt_index": 1,
+            "input_token_count": null,
+            "latency_ms": 0.03194902092218399,
+            "model_id": "mock",
+            "output_token_count": null,
+            "provider_id": "fallback",
+            "query_id": "fixture",
+            "recovery_reason": "first_pass_validation_failed",
+            "terminal_state": "RECOVERY_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [
+                "GV3_NUMERIC_FIDELITY"
+              ],
+              "findings": [
+                {
+                  "code": "GV3_NUMERIC_FIDELITY",
+                  "message": "unsupported material number(s): ['101']",
+                  "severity": "HARD_FAIL"
+                }
+              ],
+              "status": "HARD_FAIL"
+            }
+          }
+        ],
+        "latencies_ms": [
+          0.03680604277178645,
+          0.03194902092218399
+        ],
+        "primary_provider": "primary",
+        "query_id": "fixture",
+        "released": false,
+        "route": "DIRECT_FACT",
+        "supervisor_plan_valid": true,
+        "terminal_reason": "TR4_FALLBACK_VALIDATION_FAIL",
+        "token_counts": [],
+        "trace_id": "58041023161e43069602365e64f388c8",
+        "trusted_evidence_available": true,
+        "validator_codes": [
+          [
+            "GV3_NUMERIC_FIDELITY"
+          ],
+          [
+            "GV3_NUMERIC_FIDELITY"
+          ]
+        ]
+      },
+      "trace_id": "58041023161e43069602365e64f388c8",
+      "used_fallback": true,
+      "validation_status": "HARD_FAIL"
+    },
+    "primary_hard_fail_fallback_pass": {
+      "answer_text": "100 USD in FY2025 [EV-1].",
+      "attempt_count": 2,
+      "citation_ids": [
+        "EV-1"
+      ],
+      "generation_model": "mock",
+      "generation_provider": "fallback",
+      "query_id": "fixture",
+      "route": "DIRECT_FACT",
+      "status": "RELEASED",
+      "terminal_reason": "TR1_RELEASED_FALLBACK",
+      "trace": {
+        "evidence_source": "synthetic_runtime_fixture",
+        "fallback_provider": "fallback",
+        "fallback_triggered": true,
+        "generation_attempts": [
+          {
+            "answer_envelope": {
+              "answer_text": "101 USD in FY2025 [EV-1].",
+              "attempt_index": 0,
+              "citation_ids": [
+                "EV-1"
+              ],
+              "generation_status": "complete",
+              "generator_model": "mock",
+              "generator_provider": "primary",
+              "metadata": {},
+              "query_id": "fixture",
+              "route": "DIRECT"
+            },
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.0406620092689991,
+            "model_id": "mock",
+            "output_token_count": null,
+            "provider_id": "primary",
+            "query_id": "fixture",
+            "recovery_reason": null,
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [
+                "GV3_NUMERIC_FIDELITY"
+              ],
+              "findings": [
+                {
+                  "code": "GV3_NUMERIC_FIDELITY",
+                  "message": "unsupported material number(s): ['101']",
+                  "severity": "HARD_FAIL"
+                }
+              ],
+              "status": "HARD_FAIL"
+            }
+          },
+          {
+            "answer_envelope": {
+              "answer_text": "100 USD in FY2025 [EV-1].",
+              "attempt_index": 1,
+              "citation_ids": [
+                "EV-1"
+              ],
+              "generation_status": "complete",
+              "generator_model": "mock",
+              "generator_provider": "fallback",
+              "metadata": {},
+              "query_id": "fixture",
+              "route": "DIRECT"
+            },
+            "attempt_index": 1,
+            "input_token_count": null,
+            "latency_ms": 0.032149022445082664,
+            "model_id": "mock",
+            "output_token_count": null,
+            "provider_id": "fallback",
+            "query_id": "fixture",
+            "recovery_reason": "first_pass_validation_failed",
+            "terminal_state": "RECOVERY_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [],
+              "findings": [],
+              "status": "PASS"
+            }
+          }
+        ],
+        "latencies_ms": [
+          0.0406620092689991,
+          0.032149022445082664
+        ],
+        "primary_provider": "primary",
+        "query_id": "fixture",
+        "released": true,
+        "route": "DIRECT_FACT",
+        "supervisor_plan_valid": true,
+        "terminal_reason": "TR1_RELEASED_FALLBACK",
+        "token_counts": [],
+        "trace_id": "f72fa19b173b4d489d3368706c755f8e",
+        "trusted_evidence_available": true,
+        "validator_codes": [
+          [
+            "GV3_NUMERIC_FIDELITY"
+          ],
+          []
+        ]
+      },
+      "trace_id": "f72fa19b173b4d489d3368706c755f8e",
+      "used_fallback": true,
+      "validation_status": "PASS"
+    },
+    "primary_hard_fail_no_fallback": {
+      "answer_text": null,
+      "attempt_count": 1,
+      "citation_ids": [],
+      "generation_model": null,
+      "generation_provider": null,
+      "query_id": "fixture",
+      "route": "DIRECT_FACT",
+      "status": "ABSTAINED",
+      "terminal_reason": "TR3_PRIMARY_VALIDATION_FAIL_NO_FALLBACK",
+      "trace": {
+        "evidence_source": "synthetic_runtime_fixture",
+        "fallback_provider": null,
+        "fallback_triggered": false,
+        "generation_attempts": [
+          {
+            "answer_envelope": {
+              "answer_text": "101 USD in FY2025 [EV-1].",
+              "attempt_index": 0,
+              "citation_ids": [
+                "EV-1"
+              ],
+              "generation_status": "complete",
+              "generator_model": "mock",
+              "generator_provider": "primary",
+              "metadata": {},
+              "query_id": "fixture",
+              "route": "DIRECT"
+            },
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.05038699600845575,
+            "model_id": "mock",
+            "output_token_count": null,
+            "provider_id": "primary",
+            "query_id": "fixture",
+            "recovery_reason": null,
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [
+                "GV3_NUMERIC_FIDELITY"
+              ],
+              "findings": [
+                {
+                  "code": "GV3_NUMERIC_FIDELITY",
+                  "message": "unsupported material number(s): ['101']",
+                  "severity": "HARD_FAIL"
+                }
+              ],
+              "status": "HARD_FAIL"
+            }
+          }
+        ],
+        "latencies_ms": [
+          0.05038699600845575
+        ],
+        "primary_provider": "primary",
+        "query_id": "fixture",
+        "released": false,
+        "route": "DIRECT_FACT",
+        "supervisor_plan_valid": true,
+        "terminal_reason": "TR3_PRIMARY_VALIDATION_FAIL_NO_FALLBACK",
+        "token_counts": [],
+        "trace_id": "624cdd0278b9474d9767a235a86e36e3",
+        "trusted_evidence_available": true,
+        "validator_codes": [
+          [
+            "GV3_NUMERIC_FIDELITY"
+          ]
+        ]
+      },
+      "trace_id": "624cdd0278b9474d9767a235a86e36e3",
+      "used_fallback": false,
+      "validation_status": "HARD_FAIL"
+    },
+    "primary_pass": {
+      "answer_text": "100 USD in FY2025 [EV-1].",
+      "attempt_count": 1,
+      "citation_ids": [
+        "EV-1"
+      ],
+      "generation_model": "mock",
+      "generation_provider": "primary",
+      "query_id": "fixture",
+      "route": "DIRECT_FACT",
+      "status": "RELEASED",
+      "terminal_reason": "TR0_RELEASED_PRIMARY",
+      "trace": {
+        "evidence_source": "synthetic_runtime_fixture",
+        "fallback_provider": null,
+        "fallback_triggered": false,
+        "generation_attempts": [
+          {
+            "answer_envelope": {
+              "answer_text": "100 USD in FY2025 [EV-1].",
+              "attempt_index": 0,
+              "citation_ids": [
+                "EV-1"
+              ],
+              "generation_status": "complete",
+              "generator_model": "mock",
+              "generator_provider": "primary",
+              "metadata": {},
+              "query_id": "fixture",
+              "route": "DIRECT"
+            },
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.06888399366289377,
+            "model_id": "mock",
+            "output_token_count": null,
+            "provider_id": "primary",
+            "query_id": "fixture",
+            "recovery_reason": null,
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [],
+              "findings": [],
+              "status": "PASS"
+            }
+          }
+        ],
+        "latencies_ms": [
+          0.06888399366289377
+        ],
+        "primary_provider": "primary",
+        "query_id": "fixture",
+        "released": true,
+        "route": "DIRECT_FACT",
+        "supervisor_plan_valid": true,
+        "terminal_reason": "TR0_RELEASED_PRIMARY",
+        "token_counts": [],
+        "trace_id": "5afd7ee665e84f9e9aa08286b5730153",
+        "trusted_evidence_available": true,
+        "validator_codes": [
+          []
+        ]
+      },
+      "trace_id": "5afd7ee665e84f9e9aa08286b5730153",
+      "used_fallback": false,
+      "validation_status": "PASS"
+    },
+    "primary_provider_error_fallback_pass": {
+      "answer_text": "100 USD in FY2025 [EV-1].",
+      "attempt_count": 2,
+      "citation_ids": [
+        "EV-1"
+      ],
+      "generation_model": "mock",
+      "generation_provider": "fallback",
+      "query_id": "fixture",
+      "route": "DIRECT_FACT",
+      "status": "RELEASED",
+      "terminal_reason": "TR1_RELEASED_FALLBACK",
+      "trace": {
+        "evidence_source": "synthetic_runtime_fixture",
+        "fallback_provider": "fallback",
+        "fallback_triggered": true,
+        "generation_attempts": [
+          {
+            "answer_envelope": null,
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.0020830193534493446,
+            "model_id": "broken",
+            "output_token_count": null,
+            "provider_id": "primary",
+            "query_id": "fixture",
+            "recovery_reason": "provider_exception",
+            "terminal_state": "PROVIDER_ERROR",
+            "validation_report": null
+          },
+          {
+            "answer_envelope": {
+              "answer_text": "100 USD in FY2025 [EV-1].",
+              "attempt_index": 1,
+              "citation_ids": [
+                "EV-1"
+              ],
+              "generation_status": "complete",
+              "generator_model": "mock",
+              "generator_provider": "fallback",
+              "metadata": {},
+              "query_id": "fixture",
+              "route": "DIRECT"
+            },
+            "attempt_index": 1,
+            "input_token_count": null,
+            "latency_ms": 0.033911026548594236,
+            "model_id": "mock",
+            "output_token_count": null,
+            "provider_id": "fallback",
+            "query_id": "fixture",
+            "recovery_reason": "first_pass_validation_failed",
+            "terminal_state": "RECOVERY_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [],
+              "findings": [],
+              "status": "PASS"
+            }
+          }
+        ],
+        "latencies_ms": [
+          0.0020830193534493446,
+          0.033911026548594236
+        ],
+        "primary_provider": "primary",
+        "query_id": "fixture",
+        "released": true,
+        "route": "DIRECT_FACT",
+        "supervisor_plan_valid": true,
+        "terminal_reason": "TR1_RELEASED_FALLBACK",
+        "token_counts": [],
+        "trace_id": "6d57ac23eb9c4e5cae4667c6d11408cf",
+        "trusted_evidence_available": true,
+        "validator_codes": [
+          [],
+          []
+        ]
+      },
+      "trace_id": "6d57ac23eb9c4e5cae4667c6d11408cf",
+      "used_fallback": true,
+      "validation_status": "PASS"
+    },
+    "primary_soft_fail_fallback_pass": {
+      "answer_text": "100 USD in FY2025 [EV-1].",
+      "attempt_count": 2,
+      "citation_ids": [
+        "EV-1"
+      ],
+      "generation_model": "mock",
+      "generation_provider": "fallback",
+      "query_id": "fixture",
+      "route": "DIRECT_FACT",
+      "status": "RELEASED",
+      "terminal_reason": "TR1_RELEASED_FALLBACK",
+      "trace": {
+        "evidence_source": "synthetic_runtime_fixture",
+        "fallback_provider": "fallback",
+        "fallback_triggered": true,
+        "generation_attempts": [
+          {
+            "answer_envelope": {
+              "answer_text": "100 USD in FY2025.",
+              "attempt_index": 0,
+              "citation_ids": [],
+              "generation_status": "complete",
+              "generator_model": "mock",
+              "generator_provider": "primary",
+              "metadata": {},
+              "query_id": "fixture",
+              "route": "DIRECT"
+            },
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.03301998367533088,
+            "model_id": "mock",
+            "output_token_count": null,
+            "provider_id": "primary",
+            "query_id": "fixture",
+            "recovery_reason": null,
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [
+                "GV2_CITATION_REQUIREMENT"
+              ],
+              "findings": [
+                {
+                  "code": "GV2_CITATION_REQUIREMENT",
+                  "message": "factual answer has no supplied citation ID",
+                  "severity": "SOFT_FAIL"
+                }
+              ],
+              "status": "SOFT_FAIL"
+            }
+          },
+          {
+            "answer_envelope": {
+              "answer_text": "100 USD in FY2025 [EV-1].",
+              "attempt_index": 1,
+              "citation_ids": [
+                "EV-1"
+              ],
+              "generation_status": "complete",
+              "generator_model": "mock",
+              "generator_provider": "fallback",
+              "metadata": {},
+              "query_id": "fixture",
+              "route": "DIRECT"
+            },
+            "attempt_index": 1,
+            "input_token_count": null,
+            "latency_ms": 0.030526018235832453,
+            "model_id": "mock",
+            "output_token_count": null,
+            "provider_id": "fallback",
+            "query_id": "fixture",
+            "recovery_reason": "first_pass_validation_failed",
+            "terminal_state": "RECOVERY_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [],
+              "findings": [],
+              "status": "PASS"
+            }
+          }
+        ],
+        "latencies_ms": [
+          0.03301998367533088,
+          0.030526018235832453
+        ],
+        "primary_provider": "primary",
+        "query_id": "fixture",
+        "released": true,
+        "route": "DIRECT_FACT",
+        "supervisor_plan_valid": true,
+        "terminal_reason": "TR1_RELEASED_FALLBACK",
+        "token_counts": [],
+        "trace_id": "5fb5a72739e74fe6955883618855fee1",
+        "trusted_evidence_available": true,
+        "validator_codes": [
+          [
+            "GV2_CITATION_REQUIREMENT"
+          ],
+          []
+        ]
+      },
+      "trace_id": "5fb5a72739e74fe6955883618855fee1",
+      "used_fallback": true,
+      "validation_status": "PASS"
+    }
+  },
+  "total": 6
+}

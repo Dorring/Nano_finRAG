@@ -1,0 +1,12 @@
+{
+  "prediction_seal_before_gold": true,
+  "runner": "V2FinalEvaluationRunner",
+  "runtime_gold_reads": 0,
+  "supports": [
+    "72-question frozen benchmark",
+    "provider config snapshot",
+    "route metrics",
+    "fallback metrics",
+    "latency/token metrics"
+  ]
+}

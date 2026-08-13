@@ -1,0 +1,16 @@
+{
+  "release_status": [
+    "RELEASED",
+    "ABSTAINED"
+  ],
+  "required": [
+    "query_id",
+    "route",
+    "status",
+    "citation_ids",
+    "attempt_count",
+    "terminal_reason",
+    "trace_id"
+  ],
+  "type": "TrustedRAGResponseV2"
+}
