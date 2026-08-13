@@ -1,0 +1,9 @@
+{
+  "document_identity_exclusion": true,
+  "internal_benchmark_context_overlap": 0,
+  "internal_benchmark_question_overlap": 0,
+  "official_eval_context_exclusion_scope": "FinQA and TAT-DQA official dev/test; ConvFinQA TRAIN artifact unavailable and not used",
+  "official_eval_context_overlap": 0,
+  "official_eval_question_overlap": 0,
+  "source_context_group_split_isolation": true
+}

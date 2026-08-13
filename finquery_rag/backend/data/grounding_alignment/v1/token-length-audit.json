@@ -1,0 +1,15 @@
+{
+  "assistant": {
+    "max": 85,
+    "p50": 15.0,
+    "p95": 64
+  },
+  "context_limit": 4096,
+  "context_limit_violations": 0,
+  "input": {
+    "max": 1738,
+    "p50": 916.0,
+    "p95": 1278
+  },
+  "tokenizer": "nanochat-bpe-65k"
+}

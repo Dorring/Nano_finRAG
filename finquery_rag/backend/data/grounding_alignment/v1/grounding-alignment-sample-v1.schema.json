@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "behavior_type": {
+      "enum": [
+        "POSITIVE_GROUNDED",
+        "UNANSWERABLE",
+        "PARTIAL_DISTRACTOR"
+      ]
+    },
+    "cot_target": {
+      "const": false
+    },
+    "evidence_ids": {
+      "items": {
+        "pattern": "^E[0-9]+$"
+      },
+      "type": "array"
+    },
+    "messages": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "content": {
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "user",
+              "assistant"
+            ]
+          }
+        },
+        "required": [
+          "role",
+          "content"
+        ],
+        "type": "object"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
+    },
+    "oracle_training_evidence": {
+      "const": true
+    },
+    "route": {
+      "enum": [
+        "DIRECT",
+        "CALCULATION_RESULT_VERBALIZATION",
+        "MULTI_EVIDENCE"
+      ]
+    },
+    "sample_id": {
+      "type": "string"
+    },
+    "source_dataset": {
+      "enum": [
+        "FinQA",
+        "TAT-DQA",
+        "ConvFinQA",
+        "Other"
+      ]
+    },
+    "source_split": {
+      "const": "train"
+    }
+  },
+  "required": [
+    "sample_id",
+    "source_dataset",
+    "source_split",
+    "source_example_id",
+    "source_context_id",
+    "behavior_type",
+    "route",
+    "base_question",
+    "messages",
+    "evidence_ids",
+    "fully_answerable",
+    "partially_answerable",
+    "requires_abstention",
+    "oracle_training_evidence",
+    "citation_required",
+    "cot_target",
+    "fingerprints"
+  ],
+  "title": "GroundingAlignmentSampleV1",
+  "type": "object"
+}

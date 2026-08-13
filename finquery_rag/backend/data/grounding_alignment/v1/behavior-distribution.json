@@ -1,0 +1,17 @@
+{
+  "counts": {
+    "PARTIAL_DISTRACTOR": 800,
+    "POSITIVE_GROUNDED": 2400,
+    "UNANSWERABLE": 800
+  },
+  "percentages": {
+    "PARTIAL_DISTRACTOR": 20.0,
+    "POSITIVE_GROUNDED": 60.0,
+    "UNANSWERABLE": 20.0
+  },
+  "target": {
+    "PARTIAL_DISTRACTOR": 800,
+    "POSITIVE_GROUNDED": 2400,
+    "UNANSWERABLE": 800
+  }
+}

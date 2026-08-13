@@ -1,0 +1,21 @@
+{
+  "ConvFinQA": {
+    "examples_available": 0,
+    "reason": "No ConvFinQA TRAIN artifact was present in the project workspace; no evaluation/test material was used.",
+    "split_used": null
+  },
+  "FinQA": {
+    "examples_available": 6203,
+    "split_used": "train",
+    "train_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finance-data-process/data/raw/finqa/FinQA_repo/dataset/train.json"
+  },
+  "TAT-DQA": {
+    "examples_available": 13215,
+    "split_used": "train",
+    "train_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finance-data-process/data/raw/tatqa/TAT-QA_repo/dataset_raw/tatqa_dataset_train.json"
+  },
+  "old_39801_sft": {
+    "candidate_manifest": null,
+    "merged": false
+  }
+}

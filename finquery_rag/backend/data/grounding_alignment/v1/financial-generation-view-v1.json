@@ -1,0 +1,23 @@
+{
+  "citation_ids": "plain text [E1]...[En], calculation [C1]",
+  "irrelevant_internal_fields_excluded": [
+    "validator_debug",
+    "Gold_labels",
+    "internal_taxonomy",
+    "sha_identifiers",
+    "routing_implementation"
+  ],
+  "loss_mask": {
+    "assistant_final_answer": 1,
+    "user_prompt": 0
+  },
+  "name": "FinancialGenerationViewV1",
+  "renderer": "deterministic_text_v1",
+  "sections": [
+    "QUESTION",
+    "VERIFIED EVIDENCE",
+    "VERIFIED CALCULATION (optional)",
+    "ANSWER RULES"
+  ],
+  "version": "1"
+}

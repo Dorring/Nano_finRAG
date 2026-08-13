@@ -1,0 +1,29 @@
+{
+  "acceptance": "pass",
+  "accepted": 4000,
+  "base_commit": "d871b339baaed0f15587a3ae67f156fe8632ff0c",
+  "behavior": {
+    "PARTIAL_DISTRACTOR": 800,
+    "POSITIVE_GROUNDED": 2400,
+    "UNANSWERABLE": 800
+  },
+  "model_calls": 0,
+  "old_39801_merged": false,
+  "routes": {
+    "CALCULATION_RESULT_VERBALIZATION": 600,
+    "DIRECT": 3100,
+    "MULTI_EVIDENCE": 300
+  },
+  "schema": "GroundingAlignmentSampleV1",
+  "sources": {
+    "FinQA": 305,
+    "TAT-DQA": 3695
+  },
+  "splits": {
+    "alignment_dev": 200,
+    "alignment_holdout": 200,
+    "train": 3600
+  },
+  "target": 4000,
+  "training_executed": false
+}

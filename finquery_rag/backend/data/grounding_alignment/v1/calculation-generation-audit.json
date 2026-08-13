@@ -1,0 +1,8 @@
+{
+  "calculation_samples": 600,
+  "calculation_target_recomputed_by_model": 0,
+  "calculator_result_verified": 600,
+  "canonical_result_target_match": 600,
+  "canonical_result_target_match_denominator": 600,
+  "verification_method": "dataset-native train program/result; no model recomputation"
+}
