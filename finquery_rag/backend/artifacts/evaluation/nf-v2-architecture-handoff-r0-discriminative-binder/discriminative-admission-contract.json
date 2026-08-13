@@ -1,0 +1,20 @@
+{
+  "conditions": [
+    "top1_score >= global compatibility threshold",
+    "top1_minus_top2 >= global margin threshold",
+    "selected fact exists in packet",
+    "provenance complete",
+    "source relation valid",
+    "Binding Validator pass"
+  ],
+  "contract": "DiscriminativeBindingAdmissionV1",
+  "fresh_blind": false,
+  "gold_source_rules": 0,
+  "question_specific_thresholds": 0,
+  "selected_margin": null,
+  "selected_threshold": null,
+  "stage_b_executed": false,
+  "threshold_calibration_role": "development_shadow",
+  "unknown_policy": "MISSING or AMBIGUOUS; never guess",
+  "version": 1
+}

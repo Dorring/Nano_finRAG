@@ -1,0 +1,474 @@
+{
+  "all_operands_rank_at_1": 3,
+  "denominator": 12,
+  "mrr": 0.677997,
+  "rank_at_1": 6,
+  "rank_at_2": 10,
+  "rank_at_3": 10,
+  "rows": [
+    {
+      "correct_handles": [
+        "F03"
+      ],
+      "correct_score": -0.05488219112157822,
+      "highest_incorrect_score": -0.0658353641629219,
+      "margin": 0.010953173041343689,
+      "question_id": "aapl_fy2025_006",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "role": "current_period",
+      "slot_id": "slot_1",
+      "top1_score": -0.05488219112157822,
+      "top2_score": -0.0658353641629219
+    },
+    {
+      "correct_handles": [
+        "F01"
+      ],
+      "correct_score": -0.08893945813179016,
+      "highest_incorrect_score": -0.11282224208116531,
+      "margin": 0.023882783949375153,
+      "question_id": "aapl_fy2025_006",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "role": "base_period",
+      "slot_id": "slot_2",
+      "top1_score": -0.08893945813179016,
+      "top2_score": -0.11282224208116531
+    },
+    {
+      "correct_handles": [
+        "F10"
+      ],
+      "correct_score": -0.16972702741622925,
+      "highest_incorrect_score": -0.07428312301635742,
+      "margin": -0.09544390439987183,
+      "question_id": "jpm_fy2025_006",
+      "rank": 19,
+      "rank_at_1": false,
+      "rank_at_2": false,
+      "rank_at_3": false,
+      "role": "current_period",
+      "slot_id": "1",
+      "top1_score": -0.07428312301635742,
+      "top2_score": -0.07428312301635742
+    },
+    {
+      "correct_handles": [
+        "F11"
+      ],
+      "correct_score": -0.3484445810317993,
+      "highest_incorrect_score": -0.11282224208116531,
+      "margin": -0.235622338950634,
+      "question_id": "jpm_fy2025_006",
+      "rank": 12,
+      "rank_at_1": false,
+      "rank_at_2": false,
+      "rank_at_3": false,
+      "role": "base_period",
+      "slot_id": "2",
+      "top1_score": -0.11282224208116531,
+      "top2_score": -0.16972702741622925
+    },
+    {
+      "correct_handles": [
+        "F08"
+      ],
+      "correct_score": -0.023245446383953094,
+      "highest_incorrect_score": -0.019309287890791893,
+      "margin": -0.0039361584931612015,
+      "question_id": "ko_fy2025_006",
+      "rank": 2,
+      "rank_at_1": false,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "role": "current_period",
+      "slot_id": "slot_1",
+      "top1_score": -0.019309287890791893,
+      "top2_score": -0.023245446383953094
+    },
+    {
+      "correct_handles": [
+        "F09"
+      ],
+      "correct_score": -0.06196761503815651,
+      "highest_incorrect_score": -0.04858732968568802,
+      "margin": -0.01338028535246849,
+      "question_id": "ko_fy2025_006",
+      "rank": 2,
+      "rank_at_1": false,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "role": "base_period",
+      "slot_id": "slot_2",
+      "top1_score": -0.04858732968568802,
+      "top2_score": -0.06196761503815651
+    },
+    {
+      "correct_handles": [
+        "F01"
+      ],
+      "correct_score": -0.051641397178173065,
+      "highest_incorrect_score": -0.06993623077869415,
+      "margin": 0.018294833600521088,
+      "question_id": "pfe_fy2024_006",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "role": "current_period",
+      "slot_id": "1",
+      "top1_score": -0.051641397178173065,
+      "top2_score": -0.06993623077869415
+    },
+    {
+      "correct_handles": [
+        "F03"
+      ],
+      "correct_score": -0.0944129079580307,
+      "highest_incorrect_score": -0.11967968195676804,
+      "margin": 0.025266773998737335,
+      "question_id": "pfe_fy2024_006",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "role": "base_period",
+      "slot_id": "2",
+      "top1_score": -0.0944129079580307,
+      "top2_score": -0.11967968195676804
+    },
+    {
+      "correct_handles": [
+        "F05"
+      ],
+      "correct_score": -0.25192904472351074,
+      "highest_incorrect_score": -0.16972702741622925,
+      "margin": -0.0822020173072815,
+      "question_id": "tsla_fy2025_006",
+      "rank": 2,
+      "rank_at_1": false,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "role": "base_period",
+      "slot_id": "rev_fy2024",
+      "top1_score": -0.16972702741622925,
+      "top2_score": -0.25192904472351074
+    },
+    {
+      "correct_handles": [
+        "F04"
+      ],
+      "correct_score": -0.10633727163076401,
+      "highest_incorrect_score": -0.05832047387957573,
+      "margin": -0.04801679775118828,
+      "question_id": "tsla_fy2025_006",
+      "rank": 2,
+      "rank_at_1": false,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "role": "current_period",
+      "slot_id": "rev_fy2025",
+      "top1_score": -0.05832047387957573,
+      "top2_score": -0.10633727163076401
+    },
+    {
+      "correct_handles": [
+        "F02"
+      ],
+      "correct_score": -0.0658353641629219,
+      "highest_incorrect_score": -0.15121398866176605,
+      "margin": 0.08537862449884415,
+      "question_id": "v_fy2025_006",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "role": "current_period",
+      "slot_id": "s1",
+      "top1_score": -0.0658353641629219,
+      "top2_score": -0.15121398866176605
+    },
+    {
+      "correct_handles": [
+        "F04"
+      ],
+      "correct_score": -0.1602240949869156,
+      "highest_incorrect_score": -0.3132617473602295,
+      "margin": 0.1530376523733139,
+      "question_id": "v_fy2025_006",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "role": "base_period",
+      "slot_id": "s2",
+      "top1_score": -0.1602240949869156,
+      "top2_score": -0.3132617473602295
+    }
+  ],
+  "score_margin": {
+    "count": 12,
+    "margin_mean": -0.013482305066039165,
+    "margin_median": 0.0035085072740912437,
+    "margins": [
+      0.010953173041343689,
+      0.023882783949375153,
+      -0.09544390439987183,
+      -0.235622338950634,
+      -0.0039361584931612015,
+      -0.01338028535246849,
+      0.018294833600521088,
+      0.025266773998737335,
+      -0.0822020173072815,
+      -0.04801679775118828,
+      0.08537862449884415,
+      0.1530376523733139
+    ],
+    "near_zero_margin": 0,
+    "negative_margin": 6,
+    "positive_margin": 6,
+    "rows": [
+      {
+        "correct_handles": [
+          "F03"
+        ],
+        "correct_score": -0.05488219112157822,
+        "highest_incorrect_score": -0.0658353641629219,
+        "margin": 0.010953173041343689,
+        "question_id": "aapl_fy2025_006",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "role": "current_period",
+        "slot_id": "slot_1",
+        "top1_score": -0.05488219112157822,
+        "top2_score": -0.0658353641629219
+      },
+      {
+        "correct_handles": [
+          "F01"
+        ],
+        "correct_score": -0.08893945813179016,
+        "highest_incorrect_score": -0.11282224208116531,
+        "margin": 0.023882783949375153,
+        "question_id": "aapl_fy2025_006",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "role": "base_period",
+        "slot_id": "slot_2",
+        "top1_score": -0.08893945813179016,
+        "top2_score": -0.11282224208116531
+      },
+      {
+        "correct_handles": [
+          "F10"
+        ],
+        "correct_score": -0.16972702741622925,
+        "highest_incorrect_score": -0.07428312301635742,
+        "margin": -0.09544390439987183,
+        "question_id": "jpm_fy2025_006",
+        "rank": 19,
+        "rank_at_1": false,
+        "rank_at_2": false,
+        "rank_at_3": false,
+        "role": "current_period",
+        "slot_id": "1",
+        "top1_score": -0.07428312301635742,
+        "top2_score": -0.07428312301635742
+      },
+      {
+        "correct_handles": [
+          "F11"
+        ],
+        "correct_score": -0.3484445810317993,
+        "highest_incorrect_score": -0.11282224208116531,
+        "margin": -0.235622338950634,
+        "question_id": "jpm_fy2025_006",
+        "rank": 12,
+        "rank_at_1": false,
+        "rank_at_2": false,
+        "rank_at_3": false,
+        "role": "base_period",
+        "slot_id": "2",
+        "top1_score": -0.11282224208116531,
+        "top2_score": -0.16972702741622925
+      },
+      {
+        "correct_handles": [
+          "F08"
+        ],
+        "correct_score": -0.023245446383953094,
+        "highest_incorrect_score": -0.019309287890791893,
+        "margin": -0.0039361584931612015,
+        "question_id": "ko_fy2025_006",
+        "rank": 2,
+        "rank_at_1": false,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "role": "current_period",
+        "slot_id": "slot_1",
+        "top1_score": -0.019309287890791893,
+        "top2_score": -0.023245446383953094
+      },
+      {
+        "correct_handles": [
+          "F09"
+        ],
+        "correct_score": -0.06196761503815651,
+        "highest_incorrect_score": -0.04858732968568802,
+        "margin": -0.01338028535246849,
+        "question_id": "ko_fy2025_006",
+        "rank": 2,
+        "rank_at_1": false,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "role": "base_period",
+        "slot_id": "slot_2",
+        "top1_score": -0.04858732968568802,
+        "top2_score": -0.06196761503815651
+      },
+      {
+        "correct_handles": [
+          "F01"
+        ],
+        "correct_score": -0.051641397178173065,
+        "highest_incorrect_score": -0.06993623077869415,
+        "margin": 0.018294833600521088,
+        "question_id": "pfe_fy2024_006",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "role": "current_period",
+        "slot_id": "1",
+        "top1_score": -0.051641397178173065,
+        "top2_score": -0.06993623077869415
+      },
+      {
+        "correct_handles": [
+          "F03"
+        ],
+        "correct_score": -0.0944129079580307,
+        "highest_incorrect_score": -0.11967968195676804,
+        "margin": 0.025266773998737335,
+        "question_id": "pfe_fy2024_006",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "role": "base_period",
+        "slot_id": "2",
+        "top1_score": -0.0944129079580307,
+        "top2_score": -0.11967968195676804
+      },
+      {
+        "correct_handles": [
+          "F05"
+        ],
+        "correct_score": -0.25192904472351074,
+        "highest_incorrect_score": -0.16972702741622925,
+        "margin": -0.0822020173072815,
+        "question_id": "tsla_fy2025_006",
+        "rank": 2,
+        "rank_at_1": false,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "role": "base_period",
+        "slot_id": "rev_fy2024",
+        "top1_score": -0.16972702741622925,
+        "top2_score": -0.25192904472351074
+      },
+      {
+        "correct_handles": [
+          "F04"
+        ],
+        "correct_score": -0.10633727163076401,
+        "highest_incorrect_score": -0.05832047387957573,
+        "margin": -0.04801679775118828,
+        "question_id": "tsla_fy2025_006",
+        "rank": 2,
+        "rank_at_1": false,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "role": "current_period",
+        "slot_id": "rev_fy2025",
+        "top1_score": -0.05832047387957573,
+        "top2_score": -0.10633727163076401
+      },
+      {
+        "correct_handles": [
+          "F02"
+        ],
+        "correct_score": -0.0658353641629219,
+        "highest_incorrect_score": -0.15121398866176605,
+        "margin": 0.08537862449884415,
+        "question_id": "v_fy2025_006",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "role": "current_period",
+        "slot_id": "s1",
+        "top1_score": -0.0658353641629219,
+        "top2_score": -0.15121398866176605
+      },
+      {
+        "correct_handles": [
+          "F04"
+        ],
+        "correct_score": -0.1602240949869156,
+        "highest_incorrect_score": -0.3132617473602295,
+        "margin": 0.1530376523733139,
+        "question_id": "v_fy2025_006",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "role": "base_period",
+        "slot_id": "s2",
+        "top1_score": -0.1602240949869156,
+        "top2_score": -0.3132617473602295
+      }
+    ],
+    "top1_mean": -0.08324874145910144,
+    "top1_median": -0.07005924358963966,
+    "top1_p05": -0.16972702741622925,
+    "top1_p95": -0.019309287890791893,
+    "top1_scores": [
+      -0.05488219112157822,
+      -0.08893945813179016,
+      -0.07428312301635742,
+      -0.11282224208116531,
+      -0.019309287890791893,
+      -0.04858732968568802,
+      -0.051641397178173065,
+      -0.0944129079580307,
+      -0.16972702741622925,
+      -0.05832047387957573,
+      -0.0658353641629219,
+      -0.1602240949869156
+    ],
+    "top2_scores": [
+      -0.0658353641629219,
+      -0.11282224208116531,
+      -0.07428312301635742,
+      -0.16972702741622925,
+      -0.023245446383953094,
+      -0.06196761503815651,
+      -0.06993623077869415,
+      -0.11967968195676804,
+      -0.25192904472351074,
+      -0.10633727163076401,
+      -0.15121398866176605,
+      -0.3132617473602295
+    ]
+  }
+}

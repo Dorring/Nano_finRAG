@@ -1,0 +1,32 @@
+{
+  "compatibility_thresholds": [
+    -2.0,
+    -1.0,
+    -0.75,
+    -0.5,
+    -0.25,
+    -0.1
+  ],
+  "fresh_blind": false,
+  "gold_source_rules": 0,
+  "margin_thresholds": [
+    0.0,
+    0.02,
+    0.05,
+    0.1,
+    0.2,
+    0.4
+  ],
+  "question_specific_thresholds": 0,
+  "rows": [],
+  "selected_operating_point": null,
+  "selection_rule": "one global threshold and one global margin; maximize safe coverage on a zero-false-binding stable plateau",
+  "stage_a": {
+    "calculation_rank_at_1": "6/12",
+    "direct_rank_at_1": "12/21",
+    "ranking_feasible": false,
+    "useful_score_separation": false
+  },
+  "stage_b_executed": false,
+  "threshold_calibration_role": "development_shadow"
+}

@@ -1,0 +1,13 @@
+{
+  "gate": "NF-V2-ARCHITECTURE-HANDOFF-R0",
+  "gold_reads_before_prediction_seal": 0,
+  "model": "Qwen/Qwen3-Reranker-4B",
+  "model_calls": 0,
+  "prediction_count": 72,
+  "prediction_sha256": "9e51b18a8e2d58e3fdd937e7bcd04c7bcae00bd9859cf01fea9550a2f95e9660",
+  "reranker_pairs": 1993,
+  "revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+  "sealed": true,
+  "sealed_before_review_labels": true,
+  "serialization_sha256": "d4b3f52ec0fed17881199a89abac1dd470716698557274bdae20e964507a391c"
+}

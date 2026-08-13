@@ -1,0 +1,21 @@
+{
+  "discriminative_reranker": {
+    "calculation_rank_at_1": "6/12",
+    "calculation_ready": null,
+    "direct_bound": null,
+    "direct_rank_at_1": "12/21",
+    "stage_b_executed": false
+  },
+  "global_qwen3_plus": {
+    "calculation_visible_unique_operands": "1/12",
+    "direct_visible_unique": "8/21"
+  },
+  "pairwise_qwen3_plus": {
+    "calculation_visible_unique_operands": "1/12",
+    "direct_visible_unique": "7/21"
+  },
+  "slotwise_qwen3_plus": {
+    "calculation_visible_unique_operands": "5/12",
+    "direct_visible_unique": "9/21"
+  }
+}

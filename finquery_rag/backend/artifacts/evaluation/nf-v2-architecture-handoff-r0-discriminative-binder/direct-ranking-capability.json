@@ -1,0 +1,722 @@
+{
+  "denominator": 21,
+  "mrr": 0.678998,
+  "rank_at_1": 12,
+  "rank_at_2": 15,
+  "rank_at_3": 15,
+  "rows": [
+    {
+      "correct_handles": [
+        "F06"
+      ],
+      "correct_score": -0.04044583439826965,
+      "highest_incorrect_score": -0.03804141283035278,
+      "margin": -0.00240442156791687,
+      "question_id": "aapl_fy2025_001",
+      "rank": 2,
+      "rank_at_1": false,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "top1_score": -0.03804141283035278,
+      "top2_score": -0.04044583439826965
+    },
+    {
+      "correct_handles": [
+        "F12"
+      ],
+      "correct_score": -0.06993623077869415,
+      "highest_incorrect_score": -0.13458658754825592,
+      "margin": 0.06465035676956177,
+      "question_id": "aapl_fy2025_002",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "top1_score": -0.06993623077869415,
+      "top2_score": -0.13458658754825592
+    },
+    {
+      "correct_handles": [
+        "F03"
+      ],
+      "correct_score": -0.07428312301635742,
+      "highest_incorrect_score": -0.0944129079580307,
+      "margin": 0.02012978494167328,
+      "question_id": "aapl_fy2025_004",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "top1_score": -0.07428312301635742,
+      "top2_score": -0.0944129079580307
+    },
+    {
+      "correct_handles": [
+        "F02"
+      ],
+      "correct_score": -0.15121398866176605,
+      "highest_incorrect_score": -0.15121398866176605,
+      "margin": 0.0,
+      "question_id": "aapl_fy2025_009",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "top1_score": -0.15121398866176605,
+      "top2_score": -0.15121398866176605
+    },
+    {
+      "correct_handles": [
+        "F19"
+      ],
+      "correct_score": -0.11282224208116531,
+      "highest_incorrect_score": -0.0658353641629219,
+      "margin": -0.04698687791824341,
+      "question_id": "jpm_fy2025_001",
+      "rank": 16,
+      "rank_at_1": false,
+      "rank_at_2": false,
+      "rank_at_3": false,
+      "top1_score": -0.0658353641629219,
+      "top2_score": -0.06993623077869415
+    },
+    {
+      "correct_handles": [
+        "F01"
+      ],
+      "correct_score": -0.07888974994421005,
+      "highest_incorrect_score": -0.2014133334159851,
+      "margin": 0.12252358347177505,
+      "question_id": "jpm_fy2025_002",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "top1_score": -0.07888974994421005,
+      "top2_score": -0.2014133334159851
+    },
+    {
+      "correct_handles": [
+        "F14"
+      ],
+      "correct_score": -0.06196761503815651,
+      "highest_incorrect_score": -0.04858732968568802,
+      "margin": -0.01338028535246849,
+      "question_id": "jpm_fy2025_003",
+      "rank": 4,
+      "rank_at_1": false,
+      "rank_at_2": false,
+      "rank_at_3": false,
+      "top1_score": -0.04858732968568802,
+      "top2_score": -0.05488219112157822
+    },
+    {
+      "correct_handles": [
+        "F33"
+      ],
+      "correct_score": -0.6325989961624146,
+      "highest_incorrect_score": -0.11967968195676804,
+      "margin": -0.5129193142056465,
+      "question_id": "jpm_fy2025_004",
+      "rank": 11,
+      "rank_at_1": false,
+      "rank_at_2": false,
+      "rank_at_3": false,
+      "top1_score": -0.11967968195676804,
+      "top2_score": -0.12692804634571075
+    },
+    {
+      "correct_handles": [
+        "F34"
+      ],
+      "correct_score": -1.4061501026153564,
+      "highest_incorrect_score": -0.08893945813179016,
+      "margin": -1.3172106444835663,
+      "question_id": "jpm_fy2025_009",
+      "rank": 18,
+      "rank_at_1": false,
+      "rank_at_2": false,
+      "rank_at_3": false,
+      "top1_score": -0.08893945813179016,
+      "top2_score": -0.29683318734169006
+    },
+    {
+      "correct_handles": [
+        "F02"
+      ],
+      "correct_score": -0.020541900768876076,
+      "highest_incorrect_score": -0.029750416055321693,
+      "margin": 0.009208515286445618,
+      "question_id": "ko_fy2025_001",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "top1_score": -0.020541900768876076,
+      "top2_score": -0.029750416055321693
+    },
+    {
+      "correct_handles": [
+        "F01"
+      ],
+      "correct_score": -0.04044583439826965,
+      "highest_incorrect_score": -0.04044583439826965,
+      "margin": 0.0,
+      "question_id": "ko_fy2025_002",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "top1_score": -0.04044583439826965,
+      "top2_score": -0.04044583439826965
+    },
+    {
+      "correct_handles": [
+        "F02"
+      ],
+      "correct_score": -0.03577728569507599,
+      "highest_incorrect_score": -0.06993623077869415,
+      "margin": 0.034158945083618164,
+      "question_id": "ko_fy2025_003",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "top1_score": -0.03577728569507599,
+      "top2_score": -0.06993623077869415
+    },
+    {
+      "correct_handles": [
+        "F05"
+      ],
+      "correct_score": -2.1821796894073486,
+      "highest_incorrect_score": -0.3304581940174103,
+      "margin": -1.8517214953899384,
+      "question_id": "msft_fy2025_001",
+      "rank": 10,
+      "rank_at_1": false,
+      "rank_at_2": false,
+      "rank_at_3": false,
+      "top1_score": -0.3304581940174103,
+      "top2_score": -0.3304581940174103
+    },
+    {
+      "correct_handles": [
+        "F02"
+      ],
+      "correct_score": -3.529750347137451,
+      "highest_incorrect_score": -1.4536898136138916,
+      "margin": -2.0760605335235596,
+      "question_id": "msft_fy2025_003",
+      "rank": 5,
+      "rank_at_1": false,
+      "rank_at_2": false,
+      "rank_at_3": false,
+      "top1_score": -1.4536898136138916,
+      "top2_score": -2.293837308883667
+    },
+    {
+      "correct_handles": [
+        "F02"
+      ],
+      "correct_score": -0.06993623077869415,
+      "highest_incorrect_score": -0.5231232643127441,
+      "margin": 0.45318703353405,
+      "question_id": "nvda_fy2025_002",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "top1_score": -0.06993623077869415,
+      "top2_score": -0.5231232643127441
+    },
+    {
+      "correct_handles": [
+        "F01"
+      ],
+      "correct_score": -0.28115010261535645,
+      "highest_incorrect_score": -0.4740769863128662,
+      "margin": 0.19292688369750977,
+      "question_id": "nvda_fy2025_003",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "top1_score": -0.28115010261535645,
+      "top2_score": -0.4740769863128662
+    },
+    {
+      "correct_handles": [
+        "F02"
+      ],
+      "correct_score": -0.13458658754825592,
+      "highest_incorrect_score": -0.575939416885376,
+      "margin": 0.44135282933712006,
+      "question_id": "nvda_fy2025_004",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "top1_score": -0.13458658754825592,
+      "top2_score": -0.575939416885376
+    },
+    {
+      "correct_handles": [
+        "F01"
+      ],
+      "correct_score": -0.2131100296974182,
+      "highest_incorrect_score": -0.825939416885376,
+      "margin": 0.6128293871879578,
+      "question_id": "nvda_fy2025_005",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "top1_score": -0.2131100296974182,
+      "top2_score": -0.825939416885376
+    },
+    {
+      "correct_handles": [
+        "F03"
+      ],
+      "correct_score": -0.266189843416214,
+      "highest_incorrect_score": -0.825939416885376,
+      "margin": 0.559749573469162,
+      "question_id": "nvda_fy2025_009",
+      "rank": 1,
+      "rank_at_1": true,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "top1_score": -0.266189843416214,
+      "top2_score": -0.825939416885376
+    },
+    {
+      "correct_handles": [
+        "F04"
+      ],
+      "correct_score": -0.07888974994421005,
+      "highest_incorrect_score": -0.07888974994421005,
+      "margin": 0.0,
+      "question_id": "pfe_fy2024_001",
+      "rank": 2,
+      "rank_at_1": false,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "top1_score": -0.07888974994421005,
+      "top2_score": -0.07888974994421005
+    },
+    {
+      "correct_handles": [
+        "F05"
+      ],
+      "correct_score": -0.10020658373832703,
+      "highest_incorrect_score": -0.08893945813179016,
+      "margin": -0.011267125606536865,
+      "question_id": "tsla_fy2025_001",
+      "rank": 2,
+      "rank_at_1": false,
+      "rank_at_2": true,
+      "rank_at_3": true,
+      "top1_score": -0.08893945813179016,
+      "top2_score": -0.10020658373832703
+    }
+  ],
+  "score_margin": {
+    "count": 21,
+    "margin_mean": -0.15815399072709538,
+    "margin_median": 0.0,
+    "margins": [
+      -0.00240442156791687,
+      0.06465035676956177,
+      0.02012978494167328,
+      0.0,
+      -0.04698687791824341,
+      0.12252358347177505,
+      -0.01338028535246849,
+      -0.5129193142056465,
+      -1.3172106444835663,
+      0.009208515286445618,
+      0.0,
+      0.034158945083618164,
+      -1.8517214953899384,
+      -2.0760605335235596,
+      0.45318703353405,
+      0.19292688369750977,
+      0.44135282933712006,
+      0.6128293871879578,
+      0.559749573469162,
+      0.0,
+      -0.011267125606536865
+    ],
+    "near_zero_margin": 3,
+    "negative_margin": 8,
+    "positive_margin": 10,
+    "rows": [
+      {
+        "correct_handles": [
+          "F06"
+        ],
+        "correct_score": -0.04044583439826965,
+        "highest_incorrect_score": -0.03804141283035278,
+        "margin": -0.00240442156791687,
+        "question_id": "aapl_fy2025_001",
+        "rank": 2,
+        "rank_at_1": false,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "top1_score": -0.03804141283035278,
+        "top2_score": -0.04044583439826965
+      },
+      {
+        "correct_handles": [
+          "F12"
+        ],
+        "correct_score": -0.06993623077869415,
+        "highest_incorrect_score": -0.13458658754825592,
+        "margin": 0.06465035676956177,
+        "question_id": "aapl_fy2025_002",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "top1_score": -0.06993623077869415,
+        "top2_score": -0.13458658754825592
+      },
+      {
+        "correct_handles": [
+          "F03"
+        ],
+        "correct_score": -0.07428312301635742,
+        "highest_incorrect_score": -0.0944129079580307,
+        "margin": 0.02012978494167328,
+        "question_id": "aapl_fy2025_004",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "top1_score": -0.07428312301635742,
+        "top2_score": -0.0944129079580307
+      },
+      {
+        "correct_handles": [
+          "F02"
+        ],
+        "correct_score": -0.15121398866176605,
+        "highest_incorrect_score": -0.15121398866176605,
+        "margin": 0.0,
+        "question_id": "aapl_fy2025_009",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "top1_score": -0.15121398866176605,
+        "top2_score": -0.15121398866176605
+      },
+      {
+        "correct_handles": [
+          "F19"
+        ],
+        "correct_score": -0.11282224208116531,
+        "highest_incorrect_score": -0.0658353641629219,
+        "margin": -0.04698687791824341,
+        "question_id": "jpm_fy2025_001",
+        "rank": 16,
+        "rank_at_1": false,
+        "rank_at_2": false,
+        "rank_at_3": false,
+        "top1_score": -0.0658353641629219,
+        "top2_score": -0.06993623077869415
+      },
+      {
+        "correct_handles": [
+          "F01"
+        ],
+        "correct_score": -0.07888974994421005,
+        "highest_incorrect_score": -0.2014133334159851,
+        "margin": 0.12252358347177505,
+        "question_id": "jpm_fy2025_002",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "top1_score": -0.07888974994421005,
+        "top2_score": -0.2014133334159851
+      },
+      {
+        "correct_handles": [
+          "F14"
+        ],
+        "correct_score": -0.06196761503815651,
+        "highest_incorrect_score": -0.04858732968568802,
+        "margin": -0.01338028535246849,
+        "question_id": "jpm_fy2025_003",
+        "rank": 4,
+        "rank_at_1": false,
+        "rank_at_2": false,
+        "rank_at_3": false,
+        "top1_score": -0.04858732968568802,
+        "top2_score": -0.05488219112157822
+      },
+      {
+        "correct_handles": [
+          "F33"
+        ],
+        "correct_score": -0.6325989961624146,
+        "highest_incorrect_score": -0.11967968195676804,
+        "margin": -0.5129193142056465,
+        "question_id": "jpm_fy2025_004",
+        "rank": 11,
+        "rank_at_1": false,
+        "rank_at_2": false,
+        "rank_at_3": false,
+        "top1_score": -0.11967968195676804,
+        "top2_score": -0.12692804634571075
+      },
+      {
+        "correct_handles": [
+          "F34"
+        ],
+        "correct_score": -1.4061501026153564,
+        "highest_incorrect_score": -0.08893945813179016,
+        "margin": -1.3172106444835663,
+        "question_id": "jpm_fy2025_009",
+        "rank": 18,
+        "rank_at_1": false,
+        "rank_at_2": false,
+        "rank_at_3": false,
+        "top1_score": -0.08893945813179016,
+        "top2_score": -0.29683318734169006
+      },
+      {
+        "correct_handles": [
+          "F02"
+        ],
+        "correct_score": -0.020541900768876076,
+        "highest_incorrect_score": -0.029750416055321693,
+        "margin": 0.009208515286445618,
+        "question_id": "ko_fy2025_001",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "top1_score": -0.020541900768876076,
+        "top2_score": -0.029750416055321693
+      },
+      {
+        "correct_handles": [
+          "F01"
+        ],
+        "correct_score": -0.04044583439826965,
+        "highest_incorrect_score": -0.04044583439826965,
+        "margin": 0.0,
+        "question_id": "ko_fy2025_002",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "top1_score": -0.04044583439826965,
+        "top2_score": -0.04044583439826965
+      },
+      {
+        "correct_handles": [
+          "F02"
+        ],
+        "correct_score": -0.03577728569507599,
+        "highest_incorrect_score": -0.06993623077869415,
+        "margin": 0.034158945083618164,
+        "question_id": "ko_fy2025_003",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "top1_score": -0.03577728569507599,
+        "top2_score": -0.06993623077869415
+      },
+      {
+        "correct_handles": [
+          "F05"
+        ],
+        "correct_score": -2.1821796894073486,
+        "highest_incorrect_score": -0.3304581940174103,
+        "margin": -1.8517214953899384,
+        "question_id": "msft_fy2025_001",
+        "rank": 10,
+        "rank_at_1": false,
+        "rank_at_2": false,
+        "rank_at_3": false,
+        "top1_score": -0.3304581940174103,
+        "top2_score": -0.3304581940174103
+      },
+      {
+        "correct_handles": [
+          "F02"
+        ],
+        "correct_score": -3.529750347137451,
+        "highest_incorrect_score": -1.4536898136138916,
+        "margin": -2.0760605335235596,
+        "question_id": "msft_fy2025_003",
+        "rank": 5,
+        "rank_at_1": false,
+        "rank_at_2": false,
+        "rank_at_3": false,
+        "top1_score": -1.4536898136138916,
+        "top2_score": -2.293837308883667
+      },
+      {
+        "correct_handles": [
+          "F02"
+        ],
+        "correct_score": -0.06993623077869415,
+        "highest_incorrect_score": -0.5231232643127441,
+        "margin": 0.45318703353405,
+        "question_id": "nvda_fy2025_002",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "top1_score": -0.06993623077869415,
+        "top2_score": -0.5231232643127441
+      },
+      {
+        "correct_handles": [
+          "F01"
+        ],
+        "correct_score": -0.28115010261535645,
+        "highest_incorrect_score": -0.4740769863128662,
+        "margin": 0.19292688369750977,
+        "question_id": "nvda_fy2025_003",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "top1_score": -0.28115010261535645,
+        "top2_score": -0.4740769863128662
+      },
+      {
+        "correct_handles": [
+          "F02"
+        ],
+        "correct_score": -0.13458658754825592,
+        "highest_incorrect_score": -0.575939416885376,
+        "margin": 0.44135282933712006,
+        "question_id": "nvda_fy2025_004",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "top1_score": -0.13458658754825592,
+        "top2_score": -0.575939416885376
+      },
+      {
+        "correct_handles": [
+          "F01"
+        ],
+        "correct_score": -0.2131100296974182,
+        "highest_incorrect_score": -0.825939416885376,
+        "margin": 0.6128293871879578,
+        "question_id": "nvda_fy2025_005",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "top1_score": -0.2131100296974182,
+        "top2_score": -0.825939416885376
+      },
+      {
+        "correct_handles": [
+          "F03"
+        ],
+        "correct_score": -0.266189843416214,
+        "highest_incorrect_score": -0.825939416885376,
+        "margin": 0.559749573469162,
+        "question_id": "nvda_fy2025_009",
+        "rank": 1,
+        "rank_at_1": true,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "top1_score": -0.266189843416214,
+        "top2_score": -0.825939416885376
+      },
+      {
+        "correct_handles": [
+          "F04"
+        ],
+        "correct_score": -0.07888974994421005,
+        "highest_incorrect_score": -0.07888974994421005,
+        "margin": 0.0,
+        "question_id": "pfe_fy2024_001",
+        "rank": 2,
+        "rank_at_1": false,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "top1_score": -0.07888974994421005,
+        "top2_score": -0.07888974994421005
+      },
+      {
+        "correct_handles": [
+          "F05"
+        ],
+        "correct_score": -0.10020658373832703,
+        "highest_incorrect_score": -0.08893945813179016,
+        "margin": -0.011267125606536865,
+        "question_id": "tsla_fy2025_001",
+        "rank": 2,
+        "rank_at_1": false,
+        "rank_at_2": true,
+        "rank_at_3": true,
+        "top1_score": -0.08893945813179016,
+        "top2_score": -0.10020658373832703
+      }
+    ],
+    "top1_mean": -0.17852958903781005,
+    "top1_median": -0.07888974994421005,
+    "top1_p05": -0.3304581940174103,
+    "top1_p95": -0.03577728569507599,
+    "top1_scores": [
+      -0.03804141283035278,
+      -0.06993623077869415,
+      -0.07428312301635742,
+      -0.15121398866176605,
+      -0.0658353641629219,
+      -0.07888974994421005,
+      -0.04858732968568802,
+      -0.11967968195676804,
+      -0.08893945813179016,
+      -0.020541900768876076,
+      -0.04044583439826965,
+      -0.03577728569507599,
+      -0.3304581940174103,
+      -1.4536898136138916,
+      -0.06993623077869415,
+      -0.28115010261535645,
+      -0.13458658754825592,
+      -0.2131100296974182,
+      -0.266189843416214,
+      -0.07888974994421005,
+      -0.08893945813179016
+    ],
+    "top2_scores": [
+      -0.04044583439826965,
+      -0.13458658754825592,
+      -0.0944129079580307,
+      -0.15121398866176605,
+      -0.06993623077869415,
+      -0.2014133334159851,
+      -0.05488219112157822,
+      -0.12692804634571075,
+      -0.29683318734169006,
+      -0.029750416055321693,
+      -0.04044583439826965,
+      -0.06993623077869415,
+      -0.3304581940174103,
+      -2.293837308883667,
+      -0.5231232643127441,
+      -0.4740769863128662,
+      -0.575939416885376,
+      -0.825939416885376,
+      -0.825939416885376,
+      -0.07888974994421005,
+      -0.10020658373832703
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "average_per_query_ms": 7769.196458333333,
+  "generative_binder_calls_actual": 0,
+  "generative_binder_calls_avoided_if_adopted": 62,
+  "generative_binder_reference": "NF-V2-04 R0 observed 62 calls",
+  "input_tokens": 1528379,
+  "max_per_query_ms": 43980.154,
+  "output_tokens": 0,
+  "p50_per_query_ms": 6026.6535,
+  "p95_per_query_ms": 20916.16,
+  "reranker_pairs": 1993,
+  "total_latency_ms": 559384.613
+}
