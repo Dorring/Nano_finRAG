@@ -390,21 +390,109 @@ def supported_units(text: str) -> set[str]:
     return {norm_text(value) for value in UNIT_CURRENCY_SCALE_RE.findall(text or "")}
 
 
-def render_target(base: Mapping[str, Any], behavior: str, route: str, evidence_ids: list[str], calculation: Mapping[str, Any] | None = None, *, unsupported_reason: str | None = None) -> str:
+STOPWORDS = {
+    "what", "was", "were", "is", "are", "how", "much", "many", "the", "a", "an", "of", "and", "or",
+    "to", "in", "on", "for", "from", "by", "with", "at", "as", "that", "this", "which", "when", "where",
+    "reported", "period", "discussed", "year", "years", "ended", "end", "total", "amount", "change", "did",
+}
+
+
+def evidence_blocks_from_view(user: str) -> dict[str, str]:
+    section = user.split("[VERIFIED EVIDENCE]", 1)[-1].split("[ANSWER RULES]", 1)[0]
+    blocks: dict[str, str] = {}
+    for match in re.finditer(r"(?ms)^\[(E\d+)\]\s*\n(.*?)(?=^\[E\d+\]\s*$|\Z)", section):
+        body = match.group(2)
+        evidence_line = re.search(r"(?m)^Evidence:\s*(.*)$", body)
+        blocks[match.group(1)] = evidence_line.group(1).strip() if evidence_line else body.strip()
+    return blocks
+
+
+def answer_core(text: str) -> str:
+    return re.split(r"\s+\[C1\]|\s+\[E\d+]|\.\s+Additional requested information", text, 1)[0].strip(" .")
+
+
+def meaningful_tokens(text: str) -> set[str]:
+    return {
+        token
+        for token in re.findall(r"[a-z]{3,}", str(text or "").casefold())
+        if token not in STOPWORDS
+    }
+
+
+def citation_support_ids(answer: str, question: str, items: list[Mapping[str, Any]]) -> list[str]:
+    """Choose the smallest evidence-ID set that supports the answer claims."""
+    parts = [part.strip() for part in answer.split(";") if part.strip()] or [answer.strip()]
+    selected: set[str] = set()
+    question_tokens = meaningful_tokens(question)
+    for part in parts:
+        part_numbers = target_numbers(part)
+        part_periods = target_periods(part)
+        part_units = supported_units(part)
+        part_tokens = meaningful_tokens(part)
+        normalized_part = norm_text(part)
+        candidates: list[tuple[int, int, str]] = []
+        for index, item in enumerate(items):
+            content = str(item.get("content") or "")
+            content_numbers = supported_numbers(content)
+            content_periods = target_periods(content)
+            content_units = supported_units(content)
+            score = 0
+            normalized_content = norm_text(content)
+            if normalized_part and normalized_part in normalized_content:
+                score += 1000
+            if normalized_part in {"n a", "na", "not applicable"} and re.search(r"(?i)\bN/A\b|not applicable", content):
+                score += 2000
+            if part_numbers and part_numbers.issubset(content_numbers):
+                score += 200
+            if part_periods and part_periods.issubset(content_periods):
+                score += 20
+            if part_units and part_units.issubset(content_units):
+                score += 10
+            overlap = len(part_tokens & meaningful_tokens(content))
+            score += min(overlap, 10)
+            question_overlap = len(question_tokens & meaningful_tokens(content))
+            if question_overlap:
+                score += min(question_overlap, 5)
+            if str(item.get("source_key") or "").startswith(("paragraph_", "text_")):
+                score += 5
+            if score:
+                candidates.append((score, index, f"E{index + 1}"))
+        if not candidates:
+            return []
+        best = max(candidates, key=lambda item: (item[0], -item[1]))
+        selected.add(best[2])
+    return [f"E{index + 1}" for index in range(len(items)) if f"E{index + 1}" in selected]
+
+
+def citation_relevant_to_answer(answer: str, cited_content: str) -> bool:
+    for part in [part.strip() for part in answer.split(";") if part.strip()] or [answer.strip()]:
+        normalized_part = norm_text(part)
+        normalized_content = norm_text(cited_content)
+        if normalized_part and normalized_part in normalized_content:
+            return True
+        part_numbers = target_numbers(part)
+        if part_numbers and part_numbers.issubset(supported_numbers(cited_content)):
+            return True
+        if normalized_part in {"n a", "na", "not applicable"} and re.search(r"(?i)\bN/A\b|not applicable", cited_content):
+            return True
+        if meaningful_tokens(part) & meaningful_tokens(cited_content):
+            return True
+    return False
+
+
+def render_target(base: Mapping[str, Any], behavior: str, route: str, evidence_ids: list[str], evidence_items: list[Mapping[str, Any]], calculation: Mapping[str, Any] | None = None, *, unsupported_reason: str | None = None) -> str:
     if behavior == "UNANSWERABLE":
         return "Verified evidence is insufficient to answer this question."
-    if behavior == "PARTIAL_DISTRACTOR":
-        answer = str(base.get("answer") or "").strip()
-        citation = " " + " ".join(f"[{item}]" for item in evidence_ids) if evidence_ids else ""
-        return f"{answer}{citation}. Additional requested information is unavailable."
     answer = str(base.get("answer") or "").strip()
+    if behavior == "PARTIAL_DISTRACTOR":
+        supported_ids = citation_support_ids(answer, str(base.get("question") or ""), evidence_items)
+        citation = " " + " ".join(f"[{item}]" for item in supported_ids) if supported_ids else ""
+        return f"{answer}{citation}. Additional requested information is unavailable."
     if route == "CALCULATION_RESULT_VERBALIZATION":
         canonical = str((calculation or {}).get("canonical_result") or answer).strip()
         return f"The canonical calculation result is {canonical} [C1]."
-    if route == "MULTI_EVIDENCE" and len(evidence_ids) >= 2 and ";" in answer:
-        parts = [part.strip() for part in answer.split(";") if part.strip()]
-        return "; ".join(f"{part} [{evidence_ids[min(i, len(evidence_ids) - 1)]}]" for i, part in enumerate(parts)) + "."
-    citations = " " + " ".join(f"[{item}]" for item in evidence_ids) if evidence_ids else ""
+    supported_ids = citation_support_ids(answer, str(base.get("question") or ""), evidence_items)
+    citations = " " + " ".join(f"[{item}]" for item in supported_ids) if supported_ids else ""
     return f"{answer}{citations}." if answer else answer
 
 
@@ -473,7 +561,7 @@ def make_sample(base: Mapping[str, Any], behavior: str, route: str | None = None
     if selected_route == "CALCULATION_RESULT_VERBALIZATION":
         calculation = {"operation": work.get("program") or "dataset-native calculation", "canonical_result": work.get("canonical_result") or work.get("answer")}
     view, evidence_ids = evidence_view(work, items, calculation)
-    target = render_target(work, behavior, selected_route, evidence_ids, calculation, unsupported_reason=audit_reason)
+    target = render_target(work, behavior, selected_route, evidence_ids, items, calculation, unsupported_reason=audit_reason)
     sample_id = stable_sha({"source": base["source_example_id"], "behavior": behavior, "route": selected_route, "question": work["question"], "variant": variant_index})[:32]
     return {
         "sample_id": sample_id,
@@ -504,6 +592,27 @@ def make_sample(base: Mapping[str, Any], behavior: str, route: str | None = None
     }
 
 
+def semantic_claim_supported(core: str, question: str, cited_content: str) -> bool:
+    """Reject header-only/year-only pseudo support without using Gold labels."""
+    claim_tokens = meaningful_tokens(core)
+    content_tokens = meaningful_tokens(cited_content)
+    if claim_tokens and claim_tokens & content_tokens:
+        return True
+    numbers = target_numbers(core)
+    if not numbers:
+        return False
+    if not all(re.fullmatch(r"(?:19|20)\d{2}", value) for value in numbers):
+        return bool(numbers & supported_numbers(cited_content))
+    # A bare year must be tied to a metric/subject in the source text, not
+    # merely copied from a column header such as "2019 | 2018 | Amount".
+    question_tokens = meaningful_tokens(question)
+    if question_tokens & content_tokens:
+        return True
+    has_date_phrase = bool(re.search(r"(?i)\b(?:january|february|march|april|may|june|july|august|september|october|november|december)\b", cited_content))
+    non_year_numbers = {value for value in supported_numbers(cited_content) if not re.fullmatch(r"(?:19|20)\d{2}", value)}
+    return has_date_phrase and bool(non_year_numbers)
+
+
 def validate_sample(sample: Mapping[str, Any], forbidden: Mapping[str, Any], tokenizer: TokenCounter) -> list[str]:
     reasons: list[str] = []
     if not sample.get("sample_id") or not sample.get("messages") or len(sample["messages"]) != 2:
@@ -512,6 +621,7 @@ def validate_sample(sample: Mapping[str, Any], forbidden: Mapping[str, Any], tok
     target = str(sample["messages"][1].get("content") or "")
     ids = set(sample.get("evidence_ids") or [])
     rendered_ids = set(re.findall(r"\[(E\d+)\]", user))
+    rendered_blocks = evidence_blocks_from_view(user)
     target_ids = set(re.findall(r"\[(E\d+|C\d+)\]", target))
     if not ids or not ids.issubset(rendered_ids):
         reasons.append("QV1_evidence_ids_unresolvable")
@@ -530,16 +640,26 @@ def validate_sample(sample: Mapping[str, Any], forbidden: Mapping[str, Any], tok
     # negative examples and must never make that mutation appear supported.
     evidence_text = user.split("[VERIFIED EVIDENCE]", 1)[-1]
     evidence_text = evidence_text.split("[ANSWER RULES]", 1)[0].casefold()
-    target_nums = target_numbers(target)
-    evidence_nums = supported_numbers(evidence_text)
+    core = answer_core(target)
+    target_nums = target_numbers(core)
+    cited_content = "\n".join(rendered_blocks[item] for item in sorted(target_ids) if item.startswith("E") and item in rendered_blocks)
+    evidence_nums = supported_numbers(cited_content if cited_content else evidence_text)
     if sample.get("behavior_type") == "POSITIVE_GROUNDED" or sample.get("behavior_type") == "PARTIAL_DISTRACTOR":
-        if not target_nums.issubset(evidence_nums | target_numbers(user)):
+        if sample.get("route") != "CALCULATION_RESULT_VERBALIZATION" and not target_ids.intersection(rendered_ids):
+            reasons.append("QV15_target_without_supporting_citation")
+        if not target_nums.issubset(evidence_nums):
             reasons.append("QV3_QV6_unsupported_numeric")
-        evidence_periods = target_periods(evidence_text)
+        if sample.get("route") != "CALCULATION_RESULT_VERBALIZATION":
+            for evidence_id in sorted(item for item in target_ids if item.startswith("E")):
+                if evidence_id in rendered_blocks and not citation_relevant_to_answer(core, rendered_blocks[evidence_id]):
+                    reasons.append("QV2_irrelevant_citation")
+        evidence_periods = target_periods(cited_content if cited_content else evidence_text)
         if not target_periods(target).issubset(evidence_periods):
             reasons.append("QV4_unsupported_period")
-        if not supported_units(target).issubset(supported_units(evidence_text)):
+        if not supported_units(core).issubset(supported_units(cited_content if cited_content else evidence_text)):
             reasons.append("QV5_unsupported_unit_currency_scale")
+        if sample.get("route") != "CALCULATION_RESULT_VERBALIZATION" and not semantic_claim_supported(core, user.split("[QUESTION]", 1)[-1].split("[VERIFIED EVIDENCE]", 1)[0], cited_content):
+            reasons.append("QV15_semantic_evidence_support")
     if sample.get("route") == "CALCULATION_RESULT_VERBALIZATION":
         calculation_match = re.search(r"Canonical Result:\s*([^\n]+)", user)
         canonical = str(calculation_match.group(1)).strip() if calculation_match else ""

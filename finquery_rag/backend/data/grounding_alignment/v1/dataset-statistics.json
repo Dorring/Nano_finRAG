@@ -2,9 +2,9 @@
   "acceptance": "pass",
   "accepted": 4000,
   "assistant_tokens": {
-    "max": 85,
-    "p50": 15.0,
-    "p95": 64
+    "max": 80,
+    "p50": 13.0,
+    "p95": 42
   },
   "behavior": {
     "PARTIAL_DISTRACTOR": 800,
@@ -14,14 +14,14 @@
   "canonical_calculation_fidelity": 4000,
   "citation_complete_positive": 2400,
   "citation_valid": 4000,
-  "context_group_count": 2069,
+  "context_group_count": 2088,
   "context_limit_overflow": 0,
   "cot_target_samples": 0,
   "false_unanswerable": 0,
   "input_tokens": {
     "max": 1738,
-    "p50": 916.0,
-    "p95": 1278
+    "p50": 932.5,
+    "p95": 1280
   },
   "internal_benchmark_context_overlap": 0,
   "internal_benchmark_question_overlap": 0,
@@ -30,7 +30,7 @@
   "official_eval_context_overlap": 0,
   "official_eval_question_overlap": 0,
   "period_support": 4000,
-  "rejected": 1039,
+  "rejected": 1383,
   "routes": {
     "CALCULATION_RESULT_VERBALIZATION": 600,
     "DIRECT": 3100,
@@ -55,8 +55,8 @@
     "TAT-DQA": 13215
   },
   "sources": {
-    "FinQA": 305,
-    "TAT-DQA": 3695
+    "FinQA": 308,
+    "TAT-DQA": 3692
   },
   "split_counts": {
     "alignment_dev": 200,

@@ -1,6 +1,11 @@
 {
-  "['QV14_target_length']": 120,
-  "['QV3_QV6_unsupported_numeric']": 23,
-  "cap_exceeded": 492,
+  "['QV14_target_length']": 28,
+  "['QV15_semantic_evidence_support', 'QV2_irrelevant_citation', 'QV3_QV6_unsupported_numeric']": 5,
+  "['QV15_semantic_evidence_support', 'QV3_QV6_unsupported_numeric']": 85,
+  "['QV15_semantic_evidence_support', 'QV4_unsupported_period']": 2,
+  "['QV15_semantic_evidence_support']": 350,
+  "['QV2_irrelevant_citation']": 1,
+  "['QV3_QV6_unsupported_numeric']": 1,
+  "cap_exceeded": 507,
   "question_fingerprint_overlap": 404
 }
