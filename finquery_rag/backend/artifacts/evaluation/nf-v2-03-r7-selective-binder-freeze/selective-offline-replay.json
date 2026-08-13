@@ -1,0 +1,1079 @@
+{
+  "calculation": {
+    "all_operands_selectively_admitted": 0,
+    "eligible_for_bound": 1,
+    "false_operand_binding": 0,
+    "not_admitted": 11,
+    "partial_operand_admission": 0,
+    "released_operand_denominator": 0,
+    "strict_correct_operand_slots": 0,
+    "total": 11
+  },
+  "direct": {
+    "ambiguous": 40,
+    "eligible_for_bound": 8,
+    "false_binding": 0,
+    "missing": 16,
+    "released_bound_denominator": 0,
+    "selectively_bound": 0,
+    "strict_correct_bound": 0,
+    "total": 56
+  },
+  "false_binding_under_selective_admission": 0,
+  "gate": "NF-V2-03-R7",
+  "gold_reads": 0,
+  "model_calls": 0,
+  "multi_evidence": {
+    "complete_selective_binding": 0,
+    "eligible_for_bound": 0,
+    "false_binding": 0,
+    "not_admitted": 5,
+    "partial": 0,
+    "total": 5
+  },
+  "questions": 72,
+  "r6_policy_released_bound_queries": 0,
+  "r6_policy_sha256": "76387ba06c11f87773cb56a4cee9822d6dab2fb2f40dc8ebfb0460866f886d12",
+  "r6_shortlist_seal_sha256": "412d10bb4d9498dfafdc2baf6235c2f412b1900b3c74535d47ab733404877603",
+  "r6_shortlist_sealed": true,
+  "rows": [
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "aapl_fy2025_001",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "aapl_fy2025_002",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "aapl_fy2025_003",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "aapl_fy2025_004",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "aapl_fy2025_005",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "CALCULATION",
+      "operation": "growth_rate",
+      "provider_calls": 0,
+      "question_id": "aapl_fy2025_006",
+      "required_slot_count": 2,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 5,
+        "slot_2": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "MULTI_EVIDENCE",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "aapl_fy2025_007",
+      "required_slot_count": 2,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5,
+        "2": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "aapl_fy2025_008",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 0
+      },
+      "status": "MISSING"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "aapl_fy2025_009",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "jpm_fy2025_001",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "jpm_fy2025_002",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 3
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "jpm_fy2025_003",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "jpm_fy2025_004",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "jpm_fy2025_005",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "CALCULATION",
+      "operation": "growth_rate",
+      "provider_calls": 0,
+      "question_id": "jpm_fy2025_006",
+      "required_slot_count": 2,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5,
+        "2": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "MULTI_EVIDENCE",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "jpm_fy2025_007",
+      "required_slot_count": 2,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 5,
+        "slot_2": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "jpm_fy2025_008",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 0
+      },
+      "status": "MISSING"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "jpm_fy2025_009",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "ko_fy2025_001",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 4
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "ko_fy2025_002",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 4
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "ko_fy2025_003",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 4
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "ko_fy2025_004",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "ko_fy2025_005",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "CALCULATION",
+      "operation": "growth_rate",
+      "provider_calls": 0,
+      "question_id": "ko_fy2025_006",
+      "required_slot_count": 2,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 5,
+        "slot_2": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "CALCULATION",
+      "operation": "percentage_share",
+      "provider_calls": 0,
+      "question_id": "ko_fy2025_007",
+      "required_slot_count": 2,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5,
+        "2": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "ko_fy2025_008",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 0
+      },
+      "status": "MISSING"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "ko_fy2025_009",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "msft_fy2025_001",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "msft_fy2025_002",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 4
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "msft_fy2025_003",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 3
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "msft_fy2025_004",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 0
+      },
+      "status": "MISSING"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "msft_fy2025_005",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 3
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "CALCULATION",
+      "operation": "growth_rate",
+      "provider_calls": 0,
+      "question_id": "msft_fy2025_006",
+      "required_slot_count": 2,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "rev_fy2024": 5,
+        "rev_fy2025": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "CALCULATION",
+      "operation": "percentage_share",
+      "provider_calls": 0,
+      "question_id": "msft_fy2025_007",
+      "required_slot_count": 2,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 5,
+        "slot_2": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "msft_fy2025_008",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 0
+      },
+      "status": "MISSING"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "msft_fy2025_009",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "nvda_fy2025_001",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 4
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "nvda_fy2025_002",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 2
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "nvda_fy2025_003",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 2
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": true,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "nvda_fy2025_004",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "data_center_revenue_fy2025": 1
+      },
+      "status": "MISSING"
+    },
+    {
+      "eligible_for_bound": true,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "nvda_fy2025_005",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "automotive_revenue_fy2025": 1
+      },
+      "status": "MISSING"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "CALCULATION",
+      "operation": "growth_rate",
+      "provider_calls": 0,
+      "question_id": "nvda_fy2025_006",
+      "required_slot_count": 2,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "rev_fy2024": 5,
+        "rev_fy2025": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "MULTI_EVIDENCE",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "nvda_fy2025_007",
+      "required_slot_count": 2,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 4,
+        "slot_2": 4
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": true,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "nvda_fy2025_008",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 1
+      },
+      "status": "MISSING"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "nvda_fy2025_009",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "pfe_fy2024_001",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "total_revenues_fy2024": 3
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "pfe_fy2024_002",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "pfe_fy2024_003",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "pfe_fy2024_004",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "pfe_fy2024_005",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 4
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "CALCULATION",
+      "operation": "growth_rate",
+      "provider_calls": 0,
+      "question_id": "pfe_fy2024_006",
+      "required_slot_count": 2,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5,
+        "2": 4
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "MULTI_EVIDENCE",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "pfe_fy2024_007",
+      "required_slot_count": 2,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5,
+        "2": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": true,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "pfe_fy2024_008",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 1
+      },
+      "status": "MISSING"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "pfe_fy2024_009",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "paxlovid_revenue_fy2023": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "tsla_fy2025_001",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "tsla_fy2025_002",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 3
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "tsla_fy2025_003",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "tsla_fy2025_004",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "tsla_fy2025_005",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 2
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "CALCULATION",
+      "operation": "growth_rate",
+      "provider_calls": 0,
+      "question_id": "tsla_fy2025_006",
+      "required_slot_count": 2,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "rev_fy2024": 5,
+        "rev_fy2025": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "CALCULATION",
+      "operation": "difference",
+      "provider_calls": 0,
+      "question_id": "tsla_fy2025_007",
+      "required_slot_count": 2,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 5,
+        "slot_2": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "tsla_fy2025_008",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 0
+      },
+      "status": "MISSING"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "tsla_fy2025_009",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 5
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": true,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "v_fy2025_001",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 1
+      },
+      "status": "MISSING"
+    },
+    {
+      "eligible_for_bound": true,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "v_fy2025_002",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 1
+      },
+      "status": "MISSING"
+    },
+    {
+      "eligible_for_bound": true,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "v_fy2025_003",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 1
+      },
+      "status": "MISSING"
+    },
+    {
+      "eligible_for_bound": true,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "v_fy2025_004",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 1
+      },
+      "status": "MISSING"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "v_fy2025_005",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 0
+      },
+      "status": "MISSING"
+    },
+    {
+      "eligible_for_bound": true,
+      "intent": "CALCULATION",
+      "operation": "growth_rate",
+      "provider_calls": 0,
+      "question_id": "v_fy2025_006",
+      "required_slot_count": 2,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "s1": 1,
+        "s2": 1
+      },
+      "status": "MISSING"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "MULTI_EVIDENCE",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "v_fy2025_007",
+      "required_slot_count": 2,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 2,
+        "2": 2
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "v_fy2025_008",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "slot_1": 0
+      },
+      "status": "MISSING"
+    },
+    {
+      "eligible_for_bound": false,
+      "intent": "DIRECT_FACT",
+      "operation": null,
+      "provider_calls": 0,
+      "question_id": "v_fy2025_009",
+      "required_slot_count": 1,
+      "selectively_bound": false,
+      "semantic_response_count": 0,
+      "shortlist_sizes": {
+        "1": 3
+      },
+      "status": "AMBIGUOUS"
+    }
+  ],
+  "semantic_accuracy_evaluated": false,
+  "status_by_intent": {
+    "CALCULATION": {
+      "AMBIGUOUS": 10,
+      "MISSING": 1
+    },
+    "DIRECT_FACT": {
+      "AMBIGUOUS": 40,
+      "MISSING": 16
+    },
+    "MULTI_EVIDENCE": {
+      "AMBIGUOUS": 5
+    }
+  }
+}

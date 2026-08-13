@@ -1,0 +1,37 @@
+{
+  "calculation": {
+    "all_operands_selectively_admitted": 0,
+    "eligible_for_bound": 1,
+    "false_operand_binding": 0,
+    "not_admitted": 11,
+    "partial_operand_admission": 0,
+    "released_operand_denominator": 0,
+    "strict_correct_operand_slots": 0,
+    "total": 11
+  },
+  "direct": {
+    "ambiguous": 40,
+    "eligible_for_bound": 8,
+    "false_binding": 0,
+    "missing": 16,
+    "released_bound_denominator": 0,
+    "selectively_bound": 0,
+    "strict_correct_bound": 0,
+    "total": 56
+  },
+  "false_binding_under_selective_admission": 0,
+  "historical": {
+    "direct_supply": "43/56",
+    "gold_source_fact": "33/56",
+    "reviewed_strict_bindable": "27/56"
+  },
+  "multi_evidence": {
+    "complete_selective_binding": 0,
+    "eligible_for_bound": 0,
+    "false_binding": 0,
+    "not_admitted": 5,
+    "partial": 0,
+    "total": 5
+  },
+  "semantic_accuracy_claim": false
+}

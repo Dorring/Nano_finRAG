@@ -1,0 +1,28 @@
+{
+  "contract": "SelectiveBindingAdmissionV1",
+  "fact_view": "BinderFactViewV2",
+  "fail_closed": true,
+  "failure_result": [
+    "MISSING",
+    "AMBIGUOUS"
+  ],
+  "false_binding_definition": "false binding under selective admission",
+  "gold_conditioned_rules": 0,
+  "model": "qwen3.7-plus",
+  "model_calls": 0,
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "question_specific_rules": 0,
+  "release_bound_requires": [
+    "selected_slot_id_valid",
+    "selected_fact_id_valid",
+    "fact_belongs_to_query_packet",
+    "provenance_complete",
+    "structural_relation_valid",
+    "no_cardinality_violation",
+    "canonical_source_identity_valid",
+    "unique_admissible_binder_selection",
+    "binding_validator_pass"
+  ],
+  "semantic_accuracy_claim": false
+}

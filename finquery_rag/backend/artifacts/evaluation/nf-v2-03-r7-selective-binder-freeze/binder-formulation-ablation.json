@@ -1,0 +1,36 @@
+{
+  "fact_view_v2": {
+    "calculation_visible_uniqueness": "0/12 -> 12/12",
+    "direct_visible_uniqueness": "4/27 -> 21/27"
+  },
+  "global": {
+    "calculation_operands": "1/12",
+    "direct_visible_unique": "8/21"
+  },
+  "pairwise": {
+    "calculation": "1/12",
+    "direct": "7/21",
+    "indistinguishable_abstention": "2/6",
+    "unbindable_false_binding": "6/7"
+  },
+  "qwen3_7_max_ablation": {
+    "max_calculation": "0/12",
+    "max_direct": "8/21",
+    "plus_calculation": "1/12",
+    "plus_direct": "8/21"
+  },
+  "selective_admission": {
+    "direct_selectively_bound": "0/56",
+    "false_binding": 0
+  },
+  "shortlist_precheck": {
+    "calculation_retention": "11/12",
+    "direct_retention": "19/21"
+  },
+  "slotwise": {
+    "calculation": "5/12",
+    "direct": "9/21",
+    "indistinguishable_abstention": "0/6",
+    "unbindable_false_binding": "6/7"
+  }
+}
