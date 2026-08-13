@@ -1,5 +1,5 @@
 {
-  "evidence_complete": 11,
+  "evidence_complete": 6,
   "false_operand_binding": 0,
   "initial_ready": "0/11",
   "not_ready": 2,
@@ -45,6 +45,24 @@
           "status": "AMBIGUOUS"
         }
       ],
+      "operand_supply": [
+        {
+          "candidate_source_ids": [
+            "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563"
+          ],
+          "period_fact": true,
+          "slot_id": "slot_1",
+          "source_fact": true
+        },
+        {
+          "candidate_source_ids": [
+            "candidate:v1:8bf09773f797721129e1d738f6d602d1603701be82bb89bbd0ccafb26b693563"
+          ],
+          "period_fact": true,
+          "slot_id": "slot_2",
+          "source_fact": true
+        }
+      ],
       "partial": true,
       "question_id": "aapl_fy2025_006",
       "safely_ready": false
@@ -84,6 +102,24 @@
           "status": "AMBIGUOUS"
         }
       ],
+      "operand_supply": [
+        {
+          "candidate_source_ids": [
+            "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07"
+          ],
+          "period_fact": true,
+          "slot_id": "1",
+          "source_fact": true
+        },
+        {
+          "candidate_source_ids": [
+            "candidate:v1:a6044792cb39f796cdbc4f11c41784d5d008b498ee18259462f38aebe8818a07"
+          ],
+          "period_fact": true,
+          "slot_id": "2",
+          "source_fact": true
+        }
+      ],
       "partial": true,
       "question_id": "jpm_fy2025_006",
       "safely_ready": false
@@ -113,12 +149,30 @@
           "status": "AMBIGUOUS"
         }
       ],
+      "operand_supply": [
+        {
+          "candidate_source_ids": [
+            "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195"
+          ],
+          "period_fact": true,
+          "slot_id": "slot_1",
+          "source_fact": true
+        },
+        {
+          "candidate_source_ids": [
+            "candidate:v1:95d139e507325d9cb10bcf79ceb9196ca2bfda838287b2540ded0d9e4506b195"
+          ],
+          "period_fact": true,
+          "slot_id": "slot_2",
+          "source_fact": true
+        }
+      ],
       "partial": true,
       "question_id": "ko_fy2025_006",
       "safely_ready": false
     },
     {
-      "evidence_complete": true,
+      "evidence_complete": false,
       "false_operand_binding": 0,
       "final_status": "AMBIGUOUS",
       "initial_status": "AMBIGUOUS",
@@ -137,6 +191,26 @@
           ],
           "slot_id": "2",
           "status": "AMBIGUOUS"
+        }
+      ],
+      "operand_supply": [
+        {
+          "candidate_source_ids": [
+            "candidate:v1:214ce6712de95bbe235ef407a4a41b42d0ba38080b13d80a418493656e357a9b",
+            "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0"
+          ],
+          "period_fact": false,
+          "slot_id": "1",
+          "source_fact": true
+        },
+        {
+          "candidate_source_ids": [
+            "candidate:v1:214ce6712de95bbe235ef407a4a41b42d0ba38080b13d80a418493656e357a9b",
+            "candidate:v1:95695f87921023097db00144a674963b3b5477f94d6da6621095b50a94bb1aa0"
+          ],
+          "period_fact": false,
+          "slot_id": "2",
+          "source_fact": true
         }
       ],
       "partial": true,
@@ -167,12 +241,30 @@
           "status": "AMBIGUOUS"
         }
       ],
+      "operand_supply": [
+        {
+          "candidate_source_ids": [
+            "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a"
+          ],
+          "period_fact": true,
+          "slot_id": "rev_fy2025",
+          "source_fact": true
+        },
+        {
+          "candidate_source_ids": [
+            "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a"
+          ],
+          "period_fact": true,
+          "slot_id": "rev_fy2024",
+          "source_fact": true
+        }
+      ],
       "partial": true,
       "question_id": "msft_fy2025_006",
       "safely_ready": false
     },
     {
-      "evidence_complete": true,
+      "evidence_complete": false,
       "false_operand_binding": 0,
       "final_status": "AMBIGUOUS",
       "initial_status": "AMBIGUOUS",
@@ -192,12 +284,30 @@
           "status": "AMBIGUOUS"
         }
       ],
+      "operand_supply": [
+        {
+          "candidate_source_ids": [
+            "candidate:v1:e395d55a29b48534ba828e6ea5934268ea935f21bf3c0bbfa72e1f69016dca3d"
+          ],
+          "period_fact": false,
+          "slot_id": "slot_1",
+          "source_fact": false
+        },
+        {
+          "candidate_source_ids": [
+            "candidate:v1:b6a1feef88200e59c86de4fe145c0982a5224b4fcd037b82c5eb643b63f6d37a"
+          ],
+          "period_fact": true,
+          "slot_id": "slot_2",
+          "source_fact": true
+        }
+      ],
       "partial": true,
       "question_id": "msft_fy2025_007",
       "safely_ready": false
     },
     {
-      "evidence_complete": true,
+      "evidence_complete": false,
       "false_operand_binding": 0,
       "final_status": "AMBIGUOUS",
       "initial_status": "AMBIGUOUS",
@@ -220,6 +330,24 @@
           ],
           "slot_id": "rev_fy2024",
           "status": "AMBIGUOUS"
+        }
+      ],
+      "operand_supply": [
+        {
+          "candidate_source_ids": [
+            "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024"
+          ],
+          "period_fact": false,
+          "slot_id": "rev_fy2025",
+          "source_fact": false
+        },
+        {
+          "candidate_source_ids": [
+            "candidate:v1:b17f2ce44d1a588a40f596c084acdc04bf6f9b3f779f8870b3e5c2f9911c5024"
+          ],
+          "period_fact": false,
+          "slot_id": "rev_fy2024",
+          "source_fact": false
         }
       ],
       "partial": true,
@@ -252,6 +380,24 @@
           "status": "AMBIGUOUS"
         }
       ],
+      "operand_supply": [
+        {
+          "candidate_source_ids": [
+            "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827"
+          ],
+          "period_fact": true,
+          "slot_id": "1",
+          "source_fact": true
+        },
+        {
+          "candidate_source_ids": [
+            "candidate:v1:aa596cf904bf23c2c8d98a9740f93369316606862528cb41d9d48fee70a00827"
+          ],
+          "period_fact": true,
+          "slot_id": "2",
+          "source_fact": true
+        }
+      ],
       "partial": true,
       "question_id": "pfe_fy2024_006",
       "safely_ready": false
@@ -282,12 +428,30 @@
           "status": "AMBIGUOUS"
         }
       ],
+      "operand_supply": [
+        {
+          "candidate_source_ids": [
+            "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0"
+          ],
+          "period_fact": true,
+          "slot_id": "rev_fy2025",
+          "source_fact": true
+        },
+        {
+          "candidate_source_ids": [
+            "candidate:v1:bb152c27f99c80c4ebeee525ea21c865217d3492853a66d80722e45d15f9f6d0"
+          ],
+          "period_fact": true,
+          "slot_id": "rev_fy2024",
+          "source_fact": true
+        }
+      ],
       "partial": true,
       "question_id": "tsla_fy2025_006",
       "safely_ready": false
     },
     {
-      "evidence_complete": true,
+      "evidence_complete": false,
       "false_operand_binding": 0,
       "final_status": "MISSING",
       "initial_status": "AMBIGUOUS",
@@ -304,12 +468,30 @@
           "status": "MISSING"
         }
       ],
+      "operand_supply": [
+        {
+          "candidate_source_ids": [
+            "candidate:v1:9a52847559e6a3b343befd61b420d751706c80bd6d383ddec44d3ee95ad5ac52"
+          ],
+          "period_fact": false,
+          "slot_id": "slot_1",
+          "source_fact": true
+        },
+        {
+          "candidate_source_ids": [
+            "candidate:v1:a2fdc98836d1a83448db3cbcf87c2d33dc21dde91c2bff0523b8af47010b6b81"
+          ],
+          "period_fact": false,
+          "slot_id": "slot_2",
+          "source_fact": false
+        }
+      ],
       "partial": false,
       "question_id": "tsla_fy2025_007",
       "safely_ready": false
     },
     {
-      "evidence_complete": true,
+      "evidence_complete": false,
       "false_operand_binding": 0,
       "final_status": "AMBIGUOUS",
       "initial_status": "AMBIGUOUS",
@@ -324,6 +506,24 @@
           "selected": [],
           "slot_id": "s2",
           "status": "AMBIGUOUS"
+        }
+      ],
+      "operand_supply": [
+        {
+          "candidate_source_ids": [
+            "candidate:v1:289c0336e376d5107ddec815a794c98a560365f265de95c0f3f45ee1e878ba83"
+          ],
+          "period_fact": true,
+          "slot_id": "s1",
+          "source_fact": true
+        },
+        {
+          "candidate_source_ids": [
+            "candidate:v1:21f924b9c1b33d1e7caa949ac3dcca366d20e99a1aacf2b9d84be8e762ad6240"
+          ],
+          "period_fact": false,
+          "slot_id": "s2",
+          "source_fact": false
         }
       ],
       "partial": false,

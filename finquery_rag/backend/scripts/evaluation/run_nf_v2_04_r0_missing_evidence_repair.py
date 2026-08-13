@@ -441,10 +441,18 @@ def main() -> int:
         request0 = frozen["requests"][qid]
         request = BinderRequest(qid, request0.question, request0.plan, tuple(packet_for(qid, combined_facts, top50_order, TOP50)))
         row = final_rows[qid]
+        label = labels[qid]
         selected = row["v2_binding"].get("slot_bindings", {})
         operand_results = [{"slot_id": slot.slot_id, "selected": list(selected.get(slot.slot_id, [])), "status": row["v2_binding"]["status"]} for slot in request.plan.required_slots]
+        operand_supply: list[dict[str, Any]] = []
+        for slot in request.plan.required_slots:
+            expected = {str(item.get("candidate_key")) for item in r1d.r1a.expected_sources(slot, label) if item.get("candidate_key")}
+            source_facts = [fact for fact in request.facts if candidate_ids(fact) & expected]
+            period_supply = any(exact_period(fact.get("normalized_period") or fact.get("raw_period")) == exact_period(slot.period) for fact in source_facts)
+            operand_supply.append({"slot_id": slot.slot_id, "source_fact": bool(source_facts), "period_fact": period_supply, "candidate_source_ids": sorted(expected)})
+        evidence_complete = bool(operand_supply) and all(item["period_fact"] for item in operand_supply)
         safe = bool(row["released"] and len(operand_results) == len(request.plan.required_slots) and all(len(item["selected"]) == 1 for item in operand_results))
-        calc_rows.append({"question_id": qid, "initial_status": initial_runtime[qid]["v2_binding"]["status"], "final_status": row["v2_binding"]["status"], "evidence_complete": bool(request.facts), "safely_ready": safe, "partial": bool(not safe and any(item["selected"] for item in operand_results)), "not_ready": not safe and not any(item["selected"] for item in operand_results), "false_operand_binding": 0, "operand_results": operand_results})
+        calc_rows.append({"question_id": qid, "initial_status": initial_runtime[qid]["v2_binding"]["status"], "final_status": row["v2_binding"]["status"], "evidence_complete": evidence_complete, "operand_supply": operand_supply, "safely_ready": safe, "partial": bool(not safe and any(item["selected"] for item in operand_results)), "not_ready": not safe and not any(item["selected"] for item in operand_results), "false_operand_binding": 0, "operand_results": operand_results})
     write_json(OUT / "calculation-repair-results.json", {"initial_ready": "0/11", "evidence_complete": sum(int(row["evidence_complete"]) for row in calc_rows), "safely_ready": sum(int(row["safely_ready"]) for row in calc_rows), "partial": sum(int(row["partial"]) for row in calc_rows), "not_ready": sum(int(row["not_ready"]) for row in calc_rows), "false_operand_binding": 0, "rows": calc_rows})
 
     multi_rows: list[dict[str, Any]] = []
