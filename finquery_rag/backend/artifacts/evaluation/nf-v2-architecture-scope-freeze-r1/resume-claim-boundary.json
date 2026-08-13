@@ -1,0 +1,9 @@
+{
+  "allowed_claim": "runtime-selectively admitted DIRECT evidence was 4/4 strict correct with zero false binding",
+  "coverage_precision_abstention_false_binding_separate": true,
+  "disallowed_claims": [
+    "V2 Binder accuracy = 100%",
+    "all queries bind correctly",
+    "LLM Binder solves all evidence selection"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "coverage_precision_abstention_separate": true,
+  "false_binding_priority": true,
+  "packet": "VerifiedEvidencePacket",
+  "producers": [
+    "direct_selective_admission",
+    "trusted_deterministic_operand_binding_v1",
+    "future_verified_multi_evidence"
+  ],
+  "required_safety_fields": [
+    "source_provenance",
+    "period",
+    "unit",
+    "currency",
+    "scale",
+    "metric",
+    "scope",
+    "route",
+    "validation_status"
+  ],
+  "unified": true
+}

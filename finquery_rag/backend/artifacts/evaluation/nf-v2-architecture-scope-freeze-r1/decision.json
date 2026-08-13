@@ -1,0 +1,21 @@
+{
+  "adapter_required": true,
+  "architecture_scope_frozen": true,
+  "base_commit": "6525bac0547eac38acb177e9656447ec80f9ad22",
+  "binder_exploration_closed": true,
+  "calculation_current_contract_compatible": "1/11",
+  "calculation_current_deterministic_ready": "0/11",
+  "calculation_deterministic_path_adopted": false,
+  "calculation_historical_ready": "5/11",
+  "calculation_only_deterministic_binding_warranted": false,
+  "deterministic_first_binding_warranted": false,
+  "false_operand_binding": 5,
+  "gate": "NF-V2-ARCHITECTURE-SCOPE-FREEZE-R1",
+  "model_calls": 0,
+  "next_gate": "v2_06_verified_generation_subset",
+  "production": "V1",
+  "repair_exploration_closed": true,
+  "retrieval_calls": 0,
+  "runtime_candidate_ready": "4/11",
+  "strict_correct_operand_slots": 3
+}

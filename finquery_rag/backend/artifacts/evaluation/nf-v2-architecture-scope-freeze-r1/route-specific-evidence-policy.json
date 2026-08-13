@@ -1,0 +1,37 @@
+{
+  "CALCULATION": {
+    "controller": "General Financial RAG Supervisor",
+    "current_ready": "0/11",
+    "false_operand_binding": 5,
+    "historical_ready": "5/11",
+    "path": "Retrieval -> FinancialFactV1 -> trusted_deterministic_operand_binding_v1 -> Calculator",
+    "release": "only_when_all_operands_trusted",
+    "runtime_candidate_ready": "4/11"
+  },
+  "DIRECT_FACT": {
+    "controller": "General Financial RAG Supervisor",
+    "false_binding": 0,
+    "path": "Retrieval -> FinancialFactV1 -> BinderFactViewV2 -> SelectiveBindingAdmissionV2",
+    "release": "selective_fail_closed",
+    "safe_coverage": "4/56",
+    "strict": "4/4"
+  },
+  "MULTI_EVIDENCE": {
+    "controller": "General Financial RAG Supervisor",
+    "path": "Retrieval -> evidence aggregation",
+    "release": "fail_closed_until_verified",
+    "safe_coverage": "0/5"
+  },
+  "architecture": "route_specific_trusted_evidence",
+  "production": "V1",
+  "reranker": {
+    "model": "Qwen3-Reranker-4B",
+    "role": "retrieval_only",
+    "slot_admission_scorer": false
+  },
+  "semantic_binder": {
+    "model": "qwen3.7-plus",
+    "release_authority": false,
+    "role": "diagnostic_semantic_evidence_analyzer"
+  }
+}

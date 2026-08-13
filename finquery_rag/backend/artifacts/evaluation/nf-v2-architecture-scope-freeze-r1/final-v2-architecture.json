@@ -1,0 +1,12 @@
+{
+  "architecture_scope_frozen": true,
+  "calculation_policy": "fail_closed_until_verified",
+  "control_plane": "General Financial RAG Supervisor",
+  "direct_policy": "SelectiveBindingAdmissionV2",
+  "multi_policy": "fail_closed_until_verified",
+  "production_switch_allowed": false,
+  "reranker_final_role": "retrieval_only",
+  "route_specific_trusted_evidence": true,
+  "semantic_binder_final_role": "diagnostic_semantic_evidence_analyzer",
+  "verified_evidence_packet_unified": true
+}

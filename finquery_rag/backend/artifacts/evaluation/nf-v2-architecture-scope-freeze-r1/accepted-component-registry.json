@@ -1,0 +1,13 @@
+{
+  "binder_fact_view_v2": true,
+  "binding_validator": true,
+  "deterministic_calculator": true,
+  "deterministic_output_validator": true,
+  "deterministic_state_machine": true,
+  "financial_fact_v1": true,
+  "financial_sft_generator_contract": true,
+  "general_supervisor": true,
+  "production": "V1",
+  "selective_binding_admission_v2": true,
+  "supervisor_required_slot_contract": true
+}

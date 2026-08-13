@@ -1,0 +1,164 @@
+{
+  "adapter_required": true,
+  "compatibility_counts": {
+    "CP0_directly_contract_compatible": 0,
+    "CP1_field_rename_or_adapter_only": 1,
+    "CP2_missing_required_current_field": 4,
+    "CP3_semantic_contract_incompatible": 3,
+    "CP4_historical_pipeline_depended_on_removed_data": 3,
+    "CP5_other": 0
+  },
+  "contract_sha256": "ca3471fabedaf572e5aca93e776b22b073060b232ef9950a4cb315c99c1c202b",
+  "field_presence": {
+    "candidate_key": {
+      "non_null": 292,
+      "total": 292
+    },
+    "canonical_row_label": {
+      "non_null": 292,
+      "total": 292
+    },
+    "cell_id": {
+      "non_null": 292,
+      "total": 292
+    },
+    "currency": {
+      "non_null": 4,
+      "total": 292
+    },
+    "document_id": {
+      "non_null": 292,
+      "total": 292
+    },
+    "logical_table_id": {
+      "non_null": 292,
+      "total": 292
+    },
+    "measurement_kind": {
+      "non_null": 292,
+      "total": 292
+    },
+    "metric_path": {
+      "non_null": 292,
+      "total": 292
+    },
+    "parsed_numeric_value": {
+      "non_null": 292,
+      "total": 292
+    },
+    "pdf_page": {
+      "non_null": 292,
+      "total": 292
+    },
+    "period": {
+      "non_null": 292,
+      "total": 292
+    },
+    "physical_provenance": {
+      "non_null": 292,
+      "total": 292
+    },
+    "physical_source_id": {
+      "non_null": 292,
+      "total": 292
+    },
+    "row_id": {
+      "non_null": 292,
+      "total": 292
+    },
+    "scale": {
+      "non_null": 246,
+      "total": 292
+    },
+    "semantic_fact_id": {
+      "non_null": 292,
+      "total": 292
+    },
+    "supporting_candidate_keys": {
+      "non_null": 292,
+      "total": 292
+    },
+    "table_fragment_id": {
+      "non_null": 292,
+      "total": 292
+    },
+    "unit_context": {
+      "non_null": 292,
+      "total": 292
+    },
+    "value": {
+      "non_null": 292,
+      "total": 292
+    }
+  },
+  "rows": [
+    {
+      "adapter_required": true,
+      "compatibility_class": "CP4_historical_pipeline_depended_on_removed_data",
+      "question_id": "aapl_fy2025_006",
+      "runtime_status": "RUNTIME_OPERAND_AMBIGUITY"
+    },
+    {
+      "adapter_required": true,
+      "compatibility_class": "CP4_historical_pipeline_depended_on_removed_data",
+      "question_id": "jpm_fy2025_006",
+      "runtime_status": "RUNTIME_OPERAND_AMBIGUITY"
+    },
+    {
+      "adapter_required": true,
+      "compatibility_class": "CP4_historical_pipeline_depended_on_removed_data",
+      "question_id": "ko_fy2025_006",
+      "runtime_status": "RUNTIME_OPERAND_AMBIGUITY"
+    },
+    {
+      "adapter_required": true,
+      "compatibility_class": "CP2_missing_required_current_field",
+      "question_id": "ko_fy2025_007",
+      "runtime_status": "UNDERCOVERED"
+    },
+    {
+      "adapter_required": true,
+      "compatibility_class": "CP2_missing_required_current_field",
+      "question_id": "msft_fy2025_006",
+      "runtime_status": "UNDERCOVERED"
+    },
+    {
+      "adapter_required": true,
+      "compatibility_class": "CP2_missing_required_current_field",
+      "question_id": "msft_fy2025_007",
+      "runtime_status": "UNDERCOVERED"
+    },
+    {
+      "adapter_required": true,
+      "compatibility_class": "CP3_semantic_contract_incompatible",
+      "question_id": "nvda_fy2025_006",
+      "runtime_status": "DETERMINISTIC_READY"
+    },
+    {
+      "adapter_required": true,
+      "compatibility_class": "CP1_field_rename_or_adapter_only",
+      "question_id": "pfe_fy2024_006",
+      "runtime_status": "DETERMINISTIC_READY"
+    },
+    {
+      "adapter_required": true,
+      "compatibility_class": "CP3_semantic_contract_incompatible",
+      "question_id": "tsla_fy2025_006",
+      "runtime_status": "DETERMINISTIC_READY"
+    },
+    {
+      "adapter_required": true,
+      "compatibility_class": "CP2_missing_required_current_field",
+      "question_id": "tsla_fy2025_007",
+      "runtime_status": "UNDERCOVERED"
+    },
+    {
+      "adapter_required": true,
+      "compatibility_class": "CP3_semantic_contract_incompatible",
+      "question_id": "v_fy2025_006",
+      "runtime_status": "DETERMINISTIC_READY"
+    }
+  ],
+  "safe_runtime_compatible": 1,
+  "typed_shape_adapter_available": "11/11"
+}
