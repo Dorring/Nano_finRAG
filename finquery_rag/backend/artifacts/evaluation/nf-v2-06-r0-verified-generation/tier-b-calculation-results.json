@@ -1,0 +1,180 @@
+{
+  "financial_sft": {
+    "by_route": {
+      "CALCULATION": {
+        "answer_envelope_valid": 11,
+        "citation_complete": 2,
+        "citation_valid": 9,
+        "generation_complete": 11,
+        "grounded": 0,
+        "input_tokens": 16896,
+        "latency_ms": {
+          "avg": 58279.716,
+          "p50": 55262.543,
+          "p95": 110202.925
+        },
+        "n": 11,
+        "numeric_fidelity": 6,
+        "output_tokens": 3792,
+        "period_fidelity": 11,
+        "reference_answer_complete": 0,
+        "unit_currency_scale_fidelity": 10,
+        "unsupported_claim_queries": 11,
+        "unsupported_numeric_claims": 12
+      },
+      "DIRECT": {
+        "answer_envelope_valid": 0,
+        "citation_complete": 0,
+        "citation_valid": 0,
+        "generation_complete": 0,
+        "grounded": 0,
+        "input_tokens": 0,
+        "latency_ms": {
+          "avg": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "n": 0,
+        "numeric_fidelity": 0,
+        "output_tokens": 0,
+        "period_fidelity": 0,
+        "reference_answer_complete": 0,
+        "unit_currency_scale_fidelity": 0,
+        "unsupported_claim_queries": 0,
+        "unsupported_numeric_claims": 0
+      },
+      "MULTI_EVIDENCE": {
+        "answer_envelope_valid": 0,
+        "citation_complete": 0,
+        "citation_valid": 0,
+        "generation_complete": 0,
+        "grounded": 0,
+        "input_tokens": 0,
+        "latency_ms": {
+          "avg": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "n": 0,
+        "numeric_fidelity": 0,
+        "output_tokens": 0,
+        "period_fidelity": 0,
+        "reference_answer_complete": 0,
+        "unit_currency_scale_fidelity": 0,
+        "unsupported_claim_queries": 0,
+        "unsupported_numeric_claims": 0
+      }
+    },
+    "n": 11,
+    "overall": {
+      "answer_envelope_valid": 11,
+      "citation_complete": 2,
+      "citation_valid": 9,
+      "generation_complete": 11,
+      "grounded": 0,
+      "input_tokens": 16896,
+      "latency_ms": {
+        "avg": 58279.716,
+        "p50": 55262.543,
+        "p95": 110202.925
+      },
+      "n": 11,
+      "numeric_fidelity": 6,
+      "output_tokens": 3792,
+      "period_fidelity": 11,
+      "reference_answer_complete": 0,
+      "unit_currency_scale_fidelity": 10,
+      "unsupported_claim_queries": 11,
+      "unsupported_numeric_claims": 12
+    }
+  },
+  "general": {
+    "by_route": {
+      "CALCULATION": {
+        "answer_envelope_valid": 11,
+        "citation_complete": 9,
+        "citation_valid": 11,
+        "generation_complete": 11,
+        "grounded": 4,
+        "input_tokens": 27294,
+        "latency_ms": {
+          "avg": 18438.772,
+          "p50": 18542.548,
+          "p95": 21940.244
+        },
+        "n": 11,
+        "numeric_fidelity": 6,
+        "output_tokens": 11316,
+        "period_fidelity": 11,
+        "reference_answer_complete": 6,
+        "unit_currency_scale_fidelity": 11,
+        "unsupported_claim_queries": 7,
+        "unsupported_numeric_claims": 7
+      },
+      "DIRECT": {
+        "answer_envelope_valid": 0,
+        "citation_complete": 0,
+        "citation_valid": 0,
+        "generation_complete": 0,
+        "grounded": 0,
+        "input_tokens": 0,
+        "latency_ms": {
+          "avg": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "n": 0,
+        "numeric_fidelity": 0,
+        "output_tokens": 0,
+        "period_fidelity": 0,
+        "reference_answer_complete": 0,
+        "unit_currency_scale_fidelity": 0,
+        "unsupported_claim_queries": 0,
+        "unsupported_numeric_claims": 0
+      },
+      "MULTI_EVIDENCE": {
+        "answer_envelope_valid": 0,
+        "citation_complete": 0,
+        "citation_valid": 0,
+        "generation_complete": 0,
+        "grounded": 0,
+        "input_tokens": 0,
+        "latency_ms": {
+          "avg": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "n": 0,
+        "numeric_fidelity": 0,
+        "output_tokens": 0,
+        "period_fidelity": 0,
+        "reference_answer_complete": 0,
+        "unit_currency_scale_fidelity": 0,
+        "unsupported_claim_queries": 0,
+        "unsupported_numeric_claims": 0
+      }
+    },
+    "n": 11,
+    "overall": {
+      "answer_envelope_valid": 11,
+      "citation_complete": 9,
+      "citation_valid": 11,
+      "generation_complete": 11,
+      "grounded": 4,
+      "input_tokens": 27294,
+      "latency_ms": {
+        "avg": 18438.772,
+        "p50": 18542.548,
+        "p95": 21940.244
+      },
+      "n": 11,
+      "numeric_fidelity": 6,
+      "output_tokens": 11316,
+      "period_fidelity": 11,
+      "reference_answer_complete": 6,
+      "unit_currency_scale_fidelity": 11,
+      "unsupported_claim_queries": 7,
+      "unsupported_numeric_claims": 7
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "by_route": {
+    "CALCULATION": {
+      "answer_envelope_valid": 0,
+      "citation_complete": 0,
+      "citation_valid": 0,
+      "generation_complete": 0,
+      "grounded": 0,
+      "input_tokens": 0,
+      "latency_ms": {
+        "avg": 0.0,
+        "p50": 0.0,
+        "p95": 0.0
+      },
+      "n": 0,
+      "numeric_fidelity": 0,
+      "output_tokens": 0,
+      "period_fidelity": 0,
+      "unit_currency_scale_fidelity": 0,
+      "unsupported_claim_queries": 0,
+      "unsupported_numeric_claims": 0
+    },
+    "DIRECT": {
+      "answer_envelope_valid": 0,
+      "citation_complete": 0,
+      "citation_valid": 0,
+      "generation_complete": 0,
+      "grounded": 0,
+      "input_tokens": 0,
+      "latency_ms": {
+        "avg": 0.0,
+        "p50": 0.0,
+        "p95": 0.0
+      },
+      "n": 0,
+      "numeric_fidelity": 0,
+      "output_tokens": 0,
+      "period_fidelity": 0,
+      "unit_currency_scale_fidelity": 0,
+      "unsupported_claim_queries": 0,
+      "unsupported_numeric_claims": 0
+    },
+    "MULTI_EVIDENCE": {
+      "answer_envelope_valid": 3,
+      "citation_complete": 3,
+      "citation_valid": 3,
+      "generation_complete": 3,
+      "grounded": 0,
+      "input_tokens": 7994,
+      "latency_ms": {
+        "avg": 12118.271,
+        "p50": 11077.569,
+        "p95": 17538.952
+      },
+      "n": 3,
+      "numeric_fidelity": 0,
+      "output_tokens": 1991,
+      "period_fidelity": 3,
+      "unit_currency_scale_fidelity": 3,
+      "unsupported_claim_queries": 3,
+      "unsupported_numeric_claims": 4
+    }
+  },
+  "n": 3,
+  "overall": {
+    "answer_envelope_valid": 3,
+    "citation_complete": 3,
+    "citation_valid": 3,
+    "generation_complete": 3,
+    "grounded": 0,
+    "input_tokens": 7994,
+    "latency_ms": {
+      "avg": 12118.271,
+      "p50": 11077.569,
+      "p95": 17538.952
+    },
+    "n": 3,
+    "numeric_fidelity": 0,
+    "output_tokens": 1991,
+    "period_fidelity": 3,
+    "unit_currency_scale_fidelity": 3,
+    "unsupported_claim_queries": 3,
+    "unsupported_numeric_claims": 4
+  }
+}

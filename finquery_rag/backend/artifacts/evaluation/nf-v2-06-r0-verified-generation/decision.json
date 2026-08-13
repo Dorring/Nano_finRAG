@@ -1,0 +1,18 @@
+{
+  "excluded_initial_rows_from_corrected_tier_partition": 6,
+  "financial_generator_frozen": false,
+  "financial_sft_generator_effective": false,
+  "general_endpoint_configured": true,
+  "generation_repair_budget": 0,
+  "next_gate": "v2_06_financial_sft_failure_review",
+  "reference_reads_before_prediction_seal": 0,
+  "route_counts": {
+    "CALCULATION": 11,
+    "DIRECT": 48,
+    "MULTI_EVIDENCE": 5
+  },
+  "scored_model_calls_per_model": 68,
+  "semantic_retries": 0,
+  "tier_a_n": 4,
+  "tier_b_n": 64
+}

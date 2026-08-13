@@ -1,0 +1,26 @@
+{
+  "classification": "first_failed_deterministic_contract_check",
+  "financial_sft": {
+    "FG0_schema": 0,
+    "FG1_citation": 13,
+    "FG2_numeric": 15,
+    "FG3_period": 1,
+    "FG4_unit_currency_scale": 1,
+    "FG5_unsupported_claim": 31,
+    "FG6_incompleteness": 1,
+    "FG7_style_only": 2,
+    "FG8_other": 0
+  },
+  "general": {
+    "FG0_schema": 0,
+    "FG1_citation": 0,
+    "FG2_numeric": 19,
+    "FG3_period": 0,
+    "FG4_unit_currency_scale": 1,
+    "FG5_unsupported_claim": 7,
+    "FG6_incompleteness": 31,
+    "FG7_style_only": 6,
+    "FG8_other": 0
+  },
+  "tier_b_only": true
+}

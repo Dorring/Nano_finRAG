@@ -1,0 +1,44 @@
+{
+  "financial_sft": {
+    "answer_envelope_valid": 64,
+    "citation_complete": 16,
+    "citation_valid": 51,
+    "generation_complete": 64,
+    "grounded": 3,
+    "input_tokens": 84640,
+    "latency_ms": {
+      "avg": 86986.854,
+      "p50": 95794.492,
+      "p95": 109218.251
+    },
+    "n": 64,
+    "numeric_fidelity": 39,
+    "output_tokens": 28118,
+    "period_fidelity": 51,
+    "reference_answer_complete": 5,
+    "unit_currency_scale_fidelity": 59,
+    "unsupported_claim_queries": 61,
+    "unsupported_numeric_claims": 430
+  },
+  "general": {
+    "answer_envelope_valid": 64,
+    "citation_complete": 57,
+    "citation_valid": 64,
+    "generation_complete": 64,
+    "grounded": 37,
+    "input_tokens": 101856,
+    "latency_ms": {
+      "avg": 11208.485,
+      "p50": 9894.345,
+      "p95": 19981.876
+    },
+    "n": 64,
+    "numeric_fidelity": 45,
+    "output_tokens": 39393,
+    "period_fidelity": 64,
+    "reference_answer_complete": 11,
+    "unit_currency_scale_fidelity": 61,
+    "unsupported_claim_queries": 27,
+    "unsupported_numeric_claims": 21
+  }
+}

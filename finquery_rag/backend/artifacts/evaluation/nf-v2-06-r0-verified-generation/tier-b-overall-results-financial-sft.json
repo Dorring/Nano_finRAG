@@ -1,0 +1,89 @@
+{
+  "by_route": {
+    "CALCULATION": {
+      "answer_envelope_valid": 11,
+      "citation_complete": 2,
+      "citation_valid": 9,
+      "generation_complete": 11,
+      "grounded": 0,
+      "input_tokens": 16896,
+      "latency_ms": {
+        "avg": 58279.716,
+        "p50": 55262.543,
+        "p95": 110202.925
+      },
+      "n": 11,
+      "numeric_fidelity": 6,
+      "output_tokens": 3792,
+      "period_fidelity": 11,
+      "reference_answer_complete": 0,
+      "unit_currency_scale_fidelity": 10,
+      "unsupported_claim_queries": 11,
+      "unsupported_numeric_claims": 12
+    },
+    "DIRECT": {
+      "answer_envelope_valid": 48,
+      "citation_complete": 11,
+      "citation_valid": 38,
+      "generation_complete": 48,
+      "grounded": 1,
+      "input_tokens": 60064,
+      "latency_ms": {
+        "avg": 94111.527,
+        "p50": 96483.561,
+        "p95": 109218.251
+      },
+      "n": 48,
+      "numeric_fidelity": 28,
+      "output_tokens": 22745,
+      "period_fidelity": 35,
+      "reference_answer_complete": 0,
+      "unit_currency_scale_fidelity": 44,
+      "unsupported_claim_queries": 47,
+      "unsupported_numeric_claims": 418
+    },
+    "MULTI_EVIDENCE": {
+      "answer_envelope_valid": 5,
+      "citation_complete": 3,
+      "citation_valid": 4,
+      "generation_complete": 5,
+      "grounded": 2,
+      "input_tokens": 7680,
+      "latency_ms": {
+        "avg": 81745.692,
+        "p50": 80563.671,
+        "p95": 99207.784
+      },
+      "n": 5,
+      "numeric_fidelity": 5,
+      "output_tokens": 1581,
+      "period_fidelity": 5,
+      "reference_answer_complete": 5,
+      "unit_currency_scale_fidelity": 5,
+      "unsupported_claim_queries": 3,
+      "unsupported_numeric_claims": 0
+    }
+  },
+  "n": 64,
+  "overall": {
+    "answer_envelope_valid": 64,
+    "citation_complete": 16,
+    "citation_valid": 51,
+    "generation_complete": 64,
+    "grounded": 3,
+    "input_tokens": 84640,
+    "latency_ms": {
+      "avg": 86986.854,
+      "p50": 95794.492,
+      "p95": 109218.251
+    },
+    "n": 64,
+    "numeric_fidelity": 39,
+    "output_tokens": 28118,
+    "period_fidelity": 51,
+    "reference_answer_complete": 5,
+    "unit_currency_scale_fidelity": 59,
+    "unsupported_claim_queries": 61,
+    "unsupported_numeric_claims": 430
+  }
+}

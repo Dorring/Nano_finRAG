@@ -1,0 +1,16 @@
+{
+  "gold_reads_before_prediction_seal": 0,
+  "gold_used_to_build_tier_b": true,
+  "reference_answer_in_packet": false,
+  "required": [
+    "query_id",
+    "route",
+    "evidence_items",
+    "allowed_citation_ids",
+    "validation_status",
+    "evaluation_tier",
+    "oracle_evidence"
+  ],
+  "schema": "VerifiedEvidencePacketV1",
+  "validation_status": "VERIFIED"
+}

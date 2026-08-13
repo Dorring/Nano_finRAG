@@ -1,0 +1,89 @@
+{
+  "by_route": {
+    "CALCULATION": {
+      "answer_envelope_valid": 0,
+      "citation_complete": 0,
+      "citation_valid": 0,
+      "generation_complete": 0,
+      "grounded": 0,
+      "input_tokens": 0,
+      "latency_ms": {
+        "avg": 0.0,
+        "p50": 0.0,
+        "p95": 0.0
+      },
+      "n": 0,
+      "numeric_fidelity": 0,
+      "output_tokens": 0,
+      "period_fidelity": 0,
+      "reference_answer_complete": 0,
+      "unit_currency_scale_fidelity": 0,
+      "unsupported_claim_queries": 0,
+      "unsupported_numeric_claims": 0
+    },
+    "DIRECT": {
+      "answer_envelope_valid": 48,
+      "citation_complete": 43,
+      "citation_valid": 48,
+      "generation_complete": 48,
+      "grounded": 30,
+      "input_tokens": 61763,
+      "latency_ms": {
+        "avg": 9479.129,
+        "p50": 8246.343,
+        "p95": 16852.442
+      },
+      "n": 48,
+      "numeric_fidelity": 35,
+      "output_tokens": 24839,
+      "period_fidelity": 48,
+      "reference_answer_complete": 0,
+      "unit_currency_scale_fidelity": 46,
+      "unsupported_claim_queries": 18,
+      "unsupported_numeric_claims": 13
+    },
+    "MULTI_EVIDENCE": {
+      "answer_envelope_valid": 0,
+      "citation_complete": 0,
+      "citation_valid": 0,
+      "generation_complete": 0,
+      "grounded": 0,
+      "input_tokens": 0,
+      "latency_ms": {
+        "avg": 0.0,
+        "p50": 0.0,
+        "p95": 0.0
+      },
+      "n": 0,
+      "numeric_fidelity": 0,
+      "output_tokens": 0,
+      "period_fidelity": 0,
+      "reference_answer_complete": 0,
+      "unit_currency_scale_fidelity": 0,
+      "unsupported_claim_queries": 0,
+      "unsupported_numeric_claims": 0
+    }
+  },
+  "n": 48,
+  "overall": {
+    "answer_envelope_valid": 48,
+    "citation_complete": 43,
+    "citation_valid": 48,
+    "generation_complete": 48,
+    "grounded": 30,
+    "input_tokens": 61763,
+    "latency_ms": {
+      "avg": 9479.129,
+      "p50": 8246.343,
+      "p95": 16852.442
+    },
+    "n": 48,
+    "numeric_fidelity": 35,
+    "output_tokens": 24839,
+    "period_fidelity": 48,
+    "reference_answer_complete": 0,
+    "unit_currency_scale_fidelity": 46,
+    "unsupported_claim_queries": 18,
+    "unsupported_numeric_claims": 13
+  }
+}

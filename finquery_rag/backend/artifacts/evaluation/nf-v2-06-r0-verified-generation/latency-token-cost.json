@@ -1,0 +1,46 @@
+{
+  "financial_endpoint": "http://127.0.0.1:18001/v1",
+  "financial_sft": {
+    "answer_envelope_valid": 68,
+    "citation_complete": 16,
+    "citation_valid": 55,
+    "generation_complete": 68,
+    "grounded": 3,
+    "input_tokens": 88563,
+    "latency_ms": {
+      "avg": 87002.472,
+      "p50": 95794.492,
+      "p95": 109218.251
+    },
+    "n": 68,
+    "numeric_fidelity": 42,
+    "output_tokens": 30166,
+    "period_fidelity": 55,
+    "reference_answer_complete": 5,
+    "unit_currency_scale_fidelity": 62,
+    "unsupported_claim_queries": 65,
+    "unsupported_numeric_claims": 476
+  },
+  "general": {
+    "answer_envelope_valid": 68,
+    "citation_complete": 61,
+    "citation_valid": 68,
+    "generation_complete": 68,
+    "grounded": 39,
+    "input_tokens": 105933,
+    "latency_ms": {
+      "avg": 11236.911,
+      "p50": 9894.345,
+      "p95": 21311.517
+    },
+    "n": 68,
+    "numeric_fidelity": 48,
+    "output_tokens": 41973,
+    "period_fidelity": 68,
+    "reference_answer_complete": 11,
+    "unit_currency_scale_fidelity": 64,
+    "unsupported_claim_queries": 29,
+    "unsupported_numeric_claims": 22
+  },
+  "general_endpoint_configured": true
+}

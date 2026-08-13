@@ -1,0 +1,85 @@
+{
+  "by_route": {
+    "CALCULATION": {
+      "answer_envelope_valid": 0,
+      "citation_complete": 0,
+      "citation_valid": 0,
+      "generation_complete": 0,
+      "grounded": 0,
+      "input_tokens": 0,
+      "latency_ms": {
+        "avg": 0.0,
+        "p50": 0.0,
+        "p95": 0.0
+      },
+      "n": 0,
+      "numeric_fidelity": 0,
+      "output_tokens": 0,
+      "period_fidelity": 0,
+      "unit_currency_scale_fidelity": 0,
+      "unsupported_claim_queries": 0,
+      "unsupported_numeric_claims": 0
+    },
+    "DIRECT": {
+      "answer_envelope_valid": 0,
+      "citation_complete": 0,
+      "citation_valid": 0,
+      "generation_complete": 0,
+      "grounded": 0,
+      "input_tokens": 0,
+      "latency_ms": {
+        "avg": 0.0,
+        "p50": 0.0,
+        "p95": 0.0
+      },
+      "n": 0,
+      "numeric_fidelity": 0,
+      "output_tokens": 0,
+      "period_fidelity": 0,
+      "unit_currency_scale_fidelity": 0,
+      "unsupported_claim_queries": 0,
+      "unsupported_numeric_claims": 0
+    },
+    "MULTI_EVIDENCE": {
+      "answer_envelope_valid": 3,
+      "citation_complete": 2,
+      "citation_valid": 2,
+      "generation_complete": 3,
+      "grounded": 1,
+      "input_tokens": 4608,
+      "latency_ms": {
+        "avg": 86360.465,
+        "p50": 80563.671,
+        "p95": 99207.784
+      },
+      "n": 3,
+      "numeric_fidelity": 3,
+      "output_tokens": 557,
+      "period_fidelity": 3,
+      "unit_currency_scale_fidelity": 3,
+      "unsupported_claim_queries": 2,
+      "unsupported_numeric_claims": 0
+    }
+  },
+  "n": 3,
+  "overall": {
+    "answer_envelope_valid": 3,
+    "citation_complete": 2,
+    "citation_valid": 2,
+    "generation_complete": 3,
+    "grounded": 1,
+    "input_tokens": 4608,
+    "latency_ms": {
+      "avg": 86360.465,
+      "p50": 80563.671,
+      "p95": 99207.784
+    },
+    "n": 3,
+    "numeric_fidelity": 3,
+    "output_tokens": 557,
+    "period_fidelity": 3,
+    "unit_currency_scale_fidelity": 3,
+    "unsupported_claim_queries": 2,
+    "unsupported_numeric_claims": 0
+  }
+}
