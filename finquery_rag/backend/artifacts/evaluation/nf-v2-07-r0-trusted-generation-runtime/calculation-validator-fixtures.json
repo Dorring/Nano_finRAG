@@ -1,0 +1,67 @@
+{
+  "cases": {
+    "canonical_mutated": {
+      "failure_codes": [
+        "GV3_NUMERIC_FIDELITY",
+        "GV6_CALCULATION_RESULT_PRESERVATION"
+      ],
+      "status": "HARD_FAIL"
+    },
+    "canonical_valid": {
+      "failure_codes": [],
+      "status": "PASS"
+    },
+    "currency_mutated": {
+      "failure_codes": [
+        "GV5_UNIT_CURRENCY_SCALE_FIDELITY"
+      ],
+      "status": "HARD_FAIL"
+    },
+    "period_mutated": {
+      "failure_codes": [
+        "GV4_PERIOD_FIDELITY",
+        "GV6_CALCULATION_RESULT_PRESERVATION"
+      ],
+      "status": "HARD_FAIL"
+    },
+    "scale_mutated": {
+      "failure_codes": [
+        "GV5_UNIT_CURRENCY_SCALE_FIDELITY"
+      ],
+      "status": "HARD_FAIL"
+    },
+    "unit_mutated": {
+      "failure_codes": [
+        "GV5_UNIT_CURRENCY_SCALE_FIDELITY"
+      ],
+      "status": "HARD_FAIL"
+    }
+  },
+  "packet": {
+    "allowed_citation_ids": [
+      "EV-1",
+      "EV-2"
+    ],
+    "calculation_result": {
+      "currency": "USD",
+      "period": "FY2025",
+      "scale": "1",
+      "status": "executed",
+      "unit": "USD",
+      "value": "10"
+    },
+    "evidence_items": [
+      {
+        "citation_id": "EV-1",
+        "currency": "USD",
+        "period": "FY2025",
+        "scale": "1",
+        "unit": "USD",
+        "value": "100"
+      }
+    ],
+    "query_id": "fixture_calc",
+    "route": "CALCULATION",
+    "validation_status": "VERIFIED"
+  }
+}

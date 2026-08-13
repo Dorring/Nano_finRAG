@@ -1,0 +1,9 @@
+{
+  "action": "NO_RECOVERY",
+  "fallback_budget": 1,
+  "fallback_provider": null,
+  "generation_attempt_budget": 2,
+  "primary_provider": "primary",
+  "recovery_attempt_budget": 1,
+  "same_provider_repair_enabled": false
+}

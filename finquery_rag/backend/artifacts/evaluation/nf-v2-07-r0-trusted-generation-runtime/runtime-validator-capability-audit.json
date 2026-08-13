@@ -1,0 +1,17 @@
+{
+  "existing_validators": {
+    "calculation_validator": "RV0_RUNTIME_DETERMINISTIC",
+    "citation_validator": "RV0_RUNTIME_DETERMINISTIC",
+    "gold_review_scoring": "RV4_REQUIRES_GOLD",
+    "numeric_claim_validator": "RV0_RUNTIME_DETERMINISTIC",
+    "reference_answer_scoring": "RV2_EVALUATION_ONLY",
+    "response_validator": "RV0_RUNTIME_DETERMINISTIC_COMPOSITE",
+    "unit_period_validator": "RV0_RUNTIME_DETERMINISTIC",
+    "unsupported_claim_validator": "RV0_RUNTIME_DETERMINISTIC_PARTIAL"
+  },
+  "runtime_validator": {
+    "class": "RV0_RUNTIME_DETERMINISTIC",
+    "coverage_limit": "arbitrary semantic additions are not fully decidable from packet text",
+    "reference_or_gold_reads": 0
+  }
+}

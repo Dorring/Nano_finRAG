@@ -1,0 +1,23 @@
+{
+  "contract": "GeneratorProviderV1",
+  "functional_in_r0": [
+    "mock",
+    "replay"
+  ],
+  "model_calls": 0,
+  "provider_metadata": [
+    "provider_id",
+    "model_id",
+    "revision",
+    "attempt_id",
+    "latency",
+    "input_token_count",
+    "output_token_count"
+  ],
+  "providers": [
+    "general",
+    "local_financial",
+    "mock",
+    "replay"
+  ]
+}

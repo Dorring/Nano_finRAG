@@ -1,0 +1,61 @@
+{
+  "definition": "post-hoc comparison to sealed V2-06 metrics; not runtime input",
+  "models": {
+    "financial_tier_a": {
+      "n": 4,
+      "over_rejection_rate": null,
+      "runtime_hard_fail": 1,
+      "runtime_pass": 0,
+      "runtime_soft_fail": 3,
+      "safe_rejected": 0,
+      "safe_release_precision": null,
+      "safe_released": 0,
+      "unsafe_caught": 4,
+      "unsafe_missed": 0,
+      "unsafe_rejection_recall": 1.0,
+      "unsafe_total": 4
+    },
+    "financial_tier_b": {
+      "n": 64,
+      "over_rejection_rate": 0.0,
+      "runtime_hard_fail": 46,
+      "runtime_pass": 3,
+      "runtime_soft_fail": 15,
+      "safe_rejected": 0,
+      "safe_release_precision": 1.0,
+      "safe_released": 3,
+      "unsafe_caught": 61,
+      "unsafe_missed": 0,
+      "unsafe_rejection_recall": 1.0,
+      "unsafe_total": 61
+    },
+    "general_tier_a": {
+      "n": 4,
+      "over_rejection_rate": 0.0,
+      "runtime_hard_fail": 1,
+      "runtime_pass": 3,
+      "runtime_soft_fail": 0,
+      "safe_rejected": 0,
+      "safe_release_precision": 0.6666666666666666,
+      "safe_released": 2,
+      "unsafe_caught": 1,
+      "unsafe_missed": 1,
+      "unsafe_rejection_recall": 0.5,
+      "unsafe_total": 2
+    },
+    "general_tier_b": {
+      "n": 64,
+      "over_rejection_rate": 0.10810810810810811,
+      "runtime_hard_fail": 18,
+      "runtime_pass": 41,
+      "runtime_soft_fail": 5,
+      "safe_rejected": 4,
+      "safe_release_precision": 0.8048780487804879,
+      "safe_released": 33,
+      "unsafe_caught": 19,
+      "unsafe_missed": 8,
+      "unsafe_rejection_recall": 0.7037037037037037,
+      "unsafe_total": 27
+    }
+  }
+}

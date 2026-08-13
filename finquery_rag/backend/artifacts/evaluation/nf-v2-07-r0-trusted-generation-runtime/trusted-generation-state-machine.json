@@ -1,0 +1,19 @@
+{
+  "fallback_budget": 1,
+  "generation_attempt_budget": 2,
+  "malformed_output_release": false,
+  "provider_exception_release": false,
+  "states": [
+    "READY_FOR_GENERATION",
+    "FIRST_PASS_GENERATED",
+    "FIRST_PASS_VALIDATED",
+    "RECOVERY_REQUIRED",
+    "RECOVERY_GENERATED",
+    "RECOVERY_VALIDATED",
+    "RELEASED",
+    "ABSTAINED",
+    "PROVIDER_ERROR"
+  ],
+  "timeout_release": false,
+  "validation_failure_release": false
+}

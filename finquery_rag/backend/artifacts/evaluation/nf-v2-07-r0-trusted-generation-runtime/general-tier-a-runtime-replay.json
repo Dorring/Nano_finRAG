@@ -1,0 +1,522 @@
+{
+  "evaluation_labels_loaded": true,
+  "model_calls": 0,
+  "model_id": "qwen3.7-plus",
+  "n": 4,
+  "over_rejection_rate": 0.0,
+  "packet_set_sha256": "0cfe304712c0c1efe5e6c2ae3cbedda2fa4d1b38b9b5621e3adbc16880be3be3",
+  "provider_calls": 4,
+  "provider_errors": 0,
+  "reference_reads_before_prediction_seal": 0,
+  "retrieval_calls": 0,
+  "rows": [
+    {
+      "packet_sha256": "763d804d43a0fb0dbb8c1cdb374ac76b458eb9ad45501dd15bf5746c6d5eddd5",
+      "query_id": "nvda_fy2025_004",
+      "route": "DIRECT",
+      "runtime": {
+        "answer_envelope": {
+          "answer_text": "In FY2025, Data Center revenue was 115,186 (scale: 1,000,000) [EV-1].",
+          "attempt_index": 0,
+          "citation_ids": [
+            "EV-1"
+          ],
+          "generation_status": "complete",
+          "generator_model": "qwen3.7-plus",
+          "generator_provider": "replay",
+          "metadata": {},
+          "query_id": "nvda_fy2025_004",
+          "route": "DIRECT"
+        },
+        "attempts": [
+          {
+            "answer_envelope": {
+              "answer_text": "In FY2025, Data Center revenue was 115,186 (scale: 1,000,000) [EV-1].",
+              "attempt_index": 0,
+              "citation_ids": [
+                "EV-1"
+              ],
+              "generation_status": "complete",
+              "generator_model": "qwen3.7-plus",
+              "generator_provider": "replay",
+              "metadata": {},
+              "query_id": "nvda_fy2025_004",
+              "route": "DIRECT"
+            },
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.15782698756083846,
+            "model_id": "qwen3.7-plus",
+            "output_token_count": null,
+            "provider_id": "replay",
+            "query_id": "nvda_fy2025_004",
+            "recovery_reason": null,
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [
+                "GV3_NUMERIC_FIDELITY"
+              ],
+              "findings": [
+                {
+                  "code": "GV3_NUMERIC_FIDELITY",
+                  "message": "unsupported material number(s): ['1000000']",
+                  "severity": "HARD_FAIL"
+                }
+              ],
+              "status": "HARD_FAIL"
+            }
+          }
+        ],
+        "recovery_action": "NO_RECOVERY",
+        "released": false,
+        "state": "ABSTAINED",
+        "trace": [
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.15782698756083846,
+            "provider": "replay",
+            "query_id": "nvda_fy2025_004",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "FIRST_PASS_GENERATED",
+            "validation_failure_codes": [],
+            "validation_status": null
+          },
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.15782698756083846,
+            "provider": "replay",
+            "query_id": "nvda_fy2025_004",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_failure_codes": [
+              "GV3_NUMERIC_FIDELITY"
+            ],
+            "validation_status": "HARD_FAIL"
+          },
+          {
+            "attempt_index": null,
+            "latency_ms": null,
+            "provider": null,
+            "query_id": "nvda_fy2025_004",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "ABSTAINED",
+            "validation_failure_codes": [
+              "GV3_NUMERIC_FIDELITY"
+            ],
+            "validation_status": "HARD_FAIL"
+          }
+        ],
+        "validation_report": {
+          "checked_dimensions": [
+            "GV0_ENVELOPE_SCHEMA",
+            "GV1_CITATION_ID_VALIDITY",
+            "GV2_CITATION_REQUIREMENT",
+            "GV3_NUMERIC_FIDELITY",
+            "GV4_PERIOD_FIDELITY",
+            "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+            "GV6_CALCULATION_RESULT_PRESERVATION",
+            "GV7_UNKNOWN_CITATION",
+            "GV8_STRUCTURE"
+          ],
+          "failure_codes": [
+            "GV3_NUMERIC_FIDELITY"
+          ],
+          "findings": [
+            {
+              "code": "GV3_NUMERIC_FIDELITY",
+              "message": "unsupported material number(s): ['1000000']",
+              "severity": "HARD_FAIL"
+            }
+          ],
+          "status": "HARD_FAIL"
+        }
+      }
+    },
+    {
+      "packet_sha256": "9f3f25e8be4572e3b2d045b5f1a9d7e5e1453e92704f05cf387270dc3fd2a2f9",
+      "query_id": "nvda_fy2025_005",
+      "route": "DIRECT",
+      "runtime": {
+        "answer_envelope": {
+          "answer_text": "Automotive revenue in FY2025 was 1,694 million [EV-1].",
+          "attempt_index": 0,
+          "citation_ids": [
+            "EV-1"
+          ],
+          "generation_status": "complete",
+          "generator_model": "qwen3.7-plus",
+          "generator_provider": "replay",
+          "metadata": {},
+          "query_id": "nvda_fy2025_005",
+          "route": "DIRECT"
+        },
+        "attempts": [
+          {
+            "answer_envelope": {
+              "answer_text": "Automotive revenue in FY2025 was 1,694 million [EV-1].",
+              "attempt_index": 0,
+              "citation_ids": [
+                "EV-1"
+              ],
+              "generation_status": "complete",
+              "generator_model": "qwen3.7-plus",
+              "generator_provider": "replay",
+              "metadata": {},
+              "query_id": "nvda_fy2025_005",
+              "route": "DIRECT"
+            },
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.06363599095493555,
+            "model_id": "qwen3.7-plus",
+            "output_token_count": null,
+            "provider_id": "replay",
+            "query_id": "nvda_fy2025_005",
+            "recovery_reason": null,
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [],
+              "findings": [],
+              "status": "PASS"
+            }
+          }
+        ],
+        "recovery_action": "NO_RECOVERY",
+        "released": true,
+        "state": "RELEASED",
+        "trace": [
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.06363599095493555,
+            "provider": "replay",
+            "query_id": "nvda_fy2025_005",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "FIRST_PASS_GENERATED",
+            "validation_failure_codes": [],
+            "validation_status": null
+          },
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.06363599095493555,
+            "provider": "replay",
+            "query_id": "nvda_fy2025_005",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_failure_codes": [],
+            "validation_status": "PASS"
+          },
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.06363599095493555,
+            "provider": "replay",
+            "query_id": "nvda_fy2025_005",
+            "recovery_action": "NO_RECOVERY",
+            "released": true,
+            "route": "DIRECT",
+            "terminal_state": "RELEASED",
+            "validation_failure_codes": [],
+            "validation_status": "PASS"
+          }
+        ],
+        "validation_report": {
+          "checked_dimensions": [
+            "GV0_ENVELOPE_SCHEMA",
+            "GV1_CITATION_ID_VALIDITY",
+            "GV2_CITATION_REQUIREMENT",
+            "GV3_NUMERIC_FIDELITY",
+            "GV4_PERIOD_FIDELITY",
+            "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+            "GV6_CALCULATION_RESULT_PRESERVATION",
+            "GV7_UNKNOWN_CITATION",
+            "GV8_STRUCTURE"
+          ],
+          "failure_codes": [],
+          "findings": [],
+          "status": "PASS"
+        }
+      }
+    },
+    {
+      "packet_sha256": "969e4b627bde9d041af8396ce85be2c4484c394dcb8a4c2425daca9010fa8b5e",
+      "query_id": "v_fy2025_002",
+      "route": "DIRECT",
+      "runtime": {
+        "answer_envelope": {
+          "answer_text": "The total volume reported by Visa in FY2025 was 16.7 [EV-1].",
+          "attempt_index": 0,
+          "citation_ids": [
+            "EV-1"
+          ],
+          "generation_status": "complete",
+          "generator_model": "qwen3.7-plus",
+          "generator_provider": "replay",
+          "metadata": {},
+          "query_id": "v_fy2025_002",
+          "route": "DIRECT"
+        },
+        "attempts": [
+          {
+            "answer_envelope": {
+              "answer_text": "The total volume reported by Visa in FY2025 was 16.7 [EV-1].",
+              "attempt_index": 0,
+              "citation_ids": [
+                "EV-1"
+              ],
+              "generation_status": "complete",
+              "generator_model": "qwen3.7-plus",
+              "generator_provider": "replay",
+              "metadata": {},
+              "query_id": "v_fy2025_002",
+              "route": "DIRECT"
+            },
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.04876300226897001,
+            "model_id": "qwen3.7-plus",
+            "output_token_count": null,
+            "provider_id": "replay",
+            "query_id": "v_fy2025_002",
+            "recovery_reason": null,
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [],
+              "findings": [],
+              "status": "PASS"
+            }
+          }
+        ],
+        "recovery_action": "NO_RECOVERY",
+        "released": true,
+        "state": "RELEASED",
+        "trace": [
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.04876300226897001,
+            "provider": "replay",
+            "query_id": "v_fy2025_002",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "FIRST_PASS_GENERATED",
+            "validation_failure_codes": [],
+            "validation_status": null
+          },
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.04876300226897001,
+            "provider": "replay",
+            "query_id": "v_fy2025_002",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_failure_codes": [],
+            "validation_status": "PASS"
+          },
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.04876300226897001,
+            "provider": "replay",
+            "query_id": "v_fy2025_002",
+            "recovery_action": "NO_RECOVERY",
+            "released": true,
+            "route": "DIRECT",
+            "terminal_state": "RELEASED",
+            "validation_failure_codes": [],
+            "validation_status": "PASS"
+          }
+        ],
+        "validation_report": {
+          "checked_dimensions": [
+            "GV0_ENVELOPE_SCHEMA",
+            "GV1_CITATION_ID_VALIDITY",
+            "GV2_CITATION_REQUIREMENT",
+            "GV3_NUMERIC_FIDELITY",
+            "GV4_PERIOD_FIDELITY",
+            "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+            "GV6_CALCULATION_RESULT_PRESERVATION",
+            "GV7_UNKNOWN_CITATION",
+            "GV8_STRUCTURE"
+          ],
+          "failure_codes": [],
+          "findings": [],
+          "status": "PASS"
+        }
+      }
+    },
+    {
+      "packet_sha256": "db5b7d7d729d88517486ba2d041a175030893cd3c10c942c8a4ed032c75cb408",
+      "query_id": "v_fy2025_003",
+      "route": "DIRECT",
+      "runtime": {
+        "answer_envelope": {
+          "answer_text": "In FY2025, 257.5 transactions were processed on Visa's networks [EV-1].",
+          "attempt_index": 0,
+          "citation_ids": [
+            "EV-1"
+          ],
+          "generation_status": "complete",
+          "generator_model": "qwen3.7-plus",
+          "generator_provider": "replay",
+          "metadata": {},
+          "query_id": "v_fy2025_003",
+          "route": "DIRECT"
+        },
+        "attempts": [
+          {
+            "answer_envelope": {
+              "answer_text": "In FY2025, 257.5 transactions were processed on Visa's networks [EV-1].",
+              "attempt_index": 0,
+              "citation_ids": [
+                "EV-1"
+              ],
+              "generation_status": "complete",
+              "generator_model": "qwen3.7-plus",
+              "generator_provider": "replay",
+              "metadata": {},
+              "query_id": "v_fy2025_003",
+              "route": "DIRECT"
+            },
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.04280399298295379,
+            "model_id": "qwen3.7-plus",
+            "output_token_count": null,
+            "provider_id": "replay",
+            "query_id": "v_fy2025_003",
+            "recovery_reason": null,
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [],
+              "findings": [],
+              "status": "PASS"
+            }
+          }
+        ],
+        "recovery_action": "NO_RECOVERY",
+        "released": true,
+        "state": "RELEASED",
+        "trace": [
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.04280399298295379,
+            "provider": "replay",
+            "query_id": "v_fy2025_003",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "FIRST_PASS_GENERATED",
+            "validation_failure_codes": [],
+            "validation_status": null
+          },
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.04280399298295379,
+            "provider": "replay",
+            "query_id": "v_fy2025_003",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_failure_codes": [],
+            "validation_status": "PASS"
+          },
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.04280399298295379,
+            "provider": "replay",
+            "query_id": "v_fy2025_003",
+            "recovery_action": "NO_RECOVERY",
+            "released": true,
+            "route": "DIRECT",
+            "terminal_state": "RELEASED",
+            "validation_failure_codes": [],
+            "validation_status": "PASS"
+          }
+        ],
+        "validation_report": {
+          "checked_dimensions": [
+            "GV0_ENVELOPE_SCHEMA",
+            "GV1_CITATION_ID_VALIDITY",
+            "GV2_CITATION_REQUIREMENT",
+            "GV3_NUMERIC_FIDELITY",
+            "GV4_PERIOD_FIDELITY",
+            "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+            "GV6_CALCULATION_RESULT_PRESERVATION",
+            "GV7_UNKNOWN_CITATION",
+            "GV8_STRUCTURE"
+          ],
+          "failure_codes": [],
+          "findings": [],
+          "status": "PASS"
+        }
+      }
+    }
+  ],
+  "runtime_hard_fail": 1,
+  "runtime_pass": 3,
+  "runtime_soft_fail": 0,
+  "safe_rejected": 0,
+  "safe_release_precision": 0.6666666666666666,
+  "safe_released": 2,
+  "safe_total": 2,
+  "sealed": true,
+  "unsafe_caught": 1,
+  "unsafe_missed": 1,
+  "unsafe_rejection_recall": 0.5,
+  "unsafe_total": 2
+}

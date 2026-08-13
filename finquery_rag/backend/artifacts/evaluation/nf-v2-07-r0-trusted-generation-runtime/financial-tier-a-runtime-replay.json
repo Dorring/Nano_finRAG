@@ -1,0 +1,580 @@
+{
+  "evaluation_labels_loaded": true,
+  "model_calls": 0,
+  "model_id": "finquery-finance-v2-lr010-150",
+  "n": 4,
+  "over_rejection_rate": null,
+  "packet_set_sha256": "0cfe304712c0c1efe5e6c2ae3cbedda2fa4d1b38b9b5621e3adbc16880be3be3",
+  "provider_calls": 4,
+  "provider_errors": 0,
+  "reference_reads_before_prediction_seal": 0,
+  "retrieval_calls": 0,
+  "rows": [
+    {
+      "packet_sha256": "763d804d43a0fb0dbb8c1cdb374ac76b458eb9ad45501dd15bf5746c6d5eddd5",
+      "query_id": "nvda_fy2025_004",
+      "route": "DIRECT",
+      "runtime": {
+        "answer_envelope": {
+          "answer_text": "The provided VerifiedEvidencePacket contains the following information:\n\n* The packet contains a single claim, which is supported by the packet.\n* The packet contains a single citation identifier, which is supported by the packet.\n* The packet contains a single number, which is supported by the packet.\n* The packet contains a single currency, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single currency, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The",
+          "attempt_index": 0,
+          "citation_ids": [],
+          "generation_status": "complete",
+          "generator_model": "finquery-finance-v2-lr010-150",
+          "generator_provider": "replay",
+          "metadata": {},
+          "query_id": "nvda_fy2025_004",
+          "route": "DIRECT"
+        },
+        "attempts": [
+          {
+            "answer_envelope": {
+              "answer_text": "The provided VerifiedEvidencePacket contains the following information:\n\n* The packet contains a single claim, which is supported by the packet.\n* The packet contains a single citation identifier, which is supported by the packet.\n* The packet contains a single number, which is supported by the packet.\n* The packet contains a single currency, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single currency, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The packet contains a single unit, which is supported by the packet.\n* The",
+              "attempt_index": 0,
+              "citation_ids": [],
+              "generation_status": "complete",
+              "generator_model": "finquery-finance-v2-lr010-150",
+              "generator_provider": "replay",
+              "metadata": {},
+              "query_id": "nvda_fy2025_004",
+              "route": "DIRECT"
+            },
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.4699359997175634,
+            "model_id": "finquery-finance-v2-lr010-150",
+            "output_token_count": null,
+            "provider_id": "replay",
+            "query_id": "nvda_fy2025_004",
+            "recovery_reason": null,
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [
+                "GV2_CITATION_REQUIREMENT"
+              ],
+              "findings": [
+                {
+                  "code": "GV2_CITATION_REQUIREMENT",
+                  "message": "factual answer has no supplied citation ID",
+                  "severity": "SOFT_FAIL"
+                }
+              ],
+              "status": "SOFT_FAIL"
+            }
+          }
+        ],
+        "recovery_action": "NO_RECOVERY",
+        "released": false,
+        "state": "ABSTAINED",
+        "trace": [
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.4699359997175634,
+            "provider": "replay",
+            "query_id": "nvda_fy2025_004",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "FIRST_PASS_GENERATED",
+            "validation_failure_codes": [],
+            "validation_status": null
+          },
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.4699359997175634,
+            "provider": "replay",
+            "query_id": "nvda_fy2025_004",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_failure_codes": [
+              "GV2_CITATION_REQUIREMENT"
+            ],
+            "validation_status": "SOFT_FAIL"
+          },
+          {
+            "attempt_index": null,
+            "latency_ms": null,
+            "provider": null,
+            "query_id": "nvda_fy2025_004",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "ABSTAINED",
+            "validation_failure_codes": [
+              "GV2_CITATION_REQUIREMENT"
+            ],
+            "validation_status": "SOFT_FAIL"
+          }
+        ],
+        "validation_report": {
+          "checked_dimensions": [
+            "GV0_ENVELOPE_SCHEMA",
+            "GV1_CITATION_ID_VALIDITY",
+            "GV2_CITATION_REQUIREMENT",
+            "GV3_NUMERIC_FIDELITY",
+            "GV4_PERIOD_FIDELITY",
+            "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+            "GV6_CALCULATION_RESULT_PRESERVATION",
+            "GV7_UNKNOWN_CITATION",
+            "GV8_STRUCTURE"
+          ],
+          "failure_codes": [
+            "GV2_CITATION_REQUIREMENT"
+          ],
+          "findings": [
+            {
+              "code": "GV2_CITATION_REQUIREMENT",
+              "message": "factual answer has no supplied citation ID",
+              "severity": "SOFT_FAIL"
+            }
+          ],
+          "status": "SOFT_FAIL"
+        }
+      }
+    },
+    {
+      "packet_sha256": "9f3f25e8be4572e3b2d045b5f1a9d7e5e1453e92704f05cf387270dc3fd2a2f9",
+      "query_id": "nvda_fy2025_005",
+      "route": "DIRECT",
+      "runtime": {
+        "answer_envelope": {
+          "answer_text": "The provided VerifiedEvidencePacket contains the following information:\n\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single",
+          "attempt_index": 0,
+          "citation_ids": [],
+          "generation_status": "complete",
+          "generator_model": "finquery-finance-v2-lr010-150",
+          "generator_provider": "replay",
+          "metadata": {},
+          "query_id": "nvda_fy2025_005",
+          "route": "DIRECT"
+        },
+        "attempts": [
+          {
+            "answer_envelope": {
+              "answer_text": "The provided VerifiedEvidencePacket contains the following information:\n\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single sentence: \"In the Revenue by End Market table, what was Automotive revenue in FY2025?\"\n* The packet contains a single",
+              "attempt_index": 0,
+              "citation_ids": [],
+              "generation_status": "complete",
+              "generator_model": "finquery-finance-v2-lr010-150",
+              "generator_provider": "replay",
+              "metadata": {},
+              "query_id": "nvda_fy2025_005",
+              "route": "DIRECT"
+            },
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.39906002348288894,
+            "model_id": "finquery-finance-v2-lr010-150",
+            "output_token_count": null,
+            "provider_id": "replay",
+            "query_id": "nvda_fy2025_005",
+            "recovery_reason": null,
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [
+                "GV2_CITATION_REQUIREMENT"
+              ],
+              "findings": [
+                {
+                  "code": "GV2_CITATION_REQUIREMENT",
+                  "message": "factual answer has no supplied citation ID",
+                  "severity": "SOFT_FAIL"
+                }
+              ],
+              "status": "SOFT_FAIL"
+            }
+          }
+        ],
+        "recovery_action": "NO_RECOVERY",
+        "released": false,
+        "state": "ABSTAINED",
+        "trace": [
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.39906002348288894,
+            "provider": "replay",
+            "query_id": "nvda_fy2025_005",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "FIRST_PASS_GENERATED",
+            "validation_failure_codes": [],
+            "validation_status": null
+          },
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.39906002348288894,
+            "provider": "replay",
+            "query_id": "nvda_fy2025_005",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_failure_codes": [
+              "GV2_CITATION_REQUIREMENT"
+            ],
+            "validation_status": "SOFT_FAIL"
+          },
+          {
+            "attempt_index": null,
+            "latency_ms": null,
+            "provider": null,
+            "query_id": "nvda_fy2025_005",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "ABSTAINED",
+            "validation_failure_codes": [
+              "GV2_CITATION_REQUIREMENT"
+            ],
+            "validation_status": "SOFT_FAIL"
+          }
+        ],
+        "validation_report": {
+          "checked_dimensions": [
+            "GV0_ENVELOPE_SCHEMA",
+            "GV1_CITATION_ID_VALIDITY",
+            "GV2_CITATION_REQUIREMENT",
+            "GV3_NUMERIC_FIDELITY",
+            "GV4_PERIOD_FIDELITY",
+            "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+            "GV6_CALCULATION_RESULT_PRESERVATION",
+            "GV7_UNKNOWN_CITATION",
+            "GV8_STRUCTURE"
+          ],
+          "failure_codes": [
+            "GV2_CITATION_REQUIREMENT"
+          ],
+          "findings": [
+            {
+              "code": "GV2_CITATION_REQUIREMENT",
+              "message": "factual answer has no supplied citation ID",
+              "severity": "SOFT_FAIL"
+            }
+          ],
+          "status": "SOFT_FAIL"
+        }
+      }
+    },
+    {
+      "packet_sha256": "969e4b627bde9d041af8396ce85be2c4484c394dcb8a4c2425daca9010fa8b5e",
+      "query_id": "v_fy2025_002",
+      "route": "DIRECT",
+      "runtime": {
+        "answer_envelope": {
+          "answer_text": "The question asks for the total volume reported by Visa in FY2025. To answer this question, we can use the following information: \n\nVisa reported a total volume of $16.7 billion in FY2025. This is the total volume reported by Visa in FY2025. The question asks for the total volume reported by Visa in FY2025, which is the sum of the total volume reported by Visa in FY2025 and the total volume reported by Visa in FY2025. \n\nTo find the total volume reported by Visa in FY2025, we can use the following formula: \n\nTotal volume = Total volume + Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume",
+          "attempt_index": 0,
+          "citation_ids": [],
+          "generation_status": "complete",
+          "generator_model": "finquery-finance-v2-lr010-150",
+          "generator_provider": "replay",
+          "metadata": {},
+          "query_id": "v_fy2025_002",
+          "route": "DIRECT"
+        },
+        "attempts": [
+          {
+            "answer_envelope": {
+              "answer_text": "The question asks for the total volume reported by Visa in FY2025. To answer this question, we can use the following information: \n\nVisa reported a total volume of $16.7 billion in FY2025. This is the total volume reported by Visa in FY2025. The question asks for the total volume reported by Visa in FY2025, which is the sum of the total volume reported by Visa in FY2025 and the total volume reported by Visa in FY2025. \n\nTo find the total volume reported by Visa in FY2025, we can use the following formula: \n\nTotal volume = Total volume + Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume - Total volume",
+              "attempt_index": 0,
+              "citation_ids": [],
+              "generation_status": "complete",
+              "generator_model": "finquery-finance-v2-lr010-150",
+              "generator_provider": "replay",
+              "metadata": {},
+              "query_id": "v_fy2025_002",
+              "route": "DIRECT"
+            },
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.41790795512497425,
+            "model_id": "finquery-finance-v2-lr010-150",
+            "output_token_count": null,
+            "provider_id": "replay",
+            "query_id": "v_fy2025_002",
+            "recovery_reason": null,
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [
+                "GV2_CITATION_REQUIREMENT"
+              ],
+              "findings": [
+                {
+                  "code": "GV2_CITATION_REQUIREMENT",
+                  "message": "factual answer has no supplied citation ID",
+                  "severity": "SOFT_FAIL"
+                }
+              ],
+              "status": "SOFT_FAIL"
+            }
+          }
+        ],
+        "recovery_action": "NO_RECOVERY",
+        "released": false,
+        "state": "ABSTAINED",
+        "trace": [
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.41790795512497425,
+            "provider": "replay",
+            "query_id": "v_fy2025_002",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "FIRST_PASS_GENERATED",
+            "validation_failure_codes": [],
+            "validation_status": null
+          },
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.41790795512497425,
+            "provider": "replay",
+            "query_id": "v_fy2025_002",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_failure_codes": [
+              "GV2_CITATION_REQUIREMENT"
+            ],
+            "validation_status": "SOFT_FAIL"
+          },
+          {
+            "attempt_index": null,
+            "latency_ms": null,
+            "provider": null,
+            "query_id": "v_fy2025_002",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "ABSTAINED",
+            "validation_failure_codes": [
+              "GV2_CITATION_REQUIREMENT"
+            ],
+            "validation_status": "SOFT_FAIL"
+          }
+        ],
+        "validation_report": {
+          "checked_dimensions": [
+            "GV0_ENVELOPE_SCHEMA",
+            "GV1_CITATION_ID_VALIDITY",
+            "GV2_CITATION_REQUIREMENT",
+            "GV3_NUMERIC_FIDELITY",
+            "GV4_PERIOD_FIDELITY",
+            "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+            "GV6_CALCULATION_RESULT_PRESERVATION",
+            "GV7_UNKNOWN_CITATION",
+            "GV8_STRUCTURE"
+          ],
+          "failure_codes": [
+            "GV2_CITATION_REQUIREMENT"
+          ],
+          "findings": [
+            {
+              "code": "GV2_CITATION_REQUIREMENT",
+              "message": "factual answer has no supplied citation ID",
+              "severity": "SOFT_FAIL"
+            }
+          ],
+          "status": "SOFT_FAIL"
+        }
+      }
+    },
+    {
+      "packet_sha256": "db5b7d7d729d88517486ba2d041a175030893cd3c10c942c8a4ed032c75cb408",
+      "query_id": "v_fy2025_003",
+      "route": "DIRECT",
+      "runtime": {
+        "answer_envelope": {
+          "answer_text": "VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket",
+          "attempt_index": 0,
+          "citation_ids": [],
+          "generation_status": "complete",
+          "generator_model": "finquery-finance-v2-lr010-150",
+          "generator_provider": "replay",
+          "metadata": {},
+          "query_id": "v_fy2025_003",
+          "route": "DIRECT"
+        },
+        "attempts": [
+          {
+            "answer_envelope": {
+              "answer_text": "VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket: 1.0 VerifiedEvidencePacket",
+              "attempt_index": 0,
+              "citation_ids": [],
+              "generation_status": "complete",
+              "generator_model": "finquery-finance-v2-lr010-150",
+              "generator_provider": "replay",
+              "metadata": {},
+              "query_id": "v_fy2025_003",
+              "route": "DIRECT"
+            },
+            "attempt_index": 0,
+            "input_token_count": null,
+            "latency_ms": 0.23919902741909027,
+            "model_id": "finquery-finance-v2-lr010-150",
+            "output_token_count": null,
+            "provider_id": "replay",
+            "query_id": "v_fy2025_003",
+            "recovery_reason": null,
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_report": {
+              "checked_dimensions": [
+                "GV0_ENVELOPE_SCHEMA",
+                "GV1_CITATION_ID_VALIDITY",
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY",
+                "GV4_PERIOD_FIDELITY",
+                "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+                "GV6_CALCULATION_RESULT_PRESERVATION",
+                "GV7_UNKNOWN_CITATION",
+                "GV8_STRUCTURE"
+              ],
+              "failure_codes": [
+                "GV2_CITATION_REQUIREMENT",
+                "GV3_NUMERIC_FIDELITY"
+              ],
+              "findings": [
+                {
+                  "code": "GV2_CITATION_REQUIREMENT",
+                  "message": "factual answer has no supplied citation ID",
+                  "severity": "SOFT_FAIL"
+                },
+                {
+                  "code": "GV3_NUMERIC_FIDELITY",
+                  "message": "unsupported material number(s): ['1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0']",
+                  "severity": "HARD_FAIL"
+                }
+              ],
+              "status": "HARD_FAIL"
+            }
+          }
+        ],
+        "recovery_action": "NO_RECOVERY",
+        "released": false,
+        "state": "ABSTAINED",
+        "trace": [
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.23919902741909027,
+            "provider": "replay",
+            "query_id": "v_fy2025_003",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "FIRST_PASS_GENERATED",
+            "validation_failure_codes": [],
+            "validation_status": null
+          },
+          {
+            "attempt_index": 0,
+            "latency_ms": 0.23919902741909027,
+            "provider": "replay",
+            "query_id": "v_fy2025_003",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "FIRST_PASS_VALIDATED",
+            "validation_failure_codes": [
+              "GV2_CITATION_REQUIREMENT",
+              "GV3_NUMERIC_FIDELITY"
+            ],
+            "validation_status": "HARD_FAIL"
+          },
+          {
+            "attempt_index": null,
+            "latency_ms": null,
+            "provider": null,
+            "query_id": "v_fy2025_003",
+            "recovery_action": "NO_RECOVERY",
+            "released": false,
+            "route": "DIRECT",
+            "terminal_state": "ABSTAINED",
+            "validation_failure_codes": [
+              "GV2_CITATION_REQUIREMENT",
+              "GV3_NUMERIC_FIDELITY"
+            ],
+            "validation_status": "HARD_FAIL"
+          }
+        ],
+        "validation_report": {
+          "checked_dimensions": [
+            "GV0_ENVELOPE_SCHEMA",
+            "GV1_CITATION_ID_VALIDITY",
+            "GV2_CITATION_REQUIREMENT",
+            "GV3_NUMERIC_FIDELITY",
+            "GV4_PERIOD_FIDELITY",
+            "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+            "GV6_CALCULATION_RESULT_PRESERVATION",
+            "GV7_UNKNOWN_CITATION",
+            "GV8_STRUCTURE"
+          ],
+          "failure_codes": [
+            "GV2_CITATION_REQUIREMENT",
+            "GV3_NUMERIC_FIDELITY"
+          ],
+          "findings": [
+            {
+              "code": "GV2_CITATION_REQUIREMENT",
+              "message": "factual answer has no supplied citation ID",
+              "severity": "SOFT_FAIL"
+            },
+            {
+              "code": "GV3_NUMERIC_FIDELITY",
+              "message": "unsupported material number(s): ['1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0', '1.0']",
+              "severity": "HARD_FAIL"
+            }
+          ],
+          "status": "HARD_FAIL"
+        }
+      }
+    }
+  ],
+  "runtime_hard_fail": 1,
+  "runtime_pass": 0,
+  "runtime_soft_fail": 3,
+  "safe_rejected": 0,
+  "safe_release_precision": null,
+  "safe_released": 0,
+  "safe_total": 0,
+  "sealed": true,
+  "unsafe_caught": 4,
+  "unsafe_missed": 0,
+  "unsafe_rejection_recall": 1.0,
+  "unsafe_total": 4
+}

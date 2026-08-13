@@ -1,0 +1,9 @@
+{
+  "known_limitation": "deterministic checks cannot prove every arbitrary semantic claim",
+  "model_calls": 0,
+  "next_gate": "v2_07_r1_grounded_model_integration",
+  "retrieval_calls": 0,
+  "state_machine": "TrustedGenerationStateMachineV1",
+  "trusted_generation_runtime_ready": true,
+  "validator": "RuntimeGenerationValidatorV1"
+}

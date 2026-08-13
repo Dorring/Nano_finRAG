@@ -1,0 +1,16 @@
+{
+  "contract": "RuntimeGenerationValidatorV1",
+  "hard_failures": [
+    "GV0_ENVELOPE_SCHEMA",
+    "GV7_UNKNOWN_CITATION",
+    "GV3_NUMERIC_FIDELITY",
+    "GV4_PERIOD_FIDELITY",
+    "GV5_UNIT_CURRENCY_SCALE_FIDELITY",
+    "GV6_CALCULATION_RESULT_PRESERVATION"
+  ],
+  "runtime_gold_reference_reads": 0,
+  "semantic_limitation": "free-form unsupported claims require later grounded validator integration",
+  "soft_failures": [
+    "GV2_CITATION_REQUIREMENT"
+  ]
+}
