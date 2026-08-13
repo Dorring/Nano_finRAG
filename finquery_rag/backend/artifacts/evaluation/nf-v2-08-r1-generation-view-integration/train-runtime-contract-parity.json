@@ -1,0 +1,11 @@
+{
+  "details": {
+    "answer_rules": true,
+    "citation_syntax": true,
+    "format_order": true,
+    "sections": true
+  },
+  "equivalent": true,
+  "runtime_renderer": "FinancialGenerationViewV1",
+  "training_contract": "financial-generation-view-v1.md"
+}

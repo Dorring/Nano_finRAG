@@ -1,0 +1,14 @@
+{
+  "exposed_fields": [],
+  "forbidden_fields": [
+    "Gold",
+    "oracle_training_evidence",
+    "validator_debug",
+    "internal_taxonomy",
+    "evaluation_labels",
+    "benchmark answer",
+    "reference answer"
+  ],
+  "internal_evaluation_fields_exposed": 0,
+  "source_provenance_allowed": true
+}

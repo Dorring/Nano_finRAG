@@ -1,0 +1,14 @@
+{
+  "all_required_fields_preserved": true,
+  "fields": [
+    "metric",
+    "period",
+    "scope",
+    "value",
+    "unit",
+    "currency",
+    "scale"
+  ],
+  "question_preserved": true,
+  "trusted_field_preservation": 1.0
+}

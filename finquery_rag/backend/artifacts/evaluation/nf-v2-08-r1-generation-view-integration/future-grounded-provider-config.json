@@ -1,0 +1,16 @@
+{
+  "do_sample": null,
+  "enabled": false,
+  "endpoint": null,
+  "max_new_tokens": null,
+  "model_id": "finquery-finance-grounded-v3",
+  "model_path": null,
+  "provider_id": "local_financial_grounded",
+  "runtime_redesign_required": false,
+  "stop": [],
+  "temperature": null,
+  "thinking_mode": null,
+  "timeout": null,
+  "tokenizer_path": null,
+  "top_p": null
+}

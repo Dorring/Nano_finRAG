@@ -78,6 +78,9 @@ class GenerationInputV1:
     question: str
     packet: Mapping[str, Any]
     renderer_id: str = "generic_packet_renderer_v1"
+    rendered_text: str | None = None
+    view_sha256: str | None = None
+    trusted_packet: Mapping[str, Any] | None = None
 
     def __post_init__(self) -> None:
         _required_text(self.query_id, "query_id")
@@ -88,6 +91,10 @@ class GenerationInputV1:
             raise ValueError("packet query_id does not match generation input")
         if self.packet.get("validation_status") != "VERIFIED":
             raise ValueError("generation input requires a VERIFIED packet")
+        if self.rendered_text is not None and not isinstance(self.rendered_text, str):
+            raise ValueError("rendered_text must be a string when present")
+        if self.trusted_packet is not None and not isinstance(self.trusted_packet, Mapping):
+            raise ValueError("trusted_packet must be an object when present")
 
 
 @dataclass(frozen=True)

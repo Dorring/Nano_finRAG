@@ -1,0 +1,11 @@
+{
+  "component_eval_only_support": true,
+  "fresh_blind": false,
+  "gold_reads_before_prediction_seal": 0,
+  "gold_reads_before_runtime_seal": 0,
+  "integrated": true,
+  "oracle_evidence_label_supported": true,
+  "post_seal_callback": true,
+  "prediction_seal": "4c618dfb5e8267666cd97cf25e99ae11e241b04bb595dd53965656fccd10334a",
+  "renderer_id": "financial_generation_view_v1"
+}

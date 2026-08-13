@@ -20,11 +20,12 @@ class TrustedRAGRuntimeV2:
     """Route-aware coordinator; all release authority remains deterministic."""
 
     def __init__(self, registry: ProviderRegistryV1, routing_policy: GeneratorRoutingPolicyV1,
-                 *, evidence_gate: TrustedEvidenceGateV1 | None = None) -> None:
+                 *, evidence_gate: TrustedEvidenceGateV1 | None = None,
+                 renderer: Any | None = None) -> None:
         self.registry = registry
         self.routing_policy = routing_policy
         self.evidence_gate = evidence_gate or TrustedEvidenceGateV1()
-        self.renderer = GenericVerifiedPacketRendererV1()
+        self.renderer = renderer or GenericVerifiedPacketRendererV1()
 
     @staticmethod
     def _plan(value: SupervisorPlan | Mapping[str, Any] | None) -> SupervisorPlan | None:

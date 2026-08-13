@@ -1,0 +1,18 @@
+{
+  "context_limit": 4096,
+  "context_limit_overflow": 0,
+  "exact_tokenizer_contract": true,
+  "input_max": 1738,
+  "input_p50": 932.5,
+  "input_p95": 1280,
+  "requested_model": "finquery-finance-v2-lr010-150",
+  "runtime_rendered_character_lengths": [
+    837,
+    833,
+    815,
+    862
+  ],
+  "runtime_trusted_rendered_packet_count": 4,
+  "source": "frozen Grounding Alignment token-length-audit.json",
+  "tokenizer": "nanochat-bpe-65k"
+}
