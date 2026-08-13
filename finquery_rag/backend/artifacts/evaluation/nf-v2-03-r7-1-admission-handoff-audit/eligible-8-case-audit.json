@@ -1,0 +1,615 @@
+{
+  "model_calls": 0,
+  "prediction_seal_verified": {
+    "financial_fact_supply_sha256": "51954973fd3ed2395fc1367fa9e5302d241b742466b6c5aafe218e312a644e8a",
+    "gate": "NF-V2-03-R1D",
+    "gold_reads_before_prediction_seal": 0,
+    "max_calls_per_query": 1,
+    "prediction_sha256": "f5b1f35875b0d4b4721cce5697f7aa654532491c748fa4a813c38dc1df98d543",
+    "prediction_sha256_verified": true,
+    "predictions_written": 72,
+    "provider_model_calls": 65,
+    "questions_expected": 72,
+    "sealed": true,
+    "sealed_before_gold": true
+  },
+  "rows": [
+    {
+      "admission_gates": {
+        "binding_validator_pass": true,
+        "cardinality_valid": true,
+        "comparative_select_safety_proof": false,
+        "fact_belongs_to_query_packet": true,
+        "first_failure": "SA7_confidence_or_safety_gate",
+        "provenance_complete": true,
+        "selected_fact_id_valid": true,
+        "selected_slot_id_valid": true,
+        "source_relation_valid": true,
+        "unique_admissible_binder_selection": true
+      },
+      "binder_prediction": {
+        "candidate_count": {
+          "data_center_revenue_fy2025": 1
+        },
+        "derived_status": "BOUND",
+        "selected_fact_ids": [
+          "a35f94b795ba5eb227de96ab46915d61ad88545cde97ff71d0e5ba10d12bb273"
+        ],
+        "selected_handles": [
+          "F02"
+        ]
+      },
+      "fact_view_v2": {
+        "selected_fact_views": [
+          {
+            "candidate_rank": 2,
+            "cell_id": "cell:20efb9526cb03ec40e145bf19240f632dfe9d675e745ea167e7286a7dced798a",
+            "column_header_path": [
+              "FY2025",
+              "FY2024",
+              "FY2023"
+            ],
+            "column_id": "column:71b5970fec25913e0e802928ab3323c7b9958cb1b2e24a4acbd2bc9137399a03",
+            "document_id": "nvda_fy2025",
+            "fact_handle": "F02",
+            "multi_level_column_headers": [
+              "FY2025",
+              "FY2024",
+              "FY2023"
+            ],
+            "normalized_metric": "data center",
+            "normalized_period": "FY2025",
+            "normalized_scale": "1000000",
+            "page": 172,
+            "parsed_numeric_value": "115186",
+            "pdf_page": 172,
+            "period_value_bindings": [
+              "FY2025 = $ 115,186 millions",
+              "FY2024 = $ 47,525 millions",
+              "FY2023 = $ 15,005 millions"
+            ],
+            "physical_source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:7e731d3eb8975007be3386499df660bfd01fa67dfec355c09fb4e82dab3eb64e:172",
+            "raw_metric": "Data Center",
+            "raw_period": "FY2025",
+            "raw_scale": "millions",
+            "raw_value": "$ 115,186",
+            "row_id": "7e731d3eb8975007be3386499df660bfd01fa67dfec355c09fb4e82dab3eb64e",
+            "row_label": "Data Center",
+            "row_path": [
+              "Data Center"
+            ],
+            "statement_title": "income_statement",
+            "statement_type": "income_statement",
+            "table_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736",
+            "table_title": "income_statement"
+          }
+        ],
+        "visibility_source": "r3_frozen_review",
+        "visible_unique": true
+      },
+      "question_id": "nvda_fy2025_004",
+      "required_slots": [
+        {
+          "metric": "Data Center revenue",
+          "period": "FY2025",
+          "role": "value",
+          "scope": null,
+          "slot_id": "data_center_revenue_fy2025"
+        }
+      ],
+      "reviewed_semantic_result": "strict_correct",
+      "strict_correct": true
+    },
+    {
+      "admission_gates": {
+        "binding_validator_pass": true,
+        "cardinality_valid": true,
+        "comparative_select_safety_proof": false,
+        "fact_belongs_to_query_packet": true,
+        "first_failure": "SA7_confidence_or_safety_gate",
+        "provenance_complete": true,
+        "selected_fact_id_valid": true,
+        "selected_slot_id_valid": true,
+        "source_relation_valid": true,
+        "unique_admissible_binder_selection": true
+      },
+      "binder_prediction": {
+        "candidate_count": {
+          "automotive_revenue_fy2025": 1
+        },
+        "derived_status": "BOUND",
+        "selected_fact_ids": [
+          "1ddf3f61bafe730d901064e5ccfc91622e014724644cad8370d322b3c9316810"
+        ],
+        "selected_handles": [
+          "F01"
+        ]
+      },
+      "fact_view_v2": {
+        "selected_fact_views": [
+          {
+            "candidate_rank": 2,
+            "cell_id": "cell:e54d02fbe721629d039141fe560c0dfcfb0fedc56042f223ab11cbc0e61b5230",
+            "column_header_path": [
+              "FY2025",
+              "FY2024",
+              "FY2023"
+            ],
+            "column_id": "column:71b5970fec25913e0e802928ab3323c7b9958cb1b2e24a4acbd2bc9137399a03",
+            "document_id": "nvda_fy2025",
+            "fact_handle": "F01",
+            "multi_level_column_headers": [
+              "FY2025",
+              "FY2024",
+              "FY2023"
+            ],
+            "normalized_metric": "automotive",
+            "normalized_period": "FY2025",
+            "normalized_scale": "1000000",
+            "page": 172,
+            "parsed_numeric_value": "1694",
+            "pdf_page": 172,
+            "period_value_bindings": [
+              "FY2025 = 1,694 millions",
+              "FY2024 = 1,091 millions",
+              "FY2023 = 903 millions"
+            ],
+            "physical_source_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:820594b426cf4db2964355d510d493947079072c7cc07b77f56a727db044e5dc:172",
+            "raw_metric": "Automotive",
+            "raw_period": "FY2025",
+            "raw_scale": "millions",
+            "raw_value": "1,694",
+            "row_id": "820594b426cf4db2964355d510d493947079072c7cc07b77f56a727db044e5dc",
+            "row_label": "Automotive",
+            "row_path": [
+              "Automotive"
+            ],
+            "statement_title": "income_statement",
+            "statement_type": "income_statement",
+            "table_id": "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736",
+            "table_title": "income_statement"
+          }
+        ],
+        "visibility_source": "r3_frozen_review",
+        "visible_unique": true
+      },
+      "question_id": "nvda_fy2025_005",
+      "required_slots": [
+        {
+          "metric": "Automotive revenue",
+          "period": "FY2025",
+          "role": "value",
+          "scope": null,
+          "slot_id": "automotive_revenue_fy2025"
+        }
+      ],
+      "reviewed_semantic_result": "strict_correct",
+      "strict_correct": true
+    },
+    {
+      "admission_gates": {
+        "binding_validator_pass": true,
+        "cardinality_valid": true,
+        "comparative_select_safety_proof": false,
+        "fact_belongs_to_query_packet": true,
+        "first_failure": "SA1_no_unique_binder_selection",
+        "provenance_complete": true,
+        "selected_fact_id_valid": false,
+        "selected_slot_id_valid": false,
+        "source_relation_valid": true,
+        "unique_admissible_binder_selection": false
+      },
+      "binder_prediction": {
+        "candidate_count": {
+          "1": 1
+        },
+        "derived_status": "MISSING",
+        "selected_fact_ids": [],
+        "selected_handles": []
+      },
+      "fact_view_v2": {
+        "selected_fact_views": [],
+        "visibility_source": "not_in_r3_review_fail_closed",
+        "visible_unique": false
+      },
+      "question_id": "nvda_fy2025_008",
+      "required_slots": [
+        {
+          "metric": "customer-level Data Center revenue amount",
+          "period": "FY2025",
+          "role": "value",
+          "scope": null,
+          "slot_id": "1"
+        }
+      ],
+      "reviewed_semantic_result": "missing",
+      "strict_correct": false
+    },
+    {
+      "admission_gates": {
+        "binding_validator_pass": true,
+        "cardinality_valid": true,
+        "comparative_select_safety_proof": false,
+        "fact_belongs_to_query_packet": true,
+        "first_failure": "SA1_no_unique_binder_selection",
+        "provenance_complete": true,
+        "selected_fact_id_valid": false,
+        "selected_slot_id_valid": false,
+        "source_relation_valid": true,
+        "unique_admissible_binder_selection": false
+      },
+      "binder_prediction": {
+        "candidate_count": {
+          "slot_1": 1
+        },
+        "derived_status": "MISSING",
+        "selected_fact_ids": [],
+        "selected_handles": []
+      },
+      "fact_view_v2": {
+        "selected_fact_views": [],
+        "visibility_source": "not_in_r3_review_fail_closed",
+        "visible_unique": false
+      },
+      "question_id": "pfe_fy2024_008",
+      "required_slots": [
+        {
+          "metric": "guaranteed FY2026 financial result",
+          "period": "FY2024",
+          "role": "value",
+          "scope": null,
+          "slot_id": "slot_1"
+        }
+      ],
+      "reviewed_semantic_result": "missing",
+      "strict_correct": false
+    },
+    {
+      "admission_gates": {
+        "binding_validator_pass": true,
+        "cardinality_valid": true,
+        "comparative_select_safety_proof": false,
+        "fact_belongs_to_query_packet": true,
+        "first_failure": "SA7_confidence_or_safety_gate",
+        "provenance_complete": true,
+        "selected_fact_id_valid": true,
+        "selected_slot_id_valid": true,
+        "source_relation_valid": true,
+        "unique_admissible_binder_selection": true
+      },
+      "binder_prediction": {
+        "candidate_count": {
+          "1": 1
+        },
+        "derived_status": "BOUND",
+        "selected_fact_ids": [
+          "2a4da6647be88d9aa9a04e8c7e015e7a277ea028374f3dbe8778b5a6b97de9c3"
+        ],
+        "selected_handles": [
+          "F01"
+        ]
+      },
+      "fact_view_v2": {
+        "selected_fact_views": [
+          {
+            "candidate_rank": 4,
+            "cell_id": "cell:55187d94d56f05c410e6bb3ae41ebec4a0492ee70e1fa146e8d11feb2d2ad82c",
+            "column_header_path": [
+              "FY2025",
+              "FY2024",
+              "FY2023"
+            ],
+            "column_id": "column:52835fff0bcaa4b915482bf6b4e00e231ec8aabc60caef8571ede3a1ae0c4211",
+            "document_id": "v_fy2025",
+            "fact_handle": "F01",
+            "multi_level_column_headers": [
+              "FY2025",
+              "FY2024",
+              "FY2023"
+            ],
+            "normalized_metric": "net revenue",
+            "normalized_period": "FY2025",
+            "normalized_scale": "1000000",
+            "page": 75,
+            "parsed_numeric_value": "40000",
+            "pdf_page": 75,
+            "period_value_bindings": [
+              "FY2025 = $ 40,000 millions",
+              "FY2024 = $ 35,926 millions",
+              "FY2023 = $ 32,653 millions"
+            ],
+            "physical_source_id": "047c6a56c7f09d391ac993d738c97b84bae5339ad9a1873ff5d6dd98ff693439:9cea965a621d0707927d0252efb5f95117adc2b590b495799bd051d069bd2eae:75",
+            "raw_metric": "Net revenue",
+            "raw_period": "FY2025",
+            "raw_scale": "millions",
+            "raw_value": "$ 40,000",
+            "row_id": "9cea965a621d0707927d0252efb5f95117adc2b590b495799bd051d069bd2eae",
+            "row_label": "Net revenue",
+            "row_path": [
+              "Net revenue"
+            ],
+            "statement_title": "income_statement",
+            "statement_type": "income_statement",
+            "table_id": "047c6a56c7f09d391ac993d738c97b84bae5339ad9a1873ff5d6dd98ff693439",
+            "table_title": "income_statement"
+          }
+        ],
+        "visibility_source": "r3_frozen_review",
+        "visible_unique": false
+      },
+      "question_id": "v_fy2025_001",
+      "required_slots": [
+        {
+          "metric": "net revenue",
+          "period": "FY2025",
+          "role": "value",
+          "scope": null,
+          "slot_id": "1"
+        }
+      ],
+      "reviewed_semantic_result": "strict_correct",
+      "strict_correct": true
+    },
+    {
+      "admission_gates": {
+        "binding_validator_pass": true,
+        "cardinality_valid": true,
+        "comparative_select_safety_proof": false,
+        "fact_belongs_to_query_packet": true,
+        "first_failure": "SA7_confidence_or_safety_gate",
+        "provenance_complete": true,
+        "selected_fact_id_valid": true,
+        "selected_slot_id_valid": true,
+        "source_relation_valid": true,
+        "unique_admissible_binder_selection": true
+      },
+      "binder_prediction": {
+        "candidate_count": {
+          "1": 1
+        },
+        "derived_status": "BOUND",
+        "selected_fact_ids": [
+          "1e029025fdb3d7a21173e4625d794ee6fd2e14c91147b6cfa6cad84d66e0e404"
+        ],
+        "selected_handles": [
+          "F01"
+        ]
+      },
+      "fact_view_v2": {
+        "selected_fact_views": [
+          {
+            "candidate_rank": 14,
+            "cell_id": "cell:dd7812cbb4f334f589c5fd092fc4b1e7bca4618ae13cbee10d76de1c4fc2b768",
+            "column_header_path": [
+              "FY2023",
+              "FY2024",
+              "FY2025"
+            ],
+            "column_id": "column:1c7b59f2233b90cbcf482073c4b690bfb34da62850bf83dcf6b52994324573e8",
+            "document_id": "v_fy2025",
+            "fact_handle": "F01",
+            "multi_level_column_headers": [
+              "FY2023",
+              "FY2024",
+              "FY2025"
+            ],
+            "normalized_metric": "total volume1",
+            "normalized_period": "FY2025",
+            "page": 4,
+            "parsed_numeric_value": "16.7",
+            "pdf_page": 4,
+            "period_value_bindings": [
+              "FY2023 = $14.8T",
+              "FY2024 = $15.7T",
+              "FY2025 = $16.7T"
+            ],
+            "physical_source_id": "de5f2135a73332bc4b56938ced9dbde61886567defe3496a720b7f03cc40b4ab:7581db60143049afe1acbb2a768d7c5dc5ea5eb7f463a04cdbe3900c8da403a6:4",
+            "raw_metric": "Total volume1",
+            "raw_period": "FY2025",
+            "raw_value": "$16.7T",
+            "row_id": "7581db60143049afe1acbb2a768d7c5dc5ea5eb7f463a04cdbe3900c8da403a6",
+            "row_label": "Total volume1",
+            "row_path": [
+              "Total volume1"
+            ],
+            "statement_title": "unknown",
+            "statement_type": "unknown",
+            "table_id": "de5f2135a73332bc4b56938ced9dbde61886567defe3496a720b7f03cc40b4ab",
+            "table_title": "unknown"
+          }
+        ],
+        "visibility_source": "r3_frozen_review",
+        "visible_unique": false
+      },
+      "question_id": "v_fy2025_002",
+      "required_slots": [
+        {
+          "metric": "total volume",
+          "period": "FY2025",
+          "role": "value",
+          "scope": null,
+          "slot_id": "1"
+        }
+      ],
+      "reviewed_semantic_result": "strict_correct",
+      "strict_correct": true
+    },
+    {
+      "admission_gates": {
+        "binding_validator_pass": true,
+        "cardinality_valid": true,
+        "comparative_select_safety_proof": false,
+        "fact_belongs_to_query_packet": true,
+        "first_failure": "SA7_confidence_or_safety_gate",
+        "provenance_complete": true,
+        "selected_fact_id_valid": true,
+        "selected_slot_id_valid": true,
+        "source_relation_valid": true,
+        "unique_admissible_binder_selection": true
+      },
+      "binder_prediction": {
+        "candidate_count": {
+          "slot_1": 1
+        },
+        "derived_status": "BOUND",
+        "selected_fact_ids": [
+          "0d275e94bd8c411d5cd48e132ed3cfb6207fb60851d3f87598c52a2e822b0a44"
+        ],
+        "selected_handles": [
+          "F01"
+        ]
+      },
+      "fact_view_v2": {
+        "selected_fact_views": [
+          {
+            "candidate_rank": 2,
+            "cell_id": "cell:d8e11675c4d60ca3402302aa60dde37e02dd64bd5bbb7a590ec539866e47231e",
+            "column_header_path": [
+              "FY2023",
+              "FY2024",
+              "FY2025"
+            ],
+            "column_id": "column:1c7b59f2233b90cbcf482073c4b690bfb34da62850bf83dcf6b52994324573e8",
+            "document_id": "v_fy2025",
+            "fact_handle": "F01",
+            "multi_level_column_headers": [
+              "FY2023",
+              "FY2024",
+              "FY2025"
+            ],
+            "normalized_metric": "transactions processed on visa's networks2",
+            "normalized_period": "FY2025",
+            "page": 4,
+            "parsed_numeric_value": "257.5",
+            "pdf_page": 4,
+            "period_value_bindings": [
+              "FY2023 = 212.6B",
+              "FY2024 = 233.8B",
+              "FY2025 = 257.5B"
+            ],
+            "physical_source_id": "de5f2135a73332bc4b56938ced9dbde61886567defe3496a720b7f03cc40b4ab:c48ae62bcaae673a2779f950221850202adeda0cb298d10f377e450231e31e8b:4",
+            "raw_metric": "Transactions processed on Visa's networks2",
+            "raw_period": "FY2025",
+            "raw_value": "257.5B",
+            "row_id": "c48ae62bcaae673a2779f950221850202adeda0cb298d10f377e450231e31e8b",
+            "row_label": "Transactions processed on Visa's networks2",
+            "row_path": [
+              "Transactions processed on Visa's networks2"
+            ],
+            "statement_title": "unknown",
+            "statement_type": "unknown",
+            "table_id": "de5f2135a73332bc4b56938ced9dbde61886567defe3496a720b7f03cc40b4ab",
+            "table_title": "unknown"
+          }
+        ],
+        "visibility_source": "r3_frozen_review",
+        "visible_unique": false
+      },
+      "question_id": "v_fy2025_003",
+      "required_slots": [
+        {
+          "metric": "transactions processed on Visa's networks",
+          "period": "FY2025",
+          "role": "value",
+          "scope": null,
+          "slot_id": "slot_1"
+        }
+      ],
+      "reviewed_semantic_result": "strict_correct",
+      "strict_correct": true
+    },
+    {
+      "admission_gates": {
+        "binding_validator_pass": true,
+        "cardinality_valid": true,
+        "comparative_select_safety_proof": false,
+        "fact_belongs_to_query_packet": true,
+        "first_failure": "SA7_confidence_or_safety_gate",
+        "provenance_complete": true,
+        "selected_fact_id_valid": true,
+        "selected_slot_id_valid": true,
+        "source_relation_valid": true,
+        "unique_admissible_binder_selection": true
+      },
+      "binder_prediction": {
+        "candidate_count": {
+          "1": 1
+        },
+        "derived_status": "BOUND",
+        "selected_fact_ids": [
+          "71bd06d15b6465ce3cc482db9381a3216507716c6a627de5f6408bab3999e909"
+        ],
+        "selected_handles": [
+          "F02"
+        ]
+      },
+      "fact_view_v2": {
+        "selected_fact_views": [
+          {
+            "candidate_rank": 3,
+            "cell_id": "cell:f614833e427501d9dab06aabe023f843516cafb34f9ede98de2fdced2a7b38aa",
+            "column_header_path": [
+              "FY2023",
+              "FY2024",
+              "FY2025"
+            ],
+            "column_id": "column:1c7b59f2233b90cbcf482073c4b690bfb34da62850bf83dcf6b52994324573e8",
+            "document_id": "v_fy2025",
+            "fact_handle": "F02",
+            "multi_level_column_headers": [
+              "FY2023",
+              "FY2024",
+              "FY2025"
+            ],
+            "normalized_metric": "payments volume1",
+            "normalized_period": "FY2025",
+            "page": 4,
+            "parsed_numeric_value": "14.2",
+            "pdf_page": 4,
+            "period_value_bindings": [
+              "FY2023 = $12.3T",
+              "FY2024 = $13.2T",
+              "FY2025 = $14.2T"
+            ],
+            "physical_source_id": "de5f2135a73332bc4b56938ced9dbde61886567defe3496a720b7f03cc40b4ab:93925e15ad34715a4b43601361d4ca1d949e380955f4fe20f934d71fd8c8a869:4",
+            "raw_metric": "Payments volume1",
+            "raw_period": "FY2025",
+            "raw_value": "$14.2T",
+            "row_id": "93925e15ad34715a4b43601361d4ca1d949e380955f4fe20f934d71fd8c8a869",
+            "row_label": "Payments volume1",
+            "row_path": [
+              "Payments volume1"
+            ],
+            "statement_title": "unknown",
+            "statement_type": "unknown",
+            "table_id": "de5f2135a73332bc4b56938ced9dbde61886567defe3496a720b7f03cc40b4ab",
+            "table_title": "unknown"
+          }
+        ],
+        "visibility_source": "r3_frozen_review",
+        "visible_unique": false
+      },
+      "question_id": "v_fy2025_004",
+      "required_slots": [
+        {
+          "metric": "payments volume",
+          "period": "FY2025",
+          "role": "value",
+          "scope": null,
+          "slot_id": "1"
+        }
+      ],
+      "reviewed_semantic_result": "strict_correct",
+      "strict_correct": true
+    }
+  ],
+  "summary": {
+    "ambiguous": 0,
+    "correct_among_visible_unique": "2/2",
+    "missing": 2,
+    "strict_correct": 6,
+    "total": 8,
+    "visible_unique": 2,
+    "wrong": 0
+  }
+}

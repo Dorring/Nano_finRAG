@@ -1,0 +1,73 @@
+{
+  "benchmark_aliases": 0,
+  "gold_used_for_admission_rules": false,
+  "question_specific_rules": 0,
+  "variant_a": {
+    "bound": 0,
+    "coverage": "0/56",
+    "false_binding": 0,
+    "name": "current_SelectiveBindingAdmissionV1",
+    "question_ids": [],
+    "strict_correct": "0/0",
+    "strict_precision": null
+  },
+  "variant_b": {
+    "bound": 19,
+    "coverage": "19/56",
+    "false_binding": 7,
+    "name": "generic_structural_only",
+    "question_ids": [
+      "aapl_fy2025_003",
+      "jpm_fy2025_004",
+      "jpm_fy2025_005",
+      "ko_fy2025_003",
+      "msft_fy2025_002",
+      "msft_fy2025_003",
+      "nvda_fy2025_002",
+      "nvda_fy2025_003",
+      "nvda_fy2025_004",
+      "nvda_fy2025_005",
+      "nvda_fy2025_009",
+      "pfe_fy2024_002",
+      "pfe_fy2024_004",
+      "tsla_fy2025_005",
+      "v_fy2025_001",
+      "v_fy2025_002",
+      "v_fy2025_003",
+      "v_fy2025_004",
+      "v_fy2025_009"
+    ],
+    "strict_correct": "12/19",
+    "strict_precision": 0.631578947368421
+  },
+  "variant_c": {
+    "bound": 2,
+    "coverage": "2/56",
+    "false_binding": 0,
+    "name": "generic_structural_plus_visible_unique_and_shortlist_unique",
+    "question_ids": [
+      "nvda_fy2025_004",
+      "nvda_fy2025_005"
+    ],
+    "strict_correct": "2/2",
+    "strict_precision": 1.0
+  },
+  "variant_c_factview_only_auxiliary": {
+    "bound": 8,
+    "coverage": "8/56",
+    "false_binding": 2,
+    "name": "diagnostic_factview_only_auxiliary",
+    "question_ids": [
+      "jpm_fy2025_004",
+      "ko_fy2025_003",
+      "msft_fy2025_003",
+      "nvda_fy2025_002",
+      "nvda_fy2025_003",
+      "nvda_fy2025_004",
+      "nvda_fy2025_005",
+      "nvda_fy2025_009"
+    ],
+    "strict_correct": "6/8",
+    "strict_precision": 0.75
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "current_policy": "0/56 bound, false binding 0",
+  "next_gate": "v2_03_selective_admission_contract_fix",
+  "reason": "A generic structural + reviewed-visible-unique + deterministic-shortlist-unique variant releases non-zero coverage with 0 false binding; current zero is caused by the absent R6 comparative SELECT safety proof.",
+  "recommended_fix_scope": "admission logic only; Binder/model/FactView remain frozen",
+  "selective_admission_overconservative": true,
+  "v2_04_future_target": "admission-ready evidence, not retrieval recall alone",
+  "v2_04_not_started": true,
+  "zero_coverage_justified": false
+}

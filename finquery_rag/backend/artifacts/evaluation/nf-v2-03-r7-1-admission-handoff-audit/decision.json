@@ -1,0 +1,16 @@
+{
+  "base_commit": "621047d91fd34a7e231607993ec2915d4a03beff",
+  "binder_fact_view_v2_frozen": true,
+  "binder_model_frozen": true,
+  "binder_semantic_policy_frozen": true,
+  "current_bound": "0/56",
+  "eligible_direct": "8/56",
+  "false_binding": 0,
+  "gate": "NF-V2-03-R7.1",
+  "model_calls": 0,
+  "next_gate": "v2_03_selective_admission_contract_fix",
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "selective_admission_overconservative": true,
+  "zero_coverage_justified": false
+}

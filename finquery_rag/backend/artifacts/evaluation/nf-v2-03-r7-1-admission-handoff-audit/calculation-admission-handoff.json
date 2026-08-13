@@ -1,0 +1,236 @@
+{
+  "calculator_execution": false,
+  "model_calls": 0,
+  "questions": [
+    {
+      "binder_status": "AMBIGUOUS",
+      "blocked_class": "binder_semantic_selection",
+      "operands": [
+        {
+          "admission_first_failure": "SA1_no_unique_binder_selection",
+          "metric": "total net sales",
+          "operation": "growth_rate",
+          "period": "FY2025",
+          "role": "current_period",
+          "selected_fact_ids": [
+            "79d91a2553e82d687736806cba8af0410b778fe3eef63aed96994f5d46472050",
+            "67ff5c02a5b006df163f569e909e243dcd03af9f8fb2c5cd453068974b41d279",
+            "5a7c010dc7c1d81f96587b93934b787490d561bcd32e8e90507838e2ee5f078d",
+            "aad6d3c273873f37429ec2d6c3942f1767337f9c39186f57e5cfb229cef8763a",
+            "c13f9a1ff37e5a751d69cc91467b5ffa5780189a7869f8bc042d2a73f0ba4d3e"
+          ],
+          "semantic_binder_output": "AMBIGUOUS",
+          "slot_id": "slot_1",
+          "visible_unique": true
+        },
+        {
+          "admission_first_failure": "SA1_no_unique_binder_selection",
+          "metric": "total net sales",
+          "operation": "growth_rate",
+          "period": "FY2024",
+          "role": "base_period",
+          "selected_fact_ids": [
+            "1dca7d500d015ae664048ced7246285062e2165bfb9ef71f56a7735b0c18621e",
+            "08e9a1d793538ebe3b46c49b01798b35dd0a76efcd2ba46865b6a4aa2da9bdf5",
+            "9bec46a7f31f4359e5e65c298b2ad48dcf806d0ecc13f68926373e761b40e2a6",
+            "654579224ba5f0ead4c59761b9d4a3bb5b1922c11ebee72bd07634ac56608164"
+          ],
+          "semantic_binder_output": "AMBIGUOUS",
+          "slot_id": "slot_2",
+          "visible_unique": true
+        }
+      ],
+      "question_id": "aapl_fy2025_006"
+    },
+    {
+      "binder_status": "AMBIGUOUS",
+      "blocked_class": "binder_semantic_selection",
+      "operands": [
+        {
+          "admission_first_failure": "SA1_no_unique_binder_selection",
+          "metric": "total assets",
+          "operation": "growth_rate",
+          "period": "FY2025",
+          "role": "current_period",
+          "selected_fact_ids": [
+            "394411ec7dc43fa13293c826d1e789c036dc8e93ed2810f0492c1647f1243fb5",
+            "b2fd71a203f7a32046b2395623c0d5d00d39a45155b3a7430a578da06b61837e",
+            "3550152c1027b97c44e4fc2bdc6efb6788e408c0df12f779147af2e60623da0f",
+            "10f9876ef2977f5865232bd979ac95423897ed61f181cc80b1c13b122dcfbe13",
+            "7037d4ef4c5846bda5cb4f1f8804f6f9c50da33d89952ffc330033b6b6bcedd2",
+            "bd02009a07502c6efcca9d43cf929b5828fff0cd051a26a139a72b21e84ae0fc",
+            "7a2a39a9aa2a70ca213884f6ad1371561575b21aa2bbcb5854aec8170bc8c0a5"
+          ],
+          "semantic_binder_output": "AMBIGUOUS",
+          "slot_id": "1",
+          "visible_unique": true
+        },
+        {
+          "admission_first_failure": "SA1_no_unique_binder_selection",
+          "metric": "total assets",
+          "operation": "growth_rate",
+          "period": "FY2024",
+          "role": "base_period",
+          "selected_fact_ids": [
+            "85e82834ba925ee7339baadfa46c38e177763d8e1d8634b35f2231aca5962ecb",
+            "944857e6cd711762088b5ba3cbf3c81bad95ad0fdfc08166d6f8623d02f53bfb",
+            "8fb7e2db4435ba21767823589fc9fcd08e1aaf9743ec1e71a200c6a4dee9193a",
+            "27946e295fb8ac9d4849734593b260adca92e6c200941351ee4f7c1a7def2b46",
+            "e849891815dd159a8d5fdf14ea4256b06fe1756118db2830fb2ca050e22877b8",
+            "7b350ea2c651cef67ef159702ee858ce2686dcea90d3e366fffeec1f76205e6c",
+            "57a4a5f97052e9b4c1b1a31d201f2dbbef0a7030f2c4ec47ba0806d4070bfc22"
+          ],
+          "semantic_binder_output": "AMBIGUOUS",
+          "slot_id": "2",
+          "visible_unique": true
+        }
+      ],
+      "question_id": "jpm_fy2025_006"
+    },
+    {
+      "binder_status": "AMBIGUOUS",
+      "blocked_class": "binder_semantic_selection",
+      "operands": [
+        {
+          "admission_first_failure": "SA1_no_unique_binder_selection",
+          "metric": "net operating revenues",
+          "operation": "growth_rate",
+          "period": "FY2025",
+          "role": "current_period",
+          "selected_fact_ids": [
+            "3f1200299bd330cbeb5268ff99e22ecf1780494a6daf6fbdba4c05d50d22bd25",
+            "125c81aeaa257db2ae4ed713b8a8554c673f9cb931630521fb69cf0c4e51c3f6"
+          ],
+          "semantic_binder_output": "AMBIGUOUS",
+          "slot_id": "slot_1",
+          "visible_unique": true
+        },
+        {
+          "admission_first_failure": "SA1_no_unique_binder_selection",
+          "metric": "net operating revenues",
+          "operation": "growth_rate",
+          "period": "FY2024",
+          "role": "base_period",
+          "selected_fact_ids": [
+            "37d8ab77749acede6baf69e4586f67e83e8a4ecc6d857b1794d90553e82a69bf",
+            "da7f7fa75e8d2a759818e29111a532654de40d60b8e8be1040611305cd22ff4f"
+          ],
+          "semantic_binder_output": "AMBIGUOUS",
+          "slot_id": "slot_2",
+          "visible_unique": true
+        }
+      ],
+      "question_id": "ko_fy2025_006"
+    },
+    {
+      "binder_status": "AMBIGUOUS",
+      "blocked_class": "binder_semantic_selection",
+      "operands": [
+        {
+          "admission_first_failure": "SA1_no_unique_binder_selection",
+          "metric": "total revenues",
+          "operation": "growth_rate",
+          "period": "FY2024",
+          "role": "current_period",
+          "selected_fact_ids": [
+            "25b3026c7de0081af13f227eac8511f58d6b28bfdfbcce51b629d011cefc0a58",
+            "b8982f8a92719de674f6bff3f15eb07478aeea7d02fd88ecd10b5d4b24ec4c2c",
+            "7953a0c6324978a105226dece6803d30dcfabe48dfb73cd8b1a729c67fb84d78"
+          ],
+          "semantic_binder_output": "AMBIGUOUS",
+          "slot_id": "1",
+          "visible_unique": true
+        },
+        {
+          "admission_first_failure": "SA1_no_unique_binder_selection",
+          "metric": "total revenues",
+          "operation": "growth_rate",
+          "period": "FY2023",
+          "role": "base_period",
+          "selected_fact_ids": [
+            "700de90b4df433e55ba036695dd691115c0bb6a85113f5f396ad9463a4d42231",
+            "63cda6500e1538e1e907e153453217f5385f46c83365b209c0a446e4eff6f076",
+            "9db799a78375bb25098c16f67b84d536515878ade5f16c0f00a8423eb345f5ac"
+          ],
+          "semantic_binder_output": "AMBIGUOUS",
+          "slot_id": "2",
+          "visible_unique": true
+        }
+      ],
+      "question_id": "pfe_fy2024_006"
+    },
+    {
+      "binder_status": "AMBIGUOUS",
+      "blocked_class": "binder_semantic_selection",
+      "operands": [
+        {
+          "admission_first_failure": "SA1_no_unique_binder_selection",
+          "metric": "total revenues",
+          "operation": "growth_rate",
+          "period": "FY2025",
+          "role": "current_period",
+          "selected_fact_ids": [
+            "f79884cf4f0f8d6be407ae53f629548e99f9f9b2c1288b86cb5408e4a0657ed8",
+            "331719d000ca733cc97eac7e2404b61a3ecf3273e45a230ee1715f8f3351250b",
+            "b7a121895be97205d429d42cca533847baa862f422ce35a007a5c7b4901f8463"
+          ],
+          "semantic_binder_output": "AMBIGUOUS",
+          "slot_id": "rev_fy2025",
+          "visible_unique": true
+        },
+        {
+          "admission_first_failure": "SA1_no_unique_binder_selection",
+          "metric": "total revenues",
+          "operation": "growth_rate",
+          "period": "FY2024",
+          "role": "base_period",
+          "selected_fact_ids": [
+            "d05bc6d04f3ac3e2eed496474e64d340c53d704bf6e3f8d58527139e3beacd30",
+            "4aa7c0b7df2cc9307094ae17ef2029ba2ecdf0c558ffa51a27b929d93fffd4f6",
+            "1be721d2dc4f1f803d6a337fb818a498332aa26f7af951771aca76c4fa6f5005"
+          ],
+          "semantic_binder_output": "AMBIGUOUS",
+          "slot_id": "rev_fy2024",
+          "visible_unique": true
+        }
+      ],
+      "question_id": "tsla_fy2025_006"
+    },
+    {
+      "binder_status": "BOUND",
+      "blocked_class": "admission_policy",
+      "operands": [
+        {
+          "admission_first_failure": "SA7_confidence_or_safety_gate",
+          "metric": "net revenue",
+          "operation": "growth_rate",
+          "period": "FY2025",
+          "role": "current_period",
+          "selected_fact_ids": [
+            "2a4da6647be88d9aa9a04e8c7e015e7a277ea028374f3dbe8778b5a6b97de9c3"
+          ],
+          "semantic_binder_output": "BOUND",
+          "slot_id": "s1",
+          "visible_unique": true
+        },
+        {
+          "admission_first_failure": "SA7_confidence_or_safety_gate",
+          "metric": "net revenue",
+          "operation": "growth_rate",
+          "period": "FY2024",
+          "role": "base_period",
+          "selected_fact_ids": [
+            "c8d61066a50fdbd0b76129b27af245ed97f4a3a38bb4cf26e81b824be4377759"
+          ],
+          "semantic_binder_output": "BOUND",
+          "slot_id": "s2",
+          "visible_unique": true
+        }
+      ],
+      "question_id": "v_fy2025_006"
+    }
+  ],
+  "questions_blocked_by_binder_semantic_selection": 5,
+  "questions_blocked_only_by_admission_policy": 1,
+  "visible_unique_operand_reference": "12/12 from frozen R3 FactViewV2 diagnostic"
+}

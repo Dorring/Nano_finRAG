@@ -1,0 +1,16 @@
+{
+  "counts": {
+    "SA0_admitted": 0,
+    "SA1_no_unique_binder_selection": 2,
+    "SA2_structural_validator_failure": 0,
+    "SA3_fact_not_provenance_complete": 0,
+    "SA4_source_relation_failure": 0,
+    "SA5_candidate_not_visible_unique": 0,
+    "SA6_binder_semantic_disagreement": 0,
+    "SA7_confidence_or_safety_gate": 6,
+    "SA8_status_not_bound": 0,
+    "SA9_other": 0
+  },
+  "first_rejection_only": true,
+  "sum": 8
+}
