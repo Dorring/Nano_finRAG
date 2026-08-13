@@ -1,0 +1,18 @@
+{
+  "diagnostic_supply_classes": {
+    "DR0": 15,
+    "DR1": 4,
+    "DR5": 25,
+    "DR6": 8
+  },
+  "gold_loaded_after_stage_a_seal": true,
+  "repair_precision": 0.2778,
+  "repair_recall": 0.2632,
+  "runtime_action_counts": {
+    "NO_REPAIR": 51,
+    "TARGETED_MATERIALIZATION": 15,
+    "TARGETED_RETRIEVAL": 6
+  },
+  "runtime_supply_actions": 5,
+  "unnecessary_repair_rate": 0.7222
+}

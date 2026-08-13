@@ -1,0 +1,20 @@
+{
+  "binder_admission": "SelectiveBindingAdmissionV2",
+  "binder_fact_view": "BinderFactViewV2",
+  "binder_model": "qwen3.7-plus",
+  "contract": "EvidenceRepairRouterV1",
+  "financial_fact_v1_schema_modified": false,
+  "global_safety_cap": 25,
+  "gold_reads_during_materialization": 0,
+  "gold_reads_during_planning": 0,
+  "gold_reads_during_retrieval": 0,
+  "max_query_forms_per_slot": 3,
+  "outputs": [
+    "TARGETED_RETRIEVAL",
+    "TARGETED_MATERIALIZATION",
+    "NO_REPAIR"
+  ],
+  "question_specific_rules": 0,
+  "repair_budget": 1,
+  "retrieval_top_k": 50
+}

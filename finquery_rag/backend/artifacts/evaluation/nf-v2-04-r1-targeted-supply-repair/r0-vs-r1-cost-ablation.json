@@ -1,0 +1,15 @@
+{
+  "R0": {
+    "binder_calls": 62,
+    "input_tokens": 1574861,
+    "new_safe_bound": 0,
+    "output_tokens": 2410
+  },
+  "R1_stage_a": {
+    "binder_calls": 0,
+    "cost_per_new_safe_bound": "undefined/infinite",
+    "materialization_only": 15,
+    "new_safe_bound": 0,
+    "retrieval_calls": 18
+  }
+}

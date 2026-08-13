@@ -1,0 +1,9 @@
+{
+  "forms": [
+    "metric + period",
+    "metric + scope + period",
+    "metric + period + role + operation"
+  ],
+  "gold_fields": false,
+  "max_forms": 3
+}

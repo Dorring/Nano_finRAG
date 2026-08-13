@@ -1,0 +1,16 @@
+{
+  "base_commit": "a69db54b14847ac5dac11377c47c73cd618d9fa8",
+  "dominant_remaining_failure": "stage_a_supply_recovery_or_ambiguity_gate",
+  "gate": "NF-V2-04-R1",
+  "gold_used_during_repair": 0,
+  "model_calls": 0,
+  "next_gate": "v2_04_r1_failure_review",
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "repair_policy_frozen": false,
+  "retrieval_calls": 18,
+  "stage_a_pass": false,
+  "stage_b_authorized": false,
+  "stage_b_executed": false,
+  "targeted_supply_repair_effective": false
+}
