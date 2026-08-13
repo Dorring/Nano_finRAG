@@ -1,0 +1,267 @@
+{
+  "admission_failure_taxonomy": {
+    "SA0_admitted": 0,
+    "SA1_no_unique_binder_selection": 2,
+    "SA2_structural_validator_failure": 0,
+    "SA3_fact_not_provenance_complete": 0,
+    "SA4_source_relation_failure": 0,
+    "SA5_candidate_not_visible_unique": 0,
+    "SA6_binder_semantic_disagreement": 0,
+    "SA7_confidence_or_safety_gate": 6,
+    "SA8_status_not_bound": 0,
+    "SA9_other": 0
+  },
+  "counts": {
+    "AR1_binder_missing": 2,
+    "AR4_admission_comparative_proof_missing": 6
+  },
+  "eligible_reference_count": 8,
+  "frozen_eligible_reference": "8/56",
+  "metric_definition_correction": "R7.1 eligibility (8/56) is a frozen diagnostic cohort. R0 D3=7/56 is a separate post-R0 candidate-admission-ready upper bound; neither is a released admission count. Candidate-ready does not imply Binder release.",
+  "model_calls": 0,
+  "retrieval_calls": 0,
+  "rows": [
+    {
+      "admission_gates": {
+        "binding_validator_pass": true,
+        "cardinality_valid": true,
+        "comparative_select_safety_proof": false,
+        "fact_belongs_to_query_packet": true,
+        "first_failure": "SA7_confidence_or_safety_gate",
+        "provenance_complete": true,
+        "selected_fact_id_valid": true,
+        "selected_slot_id_valid": true,
+        "source_relation_valid": true,
+        "unique_admissible_binder_selection": true
+      },
+      "binder_status": "BOUND",
+      "candidate_count": {
+        "data_center_revenue_fy2025": 1
+      },
+      "classification": "AR4_admission_comparative_proof_missing",
+      "eligible_for_BOUND": true,
+      "first_blocking_condition": "SA7_confidence_or_safety_gate",
+      "question_id": "nvda_fy2025_004",
+      "reviewed_semantic_result": "strict_correct",
+      "reviewed_strict_correct": true,
+      "selected_fact_ids": [
+        "a35f94b795ba5eb227de96ab46915d61ad88545cde97ff71d0e5ba10d12bb273"
+      ],
+      "selected_handles": [
+        "F02"
+      ],
+      "source_artifact": "nf-v2-03-r7-1-admission-handoff-audit/eligible-8-case-audit.json"
+    },
+    {
+      "admission_gates": {
+        "binding_validator_pass": true,
+        "cardinality_valid": true,
+        "comparative_select_safety_proof": false,
+        "fact_belongs_to_query_packet": true,
+        "first_failure": "SA7_confidence_or_safety_gate",
+        "provenance_complete": true,
+        "selected_fact_id_valid": true,
+        "selected_slot_id_valid": true,
+        "source_relation_valid": true,
+        "unique_admissible_binder_selection": true
+      },
+      "binder_status": "BOUND",
+      "candidate_count": {
+        "automotive_revenue_fy2025": 1
+      },
+      "classification": "AR4_admission_comparative_proof_missing",
+      "eligible_for_BOUND": true,
+      "first_blocking_condition": "SA7_confidence_or_safety_gate",
+      "question_id": "nvda_fy2025_005",
+      "reviewed_semantic_result": "strict_correct",
+      "reviewed_strict_correct": true,
+      "selected_fact_ids": [
+        "1ddf3f61bafe730d901064e5ccfc91622e014724644cad8370d322b3c9316810"
+      ],
+      "selected_handles": [
+        "F01"
+      ],
+      "source_artifact": "nf-v2-03-r7-1-admission-handoff-audit/eligible-8-case-audit.json"
+    },
+    {
+      "admission_gates": {
+        "binding_validator_pass": true,
+        "cardinality_valid": true,
+        "comparative_select_safety_proof": false,
+        "fact_belongs_to_query_packet": true,
+        "first_failure": "SA1_no_unique_binder_selection",
+        "provenance_complete": true,
+        "selected_fact_id_valid": false,
+        "selected_slot_id_valid": false,
+        "source_relation_valid": true,
+        "unique_admissible_binder_selection": false
+      },
+      "binder_status": "MISSING",
+      "candidate_count": {
+        "1": 1
+      },
+      "classification": "AR1_binder_missing",
+      "eligible_for_BOUND": true,
+      "first_blocking_condition": "SA1_no_unique_binder_selection",
+      "question_id": "nvda_fy2025_008",
+      "reviewed_semantic_result": "missing",
+      "reviewed_strict_correct": false,
+      "selected_fact_ids": [],
+      "selected_handles": [],
+      "source_artifact": "nf-v2-03-r7-1-admission-handoff-audit/eligible-8-case-audit.json"
+    },
+    {
+      "admission_gates": {
+        "binding_validator_pass": true,
+        "cardinality_valid": true,
+        "comparative_select_safety_proof": false,
+        "fact_belongs_to_query_packet": true,
+        "first_failure": "SA1_no_unique_binder_selection",
+        "provenance_complete": true,
+        "selected_fact_id_valid": false,
+        "selected_slot_id_valid": false,
+        "source_relation_valid": true,
+        "unique_admissible_binder_selection": false
+      },
+      "binder_status": "MISSING",
+      "candidate_count": {
+        "slot_1": 1
+      },
+      "classification": "AR1_binder_missing",
+      "eligible_for_BOUND": true,
+      "first_blocking_condition": "SA1_no_unique_binder_selection",
+      "question_id": "pfe_fy2024_008",
+      "reviewed_semantic_result": "missing",
+      "reviewed_strict_correct": false,
+      "selected_fact_ids": [],
+      "selected_handles": [],
+      "source_artifact": "nf-v2-03-r7-1-admission-handoff-audit/eligible-8-case-audit.json"
+    },
+    {
+      "admission_gates": {
+        "binding_validator_pass": true,
+        "cardinality_valid": true,
+        "comparative_select_safety_proof": false,
+        "fact_belongs_to_query_packet": true,
+        "first_failure": "SA7_confidence_or_safety_gate",
+        "provenance_complete": true,
+        "selected_fact_id_valid": true,
+        "selected_slot_id_valid": true,
+        "source_relation_valid": true,
+        "unique_admissible_binder_selection": true
+      },
+      "binder_status": "BOUND",
+      "candidate_count": {
+        "1": 1
+      },
+      "classification": "AR4_admission_comparative_proof_missing",
+      "eligible_for_BOUND": true,
+      "first_blocking_condition": "SA7_confidence_or_safety_gate",
+      "question_id": "v_fy2025_001",
+      "reviewed_semantic_result": "strict_correct",
+      "reviewed_strict_correct": true,
+      "selected_fact_ids": [
+        "2a4da6647be88d9aa9a04e8c7e015e7a277ea028374f3dbe8778b5a6b97de9c3"
+      ],
+      "selected_handles": [
+        "F01"
+      ],
+      "source_artifact": "nf-v2-03-r7-1-admission-handoff-audit/eligible-8-case-audit.json"
+    },
+    {
+      "admission_gates": {
+        "binding_validator_pass": true,
+        "cardinality_valid": true,
+        "comparative_select_safety_proof": false,
+        "fact_belongs_to_query_packet": true,
+        "first_failure": "SA7_confidence_or_safety_gate",
+        "provenance_complete": true,
+        "selected_fact_id_valid": true,
+        "selected_slot_id_valid": true,
+        "source_relation_valid": true,
+        "unique_admissible_binder_selection": true
+      },
+      "binder_status": "BOUND",
+      "candidate_count": {
+        "1": 1
+      },
+      "classification": "AR4_admission_comparative_proof_missing",
+      "eligible_for_BOUND": true,
+      "first_blocking_condition": "SA7_confidence_or_safety_gate",
+      "question_id": "v_fy2025_002",
+      "reviewed_semantic_result": "strict_correct",
+      "reviewed_strict_correct": true,
+      "selected_fact_ids": [
+        "1e029025fdb3d7a21173e4625d794ee6fd2e14c91147b6cfa6cad84d66e0e404"
+      ],
+      "selected_handles": [
+        "F01"
+      ],
+      "source_artifact": "nf-v2-03-r7-1-admission-handoff-audit/eligible-8-case-audit.json"
+    },
+    {
+      "admission_gates": {
+        "binding_validator_pass": true,
+        "cardinality_valid": true,
+        "comparative_select_safety_proof": false,
+        "fact_belongs_to_query_packet": true,
+        "first_failure": "SA7_confidence_or_safety_gate",
+        "provenance_complete": true,
+        "selected_fact_id_valid": true,
+        "selected_slot_id_valid": true,
+        "source_relation_valid": true,
+        "unique_admissible_binder_selection": true
+      },
+      "binder_status": "BOUND",
+      "candidate_count": {
+        "slot_1": 1
+      },
+      "classification": "AR4_admission_comparative_proof_missing",
+      "eligible_for_BOUND": true,
+      "first_blocking_condition": "SA7_confidence_or_safety_gate",
+      "question_id": "v_fy2025_003",
+      "reviewed_semantic_result": "strict_correct",
+      "reviewed_strict_correct": true,
+      "selected_fact_ids": [
+        "0d275e94bd8c411d5cd48e132ed3cfb6207fb60851d3f87598c52a2e822b0a44"
+      ],
+      "selected_handles": [
+        "F01"
+      ],
+      "source_artifact": "nf-v2-03-r7-1-admission-handoff-audit/eligible-8-case-audit.json"
+    },
+    {
+      "admission_gates": {
+        "binding_validator_pass": true,
+        "cardinality_valid": true,
+        "comparative_select_safety_proof": false,
+        "fact_belongs_to_query_packet": true,
+        "first_failure": "SA7_confidence_or_safety_gate",
+        "provenance_complete": true,
+        "selected_fact_id_valid": true,
+        "selected_slot_id_valid": true,
+        "source_relation_valid": true,
+        "unique_admissible_binder_selection": true
+      },
+      "binder_status": "BOUND",
+      "candidate_count": {
+        "1": 1
+      },
+      "classification": "AR4_admission_comparative_proof_missing",
+      "eligible_for_BOUND": true,
+      "first_blocking_condition": "SA7_confidence_or_safety_gate",
+      "question_id": "v_fy2025_004",
+      "reviewed_semantic_result": "strict_correct",
+      "reviewed_strict_correct": true,
+      "selected_fact_ids": [
+        "71bd06d15b6465ce3cc482db9381a3216507716c6a627de5f6408bab3999e909"
+      ],
+      "selected_handles": [
+        "F02"
+      ],
+      "source_artifact": "nf-v2-03-r7-1-admission-handoff-audit/eligible-8-case-audit.json"
+    }
+  ],
+  "runtime_candidate_ready_upper_bound_after_r0": 7,
+  "runtime_safely_bound_reference": "4/56"
+}

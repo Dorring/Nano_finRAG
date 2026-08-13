@@ -1,0 +1,32 @@
+{
+  "authorized": true,
+  "cohort": [
+    "jpm_fy2025_005",
+    "ko_fy2025_004",
+    "ko_fy2025_005",
+    "ko_fy2025_009",
+    "msft_fy2025_002",
+    "msft_fy2025_004",
+    "msft_fy2025_005",
+    "msft_fy2025_009",
+    "nvda_fy2025_001",
+    "pfe_fy2024_002",
+    "pfe_fy2024_003",
+    "pfe_fy2024_004",
+    "pfe_fy2024_005",
+    "pfe_fy2024_009",
+    "tsla_fy2025_003",
+    "tsla_fy2025_004",
+    "tsla_fy2025_005",
+    "tsla_fy2025_009",
+    "v_fy2025_005"
+  ],
+  "executed": false,
+  "model_calls": 0,
+  "reason": "threshold met; execution intentionally not started in R0.1",
+  "repair_action_by_category": {
+    "DR0_RETRIEVAL_MISS": "targeted_retrieval",
+    "DR1_SOURCE_PRESENT_FACT_MISSING": "materialization_only"
+  },
+  "retrieval_calls": 0
+}

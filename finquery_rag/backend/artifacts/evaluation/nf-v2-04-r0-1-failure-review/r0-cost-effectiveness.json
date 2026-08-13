@@ -1,0 +1,14 @@
+{
+  "additional_binder_calls": 62,
+  "binder_calls_per_new_bound": "undefined",
+  "economically_ineffective": true,
+  "input_tokens": 1574861,
+  "model_calls": 0,
+  "new_facts": 262,
+  "new_facts_per_safely_bound": "infinite/undefined",
+  "new_safely_bound": 0,
+  "output_tokens": 2410,
+  "repair_latency_per_safely_bound": "undefined",
+  "retrieval_calls": 0,
+  "tokens_per_new_bound": "infinite/undefined"
+}

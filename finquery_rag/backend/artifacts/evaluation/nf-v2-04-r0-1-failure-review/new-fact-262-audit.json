@@ -1,0 +1,3856 @@
+{
+  "counts": {
+    "RF0_new_fact_from_new_physical_source": 259,
+    "RF1_new_fact_from_existing_gold_compatible_source": 0,
+    "RF2_new_fact_from_existing_non_gold_source": 0,
+    "RF3_duplicate_semantic_fact": 0,
+    "RF4_same_metric_different_period": 3,
+    "RF5_same_metric_different_statement": 0,
+    "RF6_broader_or_narrower_scope_near_match": 0,
+    "RF7_structurally_new_but_not_slot_relevant": 0,
+    "RF8_other": 0
+  },
+  "gold_source_financial_fact_reference_before_after": "33/56 -> 33/56",
+  "model_calls": 0,
+  "new_gold_source_financial_facts": 0,
+  "retrieval_calls": 0,
+  "rows": [
+    {
+      "candidate_ids": [
+        "candidate:v1:0df779ee1c49afd7c4887e400fa72f763ab35e20eb3e69f8c2176574a0cb64ea",
+        "candidate:v1:655549c958753a9cc6e96274f0d16e3eb591b06970759e371edba65c15b662a9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "0043ead2e94d6a65875cdd34cb9c4c3541b7f0bc70310c95091c2a26a1d292c6",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "united states",
+      "normalized_period": "FY2023",
+      "physical_source_id": "78179ebd90114e4886af38071efb20c643efd57d11b9d1a5864fe42aba876818:844521bd237f7abf9773708d18f4db1b2b9eb9d0f83204644d5c8505f5988e98:113",
+      "question_ids": [
+        "pfe_fy2024_006",
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:21749f13dcc9547252388dd90cbfd25609f5f58be5ce25b8697af53271566b15",
+        "candidate:v1:fa468922b5abef667e88acd78a28461c2f3767f8432e21e881b34ca07218b0c9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "02b92afd4f4ade37d1c45dda7d7739d3f058f230f361746ce544e7aa1b03b533",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "consolidated net income",
+      "normalized_period": "FY2023",
+      "physical_source_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:1b5e0cd117fb22053dc372f9ac2d9b3f2184b0de5ebc0deb29a0d111051fde30:63",
+      "question_ids": [
+        "ko_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:b69b4d50f7425b73be97a5528aa4fcb7fc2d6906aef2fe309f90a80c2cf24978"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "03c75a26caa605c377c935f3414f99fca25700bea42129c58bdf66e07641232c",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "september 27, 2025",
+      "normalized_period": "FY2024",
+      "physical_source_id": "2016faed04f03df7ef6aad0be8f232521469d6ba19428379e552d55dc23667cd:c948fea99ecd11226e79ea0064555b55004fa228a514b3d40761f0901ad5712f:32",
+      "question_ids": [
+        "aapl_fy2025_007",
+        "aapl_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:202bad0562714f6d8a3badf6ace6c5c048c64eca4f93a38bc69e9d0d7748db3d"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "0523c51b4d3140b2f9b3b4fade4e95f748903909e66f3ed4de41fb6e22727e62",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "north america",
+      "normalized_period": "FY2025",
+      "physical_source_id": "b400059b66e1f9357848d4b715ed949f265cd836af221911f51e783a2b14c75a:3cb590833c23a6fed32a6bada7b6fc1a584b77b1dedb631c264d6002015a8145:55",
+      "question_ids": [
+        "ko_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:61c8d5eb3381c6049f884903ec5db333b2501a50895d1b9eb2761c36714e20eb"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "0682f50100ee1ae6b946a68fe219ca6fc1e51965894eefc81a685f5daef11f18",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "all other",
+      "normalized_period": "FY2025",
+      "physical_source_id": "55988882bb8a1a6536348d2e600e81993b264324fe69094862e44e7d02763d11:cb759b9fd74b3b559b53a08027fdcff3ed525b8642ba174b4d2e87d6cd6d05cb:321",
+      "question_ids": [
+        "jpm_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:cb239faa1b28169af729717a3ef04f1e60d01e30985cd8026e345a4192f66f7a"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "0732988deb020eaf58638d0eaf2e148145b44a19e0c29d3d6ce4c8eeab369e37",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "other",
+      "normalized_period": "FY2025",
+      "physical_source_id": "986a79441e2a026b370662f10e65340aa1a1b2ecbddcc7521ae14d47e68f43e1:19b92ca93b8a2e8594443502f4eef99acd4159e0c719cb0a6d5a2f8c428baf70:44",
+      "question_ids": [
+        "aapl_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:5f9996f41c39532e081972e27290857942b942ffd0ab5386313029daa16d384a"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "07b4193daf852b135d91c217d9454f9d6dbed17742e355cae76c52d66ab3a923",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total automotive & services and other segment cost of revenues",
+      "normalized_period": "FY2023",
+      "physical_source_id": "43db179fda1d82495b0a73cc48926b860573c6a8183abdbaf10100c2f2754351:2da7d4ef144f8e6f51032d47ed071282d8a3732b725f15464f8475553204dd06:56",
+      "question_ids": [
+        "tsla_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:e59c77672007b34cff3f358315d81c68eb361bee38e5c7a883170586a5087a8b"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "09966ef31cc0eeffa1cb8561d588c5336980e3bdce82489bc7385ccb3ddeefef",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "percentage of total net sales",
+      "normalized_period": "FY2023",
+      "physical_source_id": "a24ead98b9749a8d419a35cfdb84a8d52f8b88d4ae995e03205494f64611311c:8b11759ac632c9c5b0afb8cf94434600041b283e549c1e001510359e96cf0605:27",
+      "question_ids": [
+        "aapl_fy2025_001",
+        "aapl_fy2025_003",
+        "aapl_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:a9b354dbce4f2c9c09e4aca386773f3e47b805e4c5f17546aac4f502c093696b"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "0a1e90387e4924c0dfe8ab4b487990d47513cca551ae39a60423582f06c35eb3",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "commercial banking",
+      "normalized_period": "FY2024",
+      "physical_source_id": "63b579500e55a49b576999ce66742fbd271442a57dd8008577754134e4f80b79:058ad864ae168fbbf6d4b146ea5e6cb4e9f0f1a0317615944e4d4b886f60874d:102",
+      "question_ids": [
+        "jpm_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:74cb7cf69c8b615a959e0f0cb596cd2abd95a54afe332292ba3f362102c2daaa"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "0a380db9895bdf7a441c973a52c1be0f91c1f01d55e722cb382c4ab66fc334f3",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "commercial banking",
+      "normalized_period": "FY2024",
+      "physical_source_id": "86d66bc3ca981023bc28ac3999f26bd9ce2fcf9d38b518b10ec261da7bb2c1c1:8c72848ff921baf9c278a6b606e5d74f68f36abb208af1fd31849cebf6ad4d82:104",
+      "question_ids": [
+        "jpm_fy2025_001"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:650d8a765ff5b48a45b270c68c9ea05a0c40f32e14588dc11470a30ff5fa0cf3"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "0aa9f6e2ab87222f4a97f278cd09470460daa99564336ed2433023702bdc035d",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "basic (1)",
+      "normalized_period": "FY2025",
+      "physical_source_id": "1065bc2f80d46aadfb54b65e30c493dbde6cba0a1d9b63103d3da9a5c0790617:8333995a5b28434305aa32346476e0b4f0eab321acdac4b6d2122a36aad820aa:157",
+      "question_ids": [
+        "nvda_fy2025_002",
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:e2988412b29753853b3b9e9e34dcbf66abc27edfcada78e8bdec75fbc623ac1b"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "0ca2806369fe247ebe414d853ec39b30caebfdfbbb4d60fd06c304413a21a8b5",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "2025",
+      "normalized_period": "FY2024",
+      "physical_source_id": "43db179fda1d82495b0a73cc48926b860573c6a8183abdbaf10100c2f2754351:8af49c21987ab830981368de36d259400d54cbb49ae958593ccdaad7d22d7e58:56",
+      "question_ids": [
+        "tsla_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:ec50cb72a2c06a3500130d0c236be3245ccda94be6d53f01b84ecfeeb3848d43"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "0d4a53b5e654f09f66f74ad19d16eac8e2fcfa3bc16044aa21b76b1f6f79a01a",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "cost of revenue",
+      "normalized_period": "FY2025",
+      "physical_source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:fee43827bd24670877ab4e689dc1da5369e4005a16e76c7fdba997b6bb06dce9:26",
+      "question_ids": [
+        "msft_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6dcb723ac6ad1060e6121c62fd894e51886ac00a0c249cd6e16274b6ee4673f0"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "0d52f94f8d4d53c1032eb92b6cc0e924da96fd6dba1a09933f33129b1827b3a6",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "operating income",
+      "normalized_period": "FY2024",
+      "physical_source_id": "be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211:8b0a3b3ed65606ffaa8dfe77cd39694687203154b8168a7eebb019eca3a99def:80",
+      "question_ids": [
+        "msft_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:8e02a20089b8e73d3a685e45745add57e68e0107ad07ee6c886c7cc5b8b49912"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "0e090bbba4ebf03383761a2097509eac8f86e315766b86a8599a9c87e1bd6bff",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "interest-earning assets / trading assets – debt instruments: / interest-bearing liabilities / trading liabilities – debt, short-term and all other interest-bearing liabilities: / percentage of total assets and liabilities attributable to non-u.s. operations: / liabilities",
+      "normalized_period": "FY2025",
+      "physical_source_id": "9786f768f5c900ca9e96f92df47bf9d098ae3e731838326c2ff429fc12c805a5:771b6685e078c0ea2f3f98abd59fe3a7283f051f1ba8d279f65d550df2a0e160:349",
+      "question_ids": [
+        "jpm_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:29dc9f260221b92c374e4d5fea517de0abd3824e87581dd018e15472966459e9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "0e184ed426c9aa17a90367d0d0d4774543dd63f51b1bcd6c1eb1334b1861e503",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "pfizer",
+      "normalized_period": "FY2020",
+      "physical_source_id": "d9ce35f03184e2003cb0e78a4c43d9efb605cf881af29af16a6a1b19add85211:70e4ede1efbeb357807b4cfd13624271f9a29174c8b6166bfebb270b85c92210:36",
+      "question_ids": [
+        "pfe_fy2024_001",
+        "pfe_fy2024_006",
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:c7b49d234ae8b3d8517977b4278f7ed372d72deada984a3e2c13cfcd81177f07"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "0f73fb8acca565343b4f45c09d08b7a58a424a5945c9c0c1a166121dbb3b1b7a",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2023",
+      "physical_source_id": "8bb034b6d95c3624d8140fcbac83adfbdae987566ba0496e8f726d122cd0335e:9acd09d58263fd8fa9cb6ff1c07dc9f56b9c5d45f2e0a9f13aa505f0b1f18044:281",
+      "question_ids": [
+        "jpm_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:1416ef59b38a1d0a05c5fcf032e943fb8c31ee1b2239e5a87d4eeae4d6038776"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "0f9f5ded99346b16cf74f6ca45ba7c9cdb8540d277d7b19a9ee689a7125bffe3",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "graphics",
+      "normalized_period": "FY2025",
+      "physical_source_id": "35765f93385ef55879a2fc441d3309206f4c44651f4e9d57a7fc768a1b2b211a:e76ab8191dcb984ad446a9e0eef8565c3b8932517a6e47536d5054956f3d02d3:133",
+      "question_ids": [
+        "nvda_fy2025_001",
+        "nvda_fy2025_002",
+        "nvda_fy2025_003",
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:f8b7ee516b7e3512f2abe762f9fb910b98905c1d07c0527aae337adf738ed43e"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "1140af982029a13495a87cef0d7e6e5194e8d493d8ab456f46d447abfb5de996",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "assets / trading assets (included assets pledged of $165,927 and $136,070)",
+      "normalized_period": "FY2024",
+      "physical_source_id": "59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd:270ece309453548d4a65568b1fb0339ff5a55c6c6200241924b8ff7e7a01c171:199",
+      "question_ids": [
+        "jpm_fy2025_001"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6017a896787e159a17d87a7237ef5ffb7e0050e3c844af170d807b0a44bdf1ef"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "11d20a7fa277124daa17076108954404be356d6ca2e1d6abf4fc86752c03e108",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "operating expenses / non-operating income (expense) / class c common stock",
+      "normalized_period": "FY2025",
+      "physical_source_id": "047c6a56c7f09d391ac993d738c97b84bae5339ad9a1873ff5d6dd98ff693439:77b72bfd3e2bb9d13e2d4e2470386d6b159a6c15099dcdb779ceca43a708fbf9:75",
+      "question_ids": [
+        "v_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:0a795338fa8ea5a2742bba8108e35e9fd94e278e9d779f828f444a2414cd1b0f"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "12374d477f4db6fc560a88931ed065ea04be1eb02d165bdf5be5a86adae5f83e",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "down 5%",
+      "normalized_period": "FY2023",
+      "physical_source_id": "d3c65ef436020ece87330b1e94c982c372826ed4976210a139b40470321a630e:ba6fa1e81f59fdb8584d9de0058e0ef4c962eedfd7e611758d64d25e63371374:46",
+      "question_ids": [
+        "pfe_fy2024_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:495950de53685f9e89d49ba508273e8fdc0d6acc83cd1b6d7ebf0c34ecc074e4",
+        "candidate:v1:af70becc1ba84ffaf910019a40d292f9928c14e1bda53f7e4472d1faa1be7cf0"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "13312fd32647ae1c64278b62e13307f24acac75d6f86180664b4069bd6e45e9b",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "net sales",
+      "normalized_period": "FY2023",
+      "physical_source_id": "30111e6bc721a156a80ebe53d079fa66e2e32a3b56054a98edb2b1a23a059af4:6bd19e65f71502093f062a4a8e004b05f2b07854f22ba7a599941b31e6eb230e:76",
+      "question_ids": [
+        "pfe_fy2024_001"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:e2988412b29753853b3b9e9e34dcbf66abc27edfcada78e8bdec75fbc623ac1b"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "15f7187f2bf0abcdea795db73d1b62b47587f210db6ad31c416bf9ffb7668028",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "2025",
+      "normalized_period": "FY2025",
+      "physical_source_id": "43db179fda1d82495b0a73cc48926b860573c6a8183abdbaf10100c2f2754351:8af49c21987ab830981368de36d259400d54cbb49ae958593ccdaad7d22d7e58:56",
+      "question_ids": [
+        "tsla_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:c318a1607effbed1b39980aca9f693efe2d1fe19c067cbde78020febde73eaf3"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "16055e738619b5b8ffdcb740d565a661bb545db1d14124d889a3ca491254477b",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "enterprise and partner services",
+      "normalized_period": "FY2023",
+      "physical_source_id": "0924e3742ff0dbb028cc1ef4c11aa6d1c887a6bce28620e9f5ab7112f4b7e657:d3b2b3421eb86608772f20cbfbacd42da3dab4a33a8b835ccd2b5ccca6a82c70:82",
+      "question_ids": [
+        "msft_fy2025_001"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:b34e2092404ba11b425b472681bc92f606e52b52e7b0d322b8f10cebdbbee2e4"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "16544dd355dfa80e15d63b92e92749b2208809d50dbbce049af230287080bdb3",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "diluted",
+      "normalized_period": "FY2024",
+      "physical_source_id": "21628df58826aff5bba4db351f4f8717cb070f77a8161dd7764aa1b09229448a:b1ea4ba84b286db8aa9764c274be35289999b795371171feed99ae28f17b0d89:76",
+      "question_ids": [
+        "jpm_fy2025_003",
+        "jpm_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:eebd9a21de748e0388df045321f7973a17b8c0b36983ec367f47760e56a33a28"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "165f08b05e2485d5aec6642de3d4c3f8e301b1bc2c0278026281aececff7d82c",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "assets / liabilities / accounts payable and other liabilities (included $6,660 and $5,893 at fair value)",
+      "normalized_period": "FY2025",
+      "physical_source_id": "59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd:376af05291d11a9774bccad4d9fbe037433ee1c46295a8be153cc60ab26eebc0:199",
+      "question_ids": [
+        "jpm_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:3b008b0cb23f19bd18b70096901edac99f58b82d1bcbafecd398d9cb85bb93f0",
+        "candidate:v1:3e30ba6ace3dedae2916514dd455a8023da48e860494614092259ac4b407cd76"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "17ea95b265ee411a71e1b427d24d5430bf353403b9c643b356ea6f67d4030c00",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "automotive leasing",
+      "normalized_period": "FY2024",
+      "physical_source_id": "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:04793c2cf26b75ef79852289a13419e7e706f1b1f76bfe7b12cf28f8e662a5af:77",
+      "question_ids": [
+        "tsla_fy2025_004",
+        "tsla_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:5a197d671dd1af578775ba4507b5d61c56b3b6395a1650cc71ea84746f708cdd"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "1809fe9476a6fc231ece1de60a76e93fa08f1c584fb6b87221fa6a3ee61f8487",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2023",
+      "physical_source_id": "8f417bc9d4f723137973d7d5e5c952594307981eb0e45b2866d4a7e5e11940a2:f97e4cc07e6163f15c19dd4a503ade0d828872e1aa8ba20039560e95b14791a7:118",
+      "question_ids": [
+        "ko_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:e0735f16789e8837da0dfe9ee5a7d13bd7a50c13426ff43d9c198dd2be49ba50"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "18d8cf140cebd35291fb02b84a3cbbc375eb21dbbd62a5b0ffe4bcc68e67895a",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "comprehensive income",
+      "normalized_period": "FY2023",
+      "physical_source_id": "673ead3ce91ec6cc5337b6c6101478dad2771052c7162ac2e2590ad67292f9e2:65abff3841bed59e9b05a3a2f8d97392c9b55c58579cfc9f609c55250076616e:198",
+      "question_ids": [
+        "jpm_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:44704956af5f0b34c0d94ba14149a418bcd0836d8dc54b3e935db05b932c5e86",
+        "candidate:v1:96e7375fed3e81d8b59e155845b03d8ef001ac75a49b8e1f8dc621e7c6a8dd99"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "1925ead57e32f094385f66c0c9be22df8ef63ae15d6a492c2c11ee319fadfd34",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "net sales",
+      "normalized_period": "FY2022",
+      "physical_source_id": "c1e07266a4d8f049cefb2cdc5202903ae6d7dff610b0400d89815913ef5f4332:e80437e6cd8725e4bcae5f4fb8cd661ad3d4effdf5a1026082dcbb0ad1334ea6:77",
+      "question_ids": [
+        "pfe_fy2024_001"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:002a51480b0c80e8ba05731bfbdb45c4eaad6a58d823ce00f22549e094963f54",
+        "candidate:v1:fbdc921326a1812f3efe9116d06bed57734842d8a242f05dc60acaebb96f6ad9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "1abcf894a408ff661ee6c53d16362d2bf3df6af51914c331acfc5bc4085e45d7",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "revenue recognized",
+      "normalized_period": "FY2025",
+      "physical_source_id": "688d0eba067093a8fdf32fdbf39b11de357138b2da291eb5520fa218dd796647:fd2a58a6c146acf4f5222c23d1ddb3913fc11aa0b9565bb0fb67e02875c9ca27:78",
+      "question_ids": [
+        "tsla_fy2025_001",
+        "tsla_fy2025_002",
+        "tsla_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:60023f6bc43bce51e66afa42bcbdd7a4036d5d6a0a56f70d29c96a91a7b85759"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "1bb31e3a3ba9bdd2ece05e00d7e5f4396feaba9766a367a4fa3b8ae12abf8e0c",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "singapore (1)",
+      "normalized_period": "FY2023",
+      "physical_source_id": "7dfd18dd365fbd0db662a9b8bfc87e1b4adbf0c102f273dfb592b6d1ae2fb3f2:ef0041fc48ed9062bb4fe3d7f2ff13cdc5f91b02941d2845986249cbba3f5b29:171",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:84906f964c07b217ced4756fe157def11a2dbfa0280481cb73f19e494cce86f2"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "1be59b61d860af76491753388ef4e93374c9e424d913a74792ed53bc804a1cda",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "second quarter",
+      "normalized_period": "FY2025",
+      "physical_source_id": "0ba7a2ff83ac5835c22e44cf99302185b3226f83f0d91b7789d09140e9a31b4f:89cdcb77d12a83d412e2158c51836aa45448482e64a780abcd77db1f8e1848c2:73",
+      "question_ids": [
+        "msft_fy2025_003",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:77b9e9e542813b783d1c35d460576e86d3ed640c1a81fc867578f1710e12d9de"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "1c007e31f62c993e6129d1fab8425fa564c652de9b82eb7f5dba68ef2b9ac41e",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "finished product operations",
+      "normalized_period": "FY2025",
+      "physical_source_id": "0137ca802e5c3d9f23ba82be85520b49764b4286107742db5536331e1a070aae:90c9f029f9848aa7b4493e1b95d14e883eb6fc9c5083a3fde0b2422d113c3d00:39",
+      "question_ids": [
+        "ko_fy2025_008"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:21734ed630e72ff23a5f0eeb4d47362dbb454dab49501c0e57b34c1bb4940a30"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "1c8edb5df014b3bc7dc31c6697f203cec5a254fd0f23cd7ce694e4b6217cf1fa",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "basic",
+      "normalized_period": "FY2024",
+      "physical_source_id": "4a8f4034c72c78562bc7d8475bb93a06cafd908cbec8369be89a29f5bf32e5c4:9381453755b06c73aa0a242027fe5126094105a2a1b294b130ed3c6623c21c41:38",
+      "question_ids": [
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:94ef2f97506f309c30a146373a711f6025c7527c02eae5140d8b9c16a55f8cee"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "1cdd8ca28762d901ef2718fead9e53010b29809ce206979c7c2480034b632c85",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "all other",
+      "normalized_period": "FY2024",
+      "physical_source_id": "35765f93385ef55879a2fc441d3309206f4c44651f4e9d57a7fc768a1b2b211a:537cbfbfcc9a3637ba38a3fd6d63d4ab9cc6eb8b56bea616f6e07a01d8c8bfd0:133",
+      "question_ids": [
+        "nvda_fy2025_003",
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:d1c8a854b58e50d35258630d391ae8be3fcaa6ecfef9d1a9be95475df8668882"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "1e403744ab05808287bf729a63aa5bd267c10b6cf5508b7e6be744ffbe3b2ffd",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "other operating charges",
+      "normalized_period": "FY2023",
+      "physical_source_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:90d3222e162bf5bd9e9510b04537c20c8788b28a150569d20eb2034fc9aa811c:63",
+      "question_ids": [
+        "ko_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:93cb2b32ee0765f59e55989be8f30b90183bb3ce3767ef14f293fc96b1431edb"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "20240a6b38e749767536ff6557abd06b3d6b5d8c40b5112cc7a50ec5d41f44d9",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "taiwan",
+      "normalized_period": "FY2024",
+      "physical_source_id": "7dfd18dd365fbd0db662a9b8bfc87e1b4adbf0c102f273dfb592b6d1ae2fb3f2:fe3eac246e0b7abfbc3d163fe15951ffc8891825a1c0f611f18781eecfa2b110:171",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:0688645893ed8b011a505348e60b707b8872ddccf349df27bda2b6cd85ea18d7"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "20860c3af5c0e289a3ecd7b3c400d69328490415dcca5626a4a2fc0151dae59e",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "other",
+      "normalized_period": "FY2023",
+      "physical_source_id": "0924e3742ff0dbb028cc1ef4c11aa6d1c887a6bce28620e9f5ab7112f4b7e657:2103239abeeb34c45ca9862c0060b3e4420b5d12074626b34e496836c31f8bce:82",
+      "question_ids": [
+        "msft_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:202bad0562714f6d8a3badf6ace6c5c048c64eca4f93a38bc69e9d0d7748db3d"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "209ce64ecbb99681127991624ec0fb7b790dedfee415f4fce2501d4566d6e7fd",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "north america",
+      "normalized_period": "FY2024",
+      "physical_source_id": "b400059b66e1f9357848d4b715ed949f265cd836af221911f51e783a2b14c75a:3cb590833c23a6fed32a6bada7b6fc1a584b77b1dedb631c264d6002015a8145:55",
+      "question_ids": [
+        "ko_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:da4d9371b211e1605148fc39eb625aa598b4f7d512d3bf9a53081c192174e39f"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "20c34741da1b26225ee28760d5a3a20ae6beea2915e0811d854a4befad93400a",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "(millions)",
+      "normalized_period": "FY2024",
+      "physical_source_id": "230c799d529ce31b12c9aee22cff192045eb21449f707b1217cd29e524c5e07a:56b4079592abda284e7daeab3200cebcc9a78c22142d775b8b82e916471d70eb:80",
+      "question_ids": [
+        "pfe_fy2024_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:2d0709a5e1cf47120cd4f6f407437b16abed9be0d646d1fbf7c983b7b7e0713c",
+        "candidate:v1:c932d9f179fbd15e059d50ae6bf8ce1a869ebffbcabe8c2301e19b2d6f21dd86"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "213dfc17348ab31dcae3e5a929e8c6d2da14de46ef723f304f4634281cd35e7b",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "international",
+      "normalized_period": "FY2025",
+      "physical_source_id": "9b17c98732f1153422a5b5cbaf8fad697f18b3fa1c7da1f76c31b82f2487510e:5a5eccefa9048c5d25d014ae0aeb428ac287016d73a50b363c7bb017728defcc:118",
+      "question_ids": [
+        "ko_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:e1fa36fdc6de9e1c4ac824cef2e1211f1ce7016c3d2344319d58b38d50f84ca7"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "21e8330d676948229ecf3a3c4f80128b7a1bc9270ae75429c041ee6e64b5b4f2",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "jan 26, 2025",
+      "normalized_period": "FY2025",
+      "physical_source_id": "1065bc2f80d46aadfb54b65e30c493dbde6cba0a1d9b63103d3da9a5c0790617:983364b7514c6974ba0d242497f98b7cf6525a1fbd262dfcae746a3607a630e2:157",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:bf5967c5fc52219e8dadcf0dba8b2186e230fc58a5c49b17a739a7ed6712d86f"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "22a8aae8161275adaeda885eb756e9592d6e2db394b1e91b60725908825bc5dc",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "equity income (loss) — net",
+      "normalized_period": "FY2025",
+      "physical_source_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:ca4dac7ad59ab10cba5387810aa4c95da49ad57b62269e4ea40847c3f9fb4a64:63",
+      "question_ids": [
+        "ko_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:10ad22d5e117805aa5d14436838cdff26f5c74609ec32b2fa1c9e2c08bf95f8e"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "23b6831a5af5f57f5267ae275e09f5164234eac1c41546f4050c810cfad5ab98",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "assets under management / total assets under management",
+      "normalized_period": "FY2024",
+      "physical_source_id": "81552dddf55bd6087d019725fe05bda4f0664ec1ea894f6f3387963f326ffb23:513c742c7c1e4b20246e66d46de77a344c607975121efc5ef27dbce651937138:111",
+      "question_ids": [
+        "jpm_fy2025_001",
+        "jpm_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:b34e2092404ba11b425b472681bc92f606e52b52e7b0d322b8f10cebdbbee2e4"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "2ab2878b078b8672ca77db74baf08b9666d2bf31b0c97080c2f98a1a48bd8062",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "diluted",
+      "normalized_period": "FY2025",
+      "physical_source_id": "21628df58826aff5bba4db351f4f8717cb070f77a8161dd7764aa1b09229448a:b1ea4ba84b286db8aa9764c274be35289999b795371171feed99ae28f17b0d89:76",
+      "question_ids": [
+        "jpm_fy2025_003",
+        "jpm_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:2d0709a5e1cf47120cd4f6f407437b16abed9be0d646d1fbf7c983b7b7e0713c",
+        "candidate:v1:c932d9f179fbd15e059d50ae6bf8ce1a869ebffbcabe8c2301e19b2d6f21dd86"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "2c8ff459e1fb57aa61cae1114d7b3a3f85bbe0ad2e0ce67568567c2e1f24e501",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "international",
+      "normalized_period": "FY2024",
+      "physical_source_id": "9b17c98732f1153422a5b5cbaf8fad697f18b3fa1c7da1f76c31b82f2487510e:5a5eccefa9048c5d25d014ae0aeb428ac287016d73a50b363c7bb017728defcc:118",
+      "question_ids": [
+        "ko_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:951468f35d6a65dba43705e92509ac7012d1b296c9ebec41ebbd1cef108b4c52"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "2d81c53454cfc1775e3f899f2ea0eb36340b59d6965a891f3dc73d92410164e6",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "foreign",
+      "normalized_period": "FY2025",
+      "physical_source_id": "5dd4182b9168a55be215b055a9f0c4add7c4b1bbf360db821d2c9d907fb180d7:b07a754251c4c6a5a36dfa6ad0878bdebb55e9047fa564f3436d5303dddfd1a4:66",
+      "question_ids": [
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:95097b189c050c9401d8c639f09855728b87506a19d0fdf56e20270851a754a6",
+        "candidate:v1:e234a30f9bbdebec9a79e95093de0fe455d24f87cb1abd46f5254cdec000e5be"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "2f80f56e79364a086c0483f3ca51bd8827b8d51dd52b9328da9ba461b800f704",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "consolidated net income",
+      "normalized_period": "FY2023",
+      "physical_source_id": "449390bcf7e2fc995ffe009d70590314ff40139de33d136f2b137270196ad03a:0095f412863f2b5b2189704066106fb118f18737fc5e819d34156b3cb305d246:64",
+      "question_ids": [
+        "ko_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:c7b49d234ae8b3d8517977b4278f7ed372d72deada984a3e2c13cfcd81177f07"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "30ef92d66e38bff831c5d17ee2a10a97434fc2fee7445b83b522a1c946ba9f2b",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2024",
+      "physical_source_id": "8bb034b6d95c3624d8140fcbac83adfbdae987566ba0496e8f726d122cd0335e:9acd09d58263fd8fa9cb6ff1c07dc9f56b9c5d45f2e0a9f13aa505f0b1f18044:281",
+      "question_ids": [
+        "jpm_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6017a896787e159a17d87a7237ef5ffb7e0050e3c844af170d807b0a44bdf1ef"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "326431e6c5ede3d891c66b0e6d5af434a64fe884c8e4de22cbe33439bc072d81",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "operating expenses / non-operating income (expense) / class c common stock",
+      "normalized_period": "FY2023",
+      "physical_source_id": "047c6a56c7f09d391ac993d738c97b84bae5339ad9a1873ff5d6dd98ff693439:77b72bfd3e2bb9d13e2d4e2470386d6b159a6c15099dcdb779ceca43a708fbf9:75",
+      "question_ids": [
+        "v_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:3511f65cf51f6bda4d6a1bc1180507db5d4c46742c976fc1454b5e6589860271",
+        "candidate:v1:8a1ceca25ee49b27358b3c9c497ce849df3938e52757b3bf3c8ff9bf57de924d"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "33e0fa5cab80f3d0b5a79cf2d90d69dba765180e336f7def599148bbed8f2175",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "international",
+      "normalized_period": "FY2023",
+      "physical_source_id": "dd20265ddef36bf9442116ba1021d7d6bf5964fba11264ee229869b078081569:41307c93a5a3d2a7f6f5832ffc45e7e800a88649561c942f1b90030b423b0ae3:118",
+      "question_ids": [
+        "ko_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:e59c77672007b34cff3f358315d81c68eb361bee38e5c7a883170586a5087a8b"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "340f5db959234b1c563cadb168c5b3de7631d163562b8d6eb21707867ec5b2ae",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "percentage of total net sales",
+      "normalized_period": "FY2024",
+      "physical_source_id": "a24ead98b9749a8d419a35cfdb84a8d52f8b88d4ae995e03205494f64611311c:8b11759ac632c9c5b0afb8cf94434600041b283e549c1e001510359e96cf0605:27",
+      "question_ids": [
+        "aapl_fy2025_001",
+        "aapl_fy2025_003",
+        "aapl_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:42266dc4d4a12606cf5ddcbffe0ef28811cd70b1d85cb678f3d084e33a14a368"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "34a52afb924125a267b4247bd27f4460dccd4b477b5bda41609db61d4eb79599",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "pfizer international commercial division",
+      "normalized_period": "FY2023",
+      "physical_source_id": "f8b75b829f7082abd87578ad9fb3d8f2153782e923ebd3921711674c7d0da868:96ecb919ff9c8ab0294bf0a6a1279c5987faf2db8f478d0744a012e0754e9ed8:115",
+      "question_ids": [
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6dcb723ac6ad1060e6121c62fd894e51886ac00a0c249cd6e16274b6ee4673f0"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "3621fba5fe33233317d4380fc847d00d8a8a48d5fd121cbe075828cf96d1e422",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "operating income",
+      "normalized_period": "FY2025",
+      "physical_source_id": "be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211:8b0a3b3ed65606ffaa8dfe77cd39694687203154b8168a7eebb019eca3a99def:80",
+      "question_ids": [
+        "msft_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:77b9e9e542813b783d1c35d460576e86d3ed640c1a81fc867578f1710e12d9de"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "37d6bfc7a915964258cb4bce18c94bd69447b650ca1e6250e694c8a5e4683a03",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "finished product operations",
+      "normalized_period": "FY2024",
+      "physical_source_id": "0137ca802e5c3d9f23ba82be85520b49764b4286107742db5536331e1a070aae:90c9f029f9848aa7b4493e1b95d14e883eb6fc9c5083a3fde0b2422d113c3d00:39",
+      "question_ids": [
+        "ko_fy2025_008"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:43f79fa0f7c9873196f8cc32b64804a1945c162b39adde395b294983619f07d8",
+        "candidate:v1:4c47ce8330930dc4695fb9744cbde41f63a52e06fb64c7bb83721fcc75245a4c",
+        "candidate:v1:54389c7d2c5154fe2cb9a99d4d610e2c2ae593b4832b1b91500490a18fd13ce7"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "37eb338b4807e7f725948f171916891e6e6fb2aa24062d77a40e923ce607f05a",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "(in billions, except ratio)",
+      "normalized_period": "FY2024",
+      "physical_source_id": "d08014be3a8c92cb65b1ac37503855a67ec6a079b444664368d05e25ee2bd2f8:b3cd752866dc9f8d841f70c469e681c832dac5d04eff597280dd204a41959b81:130",
+      "question_ids": [
+        "jpm_fy2025_006",
+        "jpm_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:71ab55335a560efa9811fcbde8757b3918e6a68847321ff9d4c25ff3586c79a2"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "38a6938112d9ac60dfebb66fc50e559de1e52c33c50b28ff0e564a096df3d3dd",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "september 27, 2025",
+      "normalized_period": "FY2023",
+      "physical_source_id": "7d5b495d0bf1e260abff3b695c1ffbff8e2c3e3b2573446c4034897857dd3efe:f8dc5f63ecdd286b502c7b1bf8d506e4455feadf79133b58ea0d53ba1eae09fe:33",
+      "question_ids": [
+        "aapl_fy2025_007"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:b69b4d50f7425b73be97a5528aa4fcb7fc2d6906aef2fe309f90a80c2cf24978"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "3b748ab43ba698d143f046ce1a94c976cc3dfbdfbc9d2a06d017db877b807398",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "september 27, 2025",
+      "normalized_period": "FY2023",
+      "physical_source_id": "2016faed04f03df7ef6aad0be8f232521469d6ba19428379e552d55dc23667cd:c948fea99ecd11226e79ea0064555b55004fa228a514b3d40761f0901ad5712f:32",
+      "question_ids": [
+        "aapl_fy2025_007",
+        "aapl_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:f8bd9f0f517f634f1dae496477b6aa0b3598ca2ef021bc0438155fc88e8566be"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "3cb2bc95791b8d321e2a9e0871b54ed1f5608d6a2431200029a3979e2ca87675",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "operating income",
+      "normalized_period": "FY2024",
+      "physical_source_id": "be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211:1b96d69c1372e6d5ff64fa469c422b3c36008bf3e0941834d426cba25b5a83b7:80",
+      "question_ids": [
+        "msft_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:96faa654b149293cdc268e7dfa198973724c8668d374e46534166175a8fceb68",
+        "candidate:v1:bffdf7ae7c171c12bbaebd374d54dc76310fe3286f70a0e76e68f06ffc19d47d"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "3eda11892c29a96699d733e692d098edfeb6f8b5561b15b32837fe97b8146766",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "foreign currency contracts",
+      "normalized_period": "FY2023",
+      "physical_source_id": "4f31c08fae92ad8dee5196830c3a7b3e1f9ac0041a7e3463cfc1ec0443ff5085:a050918bd133a102461378e22960fd82ae36950c93494eea966fd3ba5d0f5114:86",
+      "question_ids": [
+        "ko_fy2025_001",
+        "ko_fy2025_004",
+        "ko_fy2025_006",
+        "ko_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:9da0f3467969dbe259b5d1aa423e13060b65a1e4ced1a4a69064ba12f8c6bfce"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "402c00ba48dfdf146a6a9513f7b8d8cc67884fcb8ba64828f4ad9830daa76cfa",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "product",
+      "normalized_period": "FY2023",
+      "physical_source_id": "4a8f4034c72c78562bc7d8475bb93a06cafd908cbec8369be89a29f5bf32e5c4:80b876c58f8fcc915c65dacc4d558b9cf0fed89908c07d3b439fa0a92544d47c:38",
+      "question_ids": [
+        "msft_fy2025_003",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:05ffe6812043646c8157620af865d6984a7c0598893c1ba46543596c7d59d0cc"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "40f8b22dd2959d79d85a7024e5a76e8f50235d5f7c136bea3e7469fd0bc4566c",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "net amounts",
+      "normalized_period": "FY2025",
+      "physical_source_id": "f5f3b7e83d4b86f68b394861b4c2ca8afdf016d6a3122c43907131618d8afd58:aeffb55074795c07eadd30e984651a369c05011faf1b6255922c51442884a1b3:241",
+      "question_ids": [
+        "jpm_fy2025_001",
+        "jpm_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:f8bd9f0f517f634f1dae496477b6aa0b3598ca2ef021bc0438155fc88e8566be"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "44dc839875665085889d3ed4f3ecb352891776a5ab82bef57e003939c7a9461c",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "operating income",
+      "normalized_period": "FY2023",
+      "physical_source_id": "be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211:1b96d69c1372e6d5ff64fa469c422b3c36008bf3e0941834d426cba25b5a83b7:80",
+      "question_ids": [
+        "msft_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:9b0284fd4823061a998f436141ada7939117994236818fb88ccf792ffe66e9a1"
+      ],
+      "category": "RF4_same_metric_different_period",
+      "fact_id": "453baa9313626d84efef1e43400fedb8dfafd93317286749e2cd4416d09ce9a5",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "operating expenses / network and processing",
+      "normalized_period": "FY2023",
+      "physical_source_id": "047c6a56c7f09d391ac993d738c97b84bae5339ad9a1873ff5d6dd98ff693439:3e303fca6639fe449704c31a258996e4eed622acb3b0ccd7c107849aa9055fd7:75",
+      "question_ids": []
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:d361164a130eab6b39ed9414ef11aa605905a48e281dd7e181fd0eb8c879fba8"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "45a08c4e6dc90d699440e40f0243a146ff736fc8be5a0b78884f034080aca777",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "united states",
+      "normalized_period": "FY2024",
+      "physical_source_id": "deaf061bae059432d2926aca133f7e50872bf2b55792c05ff00ec1e6a20e4ef1:1e01bf2d0890ad323e4b9ec2d518390e2e0cace1dd2fc36f89b49870a101d6e5:129",
+      "question_ids": [
+        "tsla_fy2025_001",
+        "tsla_fy2025_006",
+        "tsla_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:7cd13209314654b87e72afff1965f77571e579ad5a9776c6534ac37612cd8db3"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "46854034974a6e4e49ae34328729fd069cdf2cd8988883f2419930e4e1ce09a7",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2024",
+      "physical_source_id": "9ae9b0fab1782560ea51ce59b08f88228ff7277fce717df2a0c7f0a4d3fc6386:211e38c9a46075de8ec17ceb4ea403d33543819d84c93ccf723511e0a4a96348:49",
+      "question_ids": [
+        "ko_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6210fb01e5ed0f066901a57cf2b155ac96193981cd168c5bed4394796b218de6"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "46cc0a89cbb82e2a8e51c021744949d2a867b7a97858f9c0ef34469d60b7964e",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "operating expenses",
+      "normalized_period": "FY2025",
+      "physical_source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:14525f0f668b9facb49afde47198cd5c6e7d3e21d6ac5ae3fb36a22ced2fda40:26",
+      "question_ids": [
+        "msft_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:9da0f3467969dbe259b5d1aa423e13060b65a1e4ced1a4a69064ba12f8c6bfce"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "4793b07310b554113b4fc6d6b406c4b1776c7440deb3d16869e80b3e94852f2f",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "product",
+      "normalized_period": "FY2024",
+      "physical_source_id": "4a8f4034c72c78562bc7d8475bb93a06cafd908cbec8369be89a29f5bf32e5c4:80b876c58f8fcc915c65dacc4d558b9cf0fed89908c07d3b439fa0a92544d47c:38",
+      "question_ids": [
+        "msft_fy2025_003",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:2175067fe8a2114ee83622d0fb70729ea3d27f6e5ea411998b4a5ea7eaf1a500"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "47b5b53081e561fbff38d3126623ac4b99d897ed47ddd9e140447650ce76e3d9",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "dynamics products and cloud services",
+      "normalized_period": "FY2025",
+      "physical_source_id": "0924e3742ff0dbb028cc1ef4c11aa6d1c887a6bce28620e9f5ab7112f4b7e657:3ffb905ba7e3a56af28c329b201fc38d2e38c378a483fa8966afb98df5156904:82",
+      "question_ids": [
+        "msft_fy2025_001",
+        "msft_fy2025_007",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6ecef526196d52d3cb99bba6a09748597a6a9e896383fa857edccb402d1cf912"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "48372dc1bdd00033686ebb4ddb3e576853a2cc2a263663fbaca84458a7573dac",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "dec 31, 2025",
+      "normalized_period": "FY2024",
+      "physical_source_id": "20eb435ed26c7da898b0b306431635be535821ca108ac48e43746126959a8418:271ae38896f02ecc84682072047a85f367fbccbecac28596c4303fe35de35db1:93",
+      "question_ids": [
+        "jpm_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:9da0f3467969dbe259b5d1aa423e13060b65a1e4ced1a4a69064ba12f8c6bfce"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "499afff2cd6f476cd3aa49a310210302b500e1335fc293d678979f3fb7032333",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "product",
+      "normalized_period": "FY2025",
+      "physical_source_id": "4a8f4034c72c78562bc7d8475bb93a06cafd908cbec8369be89a29f5bf32e5c4:80b876c58f8fcc915c65dacc4d558b9cf0fed89908c07d3b439fa0a92544d47c:38",
+      "question_ids": [
+        "msft_fy2025_003",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:0688645893ed8b011a505348e60b707b8872ddccf349df27bda2b6cd85ea18d7"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "499cfbb16b87608036acefed894270bd138dc6752b9b266c0211d222aa6cf436",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "other",
+      "normalized_period": "FY2024",
+      "physical_source_id": "0924e3742ff0dbb028cc1ef4c11aa6d1c887a6bce28620e9f5ab7112f4b7e657:2103239abeeb34c45ca9862c0060b3e4420b5d12074626b34e496836c31f8bce:82",
+      "question_ids": [
+        "msft_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:1b00db1ff6125011b4744651ba42adba8cd26085fa56ded27ad20c5554f308c1"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "49a041d699559a22a9ec41240b59689a5c9011b93f96451985945453e6da40af",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "operating income",
+      "normalized_period": "FY2023",
+      "physical_source_id": "be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211:8a5e97a0b867f30c9767181b946721be2ab12fb0d6b764288296740927fa722e:80",
+      "question_ids": [
+        "msft_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:40e5f50d09df6eb7a64a04efb0e68fdb668700741803d2427a4b0bb70e744f6b"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "4a1012ad172a65bdd744f0c7417e5e5c2d91e02f42631d978216533ac5c0a8b4",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "technology-based",
+      "normalized_period": "FY2024",
+      "physical_source_id": "09633167642a74ce39d88d67c80eb32aac7fa14af5278d4a71444a86a7601daa:263bf587e3218ab21c0ef5dddea22141828f177c2fabe9b3470f12435edf377d:63",
+      "question_ids": [
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:21749f13dcc9547252388dd90cbfd25609f5f58be5ce25b8697af53271566b15",
+        "candidate:v1:fa468922b5abef667e88acd78a28461c2f3767f8432e21e881b34ca07218b0c9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "4ab957bf0ef24f07b0ce013856c8f7c9e7d903139995ccea17199f5f235f70a7",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "consolidated net income",
+      "normalized_period": "FY2024",
+      "physical_source_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:1b5e0cd117fb22053dc372f9ac2d9b3f2184b0de5ebc0deb29a0d111051fde30:63",
+      "question_ids": [
+        "ko_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:5f906742b9d42aa40eca6c2c2e0966f2170adbd001fbfc54ae056fd594c941fa",
+        "candidate:v1:605783e135c21acf24b45783c5c7a7dd12ab0c35045f5c98c41a7e740212aed9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "4abf9ddbdd8b57084b1eeaae62e11f8e58537b07ba1de2a4e4f674e6bcbc7aab",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "united states",
+      "normalized_period": "FY2023",
+      "physical_source_id": "ffe88e0e7cae450bf3547c9b2e65377d52ff0eea7d41a97458a784e41f4d7b64:e5b7e0e31dc57de92c330f985fcbf30bd6c79a09b14f1919c3821341788c1ca8:81",
+      "question_ids": [
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:3b008b0cb23f19bd18b70096901edac99f58b82d1bcbafecd398d9cb85bb93f0",
+        "candidate:v1:3e30ba6ace3dedae2916514dd455a8023da48e860494614092259ac4b407cd76"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "4aeeaca732c301e9e5ba0ae5d8ffe63a4ba1ed4f8e81213904901488c3ebc0be",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "automotive leasing",
+      "normalized_period": "FY2025",
+      "physical_source_id": "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:04793c2cf26b75ef79852289a13419e7e706f1b1f76bfe7b12cf28f8e662a5af:77",
+      "question_ids": [
+        "tsla_fy2025_004",
+        "tsla_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:5e9ff99ffe791e85f5cd2264e6b5d78425910c1700f226de650f0100ae766360"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "4b6c01bbdee1915cecb046df124ec869ba0139c015b258b01121f3aa236cbb09",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "assets / liabilities / stockholders' equity / total stockholders' equity",
+      "normalized_period": "FY2024",
+      "physical_source_id": "59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd:e6e6151822238180bad3a19ff0c3c721010a286dff04262de23d77b9039f3b8c:199",
+      "question_ids": [
+        "jpm_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:8d42acdd5d18cd362eb78cda85462efd4eba24fff854e63a1b8ea1cc9cc2cc31"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "4bf3daad79d0fadcc830088b35a223a5d27b601d108cbe9a672e9cae9958ddaa",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "united states",
+      "normalized_period": "FY2025",
+      "physical_source_id": "57c23ebbdf72efe34dee858ebf25b6eeaedc79055f3c20025588d37c10d373b9:01be9b64e458832c513b41e3af9c31344f4bfaf944076df2a65b82dbc8671992:103",
+      "question_ids": [
+        "ko_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:c318a1607effbed1b39980aca9f693efe2d1fe19c067cbde78020febde73eaf3"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "4bf8c62299d94fef163162227c41cd265c222d522289772a30e30f2db154e284",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "enterprise and partner services",
+      "normalized_period": "FY2024",
+      "physical_source_id": "0924e3742ff0dbb028cc1ef4c11aa6d1c887a6bce28620e9f5ab7112f4b7e657:d3b2b3421eb86608772f20cbfbacd42da3dab4a33a8b835ccd2b5ccca6a82c70:82",
+      "question_ids": [
+        "msft_fy2025_001"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:74cb7cf69c8b615a959e0f0cb596cd2abd95a54afe332292ba3f362102c2daaa"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "4c8311bf97b3f67526be32f32ccb6b8c1c04ba875d60bdb4f116252f684ac3d3",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "commercial banking",
+      "normalized_period": "FY2025",
+      "physical_source_id": "86d66bc3ca981023bc28ac3999f26bd9ce2fcf9d38b518b10ec261da7bb2c1c1:8c72848ff921baf9c278a6b606e5d74f68f36abb208af1fd31849cebf6ad4d82:104",
+      "question_ids": [
+        "jpm_fy2025_001"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:37b953324be442efe1aa68cd93e679d48739ae06c27e716ac83945e815bd6ffe"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "4d14441c27d5b2c48aeb5679153de20a078e11efc1f179133f3305275ca3baed",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "windows and devices",
+      "normalized_period": "FY2023",
+      "physical_source_id": "0924e3742ff0dbb028cc1ef4c11aa6d1c887a6bce28620e9f5ab7112f4b7e657:b6613b1397717c62a77cb101cf9ed4e58ffe1a47f4fe89015002c6474b01003f:82",
+      "question_ids": [
+        "msft_fy2025_001",
+        "msft_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:bf5967c5fc52219e8dadcf0dba8b2186e230fc58a5c49b17a739a7ed6712d86f"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "4d335454c2180debef103e619ad697f0bbc011d41f41a74fd52da8e8813aa32e",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "equity income (loss) — net",
+      "normalized_period": "FY2023",
+      "physical_source_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:ca4dac7ad59ab10cba5387810aa4c95da49ad57b62269e4ea40847c3f9fb4a64:63",
+      "question_ids": [
+        "ko_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:744e08f9258ac129b5a38fb06c9a3c0b2094325546cb799212165a3b8ebcad91"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "4e19fb68e6d18a615024fe1a4a19155af2a214d1795b0be3c33826cab1735799",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "banking & wealth management",
+      "normalized_period": "FY2023",
+      "physical_source_id": "df62092fb744bfb6b847b8d6a3bfe3a24037d984d9dea89a85baf608c32820dd:e2d5d1605a1f87fc66ee0e4a59ad70eb3dd3b8656126e5b191d884a9ea5f481b:97",
+      "question_ids": [
+        "jpm_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:177fb294eda7213693e673cd4bd029240b7f51414ed5a4c43ab0844869cda6dc"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "4e53eee2db17bdd2d1e2d4f03a82bb4340b6bda7d7556acd4d4c92da062edf98",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "balance at january 1",
+      "normalized_period": "FY2024",
+      "physical_source_id": "e7df9db601f4ae6102ef9b2128835cacf5c72329f8b0fe727f5312988bc0df9d:51355e8b88632f9787074ee2221b5e1e5f2d0377e6e167dd4ce530aec3005c77:200",
+      "question_ids": [
+        "jpm_fy2025_002",
+        "jpm_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:29dc9f260221b92c374e4d5fea517de0abd3824e87581dd018e15472966459e9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "4ee6681db725c756d9f68aca7cd9aedaf1ddffc15aa9d377b192566b1ecf6d7c",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "pfizer",
+      "normalized_period": "FY2019",
+      "physical_source_id": "d9ce35f03184e2003cb0e78a4c43d9efb605cf881af29af16a6a1b19add85211:70e4ede1efbeb357807b4cfd13624271f9a29174c8b6166bfebb270b85c92210:36",
+      "question_ids": [
+        "pfe_fy2024_001",
+        "pfe_fy2024_006",
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:1b00db1ff6125011b4744651ba42adba8cd26085fa56ded27ad20c5554f308c1"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "51ea653af18a45a6db1b27a8d54316022027ff2c695cc1f6fae889a2ee28a260",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "operating income",
+      "normalized_period": "FY2024",
+      "physical_source_id": "be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211:8a5e97a0b867f30c9767181b946721be2ab12fb0d6b764288296740927fa722e:80",
+      "question_ids": [
+        "msft_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:2d46d05c2a78fbdb2ca6a3c9b61e058f54eb43127bce2a39d4640a9829510859"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "53c5ac4b27719e666e92930b14a6c752b3b8a4b560d5a644a35dd23c4b90b174",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "international",
+      "normalized_period": "FY2022",
+      "physical_source_id": "566619a8132d789da0f3cacc9e4662558bb4dd33f4d93c784ff6223cf3c0d3c4:28d2f01260b70e60c55f309a4f0bed84aa1e9d1488faca7b882841447afe57e6:80",
+      "question_ids": [
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:71ab55335a560efa9811fcbde8757b3918e6a68847321ff9d4c25ff3586c79a2"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "541417ec007b6578ac9f1d6e6d924c2025ebb473165387e419c455518d220dfe",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "september 27, 2025",
+      "normalized_period": "FY2025",
+      "physical_source_id": "7d5b495d0bf1e260abff3b695c1ffbff8e2c3e3b2573446c4034897857dd3efe:f8dc5f63ecdd286b502c7b1bf8d506e4455feadf79133b58ea0d53ba1eae09fe:33",
+      "question_ids": [
+        "aapl_fy2025_007"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:8f19b2817c31543a9e1168bfbb850d0f02fedf991e99e4e54e216be5a4fe9ba8",
+        "candidate:v1:bc9ee6c25f168f2c7abce60678c0a1d680f13d0fd80681d9b68e60ec2db81602"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "541a2a49ee36d1c384a085cb6c9b4c4b04e2ed6c353662d63d55af2722c30e05",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2023",
+      "physical_source_id": "ea0aa7988e5fc3b4d0bfbefbd35e7bf83f0c3dd391d91a45a1bb0b4fe18ac1f6:b03c90ce48b52a73a918ef125767fff207b871bce3bfccf003f24437c1239057:43",
+      "question_ids": [
+        "aapl_fy2025_001",
+        "aapl_fy2025_006",
+        "aapl_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:16f0434c9e39d1039a7cb96b24025b2f3b1b2ff333df5b726b76674d3d728437",
+        "candidate:v1:cf74f4a7c11f7cb09ca0fa7822d2cbe51fe3d09175e82f49dfc325ccacf2a7f7"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "57e7d0da9356b1d4da574dc57c3bbc1fe131b22fc01d5e711a44672fa018e7c5",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "consolidated net income",
+      "normalized_period": "FY2023",
+      "physical_source_id": "9a90ac6dbf971bc6b0a8abb92c7d03fb85b3b767589e0bbe705387e65ce09817:48d24cfc25d50f6e506be8df3a068c88f260aba21cc20104d0238a3587b4e242:87",
+      "question_ids": [
+        "ko_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:a0b0ea2f8fd214429d6e88600df77a62dbc46882ff8ccc78d6900bbfe01c7191"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "58c8d1b3971e9d902e65257a49abe5891882fcbfbd5598bbaba0c8a4b1253636",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "server products and cloud services",
+      "normalized_period": "FY2025",
+      "physical_source_id": "0924e3742ff0dbb028cc1ef4c11aa6d1c887a6bce28620e9f5ab7112f4b7e657:9427637e2157331e32c3ff75dfee50ae71ff5fd1e24316ae89d6c9d5f2b6706a:82",
+      "question_ids": [
+        "msft_fy2025_001",
+        "msft_fy2025_007",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:dc46c5f5badff1dff5ff6091004871868fd1e016bad59ab00f380b4202817d25"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "59b9c5c2d5d34d7299b67749abda3d05f6fbba524f5d7cee309a6a47ad349e44",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "jan 26, 2025",
+      "normalized_period": "FY2024",
+      "physical_source_id": "0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008:2f72c5a387fa5d2408ffcce06bc1213c37fdfb457473c8225a2d1251cdf1a610:132",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:e1fa36fdc6de9e1c4ac824cef2e1211f1ce7016c3d2344319d58b38d50f84ca7"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "5e7ce738475e119cedf2d8548da6b0c143b37004fe6006710f3ae012c91afc7e",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "jan 26, 2025",
+      "normalized_period": "FY2024",
+      "physical_source_id": "1065bc2f80d46aadfb54b65e30c493dbde6cba0a1d9b63103d3da9a5c0790617:983364b7514c6974ba0d242497f98b7cf6525a1fbd262dfcae746a3607a630e2:157",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:cb239faa1b28169af729717a3ef04f1e60d01e30985cd8026e345a4192f66f7a"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "607729d3c887e8fe2a4ced0e1b112fc911445c10c1aed4ffe6e5cdf88c388985",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "other",
+      "normalized_period": "FY2023",
+      "physical_source_id": "986a79441e2a026b370662f10e65340aa1a1b2ecbddcc7521ae14d47e68f43e1:19b92ca93b8a2e8594443502f4eef99acd4159e0c719cb0a6d5a2f8c428baf70:44",
+      "question_ids": [
+        "aapl_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:e0735f16789e8837da0dfe9ee5a7d13bd7a50c13426ff43d9c198dd2be49ba50"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "609a552ed3fe68d40a05b55ecbc97715185ec92a85c2934a04262f6e13b1b0a4",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "comprehensive income",
+      "normalized_period": "FY2025",
+      "physical_source_id": "673ead3ce91ec6cc5337b6c6101478dad2771052c7162ac2e2590ad67292f9e2:65abff3841bed59e9b05a3a2f8d97392c9b55c58579cfc9f609c55250076616e:198",
+      "question_ids": [
+        "jpm_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:72605bee8a58d68326339fcca56575a929f8cecd7210f3fd0bdff2d43f844532",
+        "candidate:v1:fcb4b399df8bc3a40f26c29543dfe7651bffecbd02bc4336b18acf96374c6de5"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "617c21d501419409c82e86c121b5c896e166f26de9f84c94f6f89f6c6289ce61",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "biopharma total revenues",
+      "normalized_period": "FY2023",
+      "physical_source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:60774d3cdcef71c59d378635e9f67c04044fd4492275f2764d164e1fe98ca1bc:113",
+      "question_ids": [
+        "pfe_fy2024_001",
+        "pfe_fy2024_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:1d0b5e998be9fcddb7d4bb25b046c89b61941570de978b61d21e11a6c6f8f8fa"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "61cc2c59fd5e919c94e7dbe93f5cd76307d48119d83484b761a0d7b69e9f6d63",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "consolidated",
+      "normalized_period": "FY2024",
+      "physical_source_id": "081e20e9c3cddcf402a506510e1fed0c0a7cf9a51baee69685865ca7ad2361bc:41bf838b728fadba4a21e9bbb0d881ae94c879cf5b8fe1548653682b68933fd9:50",
+      "question_ids": [
+        "ko_fy2025_007"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:3511f65cf51f6bda4d6a1bc1180507db5d4c46742c976fc1454b5e6589860271",
+        "candidate:v1:8a1ceca25ee49b27358b3c9c497ce849df3938e52757b3bf3c8ff9bf57de924d"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "61e895d97709c71dba64e18b815c251ca0c735f59f5deff0fd17e124cf5d3474",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "international",
+      "normalized_period": "FY2025",
+      "physical_source_id": "dd20265ddef36bf9442116ba1021d7d6bf5964fba11264ee229869b078081569:41307c93a5a3d2a7f6f5832ffc45e7e800a88649561c942f1b90030b423b0ae3:118",
+      "question_ids": [
+        "ko_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:9da28e3917d605d23272ebe76d0144b45c6b9d6f70a8d6c7265c843df9fe66b9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "62a028e0f7b2e74ffbc603db8aa21f8fb7d3f835860715e45ebe9973eb59da1a",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "u.s. federal",
+      "normalized_period": "FY2023",
+      "physical_source_id": "3039ddb095b1b546f521c150bd1d20c318c1881b56cb9edd600eaff007cb8ba9:da03aa6eefcdc1a93beb3a2df58dc8d3843c4eb6e6bf274391592050b2bc89ea:66",
+      "question_ids": [
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6017a896787e159a17d87a7237ef5ffb7e0050e3c844af170d807b0a44bdf1ef"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "62e8e91f0004ec24e5a49a1d8ee63aa4b71b0c034b07574d18f0bfaa3920f7fa",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "operating expenses / non-operating income (expense) / class c common stock",
+      "normalized_period": "FY2024",
+      "physical_source_id": "047c6a56c7f09d391ac993d738c97b84bae5339ad9a1873ff5d6dd98ff693439:77b72bfd3e2bb9d13e2d4e2470386d6b159a6c15099dcdb779ceca43a708fbf9:75",
+      "question_ids": [
+        "v_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:29dc9f260221b92c374e4d5fea517de0abd3824e87581dd018e15472966459e9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "63d64020e0b066bd3440b43977ee580e354b0687d82f321dd909bfebfbdf7650",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "pfizer",
+      "normalized_period": "FY2022",
+      "physical_source_id": "d9ce35f03184e2003cb0e78a4c43d9efb605cf881af29af16a6a1b19add85211:70e4ede1efbeb357807b4cfd13624271f9a29174c8b6166bfebb270b85c92210:36",
+      "question_ids": [
+        "pfe_fy2024_001",
+        "pfe_fy2024_006",
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:72605bee8a58d68326339fcca56575a929f8cecd7210f3fd0bdff2d43f844532",
+        "candidate:v1:fcb4b399df8bc3a40f26c29543dfe7651bffecbd02bc4336b18acf96374c6de5"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "65a7128bd2c4ea0ce8ad6d40527456da04870cc4f2d287e0ae8b2efe85f80be3",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "biopharma total revenues",
+      "normalized_period": "FY2022",
+      "physical_source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:60774d3cdcef71c59d378635e9f67c04044fd4492275f2764d164e1fe98ca1bc:113",
+      "question_ids": [
+        "pfe_fy2024_001",
+        "pfe_fy2024_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:080a8eb224fcdf685c93887519f43a25e56d16f1313dee8ace0dddbd19f14a4e"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "66c00ecfae6f78ecbfa837a2dda11160f68647f30ad6fe244e8f9c3a170e7272",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "cost of revenue",
+      "normalized_period": "FY2024",
+      "physical_source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:8a5d5e9a32daf24a7f31311640f87a9113de425b54c5a5b5b4c1bee23db6ada9:26",
+      "question_ids": [
+        "msft_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:137a7d05ac5733f7f203922f4d391af18ecddd77bd735a8d9d70e68dd0dab9c2"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "67a140dadb511d64e91f5a4b3432fe57bdd61ca9966c59eaa5ab86a2aa4cfed5",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "diluted (2)",
+      "normalized_period": "FY2024",
+      "physical_source_id": "1065bc2f80d46aadfb54b65e30c493dbde6cba0a1d9b63103d3da9a5c0790617:d66c246852bdb98af8b03acf578e1c25aab9b060de5c72606ba28293c566ee8b:157",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:c7b49d234ae8b3d8517977b4278f7ed372d72deada984a3e2c13cfcd81177f07"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "6a54f7d2940ed2a5d1ece192ad5f6dcbeb5cd9b3a0e75a42a4c227ee9d4a2374",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2025",
+      "physical_source_id": "8bb034b6d95c3624d8140fcbac83adfbdae987566ba0496e8f726d122cd0335e:9acd09d58263fd8fa9cb6ff1c07dc9f56b9c5d45f2e0a9f13aa505f0b1f18044:281",
+      "question_ids": [
+        "jpm_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6a4dffd1d23a78051bec0b83394affb22ad4705e1647a122da5fc2e1afa860a3",
+        "candidate:v1:6d56aeb6f031cb352535f1ad02182b69932062ce8f624aae041137d7b6f56dee"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "6d4a35dc3d4974598f9b79054368435932e56bc1d43ba0c05255b98536aabd85",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "automotive leasing",
+      "normalized_period": "FY2023",
+      "physical_source_id": "43db179fda1d82495b0a73cc48926b860573c6a8183abdbaf10100c2f2754351:af22d2f1fea62336262e407c824ca42877e70fb99d18421e23b6fbd530308d3d:56",
+      "question_ids": [
+        "tsla_fy2025_004",
+        "tsla_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:0688645893ed8b011a505348e60b707b8872ddccf349df27bda2b6cd85ea18d7"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "6db4025a7a0a78f660674f10b4021e098e5c94ced6d93daaf174e2588f98a5fe",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "other",
+      "normalized_period": "FY2025",
+      "physical_source_id": "0924e3742ff0dbb028cc1ef4c11aa6d1c887a6bce28620e9f5ab7112f4b7e657:2103239abeeb34c45ca9862c0060b3e4420b5d12074626b34e496836c31f8bce:82",
+      "question_ids": [
+        "msft_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:71ab55335a560efa9811fcbde8757b3918e6a68847321ff9d4c25ff3586c79a2"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "6e94fea61cdcf9fd981fb55ff0b1f229396b0b20205eeafd9b5adfad23bb4748",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "september 27, 2025",
+      "normalized_period": "FY2024",
+      "physical_source_id": "7d5b495d0bf1e260abff3b695c1ffbff8e2c3e3b2573446c4034897857dd3efe:f8dc5f63ecdd286b502c7b1bf8d506e4455feadf79133b58ea0d53ba1eae09fe:33",
+      "question_ids": [
+        "aapl_fy2025_007"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:642b843c9b7db6dcd61ab90f6ff99140b52cb7fac4aaf644088d4e64d9eb938b"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "6ffccf125af8ff6d96c02d2245417cd5d8c7588b0c3b1006be1ffd6558ab1ace",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "computer equipment and software",
+      "normalized_period": "FY2024",
+      "physical_source_id": "04394e2a5583f920a76a85a563d70cddb88e9827257fbdf117e129a07e92a83a:463be8bdb364c0ea369f07c32a9ddcd5887bcbbcec96f5065aabf04618fb2a8a:60",
+      "question_ids": [
+        "msft_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:b5ddfdea5d9de7bb228ffbf39e20c07bb7f14ab6548fcc4bc8a15f7ed5ec1d44",
+        "candidate:v1:fe2e827b64ad947f0eaa5754af1c3f026c94b9c1b75092f373b33e09d2d7a448"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "7091ced162b43ac8bc17068c6d007cbbc5c8fa739b954f10cc8280aea729c0a4",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "energy generation and storage leasing",
+      "normalized_period": "FY2023",
+      "physical_source_id": "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:dc297634a222602df2848e770bc73f29d49d389225dcacb5736bfaa3a81db234:77",
+      "question_ids": [
+        "tsla_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:e3cac38c9894be676719ad735cad3e58de2aec0ae65033860e52cf81bf294c72"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "71163b0d6c11e7692e44dbe164de4a8046bf524f9ad94a6b8161206ab2ebada4",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "product",
+      "normalized_period": "FY2023",
+      "physical_source_id": "4a8f4034c72c78562bc7d8475bb93a06cafd908cbec8369be89a29f5bf32e5c4:7ec2cabaa21d272643d280b2dc995d25ef778f16ff09352c3983bc2156a7811c:38",
+      "question_ids": [
+        "msft_fy2025_003",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:71d2a71a4d854823ed9b410819f89ca386397be4d2c1cbc1c162fb70c68933c0"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "7235a00b94b0ad1744950b5d32532fdb3acd7df4a8b4589f6322995785fd1a45",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "foreign",
+      "normalized_period": "FY2025",
+      "physical_source_id": "3039ddb095b1b546f521c150bd1d20c318c1881b56cb9edd600eaff007cb8ba9:5f39df1bb2a908672e7dd1946b4122c9d698aa4dd19dd77ed4be6f572f6b5e31:66",
+      "question_ids": [
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:dc46c5f5badff1dff5ff6091004871868fd1e016bad59ab00f380b4202817d25"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "7352c121d5cafe3dc4166b09786941f76c3d6e294fa8de9bd8be2c9acab9cca1",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "jan 26, 2025",
+      "normalized_period": "FY2025",
+      "physical_source_id": "0aa41af1aa9c9206a3373f0181bb8798c42daccf7d3657387ef9ed737d098008:2f72c5a387fa5d2408ffcce06bc1213c37fdfb457473c8225a2d1251cdf1a610:132",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:744e08f9258ac129b5a38fb06c9a3c0b2094325546cb799212165a3b8ebcad91"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "73b1a011824cbdd4fa5277870c5f2faf68d38077acbbedadc06e5824fc6816f7",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "banking & wealth management",
+      "normalized_period": "FY2024",
+      "physical_source_id": "df62092fb744bfb6b847b8d6a3bfe3a24037d984d9dea89a85baf608c32820dd:e2d5d1605a1f87fc66ee0e4a59ad70eb3dd3b8656126e5b191d884a9ea5f481b:97",
+      "question_ids": [
+        "jpm_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:2175067fe8a2114ee83622d0fb70729ea3d27f6e5ea411998b4a5ea7eaf1a500"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "73ead4249480864e2a354e6c2f19ebd3c886f3e07530f031a6959efb01709285",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "dynamics products and cloud services",
+      "normalized_period": "FY2023",
+      "physical_source_id": "0924e3742ff0dbb028cc1ef4c11aa6d1c887a6bce28620e9f5ab7112f4b7e657:3ffb905ba7e3a56af28c329b201fc38d2e38c378a483fa8966afb98df5156904:82",
+      "question_ids": [
+        "msft_fy2025_001",
+        "msft_fy2025_007",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:96faa654b149293cdc268e7dfa198973724c8668d374e46534166175a8fceb68",
+        "candidate:v1:bffdf7ae7c171c12bbaebd374d54dc76310fe3286f70a0e76e68f06ffc19d47d"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "767c102d2af1ebefa912ad3e1dd2bb61130e5f1385021bf52387087ceeeffb8d",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "foreign currency contracts",
+      "normalized_period": "FY2025",
+      "physical_source_id": "4f31c08fae92ad8dee5196830c3a7b3e1f9ac0041a7e3463cfc1ec0443ff5085:a050918bd133a102461378e22960fd82ae36950c93494eea966fd3ba5d0f5114:86",
+      "question_ids": [
+        "ko_fy2025_001",
+        "ko_fy2025_004",
+        "ko_fy2025_006",
+        "ko_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:793d34427cc6dbff68fa3fa7e4708a4e80bb75ff0de59b68a6d68d0ecbcbc4db"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "799a9a398c298e72a01b7cf707b3f1275ee343af77716ceaadff9a87833a2891",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "contract-based",
+      "normalized_period": "FY2025",
+      "physical_source_id": "09633167642a74ce39d88d67c80eb32aac7fa14af5278d4a71444a86a7601daa:ca01ee4a9d3d2de1808243b12a0b80e9d953674c103685c6951a3bc714551bc3:63",
+      "question_ids": [
+        "msft_fy2025_008"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:744e08f9258ac129b5a38fb06c9a3c0b2094325546cb799212165a3b8ebcad91"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "7a9b1a48f887fd36f3f8f3edc5956c1aef18892d08d8d7eb61f7bca394518cd5",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "banking & wealth management",
+      "normalized_period": "FY2025",
+      "physical_source_id": "df62092fb744bfb6b847b8d6a3bfe3a24037d984d9dea89a85baf608c32820dd:e2d5d1605a1f87fc66ee0e4a59ad70eb3dd3b8656126e5b191d884a9ea5f481b:97",
+      "question_ids": [
+        "jpm_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:866985dec269355234928a6e76569f890d2e3935399517d48a308fee236089c7"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "7b30ef6de5a0bf8d150e8370567529b6eaecec1a45868277cac858fae763fa68",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "third quarter",
+      "normalized_period": "FY2023",
+      "physical_source_id": "0ba7a2ff83ac5835c22e44cf99302185b3226f83f0d91b7789d09140e9a31b4f:33e0840100e941a4b661e3e43660565122571f046cc7cb782b3c1d8d57fa1070:73",
+      "question_ids": [
+        "msft_fy2025_003",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:21734ed630e72ff23a5f0eeb4d47362dbb454dab49501c0e57b34c1bb4940a30"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "7b7dfa2d5e32446cdb12ecb9622c9b755f3df37956b5dad8a1c7f75e444ff17b",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "basic",
+      "normalized_period": "FY2023",
+      "physical_source_id": "4a8f4034c72c78562bc7d8475bb93a06cafd908cbec8369be89a29f5bf32e5c4:9381453755b06c73aa0a242027fe5126094105a2a1b294b130ed3c6623c21c41:38",
+      "question_ids": [
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:61c8d5eb3381c6049f884903ec5db333b2501a50895d1b9eb2761c36714e20eb"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "7ba831d41c7a021dc536b51ca94dea821d8ee8237fecfe4a24cabbc2232092b5",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "all other",
+      "normalized_period": "FY2023",
+      "physical_source_id": "55988882bb8a1a6536348d2e600e81993b264324fe69094862e44e7d02763d11:cb759b9fd74b3b559b53a08027fdcff3ed525b8642ba174b4d2e87d6cd6d05cb:321",
+      "question_ids": [
+        "jpm_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:137a7d05ac5733f7f203922f4d391af18ecddd77bd735a8d9d70e68dd0dab9c2"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "7bcf87e85cb61e077d8cb4cb3cd6238c0cbe5ee536b1309204a3e20634ba6220",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "diluted (2)",
+      "normalized_period": "FY2025",
+      "physical_source_id": "1065bc2f80d46aadfb54b65e30c493dbde6cba0a1d9b63103d3da9a5c0790617:d66c246852bdb98af8b03acf578e1c25aab9b060de5c72606ba28293c566ee8b:157",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:10ad22d5e117805aa5d14436838cdff26f5c74609ec32b2fa1c9e2c08bf95f8e"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "7c7599b492d7194355229be2b81a2b1e795e65c4e0b5fcaef176c7992a1fe005",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "assets under management / total assets under management",
+      "normalized_period": "FY2025",
+      "physical_source_id": "81552dddf55bd6087d019725fe05bda4f0664ec1ea894f6f3387963f326ffb23:513c742c7c1e4b20246e66d46de77a344c607975121efc5ef27dbce651937138:111",
+      "question_ids": [
+        "jpm_fy2025_001",
+        "jpm_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:650d8a765ff5b48a45b270c68c9ea05a0c40f32e14588dc11470a30ff5fa0cf3"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "7cbd1893dbbedaece19eae2631a193610516f0d1c47e0b76e366c1c7de770c3f",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "basic (1)",
+      "normalized_period": "FY2024",
+      "physical_source_id": "1065bc2f80d46aadfb54b65e30c493dbde6cba0a1d9b63103d3da9a5c0790617:8333995a5b28434305aa32346476e0b4f0eab321acdac4b6d2122a36aad820aa:157",
+      "question_ids": [
+        "nvda_fy2025_002",
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:b69b4d50f7425b73be97a5528aa4fcb7fc2d6906aef2fe309f90a80c2cf24978"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "7cffea42f4f9a8777ddda756792737f88b761de02e94f0d57879aa4f94f05efd",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "september 27, 2025",
+      "normalized_period": "FY2025",
+      "physical_source_id": "2016faed04f03df7ef6aad0be8f232521469d6ba19428379e552d55dc23667cd:c948fea99ecd11226e79ea0064555b55004fa228a514b3d40761f0901ad5712f:32",
+      "question_ids": [
+        "aapl_fy2025_007",
+        "aapl_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:71d2a71a4d854823ed9b410819f89ca386397be4d2c1cbc1c162fb70c68933c0"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "7d12c63b7c8963dc6ec42d92c56086681b4eb6005f4eec8703cb2dcb6da07018",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "foreign",
+      "normalized_period": "FY2023",
+      "physical_source_id": "3039ddb095b1b546f521c150bd1d20c318c1881b56cb9edd600eaff007cb8ba9:5f39df1bb2a908672e7dd1946b4122c9d698aa4dd19dd77ed4be6f572f6b5e31:66",
+      "question_ids": [
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:c318a1607effbed1b39980aca9f693efe2d1fe19c067cbde78020febde73eaf3"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "7e27a644ef2b4a4514e7209aa7d6a5f6ef29c6c1a18d91796333d39fde42f41d",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "enterprise and partner services",
+      "normalized_period": "FY2025",
+      "physical_source_id": "0924e3742ff0dbb028cc1ef4c11aa6d1c887a6bce28620e9f5ab7112f4b7e657:d3b2b3421eb86608772f20cbfbacd42da3dab4a33a8b835ccd2b5ccca6a82c70:82",
+      "question_ids": [
+        "msft_fy2025_001"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:44704956af5f0b34c0d94ba14149a418bcd0836d8dc54b3e935db05b932c5e86",
+        "candidate:v1:96e7375fed3e81d8b59e155845b03d8ef001ac75a49b8e1f8dc621e7c6a8dd99"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "809a36ec3aa22368b5ff49fbb310d2e12a66eaa6c6c8f6c5da35871d9d786c17",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "net sales",
+      "normalized_period": "FY2023",
+      "physical_source_id": "c1e07266a4d8f049cefb2cdc5202903ae6d7dff610b0400d89815913ef5f4332:e80437e6cd8725e4bcae5f4fb8cd661ad3d4effdf5a1026082dcbb0ad1334ea6:77",
+      "question_ids": [
+        "pfe_fy2024_001"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:e3cac38c9894be676719ad735cad3e58de2aec0ae65033860e52cf81bf294c72"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "82dc92b43b677d91ead42b4eae9c52b4b874ba05e84bb4ecef3310b83dbfa526",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "product",
+      "normalized_period": "FY2024",
+      "physical_source_id": "4a8f4034c72c78562bc7d8475bb93a06cafd908cbec8369be89a29f5bf32e5c4:7ec2cabaa21d272643d280b2dc995d25ef778f16ff09352c3983bc2156a7811c:38",
+      "question_ids": [
+        "msft_fy2025_003",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6f1f662c71ded63352235d58e01f30256238ec709137b4e75481ec8ac5bc42b5"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "8379358ad4a207ef82cc66b9225b2ee6ebdaeb76ddc9736bd1138471c5230f6d",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "jan 26, 2025",
+      "normalized_period": "FY2024",
+      "physical_source_id": "d2c5ac355cb8097e1fe50b0d7c0592e634aa554a9daacfd8cea38f06a62bed21:8432f46bda2cf213f480a8a57160e37dedfc5d344831882b59912563ff890410:165",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:2175067fe8a2114ee83622d0fb70729ea3d27f6e5ea411998b4a5ea7eaf1a500"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "8631ecb166087bc09ea644dd0f6fc696fc0462d1321ef0c126c9e0d022b719ea",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "dynamics products and cloud services",
+      "normalized_period": "FY2024",
+      "physical_source_id": "0924e3742ff0dbb028cc1ef4c11aa6d1c887a6bce28620e9f5ab7112f4b7e657:3ffb905ba7e3a56af28c329b201fc38d2e38c378a483fa8966afb98df5156904:82",
+      "question_ids": [
+        "msft_fy2025_001",
+        "msft_fy2025_007",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:d361164a130eab6b39ed9414ef11aa605905a48e281dd7e181fd0eb8c879fba8"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "87b3a97c80aeea0fdfd14e13f325bd10003001c534118bc1294e9512d1abc5e8",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "united states",
+      "normalized_period": "FY2023",
+      "physical_source_id": "deaf061bae059432d2926aca133f7e50872bf2b55792c05ff00ec1e6a20e4ef1:1e01bf2d0890ad323e4b9ec2d518390e2e0cace1dd2fc36f89b49870a101d6e5:129",
+      "question_ids": [
+        "tsla_fy2025_001",
+        "tsla_fy2025_006",
+        "tsla_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:1b00db1ff6125011b4744651ba42adba8cd26085fa56ded27ad20c5554f308c1"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "88729d4b1754553da4837e54be2909bdfdfcc189fc6675a2ef42a3214d25faee",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "operating income",
+      "normalized_period": "FY2025",
+      "physical_source_id": "be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211:8a5e97a0b867f30c9767181b946721be2ab12fb0d6b764288296740927fa722e:80",
+      "question_ids": [
+        "msft_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:b34e2092404ba11b425b472681bc92f606e52b52e7b0d322b8f10cebdbbee2e4"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "88cc0522d6d8aa154017b3a67c9a333a7e4f5629bac2e2656a9ebb44cacfc12d",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "diluted",
+      "normalized_period": "FY2023",
+      "physical_source_id": "21628df58826aff5bba4db351f4f8717cb070f77a8161dd7764aa1b09229448a:b1ea4ba84b286db8aa9764c274be35289999b795371171feed99ae28f17b0d89:76",
+      "question_ids": [
+        "jpm_fy2025_003",
+        "jpm_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:40e5f50d09df6eb7a64a04efb0e68fdb668700741803d2427a4b0bb70e744f6b"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "89186a3569d2a565933431a380ea5f02b40197fb7dacfb7365a9c2a9ae1ef29a",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "technology-based",
+      "normalized_period": "FY2025",
+      "physical_source_id": "09633167642a74ce39d88d67c80eb32aac7fa14af5278d4a71444a86a7601daa:263bf587e3218ab21c0ef5dddea22141828f177c2fabe9b3470f12435edf377d:63",
+      "question_ids": [
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:3b008b0cb23f19bd18b70096901edac99f58b82d1bcbafecd398d9cb85bb93f0",
+        "candidate:v1:3e30ba6ace3dedae2916514dd455a8023da48e860494614092259ac4b407cd76"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "89a595c6ab1bf19c6e993307b3f806ff1a1781bee54ddfd0bdd880d229e489ae",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "automotive leasing",
+      "normalized_period": "FY2023",
+      "physical_source_id": "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:04793c2cf26b75ef79852289a13419e7e706f1b1f76bfe7b12cf28f8e662a5af:77",
+      "question_ids": [
+        "tsla_fy2025_004",
+        "tsla_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:e3cac38c9894be676719ad735cad3e58de2aec0ae65033860e52cf81bf294c72"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "8b7ddaa529eb7c156caf2d601bc2d68beb40fdd6c274fb09969182ca67fa7373",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "product",
+      "normalized_period": "FY2025",
+      "physical_source_id": "4a8f4034c72c78562bc7d8475bb93a06cafd908cbec8369be89a29f5bf32e5c4:7ec2cabaa21d272643d280b2dc995d25ef778f16ff09352c3983bc2156a7811c:38",
+      "question_ids": [
+        "msft_fy2025_003",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6b5a1201256d8ea311270e4a90ba26d9c7dca1418654709b389de6f8cdfa4804"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "8c4fe111855e672d6056533fd15db4cef9184ba891220c8e6b9c7fb87d49b5ff",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "impact of the state aid decision",
+      "normalized_period": "FY2024",
+      "physical_source_id": "986a79441e2a026b370662f10e65340aa1a1b2ecbddcc7521ae14d47e68f43e1:5dc47ed4bb8fd66ec82cb2e4f4adfcdde8e3d2a866279ef42498e07e61f3f315:44",
+      "question_ids": [
+        "aapl_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:2d46d05c2a78fbdb2ca6a3c9b61e058f54eb43127bce2a39d4640a9829510859"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "8d421df09250a5c15d87d80dd8072d7a65c070eda2b6f68ed4f6d597e47e75ab",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "international",
+      "normalized_period": "FY2024",
+      "physical_source_id": "566619a8132d789da0f3cacc9e4662558bb4dd33f4d93c784ff6223cf3c0d3c4:28d2f01260b70e60c55f309a4f0bed84aa1e9d1488faca7b882841447afe57e6:80",
+      "question_ids": [
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:42266dc4d4a12606cf5ddcbffe0ef28811cd70b1d85cb678f3d084e33a14a368"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "8dc0c98da0f9e1d10dfb440e6129191167d62daac930bb0ff7fbeda211a0376b",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "pfizer international commercial division",
+      "normalized_period": "FY2024",
+      "physical_source_id": "f8b75b829f7082abd87578ad9fb3d8f2153782e923ebd3921711674c7d0da868:96ecb919ff9c8ab0294bf0a6a1279c5987faf2db8f478d0744a012e0754e9ed8:115",
+      "question_ids": [
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:1d0b5e998be9fcddb7d4bb25b046c89b61941570de978b61d21e11a6c6f8f8fa"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "8e5075662a47ebca663be27355cfad5f2934294c1d28ecc604fc121bcf26f678",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "consolidated",
+      "normalized_period": "FY2025",
+      "physical_source_id": "081e20e9c3cddcf402a506510e1fed0c0a7cf9a51baee69685865ca7ad2361bc:41bf838b728fadba4a21e9bbb0d881ae94c879cf5b8fe1548653682b68933fd9:50",
+      "question_ids": [
+        "ko_fy2025_007"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:9a107120f5d1eed049f299d9e79296dcecf93ce1bffe20927c2e3e8df5c382b7"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "8e7e03bdbfceb63bcd76f00d0eb1b6493013b2e8540927cf762e638fa7ddb723",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "cost of revenue",
+      "normalized_period": "FY2024",
+      "physical_source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:7ea0b6c64a894b6e1c1e9035c82bc9900489101ae807470a2d17f78c8667929b:26",
+      "question_ids": [
+        "msft_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:29dc9f260221b92c374e4d5fea517de0abd3824e87581dd018e15472966459e9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "90533b66006c5ab64fd42584e791a8be81f985f5c499cba6c98a67a566df04af",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "pfizer",
+      "normalized_period": "FY2024",
+      "physical_source_id": "d9ce35f03184e2003cb0e78a4c43d9efb605cf881af29af16a6a1b19add85211:70e4ede1efbeb357807b4cfd13624271f9a29174c8b6166bfebb270b85c92210:36",
+      "question_ids": [
+        "pfe_fy2024_001",
+        "pfe_fy2024_006",
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:495950de53685f9e89d49ba508273e8fdc0d6acc83cd1b6d7ebf0c34ecc074e4",
+        "candidate:v1:af70becc1ba84ffaf910019a40d292f9928c14e1bda53f7e4472d1faa1be7cf0"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "905c51357e981a87b29030ffc8ddf91a1613ad4c96ac8d345f07d998d35c3697",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "net sales",
+      "normalized_period": "FY2022",
+      "physical_source_id": "30111e6bc721a156a80ebe53d079fa66e2e32a3b56054a98edb2b1a23a059af4:6bd19e65f71502093f062a4a8e004b05f2b07854f22ba7a599941b31e6eb230e:76",
+      "question_ids": [
+        "pfe_fy2024_001"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:a0b0ea2f8fd214429d6e88600df77a62dbc46882ff8ccc78d6900bbfe01c7191"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "91d11ab07be5fd35d3f63a5f4ec408f0d3817f4ba7370d6413f56d974bf0f42e",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "server products and cloud services",
+      "normalized_period": "FY2024",
+      "physical_source_id": "0924e3742ff0dbb028cc1ef4c11aa6d1c887a6bce28620e9f5ab7112f4b7e657:9427637e2157331e32c3ff75dfee50ae71ff5fd1e24316ae89d6c9d5f2b6706a:82",
+      "question_ids": [
+        "msft_fy2025_001",
+        "msft_fy2025_007",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:e986a0a7d372a063cdc096b61260c7bf7591912a42b1e8baee82c0b44f73f425"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "9280ef3f96fd22a88cd6e72a0eecf7323421ddb755266441163817498a6936a9",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "finished product operations",
+      "normalized_period": "FY2024",
+      "physical_source_id": "df39db9a011ace07e7e449de986e7497f20cd548799f2a3b96820b5a11a04d93:58620c35c03129f1e4842394da311a3d48a204c4974e18e1d78f7155bdc555b5:39",
+      "question_ids": [
+        "ko_fy2025_008"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:5f906742b9d42aa40eca6c2c2e0966f2170adbd001fbfc54ae056fd594c941fa",
+        "candidate:v1:605783e135c21acf24b45783c5c7a7dd12ab0c35045f5c98c41a7e740212aed9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "942107e47281400c6d74e485c349348b0236cda7249f3f91e114b5965d187e2e",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "united states",
+      "normalized_period": "FY2022",
+      "physical_source_id": "ffe88e0e7cae450bf3547c9b2e65377d52ff0eea7d41a97458a784e41f4d7b64:e5b7e0e31dc57de92c330f985fcbf30bd6c79a09b14f1919c3821341788c1ca8:81",
+      "question_ids": [
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6c0b7c570610934b052333ea96f3fb7a75403f3d0ff59df9bb397a5660742bce"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "94c704d5225b95c9bd9ee9697ff45f41cc0755a1b4d75c955bddf0037964cf72",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "americas",
+      "normalized_period": "FY2025",
+      "physical_source_id": "21f6fd90e1ac0e3cfdb3849324019617dc23f5c21057ab9de57ed4fc785d4243:bdef90ffc2c153b6d527008e2ff56cee52e2af9a51d798f66e10fcdace859107:25",
+      "question_ids": [
+        "aapl_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:866985dec269355234928a6e76569f890d2e3935399517d48a308fee236089c7"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "962806c6ca93aa9e29237480e5a3633c995f575d771f1a4c68988fbcdef099f2",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "third quarter",
+      "normalized_period": "FY2025",
+      "physical_source_id": "0ba7a2ff83ac5835c22e44cf99302185b3226f83f0d91b7789d09140e9a31b4f:33e0840100e941a4b661e3e43660565122571f046cc7cb782b3c1d8d57fa1070:73",
+      "question_ids": [
+        "msft_fy2025_003",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:93cb2b32ee0765f59e55989be8f30b90183bb3ce3767ef14f293fc96b1431edb"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "963869f50072583cb9da217dbfd4d0f63d416a442630aa3e66c9e938706cde11",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "taiwan",
+      "normalized_period": "FY2023",
+      "physical_source_id": "7dfd18dd365fbd0db662a9b8bfc87e1b4adbf0c102f273dfb592b6d1ae2fb3f2:fe3eac246e0b7abfbc3d163fe15951ffc8891825a1c0f611f18781eecfa2b110:171",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:61c8d5eb3381c6049f884903ec5db333b2501a50895d1b9eb2761c36714e20eb"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "969a86ff94339b72ef85e75c67f45b3076d09a0271a793fb0d4f2eac237d43f3",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "all other",
+      "normalized_period": "FY2024",
+      "physical_source_id": "55988882bb8a1a6536348d2e600e81993b264324fe69094862e44e7d02763d11:cb759b9fd74b3b559b53a08027fdcff3ed525b8642ba174b4d2e87d6cd6d05cb:321",
+      "question_ids": [
+        "jpm_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:d1c8a854b58e50d35258630d391ae8be3fcaa6ecfef9d1a9be95475df8668882"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "96c1db2243e60eadd0dd93a6050aee5f11d14c1ba40934da1bcae3b672f53d85",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "other operating charges",
+      "normalized_period": "FY2025",
+      "physical_source_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:90d3222e162bf5bd9e9510b04537c20c8788b28a150569d20eb2034fc9aa811c:63",
+      "question_ids": [
+        "ko_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:94ef2f97506f309c30a146373a711f6025c7527c02eae5140d8b9c16a55f8cee"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "97466d996ed8cc428464611fc02006396dfeabc9954a28cae0951c9e24882da3",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "all other",
+      "normalized_period": "FY2025",
+      "physical_source_id": "35765f93385ef55879a2fc441d3309206f4c44651f4e9d57a7fc768a1b2b211a:537cbfbfcc9a3637ba38a3fd6d63d4ab9cc6eb8b56bea616f6e07a01d8c8bfd0:133",
+      "question_ids": [
+        "nvda_fy2025_003",
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:42266dc4d4a12606cf5ddcbffe0ef28811cd70b1d85cb678f3d084e33a14a368"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "978f4f2e045620ef333f8c53baf6664e27fccb55106ac77101b7706da2142fb9",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "pfizer international commercial division",
+      "normalized_period": "FY2022",
+      "physical_source_id": "f8b75b829f7082abd87578ad9fb3d8f2153782e923ebd3921711674c7d0da868:96ecb919ff9c8ab0294bf0a6a1279c5987faf2db8f478d0744a012e0754e9ed8:115",
+      "question_ids": [
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:080a8eb224fcdf685c93887519f43a25e56d16f1313dee8ace0dddbd19f14a4e"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "97bf477bd88330d1e2289f3f2078fde54e3c7aa4fa8aa40899f1178de152f631",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "cost of revenue",
+      "normalized_period": "FY2025",
+      "physical_source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:8a5d5e9a32daf24a7f31311640f87a9113de425b54c5a5b5b4c1bee23db6ada9:26",
+      "question_ids": [
+        "msft_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:21749f13dcc9547252388dd90cbfd25609f5f58be5ce25b8697af53271566b15",
+        "candidate:v1:fa468922b5abef667e88acd78a28461c2f3767f8432e21e881b34ca07218b0c9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "985193d78cb29af25f49d17b9d3c20f2a727d0e856d7f2488b553ff92c61fc9d",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "consolidated net income",
+      "normalized_period": "FY2025",
+      "physical_source_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:1b5e0cd117fb22053dc372f9ac2d9b3f2184b0de5ebc0deb29a0d111051fde30:63",
+      "question_ids": [
+        "ko_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:37b953324be442efe1aa68cd93e679d48739ae06c27e716ac83945e815bd6ffe"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "989e6cc027d52619ec11d936b70b140f7cb8e9f5d18a6a10915df08ad361857a",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "windows and devices",
+      "normalized_period": "FY2025",
+      "physical_source_id": "0924e3742ff0dbb028cc1ef4c11aa6d1c887a6bce28620e9f5ab7112f4b7e657:b6613b1397717c62a77cb101cf9ed4e58ffe1a47f4fe89015002c6474b01003f:82",
+      "question_ids": [
+        "msft_fy2025_001",
+        "msft_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6dcb723ac6ad1060e6121c62fd894e51886ac00a0c249cd6e16274b6ee4673f0"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "98a3c2ac16c5f5bc18d574a72f5a5bba1834518b7913e5be407b2c7415c13196",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "operating income",
+      "normalized_period": "FY2023",
+      "physical_source_id": "be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211:8b0a3b3ed65606ffaa8dfe77cd39694687203154b8168a7eebb019eca3a99def:80",
+      "question_ids": [
+        "msft_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6f1f662c71ded63352235d58e01f30256238ec709137b4e75481ec8ac5bc42b5"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "9a07feda800c263b563f3d035f18ebd2583bb3d42226300f6796ea291cd006f7",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "jan 26, 2025",
+      "normalized_period": "FY2023",
+      "physical_source_id": "d2c5ac355cb8097e1fe50b0d7c0592e634aa554a9daacfd8cea38f06a62bed21:8432f46bda2cf213f480a8a57160e37dedfc5d344831882b59912563ff890410:165",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:532de5a0d2d9d66ff8d5fc2dbe0b40d4e556bce563b875d7d2b21809e40a143e"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "9a77e89af20ef85ce54f7e9767ddd258ff017835a824fcab57a95274f29065f1",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "corporate",
+      "normalized_period": "FY2024",
+      "physical_source_id": "734db94cf723f8dbc533333a5ec7478ec101fcd7507b2e3175ed3804aeb9b14b:70c1c066bce602c0331e18879901db71489925b528c34c1e5bc38e24fc826868:50",
+      "question_ids": [
+        "ko_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:ec50cb72a2c06a3500130d0c236be3245ccda94be6d53f01b84ecfeeb3848d43"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "9ab1dac30017c7088dff2aa7535773882ac4a1440f71e8cbeacab5e7190c9b2d",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "cost of revenue",
+      "normalized_period": "FY2024",
+      "physical_source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:fee43827bd24670877ab4e689dc1da5369e4005a16e76c7fdba997b6bb06dce9:26",
+      "question_ids": [
+        "msft_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:95097b189c050c9401d8c639f09855728b87506a19d0fdf56e20270851a754a6",
+        "candidate:v1:e234a30f9bbdebec9a79e95093de0fe455d24f87cb1abd46f5254cdec000e5be"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "9c206874896bb40d7b09f2eeaace27a0525fa21845e9f6f6ce4dd22fdecb0cb2",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "consolidated net income",
+      "normalized_period": "FY2025",
+      "physical_source_id": "449390bcf7e2fc995ffe009d70590314ff40139de33d136f2b137270196ad03a:0095f412863f2b5b2189704066106fb118f18737fc5e819d34156b3cb305d246:64",
+      "question_ids": [
+        "ko_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:7dcfe863406b7702ece9e3a1ce39f7542ffef084a381a11274938ec1969e7bb3"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "9d4abbf68929d06ae31ac15936ea69cc91cfe5202d6552bccd26e8c5e5e6e51f",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "cost of revenue",
+      "normalized_period": "FY2025",
+      "physical_source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:e7fdfe9dcf2fdd09b5b472432cc97bf0bd1720c72064ed6a2b6502463a8191d9:26",
+      "question_ids": [
+        "msft_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6f1f662c71ded63352235d58e01f30256238ec709137b4e75481ec8ac5bc42b5"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "9e134404731844c0bf23c7e635ea36251f2027d248eed43dddfae6e262460bef",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "jan 26, 2025",
+      "normalized_period": "FY2025",
+      "physical_source_id": "d2c5ac355cb8097e1fe50b0d7c0592e634aa554a9daacfd8cea38f06a62bed21:8432f46bda2cf213f480a8a57160e37dedfc5d344831882b59912563ff890410:165",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:84906f964c07b217ced4756fe157def11a2dbfa0280481cb73f19e494cce86f2"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "9f7eaa43848ff6a87b89e35e67af0a48a7d312b7612267d50d3c1bd15994cf0a",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "second quarter",
+      "normalized_period": "FY2023",
+      "physical_source_id": "0ba7a2ff83ac5835c22e44cf99302185b3226f83f0d91b7789d09140e9a31b4f:89cdcb77d12a83d412e2158c51836aa45448482e64a780abcd77db1f8e1848c2:73",
+      "question_ids": [
+        "msft_fy2025_003",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6c0b7c570610934b052333ea96f3fb7a75403f3d0ff59df9bb397a5660742bce"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "9fbb54f8a25d3d3bba1aea984b8cdc5e55683c84b1b7decc51525b0ab4e1a89e",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "americas",
+      "normalized_period": "FY2024",
+      "physical_source_id": "21f6fd90e1ac0e3cfdb3849324019617dc23f5c21057ab9de57ed4fc785d4243:bdef90ffc2c153b6d527008e2ff56cee52e2af9a51d798f66e10fcdace859107:25",
+      "question_ids": [
+        "aapl_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:48bb2f1732aab9aae4fc01ba47e8c7b1791eca130de60cf03744a97cd51a7e8f"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "9fd3e046d9140fac3ae14603ea0888cf4759f878eb818e663a018ed0e5918849",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2025",
+      "physical_source_id": "5ba667dab867a69a2b50bb1ca7777b7e20d67b3a62ea95f37664eaecaf410d5a:eda7a369f525d20f3132a9a798b16a111f6798b37ffefc33d9e41fe140bb806d:114",
+      "question_ids": [
+        "ko_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:37b953324be442efe1aa68cd93e679d48739ae06c27e716ac83945e815bd6ffe"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "a3e57f571edcacb7f173cf32b30fa0af3c760956b8a0545d58e2bf17e5a59dd3",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "windows and devices",
+      "normalized_period": "FY2024",
+      "physical_source_id": "0924e3742ff0dbb028cc1ef4c11aa6d1c887a6bce28620e9f5ab7112f4b7e657:b6613b1397717c62a77cb101cf9ed4e58ffe1a47f4fe89015002c6474b01003f:82",
+      "question_ids": [
+        "msft_fy2025_001",
+        "msft_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:bf5967c5fc52219e8dadcf0dba8b2186e230fc58a5c49b17a739a7ed6712d86f"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "a41b8e77974b1d35f65338e3aeb1cee6d26550b2c8afca97232d5bc31d0dd16c",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "equity income (loss) — net",
+      "normalized_period": "FY2024",
+      "physical_source_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:ca4dac7ad59ab10cba5387810aa4c95da49ad57b62269e4ea40847c3f9fb4a64:63",
+      "question_ids": [
+        "ko_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:b5ddfdea5d9de7bb228ffbf39e20c07bb7f14ab6548fcc4bc8a15f7ed5ec1d44",
+        "candidate:v1:fe2e827b64ad947f0eaa5754af1c3f026c94b9c1b75092f373b33e09d2d7a448"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "a469fbc2dca353a18a3014ab0cccab50d49eb0a0b8db3343c8fb56f4aea9feac",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "energy generation and storage leasing",
+      "normalized_period": "FY2025",
+      "physical_source_id": "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:dc297634a222602df2848e770bc73f29d49d389225dcacb5736bfaa3a81db234:77",
+      "question_ids": [
+        "tsla_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:0a795338fa8ea5a2742bba8108e35e9fd94e278e9d779f828f444a2414cd1b0f"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "a487df2c58486c6bb3635da9109bcea2ed4b35de221c1a7696bc5fdce4ac0848",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "down 5%",
+      "normalized_period": "FY2024",
+      "physical_source_id": "d3c65ef436020ece87330b1e94c982c372826ed4976210a139b40470321a630e:ba6fa1e81f59fdb8584d9de0058e0ef4c962eedfd7e611758d64d25e63371374:46",
+      "question_ids": [
+        "pfe_fy2024_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:509608a2ddfd6fbf3225755bf5967a85460a39cfb04272bca1e5668c0dad35a3"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "a694fa51d9786084b9eccaed10993860a7dac9295ca627518699fe1483663adc",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "assets / other assets (included $15,849 and $15,122 at fair value and assets pledged of $11,984 and $6,288)",
+      "normalized_period": "FY2025",
+      "physical_source_id": "59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd:0e8575838f75080f8ce229a10b17c33edf4a6b0be1c2d4a9085be30079b7b65e:199",
+      "question_ids": [
+        "jpm_fy2025_001",
+        "jpm_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:2d46d05c2a78fbdb2ca6a3c9b61e058f54eb43127bce2a39d4640a9829510859"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "a6951244020113d5f698d0825a7cf56c25717cda06775674830ad70aa4e30295",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "international",
+      "normalized_period": "FY2023",
+      "physical_source_id": "566619a8132d789da0f3cacc9e4662558bb4dd33f4d93c784ff6223cf3c0d3c4:28d2f01260b70e60c55f309a4f0bed84aa1e9d1488faca7b882841447afe57e6:80",
+      "question_ids": [
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:c285bd3ebe4c8774681b473dd26e8efb68342306b5cc855533168e20566d1b62"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "a88aba3421df9a0c4162d9cdbfbd23e63b3c3cf0df413c3a3721bcd68076a5db",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "emea / asia pacific",
+      "normalized_period": "FY2025",
+      "physical_source_id": "5e8f0b55efba372edd34726f562bdf4e456be6eeaf4003825b3215618d3fd3b4:d64ade961cb14c4c9b6c67fb6601182b90957ef536046828afc05f61e0ade4f4:49",
+      "question_ids": [
+        "ko_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:9da28e3917d605d23272ebe76d0144b45c6b9d6f70a8d6c7265c843df9fe66b9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "a98451428923c255fab74197a68758c93d1610dc51ba5d59af24c4007f07c86a",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "u.s. federal",
+      "normalized_period": "FY2024",
+      "physical_source_id": "3039ddb095b1b546f521c150bd1d20c318c1881b56cb9edd600eaff007cb8ba9:da03aa6eefcdc1a93beb3a2df58dc8d3843c4eb6e6bf274391592050b2bc89ea:66",
+      "question_ids": [
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:5f906742b9d42aa40eca6c2c2e0966f2170adbd001fbfc54ae056fd594c941fa",
+        "candidate:v1:605783e135c21acf24b45783c5c7a7dd12ab0c35045f5c98c41a7e740212aed9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "ab53c3838b3b617ac62ec67764fd980adb2e3d36299ef83dbe0b84fa3e924853",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "united states",
+      "normalized_period": "FY2024",
+      "physical_source_id": "ffe88e0e7cae450bf3547c9b2e65377d52ff0eea7d41a97458a784e41f4d7b64:e5b7e0e31dc57de92c330f985fcbf30bd6c79a09b14f1919c3821341788c1ca8:81",
+      "question_ids": [
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:e1fa36fdc6de9e1c4ac824cef2e1211f1ce7016c3d2344319d58b38d50f84ca7"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "abdec9ef8a7b81b73a1a89f4ae8cebab69b16de0ea8a9783f6a1f30305c40edf",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "jan 26, 2025",
+      "normalized_period": "FY2023",
+      "physical_source_id": "1065bc2f80d46aadfb54b65e30c493dbde6cba0a1d9b63103d3da9a5c0790617:983364b7514c6974ba0d242497f98b7cf6525a1fbd262dfcae746a3607a630e2:157",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:05ffe6812043646c8157620af865d6984a7c0598893c1ba46543596c7d59d0cc"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "acbdb1c941e2ced8516164f3afa36a0d2ba1f592337108c3a6896c77b929ed3c",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "net amounts",
+      "normalized_period": "FY2024",
+      "physical_source_id": "f5f3b7e83d4b86f68b394861b4c2ca8afdf016d6a3122c43907131618d8afd58:aeffb55074795c07eadd30e984651a369c05011faf1b6255922c51442884a1b3:241",
+      "question_ids": [
+        "jpm_fy2025_001",
+        "jpm_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:78f117c60688e83b2a92d011a108d7c61a5256c04f4f693df8356f1598f0fa17",
+        "candidate:v1:92fc1dc8116b14f9c2fe7888a3fc8487602336aa9f858d8030a5f5ce9df14a59"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "ad77a9b4a9bf874798dcafb66e186012f3df89acdc858b112fe78534b6e7cc6e",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "china (1)",
+      "normalized_period": "FY2024",
+      "physical_source_id": "24858fa57587c873897423b7bc19e428827ce15c9e658b51576ee8115d9f6c68:16ebb9a14c612a7f33de5cf01de35719e2d7543533b1bb78360b74a3afb7b8d4:51",
+      "question_ids": [
+        "aapl_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:3b8a51c3f59a468e19c634c7d0f93bea3cd80aa73d5a9c4496b0221eef538e27"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "aed4a6672e252f65fea1e2394876eac20f808f4f74e7d6a318884109521c7f2e",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "other",
+      "normalized_period": "FY2025",
+      "physical_source_id": "933abc096f55ebd1c8ff86037ce0e7704a63f0bca289797c53756831cdb64203:ee7062d6a8315f096a9eb70a03f418628c611a5f1fa0711b201ae418b427b142:167",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:60023f6bc43bce51e66afa42bcbdd7a4036d5d6a0a56f70d29c96a91a7b85759"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "aeded1e2d568cd3cfd435e6ef993317f3667c3004475f4b92d1abe32aff32ce6",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "singapore (1)",
+      "normalized_period": "FY2025",
+      "physical_source_id": "7dfd18dd365fbd0db662a9b8bfc87e1b4adbf0c102f273dfb592b6d1ae2fb3f2:ef0041fc48ed9062bb4fe3d7f2ff13cdc5f91b02941d2845986249cbba3f5b29:171",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:82f69ad25b2ba301e3900f8e415b8afd13095e286b02fde9c69138733a72cd16",
+        "candidate:v1:b4f319267a33d78adda241a78a4a144ba1210d32ea81d51180a7b624f7065869"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "b1238ac2a48095553692f679397494cc3b439e0f6e080ffb2ec155c89d7f68ed",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2024",
+      "physical_source_id": "cb3085dce03d737cc43bafd3d91aef006995a946e10ec522b573b8207c5c9241:832147cf58922d2d7620b74f8dfa40b369b920b9622c0f5b921f67d28bf3e9b3:100",
+      "question_ids": [
+        "tsla_fy2025_006",
+        "tsla_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:3511f65cf51f6bda4d6a1bc1180507db5d4c46742c976fc1454b5e6589860271",
+        "candidate:v1:8a1ceca25ee49b27358b3c9c497ce849df3938e52757b3bf3c8ff9bf57de924d"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "b19868a480d896cff32e27d09e3dc9cc8f16c7c399eadd7379c46165caf5783f",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "international",
+      "normalized_period": "FY2024",
+      "physical_source_id": "dd20265ddef36bf9442116ba1021d7d6bf5964fba11264ee229869b078081569:41307c93a5a3d2a7f6f5832ffc45e7e800a88649561c942f1b90030b423b0ae3:118",
+      "question_ids": [
+        "ko_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:84906f964c07b217ced4756fe157def11a2dbfa0280481cb73f19e494cce86f2"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "b230708edc4e0dd3dc4d2ca63b2b24b2098af5386c868a9c947ee8541df70157",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "second quarter",
+      "normalized_period": "FY2024",
+      "physical_source_id": "0ba7a2ff83ac5835c22e44cf99302185b3226f83f0d91b7789d09140e9a31b4f:89cdcb77d12a83d412e2158c51836aa45448482e64a780abcd77db1f8e1848c2:73",
+      "question_ids": [
+        "msft_fy2025_003",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:96faa654b149293cdc268e7dfa198973724c8668d374e46534166175a8fceb68",
+        "candidate:v1:bffdf7ae7c171c12bbaebd374d54dc76310fe3286f70a0e76e68f06ffc19d47d"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "b3707ea118d533ae317bc0dce7da01ea5339cd692be300980c168d7df4dd713e",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "foreign currency contracts",
+      "normalized_period": "FY2024",
+      "physical_source_id": "4f31c08fae92ad8dee5196830c3a7b3e1f9ac0041a7e3463cfc1ec0443ff5085:a050918bd133a102461378e22960fd82ae36950c93494eea966fd3ba5d0f5114:86",
+      "question_ids": [
+        "ko_fy2025_001",
+        "ko_fy2025_004",
+        "ko_fy2025_006",
+        "ko_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:a0b0ea2f8fd214429d6e88600df77a62dbc46882ff8ccc78d6900bbfe01c7191"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "b3fc611327fb5e8fce8417c5962878e9698b51b7c7b0ecfc6b2ed0e8983b02ab",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "server products and cloud services",
+      "normalized_period": "FY2023",
+      "physical_source_id": "0924e3742ff0dbb028cc1ef4c11aa6d1c887a6bce28620e9f5ab7112f4b7e657:9427637e2157331e32c3ff75dfee50ae71ff5fd1e24316ae89d6c9d5f2b6706a:82",
+      "question_ids": [
+        "msft_fy2025_001",
+        "msft_fy2025_007",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:74cb7cf69c8b615a959e0f0cb596cd2abd95a54afe332292ba3f362102c2daaa"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "b45b71562480044674d7b3f6849db1a7117ac267316ecdaf063580fbd7e10af7",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "commercial banking",
+      "normalized_period": "FY2023",
+      "physical_source_id": "86d66bc3ca981023bc28ac3999f26bd9ce2fcf9d38b518b10ec261da7bb2c1c1:8c72848ff921baf9c278a6b606e5d74f68f36abb208af1fd31849cebf6ad4d82:104",
+      "question_ids": [
+        "jpm_fy2025_001"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:495950de53685f9e89d49ba508273e8fdc0d6acc83cd1b6d7ebf0c34ecc074e4",
+        "candidate:v1:af70becc1ba84ffaf910019a40d292f9928c14e1bda53f7e4472d1faa1be7cf0"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "b4cc4780620dec6c00518a78db4ddf44011acc3daf724efa966e332c25c13cf1",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "net sales",
+      "normalized_period": "FY2024",
+      "physical_source_id": "30111e6bc721a156a80ebe53d079fa66e2e32a3b56054a98edb2b1a23a059af4:6bd19e65f71502093f062a4a8e004b05f2b07854f22ba7a599941b31e6eb230e:76",
+      "question_ids": [
+        "pfe_fy2024_001"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:43f79fa0f7c9873196f8cc32b64804a1945c162b39adde395b294983619f07d8",
+        "candidate:v1:4c47ce8330930dc4695fb9744cbde41f63a52e06fb64c7bb83721fcc75245a4c",
+        "candidate:v1:54389c7d2c5154fe2cb9a99d4d610e2c2ae593b4832b1b91500490a18fd13ce7"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "b80147e0b77d3395d5b8a9b6fb1a6245cf4f45d1d19887afcabb7163bf1b2956",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "(in billions, except ratio)",
+      "normalized_period": "FY2025",
+      "physical_source_id": "d08014be3a8c92cb65b1ac37503855a67ec6a079b444664368d05e25ee2bd2f8:b3cd752866dc9f8d841f70c469e681c832dac5d04eff597280dd204a41959b81:130",
+      "question_ids": [
+        "jpm_fy2025_006",
+        "jpm_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6210fb01e5ed0f066901a57cf2b155ac96193981cd168c5bed4394796b218de6"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "b8103698f9cec7edf59fb582649226663ade0de9b874986160c3bb018c920d79",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "operating expenses",
+      "normalized_period": "FY2024",
+      "physical_source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:14525f0f668b9facb49afde47198cd5c6e7d3e21d6ac5ae3fb36a22ced2fda40:26",
+      "question_ids": [
+        "msft_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:9a107120f5d1eed049f299d9e79296dcecf93ce1bffe20927c2e3e8df5c382b7"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "b85fddd6dc55e3e682f89b5f00c2684cc2077c5dc0123b6c61514c27eeef7fe9",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "cost of revenue",
+      "normalized_period": "FY2025",
+      "physical_source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:7ea0b6c64a894b6e1c1e9035c82bc9900489101ae807470a2d17f78c8667929b:26",
+      "question_ids": [
+        "msft_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:e2988412b29753853b3b9e9e34dcbf66abc27edfcada78e8bdec75fbc623ac1b"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "ba5669d816a8bab64660f85e89e19adff79ddaa4b17aa6e7d482be9ae38d324c",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "2025",
+      "normalized_period": "FY2023",
+      "physical_source_id": "43db179fda1d82495b0a73cc48926b860573c6a8183abdbaf10100c2f2754351:8af49c21987ab830981368de36d259400d54cbb49ae958593ccdaad7d22d7e58:56",
+      "question_ids": [
+        "tsla_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:d1c8a854b58e50d35258630d391ae8be3fcaa6ecfef9d1a9be95475df8668882"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "ba774117dc9998bee76277986992a3a618b1083d227d6ff328bb7a41ecc6120e",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "other operating charges",
+      "normalized_period": "FY2024",
+      "physical_source_id": "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:90d3222e162bf5bd9e9510b04537c20c8788b28a150569d20eb2034fc9aa811c:63",
+      "question_ids": [
+        "ko_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:8f19b2817c31543a9e1168bfbb850d0f02fedf991e99e4e54e216be5a4fe9ba8",
+        "candidate:v1:bc9ee6c25f168f2c7abce60678c0a1d680f13d0fd80681d9b68e60ec2db81602"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "bb936010716918172f29a7006d9ee7e2f82c9314108c8a9347100b20c61953cb",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2024",
+      "physical_source_id": "ea0aa7988e5fc3b4d0bfbefbd35e7bf83f0c3dd391d91a45a1bb0b4fe18ac1f6:b03c90ce48b52a73a918ef125767fff207b871bce3bfccf003f24437c1239057:43",
+      "question_ids": [
+        "aapl_fy2025_001",
+        "aapl_fy2025_006",
+        "aapl_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:5a197d671dd1af578775ba4507b5d61c56b3b6395a1650cc71ea84746f708cdd"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "bbf9bb63739a534909dd457cd267a931038bd667c67aee1e21f706282cdc976e",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2024",
+      "physical_source_id": "8f417bc9d4f723137973d7d5e5c952594307981eb0e45b2866d4a7e5e11940a2:f97e4cc07e6163f15c19dd4a503ade0d828872e1aa8ba20039560e95b14791a7:118",
+      "question_ids": [
+        "ko_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:eebd9a21de748e0388df045321f7973a17b8c0b36983ec367f47760e56a33a28"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "bd732f133056c07147c9bd58abe6920004fb1b95555f3def447354a0bd794921",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "assets / liabilities / accounts payable and other liabilities (included $6,660 and $5,893 at fair value)",
+      "normalized_period": "FY2024",
+      "physical_source_id": "59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd:376af05291d11a9774bccad4d9fbe037433ee1c46295a8be153cc60ab26eebc0:199",
+      "question_ids": [
+        "jpm_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:10ad22d5e117805aa5d14436838cdff26f5c74609ec32b2fa1c9e2c08bf95f8e"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "bf0904dec5ea7a0bafdc42e828e66feefb52530cbab7eb90f2de4e2b3444a711",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "assets under management / total assets under management",
+      "normalized_period": "FY2023",
+      "physical_source_id": "81552dddf55bd6087d019725fe05bda4f0664ec1ea894f6f3387963f326ffb23:513c742c7c1e4b20246e66d46de77a344c607975121efc5ef27dbce651937138:111",
+      "question_ids": [
+        "jpm_fy2025_001",
+        "jpm_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:e986a0a7d372a063cdc096b61260c7bf7591912a42b1e8baee82c0b44f73f425"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "bf357e95647834794f224bfaee24f969ed41eced4fda7ec7531e9f5827eda3d0",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "finished product operations",
+      "normalized_period": "FY2025",
+      "physical_source_id": "df39db9a011ace07e7e449de986e7497f20cd548799f2a3b96820b5a11a04d93:58620c35c03129f1e4842394da311a3d48a204c4974e18e1d78f7155bdc555b5:39",
+      "question_ids": [
+        "ko_fy2025_008"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:b5ddfdea5d9de7bb228ffbf39e20c07bb7f14ab6548fcc4bc8a15f7ed5ec1d44",
+        "candidate:v1:fe2e827b64ad947f0eaa5754af1c3f026c94b9c1b75092f373b33e09d2d7a448"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "bf52d808e4d32299309419ac43b926a5792ddf4bfab3608ac505eb4d9992b2b8",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "energy generation and storage leasing",
+      "normalized_period": "FY2024",
+      "physical_source_id": "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:dc297634a222602df2848e770bc73f29d49d389225dcacb5736bfaa3a81db234:77",
+      "question_ids": [
+        "tsla_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:57bc693cd71052446647c8c58c00a71c9c73f52f8d4d34d2e01a909769c13838"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "c144380f8d867300c1d30e7d787abc9b107803e2b6bfb910c740d412303f980a",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2024",
+      "physical_source_id": "09633167642a74ce39d88d67c80eb32aac7fa14af5278d4a71444a86a7601daa:0b339c5d95d3ba3606aad87e342d5b68b2a95cfc91b985aa9b84ff9f63598ef4:63",
+      "question_ids": [
+        "msft_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:a9b354dbce4f2c9c09e4aca386773f3e47b805e4c5f17546aac4f502c093696b"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "c2f475d577b69d2ff5e41dec373f92703f238d8dab138668b81e182e8ff97bfa",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "commercial banking",
+      "normalized_period": "FY2025",
+      "physical_source_id": "63b579500e55a49b576999ce66742fbd271442a57dd8008577754134e4f80b79:058ad864ae168fbbf6d4b146ea5e6cb4e9f0f1a0317615944e4d4b886f60874d:102",
+      "question_ids": [
+        "jpm_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:650d8a765ff5b48a45b270c68c9ea05a0c40f32e14588dc11470a30ff5fa0cf3"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "c3632e8ce1fe7db9a247143bdb42d115d8de2462e2918cab48e376c5f6abfd70",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "basic (1)",
+      "normalized_period": "FY2023",
+      "physical_source_id": "1065bc2f80d46aadfb54b65e30c493dbde6cba0a1d9b63103d3da9a5c0790617:8333995a5b28434305aa32346476e0b4f0eab321acdac4b6d2122a36aad820aa:157",
+      "question_ids": [
+        "nvda_fy2025_002",
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6b5a1201256d8ea311270e4a90ba26d9c7dca1418654709b389de6f8cdfa4804"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "c471378751fc0032cfeb8516e2ae2b439c8f34a1391f7f24a7ff9addf608114c",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "impact of the state aid decision",
+      "normalized_period": "FY2025",
+      "physical_source_id": "986a79441e2a026b370662f10e65340aa1a1b2ecbddcc7521ae14d47e68f43e1:5dc47ed4bb8fd66ec82cb2e4f4adfcdde8e3d2a866279ef42498e07e61f3f315:44",
+      "question_ids": [
+        "aapl_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:f8b7ee516b7e3512f2abe762f9fb910b98905c1d07c0527aae337adf738ed43e"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "c550e58018d5dabc17439becacc880843fcecbf4352dd5b4cc3e0bf108450966",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "assets / trading assets (included assets pledged of $165,927 and $136,070)",
+      "normalized_period": "FY2025",
+      "physical_source_id": "59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd:270ece309453548d4a65568b1fb0339ff5a55c6c6200241924b8ff7e7a01c171:199",
+      "question_ids": [
+        "jpm_fy2025_001"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:83a7ab287bc39ecbcc1500aeeb6023596932cb05c4531dff53ac035fb6a8d517",
+        "candidate:v1:a5e1dc1ac2c9c318ee32c71294231a2f1895d3bd003692399a3f65d046ecbc8d"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "c6fe7ff39f1abe754cee6e101cdf43f71065867c652ee4e2ad677042584f2504",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2025",
+      "physical_source_id": "57c23ebbdf72efe34dee858ebf25b6eeaedc79055f3c20025588d37c10d373b9:791a872b578861b16026c483720bd2541b4c68a2dacf811fdce01bcdb08b5a19:103",
+      "question_ids": [
+        "ko_fy2025_001",
+        "ko_fy2025_002",
+        "ko_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:93cb2b32ee0765f59e55989be8f30b90183bb3ce3767ef14f293fc96b1431edb"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "c706fd1209793b60499ff2d19c52aa233b71cfb916ba68206946d1842c72ba0f",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "taiwan",
+      "normalized_period": "FY2025",
+      "physical_source_id": "7dfd18dd365fbd0db662a9b8bfc87e1b4adbf0c102f273dfb592b6d1ae2fb3f2:fe3eac246e0b7abfbc3d163fe15951ffc8891825a1c0f611f18781eecfa2b110:171",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:9b0284fd4823061a998f436141ada7939117994236818fb88ccf792ffe66e9a1"
+      ],
+      "category": "RF4_same_metric_different_period",
+      "fact_id": "c7ddb1a6e113a504dcbea4e89a468b332f5e824d678bc47a99d195755d8cffe4",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "operating expenses / network and processing",
+      "normalized_period": "FY2025",
+      "physical_source_id": "047c6a56c7f09d391ac993d738c97b84bae5339ad9a1873ff5d6dd98ff693439:3e303fca6639fe449704c31a258996e4eed622acb3b0ccd7c107849aa9055fd7:75",
+      "question_ids": []
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:57bc693cd71052446647c8c58c00a71c9c73f52f8d4d34d2e01a909769c13838"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "c8278edb7adec999bba3de3cf115d6bb97caccec4a0ee9903d9542a9292372f6",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2025",
+      "physical_source_id": "09633167642a74ce39d88d67c80eb32aac7fa14af5278d4a71444a86a7601daa:0b339c5d95d3ba3606aad87e342d5b68b2a95cfc91b985aa9b84ff9f63598ef4:63",
+      "question_ids": [
+        "msft_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:0df779ee1c49afd7c4887e400fa72f763ab35e20eb3e69f8c2176574a0cb64ea",
+        "candidate:v1:655549c958753a9cc6e96274f0d16e3eb591b06970759e371edba65c15b662a9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "c8a7e8e61a84e491bafe73b35bc8b74ec13fdd534651c516a1ca764c9c24eb50",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "united states",
+      "normalized_period": "FY2024",
+      "physical_source_id": "78179ebd90114e4886af38071efb20c643efd57d11b9d1a5864fe42aba876818:844521bd237f7abf9773708d18f4db1b2b9eb9d0f83204644d5c8505f5988e98:113",
+      "question_ids": [
+        "pfe_fy2024_006",
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:19d32eb0f201d3f3f1395bacc5093f9f85308aa4894eba30446fb21f6411138b"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "c8b8c62c6c80c40479de0bdaf04d6eeb3ea3a2bef47ee0b1fc5ce835bfef9b07",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "(millions)",
+      "normalized_period": "FY2024",
+      "physical_source_id": "f8b75b829f7082abd87578ad9fb3d8f2153782e923ebd3921711674c7d0da868:40ece3832be1ffa7cae277ef44eb7ff1146f3e73928e08201e46dd0ab64c6b2f:115",
+      "question_ids": [
+        "pfe_fy2024_005",
+        "pfe_fy2024_007"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:532de5a0d2d9d66ff8d5fc2dbe0b40d4e556bce563b875d7d2b21809e40a143e"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "cb61ebeb3fafdf58753540d308015d7d8df34bcbf1ea40cbf69bfe209c192fca",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "corporate",
+      "normalized_period": "FY2025",
+      "physical_source_id": "734db94cf723f8dbc533333a5ec7478ec101fcd7507b2e3175ed3804aeb9b14b:70c1c066bce602c0331e18879901db71489925b528c34c1e5bc38e24fc826868:50",
+      "question_ids": [
+        "ko_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:793d34427cc6dbff68fa3fa7e4708a4e80bb75ff0de59b68a6d68d0ecbcbc4db"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "cbe2c09f098907132259b102353b3b205bc3ae0f7c6a641d1e2392e93d569796",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "contract-based",
+      "normalized_period": "FY2024",
+      "physical_source_id": "09633167642a74ce39d88d67c80eb32aac7fa14af5278d4a71444a86a7601daa:ca01ee4a9d3d2de1808243b12a0b80e9d953674c103685c6951a3bc714551bc3:63",
+      "question_ids": [
+        "msft_fy2025_008"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:cb239faa1b28169af729717a3ef04f1e60d01e30985cd8026e345a4192f66f7a"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "cd021821c1948d59bccd617dafe5a7b5447ae0d4d90191fe5522f09d1f3dac55",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "other",
+      "normalized_period": "FY2024",
+      "physical_source_id": "986a79441e2a026b370662f10e65340aa1a1b2ecbddcc7521ae14d47e68f43e1:19b92ca93b8a2e8594443502f4eef99acd4159e0c719cb0a6d5a2f8c428baf70:44",
+      "question_ids": [
+        "aapl_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:9da28e3917d605d23272ebe76d0144b45c6b9d6f70a8d6c7265c843df9fe66b9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "cd355155c8810b98cf5d2bfa7e50fe802f6d9ffb48da1c3d68a0df87e46f8557",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "u.s. federal",
+      "normalized_period": "FY2025",
+      "physical_source_id": "3039ddb095b1b546f521c150bd1d20c318c1881b56cb9edd600eaff007cb8ba9:da03aa6eefcdc1a93beb3a2df58dc8d3843c4eb6e6bf274391592050b2bc89ea:66",
+      "question_ids": [
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:9b0284fd4823061a998f436141ada7939117994236818fb88ccf792ffe66e9a1"
+      ],
+      "category": "RF4_same_metric_different_period",
+      "fact_id": "cd627d3f10b14dbc74bf1e6b79d6ce3b823938d106d18d2d6887d5e9bfb8adad",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "operating expenses / network and processing",
+      "normalized_period": "FY2024",
+      "physical_source_id": "047c6a56c7f09d391ac993d738c97b84bae5339ad9a1873ff5d6dd98ff693439:3e303fca6639fe449704c31a258996e4eed622acb3b0ccd7c107849aa9055fd7:75",
+      "question_ids": []
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:1416ef59b38a1d0a05c5fcf032e943fb8c31ee1b2239e5a87d4eeae4d6038776"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "cefc0ef76636bca1078e565257f5f35477f48272c1729856ab7099d81cb5304f",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "graphics",
+      "normalized_period": "FY2024",
+      "physical_source_id": "35765f93385ef55879a2fc441d3309206f4c44651f4e9d57a7fc768a1b2b211a:e76ab8191dcb984ad446a9e0eef8565c3b8932517a6e47536d5054956f3d02d3:133",
+      "question_ids": [
+        "nvda_fy2025_001",
+        "nvda_fy2025_002",
+        "nvda_fy2025_003",
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:baee5eb03a2fdaf3dd0bd1362b0acee52927028b60dcab10d10ea3eca1dc02b4"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "d0ff47e3953434ff8c8e50ae130e5963640fca18ddb4d6b8ad37d6e1b531e516",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "long-lived assets: / united states",
+      "normalized_period": "FY2025",
+      "physical_source_id": "2d3fa51c95c30597b87ed541375cf5798b2ae623f785aa3680f0b7b036c73e1d:1a84b9fbfa90949d8813cf5d2b1813227bc6c72be84a0e6f995bb73be981341f:172",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:7a36748a1c67dcbe61c720b39733b9db1deb6991c885d650b84f2b157f5e184d"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "d13aa7dffd676e0ad40ef9b0e409faf3e9ed50075449519f0de7fd50b70fdd29",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total cost of sales",
+      "normalized_period": "FY2024",
+      "physical_source_id": "2016faed04f03df7ef6aad0be8f232521469d6ba19428379e552d55dc23667cd:287f0b5810d11e48b3e2d876cabb04a70c074614f36ed02bb9e8803819415816:32",
+      "question_ids": [
+        "aapl_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:95097b189c050c9401d8c639f09855728b87506a19d0fdf56e20270851a754a6",
+        "candidate:v1:e234a30f9bbdebec9a79e95093de0fe455d24f87cb1abd46f5254cdec000e5be"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "d37c9c223e62a271c44828e7e6cf65e232c56986bb0db8783b544f11792126bc",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "consolidated net income",
+      "normalized_period": "FY2024",
+      "physical_source_id": "449390bcf7e2fc995ffe009d70590314ff40139de33d136f2b137270196ad03a:0095f412863f2b5b2189704066106fb118f18737fc5e819d34156b3cb305d246:64",
+      "question_ids": [
+        "ko_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:7a36748a1c67dcbe61c720b39733b9db1deb6991c885d650b84f2b157f5e184d"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "d3c6c731098fa86a796119be8e9fd948610bb95924b07709154094129a39a621",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total cost of sales",
+      "normalized_period": "FY2023",
+      "physical_source_id": "2016faed04f03df7ef6aad0be8f232521469d6ba19428379e552d55dc23667cd:287f0b5810d11e48b3e2d876cabb04a70c074614f36ed02bb9e8803819415816:32",
+      "question_ids": [
+        "aapl_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:137a7d05ac5733f7f203922f4d391af18ecddd77bd735a8d9d70e68dd0dab9c2"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "d46fb7bd144245dcba8478244acadf14d7c99ac62e4e40375815000dc9ba45c5",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "diluted (2)",
+      "normalized_period": "FY2023",
+      "physical_source_id": "1065bc2f80d46aadfb54b65e30c493dbde6cba0a1d9b63103d3da9a5c0790617:d66c246852bdb98af8b03acf578e1c25aab9b060de5c72606ba28293c566ee8b:157",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:48bb2f1732aab9aae4fc01ba47e8c7b1791eca130de60cf03744a97cd51a7e8f"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "d733c7098464f6a609180dd871930d2326d1444af4aa1e2e7e85c63f6fef4a5e",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2024",
+      "physical_source_id": "5ba667dab867a69a2b50bb1ca7777b7e20d67b3a62ea95f37664eaecaf410d5a:eda7a369f525d20f3132a9a798b16a111f6798b37ffefc33d9e41fe140bb806d:114",
+      "question_ids": [
+        "ko_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:c3a037f23add8319c55546328969ee1e0c1f125f6c29861ec2cb244ac48cbf92"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "d73c321bc78a4ba9922cf798473b120e0306e3f132ece1599b152806ae95445a",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2023",
+      "physical_source_id": "b0f2810937bc484b7bc4ed7bd6823c300040dd97a23721fd8b03f1c8cdc3de55:0689c2371aba0a766b0b1bf8516bc1480a81998d7db791ef85fb067b786c1fd2:86",
+      "question_ids": [
+        "ko_fy2025_001",
+        "ko_fy2025_002",
+        "ko_fy2025_006",
+        "ko_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:509608a2ddfd6fbf3225755bf5967a85460a39cfb04272bca1e5668c0dad35a3"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "d8741270c8d46d0e68ab92cc2729397c2c0d6d408539cb2352b0b0ef1f059777",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "assets / other assets (included $15,849 and $15,122 at fair value and assets pledged of $11,984 and $6,288)",
+      "normalized_period": "FY2024",
+      "physical_source_id": "59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd:0e8575838f75080f8ce229a10b17c33edf4a6b0be1c2d4a9085be30079b7b65e:199",
+      "question_ids": [
+        "jpm_fy2025_001",
+        "jpm_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:29dc9f260221b92c374e4d5fea517de0abd3824e87581dd018e15472966459e9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "d8f78ced584519d515480110b7a72e059c9a1d0759f497b1cda27c2091e22fc2",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "pfizer",
+      "normalized_period": "FY2021",
+      "physical_source_id": "d9ce35f03184e2003cb0e78a4c43d9efb605cf881af29af16a6a1b19add85211:70e4ede1efbeb357807b4cfd13624271f9a29174c8b6166bfebb270b85c92210:36",
+      "question_ids": [
+        "pfe_fy2024_001",
+        "pfe_fy2024_006",
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:5e9ff99ffe791e85f5cd2264e6b5d78425910c1700f226de650f0100ae766360"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "d9b3e1d5b7558568aac44d3d021be22a6c666b2809bd32d94283099bf52cd448",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "assets / liabilities / stockholders' equity / total stockholders' equity",
+      "normalized_period": "FY2025",
+      "physical_source_id": "59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd:e6e6151822238180bad3a19ff0c3c721010a286dff04262de23d77b9039f3b8c:199",
+      "question_ids": [
+        "jpm_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:72605bee8a58d68326339fcca56575a929f8cecd7210f3fd0bdff2d43f844532",
+        "candidate:v1:fcb4b399df8bc3a40f26c29543dfe7651bffecbd02bc4336b18acf96374c6de5"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "d9dd8f043e8a66ad067e1cc501226bd6ca9e1da296145f234136ac706d2df1b4",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "biopharma total revenues",
+      "normalized_period": "FY2024",
+      "physical_source_id": "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:60774d3cdcef71c59d378635e9f67c04044fd4492275f2764d164e1fe98ca1bc:113",
+      "question_ids": [
+        "pfe_fy2024_001",
+        "pfe_fy2024_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:521784b31c7ffc523cbd2d1252930940612d9f0a7c2dabcc4f302d0d5332df9d"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "db09c73c2f532fe8887f831015e350116877240985e041446208bb1a9b89bd2b",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "diluted",
+      "normalized_period": "FY2025",
+      "physical_source_id": "4a8f4034c72c78562bc7d8475bb93a06cafd908cbec8369be89a29f5bf32e5c4:33e1854d31437c1ec83b5584e621c93f45ba593066e6396d181729fe8676f42a:38",
+      "question_ids": [
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:44704956af5f0b34c0d94ba14149a418bcd0836d8dc54b3e935db05b932c5e86",
+        "candidate:v1:96e7375fed3e81d8b59e155845b03d8ef001ac75a49b8e1f8dc621e7c6a8dd99"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "df3b89661a87a83adfb77d53dc9cd5d2f5525cd374904f439e5249850bda62bf",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "net sales",
+      "normalized_period": "FY2024",
+      "physical_source_id": "c1e07266a4d8f049cefb2cdc5202903ae6d7dff610b0400d89815913ef5f4332:e80437e6cd8725e4bcae5f4fb8cd661ad3d4effdf5a1026082dcbb0ad1334ea6:77",
+      "question_ids": [
+        "pfe_fy2024_001"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:71d2a71a4d854823ed9b410819f89ca386397be4d2c1cbc1c162fb70c68933c0"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "dfd84d087006714f411d4c58b66dfe0dd5802f9a8412401c57e463e6d1ead023",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "foreign",
+      "normalized_period": "FY2024",
+      "physical_source_id": "3039ddb095b1b546f521c150bd1d20c318c1881b56cb9edd600eaff007cb8ba9:5f39df1bb2a908672e7dd1946b4122c9d698aa4dd19dd77ed4be6f572f6b5e31:66",
+      "question_ids": [
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:5a197d671dd1af578775ba4507b5d61c56b3b6395a1650cc71ea84746f708cdd"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "e00e7aa67ed527eb826b5e3144958c4d9bff834667bc70bbe95cac471d3f9913",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2025",
+      "physical_source_id": "8f417bc9d4f723137973d7d5e5c952594307981eb0e45b2866d4a7e5e11940a2:f97e4cc07e6163f15c19dd4a503ade0d828872e1aa8ba20039560e95b14791a7:118",
+      "question_ids": [
+        "ko_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:6c0b7c570610934b052333ea96f3fb7a75403f3d0ff59df9bb397a5660742bce"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "e016143d66c10d49e34b7d751ae4e2797f74dd4800e1596583b2a18d9f0b14cc",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "americas",
+      "normalized_period": "FY2023",
+      "physical_source_id": "21f6fd90e1ac0e3cfdb3849324019617dc23f5c21057ab9de57ed4fc785d4243:bdef90ffc2c153b6d527008e2ff56cee52e2af9a51d798f66e10fcdace859107:25",
+      "question_ids": [
+        "aapl_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:642b843c9b7db6dcd61ab90f6ff99140b52cb7fac4aaf644088d4e64d9eb938b"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "e0d145b2f1b45560342e9af536b5e060b683822441a3fc60dd5a2bb5ff1e9036",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "computer equipment and software",
+      "normalized_period": "FY2025",
+      "physical_source_id": "04394e2a5583f920a76a85a563d70cddb88e9827257fbdf117e129a07e92a83a:463be8bdb364c0ea369f07c32a9ddcd5887bcbbcec96f5065aabf04618fb2a8a:60",
+      "question_ids": [
+        "msft_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:7a36748a1c67dcbe61c720b39733b9db1deb6991c885d650b84f2b157f5e184d"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "e1199d5dee534af7fe4d5d0268c21bd28a8d9ac9d486b06a87a56265fdbc32da",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total cost of sales",
+      "normalized_period": "FY2025",
+      "physical_source_id": "2016faed04f03df7ef6aad0be8f232521469d6ba19428379e552d55dc23667cd:287f0b5810d11e48b3e2d876cabb04a70c074614f36ed02bb9e8803819415816:32",
+      "question_ids": [
+        "aapl_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:866985dec269355234928a6e76569f890d2e3935399517d48a308fee236089c7"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "e31c044016257b16db70ea016636f35fbbfe8f53a0d43439054e61b4802c2627",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "third quarter",
+      "normalized_period": "FY2024",
+      "physical_source_id": "0ba7a2ff83ac5835c22e44cf99302185b3226f83f0d91b7789d09140e9a31b4f:33e0840100e941a4b661e3e43660565122571f046cc7cb782b3c1d8d57fa1070:73",
+      "question_ids": [
+        "msft_fy2025_003",
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:177fb294eda7213693e673cd4bd029240b7f51414ed5a4c43ab0844869cda6dc"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "e6bec952b08090dbab127db55d9a47ac3ba5ee565eda20eac0fd4230634b7c93",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "balance at january 1",
+      "normalized_period": "FY2025",
+      "physical_source_id": "e7df9db601f4ae6102ef9b2128835cacf5c72329f8b0fe727f5312988bc0df9d:51355e8b88632f9787074ee2221b5e1e5f2d0377e6e167dd4ce530aec3005c77:200",
+      "question_ids": [
+        "jpm_fy2025_002",
+        "jpm_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:82f69ad25b2ba301e3900f8e415b8afd13095e286b02fde9c69138733a72cd16",
+        "candidate:v1:b4f319267a33d78adda241a78a4a144ba1210d32ea81d51180a7b624f7065869"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "e8d2be5ed5d57a1d02a0758ed55098d4c2c3f8d254032e5fcc09287ae4de316d",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2025",
+      "physical_source_id": "cb3085dce03d737cc43bafd3d91aef006995a946e10ec522b573b8207c5c9241:832147cf58922d2d7620b74f8dfa40b369b920b9622c0f5b921f67d28bf3e9b3:100",
+      "question_ids": [
+        "tsla_fy2025_006",
+        "tsla_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:d1a9b3afffa2026c7f59bce787e89a8ea6aa9bf9c39ffb3ea2977a3346a556dd"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "eac17fb234e5fca76be199c2a636bc3976a173f671b982df8875828d1cd530d9",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total automotive cost of revenues",
+      "normalized_period": "FY2023",
+      "physical_source_id": "43db179fda1d82495b0a73cc48926b860573c6a8183abdbaf10100c2f2754351:fd7472afd9daa320268367aa08d9984f422ccc674820ea2adb1e9e93e2d31b4c:56",
+      "question_ids": [
+        "tsla_fy2025_004",
+        "tsla_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:7dcfe863406b7702ece9e3a1ce39f7542ffef084a381a11274938ec1969e7bb3"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "eb9be64f3726980c859da9893d8fdb9057523a20e24e123d1a7a70180b820871",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "cost of revenue",
+      "normalized_period": "FY2024",
+      "physical_source_id": "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:e7fdfe9dcf2fdd09b5b472432cc97bf0bd1720c72064ed6a2b6502463a8191d9:26",
+      "question_ids": [
+        "msft_fy2025_002"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:60023f6bc43bce51e66afa42bcbdd7a4036d5d6a0a56f70d29c96a91a7b85759"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "edbd1f5e6e372e45dba8578d55b993badd290cc1d3895f02d336da82be29a3a6",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "singapore (1)",
+      "normalized_period": "FY2024",
+      "physical_source_id": "7dfd18dd365fbd0db662a9b8bfc87e1b4adbf0c102f273dfb592b6d1ae2fb3f2:ef0041fc48ed9062bb4fe3d7f2ff13cdc5f91b02941d2845986249cbba3f5b29:171",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:d361164a130eab6b39ed9414ef11aa605905a48e281dd7e181fd0eb8c879fba8"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "edd406f791227bfc47deb5e3432b7fee6c5ff3555961e53438e76503a2e47689",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "united states",
+      "normalized_period": "FY2025",
+      "physical_source_id": "deaf061bae059432d2926aca133f7e50872bf2b55792c05ff00ec1e6a20e4ef1:1e01bf2d0890ad323e4b9ec2d518390e2e0cace1dd2fc36f89b49870a101d6e5:129",
+      "question_ids": [
+        "tsla_fy2025_001",
+        "tsla_fy2025_006",
+        "tsla_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:16f0434c9e39d1039a7cb96b24025b2f3b1b2ff333df5b726b76674d3d728437",
+        "candidate:v1:cf74f4a7c11f7cb09ca0fa7822d2cbe51fe3d09175e82f49dfc325ccacf2a7f7"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "ef44eee6f7a57439cde233f8129a9613490a0e6d5ad42f622bf7b71fb80eccd9",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "consolidated net income",
+      "normalized_period": "FY2025",
+      "physical_source_id": "9a90ac6dbf971bc6b0a8abb92c7d03fb85b3b767589e0bbe705387e65ce09817:48d24cfc25d50f6e506be8df3a068c88f260aba21cc20104d0238a3587b4e242:87",
+      "question_ids": [
+        "ko_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:521784b31c7ffc523cbd2d1252930940612d9f0a7c2dabcc4f302d0d5332df9d"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "ef9582069c9266823fd2ebd30b8a5a6cf10c31147fe0f7852a0dababf51bfa6f",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "diluted",
+      "normalized_period": "FY2023",
+      "physical_source_id": "4a8f4034c72c78562bc7d8475bb93a06cafd908cbec8369be89a29f5bf32e5c4:33e1854d31437c1ec83b5584e621c93f45ba593066e6396d181729fe8676f42a:38",
+      "question_ids": [
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:21734ed630e72ff23a5f0eeb4d47362dbb454dab49501c0e57b34c1bb4940a30"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "f083549826266213dfdbe62a1a7a26f988bac693e0dab3fb6cd3a343b8018590",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "basic",
+      "normalized_period": "FY2025",
+      "physical_source_id": "4a8f4034c72c78562bc7d8475bb93a06cafd908cbec8369be89a29f5bf32e5c4:9381453755b06c73aa0a242027fe5126094105a2a1b294b130ed3c6623c21c41:38",
+      "question_ids": [
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:951468f35d6a65dba43705e92509ac7012d1b296c9ebec41ebbd1cef108b4c52"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "f0d45ce696a0683b18a34901f6dedbc229ee30be3e02372b592a49b50155f840",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "foreign",
+      "normalized_period": "FY2024",
+      "physical_source_id": "5dd4182b9168a55be215b055a9f0c4add7c4b1bbf360db821d2c9d907fb180d7:b07a754251c4c6a5a36dfa6ad0878bdebb55e9047fa564f3436d5303dddfd1a4:66",
+      "question_ids": [
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:7a45c71c32e629dc37cc15b68382ade065689fde9c025c1b653f6779ea41eb60",
+        "candidate:v1:e519b40d5c72dc60ea4ee4d6c187ffc6f449708c4dc101c093a994fd333ce0ae"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "f26b5ddbd1e1fc4c8a779de188eb555d5c4d8fd53a2b466a3d6b3ef547b41c14",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "automotive leasing",
+      "normalized_period": "FY2023",
+      "physical_source_id": "11b13f579ed57a803e1ae5b27345556d8a402edf45fcf4fded3c6bf9acc325d0:bfb5d32e30e58711cd4378c8ccfba76f7c39e8d3be578847bbc3eda7cfebdb9a:55",
+      "question_ids": [
+        "tsla_fy2025_004",
+        "tsla_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:f8bd9f0f517f634f1dae496477b6aa0b3598ca2ef021bc0438155fc88e8566be"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "f3f3ef3fcc9a59d565b1ccc9c8b93ec182049f4f0b167489a2a0fcb7de87d85b",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "operating income",
+      "normalized_period": "FY2025",
+      "physical_source_id": "be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211:1b96d69c1372e6d5ff64fa469c422b3c36008bf3e0941834d426cba25b5a83b7:80",
+      "question_ids": [
+        "msft_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:177fb294eda7213693e673cd4bd029240b7f51414ed5a4c43ab0844869cda6dc"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "f794327f9db2065df0cf443ff5b1cf2f6715f5cd3c12a5885718bed33b4f911b",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "balance at january 1",
+      "normalized_period": "FY2023",
+      "physical_source_id": "e7df9db601f4ae6102ef9b2128835cacf5c72329f8b0fe727f5312988bc0df9d:51355e8b88632f9787074ee2221b5e1e5f2d0377e6e167dd4ce530aec3005c77:200",
+      "question_ids": [
+        "jpm_fy2025_002",
+        "jpm_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:0df779ee1c49afd7c4887e400fa72f763ab35e20eb3e69f8c2176574a0cb64ea",
+        "candidate:v1:655549c958753a9cc6e96274f0d16e3eb591b06970759e371edba65c15b662a9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "f8459675829dcf9b04e0e1f138470fe6bf5021f9762f58740012c7acab5e57c9",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "united states",
+      "normalized_period": "FY2022",
+      "physical_source_id": "78179ebd90114e4886af38071efb20c643efd57d11b9d1a5864fe42aba876818:844521bd237f7abf9773708d18f4db1b2b9eb9d0f83204644d5c8505f5988e98:113",
+      "question_ids": [
+        "pfe_fy2024_006",
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:baee5eb03a2fdaf3dd0bd1362b0acee52927028b60dcab10d10ea3eca1dc02b4"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "f87f4d5aedb9ad4cc5182def9aa5d2b2dda4e23bb6573312ca14c48e36f66aa0",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "long-lived assets: / united states",
+      "normalized_period": "FY2024",
+      "physical_source_id": "2d3fa51c95c30597b87ed541375cf5798b2ae623f785aa3680f0b7b036c73e1d:1a84b9fbfa90949d8813cf5d2b1813227bc6c72be84a0e6f995bb73be981341f:172",
+      "question_ids": [
+        "nvda_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:7cd13209314654b87e72afff1965f77571e579ad5a9776c6534ac37612cd8db3"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "fa82341356a1d0a42abcf7b1e353ab62d2276e6a22981592b71988b8172a6e0f",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2025",
+      "physical_source_id": "9ae9b0fab1782560ea51ce59b08f88228ff7277fce717df2a0c7f0a4d3fc6386:211e38c9a46075de8ec17ceb4ea403d33543819d84c93ccf723511e0a4a96348:49",
+      "question_ids": [
+        "ko_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:16f0434c9e39d1039a7cb96b24025b2f3b1b2ff333df5b726b76674d3d728437",
+        "candidate:v1:cf74f4a7c11f7cb09ca0fa7822d2cbe51fe3d09175e82f49dfc325ccacf2a7f7"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "fb4d47c3b235b7b48f7c0329357fc66d1d5a47dbcf75845581da97adaf7b4aa5",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "consolidated net income",
+      "normalized_period": "FY2024",
+      "physical_source_id": "9a90ac6dbf971bc6b0a8abb92c7d03fb85b3b767589e0bbe705387e65ce09817:48d24cfc25d50f6e506be8df3a068c88f260aba21cc20104d0238a3587b4e242:87",
+      "question_ids": [
+        "ko_fy2025_003"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:951468f35d6a65dba43705e92509ac7012d1b296c9ebec41ebbd1cef108b4c52"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "fb8d9fb66d4d24ba8d11e4385f014558ab39bc545f8067f50e7dfff4f1ec4af4",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "foreign",
+      "normalized_period": "FY2023",
+      "physical_source_id": "5dd4182b9168a55be215b055a9f0c4add7c4b1bbf360db821d2c9d907fb180d7:b07a754251c4c6a5a36dfa6ad0878bdebb55e9047fa564f3436d5303dddfd1a4:66",
+      "question_ids": [
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:29dc9f260221b92c374e4d5fea517de0abd3824e87581dd018e15472966459e9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "fbf3fa373199bbb3d6f33ca2e653cafa33f68a957f8de21c2e41c330ad00c48d",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "pfizer",
+      "normalized_period": "FY2023",
+      "physical_source_id": "d9ce35f03184e2003cb0e78a4c43d9efb605cf881af29af16a6a1b19add85211:70e4ede1efbeb357807b4cfd13624271f9a29174c8b6166bfebb270b85c92210:36",
+      "question_ids": [
+        "pfe_fy2024_001",
+        "pfe_fy2024_006",
+        "pfe_fy2024_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:8f19b2817c31543a9e1168bfbb850d0f02fedf991e99e4e54e216be5a4fe9ba8",
+        "candidate:v1:bc9ee6c25f168f2c7abce60678c0a1d680f13d0fd80681d9b68e60ec2db81602"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "fcbb378d738e634f99cc8715a46c660c3d35238d9100be87f87b031a61cb39b3",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "total",
+      "normalized_period": "FY2025",
+      "physical_source_id": "ea0aa7988e5fc3b4d0bfbefbd35e7bf83f0c3dd391d91a45a1bb0b4fe18ac1f6:b03c90ce48b52a73a918ef125767fff207b871bce3bfccf003f24437c1239057:43",
+      "question_ids": [
+        "aapl_fy2025_001",
+        "aapl_fy2025_006",
+        "aapl_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:002a51480b0c80e8ba05731bfbdb45c4eaad6a58d823ce00f22549e094963f54",
+        "candidate:v1:fbdc921326a1812f3efe9116d06bed57734842d8a242f05dc60acaebb96f6ad9"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "fcff0579d08abd99968ad0718d7f58f016e1e2dc210250dc4291375b9409b748",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "revenue recognized",
+      "normalized_period": "FY2024",
+      "physical_source_id": "688d0eba067093a8fdf32fdbf39b11de357138b2da291eb5520fa218dd796647:fd2a58a6c146acf4f5222c23d1ddb3913fc11aa0b9565bb0fb67e02875c9ca27:78",
+      "question_ids": [
+        "tsla_fy2025_001",
+        "tsla_fy2025_002",
+        "tsla_fy2025_006"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:521784b31c7ffc523cbd2d1252930940612d9f0a7c2dabcc4f302d0d5332df9d"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "fe8b73e837d5a08080341243b2f0eceece5c08ec161d495a6329f144e13a66c3",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "diluted",
+      "normalized_period": "FY2024",
+      "physical_source_id": "4a8f4034c72c78562bc7d8475bb93a06cafd908cbec8369be89a29f5bf32e5c4:33e1854d31437c1ec83b5584e621c93f45ba593066e6396d181729fe8676f42a:38",
+      "question_ids": [
+        "msft_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:e0735f16789e8837da0dfe9ee5a7d13bd7a50c13426ff43d9c198dd2be49ba50"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "ff06582ca09326ff6463fb1c78f6d774d289616e4650991168f53f1dfaa56661",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "comprehensive income",
+      "normalized_period": "FY2024",
+      "physical_source_id": "673ead3ce91ec6cc5337b6c6101478dad2771052c7162ac2e2590ad67292f9e2:65abff3841bed59e9b05a3a2f8d97392c9b55c58579cfc9f609c55250076616e:198",
+      "question_ids": [
+        "jpm_fy2025_009"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:a9b354dbce4f2c9c09e4aca386773f3e47b805e4c5f17546aac4f502c093696b"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "ffa21c8b28c177bb6590978eeb8ef3102f678aad08e63ee26a855f5bc2cc9b81",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "commercial banking",
+      "normalized_period": "FY2023",
+      "physical_source_id": "63b579500e55a49b576999ce66742fbd271442a57dd8008577754134e4f80b79:058ad864ae168fbbf6d4b146ea5e6cb4e9f0f1a0317615944e4d4b886f60874d:102",
+      "question_ids": [
+        "jpm_fy2025_005"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "candidate:v1:e59c77672007b34cff3f358315d81c68eb361bee38e5c7a883170586a5087a8b"
+      ],
+      "category": "RF0_new_fact_from_new_physical_source",
+      "fact_id": "ffa812d288856e39d6f7811748a5afc7f4d1cf395f9ea8a9fb158eaf0668fc66",
+      "gold_compatible_question_ids": [],
+      "normalized_metric": "percentage of total net sales",
+      "normalized_period": "FY2025",
+      "physical_source_id": "a24ead98b9749a8d419a35cfdb84a8d52f8b88d4ae995e03205494f64611311c:8b11759ac632c9c5b0afb8cf94434600041b283e549c1e001510359e96cf0605:27",
+      "question_ids": [
+        "aapl_fy2025_001",
+        "aapl_fy2025_003",
+        "aapl_fy2025_006"
+      ]
+    }
+  ],
+  "total": 262,
+  "unique_new_gold_compatible_physical_sources": 0,
+  "unique_new_physical_sources": 106
+}

@@ -1,0 +1,14 @@
+{
+  "counts": {
+    "RP0_NO_REPAIR": 0,
+    "RP1_TARGETED_RETRIEVAL": 0,
+    "RP2_EXPAND_TO_TOP50": 66,
+    "RP3_ALTERNATIVE_STATEMENT_SOURCE": 0,
+    "RP4_EXISTING_SOURCE_REPRESENTATION_RECOVERY": 0
+  },
+  "implementation_retrieval_execution": false,
+  "model_calls": 0,
+  "repair_budget_max": 1,
+  "retrieval_calls": 0,
+  "root_cause": "B_initial_top50_was_already_available_as_a_frozen_artifact; R0 expanded/materialized it without executing a retrieval call"
+}

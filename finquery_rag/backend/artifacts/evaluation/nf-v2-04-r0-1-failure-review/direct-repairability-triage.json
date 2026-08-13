@@ -1,0 +1,1063 @@
+{
+  "counts": {
+    "DR0_RETRIEVAL_MISS": 15,
+    "DR1_SOURCE_PRESENT_FACT_MISSING": 4,
+    "DR2_FACT_PRESENT_VIEW_INSUFFICIENT": 0,
+    "DR3_FACT_VIEW_SUFFICIENT_BINDER_FAILED": 0,
+    "DR4_BINDER_CORRECT_ADMISSION_BLOCKED": 0,
+    "DR5_GENUINE_AMBIGUITY": 25,
+    "DR6_NO_SUPPORTING_EVIDENCE": 8,
+    "DR7_OTHER": 0
+  },
+  "materialization_repairable": 4,
+  "model_calls": 0,
+  "not_supply_repairable": 25,
+  "retrieval_calls": 0,
+  "retrieval_repairable": 15,
+  "rows": [
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "aapl_fy2025_001",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [
+            "79d91a2553e82d687736806cba8af0410b778fe3eef63aed96994f5d46472050",
+            "67ff5c02a5b006df163f569e909e243dcd03af9f8fb2c5cd453068974b41d279",
+            "5a7c010dc7c1d81f96587b93934b787490d561bcd32e8e90507838e2ee5f078d",
+            "aad6d3c273873f37429ec2d6c3942f1767337f9c39186f57e5cfb229cef8763a",
+            "c13f9a1ff37e5a751d69cc91467b5ffa5780189a7869f8bc042d2a73f0ba4d3e",
+            "c47710548cac08a54eeaa803dc044e7046118b3cf0c5016d92687899f918b2b6"
+          ],
+          "slot_id": "slot_1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "aapl_fy2025_002",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [
+            "a1b63f98f5d5a613b5394e38db3bc0a85b0174cee3a373e617bc7397baa4b13e",
+            "40671817f86355bab6493fa2951f71ca41ed2d34d6224977fb87fdba64263759",
+            "39a2e87d3dd095f7362156c323379ba3b1f15e25f4665e6f47403d64a5a62a60",
+            "de835eeaa0b9ff74ad02aebdfa8802a244320f4e683bb4ef9bc34b99ddbdc24a",
+            "2f4d99b971dfc5fe879cd5b95a8f527d93c49ba446cd7975c2a23e659de1dc10",
+            "c1f324c1e8eaa4af3061b07e64e1812e52ae5d42d475844414a5d9bad4dac128",
+            "c13f9a1ff37e5a751d69cc91467b5ffa5780189a7869f8bc042d2a73f0ba4d3e",
+            "79d91a2553e82d687736806cba8af0410b778fe3eef63aed96994f5d46472050",
+            "5a7c010dc7c1d81f96587b93934b787490d561bcd32e8e90507838e2ee5f078d",
+            "aad6d3c273873f37429ec2d6c3942f1767337f9c39186f57e5cfb229cef8763a",
+            "67ff5c02a5b006df163f569e909e243dcd03af9f8fb2c5cd453068974b41d279"
+          ],
+          "slot_id": "1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "aapl_fy2025_003",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "aapl_fy2025_004",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [
+            "c41c7734bb0e25fda4877e0c763a2c466ea8ccc488ff8030a25747cd2a78a0d1",
+            "626e64665bd96348567b8e4e585a66b1ed450d823cd96c1eaa38c5c518bc6b8f"
+          ],
+          "slot_id": "1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "aapl_fy2025_005",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [
+            "d7f67ec792e6be22a5f11685284c88e91892024ca1b6879f0c510eee9adcb7ea",
+            "3202485f5697743d4a9446f42ae4a8781a3af3dc5c1301a667e70d45a3ca330b"
+          ],
+          "slot_id": "1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR6_NO_SUPPORTING_EVIDENCE",
+      "final_status": "MISSING",
+      "initial_status": "MISSING",
+      "question_id": "aapl_fy2025_008",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "slot_1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "aapl_fy2025_009",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [
+            "a8d0ec68b8b74b9ad4cd4f1cb9095110a193cc3ab816f8bb94a2e53d178fbe05",
+            "11b10f86cb0a3d1fe1ac594a5cb8f261947b38e8a41c93894c72942aa0a43d61"
+          ],
+          "slot_id": "1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "jpm_fy2025_001",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [
+            "394411ec7dc43fa13293c826d1e789c036dc8e93ed2810f0492c1647f1243fb5",
+            "3550152c1027b97c44e4fc2bdc6efb6788e408c0df12f779147af2e60623da0f",
+            "b2fd71a203f7a32046b2395623c0d5d00d39a45155b3a7430a578da06b61837e",
+            "27a154819d1757cda6c65925876506e8b8ff943f16a00cbc1c4016dff913db12",
+            "a8540c8abc16b1c6f84c179c434eaac88f98c0e79c6c28ed017019ce56eed035",
+            "10f9876ef2977f5865232bd979ac95423897ed61f181cc80b1c13b122dcfbe13",
+            "7037d4ef4c5846bda5cb4f1f8804f6f9c50da33d89952ffc330033b6b6bcedd2",
+            "bd02009a07502c6efcca9d43cf929b5828fff0cd051a26a139a72b21e84ae0fc",
+            "d4e7c695812e7ab469081616650ee13779ce8fbc014701d171ae698af0849f1e",
+            "4c8311bf97b3f67526be32f32ccb6b8c1c04ba875d60bdb4f116252f684ac3d3",
+            "7c7599b492d7194355229be2b81a2b1e795e65c4e0b5fcaef176c7992a1fe005"
+          ],
+          "slot_id": "1",
+          "source_facts": 2,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "MISSING",
+      "question_id": "jpm_fy2025_002",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 2,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "jpm_fy2025_003",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [
+            "82ec9a82542c4decda7d7ad15e6ef2d3fc46e6823a3b063b2600a328e0a89c42",
+            "5f274c6f21e33f2f9ace1ca086c31f4376c16a44646b2a55a9c144d348b7a462",
+            "3c570c06d722b50cfef9d038bc2c591f8e51a054b3b6d2ffc305adc3f2dff2b3",
+            "4b271f401e1bd73b61d3f7397cef53b624855680178984c7cdf0a49778dee365",
+            "3cb3459c4d82b3fbab652cbd7817f5c0cd3bef1cdf44df800ab8f7dc3d4152f3",
+            "be13743228f507088f2951f8c08dddfa2fda72eed4ee0443d76af75565b133e2",
+            "76a6d3c035a039a54b9141ade68307404b923c80ee7efa815491fd07f6077d11",
+            "f5a581a75453b414050df9f4be1c9f16835d9aaa22f318e6c5d6b7d88ccaa551",
+            "16ebf0a75ed3bb4dd9d09d5d58e93cc116b8968481216d56f8dade854f2058c8",
+            "27f3418e141830c8b5e3808a9eede6a40c265cccc5cd85839714ace41b3ca88b"
+          ],
+          "slot_id": "slot_1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "MISSING",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "jpm_fy2025_004",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [],
+          "slot_id": "slot_1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR0_RETRIEVAL_MISS",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "jpm_fy2025_005",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [
+            "3d0352624aab4d55d08d006690d7e9cae2cb80d215efba57ca89b65d73bc33e8",
+            "3a87eb42cdeafb7a8399df436de9f6bfbb7cc666a2ae1acb2eaebca76a89c13e"
+          ],
+          "slot_id": "slot_1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR6_NO_SUPPORTING_EVIDENCE",
+      "final_status": "MISSING",
+      "initial_status": "MISSING",
+      "question_id": "jpm_fy2025_008",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "slot_1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "MISSING",
+      "question_id": "jpm_fy2025_009",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "ko_fy2025_001",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [
+            "125c81aeaa257db2ae4ed713b8a8554c673f9cb931630521fb69cf0c4e51c3f6",
+            "3f1200299bd330cbeb5268ff99e22ecf1780494a6daf6fbdba4c05d50d22bd25",
+            "5ada67806684fce8a8ad4b637a89f3dd2e61dc8c329cbb79e351e87a02a65696",
+            "4aa3e1255731a855b0c96c7cb4a70e439d70d350bc265b5d46493613c9322c8c"
+          ],
+          "slot_id": "slot_1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "ko_fy2025_002",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [
+            "30aede920be2f2f4102371bd89bb9068cb11a3a556c1a4d284a5393159b7a0cc",
+            "1cc0fcc3c451e0cab355ecac4bdd3e6545ddd41623748fd354c43fb3bcafc223"
+          ],
+          "slot_id": "1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "ko_fy2025_003",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [],
+          "slot_id": "slot_1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR1_SOURCE_PRESENT_FACT_MISSING",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "ko_fy2025_004",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [
+            "5217bed5a0d970538ca7a7506e2b6443fcc0165034227f64e1d835ed7ccce960",
+            "59506234d4f102a8b97682f70a338870d7502bcf5522bd52845c146163ee47ea",
+            "b3fb6dee2a35032ccf389c97155568296b4b5901fa099cbd6438cc57c4fe84f1"
+          ],
+          "slot_id": "1",
+          "source_facts": 4,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR1_SOURCE_PRESENT_FACT_MISSING",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "ko_fy2025_005",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [
+            "b0dfdc1fd70fca0042559e39753c4f0185a9f30e53fad4c50ed985e1b8ee7afb",
+            "3bc764e767a4a3f7743e8fc16b30fc8a70c25cb371895e92ae27a1a6f993d192",
+            "da9e536c279f1f75fadd3a11ff5ce8e36c79cb0587bcaeb2a2b9a279243e0e96",
+            "b6fd623dc401a88ef7b1ad759f35f078f698ac633d0f0e4dc062cff7b0f49961",
+            "0523c51b4d3140b2f9b3b4fade4e95f748903909e66f3ed4de41fb6e22727e62"
+          ],
+          "slot_id": "slot_1",
+          "source_facts": 4,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR6_NO_SUPPORTING_EVIDENCE",
+      "final_status": "MISSING",
+      "initial_status": "MISSING",
+      "question_id": "ko_fy2025_008",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "slot_1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR0_RETRIEVAL_MISS",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "MISSING",
+      "question_id": "ko_fy2025_009",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "msft_fy2025_001",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [
+            "d27437d68d1566cde35a212e14f7ee2e4f30481c68d34884dcdac2541bb701d4",
+            "b4b510f88f3297fdcb82f363f0e129f8c71dc0d8a875030502e84637cca41b7b"
+          ],
+          "slot_id": "1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR0_RETRIEVAL_MISS",
+      "final_status": "MISSING",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "msft_fy2025_002",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "MISSING",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "msft_fy2025_003",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR0_RETRIEVAL_MISS",
+      "final_status": "MISSING",
+      "initial_status": "MISSING",
+      "question_id": "msft_fy2025_004",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR0_RETRIEVAL_MISS",
+      "final_status": "MISSING",
+      "initial_status": "MISSING",
+      "question_id": "msft_fy2025_005",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "slot_1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR6_NO_SUPPORTING_EVIDENCE",
+      "final_status": "MISSING",
+      "initial_status": "MISSING",
+      "question_id": "msft_fy2025_008",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "slot_1",
+          "source_facts": 0,
+          "unique_admission_candidates": [
+            "799a9a398c298e72a01b7cf707b3f1275ee343af77716ceaadff9a87833a2891"
+          ]
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR0_RETRIEVAL_MISS",
+      "final_status": "MISSING",
+      "initial_status": "MISSING",
+      "question_id": "msft_fy2025_009",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR0_RETRIEVAL_MISS",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "nvda_fy2025_001",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [
+            "e513aecc7dfd490e508e83f2b194cb2ab8d61695b7f689c64350f33539c06bf4",
+            "9d894f54dae9df63cb3ab22e4cbe868356e3a72d76906158d35067d89bc6e652"
+          ],
+          "slot_id": "1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "nvda_fy2025_002",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "nvda_fy2025_003",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [],
+          "slot_id": "slot_1",
+          "source_facts": 2,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR6_NO_SUPPORTING_EVIDENCE",
+      "final_status": "MISSING",
+      "initial_status": "MISSING",
+      "question_id": "nvda_fy2025_008",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 0,
+          "unique_admission_candidates": [
+            "a35f94b795ba5eb227de96ab46915d61ad88545cde97ff71d0e5ba10d12bb273"
+          ]
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "nvda_fy2025_009",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "pfe_fy2024_001",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [
+            "b8982f8a92719de674f6bff3f15eb07478aeea7d02fd88ecd10b5d4b24ec4c2c",
+            "25b3026c7de0081af13f227eac8511f58d6b28bfdfbcce51b629d011cefc0a58",
+            "7953a0c6324978a105226dece6803d30dcfabe48dfb73cd8b1a729c67fb84d78"
+          ],
+          "slot_id": "total_revenues_fy2024",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR0_RETRIEVAL_MISS",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "pfe_fy2024_002",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR0_RETRIEVAL_MISS",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "pfe_fy2024_003",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR0_RETRIEVAL_MISS",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "pfe_fy2024_004",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR0_RETRIEVAL_MISS",
+      "final_status": "MISSING",
+      "initial_status": "MISSING",
+      "question_id": "pfe_fy2024_005",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 0,
+          "unique_admission_candidates": [
+            "ea65a546f66e3cf497214d064d1dfa823827aa63f8eacfffb143d30c032e4d4d"
+          ]
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR6_NO_SUPPORTING_EVIDENCE",
+      "final_status": "MISSING",
+      "initial_status": "MISSING",
+      "question_id": "pfe_fy2024_008",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "slot_1",
+          "source_facts": 0,
+          "unique_admission_candidates": [
+            "68d426431251ae9ad03ab76c3347e5408c62eae9c2c2d035138811f05347dc34"
+          ]
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR0_RETRIEVAL_MISS",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "pfe_fy2024_009",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [
+            "ad7f77f5a590448025a69f9bd2d2fb4f244691f206e1320e7fdbc30da42a1de5",
+            "c31bec21e358d8ea223b5ba2dc3566ff9c6af015eff9b8885444ce6312c21f55",
+            "b67993a2427005790ef77c239a747a32f7885d7e6665fc3db7221dc5e51c8389"
+          ],
+          "slot_id": "paxlovid_revenue_fy2023",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "tsla_fy2025_001",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [
+            "f79884cf4f0f8d6be407ae53f629548e99f9f9b2c1288b86cb5408e4a0657ed8",
+            "331719d000ca733cc97eac7e2404b61a3ecf3273e45a230ee1715f8f3351250b",
+            "b7a121895be97205d429d42cca533847baa862f422ce35a007a5c7b4901f8463"
+          ],
+          "slot_id": "1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "tsla_fy2025_002",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [
+            "be920467510ef9f85b636d17f661adace220e4317b98360f55067992f3bbd82b",
+            "92adf77d1e8733d420a447d33d2a9aa9e2e067c3b5e079d46d74fc877e188367"
+          ],
+          "slot_id": "1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR0_RETRIEVAL_MISS",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "tsla_fy2025_003",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [
+            "312a5480c923b984fe1319fde32cc73b11e6b2ffec05cf048c9e092b35cdad6b",
+            "3f9d422fd21c5134e123c15f5a9c9d4c184b5a3bfac1bd217766bceddddfbe2b"
+          ],
+          "slot_id": "slot_1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR1_SOURCE_PRESENT_FACT_MISSING",
+      "final_status": "MISSING",
+      "initial_status": "MISSING",
+      "question_id": "tsla_fy2025_004",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 1,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR0_RETRIEVAL_MISS",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "tsla_fy2025_005",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR6_NO_SUPPORTING_EVIDENCE",
+      "final_status": "MISSING",
+      "initial_status": "MISSING",
+      "question_id": "tsla_fy2025_008",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "slot_1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR1_SOURCE_PRESENT_FACT_MISSING",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "MISSING",
+      "question_id": "tsla_fy2025_009",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "slot_1",
+          "source_facts": 1,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "v_fy2025_001",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [
+            "2a4da6647be88d9aa9a04e8c7e015e7a277ea028374f3dbe8778b5a6b97de9c3",
+            "bb5e24ce87662cd8f8617c4eaa5d04033d62a63114d1edb69f8ee443201c9128"
+          ],
+          "slot_id": "1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "v_fy2025_004",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    },
+    {
+      "classification": "DR0_RETRIEVAL_MISS",
+      "final_status": "MISSING",
+      "initial_status": "MISSING",
+      "question_id": "v_fy2025_005",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR6_NO_SUPPORTING_EVIDENCE",
+      "final_status": "MISSING",
+      "initial_status": "MISSING",
+      "question_id": "v_fy2025_008",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 0,
+          "selected": [],
+          "slot_id": "slot_1",
+          "source_facts": 0,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": false
+    },
+    {
+      "classification": "DR5_GENUINE_AMBIGUITY",
+      "final_status": "AMBIGUOUS",
+      "initial_status": "AMBIGUOUS",
+      "question_id": "v_fy2025_009",
+      "released": false,
+      "selected_strict": false,
+      "slot_rows": [
+        {
+          "period_facts": 1,
+          "selected": [],
+          "slot_id": "1",
+          "source_facts": 3,
+          "unique_admission_candidates": []
+        }
+      ],
+      "source_present_in_top50": true
+    }
+  ],
+  "total": 52
+}

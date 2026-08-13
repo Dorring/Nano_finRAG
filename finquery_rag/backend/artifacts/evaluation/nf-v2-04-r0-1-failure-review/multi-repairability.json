@@ -1,0 +1,117 @@
+{
+  "complete_cases_benefit_from_retrieval": 0,
+  "complete_supply_reference": 4,
+  "counts": {
+    "MR0_source_missing": 0,
+    "MR1_fact_missing": 1,
+    "MR2_complete_supply_binder_failure": 4,
+    "MR3_admission_blocked": 0,
+    "MR4_genuine_ambiguity": 0,
+    "MR5_other": 0
+  },
+  "model_calls": 0,
+  "reference_complete_supply_ids": [
+    "aapl_fy2025_007",
+    "jpm_fy2025_007",
+    "nvda_fy2025_007",
+    "v_fy2025_007"
+  ],
+  "retrieval_calls": 0,
+  "rows": [
+    {
+      "classification": "MR2_complete_supply_binder_failure",
+      "complete_supply": true,
+      "frozen_reference_complete_supply": true,
+      "question_id": "aapl_fy2025_007",
+      "repair_useful": false,
+      "slots": [
+        {
+          "period_fact": true,
+          "slot_id": "1",
+          "source_fact": true
+        },
+        {
+          "period_fact": true,
+          "slot_id": "2",
+          "source_fact": true
+        }
+      ]
+    },
+    {
+      "classification": "MR2_complete_supply_binder_failure",
+      "complete_supply": true,
+      "frozen_reference_complete_supply": true,
+      "question_id": "jpm_fy2025_007",
+      "repair_useful": false,
+      "slots": [
+        {
+          "period_fact": true,
+          "slot_id": "slot_1",
+          "source_fact": true
+        },
+        {
+          "period_fact": true,
+          "slot_id": "slot_2",
+          "source_fact": true
+        }
+      ]
+    },
+    {
+      "classification": "MR2_complete_supply_binder_failure",
+      "complete_supply": true,
+      "frozen_reference_complete_supply": true,
+      "question_id": "nvda_fy2025_007",
+      "repair_useful": false,
+      "slots": [
+        {
+          "period_fact": true,
+          "slot_id": "slot_1",
+          "source_fact": true
+        },
+        {
+          "period_fact": true,
+          "slot_id": "slot_2",
+          "source_fact": true
+        }
+      ]
+    },
+    {
+      "classification": "MR1_fact_missing",
+      "complete_supply": false,
+      "frozen_reference_complete_supply": false,
+      "question_id": "pfe_fy2024_007",
+      "repair_useful": true,
+      "slots": [
+        {
+          "period_fact": true,
+          "slot_id": "1",
+          "source_fact": true
+        },
+        {
+          "period_fact": true,
+          "slot_id": "2",
+          "source_fact": true
+        }
+      ]
+    },
+    {
+      "classification": "MR2_complete_supply_binder_failure",
+      "complete_supply": true,
+      "frozen_reference_complete_supply": true,
+      "question_id": "v_fy2025_007",
+      "repair_useful": false,
+      "slots": [
+        {
+          "period_fact": true,
+          "slot_id": "1",
+          "source_fact": true
+        },
+        {
+          "period_fact": true,
+          "slot_id": "2",
+          "source_fact": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "definition_change": "repair_slot_relevant_novel_evidence requires a new pre-Gold metric/period/scope/statement possibility for a MissingEvidenceSlot, not merely a new fact id or candidate occurrence",
+  "gold_compatible_diagnostic_novel_queries": 16,
+  "gold_used_at_runtime": 0,
+  "model_calls": 0,
+  "old_structural_novel_queries": 52,
+  "physically_new_source_queries": 58,
+  "retrieval_calls": 0,
+  "slot_relevant_novel_queries": 0,
+  "structurally_novel": 52
+}

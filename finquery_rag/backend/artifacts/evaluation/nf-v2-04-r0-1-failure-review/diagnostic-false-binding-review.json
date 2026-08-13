@@ -1,0 +1,41 @@
+{
+  "counts": {
+    "DF0_duplicate_near_match": 0,
+    "DF1_wrong_statement": 0,
+    "DF2_wrong_scope": 0,
+    "DF3_wrong_period": 0,
+    "DF4_materialization_noise": 2,
+    "DF5_other": 0
+  },
+  "model_calls": 0,
+  "repair_increased_ambiguity_definition": "initial Direct MISSING transitioning to final AMBIGUOUS after the one expanded packet",
+  "repair_increased_ambiguity_queries": 4,
+  "retrieval_calls": 0,
+  "rows": [
+    {
+      "classification": "DF4_materialization_noise",
+      "initial_status": "BOUND",
+      "new_facts_introduced": 0,
+      "question_id": "nvda_fy2025_007",
+      "repair_action": "RP0_NO_REPAIR",
+      "selected_fact_ids": [
+        "a35f94b795ba5eb227de96ab46915d61ad88545cde97ff71d0e5ba10d12bb273",
+        "76ea0bd1e273e5b07b57a84390905c6784ac86c9d12bdbbf9c08f7445391359d"
+      ],
+      "why_more_attractive_after_repair": "not applicable: this query was already BOUND and did not receive repair"
+    },
+    {
+      "classification": "DF4_materialization_noise",
+      "initial_status": "BOUND",
+      "new_facts_introduced": 0,
+      "question_id": "v_fy2025_007",
+      "repair_action": "RP0_NO_REPAIR",
+      "selected_fact_ids": [
+        "71bd06d15b6465ce3cc482db9381a3216507716c6a627de5f6408bab3999e909",
+        "0d275e94bd8c411d5cd48e132ed3cfb6207fb60851d3f87598c52a2e822b0a44"
+      ],
+      "why_more_attractive_after_repair": "not applicable: this query was already BOUND and did not receive repair"
+    }
+  ],
+  "total": 2
+}
