@@ -1,0 +1,22 @@
+{
+  "diagnostic_c": {
+    "bound": "2/56",
+    "correct": "2/2",
+    "false": 0
+  },
+  "runtime_v2": {
+    "bound": "4/56",
+    "correct": "4/4",
+    "false": 0
+  },
+  "structural_b": {
+    "bound": "19/56",
+    "correct": "12/19",
+    "false": 7
+  },
+  "v1": {
+    "bound": "0/56",
+    "correct": "N/A",
+    "false": 0
+  }
+}

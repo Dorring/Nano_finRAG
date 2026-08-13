@@ -1,0 +1,20 @@
+{
+  "all_competitors_need_explicit_conflict": true,
+  "contract": "RuntimeAdmissionEvidenceV1",
+  "full_packet_required": true,
+  "gold_independent": true,
+  "question_specific_rules": 0,
+  "selected_candidate_must_be_admissible": true,
+  "shortlist_is_not_admission_proof": true,
+  "signals": [
+    "exact_period_conflict",
+    "explicit_unit_conflict",
+    "explicit_currency_conflict",
+    "explicit_metric_context_conflict",
+    "candidate_source_text_context",
+    "provenance",
+    "source_relation"
+  ],
+  "source_context_rule": "candidate source serialization is included only as existing lexical context; no query-conditioned or Gold-derived labels are created",
+  "unknown_or_plausible_competitor": "AMBIGUOUS"
+}

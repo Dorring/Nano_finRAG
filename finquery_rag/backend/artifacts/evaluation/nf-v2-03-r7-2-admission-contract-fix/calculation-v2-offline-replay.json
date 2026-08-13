@@ -1,0 +1,285 @@
+{
+  "all_operands_safely_admitted": 0,
+  "among_prior_strict_bindable": 0,
+  "calculator_execution": false,
+  "false_operand_binding": 0,
+  "model_calls": 0,
+  "rows": [
+    {
+      "question_id": "aapl_fy2025_006",
+      "ready": false,
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "slot_evidence": {},
+      "status": "AMBIGUOUS"
+    },
+    {
+      "question_id": "jpm_fy2025_006",
+      "ready": false,
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "slot_evidence": {},
+      "status": "AMBIGUOUS"
+    },
+    {
+      "question_id": "ko_fy2025_006",
+      "ready": false,
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "slot_evidence": {},
+      "status": "AMBIGUOUS"
+    },
+    {
+      "question_id": "ko_fy2025_007",
+      "ready": false,
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "slot_evidence": {},
+      "status": "AMBIGUOUS"
+    },
+    {
+      "question_id": "msft_fy2025_006",
+      "ready": false,
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "slot_evidence": {},
+      "status": "AMBIGUOUS"
+    },
+    {
+      "question_id": "msft_fy2025_007",
+      "ready": false,
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "slot_evidence": {},
+      "status": "AMBIGUOUS"
+    },
+    {
+      "question_id": "nvda_fy2025_006",
+      "ready": false,
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "slot_evidence": {},
+      "status": "AMBIGUOUS"
+    },
+    {
+      "question_id": "pfe_fy2024_006",
+      "ready": false,
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "slot_evidence": {},
+      "status": "AMBIGUOUS"
+    },
+    {
+      "question_id": "tsla_fy2025_006",
+      "ready": false,
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "slot_evidence": {},
+      "status": "AMBIGUOUS"
+    },
+    {
+      "question_id": "tsla_fy2025_007",
+      "ready": false,
+      "reasons": [
+        "slot_1:plausible_competitor",
+        "slot_2:plausible_competitor"
+      ],
+      "slot_evidence": {
+        "slot_1": {
+          "competitor_conflicts": {
+            "07ad29cf0125ee91438e23fa1dde2429f9bc8719ccd03b86abd35b39f7f3a86e": [
+              "explicit_period_conflict"
+            ],
+            "09272a85eaf20bcbb1ff728ceb466ab3fe9a6b0c4158086b376324e325978f52": [
+              "explicit_metric_context_conflict"
+            ],
+            "1be721d2dc4f1f803d6a337fb818a498332aa26f7af951771aca76c4fa6f5005": [
+              "explicit_period_conflict"
+            ],
+            "253497b7878b4408a5e4496bc6454f03bfeb873c74a94cc825026d73aa4ba053": [
+              "explicit_period_conflict"
+            ],
+            "33625bd2f845a2c949dc83d922e5d3eccd2bb3a166ad0a01e52a487817f747f0": [
+              "explicit_period_conflict"
+            ],
+            "6ceaf782aaf63c47fd5217fd7df38ca239fbd78c2f810e84764bf638ef94a266": [
+              "explicit_period_conflict"
+            ],
+            "8049b36d0a41a4001d6a3745f70c3729f18caf848a2e2ebf05c5ccedfd347aca": [
+              "explicit_period_conflict",
+              "explicit_metric_context_conflict"
+            ],
+            "8bfcf2dfdc18bf38322d58c7d0e8fcceb2d97baa3ab900bac15a49757346d0d5": [
+              "explicit_period_conflict",
+              "explicit_metric_context_conflict"
+            ],
+            "acc84badbc68f4563810c74f5d57ffbbe1fc9dcd0ea9ff0404aa3df90fc4e943": [
+              "explicit_period_conflict"
+            ],
+            "d57d459f5f5cb238c9e542b0a6673b02d1afb120d695b498f22daaa86c60a257": [
+              "explicit_period_conflict"
+            ],
+            "dc9ceecd82093deff7a2f075949c7547c1774d5847d658a4c74e04ff5556ee2c": [
+              "explicit_period_conflict"
+            ],
+            "e80479180b9cecfccf86713b026090b2e1775fefa29ac5b8285209b80235cacc": [
+              "explicit_period_conflict"
+            ],
+            "f6026d05a98d14efd17c89aaec85e616ffc10348452c9e13ee3f5b7e4aa595ab": [
+              "explicit_period_conflict"
+            ]
+          },
+          "plausible_competitors": [
+            "067b64fd13b92c89231d62c33a900c66dc97d8f0a0a15b743cdc46dce547152d",
+            "0d90503cd17e60237684101a332b75fdc63ce2090d0f032b9c9fe3689417e90a",
+            "b7a121895be97205d429d42cca533847baa862f422ce35a007a5c7b4901f8463"
+          ],
+          "reasons": [],
+          "selected_admissible": true,
+          "selected_fact_id": "372d89e5ef237e22631871cbe30b1f88fc5d9987d9721ab5b4b796d0ba1c6a96",
+          "uniquely_admissible": false
+        },
+        "slot_2": {
+          "competitor_conflicts": {
+            "07ad29cf0125ee91438e23fa1dde2429f9bc8719ccd03b86abd35b39f7f3a86e": [
+              "explicit_period_conflict"
+            ],
+            "1be721d2dc4f1f803d6a337fb818a498332aa26f7af951771aca76c4fa6f5005": [
+              "explicit_period_conflict",
+              "explicit_metric_context_conflict"
+            ],
+            "253497b7878b4408a5e4496bc6454f03bfeb873c74a94cc825026d73aa4ba053": [
+              "explicit_period_conflict"
+            ],
+            "33625bd2f845a2c949dc83d922e5d3eccd2bb3a166ad0a01e52a487817f747f0": [
+              "explicit_period_conflict",
+              "explicit_metric_context_conflict"
+            ],
+            "372d89e5ef237e22631871cbe30b1f88fc5d9987d9721ab5b4b796d0ba1c6a96": [
+              "explicit_metric_context_conflict"
+            ],
+            "6ceaf782aaf63c47fd5217fd7df38ca239fbd78c2f810e84764bf638ef94a266": [
+              "explicit_period_conflict"
+            ],
+            "8049b36d0a41a4001d6a3745f70c3729f18caf848a2e2ebf05c5ccedfd347aca": [
+              "explicit_period_conflict"
+            ],
+            "8bfcf2dfdc18bf38322d58c7d0e8fcceb2d97baa3ab900bac15a49757346d0d5": [
+              "explicit_period_conflict"
+            ],
+            "acc84badbc68f4563810c74f5d57ffbbe1fc9dcd0ea9ff0404aa3df90fc4e943": [
+              "explicit_period_conflict"
+            ],
+            "b7a121895be97205d429d42cca533847baa862f422ce35a007a5c7b4901f8463": [
+              "explicit_metric_context_conflict"
+            ],
+            "d57d459f5f5cb238c9e542b0a6673b02d1afb120d695b498f22daaa86c60a257": [
+              "explicit_period_conflict"
+            ],
+            "dc9ceecd82093deff7a2f075949c7547c1774d5847d658a4c74e04ff5556ee2c": [
+              "explicit_period_conflict",
+              "explicit_metric_context_conflict"
+            ],
+            "e80479180b9cecfccf86713b026090b2e1775fefa29ac5b8285209b80235cacc": [
+              "explicit_period_conflict"
+            ],
+            "f6026d05a98d14efd17c89aaec85e616ffc10348452c9e13ee3f5b7e4aa595ab": [
+              "explicit_period_conflict",
+              "explicit_metric_context_conflict"
+            ]
+          },
+          "plausible_competitors": [
+            "067b64fd13b92c89231d62c33a900c66dc97d8f0a0a15b743cdc46dce547152d",
+            "0d90503cd17e60237684101a332b75fdc63ce2090d0f032b9c9fe3689417e90a"
+          ],
+          "reasons": [],
+          "selected_admissible": true,
+          "selected_fact_id": "09272a85eaf20bcbb1ff728ceb466ab3fe9a6b0c4158086b376324e325978f52",
+          "uniquely_admissible": false
+        }
+      },
+      "status": "AMBIGUOUS"
+    },
+    {
+      "question_id": "v_fy2025_006",
+      "ready": false,
+      "reasons": [
+        "s1:plausible_competitor",
+        "s2:plausible_competitor"
+      ],
+      "slot_evidence": {
+        "s1": {
+          "competitor_conflicts": {
+            "4bf7d30f77973e75a3702dfb126b676324d3df1d4d55e9a04405a215a16158ce": [
+              "explicit_period_conflict"
+            ],
+            "b48828cafd4170bd626ddf12b0a3edfd6b3a40ca6f0ed37b09701cfcb219fb83": [
+              "explicit_period_conflict"
+            ],
+            "b977e2afc7a4a2d9f6f2db3d4e57661cba2930fdf649c25855bf7cb0cd2be173": [
+              "explicit_period_conflict"
+            ],
+            "c8d61066a50fdbd0b76129b27af245ed97f4a3a38bb4cf26e81b824be4377759": [
+              "explicit_period_conflict"
+            ]
+          },
+          "plausible_competitors": [
+            "bb5e24ce87662cd8f8617c4eaa5d04033d62a63114d1edb69f8ee443201c9128",
+            "cddd4d6326a80953034ff11f4ad06c852005914112b3a46f52b3eb5a2f48dd8e",
+            "ce0fa445a1830723f871cb2e61588ac0069c9d601112e5901e95bb86b810bc41",
+            "64c7d1fb6c550ac785ec3c413e288620ec2b50e8afa6bf987941b1160c71f39b",
+            "73c0a9cae21332bc7b10db10ecc4c33c57ae882e093824caa5d35a1824f0eec3",
+            "745de7ce6cc68d6e3482d429acac3c7e01294ffbf3f529f8bc4c0d2564cd8876",
+            "a5e5bf335affa0eeb722e197b4f024ed10c6e8424596ef8e2d60e4556da8785e",
+            "e00593d4825f5fa1b8fc9c39b995e4c1a418b6dfe589437593bd0a851e28bca9"
+          ],
+          "reasons": [],
+          "selected_admissible": true,
+          "selected_fact_id": "2a4da6647be88d9aa9a04e8c7e015e7a277ea028374f3dbe8778b5a6b97de9c3",
+          "uniquely_admissible": false
+        },
+        "s2": {
+          "competitor_conflicts": {
+            "2a4da6647be88d9aa9a04e8c7e015e7a277ea028374f3dbe8778b5a6b97de9c3": [
+              "explicit_period_conflict"
+            ],
+            "4bf7d30f77973e75a3702dfb126b676324d3df1d4d55e9a04405a215a16158ce": [
+              "explicit_period_conflict"
+            ],
+            "b48828cafd4170bd626ddf12b0a3edfd6b3a40ca6f0ed37b09701cfcb219fb83": [
+              "explicit_period_conflict"
+            ],
+            "b977e2afc7a4a2d9f6f2db3d4e57661cba2930fdf649c25855bf7cb0cd2be173": [
+              "explicit_period_conflict"
+            ]
+          },
+          "plausible_competitors": [
+            "bb5e24ce87662cd8f8617c4eaa5d04033d62a63114d1edb69f8ee443201c9128",
+            "cddd4d6326a80953034ff11f4ad06c852005914112b3a46f52b3eb5a2f48dd8e",
+            "ce0fa445a1830723f871cb2e61588ac0069c9d601112e5901e95bb86b810bc41",
+            "64c7d1fb6c550ac785ec3c413e288620ec2b50e8afa6bf987941b1160c71f39b",
+            "73c0a9cae21332bc7b10db10ecc4c33c57ae882e093824caa5d35a1824f0eec3",
+            "745de7ce6cc68d6e3482d429acac3c7e01294ffbf3f529f8bc4c0d2564cd8876",
+            "a5e5bf335affa0eeb722e197b4f024ed10c6e8424596ef8e2d60e4556da8785e",
+            "e00593d4825f5fa1b8fc9c39b995e4c1a418b6dfe589437593bd0a851e28bca9"
+          ],
+          "reasons": [],
+          "selected_admissible": true,
+          "selected_fact_id": "c8d61066a50fdbd0b76129b27af245ed97f4a3a38bb4cf26e81b824be4377759",
+          "uniquely_admissible": false
+        }
+      },
+      "status": "AMBIGUOUS"
+    }
+  ],
+  "total": 11
+}

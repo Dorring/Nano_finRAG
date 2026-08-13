@@ -1,0 +1,57 @@
+{
+  "complete_admitted": 0,
+  "false_binding": 2,
+  "model_calls": 0,
+  "not_admitted": 3,
+  "partial": 0,
+  "rows": [
+    {
+      "false_binding": false,
+      "question_id": "aapl_fy2025_007",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "jpm_fy2025_007",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": true,
+      "question_id": "nvda_fy2025_007",
+      "reasons": [],
+      "released": true,
+      "status": "BOUND",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "pfe_fy2024_007",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": true,
+      "question_id": "v_fy2025_007",
+      "reasons": [],
+      "released": true,
+      "status": "BOUND",
+      "strict_correct": false
+    }
+  ],
+  "structurally_released": 2,
+  "total": 5
+}

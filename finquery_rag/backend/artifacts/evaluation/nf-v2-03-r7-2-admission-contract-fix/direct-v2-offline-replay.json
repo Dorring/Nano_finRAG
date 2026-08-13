@@ -1,0 +1,566 @@
+{
+  "ambiguous": 34,
+  "bound": 4,
+  "false_binding": 0,
+  "missing": 18,
+  "model_calls": 0,
+  "precision": 1.0,
+  "prediction_seal_verified": true,
+  "rows": [
+    {
+      "false_binding": false,
+      "question_id": "aapl_fy2025_001",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "aapl_fy2025_002",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "aapl_fy2025_003",
+      "reasons": [
+        "1:plausible_competitor"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "aapl_fy2025_004",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "aapl_fy2025_005",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "aapl_fy2025_008",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "aapl_fy2025_009",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "jpm_fy2025_001",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "jpm_fy2025_002",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "jpm_fy2025_003",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "jpm_fy2025_004",
+      "reasons": [
+        "slot_1:plausible_competitor"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "jpm_fy2025_005",
+      "reasons": [
+        "slot_1:plausible_competitor"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "jpm_fy2025_008",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "jpm_fy2025_009",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "ko_fy2025_001",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "ko_fy2025_002",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "ko_fy2025_003",
+      "reasons": [
+        "slot_1:plausible_competitor"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "ko_fy2025_004",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "ko_fy2025_005",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "ko_fy2025_008",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "ko_fy2025_009",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "msft_fy2025_001",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "msft_fy2025_002",
+      "reasons": [
+        "1:plausible_competitor"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "msft_fy2025_003",
+      "reasons": [
+        "1:plausible_competitor"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "msft_fy2025_004",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "msft_fy2025_005",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "msft_fy2025_008",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "msft_fy2025_009",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "nvda_fy2025_001",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "nvda_fy2025_002",
+      "reasons": [
+        "1:plausible_competitor"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "nvda_fy2025_003",
+      "reasons": [
+        "slot_1:plausible_competitor"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "nvda_fy2025_004",
+      "reasons": [],
+      "released": true,
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "false_binding": false,
+      "question_id": "nvda_fy2025_005",
+      "reasons": [],
+      "released": true,
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "false_binding": false,
+      "question_id": "nvda_fy2025_008",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "nvda_fy2025_009",
+      "reasons": [
+        "1:plausible_competitor"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "pfe_fy2024_001",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "pfe_fy2024_002",
+      "reasons": [
+        "1:plausible_competitor"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "pfe_fy2024_003",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "pfe_fy2024_004",
+      "reasons": [
+        "1:plausible_competitor"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "pfe_fy2024_005",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "pfe_fy2024_008",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "pfe_fy2024_009",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "tsla_fy2025_001",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "tsla_fy2025_002",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "tsla_fy2025_003",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "tsla_fy2025_004",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "tsla_fy2025_005",
+      "reasons": [
+        "1:plausible_competitor"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "tsla_fy2025_008",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "tsla_fy2025_009",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "v_fy2025_001",
+      "reasons": [
+        "1:plausible_competitor"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "v_fy2025_002",
+      "reasons": [],
+      "released": true,
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "false_binding": false,
+      "question_id": "v_fy2025_003",
+      "reasons": [],
+      "released": true,
+      "status": "BOUND",
+      "strict_correct": true
+    },
+    {
+      "false_binding": false,
+      "question_id": "v_fy2025_004",
+      "reasons": [
+        "1:plausible_competitor"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "v_fy2025_005",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "v_fy2025_008",
+      "reasons": [
+        "binder_did_not_return_BOUND"
+      ],
+      "released": false,
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "false_binding": false,
+      "question_id": "v_fy2025_009",
+      "reasons": [
+        "1:plausible_competitor"
+      ],
+      "released": false,
+      "status": "AMBIGUOUS",
+      "strict_correct": false
+    }
+  ],
+  "runtime_prediction_seal": "08fe90d04e9c3d41e844bd08dd0cdc1182bc30351694f219d716507484328f35",
+  "strict_correct_bound": 4,
+  "total": 56
+}

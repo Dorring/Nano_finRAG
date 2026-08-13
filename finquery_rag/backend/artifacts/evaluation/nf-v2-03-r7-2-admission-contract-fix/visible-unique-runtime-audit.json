@@ -1,0 +1,15 @@
+{
+  "gold_reads_in_admission": 0,
+  "manual_review_reads_in_admission": 0,
+  "reason": "historical reviewed_visible_unique is a post-seal diagnostic annotation, not a runtime field",
+  "runtime_fields_used_by_v2": [
+    "full_current_fact_packet",
+    "exact_period_conflicts",
+    "explicit_unit_currency_conflicts",
+    "metric_context_token_conflicts",
+    "provenance",
+    "source_relation",
+    "BindingValidator"
+  ],
+  "visible_unique_runtime_computable": false
+}

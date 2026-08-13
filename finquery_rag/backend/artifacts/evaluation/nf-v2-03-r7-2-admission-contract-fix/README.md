@@ -1,0 +1,28 @@
+{
+  "decision": {
+    "base_commit": "6c909af5fe33b906446f5a76efbdd69127471aee",
+    "binder_admission_frozen": "SelectiveBindingAdmissionV2",
+    "calculation_all_operands_safely_admitted": "0/11",
+    "calculation_prior_strict_bindable_admitted": "0/6",
+    "gate": "NF-V2-03-R7.2",
+    "model_calls": 0,
+    "multi_complete_admitted": "0/5",
+    "multi_false_binding": 2,
+    "multi_structural_releases": "2/5",
+    "next_gate": "v2_04_missing_evidence_supply_repair",
+    "nf_v2_03_closed": true,
+    "production_default": "V1",
+    "production_switch_allowed": false,
+    "question_specific_rules": 0,
+    "runtime_admission": "SelectiveBindingAdmissionV2",
+    "runtime_bound": "4/56",
+    "runtime_false_binding": 0,
+    "runtime_gold_independent": true,
+    "runtime_strict_correct": "4/4",
+    "selective_admission_v2_effective": true
+  },
+  "gate": "NF-V2-03-R7.2",
+  "gold_used_at_runtime": 0,
+  "model_calls": 0,
+  "summary": "Runtime V2 replaces the unavailable R6 comparative safety proof with a full-packet explicit-conflict proof. It does not use reviewed visible_unique, Gold, a shortlist, or model confidence."
+}

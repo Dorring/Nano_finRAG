@@ -1,0 +1,12 @@
+{
+  "admission_ready_evidence_coverage": "4/56",
+  "binder_fact_view_v2_visible_unique_diagnostic": "21/27",
+  "calculation_complete_admitted": "0/11",
+  "gold_source_admitted": "43/56",
+  "gold_source_financial_fact": "33/56",
+  "model_calls": 0,
+  "multi_complete_admitted": "0/5",
+  "reviewed_strict_bindable": "27/56",
+  "runtime_safely_admitted": "4/56",
+  "target": "admission-ready evidence, not recall or FinancialFact count alone"
+}

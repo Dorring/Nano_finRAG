@@ -1,0 +1,127 @@
+{
+  "classification": "C_approximating_semantic_confidence_without_runtime_proof",
+  "count": 6,
+  "genuine_structural_risk": false,
+  "redundant_with_structural_checks": false,
+  "root": "R6 stopped before provider execution, so the V1 policy required a comparative SELECT safety proof that did not exist",
+  "rows": [
+    {
+      "binder_output_status": "BOUND",
+      "classification": "C_approximating_semantic_confidence_without_runtime_proof",
+      "current_admission_features": {
+        "cardinality_violation": 0,
+        "comparative_select_present": false,
+        "exactly_one_selected_fact_per_slot": true,
+        "provenance_complete": true,
+        "reviewed_visible_unique_diagnostic_only": true,
+        "source_relation_valid": true,
+        "strict_correct_diagnostic_only": true
+      },
+      "question_id": "nvda_fy2025_004",
+      "sa7_failed_condition": "comparative_select_safety_proof_absent",
+      "selected_fact_ids": [
+        "a35f94b795ba5eb227de96ab46915d61ad88545cde97ff71d0e5ba10d12bb273"
+      ],
+      "structural_validator_pass": true
+    },
+    {
+      "binder_output_status": "BOUND",
+      "classification": "C_approximating_semantic_confidence_without_runtime_proof",
+      "current_admission_features": {
+        "cardinality_violation": 0,
+        "comparative_select_present": false,
+        "exactly_one_selected_fact_per_slot": true,
+        "provenance_complete": true,
+        "reviewed_visible_unique_diagnostic_only": true,
+        "source_relation_valid": true,
+        "strict_correct_diagnostic_only": true
+      },
+      "question_id": "nvda_fy2025_005",
+      "sa7_failed_condition": "comparative_select_safety_proof_absent",
+      "selected_fact_ids": [
+        "1ddf3f61bafe730d901064e5ccfc91622e014724644cad8370d322b3c9316810"
+      ],
+      "structural_validator_pass": true
+    },
+    {
+      "binder_output_status": "BOUND",
+      "classification": "C_approximating_semantic_confidence_without_runtime_proof",
+      "current_admission_features": {
+        "cardinality_violation": 0,
+        "comparative_select_present": false,
+        "exactly_one_selected_fact_per_slot": true,
+        "provenance_complete": true,
+        "reviewed_visible_unique_diagnostic_only": false,
+        "source_relation_valid": true,
+        "strict_correct_diagnostic_only": true
+      },
+      "question_id": "v_fy2025_001",
+      "sa7_failed_condition": "comparative_select_safety_proof_absent",
+      "selected_fact_ids": [
+        "2a4da6647be88d9aa9a04e8c7e015e7a277ea028374f3dbe8778b5a6b97de9c3"
+      ],
+      "structural_validator_pass": true
+    },
+    {
+      "binder_output_status": "BOUND",
+      "classification": "C_approximating_semantic_confidence_without_runtime_proof",
+      "current_admission_features": {
+        "cardinality_violation": 0,
+        "comparative_select_present": false,
+        "exactly_one_selected_fact_per_slot": true,
+        "provenance_complete": true,
+        "reviewed_visible_unique_diagnostic_only": false,
+        "source_relation_valid": true,
+        "strict_correct_diagnostic_only": true
+      },
+      "question_id": "v_fy2025_002",
+      "sa7_failed_condition": "comparative_select_safety_proof_absent",
+      "selected_fact_ids": [
+        "1e029025fdb3d7a21173e4625d794ee6fd2e14c91147b6cfa6cad84d66e0e404"
+      ],
+      "structural_validator_pass": true
+    },
+    {
+      "binder_output_status": "BOUND",
+      "classification": "C_approximating_semantic_confidence_without_runtime_proof",
+      "current_admission_features": {
+        "cardinality_violation": 0,
+        "comparative_select_present": false,
+        "exactly_one_selected_fact_per_slot": true,
+        "provenance_complete": true,
+        "reviewed_visible_unique_diagnostic_only": false,
+        "source_relation_valid": true,
+        "strict_correct_diagnostic_only": true
+      },
+      "question_id": "v_fy2025_003",
+      "sa7_failed_condition": "comparative_select_safety_proof_absent",
+      "selected_fact_ids": [
+        "0d275e94bd8c411d5cd48e132ed3cfb6207fb60851d3f87598c52a2e822b0a44"
+      ],
+      "structural_validator_pass": true
+    },
+    {
+      "binder_output_status": "BOUND",
+      "classification": "C_approximating_semantic_confidence_without_runtime_proof",
+      "current_admission_features": {
+        "cardinality_violation": 0,
+        "comparative_select_present": false,
+        "exactly_one_selected_fact_per_slot": true,
+        "provenance_complete": true,
+        "reviewed_visible_unique_diagnostic_only": false,
+        "source_relation_valid": true,
+        "strict_correct_diagnostic_only": true
+      },
+      "question_id": "v_fy2025_004",
+      "sa7_failed_condition": "comparative_select_safety_proof_absent",
+      "selected_fact_ids": [
+        "71bd06d15b6465ce3cc482db9381a3216507716c6a627de5f6408bab3999e909"
+      ],
+      "structural_validator_pass": true
+    }
+  ],
+  "subconditions": [
+    "comparative_select_safety_proof_absent",
+    "no runtime-computable confidence field"
+  ]
+}

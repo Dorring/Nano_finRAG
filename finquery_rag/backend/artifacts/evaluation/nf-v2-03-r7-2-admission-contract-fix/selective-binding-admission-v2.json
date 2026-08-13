@@ -1,0 +1,26 @@
+{
+  "condition_definitions": {
+    "A5_source_relation_valid": "selected fact candidate/source identity is present in the frozen source map",
+    "A7_selected_deterministic_compatibility": "exact known period, unit/currency compatibility, and non-conflicting source-derived metric context",
+    "A8_every_competitor_explicitly_excluded": "each full-packet competitor has an explicit period, unit/currency, or metric-context conflict; otherwise abstain"
+  },
+  "conditions": {
+    "A1_exact_slot": true,
+    "A2_exactly_one_selected_fact": true,
+    "A3_fact_in_packet": true,
+    "A4_provenance_complete": true,
+    "A5_source_relation_valid": true,
+    "A6_binding_validator_pass": true,
+    "A7_selected_deterministic_compatibility": true,
+    "A8_every_competitor_explicitly_excluded": true
+  },
+  "contract": "SelectiveBindingAdmissionV2",
+  "failure_status": {
+    "no_valid_candidate": "MISSING",
+    "plausible_alternative": "AMBIGUOUS"
+  },
+  "gold_independent": true,
+  "model_calls": 0,
+  "question_specific_rules": 0,
+  "shortlist_not_used_as_proof": true
+}
