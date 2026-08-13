@@ -1,0 +1,25 @@
+{
+  "additional_retrieval_calls": 0,
+  "binder_admission": "SelectiveBindingAdmissionV2",
+  "binder_fact_view": "BinderFactViewV2",
+  "binder_model": "qwen3.7-plus",
+  "financial_fact_v1_schema_modified": false,
+  "gate": "NF-V2-04-R0",
+  "gold_assisted_retrieval": 0,
+  "gold_assisted_rewrite": 0,
+  "gold_reads_during_materialization": 0,
+  "initial_retrieval": "frozen_top20",
+  "initial_retrieval_recomputed": false,
+  "max_repair_attempts_per_query": 1,
+  "production_default": "V1",
+  "production_switch_allowed": false,
+  "query_reads_during_materialization": 0,
+  "question_specific_rules": 0,
+  "repair_pool": "frozen_top50",
+  "repair_trigger_statuses": [
+    "MISSING",
+    "AMBIGUOUS"
+  ],
+  "retrieval_repair_budget": 1,
+  "sffm_v1_modified": false
+}

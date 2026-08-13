@@ -1,0 +1,17 @@
+{
+  "additional_binder_calls": 62,
+  "additional_input_tokens": 1574861,
+  "additional_output_tokens": 2410,
+  "additional_retrieval_calls": 0,
+  "average_added_latency_ms_per_all_query": 2066.99125,
+  "average_added_latency_ms_per_repaired_query": 2400.376935483871,
+  "average_input_tokens_per_repaired_query": 25400.983870967742,
+  "average_output_tokens_per_repaired_query": 38.87096774193548,
+  "frozen_top50_pool_expansions": 66,
+  "model_calls": 62,
+  "p50_added_latency_ms": 2248.3635,
+  "p95_added_latency_ms": 3890.611,
+  "provider_failures": 0,
+  "repair_attempts": 66,
+  "repair_rate": 0.9166666666666666
+}

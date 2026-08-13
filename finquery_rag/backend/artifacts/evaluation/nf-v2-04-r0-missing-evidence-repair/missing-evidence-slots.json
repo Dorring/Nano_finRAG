@@ -1,0 +1,1804 @@
+{
+  "count": 80,
+  "gold_fields_present": false,
+  "model_calls": 0,
+  "rows": [
+    {
+      "current_candidate_fact_ids": [
+        "79d91a2553e82d687736806cba8af0410b778fe3eef63aed96994f5d46472050",
+        "67ff5c02a5b006df163f569e909e243dcd03af9f8fb2c5cd453068974b41d279",
+        "5a7c010dc7c1d81f96587b93934b787490d561bcd32e8e90507838e2ee5f078d",
+        "aad6d3c273873f37429ec2d6c3942f1767337f9c39186f57e5cfb229cef8763a",
+        "c13f9a1ff37e5a751d69cc91467b5ffa5780189a7869f8bc042d2a73f0ba4d3e"
+      ],
+      "current_candidate_source_ids": [
+        "2016faed04f03df7ef6aad0be8f232521469d6ba19428379e552d55dc23667cd:05dad73372a24be47526caba2e7bc521ee7727164b25490c8a1572b86455fb9e:32",
+        "21f6fd90e1ac0e3cfdb3849324019617dc23f5c21057ab9de57ed4fc785d4243:f4c6a22cde4bb43726640056ca7d937329f02c7e63a76b49e9605a8d34603f4e:25",
+        "29958656ae6b85d31bd11efbf1765869be26c0811f4c338a8d6d08881c39ff35:84605f25a542bd2bac5ad28760cc4b77415f995a5c2ad3155c4bc0ba93fb152d:39",
+        "d85ce97c0f18fc261ad32a8a8b397e2f188bb952e3a2b7c9f31bdc18e66ea15d:07cc93cc5c21bc8ad8c997ef0e5102fd2c805df559b8058d151aa5b7fcc9d008:50",
+        "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486:9fbbb1acea0877e077919653899299d518a3ad774428b896b7876eb0663be0be:26"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total net sales",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "aapl_fy2025_001",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "40671817f86355bab6493fa2951f71ca41ed2d34d6224977fb87fdba64263759",
+        "39a2e87d3dd095f7362156c323379ba3b1f15e25f4665e6f47403d64a5a62a60",
+        "de835eeaa0b9ff74ad02aebdfa8802a244320f4e683bb4ef9bc34b99ddbdc24a",
+        "c1f324c1e8eaa4af3061b07e64e1812e52ae5d42d475844414a5d9bad4dac128"
+      ],
+      "current_candidate_source_ids": [
+        "2016faed04f03df7ef6aad0be8f232521469d6ba19428379e552d55dc23667cd:27cf5b1fa92923325ebfe480ef1ab17735b407646e131b5ba8806cd367ad141d:32",
+        "29958656ae6b85d31bd11efbf1765869be26c0811f4c338a8d6d08881c39ff35:eebce9cf782a71e448383835c2d5c96672962096e43925e8c5eb2def6721f14c:39",
+        "60d96702c3d70da2d4d2c1a1fbeae60472c537ac7054ab2a66c3b44b179ae821:9450a854da43e8973e0e4b9cef04c50c5f80f0a35317169ac60467f8435fc16d:27",
+        "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486:c0019e060b35e7a6a39bc58c5807265813cd6a2b87e0ba8be5b7712734fcad95:26"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "Services net sales",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "aapl_fy2025_002",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "gross margin percentage",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "aapl_fy2025_003",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "c41c7734bb0e25fda4877e0c763a2c466ea8ccc488ff8030a25747cd2a78a0d1",
+        "626e64665bd96348567b8e4e585a66b1ed450d823cd96c1eaa38c5c518bc6b8f"
+      ],
+      "current_candidate_source_ids": [
+        "29958656ae6b85d31bd11efbf1765869be26c0811f4c338a8d6d08881c39ff35:a29f2d7ac07261fff00e3250bac008f74327b249b68fae4e213f2217e056b3e6:39",
+        "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486:7afaa181300abd5d721fd049d03dc1535ea88f659c077f91c0f1fc36be7baf9c:26"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "iPhone net sales",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "aapl_fy2025_004",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "d7f67ec792e6be22a5f11685284c88e91892024ca1b6879f0c510eee9adcb7ea",
+        "3202485f5697743d4a9446f42ae4a8781a3af3dc5c1301a667e70d45a3ca330b"
+      ],
+      "current_candidate_source_ids": [
+        "29958656ae6b85d31bd11efbf1765869be26c0811f4c338a8d6d08881c39ff35:747e5dbeece736acdb73d574508033290ab03f35051c9c418e7b17736fd088cd:39",
+        "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486:271be7bf8da3393526d553e9d485c47d9789cabfda569564cdd6ac65b9d4ee29:26"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "Mac net sales",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "aapl_fy2025_005",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "79d91a2553e82d687736806cba8af0410b778fe3eef63aed96994f5d46472050",
+        "67ff5c02a5b006df163f569e909e243dcd03af9f8fb2c5cd453068974b41d279",
+        "5a7c010dc7c1d81f96587b93934b787490d561bcd32e8e90507838e2ee5f078d",
+        "aad6d3c273873f37429ec2d6c3942f1767337f9c39186f57e5cfb229cef8763a",
+        "c13f9a1ff37e5a751d69cc91467b5ffa5780189a7869f8bc042d2a73f0ba4d3e"
+      ],
+      "current_candidate_source_ids": [
+        "2016faed04f03df7ef6aad0be8f232521469d6ba19428379e552d55dc23667cd:05dad73372a24be47526caba2e7bc521ee7727164b25490c8a1572b86455fb9e:32",
+        "21f6fd90e1ac0e3cfdb3849324019617dc23f5c21057ab9de57ed4fc785d4243:f4c6a22cde4bb43726640056ca7d937329f02c7e63a76b49e9605a8d34603f4e:25",
+        "29958656ae6b85d31bd11efbf1765869be26c0811f4c338a8d6d08881c39ff35:84605f25a542bd2bac5ad28760cc4b77415f995a5c2ad3155c4bc0ba93fb152d:39",
+        "d85ce97c0f18fc261ad32a8a8b397e2f188bb952e3a2b7c9f31bdc18e66ea15d:07cc93cc5c21bc8ad8c997ef0e5102fd2c805df559b8058d151aa5b7fcc9d008:50",
+        "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486:9fbbb1acea0877e077919653899299d518a3ad774428b896b7876eb0663be0be:26"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total net sales",
+      "operation": "growth_rate",
+      "period": "FY2025",
+      "question_id": "aapl_fy2025_006",
+      "role": "current_period",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "1dca7d500d015ae664048ced7246285062e2165bfb9ef71f56a7735b0c18621e",
+        "08e9a1d793538ebe3b46c49b01798b35dd0a76efcd2ba46865b6a4aa2da9bdf5",
+        "9bec46a7f31f4359e5e65c298b2ad48dcf806d0ecc13f68926373e761b40e2a6",
+        "654579224ba5f0ead4c59761b9d4a3bb5b1922c11ebee72bd07634ac56608164"
+      ],
+      "current_candidate_source_ids": [
+        "2016faed04f03df7ef6aad0be8f232521469d6ba19428379e552d55dc23667cd:05dad73372a24be47526caba2e7bc521ee7727164b25490c8a1572b86455fb9e:32",
+        "21f6fd90e1ac0e3cfdb3849324019617dc23f5c21057ab9de57ed4fc785d4243:f4c6a22cde4bb43726640056ca7d937329f02c7e63a76b49e9605a8d34603f4e:25",
+        "29958656ae6b85d31bd11efbf1765869be26c0811f4c338a8d6d08881c39ff35:84605f25a542bd2bac5ad28760cc4b77415f995a5c2ad3155c4bc0ba93fb152d:39",
+        "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486:9fbbb1acea0877e077919653899299d518a3ad774428b896b7876eb0663be0be:26"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total net sales",
+      "operation": "growth_rate",
+      "period": "FY2024",
+      "question_id": "aapl_fy2025_006",
+      "role": "base_period",
+      "scope": null,
+      "slot_id": "slot_2"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "626e64665bd96348567b8e4e585a66b1ed450d823cd96c1eaa38c5c518bc6b8f",
+        "c41c7734bb0e25fda4877e0c763a2c466ea8ccc488ff8030a25747cd2a78a0d1"
+      ],
+      "current_candidate_source_ids": [
+        "29958656ae6b85d31bd11efbf1765869be26c0811f4c338a8d6d08881c39ff35:a29f2d7ac07261fff00e3250bac008f74327b249b68fae4e213f2217e056b3e6:39",
+        "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486:7afaa181300abd5d721fd049d03dc1535ea88f659c077f91c0f1fc36be7baf9c:26"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "iPhone net sales",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "aapl_fy2025_007",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "39a2e87d3dd095f7362156c323379ba3b1f15e25f4665e6f47403d64a5a62a60",
+        "de835eeaa0b9ff74ad02aebdfa8802a244320f4e683bb4ef9bc34b99ddbdc24a",
+        "c1f324c1e8eaa4af3061b07e64e1812e52ae5d42d475844414a5d9bad4dac128"
+      ],
+      "current_candidate_source_ids": [
+        "29958656ae6b85d31bd11efbf1765869be26c0811f4c338a8d6d08881c39ff35:eebce9cf782a71e448383835c2d5c96672962096e43925e8c5eb2def6721f14c:39",
+        "60d96702c3d70da2d4d2c1a1fbeae60472c537ac7054ab2a66c3b44b179ae821:9450a854da43e8973e0e4b9cef04c50c5f80f0a35317169ac60467f8435fc16d:27",
+        "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486:c0019e060b35e7a6a39bc58c5807265813cd6a2b87e0ba8be5b7712734fcad95:26"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "Services net sales",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "aapl_fy2025_007",
+      "role": "value",
+      "scope": null,
+      "slot_id": "2"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "accuracy of a proprietary internal AI model",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "aapl_fy2025_008",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "a8d0ec68b8b74b9ad4cd4f1cb9095110a193cc3ab816f8bb94a2e53d178fbe05",
+        "11b10f86cb0a3d1fe1ac594a5cb8f261947b38e8a41c93894c72942aa0a43d61"
+      ],
+      "current_candidate_source_ids": [
+        "29958656ae6b85d31bd11efbf1765869be26c0811f4c338a8d6d08881c39ff35:a29f2d7ac07261fff00e3250bac008f74327b249b68fae4e213f2217e056b3e6:39",
+        "f9423469f80fef6162275b10957f7d0ddaaf9aaf28018fd3706074a4e93c0486:7afaa181300abd5d721fd049d03dc1535ea88f659c077f91c0f1fc36be7baf9c:26"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "iPhone net sales",
+      "operation": null,
+      "period": "FY2024",
+      "question_id": "aapl_fy2025_009",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "394411ec7dc43fa13293c826d1e789c036dc8e93ed2810f0492c1647f1243fb5",
+        "3550152c1027b97c44e4fc2bdc6efb6788e408c0df12f779147af2e60623da0f",
+        "b2fd71a203f7a32046b2395623c0d5d00d39a45155b3a7430a578da06b61837e",
+        "10f9876ef2977f5865232bd979ac95423897ed61f181cc80b1c13b122dcfbe13",
+        "7037d4ef4c5846bda5cb4f1f8804f6f9c50da33d89952ffc330033b6b6bcedd2",
+        "bd02009a07502c6efcca9d43cf929b5828fff0cd051a26a139a72b21e84ae0fc"
+      ],
+      "current_candidate_source_ids": [
+        "21628df58826aff5bba4db351f4f8717cb070f77a8161dd7764aa1b09229448a:54f3a2e2e56d9d140a49acdeb444ac5623b9a4735546ab1ac4a5f4821f953144:76",
+        "22657ec90fe1003ef67092934621ee9560bbda15d5ad8719ffa21638faad8db0:eac23a16f0e11db2ecd99c57b490fe1546cfd0805d3ceb124aa7c4985aae2ffe:2",
+        "59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd:de77113848571c091c5ef6f78187698f7cee62ff867f9232e0bcc9b6ea9316f8:199",
+        "86d66bc3ca981023bc28ac3999f26bd9ce2fcf9d38b518b10ec261da7bb2c1c1:76d6427ef929aed0af21ae317300ec47e770a8488d9169e32e8b76827997f067:104",
+        "8c4dc1647c327a759866de7c57cdf120484973e13a67fb131a72989f91c5d2fa:06ea00a5d1ba893fc0d6fcfe5cfd3127445a23aa37ae03b51afb9bd6979e01db:341",
+        "f9fba1ba380c58f3752307b034b5538ad78c689c1d44f6e1f7245cbcfa01c820:d177e4872c91f084168f230da3bcf83587ff2920a2b64f4489dbfa61deb6ba11:87"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total assets",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "jpm_fy2025_001",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "total liabilities",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "jpm_fy2025_002",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "82ec9a82542c4decda7d7ad15e6ef2d3fc46e6823a3b063b2600a328e0a89c42",
+        "5f274c6f21e33f2f9ace1ca086c31f4376c16a44646b2a55a9c144d348b7a462",
+        "3c570c06d722b50cfef9d038bc2c591f8e51a054b3b6d2ffc305adc3f2dff2b3",
+        "4b271f401e1bd73b61d3f7397cef53b624855680178984c7cdf0a49778dee365",
+        "16ebf0a75ed3bb4dd9d09d5d58e93cc116b8968481216d56f8dade854f2058c8",
+        "27f3418e141830c8b5e3808a9eede6a40c265cccc5cd85839714ace41b3ca88b"
+      ],
+      "current_candidate_source_ids": [
+        "21628df58826aff5bba4db351f4f8717cb070f77a8161dd7764aa1b09229448a:8421cec239b183cfbfae3de65b5d2fd7fcd29e00797b9ec4bd5dac8e4e0599a7:76",
+        "22657ec90fe1003ef67092934621ee9560bbda15d5ad8719ffa21638faad8db0:99c8e04a234a31984bcf797faaa38e251f0df120f36df738c2059fbe215e8efa:2",
+        "3e2ee1dc250a32c2d5906109ce12aafb33f4f38f2cd95882487eb52385e0ac0c:ef0323f842c202392cff0b97eb59a691936f83857f89bcc192ca50105a3105c8:197",
+        "673ead3ce91ec6cc5337b6c6101478dad2771052c7162ac2e2590ad67292f9e2:7f78108fe13b89dbdc392b224c183245f361e35e620e8e7ad890f7dc675ad4d6:198",
+        "d7f05bb6d1abcdf1681f0c40808ed5f0e30c9cf9a90acd19a054bc636d4a0cc4:d2cb6bfaaeccb9b933eda656e6f7cd65e1c04cc1d2383e47c393ea8a4b1954b8:343",
+        "e7df9db601f4ae6102ef9b2128835cacf5c72329f8b0fe727f5312988bc0df9d:7c087e4471c24081a61c6234f1abb623ec4254f0c773dc7bf6649c5e7cf280bd:200"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "net income",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "jpm_fy2025_003",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Consumer & Community Banking net income",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "jpm_fy2025_004",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Commercial & Investment Bank net income",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "jpm_fy2025_005",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "394411ec7dc43fa13293c826d1e789c036dc8e93ed2810f0492c1647f1243fb5",
+        "b2fd71a203f7a32046b2395623c0d5d00d39a45155b3a7430a578da06b61837e",
+        "3550152c1027b97c44e4fc2bdc6efb6788e408c0df12f779147af2e60623da0f",
+        "10f9876ef2977f5865232bd979ac95423897ed61f181cc80b1c13b122dcfbe13",
+        "7037d4ef4c5846bda5cb4f1f8804f6f9c50da33d89952ffc330033b6b6bcedd2",
+        "bd02009a07502c6efcca9d43cf929b5828fff0cd051a26a139a72b21e84ae0fc",
+        "7a2a39a9aa2a70ca213884f6ad1371561575b21aa2bbcb5854aec8170bc8c0a5"
+      ],
+      "current_candidate_source_ids": [
+        "21628df58826aff5bba4db351f4f8717cb070f77a8161dd7764aa1b09229448a:54f3a2e2e56d9d140a49acdeb444ac5623b9a4735546ab1ac4a5f4821f953144:76",
+        "22657ec90fe1003ef67092934621ee9560bbda15d5ad8719ffa21638faad8db0:eac23a16f0e11db2ecd99c57b490fe1546cfd0805d3ceb124aa7c4985aae2ffe:2",
+        "59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd:de77113848571c091c5ef6f78187698f7cee62ff867f9232e0bcc9b6ea9316f8:199",
+        "71171a7701914054ff706a7a27943bc0cbb3b21bd1126c881889b56b798eb856:947d461d3a761073eb9d9e64b8a6f99cac60f0aa7937e1e82ebb4d1721db4b0b:342",
+        "86d66bc3ca981023bc28ac3999f26bd9ce2fcf9d38b518b10ec261da7bb2c1c1:76d6427ef929aed0af21ae317300ec47e770a8488d9169e32e8b76827997f067:104",
+        "8c4dc1647c327a759866de7c57cdf120484973e13a67fb131a72989f91c5d2fa:06ea00a5d1ba893fc0d6fcfe5cfd3127445a23aa37ae03b51afb9bd6979e01db:341",
+        "f9fba1ba380c58f3752307b034b5538ad78c689c1d44f6e1f7245cbcfa01c820:d177e4872c91f084168f230da3bcf83587ff2920a2b64f4489dbfa61deb6ba11:87"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total assets",
+      "operation": "growth_rate",
+      "period": "FY2025",
+      "question_id": "jpm_fy2025_006",
+      "role": "current_period",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "85e82834ba925ee7339baadfa46c38e177763d8e1d8634b35f2231aca5962ecb",
+        "944857e6cd711762088b5ba3cbf3c81bad95ad0fdfc08166d6f8623d02f53bfb",
+        "8fb7e2db4435ba21767823589fc9fcd08e1aaf9743ec1e71a200c6a4dee9193a",
+        "27946e295fb8ac9d4849734593b260adca92e6c200941351ee4f7c1a7def2b46",
+        "e849891815dd159a8d5fdf14ea4256b06fe1756118db2830fb2ca050e22877b8",
+        "7b350ea2c651cef67ef159702ee858ce2686dcea90d3e366fffeec1f76205e6c",
+        "57a4a5f97052e9b4c1b1a31d201f2dbbef0a7030f2c4ec47ba0806d4070bfc22"
+      ],
+      "current_candidate_source_ids": [
+        "21628df58826aff5bba4db351f4f8717cb070f77a8161dd7764aa1b09229448a:54f3a2e2e56d9d140a49acdeb444ac5623b9a4735546ab1ac4a5f4821f953144:76",
+        "22657ec90fe1003ef67092934621ee9560bbda15d5ad8719ffa21638faad8db0:eac23a16f0e11db2ecd99c57b490fe1546cfd0805d3ceb124aa7c4985aae2ffe:2",
+        "59a46cbee85b00647344a4cdcbc6e34d7e273d99c1ef52db9a600d10b18931cd:de77113848571c091c5ef6f78187698f7cee62ff867f9232e0bcc9b6ea9316f8:199",
+        "71171a7701914054ff706a7a27943bc0cbb3b21bd1126c881889b56b798eb856:947d461d3a761073eb9d9e64b8a6f99cac60f0aa7937e1e82ebb4d1721db4b0b:342",
+        "86d66bc3ca981023bc28ac3999f26bd9ce2fcf9d38b518b10ec261da7bb2c1c1:76d6427ef929aed0af21ae317300ec47e770a8488d9169e32e8b76827997f067:104",
+        "8c4dc1647c327a759866de7c57cdf120484973e13a67fb131a72989f91c5d2fa:06ea00a5d1ba893fc0d6fcfe5cfd3127445a23aa37ae03b51afb9bd6979e01db:341",
+        "f9fba1ba380c58f3752307b034b5538ad78c689c1d44f6e1f7245cbcfa01c820:d177e4872c91f084168f230da3bcf83587ff2920a2b64f4489dbfa61deb6ba11:87"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total assets",
+      "operation": "growth_rate",
+      "period": "FY2024",
+      "question_id": "jpm_fy2025_006",
+      "role": "base_period",
+      "scope": null,
+      "slot_id": "2"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Consumer & Community Banking net income",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "jpm_fy2025_007",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "total liabilities",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "jpm_fy2025_007",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_2"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "customer-level contract amount for an individual client",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "jpm_fy2025_008",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Consumer & Community Banking net income",
+      "operation": null,
+      "period": "FY2024",
+      "question_id": "jpm_fy2025_009",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "125c81aeaa257db2ae4ed713b8a8554c673f9cb931630521fb69cf0c4e51c3f6",
+        "3f1200299bd330cbeb5268ff99e22ecf1780494a6daf6fbdba4c05d50d22bd25",
+        "5ada67806684fce8a8ad4b637a89f3dd2e61dc8c329cbb79e351e87a02a65696"
+      ],
+      "current_candidate_source_ids": [
+        "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d:63",
+        "9a90ac6dbf971bc6b0a8abb92c7d03fb85b3b767589e0bbe705387e65ce09817:f0adbdf6de87184745a0dbd9ab73568a3e566de4fad2111e1adb84575d890516:87",
+        "dd20265ddef36bf9442116ba1021d7d6bf5964fba11264ee229869b078081569:fbf073623d9f03d0c0727fee86db600f51c2a759d986a79dba4e77ef26d35f59:118"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "net operating revenues",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "ko_fy2025_001",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "30aede920be2f2f4102371bd89bb9068cb11a3a556c1a4d284a5393159b7a0cc",
+        "1cc0fcc3c451e0cab355ecac4bdd3e6545ddd41623748fd354c43fb3bcafc223"
+      ],
+      "current_candidate_source_ids": [
+        "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:a5da46248aad27275bd61916b2d7361095d322449898216f1e1df8fbb2013236:63",
+        "9a90ac6dbf971bc6b0a8abb92c7d03fb85b3b767589e0bbe705387e65ce09817:c82e0d7a3635338eb14460cd415a76fa3d1988360dfba667cef26c67d5144cc6:87"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "operating income",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "ko_fy2025_002",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "net income attributable to shareowners",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "ko_fy2025_003",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "5217bed5a0d970538ca7a7506e2b6443fcc0165034227f64e1d835ed7ccce960",
+        "59506234d4f102a8b97682f70a338870d7502bcf5522bd52845c146163ee47ea",
+        "b2dc18645ee6a758bd96dd9ef12be9633c2cc5e41ec1db8d22c60df6e5e7fb75",
+        "b3fb6dee2a35032ccf389c97155568296b4b5901fa099cbd6438cc57c4fe84f1",
+        "125c81aeaa257db2ae4ed713b8a8554c673f9cb931630521fb69cf0c4e51c3f6"
+      ],
+      "current_candidate_source_ids": [
+        "081e20e9c3cddcf402a506510e1fed0c0a7cf9a51baee69685865ca7ad2361bc:d565cbf324a563ca6b121896760952ab88b1ff6ce84445bae40061d297b088f5:50",
+        "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d:63",
+        "5e8f0b55efba372edd34726f562bdf4e456be6eeaf4003825b3215618d3fd3b4:c7842b302bbd0fec0860c14e3448efdee8fe5ba45cc15530ff9ee9f8f96eb39d:49",
+        "734db94cf723f8dbc533333a5ec7478ec101fcd7507b2e3175ed3804aeb9b14b:10a763d2fa69c44d77fd67722fa52f0fbb45b71dfa3b65d695e5b9c104a1626f:50",
+        "9ae9b0fab1782560ea51ce59b08f88228ff7277fce717df2a0c7f0a4d3fc6386:06a9f61f12b42bfa167dfce01f04955cd8643a4524f48fa9e0ba8ff38f12e221:49"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "EMEA total net operating revenues",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "ko_fy2025_004",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "b0dfdc1fd70fca0042559e39753c4f0185a9f30e53fad4c50ed985e1b8ee7afb",
+        "3bc764e767a4a3f7743e8fc16b30fc8a70c25cb371895e92ae27a1a6f993d192",
+        "da9e536c279f1f75fadd3a11ff5ce8e36c79cb0587bcaeb2a2b9a279243e0e96"
+      ],
+      "current_candidate_source_ids": [
+        "081e20e9c3cddcf402a506510e1fed0c0a7cf9a51baee69685865ca7ad2361bc:325285927e125377815d0d13e47065993d1653d3b72210567ee5eecb93bb852a:50",
+        "734db94cf723f8dbc533333a5ec7478ec101fcd7507b2e3175ed3804aeb9b14b:b979fc6dce2a70cf5e94535a2de8f3f96bbf767b570309a903a6a0026c5613c8:50",
+        "9ae9b0fab1782560ea51ce59b08f88228ff7277fce717df2a0c7f0a4d3fc6386:ea5ab43e3b60777f410ee14c450fbfc65b7d2c58f0030176ee7150fa0f7a0121:49"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "North America total net operating revenues",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "ko_fy2025_005",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "3f1200299bd330cbeb5268ff99e22ecf1780494a6daf6fbdba4c05d50d22bd25",
+        "125c81aeaa257db2ae4ed713b8a8554c673f9cb931630521fb69cf0c4e51c3f6"
+      ],
+      "current_candidate_source_ids": [
+        "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d:63",
+        "dd20265ddef36bf9442116ba1021d7d6bf5964fba11264ee229869b078081569:fbf073623d9f03d0c0727fee86db600f51c2a759d986a79dba4e77ef26d35f59:118"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "net operating revenues",
+      "operation": "growth_rate",
+      "period": "FY2025",
+      "question_id": "ko_fy2025_006",
+      "role": "current_period",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "37d8ab77749acede6baf69e4586f67e83e8a4ecc6d857b1794d90553e82a69bf",
+        "da7f7fa75e8d2a759818e29111a532654de40d60b8e8be1040611305cd22ff4f"
+      ],
+      "current_candidate_source_ids": [
+        "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d:63",
+        "dd20265ddef36bf9442116ba1021d7d6bf5964fba11264ee229869b078081569:fbf073623d9f03d0c0727fee86db600f51c2a759d986a79dba4e77ef26d35f59:118"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "net operating revenues",
+      "operation": "growth_rate",
+      "period": "FY2024",
+      "question_id": "ko_fy2025_006",
+      "role": "base_period",
+      "scope": null,
+      "slot_id": "slot_2"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "b2dc18645ee6a758bd96dd9ef12be9633c2cc5e41ec1db8d22c60df6e5e7fb75",
+        "b3fb6dee2a35032ccf389c97155568296b4b5901fa099cbd6438cc57c4fe84f1",
+        "59506234d4f102a8b97682f70a338870d7502bcf5522bd52845c146163ee47ea"
+      ],
+      "current_candidate_source_ids": [
+        "081e20e9c3cddcf402a506510e1fed0c0a7cf9a51baee69685865ca7ad2361bc:d565cbf324a563ca6b121896760952ab88b1ff6ce84445bae40061d297b088f5:50",
+        "734db94cf723f8dbc533333a5ec7478ec101fcd7507b2e3175ed3804aeb9b14b:10a763d2fa69c44d77fd67722fa52f0fbb45b71dfa3b65d695e5b9c104a1626f:50",
+        "9ae9b0fab1782560ea51ce59b08f88228ff7277fce717df2a0c7f0a4d3fc6386:06a9f61f12b42bfa167dfce01f04955cd8643a4524f48fa9e0ba8ff38f12e221:49"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "EMEA third-party revenue",
+      "operation": "percentage_share",
+      "period": "FY2025",
+      "question_id": "ko_fy2025_007",
+      "role": "numerator",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "5ada67806684fce8a8ad4b637a89f3dd2e61dc8c329cbb79e351e87a02a65696",
+        "125c81aeaa257db2ae4ed713b8a8554c673f9cb931630521fb69cf0c4e51c3f6",
+        "3f1200299bd330cbeb5268ff99e22ecf1780494a6daf6fbdba4c05d50d22bd25"
+      ],
+      "current_candidate_source_ids": [
+        "4b97983e2a131b0bda094cbdd5a935014811c582faeb62a80cf3d4a66742f9cd:78cc329e276d14979416c5241de62ed63ae3989c6a70c8be8962490986149d1d:63",
+        "9a90ac6dbf971bc6b0a8abb92c7d03fb85b3b767589e0bbe705387e65ce09817:f0adbdf6de87184745a0dbd9ab73568a3e566de4fad2111e1adb84575d890516:87",
+        "dd20265ddef36bf9442116ba1021d7d6bf5964fba11264ee229869b078081569:fbf073623d9f03d0c0727fee86db600f51c2a759d986a79dba4e77ef26d35f59:118"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "consolidated net operating revenues",
+      "operation": "percentage_share",
+      "period": "FY2025",
+      "question_id": "ko_fy2025_007",
+      "role": "denominator",
+      "scope": null,
+      "slot_id": "2"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "exact output of one named manufacturing plant",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "ko_fy2025_008",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "EMEA total net operating revenues",
+      "operation": null,
+      "period": "FY2024",
+      "question_id": "ko_fy2025_009",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "d27437d68d1566cde35a212e14f7ee2e4f30481c68d34884dcdac2541bb701d4",
+        "b4b510f88f3297fdcb82f363f0e129f8c71dc0d8a875030502e84637cca41b7b"
+      ],
+      "current_candidate_source_ids": [
+        "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:af0d1dd83473f873c6601028e9eb055ab6af7e81401031551641320e07d9fe73:26",
+        "be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211:d26a5a003c85a67d53f65ea96d4cf25395de414655f87282af2b1957a72b7946:80"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total revenue",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "msft_fy2025_001",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Productivity and Business Processes revenue",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "msft_fy2025_002",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "More Personal Computing revenue",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "msft_fy2025_003",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Intelligent Cloud revenue",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "msft_fy2025_004",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Productivity and Business Processes operating income",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "msft_fy2025_005",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "d27437d68d1566cde35a212e14f7ee2e4f30481c68d34884dcdac2541bb701d4",
+        "b4b510f88f3297fdcb82f363f0e129f8c71dc0d8a875030502e84637cca41b7b"
+      ],
+      "current_candidate_source_ids": [
+        "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:af0d1dd83473f873c6601028e9eb055ab6af7e81401031551641320e07d9fe73:26",
+        "be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211:d26a5a003c85a67d53f65ea96d4cf25395de414655f87282af2b1957a72b7946:80"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total revenue",
+      "operation": "growth_rate",
+      "period": "FY2025",
+      "question_id": "msft_fy2025_006",
+      "role": "current_period",
+      "scope": null,
+      "slot_id": "rev_fy2025"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "a7d19dd7eb8f28d9eb727f9648bffce5c57cab327a1c8b4461bb7bab4d9a67b3",
+        "b83a057ed1864a7d850659e5d835fb7c8b85d17417aff36077ddefb45c45016e"
+      ],
+      "current_candidate_source_ids": [
+        "a6bd258be565d6178b60deeaa693fda2aac80dc23469fe90127cb92e6461d754:af0d1dd83473f873c6601028e9eb055ab6af7e81401031551641320e07d9fe73:26",
+        "be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211:d26a5a003c85a67d53f65ea96d4cf25395de414655f87282af2b1957a72b7946:80"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total revenue",
+      "operation": "growth_rate",
+      "period": "FY2024",
+      "question_id": "msft_fy2025_006",
+      "role": "base_period",
+      "scope": null,
+      "slot_id": "rev_fy2024"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "d27437d68d1566cde35a212e14f7ee2e4f30481c68d34884dcdac2541bb701d4"
+      ],
+      "current_candidate_source_ids": [
+        "be05fc0e6fa4b51c196a93b877c2c2680efefdc1223b526328a6b258daa71211:d26a5a003c85a67d53f65ea96d4cf25395de414655f87282af2b1957a72b7946:80"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "Intelligent Cloud revenue",
+      "operation": "percentage_share",
+      "period": "FY2025",
+      "question_id": "msft_fy2025_007",
+      "role": "numerator",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "81c94875b53e927edfae55a707bd39a0ae10803fdbc1918b4f77507ba714553b",
+        "e9f8859a2c6bae2104f8a0dc18fa57adc0799f5a5a24237cb48aed7b7049944f"
+      ],
+      "current_candidate_source_ids": [
+        "0924e3742ff0dbb028cc1ef4c11aa6d1c887a6bce28620e9f5ab7112f4b7e657:64f1099bdf3a59b24c477aeedaec05d17199a0df82dcd70dad26c51e34aa72b3:82",
+        "ac7bdfbfed1e451b2a6af326192df65d97c2099a28413b0b1638fd3716bbc508:45ea8a24806d9aeff69ab5ce95236fcb71ba8a87e653fd1c13c85f9c151a7ec6:80"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total revenue",
+      "operation": "percentage_share",
+      "period": "FY2025",
+      "question_id": "msft_fy2025_007",
+      "role": "denominator",
+      "scope": null,
+      "slot_id": "slot_2"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "customer-level contract renewal rate",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "msft_fy2025_008",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Intelligent Cloud revenue",
+      "operation": null,
+      "period": "FY2024",
+      "question_id": "msft_fy2025_009",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "e513aecc7dfd490e508e83f2b194cb2ab8d61695b7f689c64350f33539c06bf4",
+        "9d894f54dae9df63cb3ab22e4cbe868356e3a72d76906158d35067d89bc6e652",
+        "0137139c29b40cff03bd922f75b9a67b0a046f5ddbae4b48e70c7f9fc6ccf7f8"
+      ],
+      "current_candidate_source_ids": [
+        "7dfd18dd365fbd0db662a9b8bfc87e1b4adbf0c102f273dfb592b6d1ae2fb3f2:59cf129520d840a08394aca8127c9629610755e622d2818acb6cb9848bcf36e7:171",
+        "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:2ce54063bbdedeb95f1a279d0c41237e1c6fa479a1a4e4cc49df6a63129b3456:172",
+        "e267f6a2071a589e73db4751f96728efa4e5a637aeb8d619efd27324222283a9:34a1f9e96aae44eb4da4cf2cffa26f7060b15a88600a52d71574e3becfcff726:130"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total revenue",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "nvda_fy2025_001",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Gaming revenue",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "nvda_fy2025_002",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "GAAP gross margin percentage",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "nvda_fy2025_003",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "9d894f54dae9df63cb3ab22e4cbe868356e3a72d76906158d35067d89bc6e652",
+        "e513aecc7dfd490e508e83f2b194cb2ab8d61695b7f689c64350f33539c06bf4",
+        "0137139c29b40cff03bd922f75b9a67b0a046f5ddbae4b48e70c7f9fc6ccf7f8"
+      ],
+      "current_candidate_source_ids": [
+        "7dfd18dd365fbd0db662a9b8bfc87e1b4adbf0c102f273dfb592b6d1ae2fb3f2:59cf129520d840a08394aca8127c9629610755e622d2818acb6cb9848bcf36e7:171",
+        "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:2ce54063bbdedeb95f1a279d0c41237e1c6fa479a1a4e4cc49df6a63129b3456:172",
+        "e267f6a2071a589e73db4751f96728efa4e5a637aeb8d619efd27324222283a9:34a1f9e96aae44eb4da4cf2cffa26f7060b15a88600a52d71574e3becfcff726:130"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total revenue",
+      "operation": "growth_rate",
+      "period": "FY2025",
+      "question_id": "nvda_fy2025_006",
+      "role": "current_period",
+      "scope": null,
+      "slot_id": "rev_fy2025"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "58c233c819e2a175ac538e554ec5d20f886447bd68fc8a298b08cac5b5680b3e",
+        "ac8b0a19d94844fe5b93a8922332723ed9f25db24cdd385bdcc6f1249672103e",
+        "db738ba7a1deb4fbc8b912c629427f666f764ab65aad327598c1a3ee628128b9"
+      ],
+      "current_candidate_source_ids": [
+        "7dfd18dd365fbd0db662a9b8bfc87e1b4adbf0c102f273dfb592b6d1ae2fb3f2:59cf129520d840a08394aca8127c9629610755e622d2818acb6cb9848bcf36e7:171",
+        "956d139d163b90f380e6cdcb5e9f14e5b72fbdb329a22512d3ccd04bbe45f736:2ce54063bbdedeb95f1a279d0c41237e1c6fa479a1a4e4cc49df6a63129b3456:172",
+        "e267f6a2071a589e73db4751f96728efa4e5a637aeb8d619efd27324222283a9:34a1f9e96aae44eb4da4cf2cffa26f7060b15a88600a52d71574e3becfcff726:130"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total revenue",
+      "operation": "growth_rate",
+      "period": "FY2024",
+      "question_id": "nvda_fy2025_006",
+      "role": "base_period",
+      "scope": null,
+      "slot_id": "rev_fy2024"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "customer-level Data Center revenue amount",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "nvda_fy2025_008",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Data Center revenue",
+      "operation": null,
+      "period": "FY2024",
+      "question_id": "nvda_fy2025_009",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "b8982f8a92719de674f6bff3f15eb07478aeea7d02fd88ecd10b5d4b24ec4c2c",
+        "25b3026c7de0081af13f227eac8511f58d6b28bfdfbcce51b629d011cefc0a58",
+        "7953a0c6324978a105226dece6803d30dcfabe48dfb73cd8b1a729c67fb84d78"
+      ],
+      "current_candidate_source_ids": [
+        "78179ebd90114e4886af38071efb20c643efd57d11b9d1a5864fe42aba876818:8378868e8aa980661831490896a6a83237ef320cc3b0968c7dda07489ad43c55:113",
+        "a8055121fa63f48f32fb0fa7fd624ea6541155fef3395d279e4de69bfc94c3de:2c334e07f01a1b28862425a9ab134cc77aaf32695d42bd3863a9466770286454:60",
+        "dc5c46d6b96e291a5540fb09d1a365143e26f1f2a4af85bd3ec3efc688ff32e3:a0c0df37d49c1926962e958691bc75e4797906333abb9fae15e98e7908b458de:43"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total revenues",
+      "operation": null,
+      "period": "FY2024",
+      "question_id": "pfe_fy2024_001",
+      "role": "value",
+      "scope": null,
+      "slot_id": "total_revenues_fy2024"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Comirnaty revenue",
+      "operation": null,
+      "period": "FY2024",
+      "question_id": "pfe_fy2024_002",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "614d36a35234d55c672f8a8ac4890c6f78270c39c9f0db9f083ba8e4c06a62a1",
+        "fc6e511cce0a8e27b40cc3c66c810137ec0013734281af6025f5f0b66ad8a196",
+        "584247b2c421096522add9f1a721e4786c4ec6ea6db77e567031058794802a47",
+        "0afa439028b93b283cf28ea7cf5d4547ea4e4b6161941c158cabf221f779b962",
+        "f4f61f290c8b964bab4673a0ecbd933846f86fa9bb777bca4512c2a26e3217c1"
+      ],
+      "current_candidate_source_ids": [
+        "2c430320199793a7b760d36d6960516f6681f1c023066cdbda5affd03d55a469:4a66233e9d52413a668e5c464b691e69c62c2018081e87cbfd31c892d0d52393:45",
+        "2c430320199793a7b760d36d6960516f6681f1c023066cdbda5affd03d55a469:5e8cd14c3afc4410a47e19b4653654f2bd076590ca2ff2c8dbbdf3e9bcab6b90:45",
+        "2c430320199793a7b760d36d6960516f6681f1c023066cdbda5affd03d55a469:7ceea4fb7db10fe2f937d097a64b627b4baceea18d0338bf2b1cb75b3cec7555:45",
+        "2c430320199793a7b760d36d6960516f6681f1c023066cdbda5affd03d55a469:bae23c6690240d73e1865fc58041b7b2e9e4428b3dc3c0f32c92a3ecdd5e8fce:45",
+        "2c430320199793a7b760d36d6960516f6681f1c023066cdbda5affd03d55a469:bd017214cc2832a1f02ce19118c97569d0c050d61d694ca9bc4b673ac585d40f:45"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "Eliquis revenue",
+      "operation": null,
+      "period": "FY2024",
+      "question_id": "pfe_fy2024_003",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Paxlovid revenue",
+      "operation": null,
+      "period": "FY2024",
+      "question_id": "pfe_fy2024_004",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Prevnar family revenue",
+      "operation": null,
+      "period": "FY2024",
+      "question_id": "pfe_fy2024_005",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "25b3026c7de0081af13f227eac8511f58d6b28bfdfbcce51b629d011cefc0a58",
+        "b8982f8a92719de674f6bff3f15eb07478aeea7d02fd88ecd10b5d4b24ec4c2c",
+        "7953a0c6324978a105226dece6803d30dcfabe48dfb73cd8b1a729c67fb84d78"
+      ],
+      "current_candidate_source_ids": [
+        "78179ebd90114e4886af38071efb20c643efd57d11b9d1a5864fe42aba876818:8378868e8aa980661831490896a6a83237ef320cc3b0968c7dda07489ad43c55:113",
+        "a8055121fa63f48f32fb0fa7fd624ea6541155fef3395d279e4de69bfc94c3de:2c334e07f01a1b28862425a9ab134cc77aaf32695d42bd3863a9466770286454:60",
+        "dc5c46d6b96e291a5540fb09d1a365143e26f1f2a4af85bd3ec3efc688ff32e3:a0c0df37d49c1926962e958691bc75e4797906333abb9fae15e98e7908b458de:43"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total revenues",
+      "operation": "growth_rate",
+      "period": "FY2024",
+      "question_id": "pfe_fy2024_006",
+      "role": "current_period",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "700de90b4df433e55ba036695dd691115c0bb6a85113f5f396ad9463a4d42231",
+        "63cda6500e1538e1e907e153453217f5385f46c83365b209c0a446e4eff6f076",
+        "9db799a78375bb25098c16f67b84d536515878ade5f16c0f00a8423eb345f5ac"
+      ],
+      "current_candidate_source_ids": [
+        "78179ebd90114e4886af38071efb20c643efd57d11b9d1a5864fe42aba876818:8378868e8aa980661831490896a6a83237ef320cc3b0968c7dda07489ad43c55:113",
+        "a8055121fa63f48f32fb0fa7fd624ea6541155fef3395d279e4de69bfc94c3de:2c334e07f01a1b28862425a9ab134cc77aaf32695d42bd3863a9466770286454:60",
+        "dc5c46d6b96e291a5540fb09d1a365143e26f1f2a4af85bd3ec3efc688ff32e3:a0c0df37d49c1926962e958691bc75e4797906333abb9fae15e98e7908b458de:43"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total revenues",
+      "operation": "growth_rate",
+      "period": "FY2023",
+      "question_id": "pfe_fy2024_006",
+      "role": "base_period",
+      "scope": null,
+      "slot_id": "2"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "9bfd7e02b272b7f734a02f9f55a50b948912d2632400f812bc6c84b751571fa1"
+      ],
+      "current_candidate_source_ids": [
+        "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:15b5941503516157938adcd71ad3966d97c823659ef7607e83d19a6df90ae372:113"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "Comirnaty revenue",
+      "operation": null,
+      "period": "FY2024",
+      "question_id": "pfe_fy2024_007",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "b0a2602ea3344b4331fff1dd2e97ab45b557ef051eb9a8b443f4f77c323894d9",
+        "1581218506036c65fe5951d1e9129f581db94c9878f164fceac193e8d87c3cf2",
+        "f18884fd266fe250e953c1f1f88b9add8ae47a850e63f9def5e610648bb87a50"
+      ],
+      "current_candidate_source_ids": [
+        "746121011155dd9549cefd795486834fc8598e7e7bec7ed2eeea5a2a13e9ba30:de06ffc691f23763d726f6b401b25877b9e39eb98aed711808abe7676c10e0de:46",
+        "a8055121fa63f48f32fb0fa7fd624ea6541155fef3395d279e4de69bfc94c3de:f7993d288f96c863c05afb219c4797a2a5a2f0e6a173fbdc01c4676df6fc185a:60",
+        "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:2cb04156f030c1a19b6b85b05029e5f241e978839945d8fa02ee1f9b05af4264:113"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "research and development expense",
+      "operation": null,
+      "period": "FY2024",
+      "question_id": "pfe_fy2024_007",
+      "role": "value",
+      "scope": null,
+      "slot_id": "2"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "guaranteed FY2026 financial result",
+      "operation": null,
+      "period": "FY2024",
+      "question_id": "pfe_fy2024_008",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "ad7f77f5a590448025a69f9bd2d2fb4f244691f206e1320e7fdbc30da42a1de5",
+        "c31bec21e358d8ea223b5ba2dc3566ff9c6af015eff9b8885444ce6312c21f55",
+        "b67993a2427005790ef77c239a747a32f7885d7e6665fc3db7221dc5e51c8389"
+      ],
+      "current_candidate_source_ids": [
+        "2c430320199793a7b760d36d6960516f6681f1c023066cdbda5affd03d55a469:4a66233e9d52413a668e5c464b691e69c62c2018081e87cbfd31c892d0d52393:45",
+        "cca143166eb54eb4d9fd284820e62e62d5f461ddba16128a4b1a167dbd90d55c:2e850f5b89089fea0dd22d44270c382ffb1485f8b1b778c9d1987ec66c2ab075:44",
+        "f2bc4e98d06ae6fe6783019516fdc07965a90145503f74b1bc07a230d3c706db:ac9a270be7eab1fe44d00c0be9321b51ccd0460cc0bba5459d0700d902cb5b78:113"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "Paxlovid revenue",
+      "operation": null,
+      "period": "FY2023",
+      "question_id": "pfe_fy2024_009",
+      "role": "value",
+      "scope": null,
+      "slot_id": "paxlovid_revenue_fy2023"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "f79884cf4f0f8d6be407ae53f629548e99f9f9b2c1288b86cb5408e4a0657ed8",
+        "331719d000ca733cc97eac7e2404b61a3ecf3273e45a230ee1715f8f3351250b",
+        "b7a121895be97205d429d42cca533847baa862f422ce35a007a5c7b4901f8463"
+      ],
+      "current_candidate_source_ids": [
+        "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:93d6960e6d70cca7c6156d844781efdb14007565ffb30dfda12383129f83f91c:77",
+        "cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0:5bd592c61ea501109cb3f3cdb92219c5d2da792b01856e4c2ae2af7477a92c74:69",
+        "deaf061bae059432d2926aca133f7e50872bf2b55792c05ff00ec1e6a20e4ef1:4eb42cadf8f47998d77e1f55863321a423bc272ddb2bcef9340074809ce9dd91:129"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total revenues",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "tsla_fy2025_001",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "be920467510ef9f85b636d17f661adace220e4317b98360f55067992f3bbd82b",
+        "92adf77d1e8733d420a447d33d2a9aa9e2e067c3b5e079d46d74fc877e188367"
+      ],
+      "current_candidate_source_ids": [
+        "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:1827cc11a5e883b721aa26ea68394513e3dd5a556cf6b528a7a8b92b29813093:77",
+        "cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0:bebc80c6e1ac4e9c83ba3ba18cf777c026f389958aed18d896a5b98538863390:69"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "Services and other revenue",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "tsla_fy2025_002",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "312a5480c923b984fe1319fde32cc73b11e6b2ffec05cf048c9e092b35cdad6b",
+        "3f9d422fd21c5134e123c15f5a9c9d4c184b5a3bfac1bd217766bceddddfbe2b"
+      ],
+      "current_candidate_source_ids": [
+        "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:f4db2810707613f80c0961c9248684a195e74912de802c322d9eed05290fc988:77",
+        "e6c171ebfde8a3e1deac7af056076e06cb60c79d591e73f568fd01fb8ed1f049:de36589969629ac6894c75a8d51c8eee6e4c8d11e42d10dee8c9ebbadd5a3e45:69"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "Automotive regulatory credits revenue",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "tsla_fy2025_003",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Total automotive revenues",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "tsla_fy2025_004",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Energy generation and storage segment revenue",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "tsla_fy2025_005",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "f79884cf4f0f8d6be407ae53f629548e99f9f9b2c1288b86cb5408e4a0657ed8",
+        "331719d000ca733cc97eac7e2404b61a3ecf3273e45a230ee1715f8f3351250b",
+        "b7a121895be97205d429d42cca533847baa862f422ce35a007a5c7b4901f8463"
+      ],
+      "current_candidate_source_ids": [
+        "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:93d6960e6d70cca7c6156d844781efdb14007565ffb30dfda12383129f83f91c:77",
+        "cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0:5bd592c61ea501109cb3f3cdb92219c5d2da792b01856e4c2ae2af7477a92c74:69",
+        "deaf061bae059432d2926aca133f7e50872bf2b55792c05ff00ec1e6a20e4ef1:4eb42cadf8f47998d77e1f55863321a423bc272ddb2bcef9340074809ce9dd91:129"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total revenues",
+      "operation": "growth_rate",
+      "period": "FY2025",
+      "question_id": "tsla_fy2025_006",
+      "role": "current_period",
+      "scope": null,
+      "slot_id": "rev_fy2025"
+    },
+    {
+      "current_candidate_fact_ids": [
+        "d05bc6d04f3ac3e2eed496474e64d340c53d704bf6e3f8d58527139e3beacd30",
+        "4aa7c0b7df2cc9307094ae17ef2029ba2ecdf0c558ffa51a27b929d93fffd4f6",
+        "1be721d2dc4f1f803d6a337fb818a498332aa26f7af951771aca76c4fa6f5005"
+      ],
+      "current_candidate_source_ids": [
+        "04a4ab6876ef2b5a92df4aa68d4d6a80605ec0cf8592545211bac62cc9278e72:93d6960e6d70cca7c6156d844781efdb14007565ffb30dfda12383129f83f91c:77",
+        "cf79673d6c8f31275ee282fe6ab7e9a0535bdb0e2c5ee0f1b75c3646f2f19ca0:5bd592c61ea501109cb3f3cdb92219c5d2da792b01856e4c2ae2af7477a92c74:69",
+        "deaf061bae059432d2926aca133f7e50872bf2b55792c05ff00ec1e6a20e4ef1:4eb42cadf8f47998d77e1f55863321a423bc272ddb2bcef9340074809ce9dd91:129"
+      ],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity"
+      ],
+      "metric": "total revenues",
+      "operation": "growth_rate",
+      "period": "FY2024",
+      "question_id": "tsla_fy2025_006",
+      "role": "base_period",
+      "scope": null,
+      "slot_id": "rev_fy2024"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Total automotive revenues",
+      "operation": "difference",
+      "period": "FY2025",
+      "question_id": "tsla_fy2025_007",
+      "role": "minuend",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Energy generation and storage segment revenue",
+      "operation": "difference",
+      "period": "FY2025",
+      "question_id": "tsla_fy2025_007",
+      "role": "subtrahend",
+      "scope": null,
+      "slot_id": "slot_2"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "guaranteed customer-specific vehicle purchase price for FY2026",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "tsla_fy2025_008",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "Total automotive revenues",
+      "operation": null,
+      "period": "FY2024",
+      "question_id": "tsla_fy2025_009",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "net revenue",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "v_fy2025_001",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "payments volume",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "v_fy2025_004",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "GAAP net income",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "v_fy2025_005",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "net revenue",
+      "operation": "growth_rate",
+      "period": "FY2025",
+      "question_id": "v_fy2025_006",
+      "role": "current_period",
+      "scope": null,
+      "slot_id": "s1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "net revenue",
+      "operation": "growth_rate",
+      "period": "FY2024",
+      "question_id": "v_fy2025_006",
+      "role": "base_period",
+      "scope": null,
+      "slot_id": "s2"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "MISSING",
+      "gold": null,
+      "known_missing_dimensions": [
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "internal employee performance accuracy metric",
+      "operation": null,
+      "period": "FY2025",
+      "question_id": "v_fy2025_008",
+      "role": "value",
+      "scope": null,
+      "slot_id": "slot_1"
+    },
+    {
+      "current_candidate_fact_ids": [],
+      "current_candidate_source_ids": [],
+      "current_status": "AMBIGUOUS",
+      "gold": null,
+      "known_missing_dimensions": [
+        "ambiguity",
+        "metric",
+        "period",
+        "representation",
+        "source",
+        "statement"
+      ],
+      "metric": "payments volume",
+      "operation": null,
+      "period": "FY2024",
+      "question_id": "v_fy2025_009",
+      "role": "value",
+      "scope": null,
+      "slot_id": "1"
+    }
+  ]
+}

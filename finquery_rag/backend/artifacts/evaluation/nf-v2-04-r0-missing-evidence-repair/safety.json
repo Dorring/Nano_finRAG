@@ -1,0 +1,15 @@
+{
+  "cross_candidate_relation_failures": 0,
+  "fabricated_financial_facts": 0,
+  "false_binding_direct": 0,
+  "false_binding_multi_complete": 2,
+  "false_operand_binding": 0,
+  "financial_fact_v1_schema_modified": false,
+  "gold_assisted_retrieval": 0,
+  "gold_assisted_rewrite": 0,
+  "gold_reads_before_repair_seal": 0,
+  "model_calls_before_initial_seal": 0,
+  "question_specific_repair_rules": 0,
+  "repair_loops_over_one": 0,
+  "sffm_v1_modified": false
+}

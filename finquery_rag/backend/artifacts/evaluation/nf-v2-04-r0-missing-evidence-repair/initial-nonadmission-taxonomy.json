@@ -1,0 +1,376 @@
+{
+  "counts": {
+    "ER0_gold_source_not_in_initial_pool": 23,
+    "ER3_multiple_plausible_candidates": 25,
+    "ER4_period_evidence_missing": 2,
+    "ER7_semantic_Binder_limitation_under_frozen_policy": 2
+  },
+  "gold_loaded_after_repair_prediction_seal": true,
+  "model_calls": 0,
+  "rows": [
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "aapl_fy2025_001"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "aapl_fy2025_002"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "aapl_fy2025_003"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "aapl_fy2025_004"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "aapl_fy2025_005"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "MISSING",
+      "question_id": "aapl_fy2025_008"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "aapl_fy2025_009"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "jpm_fy2025_001"
+    },
+    {
+      "classification": "ER7_semantic_Binder_limitation_under_frozen_policy",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "MISSING",
+      "question_id": "jpm_fy2025_002"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "jpm_fy2025_003"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "jpm_fy2025_004"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "jpm_fy2025_005"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "MISSING",
+      "question_id": "jpm_fy2025_008"
+    },
+    {
+      "classification": "ER7_semantic_Binder_limitation_under_frozen_policy",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "MISSING",
+      "question_id": "jpm_fy2025_009"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "ko_fy2025_001"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "ko_fy2025_002"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "ko_fy2025_003"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "ko_fy2025_004"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "ko_fy2025_005"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "MISSING",
+      "question_id": "ko_fy2025_008"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "MISSING",
+      "question_id": "ko_fy2025_009"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "msft_fy2025_001"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "msft_fy2025_002"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "msft_fy2025_003"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "MISSING",
+      "question_id": "msft_fy2025_004"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "MISSING",
+      "question_id": "msft_fy2025_005"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "MISSING",
+      "question_id": "msft_fy2025_008"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "MISSING",
+      "question_id": "msft_fy2025_009"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "nvda_fy2025_001"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "nvda_fy2025_002"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "nvda_fy2025_003"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "MISSING",
+      "question_id": "nvda_fy2025_008"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "nvda_fy2025_009"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "pfe_fy2024_001"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "pfe_fy2024_002"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "pfe_fy2024_003"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "pfe_fy2024_004"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "MISSING",
+      "question_id": "pfe_fy2024_005"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "MISSING",
+      "question_id": "pfe_fy2024_008"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "pfe_fy2024_009"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "tsla_fy2025_001"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "tsla_fy2025_002"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "tsla_fy2025_003"
+    },
+    {
+      "classification": "ER4_period_evidence_missing",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "MISSING",
+      "question_id": "tsla_fy2025_004"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "tsla_fy2025_005"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "MISSING",
+      "question_id": "tsla_fy2025_008"
+    },
+    {
+      "classification": "ER4_period_evidence_missing",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "MISSING",
+      "question_id": "tsla_fy2025_009"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "v_fy2025_001"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "v_fy2025_004"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "MISSING",
+      "question_id": "v_fy2025_005"
+    },
+    {
+      "classification": "ER0_gold_source_not_in_initial_pool",
+      "gold_source_admitted": false,
+      "gold_source_fact_present": false,
+      "initial_status": "MISSING",
+      "question_id": "v_fy2025_008"
+    },
+    {
+      "classification": "ER3_multiple_plausible_candidates",
+      "gold_source_admitted": true,
+      "gold_source_fact_present": true,
+      "initial_status": "AMBIGUOUS",
+      "question_id": "v_fy2025_009"
+    }
+  ]
+}

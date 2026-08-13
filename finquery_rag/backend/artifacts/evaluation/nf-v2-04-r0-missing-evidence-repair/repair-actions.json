@@ -1,0 +1,537 @@
+{
+  "action_counts": {
+    "RP2_EXPAND_TO_TOP50": 66
+  },
+  "model_calls": 0,
+  "repair_budget_max": 1,
+  "rows": [
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "aapl_fy2025_001",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "aapl_fy2025_002",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "aapl_fy2025_003",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "aapl_fy2025_004",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "aapl_fy2025_005",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "aapl_fy2025_006",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "aapl_fy2025_007",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "aapl_fy2025_008",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "aapl_fy2025_009",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "jpm_fy2025_001",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "jpm_fy2025_002",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "jpm_fy2025_003",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "jpm_fy2025_004",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "jpm_fy2025_005",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "jpm_fy2025_006",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "jpm_fy2025_007",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "jpm_fy2025_008",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "jpm_fy2025_009",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "ko_fy2025_001",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "ko_fy2025_002",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "ko_fy2025_003",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "ko_fy2025_004",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "ko_fy2025_005",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "ko_fy2025_006",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "ko_fy2025_007",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "ko_fy2025_008",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "ko_fy2025_009",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "msft_fy2025_001",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "msft_fy2025_002",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "msft_fy2025_003",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "msft_fy2025_004",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "msft_fy2025_005",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "msft_fy2025_006",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "msft_fy2025_007",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "msft_fy2025_008",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "msft_fy2025_009",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "nvda_fy2025_001",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "nvda_fy2025_002",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "nvda_fy2025_003",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "nvda_fy2025_006",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "nvda_fy2025_008",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "nvda_fy2025_009",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "pfe_fy2024_001",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "pfe_fy2024_002",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "pfe_fy2024_003",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "pfe_fy2024_004",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "pfe_fy2024_005",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "pfe_fy2024_006",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "pfe_fy2024_007",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "pfe_fy2024_008",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "pfe_fy2024_009",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "tsla_fy2025_001",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "tsla_fy2025_002",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "tsla_fy2025_003",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "tsla_fy2025_004",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "tsla_fy2025_005",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "tsla_fy2025_006",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "tsla_fy2025_007",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "tsla_fy2025_008",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "tsla_fy2025_009",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "v_fy2025_001",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "v_fy2025_004",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "v_fy2025_005",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "v_fy2025_006",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "v_fy2025_008",
+      "repair_attempt": 1
+    },
+    {
+      "action": "RP2_EXPAND_TO_TOP50",
+      "candidate_pool": "frozen_top50",
+      "gold": null,
+      "query_independent": true,
+      "question_id": "v_fy2025_009",
+      "repair_attempt": 1
+    }
+  ]
+}

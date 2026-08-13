@@ -1,0 +1,19 @@
+{
+  "no_repair": {
+    "calculation_ready": "0/11",
+    "direct_safely_bound": "4/56",
+    "fact_supply": "Top20 frozen",
+    "false_binding": 0,
+    "multi_complete": "0/5",
+    "retrieval_calls": 0
+  },
+  "repair_budget": 1,
+  "repair_once": {
+    "calculation_ready": "0/11",
+    "direct_safely_bound": "4/56",
+    "false_binding": 0,
+    "multi_complete": "0/5",
+    "new_facts": 262,
+    "retrieval_calls": 0
+  }
+}

@@ -1,0 +1,403 @@
+{
+  "gold_assisted": 0,
+  "model_calls": 0,
+  "question_specific_rules": 0,
+  "rows": [
+    {
+      "gold": null,
+      "query_sha256": "d4dc409f367e761d211218aed911f98a1b26cd2245d25b9e7f8185a1b10cb3b4",
+      "question_id": "aapl_fy2025_001",
+      "repair_query": "What was total net sales reported by Apple in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"total net sales\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "34b78bcf797e315a7a0b41968d3491f08e5d80049929bbcb1d03e8476dfe5dd4",
+      "question_id": "aapl_fy2025_002",
+      "repair_query": "What was Services net sales reported by Apple in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"Services net sales\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "0267094ac1d224d1859b5d26fe34e2d19394a1a247a9935bce0d1ac31fa6b6a9",
+      "question_id": "aapl_fy2025_003",
+      "repair_query": "What was gross margin percentage reported by Apple in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"gross margin percentage\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "ba85e62fd494fb206c5e34f78000c6c5dc32a0428196098747981a1767e8421a",
+      "question_id": "aapl_fy2025_004",
+      "repair_query": "In the Net sales by product and service table, what was iPhone net sales in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"iPhone net sales\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "e6acbbea8b1fc4257939a3b54a55554c61179342bece435d688c5d5803982a62",
+      "question_id": "aapl_fy2025_005",
+      "repair_query": "In the Net sales by product and service table, what was Mac net sales in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"Mac net sales\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "90bdd6b523020c367e85a4309af807417a9c8515dc97d4b330bc2c78972e8af0",
+      "question_id": "aapl_fy2025_006",
+      "repair_query": "What was the year-over-year growth rate of total net sales reported by Apple from FY2024 to FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"total net sales\",\"operation\":\"growth_rate\",\"period\":\"FY2025\",\"role\":\"current_period\",\"scope\":null,\"slot_id\":\"slot_1\"},{\"metric\":\"total net sales\",\"operation\":\"growth_rate\",\"period\":\"FY2024\",\"role\":\"base_period\",\"scope\":null,\"slot_id\":\"slot_2\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "da4fcebe37ea37acab7675ad9a2f64c396970179835b3d80a8d74400ede93122",
+      "question_id": "aapl_fy2025_007",
+      "repair_query": "Report both Apple's FY2025 iPhone net sales and Services net sales.\nRequired evidence dimensions:\n[{\"metric\":\"iPhone net sales\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"},{\"metric\":\"Services net sales\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"2\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "dddf0a2311517a0716aa245d467c5bd6305e0c9b5fba81e90e2ec1f76d777457",
+      "question_id": "aapl_fy2025_008",
+      "repair_query": "Does Apple's FY2025 report disclose the accuracy of a proprietary internal AI model?\nRequired evidence dimensions:\n[{\"metric\":\"accuracy of a proprietary internal AI model\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "cbabc5f2d140b4f0b48d4dacf79704d3504b9216b1f29e174ec9f49068f598ba",
+      "question_id": "aapl_fy2025_009",
+      "repair_query": "What was iPhone net sales in FY2024 rather than FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"iPhone net sales\",\"operation\":null,\"period\":\"FY2024\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "43065fada9c975325cd86d8a0071e46c394d70b2d13aba59f79bb938484218e5",
+      "question_id": "jpm_fy2025_001",
+      "repair_query": "What was total assets reported by JPMorgan in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"total assets\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "0e0be91c47409fbeec22ae4ae183999af73ff1a29069a537a96a61be99be70ff",
+      "question_id": "jpm_fy2025_002",
+      "repair_query": "What was total liabilities reported by JPMorgan in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"total liabilities\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "92e8076a9400a22ac62773433b8578adfafbc5aeda58270d66efd88c545183d2",
+      "question_id": "jpm_fy2025_003",
+      "repair_query": "What was net income reported by JPMorgan in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"net income\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "01408fd864b2770b419c07f91e51b7cc2125e95f265b2a641c065e3e38b29576",
+      "question_id": "jpm_fy2025_004",
+      "repair_query": "In the Consumer & Community Banking financial results table, what was Consumer & Community Banking net income in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"Consumer & Community Banking net income\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "f31feeb132386fdd3bed3e4196f014d403323dfb42ea9e4a75397c3d5dd4bed3",
+      "question_id": "jpm_fy2025_005",
+      "repair_query": "In the Commercial & Investment Bank financial results table, what was Commercial & Investment Bank net income in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"Commercial & Investment Bank net income\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "5aa1b4346538c4ae0665fe3e866062436cd6d6320a99f6b93daf55d8b3e10ec4",
+      "question_id": "jpm_fy2025_006",
+      "repair_query": "What was the year-over-year growth rate of total assets reported by JPMorgan from FY2024 to FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"total assets\",\"operation\":\"growth_rate\",\"period\":\"FY2025\",\"role\":\"current_period\",\"scope\":null,\"slot_id\":\"1\"},{\"metric\":\"total assets\",\"operation\":\"growth_rate\",\"period\":\"FY2024\",\"role\":\"base_period\",\"scope\":null,\"slot_id\":\"2\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "d1bd039ab6c3d2269e58b6783078cec20be6679ff26257abeda01622d189be4e",
+      "question_id": "jpm_fy2025_007",
+      "repair_query": "Report both JPMorgan's FY2025 Consumer & Community Banking net income and total liabilities.\nRequired evidence dimensions:\n[{\"metric\":\"Consumer & Community Banking net income\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"},{\"metric\":\"total liabilities\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_2\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "ce75e4ade0ef30b42635dae0af0a69d43a50000919c7b3ab9a5b1ed582ec0f36",
+      "question_id": "jpm_fy2025_008",
+      "repair_query": "Does JPMorgan's FY2025 report disclose a customer-level contract amount for an individual client?\nRequired evidence dimensions:\n[{\"metric\":\"customer-level contract amount for an individual client\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "a9247e4a307f3e2a322b02f11251f03cd0fb307563f5499fe206640c8fbadb74",
+      "question_id": "jpm_fy2025_009",
+      "repair_query": "What was Consumer & Community Banking net income in FY2024 rather than FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"Consumer & Community Banking net income\",\"operation\":null,\"period\":\"FY2024\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "6ef83ec65d1b000c2632f7305bdfaf80516ee56cf3fc1f33085339e79eaf078c",
+      "question_id": "ko_fy2025_001",
+      "repair_query": "What was net operating revenues reported by The Coca-Cola Company in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"net operating revenues\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "2171d3487f6e6f1ff38d4ba45a1f23939edfe5a48a665c71d3c359077c875139",
+      "question_id": "ko_fy2025_002",
+      "repair_query": "What was operating income reported by The Coca-Cola Company in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"operating income\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "f3e96570c8b00b92f398884bbdcde4c32e7b2e62508d9f89fe336cdb3956a5e7",
+      "question_id": "ko_fy2025_003",
+      "repair_query": "What was net income attributable to shareowners of The Coca-Cola Company in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"net income attributable to shareowners\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "de96d7f409d62824ef8f1ac603403d25bca9d030c046cb616701ba008103438c",
+      "question_id": "ko_fy2025_004",
+      "repair_query": "In the operating segment net operating revenues table, what were EMEA total net operating revenues in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"EMEA total net operating revenues\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "2f7291f91ef62c05942386e34db328998df72f7e3acebee7ef6755c4a3241457",
+      "question_id": "ko_fy2025_005",
+      "repair_query": "In the operating segment net operating revenues table, what were North America total net operating revenues in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"North America total net operating revenues\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "bdb6861d6f4bbc488ac236e320c37d092bb3b5df92733fcc7ad70cf67c082aa4",
+      "question_id": "ko_fy2025_006",
+      "repair_query": "What was the year-over-year growth rate of net operating revenues reported by The Coca-Cola Company from FY2024 to FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"net operating revenues\",\"operation\":\"growth_rate\",\"period\":\"FY2025\",\"role\":\"current_period\",\"scope\":null,\"slot_id\":\"slot_1\"},{\"metric\":\"net operating revenues\",\"operation\":\"growth_rate\",\"period\":\"FY2024\",\"role\":\"base_period\",\"scope\":null,\"slot_id\":\"slot_2\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "75d38ae11b5c4f7350082353e035668a935c9a11216cc678b5eb7a02e7dd6e33",
+      "question_id": "ko_fy2025_007",
+      "repair_query": "What percentage of The Coca-Cola Company's FY2025 consolidated net operating revenues came from EMEA third-party revenue?\nRequired evidence dimensions:\n[{\"metric\":\"EMEA third-party revenue\",\"operation\":\"percentage_share\",\"period\":\"FY2025\",\"role\":\"numerator\",\"scope\":null,\"slot_id\":\"1\"},{\"metric\":\"consolidated net operating revenues\",\"operation\":\"percentage_share\",\"period\":\"FY2025\",\"role\":\"denominator\",\"scope\":null,\"slot_id\":\"2\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "c8b2b64d2261b22de9f257896c821fa8d76bb74900db8cb5aa958f8ffce0c5ca",
+      "question_id": "ko_fy2025_008",
+      "repair_query": "Does The Coca-Cola Company's FY2025 report disclose the exact output of one named manufacturing plant?\nRequired evidence dimensions:\n[{\"metric\":\"exact output of one named manufacturing plant\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "fd1b6b14d5b7e346a86ac5196cf9569e0055cf9d07955f83d4cbad319d07af80",
+      "question_id": "ko_fy2025_009",
+      "repair_query": "What were EMEA total net operating revenues in FY2024?\nRequired evidence dimensions:\n[{\"metric\":\"EMEA total net operating revenues\",\"operation\":null,\"period\":\"FY2024\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "56d617e7ca55331073087d86619f3f7b715b79ac4b5d63e37bdc494e62ab50f6",
+      "question_id": "msft_fy2025_001",
+      "repair_query": "What was total revenue reported by Microsoft in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"total revenue\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "a8d9f2b026b4882cff1e0c561bc6b843431102044cca68c49d4c9760d7a8c862",
+      "question_id": "msft_fy2025_002",
+      "repair_query": "What was Productivity and Business Processes revenue reported by Microsoft in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"Productivity and Business Processes revenue\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "eef47ed2d76344026208ca5b814e024b5e7a358e39937bc9d44219d24807bbb8",
+      "question_id": "msft_fy2025_003",
+      "repair_query": "What was More Personal Computing revenue reported by Microsoft in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"More Personal Computing revenue\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "88949ddc484e533ad075b0dcb3c93299b15a087e37658ee0932579f5c5552619",
+      "question_id": "msft_fy2025_004",
+      "repair_query": "In the Revenue by segment table, what was Intelligent Cloud revenue in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"Intelligent Cloud revenue\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "12856a14fb628bbf33703286eed80446e53306868512194b6c7aa409f60abffa",
+      "question_id": "msft_fy2025_005",
+      "repair_query": "In the reportable segment table, what was Productivity and Business Processes operating income in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"Productivity and Business Processes operating income\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "fd69fd33ff8963b33e44dbae83d9d5fdcc704fb786eec4426c295c8a5f5ac7a9",
+      "question_id": "msft_fy2025_006",
+      "repair_query": "What was the year-over-year growth rate of total revenue reported by Microsoft from FY2024 to FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"total revenue\",\"operation\":\"growth_rate\",\"period\":\"FY2025\",\"role\":\"current_period\",\"scope\":null,\"slot_id\":\"rev_fy2025\"},{\"metric\":\"total revenue\",\"operation\":\"growth_rate\",\"period\":\"FY2024\",\"role\":\"base_period\",\"scope\":null,\"slot_id\":\"rev_fy2024\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "20d839903ad794b06367970fe1ccae1159c8475fe96ddad19808a80da833db7d",
+      "question_id": "msft_fy2025_007",
+      "repair_query": "What percentage of Microsoft's total FY2025 revenue came from Intelligent Cloud?\nRequired evidence dimensions:\n[{\"metric\":\"Intelligent Cloud revenue\",\"operation\":\"percentage_share\",\"period\":\"FY2025\",\"role\":\"numerator\",\"scope\":null,\"slot_id\":\"slot_1\"},{\"metric\":\"total revenue\",\"operation\":\"percentage_share\",\"period\":\"FY2025\",\"role\":\"denominator\",\"scope\":null,\"slot_id\":\"slot_2\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "d67a4b8250142691e723573bbe1300802d41f8f5bc1f527453dba3717fd19e99",
+      "question_id": "msft_fy2025_008",
+      "repair_query": "Does Microsoft's FY2025 report disclose a customer-level contract renewal rate?\nRequired evidence dimensions:\n[{\"metric\":\"customer-level contract renewal rate\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "b53ed3dd89f3152b8ae7d13f41b3dec6a3c8145f4990c8f21ccfa7d7695388e5",
+      "question_id": "msft_fy2025_009",
+      "repair_query": "What was Intelligent Cloud revenue in FY2024 rather than FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"Intelligent Cloud revenue\",\"operation\":null,\"period\":\"FY2024\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "2cd75f3205579809013248e94d535f94dd75873a52f863bd8c742130bff0b652",
+      "question_id": "nvda_fy2025_001",
+      "repair_query": "What was total revenue reported by NVIDIA in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"total revenue\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "243597acda0bc37975c20babfaf2c4f2468409a1cf000bfc319a21d6dd200e73",
+      "question_id": "nvda_fy2025_002",
+      "repair_query": "What was Gaming revenue reported by NVIDIA in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"Gaming revenue\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "234d398457d040cb7c5c842b1b6ced7dca775ca64d954a81fef4c988a22065ba",
+      "question_id": "nvda_fy2025_003",
+      "repair_query": "What was GAAP gross margin percentage reported by NVIDIA in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"GAAP gross margin percentage\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "6b7798088f6e35ed13a83027bd08a98102064bda932e3d525f1428463e1763d5",
+      "question_id": "nvda_fy2025_006",
+      "repair_query": "What was the year-over-year growth rate of total revenue reported by NVIDIA from FY2024 to FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"total revenue\",\"operation\":\"growth_rate\",\"period\":\"FY2025\",\"role\":\"current_period\",\"scope\":null,\"slot_id\":\"rev_fy2025\"},{\"metric\":\"total revenue\",\"operation\":\"growth_rate\",\"period\":\"FY2024\",\"role\":\"base_period\",\"scope\":null,\"slot_id\":\"rev_fy2024\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "26fd7ecdbe59b0f36adf7467b3ec1b01e6d036ed5e5dba5de5b4eddd6e26fec1",
+      "question_id": "nvda_fy2025_008",
+      "repair_query": "Does NVIDIA's FY2025 report disclose a customer-level Data Center revenue amount?\nRequired evidence dimensions:\n[{\"metric\":\"customer-level Data Center revenue amount\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "bccfc229377e6ae2c8bc306cf4b87b02add5ddc94371fd2b67a88eb17e9c5a94",
+      "question_id": "nvda_fy2025_009",
+      "repair_query": "What was Data Center revenue in FY2024 rather than FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"Data Center revenue\",\"operation\":null,\"period\":\"FY2024\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "56a241adf218a62b4a8fc1d33da931424959c024bb0f4f28119027d4fc7b43e0",
+      "question_id": "pfe_fy2024_001",
+      "repair_query": "What was total revenues reported by Pfizer in FY2024?\nRequired evidence dimensions:\n[{\"metric\":\"total revenues\",\"operation\":null,\"period\":\"FY2024\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"total_revenues_fy2024\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "d5dd8da3616379bd7839f1f29b8b04d1c830dcfa2f91bfbade9c2eb3b27fcf03",
+      "question_id": "pfe_fy2024_002",
+      "repair_query": "What was Comirnaty revenue reported by Pfizer in FY2024?\nRequired evidence dimensions:\n[{\"metric\":\"Comirnaty revenue\",\"operation\":null,\"period\":\"FY2024\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "0ab856db43a246af00374d719c4370511c0bb7900f31e1edee6554c8810466d9",
+      "question_id": "pfe_fy2024_003",
+      "repair_query": "What was Eliquis revenue reported by Pfizer in FY2024?\nRequired evidence dimensions:\n[{\"metric\":\"Eliquis revenue\",\"operation\":null,\"period\":\"FY2024\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "defa6bf0dcc5df29000443ddf62c625a3168fa02d2840035290a4fa342960c17",
+      "question_id": "pfe_fy2024_004",
+      "repair_query": "In the Selected product revenues table, what was Paxlovid revenue in FY2024?\nRequired evidence dimensions:\n[{\"metric\":\"Paxlovid revenue\",\"operation\":null,\"period\":\"FY2024\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "5ce639bd99fc8f132d20a7b3898c03a34bbb9bbdf6e1b93fe6fdbb3fcb144c4e",
+      "question_id": "pfe_fy2024_005",
+      "repair_query": "In the Selected product revenues table, what was Prevnar family revenue in FY2024?\nRequired evidence dimensions:\n[{\"metric\":\"Prevnar family revenue\",\"operation\":null,\"period\":\"FY2024\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "c868ff0089397fb7b6b2e7f03935558efa1b64845d7d95e39ce3139febe9141a",
+      "question_id": "pfe_fy2024_006",
+      "repair_query": "What was the year-over-year growth rate of total revenues reported by Pfizer from FY2023 to FY2024?\nRequired evidence dimensions:\n[{\"metric\":\"total revenues\",\"operation\":\"growth_rate\",\"period\":\"FY2024\",\"role\":\"current_period\",\"scope\":null,\"slot_id\":\"1\"},{\"metric\":\"total revenues\",\"operation\":\"growth_rate\",\"period\":\"FY2023\",\"role\":\"base_period\",\"scope\":null,\"slot_id\":\"2\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "d392b1dbf760d4908979d18ca3134f668e985eab61d9caff8ed72851ffc33858",
+      "question_id": "pfe_fy2024_007",
+      "repair_query": "Report both Pfizer's FY2024 Comirnaty revenue and research and development expense.\nRequired evidence dimensions:\n[{\"metric\":\"Comirnaty revenue\",\"operation\":null,\"period\":\"FY2024\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"},{\"metric\":\"research and development expense\",\"operation\":null,\"period\":\"FY2024\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"2\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "b11ba669621c430cfe2b0d851f26b1aa9117fa0d92d44ba82198b945dd33a6d6",
+      "question_id": "pfe_fy2024_008",
+      "repair_query": "Does Pfizer's FY2024 report disclose a guaranteed FY2026 financial result?\nRequired evidence dimensions:\n[{\"metric\":\"guaranteed FY2026 financial result\",\"operation\":null,\"period\":\"FY2024\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "ec25c2417abdcc4a1c9d043904ba19448364b64212558cc4e993d84b216f5bac",
+      "question_id": "pfe_fy2024_009",
+      "repair_query": "What was Paxlovid revenue in FY2023 rather than FY2024?\nRequired evidence dimensions:\n[{\"metric\":\"Paxlovid revenue\",\"operation\":null,\"period\":\"FY2023\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"paxlovid_revenue_fy2023\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "37ee94253dcdb6e92fcfa684bfbef044e57dfdd887ee1d98e411e02611f57782",
+      "question_id": "tsla_fy2025_001",
+      "repair_query": "What was total revenues reported by Tesla in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"total revenues\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "7264765ffda606b9f9f06cf81790a6bd1ce6f968eda933ece0a89686351b6b36",
+      "question_id": "tsla_fy2025_002",
+      "repair_query": "What was Services and other revenue reported by Tesla in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"Services and other revenue\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "3c223e9bde511178aa5d7c9bf60573c9754c86963399f6044b136b257d7acdc2",
+      "question_id": "tsla_fy2025_003",
+      "repair_query": "What was Automotive regulatory credits revenue reported by Tesla in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"Automotive regulatory credits revenue\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "e76b5dfb243622a1fe82008bdf37e29f3faf67cf011e0ef62f20c72e2214ec36",
+      "question_id": "tsla_fy2025_004",
+      "repair_query": "What were Tesla's Total automotive revenues in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"Total automotive revenues\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "299d75cb586883811ebd02e85aa9875bddad1b85be1b2194e1b7033930db008e",
+      "question_id": "tsla_fy2025_005",
+      "repair_query": "In the Results of Operations revenue table, what was Energy generation and storage segment revenue in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"Energy generation and storage segment revenue\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "522e40d5e0d577a37d46c06273f9108c41fe79e6c22e16e90d18475d162918bb",
+      "question_id": "tsla_fy2025_006",
+      "repair_query": "What was the year-over-year growth rate of total revenues reported by Tesla from FY2024 to FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"total revenues\",\"operation\":\"growth_rate\",\"period\":\"FY2025\",\"role\":\"current_period\",\"scope\":null,\"slot_id\":\"rev_fy2025\"},{\"metric\":\"total revenues\",\"operation\":\"growth_rate\",\"period\":\"FY2024\",\"role\":\"base_period\",\"scope\":null,\"slot_id\":\"rev_fy2024\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "ad18866bd9bf540ac2f8e120b7a7c37a2db7d1ea4f2e80388de50818a80f83aa",
+      "question_id": "tsla_fy2025_007",
+      "repair_query": "Which was higher in FY2025: Tesla's Total automotive revenues or Energy generation and storage segment revenue, and by how much?\nRequired evidence dimensions:\n[{\"metric\":\"Total automotive revenues\",\"operation\":\"difference\",\"period\":\"FY2025\",\"role\":\"minuend\",\"scope\":null,\"slot_id\":\"slot_1\"},{\"metric\":\"Energy generation and storage segment revenue\",\"operation\":\"difference\",\"period\":\"FY2025\",\"role\":\"subtrahend\",\"scope\":null,\"slot_id\":\"slot_2\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "fe3e9d7809c5fa1ee23f0a830356877831b7ca6900c71f73aea623d0bf714fd9",
+      "question_id": "tsla_fy2025_008",
+      "repair_query": "Does Tesla's FY2025 report disclose a guaranteed customer-specific vehicle purchase price for FY2026?\nRequired evidence dimensions:\n[{\"metric\":\"guaranteed customer-specific vehicle purchase price for FY2026\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "4c924025fbe0d5f50edfa6ebe713b84c15a7c5a53f4325fbd7ef4e68cde7ec6b",
+      "question_id": "tsla_fy2025_009",
+      "repair_query": "What were Tesla's Total automotive revenues in FY2024?\nRequired evidence dimensions:\n[{\"metric\":\"Total automotive revenues\",\"operation\":null,\"period\":\"FY2024\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "dd809e5b9655f8b8d1f8f0f5aa0b14017a0fbc31daf483d6ea4477d8c2e8d1c5",
+      "question_id": "v_fy2025_001",
+      "repair_query": "What was net revenue reported by Visa in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"net revenue\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "a84a03001e2d6d7696afe2331922a81a57d6a760f279500b11e3693d03594bcc",
+      "question_id": "v_fy2025_004",
+      "repair_query": "In the Operational highlights table, what was payments volume in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"payments volume\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "39702b8c34cdab2ed16b7c6d2fd5267a13f8dba7f8289b9e6305f013c90bb3f9",
+      "question_id": "v_fy2025_005",
+      "repair_query": "In the Consolidated statements of operations table, what was Visa's GAAP net income in FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"GAAP net income\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "0a0d87495f6dab7ad4eb191cc478a198159ec2a10356a4392635deed614c4743",
+      "question_id": "v_fy2025_006",
+      "repair_query": "What was the year-over-year growth rate of net revenue reported by Visa from FY2024 to FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"net revenue\",\"operation\":\"growth_rate\",\"period\":\"FY2025\",\"role\":\"current_period\",\"scope\":null,\"slot_id\":\"s1\"},{\"metric\":\"net revenue\",\"operation\":\"growth_rate\",\"period\":\"FY2024\",\"role\":\"base_period\",\"scope\":null,\"slot_id\":\"s2\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "5b2a8b1e527d98d215e86e8a0fc47dfd24471ff4e742b13a74e45b904eb32472",
+      "question_id": "v_fy2025_008",
+      "repair_query": "Does Visa's FY2025 report disclose an internal employee performance accuracy metric?\nRequired evidence dimensions:\n[{\"metric\":\"internal employee performance accuracy metric\",\"operation\":null,\"period\":\"FY2025\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"slot_1\"}]"
+    },
+    {
+      "gold": null,
+      "query_sha256": "d3f3b217bc0d10fd4e462beaffa779dae11fbae22a8e5bb835128e6d31971430",
+      "question_id": "v_fy2025_009",
+      "repair_query": "What was payments volume in FY2024 rather than FY2025?\nRequired evidence dimensions:\n[{\"metric\":\"payments volume\",\"operation\":null,\"period\":\"FY2024\",\"role\":\"value\",\"scope\":null,\"slot_id\":\"1\"}]"
+    }
+  ]
+}
