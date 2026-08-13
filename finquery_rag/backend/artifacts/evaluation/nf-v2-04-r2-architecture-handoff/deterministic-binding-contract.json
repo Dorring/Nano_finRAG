@@ -1,0 +1,37 @@
+{
+  "benchmark_aliases": 0,
+  "candidate_status": {
+    "multiple_eligible": "AMBIGUOUS",
+    "one_eligible": "DETERMINISTIC_BOUND",
+    "zero_eligible": "MISSING"
+  },
+  "checks": {
+    "DTC1": "provenance_complete must be true",
+    "DTC2": "fact candidate identity must belong to the current query packet and source map",
+    "DTC3": "requested period and fact period must both be known and exactly equal",
+    "DTC4": "explicit scope/segment conflict rejects; unknown scope is not a match",
+    "DTC5": "explicit statement conflict rejects when slot statement identity exists",
+    "DTC6": "explicit unit/currency conflict rejects; constrained unknown unit/currency is not a match",
+    "DTC7": "metric identity requires exact normalized canonical/structured equality; no fuzzy overlap",
+    "DTC8": "candidate/source physical relation must be internally valid"
+  },
+  "contract": "DeterministicBindingAuditV1",
+  "financial_fact_v1_modified": false,
+  "gold_independent": true,
+  "model_calls": 0,
+  "optional_dimensions": [
+    "scope",
+    "statement",
+    "unit",
+    "currency"
+  ],
+  "question_specific_rules": 0,
+  "required_dimensions": [
+    "metric",
+    "period"
+  ],
+  "retrieval_calls": 0,
+  "role_policy": "operand role guides slot interpretation but is never evidence by itself",
+  "unknown_policy": "unknown material evidence is not treated as a match",
+  "version": 1
+}

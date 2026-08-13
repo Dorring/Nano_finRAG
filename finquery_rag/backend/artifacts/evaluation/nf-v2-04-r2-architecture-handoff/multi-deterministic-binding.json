@@ -1,0 +1,1691 @@
+{
+  "complete_supply_reference": "5/5",
+  "deterministic_complete": 0,
+  "false_binding": 0,
+  "none": 5,
+  "partial": 0,
+  "rows": [
+    {
+      "deterministic_complete": false,
+      "false_binding": false,
+      "question_id": "aapl_fy2025_007",
+      "slots": [
+        {
+          "eligible": [],
+          "packet_fact_count": 28,
+          "rejected": [
+            {
+              "candidate_id": "candidate:v1:7f4094b93468958c2fe7e1640c0d139c3ece8d91accb71a4b977173a175442ec",
+              "fact_id": "054c590207da821893f573a73386735591e344a5a9125adb10da61e7db43b09b",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:fec9ed0c30df201311c82daf3071c035e83f1e0f3384b195949450b7293fdb7d",
+              "fact_id": "11b10f86cb0a3d1fe1ac594a5cb8f261947b38e8a41c93894c72942aa0a43d61",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:2ae910bcdd2fab358b49ee4ae1d177ce76265fc1d106cf8ea3447e1e06f7c5b9",
+              "fact_id": "1dca7d500d015ae664048ced7246285062e2165bfb9ef71f56a7735b0c18621e",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:1c61ad4c4f9ce012268e9ef37cc919fb910de86cdf368a8e4dc7b5c968bc302e",
+              "fact_id": "1fe6f28643e55316c3e5dd4581136d6e9fa1e38586e5a20cdf6e7b15281e55e0",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:16a5e2ed4e8d08194062b34ed1431dbda3e0d9130352a9d0557e6e9c024fe2a5",
+              "fact_id": "2f4d99b971dfc5fe879cd5b95a8f527d93c49ba446cd7975c2a23e659de1dc10",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:1c61ad4c4f9ce012268e9ef37cc919fb910de86cdf368a8e4dc7b5c968bc302e",
+              "fact_id": "39a2e87d3dd095f7362156c323379ba3b1f15e25f4665e6f47403d64a5a62a60",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
+              "fact_id": "3b4a920286fee7fcfa5206266ac4fe8891d5ba94efc334ef1ad571bc12e4a0da",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:82d566364c4d3dd5a6149ec9b3bd5e3e2eb4cdc22b1378bd412014eb206edbb7",
+              "fact_id": "40671817f86355bab6493fa2951f71ca41ed2d34d6224977fb87fdba64263759",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:79203141b33b9cce55a4d9e870f2a18c1471733998cced3301b1f9c665647ad7",
+              "fact_id": "4ede5f9ed8edfcaef4b027ffbe72882c90ba3b2b9b7c960dd320b1766a83cca7",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:2ae910bcdd2fab358b49ee4ae1d177ce76265fc1d106cf8ea3447e1e06f7c5b9",
+              "fact_id": "5a38a1b977057ac9b279fc8caa76532a54aa98306f9f13af3f4957004a5e495d",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:fec9ed0c30df201311c82daf3071c035e83f1e0f3384b195949450b7293fdb7d",
+              "fact_id": "626e64665bd96348567b8e4e585a66b1ed450d823cd96c1eaa38c5c518bc6b8f",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:7f4094b93468958c2fe7e1640c0d139c3ece8d91accb71a4b977173a175442ec",
+              "fact_id": "672dc0105a003b63ee6be633906ff3bfff620f3f606cc3d4cbeca9090ee48ec3",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:fec9ed0c30df201311c82daf3071c035e83f1e0f3384b195949450b7293fdb7d",
+              "fact_id": "6b2d8253d8b56faac96fe4f10f7933c59c6304db7a081d11ea204a73e0e50202",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:2ae910bcdd2fab358b49ee4ae1d177ce76265fc1d106cf8ea3447e1e06f7c5b9",
+              "fact_id": "79d91a2553e82d687736806cba8af0410b778fe3eef63aed96994f5d46472050",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:82d566364c4d3dd5a6149ec9b3bd5e3e2eb4cdc22b1378bd412014eb206edbb7",
+              "fact_id": "85b1ded611dca5e9c818a07e955504dbab9f8223e76c03ade689c42998125aa6",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:16a5e2ed4e8d08194062b34ed1431dbda3e0d9130352a9d0557e6e9c024fe2a5",
+              "fact_id": "9cac7a4183093ccf700aa1d9cf08f33809cac76ec69224f996d7ba904a9d6f14",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:144a715a975725e71e5f616b756bba84d9056eae15d2ea841d26703ffc18abd6",
+              "fact_id": "a1b63f98f5d5a613b5394e38db3bc0a85b0174cee3a373e617bc7397baa4b13e",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
+              "fact_id": "a8d0ec68b8b74b9ad4cd4f1cb9095110a193cc3ab816f8bb94a2e53d178fbe05",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:16a5e2ed4e8d08194062b34ed1431dbda3e0d9130352a9d0557e6e9c024fe2a5",
+              "fact_id": "ac7a4069ac669512e582b31f52d3fd243b0ba2550748c0bcc0de1280d10239ef",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:144a715a975725e71e5f616b756bba84d9056eae15d2ea841d26703ffc18abd6",
+              "fact_id": "b7550172012f9f7e293fa7e814fa013a173c5b28d635e6542e62d8c27b3e3770",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:144a715a975725e71e5f616b756bba84d9056eae15d2ea841d26703ffc18abd6",
+              "fact_id": "b7aebbf2942dbe76dd3b770ed0a93a8c1ee0b3c8f379882f5a1935c3d876bdb6",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:1c61ad4c4f9ce012268e9ef37cc919fb910de86cdf368a8e4dc7b5c968bc302e",
+              "fact_id": "ba2afe4ef8c9adf96207b94374f5e3e72f5fb4d2a5abd8e7b1a8ce6d5ddd965a",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:55bf9d1bcd8a919c233af28da000b0c585552739a28bda53116b492763471634",
+              "fact_id": "c13f9a1ff37e5a751d69cc91467b5ffa5780189a7869f8bc042d2a73f0ba4d3e",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:79203141b33b9cce55a4d9e870f2a18c1471733998cced3301b1f9c665647ad7",
+              "fact_id": "c1f324c1e8eaa4af3061b07e64e1812e52ae5d42d475844414a5d9bad4dac128",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
+              "fact_id": "c41c7734bb0e25fda4877e0c763a2c466ea8ccc488ff8030a25747cd2a78a0d1",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:7f4094b93468958c2fe7e1640c0d139c3ece8d91accb71a4b977173a175442ec",
+              "fact_id": "de835eeaa0b9ff74ad02aebdfa8802a244320f4e683bb4ef9bc34b99ddbdc24a",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:79203141b33b9cce55a4d9e870f2a18c1471733998cced3301b1f9c665647ad7",
+              "fact_id": "e7197471e4a435ef3f1f8a4f90c3c24be50230e44c8270992d49c10258c357bd",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:82d566364c4d3dd5a6149ec9b3bd5e3e2eb4cdc22b1378bd412014eb206edbb7",
+              "fact_id": "f350ec492ddd825ecdcbe9414e500438dd2d98f95e34ddcc140ea97efd850dbf",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            }
+          ],
+          "slot_id": "1",
+          "status": "MISSING"
+        },
+        {
+          "eligible": [],
+          "packet_fact_count": 28,
+          "rejected": [
+            {
+              "candidate_id": "candidate:v1:7f4094b93468958c2fe7e1640c0d139c3ece8d91accb71a4b977173a175442ec",
+              "fact_id": "054c590207da821893f573a73386735591e344a5a9125adb10da61e7db43b09b",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:fec9ed0c30df201311c82daf3071c035e83f1e0f3384b195949450b7293fdb7d",
+              "fact_id": "11b10f86cb0a3d1fe1ac594a5cb8f261947b38e8a41c93894c72942aa0a43d61",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:2ae910bcdd2fab358b49ee4ae1d177ce76265fc1d106cf8ea3447e1e06f7c5b9",
+              "fact_id": "1dca7d500d015ae664048ced7246285062e2165bfb9ef71f56a7735b0c18621e",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:1c61ad4c4f9ce012268e9ef37cc919fb910de86cdf368a8e4dc7b5c968bc302e",
+              "fact_id": "1fe6f28643e55316c3e5dd4581136d6e9fa1e38586e5a20cdf6e7b15281e55e0",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:16a5e2ed4e8d08194062b34ed1431dbda3e0d9130352a9d0557e6e9c024fe2a5",
+              "fact_id": "2f4d99b971dfc5fe879cd5b95a8f527d93c49ba446cd7975c2a23e659de1dc10",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:1c61ad4c4f9ce012268e9ef37cc919fb910de86cdf368a8e4dc7b5c968bc302e",
+              "fact_id": "39a2e87d3dd095f7362156c323379ba3b1f15e25f4665e6f47403d64a5a62a60",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
+              "fact_id": "3b4a920286fee7fcfa5206266ac4fe8891d5ba94efc334ef1ad571bc12e4a0da",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:82d566364c4d3dd5a6149ec9b3bd5e3e2eb4cdc22b1378bd412014eb206edbb7",
+              "fact_id": "40671817f86355bab6493fa2951f71ca41ed2d34d6224977fb87fdba64263759",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:79203141b33b9cce55a4d9e870f2a18c1471733998cced3301b1f9c665647ad7",
+              "fact_id": "4ede5f9ed8edfcaef4b027ffbe72882c90ba3b2b9b7c960dd320b1766a83cca7",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:2ae910bcdd2fab358b49ee4ae1d177ce76265fc1d106cf8ea3447e1e06f7c5b9",
+              "fact_id": "5a38a1b977057ac9b279fc8caa76532a54aa98306f9f13af3f4957004a5e495d",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:fec9ed0c30df201311c82daf3071c035e83f1e0f3384b195949450b7293fdb7d",
+              "fact_id": "626e64665bd96348567b8e4e585a66b1ed450d823cd96c1eaa38c5c518bc6b8f",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:7f4094b93468958c2fe7e1640c0d139c3ece8d91accb71a4b977173a175442ec",
+              "fact_id": "672dc0105a003b63ee6be633906ff3bfff620f3f606cc3d4cbeca9090ee48ec3",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:fec9ed0c30df201311c82daf3071c035e83f1e0f3384b195949450b7293fdb7d",
+              "fact_id": "6b2d8253d8b56faac96fe4f10f7933c59c6304db7a081d11ea204a73e0e50202",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:2ae910bcdd2fab358b49ee4ae1d177ce76265fc1d106cf8ea3447e1e06f7c5b9",
+              "fact_id": "79d91a2553e82d687736806cba8af0410b778fe3eef63aed96994f5d46472050",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:82d566364c4d3dd5a6149ec9b3bd5e3e2eb4cdc22b1378bd412014eb206edbb7",
+              "fact_id": "85b1ded611dca5e9c818a07e955504dbab9f8223e76c03ade689c42998125aa6",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:16a5e2ed4e8d08194062b34ed1431dbda3e0d9130352a9d0557e6e9c024fe2a5",
+              "fact_id": "9cac7a4183093ccf700aa1d9cf08f33809cac76ec69224f996d7ba904a9d6f14",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:144a715a975725e71e5f616b756bba84d9056eae15d2ea841d26703ffc18abd6",
+              "fact_id": "a1b63f98f5d5a613b5394e38db3bc0a85b0174cee3a373e617bc7397baa4b13e",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
+              "fact_id": "a8d0ec68b8b74b9ad4cd4f1cb9095110a193cc3ab816f8bb94a2e53d178fbe05",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:16a5e2ed4e8d08194062b34ed1431dbda3e0d9130352a9d0557e6e9c024fe2a5",
+              "fact_id": "ac7a4069ac669512e582b31f52d3fd243b0ba2550748c0bcc0de1280d10239ef",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:144a715a975725e71e5f616b756bba84d9056eae15d2ea841d26703ffc18abd6",
+              "fact_id": "b7550172012f9f7e293fa7e814fa013a173c5b28d635e6542e62d8c27b3e3770",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:144a715a975725e71e5f616b756bba84d9056eae15d2ea841d26703ffc18abd6",
+              "fact_id": "b7aebbf2942dbe76dd3b770ed0a93a8c1ee0b3c8f379882f5a1935c3d876bdb6",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:1c61ad4c4f9ce012268e9ef37cc919fb910de86cdf368a8e4dc7b5c968bc302e",
+              "fact_id": "ba2afe4ef8c9adf96207b94374f5e3e72f5fb4d2a5abd8e7b1a8ce6d5ddd965a",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:55bf9d1bcd8a919c233af28da000b0c585552739a28bda53116b492763471634",
+              "fact_id": "c13f9a1ff37e5a751d69cc91467b5ffa5780189a7869f8bc042d2a73f0ba4d3e",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:79203141b33b9cce55a4d9e870f2a18c1471733998cced3301b1f9c665647ad7",
+              "fact_id": "c1f324c1e8eaa4af3061b07e64e1812e52ae5d42d475844414a5d9bad4dac128",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:8b0de69848babe3b4968100bc5faabd7d72a8f743239382cee5760ba24591324",
+              "fact_id": "c41c7734bb0e25fda4877e0c763a2c466ea8ccc488ff8030a25747cd2a78a0d1",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:7f4094b93468958c2fe7e1640c0d139c3ece8d91accb71a4b977173a175442ec",
+              "fact_id": "de835eeaa0b9ff74ad02aebdfa8802a244320f4e683bb4ef9bc34b99ddbdc24a",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:79203141b33b9cce55a4d9e870f2a18c1471733998cced3301b1f9c665647ad7",
+              "fact_id": "e7197471e4a435ef3f1f8a4f90c3c24be50230e44c8270992d49c10258c357bd",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:82d566364c4d3dd5a6149ec9b3bd5e3e2eb4cdc22b1378bd412014eb206edbb7",
+              "fact_id": "f350ec492ddd825ecdcbe9414e500438dd2d98f95e34ddcc140ea97efd850dbf",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            }
+          ],
+          "slot_id": "2",
+          "status": "MISSING"
+        }
+      ],
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "deterministic_complete": false,
+      "false_binding": false,
+      "question_id": "jpm_fy2025_007",
+      "slots": [
+        {
+          "eligible": [],
+          "packet_fact_count": 33,
+          "rejected": [
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "0444f0ff1671f74cc1f1f3e50be4a9c5d17dcd9f05f9351a7e9d52f73ba11f88",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:a5652a1d7642b66ef0c90ed2c03606394abab37895f84a81e0dbdd5cc6076281",
+              "fact_id": "077d482517cc241c30a9c2005d8b1f9614c587034b624533dfbe3db24e0f66be",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "0b19e05fb4007b5ebb81bfd9cc1c54eb5c94e3d7fb1f2a6183d1b483da0df751",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:a4381b1d5abb1ab099be099751bfa8ead52d069377eeaf6c1942755689562463",
+              "fact_id": "0cb5a1139d1a167273ad7466f75822b0d9b2b4880739d505239758aa1eeca5c4",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "14c3f5fed24e7d232ac188ae35a647c6fa96fde63a83e6acd3342776248f129f",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:ab4e3bfdd4b934641a5db6b2ecb074b7b5fa8cc97c4d622da4a39924094b98ac",
+              "fact_id": "20ad5b11d79e2b5c877237ba653525f5c091948413a3136c78494a98f5bda7bc",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:ab4e3bfdd4b934641a5db6b2ecb074b7b5fa8cc97c4d622da4a39924094b98ac",
+              "fact_id": "246694579c1e893f84f0406ba92f5c47d3678b70a7bdd7f6585d4591565f79bd",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:6cc2c8fb22849181c3d77f3359cc36ee67c3100826f8405ce62044cb3acd22dc",
+              "fact_id": "2df50c743c66c1324b473d26b8669014879f1a5d486ffa6dd1c3794dd3e0f14a",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "3270cb64988459613821ed411a0eb748f87c24b2f8745dea7f7058eed1cfc1ce",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "35907d055ca690f6198b48061c1aef258ae7033510556658750fe5f57a689577",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:e8369e0caacd2e9161077866b5f62011a4d21d250affb8f465e9fdbc3ff62571",
+              "fact_id": "378dec7a5ea6f95ce956b2f331183f8a8e304be96d1f4036c5fc3096d67e6684",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:a5652a1d7642b66ef0c90ed2c03606394abab37895f84a81e0dbdd5cc6076281",
+              "fact_id": "3cb3459c4d82b3fbab652cbd7817f5c0cd3bef1cdf44df800ab8f7dc3d4152f3",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:e8369e0caacd2e9161077866b5f62011a4d21d250affb8f465e9fdbc3ff62571",
+              "fact_id": "477bfd693bbd1206a178969d379aba89c344f229a9fecfc88309e9cc3691af50",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:6cc2c8fb22849181c3d77f3359cc36ee67c3100826f8405ce62044cb3acd22dc",
+              "fact_id": "4b43b2b3d275c0b3654547e099e8fa26ec88caaa59a25038e429f1daaaedcb06",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:ab4e3bfdd4b934641a5db6b2ecb074b7b5fa8cc97c4d622da4a39924094b98ac",
+              "fact_id": "56d4d7536556eedee85512c834a800bbd7f8e628ec3824351aadbc6548c54a88",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:a5652a1d7642b66ef0c90ed2c03606394abab37895f84a81e0dbdd5cc6076281",
+              "fact_id": "605269e1ab71669f76ce5afea8cac6d8f655a15f59999f9d329f886aea5eeab0",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:e8369e0caacd2e9161077866b5f62011a4d21d250affb8f465e9fdbc3ff62571",
+              "fact_id": "611c736b8f29c4741553af8f01ee5894d072050205f1b8ac5706892685abb0a2",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:2aa8cd687867146541346e101c0df97530b7088bcf5b1061a99cc3c976fbf7be",
+              "fact_id": "6c81d53f49d854895d6e41e8064f7146735c3e388ceb30cd2d974520d429fc2d",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:e8369e0caacd2e9161077866b5f62011a4d21d250affb8f465e9fdbc3ff62571",
+              "fact_id": "6e4438ee1b032246976ddefa3bb59afab95ab32d41d17af90bd13d0d3df3520d",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:e8369e0caacd2e9161077866b5f62011a4d21d250affb8f465e9fdbc3ff62571",
+              "fact_id": "76a6d3c035a039a54b9141ade68307404b923c80ee7efa815491fd07f6077d11",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:d822718dbec99a61ac7b4c914ac8b09a7bf97aa5ece318730b7c97c26821848e",
+              "fact_id": "880ebd34db6bca5b4427a4bb317ec35f6a44e09f316d2c6c9bbcf07d95703f11",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:d822718dbec99a61ac7b4c914ac8b09a7bf97aa5ece318730b7c97c26821848e",
+              "fact_id": "9bc39de106b96b380a9bda50055ca39a97bd6885eb633ef21994d9f82d1694e6",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:2aa8cd687867146541346e101c0df97530b7088bcf5b1061a99cc3c976fbf7be",
+              "fact_id": "a2fd4d343f9512269879f4ae25b4765950dc1aeae647258a2a36077936a1b230",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:a5652a1d7642b66ef0c90ed2c03606394abab37895f84a81e0dbdd5cc6076281",
+              "fact_id": "b3f183231079f888626e99f2ac35cba32b129b1538b15281bab842445ee2fe43",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "bda73fc1fd05e106fa7e68a8d3e5c9cd985291bfc88292e34c05e51e830d4f7a",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "d42990ab038907a5a71cfde01f15313db51a6ec6826b974382caee64ff3530c9",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:a5652a1d7642b66ef0c90ed2c03606394abab37895f84a81e0dbdd5cc6076281",
+              "fact_id": "d6fa60166ab8c7264808363c050555ae61adaa9f6a59a97ebbbab72607226429",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:a4381b1d5abb1ab099be099751bfa8ead52d069377eeaf6c1942755689562463",
+              "fact_id": "dedf1a45024efab1b27d599f5f4741f10113c29830994907520583408c5a0e58",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "eabdd4ca4222eec0f65d1ee24b779e6f9a5e9d95ac56e6ad57ecc9fbc992db32",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:a5652a1d7642b66ef0c90ed2c03606394abab37895f84a81e0dbdd5cc6076281",
+              "fact_id": "ebb931020f37fdedcac814b68ed082d50f286b24dea91a24d48bd2f50f4cd9de",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:6cc2c8fb22849181c3d77f3359cc36ee67c3100826f8405ce62044cb3acd22dc",
+              "fact_id": "f31a57bba0b8664a9c751d7b3ace7d4abbf09df67e15f323a2266ba330e8bb0a",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:e8369e0caacd2e9161077866b5f62011a4d21d250affb8f465e9fdbc3ff62571",
+              "fact_id": "f5a581a75453b414050df9f4be1c9f16835d9aaa22f318e6c5d6b7d88ccaa551",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "fc1f0c462dba5b54332a2eaccc5bc6fec64ea7065b5af2f3d46e8321836ada4f",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            }
+          ],
+          "slot_id": "slot_1",
+          "status": "MISSING"
+        },
+        {
+          "eligible": [],
+          "packet_fact_count": 33,
+          "rejected": [
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "0444f0ff1671f74cc1f1f3e50be4a9c5d17dcd9f05f9351a7e9d52f73ba11f88",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:a5652a1d7642b66ef0c90ed2c03606394abab37895f84a81e0dbdd5cc6076281",
+              "fact_id": "077d482517cc241c30a9c2005d8b1f9614c587034b624533dfbe3db24e0f66be",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "0b19e05fb4007b5ebb81bfd9cc1c54eb5c94e3d7fb1f2a6183d1b483da0df751",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:a4381b1d5abb1ab099be099751bfa8ead52d069377eeaf6c1942755689562463",
+              "fact_id": "0cb5a1139d1a167273ad7466f75822b0d9b2b4880739d505239758aa1eeca5c4",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "14c3f5fed24e7d232ac188ae35a647c6fa96fde63a83e6acd3342776248f129f",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:ab4e3bfdd4b934641a5db6b2ecb074b7b5fa8cc97c4d622da4a39924094b98ac",
+              "fact_id": "20ad5b11d79e2b5c877237ba653525f5c091948413a3136c78494a98f5bda7bc",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:ab4e3bfdd4b934641a5db6b2ecb074b7b5fa8cc97c4d622da4a39924094b98ac",
+              "fact_id": "246694579c1e893f84f0406ba92f5c47d3678b70a7bdd7f6585d4591565f79bd",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:6cc2c8fb22849181c3d77f3359cc36ee67c3100826f8405ce62044cb3acd22dc",
+              "fact_id": "2df50c743c66c1324b473d26b8669014879f1a5d486ffa6dd1c3794dd3e0f14a",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "3270cb64988459613821ed411a0eb748f87c24b2f8745dea7f7058eed1cfc1ce",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "35907d055ca690f6198b48061c1aef258ae7033510556658750fe5f57a689577",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:e8369e0caacd2e9161077866b5f62011a4d21d250affb8f465e9fdbc3ff62571",
+              "fact_id": "378dec7a5ea6f95ce956b2f331183f8a8e304be96d1f4036c5fc3096d67e6684",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:a5652a1d7642b66ef0c90ed2c03606394abab37895f84a81e0dbdd5cc6076281",
+              "fact_id": "3cb3459c4d82b3fbab652cbd7817f5c0cd3bef1cdf44df800ab8f7dc3d4152f3",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:e8369e0caacd2e9161077866b5f62011a4d21d250affb8f465e9fdbc3ff62571",
+              "fact_id": "477bfd693bbd1206a178969d379aba89c344f229a9fecfc88309e9cc3691af50",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:6cc2c8fb22849181c3d77f3359cc36ee67c3100826f8405ce62044cb3acd22dc",
+              "fact_id": "4b43b2b3d275c0b3654547e099e8fa26ec88caaa59a25038e429f1daaaedcb06",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:ab4e3bfdd4b934641a5db6b2ecb074b7b5fa8cc97c4d622da4a39924094b98ac",
+              "fact_id": "56d4d7536556eedee85512c834a800bbd7f8e628ec3824351aadbc6548c54a88",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:a5652a1d7642b66ef0c90ed2c03606394abab37895f84a81e0dbdd5cc6076281",
+              "fact_id": "605269e1ab71669f76ce5afea8cac6d8f655a15f59999f9d329f886aea5eeab0",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:e8369e0caacd2e9161077866b5f62011a4d21d250affb8f465e9fdbc3ff62571",
+              "fact_id": "611c736b8f29c4741553af8f01ee5894d072050205f1b8ac5706892685abb0a2",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:2aa8cd687867146541346e101c0df97530b7088bcf5b1061a99cc3c976fbf7be",
+              "fact_id": "6c81d53f49d854895d6e41e8064f7146735c3e388ceb30cd2d974520d429fc2d",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:e8369e0caacd2e9161077866b5f62011a4d21d250affb8f465e9fdbc3ff62571",
+              "fact_id": "6e4438ee1b032246976ddefa3bb59afab95ab32d41d17af90bd13d0d3df3520d",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:e8369e0caacd2e9161077866b5f62011a4d21d250affb8f465e9fdbc3ff62571",
+              "fact_id": "76a6d3c035a039a54b9141ade68307404b923c80ee7efa815491fd07f6077d11",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:d822718dbec99a61ac7b4c914ac8b09a7bf97aa5ece318730b7c97c26821848e",
+              "fact_id": "880ebd34db6bca5b4427a4bb317ec35f6a44e09f316d2c6c9bbcf07d95703f11",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:d822718dbec99a61ac7b4c914ac8b09a7bf97aa5ece318730b7c97c26821848e",
+              "fact_id": "9bc39de106b96b380a9bda50055ca39a97bd6885eb633ef21994d9f82d1694e6",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:2aa8cd687867146541346e101c0df97530b7088bcf5b1061a99cc3c976fbf7be",
+              "fact_id": "a2fd4d343f9512269879f4ae25b4765950dc1aeae647258a2a36077936a1b230",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:a5652a1d7642b66ef0c90ed2c03606394abab37895f84a81e0dbdd5cc6076281",
+              "fact_id": "b3f183231079f888626e99f2ac35cba32b129b1538b15281bab842445ee2fe43",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "bda73fc1fd05e106fa7e68a8d3e5c9cd985291bfc88292e34c05e51e830d4f7a",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "d42990ab038907a5a71cfde01f15313db51a6ec6826b974382caee64ff3530c9",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:a5652a1d7642b66ef0c90ed2c03606394abab37895f84a81e0dbdd5cc6076281",
+              "fact_id": "d6fa60166ab8c7264808363c050555ae61adaa9f6a59a97ebbbab72607226429",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:a4381b1d5abb1ab099be099751bfa8ead52d069377eeaf6c1942755689562463",
+              "fact_id": "dedf1a45024efab1b27d599f5f4741f10113c29830994907520583408c5a0e58",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "eabdd4ca4222eec0f65d1ee24b779e6f9a5e9d95ac56e6ad57ecc9fbc992db32",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:a5652a1d7642b66ef0c90ed2c03606394abab37895f84a81e0dbdd5cc6076281",
+              "fact_id": "ebb931020f37fdedcac814b68ed082d50f286b24dea91a24d48bd2f50f4cd9de",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:6cc2c8fb22849181c3d77f3359cc36ee67c3100826f8405ce62044cb3acd22dc",
+              "fact_id": "f31a57bba0b8664a9c751d7b3ace7d4abbf09df67e15f323a2266ba330e8bb0a",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:e8369e0caacd2e9161077866b5f62011a4d21d250affb8f465e9fdbc3ff62571",
+              "fact_id": "f5a581a75453b414050df9f4be1c9f16835d9aaa22f318e6c5d6b7d88ccaa551",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:cd40f5eb183c26ced402ee95dde8703f7dbb32e31cfad68056dfc1b78d8898ca",
+              "fact_id": "fc1f0c462dba5b54332a2eaccc5bc6fec64ea7065b5af2f3d46e8321836ada4f",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            }
+          ],
+          "slot_id": "slot_2",
+          "status": "MISSING"
+        }
+      ],
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "deterministic_complete": false,
+      "false_binding": false,
+      "question_id": "nvda_fy2025_007",
+      "slots": [
+        {
+          "eligible": [],
+          "packet_fact_count": 9,
+          "rejected": [
+            {
+              "candidate_id": "candidate:v1:99bb7d1ef2beda913b93692c18ded991c72ae0986740bd8bd7b95d79caa04cd8",
+              "fact_id": "6fc21d1b016790d6d173f2d481761953a77838f638591a2dca28f5723c4c6b9a",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf",
+              "fact_id": "76ea0bd1e273e5b07b57a84390905c6784ac86c9d12bdbbf9c08f7445391359d",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d",
+              "fact_id": "95451b882435a15e4061b201f224b1302de906578750a22f6dcee01b3cc14b80",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:582ac103a53a58d3f4988ea5b63e3f7fc74ececc79dfe45685a48b8bd38687bb",
+              "fact_id": "a34b9b1128d2fbdbc7ace64add7d8b07489af934233b6b529a08de02feb3d505",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d",
+              "fact_id": "a35f94b795ba5eb227de96ab46915d61ad88545cde97ff71d0e5ba10d12bb273",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d",
+              "fact_id": "a3798e1b9f596c81bfac2c6efd9ee5652ed8355f06ef6cc0a2e6a08df2d2e2af",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf",
+              "fact_id": "c85ddd3daccbd3f8cf815ed7254e83795a920c332a61a6216268204db3f76863",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:582ac103a53a58d3f4988ea5b63e3f7fc74ececc79dfe45685a48b8bd38687bb",
+              "fact_id": "dd32dd1ab18ba0fb4440ea5fdd20210c9634ec7d80d8e53823e2c961eeaae656",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:99bb7d1ef2beda913b93692c18ded991c72ae0986740bd8bd7b95d79caa04cd8",
+              "fact_id": "f2d8ed311b06d2d85cf2f0426a4e052191e05cbafdf160cd5efa2ce473e60b77",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            }
+          ],
+          "slot_id": "slot_1",
+          "status": "MISSING"
+        },
+        {
+          "eligible": [],
+          "packet_fact_count": 9,
+          "rejected": [
+            {
+              "candidate_id": "candidate:v1:99bb7d1ef2beda913b93692c18ded991c72ae0986740bd8bd7b95d79caa04cd8",
+              "fact_id": "6fc21d1b016790d6d173f2d481761953a77838f638591a2dca28f5723c4c6b9a",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf",
+              "fact_id": "76ea0bd1e273e5b07b57a84390905c6784ac86c9d12bdbbf9c08f7445391359d",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d",
+              "fact_id": "95451b882435a15e4061b201f224b1302de906578750a22f6dcee01b3cc14b80",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:582ac103a53a58d3f4988ea5b63e3f7fc74ececc79dfe45685a48b8bd38687bb",
+              "fact_id": "a34b9b1128d2fbdbc7ace64add7d8b07489af934233b6b529a08de02feb3d505",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d",
+              "fact_id": "a35f94b795ba5eb227de96ab46915d61ad88545cde97ff71d0e5ba10d12bb273",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:b8f690078d6e51c1c81063a3fe256bcfaeef4fbad4b355cc3b585fd4d275172d",
+              "fact_id": "a3798e1b9f596c81bfac2c6efd9ee5652ed8355f06ef6cc0a2e6a08df2d2e2af",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:b4dac3814c3a603cbdb3e1936c6d34168d4c6ec0ea69239b06a573991407a2bf",
+              "fact_id": "c85ddd3daccbd3f8cf815ed7254e83795a920c332a61a6216268204db3f76863",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:582ac103a53a58d3f4988ea5b63e3f7fc74ececc79dfe45685a48b8bd38687bb",
+              "fact_id": "dd32dd1ab18ba0fb4440ea5fdd20210c9634ec7d80d8e53823e2c961eeaae656",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:99bb7d1ef2beda913b93692c18ded991c72ae0986740bd8bd7b95d79caa04cd8",
+              "fact_id": "f2d8ed311b06d2d85cf2f0426a4e052191e05cbafdf160cd5efa2ce473e60b77",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            }
+          ],
+          "slot_id": "slot_2",
+          "status": "MISSING"
+        }
+      ],
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "deterministic_complete": false,
+      "false_binding": false,
+      "question_id": "pfe_fy2024_007",
+      "slots": [
+        {
+          "eligible": [],
+          "packet_fact_count": 25,
+          "rejected": [
+            {
+              "candidate_id": "candidate:v1:bfd96009e493551820ce6542617f63dad6aefe343db09dc58790a7dd84ba0601",
+              "fact_id": "0020394a48788b75f8c8d0023a3d3c5c227f4dc7424c7fdd6b983073843c3e4a",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:98a6aaa39d646e5d05c0a0a79ef0220f718398bd0b78414782ced9b79822d1af",
+              "fact_id": "14c6448894a46da96224236c81be1260aae93fbf1cc1035281593db414c3dd2d",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:bfd96009e493551820ce6542617f63dad6aefe343db09dc58790a7dd84ba0601",
+              "fact_id": "1581218506036c65fe5951d1e9129f581db94c9878f164fceac193e8d87c3cf2",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:04f13b53089cb2d1223f6780a42f917b1bbe4712896041ac51fa12f147fdecf3",
+              "fact_id": "1b68bbb97f5e1536de83fe7aef8b968f13a8e861a1b330233d114724e7021e33",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:301e0e8249f18f7f178ef5fc836a8d75c5be92815abc5b975681fc2d19c04189",
+              "fact_id": "3eba6dd302a262d801be2fb436d413ed341a018bb360926a2c7eddb01549e1b6",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:0836c7f49a7d8c067eabc815f64ce953d2c65352f755afe2e152cf574c403db0",
+              "fact_id": "68d426431251ae9ad03ab76c3347e5408c62eae9c2c2d035138811f05347dc34",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:9d3e1c229da4fd0d934e24fa71b20d277ed788e7bd5bcac1ce2deb2350c3a63c",
+              "fact_id": "740ae682f7ba96ddde8170f2f6bd4b29554e419bed7791e5a81be2d62a277fd3",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:301e0e8249f18f7f178ef5fc836a8d75c5be92815abc5b975681fc2d19c04189",
+              "fact_id": "8050a7990106a7e438275cb363ecc80872e068f67ff338f991b6e76f1837164d",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:301e0e8249f18f7f178ef5fc836a8d75c5be92815abc5b975681fc2d19c04189",
+              "fact_id": "836facc014254dfdf5cf2fa0692dfa5dd64899e059d01d81cb311e3b86d27104",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:908e6439dec34ab1a93474e31f7e3b5e07d937dd99a8576bb45752f4892cdbe8",
+              "fact_id": "8d6c3deadbe575ea89c965107e28da5a3553ef095de59e525c92cc5872a38262",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:4886dcb9c5a4bd430f3888bc77cf033b0745509bd1bc968682ea31caef7b5c56",
+              "fact_id": "9752f78480dc1fb5f79d6634412c6e54273209f6af44d5c72f59ac4b4008df6f",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:908e6439dec34ab1a93474e31f7e3b5e07d937dd99a8576bb45752f4892cdbe8",
+              "fact_id": "9bfd7e02b272b7f734a02f9f55a50b948912d2632400f812bc6c84b751571fa1",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:4886dcb9c5a4bd430f3888bc77cf033b0745509bd1bc968682ea31caef7b5c56",
+              "fact_id": "b0a2602ea3344b4331fff1dd2e97ab45b557ef051eb9a8b443f4f77c323894d9",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:98a6aaa39d646e5d05c0a0a79ef0220f718398bd0b78414782ced9b79822d1af",
+              "fact_id": "b9851ac3577f3f331ceddd63f66b7850b2793419cee85d7d4c6a16be2a107516",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:908e6439dec34ab1a93474e31f7e3b5e07d937dd99a8576bb45752f4892cdbe8",
+              "fact_id": "baac01f5ba852b75a1985f977f5b50afe11090278104eb76b55fbea5bdd003e9",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:bfd96009e493551820ce6542617f63dad6aefe343db09dc58790a7dd84ba0601",
+              "fact_id": "c6b35ffb03a0ea690d95522e916739602e7c7952b515d0fe38cdd8ea0094c93b",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:9d3e1c229da4fd0d934e24fa71b20d277ed788e7bd5bcac1ce2deb2350c3a63c",
+              "fact_id": "c6fca4dd5b0a8a128cfdf7be33b7e63ff6b68ec27fe4f3d7b50696d595d5dce1",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:9d3e1c229da4fd0d934e24fa71b20d277ed788e7bd5bcac1ce2deb2350c3a63c",
+              "fact_id": "c93f5dc52a3eae16733f5397796e255b37e63576976e2c811bf291a9d238834d",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:04f13b53089cb2d1223f6780a42f917b1bbe4712896041ac51fa12f147fdecf3",
+              "fact_id": "dd1ab7a04854f1c5e900187e6d6819ec11bdec9cffcc82b276779a124553f82a",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:4886dcb9c5a4bd430f3888bc77cf033b0745509bd1bc968682ea31caef7b5c56",
+              "fact_id": "e37609521ab25308b13b40071b6597259ba2374a429ba727c12dab176a2b14e7",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:d12a0d3ec4c65b45dd356f10054de95298517f30b736a4bc859713a3996e78e0",
+              "fact_id": "ea65a546f66e3cf497214d064d1dfa823827aa63f8eacfffb143d30c032e4d4d",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:9d3e1c229da4fd0d934e24fa71b20d277ed788e7bd5bcac1ce2deb2350c3a63c",
+              "fact_id": "ec3f950eca7dfd8222a465e38a7cf3b44251b48a0cb260af7f8db2a89fbbf1eb",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:2b1e2e9bda45aa1d4c591071188b091e54fd243c44662eeb4d93d93c4b9189b7",
+              "fact_id": "edd37bb541cae0b9ef5e01e4cc56e36219a302f484e35425c28d5320805784c8",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:98a6aaa39d646e5d05c0a0a79ef0220f718398bd0b78414782ced9b79822d1af",
+              "fact_id": "f18884fd266fe250e953c1f1f88b9add8ae47a850e63f9def5e610648bb87a50",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:9d3e1c229da4fd0d934e24fa71b20d277ed788e7bd5bcac1ce2deb2350c3a63c",
+              "fact_id": "f7632c8215159920a6143b163e67958eff7aa0349b41329be05c90e4cf239ad6",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            }
+          ],
+          "slot_id": "1",
+          "status": "MISSING"
+        },
+        {
+          "eligible": [],
+          "packet_fact_count": 25,
+          "rejected": [
+            {
+              "candidate_id": "candidate:v1:bfd96009e493551820ce6542617f63dad6aefe343db09dc58790a7dd84ba0601",
+              "fact_id": "0020394a48788b75f8c8d0023a3d3c5c227f4dc7424c7fdd6b983073843c3e4a",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:98a6aaa39d646e5d05c0a0a79ef0220f718398bd0b78414782ced9b79822d1af",
+              "fact_id": "14c6448894a46da96224236c81be1260aae93fbf1cc1035281593db414c3dd2d",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:bfd96009e493551820ce6542617f63dad6aefe343db09dc58790a7dd84ba0601",
+              "fact_id": "1581218506036c65fe5951d1e9129f581db94c9878f164fceac193e8d87c3cf2",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:04f13b53089cb2d1223f6780a42f917b1bbe4712896041ac51fa12f147fdecf3",
+              "fact_id": "1b68bbb97f5e1536de83fe7aef8b968f13a8e861a1b330233d114724e7021e33",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:301e0e8249f18f7f178ef5fc836a8d75c5be92815abc5b975681fc2d19c04189",
+              "fact_id": "3eba6dd302a262d801be2fb436d413ed341a018bb360926a2c7eddb01549e1b6",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:0836c7f49a7d8c067eabc815f64ce953d2c65352f755afe2e152cf574c403db0",
+              "fact_id": "68d426431251ae9ad03ab76c3347e5408c62eae9c2c2d035138811f05347dc34",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:9d3e1c229da4fd0d934e24fa71b20d277ed788e7bd5bcac1ce2deb2350c3a63c",
+              "fact_id": "740ae682f7ba96ddde8170f2f6bd4b29554e419bed7791e5a81be2d62a277fd3",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:301e0e8249f18f7f178ef5fc836a8d75c5be92815abc5b975681fc2d19c04189",
+              "fact_id": "8050a7990106a7e438275cb363ecc80872e068f67ff338f991b6e76f1837164d",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:301e0e8249f18f7f178ef5fc836a8d75c5be92815abc5b975681fc2d19c04189",
+              "fact_id": "836facc014254dfdf5cf2fa0692dfa5dd64899e059d01d81cb311e3b86d27104",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:908e6439dec34ab1a93474e31f7e3b5e07d937dd99a8576bb45752f4892cdbe8",
+              "fact_id": "8d6c3deadbe575ea89c965107e28da5a3553ef095de59e525c92cc5872a38262",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:4886dcb9c5a4bd430f3888bc77cf033b0745509bd1bc968682ea31caef7b5c56",
+              "fact_id": "9752f78480dc1fb5f79d6634412c6e54273209f6af44d5c72f59ac4b4008df6f",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:908e6439dec34ab1a93474e31f7e3b5e07d937dd99a8576bb45752f4892cdbe8",
+              "fact_id": "9bfd7e02b272b7f734a02f9f55a50b948912d2632400f812bc6c84b751571fa1",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:4886dcb9c5a4bd430f3888bc77cf033b0745509bd1bc968682ea31caef7b5c56",
+              "fact_id": "b0a2602ea3344b4331fff1dd2e97ab45b557ef051eb9a8b443f4f77c323894d9",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:98a6aaa39d646e5d05c0a0a79ef0220f718398bd0b78414782ced9b79822d1af",
+              "fact_id": "b9851ac3577f3f331ceddd63f66b7850b2793419cee85d7d4c6a16be2a107516",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:908e6439dec34ab1a93474e31f7e3b5e07d937dd99a8576bb45752f4892cdbe8",
+              "fact_id": "baac01f5ba852b75a1985f977f5b50afe11090278104eb76b55fbea5bdd003e9",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:bfd96009e493551820ce6542617f63dad6aefe343db09dc58790a7dd84ba0601",
+              "fact_id": "c6b35ffb03a0ea690d95522e916739602e7c7952b515d0fe38cdd8ea0094c93b",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:9d3e1c229da4fd0d934e24fa71b20d277ed788e7bd5bcac1ce2deb2350c3a63c",
+              "fact_id": "c6fca4dd5b0a8a128cfdf7be33b7e63ff6b68ec27fe4f3d7b50696d595d5dce1",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:9d3e1c229da4fd0d934e24fa71b20d277ed788e7bd5bcac1ce2deb2350c3a63c",
+              "fact_id": "c93f5dc52a3eae16733f5397796e255b37e63576976e2c811bf291a9d238834d",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:04f13b53089cb2d1223f6780a42f917b1bbe4712896041ac51fa12f147fdecf3",
+              "fact_id": "dd1ab7a04854f1c5e900187e6d6819ec11bdec9cffcc82b276779a124553f82a",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:4886dcb9c5a4bd430f3888bc77cf033b0745509bd1bc968682ea31caef7b5c56",
+              "fact_id": "e37609521ab25308b13b40071b6597259ba2374a429ba727c12dab176a2b14e7",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:d12a0d3ec4c65b45dd356f10054de95298517f30b736a4bc859713a3996e78e0",
+              "fact_id": "ea65a546f66e3cf497214d064d1dfa823827aa63f8eacfffb143d30c032e4d4d",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:9d3e1c229da4fd0d934e24fa71b20d277ed788e7bd5bcac1ce2deb2350c3a63c",
+              "fact_id": "ec3f950eca7dfd8222a465e38a7cf3b44251b48a0cb260af7f8db2a89fbbf1eb",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:2b1e2e9bda45aa1d4c591071188b091e54fd243c44662eeb4d93d93c4b9189b7",
+              "fact_id": "edd37bb541cae0b9ef5e01e4cc56e36219a302f484e35425c28d5320805784c8",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:98a6aaa39d646e5d05c0a0a79ef0220f718398bd0b78414782ced9b79822d1af",
+              "fact_id": "f18884fd266fe250e953c1f1f88b9add8ae47a850e63f9def5e610648bb87a50",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:9d3e1c229da4fd0d934e24fa71b20d277ed788e7bd5bcac1ce2deb2350c3a63c",
+              "fact_id": "f7632c8215159920a6143b163e67958eff7aa0349b41329be05c90e4cf239ad6",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            }
+          ],
+          "slot_id": "2",
+          "status": "MISSING"
+        }
+      ],
+      "status": "MISSING",
+      "strict_correct": false
+    },
+    {
+      "deterministic_complete": false,
+      "false_binding": false,
+      "question_id": "v_fy2025_007",
+      "slots": [
+        {
+          "eligible": [],
+          "packet_fact_count": 6,
+          "rejected": [
+            {
+              "candidate_id": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+              "fact_id": "0d275e94bd8c411d5cd48e132ed3cfb6207fb60851d3f87598c52a2e822b0a44",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+              "fact_id": "4c35227ee925f1d09de33e0714c5e05c89c4beba383342a0e254bd37fa691a61",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+              "fact_id": "71bd06d15b6465ce3cc482db9381a3216507716c6a627de5f6408bab3999e909",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+              "fact_id": "74820f5a381a6d55fa1e68cdc001e6e8dc0c490f272b25db121a6fdb376e710d",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+              "fact_id": "7abae283bf0c21bc1bfb307f6a75943e456c93d571c8839d3fad4f52880cdc48",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+              "fact_id": "85a5e7bf2ad766e23ceefb0a5301d1a9eff9e6d80441eee9d1819e5450ff0794",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            }
+          ],
+          "slot_id": "1",
+          "status": "MISSING"
+        },
+        {
+          "eligible": [],
+          "packet_fact_count": 6,
+          "rejected": [
+            {
+              "candidate_id": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+              "fact_id": "0d275e94bd8c411d5cd48e132ed3cfb6207fb60851d3f87598c52a2e822b0a44",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+              "fact_id": "4c35227ee925f1d09de33e0714c5e05c89c4beba383342a0e254bd37fa691a61",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+              "fact_id": "71bd06d15b6465ce3cc482db9381a3216507716c6a627de5f6408bab3999e909",
+              "reasons": [
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+              "fact_id": "74820f5a381a6d55fa1e68cdc001e6e8dc0c490f272b25db121a6fdb376e710d",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:38e40720cd64c77589937b3a83bf3659c1f6f7c5e1dd05d897fb593bdaf26a68",
+              "fact_id": "7abae283bf0c21bc1bfb307f6a75943e456c93d571c8839d3fad4f52880cdc48",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            },
+            {
+              "candidate_id": "candidate:v1:9345b21bb1fae47731ceb136aa7846f1adca5024d7d31ded608e9f03a486e186",
+              "fact_id": "85a5e7bf2ad766e23ceefb0a5301d1a9eff9e6d80441eee9d1819e5450ff0794",
+              "reasons": [
+                "DTC3_explicit_period_conflict",
+                "DTC7_metric_identity_not_exact"
+              ]
+            }
+          ],
+          "slot_id": "2",
+          "status": "MISSING"
+        }
+      ],
+      "status": "MISSING",
+      "strict_correct": false
+    }
+  ],
+  "total": 5
+}

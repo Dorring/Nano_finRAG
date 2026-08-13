@@ -1,0 +1,11 @@
+{
+  "architecture": "HybridEvidenceBinderV1",
+  "calculation_deterministic_calls_avoided": 1,
+  "deterministic_priority": true,
+  "direct_deterministic_calls_avoided": 1,
+  "fallback_admission": "SelectiveBindingAdmissionV2",
+  "multi_deterministic_calls_avoided": 0,
+  "residual_calls": 70,
+  "residual_model": "qwen3.7-plus",
+  "total_query_calls_avoided": 2
+}

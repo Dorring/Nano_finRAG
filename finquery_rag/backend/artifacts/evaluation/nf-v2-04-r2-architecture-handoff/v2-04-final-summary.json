@@ -1,0 +1,32 @@
+{
+  "calculation": {
+    "absolute_ready": 1,
+    "all_operands_ready": 1,
+    "bindable_operand_slots": 12,
+    "deterministically_bound": 2,
+    "false_operand_binding": 1,
+    "strict_correct": 1
+  },
+  "contract_sha256": "5d5f27e04823331d23ce854593530507f1a5b69e2a3020ddb5ef5487e53bf2c3",
+  "direct": {
+    "admission_v2_bound": "4/56",
+    "admission_v2_correct": "4/4",
+    "deterministic_bound": "1/56",
+    "false_binding": 0,
+    "new_safe_coverage_over_admission_v2": 1,
+    "precision": 1.0,
+    "strict_correct": "1/1"
+  },
+  "evidence_repair_router_frozen": false,
+  "generic_missing_evidence_repair_effective": false,
+  "model_calls": 0,
+  "multi": {
+    "complete_supply": "5/5",
+    "deterministic_complete": 0,
+    "false_binding": 0
+  },
+  "r0_repair_policy_rejected": true,
+  "r1_repair_policy_rejected": true,
+  "repair_exploration_closed": true,
+  "retrieval_calls": 0
+}

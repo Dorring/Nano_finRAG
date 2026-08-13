@@ -1,0 +1,13 @@
+{
+  "assumption": "observed R0 Binder averages only; no external price assumptions",
+  "estimated_input_tokens_avoided": 50801.968,
+  "estimated_latency_ms_avoided": 4133.983,
+  "estimated_output_tokens_avoided": 77.742,
+  "observed_reference": {
+    "average_latency_ms": 2066.99125,
+    "binder_calls": 62,
+    "input_tokens": 1574861,
+    "output_tokens": 2410
+  },
+  "query_calls_avoided": 2
+}
