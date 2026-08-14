@@ -26,5 +26,39 @@
   "tier_b_leakage": 0,
   "training": 0,
   "unsupported_target_claims": 0,
-  "view_sha": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4"
+  "view_sha": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "preflight_dataset_sha256": "a390ed69e5f2c89df5d2a9973bafce277e88bfac55a3a19d835e00c0feae8d19",
+  "preflight_has_distractors": {
+    "true": 1601,
+    "false": 149
+  },
+  "preflight_quality_gates": {
+    "numeric_support": {
+      "pass": true,
+      "count": 1750,
+      "total": 1750
+    },
+    "citation_validity": {
+      "pass": true,
+      "count": 1750,
+      "total": 1750
+    },
+    "canonical_result_exact": {
+      "pass": true,
+      "count": 500,
+      "total": 500
+    },
+    "unsupported_target_claims": {
+      "pass": true,
+      "count": 0
+    },
+    "leakage": {
+      "pass": true,
+      "count": 0
+    },
+    "protected_semantics": {
+      "pass": true,
+      "count": 0
+    }
+  }
 }

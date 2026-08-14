@@ -1,0 +1,19 @@
+{
+  "change_scope": [
+    "assistant citation punctuation",
+    "deterministic answer template grammar",
+    "has_distractors metadata"
+  ],
+  "protected": [
+    "numeric values",
+    "question",
+    "evidence view",
+    "period",
+    "unit",
+    "currency",
+    "scale",
+    "calculation_metadata",
+    "citations"
+  ],
+  "llm_teacher_calls": 0
+}

@@ -9,5 +9,13 @@
   "schema": "GroundingAlignmentSampleV1+R2Metadata",
   "semantic_qc": "R1.1",
   "targeted": 1400,
-  "training": 0
+  "training": 0,
+  "training_preflight": "R2",
+  "preflight_artifact": "nf-v2-09-r1-2-training-preflight",
+  "preflight_dataset_sha256": "a390ed69e5f2c89df5d2a9973bafce277e88bfac55a3a19d835e00c0feae8d19",
+  "preflight_financial_generation_view_v1_sha": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "preflight_has_distractors": {
+    "true": 1601,
+    "false": 149
+  }
 }

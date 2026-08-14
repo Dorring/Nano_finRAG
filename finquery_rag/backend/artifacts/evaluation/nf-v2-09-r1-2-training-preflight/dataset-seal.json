@@ -1,0 +1,25 @@
+{
+  "base_commit": "95bd6d4f5839659ec4ee84a07db45e1805ac1620",
+  "financial_generation_view_v1_sha": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "targeted": 1400,
+  "replay": 350,
+  "total": 1750,
+  "source_sha256": {
+    "grounding-r2-train-mix.jsonl": "8f25c88cf04cbd6099213da6a9f9e0509389b8ebfd0d187f201e051914e6a760",
+    "r1-replay.jsonl": "bbea4419e9819e58383f57c916f6ffa54e10087494b683e45af535bc53504fc2",
+    "targeted-r2.jsonl": "449bcf6ae41b37a91903bcce320c8df15ad2d3ac836db9e89a1077b22d062b15"
+  },
+  "preflight_input_sha256": {
+    "targeted-r2.jsonl": "36ca7e2e6ce23d992910777dd05fb959ee75205b299ac04d621fbb7dcfad4d8b",
+    "r1-replay.jsonl": "feef1448eb347e0123cbbd39dfe767421ca39b4ac07fb4284270b846c0747de5",
+    "grounding-r2-train-mix.jsonl": "a390ed69e5f2c89df5d2a9973bafce277e88bfac55a3a19d835e00c0feae8d19"
+  },
+  "new_sha256": {
+    "targeted-r2.jsonl": "36ca7e2e6ce23d992910777dd05fb959ee75205b299ac04d621fbb7dcfad4d8b",
+    "r1-replay.jsonl": "feef1448eb347e0123cbbd39dfe767421ca39b4ac07fb4284270b846c0747de5",
+    "grounding-r2-train-mix.jsonl": "a390ed69e5f2c89df5d2a9973bafce277e88bfac55a3a19d835e00c0feae8d19"
+  },
+  "training": 0,
+  "model_calls": 0,
+  "retrieval_calls": 0
+}

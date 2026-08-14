@@ -1,0 +1,16 @@
+{
+  "original_sealed_before": {
+    "true": 630,
+    "false": 1120
+  },
+  "current_input_before_idempotent_rerun": {
+    "true": 1601,
+    "false": 149
+  },
+  "after": {
+    "true": 1601,
+    "false": 149
+  },
+  "rows": 1750,
+  "algorithm": "unanswered=false; calculation=unreferenced evidence outside based_on; otherwise unreferenced evidence outside emitted citations"
+}

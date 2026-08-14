@@ -1,0 +1,29 @@
+{
+  "numeric_support": {
+    "pass": true,
+    "count": 1750,
+    "total": 1750
+  },
+  "citation_validity": {
+    "pass": true,
+    "count": 1750,
+    "total": 1750
+  },
+  "canonical_result_exact": {
+    "pass": true,
+    "count": 500,
+    "total": 500
+  },
+  "unsupported_target_claims": {
+    "pass": true,
+    "count": 0
+  },
+  "leakage": {
+    "pass": true,
+    "count": 0
+  },
+  "protected_semantics": {
+    "pass": true,
+    "count": 0
+  }
+}
