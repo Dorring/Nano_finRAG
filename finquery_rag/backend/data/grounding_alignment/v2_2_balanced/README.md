@@ -2,6 +2,6 @@
 
 Model-free deterministic build from approved TRAIN-only sources. The R2.2 mix retains targeted numeric/calculation examples, restores R1 replay, and adds structural hard negatives.
 
-Dataset SHA256: ad0eac16b27048cf85f90edf3439c5f914d1be6268baf906e51cdfee40bbd8c7
+Dataset SHA256: 7a77e828236d450e771e16aa852153e332db5f6d10a709106fa79ca2cc6554af
 Parent checkpoint for later training: finquery-finance-grounded-v3-r1/model_000007.pt
 No model calls, training, or retrieval were performed.

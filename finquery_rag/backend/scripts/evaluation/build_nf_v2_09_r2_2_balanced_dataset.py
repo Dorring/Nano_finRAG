@@ -320,8 +320,14 @@ def main() -> None:
     partial_r1 = [row for row in r1 if row.get("partially_answerable") is True]
     partial_r2 = [row for row in r2_mix if row.get("partially_answerable") is True]
     strong_partial: list[dict[str, Any]] = []
-    strong_partial.extend(select_diverse(partial_r1, 200, used, SEED + 200))
-    strong_partial.extend(select_diverse(partial_r2, 50, used, SEED + 201))
+    partial_r1_selected = select_diverse(partial_r1, 200, used, SEED + 200)
+    partial_r2_selected = select_diverse(partial_r2, 50, used, SEED + 201)
+    for row in partial_r1_selected:
+        row["r1_replay"] = True
+    for row in partial_r2_selected:
+        row["r1_replay"] = False
+    strong_partial.extend(partial_r1_selected)
+    strong_partial.extend(partial_r2_selected)
 
     # Build structural negatives from unused TRAIN-only examples.
     source_pool = [row for row in targeted + r1 if is_train(row) and row.get("fully_answerable") is True]
