@@ -247,6 +247,34 @@ def numeric_support(row: dict[str, Any]) -> bool:
     return True
 
 
+def period_support(row: dict[str, Any]) -> bool:
+    """Check explicit year/range claims are present in source or C1."""
+    user = norm(row["messages"][0]["content"])
+    target = target_text(row)
+    canonical = norm(str((row.get("calculation_metadata") or {}).get("period", "")))
+    for period in re.findall(r"\b(?:19|20)\d{2}(?:[-/]\d{2,4})?\b", target):
+        if period.casefold() not in user and period.casefold() not in canonical:
+            return False
+    return True
+
+
+def unit_scale_support(row: dict[str, Any]) -> bool:
+    """Check explicit currency/unit/scale claims against packet or C1."""
+    user = norm(row["messages"][0]["content"])
+    target = norm(target_text(row))
+    metadata = row.get("calculation_metadata") or {}
+    canonical_semantics = norm(" ".join(str(metadata.get(key, "")) for key in ("unit", "currency", "scale")))
+    tokens = re.findall(r"\$|€|£|\b(?:usd|eur|gbp|jpy|percent|percentage|million|millions|billion|billions|thousand|thousands)\b", target)
+    aliases = {
+        "percentage": ("percentage", "percent", "%"),
+        "percent": ("percent", "percentage", "%"),
+        "millions": ("million", "millions"),
+        "billions": ("billion", "billions"),
+        "thousands": ("thousand", "thousands"),
+    }
+    return all(any(alias in user or alias in canonical_semantics for alias in aliases.get(token, (token,))) for token in tokens)
+
+
 def hard_valid(row: dict[str, Any]) -> bool:
     user = row["messages"][0]["content"]
     target = target_text(row)
@@ -473,6 +501,8 @@ def main() -> None:
     hard_valid_count = sum(hard_valid(row) for row in hard_negatives)
     citation_valid_count = sum(valid_citations(row) for row in final_rows)
     numeric_support_count = sum(numeric_support(row) for row in final_rows)
+    period_support_count = sum(period_support(row) for row in final_rows)
+    unit_scale_support_count = sum(unit_scale_support(row) for row in final_rows)
     cot_count = sum(bool(row.get("cot_target")) or "<think>" in target_text(row).lower() for row in final_rows)
     tokenizer = TokenCounter()
     token_rows = []
@@ -523,6 +553,8 @@ def main() -> None:
         "behavior": dict(behavior_counts),
         "citation_valid": citation_valid_count,
         "numeric_supported": numeric_support_count,
+        "period_supported": period_support_count,
+        "unit_currency_scale_supported": unit_scale_support_count,
         "hard_negative_valid": hard_valid_count,
         "canonical_calculation_exact": sum(row.get("route", "").startswith("CALCULATION") and (row.get("calculation_metadata") or {}).get("canonical_result_verified") is True for row in final_rows),
         "unsupported_target_claims": 0,
@@ -543,6 +575,8 @@ def main() -> None:
     write_json(OUT / "duplicate-audit.json", {"exact_duplicate_messages": exact_dups, "normalized_question_duplicate_groups": sum(count > 1 for count in question_counts.values()), "max_normalized_question_variants": max(question_counts.values()), "same_context_sibling_groups": sum(count > 1 for count in context_counts.values()), "max_context_variants": max(context_counts.values()), "context_cap_violations": sibling_overflow, "source_variant_cap_violations": variant_overflow})
     write_json(OUT / "citation-audit.json", {"total": len(final_rows), "valid": citation_valid_count, "invalid": len(final_rows) - citation_valid_count, "unknown_citation_ids": 0})
     write_json(OUT / "numeric-support-audit.json", {"total": len(final_rows), "supported": numeric_support_count, "unsupported": len(final_rows) - numeric_support_count, "unsupported_target_claims": 0})
+    write_json(OUT / "period-support-audit.json", {"total": len(final_rows), "supported": period_support_count, "unsupported": len(final_rows) - period_support_count})
+    write_json(OUT / "unit-currency-scale-audit.json", {"total": len(final_rows), "supported": unit_scale_support_count, "unsupported": len(final_rows) - unit_scale_support_count})
     write_json(OUT / "semantic-contract-audit.json", {"financial_generation_view_v1_sha256": sha256_file(V1 / "financial-generation-view-v1.json"), "expected_sha256": EXPECTED_VIEW_SHA, "match": sha256_file(V1 / "financial-generation-view-v1.json") == EXPECTED_VIEW_SHA, "question_answer_contract": True, "canonical_calculation_contract": True, "explicit_target_arithmetic": 0, "cot_targets": cot_count})
     write_json(OUT / "leakage-audit.json", {"tier_b_question_overlap": question_leakage, "tier_b_context_overlap": 0, "tier_b_document_overlap": document_leakage, "official_evaluation_leakage": 0, "source_split_violations": sum(not is_train(row) for row in final_rows), "reference_answers_used": False, "tier_b_used_as_seed": False})
     write_json(OUT / "token-length-audit.json", {"tokenizer": tokenizer.kind, "context_limit": CONTEXT_LIMIT, "context_overflow": overflow, "input_p50": sorted(x[0] for x in token_rows)[len(token_rows) // 2], "input_max": max(x[0] for x in token_rows), "assistant_p50": sorted(x[1] for x in token_rows)[len(token_rows) // 2], "assistant_max": max(x[1] for x in token_rows)})
@@ -579,6 +613,7 @@ def main() -> None:
         "hard-negative-validation.json", "calculation-distribution.json",
         "direct-hardness-audit.json", "replay-audit.json", "duplicate-audit.json",
         "citation-audit.json", "numeric-support-audit.json", "semantic-contract-audit.json",
+        "period-support-audit.json", "unit-currency-scale-audit.json",
         "leakage-audit.json", "token-length-audit.json", "rejection-taxonomy.json",
         "manual-audit-sample.jsonl", "README.md",
     ):
@@ -598,6 +633,8 @@ def main() -> None:
             and hard_valid_count == 250
             and citation_valid_count == len(final_rows)
             and numeric_support_count == len(final_rows)
+            and period_support_count == len(final_rows)
+            and unit_scale_support_count == len(final_rows)
             and cot_count == 0
             and overflow == 0
             and question_leakage == 0

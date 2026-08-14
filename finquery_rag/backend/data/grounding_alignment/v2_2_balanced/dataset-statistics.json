@@ -23,8 +23,10 @@
     "p50": 612
   },
   "numeric_supported": 2100,
+  "period_supported": 2100,
   "think_or_cot_targets": 0,
   "tokenizer": "nanochat-bpe-65k",
   "total": 2100,
+  "unit_currency_scale_supported": 2100,
   "unsupported_target_claims": 0
 }
