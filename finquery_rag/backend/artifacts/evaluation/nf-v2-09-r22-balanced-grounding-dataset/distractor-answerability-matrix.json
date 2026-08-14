@@ -1,0 +1,17 @@
+{
+  "hard_unanswerable_with_distractors": 250,
+  "matrix": {
+    "FULLY_ANSWERABLE": {
+      "distractor": 1000,
+      "no_distractor": 600
+    },
+    "FULLY_UNANSWERABLE": {
+      "distractor": 250,
+      "no_distractor": 0
+    },
+    "PARTIALLY_ANSWERABLE": {
+      "distractor": 244,
+      "no_distractor": 6
+    }
+  }
+}

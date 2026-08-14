@@ -1,0 +1,30 @@
+{
+  "answerability": {
+    "FULLY_ANSWERABLE": 1600,
+    "FULLY_UNANSWERABLE": 250,
+    "PARTIALLY_ANSWERABLE": 250
+  },
+  "assistant_tokens": {
+    "max": 79,
+    "p50": 22
+  },
+  "behavior": {
+    "ABSTAIN_FULLY": 250,
+    "ANSWER_CANONICAL_CALCULATION": 500,
+    "ANSWER_DIRECTLY": 1100,
+    "ANSWER_PLUS_PARTIAL_REFUSAL": 250
+  },
+  "canonical_calculation_exact": 400,
+  "citation_valid": 2100,
+  "context_overflow": 0,
+  "hard_negative_valid": 250,
+  "input_tokens": {
+    "max": 1577,
+    "p50": 612
+  },
+  "numeric_supported": 2100,
+  "think_or_cot_targets": 0,
+  "tokenizer": "nanochat-bpe-65k",
+  "total": 2100,
+  "unsupported_target_claims": 0
+}
