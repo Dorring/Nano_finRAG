@@ -1,0 +1,45 @@
+{
+  "ambiguous_multi_value_binding_after_repair": 0,
+  "by_component_before_repair": {
+    "GENERAL_POSITIVE_REPLAY": {
+      "EV0_FULLY_DERIVABLE": 341,
+      "EV2_TARGET_VALUE_PRESENT_BUT_METRIC_BINDING_AMBIGUOUS": 108,
+      "EV3_MULTI_VALUE_ORDER_AMBIGUOUS": 32,
+      "EV4_REQUIRED_TABLE_HEADER_MISSING": 19,
+      "EV6_TARGET_UNSUPPORTED": 100
+    },
+    "STRONG_PARTIAL": {
+      "EV0_FULLY_DERIVABLE": 178,
+      "EV2_TARGET_VALUE_PRESENT_BUT_METRIC_BINDING_AMBIGUOUS": 56,
+      "EV3_MULTI_VALUE_ORDER_AMBIGUOUS": 12,
+      "EV4_REQUIRED_TABLE_HEADER_MISSING": 4
+    },
+    "STRUCTURAL_HARD_UNANSWERABLE": {
+      "EV0_FULLY_DERIVABLE": 250
+    },
+    "TARGETED": {
+      "EV0_FULLY_DERIVABLE": 998,
+      "EV7_METADATA_SEMANTIC_ERROR": 2
+    }
+  },
+  "counts_after_repair": {
+    "EV0_FULLY_DERIVABLE": 2100
+  },
+  "counts_before_repair": {
+    "EV0_FULLY_DERIVABLE": 1767,
+    "EV2_TARGET_VALUE_PRESENT_BUT_METRIC_BINDING_AMBIGUOUS": 164,
+    "EV3_MULTI_VALUE_ORDER_AMBIGUOUS": 44,
+    "EV4_REQUIRED_TABLE_HEADER_MISSING": 23,
+    "EV6_TARGET_UNSUPPORTED": 100,
+    "EV7_METADATA_SEMANTIC_ERROR": 2
+  },
+  "fully_derivable_after_repair": 2100,
+  "fully_derivable_before_repair": 1767,
+  "invalid_final_samples": 0,
+  "missing_headers_after_repair": 0,
+  "pre_qc_dataset_sha256": "7a77e828236d450e771e16aa852153e332db5f6d10a709106fa79ca2cc6554af",
+  "samples_rejected_or_replaced": 333,
+  "samples_repaired": 0,
+  "semantic_metadata_errors_after_repair": 0,
+  "unsupported_targets_after_repair": 0
+}

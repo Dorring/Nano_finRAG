@@ -1,0 +1,19 @@
+{
+  "base_commit": "7cd3ce754fcea2a6f2ffa52a77b7521129674135",
+  "components": {
+    "GENERAL_POSITIVE_REPLAY": 600,
+    "STRONG_PARTIAL": 250,
+    "STRUCTURAL_HARD_UNANSWERABLE": 250,
+    "TARGETED": 1000
+  },
+  "dataset_id": "nf-v2-09-r2.2.1-evidence-sufficient",
+  "dataset_sha256": "4771803fd179bdbb9bf146dd7be782fe7a9de40d83408d548d181e5f1e233753",
+  "financial_generation_view_v1_sha256": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "manual_audit_count": 20,
+  "manual_audit_seed": 20260815,
+  "model_calls": 0,
+  "pre_qc_dataset_sha256": "7a77e828236d450e771e16aa852153e332db5f6d10a709106fa79ca2cc6554af",
+  "retrieval_calls": 0,
+  "total": 2100,
+  "training": 0
+}

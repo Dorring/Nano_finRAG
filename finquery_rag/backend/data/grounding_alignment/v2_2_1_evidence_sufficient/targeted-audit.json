@@ -1,0 +1,16 @@
+{
+  "after": {
+    "EV0_FULLY_DERIVABLE": 1000
+  },
+  "audited": 1000,
+  "before": {
+    "EV0_FULLY_DERIVABLE": 998,
+    "EV7_METADATA_SEMANTIC_ERROR": 2
+  },
+  "buckets": {
+    "CALCULATION_NO_RECOMPUTE": 400,
+    "DIRECT_NUMERIC_SELECTION": 350,
+    "EXTRA_CLAIM_SUPPRESSION": 100,
+    "SCOPE_PERIOD_NEAR_MATCH": 150
+  }
+}

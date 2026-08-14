@@ -1,0 +1,21 @@
+{
+  "answerability": {
+    "fully_answerable": 1600,
+    "fully_unanswerable": 250,
+    "partially_answerable": 250
+  },
+  "components": {
+    "GENERAL_POSITIVE_REPLAY": 600,
+    "STRONG_PARTIAL": 250,
+    "STRUCTURAL_HARD_UNANSWERABLE": 250,
+    "TARGETED": 1000
+  },
+  "metric_header_inversions": 0,
+  "model_calls": 0,
+  "model_facing_derivable": 2100,
+  "period_type_violations": 0,
+  "retrieval_calls": 0,
+  "total": 2100,
+  "training": 0,
+  "unknown_citations": 0
+}
