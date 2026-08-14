@@ -1,0 +1,487 @@
+{
+  "claim_level_counts": {
+    "UC0_EVALUATOR_FALSE_POSITIVE": 6,
+    "UC10_OTHER": 0,
+    "UC1_CITATION_ONLY_DEFECT": 0,
+    "UC2_PARAMETER_KNOWLEDGE": 0,
+    "UC3_SCOPE_EXPANSION": 0,
+    "UC4_CAUSAL_INTERPRETATION": 0,
+    "UC5_NUMERIC_MUTATION": 15,
+    "UC6_PERIOD_SCOPE_MUTATION": 1,
+    "UC7_CALCULATION_REDERIVATION": 2,
+    "UC8_EXTRA_EXPLANATORY_TEXT": 1,
+    "UC9_PARTIAL_EVIDENCE_OVERREACH": 3
+  },
+  "method": "sealed packets plus deterministic source/period/number review; evaluator-only cases are not reclassified as runtime policy",
+  "query_count": 21,
+  "query_level_counts": {
+    "UC0_EVALUATOR_FALSE_POSITIVE": 6,
+    "UC10_OTHER": 0,
+    "UC1_CITATION_ONLY_DEFECT": 0,
+    "UC2_PARAMETER_KNOWLEDGE": 0,
+    "UC3_SCOPE_EXPANSION": 0,
+    "UC4_CAUSAL_INTERPRETATION": 0,
+    "UC5_NUMERIC_MUTATION": 15,
+    "UC6_PERIOD_SCOPE_MUTATION": 1,
+    "UC7_CALCULATION_REDERIVATION": 2,
+    "UC8_EXTRA_EXPLANATORY_TEXT": 1,
+    "UC9_PARTIAL_EVIDENCE_OVERREACH": 3
+  },
+  "records": [
+    {
+      "answer_text": "Verified evidence is insufficient to answer this question.",
+      "labels": [
+        "UC0_EVALUATOR_FALSE_POSITIVE",
+        "UC9_PARTIAL_EVIDENCE_OVERREACH"
+      ],
+      "metrics": {
+        "citation_complete": false,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": true,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": true,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": []
+      },
+      "query_id": "aapl_fy2025_007",
+      "route": "MULTI_EVIDENCE"
+    },
+    {
+      "answer_text": "$ 209,586 million [E1].",
+      "labels": [
+        "UC5_NUMERIC_MUTATION",
+        "UC6_PERIOD_SCOPE_MUTATION"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": true,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "209,586"
+        ]
+      },
+      "query_id": "aapl_fy2025_009",
+      "route": "DIRECT"
+    },
+    {
+      "answer_text": "$ 27,761 [E1]. Additional requested information is unavailable.",
+      "labels": [
+        "UC0_EVALUATOR_FALSE_POSITIVE"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": true,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "27,761"
+        ]
+      },
+      "query_id": "jpm_fy2025_005",
+      "route": "DIRECT"
+    },
+    {
+      "answer_text": "Verified evidence is insufficient to answer this question.",
+      "labels": [
+        "UC0_EVALUATOR_FALSE_POSITIVE",
+        "UC9_PARTIAL_EVIDENCE_OVERREACH"
+      ],
+      "metrics": {
+        "citation_complete": false,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": true,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": true,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": []
+      },
+      "query_id": "jpm_fy2025_007",
+      "route": "MULTI_EVIDENCE"
+    },
+    {
+      "answer_text": "$48,806 [E1].",
+      "labels": [
+        "UC5_NUMERIC_MUTATION"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": false,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "48,806"
+        ]
+      },
+      "query_id": "ko_fy2025_005",
+      "route": "DIRECT"
+    },
+    {
+      "answer_text": "$48,115 [E1]. Additional requested information is unavailable.",
+      "labels": [
+        "UC5_NUMERIC_MUTATION"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": false,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "48,115"
+        ]
+      },
+      "query_id": "ko_fy2025_009",
+      "route": "DIRECT"
+    },
+    {
+      "answer_text": "$ 120,81 [E1].",
+      "labels": [
+        "UC5_NUMERIC_MUTATION"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": true,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "120,81"
+        ]
+      },
+      "query_id": "msft_fy2025_002",
+      "route": "DIRECT"
+    },
+    {
+      "answer_text": "$ 281,72 [E1]. Additional requested information is unavailable.",
+      "labels": [
+        "UC5_NUMERIC_MUTATION"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": true,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "281,72"
+        ]
+      },
+      "query_id": "msft_fy2025_003",
+      "route": "DIRECT"
+    },
+    {
+      "answer_text": "$69,773 [E1]. Additional requested information is unavailable.",
+      "labels": [
+        "UC5_NUMERIC_MUTATION"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": true,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "69,773"
+        ]
+      },
+      "query_id": "msft_fy2025_004",
+      "route": "DIRECT"
+    },
+    {
+      "answer_text": "$ 120,81 [E1].",
+      "labels": [
+        "UC5_NUMERIC_MUTATION"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": true,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "120,81"
+        ]
+      },
+      "query_id": "msft_fy2025_005",
+      "route": "DIRECT"
+    },
+    {
+      "answer_text": "$ 281,72 [E1]. Additional requested information is unavailable.",
+      "labels": [
+        "UC5_NUMERIC_MUTATION",
+        "UC7_CALCULATION_REDERIVATION"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": true,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "281,72"
+        ]
+      },
+      "query_id": "msft_fy2025_006",
+      "route": "CALCULATION"
+    },
+    {
+      "answer_text": "$69,773 $59,661 $50,074  \nIntelligent Cloud  \nRevenue  \n$  \n106,26  \n5 $87,464 $72,944Cost of revenue40,171 29,611 24,109  \nOperating expenses21,505 20,040 20,424  \nOperating Income$44,589 $37,813 $28,411  \nMore Personal Computing [E1]. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable",
+      "labels": [
+        "UC5_NUMERIC_MUTATION",
+        "UC8_EXTRA_EXPLANATORY_TEXT"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": true,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "69,773",
+          "59,661",
+          "50,074",
+          "106,26",
+          "87,464",
+          "72,944",
+          "29,611",
+          "24,109",
+          "20,040",
+          "20,424",
+          "44,589",
+          "37,813",
+          "28,411"
+        ]
+      },
+      "query_id": "msft_fy2025_009",
+      "route": "DIRECT"
+    },
+    {
+      "answer_text": "$ 26,974 [E1]. Additional requested information is unavailable.",
+      "labels": [
+        "UC5_NUMERIC_MUTATION"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": true,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "26,974"
+        ]
+      },
+      "query_id": "nvda_fy2025_001",
+      "route": "DIRECT"
+    },
+    {
+      "answer_text": "$5,353 [E1].",
+      "labels": [
+        "UC0_EVALUATOR_FALSE_POSITIVE"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": true,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "5,353"
+        ]
+      },
+      "query_id": "pfe_fy2024_002",
+      "route": "DIRECT"
+    },
+    {
+      "answer_text": "$1.1 billion [E1].",
+      "labels": [
+        "UC5_NUMERIC_MUTATION"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": false,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "1.1"
+        ]
+      },
+      "query_id": "pfe_fy2024_003",
+      "route": "DIRECT"
+    },
+    {
+      "answer_text": "Paxlovid revenue in FY2024 was $1,279 million. [E1]. Additional requested information is unavailable.",
+      "labels": [
+        "UC5_NUMERIC_MUTATION"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": true,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "1,279"
+        ]
+      },
+      "query_id": "pfe_fy2024_004",
+      "route": "DIRECT"
+    },
+    {
+      "answer_text": "$7,366 [E1].",
+      "labels": [
+        "UC0_EVALUATOR_FALSE_POSITIVE"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": true,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "7,366"
+        ]
+      },
+      "query_id": "pfe_fy2024_005",
+      "route": "DIRECT"
+    },
+    {
+      "answer_text": "$0.00 [E1].",
+      "labels": [
+        "UC5_NUMERIC_MUTATION"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": false,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "0.00"
+        ]
+      },
+      "query_id": "pfe_fy2024_009",
+      "route": "DIRECT"
+    },
+    {
+      "answer_text": "$ 94,827 [E1].",
+      "labels": [
+        "UC5_NUMERIC_MUTATION"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": true,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "94,827"
+        ]
+      },
+      "query_id": "tsla_fy2025_005",
+      "route": "DIRECT"
+    },
+    {
+      "answer_text": "$ 94,827 [E1].",
+      "labels": [
+        "UC5_NUMERIC_MUTATION",
+        "UC7_CALCULATION_REDERIVATION"
+      ],
+      "metrics": {
+        "citation_complete": true,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": false,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": true,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": [
+          "94,827"
+        ]
+      },
+      "query_id": "tsla_fy2025_007",
+      "route": "CALCULATION"
+    },
+    {
+      "answer_text": "Verified evidence is insufficient to answer this question.",
+      "labels": [
+        "UC0_EVALUATOR_FALSE_POSITIVE",
+        "UC9_PARTIAL_EVIDENCE_OVERREACH"
+      ],
+      "metrics": {
+        "citation_complete": false,
+        "citation_valid": true,
+        "envelope_valid": true,
+        "grounded": false,
+        "numeric_fidelity": true,
+        "period_fidelity": true,
+        "unit_currency_scale_fidelity": true,
+        "unknown_citations": [],
+        "unsupported_numeric_claims": []
+      },
+      "query_id": "v_fy2025_007",
+      "route": "MULTI_EVIDENCE"
+    }
+  ],
+  "reported_unsupported": "21/64"
+}

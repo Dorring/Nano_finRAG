@@ -1,0 +1,24 @@
+{
+  "base": "0e98a6cd5a99adac031251de2b62952b8b16ff39",
+  "corrected_route_policy": "DIRECT candidate only; CALCULATION and MULTI not eligible",
+  "grounding_alignment_effective": "partial",
+  "grounding_alignment_r1_acceptance_pass": false,
+  "grounding_alignment_r1_behavioral_shift": true,
+  "model_calls": 0,
+  "model_role": "financial_selective_generator_candidate",
+  "next_gate": "v2_09_r1_targeted_grounding_dataset",
+  "official_metrics_unchanged": true,
+  "production": "V1",
+  "r2_alignment_justified": true,
+  "retrieval_calls": 0,
+  "same_3600_second_epoch_recommended": false,
+  "summary": {
+    "calc_exact_preserve": 2,
+    "calc_mutation": 9,
+    "numeric_true_errors": 15,
+    "reported_unsupported": "21/64",
+    "true_semantic_unsupported": "15/64",
+    "unsafe_validator_missed": 15
+  },
+  "training": 0
+}

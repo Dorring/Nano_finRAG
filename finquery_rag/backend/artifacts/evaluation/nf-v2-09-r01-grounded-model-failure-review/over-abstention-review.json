@@ -1,0 +1,19 @@
+{
+  "classification": {
+    "OA0_legitimate_insufficiency": 0,
+    "OA1_full_unnecessary_refusal": 3,
+    "OA2_partial_unnecessary_refusal": 0,
+    "OA3_overly_cautious_but_answer_supplied": 13
+  },
+  "holdout_answerable_over_abstention": "13/185",
+  "holdout_partial_full_over_refusal": 0,
+  "holdout_rate_percent": 7.03,
+  "holdout_unanswerable_correct_refusal": 14,
+  "interpretation": "The 13 holdout positive refusals are the supplied over-abstention diagnostic; the three Tier-B cases are answerable MULTI full refusals.",
+  "tier_b_by_route": {
+    "CALCULATION": 0,
+    "DIRECT": 0,
+    "MULTI_EVIDENCE": 3
+  },
+  "tier_b_incorrect_full_abstention": 3
+}

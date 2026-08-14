@@ -1,0 +1,15 @@
+{
+  "evaluator_contract_false_positive": "6/64",
+  "false_positive_query_ids": [
+    "aapl_fy2025_007",
+    "jpm_fy2025_005",
+    "jpm_fy2025_007",
+    "pfe_fy2024_002",
+    "pfe_fy2024_005",
+    "v_fy2025_007"
+  ],
+  "interpretation": "Three comma-tokenization cases and three answerable MULTI abstentions are evaluator/contract diagnostics, not evidence that the model invented a supported financial fact.",
+  "official_metric_preserved": true,
+  "reported": "21/64",
+  "true_semantic_unsupported": "15/64"
+}

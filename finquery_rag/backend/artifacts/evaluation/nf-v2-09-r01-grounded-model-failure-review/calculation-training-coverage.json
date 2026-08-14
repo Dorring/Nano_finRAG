@@ -1,0 +1,23 @@
+{
+  "contains_canonical_calculation_result": 453,
+  "distractor_operand_examples": 0,
+  "negative_calculation_examples_in_train": 0,
+  "operation_distribution": {
+    "average": 3,
+    "debt_ratio": 0,
+    "difference": 26,
+    "gross_margin": 0,
+    "growth_rate": 49,
+    "net_margin": 0,
+    "other": 275,
+    "percentage_share": 80,
+    "scale_conversion": 3,
+    "sum": 17
+  },
+  "percentage_of_train": 12.583,
+  "plausible_but_forbidden_recompute_negatives": 0,
+  "requires_exact_result_copy": 453,
+  "samples": 453,
+  "source": "direct inspection of route and message fields; no inference from evaluation labels",
+  "teaches_do_not_recalculate": 453
+}

@@ -1,0 +1,210 @@
+{
+  "counts": {
+    "NF0_WRONG_COPY": 10,
+    "NF1_FORMAT_EQUIVALENT_EVALUATOR_MISMATCH": 3,
+    "NF2_SCALE_CONVERSION": 1,
+    "NF3_PERCENT_FORMAT": 0,
+    "NF4_EXTRA_UNSUPPORTED_NUMBER": 1,
+    "NF5_RECALCULATION": 2,
+    "NF6_PERIOD_NUMBER_SWAP": 1,
+    "NF7_OTHER": 0
+  },
+  "evaluator_false_positive_numeric": 3,
+  "method": "comma-aware source review, period-aware where packet metadata exposes the distinction",
+  "records": [
+    {
+      "answer_text": "$ 209,586 million [E1].",
+      "category": "NF6_PERIOD_NUMBER_SWAP",
+      "query_id": "aapl_fy2025_009",
+      "route": "DIRECT",
+      "source_context_support": true,
+      "unsupported_numeric_claims": [
+        "209,586"
+      ]
+    },
+    {
+      "answer_text": "$ 27,761 [E1]. Additional requested information is unavailable.",
+      "category": "NF1_FORMAT_EQUIVALENT_EVALUATOR_MISMATCH",
+      "query_id": "jpm_fy2025_005",
+      "route": "DIRECT",
+      "source_context_support": true,
+      "unsupported_numeric_claims": [
+        "27,761"
+      ]
+    },
+    {
+      "answer_text": "$48,806 [E1].",
+      "category": "NF0_WRONG_COPY",
+      "query_id": "ko_fy2025_005",
+      "route": "DIRECT",
+      "source_context_support": true,
+      "unsupported_numeric_claims": [
+        "48,806"
+      ]
+    },
+    {
+      "answer_text": "$48,115 [E1]. Additional requested information is unavailable.",
+      "category": "NF0_WRONG_COPY",
+      "query_id": "ko_fy2025_009",
+      "route": "DIRECT",
+      "source_context_support": true,
+      "unsupported_numeric_claims": [
+        "48,115"
+      ]
+    },
+    {
+      "answer_text": "$ 120,81 [E1].",
+      "category": "NF0_WRONG_COPY",
+      "query_id": "msft_fy2025_002",
+      "route": "DIRECT",
+      "source_context_support": true,
+      "unsupported_numeric_claims": [
+        "120,81"
+      ]
+    },
+    {
+      "answer_text": "$ 281,72 [E1]. Additional requested information is unavailable.",
+      "category": "NF0_WRONG_COPY",
+      "query_id": "msft_fy2025_003",
+      "route": "DIRECT",
+      "source_context_support": true,
+      "unsupported_numeric_claims": [
+        "281,72"
+      ]
+    },
+    {
+      "answer_text": "$69,773 [E1]. Additional requested information is unavailable.",
+      "category": "NF0_WRONG_COPY",
+      "query_id": "msft_fy2025_004",
+      "route": "DIRECT",
+      "source_context_support": true,
+      "unsupported_numeric_claims": [
+        "69,773"
+      ]
+    },
+    {
+      "answer_text": "$ 120,81 [E1].",
+      "category": "NF0_WRONG_COPY",
+      "query_id": "msft_fy2025_005",
+      "route": "DIRECT",
+      "source_context_support": true,
+      "unsupported_numeric_claims": [
+        "120,81"
+      ]
+    },
+    {
+      "answer_text": "$ 281,72 [E1]. Additional requested information is unavailable.",
+      "category": "NF5_RECALCULATION",
+      "query_id": "msft_fy2025_006",
+      "route": "CALCULATION",
+      "source_context_support": true,
+      "unsupported_numeric_claims": [
+        "281,72"
+      ]
+    },
+    {
+      "answer_text": "$69,773 $59,661 $50,074  \nIntelligent Cloud  \nRevenue  \n$  \n106,26  \n5 $87,464 $72,944Cost of revenue40,171 29,611 24,109  \nOperating expenses21,505 20,040 20,424  \nOperating Income$44,589 $37,813 $28,411  \nMore Personal Computing [E1]. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable",
+      "category": "NF4_EXTRA_UNSUPPORTED_NUMBER",
+      "query_id": "msft_fy2025_009",
+      "route": "DIRECT",
+      "source_context_support": true,
+      "unsupported_numeric_claims": [
+        "69,773",
+        "59,661",
+        "50,074",
+        "106,26",
+        "87,464",
+        "72,944",
+        "29,611",
+        "24,109",
+        "20,040",
+        "20,424",
+        "44,589",
+        "37,813",
+        "28,411"
+      ]
+    },
+    {
+      "answer_text": "$ 26,974 [E1]. Additional requested information is unavailable.",
+      "category": "NF0_WRONG_COPY",
+      "query_id": "nvda_fy2025_001",
+      "route": "DIRECT",
+      "source_context_support": true,
+      "unsupported_numeric_claims": [
+        "26,974"
+      ]
+    },
+    {
+      "answer_text": "$5,353 [E1].",
+      "category": "NF1_FORMAT_EQUIVALENT_EVALUATOR_MISMATCH",
+      "query_id": "pfe_fy2024_002",
+      "route": "DIRECT",
+      "source_context_support": true,
+      "unsupported_numeric_claims": [
+        "5,353"
+      ]
+    },
+    {
+      "answer_text": "$1.1 billion [E1].",
+      "category": "NF0_WRONG_COPY",
+      "query_id": "pfe_fy2024_003",
+      "route": "DIRECT",
+      "source_context_support": false,
+      "unsupported_numeric_claims": [
+        "1.1"
+      ]
+    },
+    {
+      "answer_text": "Paxlovid revenue in FY2024 was $1,279 million. [E1]. Additional requested information is unavailable.",
+      "category": "NF2_SCALE_CONVERSION",
+      "query_id": "pfe_fy2024_004",
+      "route": "DIRECT",
+      "source_context_support": true,
+      "unsupported_numeric_claims": [
+        "1,279"
+      ]
+    },
+    {
+      "answer_text": "$7,366 [E1].",
+      "category": "NF1_FORMAT_EQUIVALENT_EVALUATOR_MISMATCH",
+      "query_id": "pfe_fy2024_005",
+      "route": "DIRECT",
+      "source_context_support": true,
+      "unsupported_numeric_claims": [
+        "7,366"
+      ]
+    },
+    {
+      "answer_text": "$0.00 [E1].",
+      "category": "NF0_WRONG_COPY",
+      "query_id": "pfe_fy2024_009",
+      "route": "DIRECT",
+      "source_context_support": false,
+      "unsupported_numeric_claims": [
+        "0.00"
+      ]
+    },
+    {
+      "answer_text": "$ 94,827 [E1].",
+      "category": "NF0_WRONG_COPY",
+      "query_id": "tsla_fy2025_005",
+      "route": "DIRECT",
+      "source_context_support": true,
+      "unsupported_numeric_claims": [
+        "94,827"
+      ]
+    },
+    {
+      "answer_text": "$ 94,827 [E1].",
+      "category": "NF5_RECALCULATION",
+      "query_id": "tsla_fy2025_007",
+      "route": "CALCULATION",
+      "source_context_support": true,
+      "unsupported_numeric_claims": [
+        "94,827"
+      ]
+    }
+  ],
+  "reported_failures": "18/64",
+  "true_semantic_numeric_errors": 15
+}

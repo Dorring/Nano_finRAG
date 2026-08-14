@@ -1,0 +1,93 @@
+{
+  "counts": {
+    "VG0_DETECTABLE_EXISTING_BUG": 0,
+    "VG1_NUMERIC_CAN_BE_DETECTED": 0,
+    "VG2_PERIOD_CAN_BE_DETECTED": 0,
+    "VG3_CITATION_CAN_BE_DETECTED": 0,
+    "VG4_SEMANTIC_SCOPE_NOT_DETERMINISTIC": 15,
+    "VG5_CAUSAL_CLAIM_NOT_DETERMINISTIC": 0,
+    "VG6_PARAMETER_KNOWLEDGE_NOT_DETERMINISTIC": 0,
+    "VG7_OTHER": 0
+  },
+  "deterministically_fixable": 0,
+  "recommendation": "Do not add an LLM judge in this gate; preserve deterministic number/period/unit/citation checks and treat arbitrary semantic scope/causal/parameter claims as a known gap.",
+  "records": [
+    {
+      "answer_text": "$ 209,586 million [E1].",
+      "category": "VG4_SEMANTIC_SCOPE_NOT_DETERMINISTIC",
+      "query_id": "aapl_fy2025_009"
+    },
+    {
+      "answer_text": "$ 27,761 [E1]. Additional requested information is unavailable.",
+      "category": "VG4_SEMANTIC_SCOPE_NOT_DETERMINISTIC",
+      "query_id": "jpm_fy2025_005"
+    },
+    {
+      "answer_text": "$48,806 [E1].",
+      "category": "VG4_SEMANTIC_SCOPE_NOT_DETERMINISTIC",
+      "query_id": "ko_fy2025_005"
+    },
+    {
+      "answer_text": "$48,115 [E1]. Additional requested information is unavailable.",
+      "category": "VG4_SEMANTIC_SCOPE_NOT_DETERMINISTIC",
+      "query_id": "ko_fy2025_009"
+    },
+    {
+      "answer_text": "$ 120,81 [E1].",
+      "category": "VG4_SEMANTIC_SCOPE_NOT_DETERMINISTIC",
+      "query_id": "msft_fy2025_002"
+    },
+    {
+      "answer_text": "$ 281,72 [E1]. Additional requested information is unavailable.",
+      "category": "VG4_SEMANTIC_SCOPE_NOT_DETERMINISTIC",
+      "query_id": "msft_fy2025_003"
+    },
+    {
+      "answer_text": "$69,773 [E1]. Additional requested information is unavailable.",
+      "category": "VG4_SEMANTIC_SCOPE_NOT_DETERMINISTIC",
+      "query_id": "msft_fy2025_004"
+    },
+    {
+      "answer_text": "$ 120,81 [E1].",
+      "category": "VG4_SEMANTIC_SCOPE_NOT_DETERMINISTIC",
+      "query_id": "msft_fy2025_005"
+    },
+    {
+      "answer_text": "$ 281,72 [E1]. Additional requested information is unavailable.",
+      "category": "VG4_SEMANTIC_SCOPE_NOT_DETERMINISTIC",
+      "query_id": "msft_fy2025_006"
+    },
+    {
+      "answer_text": "$69,773 $59,661 $50,074  \nIntelligent Cloud  \nRevenue  \n$  \n106,26  \n5 $87,464 $72,944Cost of revenue40,171 29,611 24,109  \nOperating expenses21,505 20,040 20,424  \nOperating Income$44,589 $37,813 $28,411  \nMore Personal Computing [E1]. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable",
+      "category": "VG4_SEMANTIC_SCOPE_NOT_DETERMINISTIC",
+      "query_id": "msft_fy2025_009"
+    },
+    {
+      "answer_text": "$ 26,974 [E1]. Additional requested information is unavailable.",
+      "category": "VG4_SEMANTIC_SCOPE_NOT_DETERMINISTIC",
+      "query_id": "nvda_fy2025_001"
+    },
+    {
+      "answer_text": "$5,353 [E1].",
+      "category": "VG4_SEMANTIC_SCOPE_NOT_DETERMINISTIC",
+      "query_id": "pfe_fy2024_002"
+    },
+    {
+      "answer_text": "$7,366 [E1].",
+      "category": "VG4_SEMANTIC_SCOPE_NOT_DETERMINISTIC",
+      "query_id": "pfe_fy2024_005"
+    },
+    {
+      "answer_text": "$ 94,827 [E1].",
+      "category": "VG4_SEMANTIC_SCOPE_NOT_DETERMINISTIC",
+      "query_id": "tsla_fy2025_005"
+    },
+    {
+      "answer_text": "$ 94,827 [E1].",
+      "category": "VG4_SEMANTIC_SCOPE_NOT_DETERMINISTIC",
+      "query_id": "tsla_fy2025_007"
+    }
+  ],
+  "semantic_or_nondeterministic": 15,
+  "unsafe_missed": 15
+}

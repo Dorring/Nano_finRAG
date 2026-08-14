@@ -1,0 +1,14 @@
+{
+  "effective_examples": 1750,
+  "new_samples": 1400,
+  "r1_replay_fraction": 0.2,
+  "r1_replay_samples": 350,
+  "replay_purpose": [
+    "citation discipline",
+    "period fidelity",
+    "abstention behavior"
+  ],
+  "same_3600_second_epoch": false,
+  "sampling": "80% targeted R2 + 20% controlled R1 replay",
+  "training_duration": "short targeted alignment ~0.5 epoch equivalent"
+}

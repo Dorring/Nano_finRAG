@@ -1,0 +1,23 @@
+{
+  "bucket_counts": {
+    "A_strict_direct_grounding": 250,
+    "B_extra_claim_suppression": 200,
+    "C_numeric_exact_copy": 250,
+    "D_canonical_calculation_verbalization": 220,
+    "E_calculation_no_recompute_negatives": 180,
+    "F_scope_period_distractors": 180,
+    "G_partial_answer_without_over_refusal": 120
+  },
+  "design": "Use novel source/question templates and holdout-safe contexts; do not copy frozen Tier-B questions.",
+  "frozen_benchmark_examples": 0,
+  "justified": true,
+  "max_recommended_without_new_evidence": 2500,
+  "new_targeted_samples": 1400,
+  "rationale": {
+    "canonical_calculation_mutation": 9,
+    "extra_or_scope_claims": 4,
+    "holdout_answerable_over_abstention": 13,
+    "multi_partial_refusal": 3,
+    "numeric_and_metric_copy": 15
+  }
+}

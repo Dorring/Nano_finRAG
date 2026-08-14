@@ -1,0 +1,16 @@
+{
+  "behavior_distribution": {
+    "PARTIAL_DISTRACTOR": 758,
+    "POSITIVE_GROUNDED": 1383,
+    "UNANSWERABLE": 769
+  },
+  "coverage_interpretation": "These are observable training-contract proxies, not semantic guarantees; direct route has no explicit per-failure taxonomy labels.",
+  "distractor_examples": 758,
+  "exact_numeric_copy_evidence": 2910,
+  "extra_claim_suppression_short_answer_target": 2723,
+  "parameter_knowledge_suppression_target": 2769,
+  "parent_child_or_total_component_terms": 1749,
+  "same_metric_wrong_period_or_multiple_period_evidence": 2026,
+  "samples": 2910,
+  "scope_or_segment_explicit_evidence": 2910
+}

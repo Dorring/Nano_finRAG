@@ -1,0 +1,20 @@
+{
+  "acceptance_gates_changed": false,
+  "grounding_alignment_effective": "partial",
+  "model_role": "financial_selective_generator_candidate",
+  "production_switch": false,
+  "routes": {
+    "CALCULATION": {
+      "eligibility": "not_eligible",
+      "reason": "canonical result preserved 2/11; mutated/recalculated 9/11"
+    },
+    "DIRECT": {
+      "eligibility": "candidate_only",
+      "reason": "32/48 grounded; remaining failures concentrated in numeric/selection restraint"
+    },
+    "MULTI_EVIDENCE": {
+      "eligibility": "not_eligible",
+      "reason": "grounded 2/5; citation complete 2/5; three full refusals"
+    }
+  }
+}

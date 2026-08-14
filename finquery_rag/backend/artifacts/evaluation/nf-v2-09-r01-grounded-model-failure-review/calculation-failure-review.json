@@ -1,0 +1,143 @@
+{
+  "canonical_mutation": 9,
+  "citation_defect": 0,
+  "counts": {
+    "CF0_EXACT_PRESERVE": 2,
+    "CF1_FORMAT_ONLY": 0,
+    "CF2_RECALCULATED_SAME_RESULT": 0,
+    "CF3_RECALCULATED_WRONG_RESULT": 6,
+    "CF4_CANONICAL_RESULT_MUTATION": 6,
+    "CF5_EXTRA_ARITHMETIC": 2,
+    "CF6_CITATION_DEFECT": 0,
+    "CF7_OTHER": 3
+  },
+  "exact_preserve": 2,
+  "format_only": 0,
+  "n": 11,
+  "note": "The sealed route audit reports mutation/recalculation; per-row text does not expose hidden arithmetic traces, so copied operands and wrong derived values are not claimed to be literal internal reasoning.",
+  "recalculated_same": 0,
+  "recalculated_wrong": 6,
+  "records": [
+    {
+      "canonical_result": "0.0643",
+      "canonical_result_exactly_preserved": false,
+      "classification": "CF4_CANONICAL_RESULT_MUTATION",
+      "extra_arithmetic_detected": false,
+      "generated_text": "$ 416,161 million [E1].",
+      "period_preserved": true,
+      "query_id": "aapl_fy2025_006",
+      "recalculated_or_mutated": true,
+      "unit_currency_scale_preserved": true
+    },
+    {
+      "canonical_result": "0.1054",
+      "canonical_result_exactly_preserved": false,
+      "classification": "CF4_CANONICAL_RESULT_MUTATION",
+      "extra_arithmetic_detected": false,
+      "generated_text": "$ 4,424,900 [E1]. Additional requested information is unavailable.",
+      "period_preserved": true,
+      "query_id": "jpm_fy2025_006",
+      "recalculated_or_mutated": true,
+      "unit_currency_scale_preserved": true
+    },
+    {
+      "canonical_result": "0.0187",
+      "canonical_result_exactly_preserved": false,
+      "classification": "CF7_OTHER",
+      "extra_arithmetic_detected": false,
+      "generated_text": "Net Operating Revenues [E1]. Additional requested information is unavailable.",
+      "period_preserved": true,
+      "query_id": "ko_fy2025_006",
+      "recalculated_or_mutated": true,
+      "unit_currency_scale_preserved": true
+    },
+    {
+      "canonical_result": "0.225965249",
+      "canonical_result_exactly_preserved": false,
+      "classification": "CF7_OTHER",
+      "extra_arithmetic_detected": false,
+      "generated_text": "The Coca-Cola Company's total net operating revenues came from EMEA third-party revenue [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [E1]. [",
+      "period_preserved": true,
+      "query_id": "ko_fy2025_007",
+      "recalculated_or_mutated": true,
+      "unit_currency_scale_preserved": true
+    },
+    {
+      "canonical_result": "0.1493215623",
+      "canonical_result_exactly_preserved": false,
+      "classification": "CF4_CANONICAL_RESULT_MUTATION",
+      "extra_arithmetic_detected": true,
+      "generated_text": "$ 281,72 [E1]. Additional requested information is unavailable.",
+      "period_preserved": true,
+      "query_id": "msft_fy2025_006",
+      "recalculated_or_mutated": true,
+      "unit_currency_scale_preserved": true
+    },
+    {
+      "canonical_result": "0.3771954111",
+      "canonical_result_exactly_preserved": true,
+      "classification": "CF0_EXACT_PRESERVE",
+      "extra_arithmetic_detected": false,
+      "generated_text": "0.3771954111 [C1]. Additional requested information is unavailable.",
+      "period_preserved": true,
+      "query_id": "msft_fy2025_007",
+      "recalculated_or_mutated": false,
+      "unit_currency_scale_preserved": true
+    },
+    {
+      "canonical_result": "1.1420",
+      "canonical_result_exactly_preserved": true,
+      "classification": "CF0_EXACT_PRESERVE",
+      "extra_arithmetic_detected": false,
+      "generated_text": "1.1420 [C1].",
+      "period_preserved": true,
+      "query_id": "nvda_fy2025_006",
+      "recalculated_or_mutated": false,
+      "unit_currency_scale_preserved": true
+    },
+    {
+      "canonical_result": "0.0684",
+      "canonical_result_exactly_preserved": false,
+      "classification": "CF4_CANONICAL_RESULT_MUTATION",
+      "extra_arithmetic_detected": false,
+      "generated_text": "63,627 million [E1].",
+      "period_preserved": true,
+      "query_id": "pfe_fy2024_006",
+      "recalculated_or_mutated": true,
+      "unit_currency_scale_preserved": true
+    },
+    {
+      "canonical_result": "-0.0293069915",
+      "canonical_result_exactly_preserved": false,
+      "classification": "CF4_CANONICAL_RESULT_MUTATION",
+      "extra_arithmetic_detected": false,
+      "generated_text": "94,827 [E1].",
+      "period_preserved": true,
+      "query_id": "tsla_fy2025_006",
+      "recalculated_or_mutated": true,
+      "unit_currency_scale_preserved": true
+    },
+    {
+      "canonical_result": "56755000000.0",
+      "canonical_result_exactly_preserved": false,
+      "classification": "CF4_CANONICAL_RESULT_MUTATION",
+      "extra_arithmetic_detected": true,
+      "generated_text": "$ 94,827 [E1].",
+      "period_preserved": true,
+      "query_id": "tsla_fy2025_007",
+      "recalculated_or_mutated": true,
+      "unit_currency_scale_preserved": true
+    },
+    {
+      "canonical_result": "0.1133997662",
+      "canonical_result_exactly_preserved": false,
+      "classification": "CF7_OTHER",
+      "extra_arithmetic_detected": false,
+      "generated_text": "Net revenue [C1]. Additional requested information is unavailable.",
+      "period_preserved": true,
+      "query_id": "v_fy2025_006",
+      "recalculated_or_mutated": true,
+      "unit_currency_scale_preserved": true
+    }
+  ]
+}
