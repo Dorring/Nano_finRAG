@@ -1,0 +1,7 @@
+{
+  "CALCULATION": "not_eligible",
+  "DIRECT": "not_eligible",
+  "MULTI_EVIDENCE": "grounded_financial_primary_candidate",
+  "fallback": "qwen3.7-plus",
+  "production_switch": false
+}

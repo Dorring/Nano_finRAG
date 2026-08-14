@@ -1,0 +1,29 @@
+{
+  "candidate": "finquery-finance-grounded-v3-r2",
+  "checkpoint": "model_000003.pt",
+  "dataset_sha256": "a390ed69e5f2c89df5d2a9973bafce277e88bfac55a3a19d835e00c0feae8d19",
+  "do_not_use_bpb_as_quality": true,
+  "lineage": [
+    "d24_final_mixdata",
+    "d24_finance_v2_lr010",
+    "d24_grounding_align",
+    "d24_grounding_align_r2"
+  ],
+  "parent": "d24_finance_v2_lr010",
+  "preflight_commit": "b3a63542adfc6ec4dd30bf56410f5a8591574acb",
+  "r1": {
+    "candidate": "finquery-finance-grounded-v3-r1",
+    "epochs": 1,
+    "optimizer_steps": 7,
+    "samples": 3600
+  },
+  "r2": {
+    "candidate": "finquery-finance-grounded-v3-r2",
+    "epochs": 1,
+    "final_val_bpb": 0.4058402659137474,
+    "optimizer_steps": 3,
+    "replay": 350,
+    "samples": 1750,
+    "targeted": 1400
+  }
+}

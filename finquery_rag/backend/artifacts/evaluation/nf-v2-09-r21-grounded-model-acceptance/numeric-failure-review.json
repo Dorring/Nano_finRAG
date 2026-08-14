@@ -1,0 +1,118 @@
+{
+  "category_counts": {
+    "extra_unsupported_number": 13,
+    "other": 0,
+    "percent_formatting": 0,
+    "recalculation": 1,
+    "scale_conversion": 0,
+    "wrong_copy": 0,
+    "wrong_metric_selection": 0,
+    "wrong_period_selection": 0
+  },
+  "diagnostic_only": true,
+  "reported_numeric_failures": 14,
+  "rows": [
+    {
+      "category": "extra_unsupported_number",
+      "query_id": "ko_fy2025_009",
+      "unsupported_numeric_claims": [
+        "48,115,",
+        "5.59%"
+      ]
+    },
+    {
+      "category": "extra_unsupported_number",
+      "query_id": "msft_fy2025_001",
+      "unsupported_numeric_claims": [
+        "281,72"
+      ]
+    },
+    {
+      "category": "extra_unsupported_number",
+      "query_id": "msft_fy2025_002",
+      "unsupported_numeric_claims": [
+        "120,81"
+      ]
+    },
+    {
+      "category": "extra_unsupported_number",
+      "query_id": "msft_fy2025_003",
+      "unsupported_numeric_claims": [
+        "281,72"
+      ]
+    },
+    {
+      "category": "extra_unsupported_number",
+      "query_id": "msft_fy2025_004",
+      "unsupported_numeric_claims": [
+        "69,773,",
+        "106,26%"
+      ]
+    },
+    {
+      "category": "extra_unsupported_number",
+      "query_id": "msft_fy2025_009",
+      "unsupported_numeric_claims": [
+        "69,773,",
+        "59,661,"
+      ]
+    },
+    {
+      "category": "extra_unsupported_number",
+      "query_id": "nvda_fy2025_001",
+      "unsupported_numeric_claims": [
+        "26,974"
+      ]
+    },
+    {
+      "category": "extra_unsupported_number",
+      "query_id": "pfe_fy2024_002",
+      "unsupported_numeric_claims": [
+        "1,279"
+      ]
+    },
+    {
+      "category": "extra_unsupported_number",
+      "query_id": "pfe_fy2024_003",
+      "unsupported_numeric_claims": [
+        "1.1"
+      ]
+    },
+    {
+      "category": "extra_unsupported_number",
+      "query_id": "pfe_fy2024_004",
+      "unsupported_numeric_claims": [
+        "1,279"
+      ]
+    },
+    {
+      "category": "extra_unsupported_number",
+      "query_id": "pfe_fy2024_005",
+      "unsupported_numeric_claims": [
+        "7,366"
+      ]
+    },
+    {
+      "category": "extra_unsupported_number",
+      "query_id": "tsla_fy2025_003",
+      "unsupported_numeric_claims": [
+        "2,763,",
+        "1,790"
+      ]
+    },
+    {
+      "category": "extra_unsupported_number",
+      "query_id": "tsla_fy2025_005",
+      "unsupported_numeric_claims": [
+        "94,827"
+      ]
+    },
+    {
+      "category": "recalculation",
+      "query_id": "tsla_fy2025_007",
+      "unsupported_numeric_claims": [
+        "69,526"
+      ]
+    }
+  ]
+}

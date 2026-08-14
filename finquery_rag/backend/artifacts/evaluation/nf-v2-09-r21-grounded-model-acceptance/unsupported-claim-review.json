@@ -1,0 +1,166 @@
+{
+  "category_counts": {
+    "UC0": 0,
+    "UC1": 1,
+    "UC10": 0,
+    "UC2": 0,
+    "UC3": 0,
+    "UC4": 0,
+    "UC5": 14,
+    "UC6": 5,
+    "UC7": 1,
+    "UC8": 4,
+    "UC9": 0
+  },
+  "diagnostic_evaluator_or_contract_only": 1,
+  "diagnostic_only": true,
+  "diagnostic_true_semantic_unsupported": 19,
+  "official_reported_unsupported": 20,
+  "rows": [
+    {
+      "labels": [
+        "UC1"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "jpm_fy2025_005"
+    },
+    {
+      "labels": [
+        "UC8"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "jpm_fy2025_006"
+    },
+    {
+      "labels": [
+        "UC8"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "jpm_fy2025_009"
+    },
+    {
+      "labels": [
+        "UC5",
+        "UC6"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "ko_fy2025_009"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "msft_fy2025_001"
+    },
+    {
+      "labels": [
+        "UC5",
+        "UC6"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "msft_fy2025_002"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "msft_fy2025_003"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "msft_fy2025_004"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "msft_fy2025_009"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "nvda_fy2025_001"
+    },
+    {
+      "labels": [
+        "UC8"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "nvda_fy2025_003"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "pfe_fy2024_002"
+    },
+    {
+      "labels": [
+        "UC5",
+        "UC6"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "pfe_fy2024_003"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "pfe_fy2024_004"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "pfe_fy2024_005"
+    },
+    {
+      "labels": [
+        "UC6"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "pfe_fy2024_009"
+    },
+    {
+      "labels": [
+        "UC5",
+        "UC6"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "tsla_fy2025_003"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "tsla_fy2025_005"
+    },
+    {
+      "labels": [
+        "UC5",
+        "UC7"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "tsla_fy2025_007"
+    },
+    {
+      "labels": [
+        "UC8"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "v_fy2025_009"
+    }
+  ]
+}
