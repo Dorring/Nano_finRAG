@@ -1,0 +1,28 @@
+{
+  "behavior_target_counts": {
+    "ABSTAIN_FULLY": 50,
+    "ANSWER_CANONICAL_CALCULATION": 500,
+    "ANSWER_DIRECTLY": 1070,
+    "ANSWER_PLUS_PARTIAL_REFUSAL": 130
+  },
+  "bucket_counts": {
+    "CALCULATION_NO_RECOMPUTE": 500,
+    "DIRECT_NUMERIC_SELECTION": 500,
+    "EXTRA_CLAIM_SUPPRESSION": 150,
+    "PARTIAL_ANSWER_NO_OVERREFUSAL": 50,
+    "R1_REPLAY": 350,
+    "SCOPE_PERIOD_NEAR_MATCH": 200
+  },
+  "calculation_count": 500,
+  "calculation_share": 28.57,
+  "fully_answerable_positive_targets": 1570,
+  "partial_targets_with_supported_answer": 130,
+  "positive_factual_or_numeric_answer_rate": 97.14,
+  "positive_factual_or_numeric_answer_targets": 1700,
+  "replay_counts": {
+    "R1_REPLAY_PARTIAL": 80,
+    "R1_REPLAY_POSITIVE": 220,
+    "R1_REPLAY_UNANSWERABLE": 50,
+    "TARGETED": 1400
+  }
+}

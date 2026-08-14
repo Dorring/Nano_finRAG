@@ -1,0 +1,21 @@
+{
+  "additional_steps_on_current_r2": "not_recommended",
+  "balanced_retraining_from_r1": "recommended",
+  "base": "aa16da6742e734e3a0850d61f6fd0c6d1382cbe2",
+  "current_r2_checkpoint": "reject_as_retraining_parent",
+  "model_calls": 0,
+  "next_gate": "v2_09_r22_balanced_dataset_build",
+  "primary_imbalance": [
+    "BD0_INSUFFICIENT_ABSTENTION_REPLAY",
+    "BD1_INSUFFICIENT_HARD_NEGATIVE_SIMILARITY",
+    "BD2_POSITIVE_ANSWER_DOMINANCE",
+    "BD3_CALCULATION_OVERSAMPLING"
+  ],
+  "r2_dataset_sha256": "a390ed69e5f2c89df5d2a9973bafce277e88bfac55a3a19d835e00c0feae8d19",
+  "r2_dataset_sha_match": true,
+  "r2_refusal_regression_explained_by_training_mix": "true",
+  "recommended_total": 2100,
+  "retrieval_calls": 0,
+  "same_r2_dataset_retraining": "not_recommended",
+  "training": 0
+}

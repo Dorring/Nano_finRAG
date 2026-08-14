@@ -1,0 +1,44 @@
+{
+  "explicit_abstention_count_delta_r2_minus_r1": -719,
+  "explicit_abstention_proportion_delta_pp_r2_minus_r1": -18.5,
+  "r1": {
+    "answerability_counts": {
+      "FULLY_ANSWERABLE": 2073,
+      "FULLY_UNANSWERABLE": 769,
+      "PARTIALLY_ANSWERABLE": 758
+    },
+    "answerability_percentages": {
+      "FULLY_ANSWERABLE": 57.58,
+      "FULLY_UNANSWERABLE": 21.36,
+      "PARTIALLY_ANSWERABLE": 21.06
+    },
+    "explicit_full_abstention_rate": 21.36,
+    "route_counts": {
+      "CALCULATION_RESULT_VERBALIZATION": 453,
+      "DIRECT": 2910,
+      "MULTI_EVIDENCE": 237
+    },
+    "source": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/nf-v2-09-r1-targeted-grounding-dataset/finquery_rag/backend/data/grounding_alignment/v1/grounding-alignment-v1-train.jsonl",
+    "total": 3600
+  },
+  "r2": {
+    "answerability_counts": {
+      "FULLY_ANSWERABLE": 1570,
+      "FULLY_UNANSWERABLE": 50,
+      "PARTIALLY_ANSWERABLE": 130
+    },
+    "answerability_percentages": {
+      "FULLY_ANSWERABLE": 89.71,
+      "FULLY_UNANSWERABLE": 2.86,
+      "PARTIALLY_ANSWERABLE": 7.43
+    },
+    "explicit_full_abstention_rate": 2.86,
+    "route_counts": {
+      "CALCULATION_RESULT_VERBALIZATION": 500,
+      "DIRECT": 1209,
+      "MULTI_EVIDENCE": 41
+    },
+    "total": 1750
+  },
+  "relative_reduction_in_explicit_abstention_examples_percent": 93.5
+}

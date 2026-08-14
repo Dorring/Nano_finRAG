@@ -1,0 +1,32 @@
+{
+  "diagnostic_labels": {
+    "BD0_INSUFFICIENT_ABSTENTION_REPLAY": true,
+    "BD1_INSUFFICIENT_HARD_NEGATIVE_SIMILARITY": true,
+    "BD2_POSITIVE_ANSWER_DOMINANCE": true,
+    "BD3_CALCULATION_OVERSAMPLING": true,
+    "BD4_GENERIC_CATASTROPHIC_FORGETTING": "secondary_possible_consequence",
+    "BD5_OTHER": false
+  },
+  "evidence": {
+    "r1_calculation_count": 453,
+    "r1_calculation_share": 12.58,
+    "r1_full_abstention_rate": 21.36,
+    "r2_calculation_count": 500,
+    "r2_calculation_result_canonical_preserve": 7,
+    "r2_calculation_share": 28.57,
+    "r2_direct_result_grounded": 30,
+    "r2_full_abstention_rate": 2.86,
+    "r2_positive_answer_rate": 97.14,
+    "r2_true_semantic_unsupported": 19,
+    "r2_unanswerable_distractor_count": 0
+  },
+  "sealed_evaluation": {
+    "calculation_canonical_preserve": "7/11",
+    "direct_numeric": "35/48",
+    "direct_true_unsupported": "17/48",
+    "overall_grounded": 44,
+    "overall_numeric": 50,
+    "overall_reported_unsupported": 20,
+    "unanswerable_holdout_correct_refusal": "0/15"
+  }
+}

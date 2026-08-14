@@ -1,0 +1,46 @@
+{
+  "additional_steps_on_current_r2": false,
+  "composition": {
+    "r1_general_replay": {
+      "hard_unanswerable": 250,
+      "partial_strong": 250,
+      "positive_fully_answerable": 600,
+      "total": 1100
+    },
+    "targeted": {
+      "CALCULATION_NO_RECOMPUTE": 400,
+      "DIRECT_NUMERIC_SELECTION": 350,
+      "EXTRA_CLAIM_SUPPRESSION": 100,
+      "SCOPE_PERIOD_NEAR_MATCH": 150,
+      "total": 1000
+    }
+  },
+  "final_answerability_targets": {
+    "FULLY_ANSWERABLE": 1600,
+    "FULLY_UNANSWERABLE": 250,
+    "PARTIALLY_ANSWERABLE": 250,
+    "fully_answerable_percent": 76.19,
+    "fully_unanswerable_percent": 11.9,
+    "partially_answerable_percent": 11.9
+  },
+  "hard_unanswerable_subtypes": {
+    "calculation_missing_required_operand": 35,
+    "canonical_calculation_absent": 25,
+    "many_numeric_distractors_no_requested_metric": 40,
+    "multi_evidence_missing_component": 20,
+    "same_metric_wrong_period": 60,
+    "same_period_wrong_metric": 45,
+    "scope_or_segment_mismatch": 25
+  },
+  "parent": "finquery-finance-grounded-v3-r1",
+  "parent_checkpoint": "model_000007.pt",
+  "rationale": [
+    "Restore explicit abstention pressure from 2.86% toward 11.90%.",
+    "Use hard, structurally similar negatives rather than mostly unrelated evidence.",
+    "Retain numeric and canonical-calculation gains with a 1,000-example targeted component.",
+    "Use R1 as the parent because the R2 checkpoint exhibits refusal forgetting."
+  ],
+  "recommended": true,
+  "same_r2_dataset_retraining": false,
+  "total": 2100
+}

@@ -1,0 +1,462 @@
+{
+  "classification_method": "deterministic lexical/structural audit; no Gold or evaluation labels",
+  "counts": {
+    "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED": 42,
+    "UA2_LEXICAL_MISMATCH_ONLY": 8
+  },
+  "finding": "The frozen R2 negatives are predominantly easy/unrelated or lexical-mismatch replay examples; none contain distractor structure.",
+  "n": 50,
+  "rows": [
+    {
+      "has_distractors": false,
+      "quality_class": "UA2_LEXICAL_MISMATCH_ONLY",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "0612b5023fcf89a9e6508f351605bcdb",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "f8831cc2-ad09-492d-ad80-27d56fc601a9:1094d62b-d7e7-4cbb-a18d-225ff6cbd09f"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "0b84c2937b75ca9c5e513fd0900bab26",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "b03458c6-8464-44dc-933f-c53a78a4b504:796598df-5512-4889-887f-be1ce3b335bf"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "0d11685ea9de050ea10287b24b04d571",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "b071f972-2b27-4221-aff0-7b0170a18061:117460a8-a690-45f1-8514-54fac832fcbe"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "10b1dae6afc9bc38e6f5656dc989b9f0",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "f81c0b45-d018-4f8f-be08-a0e8398ae666:d6a1e18b-fb18-4a23-916c-bcc2e485d64c"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "13c089709f592900a5878d206797c34c",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "344ae708-7a21-41ff-bbd6-8930cbc6e5ba:3fd13d4b-1f7f-4ae8-8c63-3c873974ec9a"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "19cb1387c7cd28b69f29e3f05a8674d7",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "41adf1f0-2ea0-4e5e-a8d6-6dfca128111e:ede88a99-c101-4864-b94d-e0f78f0d6d68"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "1ce0a8bc4446f2cf09e11eea4176d8df",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "b0318010-53f2-4643-a8b5-3f146410bab0:6a94bf92-c376-4b8f-8105-6edeb108a11f"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "20e2ac9080912c85dce02ac4b19713f9",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "b472ca1c-c537-497b-bda9-4da87994a8e6:0c5e18df-8796-4cb2-a2e0-f539ea1413f0"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA2_LEXICAL_MISMATCH_ONLY",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "25272b5afeb97c2d07a1b6bb8d968fbc",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "a8c360d4-1ba4-4136-8921-299071a255e3:795c6547-bba7-45e5-aab3-a2ba655685ba"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA2_LEXICAL_MISMATCH_ONLY",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "318a1124036e9390c636de2152d16c65",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "a53e2466-fbe3-46e3-9a59-e260084538dd:732d3833-8640-4de6-b117-d4412c5b9980"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "342dc10370b25c6ac1cf461adf971289",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "980eb956-7af4-487a-9409-9ef269e82af3:c963bc18-0341-49c6-847a-6f180cc93df2"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "3815511edd8585655a5a8ebda6ad746b",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "a8751d6a-7fd1-4769-abcb-14d6df1158f2:206e1c74-c838-436e-874a-8084d0091889"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "3920c87a8618335236ca7d28b819bdfc",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "e2fcfdc9-952f-45b7-975e-6aef302d7319:d549a1dd-1765-4b26-a9b7-cfe027c512e4"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "3d3978acc1d1ffca176de2b3702abe3f",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "43f6eca7-b9fd-484e-a5fa-0530655fb986:50a1017f-3663-4810-9858-6e08e170f61a"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the free cash flow reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "452b9196df62b0359177c4ee87eb87d1",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "70b05eb3-abb5-4204-86d9-2ffce11f9171:851b195e-7e00-444e-b458-803455fdb785"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "542a2b0bb1e5180c641f5d7fd3446fb1",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "975a9f92-ce03-43a2-8888-a8863e33a31b:618288a6-e9fa-442f-950e-299b189bf5c9"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "54f55af4f1c2b455859e78dbaca936c8",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "820fb984-4531-45a3-8ad2-11b5a2cb48c7:1e232600-3408-469d-988d-0d12bcd9c8dd"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "5677c9bdbfc5be09c56b2496401c9ecf",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "f49fb4f9-6104-4e07-a51c-2be4cf81891d:7bb15814-f74d-409f-b8d0-15d2a6213543"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "57bf1e110b4029724dd285450e4ddd37",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "c09116e6-bb36-40cd-a3db-78d877de1f16:c5e907dd-0da7-485b-b76e-3ef795a27088"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "60a31e0134af70f1c7f520c73e1447a2",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "4cefa93c-f388-4e92-8356-b19d91658d95:2e3ff8cf-88e9-41a8-b61a-b81ae68c266d"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "61176bda78e2e5ff0277ddf71397f2aa",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "947cdb6d-a904-4184-ab10-8218c40bbca9:ef81b19f-90cd-43f5-9345-f630de19d8cd"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "80433427a9a17359f8517b397003419a",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "63da4db3-96f0-472f-93fa-7b988d3f6b6e:b7b34713-d32a-4a14-b17c-9f493373c5b4"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "8167960606b4844a361940fad4df1044",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "fa08bc30-b9ab-43c3-8e48-3b90a6394181:476d8bab-411d-42c9-b9fd-4df40b85ec63"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "87f683f9792b700616ca34e5707f5b46",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "57ed5d84-1074-4988-ab33-966aecadbb72:2e2bd4b7-e8d0-4fba-a08b-fef6a4129a38"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "896524b0059c21eb0361778d6c5c1b7b",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "92a7e213-d030-466e-87d4-1189609d7152:3edd9c76-c404-4a7e-826b-932b211efe4f"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "89a21dc566e190d51ec325a469d6ca48",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "ff75bb30-5d49-4ec1-8729-86010f4618de:933834d2-4747-454e-834b-5c2db8729e4d"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "8c8d2e3e9be3b4990170409a40e39f48",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "956a9dc6-f0d6-4aa6-8873-c7d0ad2345de:a705422c-b122-4b7a-a27e-0a65b414a5e4"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "8cfbd0b85ddb01d2bb8bc6471f9f9756",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "6beb0a93-1838-42bb-ab64-e19f0db220cc:23f6c3fb-b0e9-4e2a-b945-4696bf7ed764"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "9e2aa45923b4836f0b133d6b421e30b5",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "e774c63d-66a4-4cc3-93c0-178c294c1b9d:95b78229-8f98-40d0-a64a-1fc66eeb197c"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA2_LEXICAL_MISMATCH_ONLY",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "a23e71cca5d23ace26658f2d10ad3141",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "91af4b08-d8b2-4130-9ae1-dc1e6452e343:b72e93bf-8b54-464c-803e-33d53562e826"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "a9df8f8cd2864eab301d2e6a87002e22",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "f07a1c9f-0082-4b61-bb2e-4d061d9b8036:5eec8671-511e-4e80-878e-3781a6cb25dc"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "ad77b7e0506186ea27c638df5f8cbf57",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "fe332125-7419-4917-945e-8a8c6e350f48:04c32463-200c-49c8-8ac4-91b2fcc93476"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "b1bdc69bf653660449f3470ca0369a04",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "0e0a940c-ca4b-48d6-9874-947f55bb6a94:7fd6afb9-d002-478e-a260-144540ea3a33"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "b8ac9c020dfd77b48a9cd8bc40922b10",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "e7734a7c-37ab-4f73-8579-ca2e370ac00e:852598bd-4968-418f-8ef8-34cb3a4c335f"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "bd13569fe45616adb0dfc1c4ed96142f",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "b19757bf-8a8a-428b-9dcc-8179595064ae:06af2c3f-8957-4802-9fc2-d7c22cc31c86"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "bddf0b86788285b04b5cf4a9bc094c29",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "668a081b-e793-4d45-935d-816d2d7eba6d:80ee232a-7bee-4bc0-acc4-2b3dfdd5c916"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the free cash flow reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "c0a0113cff5f6361b1b8df9bd6afb792",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "a2b850ad-50bc-4769-8e24-a19ea98c1e0a:1a143166-93f0-46f1-9864-a846aa2fdf10"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA2_LEXICAL_MISMATCH_ONLY",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "c27b3838f882121558b0e8f0de621d6c",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "93d67400-c515-4dc7-a124-5a1c30131cc0:7922fb4a-2be9-4203-89b9-b7d54bc69983"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "d409e9ebff4057fb160d2cd319cb490a",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "1a956ad3-959a-4ec7-ac07-6619b24bed19:7b6cd413-d2b1-432c-ae7c-8e49ed163e3c"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA2_LEXICAL_MISMATCH_ONLY",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "d44ccd627413d67b154a05537fbe3e05",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "20df23bb-3d0e-4d2e-8d54-cf05b3852cfc:8ca13f42-1706-4688-9144-ace9a5eb975d"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA2_LEXICAL_MISMATCH_ONLY",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "d92d9716367645cb8e0f62a3324f5a5d",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "1b8f0bf0-2aca-4741-9ce1-f14ffe42543d:bab6046a-a18f-4a7f-8ffc-f15ceed28a40"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "dd977ab68640d46ace0d92755004c587",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "8ee550f6-e032-47dc-928b-078b62ee9aa1:5c900f81-ee4f-4d1d-b558-4e8ae65077e5"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "e6f9969639d7359656b81b6a2252a6db",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "265bf2e8-bf04-4313-afe9-e5ceca068db7:b01406f6-5fa6-46a2-9e91-58ad83b1f303"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "ec1adc1490d1a4c2f6a0a82d42cac0f4",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "77161e02-3669-4c2e-b1c4-510be467ab1b:f53a688f-72de-400f-8f0c-1aa3a9500dc4"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "ec730a309b89cb2683507cb62c0a23fa",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "d2f3aa1c-9796-4bf6-8068-06be2645542f:c10137ff-b1d1-4e9b-a2ba-9327106cbf49"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "edf18d694b3a1814999e5eb043a30723",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "71af41cf-6910-491c-861d-c3d70a4853b7:4bd8fcbd-f70f-42ad-b8d8-36cb357c2126"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "f2ec3d914f551d9bb0bec46c09d65109",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "fc8bffeb-73ca-4114-ac51-865276308b3d:fb14a75f-1af2-4dc8-bc84-71ab93d01479"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA2_LEXICAL_MISMATCH_ONLY",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "fa82c30c666f3da6e0e4d96660fb7da8",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "75136344-e4e2-4618-b5c2-13fe41a2bea9:3b20381b-1952-4d26-a22f-4f12183a77a3"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "fafc27ce74d1ca2b7db674b1cf9d495c",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "7700bdc1-cea3-406f-8848-577ba195baff:73d21073-e091-4f7f-82e2-fb67afed07b2"
+    },
+    {
+      "has_distractors": false,
+      "quality_class": "UA1_TOO_EASY_OR_OBVIOUSLY_UNRELATED",
+      "question": "What was the net income reported in the period discussed?",
+      "route": "DIRECT",
+      "sample_id": "fb592ede048002ec030f5c460c8c44f3",
+      "source_dataset": "TAT-DQA",
+      "source_example_id": "868648b6-f298-4f7d-9902-dbd7a91bbd8c:1e3ee261-10b2-4042-8159-0823ef90cc9e"
+    }
+  ],
+  "sufficiently_hard_and_structurally_similar": false
+}

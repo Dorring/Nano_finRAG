@@ -1,0 +1,31 @@
+{
+  "actual_sha256": "a390ed69e5f2c89df5d2a9973bafce277e88bfac55a3a19d835e00c0feae8d19",
+  "answerability_counts": {
+    "FULLY_ANSWERABLE": 1570,
+    "FULLY_UNANSWERABLE": 50,
+    "PARTIALLY_ANSWERABLE": 130
+  },
+  "answerability_percentages": {
+    "FULLY_ANSWERABLE": 89.71,
+    "FULLY_UNANSWERABLE": 2.86,
+    "PARTIALLY_ANSWERABLE": 7.43
+  },
+  "behavior_target_counts": {
+    "ABSTAIN_FULLY": 50,
+    "ANSWER_CANONICAL_CALCULATION": 500,
+    "ANSWER_DIRECTLY": 1070,
+    "ANSWER_PLUS_PARTIAL_REFUSAL": 130
+  },
+  "dataset": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/nf-v2-09-r1-targeted-grounding-dataset/finquery_rag/backend/data/grounding_alignment/v2_targeted/grounding-r2-train-mix.jsonl",
+  "expected_sha256": "a390ed69e5f2c89df5d2a9973bafce277e88bfac55a3a19d835e00c0feae8d19",
+  "explicit_full_abstention_rate": 2.86,
+  "explicit_full_abstention_targets": 50,
+  "malformed_answerability_flags": 0,
+  "model_calls": 0,
+  "positive_factual_or_numeric_answer_rate": 97.14,
+  "positive_factual_or_numeric_answer_targets": 1700,
+  "retrieval_calls": 0,
+  "sha_match": true,
+  "total": 1750,
+  "training": 0
+}

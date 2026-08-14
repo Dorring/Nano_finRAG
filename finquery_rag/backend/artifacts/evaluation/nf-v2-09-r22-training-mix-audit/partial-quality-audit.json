@@ -1,0 +1,789 @@
+{
+  "counts": {
+    "STRONG_PARTIAL_NEGATIVE": 130
+  },
+  "n": 130,
+  "rows": [
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "0062f587dd72e21eef59530d2ef8dd8b",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "007d0c91197413add2aa7e88bca99292",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "06f24c200e331f3f3729978352f4a10d",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "086cb31101cfc951a15ffc8a40874848",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "09e5d2ea8012c6575c9dfaa867d85a5b",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "0fcb1ae5bcbe915f1d66981267ce4342",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "10162fa9a005abfefe2ba09cbd984cb0",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "10a37ce86cc751b6ed3f39fa5a8e63cd",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "17d6c7c4bd6914b5d64a07dce8202f56",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "1ab85f201d7f200c6893372c58d883e9",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "1fab0abf3d358ef475083dd289abd1f3",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "202b67f25eea649ca4c3d345a5b12da8",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "207a72c67674655b82d3bde5af9fa674",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "23c31cb95312cde3f01dd30d747ab8cc",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "24f5355da6ef2bef95a492abf3a5a2d0",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "24f9e2691c6fc79b661e36409c3b21e3",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "252ebd5427d671bd704f5427cb111398",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "28e20dc3dfa06630aa12407a4b63afb0",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "294cad2b21e9fb1bc57c060d2348cc82",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "30d6d8471a3d598f69e18f8c196cdfc8",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "31f263f319c2e63d176768d122e7af5c",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "327d43ee5e81e9dc8c0f6a4778df8e83",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "364b12f861b14de90f9dd6f5a893ee47",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "36900e08dcdc35f079188dc19b586303",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "3869dbebed74faead75d5fb496d179b1",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "38ceb8c63914bed273ba3cd1dd659276",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "3fe8228258916f7ccd8b427dd66ea2f0",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "40992bd9291378cbbf84c64aba7e0b0b",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "436e79b80acefa07eaf21fbc4455ded5",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "43b02ef359aad13be21436a8cbe99515",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "442140d4e3c6f60b1406883c6eb92055",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "44a2a192ff3ac60f4ac97e4eacfdbff5",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "44c2a2889d45626137ed729182a29b2a",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "47f2331da128f12e502773f0d4b61644",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "49ee4d7c4d4258de48352116aca99e7b",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "4f9d0538bea817b341f036a0b8d61f64",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "4faa4b0802a4460cd91618e440daf449",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "4fde554fc5552fd61eb0912b226bdd2e",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "531312993e5959e6600875b44a8ddf0a",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "54ee451f62c7dd7bd196ec14eb23e4eb",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "596c62e38d742869b354b83df0872aca",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "5ff73bf761f7d4eb24280b30070f3775",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "61db79e0ef73fd3b2d4d274a1d93d28a",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "663cecb791f08225b343e3d8ee1c888a",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "663e81f8b3d94955c9f650ead91df897",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "66576aae6ab450b15f488fce858405d8",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "672ed8fa413f25288a9528bebf4f8fd2",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "678b248af7104408d8194e1a779d49c9",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "69775a9a93de3506bf7d6f4769e483c8",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "69f81f4730abab74221b45a26b2c9397",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "6d1b20a7fbf89042155ad6182eb3dcc2",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "6d80e48dd1fd6ee8748f2508d176c134",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "6eb17fc3df0ce5d33b776c721021e23d",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "70064a1d0ff20ac542e513959a5c5b56",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "758e7a755b31785ea2f7a587494d1ce1",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "788b6fb5ce1db233133e9fca0099fe77",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "7b694c75322143989289032ed2c94543",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "7c2ef6ffb1c16de113cda7b4e2186f07",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "7c4332f8d92913a8ae8d0272057e5533",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "7e2dd95720e3556cbd1bd51afc6f7612",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "7e6ce524e4a49f42233460ba629faad7",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "7ef80304ca9cf149e7cf1f5c7e3e4add",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "80710629450d24fe1bb73528e274cf27",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "81613fa13a7f4325ad4b19e1f608eed3",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "84341c03170b9978e496dae5f5685e50",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "87b716151de9876d173ad37ca0addae7",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "88987bbd797d21094a7296f161af56b8",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "8a88d1df5dccba097c55a57768468e7b",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "8c3d0c38158c1764042eab5d4fd50e2e",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "8c9d0ffeb8266549894f2ebcc0a00556",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "8cf4e6955fa815eb0f6c2566f550968f",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "8e8589cc165b0fe89489c4d36e51b1c5",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "9334f7e73c8dc9c1c37f1b58bf91ed82",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "94f6df599301268b5993eb7a96df9c96",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "955e6a8d0e58ab9021e397c170c17c65",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "998d9041e6137c70ab7acf8c728e5907",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "9d295f05ec93907dcdab018025eaaf78",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "a0093ab00d34bb14cd5e3f1f276cbefa",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "a1ed042ed0f661981b6c18dc56949c13",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "a2e812252ef57f0e62870263f1de3fda",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "a3ce2630c549302eab25f6e5b7f3f475",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "a5cb363459ee90f95097ecf21097f275",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "a90aea7641202be6e5eef04895a666ac",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "a9443c3a960e12ff2b85477c9b5ed1c7",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "af6a7e31b2bcd90bf3f88e390ede7aac",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "b119b24cc87c2c9cf422069ca4f3ed06",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "b2444d240553c933830f2f683056c1eb",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "b81a574d6a0fd8cab88c2963c3dde481",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "b83470e37d6fba752defbc4844652e7f",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "b8bf7ea45b0613f017e648baa22ed2b6",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "ba9bb553fe586f5dd68e093920131289",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "c60f0b54006566670ea7c6f4a31066bf",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "c6d7f67b0fe4b11e6859cbf8a43d6db3",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "c888caf9a4163c81b3c102c800fca5b7",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "c8b4c591f441f032aac4bbc42f3cc3e8",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "c9c7312bac5f7ebb052a8d6addbe0b29",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "d0114ae952a651897c9e76c1cf8d40d8",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "d046541debd1d80ad069cda2a0d4db2f",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "d07b2ea188fef087c03e70e0f6f9ebd1",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "d3ad670f06b9073ca3f4d466b6dbb1fa",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "d3da4a33e3f77fef3bffd09f81a92126",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "d51bb3209a50be99fea3ddca52e21758",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "d7ee76b3b5d6a721fa31ad34709f38de",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "dae88b5eef5119d8c80a91288d96e570",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "dc6933e795d0222a3bd1ebc56cc8f7c0",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "dc8ea03c998e3c78cb7dfd69fdbb1288",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "de56dbb2e4d36b61294c0d675a5344ba",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "deddda0daf7660fc83f122f2624ffa5b",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "df6c2c6ea7d86c5e9b2ca6fa20342b20",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "e102810be1e2aa917eeafbd5a9b2ccb5",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "e27c00948d54e103d0857b52bdf2e77c",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "e308d2de75037c474162f1b345b38719",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "e41fdd349d991d127ebf5da539a52a62",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "e7be9332bd631e0e641d3ae798bd6912",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "ea288560937538a37f8177c57e48d2dd",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "ebe858fe44d8de2a56343c14c63f4a61",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "ec8764087c27466ab37f40c85adfab62",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "ecf859234b1172a1a82405c8187402b3",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "ee80a563b70a1bf98629c3fa7899f525",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "ef481d73b0b9a34a192706eda7cd5765",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "f0d3758234201917f3d792000b31013d",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "f3520f7b4ac197dbfcb0f003af384b90",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "f8624b80eca7aedb4c9075154b3615eb",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "f938cddad7b07241bfebe6d023a7e1cd",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "fa93931008a7dabb499cfd66bd015abe",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "fd67df94ac229d59eab334cb1b80fedf",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "fd97d5cf6be989d71a1754b2c545cab8",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": false,
+      "sample_id": "fda8300f0fc367a3d735b8e08c1448ec",
+      "targeted_bucket": "PARTIAL_ANSWER_NO_OVERREFUSAL"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "ff3d67813194518a99568aca9e95baa1",
+      "targeted_bucket": "R1_REPLAY"
+    },
+    {
+      "quality_class": "STRONG_PARTIAL_NEGATIVE",
+      "r1_replay": true,
+      "sample_id": "ffb7bf1d7a747a52875d5c93ba9a6889",
+      "targeted_bucket": "R1_REPLAY"
+    }
+  ],
+  "strong_partial_negative_rate": 100.0
+}

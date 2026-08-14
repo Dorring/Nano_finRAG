@@ -1,0 +1,40 @@
+{
+  "negative_count": 50,
+  "patterns": {
+    "calculation_missing_required_operand": {
+      "coverage_percent": 0.0,
+      "covered": 0,
+      "eligible_negative_examples": 50
+    },
+    "canonical_calculation_absent": {
+      "coverage_percent": 0.0,
+      "covered": 0,
+      "eligible_negative_examples": 50
+    },
+    "many_numeric_distractors_no_requested_metric": {
+      "coverage_percent": 0.0,
+      "covered": 0,
+      "eligible_negative_examples": 50
+    },
+    "multi_evidence_missing_component": {
+      "coverage_percent": 0.0,
+      "covered": 0,
+      "eligible_negative_examples": 50
+    },
+    "same_metric_wrong_period": {
+      "coverage_percent": 0.0,
+      "covered": 0,
+      "eligible_negative_examples": 50
+    },
+    "same_period_wrong_metric": {
+      "coverage_percent": 0.0,
+      "covered": 0,
+      "eligible_negative_examples": 50
+    },
+    "scope_or_segment_mismatch": {
+      "coverage_percent": 0.0,
+      "covered": 0,
+      "eligible_negative_examples": 50
+    }
+  }
+}

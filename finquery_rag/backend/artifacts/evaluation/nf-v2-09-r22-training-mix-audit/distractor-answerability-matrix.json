@@ -1,0 +1,23 @@
+{
+  "columns": [
+    "distractor",
+    "no_distractor"
+  ],
+  "preflight_distractors": 1601,
+  "preflight_no_distractors": 149,
+  "rows": {
+    "FULLY_ANSWERABLE": {
+      "distractor": 1498,
+      "no_distractor": 72
+    },
+    "FULLY_UNANSWERABLE": {
+      "distractor": 0,
+      "no_distractor": 50
+    },
+    "PARTIALLY_ANSWERABLE": {
+      "distractor": 103,
+      "no_distractor": 27
+    }
+  },
+  "unanswerable_with_distractors": 0
+}
