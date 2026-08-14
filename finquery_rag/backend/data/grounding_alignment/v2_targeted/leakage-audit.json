@@ -1,0 +1,13 @@
+{
+  "internal_tier_b_context_overlap": 0,
+  "internal_tier_b_document_overlap": 0,
+  "internal_tier_b_question_overlap": 0,
+  "official_eval_context_overlap": 0,
+  "official_eval_question_overlap": 0,
+  "official_eval_sources": [
+    "FinQA dev/test",
+    "TAT-DQA dev/test"
+  ],
+  "reference_answers_used": false,
+  "tier_b_content_used_as_seed": false
+}

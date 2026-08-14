@@ -1,0 +1,14 @@
+{
+  "ConvFinQA": 0,
+  "approved_splits": [
+    "FinQA/train",
+    "TAT-DQA/train"
+  ],
+  "mixture": {
+    "FinQA": 1417,
+    "TAT-DQA": 333
+  },
+  "targeted": {
+    "FinQA": 1400
+  }
+}

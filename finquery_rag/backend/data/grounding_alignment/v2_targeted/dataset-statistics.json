@@ -1,0 +1,52 @@
+{
+  "assistant_tokens": {
+    "max": 78,
+    "p50": 17.0,
+    "p95": 36
+  },
+  "base_commit": "ea4d0e3cb0e8a3009ae3fbdb8a9c87cf4ae22220",
+  "canonical_calculation_verified": 500,
+  "citation_valid": 1750,
+  "context_overflow": 0,
+  "cot_targets": 0,
+  "counts": {
+    "r1_replay": 350,
+    "targeted": 1400,
+    "total": 1750
+  },
+  "final_behavior": {
+    "fully_answerable": 1570,
+    "fully_unanswerable": 50,
+    "partially_answerable": 130
+  },
+  "financial_generation_view_v1_sha": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "financial_generation_view_v1_sha_expected": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "financial_generation_view_v1_sha_match": true,
+  "input_tokens": {
+    "max": 1585,
+    "p50": 571.0,
+    "p95": 1126
+  },
+  "model_calls": 0,
+  "numeric_target_supported": 1750,
+  "period_target_supported": 1750,
+  "replay_behavior": {
+    "PARTIAL_DISTRACTOR": 80,
+    "POSITIVE_GROUNDED": 220,
+    "UNANSWERABLE": 50
+  },
+  "retrieval_calls": 0,
+  "targeted_buckets": {
+    "CALCULATION_NO_RECOMPUTE": 500,
+    "DIRECT_NUMERIC_SELECTION": 500,
+    "EXTRA_CLAIM_SUPPRESSION": 150,
+    "PARTIAL_ANSWER_NO_OVERREFUSAL": 50,
+    "SCOPE_PERIOD_NEAR_MATCH": 200
+  },
+  "think_tag_targets": 0,
+  "tokenizer": "nanochat-bpe-65k",
+  "training_executed": false,
+  "unknown_citations": 0,
+  "unsupported_target_claims": 0,
+  "variant_cap_max": 1
+}
