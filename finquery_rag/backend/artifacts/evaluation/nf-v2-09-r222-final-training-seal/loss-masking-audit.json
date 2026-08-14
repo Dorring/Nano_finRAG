@@ -1,0 +1,54 @@
+{
+  "loader_path": "scripts/chat_sft.py:sft_data_generator_bos_bestfit",
+  "tokenizer": "RustBPETokenizer",
+  "representative_rows": [
+    {
+      "class": "partial",
+      "row_index": 0,
+      "sample_id": "44c2a2889d45626137ed729182a29b2a",
+      "token_count": 492,
+      "user_loss_tokens": 0,
+      "assistant_loss_tokens": 27
+    },
+    {
+      "class": "direct",
+      "row_index": 1,
+      "sample_id": "4cbdf5109144270c5c48fd26ba48c7d9",
+      "token_count": 584,
+      "user_loss_tokens": 0,
+      "assistant_loss_tokens": 23
+    },
+    {
+      "class": "calculation",
+      "row_index": 2,
+      "sample_id": "b2e5e67a2cd63e55f9e19d14f45e38c6",
+      "token_count": 771,
+      "user_loss_tokens": 0,
+      "assistant_loss_tokens": 36
+    },
+    {
+      "class": "hard_unanswerable",
+      "row_index": 10,
+      "sample_id": "893962c82eca412be5d1eb68d8db7a06",
+      "token_count": 638,
+      "user_loss_tokens": 0,
+      "assistant_loss_tokens": 10
+    },
+    {
+      "class": "multi",
+      "row_index": 36,
+      "sample_id": "2d020efd81e46ec5ab8455ba15ff96cf",
+      "token_count": 594,
+      "user_loss_tokens": 0,
+      "assistant_loss_tokens": 32
+    }
+  ],
+  "user_loss_tokens": 0,
+  "assistant_loss_enabled": true,
+  "context_overflow": 0,
+  "max_tokens": 1599,
+  "p50_tokens": 738,
+  "p95_tokens": 1244,
+  "tokenizer_error": null,
+  "pass": true
+}

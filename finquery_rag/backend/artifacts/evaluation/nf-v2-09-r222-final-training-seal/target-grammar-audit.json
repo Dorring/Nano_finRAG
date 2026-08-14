@@ -1,0 +1,19 @@
+{
+  "rows": 2100,
+  "before_malformed_flag_counts": {
+    "double_punctuation": 1,
+    "interrogative_prefix": 7,
+    "would_auxiliary": 7,
+    "question_mark_fragment": 4,
+    "duplicate_word": 1
+  },
+  "after_malformed_flag_counts": {},
+  "malformed_deterministic_targets_after": 0,
+  "malformed_after_sample_ids": [],
+  "question_mark_fragments_after": 0,
+  "calculation_explanation_after": 0,
+  "calculation_rows": 400,
+  "canonical_calculation_exact_rows": 400,
+  "calculation_arithmetic_language_rows": 0,
+  "unsupported_target_claims": 0
+}

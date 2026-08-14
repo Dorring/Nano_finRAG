@@ -1,0 +1,20 @@
+{
+  "user_message_changes": 0,
+  "metadata_changes": 0,
+  "answerability_distribution_before": {
+    "PARTIALLY_ANSWERABLE": 250,
+    "FULLY_ANSWERABLE": 1600,
+    "FULLY_UNANSWERABLE": 250
+  },
+  "answerability_distribution_after": {
+    "PARTIALLY_ANSWERABLE": 250,
+    "FULLY_ANSWERABLE": 1600,
+    "FULLY_UNANSWERABLE": 250
+  },
+  "component_distribution_unchanged": true,
+  "route_distribution_unchanged": true,
+  "semantic_changes": 0,
+  "new_factual_claims": 0,
+  "removed_required_factual_claims": 0,
+  "pass": true
+}

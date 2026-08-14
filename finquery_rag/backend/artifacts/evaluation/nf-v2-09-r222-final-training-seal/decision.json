@@ -1,0 +1,9 @@
+{
+  "decision": "pass",
+  "dataset_ready_for_training": true,
+  "data_engineering_frozen": true,
+  "next_gate": "v2_09_r22_balanced_grounding_training",
+  "training": 0,
+  "model_calls": 0,
+  "retrieval_calls": 0
+}

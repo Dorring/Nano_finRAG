@@ -1,0 +1,14 @@
+{
+  "source_canonical_sha256": "4771803fd179bdbb9bf146dd7be782fe7a9de40d83408d548d181e5f1e233753",
+  "expected_source_sha256": "4771803fd179bdbb9bf146dd7be782fe7a9de40d83408d548d181e5f1e233753",
+  "source_rows": 2100,
+  "final_canonical": "finquery_rag/backend/data/grounding_alignment/v2_2_2_final/grounding-r22-2-final-mix.jsonl",
+  "final_canonical_sha256": "396df2c1cd996e43fcf3d8d8bbc74c71f29165af24f1af5ab558fa5282c8981a",
+  "final_rows": 2100,
+  "rows_added": 0,
+  "rows_removed": 0,
+  "evidence_fields_changed": 0,
+  "user_messages_changed": 0,
+  "metadata_changed": 0,
+  "answerability_preserved": true
+}

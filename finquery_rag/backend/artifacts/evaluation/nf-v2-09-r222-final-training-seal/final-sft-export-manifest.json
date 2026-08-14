@@ -1,0 +1,17 @@
+{
+  "final_canonical": "finquery_rag/backend/data/grounding_alignment/v2_2_2_final/grounding-r22-2-final-mix.jsonl",
+  "final_sft": "finquery_rag/backend/data/grounding_alignment/v2_2_2_final/grounding_r22_2_sft_train.jsonl",
+  "canonical_rows": 2100,
+  "sft_rows": 2100,
+  "top_level_arrays": 2100,
+  "two_message_rows": 2100,
+  "role_alternation_valid": true,
+  "content_strings_valid": true,
+  "dropped_rows": 0,
+  "duplicated_rows_introduced": 0,
+  "reordered_rows": false,
+  "messages_hash_match": true,
+  "messages_hash_match_rows": 2100,
+  "sft_sha256": "36cdff95d18c08ca95b5f5c355e319cea9bbba1180e536606e61fc3534f791e3",
+  "source_sft_sha256": "299290d9ace0018336acabc12a2e90f5d9c67f1ba4beadbb8673f904a59c8390"
+}

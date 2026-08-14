@@ -1,0 +1,23 @@
+{
+  "final_canonical_sha256": "396df2c1cd996e43fcf3d8d8bbc74c71f29165af24f1af5ab558fa5282c8981a",
+  "final_sft_sha256": "36cdff95d18c08ca95b5f5c355e319cea9bbba1180e536606e61fc3534f791e3",
+  "canonical_rows": 2100,
+  "sft_rows": 2100,
+  "assistant_targets_modified": 426,
+  "numeric_changes": 0,
+  "citation_id_changes": 0,
+  "semantic_changes": 0,
+  "financial_generation_view_sha256": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "expected_financial_generation_view_sha256": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "model_facing_derivability": 2100,
+  "canonical_calculation_exact": 400,
+  "unsupported_targets": 0,
+  "leakage": 0,
+  "top_level_arrays": 2100,
+  "role_alternation": true,
+  "messages_hash_match": 2100,
+  "user_loss_tokens": 0,
+  "assistant_loss_enabled": true,
+  "context_overflow": 0,
+  "loader_smoke_test": true
+}

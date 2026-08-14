@@ -1,0 +1,12 @@
+{
+  "loader": "tasks/customjson.py",
+  "loader_rows": 2100,
+  "expected_rows": 2100,
+  "loader_error": null,
+  "top_level_arrays": 2100,
+  "two_message_rows": 2100,
+  "role_order_valid": true,
+  "content_strings_valid": true,
+  "context_overflow": 0,
+  "smoke_pass": true
+}
