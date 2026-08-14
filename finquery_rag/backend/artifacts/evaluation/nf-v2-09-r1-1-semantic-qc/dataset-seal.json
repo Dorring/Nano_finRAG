@@ -1,0 +1,42 @@
+{
+  "base_commit": "83a78469605e7672f758fbb1c1bec4e25731635b",
+  "financial_generation_view_v1_sha": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "model_calls": 0,
+  "replay": 350,
+  "semantic_qc_rejected_pretrain": {
+    "files": [
+      "README.md",
+      "bucket-distribution.json",
+      "calculation-no-recompute-audit.json",
+      "calculation-operation-distribution.json",
+      "citation-audit.json",
+      "dataset-manifest.json",
+      "dataset-statistics.json",
+      "direct-hardness-audit.json",
+      "extra-claim-audit.json",
+      "grounding-r2-train-mix.jsonl",
+      "leakage-audit.json",
+      "manifest.json",
+      "numeric-support-audit.json",
+      "partial-answer-audit.json",
+      "r1-replay-audit.json",
+      "r1-replay.jsonl",
+      "r2-over-abstention-risk.json",
+      "rejected-samples.jsonl.gz",
+      "rejection-taxonomy.json",
+      "source-distribution.json",
+      "subtype-distribution.json",
+      "targeted-r2.jsonl",
+      "token-length-audit.json"
+    ],
+    "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/nf-v2-09-r1-targeted-grounding-dataset/finquery_rag/backend/data/grounding_alignment/v2_targeted/semantic_qc_rejected_pretrain"
+  },
+  "sha256": {
+    "grounding-r2-train-mix.jsonl": "8f25c88cf04cbd6099213da6a9f9e0509389b8ebfd0d187f201e051914e6a760",
+    "r1-replay.jsonl": "bbea4419e9819e58383f57c916f6ffa54e10087494b683e45af535bc53504fc2",
+    "targeted-r2.jsonl": "449bcf6ae41b37a91903bcce320c8df15ad2d3ac836db9e89a1077b22d062b15"
+  },
+  "targeted": 1400,
+  "total": 1750,
+  "training": 0
+}

@@ -1,0 +1,15 @@
+{
+  "case_86a158da7ac37173803587060da7b3a3_rejected": true,
+  "original_counts": {
+    "MQ0_VALID": 834,
+    "MQ1_COLUMN_HEADER_INVERSION": 5,
+    "MQ2_VALUE_AS_PERIOD": 423,
+    "MQ4_UNINTERPRETABLE": 56,
+    "MQ5_OTHER": 82
+  },
+  "original_targeted": 1400,
+  "repaired_counts": {
+    "MQ0_VALID": 1400
+  },
+  "repaired_malformed": 0
+}

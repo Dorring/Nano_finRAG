@@ -1,0 +1,119 @@
+{
+  "generic_calc_targets": 0,
+  "malformed": 0,
+  "period_type_violations": 0,
+  "sample_count": 10,
+  "samples": [
+    {
+      "bucket": "R1_REPLAY",
+      "calculation_period": null,
+      "generic_calc_target": false,
+      "line": 1499,
+      "period_type_violation": false,
+      "question": "What do Billings represent?",
+      "question_class": "MQ0_VALID",
+      "sample_id": "9150794950ef9ae2eb830623b7bcf112",
+      "target": "the value of products and services invoiced to customers after receiving a purchase order from the customer and delivering products and services to them, or for which there is no right to a refund. Billings do not equate to statutory revenue. [E1]."
+    },
+    {
+      "bucket": "DIRECT_NUMERIC_SELECTION",
+      "calculation_period": null,
+      "generic_calc_target": false,
+      "line": 697,
+      "period_type_violation": false,
+      "question": "What was ebitda in years ended december 31 , 2014?",
+      "question_class": "MQ0_VALID",
+      "sample_id": "a293419e4c136fd7dcb36eb351b77d7d",
+      "target": "ebitda in years ended december 31 , 2014 was 792.9 [E1]."
+    },
+    {
+      "bucket": "CALCULATION_NO_RECOMPUTE",
+      "calculation_period": "2017",
+      "generic_calc_target": false,
+      "line": 1584,
+      "period_type_violation": false,
+      "question": "for 2017 , what percentage of derivative receivables are rated junk?",
+      "question_class": "MQ0_VALID",
+      "sample_id": "9ba0d2290434230b1f4a966e6ba1c3ed",
+      "target": "For 2017, the percentage of derivative receivables are rated junk was 20.0% [C1]."
+    },
+    {
+      "bucket": "SCOPE_PERIOD_NEAR_MATCH",
+      "calculation_period": null,
+      "generic_calc_target": false,
+      "line": 1234,
+      "period_type_violation": false,
+      "question": "What was s&p 500 index in base period 2016?",
+      "question_class": "MQ0_VALID",
+      "sample_id": "e15a0e97337de32f6f70e6c420e81859",
+      "target": "s&p 500 index in base period 2016 was 129.05 [E1]."
+    },
+    {
+      "bucket": "CALCULATION_NO_RECOMPUTE",
+      "calculation_period": "not specified",
+      "generic_calc_target": false,
+      "line": 1071,
+      "period_type_violation": false,
+      "question": "what portion of the total floor space is used by aeronautics?",
+      "question_class": "MQ0_VALID",
+      "sample_id": "10f7aff911f2f6e82101b3838322a5ff",
+      "target": "The portion of the total floor space is used by aeronautics was 0.30779 [C1]."
+    },
+    {
+      "bucket": "DIRECT_NUMERIC_SELECTION",
+      "calculation_period": null,
+      "generic_calc_target": false,
+      "line": 1507,
+      "period_type_violation": false,
+      "question": "What was target date/risk in 12/31/2012?",
+      "question_class": "MQ0_VALID",
+      "sample_id": "c62c0c970495aa7e2f28a209a7a7bcc8",
+      "target": "target date/risk in 12/31/2012 was 69884 [E1]."
+    },
+    {
+      "bucket": "R1_REPLAY",
+      "calculation_period": null,
+      "generic_calc_target": false,
+      "line": 70,
+      "period_type_violation": false,
+      "question": "What are the two changes in accounting principles in adopting ASC 606?",
+      "question_class": "MQ0_VALID",
+      "sample_id": "d070714e313690c46e747fe3d066878e",
+      "target": "Timing of revenue recognition for uninstalled materials; Completed contracts [E1] [E2]."
+    },
+    {
+      "bucket": "SCOPE_PERIOD_NEAR_MATCH",
+      "calculation_period": null,
+      "generic_calc_target": false,
+      "line": 741,
+      "period_type_violation": false,
+      "question": "What was operating earnings in years ended december 31 2008?",
+      "question_class": "MQ0_VALID",
+      "sample_id": "86050e3568be4d639d3a825e6843de4d",
+      "target": "operating earnings in years ended december 31 2008 was 918 [E1]."
+    },
+    {
+      "bucket": "CALCULATION_NO_RECOMPUTE",
+      "calculation_period": "not specified",
+      "generic_calc_target": false,
+      "line": 1726,
+      "period_type_violation": false,
+      "question": "what percentage of company's properties are located in united states?",
+      "question_class": "MQ0_VALID",
+      "sample_id": "51cb765b2109e47e5acbcd5d3878b5ef",
+      "target": "The percentage of company's properties are located in united states was 0.61199% [C1]."
+    },
+    {
+      "bucket": "R1_REPLAY",
+      "calculation_period": null,
+      "generic_calc_target": false,
+      "line": 1038,
+      "period_type_violation": false,
+      "question": "What was the total balance for Money market mutual funds?",
+      "question_class": "MQ0_VALID",
+      "sample_id": "2238c25eac2aadeea12fedece5b2164b",
+      "target": "121.0 [E2]."
+    }
+  ],
+  "seed": 20260814
+}

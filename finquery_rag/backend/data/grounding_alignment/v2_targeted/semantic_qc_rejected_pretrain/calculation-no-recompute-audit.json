@@ -1,0 +1,19 @@
+{
+  "canonical_result_verified": 500,
+  "contains_distractor_operands": 500,
+  "contains_plausible_forbidden_recomputation": 500,
+  "deterministic_verification": "FinQA TRAIN program DSL replay; rows failing arithmetic comparison were rejected",
+  "operation_distribution": {
+    "difference": 70,
+    "gross_margin": 1,
+    "growth_rate": 143,
+    "other": 10,
+    "percentage_share": 226,
+    "scale_conversion": 7,
+    "sum": 43
+  },
+  "target_copies_canonical_result": 500,
+  "target_explicit_arithmetic": 0,
+  "target_secondary_derived_number": 0,
+  "total": 500
+}

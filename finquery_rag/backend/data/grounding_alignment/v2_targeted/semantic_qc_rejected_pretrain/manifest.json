@@ -1,0 +1,30 @@
+{
+  "copied_files": [],
+  "sha256": {
+    "README.md": "2d91184d1def624a7e8ceb04c9e6731f5f28de66f614212f711c3bf964315234",
+    "bucket-distribution.json": "040beb75fcfe05e9d1c62834fb9f09b819adfc4ee3ba39979eb0a72c3aa91f2a",
+    "calculation-no-recompute-audit.json": "24077fed7abc5d032b760c160a36c93c3a494f4e37945a65a0e1e4781aa1894d",
+    "calculation-operation-distribution.json": "df50ec68da27764e9eccdfc206ad68380dabc2097a0f1d57281ebf81ba343d0a",
+    "citation-audit.json": "8d6dff5740fcb668237c23711a5ff8cfbf401da809e31d33b5cacee0d2c6a247",
+    "dataset-manifest.json": "56ef2eb6b8e9c13b7228000548e9934d0b2ea6b0ade899c2f38aa662feab98b3",
+    "dataset-statistics.json": "fa52cb624a49501a5f0b7f6b8269d3813c7c13ff7b2c38cfd94dcfa49a33cced",
+    "direct-hardness-audit.json": "3fa73a5bfb155c0df8d778159de460d0ab29e080ba9e7562a4f3496b8bb475ab",
+    "extra-claim-audit.json": "b92939044497935a785dd2afe542817067a25d338a0ed25711dfc6f4c550d6df",
+    "grounding-r2-train-mix.jsonl": "f71cc1f67ca202d5c6ecea779ee28ef1ec5a7baf7df83e5110c01457ec8e2c47",
+    "leakage-audit.json": "015f142c7f45b2f77c5c053a09404300bdfb1a8dd7034a9bcf3267665a6c1294",
+    "manifest.json": "ea8a2e137b511daed718854732e7aca66c4fa0ee416fcea22de3f508a1d1288b",
+    "numeric-support-audit.json": "e9dbf81c606e7d1c2858142584ef1487fea66c2c0086adae6f39c32a9822b164",
+    "partial-answer-audit.json": "2f2ce2f10afce0fb77ce6aedf4a7f10b65c875e7d649142eba9174dd30b3352d",
+    "r1-replay-audit.json": "f9f95936f7616904f73387614dba8a3f6cd19cd9941b5a2dbd56b6f5c5e58a43",
+    "r1-replay.jsonl": "a1880e28f91a38492f9a779ba64047a5973a086bbb766dec056ece6c4f2520cd",
+    "r2-over-abstention-risk.json": "d91d950a95a96c51c9f74daa0d08ef0604c20d42ab2f4eb1806fa96ed5bb7541",
+    "rejected-samples.jsonl.gz": "bdc53fc5f19b0fb82e09574881fb95d2670df91186a4b7f7486bc7243890beb1",
+    "rejection-taxonomy.json": "ff930e805ed445f22bb016f176ec12677a591b62b04f2e3eaba4269c30b0f6ff",
+    "source-distribution.json": "158f9762bed383b2867f8a73328e0ad0975de0e2e069d2015d5f8ed0ff72a4c9",
+    "subtype-distribution.json": "184bce328f62252ede2dfa1791dca13641ee8cb639ef114d70e3a2ee41824845",
+    "targeted-r2.jsonl": "2f4a45086144f28e84b020a1e24c26344b76f1215bf0e1620a27b59498ec7772",
+    "token-length-audit.json": "c97c42ec2e6012e7a39db9388539ceacde83ab5bf9a18cdbaa653dc602d5a5e0"
+  },
+  "source_commit": "83a78469605e7672f758fbb1c1bec4e25731635b",
+  "status": "semantic_qc_rejected_pretrain"
+}

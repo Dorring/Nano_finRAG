@@ -1,0 +1,123 @@
+{
+  "case_ids": [
+    "18bab13849fc28b6d00ad6d638752b80",
+    "290537a228737e924417103844bec585",
+    "2a0e39c16d49cb73db0d0dbe7b51a93f",
+    "5c1c04fbed6a5cae0adc75fc156f7e46",
+    "76d3de03e8df9f5f664ff58eedc44c0e"
+  ],
+  "cases": [
+    {
+      "labels": [
+        "CS1_RESULT_PERIOD_WRONG",
+        "CS3_RESULT_SCALE_WRONG_OR_MISSING",
+        "CS5_OPERAND_PERIOD_MISMATCH",
+        "CS6_QUESTION_RESULT_SEMANTIC_MISMATCH",
+        "CS7_MALFORMED_SOURCE_MAPPING"
+      ],
+      "primary": "CS1_RESULT_PERIOD_WRONG",
+      "question": "what are the implicit interest costs for the 2018 lease payments , in thousands?",
+      "requested_output": {
+        "currency": "not specified",
+        "scale": "thousand",
+        "unit": "not specified"
+      },
+      "requested_period": "2018",
+      "result_output": {
+        "currency": "not specified",
+        "scale": "1",
+        "unit": "not specified"
+      },
+      "result_period": "2016",
+      "sample_id": "2a0e39c16d49cb73db0d0dbe7b51a93f"
+    },
+    {
+      "labels": [
+        "CS1_RESULT_PERIOD_WRONG",
+        "CS6_QUESTION_RESULT_SEMANTIC_MISMATCH",
+        "CS7_MALFORMED_SOURCE_MAPPING"
+      ],
+      "primary": "CS1_RESULT_PERIOD_WRONG",
+      "question": "what was the sum of total expense for the supplemental plan from 2008 to 2010",
+      "requested_output": {
+        "currency": "not specified",
+        "scale": "1",
+        "unit": "not specified"
+      },
+      "requested_period": "2008-2010",
+      "result_output": {
+        "currency": "not specified",
+        "scale": "1",
+        "unit": "not specified"
+      },
+      "result_period": "2008",
+      "sample_id": "5c1c04fbed6a5cae0adc75fc156f7e46"
+    },
+    {
+      "labels": [
+        "CS3_RESULT_SCALE_WRONG_OR_MISSING",
+        "CS6_QUESTION_RESULT_SEMANTIC_MISMATCH",
+        "CS7_MALFORMED_SOURCE_MAPPING"
+      ],
+      "primary": "CS3_RESULT_SCALE_WRONG_OR_MISSING",
+      "question": "what was the total amount received by ppg in the axiall transaction , in millions?",
+      "requested_output": {
+        "currency": "not specified",
+        "scale": "million",
+        "unit": "not specified"
+      },
+      "requested_period": "not specified",
+      "result_output": {
+        "currency": "not specified",
+        "scale": "1",
+        "unit": "not specified"
+      },
+      "result_period": "2011",
+      "sample_id": "290537a228737e924417103844bec585"
+    },
+    {
+      "labels": [
+        "CS2_RESULT_UNIT_WRONG_OR_MISSING",
+        "CS6_QUESTION_RESULT_SEMANTIC_MISMATCH",
+        "CS7_MALFORMED_SOURCE_MAPPING"
+      ],
+      "primary": "CS2_RESULT_UNIT_WRONG_OR_MISSING",
+      "question": "what was the difference in percentage 5 year cumulative total return between edwards lifesciences corporation and the s&p 500?",
+      "requested_output": {
+        "currency": "not specified",
+        "scale": "1",
+        "unit": "percent"
+      },
+      "requested_period": "not specified",
+      "result_output": {
+        "currency": "not specified",
+        "scale": "1",
+        "unit": "not specified"
+      },
+      "result_period": "2009",
+      "sample_id": "18bab13849fc28b6d00ad6d638752b80"
+    },
+    {
+      "labels": [
+        "CS3_RESULT_SCALE_WRONG_OR_MISSING",
+        "CS6_QUESTION_RESULT_SEMANTIC_MISMATCH",
+        "CS7_MALFORMED_SOURCE_MAPPING"
+      ],
+      "primary": "CS3_RESULT_SCALE_WRONG_OR_MISSING",
+      "question": "what is the par value of the redeemed preferred a units , in millions?",
+      "requested_output": {
+        "currency": "not specified",
+        "scale": "million",
+        "unit": "not specified"
+      },
+      "requested_period": "not specified",
+      "result_output": {
+        "currency": "not specified",
+        "scale": "1",
+        "unit": "not specified"
+      },
+      "result_period": "2000",
+      "sample_id": "76d3de03e8df9f5f664ff58eedc44c0e"
+    }
+  ]
+}
