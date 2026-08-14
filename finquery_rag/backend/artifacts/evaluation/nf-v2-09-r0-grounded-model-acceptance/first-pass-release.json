@@ -1,0 +1,14 @@
+{
+  "candidate": "finquery-finance-grounded-v3-r1",
+  "historical_general_runtime_pass": 41,
+  "historical_old_financial_runtime_pass": 3,
+  "over_rejection_rate": 0.1163,
+  "runtime_pass": 53,
+  "safe_rejected": 5,
+  "safe_release_precision": 0.717,
+  "safe_released": 38,
+  "unsafe_caught": 3,
+  "unsafe_missed": 15,
+  "unsafe_outputs": 21,
+  "unsafe_rejection_recall": 0.1429
+}

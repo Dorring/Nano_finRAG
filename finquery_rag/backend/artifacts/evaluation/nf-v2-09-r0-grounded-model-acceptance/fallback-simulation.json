@@ -1,0 +1,524 @@
+{
+  "fallback_successes": 4,
+  "fallback_triggers": 11,
+  "final_abstentions": 7,
+  "final_releases": 57,
+  "primary_attempts": 64,
+  "primary_releases": 53,
+  "rows": [
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "aapl_fy2025_001",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "aapl_fy2025_002",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "aapl_fy2025_003",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "aapl_fy2025_004",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "aapl_fy2025_005",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": true,
+      "primary_pass": false,
+      "query_id": "aapl_fy2025_006",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": true,
+      "primary_pass": false,
+      "query_id": "aapl_fy2025_007",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "aapl_fy2025_009",
+      "released": true,
+      "unsafe_final_release": true
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "jpm_fy2025_001",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "jpm_fy2025_002",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "jpm_fy2025_003",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "jpm_fy2025_004",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "jpm_fy2025_005",
+      "released": true,
+      "unsafe_final_release": true
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": true,
+      "primary_pass": false,
+      "query_id": "jpm_fy2025_006",
+      "released": false,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": true,
+      "primary_pass": false,
+      "query_id": "jpm_fy2025_007",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "jpm_fy2025_009",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "ko_fy2025_001",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "ko_fy2025_002",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "ko_fy2025_003",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "ko_fy2025_004",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "ko_fy2025_005",
+      "released": true,
+      "unsafe_final_release": true
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": true,
+      "primary_pass": false,
+      "query_id": "ko_fy2025_006",
+      "released": false,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "ko_fy2025_007",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "ko_fy2025_009",
+      "released": true,
+      "unsafe_final_release": true
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "msft_fy2025_001",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "msft_fy2025_002",
+      "released": true,
+      "unsafe_final_release": true
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "msft_fy2025_003",
+      "released": true,
+      "unsafe_final_release": true
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "msft_fy2025_004",
+      "released": true,
+      "unsafe_final_release": true
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "msft_fy2025_005",
+      "released": true,
+      "unsafe_final_release": true
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "msft_fy2025_006",
+      "released": true,
+      "unsafe_final_release": true
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "msft_fy2025_007",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "msft_fy2025_009",
+      "released": true,
+      "unsafe_final_release": true
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "nvda_fy2025_001",
+      "released": true,
+      "unsafe_final_release": true
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "nvda_fy2025_002",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "nvda_fy2025_003",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "nvda_fy2025_004",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "nvda_fy2025_005",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "nvda_fy2025_006",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "nvda_fy2025_007",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "nvda_fy2025_009",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "pfe_fy2024_001",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "pfe_fy2024_002",
+      "released": true,
+      "unsafe_final_release": true
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": true,
+      "primary_pass": false,
+      "query_id": "pfe_fy2024_003",
+      "released": false,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": true,
+      "primary_pass": false,
+      "query_id": "pfe_fy2024_004",
+      "released": false,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "pfe_fy2024_005",
+      "released": true,
+      "unsafe_final_release": true
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": true,
+      "primary_pass": false,
+      "query_id": "pfe_fy2024_006",
+      "released": false,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "pfe_fy2024_007",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": true,
+      "primary_pass": false,
+      "query_id": "pfe_fy2024_009",
+      "released": false,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "tsla_fy2025_001",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "tsla_fy2025_002",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "tsla_fy2025_003",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "tsla_fy2025_004",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "tsla_fy2025_005",
+      "released": true,
+      "unsafe_final_release": true
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "tsla_fy2025_006",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "tsla_fy2025_007",
+      "released": true,
+      "unsafe_final_release": true
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "tsla_fy2025_009",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "v_fy2025_001",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "v_fy2025_002",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "v_fy2025_003",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "v_fy2025_004",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": true,
+      "primary_pass": false,
+      "query_id": "v_fy2025_005",
+      "released": false,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": false,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "v_fy2025_006",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": true,
+      "primary_pass": false,
+      "query_id": "v_fy2025_007",
+      "released": true,
+      "unsafe_final_release": false
+    },
+    {
+      "fallback_pass": true,
+      "fallback_triggered": false,
+      "primary_pass": true,
+      "query_id": "v_fy2025_009",
+      "released": true,
+      "unsafe_final_release": false
+    }
+  ],
+  "sealed_general_input_contract": "legacy_v2_06",
+  "unsafe_final_releases": 15
+}

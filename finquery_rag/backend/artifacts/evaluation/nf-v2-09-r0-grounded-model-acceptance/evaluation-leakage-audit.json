@@ -1,0 +1,8 @@
+{
+  "forbidden_reference_answer_overlap": 0,
+  "internal_benchmark_context_overlap": 0,
+  "internal_benchmark_question_overlap": 0,
+  "official_evaluation_leakage": 0,
+  "reference_answers_read_before_seal": false,
+  "source": "frozen_alignment_leakage_audit"
+}

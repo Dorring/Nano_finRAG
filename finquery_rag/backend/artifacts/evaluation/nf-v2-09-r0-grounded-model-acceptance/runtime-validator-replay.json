@@ -1,0 +1,353 @@
+{
+  "HARD_FAIL": 8,
+  "PASS": 53,
+  "SOFT_FAIL": 3,
+  "candidate": "finquery-finance-grounded-v3-r1",
+  "reference_reads": 0,
+  "rows": [
+    {
+      "failure_codes": [],
+      "query_id": "aapl_fy2025_001",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "aapl_fy2025_002",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "aapl_fy2025_003",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "aapl_fy2025_004",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "aapl_fy2025_005",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [
+        "GV6_CALCULATION_RESULT_PRESERVATION"
+      ],
+      "query_id": "aapl_fy2025_006",
+      "status": "HARD_FAIL"
+    },
+    {
+      "failure_codes": [
+        "GV2_CITATION_REQUIREMENT"
+      ],
+      "query_id": "aapl_fy2025_007",
+      "status": "SOFT_FAIL"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "aapl_fy2025_009",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "jpm_fy2025_001",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "jpm_fy2025_002",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "jpm_fy2025_003",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "jpm_fy2025_004",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "jpm_fy2025_005",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [
+        "GV6_CALCULATION_RESULT_PRESERVATION"
+      ],
+      "query_id": "jpm_fy2025_006",
+      "status": "HARD_FAIL"
+    },
+    {
+      "failure_codes": [
+        "GV2_CITATION_REQUIREMENT"
+      ],
+      "query_id": "jpm_fy2025_007",
+      "status": "SOFT_FAIL"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "jpm_fy2025_009",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "ko_fy2025_001",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "ko_fy2025_002",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "ko_fy2025_003",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "ko_fy2025_004",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "ko_fy2025_005",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [
+        "GV6_CALCULATION_RESULT_PRESERVATION"
+      ],
+      "query_id": "ko_fy2025_006",
+      "status": "HARD_FAIL"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "ko_fy2025_007",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "ko_fy2025_009",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "msft_fy2025_001",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "msft_fy2025_002",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "msft_fy2025_003",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "msft_fy2025_004",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "msft_fy2025_005",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "msft_fy2025_006",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "msft_fy2025_007",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "msft_fy2025_009",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "nvda_fy2025_001",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "nvda_fy2025_002",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "nvda_fy2025_003",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "nvda_fy2025_004",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "nvda_fy2025_005",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "nvda_fy2025_006",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "nvda_fy2025_007",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "nvda_fy2025_009",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "pfe_fy2024_001",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "pfe_fy2024_002",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [
+        "GV3_NUMERIC_FIDELITY",
+        "GV5_UNIT_CURRENCY_SCALE_FIDELITY"
+      ],
+      "query_id": "pfe_fy2024_003",
+      "status": "HARD_FAIL"
+    },
+    {
+      "failure_codes": [
+        "GV5_UNIT_CURRENCY_SCALE_FIDELITY"
+      ],
+      "query_id": "pfe_fy2024_004",
+      "status": "HARD_FAIL"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "pfe_fy2024_005",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [
+        "GV6_CALCULATION_RESULT_PRESERVATION"
+      ],
+      "query_id": "pfe_fy2024_006",
+      "status": "HARD_FAIL"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "pfe_fy2024_007",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [
+        "GV3_NUMERIC_FIDELITY"
+      ],
+      "query_id": "pfe_fy2024_009",
+      "status": "HARD_FAIL"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "tsla_fy2025_001",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "tsla_fy2025_002",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "tsla_fy2025_003",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "tsla_fy2025_004",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "tsla_fy2025_005",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "tsla_fy2025_006",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "tsla_fy2025_007",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "tsla_fy2025_009",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "v_fy2025_001",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "v_fy2025_002",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "v_fy2025_003",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "v_fy2025_004",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [
+        "GV5_UNIT_CURRENCY_SCALE_FIDELITY"
+      ],
+      "query_id": "v_fy2025_005",
+      "status": "HARD_FAIL"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "v_fy2025_006",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [
+        "GV2_CITATION_REQUIREMENT"
+      ],
+      "query_id": "v_fy2025_007",
+      "status": "SOFT_FAIL"
+    },
+    {
+      "failure_codes": [],
+      "query_id": "v_fy2025_009",
+      "status": "PASS"
+    }
+  ],
+  "semantic_grounding_limitation": true
+}

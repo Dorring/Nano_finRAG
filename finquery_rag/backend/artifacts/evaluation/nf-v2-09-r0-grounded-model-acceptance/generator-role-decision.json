@@ -1,0 +1,12 @@
+{
+  "acceptance_gate": false,
+  "additional_training_performed": false,
+  "candidate_routes": [
+    "DIRECT",
+    "CALCULATION"
+  ],
+  "excluded_routes": {
+    "MULTI_EVIDENCE": "grounded 2/5; not eligible for primary use"
+  },
+  "role": "financial_selective_generator"
+}

@@ -1,0 +1,18 @@
+{
+  "best_exists": true,
+  "best_step": 7,
+  "exists": true,
+  "expected_keys": 175,
+  "financial_generation_view_match": true,
+  "financial_generation_view_sha": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "finite_tensors": true,
+  "key_count_match": true,
+  "meta_exists": true,
+  "renderer_version": "deterministic_text_v1",
+  "sample_rendered_input": "[QUESTION]\nWhat was total net sales reported by Apple in FY2025?\n\n[VERIFIED EVIDENCE]\n\n[E1]\nMetric: Total net sales\nPeriod: FY2025\nScope: Total net sales\nValue: 416161\nUnit: not specified\nCurrency: not specified\nScale: 1000000\nSource: 2016faed04f03df7ef6aad0be8f232521469d6ba19428379e552d55dc23667cd:05dad73372a24be47526caba2e7bc521ee7727164b25490c8a1572b86455fb9e:32\nEvidence: [DOCUMENT]\nDocument: aapl_fy2025\nPage: 32\n\n[STRUCTURE]\nStatement: income_statement\nMetric Path: Total net sales\nRow: Total net sales\n\n[EVIDENCE]\nType: table_row_backed\nColumn Headers: FY2025 | FY2024 | FY2023\nPeriod / Value:\n- FY2025 = 416,161 millions\n- FY2024 = 391,035 millions\n- FY2023 = 383,285 millions\nScale: millions\n\n[CONTENT]\nTotal net sales | 416,161 | 391,035 | 383,285\n\n[SOURCE]\ntable:2016faed04f03df7ef6aad0be8f232521469d6ba19428379e552d55dc23667cd | row:05dad73372a24be47526caba2e7bc521ee7727164b25490c8a1572b86455fb9e | page:32\n\n[ANSWER RULES]\n1. Use only the verified evidence and calculation above.\n2. Do not introduce outside financial knowledge.\n3. Preserve supplied numbers, periods, units, currencies and scales exactly.\n4. Do not recalculate canonical calculation results.\n5. Cite factual claims using the supplied [E#] / [C#] IDs.\n6. If required evidence is missing, explicitly state that the provided evidence is insufficient.\n7. Answer concisely.",
+  "sha256": "cf38fe744456913bcb8cbb976bfa3b31de78fd52fc22cfd72bbad38d515fcf6f",
+  "size_bytes": 5714292126,
+  "state_dict_keys": 175,
+  "torch_load_cpu": "PASS",
+  "val_bpb": 0.3813794551795194
+}

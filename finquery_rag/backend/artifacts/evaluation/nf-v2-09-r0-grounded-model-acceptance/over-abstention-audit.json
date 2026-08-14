@@ -1,0 +1,13 @@
+{
+  "alignment_holdout": {
+    "hallucination_on_unanswerable": 1,
+    "over_abstention_on_answerable": 13,
+    "over_abstention_rate": 7.03
+  },
+  "by_route": {
+    "CALCULATION": 0,
+    "DIRECT": 0,
+    "MULTI_EVIDENCE": 3
+  },
+  "tier_b_incorrect_full_abstention": 3
+}

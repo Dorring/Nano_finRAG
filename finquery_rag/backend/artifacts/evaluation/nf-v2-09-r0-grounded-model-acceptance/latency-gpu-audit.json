@@ -1,0 +1,25 @@
+{
+  "device_name": "NVIDIA RTX A6000",
+  "gpu_free_after_load_mib": 8821,
+  "gpu_free_before_load_mib": 22966,
+  "gpu_total_mib": 49140,
+  "historical_old_financial": {
+    "avg_ms": 87000,
+    "p50_ms": 95800,
+    "p95_ms": 109200
+  },
+  "holdout": {
+    "avg": 2655.622,
+    "p50": 898.2213549606968,
+    "p95": 14581.323613005225
+  },
+  "peak_vram_note": "post-load nvidia-smi observation; torch peak counters were not retained after the inference process exited",
+  "peak_vram_observed_mib": 39731,
+  "physical_gpu": "6",
+  "scored_inference_count": 264,
+  "tier_b": {
+    "avg": 1606.374,
+    "p50": 659.974,
+    "p95": 14294.868
+  }
+}

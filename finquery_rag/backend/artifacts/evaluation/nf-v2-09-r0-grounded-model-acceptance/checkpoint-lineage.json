@@ -1,0 +1,15 @@
+{
+  "candidate": "finquery-finance-grounded-v3-r1",
+  "checkpoint": "model_000007.pt",
+  "do_not_use_bpb_as_quality": true,
+  "epochs": 1,
+  "final_val_bpb": 0.3813794551795194,
+  "lineage": [
+    "d24_final_mixdata",
+    "d24_finance_v2_lr010",
+    "d24_grounding_align"
+  ],
+  "optimizer_steps": 7,
+  "parent": "d24_finance_v2_lr010",
+  "samples": 3600
+}

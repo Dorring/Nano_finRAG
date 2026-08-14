@@ -1,0 +1,13 @@
+{
+  "additional_training_performed": false,
+  "candidate": "finquery-finance-grounded-v3-r1",
+  "checkpoint_sha256": "cf38fe744456913bcb8cbb976bfa3b31de78fd52fc22cfd72bbad38d515fcf6f",
+  "gpu_override": true,
+  "grounding_alignment_effective": false,
+  "model_role": "financial_selective_generator",
+  "next_gate": "v2_09_grounded_model_failure_review",
+  "physical_gpu": "6",
+  "production_switch": false,
+  "reference_reads_before_prediction_seal": 0,
+  "validation": "PASS_WITH_EXPLICIT_GPU_OVERRIDE"
+}

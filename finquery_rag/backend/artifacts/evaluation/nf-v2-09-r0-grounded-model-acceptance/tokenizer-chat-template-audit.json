@@ -1,0 +1,28 @@
+{
+  "tokenizer_vocab": 65000,
+  "special_token_ids": {
+    "<|bos|>": 64991,
+    "<|user_start|>": 64992,
+    "<|user_end|>": 64993,
+    "<|assistant_start|>": 64994,
+    "<|assistant_end|>": 64995,
+    "<|python_start|>": 64996,
+    "<|python_end|>": 64997,
+    "<|output_start|>": 64998,
+    "<|output_end|>": 64999
+  },
+  "bos_token_id": 64991,
+  "special_token_set": [
+    "<|assistant_end|>",
+    "<|assistant_start|>",
+    "<|bos|>",
+    "<|output_end|>",
+    "<|output_start|>",
+    "<|python_end|>",
+    "<|python_start|>",
+    "<|user_end|>",
+    "<|user_start|>"
+  ],
+  "chat_template_compatible": true,
+  "double_template_application": false
+}

@@ -1,0 +1,26 @@
+{
+  "answer_envelope_valid": 11,
+  "canonical_result_preserved": 2,
+  "citation_complete": 11,
+  "citation_valid": 11,
+  "generation_complete": 11,
+  "grounded": 9,
+  "input_tokens": 12159,
+  "latency_ms": {
+    "avg": 2072.323,
+    "p50": 843.353,
+    "p95": 14624.407
+  },
+  "n": 11,
+  "numeric_fidelity": 9,
+  "output_tokens": 382,
+  "period_fidelity": 11,
+  "period_preserved": 11,
+  "recalculated_or_mutated_result": 9,
+  "reference_answer_complete": 0,
+  "unit_currency_scale_fidelity": 11,
+  "unit_currency_scale_preserved": 11,
+  "unsupported_arithmetic": 2,
+  "unsupported_claim_queries": 2,
+  "unsupported_numeric_claims": 2
+}

@@ -1,0 +1,26 @@
+{
+  "after_load": {
+    "free_mib": 8821,
+    "name": "NVIDIA RTX A6000",
+    "total_mib": 49140,
+    "used_mib": 39731
+  },
+  "before_load": {
+    "free_mib": 22966,
+    "name": "NVIDIA RTX A6000",
+    "total_mib": 49140,
+    "used_mib": 25585
+  },
+  "cuda_visible_devices": "6",
+  "explicit_user_override": true,
+  "inference_tensor_device": "cuda:0",
+  "model_device": "cuda:0",
+  "model_parameter_device": "cuda:0",
+  "override_reason": "user_authorized_physical_gpu_6",
+  "physical_gpu": "6",
+  "task_gpu_original": "0",
+  "torch_cuda_available": true,
+  "torch_current_device": 0,
+  "torch_device_count": 1,
+  "torch_device_name": "NVIDIA RTX A6000"
+}
