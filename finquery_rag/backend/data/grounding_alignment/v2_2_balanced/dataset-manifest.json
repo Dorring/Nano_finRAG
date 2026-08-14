@@ -1,0 +1,20 @@
+{
+  "base_commit": "3be2878a9a5fac4fb6fdbe052b34097de0256c1b",
+  "components": {
+    "general-positive-replay.jsonl": 600,
+    "strong-partial.jsonl": 250,
+    "structural-hard-unanswerable.jsonl": 250,
+    "targeted-selected.jsonl": 1000
+  },
+  "dataset_id": "nf-v2-09-r2.2-balanced",
+  "dataset_sha256": "ad0eac16b27048cf85f90edf3439c5f914d1be6268baf906e51cdfee40bbd8c7",
+  "financial_generation_view_v1_sha256": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "manual_audit_count": 15,
+  "manual_audit_seed": 20260815,
+  "model_calls": 0,
+  "parent_checkpoint": "finquery-finance-grounded-v3-r1/model_000007.pt",
+  "retrieval_calls": 0,
+  "seed": 20260815,
+  "total": 2100,
+  "training": 0
+}

@@ -1,0 +1,11 @@
+{
+  "counts": {
+    "ABSTAIN_FULLY": 250,
+    "ANSWER_CANONICAL_CALCULATION": 500,
+    "ANSWER_DIRECTLY": 1100,
+    "ANSWER_PLUS_PARTIAL_REFUSAL": 250
+  },
+  "full_abstention_targets": 250,
+  "partial_refusal_targets": 250,
+  "positive_answer_targets": 1850
+}
