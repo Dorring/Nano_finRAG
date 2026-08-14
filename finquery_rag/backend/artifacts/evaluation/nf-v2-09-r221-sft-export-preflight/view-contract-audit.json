@@ -1,0 +1,10 @@
+{
+  "contract_path": "finquery_rag/backend/data/grounding_alignment/v1/financial-generation-view-v1.json",
+  "contract_sha256": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "expected_contract_sha256": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "contract_sha_matches": true,
+  "rows_missing_view_markers": [],
+  "rows_with_expected_view_markers": 2100,
+  "marker_contract_valid": true,
+  "prompt_normalization": false
+}

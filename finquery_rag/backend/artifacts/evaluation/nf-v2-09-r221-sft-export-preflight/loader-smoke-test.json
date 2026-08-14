@@ -1,0 +1,23 @@
+{
+  "loader": "tasks/customjson.py",
+  "loader_instantiated": true,
+  "loader_error": null,
+  "dataset_length": 2100,
+  "expected_length": 2100,
+  "representative_indices": {
+    "partial": 0,
+    "direct_positive": 1,
+    "calculation": 2,
+    "structural_hard_unanswerable": 10,
+    "multi_evidence": 36
+  },
+  "tokenizer_error": null,
+  "tokenizer": "RustBPETokenizer",
+  "context_limit": 2048,
+  "max_untruncated_tokens": 1599,
+  "token_length_p50": 738,
+  "token_length_p95": 1244,
+  "context_overflow_rows": [],
+  "context_overflow": 0,
+  "smoke_test_pass": true
+}

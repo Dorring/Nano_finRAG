@@ -1,0 +1,15 @@
+{
+  "decision": "pass",
+  "dataset_ready_for_training": true,
+  "next_gate": "v2_09_r22_balanced_grounding_training",
+  "training": 0,
+  "model_calls": 0,
+  "retrieval_calls": 0,
+  "answerability_counts": {
+    "PARTIALLY_ANSWERABLE": 250,
+    "FULLY_ANSWERABLE": 1600,
+    "FULLY_UNANSWERABLE": 250
+  },
+  "canonical_sha256": "4771803fd179bdbb9bf146dd7be782fe7a9de40d83408d548d181e5f1e233753",
+  "training_sha256": "299290d9ace0018336acabc12a2e90f5d9c67f1ba4beadbb8673f904a59c8390"
+}

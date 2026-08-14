@@ -1,0 +1,11 @@
+{
+  "loader": "tasks/customjson.py:CustomJSON",
+  "top_level_type": "list",
+  "top_level_arrays_valid": true,
+  "minimum_message_count_valid": true,
+  "role_contract": "user, assistant alternating from index 0",
+  "all_roles_valid": true,
+  "all_content_strings": true,
+  "malformed_json_rows": 0,
+  "schema_valid": true
+}

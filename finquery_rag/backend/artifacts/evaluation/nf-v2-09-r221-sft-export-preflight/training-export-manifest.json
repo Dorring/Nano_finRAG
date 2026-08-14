@@ -1,0 +1,19 @@
+{
+  "projection": "canonical_row.messages -> one JSONL line",
+  "input": "finquery_rag/backend/data/grounding_alignment/v2_2_1_evidence_sufficient/grounding-r22-1-train-mix.jsonl",
+  "output": "finquery_rag/backend/data/grounding_alignment/v2_2_1_evidence_sufficient/grounding_r22_1_sft_train.jsonl",
+  "canonical_rows": 2100,
+  "training_rows": 2100,
+  "dropped_rows": 0,
+  "duplicated_rows_introduced": 0,
+  "reordered_rows": false,
+  "canonical_sample_id_order_preserved": true,
+  "message_content_changes": 0,
+  "messages_hash_match": true,
+  "messages_hash_algorithm": "sha256(UTF-8 json.dumps(messages, ensure_ascii=False, separators=(',', ':'), sort_keys=False))",
+  "training_file_sha256": "299290d9ace0018336acabc12a2e90f5d9c67f1ba4beadbb8673f904a59c8390",
+  "training_file_bytes": 4944770,
+  "training": 0,
+  "model_calls": 0,
+  "retrieval_calls": 0
+}

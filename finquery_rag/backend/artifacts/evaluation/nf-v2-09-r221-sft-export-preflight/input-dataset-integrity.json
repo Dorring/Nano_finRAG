@@ -1,0 +1,13 @@
+{
+  "canonical_dataset": "finquery_rag/backend/data/grounding_alignment/v2_2_1_evidence_sufficient/grounding-r22-1-train-mix.jsonl",
+  "exists": true,
+  "canonical_rows": 2100,
+  "expected_rows": 2100,
+  "sha256": "4771803fd179bdbb9bf146dd7be782fe7a9de40d83408d548d181e5f1e233753",
+  "expected_sha256": "4771803fd179bdbb9bf146dd7be782fe7a9de40d83408d548d181e5f1e233753",
+  "sha_matches": true,
+  "format": "one JSON object per line with a messages field",
+  "training": 0,
+  "model_calls": 0,
+  "retrieval_calls": 0
+}
