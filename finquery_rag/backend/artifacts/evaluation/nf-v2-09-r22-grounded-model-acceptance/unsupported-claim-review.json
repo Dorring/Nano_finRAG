@@ -1,0 +1,144 @@
+{
+  "category_counts": {
+    "UC0": 0,
+    "UC1": 0,
+    "UC10": 0,
+    "UC2": 0,
+    "UC3": 0,
+    "UC4": 0,
+    "UC5": 14,
+    "UC6": 4,
+    "UC7": 0,
+    "UC8": 3,
+    "UC9": 0
+  },
+  "diagnostic_evaluator_or_contract_only": 0,
+  "diagnostic_only": true,
+  "diagnostic_true_semantic_unsupported": 17,
+  "official_reported_unsupported": 17,
+  "rows": [
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "jpm_fy2025_005"
+    },
+    {
+      "labels": [
+        "UC5",
+        "UC6"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "ko_fy2025_009"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "msft_fy2025_001"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "msft_fy2025_002"
+    },
+    {
+      "labels": [
+        "UC8"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "msft_fy2025_003"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "msft_fy2025_004"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "msft_fy2025_005"
+    },
+    {
+      "labels": [
+        "UC8"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "msft_fy2025_009"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "nvda_fy2025_001"
+    },
+    {
+      "labels": [
+        "UC8"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "nvda_fy2025_003"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "pfe_fy2024_002"
+    },
+    {
+      "labels": [
+        "UC5",
+        "UC6"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "pfe_fy2024_003"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "pfe_fy2024_004"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "pfe_fy2024_005"
+    },
+    {
+      "labels": [
+        "UC5",
+        "UC6"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "pfe_fy2024_009"
+    },
+    {
+      "labels": [
+        "UC5",
+        "UC6"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "tsla_fy2025_003"
+    },
+    {
+      "labels": [
+        "UC5"
+      ],
+      "official_reported_unsupported": true,
+      "query_id": "tsla_fy2025_005"
+    }
+  ]
+}

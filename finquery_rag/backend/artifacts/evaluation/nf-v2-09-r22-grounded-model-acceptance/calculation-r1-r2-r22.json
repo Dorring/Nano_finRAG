@@ -1,0 +1,23 @@
+{
+  "R2_2_exact_preserve_target_9_of_11": false,
+  "R2_2_route_metrics": {
+    "citation_complete": 11,
+    "citation_valid": 11,
+    "grounded": 11,
+    "numeric_fidelity": 11,
+    "period_fidelity": 11,
+    "unit_currency_scale_fidelity": 11,
+    "unsupported_claim_queries": 0
+  },
+  "canonical_preserve": {
+    "R1": 2,
+    "R2_2_balanced": 7,
+    "R2_targeted_heavy": 7
+  },
+  "mutation_or_recalculation": {
+    "R1": 9,
+    "R2_2_balanced": 4,
+    "R2_targeted_heavy": 4
+  },
+  "n": 11
+}

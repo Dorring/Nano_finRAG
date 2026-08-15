@@ -1,0 +1,8 @@
+{
+  "CALCULATION": "not_eligible",
+  "DIRECT": "not_eligible",
+  "MULTI_EVIDENCE": "component_eval_candidate_only; runtime safe release remains 0/5",
+  "candidate": "finquery-finance-grounded-v3-r22",
+  "fallback": "qwen3.7-plus",
+  "production_switch": false
+}

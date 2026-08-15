@@ -1,0 +1,21 @@
+{
+  "answer_envelope_valid": 48,
+  "citation_complete": 44,
+  "citation_valid": 48,
+  "generation_complete": 48,
+  "grounded": 31,
+  "input_tokens": 29171,
+  "latency_ms": {
+    "avg": 343.44,
+    "p50": 341.787,
+    "p95": 497.069
+  },
+  "n": 48,
+  "numeric_fidelity": 34,
+  "output_tokens": 1041,
+  "period_fidelity": 46,
+  "reference_answer_complete": 0,
+  "unit_currency_scale_fidelity": 44,
+  "unsupported_claim_queries": 17,
+  "unsupported_numeric_claims": 17
+}

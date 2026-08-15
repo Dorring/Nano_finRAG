@@ -1,0 +1,48 @@
+{
+  "n": 48,
+  "numeric_selection": {
+    "R1": 32,
+    "R2": 35,
+    "R2_2": 34,
+    "target_beyond_35_pass": false
+  },
+  "official_unsupported": {
+    "R1": 16,
+    "R2": 18,
+    "R2_2": 17
+  },
+  "period": {
+    "R1": 48,
+    "R2": 46,
+    "R2_2": 46
+  },
+  "stages": {
+    "R1": {
+      "citation_complete": 48,
+      "citation_valid": 48,
+      "grounded": 32,
+      "numeric_fidelity": 32,
+      "period_fidelity": 48,
+      "unit_currency_scale_fidelity": 44,
+      "unsupported_claim_queries": 16
+    },
+    "R2_2_balanced": {
+      "citation_complete": 44,
+      "citation_valid": 48,
+      "grounded": 31,
+      "numeric_fidelity": 34,
+      "period_fidelity": 46,
+      "unit_currency_scale_fidelity": 44,
+      "unsupported_claim_queries": 17
+    },
+    "R2_targeted_heavy": {
+      "citation_complete": 44,
+      "citation_valid": 47,
+      "grounded": 30,
+      "numeric_fidelity": 35,
+      "period_fidelity": 46,
+      "unit_currency_scale_fidelity": 44,
+      "unsupported_claim_queries": 18
+    }
+  }
+}

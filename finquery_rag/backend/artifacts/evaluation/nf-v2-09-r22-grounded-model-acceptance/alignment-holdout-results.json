@@ -1,0 +1,48 @@
+{
+  "composition": {
+    "PARTIAL_DISTRACTOR": 22,
+    "POSITIVE_GROUNDED": 163,
+    "UNANSWERABLE": 15
+  },
+  "n": 200,
+  "overall": {
+    "hallucination_on_unanswerable": 15,
+    "over_abstention_on_answerable": 1,
+    "over_abstention_rate": 0.54
+  },
+  "partial": {
+    "answer_success": 20,
+    "citation_complete": 22,
+    "citation_valid": 22,
+    "full_over_refusal": 0,
+    "n": 22,
+    "numeric_fidelity": 20,
+    "over_abstention": 0,
+    "period_fidelity": 21,
+    "supported_portion_answered": 20,
+    "supported_portion_cited": 22,
+    "unsupported_completion": 0,
+    "unsupported_portion_refused": 0
+  },
+  "positive": {
+    "answer_success": 115,
+    "citation_complete": 160,
+    "citation_valid": 163,
+    "n": 163,
+    "numeric_fidelity": 117,
+    "over_abstention": 1,
+    "period_fidelity": 159
+  },
+  "unanswerable": {
+    "answer_success": 15,
+    "citation_complete": 15,
+    "citation_valid": 15,
+    "correct_abstention": 0,
+    "hallucinated_answer": 15,
+    "n": 15,
+    "numeric_fidelity": 15,
+    "over_abstention": 0,
+    "period_fidelity": 15,
+    "unsupported_numeric_output": 14
+  }
+}

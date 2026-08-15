@@ -1,0 +1,31 @@
+{
+  "device_name": "NVIDIA RTX A6000",
+  "hardware_comparison_claim": "not_strict_without_equivalent_hardware",
+  "input_tokens": {
+    "p50": 584.0,
+    "p95": 1478,
+    "total": 47350
+  },
+  "output_tokens": {
+    "p50": 23.0,
+    "p95": 36,
+    "total": 1680
+  },
+  "peak_allocated_gib": 7.128,
+  "peak_reserved_gib": 16.355,
+  "physical_gpu": "3",
+  "r1_historical_gpu6": {
+    "average_s": 1.606,
+    "p50_s": 0.66,
+    "p95_s": 14.295
+  },
+  "scored_inference_count": 264,
+  "tier_b": {
+    "average_ms": 469.106,
+    "max_ms": 7226.460225996561,
+    "p50_ms": 349.05205643735826,
+    "p95_ms": 553.2272250857204
+  },
+  "tokens_per_second_reliable": false,
+  "warmup_count": 2
+}

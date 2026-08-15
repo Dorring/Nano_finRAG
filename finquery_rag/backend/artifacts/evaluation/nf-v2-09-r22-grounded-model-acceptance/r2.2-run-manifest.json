@@ -1,0 +1,30 @@
+{
+  "candidate": "finquery-finance-grounded-v3-r22",
+  "checkpoint": "d24_grounding_align_r22/model_000004.pt",
+  "checkpoint_selection_from_tier_b": false,
+  "cuda_visible_devices": "3",
+  "decoding_modified": false,
+  "financial_generation_view_sha256": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "gate": "NF-V2-09 R2.2 Grounded Model Acceptance",
+  "gpu_physical": "3",
+  "holdout_scored": 200,
+  "local_scored_generations": 264,
+  "next_gate": "v2_09_r2_failure_review",
+  "reference_reads_before_prediction_seal": 0,
+  "selection_policy": "frozen_final_checkpoint",
+  "step_evaluated": 4,
+  "steps_not_evaluated": [
+    1,
+    2,
+    3
+  ],
+  "tier_b_modified": false,
+  "tier_b_properties": {
+    "component_eval_only": true,
+    "fresh_blind": false,
+    "oracle_evidence": true
+  },
+  "tier_b_scored": 64,
+  "training_performed": false,
+  "validator_modified": false
+}

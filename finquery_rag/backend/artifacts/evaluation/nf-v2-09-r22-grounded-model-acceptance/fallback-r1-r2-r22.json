@@ -1,0 +1,28 @@
+{
+  "R1": {
+    "fallback_successes": 4,
+    "fallback_triggers": 11,
+    "final_abstentions": 7,
+    "final_releases": 57,
+    "primary_releases": 53,
+    "unsafe_final_releases": 15
+  },
+  "R2_2_balanced": {
+    "fallback_successes": 0,
+    "fallback_triggers": 15,
+    "final_abstentions": 15,
+    "final_releases": 49,
+    "primary_releases": 49,
+    "unsafe_final_releases": 8
+  },
+  "R2_targeted_heavy": {
+    "fallback_successes": 0,
+    "fallback_triggers": 16,
+    "final_abstentions": 16,
+    "final_releases": 48,
+    "primary_releases": 48,
+    "unsafe_final_releases": 7
+  },
+  "new_general_generation_calls": 0,
+  "sealed_general_input_contract": "legacy_v2_06"
+}

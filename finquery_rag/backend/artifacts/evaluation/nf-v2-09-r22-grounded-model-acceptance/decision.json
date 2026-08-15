@@ -1,0 +1,24 @@
+{
+  "additional_training_performed": false,
+  "base_commit": "40dc4687d168d05c320aee90e3fea0cd3cd8cf86",
+  "behavioral_net_improvement": true,
+  "candidate": "finquery-finance-grounded-v3-r22",
+  "checkpoint": "model_000004.pt",
+  "checkpoint_sha256": "6da43dd3853625f4d8f68c3db3aac33587856fe2749990aa23b765dbdfd2aaea",
+  "eligible_routes": [
+    "MULTI_EVIDENCE"
+  ],
+  "evaluation_leakage": 0,
+  "general_alignment_validation_regression": true,
+  "gpu_physical": "3",
+  "grounding_alignment_effective": "partial",
+  "model_role": "financial_selective_generator",
+  "next_gate": "v2_09_r2_failure_review",
+  "original_acceptance": "fail",
+  "production_switch": false,
+  "r2_2_balanced_behavioral_net_improvement": true,
+  "r2_targeted_calculation_obedience": "fail",
+  "r2_targeted_direct_numeric": "fail",
+  "reference_reads_before_prediction_seal": 0,
+  "selection_policy": "frozen_final_checkpoint"
+}

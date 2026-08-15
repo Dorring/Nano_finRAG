@@ -1,0 +1,396 @@
+{
+  "fallback_successes": 0,
+  "fallback_triggers": 15,
+  "final_abstentions": 15,
+  "final_releases": 49,
+  "primary_attempts": 64,
+  "primary_releases": 49,
+  "rows": [
+    {
+      "path": "primary",
+      "query_id": "aapl_fy2025_001",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "aapl_fy2025_002",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "aapl_fy2025_003",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "aapl_fy2025_004",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "aapl_fy2025_005",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "aapl_fy2025_006",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "aapl_fy2025_007",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "aapl_fy2025_009",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "jpm_fy2025_001",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "jpm_fy2025_002",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "jpm_fy2025_003",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "jpm_fy2025_004",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "jpm_fy2025_005",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "abstain",
+      "query_id": "jpm_fy2025_006",
+      "released": false,
+      "validator": "HARD_FAIL"
+    },
+    {
+      "path": "primary",
+      "query_id": "jpm_fy2025_007",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "jpm_fy2025_009",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "ko_fy2025_001",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "ko_fy2025_002",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "ko_fy2025_003",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "ko_fy2025_004",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "ko_fy2025_005",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "abstain",
+      "query_id": "ko_fy2025_006",
+      "released": false,
+      "validator": "HARD_FAIL"
+    },
+    {
+      "path": "primary",
+      "query_id": "ko_fy2025_007",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "abstain",
+      "query_id": "ko_fy2025_009",
+      "released": false,
+      "validator": "HARD_FAIL"
+    },
+    {
+      "path": "primary",
+      "query_id": "msft_fy2025_001",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "msft_fy2025_002",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "abstain",
+      "query_id": "msft_fy2025_003",
+      "released": false,
+      "validator": "HARD_FAIL"
+    },
+    {
+      "path": "primary",
+      "query_id": "msft_fy2025_004",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "msft_fy2025_005",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "msft_fy2025_006",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "abstain",
+      "query_id": "msft_fy2025_007",
+      "released": false,
+      "validator": "HARD_FAIL"
+    },
+    {
+      "path": "abstain",
+      "query_id": "msft_fy2025_009",
+      "released": false,
+      "validator": "HARD_FAIL"
+    },
+    {
+      "path": "primary",
+      "query_id": "nvda_fy2025_001",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "nvda_fy2025_002",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "abstain",
+      "query_id": "nvda_fy2025_003",
+      "released": false,
+      "validator": "HARD_FAIL"
+    },
+    {
+      "path": "primary",
+      "query_id": "nvda_fy2025_004",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "nvda_fy2025_005",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "nvda_fy2025_006",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "nvda_fy2025_007",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "nvda_fy2025_009",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "pfe_fy2024_001",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "abstain",
+      "query_id": "pfe_fy2024_002",
+      "released": false,
+      "validator": "HARD_FAIL"
+    },
+    {
+      "path": "abstain",
+      "query_id": "pfe_fy2024_003",
+      "released": false,
+      "validator": "HARD_FAIL"
+    },
+    {
+      "path": "abstain",
+      "query_id": "pfe_fy2024_004",
+      "released": false,
+      "validator": "HARD_FAIL"
+    },
+    {
+      "path": "primary",
+      "query_id": "pfe_fy2024_005",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "abstain",
+      "query_id": "pfe_fy2024_006",
+      "released": false,
+      "validator": "HARD_FAIL"
+    },
+    {
+      "path": "abstain",
+      "query_id": "pfe_fy2024_007",
+      "released": false,
+      "validator": "HARD_FAIL"
+    },
+    {
+      "path": "abstain",
+      "query_id": "pfe_fy2024_009",
+      "released": false,
+      "validator": "HARD_FAIL"
+    },
+    {
+      "path": "primary",
+      "query_id": "tsla_fy2025_001",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "tsla_fy2025_002",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "tsla_fy2025_003",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "tsla_fy2025_004",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "abstain",
+      "query_id": "tsla_fy2025_005",
+      "released": false,
+      "validator": "HARD_FAIL"
+    },
+    {
+      "path": "primary",
+      "query_id": "tsla_fy2025_006",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "tsla_fy2025_007",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "tsla_fy2025_009",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "v_fy2025_001",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "v_fy2025_002",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "v_fy2025_003",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "v_fy2025_004",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "abstain",
+      "query_id": "v_fy2025_005",
+      "released": false,
+      "validator": "HARD_FAIL"
+    },
+    {
+      "path": "primary",
+      "query_id": "v_fy2025_006",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "v_fy2025_007",
+      "released": true,
+      "validator": "PASS"
+    },
+    {
+      "path": "primary",
+      "query_id": "v_fy2025_009",
+      "released": true,
+      "validator": "PASS"
+    }
+  ],
+  "sealed_general_input_contract": "legacy_v2_06",
+  "unsafe_final_releases": 8
+}

@@ -1,0 +1,100 @@
+{
+  "absolute_query_delta_R1_to_R2_2": {
+    "answer_envelope_valid": 0,
+    "citation_complete": -1,
+    "citation_valid": 0,
+    "generation_complete": 0,
+    "grounded": 4,
+    "numeric_fidelity": 4,
+    "period_fidelity": -2,
+    "reference_answer_complete": 0,
+    "unit_currency_scale_fidelity": 0,
+    "unsupported_claim_queries": -4
+  },
+  "absolute_query_delta_R2_to_R2_2": {
+    "answer_envelope_valid": 0,
+    "citation_complete": 1,
+    "citation_valid": 1,
+    "generation_complete": 0,
+    "grounded": 3,
+    "numeric_fidelity": 0,
+    "period_fidelity": 0,
+    "reference_answer_complete": 0,
+    "unit_currency_scale_fidelity": 0,
+    "unsupported_claim_queries": -3
+  },
+  "diagnostic_interpretation": "R2.2 restores no-answer refusal only partially on answerable holdout but not on unanswerable holdout; retains R2 calculation canonical-preserve at 7/11; Direct numeric regresses to 34/48; citation validity returns to 64/64 while citation completeness and period fidelity remain below R1.",
+  "evaluation_contract": {
+    "component_eval_only": true,
+    "fresh_blind": false,
+    "n": 64,
+    "oracle_evidence": true,
+    "tier_b_unchanged": true
+  },
+  "percentage_point_delta_R1_to_R2_2": {
+    "answer_envelope_valid": 0.0,
+    "citation_complete": -1.56,
+    "citation_valid": 0.0,
+    "generation_complete": 0.0,
+    "grounded": 6.25,
+    "numeric_fidelity": 6.25,
+    "period_fidelity": -3.12,
+    "reference_answer_complete": 0.0,
+    "unit_currency_scale_fidelity": 0.0,
+    "unsupported_claim_queries": -6.25
+  },
+  "questions": {
+    "calculation_gain_retained_from_R2": true,
+    "citation_period_fidelity_recovered_to_R1": false,
+    "direct_numeric_above_35": false,
+    "true_semantic_unsupported_below_R1_and_R2": false,
+    "unanswerable_refusal_recovered_from_R2_zero": false
+  },
+  "stages": {
+    "R1_grounded_v3_r1": {
+      "checkpoint": "d24_grounding_align/model_000007.pt",
+      "metrics": {
+        "answer_envelope_valid": 64,
+        "citation_complete": 61,
+        "citation_valid": 64,
+        "generation_complete": 64,
+        "grounded": 43,
+        "numeric_fidelity": 46,
+        "period_fidelity": 64,
+        "reference_answer_complete": 5,
+        "unit_currency_scale_fidelity": 60,
+        "unsupported_claim_queries": 21
+      }
+    },
+    "R2_2_balanced_v3_r22": {
+      "checkpoint": "d24_grounding_align_r22/model_000004.pt",
+      "metrics": {
+        "answer_envelope_valid": 64,
+        "citation_complete": 60,
+        "citation_valid": 64,
+        "generation_complete": 64,
+        "grounded": 47,
+        "numeric_fidelity": 50,
+        "period_fidelity": 62,
+        "reference_answer_complete": 5,
+        "unit_currency_scale_fidelity": 60,
+        "unsupported_claim_queries": 17
+      }
+    },
+    "R2_targeted_heavy_v3_r2": {
+      "checkpoint": "d24_grounding_align_r2/model_000003.pt",
+      "metrics": {
+        "answer_envelope_valid": 64,
+        "citation_complete": 59,
+        "citation_valid": 63,
+        "generation_complete": 64,
+        "grounded": 44,
+        "numeric_fidelity": 50,
+        "period_fidelity": 62,
+        "reference_answer_complete": 5,
+        "unit_currency_scale_fidelity": 60,
+        "unsupported_claim_queries": 20
+      }
+    }
+  }
+}

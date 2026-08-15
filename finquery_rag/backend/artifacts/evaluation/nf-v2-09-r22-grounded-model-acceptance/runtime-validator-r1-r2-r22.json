@@ -1,0 +1,32 @@
+{
+  "R1": {
+    "HARD_FAIL": 8,
+    "PASS": 53,
+    "SOFT_FAIL": 3
+  },
+  "R2_2_balanced": {
+    "HARD_FAIL": 11,
+    "PASS": 49,
+    "SOFT_FAIL": 4,
+    "safe_rejected": 6,
+    "safe_release_precision": 0.8367,
+    "safe_released": 41,
+    "unsafe_caught": 9,
+    "unsafe_missed": 8,
+    "unsafe_rejection_recall": 0.5294
+  },
+  "R2_targeted_heavy": {
+    "HARD_FAIL": 12,
+    "PASS": 48,
+    "SOFT_FAIL": 4,
+    "safe_rejected": 3,
+    "safe_release_precision": 0.8542,
+    "safe_released": 41,
+    "unsafe_caught": 13,
+    "unsafe_missed": 7,
+    "unsafe_rejection_recall": 0.65
+  },
+  "definition": "RuntimeGenerationValidatorV1 PASS",
+  "reference_reads_before_prediction_seal": 0,
+  "semantic_grounding_limitation": true
+}

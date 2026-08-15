@@ -1,0 +1,27 @@
+{
+  "R1": {
+    "answerable_over_abstention": 13,
+    "partial_supported_answered": 21,
+    "positive_over_abstention": 13,
+    "unanswerable_correct_refusal": 14
+  },
+  "R2_2_balanced": {
+    "answerable_over_abstention": 1,
+    "answerable_over_abstention_rate": 0.54,
+    "partial_supported_answered": 20,
+    "positive_over_abstention": 1,
+    "unanswerable_correct_refusal": 0
+  },
+  "R2_targeted_heavy": {
+    "answerable_over_abstention": 3,
+    "partial_supported_answered": 21,
+    "positive_over_abstention": 3,
+    "unanswerable_correct_refusal": 0
+  },
+  "composition": {
+    "partial": 22,
+    "positive": 163,
+    "unanswerable": 15
+  },
+  "primary_answer": "No. R2.2 does not recover unanswerable refusal: 0/15, same as targeted-heavy R2 and below R1 14/15."
+}

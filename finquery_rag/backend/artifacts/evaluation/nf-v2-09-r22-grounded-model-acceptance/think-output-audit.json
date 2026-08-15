@@ -1,0 +1,12 @@
+{
+  "n": 64,
+  "output_tokens": {
+    "max": 256,
+    "mean": 26.25,
+    "p50": 23.0,
+    "p95": 36
+  },
+  "reasoning_preface": 0,
+  "think_close": 0,
+  "think_open": 0
+}

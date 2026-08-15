@@ -1,0 +1,13 @@
+{
+  "best_by_validation": {
+    "checkpoint": "model_000004.pt",
+    "step": 4,
+    "val_bpb": 0.4136618630897094
+  },
+  "best_json_unchanged": true,
+  "candidate": "model_000004.pt",
+  "candidate_val_bpb": 0.4136618630897094,
+  "reason": "precommitted_final_R2.2_balanced_checkpoint",
+  "selection_policy": "frozen_final_checkpoint",
+  "step": 4
+}

@@ -1,0 +1,59 @@
+{
+  "candidate": "finquery-finance-grounded-v3-r22",
+  "checkpoint": "model_000004.pt",
+  "dataset_sft_sha256": "36cdff95d18c08ca95b5f5c355e319cea9bbba1180e536606e61fc3534f791e3",
+  "dataset_sha256": "396df2c1cd996e43fcf3d8d8bbc74c71f29165af24f1af5ab558fa5282c8981a",
+  "do_not_use_bpb_as_quality": true,
+  "lineage": [
+    "d24_final_mixdata",
+    "d24_finance_v2_lr010",
+    "d24_grounding_align",
+    "d24_grounding_align_r22"
+  ],
+  "parent": "d24_finance_v2_lr010",
+  "preflight_commit": "40dc4687d168d05c320aee90e3fea0cd3cd8cf86",
+  "r1": {
+    "candidate": "finquery-finance-grounded-v3-r1",
+    "epochs": 1,
+    "optimizer_steps": 7,
+    "samples": 3600
+  },
+  "r2": {
+    "candidate": "finquery-finance-grounded-v3-r22",
+    "epochs": 1,
+    "final_val_bpb": 0.4136618630897094,
+    "optimizer_steps": 3,
+    "replay": 350,
+    "samples": 1750,
+    "targeted": 1400
+  },
+  "r2_2_balanced": {
+    "candidate": "finquery-finance-grounded-v3-r22",
+    "checkpoint": "model_000004.pt",
+    "checkpoint_step": 4,
+    "composition": {
+      "calculation": 400,
+      "direct_numeric": 350,
+      "extra_claim": 100,
+      "general_positive_replay": 600,
+      "scope_period": 150,
+      "strong_partial": 250,
+      "structural_hard_unanswerable": 250
+    },
+    "dataset_canonical_sha256": "396df2c1cd996e43fcf3d8d8bbc74c71f29165af24f1af5ab558fa5282c8981a",
+    "dataset_sft_sha256": "36cdff95d18c08ca95b5f5c355e319cea9bbba1180e536606e61fc3534f791e3",
+    "epochs": 1,
+    "preflight_commit": "40dc4687d168d05c320aee90e3fea0cd3cd8cf86",
+    "samples": 2100
+  },
+  "r2_targeted_heavy": {
+    "candidate": "finquery-finance-grounded-v3-r2",
+    "checkpoint": "model_000003.pt",
+    "epochs": 1,
+    "optimizer_steps": 3,
+    "replay": 350,
+    "samples": 1750,
+    "targeted": 1400
+  },
+  "selection_policy": "frozen_final_checkpoint"
+}

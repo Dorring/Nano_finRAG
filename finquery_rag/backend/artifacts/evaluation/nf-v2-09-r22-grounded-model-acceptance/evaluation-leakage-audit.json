@@ -1,0 +1,15 @@
+{
+  "internal_benchmark_context_overlap": 0,
+  "internal_benchmark_question_overlap": 0,
+  "official_evaluation_leakage": 0,
+  "preflight_commit": "b3a63542adfc6ec4dd30bf56410f5a8591574acb",
+  "r1_replay_overlap": 0,
+  "r2_2_dataset_canonical_sha256": "396df2c1cd996e43fcf3d8d8bbc74c71f29165af24f1af5ab558fa5282c8981a",
+  "r2_2_dataset_sft_sha256": "36cdff95d18c08ca95b5f5c355e319cea9bbba1180e536606e61fc3534f791e3",
+  "r2_dataset_sha256": "a390ed69e5f2c89df5d2a9973bafce277e88bfac55a3a19d835e00c0feae8d19",
+  "reference_answer_overlap": 0,
+  "reference_reads_before_prediction_seal": 0,
+  "tier_b_used_for_checkpoint_selection": false,
+  "tier_b_used_for_prompt_or_decoding_tuning": false,
+  "tier_b_used_for_training": false
+}

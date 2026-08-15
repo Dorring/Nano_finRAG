@@ -1,0 +1,14 @@
+{
+  "additional_training_performed": false,
+  "behavioral_net_improvement": true,
+  "calculation_target_pass": false,
+  "candidate": "finquery-finance-grounded-v3-r22",
+  "component_eval_only_route_eligibility": true,
+  "direct_numeric_target_pass": false,
+  "eligible_routes": [
+    "MULTI_EVIDENCE"
+  ],
+  "original_acceptance_gate": false,
+  "production_switch": false,
+  "role": "financial_selective_generator"
+}
