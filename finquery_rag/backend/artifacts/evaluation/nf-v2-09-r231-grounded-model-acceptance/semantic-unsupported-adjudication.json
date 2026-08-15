@@ -1,0 +1,20 @@
+{
+  "diagnostic_only": true,
+  "evaluator_or_contract_only": "1/64",
+  "official_reported_unsupported": "17/64",
+  "source_artifact": "unsupported-claim-review.json",
+  "taxonomy": {
+    "UC0": 0,
+    "UC1": 1,
+    "UC10": 0,
+    "UC2": 0,
+    "UC3": 0,
+    "UC4": 0,
+    "UC5": 12,
+    "UC6": 3,
+    "UC7": 0,
+    "UC8": 4,
+    "UC9": 0
+  },
+  "true_semantic_unsupported": "16/64"
+}

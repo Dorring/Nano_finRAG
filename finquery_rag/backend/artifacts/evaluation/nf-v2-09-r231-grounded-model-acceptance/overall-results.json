@@ -1,0 +1,37 @@
+{
+  "answer_envelope_valid": 64,
+  "answerable_full_abstention": 1,
+  "citation_complete": 59,
+  "citation_valid": 63,
+  "evaluator_only_false_positive_queries": 1,
+  "frozen_gate": {
+    "citation_complete_min": 52,
+    "citation_valid_min": 60,
+    "grounded_min": 48,
+    "numeric_min": 55,
+    "pass": false,
+    "period_min": 60,
+    "unsupported_max": 8
+  },
+  "generation_complete": 64,
+  "grounded": 47,
+  "input_tokens": 47350,
+  "latency_ms": {
+    "avg": 570.862,
+    "p50": 461.616,
+    "p95": 866.301
+  },
+  "n": 64,
+  "numeric_fidelity": 52,
+  "output_tokens": 1650,
+  "partial_unnecessary_refusal": 0,
+  "period_fidelity": 62,
+  "reasoning_style_outputs": 0,
+  "reference_answer_complete": 5,
+  "reported_unsupported_claim_queries": 17,
+  "think_tag_outputs": 0,
+  "true_semantic_unsupported_queries": 16,
+  "unit_currency_scale_fidelity": 61,
+  "unsupported_claim_queries": 17,
+  "unsupported_numeric_claims": 14
+}

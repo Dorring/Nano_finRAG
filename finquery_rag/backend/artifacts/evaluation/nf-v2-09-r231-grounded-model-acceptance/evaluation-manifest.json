@@ -1,0 +1,45 @@
+{
+  "base_commit": "10e7c696bd8029df0f23b715e0fceff88c51458b",
+  "candidate": "finquery-finance-grounded-v3-r231",
+  "checkpoint_sha256": "2be1d02b2129661e1bad454fbbdddd2c5c12262a6facd4369a12612cd634d794",
+  "generation_config": "generation-config.json",
+  "gpu": {
+    "after_load": {
+      "free_mib": 2335,
+      "name": "NVIDIA RTX A6000",
+      "total_mib": 49140,
+      "used_mib": 46217
+    },
+    "before_load": {
+      "free_mib": 16480,
+      "name": "NVIDIA RTX A6000",
+      "total_mib": 49140,
+      "used_mib": 32071
+    },
+    "cuda_visible_devices": "3",
+    "inference_tensor_device_logical": "cuda:0",
+    "input_device_physical": "cuda:3",
+    "model_device_physical": "cuda:3",
+    "model_parameter_device_logical": "cuda:0",
+    "physical_gpu": "3",
+    "physical_gpu_exception": false,
+    "single_physical_gpu": true,
+    "task_gpu_preferred": "3",
+    "torch_cuda_available": true,
+    "torch_current_device": 0,
+    "torch_device_count": 1,
+    "torch_device_name": "NVIDIA RTX A6000"
+  },
+  "model_calls": 0,
+  "no_additional_training": true,
+  "no_checkpoint_sweep": true,
+  "no_prompt_or_decoding_tuning": true,
+  "prediction_file": "r231-predictions.jsonl.gz",
+  "prediction_seal": "r231-prediction-seal.json",
+  "reference_reads_before_prediction_seal": 0,
+  "renderer_contract_sha": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "retrieval_calls": 0,
+  "runtime_validator_unchanged": true,
+  "task": "NF-V2-09 R2.3.1",
+  "tier_b_oracle_component_only": true
+}

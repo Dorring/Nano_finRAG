@@ -1,0 +1,29 @@
+{
+  "composition": {
+    "PARTIAL_DISTRACTOR": 22,
+    "POSITIVE_GROUNDED": 163,
+    "UNANSWERABLE": 15
+  },
+  "n": 200,
+  "r1": {
+    "answerable_over_abstention": "13/185",
+    "positive_answer_success": null,
+    "unanswerable_correct_refusal": 14
+  },
+  "r2_2": {
+    "answerable_over_abstention": "1/185",
+    "unanswerable_correct_refusal": 0
+  },
+  "r2_3_1": {
+    "answerable_over_abstention": "1/185",
+    "answerable_over_abstention_rate_percent": 0.54,
+    "partial_full_over_refusal": "0/22",
+    "partial_supported_portion_answered": "20/22",
+    "partial_unsupported_completion": "0/22",
+    "positive_answer_success": "117/163",
+    "positive_over_abstention": "1/163",
+    "unanswerable_correct_refusal": "0/15",
+    "unanswerable_hallucinated_answer": "15/15"
+  },
+  "refusal_boundary_repair": "ineffective"
+}

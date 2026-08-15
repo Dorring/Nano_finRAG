@@ -1,0 +1,8 @@
+{
+  "CALCULATION": "not_eligible",
+  "DIRECT": "not_eligible",
+  "MULTI_EVIDENCE": "oracle_component_only_not_runtime_eligible",
+  "fallback": "qwen3.7-plus",
+  "production_switch": false,
+  "reason": "Do not infer runtime route readiness from oracle component evaluation."
+}

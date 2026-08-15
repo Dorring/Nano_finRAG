@@ -1,0 +1,79 @@
+{
+  "metrics": [
+    {
+      "R1": "43/64",
+      "R2": "44/64",
+      "R2.2": "47/64",
+      "R2.3.1": "47/64",
+      "metric": "Grounded"
+    },
+    {
+      "R1": "15/64",
+      "R2": "19/64",
+      "R2.2": "17/64",
+      "R2.3.1": "16/64",
+      "metric": "True semantic unsupported"
+    },
+    {
+      "R1": "46/64",
+      "R2": "50/64",
+      "R2.2": "50/64",
+      "R2.3.1": "52/64",
+      "metric": "Numeric"
+    },
+    {
+      "R1": "32/48",
+      "R2": "35/48",
+      "R2.2": "34/48",
+      "R2.3.1": "36/48",
+      "metric": "Direct Numeric"
+    },
+    {
+      "R1": "2/11",
+      "R2": "7/11",
+      "R2.2": "7/11",
+      "R2.3.1": "7/11",
+      "metric": "Calculation canonical"
+    },
+    {
+      "R1": "61/64",
+      "R2": "59/64",
+      "R2.2": "60/64",
+      "R2.3.1": "59/64",
+      "metric": "Citation complete"
+    },
+    {
+      "R1": "64/64",
+      "R2": "62/64",
+      "R2.2": "62/64",
+      "R2.3.1": "62/64",
+      "metric": "Period"
+    },
+    {
+      "R1": "14/15",
+      "R2": "0/15",
+      "R2.2": "0/15",
+      "R2.3.1": "0/15",
+      "metric": "Unanswerable refusal"
+    },
+    {
+      "R1": "13/185",
+      "R2": "3/185",
+      "R2.2": "1/185",
+      "R2.3.1": "1/185",
+      "metric": "Answerable over-abstain"
+    }
+  ],
+  "r2_3_1_deltas_vs_r2_2": {
+    "answerable_over_abstain": 0,
+    "calculation_canonical": 0,
+    "citation_complete": -1,
+    "direct_numeric": 2,
+    "grounded": 0,
+    "numeric": 2,
+    "period": 0,
+    "true_semantic_unsupported": -1,
+    "unanswerable_refusal": 0
+  },
+  "source_note": "R1/R2/R2.2 are frozen historical evaluation results; R2.3.1 is freshly sealed on the frozen contracts."
+}

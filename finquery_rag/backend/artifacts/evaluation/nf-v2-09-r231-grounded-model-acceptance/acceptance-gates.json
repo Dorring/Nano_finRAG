@@ -1,0 +1,37 @@
+{
+  "candidate": "finquery-finance-grounded-v3-r231",
+  "frozen_acceptance_pass": false,
+  "gates": {
+    "citation_complete": {
+      "observed": "59/64",
+      "pass": true,
+      "required": ">=52/64"
+    },
+    "citation_valid": {
+      "observed": "63/64",
+      "pass": true,
+      "required": ">=60/64"
+    },
+    "grounded": {
+      "observed": "47/64",
+      "pass": false,
+      "required": ">=48/64"
+    },
+    "numeric": {
+      "observed": "52/64",
+      "pass": false,
+      "required": ">=55/64"
+    },
+    "period": {
+      "observed": "62/64",
+      "pass": true,
+      "required": ">=60/64"
+    },
+    "unsupported_reported": {
+      "observed": "17/64",
+      "pass": false,
+      "required": "<=8/64"
+    }
+  },
+  "reason": "Grounded, reported unsupported, and numeric gates fail; no post-hoc threshold changes."
+}

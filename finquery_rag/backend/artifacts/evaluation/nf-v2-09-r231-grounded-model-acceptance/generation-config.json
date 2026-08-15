@@ -1,0 +1,15 @@
+{
+  "candidate": "finquery-finance-grounded-v3-r231",
+  "checkpoint": "model_000004.pt",
+  "decode": {
+    "chain_of_thought": false,
+    "do_sample": false,
+    "max_new_tokens": 256,
+    "temperature": 0.0,
+    "top_k": 1,
+    "warmup_count": 2
+  },
+  "physical_gpu": "3",
+  "renderer_contract_sha": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "sealed_before_scoring": true
+}

@@ -1,0 +1,36 @@
+{
+  "CALCULATION": {
+    "canonical_result_preserved": "7/11",
+    "citation_complete": "11/11",
+    "citation_valid": "11/11",
+    "extra_arithmetic": "0/11",
+    "grounded": "11/11",
+    "mutation_or_recalculation": "4/11",
+    "n": 11,
+    "numeric": "11/11",
+    "period": "11/11",
+    "unit": "11/11",
+    "wrong_recalculation": "4/11"
+  },
+  "DIRECT": {
+    "citation_complete": "43/48",
+    "citation_valid": "47/48",
+    "full_abstention": "0/48",
+    "grounded": "31/48",
+    "n": 48,
+    "numeric": "36/48",
+    "period": "46/48",
+    "reported_unsupported": "17/48",
+    "true_semantic_unsupported": "15/48",
+    "unit_currency_scale": "45/48"
+  },
+  "MULTI_EVIDENCE": {
+    "citation_complete": "5/5",
+    "citation_valid": "5/5",
+    "complete_evidence_citation": "5/5",
+    "grounded": "5/5",
+    "n": 5,
+    "unsupported_synthesis": "0/5"
+  },
+  "runtime_eligibility_note": "Oracle component results do not establish runtime production eligibility; current trusted runtime evidence coverage remains unchanged."
+}

@@ -1,0 +1,99 @@
+{
+  "r1": {
+    "composition": {
+      "PARTIAL_DISTRACTOR": 22,
+      "POSITIVE_GROUNDED": 163,
+      "UNANSWERABLE": 15
+    },
+    "n": 200,
+    "overall": {
+      "hallucination_on_unanswerable": 1,
+      "over_abstention_on_answerable": 13,
+      "over_abstention_rate": 7.03,
+      "partial_supported_content_omission_rate": 4.55,
+      "positive_over_abstention_rate": 7.98
+    },
+    "partial": {
+      "answer_success": 21,
+      "citation_complete": 22,
+      "citation_valid": 22,
+      "full_over_refusal": 0,
+      "n": 22,
+      "numeric_fidelity": 21,
+      "over_abstention": 0,
+      "partial_supported_content_omission_rate": 4.55,
+      "period_fidelity": 21,
+      "supported_portion_answered": 21,
+      "supported_portion_cited": 22,
+      "unit_currency_scale_fidelity": 22,
+      "unsupported_claims": 0,
+      "unsupported_completion": 0,
+      "unsupported_portion_refused": 0
+    },
+    "positive": {
+      "answer_success": 93,
+      "citation_complete": 150,
+      "citation_valid": 163,
+      "n": 163,
+      "numeric_fidelity": 98,
+      "over_abstention": 13,
+      "period_fidelity": 155,
+      "positive_over_abstention_rate": 7.98,
+      "unit_currency_scale_fidelity": 163,
+      "unsupported_claims": 1
+    },
+    "unanswerable": {
+      "answer_success": 1,
+      "citation_complete": 1,
+      "citation_valid": 15,
+      "correct_abstention": 14,
+      "hallucinated_answer": 1,
+      "n": 15,
+      "numeric_fidelity": 15,
+      "over_abstention": 14,
+      "period_fidelity": 15,
+      "unit_currency_scale_fidelity": 15,
+      "unsupported_claims": 0,
+      "unsupported_numeric_output": 1
+    }
+  },
+  "r1_answerable_over_abstention": 13,
+  "r2": {
+    "composition": {
+      "PARTIAL_DISTRACTOR": 22,
+      "POSITIVE_GROUNDED": 163,
+      "UNANSWERABLE": 15
+    },
+    "n": 200,
+    "overall": {
+      "answerable_over_abstention": 1,
+      "answerable_over_abstention_rate": 0.54,
+      "hallucination_on_unanswerable": 15
+    },
+    "partial": {
+      "full_over_refusal": 0,
+      "n": 22,
+      "supported_portion_answered": 20,
+      "supported_portion_cited": 22,
+      "unsupported_completion": 0,
+      "unsupported_portion_refused": 0
+    },
+    "positive": {
+      "answer_success": 117,
+      "citation_complete": 161,
+      "citation_valid": 163,
+      "n": 163,
+      "numeric_fidelity": 118,
+      "over_abstention": 1,
+      "period_fidelity": 159
+    },
+    "unanswerable": {
+      "correct_abstention": 0,
+      "hallucinated_answer": 15,
+      "n": 15,
+      "unsupported_numeric_output": 1
+    }
+  },
+  "r2_answerable_over_abstention": 1,
+  "r2_unanswerable_correct_refusal": 0
+}

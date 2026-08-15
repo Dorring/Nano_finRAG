@@ -1,0 +1,15 @@
+{
+  "diagnostic_only": true,
+  "reported_numeric_failures": "12/64",
+  "source_artifact": "numeric-failure-review.json",
+  "true_numeric_error_classification": {
+    "extra_unsupported_number": 12,
+    "other": 0,
+    "percent_formatting": 0,
+    "recalculation": 0,
+    "scale_conversion": 0,
+    "wrong_copy": 0,
+    "wrong_metric_selection": 0,
+    "wrong_period_selection": 0
+  }
+}

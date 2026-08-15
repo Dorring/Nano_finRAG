@@ -1,0 +1,15 @@
+{
+  "HARD_FAIL": 10,
+  "PASS": 49,
+  "SOFT_FAIL": 5,
+  "candidate": "finquery-finance-grounded-v3-r231",
+  "reference_reads_before_prediction_seal": 0,
+  "safe_rejected": 4,
+  "safe_release_precision": 0.8776,
+  "safe_released": 43,
+  "semantic_grounding_limitation": true,
+  "unsafe_caught": 11,
+  "unsafe_missed": 6,
+  "unsafe_outputs": 17,
+  "unsafe_rejection_recall": 0.6471
+}

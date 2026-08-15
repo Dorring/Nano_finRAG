@@ -1,0 +1,11 @@
+{
+  "candidate": "finquery-finance-grounded-v3-r231",
+  "checkpoint": "model_000004.pt",
+  "holdout_count": 200,
+  "packet_set_sha256": "2af2df3d717616a8621f180c4e5fbf69a8752f80a5753aef6dbb27fc5d0fab56",
+  "prediction_count": 264,
+  "prediction_set_sha256": "c9bb7aa2731b3045d8bdd1cac19244d305b811d4eff8ef098cd2c28518ef6eb7",
+  "reference_reads_before_prediction_seal": 0,
+  "sealed": true,
+  "tier_b_count": 64
+}

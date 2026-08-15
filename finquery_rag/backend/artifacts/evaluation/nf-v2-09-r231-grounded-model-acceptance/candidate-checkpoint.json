@@ -1,0 +1,14 @@
+{
+  "candidate": "finquery-finance-grounded-v3-r231",
+  "checkpoint": "model_000004.pt",
+  "checkpoint_path": "/home/mxf/.cache/nanochat/chatsft_checkpoints/d24_grounding_align_r231/model_000004.pt",
+  "checkpoint_selection_allowed_for_other_steps": false,
+  "checkpoint_sha256": "2be1d02b2129661e1bad454fbbdddd2c5c12262a6facd4369a12612cd634d794",
+  "file_size_bytes": 5714292126,
+  "inf_tensors": 0,
+  "nan_tensors": 0,
+  "parent": "d24_grounding_align/model_000007.pt",
+  "selection_policy": "frozen_final_checkpoint",
+  "state_dict_keys": 175,
+  "torch_load": "PASS"
+}

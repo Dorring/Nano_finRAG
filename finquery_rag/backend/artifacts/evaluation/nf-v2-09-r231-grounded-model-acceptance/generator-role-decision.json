@@ -1,0 +1,18 @@
+{
+  "additional_training_performed": false,
+  "behavioral_net_improvement": true,
+  "calculation_gain_retained": true,
+  "calculation_target_pass": false,
+  "direct_numeric_target_pass": false,
+  "eligible_routes_oracle_component_only": [
+    "MULTI_EVIDENCE"
+  ],
+  "numeric_gain_retained": true,
+  "original_acceptance_gate": false,
+  "production_switch": false,
+  "reason": "Overall gate fails; refusal boundary remains 0/15 and Calculation canonical obedience is 7/11, so no runtime route is enabled.",
+  "refusal_boundary_repair": "ineffective",
+  "role": "financial_selective_generator",
+  "runtime_production_eligible_routes": [],
+  "semantic_safety_improvement": false
+}

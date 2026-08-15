@@ -1,0 +1,54 @@
+{
+  "all_scored": {
+    "average_ms": 606.4324783298864,
+    "count": 264,
+    "max_ms": 5182.083207997493,
+    "output_tokens_max": 256,
+    "output_tokens_p50": 24.0,
+    "output_tokens_p95": 51.0,
+    "p50_ms": 462.8464209381491,
+    "p95_ms": 1197.910624567885,
+    "think_tag_outputs": 0
+  },
+  "device_name": "NVIDIA RTX A6000",
+  "hardware_comparison_claim": "not_strict_without_equivalent_hardware",
+  "holdout": {
+    "average_ms": 617.8150074539008,
+    "count": 200,
+    "max_ms": 5182.083207997493,
+    "output_tokens_max": 256,
+    "output_tokens_p50": 25.0,
+    "output_tokens_p95": 53.249999999999915,
+    "p50_ms": 465.1475604623556,
+    "p95_ms": 1218.3347644167948,
+    "think_tag_outputs": 0
+  },
+  "input_tokens": {
+    "p50": 584.0,
+    "p95": 1478,
+    "total": 47350
+  },
+  "output_tokens": {
+    "p50": 22.0,
+    "p95": 35,
+    "total": 1650
+  },
+  "peak_allocated_gib": 7.128,
+  "peak_reserved_gib": 15.471,
+  "physical_gpu": "3",
+  "r1_historical_gpu6": {
+    "average_s": 1.606,
+    "p50_s": 0.66,
+    "p95_s": 14.295
+  },
+  "scored_generations": 264,
+  "scored_inference_count": 264,
+  "tier_b": {
+    "average_ms": 570.862,
+    "max_ms": 4541.560480021872,
+    "p50_ms": 461.61577344173566,
+    "p95_ms": 866.3008839357644
+  },
+  "tokens_per_second_reliable": false,
+  "warmup_count": 2
+}
