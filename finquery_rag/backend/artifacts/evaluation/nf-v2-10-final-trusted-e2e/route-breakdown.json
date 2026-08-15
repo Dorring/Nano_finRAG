@@ -1,0 +1,35 @@
+{
+  "CALCULATION": {
+    "calculator_executed": 0,
+    "executed_incorrect": 0,
+    "fail_closed": 11,
+    "false_execution": 0,
+    "strict_calculation_success": 0,
+    "total": 11,
+    "trusted_operands_ready": 0
+  },
+  "DIRECT": {
+    "generator_invoked": 4,
+    "grounded_posthoc": 3,
+    "released": 4,
+    "released_correct_posthoc": 3,
+    "total": 56,
+    "trusted_evidence_ready": 4,
+    "unsafe_semantic_release_posthoc": 1
+  },
+  "MULTI_EVIDENCE": {
+    "all_required_evidence_ready": 0,
+    "any_evidence_retrieved": 0,
+    "complete_citations": 0,
+    "complete_final_answer": 0,
+    "fail_closed": 5,
+    "total": 5,
+    "unsafe_synthesis": 0
+  },
+  "NO_ANSWER": {
+    "correct_refusals": 8,
+    "generator_calls": 0,
+    "incorrect_releases": 0,
+    "total": 8
+  }
+}

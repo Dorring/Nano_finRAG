@@ -1,0 +1,42 @@
+{
+  "baseline": "V1 nf-eval-03-r1",
+  "comparability": "V1 is an actual 72-query production run; V2 is fail-closed E2E using only the 4 sealed runtime-trusted DIRECT packets. Oracle Tier-B results are excluded from this comparison.",
+  "v1": {
+    "answerable_final_correct": 2,
+    "benchmark": 72,
+    "calculation_strict_success": "N/A (legacy contract; route misses 11/11)",
+    "false_binding": "N/A",
+    "false_execution": "N/A",
+    "grounded_pass": 0,
+    "latency_ms": {
+      "count": 72,
+      "max_ms": 12915.870810160413,
+      "mean_ms": 2460.233870651185,
+      "p50_ms": 1814.1475805314258,
+      "p95_ms": 4351.243990298828
+    },
+    "no_answer_correct_refusal": "2/8",
+    "released_answer_contract": 1,
+    "retrieval_source_recall_at_5": {
+      "count": 13,
+      "denominator": 80,
+      "rate": 0.1625
+    },
+    "unsafe_final_release": "N/A (not recorded under V2 trusted contract)"
+  },
+  "v2_final": {
+    "answerable_final_correct": "3/64",
+    "calculation_strict_success": "0/11",
+    "false_binding": 0,
+    "false_execution": 0,
+    "grounded_runtime_contract": "3/64",
+    "latency_ms": {
+      "average": 293.34099902189337,
+      "p95": 328.8723680889234
+    },
+    "no_answer_correct_refusal": "8/8",
+    "released": "4/64",
+    "unsafe_final_release_posthoc_semantic": 1,
+    "unsafe_final_release_runtime_detectable": 0
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "average_ms": 293.34099902189337,
+  "cuda_visible_devices": "3",
+  "device_name": "NVIDIA RTX A6000",
+  "max_ms": 328.8723680889234,
+  "model_device": "cuda:0",
+  "output_tokens": [
+    17,
+    17,
+    22,
+    21
+  ],
+  "p50_ms": 292.595443490427,
+  "peak_allocated_gib": 5.670000076293945,
+  "peak_reserved_gib": 13.5234375,
+  "physical_gpu": "3",
+  "scored_generations": 4,
+  "torch_device_count": 1,
+  "warmups": 2
+}

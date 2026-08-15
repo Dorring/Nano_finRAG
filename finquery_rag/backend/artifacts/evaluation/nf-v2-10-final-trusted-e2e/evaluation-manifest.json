@@ -1,0 +1,12 @@
+{
+  "answerable": 64,
+  "benchmark_questions": 72,
+  "candidate": "finquery-finance-grounded-v3-r231",
+  "financial_generation_view_sha": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "model_calls": 4,
+  "no_answer": 8,
+  "oracle_evidence": false,
+  "prediction_seal_before_gold": true,
+  "retrieval_calls": 0,
+  "runtime_validator": "RuntimeGenerationValidatorV1"
+}

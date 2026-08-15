@@ -1,0 +1,14 @@
+{
+  "fallback_not_used_because_all_trusted_primary_validations_passed": true,
+  "fallback_successes": 0,
+  "fallback_triggers": 0,
+  "final_abstentions": 68,
+  "final_releases": 4,
+  "general_fallback_calls": 0,
+  "policy": "fallback only after a trusted-primary validation failure",
+  "primary_attempts": 4,
+  "primary_releases": 4,
+  "sealed_general_predictions_used": true,
+  "unsafe_final_releases_posthoc_semantic": 1,
+  "unsafe_final_releases_runtime_detectable": 0
+}

@@ -1,0 +1,35 @@
+{
+  "e2e_scope": "4 trusted DIRECT generations plus deterministic gate/replay; retrieval latency reused from sealed trace",
+  "end_to_end_average_ms": 293.34099902189337,
+  "end_to_end_p95_ms": 328.8723680889234,
+  "financial_generator_average_ms": 293.34099902189337,
+  "financial_generator_max_ms": 328.8723680889234,
+  "financial_generator_p50_ms": 292.595443490427,
+  "financial_generator_p95_ms": 328.8723680889234,
+  "gpu": {
+    "average_ms": 293.34099902189337,
+    "cuda_visible_devices": "3",
+    "device_name": "NVIDIA RTX A6000",
+    "max_ms": 328.8723680889234,
+    "model_device": "cuda:0",
+    "output_tokens": [
+      17,
+      17,
+      22,
+      21
+    ],
+    "p50_ms": 292.595443490427,
+    "peak_allocated_gib": 5.670000076293945,
+    "peak_reserved_gib": 13.5234375,
+    "physical_gpu": "3",
+    "scored_generations": 4,
+    "torch_device_count": 1,
+    "warmups": 2
+  },
+  "hardware_comparison_caveat": "not a strict E2E comparison: V2 timing is 4 GPU-3 candidate generations; V1 includes 72-query retrieval/orchestration.",
+  "retrieval_latency": "sealed artifact / not rerun in this no-retrieval gate",
+  "v1_average_ms": 2460.233870651185,
+  "v1_max_ms": 12915.870810160413,
+  "v1_p50_ms": 1814.1475805314258,
+  "v1_p95_ms": 4351.243990298828
+}

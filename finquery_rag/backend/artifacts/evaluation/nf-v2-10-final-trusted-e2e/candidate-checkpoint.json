@@ -1,0 +1,8 @@
+{
+  "candidate": "finquery-finance-grounded-v3-r231",
+  "checkpoint": "/home/mxf/.cache/nanochat/chatsft_checkpoints/d24_grounding_align_r231/model_000004.pt",
+  "parent": "d24_grounding_align/model_000007.pt",
+  "selection_policy": "frozen_final_checkpoint",
+  "step": 4,
+  "training": 0
+}

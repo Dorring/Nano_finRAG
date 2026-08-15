@@ -1,0 +1,13 @@
+{
+  "decision": "PROJECT_FREEZE_V1_PRODUCTION",
+  "final_financial_model_role": "financial_selective_generator",
+  "grounding_training_closed": true,
+  "next_step": "freeze V1 production and retain V2 components for controlled future integration",
+  "no_r24": true,
+  "production_switch": false,
+  "reference_reads_before_prediction_seal": 0,
+  "safety_gate": "fail",
+  "safety_gate_reason": "post-hoc semantic review found one unsafe released unit claim; coverage also remains limited to 4 trusted DIRECT packets.",
+  "v2_component_ready_not_production": false,
+  "v2_production_ready": false
+}

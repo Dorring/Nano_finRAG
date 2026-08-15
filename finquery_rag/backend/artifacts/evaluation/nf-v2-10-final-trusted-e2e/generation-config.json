@@ -1,0 +1,10 @@
+{
+  "chain_of_thought": false,
+  "do_sample": false,
+  "max_new_tokens": 256,
+  "renderer_contract_sha": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "sealed_before_scoring": true,
+  "temperature": 0.0,
+  "think_requested": false,
+  "top_k": 1
+}

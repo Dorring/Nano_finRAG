@@ -1,0 +1,35 @@
+{
+  "calculation_operand_source_readiness": {
+    "ready": 0,
+    "total": 11
+  },
+  "gold_case_recall_at_5": {
+    "count": 12,
+    "denominator": 64,
+    "rate": 0.1875
+  },
+  "gold_source_recall_at_10": "N/A (not recorded in frozen artifact)",
+  "gold_source_recall_at_5": {
+    "count": 13,
+    "denominator": 80,
+    "rate": 0.1625
+  },
+  "multi_evidence_all_at_5": {
+    "count": 1,
+    "denominator": 16,
+    "rate": 0.0625
+  },
+  "multi_evidence_any_at_5": {
+    "count": 3,
+    "definition": "at least one expected source matched in sealed final retrieval list",
+    "denominator": 16,
+    "rate": 0.1875
+  },
+  "oracle_evidence_injected": 0,
+  "retrieval_calls_in_this_replay": 0,
+  "source": "sealed nf-eval-03-r1 runtime retrieval trace",
+  "trusted_direct_packets": {
+    "eligible_direct_runtime_packets": 56,
+    "ready": 4
+  }
+}

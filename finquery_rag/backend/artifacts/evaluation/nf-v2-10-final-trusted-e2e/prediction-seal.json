@@ -1,0 +1,12 @@
+{
+  "candidate": "finquery-finance-grounded-v3-r231",
+  "checkpoint": "/home/mxf/.cache/nanochat/chatsft_checkpoints/d24_grounding_align_r231/model_000004.pt",
+  "e2e_trace_count": 72,
+  "e2e_trace_sha256": "54d63969b663af4b487ea6bc9d46460f7ad5106dc336bdfa541b31679cd4b2d6",
+  "gold_loaded_after_seal": true,
+  "prediction_count": 4,
+  "prediction_file": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/nf-v2-09-r1-targeted-grounding-dataset/finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/tier-a-financial-predictions.jsonl.gz",
+  "prediction_sha256": "1d0240801ab7b411e62e428094be5da38c69d34ae6d2e05d657fb1e992727f0c",
+  "reference_reads_before_prediction_seal": 0,
+  "sealed": true
+}

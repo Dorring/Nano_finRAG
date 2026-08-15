@@ -1,0 +1,12 @@
+{
+  "architecture_compatible_with_r1": true,
+  "chat_template_compatible": true,
+  "exists": true,
+  "inf_tensors": 0,
+  "nan_tensors": 0,
+  "sha256": "2be1d02b2129661e1bad454fbbdddd2c5c12262a6facd4369a12612cd634d794",
+  "size_bytes": 5714292126,
+  "state_dict_keys": 175,
+  "tokenizer_compatible": true,
+  "torch_load_cpu": "PASS"
+}

@@ -1,0 +1,36 @@
+{
+  "HARD_FAIL": 0,
+  "PASS": 4,
+  "SOFT_FAIL": 0,
+  "rows": [
+    {
+      "failure_codes": [],
+      "passed": true,
+      "query_id": "nvda_fy2025_004",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "passed": true,
+      "query_id": "nvda_fy2025_005",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "passed": true,
+      "query_id": "v_fy2025_002",
+      "status": "PASS"
+    },
+    {
+      "failure_codes": [],
+      "passed": true,
+      "query_id": "v_fy2025_003",
+      "status": "PASS"
+    }
+  ],
+  "semantic_limitation": "runtime validator cannot infer omitted/contradictory unit semantics when packet unit is unspecified; Visa volume output added cubic feet.",
+  "unchanged": true,
+  "unsafe_runtime_detectable_releases": 0,
+  "unsafe_semantic_posthoc_releases": 1,
+  "validator": "RuntimeGenerationValidatorV1"
+}

@@ -1,0 +1,18 @@
+{
+  "CUDA_VISIBLE_DEVICES": "3",
+  "device_map_auto": false,
+  "device_name": "NVIDIA RTX A6000",
+  "input_device_logical": "cuda:0",
+  "input_device_physical": "cuda:3",
+  "model_device_logical": "cuda:0",
+  "model_device_physical": "cuda:3",
+  "multi_gpu": false,
+  "peak_allocated_gib": 5.67,
+  "peak_reserved_gib": 13.5234375,
+  "physical_gpu": 3,
+  "scored_generations": 4,
+  "torch_cuda_available": true,
+  "torch_cuda_device_count": 1,
+  "torch_current_device": 0,
+  "warmups": 2
+}

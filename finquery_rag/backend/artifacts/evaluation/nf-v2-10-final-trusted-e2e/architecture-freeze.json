@@ -1,0 +1,22 @@
+{
+  "architecture_frozen": true,
+  "components": {
+    "Calculator": "deterministic arithmetic only",
+    "Fallback / Fail-Closed": "single recovery attempt or safe abstention",
+    "Financial Specialist": "grounded financial answer generation only",
+    "Retrieval": "candidate evidence supply",
+    "Supervisor": "control, routing, sufficiency decisions",
+    "Trusted Evidence Layer": "route-specific evidence readiness",
+    "Validator": "deterministic release checks"
+  },
+  "financial_model_role": "financial_selective_generator",
+  "financial_specialist_is_not": [
+    "Supervisor",
+    "Answerability Judge",
+    "Calculator",
+    "final safety authority"
+  ],
+  "grounding_training_closed": true,
+  "production": "V1",
+  "production_switch": false
+}
