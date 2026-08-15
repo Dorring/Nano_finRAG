@@ -1,0 +1,16 @@
+{
+  "canonical_sha256": "5f078c37c43c56ab80dee0f5cd886983a6be268c5eafc0645a03ad8880cf4e28",
+  "dataset_id": "nf-v2-09-r23-final",
+  "model_calls": 0,
+  "parent_sha256": "396df2c1cd996e43fcf3d8d8bbc74c71f29165af24f1af5ab558fa5282c8981a",
+  "replacement_rows": 250,
+  "retrieval_calls": 0,
+  "rows": 2100,
+  "sft_sha256": "19f19020cf79e57f6c593a64cfd9f25b618d59a3c4474744c59e00c608cc8a51",
+  "training": 0,
+  "view_sha256": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "leakage_repairs": 5,
+  "leakage_repairs_total": 29,
+  "holdout_question_repairs": 5,
+  "holdout_context_repairs": 24
+}

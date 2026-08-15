@@ -1,0 +1,28 @@
+{
+  "rows": 2100,
+  "sft_rows": 2100,
+  "roles_valid": true,
+  "messages_exact": true,
+  "answerability": {
+    "PARTIALLY_ANSWERABLE": 250,
+    "FULLY_ANSWERABLE": 1600,
+    "FULLY_UNANSWERABLE": 250
+  },
+  "components": {
+    "DIRECT_SINGLE_EVIDENCE_HEADER_ONLY": 120,
+    "DIRECT_SINGLE_EVIDENCE_NEAR_MATCH": 50,
+    "DIRECT_MULTI_EVIDENCE_STRUCTURAL": 30,
+    "CALCULATION_STRUCTURAL": 30,
+    "MULTI_MISSING_COMPONENT": 20
+  },
+  "single_evidence": 170,
+  "header_valid": 120,
+  "hard_valid": 250,
+  "paired": 205,
+  "holdout_question_overlap": 0,
+  "holdout_context_overlap": 0,
+  "holdout_source_example_overlap": 0,
+  "source_non_train": 0,
+  "canonical_sha": "5f078c37c43c56ab80dee0f5cd886983a6be268c5eafc0645a03ad8880cf4e28",
+  "sft_sha": "19f19020cf79e57f6c593a64cfd9f25b618d59a3c4474744c59e00c608cc8a51"
+}

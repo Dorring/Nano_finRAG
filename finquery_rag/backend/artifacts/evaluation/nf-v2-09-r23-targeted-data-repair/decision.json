@@ -1,0 +1,35 @@
+{
+  "dataset_acceptance": true,
+  "training": 0,
+  "model_calls": 0,
+  "retrieval_calls": 0,
+  "additional_grounded_training_experiments_remaining": 1,
+  "next_gate": "v2_09_r23_final_grounding_training",
+  "canonical_sha256": "5f078c37c43c56ab80dee0f5cd886983a6be268c5eafc0645a03ad8880cf4e28",
+  "sft_sha256": "19f19020cf79e57f6c593a64cfd9f25b618d59a3c4474744c59e00c608cc8a51",
+  "production": "V1",
+  "counts": {
+    "rows": 2100,
+    "answerable": 1600,
+    "partial": 250,
+    "unanswerable": 250,
+    "header_only": 120,
+    "near_match": 50,
+    "direct_multi": 30,
+    "calculation": 30,
+    "multi": 20,
+    "single_evidence": 170,
+    "structural_hard": 250,
+    "plausible_distractor": 250,
+    "paired": 205
+  },
+  "leakage": {
+    "question": 0,
+    "context": 0,
+    "source_example": 0
+  },
+  "loader": "pass",
+  "projected_optimizer_updates": 7,
+  "unique_exposure": 2100,
+  "duplicate_tail": 0
+}

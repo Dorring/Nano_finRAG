@@ -1,0 +1,15 @@
+{
+  "strict_single_epoch": 1,
+  "grad_accum_steps": 32,
+  "device_batch_size": 4,
+  "max_seq_len": 2048,
+  "total_batch_size_tokens": 262144,
+  "buffer_size": 100,
+  "task_mixture_shuffle_seed": 42,
+  "world_size": 1,
+  "wrap_at_epoch": false,
+  "duplicate_tail_instances": 0,
+  "optimizer_updates_projected": 7,
+  "training": 0,
+  "note": "Pass --strict-single-epoch 1 for the R2.3 run; this is a bounded no-wrap loader mode and does not change loss, tokenizer, optimizer, or epoch count."
+}

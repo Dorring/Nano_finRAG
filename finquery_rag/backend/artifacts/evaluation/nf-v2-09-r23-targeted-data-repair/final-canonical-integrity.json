@@ -1,0 +1,29 @@
+{
+  "answerability": {
+    "FULLY_ANSWERABLE": 1600,
+    "FULLY_UNANSWERABLE": 250,
+    "PARTIALLY_ANSWERABLE": 250
+  },
+  "canonical_sha256": "5f078c37c43c56ab80dee0f5cd886983a6be268c5eafc0645a03ad8880cf4e28",
+  "component_distribution": {
+    "CALCULATION_STRUCTURAL": 30,
+    "DIRECT_MULTI_EVIDENCE_STRUCTURAL": 30,
+    "DIRECT_SINGLE_EVIDENCE_HEADER_ONLY": 120,
+    "DIRECT_SINGLE_EVIDENCE_NEAR_MATCH": 50,
+    "GENERAL_POSITIVE_REPLAY": 600,
+    "MULTI_MISSING_COMPONENT": 20,
+    "STRONG_PARTIAL": 250,
+    "TARGETED": 1000
+  },
+  "hard_negative_replaced": 250,
+  "row_additions": 0,
+  "row_drops": 0,
+  "row_reorder": 0,
+  "rows": 2100,
+  "view_sha256": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "sft_sha256": "19f19020cf79e57f6c593a64cfd9f25b618d59a3c4474744c59e00c608cc8a51",
+  "leakage_repairs": 29,
+  "non_negative_rows_preserved": 1823,
+  "non_negative_message_replacements": 27,
+  "unique_rows_changed_from_parent": 277
+}

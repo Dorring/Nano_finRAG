@@ -1,0 +1,9 @@
+{
+  "tier_b_overlap": 0,
+  "holdout_question_overlap": 0,
+  "holdout_context_overlap": 0,
+  "holdout_source_example_overlap": 0,
+  "official_evaluation_leakage": 0,
+  "source_split_non_train": 0,
+  "repaired_holdout_rows": 29
+}

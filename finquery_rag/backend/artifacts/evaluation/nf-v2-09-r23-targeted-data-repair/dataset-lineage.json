@@ -1,0 +1,20 @@
+{
+  "base_commit": "73a7bacafa22399e29a53e1aaac219713cb4b5aa",
+  "holdout_or_tier_b_used": false,
+  "parent_rows": 2100,
+  "parent_sha256": "396df2c1cd996e43fcf3d8d8bbc74c71f29165af24f1af5ab558fa5282c8981a",
+  "preserved_non_negative_rows": 1823,
+  "replacement_rows": 250,
+  "sources": [
+    "FinQA train",
+    "TAT-DQA train",
+    "ConvFinQA train where approved"
+  ],
+  "view_sha256": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "independently_discovered_leakage_repairs": 29,
+  "leakage_repair_source": "approved R1 TRAIN rows",
+  "holdout_question_repairs": 5,
+  "holdout_context_repairs": 24,
+  "non_negative_message_replacements": 27,
+  "unique_rows_changed_from_parent": 277
+}

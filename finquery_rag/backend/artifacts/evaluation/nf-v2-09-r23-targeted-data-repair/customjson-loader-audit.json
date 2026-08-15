@@ -1,0 +1,53 @@
+{
+  "loader": "tasks/customjson.py",
+  "status": "pass",
+  "rows": 2100,
+  "top_level_arrays": 2100,
+  "role_alternation_valid": 2100,
+  "context_overflow": 0,
+  "sample_checks": [
+    {
+      "category": "DIRECT",
+      "tokens": 584,
+      "user_loss_tokens": 0,
+      "assistant_loss_enabled": true,
+      "first_assistant_boundary_supervised": true,
+      "assistant_end_supervised": true
+    },
+    {
+      "category": "CALCULATION",
+      "tokens": 771,
+      "user_loss_tokens": 0,
+      "assistant_loss_enabled": true,
+      "first_assistant_boundary_supervised": true,
+      "assistant_end_supervised": true
+    },
+    {
+      "category": "PARTIAL",
+      "tokens": 492,
+      "user_loss_tokens": 0,
+      "assistant_loss_enabled": true,
+      "first_assistant_boundary_supervised": true,
+      "assistant_end_supervised": true
+    },
+    {
+      "category": "HARD_UNANSWERABLE",
+      "tokens": 254,
+      "user_loss_tokens": 0,
+      "assistant_loss_enabled": true,
+      "first_assistant_boundary_supervised": true,
+      "assistant_end_supervised": true
+    },
+    {
+      "category": "MULTI",
+      "tokens": 594,
+      "user_loss_tokens": 0,
+      "assistant_loss_enabled": true,
+      "first_assistant_boundary_supervised": true,
+      "assistant_end_supervised": true
+    }
+  ],
+  "user_loss_tokens": 0,
+  "assistant_loss_enabled": true,
+  "tokenizer": "nanochat.tokenizer.get_tokenizer"
+}

@@ -1,0 +1,20 @@
+{
+  "status": "pass",
+  "seed": 42,
+  "world_size": 1,
+  "device_batch_size": 4,
+  "max_seq_len": 2048,
+  "row_capacity": 2049,
+  "buffer_size": 100,
+  "grad_accum_steps": 32,
+  "strict_single_epoch": true,
+  "total_rows": 2100,
+  "unique_canonical_conversation_instances_exposed": 2100,
+  "duplicate_tail_instances": 0,
+  "dropped_instances": 0,
+  "micro_batches": 206,
+  "projected_optimizer_updates": 7,
+  "full_sized_updates": 6,
+  "full_sized_updates_with_hard_negatives": 6,
+  "all_full_sized_windows_contain_hard_unanswerable": true
+}

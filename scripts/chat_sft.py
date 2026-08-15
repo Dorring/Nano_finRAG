@@ -25,6 +25,7 @@ from nanochat.loss_eval import evaluate_bpb
 import torch.distributed as dist
 from nanochat.flash_attention import HAS_FA3
 from nanochat.engine import Engine
+from nanochat.report import get_report
 from nanochat.training_metadata import save_best_pointer, scale_initial_learning_rates
 from scripts.chat_eval import run_chat_eval
 
@@ -33,7 +34,6 @@ from tasks.gsm8k import GSM8K
 from tasks.mmlu import MMLU
 from tasks.smoltalk import SmolTalk
 from tasks.customjson import CustomJSON
-from tasks.spellingbee import SpellingBee
 
 # -----------------------------------------------------------------------------
 # CLI arguments
@@ -51,6 +51,12 @@ parser.add_argument("--resume-from-step", type=int, default=-1, help="resume an 
 parser.add_argument("--resume-lr-scale", type=float, default=1.0, help="scale saved initial LR when starting a resumed stage")
 # Training horizon
 parser.add_argument("--num-iterations", type=int, default=-1, help="number of optimization steps (-1 = full epoch)")
+parser.add_argument(
+    "--strict-single-epoch",
+    type=int,
+    default=0,
+    help="consume each training conversation at most once; do not wrap the dataloader tail",
+)
 # Batch sizes (default: inherit from pretrained checkpoint)
 parser.add_argument("--max-seq-len", type=int, default=None, help="max context length (default: inherit from pretrain)")
 parser.add_argument("--device-batch-size", type=int, default=None, help="per-device batch size (default: inherit from pretrain)")
@@ -259,6 +265,7 @@ def sft_data_generator_bos_bestfit(split, buffer_size=100):
     """
     global last_step, approx_progress, current_epoch
     assert split in {"train", "val"}, "split must be 'train' or 'val'"
+    strict_single_epoch = bool(args.strict_single_epoch and split == 'train')
     dataset = train_dataset if split == "train" else val_dataset
     dataset_size = len(dataset)
     assert dataset_size > 0
@@ -273,12 +280,20 @@ def sft_data_generator_bos_bestfit(split, buffer_size=100):
 
     def refill_buffer():
         nonlocal cursor, epoch
-        while len(conv_buffer) < buffer_size:
+        if strict_single_epoch and cursor >= dataset_size:
+            return
+        while len(conv_buffer) < buffer_size and (
+            not strict_single_epoch or cursor < dataset_size
+        ):
             conversation = dataset[cursor]
             ids, mask = tokenizer.render_conversation(conversation, max_tokens=args.max_seq_len)
             conv_buffer.append((ids, mask))
             cursor += ddp_world_size
             if cursor >= dataset_size:
+                if strict_single_epoch:
+                    cursor = dataset_size
+                    epoch += 1
+                    break
                 cursor = cursor % dataset_size
                 epoch += 1
                 # Note: last_step is now triggered based on consumption, not fetching
@@ -293,8 +308,22 @@ def sft_data_generator_bos_bestfit(split, buffer_size=100):
             padded = False
             while len(row) < row_capacity:
                 # Ensure buffer has conversations
-                while len(conv_buffer) < buffer_size:
+                while len(conv_buffer) < buffer_size and (
+                    not strict_single_epoch or cursor < dataset_size
+                ):
                     refill_buffer()
+
+                if (
+                    strict_single_epoch
+                    and not conv_buffer
+                    and cursor >= dataset_size
+                ):
+                    content_len = len(row)
+                    remaining = row_capacity - len(row)
+                    row.extend([bos_token] * remaining)
+                    mask_row.extend([0] * remaining)
+                    padded = True
+                    break
 
                 remaining = row_capacity - len(row)
 
@@ -333,9 +362,16 @@ def sft_data_generator_bos_bestfit(split, buffer_size=100):
         # Update progress tracking (based on consumed, not cursor, to account for buffering)
         if split == "train":
             current_epoch = epoch
-            approx_progress = consumed / dataset_size
+            approx_progress = min(consumed / dataset_size, 1.0)
             # Dataset exhaustion only controls runs without an explicit optimizer horizon.
-            if args.num_iterations < 0 and consumed >= dataset_size:
+            if (
+                args.num_iterations < 0
+                and consumed >= dataset_size
+                and (
+                    not strict_single_epoch
+                    or (cursor >= dataset_size and not conv_buffer)
+                )
+            ):
                 last_step = True
 
         # Build tensors
@@ -360,7 +396,8 @@ def sft_data_generator_bos_bestfit(split, buffer_size=100):
         yield inputs, targets
 
 train_loader = sft_data_generator_bos_bestfit("train")
-build_val_loader = lambda: sft_data_generator_bos_bestfit("val")
+def build_val_loader():
+    return sft_data_generator_bos_bestfit("val")
 progress = 0 # will go from 0 to 1 over the course of the epoch
 
 # Learning rate schedule (linear warmup, constant, linear warmdown)
@@ -644,7 +681,6 @@ print0(f"Minimum validation bpb: {min_val_bpb:.4f}")
 print0(f"Best checkpoint step: {best_step}")
 
 # Log to report
-from nanochat.report import get_report
 get_report().log(section="SFT", data=[
     user_config, # CLI args
     { # stats about the training setup

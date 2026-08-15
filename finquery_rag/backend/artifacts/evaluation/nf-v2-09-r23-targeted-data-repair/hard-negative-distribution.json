@@ -1,0 +1,27 @@
+{
+  "calculation": 30,
+  "direct_multi": 30,
+  "direct_single_header_only": 120,
+  "direct_single_near_match": 50,
+  "direct_total": 200,
+  "easy_unrelated": 0,
+  "multi": 20,
+  "route_distribution": {
+    "CALCULATION_RESULT_VERBALIZATION": 30,
+    "DIRECT": 200,
+    "MULTI_EVIDENCE": 20
+  },
+  "single_evidence": 170,
+  "structural_hard": 250,
+  "subtype_distribution": {
+    "HU_HEADER_ONLY_VALUE_ABSENT": 120,
+    "HU0_SAME_METRIC_WRONG_PERIOD": 15,
+    "HU1_SAME_PERIOD_WRONG_METRIC": 20,
+    "HU11_OTHER_STRUCTURAL": 15,
+    "HU_DIRECT_MULTI_STRUCTURAL": 30,
+    "HU_CALCULATION_STRUCTURAL": 30,
+    "HU9_MULTI_EVIDENCE_COMPONENT_MISSING": 20
+  },
+  "total": 250,
+  "with_plausible_distractors": 250
+}
