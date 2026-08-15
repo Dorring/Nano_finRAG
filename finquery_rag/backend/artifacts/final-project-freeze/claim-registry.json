@@ -681,6 +681,21 @@
       "registry_section": "final_strict_e2e_evaluation"
     }
   ],
+  "nf_v2_15_claim_verifier": {
+    "claim_id": "E2E-SCV-001",
+    "metric": "SemanticClaimVerifierV1 frozen replay",
+    "value": {"released": 3, "correct": 3, "semantic_unsafe_final_release": 0, "runtime_detectable_unsafe": 1, "fail_closed": 69, "total": 72},
+    "scope": "NF-V2-15 frozen 72-question replay",
+    "dataset": "NF-V2-10 sealed runtime packets and envelopes",
+    "evaluation_type": "post-generation verifier component / strict replay",
+    "oracle_evidence": false,
+    "fresh_blind": false,
+    "role": "component",
+    "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-15-final-trusted-e2e/final-e2e-results.json",
+    "allowed_readme_usage": "State that the verifier blocked the historical unsafe release in a frozen replay; do not call this production accuracy.",
+    "allowed_resume_usage": "State 3/3 retained correct releases and 0 semantic-unsafe final releases on the frozen replay; keep Production V1.",
+    "provenance_status": "recorded"
+  },
   "rules": {
     "component_metrics_never_e2e": true,
     "strict_e2e_metrics_never_production_accuracy": true,

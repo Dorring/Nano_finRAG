@@ -321,3 +321,14 @@ The Financial Specialist is a generator only; it is not the Supervisor, answerab
 Grounded Financial SFT materially improved component behavior (47/64 Grounded, 52/64 Numeric, 7/11 canonical Calculation preservation, 5/5 explicit Multi grounded). These are oracle-evidence component results, not E2E accuracy. The strict final E2E run released 4/64 answerable outputs and produced 3/64 final correct/grounded answers; all 8 no-answer cases were refused, false execution and false binding were 0, and 68/72 queries failed closed. One post-hoc semantic unsafe release remained, so V2 did not replace V1.
 
 All final claims and provenance are frozen in finquery_rag/backend/artifacts/final-project-freeze/. See its known-limitations.md before using any metric in a resume, interview, or release note. A potential R1 + LoRA/DPO refusal-boundary experiment is deferred research only.
+
+### NF-V2-15 Claim-Verifier Closure
+
+The final V2 candidate flow now includes the validated post-generation
+`SemanticClaimVerifierV1` before `RuntimeGenerationValidatorV1`. In a model-free
+replay of the same sealed 72-question run, it preserved the three previously
+correct releases, blocked the one historical unsupported-unit release, and
+produced 3 released / 3 correct with 0 semantic-unsafe final releases. This is
+component/replay evidence only; coverage remains limited and Production stays
+V1. The rejected R1 + LoRA/DPO experiment remains historical research evidence
+and is not part of runtime.

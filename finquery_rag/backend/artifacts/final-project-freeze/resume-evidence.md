@@ -9,3 +9,10 @@ Use only the qualified claims in claim-registry.json.
 - Final strict E2E result was 3/64 grounded/final-correct with 4/64 released; this is why production remained V1. Do not present 47/64 as production or E2E accuracy.
 - The public retrieval statement is limited to the pre-frozen calibration: Qwen reranker Recall@5 = 88.5639% on the specified public T2-RAGBench contract. The internal frozen runtime identity trace recorded 13/80 source Recall@5.
 - Timing evidence is qualified by scope: V1 average 2460.234 ms versus the V2 trusted-generation subset average 293.341 ms; these are not matched full-pipeline benchmarks.
+
+## NF-V2-15 semantic claim verifier (qualified)
+
+- Adopted `SemanticClaimVerifierV1` as a post-generation, fail-closed claim/evidence check; the pre-generation sufficiency gate remains non-mandatory.
+- On the same sealed 72-question replay, the verifier retained 3/3 previously correct released answers and blocked the one historical unsupported-unit release: 3 released, 3 correct, 0 semantic-unsafe final releases, 69/72 fail-closed.
+- This is frozen replay/component evidence with zero new model or retrieval calls, not fresh-blind E2E accuracy and not a Production V2 acceptance claim. Production remains V1.
+- R1 + LoRA/DPO is recorded as `LORA_DPO_INEFFECTIVE` and is not integrated.

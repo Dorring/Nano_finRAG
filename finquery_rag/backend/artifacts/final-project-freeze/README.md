@@ -10,4 +10,10 @@ Start with:
 4. architecture-freeze.json and production-decision.json - frozen roles and V1 production decision.
 5. known-limitations.md, resume-evidence.md, and interview-evidence.md - safe communication boundaries.
 
-The final decision is PROJECT_FREEZE_V1_PRODUCTION. No additional grounded training, retrieval optimization, model checkpoint selection, or production switch is authorized by this freeze.
+The final decision is PROJECT_FREEZE_V1_PRODUCTION. NF-V2-15 adds the validated post-generation SemanticClaimVerifierV1 to the frozen V2 execution boundary; it does not authorize a production switch, additional grounded training, retrieval optimization, or LoRA/DPO runtime behavior.
+
+NF-V2-15 comparison: the historical NF-V2-10 strict replay released 4 answers,
+of which 3 were correct and 1 was post-hoc semantically unsafe. With
+SemanticClaimVerifierV1, 3 answers were released, all 3 were correct, and the
+unsafe unit claim was blocked. The 72-question result remains a frozen replay,
+not fresh-blind E2E accuracy.

@@ -1,0 +1,19 @@
+{
+  "checks": [
+    "numeric_value",
+    "period",
+    "unit_currency_scale",
+    "citation",
+    "claim_evidence_support",
+    "canonical_calculation"
+  ],
+  "decisions": [
+    "SUPPORTED",
+    "UNSUPPORTED",
+    "AMBIGUOUS"
+  ],
+  "name": "SemanticClaimVerifierV1",
+  "pre_generation_semantic_sufficiency_gate_mandatory": false,
+  "release_rule": "UNSUPPORTED or AMBIGUOUS claim blocks release; no Gold/reference access",
+  "stage": "post_generation"
+}

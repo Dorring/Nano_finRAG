@@ -1,0 +1,18 @@
+{
+  "delta": {
+    "correct": 0,
+    "released": -1,
+    "unsafe_final_release": -1
+  },
+  "historical_nf_v2_10": {
+    "correct": 3,
+    "released": 4,
+    "semantic_unsafe_posthoc": 1
+  },
+  "nf_v2_15_claim_verifier": {
+    "correct": 3,
+    "released": 3,
+    "runtime_detectable_unsafe": 1,
+    "semantic_unsafe_final_release": 0
+  }
+}
