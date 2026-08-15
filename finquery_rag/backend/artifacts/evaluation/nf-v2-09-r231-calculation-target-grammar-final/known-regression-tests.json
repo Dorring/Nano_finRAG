@@ -1,0 +1,13 @@
+{
+  "row_118": {
+    "sample_id": "16c942fc2f0977dec76d8c346db4e860",
+    "before": "Pro forma net income would have been if the charge for purchased research and development had been expensed 13549.0 [C1].",
+    "after": "Pro forma net income would have been 13549.0 [C1].",
+    "expected_after": "Pro forma net income would have been 13549.0 [C1].",
+    "malformed_before": true,
+    "malformed_after": false,
+    "canonical_result_unchanged": true,
+    "numeric_unchanged": true,
+    "citation_unchanged": true
+  }
+}

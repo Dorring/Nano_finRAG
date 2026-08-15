@@ -1,0 +1,17 @@
+{
+  "calculation_grammar_gate_pass": true,
+  "rows": 2100,
+  "calculation_scanned": "400/400",
+  "malformed": "0/400",
+  "canonical_exact": "400/400",
+  "numeric_changes": 0,
+  "citation_changes": 0,
+  "semantic_changes": 0,
+  "final_canonical_sha256": "2456ca6a0637583faaef25a25256e41df7e15c9a0fb99fd2535ed44e54b58ddd",
+  "final_sft_sha256": "2f51178ba95b1cb42a0678bec6d1aef1c9eec65d9e7e8450ad0ec68d86c57803",
+  "next_gate": "v2_09_r23_final_grounding_training",
+  "production": "V1",
+  "training": 0,
+  "model_calls": 0,
+  "retrieval_calls": 0
+}
