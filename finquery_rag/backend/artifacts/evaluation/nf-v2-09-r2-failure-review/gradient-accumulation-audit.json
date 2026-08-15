@@ -1,0 +1,15 @@
+{
+  "actual_conversation_instances_per_update": [
+    601,
+    613,
+    619,
+    622
+  ],
+  "basis": "only four optimizer boundaries; per-update class mixture is balanced, so no GD2 per-update imbalance claim",
+  "classification": "GD1_POTENTIALLY_TOO_COARSE",
+  "effective_packed_rows": 256,
+  "effective_token_batch": 524288,
+  "grad_accum_steps": 64,
+  "micro_batch_size": 4,
+  "optimizer_updates": 4
+}

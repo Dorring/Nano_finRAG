@@ -1,0 +1,75 @@
+{
+  "balanced_per_update": true,
+  "coefficient_of_variation": 0.15166425420675766,
+  "component_clustering": {
+    "first_runs": [
+      [
+        "TARGETED",
+        4
+      ],
+      [
+        "STRONG_PARTIAL",
+        1
+      ],
+      [
+        "GENERAL_POSITIVE_REPLAY",
+        1
+      ],
+      [
+        "TARGETED",
+        4
+      ],
+      [
+        "GENERAL_POSITIVE_REPLAY",
+        2
+      ],
+      [
+        "STRONG_PARTIAL",
+        2
+      ],
+      [
+        "TARGETED",
+        2
+      ],
+      [
+        "STRUCTURAL_HARD_UNANSWERABLE",
+        1
+      ],
+      [
+        "TARGETED",
+        5
+      ],
+      [
+        "GENERAL_POSITIVE_REPLAY",
+        2
+      ],
+      [
+        "TARGETED",
+        1
+      ],
+      [
+        "STRONG_PARTIAL",
+        1
+      ]
+    ],
+    "max_run": 12,
+    "mean_run": 1.5151515151515151,
+    "runs": 1386
+  },
+  "global_shuffle_enabled": true,
+  "max_unanswerable_per_update": 75,
+  "min_unanswerable_per_update": 53,
+  "ordering_leakage": "no component-block ordering after TaskMixture shuffle",
+  "per_update_unanswerable": [
+    55,
+    53,
+    75,
+    71
+  ],
+  "sampler_type": "TaskMixture deterministic index_map",
+  "shuffle_seed": 42,
+  "tail_prefetch_duplicate_issue": {
+    "duplicate_instances": 416,
+    "note": "best-fit buffer wraps before the last 64 micro-batches finish; duplicates are exposed in step 4"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "ranked_causes": [
+    {
+      "code": "RC1_HARD_NEGATIVE_DOMAIN_ROUTE_MISMATCH",
+      "rank": "primary",
+      "support": "15/15 holdout failures are single-E header-only Direct views; R2.2 hard negatives are 156 Direct but all Direct examples have 2+ evidence rows, plus 74 calculation and 20 multi routes; no strong deterministic analog."
+    },
+    {
+      "code": "RC5_GRADIENT_ACCUMULATION_TOO_COARSE",
+      "rank": "secondary",
+      "support": "only four optimizer boundaries; refusal falls 14/15 -> 9/15 -> 0/15 by step2, and final step has zero LR."
+    },
+    {
+      "code": "RC4_OPTIMIZER_TAIL_DUPLICATION",
+      "rank": "secondary",
+      "support": "best-fit buffer tail exposes 2455 conversation instances for 2100 rows, including 416 duplicate instances; hard-negative exposure falls to 254/2455 (10.35%)."
+    },
+    {
+      "code": "RC0_INSUFFICIENT_NEGATIVE_COUNT",
+      "rank": "unlikely",
+      "support": "250/2100 structural hard negatives plus 250 partials; counts are not scarce."
+    },
+    {
+      "code": "RC2_MISSING_PAIRED_SIBLINGS",
+      "rank": "unlikely",
+      "support": "147/250 exact source siblings and 195/250 same-context positive siblings exist."
+    },
+    {
+      "code": "RC3_GLOBAL_SHUFFLE_FAILURE",
+      "rank": "unlikely",
+      "support": "TaskMixture uses random.Random(42); component runs max 12 and per-update unanswerable CV is 0.152."
+    },
+    {
+      "code": "RC6_CONTINUATION_LR_TOO_AGGRESSIVE",
+      "rank": "unlikely",
+      "support": "relative parameter deltas 0.000397, 0.000319, 0.000085; below R1 cumulative 0.001958."
+    },
+    {
+      "code": "RC8_LOSS_MASK_BUG",
+      "rank": "unlikely",
+      "support": "20/20 refusal samples have assistant loss and supervised final boundary/EOS."
+    },
+    {
+      "code": "RC9_DECODING_LEVEL_ANSWER_BIAS",
+      "rank": "unlikely",
+      "support": "outputs select visible header tokens, indicating learned evidence-selection failure rather than random decoding."
+    },
+    {
+      "code": "RC10_MODEL_CAPACITY_LIMITATION",
+      "rank": "unlikely",
+      "support": "not supported by this audit"
+    }
+  ]
+}

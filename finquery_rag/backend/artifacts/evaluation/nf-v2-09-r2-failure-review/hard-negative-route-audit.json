@@ -1,0 +1,59 @@
+{
+  "calculation": {
+    "calculation_routes": 74,
+    "non_calculation": 176
+  },
+  "evidence_count": {
+    "2": 29,
+    "3": 148,
+    "4": 24,
+    "5": 19,
+    "6": 1,
+    "7": 28,
+    "8": 1
+  },
+  "holdout_comparison": {
+    "conclusion": "route/evidence-shape mismatch is material",
+    "holdout_evidence_count": 1,
+    "holdout_has_canonical_calculation": false,
+    "holdout_n": 15,
+    "holdout_route": "DIRECT (inferred from single direct evidence view)",
+    "structurally_matching_holdout_count": 0,
+    "training_direct_evidence_max": 7,
+    "training_direct_evidence_min": 2,
+    "training_direct_fraction": 0.624
+  },
+  "n": 250,
+  "numeric_or_non_numeric": {
+    "definition": "visible model-facing evidence contains at least one numeric token; header/period tokens are included in this conservative count",
+    "non_numeric_visible": 0,
+    "numeric_visible": 250
+  },
+  "route": {
+    "CALCULATION_RESULT_VERBALIZATION": 74,
+    "DIRECT": 156,
+    "MULTI_EVIDENCE": 20
+  },
+  "single_vs_multi_evidence": {
+    "multi": 250,
+    "single": 0
+  },
+  "source_dataset": {
+    "FinQA": 200,
+    "TAT-DQA": 50
+  },
+  "subtype": {
+    "HU0_SAME_METRIC_WRONG_PERIOD": 25,
+    "HU10_SCALE_OR_UNIT_MISMATCH": 20,
+    "HU11_OTHER_STRUCTURAL": 9,
+    "HU1_SAME_PERIOD_WRONG_METRIC": 25,
+    "HU2_WRONG_SCOPE_OR_SEGMENT": 11,
+    "HU3_TOTAL_COMPONENT_MISMATCH": 20,
+    "HU4_PARENT_CHILD_METRIC_MISMATCH": 20,
+    "HU5_NUMERIC_DISTRACTORS_NO_TARGET_FACT": 30,
+    "HU6_CALCULATION_MISSING_OPERAND": 25,
+    "HU7_CALCULATION_WRONG_OPERAND_PERIOD": 25,
+    "HU8_CANONICAL_CALCULATION_ABSENT": 20,
+    "HU9_MULTI_EVIDENCE_COMPONENT_MISSING": 20
+  }
+}

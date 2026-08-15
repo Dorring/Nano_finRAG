@@ -1,0 +1,573 @@
+{
+  "assistant_boundary_and_eos_supervised": true,
+  "classes": {
+    "STRONG_PARTIAL": {
+      "assistant_end_loss_observed": 20,
+      "assistant_loss_enabled": true,
+      "n": 20,
+      "rows": [
+        {
+          "assistant_loss_tokens": 28,
+          "first_supervised_index": 464,
+          "last_supervised_index": 491,
+          "last_token_mask": 1,
+          "sample_id": "44c2a2889d45626137ed729182a29b2a",
+          "tokens": 492,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 20,
+          "first_supervised_index": 808,
+          "last_supervised_index": 827,
+          "last_token_mask": 1,
+          "sample_id": "8e8589cc165b0fe89489c4d36e51b1c5",
+          "tokens": 828,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 23,
+          "first_supervised_index": 1133,
+          "last_supervised_index": 1155,
+          "last_token_mask": 1,
+          "sample_id": "6195a525f0effd7f7196ba63ad795ccc",
+          "tokens": 1156,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 14,
+          "first_supervised_index": 1172,
+          "last_supervised_index": 1185,
+          "last_token_mask": 1,
+          "sample_id": "55fa65a1d1103c6084d558b78963aac0",
+          "tokens": 1186,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 32,
+          "first_supervised_index": 1284,
+          "last_supervised_index": 1315,
+          "last_token_mask": 1,
+          "sample_id": "88987bbd797d21094a7296f161af56b8",
+          "tokens": 1316,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 35,
+          "first_supervised_index": 1241,
+          "last_supervised_index": 1275,
+          "last_token_mask": 1,
+          "sample_id": "6f07da8ad9adce4120c8f8c626cefefe",
+          "tokens": 1276,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 19,
+          "first_supervised_index": 1043,
+          "last_supervised_index": 1061,
+          "last_token_mask": 1,
+          "sample_id": "06a14cb5e5bac43eb57ba6f57d0ed506",
+          "tokens": 1062,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 37,
+          "first_supervised_index": 571,
+          "last_supervised_index": 607,
+          "last_token_mask": 1,
+          "sample_id": "3869dbebed74faead75d5fb496d179b1",
+          "tokens": 608,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 15,
+          "first_supervised_index": 1272,
+          "last_supervised_index": 1286,
+          "last_token_mask": 1,
+          "sample_id": "5cff8fc3570fec5a6ed5ca598babc76b",
+          "tokens": 1287,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 18,
+          "first_supervised_index": 1072,
+          "last_supervised_index": 1089,
+          "last_token_mask": 1,
+          "sample_id": "460e06cbecc1effa5ca6aba24133103a",
+          "tokens": 1090,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 31,
+          "first_supervised_index": 1412,
+          "last_supervised_index": 1442,
+          "last_token_mask": 1,
+          "sample_id": "655ef73ffabddbfc4ba225d2c6af26a6",
+          "tokens": 1443,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 14,
+          "first_supervised_index": 952,
+          "last_supervised_index": 965,
+          "last_token_mask": 1,
+          "sample_id": "0140fcdaeec0f4decc15d1ca25b07272",
+          "tokens": 966,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 32,
+          "first_supervised_index": 877,
+          "last_supervised_index": 908,
+          "last_token_mask": 1,
+          "sample_id": "663cecb791f08225b343e3d8ee1c888a",
+          "tokens": 909,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 16,
+          "first_supervised_index": 1410,
+          "last_supervised_index": 1425,
+          "last_token_mask": 1,
+          "sample_id": "4588b9dfb8cd8cf0b03cac656badb507",
+          "tokens": 1426,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 30,
+          "first_supervised_index": 556,
+          "last_supervised_index": 585,
+          "last_token_mask": 1,
+          "sample_id": "8c3d0c38158c1764042eab5d4fd50e2e",
+          "tokens": 586,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 56,
+          "first_supervised_index": 1108,
+          "last_supervised_index": 1163,
+          "last_token_mask": 1,
+          "sample_id": "510ff6c151a2040f9098b7aaa9174edb",
+          "tokens": 1164,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 36,
+          "first_supervised_index": 973,
+          "last_supervised_index": 1008,
+          "last_token_mask": 1,
+          "sample_id": "1f9e020a28c5c75b4afaa2f5efe6505c",
+          "tokens": 1009,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 27,
+          "first_supervised_index": 1384,
+          "last_supervised_index": 1410,
+          "last_token_mask": 1,
+          "sample_id": "1a6de9e63ba77822b0f6288b37716d81",
+          "tokens": 1411,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 13,
+          "first_supervised_index": 1063,
+          "last_supervised_index": 1075,
+          "last_token_mask": 1,
+          "sample_id": "2a0042d23c82e6e6bb6fa148b078149e",
+          "tokens": 1076,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 66,
+          "first_supervised_index": 750,
+          "last_supervised_index": 815,
+          "last_token_mask": 1,
+          "sample_id": "18ab07db80c7e08e76b4efe5eeff2b1c",
+          "tokens": 816,
+          "user_mask_zero": true
+        }
+      ],
+      "user_loss_tokens_zero": true
+    },
+    "STRUCTURAL_HARD_UNANSWERABLE": {
+      "assistant_end_loss_observed": 20,
+      "assistant_loss_enabled": true,
+      "n": 20,
+      "rows": [
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 627,
+          "last_supervised_index": 637,
+          "last_token_mask": 1,
+          "sample_id": "893962c82eca412be5d1eb68d8db7a06",
+          "tokens": 638,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 462,
+          "last_supervised_index": 472,
+          "last_token_mask": 1,
+          "sample_id": "123eb624c62b74e6ff766f27a74227d3",
+          "tokens": 473,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 451,
+          "last_supervised_index": 461,
+          "last_token_mask": 1,
+          "sample_id": "1d52916f960a1a31a93d8a055ad90616",
+          "tokens": 462,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 850,
+          "last_supervised_index": 860,
+          "last_token_mask": 1,
+          "sample_id": "46fba3be5afd32da9e4fd1fc45c497b4",
+          "tokens": 861,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 404,
+          "last_supervised_index": 414,
+          "last_token_mask": 1,
+          "sample_id": "fe9b075ec33f34462b3ce64642e78bd5",
+          "tokens": 415,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 507,
+          "last_supervised_index": 517,
+          "last_token_mask": 1,
+          "sample_id": "345097ce720a478a6c69c04c0953759a",
+          "tokens": 518,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 421,
+          "last_supervised_index": 431,
+          "last_token_mask": 1,
+          "sample_id": "c5d80c83f8c1bf7473493cf9e4660b89",
+          "tokens": 432,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 413,
+          "last_supervised_index": 423,
+          "last_token_mask": 1,
+          "sample_id": "c746f75a27d59a4f8b8cae412b63b8d1",
+          "tokens": 424,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 360,
+          "last_supervised_index": 370,
+          "last_token_mask": 1,
+          "sample_id": "1ef905d17803bf3290c7ed2f0cbb237b",
+          "tokens": 371,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 484,
+          "last_supervised_index": 494,
+          "last_token_mask": 1,
+          "sample_id": "64d1be9f854aae44d640b2b2801d7a9e",
+          "tokens": 495,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 487,
+          "last_supervised_index": 497,
+          "last_token_mask": 1,
+          "sample_id": "a2da9b2517276b83a1f68a3964b0c841",
+          "tokens": 498,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 444,
+          "last_supervised_index": 454,
+          "last_token_mask": 1,
+          "sample_id": "e83554a6ead71fa39bb86210e769ae28",
+          "tokens": 455,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 369,
+          "last_supervised_index": 379,
+          "last_token_mask": 1,
+          "sample_id": "b8475a9f3c4a5669fa05f6574ea405a2",
+          "tokens": 380,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 420,
+          "last_supervised_index": 430,
+          "last_token_mask": 1,
+          "sample_id": "db49e262518d7de537ad576b0850b13a",
+          "tokens": 431,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 533,
+          "last_supervised_index": 543,
+          "last_token_mask": 1,
+          "sample_id": "70293933f804aa9118e88877ce2e14df",
+          "tokens": 544,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 571,
+          "last_supervised_index": 581,
+          "last_token_mask": 1,
+          "sample_id": "4b30c28bb208b04bfb5ad6a84e182d67",
+          "tokens": 582,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 908,
+          "last_supervised_index": 918,
+          "last_token_mask": 1,
+          "sample_id": "9c864b191a19d5263adefd0fc8d094cc",
+          "tokens": 919,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 404,
+          "last_supervised_index": 414,
+          "last_token_mask": 1,
+          "sample_id": "8c3f1369f63cf8a3b0a942566edd0ded",
+          "tokens": 415,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 366,
+          "last_supervised_index": 376,
+          "last_token_mask": 1,
+          "sample_id": "a6df0773db1693ff843822c10309768c",
+          "tokens": 377,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 11,
+          "first_supervised_index": 729,
+          "last_supervised_index": 739,
+          "last_token_mask": 1,
+          "sample_id": "66fd968e45019c763232b8acad475b21",
+          "tokens": 740,
+          "user_mask_zero": true
+        }
+      ],
+      "user_loss_tokens_zero": true
+    },
+    "TARGETED": {
+      "assistant_end_loss_observed": 20,
+      "assistant_loss_enabled": true,
+      "n": 20,
+      "rows": [
+        {
+          "assistant_loss_tokens": 24,
+          "first_supervised_index": 560,
+          "last_supervised_index": 583,
+          "last_token_mask": 1,
+          "sample_id": "4cbdf5109144270c5c48fd26ba48c7d9",
+          "tokens": 584,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 37,
+          "first_supervised_index": 734,
+          "last_supervised_index": 770,
+          "last_token_mask": 1,
+          "sample_id": "b2e5e67a2cd63e55f9e19d14f45e38c6",
+          "tokens": 771,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 22,
+          "first_supervised_index": 517,
+          "last_supervised_index": 538,
+          "last_token_mask": 1,
+          "sample_id": "403cfb48678b51873d58fe7b79a4767a",
+          "tokens": 539,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 31,
+          "first_supervised_index": 685,
+          "last_supervised_index": 715,
+          "last_token_mask": 1,
+          "sample_id": "a5019f6a89a80d1057659203037335c6",
+          "tokens": 716,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 27,
+          "first_supervised_index": 826,
+          "last_supervised_index": 852,
+          "last_token_mask": 1,
+          "sample_id": "10f7aff911f2f6e82101b3838322a5ff",
+          "tokens": 853,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 40,
+          "first_supervised_index": 662,
+          "last_supervised_index": 701,
+          "last_token_mask": 1,
+          "sample_id": "a6c49c04003118f3d9cfd002c71f067c",
+          "tokens": 702,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 23,
+          "first_supervised_index": 508,
+          "last_supervised_index": 530,
+          "last_token_mask": 1,
+          "sample_id": "668142735322d1ad21b60bdd26b2c926",
+          "tokens": 531,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 20,
+          "first_supervised_index": 486,
+          "last_supervised_index": 505,
+          "last_token_mask": 1,
+          "sample_id": "4c6a375e87aec14f7c85826e8196a50b",
+          "tokens": 506,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 23,
+          "first_supervised_index": 489,
+          "last_supervised_index": 511,
+          "last_token_mask": 1,
+          "sample_id": "9811f1ada4b64b9359597abffa9d2b08",
+          "tokens": 512,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 27,
+          "first_supervised_index": 410,
+          "last_supervised_index": 436,
+          "last_token_mask": 1,
+          "sample_id": "06899d12b610965d4d0b5fe17a47bcdd",
+          "tokens": 437,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 24,
+          "first_supervised_index": 513,
+          "last_supervised_index": 536,
+          "last_token_mask": 1,
+          "sample_id": "1b6af4f467321b9cda2a343f843d3548",
+          "tokens": 537,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 30,
+          "first_supervised_index": 798,
+          "last_supervised_index": 827,
+          "last_token_mask": 1,
+          "sample_id": "d5b76be2b7b5c1b1605fd80b8837efc0",
+          "tokens": 828,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 24,
+          "first_supervised_index": 540,
+          "last_supervised_index": 563,
+          "last_token_mask": 1,
+          "sample_id": "3ce035849b6a69d79a4eaf62d5f49e1f",
+          "tokens": 564,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 31,
+          "first_supervised_index": 1017,
+          "last_supervised_index": 1047,
+          "last_token_mask": 1,
+          "sample_id": "ba42bb41c8420e8f04bbde57a10597ec",
+          "tokens": 1048,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 23,
+          "first_supervised_index": 495,
+          "last_supervised_index": 517,
+          "last_token_mask": 1,
+          "sample_id": "8689f78502898528e3e295a3ca3c85ce",
+          "tokens": 518,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 34,
+          "first_supervised_index": 574,
+          "last_supervised_index": 607,
+          "last_token_mask": 1,
+          "sample_id": "06f35550455d4e6c532f3e32e8347039",
+          "tokens": 608,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 29,
+          "first_supervised_index": 564,
+          "last_supervised_index": 592,
+          "last_token_mask": 1,
+          "sample_id": "74ec75c155e65589765add3091543c51",
+          "tokens": 593,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 28,
+          "first_supervised_index": 950,
+          "last_supervised_index": 977,
+          "last_token_mask": 1,
+          "sample_id": "586b1500d4fab693dd9c3d7e47aaf9c4",
+          "tokens": 978,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 24,
+          "first_supervised_index": 451,
+          "last_supervised_index": 474,
+          "last_token_mask": 1,
+          "sample_id": "7df131e10b4013ed0fbf02b1fa848172",
+          "tokens": 475,
+          "user_mask_zero": true
+        },
+        {
+          "assistant_loss_tokens": 26,
+          "first_supervised_index": 550,
+          "last_supervised_index": 575,
+          "last_token_mask": 1,
+          "sample_id": "708cfb316aad5822509265bd427c65cc",
+          "tokens": 576,
+          "user_mask_zero": true
+        }
+      ],
+      "user_loss_tokens_zero": true
+    }
+  },
+  "refusal_target_loss_enabled": true,
+  "samples_per_class": 20,
+  "tokenizer": "project RustBPETokenizer",
+  "user_tokens_ignored": true
+}

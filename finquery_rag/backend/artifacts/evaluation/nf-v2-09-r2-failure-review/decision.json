@@ -1,0 +1,44 @@
+{
+  "actual_optimizer_steps": 4,
+  "additional_steps_on_current_r2_2": "not recommended",
+  "additional_training_experiments_allowed_after_review": 1,
+  "checkpoint_status": "preserve as evaluation history; do not promote",
+  "data_defect_remains": true,
+  "effective_samples_per_update": [
+    601,
+    613,
+    619,
+    622
+  ],
+  "global_shuffle": true,
+  "hard_negative_route_match": "mismatch",
+  "holdout_inference_calls": 1000,
+  "loss_mask_for_refusal": "pass",
+  "model_capacity_limitation_likely": false,
+  "model_training": 0,
+  "next_gate": "v2_09_r23_targeted_data_repair",
+  "parent_policy": "R1 model_000007.pt",
+  "per_step_unanswerable": [
+    55,
+    53,
+    75,
+    71
+  ],
+  "positive_negative_paired_siblings": "147/250 exact source-example; 195/250 same-context",
+  "primary_root_cause": "RC1_HARD_NEGATIVE_DOMAIN_ROUTE_MISMATCH",
+  "production_switch": false,
+  "r2_2_refusal_correct": "0/15",
+  "recommended_action": "R23_TARGETED_DATA_REPAIR",
+  "refusal_by_checkpoint": {
+    "step0": "14/15",
+    "step1": "9/15",
+    "step2": "0/15",
+    "step3": "0/15",
+    "step4": "0/15"
+  },
+  "retrieval_calls": 0,
+  "same_r2_2_dataset_retraining": "not recommended",
+  "secondary_root_cause": "RC5_GRADIENT_ACCUMULATION_TOO_COARSE plus RC4_TAIL_DUPLICATION",
+  "training": 0,
+  "training_dynamics_defect": true
+}

@@ -1,0 +1,87 @@
+{
+  "interpretation": "R2.2 update magnitudes are not unusually larger than R1 cumulative scale; zero final update is a schedule/tail artifact, not an LR explosion",
+  "parameter_delta_relative_norm_r2_2": {
+    "step0_to_step1": 0.0003972514784,
+    "step0_to_step3": 0.000717348711,
+    "step0_to_step4": 0.000717348711,
+    "step1_to_step2": 0.00031889946,
+    "step2_to_step3": 8.50127933e-05,
+    "step3_to_step4": 0.0
+  },
+  "r1_lr_multiplier_trajectory": [
+    {
+      "lr_multiplier": 1.0,
+      "progress": 0.175,
+      "step": 1
+    },
+    {
+      "lr_multiplier": 1.0,
+      "progress": 0.33,
+      "step": 2
+    },
+    {
+      "lr_multiplier": 1.0,
+      "progress": 0.482222222,
+      "step": 3
+    },
+    {
+      "lr_multiplier": 0.748888889,
+      "progress": 0.625555556,
+      "step": 4
+    },
+    {
+      "lr_multiplier": 0.416666667,
+      "progress": 0.791666667,
+      "step": 5
+    },
+    {
+      "lr_multiplier": 0.101111111,
+      "progress": 0.949444444,
+      "step": 6
+    },
+    {
+      "lr_multiplier": 0.0,
+      "progress": 1.117777778,
+      "step": 7
+    }
+  ],
+  "r1_reference": {
+    "step0_to_step7": 0.0019577190705,
+    "stepwise_checkpoints_available": false
+  },
+  "r2_2_lr_trajectory": [
+    {
+      "embedding_lr": 0.03,
+      "lr_multiplier": 1.0,
+      "matrix_lr": 0.002,
+      "progress": 0.291428571,
+      "step": 1,
+      "unembedding_lr": 0.0008
+    },
+    {
+      "embedding_lr": 0.0250285714,
+      "lr_multiplier": 0.834285714,
+      "matrix_lr": 0.0016685714,
+      "progress": 0.582857143,
+      "step": 2,
+      "unembedding_lr": 0.0006674286
+    },
+    {
+      "embedding_lr": 0.0072857143,
+      "lr_multiplier": 0.242857143,
+      "matrix_lr": 0.0004857143,
+      "progress": 0.878571429,
+      "step": 3,
+      "unembedding_lr": 0.0001942857
+    },
+    {
+      "embedding_lr": 0.0,
+      "lr_multiplier": 0.0,
+      "matrix_lr": 0.0,
+      "progress": 1.173809524,
+      "step": 4,
+      "unembedding_lr": 0.0
+    }
+  ],
+  "step3_equals_step4": true
+}

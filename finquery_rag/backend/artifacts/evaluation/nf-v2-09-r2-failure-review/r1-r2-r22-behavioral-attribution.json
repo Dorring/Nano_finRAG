@@ -1,0 +1,39 @@
+{
+  "frozen_sealed_metrics": {
+    "R1": {
+      "citation_complete": "61/64",
+      "grounded": "43/64",
+      "holdout_unanswerable_refusal": "14/15",
+      "numeric": "46/64",
+      "period": "64/64",
+      "runtime_pass": "53/64",
+      "unsupported": "21/64"
+    },
+    "R2_2_balanced": {
+      "citation_complete": "60/64",
+      "grounded": "47/64",
+      "holdout_unanswerable_refusal": "0/15",
+      "numeric": "50/64",
+      "period": "62/64",
+      "runtime_pass": "49/64",
+      "unsupported": "17/64"
+    },
+    "R2_targeted": {
+      "citation_complete": "59/64",
+      "grounded": "44/64",
+      "holdout_unanswerable_refusal": "0/15",
+      "numeric": "50/64",
+      "period": "62/64",
+      "runtime_pass": "48/64",
+      "unsupported": "20/64"
+    }
+  },
+  "intermediate_refusal_path": {
+    "step0": "14/15",
+    "step1": "9/15",
+    "step2": "0/15",
+    "step3": "0/15",
+    "step4": "0/15"
+  },
+  "interpretation": "R2.2 retained Tier-B gains but refusal collapse is present from step2; it is not a Tier-B checkpoint-selection artifact."
+}

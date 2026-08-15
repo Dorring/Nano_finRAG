@@ -1,0 +1,9 @@
+{
+  "definition": "exact sibling requires same source_example_id and a fully answerable row in the final mix",
+  "hard_negative_n": 250,
+  "interpretation": "paired supervision exists for a majority; lack of paired siblings is not primary",
+  "negative_only": 103,
+  "positive_negative_paired_siblings_exact_source_example": 147,
+  "same_context_with_positive": 195,
+  "same_question_hash_with_positive": 162
+}

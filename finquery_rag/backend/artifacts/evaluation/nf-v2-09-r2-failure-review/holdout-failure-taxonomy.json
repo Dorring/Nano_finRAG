@@ -1,0 +1,251 @@
+{
+  "cases": [
+    {
+      "evidence_ids": [
+        "E1"
+      ],
+      "query_id": "holdout_003",
+      "question": "What was the net income reported in the period discussed?",
+      "r1_output": "Verified evidence is insufficient to answer this question. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable.",
+      "r2_2_failure_labels": [
+        "RF0_COPIED_PLAUSIBLE_DISTRACTOR",
+        "RF1_WRONG_PERIOD_SELECTION",
+        "RF6_CITATION_BACKED_UNSUPPORTED_ANSWER"
+      ],
+      "r2_2_output": "The net income reported in the period discussed is 30/9/2018 [E1].",
+      "r2_output": "The net income reported in the period discussed is 30/9/2018 [E1].",
+      "visible_evidence": "[QUESTION]\nWhat was the net income reported in the period discussed?\n\n[VERIFIED EVIDENCE]\n\n[E1]\nMetric: table_row_0\nPeriod: 2018, 2019\nScope: not specified\nValue: 30; 9; 2018; 30; 9; 2019\nUnit: not specified\nCurrency: not specified\nScale: not specified\nSource: 8cbf706f-066a-46a3-a6aa-e5b1df0facd1\nEvidence: € million | 30/9/2018 | 30/9/2019\n\n[ANSWER RULES]\n1. Use only the verified evidence and calculation above.\n2. Do not introduce outside financial knowledge.\n3. Preserve supplied numbers, periods, units, currencies and scales exactly.\n4. Do not recalculate canonical calculation results.\n5. Cite factual claims using the supplied [E#] / [C#] IDs.\n6. If required evidence is missing, explicitly state that the provided evidence is insufficient.\n7. Answer concisely."
+    },
+    {
+      "evidence_ids": [
+        "E1"
+      ],
+      "query_id": "holdout_006",
+      "question": "What was the net income reported in the period discussed?",
+      "r1_output": "Verified evidence is insufficient to answer this question. Additional requested information is unavailable.",
+      "r2_2_failure_labels": [
+        "RF0_COPIED_PLAUSIBLE_DISTRACTOR",
+        "RF1_WRONG_PERIOD_SELECTION",
+        "RF6_CITATION_BACKED_UNSUPPORTED_ANSWER"
+      ],
+      "r2_2_output": "The net income reported in the period discussed is 2019 [E1].",
+      "r2_output": "The net income reported in the period discussed is € thousands [E1].",
+      "visible_evidence": "[QUESTION]\nWhat was the net income reported in the period discussed?\n\n[VERIFIED EVIDENCE]\n\n[E1]\nMetric: table_row_0\nPeriod: 2017, 2018, 2019\nScope: not specified\nValue: 2019; 2018; 2017\nUnit: not specified\nCurrency: not specified\nScale: not specified\nSource: 6b250bb5-2435-4e4a-b799-5bd331232a20\nEvidence: € thousands | 2019 | 2018 | 2017\n\n[ANSWER RULES]\n1. Use only the verified evidence and calculation above.\n2. Do not introduce outside financial knowledge.\n3. Preserve supplied numbers, periods, units, currencies and scales exactly.\n4. Do not recalculate canonical calculation results.\n5. Cite factual claims using the supplied [E#] / [C#] IDs.\n6. If required evidence is missing, explicitly state that the provided evidence is insufficient.\n7. Answer concisely."
+    },
+    {
+      "evidence_ids": [
+        "E1"
+      ],
+      "query_id": "holdout_021",
+      "question": "What was the net income reported in the period discussed?",
+      "r1_output": "Verified evidence is insufficient to answer this question. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable.",
+      "r2_2_failure_labels": [
+        "RF0_COPIED_PLAUSIBLE_DISTRACTOR",
+        "RF1_WRONG_PERIOD_SELECTION",
+        "RF6_CITATION_BACKED_UNSUPPORTED_ANSWER"
+      ],
+      "r2_2_output": "The net income reported in the period discussed is 2017/2018 [E1].",
+      "r2_output": "The net income reported in the period discussed is € [E1].",
+      "visible_evidence": "[QUESTION]\nWhat was the net income reported in the period discussed?\n\n[VERIFIED EVIDENCE]\n\n[E1]\nMetric: table_row_0\nPeriod: 2017, 2018, 2019\nScope: not specified\nValue: 2017; 2018; 2018; 2019\nUnit: not specified\nCurrency: not specified\nScale: not specified\nSource: 4ebf4ce6-2e2d-4146-850d-8c5450961dcc\nEvidence: € million | 2017/2018 | 2018/2019\n\n[ANSWER RULES]\n1. Use only the verified evidence and calculation above.\n2. Do not introduce outside financial knowledge.\n3. Preserve supplied numbers, periods, units, currencies and scales exactly.\n4. Do not recalculate canonical calculation results.\n5. Cite factual claims using the supplied [E#] / [C#] IDs.\n6. If required evidence is missing, explicitly state that the provided evidence is insufficient.\n7. Answer concisely."
+    },
+    {
+      "evidence_ids": [
+        "E1"
+      ],
+      "query_id": "holdout_044",
+      "question": "What was the net income reported in the period discussed?",
+      "r1_output": "Verified evidence is insufficient to answer this question. Additional requested information is unavailable.",
+      "r2_2_failure_labels": [
+        "RF0_COPIED_PLAUSIBLE_DISTRACTOR",
+        "RF1_WRONG_PERIOD_SELECTION",
+        "RF6_CITATION_BACKED_UNSUPPORTED_ANSWER"
+      ],
+      "r2_2_output": "The net income reported in the period discussed is 2019 [E1].",
+      "r2_output": "The net income reported in the period discussed is 2019. [E1].",
+      "visible_evidence": "[QUESTION]\nWhat was the net income reported in the period discussed?\n\n[VERIFIED EVIDENCE]\n\n[E1]\nMetric: table_row_0\nPeriod: 2018, 2019\nScope: not specified\nValue: 2019; 2018\nUnit: not specified\nCurrency: not specified\nScale: not specified\nSource: 295d9a1d-a2c6-4020-9aa2-86e473b2a769\nEvidence: | 2019 | 2018 | Per cent\n\n[ANSWER RULES]\n1. Use only the verified evidence and calculation above.\n2. Do not introduce outside financial knowledge.\n3. Preserve supplied numbers, periods, units, currencies and scales exactly.\n4. Do not recalculate canonical calculation results.\n5. Cite factual claims using the supplied [E#] / [C#] IDs.\n6. If required evidence is missing, explicitly state that the provided evidence is insufficient.\n7. Answer concisely."
+    },
+    {
+      "evidence_ids": [
+        "E1"
+      ],
+      "query_id": "holdout_046",
+      "question": "What was the net income reported in the period discussed?",
+      "r1_output": "Verified evidence is insufficient to answer this question. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable.",
+      "r2_2_failure_labels": [
+        "RF0_COPIED_PLAUSIBLE_DISTRACTOR",
+        "RF1_WRONG_PERIOD_SELECTION",
+        "RF6_CITATION_BACKED_UNSUPPORTED_ANSWER"
+      ],
+      "r2_2_output": "The net income reported in the period discussed is 2019 [E1].",
+      "r2_output": "The net income reported in the period discussed is 2019. [E1].",
+      "visible_evidence": "[QUESTION]\nWhat was the net income reported in the period discussed?\n\n[VERIFIED EVIDENCE]\n\n[E1]\nMetric: table_row_0\nPeriod: 2018, 2019\nScope: not specified\nValue: 2019; 2018\nUnit: not specified\nCurrency: not specified\nScale: not specified\nSource: cab5be95-49fb-4b72-bf01-19fc18499dce\nEvidence: | 2019 | 2018\n\n[ANSWER RULES]\n1. Use only the verified evidence and calculation above.\n2. Do not introduce outside financial knowledge.\n3. Preserve supplied numbers, periods, units, currencies and scales exactly.\n4. Do not recalculate canonical calculation results.\n5. Cite factual claims using the supplied [E#] / [C#] IDs.\n6. If required evidence is missing, explicitly state that the provided evidence is insufficient.\n7. Answer concisely."
+    },
+    {
+      "evidence_ids": [
+        "E1"
+      ],
+      "query_id": "holdout_047",
+      "question": "What was the net income reported in the period discussed?",
+      "r1_output": "Verified evidence is insufficient to answer this question. Additional requested information is unavailable.",
+      "r2_2_failure_labels": [
+        "RF0_COPIED_PLAUSIBLE_DISTRACTOR",
+        "RF1_WRONG_PERIOD_SELECTION",
+        "RF6_CITATION_BACKED_UNSUPPORTED_ANSWER"
+      ],
+      "r2_2_output": "The net income reported in the period discussed is 2019 [E1].",
+      "r2_output": "The net income reported in the period discussed is 2019. [E1].",
+      "visible_evidence": "[QUESTION]\nWhat was the net income reported in the period discussed?\n\n[VERIFIED EVIDENCE]\n\n[E1]\nMetric: table_row_0\nPeriod: 2017, 2018, 2019\nScope: not specified\nValue: 2019; 2018; 2017\nUnit: not specified\nCurrency: not specified\nScale: not specified\nSource: 55a0dfd6-65ad-484c-aaea-fcbfbb2c20c6\nEvidence: | 2019 | 2018 | 2017\n\n[ANSWER RULES]\n1. Use only the verified evidence and calculation above.\n2. Do not introduce outside financial knowledge.\n3. Preserve supplied numbers, periods, units, currencies and scales exactly.\n4. Do not recalculate canonical calculation results.\n5. Cite factual claims using the supplied [E#] / [C#] IDs.\n6. If required evidence is missing, explicitly state that the provided evidence is insufficient.\n7. Answer concisely."
+    },
+    {
+      "evidence_ids": [
+        "E1"
+      ],
+      "query_id": "holdout_049",
+      "question": "What was the net income reported in the period discussed?",
+      "r1_output": "Verified evidence is insufficient to answer this question. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable.",
+      "r2_2_failure_labels": [
+        "RF6_CITATION_BACKED_UNSUPPORTED_ANSWER",
+        "RF0_COPIED_PLAUSIBLE_DISTRACTOR"
+      ],
+      "r2_2_output": "The net income reported in the period discussed is € [E1].",
+      "r2_output": "The net income reported in the period discussed is € 2017 million [E1].",
+      "visible_evidence": "[QUESTION]\nWhat was the net income reported in the period discussed?\n\n[VERIFIED EVIDENCE]\n\n[E1]\nMetric: table_row_0\nPeriod: 2017, 2018, 2019\nScope: not specified\nValue: 2017; 2018; 2018; 2019\nUnit: not specified\nCurrency: not specified\nScale: not specified\nSource: ee312f2a-0b31-4f27-838d-8244e5e46ce5\nEvidence: € million | 2017/2018 | 2018/2019\n\n[ANSWER RULES]\n1. Use only the verified evidence and calculation above.\n2. Do not introduce outside financial knowledge.\n3. Preserve supplied numbers, periods, units, currencies and scales exactly.\n4. Do not recalculate canonical calculation results.\n5. Cite factual claims using the supplied [E#] / [C#] IDs.\n6. If required evidence is missing, explicitly state that the provided evidence is insufficient.\n7. Answer concisely."
+    },
+    {
+      "evidence_ids": [
+        "E1"
+      ],
+      "query_id": "holdout_066",
+      "question": "What was the net income reported in the period discussed?",
+      "r1_output": "Verified evidence is insufficient to answer this question. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable.",
+      "r2_2_failure_labels": [
+        "RF0_COPIED_PLAUSIBLE_DISTRACTOR",
+        "RF1_WRONG_PERIOD_SELECTION",
+        "RF6_CITATION_BACKED_UNSUPPORTED_ANSWER"
+      ],
+      "r2_2_output": "The net income reported in the period discussed is 2019 [E1].",
+      "r2_output": "The net income reported in the period discussed is 2019. [E1].",
+      "visible_evidence": "[QUESTION]\nWhat was the net income reported in the period discussed?\n\n[VERIFIED EVIDENCE]\n\n[E1]\nMetric: table_row_0\nPeriod: 2015, 2016, 2017, 2018, 2019\nScope: not specified\nValue: 2019; 1; 2018; 2; 2017; 3; 2016; 4\nUnit: not specified\nCurrency: not specified\nScale: not specified\nSource: 815ced53-4586-4edd-bb96-eeb17ac979ae\nEvidence: Consolidated financial data | 2019(1) | 2018(2) | 2017(3) | 2016(4) | 2015(5)\n\n[ANSWER RULES]\n1. Use only the verified evidence and calculation above.\n2. Do not introduce outside financial knowledge.\n3. Preserve supplied numbers, periods, units, currencies and scales exactly.\n4. Do not recalculate canonical calculation results.\n5. Cite factual claims using the supplied [E#] / [C#] IDs.\n6. If required evidence is missing, explicitly state that the provided evidence is insufficient.\n7. Answer concisely."
+    },
+    {
+      "evidence_ids": [
+        "E1"
+      ],
+      "query_id": "holdout_067",
+      "question": "What was the net income reported in the period discussed?",
+      "r1_output": "2019 [E1]. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is",
+      "r2_2_failure_labels": [
+        "RF0_COPIED_PLAUSIBLE_DISTRACTOR",
+        "RF1_WRONG_PERIOD_SELECTION",
+        "RF6_CITATION_BACKED_UNSUPPORTED_ANSWER"
+      ],
+      "r2_2_output": "The net income reported in the period discussed is 2019 [E1].",
+      "r2_output": "The net income reported in the period discussed is 2019. [E1].",
+      "visible_evidence": "[QUESTION]\nWhat was the net income reported in the period discussed?\n\n[VERIFIED EVIDENCE]\n\n[E1]\nMetric: table_row_0\nPeriod: 2018, 2019\nScope: not specified\nValue: 2019; 2018; 2018; -2019\nUnit: not specified\nCurrency: not specified\nScale: not specified\nSource: a1b216be-dfad-406d-8082-6e85ccde7d52\nEvidence: | 2019 | 2018 | 2018-2019 Change\n\n[ANSWER RULES]\n1. Use only the verified evidence and calculation above.\n2. Do not introduce outside financial knowledge.\n3. Preserve supplied numbers, periods, units, currencies and scales exactly.\n4. Do not recalculate canonical calculation results.\n5. Cite factual claims using the supplied [E#] / [C#] IDs.\n6. If required evidence is missing, explicitly state that the provided evidence is insufficient.\n7. Answer concisely."
+    },
+    {
+      "evidence_ids": [
+        "E1"
+      ],
+      "query_id": "holdout_107",
+      "question": "What was the net income reported in the period discussed?",
+      "r1_output": "Verified evidence is insufficient to answer this question. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable.",
+      "r2_2_failure_labels": [
+        "RF0_COPIED_PLAUSIBLE_DISTRACTOR",
+        "RF1_WRONG_PERIOD_SELECTION",
+        "RF6_CITATION_BACKED_UNSUPPORTED_ANSWER"
+      ],
+      "r2_2_output": "The net income reported in the period discussed is 2019 [E1].",
+      "r2_output": "The net income reported in the period discussed is 2019. [E1].",
+      "visible_evidence": "[QUESTION]\nWhat was the net income reported in the period discussed?\n\n[VERIFIED EVIDENCE]\n\n[E1]\nMetric: table_row_0\nPeriod: 2018, 2019\nScope: not specified\nValue: 2019; 2018; 2018; -2019\nUnit: not specified\nCurrency: not specified\nScale: not specified\nSource: cede49ab-ac4a-4e41-8393-19d238b883c1\nEvidence: | 2019 | 2018 | 2018-2019 Dollar Change\n\n[ANSWER RULES]\n1. Use only the verified evidence and calculation above.\n2. Do not introduce outside financial knowledge.\n3. Preserve supplied numbers, periods, units, currencies and scales exactly.\n4. Do not recalculate canonical calculation results.\n5. Cite factual claims using the supplied [E#] / [C#] IDs.\n6. If required evidence is missing, explicitly state that the provided evidence is insufficient.\n7. Answer concisely."
+    },
+    {
+      "evidence_ids": [
+        "E1"
+      ],
+      "query_id": "holdout_146",
+      "question": "What was the net income reported in the period discussed?",
+      "r1_output": "Verified evidence is insufficient to answer this question. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable.",
+      "r2_2_failure_labels": [
+        "RF0_COPIED_PLAUSIBLE_DISTRACTOR",
+        "RF1_WRONG_PERIOD_SELECTION",
+        "RF6_CITATION_BACKED_UNSUPPORTED_ANSWER"
+      ],
+      "r2_2_output": "The net income reported in the period discussed is 2019 [E1].",
+      "r2_output": "The net income reported in the period discussed is 2019. [E1].",
+      "visible_evidence": "[QUESTION]\nWhat was the net income reported in the period discussed?\n\n[VERIFIED EVIDENCE]\n\n[E1]\nMetric: table_row_0\nPeriod: 2018, 2019\nScope: not specified\nValue: 2019; 2018\nUnit: not specified\nCurrency: not specified\nScale: not specified\nSource: b6aab24c-d4ca-434c-8691-94ebb74c931f\nEvidence: | 2019 | 2018\n\n[ANSWER RULES]\n1. Use only the verified evidence and calculation above.\n2. Do not introduce outside financial knowledge.\n3. Preserve supplied numbers, periods, units, currencies and scales exactly.\n4. Do not recalculate canonical calculation results.\n5. Cite factual claims using the supplied [E#] / [C#] IDs.\n6. If required evidence is missing, explicitly state that the provided evidence is insufficient.\n7. Answer concisely."
+    },
+    {
+      "evidence_ids": [
+        "E1"
+      ],
+      "query_id": "holdout_160",
+      "question": "What was the net income reported in the period discussed?",
+      "r1_output": "Verified evidence is insufficient to answer this question. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable.",
+      "r2_2_failure_labels": [
+        "RF0_COPIED_PLAUSIBLE_DISTRACTOR",
+        "RF1_WRONG_PERIOD_SELECTION",
+        "RF6_CITATION_BACKED_UNSUPPORTED_ANSWER"
+      ],
+      "r2_2_output": "The net income reported in the period discussed is 2019 [E1].",
+      "r2_output": "The net income reported in the period discussed is 2019. [E1].",
+      "visible_evidence": "[QUESTION]\nWhat was the net income reported in the period discussed?\n\n[VERIFIED EVIDENCE]\n\n[E1]\nMetric: table_row_0\nPeriod: 2018, 2019\nScope: not specified\nValue: 2019; 2018\nUnit: not specified\nCurrency: not specified\nScale: not specified\nSource: 5f5a7131-08b0-4c8e-bfad-7307bb929c7f\nEvidence: | 2019 | 2018\n\n[ANSWER RULES]\n1. Use only the verified evidence and calculation above.\n2. Do not introduce outside financial knowledge.\n3. Preserve supplied numbers, periods, units, currencies and scales exactly.\n4. Do not recalculate canonical calculation results.\n5. Cite factual claims using the supplied [E#] / [C#] IDs.\n6. If required evidence is missing, explicitly state that the provided evidence is insufficient.\n7. Answer concisely."
+    },
+    {
+      "evidence_ids": [
+        "E1"
+      ],
+      "query_id": "holdout_170",
+      "question": "What was the net income reported in the period discussed?",
+      "r1_output": "Verified evidence is insufficient to answer this question. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable.",
+      "r2_2_failure_labels": [
+        "RF0_COPIED_PLAUSIBLE_DISTRACTOR",
+        "RF1_WRONG_PERIOD_SELECTION",
+        "RF6_CITATION_BACKED_UNSUPPORTED_ANSWER"
+      ],
+      "r2_2_output": "The net income reported in the period discussed is 2019 [E1].",
+      "r2_output": "The net income reported in the period discussed is 2019. [E1].",
+      "visible_evidence": "[QUESTION]\nWhat was the net income reported in the period discussed?\n\n[VERIFIED EVIDENCE]\n\n[E1]\nMetric: table_row_0\nPeriod: 2017, 2018, 2019\nScope: not specified\nValue: 2019; 2018; 2017\nUnit: not specified\nCurrency: not specified\nScale: not specified\nSource: e5959f55-4753-48b5-94b9-6a20ef2aed45\nEvidence: | 2019 | 2018 | 2017\n\n[ANSWER RULES]\n1. Use only the verified evidence and calculation above.\n2. Do not introduce outside financial knowledge.\n3. Preserve supplied numbers, periods, units, currencies and scales exactly.\n4. Do not recalculate canonical calculation results.\n5. Cite factual claims using the supplied [E#] / [C#] IDs.\n6. If required evidence is missing, explicitly state that the provided evidence is insufficient.\n7. Answer concisely."
+    },
+    {
+      "evidence_ids": [
+        "E1"
+      ],
+      "query_id": "holdout_175",
+      "question": "What was the net income reported in the period discussed?",
+      "r1_output": "Verified evidence is insufficient to answer this question. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable.",
+      "r2_2_failure_labels": [
+        "RF0_COPIED_PLAUSIBLE_DISTRACTOR",
+        "RF1_WRONG_PERIOD_SELECTION",
+        "RF6_CITATION_BACKED_UNSUPPORTED_ANSWER"
+      ],
+      "r2_2_output": "The net income reported in the period discussed is 2019 [E1].",
+      "r2_output": "The net income reported in the period discussed is 2019. [E1].",
+      "visible_evidence": "[QUESTION]\nWhat was the net income reported in the period discussed?\n\n[VERIFIED EVIDENCE]\n\n[E1]\nMetric: table_row_0\nPeriod: 2018, 2019\nScope: not specified\nValue: 2019; 2018; 1\nUnit: not specified\nCurrency: not specified\nScale: not specified\nSource: fc144d9b-523b-4801-8bb9-34dff6729622\nEvidence: |  | 2019 | 2018 (Restated)1\n\n[ANSWER RULES]\n1. Use only the verified evidence and calculation above.\n2. Do not introduce outside financial knowledge.\n3. Preserve supplied numbers, periods, units, currencies and scales exactly.\n4. Do not recalculate canonical calculation results.\n5. Cite factual claims using the supplied [E#] / [C#] IDs.\n6. If required evidence is missing, explicitly state that the provided evidence is insufficient.\n7. Answer concisely."
+    },
+    {
+      "evidence_ids": [
+        "E1"
+      ],
+      "query_id": "holdout_196",
+      "question": "What was the net income reported in the period discussed?",
+      "r1_output": "Verified evidence is insufficient to answer this question. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable. Additional requested information is unavailable.",
+      "r2_2_failure_labels": [
+        "RF0_COPIED_PLAUSIBLE_DISTRACTOR",
+        "RF1_WRONG_PERIOD_SELECTION",
+        "RF6_CITATION_BACKED_UNSUPPORTED_ANSWER"
+      ],
+      "r2_2_output": "The net income reported in the period discussed is 2019 [E1].",
+      "r2_output": "The net income reported in the period discussed is 2019. [E1].",
+      "visible_evidence": "[QUESTION]\nWhat was the net income reported in the period discussed?\n\n[VERIFIED EVIDENCE]\n\n[E1]\nMetric: table_row_0\nPeriod: 2018, 2019\nScope: not specified\nValue: 2019; 2018\nUnit: not specified\nCurrency: not specified\nScale: not specified\nSource: 7ef3041a-5453-47c0-9898-ef3f2e540680\nEvidence: | 2019 |  | 2018 |\n\n[ANSWER RULES]\n1. Use only the verified evidence and calculation above.\n2. Do not introduce outside financial knowledge.\n3. Preserve supplied numbers, periods, units, currencies and scales exactly.\n4. Do not recalculate canonical calculation results.\n5. Cite factual claims using the supplied [E#] / [C#] IDs.\n6. If required evidence is missing, explicitly state that the provided evidence is insufficient.\n7. Answer concisely."
+    }
+  ],
+  "interpretation": "all 15 answers select visible header/metadata tokens; no self-calculation or latent-knowledge signature",
+  "n": 15,
+  "primary_pattern": "RF0_COPIED_PLAUSIBLE_DISTRACTOR + RF1_WRONG_PERIOD_SELECTION + RF6_CITATION_BACKED_UNSUPPORTED_ANSWER",
+  "r2_2_category_counts": {
+    "RF0_COPIED_PLAUSIBLE_DISTRACTOR": 15,
+    "RF1_WRONG_PERIOD_SELECTION": 14,
+    "RF6_CITATION_BACKED_UNSUPPORTED_ANSWER": 15
+  }
+}

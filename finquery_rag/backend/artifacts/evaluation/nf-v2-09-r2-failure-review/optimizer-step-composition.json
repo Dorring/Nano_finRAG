@@ -1,0 +1,119 @@
+{
+  "duplicate_components": {
+    "GENERAL_POSITIVE_REPLAY": 109,
+    "STRONG_PARTIAL": 55,
+    "STRUCTURAL_HARD_UNANSWERABLE": 36,
+    "TARGETED": 216
+  },
+  "duplicate_instances": 416,
+  "exposure_answerability": {
+    "FULLY_ANSWERABLE": 1897,
+    "FULLY_UNANSWERABLE": 254,
+    "PARTIALLY_ANSWERABLE": 304
+  },
+  "intended_answerability": {
+    "FULLY_ANSWERABLE": 1600,
+    "FULLY_UNANSWERABLE": 250,
+    "PARTIALLY_ANSWERABLE": 250
+  },
+  "steps": [
+    {
+      "answerability": {
+        "FULLY_ANSWERABLE": 471,
+        "FULLY_UNANSWERABLE": 55,
+        "PARTIALLY_ANSWERABLE": 75
+      },
+      "components": {
+        "GENERAL_POSITIVE_REPLAY": 172,
+        "STRONG_PARTIAL": 75,
+        "STRUCTURAL_HARD_UNANSWERABLE": 55,
+        "TARGETED": 299
+      },
+      "conversation_instances": 601,
+      "device_batch_size": 4,
+      "micro_batches": 64,
+      "packed_rows": 256,
+      "routes": {
+        "CALCULATION_RESULT_VERBALIZATION": 169,
+        "DIRECT": 410,
+        "MULTI_EVIDENCE": 22
+      },
+      "step": 1,
+      "unique_conversations": 601
+    },
+    {
+      "answerability": {
+        "FULLY_ANSWERABLE": 486,
+        "FULLY_UNANSWERABLE": 53,
+        "PARTIALLY_ANSWERABLE": 74
+      },
+      "components": {
+        "GENERAL_POSITIVE_REPLAY": 176,
+        "STRONG_PARTIAL": 74,
+        "STRUCTURAL_HARD_UNANSWERABLE": 53,
+        "TARGETED": 310
+      },
+      "conversation_instances": 613,
+      "device_batch_size": 4,
+      "micro_batches": 64,
+      "packed_rows": 256,
+      "routes": {
+        "CALCULATION_RESULT_VERBALIZATION": 133,
+        "DIRECT": 461,
+        "MULTI_EVIDENCE": 19
+      },
+      "step": 2,
+      "unique_conversations": 613
+    },
+    {
+      "answerability": {
+        "FULLY_ANSWERABLE": 465,
+        "FULLY_UNANSWERABLE": 75,
+        "PARTIALLY_ANSWERABLE": 79
+      },
+      "components": {
+        "GENERAL_POSITIVE_REPLAY": 180,
+        "STRONG_PARTIAL": 79,
+        "STRUCTURAL_HARD_UNANSWERABLE": 75,
+        "TARGETED": 285
+      },
+      "conversation_instances": 619,
+      "device_batch_size": 4,
+      "micro_batches": 64,
+      "packed_rows": 256,
+      "routes": {
+        "CALCULATION_RESULT_VERBALIZATION": 128,
+        "DIRECT": 474,
+        "MULTI_EVIDENCE": 17
+      },
+      "step": 3,
+      "unique_conversations": 619
+    },
+    {
+      "answerability": {
+        "FULLY_ANSWERABLE": 475,
+        "FULLY_UNANSWERABLE": 71,
+        "PARTIALLY_ANSWERABLE": 76
+      },
+      "components": {
+        "GENERAL_POSITIVE_REPLAY": 172,
+        "STRONG_PARTIAL": 76,
+        "STRUCTURAL_HARD_UNANSWERABLE": 71,
+        "TARGETED": 303
+      },
+      "conversation_instances": 622,
+      "device_batch_size": 4,
+      "micro_batches": 64,
+      "packed_rows": 256,
+      "routes": {
+        "CALCULATION_RESULT_VERBALIZATION": 152,
+        "DIRECT": 450,
+        "MULTI_EVIDENCE": 20
+      },
+      "step": 4,
+      "unique_conversations": 616
+    }
+  ],
+  "unique_instances": 2039,
+  "used_conversation_instances": 2455
+}

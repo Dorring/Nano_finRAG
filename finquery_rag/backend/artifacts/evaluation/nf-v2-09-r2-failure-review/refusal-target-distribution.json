@@ -1,0 +1,8 @@
+{
+  "all_refusal_targets_receive_assistant_loss": true,
+  "exact_target_string_frequencies": {
+    "The provided evidence is insufficient to answer this question.": 250
+  },
+  "n": 250,
+  "unique_refusal_targets": 1
+}

@@ -1,0 +1,143 @@
+{
+  "checkpoint_selection_allowed": false,
+  "collapse_interval": "step1_to_step2",
+  "holdout_inference_calls": 1000,
+  "model_training": 0,
+  "physical_gpu": 3,
+  "retrieval_calls": 0,
+  "scored_holdout_only": true,
+  "steps": [
+    {
+      "answerable_over_abstention": 13,
+      "checkpoint": "d24_grounding_align_r22/model_000000.pt",
+      "latency_ms": {
+        "avg": 704.2633554112399,
+        "p50": 231.58351000165567
+      },
+      "n": 200,
+      "partial": {
+        "full_over_refusal": 0,
+        "n": 22,
+        "supported_portion_answered": 21
+      },
+      "peak_allocated_gib": 13.267605781555176,
+      "positive": {
+        "answer_success": 93,
+        "n": 163,
+        "over_abstention": 13
+      },
+      "step": 0,
+      "unanswerable": {
+        "correct_abstention": 14,
+        "hallucinated_answer": 1,
+        "n": 15
+      }
+    },
+    {
+      "answerable_over_abstention": 2,
+      "checkpoint": "model_000001.pt",
+      "latency_ms": {
+        "avg": 440.2828551491257,
+        "p50": 292.70217899465933
+      },
+      "n": 200,
+      "partial": {
+        "full_over_refusal": 0,
+        "n": 22,
+        "supported_portion_answered": 21
+      },
+      "peak_allocated_gib": 6.645009517669678,
+      "positive": {
+        "answer_success": 121,
+        "n": 163,
+        "over_abstention": 2
+      },
+      "step": 1,
+      "unanswerable": {
+        "correct_abstention": 9,
+        "hallucinated_answer": 6,
+        "n": 15
+      }
+    },
+    {
+      "answerable_over_abstention": 1,
+      "checkpoint": "model_000002.pt",
+      "latency_ms": {
+        "avg": 498.8289111631457,
+        "p50": 417.26550593739375
+      },
+      "n": 200,
+      "partial": {
+        "full_over_refusal": 0,
+        "n": 22,
+        "supported_portion_answered": 20
+      },
+      "peak_allocated_gib": 6.645009517669678,
+      "positive": {
+        "answer_success": 115,
+        "n": 163,
+        "over_abstention": 1
+      },
+      "step": 2,
+      "unanswerable": {
+        "correct_abstention": 0,
+        "hallucinated_answer": 15,
+        "n": 15
+      }
+    },
+    {
+      "answerable_over_abstention": 1,
+      "checkpoint": "model_000003.pt",
+      "latency_ms": {
+        "avg": 488.58464954188094,
+        "p50": 403.75398099422455
+      },
+      "n": 200,
+      "partial": {
+        "full_over_refusal": 0,
+        "n": 22,
+        "supported_portion_answered": 20
+      },
+      "peak_allocated_gib": 6.645009517669678,
+      "positive": {
+        "answer_success": 115,
+        "n": 163,
+        "over_abstention": 1
+      },
+      "step": 3,
+      "unanswerable": {
+        "correct_abstention": 0,
+        "hallucinated_answer": 15,
+        "n": 15
+      }
+    },
+    {
+      "answerable_over_abstention": 1,
+      "checkpoint": "model_000004.pt",
+      "latency_ms": {
+        "avg": 482.77480056800414,
+        "p50": 397.27831800701097
+      },
+      "n": 200,
+      "partial": {
+        "full_over_refusal": 0,
+        "n": 22,
+        "supported_portion_answered": 20
+      },
+      "peak_allocated_gib": 6.645009517669678,
+      "positive": {
+        "answer_success": 115,
+        "n": 163,
+        "over_abstention": 1
+      },
+      "step": 4,
+      "unanswerable": {
+        "correct_abstention": 0,
+        "hallucinated_answer": 15,
+        "n": 15
+      }
+    }
+  ],
+  "tier_b_evaluated": false,
+  "training": 0
+}
