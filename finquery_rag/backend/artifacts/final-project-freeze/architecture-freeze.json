@@ -1,0 +1,31 @@
+{
+  "freeze_commit": "eab5d2669e08b6f68b1dce1442d676860da68554",
+  "architecture_frozen": true,
+  "production": "V1",
+  "production_switch": false,
+  "single_supervisor": true,
+  "pipeline": [
+    "Financial RAG Supervisor",
+    "Retrieval / Query Rewrite",
+    "Route-specific Trusted Evidence",
+    "Deterministic Calculator",
+    "Financial Specialist Generator",
+    "Deterministic Validator",
+    "Repair / Fallback / Fail-Closed"
+  ],
+  "components": {
+    "Supervisor": "control, route planning, retrieval/query rewrite, sufficiency decisions",
+    "Retrieval": "candidate evidence supply",
+    "Trusted Evidence Layer": "route-specific evidence readiness gate",
+    "Calculator": "deterministic arithmetic and canonical result production",
+    "Financial Specialist": "grounded financial answer generation only",
+    "Validator": "deterministic release checks",
+    "Fallback / Fail-Closed": "one recovery attempt where configured, otherwise safe abstention"
+  },
+  "financial_specialist_is_not": [
+    "Supervisor",
+    "Answerability Judge",
+    "Calculator",
+    "final safety authority"
+  ]
+}

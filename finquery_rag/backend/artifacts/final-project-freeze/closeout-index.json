@@ -1,0 +1,21 @@
+{
+  "freeze_commit": "eab5d2669e08b6f68b1dce1442d676860da68554",
+  "artifact_directory": "finquery_rag/backend/artifacts/final-project-freeze",
+  "required_files": [
+    "final-metrics-registry.json",
+    "claim-registry.json",
+    "training-lineage.json",
+    "failed-run-manifest.json",
+    "architecture-freeze.json",
+    "production-decision.json",
+    "repository-hygiene-audit.json",
+    "known-limitations.md",
+    "resume-evidence.md",
+    "interview-evidence.md",
+    "future-research.md",
+    "final-project-summary.md",
+    "README.md"
+  ],
+  "production": "V1",
+  "decision": "PROJECT_FREEZE_V1_PRODUCTION"
+}

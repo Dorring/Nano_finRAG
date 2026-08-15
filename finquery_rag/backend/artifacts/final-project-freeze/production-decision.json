@@ -1,0 +1,14 @@
+{
+  "freeze_commit": "eab5d2669e08b6f68b1dce1442d676860da68554",
+  "production": "V1",
+  "v2_production_switch": false,
+  "decision": "PROJECT_FREEZE_V1_PRODUCTION",
+  "final_financial_model": "finquery-finance-grounded-v3-r231",
+  "model_role": "financial_selective_generator",
+  "grounding_training_closed": true,
+  "retrieval_optimization_closed": true,
+  "architecture_frozen": true,
+  "safety_gate": "fail",
+  "reason": "Strict E2E coverage limited to 4 trusted DIRECT packets and one post-hoc semantic unsafe release remained; V2 does not replace V1.",
+  "next_step": "No R2.4 or additional grounded training; retain V2 as frozen research evidence."
+}

@@ -309,3 +309,15 @@ Additional acknowledgements:
 ## License
 
 MIT
+
+## NF-V2-11 Final Project Freeze
+
+The final architecture is frozen as a single Supervisor pipeline:
+
+Financial RAG Supervisor -> Retrieval / Query Rewrite -> route-specific trusted evidence -> deterministic Calculator -> grounded Financial Specialist -> deterministic Validator -> repair / fallback / fail-closed.
+
+The Financial Specialist is a generator only; it is not the Supervisor, answerability judge, Calculator, or final safety authority. Grounding training is closed, retrieval optimization is closed, and production remains V1 (PROJECT_FREEZE_V1_PRODUCTION).
+
+Grounded Financial SFT materially improved component behavior (47/64 Grounded, 52/64 Numeric, 7/11 canonical Calculation preservation, 5/5 explicit Multi grounded). These are oracle-evidence component results, not E2E accuracy. The strict final E2E run released 4/64 answerable outputs and produced 3/64 final correct/grounded answers; all 8 no-answer cases were refused, false execution and false binding were 0, and 68/72 queries failed closed. One post-hoc semantic unsafe release remained, so V2 did not replace V1.
+
+All final claims and provenance are frozen in finquery_rag/backend/artifacts/final-project-freeze/. See its known-limitations.md before using any metric in a resume, interview, or release note. A potential R1 + LoRA/DPO refusal-boundary experiment is deferred research only.

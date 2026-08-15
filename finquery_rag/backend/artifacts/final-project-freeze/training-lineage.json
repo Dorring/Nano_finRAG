@@ -1,0 +1,67 @@
+{
+  "freeze_commit": "eab5d2669e08b6f68b1dce1442d676860da68554",
+  "final_model": {
+    "model_id": "finquery-finance-grounded-v3-r231",
+    "checkpoint": "d24_grounding_align_r231/model_000004.pt",
+    "checkpoint_sha256": "2be1d02b2129661e1bad454fbbdddd2c5c12262a6facd4369a12612cd634d794",
+    "role": "financial_selective_generator",
+    "selection": "frozen final checkpoint; no intermediate selection"
+  },
+  "lineage": [
+    {
+      "stage": "Finance SFT",
+      "model_or_run": "d24_finance_v2_lr010",
+      "parent": "d24_final_mixdata",
+      "conclusion": "parent finance capability"
+    },
+    {
+      "stage": "R1 Grounding",
+      "model_or_run": "d24_grounding_align",
+      "candidate": "finquery-finance-grounded-v3-r1",
+      "samples": 3600,
+      "epochs": 1,
+      "optimizer_steps": 7,
+      "conclusion": "grounding/citation shift; refusal boundary not fully reliable"
+    },
+    {
+      "stage": "R2 targeted grounding",
+      "model_or_run": "d24_grounding_align_r2",
+      "candidate": "finquery-finance-grounded-v3-r2",
+      "samples": 1750,
+      "targeted": 1400,
+      "r1_replay": 350,
+      "epochs": 1,
+      "optimizer_steps": 3,
+      "conclusion": "numeric/calculation gains; refusal collapse"
+    },
+    {
+      "stage": "R2.2 balanced grounding",
+      "model_or_run": "d24_grounding_align_r22",
+      "candidate": "finquery-finance-grounded-v3-r2.2",
+      "samples": 2100,
+      "epochs": 1,
+      "optimizer_steps": 4,
+      "conclusion": "grounded metrics improved; refusal collapse persisted"
+    },
+    {
+      "stage": "R2.3.1 final targeted repair",
+      "model_or_run": "d24_grounding_align_r231",
+      "candidate": "finquery-finance-grounded-v3-r231",
+      "samples": 2100,
+      "epochs": 1,
+      "optimizer_steps": 4,
+      "dataset_sha256": "36cdff95d18c08ca95b5f5c355e319cea9bbba1180e536606e61fc3534f791e3",
+      "final_val_bpb": 0.4098973831566639,
+      "conclusion": "numeric/component gains retained; refusal boundary ineffective; training closed"
+    }
+  ],
+  "r2_3_1_training_deviations": {
+    "planned_grad_accum_steps": 32,
+    "actual_grad_accum_steps": 64,
+    "planned_optimizer_state": "fresh",
+    "actual_optimizer_state": "R1 Adam momentum loaded",
+    "lr_schedule": "reset/fresh",
+    "reason": "grad_accum=32 configurations produced NaN; stable R1/R2.2 configuration used",
+    "disposition": "documented; no further training authorized"
+  }
+}

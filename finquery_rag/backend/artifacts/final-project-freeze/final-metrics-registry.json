@@ -1,0 +1,681 @@
+{
+  "registry": "NF-V2-11 final metrics registry",
+  "freeze_commit": "eab5d2669e08b6f68b1dce1442d676860da68554",
+  "generated_on": "2026-08-15",
+  "production": "V1",
+  "v2_production_switch": false,
+  "final_model": {
+    "model_id": "finquery-finance-grounded-v3-r231",
+    "checkpoint": "d24_grounding_align_r231/model_000004.pt",
+    "checkpoint_sha256": "2be1d02b2129661e1bad454fbbdddd2c5c12262a6facd4369a12612cd634d794",
+    "role": "financial_selective_generator",
+    "training_closed": true,
+    "file_size_bytes": 5714292126,
+    "state_dict_keys": 175,
+    "financial_generation_view_v1_sha256": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4"
+  },
+  "financial_generation_view_v1_sha256": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "sections": {
+    "public_retrieval_benchmark": [
+      {
+        "claim_id": "PUB-T2-R5-QWEN-001",
+        "metric": "Qwen reranker Recall@5",
+        "value": 0.885639,
+        "display_value": "88.5639%",
+        "scope": "public T2-RAGBench Primary Test, pre-frozen calibration",
+        "dataset": "T2-RAGBench Primary Test",
+        "evaluation_type": "pre-frozen public calibration",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "historical",
+        "artifact_path": "NF-V2-11 freeze baseline / historical calibration record (raw public artifact not in current tree)",
+        "allowed_readme_usage": "Use only with qualifier: pre-frozen public T2-RAGBench calibration; not final E2E or production accuracy.",
+        "allowed_resume_usage": "Use only with qualifier: pre-frozen public T2-RAGBench calibration; not final E2E or production accuracy.",
+        "provenance_status": "recorded"
+      }
+    ],
+    "internal_retrieval_benchmark": [
+      {
+        "claim_id": "INT-RET-SOURCE-R5-001",
+        "metric": "Gold source Recall@5",
+        "value": {
+          "count": 13,
+          "denominator": 80,
+          "rate": 0.1625
+        },
+        "display_value": "13/80 (16.25%)",
+        "scope": "internal NF-EVAL-03-R1 retrieval identity",
+        "dataset": "NF-EVAL-03-R1",
+        "evaluation_type": "internal retrieval benchmark",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "historical",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-eval-03-r1/retrieval-identity-metrics.json",
+        "allowed_readme_usage": "Internal retrieval readiness only; not answer accuracy.",
+        "allowed_resume_usage": "Internal retrieval readiness only; not answer accuracy.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "INT-RET-CASE-R5-001",
+        "metric": "Gold case Recall@5",
+        "value": {
+          "count": 12,
+          "denominator": 64,
+          "rate": 0.1875
+        },
+        "display_value": "12/64 (18.75%)",
+        "scope": "internal NF-EVAL-03-R1 case slice",
+        "dataset": "NF-EVAL-03-R1",
+        "evaluation_type": "internal retrieval benchmark",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "historical",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/retrieval-readiness.json",
+        "allowed_readme_usage": "Internal retrieval readiness only; not answer accuracy.",
+        "allowed_resume_usage": "Internal retrieval readiness only; not answer accuracy.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "INT-MULTI-ANY-R5-001",
+        "metric": "Multi-evidence Any@5",
+        "value": {
+          "count": 3,
+          "denominator": 16,
+          "rate": 0.1875
+        },
+        "display_value": "3/16 (18.75%)",
+        "scope": "internal dependency slice",
+        "dataset": "NF-EVAL-03-R1",
+        "evaluation_type": "internal retrieval benchmark",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "historical",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/retrieval-readiness.json",
+        "allowed_readme_usage": "Dependency retrieval readiness only.",
+        "allowed_resume_usage": "Dependency retrieval readiness only.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "INT-MULTI-ALL-R5-001",
+        "metric": "Multi-evidence All@5",
+        "value": {
+          "count": 1,
+          "denominator": 16,
+          "rate": 0.0625
+        },
+        "display_value": "1/16 (6.25%)",
+        "scope": "internal dependency slice",
+        "dataset": "NF-EVAL-03-R1",
+        "evaluation_type": "internal retrieval benchmark",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "historical",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/retrieval-readiness.json",
+        "allowed_readme_usage": "Dependency retrieval readiness only.",
+        "allowed_resume_usage": "Dependency retrieval readiness only.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "INT-CALC-TRUSTED-001",
+        "metric": "Calculation trusted operands ready",
+        "value": {
+          "count": 0,
+          "denominator": 11,
+          "rate": 0
+        },
+        "display_value": "0/11",
+        "scope": "strict E2E trusted-evidence gate",
+        "dataset": "NF-V2-10 frozen 72",
+        "evaluation_type": "runtime readiness",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/calculation-results.json",
+        "allowed_readme_usage": "Fail-closed readiness, not model quality.",
+        "allowed_resume_usage": "Fail-closed readiness, not model quality.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "INT-RET-SOURCE-R10-001",
+        "metric": "Gold source Recall@10",
+        "value": "N/A",
+        "display_value": "N/A",
+        "scope": "internal NF-EVAL-03-R1 retrieval identity",
+        "dataset": "NF-EVAL-03-R1",
+        "evaluation_type": "internal retrieval benchmark",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "historical",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/retrieval-readiness.json",
+        "allowed_readme_usage": "Report as N/A; no Recall@10 was recorded in the frozen artifact.",
+        "allowed_resume_usage": "Do not present as a measured value.",
+        "provenance_status": "recorded"
+      }
+    ],
+    "generator_component_evaluation": [
+      {
+        "claim_id": "COMP-R231-GROUNDED-001",
+        "metric": "Grounded",
+        "value": {
+          "count": 47,
+          "denominator": 64,
+          "rate": 0.734375
+        },
+        "display_value": "47/64",
+        "scope": "R2.3.1 Tier-B component",
+        "dataset": "NF-V2-06/NF-V2-09 frozen Tier-B",
+        "evaluation_type": "component evaluation",
+        "oracle_evidence": true,
+        "fresh_blind": false,
+        "role": "component",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-09-r231-grounded-model-acceptance/overall-results.json",
+        "allowed_readme_usage": "Use only as oracle-evidence component evaluation; never label E2E, production accuracy, or fresh blind.",
+        "allowed_resume_usage": "Use only as oracle-evidence component evaluation; never label E2E, production accuracy, or fresh blind.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "COMP-R231-NUMERIC-001",
+        "metric": "Numeric fidelity",
+        "value": {
+          "count": 52,
+          "denominator": 64,
+          "rate": 0.8125
+        },
+        "display_value": "52/64",
+        "scope": "R2.3.1 Tier-B component",
+        "dataset": "NF-V2-06/NF-V2-09 frozen Tier-B",
+        "evaluation_type": "component evaluation",
+        "oracle_evidence": true,
+        "fresh_blind": false,
+        "role": "component",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-09-r231-grounded-model-acceptance/overall-results.json",
+        "allowed_readme_usage": "Use only as oracle-evidence component evaluation; never label E2E, production accuracy, or fresh blind.",
+        "allowed_resume_usage": "Use only as oracle-evidence component evaluation; never label E2E, production accuracy, or fresh blind.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "COMP-R231-UNSUPPORTED-001",
+        "metric": "True semantic unsupported",
+        "value": {
+          "count": 16,
+          "denominator": 64,
+          "rate": 0.25
+        },
+        "display_value": "16/64",
+        "scope": "R2.3.1 Tier-B adjudication",
+        "dataset": "NF-V2-06/NF-V2-09 frozen Tier-B",
+        "evaluation_type": "diagnostic component adjudication",
+        "oracle_evidence": true,
+        "fresh_blind": false,
+        "role": "component",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-09-r231-grounded-model-acceptance/semantic-unsupported-adjudication.json",
+        "allowed_readme_usage": "Use only as oracle-evidence component evaluation; never label E2E, production accuracy, or fresh blind.",
+        "allowed_resume_usage": "Use only as oracle-evidence component evaluation; never label E2E, production accuracy, or fresh blind.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "COMP-R231-CALC-001",
+        "metric": "Calculation canonical preservation",
+        "value": {
+          "count": 7,
+          "denominator": 11,
+          "rate": 0.6363636364
+        },
+        "display_value": "7/11",
+        "scope": "R2.3.1 calculation component",
+        "dataset": "NF-V2-06/NF-V2-09 frozen Tier-B",
+        "evaluation_type": "component evaluation",
+        "oracle_evidence": true,
+        "fresh_blind": false,
+        "role": "component",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-09-r231-grounded-model-acceptance/calculation-results.json",
+        "allowed_readme_usage": "Use only as oracle-evidence component evaluation; never label E2E, production accuracy, or fresh blind.",
+        "allowed_resume_usage": "Use only as oracle-evidence component evaluation; never label E2E, production accuracy, or fresh blind.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "COMP-R231-MULTI-001",
+        "metric": "Multi grounded",
+        "value": {
+          "count": 5,
+          "denominator": 5,
+          "rate": 1
+        },
+        "display_value": "5/5",
+        "scope": "R2.3.1 explicit Multi component",
+        "dataset": "NF-V2-06/NF-V2-09 frozen Tier-B",
+        "evaluation_type": "component evaluation",
+        "oracle_evidence": true,
+        "fresh_blind": false,
+        "role": "component",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-09-r231-grounded-model-acceptance/multi-results.json",
+        "allowed_readme_usage": "Use only as oracle-evidence component evaluation; never label E2E, production accuracy, or fresh blind.",
+        "allowed_resume_usage": "Use only as oracle-evidence component evaluation; never label E2E, production accuracy, or fresh blind.",
+        "provenance_status": "recorded"
+      }
+    ],
+    "validator_evaluation": [
+      {
+        "claim_id": "VAL-R231-PASS-001",
+        "metric": "R2.3.1 RuntimeGenerationValidator PASS",
+        "value": {
+          "count": 49,
+          "denominator": 64,
+          "rate": 0.765625
+        },
+        "display_value": "49/64",
+        "scope": "R2.3.1 Tier-B validator replay",
+        "dataset": "NF-V2-09 frozen Tier-B",
+        "evaluation_type": "validator replay",
+        "oracle_evidence": true,
+        "fresh_blind": false,
+        "role": "component",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-09-r231-grounded-model-acceptance/runtime-validator-replay.json",
+        "allowed_readme_usage": "Use only as oracle-evidence component evaluation; never label E2E, production accuracy, or fresh blind.",
+        "allowed_resume_usage": "Use only as oracle-evidence component evaluation; never label E2E, production accuracy, or fresh blind.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "E2E-RUNTIME-UNSAFE-001",
+        "metric": "Runtime-detectable unsafe release",
+        "value": 0,
+        "display_value": "0",
+        "scope": "strict final runtime E2E",
+        "dataset": "NF-V2-10 frozen internal 72",
+        "evaluation_type": "deterministic validator evaluation",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/validator-results.json",
+        "allowed_readme_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "allowed_resume_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "VAL-R231-UNSAFE-001",
+        "metric": "R2.3.1 validator unsafe caught",
+        "value": {
+          "count": 11,
+          "denominator": 17,
+          "rate": 0.6471
+        },
+        "display_value": "11/17",
+        "scope": "R2.3.1 Tier-B validator replay",
+        "dataset": "NF-V2-09 frozen Tier-B",
+        "evaluation_type": "validator replay",
+        "oracle_evidence": true,
+        "fresh_blind": false,
+        "role": "component",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-09-r231-grounded-model-acceptance/runtime-validator-replay.json",
+        "allowed_readme_usage": "Component validator diagnostic only.",
+        "allowed_resume_usage": "Component validator diagnostic only.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "VAL-R231-UNSAFE-MISSED-001",
+        "metric": "R2.3.1 validator unsafe missed",
+        "value": {
+          "count": 6,
+          "denominator": 17,
+          "rate": 0.3529
+        },
+        "display_value": "6/17",
+        "scope": "R2.3.1 Tier-B validator replay",
+        "dataset": "NF-V2-09 frozen Tier-B",
+        "evaluation_type": "validator replay",
+        "oracle_evidence": true,
+        "fresh_blind": false,
+        "role": "component",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-09-r231-grounded-model-acceptance/runtime-validator-replay.json",
+        "allowed_readme_usage": "Component validator limitation only; not a production safety guarantee.",
+        "allowed_resume_usage": "Component validator limitation only.",
+        "provenance_status": "recorded"
+      }
+    ],
+    "final_strict_e2e_evaluation": [
+      {
+        "claim_id": "E2E-ANSWER-CORRECT-001",
+        "metric": "Answerable final correct",
+        "value": {
+          "count": 3,
+          "denominator": 64,
+          "rate": 0.046875
+        },
+        "display_value": "3/64",
+        "scope": "strict final runtime E2E",
+        "dataset": "NF-V2-10 frozen internal 72",
+        "evaluation_type": "strict E2E evaluation",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/final-e2e-results.json",
+        "allowed_readme_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "allowed_resume_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "E2E-GROUNDED-001",
+        "metric": "Grounded final",
+        "value": {
+          "count": 3,
+          "denominator": 64,
+          "rate": 0.046875
+        },
+        "display_value": "3/64",
+        "scope": "strict final runtime E2E",
+        "dataset": "NF-V2-10 frozen internal 72",
+        "evaluation_type": "strict E2E evaluation",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/final-e2e-results.json",
+        "allowed_readme_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "allowed_resume_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "E2E-RELEASED-001",
+        "metric": "Released answers",
+        "value": {
+          "count": 4,
+          "denominator": 64,
+          "rate": 0.0625
+        },
+        "display_value": "4/64",
+        "scope": "strict final runtime E2E answerable slice",
+        "dataset": "NF-V2-10 frozen internal 72",
+        "evaluation_type": "strict E2E evaluation",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/final-e2e-results.json",
+        "allowed_readme_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "allowed_resume_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "E2E-NOANSWER-001",
+        "metric": "No-answer correct refusal",
+        "value": {
+          "count": 8,
+          "denominator": 8,
+          "rate": 1
+        },
+        "display_value": "8/8",
+        "scope": "strict final runtime E2E no-answer slice",
+        "dataset": "NF-V2-10 frozen internal 72",
+        "evaluation_type": "strict E2E evaluation",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/no-answer-results.json",
+        "allowed_readme_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "allowed_resume_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "E2E-CALC-001",
+        "metric": "Calculation strict success",
+        "value": {
+          "count": 0,
+          "denominator": 11,
+          "rate": 0
+        },
+        "display_value": "0/11",
+        "scope": "strict final runtime E2E calculation route",
+        "dataset": "NF-V2-10 frozen internal 72",
+        "evaluation_type": "strict E2E evaluation",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/calculation-results.json",
+        "allowed_readme_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "allowed_resume_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "E2E-MULTI-001",
+        "metric": "Multi-evidence complete",
+        "value": {
+          "count": 0,
+          "denominator": 16,
+          "rate": 0
+        },
+        "display_value": "0/16",
+        "scope": "strict final runtime E2E multi dependency slice",
+        "dataset": "NF-V2-10 frozen internal 72",
+        "evaluation_type": "strict E2E evaluation",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/multi-evidence-results.json",
+        "allowed_readme_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "allowed_resume_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "E2E-FALSE-EXEC-001",
+        "metric": "False execution",
+        "value": 0,
+        "display_value": "0",
+        "scope": "strict final runtime E2E",
+        "dataset": "NF-V2-10 frozen internal 72",
+        "evaluation_type": "strict E2E evaluation",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/calculation-results.json",
+        "allowed_readme_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "allowed_resume_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "E2E-FALSE-BIND-001",
+        "metric": "False binding",
+        "value": 0,
+        "display_value": "0",
+        "scope": "strict final runtime E2E",
+        "dataset": "NF-V2-10 frozen internal 72",
+        "evaluation_type": "strict E2E evaluation",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/final-e2e-results.json",
+        "allowed_readme_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "allowed_resume_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "E2E-FAIL-CLOSED-001",
+        "metric": "Fail-closed",
+        "value": {
+          "count": 68,
+          "denominator": 72,
+          "rate": 0.9444444444
+        },
+        "display_value": "68/72 (94.44%)",
+        "scope": "strict final runtime E2E",
+        "dataset": "NF-V2-10 frozen internal 72",
+        "evaluation_type": "strict E2E evaluation",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/final-e2e-results.json",
+        "allowed_readme_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "allowed_resume_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "E2E-POSTHOC-UNSAFE-001",
+        "metric": "Post-hoc semantic unsafe release",
+        "value": 1,
+        "display_value": "1",
+        "scope": "strict final runtime E2E released outputs",
+        "dataset": "NF-V2-10 frozen internal 72",
+        "evaluation_type": "post-hoc safety review",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/final-e2e-results.json",
+        "allowed_readme_usage": "Must be disclosed; never claim zero unsafe semantic releases.",
+        "allowed_resume_usage": "Must be disclosed; never claim zero unsafe semantic releases.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "E2E-RUNTIME-UNSAFE-001",
+        "metric": "Runtime-detectable unsafe release",
+        "value": 0,
+        "display_value": "0",
+        "scope": "strict final runtime E2E",
+        "dataset": "NF-V2-10 frozen internal 72",
+        "evaluation_type": "deterministic validator evaluation",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/validator-results.json",
+        "allowed_readme_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "allowed_resume_usage": "Use as strict runtime E2E evidence with fail-closed scope; do not generalize beyond this frozen 72-question run.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "LAT-V1-001",
+        "metric": "V1 average latency",
+        "value": 2460.234,
+        "display_value": "2460.234 ms",
+        "scope": "NF-EVAL-03-R1 full 72-query run",
+        "dataset": "NF-EVAL-03-R1",
+        "evaluation_type": "historical production baseline",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "historical",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-eval-03-r1/latency-report.json",
+        "allowed_readme_usage": "Historical V1 baseline; not matched generator latency.",
+        "allowed_resume_usage": "Historical V1 baseline; not matched generator latency.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "LAT-V2-001",
+        "metric": "V2 final average latency",
+        "value": 293.341,
+        "display_value": "293.341 ms",
+        "scope": "four trusted DIRECT generations plus deterministic gate/replay",
+        "dataset": "NF-V2-10 frozen 72",
+        "evaluation_type": "strict E2E timing subset",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/latency-results.json",
+        "allowed_readme_usage": "Subset timing; retrieval reused from sealed trace.",
+        "allowed_resume_usage": "Subset timing; retrieval reused from sealed trace.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "E2E-CITATION-VALID-001",
+        "metric": "Citation valid released",
+        "value": {
+          "count": 4,
+          "denominator": 4,
+          "rate": 1
+        },
+        "display_value": "4/4",
+        "scope": "strict final runtime E2E released outputs",
+        "dataset": "NF-V2-10 frozen internal 72",
+        "evaluation_type": "strict E2E evaluation",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/final-e2e-results.json",
+        "allowed_readme_usage": "Use only as strict runtime E2E evidence; do not generalize.",
+        "allowed_resume_usage": "Use only as strict runtime E2E evidence; do not generalize.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "E2E-CITATION-COMPLETE-001",
+        "metric": "Citation complete released",
+        "value": {
+          "count": 4,
+          "denominator": 4,
+          "rate": 1
+        },
+        "display_value": "4/4",
+        "scope": "strict final runtime E2E released outputs",
+        "dataset": "NF-V2-10 frozen internal 72",
+        "evaluation_type": "strict E2E evaluation",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/final-e2e-results.json",
+        "allowed_readme_usage": "Use only as strict runtime E2E evidence; do not generalize.",
+        "allowed_resume_usage": "Use only as strict runtime E2E evidence; do not generalize.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "E2E-NUMERIC-001",
+        "metric": "Numeric correct released",
+        "value": {
+          "count": 4,
+          "denominator": 4,
+          "rate": 1
+        },
+        "display_value": "4/4",
+        "scope": "strict final runtime E2E released outputs",
+        "dataset": "NF-V2-10 frozen internal 72",
+        "evaluation_type": "strict E2E evaluation",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/final-e2e-results.json",
+        "allowed_readme_usage": "Use only as strict runtime E2E evidence; do not generalize.",
+        "allowed_resume_usage": "Use only as strict runtime E2E evidence; do not generalize.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "E2E-PERIOD-001",
+        "metric": "Period correct released",
+        "value": {
+          "count": 4,
+          "denominator": 4,
+          "rate": 1
+        },
+        "display_value": "4/4",
+        "scope": "strict final runtime E2E released outputs",
+        "dataset": "NF-V2-10 frozen internal 72",
+        "evaluation_type": "strict E2E evaluation",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/final-e2e-results.json",
+        "allowed_readme_usage": "Use only as strict runtime E2E evidence; do not generalize.",
+        "allowed_resume_usage": "Use only as strict runtime E2E evidence; do not generalize.",
+        "provenance_status": "recorded"
+      },
+      {
+        "claim_id": "E2E-UNIT-001",
+        "metric": "Unit/currency/scale correct released",
+        "value": {
+          "count": 3,
+          "denominator": 4,
+          "rate": 0.75
+        },
+        "display_value": "3/4",
+        "scope": "strict final runtime E2E released outputs",
+        "dataset": "NF-V2-10 frozen internal 72",
+        "evaluation_type": "strict E2E evaluation",
+        "oracle_evidence": false,
+        "fresh_blind": false,
+        "role": "experimental",
+        "artifact_path": "finquery_rag/backend/artifacts/evaluation/nf-v2-10-final-trusted-e2e/final-e2e-results.json",
+        "allowed_readme_usage": "Use only as strict runtime E2E evidence; do not generalize.",
+        "allowed_resume_usage": "Use only as strict runtime E2E evidence; do not generalize.",
+        "provenance_status": "recorded"
+      }
+    ]
+  },
+  "interpretation": {
+    "component_vs_e2e": "47/64 Grounded is component-only with oracle/trusted evidence; 3/64 is strict runtime E2E.",
+    "production_decision": "PROJECT_FREEZE_V1_PRODUCTION",
+    "safety_gate": "fail",
+    "reason": "Runtime coverage remained limited and one post-hoc unsafe unit claim remained; V1 remains production."
+  },
+  "unsupported_public_claims": 0
+}

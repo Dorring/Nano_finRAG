@@ -1,0 +1,48 @@
+{
+  "freeze_commit": "eab5d2669e08b6f68b1dce1442d676860da68554",
+  "cache_path": "/home/mxf/.cache/nanochat/chatsft_checkpoints/invalid_nan_training_run",
+  "cache_exists_at_closeout": true,
+  "status": "INVALID_EXPERIMENT",
+  "valid_candidate": false,
+  "used_for_evaluation": false,
+  "used_for_production": false,
+  "reason": "NaN-producing training configuration; historical invalid run, not a candidate.",
+  "configuration": {
+    "run": "d24_grounding_align_r231",
+    "model_tag": "d24_grounding_align_r1",
+    "output_model_tag": "d24_grounding_align_r231",
+    "parent_checkpoint": "d24_grounding_align_r1/model_000007.pt",
+    "load_optimizer": 1,
+    "device_batch_size": 8,
+    "total_batch_size": 524288,
+    "max_seq_len": 2048,
+    "finance_epochs": 1,
+    "grad_accum_steps": 32,
+    "optimizer_state": "R1 Adam momentum loaded",
+    "lr_schedule": "reset/fresh"
+  },
+  "nan_onset": "NaN onset observed in invalid run; exact first tensor/update not remeasured during closeout.",
+  "files_not_committed": [
+    {
+      "name": "best.json",
+      "size_bytes": 84
+    },
+    {
+      "name": "meta_000000.json",
+      "size_bytes": 1856
+    },
+    {
+      "name": "model_000000.pt",
+      "size_bytes": 5714292126
+    },
+    {
+      "name": "model_000001.pt",
+      "size_bytes": 5714292126
+    },
+    {
+      "name": "optim_000000_rank0.pt",
+      "size_bytes": 8712314861
+    }
+  ],
+  "git_policy": "No checkpoint or optimizer binaries are committed; ignore rules cover *.pt, *.pth, *.ckpt, *.safetensors, *.bin."
+}
