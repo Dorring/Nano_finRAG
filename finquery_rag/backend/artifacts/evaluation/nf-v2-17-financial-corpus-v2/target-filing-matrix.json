@@ -1,0 +1,188 @@
+{
+  "schema_version": "nf-v2-17/target-filing-matrix/v1",
+  "base_sha": "4b3a13bac661375406686a5055708f067a3aa3ac",
+  "reviewed_at": "2026-08-20",
+  "annual_years": [
+    "FY2023",
+    "FY2024",
+    "FY2025"
+  ],
+  "quarter_plan": [
+    "Q1 10-Q",
+    "Q2 10-Q",
+    "Q3 10-Q",
+    "Q4 via annual 10-K"
+  ],
+  "rows": [
+    {
+      "company": "Microsoft Corporation",
+      "ticker": "MSFT",
+      "sector": "Technology",
+      "annual": {
+        "FY2023": "REQUIRED_NEW",
+        "FY2024": "REQUIRED_NEW",
+        "FY2025": "EXISTING_MANIFEST"
+      },
+      "quarterly": {
+        "FY2025-Q1": "REQUIRED_NEW_10-Q",
+        "FY2025-Q2": "REQUIRED_NEW_10-Q",
+        "FY2025-Q3": "REQUIRED_NEW_10-Q"
+      },
+      "q4": "REPRESENTED_BY_ANNUAL_FY2025_10-K",
+      "amendments": "OPTIONAL_IF_AUTHORITATIVELY_PRESENT"
+    },
+    {
+      "company": "Apple Inc.",
+      "ticker": "AAPL",
+      "sector": "Technology / Consumer Electronics",
+      "annual": {
+        "FY2023": "REQUIRED_NEW",
+        "FY2024": "REQUIRED_NEW",
+        "FY2025": "EXISTING_MANIFEST"
+      },
+      "quarterly": {
+        "FY2025-Q1": "REQUIRED_NEW_10-Q",
+        "FY2025-Q2": "REQUIRED_NEW_10-Q",
+        "FY2025-Q3": "REQUIRED_NEW_10-Q"
+      },
+      "q4": "REPRESENTED_BY_ANNUAL_FY2025_10-K",
+      "amendments": "OPTIONAL_IF_AUTHORITATIVELY_PRESENT"
+    },
+    {
+      "company": "NVIDIA Corporation",
+      "ticker": "NVDA",
+      "sector": "Semiconductors",
+      "annual": {
+        "FY2023": "REQUIRED_NEW",
+        "FY2024": "REQUIRED_NEW",
+        "FY2025": "EXISTING_MANIFEST"
+      },
+      "quarterly": {
+        "FY2025-Q1": "REQUIRED_NEW_10-Q",
+        "FY2025-Q2": "REQUIRED_NEW_10-Q",
+        "FY2025-Q3": "REQUIRED_NEW_10-Q"
+      },
+      "q4": "REPRESENTED_BY_ANNUAL_FY2025_10-K",
+      "amendments": "OPTIONAL_IF_AUTHORITATIVELY_PRESENT"
+    },
+    {
+      "company": "JPMorgan Chase & Co.",
+      "ticker": "JPM",
+      "sector": "Financial Services",
+      "annual": {
+        "FY2023": "REQUIRED_NEW",
+        "FY2024": "REQUIRED_NEW",
+        "FY2025": "EXISTING_MANIFEST"
+      },
+      "quarterly": {
+        "FY2025-Q1": "REQUIRED_NEW_10-Q",
+        "FY2025-Q2": "REQUIRED_NEW_10-Q",
+        "FY2025-Q3": "REQUIRED_NEW_10-Q"
+      },
+      "q4": "REPRESENTED_BY_ANNUAL_FY2025_10-K",
+      "amendments": "OPTIONAL_IF_AUTHORITATIVELY_PRESENT"
+    },
+    {
+      "company": "Tesla, Inc.",
+      "ticker": "TSLA",
+      "sector": "Automotive / Energy",
+      "annual": {
+        "FY2023": "REQUIRED_NEW",
+        "FY2024": "REQUIRED_NEW",
+        "FY2025": "EXISTING_MANIFEST"
+      },
+      "quarterly": {
+        "FY2025-Q1": "REQUIRED_NEW_10-Q",
+        "FY2025-Q2": "REQUIRED_NEW_10-Q",
+        "FY2025-Q3": "REQUIRED_NEW_10-Q"
+      },
+      "q4": "REPRESENTED_BY_ANNUAL_FY2025_10-K",
+      "amendments": "OPTIONAL_IF_AUTHORITATIVELY_PRESENT"
+    },
+    {
+      "company": "The Coca-Cola Company",
+      "ticker": "KO",
+      "sector": "Consumer Staples",
+      "annual": {
+        "FY2023": "REQUIRED_NEW",
+        "FY2024": "REQUIRED_NEW",
+        "FY2025": "EXISTING_MANIFEST"
+      },
+      "quarterly": {
+        "FY2025-Q1": "REQUIRED_NEW_10-Q",
+        "FY2025-Q2": "REQUIRED_NEW_10-Q",
+        "FY2025-Q3": "REQUIRED_NEW_10-Q"
+      },
+      "q4": "REPRESENTED_BY_ANNUAL_FY2025_10-K",
+      "amendments": "OPTIONAL_IF_AUTHORITATIVELY_PRESENT"
+    },
+    {
+      "company": "Visa Inc.",
+      "ticker": "V",
+      "sector": "Financial Services / Payments",
+      "annual": {
+        "FY2023": "REQUIRED_NEW",
+        "FY2024": "REQUIRED_NEW",
+        "FY2025": "EXISTING_MANIFEST"
+      },
+      "quarterly": {
+        "FY2025-Q1": "REQUIRED_NEW_10-Q",
+        "FY2025-Q2": "REQUIRED_NEW_10-Q",
+        "FY2025-Q3": "REQUIRED_NEW_10-Q"
+      },
+      "q4": "REPRESENTED_BY_ANNUAL_FY2025_10-K",
+      "amendments": "OPTIONAL_IF_AUTHORITATIVELY_PRESENT"
+    },
+    {
+      "company": "Pfizer Inc.",
+      "ticker": "PFE",
+      "sector": "Healthcare / Pharmaceuticals",
+      "annual": {
+        "FY2023": "REQUIRED_NEW",
+        "FY2024": "EXISTING_MANIFEST",
+        "FY2025": "REQUIRED_NEW"
+      },
+      "quarterly": {
+        "FY2025-Q1": "REQUIRED_NEW_10-Q",
+        "FY2025-Q2": "REQUIRED_NEW_10-Q",
+        "FY2025-Q3": "REQUIRED_NEW_10-Q"
+      },
+      "q4": "REPRESENTED_BY_ANNUAL_FY2025_10-K",
+      "amendments": "OPTIONAL_IF_AUTHORITATIVELY_PRESENT"
+    },
+    {
+      "company": "Alphabet Inc.",
+      "ticker": "GOOGL",
+      "sector": "Communication Services / Internet",
+      "annual": {
+        "FY2023": "REQUIRED_NEW",
+        "FY2024": "REQUIRED_NEW",
+        "FY2025": "EXISTING_MANIFEST"
+      },
+      "quarterly": {
+        "FY2025-Q1": "REQUIRED_NEW_10-Q",
+        "FY2025-Q2": "REQUIRED_NEW_10-Q",
+        "FY2025-Q3": "REQUIRED_NEW_10-Q"
+      },
+      "q4": "REPRESENTED_BY_ANNUAL_FY2025_10-K",
+      "amendments": "OPTIONAL_IF_AUTHORITATIVELY_PRESENT"
+    },
+    {
+      "company": "Amazon.com, Inc.",
+      "ticker": "AMZN",
+      "sector": "Consumer Discretionary / Cloud",
+      "annual": {
+        "FY2023": "REQUIRED_NEW",
+        "FY2024": "REQUIRED_NEW",
+        "FY2025": "EXISTING_MANIFEST"
+      },
+      "quarterly": {
+        "FY2025-Q1": "REQUIRED_NEW_10-Q",
+        "FY2025-Q2": "REQUIRED_NEW_10-Q",
+        "FY2025-Q3": "REQUIRED_NEW_10-Q"
+      },
+      "q4": "REPRESENTED_BY_ANNUAL_FY2025_10-K",
+      "amendments": "OPTIONAL_IF_AUTHORITATIVELY_PRESENT"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": "nf-v2-17/intake-decision/v1",
+  "task": "NF-V2-17A Corpus Intake",
+  "base_sha": "4b3a13bac661375406686a5055708f067a3aa3ac",
+  "decision": "CORPUS_INTAKE_ACCEPTED",
+  "decision_scope": "intake_plan_only",
+  "reviewed_at": "2026-08-20",
+  "target_company_count": 10,
+  "target_primary_filings": 60,
+  "full_corpus_gate_passed": false,
+  "fresh_blind_reserved": false,
+  "downloads_started": false,
+  "training": 0,
+  "retrieval_tuning": 0,
+  "benchmark_tuning": 0,
+  "acceptance_checks": {
+    "target_companies_ge_8": true,
+    "multi_year_target_defined": true,
+    "annual_and_quarter_target_defined": true,
+    "authoritative_source_plan_defined": true,
+    "existing_corpus_not_overwritten": true,
+    "raw_source_sha_policy_defined": true,
+    "created_at_misuse_policy_defined": true,
+    "fresh_blind_not_opened_before_corpus_seal": true
+  },
+  "blocking_before_a3": [
+    "verify/reacquire raw source files and record raw_sha256",
+    "resolve exact accession, filing/report dates, period bounds, and amendment relations",
+    "inspect source-format/parser compatibility before bulk parsing"
+  ],
+  "next_gate": "NF-V2-17A2_SOURCE_INTAKE_REVIEW",
+  "artifact_sha256": {
+    "company-selection.json": "9580043fca6990043e027ccdce6ce3bb0f425a9f365a5b35667ab27b640c66db",
+    "source-intake.json": "fe10574ecd7f8bea2a3f7843bfdf84ac9aaae638600fe98268e5e75992310f10",
+    "source-intake.csv": "7b30e331349ba39176238c75e23d93dc693b76ea5216ab272c9a626bb412c677",
+    "target-filing-matrix.json": "c658369c4bdfd414981a64460e1289d6d5847aaa548fefb7ac3bfbcd8b78e773"
+  }
+}
