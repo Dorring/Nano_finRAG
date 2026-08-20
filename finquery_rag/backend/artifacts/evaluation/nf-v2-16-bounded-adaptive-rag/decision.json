@@ -1,0 +1,8 @@
+{
+  "component_gates_pass": true,
+  "decision": "ADAPTIVE_RAG_EFFECTIVE",
+  "frozen_72_replay": "not_run_optional",
+  "production": "V1",
+  "production_switch": false,
+  "reason": "bounded loop and explicit temporal conflict component gates evaluated without model/retrieval calls"
+}

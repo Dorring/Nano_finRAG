@@ -1,0 +1,13 @@
+{
+  "adaptive_max_ms": 0.82369,
+  "adaptive_mean_ms": 0.5899566,
+  "adaptive_p50_ms": 0.608206,
+  "base_ms": 0.0,
+  "evidence_eval_mean_ms": 0.0,
+  "model_calls": 0,
+  "note": "not a production latency claim; synthetic deterministic fixtures only",
+  "replan_mean_ms": 0.0,
+  "retrieval_calls": 0,
+  "synthetic_component": true,
+  "temporal_eval_mean_ms": 0.0
+}

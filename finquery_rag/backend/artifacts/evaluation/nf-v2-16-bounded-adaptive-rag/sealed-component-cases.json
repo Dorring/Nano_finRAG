@@ -1,0 +1,68 @@
+{
+  "cases": [
+    {
+      "case_id": "A",
+      "description": "recoverable missing slot",
+      "expected": "READY_TO_GENERATE"
+    },
+    {
+      "case_id": "B",
+      "description": "unrecoverable repeated evidence",
+      "expected": "FAIL_CLOSED_NO_PROGRESS"
+    },
+    {
+      "case_id": "C",
+      "description": "wrong period then targeted replan",
+      "expected": "READY_TO_GENERATE"
+    },
+    {
+      "case_id": "M",
+      "description": "identical evidence no progress",
+      "expected": "FAIL_CLOSED_NO_PROGRESS"
+    },
+    {
+      "case_id": "N",
+      "description": "tool error rerouted to lexical lane",
+      "expected": "READY_TO_GENERATE"
+    }
+  ],
+  "fixture_version": "NF-V2-16-sealed-component-v1",
+  "temporal_cases": [
+    {
+      "case_id": "D",
+      "expected": "TEMPORAL_SUCCESSION"
+    },
+    {
+      "case_id": "E",
+      "expected": "AMBIGUOUS"
+    },
+    {
+      "case_id": "F",
+      "expected": "TEMPORAL_SUCCESSION"
+    },
+    {
+      "case_id": "G",
+      "expected": "SUPERSEDED"
+    },
+    {
+      "case_id": "H",
+      "expected": "UNRESOLVED_CONFLICT"
+    },
+    {
+      "case_id": "I",
+      "expected": "MULTI_SOURCE_COMPATIBLE"
+    },
+    {
+      "case_id": "J",
+      "expected": "TEMPORAL_SUCCESSION"
+    },
+    {
+      "case_id": "K",
+      "expected": "UNRESOLVED_CONFLICT"
+    },
+    {
+      "case_id": "L",
+      "expected": "UNRESOLVED_CONFLICT"
+    }
+  ]
+}

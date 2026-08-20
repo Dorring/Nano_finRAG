@@ -1,0 +1,9 @@
+{
+  "name": "AdaptiveRAGBudgetV1",
+  "max_replan_rounds": 2,
+  "max_total_tool_calls": 5,
+  "max_same_tool_retry": 1,
+  "max_identical_query_retry": 0,
+  "exhaustion": "FAIL_CLOSED",
+  "oversampling": false
+}

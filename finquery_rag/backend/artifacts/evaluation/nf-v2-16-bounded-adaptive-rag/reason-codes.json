@@ -1,0 +1,17 @@
+{
+  "MISSING_SLOT": "missing required slot",
+  "MISSING_OPERAND": "missing calculation operand",
+  "WRONG_PERIOD": "explicit metric but wrong period",
+  "AMBIGUOUS_PERIOD": "period semantics incomplete",
+  "WRONG_ENTITY_SCOPE": "entity or scope mismatch",
+  "LOW_EVIDENCE_COVERAGE": "insufficient coverage",
+  "EVIDENCE_CONFLICT": "same-scope incompatible evidence",
+  "VERSION_CONFLICT": "version conflict",
+  "MISSING_AUTHORITATIVE_VERSION": "authoritative version unavailable",
+  "LOW_SOURCE_QUALITY": "existing contract only",
+  "NO_PROGRESS": "same query/tool/evidence signature",
+  "BUDGET_EXHAUSTED": "configured bound exhausted",
+  "TOOL_ERROR": "registered tool failed",
+  "UNSUPPORTED_TOOL_ROUTE": "capability has no registered tool",
+  "STRUCTURAL_NOT_READY": "packet cannot enter trusted generation"
+}
