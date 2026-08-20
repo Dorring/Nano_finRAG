@@ -1,0 +1,65 @@
+{
+  "all_required_sections_pass": true,
+  "cases": [
+    {
+      "candidate_returned": true,
+      "document_scope_valid": true,
+      "hits": [
+        "SEC_789019_000095017023035122::chunk_5e52fd73daca4e06d0e43bee",
+        "SEC_789019_000095017024087843::chunk_59f2bdb99f638d0ee3086662",
+        "SEC_789019_000095017024118967::chunk_069c9f1c2f73161bbf10ca5c",
+        "SEC_789019_000095017024118967::chunk_d6e8ca8c67b98ca4b0a97067",
+        "SEC_789019_000095017025010491::chunk_0f91a127780a5718e1da8200"
+      ],
+      "provenance_valid": true,
+      "query": "MSFT MDA",
+      "section": "MDA",
+      "ticker": "MSFT"
+    },
+    {
+      "candidate_returned": true,
+      "document_scope_valid": true,
+      "hits": [
+        "SEC_320193_000032019323000106::chunk_ca34934d0d5d6162d15ef216",
+        "SEC_320193_000032019324000123::chunk_08a6ad1a38c8d490e5351c1f",
+        "SEC_320193_000032019325000079::chunk_79740d370d7cac5902c74b6e",
+        "SEC_320193_000032019325000079::chunk_73b4de3751b28a83b7cb2ac0",
+        "SEC_320193_000032019324000123::chunk_ffff36ee7c04435a46f028b4"
+      ],
+      "provenance_valid": true,
+      "query": "AAPL NOTES",
+      "section": "NOTES",
+      "ticker": "AAPL"
+    },
+    {
+      "candidate_returned": true,
+      "document_scope_valid": true,
+      "hits": [
+        "SEC_19617_000001961724000225::chunk_05a0ded56e6780d3e22f40ab",
+        "SEC_19617_000001961725000270::chunk_b42fdd2d1c7cc17453871fe7",
+        "SEC_19617_000162828026008131::chunk_24c8facb1ae5fa7929ba147c",
+        "SEC_19617_000001961724000225::chunk_8eae7eb91ab2a789330efd24",
+        "SEC_19617_000001961724000225::chunk_c7db760780c0387c3c63eb8f"
+      ],
+      "provenance_valid": true,
+      "query": "JPM RISK_FACTORS",
+      "section": "RISK_FACTORS",
+      "ticker": "JPM"
+    },
+    {
+      "candidate_returned": true,
+      "document_scope_valid": true,
+      "hits": [
+        "SEC_1403161_000140316123000099::chunk_62c23acc69f5f53e18444bd2",
+        "SEC_1403161_000140316124000058::chunk_6d17959d1fc8a989fe91f6b0",
+        "SEC_1403161_000140316123000099::chunk_363a73e51dd43bd448bb5dec",
+        "SEC_1403161_000140316125000089::chunk_87d8a36bdd5f923287ecc176",
+        "SEC_1403161_000140316124000058::chunk_80a3aa20c7285c43b760f0fb"
+      ],
+      "provenance_valid": true,
+      "query": "V BUSINESS",
+      "section": "BUSINESS",
+      "ticker": "V"
+    }
+  ]
+}

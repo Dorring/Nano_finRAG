@@ -1,0 +1,21 @@
+{
+  "accepted": true,
+  "decision": "CORPUS_V2_FROZEN_AND_INDEXED",
+  "fresh_blind_sealed": true,
+  "model_calls": 0,
+  "next_gate": "NF-V2-17B_FRESH_BLIND_EVALUATION_PACK",
+  "production_switch": false,
+  "qualitative_retrieval": true,
+  "question_generation": false,
+  "safety": {
+    "authorization_leakage": 0,
+    "created_at_misuse": 0,
+    "document_type_violations": 0,
+    "entity_filter_violations": 0,
+    "hybrid_scope_divergence": 0,
+    "reranker_reintroduction_admitted": 0,
+    "silent_scope_relaxation": 0,
+    "temporal_hard_filter_violations": 0
+  },
+  "table_row_unexplained_loss": 0
+}

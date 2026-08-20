@@ -1,0 +1,20 @@
+{
+  "BUSINESS_searchable_chars": 662307,
+  "MDA_searchable_chars": 79155,
+  "NOTES_searchable_chars": 294443,
+  "RISK_FACTORS_searchable_chars": 32969,
+  "a4_r1_text_loss": 0,
+  "counts": {
+    "BALANCE_SHEET": 2859,
+    "BUSINESS": 1918,
+    "CASH_FLOW": 3371,
+    "INCOME_STATEMENT": 5561,
+    "MDA": 327,
+    "NOTES": 4862,
+    "RISK_FACTORS": 118,
+    "UNKNOWN": 76138
+  },
+  "normalized_prose_chars": 1223786,
+  "searchable_text_chars": 1224996,
+  "source_prose_chars": 1223786
+}

@@ -1,0 +1,45 @@
+{
+  "annual_documents": 30,
+  "companies": 10,
+  "content_types": {
+    "TABLE": 7518,
+    "TABLE_ROW": 86600,
+    "TEXT": 1036
+  },
+  "final_searchable_chunks": 95154,
+  "input_chunks": 95506,
+  "input_content_type_counts": {
+    "TABLE": 7870,
+    "TABLE_ROW": 86600,
+    "TEXT": 1036
+  },
+  "ixbrl_facts": 132156,
+  "orphan_chunks": 0,
+  "parsed_table_rows": 86624,
+  "period_semantics_distribution": {
+    "ANNUAL": 19080,
+    "INSTANT": 13624,
+    "QUARTER": 6780,
+    "UNKNOWN": 51921,
+    "YTD": 3749
+  },
+  "primary_documents": 60,
+  "provenance_complete": true,
+  "quarterly_documents": 30,
+  "removed_empty_or_whitespace": 352,
+  "removed_exact_duplicate_instances": 0,
+  "schema_version": "nf-v2-17/a5/searchable-statistics/v1",
+  "searchable_table_row_chunks": 86600,
+  "section_distribution": {
+    "BALANCE_SHEET": 2859,
+    "BUSINESS": 1918,
+    "CASH_FLOW": 3371,
+    "INCOME_STATEMENT": 5561,
+    "MDA": 327,
+    "NOTES": 4862,
+    "RISK_FACTORS": 118,
+    "UNKNOWN": 76138
+  },
+  "tables": 7870,
+  "version_sidecars": 3
+}
