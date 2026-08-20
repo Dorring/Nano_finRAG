@@ -207,6 +207,7 @@ def build_fixture() -> tuple[SqliteBM25Retriever, list[dict], Path]:
         candidate("msft-old-annual", "MSFT FY2024 annual revenue was 98 original filing.", user_id=1, ticker="MSFT", entity="Microsoft", fiscal_year="2024", period_semantics="ANNUAL", document_type="ANNUAL", version="1", is_amended=False, filing_date="2025-02-01", doc_name="msft-old-annual"),
         candidate("msft-amended", "MSFT FY2024 annual revenue restated was 100 amended.", user_id=1, ticker="MSFT", entity="Microsoft", fiscal_year="2024", period_semantics="ANNUAL", document_type="ANNUAL", version="2", is_amended=True, supersedes_document_id="msft-old-annual", filing_date="2025-03-01", doc_name="msft-amended"),
         candidate("msft-revenue", "MSFT FY2024 revenue was 100.", user_id=1, ticker="MSFT", entity="Microsoft", fiscal_year="2024", metric="revenue", period="FY2024", value="100", period_semantics="ANNUAL", document_type="ANNUAL", content_type="TABLE", filing_date="2025-02-01", doc_name="msft-facts"),
+        candidate("msft-revenue-wrong-period", "MSFT FY2023 revenue was 95.", user_id=1, ticker="MSFT", entity="Microsoft", fiscal_year="2024", metric="revenue", period="FY2023", value="95", period_semantics="ANNUAL", document_type="ANNUAL", content_type="TABLE", filing_date="2025-02-01", doc_name="msft-facts"),
         candidate("msft-income", "MSFT FY2024 operating income was 25.", user_id=1, ticker="MSFT", entity="Microsoft", fiscal_year="2024", metric="operating income", period="FY2024", value="25", period_semantics="ANNUAL", document_type="ANNUAL", content_type="TABLE", filing_date="2025-02-01", doc_name="msft-facts"),
         candidate("msft-conflict-a", "MSFT FY2024 revenue was 100.", user_id=1, ticker="MSFT", entity="Microsoft", fiscal_year="2024", metric="revenue", period="FY2024", value="100", period_semantics="ANNUAL", document_type="ANNUAL", content_type="TABLE", filing_date="2025-02-01", doc_name="msft-conflict"),
         candidate("msft-conflict-b", "MSFT FY2024 revenue was 110.", user_id=1, ticker="MSFT", entity="Microsoft", fiscal_year="2024", metric="revenue", period="FY2024", value="110", period_semantics="ANNUAL", document_type="ANNUAL", content_type="TABLE", filing_date="2025-02-01", doc_name="msft-conflict"),
@@ -260,7 +261,12 @@ def run_adaptive(case: dict, adapter: MetadataAwareRetrieverV1, rows: list[dict]
             if case.get("no_progress"):
                 chosen = []
             elif call_number == 1:
-                wanted = ["msft-revenue"] if case["case_id"] in {"CASE08_MISSING_SLOT_RECOVERABLE", "CASE11_CAPABILITY_REROUTE"} else ["msft-header-only"]
+                if case["case_id"] in {"CASE08_MISSING_SLOT_RECOVERABLE", "CASE11_CAPABILITY_REROUTE"}:
+                    wanted = ["msft-revenue"]
+                elif case["case_id"] == "CASE09_WRONG_PERIOD_RECOVERY":
+                    wanted = ["msft-revenue-wrong-period"]
+                else:
+                    wanted = ["msft-header-only"]
                 chosen = [item for item in retrieved if item.get("metadata", {}).get("doc_id") in wanted]
             else:
                 wanted = ["msft-income", "msft-revenue"] if case["case_id"] in {"CASE08_MISSING_SLOT_RECOVERABLE", "CASE11_CAPABILITY_REROUTE"} else ["msft-revenue"]

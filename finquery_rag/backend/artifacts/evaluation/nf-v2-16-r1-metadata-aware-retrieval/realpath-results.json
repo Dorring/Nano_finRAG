@@ -26,7 +26,7 @@
         "query": "MSFT FY2024 revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 2.706642,
+      "latency_ms": 2.765189,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -104,6 +104,7 @@
           "msft-q1",
           "msft-q2",
           "msft-revenue",
+          "msft-revenue-wrong-period",
           "msft-ytd",
           "user_1_auth-msft-2024",
           "user_1_msft-amended",
@@ -116,11 +117,12 @@
           "user_1_msft-q1",
           "user_1_msft-q2",
           "user_1_msft-revenue",
+          "user_1_msft-revenue-wrong-period",
           "user_1_msft-ytd"
         ],
-        "bm25_count": 14,
+        "bm25_count": 15,
         "bm25_metrics": {
-          "accepted_count": 12,
+          "accepted_count": 13,
           "created_at_temporal_misuse": 0,
           "events": [
             {
@@ -143,13 +145,13 @@
           ],
           "filter_invariant_violations": 0,
           "hard_filter_rejections": 2,
-          "input_count": 14,
+          "input_count": 15,
           "rejected_count": 2,
           "silent_hard_filter_relaxations": 0
         },
-        "dense_count": 14,
+        "dense_count": 15,
         "dense_metrics": {
-          "accepted_count": 12,
+          "accepted_count": 13,
           "created_at_temporal_misuse": 0,
           "events": [
             {
@@ -172,7 +174,7 @@
           ],
           "filter_invariant_violations": 0,
           "hard_filter_rejections": 2,
-          "input_count": 14,
+          "input_count": 15,
           "rejected_count": 2,
           "silent_hard_filter_relaxations": 0
         },
@@ -220,7 +222,7 @@
         "query": "MSFT FY2024 revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.224204,
+      "latency_ms": 1.217487,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -298,11 +300,12 @@
           "user_1_msft-q1",
           "user_1_msft-q2",
           "user_1_msft-revenue",
+          "user_1_msft-revenue-wrong-period",
           "user_1_msft-ytd"
         ],
-        "bm25_count": 14,
+        "bm25_count": 15,
         "bm25_metrics": {
-          "accepted_count": 12,
+          "accepted_count": 13,
           "created_at_temporal_misuse": 0,
           "events": [
             {
@@ -325,7 +328,7 @@
           ],
           "filter_invariant_violations": 0,
           "hard_filter_rejections": 2,
-          "input_count": 14,
+          "input_count": 15,
           "rejected_count": 2,
           "silent_hard_filter_relaxations": 0
         },
@@ -384,7 +387,7 @@
         "query": "MSFT FY2024 revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 0.64795,
+      "latency_ms": 0.708117,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -462,6 +465,7 @@
           "msft-q1",
           "msft-q2",
           "msft-revenue",
+          "msft-revenue-wrong-period",
           "msft-ytd"
         ],
         "bm25_count": 0,
@@ -475,9 +479,9 @@
           "rejected_count": 0,
           "silent_hard_filter_relaxations": 0
         },
-        "dense_count": 14,
+        "dense_count": 15,
         "dense_metrics": {
-          "accepted_count": 12,
+          "accepted_count": 13,
           "created_at_temporal_misuse": 0,
           "events": [
             {
@@ -500,7 +504,7 @@
           ],
           "filter_invariant_violations": 0,
           "hard_filter_rejections": 2,
-          "input_count": 14,
+          "input_count": 15,
           "rejected_count": 2,
           "silent_hard_filter_relaxations": 0
         },
@@ -548,7 +552,7 @@
         "query": "MSFT 2024 Q1 revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.355485,
+      "latency_ms": 1.343918,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -642,7 +646,7 @@
           "msft-q1",
           "user_1_msft-q1"
         ],
-        "bm25_count": 14,
+        "bm25_count": 15,
         "bm25_metrics": {
           "accepted_count": 1,
           "created_at_temporal_misuse": 0,
@@ -694,6 +698,15 @@
             },
             {
               "candidate_id": "user_1_msft-revenue",
+              "event": "HARD_FILTER_REJECTED",
+              "invariant_event": "FILTER_INVARIANT_VIOLATION",
+              "reasons": [
+                "METADATA_MISSING:fiscal_quarter",
+                "period_semantics"
+              ]
+            },
+            {
+              "candidate_id": "user_1_msft-revenue-wrong-period",
               "event": "HARD_FILTER_REJECTED",
               "invariant_event": "FILTER_INVARIANT_VIOLATION",
               "reasons": [
@@ -768,12 +781,12 @@
             }
           ],
           "filter_invariant_violations": 0,
-          "hard_filter_rejections": 13,
-          "input_count": 14,
-          "rejected_count": 13,
+          "hard_filter_rejections": 14,
+          "input_count": 15,
+          "rejected_count": 14,
           "silent_hard_filter_relaxations": 0
         },
-        "dense_count": 14,
+        "dense_count": 15,
         "dense_metrics": {
           "accepted_count": 1,
           "created_at_temporal_misuse": 0,
@@ -880,6 +893,15 @@
               ]
             },
             {
+              "candidate_id": "msft-revenue-wrong-period",
+              "event": "HARD_FILTER_REJECTED",
+              "invariant_event": "FILTER_INVARIANT_VIOLATION",
+              "reasons": [
+                "METADATA_MISSING:fiscal_quarter",
+                "period_semantics"
+              ]
+            },
+            {
               "candidate_id": "msft-income",
               "event": "HARD_FILTER_REJECTED",
               "invariant_event": "FILTER_INVARIANT_VIOLATION",
@@ -899,9 +921,9 @@
             }
           ],
           "filter_invariant_violations": 0,
-          "hard_filter_rejections": 13,
-          "input_count": 14,
-          "rejected_count": 13,
+          "hard_filter_rejections": 14,
+          "input_count": 15,
+          "rejected_count": 14,
           "silent_hard_filter_relaxations": 0
         },
         "filter_invariant_violations": 0,
@@ -951,7 +973,7 @@
         "query": "MSFT 2024 Q2 six months ended revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 0.98506,
+      "latency_ms": 0.906272,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -1051,7 +1073,7 @@
       },
       "trace": {
         "authorized_candidate_union_ids": [],
-        "bm25_count": 14,
+        "bm25_count": 15,
         "bm25_metrics": {
           "accepted_count": 0,
           "created_at_temporal_misuse": 0,
@@ -1114,6 +1136,16 @@
             },
             {
               "candidate_id": "user_1_msft-revenue",
+              "event": "HARD_FILTER_REJECTED",
+              "invariant_event": "FILTER_INVARIANT_VIOLATION",
+              "reasons": [
+                "METADATA_MISSING:fiscal_quarter",
+                "period_semantics",
+                "period_semantics"
+              ]
+            },
+            {
+              "candidate_id": "user_1_msft-revenue-wrong-period",
               "event": "HARD_FILTER_REJECTED",
               "invariant_event": "FILTER_INVARIANT_VIOLATION",
               "reasons": [
@@ -1196,9 +1228,9 @@
             }
           ],
           "filter_invariant_violations": 0,
-          "hard_filter_rejections": 14,
-          "input_count": 14,
-          "rejected_count": 14,
+          "hard_filter_rejections": 15,
+          "input_count": 15,
+          "rejected_count": 15,
           "silent_hard_filter_relaxations": 0
         },
         "dense_count": 0,
@@ -1265,7 +1297,7 @@
         "query": "MSFT latest annual report revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 2.489424,
+      "latency_ms": 2.603582,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -1359,7 +1391,7 @@
           "msft-amended",
           "user_1_msft-amended"
         ],
-        "bm25_count": 14,
+        "bm25_count": 15,
         "bm25_metrics": {
           "accepted_count": 1,
           "created_at_temporal_misuse": 0,
@@ -1431,6 +1463,11 @@
               "reason": "older explicit filing/report date"
             },
             {
+              "candidate_id": "user_1_msft-revenue-wrong-period",
+              "event": "LATEST_SCOPE_EXCLUDED",
+              "reason": "older explicit filing/report date"
+            },
+            {
               "candidate_id": "user_1_msft-conflict-a",
               "event": "LATEST_SCOPE_EXCLUDED",
               "reason": "older explicit filing/report date"
@@ -1448,11 +1485,11 @@
           ],
           "filter_invariant_violations": 0,
           "hard_filter_rejections": 4,
-          "input_count": 14,
-          "rejected_count": 13,
+          "input_count": 15,
+          "rejected_count": 14,
           "silent_hard_filter_relaxations": 0
         },
-        "dense_count": 14,
+        "dense_count": 15,
         "dense_metrics": {
           "accepted_count": 1,
           "created_at_temporal_misuse": 0,
@@ -1524,6 +1561,11 @@
               "reason": "older explicit filing/report date"
             },
             {
+              "candidate_id": "msft-revenue-wrong-period",
+              "event": "LATEST_SCOPE_EXCLUDED",
+              "reason": "older explicit filing/report date"
+            },
+            {
               "candidate_id": "msft-conflict-a",
               "event": "LATEST_SCOPE_EXCLUDED",
               "reason": "older explicit filing/report date"
@@ -1541,8 +1583,8 @@
           ],
           "filter_invariant_violations": 0,
           "hard_filter_rejections": 4,
-          "input_count": 14,
-          "rejected_count": 13,
+          "input_count": 15,
+          "rejected_count": 14,
           "silent_hard_filter_relaxations": 0
         },
         "filter_invariant_violations": 0,
@@ -1594,7 +1636,7 @@
         "query": "MSFT FY2024 annual current valid version",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.488157,
+      "latency_ms": 1.463488,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -1684,7 +1726,7 @@
         "authorized_candidate_union_ids": [
           "user_1_msft-amended"
         ],
-        "bm25_count": 14,
+        "bm25_count": 15,
         "bm25_metrics": {
           "accepted_count": 1,
           "created_at_temporal_misuse": 0,
@@ -1772,12 +1814,17 @@
               "candidate_id": "user_1_msft-income",
               "event": "LATEST_SCOPE_EXCLUDED",
               "reason": "older explicit filing/report date"
+            },
+            {
+              "candidate_id": "user_1_msft-revenue-wrong-period",
+              "event": "LATEST_SCOPE_EXCLUDED",
+              "reason": "older explicit filing/report date"
             }
           ],
           "filter_invariant_violations": 0,
           "hard_filter_rejections": 5,
-          "input_count": 14,
-          "rejected_count": 13,
+          "input_count": 15,
+          "rejected_count": 14,
           "silent_hard_filter_relaxations": 0
         },
         "dense_count": 0,
@@ -2161,7 +2208,7 @@
         },
         "case_id": "CASE08_MISSING_SLOT_RECOVERABLE",
         "hard_filters_preserved": true,
-        "latency_ms": 3.011923,
+        "latency_ms": 2.911012,
         "query_history": [
           "MSFT FY2024 revenue and operating income",
           "MSFT FY2024 revenue and operating income"
@@ -2272,7 +2319,7 @@
         "replan": true,
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.395498,
+      "latency_ms": 1.346673,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -2350,11 +2397,12 @@
           "user_1_msft-q1",
           "user_1_msft-q2",
           "user_1_msft-revenue",
+          "user_1_msft-revenue-wrong-period",
           "user_1_msft-ytd"
         ],
-        "bm25_count": 14,
+        "bm25_count": 15,
         "bm25_metrics": {
-          "accepted_count": 12,
+          "accepted_count": 13,
           "created_at_temporal_misuse": 0,
           "events": [
             {
@@ -2377,7 +2425,7 @@
           ],
           "filter_invariant_violations": 0,
           "hard_filter_rejections": 2,
-          "input_count": 14,
+          "input_count": 15,
           "rejected_count": 2,
           "silent_hard_filter_relaxations": 0
         },
@@ -2429,7 +2477,7 @@
             "supporting_evidence_ids": [
               "user_1_msft-revenue"
             ],
-            "temporal_status": "MULTI_SOURCE_COMPATIBLE"
+            "temporal_status": "TEMPORAL_SUCCESSION"
           },
           "released": false,
           "state": {
@@ -2438,65 +2486,10 @@
             "conflicts": [],
             "current_step": "READY_TO_GENERATE",
             "evidence_hashes": [
-              "452fefc99e99a21aabdffa96379ce2fec7f2327309f10f8c798b2bbf32ae9796",
-              "c94278a457db3b7801e20f159ab0247963ac014835eabb967c145f707578c525"
+              "c94278a457db3b7801e20f159ab0247963ac014835eabb967c145f707578c525",
+              "637a07c0405ca851f9d93266e38337ce567d2ee2dbac322738c2bb31a1a22204"
             ],
             "evidence_packets": [
-              {
-                "calculation_result": null,
-                "citation_id": null,
-                "currency": null,
-                "document_id": "msft-header-only",
-                "entity": "Microsoft",
-                "evidence_id": "user_1_msft-header-only",
-                "metadata": {
-                  "metadata": {
-                    "content_type": "TEXT",
-                    "doc_id": "msft-header-only",
-                    "doc_name": "msft-header",
-                    "document_type": "ANNUAL",
-                    "entity": "Microsoft",
-                    "filing_date": "2025-02-01",
-                    "fiscal_year": "2024",
-                    "period_semantics": "ANNUAL",
-                    "ticker": "MSFT",
-                    "user_id": 1
-                  }
-                },
-                "metric": null,
-                "operands": [],
-                "period": "FY2024",
-                "scale": null,
-                "scope": null,
-                "slots": [],
-                "source": "msft-header",
-                "temporal": {
-                  "created_at": null,
-                  "currency": null,
-                  "document_id": null,
-                  "document_type": null,
-                  "entity": "Microsoft",
-                  "filing_date": "2025-02-01",
-                  "fiscal_quarter": null,
-                  "fiscal_year": "2024",
-                  "ingested_at": null,
-                  "is_amended": false,
-                  "metric": null,
-                  "period_end": null,
-                  "period_semantics": "ANNUAL",
-                  "period_start": null,
-                  "report_date": null,
-                  "scale": null,
-                  "scope": null,
-                  "source": null,
-                  "supersedes_document_id": null,
-                  "unit": null,
-                  "value": null,
-                  "version": null
-                },
-                "unit": null,
-                "value": null
-              },
               {
                 "calculation_result": null,
                 "citation_id": null,
@@ -2557,6 +2550,67 @@
                 },
                 "unit": null,
                 "value": "100"
+              },
+              {
+                "calculation_result": null,
+                "citation_id": null,
+                "currency": null,
+                "document_id": "msft-revenue-wrong-period",
+                "entity": "Microsoft",
+                "evidence_id": "user_1_msft-revenue-wrong-period",
+                "metadata": {
+                  "metadata": {
+                    "content_type": "TABLE",
+                    "doc_id": "msft-revenue-wrong-period",
+                    "doc_name": "msft-facts",
+                    "document_type": "ANNUAL",
+                    "entity": "Microsoft",
+                    "filing_date": "2025-02-01",
+                    "fiscal_year": "2024",
+                    "metric": "revenue",
+                    "period": "FY2023",
+                    "period_semantics": "ANNUAL",
+                    "ticker": "MSFT",
+                    "user_id": 1,
+                    "value": "95"
+                  }
+                },
+                "metric": "revenue",
+                "operands": [],
+                "period": "FY2023",
+                "scale": null,
+                "scope": null,
+                "slots": [
+                  "revenue",
+                  "revenue"
+                ],
+                "source": "msft-facts",
+                "temporal": {
+                  "created_at": null,
+                  "currency": null,
+                  "document_id": null,
+                  "document_type": null,
+                  "entity": "Microsoft",
+                  "filing_date": "2025-02-01",
+                  "fiscal_quarter": null,
+                  "fiscal_year": "2024",
+                  "ingested_at": null,
+                  "is_amended": false,
+                  "metric": "revenue",
+                  "period_end": null,
+                  "period_semantics": "ANNUAL",
+                  "period_start": null,
+                  "report_date": null,
+                  "scale": null,
+                  "scope": null,
+                  "source": null,
+                  "supersedes_document_id": null,
+                  "unit": null,
+                  "value": "95",
+                  "version": null
+                },
+                "unit": null,
+                "value": "95"
               }
             ],
             "filled_slots": {
@@ -2565,10 +2619,14 @@
             "intent": "DIRECT_FACT",
             "iteration": 2,
             "last_action": {
-              "capability": "SEMANTIC_RETRIEVAL",
-              "constraints": {},
-              "query": "MSFT FY2024 revenue",
-              "reason_code": "MISSING_SLOT",
+              "capability": "STRUCTURED_FINANCIAL_LOOKUP",
+              "constraints": {
+                "period_constraint": [
+                  "FY2024"
+                ]
+              },
+              "query": "MSFT FY2024 revenue [period=FY2024]",
+              "reason_code": "WRONG_PERIOD",
               "target_slots": [
                 "revenue"
               ]
@@ -2579,7 +2637,7 @@
               ],
               "no_progress": false,
               "packet_count": 1,
-              "progress_signature": "8ed6202a41e78d120a653e464b8ece271d1930bdd6d09d1a3b21edc8b9bca58e"
+              "progress_signature": "42c9523e30c1484b1984cd5090a2a035ecb0aeeaf6e52bdb09bb14d3ce8f663a"
             },
             "missing_slots": [],
             "normalized_query": "MSFT FY2024 revenue",
@@ -2651,12 +2709,12 @@
               }
             },
             "progress_signatures": [
-              "925fe9070ddbb84b06412a79e4102f408eb22a0b9cc8920c4aa7c8d57abe9a38",
-              "8ed6202a41e78d120a653e464b8ece271d1930bdd6d09d1a3b21edc8b9bca58e"
+              "96698aa56e8cd1a9867545f32fdf06d30c541db1fa0fa3011f3eeafc569421f3",
+              "42c9523e30c1484b1984cd5090a2a035ecb0aeeaf6e52bdb09bb14d3ce8f663a"
             ],
             "query_history": [
               "MSFT FY2024 revenue",
-              "MSFT FY2024 revenue"
+              "MSFT FY2024 revenue [period=FY2024]"
             ],
             "replan_rounds": 1,
             "request_id": "CASE09_WRONG_PERIOD_RECOVERY",
@@ -2670,7 +2728,8 @@
               }
             ],
             "same_tool_retries": {
-              "SEMANTIC_RETRIEVAL": 2
+              "SEMANTIC_RETRIEVAL": 1,
+              "STRUCTURED_FINANCIAL_LOOKUP": 1
             },
             "scope_groups": {},
             "status": "READY_TO_GENERATE",
@@ -2684,9 +2743,9 @@
                 "query": "MSFT FY2024 revenue"
               },
               {
-                "capability": "SEMANTIC_RETRIEVAL",
+                "capability": "STRUCTURED_FINANCIAL_LOOKUP",
                 "iteration": 2,
-                "query": "MSFT FY2024 revenue"
+                "query": "MSFT FY2024 revenue [period=FY2024]"
               }
             ],
             "transitions": [
@@ -2712,7 +2771,7 @@
               },
               {
                 "from": "REPLAN",
-                "reason": "replan:MISSING_SLOT",
+                "reason": "replan:WRONG_PERIOD",
                 "to": "ACT"
               },
               {
@@ -2735,10 +2794,10 @@
         },
         "case_id": "CASE09_WRONG_PERIOD_RECOVERY",
         "hard_filters_preserved": true,
-        "latency_ms": 2.617689,
+        "latency_ms": 2.66479,
         "query_history": [
           "MSFT FY2024 revenue",
-          "MSFT FY2024 revenue"
+          "MSFT FY2024 revenue [period=FY2024]"
         ],
         "real_retrieval_calls": 2,
         "scope": {
@@ -2814,9 +2873,9 @@
             "query": "MSFT FY2024 revenue"
           },
           {
-            "capability": "SEMANTIC_RETRIEVAL",
+            "capability": "STRUCTURED_FINANCIAL_LOOKUP",
             "iteration": 2,
-            "query": "MSFT FY2024 revenue"
+            "query": "MSFT FY2024 revenue [period=FY2024]"
           }
         ]
       },
@@ -2846,7 +2905,7 @@
         "replan": true,
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.109029,
+      "latency_ms": 1.095623,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -2924,11 +2983,12 @@
           "user_1_msft-q1",
           "user_1_msft-q2",
           "user_1_msft-revenue",
+          "user_1_msft-revenue-wrong-period",
           "user_1_msft-ytd"
         ],
-        "bm25_count": 14,
+        "bm25_count": 15,
         "bm25_metrics": {
-          "accepted_count": 12,
+          "accepted_count": 13,
           "created_at_temporal_misuse": 0,
           "events": [
             {
@@ -2951,7 +3011,7 @@
           ],
           "filter_invariant_violations": 0,
           "hard_filter_rejections": 2,
-          "input_count": 14,
+          "input_count": 15,
           "rejected_count": 2,
           "silent_hard_filter_relaxations": 0
         },
@@ -3172,7 +3232,7 @@
         },
         "case_id": "CASE10_NO_PROGRESS",
         "hard_filters_preserved": true,
-        "latency_ms": 2.111337,
+        "latency_ms": 2.059958,
         "query_history": [
           "MSFT FY2024 missing metric",
           "MSFT FY2024 missing metric"
@@ -3269,7 +3329,7 @@
         "replan": true,
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 0.851016,
+      "latency_ms": 0.817531,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -3332,11 +3392,12 @@
           "user_1_msft-q1",
           "user_1_msft-q2",
           "user_1_msft-revenue",
+          "user_1_msft-revenue-wrong-period",
           "user_1_msft-ytd"
         ],
-        "bm25_count": 14,
+        "bm25_count": 15,
         "bm25_metrics": {
-          "accepted_count": 12,
+          "accepted_count": 13,
           "created_at_temporal_misuse": 0,
           "events": [
             {
@@ -3359,7 +3420,7 @@
           ],
           "filter_invariant_violations": 0,
           "hard_filter_rejections": 2,
-          "input_count": 14,
+          "input_count": 15,
           "rejected_count": 2,
           "silent_hard_filter_relaxations": 0
         },
@@ -3736,7 +3797,7 @@
         },
         "case_id": "CASE11_CAPABILITY_REROUTE",
         "hard_filters_preserved": true,
-        "latency_ms": 2.78619,
+        "latency_ms": 2.680795,
         "query_history": [
           "MSFT FY2024 revenue and income",
           "MSFT FY2024 revenue and income"
@@ -3848,7 +3909,7 @@
         "replan": true,
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.141922,
+      "latency_ms": 1.094141,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -3926,11 +3987,12 @@
           "user_1_msft-q1",
           "user_1_msft-q2",
           "user_1_msft-revenue",
+          "user_1_msft-revenue-wrong-period",
           "user_1_msft-ytd"
         ],
-        "bm25_count": 14,
+        "bm25_count": 15,
         "bm25_metrics": {
-          "accepted_count": 12,
+          "accepted_count": 13,
           "created_at_temporal_misuse": 0,
           "events": [
             {
@@ -3953,7 +4015,7 @@
           ],
           "filter_invariant_violations": 0,
           "hard_filter_rejections": 2,
-          "input_count": 14,
+          "input_count": 15,
           "rejected_count": 2,
           "silent_hard_filter_relaxations": 0
         },
@@ -4006,7 +4068,7 @@
         "query": "MSFT FY2030 revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.175275,
+      "latency_ms": 1.181931,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -4073,7 +4135,7 @@
       },
       "trace": {
         "authorized_candidate_union_ids": [],
-        "bm25_count": 14,
+        "bm25_count": 15,
         "bm25_metrics": {
           "accepted_count": 0,
           "created_at_temporal_misuse": 0,
@@ -4096,6 +4158,14 @@
             },
             {
               "candidate_id": "user_1_msft-revenue",
+              "event": "HARD_FILTER_REJECTED",
+              "invariant_event": "FILTER_INVARIANT_VIOLATION",
+              "reasons": [
+                "fiscal_year"
+              ]
+            },
+            {
+              "candidate_id": "user_1_msft-revenue-wrong-period",
               "event": "HARD_FILTER_REJECTED",
               "invariant_event": "FILTER_INVARIANT_VIOLATION",
               "reasons": [
@@ -4194,12 +4264,12 @@
             }
           ],
           "filter_invariant_violations": 0,
-          "hard_filter_rejections": 14,
-          "input_count": 14,
-          "rejected_count": 14,
+          "hard_filter_rejections": 15,
+          "input_count": 15,
+          "rejected_count": 15,
           "silent_hard_filter_relaxations": 0
         },
-        "dense_count": 14,
+        "dense_count": 15,
         "dense_metrics": {
           "accepted_count": 0,
           "created_at_temporal_misuse": 0,
@@ -4277,6 +4347,14 @@
               ]
             },
             {
+              "candidate_id": "msft-revenue-wrong-period",
+              "event": "HARD_FILTER_REJECTED",
+              "invariant_event": "FILTER_INVARIANT_VIOLATION",
+              "reasons": [
+                "fiscal_year"
+              ]
+            },
+            {
               "candidate_id": "msft-conflict-a",
               "event": "HARD_FILTER_REJECTED",
               "invariant_event": "FILTER_INVARIANT_VIOLATION",
@@ -4320,9 +4398,9 @@
             }
           ],
           "filter_invariant_violations": 0,
-          "hard_filter_rejections": 14,
-          "input_count": 14,
-          "rejected_count": 14,
+          "hard_filter_rejections": 15,
+          "input_count": 15,
+          "rejected_count": 15,
           "silent_hard_filter_relaxations": 0
         },
         "filter_invariant_violations": 0,
@@ -4369,7 +4447,7 @@
         "query": "MSFT FY2024 revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.750589,
+      "latency_ms": 1.76602,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -4447,6 +4525,7 @@
           "msft-q1",
           "msft-q2",
           "msft-revenue",
+          "msft-revenue-wrong-period",
           "msft-ytd",
           "user_1_auth-msft-2024",
           "user_1_msft-amended",
@@ -4459,11 +4538,12 @@
           "user_1_msft-q1",
           "user_1_msft-q2",
           "user_1_msft-revenue",
+          "user_1_msft-revenue-wrong-period",
           "user_1_msft-ytd"
         ],
-        "bm25_count": 14,
+        "bm25_count": 15,
         "bm25_metrics": {
-          "accepted_count": 12,
+          "accepted_count": 13,
           "created_at_temporal_misuse": 0,
           "events": [
             {
@@ -4486,13 +4566,13 @@
           ],
           "filter_invariant_violations": 0,
           "hard_filter_rejections": 2,
-          "input_count": 14,
+          "input_count": 15,
           "rejected_count": 2,
           "silent_hard_filter_relaxations": 0
         },
-        "dense_count": 14,
+        "dense_count": 15,
         "dense_metrics": {
-          "accepted_count": 12,
+          "accepted_count": 13,
           "created_at_temporal_misuse": 0,
           "events": [
             {
@@ -4515,7 +4595,7 @@
           ],
           "filter_invariant_violations": 0,
           "hard_filter_rejections": 2,
-          "input_count": 14,
+          "input_count": 15,
           "rejected_count": 2,
           "silent_hard_filter_relaxations": 0
         },
@@ -4564,7 +4644,7 @@
         "query": "MSFT FY2024 revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.718317,
+      "latency_ms": 1.76611,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -4642,6 +4722,7 @@
           "msft-q1",
           "msft-q2",
           "msft-revenue",
+          "msft-revenue-wrong-period",
           "msft-ytd",
           "user_1_auth-msft-2024",
           "user_1_msft-amended",
@@ -4654,11 +4735,12 @@
           "user_1_msft-q1",
           "user_1_msft-q2",
           "user_1_msft-revenue",
+          "user_1_msft-revenue-wrong-period",
           "user_1_msft-ytd"
         ],
-        "bm25_count": 14,
+        "bm25_count": 15,
         "bm25_metrics": {
-          "accepted_count": 12,
+          "accepted_count": 13,
           "created_at_temporal_misuse": 0,
           "events": [
             {
@@ -4681,13 +4763,13 @@
           ],
           "filter_invariant_violations": 0,
           "hard_filter_rejections": 2,
-          "input_count": 14,
+          "input_count": 15,
           "rejected_count": 2,
           "silent_hard_filter_relaxations": 0
         },
-        "dense_count": 14,
+        "dense_count": 15,
         "dense_metrics": {
-          "accepted_count": 12,
+          "accepted_count": 13,
           "created_at_temporal_misuse": 0,
           "events": [
             {
@@ -4710,7 +4792,7 @@
           ],
           "filter_invariant_violations": 0,
           "hard_filter_rejections": 2,
-          "input_count": 14,
+          "input_count": 15,
           "rejected_count": 2,
           "silent_hard_filter_relaxations": 0
         },
@@ -5062,7 +5144,7 @@
         },
         "case_id": "CASE15_TEMPORAL_CONFLICT",
         "hard_filters_preserved": true,
-        "latency_ms": 1.781438,
+        "latency_ms": 1.819885,
         "query_history": [
           "MSFT FY2024 revenue conflict"
         ],
@@ -5167,7 +5249,7 @@
         "query": "MSFT FY2024 revenue conflict",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.119185,
+      "latency_ms": 1.104938,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -5245,11 +5327,12 @@
           "user_1_msft-q1",
           "user_1_msft-q2",
           "user_1_msft-revenue",
+          "user_1_msft-revenue-wrong-period",
           "user_1_msft-ytd"
         ],
-        "bm25_count": 14,
+        "bm25_count": 15,
         "bm25_metrics": {
-          "accepted_count": 12,
+          "accepted_count": 13,
           "created_at_temporal_misuse": 0,
           "events": [
             {
@@ -5272,7 +5355,7 @@
           ],
           "filter_invariant_violations": 0,
           "hard_filter_rejections": 2,
-          "input_count": 14,
+          "input_count": 15,
           "rejected_count": 2,
           "silent_hard_filter_relaxations": 0
         },
@@ -5306,7 +5389,7 @@
       }
     }
   ],
-  "fixture_db": "/tmp/nf-v2-16-r1-prosq_t5/fixture_bm25.db",
+  "fixture_db": "/tmp/nf-v2-16-r1-uc0zg1jp/fixture_bm25.db",
   "model_calls": 0,
   "real_bm25_calls": 24,
   "source_type": "TEST_FIXTURE"
