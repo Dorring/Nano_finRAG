@@ -384,8 +384,8 @@ def main() -> None:
     dump("latency.json", {
         "environment": "local TEST_FIXTURE SQLite FTS5; no model/provider calls",
         "base_retrieval_path_ms": sum(latencies) / max(len(latencies), 1),
-        "adaptive_retrieval_path_ms": sum(item["latency_ms"] for item in results if "adaptive" in item) / max(len(adaptive), 1),
-        "additional_replan_overhead_ms": sum(item["latency_ms"] for item in results if "adaptive" in item) / max(len(adaptive), 1) - sum(item["latency_ms"] for item in results if "adaptive" in item) / max(len(adaptive), 1),
+        "adaptive_retrieval_path_ms": sum(item["adaptive"]["latency_ms"] for item in results if "adaptive" in item) / max(len(adaptive), 1),
+        "additional_replan_overhead_ms": sum(item["adaptive"]["latency_ms"] - item["latency_ms"] for item in results if "adaptive" in item) / max(len(adaptive), 1),
         "p50_ms": latencies_sorted[len(latencies_sorted) // 2] if latencies_sorted else 0.0,
         "p95_ms": p95,
         "real_retrieval_calls": sum(item.get("adaptive", {}).get("real_retrieval_calls", 0) for item in results) + len(results),

@@ -26,7 +26,7 @@
         "query": "MSFT FY2024 revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 2.765189,
+      "latency_ms": 2.733917,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -222,7 +222,7 @@
         "query": "MSFT FY2024 revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.217487,
+      "latency_ms": 1.225309,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -387,7 +387,7 @@
         "query": "MSFT FY2024 revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 0.708117,
+      "latency_ms": 0.681809,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -552,7 +552,7 @@
         "query": "MSFT 2024 Q1 revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.343918,
+      "latency_ms": 1.360624,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -973,7 +973,7 @@
         "query": "MSFT 2024 Q2 six months ended revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 0.906272,
+      "latency_ms": 0.906645,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -1297,7 +1297,7 @@
         "query": "MSFT latest annual report revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 2.603582,
+      "latency_ms": 5.323605,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -1636,7 +1636,7 @@
         "query": "MSFT FY2024 annual current valid version",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.463488,
+      "latency_ms": 1.539086,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -2208,7 +2208,7 @@
         },
         "case_id": "CASE08_MISSING_SLOT_RECOVERABLE",
         "hard_filters_preserved": true,
-        "latency_ms": 2.911012,
+        "latency_ms": 2.908824,
         "query_history": [
           "MSFT FY2024 revenue and operating income",
           "MSFT FY2024 revenue and operating income"
@@ -2319,7 +2319,7 @@
         "replan": true,
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.346673,
+      "latency_ms": 1.353031,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -2794,7 +2794,7 @@
         },
         "case_id": "CASE09_WRONG_PERIOD_RECOVERY",
         "hard_filters_preserved": true,
-        "latency_ms": 2.66479,
+        "latency_ms": 2.635961,
         "query_history": [
           "MSFT FY2024 revenue",
           "MSFT FY2024 revenue [period=FY2024]"
@@ -2905,7 +2905,7 @@
         "replan": true,
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.095623,
+      "latency_ms": 1.076013,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -3232,7 +3232,7 @@
         },
         "case_id": "CASE10_NO_PROGRESS",
         "hard_filters_preserved": true,
-        "latency_ms": 2.059958,
+        "latency_ms": 2.05336,
         "query_history": [
           "MSFT FY2024 missing metric",
           "MSFT FY2024 missing metric"
@@ -3329,7 +3329,7 @@
         "replan": true,
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 0.817531,
+      "latency_ms": 0.808079,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -3797,7 +3797,7 @@
         },
         "case_id": "CASE11_CAPABILITY_REROUTE",
         "hard_filters_preserved": true,
-        "latency_ms": 2.680795,
+        "latency_ms": 2.650193,
         "query_history": [
           "MSFT FY2024 revenue and income",
           "MSFT FY2024 revenue and income"
@@ -3909,7 +3909,7 @@
         "replan": true,
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.094141,
+      "latency_ms": 1.088112,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -4068,7 +4068,7 @@
         "query": "MSFT FY2030 revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.181931,
+      "latency_ms": 1.172765,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -4447,7 +4447,7 @@
         "query": "MSFT FY2024 revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.76602,
+      "latency_ms": 1.746103,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -4644,7 +4644,7 @@
         "query": "MSFT FY2024 revenue",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.76611,
+      "latency_ms": 1.752703,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -5144,7 +5144,7 @@
         },
         "case_id": "CASE15_TEMPORAL_CONFLICT",
         "hard_filters_preserved": true,
-        "latency_ms": 1.819885,
+        "latency_ms": 1.815383,
         "query_history": [
           "MSFT FY2024 revenue conflict"
         ],
@@ -5249,7 +5249,7 @@
         "query": "MSFT FY2024 revenue conflict",
         "source_type": "TEST_FIXTURE"
       },
-      "latency_ms": 1.104938,
+      "latency_ms": 1.08084,
       "scope": {
         "authorization_scope": {
           "user_id": 1
@@ -5389,7 +5389,7 @@
       }
     }
   ],
-  "fixture_db": "/tmp/nf-v2-16-r1-uc0zg1jp/fixture_bm25.db",
+  "fixture_db": "/tmp/nf-v2-16-r1-4khe4ow2/fixture_bm25.db",
   "model_calls": 0,
   "real_bm25_calls": 24,
   "source_type": "TEST_FIXTURE"
