@@ -1,0 +1,66 @@
+{
+  "AGENTIC_REPLAN": {
+    "correct": 0,
+    "count": 15,
+    "fail_closed": 15,
+    "release": 0,
+    "retrieval_success": 0,
+    "unsafe_release": 0
+  },
+  "CONFLICT_AMBIGUITY": {
+    "correct": 0,
+    "count": 5,
+    "fail_closed": 5,
+    "release": 0,
+    "retrieval_success": 0,
+    "unsafe_release": 0
+  },
+  "DETERMINISTIC_CALCULATION": {
+    "correct": 0,
+    "count": 15,
+    "fail_closed": 15,
+    "release": 0,
+    "retrieval_success": 0,
+    "unsafe_release": 0
+  },
+  "MULTI_EVIDENCE": {
+    "correct": 0,
+    "count": 20,
+    "fail_closed": 20,
+    "release": 0,
+    "retrieval_success": 0,
+    "unsafe_release": 0
+  },
+  "NO_ANSWER_FAIL_CLOSED": {
+    "correct": 0,
+    "count": 10,
+    "fail_closed": 10,
+    "release": 0,
+    "retrieval_success": 0,
+    "unsafe_release": 0
+  },
+  "SINGLE_EVIDENCE_FACT": {
+    "correct": 3,
+    "count": 30,
+    "fail_closed": 23,
+    "release": 7,
+    "retrieval_success": 2,
+    "unsafe_release": 0
+  },
+  "TEMPORAL_PERIOD": {
+    "correct": 3,
+    "count": 15,
+    "fail_closed": 10,
+    "release": 5,
+    "retrieval_success": 0,
+    "unsafe_release": 0
+  },
+  "VERSION_TEMPORAL": {
+    "correct": 0,
+    "count": 10,
+    "fail_closed": 10,
+    "release": 0,
+    "retrieval_success": 0,
+    "unsafe_release": 0
+  }
+}

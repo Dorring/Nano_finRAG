@@ -1,0 +1,17 @@
+{
+  "events": [
+    {
+      "status": "INFRA_INVALID",
+      "execution_attempt": 1,
+      "reason": "Evaluation driver used unsanitized FTS query and dense embedding dependency was unavailable in the CUDA environment; all 120 packets fail-closed before generation.",
+      "outputs_sha256": "5382eca0907a7d95b17d0a70d2c344d4ae3e82dc0c0eb0948a8fa1f1e4b5d220",
+      "trace_sha256": "010f755451a10b40b195430f99ad59f403025786e2d642e320db4bedcbd8db62",
+      "gold_scored": false
+    },
+    {
+      "status": "VALID_ATTEMPT_FOLLOWS",
+      "execution_attempt": 2,
+      "reason": "Safe FTS query normalization and frozen all-MiniLM-L6-v2 query vectors were prepared without changing the frozen index or model."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "answerable_retrieval_complete": 2,
+  "denominator_scope": "all 120; answerable denominator reported separately",
+  "metadata_filter_failures": 0,
+  "multi_all_at_5": {
+    "denominator": 20,
+    "hits": 0
+  },
+  "multi_any_at_5": {
+    "denominator": 20,
+    "hits": 0
+  },
+  "recall_at_1": {
+    "answerable_denominator": 105,
+    "answerable_hits": 2,
+    "denominator": 120,
+    "hits": 2
+  },
+  "recall_at_10": {
+    "answerable_denominator": 105,
+    "answerable_hits": 2,
+    "denominator": 120,
+    "hits": 2
+  },
+  "recall_at_3": {
+    "answerable_denominator": 105,
+    "answerable_hits": 2,
+    "denominator": 120,
+    "hits": 2
+  },
+  "recall_at_5": {
+    "answerable_denominator": 105,
+    "answerable_hits": 2,
+    "denominator": 120,
+    "hits": 2
+  },
+  "retrieval_miss_count": 103,
+  "wrong_period_retrieval_count": 0
+}

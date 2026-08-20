@@ -1,0 +1,30 @@
+{
+  "adaptive_replan_path": {
+    "count": 69,
+    "max_ms": 799.639,
+    "mean_ms": 55.183,
+    "p50_ms": 34.003,
+    "p95_ms": 70.659
+  },
+  "all": {
+    "count": 120,
+    "max_ms": 1507.984,
+    "mean_ms": 256.558,
+    "p50_ms": 49.5,
+    "p95_ms": 737.68
+  },
+  "generation_path": {
+    "count": 52,
+    "max_ms": 1507.984,
+    "mean_ms": 543.08,
+    "p50_ms": 588.087,
+    "p95_ms": 798.07
+  },
+  "no_generation_fail_closed": {
+    "count": 68,
+    "max_ms": 74.138,
+    "mean_ms": 37.453,
+    "p50_ms": 33.327,
+    "p95_ms": 58.794
+  }
+}

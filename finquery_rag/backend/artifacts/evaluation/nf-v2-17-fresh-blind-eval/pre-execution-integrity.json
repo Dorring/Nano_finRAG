@@ -1,0 +1,65 @@
+{
+  "base_sha_expected": "bdd91dba0f165bf9309f2b4c1a0b649a29b44010",
+  "benchmark_fields_exposed_to_runtime": false,
+  "budget_unchanged": true,
+  "checkpoint": {
+    "exists": true,
+    "expected": "2be1d02b2129661e1bad454fbbdddd2c5c12262a6facd4369a12612cd634d794",
+    "path": "/home/mxf/.cache/nanochat/chatsft_checkpoints/d24_grounding_align_r231/model_000004.pt",
+    "sha256": "2be1d02b2129661e1bad454fbbdddd2c5c12262a6facd4369a12612cd634d794"
+  },
+  "corpus_sha": "63620b2183c4635f1ecff974935bc81a4d8ce678c72e72e94155d8f0a96e6929",
+  "embedding_model_unchanged": true,
+  "evaluation_config_sha": "ea42bd878bcbd00a2c3a53cd5c225d73ba3dbc27197873c600c1c8e0c4427716",
+  "execution_gate_override": "B3 executes the frozen candidate once; construction config flag is unchanged",
+  "financial_generation_view_sha": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "git_head": "bdd91dba0f165bf9309f2b4c1a0b649a29b44010",
+  "git_head_matches_base": true,
+  "gold_reference_loaded_before_seal": false,
+  "gpu": {
+    "free_mib": 15456,
+    "name": "NVIDIA RTX A6000",
+    "total_mib": 49140,
+    "used_mib": 33095
+  },
+  "input_hashes": {
+    "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.worktrees/nf-v2-17-financial-corpus-v2/finquery_rag/backend/artifacts/evaluation/nf-v2-17-fresh-blind-eval/fresh-blind-evaluation-freeze.json": {
+      "expected": "c3648925f07e878123e78e0fed21b12e0499a461d2c83e28616cfe80789c920a",
+      "match": true,
+      "sha256": "c3648925f07e878123e78e0fed21b12e0499a461d2c83e28616cfe80789c920a"
+    },
+    "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.worktrees/nf-v2-17-financial-corpus-v2/finquery_rag/backend/artifacts/evaluation/nf-v2-17-fresh-blind-eval/fresh-blind-gold-evidence-v1.jsonl": {
+      "expected": "1185bab1aa2923388c603bcf9f15f76a38e7472c5d48c2272af4c7b6138955ff",
+      "match": true,
+      "sha256": "1185bab1aa2923388c603bcf9f15f76a38e7472c5d48c2272af4c7b6138955ff"
+    },
+    "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.worktrees/nf-v2-17-financial-corpus-v2/finquery_rag/backend/artifacts/evaluation/nf-v2-17-fresh-blind-eval/fresh-blind-questions-v1.jsonl": {
+      "expected": "06b1994034a425f749a7600d168bf7e34d5e2eaba544c75f5398f71cf7d26bb3",
+      "match": true,
+      "sha256": "06b1994034a425f749a7600d168bf7e34d5e2eaba544c75f5398f71cf7d26bb3"
+    },
+    "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.worktrees/nf-v2-17-financial-corpus-v2/finquery_rag/backend/artifacts/evaluation/nf-v2-17-fresh-blind-eval/fresh-blind-reference-answers-v1.jsonl": {
+      "expected": "ae75c885f2304e6ca63f63891ed7be269b73cc2d7d99835fe368b665f26bd8ad",
+      "match": true,
+      "sha256": "ae75c885f2304e6ca63f63891ed7be269b73cc2d7d99835fe368b665f26bd8ad"
+    }
+  },
+  "query_vector_cache": {
+    "dimension": 384,
+    "index_unchanged": true,
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "normalization": "L2",
+    "path": "/tmp/nf_v2_17b3_query_vectors.npz",
+    "purpose": "reuse frozen dense query embedding in CUDA runtime environment",
+    "sha256": "c3da54b66760b0c318d2d5aa001c6fc665d2f8bc07fa1041229d13c208d0af99"
+  },
+  "reranker_unchanged": true,
+  "retrieval_parameters_unchanged": true,
+  "rrf_unchanged": true,
+  "runtime_code_config_unchanged": true,
+  "runtime_validator_unchanged": true,
+  "searchable_corpus_sha": "3ef3d8e772dfb2d4e2594d18efe3c101c4a4a3bb108e0faa0d75d11c667421a3",
+  "semantic_claim_verifier_unchanged": true,
+  "supervisor_policy_unchanged": true,
+  "trace_schema_sha": "fcd6401b7ee7cb97f75a799511df1344848bba3b91b50fa2572655160ae85de8"
+}

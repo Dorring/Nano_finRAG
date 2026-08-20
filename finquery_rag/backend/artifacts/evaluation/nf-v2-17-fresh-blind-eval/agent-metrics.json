@@ -1,0 +1,21 @@
+{
+  "budget_violations": 0,
+  "evidence_progress_rate": 0.4417,
+  "expected_replan": 15,
+  "infinite_loops": 0,
+  "mean_replan_rounds": 1.133,
+  "mean_tool_calls": 2.125,
+  "missing_operand_recovery": 0,
+  "missing_slot_recovery": 0,
+  "no_progress_correct_stop": 15,
+  "p50_replan_rounds": 2.0,
+  "p50_tool_calls": 3.0,
+  "p95_replan_rounds": 2,
+  "p95_tool_calls": 3,
+  "repairable_replan_cases": 0,
+  "repairable_replan_recovered": 0,
+  "replan_attempted": 69,
+  "replan_needed": 15,
+  "tool_reroute_success": 0,
+  "wrong_period_recovery": 0
+}
