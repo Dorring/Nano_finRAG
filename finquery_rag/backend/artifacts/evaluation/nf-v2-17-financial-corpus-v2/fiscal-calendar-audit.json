@@ -1,0 +1,357 @@
+{
+  "schema_version": "nf-v2-17/fiscal-calendar-audit/v1",
+  "base_sha": "b7de593051bdb61e4a08539cef762f7fa373a9fd",
+  "created_at_used_as_financial_time": false,
+  "companies": [
+    {
+      "ticker": "MSFT",
+      "company": "Microsoft Corporation",
+      "fiscal_year_end_convention": "June 30 fiscal year end",
+      "classification": "NON_CALENDAR_ISSUER",
+      "fy2023_period_end": "2023-06-30",
+      "fy2024_period_end": "2024-06-30",
+      "fy2025_period_end": "2025-06-30",
+      "quarter_period_mapping": [
+        {
+          "fiscal_quarter": "Q1",
+          "period_end": "2024-09-30",
+          "document_id": "SEC_789019_000095017024118967"
+        },
+        {
+          "fiscal_quarter": "Q2",
+          "period_end": "2024-12-31",
+          "document_id": "SEC_789019_000095017025010491"
+        },
+        {
+          "fiscal_quarter": "Q3",
+          "period_end": "2025-03-31",
+          "document_id": "SEC_789019_000095017025061046"
+        }
+      ],
+      "source_used": [
+        "SEC_789019_000095017023035122",
+        "SEC_789019_000095017024087843",
+        "SEC_789019_000095017025100235",
+        "SEC_789019_000095017024118967",
+        "SEC_789019_000095017025010491",
+        "SEC_789019_000095017025061046"
+      ],
+      "created_at_used_as_financial_time": false
+    },
+    {
+      "ticker": "AAPL",
+      "company": "Apple Inc.",
+      "fiscal_year_end_convention": "Last Saturday of September fiscal year end",
+      "classification": "NON_CALENDAR_ISSUER",
+      "fy2023_period_end": "2023-09-30",
+      "fy2024_period_end": "2024-09-28",
+      "fy2025_period_end": "2025-09-27",
+      "quarter_period_mapping": [
+        {
+          "fiscal_quarter": "Q1",
+          "period_end": "2024-12-28",
+          "document_id": "SEC_320193_000032019325000008"
+        },
+        {
+          "fiscal_quarter": "Q2",
+          "period_end": "2025-03-29",
+          "document_id": "SEC_320193_000032019325000057"
+        },
+        {
+          "fiscal_quarter": "Q3",
+          "period_end": "2025-06-28",
+          "document_id": "SEC_320193_000032019325000073"
+        }
+      ],
+      "source_used": [
+        "SEC_320193_000032019323000106",
+        "SEC_320193_000032019324000123",
+        "SEC_320193_000032019325000079",
+        "SEC_320193_000032019325000008",
+        "SEC_320193_000032019325000057",
+        "SEC_320193_000032019325000073"
+      ],
+      "created_at_used_as_financial_time": false
+    },
+    {
+      "ticker": "NVDA",
+      "company": "NVIDIA Corporation",
+      "fiscal_year_end_convention": "Late-January 52/53-week fiscal year end",
+      "classification": "NON_CALENDAR_ISSUER",
+      "fy2023_period_end": "2023-01-29",
+      "fy2024_period_end": "2024-01-28",
+      "fy2025_period_end": "2025-01-26",
+      "quarter_period_mapping": [
+        {
+          "fiscal_quarter": "Q1",
+          "period_end": "2024-04-28",
+          "document_id": "SEC_1045810_000104581024000124"
+        },
+        {
+          "fiscal_quarter": "Q2",
+          "period_end": "2024-07-28",
+          "document_id": "SEC_1045810_000104581024000264"
+        },
+        {
+          "fiscal_quarter": "Q3",
+          "period_end": "2024-10-27",
+          "document_id": "SEC_1045810_000104581024000316"
+        }
+      ],
+      "source_used": [
+        "SEC_1045810_000104581023000017",
+        "SEC_1045810_000104581024000029",
+        "SEC_1045810_000104581025000023",
+        "SEC_1045810_000104581024000124",
+        "SEC_1045810_000104581024000264",
+        "SEC_1045810_000104581024000316"
+      ],
+      "created_at_used_as_financial_time": false
+    },
+    {
+      "ticker": "JPM",
+      "company": "JPMorgan Chase & Co.",
+      "fiscal_year_end_convention": "December 31 calendar fiscal year",
+      "classification": "CALENDAR_YEAR_ISSUER",
+      "fy2023_period_end": "2023-12-31",
+      "fy2024_period_end": "2024-12-31",
+      "fy2025_period_end": "2025-12-31",
+      "quarter_period_mapping": [
+        {
+          "fiscal_quarter": "Q1",
+          "period_end": "2025-03-31",
+          "document_id": "SEC_19617_000001961725000421"
+        },
+        {
+          "fiscal_quarter": "Q2",
+          "period_end": "2025-06-30",
+          "document_id": "SEC_19617_000001961725000615"
+        },
+        {
+          "fiscal_quarter": "Q3",
+          "period_end": "2025-09-30",
+          "document_id": "SEC_19617_000162828025048859"
+        }
+      ],
+      "source_used": [
+        "SEC_19617_000001961724000225",
+        "SEC_19617_000001961725000270",
+        "SEC_19617_000162828026008131",
+        "SEC_19617_000001961725000421",
+        "SEC_19617_000001961725000615",
+        "SEC_19617_000162828025048859"
+      ],
+      "created_at_used_as_financial_time": false
+    },
+    {
+      "ticker": "TSLA",
+      "company": "Tesla, Inc.",
+      "fiscal_year_end_convention": "December 31 calendar fiscal year",
+      "classification": "CALENDAR_YEAR_ISSUER",
+      "fy2023_period_end": "2023-12-31",
+      "fy2024_period_end": "2024-12-31",
+      "fy2025_period_end": "2025-12-31",
+      "quarter_period_mapping": [
+        {
+          "fiscal_quarter": "Q1",
+          "period_end": "2025-03-31",
+          "document_id": "SEC_1318605_000162828025018911"
+        },
+        {
+          "fiscal_quarter": "Q2",
+          "period_end": "2025-06-30",
+          "document_id": "SEC_1318605_000162828025035806"
+        },
+        {
+          "fiscal_quarter": "Q3",
+          "period_end": "2025-09-30",
+          "document_id": "SEC_1318605_000162828025045968"
+        }
+      ],
+      "source_used": [
+        "SEC_1318605_000162828024002390",
+        "SEC_1318605_000162828025003063",
+        "SEC_1318605_000162828026003952",
+        "SEC_1318605_000162828025018911",
+        "SEC_1318605_000162828025035806",
+        "SEC_1318605_000162828025045968"
+      ],
+      "created_at_used_as_financial_time": false
+    },
+    {
+      "ticker": "KO",
+      "company": "The Coca-Cola Company",
+      "fiscal_year_end_convention": "December 31 calendar fiscal year",
+      "classification": "CALENDAR_YEAR_ISSUER",
+      "fy2023_period_end": "2023-12-31",
+      "fy2024_period_end": "2024-12-31",
+      "fy2025_period_end": "2025-12-31",
+      "quarter_period_mapping": [
+        {
+          "fiscal_quarter": "Q1",
+          "period_end": "2025-03-28",
+          "document_id": "SEC_21344_000002134425000029"
+        },
+        {
+          "fiscal_quarter": "Q2",
+          "period_end": "2025-06-27",
+          "document_id": "SEC_21344_000002134425000061"
+        },
+        {
+          "fiscal_quarter": "Q3",
+          "period_end": "2025-09-26",
+          "document_id": "SEC_21344_000162828025046054"
+        }
+      ],
+      "source_used": [
+        "SEC_21344_000002134424000009",
+        "SEC_21344_000002134425000011",
+        "SEC_21344_000162828026010047",
+        "SEC_21344_000002134425000029",
+        "SEC_21344_000002134425000061",
+        "SEC_21344_000162828025046054"
+      ],
+      "created_at_used_as_financial_time": false
+    },
+    {
+      "ticker": "V",
+      "company": "Visa Inc.",
+      "fiscal_year_end_convention": "September 30 fiscal year end",
+      "classification": "NON_CALENDAR_ISSUER",
+      "fy2023_period_end": "2023-09-30",
+      "fy2024_period_end": "2024-09-30",
+      "fy2025_period_end": "2025-09-30",
+      "quarter_period_mapping": [
+        {
+          "fiscal_quarter": "Q1",
+          "period_end": "2024-12-31",
+          "document_id": "SEC_1403161_000140316125000017"
+        },
+        {
+          "fiscal_quarter": "Q2",
+          "period_end": "2025-03-31",
+          "document_id": "SEC_1403161_000140316125000037"
+        },
+        {
+          "fiscal_quarter": "Q3",
+          "period_end": "2025-06-30",
+          "document_id": "SEC_1403161_000140316125000052"
+        }
+      ],
+      "source_used": [
+        "SEC_1403161_000140316123000099",
+        "SEC_1403161_000140316124000058",
+        "SEC_1403161_000140316125000089",
+        "SEC_1403161_000140316125000017",
+        "SEC_1403161_000140316125000037",
+        "SEC_1403161_000140316125000052"
+      ],
+      "created_at_used_as_financial_time": false
+    },
+    {
+      "ticker": "PFE",
+      "company": "Pfizer Inc.",
+      "fiscal_year_end_convention": "December 31 calendar fiscal year",
+      "classification": "CALENDAR_YEAR_ISSUER",
+      "fy2023_period_end": "2023-12-31",
+      "fy2024_period_end": "2024-12-31",
+      "fy2025_period_end": "2025-12-31",
+      "quarter_period_mapping": [
+        {
+          "fiscal_quarter": "Q1",
+          "period_end": "2025-03-30",
+          "document_id": "SEC_78003_000007800325000114"
+        },
+        {
+          "fiscal_quarter": "Q2",
+          "period_end": "2025-06-29",
+          "document_id": "SEC_78003_000007800325000138"
+        },
+        {
+          "fiscal_quarter": "Q3",
+          "period_end": "2025-09-28",
+          "document_id": "SEC_78003_000007800325000150"
+        }
+      ],
+      "source_used": [
+        "SEC_78003_000007800324000039",
+        "SEC_78003_000007800325000054",
+        "SEC_78003_000007800326000026",
+        "SEC_78003_000007800325000114",
+        "SEC_78003_000007800325000138",
+        "SEC_78003_000007800325000150"
+      ],
+      "created_at_used_as_financial_time": false
+    },
+    {
+      "ticker": "GOOGL",
+      "company": "Alphabet Inc.",
+      "fiscal_year_end_convention": "December 31 calendar fiscal year",
+      "classification": "CALENDAR_YEAR_ISSUER",
+      "fy2023_period_end": "2023-12-31",
+      "fy2024_period_end": "2024-12-31",
+      "fy2025_period_end": "2025-12-31",
+      "quarter_period_mapping": [
+        {
+          "fiscal_quarter": "Q1",
+          "period_end": "2025-03-31",
+          "document_id": "SEC_1652044_000165204425000043"
+        },
+        {
+          "fiscal_quarter": "Q2",
+          "period_end": "2025-06-30",
+          "document_id": "SEC_1652044_000165204425000062"
+        },
+        {
+          "fiscal_quarter": "Q3",
+          "period_end": "2025-09-30",
+          "document_id": "SEC_1652044_000165204425000091"
+        }
+      ],
+      "source_used": [
+        "SEC_1652044_000165204424000022",
+        "SEC_1652044_000165204425000014",
+        "SEC_1652044_000165204426000018",
+        "SEC_1652044_000165204425000043",
+        "SEC_1652044_000165204425000062",
+        "SEC_1652044_000165204425000091"
+      ],
+      "created_at_used_as_financial_time": false
+    },
+    {
+      "ticker": "AMZN",
+      "company": "Amazon.com, Inc.",
+      "fiscal_year_end_convention": "December 31 calendar fiscal year",
+      "classification": "CALENDAR_YEAR_ISSUER",
+      "fy2023_period_end": "2023-12-31",
+      "fy2024_period_end": "2024-12-31",
+      "fy2025_period_end": "2025-12-31",
+      "quarter_period_mapping": [
+        {
+          "fiscal_quarter": "Q1",
+          "period_end": "2025-03-31",
+          "document_id": "SEC_1018724_000101872425000036"
+        },
+        {
+          "fiscal_quarter": "Q2",
+          "period_end": "2025-06-30",
+          "document_id": "SEC_1018724_000101872425000086"
+        },
+        {
+          "fiscal_quarter": "Q3",
+          "period_end": "2025-09-30",
+          "document_id": "SEC_1018724_000101872425000123"
+        }
+      ],
+      "source_used": [
+        "SEC_1018724_000101872424000008",
+        "SEC_1018724_000101872425000004",
+        "SEC_1018724_000101872426000004",
+        "SEC_1018724_000101872425000036",
+        "SEC_1018724_000101872425000086",
+        "SEC_1018724_000101872425000123"
+      ],
+      "created_at_used_as_financial_time": false
+    }
+  ]
+}

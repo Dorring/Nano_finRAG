@@ -1,0 +1,53 @@
+{
+  "schema_version": "nf-v2-17/amendment-discovery/v1",
+  "discovered_count": 3,
+  "candidates": [
+    {
+      "company": "Tesla, Inc.",
+      "ticker": "TSLA",
+      "cik": "0001318605",
+      "amended_filing_id": "SEC_1318605_000110465926053166",
+      "accession_number": "0001104659-26-053166",
+      "form_type": "10-K/A",
+      "filing_date": "2026-04-30",
+      "report_period_end": "2025-12-31",
+      "primary_document_name": "tm2611837d1_10ka.htm",
+      "explicit_relation_present": false,
+      "decision": "RECORD_ONLY",
+      "version_relation": "UNKNOWN",
+      "note": "Submissions metadata identifies an amendment; original/supersedes scope requires filing-body review in acquisition phase."
+    },
+    {
+      "company": "Tesla, Inc.",
+      "ticker": "TSLA",
+      "cik": "0001318605",
+      "amended_filing_id": "SEC_1318605_000110465925042659",
+      "accession_number": "0001104659-25-042659",
+      "form_type": "10-K/A",
+      "filing_date": "2025-04-30",
+      "report_period_end": "2024-12-31",
+      "primary_document_name": "tm252787d2_10ka.htm",
+      "explicit_relation_present": false,
+      "decision": "RECORD_ONLY",
+      "version_relation": "UNKNOWN",
+      "note": "Submissions metadata identifies an amendment; original/supersedes scope requires filing-body review in acquisition phase."
+    },
+    {
+      "company": "The Coca-Cola Company",
+      "ticker": "KO",
+      "cik": "0000021344",
+      "amended_filing_id": "SEC_21344_000002134424000019",
+      "accession_number": "0000021344-24-000019",
+      "form_type": "10-Q/A",
+      "filing_date": "2024-05-30",
+      "report_period_end": "2024-03-29",
+      "primary_document_name": "ko-20240329.htm",
+      "explicit_relation_present": false,
+      "decision": "RECORD_ONLY",
+      "version_relation": "UNKNOWN",
+      "note": "Submissions metadata identifies an amendment; original/supersedes scope requires filing-body review in acquisition phase."
+    }
+  ],
+  "canonical_inclusion_count": 0,
+  "policy": "record_only_until_body_scope_and_supersedes_relation_are verified"
+}

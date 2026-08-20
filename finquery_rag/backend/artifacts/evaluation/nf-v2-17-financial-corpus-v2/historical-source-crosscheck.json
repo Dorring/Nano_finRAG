@@ -1,0 +1,118 @@
+{
+  "schema_version": "nf-v2-17/historical-source-crosscheck/v1",
+  "content_sha_verified": false,
+  "records": [
+    {
+      "historical_document_id": "msft_fy2025",
+      "ticker": "MSFT",
+      "historical_company": "Microsoft",
+      "historical_fiscal_year": 2025,
+      "historical_page_count": 90,
+      "historical_sha256": "1fb4c08a3aa6de381aec07aab6588964534c1a291d66046f950153ccdb84c3d4",
+      "resolved_document_id": "SEC_789019_000095017025100235",
+      "resolved_source_identity": {
+        "cik": "0000789019",
+        "accession_number": "0000950170-25-100235"
+      },
+      "classification": "SOURCE_IDENTITY_MATCH_CONTENT_UNVERIFIED"
+    },
+    {
+      "historical_document_id": "aapl_fy2025",
+      "ticker": "AAPL",
+      "historical_company": "Apple",
+      "historical_fiscal_year": 2025,
+      "historical_page_count": 80,
+      "historical_sha256": "108590052c3ba5400c63660d787fe7ed4e43868292946d7a7facebe9ab7d1aab",
+      "resolved_document_id": "SEC_320193_000032019325000079",
+      "resolved_source_identity": {
+        "cik": "0000320193",
+        "accession_number": "0000320193-25-000079"
+      },
+      "classification": "SOURCE_IDENTITY_MATCH_CONTENT_UNVERIFIED"
+    },
+    {
+      "historical_document_id": "nvda_fy2025",
+      "ticker": "NVDA",
+      "historical_company": "NVIDIA",
+      "historical_fiscal_year": 2025,
+      "historical_page_count": 181,
+      "historical_sha256": "757b344ab62ba282f6e44e0702e8ce5f190d88fb23b5e0a2beaf4cb277a395cc",
+      "resolved_document_id": "SEC_1045810_000104581025000023",
+      "resolved_source_identity": {
+        "cik": "0001045810",
+        "accession_number": "0001045810-25-000023"
+      },
+      "classification": "SOURCE_IDENTITY_MATCH_CONTENT_UNVERIFIED"
+    },
+    {
+      "historical_document_id": "jpm_fy2025",
+      "ticker": "JPM",
+      "historical_company": "JPMorganChase",
+      "historical_fiscal_year": 2025,
+      "historical_page_count": 364,
+      "historical_sha256": "2a3ee9733eafd01e7667c5540fbd797c4cc688d14f00638a877f5623d1316d9d",
+      "resolved_document_id": "SEC_19617_000162828026008131",
+      "resolved_source_identity": {
+        "cik": "0000019617",
+        "accession_number": "0001628280-26-008131"
+      },
+      "classification": "SOURCE_IDENTITY_MATCH_CONTENT_UNVERIFIED"
+    },
+    {
+      "historical_document_id": "tsla_fy2025",
+      "ticker": "TSLA",
+      "historical_company": "Tesla",
+      "historical_fiscal_year": 2025,
+      "historical_page_count": 140,
+      "historical_sha256": "5e33e314f47e85380f2e6a7d84481bd965e528f6614363c6b8fbce1a1d6df523",
+      "resolved_document_id": "SEC_1318605_000162828026003952",
+      "resolved_source_identity": {
+        "cik": "0001318605",
+        "accession_number": "0001628280-26-003952"
+      },
+      "classification": "SOURCE_IDENTITY_MATCH_CONTENT_UNVERIFIED"
+    },
+    {
+      "historical_document_id": "ko_fy2025",
+      "ticker": "KO",
+      "historical_company": "The Coca-Cola Company",
+      "historical_fiscal_year": 2025,
+      "historical_page_count": 192,
+      "historical_sha256": "3cf15f041ac30a094d868f383272d5129762dc4ef457413b95dcdae09e560015",
+      "resolved_document_id": "SEC_21344_000162828026010047",
+      "resolved_source_identity": {
+        "cik": "0000021344",
+        "accession_number": "0001628280-26-010047"
+      },
+      "classification": "SOURCE_IDENTITY_MATCH_CONTENT_UNVERIFIED"
+    },
+    {
+      "historical_document_id": "v_fy2025",
+      "ticker": "V",
+      "historical_company": "Visa",
+      "historical_fiscal_year": 2025,
+      "historical_page_count": 136,
+      "historical_sha256": "1fb927051da5346b0f5c3a9447a3bdf42c5ea9259000c94398db5965ddbcc7dd",
+      "resolved_document_id": "SEC_1403161_000140316125000089",
+      "resolved_source_identity": {
+        "cik": "0001403161",
+        "accession_number": "0001403161-25-000089"
+      },
+      "classification": "SOURCE_IDENTITY_MATCH_CONTENT_UNVERIFIED"
+    },
+    {
+      "historical_document_id": "pfe_fy2024",
+      "ticker": "PFE",
+      "historical_company": "Pfizer",
+      "historical_fiscal_year": 2024,
+      "historical_page_count": 165,
+      "historical_sha256": "8ee0b08f2f2c9326a3fab44642507c7907b53e75cc5a12839e8cde2228ed0229",
+      "resolved_document_id": "SEC_78003_000007800325000054",
+      "resolved_source_identity": {
+        "cik": "0000078003",
+        "accession_number": "0000078003-25-000054"
+      },
+      "classification": "SOURCE_IDENTITY_MATCH_CONTENT_UNVERIFIED"
+    }
+  ]
+}
