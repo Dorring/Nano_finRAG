@@ -1,0 +1,17 @@
+{
+  "exact_source_ids_equal": false,
+  "fields_checked": [
+    "MetricPath",
+    "header_path",
+    "SemanticAxisBinding",
+    "currency",
+    "scale",
+    "AtomicFact",
+    "provenance"
+  ],
+  "html_fixture_checked": true,
+  "note": "A4 HTML adapter emits the same shared semantic fields; no PDF corpus rerun was performed.",
+  "pdf_full_fixture_available": false,
+  "semantic_contract_equivalent": true,
+  "status": "CONTRACT_CHECKED"
+}

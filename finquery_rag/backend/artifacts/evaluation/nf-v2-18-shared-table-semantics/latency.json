@@ -1,0 +1,27 @@
+{
+  "coarse": {
+    "bm25_ms": {
+      "max_ms": 2459.5399610698223,
+      "mean_ms": 1114.9688580965933,
+      "p50_ms": 1260.0748679833487,
+      "p95_ms": 2306.504750973545
+    },
+    "coarse_ms": {
+      "max_ms": 2459.5399610698223,
+      "mean_ms": 1114.9688580965933,
+      "p50_ms": 1260.0748679833487,
+      "p95_ms": 2306.504750973545
+    }
+  },
+  "coarse_latency_note": "Measured during the initial one-time BM25 coarse pass; cached replay does not report zero as production latency.",
+  "qwen": {
+    "available": false,
+    "calls": 0,
+    "reason": "R1 frozen local Qwen path unavailable; optional only"
+  },
+  "semantic_build_ms": 181715.31981800217,
+  "slot_fanout_ms": {
+    "calls": 155,
+    "mean_ms": 1.5111148237220702
+  }
+}

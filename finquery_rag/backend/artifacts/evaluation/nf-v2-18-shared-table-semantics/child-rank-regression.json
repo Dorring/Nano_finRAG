@@ -1,0 +1,74 @@
+{
+  "cases": [
+    {
+      "before_classification": "CHILD_RANK_FAILURE",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204425000043::chunk_000d72b0e7da3d317c5f201d"
+      ],
+      "outcome": "STILL_COARSE_MISS",
+      "question_id": "FBV1-014",
+      "selected_semantic_facts": [
+        "atomic:4006d71f954e697af84ef609b19be4e48bf0ca39a91b76f4608a94f759f1457b",
+        "atomic:eec74373b25a122d56ef5bacf850d2b306254fc0fabadf9ff520b4a5db85f789",
+        "atomic:dad4c5468cd1814cfb9bac45866652300d9e29fbd5c8d1a73883f2a2b6b96778"
+      ],
+      "selected_top10": [
+        "SEC_1652044_000165204425000043::chunk_7eff0c83e9d32513cd02d220",
+        "SEC_1652044_000165204425000043::chunk_b1ab8979a2a7e013479b0df1",
+        "SEC_1652044_000165204425000043::chunk_99b8d9d214a58bef72274e55",
+        "SEC_1652044_000165204425000043::chunk_2a52bc1900bf7f07b82715a1",
+        "SEC_1652044_000165204425000043::chunk_7b69c5a01ceb810910a22aae",
+        "SEC_1652044_000165204425000043::chunk_48782913859a03071a265e57",
+        "SEC_1652044_000165204425000043::chunk_8b3fb5c8cf3f7242fcac4d13",
+        "SEC_1652044_000165204425000043::chunk_761b30c6478621a8c70b9cff",
+        "SEC_1652044_000165204425000043::chunk_150872e1534fa226abd5d0d7",
+        "SEC_1652044_000165204425000043::chunk_89b5b89ac28215c572d7fdb0"
+      ]
+    },
+    {
+      "before_classification": "CHILD_RANK_FAILURE",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204425000091::chunk_00268d6a88f48654a70e992d"
+      ],
+      "outcome": "STILL_COARSE_MISS",
+      "question_id": "FBV1-028",
+      "selected_semantic_facts": [],
+      "selected_top10": [
+        "SEC_1652044_000165204425000091::chunk_63319a6a8ce7e361d707e526",
+        "SEC_1652044_000165204425000091::chunk_cecc3e50fde3a6e1b12d166a",
+        "SEC_1652044_000165204425000091::chunk_bd945dbe62929f9f019679e5",
+        "SEC_1652044_000165204425000091::chunk_cef10c6e76aef3e8947ada04",
+        "SEC_1652044_000165204425000091::chunk_ae08b62fddd4c763b549bb26",
+        "SEC_1652044_000165204425000091::chunk_6b17712c1983f098b284dda0",
+        "SEC_1652044_000165204425000091::chunk_37eecb5ac8eb37dc4c872786",
+        "SEC_1652044_000165204425000091::chunk_d8874896e58332dc08dc73bc",
+        "SEC_1652044_000165204425000091::chunk_f8233f53c00e5c337914b087",
+        "SEC_1652044_000165204425000091::chunk_f0cdef4a757100ca681a6c42"
+      ]
+    },
+    {
+      "before_classification": "CHILD_RANK_FAILURE",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204425000091::chunk_00268d6a88f48654a70e992d"
+      ],
+      "outcome": "STILL_COARSE_MISS",
+      "question_id": "FBV1-071",
+      "selected_semantic_facts": [],
+      "selected_top10": [
+        "SEC_1652044_000165204425000091::chunk_cecc3e50fde3a6e1b12d166a",
+        "SEC_1652044_000165204425000091::chunk_63319a6a8ce7e361d707e526",
+        "SEC_1652044_000165204425000091::chunk_bd945dbe62929f9f019679e5",
+        "SEC_1652044_000165204425000091::chunk_ae08b62fddd4c763b549bb26",
+        "SEC_1652044_000165204425000091::chunk_6b17712c1983f098b284dda0",
+        "SEC_1652044_000165204425000091::chunk_37eecb5ac8eb37dc4c872786",
+        "SEC_1652044_000165204425000091::chunk_cef10c6e76aef3e8947ada04",
+        "SEC_1652044_000165204425000091::chunk_d8874896e58332dc08dc73bc",
+        "SEC_1652044_000165204425000091::chunk_f8233f53c00e5c337914b087",
+        "SEC_1652044_000165204425000091::chunk_f0cdef4a757100ca681a6c42"
+      ]
+    }
+  ],
+  "category": "CHILD_RANK_FAILURE",
+  "recovered": 0,
+  "total": 3
+}

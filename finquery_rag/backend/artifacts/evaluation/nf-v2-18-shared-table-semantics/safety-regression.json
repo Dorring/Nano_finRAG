@@ -1,0 +1,14 @@
+{
+  "authorization_violation": 0,
+  "created_at_misuse": 0,
+  "document_type_violation": 0,
+  "entity_violation": 0,
+  "false_binding": 0,
+  "fiscal_violation": 0,
+  "hard_scope_violation": 0,
+  "policy": "hard scope inherited from frozen coarse retrieval; UNKNOWN remains unresolved",
+  "silent_relaxation": 0,
+  "version_violation": 0,
+  "wrong_period_binding_admitted": 0,
+  "wrong_period_candidates_excluded": 555
+}

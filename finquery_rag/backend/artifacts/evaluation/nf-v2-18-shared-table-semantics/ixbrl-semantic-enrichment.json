@@ -1,0 +1,7 @@
+{
+  "competing_retrieval_branch": false,
+  "deterministic_unique_matches": 1216,
+  "ixbrl_facts_available": 132156,
+  "match_policy": "unique raw-value + period-end + semantic compatibility",
+  "uncertain_matches_discarded": true
+}

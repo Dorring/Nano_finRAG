@@ -1,0 +1,372 @@
+{
+  "cases": [
+    {
+      "before_classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1018724_000101872426000004::chunk_1e0190be6cf3619c4b664cc3"
+      ],
+      "outcome": "STILL_COARSE_MISS",
+      "question_id": "FBV1-003",
+      "selected_semantic_facts": [],
+      "selected_top10": [
+        "SEC_1018724_000101872426000004::chunk_3f17c0117ba5291c07793d56",
+        "SEC_1018724_000101872426000004::chunk_36178f7ee48e831444f3c77e",
+        "SEC_1018724_000101872426000004::chunk_6cc9d32a6ae162feedc33531",
+        "SEC_1018724_000101872426000004::chunk_a9aa2388d4ad0286fe09bc88",
+        "SEC_1018724_000101872426000004::chunk_c83842e07a934b43aed438da",
+        "SEC_1018724_000101872426000004::chunk_e045fd9ea5e542192c5a40c9",
+        "SEC_1018724_000101872426000004::chunk_ba53b30cf9e84f4e162199d8",
+        "SEC_1018724_000101872426000004::chunk_37c43f2bc3344a44b2f774c8",
+        "SEC_1018724_000101872426000004::chunk_01ff5ef877b1c66a523c30d6",
+        "SEC_1018724_000101872426000004::chunk_40bfdc0f83e151ac68d0aaa4"
+      ]
+    },
+    {
+      "before_classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1018724_000101872424000008::chunk_2dd63564f0db3cbc18c52582"
+      ],
+      "outcome": "STILL_COARSE_MISS",
+      "question_id": "FBV1-004",
+      "selected_semantic_facts": [],
+      "selected_top10": [
+        "SEC_1018724_000101872424000008::chunk_9974732939d85977a6373c27",
+        "SEC_1018724_000101872424000008::chunk_2d037b1f724d3372631460dd",
+        "SEC_1018724_000101872424000008::chunk_d148b6b97b12a9cdedc60565",
+        "SEC_1018724_000101872424000008::chunk_4d4647952cdf8d4e886a2941",
+        "SEC_1018724_000101872424000008::chunk_189d908347c2a9b38921cf10",
+        "SEC_1018724_000101872424000008::chunk_b503f05f688dfd361cc25150",
+        "SEC_1018724_000101872424000008::chunk_48286227746e19d41caa0766",
+        "SEC_1018724_000101872424000008::chunk_7bd9c61937a2fedee4143ae9",
+        "SEC_1018724_000101872424000008::chunk_d0201738afd1244b9bc98577",
+        "SEC_1018724_000101872424000008::chunk_9c1c1a9d8c67f2ead0b8cf6f"
+      ]
+    },
+    {
+      "before_classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204425000062::chunk_008c38f5ff86eebfb503e38b"
+      ],
+      "outcome": "STILL_COARSE_MISS",
+      "question_id": "FBV1-015",
+      "selected_semantic_facts": [
+        "atomic:721877f8785469b3601feb3585493fbe1ae0b9e2f36f09b904ae6c90161f2892",
+        "atomic:fdea5c3f26bd343ce3b10c9dfae375f9f82eb2c43a71457943b81496e4eb55eb",
+        "atomic:7566d94ca36ef9498b87fc9d754ec5b4a42852ae6c30a9c53651b6de6ccd1eec",
+        "atomic:481d011ad08414454449aaac8a5cf5f595f6dfeb0d87168a70107962905b37d3",
+        "atomic:bfef8ff4988de0cf3d3c44a64dd279a10c742725dd2cd2d6bf66625bfa257c07",
+        "atomic:c13367209c934d622987f2bceb9fa7a6748470a791bb94b78a0327ae4f5846bc",
+        "atomic:cb5779ed72ae50cda6982597f580687be508ad9eba04691126e8482ad1b63413",
+        "atomic:fec8740447980fb3ba76a26a11850f7f0eb52b138357e280f7d03edd5f89e411",
+        "atomic:f272a53b1cc352ae41ef1e43d50912d2b7eb2c40eb05b7ef6076f8543cbc5001",
+        "atomic:3f2fe9fe1f255a2cc027e3b5fff31166e8a57c3e67b04f16e28f0de897fd94f9"
+      ],
+      "selected_top10": [
+        "SEC_1652044_000165204425000062::chunk_63f53b9df051153a72b93119",
+        "SEC_1652044_000165204425000062::chunk_513db15e56c9fb57deec5eeb",
+        "SEC_1652044_000165204425000062::chunk_edb9489eb506e1354e2de8ce",
+        "SEC_1652044_000165204425000062::chunk_b0172d17fff3837776843671",
+        "SEC_1652044_000165204425000062::chunk_a09498effb6997524e33e177",
+        "SEC_1652044_000165204425000062::chunk_2bbbbd1e262c30d9d39d7d2f",
+        "SEC_1652044_000165204425000062::chunk_85668ce5cb9604206bdb1034",
+        "SEC_1652044_000165204425000062::chunk_4be7c7a288e493bb7548137e",
+        "SEC_1652044_000165204425000062::chunk_48db6553ce399ddd08a98b08",
+        "SEC_1652044_000165204425000062::chunk_99e40b1cbbf4b0d587f0f0b5"
+      ]
+    },
+    {
+      "before_classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1018724_000101872425000036::chunk_00b40951f4e4aa744fdeaf01"
+      ],
+      "outcome": "STILL_COARSE_MISS",
+      "question_id": "FBV1-020",
+      "selected_semantic_facts": [
+        "atomic:48ec0816c9df44cbcd6f5d773b02990c6256684863bc5eba7b1fb292eebf8c49",
+        "atomic:4e492a362d13812b6b62ae1ed4d52b90963a3ccf76a810ec54cb3b5a3707768c",
+        "atomic:fc5b99507d2d45f70acbc7577984ff6037219bc04629ce19764fc95c02827fb0",
+        "atomic:44dc77bf382ef830388af2661431b5d1db200f32f56af4ed5df98917476c3cd6",
+        "atomic:418a0940f8a308775a803d01377bc23995d88ce3c45ab976849709840636bd40",
+        "atomic:4e33d1a4dc97d7c575c6bf93ce1a84a63e7e0a100d6f022a90cc87778cdb4182"
+      ],
+      "selected_top10": [
+        "SEC_1018724_000101872425000036::chunk_e536967b60b488231d083dbb",
+        "SEC_1018724_000101872425000036::chunk_0d97bd34b03127a7d838498c",
+        "SEC_1018724_000101872425000036::chunk_2ae811c6e43c18de4168b0ec",
+        "SEC_1018724_000101872425000036::chunk_a90a37dff7dbeb1933f0e818",
+        "SEC_1018724_000101872425000036::chunk_db967f3c39e5a324c3fdd3e4",
+        "SEC_1018724_000101872425000036::chunk_e2a655ec733b97dfae083c72",
+        "SEC_1018724_000101872425000036::chunk_212301c66b65675cf1fb1b40",
+        "SEC_1018724_000101872425000036::chunk_967c59ef8e8f5293b6bdd51c",
+        "SEC_1018724_000101872425000036::chunk_2ba90ef7d6b55378ebd50582",
+        "SEC_1018724_000101872425000036::chunk_2543888d7fcbaaadf97541e9"
+      ]
+    },
+    {
+      "before_classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1018724_000101872425000004::chunk_00330dc551281e0c66b0985f"
+      ],
+      "outcome": "RECOVERED",
+      "question_id": "FBV1-030",
+      "selected_semantic_facts": [],
+      "selected_top10": [
+        "SEC_1018724_000101872425000004::chunk_e9287bdfca30b9625c627482",
+        "SEC_1018724_000101872425000004::chunk_dfbd72c20776ed3d90325e8c",
+        "SEC_1018724_000101872425000004::chunk_86f2f98df107fd58f1706fb0",
+        "SEC_1018724_000101872425000004::chunk_d8570c52212c7ccb1c75fce6",
+        "SEC_1018724_000101872425000004::chunk_38dfe8f68b99ceb5ce0102c4",
+        "SEC_1018724_000101872425000004::chunk_917229dcd9087d7cc274b43b",
+        "SEC_1018724_000101872425000004::chunk_e3d20dbbfd223b6db9fc6b93",
+        "SEC_1018724_000101872425000004::chunk_00330dc551281e0c66b0985f",
+        "SEC_1018724_000101872425000004::chunk_9dbdba69eb6c1ea3c9fe9d55",
+        "SEC_1018724_000101872425000004::chunk_d8e7e5ab3e68ecfb7b63c44b"
+      ]
+    },
+    {
+      "before_classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204424000022::chunk_05babe6392d5ef1a5dc1df60",
+        "SEC_1652044_000165204424000022::chunk_4e2a36a5c1f6b1b15193d650"
+      ],
+      "outcome": "STILL_COARSE_MISS",
+      "question_id": "FBV1-043",
+      "selected_semantic_facts": [
+        "atomic:ef7d1ea5e667cf2fba44e02111b40df773f55a0789edda7d2b8946e0d9b2929e",
+        "atomic:441894fa37b279ea45f0a86fa7f8c6ea5889a294277c11c3fdeb3255720bf162",
+        "atomic:ac4f8d838afe433dddf38aa9e227fb27bfb2f677709597d77fc10678f7b606cd"
+      ],
+      "selected_top10": [
+        "SEC_1652044_000165204424000022::chunk_57a3e18cf164e68528dc2f6d",
+        "SEC_1652044_000165204424000022::chunk_e46a51efec2c9bba3b9fe1fb",
+        "SEC_1652044_000165204424000022::chunk_023079e1d9cf0517cca7631d",
+        "SEC_1652044_000165204424000022::chunk_d685b3e1dcf9d97663a1dd75",
+        "SEC_1652044_000165204424000022::chunk_33bdc1abdea95fad92b368a2",
+        "SEC_1652044_000165204424000022::chunk_80fdf8e8a19cbe874d9ec25a",
+        "SEC_1652044_000165204424000022::chunk_eb20cadcae2bcaeef105a07a",
+        "SEC_1652044_000165204424000022::chunk_47a7e0818be11223edb5dc45",
+        "SEC_1652044_000165204424000022::chunk_004a31eadaf52e483b6cee29",
+        "SEC_1652044_000165204424000022::chunk_6ebb6ab19ec1ea56dca504d0"
+      ]
+    },
+    {
+      "before_classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204425000014::chunk_009f67ebfaee07a99ff63752",
+        "SEC_1652044_000165204425000014::chunk_0fbfa84634ea12b97a98c113"
+      ],
+      "outcome": "STILL_COARSE_MISS",
+      "question_id": "FBV1-044",
+      "selected_semantic_facts": [
+        "atomic:7fac459b4082364b50281beffbd0f504f1f2e6d86d86b9e952a29b13d4c23976",
+        "atomic:697ec11af3b74c310f179566d5054d0f533120e5b68b0e6f8dc1b9a7ac792ee0",
+        "atomic:477e6e28140f89f78660919b67029f23bb6ecd7157b246543f911bb2747c95fc"
+      ],
+      "selected_top10": [
+        "SEC_1652044_000165204425000014::chunk_143c69a391ef5e10b9711863",
+        "SEC_1652044_000165204425000014::chunk_37e21a85ad2d0490f9e01ffa",
+        "SEC_1652044_000165204425000014::chunk_997fd9a0d4312610bbc5ad17",
+        "SEC_1652044_000165204425000014::chunk_689e2fcb4df2f39a2a6949a6",
+        "SEC_1652044_000165204425000014::chunk_b083b1d2592975bd970f763a",
+        "SEC_1652044_000165204425000014::chunk_39dafab6ce154a66d10eff54",
+        "SEC_1652044_000165204425000014::chunk_1b8f779b2eb0b0b4479d546d",
+        "SEC_1652044_000165204425000014::chunk_d142d58c080258494103d2ba",
+        "SEC_1652044_000165204425000014::chunk_5f2c384211179832bb423ef3",
+        "SEC_1652044_000165204425000014::chunk_9af0c88831313047b977873a"
+      ]
+    },
+    {
+      "before_classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204426000018::chunk_061b76f97fb8a18a74a41216",
+        "SEC_1652044_000165204426000018::chunk_44e6f6598def07e9525dcc2a"
+      ],
+      "outcome": "RECOVERED",
+      "question_id": "FBV1-045",
+      "selected_semantic_facts": [
+        "atomic:e02cf006594e6358765af18de79c007d2efbbbd9b68be15c48da62292490f0ea"
+      ],
+      "selected_top10": [
+        "SEC_1652044_000165204426000018::chunk_3e56780d79cb08496767a564",
+        "SEC_1652044_000165204426000018::chunk_5cc0118d27e0940532f00ce8",
+        "SEC_1652044_000165204426000018::chunk_1d62bbe1ba77dd79e62b0024",
+        "SEC_1652044_000165204426000018::chunk_f0ed7b5ec6c7b07a4112783a",
+        "SEC_1652044_000165204426000018::chunk_591f9ce43863ba3a310646ec",
+        "SEC_1652044_000165204426000018::chunk_70c6c77a446a08c90edb3d8f",
+        "SEC_1652044_000165204426000018::chunk_1a85c5c5d3b695870d217b3e",
+        "SEC_1652044_000165204426000018::chunk_061b76f97fb8a18a74a41216",
+        "SEC_1652044_000165204426000018::chunk_e44ecbfd26618ba594ebc8a1",
+        "SEC_1652044_000165204426000018::chunk_65425e9324cd2502df10c049"
+      ]
+    },
+    {
+      "before_classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204425000014::chunk_0029c272c2d452cf7b062d8f"
+      ],
+      "outcome": "STILL_COARSE_MISS",
+      "question_id": "FBV1-067",
+      "selected_semantic_facts": [
+        "atomic:773d688db3cdd95595b6f0c7ffa6fa7474caa1144a3fe49fa7d6b40eaa2433dc",
+        "atomic:8ca7b718d0cb4a66ea1f62cddf84fea2d541d57d04e40c581f84dfa181f18c14",
+        "atomic:cce348bfa3dc798855fe90adcf7d1eedd8dfcd1087b06eb243c1fefdcd6ff80a",
+        "atomic:215483adf08116a65c39e866995322bee0893818615e778b46847676e65dcc01",
+        "atomic:dfb759cdb0e5fd67f4e855c21a1e614010396308900a65572968192a3997fb99",
+        "atomic:27a021269e571d941c79b49333628c9d9269ee837217f4f467ee3c22de7213a3",
+        "atomic:150d95812069212522fd244579b07ebfe3144ce136b945bc8134cb140769821f",
+        "atomic:22b5d544f456684ba9faa31abdd98f382fe9a994bd2af5650f91139188ebf25f",
+        "atomic:4dc7bf4c78b99962093e1fe3f72d927bc4729011ca6599a7b7a4ad3da385f4c6"
+      ],
+      "selected_top10": [
+        "SEC_1652044_000165204425000014::chunk_396f95a6fa54659ef486c42f",
+        "SEC_1652044_000165204425000014::chunk_b0213518cd0933d17f186f54",
+        "SEC_1652044_000165204425000014::chunk_19e5ad6b39d487495f604df4",
+        "SEC_1652044_000165204425000014::chunk_57aa5539fcbe484f58a05449",
+        "SEC_1652044_000165204425000014::chunk_88fa11f91725f9e9398f02a5",
+        "SEC_1652044_000165204425000014::chunk_f73be20ca4a70edbbc9db11b",
+        "SEC_1652044_000165204425000014::chunk_5b20bfc78da466e7896726fc",
+        "SEC_1652044_000165204425000014::chunk_3059daebb3c8c1e3a1ae6885",
+        "SEC_1652044_000165204425000014::chunk_e117c833afc5d195cd132ce1",
+        "SEC_1652044_000165204425000014::chunk_04adbef54ccbaef2f4cc81f7"
+      ]
+    },
+    {
+      "before_classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1018724_000101872425000036::chunk_00b40951f4e4aa744fdeaf01"
+      ],
+      "outcome": "STILL_COARSE_MISS",
+      "question_id": "FBV1-075",
+      "selected_semantic_facts": [
+        "atomic:48ec0816c9df44cbcd6f5d773b02990c6256684863bc5eba7b1fb292eebf8c49",
+        "atomic:fc5b99507d2d45f70acbc7577984ff6037219bc04629ce19764fc95c02827fb0",
+        "atomic:44dc77bf382ef830388af2661431b5d1db200f32f56af4ed5df98917476c3cd6",
+        "atomic:418a0940f8a308775a803d01377bc23995d88ce3c45ab976849709840636bd40",
+        "atomic:4e492a362d13812b6b62ae1ed4d52b90963a3ccf76a810ec54cb3b5a3707768c",
+        "atomic:4e33d1a4dc97d7c575c6bf93ce1a84a63e7e0a100d6f022a90cc87778cdb4182"
+      ],
+      "selected_top10": [
+        "SEC_1018724_000101872425000036::chunk_e536967b60b488231d083dbb",
+        "SEC_1018724_000101872425000036::chunk_2ae811c6e43c18de4168b0ec",
+        "SEC_1018724_000101872425000036::chunk_a90a37dff7dbeb1933f0e818",
+        "SEC_1018724_000101872425000036::chunk_db967f3c39e5a324c3fdd3e4",
+        "SEC_1018724_000101872425000036::chunk_0d97bd34b03127a7d838498c",
+        "SEC_1018724_000101872425000036::chunk_e2a655ec733b97dfae083c72",
+        "SEC_1018724_000101872425000036::chunk_212301c66b65675cf1fb1b40",
+        "SEC_1018724_000101872425000036::chunk_967c59ef8e8f5293b6bdd51c",
+        "SEC_1018724_000101872425000036::chunk_2ba90ef7d6b55378ebd50582",
+        "SEC_1018724_000101872425000036::chunk_2543888d7fcbaaadf97541e9"
+      ]
+    },
+    {
+      "before_classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1018724_000101872425000123::chunk_08be9b04559255834a8abf5b"
+      ],
+      "outcome": "STILL_COARSE_MISS",
+      "question_id": "FBV1-077",
+      "selected_semantic_facts": [
+        "atomic:80e83e66cab3beeacb3ccb5223b2824783372c411ce0529d60e4b095b9a7df79",
+        "atomic:b169aae55a43869185d0f02c19620e360eda97462589eb884bb9f242b6c2e27d",
+        "atomic:6cea8d59109885f54418ec575fcb3e7b058fd10ee96bead150f0d5b0fd21b86b",
+        "atomic:59e17afb3fef83eb62d695cb37b624f2bddeeed7f95d242e94e97581210d5b79",
+        "atomic:851939ae7c217a80f9468ce0bd15ed4b9c45902fce0ebe9c862c3b5f6e7d1947",
+        "atomic:14dbea79d70aaa7775dc9e12adc06b56adacba676d8b65c543114bdab6877058",
+        "atomic:16e0a0a7fc2a286f8e5daf9c99f835f43049e18cffd16b2ce2f339e4c6b164f6",
+        "atomic:512d46a29a73549843b767292d990139b29474230f9a75c2bc34c971c76a1c4a",
+        "atomic:5d49b0f8e8de89e8b487c964c0ed00b64bb82d5095016e07c554c76258a98c89"
+      ],
+      "selected_top10": [
+        "SEC_1018724_000101872425000123::chunk_859e80096aa703f2c881ba5c",
+        "SEC_1018724_000101872425000123::chunk_23591a53262cc87b2ed847fc",
+        "SEC_1018724_000101872425000123::chunk_96d13c5b1bf74fc974edae11",
+        "SEC_1018724_000101872425000123::chunk_e3acf4cee6d57db9032fdc80",
+        "SEC_1018724_000101872425000123::chunk_e6fc8063d4ad6337b096ecd4",
+        "SEC_1018724_000101872425000123::chunk_10633cc5fee3c618bb00097e",
+        "SEC_1018724_000101872425000123::chunk_6eb83d142bff9e2a87589ac2",
+        "SEC_1018724_000101872425000123::chunk_a21af0f54742fe6389418be0",
+        "SEC_1018724_000101872425000123::chunk_2f0c6071e6531235a9ca6175",
+        "SEC_1018724_000101872425000123::chunk_141e2a37f2a1ae57540b7f21"
+      ]
+    },
+    {
+      "before_classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204424000022::chunk_05babe6392d5ef1a5dc1df60",
+        "SEC_1652044_000165204424000022::chunk_4e2a36a5c1f6b1b15193d650"
+      ],
+      "outcome": "STILL_COARSE_MISS",
+      "question_id": "FBV1-093",
+      "selected_semantic_facts": [
+        "atomic:ef7d1ea5e667cf2fba44e02111b40df773f55a0789edda7d2b8946e0d9b2929e",
+        "atomic:441894fa37b279ea45f0a86fa7f8c6ea5889a294277c11c3fdeb3255720bf162",
+        "atomic:ac4f8d838afe433dddf38aa9e227fb27bfb2f677709597d77fc10678f7b606cd"
+      ],
+      "selected_top10": [
+        "SEC_1652044_000165204424000022::chunk_57a3e18cf164e68528dc2f6d",
+        "SEC_1652044_000165204424000022::chunk_e46a51efec2c9bba3b9fe1fb",
+        "SEC_1652044_000165204424000022::chunk_023079e1d9cf0517cca7631d",
+        "SEC_1652044_000165204424000022::chunk_da5c821b5a5f4084d367bd08",
+        "SEC_1652044_000165204424000022::chunk_d685b3e1dcf9d97663a1dd75",
+        "SEC_1652044_000165204424000022::chunk_33bdc1abdea95fad92b368a2",
+        "SEC_1652044_000165204424000022::chunk_80fdf8e8a19cbe874d9ec25a",
+        "SEC_1652044_000165204424000022::chunk_eb20cadcae2bcaeef105a07a",
+        "SEC_1652044_000165204424000022::chunk_47a7e0818be11223edb5dc45",
+        "SEC_1652044_000165204424000022::chunk_004a31eadaf52e483b6cee29"
+      ]
+    },
+    {
+      "before_classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204425000014::chunk_009f67ebfaee07a99ff63752",
+        "SEC_1652044_000165204425000014::chunk_0fbfa84634ea12b97a98c113"
+      ],
+      "outcome": "STILL_COARSE_MISS",
+      "question_id": "FBV1-094",
+      "selected_semantic_facts": [
+        "atomic:7fac459b4082364b50281beffbd0f504f1f2e6d86d86b9e952a29b13d4c23976",
+        "atomic:697ec11af3b74c310f179566d5054d0f533120e5b68b0e6f8dc1b9a7ac792ee0",
+        "atomic:477e6e28140f89f78660919b67029f23bb6ecd7157b246543f911bb2747c95fc"
+      ],
+      "selected_top10": [
+        "SEC_1652044_000165204425000014::chunk_143c69a391ef5e10b9711863",
+        "SEC_1652044_000165204425000014::chunk_37e21a85ad2d0490f9e01ffa",
+        "SEC_1652044_000165204425000014::chunk_997fd9a0d4312610bbc5ad17",
+        "SEC_1652044_000165204425000014::chunk_689e2fcb4df2f39a2a6949a6",
+        "SEC_1652044_000165204425000014::chunk_b083b1d2592975bd970f763a",
+        "SEC_1652044_000165204425000014::chunk_39dafab6ce154a66d10eff54",
+        "SEC_1652044_000165204425000014::chunk_1b8f779b2eb0b0b4479d546d",
+        "SEC_1652044_000165204425000014::chunk_d142d58c080258494103d2ba",
+        "SEC_1652044_000165204425000014::chunk_5f2c384211179832bb423ef3",
+        "SEC_1652044_000165204425000014::chunk_9af0c88831313047b977873a"
+      ]
+    },
+    {
+      "before_classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204426000018::chunk_061b76f97fb8a18a74a41216",
+        "SEC_1652044_000165204426000018::chunk_44e6f6598def07e9525dcc2a"
+      ],
+      "outcome": "RECOVERED",
+      "question_id": "FBV1-095",
+      "selected_semantic_facts": [
+        "atomic:e02cf006594e6358765af18de79c007d2efbbbd9b68be15c48da62292490f0ea"
+      ],
+      "selected_top10": [
+        "SEC_1652044_000165204426000018::chunk_3e56780d79cb08496767a564",
+        "SEC_1652044_000165204426000018::chunk_5cc0118d27e0940532f00ce8",
+        "SEC_1652044_000165204426000018::chunk_e79b21e1dae752e101c3d371",
+        "SEC_1652044_000165204426000018::chunk_1d62bbe1ba77dd79e62b0024",
+        "SEC_1652044_000165204426000018::chunk_591f9ce43863ba3a310646ec",
+        "SEC_1652044_000165204426000018::chunk_70c6c77a446a08c90edb3d8f",
+        "SEC_1652044_000165204426000018::chunk_1a85c5c5d3b695870d217b3e",
+        "SEC_1652044_000165204426000018::chunk_061b76f97fb8a18a74a41216",
+        "SEC_1652044_000165204426000018::chunk_f0ed7b5ec6c7b07a4112783a",
+        "SEC_1652044_000165204426000018::chunk_e44ecbfd26618ba594ebc8a1"
+      ]
+    }
+  ],
+  "category": "MULTI_LEVEL_HEADER",
+  "recovered": 3,
+  "total": 14
+}

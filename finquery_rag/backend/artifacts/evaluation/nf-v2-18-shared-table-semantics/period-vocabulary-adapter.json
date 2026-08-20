@@ -1,0 +1,18 @@
+{
+  "atomic_fact_period_semantics": {
+    "ANNUAL": 5587,
+    "INSTANT": 4078,
+    "QUARTER": 5123,
+    "UNKNOWN": 3883,
+    "YTD": 1294
+  },
+  "unknown_preserved": true,
+  "vocabulary": {
+    "As of": "INSTANT",
+    "Nine Months Ended": "YTD",
+    "Six Months Ended": "YTD",
+    "Three Months Ended": "QUARTER",
+    "Year Ended": "ANNUAL"
+  },
+  "wrong_period_policy": "exclude known mismatch; UNKNOWN cannot satisfy explicit target"
+}
