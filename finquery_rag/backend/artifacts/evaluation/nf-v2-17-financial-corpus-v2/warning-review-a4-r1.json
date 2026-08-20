@@ -1,0 +1,175 @@
+{
+  "category_counts": {
+    "SECTION_TAXONOMY_ONLY": 13
+  },
+  "derived_text_loss_records": [
+    {
+      "document_id": "SEC_789019_000095017023035122",
+      "lost_blocks": 1,
+      "section": "NOTES"
+    },
+    {
+      "document_id": "SEC_789019_000095017023035122",
+      "lost_blocks": 1,
+      "section": "UNKNOWN"
+    },
+    {
+      "document_id": "SEC_789019_000095017024087843",
+      "lost_blocks": 2,
+      "section": "NOTES"
+    },
+    {
+      "document_id": "SEC_789019_000095017024087843",
+      "lost_blocks": 1,
+      "section": "UNKNOWN"
+    },
+    {
+      "document_id": "SEC_789019_000095017024118967",
+      "lost_blocks": 1,
+      "section": "BUSINESS"
+    },
+    {
+      "document_id": "SEC_789019_000095017024118967",
+      "lost_blocks": 1,
+      "section": "UNKNOWN"
+    },
+    {
+      "document_id": "SEC_789019_000095017025010491",
+      "lost_blocks": 1,
+      "section": "BUSINESS"
+    },
+    {
+      "document_id": "SEC_789019_000095017025010491",
+      "lost_blocks": 1,
+      "section": "UNKNOWN"
+    },
+    {
+      "document_id": "SEC_789019_000095017025061046",
+      "lost_blocks": 1,
+      "section": "CASH_FLOW"
+    },
+    {
+      "document_id": "SEC_789019_000095017025061046",
+      "lost_blocks": 1,
+      "section": "UNKNOWN"
+    },
+    {
+      "document_id": "SEC_789019_000095017025100235",
+      "lost_blocks": 1,
+      "section": "NOTES"
+    },
+    {
+      "document_id": "SEC_789019_000095017025100235",
+      "lost_blocks": 2,
+      "section": "UNKNOWN"
+    }
+  ],
+  "records": [
+    {
+      "category": "SECTION_TAXONOMY_ONLY",
+      "disposition": "NON_BLOCKING",
+      "document_id": "SEC_1045810_000104581023000017",
+      "role": "ANNUAL",
+      "ticker": "NVDA",
+      "warning": "notes_section_not_classified_in_controlled_taxonomy"
+    },
+    {
+      "category": "SECTION_TAXONOMY_ONLY",
+      "disposition": "NON_BLOCKING",
+      "document_id": "SEC_1045810_000104581024000029",
+      "role": "ANNUAL",
+      "ticker": "NVDA",
+      "warning": "notes_section_not_classified_in_controlled_taxonomy"
+    },
+    {
+      "category": "SECTION_TAXONOMY_ONLY",
+      "disposition": "NON_BLOCKING",
+      "document_id": "SEC_1045810_000104581025000023",
+      "role": "ANNUAL",
+      "ticker": "NVDA",
+      "warning": "notes_section_not_classified_in_controlled_taxonomy"
+    },
+    {
+      "category": "SECTION_TAXONOMY_ONLY",
+      "disposition": "NON_BLOCKING",
+      "document_id": "SEC_1318605_000162828024002390",
+      "role": "ANNUAL",
+      "ticker": "TSLA",
+      "warning": "notes_section_not_classified_in_controlled_taxonomy"
+    },
+    {
+      "category": "SECTION_TAXONOMY_ONLY",
+      "disposition": "NON_BLOCKING",
+      "document_id": "SEC_1318605_000162828025003063",
+      "role": "ANNUAL",
+      "ticker": "TSLA",
+      "warning": "notes_section_not_classified_in_controlled_taxonomy"
+    },
+    {
+      "category": "SECTION_TAXONOMY_ONLY",
+      "disposition": "NON_BLOCKING",
+      "document_id": "SEC_1318605_000162828026003952",
+      "role": "ANNUAL",
+      "ticker": "TSLA",
+      "warning": "notes_section_not_classified_in_controlled_taxonomy"
+    },
+    {
+      "category": "SECTION_TAXONOMY_ONLY",
+      "disposition": "NON_BLOCKING",
+      "document_id": "SEC_1403161_000140316123000099",
+      "role": "ANNUAL",
+      "ticker": "V",
+      "warning": "notes_section_not_classified_in_controlled_taxonomy"
+    },
+    {
+      "category": "SECTION_TAXONOMY_ONLY",
+      "disposition": "NON_BLOCKING",
+      "document_id": "SEC_1403161_000140316124000058",
+      "role": "ANNUAL",
+      "ticker": "V",
+      "warning": "notes_section_not_classified_in_controlled_taxonomy"
+    },
+    {
+      "category": "SECTION_TAXONOMY_ONLY",
+      "disposition": "NON_BLOCKING",
+      "document_id": "SEC_1403161_000140316125000089",
+      "role": "ANNUAL",
+      "ticker": "V",
+      "warning": "notes_section_not_classified_in_controlled_taxonomy"
+    },
+    {
+      "category": "SECTION_TAXONOMY_ONLY",
+      "disposition": "NON_BLOCKING",
+      "document_id": "SEC_78003_000007800326000026",
+      "role": "ANNUAL",
+      "ticker": "PFE",
+      "warning": "notes_section_not_classified_in_controlled_taxonomy"
+    },
+    {
+      "category": "SECTION_TAXONOMY_ONLY",
+      "disposition": "NON_BLOCKING",
+      "document_id": "SEC_1652044_000165204424000022",
+      "role": "ANNUAL",
+      "ticker": "GOOGL",
+      "warning": "notes_section_not_classified_in_controlled_taxonomy"
+    },
+    {
+      "category": "SECTION_TAXONOMY_ONLY",
+      "disposition": "NON_BLOCKING",
+      "document_id": "SEC_1652044_000165204425000014",
+      "role": "ANNUAL",
+      "ticker": "GOOGL",
+      "warning": "notes_section_not_classified_in_controlled_taxonomy"
+    },
+    {
+      "category": "SECTION_TAXONOMY_ONLY",
+      "disposition": "NON_BLOCKING",
+      "document_id": "SEC_1652044_000165204426000018",
+      "role": "ANNUAL",
+      "ticker": "GOOGL",
+      "warning": "notes_section_not_classified_in_controlled_taxonomy"
+    }
+  ],
+  "warning_count": 13,
+  "warning_document_count": 13
+}

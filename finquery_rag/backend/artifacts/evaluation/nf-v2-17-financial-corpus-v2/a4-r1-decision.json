@@ -1,0 +1,24 @@
+{
+  "acceptance_basis": [
+    "native HTML/iXBRL is searchable",
+    "no catastrophic prose loss",
+    "native quarter/YTD QC has zero admitted incorrect cases",
+    "all A4 warnings classified and non-blocking",
+    "MinerU role is explicit and not default"
+  ],
+  "base_sha": "3380592c0ea6bc32aa11b9884772fbec291afd65",
+  "decision": "PARSER_ARCHITECTURE_ACCEPTED",
+  "indexing_performed": false,
+  "limitations": [
+    "MinerU/PDF comparison was not executable because MinerU and PyMuPDF are absent; this is explicitly not treated as a native-vs-MinerU win."
+  ],
+  "manual_qc_counts": {
+    "PASS": 20
+  },
+  "mineru_cross_validation": "NOT_RUN_TOOL_UNAVAILABLE",
+  "native_quarterly_incorrect": 0,
+  "text_loss_records": 0,
+  "warning_category_counts": {
+    "SECTION_TAXONOMY_ONLY": 13
+  }
+}

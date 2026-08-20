@@ -1,0 +1,16 @@
+{
+  "contexts": 33661,
+  "documents": 60,
+  "documents_with_facts": 60,
+  "facts": 132156,
+  "field_counts": {
+    "accession_provenance": 60,
+    "concept": 132156,
+    "context_ref": 132156,
+    "decimals": 120549,
+    "period_context": 132156,
+    "unit_ref": 120660
+  },
+  "native_structured_facts_authority": true,
+  "pdf_recovery_note": "PDF/MinerU does not reliably preserve contextRef, unitRef, decimals, concept/tag, or iXBRL period context; retain native fields even when PDF is used for fallback prose/layout."
+}

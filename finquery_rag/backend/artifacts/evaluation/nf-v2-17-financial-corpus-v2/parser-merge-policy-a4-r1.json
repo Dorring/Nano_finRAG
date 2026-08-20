@@ -1,0 +1,10 @@
+{
+  "conflicting_numeric_values": "quarantine",
+  "fallback_supplements": [
+    "prose_segmentation",
+    "visual_table_layout"
+  ],
+  "provenance_required": true,
+  "silent_concatenation": false,
+  "structured_fact_authority": "native_html_ixbrl"
+}
