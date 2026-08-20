@@ -1,0 +1,95 @@
+{
+  "cases": [
+    {
+      "candidates": [
+        {
+          "audit": {
+            "final_token_count": 159,
+            "original_token_count": 159,
+            "raw_token_count": 0,
+            "retained_raw_token_count": 0,
+            "truncated": false
+          },
+          "candidate_index": 0,
+          "document": "Operating income, year ended December 31, 2025: 32.1 billion dollars.",
+          "label": "relevant",
+          "score": {
+            "no_logit": 11.5,
+            "reranker_score": -0.0011701886542141438,
+            "yes_logit": 18.25
+          }
+        },
+        {
+          "audit": {
+            "final_token_count": 159,
+            "original_token_count": 159,
+            "raw_token_count": 0,
+            "retained_raw_token_count": 0,
+            "truncated": false
+          },
+          "candidate_index": 1,
+          "document": "Operating income, year ended December 31, 2024: 29.4 billion dollars.",
+          "label": "wrong_period",
+          "score": {
+            "no_logit": 15.0,
+            "reranker_score": -0.042999111115932465,
+            "yes_logit": 18.125
+          }
+        }
+      ],
+      "case_id": "period_fy2025_vs_fy2024",
+      "query": "What was FY2025 operating income?",
+      "ranking": [
+        0,
+        1
+      ],
+      "top_label": "relevant"
+    },
+    {
+      "candidates": [
+        {
+          "audit": {
+            "final_token_count": 168,
+            "original_token_count": 168,
+            "raw_token_count": 0,
+            "retained_raw_token_count": 0,
+            "truncated": false
+          },
+          "candidate_index": 0,
+          "document": "Three months ended June 30, 2025: revenue was 25.0 billion dollars.",
+          "label": "relevant",
+          "score": {
+            "no_logit": 11.375,
+            "reranker_score": -0.0008044582791626453,
+            "yes_logit": 18.5
+          }
+        },
+        {
+          "audit": {
+            "final_token_count": 168,
+            "original_token_count": 168,
+            "raw_token_count": 0,
+            "retained_raw_token_count": 0,
+            "truncated": false
+          },
+          "candidate_index": 1,
+          "document": "Six months ended June 30, 2025: revenue was 48.0 billion dollars.",
+          "label": "wrong_period",
+          "score": {
+            "no_logit": 16.375,
+            "reranker_score": -0.28115010261535645,
+            "yes_logit": 17.5
+          }
+        }
+      ],
+      "case_id": "period_quarter_vs_ytd",
+      "query": "What was revenue for the three months ended June 30, 2025?",
+      "ranking": [
+        0,
+        1
+      ],
+      "top_label": "relevant"
+    }
+  ],
+  "period_ranking_pass": true
+}

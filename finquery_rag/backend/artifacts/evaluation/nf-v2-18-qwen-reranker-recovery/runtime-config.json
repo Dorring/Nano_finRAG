@@ -1,0 +1,20 @@
+{
+  "dtype": "bfloat16",
+  "generation": false,
+  "gpu_operational_fields_excluded_from_semantic_hash": true,
+  "input_builder": "src.pdf_retrieval_v4.qwen3_reranker.build_input_ids",
+  "instruction_sha256": "10eb2881eb41a3c21c9d57fc5afbb6520f385adc78eb43785f2df1e86fbc4328",
+  "max_length": 8192,
+  "model_id": "Qwen/Qwen3-Reranker-4B",
+  "model_revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+  "normalization": "log_softmax([no_logit, yes_logit]) yes class",
+  "padding_side": "left",
+  "ranking_direction": "descending reranker_score",
+  "scorer_module": "src.pdf_retrieval_v4.qwen3_reranker.score_batch",
+  "selected_batch_size": 4,
+  "snapshot_sha256": "32b52d29edef232618c27a728cde56d369ba862c81d49c6527528dfd82db39c1",
+  "truncation_observations": {
+    "pairs": 12,
+    "truncated_pairs": 0
+  }
+}

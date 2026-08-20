@@ -1,0 +1,26 @@
+{
+  "cuda_visible_devices": "3",
+  "logical_device": "cuda:0",
+  "post_test_gpu": {
+    "active_compute_process_count": 1,
+    "active_processes": [
+      {
+        "pid": 3576198,
+        "process_name": "/mnt/disk/mxf/anaconda3/envs/QhChat/bin/python",
+        "used_vram_mib": 9644
+      }
+    ],
+    "free_vram_mib": 38884,
+    "memory_utilization_pct": 67,
+    "name": "NVIDIA RTX A6000",
+    "physical_index": 3,
+    "temperature_c": 48,
+    "total_vram_mib": 49140,
+    "used_vram_mib": 9667,
+    "utilization_pct": 96,
+    "uuid": "GPU-bea0ffce-0725-385d-8d4e-d2ff4f00e6e8"
+  },
+  "selected_physical_gpu": 3,
+  "torch_peak_allocated_mib": 8611.33837890625,
+  "torch_peak_reserved_mib": 9324.0
+}

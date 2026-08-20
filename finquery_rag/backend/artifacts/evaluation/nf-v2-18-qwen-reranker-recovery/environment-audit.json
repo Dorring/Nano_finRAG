@@ -1,0 +1,25 @@
+{
+  "actual": {
+    "accelerate": "1.11.0",
+    "huggingface_hub": "0.36.0",
+    "python": "3.12.12",
+    "python_executable": "/mnt/disk/mxf/anaconda3/envs/QhChat/bin/python",
+    "safetensors": "0.7.0",
+    "tokenizers": "0.22.2",
+    "torch_distribution": "2.9.1",
+    "transformers": "4.57.1"
+  },
+  "captured_at_utc": "2026-08-20T19:32:00+00:00",
+  "current_environment_selected": true,
+  "dependency_change_required": false,
+  "environment": "/mnt/disk/mxf/anaconda3/envs/QhChat",
+  "environment_mutated": false,
+  "historical_manifest_expected": {
+    "cuda": "12.8",
+    "dtype": "bfloat16",
+    "python": "3.12.2",
+    "torch": "2.9.1+cu128",
+    "transformers": "4.57.3"
+  },
+  "transformers_patch_delta": "4.57.1_vs_historical_4.57.3"
+}

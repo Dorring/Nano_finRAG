@@ -1,0 +1,22 @@
+{
+  "adaptation": "none; reusable wrapper delegates to existing build_input_ids and score_batch",
+  "generation": false,
+  "historical_batch_size": 1,
+  "historical_dtype": "bfloat16",
+  "historical_script": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.worktrees/nf-v2-18-retrieval-recovery/finquery_rag/backend/scripts/evaluation/run_pdf_v4_gate_08_r8_r3_2_rerank.py",
+  "instruction_module": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.worktrees/nf-v2-18-retrieval-recovery/finquery_rag/backend/src/pdf_retrieval_v4/structure_aware_rerank_view.py",
+  "instruction_source": "RERANK_INSTRUCTION from structure_aware_rerank_view.py",
+  "located": true,
+  "max_length": 8192,
+  "model_class": "transformers.AutoModelForCausalLM",
+  "normalization": "two-class log probability over no/yes",
+  "padding_side": "left",
+  "prompt_protocol": "PREFIX + <Instruct>/<Query>/<Document> + SUFFIX",
+  "query_document_formatting": "format_instruction(instruction, query, document)",
+  "ranking_direction": "descending reranker_score",
+  "raw_content_truncation": "only [CONTENT] raw tail is truncated; structured prefix retained",
+  "score_field": "reranker_score",
+  "scorer_module": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.worktrees/nf-v2-18-retrieval-recovery/finquery_rag/backend/src/pdf_retrieval_v4/qwen3_reranker.py",
+  "tokenizer_class": "transformers.AutoTokenizer",
+  "yes_no_score": "last-position logits; log_softmax([no, yes])[:, yes]"
+}

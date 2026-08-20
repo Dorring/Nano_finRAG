@@ -1,0 +1,42 @@
+{
+  "historical_batch_size": 1,
+  "selected_conservative_batch_size": 4,
+  "tested_batch_sizes": [
+    {
+      "batch_size": 1,
+      "elapsed_seconds": 0.3584420960396528,
+      "pairs": 12,
+      "pairs_per_second": 33.47821065824951,
+      "peak_allocated_mib": 7806.13671875,
+      "peak_reserved_mib": 7878.0,
+      "status": "PASS"
+    },
+    {
+      "batch_size": 4,
+      "elapsed_seconds": 0.31323809502646327,
+      "pairs": 12,
+      "pairs_per_second": 38.30951659626906,
+      "peak_allocated_mib": 8042.52197265625,
+      "peak_reserved_mib": 8352.0,
+      "status": "PASS"
+    },
+    {
+      "batch_size": 8,
+      "elapsed_seconds": 0.2600117879919708,
+      "pairs": 12,
+      "pairs_per_second": 46.151753705761074,
+      "peak_allocated_mib": 8320.6025390625,
+      "peak_reserved_mib": 8740.0,
+      "status": "PASS"
+    },
+    {
+      "batch_size": 16,
+      "elapsed_seconds": 0.23346160096116364,
+      "pairs": 12,
+      "pairs_per_second": 51.40031572899306,
+      "peak_allocated_mib": 8611.33837890625,
+      "peak_reserved_mib": 9324.0,
+      "status": "PASS"
+    }
+  ]
+}

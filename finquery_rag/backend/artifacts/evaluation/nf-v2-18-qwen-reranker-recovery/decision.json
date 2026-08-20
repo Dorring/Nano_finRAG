@@ -1,0 +1,13 @@
+{
+  "benchmark_rerun": false,
+  "blocker": null,
+  "decision": "QWEN_RERANKER_READY",
+  "dynamic_gpu_used": true,
+  "exact_model_revision": true,
+  "historical_scorer_reused": true,
+  "next_gate": "NF-V2-18A-R3_A4_PRESERVING_HIERARCHICAL_QWEN_RERANK",
+  "production": "V1",
+  "production_switch": false,
+  "retrieval_modified": false,
+  "snapshot_frozen": true
+}
