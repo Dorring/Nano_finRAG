@@ -1,7 +1,8 @@
 {
-  "adaptive_max_ms": 0.82369,
-  "adaptive_mean_ms": 0.5899566,
-  "adaptive_p50_ms": 0.608206,
+  "adaptive_max_ms": 0.301614,
+  "adaptive_mean_ms": 0.2272344,
+  "adaptive_p50_ms": 0.247894,
+  "adaptive_p95_ms": 0.254223,
   "base_ms": 0.0,
   "evidence_eval_mean_ms": 0.0,
   "model_calls": 0,

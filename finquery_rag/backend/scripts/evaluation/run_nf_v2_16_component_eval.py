@@ -237,6 +237,7 @@ def main() -> int:
         "synthetic_component": True, "model_calls": 0, "retrieval_calls": 0,
         "base_ms": 0.0, "adaptive_mean_ms": sum(latencies) / len(latencies),
         "adaptive_p50_ms": sorted(latencies)[len(latencies) // 2],
+        "adaptive_p95_ms": sorted(latencies)[min(len(latencies) - 1, max(0, int(len(latencies) * 0.95) - 1))],
         "adaptive_max_ms": max(latencies), "evidence_eval_mean_ms": 0.0,
         "temporal_eval_mean_ms": 0.0, "replan_mean_ms": 0.0,
         "note": "not a production latency claim; synthetic deterministic fixtures only",
