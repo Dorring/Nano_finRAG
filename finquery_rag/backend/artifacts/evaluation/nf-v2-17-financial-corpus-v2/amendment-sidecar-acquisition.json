@@ -1,0 +1,169 @@
+{
+  "acquired": 3,
+  "canonical_primary_count_excludes_sidecars": true,
+  "planned": 3,
+  "records": [
+    {
+      "accession_number": "0001104659-26-053166",
+      "amended_filing_id": "SEC_1318605_000110465926053166",
+      "cik": "0001318605",
+      "company": "Tesla, Inc.",
+      "content_verification_status": "CONTENT_VERIFIED",
+      "decision": "RECORD_ONLY",
+      "document_id": "SEC_1318605_000110465926053166",
+      "download_status": "REUSED_VERIFIED",
+      "download_timestamp": "2026-08-20T07:26:46Z",
+      "explicit_relation_present": false,
+      "filing_date": "2026-04-30",
+      "fiscal_quarter": null,
+      "fiscal_year": 2025,
+      "form_type": "10-K/A",
+      "identity_signals": {
+        "form": true,
+        "html": true,
+        "index_like": false,
+        "issuer": true,
+        "period": true,
+        "period_hits": [
+          "2025-12-31",
+          "December 31, 2025",
+          "December 31, 2025"
+        ]
+      },
+      "note": "Submissions metadata identifies an amendment; original/supersedes scope requires filing-body review in acquisition phase.",
+      "primary_document_name": "tm2611837d1_10ka.htm",
+      "raw_bytes": 691471,
+      "raw_local_path": "financial_corpus_v2/raw/version_candidates/TSLA/SEC_1318605_000110465926053166/primary.html",
+      "raw_sha256": "35e8e3c985ad540e22aa71d6da889dcd4b4d65194cc6f05cd00e6257f168ea4b",
+      "raw_source_url": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926053166/tm2611837d1_10ka.htm",
+      "report_period_end": "2025-12-31",
+      "response": {
+        "attempts": [],
+        "download_status": "REUSED_VERIFIED"
+      },
+      "response_meta": {
+        "content_type": "text/html",
+        "final_url": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926053166/tm2611837d1_10ka.htm",
+        "headers": {
+          "content_length": "67502",
+          "etag": null,
+          "last_modified": "Thu, 30 Apr 2026 21:14:06 GMT"
+        },
+        "status": 200
+      },
+      "role": "VERSION_SIDECAR_CANDIDATE",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926053166/0001104659-26-053166-index.htm",
+      "ticker": "TSLA",
+      "version_relation": "UNKNOWN",
+      "warnings": []
+    },
+    {
+      "accession_number": "0001104659-25-042659",
+      "amended_filing_id": "SEC_1318605_000110465925042659",
+      "cik": "0001318605",
+      "company": "Tesla, Inc.",
+      "content_verification_status": "CONTENT_VERIFIED",
+      "decision": "RECORD_ONLY",
+      "document_id": "SEC_1318605_000110465925042659",
+      "download_status": "REUSED_VERIFIED",
+      "download_timestamp": "2026-08-20T07:26:46Z",
+      "explicit_relation_present": false,
+      "filing_date": "2025-04-30",
+      "fiscal_quarter": null,
+      "fiscal_year": 2024,
+      "form_type": "10-K/A",
+      "identity_signals": {
+        "form": true,
+        "html": true,
+        "index_like": false,
+        "issuer": true,
+        "period": true,
+        "period_hits": [
+          "2024-12-31",
+          "December 31, 2024",
+          "December 31, 2024"
+        ]
+      },
+      "note": "Submissions metadata identifies an amendment; original/supersedes scope requires filing-body review in acquisition phase.",
+      "primary_document_name": "tm252787d2_10ka.htm",
+      "raw_bytes": 874910,
+      "raw_local_path": "financial_corpus_v2/raw/version_candidates/TSLA/SEC_1318605_000110465925042659/primary.html",
+      "raw_sha256": "c28e39f1152a8210d53b5f4265ee0562e8d0a7be586f1730318e34480fabaf6d",
+      "raw_source_url": "https://www.sec.gov/Archives/edgar/data/1318605/000110465925042659/tm252787d2_10ka.htm",
+      "report_period_end": "2024-12-31",
+      "response": {
+        "attempts": [],
+        "download_status": "REUSED_VERIFIED"
+      },
+      "response_meta": {
+        "content_type": "text/html",
+        "final_url": "https://www.sec.gov/Archives/edgar/data/1318605/000110465925042659/tm252787d2_10ka.htm",
+        "headers": {
+          "content_length": "66898",
+          "etag": null,
+          "last_modified": "Wed, 30 Apr 2025 21:09:19 GMT"
+        },
+        "status": 200
+      },
+      "role": "VERSION_SIDECAR_CANDIDATE",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000110465925042659/0001104659-25-042659-index.htm",
+      "ticker": "TSLA",
+      "version_relation": "UNKNOWN",
+      "warnings": []
+    },
+    {
+      "accession_number": "0000021344-24-000019",
+      "amended_filing_id": "SEC_21344_000002134424000019",
+      "cik": "0000021344",
+      "company": "The Coca-Cola Company",
+      "content_verification_status": "CONTENT_VERIFIED",
+      "decision": "RECORD_ONLY",
+      "document_id": "SEC_21344_000002134424000019",
+      "download_status": "REUSED_VERIFIED",
+      "download_timestamp": "2026-08-20T07:26:46Z",
+      "explicit_relation_present": false,
+      "filing_date": "2024-05-30",
+      "fiscal_quarter": null,
+      "fiscal_year": 2024,
+      "form_type": "10-Q/A",
+      "identity_signals": {
+        "form": true,
+        "html": true,
+        "index_like": false,
+        "issuer": true,
+        "period": true,
+        "period_hits": [
+          "2024-03-29",
+          "March 29, 2024",
+          "March 29, 2024"
+        ]
+      },
+      "note": "Submissions metadata identifies an amendment; original/supersedes scope requires filing-body review in acquisition phase.",
+      "primary_document_name": "ko-20240329.htm",
+      "raw_bytes": 63327,
+      "raw_local_path": "financial_corpus_v2/raw/version_candidates/KO/SEC_21344_000002134424000019/primary.html",
+      "raw_sha256": "d5f8c22f1f670fd22c3b2168c3fec8388e0824e92505d6f64ff345ec68c75503",
+      "raw_source_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134424000019/ko-20240329.htm",
+      "report_period_end": "2024-03-29",
+      "response": {
+        "attempts": [],
+        "download_status": "REUSED_VERIFIED"
+      },
+      "response_meta": {
+        "content_type": "text/html",
+        "final_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134424000019/ko-20240329.htm",
+        "headers": {
+          "content_length": "7068",
+          "etag": null,
+          "last_modified": "Thu, 30 May 2024 19:08:19 GMT"
+        },
+        "status": 200
+      },
+      "role": "VERSION_SIDECAR_CANDIDATE",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134424000019/0000021344-24-000019-index.htm",
+      "ticker": "KO",
+      "version_relation": "UNKNOWN",
+      "warnings": []
+    }
+  ]
+}
