@@ -1,0 +1,196 @@
+{
+  "R3": {
+    "metrics": {
+      "R@1": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 0,
+        "calculation_operand_coverage": 0.0,
+        "denominator": 120,
+        "exact_count": 30,
+        "exact_recall": 0.25,
+        "family_count": 41,
+        "family_recall": 0.3416666666666667,
+        "multi_all_count": 0,
+        "multi_all_recall": 0.0,
+        "multi_any_count": 9,
+        "multi_any_recall": 0.45,
+        "multi_count": 20
+      },
+      "R@10": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 7,
+        "calculation_operand_coverage": 0.4666666666666667,
+        "denominator": 120,
+        "exact_count": 56,
+        "exact_recall": 0.4666666666666667,
+        "family_count": 75,
+        "family_recall": 0.625,
+        "multi_all_count": 9,
+        "multi_all_recall": 0.45,
+        "multi_any_count": 17,
+        "multi_any_recall": 0.85,
+        "multi_count": 20
+      },
+      "R@20": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 9,
+        "calculation_operand_coverage": 0.6,
+        "denominator": 120,
+        "exact_count": 70,
+        "exact_recall": 0.5833333333333334,
+        "family_count": 81,
+        "family_recall": 0.675,
+        "multi_all_count": 9,
+        "multi_all_recall": 0.45,
+        "multi_any_count": 17,
+        "multi_any_recall": 0.85,
+        "multi_count": 20
+      },
+      "R@3": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 2,
+        "calculation_operand_coverage": 0.13333333333333333,
+        "denominator": 120,
+        "exact_count": 38,
+        "exact_recall": 0.31666666666666665,
+        "family_count": 53,
+        "family_recall": 0.44166666666666665,
+        "multi_all_count": 9,
+        "multi_all_recall": 0.45,
+        "multi_any_count": 12,
+        "multi_any_recall": 0.6,
+        "multi_count": 20
+      },
+      "R@5": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 4,
+        "calculation_operand_coverage": 0.26666666666666666,
+        "denominator": 120,
+        "exact_count": 48,
+        "exact_recall": 0.4,
+        "family_count": 63,
+        "family_recall": 0.525,
+        "multi_all_count": 9,
+        "multi_all_recall": 0.45,
+        "multi_any_count": 15,
+        "multi_any_recall": 0.75,
+        "multi_count": 20
+      }
+    },
+    "slot_coverage_at_10": {
+      "by_kind_total": {
+        "metric": 125,
+        "operand": 30
+      },
+      "coverage": 0.36129032258064514,
+      "slots_filled": 56,
+      "slots_total": 155
+    },
+    "slot_coverage_at_5": {
+      "by_kind_total": {
+        "metric": 125,
+        "operand": 30
+      },
+      "coverage": 0.3096774193548387,
+      "slots_filled": 48,
+      "slots_total": 155
+    }
+  },
+  "R4": {
+    "metrics": {
+      "R@1": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 0,
+        "calculation_operand_coverage": 0.0,
+        "denominator": 120,
+        "exact_count": 27,
+        "exact_recall": 0.225,
+        "family_count": 37,
+        "family_recall": 0.30833333333333335,
+        "multi_all_count": 0,
+        "multi_all_recall": 0.0,
+        "multi_any_count": 9,
+        "multi_any_recall": 0.45,
+        "multi_count": 20
+      },
+      "R@10": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 5,
+        "calculation_operand_coverage": 0.3333333333333333,
+        "denominator": 120,
+        "exact_count": 53,
+        "exact_recall": 0.44166666666666665,
+        "family_count": 74,
+        "family_recall": 0.6166666666666667,
+        "multi_all_count": 9,
+        "multi_all_recall": 0.45,
+        "multi_any_count": 17,
+        "multi_any_recall": 0.85,
+        "multi_count": 20
+      },
+      "R@20": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 9,
+        "calculation_operand_coverage": 0.6,
+        "denominator": 120,
+        "exact_count": 69,
+        "exact_recall": 0.575,
+        "family_count": 80,
+        "family_recall": 0.6666666666666666,
+        "multi_all_count": 9,
+        "multi_all_recall": 0.45,
+        "multi_any_count": 17,
+        "multi_any_recall": 0.85,
+        "multi_count": 20
+      },
+      "R@3": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 2,
+        "calculation_operand_coverage": 0.13333333333333333,
+        "denominator": 120,
+        "exact_count": 35,
+        "exact_recall": 0.2916666666666667,
+        "family_count": 51,
+        "family_recall": 0.425,
+        "multi_all_count": 9,
+        "multi_all_recall": 0.45,
+        "multi_any_count": 12,
+        "multi_any_recall": 0.6,
+        "multi_count": 20
+      },
+      "R@5": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 4,
+        "calculation_operand_coverage": 0.26666666666666666,
+        "denominator": 120,
+        "exact_count": 43,
+        "exact_recall": 0.35833333333333334,
+        "family_count": 60,
+        "family_recall": 0.5,
+        "multi_all_count": 9,
+        "multi_all_recall": 0.45,
+        "multi_any_count": 15,
+        "multi_any_recall": 0.75,
+        "multi_count": 20
+      }
+    },
+    "slot_coverage_at_10": {
+      "by_kind_total": {
+        "metric": 125,
+        "operand": 30
+      },
+      "coverage": 0.3419354838709677,
+      "slots_filled": 53,
+      "slots_total": 155
+    },
+    "slot_coverage_at_5": {
+      "by_kind_total": {
+        "metric": 125,
+        "operand": 30
+      },
+      "coverage": 0.27741935483870966,
+      "slots_filled": 43,
+      "slots_total": 155
+    }
+  }
+}

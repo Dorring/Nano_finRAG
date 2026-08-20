@@ -1,0 +1,12 @@
+{
+  "candidate_id_policy": "retain canonical TABLE_ROW id for frozen Gold alignment",
+  "hierarchy": [
+    "TABLE",
+    "TABLE_ROW",
+    "ROW_PERIOD"
+  ],
+  "row_period_id": "deterministic hash of row evidence and target period",
+  "unknown_period_policy": "UNKNOWN never confirms an explicit period",
+  "virtual_children_created": true,
+  "wrong_period_binding_admitted": 0
+}

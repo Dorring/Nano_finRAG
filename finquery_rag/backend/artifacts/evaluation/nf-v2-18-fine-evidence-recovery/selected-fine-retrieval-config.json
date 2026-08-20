@@ -1,0 +1,23 @@
+{
+  "base_coarse": "NF-V2-18A A4",
+  "dense_primary_fine_selector": false,
+  "embedding_model": "all-MiniLM-L6-v2",
+  "family_depth": 20,
+  "fine_child_depth": 10,
+  "generator_validator_calculator_changed": false,
+  "hard_scope_unchanged": true,
+  "local_ranker": "none_a4_coarse_fallback",
+  "production_default_changed": false,
+  "qwen_reranker": {
+    "model": "Qwen3-Reranker-4B",
+    "model_calls": 0,
+    "status": "UNAVAILABLE"
+  },
+  "selected_strategy": "R0_A4_COARSE",
+  "selection_reason": "All local fine/slot stages reduced global exact recall; retain frozen A4 coarse path. Targeted multi/operand gains are diagnostic only.",
+  "slot_aware_calculation": false,
+  "slot_aware_multi": false,
+  "structured_slot_routed": false,
+  "version": "nf-v2-18A-R1/fine-evidence-recovery-v1",
+  "wrong_period_binding_admitted": 0
+}

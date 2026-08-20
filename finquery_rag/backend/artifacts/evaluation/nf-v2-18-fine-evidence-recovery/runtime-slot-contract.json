@@ -1,0 +1,10 @@
+{
+  "calculation": "one slot per first two quoted operand phrases",
+  "gold_required_slots_used_at_runtime": false,
+  "metadata": "entity/document/temporal scope remains hard-filter input",
+  "multi_evidence": "one slot per quoted metric phrase",
+  "slot_sources": [
+    "quoted metric phrases",
+    "question content-bearing phrase fallback"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "metrics": null,
+  "model": "Qwen3-Reranker-4B",
+  "model_calls": 0,
+  "name": "R3 lexical prefilter + Qwen reranker",
+  "reason": "Frozen Qwen3-Reranker-4B weights/provider were not present in the evaluation environment; no download or substitute model was used.",
+  "status": "UNAVAILABLE"
+}
