@@ -1,0 +1,82 @@
+{
+  "task": "NF-V2-18A-R2P0",
+  "benchmark_rerun": false,
+  "focused_runs": [
+    {
+      "suite": "NF-OPT-08 table/mapping/parser contracts",
+      "files": [
+        "tests/evaluation/test_nf_opt_08_table_schema.py",
+        "tests/evaluation/test_nf_opt_08_evidence_mapping.py",
+        "tests/evaluation/test_nf_opt_08_parser_capability.py"
+      ],
+      "result": "24 passed",
+      "covers": [
+        "cell coordinates",
+        "rowspan/colspan",
+        "header rows",
+        "manual verification gate",
+        "period/scale fail-closed statuses",
+        "hierarchical table-row-cell references"
+      ]
+    },
+    {
+      "suite": "semantic graph/header/period/provenance/binder",
+      "files": [
+        "tests/pdf_retrieval_v4/test_gate_02_r3_adapter.py",
+        "tests/pdf_retrieval_v4/test_gate_03_header_graph.py",
+        "tests/pdf_retrieval_v4/test_gate_03_r2_contract_high_risk.py",
+        "tests/pdf_retrieval_v4/test_gate_04_stitching.py",
+        "tests/pdf_retrieval_v4/test_gate_05_r4_temporal_binding.py",
+        "tests/pdf_retrieval_v4/test_gate_05_fact_integrity.py",
+        "tests/pdf_retrieval_v4/test_gate_08_r8_se1.py",
+        "tests/pdf_retrieval_v4/test_gate_09_r5_2_b2.py"
+      ],
+      "result": "183 passed",
+      "covers": [
+        "header_path",
+        "row/cell identity",
+        "period axis",
+        "instant/duration",
+        "scale/currency",
+        "typed facts",
+        "continuation integrity",
+        "logical-table-aware binding"
+      ]
+    },
+    {
+      "suite": "self-contained header/period/binder tests",
+      "files": [
+        "tests/evaluation/test_nf_opt_07_table_headers.py",
+        "tests/evaluation/test_nf_opt_07_markdown_table.py",
+        "tests/rag_v2/test_nf_v2_03_semantic_evidence_binder.py",
+        "tests/rag_v2/test_nf_v2_03_r5_slotwise_binder.py",
+        "tests/retrieval_v3/test_period_extraction.py"
+      ],
+      "result": "16 passed",
+      "covers": [
+        "year headers",
+        "multi-level header/cell alignment",
+        "period extraction",
+        "slotwise binder"
+      ]
+    }
+  ],
+  "blocked_or_informational_runs": [
+    {
+      "suite": "tests/pdf_retrieval_v4",
+      "observed": "681 passed, 14 skipped, then stopped at test_gate_10_calculation_showcase.py::test_c0_calculator_contract_is_frozen",
+      "reason": "missing historical artifact pdf-retrieval-v4-gate-10-c0/c0-metrics.json; not a table semantic failure"
+    },
+    {
+      "suite": "tests/test_phase123_table_cell_evidence.py + tests/test_phase169_table_header_alignment.py",
+      "observed": "collection blocked",
+      "reason": "remote environment lacks pymupdf; no code change was made"
+    }
+  ],
+  "coverage_gaps": [
+    "no HTML-to-shared-semantic adapter tests",
+    "no current test proving HTML logical-table continuation mapping",
+    "no shared QUARTER/YTD vocabulary adapter test"
+  ]
+}
+

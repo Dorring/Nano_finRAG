@@ -1,0 +1,141 @@
+{
+  "task": "NF-V2-18A-R2P0",
+  "dataflow": [
+    {
+      "stage": "pdf_physical_acquisition",
+      "module": "src/pdf_retrieval_v4/full_corpus_adapter.py",
+      "functions": [
+        "run_full_corpus_adapter",
+        "build_table_fragment"
+      ],
+      "input": "MinerU middle/content JSON and PyMuPDF native words/page geometry",
+      "output": "physical table fragments with rows/cells, text sources and geometry",
+      "currently_used": "evaluation/shadow path",
+      "tested": true,
+      "classification": "SOURCE_SPECIFIC_PDF"
+    },
+    {
+      "stage": "table_markup_grid",
+      "module": "src/pdf_retrieval_v4/table_html_parser.py",
+      "functions": [
+        "parse_table_html"
+      ],
+      "input": "MinerU table HTML",
+      "output": "rowspan/colspan-expanded grid and cell flags",
+      "currently_used": "PDF adapter",
+      "tested": true,
+      "classification": "SOURCE_INDEPENDENT_REUSABLE"
+    },
+    {
+      "stage": "identity_and_provenance",
+      "module": "src/pdf_retrieval_v4/adapter_identity.py",
+      "functions": [
+        "table_fragment_id",
+        "row_id",
+        "cell_id"
+      ],
+      "input": "structural table/page/row/cell signatures",
+      "output": "stable IDs and source traceback",
+      "currently_used": "PDF adapter and graph artifacts",
+      "tested": true,
+      "classification": "SOURCE_INDEPENDENT_REUSABLE"
+    },
+    {
+      "stage": "logical_table_and_rows",
+      "module": "src/pdf_retrieval_v4/semantic_graph_models.py + semantic_row_classifier.py",
+      "functions": [
+        "LogicalTable",
+        "SemanticRow",
+        "classify_table",
+        "classify_table_rows"
+      ],
+      "input": "physical table fragment",
+      "output": "statement/logical table annotation and row types",
+      "currently_used": "Gate 03 semantic graph",
+      "tested": true,
+      "classification": "SOURCE_INDEPENDENT_REUSABLE"
+    },
+    {
+      "stage": "metric_header_graph",
+      "module": "src/pdf_retrieval_v4/metric_path_builder.py",
+      "functions": [
+        "build_metric_paths"
+      ],
+      "input": "ordered semantic rows",
+      "output": "metric_path/leaf_metric/parent row relationships",
+      "currently_used": "Gate 03",
+      "tested": true,
+      "classification": "SOURCE_INDEPENDENT_REUSABLE"
+    },
+    {
+      "stage": "temporal_axis",
+      "module": "src/pdf_retrieval_v4/temporal_axis_graph.py",
+      "functions": [
+        "build_axis_bindings"
+      ],
+      "input": "cell header_path/normalized_period/period_kind",
+      "output": "SemanticAxisBinding per cell",
+      "currently_used": "Gate 03",
+      "tested": true,
+      "classification": "SOURCE_INDEPENDENT_REUSABLE"
+    },
+    {
+      "stage": "unit_resolution",
+      "module": "src/pdf_retrieval_v4/semantic_scale_resolver.py + semantic_currency_resolver.py",
+      "functions": [
+        "resolve_table_scale",
+        "resolve_table_currency"
+      ],
+      "input": "table/row/cell/header context",
+      "output": "resolved/candidate/conflict scale and currency",
+      "currently_used": "Gate 03",
+      "tested": true,
+      "classification": "SOURCE_INDEPENDENT_REUSABLE"
+    },
+    {
+      "stage": "typed_evidence",
+      "module": "src/pdf_retrieval_v4/typed_evidence_emitters.py",
+      "functions": [
+        "emit_atomic_facts",
+        "emit_comparison_facts",
+        "emit_row_matrices",
+        "emit_narrative_evidence"
+      ],
+      "input": "semantic rows, metric paths, axis bindings, cells, unit resolution",
+      "output": "atomic/comparison/bucket/matrix/narrative evidence with source_traceback",
+      "currently_used": "Gate 03",
+      "tested": true,
+      "classification": "SOURCE_INDEPENDENT_REUSABLE"
+    },
+    {
+      "stage": "continuation_grouping",
+      "module": "scripts/evaluation/run_pdf_v4_gate_04b_predict.py",
+      "functions": [
+        "_automatic_state",
+        "_UnionFind",
+        "_row_continuation_candidates"
+      ],
+      "input": "fragment pairs and continuation features",
+      "output": "logical_table_id, fragment_ids, continuation_edges, three-state decision",
+      "currently_used": "Gate 04 shadow/evaluation only",
+      "tested": true,
+      "classification": "PARTIALLY_REUSABLE"
+    },
+    {
+      "stage": "catalog_bridge_binder",
+      "module": "src/pdf_retrieval_v4/semantic_evidence_catalog.py + candidate_bridge_models.py + structural_joint_binder_v2.py",
+      "functions": [
+        "load_semantic_evidence_catalog",
+        "build_semantic_classes",
+        "bind_structural_operands_b2"
+      ],
+      "input": "typed evidence and candidate mappings",
+      "output": "canonical evidence signatures and deterministic binder decisions",
+      "currently_used": "retrieval-v4/binder evaluation",
+      "tested": true,
+      "classification": "SOURCE_INDEPENDENT_REUSABLE"
+    }
+  ],
+  "canonical_transition": "PDF-specific physical adapter output -> shared semantic graph -> evidence/catalog/binder"
+}
+

@@ -1,0 +1,120 @@
+{
+  "task": "NF-V2-18A-R2P0",
+  "current_html_source": "finquery_rag/backend/scripts/evaluation/run_nf_v2_17a4_parse.py",
+  "matrix": [
+    {
+      "old_pdf_field": "table_fragment_id",
+      "current_html_field": "table_id",
+      "semantic_meaning": "physical table identity",
+      "compatible": false,
+      "adapter_required": true,
+      "note": "different deterministic namespace/hash inputs"
+    },
+    {
+      "old_pdf_field": "logical_table_id",
+      "current_html_field": null,
+      "semantic_meaning": "one or more physical fragments forming a logical table",
+      "compatible": false,
+      "adapter_required": true,
+      "note": "A4 does not emit continuation/group identity"
+    },
+    {
+      "old_pdf_field": "row_id",
+      "current_html_field": "row_id",
+      "semantic_meaning": "stable row identity",
+      "compatible": true,
+      "adapter_required": "namespace/provenance mapping",
+      "note": "both deterministic but hashes differ"
+    },
+    {
+      "old_pdf_field": "cell_id",
+      "current_html_field": "cell_id",
+      "semantic_meaning": "stable cell identity",
+      "compatible": true,
+      "adapter_required": "namespace/provenance mapping",
+      "note": "both carry row/column identity"
+    },
+    {
+      "old_pdf_field": "header_path",
+      "current_html_field": "header_rows + column_headers",
+      "semantic_meaning": "compound column header path",
+      "compatible": false,
+      "adapter_required": true,
+      "note": "A4 needs per-column path construction from header grid"
+    },
+    {
+      "old_pdf_field": "column_header_paths",
+      "current_html_field": "column_headers",
+      "semantic_meaning": "column-to-header mapping",
+      "compatible": "partial",
+      "adapter_required": true,
+      "note": "A4 column_headers is flattened text"
+    },
+    {
+      "old_pdf_field": "normalized_period",
+      "current_html_field": "period_columns[].period_end/period_semantics",
+      "semantic_meaning": "period bound to value column",
+      "compatible": "partial",
+      "adapter_required": true,
+      "note": "A4 stores richer project semantics but PDF normalized_period must be populated"
+    },
+    {
+      "old_pdf_field": "temporal_kind",
+      "current_html_field": "period_semantics",
+      "semantic_meaning": "instant/duration axis class",
+      "compatible": "partial",
+      "adapter_required": true,
+      "note": "map INSTANT to point; QUARTER/YTD/ANNUAL to duration with subtype preserved"
+    },
+    {
+      "old_pdf_field": "value_raw/value_normalized",
+      "current_html_field": "raw_value/normalized_value",
+      "semantic_meaning": "original and parsed value",
+      "compatible": true,
+      "adapter_required": false,
+      "note": "preserve decimal/sign semantics"
+    },
+    {
+      "old_pdf_field": "scale/scale_unit",
+      "current_html_field": "table.scale/cell.scale",
+      "semantic_meaning": "numeric magnitude",
+      "compatible": "partial",
+      "adapter_required": true,
+      "note": "A4 stores string scale; shared resolver stores factor/unit/status"
+    },
+    {
+      "old_pdf_field": "currency_code",
+      "current_html_field": "table/cell.currency",
+      "semantic_meaning": "currency identity",
+      "compatible": "partial",
+      "adapter_required": true,
+      "note": "A4 heuristic code remains explicit/unresolved unless source text/iXBRL proves it"
+    },
+    {
+      "old_pdf_field": "metric_path",
+      "current_html_field": "row_label + table_title + section_type",
+      "semantic_meaning": "hierarchical metric identity",
+      "compatible": "partial",
+      "adapter_required": true,
+      "note": "run shared row classifier/metric_path_builder"
+    },
+    {
+      "old_pdf_field": "source_traceback",
+      "current_html_field": "source_provenance + document metadata + raw SHA",
+      "semantic_meaning": "round-trip provenance",
+      "compatible": "partial",
+      "adapter_required": true,
+      "note": "add accession/raw SHA and optional iXBRL pointers"
+    },
+    {
+      "old_pdf_field": "iXBRL concept/context/unit/decimals",
+      "current_html_field": "ixbrl_facts[].concept/context_ref/unit_ref/unit/decimals",
+      "semantic_meaning": "structured fact enrichment",
+      "compatible": true,
+      "adapter_required": "attach as optional metadata",
+      "note": "do not fork a separate iXBRL evidence type"
+    }
+  ],
+  "overall": "PARTIAL_COMPATIBILITY_REUSE_WITH_ADAPTER"
+}
+

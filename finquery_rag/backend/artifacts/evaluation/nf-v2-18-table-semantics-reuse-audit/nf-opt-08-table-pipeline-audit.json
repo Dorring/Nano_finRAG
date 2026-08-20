@@ -1,0 +1,129 @@
+{
+  "task": "NF-V2-18A-R2P0",
+  "located": true,
+  "implementation_paths": [
+    "finquery_rag/backend/src/evaluation/nf_opt_08.py",
+    "finquery_rag/backend/scripts/evaluation/run_nf_opt_08_shadow_reingestion.py",
+    "finquery_rag/backend/scripts/evaluation/run_nf_opt_08_r2_mapping_package.py",
+    "finquery_rag/backend/tests/evaluation/test_nf_opt_08_table_schema.py",
+    "finquery_rag/backend/tests/evaluation/test_nf_opt_08_evidence_mapping.py",
+    "finquery_rag/backend/tests/evaluation/test_nf_opt_08_parser_capability.py"
+  ],
+  "historical_input": "PDF pages selected by NF-OPT-08 shadow contracts; PyMuPDF and Camelot stream/lattice matrices",
+  "historical_schema": {
+    "StructuredTableCell": [
+      "row_index",
+      "column_index",
+      "row_span",
+      "column_span",
+      "raw_text",
+      "normalized_text",
+      "numeric_value",
+      "value_type",
+      "bbox",
+      "confidence"
+    ],
+    "StructuredTableRecord": [
+      "shadow_table_id",
+      "document_id",
+      "pdf_sha256",
+      "pdf_page_start",
+      "pdf_page_end",
+      "table_title",
+      "table_caption",
+      "cells",
+      "currency",
+      "scale",
+      "parser_name",
+      "parser_version",
+      "parser_artifact_hash",
+      "source_page_image_hash"
+    ],
+    "ShadowEvidenceMapping": [
+      "legacy_candidate_key",
+      "shadow_table_id",
+      "shadow_row_id",
+      "shadow_cell_ids",
+      "relation",
+      "document_match",
+      "page_match",
+      "metric_match",
+      "period_match",
+      "value_match",
+      "scale_match",
+      "reviewer",
+      "reviewed_at",
+      "verified"
+    ]
+  },
+  "header_and_period_logic": {
+    "functions": [
+      "matrix_headers",
+      "_nearest_period_header",
+      "resolve_header",
+      "resolve_period_headers_v2"
+    ],
+    "features": [
+      "matrix_multilevel header path",
+      "period year normalization",
+      "unambiguous column selection",
+      "single-period/single-numeric-column conservative fallback"
+    ],
+    "fail_closed_cases": [
+      "missing_period_column",
+      "ambiguous",
+      "missing_scale",
+      "wrong_table_candidate",
+      "numeric_parse_failed"
+    ]
+  },
+  "scale_currency_logic": {
+    "functions": [
+      "table_context",
+      "page_context",
+      "number"
+    ],
+    "behavior": "table-header scale preferred; page context weaker; parenthesized negatives and currency spacers preserved"
+  },
+  "mapping_and_continuation": {
+    "nf_opt_08_direct_continuation_merge": false,
+    "later_shared_logical_table_path": "pdf-retrieval-v4 Gate 04/04B",
+    "historical_gate_result": "structured_reingestion_parser_mapping_blocked",
+    "production_indexes_written": false
+  },
+  "observed_artifact_metrics": {
+    "source_count": 22,
+    "table_detected_count": 22,
+    "parsed_page_count": 84,
+    "evidence_page_accuracy_count": 22,
+    "required_row_recovery_count": 0,
+    "required_cell_recovery_count": 0,
+    "period_recovery_count": 0,
+    "scale_recovery_count": 0,
+    "currency_recovery_count": 0,
+    "mapping_status_counts": {
+      "candidate_pending": 10,
+      "missing_period_column": 4,
+      "missing_row": 7,
+      "numeric_parse_failed": 1
+    },
+    "automatic_verified_count": 0
+  },
+  "acceptance": {
+    "artifact": "nf-opt-08/nf-opt-08-acceptance.json",
+    "decision": "structured_reingestion_parser_mapping_blocked",
+    "reason": "gate_a_blocked_pending_manual_old_to_new_evidence_mapping",
+    "scope": "shadow_only"
+  },
+  "focused_tests": {
+    "files": [
+      "tests/evaluation/test_nf_opt_08_table_schema.py",
+      "tests/evaluation/test_nf_opt_08_evidence_mapping.py",
+      "tests/evaluation/test_nf_opt_08_parser_capability.py"
+    ],
+    "result": "24 passed",
+    "benchmark_rerun": false
+  },
+  "audit_interpretation": "NF-OPT-08 proves useful table/cell/mapping contracts and fail-closed checks, but it is not a completed reusable logical-table production pipeline. The later pdf-retrieval-v4 semantic graph is the canonical reusable semantic layer."
+}
+

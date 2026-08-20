@@ -1,0 +1,107 @@
+{
+  "task": "NF-V2-18A-R2P0",
+  "contracts": [
+    {
+      "component": "src/domain/financial_fact.py",
+      "type": "FinancialFact",
+      "fields": [
+        "metric",
+        "value",
+        "period",
+        "entity",
+        "currency",
+        "scale",
+        "candidate_key",
+        "evidence_chunk_id",
+        "document_name",
+        "page",
+        "row_label",
+        "column_header",
+        "table_title",
+        "extraction_method",
+        "confidence"
+      ],
+      "use": "general deterministic financial fact/operand contract"
+    },
+    {
+      "component": "src/pdf_retrieval_v4/semantic_graph_models.py",
+      "type": "AtomicFact",
+      "fields": [
+        "semantic_fact_id",
+        "document_id",
+        "table_fragment_id",
+        "row_id",
+        "cell_id",
+        "metric_path",
+        "leaf_metric",
+        "temporal_kind",
+        "normalized_period",
+        "period_start",
+        "period_end",
+        "value_raw",
+        "value_normalized",
+        "scale",
+        "scale_unit",
+        "currency_code",
+        "equivalent_group_id",
+        "source_traceback"
+      ],
+      "use": "canonical structured evidence emitted from table semantics"
+    },
+    {
+      "component": "src/pdf_retrieval_v4/semantic_evidence_set.py",
+      "functions": [
+        "build_semantic_classes",
+        "match_slot",
+        "match_slots",
+        "operand_projection"
+      ],
+      "required_semantics": [
+        "metric",
+        "period",
+        "value",
+        "scale",
+        "currency",
+        "physical_provenance",
+        "supporting evidence/candidate IDs"
+      ]
+    },
+    {
+      "component": "src/pdf_retrieval_v4/structural_joint_binder_v2.py",
+      "functions": [
+        "hydrate_structural_provenance",
+        "bind_structural_operands_b2"
+      ],
+      "constraints": [
+        "same document",
+        "canonical row coherence",
+        "same logical table coherence when requested",
+        "unit contract",
+        "no rank-only ambiguity resolution"
+      ]
+    },
+    {
+      "component": "src/pdf_retrieval_v4/joint_operand_binder.py",
+      "functions": [
+        "bind_joint_operands"
+      ],
+      "constraints": [
+        "same document",
+        "same row/table preference",
+        "deterministic tuple collapse",
+        "unit compatibility"
+      ]
+    }
+  ],
+  "html_a4_mapping": {
+    "metric": "A4 row_label/table_title/section_type -> MetricPath/leaf_metric; adapter required",
+    "period": "A4 period_columns and cell period fields -> SemanticAxisBinding; map QUARTER/YTD/ANNUAL/INSTANT conservatively",
+    "value": "A4 raw_value/normalized_value -> value_raw/value_normalized",
+    "scale": "A4 table/cell scale -> ScaleResolution; do not promote UNKNOWN or ambiguous",
+    "currency": "A4 cell/table currency -> CurrencyResolution; iXBRL unit may enrich",
+    "provenance": "A4 document_id/table_id/row_id/cell_id/source_provenance/raw SHA -> source_traceback plus accession",
+    "logical_table": "not emitted by A4; must be added by adapter/continuation stage"
+  },
+  "binding_conclusion": "Existing Binder already consumes metric/period/value/unit/provenance semantics. Retrieval should emit this contract; a parallel FinancialCellEvidenceV1 would duplicate it."
+}
+

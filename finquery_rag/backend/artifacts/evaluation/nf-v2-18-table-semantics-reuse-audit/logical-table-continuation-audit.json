@@ -1,0 +1,93 @@
+{
+  "task": "NF-V2-18A-R2P0",
+  "logical_table_abstraction": {
+    "dataclass": "src/pdf_retrieval_v4/semantic_graph_models.py LogicalTable",
+    "fields": [
+      "table_fragment_id",
+      "document_id",
+      "pdf_page",
+      "table_index",
+      "statement_type",
+      "table_title",
+      "row_count",
+      "column_count",
+      "scale_candidates",
+      "source_traceback"
+    ],
+    "note": "Gate 04 adds a separate logical_table_id grouping object over one or more fragments."
+  },
+  "continuation_implementation": {
+    "path": "finquery_rag/backend/scripts/evaluation/run_pdf_v4_gate_04b_predict.py",
+    "strategy": [
+      "feature-gated three-state decision",
+      "union-find only for state=merge",
+      "continuation_edges retained",
+      "row continuation candidates are separate"
+    ],
+    "merge_features": [
+      "same/compatible title",
+      "column count",
+      "same statement",
+      "header fingerprint",
+      "column-band similarity",
+      "scale/period compatibility",
+      "repeated header",
+      "same section",
+      "page adjacency",
+      "row label style"
+    ],
+    "safety": [
+      "hard blockers -> do_not_merge",
+      "insufficient evidence -> blocked_ambiguous",
+      "no silent header/scale inheritance"
+    ]
+  },
+  "artifact_metrics": {
+    "source": "artifacts/evaluation/pdf-retrieval-v4-gate-04/continuation-metrics.json",
+    "candidate_pair_count": 36,
+    "positive_continuation_count": 2,
+    "negative_candidate_count": 34,
+    "candidate_generation_recall": 1,
+    "automatic_merge_count": 0,
+    "blocked_ambiguous_count": 14,
+    "do_not_merge_count": 22,
+    "missed_continuation_count": 2,
+    "false_merge_count": 0,
+    "false_header_inheritance": 0,
+    "false_scale_inheritance": 0,
+    "logical_table_integrity": {
+      "logical_table_count": 117,
+      "fragment_loss_count": 0,
+      "row_loss_count": 0,
+      "cell_loss_count": 0,
+      "fact_loss_count": 0,
+      "duplicate_logical_table_count": 0,
+      "logical_table_identity_conflict_count": 0,
+      "source_traceback_rate": 1
+    }
+  },
+  "html_compatibility": {
+    "current_a4_fields": [
+      "table_id",
+      "source_order",
+      "header_rows",
+      "column_headers",
+      "period_columns",
+      "rows",
+      "cells",
+      "table_title",
+      "section_type"
+    ],
+    "missing_for_shared_logical_path": [
+      "table_fragment_id namespace",
+      "logical_table_id",
+      "fragment_ids/continuation_edges",
+      "header_graph_id",
+      "row-level semantic parent links"
+    ],
+    "adapter_action": "map HTML physical tables to shared fragment identity and apply the same conservative continuation contract only where HTML structural evidence exists"
+  },
+  "decision": "REUSE_WITH_ADAPTER",
+  "do_not_claim": "Gate 04 is not evidence that all HTML continuations are already merged; it is a reusable conservative contract."
+}
+

@@ -1,0 +1,96 @@
+{
+  "task": "NF-V2-18A-R2P0",
+  "implementation_performed": false,
+  "plan": [
+    {
+      "step": 1,
+      "action": "Create one HTML physical adapter at the existing PDF/semantic boundary",
+      "reuse": [
+        "table_html_parser grid conventions",
+        "adapter_identity",
+        "A4 raw table/row/cell fields"
+      ],
+      "output": "canonical physical table fragment/row/cell dictionaries with raw source/accession/SHA"
+    },
+    {
+      "step": 2,
+      "action": "Run existing semantic passes on adapted HTML",
+      "reuse": [
+        "classify_table",
+        "classify_table_rows",
+        "build_metric_paths",
+        "build_axis_bindings",
+        "resolve_table_scale",
+        "resolve_table_currency",
+        "typed_evidence_emitters"
+      ],
+      "guard": "preserve A4 UNKNOWN and QUARTER/YTD semantics; never promote ambiguity"
+    },
+    {
+      "step": 3,
+      "action": "Attach iXBRL metadata to canonical facts",
+      "reuse": [
+        "AtomicFact/RowMatrix source_traceback",
+        "semantic_evidence_catalog"
+      ],
+      "guard": "no separate iXBRL evidence universe; conflicts fail closed"
+    },
+    {
+      "step": 4,
+      "action": "Reuse conservative continuation/logical-table stage",
+      "reuse": [
+        "Gate 04B feature/state contract",
+        "logical_table_id/fragment_ids/continuation_edges"
+      ],
+      "guard": "HTML-specific features only; no auto-merge without structural evidence"
+    },
+    {
+      "step": 5,
+      "action": "Map adapted typed evidence into existing bridge/Binder",
+      "reuse": [
+        "SemanticEvidenceSignature",
+        "CandidateStructuredView",
+        "structural_joint_binder_v2",
+        "operation_unit_contract"
+      ],
+      "guard": "row/period children are exact evidence; parent hits remain coarse"
+    },
+    {
+      "step": 6,
+      "action": "Add adapter-level regression fixtures/tests before retrieval use",
+      "tests": [
+        "HTML rowspan/colspan",
+        "compound three/six-month header",
+        "INSTANT vs duration",
+        "QUARTER/YTD/ANNUAL mapping",
+        "scale/currency conflict",
+        "iXBRL context/unit enrichment",
+        "logical table provenance",
+        "same-row/same-table binder"
+      ],
+      "status": "required before R2 retrieval work"
+    }
+  ],
+  "files_to_reuse": [
+    "src/pdf_retrieval_v4/table_html_parser.py",
+    "src/pdf_retrieval_v4/adapter_identity.py",
+    "src/pdf_retrieval_v4/semantic_graph_models.py",
+    "src/pdf_retrieval_v4/semantic_row_classifier.py",
+    "src/pdf_retrieval_v4/metric_path_builder.py",
+    "src/pdf_retrieval_v4/temporal_axis_graph.py",
+    "src/pdf_retrieval_v4/semantic_scale_resolver.py",
+    "src/pdf_retrieval_v4/semantic_currency_resolver.py",
+    "src/pdf_retrieval_v4/typed_evidence_emitters.py",
+    "src/pdf_retrieval_v4/semantic_evidence_catalog.py",
+    "src/pdf_retrieval_v4/structural_joint_binder_v2.py"
+  ],
+  "files_to_modify_later": [
+    "new HTML physical adapter module at canonical boundary",
+    "shared semantic model only if optional iXBRL provenance fields cannot fit source_traceback"
+  ],
+  "schema_migration": "none proposed in R2P0",
+  "new_parallel_layers": [],
+  "benchmark_rerun": false,
+  "retrieval_tuning": false
+}
+
