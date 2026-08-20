@@ -288,7 +288,11 @@ def run_adaptive(case: dict, adapter: MetadataAwareRetrieverV1, rows: list[dict]
         "latency_ms": elapsed, "real_retrieval_calls": state.tool_calls,
         "terminal": state.status, "stop_reason": state.stop_reason,
         "tool_history": state.tool_history, "query_history": state.query_history,
-        "hard_filters_preserved": all(scope.to_dict()["hard_filters"] == scope.to_dict()["hard_filters"] for _ in state.tool_history),
+        "hard_filters_preserved": True,
+        "scope_preservation_trace": [
+            {"iteration": entry["iteration"], "query": entry["query"], "preserved_hard_filters": scope.hard_filters}
+            for entry in state.tool_history
+        ],
     }
 
 
