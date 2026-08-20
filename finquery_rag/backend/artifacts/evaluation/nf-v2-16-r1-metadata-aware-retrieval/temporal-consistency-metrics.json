@@ -1,0 +1,32 @@
+{
+  "annual_quarter_distinction": {
+    "correct": 1,
+    "total": 1
+  },
+  "false_conflict_count": 0,
+  "ingestion_time_misresolution": 0,
+  "latest_annual_resolution": {
+    "basis": "explicit filing_date",
+    "correct": 1,
+    "created_at_used": false,
+    "total": 1
+  },
+  "quarter_ytd_distinction": {
+    "correct": 1,
+    "total": 1
+  },
+  "temporal_scope_resolution": {
+    "resolved": 5,
+    "total": 5
+  },
+  "true_conflicts": {
+    "detected": 1,
+    "total": 1
+  },
+  "unresolved_conflict_leakage": 0,
+  "version_resolution": {
+    "basis": "explicit supersedes_document_id/filing_date",
+    "correct": 1,
+    "total": 1
+  }
+}

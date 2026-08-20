@@ -82,7 +82,11 @@ class TemporalScopeResolverV1:
         left_scope = self._scope_key(left)
         right_scope = self._scope_key(right)
         if left_scope != right_scope:
-            # A source or scope mismatch is not a semantic conflict.
+            # Distinct metric slots in a multi-evidence request are not a
+            # contradiction.  Compare entity/scope/unit dimensions first;
+            # metric differences are independent evidence, not ambiguity.
+            if left_scope[0] == right_scope[0] and left_scope[2:] == right_scope[2:]:
+                return TemporalResolutionV1(TemporalRelation.DIFFERENT_SOURCE_SCOPE, "different explicit metric slot")
             if left_scope[:3] == right_scope[:3] and left.source != right.source:
                 return TemporalResolutionV1(TemporalRelation.DIFFERENT_SOURCE_SCOPE, "different explicit source")
             return TemporalResolutionV1(TemporalRelation.AMBIGUOUS_SCOPE, "metric/entity/unit/scope differs")

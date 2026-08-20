@@ -1,0 +1,10 @@
+{
+  "adaptive_retrieval_path_ms": 1.12333,
+  "additional_replan_overhead_ms": 0.0,
+  "base_retrieval_path_ms": 1.4105168666666665,
+  "environment": "local TEST_FIXTURE SQLite FTS5; no model/provider calls",
+  "model_calls": 0,
+  "p50_ms": 1.224204,
+  "p95_ms": 2.706642,
+  "real_retrieval_calls": 24
+}

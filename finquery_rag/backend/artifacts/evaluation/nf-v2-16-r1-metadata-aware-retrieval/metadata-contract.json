@@ -1,0 +1,40 @@
+{
+  "contract": "FinancialDocumentMetadataV1",
+  "fields": {
+    "content": [
+      "section_type",
+      "content_type"
+    ],
+    "document_identity": [
+      "document_id",
+      "entity",
+      "ticker",
+      "document_type",
+      "source"
+    ],
+    "operational_only": [
+      "created_at",
+      "ingested_at"
+    ],
+    "security": [
+      "tenant_id",
+      "owner_id",
+      "acl_scope"
+    ],
+    "temporal": [
+      "fiscal_year",
+      "fiscal_quarter",
+      "period_start",
+      "period_end",
+      "period_semantics",
+      "report_date",
+      "filing_date"
+    ],
+    "version": [
+      "version",
+      "is_amended",
+      "supersedes_document_id"
+    ]
+  },
+  "missing_explicit_metadata_policy": "UNKNOWN_then_fail_closed_for_explicit_HARD"
+}

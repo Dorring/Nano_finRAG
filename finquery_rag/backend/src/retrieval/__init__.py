@@ -15,3 +15,9 @@ from src.retrieval.context_builder import (
     EvidenceSufficiencyEvaluator as EvidenceSufficiencyEvaluator,
     SufficiencyResult as SufficiencyResult,
 )
+from src.retrieval.metadata_scope import (
+    FinancialDocumentMetadataV1, FilterStrength, MetadataAwareRetrieverV1,
+    MetadataFilterPlannerV1, MetadataProvenance, PeriodSemantics,
+    RetrievalScopeV1, ScopeConditionV1, apply_hard_scope,
+    apply_soft_preferences, enforce_reranker_subset,
+)

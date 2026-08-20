@@ -1,0 +1,13 @@
+{
+  "budget_violations": 0,
+  "false_binding": 0,
+  "false_execution": 0,
+  "infinite_loops": 0,
+  "nf_v2_15_known_four": {
+    "safe_retained": "3/3",
+    "source": "historical sealed artifact",
+    "unsafe_blocked": "1/1"
+  },
+  "unresolved_conflict_leakage": 0,
+  "unsafe_release": 0
+}

@@ -1,0 +1,12 @@
+{
+  "benchmark_tuning": 0,
+  "decision": "METADATA_ADAPTIVE_RAG_EFFECTIVE",
+  "fine_tuning": 0,
+  "frozen_72_replay": "not_run",
+  "model_calls": 0,
+  "production": "V1",
+  "production_switch": false,
+  "real_retrieval_calls": 24,
+  "reranker_tuning": 0,
+  "training": 0
+}
