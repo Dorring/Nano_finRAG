@@ -786,6 +786,7 @@ def main():
         t = time.perf_counter()
         a1 = fts(OLD_DB, q, recs, docs, 200)
         lat["A1_bm25"].append(time.perf_counter() - t)
+        ta4 = time.perf_counter()
         t = time.perf_counter()
         a2 = fts(NEW_DB, q, recs, docs, 200)
         lat["A2_bm25"].append(time.perf_counter() - t)
@@ -800,6 +801,7 @@ def main():
         ex = expand(a3[:80], bytable, q)
         lat["A4_expand"].append(time.perf_counter() - t)
         a4 = merge(a3, ex)
+        lat["A4_total"].append(time.perf_counter() - ta4)
         a5 = merge(a4, ix_search(facts, item, q, recs))
         a6 = sorted(
             a5,
@@ -959,7 +961,7 @@ def main():
         },
     )
     lr = {}
-    for name in ("A1_bm25", "A2_bm25", "A3_dense", "A4_expand"):
+    for name in ("A1_bm25", "A2_bm25", "A3_dense", "A4_expand", "A4_total"):
         vals = [x * 1000 for x in lat.get(name, [])]
         lr[name] = {
             "count": len(vals),
