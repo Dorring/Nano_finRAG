@@ -1,0 +1,2776 @@
+{
+  "documents": [
+    {
+      "chunks": 2012,
+      "content_type_counts": {
+        "TABLE": 90,
+        "TABLE_ROW": 1714,
+        "TEXT": 208
+      },
+      "content_type_coverage": {
+        "TABLE": 90,
+        "TABLE_ROW": 1714,
+        "TEXT": 208
+      },
+      "document_id": "SEC_789019_000095017023035122",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 8,
+      "ixbrl_context_count": 469,
+      "ixbrl_fact_count": 1839,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 1545811,
+      "normalized_path": "normalized/SEC/MSFT/SEC_789019_000095017023035122/document.json",
+      "normalized_sha256": "ff15044476a5855a616af3bc6599d5da48b61dd8b40dc2de9c21660f98c46f8c",
+      "numeric_cell_parse_coverage": {
+        "cells": 22911,
+        "numeric_cells": 2286
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/MSFT/SEC_789019_000095017023035122/document.json",
+      "parsed_sha256": "bb0b07b2c3cad0f7f25502c38d5a1ab4bfcd692667d5576104c045843cc1c78b",
+      "period_metadata_coverage": {
+        "period_cells_bound": 6521,
+        "period_columns_bound": 338
+      },
+      "raw_bytes": 9963591,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 74,
+        "BUSINESS": 478,
+        "CASH_FLOW": 108,
+        "INCOME_STATEMENT": 17,
+        "MDA": 42,
+        "NOTES": 431,
+        "RISK_FACTORS": 31,
+        "UNKNOWN": 38
+      },
+      "table_rows": 1719,
+      "tables": 90,
+      "text_blocks": 1129,
+      "ticker": "MSFT"
+    },
+    {
+      "chunks": 2051,
+      "content_type_counts": {
+        "TABLE": 92,
+        "TABLE_ROW": 1739,
+        "TEXT": 220
+      },
+      "content_type_coverage": {
+        "TABLE": 92,
+        "TABLE_ROW": 1739,
+        "TEXT": 220
+      },
+      "document_id": "SEC_789019_000095017024087843",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 8,
+      "ixbrl_context_count": 465,
+      "ixbrl_fact_count": 1856,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 1582331,
+      "normalized_path": "normalized/SEC/MSFT/SEC_789019_000095017024087843/document.json",
+      "normalized_sha256": "eb096637f3f48ed8cc25a472050e2897e44a13de4530389b164554a34d69115f",
+      "numeric_cell_parse_coverage": {
+        "cells": 23415,
+        "numeric_cells": 2324
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/MSFT/SEC_789019_000095017024087843/document.json",
+      "parsed_sha256": "853ee8179a2443a25ea0a1e2bcf331bae80b90671e165f57e37938bbf569b75a",
+      "period_metadata_coverage": {
+        "period_cells_bound": 6895,
+        "period_columns_bound": 361
+      },
+      "raw_bytes": 6860911,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 80,
+        "BUSINESS": 479,
+        "CASH_FLOW": 42,
+        "INCOME_STATEMENT": 31,
+        "MDA": 53,
+        "NOTES": 481,
+        "RISK_FACTORS": 44,
+        "UNKNOWN": 36
+      },
+      "table_rows": 1744,
+      "tables": 92,
+      "text_blocks": 1154,
+      "ticker": "MSFT"
+    },
+    {
+      "chunks": 1948,
+      "content_type_counts": {
+        "TABLE": 85,
+        "TABLE_ROW": 1671,
+        "TEXT": 192
+      },
+      "content_type_coverage": {
+        "TABLE": 85,
+        "TABLE_ROW": 1671,
+        "TEXT": 192
+      },
+      "document_id": "SEC_789019_000095017025100235",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 8,
+      "ixbrl_context_count": 441,
+      "ixbrl_fact_count": 1829,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 1436628,
+      "normalized_path": "normalized/SEC/MSFT/SEC_789019_000095017025100235/document.json",
+      "normalized_sha256": "637143944f04cb693d8cebc496bc3383955d77e1cdeb5b85b6d48adc7933f834",
+      "numeric_cell_parse_coverage": {
+        "cells": 21758,
+        "numeric_cells": 2258
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/MSFT/SEC_789019_000095017025100235/document.json",
+      "parsed_sha256": "2900a2b162f33d8058c2f36fa4b3783a580147664fb59f0fa84163886a3f242e",
+      "period_metadata_coverage": {
+        "period_cells_bound": 6470,
+        "period_columns_bound": 316
+      },
+      "raw_bytes": 8158067,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 11,
+        "BUSINESS": 384,
+        "CASH_FLOW": 92,
+        "INCOME_STATEMENT": 21,
+        "MDA": 49,
+        "NOTES": 500,
+        "RISK_FACTORS": 43,
+        "UNKNOWN": 35
+      },
+      "table_rows": 1676,
+      "tables": 85,
+      "text_blocks": 1050,
+      "ticker": "MSFT"
+    },
+    {
+      "chunks": 1361,
+      "content_type_counts": {
+        "TABLE": 61,
+        "TABLE_ROW": 1162,
+        "TEXT": 138
+      },
+      "content_type_coverage": {
+        "TABLE": 61,
+        "TABLE_ROW": 1162,
+        "TEXT": 138
+      },
+      "document_id": "SEC_789019_000095017024118967",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 7,
+      "ixbrl_context_count": 320,
+      "ixbrl_fact_count": 1236,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 928742,
+      "normalized_path": "normalized/SEC/MSFT/SEC_789019_000095017024118967/document.json",
+      "normalized_sha256": "ba9bddaf65c80fe7aaf2eeec6561a74c729af6649001f4c49551b2b7316891f7",
+      "numeric_cell_parse_coverage": {
+        "cells": 13775,
+        "numeric_cells": 1483
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/MSFT/SEC_789019_000095017024118967/document.json",
+      "parsed_sha256": "b84da36233677a415ba9fb2f07b6d15dd0a57d7123306275c278ae9de584b6ed",
+      "period_metadata_coverage": {
+        "period_cells_bound": 4015,
+        "period_columns_bound": 185
+      },
+      "raw_bytes": 4283959,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 13,
+        "BUSINESS": 267,
+        "CASH_FLOW": 101,
+        "INCOME_STATEMENT": 15,
+        "MDA": 51,
+        "NOTES": 186,
+        "RISK_FACTORS": 22,
+        "UNKNOWN": 27
+      },
+      "table_rows": 1165,
+      "tables": 61,
+      "text_blocks": 621,
+      "ticker": "MSFT"
+    },
+    {
+      "chunks": 1375,
+      "content_type_counts": {
+        "TABLE": 61,
+        "TABLE_ROW": 1177,
+        "TEXT": 137
+      },
+      "content_type_coverage": {
+        "TABLE": 61,
+        "TABLE_ROW": 1177,
+        "TEXT": 137
+      },
+      "document_id": "SEC_789019_000095017025010491",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 7,
+      "ixbrl_context_count": 409,
+      "ixbrl_fact_count": 1580,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 1108617,
+      "normalized_path": "normalized/SEC/MSFT/SEC_789019_000095017025010491/document.json",
+      "normalized_sha256": "13e4e0ec86a640b703f98027a2163d16f8cc729b24b49348cdfc50e71a835b1f",
+      "numeric_cell_parse_coverage": {
+        "cells": 17736,
+        "numeric_cells": 2149
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/MSFT/SEC_789019_000095017025010491/document.json",
+      "parsed_sha256": "d97e9b3dffd6fa1d3d04cb6cb07077d8e1702a673b4ccbc9b46e766c78628059",
+      "period_metadata_coverage": {
+        "period_cells_bound": 7673,
+        "period_columns_bound": 356
+      },
+      "raw_bytes": 6297413,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 13,
+        "BUSINESS": 294,
+        "CASH_FLOW": 101,
+        "INCOME_STATEMENT": 16,
+        "MDA": 58,
+        "NOTES": 193,
+        "RISK_FACTORS": 19,
+        "UNKNOWN": 27
+      },
+      "table_rows": 1180,
+      "tables": 61,
+      "text_blocks": 660,
+      "ticker": "MSFT"
+    },
+    {
+      "chunks": 1383,
+      "content_type_counts": {
+        "TABLE": 61,
+        "TABLE_ROW": 1181,
+        "TEXT": 141
+      },
+      "content_type_coverage": {
+        "TABLE": 61,
+        "TABLE_ROW": 1181,
+        "TEXT": 141
+      },
+      "document_id": "SEC_789019_000095017025061046",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 7,
+      "ixbrl_context_count": 418,
+      "ixbrl_fact_count": 1605,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 1122600,
+      "normalized_path": "normalized/SEC/MSFT/SEC_789019_000095017025061046/document.json",
+      "normalized_sha256": "9b1b2aa9aa7bab519ff5f3752c60d6927b9f4d24561eebc94abcfb81fa5723b2",
+      "numeric_cell_parse_coverage": {
+        "cells": 18110,
+        "numeric_cells": 2171
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/MSFT/SEC_789019_000095017025061046/document.json",
+      "parsed_sha256": "b9b195310481d5c1c77e4fe2b3d3b01d805619d98567fea5971c7f33aa7744f3",
+      "period_metadata_coverage": {
+        "period_cells_bound": 7807,
+        "period_columns_bound": 360
+      },
+      "raw_bytes": 6995442,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 13,
+        "BUSINESS": 291,
+        "CASH_FLOW": 104,
+        "INCOME_STATEMENT": 16,
+        "MDA": 60,
+        "NOTES": 191,
+        "RISK_FACTORS": 22,
+        "UNKNOWN": 27
+      },
+      "table_rows": 1184,
+      "tables": 61,
+      "text_blocks": 663,
+      "ticker": "MSFT"
+    },
+    {
+      "chunks": 803,
+      "content_type_counts": {
+        "TABLE": 66,
+        "TABLE_ROW": 737
+      },
+      "content_type_coverage": {
+        "TABLE": 66,
+        "TABLE_ROW": 737
+      },
+      "document_id": "SEC_320193_000032019323000106",
+      "empty_block_count": 8,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 205,
+      "ixbrl_fact_count": 1164,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 537993,
+      "normalized_path": "normalized/SEC/AAPL/SEC_320193_000032019323000106/document.json",
+      "normalized_sha256": "71173e06cce0f37b78a40367c9237ae3741d29387b389fcf837145edac1d3365",
+      "numeric_cell_parse_coverage": {
+        "cells": 13773,
+        "numeric_cells": 3075
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/AAPL/SEC_320193_000032019323000106/document.json",
+      "parsed_sha256": "aa13ec683f64da80db6cb0acb9bce2425ba154cb7424064bcd4db3f6d6781923",
+      "period_metadata_coverage": {
+        "period_cells_bound": 3705,
+        "period_columns_bound": 156
+      },
+      "raw_bytes": 1558924,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "CASH_FLOW": 2,
+        "NOTES": 1,
+        "UNKNOWN": 63
+      },
+      "table_rows": 737,
+      "tables": 66,
+      "text_blocks": 0,
+      "ticker": "AAPL"
+    },
+    {
+      "chunks": 774,
+      "content_type_counts": {
+        "TABLE": 63,
+        "TABLE_ROW": 711
+      },
+      "content_type_coverage": {
+        "TABLE": 63,
+        "TABLE_ROW": 711
+      },
+      "document_id": "SEC_320193_000032019324000123",
+      "empty_block_count": 8,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 193,
+      "ixbrl_fact_count": 1127,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 518289,
+      "normalized_path": "normalized/SEC/AAPL/SEC_320193_000032019324000123/document.json",
+      "normalized_sha256": "8f912bbc7a7bc7dacc680d34617cbf4be27243475f2d05d3f83fb117ebc48fce",
+      "numeric_cell_parse_coverage": {
+        "cells": 13377,
+        "numeric_cells": 2945
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/AAPL/SEC_320193_000032019324000123/document.json",
+      "parsed_sha256": "eb4ea4a8971f36641f60979b3df96bd8a51d9fcf3b7cced3d48896b0d4e91af0",
+      "period_metadata_coverage": {
+        "period_cells_bound": 3732,
+        "period_columns_bound": 156
+      },
+      "raw_bytes": 1503780,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "CASH_FLOW": 2,
+        "NOTES": 1,
+        "UNKNOWN": 60
+      },
+      "table_rows": 711,
+      "tables": 63,
+      "text_blocks": 0,
+      "ticker": "AAPL"
+    },
+    {
+      "chunks": 747,
+      "content_type_counts": {
+        "TABLE": 62,
+        "TABLE_ROW": 685
+      },
+      "content_type_coverage": {
+        "TABLE": 62,
+        "TABLE_ROW": 685
+      },
+      "document_id": "SEC_320193_000032019325000079",
+      "empty_block_count": 8,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 182,
+      "ixbrl_fact_count": 1131,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 528578,
+      "normalized_path": "normalized/SEC/AAPL/SEC_320193_000032019325000079/document.json",
+      "normalized_sha256": "0ec212afe12b50db4bbc34bebdde7f1fa0992cadc406cb7bdcbffb8c936b7585",
+      "numeric_cell_parse_coverage": {
+        "cells": 13536,
+        "numeric_cells": 3029
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/AAPL/SEC_320193_000032019325000079/document.json",
+      "parsed_sha256": "fe1caa9c6fa3d77cc93e7b91dc243f9cf850cccabc42774f54665a9769a5f599",
+      "period_metadata_coverage": {
+        "period_cells_bound": 3594,
+        "period_columns_bound": 165
+      },
+      "raw_bytes": 1520208,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "CASH_FLOW": 2,
+        "NOTES": 1,
+        "UNKNOWN": 59
+      },
+      "table_rows": 685,
+      "tables": 62,
+      "text_blocks": 0,
+      "ticker": "AAPL"
+    },
+    {
+      "chunks": 448,
+      "content_type_counts": {
+        "TABLE": 37,
+        "TABLE_ROW": 411
+      },
+      "content_type_coverage": {
+        "TABLE": 37,
+        "TABLE_ROW": 411
+      },
+      "document_id": "SEC_320193_000032019325000008",
+      "empty_block_count": 8,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 123,
+      "ixbrl_fact_count": 624,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 281269,
+      "normalized_path": "normalized/SEC/AAPL/SEC_320193_000032019325000008/document.json",
+      "normalized_sha256": "014939141563e309f2df6aed7c2a4c183a98438697e72c75ea8dddb05f750490",
+      "numeric_cell_parse_coverage": {
+        "cells": 8496,
+        "numeric_cells": 1251
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/AAPL/SEC_320193_000032019325000008/document.json",
+      "parsed_sha256": "3e8342d86c0b429f222ff6b14e41c625e378e3540b942d1d073fd384c784bf64",
+      "period_metadata_coverage": {
+        "period_cells_bound": 2583,
+        "period_columns_bound": 180
+      },
+      "raw_bytes": 732589,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "UNKNOWN": 37
+      },
+      "table_rows": 411,
+      "tables": 37,
+      "text_blocks": 0,
+      "ticker": "AAPL"
+    },
+    {
+      "chunks": 448,
+      "content_type_counts": {
+        "TABLE": 37,
+        "TABLE_ROW": 411
+      },
+      "content_type_coverage": {
+        "TABLE": 37,
+        "TABLE_ROW": 411
+      },
+      "document_id": "SEC_320193_000032019325000057",
+      "empty_block_count": 8,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 163,
+      "ixbrl_fact_count": 760,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 333543,
+      "normalized_path": "normalized/SEC/AAPL/SEC_320193_000032019325000057/document.json",
+      "normalized_sha256": "1d4e85b28057a4ee094e5ee3b81c4b0c23de472a8b5c33da153f97c46d8c3c7c",
+      "numeric_cell_parse_coverage": {
+        "cells": 8580,
+        "numeric_cells": 1670
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/AAPL/SEC_320193_000032019325000057/document.json",
+      "parsed_sha256": "1d2cff0f84cec30e57fe8bbb68432b54305167a5f55a7cc26473c471f84fb169",
+      "period_metadata_coverage": {
+        "period_cells_bound": 4125,
+        "period_columns_bound": 291
+      },
+      "raw_bytes": 889977,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "UNKNOWN": 37
+      },
+      "table_rows": 411,
+      "tables": 37,
+      "text_blocks": 0,
+      "ticker": "AAPL"
+    },
+    {
+      "chunks": 459,
+      "content_type_counts": {
+        "TABLE": 38,
+        "TABLE_ROW": 421
+      },
+      "content_type_coverage": {
+        "TABLE": 38,
+        "TABLE_ROW": 421
+      },
+      "document_id": "SEC_320193_000032019325000073",
+      "empty_block_count": 8,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 165,
+      "ixbrl_fact_count": 769,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 338409,
+      "normalized_path": "normalized/SEC/AAPL/SEC_320193_000032019325000073/document.json",
+      "normalized_sha256": "3981effbada9b11fb28ec3abbb51685183233f3cd6cf8c0c33e82a44d33c1fbf",
+      "numeric_cell_parse_coverage": {
+        "cells": 8718,
+        "numeric_cells": 1698
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/AAPL/SEC_320193_000032019325000073/document.json",
+      "parsed_sha256": "ec0b022914aea98d8d2e1dabcfc7e213e134105e7e80dcefa0a4e49b779a0b66",
+      "period_metadata_coverage": {
+        "period_cells_bound": 4404,
+        "period_columns_bound": 321
+      },
+      "raw_bytes": 888048,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "UNKNOWN": 38
+      },
+      "table_rows": 421,
+      "tables": 38,
+      "text_blocks": 0,
+      "ticker": "AAPL"
+    },
+    {
+      "chunks": 1081,
+      "content_type_counts": {
+        "TABLE": 66,
+        "TABLE_ROW": 1015
+      },
+      "content_type_coverage": {
+        "TABLE": 66,
+        "TABLE_ROW": 1015
+      },
+      "document_id": "SEC_1045810_000104581023000017",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 294,
+      "ixbrl_fact_count": 1397,
+      "normalization_status": "ACCEPTED_WITH_WARNINGS",
+      "normalized_bytes": 1184331,
+      "normalized_path": "normalized/SEC/NVDA/SEC_1045810_000104581023000017/document.json",
+      "normalized_sha256": "c3dc91a56ccde1ea6c5ed7a3e665b5e497881ba309bef4e952b06fb6dac998e5",
+      "numeric_cell_parse_coverage": {
+        "cells": 20907,
+        "numeric_cells": 3362
+      },
+      "parse_status": "ACCEPTED_WITH_WARNINGS",
+      "parse_warnings": [
+        "notes_section_not_classified_in_controlled_taxonomy"
+      ],
+      "parsed_path": "parsed/SEC/NVDA/SEC_1045810_000104581023000017/document.json",
+      "parsed_sha256": "4ace470113efb29a8634dddfc6bb1ac2277d1d9b2e9ac5b48c69aa8599202f6a",
+      "period_metadata_coverage": {
+        "period_cells_bound": 6942,
+        "period_columns_bound": 459
+      },
+      "raw_bytes": 2669239,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "CASH_FLOW": 2,
+        "INCOME_STATEMENT": 1,
+        "UNKNOWN": 63
+      },
+      "table_rows": 1015,
+      "tables": 66,
+      "text_blocks": 0,
+      "ticker": "NVDA"
+    },
+    {
+      "chunks": 1067,
+      "content_type_counts": {
+        "TABLE": 66,
+        "TABLE_ROW": 1001
+      },
+      "content_type_coverage": {
+        "TABLE": 66,
+        "TABLE_ROW": 1001
+      },
+      "document_id": "SEC_1045810_000104581024000029",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 280,
+      "ixbrl_fact_count": 1387,
+      "normalization_status": "ACCEPTED_WITH_WARNINGS",
+      "normalized_bytes": 657070,
+      "normalized_path": "normalized/SEC/NVDA/SEC_1045810_000104581024000029/document.json",
+      "normalized_sha256": "a0f0ae2b3660ed10c49e98c4dfceba661b152f417f5df6c42af5346049d8d651",
+      "numeric_cell_parse_coverage": {
+        "cells": 20583,
+        "numeric_cells": 3397
+      },
+      "parse_status": "ACCEPTED_WITH_WARNINGS",
+      "parse_warnings": [
+        "notes_section_not_classified_in_controlled_taxonomy"
+      ],
+      "parsed_path": "parsed/SEC/NVDA/SEC_1045810_000104581024000029/document.json",
+      "parsed_sha256": "d45551ce651bd023c73bf64a344f1564da0f141105debddec9fc98078fc0dbbd",
+      "period_metadata_coverage": {
+        "period_cells_bound": 7110,
+        "period_columns_bound": 483
+      },
+      "raw_bytes": 2085566,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "CASH_FLOW": 2,
+        "INCOME_STATEMENT": 1,
+        "UNKNOWN": 63
+      },
+      "table_rows": 1001,
+      "tables": 66,
+      "text_blocks": 0,
+      "ticker": "NVDA"
+    },
+    {
+      "chunks": 972,
+      "content_type_counts": {
+        "TABLE": 68,
+        "TABLE_ROW": 904
+      },
+      "content_type_coverage": {
+        "TABLE": 68,
+        "TABLE_ROW": 904
+      },
+      "document_id": "SEC_1045810_000104581025000023",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 289,
+      "ixbrl_fact_count": 1417,
+      "normalization_status": "ACCEPTED_WITH_WARNINGS",
+      "normalized_bytes": 679890,
+      "normalized_path": "normalized/SEC/NVDA/SEC_1045810_000104581025000023/document.json",
+      "normalized_sha256": "3c7d12c6881fd5ecb0205907286b3f39a95138352790081fb00cd292398d4e84",
+      "numeric_cell_parse_coverage": {
+        "cells": 17193,
+        "numeric_cells": 3470
+      },
+      "parse_status": "ACCEPTED_WITH_WARNINGS",
+      "parse_warnings": [
+        "notes_section_not_classified_in_controlled_taxonomy"
+      ],
+      "parsed_path": "parsed/SEC/NVDA/SEC_1045810_000104581025000023/document.json",
+      "parsed_sha256": "db9cd496d5c0f78c4a34df389b6be8c851a9927b376fdda3b3c9c4431849c299",
+      "period_metadata_coverage": {
+        "period_cells_bound": 8283,
+        "period_columns_bound": 546
+      },
+      "raw_bytes": 2067520,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "CASH_FLOW": 2,
+        "INCOME_STATEMENT": 1,
+        "UNKNOWN": 65
+      },
+      "table_rows": 904,
+      "tables": 68,
+      "text_blocks": 0,
+      "ticker": "NVDA"
+    },
+    {
+      "chunks": 765,
+      "content_type_counts": {
+        "TABLE": 53,
+        "TABLE_ROW": 712
+      },
+      "content_type_coverage": {
+        "TABLE": 53,
+        "TABLE_ROW": 712
+      },
+      "document_id": "SEC_1045810_000104581024000124",
+      "empty_block_count": 1,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 184,
+      "ixbrl_fact_count": 869,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 410118,
+      "normalized_path": "normalized/SEC/NVDA/SEC_1045810_000104581024000124/document.json",
+      "normalized_sha256": "8c2ec4038fec5200c9e6cda86c3951f7b893a3f62382c51efc0267fca3185850",
+      "numeric_cell_parse_coverage": {
+        "cells": 14532,
+        "numeric_cells": 2101
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/NVDA/SEC_1045810_000104581024000124/document.json",
+      "parsed_sha256": "9f345637cdd5480a9f50ea738fc4cc98389906753be6684b4eba842cf499996c",
+      "period_metadata_coverage": {
+        "period_cells_bound": 5166,
+        "period_columns_bound": 351
+      },
+      "raw_bytes": 1202535,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "CASH_FLOW": 2,
+        "INCOME_STATEMENT": 1,
+        "UNKNOWN": 50
+      },
+      "table_rows": 712,
+      "tables": 53,
+      "text_blocks": 0,
+      "ticker": "NVDA"
+    },
+    {
+      "chunks": 787,
+      "content_type_counts": {
+        "TABLE": 54,
+        "TABLE_ROW": 733
+      },
+      "content_type_coverage": {
+        "TABLE": 54,
+        "TABLE_ROW": 733
+      },
+      "document_id": "SEC_1045810_000104581024000264",
+      "empty_block_count": 1,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 246,
+      "ixbrl_fact_count": 1095,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 498622,
+      "normalized_path": "normalized/SEC/NVDA/SEC_1045810_000104581024000264/document.json",
+      "normalized_sha256": "df58048393863a8892cae6b8f541519fc5f06c443eff212f00fefaf9227cc904",
+      "numeric_cell_parse_coverage": {
+        "cells": 15480,
+        "numeric_cells": 2666
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/NVDA/SEC_1045810_000104581024000264/document.json",
+      "parsed_sha256": "703fe1eaa1df96535e8527e2f92c0587ceb35c043893020b280f1a591b3de694",
+      "period_metadata_coverage": {
+        "period_cells_bound": 6756,
+        "period_columns_bound": 507
+      },
+      "raw_bytes": 1461351,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "CASH_FLOW": 2,
+        "INCOME_STATEMENT": 2,
+        "UNKNOWN": 50
+      },
+      "table_rows": 733,
+      "tables": 54,
+      "text_blocks": 0,
+      "ticker": "NVDA"
+    },
+    {
+      "chunks": 776,
+      "content_type_counts": {
+        "TABLE": 54,
+        "TABLE_ROW": 722
+      },
+      "content_type_coverage": {
+        "TABLE": 54,
+        "TABLE_ROW": 722
+      },
+      "document_id": "SEC_1045810_000104581024000316",
+      "empty_block_count": 1,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 248,
+      "ixbrl_fact_count": 1096,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 499070,
+      "normalized_path": "normalized/SEC/NVDA/SEC_1045810_000104581024000316/document.json",
+      "normalized_sha256": "43eb74511c0aeb8f0391b7664f0f9a15e8e12f412282ccd604b33d66c8120337",
+      "numeric_cell_parse_coverage": {
+        "cells": 14970,
+        "numeric_cells": 2646
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/NVDA/SEC_1045810_000104581024000316/document.json",
+      "parsed_sha256": "62bf5614c0d9612faf5d405a36aafd1c42ba37353f5e0da73036b2807db9d5f7",
+      "period_metadata_coverage": {
+        "period_cells_bound": 7020,
+        "period_columns_bound": 537
+      },
+      "raw_bytes": 1440232,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "CASH_FLOW": 2,
+        "INCOME_STATEMENT": 2,
+        "UNKNOWN": 50
+      },
+      "table_rows": 722,
+      "tables": 54,
+      "text_blocks": 0,
+      "ticker": "NVDA"
+    },
+    {
+      "chunks": 6320,
+      "content_type_counts": {
+        "TABLE": 670,
+        "TABLE_ROW": 5650
+      },
+      "content_type_coverage": {
+        "TABLE": 670,
+        "TABLE_ROW": 5650
+      },
+      "document_id": "SEC_19617_000001961724000225",
+      "empty_block_count": 1,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 2222,
+      "ixbrl_fact_count": 8194,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 4060671,
+      "normalized_path": "normalized/SEC/JPM/SEC_19617_000001961724000225/document.json",
+      "normalized_sha256": "6f3f6088cc89a51c9e76ca49879052736b7d2d017f6664979132cc7ae9325a14",
+      "numeric_cell_parse_coverage": {
+        "cells": 124263,
+        "numeric_cells": 27260
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/JPM/SEC_19617_000001961724000225/document.json",
+      "parsed_sha256": "2bc094d6b5037ec7868d1a324db60f39b519864d2ab1977a66189b71cc8ba592",
+      "period_metadata_coverage": {
+        "period_cells_bound": 49089,
+        "period_columns_bound": 2721
+      },
+      "raw_bytes": 13211658,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 11,
+        "BUSINESS": 3,
+        "CASH_FLOW": 3,
+        "INCOME_STATEMENT": 15,
+        "MDA": 1,
+        "NOTES": 1,
+        "RISK_FACTORS": 1,
+        "UNKNOWN": 635
+      },
+      "table_rows": 5650,
+      "tables": 670,
+      "text_blocks": 0,
+      "ticker": "JPM"
+    },
+    {
+      "chunks": 6271,
+      "content_type_counts": {
+        "TABLE": 681,
+        "TABLE_ROW": 5590
+      },
+      "content_type_coverage": {
+        "TABLE": 681,
+        "TABLE_ROW": 5590
+      },
+      "document_id": "SEC_19617_000001961725000270",
+      "empty_block_count": 1,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 2203,
+      "ixbrl_fact_count": 8283,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 4094469,
+      "normalized_path": "normalized/SEC/JPM/SEC_19617_000001961725000270/document.json",
+      "normalized_sha256": "3f42696ddc7ffa9f803d23c69131412a8e7cd51e6c4d65405ca2d2a4126f6a7c",
+      "numeric_cell_parse_coverage": {
+        "cells": 121227,
+        "numeric_cells": 26882
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/JPM/SEC_19617_000001961725000270/document.json",
+      "parsed_sha256": "ac021931291a86983c460317dad7c7c56f979427107927b75b497e779ba2c4f2",
+      "period_metadata_coverage": {
+        "period_cells_bound": 47746,
+        "period_columns_bound": 2699
+      },
+      "raw_bytes": 12849180,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 10,
+        "BUSINESS": 3,
+        "CASH_FLOW": 3,
+        "INCOME_STATEMENT": 13,
+        "MDA": 1,
+        "NOTES": 1,
+        "RISK_FACTORS": 1,
+        "UNKNOWN": 649
+      },
+      "table_rows": 5590,
+      "tables": 681,
+      "text_blocks": 0,
+      "ticker": "JPM"
+    },
+    {
+      "chunks": 6322,
+      "content_type_counts": {
+        "TABLE": 679,
+        "TABLE_ROW": 5643
+      },
+      "content_type_coverage": {
+        "TABLE": 679,
+        "TABLE_ROW": 5643
+      },
+      "document_id": "SEC_19617_000162828026008131",
+      "empty_block_count": 1,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 2216,
+      "ixbrl_fact_count": 8442,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 4153080,
+      "normalized_path": "normalized/SEC/JPM/SEC_19617_000162828026008131/document.json",
+      "normalized_sha256": "1f80d99e50bec222ee58f3a2a83bb105937f078d28b01fedfc67c1b423991b5a",
+      "numeric_cell_parse_coverage": {
+        "cells": 123120,
+        "numeric_cells": 26577
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/JPM/SEC_19617_000162828026008131/document.json",
+      "parsed_sha256": "bf05460068ccbc803e9dde1b7730a998efbae9e10e6f9feb11b9daf0e8b7ecb1",
+      "period_metadata_coverage": {
+        "period_cells_bound": 52840,
+        "period_columns_bound": 3182
+      },
+      "raw_bytes": 12927325,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 9,
+        "BUSINESS": 3,
+        "CASH_FLOW": 4,
+        "INCOME_STATEMENT": 13,
+        "MDA": 1,
+        "NOTES": 3,
+        "RISK_FACTORS": 1,
+        "UNKNOWN": 645
+      },
+      "table_rows": 5643,
+      "tables": 679,
+      "text_blocks": 0,
+      "ticker": "JPM"
+    },
+    {
+      "chunks": 4150,
+      "content_type_counts": {
+        "TABLE": 269,
+        "TABLE_ROW": 3881
+      },
+      "content_type_coverage": {
+        "TABLE": 269,
+        "TABLE_ROW": 3881
+      },
+      "document_id": "SEC_19617_000001961725000421",
+      "empty_block_count": 4,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 1694,
+      "ixbrl_fact_count": 6026,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 2878654,
+      "normalized_path": "normalized/SEC/JPM/SEC_19617_000001961725000421/document.json",
+      "normalized_sha256": "08ef7600ede992dbc219729c35e44ad16f63fd6477e7be2968a4818c245fe8c0",
+      "numeric_cell_parse_coverage": {
+        "cells": 107358,
+        "numeric_cells": 20176
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/JPM/SEC_19617_000001961725000421/document.json",
+      "parsed_sha256": "361b12eda6a76dd24fc85824077b27cbea049b7687684bcee20366055d609729",
+      "period_metadata_coverage": {
+        "period_cells_bound": 50436,
+        "period_columns_bound": 2460
+      },
+      "raw_bytes": 9229580,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 11,
+        "BUSINESS": 2,
+        "CASH_FLOW": 3,
+        "INCOME_STATEMENT": 11,
+        "MDA": 1,
+        "NOTES": 1,
+        "UNKNOWN": 240
+      },
+      "table_rows": 3881,
+      "tables": 269,
+      "text_blocks": 0,
+      "ticker": "JPM"
+    },
+    {
+      "chunks": 4426,
+      "content_type_counts": {
+        "TABLE": 283,
+        "TABLE_ROW": 4143
+      },
+      "content_type_coverage": {
+        "TABLE": 283,
+        "TABLE_ROW": 4143
+      },
+      "document_id": "SEC_19617_000001961725000615",
+      "empty_block_count": 4,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 2118,
+      "ixbrl_fact_count": 7619,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 3541233,
+      "normalized_path": "normalized/SEC/JPM/SEC_19617_000001961725000615/document.json",
+      "normalized_sha256": "ed1ad039ca3050cabfe7a88ef302e4d323c59c129ed988cbb6f5794069451d67",
+      "numeric_cell_parse_coverage": {
+        "cells": 119889,
+        "numeric_cells": 27460
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/JPM/SEC_19617_000001961725000615/document.json",
+      "parsed_sha256": "ec5557b773a4d776298e463f35529de489c91bb2d77f59295d4b69fc1d5961e6",
+      "period_metadata_coverage": {
+        "period_cells_bound": 78897,
+        "period_columns_bound": 4107
+      },
+      "raw_bytes": 11426735,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 12,
+        "BUSINESS": 2,
+        "CASH_FLOW": 3,
+        "INCOME_STATEMENT": 13,
+        "MDA": 1,
+        "NOTES": 1,
+        "UNKNOWN": 251
+      },
+      "table_rows": 4143,
+      "tables": 283,
+      "text_blocks": 0,
+      "ticker": "JPM"
+    },
+    {
+      "chunks": 4444,
+      "content_type_counts": {
+        "TABLE": 283,
+        "TABLE_ROW": 4161
+      },
+      "content_type_coverage": {
+        "TABLE": 283,
+        "TABLE_ROW": 4161
+      },
+      "document_id": "SEC_19617_000162828025048859",
+      "empty_block_count": 4,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 2132,
+      "ixbrl_fact_count": 7690,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 3573248,
+      "normalized_path": "normalized/SEC/JPM/SEC_19617_000162828025048859/document.json",
+      "normalized_sha256": "3bdf7154eacffbaf1784790a7ca9bdb91a32ed78fe1c0c7da831db3eaa17c16b",
+      "numeric_cell_parse_coverage": {
+        "cells": 119988,
+        "numeric_cells": 27503
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/JPM/SEC_19617_000162828025048859/document.json",
+      "parsed_sha256": "6d4da92ac7881287a2c3844e6f07d20adfdad6c570f2e4e3ecdb99583bea92f1",
+      "period_metadata_coverage": {
+        "period_cells_bound": 78954,
+        "period_columns_bound": 4107
+      },
+      "raw_bytes": 11495265,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 12,
+        "BUSINESS": 2,
+        "CASH_FLOW": 3,
+        "INCOME_STATEMENT": 13,
+        "MDA": 1,
+        "NOTES": 1,
+        "UNKNOWN": 251
+      },
+      "table_rows": 4161,
+      "tables": 283,
+      "text_blocks": 0,
+      "ticker": "JPM"
+    },
+    {
+      "chunks": 1239,
+      "content_type_counts": {
+        "TABLE": 88,
+        "TABLE_ROW": 1151
+      },
+      "content_type_coverage": {
+        "TABLE": 88,
+        "TABLE_ROW": 1151
+      },
+      "document_id": "SEC_1318605_000162828024002390",
+      "empty_block_count": 2,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 393,
+      "ixbrl_fact_count": 1696,
+      "normalization_status": "ACCEPTED_WITH_WARNINGS",
+      "normalized_bytes": 830967,
+      "normalized_path": "normalized/SEC/TSLA/SEC_1318605_000162828024002390/document.json",
+      "normalized_sha256": "10612ca26134595a3162a49b229573fe10b255f2c04ed0415517e9323cf646b0",
+      "numeric_cell_parse_coverage": {
+        "cells": 29628,
+        "numeric_cells": 5136
+      },
+      "parse_status": "ACCEPTED_WITH_WARNINGS",
+      "parse_warnings": [
+        "notes_section_not_classified_in_controlled_taxonomy"
+      ],
+      "parsed_path": "parsed/SEC/TSLA/SEC_1318605_000162828024002390/document.json",
+      "parsed_sha256": "0e568989fd226dc7de93562eaf140f3dc868f3e17ef68d2856b80c20ab9b9bef",
+      "period_metadata_coverage": {
+        "period_cells_bound": 17529,
+        "period_columns_bound": 1071
+      },
+      "raw_bytes": 2672746,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "CASH_FLOW": 1,
+        "INCOME_STATEMENT": 1,
+        "UNKNOWN": 86
+      },
+      "table_rows": 1151,
+      "tables": 88,
+      "text_blocks": 0,
+      "ticker": "TSLA"
+    },
+    {
+      "chunks": 1220,
+      "content_type_counts": {
+        "TABLE": 86,
+        "TABLE_ROW": 1134
+      },
+      "content_type_coverage": {
+        "TABLE": 86,
+        "TABLE_ROW": 1134
+      },
+      "document_id": "SEC_1318605_000162828025003063",
+      "empty_block_count": 2,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 394,
+      "ixbrl_fact_count": 1697,
+      "normalization_status": "ACCEPTED_WITH_WARNINGS",
+      "normalized_bytes": 831473,
+      "normalized_path": "normalized/SEC/TSLA/SEC_1318605_000162828025003063/document.json",
+      "normalized_sha256": "d5a3145b05ce0a43c7f0a1551d8b0d28d35c927d93b01a616a6e4e065de46749",
+      "numeric_cell_parse_coverage": {
+        "cells": 28809,
+        "numeric_cells": 4965
+      },
+      "parse_status": "ACCEPTED_WITH_WARNINGS",
+      "parse_warnings": [
+        "notes_section_not_classified_in_controlled_taxonomy"
+      ],
+      "parsed_path": "parsed/SEC/TSLA/SEC_1318605_000162828025003063/document.json",
+      "parsed_sha256": "b8e7550449e9d03510d6869ca5f7d2d203e113fe37b4aa59d0ff9841eb8c63f2",
+      "period_metadata_coverage": {
+        "period_cells_bound": 16941,
+        "period_columns_bound": 1053
+      },
+      "raw_bytes": 2596459,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 1,
+        "CASH_FLOW": 1,
+        "INCOME_STATEMENT": 2,
+        "UNKNOWN": 82
+      },
+      "table_rows": 1134,
+      "tables": 86,
+      "text_blocks": 0,
+      "ticker": "TSLA"
+    },
+    {
+      "chunks": 1056,
+      "content_type_counts": {
+        "TABLE": 79,
+        "TABLE_ROW": 977
+      },
+      "content_type_coverage": {
+        "TABLE": 79,
+        "TABLE_ROW": 977
+      },
+      "document_id": "SEC_1318605_000162828026003952",
+      "empty_block_count": 2,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 421,
+      "ixbrl_fact_count": 1733,
+      "normalization_status": "ACCEPTED_WITH_WARNINGS",
+      "normalized_bytes": 846631,
+      "normalized_path": "normalized/SEC/TSLA/SEC_1318605_000162828026003952/document.json",
+      "normalized_sha256": "01d3a2213d8c6844f633b5d45a794dbd062892bd0db3eed99b1b089fb74fd628",
+      "numeric_cell_parse_coverage": {
+        "cells": 22218,
+        "numeric_cells": 4360
+      },
+      "parse_status": "ACCEPTED_WITH_WARNINGS",
+      "parse_warnings": [
+        "notes_section_not_classified_in_controlled_taxonomy"
+      ],
+      "parsed_path": "parsed/SEC/TSLA/SEC_1318605_000162828026003952/document.json",
+      "parsed_sha256": "6c5ca192818ab890b1517e36ad616d9fba7722571c8c188472107c6280429929",
+      "period_metadata_coverage": {
+        "period_cells_bound": 10419,
+        "period_columns_bound": 750
+      },
+      "raw_bytes": 2391529,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "CASH_FLOW": 1,
+        "INCOME_STATEMENT": 1,
+        "UNKNOWN": 77
+      },
+      "table_rows": 977,
+      "tables": 79,
+      "text_blocks": 0,
+      "ticker": "TSLA"
+    },
+    {
+      "chunks": 602,
+      "content_type_counts": {
+        "TABLE": 50,
+        "TABLE_ROW": 552
+      },
+      "content_type_coverage": {
+        "TABLE": 50,
+        "TABLE_ROW": 552
+      },
+      "document_id": "SEC_1318605_000162828025018911",
+      "empty_block_count": 2,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 285,
+      "ixbrl_fact_count": 947,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 430466,
+      "normalized_path": "normalized/SEC/TSLA/SEC_1318605_000162828025018911/document.json",
+      "normalized_sha256": "37a01f1d2ddb91ff3a8740b9541d40c0ac98819d371dced63b77b0574852f2b0",
+      "numeric_cell_parse_coverage": {
+        "cells": 13359,
+        "numeric_cells": 2025
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/TSLA/SEC_1318605_000162828025018911/document.json",
+      "parsed_sha256": "98a3b66ef5a2bcef5a64808c9ac19b7b6ea437b4e3337b3924f299b41164077f",
+      "period_metadata_coverage": {
+        "period_cells_bound": 4233,
+        "period_columns_bound": 375
+      },
+      "raw_bytes": 1225850,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 1,
+        "CASH_FLOW": 1,
+        "INCOME_STATEMENT": 3,
+        "UNKNOWN": 45
+      },
+      "table_rows": 552,
+      "tables": 50,
+      "text_blocks": 0,
+      "ticker": "TSLA"
+    },
+    {
+      "chunks": 637,
+      "content_type_counts": {
+        "TABLE": 53,
+        "TABLE_ROW": 584
+      },
+      "content_type_coverage": {
+        "TABLE": 53,
+        "TABLE_ROW": 584
+      },
+      "document_id": "SEC_1318605_000162828025035806",
+      "empty_block_count": 2,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 356,
+      "ixbrl_fact_count": 1204,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 536100,
+      "normalized_path": "normalized/SEC/TSLA/SEC_1318605_000162828025035806/document.json",
+      "normalized_sha256": "5088893c5035d9793ed01ce729b02db7b96ec04de2acdc665b62cb6db18cfce5",
+      "numeric_cell_parse_coverage": {
+        "cells": 14985,
+        "numeric_cells": 2880
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/TSLA/SEC_1318605_000162828025035806/document.json",
+      "parsed_sha256": "f7fef5afc5cb23e8037c827779ad8a0baee2725d58227bb433fa46a3bd568de7",
+      "period_metadata_coverage": {
+        "period_cells_bound": 7218,
+        "period_columns_bound": 675
+      },
+      "raw_bytes": 1518452,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 1,
+        "CASH_FLOW": 1,
+        "INCOME_STATEMENT": 6,
+        "UNKNOWN": 45
+      },
+      "table_rows": 584,
+      "tables": 53,
+      "text_blocks": 0,
+      "ticker": "TSLA"
+    },
+    {
+      "chunks": 649,
+      "content_type_counts": {
+        "TABLE": 54,
+        "TABLE_ROW": 595
+      },
+      "content_type_coverage": {
+        "TABLE": 54,
+        "TABLE_ROW": 595
+      },
+      "document_id": "SEC_1318605_000162828025045968",
+      "empty_block_count": 2,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 370,
+      "ixbrl_fact_count": 1228,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 555823,
+      "normalized_path": "normalized/SEC/TSLA/SEC_1318605_000162828025045968/document.json",
+      "normalized_sha256": "ae8a0bb24dbfc1c6e7384ba1a58d39534d32de5c6b3e366895f2e6b0a84ea8cc",
+      "numeric_cell_parse_coverage": {
+        "cells": 15495,
+        "numeric_cells": 2961
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/TSLA/SEC_1318605_000162828025045968/document.json",
+      "parsed_sha256": "f20219b9adc0655c4883afd279b991bc0ad61132f7eace7660b15530ff016fbf",
+      "period_metadata_coverage": {
+        "period_cells_bound": 7479,
+        "period_columns_bound": 714
+      },
+      "raw_bytes": 1573631,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 1,
+        "CASH_FLOW": 1,
+        "INCOME_STATEMENT": 6,
+        "UNKNOWN": 46
+      },
+      "table_rows": 595,
+      "tables": 54,
+      "text_blocks": 0,
+      "ticker": "TSLA"
+    },
+    {
+      "chunks": 1741,
+      "content_type_counts": {
+        "TABLE": 123,
+        "TABLE_ROW": 1618
+      },
+      "content_type_coverage": {
+        "TABLE": 123,
+        "TABLE_ROW": 1618
+      },
+      "document_id": "SEC_21344_000002134424000009",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 787,
+      "ixbrl_fact_count": 3118,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 1447105,
+      "normalized_path": "normalized/SEC/KO/SEC_21344_000002134424000009/document.json",
+      "normalized_sha256": "e8f5354404f9bd85efd01caf8e9d4b63c63569baec1b33bdc08b55fdbc0f2818",
+      "numeric_cell_parse_coverage": {
+        "cells": 24408,
+        "numeric_cells": 6517
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/KO/SEC_21344_000002134424000009/document.json",
+      "parsed_sha256": "90e0dcd31ca9dde68ba3540fb7cb1649d8b0307bdf3d311d6db24e3958145ae0",
+      "period_metadata_coverage": {
+        "period_cells_bound": 8538,
+        "period_columns_bound": 588
+      },
+      "raw_bytes": 4161309,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 1,
+        "BUSINESS": 2,
+        "INCOME_STATEMENT": 1,
+        "NOTES": 3,
+        "UNKNOWN": 116
+      },
+      "table_rows": 1618,
+      "tables": 123,
+      "text_blocks": 0,
+      "ticker": "KO"
+    },
+    {
+      "chunks": 1685,
+      "content_type_counts": {
+        "TABLE": 119,
+        "TABLE_ROW": 1566
+      },
+      "content_type_coverage": {
+        "TABLE": 119,
+        "TABLE_ROW": 1566
+      },
+      "document_id": "SEC_21344_000002134425000011",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 673,
+      "ixbrl_fact_count": 2808,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 1341801,
+      "normalized_path": "normalized/SEC/KO/SEC_21344_000002134425000011/document.json",
+      "normalized_sha256": "88348cfd9556fbd993a63cf70968ddbf254e0bd380c2ff59f47ff94bf1614037",
+      "numeric_cell_parse_coverage": {
+        "cells": 24084,
+        "numeric_cells": 5964
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/KO/SEC_21344_000002134425000011/document.json",
+      "parsed_sha256": "8e3876718db6e0d57dee00a77a037c4a371ee9d6407365c1fd5d25d7e4d56dd0",
+      "period_metadata_coverage": {
+        "period_cells_bound": 7884,
+        "period_columns_bound": 597
+      },
+      "raw_bytes": 3930907,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 1,
+        "BUSINESS": 2,
+        "INCOME_STATEMENT": 1,
+        "NOTES": 3,
+        "UNKNOWN": 112
+      },
+      "table_rows": 1566,
+      "tables": 119,
+      "text_blocks": 0,
+      "ticker": "KO"
+    },
+    {
+      "chunks": 1681,
+      "content_type_counts": {
+        "TABLE": 117,
+        "TABLE_ROW": 1564
+      },
+      "content_type_coverage": {
+        "TABLE": 117,
+        "TABLE_ROW": 1564
+      },
+      "document_id": "SEC_21344_000162828026010047",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 660,
+      "ixbrl_fact_count": 2804,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 1339677,
+      "normalized_path": "normalized/SEC/KO/SEC_21344_000162828026010047/document.json",
+      "normalized_sha256": "e29b65c035c38f7a68b92c3ae6f71b857885a6ce1340903495f4ee6bbb05d2f6",
+      "numeric_cell_parse_coverage": {
+        "cells": 22467,
+        "numeric_cells": 5867
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/KO/SEC_21344_000162828026010047/document.json",
+      "parsed_sha256": "3012c1c77ad9fa63aa8372d0ecef29d21810c39dfe7437d541c5e399c5bec2ae",
+      "period_metadata_coverage": {
+        "period_cells_bound": 8423,
+        "period_columns_bound": 611
+      },
+      "raw_bytes": 3758140,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 1,
+        "BUSINESS": 2,
+        "INCOME_STATEMENT": 1,
+        "NOTES": 3,
+        "UNKNOWN": 110
+      },
+      "table_rows": 1564,
+      "tables": 117,
+      "text_blocks": 0,
+      "ticker": "KO"
+    },
+    {
+      "chunks": 757,
+      "content_type_counts": {
+        "TABLE": 48,
+        "TABLE_ROW": 709
+      },
+      "content_type_coverage": {
+        "TABLE": 48,
+        "TABLE_ROW": 709
+      },
+      "document_id": "SEC_21344_000002134425000029",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 263,
+      "ixbrl_fact_count": 1191,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 552422,
+      "normalized_path": "normalized/SEC/KO/SEC_21344_000002134425000029/document.json",
+      "normalized_sha256": "c6fca60a98f72f1f508575e0828866c1bfe8657b9077b580e4a8cca703185802",
+      "numeric_cell_parse_coverage": {
+        "cells": 10392,
+        "numeric_cells": 2299
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/KO/SEC_21344_000002134425000029/document.json",
+      "parsed_sha256": "cd6b0e186e4c4668ca0c97512c3f45033e09ff5f1cd7b367441348ed27afe8e0",
+      "period_metadata_coverage": {
+        "period_cells_bound": 5574,
+        "period_columns_bound": 333
+      },
+      "raw_bytes": 1520559,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 1,
+        "CASH_FLOW": 1,
+        "INCOME_STATEMENT": 2,
+        "NOTES": 1,
+        "UNKNOWN": 43
+      },
+      "table_rows": 709,
+      "tables": 48,
+      "text_blocks": 0,
+      "ticker": "KO"
+    },
+    {
+      "chunks": 956,
+      "content_type_counts": {
+        "TABLE": 60,
+        "TABLE_ROW": 896
+      },
+      "content_type_coverage": {
+        "TABLE": 60,
+        "TABLE_ROW": 896
+      },
+      "document_id": "SEC_21344_000002134425000061",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 387,
+      "ixbrl_fact_count": 1762,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 797380,
+      "normalized_path": "normalized/SEC/KO/SEC_21344_000002134425000061/document.json",
+      "normalized_sha256": "7d0340a56cc82c909d6f713068d83459342a670255e9983507f47cebe8331b51",
+      "numeric_cell_parse_coverage": {
+        "cells": 14103,
+        "numeric_cells": 3346
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/KO/SEC_21344_000002134425000061/document.json",
+      "parsed_sha256": "a3fe4581bfcd2522c6f07d96e97ebd04cfef181fe0ba350466c8a6d4a43d5415",
+      "period_metadata_coverage": {
+        "period_cells_bound": 9618,
+        "period_columns_bound": 564
+      },
+      "raw_bytes": 2113663,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 1,
+        "CASH_FLOW": 1,
+        "INCOME_STATEMENT": 4,
+        "NOTES": 1,
+        "UNKNOWN": 53
+      },
+      "table_rows": 896,
+      "tables": 60,
+      "text_blocks": 0,
+      "ticker": "KO"
+    },
+    {
+      "chunks": 970,
+      "content_type_counts": {
+        "TABLE": 60,
+        "TABLE_ROW": 910
+      },
+      "content_type_coverage": {
+        "TABLE": 60,
+        "TABLE_ROW": 910
+      },
+      "document_id": "SEC_21344_000162828025046054",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 389,
+      "ixbrl_fact_count": 1823,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 826715,
+      "normalized_path": "normalized/SEC/KO/SEC_21344_000162828025046054/document.json",
+      "normalized_sha256": "86543049b35280b627139bba70b2ba27840d0798c128e1b64a8e9061dd118647",
+      "numeric_cell_parse_coverage": {
+        "cells": 14265,
+        "numeric_cells": 3447
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/KO/SEC_21344_000162828025046054/document.json",
+      "parsed_sha256": "ca832d7043000eaf8fc5ed844e6d6263bddc590ff4586a455c354c1098746789",
+      "period_metadata_coverage": {
+        "period_cells_bound": 9648,
+        "period_columns_bound": 561
+      },
+      "raw_bytes": 2165835,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 1,
+        "CASH_FLOW": 1,
+        "INCOME_STATEMENT": 4,
+        "NOTES": 1,
+        "UNKNOWN": 53
+      },
+      "table_rows": 910,
+      "tables": 60,
+      "text_blocks": 0,
+      "ticker": "KO"
+    },
+    {
+      "chunks": 1287,
+      "content_type_counts": {
+        "TABLE": 88,
+        "TABLE_ROW": 1199
+      },
+      "content_type_coverage": {
+        "TABLE": 88,
+        "TABLE_ROW": 1199
+      },
+      "document_id": "SEC_1403161_000140316123000099",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 356,
+      "ixbrl_fact_count": 1761,
+      "normalization_status": "ACCEPTED_WITH_WARNINGS",
+      "normalized_bytes": 903352,
+      "normalized_path": "normalized/SEC/V/SEC_1403161_000140316123000099/document.json",
+      "normalized_sha256": "90886d652900e4bc91d806c6daf2a984aad4406501fa96cd1902a3a359560c97",
+      "numeric_cell_parse_coverage": {
+        "cells": 30177,
+        "numeric_cells": 5953
+      },
+      "parse_status": "ACCEPTED_WITH_WARNINGS",
+      "parse_warnings": [
+        "notes_section_not_classified_in_controlled_taxonomy"
+      ],
+      "parsed_path": "parsed/SEC/V/SEC_1403161_000140316123000099/document.json",
+      "parsed_sha256": "de7bb957cb0818e9b476a7678349919c3671ea634cf2e0b3f61945dc28e40000",
+      "period_metadata_coverage": {
+        "period_cells_bound": 15897,
+        "period_columns_bound": 1125
+      },
+      "raw_bytes": 2871121,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 1,
+        "BUSINESS": 1,
+        "INCOME_STATEMENT": 6,
+        "UNKNOWN": 80
+      },
+      "table_rows": 1199,
+      "tables": 88,
+      "text_blocks": 0,
+      "ticker": "V"
+    },
+    {
+      "chunks": 1283,
+      "content_type_counts": {
+        "TABLE": 88,
+        "TABLE_ROW": 1195
+      },
+      "content_type_coverage": {
+        "TABLE": 88,
+        "TABLE_ROW": 1195
+      },
+      "document_id": "SEC_1403161_000140316124000058",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 367,
+      "ixbrl_fact_count": 1752,
+      "normalization_status": "ACCEPTED_WITH_WARNINGS",
+      "normalized_bytes": 897469,
+      "normalized_path": "normalized/SEC/V/SEC_1403161_000140316124000058/document.json",
+      "normalized_sha256": "2cae19ec44284c3aedda1d685cf17811e54938481ba2d196122afdc60a967fbb",
+      "numeric_cell_parse_coverage": {
+        "cells": 29601,
+        "numeric_cells": 6233
+      },
+      "parse_status": "ACCEPTED_WITH_WARNINGS",
+      "parse_warnings": [
+        "notes_section_not_classified_in_controlled_taxonomy"
+      ],
+      "parsed_path": "parsed/SEC/V/SEC_1403161_000140316124000058/document.json",
+      "parsed_sha256": "10921297788cce0a1c56aade11614283da631e05fcaf23f78a38ef63898143c5",
+      "period_metadata_coverage": {
+        "period_cells_bound": 17478,
+        "period_columns_bound": 1245
+      },
+      "raw_bytes": 2880073,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 1,
+        "BUSINESS": 1,
+        "INCOME_STATEMENT": 6,
+        "UNKNOWN": 80
+      },
+      "table_rows": 1195,
+      "tables": 88,
+      "text_blocks": 0,
+      "ticker": "V"
+    },
+    {
+      "chunks": 1289,
+      "content_type_counts": {
+        "TABLE": 86,
+        "TABLE_ROW": 1203
+      },
+      "content_type_coverage": {
+        "TABLE": 86,
+        "TABLE_ROW": 1203
+      },
+      "document_id": "SEC_1403161_000140316125000089",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 388,
+      "ixbrl_fact_count": 1798,
+      "normalization_status": "ACCEPTED_WITH_WARNINGS",
+      "normalized_bytes": 919637,
+      "normalized_path": "normalized/SEC/V/SEC_1403161_000140316125000089/document.json",
+      "normalized_sha256": "c84bd5b9e02367244b16c267efc82a9809fedde2eee5ae9f348d42997704730a",
+      "numeric_cell_parse_coverage": {
+        "cells": 29667,
+        "numeric_cells": 6238
+      },
+      "parse_status": "ACCEPTED_WITH_WARNINGS",
+      "parse_warnings": [
+        "notes_section_not_classified_in_controlled_taxonomy"
+      ],
+      "parsed_path": "parsed/SEC/V/SEC_1403161_000140316125000089/document.json",
+      "parsed_sha256": "30786a403b0a2162cca4b9d8e503c7df1c33eb2e23d9523fa91678e10d917e14",
+      "period_metadata_coverage": {
+        "period_cells_bound": 17688,
+        "period_columns_bound": 1197
+      },
+      "raw_bytes": 2909461,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 1,
+        "BUSINESS": 1,
+        "INCOME_STATEMENT": 6,
+        "UNKNOWN": 78
+      },
+      "table_rows": 1203,
+      "tables": 86,
+      "text_blocks": 0,
+      "ticker": "V"
+    },
+    {
+      "chunks": 869,
+      "content_type_counts": {
+        "TABLE": 70,
+        "TABLE_ROW": 799
+      },
+      "content_type_coverage": {
+        "TABLE": 70,
+        "TABLE_ROW": 799
+      },
+      "document_id": "SEC_1403161_000140316125000017",
+      "empty_block_count": 6,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 218,
+      "ixbrl_fact_count": 888,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 458086,
+      "normalized_path": "normalized/SEC/V/SEC_1403161_000140316125000017/document.json",
+      "normalized_sha256": "32554f0a4ac84044dfbfb8628eedfa74ddb39b3c3cd466ad1111f7ba4e836825",
+      "numeric_cell_parse_coverage": {
+        "cells": 19521,
+        "numeric_cells": 2890
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/V/SEC_1403161_000140316125000017/document.json",
+      "parsed_sha256": "3a517fa456168097734b224f7a1d0e13692fda5371f9f2b8a9e7b60dcfe87a80",
+      "period_metadata_coverage": {
+        "period_cells_bound": 9276,
+        "period_columns_bound": 687
+      },
+      "raw_bytes": 1372711,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "CASH_FLOW": 1,
+        "INCOME_STATEMENT": 4,
+        "UNKNOWN": 65
+      },
+      "table_rows": 799,
+      "tables": 70,
+      "text_blocks": 0,
+      "ticker": "V"
+    },
+    {
+      "chunks": 885,
+      "content_type_counts": {
+        "TABLE": 71,
+        "TABLE_ROW": 814
+      },
+      "content_type_coverage": {
+        "TABLE": 71,
+        "TABLE_ROW": 814
+      },
+      "document_id": "SEC_1403161_000140316125000037",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 275,
+      "ixbrl_fact_count": 1189,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 585203,
+      "normalized_path": "normalized/SEC/V/SEC_1403161_000140316125000037/document.json",
+      "normalized_sha256": "b5328476630c3e254084e6fd2816bfac727d08018afeb49da2970a10ac47ec07",
+      "numeric_cell_parse_coverage": {
+        "cells": 21015,
+        "numeric_cells": 4420
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/V/SEC_1403161_000140316125000037/document.json",
+      "parsed_sha256": "5168785a6060e43a1c6572bbf1fb1e29ee763a3832263b524881a2d80f301a10",
+      "period_metadata_coverage": {
+        "period_cells_bound": 14253,
+        "period_columns_bound": 1038
+      },
+      "raw_bytes": 1773133,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "CASH_FLOW": 1,
+        "INCOME_STATEMENT": 8,
+        "UNKNOWN": 62
+      },
+      "table_rows": 814,
+      "tables": 71,
+      "text_blocks": 0,
+      "ticker": "V"
+    },
+    {
+      "chunks": 909,
+      "content_type_counts": {
+        "TABLE": 71,
+        "TABLE_ROW": 838
+      },
+      "content_type_coverage": {
+        "TABLE": 71,
+        "TABLE_ROW": 838
+      },
+      "document_id": "SEC_1403161_000140316125000052",
+      "empty_block_count": 0,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 298,
+      "ixbrl_fact_count": 1263,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 614815,
+      "normalized_path": "normalized/SEC/V/SEC_1403161_000140316125000052/document.json",
+      "normalized_sha256": "c9c2b2efc9d1ed8c7ed5c5fd0ffdcf03a06c8c6b8dea97a25fe6f82f29d79839",
+      "numeric_cell_parse_coverage": {
+        "cells": 21690,
+        "numeric_cells": 4594
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/V/SEC_1403161_000140316125000052/document.json",
+      "parsed_sha256": "600b91a4d06de54351341911f2379fb361e996fddaa6b4c692b59197548e6674",
+      "period_metadata_coverage": {
+        "period_cells_bound": 15465,
+        "period_columns_bound": 1065
+      },
+      "raw_bytes": 1843474,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "CASH_FLOW": 1,
+        "INCOME_STATEMENT": 8,
+        "UNKNOWN": 62
+      },
+      "table_rows": 838,
+      "tables": 71,
+      "text_blocks": 0,
+      "ticker": "V"
+    },
+    {
+      "chunks": 2709,
+      "content_type_counts": {
+        "TABLE": 316,
+        "TABLE_ROW": 2393
+      },
+      "content_type_coverage": {
+        "TABLE": 316,
+        "TABLE_ROW": 2393
+      },
+      "document_id": "SEC_78003_000007800324000039",
+      "empty_block_count": 55,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 1087,
+      "ixbrl_fact_count": 3284,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 1638616,
+      "normalized_path": "normalized/SEC/PFE/SEC_78003_000007800324000039/document.json",
+      "normalized_sha256": "8cf4f60cd0dc604ca07a9496518d6ac3d4d447c897c6789132124865796eb5c6",
+      "numeric_cell_parse_coverage": {
+        "cells": 53067,
+        "numeric_cells": 8870
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/PFE/SEC_78003_000007800324000039/document.json",
+      "parsed_sha256": "f18c161cb94aad452d43c34496684cbec4e4f853bd7454ac4b63c1657a832bfc",
+      "period_metadata_coverage": {
+        "period_cells_bound": 34436,
+        "period_columns_bound": 2012
+      },
+      "raw_bytes": 5349184,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 2,
+        "BUSINESS": 3,
+        "CASH_FLOW": 3,
+        "INCOME_STATEMENT": 8,
+        "NOTES": 2,
+        "UNKNOWN": 298
+      },
+      "table_rows": 2393,
+      "tables": 316,
+      "text_blocks": 0,
+      "ticker": "PFE"
+    },
+    {
+      "chunks": 2791,
+      "content_type_counts": {
+        "TABLE": 322,
+        "TABLE_ROW": 2469
+      },
+      "content_type_coverage": {
+        "TABLE": 322,
+        "TABLE_ROW": 2469
+      },
+      "document_id": "SEC_78003_000007800325000054",
+      "empty_block_count": 55,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 1034,
+      "ixbrl_fact_count": 3236,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 1628310,
+      "normalized_path": "normalized/SEC/PFE/SEC_78003_000007800325000054/document.json",
+      "normalized_sha256": "9aed26393de08f690a63b5f284024337388f847887686c1a577742da7b70ee50",
+      "numeric_cell_parse_coverage": {
+        "cells": 55383,
+        "numeric_cells": 9091
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/PFE/SEC_78003_000007800325000054/document.json",
+      "parsed_sha256": "bf4726b488c98238fd3aba7f9e03707be9504d75745d3392498e4b2c2902ebfe",
+      "period_metadata_coverage": {
+        "period_cells_bound": 35628,
+        "period_columns_bound": 2121
+      },
+      "raw_bytes": 5338961,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 2,
+        "BUSINESS": 3,
+        "CASH_FLOW": 3,
+        "INCOME_STATEMENT": 8,
+        "NOTES": 2,
+        "UNKNOWN": 304
+      },
+      "table_rows": 2469,
+      "tables": 322,
+      "text_blocks": 0,
+      "ticker": "PFE"
+    },
+    {
+      "chunks": 2750,
+      "content_type_counts": {
+        "TABLE": 315,
+        "TABLE_ROW": 2435
+      },
+      "content_type_coverage": {
+        "TABLE": 315,
+        "TABLE_ROW": 2435
+      },
+      "document_id": "SEC_78003_000007800326000026",
+      "empty_block_count": 51,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 1012,
+      "ixbrl_fact_count": 3254,
+      "normalization_status": "ACCEPTED_WITH_WARNINGS",
+      "normalized_bytes": 1622610,
+      "normalized_path": "normalized/SEC/PFE/SEC_78003_000007800326000026/document.json",
+      "normalized_sha256": "f8fc8503b7a45bdce4131decd3765545d67c09bcbcd41f93cf54b5e6eb326832",
+      "numeric_cell_parse_coverage": {
+        "cells": 54132,
+        "numeric_cells": 8837
+      },
+      "parse_status": "ACCEPTED_WITH_WARNINGS",
+      "parse_warnings": [
+        "notes_section_not_classified_in_controlled_taxonomy"
+      ],
+      "parsed_path": "parsed/SEC/PFE/SEC_78003_000007800326000026/document.json",
+      "parsed_sha256": "ebfe30910d708562f98561fcc0cdb690d49365a748197a567886a93cfde86a1e",
+      "period_metadata_coverage": {
+        "period_cells_bound": 35226,
+        "period_columns_bound": 2019
+      },
+      "raw_bytes": 5222324,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 2,
+        "BUSINESS": 3,
+        "CASH_FLOW": 3,
+        "INCOME_STATEMENT": 8,
+        "UNKNOWN": 299
+      },
+      "table_rows": 2435,
+      "tables": 315,
+      "text_blocks": 0,
+      "ticker": "PFE"
+    },
+    {
+      "chunks": 1625,
+      "content_type_counts": {
+        "TABLE": 88,
+        "TABLE_ROW": 1537
+      },
+      "content_type_coverage": {
+        "TABLE": 88,
+        "TABLE_ROW": 1537
+      },
+      "document_id": "SEC_78003_000007800325000114",
+      "empty_block_count": 27,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 369,
+      "ixbrl_fact_count": 1229,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 604687,
+      "normalized_path": "normalized/SEC/PFE/SEC_78003_000007800325000114/document.json",
+      "normalized_sha256": "1d5b0d8bda996cbe02dc5a36c013161f28b4c40cff2a2cf794208a5eec5309b8",
+      "numeric_cell_parse_coverage": {
+        "cells": 41481,
+        "numeric_cells": 3088
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/PFE/SEC_78003_000007800325000114/document.json",
+      "parsed_sha256": "df9338a01dc54599f45b1ebd22dc371831446e04f5bfce969c296cb6565bb1d5",
+      "period_metadata_coverage": {
+        "period_cells_bound": 12594,
+        "period_columns_bound": 633
+      },
+      "raw_bytes": 2176147,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BUSINESS": 1,
+        "INCOME_STATEMENT": 6,
+        "UNKNOWN": 81
+      },
+      "table_rows": 1537,
+      "tables": 88,
+      "text_blocks": 0,
+      "ticker": "PFE"
+    },
+    {
+      "chunks": 1346,
+      "content_type_counts": {
+        "TABLE": 93,
+        "TABLE_ROW": 1253
+      },
+      "content_type_coverage": {
+        "TABLE": 93,
+        "TABLE_ROW": 1253
+      },
+      "document_id": "SEC_78003_000007800325000138",
+      "empty_block_count": 24,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 573,
+      "ixbrl_fact_count": 1790,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 831456,
+      "normalized_path": "normalized/SEC/PFE/SEC_78003_000007800325000138/document.json",
+      "normalized_sha256": "f59c2ef578ebd675e393d61a08f566b095454e6856e93ec7384cc76883a5d114",
+      "numeric_cell_parse_coverage": {
+        "cells": 38334,
+        "numeric_cells": 4872
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/PFE/SEC_78003_000007800325000138/document.json",
+      "parsed_sha256": "8feda1542301666e8492dfaa2f91186e66827100f6a04a48741dd82ecb2a85f9",
+      "period_metadata_coverage": {
+        "period_cells_bound": 19518,
+        "period_columns_bound": 1017
+      },
+      "raw_bytes": 2834037,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BUSINESS": 1,
+        "INCOME_STATEMENT": 9,
+        "UNKNOWN": 83
+      },
+      "table_rows": 1253,
+      "tables": 93,
+      "text_blocks": 0,
+      "ticker": "PFE"
+    },
+    {
+      "chunks": 1359,
+      "content_type_counts": {
+        "TABLE": 95,
+        "TABLE_ROW": 1264
+      },
+      "content_type_coverage": {
+        "TABLE": 95,
+        "TABLE_ROW": 1264
+      },
+      "document_id": "SEC_78003_000007800325000150",
+      "empty_block_count": 26,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 587,
+      "ixbrl_fact_count": 1851,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 855328,
+      "normalized_path": "normalized/SEC/PFE/SEC_78003_000007800325000150/document.json",
+      "normalized_sha256": "755c69f2f494673fd644183b484aedd4a6633c012f6de5da94af9b61938c7a7e",
+      "numeric_cell_parse_coverage": {
+        "cells": 37443,
+        "numeric_cells": 4901
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/PFE/SEC_78003_000007800325000150/document.json",
+      "parsed_sha256": "fbfcca41d6d5bf1021bcc6b57ed249312cb5e2dc0fafa87d52f06b8fddc71fc8",
+      "period_metadata_coverage": {
+        "period_cells_bound": 19626,
+        "period_columns_bound": 1017
+      },
+      "raw_bytes": 2892178,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BUSINESS": 1,
+        "INCOME_STATEMENT": 9,
+        "UNKNOWN": 85
+      },
+      "table_rows": 1264,
+      "tables": 95,
+      "text_blocks": 0,
+      "ticker": "PFE"
+    },
+    {
+      "chunks": 1423,
+      "content_type_counts": {
+        "TABLE": 182,
+        "TABLE_ROW": 1241
+      },
+      "content_type_coverage": {
+        "TABLE": 182,
+        "TABLE_ROW": 1241
+      },
+      "document_id": "SEC_1652044_000165204424000022",
+      "empty_block_count": 4,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 347,
+      "ixbrl_fact_count": 1588,
+      "normalization_status": "ACCEPTED_WITH_WARNINGS",
+      "normalized_bytes": 801895,
+      "normalized_path": "normalized/SEC/GOOGL/SEC_1652044_000165204424000022/document.json",
+      "normalized_sha256": "062687248296693d64a6caad5a7088289b4b6d1a8f2c752f9fafc8b289776cee",
+      "numeric_cell_parse_coverage": {
+        "cells": 21942,
+        "numeric_cells": 4688
+      },
+      "parse_status": "ACCEPTED_WITH_WARNINGS",
+      "parse_warnings": [
+        "notes_section_not_classified_in_controlled_taxonomy"
+      ],
+      "parsed_path": "parsed/SEC/GOOGL/SEC_1652044_000165204424000022/document.json",
+      "parsed_sha256": "70e63b103a2e13c0f923ae7baf03a3f810f347cbb4954337d683be31bfc781fb",
+      "period_metadata_coverage": {
+        "period_cells_bound": 15213,
+        "period_columns_bound": 1038
+      },
+      "raw_bytes": 2410403,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 1,
+        "CASH_FLOW": 2,
+        "INCOME_STATEMENT": 4,
+        "UNKNOWN": 175
+      },
+      "table_rows": 1241,
+      "tables": 182,
+      "text_blocks": 0,
+      "ticker": "GOOGL"
+    },
+    {
+      "chunks": 1450,
+      "content_type_counts": {
+        "TABLE": 184,
+        "TABLE_ROW": 1266
+      },
+      "content_type_coverage": {
+        "TABLE": 184,
+        "TABLE_ROW": 1266
+      },
+      "document_id": "SEC_1652044_000165204425000014",
+      "empty_block_count": 4,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 344,
+      "ixbrl_fact_count": 1721,
+      "normalization_status": "ACCEPTED_WITH_WARNINGS",
+      "normalized_bytes": 856862,
+      "normalized_path": "normalized/SEC/GOOGL/SEC_1652044_000165204425000014/document.json",
+      "normalized_sha256": "13c1be5e8497e7848c9a32cf09d812b9c6574d5c32c86190da5ac29d82808f2d",
+      "numeric_cell_parse_coverage": {
+        "cells": 23034,
+        "numeric_cells": 4903
+      },
+      "parse_status": "ACCEPTED_WITH_WARNINGS",
+      "parse_warnings": [
+        "notes_section_not_classified_in_controlled_taxonomy"
+      ],
+      "parsed_path": "parsed/SEC/GOOGL/SEC_1652044_000165204425000014/document.json",
+      "parsed_sha256": "76b6cc33f418c4d8f5866f6d4bb3659e9a7088cd3dc425c92485c3c23351c939",
+      "period_metadata_coverage": {
+        "period_cells_bound": 16260,
+        "period_columns_bound": 1032
+      },
+      "raw_bytes": 2528344,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 1,
+        "CASH_FLOW": 2,
+        "INCOME_STATEMENT": 3,
+        "UNKNOWN": 178
+      },
+      "table_rows": 1266,
+      "tables": 184,
+      "text_blocks": 0,
+      "ticker": "GOOGL"
+    },
+    {
+      "chunks": 1513,
+      "content_type_counts": {
+        "TABLE": 185,
+        "TABLE_ROW": 1328
+      },
+      "content_type_coverage": {
+        "TABLE": 185,
+        "TABLE_ROW": 1328
+      },
+      "document_id": "SEC_1652044_000165204426000018",
+      "empty_block_count": 4,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 444,
+      "ixbrl_fact_count": 1861,
+      "normalization_status": "ACCEPTED_WITH_WARNINGS",
+      "normalized_bytes": 915728,
+      "normalized_path": "normalized/SEC/GOOGL/SEC_1652044_000165204426000018/document.json",
+      "normalized_sha256": "1140d8befc8f8b8251b0f6aa9ab57611eb869cbe5fa8c5b9f1643581d4d22796",
+      "numeric_cell_parse_coverage": {
+        "cells": 22740,
+        "numeric_cells": 5216
+      },
+      "parse_status": "ACCEPTED_WITH_WARNINGS",
+      "parse_warnings": [
+        "notes_section_not_classified_in_controlled_taxonomy"
+      ],
+      "parsed_path": "parsed/SEC/GOOGL/SEC_1652044_000165204426000018/document.json",
+      "parsed_sha256": "415c3496f0fb695a17907e34caec7f88a8ee8059c1a45ed4717ad27d93510057",
+      "period_metadata_coverage": {
+        "period_cells_bound": 15807,
+        "period_columns_bound": 1002
+      },
+      "raw_bytes": 2616499,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 1,
+        "CASH_FLOW": 2,
+        "INCOME_STATEMENT": 1,
+        "UNKNOWN": 181
+      },
+      "table_rows": 1328,
+      "tables": 185,
+      "text_blocks": 0,
+      "ticker": "GOOGL"
+    },
+    {
+      "chunks": 882,
+      "content_type_counts": {
+        "TABLE": 84,
+        "TABLE_ROW": 798
+      },
+      "content_type_coverage": {
+        "TABLE": 84,
+        "TABLE_ROW": 798
+      },
+      "document_id": "SEC_1652044_000165204425000043",
+      "empty_block_count": 2,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 260,
+      "ixbrl_fact_count": 1220,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 583372,
+      "normalized_path": "normalized/SEC/GOOGL/SEC_1652044_000165204425000043/document.json",
+      "normalized_sha256": "206ef38451d791e18dfa064fa00fe7aec12dda5733511ed2996820566664539e",
+      "numeric_cell_parse_coverage": {
+        "cells": 17985,
+        "numeric_cells": 3433
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/GOOGL/SEC_1652044_000165204425000043/document.json",
+      "parsed_sha256": "3550c88c610e73e800a4f035037d641f0a9cf20915f03b822d5baf53594bd4ce",
+      "period_metadata_coverage": {
+        "period_cells_bound": 10821,
+        "period_columns_bound": 843
+      },
+      "raw_bytes": 1615481,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 2,
+        "CASH_FLOW": 3,
+        "INCOME_STATEMENT": 4,
+        "UNKNOWN": 75
+      },
+      "table_rows": 798,
+      "tables": 84,
+      "text_blocks": 0,
+      "ticker": "GOOGL"
+    },
+    {
+      "chunks": 1004,
+      "content_type_counts": {
+        "TABLE": 91,
+        "TABLE_ROW": 913
+      },
+      "content_type_coverage": {
+        "TABLE": 91,
+        "TABLE_ROW": 913
+      },
+      "document_id": "SEC_1652044_000165204425000062",
+      "empty_block_count": 2,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 417,
+      "ixbrl_fact_count": 1734,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 790116,
+      "normalized_path": "normalized/SEC/GOOGL/SEC_1652044_000165204425000062/document.json",
+      "normalized_sha256": "373581fa47ea8f2f592b98a57032f4a3b73f1289a16481bfcece33cebe2bf295",
+      "numeric_cell_parse_coverage": {
+        "cells": 22740,
+        "numeric_cells": 5241
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/GOOGL/SEC_1652044_000165204425000062/document.json",
+      "parsed_sha256": "26c03dc7a8cb2c38767dc2e6c7b52d825ba35e2b9ef930da65711a33ecdc1e4d",
+      "period_metadata_coverage": {
+        "period_cells_bound": 16719,
+        "period_columns_bound": 1257
+      },
+      "raw_bytes": 2199722,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 2,
+        "CASH_FLOW": 3,
+        "INCOME_STATEMENT": 6,
+        "UNKNOWN": 80
+      },
+      "table_rows": 913,
+      "tables": 91,
+      "text_blocks": 0,
+      "ticker": "GOOGL"
+    },
+    {
+      "chunks": 994,
+      "content_type_counts": {
+        "TABLE": 90,
+        "TABLE_ROW": 904
+      },
+      "content_type_coverage": {
+        "TABLE": 90,
+        "TABLE_ROW": 904
+      },
+      "document_id": "SEC_1652044_000165204425000091",
+      "empty_block_count": 2,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 418,
+      "ixbrl_fact_count": 1732,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 793493,
+      "normalized_path": "normalized/SEC/GOOGL/SEC_1652044_000165204425000091/document.json",
+      "normalized_sha256": "902ca24ee1f154890e9c0d74425a775f5664590dd40dc7069f8042a824a58e38",
+      "numeric_cell_parse_coverage": {
+        "cells": 22524,
+        "numeric_cells": 5179
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/GOOGL/SEC_1652044_000165204425000091/document.json",
+      "parsed_sha256": "4e47addd884a8aa28b72b9d57ad7c99045897022a1020e35a6649457fdb3f23a",
+      "period_metadata_coverage": {
+        "period_cells_bound": 16770,
+        "period_columns_bound": 1257
+      },
+      "raw_bytes": 2196990,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "BALANCE_SHEET": 2,
+        "CASH_FLOW": 3,
+        "INCOME_STATEMENT": 6,
+        "UNKNOWN": 79
+      },
+      "table_rows": 904,
+      "tables": 90,
+      "text_blocks": 0,
+      "ticker": "GOOGL"
+    },
+    {
+      "chunks": 995,
+      "content_type_counts": {
+        "TABLE": 93,
+        "TABLE_ROW": 902
+      },
+      "content_type_coverage": {
+        "TABLE": 93,
+        "TABLE_ROW": 902
+      },
+      "document_id": "SEC_1018724_000101872424000008",
+      "empty_block_count": 2,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 362,
+      "ixbrl_fact_count": 1502,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 723696,
+      "normalized_path": "normalized/SEC/AMZN/SEC_1018724_000101872424000008/document.json",
+      "normalized_sha256": "6d70ffd99678fe218e7058f551dbe821db2787c2383ed750206a1972b97fd484",
+      "numeric_cell_parse_coverage": {
+        "cells": 14775,
+        "numeric_cells": 3692
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/AMZN/SEC_1018724_000101872424000008/document.json",
+      "parsed_sha256": "0d5c02c780fe1bfdc37e341a81c15cc14e0d9d791be2ddb46f7c26d0a10356c3",
+      "period_metadata_coverage": {
+        "period_cells_bound": 7209,
+        "period_columns_bound": 551
+      },
+      "raw_bytes": 1945178,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BUSINESS": 1,
+        "CASH_FLOW": 1,
+        "INCOME_STATEMENT": 1,
+        "NOTES": 1,
+        "UNKNOWN": 89
+      },
+      "table_rows": 902,
+      "tables": 93,
+      "text_blocks": 0,
+      "ticker": "AMZN"
+    },
+    {
+      "chunks": 983,
+      "content_type_counts": {
+        "TABLE": 91,
+        "TABLE_ROW": 892
+      },
+      "content_type_coverage": {
+        "TABLE": 91,
+        "TABLE_ROW": 892
+      },
+      "document_id": "SEC_1018724_000101872425000004",
+      "empty_block_count": 2,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 357,
+      "ixbrl_fact_count": 1499,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 730377,
+      "normalized_path": "normalized/SEC/AMZN/SEC_1018724_000101872425000004/document.json",
+      "normalized_sha256": "fdbcf5537caf1781a70aed1c899451c709b6cf6ddc275bc232fb2fe9392f5c3c",
+      "numeric_cell_parse_coverage": {
+        "cells": 14643,
+        "numeric_cells": 3664
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/AMZN/SEC_1018724_000101872425000004/document.json",
+      "parsed_sha256": "a6b2de34e3280a385fd280a3e5502a1109a0955ed5fc626df84cf2539b24dc90",
+      "period_metadata_coverage": {
+        "period_cells_bound": 7197,
+        "period_columns_bound": 542
+      },
+      "raw_bytes": 1922355,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BUSINESS": 1,
+        "CASH_FLOW": 1,
+        "INCOME_STATEMENT": 1,
+        "NOTES": 1,
+        "UNKNOWN": 87
+      },
+      "table_rows": 892,
+      "tables": 91,
+      "text_blocks": 0,
+      "ticker": "AMZN"
+    },
+    {
+      "chunks": 1022,
+      "content_type_counts": {
+        "TABLE": 92,
+        "TABLE_ROW": 930
+      },
+      "content_type_coverage": {
+        "TABLE": 92,
+        "TABLE_ROW": 930
+      },
+      "document_id": "SEC_1018724_000101872426000004",
+      "empty_block_count": 2,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 373,
+      "ixbrl_fact_count": 1637,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 784586,
+      "normalized_path": "normalized/SEC/AMZN/SEC_1018724_000101872426000004/document.json",
+      "normalized_sha256": "cc567a9cff5e470fc95ca1a7cb6a0d0e6becba7879a6556992ebb054f27f80e1",
+      "numeric_cell_parse_coverage": {
+        "cells": 15669,
+        "numeric_cells": 3884
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/AMZN/SEC_1018724_000101872426000004/document.json",
+      "parsed_sha256": "b18043d7bbd2b2f259a8ef7d244a91850ed9a8b9cf0c4bf70a98a6b2a74d557e",
+      "period_metadata_coverage": {
+        "period_cells_bound": 7839,
+        "period_columns_bound": 557
+      },
+      "raw_bytes": 1968342,
+      "role": "ANNUAL",
+      "section_metadata_coverage": {
+        "BUSINESS": 1,
+        "CASH_FLOW": 1,
+        "INCOME_STATEMENT": 1,
+        "NOTES": 1,
+        "UNKNOWN": 88
+      },
+      "table_rows": 930,
+      "tables": 92,
+      "text_blocks": 0,
+      "ticker": "AMZN"
+    },
+    {
+      "chunks": 585,
+      "content_type_counts": {
+        "TABLE": 53,
+        "TABLE_ROW": 532
+      },
+      "content_type_coverage": {
+        "TABLE": 53,
+        "TABLE_ROW": 532
+      },
+      "document_id": "SEC_1018724_000101872425000036",
+      "empty_block_count": 2,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 193,
+      "ixbrl_fact_count": 915,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 423377,
+      "normalized_path": "normalized/SEC/AMZN/SEC_1018724_000101872425000036/document.json",
+      "normalized_sha256": "5b252aea96be0fc5ed0535c9774610605870f28d1ef78d9c2db0bcbd4efea32e",
+      "numeric_cell_parse_coverage": {
+        "cells": 11361,
+        "numeric_cells": 2088
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/AMZN/SEC_1018724_000101872425000036/document.json",
+      "parsed_sha256": "dcccf78957963142ebcb24e7157811430bde125d4973589fec734275bdb2ce9a",
+      "period_metadata_coverage": {
+        "period_cells_bound": 5007,
+        "period_columns_bound": 357
+      },
+      "raw_bytes": 1139537,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "CASH_FLOW": 1,
+        "NOTES": 1,
+        "UNKNOWN": 51
+      },
+      "table_rows": 532,
+      "tables": 53,
+      "text_blocks": 0,
+      "ticker": "AMZN"
+    },
+    {
+      "chunks": 585,
+      "content_type_counts": {
+        "TABLE": 53,
+        "TABLE_ROW": 532
+      },
+      "content_type_coverage": {
+        "TABLE": 53,
+        "TABLE_ROW": 532
+      },
+      "document_id": "SEC_1018724_000101872425000086",
+      "empty_block_count": 2,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 259,
+      "ixbrl_fact_count": 1201,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 535269,
+      "normalized_path": "normalized/SEC/AMZN/SEC_1018724_000101872425000086/document.json",
+      "normalized_sha256": "67a2da580b85ba0e35e0b55dc8d154ac7cdbe5268e63ff38349560fd9074349b",
+      "numeric_cell_parse_coverage": {
+        "cells": 11691,
+        "numeric_cells": 3100
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/AMZN/SEC_1018724_000101872425000086/document.json",
+      "parsed_sha256": "211fb87fe8bb0e64b236558e689abfd1230e09015aa5f8dfe750dec182729664",
+      "period_metadata_coverage": {
+        "period_cells_bound": 7047,
+        "period_columns_bound": 498
+      },
+      "raw_bytes": 1387163,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "CASH_FLOW": 1,
+        "NOTES": 1,
+        "UNKNOWN": 51
+      },
+      "table_rows": 532,
+      "tables": 53,
+      "text_blocks": 0,
+      "ticker": "AMZN"
+    },
+    {
+      "chunks": 585,
+      "content_type_counts": {
+        "TABLE": 53,
+        "TABLE_ROW": 532
+      },
+      "content_type_coverage": {
+        "TABLE": 53,
+        "TABLE_ROW": 532
+      },
+      "document_id": "SEC_1018724_000101872425000123",
+      "empty_block_count": 2,
+      "fatal_parse_errors": [],
+      "headings": 0,
+      "ixbrl_context_count": 266,
+      "ixbrl_fact_count": 1205,
+      "normalization_status": "ACCEPTED",
+      "normalized_bytes": 542111,
+      "normalized_path": "normalized/SEC/AMZN/SEC_1018724_000101872425000123/document.json",
+      "normalized_sha256": "46896796a0f8ffc3a2e25eb62ed36acd7abc9038f774e4efddce59e1dec790bc",
+      "numeric_cell_parse_coverage": {
+        "cells": 11691,
+        "numeric_cells": 3091
+      },
+      "parse_status": "ACCEPTED",
+      "parse_warnings": [],
+      "parsed_path": "parsed/SEC/AMZN/SEC_1018724_000101872425000123/document.json",
+      "parsed_sha256": "fa62c3305ff3ab22b6a5e0de446359f1b0848612593c53d1435c186ed6953194",
+      "period_metadata_coverage": {
+        "period_cells_bound": 7191,
+        "period_columns_bound": 504
+      },
+      "raw_bytes": 1405879,
+      "role": "QUARTERLY",
+      "section_metadata_coverage": {
+        "CASH_FLOW": 1,
+        "NOTES": 1,
+        "UNKNOWN": 51
+      },
+      "table_rows": 532,
+      "tables": 53,
+      "text_blocks": 0,
+      "ticker": "AMZN"
+    }
+  ],
+  "parse_status_counts": {
+    "ACCEPTED": 47,
+    "ACCEPTED_WITH_WARNINGS": 13
+  }
+}

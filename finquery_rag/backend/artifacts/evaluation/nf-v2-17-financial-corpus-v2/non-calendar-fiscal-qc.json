@@ -1,0 +1,179 @@
+{
+  "issuers": [
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "V"
+  ],
+  "mapping_valid": true,
+  "records": [
+    {
+      "document_id": "SEC_789019_000095017023035122",
+      "fiscal_year": 2023,
+      "mapping_valid": true,
+      "report_period_end": "2023-06-30",
+      "ticker": "MSFT"
+    },
+    {
+      "document_id": "SEC_789019_000095017024087843",
+      "fiscal_year": 2024,
+      "mapping_valid": true,
+      "report_period_end": "2024-06-30",
+      "ticker": "MSFT"
+    },
+    {
+      "document_id": "SEC_789019_000095017025100235",
+      "fiscal_year": 2025,
+      "mapping_valid": true,
+      "report_period_end": "2025-06-30",
+      "ticker": "MSFT"
+    },
+    {
+      "document_id": "SEC_789019_000095017024118967",
+      "fiscal_year": 2025,
+      "mapping_valid": true,
+      "report_period_end": "2024-09-30",
+      "ticker": "MSFT"
+    },
+    {
+      "document_id": "SEC_789019_000095017025010491",
+      "fiscal_year": 2025,
+      "mapping_valid": true,
+      "report_period_end": "2024-12-31",
+      "ticker": "MSFT"
+    },
+    {
+      "document_id": "SEC_789019_000095017025061046",
+      "fiscal_year": 2025,
+      "mapping_valid": true,
+      "report_period_end": "2025-03-31",
+      "ticker": "MSFT"
+    },
+    {
+      "document_id": "SEC_320193_000032019323000106",
+      "fiscal_year": 2023,
+      "mapping_valid": true,
+      "report_period_end": "2023-09-30",
+      "ticker": "AAPL"
+    },
+    {
+      "document_id": "SEC_320193_000032019324000123",
+      "fiscal_year": 2024,
+      "mapping_valid": true,
+      "report_period_end": "2024-09-28",
+      "ticker": "AAPL"
+    },
+    {
+      "document_id": "SEC_320193_000032019325000079",
+      "fiscal_year": 2025,
+      "mapping_valid": true,
+      "report_period_end": "2025-09-27",
+      "ticker": "AAPL"
+    },
+    {
+      "document_id": "SEC_320193_000032019325000008",
+      "fiscal_year": 2025,
+      "mapping_valid": true,
+      "report_period_end": "2024-12-28",
+      "ticker": "AAPL"
+    },
+    {
+      "document_id": "SEC_320193_000032019325000057",
+      "fiscal_year": 2025,
+      "mapping_valid": true,
+      "report_period_end": "2025-03-29",
+      "ticker": "AAPL"
+    },
+    {
+      "document_id": "SEC_320193_000032019325000073",
+      "fiscal_year": 2025,
+      "mapping_valid": true,
+      "report_period_end": "2025-06-28",
+      "ticker": "AAPL"
+    },
+    {
+      "document_id": "SEC_1045810_000104581023000017",
+      "fiscal_year": 2023,
+      "mapping_valid": true,
+      "report_period_end": "2023-01-29",
+      "ticker": "NVDA"
+    },
+    {
+      "document_id": "SEC_1045810_000104581024000029",
+      "fiscal_year": 2024,
+      "mapping_valid": true,
+      "report_period_end": "2024-01-28",
+      "ticker": "NVDA"
+    },
+    {
+      "document_id": "SEC_1045810_000104581025000023",
+      "fiscal_year": 2025,
+      "mapping_valid": true,
+      "report_period_end": "2025-01-26",
+      "ticker": "NVDA"
+    },
+    {
+      "document_id": "SEC_1045810_000104581024000124",
+      "fiscal_year": 2025,
+      "mapping_valid": true,
+      "report_period_end": "2024-04-28",
+      "ticker": "NVDA"
+    },
+    {
+      "document_id": "SEC_1045810_000104581024000264",
+      "fiscal_year": 2025,
+      "mapping_valid": true,
+      "report_period_end": "2024-07-28",
+      "ticker": "NVDA"
+    },
+    {
+      "document_id": "SEC_1045810_000104581024000316",
+      "fiscal_year": 2025,
+      "mapping_valid": true,
+      "report_period_end": "2024-10-27",
+      "ticker": "NVDA"
+    },
+    {
+      "document_id": "SEC_1403161_000140316123000099",
+      "fiscal_year": 2023,
+      "mapping_valid": true,
+      "report_period_end": "2023-09-30",
+      "ticker": "V"
+    },
+    {
+      "document_id": "SEC_1403161_000140316124000058",
+      "fiscal_year": 2024,
+      "mapping_valid": true,
+      "report_period_end": "2024-09-30",
+      "ticker": "V"
+    },
+    {
+      "document_id": "SEC_1403161_000140316125000089",
+      "fiscal_year": 2025,
+      "mapping_valid": true,
+      "report_period_end": "2025-09-30",
+      "ticker": "V"
+    },
+    {
+      "document_id": "SEC_1403161_000140316125000017",
+      "fiscal_year": 2025,
+      "mapping_valid": true,
+      "report_period_end": "2024-12-31",
+      "ticker": "V"
+    },
+    {
+      "document_id": "SEC_1403161_000140316125000037",
+      "fiscal_year": 2025,
+      "mapping_valid": true,
+      "report_period_end": "2025-03-31",
+      "ticker": "V"
+    },
+    {
+      "document_id": "SEC_1403161_000140316125000052",
+      "fiscal_year": 2025,
+      "mapping_valid": true,
+      "report_period_end": "2025-06-30",
+      "ticker": "V"
+    }
+  ]
+}

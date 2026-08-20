@@ -1,0 +1,73 @@
+{
+  "annual": 30,
+  "base_sha": "567659d389981b452084a54b5d5446a1aa0d33ee",
+  "companies": 10,
+  "corpus_statistics": {
+    "annual": 30,
+    "chunks": 95506,
+    "companies": 10,
+    "content_types": {
+      "TABLE": 7870,
+      "TABLE_ROW": 86600,
+      "TEXT": 1036
+    },
+    "documents": 60,
+    "fiscal_years": [
+      2023,
+      2024,
+      2025
+    ],
+    "headings": 45,
+    "metadata_completeness": {
+      "document_ids": 60,
+      "orphan_provenance": 0,
+      "raw_sha256": 60
+    },
+    "normalized_bytes": 66870277,
+    "parse_status_counts": {
+      "ACCEPTED": 47,
+      "ACCEPTED_WITH_WARNINGS": 13
+    },
+    "period_semantics": {
+      "ANNUAL": 22342,
+      "INSTANT": 14600,
+      "QUARTER": 11791,
+      "UNKNOWN": 79824,
+      "YTD": 9117
+    },
+    "quarter_observations": 30,
+    "quarterly": 30,
+    "raw_bytes": 222146872,
+    "schema_version": "nf-v2-17/a4/corpus-statistics/v1",
+    "sections": {
+      "BALANCE_SHEET": 297,
+      "BUSINESS": 2232,
+      "CASH_FLOW": 627,
+      "INCOME_STATEMENT": 347,
+      "MDA": 319,
+      "NOTES": 2015,
+      "RISK_FACTORS": 184,
+      "UNKNOWN": 7126
+    },
+    "table_rows": 86624,
+    "tables": 7870,
+    "text_blocks": 5277
+  },
+  "created_at_financial_time_misuse": 0,
+  "decision": "PARSED_CORPUS_ACCEPTED",
+  "indexing": false,
+  "input_raw_manifest_sha": "58aadcf1543f3e8f175d7747a1b4b9c6dfe29f2cebae11a2f26e7c7b4bf0b14a",
+  "input_snapshot_sha": "459c1f93f47b568efc6571e41760dbda129fe564c2a5c3b48825e843e1b9215c",
+  "model_calls": 0,
+  "next_gate": "NF-V2-17A5_CORPUS_QUALITY_FREEZE_AND_INDEX",
+  "orphan_provenance": 0,
+  "parse_status_counts": {
+    "ACCEPTED": 47,
+    "ACCEPTED_WITH_WARNINGS": 13
+  },
+  "primary_documents_attempted": 60,
+  "quarterly": 30,
+  "question_generation": false,
+  "raw_mutation": 0,
+  "raw_sha_provenance": 60
+}
