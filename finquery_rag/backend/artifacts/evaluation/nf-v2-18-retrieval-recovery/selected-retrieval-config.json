@@ -1,0 +1,21 @@
+{
+  "bm25_query": "phrase-first OR important-token fallback",
+  "candidate_depth": 200,
+  "dense": true,
+  "dense_content_types": [
+    "TEXT",
+    "TABLE",
+    "TABLE_ROW"
+  ],
+  "embedding_model": "all-MiniLM-L6-v2",
+  "final_evidence_budget": 20,
+  "fusion": "RRF k=60",
+  "hard_filter_unchanged": true,
+  "hierarchical_expansion": true,
+  "new_reranker": false,
+  "production_default_changed": false,
+  "row_serialization": true,
+  "stage": "A4",
+  "structured_ixbrl": false,
+  "version": "nf-v2-18A/recovery-v1"
+}

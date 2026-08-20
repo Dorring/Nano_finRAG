@@ -1,0 +1,95 @@
+{
+  "dense": {
+    "build_seconds": 1035.5865075699985,
+    "built": true,
+    "content_types": [
+      "TEXT",
+      "TABLE",
+      "TABLE_ROW"
+    ],
+    "dimension": 384,
+    "model": "all-MiniLM-L6-v2",
+    "normalization": "L2",
+    "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/financial_corpus_v2/indexes/nf-v2-18-retrieval-recovery/dense-v2",
+    "records": 95154,
+    "reused": true
+  },
+  "metrics": {
+    "R@1": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 0,
+      "calculation_operand_coverage": 0.0,
+      "denominator": 120,
+      "exact_count": 27,
+      "exact_recall": 0.225,
+      "family_count": 52,
+      "family_recall": 0.43333333333333335,
+      "multi_all_count": 0,
+      "multi_all_recall": 0.0,
+      "multi_any_count": 11,
+      "multi_any_recall": 0.55,
+      "multi_count": 20
+    },
+    "R@10": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 2,
+      "calculation_operand_coverage": 0.13333333333333333,
+      "denominator": 120,
+      "exact_count": 66,
+      "exact_recall": 0.55,
+      "family_count": 84,
+      "family_recall": 0.7,
+      "multi_all_count": 6,
+      "multi_all_recall": 0.3,
+      "multi_any_count": 17,
+      "multi_any_recall": 0.85,
+      "multi_count": 20
+    },
+    "R@20": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 4,
+      "calculation_operand_coverage": 0.26666666666666666,
+      "denominator": 120,
+      "exact_count": 74,
+      "exact_recall": 0.6166666666666667,
+      "family_count": 87,
+      "family_recall": 0.725,
+      "multi_all_count": 7,
+      "multi_all_recall": 0.35,
+      "multi_any_count": 19,
+      "multi_any_recall": 0.95,
+      "multi_count": 20
+    },
+    "R@3": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 0,
+      "calculation_operand_coverage": 0.0,
+      "denominator": 120,
+      "exact_count": 39,
+      "exact_recall": 0.325,
+      "family_count": 70,
+      "family_recall": 0.5833333333333334,
+      "multi_all_count": 0,
+      "multi_all_recall": 0.0,
+      "multi_any_count": 11,
+      "multi_any_recall": 0.55,
+      "multi_count": 20
+    },
+    "R@5": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 1,
+      "calculation_operand_coverage": 0.06666666666666667,
+      "denominator": 120,
+      "exact_count": 59,
+      "exact_recall": 0.49166666666666664,
+      "family_count": 80,
+      "family_recall": 0.6666666666666666,
+      "multi_all_count": 3,
+      "multi_all_recall": 0.15,
+      "multi_any_count": 16,
+      "multi_any_recall": 0.8,
+      "multi_count": 20
+    }
+  },
+  "name": "A2 + row-level Dense V2"
+}

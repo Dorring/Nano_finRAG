@@ -1,0 +1,23 @@
+{
+  "build_seconds": 1035.5865075699985,
+  "built": true,
+  "content_types": [
+    "TEXT",
+    "TABLE",
+    "TABLE_ROW"
+  ],
+  "dimension": 384,
+  "embedding_model_unchanged": true,
+  "model": "all-MiniLM-L6-v2",
+  "normalization": "L2",
+  "old_vectors": 8554,
+  "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/financial_corpus_v2/indexes/nf-v2-18-retrieval-recovery/dense-v2",
+  "production_index_overwritten": false,
+  "records": 95154,
+  "reused": true,
+  "target_content_types": [
+    "TEXT",
+    "TABLE",
+    "TABLE_ROW"
+  ]
+}

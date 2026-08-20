@@ -1,0 +1,257 @@
+{
+  "breakdown": {
+    "AMZN": {
+      "count": 44,
+      "metrics": {
+        "calculation_count": 6,
+        "calculation_operand_complete": 1,
+        "calculation_operand_coverage": 0.16666666666666666,
+        "denominator": 44,
+        "exact_count": 30,
+        "exact_recall": 0.6818181818181818,
+        "family_count": 38,
+        "family_recall": 0.8636363636363636,
+        "multi_all_count": 0,
+        "multi_all_recall": 0.0,
+        "multi_any_count": 8,
+        "multi_any_recall": 1.0,
+        "multi_count": 8
+      }
+    },
+    "GOOGL": {
+      "count": 51,
+      "metrics": {
+        "calculation_count": 9,
+        "calculation_operand_complete": 2,
+        "calculation_operand_coverage": 0.2222222222222222,
+        "denominator": 51,
+        "exact_count": 32,
+        "exact_recall": 0.6274509803921569,
+        "family_count": 46,
+        "family_recall": 0.9019607843137255,
+        "multi_all_count": 3,
+        "multi_all_recall": 0.25,
+        "multi_any_count": 9,
+        "multi_any_recall": 0.75,
+        "multi_count": 12
+      }
+    },
+    "agentic_replan": {
+      "count": 15,
+      "metrics": {
+        "calculation_count": 0,
+        "calculation_operand_complete": 0,
+        "calculation_operand_coverage": 0,
+        "denominator": 15,
+        "exact_count": 12,
+        "exact_recall": 0.8,
+        "family_count": 15,
+        "family_recall": 1.0,
+        "multi_all_count": 0,
+        "multi_all_recall": 0,
+        "multi_any_count": 0,
+        "multi_any_recall": 0,
+        "multi_count": 0
+      }
+    },
+    "annual": {
+      "count": 101,
+      "metrics": {
+        "calculation_count": 14,
+        "calculation_operand_complete": 3,
+        "calculation_operand_coverage": 0.21428571428571427,
+        "denominator": 101,
+        "exact_count": 62,
+        "exact_recall": 0.6138613861386139,
+        "family_count": 82,
+        "family_recall": 0.8118811881188119,
+        "multi_all_count": 3,
+        "multi_all_recall": 0.15,
+        "multi_any_count": 17,
+        "multi_any_recall": 0.85,
+        "multi_count": 20
+      }
+    },
+    "calculation": {
+      "count": 15,
+      "metrics": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 3,
+        "calculation_operand_coverage": 0.2,
+        "denominator": 15,
+        "exact_count": 12,
+        "exact_recall": 0.8,
+        "family_count": 12,
+        "family_recall": 0.8,
+        "multi_all_count": 0,
+        "multi_all_recall": 0,
+        "multi_any_count": 0,
+        "multi_any_recall": 0,
+        "multi_count": 0
+      }
+    },
+    "conflict": {
+      "count": 5,
+      "metrics": {
+        "calculation_count": 0,
+        "calculation_operand_complete": 0,
+        "calculation_operand_coverage": 0,
+        "denominator": 5,
+        "exact_count": 0,
+        "exact_recall": 0.0,
+        "family_count": 0,
+        "family_recall": 0.0,
+        "multi_all_count": 0,
+        "multi_all_recall": 0,
+        "multi_any_count": 0,
+        "multi_any_recall": 0,
+        "multi_count": 0
+      }
+    },
+    "multi_evidence": {
+      "count": 20,
+      "metrics": {
+        "calculation_count": 0,
+        "calculation_operand_complete": 0,
+        "calculation_operand_coverage": 0,
+        "denominator": 20,
+        "exact_count": 17,
+        "exact_recall": 0.85,
+        "family_count": 20,
+        "family_recall": 1.0,
+        "multi_all_count": 3,
+        "multi_all_recall": 0.15,
+        "multi_any_count": 17,
+        "multi_any_recall": 0.85,
+        "multi_count": 20
+      }
+    },
+    "no_answer": {
+      "count": 15,
+      "metrics": {
+        "calculation_count": 0,
+        "calculation_operand_complete": 0,
+        "calculation_operand_coverage": 0,
+        "denominator": 15,
+        "exact_count": 0,
+        "exact_recall": 0.0,
+        "family_count": 0,
+        "family_recall": 0.0,
+        "multi_all_count": 0,
+        "multi_all_recall": 0,
+        "multi_any_count": 0,
+        "multi_any_recall": 0,
+        "multi_count": 0
+      }
+    },
+    "qualitative": {
+      "count": 10,
+      "metrics": {
+        "calculation_count": 0,
+        "calculation_operand_complete": 0,
+        "calculation_operand_coverage": 0,
+        "denominator": 10,
+        "exact_count": 8,
+        "exact_recall": 0.8,
+        "family_count": 10,
+        "family_recall": 1.0,
+        "multi_all_count": 0,
+        "multi_all_recall": 0,
+        "multi_any_count": 0,
+        "multi_any_recall": 0,
+        "multi_count": 0
+      }
+    },
+    "quantitative": {
+      "count": 40,
+      "metrics": {
+        "calculation_count": 0,
+        "calculation_operand_complete": 0,
+        "calculation_operand_coverage": 0,
+        "denominator": 40,
+        "exact_count": 24,
+        "exact_recall": 0.6,
+        "family_count": 35,
+        "family_recall": 0.875,
+        "multi_all_count": 3,
+        "multi_all_recall": 0.15,
+        "multi_any_count": 17,
+        "multi_any_recall": 0.85,
+        "multi_count": 20
+      }
+    },
+    "quarterly": {
+      "count": 4,
+      "metrics": {
+        "calculation_count": 1,
+        "calculation_operand_complete": 0,
+        "calculation_operand_coverage": 0.0,
+        "denominator": 4,
+        "exact_count": 0,
+        "exact_recall": 0.0,
+        "family_count": 2,
+        "family_recall": 0.5,
+        "multi_all_count": 0,
+        "multi_all_recall": 0,
+        "multi_any_count": 0,
+        "multi_any_recall": 0,
+        "multi_count": 0
+      }
+    },
+    "single_evidence": {
+      "count": 30,
+      "metrics": {
+        "calculation_count": 0,
+        "calculation_operand_complete": 0,
+        "calculation_operand_coverage": 0,
+        "denominator": 30,
+        "exact_count": 15,
+        "exact_recall": 0.5,
+        "family_count": 25,
+        "family_recall": 0.8333333333333334,
+        "multi_all_count": 0,
+        "multi_all_recall": 0,
+        "multi_any_count": 0,
+        "multi_any_recall": 0,
+        "multi_count": 0
+      }
+    },
+    "temporal": {
+      "count": 25,
+      "metrics": {
+        "calculation_count": 0,
+        "calculation_operand_complete": 0,
+        "calculation_operand_coverage": 0,
+        "denominator": 25,
+        "exact_count": 6,
+        "exact_recall": 0.24,
+        "family_count": 12,
+        "family_recall": 0.48,
+        "multi_all_count": 0,
+        "multi_all_recall": 0,
+        "multi_any_count": 0,
+        "multi_any_recall": 0,
+        "multi_count": 0
+      }
+    },
+    "version": {
+      "count": 10,
+      "metrics": {
+        "calculation_count": 0,
+        "calculation_operand_complete": 0,
+        "calculation_operand_coverage": 0,
+        "denominator": 10,
+        "exact_count": 0,
+        "exact_recall": 0.0,
+        "family_count": 0,
+        "family_recall": 0.0,
+        "multi_all_count": 0,
+        "multi_all_recall": 0,
+        "multi_any_count": 0,
+        "multi_any_recall": 0,
+        "multi_count": 0
+      }
+    }
+  },
+  "selected_stage": "A4"
+}

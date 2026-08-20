@@ -1,0 +1,12 @@
+{
+  "authorization_leakage": 0,
+  "created_at_misuse": 0,
+  "development_only": true,
+  "document_type_violation": 0,
+  "entity_violation": 0,
+  "hard_scope_preserved": true,
+  "production_v1_modified": false,
+  "silent_relaxation": 0,
+  "temporal_violation": 0,
+  "version_violation": 0
+}

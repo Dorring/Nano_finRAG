@@ -1,0 +1,87 @@
+{
+  "index": {
+    "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/financial_corpus_v2/indexes/nf-v2-18-retrieval-recovery/enriched-bm25/index.sqlite",
+    "records": 95154,
+    "representation": "enriched TEXT/TABLE/TABLE_ROW",
+    "reused": true,
+    "tokenizer": "jieba_for_search + unicode61 FTS5"
+  },
+  "metrics": {
+    "R@1": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 0,
+      "calculation_operand_coverage": 0.0,
+      "denominator": 120,
+      "exact_count": 30,
+      "exact_recall": 0.25,
+      "family_count": 62,
+      "family_recall": 0.5166666666666667,
+      "multi_all_count": 0,
+      "multi_all_recall": 0.0,
+      "multi_any_count": 10,
+      "multi_any_recall": 0.5,
+      "multi_count": 20
+    },
+    "R@10": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 5,
+      "calculation_operand_coverage": 0.3333333333333333,
+      "denominator": 120,
+      "exact_count": 69,
+      "exact_recall": 0.575,
+      "family_count": 86,
+      "family_recall": 0.7166666666666667,
+      "multi_all_count": 6,
+      "multi_all_recall": 0.3,
+      "multi_any_count": 20,
+      "multi_any_recall": 1.0,
+      "multi_count": 20
+    },
+    "R@20": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 8,
+      "calculation_operand_coverage": 0.5333333333333333,
+      "denominator": 120,
+      "exact_count": 77,
+      "exact_recall": 0.6416666666666667,
+      "family_count": 90,
+      "family_recall": 0.75,
+      "multi_all_count": 9,
+      "multi_all_recall": 0.45,
+      "multi_any_count": 20,
+      "multi_any_recall": 1.0,
+      "multi_count": 20
+    },
+    "R@3": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 1,
+      "calculation_operand_coverage": 0.06666666666666667,
+      "denominator": 120,
+      "exact_count": 52,
+      "exact_recall": 0.43333333333333335,
+      "family_count": 71,
+      "family_recall": 0.5916666666666667,
+      "multi_all_count": 0,
+      "multi_all_recall": 0.0,
+      "multi_any_count": 19,
+      "multi_any_recall": 0.95,
+      "multi_count": 20
+    },
+    "R@5": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 1,
+      "calculation_operand_coverage": 0.06666666666666667,
+      "denominator": 120,
+      "exact_count": 59,
+      "exact_recall": 0.49166666666666664,
+      "family_count": 84,
+      "family_recall": 0.7,
+      "multi_all_count": 3,
+      "multi_all_recall": 0.15,
+      "multi_any_count": 19,
+      "multi_any_recall": 0.95,
+      "multi_count": 20
+    }
+  },
+  "name": "A1 + enriched TABLE_ROW serialization"
+}

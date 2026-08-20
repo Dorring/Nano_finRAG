@@ -1,0 +1,34 @@
+{
+  "R@10": {
+    "calculation_count": 15,
+    "calculation_operand_complete": 5,
+    "calculation_operand_coverage": 0.3333333333333333,
+    "denominator": 120,
+    "exact_count": 68,
+    "exact_recall": 0.5666666666666667,
+    "family_count": 86,
+    "family_recall": 0.7166666666666667,
+    "multi_all_count": 6,
+    "multi_all_recall": 0.3,
+    "multi_any_count": 17,
+    "multi_any_recall": 0.85,
+    "multi_count": 20
+  },
+  "R@5": {
+    "calculation_count": 15,
+    "calculation_operand_complete": 3,
+    "calculation_operand_coverage": 0.2,
+    "denominator": 120,
+    "exact_count": 62,
+    "exact_recall": 0.5166666666666667,
+    "family_count": 84,
+    "family_recall": 0.7,
+    "multi_all_count": 3,
+    "multi_all_recall": 0.15,
+    "multi_any_count": 17,
+    "multi_any_recall": 0.85,
+    "multi_count": 20
+  },
+  "family_R@5": 0.7,
+  "selected_stage": "A4"
+}

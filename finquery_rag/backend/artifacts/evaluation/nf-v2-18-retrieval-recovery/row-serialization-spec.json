@@ -1,0 +1,26 @@
+{
+  "enriched_index_records": 95154,
+  "fields": [
+    "ticker",
+    "company",
+    "document_type",
+    "fiscal_year",
+    "fiscal_quarter",
+    "section_type",
+    "table_title",
+    "row_label",
+    "column_headers",
+    "period_start",
+    "period_end",
+    "period_semantics",
+    "raw_value",
+    "normalized_value",
+    "currency",
+    "unit",
+    "scale",
+    "source_provenance"
+  ],
+  "rows": 86600,
+  "value_only_rows_embedded": false,
+  "version": "nf-v2-18/row-retrieval/v1"
+}
