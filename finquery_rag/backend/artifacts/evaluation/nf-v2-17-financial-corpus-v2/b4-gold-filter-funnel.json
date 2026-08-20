@@ -1,0 +1,30 @@
+{
+  "candidate_generated_question_count": 2,
+  "counts": {
+    "acl": 145,
+    "corpus": 145,
+    "document_type": 145,
+    "entity": 145,
+    "fact_period": 145,
+    "fiscal": 145,
+    "version": 145
+  },
+  "denominator": "gold evidence objects in 105 answerable questions",
+  "hard_filter_order": [
+    "corpus",
+    "acl",
+    "entity",
+    "fiscal",
+    "document_type",
+    "version",
+    "fact_period"
+  ],
+  "period_annotation_mismatch_cases": 8,
+  "period_annotation_policy": "Document-level hard scope matched the Gold document; fact-level period annotation differences are not treated as hard-filter false exclusions.",
+  "question_level": {
+    "corpus": 95,
+    "top10_exact": 2
+  },
+  "scope_contract_unchanged": true,
+  "trace_first_top10_exact_question_count": 2
+}

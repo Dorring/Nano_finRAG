@@ -1,0 +1,199 @@
+{
+  "classification_counts": {
+    "SEARCHABLE_AND_TERMS_PRESENT": 10,
+    "SOURCE_PRESENT_UNSEARCHABLE": 7
+  },
+  "rows": [
+    {
+      "best_source_overlap": 1.0,
+      "classification": "SEARCHABLE_AND_TERMS_PRESENT",
+      "document_id": "SEC_1018724_000101872424000008",
+      "gold_id": "SEC_1018724_000101872424000008::chunk_104ed62d78c3721250824341",
+      "query_term_overlap": true,
+      "question_id": "FBV1-001",
+      "searchable_present": true,
+      "section_type": "BUSINESS",
+      "source_present": true
+    },
+    {
+      "best_source_overlap": 1.0,
+      "classification": "SEARCHABLE_AND_TERMS_PRESENT",
+      "document_id": "SEC_1018724_000101872425000004",
+      "gold_id": "SEC_1018724_000101872425000004::chunk_181ca7ef3b0c418b0ab03922",
+      "query_term_overlap": true,
+      "question_id": "FBV1-002",
+      "searchable_present": true,
+      "section_type": "BUSINESS",
+      "source_present": true
+    },
+    {
+      "best_source_overlap": 1.0,
+      "classification": "SEARCHABLE_AND_TERMS_PRESENT",
+      "document_id": "SEC_1018724_000101872426000004",
+      "gold_id": "SEC_1018724_000101872426000004::chunk_1e0190be6cf3619c4b664cc3",
+      "query_term_overlap": true,
+      "question_id": "FBV1-003",
+      "searchable_present": true,
+      "section_type": "BUSINESS",
+      "source_present": true
+    },
+    {
+      "best_source_overlap": 1.0,
+      "classification": "SEARCHABLE_AND_TERMS_PRESENT",
+      "document_id": "SEC_1018724_000101872424000008",
+      "gold_id": "SEC_1018724_000101872424000008::chunk_2dd63564f0db3cbc18c52582",
+      "query_term_overlap": true,
+      "question_id": "FBV1-004",
+      "searchable_present": true,
+      "section_type": "BUSINESS",
+      "source_present": true
+    },
+    {
+      "best_source_overlap": 1.0,
+      "classification": "SEARCHABLE_AND_TERMS_PRESENT",
+      "document_id": "SEC_1018724_000101872425000004",
+      "gold_id": "SEC_1018724_000101872425000004::chunk_3a7cecf12e145ab3d86f0eab",
+      "query_term_overlap": true,
+      "question_id": "FBV1-005",
+      "searchable_present": true,
+      "section_type": "BUSINESS",
+      "source_present": true
+    },
+    {
+      "best_source_overlap": 1.0,
+      "classification": "SEARCHABLE_AND_TERMS_PRESENT",
+      "document_id": "SEC_1018724_000101872426000004",
+      "gold_id": "SEC_1018724_000101872426000004::chunk_c83842e07a934b43aed438da",
+      "query_term_overlap": true,
+      "question_id": "FBV1-006",
+      "searchable_present": true,
+      "section_type": "BUSINESS",
+      "source_present": true
+    },
+    {
+      "best_source_overlap": 1.0,
+      "classification": "SEARCHABLE_AND_TERMS_PRESENT",
+      "document_id": "SEC_1018724_000101872424000008",
+      "gold_id": "SEC_1018724_000101872424000008::chunk_4d4647952cdf8d4e886a2941",
+      "query_term_overlap": true,
+      "question_id": "FBV1-007",
+      "searchable_present": true,
+      "section_type": "BUSINESS",
+      "source_present": true
+    },
+    {
+      "best_source_overlap": 1.0,
+      "classification": "SEARCHABLE_AND_TERMS_PRESENT",
+      "document_id": "SEC_1018724_000101872425000004",
+      "gold_id": "SEC_1018724_000101872425000004::chunk_6010dad83481ba52185a6dba",
+      "query_term_overlap": true,
+      "question_id": "FBV1-008",
+      "searchable_present": true,
+      "section_type": "BUSINESS",
+      "source_present": true
+    },
+    {
+      "best_source_overlap": 1.0,
+      "classification": "SEARCHABLE_AND_TERMS_PRESENT",
+      "document_id": "SEC_1018724_000101872426000004",
+      "gold_id": "SEC_1018724_000101872426000004::chunk_cba61f8ae47639903cc448ad",
+      "query_term_overlap": true,
+      "question_id": "FBV1-009",
+      "searchable_present": true,
+      "section_type": "BUSINESS",
+      "source_present": true
+    },
+    {
+      "best_source_overlap": 1.0,
+      "classification": "SEARCHABLE_AND_TERMS_PRESENT",
+      "document_id": "SEC_1018724_000101872424000008",
+      "gold_id": "SEC_1018724_000101872424000008::chunk_7bd9c61937a2fedee4143ae9",
+      "query_term_overlap": true,
+      "question_id": "FBV1-010",
+      "searchable_present": true,
+      "section_type": "BUSINESS",
+      "source_present": true
+    },
+    {
+      "best_source_overlap": 0.0,
+      "classification": "SOURCE_PRESENT_UNSEARCHABLE",
+      "document_id": "SEC_1318605_000110465925042659",
+      "gold_id": "SEC_1318605_000110465925042659::chunk_000ff004ed4d366a6d4b5372",
+      "query_term_overlap": true,
+      "question_id": "FBV1-096",
+      "searchable_present": false,
+      "section_type": "BUSINESS",
+      "source_present": false
+    },
+    {
+      "best_source_overlap": 0.0,
+      "classification": "SOURCE_PRESENT_UNSEARCHABLE",
+      "document_id": "SEC_1318605_000110465926053166",
+      "gold_id": "SEC_1318605_000110465926053166::chunk_0015f2b32acccaf5e6bbddcc",
+      "query_term_overlap": true,
+      "question_id": "FBV1-097",
+      "searchable_present": false,
+      "section_type": "BUSINESS",
+      "source_present": false
+    },
+    {
+      "best_source_overlap": 0.0,
+      "classification": "SOURCE_PRESENT_UNSEARCHABLE",
+      "document_id": "SEC_1318605_000110465925042659",
+      "gold_id": "SEC_1318605_000110465925042659::chunk_000ff004ed4d366a6d4b5372",
+      "query_term_overlap": false,
+      "question_id": "FBV1-099",
+      "searchable_present": false,
+      "section_type": "BUSINESS",
+      "source_present": false
+    },
+    {
+      "best_source_overlap": 0.0,
+      "classification": "SOURCE_PRESENT_UNSEARCHABLE",
+      "document_id": "SEC_1318605_000110465926053166",
+      "gold_id": "SEC_1318605_000110465926053166::chunk_0015f2b32acccaf5e6bbddcc",
+      "query_term_overlap": true,
+      "question_id": "FBV1-100",
+      "searchable_present": false,
+      "section_type": "BUSINESS",
+      "source_present": false
+    },
+    {
+      "best_source_overlap": 0.0,
+      "classification": "SOURCE_PRESENT_UNSEARCHABLE",
+      "document_id": "SEC_1318605_000110465925042659",
+      "gold_id": "SEC_1318605_000110465925042659::chunk_000ff004ed4d366a6d4b5372",
+      "query_term_overlap": false,
+      "question_id": "FBV1-102",
+      "searchable_present": false,
+      "section_type": "BUSINESS",
+      "source_present": false
+    },
+    {
+      "best_source_overlap": 0.0,
+      "classification": "SOURCE_PRESENT_UNSEARCHABLE",
+      "document_id": "SEC_1318605_000110465926053166",
+      "gold_id": "SEC_1318605_000110465926053166::chunk_0015f2b32acccaf5e6bbddcc",
+      "query_term_overlap": true,
+      "question_id": "FBV1-103",
+      "searchable_present": false,
+      "section_type": "BUSINESS",
+      "source_present": false
+    },
+    {
+      "best_source_overlap": 0.0,
+      "classification": "SOURCE_PRESENT_UNSEARCHABLE",
+      "document_id": "SEC_1318605_000110465925042659",
+      "gold_id": "SEC_1318605_000110465925042659::chunk_000ff004ed4d366a6d4b5372",
+      "query_term_overlap": false,
+      "question_id": "FBV1-105",
+      "searchable_present": false,
+      "section_type": "BUSINESS",
+      "source_present": false
+    }
+  ],
+  "sample_size": 17,
+  "sections": {
+    "BUSINESS": 17
+  }
+}

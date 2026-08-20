@@ -1,0 +1,15 @@
+{
+  "answerable_questions": 105,
+  "gold_bm25_indexed_exact": 145,
+  "gold_dense_indexed_eligible_exact": 2,
+  "gold_evidence_objects": 155,
+  "gold_exact_searchable": 145,
+  "gold_missing_from_all_retrieval_universes": 10,
+  "gold_structurally_searchable": 145,
+  "gold_structured_fact_ids": 0,
+  "gold_structured_fact_ids_found": 0,
+  "reasons": {
+    "no_structural_record": 10,
+    "structural_key_present_but_chunk_id_differs": 10
+  }
+}

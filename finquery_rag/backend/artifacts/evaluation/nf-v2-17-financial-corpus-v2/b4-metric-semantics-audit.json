@@ -1,0 +1,13 @@
+{
+  "as_run_denominator": 105,
+  "conditional_equals_generator_calls": true,
+  "conditional_sum": 52,
+  "financial_generator_calls": 52,
+  "grounded_conditional_on_generation": 12,
+  "grounded_overall": 12,
+  "note": "Original B3 metrics are preserved; conditional figures explain generator-call denominator only.",
+  "released": 12,
+  "released_correct": 5,
+  "semantic_unsupported_conditional_on_generation": 40,
+  "semantic_unsupported_overall": 40
+}

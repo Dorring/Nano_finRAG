@@ -1,0 +1,1255 @@
+{
+  "dense_records": 8554,
+  "exact_rank_buckets": {
+    "2-5": 2,
+    ">100/not_returned": 153
+  },
+  "gold_object_count": 155,
+  "query_vector_cache": "/tmp/nf_v2_17b3_query_vectors.npz",
+  "rows": [
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872424000008::chunk_104ed62d78c3721250824341",
+      "question_id": "FBV1-001",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000004::chunk_181ca7ef3b0c418b0ab03922",
+      "question_id": "FBV1-002",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE",
+      "dense_eligible_exact": true,
+      "exact_rank": 5,
+      "gold_id": "SEC_1018724_000101872426000004::chunk_1e0190be6cf3619c4b664cc3",
+      "question_id": "FBV1-003",
+      "structural_rank": 5
+    },
+    {
+      "content_type": "TABLE",
+      "dense_eligible_exact": true,
+      "exact_rank": 5,
+      "gold_id": "SEC_1018724_000101872424000008::chunk_2dd63564f0db3cbc18c52582",
+      "question_id": "FBV1-004",
+      "structural_rank": 5
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000004::chunk_3a7cecf12e145ab3d86f0eab",
+      "question_id": "FBV1-005",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872426000004::chunk_c83842e07a934b43aed438da",
+      "question_id": "FBV1-006",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872424000008::chunk_4d4647952cdf8d4e886a2941",
+      "question_id": "FBV1-007",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000004::chunk_6010dad83481ba52185a6dba",
+      "question_id": "FBV1-008",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872426000004::chunk_cba61f8ae47639903cc448ad",
+      "question_id": "FBV1-009",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872424000008::chunk_7bd9c61937a2fedee4143ae9",
+      "question_id": "FBV1-010",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204424000022::chunk_000527a13a3619b3a26f4054",
+      "question_id": "FBV1-011",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000014::chunk_0029c272c2d452cf7b062d8f",
+      "question_id": "FBV1-012",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204426000018::chunk_0010c6d19752999692cb3261",
+      "question_id": "FBV1-013",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000043::chunk_000d72b0e7da3d317c5f201d",
+      "question_id": "FBV1-014",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000062::chunk_008c38f5ff86eebfb503e38b",
+      "question_id": "FBV1-015",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000091::chunk_000b1378e66958a5070f4ca1",
+      "question_id": "FBV1-016",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872424000008::chunk_000ee5b3690cd12e12729364",
+      "question_id": "FBV1-017",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000004::chunk_0027245596b74e4b350e0027",
+      "question_id": "FBV1-018",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872426000004::chunk_004306abefdd1b1b4196b397",
+      "question_id": "FBV1-019",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000036::chunk_00b40951f4e4aa744fdeaf01",
+      "question_id": "FBV1-020",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000086::chunk_005a6309d99fabe24dcd5e8e",
+      "question_id": "FBV1-021",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000123::chunk_0002f56569f82874a40032b1",
+      "question_id": "FBV1-022",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204424000022::chunk_004545a3005e38056a068d30",
+      "question_id": "FBV1-023",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000014::chunk_0048769ae893d06db79ef0d0",
+      "question_id": "FBV1-024",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204426000018::chunk_0078dc513cf6cb646c43a3e9",
+      "question_id": "FBV1-025",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000043::chunk_007909d6353a2141491a4458",
+      "question_id": "FBV1-026",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000062::chunk_0090a4704453a910926ce981",
+      "question_id": "FBV1-027",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000091::chunk_00268d6a88f48654a70e992d",
+      "question_id": "FBV1-028",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872424000008::chunk_002223f9bf94f7014c3b896e",
+      "question_id": "FBV1-029",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000004::chunk_00330dc551281e0c66b0985f",
+      "question_id": "FBV1-030",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204424000022::chunk_4e2a36a5c1f6b1b15193d650",
+      "question_id": "FBV1-031",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204424000022::chunk_69d9db4f0d6e796e7a68e1c2",
+      "question_id": "FBV1-031",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000014::chunk_0fbfa84634ea12b97a98c113",
+      "question_id": "FBV1-032",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000014::chunk_4f17a85f9efe6e27fa69b5d1",
+      "question_id": "FBV1-032",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204426000018::chunk_061b76f97fb8a18a74a41216",
+      "question_id": "FBV1-033",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204426000018::chunk_db7396b2868e98c8c86e9109",
+      "question_id": "FBV1-033",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000043::chunk_2931c0d893e9da200f11b5d5",
+      "question_id": "FBV1-034",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000043::chunk_e99e565447aaf28abe4bc621",
+      "question_id": "FBV1-034",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000062::chunk_46d2672f2d80a2298371a021",
+      "question_id": "FBV1-035",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000062::chunk_15bc04112da98234813404b7",
+      "question_id": "FBV1-035",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000091::chunk_4237e46b0fbd529e2df12395",
+      "question_id": "FBV1-036",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000091::chunk_34fa54bb12a70c74208dc4f8",
+      "question_id": "FBV1-036",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872424000008::chunk_06ca3e8e4bd967a43f12ae5b",
+      "question_id": "FBV1-037",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872424000008::chunk_edbd9e26e99f515fd69ee5aa",
+      "question_id": "FBV1-037",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000004::chunk_04779ce1687e0e8750d4565c",
+      "question_id": "FBV1-038",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000004::chunk_22bd7630570ebf973749d9e1",
+      "question_id": "FBV1-038",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872426000004::chunk_07f765ab0947d50f58080254",
+      "question_id": "FBV1-039",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872426000004::chunk_4d556d5ebc015b610cdb0531",
+      "question_id": "FBV1-039",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000036::chunk_79f3ec6b4dd20cf5bfff5a20",
+      "question_id": "FBV1-040",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000036::chunk_3852e682354cf9b5864bddf2",
+      "question_id": "FBV1-040",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000086::chunk_b610618c0311aa07dd12f6a5",
+      "question_id": "FBV1-041",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000086::chunk_1d56e1647bfd6b80ecfabdb9",
+      "question_id": "FBV1-041",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000123::chunk_8f62e8adcbf5be5267b7415f",
+      "question_id": "FBV1-042",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000123::chunk_41c86a315fae42fa66bd6602",
+      "question_id": "FBV1-042",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204424000022::chunk_4e2a36a5c1f6b1b15193d650",
+      "question_id": "FBV1-043",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204424000022::chunk_05babe6392d5ef1a5dc1df60",
+      "question_id": "FBV1-043",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000014::chunk_0fbfa84634ea12b97a98c113",
+      "question_id": "FBV1-044",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000014::chunk_009f67ebfaee07a99ff63752",
+      "question_id": "FBV1-044",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204426000018::chunk_061b76f97fb8a18a74a41216",
+      "question_id": "FBV1-045",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204426000018::chunk_44e6f6598def07e9525dcc2a",
+      "question_id": "FBV1-045",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000043::chunk_2931c0d893e9da200f11b5d5",
+      "question_id": "FBV1-046",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000043::chunk_866f17bc0f96fa8eb159f423",
+      "question_id": "FBV1-046",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000062::chunk_46d2672f2d80a2298371a021",
+      "question_id": "FBV1-047",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000062::chunk_3acd62511c7b747685e540d6",
+      "question_id": "FBV1-047",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000091::chunk_4237e46b0fbd529e2df12395",
+      "question_id": "FBV1-048",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000091::chunk_3327239c910f0b197f0b5659",
+      "question_id": "FBV1-048",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872424000008::chunk_06ca3e8e4bd967a43f12ae5b",
+      "question_id": "FBV1-049",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872424000008::chunk_11c7de30d6c0aba363af70bf",
+      "question_id": "FBV1-049",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000004::chunk_04779ce1687e0e8750d4565c",
+      "question_id": "FBV1-050",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000004::chunk_fab6572f51c322cf74076cef",
+      "question_id": "FBV1-050",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204424000022::chunk_23812609e11719170f45f19a",
+      "question_id": "FBV1-051",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204424000022::chunk_343347f81c276016cd6bec67",
+      "question_id": "FBV1-051",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000014::chunk_895237f23a00608394d4cf3c",
+      "question_id": "FBV1-052",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000014::chunk_51cfa771056cf52cb1a63172",
+      "question_id": "FBV1-052",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204426000018::chunk_10c761c389e4ac5708850ef9",
+      "question_id": "FBV1-053",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204426000018::chunk_0481e4fdb174941e5f529710",
+      "question_id": "FBV1-053",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000043::chunk_89b5b89ac28215c572d7fdb0",
+      "question_id": "FBV1-054",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000043::chunk_17c2be0aae15a8322823e469",
+      "question_id": "FBV1-054",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000062::chunk_1df3178836660f794d67a69c",
+      "question_id": "FBV1-055",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000062::chunk_cd1b6edb2fb2de1eaf3591d2",
+      "question_id": "FBV1-055",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000091::chunk_ab16ecd24fca6ed4f61ce086",
+      "question_id": "FBV1-056",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000091::chunk_56cf8f0e5482ffd3a39fbf74",
+      "question_id": "FBV1-056",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872424000008::chunk_609f014b5d823b72a3f4278e",
+      "question_id": "FBV1-057",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872424000008::chunk_339fb6a202c3857f6f98e43d",
+      "question_id": "FBV1-057",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000004::chunk_1fc1331f495a240d67cb9fcf",
+      "question_id": "FBV1-058",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000004::chunk_1a5045d909ee10d3e6b9d94d",
+      "question_id": "FBV1-058",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872426000004::chunk_9b24dddfb5741128fb2e142d",
+      "question_id": "FBV1-059",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872426000004::chunk_f8c37ab23ac2080322dcd031",
+      "question_id": "FBV1-059",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000036::chunk_ef3e12e58446641d88a88a06",
+      "question_id": "FBV1-060",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000036::chunk_02498aa4a33d6aa76f175fb7",
+      "question_id": "FBV1-060",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000086::chunk_2a2b252c730db63afd30efa9",
+      "question_id": "FBV1-061",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000086::chunk_f156ce8bb52b491a8da8733c",
+      "question_id": "FBV1-061",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000123::chunk_8f6ab7e227306258cb0a2bd4",
+      "question_id": "FBV1-062",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000123::chunk_4ec068779af6938b011fbfe9",
+      "question_id": "FBV1-062",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204424000022::chunk_2f64d71819b75eda2cc43911",
+      "question_id": "FBV1-063",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204424000022::chunk_5076f814ddfa048be95aa142",
+      "question_id": "FBV1-063",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000014::chunk_895237f23a00608394d4cf3c",
+      "question_id": "FBV1-064",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000014::chunk_0dbeb669669b6febff00ff16",
+      "question_id": "FBV1-064",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204426000018::chunk_10c761c389e4ac5708850ef9",
+      "question_id": "FBV1-065",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204426000018::chunk_8b57d081d900d0c2160f0161",
+      "question_id": "FBV1-065",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204424000022::chunk_000527a13a3619b3a26f4054",
+      "question_id": "FBV1-066",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000014::chunk_0029c272c2d452cf7b062d8f",
+      "question_id": "FBV1-067",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204426000018::chunk_0010c6d19752999692cb3261",
+      "question_id": "FBV1-068",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000043::chunk_007909d6353a2141491a4458",
+      "question_id": "FBV1-069",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000062::chunk_008c38f5ff86eebfb503e38b",
+      "question_id": "FBV1-070",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000091::chunk_00268d6a88f48654a70e992d",
+      "question_id": "FBV1-071",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872424000008::chunk_000ee5b3690cd12e12729364",
+      "question_id": "FBV1-072",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000004::chunk_0027245596b74e4b350e0027",
+      "question_id": "FBV1-073",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872426000004::chunk_0142ea15c0cfee4e3101c7ff",
+      "question_id": "FBV1-074",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000036::chunk_00b40951f4e4aa744fdeaf01",
+      "question_id": "FBV1-075",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000086::chunk_05d77a27fe36d11740310069",
+      "question_id": "FBV1-076",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000123::chunk_08be9b04559255834a8abf5b",
+      "question_id": "FBV1-077",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204424000022::chunk_004545a3005e38056a068d30",
+      "question_id": "FBV1-078",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000014::chunk_0048769ae893d06db79ef0d0",
+      "question_id": "FBV1-079",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204426000018::chunk_0078dc513cf6cb646c43a3e9",
+      "question_id": "FBV1-080",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204424000022::chunk_4e2a36a5c1f6b1b15193d650",
+      "question_id": "FBV1-081",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204424000022::chunk_69d9db4f0d6e796e7a68e1c2",
+      "question_id": "FBV1-081",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000014::chunk_0fbfa84634ea12b97a98c113",
+      "question_id": "FBV1-082",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000014::chunk_4f17a85f9efe6e27fa69b5d1",
+      "question_id": "FBV1-082",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204426000018::chunk_061b76f97fb8a18a74a41216",
+      "question_id": "FBV1-083",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204426000018::chunk_db7396b2868e98c8c86e9109",
+      "question_id": "FBV1-083",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000043::chunk_2931c0d893e9da200f11b5d5",
+      "question_id": "FBV1-084",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000043::chunk_e99e565447aaf28abe4bc621",
+      "question_id": "FBV1-084",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000062::chunk_46d2672f2d80a2298371a021",
+      "question_id": "FBV1-085",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000062::chunk_15bc04112da98234813404b7",
+      "question_id": "FBV1-085",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000091::chunk_4237e46b0fbd529e2df12395",
+      "question_id": "FBV1-086",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000091::chunk_34fa54bb12a70c74208dc4f8",
+      "question_id": "FBV1-086",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872424000008::chunk_06ca3e8e4bd967a43f12ae5b",
+      "question_id": "FBV1-087",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872424000008::chunk_edbd9e26e99f515fd69ee5aa",
+      "question_id": "FBV1-087",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000004::chunk_04779ce1687e0e8750d4565c",
+      "question_id": "FBV1-088",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000004::chunk_22bd7630570ebf973749d9e1",
+      "question_id": "FBV1-088",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872426000004::chunk_07f765ab0947d50f58080254",
+      "question_id": "FBV1-089",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872426000004::chunk_4d556d5ebc015b610cdb0531",
+      "question_id": "FBV1-089",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000036::chunk_79f3ec6b4dd20cf5bfff5a20",
+      "question_id": "FBV1-090",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000036::chunk_3852e682354cf9b5864bddf2",
+      "question_id": "FBV1-090",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000086::chunk_b610618c0311aa07dd12f6a5",
+      "question_id": "FBV1-091",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000086::chunk_1d56e1647bfd6b80ecfabdb9",
+      "question_id": "FBV1-091",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000123::chunk_8f62e8adcbf5be5267b7415f",
+      "question_id": "FBV1-092",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1018724_000101872425000123::chunk_41c86a315fae42fa66bd6602",
+      "question_id": "FBV1-092",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204424000022::chunk_4e2a36a5c1f6b1b15193d650",
+      "question_id": "FBV1-093",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204424000022::chunk_05babe6392d5ef1a5dc1df60",
+      "question_id": "FBV1-093",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000014::chunk_0fbfa84634ea12b97a98c113",
+      "question_id": "FBV1-094",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204425000014::chunk_009f67ebfaee07a99ff63752",
+      "question_id": "FBV1-094",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204426000018::chunk_061b76f97fb8a18a74a41216",
+      "question_id": "FBV1-095",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1652044_000165204426000018::chunk_44e6f6598def07e9525dcc2a",
+      "question_id": "FBV1-095",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1318605_000110465925042659::chunk_000ff004ed4d366a6d4b5372",
+      "question_id": "FBV1-096",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TEXT",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1318605_000110465926053166::chunk_0015f2b32acccaf5e6bbddcc",
+      "question_id": "FBV1-097",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_21344_000002134424000019::chunk_015d1a51ad044b2cf62de871",
+      "question_id": "FBV1-098",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1318605_000110465925042659::chunk_000ff004ed4d366a6d4b5372",
+      "question_id": "FBV1-099",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TEXT",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1318605_000110465926053166::chunk_0015f2b32acccaf5e6bbddcc",
+      "question_id": "FBV1-100",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_21344_000002134424000019::chunk_015d1a51ad044b2cf62de871",
+      "question_id": "FBV1-101",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1318605_000110465925042659::chunk_000ff004ed4d366a6d4b5372",
+      "question_id": "FBV1-102",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TEXT",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1318605_000110465926053166::chunk_0015f2b32acccaf5e6bbddcc",
+      "question_id": "FBV1-103",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_21344_000002134424000019::chunk_015d1a51ad044b2cf62de871",
+      "question_id": "FBV1-104",
+      "structural_rank": null
+    },
+    {
+      "content_type": "TABLE_ROW",
+      "dense_eligible_exact": false,
+      "exact_rank": null,
+      "gold_id": "SEC_1318605_000110465925042659::chunk_000ff004ed4d366a6d4b5372",
+      "question_id": "FBV1-105",
+      "structural_rank": null
+    }
+  ],
+  "structural_rank_buckets": {
+    "2-5": 2,
+    ">100/not_returned": 153
+  }
+}
