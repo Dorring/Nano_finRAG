@@ -1,0 +1,32 @@
+{
+  "accepted": 120,
+  "answerability": {
+    "ANSWERABLE": 105,
+    "UNANSWERABLE": 15
+  },
+  "final_system_execution_performed": false,
+  "freeze_hashes_match": true,
+  "gold_evidence_objects": 155,
+  "gold_provenance_complete": true,
+  "leakage_all_blocking_fields_zero": true,
+  "manual_review_packet_items": 20,
+  "model_calls": 0,
+  "questions_unique_exact": true,
+  "questions_unique_normalized": true,
+  "replans_tied_to_config": 15,
+  "runtime_projection_isolated": true,
+  "status": "VALIDATION_PASS",
+  "task_counts": {
+    "AGENTIC_REPLAN": 15,
+    "CONFLICT_AMBIGUITY": 5,
+    "DETERMINISTIC_CALCULATION": 15,
+    "MULTI_EVIDENCE": 20,
+    "NO_ANSWER_FAIL_CLOSED": 10,
+    "SINGLE_EVIDENCE_FACT": 30,
+    "TEMPORAL_PERIOD": 15,
+    "VERSION_TEMPORAL": 10
+  },
+  "training": 0,
+  "two_pass_qc": true,
+  "upstream_freezes_match": true
+}
