@@ -1,0 +1,110 @@
+{
+  "task": "NF-V2-18A-R5-HANDOFF",
+  "project": "nano_finance/finquery_rag",
+  "base_sha": "2a4b870ff6c64d37417879d9ed4434da28653372",
+  "head_sha_inspected": "2a4b870ff6c64d37417879d9ed4434da28653372",
+  "branch": "exp/nf-v2-18-retrieval-recovery",
+  "worktree_clean_at_inspection": true,
+  "remote": {
+    "ssh_command": "ssh mxf@10.157.195.124",
+    "host": "10.157.195.124",
+    "ssh_port": 22,
+    "remote_hostname": "amax-Rack-Server",
+    "username": "mxf",
+    "alias_discovered": false,
+    "proxyjump_or_bastion_required": false,
+    "credentials_recorded": false
+  },
+  "paths": {
+    "repository_root": {"path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.worktrees/nf-v2-18-retrieval-recovery", "exists": true, "tracked": true, "safe_to_modify": true},
+    "backend_root": {"path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.worktrees/nf-v2-18-retrieval-recovery/finquery_rag/backend", "exists": true, "tracked": true, "safe_to_modify": true},
+    "artifact_root": {"path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.worktrees/nf-v2-18-retrieval-recovery/finquery_rag/backend/artifacts/evaluation", "exists": true, "tracked": true, "safe_to_modify": true},
+    "corpus_root": {"path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/financial_corpus_v2", "exists": true, "tracked": false, "safe_to_modify": false},
+    "r4_external_index": {"path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/financial_corpus_v2/indexes/nf-v2-18-retrieval-recovery/r4-qwen3-embedding", "exists": true, "tracked": false, "safe_to_modify": false},
+    "hf_cache": {"path": "/mnt/disk/mxf/.cache/huggingface/hub", "exists": true, "tracked": false, "safe_to_modify": false},
+    "historical_pdf_sr_backend": {"path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/finquery_rag/.worktrees/pdf-sr-v2/finquery_rag/backend", "exists": true, "tracked": "separate historical location", "safe_to_modify": false}
+  },
+  "environment": {
+    "ordinary_python": "/mnt/disk/mxf/anaconda3/bin/python",
+    "ordinary_python_version": "3.12.2",
+    "qwen_python": "/mnt/disk/mxf/anaconda3/envs/QhChat/bin/python",
+    "qwen_python_version": "3.12.12",
+    "qwen_packages": {
+      "torch": "2.9.1+cu128",
+      "torch_cuda": "12.8",
+      "transformers": "4.57.1",
+      "huggingface_hub": "0.36.0",
+      "tokenizers": "0.22.2",
+      "safetensors": "0.7.0",
+      "accelerate": "1.11.0"
+    }
+  },
+  "gpu_policy": {
+    "utility": "src/pdf_retrieval_v4/gpu_selector.py",
+    "functions": ["discover_gpus", "select_gpu", "selected_gpu_is_still_eligible"],
+    "mapping": "CUDA_VISIBLE_DEVICES=<selected physical index>; use cuda:0 inside child",
+    "hardcoded_gpu": false,
+    "inspection_gpu_count": 8,
+    "inspection_idle_candidates": [0, 3, 5, 6],
+    "reservation_performed": false
+  },
+  "reranker": {
+    "repo": "Qwen/Qwen3-Reranker-4B",
+    "revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+    "snapshot": "/mnt/disk/mxf/.cache/huggingface/hub/models--Qwen--Qwen3-Reranker-4B/snapshots/22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+    "snapshot_sha256": "32b52d29edef232618c27a728cde56d369ba862c81d49c6527528dfd82db39c1",
+    "runtime_config_sha256": "d7c1841432198b60f2266e1d86c107354b11af8c03be5562fdc9f859b173f01a",
+    "scorer": "src/pdf_retrieval_v4/qwen3_reranker.py::build_input_ids,score_batch",
+    "runtime_wrapper": "src/pdf_retrieval_v4/qwen3_reranker_runtime.py::Qwen3RerankerRuntime",
+    "dtype": "bfloat16",
+    "batch_size": 4,
+    "inference_run_during_handoff": false
+  },
+  "r4_embedding": {
+    "repo": "Qwen/Qwen3-Embedding-4B",
+    "revision": "5cf2132abc99cad020ac570b19d031efec650f2b",
+    "snapshot_manifest_sha256": "54c2a3b9ef650ea026acab844c56917c23126f0426f1d4909154adbf485887dc",
+    "dimension": 2560,
+    "selected_for_r5": false,
+    "headroom_at_200": {"a4": "95/105", "qwen_dense": "48/105", "union": "95/105"}
+  },
+  "scope": {
+    "full_corpus_companies": 10,
+    "full_corpus_primary_filings": 60,
+    "full_corpus_annual": 30,
+    "full_corpus_quarterly": 30,
+    "development_companies": ["GOOGL", "AMZN"],
+    "development_questions": 120,
+    "development_answerable": 105,
+    "development_unanswerable": 15,
+    "development_status": "CONSUMED_DEVELOPMENT_REGRESSION",
+    "production_index_overwritten": false
+  },
+  "authoritative_metrics": {
+    "a4_candidate_exact_answerable": {"20": "77/105", "50": "88/105", "100": "92/105", "200": "95/105"},
+    "r4_selected_ranked_exact_answerable": {"1": "33/105", "3": "55/105", "5": "62/105", "10": "68/105", "20": "77/105"},
+    "r3_diagnostic_reference": {"r5": "63/105", "r10": "71/105", "multi_any5": "19/20", "multi_all5": "10/20", "multi_all10": "12/20", "multi_all20": "12/20", "operand5": "5/15", "operand10": "5/15", "operand20": "6/15"}
+  },
+  "implementation_entrypoints": {
+    "a4": "scripts/evaluation/run_nf_v2_18a_recovery.py",
+    "r1": "scripts/evaluation/run_nf_v2_18a_r1_fine.py",
+    "shared_semantics": "scripts/evaluation/run_nf_v2_18a_r2_shared.py + src/pdf_retrieval_v4/html_semantic_adapter.py",
+    "qwen_r3": "scripts/evaluation/run_nf_v2_18a_r3_hierarchical_qwen.py",
+    "r4": "scripts/evaluation/run_nf_v2_18a_r4_strong_first_stage.py",
+    "rank_helpers": "src/pdf_retrieval_v4/r5_rank_contract.py",
+    "slots": "scripts/evaluation/run_nf_v2_18a_r1_fine.py::derive_slots; src/pdf_retrieval_v4/operand_planner.py::build_operand_slots",
+    "qwen_runtime": "src/pdf_retrieval_v4/qwen3_reranker_runtime.py",
+    "gpu": "src/pdf_retrieval_v4/gpu_selector.py"
+  },
+  "r5_execution": {
+    "freeze_cli": "TO_IMPLEMENT",
+    "benchmark_rerun_during_handoff": false,
+    "model_calls_during_handoff": 0,
+    "embedding_rebuild_during_handoff": false,
+    "production_modified": false,
+    "required_artifact_directory": "finquery_rag/backend/artifacts/evaluation/nf-v2-18-r5-ranking-recovery",
+    "stop_decisions": ["RANKING_RECOVERED", "RANKER_SIGNAL_CEILING", "EVIDENCE_BUDGET_ALLOCATION_CEILING", "OPERAND_CANDIDATE_CEILING", "OPERAND_BINDING_CEILING"]
+  },
+  "secrets_committed": false,
+  "handoff_decision": "HANDOFF_READY"
+}
