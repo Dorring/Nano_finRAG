@@ -1,0 +1,49 @@
+{
+  "best_step": 156,
+  "checkpoint_file": "/home/mxf/.cache/nanochat/chatsft_checkpoints/d24_grounded_specialist_v3_lr5e6/model_000156.pt",
+  "checkpoint_sha256": "3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a",
+  "measured_retention_macro": 36.26,
+  "pretraining_macro_baseline": 19.78,
+  "retention_delta_pp": 16.48,
+  "retention_floor": 18.0,
+  "retention_gate": "PASS",
+  "task_breakdown": {
+    "entity_extraction": {
+      "count": 25,
+      "exact_match": 0.4,
+      "json_valid_rate": 0.96,
+      "micro_f1": 0.6363636363636364
+    },
+    "instruction_following": {
+      "count": 25,
+      "exact_match": 0.0,
+      "non_empty_rate": 1.0
+    },
+    "numeric_qa": {
+      "count": 44,
+      "exact_match": 0.09090909090909091,
+      "numeric_accuracy": 0.09090909090909091
+    },
+    "relation_extraction": {
+      "count": 25,
+      "exact_match": 0.4,
+      "json_valid_rate": 1.0,
+      "micro_f1": 0.4074074074074074
+    },
+    "sentiment": {
+      "accuracy": 0.84,
+      "count": 50,
+      "exact_match": 0.46,
+      "macro_f1": 0.5654320987654321
+    },
+    "summarization": {
+      "count": 25,
+      "exact_match": 0.0,
+      "rouge_l": 0.30901185657936486
+    },
+    "table_qa": {
+      "count": 6,
+      "exact_match": 0.16666666666666666
+    }
+  }
+}

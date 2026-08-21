@@ -1,0 +1,12 @@
+{
+  "decision": "SPECIALIST_V3_TRAINING_SUCCESS",
+  "dev_strict_correct_pct": 99.0,
+  "financial_macro_retention_pct": 36.26,
+  "production": "V1",
+  "production_switch": false,
+  "selected_checkpoint": "model_000156.pt",
+  "selected_sha256": "3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a",
+  "selected_step": 156,
+  "task": "NF-V2-20B",
+  "training_success": true
+}
