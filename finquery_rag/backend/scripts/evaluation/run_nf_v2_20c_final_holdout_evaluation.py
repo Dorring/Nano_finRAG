@@ -353,7 +353,7 @@ def main():
     print(f"  NFLX Dev Corrected Abstention Strict: {nflx_abst_correct} / 25 ({nflx_abst_correct/25*100:.1f}%)")
     print(f"  NFLX Dev Released: {nflx_released} / 500 ({nflx_released/5:.1f}%)")
 
-    write_json(HOLDOUT_20C_DIR / "nflx-rescore-with-final-evaluator.json", {
+    rescore_obj = {
         "total_samples": 500,
         "old_strict_correct_pct": dev_cached["strict_correct_pct"],
         "corrected_strict_correct_count": nflx_strict_correct,
@@ -365,7 +365,9 @@ def main():
         "released_pct": round(nflx_released / 5, 2),
         "unsafe_abstention_answers": 0,
         "predictions": nflx_rescored_preds,
-    })
+    }
+    write_json(HOLDOUT_20C_DIR / "nflx-rescore-with-final-evaluator.json", rescore_obj)
+    write_json(HOLDOUT_20C_DIR / "nflx-final-rescore.json", rescore_obj)
 
     # 4. Freeze Final Evaluator Contract & Pre-Holdout State
     print("\n[4/8] Freezing Final Evaluator Contract...")
