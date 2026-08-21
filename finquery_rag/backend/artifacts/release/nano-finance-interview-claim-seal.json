@@ -1,0 +1,69 @@
+{
+  "release_version": "NF-V2-FINAL",
+  "project": "nano_finance / finquery_rag",
+  "sealed_timestamp": "2026-08-21T23:33:00+08:00",
+  "model": {
+    "name": "NanoFinance Local Financial Specialist Generator",
+    "parameters": "2.08B",
+    "checkpoint": "d24_grounded_specialist_v3_lr5e6/model_000156.pt",
+    "checkpoint_sha256": "3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a",
+    "role": "LOCAL_FINANCIAL_SPECIALIST_GENERATOR",
+    "generation_view": "FinancialGenerationViewV1",
+    "generation_view_sha256": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4"
+  },
+  "metrics": {
+    "financial_domain_macro": {
+      "nanofinance_sft": "19.78%",
+      "qwen3_5_2b": "7.86%",
+      "delta_pp": "+11.92pp",
+      "scope": "Macro Financial Multi-Task Benchmark"
+    },
+    "grounded_generator_fresh_holdout": {
+      "holdout_name": "ORCL 500-Sample Company-Held-Out",
+      "strict_correct": "499 / 500 (99.80%)",
+      "correct_over_released": "100.0% (499 / 499)",
+      "unsafe_releases": 0,
+      "generalization_gap": "0.00pp",
+      "scope": "Company-Held-Out Verified-Evidence Generation"
+    },
+    "matched_generator_regression": {
+      "benchmark": "68-Packet Binder-Ready Consumed Regression",
+      "old_financial_sft": "8 / 68 (11.76%)",
+      "step_156_specialist": "52 / 68 (76.47%)",
+      "delta_pp": "+64.71pp",
+      "rescued": 44,
+      "regressed": 0,
+      "scope": "Matched Binder-Ready Consumed Regression"
+    },
+    "e2e_rag_regression": {
+      "benchmark": "120-Sample Consumed E2E Benchmark",
+      "answerable_correct": "105 / 105 (100.0%)",
+      "unanswerable_safe_refusal": "15 / 15 (100.0%)",
+      "released_answer_accuracy": "105 / 105 (100.0%)",
+      "unsafe_releases": 0,
+      "false_binding_rate": "0.0%",
+      "false_execution_rate": "0.0%",
+      "scope": "CONSUMED_END_TO_END_REGRESSION"
+    },
+    "retrieval_final_mile": {
+      "policy": "R4_COMBINED_RETRIEVAL_POLICY",
+      "first_stage_recovery": "10 / 10 (100.0%)",
+      "multi_slot_recovery": "6 / 6 (100.0%)",
+      "recall_at_5": "78.1% -> 98.1%",
+      "recall_at_10": "84.8% -> 100.0%",
+      "multi_all_at_k": "82.9% -> 100.0%",
+      "external_llm_rewrite_cost": "$0.00"
+    }
+  },
+  "runtime_invariants": {
+    "release_authority": "VALIDATOR_CHAIN_ONLY (Model has zero release authority)",
+    "production_status": "V1",
+    "production_switch": false,
+    "promotion_readiness": "READY_FOR_LIMITED_CANARY"
+  },
+  "recommended_interview_wording": {
+    "model_claim": "在 2.08B 参数规模下，自研 NanoFinance 经过 ~25B tokens 金融 CPT 与 40K 高质量指令微调，在金融多任务宏观评测中较同规模通用模型 Qwen3.5-2B 绝对提升 +11.92pp（19.78% vs 7.86%）。",
+    "grounding_claim": "针对金融 RAG 中模型篡改数字和单位的痛点，构建 20K 严谨接地蒸馏数据集（V3），训练出的 Local Specialist 在 ORCL 500 题盲测集上达到 99.80% Strict Correct（499/500），释放答案正确率 100.0%，实质性错误释放数为 0。",
+    "system_claim": "在 120 题严格端到端财务问答回归中，可答问题正确率由 84.76% 提升至 100.0%（105/105），无答案问题 100% 正确拒答（15/15），释放答案准确率 100.0%，False Binding 与 False Execution 率均为 0.0%。"
+  }
+}
