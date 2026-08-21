@@ -1,0 +1,4417 @@
+{
+  "debug": {
+    "FBV1-001": {
+      "bm25_count": 29,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872424000008"
+      ],
+      "query": {
+        "important_tokens": [
+          "uncertain",
+          "tax",
+          "positions"
+        ],
+        "match": "\"uncertain\" OR \"tax\" OR \"positions\"",
+        "phrase_terms": [
+          "uncertain",
+          "tax",
+          "positions"
+        ],
+        "removed_scope_terms": [
+          "000101872424000008",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2023-12-31 report for the 'Uncertain Tax Positions' row?"
+    },
+    "FBV1-002": {
+      "bm25_count": 29,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "uncertain",
+          "tax",
+          "positions"
+        ],
+        "match": "\"uncertain\" OR \"tax\" OR \"positions\"",
+        "phrase_terms": [
+          "uncertain",
+          "tax",
+          "positions"
+        ],
+        "removed_scope_terms": [
+          "000101872425000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2024-12-31 report for the 'Uncertain Tax Positions' row?"
+    },
+    "FBV1-003": {
+      "bm25_count": 47,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872426000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "uncertain",
+          "tax",
+          "positions"
+        ],
+        "match": "\"uncertain\" OR \"tax\" OR \"positions\"",
+        "phrase_terms": [
+          "uncertain",
+          "tax",
+          "positions"
+        ],
+        "removed_scope_terms": [
+          "000101872426000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2025-12-31 report for the 'Uncertain Tax Positions' row?"
+    },
+    "FBV1-004": {
+      "bm25_count": 36,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872424000008"
+      ],
+      "query": {
+        "important_tokens": [
+          "uncertain",
+          "tax",
+          "positions",
+          "disclosure",
+          "given"
+        ],
+        "match": "\"uncertain\" OR \"tax\" OR \"positions\" OR \"disclosure\" OR \"given\"",
+        "phrase_terms": [
+          "uncertain",
+          "tax",
+          "positions"
+        ],
+        "removed_scope_terms": [
+          "000101872424000008",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What disclosure is given in the AMZN filing for 2023-12-31 for the 'Uncertain Tax Positions' row?"
+    },
+    "FBV1-005": {
+      "bm25_count": 36,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "uncertain",
+          "tax",
+          "positions",
+          "disclosure",
+          "given"
+        ],
+        "match": "\"uncertain\" OR \"tax\" OR \"positions\" OR \"disclosure\" OR \"given\"",
+        "phrase_terms": [
+          "uncertain",
+          "tax",
+          "positions"
+        ],
+        "removed_scope_terms": [
+          "000101872425000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What disclosure is given in the AMZN filing for 2024-12-31 for the 'Uncertain Tax Positions' row?"
+    },
+    "FBV1-006": {
+      "bm25_count": 54,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872426000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "uncertain",
+          "tax",
+          "positions",
+          "disclosure",
+          "given"
+        ],
+        "match": "\"uncertain\" OR \"tax\" OR \"positions\" OR \"disclosure\" OR \"given\"",
+        "phrase_terms": [
+          "uncertain",
+          "tax",
+          "positions"
+        ],
+        "removed_scope_terms": [
+          "000101872426000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What disclosure is given in the AMZN filing for 2025-12-31 for the 'Uncertain Tax Positions' row?"
+    },
+    "FBV1-007": {
+      "bm25_count": 97,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872424000008"
+      ],
+      "query": {
+        "important_tokens": [
+          "uncertain",
+          "tax",
+          "positions",
+          "statement",
+          "associated"
+        ],
+        "match": "\"uncertain\" OR \"tax\" OR \"positions\" OR \"statement\" OR \"associated\"",
+        "phrase_terms": [
+          "uncertain",
+          "tax",
+          "positions"
+        ],
+        "removed_scope_terms": [
+          "000101872424000008",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "Which statement is associated with the 'Uncertain Tax Positions' row in the AMZN filing for 2023-12-31?"
+    },
+    "FBV1-008": {
+      "bm25_count": 101,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "uncertain",
+          "tax",
+          "positions",
+          "statement",
+          "associated"
+        ],
+        "match": "\"uncertain\" OR \"tax\" OR \"positions\" OR \"statement\" OR \"associated\"",
+        "phrase_terms": [
+          "uncertain",
+          "tax",
+          "positions"
+        ],
+        "removed_scope_terms": [
+          "000101872425000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "Which statement is associated with the 'Uncertain Tax Positions' row in the AMZN filing for 2024-12-31?"
+    },
+    "FBV1-009": {
+      "bm25_count": 117,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872426000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "uncertain",
+          "tax",
+          "positions",
+          "statement",
+          "associated"
+        ],
+        "match": "\"uncertain\" OR \"tax\" OR \"positions\" OR \"statement\" OR \"associated\"",
+        "phrase_terms": [
+          "uncertain",
+          "tax",
+          "positions"
+        ],
+        "removed_scope_terms": [
+          "000101872426000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "Which statement is associated with the 'Uncertain Tax Positions' row in the AMZN filing for 2025-12-31?"
+    },
+    "FBV1-010": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872424000008"
+      ],
+      "query": {
+        "important_tokens": [
+          "uncertain",
+          "tax",
+          "positions",
+          "statement",
+          "associated",
+          "source",
+          "occurrence",
+          "2"
+        ],
+        "match": "\"uncertain\" OR \"tax\" OR \"positions\" OR \"statement\" OR \"associated\" OR \"source\" OR \"occurrence\" OR \"2\"",
+        "phrase_terms": [
+          "uncertain",
+          "tax",
+          "positions"
+        ],
+        "removed_scope_terms": [
+          "000101872424000008",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "Which statement is associated with the 'Uncertain Tax Positions' row in the AMZN filing for 2023-12-31 (source occurrence 2)?"
+    },
+    "FBV1-011": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204424000022"
+      ],
+      "query": {
+        "important_tokens": [
+          "total",
+          "share",
+          "repurchases",
+          "1"
+        ],
+        "match": "\"total\" OR \"share\" OR \"repurchases\" OR \"1\"",
+        "phrase_terms": [
+          "total",
+          "share",
+          "repurchases",
+          "1"
+        ],
+        "removed_scope_terms": [
+          "000165204424000022",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2023-12-31 report for the 'Total share repurchases (1)' row?"
+    },
+    "FBV1-012": {
+      "bm25_count": 74,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000014"
+      ],
+      "query": {
+        "important_tokens": [
+          "current"
+        ],
+        "match": "\"current\"",
+        "phrase_terms": [
+          "current"
+        ],
+        "removed_scope_terms": [
+          "000165204425000014",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2024-12-31 report for the 'Current' row?"
+    },
+    "FBV1-013": {
+      "bm25_count": 116,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204426000018"
+      ],
+      "query": {
+        "important_tokens": [
+          "gross",
+          "unrealized",
+          "losses"
+        ],
+        "match": "\"gross\" OR \"unrealized\" OR \"losses\"",
+        "phrase_terms": [
+          "gross",
+          "unrealized",
+          "losses"
+        ],
+        "removed_scope_terms": [
+          "000165204426000018",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2025-12-31 report for the 'Gross Unrealized Losses' row?"
+    },
+    "FBV1-014": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000043"
+      ],
+      "query": {
+        "important_tokens": [
+          "accumulated",
+          "other",
+          "comprehensive",
+          "income",
+          "loss"
+        ],
+        "match": "\"accumulated\" OR \"other\" OR \"comprehensive\" OR \"income\" OR \"loss\"",
+        "phrase_terms": [
+          "accumulated",
+          "other",
+          "comprehensive",
+          "income",
+          "loss"
+        ],
+        "removed_scope_terms": [
+          "000165204425000043",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2025-03-31 report for the 'Accumulated Other Comprehensive Income (Loss)' row?"
+    },
+    "FBV1-015": {
+      "bm25_count": 65,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000062"
+      ],
+      "query": {
+        "important_tokens": [
+          "assets"
+        ],
+        "match": "\"assets\"",
+        "phrase_terms": [
+          "assets"
+        ],
+        "removed_scope_terms": [
+          "000165204425000062",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2025-06-30 report for the 'Assets' row?"
+    },
+    "FBV1-016": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000091"
+      ],
+      "query": {
+        "important_tokens": [
+          "three",
+          "months"
+        ],
+        "match": "\"three\" OR \"months\"",
+        "phrase_terms": [
+          "three",
+          "months"
+        ],
+        "removed_scope_terms": [
+          "000165204425000091",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2025-09-30 report for the 'Three Months' row?"
+    },
+    "FBV1-017": {
+      "bm25_count": 108,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872424000008"
+      ],
+      "query": {
+        "important_tokens": [
+          "operating",
+          "expenses"
+        ],
+        "match": "\"operating\" OR \"expenses\"",
+        "phrase_terms": [
+          "operating",
+          "expenses"
+        ],
+        "removed_scope_terms": [
+          "000101872424000008",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2023-12-31 report for the 'Operating expenses' row?"
+    },
+    "FBV1-018": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "net",
+          "cash",
+          "provided",
+          "by",
+          "used",
+          "in",
+          "operating",
+          "activities"
+        ],
+        "match": "\"net\" OR \"cash\" OR \"provided\" OR \"by\" OR \"used\" OR \"in\" OR \"operating\" OR \"activities\"",
+        "phrase_terms": [
+          "net",
+          "cash",
+          "provided",
+          "by",
+          "used",
+          "in",
+          "operating",
+          "activities"
+        ],
+        "removed_scope_terms": [
+          "000101872425000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2024-12-31 report for the 'Net cash provided by (used in) operating activities' row?"
+    },
+    "FBV1-019": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872426000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "december",
+          "31",
+          "2025"
+        ],
+        "match": "\"december\" OR \"31\" OR \"2025\"",
+        "phrase_terms": [
+          "december",
+          "31",
+          "2025"
+        ],
+        "removed_scope_terms": [
+          "000101872426000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2025-12-31 report for the 'December 31, 2025' row?"
+    },
+    "FBV1-020": {
+      "bm25_count": 97,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000036"
+      ],
+      "query": {
+        "important_tokens": [
+          "operating",
+          "expenses"
+        ],
+        "match": "\"operating\" OR \"expenses\"",
+        "phrase_terms": [
+          "operating",
+          "expenses"
+        ],
+        "removed_scope_terms": [
+          "000101872425000036",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2025-03-31 report for the 'Operating Expenses' row?"
+    },
+    "FBV1-021": {
+      "bm25_count": 100,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000086"
+      ],
+      "query": {
+        "important_tokens": [
+          "operating",
+          "leases"
+        ],
+        "match": "\"operating\" OR \"leases\"",
+        "phrase_terms": [
+          "operating",
+          "leases"
+        ],
+        "removed_scope_terms": [
+          "000101872425000086",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2025-06-30 report for the 'Operating Leases' row?"
+    },
+    "FBV1-022": {
+      "bm25_count": 7,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000123"
+      ],
+      "query": {
+        "important_tokens": [
+          "accounts",
+          "payable"
+        ],
+        "match": "\"accounts\" OR \"payable\"",
+        "phrase_terms": [
+          "accounts",
+          "payable"
+        ],
+        "removed_scope_terms": [
+          "000101872425000123",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2025-09-30 report for the 'Accounts payable' row?"
+    },
+    "FBV1-023": {
+      "bm25_count": 79,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204424000022"
+      ],
+      "query": {
+        "important_tokens": [
+          "operating",
+          "activities"
+        ],
+        "match": "\"operating\" OR \"activities\"",
+        "phrase_terms": [
+          "operating",
+          "activities"
+        ],
+        "removed_scope_terms": [
+          "000165204424000022",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2023-12-31 report for the 'Operating activities' row?"
+    },
+    "FBV1-024": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000014"
+      ],
+      "query": {
+        "important_tokens": [
+          "income",
+          "taxes",
+          "payable",
+          "net"
+        ],
+        "match": "\"income\" OR \"taxes\" OR \"payable\" OR \"net\"",
+        "phrase_terms": [
+          "income",
+          "taxes",
+          "payable",
+          "net"
+        ],
+        "removed_scope_terms": [
+          "000165204425000014",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2024-12-31 report for the 'Income taxes payable, net' row?"
+    },
+    "FBV1-025": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204426000018"
+      ],
+      "query": {
+        "important_tokens": [
+          "total",
+          "cash",
+          "and",
+          "equivalents"
+        ],
+        "match": "\"total\" OR \"cash\" OR \"and\" OR \"equivalents\"",
+        "phrase_terms": [
+          "total",
+          "cash",
+          "and",
+          "equivalents"
+        ],
+        "removed_scope_terms": [
+          "000165204426000018",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2025-12-31 report for the 'Total cash and cash equivalents' row?"
+    },
+    "FBV1-026": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000043"
+      ],
+      "query": {
+        "important_tokens": [
+          "three",
+          "months"
+        ],
+        "match": "\"three\" OR \"months\"",
+        "phrase_terms": [
+          "three",
+          "months"
+        ],
+        "removed_scope_terms": [
+          "000165204425000043",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2025-03-31 report for the 'Three Months' row?"
+    },
+    "FBV1-027": {
+      "bm25_count": 74,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000062"
+      ],
+      "query": {
+        "important_tokens": [
+          "stock",
+          "issued"
+        ],
+        "match": "\"stock\" OR \"issued\"",
+        "phrase_terms": [
+          "stock",
+          "issued"
+        ],
+        "removed_scope_terms": [
+          "000165204425000062",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2025-06-30 report for the 'Stock issued' row?"
+    },
+    "FBV1-028": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000091"
+      ],
+      "query": {
+        "important_tokens": [
+          "consolidated",
+          "statements",
+          "of",
+          "income",
+          "three",
+          "and",
+          "nine",
+          "months",
+          "ended",
+          "september",
+          "30",
+          "2024",
+          "2025"
+        ],
+        "match": "\"consolidated\" OR \"statements\" OR \"of\" OR \"income\" OR \"three\" OR \"and\" OR \"nine\" OR \"months\" OR \"ended\" OR \"september\" OR \"30\" OR \"2024\" OR \"2025\"",
+        "phrase_terms": [
+          "consolidated",
+          "statements",
+          "of",
+          "income",
+          "three",
+          "and",
+          "nine",
+          "months",
+          "ended",
+          "september",
+          "30",
+          "2024",
+          "2025"
+        ],
+        "removed_scope_terms": [
+          "000165204425000091",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2025-09-30 report for the 'Consolidated Statements of Income - Three and Nine Months Ended September 30 , 2024 and 2025' row?"
+    },
+    "FBV1-029": {
+      "bm25_count": 115,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872424000008"
+      ],
+      "query": {
+        "important_tokens": [
+          "operating",
+          "expenses",
+          "disclosure",
+          "given"
+        ],
+        "match": "\"operating\" OR \"expenses\" OR \"disclosure\" OR \"given\"",
+        "phrase_terms": [
+          "operating",
+          "expenses"
+        ],
+        "removed_scope_terms": [
+          "000101872424000008",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What disclosure is given in the AMZN filing for 2023-12-31 for the 'Operating Expenses' row?"
+    },
+    "FBV1-030": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "december",
+          "31",
+          "2024"
+        ],
+        "match": "\"december\" OR \"31\" OR \"2024\"",
+        "phrase_terms": [
+          "december",
+          "31",
+          "2024"
+        ],
+        "removed_scope_terms": [
+          "000101872425000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2024-12-31 report for the 'December 31, 2024' row?"
+    },
+    "FBV1-031": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204424000022"
+      ],
+      "query": {
+        "important_tokens": [
+          "change",
+          "increase",
+          "decrease",
+          "in",
+          "allowance",
+          "for",
+          "credit",
+          "losses",
+          "both"
+        ],
+        "match": "\"change\" OR \"increase\" OR \"decrease\" OR \"in\" OR \"allowance\" OR \"for\" OR \"credit\" OR \"losses\" OR \"both\"",
+        "phrase_terms": [
+          "change",
+          "increase",
+          "decrease",
+          "in",
+          "allowance",
+          "for",
+          "credit",
+          "losses"
+        ],
+        "removed_scope_terms": [
+          "000165204424000022",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2023-12-31 report for both '% Change' and '(Increase) decrease in allowance for credit losses'?"
+    },
+    "FBV1-032": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000014"
+      ],
+      "query": {
+        "important_tokens": [
+          "change",
+          "increase",
+          "decrease",
+          "in",
+          "allowance",
+          "for",
+          "credit",
+          "losses",
+          "both"
+        ],
+        "match": "\"change\" OR \"increase\" OR \"decrease\" OR \"in\" OR \"allowance\" OR \"for\" OR \"credit\" OR \"losses\" OR \"both\"",
+        "phrase_terms": [
+          "change",
+          "increase",
+          "decrease",
+          "in",
+          "allowance",
+          "for",
+          "credit",
+          "losses"
+        ],
+        "removed_scope_terms": [
+          "000165204425000014",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2024-12-31 report for both '% Change' and '(Increase) decrease in allowance for credit losses'?"
+    },
+    "FBV1-033": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204426000018"
+      ],
+      "query": {
+        "important_tokens": [
+          "change",
+          "increase",
+          "decrease",
+          "in",
+          "allowance",
+          "for",
+          "credit",
+          "losses",
+          "both"
+        ],
+        "match": "\"change\" OR \"increase\" OR \"decrease\" OR \"in\" OR \"allowance\" OR \"for\" OR \"credit\" OR \"losses\" OR \"both\"",
+        "phrase_terms": [
+          "change",
+          "increase",
+          "decrease",
+          "in",
+          "allowance",
+          "for",
+          "credit",
+          "losses"
+        ],
+        "removed_scope_terms": [
+          "000165204426000018",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2025-12-31 report for both '% Change' and '(Increase) decrease in allowance for credit losses'?"
+    },
+    "FBV1-034": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000043"
+      ],
+      "query": {
+        "important_tokens": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "expenses",
+          "and",
+          "other",
+          "current",
+          "both"
+        ],
+        "match": "\"accrued\" OR \"customer\" OR \"liabilities\" OR \"expenses\" OR \"and\" OR \"other\" OR \"current\" OR \"both\"",
+        "phrase_terms": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "expenses",
+          "and",
+          "other",
+          "current"
+        ],
+        "removed_scope_terms": [
+          "000165204425000043",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2025-03-31 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'?"
+    },
+    "FBV1-035": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000062"
+      ],
+      "query": {
+        "important_tokens": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "expenses",
+          "and",
+          "other",
+          "current",
+          "both"
+        ],
+        "match": "\"accrued\" OR \"customer\" OR \"liabilities\" OR \"expenses\" OR \"and\" OR \"other\" OR \"current\" OR \"both\"",
+        "phrase_terms": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "expenses",
+          "and",
+          "other",
+          "current"
+        ],
+        "removed_scope_terms": [
+          "000165204425000062",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2025-06-30 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'?"
+    },
+    "FBV1-036": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000091"
+      ],
+      "query": {
+        "important_tokens": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "expenses",
+          "and",
+          "other",
+          "current",
+          "both"
+        ],
+        "match": "\"accrued\" OR \"customer\" OR \"liabilities\" OR \"expenses\" OR \"and\" OR \"other\" OR \"current\" OR \"both\"",
+        "phrase_terms": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "expenses",
+          "and",
+          "other",
+          "current"
+        ],
+        "removed_scope_terms": [
+          "000165204425000091",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2025-09-30 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'?"
+    },
+    "FBV1-037": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872424000008"
+      ],
+      "query": {
+        "important_tokens": [
+          "2023",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "accounts",
+          "payable",
+          "both"
+        ],
+        "match": "\"2023\" OR \"year\" OR \"ended\" OR \"december\" OR \"31\" OR \"accounts\" OR \"payable\" OR \"both\"",
+        "phrase_terms": [
+          "2023",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "accounts",
+          "payable"
+        ],
+        "removed_scope_terms": [
+          "000101872424000008",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2023-12-31 report for both '2023: Year Ended December 31,' and 'Accounts payable'?"
+    },
+    "FBV1-038": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "accounts",
+          "payable",
+          "both"
+        ],
+        "match": "\"2024\" OR \"year\" OR \"ended\" OR \"december\" OR \"31\" OR \"accounts\" OR \"payable\" OR \"both\"",
+        "phrase_terms": [
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "accounts",
+          "payable"
+        ],
+        "removed_scope_terms": [
+          "000101872425000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2024-12-31 report for both '2024: Year Ended December 31,' and 'Accounts payable'?"
+    },
+    "FBV1-039": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872426000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "2025",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "accounts",
+          "payable",
+          "both"
+        ],
+        "match": "\"2025\" OR \"year\" OR \"ended\" OR \"december\" OR \"31\" OR \"accounts\" OR \"payable\" OR \"both\"",
+        "phrase_terms": [
+          "2025",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "accounts",
+          "payable"
+        ],
+        "removed_scope_terms": [
+          "000101872426000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2025-12-31 report for both '2025: Year Ended December 31,' and 'Accounts payable'?"
+    },
+    "FBV1-040": {
+      "bm25_count": 175,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000036"
+      ],
+      "query": {
+        "important_tokens": [
+          "free",
+          "cash",
+          "flow",
+          "net",
+          "provided",
+          "by",
+          "used",
+          "in",
+          "financing",
+          "activities",
+          "both"
+        ],
+        "match": "\"free\" OR \"cash\" OR \"flow\" OR \"net\" OR \"provided\" OR \"by\" OR \"used\" OR \"in\" OR \"financing\" OR \"activities\" OR \"both\"",
+        "phrase_terms": [
+          "free",
+          "cash",
+          "flow",
+          "net",
+          "provided",
+          "by",
+          "used",
+          "in",
+          "financing",
+          "activities"
+        ],
+        "removed_scope_terms": [
+          "000101872425000036",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2025-03-31 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'?"
+    },
+    "FBV1-041": {
+      "bm25_count": 174,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000086"
+      ],
+      "query": {
+        "important_tokens": [
+          "free",
+          "cash",
+          "flow",
+          "net",
+          "provided",
+          "by",
+          "used",
+          "in",
+          "financing",
+          "activities",
+          "both"
+        ],
+        "match": "\"free\" OR \"cash\" OR \"flow\" OR \"net\" OR \"provided\" OR \"by\" OR \"used\" OR \"in\" OR \"financing\" OR \"activities\" OR \"both\"",
+        "phrase_terms": [
+          "free",
+          "cash",
+          "flow",
+          "net",
+          "provided",
+          "by",
+          "used",
+          "in",
+          "financing",
+          "activities"
+        ],
+        "removed_scope_terms": [
+          "000101872425000086",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2025-06-30 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'?"
+    },
+    "FBV1-042": {
+      "bm25_count": 174,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000123"
+      ],
+      "query": {
+        "important_tokens": [
+          "free",
+          "cash",
+          "flow",
+          "net",
+          "provided",
+          "by",
+          "used",
+          "in",
+          "financing",
+          "activities",
+          "both"
+        ],
+        "match": "\"free\" OR \"cash\" OR \"flow\" OR \"net\" OR \"provided\" OR \"by\" OR \"used\" OR \"in\" OR \"financing\" OR \"activities\" OR \"both\"",
+        "phrase_terms": [
+          "free",
+          "cash",
+          "flow",
+          "net",
+          "provided",
+          "by",
+          "used",
+          "in",
+          "financing",
+          "activities"
+        ],
+        "removed_scope_terms": [
+          "000101872425000123",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2025-09-30 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'?"
+    },
+    "FBV1-043": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204424000022"
+      ],
+      "query": {
+        "important_tokens": [
+          "change",
+          "2023",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "both"
+        ],
+        "match": "\"change\" OR \"2023\" OR \"year\" OR \"ended\" OR \"december\" OR \"31\" OR \"both\"",
+        "phrase_terms": [
+          "change",
+          "2023",
+          "year",
+          "ended",
+          "december",
+          "31"
+        ],
+        "removed_scope_terms": [
+          "000165204424000022",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2023-12-31 report for both '% Change' and '2023: Year Ended December 31,'?"
+    },
+    "FBV1-044": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000014"
+      ],
+      "query": {
+        "important_tokens": [
+          "change",
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "both"
+        ],
+        "match": "\"change\" OR \"2024\" OR \"year\" OR \"ended\" OR \"december\" OR \"31\" OR \"both\"",
+        "phrase_terms": [
+          "change",
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31"
+        ],
+        "removed_scope_terms": [
+          "000165204425000014",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2024-12-31 report for both '% Change' and '2024: Year Ended December 31,'?"
+    },
+    "FBV1-045": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204426000018"
+      ],
+      "query": {
+        "important_tokens": [
+          "change",
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "both"
+        ],
+        "match": "\"change\" OR \"2024\" OR \"year\" OR \"ended\" OR \"december\" OR \"31\" OR \"both\"",
+        "phrase_terms": [
+          "change",
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31"
+        ],
+        "removed_scope_terms": [
+          "000165204426000018",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2025-12-31 report for both '% Change' and '2024: Year Ended December 31,'?"
+    },
+    "FBV1-046": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000043"
+      ],
+      "query": {
+        "important_tokens": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "purchases",
+          "of",
+          "property",
+          "and",
+          "equipment",
+          "1",
+          "both"
+        ],
+        "match": "\"accrued\" OR \"customer\" OR \"liabilities\" OR \"purchases\" OR \"of\" OR \"property\" OR \"and\" OR \"equipment\" OR \"1\" OR \"both\"",
+        "phrase_terms": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "purchases",
+          "of",
+          "property",
+          "and",
+          "equipment",
+          "1"
+        ],
+        "removed_scope_terms": [
+          "000165204425000043",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2025-03-31 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'?"
+    },
+    "FBV1-047": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000062"
+      ],
+      "query": {
+        "important_tokens": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "purchases",
+          "of",
+          "property",
+          "and",
+          "equipment",
+          "1",
+          "both"
+        ],
+        "match": "\"accrued\" OR \"customer\" OR \"liabilities\" OR \"purchases\" OR \"of\" OR \"property\" OR \"and\" OR \"equipment\" OR \"1\" OR \"both\"",
+        "phrase_terms": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "purchases",
+          "of",
+          "property",
+          "and",
+          "equipment",
+          "1"
+        ],
+        "removed_scope_terms": [
+          "000165204425000062",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2025-06-30 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'?"
+    },
+    "FBV1-048": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000091"
+      ],
+      "query": {
+        "important_tokens": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "purchases",
+          "of",
+          "property",
+          "and",
+          "equipment",
+          "1",
+          "both"
+        ],
+        "match": "\"accrued\" OR \"customer\" OR \"liabilities\" OR \"purchases\" OR \"of\" OR \"property\" OR \"and\" OR \"equipment\" OR \"1\" OR \"both\"",
+        "phrase_terms": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "purchases",
+          "of",
+          "property",
+          "and",
+          "equipment",
+          "1"
+        ],
+        "removed_scope_terms": [
+          "000165204425000091",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What does the GOOGL filing for 2025-09-30 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'?"
+    },
+    "FBV1-049": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872424000008"
+      ],
+      "query": {
+        "important_tokens": [
+          "2023",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "accounts",
+          "receivable",
+          "net",
+          "and",
+          "other",
+          "both"
+        ],
+        "match": "\"2023\" OR \"year\" OR \"ended\" OR \"december\" OR \"31\" OR \"accounts\" OR \"receivable\" OR \"net\" OR \"and\" OR \"other\" OR \"both\"",
+        "phrase_terms": [
+          "2023",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "accounts",
+          "receivable",
+          "net",
+          "and",
+          "other"
+        ],
+        "removed_scope_terms": [
+          "000101872424000008",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2023-12-31 report for both '2023: Year Ended December 31,' and 'Accounts receivable, net and other'?"
+    },
+    "FBV1-050": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "accounts",
+          "receivable",
+          "net",
+          "and",
+          "other",
+          "both"
+        ],
+        "match": "\"2024\" OR \"year\" OR \"ended\" OR \"december\" OR \"31\" OR \"accounts\" OR \"receivable\" OR \"net\" OR \"and\" OR \"other\" OR \"both\"",
+        "phrase_terms": [
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "accounts",
+          "receivable",
+          "net",
+          "and",
+          "other"
+        ],
+        "removed_scope_terms": [
+          "000101872425000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What does the AMZN filing for 2024-12-31 report for both '2024: Year Ended December 31,' and 'Accounts receivable, net and other'?"
+    },
+    "FBV1-051": {
+      "bm25_count": 102,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204424000022"
+      ],
+      "query": {
+        "important_tokens": [
+          "january",
+          "30",
+          "2024",
+          "san",
+          "jose",
+          "california",
+          "using",
+          "reported",
+          "values",
+          "their",
+          "sum"
+        ],
+        "match": "\"january\" OR \"30\" OR \"2024\" OR \"san\" OR \"jose\" OR \"california\" OR \"using\" OR \"reported\" OR \"values\" OR \"their\" OR \"sum\"",
+        "phrase_terms": [
+          "january",
+          "30",
+          "2024",
+          "san",
+          "jose",
+          "california"
+        ],
+        "removed_scope_terms": [
+          "000165204424000022",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Using the reported values for 'January 30, 2024' and 'San Jose, California' in the GOOGL filing for 2023-12-31, what is their sum?"
+    },
+    "FBV1-052": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000014"
+      ],
+      "query": {
+        "important_tokens": [
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "alphabet",
+          "level",
+          "activities",
+          "1",
+          "using",
+          "reported",
+          "values",
+          "their",
+          "difference"
+        ],
+        "match": "\"2024\" OR \"year\" OR \"ended\" OR \"december\" OR \"31\" OR \"alphabet\" OR \"level\" OR \"activities\" OR \"1\" OR \"using\" OR \"reported\" OR \"values\" OR \"their\" OR \"difference\"",
+        "phrase_terms": [
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "alphabet",
+          "level",
+          "activities",
+          "1"
+        ],
+        "removed_scope_terms": [
+          "000165204425000014",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Using the reported values for '2024: Year Ended December 31,' and 'Alphabet-level activities (1)' in the GOOGL filing for 2024-12-31, what is their difference?"
+    },
+    "FBV1-053": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204426000018"
+      ],
+      "query": {
+        "important_tokens": [
+          "deferred",
+          "tax",
+          "assets",
+          "operating",
+          "leases",
+          "using",
+          "reported",
+          "values",
+          "their",
+          "sum"
+        ],
+        "match": "\"deferred\" OR \"tax\" OR \"assets\" OR \"operating\" OR \"leases\" OR \"using\" OR \"reported\" OR \"values\" OR \"their\" OR \"sum\"",
+        "phrase_terms": [
+          "deferred",
+          "tax",
+          "assets",
+          "operating",
+          "leases"
+        ],
+        "removed_scope_terms": [
+          "000165204426000018",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Using the reported values for 'Deferred tax assets' and 'Operating leases' in the GOOGL filing for 2025-12-31, what is their sum?"
+    },
+    "FBV1-054": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000043"
+      ],
+      "query": {
+        "important_tokens": [
+          "other",
+          "comprehensive",
+          "income",
+          "loss",
+          "unrealized",
+          "gains",
+          "losses",
+          "on",
+          "cash",
+          "flow",
+          "hedges",
+          "using",
+          "reported",
+          "values",
+          "their",
+          "difference"
+        ],
+        "match": "\"other\" OR \"comprehensive\" OR \"income\" OR \"loss\" OR \"unrealized\" OR \"gains\" OR \"losses\" OR \"on\" OR \"cash\" OR \"flow\" OR \"hedges\" OR \"using\" OR \"reported\" OR \"values\" OR \"their\" OR \"difference\"",
+        "phrase_terms": [
+          "other",
+          "comprehensive",
+          "income",
+          "loss",
+          "unrealized",
+          "gains",
+          "losses",
+          "on",
+          "cash",
+          "flow",
+          "hedges"
+        ],
+        "removed_scope_terms": [
+          "000165204425000043",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Using the reported values for 'Other comprehensive income (loss)' and 'Unrealized Gains (Losses) on Cash Flow Hedges' in the GOOGL filing for 2025-03-31, what is their difference?"
+    },
+    "FBV1-055": {
+      "bm25_count": 32,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000062"
+      ],
+      "query": {
+        "important_tokens": [
+          "apac",
+          "emea",
+          "using",
+          "reported",
+          "values",
+          "their",
+          "sum"
+        ],
+        "match": "\"apac\" OR \"emea\" OR \"using\" OR \"reported\" OR \"values\" OR \"their\" OR \"sum\"",
+        "phrase_terms": [
+          "apac",
+          "emea"
+        ],
+        "removed_scope_terms": [
+          "000165204425000062",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Using the reported values for 'APAC' and 'EMEA' in the GOOGL filing for 2025-06-30, what is their sum?"
+    },
+    "FBV1-056": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000091"
+      ],
+      "query": {
+        "important_tokens": [
+          "august",
+          "1",
+          "31",
+          "july",
+          "using",
+          "reported",
+          "values",
+          "their",
+          "difference"
+        ],
+        "match": "\"august\" OR \"1\" OR \"31\" OR \"july\" OR \"using\" OR \"reported\" OR \"values\" OR \"their\" OR \"difference\"",
+        "phrase_terms": [
+          "august",
+          "1",
+          "31",
+          "july"
+        ],
+        "removed_scope_terms": [
+          "000165204425000091",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Using the reported values for 'August 1 - 31' and 'July 1 - 31' in the GOOGL filing for 2025-09-30, what is their difference?"
+    },
+    "FBV1-057": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872424000008"
+      ],
+      "query": {
+        "important_tokens": [
+          "december",
+          "31",
+          "2023",
+          "weighted",
+          "average",
+          "discount",
+          "rate",
+          "operating",
+          "leases",
+          "using",
+          "reported",
+          "values",
+          "their",
+          "sum"
+        ],
+        "match": "\"december\" OR \"31\" OR \"2023\" OR \"weighted\" OR \"average\" OR \"discount\" OR \"rate\" OR \"operating\" OR \"leases\" OR \"using\" OR \"reported\" OR \"values\" OR \"their\" OR \"sum\"",
+        "phrase_terms": [
+          "december",
+          "31",
+          "2023",
+          "weighted",
+          "average",
+          "discount",
+          "rate",
+          "operating",
+          "leases"
+        ],
+        "removed_scope_terms": [
+          "000101872424000008",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "Using the reported values for 'December 31, 2023' and 'Weighted-average discount rate – operating leases' in the AMZN filing for 2023-12-31, what is their sum?"
+    },
+    "FBV1-058": {
+      "bm25_count": 94,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "current",
+          "deferred",
+          "using",
+          "reported",
+          "values",
+          "their",
+          "difference"
+        ],
+        "match": "\"current\" OR \"deferred\" OR \"using\" OR \"reported\" OR \"values\" OR \"their\" OR \"difference\"",
+        "phrase_terms": [
+          "current",
+          "deferred"
+        ],
+        "removed_scope_terms": [
+          "000101872425000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "Using the reported values for 'Current' and 'Deferred' in the AMZN filing for 2024-12-31, what is their difference?"
+    },
+    "FBV1-059": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872426000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "net",
+          "sales",
+          "operating",
+          "expenses",
+          "using",
+          "reported",
+          "values",
+          "their",
+          "sum"
+        ],
+        "match": "\"net\" OR \"sales\" OR \"operating\" OR \"expenses\" OR \"using\" OR \"reported\" OR \"values\" OR \"their\" OR \"sum\"",
+        "phrase_terms": [
+          "net",
+          "sales",
+          "operating",
+          "expenses"
+        ],
+        "removed_scope_terms": [
+          "000101872426000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "Using the reported values for 'Net sales' and 'Operating expenses' in the AMZN filing for 2025-12-31, what is their sum?"
+    },
+    "FBV1-060": {
+      "bm25_count": 111,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000036"
+      ],
+      "query": {
+        "important_tokens": [
+          "scheduled",
+          "vesting",
+          "restricted",
+          "stock",
+          "units",
+          "total",
+          "using",
+          "reported",
+          "values",
+          "their",
+          "difference"
+        ],
+        "match": "\"scheduled\" OR \"vesting\" OR \"restricted\" OR \"stock\" OR \"units\" OR \"total\" OR \"using\" OR \"reported\" OR \"values\" OR \"their\" OR \"difference\"",
+        "phrase_terms": [
+          "scheduled",
+          "vesting",
+          "restricted",
+          "stock",
+          "units",
+          "total"
+        ],
+        "removed_scope_terms": [
+          "000101872425000036",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "Using the reported values for 'Scheduled vesting — restricted stock units' and 'Total' in the AMZN filing for 2025-03-31, what is their difference?"
+    },
+    "FBV1-061": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000086"
+      ],
+      "query": {
+        "important_tokens": [
+          "cost",
+          "of",
+          "sales",
+          "fulfillment",
+          "using",
+          "reported",
+          "values",
+          "their",
+          "sum"
+        ],
+        "match": "\"cost\" OR \"of\" OR \"sales\" OR \"fulfillment\" OR \"using\" OR \"reported\" OR \"values\" OR \"their\" OR \"sum\"",
+        "phrase_terms": [
+          "cost",
+          "of",
+          "sales",
+          "fulfillment"
+        ],
+        "removed_scope_terms": [
+          "000101872425000086",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "Using the reported values for 'Cost of sales' and 'Fulfillment' in the AMZN filing for 2025-06-30, what is their sum?"
+    },
+    "FBV1-062": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000123"
+      ],
+      "query": {
+        "important_tokens": [
+          "december",
+          "31",
+          "2024",
+          "weighted",
+          "average",
+          "discount",
+          "rate",
+          "operating",
+          "leases",
+          "using",
+          "reported",
+          "values",
+          "their",
+          "difference"
+        ],
+        "match": "\"december\" OR \"31\" OR \"2024\" OR \"weighted\" OR \"average\" OR \"discount\" OR \"rate\" OR \"operating\" OR \"leases\" OR \"using\" OR \"reported\" OR \"values\" OR \"their\" OR \"difference\"",
+        "phrase_terms": [
+          "december",
+          "31",
+          "2024",
+          "weighted",
+          "average",
+          "discount",
+          "rate",
+          "operating",
+          "leases"
+        ],
+        "removed_scope_terms": [
+          "000101872425000123",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "Using the reported values for 'December 31, 2024' and 'Weighted-average discount rate – operating leases' in the AMZN filing for 2025-09-30, what is their difference?"
+    },
+    "FBV1-063": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204424000022"
+      ],
+      "query": {
+        "important_tokens": [
+          "2023",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "foreign",
+          "currency",
+          "exchange",
+          "gain",
+          "loss",
+          "net",
+          "using",
+          "reported",
+          "values",
+          "their",
+          "sum"
+        ],
+        "match": "\"2023\" OR \"year\" OR \"ended\" OR \"december\" OR \"31\" OR \"foreign\" OR \"currency\" OR \"exchange\" OR \"gain\" OR \"loss\" OR \"net\" OR \"using\" OR \"reported\" OR \"values\" OR \"their\" OR \"sum\"",
+        "phrase_terms": [
+          "2023",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "foreign",
+          "currency",
+          "exchange",
+          "gain",
+          "loss",
+          "net"
+        ],
+        "removed_scope_terms": [
+          "000165204424000022",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Using the reported values for '2023: Year Ended December 31,' and 'Foreign currency exchange gain (loss), net' in the GOOGL filing for 2023-12-31, what is their sum?"
+    },
+    "FBV1-064": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000014"
+      ],
+      "query": {
+        "important_tokens": [
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "google",
+          "cloud",
+          "using",
+          "reported",
+          "values",
+          "their",
+          "difference"
+        ],
+        "match": "\"2024\" OR \"year\" OR \"ended\" OR \"december\" OR \"31\" OR \"google\" OR \"cloud\" OR \"using\" OR \"reported\" OR \"values\" OR \"their\" OR \"difference\"",
+        "phrase_terms": [
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "google",
+          "cloud"
+        ],
+        "removed_scope_terms": [
+          "000165204425000014",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Using the reported values for '2024: Year Ended December 31,' and 'Google Cloud' in the GOOGL filing for 2024-12-31, what is their difference?"
+    },
+    "FBV1-065": {
+      "bm25_count": 175,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204426000018"
+      ],
+      "query": {
+        "important_tokens": [
+          "deferred",
+          "tax",
+          "assets",
+          "credits",
+          "using",
+          "reported",
+          "values",
+          "their",
+          "sum"
+        ],
+        "match": "\"deferred\" OR \"tax\" OR \"assets\" OR \"credits\" OR \"using\" OR \"reported\" OR \"values\" OR \"their\" OR \"sum\"",
+        "phrase_terms": [
+          "deferred",
+          "tax",
+          "assets",
+          "credits"
+        ],
+        "removed_scope_terms": [
+          "000165204426000018",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Using the reported values for 'Deferred tax assets' and 'Tax credits' in the GOOGL filing for 2025-12-31, what is their sum?"
+    },
+    "FBV1-066": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204424000022"
+      ],
+      "query": {
+        "important_tokens": [
+          "total",
+          "share",
+          "repurchases",
+          "1",
+          "temporal",
+          "scope",
+          "represent"
+        ],
+        "match": "\"total\" OR \"share\" OR \"repurchases\" OR \"1\" OR \"temporal\" OR \"scope\" OR \"represent\"",
+        "phrase_terms": [
+          "total",
+          "share",
+          "repurchases",
+          "1"
+        ],
+        "removed_scope_terms": [
+          "000165204424000022",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What temporal scope does the 'Total share repurchases (1)' row in the GOOGL filing for 2023-12-31 represent, and what does it report?"
+    },
+    "FBV1-067": {
+      "bm25_count": 74,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000014"
+      ],
+      "query": {
+        "important_tokens": [
+          "current",
+          "temporal",
+          "scope",
+          "represent"
+        ],
+        "match": "\"current\" OR \"temporal\" OR \"scope\" OR \"represent\"",
+        "phrase_terms": [
+          "current"
+        ],
+        "removed_scope_terms": [
+          "000165204425000014",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What temporal scope does the 'Current' row in the GOOGL filing for 2024-12-31 represent, and what does it report?"
+    },
+    "FBV1-068": {
+      "bm25_count": 116,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204426000018"
+      ],
+      "query": {
+        "important_tokens": [
+          "gross",
+          "unrealized",
+          "losses",
+          "temporal",
+          "scope",
+          "represent"
+        ],
+        "match": "\"gross\" OR \"unrealized\" OR \"losses\" OR \"temporal\" OR \"scope\" OR \"represent\"",
+        "phrase_terms": [
+          "gross",
+          "unrealized",
+          "losses"
+        ],
+        "removed_scope_terms": [
+          "000165204426000018",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What temporal scope does the 'Gross Unrealized Losses' row in the GOOGL filing for 2025-12-31 represent, and what does it report?"
+    },
+    "FBV1-069": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000043"
+      ],
+      "query": {
+        "important_tokens": [
+          "three",
+          "months",
+          "temporal",
+          "scope",
+          "represent"
+        ],
+        "match": "\"three\" OR \"months\" OR \"temporal\" OR \"scope\" OR \"represent\"",
+        "phrase_terms": [
+          "three",
+          "months"
+        ],
+        "removed_scope_terms": [
+          "000165204425000043",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What temporal scope does the 'Three Months' row in the GOOGL filing for 2025-03-31 represent, and what does it report?"
+    },
+    "FBV1-070": {
+      "bm25_count": 65,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000062"
+      ],
+      "query": {
+        "important_tokens": [
+          "assets",
+          "temporal",
+          "scope",
+          "represent"
+        ],
+        "match": "\"assets\" OR \"temporal\" OR \"scope\" OR \"represent\"",
+        "phrase_terms": [
+          "assets"
+        ],
+        "removed_scope_terms": [
+          "000165204425000062",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What temporal scope does the 'Assets' row in the GOOGL filing for 2025-06-30 represent, and what does it report?"
+    },
+    "FBV1-071": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000091"
+      ],
+      "query": {
+        "important_tokens": [
+          "consolidated",
+          "statements",
+          "of",
+          "income",
+          "three",
+          "and",
+          "nine",
+          "months",
+          "ended",
+          "september",
+          "30",
+          "2024",
+          "2025",
+          "temporal",
+          "scope",
+          "represent"
+        ],
+        "match": "\"consolidated\" OR \"statements\" OR \"of\" OR \"income\" OR \"three\" OR \"and\" OR \"nine\" OR \"months\" OR \"ended\" OR \"september\" OR \"30\" OR \"2024\" OR \"2025\" OR \"temporal\" OR \"scope\" OR \"represent\"",
+        "phrase_terms": [
+          "consolidated",
+          "statements",
+          "of",
+          "income",
+          "three",
+          "and",
+          "nine",
+          "months",
+          "ended",
+          "september",
+          "30",
+          "2024",
+          "2025"
+        ],
+        "removed_scope_terms": [
+          "000165204425000091",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What temporal scope does the 'Consolidated Statements of Income - Three and Nine Months Ended September 30 , 2024 and 2025' row in the GOOGL filing for 2025-09-30 represent, and what does it report?"
+    },
+    "FBV1-072": {
+      "bm25_count": 108,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872424000008"
+      ],
+      "query": {
+        "important_tokens": [
+          "operating",
+          "expenses",
+          "temporal",
+          "scope",
+          "represent"
+        ],
+        "match": "\"operating\" OR \"expenses\" OR \"temporal\" OR \"scope\" OR \"represent\"",
+        "phrase_terms": [
+          "operating",
+          "expenses"
+        ],
+        "removed_scope_terms": [
+          "000101872424000008",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What temporal scope does the 'Operating expenses' row in the AMZN filing for 2023-12-31 represent, and what does it report?"
+    },
+    "FBV1-073": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "net",
+          "cash",
+          "provided",
+          "by",
+          "used",
+          "in",
+          "operating",
+          "activities",
+          "temporal",
+          "scope",
+          "represent"
+        ],
+        "match": "\"net\" OR \"cash\" OR \"provided\" OR \"by\" OR \"used\" OR \"in\" OR \"operating\" OR \"activities\" OR \"temporal\" OR \"scope\" OR \"represent\"",
+        "phrase_terms": [
+          "net",
+          "cash",
+          "provided",
+          "by",
+          "used",
+          "in",
+          "operating",
+          "activities"
+        ],
+        "removed_scope_terms": [
+          "000101872425000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What temporal scope does the 'Net cash provided by (used in) operating activities' row in the AMZN filing for 2024-12-31 represent, and what does it report?"
+    },
+    "FBV1-074": {
+      "bm25_count": 157,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872426000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "operating",
+          "lease",
+          "cost",
+          "temporal",
+          "scope",
+          "represent"
+        ],
+        "match": "\"operating\" OR \"lease\" OR \"cost\" OR \"temporal\" OR \"scope\" OR \"represent\"",
+        "phrase_terms": [
+          "operating",
+          "lease",
+          "cost"
+        ],
+        "removed_scope_terms": [
+          "000101872426000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What temporal scope does the 'Operating lease cost' row in the AMZN filing for 2025-12-31 represent, and what does it report?"
+    },
+    "FBV1-075": {
+      "bm25_count": 97,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000036"
+      ],
+      "query": {
+        "important_tokens": [
+          "operating",
+          "expenses",
+          "temporal",
+          "scope",
+          "represent"
+        ],
+        "match": "\"operating\" OR \"expenses\" OR \"temporal\" OR \"scope\" OR \"represent\"",
+        "phrase_terms": [
+          "operating",
+          "expenses"
+        ],
+        "removed_scope_terms": [
+          "000101872425000036",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What temporal scope does the 'Operating Expenses' row in the AMZN filing for 2025-03-31 represent, and what does it report?"
+    },
+    "FBV1-076": {
+      "bm25_count": 83,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000086"
+      ],
+      "query": {
+        "important_tokens": [
+          "total",
+          "temporal",
+          "scope",
+          "represent"
+        ],
+        "match": "\"total\" OR \"temporal\" OR \"scope\" OR \"represent\"",
+        "phrase_terms": [
+          "total"
+        ],
+        "removed_scope_terms": [
+          "000101872425000086",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What temporal scope does the 'Total' row in the AMZN filing for 2025-06-30 represent, and what does it report?"
+    },
+    "FBV1-077": {
+      "bm25_count": 83,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000123"
+      ],
+      "query": {
+        "important_tokens": [
+          "total",
+          "temporal",
+          "scope",
+          "represent"
+        ],
+        "match": "\"total\" OR \"temporal\" OR \"scope\" OR \"represent\"",
+        "phrase_terms": [
+          "total"
+        ],
+        "removed_scope_terms": [
+          "000101872425000123",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "What temporal scope does the 'Total' row in the AMZN filing for 2025-09-30 represent, and what does it report?"
+    },
+    "FBV1-078": {
+      "bm25_count": 79,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204424000022"
+      ],
+      "query": {
+        "important_tokens": [
+          "operating",
+          "activities",
+          "temporal",
+          "scope",
+          "represent"
+        ],
+        "match": "\"operating\" OR \"activities\" OR \"temporal\" OR \"scope\" OR \"represent\"",
+        "phrase_terms": [
+          "operating",
+          "activities"
+        ],
+        "removed_scope_terms": [
+          "000165204424000022",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What temporal scope does the 'Operating activities' row in the GOOGL filing for 2023-12-31 represent, and what does it report?"
+    },
+    "FBV1-079": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000014"
+      ],
+      "query": {
+        "important_tokens": [
+          "income",
+          "taxes",
+          "payable",
+          "net",
+          "temporal",
+          "scope",
+          "represent"
+        ],
+        "match": "\"income\" OR \"taxes\" OR \"payable\" OR \"net\" OR \"temporal\" OR \"scope\" OR \"represent\"",
+        "phrase_terms": [
+          "income",
+          "taxes",
+          "payable",
+          "net"
+        ],
+        "removed_scope_terms": [
+          "000165204425000014",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What temporal scope does the 'Income taxes payable, net' row in the GOOGL filing for 2024-12-31 represent, and what does it report?"
+    },
+    "FBV1-080": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204426000018"
+      ],
+      "query": {
+        "important_tokens": [
+          "total",
+          "cash",
+          "and",
+          "equivalents",
+          "temporal",
+          "scope",
+          "represent"
+        ],
+        "match": "\"total\" OR \"cash\" OR \"and\" OR \"equivalents\" OR \"temporal\" OR \"scope\" OR \"represent\"",
+        "phrase_terms": [
+          "total",
+          "cash",
+          "and",
+          "equivalents"
+        ],
+        "removed_scope_terms": [
+          "000165204426000018",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "What temporal scope does the 'Total cash and cash equivalents' row in the GOOGL filing for 2025-12-31 represent, and what does it report?"
+    },
+    "FBV1-081": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204424000022"
+      ],
+      "query": {
+        "important_tokens": [
+          "change",
+          "increase",
+          "decrease",
+          "in",
+          "allowance",
+          "for",
+          "credit",
+          "losses",
+          "retrieve",
+          "answer",
+          "both",
+          "requested",
+          "disclosures"
+        ],
+        "match": "\"change\" OR \"increase\" OR \"decrease\" OR \"in\" OR \"allowance\" OR \"for\" OR \"credit\" OR \"losses\" OR \"retrieve\" OR \"answer\" OR \"both\" OR \"requested\" OR \"disclosures\"",
+        "phrase_terms": [
+          "change",
+          "increase",
+          "decrease",
+          "in",
+          "allowance",
+          "for",
+          "credit",
+          "losses"
+        ],
+        "removed_scope_terms": [
+          "000165204424000022",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Retrieve and answer both requested disclosures for GOOGL (2023-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'."
+    },
+    "FBV1-082": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000014"
+      ],
+      "query": {
+        "important_tokens": [
+          "change",
+          "increase",
+          "decrease",
+          "in",
+          "allowance",
+          "for",
+          "credit",
+          "losses",
+          "retrieve",
+          "answer",
+          "both",
+          "requested",
+          "disclosures"
+        ],
+        "match": "\"change\" OR \"increase\" OR \"decrease\" OR \"in\" OR \"allowance\" OR \"for\" OR \"credit\" OR \"losses\" OR \"retrieve\" OR \"answer\" OR \"both\" OR \"requested\" OR \"disclosures\"",
+        "phrase_terms": [
+          "change",
+          "increase",
+          "decrease",
+          "in",
+          "allowance",
+          "for",
+          "credit",
+          "losses"
+        ],
+        "removed_scope_terms": [
+          "000165204425000014",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Retrieve and answer both requested disclosures for GOOGL (2024-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'."
+    },
+    "FBV1-083": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204426000018"
+      ],
+      "query": {
+        "important_tokens": [
+          "change",
+          "increase",
+          "decrease",
+          "in",
+          "allowance",
+          "for",
+          "credit",
+          "losses",
+          "retrieve",
+          "answer",
+          "both",
+          "requested",
+          "disclosures"
+        ],
+        "match": "\"change\" OR \"increase\" OR \"decrease\" OR \"in\" OR \"allowance\" OR \"for\" OR \"credit\" OR \"losses\" OR \"retrieve\" OR \"answer\" OR \"both\" OR \"requested\" OR \"disclosures\"",
+        "phrase_terms": [
+          "change",
+          "increase",
+          "decrease",
+          "in",
+          "allowance",
+          "for",
+          "credit",
+          "losses"
+        ],
+        "removed_scope_terms": [
+          "000165204426000018",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Retrieve and answer both requested disclosures for GOOGL (2025-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'."
+    },
+    "FBV1-084": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000043"
+      ],
+      "query": {
+        "important_tokens": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "expenses",
+          "and",
+          "other",
+          "current",
+          "retrieve",
+          "answer",
+          "both",
+          "requested",
+          "disclosures"
+        ],
+        "match": "\"accrued\" OR \"customer\" OR \"liabilities\" OR \"expenses\" OR \"and\" OR \"other\" OR \"current\" OR \"retrieve\" OR \"answer\" OR \"both\" OR \"requested\" OR \"disclosures\"",
+        "phrase_terms": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "expenses",
+          "and",
+          "other",
+          "current"
+        ],
+        "removed_scope_terms": [
+          "000165204425000043",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Retrieve and answer both requested disclosures for GOOGL (2025-03-31): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'."
+    },
+    "FBV1-085": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000062"
+      ],
+      "query": {
+        "important_tokens": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "expenses",
+          "and",
+          "other",
+          "current",
+          "retrieve",
+          "answer",
+          "both",
+          "requested",
+          "disclosures"
+        ],
+        "match": "\"accrued\" OR \"customer\" OR \"liabilities\" OR \"expenses\" OR \"and\" OR \"other\" OR \"current\" OR \"retrieve\" OR \"answer\" OR \"both\" OR \"requested\" OR \"disclosures\"",
+        "phrase_terms": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "expenses",
+          "and",
+          "other",
+          "current"
+        ],
+        "removed_scope_terms": [
+          "000165204425000062",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Retrieve and answer both requested disclosures for GOOGL (2025-06-30): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'."
+    },
+    "FBV1-086": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000091"
+      ],
+      "query": {
+        "important_tokens": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "expenses",
+          "and",
+          "other",
+          "current",
+          "retrieve",
+          "answer",
+          "both",
+          "requested",
+          "disclosures"
+        ],
+        "match": "\"accrued\" OR \"customer\" OR \"liabilities\" OR \"expenses\" OR \"and\" OR \"other\" OR \"current\" OR \"retrieve\" OR \"answer\" OR \"both\" OR \"requested\" OR \"disclosures\"",
+        "phrase_terms": [
+          "accrued",
+          "customer",
+          "liabilities",
+          "expenses",
+          "and",
+          "other",
+          "current"
+        ],
+        "removed_scope_terms": [
+          "000165204425000091",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Retrieve and answer both requested disclosures for GOOGL (2025-09-30): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'."
+    },
+    "FBV1-087": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872424000008"
+      ],
+      "query": {
+        "important_tokens": [
+          "2023",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "accounts",
+          "payable",
+          "retrieve",
+          "answer",
+          "both",
+          "requested",
+          "disclosures"
+        ],
+        "match": "\"2023\" OR \"year\" OR \"ended\" OR \"december\" OR \"31\" OR \"accounts\" OR \"payable\" OR \"retrieve\" OR \"answer\" OR \"both\" OR \"requested\" OR \"disclosures\"",
+        "phrase_terms": [
+          "2023",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "accounts",
+          "payable"
+        ],
+        "removed_scope_terms": [
+          "000101872424000008",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "Retrieve and answer both requested disclosures for AMZN (2023-12-31): '2023: Year Ended December 31,' and 'Accounts payable'."
+    },
+    "FBV1-088": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "accounts",
+          "payable",
+          "retrieve",
+          "answer",
+          "both",
+          "requested",
+          "disclosures"
+        ],
+        "match": "\"2024\" OR \"year\" OR \"ended\" OR \"december\" OR \"31\" OR \"accounts\" OR \"payable\" OR \"retrieve\" OR \"answer\" OR \"both\" OR \"requested\" OR \"disclosures\"",
+        "phrase_terms": [
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "accounts",
+          "payable"
+        ],
+        "removed_scope_terms": [
+          "000101872425000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "Retrieve and answer both requested disclosures for AMZN (2024-12-31): '2024: Year Ended December 31,' and 'Accounts payable'."
+    },
+    "FBV1-089": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872426000004"
+      ],
+      "query": {
+        "important_tokens": [
+          "2025",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "accounts",
+          "payable",
+          "retrieve",
+          "answer",
+          "both",
+          "requested",
+          "disclosures"
+        ],
+        "match": "\"2025\" OR \"year\" OR \"ended\" OR \"december\" OR \"31\" OR \"accounts\" OR \"payable\" OR \"retrieve\" OR \"answer\" OR \"both\" OR \"requested\" OR \"disclosures\"",
+        "phrase_terms": [
+          "2025",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "accounts",
+          "payable"
+        ],
+        "removed_scope_terms": [
+          "000101872426000004",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "Retrieve and answer both requested disclosures for AMZN (2025-12-31): '2025: Year Ended December 31,' and 'Accounts payable'."
+    },
+    "FBV1-090": {
+      "bm25_count": 181,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000036"
+      ],
+      "query": {
+        "important_tokens": [
+          "free",
+          "cash",
+          "flow",
+          "net",
+          "provided",
+          "by",
+          "used",
+          "in",
+          "financing",
+          "activities",
+          "retrieve",
+          "answer",
+          "both",
+          "requested",
+          "disclosures"
+        ],
+        "match": "\"free\" OR \"cash\" OR \"flow\" OR \"net\" OR \"provided\" OR \"by\" OR \"used\" OR \"in\" OR \"financing\" OR \"activities\" OR \"retrieve\" OR \"answer\" OR \"both\" OR \"requested\" OR \"disclosures\"",
+        "phrase_terms": [
+          "free",
+          "cash",
+          "flow",
+          "net",
+          "provided",
+          "by",
+          "used",
+          "in",
+          "financing",
+          "activities"
+        ],
+        "removed_scope_terms": [
+          "000101872425000036",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "Retrieve and answer both requested disclosures for AMZN (2025-03-31): 'Free cash flow' and 'Net cash provided by (used in) financing activities'."
+    },
+    "FBV1-091": {
+      "bm25_count": 180,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000086"
+      ],
+      "query": {
+        "important_tokens": [
+          "free",
+          "cash",
+          "flow",
+          "net",
+          "provided",
+          "by",
+          "used",
+          "in",
+          "financing",
+          "activities",
+          "retrieve",
+          "answer",
+          "both",
+          "requested",
+          "disclosures"
+        ],
+        "match": "\"free\" OR \"cash\" OR \"flow\" OR \"net\" OR \"provided\" OR \"by\" OR \"used\" OR \"in\" OR \"financing\" OR \"activities\" OR \"retrieve\" OR \"answer\" OR \"both\" OR \"requested\" OR \"disclosures\"",
+        "phrase_terms": [
+          "free",
+          "cash",
+          "flow",
+          "net",
+          "provided",
+          "by",
+          "used",
+          "in",
+          "financing",
+          "activities"
+        ],
+        "removed_scope_terms": [
+          "000101872425000086",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "Retrieve and answer both requested disclosures for AMZN (2025-06-30): 'Free cash flow' and 'Net cash provided by (used in) financing activities'."
+    },
+    "FBV1-092": {
+      "bm25_count": 180,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1018724_000101872425000123"
+      ],
+      "query": {
+        "important_tokens": [
+          "free",
+          "cash",
+          "flow",
+          "net",
+          "provided",
+          "by",
+          "used",
+          "in",
+          "financing",
+          "activities",
+          "retrieve",
+          "answer",
+          "both",
+          "requested",
+          "disclosures"
+        ],
+        "match": "\"free\" OR \"cash\" OR \"flow\" OR \"net\" OR \"provided\" OR \"by\" OR \"used\" OR \"in\" OR \"financing\" OR \"activities\" OR \"retrieve\" OR \"answer\" OR \"both\" OR \"requested\" OR \"disclosures\"",
+        "phrase_terms": [
+          "free",
+          "cash",
+          "flow",
+          "net",
+          "provided",
+          "by",
+          "used",
+          "in",
+          "financing",
+          "activities"
+        ],
+        "removed_scope_terms": [
+          "000101872425000123",
+          "1018724",
+          "_",
+          "amzn",
+          "sec"
+        ]
+      },
+      "question": "Retrieve and answer both requested disclosures for AMZN (2025-09-30): 'Free cash flow' and 'Net cash provided by (used in) financing activities'."
+    },
+    "FBV1-093": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204424000022"
+      ],
+      "query": {
+        "important_tokens": [
+          "change",
+          "2023",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "retrieve",
+          "answer",
+          "both",
+          "requested",
+          "disclosures"
+        ],
+        "match": "\"change\" OR \"2023\" OR \"year\" OR \"ended\" OR \"december\" OR \"31\" OR \"retrieve\" OR \"answer\" OR \"both\" OR \"requested\" OR \"disclosures\"",
+        "phrase_terms": [
+          "change",
+          "2023",
+          "year",
+          "ended",
+          "december",
+          "31"
+        ],
+        "removed_scope_terms": [
+          "000165204424000022",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Retrieve and answer both requested disclosures for GOOGL (2023-12-31): '% Change' and '2023: Year Ended December 31,'."
+    },
+    "FBV1-094": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204425000014"
+      ],
+      "query": {
+        "important_tokens": [
+          "change",
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "retrieve",
+          "answer",
+          "both",
+          "requested",
+          "disclosures"
+        ],
+        "match": "\"change\" OR \"2024\" OR \"year\" OR \"ended\" OR \"december\" OR \"31\" OR \"retrieve\" OR \"answer\" OR \"both\" OR \"requested\" OR \"disclosures\"",
+        "phrase_terms": [
+          "change",
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31"
+        ],
+        "removed_scope_terms": [
+          "000165204425000014",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Retrieve and answer both requested disclosures for GOOGL (2024-12-31): '% Change' and '2024: Year Ended December 31,'."
+    },
+    "FBV1-095": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [
+        "SEC_1652044_000165204426000018"
+      ],
+      "query": {
+        "important_tokens": [
+          "change",
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31",
+          "retrieve",
+          "answer",
+          "both",
+          "requested",
+          "disclosures"
+        ],
+        "match": "\"change\" OR \"2024\" OR \"year\" OR \"ended\" OR \"december\" OR \"31\" OR \"retrieve\" OR \"answer\" OR \"both\" OR \"requested\" OR \"disclosures\"",
+        "phrase_terms": [
+          "change",
+          "2024",
+          "year",
+          "ended",
+          "december",
+          "31"
+        ],
+        "removed_scope_terms": [
+          "000165204426000018",
+          "1652044",
+          "_",
+          "googl",
+          "sec"
+        ]
+      },
+      "question": "Retrieve and answer both requested disclosures for GOOGL (2025-12-31): '% Change' and '2024: Year Ended December 31,'."
+    },
+    "FBV1-096": {
+      "bm25_count": 0,
+      "coarse_count": 0,
+      "dense_count": 0,
+      "document_scope": [
+        "SEC_1318605_000110465925042659"
+      ],
+      "query": {
+        "important_tokens": [
+          "form",
+          "amendment",
+          "marker",
+          "sidecar"
+        ],
+        "match": "\"form\" OR \"amendment\" OR \"marker\" OR \"sidecar\"",
+        "phrase_terms": [],
+        "removed_scope_terms": [
+          "000110465925042659",
+          "1318605",
+          "_",
+          "sec",
+          "tsla"
+        ]
+      },
+      "question": "Which SEC form and amendment marker are shown in the TSLA sidecar for 2024-12-31?"
+    },
+    "FBV1-097": {
+      "bm25_count": 0,
+      "coarse_count": 0,
+      "dense_count": 0,
+      "document_scope": [
+        "SEC_1318605_000110465926053166"
+      ],
+      "query": {
+        "important_tokens": [
+          "period",
+          "end",
+          "identified",
+          "version",
+          "sidecar",
+          "0001104659",
+          "26",
+          "053166"
+        ],
+        "match": "\"period\" OR \"end\" OR \"identified\" OR \"version\" OR \"sidecar\" OR \"0001104659\" OR \"26\" OR \"053166\"",
+        "phrase_terms": [],
+        "removed_scope_terms": [
+          "000110465926053166",
+          "1318605",
+          "_",
+          "sec",
+          "tsla"
+        ]
+      },
+      "question": "What report period end is identified by the TSLA version sidecar 0001104659-26-053166?"
+    },
+    "FBV1-098": {
+      "bm25_count": 0,
+      "coarse_count": 0,
+      "dense_count": 0,
+      "document_scope": [
+        "SEC_21344_000002134424000019"
+      ],
+      "query": {
+        "important_tokens": [
+          "date",
+          "recorded",
+          "version",
+          "sidecar",
+          "0000021344",
+          "24",
+          "000019"
+        ],
+        "match": "\"date\" OR \"recorded\" OR \"version\" OR \"sidecar\" OR \"0000021344\" OR \"24\" OR \"000019\"",
+        "phrase_terms": [],
+        "removed_scope_terms": [
+          "000002134424000019",
+          "21344",
+          "_",
+          "ko",
+          "sec"
+        ]
+      },
+      "question": "What filing date is recorded for the KO version sidecar 0000021344-24-000019?"
+    },
+    "FBV1-099": {
+      "bm25_count": 0,
+      "coarse_count": 0,
+      "dense_count": 0,
+      "document_scope": [
+        "SEC_1318605_000110465925042659"
+      ],
+      "query": {
+        "important_tokens": [
+          "source",
+          "record",
+          "establish",
+          "original",
+          "sidecar",
+          "0001104659",
+          "25",
+          "042659",
+          "supersedes"
+        ],
+        "match": "\"source\" OR \"record\" OR \"establish\" OR \"original\" OR \"sidecar\" OR \"0001104659\" OR \"25\" OR \"042659\" OR \"supersedes\"",
+        "phrase_terms": [],
+        "removed_scope_terms": [
+          "000110465925042659",
+          "1318605",
+          "_",
+          "sec",
+          "tsla"
+        ]
+      },
+      "question": "Does the source record establish which original filing the TSLA sidecar 0001104659-25-042659 supersedes?"
+    },
+    "FBV1-100": {
+      "bm25_count": 0,
+      "coarse_count": 0,
+      "dense_count": 0,
+      "document_scope": [
+        "SEC_1318605_000110465926053166"
+      ],
+      "query": {
+        "important_tokens": [
+          "form",
+          "amendment",
+          "marker",
+          "sidecar"
+        ],
+        "match": "\"form\" OR \"amendment\" OR \"marker\" OR \"sidecar\"",
+        "phrase_terms": [],
+        "removed_scope_terms": [
+          "000110465926053166",
+          "1318605",
+          "_",
+          "sec",
+          "tsla"
+        ]
+      },
+      "question": "Which SEC form and amendment marker are shown in the TSLA sidecar for 2025-12-31?"
+    },
+    "FBV1-101": {
+      "bm25_count": 0,
+      "coarse_count": 0,
+      "dense_count": 0,
+      "document_scope": [
+        "SEC_21344_000002134424000019"
+      ],
+      "query": {
+        "important_tokens": [
+          "period",
+          "end",
+          "identified",
+          "version",
+          "sidecar",
+          "0000021344",
+          "24",
+          "000019"
+        ],
+        "match": "\"period\" OR \"end\" OR \"identified\" OR \"version\" OR \"sidecar\" OR \"0000021344\" OR \"24\" OR \"000019\"",
+        "phrase_terms": [],
+        "removed_scope_terms": [
+          "000002134424000019",
+          "21344",
+          "_",
+          "ko",
+          "sec"
+        ]
+      },
+      "question": "What report period end is identified by the KO version sidecar 0000021344-24-000019?"
+    },
+    "FBV1-102": {
+      "bm25_count": 0,
+      "coarse_count": 0,
+      "dense_count": 0,
+      "document_scope": [
+        "SEC_1318605_000110465925042659"
+      ],
+      "query": {
+        "important_tokens": [
+          "date",
+          "recorded",
+          "version",
+          "sidecar",
+          "0001104659",
+          "25",
+          "042659"
+        ],
+        "match": "\"date\" OR \"recorded\" OR \"version\" OR \"sidecar\" OR \"0001104659\" OR \"25\" OR \"042659\"",
+        "phrase_terms": [],
+        "removed_scope_terms": [
+          "000110465925042659",
+          "1318605",
+          "_",
+          "sec",
+          "tsla"
+        ]
+      },
+      "question": "What filing date is recorded for the TSLA version sidecar 0001104659-25-042659?"
+    },
+    "FBV1-103": {
+      "bm25_count": 0,
+      "coarse_count": 0,
+      "dense_count": 0,
+      "document_scope": [
+        "SEC_1318605_000110465926053166"
+      ],
+      "query": {
+        "important_tokens": [
+          "source",
+          "record",
+          "establish",
+          "original",
+          "sidecar",
+          "0001104659",
+          "26",
+          "053166",
+          "supersedes"
+        ],
+        "match": "\"source\" OR \"record\" OR \"establish\" OR \"original\" OR \"sidecar\" OR \"0001104659\" OR \"26\" OR \"053166\" OR \"supersedes\"",
+        "phrase_terms": [],
+        "removed_scope_terms": [
+          "000110465926053166",
+          "1318605",
+          "_",
+          "sec",
+          "tsla"
+        ]
+      },
+      "question": "Does the source record establish which original filing the TSLA sidecar 0001104659-26-053166 supersedes?"
+    },
+    "FBV1-104": {
+      "bm25_count": 0,
+      "coarse_count": 0,
+      "dense_count": 0,
+      "document_scope": [
+        "SEC_21344_000002134424000019"
+      ],
+      "query": {
+        "important_tokens": [
+          "form",
+          "amendment",
+          "marker",
+          "sidecar"
+        ],
+        "match": "\"form\" OR \"amendment\" OR \"marker\" OR \"sidecar\"",
+        "phrase_terms": [],
+        "removed_scope_terms": [
+          "000002134424000019",
+          "21344",
+          "_",
+          "ko",
+          "sec"
+        ]
+      },
+      "question": "Which SEC form and amendment marker are shown in the KO sidecar for 2024-03-29?"
+    },
+    "FBV1-105": {
+      "bm25_count": 0,
+      "coarse_count": 0,
+      "dense_count": 0,
+      "document_scope": [
+        "SEC_1318605_000110465925042659"
+      ],
+      "query": {
+        "important_tokens": [
+          "period",
+          "end",
+          "identified",
+          "version",
+          "sidecar",
+          "0001104659",
+          "25",
+          "042659"
+        ],
+        "match": "\"period\" OR \"end\" OR \"identified\" OR \"version\" OR \"sidecar\" OR \"0001104659\" OR \"25\" OR \"042659\"",
+        "phrase_terms": [],
+        "removed_scope_terms": [
+          "000110465925042659",
+          "1318605",
+          "_",
+          "sec",
+          "tsla"
+        ]
+      },
+      "question": "What report period end is identified by the TSLA version sidecar 0001104659-25-042659?"
+    },
+    "FBV1-106": {
+      "bm25_count": 0,
+      "coarse_count": 0,
+      "dense_count": 0,
+      "document_scope": [
+        "SEC_1318605_000110465925042659"
+      ],
+      "query": {
+        "important_tokens": [
+          "can",
+          "current",
+          "effective",
+          "financial",
+          "version",
+          "determined",
+          "tsla",
+          "amendment",
+          "candidate",
+          "0001104659",
+          "25",
+          "042659",
+          "alone"
+        ],
+        "match": "\"can\" OR \"current\" OR \"effective\" OR \"financial\" OR \"version\" OR \"determined\" OR \"tsla\" OR \"amendment\" OR \"candidate\" OR \"0001104659\" OR \"25\" OR \"042659\" OR \"alone\"",
+        "phrase_terms": [],
+        "removed_scope_terms": [
+          "000110465925042659",
+          "1318605",
+          "_",
+          "sec"
+        ]
+      },
+      "question": "Can the current effective financial version be determined from the TSLA amendment candidate 0001104659-25-042659 alone?"
+    },
+    "FBV1-107": {
+      "bm25_count": 0,
+      "coarse_count": 0,
+      "dense_count": 0,
+      "document_scope": [
+        "SEC_1318605_000110465926053166"
+      ],
+      "query": {
+        "important_tokens": [
+          "can",
+          "current",
+          "effective",
+          "financial",
+          "version",
+          "determined",
+          "tsla",
+          "amendment",
+          "candidate",
+          "0001104659",
+          "26",
+          "053166",
+          "alone"
+        ],
+        "match": "\"can\" OR \"current\" OR \"effective\" OR \"financial\" OR \"version\" OR \"determined\" OR \"tsla\" OR \"amendment\" OR \"candidate\" OR \"0001104659\" OR \"26\" OR \"053166\" OR \"alone\"",
+        "phrase_terms": [],
+        "removed_scope_terms": [
+          "000110465926053166",
+          "1318605",
+          "_",
+          "sec"
+        ]
+      },
+      "question": "Can the current effective financial version be determined from the TSLA amendment candidate 0001104659-26-053166 alone?"
+    },
+    "FBV1-108": {
+      "bm25_count": 0,
+      "coarse_count": 0,
+      "dense_count": 0,
+      "document_scope": [
+        "SEC_21344_000002134424000019"
+      ],
+      "query": {
+        "important_tokens": [
+          "can",
+          "current",
+          "effective",
+          "financial",
+          "version",
+          "determined",
+          "ko",
+          "amendment",
+          "candidate",
+          "0000021344",
+          "24",
+          "000019",
+          "alone"
+        ],
+        "match": "\"can\" OR \"current\" OR \"effective\" OR \"financial\" OR \"version\" OR \"determined\" OR \"ko\" OR \"amendment\" OR \"candidate\" OR \"0000021344\" OR \"24\" OR \"000019\" OR \"alone\"",
+        "phrase_terms": [],
+        "removed_scope_terms": [
+          "000002134424000019",
+          "21344",
+          "_",
+          "sec"
+        ]
+      },
+      "question": "Can the current effective financial version be determined from the KO amendment candidate 0000021344-24-000019 alone?"
+    },
+    "FBV1-109": {
+      "bm25_count": 0,
+      "coarse_count": 0,
+      "dense_count": 0,
+      "document_scope": [
+        "SEC_1318605_000110465925042659"
+      ],
+      "query": {
+        "important_tokens": [
+          "tsla",
+          "amendment",
+          "record",
+          "0001104659",
+          "25",
+          "042659",
+          "establish",
+          "explicit",
+          "original"
+        ],
+        "match": "\"tsla\" OR \"amendment\" OR \"record\" OR \"0001104659\" OR \"25\" OR \"042659\" OR \"establish\" OR \"explicit\" OR \"original\"",
+        "phrase_terms": [],
+        "removed_scope_terms": [
+          "000110465925042659",
+          "1318605",
+          "_",
+          "sec"
+        ]
+      },
+      "question": "Does the TSLA amendment record 0001104659-25-042659 establish an explicit original filing?"
+    },
+    "FBV1-110": {
+      "bm25_count": 0,
+      "coarse_count": 0,
+      "dense_count": 0,
+      "document_scope": [
+        "SEC_1318605_000110465926053166"
+      ],
+      "query": {
+        "important_tokens": [
+          "can",
+          "supersedes",
+          "relation",
+          "tsla",
+          "amendment",
+          "0001104659",
+          "26",
+          "053166",
+          "resolved",
+          "this",
+          "source",
+          "record"
+        ],
+        "match": "\"can\" OR \"supersedes\" OR \"relation\" OR \"tsla\" OR \"amendment\" OR \"0001104659\" OR \"26\" OR \"053166\" OR \"resolved\" OR \"this\" OR \"source\" OR \"record\"",
+        "phrase_terms": [],
+        "removed_scope_terms": [
+          "000110465926053166",
+          "1318605",
+          "_",
+          "sec"
+        ]
+      },
+      "question": "Can the supersedes relation for TSLA amendment 0001104659-26-053166 be resolved from this source record?"
+    },
+    "FBV1-111": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [],
+      "query": {
+        "important_tokens": [
+          "annual",
+          "revenue",
+          "googl"
+        ],
+        "match": "\"annual\" OR \"revenue\" OR \"googl\"",
+        "phrase_terms": [],
+        "removed_scope_terms": []
+      },
+      "question": "What was annual revenue for GOOGL in 2019?"
+    },
+    "FBV1-112": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [],
+      "query": {
+        "important_tokens": [
+          "quarterly",
+          "operating",
+          "income",
+          "googl"
+        ],
+        "match": "\"quarterly\" OR \"operating\" OR \"income\" OR \"googl\"",
+        "phrase_terms": [],
+        "removed_scope_terms": []
+      },
+      "question": "What was quarterly operating income for GOOGL in 2020?"
+    },
+    "FBV1-113": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [],
+      "query": {
+        "important_tokens": [
+          "annual",
+          "cash",
+          "equivalents",
+          "googl"
+        ],
+        "match": "\"annual\" OR \"cash\" OR \"equivalents\" OR \"googl\"",
+        "phrase_terms": [],
+        "removed_scope_terms": []
+      },
+      "question": "What was annual cash and cash equivalents for GOOGL in 2026?"
+    },
+    "FBV1-114": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [],
+      "query": {
+        "important_tokens": [
+          "annual",
+          "net",
+          "sales",
+          "amzn"
+        ],
+        "match": "\"annual\" OR \"net\" OR \"sales\" OR \"amzn\"",
+        "phrase_terms": [],
+        "removed_scope_terms": []
+      },
+      "question": "What was annual net sales for AMZN in 2018?"
+    },
+    "FBV1-115": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [],
+      "query": {
+        "important_tokens": [
+          "annual",
+          "operating",
+          "income",
+          "amzn"
+        ],
+        "match": "\"annual\" OR \"operating\" OR \"income\" OR \"amzn\"",
+        "phrase_terms": [],
+        "removed_scope_terms": []
+      },
+      "question": "What was annual operating income for AMZN in 2019?"
+    },
+    "FBV1-116": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [],
+      "query": {
+        "important_tokens": [
+          "quarterly",
+          "total",
+          "assets",
+          "amzn"
+        ],
+        "match": "\"quarterly\" OR \"total\" OR \"assets\" OR \"amzn\"",
+        "phrase_terms": [],
+        "removed_scope_terms": []
+      },
+      "question": "What was quarterly total assets for AMZN in 2026?"
+    },
+    "FBV1-117": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [],
+      "query": {
+        "important_tokens": [
+          "standalone",
+          "quarterly",
+          "revenue",
+          "googl",
+          "q4"
+        ],
+        "match": "\"standalone\" OR \"quarterly\" OR \"revenue\" OR \"googl\" OR \"q4\"",
+        "phrase_terms": [],
+        "removed_scope_terms": []
+      },
+      "question": "What was standalone quarterly revenue for GOOGL in 2025 Q4?"
+    },
+    "FBV1-118": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [],
+      "query": {
+        "important_tokens": [
+          "standalone",
+          "quarterly",
+          "cash",
+          "flow",
+          "amzn",
+          "q4"
+        ],
+        "match": "\"standalone\" OR \"quarterly\" OR \"cash\" OR \"flow\" OR \"amzn\" OR \"q4\"",
+        "phrase_terms": [],
+        "removed_scope_terms": []
+      },
+      "question": "What was standalone quarterly cash flow for AMZN in 2024 Q4?"
+    },
+    "FBV1-119": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [],
+      "query": {
+        "important_tokens": [
+          "annual",
+          "diluted",
+          "earnings",
+          "per",
+          "share",
+          "googl"
+        ],
+        "match": "\"annual\" OR \"diluted\" OR \"earnings\" OR \"per\" OR \"share\" OR \"googl\"",
+        "phrase_terms": [],
+        "removed_scope_terms": []
+      },
+      "question": "What was annual diluted earnings per share for GOOGL in 2018?"
+    },
+    "FBV1-120": {
+      "bm25_count": 200,
+      "coarse_count": 200,
+      "dense_count": 200,
+      "document_scope": [],
+      "query": {
+        "important_tokens": [
+          "annual",
+          "long",
+          "term",
+          "debt",
+          "amzn"
+        ],
+        "match": "\"annual\" OR \"long\" OR \"term\" OR \"debt\" OR \"amzn\"",
+        "phrase_terms": [],
+        "removed_scope_terms": []
+      },
+      "question": "What was annual long-term debt for AMZN in 2017?"
+    }
+  },
+  "depths": {
+    "100": {
+      "all_120": {
+        "all_count": 92,
+        "all_denominator": 120,
+        "answerable_count": 92,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.8761904761904762,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 13,
+        "multi_all_count": 9,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      },
+      "answerable_105": {
+        "all_count": 92,
+        "all_denominator": 105,
+        "answerable_count": 92,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.8761904761904762,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 13,
+        "multi_all_count": 9,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      },
+      "calculation_15": {
+        "all_count": 15,
+        "all_denominator": 15,
+        "answerable_count": 15,
+        "answerable_denominator": 15,
+        "answerable_recall": 1.0,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 13,
+        "multi_all_count": 0,
+        "multi_any_count": 0,
+        "multi_denominator": 0
+      },
+      "categories": {
+        "TABLE_ROW": {
+          "count": 90,
+          "denominator": 93
+        },
+        "TEXT": {
+          "count": 0,
+          "denominator": 0
+        },
+        "calculation": {
+          "count": 15,
+          "denominator": 15
+        },
+        "multi": {
+          "count": 20,
+          "denominator": 20
+        },
+        "qualitative": {
+          "count": 0,
+          "denominator": 0
+        },
+        "quantitative": {
+          "count": 92,
+          "denominator": 105
+        },
+        "single": {
+          "count": 57,
+          "denominator": 70
+        }
+      },
+      "multi_20": {
+        "all_count": 20,
+        "all_denominator": 20,
+        "answerable_count": 20,
+        "answerable_denominator": 20,
+        "answerable_recall": 1.0,
+        "calculation_denominator": 0,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 9,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      }
+    },
+    "20": {
+      "all_120": {
+        "all_count": 77,
+        "all_denominator": 120,
+        "answerable_count": 77,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.7333333333333333,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 6,
+        "multi_all_count": 8,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      },
+      "answerable_105": {
+        "all_count": 77,
+        "all_denominator": 105,
+        "answerable_count": 77,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.7333333333333333,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 6,
+        "multi_all_count": 8,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      },
+      "calculation_15": {
+        "all_count": 14,
+        "all_denominator": 15,
+        "answerable_count": 14,
+        "answerable_denominator": 15,
+        "answerable_recall": 0.9333333333333333,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 6,
+        "multi_all_count": 0,
+        "multi_any_count": 0,
+        "multi_denominator": 0
+      },
+      "categories": {
+        "TABLE_ROW": {
+          "count": 77,
+          "denominator": 93
+        },
+        "TEXT": {
+          "count": 0,
+          "denominator": 0
+        },
+        "calculation": {
+          "count": 14,
+          "denominator": 15
+        },
+        "multi": {
+          "count": 20,
+          "denominator": 20
+        },
+        "qualitative": {
+          "count": 0,
+          "denominator": 0
+        },
+        "quantitative": {
+          "count": 77,
+          "denominator": 105
+        },
+        "single": {
+          "count": 43,
+          "denominator": 70
+        }
+      },
+      "multi_20": {
+        "all_count": 20,
+        "all_denominator": 20,
+        "answerable_count": 20,
+        "answerable_denominator": 20,
+        "answerable_recall": 1.0,
+        "calculation_denominator": 0,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 8,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      }
+    },
+    "200": {
+      "all_120": {
+        "all_count": 95,
+        "all_denominator": 120,
+        "answerable_count": 95,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.9047619047619048,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 15,
+        "multi_all_count": 15,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      },
+      "answerable_105": {
+        "all_count": 95,
+        "all_denominator": 105,
+        "answerable_count": 95,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.9047619047619048,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 15,
+        "multi_all_count": 15,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      },
+      "calculation_15": {
+        "all_count": 15,
+        "all_denominator": 15,
+        "answerable_count": 15,
+        "answerable_denominator": 15,
+        "answerable_recall": 1.0,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 15,
+        "multi_all_count": 0,
+        "multi_any_count": 0,
+        "multi_denominator": 0
+      },
+      "categories": {
+        "TABLE_ROW": {
+          "count": 93,
+          "denominator": 93
+        },
+        "TEXT": {
+          "count": 0,
+          "denominator": 0
+        },
+        "calculation": {
+          "count": 15,
+          "denominator": 15
+        },
+        "multi": {
+          "count": 20,
+          "denominator": 20
+        },
+        "qualitative": {
+          "count": 0,
+          "denominator": 0
+        },
+        "quantitative": {
+          "count": 95,
+          "denominator": 105
+        },
+        "single": {
+          "count": 60,
+          "denominator": 70
+        }
+      },
+      "multi_20": {
+        "all_count": 20,
+        "all_denominator": 20,
+        "answerable_count": 20,
+        "answerable_denominator": 20,
+        "answerable_recall": 1.0,
+        "calculation_denominator": 0,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 15,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      }
+    },
+    "50": {
+      "all_120": {
+        "all_count": 88,
+        "all_denominator": 120,
+        "answerable_count": 88,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.8380952380952381,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 10,
+        "multi_all_count": 9,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      },
+      "answerable_105": {
+        "all_count": 88,
+        "all_denominator": 105,
+        "answerable_count": 88,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.8380952380952381,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 10,
+        "multi_all_count": 9,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      },
+      "calculation_15": {
+        "all_count": 15,
+        "all_denominator": 15,
+        "answerable_count": 15,
+        "answerable_denominator": 15,
+        "answerable_recall": 1.0,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 10,
+        "multi_all_count": 0,
+        "multi_any_count": 0,
+        "multi_denominator": 0
+      },
+      "categories": {
+        "TABLE_ROW": {
+          "count": 87,
+          "denominator": 93
+        },
+        "TEXT": {
+          "count": 0,
+          "denominator": 0
+        },
+        "calculation": {
+          "count": 15,
+          "denominator": 15
+        },
+        "multi": {
+          "count": 20,
+          "denominator": 20
+        },
+        "qualitative": {
+          "count": 0,
+          "denominator": 0
+        },
+        "quantitative": {
+          "count": 88,
+          "denominator": 105
+        },
+        "single": {
+          "count": 53,
+          "denominator": 70
+        }
+      },
+      "multi_20": {
+        "all_count": 20,
+        "all_denominator": 20,
+        "answerable_count": 20,
+        "answerable_denominator": 20,
+        "answerable_recall": 1.0,
+        "calculation_denominator": 0,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 9,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      }
+    }
+  },
+  "elapsed_seconds": 182.17332205898128,
+  "provider": "A4 authoritative coarse replay"
+}

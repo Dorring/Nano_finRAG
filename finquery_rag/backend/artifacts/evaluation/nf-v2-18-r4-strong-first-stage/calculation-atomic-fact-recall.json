@@ -1,0 +1,512 @@
+{
+  "ablations": {
+    "C0": {
+      "R@1": {
+        "all_count": 33,
+        "all_denominator": 120,
+        "answerable_count": 33,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.3142857142857143,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 0,
+        "multi_any_count": 13,
+        "multi_denominator": 20
+      },
+      "R@10": {
+        "all_count": 68,
+        "all_denominator": 120,
+        "answerable_count": 68,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.6476190476190476,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 5,
+        "multi_all_count": 6,
+        "multi_any_count": 17,
+        "multi_denominator": 20
+      },
+      "R@20": {
+        "all_count": 77,
+        "all_denominator": 120,
+        "answerable_count": 77,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.7333333333333333,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 6,
+        "multi_all_count": 8,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      },
+      "R@3": {
+        "all_count": 55,
+        "all_denominator": 120,
+        "answerable_count": 55,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.5238095238095238,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 2,
+        "multi_all_count": 2,
+        "multi_any_count": 16,
+        "multi_denominator": 20
+      },
+      "R@5": {
+        "all_count": 62,
+        "all_denominator": 120,
+        "answerable_count": 62,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.5904761904761905,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 3,
+        "multi_all_count": 3,
+        "multi_any_count": 17,
+        "multi_denominator": 20
+      }
+    },
+    "C1": {
+      "R@1": {
+        "all_count": 28,
+        "all_denominator": 120,
+        "answerable_count": 28,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.26666666666666666,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 0,
+        "multi_any_count": 13,
+        "multi_denominator": 20
+      },
+      "R@10": {
+        "all_count": 55,
+        "all_denominator": 120,
+        "answerable_count": 55,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.5238095238095238,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 6,
+        "multi_any_count": 17,
+        "multi_denominator": 20
+      },
+      "R@20": {
+        "all_count": 63,
+        "all_denominator": 120,
+        "answerable_count": 63,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.6,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 8,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      },
+      "R@3": {
+        "all_count": 45,
+        "all_denominator": 120,
+        "answerable_count": 45,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.42857142857142855,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 2,
+        "multi_any_count": 16,
+        "multi_denominator": 20
+      },
+      "R@5": {
+        "all_count": 50,
+        "all_denominator": 120,
+        "answerable_count": 50,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.47619047619047616,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 3,
+        "multi_any_count": 17,
+        "multi_denominator": 20
+      }
+    },
+    "C2": {
+      "R@1": {
+        "all_count": 28,
+        "all_denominator": 120,
+        "answerable_count": 28,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.26666666666666666,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 0,
+        "multi_any_count": 13,
+        "multi_denominator": 20
+      },
+      "R@10": {
+        "all_count": 55,
+        "all_denominator": 120,
+        "answerable_count": 55,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.5238095238095238,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 6,
+        "multi_any_count": 17,
+        "multi_denominator": 20
+      },
+      "R@20": {
+        "all_count": 63,
+        "all_denominator": 120,
+        "answerable_count": 63,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.6,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 8,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      },
+      "R@3": {
+        "all_count": 45,
+        "all_denominator": 120,
+        "answerable_count": 45,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.42857142857142855,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 2,
+        "multi_any_count": 16,
+        "multi_denominator": 20
+      },
+      "R@5": {
+        "all_count": 50,
+        "all_denominator": 120,
+        "answerable_count": 50,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.47619047619047616,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 3,
+        "multi_any_count": 17,
+        "multi_denominator": 20
+      }
+    },
+    "C3": {
+      "R@1": {
+        "all_count": 33,
+        "all_denominator": 120,
+        "answerable_count": 33,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.3142857142857143,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 0,
+        "multi_any_count": 13,
+        "multi_denominator": 20
+      },
+      "R@10": {
+        "all_count": 68,
+        "all_denominator": 120,
+        "answerable_count": 68,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.6476190476190476,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 5,
+        "multi_all_count": 6,
+        "multi_any_count": 17,
+        "multi_denominator": 20
+      },
+      "R@20": {
+        "all_count": 77,
+        "all_denominator": 120,
+        "answerable_count": 77,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.7333333333333333,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 6,
+        "multi_all_count": 8,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      },
+      "R@3": {
+        "all_count": 55,
+        "all_denominator": 120,
+        "answerable_count": 55,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.5238095238095238,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 2,
+        "multi_all_count": 2,
+        "multi_any_count": 16,
+        "multi_denominator": 20
+      },
+      "R@5": {
+        "all_count": 62,
+        "all_denominator": 120,
+        "answerable_count": 62,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.5904761904761905,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 3,
+        "multi_all_count": 3,
+        "multi_any_count": 17,
+        "multi_denominator": 20
+      }
+    },
+    "C4": {
+      "R@1": {
+        "all_count": 33,
+        "all_denominator": 120,
+        "answerable_count": 33,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.3142857142857143,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 0,
+        "multi_any_count": 13,
+        "multi_denominator": 20
+      },
+      "R@10": {
+        "all_count": 68,
+        "all_denominator": 120,
+        "answerable_count": 68,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.6476190476190476,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 5,
+        "multi_all_count": 6,
+        "multi_any_count": 17,
+        "multi_denominator": 20
+      },
+      "R@20": {
+        "all_count": 77,
+        "all_denominator": 120,
+        "answerable_count": 77,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.7333333333333333,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 6,
+        "multi_all_count": 8,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      },
+      "R@3": {
+        "all_count": 55,
+        "all_denominator": 120,
+        "answerable_count": 55,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.5238095238095238,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 2,
+        "multi_all_count": 2,
+        "multi_any_count": 16,
+        "multi_denominator": 20
+      },
+      "R@5": {
+        "all_count": 62,
+        "all_denominator": 120,
+        "answerable_count": 62,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.5904761904761905,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 3,
+        "multi_all_count": 3,
+        "multi_any_count": 17,
+        "multi_denominator": 20
+      }
+    },
+    "C5": {
+      "R@1": {
+        "all_count": 33,
+        "all_denominator": 120,
+        "answerable_count": 33,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.3142857142857143,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 0,
+        "multi_all_count": 0,
+        "multi_any_count": 13,
+        "multi_denominator": 20
+      },
+      "R@10": {
+        "all_count": 68,
+        "all_denominator": 120,
+        "answerable_count": 68,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.6476190476190476,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 5,
+        "multi_all_count": 6,
+        "multi_any_count": 17,
+        "multi_denominator": 20
+      },
+      "R@20": {
+        "all_count": 77,
+        "all_denominator": 120,
+        "answerable_count": 77,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.7333333333333333,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 6,
+        "multi_all_count": 8,
+        "multi_any_count": 20,
+        "multi_denominator": 20
+      },
+      "R@3": {
+        "all_count": 55,
+        "all_denominator": 120,
+        "answerable_count": 55,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.5238095238095238,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 2,
+        "multi_all_count": 2,
+        "multi_any_count": 16,
+        "multi_denominator": 20
+      },
+      "R@5": {
+        "all_count": 62,
+        "all_denominator": 120,
+        "answerable_count": 62,
+        "answerable_denominator": 105,
+        "answerable_recall": 0.5904761904761905,
+        "calculation_denominator": 15,
+        "calculation_operand_complete": 3,
+        "multi_all_count": 3,
+        "multi_any_count": 17,
+        "multi_denominator": 20
+      }
+    }
+  },
+  "r3_reference": {
+    "denominator": 15,
+    "operand_complete_at_10": 5,
+    "operand_complete_at_20": 6,
+    "operand_complete_at_5": 5
+  },
+  "slot_provider_metrics": {
+    "A4": {
+      "10": {
+        "by_kind_total": {
+          "operand": 30
+        },
+        "coverage": 0.7666666666666667,
+        "depth": 10,
+        "provider": "A4",
+        "slots_filled": 23,
+        "slots_total": 30
+      },
+      "20": {
+        "by_kind_total": {
+          "operand": 30
+        },
+        "coverage": 0.7,
+        "depth": 20,
+        "provider": "A4",
+        "slots_filled": 21,
+        "slots_total": 30
+      },
+      "5": {
+        "by_kind_total": {
+          "operand": 30
+        },
+        "coverage": 0.5666666666666667,
+        "depth": 5,
+        "provider": "A4",
+        "slots_filled": 17,
+        "slots_total": 30
+      }
+    },
+    "AtomicFact_lexical": {
+      "10": {
+        "by_kind_total": {
+          "operand": 30
+        },
+        "coverage": 0.0,
+        "depth": 10,
+        "provider": "AtomicFact_lexical",
+        "slots_filled": 0,
+        "slots_total": 30
+      },
+      "20": {
+        "by_kind_total": {
+          "operand": 30
+        },
+        "coverage": 0.0,
+        "depth": 20,
+        "provider": "AtomicFact_lexical",
+        "slots_filled": 0,
+        "slots_total": 30
+      },
+      "5": {
+        "by_kind_total": {
+          "operand": 30
+        },
+        "coverage": 0.0,
+        "depth": 5,
+        "provider": "AtomicFact_lexical",
+        "slots_filled": 0,
+        "slots_total": 30
+      }
+    },
+    "Qwen_dense": {
+      "10": {
+        "by_kind_total": {
+          "operand": 30
+        },
+        "coverage": 0.0,
+        "depth": 10,
+        "provider": "Qwen_dense",
+        "slots_filled": 0,
+        "slots_total": 30
+      },
+      "20": {
+        "by_kind_total": {
+          "operand": 30
+        },
+        "coverage": 0.0,
+        "depth": 20,
+        "provider": "Qwen_dense",
+        "slots_filled": 0,
+        "slots_total": 30
+      },
+      "5": {
+        "by_kind_total": {
+          "operand": 30
+        },
+        "coverage": 0.0,
+        "depth": 5,
+        "provider": "Qwen_dense",
+        "slots_filled": 0,
+        "slots_total": 30
+      }
+    },
+    "union": {
+      "10": {
+        "by_kind_total": {
+          "operand": 30
+        },
+        "coverage": 0.0,
+        "depth": 10,
+        "provider": "union",
+        "slots_filled": 0,
+        "slots_total": 30
+      },
+      "20": {
+        "by_kind_total": {
+          "operand": 30
+        },
+        "coverage": 0.0,
+        "depth": 20,
+        "provider": "union",
+        "slots_filled": 0,
+        "slots_total": 30
+      },
+      "5": {
+        "by_kind_total": {
+          "operand": 30
+        },
+        "coverage": 0.0,
+        "depth": 5,
+        "provider": "union",
+        "slots_filled": 0,
+        "slots_total": 30
+      }
+    }
+  }
+}

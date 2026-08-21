@@ -1,0 +1,11 @@
+{
+  "batch_size": 32,
+  "embedding_model": "Qwen/Qwen3-Embedding-4B",
+  "embedding_revision": "5cf2132abc99cad020ac570b19d031efec650f2b",
+  "endpoint_used_for_acquisition": "https://hf-mirror.com",
+  "max_length": 512,
+  "miniLM_primary": false,
+  "official_contract": "query instruction + left padding + last-token pooling + L2 normalize",
+  "qwen_python": "/mnt/disk/mxf/anaconda3/envs/QhChat/bin/python",
+  "retrieval_python": "/mnt/disk/mxf/anaconda3/bin/python"
+}

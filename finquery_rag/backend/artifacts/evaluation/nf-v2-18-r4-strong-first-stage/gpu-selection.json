@@ -1,0 +1,13 @@
+{
+  "active_processes_before": [],
+  "cuda_visible_devices": "0",
+  "free_vram_mib_before": 48536,
+  "gpu_name": "NVIDIA RTX A6000",
+  "gpu_uuid": "GPU-f111d4ae-cbc0-7c2d-70fe-82d9c3681257",
+  "selected_physical_gpu": 0,
+  "selection_reason": "process_free_and_free_vram_at_least_24_gib",
+  "selection_tier": 1,
+  "selection_timestamp_utc": "2026-08-21T06:24:58+00:00",
+  "utilization_pct_before": 0,
+  "visible_logical_gpu": "cuda:0"
+}

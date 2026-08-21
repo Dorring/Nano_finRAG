@@ -1,0 +1,30 @@
+{
+  "depths": {
+    "100": {
+      "A4": 92,
+      "Qwen_dense": 33,
+      "denominator": 105,
+      "union": 93
+    },
+    "20": {
+      "A4": 77,
+      "Qwen_dense": 18,
+      "denominator": 105,
+      "union": 77
+    },
+    "200": {
+      "A4": 95,
+      "Qwen_dense": 48,
+      "denominator": 105,
+      "union": 95
+    },
+    "50": {
+      "A4": 88,
+      "Qwen_dense": 23,
+      "denominator": 105,
+      "union": 89
+    }
+  },
+  "metric": "exact canonical evidence inclusion before final ranking",
+  "scope": "A4 hard metadata scope"
+}

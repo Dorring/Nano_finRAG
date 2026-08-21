@@ -1,0 +1,18 @@
+{
+  "count": 1924,
+  "fields": [
+    "canonical_evidence_id",
+    "atomic_fact_id",
+    "metric_path",
+    "header_path",
+    "period_semantics",
+    "period_start",
+    "period_end",
+    "value",
+    "unit",
+    "currency",
+    "scale",
+    "provenance"
+  ],
+  "version": "nf-v2-18-r4/atomic-fact-qwen-v1"
+}

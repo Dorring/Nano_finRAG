@@ -1,0 +1,67 @@
+{
+  "comparison_to_g0": null,
+  "metrics": {
+    "R@1": {
+      "all_count": 33,
+      "all_denominator": 120,
+      "answerable_count": 33,
+      "answerable_denominator": 105,
+      "answerable_recall": 0.3142857142857143,
+      "calculation_denominator": 15,
+      "calculation_operand_complete": 0,
+      "multi_all_count": 0,
+      "multi_any_count": 13,
+      "multi_denominator": 20
+    },
+    "R@10": {
+      "all_count": 68,
+      "all_denominator": 120,
+      "answerable_count": 68,
+      "answerable_denominator": 105,
+      "answerable_recall": 0.6476190476190476,
+      "calculation_denominator": 15,
+      "calculation_operand_complete": 5,
+      "multi_all_count": 6,
+      "multi_any_count": 17,
+      "multi_denominator": 20
+    },
+    "R@20": {
+      "all_count": 77,
+      "all_denominator": 120,
+      "answerable_count": 77,
+      "answerable_denominator": 105,
+      "answerable_recall": 0.7333333333333333,
+      "calculation_denominator": 15,
+      "calculation_operand_complete": 6,
+      "multi_all_count": 8,
+      "multi_any_count": 20,
+      "multi_denominator": 20
+    },
+    "R@3": {
+      "all_count": 55,
+      "all_denominator": 120,
+      "answerable_count": 55,
+      "answerable_denominator": 105,
+      "answerable_recall": 0.5238095238095238,
+      "calculation_denominator": 15,
+      "calculation_operand_complete": 2,
+      "multi_all_count": 2,
+      "multi_any_count": 16,
+      "multi_denominator": 20
+    },
+    "R@5": {
+      "all_count": 62,
+      "all_denominator": 120,
+      "answerable_count": 62,
+      "answerable_denominator": 105,
+      "answerable_recall": 0.5904761904761905,
+      "calculation_denominator": 15,
+      "calculation_operand_complete": 3,
+      "multi_all_count": 3,
+      "multi_any_count": 17,
+      "multi_denominator": 20
+    }
+  },
+  "name": "G0",
+  "reranker": false
+}

@@ -1,0 +1,134 @@
+{
+  "captured_at_utc": "2026-08-21T06:24:58+00:00",
+  "gpus": [
+    {
+      "active_compute_process_count": 0,
+      "active_processes": [],
+      "free_vram_mib": 48536,
+      "memory_utilization_pct": 0,
+      "name": "NVIDIA RTX A6000",
+      "physical_index": 0,
+      "temperature_c": 38,
+      "total_vram_mib": 49140,
+      "used_vram_mib": 15,
+      "utilization_pct": 0,
+      "uuid": "GPU-f111d4ae-cbc0-7c2d-70fe-82d9c3681257"
+    },
+    {
+      "active_compute_process_count": 1,
+      "active_processes": [
+        {
+          "pid": 2800728,
+          "process_name": "python",
+          "used_vram_mib": 28464
+        }
+      ],
+      "free_vram_mib": 20064,
+      "memory_utilization_pct": 100,
+      "name": "NVIDIA RTX A6000",
+      "physical_index": 1,
+      "temperature_c": 70,
+      "total_vram_mib": 49140,
+      "used_vram_mib": 28487,
+      "utilization_pct": 100,
+      "uuid": "GPU-4408fb0e-3aa9-dee1-6a67-6b15025e8b19"
+    },
+    {
+      "active_compute_process_count": 1,
+      "active_processes": [
+        {
+          "pid": 1489146,
+          "process_name": "python",
+          "used_vram_mib": 6934
+        }
+      ],
+      "free_vram_mib": 41576,
+      "memory_utilization_pct": 81,
+      "name": "NVIDIA RTX A6000",
+      "physical_index": 2,
+      "temperature_c": 73,
+      "total_vram_mib": 49140,
+      "used_vram_mib": 6975,
+      "utilization_pct": 94,
+      "uuid": "GPU-f4f4d760-60fd-89b5-7cb8-7bc6c13bfc2f"
+    },
+    {
+      "active_compute_process_count": 0,
+      "active_processes": [],
+      "free_vram_mib": 48536,
+      "memory_utilization_pct": 0,
+      "name": "NVIDIA RTX A6000",
+      "physical_index": 3,
+      "temperature_c": 38,
+      "total_vram_mib": 49140,
+      "used_vram_mib": 15,
+      "utilization_pct": 0,
+      "uuid": "GPU-bea0ffce-0725-385d-8d4e-d2ff4f00e6e8"
+    },
+    {
+      "active_compute_process_count": 1,
+      "active_processes": [
+        {
+          "pid": 1250055,
+          "process_name": "python",
+          "used_vram_mib": 38290
+        }
+      ],
+      "free_vram_mib": 10236,
+      "memory_utilization_pct": 73,
+      "name": "NVIDIA RTX A6000",
+      "physical_index": 4,
+      "temperature_c": 75,
+      "total_vram_mib": 49140,
+      "used_vram_mib": 38315,
+      "utilization_pct": 86,
+      "uuid": "GPU-e83625cc-7675-4bc1-6be9-9cf420b12f9c"
+    },
+    {
+      "active_compute_process_count": 0,
+      "active_processes": [],
+      "free_vram_mib": 48536,
+      "memory_utilization_pct": 0,
+      "name": "NVIDIA RTX A6000",
+      "physical_index": 5,
+      "temperature_c": 37,
+      "total_vram_mib": 49140,
+      "used_vram_mib": 15,
+      "utilization_pct": 0,
+      "uuid": "GPU-47ed0c5b-deee-3c6b-2f9c-7a8e7ee94f93"
+    },
+    {
+      "active_compute_process_count": 0,
+      "active_processes": [],
+      "free_vram_mib": 48536,
+      "memory_utilization_pct": 0,
+      "name": "NVIDIA RTX A6000",
+      "physical_index": 6,
+      "temperature_c": 38,
+      "total_vram_mib": 49140,
+      "used_vram_mib": 15,
+      "utilization_pct": 0,
+      "uuid": "GPU-3f532b01-a406-a4ea-01d1-46313e268536"
+    },
+    {
+      "active_compute_process_count": 1,
+      "active_processes": [
+        {
+          "pid": 4059273,
+          "process_name": "python",
+          "used_vram_mib": 26376
+        }
+      ],
+      "free_vram_mib": 22152,
+      "memory_utilization_pct": 91,
+      "name": "NVIDIA RTX A6000",
+      "physical_index": 7,
+      "temperature_c": 68,
+      "total_vram_mib": 49140,
+      "used_vram_mib": 26399,
+      "utilization_pct": 100,
+      "uuid": "GPU-decdd35f-deda-c0ac-81d5-66f5ad3d4942"
+    }
+  ],
+  "query_tool": "nvidia-smi"
+}

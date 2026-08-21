@@ -1,0 +1,72 @@
+{
+  "comparison_to_g0": {
+    "damaged": 51,
+    "net_gain": -49,
+    "rescued": 2,
+    "unchanged": 67
+  },
+  "metrics": {
+    "R@1": {
+      "all_count": 7,
+      "all_denominator": 120,
+      "answerable_count": 7,
+      "answerable_denominator": 105,
+      "answerable_recall": 0.06666666666666667,
+      "calculation_denominator": 15,
+      "calculation_operand_complete": 0,
+      "multi_all_count": 0,
+      "multi_any_count": 3,
+      "multi_denominator": 20
+    },
+    "R@10": {
+      "all_count": 18,
+      "all_denominator": 120,
+      "answerable_count": 18,
+      "answerable_denominator": 105,
+      "answerable_recall": 0.17142857142857143,
+      "calculation_denominator": 15,
+      "calculation_operand_complete": 0,
+      "multi_all_count": 0,
+      "multi_any_count": 7,
+      "multi_denominator": 20
+    },
+    "R@20": {
+      "all_count": 21,
+      "all_denominator": 120,
+      "answerable_count": 21,
+      "answerable_denominator": 105,
+      "answerable_recall": 0.2,
+      "calculation_denominator": 15,
+      "calculation_operand_complete": 0,
+      "multi_all_count": 0,
+      "multi_any_count": 7,
+      "multi_denominator": 20
+    },
+    "R@3": {
+      "all_count": 9,
+      "all_denominator": 120,
+      "answerable_count": 9,
+      "answerable_denominator": 105,
+      "answerable_recall": 0.08571428571428572,
+      "calculation_denominator": 15,
+      "calculation_operand_complete": 0,
+      "multi_all_count": 0,
+      "multi_any_count": 4,
+      "multi_denominator": 20
+    },
+    "R@5": {
+      "all_count": 13,
+      "all_denominator": 120,
+      "answerable_count": 13,
+      "answerable_denominator": 105,
+      "answerable_recall": 0.12380952380952381,
+      "calculation_denominator": 15,
+      "calculation_operand_complete": 0,
+      "multi_all_count": 0,
+      "multi_any_count": 5,
+      "multi_denominator": 20
+    }
+  },
+  "name": "G1",
+  "reranker": false
+}
