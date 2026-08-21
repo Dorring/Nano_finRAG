@@ -1,0 +1,8 @@
+{
+  "fallback_strategy": "LOCAL_FIRST_WITH_ISOLATED_FALLBACK",
+  "local_specialist_attempted": 95,
+  "local_specialist_fail_closed": 6,
+  "local_specialist_validated": 89,
+  "remote_general_llm_invoked": 0,
+  "zero_remote_leakage": true
+}

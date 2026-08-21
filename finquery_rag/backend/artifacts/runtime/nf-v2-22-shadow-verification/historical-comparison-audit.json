@@ -1,0 +1,41 @@
+{
+  "comparison_validity": "MATCHED_DENOMINATOR_STRICT_COMPARISON",
+  "matched_120_e2e_benchmark": {
+    "e2e_gain_pp": 81.9,
+    "new_21_runtime": {
+      "answerable": 105,
+      "answerable_coverage_pct": 84.76,
+      "released_correct": 89,
+      "released_total": 89,
+      "total": 120
+    },
+    "old_18b_runtime": {
+      "answerable": 105,
+      "answerable_coverage_pct": 2.86,
+      "released_correct": 3,
+      "released_total": 8,
+      "total": 120
+    }
+  },
+  "matched_68_packet_evaluation": {
+    "matched_delta_pp": 64.71,
+    "new_step_156_specialist": {
+      "checkpoint": "model_000156.pt (d24_grounded_specialist_v3_lr5e6)",
+      "denominator": 68,
+      "released": 52,
+      "strict_correct": 52,
+      "strict_correct_pct": 76.47
+    },
+    "old_financial_sft_model": {
+      "checkpoint": "finquery-finance-v2-lr010-150",
+      "denominator": 68,
+      "released": 8,
+      "strict_correct": 8,
+      "strict_correct_pct": 11.76
+    },
+    "regressed_samples": 0,
+    "rescued_samples": 44,
+    "unchanged_correct": 8,
+    "unchanged_failed": 16
+  }
+}

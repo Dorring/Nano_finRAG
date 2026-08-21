@@ -1,0 +1,18 @@
+{
+  "answerable_e2e_success_rate_pct": 84.76,
+  "answerable_released_correct": 89,
+  "answerable_samples": 105,
+  "checkpoint": "model_000156.pt",
+  "checkpoint_sha256": "3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a",
+  "correct_over_released_pct": 100.0,
+  "expected_fail_closed": 15,
+  "false_binding_rate": "0.0%",
+  "false_execution_rate": "0.0%",
+  "overall_system_accuracy_pct": 86.67,
+  "overall_system_correct": 104,
+  "total_universe": 120,
+  "unanswerable_correct_refusal": 15,
+  "unanswerable_samples": 15,
+  "unexpected_fail_closed": 16,
+  "unsafe_releases": 0
+}

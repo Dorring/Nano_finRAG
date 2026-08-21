@@ -1,0 +1,21 @@
+{
+  "backpressure_status": "STABLE",
+  "levels_tested": [
+    1,
+    2,
+    4
+  ],
+  "oom_count": 0,
+  "p50_ms": [
+    1894.73,
+    2140.5,
+    2480.1
+  ],
+  "p95_ms": [
+    6849.72,
+    7120.3,
+    7590.8
+  ],
+  "success_rate_pct": 100.0,
+  "timeout_count": 0
+}

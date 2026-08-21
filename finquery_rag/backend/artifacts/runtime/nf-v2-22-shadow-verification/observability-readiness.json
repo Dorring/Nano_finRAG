@@ -1,0 +1,18 @@
+{
+  "confidentiality_audit": "PASS_NO_DOCUMENT_BODY_LEAKAGE",
+  "fields_logged": [
+    "route",
+    "retrieval_outcome",
+    "binder_outcome",
+    "generator_selected",
+    "checkpoint_sha_prefix",
+    "generation_outcome",
+    "validator_result",
+    "fail_closed_reason",
+    "repair_attempted",
+    "fallback_invoked",
+    "final_release"
+  ],
+  "status": "PASS",
+  "telemetry_schema_version": "v1.0"
+}

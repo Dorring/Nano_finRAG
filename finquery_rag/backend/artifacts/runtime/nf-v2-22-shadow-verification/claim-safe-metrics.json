@@ -1,0 +1,6 @@
+{
+  "disclaimer": "99.8% 结果限定于已检索证据约束生成评测，不代表端到端 RAG 整体召回与问答准确率。",
+  "sealed_e2e_claim": "在 120 题严格端到端回归中，可答问题端到端正确率 84.76%（89/105），无答案问题安全拒答率 100.0%（15/15），释放答案准确率 100.0%（89/89），False Binding / Execution = 0。",
+  "sealed_generator_claim": "在 Binder-ready / Local-Specialist eligible 请求上，Strict Correct 达到 93.68%（89/95），在 68-packet 严格对齐基准上较原模型提升 +64.71pp（52/68 vs 8/68）。",
+  "sealed_holdout_claim": "499/500 (99.8%) company-held-out Verified-Evidence Generation (ORCL holdout, CONSUMED_FINAL_HOLDOUT)。"
+}

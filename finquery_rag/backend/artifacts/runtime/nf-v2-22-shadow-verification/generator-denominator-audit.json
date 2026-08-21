@@ -1,0 +1,24 @@
+{
+  "benchmark_120_consumed_e2e": {
+    "generator_conditional_strict_correct_pct": 93.68,
+    "generator_eligible_binder_ready": 95,
+    "generator_fail_closed": 6,
+    "generator_invoked": 95,
+    "generator_released": 89,
+    "generator_strict_correct": 89,
+    "total_samples": 120,
+    "unanswerable_pre_gen_fail_closed": 15,
+    "unretrieved_pre_gen_fail_closed": 10
+  },
+  "benchmark_94_consumed_regression": {
+    "fail_closed": 16,
+    "generator_called": 68,
+    "note": "68 is the complete set of valid Binder-ready evaluation packets sealed in nf-v2-06. The remaining 26 to reach 94 were legacy draft partitions excluded in decision.json.",
+    "released": 52,
+    "strict_correct": 52,
+    "strict_correct_pct": 76.47,
+    "tier_a_runtime_packets": 4,
+    "tier_b_oracle_packets": 64,
+    "total_packets_available": 68
+  }
+}
