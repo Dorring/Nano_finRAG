@@ -1,0 +1,27 @@
+{
+  "at_10": {
+    "A4_ONLY": 16,
+    "BOTH": 52,
+    "NEITHER": 48,
+    "S5_ONLY": 4
+  },
+  "at_5": {
+    "A4_ONLY": 16,
+    "BOTH": 46,
+    "NEITHER": 53,
+    "S5_ONLY": 5
+  },
+  "oracle_union": {
+    "R@10": {
+      "calc_operand_complete": 9,
+      "exact_count": 72,
+      "multi_all_count": 9
+    },
+    "R@5": {
+      "calc_operand_complete": 4,
+      "exact_count": 67,
+      "multi_all_count": 9
+    }
+  },
+  "source": "S5 semantic replay for complementarity only"
+}

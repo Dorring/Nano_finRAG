@@ -1,0 +1,47 @@
+{
+  "actual": {
+    "answerable_exact_R@10": 71,
+    "answerable_exact_R@5": 63,
+    "calculation_operand@10": 5,
+    "multi_all@10": 12,
+    "multi_any@5": 19
+  },
+  "b3_modified": false,
+  "base_sha": "29103493ff6dfd07c470444424a11dd0d639dd32",
+  "decision": "RETRIEVAL_PARTIALLY_RECOVERED",
+  "development_set": "CONSUMED_DEVELOPMENT_REGRESSION",
+  "generator_calls": 0,
+  "next_gate": "NF-V2-18B_FULL_RUNTIME_RECOVERY",
+  "production": "V1",
+  "production_switch": false,
+  "qwen_python": "/mnt/disk/mxf/anaconda3/envs/QhChat/bin/python",
+  "recommendation": "CONTINUE_TARGETED_RETRIEVAL",
+  "retrieval_python": "/mnt/disk/mxf/anaconda3/bin/python",
+  "route": {
+    "calculation": "U6",
+    "multi": "U4",
+    "qualitative": "U3",
+    "single": "U3"
+  },
+  "safety": {
+    "a4_candidates_lost_due_enrichment": 0,
+    "authorization_leakage": 0,
+    "created_at_misuse": 0,
+    "document_type_violation": 0,
+    "entity_violation": 0,
+    "false_binding": 0,
+    "fiscal_violation": 0,
+    "silent_relaxation": 0,
+    "version_violation": 0,
+    "wrong_period_binding": 0
+  },
+  "selected_config_sha": "8dad61420a0e10f342817555754d466b687c615af6c9b2765c1dcc741fbeaf0c",
+  "selected_stage": "U5",
+  "targets": {
+    "answerable_exact_R@10": 90,
+    "answerable_exact_R@5": 79,
+    "calculation_operand@10": 11,
+    "multi_all@10": 14,
+    "multi_any@5": 18
+  }
+}

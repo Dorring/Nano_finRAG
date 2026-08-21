@@ -1,0 +1,33 @@
+{
+  "U0_to_U1": {
+    "damaged": 33,
+    "net_gain": -32,
+    "rescued": 1,
+    "unchanged": 86
+  },
+  "U1_to_U3": {
+    "damaged": 2,
+    "net_gain": 33,
+    "rescued": 35,
+    "unchanged": 83
+  },
+  "U3_to_U4": {
+    "damaged": 0,
+    "net_gain": 0,
+    "rescued": 0,
+    "unchanged": 120
+  },
+  "U4_to_U5": {
+    "damaged": 0,
+    "net_gain": 0,
+    "rescued": 0,
+    "unchanged": 120
+  },
+  "U5_to_U6": {
+    "damaged": 0,
+    "net_gain": 0,
+    "rescued": 0,
+    "unchanged": 120
+  },
+  "a4_candidates_lost_due_enrichment": 0
+}

@@ -1,0 +1,49 @@
+{
+  "available": true,
+  "blocker": null,
+  "gpu": {
+    "active_processes_before": [],
+    "cuda_visible_devices": "3",
+    "free_vram_mib_before": 48536,
+    "gpu_name": "NVIDIA RTX A6000",
+    "gpu_uuid": "GPU-bea0ffce-0725-385d-8d4e-d2ff4f00e6e8",
+    "selected_physical_gpu": 3,
+    "selection_reason": "process_free_and_free_vram_at_least_24_gib",
+    "selection_tier": 1,
+    "selection_timestamp_utc": "2026-08-21T02:19:50+00:00",
+    "utilization_pct_before": 0,
+    "visible_logical_gpu": "cuda:0"
+  },
+  "route_pair_counts": {
+    "calculation": 670,
+    "multi": 732,
+    "single": 1766,
+    "total": 3168
+  },
+  "stages": [
+    {
+      "contract": {
+        "cuda_version": "12.8",
+        "device": "cuda:0",
+        "device_name": "NVIDIA RTX A6000",
+        "dtype": "bfloat16",
+        "generation": false,
+        "load_seconds": 3.5712674790993333,
+        "max_length": 8192,
+        "model_id": "Qwen/Qwen3-Reranker-4B",
+        "model_revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+        "no_token_id": 2152,
+        "pad_token_id": 151645,
+        "padding_side": "left",
+        "torch_version": "2.9.1+cu128",
+        "transformers_version": "4.57.1",
+        "yes_token_id": 9693
+      },
+      "elapsed_seconds": 629.396966889035,
+      "pairs": 3168,
+      "pairs_per_second": 5.0333893657903985,
+      "peak_reserved_mib": 44858.0
+    }
+  ],
+  "unique_pairs": 3168
+}
