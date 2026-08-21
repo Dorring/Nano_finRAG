@@ -1,0 +1,37 @@
+{
+  "recovered_count": 6,
+  "remaining_count": 0,
+  "sample_outcomes": [
+    {
+      "retrieval_source": "SLOT_AWARE_PER_SLOT_RANKING",
+      "sample_id": "FBV1-081",
+      "status": "RECOVERED"
+    },
+    {
+      "retrieval_source": "SLOT_AWARE_PER_SLOT_RANKING",
+      "sample_id": "FBV1-082",
+      "status": "RECOVERED"
+    },
+    {
+      "retrieval_source": "SLOT_AWARE_PER_SLOT_RANKING",
+      "sample_id": "FBV1-083",
+      "status": "RECOVERED"
+    },
+    {
+      "retrieval_source": "SLOT_AWARE_PER_SLOT_RANKING",
+      "sample_id": "FBV1-084",
+      "status": "RECOVERED"
+    },
+    {
+      "retrieval_source": "SLOT_AWARE_PER_SLOT_RANKING",
+      "sample_id": "FBV1-093",
+      "status": "RECOVERED"
+    },
+    {
+      "retrieval_source": "SLOT_AWARE_PER_SLOT_RANKING",
+      "sample_id": "FBV1-095",
+      "status": "RECOVERED"
+    }
+  ],
+  "target_count": 6
+}

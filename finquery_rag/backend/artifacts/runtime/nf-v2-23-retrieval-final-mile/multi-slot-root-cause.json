@@ -1,0 +1,16 @@
+{
+  "affected_sample_count": 6,
+  "detailed_diagnosis": "Multi-evidence queries require 2 distinct disclosure items from separate financial statements/notes. In single global BM25 ranking, candidates from the primary table monopolized all top-10 positions, crowding out the second required disclosure (e.g. allowance for credit losses note at rank 146).",
+  "failure_class": "MULTI_EVIDENCE_INCOMPLETE",
+  "oracle_presence": "CONFIRMED_IN_CORPUS (Both required evidence chunks exist in corpus Top-200 candidates).",
+  "primary_root_cause": "GLOBAL_TOP_K_SLOT_CROWDING",
+  "recovery_strategy": "SLOT_AWARE_RETRIEVAL (decompose multi query into slot phrases, retrieve top-5 per slot, merge and deduplicate).",
+  "sample_ids": [
+    "FBV1-081",
+    "FBV1-082",
+    "FBV1-083",
+    "FBV1-084",
+    "FBV1-093",
+    "FBV1-095"
+  ]
+}

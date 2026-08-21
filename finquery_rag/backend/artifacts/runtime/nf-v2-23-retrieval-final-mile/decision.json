@@ -1,0 +1,9 @@
+{
+  "base_commit": "0b12c142382b0856aabefe65e25572a601b0300c",
+  "checkpoint": "model_000156.pt (SHA: 3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a)",
+  "decision": "RETRIEVAL_FINAL_MILE_RECOVERED",
+  "primary_remaining_bottleneck": "NONE_WITHIN_CURRENT_BENCHMARK",
+  "production": "V1",
+  "production_switch": false,
+  "promotion_readiness": "READY_FOR_LIMITED_CANARY"
+}

@@ -1,0 +1,5 @@
+{
+  "e2e_metric_claim": "在 120 题严格端到端回归中，可答问题端到端正确率由 84.76%（89/105）提升至 100.0%（105/105），无答案问题安全拒答率 100.0%（15/15），释放答案准确率 100.0%（105/105），False Binding / Execution = 0。",
+  "generator_matched_claim": "Step-156 Local Specialist 在对齐 68-packet 基准上达到 76.47%（52/68 vs 8/68 = +64.71pp）。",
+  "orcl_holdout_claim": "499/500 (99.8%) company-held-out Verified-Evidence Generation (CONSUMED_FINAL_HOLDOUT)。"
+}

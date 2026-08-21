@@ -1,0 +1,20 @@
+{
+  "affected_sample_count": 10,
+  "detailed_diagnosis": "Queries ask for document filing headers, SEC forms, amendment markers, and sidecar version identifiers (e.g. 0001104659-25-042659). The legacy table retriever only indexed table body rows. The document-level sidecar object was not included in table-row BM25 queries.",
+  "failure_class": "FIRST_STAGE_RETRIEVAL_MISS",
+  "oracle_presence": "CONFIRMED_IN_CORPUS (document.json normalized sidecars exist in financial_corpus_v2/normalized/SEC/)",
+  "primary_root_cause": "STRUCTURED_FIELD_NOT_SEARCHED",
+  "recovery_strategy": "STRUCTURED_DOCUMENT_METADATA_SEARCH (index & retrieve document sidecar header properties deterministically).",
+  "sample_ids": [
+    "FBV1-096",
+    "FBV1-097",
+    "FBV1-098",
+    "FBV1-099",
+    "FBV1-100",
+    "FBV1-101",
+    "FBV1-102",
+    "FBV1-103",
+    "FBV1-104",
+    "FBV1-105"
+  ]
+}

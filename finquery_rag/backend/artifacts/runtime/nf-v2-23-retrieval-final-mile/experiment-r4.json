@@ -1,0 +1,31 @@
+{
+  "answerable_correct": 105,
+  "answerable_evaluated": 105,
+  "answerable_success_rate_pct": 100.0,
+  "damaged_count": 0,
+  "description": "R1 + R2 + R3 Combined Generic Final-Mile Retrieval Policy",
+  "experiment_id": "R4",
+  "first_stage_misses": 0,
+  "multi_incomplete_misses": 0,
+  "rescued_count": 16,
+  "rescued_sample_ids": [
+    "FBV1-081",
+    "FBV1-082",
+    "FBV1-083",
+    "FBV1-084",
+    "FBV1-093",
+    "FBV1-095",
+    "FBV1-096",
+    "FBV1-097",
+    "FBV1-098",
+    "FBV1-099",
+    "FBV1-100",
+    "FBV1-101",
+    "FBV1-102",
+    "FBV1-103",
+    "FBV1-104",
+    "FBV1-105"
+  ],
+  "selection_status": "SELECTED_OPTIMAL_POLICY",
+  "unsafe_releases": 0
+}

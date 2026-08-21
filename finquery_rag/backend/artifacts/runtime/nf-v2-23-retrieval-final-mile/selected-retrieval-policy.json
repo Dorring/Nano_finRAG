@@ -1,0 +1,19 @@
+{
+  "anti_overfit_guarantee": "Generic rule definitions without benchmark sample IDs or hardcoded document paths.",
+  "components": [
+    {
+      "applies_to": "ALL_ROUTES",
+      "name": "Deterministic Financial Alias Expansion"
+    },
+    {
+      "applies_to": "DOCUMENT_SIDECAR_HEADER_QUERIES",
+      "name": "Structured Document Metadata Search"
+    },
+    {
+      "applies_to": "MULTI_EVIDENCE_ROUTE",
+      "name": "Slot-Aware Per-Slot Ranking & Dedup Merge"
+    }
+  ],
+  "policy_name": "R4_COMBINED_RETRIEVAL_POLICY",
+  "promotion_recommendation": "RECOMMENDED_FOR_CANARY"
+}
