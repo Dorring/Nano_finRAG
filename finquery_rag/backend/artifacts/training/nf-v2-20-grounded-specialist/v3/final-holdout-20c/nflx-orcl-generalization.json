@@ -1,0 +1,56 @@
+{
+  "metric_comparison": {
+    "correct_released_pct": {
+      "gap_pp": 0.0,
+      "nflx_dev": 100.0,
+      "orcl_holdout": 100.0
+    },
+    "released_pct": {
+      "gap_pp": 0.0,
+      "nflx_dev": 99.8,
+      "orcl_holdout": 99.8
+    },
+    "semantic_supported_pct": {
+      "gap_pp": 0.2,
+      "nflx_dev": 99.8,
+      "orcl_holdout": 100.0
+    },
+    "strict_correct_pct": {
+      "gap_pp": 0.0,
+      "nflx_dev": 99.8,
+      "orcl_holdout": 99.8
+    }
+  },
+  "route_gaps": {
+    "CITATION_FORMAT_HARD_CASE": {
+      "gap_pp": 0.0,
+      "nflx_strict_pct": 100.0,
+      "orcl_strict_pct": 100.0
+    },
+    "INSUFFICIENT_EVIDENCE_ABSTENTION": {
+      "gap_pp": -4.0,
+      "nflx_strict_pct": 100.0,
+      "orcl_strict_pct": 96.0
+    },
+    "MULTI_EVIDENCE_SYNTHESIS": {
+      "gap_pp": 0.0,
+      "nflx_strict_pct": 100.0,
+      "orcl_strict_pct": 100.0
+    },
+    "QUALITATIVE_GROUNDED_QA": {
+      "gap_pp": 0.8,
+      "nflx_strict_pct": 99.2,
+      "orcl_strict_pct": 100.0
+    },
+    "TEMPORAL_VERSION_SYNTHESIS": {
+      "gap_pp": 0.0,
+      "nflx_strict_pct": 100.0,
+      "orcl_strict_pct": 100.0
+    },
+    "VERIFIED_C1_CONSUMPTION": {
+      "gap_pp": 0.0,
+      "nflx_strict_pct": 100.0,
+      "orcl_strict_pct": 100.0
+    }
+  }
+}
