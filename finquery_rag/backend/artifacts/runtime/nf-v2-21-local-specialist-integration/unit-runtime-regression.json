@@ -1,0 +1,19 @@
+{
+  "results": [
+    {
+      "blocked": true,
+      "input": "The revenue grew by $16.4% in 2024 [E1].",
+      "passed": true
+    },
+    {
+      "blocked": true,
+      "input": "The net income was $49.8% million for the year [E1].",
+      "passed": true
+    },
+    {
+      "blocked": false,
+      "input": "Total net sales were $416,161 millions in FY2025 [E1].",
+      "passed": true
+    }
+  ]
+}

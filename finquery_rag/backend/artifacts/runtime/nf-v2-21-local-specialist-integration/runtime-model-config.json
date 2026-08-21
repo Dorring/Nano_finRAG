@@ -1,0 +1,26 @@
+{
+  "checkpoint_path": "/home/mxf/.cache/nanochat/chatsft_checkpoints/d24_grounded_specialist_v3_lr5e6/model_000156.pt",
+  "checkpoint_sha256": "3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a",
+  "decoding": {
+    "decoding_mode": "greedy",
+    "max_new_tokens": 128,
+    "no_cot": true,
+    "no_thinking_mode": true,
+    "temperature": 0.0
+  },
+  "device": "cuda:0",
+  "generation_view_version": "FinancialGenerationViewV1",
+  "precision": "bfloat16",
+  "role": "LOCAL_FINANCIAL_SPECIALIST_GENERATOR",
+  "validator_pipeline": [
+    "SemanticClaimVerifier",
+    "CitationValidator",
+    "NumericValidator",
+    "UnitCurrencyScaleValidator",
+    "PeriodValidator",
+    "C1Validator",
+    "RepetitionDetector",
+    "CoTLeakageDetector",
+    "AbstentionEvaluatorV2"
+  ]
+}

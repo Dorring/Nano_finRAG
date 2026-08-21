@@ -1,0 +1,47 @@
+{
+  "policy_name": "GeneratorRoutingPolicyV1",
+  "routes": {
+    "CALCULATION_SIMPLE": {
+      "description": "Single-step financial calculation (e.g. margin, growth rate)",
+      "fail_closed_if_missing": true,
+      "requires_c1": true,
+      "target": "DETERMINISTIC_CALCULATOR"
+    },
+    "CALCULATION_WITH_EXPLANATION": {
+      "description": "Calculation requiring narrative explanation / multi-step context",
+      "fail_closed_if_missing": true,
+      "requires_c1": true,
+      "target": "LOCAL_SPECIALIST"
+    },
+    "INSUFFICIENT_EVIDENCE": {
+      "description": "Binder indicates required evidence is unavailable",
+      "fail_closed_if_missing": true,
+      "requires_c1": false,
+      "target": "FAIL_CLOSED_PRE_GEN"
+    },
+    "MULTI": {
+      "description": "Multi-evidence synthesis across multiple statements/pages",
+      "fail_closed_if_missing": true,
+      "requires_c1": false,
+      "target": "LOCAL_SPECIALIST"
+    },
+    "QUALITATIVE": {
+      "description": "Qualitative grounded QA (risk factors, MD&A, accounting policies)",
+      "fail_closed_if_missing": true,
+      "requires_c1": false,
+      "target": "LOCAL_SPECIALIST"
+    },
+    "STRUCTURED_SINGLE": {
+      "description": "Direct single-metric table/row extraction",
+      "fail_closed_if_missing": true,
+      "requires_c1": false,
+      "target": "DETERMINISTIC_RENDERER"
+    },
+    "TEMPORAL_SYNTHESIS": {
+      "description": "Multi-period chronological synthesis (FY/Quarter comparisons)",
+      "fail_closed_if_missing": true,
+      "requires_c1": false,
+      "target": "LOCAL_SPECIALIST"
+    }
+  }
+}

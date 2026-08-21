@@ -1,0 +1,7 @@
+{
+  "expected_sha256": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4",
+  "format": "[QUESTION] -> [VERIFIED EVIDENCE] -> [VERIFIED CALCULATION] (optional) -> [ANSWER RULES]",
+  "match": true,
+  "no_internal_metadata": true,
+  "view_name": "FinancialGenerationViewV1"
+}
