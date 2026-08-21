@@ -1,0 +1,10 @@
+{
+  "base_commit": "663085e29882573afe14f2bce58d64a32c542b12",
+  "checkpoint_sha256": "3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a",
+  "decision": "SHADOW_VERIFICATION_SUCCESS_WITH_METRIC_CORRECTION",
+  "primary_remaining_bottleneck": "RETRIEVAL",
+  "production": "V1",
+  "production_switch": false,
+  "promotion_readiness": "READY_FOR_LIMITED_CANARY",
+  "recommended_next_task": "NF-V2-23 — Retrieval Final-Mile Recovery"
+}

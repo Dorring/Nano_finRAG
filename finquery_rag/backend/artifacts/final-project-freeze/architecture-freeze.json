@@ -10,6 +10,7 @@
     "Route-specific Trusted Evidence",
     "Deterministic Calculator",
     "Financial Specialist Generator",
+    "SemanticClaimVerifierV1 (post-generation)",
     "Deterministic Validator",
     "Repair / Fallback / Fail-Closed"
   ],
@@ -19,6 +20,7 @@
     "Trusted Evidence Layer": "route-specific evidence readiness gate",
     "Calculator": "deterministic arithmetic and canonical result production",
     "Financial Specialist": "grounded financial answer generation only",
+    "SemanticClaimVerifierV1": "post-generation claim/evidence compatibility checks; unsupported or ambiguous claims block release",
     "Validator": "deterministic release checks",
     "Fallback / Fail-Closed": "one recovery attempt where configured, otherwise safe abstention"
   },
@@ -27,5 +29,12 @@
     "Answerability Judge",
     "Calculator",
     "final safety authority"
-  ]
+  ],
+  "semantic_claim_verifier": {
+    "version": "SemanticClaimVerifierV1",
+    "stage": "post_generation",
+    "mandatory_pre_generation_sufficiency_gate": false,
+    "release_authority": "blocks unsupported or ambiguous generated claims before RuntimeGenerationValidatorV1 release",
+    "validated_artifact": "finquery_rag/backend/artifacts/evaluation/nf-v2-15-final-trusted-e2e"
+  }
 }

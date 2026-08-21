@@ -12,11 +12,14 @@ from src.retrieval.candidate_fusion import (
     boost_front_matter_chunks,
     ensure_multi_doc_coverage,
     rrf,
-    weighted_rrf,
 )
 from src.retrieval.candidate_trace import summarize_candidates
 from src.retrieval.query_processor import QueryProcessor
 from src.retrieval.query_profile import QueryVariant, profile_query
+from src.retrieval.metadata_scope import (
+    RetrievalScopeV1, apply_hard_scope, apply_soft_preferences,
+    enforce_reranker_subset,
+)
 
 
 class RetrievalPipeline:
@@ -59,11 +62,15 @@ class RetrievalPipeline:
         if not self._reranker:
             selected = chunks[:top_k]
         else:
-            selected = self._reranker.rerank(query, chunks, top_k=top_k)
+            reranked = self._reranker.rerank(query, chunks, top_k=top_k)
+            selected, violations = enforce_reranker_subset(chunks, reranked)
         self._last_retrieval_debug = self._make_retrieval_debug(
             candidate_count,
             len(selected),
         )
+        if self._reranker and violations:
+            self._last_retrieval_debug["reranker_reintroduction_count"] = 0
+            self._last_retrieval_debug["reranker_subset_rejections"] = violations
         return selected
 
     def _set_stage_debug(
@@ -157,6 +164,7 @@ class RetrievalPipeline:
         query: str,
         user_id: int | None = None,
         top_k: int = 3,
+        scope: RetrievalScopeV1 | None = None,
     ) -> list:
         """Retrieve relevant chunks from a single document."""
         retrieval_query = self._query_processor.expand(query)
@@ -167,6 +175,10 @@ class RetrievalPipeline:
                 n_results=top_k, user_id=user_id,
             )
             results = normalize_scores(results)
+            if scope is not None:
+                results, scope_metrics = apply_hard_scope(results, scope)
+                results = apply_soft_preferences(results, scope)
+                self._last_retrieval_debug["metadata_scope"] = scope_metrics
             results = boost_front_matter_chunks(
                 query, results,
                 is_front_matter_query_fn=self._query_processor.is_front_matter_query,
@@ -201,25 +213,44 @@ class RetrievalPipeline:
                 retrieval_query, k=candidate_k,
                 doc_name=document_name, user_id=user_id,
             )
+            if scope is not None:
+                dense_results, dense_scope_metrics = apply_hard_scope(dense_results, scope)
+                sparse_results, sparse_scope_metrics = apply_hard_scope(sparse_results, scope)
+            else:
+                dense_scope_metrics = sparse_scope_metrics = None
             fused = rrf([dense_results, sparse_results])
             results = normalize_scores(fused)
+            if scope is not None:
+                results, union_scope_metrics = apply_hard_scope(results, scope)
+                results = apply_soft_preferences(results, scope)
+            else:
+                union_scope_metrics = None
             results = boost_front_matter_chunks(
                 query, results,
                 is_front_matter_query_fn=self._query_processor.is_front_matter_query,
             )
-            reranked = (
+            reranked_raw = (
                 self._reranker.rerank(query, results, top_k=min(20, len(results)))
                 if self._reranker else results[:20]
             )
-            selected = (
+            reranked, rerank_violations = enforce_reranker_subset(results, reranked_raw)
+            selected_raw = (
                 self._reranker.rerank(query, results, top_k=top_k)
                 if self._reranker else results[:top_k]
             )
+            selected, selected_violations = enforce_reranker_subset(results, selected_raw)
             self._set_stage_debug(
                 profile=profile, variants=variants, dense_results=dense_results,
                 sparse_results=sparse_results, fused_results=results,
                 reranked_results=reranked, final_results=selected,
             )
+            if scope is not None:
+                self._last_retrieval_debug["metadata_scope"] = {
+                    "dense": dense_scope_metrics, "bm25": sparse_scope_metrics,
+                    "union": union_scope_metrics,
+                    "reranker_reintroduction_count": 0,
+                    "reranker_subset_rejections": rerank_violations + selected_violations,
+                }
             return self._attach_structured_table_evidence(
                 selected, user_id=user_id, query=query,
             )
@@ -229,6 +260,10 @@ class RetrievalPipeline:
             n_results=candidate_k, user_id=user_id,
         )
         results = normalize_scores(dense_results)
+        if scope is not None:
+            results, scope_metrics = apply_hard_scope(results, scope)
+            results = apply_soft_preferences(results, scope)
+            self._last_retrieval_debug["metadata_scope"] = scope_metrics
         results = boost_front_matter_chunks(
             query, results,
             is_front_matter_query_fn=self._query_processor.is_front_matter_query,
@@ -244,6 +279,7 @@ class RetrievalPipeline:
         query: str,
         user_id: int | None = None,
         top_k: int = 3,
+        scope: RetrievalScopeV1 | None = None,
     ) -> list:
         """Retrieve relevant chunks from multiple documents concurrently."""
         loop = asyncio.get_event_loop()
@@ -252,7 +288,7 @@ class RetrievalPipeline:
             loop.run_in_executor(
                 None,
                 self.retrieve_single,
-                doc_name, query, user_id, top_k,
+                doc_name, query, user_id, top_k, scope,
             )
             for doc_name in document_names
         ]
@@ -266,4 +302,8 @@ class RetrievalPipeline:
         all_results.sort(key=lambda x: x.get("score", 0), reverse=True)
 
         selected = self._apply_reranker(query, all_results, top_k)
+        if scope is not None:
+            all_results, scope_metrics = apply_hard_scope(all_results, scope)
+            selected, _ = apply_hard_scope(selected, scope)
+            self._last_retrieval_debug["metadata_scope"] = {"union": scope_metrics}
         return ensure_multi_doc_coverage(all_results, selected, document_names, top_k)

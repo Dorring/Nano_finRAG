@@ -1,0 +1,51 @@
+{
+  "temporal_fields": [
+    "entity",
+    "document_id",
+    "document_type",
+    "fiscal_year",
+    "fiscal_quarter",
+    "period_start",
+    "period_end",
+    "period_semantics",
+    "report_date",
+    "filing_date",
+    "version",
+    "is_amended",
+    "supersedes_document_id",
+    "source",
+    "scope",
+    "metric",
+    "value",
+    "unit",
+    "currency",
+    "scale",
+    "created_at",
+    "ingested_at"
+  ],
+  "period_semantics": [
+    "INSTANT",
+    "QUARTER",
+    "YTD",
+    "ANNUAL",
+    "UNKNOWN"
+  ],
+  "relations": [
+    "SAME_FACT_SCOPE",
+    "DIFFERENT_PERIOD",
+    "DIFFERENT_SOURCE_SCOPE",
+    "TEMPORAL_SUCCESSION",
+    "VERSION_SUPERSEDED",
+    "AMBIGUOUS_SCOPE"
+  ],
+  "consistency_decisions": [
+    "CONSISTENT",
+    "TEMPORAL_SUCCESSION",
+    "MULTI_SOURCE_COMPATIBLE",
+    "SUPERSEDED",
+    "UNRESOLVED_CONFLICT",
+    "AMBIGUOUS"
+  ],
+  "ingestion_time_is_financial_time": false,
+  "unknown_fields_preferred": true
+}

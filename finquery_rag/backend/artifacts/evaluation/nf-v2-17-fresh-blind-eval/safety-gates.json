@@ -1,0 +1,12 @@
+{
+  "all_hard_gates_pass": true,
+  "authorization_leakage": 0,
+  "budget_violations": 0,
+  "false_binding": 0,
+  "false_execution": 0,
+  "hard_filter_violations": 0,
+  "infinite_loops": 0,
+  "posthoc_semantic_unsafe_release": 0,
+  "unresolved_conflict_leakage": 0,
+  "unsafe_release": 0
+}

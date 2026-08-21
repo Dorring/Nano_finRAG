@@ -1,0 +1,11 @@
+{
+  "correct_over_released": 0.5,
+  "decision": "FRESH_BLIND_RUNTIME_PARTIAL",
+  "fresh_blind_after_execution": true,
+  "next_gate": "final trusted E2E evaluation / project freeze",
+  "post_evaluation_tuning": false,
+  "production": "V1",
+  "production_switch": false,
+  "release_coverage": 0.114286,
+  "unsafe_release": 0
+}

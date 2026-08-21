@@ -1,0 +1,25 @@
+{
+  "results": [
+    {
+      "c1_preserved": true,
+      "passed": true,
+      "query": "What is the Gross Profit for Company X in FY2024?",
+      "raw_output": "The verified calculation indicates that Company X's gross profit was 40 million dollars in FY2024 [E1], compared to its revenue of 100 [E2].",
+      "validation_outcome": {
+        "abstention_valid": true,
+        "c1_valid": true,
+        "citation_valid": true,
+        "cot_detected": false,
+        "fail_reasons": [],
+        "is_valid": true,
+        "numeric_valid": true,
+        "period_valid": true,
+        "releasable": true,
+        "repair_attempted": false,
+        "repaired": false,
+        "repetition_detected": false,
+        "unit_valid": true
+      }
+    }
+  ]
+}

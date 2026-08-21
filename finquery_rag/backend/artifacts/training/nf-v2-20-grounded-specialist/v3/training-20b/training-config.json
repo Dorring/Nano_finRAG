@@ -1,0 +1,11 @@
+{
+  "batch_size": 4,
+  "epochs": 1,
+  "grad_accum": 8,
+  "learning_rate": 5e-06,
+  "manifest_sha256": "09a1f3cf2f3a20031368737fab5915b5df7f12aa3c89736e6537a6ef8d98c24c",
+  "precision": "bfloat16",
+  "response_only_loss": true,
+  "student_checkpoint": "/home/mxf/.cache/nanochat/base_checkpoints/d24_sft_v2_best275/model_000275.pt",
+  "task": "NF-V2-20B"
+}

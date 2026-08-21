@@ -1,0 +1,144 @@
+{
+  "results": [
+    {
+      "decision": {
+        "fail_closed": false,
+        "reason": "Qualitative grounded QA: Local Specialist generates verified text answer.",
+        "requires_c1": false,
+        "route_name": "QUALITATIVE",
+        "target": "LOCAL_SPECIALIST"
+      },
+      "expected_target": "LOCAL_SPECIALIST",
+      "generated_output": "Management at Apple noted that their supply chain risk was shaped by their manufacturing concentration in Asia [E1].",
+      "passed": true,
+      "test_case": "QUALITATIVE",
+      "validation_outcome": {
+        "abstention_valid": true,
+        "c1_valid": true,
+        "citation_valid": true,
+        "cot_detected": false,
+        "fail_reasons": [],
+        "is_valid": true,
+        "numeric_valid": true,
+        "period_valid": true,
+        "releasable": true,
+        "repair_attempted": false,
+        "repaired": false,
+        "repetition_detected": false,
+        "unit_valid": true
+      }
+    },
+    {
+      "decision": {
+        "fail_closed": false,
+        "reason": "Multi-evidence synthesis: Local Specialist combines multiple verified facts.",
+        "requires_c1": false,
+        "route_name": "MULTI",
+        "target": "LOCAL_SPECIALIST"
+      },
+      "expected_target": "LOCAL_SPECIALIST",
+      "generated_output": "In FY2024, Apple's Products Revenue totaled 294866 [E1], whereas Services Revenue reached 96169 [E2].",
+      "passed": true,
+      "test_case": "MULTI",
+      "validation_outcome": {
+        "abstention_valid": true,
+        "c1_valid": true,
+        "citation_valid": true,
+        "cot_detected": false,
+        "fail_reasons": [],
+        "is_valid": true,
+        "numeric_valid": true,
+        "period_valid": true,
+        "releasable": true,
+        "repair_attempted": false,
+        "repaired": false,
+        "repetition_detected": false,
+        "unit_valid": true
+      }
+    },
+    {
+      "decision": {
+        "fail_closed": false,
+        "reason": "Temporal/multi-period synthesis: Local Specialist synthesizes timeline.",
+        "requires_c1": false,
+        "route_name": "TEMPORAL_SYNTHESIS",
+        "target": "LOCAL_SPECIALIST"
+      },
+      "expected_target": "LOCAL_SPECIALIST",
+      "generated_output": "For FY2023, Microsoft's Cloud Revenue was 111600 [E1], compared to 137400 [E2].",
+      "passed": true,
+      "test_case": "TEMPORAL",
+      "validation_outcome": {
+        "abstention_valid": true,
+        "c1_valid": true,
+        "citation_valid": true,
+        "cot_detected": false,
+        "fail_reasons": [],
+        "is_valid": true,
+        "numeric_valid": true,
+        "period_valid": true,
+        "releasable": true,
+        "repair_attempted": false,
+        "repaired": false,
+        "repetition_detected": false,
+        "unit_valid": true
+      }
+    },
+    {
+      "decision": {
+        "fail_closed": false,
+        "reason": "Calculation with synthesis: Local Specialist consumes pre-computed C1 and cites evidence.",
+        "requires_c1": true,
+        "route_name": "CALCULATION_WITH_EXPLANATION",
+        "target": "LOCAL_SPECIALIST"
+      },
+      "expected_target": "LOCAL_SPECIALIST",
+      "generated_output": "The verified calculation indicates that Apple's Gross Profit Margin was 46.21% in FY2024 [E1].",
+      "passed": true,
+      "test_case": "CALCULATION_WITH_EXPLANATION",
+      "validation_outcome": {
+        "abstention_valid": true,
+        "c1_valid": true,
+        "citation_valid": true,
+        "cot_detected": false,
+        "fail_reasons": [],
+        "is_valid": true,
+        "numeric_valid": true,
+        "period_valid": true,
+        "releasable": true,
+        "repair_attempted": false,
+        "repaired": false,
+        "repetition_detected": false,
+        "unit_valid": true
+      }
+    },
+    {
+      "decision": {
+        "fail_closed": false,
+        "reason": "Single factual table/document lookup: Deterministic structured renderer.",
+        "requires_c1": false,
+        "route_name": "STRUCTURED_SINGLE",
+        "target": "DETERMINISTIC_RENDERER"
+      },
+      "expected_target": "DETERMINISTIC_RENDERER",
+      "generated_output": null,
+      "passed": true,
+      "test_case": "STRUCTURED_SINGLE",
+      "validation_outcome": null
+    },
+    {
+      "decision": {
+        "fail_closed": true,
+        "reason": "Pre-generation fail-closed: No verified evidence provided to Binder.",
+        "requires_c1": false,
+        "route_name": "INSUFFICIENT_EVIDENCE",
+        "target": "FAIL_CLOSED_PRE_GEN"
+      },
+      "expected_target": "FAIL_CLOSED_PRE_GEN",
+      "generated_output": null,
+      "passed": true,
+      "test_case": "INSUFFICIENT_EVIDENCE",
+      "validation_outcome": null
+    }
+  ]
+}

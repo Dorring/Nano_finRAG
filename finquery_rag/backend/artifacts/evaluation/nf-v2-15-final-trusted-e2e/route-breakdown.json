@@ -1,0 +1,29 @@
+{
+  "CALCULATION": {
+    "calculator_executed": 0,
+    "fail_closed": 11,
+    "false_execution": 0,
+    "strict_calculation_success": 0,
+    "total": 11
+  },
+  "DIRECT": {
+    "correct": 3,
+    "fail_closed": 53,
+    "generator_invoked": 4,
+    "released": 3,
+    "runtime_detectable_unsafe": 1,
+    "total": 56,
+    "unsafe_final_release": 0
+  },
+  "MULTI_EVIDENCE": {
+    "complete": 0,
+    "evidence_item_total": 16,
+    "fail_closed": 5,
+    "question_total": 5
+  },
+  "NO_ANSWER": {
+    "correct_refusals": 8,
+    "generator_calls": 0,
+    "total": 8
+  }
+}

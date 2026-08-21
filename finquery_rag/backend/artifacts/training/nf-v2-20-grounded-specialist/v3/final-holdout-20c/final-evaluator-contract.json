@@ -1,0 +1,21 @@
+{
+  "abstention_evaluator": "AbstentionEvaluatorV2",
+  "checkpoint_sha256": "3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a",
+  "contract_version": "V2.0",
+  "dataset_manifest_sha256": "09a1f3cf2f3a20031368737fab5915b5df7f12aa3c89736e6537a6ef8d98c24c",
+  "generation_config": {
+    "decoding": "greedy",
+    "max_tokens": 128,
+    "temperature": 0.0
+  },
+  "validators": [
+    "citation_valid",
+    "unit_valid",
+    "numeric_valid",
+    "period_valid",
+    "c1_valid",
+    "repetition",
+    "cot_leakage"
+  ],
+  "view_contract_sha256": "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4"
+}

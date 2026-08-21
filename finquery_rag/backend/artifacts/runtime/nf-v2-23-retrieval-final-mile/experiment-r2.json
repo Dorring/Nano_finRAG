@@ -1,0 +1,25 @@
+{
+  "answerable_correct": 100,
+  "answerable_evaluated": 105,
+  "answerable_success_rate_pct": 95.24,
+  "damaged_count": 0,
+  "description": "R1 + Structured Document Metadata Search for First-Stage Misses",
+  "experiment_id": "R2",
+  "first_stage_misses": 0,
+  "multi_incomplete_misses": 5,
+  "rescued_count": 11,
+  "rescued_sample_ids": [
+    "FBV1-096",
+    "FBV1-097",
+    "FBV1-098",
+    "FBV1-099",
+    "FBV1-100",
+    "FBV1-101",
+    "FBV1-102",
+    "FBV1-103",
+    "FBV1-104",
+    "FBV1-105",
+    "FBV1-084"
+  ],
+  "unsafe_releases": 0
+}

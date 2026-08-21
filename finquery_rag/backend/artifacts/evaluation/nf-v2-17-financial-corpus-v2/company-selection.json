@@ -1,0 +1,311 @@
+{
+  "schema_version": "nf-v2-17/company-selection/v1",
+  "task": "NF-V2-17A Corpus Intake",
+  "base_sha": "4b3a13bac661375406686a5055708f067a3aa3ac",
+  "reviewed_at": "2026-08-20",
+  "production": "V1",
+  "target_company_count": 10,
+  "selection_principles": [
+    "retain usable official benchmark issuers",
+    "add unseen issuers with authoritative SEC acquisition paths",
+    "cover technology, semiconductors, finance, consumer, automotive/energy, healthcare, and internet/cloud",
+    "do not treat synthetic fixtures or evaluation mirrors as public corpus documents"
+  ],
+  "companies": [
+    {
+      "company": "Microsoft Corporation",
+      "ticker": "MSFT",
+      "sector": "Technology",
+      "cik": "0000789019",
+      "reason": "Retain official 10-K; non-calendar fiscal year and segment/geography coverage.",
+      "existing_docs": [
+        "msft_fy2025"
+      ],
+      "existing_doc_count": 1,
+      "existing_doc_status": "MANIFESTED_CANONICAL_BUT_RAW_PATH_EXTERNAL",
+      "required_new_primary_docs": 5,
+      "required_new_annual_reports": 2,
+      "required_new_quarterly_filings": 3,
+      "target_annual_fiscal_years": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "quarter_observation_plan": [
+        "FY2025-Q1 via 10-Q",
+        "FY2025-Q2 via 10-Q",
+        "FY2025-Q3 via 10-Q",
+        "FY2025-Q4 represented by FY2025 annual 10-K (no fabricated standalone Q4 filing)"
+      ],
+      "amendment_policy": "opportunistic_only_when_authoritatively_present"
+    },
+    {
+      "company": "Apple Inc.",
+      "ticker": "AAPL",
+      "sector": "Technology / Consumer Electronics",
+      "cik": "0000320193",
+      "reason": "Retain official 10-K; product, geography, margin, and September year-end semantics.",
+      "existing_docs": [
+        "aapl_fy2025"
+      ],
+      "existing_doc_count": 1,
+      "existing_doc_status": "MANIFESTED_CANONICAL_BUT_RAW_PATH_EXTERNAL",
+      "required_new_primary_docs": 5,
+      "required_new_annual_reports": 2,
+      "required_new_quarterly_filings": 3,
+      "target_annual_fiscal_years": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "quarter_observation_plan": [
+        "FY2025-Q1 via 10-Q",
+        "FY2025-Q2 via 10-Q",
+        "FY2025-Q3 via 10-Q",
+        "FY2025-Q4 represented by FY2025 annual 10-K (no fabricated standalone Q4 filing)"
+      ],
+      "amendment_policy": "opportunistic_only_when_authoritatively_present"
+    },
+    {
+      "company": "NVIDIA Corporation",
+      "ticker": "NVDA",
+      "sector": "Semiconductors",
+      "cik": "0001045810",
+      "reason": "Retain official 10-K; growth, scale, and data-center tables.",
+      "existing_docs": [
+        "nvda_fy2025"
+      ],
+      "existing_doc_count": 1,
+      "existing_doc_status": "MANIFESTED_CANONICAL_BUT_RAW_PATH_EXTERNAL",
+      "required_new_primary_docs": 5,
+      "required_new_annual_reports": 2,
+      "required_new_quarterly_filings": 3,
+      "target_annual_fiscal_years": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "quarter_observation_plan": [
+        "FY2025-Q1 via 10-Q",
+        "FY2025-Q2 via 10-Q",
+        "FY2025-Q3 via 10-Q",
+        "FY2025-Q4 represented by FY2025 annual 10-K (no fabricated standalone Q4 filing)"
+      ],
+      "amendment_policy": "opportunistic_only_when_authoritatively_present"
+    },
+    {
+      "company": "JPMorgan Chase & Co.",
+      "ticker": "JPM",
+      "sector": "Financial Services",
+      "cik": "0000019617",
+      "reason": "Retain official annual report; bank balance-sheet and risk disclosure diversity.",
+      "existing_docs": [
+        "jpm_fy2025"
+      ],
+      "existing_doc_count": 1,
+      "existing_doc_status": "MANIFESTED_CANONICAL_BUT_RAW_PATH_EXTERNAL",
+      "required_new_primary_docs": 5,
+      "required_new_annual_reports": 2,
+      "required_new_quarterly_filings": 3,
+      "target_annual_fiscal_years": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "quarter_observation_plan": [
+        "FY2025-Q1 via 10-Q",
+        "FY2025-Q2 via 10-Q",
+        "FY2025-Q3 via 10-Q",
+        "FY2025-Q4 represented by FY2025 annual 10-K (no fabricated standalone Q4 filing)"
+      ],
+      "amendment_policy": "opportunistic_only_when_authoritatively_present"
+    },
+    {
+      "company": "Tesla, Inc.",
+      "ticker": "TSLA",
+      "sector": "Automotive / Energy",
+      "cik": "0001318605",
+      "reason": "Retain official 10-K; automotive, energy, and regulatory-credit disclosures.",
+      "existing_docs": [
+        "tsla_fy2025"
+      ],
+      "existing_doc_count": 1,
+      "existing_doc_status": "MANIFESTED_CANONICAL_BUT_RAW_PATH_EXTERNAL",
+      "required_new_primary_docs": 5,
+      "required_new_annual_reports": 2,
+      "required_new_quarterly_filings": 3,
+      "target_annual_fiscal_years": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "quarter_observation_plan": [
+        "FY2025-Q1 via 10-Q",
+        "FY2025-Q2 via 10-Q",
+        "FY2025-Q3 via 10-Q",
+        "FY2025-Q4 represented by FY2025 annual 10-K (no fabricated standalone Q4 filing)"
+      ],
+      "amendment_policy": "opportunistic_only_when_authoritatively_present"
+    },
+    {
+      "company": "The Coca-Cola Company",
+      "ticker": "KO",
+      "sector": "Consumer Staples",
+      "cik": "0000021344",
+      "reason": "Retain official 10-K; geographic, bottling, and currency disclosures.",
+      "existing_docs": [
+        "ko_fy2025"
+      ],
+      "existing_doc_count": 1,
+      "existing_doc_status": "MANIFESTED_CANONICAL_BUT_RAW_PATH_EXTERNAL",
+      "required_new_primary_docs": 5,
+      "required_new_annual_reports": 2,
+      "required_new_quarterly_filings": 3,
+      "target_annual_fiscal_years": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "quarter_observation_plan": [
+        "FY2025-Q1 via 10-Q",
+        "FY2025-Q2 via 10-Q",
+        "FY2025-Q3 via 10-Q",
+        "FY2025-Q4 represented by FY2025 annual 10-K (no fabricated standalone Q4 filing)"
+      ],
+      "amendment_policy": "opportunistic_only_when_authoritatively_present"
+    },
+    {
+      "company": "Visa Inc.",
+      "ticker": "V",
+      "sector": "Financial Services / Payments",
+      "cik": "0001403161",
+      "reason": "Retain official annual report; payment-volume and regional metrics.",
+      "existing_docs": [
+        "v_fy2025"
+      ],
+      "existing_doc_count": 1,
+      "existing_doc_status": "MANIFESTED_CANONICAL_BUT_RAW_PATH_EXTERNAL",
+      "required_new_primary_docs": 5,
+      "required_new_annual_reports": 2,
+      "required_new_quarterly_filings": 3,
+      "target_annual_fiscal_years": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "quarter_observation_plan": [
+        "FY2025-Q1 via 10-Q",
+        "FY2025-Q2 via 10-Q",
+        "FY2025-Q3 via 10-Q",
+        "FY2025-Q4 represented by FY2025 annual 10-K (no fabricated standalone Q4 filing)"
+      ],
+      "amendment_policy": "opportunistic_only_when_authoritatively_present"
+    },
+    {
+      "company": "Pfizer Inc.",
+      "ticker": "PFE",
+      "sector": "Healthcare / Pharmaceuticals",
+      "cik": "0000078003",
+      "reason": "Retain official FY2024 10-K and extend to FY2025; product and complex-table coverage.",
+      "existing_docs": [
+        "pfe_fy2024"
+      ],
+      "existing_doc_count": 1,
+      "existing_doc_status": "MANIFESTED_CANONICAL_BUT_RAW_PATH_EXTERNAL",
+      "required_new_primary_docs": 5,
+      "required_new_annual_reports": 2,
+      "required_new_quarterly_filings": 3,
+      "target_annual_fiscal_years": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "quarter_observation_plan": [
+        "FY2025-Q1 via 10-Q",
+        "FY2025-Q2 via 10-Q",
+        "FY2025-Q3 via 10-Q",
+        "FY2025-Q4 represented by FY2025 annual 10-K (no fabricated standalone Q4 filing)"
+      ],
+      "amendment_policy": "opportunistic_only_when_authoritatively_present"
+    },
+    {
+      "company": "Alphabet Inc.",
+      "ticker": "GOOGL",
+      "sector": "Communication Services / Internet",
+      "cik": "0001652044",
+      "reason": "Add an unseen issuer with an existing SEC primary-document acquisition lead and broad segment disclosures.",
+      "existing_docs": [],
+      "existing_doc_count": 0,
+      "existing_doc_status": "NO_CANONICAL_DOC",
+      "required_new_primary_docs": 6,
+      "required_new_annual_reports": 3,
+      "required_new_quarterly_filings": 3,
+      "target_annual_fiscal_years": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "quarter_observation_plan": [
+        "FY2025-Q1 via 10-Q",
+        "FY2025-Q2 via 10-Q",
+        "FY2025-Q3 via 10-Q",
+        "FY2025-Q4 represented by FY2025 annual 10-K (no fabricated standalone Q4 filing)"
+      ],
+      "amendment_policy": "opportunistic_only_when_authoritatively_present"
+    },
+    {
+      "company": "Amazon.com, Inc.",
+      "ticker": "AMZN",
+      "sector": "Consumer Discretionary / Cloud",
+      "cik": "0001018724",
+      "reason": "Add an unseen issuer with an existing SEC primary-document acquisition lead and retail/AWS/advertising segments.",
+      "existing_docs": [],
+      "existing_doc_count": 0,
+      "existing_doc_status": "NO_CANONICAL_DOC",
+      "required_new_primary_docs": 6,
+      "required_new_annual_reports": 3,
+      "required_new_quarterly_filings": 3,
+      "target_annual_fiscal_years": [
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "quarter_observation_plan": [
+        "FY2025-Q1 via 10-Q",
+        "FY2025-Q2 via 10-Q",
+        "FY2025-Q3 via 10-Q",
+        "FY2025-Q4 represented by FY2025 annual 10-K (no fabricated standalone Q4 filing)"
+      ],
+      "amendment_policy": "opportunistic_only_when_authoritatively_present"
+    }
+  ],
+  "alternatives_not_selected": [
+    {
+      "company": "Meta Platforms, Inc.",
+      "ticker": "META",
+      "reason": "NF-OPT-17 shadow source exists; retained as a substitution if selected-source acquisition fails."
+    },
+    {
+      "company": "Netflix, Inc.",
+      "ticker": "NFLX",
+      "reason": "NF-OPT-17 shadow source exists; retained as a documented fallback without expanding the 10-company target."
+    }
+  ],
+  "target_totals": {
+    "annual_reports": 30,
+    "quarterly_filings": 30,
+    "q4_standalone_filings": 0,
+    "q4_representation": "annual 10-K",
+    "primary_filings_expected": 60,
+    "amendments_required": 0,
+    "amendments_expected_range": [
+      0,
+      5
+    ],
+    "total_documents_expected_range": [
+      60,
+      65
+    ]
+  },
+  "intake_boundary": "Planning only. No raw acquisition, parsing, indexing, question generation, or runtime tuning."
+}

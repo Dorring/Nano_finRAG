@@ -1,0 +1,88 @@
+{
+  "b3_as_run": {
+    "Calculation operand@10": "0/15",
+    "Multi All@5": "0/20",
+    "Multi Any@5": "0/20",
+    "R@10": "2/120",
+    "R@5": "2/120"
+  },
+  "metrics": {
+    "R@1": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 0,
+      "calculation_operand_coverage": 0.0,
+      "denominator": 120,
+      "exact_count": 2,
+      "exact_recall": 0.016666666666666666,
+      "family_count": 27,
+      "family_recall": 0.225,
+      "multi_all_count": 0,
+      "multi_all_recall": 0.0,
+      "multi_any_count": 0,
+      "multi_any_recall": 0.0,
+      "multi_count": 20
+    },
+    "R@10": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 0,
+      "calculation_operand_coverage": 0.0,
+      "denominator": 120,
+      "exact_count": 2,
+      "exact_recall": 0.016666666666666666,
+      "family_count": 69,
+      "family_recall": 0.575,
+      "multi_all_count": 0,
+      "multi_all_recall": 0.0,
+      "multi_any_count": 0,
+      "multi_any_recall": 0.0,
+      "multi_count": 20
+    },
+    "R@20": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 0,
+      "calculation_operand_coverage": 0.0,
+      "denominator": 120,
+      "exact_count": 2,
+      "exact_recall": 0.016666666666666666,
+      "family_count": 69,
+      "family_recall": 0.575,
+      "multi_all_count": 0,
+      "multi_all_recall": 0.0,
+      "multi_any_count": 0,
+      "multi_any_recall": 0.0,
+      "multi_count": 20
+    },
+    "R@3": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 0,
+      "calculation_operand_coverage": 0.0,
+      "denominator": 120,
+      "exact_count": 2,
+      "exact_recall": 0.016666666666666666,
+      "family_count": 47,
+      "family_recall": 0.39166666666666666,
+      "multi_all_count": 0,
+      "multi_all_recall": 0.0,
+      "multi_any_count": 0,
+      "multi_any_recall": 0.0,
+      "multi_count": 20
+    },
+    "R@5": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 0,
+      "calculation_operand_coverage": 0.0,
+      "denominator": 120,
+      "exact_count": 2,
+      "exact_recall": 0.016666666666666666,
+      "family_count": 56,
+      "family_recall": 0.4666666666666667,
+      "multi_all_count": 0,
+      "multi_all_recall": 0.0,
+      "multi_any_count": 0,
+      "multi_any_recall": 0.0,
+      "multi_count": 20
+    }
+  },
+  "name": "A0_old_baseline",
+  "source": "frozen B3 retrieval-results.json"
+}

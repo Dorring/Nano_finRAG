@@ -1,0 +1,13 @@
+{
+  "bottleneck_status": "GENERATOR_BOTTLENECK_RESOLVED",
+  "conclusion": "The generator is no longer the primary accuracy or safety bottleneck in the financial RAG runtime.",
+  "evidence": {
+    "c1_preservation_accuracy": "100.0% (15 / 15 on 120 benchmark, 50 / 50 on ORCL)",
+    "cot_leakage_rate": "0.0%",
+    "generator_conditional_accuracy_on_binder_ready": "93.68% (89 / 95) on 120 benchmark",
+    "malformed_unit_generation_rate": "0.0%",
+    "orcl_company_held_out_accuracy": "99.80% (499 / 500)",
+    "repetition_loop_rate": "0.0%",
+    "unsafe_substantive_release_rate": "0.0%"
+  }
+}

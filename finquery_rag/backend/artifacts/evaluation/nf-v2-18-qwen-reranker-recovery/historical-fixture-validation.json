@@ -1,0 +1,8 @@
+{
+  "fixture": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.worktrees/nf-v2-18-retrieval-recovery/finquery_rag/backend/artifacts/evaluation/pdf-retrieval-v4-gate-08-r8-r3-1a/rerank-input-views-v2.jsonl.gz",
+  "fixture_available": true,
+  "fixture_pairs": 7200,
+  "ranking_agreement": null,
+  "reason": "historical fixture is a 7200-pair evaluation artifact; R3P0 uses synthetic smoke only and does not rerun benchmark-like data",
+  "small_fixture_executed": false
+}

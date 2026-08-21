@@ -1,0 +1,7 @@
+{
+  "ambiguous_policy": "UNKNOWN",
+  "header_path_source": "A4 physical header_rows + column_headers",
+  "resolver": "src.pdf_retrieval_v4.temporal_axis_graph.build_axis_bindings",
+  "shared_header_logic": true,
+  "tables_with_header_paths": 7198
+}

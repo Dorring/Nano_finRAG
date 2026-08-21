@@ -1,0 +1,31 @@
+{
+  "all_paths_emit": "NormalizedFinancialDocumentV2 / typed blocks / canonical chunks with parser provenance",
+  "canonical_merge": {
+    "conflict_policy": "quarantine_and_record; never silently merge",
+    "prose_segmentation": "native_first; MinerU_may_supplement_only_after_explicit_fallback",
+    "structured_numeric_facts": "native_iXBRL_is_authority",
+    "visual_table_layout": "MinerU_may_supplement_only_after_explicit_fallback"
+  },
+  "default_for_current_corpus": "native_deterministic_html_ixbrl",
+  "fallback_conditions": [
+    "non-empty raw HTML yields zero prose blocks",
+    "financial table grid is catastrophically lost (no rows/cells where source has a table)",
+    "unrecoverable multi-level header structure after native parser QC"
+  ],
+  "fallback_trace_fields": [
+    "document_id",
+    "condition_code",
+    "native_parser_status",
+    "fallback_parser_status",
+    "parser_provenance",
+    "conflict_status"
+  ],
+  "indexing_performed": false,
+  "mineru_default": false,
+  "raw_immutable": true,
+  "source_type_routing": {
+    "HTML_WARNING_FALLBACK": "optional_rendered_pdf_plus_MinerU_only_when_explicit_condition_is_met",
+    "NATIVE_PDF": "MinerU_or_PyMuPDF",
+    "SEC_HTML_INLINE_XBRL": "native_deterministic_html_ixbrl"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "adaptive_case_count": 5,
+  "average_replan_rounds": 0.8,
+  "average_tool_calls": 1.8,
+  "budget_violations": 0,
+  "evidence_progress_rate": 0.6,
+  "infinite_loops": 0,
+  "no_progress_correct_stops": 1,
+  "p95_replan_rounds": 1,
+  "p95_tool_calls": 2,
+  "ready_to_generate": 3,
+  "real_replan_attempted": 4,
+  "real_replan_needed": 5,
+  "real_replan_success": 3,
+  "recoverable_missing_slot_recovery": 2,
+  "tool_reroute_success": 1,
+  "wrong_period_recovery": 1
+}

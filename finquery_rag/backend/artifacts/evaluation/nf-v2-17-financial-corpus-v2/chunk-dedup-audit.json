@@ -1,0 +1,14 @@
+{
+  "classes": {
+    "CROSS_PERIOD_FINANCIAL_TEXT": 3892,
+    "LEGITIMATE_REPEATED_TEXT": 2261,
+    "NAVIGATION_NOISE": 1,
+    "SEC_BOILERPLATE": 73
+  },
+  "dedup_removed_examples": [],
+  "exact_duplicate_groups": 6227,
+  "exact_duplicate_instances_removed": 0,
+  "exact_duplicate_objects": 30409,
+  "policy": "retain all; preserve document/period/table/row provenance",
+  "removed": 0
+}

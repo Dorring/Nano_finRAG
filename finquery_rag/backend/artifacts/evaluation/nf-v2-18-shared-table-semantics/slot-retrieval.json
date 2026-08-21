@@ -1,0 +1,19 @@
+{
+  "coverage_10": {
+    "coverage": 0.38064516129032255,
+    "slots_filled": 59,
+    "slots_total": 155
+  },
+  "coverage_5": {
+    "coverage": 0.34838709677419355,
+    "slots_filled": 54,
+    "slots_total": 155
+  },
+  "diagnostics_count": 155,
+  "gold_slots_used_at_runtime": false,
+  "slot_source": "frozen runtime planner-derived R1 slot contract",
+  "stages": [
+    "S5",
+    "S6"
+  ]
+}

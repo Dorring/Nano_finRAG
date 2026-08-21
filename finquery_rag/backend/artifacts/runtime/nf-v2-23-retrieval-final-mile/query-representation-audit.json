@@ -1,0 +1,37 @@
+{
+  "audit_scope": "16 target retrieval failures",
+  "deterministic_expansion_feasibility": "HIGH (Domain mappings are finite and bounded).",
+  "lexical_variations_identified": [
+    {
+      "concept": "credit losses",
+      "variants": [
+        "allowance for credit losses",
+        "(Increase) decrease in allowance for credit losses"
+      ]
+    },
+    {
+      "concept": "accrued liabilities",
+      "variants": [
+        "Accrued customer liabilities",
+        "Accrued expenses and other current liabilities"
+      ]
+    },
+    {
+      "concept": "period header",
+      "variants": [
+        "Year Ended December 31,",
+        "2023: Year Ended December 31,"
+      ]
+    },
+    {
+      "concept": "filing metadata",
+      "variants": [
+        "version sidecar",
+        "SEC form",
+        "amendment marker",
+        "filing date",
+        "supersedes"
+      ]
+    }
+  ]
+}

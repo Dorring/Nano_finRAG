@@ -1,0 +1,145 @@
+{
+  "classification_counts": {
+    "OFFLINE_REFERENCE_OR_COMPLETENESS_MISMATCH": 6
+  },
+  "correctness_predicate": "run_nf_v2_17b3.correct (exact frozen B3 scorer)",
+  "distinction": "Runtime release safety and offline reference correctness are separate; all six rows were validator-released but failed the frozen B3 reference predicate.",
+  "released": 12,
+  "released_correct": 6,
+  "released_incorrect": 6,
+  "rows": [
+    {
+      "answer": "Operating expenses [E1].",
+      "classification": "OFFLINE_REFERENCE_OR_COMPLETENESS_MISMATCH",
+      "gold_excerpt": "Operating expenses | North America: Operating expenses | North America: Operating expenses | Year Ended December 31 / Year Ended December 31, / 2021: 128,711 | Year Ended December 31 / Year Ended December 31, / 2021: 128,711 | Year Ended December 31 / Year Ended December 31, / 2021:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31, / 2022: 125,753 | Year Ended December 31 / Year Ended December 31, / 2022: 125,753 | Year Ended December 31 / Year Ended December 31, / 2022:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31, / 2023: 133,856 | Year Ended December 31 / Year Ended December 31, / 2023: 133,856 | Year Ended December 31 / Year Ended December 31, / 2023: ",
+      "question": "What does the AMZN filing for 2023-12-31 report for the 'Operating expenses' row?",
+      "question_id": "FBV1-017",
+      "reference_excerpt": "Operating expenses | North America: Operating expenses | North America: Operating expenses | Year Ended December 31 / Year Ended December 31, / 2021: 128,711 | Year Ended December 31 / Year Ended December 31, / 2021: 128,711 | Year Ended December 31 / Year Ended December 31, / 2021: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended December 31, / 2022: 125,753 | Year Ended December 31 / Year Ended December 31, / 2022: 125,753 | Year Ended December 31 / Year Ended December 31, / 2022: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended December 31, / 2023: …",
+      "release": true,
+      "runtime_validator_unsafe": false,
+      "selected_evidence": [
+        {
+          "chunk_id": "SEC_1018724_000101872424000008::chunk_adeea05b9ed55d62f8fc8761",
+          "content_type": "TABLE",
+          "document_id": "SEC_1018724_000101872424000008",
+          "evidence_sha256": "b204e725b7d0d18b49df3271b8c085ee7c01b23dee09f78b4e9d263c84f9317c",
+          "period_end": "2023-12-31",
+          "raw_sha256": "a469a0feca6dd5728b10c73076c2c120db58116938614c5b1b864fe13674266d",
+          "section_type": "UNKNOWN"
+        }
+      ],
+      "validator_codes": []
+    },
+    {
+      "answer": "Net cash provided by (used in) operating activities [E1].",
+      "classification": "OFFLINE_REFERENCE_OR_COMPLETENESS_MISMATCH",
+      "gold_excerpt": "Net cash provided by (used in) operating activities | : Net cash provided by (used in) operating activities | : Net cash provided by (used in) operating activities | Year Ended December 31 / Year Ended December 31, / 2022: 46,752 | Year Ended December 31 / Year Ended December 31, / 2022: 46,752 | Year Ended December 31 / Year Ended December 31, / 2022:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31, / 2023: 84,946 | Year Ended December 31 / Year Ended December 31, / 2023: 84,946 | Year Ended December 31 / Year Ended December 31, / 2023:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31, / 2024: 115,877 | Year Ended December 31 / Year Ended December 31, / 2024: 115,877 | Year Ended December 31 / Year Ended December 31, / 2024: ",
+      "question": "What does the AMZN filing for 2024-12-31 report for the 'Net cash provided by (used in) operating activities' row?",
+      "question_id": "FBV1-018",
+      "reference_excerpt": "Net cash provided by (used in) operating activities | : Net cash provided by (used in) operating activities | : Net cash provided by (used in) operating activities | Year Ended December 31 / Year Ended December 31, / 2022: 46,752 | Year Ended December 31 / Year Ended December 31, / 2022: 46,752 | Year Ended December 31 / Year Ended December 31, / 2022: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended December 31, / 2023: 84,946 | Year Ended December 31 / Year Ended December 31, / 2023: 84,946 | Year Ended December 31 / Year Ended December 31, / 2023: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended …",
+      "release": true,
+      "runtime_validator_unsafe": false,
+      "selected_evidence": [
+        {
+          "chunk_id": "SEC_1018724_000101872425000004::chunk_7f0d03b3d63424da5fd3b08a",
+          "content_type": "TABLE",
+          "document_id": "SEC_1018724_000101872425000004",
+          "evidence_sha256": "b97594ca916604d07b23ead3fb2a6ee947dc2245b077776ef876a5875f29eccf",
+          "period_end": "2024-12-31",
+          "raw_sha256": "094e0f2aa1d58203ed77340330e94ff5cb63f5168de5e08ed25a17681a1a53d9",
+          "section_type": "UNKNOWN"
+        }
+      ],
+      "validator_codes": []
+    },
+    {
+      "answer": "Operating Expenses [E1].",
+      "classification": "OFFLINE_REFERENCE_OR_COMPLETENESS_MISMATCH",
+      "gold_excerpt": "Sales and marketing | Operating Expenses:: Sales and marketing | Operating Expenses:: Sales and marketing | :  | :  | :  | :  | :  | :  | Three Months March 31 / Three Months Ended March 31,:  | Three Months March 31 / Three Months Ended March 31,:  | Three Months March 31 / Three Months Ended March 31,:  | Three Months March 31 / Three Months Ended March 31,:  | Three Months March 31 / Three Months Ended March 31,:  | Three Months March 31 / Three Months Ended March 31,:  | Three Months March 31 / Three Months Ended March 31, / 2024: 9,662 | Three Months March 31 / Three Months Ended March 31, / 2024: 9,662 | Three Months March 31 / Three Months Ended March 31, / 2024:  | :  | :  | :  | 2025: 9,763 | 2025: 9,763 | 2025: ",
+      "question": "What does the AMZN filing for 2025-03-31 report for the 'Operating Expenses' row?",
+      "question_id": "FBV1-020",
+      "reference_excerpt": "Sales and marketing | Operating Expenses:: Sales and marketing | Operating Expenses:: Sales and marketing | : | : | : | : | : | : | Three Months March 31 / Three Months Ended March 31,: | Three Months March 31 / Three Months Ended March 31,: | Three Months March 31 / Three Months Ended March 31,: | Three Months March 31 / Three Months Ended March 31,: | Three Months March 31 / Three Months Ended March 31,: | Three Months March 31 / Three Months Ended March 31,: | Three Months March 31 / Three Months Ended March 31, / 2024: 9,662 | Three Months March 31 / Three Months Ended March 31, / 2024: 9,662 | Three Months March 31 / Three Months Ended March 31, / 2024: | : | : | : | 2025: 9,763 | 2025: 9,763 | 2025:",
+      "release": true,
+      "runtime_validator_unsafe": false,
+      "selected_evidence": [
+        {
+          "chunk_id": "SEC_1018724_000101872425000036::chunk_b46eba953c83d1457956608a",
+          "content_type": "TABLE",
+          "document_id": "SEC_1018724_000101872425000036",
+          "evidence_sha256": "cac6ac7ef7b580971daa80406637c8073ea9a5234692b7d25fd7b95809a020aa",
+          "period_end": "2025-03-31",
+          "raw_sha256": "343daf57ea75cf87da844a0e3e6924d6d24e924cf9e5ce18b44c1147c15d80dd",
+          "section_type": "UNKNOWN"
+        }
+      ],
+      "validator_codes": []
+    },
+    {
+      "answer": "Operating Expenses [E1].",
+      "classification": "OFFLINE_REFERENCE_OR_COMPLETENESS_MISMATCH",
+      "gold_excerpt": " | Operating Expenses::  | Operating Expenses::  | Year Ended December 31 / Year Ended December 31, / 2022:  | Year Ended December 31 / Year Ended December 31, / 2022:  | Year Ended December 31 / Year Ended December 31, / 2022:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31, / 2023:  | Year Ended December 31 / Year Ended December 31, / 2023:  | Year Ended December 31 / Year Ended December 31, / 2023: ",
+      "question": "What disclosure is given in the AMZN filing for 2023-12-31 for the 'Operating Expenses' row?",
+      "question_id": "FBV1-029",
+      "reference_excerpt": "| Operating Expenses:: | Operating Expenses:: | Year Ended December 31 / Year Ended December 31, / 2022: | Year Ended December 31 / Year Ended December 31, / 2022: | Year Ended December 31 / Year Ended December 31, / 2022: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended December 31, / 2023: | Year Ended December 31 / Year Ended December 31, / 2023: | Year Ended December 31 / Year Ended December 31, / 2023:",
+      "release": true,
+      "runtime_validator_unsafe": false,
+      "selected_evidence": [
+        {
+          "chunk_id": "SEC_1018724_000101872424000008::chunk_9831c8345c76bc2efd3425b1",
+          "content_type": "TABLE",
+          "document_id": "SEC_1018724_000101872424000008",
+          "evidence_sha256": "d673b12ca06e7a2dca18a990c0998c2111e4bb3cc268a48185ea17d5c688fd3c",
+          "period_end": "2023-12-31",
+          "raw_sha256": "a469a0feca6dd5728b10c73076c2c120db58116938614c5b1b864fe13674266d",
+          "section_type": "UNKNOWN"
+        }
+      ],
+      "validator_codes": []
+    },
+    {
+      "answer": "Net cash provided by (used in) operating activities [E1].",
+      "classification": "OFFLINE_REFERENCE_OR_COMPLETENESS_MISMATCH",
+      "gold_excerpt": "Net cash provided by (used in) operating activities | : Net cash provided by (used in) operating activities | : Net cash provided by (used in) operating activities | Year Ended December 31 / Year Ended December 31, / 2022: 46,752 | Year Ended December 31 / Year Ended December 31, / 2022: 46,752 | Year Ended December 31 / Year Ended December 31, / 2022:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31, / 2023: 84,946 | Year Ended December 31 / Year Ended December 31, / 2023: 84,946 | Year Ended December 31 / Year Ended December 31, / 2023:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31,:  | Year Ended December 31 / Year Ended December 31, / 2024: 115,877 | Year Ended December 31 / Year Ended December 31, / 2024: 115,877 | Year Ended December 31 / Year Ended December 31, / 2024: ",
+      "question": "What temporal scope does the 'Net cash provided by (used in) operating activities' row in the AMZN filing for 2024-12-31 represent, and what does it report?",
+      "question_id": "FBV1-073",
+      "reference_excerpt": "ANNUAL (start not specified to 2024-12-31): Net cash provided by (used in) operating activities | : Net cash provided by (used in) operating activities | : Net cash provided by (used in) operating activities | Year Ended December 31 / Year Ended December 31, / 2022: 46,752 | Year Ended December 31 / Year Ended December 31, / 2022: 46,752 | Year Ended December 31 / Year Ended December 31, / 2022: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended December 31, / 2023: 84,946 | Year Ended December 31 / Year Ended December 31, / 2023: 84,946 | Year Ended December 31 / Year Ended December 31, / 2023: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended December 31,: | Year Ended December 31 / Year Ended …",
+      "release": true,
+      "runtime_validator_unsafe": false,
+      "selected_evidence": [
+        {
+          "chunk_id": "SEC_1018724_000101872425000004::chunk_7f0d03b3d63424da5fd3b08a",
+          "content_type": "TABLE",
+          "document_id": "SEC_1018724_000101872425000004",
+          "evidence_sha256": "b97594ca916604d07b23ead3fb2a6ee947dc2245b077776ef876a5875f29eccf",
+          "period_end": "2024-12-31",
+          "raw_sha256": "094e0f2aa1d58203ed77340330e94ff5cb63f5168de5e08ed25a17681a1a53d9",
+          "section_type": "UNKNOWN"
+        }
+      ],
+      "validator_codes": []
+    },
+    {
+      "answer": "Operating Expenses [E1].",
+      "classification": "OFFLINE_REFERENCE_OR_COMPLETENESS_MISMATCH",
+      "gold_excerpt": "Sales and marketing | Operating Expenses:: Sales and marketing | Operating Expenses:: Sales and marketing | :  | :  | :  | :  | :  | :  | Three Months March 31 / Three Months Ended March 31,:  | Three Months March 31 / Three Months Ended March 31,:  | Three Months March 31 / Three Months Ended March 31,:  | Three Months March 31 / Three Months Ended March 31,:  | Three Months March 31 / Three Months Ended March 31,:  | Three Months March 31 / Three Months Ended March 31,:  | Three Months March 31 / Three Months Ended March 31, / 2024: 9,662 | Three Months March 31 / Three Months Ended March 31, / 2024: 9,662 | Three Months March 31 / Three Months Ended March 31, / 2024:  | :  | :  | :  | 2025: 9,763 | 2025: 9,763 | 2025: ",
+      "question": "What temporal scope does the 'Operating Expenses' row in the AMZN filing for 2025-03-31 represent, and what does it report?",
+      "question_id": "FBV1-075",
+      "reference_excerpt": "QUARTER (start not specified to 2025-03-31): Sales and marketing | Operating Expenses:: Sales and marketing | Operating Expenses:: Sales and marketing | : | : | : | : | : | : | Three Months March 31 / Three Months Ended March 31,: | Three Months March 31 / Three Months Ended March 31,: | Three Months March 31 / Three Months Ended March 31,: | Three Months March 31 / Three Months Ended March 31,: | Three Months March 31 / Three Months Ended March 31,: | Three Months March 31 / Three Months Ended March 31,: | Three Months March 31 / Three Months Ended March 31, / 2024: 9,662 | Three Months March 31 / Three Months Ended March 31, / 2024: 9,662 | Three Months March 31 / Three Months Ended March 31, / 2024: | : | : | : | 2025: 9,763 | 2025: 9,763 | 2025:",
+      "release": true,
+      "runtime_validator_unsafe": false,
+      "selected_evidence": [
+        {
+          "chunk_id": "SEC_1018724_000101872425000036::chunk_b46eba953c83d1457956608a",
+          "content_type": "TABLE",
+          "document_id": "SEC_1018724_000101872425000036",
+          "evidence_sha256": "cac6ac7ef7b580971daa80406637c8073ea9a5234692b7d25fd7b95809a020aa",
+          "period_end": "2025-03-31",
+          "raw_sha256": "343daf57ea75cf87da844a0e3e6924d6d24e924cf9e5ce18b44c1147c15d80dd",
+          "section_type": "UNKNOWN"
+        }
+      ],
+      "validator_codes": []
+    }
+  ],
+  "runtime_unsafe_release": 0
+}

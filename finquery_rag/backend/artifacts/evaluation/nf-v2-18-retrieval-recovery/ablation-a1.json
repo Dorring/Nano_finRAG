@@ -1,0 +1,81 @@
+{
+  "index": "A5 frozen BM25 read-only",
+  "metrics": {
+    "R@1": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 0,
+      "calculation_operand_coverage": 0.0,
+      "denominator": 120,
+      "exact_count": 19,
+      "exact_recall": 0.15833333333333333,
+      "family_count": 66,
+      "family_recall": 0.55,
+      "multi_all_count": 0,
+      "multi_all_recall": 0.0,
+      "multi_any_count": 6,
+      "multi_any_recall": 0.3,
+      "multi_count": 20
+    },
+    "R@10": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 5,
+      "calculation_operand_coverage": 0.3333333333333333,
+      "denominator": 120,
+      "exact_count": 71,
+      "exact_recall": 0.5916666666666667,
+      "family_count": 88,
+      "family_recall": 0.7333333333333333,
+      "multi_all_count": 6,
+      "multi_all_recall": 0.3,
+      "multi_any_count": 19,
+      "multi_any_recall": 0.95,
+      "multi_count": 20
+    },
+    "R@20": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 7,
+      "calculation_operand_coverage": 0.4666666666666667,
+      "denominator": 120,
+      "exact_count": 80,
+      "exact_recall": 0.6666666666666666,
+      "family_count": 89,
+      "family_recall": 0.7416666666666667,
+      "multi_all_count": 9,
+      "multi_all_recall": 0.45,
+      "multi_any_count": 20,
+      "multi_any_recall": 1.0,
+      "multi_count": 20
+    },
+    "R@3": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 2,
+      "calculation_operand_coverage": 0.13333333333333333,
+      "denominator": 120,
+      "exact_count": 54,
+      "exact_recall": 0.45,
+      "family_count": 82,
+      "family_recall": 0.6833333333333333,
+      "multi_all_count": 0,
+      "multi_all_recall": 0.0,
+      "multi_any_count": 18,
+      "multi_any_recall": 0.9,
+      "multi_count": 20
+    },
+    "R@5": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 2,
+      "calculation_operand_coverage": 0.13333333333333333,
+      "denominator": 120,
+      "exact_count": 61,
+      "exact_recall": 0.5083333333333333,
+      "family_count": 86,
+      "family_recall": 0.7166666666666667,
+      "multi_all_count": 0,
+      "multi_all_recall": 0.0,
+      "multi_any_count": 18,
+      "multi_any_recall": 0.9,
+      "multi_count": 20
+    }
+  },
+  "name": "BM25 query repair only"
+}

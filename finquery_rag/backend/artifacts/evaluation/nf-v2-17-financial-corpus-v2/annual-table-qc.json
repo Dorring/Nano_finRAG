@@ -1,0 +1,135 @@
+{
+  "coverage": 10,
+  "sampled_documents": [
+    {
+      "checks": {
+        "balance_sheet": true,
+        "cash_flow": true,
+        "income_statement": true,
+        "notes": true
+      },
+      "document_id": "SEC_320193_000032019325000079",
+      "fiscal_year": 2025,
+      "status": "PASS",
+      "tables": 62,
+      "ticker": "AAPL"
+    },
+    {
+      "checks": {
+        "balance_sheet": true,
+        "cash_flow": true,
+        "income_statement": true,
+        "notes": true
+      },
+      "document_id": "SEC_1018724_000101872426000004",
+      "fiscal_year": 2025,
+      "status": "PASS",
+      "tables": 92,
+      "ticker": "AMZN"
+    },
+    {
+      "checks": {
+        "balance_sheet": true,
+        "cash_flow": true,
+        "income_statement": true,
+        "notes": true
+      },
+      "document_id": "SEC_1652044_000165204426000018",
+      "fiscal_year": 2025,
+      "status": "PASS",
+      "tables": 185,
+      "ticker": "GOOGL"
+    },
+    {
+      "checks": {
+        "balance_sheet": true,
+        "cash_flow": true,
+        "income_statement": true,
+        "notes": true
+      },
+      "document_id": "SEC_19617_000162828026008131",
+      "fiscal_year": 2025,
+      "status": "PASS",
+      "tables": 679,
+      "ticker": "JPM"
+    },
+    {
+      "checks": {
+        "balance_sheet": true,
+        "cash_flow": true,
+        "income_statement": true,
+        "notes": true
+      },
+      "document_id": "SEC_21344_000162828026010047",
+      "fiscal_year": 2025,
+      "status": "PASS",
+      "tables": 117,
+      "ticker": "KO"
+    },
+    {
+      "checks": {
+        "balance_sheet": true,
+        "cash_flow": true,
+        "income_statement": true,
+        "notes": true
+      },
+      "document_id": "SEC_789019_000095017025100235",
+      "fiscal_year": 2025,
+      "status": "PASS",
+      "tables": 85,
+      "ticker": "MSFT"
+    },
+    {
+      "checks": {
+        "balance_sheet": true,
+        "cash_flow": true,
+        "income_statement": true,
+        "notes": false
+      },
+      "document_id": "SEC_1045810_000104581025000023",
+      "fiscal_year": 2025,
+      "status": "WARN",
+      "tables": 68,
+      "ticker": "NVDA"
+    },
+    {
+      "checks": {
+        "balance_sheet": true,
+        "cash_flow": true,
+        "income_statement": true,
+        "notes": false
+      },
+      "document_id": "SEC_78003_000007800326000026",
+      "fiscal_year": 2025,
+      "status": "WARN",
+      "tables": 315,
+      "ticker": "PFE"
+    },
+    {
+      "checks": {
+        "balance_sheet": true,
+        "cash_flow": true,
+        "income_statement": true,
+        "notes": true
+      },
+      "document_id": "SEC_1318605_000162828026003952",
+      "fiscal_year": 2025,
+      "status": "PASS",
+      "tables": 79,
+      "ticker": "TSLA"
+    },
+    {
+      "checks": {
+        "balance_sheet": true,
+        "cash_flow": true,
+        "income_statement": true,
+        "notes": true
+      },
+      "document_id": "SEC_1403161_000140316125000089",
+      "fiscal_year": 2025,
+      "status": "PASS",
+      "tables": 86,
+      "ticker": "V"
+    }
+  ]
+}

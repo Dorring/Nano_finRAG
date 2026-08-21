@@ -1,0 +1,7 @@
+{
+  "adapter_required": "metadata projection only; AtomicFact row_id/table_fragment_id retained",
+  "binder": "existing structural_joint_binder_v2 / joint_operand_binder",
+  "false_binding": 0,
+  "new_binder": false,
+  "value_unit_scale_gate": "existing operation_unit_contract"
+}

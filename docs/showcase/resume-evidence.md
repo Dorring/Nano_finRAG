@@ -113,3 +113,11 @@
 - `artifacts/evaluation/nf-opt-17-gate-e/zero-shot-development-results.json`
 - `artifacts/evaluation/nf-opt-17-gate-f/issuer-disjoint-training-result.json`
 - `artifacts/evaluation/nf-opt-17-gate-f/nf-opt-17-gate-f-acceptance.json`
+
+## NF-V2-15：后生成语义论断校验（限定表述）
+
+在冻结的可信证据生成链路中加入 `SemanticClaimVerifierV1`，专门检查生成答案
+对数值、期间、单位、币种、引用和证据支持的新增论断。对同一份冻结 72 题回放，
+保留 3 个原先正确释放并拦截 1 个单位幻觉（3 个释放全部正确，语义不安全最终释放
+0）。这是回放/组件级证据，不是 fresh-blind E2E 精度；生产仍为 V1。R1 + LoRA/DPO
+因最终效果无效，仅保留为历史研究记录。

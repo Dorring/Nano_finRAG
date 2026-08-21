@@ -1,0 +1,18 @@
+{
+  "fields_logged": [
+    "route",
+    "generator_selected",
+    "checkpoint_sha_prefix",
+    "generation_latency_seconds",
+    "validation_latency_seconds",
+    "generated",
+    "released",
+    "fail_closed",
+    "repair_attempted",
+    "repair_result",
+    "fallback_invoked",
+    "validator_reason_codes"
+  ],
+  "no_confidential_document_leakage": true,
+  "schema_version": "v1.0"
+}

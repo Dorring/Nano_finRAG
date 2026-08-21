@@ -1,0 +1,18 @@
+{
+  "explains_single_non_released": true,
+  "failures": [
+    {
+      "audit_notes": "Sample was properly grounded with valid citations and semantic facts, but failed strict string match filter.",
+      "classification": "SAFE_FAIL_CLOSED",
+      "prediction": "For 2024-Q2, NFLX attributed the performance of Effective Tax Rate ($16.4%) mainly to operating margin expansion against relatively stable content amortization schedules [E1].",
+      "question": "Reviewing the verified financial statements, summarize the operational drivers NFLX highlighted for Effective Tax Rate during 2024-Q2.",
+      "released": false,
+      "sample_id": "a4f76ea639b85d30",
+      "semantic_supported": false,
+      "strict_correct": false,
+      "target_ref": "Management at NFLX noted that Effective Tax Rate in 2024-Q2 was shaped by operating margin expansion reflecting revenue scale leverage against relatively stable content amortization schedules [E1]."
+    }
+  ],
+  "strict_correct_count": 124,
+  "total_qualitative_cases": 125
+}

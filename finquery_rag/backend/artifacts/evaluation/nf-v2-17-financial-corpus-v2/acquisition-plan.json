@@ -1,0 +1,1269 @@
+{
+  "schema_version": "nf-v2-17/acquisition-plan/v1",
+  "raw_layout": "financial_corpus_v2/raw/SEC/<ticker>/<document_id>/source.html",
+  "normalized_layout": "financial_corpus_v2/normalized/<ticker>/<document_id>/",
+  "parsed_layout": "financial_corpus_v2/parsed/<ticker>/<document_id>/",
+  "records": [
+    {
+      "document_id": "SEC_789019_000095017023035122",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017023035122/msft-20230630.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017023035122/0000950170-23-035122-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/MSFT/SEC_789019_000095017023035122/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_789019_000095017024087843",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/0000950170-24-087843-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/MSFT/SEC_789019_000095017024087843/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_789019_000095017025100235",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/0000950170-25-100235-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/MSFT/SEC_789019_000095017025100235/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_789019_000095017024118967",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024118967/msft-20240930.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024118967/0000950170-24-118967-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/MSFT/SEC_789019_000095017024118967/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_789019_000095017025010491",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025010491/msft-20241231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025010491/0000950170-25-010491-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/MSFT/SEC_789019_000095017025010491/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_789019_000095017025061046",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025061046/msft-20250331.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025061046/0000950170-25-061046-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/MSFT/SEC_789019_000095017025061046/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_320193_000032019323000106",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/0000320193-23-000106-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/AAPL/SEC_320193_000032019323000106/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_320193_000032019324000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/0000320193-24-000123-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/AAPL/SEC_320193_000032019324000123/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_320193_000032019325000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/AAPL/SEC_320193_000032019325000079/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_320193_000032019325000008",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000008/aapl-20241228.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000008/0000320193-25-000008-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/AAPL/SEC_320193_000032019325000008/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_320193_000032019325000057",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000057/aapl-20250329.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000057/0000320193-25-000057-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/AAPL/SEC_320193_000032019325000057/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_320193_000032019325000073",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000073/aapl-20250628.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000073/0000320193-25-000073-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/AAPL/SEC_320193_000032019325000073/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1045810_000104581023000017",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000017/nvda-20230129.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000017/0001045810-23-000017-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/NVDA/SEC_1045810_000104581023000017/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1045810_000104581024000029",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/0001045810-24-000029-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/NVDA/SEC_1045810_000104581024000029/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1045810_000104581025000023",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/0001045810-25-000023-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/NVDA/SEC_1045810_000104581025000023/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1045810_000104581024000124",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000124/nvda-20240428.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000124/0001045810-24-000124-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/NVDA/SEC_1045810_000104581024000124/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1045810_000104581024000264",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000264/nvda-20240728.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000264/0001045810-24-000264-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/NVDA/SEC_1045810_000104581024000264/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1045810_000104581024000316",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/0001045810-24-000316-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/NVDA/SEC_1045810_000104581024000316/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_19617_000001961724000225",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961724000225/jpm-20231231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961724000225/0000019617-24-000225-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/JPM/SEC_19617_000001961724000225/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_19617_000001961725000270",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961725000270/jpm-20241231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961725000270/0000019617-25-000270-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/JPM/SEC_19617_000001961725000270/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_19617_000162828026008131",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026008131/jpm-20251231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026008131/0001628280-26-008131-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/JPM/SEC_19617_000162828026008131/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_19617_000001961725000421",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961725000421/jpm-20250331.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961725000421/0000019617-25-000421-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/JPM/SEC_19617_000001961725000421/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_19617_000001961725000615",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961725000615/jpm-20250630.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961725000615/0000019617-25-000615-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/JPM/SEC_19617_000001961725000615/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_19617_000162828025048859",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/19617/000162828025048859/jpm-20250930.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/19617/000162828025048859/0001628280-25-048859-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/JPM/SEC_19617_000162828025048859/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1318605_000162828024002390",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828024002390/tsla-20231231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828024002390/0001628280-24-002390-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/TSLA/SEC_1318605_000162828024002390/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1318605_000162828025003063",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025003063/tsla-20241231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025003063/0001628280-25-003063-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/TSLA/SEC_1318605_000162828025003063/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1318605_000162828026003952",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/0001628280-26-003952-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/TSLA/SEC_1318605_000162828026003952/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1318605_000162828025018911",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025018911/tsla-20250331.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025018911/0001628280-25-018911-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/TSLA/SEC_1318605_000162828025018911/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1318605_000162828025035806",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025035806/tsla-20250630.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025035806/0001628280-25-035806-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/TSLA/SEC_1318605_000162828025035806/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1318605_000162828025045968",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025045968/tsla-20250930.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025045968/0001628280-25-045968-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/TSLA/SEC_1318605_000162828025045968/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_21344_000002134424000009",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134424000009/ko-20231231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134424000009/0000021344-24-000009-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/KO/SEC_21344_000002134424000009/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_21344_000002134425000011",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/0000021344-25-000011-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/KO/SEC_21344_000002134425000011/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_21344_000162828026010047",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/0001628280-26-010047-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/KO/SEC_21344_000162828026010047/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_21344_000002134425000029",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000029/ko-20250328.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000029/0000021344-25-000029-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/KO/SEC_21344_000002134425000029/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_21344_000002134425000061",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000061/ko-20250627.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000061/0000021344-25-000061-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/KO/SEC_21344_000002134425000061/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_21344_000162828025046054",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828025046054/ko-20250926.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828025046054/0001628280-25-046054-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/KO/SEC_21344_000162828025046054/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1403161_000140316123000099",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316123000099/v-20230930.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316123000099/0001403161-23-000099-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/V/SEC_1403161_000140316123000099/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1403161_000140316124000058",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316124000058/v-20240930.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316124000058/0001403161-24-000058-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/V/SEC_1403161_000140316124000058/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1403161_000140316125000089",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316125000089/v-20250930.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316125000089/0001403161-25-000089-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/V/SEC_1403161_000140316125000089/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1403161_000140316125000017",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316125000017/v-20241231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316125000017/0001403161-25-000017-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/V/SEC_1403161_000140316125000017/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1403161_000140316125000037",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316125000037/v-20250331.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316125000037/0001403161-25-000037-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/V/SEC_1403161_000140316125000037/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1403161_000140316125000052",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316125000052/v-20250630.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316125000052/0001403161-25-000052-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/V/SEC_1403161_000140316125000052/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_78003_000007800324000039",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800324000039/pfe-20231231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800324000039/0000078003-24-000039-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/PFE/SEC_78003_000007800324000039/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_78003_000007800325000054",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800325000054/pfe-20241231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800325000054/0000078003-25-000054-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/PFE/SEC_78003_000007800325000054/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_78003_000007800326000026",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800326000026/pfe-20251231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800326000026/0000078003-26-000026-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/PFE/SEC_78003_000007800326000026/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_78003_000007800325000114",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800325000114/pfe-20250330.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800325000114/0000078003-25-000114-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/PFE/SEC_78003_000007800325000114/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_78003_000007800325000138",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800325000138/pfe-20250629.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800325000138/0000078003-25-000138-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/PFE/SEC_78003_000007800325000138/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_78003_000007800325000150",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800325000150/pfe-20250928.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800325000150/0000078003-25-000150-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/PFE/SEC_78003_000007800325000150/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "NORMAL",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1652044_000165204424000022",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204424000022/goog-20231231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204424000022/0001652044-24-000022-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/GOOGL/SEC_1652044_000165204424000022/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "HIGH",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1652044_000165204425000014",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/0001652044-25-000014-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/GOOGL/SEC_1652044_000165204425000014/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "HIGH",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1652044_000165204426000018",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/0001652044-26-000018-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/GOOGL/SEC_1652044_000165204426000018/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "HIGH",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1652044_000165204425000043",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000043/goog-20250331.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000043/0001652044-25-000043-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/GOOGL/SEC_1652044_000165204425000043/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "HIGH",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1652044_000165204425000062",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000062/goog-20250630.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000062/0001652044-25-000062-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/GOOGL/SEC_1652044_000165204425000062/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "HIGH",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1652044_000165204425000091",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000091/goog-20250930.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000091/0001652044-25-000091-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/GOOGL/SEC_1652044_000165204425000091/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "HIGH",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1018724_000101872424000008",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872424000008/amzn-20231231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872424000008/0001018724-24-000008-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/AMZN/SEC_1018724_000101872424000008/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "HIGH",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1018724_000101872425000004",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/0001018724-25-000004-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/AMZN/SEC_1018724_000101872425000004/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "HIGH",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1018724_000101872426000004",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/0001018724-26-000004-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/AMZN/SEC_1018724_000101872426000004/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "HIGH",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1018724_000101872425000036",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000036/amzn-20250331.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000036/0001018724-25-000036-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/AMZN/SEC_1018724_000101872425000036/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "HIGH",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1018724_000101872425000086",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000086/amzn-20250630.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000086/0001018724-25-000086-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/AMZN/SEC_1018724_000101872425000086/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "HIGH",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    },
+    {
+      "document_id": "SEC_1018724_000101872425000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000123/amzn-20250930.htm",
+      "source_index_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000123/0001018724-25-000123-index.htm",
+      "source_format": "RAW_HTML",
+      "target_raw_path": "financial_corpus_v2/raw/SEC/AMZN/SEC_1018724_000101872425000123/source.html",
+      "conversion_required": true,
+      "expected_parser_route": "native_pdf_or_explicit_html_adapter",
+      "priority": "HIGH",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff_seconds": [
+          2,
+          8,
+          30
+        ],
+        "respect_sec_rate_limits": true
+      },
+      "source_authority": "SEC_EDGAR_REGULATORY_FILING",
+      "downloaded_in_a2": false
+    }
+  ],
+  "download_started": false
+}

@@ -1,0 +1,23 @@
+{
+  "allocated_vram_mib_after_load": 7724.96337890625,
+  "contract": {
+    "cuda_version": "12.8",
+    "device": "cuda:0",
+    "device_name": "NVIDIA RTX A6000",
+    "dtype": "bfloat16",
+    "generation": false,
+    "load_seconds": 2.555132344015874,
+    "max_length": 8192,
+    "model_id": "Qwen/Qwen3-Reranker-4B",
+    "model_revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+    "no_token_id": 2152,
+    "pad_token_id": 151645,
+    "padding_side": "left",
+    "torch_version": "2.9.1+cu128",
+    "transformers_version": "4.57.1",
+    "yes_token_id": 9693
+  },
+  "load_seconds": 2.555132344015874,
+  "reserved_vram_mib_after_load": 7728.0,
+  "status": "PASS"
+}

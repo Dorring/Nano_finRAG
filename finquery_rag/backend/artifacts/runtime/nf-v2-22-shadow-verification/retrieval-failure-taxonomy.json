@@ -1,0 +1,42 @@
+{
+  "answerable_miss_total": 16,
+  "primary_remaining_bottleneck": "RETRIEVAL",
+  "taxonomy": {
+    "MISS_FIRST_STAGE": {
+      "count": 10,
+      "description": "Front-matter, tax notes, and accounting policy disclosures missing from first-stage index or BM25/dense query representations.",
+      "sample_ids": [
+        "FBV1-096",
+        "FBV1-097",
+        "FBV1-098",
+        "FBV1-099",
+        "FBV1-100",
+        "FBV1-101",
+        "FBV1-102",
+        "FBV1-103",
+        "FBV1-104",
+        "FBV1-105"
+      ]
+    },
+    "MISS_RANKING_BUDGET": {
+      "count": 0,
+      "description": "Relevant chunk retrieved in candidate pool but truncated by reranker top-k."
+    },
+    "MULTI_EVIDENCE_INCOMPLETE": {
+      "count": 6,
+      "description": "Multi-statement / cross-period queries where 1 of 2 required evidence chunks was not ranked in top-k retrieval budget.",
+      "sample_ids": [
+        "FBV1-081",
+        "FBV1-082",
+        "FBV1-083",
+        "FBV1-084",
+        "FBV1-093",
+        "FBV1-095"
+      ]
+    },
+    "WRONG_PERIOD_RETRIEVAL": {
+      "count": 0,
+      "description": "Retrieved chunk belonged to wrong fiscal year/quarter."
+    }
+  }
+}

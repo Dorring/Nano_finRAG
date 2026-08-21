@@ -1,0 +1,45 @@
+{
+  "answerable_questions": 105,
+  "compatibility_matrix": {
+    "IXBRL": {
+      "STRUCTURED": "native",
+      "TABLE": "possible_source_link",
+      "TABLE_ROW": "possible_source_link"
+    },
+    "TABLE": {
+      "STRUCTURED": "not_returned",
+      "TABLE": "native",
+      "TABLE_ROW": "parent_child_candidate",
+      "TEXT": "not_exact"
+    },
+    "TABLE_ROW": {
+      "STRUCTURED": "not_returned",
+      "TABLE": "parent_child_candidate",
+      "TABLE_ROW": "native",
+      "TEXT": "not_exact"
+    },
+    "TEXT": {
+      "STRUCTURED": "not_returned",
+      "TABLE": "not_exact",
+      "TABLE_ROW": "not_exact",
+      "TEXT": "native"
+    }
+  },
+  "gold_evidence_objects": 155,
+  "metric_definition_changed": false,
+  "retriever_return_type_counts": {
+    "bm25": {},
+    "dense": {
+      "TABLE": 1040
+    },
+    "hybrid": {
+      "TABLE": 1040
+    },
+    "structured": {}
+  },
+  "type_counts": {
+    "TABLE": 5,
+    "TABLE_ROW": 147,
+    "TEXT": 3
+  }
+}

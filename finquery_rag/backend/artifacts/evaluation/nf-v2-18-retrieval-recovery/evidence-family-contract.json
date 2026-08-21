@@ -1,0 +1,21 @@
+{
+  "coarse_hit_is_not_final_binding": true,
+  "fields": [
+    "evidence_id",
+    "evidence_type",
+    "parent_id",
+    "ancestor_ids",
+    "evidence_family_id",
+    "document_id",
+    "table_id",
+    "row_id",
+    "row_period_id"
+  ],
+  "hierarchy": [
+    "TABLE",
+    "TABLE_ROW",
+    "ROW_PERIOD"
+  ],
+  "records_with_family": 95154,
+  "version": "nf-v2-18/evidence-family/v1"
+}

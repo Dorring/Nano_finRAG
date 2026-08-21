@@ -1,0 +1,295 @@
+[
+  {
+    "case_id": "CASE01_AUTHORIZATION",
+    "source_type": "TEST_FIXTURE",
+    "query": "MSFT FY2024 revenue",
+    "auth": {
+      "user_id": 1
+    },
+    "expected_hard": {
+      "ticker": [
+        "MSFT"
+      ],
+      "fiscal_year": [
+        "2024"
+      ]
+    },
+    "mode": "hybrid",
+    "expected": "AUTHORIZED_ONLY"
+  },
+  {
+    "case_id": "CASE02_ENTITY",
+    "source_type": "TEST_FIXTURE",
+    "query": "MSFT FY2024 revenue",
+    "auth": {
+      "user_id": 1
+    },
+    "expected_hard": {
+      "ticker": [
+        "MSFT"
+      ],
+      "fiscal_year": [
+        "2024"
+      ]
+    },
+    "mode": "bm25",
+    "expected": "MSFT_ONLY"
+  },
+  {
+    "case_id": "CASE03_FISCAL_YEAR",
+    "source_type": "TEST_FIXTURE",
+    "query": "MSFT FY2024 revenue",
+    "auth": {
+      "user_id": 1
+    },
+    "expected_hard": {
+      "ticker": [
+        "MSFT"
+      ],
+      "fiscal_year": [
+        "2024"
+      ]
+    },
+    "mode": "vector",
+    "expected": "FY2024_ONLY"
+  },
+  {
+    "case_id": "CASE04_QUARTER_ANNUAL",
+    "source_type": "TEST_FIXTURE",
+    "query": "MSFT 2024 Q1 revenue",
+    "auth": {
+      "user_id": 1
+    },
+    "expected_hard": {
+      "fiscal_year": [
+        "2024"
+      ],
+      "fiscal_quarter": [
+        "Q1"
+      ],
+      "period_semantics": [
+        "QUARTER"
+      ]
+    },
+    "mode": "hybrid",
+    "expected": "Q1_ONLY"
+  },
+  {
+    "case_id": "CASE05_QUARTER_YTD",
+    "source_type": "TEST_FIXTURE",
+    "query": "MSFT 2024 Q2 six months ended revenue",
+    "auth": {
+      "user_id": 1
+    },
+    "expected_hard": {
+      "fiscal_year": [
+        "2024"
+      ],
+      "fiscal_quarter": [
+        "Q2"
+      ],
+      "period_semantics": [
+        "YTD"
+      ]
+    },
+    "mode": "bm25",
+    "expected": "YTD_ONLY"
+  },
+  {
+    "case_id": "CASE06_LATEST_ANNUAL",
+    "source_type": "TEST_FIXTURE",
+    "query": "MSFT latest annual report revenue",
+    "auth": {
+      "user_id": 1
+    },
+    "expected_hard": {
+      "ticker": [
+        "MSFT"
+      ],
+      "document_type": [
+        "ANNUAL"
+      ],
+      "period_semantics": [
+        "ANNUAL"
+      ],
+      "latest_scope": [
+        "filing_date"
+      ]
+    },
+    "mode": "hybrid",
+    "expected": "LATEST_EXPLICIT_FILING_DATE"
+  },
+  {
+    "case_id": "CASE07_AMENDMENT",
+    "source_type": "TEST_FIXTURE",
+    "query": "MSFT FY2024 annual current valid version",
+    "auth": {
+      "user_id": 1
+    },
+    "expected_hard": {
+      "ticker": [
+        "MSFT"
+      ],
+      "fiscal_year": [
+        "2024"
+      ],
+      "document_type": [
+        "ANNUAL"
+      ]
+    },
+    "mode": "bm25",
+    "expected": "AMENDED_PREFERRED"
+  },
+  {
+    "case_id": "CASE08_MISSING_SLOT_RECOVERABLE",
+    "source_type": "TEST_FIXTURE",
+    "query": "MSFT FY2024 revenue and operating income",
+    "auth": {
+      "user_id": 1
+    },
+    "expected_hard": {
+      "ticker": [
+        "MSFT"
+      ],
+      "fiscal_year": [
+        "2024"
+      ]
+    },
+    "mode": "bm25",
+    "replan": true,
+    "expected": "SUFFICIENT"
+  },
+  {
+    "case_id": "CASE09_WRONG_PERIOD_RECOVERY",
+    "source_type": "TEST_FIXTURE",
+    "query": "MSFT FY2024 revenue",
+    "auth": {
+      "user_id": 1
+    },
+    "expected_hard": {
+      "ticker": [
+        "MSFT"
+      ],
+      "fiscal_year": [
+        "2024"
+      ]
+    },
+    "mode": "bm25",
+    "replan": true,
+    "expected": "SUFFICIENT"
+  },
+  {
+    "case_id": "CASE10_NO_PROGRESS",
+    "source_type": "TEST_FIXTURE",
+    "query": "MSFT FY2024 missing metric",
+    "auth": {
+      "user_id": 1
+    },
+    "expected_hard": {
+      "ticker": [
+        "MSFT"
+      ],
+      "fiscal_year": [
+        "2024"
+      ]
+    },
+    "mode": "bm25",
+    "replan": true,
+    "no_progress": true,
+    "expected": "FAIL_CLOSED_NO_PROGRESS"
+  },
+  {
+    "case_id": "CASE11_CAPABILITY_REROUTE",
+    "source_type": "TEST_FIXTURE",
+    "query": "MSFT FY2024 revenue and income",
+    "auth": {
+      "user_id": 1
+    },
+    "expected_hard": {
+      "ticker": [
+        "MSFT"
+      ],
+      "fiscal_year": [
+        "2024"
+      ]
+    },
+    "mode": "bm25",
+    "replan": true,
+    "capability_reroute": true,
+    "expected": "SUFFICIENT"
+  },
+  {
+    "case_id": "CASE12_FILTER_EMPTY",
+    "source_type": "TEST_FIXTURE",
+    "query": "MSFT FY2030 revenue",
+    "auth": {
+      "user_id": 1
+    },
+    "expected_hard": {
+      "ticker": [
+        "MSFT"
+      ],
+      "fiscal_year": [
+        "2030"
+      ]
+    },
+    "mode": "hybrid",
+    "expected": "FAIL_CLOSED_EMPTY"
+  },
+  {
+    "case_id": "CASE13_HYBRID_SCOPE",
+    "source_type": "TEST_FIXTURE",
+    "query": "MSFT FY2024 revenue",
+    "auth": {
+      "user_id": 1
+    },
+    "expected_hard": {
+      "ticker": [
+        "MSFT"
+      ],
+      "fiscal_year": [
+        "2024"
+      ]
+    },
+    "mode": "hybrid",
+    "expected": "UNION_SCOPE_MATCH"
+  },
+  {
+    "case_id": "CASE14_RERANKER_SUBSET",
+    "source_type": "TEST_FIXTURE",
+    "query": "MSFT FY2024 revenue",
+    "auth": {
+      "user_id": 1
+    },
+    "expected_hard": {
+      "ticker": [
+        "MSFT"
+      ],
+      "fiscal_year": [
+        "2024"
+      ]
+    },
+    "mode": "hybrid",
+    "malicious_reranker": true,
+    "expected": "EXCLUDED_REINTRODUCTION"
+  },
+  {
+    "case_id": "CASE15_TEMPORAL_CONFLICT",
+    "source_type": "TEST_FIXTURE",
+    "query": "MSFT FY2024 revenue conflict",
+    "auth": {
+      "user_id": 1
+    },
+    "expected_hard": {
+      "ticker": [
+        "MSFT"
+      ],
+      "fiscal_year": [
+        "2024"
+      ]
+    },
+    "mode": "bm25",
+    "conflict": true,
+    "expected": "FAIL_CLOSED_CONFLICT"
+  }
+]

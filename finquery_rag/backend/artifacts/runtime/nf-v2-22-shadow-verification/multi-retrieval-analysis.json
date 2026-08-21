@@ -1,0 +1,39 @@
+{
+  "incomplete_cases_audited": [
+    {
+      "issue": "Missing balance sheet liability chunk",
+      "outcome": "SAFELY_FAIL_CLOSED",
+      "sample_id": "FBV1-081"
+    },
+    {
+      "issue": "Missing prior year operating expense chunk",
+      "outcome": "SAFELY_FAIL_CLOSED",
+      "sample_id": "FBV1-082"
+    },
+    {
+      "issue": "Missing segment revenue chunk",
+      "outcome": "SAFELY_FAIL_CLOSED",
+      "sample_id": "FBV1-083"
+    },
+    {
+      "issue": "Missing stock compensation note chunk",
+      "outcome": "SAFELY_FAIL_CLOSED",
+      "sample_id": "FBV1-084"
+    },
+    {
+      "issue": "Missing deferred revenue table chunk",
+      "outcome": "SAFELY_FAIL_CLOSED",
+      "sample_id": "FBV1-093"
+    },
+    {
+      "issue": "Missing capital lease commitment chunk",
+      "outcome": "SAFELY_FAIL_CLOSED",
+      "sample_id": "FBV1-095"
+    }
+  ],
+  "multi_accuracy_pct": 82.86,
+  "multi_released_correct": 29,
+  "multi_retrieval_incomplete_fail_closed": 6,
+  "total_multi_samples": 35,
+  "unsafe_releases": 0
+}

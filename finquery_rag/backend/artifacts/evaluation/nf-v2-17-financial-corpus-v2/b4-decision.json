@@ -1,0 +1,75 @@
+{
+  "alternative_valid_evidence": 0,
+  "answerable_questions": 105,
+  "as_run_metrics_remain_valid": true,
+  "base_sha": "98f1b6b084dc86f7ec2538e16053c00c0bb2d16e",
+  "benchmark_rerun": false,
+  "diagnostic_corrected_scoring_warranted": false,
+  "eligible_for_future_tuning": false,
+  "false_exclusions": {},
+  "fresh_blind_benchmark_consumed": true,
+  "generator_calls": 52,
+  "gold_bm25_indexed_exact": 145,
+  "gold_dense_eligible_exact": 2,
+  "gold_equivalence_class_incomplete_candidates": 10,
+  "gold_evidence_objects": 155,
+  "gold_exact_searchable": 145,
+  "gold_modified": false,
+  "gold_structurally_searchable": 145,
+  "gold_structured_fact_ids": 0,
+  "gold_structured_fact_ids_found": 0,
+  "grounded_conditional_on_generation": 12,
+  "hybrid_categories": {
+    "DENSE_ONLY_GOLD": 2,
+    "NEITHER_GOLD": 103
+  },
+  "immutable_hashes": {
+    "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.worktrees/nf-v2-17-financial-corpus-v2/finquery_rag/backend/artifacts/evaluation/nf-v2-17-fresh-blind-eval/fresh-blind-evaluation-freeze.json": {
+      "expected": "c3648925f07e878123e78e0fed21b12e0499a461d2c83e28616cfe80789c920a",
+      "match": true,
+      "sha256": "c3648925f07e878123e78e0fed21b12e0499a461d2c83e28616cfe80789c920a"
+    },
+    "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.worktrees/nf-v2-17-financial-corpus-v2/finquery_rag/backend/artifacts/evaluation/nf-v2-17-fresh-blind-eval/fresh-blind-runtime-output.jsonl": {
+      "expected": "9e02df6701268e83cd9dafdcc36d95736167c19cca8d244a134a69149538dd83",
+      "match": true,
+      "sha256": "9e02df6701268e83cd9dafdcc36d95736167c19cca8d244a134a69149538dd83"
+    },
+    "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.worktrees/nf-v2-17-financial-corpus-v2/finquery_rag/backend/artifacts/evaluation/nf-v2-17-fresh-blind-eval/fresh-blind-traces.jsonl": {
+      "expected": "3b3b9ee227a49631dcf4f1c820172fd63cf465cbb85514d67ce9d06d2d5f6ebd",
+      "match": true,
+      "sha256": "3b3b9ee227a49631dcf4f1c820172fd63cf465cbb85514d67ce9d06d2d5f6ebd"
+    }
+  },
+  "parent_child_equivalents": 67,
+  "primary_retrieval_root_cause": "EVIDENCE_ID_ALIGNMENT_FAILURE",
+  "production": "V1",
+  "production_switch": false,
+  "questions_modified": false,
+  "released": 12,
+  "released_correct": 6,
+  "released_incorrect": 6,
+  "root_cause_counts": {
+    "CALC_OPERAND_FAILURE": 15,
+    "EVIDENCE_ID_ALIGNMENT_FAILURE": 51,
+    "INDEX_COVERAGE_FAILURE": 12,
+    "RETRIEVAL_IMPLEMENTATION_FAILURE": 21
+  },
+  "runtime_modified": false,
+  "runtime_unsafe_release": 0,
+  "secondary_root_causes": [
+    "RETRIEVAL_IMPLEMENTATION_FAILURE",
+    "BM25_QUERY_OVERCONSTRAINT",
+    "CALC_OPERAND_FAILURE",
+    "INDEX_COVERAGE_FAILURE"
+  ],
+  "semantic_unsupported_conditional_on_generation": 40,
+  "terminal_failure_counts": {
+    "CALC_OPERAND_FAILURE": 15,
+    "MULTI_EVIDENCE_INCOMPLETE": 12,
+    "NO_PROGRESS_FAILURE": 38,
+    "OTHER": 6,
+    "REPLAN_FAILURE": 2,
+    "RETRIEVAL_MISS": 26
+  },
+  "true_retrieval_misses": 26
+}

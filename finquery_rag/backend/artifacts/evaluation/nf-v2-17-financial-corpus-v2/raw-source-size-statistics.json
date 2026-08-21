@@ -1,0 +1,118 @@
+{
+  "by_group": {
+    "AAPL": {
+      "count": 6,
+      "max_bytes": 1558924,
+      "mean_bytes": 1182254.3333333333,
+      "min_bytes": 732589,
+      "p50_bytes": 1196878.5,
+      "p95_bytes": 1549245.0,
+      "total_bytes": 7093526
+    },
+    "AMZN": {
+      "count": 6,
+      "max_bytes": 1968342,
+      "mean_bytes": 1628075.6666666667,
+      "min_bytes": 1139537,
+      "p50_bytes": 1664117.0,
+      "p95_bytes": 1962551.0,
+      "total_bytes": 9768454
+    },
+    "GOOGL": {
+      "count": 6,
+      "max_bytes": 2616499,
+      "mean_bytes": 2261239.8333333335,
+      "min_bytes": 1615481,
+      "p50_bytes": 2305062.5,
+      "p95_bytes": 2594460.25,
+      "total_bytes": 13567439
+    },
+    "JPM": {
+      "count": 6,
+      "max_bytes": 13211658,
+      "mean_bytes": 11856623.833333334,
+      "min_bytes": 9229580,
+      "p50_bytes": 12172222.5,
+      "p95_bytes": 13140574.75,
+      "total_bytes": 71139743
+    },
+    "KO": {
+      "count": 6,
+      "max_bytes": 4161309,
+      "mean_bytes": 2941735.5,
+      "min_bytes": 1520559,
+      "p50_bytes": 2961987.5,
+      "p95_bytes": 4103708.5,
+      "total_bytes": 17650413
+    },
+    "MSFT": {
+      "count": 6,
+      "max_bytes": 9963591,
+      "mean_bytes": 7093230.5,
+      "min_bytes": 4283959,
+      "p50_bytes": 6928176.5,
+      "p95_bytes": 9512210.0,
+      "total_bytes": 42559383
+    },
+    "NVDA": {
+      "count": 6,
+      "max_bytes": 2669239,
+      "mean_bytes": 1821073.8333333333,
+      "min_bytes": 1202535,
+      "p50_bytes": 1764435.5,
+      "p95_bytes": 2523320.75,
+      "total_bytes": 10926443
+    },
+    "PFE": {
+      "count": 6,
+      "max_bytes": 5349184,
+      "mean_bytes": 3968805.1666666665,
+      "min_bytes": 2176147,
+      "p50_bytes": 4057251.0,
+      "p95_bytes": 5346628.25,
+      "total_bytes": 23812831
+    },
+    "TSLA": {
+      "count": 6,
+      "max_bytes": 2672746,
+      "mean_bytes": 1996444.5,
+      "min_bytes": 1225850,
+      "p50_bytes": 1982580.0,
+      "p95_bytes": 2653674.25,
+      "total_bytes": 11978667
+    },
+    "V": {
+      "count": 6,
+      "max_bytes": 2909461,
+      "mean_bytes": 2274995.5,
+      "min_bytes": 1372711,
+      "p50_bytes": 2357297.5,
+      "p95_bytes": 2902114.0,
+      "total_bytes": 13649973
+    },
+    "annual": {
+      "count": 30,
+      "max_bytes": 13211658,
+      "mean_bytes": 4428310.133333334,
+      "min_bytes": 1503780,
+      "p50_bytes": 2771933.5,
+      "p95_bytes": 12892159.75,
+      "total_bytes": 132849304
+    },
+    "quarterly": {
+      "count": 30,
+      "max_bytes": 11495265,
+      "mean_bytes": 2976585.6,
+      "min_bytes": 732589,
+      "p50_bytes": 1694307.0,
+      "p95_bytes": 10438015.249999994,
+      "total_bytes": 89297568
+    }
+  },
+  "max_bytes": 13211658,
+  "mean_bytes": 3702447.8666666667,
+  "min_bytes": 732589,
+  "p50_bytes": 2295625.5,
+  "p95_bytes": 11562960.749999996,
+  "total_raw_bytes": 222146872
+}

@@ -1,0 +1,1567 @@
+{
+  "aggregate": {
+    "damaged": 9,
+    "neither": 0,
+    "rescued": 8,
+    "unchanged": 103
+  },
+  "by_route": {
+    "calculation": {
+      "count": 15,
+      "damaged": 1,
+      "neither": 0,
+      "rescued": 3,
+      "unchanged": 11
+    },
+    "multi": {
+      "count": 20,
+      "damaged": 1,
+      "neither": 0,
+      "rescued": 0,
+      "unchanged": 19
+    },
+    "single": {
+      "count": 85,
+      "damaged": 7,
+      "neither": 0,
+      "rescued": 5,
+      "unchanged": 73
+    }
+  },
+  "comparison": "U3 semantic expansion before Qwen vs U3 after Qwen; exact evidence outcome at top-5",
+  "pair_key": "sha256({q:query,d:document})",
+  "pairs_scored": 3168,
+  "questions": [
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-001",
+      "qwen_score_after": -0.019309287890791893,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-002",
+      "qwen_score_after": -0.017059607431292534,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-003",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-004",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 2,
+      "gold_rank_before_at20": 2,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-005",
+      "qwen_score_after": -0.0071468655951321125,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 4,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-006",
+      "qwen_score_after": -0.016034230589866638,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 4,
+      "gold_rank_before_at20": 2,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-007",
+      "qwen_score_after": -0.015070038847625256,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 4,
+      "gold_rank_before_at20": 3,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-008",
+      "qwen_score_after": -0.017059607431292534,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 2,
+      "gold_rank_before_at20": 2,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-009",
+      "qwen_score_after": -0.011047743260860443,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 4,
+      "gold_rank_before_at20": 3,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-010",
+      "qwen_score_after": -0.04044583439826965,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": 2,
+      "gold_rank_before_at20": 13,
+      "outcome_at5": "RESCUED",
+      "question_id": "FBV1-011",
+      "qwen_score_after": -0.001599105424247682,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-012",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 20,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "DAMAGED",
+      "question_id": "FBV1-013",
+      "qwen_score_after": -0.7575989961624146,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 8,
+      "gold_rank_before_at20": 5,
+      "outcome_at5": "DAMAGED",
+      "question_id": "FBV1-014",
+      "qwen_score_after": -0.42870065569877625,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-015",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-016",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-017",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": 4,
+      "gold_rank_before_at20": 14,
+      "outcome_at5": "RESCUED",
+      "question_id": "FBV1-018",
+      "qwen_score_after": -0.009755908511579037,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 4,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-019",
+      "qwen_score_after": -0.05488219112157822,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-020",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 4,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-021",
+      "qwen_score_after": -0.009167483076453209,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": 2,
+      "gold_rank_before_at20": 8,
+      "outcome_at5": "RESCUED",
+      "question_id": "FBV1-022",
+      "qwen_score_after": -0.04044583439826965,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-023",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-024",
+      "qwen_score_after": -0.019309287890791893,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 4,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-025",
+      "qwen_score_after": -0.0011701886542141438,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-026",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 2,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-027",
+      "qwen_score_after": -0.009755908511579037,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 17,
+      "gold_rank_before_at20": 2,
+      "outcome_at5": "DAMAGED",
+      "question_id": "FBV1-028",
+      "qwen_score_after": -0.8615548014640808,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 10,
+      "gold_rank_before_at20": 5,
+      "outcome_at5": "DAMAGED",
+      "question_id": "FBV1-029",
+      "qwen_score_after": -0.04044583439826965,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 7,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "DAMAGED",
+      "question_id": "FBV1-030",
+      "qwen_score_after": -0.08893945813179016,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 3,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-031",
+      "qwen_score_after": -0.051641397178173065,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-032",
+      "qwen_score_after": -0.04570977762341499,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-033",
+      "qwen_score_after": -0.07888974994421005,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 2,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-034",
+      "qwen_score_after": -0.04044583439826965,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-035",
+      "qwen_score_after": -0.03804141283035278,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-036",
+      "qwen_score_after": -0.042999111115932465,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-037",
+      "qwen_score_after": -0.016034230589866638,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-038",
+      "qwen_score_after": -0.02185230888426304,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-039",
+      "qwen_score_after": -0.02630021423101425,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-040",
+      "qwen_score_after": -0.05832047387957573,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-041",
+      "qwen_score_after": -0.08893945813179016,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-042",
+      "qwen_score_after": -0.04858732968568802,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 3,
+      "gold_rank_before_at20": 5,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-043",
+      "qwen_score_after": -0.2131100296974182,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 2,
+      "gold_rank_before_at20": 2,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-044",
+      "qwen_score_after": -0.11967968195676804,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 7,
+      "gold_rank_before_at20": 4,
+      "outcome_at5": "DAMAGED",
+      "question_id": "FBV1-045",
+      "qwen_score_after": -0.05832047387957573,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-046",
+      "qwen_score_after": -0.02185230888426304,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-047",
+      "qwen_score_after": -0.02630021423101425,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-048",
+      "qwen_score_after": -0.023245446383953094,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-049",
+      "qwen_score_after": -0.018149960786104202,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-050",
+      "qwen_score_after": -0.02185230888426304,
+      "route": "multi"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-051",
+      "qwen_score_after": -0.02185230888426304,
+      "route": "calculation"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 2,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-052",
+      "qwen_score_after": -0.011047743260860443,
+      "route": "calculation"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": 7,
+      "gold_rank_before_at20": 9,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-053",
+      "qwen_score_after": -0.03577728569507599,
+      "route": "calculation"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": 15,
+      "gold_rank_before_at20": 13,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-054",
+      "qwen_score_after": -0.3132617473602295,
+      "route": "calculation"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": 13,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-055",
+      "qwen_score_after": -1.3132617473602295,
+      "route": "calculation"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "RESCUED",
+      "question_id": "FBV1-056",
+      "qwen_score_after": -0.042999111115932465,
+      "route": "calculation"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-057",
+      "qwen_score_after": -0.007606116589158773,
+      "route": "calculation"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 2,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-058",
+      "qwen_score_after": -0.06993623077869415,
+      "route": "calculation"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-059",
+      "qwen_score_after": null,
+      "route": "calculation"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": 2,
+      "gold_rank_before_at20": 14,
+      "outcome_at5": "RESCUED",
+      "question_id": "FBV1-060",
+      "qwen_score_after": -0.3132617473602295,
+      "route": "calculation"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": 2,
+      "gold_rank_before_at20": 10,
+      "outcome_at5": "RESCUED",
+      "question_id": "FBV1-061",
+      "qwen_score_after": -0.07428312301635742,
+      "route": "calculation"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-062",
+      "qwen_score_after": -0.004620233550667763,
+      "route": "calculation"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-063",
+      "qwen_score_after": -0.020541900768876076,
+      "route": "calculation"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 8,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "DAMAGED",
+      "question_id": "FBV1-064",
+      "qwen_score_after": -0.03577728569507599,
+      "route": "calculation"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": 7,
+      "gold_rank_before_at20": 10,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-065",
+      "qwen_score_after": -0.05488219112157822,
+      "route": "calculation"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 6,
+      "outcome_at5": "RESCUED",
+      "question_id": "FBV1-066",
+      "qwen_score_after": -0.0013259199913591146,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-067",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": 18,
+      "gold_rank_before_at20": 12,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-068",
+      "qwen_score_after": -0.9356344938278198,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-069",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-070",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 18,
+      "gold_rank_before_at20": 2,
+      "outcome_at5": "DAMAGED",
+      "question_id": "FBV1-071",
+      "qwen_score_after": -0.3304581940174103,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-072",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": 4,
+      "gold_rank_before_at20": 17,
+      "outcome_at5": "RESCUED",
+      "question_id": "FBV1-073",
+      "qwen_score_after": -0.008614521473646164,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-074",
+      "qwen_score_after": -0.01038186065852642,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-075",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-076",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-077",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-078",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-079",
+      "qwen_score_after": -0.016034230589866638,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-080",
+      "qwen_score_after": -0.0010993395699188113,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 3,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-081",
+      "qwen_score_after": -0.06196761503815651,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 3,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-082",
+      "qwen_score_after": -0.04570977762341499,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 3,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-083",
+      "qwen_score_after": -0.04570977762341499,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 2,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-084",
+      "qwen_score_after": -0.023245446383953094,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 2,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-085",
+      "qwen_score_after": -0.019309287890791893,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 2,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-086",
+      "qwen_score_after": -0.023245446383953094,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-087",
+      "qwen_score_after": -0.013310973532497883,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-088",
+      "qwen_score_after": -0.019309287890791893,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-089",
+      "qwen_score_after": -0.011047743260860443,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 2,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-090",
+      "qwen_score_after": -0.03163906931877136,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-091",
+      "qwen_score_after": -0.024726316332817078,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 1,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-092",
+      "qwen_score_after": -0.023245446383953094,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 6,
+      "gold_rank_before_at20": 4,
+      "outcome_at5": "DAMAGED",
+      "question_id": "FBV1-093",
+      "qwen_score_after": -0.05488219112157822,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 2,
+      "gold_rank_before_at20": 2,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-094",
+      "qwen_score_after": -0.03364565595984459,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": true,
+      "gold_in_top5_before": true,
+      "gold_rank_after_at20": 1,
+      "gold_rank_before_at20": 2,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-095",
+      "qwen_score_after": -0.020541900768876076,
+      "route": "single"
+    },
+    {
+      "content_types": [],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-096",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-097",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-098",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-099",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-100",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-101",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-102",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-103",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-104",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-105",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-106",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-107",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-108",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-109",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-110",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-111",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-112",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-113",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-114",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-115",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-116",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-117",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-118",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-119",
+      "qwen_score_after": null,
+      "route": "single"
+    },
+    {
+      "content_types": [
+        "TABLE_ROW"
+      ],
+      "gold_in_top5_after": false,
+      "gold_in_top5_before": false,
+      "gold_rank_after_at20": null,
+      "gold_rank_before_at20": null,
+      "outcome_at5": "UNCHANGED",
+      "question_id": "FBV1-120",
+      "qwen_score_after": null,
+      "route": "single"
+    }
+  ],
+  "scores_reused_from_frozen_child_output": true
+}

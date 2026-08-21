@@ -1,0 +1,24 @@
+{
+  "a2_manifest_sha256": "94b6ff91ca8e8c91473aac3f7066534a5e3d7f8242cdb4406c55e200f1e826c7",
+  "annual_acquired": 30,
+  "content_verified": 60,
+  "failed": 0,
+  "indexing_performed": false,
+  "invalid_source_pages_admitted": 0,
+  "model_calls": 0,
+  "parsing_performed": false,
+  "primary_attempted": 60,
+  "primary_planned": 60,
+  "primary_raw_acquired": 60,
+  "quarterly_acquired": 30,
+  "question_generation_performed": false,
+  "raw_format": {
+    "HTML": 60,
+    "PDF": 0
+  },
+  "raw_overwrite_events": 0,
+  "raw_root": "/mnt/disk/mxf/projects/Qhhhhhhaaa/financial_corpus_v2",
+  "schema_version": "nf-v2-17/acquisition-results/v1",
+  "training": 0,
+  "verified_with_warning": 0
+}

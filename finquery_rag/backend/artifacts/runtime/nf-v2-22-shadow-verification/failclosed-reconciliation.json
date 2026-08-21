@@ -1,0 +1,14 @@
+{
+  "answerable_first_stage_retrieval_misses": 10,
+  "answerable_multi_evidence_incomplete_retrieval": 6,
+  "binding_failures": 0,
+  "explanation": "All 31 fail-closed cases are accounted for: 15 are intentional safe refusals on unanswerable questions (TR7), 10 are first-stage retrieval misses (TR2), and 6 are multi-evidence slot-missing retrieval partial failures safely caught by validators.",
+  "generator_failures": 0,
+  "other_failures": 0,
+  "reconciliation_status": "EXACT_RECONCILIATION_PASS",
+  "sum_fail_closed": 31,
+  "total_fail_closed": 31,
+  "unaccounted_fail_closed": 0,
+  "unanswerable_correct_safe_refusal": 15,
+  "validator_failures": 0
+}

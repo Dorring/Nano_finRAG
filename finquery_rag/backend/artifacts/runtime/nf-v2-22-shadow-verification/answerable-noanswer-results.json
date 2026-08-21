@@ -1,0 +1,30 @@
+{
+  "answerable": {
+    "correct_over_released_pct": 100.0,
+    "e2e_success_rate_pct": 84.76,
+    "fail_closed": 16,
+    "failure_attribution": {
+      "binding_error": 0,
+      "first_stage_retrieval_miss": 10,
+      "generator_error": 0,
+      "multi_slot_retrieval_miss": 6
+    },
+    "released": 89,
+    "strict_correct": 89,
+    "total": 105
+  },
+  "combined_system": {
+    "correct_overall": 104,
+    "fail_closed_count": 31,
+    "overall_system_accuracy_pct": 86.67,
+    "released_count": 89,
+    "total": 120,
+    "unsafe_release_count": 0
+  },
+  "unanswerable": {
+    "correctly_refused": 15,
+    "no_answer_accuracy_pct": 100.0,
+    "total": 15,
+    "unsafe_released": 0
+  }
+}

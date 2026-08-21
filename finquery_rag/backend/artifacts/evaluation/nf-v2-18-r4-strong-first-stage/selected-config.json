@@ -1,0 +1,86 @@
+{
+  "base_sha": "f34934b85b70ced100457f0b6c455bf8fed67572",
+  "calculation": "runtime-operand A4 + AtomicFact lexical/dense union; iXBRL separate",
+  "embedding_repo": "Qwen/Qwen3-Embedding-4B",
+  "embedding_revision": "5cf2132abc99cad020ac570b19d031efec650f2b",
+  "embedding_snapshot_sha": "54c2a3b9ef650ea026acab844c56917c23126f0426f1d4909154adbf485887dc",
+  "general": "A4 + Qwen3-Embedding dense union",
+  "hard_scope": "A4 authoritative",
+  "metrics": {
+    "R@1": {
+      "all_count": 33,
+      "all_denominator": 120,
+      "answerable_count": 33,
+      "answerable_denominator": 105,
+      "answerable_recall": 0.3142857142857143,
+      "calculation_denominator": 15,
+      "calculation_operand_complete": 0,
+      "multi_all_count": 0,
+      "multi_any_count": 13,
+      "multi_denominator": 20
+    },
+    "R@10": {
+      "all_count": 68,
+      "all_denominator": 120,
+      "answerable_count": 68,
+      "answerable_denominator": 105,
+      "answerable_recall": 0.6476190476190476,
+      "calculation_denominator": 15,
+      "calculation_operand_complete": 5,
+      "multi_all_count": 6,
+      "multi_any_count": 17,
+      "multi_denominator": 20
+    },
+    "R@20": {
+      "all_count": 77,
+      "all_denominator": 120,
+      "answerable_count": 77,
+      "answerable_denominator": 105,
+      "answerable_recall": 0.7333333333333333,
+      "calculation_denominator": 15,
+      "calculation_operand_complete": 6,
+      "multi_all_count": 8,
+      "multi_any_count": 20,
+      "multi_denominator": 20
+    },
+    "R@3": {
+      "all_count": 55,
+      "all_denominator": 120,
+      "answerable_count": 55,
+      "answerable_denominator": 105,
+      "answerable_recall": 0.5238095238095238,
+      "calculation_denominator": 15,
+      "calculation_operand_complete": 2,
+      "multi_all_count": 2,
+      "multi_any_count": 16,
+      "multi_denominator": 20
+    },
+    "R@5": {
+      "all_count": 62,
+      "all_denominator": 120,
+      "answerable_count": 62,
+      "answerable_denominator": 105,
+      "answerable_recall": 0.5904761904761905,
+      "calculation_denominator": 15,
+      "calculation_operand_complete": 3,
+      "multi_all_count": 3,
+      "multi_any_count": 17,
+      "multi_denominator": 20
+    }
+  },
+  "multi": "runtime-slot A4/Qwen dense union",
+  "production_default_changed": false,
+  "safety": {
+    "a4_candidates_lost_due_enrichment": 0,
+    "authorization_leakage": 0,
+    "created_at_misuse": 0,
+    "document_type_violation": 0,
+    "entity_violation": 0,
+    "false_binding": 0,
+    "fiscal_violation": 0,
+    "silent_scope_relaxation": 0,
+    "version_violation": 0,
+    "wrong_period_binding": 0
+  },
+  "version": "NF-V2-18A-R4/strong-first-stage-v2"
+}

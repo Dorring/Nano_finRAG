@@ -1,0 +1,1478 @@
+{
+  "classification_counts": {
+    "QUERY_OK": 105,
+    "VOCABULARY_MISMATCH": 0
+  },
+  "rows": [
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2023-12-31 report for the 'Uncertain Tax Positions' row?",
+      "question_id": "FBV1-001",
+      "runtime_queries": [
+        "What does the AMZN filing for 2023-12-31 report for the 'Uncertain Tax Positions' row?"
+      ],
+      "runtime_query": "What does the AMZN filing for 2023-12-31 report for the 'Uncertain Tax Positions' row?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2024-12-31 report for the 'Uncertain Tax Positions' row?",
+      "question_id": "FBV1-002",
+      "runtime_queries": [
+        "What does the AMZN filing for 2024-12-31 report for the 'Uncertain Tax Positions' row?"
+      ],
+      "runtime_query": "What does the AMZN filing for 2024-12-31 report for the 'Uncertain Tax Positions' row?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2025-12-31 report for the 'Uncertain Tax Positions' row?",
+      "question_id": "FBV1-003",
+      "runtime_queries": [
+        "What does the AMZN filing for 2025-12-31 report for the 'Uncertain Tax Positions' row?"
+      ],
+      "runtime_query": "What does the AMZN filing for 2025-12-31 report for the 'Uncertain Tax Positions' row?",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What disclosure is given in the AMZN filing for 2023-12-31 for the 'Uncertain Tax Positions' row?",
+      "question_id": "FBV1-004",
+      "runtime_queries": [
+        "What disclosure is given in the AMZN filing for 2023-12-31 for the 'Uncertain Tax Positions' row?"
+      ],
+      "runtime_query": "What disclosure is given in the AMZN filing for 2023-12-31 for the 'Uncertain Tax Positions' row?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What disclosure is given in the AMZN filing for 2024-12-31 for the 'Uncertain Tax Positions' row?",
+      "question_id": "FBV1-005",
+      "runtime_queries": [
+        "What disclosure is given in the AMZN filing for 2024-12-31 for the 'Uncertain Tax Positions' row?"
+      ],
+      "runtime_query": "What disclosure is given in the AMZN filing for 2024-12-31 for the 'Uncertain Tax Positions' row?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What disclosure is given in the AMZN filing for 2025-12-31 for the 'Uncertain Tax Positions' row?",
+      "question_id": "FBV1-006",
+      "runtime_queries": [
+        "What disclosure is given in the AMZN filing for 2025-12-31 for the 'Uncertain Tax Positions' row?"
+      ],
+      "runtime_query": "What disclosure is given in the AMZN filing for 2025-12-31 for the 'Uncertain Tax Positions' row?",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "Which statement is associated with the 'Uncertain Tax Positions' row in the AMZN filing for 2023-12-31?",
+      "question_id": "FBV1-007",
+      "runtime_queries": [
+        "Which statement is associated with the 'Uncertain Tax Positions' row in the AMZN filing for 2023-12-31?"
+      ],
+      "runtime_query": "Which statement is associated with the 'Uncertain Tax Positions' row in the AMZN filing for 2023-12-31?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "Which statement is associated with the 'Uncertain Tax Positions' row in the AMZN filing for 2024-12-31?",
+      "question_id": "FBV1-008",
+      "runtime_queries": [
+        "Which statement is associated with the 'Uncertain Tax Positions' row in the AMZN filing for 2024-12-31?"
+      ],
+      "runtime_query": "Which statement is associated with the 'Uncertain Tax Positions' row in the AMZN filing for 2024-12-31?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "Which statement is associated with the 'Uncertain Tax Positions' row in the AMZN filing for 2025-12-31?",
+      "question_id": "FBV1-009",
+      "runtime_queries": [
+        "Which statement is associated with the 'Uncertain Tax Positions' row in the AMZN filing for 2025-12-31?"
+      ],
+      "runtime_query": "Which statement is associated with the 'Uncertain Tax Positions' row in the AMZN filing for 2025-12-31?",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "Which statement is associated with the 'Uncertain Tax Positions' row in the AMZN filing for 2023-12-31 (source occurrence 2)?",
+      "question_id": "FBV1-010",
+      "runtime_queries": [
+        "Which statement is associated with the 'Uncertain Tax Positions' row in the AMZN filing for 2023-12-31 (source occurrence 2)?"
+      ],
+      "runtime_query": "Which statement is associated with the 'Uncertain Tax Positions' row in the AMZN filing for 2023-12-31 (source occurrence 2)?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2023-12-31 report for the 'Total share repurchases (1)' row?",
+      "question_id": "FBV1-011",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2023-12-31 report for the 'Total share repurchases (1)' row?"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2023-12-31 report for the 'Total share repurchases (1)' row?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2024-12-31 report for the 'Current' row?",
+      "question_id": "FBV1-012",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2024-12-31 report for the 'Current' row?"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2024-12-31 report for the 'Current' row?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2025-12-31 report for the 'Gross Unrealized Losses' row?",
+      "question_id": "FBV1-013",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2025-12-31 report for the 'Gross Unrealized Losses' row?"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2025-12-31 report for the 'Gross Unrealized Losses' row?",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2025-03-31 report for the 'Accumulated Other Comprehensive Income (Loss)' row?",
+      "question_id": "FBV1-014",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2025-03-31 report for the 'Accumulated Other Comprehensive Income (Loss)' row?"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2025-03-31 report for the 'Accumulated Other Comprehensive Income (Loss)' row?",
+      "temporal_scope": "2025-03-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2025-06-30 report for the 'Assets' row?",
+      "question_id": "FBV1-015",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2025-06-30 report for the 'Assets' row?"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2025-06-30 report for the 'Assets' row?",
+      "temporal_scope": "2025-06-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2025-09-30 report for the 'Three Months' row?",
+      "question_id": "FBV1-016",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2025-09-30 report for the 'Three Months' row?"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2025-09-30 report for the 'Three Months' row?",
+      "temporal_scope": "2025-09-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2023-12-31 report for the 'Operating expenses' row?",
+      "question_id": "FBV1-017",
+      "runtime_queries": [
+        "What does the AMZN filing for 2023-12-31 report for the 'Operating expenses' row?"
+      ],
+      "runtime_query": "What does the AMZN filing for 2023-12-31 report for the 'Operating expenses' row?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2024-12-31 report for the 'Net cash provided by (used in) operating activities' row?",
+      "question_id": "FBV1-018",
+      "runtime_queries": [
+        "What does the AMZN filing for 2024-12-31 report for the 'Net cash provided by (used in) operating activities' row?"
+      ],
+      "runtime_query": "What does the AMZN filing for 2024-12-31 report for the 'Net cash provided by (used in) operating activities' row?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2025-12-31 report for the 'December 31, 2025' row?",
+      "question_id": "FBV1-019",
+      "runtime_queries": [
+        "What does the AMZN filing for 2025-12-31 report for the 'December 31, 2025' row?"
+      ],
+      "runtime_query": "What does the AMZN filing for 2025-12-31 report for the 'December 31, 2025' row?",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2025-03-31 report for the 'Operating Expenses' row?",
+      "question_id": "FBV1-020",
+      "runtime_queries": [
+        "What does the AMZN filing for 2025-03-31 report for the 'Operating Expenses' row?"
+      ],
+      "runtime_query": "What does the AMZN filing for 2025-03-31 report for the 'Operating Expenses' row?",
+      "temporal_scope": "2025-03-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2025-06-30 report for the 'Operating Leases' row?",
+      "question_id": "FBV1-021",
+      "runtime_queries": [
+        "What does the AMZN filing for 2025-06-30 report for the 'Operating Leases' row?"
+      ],
+      "runtime_query": "What does the AMZN filing for 2025-06-30 report for the 'Operating Leases' row?",
+      "temporal_scope": "2025-06-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2025-09-30 report for the 'Accounts payable' row?",
+      "question_id": "FBV1-022",
+      "runtime_queries": [
+        "What does the AMZN filing for 2025-09-30 report for the 'Accounts payable' row?",
+        "What does the AMZN filing for 2025-09-30 report for the 'Accounts payable' row? Accounts payable"
+      ],
+      "runtime_query": "What does the AMZN filing for 2025-09-30 report for the 'Accounts payable' row?",
+      "temporal_scope": "2025-09-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2023-12-31 report for the 'Operating activities' row?",
+      "question_id": "FBV1-023",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2023-12-31 report for the 'Operating activities' row?"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2023-12-31 report for the 'Operating activities' row?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2024-12-31 report for the 'Income taxes payable, net' row?",
+      "question_id": "FBV1-024",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2024-12-31 report for the 'Income taxes payable, net' row?",
+        "What does the GOOGL filing for 2024-12-31 report for the 'Income taxes payable, net' row? Income taxes payable, net",
+        "What does the GOOGL filing for 2024-12-31 report for the 'Income taxes payable, net' row? Income taxes payable, net"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2024-12-31 report for the 'Income taxes payable, net' row?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2025-12-31 report for the 'Total cash and cash equivalents' row?",
+      "question_id": "FBV1-025",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2025-12-31 report for the 'Total cash and cash equivalents' row?"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2025-12-31 report for the 'Total cash and cash equivalents' row?",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2025-03-31 report for the 'Three Months' row?",
+      "question_id": "FBV1-026",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2025-03-31 report for the 'Three Months' row?"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2025-03-31 report for the 'Three Months' row?",
+      "temporal_scope": "2025-03-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2025-06-30 report for the 'Stock issued' row?",
+      "question_id": "FBV1-027",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2025-06-30 report for the 'Stock issued' row?",
+        "What does the GOOGL filing for 2025-06-30 report for the 'Stock issued' row? Stock issued",
+        "What does the GOOGL filing for 2025-06-30 report for the 'Stock issued' row? Stock issued"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2025-06-30 report for the 'Stock issued' row?",
+      "temporal_scope": "2025-06-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2025-09-30 report for the 'Consolidated Statements of Income - Three and Nine Months Ended September 30 , 2024 and 2025' row?",
+      "question_id": "FBV1-028",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2025-09-30 report for the 'Consolidated Statements of Income - Three and Nine Months Ended September 30 , 2024 and 2025' row?"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2025-09-30 report for the 'Consolidated Statements of Income - Three and Nine Months Ended September 30 , 2024 and 2025' row?",
+      "temporal_scope": "2025-09-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What disclosure is given in the AMZN filing for 2023-12-31 for the 'Operating Expenses' row?",
+      "question_id": "FBV1-029",
+      "runtime_queries": [
+        "What disclosure is given in the AMZN filing for 2023-12-31 for the 'Operating Expenses' row?"
+      ],
+      "runtime_query": "What disclosure is given in the AMZN filing for 2023-12-31 for the 'Operating Expenses' row?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2024-12-31 report for the 'December 31, 2024' row?",
+      "question_id": "FBV1-030",
+      "runtime_queries": [
+        "What does the AMZN filing for 2024-12-31 report for the 'December 31, 2024' row?"
+      ],
+      "runtime_query": "What does the AMZN filing for 2024-12-31 report for the 'December 31, 2024' row?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2023-12-31 report for both '% Change' and '(Increase) decrease in allowance for credit losses'?",
+      "question_id": "FBV1-031",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2023-12-31 report for both '% Change' and '(Increase) decrease in allowance for credit losses'?"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2023-12-31 report for both '% Change' and '(Increase) decrease in allowance for credit losses'?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2024-12-31 report for both '% Change' and '(Increase) decrease in allowance for credit losses'?",
+      "question_id": "FBV1-032",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2024-12-31 report for both '% Change' and '(Increase) decrease in allowance for credit losses'?"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2024-12-31 report for both '% Change' and '(Increase) decrease in allowance for credit losses'?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2025-12-31 report for both '% Change' and '(Increase) decrease in allowance for credit losses'?",
+      "question_id": "FBV1-033",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2025-12-31 report for both '% Change' and '(Increase) decrease in allowance for credit losses'?"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2025-12-31 report for both '% Change' and '(Increase) decrease in allowance for credit losses'?",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2025-03-31 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'?",
+      "question_id": "FBV1-034",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2025-03-31 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'?",
+        "What does the GOOGL filing for 2025-03-31 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'? Accrued customer liabilities Accrued expenses and other current liabilities",
+        "What does the GOOGL filing for 2025-03-31 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'? Accrued customer liabilities Accrued expenses and other current liabilities"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2025-03-31 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'?",
+      "temporal_scope": "2025-03-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2025-06-30 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'?",
+      "question_id": "FBV1-035",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2025-06-30 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'?",
+        "What does the GOOGL filing for 2025-06-30 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'? Accrued customer liabilities Accrued expenses and other current liabilities",
+        "What does the GOOGL filing for 2025-06-30 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'? Accrued customer liabilities Accrued expenses and other current liabilities"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2025-06-30 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'?",
+      "temporal_scope": "2025-06-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2025-09-30 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'?",
+      "question_id": "FBV1-036",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2025-09-30 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'?",
+        "What does the GOOGL filing for 2025-09-30 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'? Accrued customer liabilities Accrued expenses and other current liabilities",
+        "What does the GOOGL filing for 2025-09-30 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'? Accrued customer liabilities Accrued expenses and other current liabilities"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2025-09-30 report for both 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'?",
+      "temporal_scope": "2025-09-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2023-12-31 report for both '2023: Year Ended December 31,' and 'Accounts payable'?",
+      "question_id": "FBV1-037",
+      "runtime_queries": [
+        "What does the AMZN filing for 2023-12-31 report for both '2023: Year Ended December 31,' and 'Accounts payable'?",
+        "What does the AMZN filing for 2023-12-31 report for both '2023: Year Ended December 31,' and 'Accounts payable'? 2023: Year Ended December 31, Accounts payable",
+        "What does the AMZN filing for 2023-12-31 report for both '2023: Year Ended December 31,' and 'Accounts payable'? 2023: Year Ended December 31, Accounts payable"
+      ],
+      "runtime_query": "What does the AMZN filing for 2023-12-31 report for both '2023: Year Ended December 31,' and 'Accounts payable'?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2024-12-31 report for both '2024: Year Ended December 31,' and 'Accounts payable'?",
+      "question_id": "FBV1-038",
+      "runtime_queries": [
+        "What does the AMZN filing for 2024-12-31 report for both '2024: Year Ended December 31,' and 'Accounts payable'?",
+        "What does the AMZN filing for 2024-12-31 report for both '2024: Year Ended December 31,' and 'Accounts payable'? 2024: Year Ended December 31, Accounts payable",
+        "What does the AMZN filing for 2024-12-31 report for both '2024: Year Ended December 31,' and 'Accounts payable'? 2024: Year Ended December 31, Accounts payable"
+      ],
+      "runtime_query": "What does the AMZN filing for 2024-12-31 report for both '2024: Year Ended December 31,' and 'Accounts payable'?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2025-12-31 report for both '2025: Year Ended December 31,' and 'Accounts payable'?",
+      "question_id": "FBV1-039",
+      "runtime_queries": [
+        "What does the AMZN filing for 2025-12-31 report for both '2025: Year Ended December 31,' and 'Accounts payable'?",
+        "What does the AMZN filing for 2025-12-31 report for both '2025: Year Ended December 31,' and 'Accounts payable'? 2025: Year Ended December 31, Accounts payable",
+        "What does the AMZN filing for 2025-12-31 report for both '2025: Year Ended December 31,' and 'Accounts payable'? 2025: Year Ended December 31, Accounts payable"
+      ],
+      "runtime_query": "What does the AMZN filing for 2025-12-31 report for both '2025: Year Ended December 31,' and 'Accounts payable'?",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2025-03-31 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'?",
+      "question_id": "FBV1-040",
+      "runtime_queries": [
+        "What does the AMZN filing for 2025-03-31 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'?",
+        "What does the AMZN filing for 2025-03-31 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'? Free cash flow Net cash provided by (used in) financing activities",
+        "What does the AMZN filing for 2025-03-31 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'? Free cash flow Net cash provided by (used in) financing activities"
+      ],
+      "runtime_query": "What does the AMZN filing for 2025-03-31 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'?",
+      "temporal_scope": "2025-03-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2025-06-30 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'?",
+      "question_id": "FBV1-041",
+      "runtime_queries": [
+        "What does the AMZN filing for 2025-06-30 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'?",
+        "What does the AMZN filing for 2025-06-30 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'? Free cash flow Net cash provided by (used in) financing activities",
+        "What does the AMZN filing for 2025-06-30 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'? Free cash flow Net cash provided by (used in) financing activities"
+      ],
+      "runtime_query": "What does the AMZN filing for 2025-06-30 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'?",
+      "temporal_scope": "2025-06-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2025-09-30 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'?",
+      "question_id": "FBV1-042",
+      "runtime_queries": [
+        "What does the AMZN filing for 2025-09-30 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'?",
+        "What does the AMZN filing for 2025-09-30 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'? Free cash flow Net cash provided by (used in) financing activities",
+        "What does the AMZN filing for 2025-09-30 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'? Free cash flow Net cash provided by (used in) financing activities"
+      ],
+      "runtime_query": "What does the AMZN filing for 2025-09-30 report for both 'Free cash flow' and 'Net cash provided by (used in) financing activities'?",
+      "temporal_scope": "2025-09-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2023-12-31 report for both '% Change' and '2023: Year Ended December 31,'?",
+      "question_id": "FBV1-043",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2023-12-31 report for both '% Change' and '2023: Year Ended December 31,'?",
+        "What does the GOOGL filing for 2023-12-31 report for both '% Change' and '2023: Year Ended December 31,'? % Change 2023: Year Ended December 31,"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2023-12-31 report for both '% Change' and '2023: Year Ended December 31,'?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2024-12-31 report for both '% Change' and '2024: Year Ended December 31,'?",
+      "question_id": "FBV1-044",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2024-12-31 report for both '% Change' and '2024: Year Ended December 31,'?"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2024-12-31 report for both '% Change' and '2024: Year Ended December 31,'?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2025-12-31 report for both '% Change' and '2024: Year Ended December 31,'?",
+      "question_id": "FBV1-045",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2025-12-31 report for both '% Change' and '2024: Year Ended December 31,'?"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2025-12-31 report for both '% Change' and '2024: Year Ended December 31,'?",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2025-03-31 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'?",
+      "question_id": "FBV1-046",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2025-03-31 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'?",
+        "What does the GOOGL filing for 2025-03-31 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'? Accrued customer liabilities Accrued purchases of property and equipment (1)",
+        "What does the GOOGL filing for 2025-03-31 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'? Accrued customer liabilities Accrued purchases of property and equipment (1)"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2025-03-31 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'?",
+      "temporal_scope": "2025-03-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2025-06-30 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'?",
+      "question_id": "FBV1-047",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2025-06-30 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'?",
+        "What does the GOOGL filing for 2025-06-30 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'? Accrued customer liabilities Accrued purchases of property and equipment (1)",
+        "What does the GOOGL filing for 2025-06-30 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'? Accrued customer liabilities Accrued purchases of property and equipment (1)"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2025-06-30 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'?",
+      "temporal_scope": "2025-06-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What does the GOOGL filing for 2025-09-30 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'?",
+      "question_id": "FBV1-048",
+      "runtime_queries": [
+        "What does the GOOGL filing for 2025-09-30 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'?",
+        "What does the GOOGL filing for 2025-09-30 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'? Accrued customer liabilities Accrued purchases of property and equipment (1)",
+        "What does the GOOGL filing for 2025-09-30 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'? Accrued customer liabilities Accrued purchases of property and equipment (1)"
+      ],
+      "runtime_query": "What does the GOOGL filing for 2025-09-30 report for both 'Accrued customer liabilities' and 'Accrued purchases of property and equipment (1)'?",
+      "temporal_scope": "2025-09-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2023-12-31 report for both '2023: Year Ended December 31,' and 'Accounts receivable, net and other'?",
+      "question_id": "FBV1-049",
+      "runtime_queries": [
+        "What does the AMZN filing for 2023-12-31 report for both '2023: Year Ended December 31,' and 'Accounts receivable, net and other'?"
+      ],
+      "runtime_query": "What does the AMZN filing for 2023-12-31 report for both '2023: Year Ended December 31,' and 'Accounts receivable, net and other'?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What does the AMZN filing for 2024-12-31 report for both '2024: Year Ended December 31,' and 'Accounts receivable, net and other'?",
+      "question_id": "FBV1-050",
+      "runtime_queries": [
+        "What does the AMZN filing for 2024-12-31 report for both '2024: Year Ended December 31,' and 'Accounts receivable, net and other'?"
+      ],
+      "runtime_query": "What does the AMZN filing for 2024-12-31 report for both '2024: Year Ended December 31,' and 'Accounts receivable, net and other'?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Using the reported values for 'January 30, 2024' and 'San Jose, California' in the GOOGL filing for 2023-12-31, what is their sum?",
+      "question_id": "FBV1-051",
+      "runtime_queries": [
+        "Using the reported values for 'January 30, 2024' and 'San Jose, California' in the GOOGL filing for 2023-12-31, what is their sum?",
+        "Using the reported values for 'January 30, 2024' and 'San Jose, California' in the GOOGL filing for 2023-12-31, what is their sum? January 30, 2024 San Jose, California",
+        "Using the reported values for 'January 30, 2024' and 'San Jose, California' in the GOOGL filing for 2023-12-31, what is their sum? January 30, 2024 San Jose, California"
+      ],
+      "runtime_query": "Using the reported values for 'January 30, 2024' and 'San Jose, California' in the GOOGL filing for 2023-12-31, what is their sum?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Using the reported values for '2024: Year Ended December 31,' and 'Alphabet-level activities (1)' in the GOOGL filing for 2024-12-31, what is their difference?",
+      "question_id": "FBV1-052",
+      "runtime_queries": [
+        "Using the reported values for '2024: Year Ended December 31,' and 'Alphabet-level activities (1)' in the GOOGL filing for 2024-12-31, what is their difference?",
+        "Using the reported values for '2024: Year Ended December 31,' and 'Alphabet-level activities (1)' in the GOOGL filing for 2024-12-31, what is their difference? 2024: Year Ended December 31, Alphabet-level activities (1)",
+        "Using the reported values for '2024: Year Ended December 31,' and 'Alphabet-level activities (1)' in the GOOGL filing for 2024-12-31, what is their difference? 2024: Year Ended December 31, Alphabet-level activities (1)"
+      ],
+      "runtime_query": "Using the reported values for '2024: Year Ended December 31,' and 'Alphabet-level activities (1)' in the GOOGL filing for 2024-12-31, what is their difference?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Using the reported values for 'Deferred tax assets' and 'Operating leases' in the GOOGL filing for 2025-12-31, what is their sum?",
+      "question_id": "FBV1-053",
+      "runtime_queries": [
+        "Using the reported values for 'Deferred tax assets' and 'Operating leases' in the GOOGL filing for 2025-12-31, what is their sum?",
+        "Using the reported values for 'Deferred tax assets' and 'Operating leases' in the GOOGL filing for 2025-12-31, what is their sum? Deferred tax assets Operating leases",
+        "Using the reported values for 'Deferred tax assets' and 'Operating leases' in the GOOGL filing for 2025-12-31, what is their sum? Deferred tax assets Operating leases"
+      ],
+      "runtime_query": "Using the reported values for 'Deferred tax assets' and 'Operating leases' in the GOOGL filing for 2025-12-31, what is their sum?",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Using the reported values for 'Other comprehensive income (loss)' and 'Unrealized Gains (Losses) on Cash Flow Hedges' in the GOOGL filing for 2025-03-31, what is their difference?",
+      "question_id": "FBV1-054",
+      "runtime_queries": [
+        "Using the reported values for 'Other comprehensive income (loss)' and 'Unrealized Gains (Losses) on Cash Flow Hedges' in the GOOGL filing for 2025-03-31, what is their difference?",
+        "Using the reported values for 'Other comprehensive income (loss)' and 'Unrealized Gains (Losses) on Cash Flow Hedges' in the GOOGL filing for 2025-03-31, what is their difference? Other comprehensive income (loss) Unrealized Gains (Losses) on Cash Flow Hedges",
+        "Using the reported values for 'Other comprehensive income (loss)' and 'Unrealized Gains (Losses) on Cash Flow Hedges' in the GOOGL filing for 2025-03-31, what is their difference? Other comprehensive income (loss) Unrealized Gains (Losses) on Cash Flow Hedges"
+      ],
+      "runtime_query": "Using the reported values for 'Other comprehensive income (loss)' and 'Unrealized Gains (Losses) on Cash Flow Hedges' in the GOOGL filing for 2025-03-31, what is their difference?",
+      "temporal_scope": "2025-03-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Using the reported values for 'APAC' and 'EMEA' in the GOOGL filing for 2025-06-30, what is their sum?",
+      "question_id": "FBV1-055",
+      "runtime_queries": [
+        "Using the reported values for 'APAC' and 'EMEA' in the GOOGL filing for 2025-06-30, what is their sum?",
+        "Using the reported values for 'APAC' and 'EMEA' in the GOOGL filing for 2025-06-30, what is their sum? APAC EMEA",
+        "Using the reported values for 'APAC' and 'EMEA' in the GOOGL filing for 2025-06-30, what is their sum? APAC EMEA"
+      ],
+      "runtime_query": "Using the reported values for 'APAC' and 'EMEA' in the GOOGL filing for 2025-06-30, what is their sum?",
+      "temporal_scope": "2025-06-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Using the reported values for 'August 1 - 31' and 'July 1 - 31' in the GOOGL filing for 2025-09-30, what is their difference?",
+      "question_id": "FBV1-056",
+      "runtime_queries": [
+        "Using the reported values for 'August 1 - 31' and 'July 1 - 31' in the GOOGL filing for 2025-09-30, what is their difference?",
+        "Using the reported values for 'August 1 - 31' and 'July 1 - 31' in the GOOGL filing for 2025-09-30, what is their difference? August 1 - 31 July 1 - 31",
+        "Using the reported values for 'August 1 - 31' and 'July 1 - 31' in the GOOGL filing for 2025-09-30, what is their difference? August 1 - 31 July 1 - 31"
+      ],
+      "runtime_query": "Using the reported values for 'August 1 - 31' and 'July 1 - 31' in the GOOGL filing for 2025-09-30, what is their difference?",
+      "temporal_scope": "2025-09-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "Using the reported values for 'December 31, 2023' and 'Weighted-average discount rate – operating leases' in the AMZN filing for 2023-12-31, what is their sum?",
+      "question_id": "FBV1-057",
+      "runtime_queries": [
+        "Using the reported values for 'December 31, 2023' and 'Weighted-average discount rate – operating leases' in the AMZN filing for 2023-12-31, what is their sum?",
+        "Using the reported values for 'December 31, 2023' and 'Weighted-average discount rate – operating leases' in the AMZN filing for 2023-12-31, what is their sum? December 31, 2023 Weighted-average discount rate – operating leases",
+        "Using the reported values for 'December 31, 2023' and 'Weighted-average discount rate – operating leases' in the AMZN filing for 2023-12-31, what is their sum? December 31, 2023 Weighted-average discount rate – operating leases"
+      ],
+      "runtime_query": "Using the reported values for 'December 31, 2023' and 'Weighted-average discount rate – operating leases' in the AMZN filing for 2023-12-31, what is their sum?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "Using the reported values for 'Current' and 'Deferred' in the AMZN filing for 2024-12-31, what is their difference?",
+      "question_id": "FBV1-058",
+      "runtime_queries": [
+        "Using the reported values for 'Current' and 'Deferred' in the AMZN filing for 2024-12-31, what is their difference?",
+        "Using the reported values for 'Current' and 'Deferred' in the AMZN filing for 2024-12-31, what is their difference? Current Deferred",
+        "Using the reported values for 'Current' and 'Deferred' in the AMZN filing for 2024-12-31, what is their difference? Current Deferred"
+      ],
+      "runtime_query": "Using the reported values for 'Current' and 'Deferred' in the AMZN filing for 2024-12-31, what is their difference?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "Using the reported values for 'Net sales' and 'Operating expenses' in the AMZN filing for 2025-12-31, what is their sum?",
+      "question_id": "FBV1-059",
+      "runtime_queries": [
+        "Using the reported values for 'Net sales' and 'Operating expenses' in the AMZN filing for 2025-12-31, what is their sum?",
+        "Using the reported values for 'Net sales' and 'Operating expenses' in the AMZN filing for 2025-12-31, what is their sum? Net sales Operating expenses",
+        "Using the reported values for 'Net sales' and 'Operating expenses' in the AMZN filing for 2025-12-31, what is their sum? Net sales Operating expenses"
+      ],
+      "runtime_query": "Using the reported values for 'Net sales' and 'Operating expenses' in the AMZN filing for 2025-12-31, what is their sum?",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "Using the reported values for 'Scheduled vesting — restricted stock units' and 'Total' in the AMZN filing for 2025-03-31, what is their difference?",
+      "question_id": "FBV1-060",
+      "runtime_queries": [
+        "Using the reported values for 'Scheduled vesting — restricted stock units' and 'Total' in the AMZN filing for 2025-03-31, what is their difference?",
+        "Using the reported values for 'Scheduled vesting — restricted stock units' and 'Total' in the AMZN filing for 2025-03-31, what is their difference? Scheduled vesting — restricted stock units Total",
+        "Using the reported values for 'Scheduled vesting — restricted stock units' and 'Total' in the AMZN filing for 2025-03-31, what is their difference? Scheduled vesting — restricted stock units Total"
+      ],
+      "runtime_query": "Using the reported values for 'Scheduled vesting — restricted stock units' and 'Total' in the AMZN filing for 2025-03-31, what is their difference?",
+      "temporal_scope": "2025-03-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "Using the reported values for 'Cost of sales' and 'Fulfillment' in the AMZN filing for 2025-06-30, what is their sum?",
+      "question_id": "FBV1-061",
+      "runtime_queries": [
+        "Using the reported values for 'Cost of sales' and 'Fulfillment' in the AMZN filing for 2025-06-30, what is their sum?",
+        "Using the reported values for 'Cost of sales' and 'Fulfillment' in the AMZN filing for 2025-06-30, what is their sum? Cost of sales Fulfillment",
+        "Using the reported values for 'Cost of sales' and 'Fulfillment' in the AMZN filing for 2025-06-30, what is their sum? Cost of sales Fulfillment"
+      ],
+      "runtime_query": "Using the reported values for 'Cost of sales' and 'Fulfillment' in the AMZN filing for 2025-06-30, what is their sum?",
+      "temporal_scope": "2025-06-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "Using the reported values for 'December 31, 2024' and 'Weighted-average discount rate – operating leases' in the AMZN filing for 2025-09-30, what is their difference?",
+      "question_id": "FBV1-062",
+      "runtime_queries": [
+        "Using the reported values for 'December 31, 2024' and 'Weighted-average discount rate – operating leases' in the AMZN filing for 2025-09-30, what is their difference?",
+        "Using the reported values for 'December 31, 2024' and 'Weighted-average discount rate – operating leases' in the AMZN filing for 2025-09-30, what is their difference? December 31, 2024 Weighted-average discount rate – operating leases",
+        "Using the reported values for 'December 31, 2024' and 'Weighted-average discount rate – operating leases' in the AMZN filing for 2025-09-30, what is their difference? December 31, 2024 Weighted-average discount rate – operating leases"
+      ],
+      "runtime_query": "Using the reported values for 'December 31, 2024' and 'Weighted-average discount rate – operating leases' in the AMZN filing for 2025-09-30, what is their difference?",
+      "temporal_scope": "2025-09-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Using the reported values for '2023: Year Ended December 31,' and 'Foreign currency exchange gain (loss), net' in the GOOGL filing for 2023-12-31, what is their sum?",
+      "question_id": "FBV1-063",
+      "runtime_queries": [
+        "Using the reported values for '2023: Year Ended December 31,' and 'Foreign currency exchange gain (loss), net' in the GOOGL filing for 2023-12-31, what is their sum?",
+        "Using the reported values for '2023: Year Ended December 31,' and 'Foreign currency exchange gain (loss), net' in the GOOGL filing for 2023-12-31, what is their sum? 2023: Year Ended December 31, Foreign currency exchange gain (loss), net",
+        "Using the reported values for '2023: Year Ended December 31,' and 'Foreign currency exchange gain (loss), net' in the GOOGL filing for 2023-12-31, what is their sum? 2023: Year Ended December 31, Foreign currency exchange gain (loss), net"
+      ],
+      "runtime_query": "Using the reported values for '2023: Year Ended December 31,' and 'Foreign currency exchange gain (loss), net' in the GOOGL filing for 2023-12-31, what is their sum?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Using the reported values for '2024: Year Ended December 31,' and 'Google Cloud' in the GOOGL filing for 2024-12-31, what is their difference?",
+      "question_id": "FBV1-064",
+      "runtime_queries": [
+        "Using the reported values for '2024: Year Ended December 31,' and 'Google Cloud' in the GOOGL filing for 2024-12-31, what is their difference?",
+        "Using the reported values for '2024: Year Ended December 31,' and 'Google Cloud' in the GOOGL filing for 2024-12-31, what is their difference? 2024: Year Ended December 31, Google Cloud",
+        "Using the reported values for '2024: Year Ended December 31,' and 'Google Cloud' in the GOOGL filing for 2024-12-31, what is their difference? 2024: Year Ended December 31, Google Cloud"
+      ],
+      "runtime_query": "Using the reported values for '2024: Year Ended December 31,' and 'Google Cloud' in the GOOGL filing for 2024-12-31, what is their difference?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Using the reported values for 'Deferred tax assets' and 'Tax credits' in the GOOGL filing for 2025-12-31, what is their sum?",
+      "question_id": "FBV1-065",
+      "runtime_queries": [
+        "Using the reported values for 'Deferred tax assets' and 'Tax credits' in the GOOGL filing for 2025-12-31, what is their sum?",
+        "Using the reported values for 'Deferred tax assets' and 'Tax credits' in the GOOGL filing for 2025-12-31, what is their sum? Deferred tax assets Tax credits",
+        "Using the reported values for 'Deferred tax assets' and 'Tax credits' in the GOOGL filing for 2025-12-31, what is their sum? Deferred tax assets Tax credits"
+      ],
+      "runtime_query": "Using the reported values for 'Deferred tax assets' and 'Tax credits' in the GOOGL filing for 2025-12-31, what is their sum?",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What temporal scope does the 'Total share repurchases (1)' row in the GOOGL filing for 2023-12-31 represent, and what does it report?",
+      "question_id": "FBV1-066",
+      "runtime_queries": [
+        "What temporal scope does the 'Total share repurchases (1)' row in the GOOGL filing for 2023-12-31 represent, and what does it report?"
+      ],
+      "runtime_query": "What temporal scope does the 'Total share repurchases (1)' row in the GOOGL filing for 2023-12-31 represent, and what does it report?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What temporal scope does the 'Current' row in the GOOGL filing for 2024-12-31 represent, and what does it report?",
+      "question_id": "FBV1-067",
+      "runtime_queries": [
+        "What temporal scope does the 'Current' row in the GOOGL filing for 2024-12-31 represent, and what does it report?"
+      ],
+      "runtime_query": "What temporal scope does the 'Current' row in the GOOGL filing for 2024-12-31 represent, and what does it report?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What temporal scope does the 'Gross Unrealized Losses' row in the GOOGL filing for 2025-12-31 represent, and what does it report?",
+      "question_id": "FBV1-068",
+      "runtime_queries": [
+        "What temporal scope does the 'Gross Unrealized Losses' row in the GOOGL filing for 2025-12-31 represent, and what does it report?"
+      ],
+      "runtime_query": "What temporal scope does the 'Gross Unrealized Losses' row in the GOOGL filing for 2025-12-31 represent, and what does it report?",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What temporal scope does the 'Three Months' row in the GOOGL filing for 2025-03-31 represent, and what does it report?",
+      "question_id": "FBV1-069",
+      "runtime_queries": [
+        "What temporal scope does the 'Three Months' row in the GOOGL filing for 2025-03-31 represent, and what does it report?"
+      ],
+      "runtime_query": "What temporal scope does the 'Three Months' row in the GOOGL filing for 2025-03-31 represent, and what does it report?",
+      "temporal_scope": "2025-03-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What temporal scope does the 'Assets' row in the GOOGL filing for 2025-06-30 represent, and what does it report?",
+      "question_id": "FBV1-070",
+      "runtime_queries": [
+        "What temporal scope does the 'Assets' row in the GOOGL filing for 2025-06-30 represent, and what does it report?"
+      ],
+      "runtime_query": "What temporal scope does the 'Assets' row in the GOOGL filing for 2025-06-30 represent, and what does it report?",
+      "temporal_scope": "2025-06-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What temporal scope does the 'Consolidated Statements of Income - Three and Nine Months Ended September 30 , 2024 and 2025' row in the GOOGL filing for 2025-09-30 represent, and what does it report?",
+      "question_id": "FBV1-071",
+      "runtime_queries": [
+        "What temporal scope does the 'Consolidated Statements of Income - Three and Nine Months Ended September 30 , 2024 and 2025' row in the GOOGL filing for 2025-09-30 represent, and what does it report?"
+      ],
+      "runtime_query": "What temporal scope does the 'Consolidated Statements of Income - Three and Nine Months Ended September 30 , 2024 and 2025' row in the GOOGL filing for 2025-09-30 represent, and what does it report?",
+      "temporal_scope": "2025-09-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What temporal scope does the 'Operating expenses' row in the AMZN filing for 2023-12-31 represent, and what does it report?",
+      "question_id": "FBV1-072",
+      "runtime_queries": [
+        "What temporal scope does the 'Operating expenses' row in the AMZN filing for 2023-12-31 represent, and what does it report?"
+      ],
+      "runtime_query": "What temporal scope does the 'Operating expenses' row in the AMZN filing for 2023-12-31 represent, and what does it report?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What temporal scope does the 'Net cash provided by (used in) operating activities' row in the AMZN filing for 2024-12-31 represent, and what does it report?",
+      "question_id": "FBV1-073",
+      "runtime_queries": [
+        "What temporal scope does the 'Net cash provided by (used in) operating activities' row in the AMZN filing for 2024-12-31 represent, and what does it report?"
+      ],
+      "runtime_query": "What temporal scope does the 'Net cash provided by (used in) operating activities' row in the AMZN filing for 2024-12-31 represent, and what does it report?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What temporal scope does the 'Operating lease cost' row in the AMZN filing for 2025-12-31 represent, and what does it report?",
+      "question_id": "FBV1-074",
+      "runtime_queries": [
+        "What temporal scope does the 'Operating lease cost' row in the AMZN filing for 2025-12-31 represent, and what does it report?"
+      ],
+      "runtime_query": "What temporal scope does the 'Operating lease cost' row in the AMZN filing for 2025-12-31 represent, and what does it report?",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What temporal scope does the 'Operating Expenses' row in the AMZN filing for 2025-03-31 represent, and what does it report?",
+      "question_id": "FBV1-075",
+      "runtime_queries": [
+        "What temporal scope does the 'Operating Expenses' row in the AMZN filing for 2025-03-31 represent, and what does it report?"
+      ],
+      "runtime_query": "What temporal scope does the 'Operating Expenses' row in the AMZN filing for 2025-03-31 represent, and what does it report?",
+      "temporal_scope": "2025-03-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What temporal scope does the 'Total' row in the AMZN filing for 2025-06-30 represent, and what does it report?",
+      "question_id": "FBV1-076",
+      "runtime_queries": [
+        "What temporal scope does the 'Total' row in the AMZN filing for 2025-06-30 represent, and what does it report?"
+      ],
+      "runtime_query": "What temporal scope does the 'Total' row in the AMZN filing for 2025-06-30 represent, and what does it report?",
+      "temporal_scope": "2025-06-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "What temporal scope does the 'Total' row in the AMZN filing for 2025-09-30 represent, and what does it report?",
+      "question_id": "FBV1-077",
+      "runtime_queries": [
+        "What temporal scope does the 'Total' row in the AMZN filing for 2025-09-30 represent, and what does it report?"
+      ],
+      "runtime_query": "What temporal scope does the 'Total' row in the AMZN filing for 2025-09-30 represent, and what does it report?",
+      "temporal_scope": "2025-09-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What temporal scope does the 'Operating activities' row in the GOOGL filing for 2023-12-31 represent, and what does it report?",
+      "question_id": "FBV1-078",
+      "runtime_queries": [
+        "What temporal scope does the 'Operating activities' row in the GOOGL filing for 2023-12-31 represent, and what does it report?"
+      ],
+      "runtime_query": "What temporal scope does the 'Operating activities' row in the GOOGL filing for 2023-12-31 represent, and what does it report?",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What temporal scope does the 'Income taxes payable, net' row in the GOOGL filing for 2024-12-31 represent, and what does it report?",
+      "question_id": "FBV1-079",
+      "runtime_queries": [
+        "What temporal scope does the 'Income taxes payable, net' row in the GOOGL filing for 2024-12-31 represent, and what does it report?"
+      ],
+      "runtime_query": "What temporal scope does the 'Income taxes payable, net' row in the GOOGL filing for 2024-12-31 represent, and what does it report?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "What temporal scope does the 'Total cash and cash equivalents' row in the GOOGL filing for 2025-12-31 represent, and what does it report?",
+      "question_id": "FBV1-080",
+      "runtime_queries": [
+        "What temporal scope does the 'Total cash and cash equivalents' row in the GOOGL filing for 2025-12-31 represent, and what does it report?"
+      ],
+      "runtime_query": "What temporal scope does the 'Total cash and cash equivalents' row in the GOOGL filing for 2025-12-31 represent, and what does it report?",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Retrieve and answer both requested disclosures for GOOGL (2023-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'.",
+      "question_id": "FBV1-081",
+      "runtime_queries": [
+        "Retrieve and answer both requested disclosures for GOOGL (2023-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'.",
+        "Retrieve and answer both requested disclosures for GOOGL (2023-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'. % Change (Increase) decrease in allowance for credit losses",
+        "Retrieve and answer both requested disclosures for GOOGL (2023-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'. % Change (Increase) decrease in allowance for credit losses"
+      ],
+      "runtime_query": "Retrieve and answer both requested disclosures for GOOGL (2023-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'.",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Retrieve and answer both requested disclosures for GOOGL (2024-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'.",
+      "question_id": "FBV1-082",
+      "runtime_queries": [
+        "Retrieve and answer both requested disclosures for GOOGL (2024-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'.",
+        "Retrieve and answer both requested disclosures for GOOGL (2024-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'. % Change (Increase) decrease in allowance for credit losses",
+        "Retrieve and answer both requested disclosures for GOOGL (2024-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'. % Change (Increase) decrease in allowance for credit losses"
+      ],
+      "runtime_query": "Retrieve and answer both requested disclosures for GOOGL (2024-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'.",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Retrieve and answer both requested disclosures for GOOGL (2025-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'.",
+      "question_id": "FBV1-083",
+      "runtime_queries": [
+        "Retrieve and answer both requested disclosures for GOOGL (2025-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'.",
+        "Retrieve and answer both requested disclosures for GOOGL (2025-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'. % Change (Increase) decrease in allowance for credit losses",
+        "Retrieve and answer both requested disclosures for GOOGL (2025-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'. % Change (Increase) decrease in allowance for credit losses"
+      ],
+      "runtime_query": "Retrieve and answer both requested disclosures for GOOGL (2025-12-31): '% Change' and '(Increase) decrease in allowance for credit losses'.",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Retrieve and answer both requested disclosures for GOOGL (2025-03-31): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'.",
+      "question_id": "FBV1-084",
+      "runtime_queries": [
+        "Retrieve and answer both requested disclosures for GOOGL (2025-03-31): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'.",
+        "Retrieve and answer both requested disclosures for GOOGL (2025-03-31): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'. Accrued customer liabilities Accrued expenses and other current liabilities",
+        "Retrieve and answer both requested disclosures for GOOGL (2025-03-31): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'. Accrued customer liabilities Accrued expenses and other current liabilities"
+      ],
+      "runtime_query": "Retrieve and answer both requested disclosures for GOOGL (2025-03-31): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'.",
+      "temporal_scope": "2025-03-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Retrieve and answer both requested disclosures for GOOGL (2025-06-30): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'.",
+      "question_id": "FBV1-085",
+      "runtime_queries": [
+        "Retrieve and answer both requested disclosures for GOOGL (2025-06-30): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'.",
+        "Retrieve and answer both requested disclosures for GOOGL (2025-06-30): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'. Accrued customer liabilities Accrued expenses and other current liabilities",
+        "Retrieve and answer both requested disclosures for GOOGL (2025-06-30): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'. Accrued customer liabilities Accrued expenses and other current liabilities"
+      ],
+      "runtime_query": "Retrieve and answer both requested disclosures for GOOGL (2025-06-30): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'.",
+      "temporal_scope": "2025-06-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Retrieve and answer both requested disclosures for GOOGL (2025-09-30): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'.",
+      "question_id": "FBV1-086",
+      "runtime_queries": [
+        "Retrieve and answer both requested disclosures for GOOGL (2025-09-30): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'.",
+        "Retrieve and answer both requested disclosures for GOOGL (2025-09-30): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'. Accrued customer liabilities Accrued expenses and other current liabilities",
+        "Retrieve and answer both requested disclosures for GOOGL (2025-09-30): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'. Accrued customer liabilities Accrued expenses and other current liabilities"
+      ],
+      "runtime_query": "Retrieve and answer both requested disclosures for GOOGL (2025-09-30): 'Accrued customer liabilities' and 'Accrued expenses and other current liabilities'.",
+      "temporal_scope": "2025-09-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "Retrieve and answer both requested disclosures for AMZN (2023-12-31): '2023: Year Ended December 31,' and 'Accounts payable'.",
+      "question_id": "FBV1-087",
+      "runtime_queries": [
+        "Retrieve and answer both requested disclosures for AMZN (2023-12-31): '2023: Year Ended December 31,' and 'Accounts payable'.",
+        "Retrieve and answer both requested disclosures for AMZN (2023-12-31): '2023: Year Ended December 31,' and 'Accounts payable'. 2023: Year Ended December 31, Accounts payable",
+        "Retrieve and answer both requested disclosures for AMZN (2023-12-31): '2023: Year Ended December 31,' and 'Accounts payable'. 2023: Year Ended December 31, Accounts payable"
+      ],
+      "runtime_query": "Retrieve and answer both requested disclosures for AMZN (2023-12-31): '2023: Year Ended December 31,' and 'Accounts payable'.",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "Retrieve and answer both requested disclosures for AMZN (2024-12-31): '2024: Year Ended December 31,' and 'Accounts payable'.",
+      "question_id": "FBV1-088",
+      "runtime_queries": [
+        "Retrieve and answer both requested disclosures for AMZN (2024-12-31): '2024: Year Ended December 31,' and 'Accounts payable'.",
+        "Retrieve and answer both requested disclosures for AMZN (2024-12-31): '2024: Year Ended December 31,' and 'Accounts payable'. 2024: Year Ended December 31, Accounts payable",
+        "Retrieve and answer both requested disclosures for AMZN (2024-12-31): '2024: Year Ended December 31,' and 'Accounts payable'. 2024: Year Ended December 31, Accounts payable"
+      ],
+      "runtime_query": "Retrieve and answer both requested disclosures for AMZN (2024-12-31): '2024: Year Ended December 31,' and 'Accounts payable'.",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "Retrieve and answer both requested disclosures for AMZN (2025-12-31): '2025: Year Ended December 31,' and 'Accounts payable'.",
+      "question_id": "FBV1-089",
+      "runtime_queries": [
+        "Retrieve and answer both requested disclosures for AMZN (2025-12-31): '2025: Year Ended December 31,' and 'Accounts payable'.",
+        "Retrieve and answer both requested disclosures for AMZN (2025-12-31): '2025: Year Ended December 31,' and 'Accounts payable'. 2025: Year Ended December 31, Accounts payable",
+        "Retrieve and answer both requested disclosures for AMZN (2025-12-31): '2025: Year Ended December 31,' and 'Accounts payable'. 2025: Year Ended December 31, Accounts payable"
+      ],
+      "runtime_query": "Retrieve and answer both requested disclosures for AMZN (2025-12-31): '2025: Year Ended December 31,' and 'Accounts payable'.",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "Retrieve and answer both requested disclosures for AMZN (2025-03-31): 'Free cash flow' and 'Net cash provided by (used in) financing activities'.",
+      "question_id": "FBV1-090",
+      "runtime_queries": [
+        "Retrieve and answer both requested disclosures for AMZN (2025-03-31): 'Free cash flow' and 'Net cash provided by (used in) financing activities'.",
+        "Retrieve and answer both requested disclosures for AMZN (2025-03-31): 'Free cash flow' and 'Net cash provided by (used in) financing activities'. Free cash flow Net cash provided by (used in) financing activities",
+        "Retrieve and answer both requested disclosures for AMZN (2025-03-31): 'Free cash flow' and 'Net cash provided by (used in) financing activities'. Free cash flow Net cash provided by (used in) financing activities"
+      ],
+      "runtime_query": "Retrieve and answer both requested disclosures for AMZN (2025-03-31): 'Free cash flow' and 'Net cash provided by (used in) financing activities'.",
+      "temporal_scope": "2025-03-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "Retrieve and answer both requested disclosures for AMZN (2025-06-30): 'Free cash flow' and 'Net cash provided by (used in) financing activities'.",
+      "question_id": "FBV1-091",
+      "runtime_queries": [
+        "Retrieve and answer both requested disclosures for AMZN (2025-06-30): 'Free cash flow' and 'Net cash provided by (used in) financing activities'.",
+        "Retrieve and answer both requested disclosures for AMZN (2025-06-30): 'Free cash flow' and 'Net cash provided by (used in) financing activities'. Free cash flow Net cash provided by (used in) financing activities",
+        "Retrieve and answer both requested disclosures for AMZN (2025-06-30): 'Free cash flow' and 'Net cash provided by (used in) financing activities'. Free cash flow Net cash provided by (used in) financing activities"
+      ],
+      "runtime_query": "Retrieve and answer both requested disclosures for AMZN (2025-06-30): 'Free cash flow' and 'Net cash provided by (used in) financing activities'.",
+      "temporal_scope": "2025-06-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "AMZN",
+      "original_question": "Retrieve and answer both requested disclosures for AMZN (2025-09-30): 'Free cash flow' and 'Net cash provided by (used in) financing activities'.",
+      "question_id": "FBV1-092",
+      "runtime_queries": [
+        "Retrieve and answer both requested disclosures for AMZN (2025-09-30): 'Free cash flow' and 'Net cash provided by (used in) financing activities'.",
+        "Retrieve and answer both requested disclosures for AMZN (2025-09-30): 'Free cash flow' and 'Net cash provided by (used in) financing activities'. Free cash flow Net cash provided by (used in) financing activities",
+        "Retrieve and answer both requested disclosures for AMZN (2025-09-30): 'Free cash flow' and 'Net cash provided by (used in) financing activities'. Free cash flow Net cash provided by (used in) financing activities"
+      ],
+      "runtime_query": "Retrieve and answer both requested disclosures for AMZN (2025-09-30): 'Free cash flow' and 'Net cash provided by (used in) financing activities'.",
+      "temporal_scope": "2025-09-30"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Retrieve and answer both requested disclosures for GOOGL (2023-12-31): '% Change' and '2023: Year Ended December 31,'.",
+      "question_id": "FBV1-093",
+      "runtime_queries": [
+        "Retrieve and answer both requested disclosures for GOOGL (2023-12-31): '% Change' and '2023: Year Ended December 31,'.",
+        "Retrieve and answer both requested disclosures for GOOGL (2023-12-31): '% Change' and '2023: Year Ended December 31,'. % Change 2023: Year Ended December 31,",
+        "Retrieve and answer both requested disclosures for GOOGL (2023-12-31): '% Change' and '2023: Year Ended December 31,'. % Change 2023: Year Ended December 31,"
+      ],
+      "runtime_query": "Retrieve and answer both requested disclosures for GOOGL (2023-12-31): '% Change' and '2023: Year Ended December 31,'.",
+      "temporal_scope": "2023-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Retrieve and answer both requested disclosures for GOOGL (2024-12-31): '% Change' and '2024: Year Ended December 31,'.",
+      "question_id": "FBV1-094",
+      "runtime_queries": [
+        "Retrieve and answer both requested disclosures for GOOGL (2024-12-31): '% Change' and '2024: Year Ended December 31,'.",
+        "Retrieve and answer both requested disclosures for GOOGL (2024-12-31): '% Change' and '2024: Year Ended December 31,'. % Change 2024: Year Ended December 31,",
+        "Retrieve and answer both requested disclosures for GOOGL (2024-12-31): '% Change' and '2024: Year Ended December 31,'. % Change 2024: Year Ended December 31,"
+      ],
+      "runtime_query": "Retrieve and answer both requested disclosures for GOOGL (2024-12-31): '% Change' and '2024: Year Ended December 31,'.",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "GOOGL",
+      "original_question": "Retrieve and answer both requested disclosures for GOOGL (2025-12-31): '% Change' and '2024: Year Ended December 31,'.",
+      "question_id": "FBV1-095",
+      "runtime_queries": [
+        "Retrieve and answer both requested disclosures for GOOGL (2025-12-31): '% Change' and '2024: Year Ended December 31,'."
+      ],
+      "runtime_query": "Retrieve and answer both requested disclosures for GOOGL (2025-12-31): '% Change' and '2024: Year Ended December 31,'.",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "TSLA",
+      "original_question": "Which SEC form and amendment marker are shown in the TSLA sidecar for 2024-12-31?",
+      "question_id": "FBV1-096",
+      "runtime_queries": [
+        "Which SEC form and amendment marker are shown in the TSLA sidecar for 2024-12-31?",
+        "Which SEC form and amendment marker are shown in the TSLA sidecar for 2024-12-31? Which SEC form and amendment marker are shown in the TSLA sidecar for 2024-12-31",
+        "Which SEC form and amendment marker are shown in the TSLA sidecar for 2024-12-31? Which SEC form and amendment marker are shown in the TSLA sidecar for 2024-12-31"
+      ],
+      "runtime_query": "Which SEC form and amendment marker are shown in the TSLA sidecar for 2024-12-31?",
+      "temporal_scope": "2024-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": null,
+      "dropped_key_terms": [],
+      "entity_scope": "TSLA",
+      "original_question": "What report period end is identified by the TSLA version sidecar 0001104659-26-053166?",
+      "question_id": "FBV1-097",
+      "runtime_queries": [
+        "What report period end is identified by the TSLA version sidecar 0001104659-26-053166?",
+        "What report period end is identified by the TSLA version sidecar 0001104659-26-053166? What report period end is identified by the TSLA version sidecar 0001104659-26-0",
+        "What report period end is identified by the TSLA version sidecar 0001104659-26-053166? What report period end is identified by the TSLA version sidecar 0001104659-26-0"
+      ],
+      "runtime_query": "What report period end is identified by the TSLA version sidecar 0001104659-26-053166?",
+      "temporal_scope": null
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": null,
+      "dropped_key_terms": [],
+      "entity_scope": "KO",
+      "original_question": "What filing date is recorded for the KO version sidecar 0000021344-24-000019?",
+      "question_id": "FBV1-098",
+      "runtime_queries": [
+        "What filing date is recorded for the KO version sidecar 0000021344-24-000019?",
+        "What filing date is recorded for the KO version sidecar 0000021344-24-000019? What filing date is recorded for the KO version sidecar 0000021344-24-000019?",
+        "What filing date is recorded for the KO version sidecar 0000021344-24-000019? What filing date is recorded for the KO version sidecar 0000021344-24-000019?"
+      ],
+      "runtime_query": "What filing date is recorded for the KO version sidecar 0000021344-24-000019?",
+      "temporal_scope": null
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": null,
+      "dropped_key_terms": [],
+      "entity_scope": "TSLA",
+      "original_question": "Does the source record establish which original filing the TSLA sidecar 0001104659-25-042659 supersedes?",
+      "question_id": "FBV1-099",
+      "runtime_queries": [
+        "Does the source record establish which original filing the TSLA sidecar 0001104659-25-042659 supersedes?",
+        "Does the source record establish which original filing the TSLA sidecar 0001104659-25-042659 supersedes? Does the source record establish which original filing the TSLA sidecar 00011046",
+        "Does the source record establish which original filing the TSLA sidecar 0001104659-25-042659 supersedes? Does the source record establish which original filing the TSLA sidecar 00011046"
+      ],
+      "runtime_query": "Does the source record establish which original filing the TSLA sidecar 0001104659-25-042659 supersedes?",
+      "temporal_scope": null
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "ANNUAL",
+      "dropped_key_terms": [],
+      "entity_scope": "TSLA",
+      "original_question": "Which SEC form and amendment marker are shown in the TSLA sidecar for 2025-12-31?",
+      "question_id": "FBV1-100",
+      "runtime_queries": [
+        "Which SEC form and amendment marker are shown in the TSLA sidecar for 2025-12-31?",
+        "Which SEC form and amendment marker are shown in the TSLA sidecar for 2025-12-31? Which SEC form and amendment marker are shown in the TSLA sidecar for 2025-12-31",
+        "Which SEC form and amendment marker are shown in the TSLA sidecar for 2025-12-31? Which SEC form and amendment marker are shown in the TSLA sidecar for 2025-12-31"
+      ],
+      "runtime_query": "Which SEC form and amendment marker are shown in the TSLA sidecar for 2025-12-31?",
+      "temporal_scope": "2025-12-31"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": null,
+      "dropped_key_terms": [],
+      "entity_scope": "KO",
+      "original_question": "What report period end is identified by the KO version sidecar 0000021344-24-000019?",
+      "question_id": "FBV1-101",
+      "runtime_queries": [
+        "What report period end is identified by the KO version sidecar 0000021344-24-000019?",
+        "What report period end is identified by the KO version sidecar 0000021344-24-000019? What report period end is identified by the KO version sidecar 0000021344-24-000",
+        "What report period end is identified by the KO version sidecar 0000021344-24-000019? What report period end is identified by the KO version sidecar 0000021344-24-000"
+      ],
+      "runtime_query": "What report period end is identified by the KO version sidecar 0000021344-24-000019?",
+      "temporal_scope": null
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": null,
+      "dropped_key_terms": [],
+      "entity_scope": "TSLA",
+      "original_question": "What filing date is recorded for the TSLA version sidecar 0001104659-25-042659?",
+      "question_id": "FBV1-102",
+      "runtime_queries": [
+        "What filing date is recorded for the TSLA version sidecar 0001104659-25-042659?",
+        "What filing date is recorded for the TSLA version sidecar 0001104659-25-042659? What filing date is recorded for the TSLA version sidecar 0001104659-25-042659?",
+        "What filing date is recorded for the TSLA version sidecar 0001104659-25-042659? What filing date is recorded for the TSLA version sidecar 0001104659-25-042659?"
+      ],
+      "runtime_query": "What filing date is recorded for the TSLA version sidecar 0001104659-25-042659?",
+      "temporal_scope": null
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": null,
+      "dropped_key_terms": [],
+      "entity_scope": "TSLA",
+      "original_question": "Does the source record establish which original filing the TSLA sidecar 0001104659-26-053166 supersedes?",
+      "question_id": "FBV1-103",
+      "runtime_queries": [
+        "Does the source record establish which original filing the TSLA sidecar 0001104659-26-053166 supersedes?",
+        "Does the source record establish which original filing the TSLA sidecar 0001104659-26-053166 supersedes? Does the source record establish which original filing the TSLA sidecar 00011046",
+        "Does the source record establish which original filing the TSLA sidecar 0001104659-26-053166 supersedes? Does the source record establish which original filing the TSLA sidecar 00011046"
+      ],
+      "runtime_query": "Does the source record establish which original filing the TSLA sidecar 0001104659-26-053166 supersedes?",
+      "temporal_scope": null
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": "QUARTERLY",
+      "dropped_key_terms": [],
+      "entity_scope": "KO",
+      "original_question": "Which SEC form and amendment marker are shown in the KO sidecar for 2024-03-29?",
+      "question_id": "FBV1-104",
+      "runtime_queries": [],
+      "runtime_query": "Which SEC form and amendment marker are shown in the KO sidecar for 2024-03-29?",
+      "temporal_scope": "2024-03-29"
+    },
+    {
+      "classification": "QUERY_OK",
+      "document_scope": null,
+      "dropped_key_terms": [],
+      "entity_scope": "TSLA",
+      "original_question": "What report period end is identified by the TSLA version sidecar 0001104659-25-042659?",
+      "question_id": "FBV1-105",
+      "runtime_queries": [
+        "What report period end is identified by the TSLA version sidecar 0001104659-25-042659?",
+        "What report period end is identified by the TSLA version sidecar 0001104659-25-042659? What report period end is identified by the TSLA version sidecar 0001104659-25-0",
+        "What report period end is identified by the TSLA version sidecar 0001104659-25-042659? What report period end is identified by the TSLA version sidecar 0001104659-25-0"
+      ],
+      "runtime_query": "What report period end is identified by the TSLA version sidecar 0001104659-25-042659?",
+      "temporal_scope": null
+    }
+  ],
+  "sample_size": 105
+}

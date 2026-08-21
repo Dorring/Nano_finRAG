@@ -9,6 +9,8 @@
   "retrieval_optimization_closed": true,
   "architecture_frozen": true,
   "safety_gate": "fail",
-  "reason": "Strict E2E coverage limited to 4 trusted DIRECT packets and one post-hoc semantic unsafe release remained; V2 does not replace V1.",
-  "next_step": "No R2.4 or additional grounded training; retain V2 as frozen research evidence."
+  "reason": "SemanticClaimVerifierV1 blocks the previously observed unsafe unit claim and preserves the three correct releases, but trusted coverage remains limited; V2 does not replace V1.",
+  "semantic_claim_verifier": "CLAIM_VERIFIER_EFFECTIVE",
+  "lora_dpo": "LORA_DPO_INEFFECTIVE",
+  "next_step": "Retain V1 production; keep the post-generation verifier frozen as a validated V2 component and do not reopen LoRA/DPO or Binder experiments."
 }

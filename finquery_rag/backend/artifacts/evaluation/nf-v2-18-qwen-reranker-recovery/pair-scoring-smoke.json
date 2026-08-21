@@ -1,0 +1,276 @@
+{
+  "cases": [
+    {
+      "candidates": [
+        {
+          "audit": {
+            "final_token_count": 155,
+            "original_token_count": 155,
+            "raw_token_count": 0,
+            "retained_raw_token_count": 0,
+            "truncated": false
+          },
+          "candidate_index": 0,
+          "document": "Operating income for fiscal 2025 was 32.1 billion dollars.",
+          "label": "relevant",
+          "score": {
+            "no_logit": 11.1875,
+            "reranker_score": -0.0005886013968847692,
+            "yes_logit": 18.625
+          }
+        },
+        {
+          "audit": {
+            "final_token_count": 147,
+            "original_token_count": 147,
+            "raw_token_count": 0,
+            "retained_raw_token_count": 0,
+            "truncated": false
+          },
+          "candidate_index": 1,
+          "document": "The company discusses cybersecurity risk factors and access controls.",
+          "label": "irrelevant",
+          "score": {
+            "no_logit": 14.125,
+            "reranker_score": -11.406261444091797,
+            "yes_logit": 2.71875
+          }
+        }
+      ],
+      "case_id": "numeric_operating_income",
+      "query": "What was operating income in fiscal 2025?",
+      "ranking": [
+        0,
+        1
+      ],
+      "top_label": "relevant"
+    },
+    {
+      "candidates": [
+        {
+          "audit": {
+            "final_token_count": 167,
+            "original_token_count": 167,
+            "raw_token_count": 0,
+            "retained_raw_token_count": 0,
+            "truncated": false
+          },
+          "candidate_index": 0,
+          "document": "[TABLE] Consolidated Statements of Income\n[ROW] Net sales | FY2025 | 100.0 billion USD",
+          "label": "relevant",
+          "score": {
+            "no_logit": 13.1875,
+            "reranker_score": -0.006309825927019119,
+            "yes_logit": 18.25
+          }
+        },
+        {
+          "audit": {
+            "final_token_count": 164,
+            "original_token_count": 164,
+            "raw_token_count": 0,
+            "retained_raw_token_count": 0,
+            "truncated": false
+          },
+          "candidate_index": 1,
+          "document": "[TABLE] Balance Sheets\n[ROW] Total assets | FY2025 | 250.0 billion USD",
+          "label": "irrelevant",
+          "score": {
+            "no_logit": 14.1875,
+            "reranker_score": -6.626326084136963,
+            "yes_logit": 7.5625
+          }
+        }
+      ],
+      "case_id": "table_row_revenue",
+      "query": "Which table row reports FY2025 net sales?",
+      "ranking": [
+        0,
+        1
+      ],
+      "top_label": "relevant"
+    },
+    {
+      "candidates": [
+        {
+          "audit": {
+            "final_token_count": 159,
+            "original_token_count": 159,
+            "raw_token_count": 0,
+            "retained_raw_token_count": 0,
+            "truncated": false
+          },
+          "candidate_index": 0,
+          "document": "Operating income, year ended December 31, 2025: 32.1 billion dollars.",
+          "label": "relevant",
+          "score": {
+            "no_logit": 11.5,
+            "reranker_score": -0.0011701886542141438,
+            "yes_logit": 18.25
+          }
+        },
+        {
+          "audit": {
+            "final_token_count": 159,
+            "original_token_count": 159,
+            "raw_token_count": 0,
+            "retained_raw_token_count": 0,
+            "truncated": false
+          },
+          "candidate_index": 1,
+          "document": "Operating income, year ended December 31, 2024: 29.4 billion dollars.",
+          "label": "wrong_period",
+          "score": {
+            "no_logit": 15.0,
+            "reranker_score": -0.042999111115932465,
+            "yes_logit": 18.125
+          }
+        }
+      ],
+      "case_id": "period_fy2025_vs_fy2024",
+      "query": "What was FY2025 operating income?",
+      "ranking": [
+        0,
+        1
+      ],
+      "top_label": "relevant"
+    },
+    {
+      "candidates": [
+        {
+          "audit": {
+            "final_token_count": 149,
+            "original_token_count": 149,
+            "raw_token_count": 0,
+            "retained_raw_token_count": 0,
+            "truncated": false
+          },
+          "candidate_index": 0,
+          "document": "Risk factors: artificial intelligence systems may create privacy, security, and regulatory risks.",
+          "label": "relevant",
+          "score": {
+            "no_logit": 13.4375,
+            "reranker_score": -0.006309825927019119,
+            "yes_logit": 18.5
+          }
+        },
+        {
+          "audit": {
+            "final_token_count": 149,
+            "original_token_count": 149,
+            "raw_token_count": 0,
+            "retained_raw_token_count": 0,
+            "truncated": false
+          },
+          "candidate_index": 1,
+          "document": "Cash and cash equivalents were 14.2 billion dollars at year end.",
+          "label": "irrelevant",
+          "score": {
+            "no_logit": 13.9375,
+            "reranker_score": -6.314311981201172,
+            "yes_logit": 7.625
+          }
+        }
+      ],
+      "case_id": "qualitative_ai_risk",
+      "query": "What risk is described for artificial intelligence?",
+      "ranking": [
+        0,
+        1
+      ],
+      "top_label": "relevant"
+    },
+    {
+      "candidates": [
+        {
+          "audit": {
+            "final_token_count": 168,
+            "original_token_count": 168,
+            "raw_token_count": 0,
+            "retained_raw_token_count": 0,
+            "truncated": false
+          },
+          "candidate_index": 0,
+          "document": "Three months ended June 30, 2025: revenue was 25.0 billion dollars.",
+          "label": "relevant",
+          "score": {
+            "no_logit": 11.375,
+            "reranker_score": -0.0008044582791626453,
+            "yes_logit": 18.5
+          }
+        },
+        {
+          "audit": {
+            "final_token_count": 168,
+            "original_token_count": 168,
+            "raw_token_count": 0,
+            "retained_raw_token_count": 0,
+            "truncated": false
+          },
+          "candidate_index": 1,
+          "document": "Six months ended June 30, 2025: revenue was 48.0 billion dollars.",
+          "label": "wrong_period",
+          "score": {
+            "no_logit": 16.375,
+            "reranker_score": -0.28115010261535645,
+            "yes_logit": 17.5
+          }
+        }
+      ],
+      "case_id": "period_quarter_vs_ytd",
+      "query": "What was revenue for the three months ended June 30, 2025?",
+      "ranking": [
+        0,
+        1
+      ],
+      "top_label": "relevant"
+    },
+    {
+      "candidates": [
+        {
+          "audit": {
+            "final_token_count": 158,
+            "original_token_count": 158,
+            "raw_token_count": 0,
+            "retained_raw_token_count": 0,
+            "truncated": false
+          },
+          "candidate_index": 0,
+          "document": "Cash flow note: capital expenditures in fiscal 2025 were 8.7 billion dollars.",
+          "label": "relevant",
+          "score": {
+            "no_logit": 11.4375,
+            "reranker_score": -0.0010993395699188113,
+            "yes_logit": 18.25
+          }
+        },
+        {
+          "audit": {
+            "final_token_count": 150,
+            "original_token_count": 150,
+            "raw_token_count": 0,
+            "retained_raw_token_count": 0,
+            "truncated": false
+          },
+          "candidate_index": 1,
+          "document": "Research and development expenses increased during fiscal 2025.",
+          "label": "irrelevant",
+          "score": {
+            "no_logit": 14.4375,
+            "reranker_score": -5.37962007522583,
+            "yes_logit": 9.0625
+          }
+        }
+      ],
+      "case_id": "cash_flow_capex",
+      "query": "What were capital expenditures in fiscal 2025?",
+      "ranking": [
+        0,
+        1
+      ],
+      "top_label": "relevant"
+    }
+  ],
+  "finite_scores": true,
+  "relevance_ranking_pass": true
+}

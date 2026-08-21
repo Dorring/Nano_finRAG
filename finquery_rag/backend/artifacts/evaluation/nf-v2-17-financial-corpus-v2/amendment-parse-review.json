@@ -1,0 +1,33 @@
+{
+  "parsed": 3,
+  "records": [
+    {
+      "chunks": 620,
+      "classification": "USEFUL_VERSION_CASE",
+      "document_id": "SEC_1318605_000110465926053166",
+      "parse_status": "ACCEPTED",
+      "period_bound_tables": 11,
+      "tables": 114,
+      "ticker": "TSLA"
+    },
+    {
+      "chunks": 785,
+      "classification": "USEFUL_VERSION_CASE",
+      "document_id": "SEC_1318605_000110465925042659",
+      "parse_status": "ACCEPTED",
+      "period_bound_tables": 18,
+      "tables": 123,
+      "ticker": "TSLA"
+    },
+    {
+      "chunks": 52,
+      "classification": "USEFUL_VERSION_CASE",
+      "document_id": "SEC_21344_000002134424000019",
+      "parse_status": "ACCEPTED",
+      "period_bound_tables": 1,
+      "tables": 6,
+      "ticker": "KO"
+    }
+  ],
+  "useful_version_cases": 3
+}

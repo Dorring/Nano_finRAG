@@ -1,0 +1,180 @@
+{
+  "agent": {
+    "budget_violations": 0,
+    "evidence_progress_rate": 0.4417,
+    "expected_replan": 15,
+    "infinite_loops": 0,
+    "mean_replan_rounds": 1.133,
+    "mean_tool_calls": 2.125,
+    "missing_operand_recovery": 0,
+    "missing_slot_recovery": 0,
+    "no_progress_correct_stop": 15,
+    "p50_replan_rounds": 2.0,
+    "p50_tool_calls": 3.0,
+    "p95_replan_rounds": 2,
+    "p95_tool_calls": 3,
+    "repairable_replan_cases": 0,
+    "repairable_replan_recovered": 0,
+    "replan_attempted": 69,
+    "replan_needed": 15,
+    "tool_reroute_success": 0,
+    "wrong_period_recovery": 0
+  },
+  "answerable": 105,
+  "answerable_correct": 6,
+  "answerable_released": 12,
+  "answerable_released_correct": 6,
+  "authorization_leakage": 0,
+  "benchmark_questions": 120,
+  "budget_violation": 0,
+  "calculation": {
+    "calculation_failure": 0,
+    "calculation_mutation": 0,
+    "calculator_executed": 0,
+    "canonical_calculation_correct": 0,
+    "fail_closed_before_execution": 15,
+    "false_execution": 0,
+    "operand_binding_correct": 0,
+    "operand_retrieval_complete": 0,
+    "questions": 15,
+    "retrieval_operand_failure": 15
+  },
+  "companies": [
+    "GOOGL",
+    "AMZN"
+  ],
+  "conflict": {
+    "cases": 7,
+    "false_conflict": 0,
+    "temporal_succession_distinguished": 0,
+    "true_conflict_detected": 0,
+    "unresolved_conflict_fail_closed": 7,
+    "unresolved_conflict_leakage": 0,
+    "version_dominance_resolved": 0
+  },
+  "correct_over_released": 0.5,
+  "fail_closed_answerable": 93,
+  "false_binding": 0,
+  "false_execution": 0,
+  "generation": {
+    "calculation_canonical_preservation": 0,
+    "citation_complete": 99,
+    "citation_valid": 105,
+    "denominator": 105,
+    "grounded": 12,
+    "numeric_fidelity": 80,
+    "period_fidelity": 99,
+    "reference_answer_complete": 6,
+    "semantic_unsupported": 40,
+    "unit_currency_scale_fidelity": 105
+  },
+  "historical_nf_v2_15_regression": {
+    "safe_retained": "3/3",
+    "source": "nf-v2-15-final-trusted-e2e/comparison.json",
+    "unsafe_blocked": "1/1"
+  },
+  "incorrect_released": 6,
+  "infinite_loops": 0,
+  "no_answer_correct_refusal": 15,
+  "one_shot_execution": true,
+  "post_evaluation_tuning": false,
+  "reference_reads_before_prediction_seal": 0,
+  "release_coverage": 0.114286,
+  "retrieval": {
+    "answerable_retrieval_complete": 2,
+    "denominator_scope": "all 120; answerable denominator reported separately",
+    "metadata_filter_failures": 0,
+    "multi_all_at_5": {
+      "denominator": 20,
+      "hits": 0
+    },
+    "multi_any_at_5": {
+      "denominator": 20,
+      "hits": 0
+    },
+    "recall_at_1": {
+      "answerable_denominator": 105,
+      "answerable_hits": 2,
+      "denominator": 120,
+      "hits": 2
+    },
+    "recall_at_10": {
+      "answerable_denominator": 105,
+      "answerable_hits": 2,
+      "denominator": 120,
+      "hits": 2
+    },
+    "recall_at_3": {
+      "answerable_denominator": 105,
+      "answerable_hits": 2,
+      "denominator": 120,
+      "hits": 2
+    },
+    "recall_at_5": {
+      "answerable_denominator": 105,
+      "answerable_hits": 2,
+      "denominator": 120,
+      "hits": 2
+    },
+    "retrieval_miss_count": 103,
+    "wrong_period_retrieval_count": 0
+  },
+  "runtime_output_sha256": "9e02df6701268e83cd9dafdcc36d95736167c19cca8d244a134a69149538dd83",
+  "temporal": {
+    "annual_quarter_correct": {
+      "count": 98,
+      "denominator": 120
+    },
+    "created_at_misuse": 0,
+    "historical_period_correct": {
+      "count": 0,
+      "denominator": 0
+    },
+    "latest_report_resolution_correct": {
+      "count": 0,
+      "denominator": 0
+    },
+    "quarter_ytd_correct": {
+      "count": 0,
+      "denominator": 0,
+      "note": "conservative UNKNOWN policy; no blind labels used in runtime"
+    },
+    "scope_correct": {
+      "count": 119,
+      "denominator": 120
+    },
+    "version_resolution_correct": {
+      "count": 0,
+      "denominator": 15
+    }
+  },
+  "top_failure_categories": [
+    [
+      "NO_PROGRESS_FAILURE",
+      38
+    ],
+    [
+      "RETRIEVAL_MISS",
+      26
+    ],
+    [
+      "CALC_OPERAND_FAILURE",
+      15
+    ],
+    [
+      "MULTI_EVIDENCE_INCOMPLETE",
+      12
+    ],
+    [
+      "OTHER",
+      6
+    ],
+    [
+      "REPLAN_FAILURE",
+      2
+    ]
+  ],
+  "trace_sha256": "3b3b9ee227a49631dcf4f1c820172fd63cf465cbb85514d67ce9d06d2d5f6ebd",
+  "unanswerable": 15,
+  "unsafe_release": 0
+}

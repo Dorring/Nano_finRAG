@@ -1,0 +1,16 @@
+{
+  "base_sha": "f34934b85b70ced100457f0b6c455bf8fed67572",
+  "candidate_targets": {
+    "answerable_at_100": 93,
+    "answerable_at_200": 95,
+    "answerable_at_50": 89
+  },
+  "ceiling": "RANKING_CEILING",
+  "decision": "RETRIEVAL_RECOVERY_FAILED",
+  "development_set": "CONSUMED_DEVELOPMENT_REGRESSION",
+  "generator_calls": 0,
+  "production": "V1",
+  "production_switch": false,
+  "recommendation": "CONTINUE_TARGETED_RETRIEVAL",
+  "selected_config_sha": "bbaa20165acc5fb9356b3024e3d2c0a1f112d88487832b9254125e179892651a"
+}

@@ -1,0 +1,26 @@
+{
+  "routes": {
+    "CALCULATION": {
+      "answerable": 15,
+      "c1_preservation_pct": 100.0,
+      "released_correct": 15,
+      "total": 15,
+      "unanswerable": 0
+    },
+    "MULTI_EVIDENCE": {
+      "answerable": 35,
+      "multi_incomplete_fail_closed": 6,
+      "released_correct": 29,
+      "total": 35,
+      "unanswerable": 0
+    },
+    "QUANTITATIVE_TABLE_ROW": {
+      "answerable": 55,
+      "first_stage_miss": 10,
+      "released_correct": 45,
+      "total": 70,
+      "unanswerable": 15,
+      "unanswerable_refused": 15
+    }
+  }
+}

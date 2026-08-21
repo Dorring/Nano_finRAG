@@ -1,0 +1,14 @@
+{
+  "all_token_AND_removed": true,
+  "candidate_depths_tested": [
+    20,
+    50,
+    100,
+    200
+  ],
+  "metadata_scope_hard": true,
+  "new_index": "/mnt/disk/mxf/projects/Qhhhhhhaaa/financial_corpus_v2/indexes/nf-v2-18-retrieval-recovery/enriched-bm25/index.sqlite",
+  "old_index": "/mnt/disk/mxf/projects/Qhhhhhhaaa/financial_corpus_v2/indexes/financial-corpus-v2/bm25/index.sqlite",
+  "query_builder": "scope/function removal + phrase-first OR important-token fallback",
+  "samples": []
+}

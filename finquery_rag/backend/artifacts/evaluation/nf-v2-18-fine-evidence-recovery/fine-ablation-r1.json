@@ -1,0 +1,684 @@
+{
+  "family_depth": 20,
+  "fine_child_depth": 10,
+  "fine_debug": {
+    "FBV1-001": {
+      "children_considered": 103,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-002": {
+      "children_considered": 90,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-003": {
+      "children_considered": 79,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-004": {
+      "children_considered": 89,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-005": {
+      "children_considered": 83,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-006": {
+      "children_considered": 116,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-007": {
+      "children_considered": 76,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-008": {
+      "children_considered": 79,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-009": {
+      "children_considered": 103,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-010": {
+      "children_considered": 54,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-011": {
+      "children_considered": 47,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-012": {
+      "children_considered": 66,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-013": {
+      "children_considered": 29,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-014": {
+      "children_considered": 102,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-015": {
+      "children_considered": 98,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-016": {
+      "children_considered": 81,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-017": {
+      "children_considered": 53,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-018": {
+      "children_considered": 121,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-019": {
+      "children_considered": 172,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-020": {
+      "children_considered": 85,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-021": {
+      "children_considered": 68,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-022": {
+      "children_considered": 105,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-023": {
+      "children_considered": 57,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-024": {
+      "children_considered": 241,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-025": {
+      "children_considered": 159,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-026": {
+      "children_considered": 74,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-027": {
+      "children_considered": 94,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-028": {
+      "children_considered": 23,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-029": {
+      "children_considered": 88,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-030": {
+      "children_considered": 158,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-031": {
+      "children_considered": 96,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-032": {
+      "children_considered": 64,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-033": {
+      "children_considered": 134,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-034": {
+      "children_considered": 171,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-035": {
+      "children_considered": 178,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-036": {
+      "children_considered": 177,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-037": {
+      "children_considered": 185,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-038": {
+      "children_considered": 139,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-039": {
+      "children_considered": 177,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-040": {
+      "children_considered": 97,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-041": {
+      "children_considered": 73,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-042": {
+      "children_considered": 73,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-043": {
+      "children_considered": 95,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-044": {
+      "children_considered": 64,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-045": {
+      "children_considered": 81,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-046": {
+      "children_considered": 124,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-047": {
+      "children_considered": 151,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-048": {
+      "children_considered": 141,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-049": {
+      "children_considered": 216,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-050": {
+      "children_considered": 220,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-051": {
+      "children_considered": 61,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-052": {
+      "children_considered": 158,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-053": {
+      "children_considered": 26,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-054": {
+      "children_considered": 68,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-055": {
+      "children_considered": 102,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-056": {
+      "children_considered": 64,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-057": {
+      "children_considered": 40,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-058": {
+      "children_considered": 160,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-059": {
+      "children_considered": 25,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-060": {
+      "children_considered": 144,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-061": {
+      "children_considered": 148,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-062": {
+      "children_considered": 63,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-063": {
+      "children_considered": 142,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-064": {
+      "children_considered": 76,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-065": {
+      "children_considered": 66,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-066": {
+      "children_considered": 188,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-067": {
+      "children_considered": 103,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-068": {
+      "children_considered": 29,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-069": {
+      "children_considered": 62,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-070": {
+      "children_considered": 92,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-071": {
+      "children_considered": 23,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-072": {
+      "children_considered": 53,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-073": {
+      "children_considered": 82,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-074": {
+      "children_considered": 107,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-075": {
+      "children_considered": 92,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-076": {
+      "children_considered": 192,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-077": {
+      "children_considered": 203,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-078": {
+      "children_considered": 55,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-079": {
+      "children_considered": 226,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-080": {
+      "children_considered": 177,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-081": {
+      "children_considered": 99,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-082": {
+      "children_considered": 124,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-083": {
+      "children_considered": 102,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-084": {
+      "children_considered": 184,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-085": {
+      "children_considered": 183,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-086": {
+      "children_considered": 201,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-087": {
+      "children_considered": 174,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-088": {
+      "children_considered": 176,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-089": {
+      "children_considered": 196,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-090": {
+      "children_considered": 73,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-091": {
+      "children_considered": 73,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-092": {
+      "children_considered": 95,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-093": {
+      "children_considered": 96,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-094": {
+      "children_considered": 47,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-095": {
+      "children_considered": 127,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-096": {
+      "children_considered": 0,
+      "coarse_fallback_candidates": 0,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-097": {
+      "children_considered": 0,
+      "coarse_fallback_candidates": 0,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-098": {
+      "children_considered": 0,
+      "coarse_fallback_candidates": 0,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-099": {
+      "children_considered": 0,
+      "coarse_fallback_candidates": 0,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-100": {
+      "children_considered": 0,
+      "coarse_fallback_candidates": 0,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-101": {
+      "children_considered": 0,
+      "coarse_fallback_candidates": 0,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-102": {
+      "children_considered": 0,
+      "coarse_fallback_candidates": 0,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-103": {
+      "children_considered": 0,
+      "coarse_fallback_candidates": 0,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-104": {
+      "children_considered": 0,
+      "coarse_fallback_candidates": 0,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-105": {
+      "children_considered": 0,
+      "coarse_fallback_candidates": 0,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-106": {
+      "children_considered": 0,
+      "coarse_fallback_candidates": 0,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-107": {
+      "children_considered": 0,
+      "coarse_fallback_candidates": 0,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-108": {
+      "children_considered": 0,
+      "coarse_fallback_candidates": 0,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-109": {
+      "children_considered": 0,
+      "coarse_fallback_candidates": 0,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-110": {
+      "children_considered": 0,
+      "coarse_fallback_candidates": 0,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-111": {
+      "children_considered": 419,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-112": {
+      "children_considered": 278,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-113": {
+      "children_considered": 378,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-114": {
+      "children_considered": 156,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-115": {
+      "children_considered": 82,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-116": {
+      "children_considered": 211,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-117": {
+      "children_considered": 319,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-118": {
+      "children_considered": 80,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-119": {
+      "children_considered": 157,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    },
+    "FBV1-120": {
+      "children_considered": 448,
+      "coarse_fallback_candidates": 200,
+      "wrong_period_excluded": 0
+    }
+  },
+  "metrics": {
+    "R@1": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 0,
+      "calculation_operand_coverage": 0.0,
+      "denominator": 120,
+      "exact_count": 35,
+      "exact_recall": 0.2916666666666667,
+      "family_count": 42,
+      "family_recall": 0.35,
+      "multi_all_count": 0,
+      "multi_all_recall": 0.0,
+      "multi_any_count": 14,
+      "multi_any_recall": 0.7,
+      "multi_count": 20
+    },
+    "R@10": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 7,
+      "calculation_operand_coverage": 0.4666666666666667,
+      "denominator": 120,
+      "exact_count": 56,
+      "exact_recall": 0.4666666666666667,
+      "family_count": 75,
+      "family_recall": 0.625,
+      "multi_all_count": 9,
+      "multi_all_recall": 0.45,
+      "multi_any_count": 17,
+      "multi_any_recall": 0.85,
+      "multi_count": 20
+    },
+    "R@20": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 9,
+      "calculation_operand_coverage": 0.6,
+      "denominator": 120,
+      "exact_count": 70,
+      "exact_recall": 0.5833333333333334,
+      "family_count": 82,
+      "family_recall": 0.6833333333333333,
+      "multi_all_count": 9,
+      "multi_all_recall": 0.45,
+      "multi_any_count": 17,
+      "multi_any_recall": 0.85,
+      "multi_count": 20
+    },
+    "R@3": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 2,
+      "calculation_operand_coverage": 0.13333333333333333,
+      "denominator": 120,
+      "exact_count": 43,
+      "exact_recall": 0.35833333333333334,
+      "family_count": 56,
+      "family_recall": 0.4666666666666667,
+      "multi_all_count": 9,
+      "multi_all_recall": 0.45,
+      "multi_any_count": 17,
+      "multi_any_recall": 0.85,
+      "multi_count": 20
+    },
+    "R@5": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 4,
+      "calculation_operand_coverage": 0.26666666666666666,
+      "denominator": 120,
+      "exact_count": 50,
+      "exact_recall": 0.4166666666666667,
+      "family_count": 64,
+      "family_recall": 0.5333333333333333,
+      "multi_all_count": 9,
+      "multi_all_recall": 0.45,
+      "multi_any_count": 17,
+      "multi_any_recall": 0.85,
+      "multi_count": 20
+    }
+  },
+  "name": "R1 A4 + local lexical fine ranking"
+}

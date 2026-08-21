@@ -1,0 +1,43 @@
+{
+  "schema_version": "nf-v2-17/source-intake-review-decision/v1",
+  "task": "NF-V2-17A2 Source Intake Review",
+  "base_sha": "b7de593051bdb61e4a08539cef762f7fa373a9fd",
+  "reviewed_at": "2026-08-20",
+  "companies": 10,
+  "planned_primary_filings": 60,
+  "verified": 58,
+  "verified_with_warning": 2,
+  "unresolved": 0,
+  "annual_planned": 30,
+  "annual_resolved": 30,
+  "quarterly_planned": 30,
+  "quarterly_resolved": 30,
+  "fiscal_calendars_verified": 10,
+  "non_calendar_issuers": [
+    "MSFT",
+    "AAPL",
+    "NVDA",
+    "V"
+  ],
+  "historical_source_identity_reacquired": 0,
+  "historical_metadata_only": 8,
+  "amendments_discovered": 3,
+  "amendments_included_as_canonical_version_cases": 0,
+  "canonical_duplicates": 0,
+  "source_format_counts": {
+    "RAW_HTML": 60,
+    "RAW_PDF": 0,
+    "BOTH_AVAILABLE": 0
+  },
+  "conversion_required": 60,
+  "created_at_financial_time_misuse": 0,
+  "fresh_blind_candidate_documents": 12,
+  "acquisition_ready": true,
+  "decision": "SOURCE_INTAKE_ACCEPTED",
+  "downloaded": false,
+  "parsed": false,
+  "indexed": false,
+  "training": 0,
+  "model_calls": 0,
+  "next_gate": "NF-V2-17A3_AUTHORITATIVE_SOURCE_ACQUISITION"
+}

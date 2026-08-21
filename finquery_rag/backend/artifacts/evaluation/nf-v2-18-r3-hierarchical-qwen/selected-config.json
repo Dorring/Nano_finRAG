@@ -1,0 +1,202 @@
+{
+  "a4_no_loss": true,
+  "actual": {
+    "answerable_exact_R@10": 71,
+    "answerable_exact_R@5": 63,
+    "calculation_operand@10": 5,
+    "multi_all@10": 12,
+    "multi_any@5": 19
+  },
+  "base_coarse": "NF-V2-18A A4",
+  "decision": "RETRIEVAL_PARTIALLY_RECOVERED",
+  "hard_scope_unchanged": true,
+  "metrics": {
+    "all_120": {
+      "R@1": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 0,
+        "calculation_operand_coverage": 0.0,
+        "denominator": 120,
+        "exact_count": 42,
+        "exact_recall": 0.35,
+        "family_count": 69,
+        "family_recall": 0.575,
+        "multi_all_count": 0,
+        "multi_all_recall": 0.0,
+        "multi_any_count": 17,
+        "multi_any_recall": 0.85,
+        "multi_count": 20
+      },
+      "R@10": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 5,
+        "calculation_operand_coverage": 0.3333333333333333,
+        "denominator": 120,
+        "exact_count": 71,
+        "exact_recall": 0.5916666666666667,
+        "family_count": 84,
+        "family_recall": 0.7,
+        "multi_all_count": 12,
+        "multi_all_recall": 0.6,
+        "multi_any_count": 20,
+        "multi_any_recall": 1.0,
+        "multi_count": 20
+      },
+      "R@20": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 6,
+        "calculation_operand_coverage": 0.4,
+        "denominator": 120,
+        "exact_count": 76,
+        "exact_recall": 0.6333333333333333,
+        "family_count": 85,
+        "family_recall": 0.7083333333333334,
+        "multi_all_count": 12,
+        "multi_all_recall": 0.6,
+        "multi_any_count": 20,
+        "multi_any_recall": 1.0,
+        "multi_count": 20
+      },
+      "R@3": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 1,
+        "calculation_operand_coverage": 0.06666666666666667,
+        "denominator": 120,
+        "exact_count": 55,
+        "exact_recall": 0.4583333333333333,
+        "family_count": 78,
+        "family_recall": 0.65,
+        "multi_all_count": 10,
+        "multi_all_recall": 0.5,
+        "multi_any_count": 18,
+        "multi_any_recall": 0.9,
+        "multi_count": 20
+      },
+      "R@5": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 5,
+        "calculation_operand_coverage": 0.3333333333333333,
+        "denominator": 120,
+        "exact_count": 63,
+        "exact_recall": 0.525,
+        "family_count": 80,
+        "family_recall": 0.6666666666666666,
+        "multi_all_count": 10,
+        "multi_all_recall": 0.5,
+        "multi_any_count": 19,
+        "multi_any_recall": 0.95,
+        "multi_count": 20
+      }
+    },
+    "answerable_105": {
+      "R@1": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 0,
+        "calculation_operand_coverage": 0.0,
+        "denominator": 105,
+        "exact_count": 42,
+        "exact_recall": 0.4,
+        "family_count": 69,
+        "family_recall": 0.6571428571428571,
+        "multi_all_count": 0,
+        "multi_all_recall": 0.0,
+        "multi_any_count": 17,
+        "multi_any_recall": 0.85,
+        "multi_count": 20
+      },
+      "R@10": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 5,
+        "calculation_operand_coverage": 0.3333333333333333,
+        "denominator": 105,
+        "exact_count": 71,
+        "exact_recall": 0.6761904761904762,
+        "family_count": 84,
+        "family_recall": 0.8,
+        "multi_all_count": 12,
+        "multi_all_recall": 0.6,
+        "multi_any_count": 20,
+        "multi_any_recall": 1.0,
+        "multi_count": 20
+      },
+      "R@20": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 6,
+        "calculation_operand_coverage": 0.4,
+        "denominator": 105,
+        "exact_count": 76,
+        "exact_recall": 0.7238095238095238,
+        "family_count": 85,
+        "family_recall": 0.8095238095238095,
+        "multi_all_count": 12,
+        "multi_all_recall": 0.6,
+        "multi_any_count": 20,
+        "multi_any_recall": 1.0,
+        "multi_count": 20
+      },
+      "R@3": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 1,
+        "calculation_operand_coverage": 0.06666666666666667,
+        "denominator": 105,
+        "exact_count": 55,
+        "exact_recall": 0.5238095238095238,
+        "family_count": 78,
+        "family_recall": 0.7428571428571429,
+        "multi_all_count": 10,
+        "multi_all_recall": 0.5,
+        "multi_any_count": 18,
+        "multi_any_recall": 0.9,
+        "multi_count": 20
+      },
+      "R@5": {
+        "calculation_count": 15,
+        "calculation_operand_complete": 5,
+        "calculation_operand_coverage": 0.3333333333333333,
+        "denominator": 105,
+        "exact_count": 63,
+        "exact_recall": 0.6,
+        "family_count": 80,
+        "family_recall": 0.7619047619047619,
+        "multi_all_count": 10,
+        "multi_all_recall": 0.5,
+        "multi_any_count": 19,
+        "multi_any_recall": 0.95,
+        "multi_count": 20
+      }
+    },
+    "calculation": {
+      "OperandComplete@10": 5,
+      "OperandComplete@20": 6,
+      "OperandComplete@5": 5,
+      "denominator": 15
+    },
+    "multi": {
+      "All@10": 12,
+      "All@20": 12,
+      "All@5": 10,
+      "Any@5": 19,
+      "denominator": 20
+    }
+  },
+  "production_default_changed": false,
+  "qwen_batch_size": 4,
+  "qwen_revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+  "qwen_snapshot_sha": "32b52d29edef232618c27a728cde56d369ba862c81d49c6527528dfd82db39c1",
+  "route": {
+    "calculation": "U6",
+    "multi": "U4",
+    "qualitative": "U3",
+    "single": "U3"
+  },
+  "selected_stage": "U5",
+  "semantic_depth": 20,
+  "targets": {
+    "answerable_exact_R@10": 90,
+    "answerable_exact_R@5": 79,
+    "calculation_operand@10": 11,
+    "multi_all@10": 14,
+    "multi_any@5": 18
+  },
+  "version": "NF-V2-18A-R3/A4-preserving-hierarchical-qwen-v1"
+}

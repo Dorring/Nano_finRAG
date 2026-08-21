@@ -234,3 +234,11 @@ Hard Negative分别覆盖“同一行错误期间”和“同一表错误Metric�
 这个结果只能说明当前冻结Head-only方案没有泛化收益，不能推断所有金融Reranker微调都无效。它也不能把开发集Pairwise指标解释成生产Recall。工程上的价值是及时停止无收益路线，并把瓶颈重新定位到上游Source Representation与Candidate可检索性。
 
 当前严格边界：生产Final Source Recall@5仍为`13/80`；冻结Benchmark未被训练读取；生产Reranker未修改。
+
+## Q12：NF-V2-15 的 Claim Verifier 做了什么？
+
+它不是新的 Binder，也不是答案生成器。它位于生成之后，逐项检查答案中新增的
+论断是否能被已验证证据或 canonical calculation 支持；不支持或有歧义就阻止发布。
+在相同的冻结 72 题回放中，原来 4 个释放中 3 个正确、1 个有单位幻觉；加入 verifier
+后变为 3 个释放且全部正确，语义不安全最终释放为 0。该结果没有新模型调用、没有
+新检索，也不等于生产 V2 accuracy，Production 仍保持 V1。

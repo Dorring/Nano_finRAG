@@ -1,0 +1,98 @@
+{
+  "block_level": {
+    "content_type": 95506,
+    "section_type": 13147
+  },
+  "document_level": {
+    "cik": {
+      "missing": 0,
+      "not_applicable": 0,
+      "present": 60
+    },
+    "company": {
+      "missing": 0,
+      "not_applicable": 0,
+      "present": 60
+    },
+    "filing_date": {
+      "missing": 0,
+      "not_applicable": 0,
+      "present": 60
+    },
+    "fiscal_quarter": {
+      "missing": 30,
+      "not_applicable": 30,
+      "present": 30
+    },
+    "fiscal_year": {
+      "missing": 0,
+      "not_applicable": 0,
+      "present": 60
+    },
+    "form_type": {
+      "missing": 0,
+      "not_applicable": 0,
+      "present": 60
+    },
+    "report_period_end": {
+      "missing": 0,
+      "not_applicable": 0,
+      "present": 60
+    },
+    "ticker": {
+      "missing": 0,
+      "not_applicable": 0,
+      "present": 60
+    },
+    "version": {
+      "missing": 0,
+      "not_applicable": 0,
+      "present": 60
+    }
+  },
+  "fact_level": {
+    "currency": 1580985,
+    "period_end": 949569,
+    "period_semantics": 954432,
+    "period_start": 0,
+    "scale": 1309939
+  },
+  "fact_level_states": {
+    "currency": {
+      "missing": 299229,
+      "not_applicable": 0,
+      "present": 1580985,
+      "unknown": 299229
+    },
+    "period_end": {
+      "missing": 930645,
+      "not_applicable": 0,
+      "present": 949569,
+      "unknown": 930645
+    },
+    "period_semantics": {
+      "missing": 925782,
+      "not_applicable": 0,
+      "present": 954432,
+      "unknown": 925782
+    },
+    "period_start": {
+      "missing": 1880214,
+      "not_applicable": 0,
+      "present": 0,
+      "unknown": 1880214
+    },
+    "scale": {
+      "missing": 570275,
+      "not_applicable": 0,
+      "present": 1309939,
+      "unknown": 570275
+    },
+    "unit": {
+      "missing": 250948,
+      "not_applicable": 0,
+      "present": 1629266,
+      "unknown": 250948
+    }
+  }
+}

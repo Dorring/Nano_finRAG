@@ -1,0 +1,14 @@
+{
+  "audit_status": "PASS_ORACLE_ACCESSIBLE",
+  "index_source": "normalized/SEC/*/document.json",
+  "searchable_fields": [
+    "document_id",
+    "accession_number",
+    "form_type",
+    "is_amended",
+    "filing_date",
+    "report_period_end",
+    "supersedes_document_id",
+    "ticker"
+  ]
+}

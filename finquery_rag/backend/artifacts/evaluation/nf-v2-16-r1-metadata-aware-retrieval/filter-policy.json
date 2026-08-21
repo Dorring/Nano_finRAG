@@ -1,0 +1,29 @@
+{
+  "candidate_union_subset_authorized": true,
+  "hard_filters": [
+    "tenant_id",
+    "ticker",
+    "entity",
+    "fiscal_year",
+    "fiscal_quarter",
+    "period_semantics",
+    "document_type",
+    "version",
+    "supersedes_document_id"
+  ],
+  "no_silent_relaxation": true,
+  "order": [
+    "authorization",
+    "entity",
+    "temporal",
+    "document_type",
+    "version",
+    "retrieval",
+    "soft_boost",
+    "rerank"
+  ],
+  "soft_preferences": [
+    "section_type",
+    "content_type"
+  ]
+}

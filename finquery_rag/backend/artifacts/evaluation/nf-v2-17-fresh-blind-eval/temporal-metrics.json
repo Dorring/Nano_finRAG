@@ -1,0 +1,28 @@
+{
+  "annual_quarter_correct": {
+    "count": 98,
+    "denominator": 120
+  },
+  "created_at_misuse": 0,
+  "historical_period_correct": {
+    "count": 0,
+    "denominator": 0
+  },
+  "latest_report_resolution_correct": {
+    "count": 0,
+    "denominator": 0
+  },
+  "quarter_ytd_correct": {
+    "count": 0,
+    "denominator": 0,
+    "note": "conservative UNKNOWN policy; no blind labels used in runtime"
+  },
+  "scope_correct": {
+    "count": 119,
+    "denominator": 120
+  },
+  "version_resolution_correct": {
+    "count": 0,
+    "denominator": 15
+  }
+}

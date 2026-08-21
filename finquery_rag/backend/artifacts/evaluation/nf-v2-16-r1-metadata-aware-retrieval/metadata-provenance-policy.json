@@ -1,0 +1,13 @@
+{
+  "created_at_financial_time": false,
+  "hard_filter_allowed": [
+    "EXPLICIT",
+    "DERIVED"
+  ],
+  "inferred_semantic_metadata": "SOFT_ONLY",
+  "statuses": [
+    "EXPLICIT",
+    "DERIVED",
+    "UNKNOWN"
+  ]
+}

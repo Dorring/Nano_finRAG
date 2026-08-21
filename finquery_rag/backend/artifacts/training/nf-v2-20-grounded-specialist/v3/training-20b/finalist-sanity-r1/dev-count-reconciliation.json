@@ -1,0 +1,13 @@
+{
+  "arithmetic_confirmed": true,
+  "breakdown_of_5_strict_failures": {
+    "abstention_safe_wording_variants": 4,
+    "actual_unsupported_unsafe_releases": 0,
+    "qualitative_safe_reference_mismatch": 1
+  },
+  "released_count": 499,
+  "strict_correct_count": 495,
+  "strict_failure_count": 5,
+  "total_samples": 500,
+  "unreleased_count": 1
+}

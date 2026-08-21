@@ -1,0 +1,18 @@
+{
+  "semantic_claim_verifier_decision": "CLAIM_VERIFIER_EFFECTIVE",
+  "semantic_claim_verifier_source": {
+    "branch": "exp/nf-v2-13-semantic-sufficiency-gate",
+    "commit": "9eca52ed332ce206916213c691b2dda3c8a214de",
+    "role": "post_generation_only"
+  },
+  "lora_dpo_decision": "LORA_DPO_INEFFECTIVE",
+  "lora_dpo_source": {
+    "branch": "exp/nf-v2-14-lora-dpo-refusal",
+    "final_commit": "f8efa0a4299b18d75a4602cce000d35872d06fbd",
+    "runtime_integrated": false,
+    "additional_run": false
+  },
+  "production": "V1",
+  "production_switch": false,
+  "no_r4": true
+}

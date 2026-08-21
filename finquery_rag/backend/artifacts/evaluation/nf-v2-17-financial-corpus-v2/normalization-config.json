@@ -1,0 +1,20 @@
+{
+  "camelot_used": false,
+  "chunk_rules": "structure-aware TEXT/TABLE/TABLE_ROW, max 2400 chars",
+  "chunk_version": "nf-v2-17a4-structure-chunk-v1",
+  "html_parser": "lxml.etree.HTMLParser(recover=True,no_network=True,huge_tree=True)",
+  "indexing": false,
+  "input": "SEC authoritative HTML",
+  "ixbrl": "deterministic context/fact preservation",
+  "llm_calls": 0,
+  "mineru_used": false,
+  "normalization_version": "nf-v2-17a4-html-normalization-v1",
+  "numeric_rules": "preserve raw text; parentheses/currency/commas/percent",
+  "parser_version": "nf-v2-17a4-structure-parser-v1",
+  "pdf_conversion": false,
+  "period_rules": "header/context binding; explicit three/six/nine-month and as-of phrases; no Q2-wide inference",
+  "pymupdf_used": false,
+  "question_generation": false,
+  "section_rules": "deterministic controlled taxonomy; uncertain -> UNKNOWN",
+  "table_rules": "rowspan/colspan grid; stable table/row/cell IDs"
+}

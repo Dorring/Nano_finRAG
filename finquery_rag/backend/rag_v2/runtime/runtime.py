@@ -14,6 +14,7 @@ from .contracts import (RuntimeTraceV1, TerminalReason, TrustedRAGQueryV2,
                         TrustedRAGResponseV2)
 from .evidence import TrustedEvidenceGateV1
 from .routing import GeneratorRoutingPolicyV1
+from .semantic_claims import SemanticClaimVerifierV1
 
 
 class TrustedRAGRuntimeV2:
@@ -21,11 +22,13 @@ class TrustedRAGRuntimeV2:
 
     def __init__(self, registry: ProviderRegistryV1, routing_policy: GeneratorRoutingPolicyV1,
                  *, evidence_gate: TrustedEvidenceGateV1 | None = None,
-                 renderer: Any | None = None) -> None:
+                 renderer: Any | None = None,
+                 semantic_verifier: SemanticClaimVerifierV1 | None = None) -> None:
         self.registry = registry
         self.routing_policy = routing_policy
         self.evidence_gate = evidence_gate or TrustedEvidenceGateV1()
         self.renderer = renderer or GenericVerifiedPacketRendererV1()
+        self.semantic_verifier = semantic_verifier or SemanticClaimVerifierV1()
 
     @staticmethod
     def _plan(value: SupervisorPlan | Mapping[str, Any] | None) -> SupervisorPlan | None:
@@ -102,7 +105,10 @@ class TrustedRAGRuntimeV2:
             fallback_budget=1 if config.fallback else 0,
             fallback_on_soft_fail=config.fallback_on_soft_fail,
         )
-        machine = TrustedGenerationStateMachineV1(self.registry, self._validator(), recovery)
+        machine = TrustedGenerationStateMachineV1(
+            self.registry, self._validator(), recovery,
+            semantic_verifier=self.semantic_verifier,
+        )
         try:
             generation_input = self.renderer.render(packet or {})
             result = machine.run(generation_input)

@@ -1,0 +1,11 @@
+{
+  "authorization_leakage": 0,
+  "created_at_misuse": 0,
+  "document_type_violation": 0,
+  "entity_violation": 0,
+  "fiscal_violation": 0,
+  "scope_filter_unchanged": true,
+  "silent_relaxation": 0,
+  "version_violation": 0,
+  "wrong_period_binding": 0
+}

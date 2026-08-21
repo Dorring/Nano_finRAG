@@ -1,0 +1,11 @@
+{
+  "checkpoint_sha256": "3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a",
+  "evaluation_contract_preserved": true,
+  "generator_bottleneck_resolved": true,
+  "hard_safety_gate": "PASS",
+  "integration_decision": "LOCAL_SPECIALIST_RUNTIME_INTEGRATION_SUCCESS",
+  "production_remains": "V1",
+  "production_switch": false,
+  "promotion_readiness": "READY_FOR_SHADOW_PRODUCTION",
+  "selected_model": "model_000156.pt"
+}

@@ -1,0 +1,50 @@
+{
+  "CITATION_FORMAT_HARD_CASE": {
+    "citation_valid": 50,
+    "correct_released": 50,
+    "count": 50,
+    "released": 50,
+    "semantic_supported": 50,
+    "strict_correct": 50
+  },
+  "INSUFFICIENT_EVIDENCE_ABSTENTION": {
+    "citation_valid": 25,
+    "correct_released": 21,
+    "count": 25,
+    "released": 25,
+    "semantic_supported": 25,
+    "strict_correct": 21
+  },
+  "MULTI_EVIDENCE_SYNTHESIS": {
+    "citation_valid": 175,
+    "correct_released": 175,
+    "count": 175,
+    "released": 175,
+    "semantic_supported": 175,
+    "strict_correct": 175
+  },
+  "QUALITATIVE_GROUNDED_QA": {
+    "citation_valid": 125,
+    "correct_released": 124,
+    "count": 125,
+    "released": 124,
+    "semantic_supported": 124,
+    "strict_correct": 124
+  },
+  "TEMPORAL_VERSION_SYNTHESIS": {
+    "citation_valid": 75,
+    "correct_released": 75,
+    "count": 75,
+    "released": 75,
+    "semantic_supported": 75,
+    "strict_correct": 75
+  },
+  "VERIFIED_C1_CONSUMPTION": {
+    "citation_valid": 50,
+    "correct_released": 50,
+    "count": 50,
+    "released": 50,
+    "semantic_supported": 50,
+    "strict_correct": 50
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "best_step": 156,
+  "best_strict_correct_pct": 99.0,
+  "checkpoint_dev_scores": {
+    "156": 99.0,
+    "312": 97.6,
+    "468": 96.4,
+    "625": 98.2
+  },
+  "orcl_holdout_accessed": false,
+  "selection_procedure_valid": true,
+  "training_curve_analysis": "Step 156 (25%) achieved peak grounding fidelity (99.0% Strict Correct) before minor over-regularization occurred at Step 468 (96.4%) and Step 625 (98.2%), confirming the necessity of intermediate checkpoint evaluation and early finalist selection."
+}

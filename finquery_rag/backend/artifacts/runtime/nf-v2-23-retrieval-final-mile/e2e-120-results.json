@@ -1,0 +1,24 @@
+{
+  "answerable": {
+    "accuracy_pct": 100.0,
+    "fail_closed": 0,
+    "released_correct": 105,
+    "total": 105
+  },
+  "overall_system": {
+    "accuracy_pct": 100.0,
+    "correct_over_released_pct": 100.0,
+    "correct_total": 120,
+    "fail_closed_total": 15,
+    "released_total": 105,
+    "total": 120,
+    "unsafe_release_total": 0
+  },
+  "total_universe": 120,
+  "unanswerable": {
+    "accuracy_pct": 100.0,
+    "correctly_refused": 15,
+    "total": 15,
+    "unsafe_released": 0
+  }
+}

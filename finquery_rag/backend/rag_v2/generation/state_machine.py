@@ -7,7 +7,8 @@ from enum import Enum
 from time import monotonic
 from typing import Any, Mapping
 
-from .contracts import (GenerationAttemptRecordV1, GenerationInputV1,
+from .contracts import (AnswerEnvelopeV1, GenerationAttemptRecordV1,
+                        GenerationInputV1, GenerationValidationFindingV1,
                         GenerationValidationReportV1, ValidationSeverity)
 from .providers import GeneratorProviderV1, ProviderRegistryV1
 from .recovery import GenerationRecoveryPolicyV1, RecoveryAction
@@ -50,12 +51,57 @@ class TrustedGenerationStateMachineV1:
 
     def __init__(self, registry: ProviderRegistryV1, validator: RuntimeGenerationValidatorV1,
                  recovery_policy: GenerationRecoveryPolicyV1, *, max_attempts: int = 2,
-                 fallback_budget: int = 1) -> None:
+                 fallback_budget: int = 1,
+                 semantic_verifier: Any | None = None) -> None:
         if max_attempts != 2 or fallback_budget != 1:
             raise ValueError("R0 freezes max_attempts=2 and fallback_budget=1")
         self.registry = registry
         self.validator = validator
         self.recovery_policy = recovery_policy
+        self.semantic_verifier = semantic_verifier
+
+    def _validate(self, generation_input: GenerationInputV1, envelope: Any) -> GenerationValidationReportV1:
+        report = self.validator.validate(generation_input.packet, envelope)
+        if self.semantic_verifier is None or not isinstance(envelope, AnswerEnvelopeV1):
+            return report
+        try:
+            semantic = self.semantic_verifier.verify(generation_input.packet, envelope)
+        except Exception as exc:
+            finding = GenerationValidationFindingV1(
+                "SCV_INTERNAL_ERROR", ValidationSeverity.HARD_FAIL,
+                f"semantic claim verification failed closed: {exc}",
+            )
+            return GenerationValidationReportV1(
+                ValidationSeverity.HARD_FAIL,
+                tuple(report.findings) + (finding,),
+                tuple(report.checked_dimensions) + ("SCV_SEMANTIC_CLAIM_SUPPORT",),
+            )
+        if getattr(semantic.decision, "value", semantic.decision) == "SUPPORTED":
+            return GenerationValidationReportV1(
+                report.status, report.findings,
+                tuple(report.checked_dimensions) + ("SCV_SEMANTIC_CLAIM_SUPPORT",),
+            )
+        reasons = semantic.reason_codes or ("SCV_CLAIM_UNSUPPORTED",)
+        # Semantic claim failures block release, but retain the runtime's
+        # existing soft-fail recovery policy.  A configured fallback may
+        # repair the answer; with fallback_on_soft_fail disabled the run
+        # abstains exactly as it did for a citation soft failure.
+        semantic_severity = (
+            ValidationSeverity.HARD_FAIL
+            if report.status is ValidationSeverity.HARD_FAIL
+            else ValidationSeverity.SOFT_FAIL
+        )
+        findings = tuple(report.findings) + tuple(
+            GenerationValidationFindingV1(
+                reason, semantic_severity,
+                "generated claim is not supported by the verified evidence packet",
+            )
+            for reason in reasons
+        )
+        return GenerationValidationReportV1(
+            semantic_severity, findings,
+            tuple(report.checked_dimensions) + ("SCV_SEMANTIC_CLAIM_SUPPORT",),
+        )
 
     def _trace(self, input_: GenerationInputV1 | None, provider: str | None,
                attempt: int | None, validation: GenerationValidationReportV1 | None,
@@ -87,7 +133,7 @@ class TrustedGenerationStateMachineV1:
             started = monotonic()
             try:
                 envelope = provider.generate(generation_input, {"attempt_index": index, "recovery_reason": reason})
-                report = self.validator.validate(generation_input.packet, envelope)
+                report = self._validate(generation_input, envelope)
                 return envelope, report, (monotonic() - started) * 1000, True
             except Exception as exc:
                 return exc, None, (monotonic() - started) * 1000, False

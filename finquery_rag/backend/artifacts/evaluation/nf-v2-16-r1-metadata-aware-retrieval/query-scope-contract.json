@@ -1,0 +1,24 @@
+{
+  "components": [
+    "authorization_scope",
+    "entity_scope",
+    "document_type_scope",
+    "temporal_scope",
+    "version_scope",
+    "section_preferences",
+    "content_preferences"
+  ],
+  "condition_strengths": [
+    "HARD",
+    "SOFT",
+    "UNRESOLVED"
+  ],
+  "contract": "RetrievalScopeV1",
+  "period_semantics": [
+    "INSTANT",
+    "QUARTER",
+    "YTD",
+    "ANNUAL",
+    "UNKNOWN"
+  ]
+}

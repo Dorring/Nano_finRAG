@@ -1,0 +1,778 @@
+{
+  "U4": {
+    "FBV1-031": [
+      {
+        "coarse_count": 123,
+        "fine_count": 29,
+        "phrase": "% Change",
+        "slot_id": "FBV1-031::slot_1"
+      },
+      {
+        "coarse_count": 151,
+        "fine_count": 29,
+        "phrase": "(Increase) decrease in allowance for credit losses",
+        "slot_id": "FBV1-031::slot_2"
+      }
+    ],
+    "FBV1-032": [
+      {
+        "coarse_count": 125,
+        "fine_count": 32,
+        "phrase": "% Change",
+        "slot_id": "FBV1-032::slot_1"
+      },
+      {
+        "coarse_count": 148,
+        "fine_count": 26,
+        "phrase": "(Increase) decrease in allowance for credit losses",
+        "slot_id": "FBV1-032::slot_2"
+      }
+    ],
+    "FBV1-033": [
+      {
+        "coarse_count": 137,
+        "fine_count": 24,
+        "phrase": "% Change",
+        "slot_id": "FBV1-033::slot_1"
+      },
+      {
+        "coarse_count": 146,
+        "fine_count": 24,
+        "phrase": "(Increase) decrease in allowance for credit losses",
+        "slot_id": "FBV1-033::slot_2"
+      }
+    ],
+    "FBV1-034": [
+      {
+        "coarse_count": 200,
+        "fine_count": 23,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-034::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 22,
+        "phrase": "Accrued expenses and other current liabilities",
+        "slot_id": "FBV1-034::slot_2"
+      }
+    ],
+    "FBV1-035": [
+      {
+        "coarse_count": 200,
+        "fine_count": 24,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-035::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 22,
+        "phrase": "Accrued expenses and other current liabilities",
+        "slot_id": "FBV1-035::slot_2"
+      }
+    ],
+    "FBV1-036": [
+      {
+        "coarse_count": 200,
+        "fine_count": 23,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-036::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 22,
+        "phrase": "Accrued expenses and other current liabilities",
+        "slot_id": "FBV1-036::slot_2"
+      }
+    ],
+    "FBV1-037": [
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2023: Year Ended December 31,",
+        "slot_id": "FBV1-037::slot_1"
+      },
+      {
+        "coarse_count": 120,
+        "fine_count": 20,
+        "phrase": "Accounts payable",
+        "slot_id": "FBV1-037::slot_2"
+      }
+    ],
+    "FBV1-038": [
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2024: Year Ended December 31,",
+        "slot_id": "FBV1-038::slot_1"
+      },
+      {
+        "coarse_count": 119,
+        "fine_count": 20,
+        "phrase": "Accounts payable",
+        "slot_id": "FBV1-038::slot_2"
+      }
+    ],
+    "FBV1-039": [
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2025: Year Ended December 31,",
+        "slot_id": "FBV1-039::slot_1"
+      },
+      {
+        "coarse_count": 121,
+        "fine_count": 20,
+        "phrase": "Accounts payable",
+        "slot_id": "FBV1-039::slot_2"
+      }
+    ],
+    "FBV1-040": [
+      {
+        "coarse_count": 161,
+        "fine_count": 20,
+        "phrase": "Free cash flow",
+        "slot_id": "FBV1-040::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "Net cash provided by (used in) financing activities",
+        "slot_id": "FBV1-040::slot_2"
+      }
+    ],
+    "FBV1-041": [
+      {
+        "coarse_count": 182,
+        "fine_count": 20,
+        "phrase": "Free cash flow",
+        "slot_id": "FBV1-041::slot_1"
+      },
+      {
+        "coarse_count": 191,
+        "fine_count": 20,
+        "phrase": "Net cash provided by (used in) financing activities",
+        "slot_id": "FBV1-041::slot_2"
+      }
+    ],
+    "FBV1-042": [
+      {
+        "coarse_count": 188,
+        "fine_count": 20,
+        "phrase": "Free cash flow",
+        "slot_id": "FBV1-042::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "Net cash provided by (used in) financing activities",
+        "slot_id": "FBV1-042::slot_2"
+      }
+    ],
+    "FBV1-043": [
+      {
+        "coarse_count": 110,
+        "fine_count": 20,
+        "phrase": "% Change",
+        "slot_id": "FBV1-043::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2023: Year Ended December 31,",
+        "slot_id": "FBV1-043::slot_2"
+      }
+    ],
+    "FBV1-044": [
+      {
+        "coarse_count": 111,
+        "fine_count": 20,
+        "phrase": "% Change",
+        "slot_id": "FBV1-044::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2024: Year Ended December 31,",
+        "slot_id": "FBV1-044::slot_2"
+      }
+    ],
+    "FBV1-045": [
+      {
+        "coarse_count": 133,
+        "fine_count": 20,
+        "phrase": "% Change",
+        "slot_id": "FBV1-045::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2024: Year Ended December 31,",
+        "slot_id": "FBV1-045::slot_2"
+      }
+    ],
+    "FBV1-046": [
+      {
+        "coarse_count": 193,
+        "fine_count": 23,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-046::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 21,
+        "phrase": "Accrued purchases of property and equipment (1)",
+        "slot_id": "FBV1-046::slot_2"
+      }
+    ],
+    "FBV1-047": [
+      {
+        "coarse_count": 196,
+        "fine_count": 23,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-047::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 21,
+        "phrase": "Accrued purchases of property and equipment (1)",
+        "slot_id": "FBV1-047::slot_2"
+      }
+    ],
+    "FBV1-048": [
+      {
+        "coarse_count": 192,
+        "fine_count": 22,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-048::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 21,
+        "phrase": "Accrued purchases of property and equipment (1)",
+        "slot_id": "FBV1-048::slot_2"
+      }
+    ],
+    "FBV1-049": [
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2023: Year Ended December 31,",
+        "slot_id": "FBV1-049::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "Accounts receivable, net and other",
+        "slot_id": "FBV1-049::slot_2"
+      }
+    ],
+    "FBV1-050": [
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2024: Year Ended December 31,",
+        "slot_id": "FBV1-050::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "Accounts receivable, net and other",
+        "slot_id": "FBV1-050::slot_2"
+      }
+    ]
+  },
+  "U5": {
+    "FBV1-031": [
+      {
+        "coarse_count": 123,
+        "fine_count": 29,
+        "phrase": "% Change",
+        "slot_id": "FBV1-031::slot_1"
+      },
+      {
+        "coarse_count": 151,
+        "fine_count": 29,
+        "phrase": "(Increase) decrease in allowance for credit losses",
+        "slot_id": "FBV1-031::slot_2"
+      }
+    ],
+    "FBV1-032": [
+      {
+        "coarse_count": 125,
+        "fine_count": 32,
+        "phrase": "% Change",
+        "slot_id": "FBV1-032::slot_1"
+      },
+      {
+        "coarse_count": 148,
+        "fine_count": 26,
+        "phrase": "(Increase) decrease in allowance for credit losses",
+        "slot_id": "FBV1-032::slot_2"
+      }
+    ],
+    "FBV1-033": [
+      {
+        "coarse_count": 137,
+        "fine_count": 24,
+        "phrase": "% Change",
+        "slot_id": "FBV1-033::slot_1"
+      },
+      {
+        "coarse_count": 146,
+        "fine_count": 24,
+        "phrase": "(Increase) decrease in allowance for credit losses",
+        "slot_id": "FBV1-033::slot_2"
+      }
+    ],
+    "FBV1-034": [
+      {
+        "coarse_count": 200,
+        "fine_count": 23,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-034::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 22,
+        "phrase": "Accrued expenses and other current liabilities",
+        "slot_id": "FBV1-034::slot_2"
+      }
+    ],
+    "FBV1-035": [
+      {
+        "coarse_count": 200,
+        "fine_count": 24,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-035::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 22,
+        "phrase": "Accrued expenses and other current liabilities",
+        "slot_id": "FBV1-035::slot_2"
+      }
+    ],
+    "FBV1-036": [
+      {
+        "coarse_count": 200,
+        "fine_count": 23,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-036::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 22,
+        "phrase": "Accrued expenses and other current liabilities",
+        "slot_id": "FBV1-036::slot_2"
+      }
+    ],
+    "FBV1-037": [
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2023: Year Ended December 31,",
+        "slot_id": "FBV1-037::slot_1"
+      },
+      {
+        "coarse_count": 120,
+        "fine_count": 20,
+        "phrase": "Accounts payable",
+        "slot_id": "FBV1-037::slot_2"
+      }
+    ],
+    "FBV1-038": [
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2024: Year Ended December 31,",
+        "slot_id": "FBV1-038::slot_1"
+      },
+      {
+        "coarse_count": 119,
+        "fine_count": 20,
+        "phrase": "Accounts payable",
+        "slot_id": "FBV1-038::slot_2"
+      }
+    ],
+    "FBV1-039": [
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2025: Year Ended December 31,",
+        "slot_id": "FBV1-039::slot_1"
+      },
+      {
+        "coarse_count": 121,
+        "fine_count": 20,
+        "phrase": "Accounts payable",
+        "slot_id": "FBV1-039::slot_2"
+      }
+    ],
+    "FBV1-040": [
+      {
+        "coarse_count": 161,
+        "fine_count": 20,
+        "phrase": "Free cash flow",
+        "slot_id": "FBV1-040::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "Net cash provided by (used in) financing activities",
+        "slot_id": "FBV1-040::slot_2"
+      }
+    ],
+    "FBV1-041": [
+      {
+        "coarse_count": 182,
+        "fine_count": 20,
+        "phrase": "Free cash flow",
+        "slot_id": "FBV1-041::slot_1"
+      },
+      {
+        "coarse_count": 191,
+        "fine_count": 20,
+        "phrase": "Net cash provided by (used in) financing activities",
+        "slot_id": "FBV1-041::slot_2"
+      }
+    ],
+    "FBV1-042": [
+      {
+        "coarse_count": 188,
+        "fine_count": 20,
+        "phrase": "Free cash flow",
+        "slot_id": "FBV1-042::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "Net cash provided by (used in) financing activities",
+        "slot_id": "FBV1-042::slot_2"
+      }
+    ],
+    "FBV1-043": [
+      {
+        "coarse_count": 110,
+        "fine_count": 20,
+        "phrase": "% Change",
+        "slot_id": "FBV1-043::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2023: Year Ended December 31,",
+        "slot_id": "FBV1-043::slot_2"
+      }
+    ],
+    "FBV1-044": [
+      {
+        "coarse_count": 111,
+        "fine_count": 20,
+        "phrase": "% Change",
+        "slot_id": "FBV1-044::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2024: Year Ended December 31,",
+        "slot_id": "FBV1-044::slot_2"
+      }
+    ],
+    "FBV1-045": [
+      {
+        "coarse_count": 133,
+        "fine_count": 20,
+        "phrase": "% Change",
+        "slot_id": "FBV1-045::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2024: Year Ended December 31,",
+        "slot_id": "FBV1-045::slot_2"
+      }
+    ],
+    "FBV1-046": [
+      {
+        "coarse_count": 193,
+        "fine_count": 23,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-046::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 21,
+        "phrase": "Accrued purchases of property and equipment (1)",
+        "slot_id": "FBV1-046::slot_2"
+      }
+    ],
+    "FBV1-047": [
+      {
+        "coarse_count": 196,
+        "fine_count": 23,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-047::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 21,
+        "phrase": "Accrued purchases of property and equipment (1)",
+        "slot_id": "FBV1-047::slot_2"
+      }
+    ],
+    "FBV1-048": [
+      {
+        "coarse_count": 192,
+        "fine_count": 22,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-048::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 21,
+        "phrase": "Accrued purchases of property and equipment (1)",
+        "slot_id": "FBV1-048::slot_2"
+      }
+    ],
+    "FBV1-049": [
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2023: Year Ended December 31,",
+        "slot_id": "FBV1-049::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "Accounts receivable, net and other",
+        "slot_id": "FBV1-049::slot_2"
+      }
+    ],
+    "FBV1-050": [
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2024: Year Ended December 31,",
+        "slot_id": "FBV1-050::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "Accounts receivable, net and other",
+        "slot_id": "FBV1-050::slot_2"
+      }
+    ],
+    "FBV1-051": [
+      {
+        "coarse_count": 126,
+        "fine_count": 20,
+        "phrase": "January 30, 2024",
+        "slot_id": "FBV1-051::slot_1"
+      },
+      {
+        "coarse_count": 93,
+        "fine_count": 20,
+        "phrase": "San Jose, California",
+        "slot_id": "FBV1-051::slot_2"
+      }
+    ],
+    "FBV1-052": [
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2024: Year Ended December 31,",
+        "slot_id": "FBV1-052::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "Alphabet-level activities (1)",
+        "slot_id": "FBV1-052::slot_2"
+      }
+    ],
+    "FBV1-053": [
+      {
+        "coarse_count": 200,
+        "fine_count": 26,
+        "phrase": "Deferred tax assets",
+        "slot_id": "FBV1-053::slot_1"
+      },
+      {
+        "coarse_count": 151,
+        "fine_count": 20,
+        "phrase": "Operating leases",
+        "slot_id": "FBV1-053::slot_2"
+      }
+    ],
+    "FBV1-054": [
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "Other comprehensive income (loss)",
+        "slot_id": "FBV1-054::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "Unrealized Gains (Losses) on Cash Flow Hedges",
+        "slot_id": "FBV1-054::slot_2"
+      }
+    ],
+    "FBV1-055": [
+      {
+        "coarse_count": 131,
+        "fine_count": 41,
+        "phrase": "APAC",
+        "slot_id": "FBV1-055::slot_1"
+      },
+      {
+        "coarse_count": 131,
+        "fine_count": 41,
+        "phrase": "EMEA",
+        "slot_id": "FBV1-055::slot_2"
+      }
+    ],
+    "FBV1-056": [
+      {
+        "coarse_count": 200,
+        "fine_count": 38,
+        "phrase": "August 1 - 31",
+        "slot_id": "FBV1-056::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 38,
+        "phrase": "July 1 - 31",
+        "slot_id": "FBV1-056::slot_2"
+      }
+    ],
+    "FBV1-057": [
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "December 31, 2023",
+        "slot_id": "FBV1-057::slot_1"
+      },
+      {
+        "coarse_count": 183,
+        "fine_count": 20,
+        "phrase": "Weighted-average discount rate – operating leases",
+        "slot_id": "FBV1-057::slot_2"
+      }
+    ],
+    "FBV1-058": [
+      {
+        "coarse_count": 167,
+        "fine_count": 20,
+        "phrase": "Current",
+        "slot_id": "FBV1-058::slot_1"
+      },
+      {
+        "coarse_count": 155,
+        "fine_count": 20,
+        "phrase": "Deferred",
+        "slot_id": "FBV1-058::slot_2"
+      }
+    ],
+    "FBV1-059": [
+      {
+        "coarse_count": 176,
+        "fine_count": 20,
+        "phrase": "Net sales",
+        "slot_id": "FBV1-059::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "Operating expenses",
+        "slot_id": "FBV1-059::slot_2"
+      }
+    ],
+    "FBV1-060": [
+      {
+        "coarse_count": 158,
+        "fine_count": 21,
+        "phrase": "Scheduled vesting — restricted stock units",
+        "slot_id": "FBV1-060::slot_1"
+      },
+      {
+        "coarse_count": 120,
+        "fine_count": 21,
+        "phrase": "Total",
+        "slot_id": "FBV1-060::slot_2"
+      }
+    ],
+    "FBV1-061": [
+      {
+        "coarse_count": 168,
+        "fine_count": 20,
+        "phrase": "Cost of sales",
+        "slot_id": "FBV1-061::slot_1"
+      },
+      {
+        "coarse_count": 133,
+        "fine_count": 20,
+        "phrase": "Fulfillment",
+        "slot_id": "FBV1-061::slot_2"
+      }
+    ],
+    "FBV1-062": [
+      {
+        "coarse_count": 183,
+        "fine_count": 20,
+        "phrase": "December 31, 2024",
+        "slot_id": "FBV1-062::slot_1"
+      },
+      {
+        "coarse_count": 170,
+        "fine_count": 20,
+        "phrase": "Weighted-average discount rate – operating leases",
+        "slot_id": "FBV1-062::slot_2"
+      }
+    ],
+    "FBV1-063": [
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2023: Year Ended December 31,",
+        "slot_id": "FBV1-063::slot_1"
+      },
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "Foreign currency exchange gain (loss), net",
+        "slot_id": "FBV1-063::slot_2"
+      }
+    ],
+    "FBV1-064": [
+      {
+        "coarse_count": 200,
+        "fine_count": 20,
+        "phrase": "2024: Year Ended December 31,",
+        "slot_id": "FBV1-064::slot_1"
+      },
+      {
+        "coarse_count": 161,
+        "fine_count": 20,
+        "phrase": "Google Cloud",
+        "slot_id": "FBV1-064::slot_2"
+      }
+    ],
+    "FBV1-065": [
+      {
+        "coarse_count": 200,
+        "fine_count": 26,
+        "phrase": "Deferred tax assets",
+        "slot_id": "FBV1-065::slot_1"
+      },
+      {
+        "coarse_count": 163,
+        "fine_count": 26,
+        "phrase": "Tax credits",
+        "slot_id": "FBV1-065::slot_2"
+      }
+    ]
+  },
+  "gold_slots_used_at_runtime": false,
+  "runtime_slots_from_question": true
+}

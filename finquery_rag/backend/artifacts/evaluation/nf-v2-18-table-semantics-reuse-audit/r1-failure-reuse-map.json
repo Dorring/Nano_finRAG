@@ -1,0 +1,45 @@
+{
+  "task": "NF-V2-18A-R2P0",
+  "source": "NF-V2-18A-R1 known failure counts; no benchmark rerun",
+  "failures": [
+    {
+      "category": "MULTI_LEVEL_HEADER",
+      "count": 14,
+      "existing_capability_applicable": "YES_PARTIALLY",
+      "applicable_count": "14/14",
+      "components": [
+        "full_corpus_adapter header_path",
+        "pdf_source_representation_v2.resolve_period_headers_v2",
+        "nf_opt_08_r2_mapping_package.resolve_header"
+      ],
+      "limitation": "PDF/MinerU matrices are supported; A4 HTML needs an adapter that builds the same per-column header paths."
+    },
+    {
+      "category": "PERIOD_COLUMN_MISMATCH",
+      "count": 5,
+      "existing_capability_applicable": "YES_PARTIALLY",
+      "applicable_count": "5/5",
+      "components": [
+        "temporal_axis_graph.build_axis_bindings",
+        "SemanticAxisBinding",
+        "nf_opt_08 resolve_header"
+      ],
+      "limitation": "Shared PDF axis distinguishes point/duration; project QUARTER/YTD subtype must be preserved and UNKNOWN must remain UNKNOWN."
+    },
+    {
+      "category": "CHILD_RANK_FAILURE",
+      "count": 3,
+      "existing_capability_applicable": "YES_PARTIALLY",
+      "applicable_count": "3/3",
+      "components": [
+        "typed evidence hierarchy",
+        "candidate bridge models",
+        "shadow_index_reader.table_row_view_ids",
+        "structural_joint_binder_v2"
+      ],
+      "limitation": "Family/row/fact identity and binder constraints exist; a generic HTML local fine-ranker does not."
+    }
+  ],
+  "interpretation": "Existing semantic capabilities cover the information needed to repair all three categories, but A4 HTML is not wired into them."
+}
+

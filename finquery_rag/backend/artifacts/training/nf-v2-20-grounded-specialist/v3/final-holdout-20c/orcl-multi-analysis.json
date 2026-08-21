@@ -1,0 +1,21 @@
+{
+  "cardinality_breakdown": {
+    "2_evidence": {
+      "samples": 89,
+      "strict_correct": 89,
+      "strict_correct_pct": 100.0
+    },
+    "3_evidence": {
+      "samples": 63,
+      "strict_correct": 63,
+      "strict_correct_pct": 100.0
+    },
+    "4_evidence": {
+      "samples": 23,
+      "strict_correct": 23,
+      "strict_correct_pct": 100.0
+    }
+  },
+  "material_evidence_utilization_pct": 100.0,
+  "multi_total_samples": 175
+}

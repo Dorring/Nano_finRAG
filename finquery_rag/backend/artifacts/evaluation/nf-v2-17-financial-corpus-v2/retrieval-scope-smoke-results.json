@@ -1,0 +1,1076 @@
+{
+  "authorization_leakage": 0,
+  "cases": [
+    {
+      "case_id": "msft_fy2024_income",
+      "query": "consolidated statements of income revenue",
+      "requested_scope": {
+        "document_type": "ANNUAL",
+        "fiscal_year": 2024,
+        "ticker": "MSFT"
+      },
+      "results": {
+        "bm25": [
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_cbbde637c4599cc4d4b5e5a4",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 17.721191473305588,
+            "section_type": "NOTES"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_52da79764a46ee1a61905d62",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 15.473289679065712,
+            "section_type": "NOTES"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_0aefb204600a363b997a99ac",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 14.25933114476107,
+            "section_type": "NOTES"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_a17a0ea6dffaf3c75c25b932",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 12.705227025201957,
+            "section_type": "BUSINESS"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_92d072a3367411574578bb4e",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 12.451648900721107,
+            "section_type": "NOTES"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_c3f51623ae9028a55816540d",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 11.81396152799458,
+            "section_type": "MDA"
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_cbbde637c4599cc4d4b5e5a4",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.03278688524590164,
+            "section_type": "NOTES"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_52da79764a46ee1a61905d62",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.03021353930031804,
+            "section_type": "NOTES"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_d81295639a7e962d0eae864b",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.016129032258064516,
+            "section_type": "INCOME_STATEMENT"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_0aefb204600a363b997a99ac",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015873015873015872,
+            "section_type": "NOTES"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_34f964874e7d338171f677e3",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015873015873015872,
+            "section_type": "NOTES"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_a17a0ea6dffaf3c75c25b932",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015625,
+            "section_type": "BUSINESS"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_dde9ed7873f8b88739193fb2",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015625,
+            "section_type": "NOTES"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_92d072a3367411574578bb4e",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015384615384615385,
+            "section_type": "NOTES"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_79dfff36fddaa8c2213a60a1",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015384615384615385,
+            "section_type": "NOTES"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_c3f51623ae9028a55816540d",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015151515151515152,
+            "section_type": "MDA"
+          }
+        ],
+        "vector": [
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_cbbde637c4599cc4d4b5e5a4",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.6869088411331177,
+            "section_type": "NOTES"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_d81295639a7e962d0eae864b",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.6141191720962524,
+            "section_type": "INCOME_STATEMENT"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_34f964874e7d338171f677e3",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.5766577124595642,
+            "section_type": "NOTES"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_dde9ed7873f8b88739193fb2",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.570802628993988,
+            "section_type": "NOTES"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_79dfff36fddaa8c2213a60a1",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.5527435541152954,
+            "section_type": "NOTES"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_6b22cf39ccdb7be174aea400",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.540789008140564,
+            "section_type": "NOTES"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_31ee0fc674418eea0881903e",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.5395704507827759,
+            "section_type": "INCOME_STATEMENT"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_e8e06524f162e9a387d84051",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.5347051024436951,
+            "section_type": "NOTES"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_eb7791abcdd49db8b5185bca",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.5230342745780945,
+            "section_type": "BUSINESS"
+          },
+          {
+            "chunk_id": "SEC_789019_000095017024087843::chunk_7dbe50486d13ef5497ac58aa",
+            "document_id": "SEC_789019_000095017024087843",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.5178874731063843,
+            "section_type": "INCOME_STATEMENT"
+          }
+        ]
+      },
+      "soft_section": "INCOME_STATEMENT"
+    },
+    {
+      "case_id": "aapl_fy2025_balance",
+      "query": "consolidated balance sheets total assets",
+      "requested_scope": {
+        "document_type": "ANNUAL",
+        "fiscal_year": 2025,
+        "ticker": "AAPL"
+      },
+      "results": {
+        "bm25": [],
+        "hybrid": [
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_32ec05816d2c104a37c12da7",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.01639344262295082,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_32ec05816d2c104a37c12da7::dup1",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.016129032258064516,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_318fba63e34590be804ef0c5",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015873015873015872,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_b913adcb933ee7690182d158",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015625,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_9f23c57c8f41da015a9f87d8",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015384615384615385,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_ec219b9a0d4759a5f1be56a0",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015151515151515152,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_9876be1c12756781b6c715f0",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.014925373134328358,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_8ad5665470ce853fbeab5f3f",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.014705882352941176,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_8e8ce0cbe8533c5973cb6965",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.014492753623188406,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_69fd9cbefcba2e778b87d407",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.014285714285714285,
+            "section_type": "UNKNOWN"
+          }
+        ],
+        "vector": [
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_32ec05816d2c104a37c12da7",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.5696675777435303,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_32ec05816d2c104a37c12da7::dup1",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.5696675777435303,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_318fba63e34590be804ef0c5",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.530861496925354,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_b913adcb933ee7690182d158",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.4648836851119995,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_9f23c57c8f41da015a9f87d8",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.4596434235572815,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_ec219b9a0d4759a5f1be56a0",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.43435755372047424,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_9876be1c12756781b6c715f0",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.43124502897262573,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_8ad5665470ce853fbeab5f3f",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.4298754632472992,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_8e8ce0cbe8533c5973cb6965",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.4284260869026184,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_69fd9cbefcba2e778b87d407",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.4168703854084015,
+            "section_type": "UNKNOWN"
+          }
+        ]
+      },
+      "soft_section": "BALANCE_SHEET"
+    },
+    {
+      "case_id": "nvda_q2_cashflow",
+      "query": "cash flows six months ended",
+      "requested_scope": {
+        "document_type": "QUARTERLY",
+        "fiscal_quarter": "Q2",
+        "fiscal_year": 2025,
+        "ticker": "NVDA"
+      },
+      "results": {
+        "bm25": [
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_9abe2577c00424946ab0df5b",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 20.741528434742186,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_bdfad6cf1765348530aa991d",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 20.741528434742186,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_0b64c4e17d5522b205e7d91e",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 20.741528434742186,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_6b8daadb04f9a1cca349a7ff",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 19.893606886173536,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_53503643ebd0367f5b69a3e6",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 19.66321700612043,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_5eeb7d5fc7f6b051661fa72d",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 19.619056024675587,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_67f0731ed61b33da1fa3e9f7",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 19.507882996111018,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_37ea583e791b7972975029ad",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 19.4765265065066,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_066c5433eb43c889c11991d5",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 19.43508696583136,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_e450d7635055dc73d9709549",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 19.417130742084957,
+            "section_type": "CASH_FLOW"
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_9abe2577c00424946ab0df5b",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.01639344262295082,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_f5d77d79a4f6d58d948942f0",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.01639344262295082,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_bdfad6cf1765348530aa991d",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.016129032258064516,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_f0e3e95b249748e5b97c17f1",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.016129032258064516,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_0b64c4e17d5522b205e7d91e",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015873015873015872,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_5dfc63fdd3702f125ab7eb42",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015873015873015872,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_6b8daadb04f9a1cca349a7ff",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015625,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_b7f2f47e2589f294c173965e",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015625,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_53503643ebd0367f5b69a3e6",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015384615384615385,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_87e6ac68b8bd02ec2e71a50d",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015384615384615385,
+            "section_type": "UNKNOWN"
+          }
+        ],
+        "vector": [
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_f5d77d79a4f6d58d948942f0",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.5430130362510681,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_f0e3e95b249748e5b97c17f1",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.5367228984832764,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_5dfc63fdd3702f125ab7eb42",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.5240747332572937,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_b7f2f47e2589f294c173965e",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.5226064920425415,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_87e6ac68b8bd02ec2e71a50d",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.5105501413345337,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_539eb058d0e64e8b85a56531",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.4980570077896118,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_2c4ee733021b0d32f13b1435",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.4973214864730835,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_3c150632c49b1e5107b20bf2",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.43204814195632935,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_1b2c1d59022a2c628cca2397",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.414742648601532,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1045810_000104581024000264::chunk_a66cf893217b48c684a07959",
+            "document_id": "SEC_1045810_000104581024000264",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.414742648601532,
+            "section_type": "UNKNOWN"
+          }
+        ]
+      },
+      "soft_section": "CASH_FLOW"
+    },
+    {
+      "case_id": "visa_noncalendar_mda",
+      "query": "management discussion analysis payments",
+      "requested_scope": {
+        "document_type": "ANNUAL",
+        "fiscal_year": 2024,
+        "ticker": "V"
+      },
+      "results": {
+        "bm25": [],
+        "hybrid": [
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_4f9c9c0939c49f5e0d7e0a6c",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.01639344262295082,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_56903cc8468f9e49d8a9a17c",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.016129032258064516,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_b3066bbe97db38153cf8cb48",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015873015873015872,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_61d43ff7f8ac2b35b96c36af",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015625,
+            "section_type": "BUSINESS"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_7a24b3f8d568773296ccca34",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015384615384615385,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_6c932c44489cacadc26bab86",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015151515151515152,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_ee40a4e9be5dbec86d479741",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.014925373134328358,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_28345037b3eb8a946267562d",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.014705882352941176,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_a7394836b5e241fe904d0399",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.014492753623188406,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_d78df926ca8b365a82e5283e",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.014285714285714285,
+            "section_type": "UNKNOWN"
+          }
+        ],
+        "vector": [
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_4f9c9c0939c49f5e0d7e0a6c",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.34913933277130127,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_56903cc8468f9e49d8a9a17c",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.3177849054336548,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_b3066bbe97db38153cf8cb48",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.317262202501297,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_61d43ff7f8ac2b35b96c36af",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.31216201186180115,
+            "section_type": "BUSINESS"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_7a24b3f8d568773296ccca34",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.30528125166893005,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_6c932c44489cacadc26bab86",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.30345165729522705,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_ee40a4e9be5dbec86d479741",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.3006085753440857,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_28345037b3eb8a946267562d",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.2929384112358093,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_a7394836b5e241fe904d0399",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.2916468381881714,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_1403161_000140316124000058::chunk_d78df926ca8b365a82e5283e",
+            "document_id": "SEC_1403161_000140316124000058",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.2914767861366272,
+            "section_type": "UNKNOWN"
+          }
+        ]
+      },
+      "soft_section": "MDA"
+    },
+    {
+      "case_id": "msft_wrong_year",
+      "query": "revenue",
+      "requested_scope": {
+        "document_type": "ANNUAL",
+        "fiscal_year": 2022,
+        "ticker": "MSFT"
+      },
+      "results": {
+        "bm25": [],
+        "hybrid": [],
+        "vector": []
+      },
+      "soft_section": "INCOME_STATEMENT"
+    },
+    {
+      "case_id": "aapl_annual_notes",
+      "query": "notes to consolidated financial statements",
+      "requested_scope": {
+        "document_type": "ANNUAL",
+        "fiscal_year": 2025,
+        "ticker": "AAPL"
+      },
+      "results": {
+        "bm25": [
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_739681f431a06a74c041803a",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 24.38504332149984,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_739681f431a06a74c041803a::dup1",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 24.38504332149984,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_32ec05816d2c104a37c12da7",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 24.231399544816405,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_32ec05816d2c104a37c12da7::dup1",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "bm25",
+            "score": 24.231399544816405,
+            "section_type": "CASH_FLOW"
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_32ec05816d2c104a37c12da7::dup1",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.032018442622950824,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_32ec05816d2c104a37c12da7",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.03200204813108039,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_739681f431a06a74c041803a",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.01639344262295082,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_739681f431a06a74c041803a::dup1",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.016129032258064516,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_7bef2a0a029ed44d2318e742",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015873015873015872,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_ec219b9a0d4759a5f1be56a0",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015625,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_80699a5928dc2f84a7e18754",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015384615384615385,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_8ad5665470ce853fbeab5f3f",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.015151515151515152,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_f14a47e3f31810b515a3945f",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.014925373134328358,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_7c1f597a924ad7a399d04420",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "hybrid",
+            "score": 0.014705882352941176,
+            "section_type": "UNKNOWN"
+          }
+        ],
+        "vector": [
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_32ec05816d2c104a37c12da7::dup1",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.6326296925544739,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_32ec05816d2c104a37c12da7",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.6326296925544739,
+            "section_type": "CASH_FLOW"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_7bef2a0a029ed44d2318e742",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.5970404148101807,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_ec219b9a0d4759a5f1be56a0",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.49507004022598267,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_80699a5928dc2f84a7e18754",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.4796813726425171,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_8ad5665470ce853fbeab5f3f",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.4292311668395996,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_f14a47e3f31810b515a3945f",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.39854323863983154,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_7c1f597a924ad7a399d04420",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.39520594477653503,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_2be45a803ce3c4c2788c7348",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.38748618960380554,
+            "section_type": "UNKNOWN"
+          },
+          {
+            "chunk_id": "SEC_320193_000032019325000079::chunk_b5ebc54e9bdf2808934d4f18",
+            "document_id": "SEC_320193_000032019325000079",
+            "provenance_complete": true,
+            "retrieval_mode": "vector",
+            "score": 0.37449920177459717,
+            "section_type": "UNKNOWN"
+          }
+        ]
+      },
+      "soft_section": "NOTES"
+    }
+  ],
+  "created_at_misuse": 0,
+  "document_type_violations": 0,
+  "entity_filter_violations": 0,
+  "hybrid_scope_divergence": 0,
+  "reranker_reintroduction_admitted": 0,
+  "silent_scope_relaxation": 0,
+  "temporal_hard_filter_violations": 0
+}

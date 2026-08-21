@@ -1,0 +1,164 @@
+{
+  "by_category": {
+    "CHILD_RANK_FAILURE": 3,
+    "MULTI_LEVEL_HEADER": 14,
+    "PERIOD_COLUMN_MISMATCH": 5
+  },
+  "cases": [
+    {
+      "classification": "MULTI_LEVEL_HEADER",
+      "combined": false,
+      "question_id": "FBV1-003",
+      "qwen": false,
+      "semantic": false
+    },
+    {
+      "classification": "MULTI_LEVEL_HEADER",
+      "combined": false,
+      "question_id": "FBV1-004",
+      "qwen": false,
+      "semantic": false
+    },
+    {
+      "classification": "CHILD_RANK_FAILURE",
+      "combined": true,
+      "question_id": "FBV1-014",
+      "qwen": true,
+      "semantic": false
+    },
+    {
+      "classification": "MULTI_LEVEL_HEADER",
+      "combined": false,
+      "question_id": "FBV1-015",
+      "qwen": false,
+      "semantic": false
+    },
+    {
+      "classification": "MULTI_LEVEL_HEADER",
+      "combined": false,
+      "question_id": "FBV1-020",
+      "qwen": false,
+      "semantic": false
+    },
+    {
+      "classification": "PERIOD_COLUMN_MISMATCH",
+      "combined": true,
+      "question_id": "FBV1-021",
+      "qwen": true,
+      "semantic": true
+    },
+    {
+      "classification": "PERIOD_COLUMN_MISMATCH",
+      "combined": false,
+      "question_id": "FBV1-023",
+      "qwen": false,
+      "semantic": false
+    },
+    {
+      "classification": "CHILD_RANK_FAILURE",
+      "combined": false,
+      "question_id": "FBV1-028",
+      "qwen": false,
+      "semantic": false
+    },
+    {
+      "classification": "PERIOD_COLUMN_MISMATCH",
+      "combined": true,
+      "question_id": "FBV1-029",
+      "qwen": true,
+      "semantic": false
+    },
+    {
+      "classification": "MULTI_LEVEL_HEADER",
+      "combined": true,
+      "question_id": "FBV1-030",
+      "qwen": true,
+      "semantic": false
+    },
+    {
+      "classification": "MULTI_LEVEL_HEADER",
+      "combined": true,
+      "question_id": "FBV1-043",
+      "qwen": true,
+      "semantic": false
+    },
+    {
+      "classification": "MULTI_LEVEL_HEADER",
+      "combined": true,
+      "question_id": "FBV1-044",
+      "qwen": true,
+      "semantic": false
+    },
+    {
+      "classification": "MULTI_LEVEL_HEADER",
+      "combined": true,
+      "question_id": "FBV1-045",
+      "qwen": true,
+      "semantic": false
+    },
+    {
+      "classification": "MULTI_LEVEL_HEADER",
+      "combined": false,
+      "question_id": "FBV1-067",
+      "qwen": false,
+      "semantic": false
+    },
+    {
+      "classification": "PERIOD_COLUMN_MISMATCH",
+      "combined": false,
+      "question_id": "FBV1-070",
+      "qwen": false,
+      "semantic": false
+    },
+    {
+      "classification": "CHILD_RANK_FAILURE",
+      "combined": false,
+      "question_id": "FBV1-071",
+      "qwen": false,
+      "semantic": false
+    },
+    {
+      "classification": "MULTI_LEVEL_HEADER",
+      "combined": false,
+      "question_id": "FBV1-075",
+      "qwen": false,
+      "semantic": false
+    },
+    {
+      "classification": "MULTI_LEVEL_HEADER",
+      "combined": false,
+      "question_id": "FBV1-077",
+      "qwen": false,
+      "semantic": false
+    },
+    {
+      "classification": "PERIOD_COLUMN_MISMATCH",
+      "combined": false,
+      "question_id": "FBV1-078",
+      "qwen": false,
+      "semantic": false
+    },
+    {
+      "classification": "MULTI_LEVEL_HEADER",
+      "combined": true,
+      "question_id": "FBV1-093",
+      "qwen": true,
+      "semantic": false
+    },
+    {
+      "classification": "MULTI_LEVEL_HEADER",
+      "combined": true,
+      "question_id": "FBV1-094",
+      "qwen": true,
+      "semantic": false
+    },
+    {
+      "classification": "MULTI_LEVEL_HEADER",
+      "combined": true,
+      "question_id": "FBV1-095",
+      "qwen": true,
+      "semantic": false
+    }
+  ],
+  "total": 22
+}

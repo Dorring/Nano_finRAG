@@ -1,0 +1,849 @@
+{
+  "fixtures": [
+    {
+      "column_headers": [
+        "",
+        "",
+        ""
+      ],
+      "document_id": "SEC_320193_000032019325000079",
+      "header_rows": [
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ]
+      ],
+      "period_columns": [
+        {
+          "binding_status": "UNKNOWN",
+          "duration_months": null,
+          "header_text": "",
+          "period_end": null,
+          "period_semantics": "UNKNOWN",
+          "period_start": null
+        },
+        {
+          "binding_status": "UNKNOWN",
+          "duration_months": null,
+          "header_text": "",
+          "period_end": null,
+          "period_semantics": "UNKNOWN",
+          "period_start": null
+        },
+        {
+          "binding_status": "UNKNOWN",
+          "duration_months": null,
+          "header_text": "",
+          "period_end": null,
+          "period_semantics": "UNKNOWN",
+          "period_start": null
+        }
+      ],
+      "sample_rows": [
+        {
+          "cells": [
+            {
+              "cell_id": "cell_f3245d9aa7555f9a5dc0dab7",
+              "column_header": "",
+              "column_index": 0,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_533eac432e9565beaeca78b3",
+              "row_index": 0,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_320193_000032019325000079",
+                "row_id": "row_533eac432e9565beaeca78b3",
+                "source_order": 0,
+                "table_id": "table_60ae0fc9f8197f9acc72f814"
+              },
+              "unit": null
+            },
+            {
+              "cell_id": "cell_7c0bd011fb71b0ace550c509",
+              "column_header": "",
+              "column_index": 1,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_533eac432e9565beaeca78b3",
+              "row_index": 0,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_320193_000032019325000079",
+                "row_id": "row_533eac432e9565beaeca78b3",
+                "source_order": 0,
+                "table_id": "table_60ae0fc9f8197f9acc72f814"
+              },
+              "unit": null
+            },
+            {
+              "cell_id": "cell_31d316f9a2a6898ff8fb605b",
+              "column_header": "",
+              "column_index": 2,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_533eac432e9565beaeca78b3",
+              "row_index": 0,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_320193_000032019325000079",
+                "row_id": "row_533eac432e9565beaeca78b3",
+                "source_order": 0,
+                "table_id": "table_60ae0fc9f8197f9acc72f814"
+              },
+              "unit": null
+            }
+          ],
+          "row_id": "row_533eac432e9565beaeca78b3",
+          "row_label": "",
+          "section_type": "UNKNOWN",
+          "source_order": 0,
+          "table_id": "table_60ae0fc9f8197f9acc72f814"
+        },
+        {
+          "cells": [
+            {
+              "cell_id": "cell_bd001cc0c02b576c256c519b",
+              "column_header": "",
+              "column_index": 0,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_e73884a37001c683ec168583",
+              "row_index": 1,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_320193_000032019325000079",
+                "row_id": "row_e73884a37001c683ec168583",
+                "source_order": 0,
+                "table_id": "table_60ae0fc9f8197f9acc72f814"
+              },
+              "unit": null
+            },
+            {
+              "cell_id": "cell_2b9092ca0a1ae8d6acc753a1",
+              "column_header": "",
+              "column_index": 1,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_e73884a37001c683ec168583",
+              "row_index": 1,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_320193_000032019325000079",
+                "row_id": "row_e73884a37001c683ec168583",
+                "source_order": 0,
+                "table_id": "table_60ae0fc9f8197f9acc72f814"
+              },
+              "unit": null
+            },
+            {
+              "cell_id": "cell_ce92dcc99eb5306c5cc51c10",
+              "column_header": "",
+              "column_index": 2,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_e73884a37001c683ec168583",
+              "row_index": 1,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_320193_000032019325000079",
+                "row_id": "row_e73884a37001c683ec168583",
+                "source_order": 0,
+                "table_id": "table_60ae0fc9f8197f9acc72f814"
+              },
+              "unit": null
+            }
+          ],
+          "row_id": "row_e73884a37001c683ec168583",
+          "row_label": "",
+          "section_type": "UNKNOWN",
+          "source_order": 0,
+          "table_id": "table_60ae0fc9f8197f9acc72f814"
+        }
+      ],
+      "table_id": "table_60ae0fc9f8197f9acc72f814"
+    },
+    {
+      "column_headers": [
+        "",
+        "",
+        ""
+      ],
+      "document_id": "SEC_1018724_000101872426000004",
+      "header_rows": [
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ]
+      ],
+      "period_columns": [
+        {
+          "binding_status": "UNKNOWN",
+          "duration_months": null,
+          "header_text": "",
+          "period_end": null,
+          "period_semantics": "UNKNOWN",
+          "period_start": null
+        },
+        {
+          "binding_status": "UNKNOWN",
+          "duration_months": null,
+          "header_text": "",
+          "period_end": null,
+          "period_semantics": "UNKNOWN",
+          "period_start": null
+        },
+        {
+          "binding_status": "UNKNOWN",
+          "duration_months": null,
+          "header_text": "",
+          "period_end": null,
+          "period_semantics": "UNKNOWN",
+          "period_start": null
+        }
+      ],
+      "sample_rows": [
+        {
+          "cells": [
+            {
+              "cell_id": "cell_3de5765a2f4e37615b2bf966",
+              "column_header": "",
+              "column_index": 0,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_af48b8fe3d140fd4a047c417",
+              "row_index": 0,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_1018724_000101872426000004",
+                "row_id": "row_af48b8fe3d140fd4a047c417",
+                "source_order": 0,
+                "table_id": "table_41018813f935f47bfd49e13d"
+              },
+              "unit": null
+            },
+            {
+              "cell_id": "cell_79394e65ac992d5432502573",
+              "column_header": "",
+              "column_index": 1,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_af48b8fe3d140fd4a047c417",
+              "row_index": 0,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_1018724_000101872426000004",
+                "row_id": "row_af48b8fe3d140fd4a047c417",
+                "source_order": 0,
+                "table_id": "table_41018813f935f47bfd49e13d"
+              },
+              "unit": null
+            },
+            {
+              "cell_id": "cell_875cf127604337cd42b516a2",
+              "column_header": "",
+              "column_index": 2,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_af48b8fe3d140fd4a047c417",
+              "row_index": 0,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_1018724_000101872426000004",
+                "row_id": "row_af48b8fe3d140fd4a047c417",
+                "source_order": 0,
+                "table_id": "table_41018813f935f47bfd49e13d"
+              },
+              "unit": null
+            }
+          ],
+          "row_id": "row_af48b8fe3d140fd4a047c417",
+          "row_label": "",
+          "section_type": "UNKNOWN",
+          "source_order": 0,
+          "table_id": "table_41018813f935f47bfd49e13d"
+        },
+        {
+          "cells": [
+            {
+              "cell_id": "cell_cfa6defe41f49515e5dae0b4",
+              "column_header": "",
+              "column_index": 0,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_787443874950c6ad112d076b",
+              "row_index": 1,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_1018724_000101872426000004",
+                "row_id": "row_787443874950c6ad112d076b",
+                "source_order": 0,
+                "table_id": "table_41018813f935f47bfd49e13d"
+              },
+              "unit": null
+            },
+            {
+              "cell_id": "cell_9962e0731d62505ccf18cc69",
+              "column_header": "",
+              "column_index": 1,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_787443874950c6ad112d076b",
+              "row_index": 1,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_1018724_000101872426000004",
+                "row_id": "row_787443874950c6ad112d076b",
+                "source_order": 0,
+                "table_id": "table_41018813f935f47bfd49e13d"
+              },
+              "unit": null
+            },
+            {
+              "cell_id": "cell_5ce6824cea84468b595ede0f",
+              "column_header": "",
+              "column_index": 2,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_787443874950c6ad112d076b",
+              "row_index": 1,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_1018724_000101872426000004",
+                "row_id": "row_787443874950c6ad112d076b",
+                "source_order": 0,
+                "table_id": "table_41018813f935f47bfd49e13d"
+              },
+              "unit": null
+            }
+          ],
+          "row_id": "row_787443874950c6ad112d076b",
+          "row_label": "",
+          "section_type": "UNKNOWN",
+          "source_order": 0,
+          "table_id": "table_41018813f935f47bfd49e13d"
+        }
+      ],
+      "table_id": "table_41018813f935f47bfd49e13d"
+    },
+    {
+      "column_headers": [
+        "",
+        "",
+        ""
+      ],
+      "document_id": "SEC_320193_000032019325000057",
+      "header_rows": [
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ]
+      ],
+      "period_columns": [
+        {
+          "binding_status": "UNKNOWN",
+          "duration_months": null,
+          "header_text": "",
+          "period_end": null,
+          "period_semantics": "UNKNOWN",
+          "period_start": null
+        },
+        {
+          "binding_status": "UNKNOWN",
+          "duration_months": null,
+          "header_text": "",
+          "period_end": null,
+          "period_semantics": "UNKNOWN",
+          "period_start": null
+        },
+        {
+          "binding_status": "UNKNOWN",
+          "duration_months": null,
+          "header_text": "",
+          "period_end": null,
+          "period_semantics": "UNKNOWN",
+          "period_start": null
+        }
+      ],
+      "sample_rows": [
+        {
+          "cells": [
+            {
+              "cell_id": "cell_47d799648e5a393d92e2eedc",
+              "column_header": "",
+              "column_index": 0,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_fd4d52537aa7e7de72038a2f",
+              "row_index": 0,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_320193_000032019325000057",
+                "row_id": "row_fd4d52537aa7e7de72038a2f",
+                "source_order": 0,
+                "table_id": "table_0554a03c16f003af34554a30"
+              },
+              "unit": null
+            },
+            {
+              "cell_id": "cell_6ba36f2cf5f01e41abcb7fb9",
+              "column_header": "",
+              "column_index": 1,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_fd4d52537aa7e7de72038a2f",
+              "row_index": 0,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_320193_000032019325000057",
+                "row_id": "row_fd4d52537aa7e7de72038a2f",
+                "source_order": 0,
+                "table_id": "table_0554a03c16f003af34554a30"
+              },
+              "unit": null
+            },
+            {
+              "cell_id": "cell_742b39de64605fa1b9e65cd0",
+              "column_header": "",
+              "column_index": 2,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_fd4d52537aa7e7de72038a2f",
+              "row_index": 0,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_320193_000032019325000057",
+                "row_id": "row_fd4d52537aa7e7de72038a2f",
+                "source_order": 0,
+                "table_id": "table_0554a03c16f003af34554a30"
+              },
+              "unit": null
+            }
+          ],
+          "row_id": "row_fd4d52537aa7e7de72038a2f",
+          "row_label": "",
+          "section_type": "UNKNOWN",
+          "source_order": 0,
+          "table_id": "table_0554a03c16f003af34554a30"
+        },
+        {
+          "cells": [
+            {
+              "cell_id": "cell_f42876061268a95855321d04",
+              "column_header": "",
+              "column_index": 0,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_3119c0168e884be03d4cad97",
+              "row_index": 1,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_320193_000032019325000057",
+                "row_id": "row_3119c0168e884be03d4cad97",
+                "source_order": 0,
+                "table_id": "table_0554a03c16f003af34554a30"
+              },
+              "unit": null
+            },
+            {
+              "cell_id": "cell_eeafb549ff6bce11ccf0057d",
+              "column_header": "",
+              "column_index": 1,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_3119c0168e884be03d4cad97",
+              "row_index": 1,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_320193_000032019325000057",
+                "row_id": "row_3119c0168e884be03d4cad97",
+                "source_order": 0,
+                "table_id": "table_0554a03c16f003af34554a30"
+              },
+              "unit": null
+            },
+            {
+              "cell_id": "cell_d7d1130ec265ab4467f3b1f3",
+              "column_header": "",
+              "column_index": 2,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_3119c0168e884be03d4cad97",
+              "row_index": 1,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_320193_000032019325000057",
+                "row_id": "row_3119c0168e884be03d4cad97",
+                "source_order": 0,
+                "table_id": "table_0554a03c16f003af34554a30"
+              },
+              "unit": null
+            }
+          ],
+          "row_id": "row_3119c0168e884be03d4cad97",
+          "row_label": "",
+          "section_type": "UNKNOWN",
+          "source_order": 0,
+          "table_id": "table_0554a03c16f003af34554a30"
+        }
+      ],
+      "table_id": "table_0554a03c16f003af34554a30"
+    },
+    {
+      "column_headers": [
+        "",
+        "",
+        ""
+      ],
+      "document_id": "SEC_1018724_000101872425000086",
+      "header_rows": [
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ]
+      ],
+      "period_columns": [
+        {
+          "binding_status": "UNKNOWN",
+          "duration_months": null,
+          "header_text": "",
+          "period_end": null,
+          "period_semantics": "UNKNOWN",
+          "period_start": null
+        },
+        {
+          "binding_status": "UNKNOWN",
+          "duration_months": null,
+          "header_text": "",
+          "period_end": null,
+          "period_semantics": "UNKNOWN",
+          "period_start": null
+        },
+        {
+          "binding_status": "UNKNOWN",
+          "duration_months": null,
+          "header_text": "",
+          "period_end": null,
+          "period_semantics": "UNKNOWN",
+          "period_start": null
+        }
+      ],
+      "sample_rows": [
+        {
+          "cells": [
+            {
+              "cell_id": "cell_98fba9a21323a1a025d676cf",
+              "column_header": "",
+              "column_index": 0,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_97744b2730cc9ca6faf529cc",
+              "row_index": 0,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_1018724_000101872425000086",
+                "row_id": "row_97744b2730cc9ca6faf529cc",
+                "source_order": 0,
+                "table_id": "table_d5874ff35bff3a2864f2ec75"
+              },
+              "unit": null
+            },
+            {
+              "cell_id": "cell_5a36e3914487dd8f72bf1da4",
+              "column_header": "",
+              "column_index": 1,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_97744b2730cc9ca6faf529cc",
+              "row_index": 0,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_1018724_000101872425000086",
+                "row_id": "row_97744b2730cc9ca6faf529cc",
+                "source_order": 0,
+                "table_id": "table_d5874ff35bff3a2864f2ec75"
+              },
+              "unit": null
+            },
+            {
+              "cell_id": "cell_2b11db3b7af7c955dcec8ce7",
+              "column_header": "",
+              "column_index": 2,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_97744b2730cc9ca6faf529cc",
+              "row_index": 0,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_1018724_000101872425000086",
+                "row_id": "row_97744b2730cc9ca6faf529cc",
+                "source_order": 0,
+                "table_id": "table_d5874ff35bff3a2864f2ec75"
+              },
+              "unit": null
+            }
+          ],
+          "row_id": "row_97744b2730cc9ca6faf529cc",
+          "row_label": "",
+          "section_type": "UNKNOWN",
+          "source_order": 0,
+          "table_id": "table_d5874ff35bff3a2864f2ec75"
+        },
+        {
+          "cells": [
+            {
+              "cell_id": "cell_111c8cd0bd5361d057773fd8",
+              "column_header": "",
+              "column_index": 0,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_b6719dd8514f7ad3c9cbf3f7",
+              "row_index": 1,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_1018724_000101872425000086",
+                "row_id": "row_b6719dd8514f7ad3c9cbf3f7",
+                "source_order": 0,
+                "table_id": "table_d5874ff35bff3a2864f2ec75"
+              },
+              "unit": null
+            },
+            {
+              "cell_id": "cell_ffc1ac4b38ded0ee60bff172",
+              "column_header": "",
+              "column_index": 1,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_b6719dd8514f7ad3c9cbf3f7",
+              "row_index": 1,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_1018724_000101872425000086",
+                "row_id": "row_b6719dd8514f7ad3c9cbf3f7",
+                "source_order": 0,
+                "table_id": "table_d5874ff35bff3a2864f2ec75"
+              },
+              "unit": null
+            },
+            {
+              "cell_id": "cell_6997ecd3b1adaf280e9e138c",
+              "column_header": "",
+              "column_index": 2,
+              "currency": null,
+              "is_header": true,
+              "normalized_value": null,
+              "percent": false,
+              "period_end": null,
+              "period_semantics": "UNKNOWN",
+              "period_start": null,
+              "raw_value": "",
+              "row_id": "row_b6719dd8514f7ad3c9cbf3f7",
+              "row_index": 1,
+              "row_label": "",
+              "scale": null,
+              "source_provenance": {
+                "document_id": "SEC_1018724_000101872425000086",
+                "row_id": "row_b6719dd8514f7ad3c9cbf3f7",
+                "source_order": 0,
+                "table_id": "table_d5874ff35bff3a2864f2ec75"
+              },
+              "unit": null
+            }
+          ],
+          "row_id": "row_b6719dd8514f7ad3c9cbf3f7",
+          "row_label": "",
+          "section_type": "UNKNOWN",
+          "source_order": 0,
+          "table_id": "table_d5874ff35bff3a2864f2ec75"
+        }
+      ],
+      "table_id": "table_d5874ff35bff3a2864f2ec75"
+    }
+  ],
+  "source": "deterministic excerpts from acquired raw HTML; no Gold/questions"
+}

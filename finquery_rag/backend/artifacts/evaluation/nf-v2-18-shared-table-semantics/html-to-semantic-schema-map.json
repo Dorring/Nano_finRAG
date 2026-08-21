@@ -1,0 +1,47 @@
+{
+  "mapping": [
+    [
+      "A4.table_id",
+      "LogicalTable.table_fragment_id",
+      "same canonical table identity",
+      "compatible"
+    ],
+    [
+      "A4.row_id",
+      "SemanticRow.row_id/MetricPath.row_id",
+      "same row identity",
+      "compatible"
+    ],
+    [
+      "A4.cell_id",
+      "SemanticAxisBinding.cell_id/AtomicFact.cell_id",
+      "same cell identity",
+      "compatible"
+    ],
+    [
+      "A4.header_rows/column_headers",
+      "header_path",
+      "physical grid to shared header path",
+      "adapter"
+    ],
+    [
+      "A4.period_columns",
+      "SemanticAxisBinding",
+      "period and temporal axis",
+      "adapter"
+    ],
+    [
+      "A4.scale/currency",
+      "ScaleResolution/CurrencyResolution",
+      "shared resolvers",
+      "compatible"
+    ],
+    [
+      "A4.ixbrl_facts",
+      "AtomicFact metadata",
+      "optional provenance enrichment",
+      "adapter"
+    ]
+  ],
+  "new_parallel_schema": false
+}

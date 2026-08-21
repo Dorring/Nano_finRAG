@@ -1,0 +1,84 @@
+{
+  "a4_r0": {
+    "R@1": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 0,
+      "calculation_operand_coverage": 0.0,
+      "denominator": 120,
+      "exact_count": 33,
+      "exact_recall": 0.275,
+      "family_count": 61,
+      "family_recall": 0.5083333333333333,
+      "multi_all_count": 0,
+      "multi_all_recall": 0.0,
+      "multi_any_count": 13,
+      "multi_any_recall": 0.65,
+      "multi_count": 20
+    },
+    "R@10": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 5,
+      "calculation_operand_coverage": 0.3333333333333333,
+      "denominator": 120,
+      "exact_count": 68,
+      "exact_recall": 0.5666666666666667,
+      "family_count": 86,
+      "family_recall": 0.7166666666666667,
+      "multi_all_count": 6,
+      "multi_all_recall": 0.3,
+      "multi_any_count": 17,
+      "multi_any_recall": 0.85,
+      "multi_count": 20
+    },
+    "R@20": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 6,
+      "calculation_operand_coverage": 0.4,
+      "denominator": 120,
+      "exact_count": 77,
+      "exact_recall": 0.6416666666666667,
+      "family_count": 87,
+      "family_recall": 0.725,
+      "multi_all_count": 8,
+      "multi_all_recall": 0.4,
+      "multi_any_count": 20,
+      "multi_any_recall": 1.0,
+      "multi_count": 20
+    },
+    "R@3": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 2,
+      "calculation_operand_coverage": 0.13333333333333333,
+      "denominator": 120,
+      "exact_count": 55,
+      "exact_recall": 0.4583333333333333,
+      "family_count": 81,
+      "family_recall": 0.675,
+      "multi_all_count": 2,
+      "multi_all_recall": 0.1,
+      "multi_any_count": 16,
+      "multi_any_recall": 0.8,
+      "multi_count": 20
+    },
+    "R@5": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 3,
+      "calculation_operand_coverage": 0.2,
+      "denominator": 120,
+      "exact_count": 62,
+      "exact_recall": 0.5166666666666667,
+      "family_count": 84,
+      "family_recall": 0.7,
+      "multi_all_count": 3,
+      "multi_all_recall": 0.15,
+      "multi_any_count": 17,
+      "multi_any_recall": 0.85,
+      "multi_count": 20
+    }
+  },
+  "b3_as_run": {
+    "R@10": "2/120",
+    "R@5": "2/120"
+  },
+  "development_status": "CONSUMED_DEVELOPMENT_REGRESSION"
+}

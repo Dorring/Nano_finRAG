@@ -1,0 +1,14 @@
+{
+  "checkpoint_path": "/home/mxf/.cache/nanochat/chatsft_checkpoints/d24_grounded_specialist_v3_lr5e6/model_000156.pt",
+  "checkpoint_sha256": "3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a",
+  "financial_macro_retention_pct": 36.26,
+  "nflx_dev_metrics": {
+    "citation_valid_pct": 100.0,
+    "correct_released_pct": 99.2,
+    "released_pct": 99.8,
+    "semantic_supported_pct": 99.8,
+    "strict_correct_pct": 99.0
+  },
+  "selected_step": 156,
+  "status": "CHECKPOINT_SELECTED"
+}

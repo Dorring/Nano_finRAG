@@ -1,0 +1,17 @@
+{
+  "budget_exhausted": 0,
+  "max": 3,
+  "mean_per_question": 2.125,
+  "p50": 3.0,
+  "p95": 3,
+  "questions_by_call_count": {
+    "0": 1,
+    "1": 50,
+    "2": 2,
+    "3": 67
+  },
+  "replan_additional_calls": 136,
+  "retry_count": 0,
+  "tool_errors": 0,
+  "total_tool_calls": 255
+}

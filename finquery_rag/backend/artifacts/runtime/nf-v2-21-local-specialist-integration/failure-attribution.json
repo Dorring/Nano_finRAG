@@ -1,0 +1,12 @@
+{
+  "attribution_counts": {
+    "BINDING_FAILURE": 0,
+    "GENERATOR_FAILURE": 0,
+    "OTHER": 0,
+    "REFERENCE_EVAL_MISMATCH": 0,
+    "RETRIEVAL_FAILURE": 11,
+    "VALIDATOR_FAILURE": 0
+  },
+  "generator_bottleneck_status": "RESOLVED_BY_LOCAL_SPECIALIST",
+  "primary_remaining_bottleneck": "PDF_RETRIEVAL_COVERAGE (11 unretrieved chunks)"
+}

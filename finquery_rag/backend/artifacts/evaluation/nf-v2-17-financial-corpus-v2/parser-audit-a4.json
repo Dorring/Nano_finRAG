@@ -1,0 +1,43 @@
+{
+  "camelot_used": false,
+  "input": "SEC authoritative HTML",
+  "installed_html": {
+    "beautifulsoup4": true,
+    "lxml": true
+  },
+  "ixbrl": "deterministic context/fact preservation",
+  "mineru_used": false,
+  "paths": [
+    {
+      "currency_scale": "numeric helpers",
+      "input": "HTML table fragment",
+      "limitations": "MinerU-style fragments",
+      "output": "rowspan/colspan grid",
+      "path": "finquery_rag/backend/src/pdf_retrieval_v4/table_html_parser.py",
+      "period_metadata": "limited phrase helpers",
+      "section_preservation": false,
+      "table_preservation": true
+    },
+    {
+      "currency_scale": "not an HTML path",
+      "input": "PDF via optional MinerU CLI",
+      "limitations": "optional and not used",
+      "output": "text/table chunks",
+      "path": "finquery_rag/backend/src/services/mineru_parser.py",
+      "period_metadata": "document metadata only",
+      "section_preservation": true,
+      "table_preservation": true
+    },
+    {
+      "currency_scale": "deterministic symbols/scale phrases",
+      "input": "authoritative SEC HTML/iXBRL",
+      "limitations": "heuristic rules; no taxonomy reasoning",
+      "output": "NormalizedFinancialDocumentV2 + ParsedFinancialCorpusV2",
+      "path": "run_nf_v2_17a4_parse.py",
+      "period_metadata": "header/context binding",
+      "section_preservation": true,
+      "table_preservation": true
+    }
+  ],
+  "pymupdf_used": false
+}

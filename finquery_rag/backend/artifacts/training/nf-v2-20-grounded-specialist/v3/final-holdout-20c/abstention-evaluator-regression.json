@@ -1,0 +1,71 @@
+{
+  "passed_tests": 8,
+  "results": [
+    {
+      "actual_strict_correct": true,
+      "description": "safe wording variant",
+      "expected_strict_correct": true,
+      "is_insufficient_query": true,
+      "pass": true,
+      "text": "The provided evidence does not disclose foreign exchange loss for NFLX during 2023-12-31."
+    },
+    {
+      "actual_strict_correct": true,
+      "description": "standard insufficient",
+      "expected_strict_correct": true,
+      "is_insufficient_query": true,
+      "pass": true,
+      "text": "The available evidence is insufficient to determine total marketing expenses."
+    },
+    {
+      "actual_strict_correct": true,
+      "description": "unavailable variant",
+      "expected_strict_correct": true,
+      "is_insufficient_query": true,
+      "pass": true,
+      "text": "Requested data is not available in the provided excerpts."
+    },
+    {
+      "actual_strict_correct": true,
+      "description": "cannot determine",
+      "expected_strict_correct": true,
+      "is_insufficient_query": true,
+      "pass": true,
+      "text": "Cannot determine capital expenditure from the provided evidence."
+    },
+    {
+      "actual_strict_correct": false,
+      "description": "unsafe assertion appended",
+      "expected_strict_correct": false,
+      "is_insufficient_query": true,
+      "pass": true,
+      "text": "The provided evidence does not disclose the amount, but it was probably $500 million."
+    },
+    {
+      "actual_strict_correct": false,
+      "description": "substantive answer on insufficient query",
+      "expected_strict_correct": false,
+      "is_insufficient_query": true,
+      "pass": true,
+      "text": "Consolidated operating revenue was $31,615 million for 2023 [E1]."
+    },
+    {
+      "actual_strict_correct": true,
+      "description": "substantive answer on answerable query",
+      "expected_strict_correct": true,
+      "is_insufficient_query": false,
+      "pass": true,
+      "text": "Consolidated operating revenue was $31,615 million for 2023 [E1]."
+    },
+    {
+      "actual_strict_correct": false,
+      "description": "false abstention on answerable query",
+      "expected_strict_correct": false,
+      "is_insufficient_query": false,
+      "pass": true,
+      "text": "The provided evidence does not disclose advertising revenue."
+    }
+  ],
+  "status": "PASS",
+  "total_regression_tests": 8
+}

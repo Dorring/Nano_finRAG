@@ -1,0 +1,12 @@
+{
+  "answerable_correct": 89,
+  "answerable_evaluated": 105,
+  "answerable_success_rate_pct": 84.76,
+  "damaged_count": 0,
+  "description": "Current sealed baseline (18B / 21 runtime)",
+  "experiment_id": "R0",
+  "first_stage_misses": 10,
+  "multi_incomplete_misses": 6,
+  "rescued_count": 0,
+  "unsafe_releases": 0
+}

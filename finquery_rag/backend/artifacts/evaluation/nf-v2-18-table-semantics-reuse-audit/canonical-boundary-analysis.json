@@ -1,0 +1,73 @@
+{
+  "task": "NF-V2-18A-R2P0",
+  "canonical_boundary": {
+    "after": "full_corpus_adapter.build_table_fragment and adapter_identity",
+    "before": "MinerU/PyMuPDF geometry, PDF page and native-word recovery",
+    "after_semantics": "semantic_graph_models, metric_path_builder, temporal_axis_graph, scale/currency resolvers, typed evidence emitters and binder"
+  },
+  "classification": [
+    {
+      "component": "full_corpus_adapter.py",
+      "classification": "SOURCE_SPECIFIC_PDF",
+      "reason": "consumes MinerU/PyMuPDF geometry and emits a canonical physical fragment"
+    },
+    {
+      "component": "native_alignment.py",
+      "classification": "SOURCE_SPECIFIC_PDF",
+      "reason": "geometric word alignment and numeric continuation rejoining"
+    },
+    {
+      "component": "table_html_parser.py",
+      "classification": "SOURCE_INDEPENDENT_REUSABLE",
+      "reason": "HTML grid expansion is independent of PDF coordinates once markup exists"
+    },
+    {
+      "component": "adapter_identity.py",
+      "classification": "SOURCE_INDEPENDENT_REUSABLE",
+      "reason": "hashes structural fields only"
+    },
+    {
+      "component": "semantic_graph_models.py",
+      "classification": "SOURCE_INDEPENDENT_REUSABLE",
+      "reason": "dataclasses use document/table/row/cell/axis fields, not PDF-only parsing"
+    },
+    {
+      "component": "metric_path_builder.py",
+      "classification": "SOURCE_INDEPENDENT_REUSABLE",
+      "reason": "ordered row semantics"
+    },
+    {
+      "component": "temporal_axis_graph.py",
+      "classification": "SOURCE_INDEPENDENT_REUSABLE",
+      "reason": "header path and cell text"
+    },
+    {
+      "component": "semantic_scale_resolver.py",
+      "classification": "SOURCE_INDEPENDENT_REUSABLE",
+      "reason": "context hierarchy and fail-closed resolution"
+    },
+    {
+      "component": "semantic_currency_resolver.py",
+      "classification": "SOURCE_INDEPENDENT_REUSABLE",
+      "reason": "explicit currency declarations/symbol handling"
+    },
+    {
+      "component": "run_pdf_v4_gate_04b_predict.py",
+      "classification": "PARTIALLY_REUSABLE",
+      "reason": "continuation features include page geometry and PDF fragment adjacency"
+    },
+    {
+      "component": "services/mineru_parser.py append_table_row_children",
+      "classification": "SOURCE_SPECIFIC_PDF",
+      "reason": "flat MinerU chunk helper; useful safety pattern but not canonical semantic model"
+    },
+    {
+      "component": "semantic_evidence_catalog.py/structural_joint_binder_v2.py",
+      "classification": "SOURCE_INDEPENDENT_REUSABLE",
+      "reason": "consumes canonical typed evidence and provenance"
+    }
+  ],
+  "html_observation": "A4 HTML/iXBRL already emits table/row/cell/header/period/value/unit/currency/scale objects, but not the exact shared header_path/logical_table/axis/evidence contracts.",
+  "recommended_boundary": "HTML physical adapter and PDF physical adapter converge before semantic graph passes; do not fork semantic reconstruction."
+}
+

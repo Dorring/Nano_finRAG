@@ -1,0 +1,583 @@
+{
+  "controller": [
+    {
+      "actual_status": "READY_TO_GENERATE",
+      "case_id": "A",
+      "description": "recoverable missing slot",
+      "evaluation": {
+        "calculation_ready": false,
+        "conflicts": [],
+        "decision": "SUFFICIENT",
+        "missing_slots": [],
+        "reason_codes": [],
+        "recommended_action": null,
+        "requested_slots": [
+          "revenue"
+        ],
+        "supported_slots": [
+          "revenue"
+        ],
+        "supporting_evidence_ids": [
+          "A-24"
+        ],
+        "temporal_status": "CONSISTENT"
+      },
+      "expected": "READY_TO_GENERATE",
+      "latency_ms": 0.254223,
+      "passed": true,
+      "replan_rounds": 1,
+      "stop_reason": null,
+      "tool_calls": 2,
+      "tool_history": [
+        {
+          "capability": "SEMANTIC_RETRIEVAL",
+          "iteration": 1,
+          "query": "What was Revenue in FY2024?"
+        },
+        {
+          "capability": "SEMANTIC_RETRIEVAL",
+          "iteration": 2,
+          "query": "What was Revenue in FY2024?"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "PLAN",
+          "reason": "initial plan accepted",
+          "to": "ACT"
+        },
+        {
+          "from": "ACT",
+          "reason": "tool observation captured",
+          "to": "OBSERVE"
+        },
+        {
+          "from": "OBSERVE",
+          "reason": "observation evaluated",
+          "to": "EVALUATE"
+        },
+        {
+          "from": "EVALUATE",
+          "reason": "concrete information gap",
+          "to": "REPLAN"
+        },
+        {
+          "from": "REPLAN",
+          "reason": "replan:MISSING_SLOT",
+          "to": "ACT"
+        },
+        {
+          "from": "ACT",
+          "reason": "tool observation captured",
+          "to": "OBSERVE"
+        },
+        {
+          "from": "OBSERVE",
+          "reason": "observation evaluated",
+          "to": "EVALUATE"
+        },
+        {
+          "from": "EVALUATE",
+          "reason": "evidence sufficient",
+          "to": "READY_TO_GENERATE"
+        }
+      ]
+    },
+    {
+      "actual_status": "FAIL_CLOSED",
+      "case_id": "B",
+      "description": "unrecoverable repeated evidence",
+      "evaluation": {
+        "calculation_ready": false,
+        "conflicts": [],
+        "decision": "TERMINAL_INSUFFICIENT",
+        "missing_slots": [
+          "revenue"
+        ],
+        "reason_codes": [
+          "MISSING_SLOT",
+          "NO_PROGRESS"
+        ],
+        "recommended_action": null,
+        "requested_slots": [
+          "revenue"
+        ],
+        "supported_slots": [],
+        "supporting_evidence_ids": [],
+        "temporal_status": "CONSISTENT"
+      },
+      "expected": "FAIL_CLOSED_NO_PROGRESS",
+      "latency_ms": 0.247894,
+      "passed": true,
+      "replan_rounds": 1,
+      "stop_reason": "NO_PROGRESS",
+      "tool_calls": 2,
+      "tool_history": [
+        {
+          "capability": "SEMANTIC_RETRIEVAL",
+          "iteration": 1,
+          "query": "What was Revenue in FY2024?"
+        },
+        {
+          "capability": "SEMANTIC_RETRIEVAL",
+          "iteration": 2,
+          "query": "What was Revenue in FY2024?"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "PLAN",
+          "reason": "initial plan accepted",
+          "to": "ACT"
+        },
+        {
+          "from": "ACT",
+          "reason": "tool observation captured",
+          "to": "OBSERVE"
+        },
+        {
+          "from": "OBSERVE",
+          "reason": "observation evaluated",
+          "to": "EVALUATE"
+        },
+        {
+          "from": "EVALUATE",
+          "reason": "concrete information gap",
+          "to": "REPLAN"
+        },
+        {
+          "from": "REPLAN",
+          "reason": "replan:MISSING_SLOT",
+          "to": "ACT"
+        },
+        {
+          "from": "ACT",
+          "reason": "tool observation captured",
+          "to": "OBSERVE"
+        },
+        {
+          "from": "OBSERVE",
+          "reason": "observation evaluated",
+          "to": "EVALUATE"
+        },
+        {
+          "from": "EVALUATE",
+          "reason": "NO_PROGRESS",
+          "to": "FAIL_CLOSED"
+        }
+      ]
+    },
+    {
+      "actual_status": "READY_TO_GENERATE",
+      "case_id": "C",
+      "description": "wrong period then targeted replan",
+      "evaluation": {
+        "calculation_ready": false,
+        "conflicts": [],
+        "decision": "SUFFICIENT",
+        "missing_slots": [],
+        "reason_codes": [],
+        "recommended_action": null,
+        "requested_slots": [
+          "revenue"
+        ],
+        "supported_slots": [
+          "revenue"
+        ],
+        "supporting_evidence_ids": [
+          "C-24"
+        ],
+        "temporal_status": "TEMPORAL_SUCCESSION"
+      },
+      "expected": "READY_TO_GENERATE",
+      "latency_ms": 0.301614,
+      "passed": true,
+      "replan_rounds": 1,
+      "stop_reason": null,
+      "tool_calls": 2,
+      "tool_history": [
+        {
+          "capability": "SEMANTIC_RETRIEVAL",
+          "iteration": 1,
+          "query": "What was Revenue in FY2024?"
+        },
+        {
+          "capability": "STRUCTURED_FINANCIAL_LOOKUP",
+          "iteration": 2,
+          "query": "What was Revenue in FY2024? [period=FY2024]"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "PLAN",
+          "reason": "initial plan accepted",
+          "to": "ACT"
+        },
+        {
+          "from": "ACT",
+          "reason": "tool observation captured",
+          "to": "OBSERVE"
+        },
+        {
+          "from": "OBSERVE",
+          "reason": "observation evaluated",
+          "to": "EVALUATE"
+        },
+        {
+          "from": "EVALUATE",
+          "reason": "concrete information gap",
+          "to": "REPLAN"
+        },
+        {
+          "from": "REPLAN",
+          "reason": "replan:WRONG_PERIOD",
+          "to": "ACT"
+        },
+        {
+          "from": "ACT",
+          "reason": "tool observation captured",
+          "to": "OBSERVE"
+        },
+        {
+          "from": "OBSERVE",
+          "reason": "observation evaluated",
+          "to": "EVALUATE"
+        },
+        {
+          "from": "EVALUATE",
+          "reason": "evidence sufficient",
+          "to": "READY_TO_GENERATE"
+        }
+      ]
+    },
+    {
+      "actual_status": "FAIL_CLOSED",
+      "case_id": "M",
+      "description": "identical evidence no progress",
+      "evaluation": {
+        "calculation_ready": false,
+        "conflicts": [],
+        "decision": "TERMINAL_INSUFFICIENT",
+        "missing_slots": [
+          "revenue"
+        ],
+        "reason_codes": [
+          "MISSING_SLOT",
+          "NO_PROGRESS"
+        ],
+        "recommended_action": null,
+        "requested_slots": [
+          "revenue"
+        ],
+        "supported_slots": [],
+        "supporting_evidence_ids": [],
+        "temporal_status": "CONSISTENT"
+      },
+      "expected": "FAIL_CLOSED_NO_PROGRESS",
+      "latency_ms": 0.201734,
+      "passed": true,
+      "replan_rounds": 1,
+      "stop_reason": "NO_PROGRESS",
+      "tool_calls": 2,
+      "tool_history": [
+        {
+          "capability": "SEMANTIC_RETRIEVAL",
+          "iteration": 1,
+          "query": "What was Revenue in FY2024?"
+        },
+        {
+          "capability": "SEMANTIC_RETRIEVAL",
+          "iteration": 2,
+          "query": "What was Revenue in FY2024?"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "PLAN",
+          "reason": "initial plan accepted",
+          "to": "ACT"
+        },
+        {
+          "from": "ACT",
+          "reason": "tool observation captured",
+          "to": "OBSERVE"
+        },
+        {
+          "from": "OBSERVE",
+          "reason": "observation evaluated",
+          "to": "EVALUATE"
+        },
+        {
+          "from": "EVALUATE",
+          "reason": "concrete information gap",
+          "to": "REPLAN"
+        },
+        {
+          "from": "REPLAN",
+          "reason": "replan:MISSING_SLOT",
+          "to": "ACT"
+        },
+        {
+          "from": "ACT",
+          "reason": "tool observation captured",
+          "to": "OBSERVE"
+        },
+        {
+          "from": "OBSERVE",
+          "reason": "observation evaluated",
+          "to": "EVALUATE"
+        },
+        {
+          "from": "EVALUATE",
+          "reason": "NO_PROGRESS",
+          "to": "FAIL_CLOSED"
+        }
+      ]
+    },
+    {
+      "actual_status": "READY_TO_GENERATE",
+      "case_id": "N",
+      "description": "tool error rerouted to lexical lane",
+      "evaluation": {
+        "calculation_ready": false,
+        "conflicts": [],
+        "decision": "SUFFICIENT",
+        "missing_slots": [],
+        "reason_codes": [],
+        "recommended_action": null,
+        "requested_slots": [
+          "revenue"
+        ],
+        "supported_slots": [
+          "revenue"
+        ],
+        "supporting_evidence_ids": [
+          "C-24"
+        ],
+        "temporal_status": "CONSISTENT"
+      },
+      "expected": "READY_TO_GENERATE",
+      "latency_ms": 0.130707,
+      "passed": true,
+      "replan_rounds": 1,
+      "stop_reason": null,
+      "tool_calls": 2,
+      "tool_history": [
+        {
+          "capability": "SEMANTIC_RETRIEVAL",
+          "iteration": 1,
+          "query": "What was Revenue in FY2024?"
+        },
+        {
+          "capability": "LEXICAL_RETRIEVAL",
+          "iteration": 2,
+          "query": "What was Revenue in FY2024?"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "PLAN",
+          "reason": "initial plan accepted",
+          "to": "ACT"
+        },
+        {
+          "from": "ACT",
+          "reason": "TOOL_ERROR",
+          "to": "OBSERVE"
+        },
+        {
+          "from": "OBSERVE",
+          "reason": "observation evaluated",
+          "to": "EVALUATE"
+        },
+        {
+          "from": "EVALUATE",
+          "reason": "concrete information gap",
+          "to": "REPLAN"
+        },
+        {
+          "from": "REPLAN",
+          "reason": "replan:TOOL_ERROR",
+          "to": "ACT"
+        },
+        {
+          "from": "ACT",
+          "reason": "tool observation captured",
+          "to": "OBSERVE"
+        },
+        {
+          "from": "OBSERVE",
+          "reason": "observation evaluated",
+          "to": "EVALUATE"
+        },
+        {
+          "from": "EVALUATE",
+          "reason": "evidence sufficient",
+          "to": "READY_TO_GENERATE"
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "temporal": [
+    {
+      "actual": {
+        "conflict_pairs": [],
+        "decision": "TEMPORAL_SUCCESSION",
+        "reason": "different explicit financial periods",
+        "relations": [
+          {
+            "reason": "explicit periods differ",
+            "relation": "TEMPORAL_SUCCESSION"
+          }
+        ]
+      },
+      "case_id": "D",
+      "expected": "TEMPORAL_SUCCESSION",
+      "passed": true
+    },
+    {
+      "actual": {
+        "conflict_pairs": [],
+        "decision": "AMBIGUOUS",
+        "reason": "temporal/scope fields are incomplete",
+        "relations": [
+          {
+            "reason": "metric/entity/unit/scope differs",
+            "relation": "AMBIGUOUS_SCOPE"
+          }
+        ]
+      },
+      "case_id": "E",
+      "expected": "AMBIGUOUS",
+      "passed": true
+    },
+    {
+      "actual": {
+        "conflict_pairs": [],
+        "decision": "TEMPORAL_SUCCESSION",
+        "reason": "different explicit financial periods",
+        "relations": [
+          {
+            "reason": "explicit periods differ",
+            "relation": "TEMPORAL_SUCCESSION"
+          }
+        ]
+      },
+      "case_id": "F",
+      "expected": "TEMPORAL_SUCCESSION",
+      "passed": true
+    },
+    {
+      "actual": {
+        "conflict_pairs": [],
+        "decision": "SUPERSEDED",
+        "reason": "explicit version succession",
+        "relations": [
+          {
+            "reason": "explicit supersedes_document_id",
+            "relation": "VERSION_SUPERSEDED"
+          }
+        ]
+      },
+      "case_id": "G",
+      "expected": "SUPERSEDED",
+      "passed": true
+    },
+    {
+      "actual": {
+        "conflict_pairs": [
+          [
+            "H-a",
+            "H-b"
+          ]
+        ],
+        "decision": "UNRESOLVED_CONFLICT",
+        "reason": "incompatible values in the same normalized metric/period/scope",
+        "relations": [
+          {
+            "reason": "same explicit fact scope",
+            "relation": "SAME_FACT_SCOPE"
+          }
+        ]
+      },
+      "case_id": "H",
+      "expected": "UNRESOLVED_CONFLICT",
+      "passed": true
+    },
+    {
+      "actual": {
+        "conflict_pairs": [],
+        "decision": "MULTI_SOURCE_COMPATIBLE",
+        "reason": "different sources, no same-scope conflict",
+        "relations": [
+          {
+            "reason": "different explicit source",
+            "relation": "DIFFERENT_SOURCE_SCOPE"
+          }
+        ]
+      },
+      "case_id": "I",
+      "expected": "MULTI_SOURCE_COMPATIBLE",
+      "passed": true
+    },
+    {
+      "actual": {
+        "conflict_pairs": [],
+        "decision": "TEMPORAL_SUCCESSION",
+        "reason": "different explicit financial periods",
+        "relations": [
+          {
+            "reason": "explicit periods differ",
+            "relation": "TEMPORAL_SUCCESSION"
+          }
+        ]
+      },
+      "case_id": "J",
+      "expected": "TEMPORAL_SUCCESSION",
+      "passed": true
+    },
+    {
+      "actual": {
+        "conflict_pairs": [
+          [
+            "K-1",
+            "K-2"
+          ]
+        ],
+        "decision": "UNRESOLVED_CONFLICT",
+        "reason": "incompatible values in the same normalized metric/period/scope",
+        "relations": [
+          {
+            "reason": "same explicit fact scope",
+            "relation": "SAME_FACT_SCOPE"
+          }
+        ]
+      },
+      "case_id": "K",
+      "expected": "UNRESOLVED_CONFLICT",
+      "passed": true
+    },
+    {
+      "actual": {
+        "conflict_pairs": [
+          [
+            "L-old",
+            "L-new"
+          ]
+        ],
+        "decision": "UNRESOLVED_CONFLICT",
+        "reason": "incompatible values in the same normalized metric/period/scope",
+        "relations": [
+          {
+            "reason": "same explicit fact scope",
+            "relation": "SAME_FACT_SCOPE"
+          }
+        ]
+      },
+      "case_id": "L",
+      "expected": "UNRESOLVED_CONFLICT",
+      "passed": true
+    }
+  ]
+}

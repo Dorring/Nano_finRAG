@@ -1,0 +1,10 @@
+{
+  "atomic_objects": 1924,
+  "canonical_mapping": "atomic_fact_id -> TABLE_ROW chunk_id",
+  "combined_vector_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/financial_corpus_v2/indexes/nf-v2-18-retrieval-recovery/r4-qwen3-embedding/embedding-vectors.npy",
+  "index_kind": "logical atomic view over immutable matrix",
+  "index_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/financial_corpus_v2/indexes/nf-v2-18-retrieval-recovery/r4-qwen3-embedding/atomic-fact-v1",
+  "model": "Qwen/Qwen3-Embedding-4B",
+  "revision": "5cf2132abc99cad020ac570b19d031efec650f2b",
+  "snapshot_sha": "54c2a3b9ef650ea026acab844c56917c23126f0426f1d4909154adbf485887dc"
+}

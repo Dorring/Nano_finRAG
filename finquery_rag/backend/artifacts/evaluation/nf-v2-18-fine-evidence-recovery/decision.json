@@ -1,0 +1,120 @@
+{
+  "actual": {
+    "calculation_operand_complete@10": 0.3333333333333333,
+    "exact_R@10": 0.5666666666666667,
+    "exact_R@5": 0.5166666666666667,
+    "family_R@5": 0.7,
+    "hard_scope_violations": 0,
+    "multi_all@10": 0.3,
+    "multi_any@5": 0.85,
+    "wrong_period_binding": 0
+  },
+  "base_sha": "122a96b302c8c53c71eb1185b9df86a7103567e7",
+  "decision": "FINE_EVIDENCE_PARTIALLY_RECOVERED",
+  "development_set": "NF-V2-17 B3 120 questions, CONSUMED_DEVELOPMENT_REGRESSION",
+  "fine_diagnostic_gains": {
+    "R1_calc_operand@10": 7,
+    "R1_multi_all@10": 9,
+    "R3_multi_all@10": 9,
+    "R4_calc_operand@10": 5
+  },
+  "next_gate": null,
+  "production": "V1",
+  "production_switch": false,
+  "selected": "R0_A4_COARSE",
+  "selected_metrics": {
+    "R@1": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 0,
+      "calculation_operand_coverage": 0.0,
+      "denominator": 120,
+      "exact_count": 33,
+      "exact_recall": 0.275,
+      "family_count": 61,
+      "family_recall": 0.5083333333333333,
+      "multi_all_count": 0,
+      "multi_all_recall": 0.0,
+      "multi_any_count": 13,
+      "multi_any_recall": 0.65,
+      "multi_count": 20
+    },
+    "R@10": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 5,
+      "calculation_operand_coverage": 0.3333333333333333,
+      "denominator": 120,
+      "exact_count": 68,
+      "exact_recall": 0.5666666666666667,
+      "family_count": 86,
+      "family_recall": 0.7166666666666667,
+      "multi_all_count": 6,
+      "multi_all_recall": 0.3,
+      "multi_any_count": 17,
+      "multi_any_recall": 0.85,
+      "multi_count": 20
+    },
+    "R@20": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 6,
+      "calculation_operand_coverage": 0.4,
+      "denominator": 120,
+      "exact_count": 77,
+      "exact_recall": 0.6416666666666667,
+      "family_count": 87,
+      "family_recall": 0.725,
+      "multi_all_count": 8,
+      "multi_all_recall": 0.4,
+      "multi_any_count": 20,
+      "multi_any_recall": 1.0,
+      "multi_count": 20
+    },
+    "R@3": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 2,
+      "calculation_operand_coverage": 0.13333333333333333,
+      "denominator": 120,
+      "exact_count": 55,
+      "exact_recall": 0.4583333333333333,
+      "family_count": 81,
+      "family_recall": 0.675,
+      "multi_all_count": 2,
+      "multi_all_recall": 0.1,
+      "multi_any_count": 16,
+      "multi_any_recall": 0.8,
+      "multi_count": 20
+    },
+    "R@5": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 3,
+      "calculation_operand_coverage": 0.2,
+      "denominator": 120,
+      "exact_count": 62,
+      "exact_recall": 0.5166666666666667,
+      "family_count": 84,
+      "family_recall": 0.7,
+      "multi_all_count": 3,
+      "multi_all_recall": 0.15,
+      "multi_any_count": 17,
+      "multi_any_recall": 0.85,
+      "multi_count": 20
+    }
+  },
+  "target_hits": {
+    "calculation_operand_complete@10": false,
+    "exact_R@10": false,
+    "exact_R@5": false,
+    "family_R@5": false,
+    "multi_all@10": false,
+    "multi_any@5": false
+  },
+  "targets": {
+    "calculation_operand_complete@10": 0.7,
+    "exact_R@10": 0.85,
+    "exact_R@5": 0.75,
+    "family_R@5": 0.85,
+    "hard_scope_violations": 0,
+    "multi_all@10": 0.7,
+    "multi_any@5": 0.9,
+    "wrong_period_binding": 0
+  }
+}

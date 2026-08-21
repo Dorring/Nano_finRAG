@@ -1,0 +1,582 @@
+{
+  "by_classification": {
+    "CHILD_RANK_FAILURE": 3,
+    "MULTI_LEVEL_HEADER": 14,
+    "PERIOD_COLUMN_MISMATCH": 5
+  },
+  "cases": [
+    {
+      "children_in_family": 4,
+      "classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1018724_000101872426000004::chunk_1e0190be6cf3619c4b664cc3"
+      ],
+      "gold_family_ids": [
+        "SEC_1018724_000101872426000004::table_d276736c7156fd3490a9244b"
+      ],
+      "gold_row_labels": [
+        ""
+      ],
+      "question_id": "FBV1-003",
+      "retrieved_family_candidates": [
+        "SEC_1018724_000101872426000004::chunk_c83842e07a934b43aed438da",
+        "SEC_1018724_000101872426000004::chunk_cba61f8ae47639903cc448ad",
+        "SEC_1018724_000101872426000004::chunk_e045fd9ea5e542192c5a40c9",
+        "SEC_1018724_000101872426000004::chunk_f1aa5abb6f8160be4a308538"
+      ],
+      "retrieved_row_labels": [
+        "How We Addressed the Matter in Our Audit",
+        "As of December 31 / Description of the Matter / How We Addressed the Matter in Our Audit",
+        "Description of the Matter",
+        "As of December 31 / Description of the Matter / How We Addressed the Matter in Our Audit"
+      ]
+    },
+    {
+      "children_in_family": 4,
+      "classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1018724_000101872424000008::chunk_2dd63564f0db3cbc18c52582"
+      ],
+      "gold_family_ids": [
+        "SEC_1018724_000101872424000008::table_45679ef461c2335c2ba4a04c"
+      ],
+      "gold_row_labels": [
+        ""
+      ],
+      "question_id": "FBV1-004",
+      "retrieved_family_candidates": [
+        "SEC_1018724_000101872424000008::chunk_7bd9c61937a2fedee4143ae9",
+        "SEC_1018724_000101872424000008::chunk_4d4647952cdf8d4e886a2941",
+        "SEC_1018724_000101872424000008::chunk_104ed62d78c3721250824341",
+        "SEC_1018724_000101872424000008::chunk_ba55ad107fe3176192c6daf0"
+      ],
+      "retrieved_row_labels": [
+        "Description of the Matter",
+        "How We Addressed the Matter in Our Audit",
+        "As of December 31 / Description of the Matter / How We Addressed the Matter in Our Audit",
+        "As of December 31 / Description of the Matter / How We Addressed the Matter in Our Audit"
+      ]
+    },
+    {
+      "children_in_family": 12,
+      "classification": "CHILD_RANK_FAILURE",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204425000043::chunk_000d72b0e7da3d317c5f201d"
+      ],
+      "gold_family_ids": [
+        "SEC_1652044_000165204425000043::table_2423fe265669b4d022c69c39"
+      ],
+      "gold_row_labels": [
+        "Balance as of March 31, 2024"
+      ],
+      "question_id": "FBV1-014",
+      "retrieved_family_candidates": [
+        "SEC_1652044_000165204425000043::chunk_761b30c6478621a8c70b9cff",
+        "SEC_1652044_000165204425000043::chunk_172145a9a17d020342a12288",
+        "SEC_1652044_000165204425000043::chunk_8f20b26735797d56aaaec573"
+      ],
+      "retrieved_row_labels": [
+        "Other comprehensive income (loss)",
+        "as of December 31 / Balance as of December 31, 2023 / as of March 31 / Balance as of March 31, 2024",
+        "as of December 31 / Balance as of December 31, 2023 / as of March 31 / Balance as of March 31, 2024"
+      ]
+    },
+    {
+      "children_in_family": 40,
+      "classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204425000062::chunk_008c38f5ff86eebfb503e38b"
+      ],
+      "gold_family_ids": [
+        "SEC_1652044_000165204425000062::table_7b0c1f58ae8a51d21f27efd8"
+      ],
+      "gold_row_labels": [
+        "Preferred stock, $ par value per share, 0.001 shares authorized; 100 shares issued and outstanding no"
+      ],
+      "question_id": "FBV1-015",
+      "retrieved_family_candidates": [
+        "SEC_1652044_000165204425000062::chunk_0756148b2fc24bf370852fab",
+        "SEC_1652044_000165204425000062::chunk_252f2db1cd804f2a518a90d1",
+        "SEC_1652044_000165204425000062::chunk_0cddc5ead9d814b37f340f67"
+      ],
+      "retrieved_row_labels": [
+        "Assets",
+        "Other non-current assets",
+        "Assets"
+      ]
+    },
+    {
+      "children_in_family": 25,
+      "classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1018724_000101872425000036::chunk_00b40951f4e4aa744fdeaf01"
+      ],
+      "gold_family_ids": [
+        "SEC_1018724_000101872425000036::table_66e3f25123d2c7d8e674be28"
+      ],
+      "gold_row_labels": [
+        "Sales and marketing"
+      ],
+      "question_id": "FBV1-020",
+      "retrieved_family_candidates": [
+        "SEC_1018724_000101872425000036::chunk_571b3a8a89c51113a7c7e86c",
+        "SEC_1018724_000101872425000036::chunk_619121fcbb8f5b03b4e9f847",
+        "SEC_1018724_000101872425000036::chunk_ffbc7a7d97b6f6df70c67ad0",
+        "SEC_1018724_000101872425000036::chunk_c10e8dca9bd9c10f10721309"
+      ],
+      "retrieved_row_labels": [
+        "Other operating expense (income), net",
+        "Other operating expense (income), net",
+        "Other operating expense (income), net",
+        "Total operating expenses"
+      ]
+    },
+    {
+      "children_in_family": 8,
+      "classification": "PERIOD_COLUMN_MISMATCH",
+      "gold_evidence_ids": [
+        "SEC_1018724_000101872425000086::chunk_005a6309d99fabe24dcd5e8e"
+      ],
+      "gold_family_ids": [
+        "SEC_1018724_000101872425000086::table_c80c54a415045fcc1731929e"
+      ],
+      "gold_row_labels": [
+        "Total long-term lease liabilities"
+      ],
+      "question_id": "FBV1-021",
+      "retrieved_family_candidates": [
+        "SEC_1018724_000101872425000086::chunk_abd1b679ea2d1528332054bf",
+        "SEC_1018724_000101872425000086::chunk_d4bab7f4a672f81a8a1e15a9"
+      ],
+      "retrieved_row_labels": [
+        "Gross lease liabilities",
+        "Less: current portion of lease liabilities"
+      ]
+    },
+    {
+      "children_in_family": 49,
+      "classification": "PERIOD_COLUMN_MISMATCH",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204424000022::chunk_004545a3005e38056a068d30"
+      ],
+      "gold_family_ids": [
+        "SEC_1652044_000165204424000022::table_5852db1460f5263dcb9f565b"
+      ],
+      "gold_row_labels": [
+        "Net cash used in financing activities"
+      ],
+      "question_id": "FBV1-023",
+      "retrieved_family_candidates": [
+        "SEC_1652044_000165204424000022::chunk_da5c821b5a5f4084d367bd08",
+        "SEC_1652044_000165204424000022::chunk_42f3ec39a763f33123f4af01",
+        "SEC_1652044_000165204424000022::chunk_5e36a1e56b787be09bd83819",
+        "SEC_1652044_000165204424000022::chunk_e071128eb8beec889f42faa9"
+      ],
+      "retrieved_row_labels": [
+        "Supplemental disclosures of cash flow information",
+        "Deferred income taxes",
+        "Income taxes, net",
+        "Accrued revenue share"
+      ]
+    },
+    {
+      "children_in_family": 23,
+      "classification": "CHILD_RANK_FAILURE",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204425000091::chunk_00268d6a88f48654a70e992d"
+      ],
+      "gold_family_ids": [
+        "SEC_1652044_000165204425000091::table_81c1370097e7d6864acdcb96"
+      ],
+      "gold_row_labels": [
+        "Item 3"
+      ],
+      "question_id": "FBV1-028",
+      "retrieved_family_candidates": [
+        "SEC_1652044_000165204425000091::chunk_b57d868f4bd5ba6a3bef1579",
+        "SEC_1652044_000165204425000091::chunk_bf3550b636db65a8a4cb8207",
+        "SEC_1652044_000165204425000091::chunk_ae08b62fddd4c763b549bb26",
+        "SEC_1652044_000165204425000091::chunk_63ba74e757465194855e2939",
+        "SEC_1652044_000165204425000091::chunk_cef10c6e76aef3e8947ada04"
+      ],
+      "retrieved_row_labels": [
+        "PART I. FINANCIAL INFORMATION",
+        "PART II. OTHER INFORMATION",
+        "",
+        "Signatures",
+        "Note About Forward-Looking Statements"
+      ]
+    },
+    {
+      "children_in_family": 25,
+      "classification": "PERIOD_COLUMN_MISMATCH",
+      "gold_evidence_ids": [
+        "SEC_1018724_000101872424000008::chunk_002223f9bf94f7014c3b896e"
+      ],
+      "gold_family_ids": [
+        "SEC_1018724_000101872424000008::table_b06805ec70c9d13fbfb57ca0"
+      ],
+      "gold_row_labels": [
+        "Operating Expenses:"
+      ],
+      "question_id": "FBV1-029",
+      "retrieved_family_candidates": [
+        "SEC_1018724_000101872424000008::chunk_ea2086904593bfd9eb6ccc08",
+        "SEC_1018724_000101872424000008::chunk_5bf332ab5bd3ec614428e5b8",
+        "SEC_1018724_000101872424000008::chunk_13e1823e7f7f97a3d105ebfb",
+        "SEC_1018724_000101872424000008::chunk_1f4fd63f1cad11b652a5451b",
+        "SEC_1018724_000101872424000008::chunk_9659c974f165a801069875a3"
+      ],
+      "retrieved_row_labels": [
+        "Other operating expense (income), net",
+        "Other operating expense (income), net",
+        "Other operating expense (income), net",
+        "General and administrative",
+        "Total operating expenses"
+      ]
+    },
+    {
+      "children_in_family": 7,
+      "classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1018724_000101872425000004::chunk_00330dc551281e0c66b0985f"
+      ],
+      "gold_family_ids": [
+        "SEC_1018724_000101872425000004::table_95417e18061619c6b3940738"
+      ],
+      "gold_row_labels": [
+        ""
+      ],
+      "question_id": "FBV1-030",
+      "retrieved_family_candidates": [
+        "SEC_1018724_000101872425000004::chunk_86f2f98df107fd58f1706fb0",
+        "SEC_1018724_000101872425000004::chunk_d8570c52212c7ccb1c75fce6"
+      ],
+      "retrieved_row_labels": [
+        "",
+        ""
+      ]
+    },
+    {
+      "children_in_family": 18,
+      "classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204424000022::chunk_05babe6392d5ef1a5dc1df60",
+        "SEC_1652044_000165204424000022::chunk_4e2a36a5c1f6b1b15193d650"
+      ],
+      "gold_family_ids": [
+        "SEC_1652044_000165204424000022::table_124c0835bf9ae019501a6e97",
+        "SEC_1652044_000165204424000022::table_67d173fb3398bf4444445374"
+      ],
+      "gold_row_labels": [
+        "",
+        ""
+      ],
+      "question_id": "FBV1-043",
+      "retrieved_family_candidates": [
+        "SEC_1652044_000165204424000022::chunk_76e2017b6589d87bf68d149e",
+        "SEC_1652044_000165204424000022::chunk_30087dd869641bef8531b8a7",
+        "SEC_1652044_000165204424000022::chunk_ec69e039053f51779ad99e60"
+      ],
+      "retrieved_row_labels": [
+        "Other income (expense), net",
+        "Operating expenses",
+        "Operating income"
+      ]
+    },
+    {
+      "children_in_family": 18,
+      "classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204425000014::chunk_009f67ebfaee07a99ff63752",
+        "SEC_1652044_000165204425000014::chunk_0fbfa84634ea12b97a98c113"
+      ],
+      "gold_family_ids": [
+        "SEC_1652044_000165204425000014::table_57bfb6b08f2ac65a8a6e1e5f",
+        "SEC_1652044_000165204425000014::table_9476c04bd7ad567a7f09398b"
+      ],
+      "gold_row_labels": [
+        "",
+        ""
+      ],
+      "question_id": "FBV1-044",
+      "retrieved_family_candidates": [
+        "SEC_1652044_000165204425000014::chunk_600c717b8ae11db67d763305",
+        "SEC_1652044_000165204425000014::chunk_a1506f8d70a5daee7c3792af",
+        "SEC_1652044_000165204425000014::chunk_f020c01b963acacbae1f8adf",
+        "SEC_1652044_000165204425000014::chunk_5377cc8a7ffe7bc40eeb4704"
+      ],
+      "retrieved_row_labels": [
+        "Other income (expense), net",
+        "Operating expenses",
+        "Operating income",
+        "Operating margin"
+      ]
+    },
+    {
+      "children_in_family": 17,
+      "classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204426000018::chunk_061b76f97fb8a18a74a41216",
+        "SEC_1652044_000165204426000018::chunk_44e6f6598def07e9525dcc2a"
+      ],
+      "gold_family_ids": [
+        "SEC_1652044_000165204426000018::table_06565caa12b40c0e2cb23d8b",
+        "SEC_1652044_000165204426000018::table_c31a4fbc6c622dfe14020f23"
+      ],
+      "gold_row_labels": [
+        "",
+        ""
+      ],
+      "question_id": "FBV1-045",
+      "retrieved_family_candidates": [
+        "SEC_1652044_000165204426000018::chunk_fe7f63c891f2a03df35760ce",
+        "SEC_1652044_000165204426000018::chunk_23c96f4d22af56919c5874ad",
+        "SEC_1652044_000165204426000018::chunk_38ae872c9246a0488955b8d8",
+        "SEC_1652044_000165204426000018::chunk_756333e5f92899eea8550ac4"
+      ],
+      "retrieved_row_labels": [
+        "Other income (expense), net",
+        "Operating income",
+        "Diluted net income per share (1)",
+        "Operating expenses"
+      ]
+    },
+    {
+      "children_in_family": 14,
+      "classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204425000014::chunk_0029c272c2d452cf7b062d8f"
+      ],
+      "gold_family_ids": [
+        "SEC_1652044_000165204425000014::table_f309acffb777450544af08e1"
+      ],
+      "gold_row_labels": [
+        "Federal and state"
+      ],
+      "question_id": "FBV1-067",
+      "retrieved_family_candidates": [
+        "SEC_1652044_000165204425000014::chunk_f4e1fbf43f650a634f2e56a3",
+        "SEC_1652044_000165204425000014::chunk_7823a5f673ef34c889bffabf"
+      ],
+      "retrieved_row_labels": [
+        "Provision for income taxes",
+        "Current:"
+      ]
+    },
+    {
+      "children_in_family": 40,
+      "classification": "PERIOD_COLUMN_MISMATCH",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204425000062::chunk_008c38f5ff86eebfb503e38b"
+      ],
+      "gold_family_ids": [
+        "SEC_1652044_000165204425000062::table_7b0c1f58ae8a51d21f27efd8"
+      ],
+      "gold_row_labels": [
+        "Preferred stock, $ par value per share, 0.001 shares authorized; 100 shares issued and outstanding no"
+      ],
+      "question_id": "FBV1-070",
+      "retrieved_family_candidates": [
+        "SEC_1652044_000165204425000062::chunk_252f2db1cd804f2a518a90d1",
+        "SEC_1652044_000165204425000062::chunk_dacf8f906bb8a53b38ef7a0e",
+        "SEC_1652044_000165204425000062::chunk_4e58ae24e4f3145aeb2b4a56"
+      ],
+      "retrieved_row_labels": [
+        "Other non-current assets",
+        "Current assets:",
+        "Property and equipment, net"
+      ]
+    },
+    {
+      "children_in_family": 23,
+      "classification": "CHILD_RANK_FAILURE",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204425000091::chunk_00268d6a88f48654a70e992d"
+      ],
+      "gold_family_ids": [
+        "SEC_1652044_000165204425000091::table_81c1370097e7d6864acdcb96"
+      ],
+      "gold_row_labels": [
+        "Item 3"
+      ],
+      "question_id": "FBV1-071",
+      "retrieved_family_candidates": [
+        "SEC_1652044_000165204425000091::chunk_63ba74e757465194855e2939",
+        "SEC_1652044_000165204425000091::chunk_bf3550b636db65a8a4cb8207",
+        "SEC_1652044_000165204425000091::chunk_b57d868f4bd5ba6a3bef1579",
+        "SEC_1652044_000165204425000091::chunk_ae08b62fddd4c763b549bb26",
+        "SEC_1652044_000165204425000091::chunk_6b17712c1983f098b284dda0"
+      ],
+      "retrieved_row_labels": [
+        "Signatures",
+        "PART II. OTHER INFORMATION",
+        "PART I. FINANCIAL INFORMATION",
+        "",
+        ""
+      ]
+    },
+    {
+      "children_in_family": 25,
+      "classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1018724_000101872425000036::chunk_00b40951f4e4aa744fdeaf01"
+      ],
+      "gold_family_ids": [
+        "SEC_1018724_000101872425000036::table_66e3f25123d2c7d8e674be28"
+      ],
+      "gold_row_labels": [
+        "Sales and marketing"
+      ],
+      "question_id": "FBV1-075",
+      "retrieved_family_candidates": [
+        "SEC_1018724_000101872425000036::chunk_ffbc7a7d97b6f6df70c67ad0",
+        "SEC_1018724_000101872425000036::chunk_967c59ef8e8f5293b6bdd51c",
+        "SEC_1018724_000101872425000036::chunk_571b3a8a89c51113a7c7e86c",
+        "SEC_1018724_000101872425000036::chunk_619121fcbb8f5b03b4e9f847"
+      ],
+      "retrieved_row_labels": [
+        "Other operating expense (income), net",
+        "Operating Expenses:",
+        "Other operating expense (income), net",
+        "Other operating expense (income), net"
+      ]
+    },
+    {
+      "children_in_family": 11,
+      "classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1018724_000101872425000123::chunk_08be9b04559255834a8abf5b"
+      ],
+      "gold_family_ids": [
+        "SEC_1018724_000101872425000123::table_979eefe292525e4662f31259"
+      ],
+      "gold_row_labels": [
+        "Total commitments"
+      ],
+      "question_id": "FBV1-077",
+      "retrieved_family_candidates": [
+        "SEC_1018724_000101872425000123::chunk_68a3e66fcd632b32cbd1afbf"
+      ],
+      "retrieved_row_labels": [
+        "Financing obligations, including interest (1)"
+      ]
+    },
+    {
+      "children_in_family": 49,
+      "classification": "PERIOD_COLUMN_MISMATCH",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204424000022::chunk_004545a3005e38056a068d30"
+      ],
+      "gold_family_ids": [
+        "SEC_1652044_000165204424000022::table_5852db1460f5263dcb9f565b"
+      ],
+      "gold_row_labels": [
+        "Net cash used in financing activities"
+      ],
+      "question_id": "FBV1-078",
+      "retrieved_family_candidates": [
+        "SEC_1652044_000165204424000022::chunk_545ea346e88d674cf43d4bcc",
+        "SEC_1652044_000165204424000022::chunk_da5c821b5a5f4084d367bd08",
+        "SEC_1652044_000165204424000022::chunk_c01dd48f9413cc289185921f",
+        "SEC_1652044_000165204424000022::chunk_42f3ec39a763f33123f4af01"
+      ],
+      "retrieved_row_labels": [
+        "Operating activities",
+        "Supplemental disclosures of cash flow information",
+        "Changes in assets and liabilities, net of effects of acquisitions:",
+        "Deferred income taxes"
+      ]
+    },
+    {
+      "children_in_family": 18,
+      "classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204424000022::chunk_05babe6392d5ef1a5dc1df60",
+        "SEC_1652044_000165204424000022::chunk_4e2a36a5c1f6b1b15193d650"
+      ],
+      "gold_family_ids": [
+        "SEC_1652044_000165204424000022::table_124c0835bf9ae019501a6e97",
+        "SEC_1652044_000165204424000022::table_67d173fb3398bf4444445374"
+      ],
+      "gold_row_labels": [
+        "",
+        ""
+      ],
+      "question_id": "FBV1-093",
+      "retrieved_family_candidates": [
+        "SEC_1652044_000165204424000022::chunk_19c46b297c64f7b315305f28",
+        "SEC_1652044_000165204424000022::chunk_30087dd869641bef8531b8a7",
+        "SEC_1652044_000165204424000022::chunk_76e2017b6589d87bf68d149e",
+        "SEC_1652044_000165204424000022::chunk_7402ac7992fea6276cce5cc6"
+      ],
+      "retrieved_row_labels": [
+        "Operating margin",
+        "Operating expenses",
+        "Other income (expense), net",
+        "Diluted EPS"
+      ]
+    },
+    {
+      "children_in_family": 18,
+      "classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204425000014::chunk_009f67ebfaee07a99ff63752",
+        "SEC_1652044_000165204425000014::chunk_0fbfa84634ea12b97a98c113"
+      ],
+      "gold_family_ids": [
+        "SEC_1652044_000165204425000014::table_57bfb6b08f2ac65a8a6e1e5f",
+        "SEC_1652044_000165204425000014::table_9476c04bd7ad567a7f09398b"
+      ],
+      "gold_row_labels": [
+        "",
+        ""
+      ],
+      "question_id": "FBV1-094",
+      "retrieved_family_candidates": [
+        "SEC_1652044_000165204425000014::chunk_5377cc8a7ffe7bc40eeb4704",
+        "SEC_1652044_000165204425000014::chunk_a1506f8d70a5daee7c3792af",
+        "SEC_1652044_000165204425000014::chunk_f020c01b963acacbae1f8adf",
+        "SEC_1652044_000165204425000014::chunk_600c717b8ae11db67d763305"
+      ],
+      "retrieved_row_labels": [
+        "Operating margin",
+        "Operating expenses",
+        "Operating income",
+        "Other income (expense), net"
+      ]
+    },
+    {
+      "children_in_family": 17,
+      "classification": "MULTI_LEVEL_HEADER",
+      "gold_evidence_ids": [
+        "SEC_1652044_000165204426000018::chunk_061b76f97fb8a18a74a41216",
+        "SEC_1652044_000165204426000018::chunk_44e6f6598def07e9525dcc2a"
+      ],
+      "gold_family_ids": [
+        "SEC_1652044_000165204426000018::table_06565caa12b40c0e2cb23d8b",
+        "SEC_1652044_000165204426000018::table_c31a4fbc6c622dfe14020f23"
+      ],
+      "gold_row_labels": [
+        "",
+        ""
+      ],
+      "question_id": "FBV1-095",
+      "retrieved_family_candidates": [
+        "SEC_1652044_000165204426000018::chunk_eebf63fbc4e9583db5fd0cbb",
+        "SEC_1652044_000165204426000018::chunk_361699bf832ba6ab0f7b9942",
+        "SEC_1652044_000165204426000018::chunk_756333e5f92899eea8550ac4",
+        "SEC_1652044_000165204426000018::chunk_23c96f4d22af56919c5874ad",
+        "SEC_1652044_000165204426000018::chunk_8e7aee546fc4230608665781"
+      ],
+      "retrieved_row_labels": [
+        "Operating margin",
+        "Consolidated revenues",
+        "Operating expenses",
+        "Operating income",
+        "Cost of revenues"
+      ]
+    }
+  ],
+  "count": 22
+}

@@ -1,0 +1,17 @@
+{
+  "accounting_breakdown": {
+    "ANSWERABLE_FAIL_BINDING": 0,
+    "ANSWERABLE_FAIL_GENERATOR": 0,
+    "ANSWERABLE_FAIL_OTHER": 0,
+    "ANSWERABLE_FAIL_RETRIEVAL": 16,
+    "ANSWERABLE_FAIL_VALIDATOR": 0,
+    "ANSWERABLE_RELEASED_CORRECT": 89,
+    "REFERENCE_OR_EVAL_MISMATCH": 0,
+    "UNANSWERABLE_CORRECTLY_REFUSED": 15,
+    "UNANSWERABLE_UNSAFE_RELEASE": 0
+  },
+  "reconciliation_status": "EXACT_RECONCILIATION_PASS",
+  "sum_of_categories": 120,
+  "total_universe": 120,
+  "unaccounted_samples": 0
+}

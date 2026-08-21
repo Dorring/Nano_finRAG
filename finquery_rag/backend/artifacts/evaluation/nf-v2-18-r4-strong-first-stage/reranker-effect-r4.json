@@ -1,0 +1,15 @@
+{
+  "calculation": {
+    "available": false
+  },
+  "general": {
+    "available": false,
+    "pairs": 5250,
+    "reason": "disabled_for_r4_development; R3 historical effect retained"
+  },
+  "multi": {
+    "available": false,
+    "reason": "optional reranker not separately selected; R3 route effect retained"
+  },
+  "selected": "G2/G4 union without reranker"
+}

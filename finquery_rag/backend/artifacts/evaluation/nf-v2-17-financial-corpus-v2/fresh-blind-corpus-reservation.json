@@ -1,0 +1,121 @@
+{
+  "annual_count": 6,
+  "company_count": 2,
+  "document_count": 12,
+  "documents": [
+    {
+      "document_id": "SEC_1652044_000165204424000022",
+      "period": "2023-12-31",
+      "rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "reserved": true,
+      "role": "ANNUAL",
+      "selection_rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "ticker": "GOOGL"
+    },
+    {
+      "document_id": "SEC_1652044_000165204425000014",
+      "period": "2024-12-31",
+      "rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "reserved": true,
+      "role": "ANNUAL",
+      "selection_rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "ticker": "GOOGL"
+    },
+    {
+      "document_id": "SEC_1652044_000165204426000018",
+      "period": "2025-12-31",
+      "rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "reserved": true,
+      "role": "ANNUAL",
+      "selection_rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "ticker": "GOOGL"
+    },
+    {
+      "document_id": "SEC_1652044_000165204425000043",
+      "period": "2025-03-31",
+      "rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "reserved": true,
+      "role": "QUARTERLY",
+      "selection_rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "ticker": "GOOGL"
+    },
+    {
+      "document_id": "SEC_1652044_000165204425000062",
+      "period": "2025-06-30",
+      "rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "reserved": true,
+      "role": "QUARTERLY",
+      "selection_rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "ticker": "GOOGL"
+    },
+    {
+      "document_id": "SEC_1652044_000165204425000091",
+      "period": "2025-09-30",
+      "rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "reserved": true,
+      "role": "QUARTERLY",
+      "selection_rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "ticker": "GOOGL"
+    },
+    {
+      "document_id": "SEC_1018724_000101872424000008",
+      "period": "2023-12-31",
+      "rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "reserved": true,
+      "role": "ANNUAL",
+      "selection_rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "ticker": "AMZN"
+    },
+    {
+      "document_id": "SEC_1018724_000101872425000004",
+      "period": "2024-12-31",
+      "rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "reserved": true,
+      "role": "ANNUAL",
+      "selection_rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "ticker": "AMZN"
+    },
+    {
+      "document_id": "SEC_1018724_000101872426000004",
+      "period": "2025-12-31",
+      "rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "reserved": true,
+      "role": "ANNUAL",
+      "selection_rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "ticker": "AMZN"
+    },
+    {
+      "document_id": "SEC_1018724_000101872425000036",
+      "period": "2025-03-31",
+      "rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "reserved": true,
+      "role": "QUARTERLY",
+      "selection_rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "ticker": "AMZN"
+    },
+    {
+      "document_id": "SEC_1018724_000101872425000086",
+      "period": "2025-06-30",
+      "rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "reserved": true,
+      "role": "QUARTERLY",
+      "selection_rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "ticker": "AMZN"
+    },
+    {
+      "document_id": "SEC_1018724_000101872425000123",
+      "period": "2025-09-30",
+      "rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "reserved": true,
+      "role": "QUARTERLY",
+      "selection_rationale": "new issuer and/or newest period not used in historical 72-question development benchmark",
+      "ticker": "AMZN"
+    }
+  ],
+  "fresh_blind": true,
+  "gold_inspected": false,
+  "quarterly_count": 6,
+  "questions_generated": false,
+  "schema_version": "nf-v2-17/fresh-blind-corpus-reservation/v1",
+  "system_outcomes_used": false
+}

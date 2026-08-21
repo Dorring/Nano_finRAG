@@ -1,0 +1,25 @@
+{
+  "a4_candidates_lost_due_enrichment": 0,
+  "atomic_facts": 19965,
+  "axis_bindings": 1880214,
+  "documents": 60,
+  "duplicate_row_occurrences": 1901,
+  "duplicate_table_occurrences": 672,
+  "elapsed_seconds": 298.9931002720259,
+  "ixbrl_deterministic_matches": 1216,
+  "mapping_failures": 0,
+  "metric_paths": 4981,
+  "period_semantics": {
+    "ANNUAL": 5587,
+    "INSTANT": 4078,
+    "QUARTER": 5123,
+    "UNKNOWN": 3883,
+    "YTD": 1294
+  },
+  "physical_rows": 86624,
+  "physical_tables": 7870,
+  "records": 95154,
+  "rows_mapped": 84723,
+  "semantic_rows": 86624,
+  "tables_mapped": 7198
+}

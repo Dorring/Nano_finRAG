@@ -1,0 +1,22 @@
+{
+  "routes": {
+    "CALCULATION": {
+      "correct": 15,
+      "released": 15,
+      "strict_correct_pct": 100.0,
+      "total": 15
+    },
+    "MULTI_EVIDENCE": {
+      "correct": 29,
+      "released": 29,
+      "strict_correct_pct": 82.86,
+      "total": 35
+    },
+    "QUANTITATIVE_TABLE_ROW": {
+      "correct": 45,
+      "released": 45,
+      "strict_correct_pct": 64.29,
+      "total": 70
+    }
+  }
+}

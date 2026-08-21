@@ -1,0 +1,27 @@
+{
+  "a2_warning_count": 2,
+  "records": [
+    {
+      "a2_warnings": [
+        "period_start is not exposed by submissions JSON and remains UNKNOWN",
+        "source locator probe returned None; SEC metadata identity remains authoritative"
+      ],
+      "a3_content_status": "CONTENT_VERIFIED",
+      "decision": "RETAIN_WARNING_ALLOW_CONTENT_VERIFICATION",
+      "document_id": "SEC_78003_000007800326000026",
+      "impact": "NON_SEMANTIC_LOCATOR_PROBE_WARNING",
+      "ticker": "PFE"
+    },
+    {
+      "a2_warnings": [
+        "period_start is not exposed by submissions JSON and remains UNKNOWN",
+        "source locator probe returned None; SEC metadata identity remains authoritative"
+      ],
+      "a3_content_status": "CONTENT_VERIFIED",
+      "decision": "RETAIN_WARNING_ALLOW_CONTENT_VERIFICATION",
+      "document_id": "SEC_1652044_000165204426000018",
+      "impact": "NON_SEMANTIC_LOCATOR_PROBE_WARNING",
+      "ticker": "GOOGL"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "interpretation": "The +16.48 pp gain reflects structured extraction and evidence conditioning improvements (Entity Micro F1: 63.64%, Relation Micro F1: 40.74%, Sentiment Macro F1: 56.54%) enabled by the V3 instruction tuning and 20% SFT replay mixture.",
+  "overall_delta_pp": 16.48,
+  "overall_pre_sft_macro": 19.78,
+  "overall_step156_macro": 36.26,
+  "task_deltas": {
+    "entity_extraction": {
+      "delta_pp": 35.64,
+      "pre_sft_baseline_pct": 28.0,
+      "step156_pct": 63.64
+    },
+    "numeric_qa": {
+      "delta_pp": 4.09,
+      "pre_sft_baseline_pct": 5.0,
+      "step156_pct": 9.09
+    },
+    "relation_extraction": {
+      "delta_pp": 22.74,
+      "pre_sft_baseline_pct": 18.0,
+      "step156_pct": 40.74
+    },
+    "sentiment": {
+      "delta_pp": 21.54,
+      "pre_sft_baseline_pct": 35.0,
+      "step156_pct": 56.54
+    },
+    "summarization": {
+      "delta_pp": 9.9,
+      "pre_sft_baseline_pct": 21.0,
+      "step156_pct": 30.9
+    },
+    "table_qa": {
+      "delta_pp": 4.67,
+      "pre_sft_baseline_pct": 12.0,
+      "step156_pct": 16.67
+    }
+  }
+}

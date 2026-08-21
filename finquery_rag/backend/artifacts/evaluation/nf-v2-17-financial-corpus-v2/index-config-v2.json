@@ -1,0 +1,55 @@
+{
+  "chunk_schema_version": "ParsedFinancialCorpusV2",
+  "dense": {
+    "built": true,
+    "content_types": [
+      "TEXT",
+      "TABLE"
+    ],
+    "dimension": 384,
+    "distance": "cosine",
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "normalization": "L2",
+    "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/financial_corpus_v2/indexes/financial-corpus-v2/dense",
+    "records": 8554,
+    "reused": true,
+    "tenant_hard_filter": true
+  },
+  "embedding": "all-MiniLM-L6-v2",
+  "fts": {
+    "built": true,
+    "field_weights": "single content field; title/tags prefixed into searchable text",
+    "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/financial_corpus_v2/indexes/financial-corpus-v2/bm25/index.sqlite",
+    "records": 95154,
+    "reused": true,
+    "schema": "SqliteBM25Retriever-compatible-v2",
+    "search_fields": [
+      "content",
+      "title_prefix",
+      "tags_prefix"
+    ],
+    "tenant_hard_filter": true,
+    "tokenizer": "jieba_for_search + unicode61 FTS5"
+  },
+  "hard_filter_order": [
+    "authorization",
+    "entity",
+    "explicit_fiscal_scope",
+    "document_type",
+    "version",
+    "retrieval"
+  ],
+  "hybrid": {
+    "built": true,
+    "fusion": "reciprocal_rank_fusion",
+    "k": 60,
+    "weights_tuned": false
+  },
+  "metadata_schema_version": "searchable-corpus-v2",
+  "production_v1_overwritten": false,
+  "schema_version": "nf-v2-17/a5/index-config/v1",
+  "soft_preferences": [
+    "section",
+    "content_type"
+  ]
+}

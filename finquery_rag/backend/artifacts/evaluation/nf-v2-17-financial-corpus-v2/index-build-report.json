@@ -1,0 +1,41 @@
+{
+  "build_timestamp": "2026-08-20T10:18:05.998460+00:00",
+  "dense": {
+    "built": true,
+    "content_types": [
+      "TEXT",
+      "TABLE"
+    ],
+    "dimension": 384,
+    "distance": "cosine",
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "normalization": "L2",
+    "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/financial_corpus_v2/indexes/financial-corpus-v2/dense",
+    "records": 8554,
+    "reused": true,
+    "tenant_hard_filter": true
+  },
+  "fts": {
+    "built": true,
+    "field_weights": "single content field; title/tags prefixed into searchable text",
+    "path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/financial_corpus_v2/indexes/financial-corpus-v2/bm25/index.sqlite",
+    "records": 95154,
+    "reused": true,
+    "schema": "SqliteBM25Retriever-compatible-v2",
+    "search_fields": [
+      "content",
+      "title_prefix",
+      "tags_prefix"
+    ],
+    "tenant_hard_filter": true,
+    "tokenizer": "jieba_for_search + unicode61 FTS5"
+  },
+  "hybrid": {
+    "built": true,
+    "fusion": "reciprocal_rank_fusion",
+    "k": 60,
+    "weights_tuned": false
+  },
+  "production_indices_modified": false,
+  "searchable_corpus_sha": "3ef3d8e772dfb2d4e2594d18efe3c101c4a4a3bb108e0faa0d75d11c667421a3"
+}

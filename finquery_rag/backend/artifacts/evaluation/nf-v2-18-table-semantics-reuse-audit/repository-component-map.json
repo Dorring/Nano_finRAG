@@ -1,0 +1,209 @@
+{
+  "task": "NF-V2-18A-R2P0",
+  "base_sha": "d1dc63fdb666959b0f57a4ce8786a579ecc8be8e",
+  "audit_only": true,
+  "benchmark_rerun": false,
+  "retrieval_modified": false,
+  "model_calls": 0,
+  "components": [
+    {
+      "id": "pdf_physical_table_adapter",
+      "paths": [
+        "finquery_rag/backend/src/pdf_retrieval_v4/full_corpus_adapter.py",
+        "finquery_rag/backend/src/pdf_retrieval_v4/native_alignment.py"
+      ],
+      "entry_points": [
+        "run_full_corpus_adapter",
+        "build_table_fragment"
+      ],
+      "input": "MinerU table HTML/middle JSON plus PyMuPDF native words and page geometry",
+      "output": "Document/Page/Table Fragment/Row/Cell dictionaries with stable IDs and source lineage",
+      "classification": "SOURCE_SPECIFIC_PDF",
+      "current_use": "pdf-retrieval-v4 evaluation/shadow pipeline; not Production V1",
+      "tested_by": [
+        "tests/pdf_retrieval_v4/test_gate_02_r3_adapter.py",
+        "tests/pdf_retrieval_v4/test_gate_04_stitching.py"
+      ]
+    },
+    {
+      "id": "shared_table_grid",
+      "paths": [
+        "finquery_rag/backend/src/pdf_retrieval_v4/table_html_parser.py"
+      ],
+      "entry_points": [
+        "parse_table_html",
+        "period_from_text",
+        "period_kind",
+        "extract_numeric_values"
+      ],
+      "input": "HTML table markup (MinerU HTML today; an HTML/iXBRL adapter can provide equivalent markup)",
+      "output": "rowspan/colspan-expanded grid and cell records",
+      "classification": "SOURCE_INDEPENDENT_REUSABLE",
+      "current_use": "called by the PDF adapter and semantic emitters",
+      "tested_by": [
+        "tests/pdf_retrieval_v4/test_gate_02_r3_adapter.py"
+      ]
+    },
+    {
+      "id": "stable_identity",
+      "paths": [
+        "finquery_rag/backend/src/pdf_retrieval_v4/adapter_identity.py"
+      ],
+      "entry_points": [
+        "table_fragment_id",
+        "row_id",
+        "cell_id",
+        "build_table_signature"
+      ],
+      "input": "document/page/geometry/table/row/cell structural fields",
+      "output": "deterministic table:, row:, cell: SHA-256 identities",
+      "classification": "SOURCE_INDEPENDENT_REUSABLE",
+      "current_use": "PDF adapter and semantic provenance",
+      "tested_by": [
+        "tests/pdf_retrieval_v4/test_gate_02_r3_adapter.py",
+        "tests/evaluation/test_nf_opt_08_evidence_mapping.py"
+      ]
+    },
+    {
+      "id": "semantic_graph",
+      "paths": [
+        "finquery_rag/backend/src/pdf_retrieval_v4/semantic_graph_models.py",
+        "finquery_rag/backend/src/pdf_retrieval_v4/semantic_row_classifier.py",
+        "finquery_rag/backend/src/pdf_retrieval_v4/metric_path_builder.py",
+        "finquery_rag/backend/src/pdf_retrieval_v4/temporal_axis_graph.py",
+        "finquery_rag/backend/src/pdf_retrieval_v4/typed_evidence_emitters.py",
+        "finquery_rag/backend/src/pdf_retrieval_v4/semantic_graph_validator.py"
+      ],
+      "entry_points": [
+        "LogicalTable",
+        "SemanticRow",
+        "MetricPath",
+        "SemanticAxisBinding",
+        "AtomicFact",
+        "RowMatrix",
+        "build_metric_paths",
+        "build_axis_bindings"
+      ],
+      "input": "canonical physical table fragment/row/cell dictionaries",
+      "output": "logical/row/metric/axis/typed evidence objects with source_traceback",
+      "classification": "SOURCE_INDEPENDENT_REUSABLE",
+      "current_use": "Gate 03 semantic graph and downstream shadow artifacts",
+      "tested_by": [
+        "tests/pdf_retrieval_v4/test_gate_03_header_graph.py",
+        "tests/pdf_retrieval_v4/test_gate_03_r2_contract_high_risk.py",
+        "tests/pdf_retrieval_v4/test_gate_05_r4_temporal_binding.py"
+      ]
+    },
+    {
+      "id": "logical_table_continuation",
+      "paths": [
+        "finquery_rag/backend/scripts/evaluation/run_pdf_v4_gate_04b_predict.py"
+      ],
+      "entry_points": [
+        "_automatic_state",
+        "_row_continuation_candidates",
+        "_UnionFind"
+      ],
+      "input": "physical table fragments plus deterministic continuation features",
+      "output": "three-state predictions and logical_table_id with fragment_ids/continuation_edges",
+      "classification": "PARTIALLY_REUSABLE",
+      "current_use": "Gate 04 evaluation/shadow artifacts; conservative, not a default runtime merge",
+      "tested_by": [
+        "tests/pdf_retrieval_v4/test_gate_04_stitching.py"
+      ]
+    },
+    {
+      "id": "scale_currency_units",
+      "paths": [
+        "finquery_rag/backend/src/pdf_retrieval_v4/semantic_scale_resolver.py",
+        "finquery_rag/backend/src/pdf_retrieval_v4/semantic_currency_resolver.py",
+        "finquery_rag/backend/src/pdf_retrieval_v4/unit_context_resolver.py",
+        "finquery_rag/backend/src/pdf_retrieval_v4/operation_unit_contract.py"
+      ],
+      "entry_points": [
+        "resolve_table_scale",
+        "resolve_table_currency",
+        "evaluate_operation_units"
+      ],
+      "input": "table/row/cell/header/context candidates",
+      "output": "resolved/candidate/conflict scale and currency plus calculation unit contract",
+      "classification": "SOURCE_INDEPENDENT_REUSABLE",
+      "current_use": "semantic graph and binder gates",
+      "tested_by": [
+        "tests/pdf_retrieval_v4/test_gate_03_r2_contract_high_risk.py",
+        "tests/pdf_retrieval_v4/test_gate_09_r5_1.py"
+      ]
+    },
+    {
+      "id": "binder_and_bridge",
+      "paths": [
+        "finquery_rag/backend/src/pdf_retrieval_v4/candidate_bridge_models.py",
+        "finquery_rag/backend/src/pdf_retrieval_v4/semantic_evidence_catalog.py",
+        "finquery_rag/backend/src/pdf_retrieval_v4/structural_joint_binder_v2.py",
+        "finquery_rag/backend/src/pdf_retrieval_v4/joint_operand_binder.py",
+        "finquery_rag/backend/src/domain/financial_fact.py"
+      ],
+      "entry_points": [
+        "SemanticEvidenceSignature",
+        "CandidateStructuredView",
+        "build_semantic_classes",
+        "bind_structural_operands_b2",
+        "bind_joint_operands",
+        "FinancialFact"
+      ],
+      "input": "canonical semantic facts/evidence and candidate provenance",
+      "output": "bridge matches, semantic classes, deterministic operand assignments",
+      "classification": "SOURCE_INDEPENDENT_REUSABLE",
+      "current_use": "retrieval-v4/binder evaluation and runtime contracts",
+      "tested_by": [
+        "tests/pdf_retrieval_v4/test_gate_09_r5_2_b2.py",
+        "tests/rag_v2/test_nf_v2_03_r5_slotwise_binder.py"
+      ]
+    },
+    {
+      "id": "mineru_flat_row_cell_helper",
+      "paths": [
+        "finquery_rag/backend/src/services/mineru_parser.py"
+      ],
+      "entry_points": [
+        "append_table_row_children",
+        "_table_cell_children"
+      ],
+      "input": "flat MinerU table chunk text",
+      "output": "table_row/table_cell retrieval children with table_column/table_alignment",
+      "classification": "SOURCE_SPECIFIC_PDF",
+      "current_use": "legacy MinerU ingestion helper; not canonical semantic graph",
+      "tested_by": [
+        "tests/test_phase123_table_cell_evidence.py",
+        "tests/test_phase169_table_header_alignment.py"
+      ],
+      "reuse_note": "Reuse alignment safety ideas only; do not make this flat text contract the HTML canonical boundary."
+    },
+    {
+      "id": "historical_nf_opt_08",
+      "paths": [
+        "finquery_rag/backend/src/evaluation/nf_opt_08.py",
+        "finquery_rag/backend/scripts/evaluation/run_nf_opt_08_r2_mapping_package.py"
+      ],
+      "entry_points": [
+        "StructuredTableCell",
+        "StructuredTableRecord",
+        "ShadowEvidenceMapping",
+        "resolve_header",
+        "resolve_period_headers_v2",
+        "classify"
+      ],
+      "input": "PDF parser matrices from PyMuPDF/Camelot",
+      "output": "shadow table/cell structures and pending mapping review package",
+      "classification": "PARTIALLY_REUSABLE",
+      "current_use": "historical shadow audit only; production indexes were not written",
+      "tested_by": [
+        "tests/evaluation/test_nf_opt_08_table_schema.py",
+        "tests/evaluation/test_nf_opt_08_evidence_mapping.py",
+        "tests/evaluation/test_nf_opt_08_parser_capability.py"
+      ]
+    }
+  ],
+  "conclusion": "The repository already contains a source-independent semantic graph, stable table/row/cell identities, axis/scale/currency contracts and binder-compatible structured facts. The missing work is an HTML/iXBRL physical adapter and conservative mapping into these contracts, not a second FinancialColumnContextV1/FinancialCellEvidenceV1 layer."
+}
+

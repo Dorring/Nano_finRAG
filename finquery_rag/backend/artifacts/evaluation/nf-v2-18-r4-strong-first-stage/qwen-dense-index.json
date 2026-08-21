@@ -1,0 +1,25 @@
+{
+  "atomic_objects": 1924,
+  "combined_vector_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/financial_corpus_v2/indexes/nf-v2-18-retrieval-recovery/r4-qwen3-embedding/embedding-vectors.npy",
+  "dimension": 2560,
+  "embedding_stats": {
+    "batch_size": 32,
+    "device": "cuda:0",
+    "dimension": 2560,
+    "dtype": "bfloat16_model_float32_index",
+    "elapsed_seconds": 657.6471912378911,
+    "max_length": 512,
+    "peak_reserved_mib": 12562,
+    "reused": true,
+    "rows": 14190,
+    "rows_per_second": 21.576918732504772,
+    "truncated_rows": 11456
+  },
+  "general_objects": 11991,
+  "index_path": "/mnt/disk/mxf/projects/Qhhhhhhaaa/financial_corpus_v2/indexes/nf-v2-18-retrieval-recovery/r4-qwen3-embedding/general-v1",
+  "model": "Qwen/Qwen3-Embedding-4B",
+  "production_overwrite": false,
+  "revision": "5cf2132abc99cad020ac570b19d031efec650f2b",
+  "scope_filter": "A4 hard metadata scope before ranking",
+  "snapshot_sha": "54c2a3b9ef650ea026acab844c56917c23126f0426f1d4909154adbf485887dc"
+}

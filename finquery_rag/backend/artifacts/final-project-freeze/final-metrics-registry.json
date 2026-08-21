@@ -671,6 +671,17 @@
       }
     ]
   },
+  "nf_v2_15_claim_verifier": {
+    "claim_verifier": "SemanticClaimVerifierV1",
+    "stage": "post_generation",
+    "evaluation_artifact": "finquery_rag/backend/artifacts/evaluation/nf-v2-15-final-trusted-e2e/final-e2e-results.json",
+    "evaluation_scope": "frozen 72-question replay; four sealed generation envelopes; model_calls=0; retrieval_calls=0",
+    "historical_nf_v2_10": {"released": "4/72", "correct": "3/64", "posthoc_semantic_unsafe": "1"},
+    "claim_verifier_replay": {"released": "3/72", "correct": "3/64", "semantic_unsafe_final_release": "0", "runtime_detectable_unsafe": "1", "fail_closed": "69/72"},
+    "production": "V1",
+    "production_switch": false,
+    "allowed_usage": "validated component safety result; not a production accuracy claim or fresh-blind E2E estimate"
+  },
   "interpretation": {
     "component_vs_e2e": "47/64 Grounded is component-only with oracle/trusted evidence; 3/64 is strict runtime E2E.",
     "production_decision": "PROJECT_FREEZE_V1_PRODUCTION",

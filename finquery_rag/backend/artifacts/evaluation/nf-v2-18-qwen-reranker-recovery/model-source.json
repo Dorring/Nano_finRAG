@@ -1,0 +1,166 @@
+{
+  "credentials_exposed": false,
+  "download_or_reuse_status": "REUSED_EXACT_LOCAL_SNAPSHOT",
+  "file_count": 17,
+  "model_id": "Qwen/Qwen3-Reranker-4B",
+  "requested_revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+  "resolved_revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+  "searched_paths": [
+    {
+      "critical_sha256": {},
+      "exact_historical_identity": false,
+      "exists": false,
+      "historical_sha_mismatches": {
+        "config.json": {
+          "actual": null,
+          "expected": "38bff5eac700032a185745e4076eccad7aa453473cafc2a27de412cdb7b79e19"
+        },
+        "model-00001-of-00002.safetensors": {
+          "actual": null,
+          "expected": "cf2e87cbf71fa628961532232e04dd6c19702a0a057f5e2aff95ea1aca4fd488"
+        },
+        "model-00002-of-00002.safetensors": {
+          "actual": null,
+          "expected": "78946d22b7f6456ea7a5358dbdf3982de36c5bac1f166a5fd58e18e31db8048a"
+        },
+        "tokenizer.json": {
+          "actual": null,
+          "expected": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+        },
+        "tokenizer_config.json": {
+          "actual": null,
+          "expected": "253153d0738ceb4c668d2eff957714dd2bea0b56de772a9fdccd96cbf517e6a0"
+        }
+      },
+      "missing_critical_files": [
+        "config.json",
+        "tokenizer.json",
+        "tokenizer_config.json",
+        "model-00001-of-00002.safetensors",
+        "model-00002-of-00002.safetensors"
+      ],
+      "path": "/mnt/disk/mxf/models/qwen3-reranker-4b/22e683669bc0f0bd69640a1354a6d0aebcfeede5"
+    },
+    {
+      "critical_sha256": {},
+      "exact_historical_identity": false,
+      "exists": false,
+      "historical_sha_mismatches": {
+        "config.json": {
+          "actual": null,
+          "expected": "38bff5eac700032a185745e4076eccad7aa453473cafc2a27de412cdb7b79e19"
+        },
+        "model-00001-of-00002.safetensors": {
+          "actual": null,
+          "expected": "cf2e87cbf71fa628961532232e04dd6c19702a0a057f5e2aff95ea1aca4fd488"
+        },
+        "model-00002-of-00002.safetensors": {
+          "actual": null,
+          "expected": "78946d22b7f6456ea7a5358dbdf3982de36c5bac1f166a5fd58e18e31db8048a"
+        },
+        "tokenizer.json": {
+          "actual": null,
+          "expected": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+        },
+        "tokenizer_config.json": {
+          "actual": null,
+          "expected": "253153d0738ceb4c668d2eff957714dd2bea0b56de772a9fdccd96cbf517e6a0"
+        }
+      },
+      "missing_critical_files": [
+        "config.json",
+        "tokenizer.json",
+        "tokenizer_config.json",
+        "model-00001-of-00002.safetensors",
+        "model-00002-of-00002.safetensors"
+      ],
+      "path": "/mnt/disk/mxf/models/qwen3-reranker-4b/snapshot"
+    },
+    {
+      "critical_sha256": {},
+      "exact_historical_identity": false,
+      "exists": false,
+      "historical_sha_mismatches": {
+        "config.json": {
+          "actual": null,
+          "expected": "38bff5eac700032a185745e4076eccad7aa453473cafc2a27de412cdb7b79e19"
+        },
+        "model-00001-of-00002.safetensors": {
+          "actual": null,
+          "expected": "cf2e87cbf71fa628961532232e04dd6c19702a0a057f5e2aff95ea1aca4fd488"
+        },
+        "model-00002-of-00002.safetensors": {
+          "actual": null,
+          "expected": "78946d22b7f6456ea7a5358dbdf3982de36c5bac1f166a5fd58e18e31db8048a"
+        },
+        "tokenizer.json": {
+          "actual": null,
+          "expected": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+        },
+        "tokenizer_config.json": {
+          "actual": null,
+          "expected": "253153d0738ceb4c668d2eff957714dd2bea0b56de772a9fdccd96cbf517e6a0"
+        }
+      },
+      "missing_critical_files": [
+        "config.json",
+        "tokenizer.json",
+        "tokenizer_config.json",
+        "model-00001-of-00002.safetensors",
+        "model-00002-of-00002.safetensors"
+      ],
+      "path": "/mnt/disk/mxf/models/Qwen3-Reranker-4B/22e683669bc0f0bd69640a1354a6d0aebcfeede5"
+    },
+    {
+      "critical_sha256": {},
+      "exact_historical_identity": false,
+      "exists": false,
+      "historical_sha_mismatches": {
+        "config.json": {
+          "actual": null,
+          "expected": "38bff5eac700032a185745e4076eccad7aa453473cafc2a27de412cdb7b79e19"
+        },
+        "model-00001-of-00002.safetensors": {
+          "actual": null,
+          "expected": "cf2e87cbf71fa628961532232e04dd6c19702a0a057f5e2aff95ea1aca4fd488"
+        },
+        "model-00002-of-00002.safetensors": {
+          "actual": null,
+          "expected": "78946d22b7f6456ea7a5358dbdf3982de36c5bac1f166a5fd58e18e31db8048a"
+        },
+        "tokenizer.json": {
+          "actual": null,
+          "expected": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+        },
+        "tokenizer_config.json": {
+          "actual": null,
+          "expected": "253153d0738ceb4c668d2eff957714dd2bea0b56de772a9fdccd96cbf517e6a0"
+        }
+      },
+      "missing_critical_files": [
+        "config.json",
+        "tokenizer.json",
+        "tokenizer_config.json",
+        "model-00001-of-00002.safetensors",
+        "model-00002-of-00002.safetensors"
+      ],
+      "path": "/mnt/disk/mxf/models/Qwen/Qwen3-Reranker-4B/22e683669bc0f0bd69640a1354a6d0aebcfeede5"
+    },
+    {
+      "critical_sha256": {
+        "config.json": "38bff5eac700032a185745e4076eccad7aa453473cafc2a27de412cdb7b79e19",
+        "model-00001-of-00002.safetensors": "cf2e87cbf71fa628961532232e04dd6c19702a0a057f5e2aff95ea1aca4fd488",
+        "model-00002-of-00002.safetensors": "78946d22b7f6456ea7a5358dbdf3982de36c5bac1f166a5fd58e18e31db8048a",
+        "tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+        "tokenizer_config.json": "253153d0738ceb4c668d2eff957714dd2bea0b56de772a9fdccd96cbf517e6a0"
+      },
+      "exact_historical_identity": true,
+      "exists": true,
+      "historical_sha_mismatches": {},
+      "missing_critical_files": [],
+      "path": "/mnt/disk/mxf/.cache/huggingface/hub/models--Qwen--Qwen3-Reranker-4B/snapshots/22e683669bc0f0bd69640a1354a6d0aebcfeede5"
+    }
+  ],
+  "snapshot_path": "/mnt/disk/mxf/.cache/huggingface/hub/models--Qwen--Qwen3-Reranker-4B/snapshots/22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+  "total_bytes": 8059548421
+}

@@ -1,0 +1,14 @@
+{
+  "decision": "SPECIALIST_FINALIST_READY_FOR_FRESH_HOLDOUT",
+  "dev_released_pct": 99.8,
+  "dev_strict_correct_pct": 99.0,
+  "financial_macro_recomputed_pct": 36.26,
+  "orcl_holdout_authorized": true,
+  "production": "V1",
+  "production_switch": false,
+  "selected_checkpoint": "model_000156.pt",
+  "selected_sha256": "3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a",
+  "selected_step": 156,
+  "task": "NF-V2-20B-R1",
+  "unsafe_releases_count": 0
+}

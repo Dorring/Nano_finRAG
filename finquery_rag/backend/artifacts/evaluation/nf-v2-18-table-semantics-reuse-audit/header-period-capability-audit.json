@@ -1,0 +1,62 @@
+{
+  "task": "NF-V2-18A-R2P0",
+  "capabilities": {
+    "multi_level_header": {
+      "status": "EXISTS",
+      "exact_components": [
+        "src/pdf_retrieval_v4/full_corpus_adapter.py header_path construction",
+        "src/evaluation/pdf_source_representation_v2.py resolve_period_headers_v2",
+        "scripts/evaluation/run_nf_opt_08_r2_mapping_package.py resolve_header"
+      ],
+      "behavior": [
+        "rowspan/colspan grid",
+        "column header paths",
+        "matrix_multilevel fallback",
+        "fail-closed ambiguous header"
+      ],
+      "html_gap": "A4 has header_rows and column_headers but no per-cell header_path; adapter required"
+    },
+    "column_period_binding": {
+      "status": "EXISTS_PARTIALLY",
+      "exact_components": [
+        "src/pdf_retrieval_v4/temporal_axis_graph.py build_axis_bindings",
+        "src/pdf_retrieval_v4/semantic_graph_models.py SemanticAxisBinding",
+        "src/evaluation/pdf_source_representation_v2.py resolve_period_headers_v2"
+      ],
+      "stored_fields": [
+        "period_start",
+        "period_end",
+        "normalized_period",
+        "temporal_kind",
+        "comparison_role"
+      ],
+      "fail_closed": true,
+      "html_gap": "A4 period_columns/cell period_start/period_end/period_semantics are compatible in meaning but use INSTANT/QUARTER/YTD/ANNUAL/UNKNOWN; PDF path uses point/duration plus normalized_period and does not by itself guarantee QUARTER versus YTD"
+    },
+    "quarter_ytd": {
+      "status": "PARTIAL",
+      "evidence": "A4 period_binding explicitly recognizes three/six/nine months and stores QUARTER/YTD; PDF shared axis recognizes point/duration and explicit period phrases but needs a conservative duration-to-project-semantic adapter"
+    },
+    "instant_duration": {
+      "status": "EXISTS",
+      "evidence": "PDF point/duration axis and A4 INSTANT versus duration semantics can map without treating them as interchangeable"
+    },
+    "rowspan_colspan": {
+      "status": "EXISTS",
+      "evidence": "table_html_parser.parse_table_html and A4 grid_rows expand spans"
+    },
+    "header_tree": {
+      "status": "PARTIAL",
+      "evidence": "metric_path_builder builds ordered row-parent paths; column headers are represented as per-cell header_path rather than a general tree object"
+    }
+  },
+  "tests": [
+    "tests/pdf_retrieval_v4/test_gate_03_header_graph.py",
+    "tests/pdf_retrieval_v4/test_gate_05_r4_temporal_binding.py",
+    "tests/pdf_retrieval_v4/test_gate_05_fact_integrity.py",
+    "tests/evaluation/test_nf_opt_08_table_schema.py"
+  ],
+  "no_new_financial_column_context": true,
+  "no_new_financial_cell_evidence": true
+}
+

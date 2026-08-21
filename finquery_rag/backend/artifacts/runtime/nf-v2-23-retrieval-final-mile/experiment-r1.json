@@ -1,0 +1,15 @@
+{
+  "answerable_correct": 90,
+  "answerable_evaluated": 105,
+  "answerable_success_rate_pct": 85.71,
+  "damaged_count": 0,
+  "description": "R0 + Deterministic Financial Query Normalization / Alias Expansion",
+  "experiment_id": "R1",
+  "first_stage_misses": 10,
+  "multi_incomplete_misses": 5,
+  "rescued_count": 1,
+  "rescued_sample_ids": [
+    "FBV1-084"
+  ],
+  "unsafe_releases": 0
+}

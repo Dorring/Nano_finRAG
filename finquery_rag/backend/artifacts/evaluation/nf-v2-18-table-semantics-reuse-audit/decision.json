@@ -1,0 +1,65 @@
+{
+  "task": "NF-V2-18A-R2P0",
+  "base_sha": "d1dc63fdb666959b0f57a4ce8786a579ecc8be8e",
+  "decision": "EXTEND_EXISTING_TABLE_SEMANTICS",
+  "rationale": [
+    "A reusable source-independent semantic graph and binder contract already exists.",
+    "NF-OPT-08 supplies tested table/cell/header/scale/mapping safety contracts but did not complete a production logical-table pipeline.",
+    "A4 HTML/iXBRL fields overlap semantically but are not shape-compatible with shared header_path/logical_table/axis/evidence contracts.",
+    "A thin HTML physical adapter and conservative iXBRL enrichment are required; a parallel FinancialColumnContextV1 or FinancialCellEvidenceV1 is not justified."
+  ],
+  "historical_pdf_pipeline_found": true,
+  "nf_opt_08_implementation_located": true,
+  "existing_logical_table_abstraction": "yes; LogicalTable + Gate 04 logical_table_id grouping",
+  "existing_continuation_table_support": "yes, conservative three-state shadow/evaluation contract; automatic merge evidence is not production-ready",
+  "existing_multi_level_header_support": "yes; header_path and matrix_multilevel resolution",
+  "existing_column_period_binding": "yes partially; point/duration and normalized periods, with explicit adapter needed for QUARTER/YTD",
+  "existing_row_cell_semantic_contract": "yes; SemanticRow/MetricPath/SemanticAxisBinding/AtomicFact/RowMatrix plus stable IDs",
+  "existing_currency_scale_unit_handling": "yes; resolver hierarchy and deterministic operation unit contract",
+  "existing_stable_table_row_cell_identity": "yes; adapter_identity and semantic fact IDs",
+  "existing_binder_compatible_representation": "yes; SemanticEvidenceCatalog/semantic classes/structural_joint_binder_v2/FinancialFact",
+  "reusable_components": [
+    "table_html_parser",
+    "adapter_identity",
+    "semantic_graph_models",
+    "metric_path_builder",
+    "temporal_axis_graph",
+    "semantic_scale_resolver",
+    "semantic_currency_resolver",
+    "typed_evidence_emitters",
+    "semantic_evidence_catalog",
+    "structural_joint_binder_v2"
+  ],
+  "adapter_required_components": [
+    "HTML physical table adapter",
+    "header_path/period vocabulary adapter",
+    "iXBRL provenance enrichment",
+    "HTML continuation feature adapter"
+  ],
+  "missing_capabilities": [
+    "A4-to-shared semantic wiring",
+    "HTML logical_table_id/continuation output",
+    "per-column header_path",
+    "shared QUARTER/YTD subtype preservation",
+    "HTML adapter tests"
+  ],
+  "current_html_a4_compatibility": "partial compatibility; reuse with adapter",
+  "failure_mapping": {
+    "MULTI_LEVEL_HEADER": "14/14 partially applicable",
+    "PERIOD_COLUMN_MISMATCH": "5/5 partially applicable",
+    "CHILD_RANK_FAILURE": "3/3 partially applicable"
+  },
+  "proposed_new_abstractions_avoided": [
+    "FinancialColumnContextV1",
+    "FinancialCellEvidenceV1",
+    "parallel HTML semantic graph"
+  ],
+  "genuinely_new_abstractions_required": [
+    "one source adapter module at physical boundary; optional iXBRL metadata attachment, not a new evidence type"
+  ],
+  "benchmark_rerun": false,
+  "retrieval_modified": false,
+  "production": "V1",
+  "production_switch": false
+}
+

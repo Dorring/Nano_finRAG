@@ -1,0 +1,9 @@
+{
+  "checkpoint_path": "/home/mxf/.cache/nanochat/chatsft_checkpoints/d24_grounded_specialist_v3_lr5e6/model_000156.pt",
+  "checkpoint_sha256": "3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a",
+  "expected_sha256": "3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a",
+  "match": true,
+  "model_architecture": "NanoFinance 2.08B (d24_grounded_specialist_v3_lr5e6)",
+  "role": "LOCAL_FINANCIAL_SPECIALIST_GENERATOR",
+  "step": 156
+}

@@ -1,0 +1,19 @@
+{
+  "results": [
+    {
+      "input": "The provided evidence does not disclose the foreign exchange loss for ORCL.",
+      "is_safe_detected": true,
+      "passed": true
+    },
+    {
+      "input": "The evidence does not disclose this value, but it was likely $2.4 billion.",
+      "is_safe_detected": false,
+      "passed": true
+    },
+    {
+      "input": "The provided verified evidence is insufficient to determine segment margin.",
+      "is_safe_detected": true,
+      "passed": true
+    }
+  ]
+}

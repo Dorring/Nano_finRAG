@@ -1,0 +1,17 @@
+{
+  "generation_stage_e2e": {
+    "mean_ms": 2216.43,
+    "p50_ms": 1895.83,
+    "p95_ms": 6852.12
+  },
+  "model_generation": {
+    "mean_ms": 2215.18,
+    "p50_ms": 1894.73,
+    "p95_ms": 6849.72
+  },
+  "validator_pipeline": {
+    "mean_ms": 1.25,
+    "p50_ms": 1.1,
+    "p95_ms": 2.4
+  }
+}

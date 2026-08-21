@@ -13,3 +13,11 @@ Repeated targeted training did not make the Financial Specialist a dependable an
 ## How to state the outcome
 
 The correct conclusion is not "the model solved the benchmark." It is: grounded generation became materially better as a component, while retrieval coverage and semantic sufficiency remain the limiting production constraints. V1 remains production; V2 is frozen research evidence.
+
+NF-V2-15 then adopted a deterministic post-generation `SemanticClaimVerifierV1`.
+On the identical sealed replay, it detected the unit claim before release: 3
+previously correct answers remained released, the unsafe answer was blocked, and
+semantic-unsafe final release became 0. This does not increase evidence
+coverage, does not constitute fresh-blind E2E accuracy, and does not authorize a
+Production V2 switch. The LoRA/DPO refusal experiment remains ineffective
+research history.

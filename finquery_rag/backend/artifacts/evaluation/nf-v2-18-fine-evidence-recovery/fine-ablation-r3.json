@@ -1,0 +1,641 @@
+{
+  "metrics": {
+    "R@1": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 0,
+      "calculation_operand_coverage": 0.0,
+      "denominator": 120,
+      "exact_count": 30,
+      "exact_recall": 0.25,
+      "family_count": 41,
+      "family_recall": 0.3416666666666667,
+      "multi_all_count": 0,
+      "multi_all_recall": 0.0,
+      "multi_any_count": 9,
+      "multi_any_recall": 0.45,
+      "multi_count": 20
+    },
+    "R@10": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 7,
+      "calculation_operand_coverage": 0.4666666666666667,
+      "denominator": 120,
+      "exact_count": 56,
+      "exact_recall": 0.4666666666666667,
+      "family_count": 75,
+      "family_recall": 0.625,
+      "multi_all_count": 9,
+      "multi_all_recall": 0.45,
+      "multi_any_count": 17,
+      "multi_any_recall": 0.85,
+      "multi_count": 20
+    },
+    "R@20": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 9,
+      "calculation_operand_coverage": 0.6,
+      "denominator": 120,
+      "exact_count": 70,
+      "exact_recall": 0.5833333333333334,
+      "family_count": 81,
+      "family_recall": 0.675,
+      "multi_all_count": 9,
+      "multi_all_recall": 0.45,
+      "multi_any_count": 17,
+      "multi_any_recall": 0.85,
+      "multi_count": 20
+    },
+    "R@3": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 2,
+      "calculation_operand_coverage": 0.13333333333333333,
+      "denominator": 120,
+      "exact_count": 38,
+      "exact_recall": 0.31666666666666665,
+      "family_count": 53,
+      "family_recall": 0.44166666666666665,
+      "multi_all_count": 9,
+      "multi_all_recall": 0.45,
+      "multi_any_count": 12,
+      "multi_any_recall": 0.6,
+      "multi_count": 20
+    },
+    "R@5": {
+      "calculation_count": 15,
+      "calculation_operand_complete": 4,
+      "calculation_operand_coverage": 0.26666666666666666,
+      "denominator": 120,
+      "exact_count": 48,
+      "exact_recall": 0.4,
+      "family_count": 63,
+      "family_recall": 0.525,
+      "multi_all_count": 9,
+      "multi_all_recall": 0.45,
+      "multi_any_count": 15,
+      "multi_any_recall": 0.75,
+      "multi_count": 20
+    }
+  },
+  "name": "R3 best deterministic fine rank + slot-aware multi retrieval",
+  "qwen_path": "unavailable",
+  "slot_coverage_at_10": {
+    "by_kind_total": {
+      "metric": 125,
+      "operand": 30
+    },
+    "coverage": 0.36129032258064514,
+    "slots_filled": 56,
+    "slots_total": 155
+  },
+  "slot_coverage_at_5": {
+    "by_kind_total": {
+      "metric": 125,
+      "operand": 30
+    },
+    "coverage": 0.3096774193548387,
+    "slots_filled": 48,
+    "slots_total": 155
+  },
+  "slot_diagnostics": {
+    "FBV1-001": [],
+    "FBV1-002": [],
+    "FBV1-003": [],
+    "FBV1-004": [],
+    "FBV1-005": [],
+    "FBV1-006": [],
+    "FBV1-007": [],
+    "FBV1-008": [],
+    "FBV1-009": [],
+    "FBV1-010": [],
+    "FBV1-011": [],
+    "FBV1-012": [],
+    "FBV1-013": [],
+    "FBV1-014": [],
+    "FBV1-015": [],
+    "FBV1-016": [],
+    "FBV1-017": [],
+    "FBV1-018": [],
+    "FBV1-019": [],
+    "FBV1-020": [],
+    "FBV1-021": [],
+    "FBV1-022": [],
+    "FBV1-023": [],
+    "FBV1-024": [],
+    "FBV1-025": [],
+    "FBV1-026": [],
+    "FBV1-027": [],
+    "FBV1-028": [],
+    "FBV1-029": [],
+    "FBV1-030": [],
+    "FBV1-031": [
+      {
+        "children_considered": 50,
+        "coarse_count": 49,
+        "fine_count": 61,
+        "kind": "metric",
+        "latency_ms": 123.90397896524519,
+        "phrase": "% Change",
+        "slot_id": "FBV1-031::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 178,
+        "coarse_count": 106,
+        "fine_count": 190,
+        "kind": "metric",
+        "latency_ms": 376.80784391704947,
+        "phrase": "(Increase) decrease in allowance for credit losses",
+        "slot_id": "FBV1-031::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-032": [
+      {
+        "children_considered": 50,
+        "coarse_count": 49,
+        "fine_count": 61,
+        "kind": "metric",
+        "latency_ms": 117.57700296584517,
+        "phrase": "% Change",
+        "slot_id": "FBV1-032::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 181,
+        "coarse_count": 105,
+        "fine_count": 182,
+        "kind": "metric",
+        "latency_ms": 325.1407400239259,
+        "phrase": "(Increase) decrease in allowance for credit losses",
+        "slot_id": "FBV1-032::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-033": [
+      {
+        "children_considered": 40,
+        "coarse_count": 35,
+        "fine_count": 43,
+        "kind": "metric",
+        "latency_ms": 113.14508900977671,
+        "phrase": "% Change",
+        "slot_id": "FBV1-033::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 201,
+        "coarse_count": 80,
+        "fine_count": 163,
+        "kind": "metric",
+        "latency_ms": 431.1219700612128,
+        "phrase": "(Increase) decrease in allowance for credit losses",
+        "slot_id": "FBV1-033::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-034": [
+      {
+        "children_considered": 131,
+        "coarse_count": 36,
+        "fine_count": 69,
+        "kind": "metric",
+        "latency_ms": 83.10487901326269,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-034::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 134,
+        "coarse_count": 200,
+        "fine_count": 200,
+        "kind": "metric",
+        "latency_ms": 368.2458339026198,
+        "phrase": "Accrued expenses and other current liabilities",
+        "slot_id": "FBV1-034::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-035": [
+      {
+        "children_considered": 120,
+        "coarse_count": 36,
+        "fine_count": 60,
+        "kind": "metric",
+        "latency_ms": 81.43243205267936,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-035::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 135,
+        "coarse_count": 200,
+        "fine_count": 200,
+        "kind": "metric",
+        "latency_ms": 671.4966930449009,
+        "phrase": "Accrued expenses and other current liabilities",
+        "slot_id": "FBV1-035::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-036": [
+      {
+        "children_considered": 120,
+        "coarse_count": 36,
+        "fine_count": 60,
+        "kind": "metric",
+        "latency_ms": 73.83700099308044,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-036::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 134,
+        "coarse_count": 200,
+        "fine_count": 200,
+        "kind": "metric",
+        "latency_ms": 425.5981669994071,
+        "phrase": "Accrued expenses and other current liabilities",
+        "slot_id": "FBV1-036::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-037": [
+      {
+        "children_considered": 64,
+        "coarse_count": 200,
+        "fine_count": 200,
+        "kind": "metric",
+        "latency_ms": 860.9990120166913,
+        "phrase": "2023: Year Ended December 31,",
+        "slot_id": "FBV1-037::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 79,
+        "coarse_count": 7,
+        "fine_count": 28,
+        "kind": "metric",
+        "latency_ms": 19.4532509194687,
+        "phrase": "Accounts payable",
+        "slot_id": "FBV1-037::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-038": [
+      {
+        "children_considered": 64,
+        "coarse_count": 200,
+        "fine_count": 200,
+        "kind": "metric",
+        "latency_ms": 842.6994860637933,
+        "phrase": "2024: Year Ended December 31,",
+        "slot_id": "FBV1-038::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 79,
+        "coarse_count": 7,
+        "fine_count": 28,
+        "kind": "metric",
+        "latency_ms": 19.043402979150414,
+        "phrase": "Accounts payable",
+        "slot_id": "FBV1-038::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-039": [
+      {
+        "children_considered": 122,
+        "coarse_count": 200,
+        "fine_count": 200,
+        "kind": "metric",
+        "latency_ms": 933.7781990179792,
+        "phrase": "2025: Year Ended December 31,",
+        "slot_id": "FBV1-039::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 79,
+        "coarse_count": 7,
+        "fine_count": 28,
+        "kind": "metric",
+        "latency_ms": 20.013676956295967,
+        "phrase": "Accounts payable",
+        "slot_id": "FBV1-039::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-040": [
+      {
+        "children_considered": 56,
+        "coarse_count": 74,
+        "fine_count": 90,
+        "kind": "metric",
+        "latency_ms": 129.87913598772138,
+        "phrase": "Free cash flow",
+        "slot_id": "FBV1-040::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 67,
+        "coarse_count": 161,
+        "fine_count": 165,
+        "kind": "metric",
+        "latency_ms": 389.62572906166315,
+        "phrase": "Net cash provided by (used in) financing activities",
+        "slot_id": "FBV1-040::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-041": [
+      {
+        "children_considered": 56,
+        "coarse_count": 74,
+        "fine_count": 90,
+        "kind": "metric",
+        "latency_ms": 125.86237897630781,
+        "phrase": "Free cash flow",
+        "slot_id": "FBV1-041::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 67,
+        "coarse_count": 160,
+        "fine_count": 164,
+        "kind": "metric",
+        "latency_ms": 261.3167050294578,
+        "phrase": "Net cash provided by (used in) financing activities",
+        "slot_id": "FBV1-041::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-042": [
+      {
+        "children_considered": 56,
+        "coarse_count": 74,
+        "fine_count": 90,
+        "kind": "metric",
+        "latency_ms": 127.69996502902359,
+        "phrase": "Free cash flow",
+        "slot_id": "FBV1-042::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 67,
+        "coarse_count": 160,
+        "fine_count": 165,
+        "kind": "metric",
+        "latency_ms": 463.26781692914665,
+        "phrase": "Net cash provided by (used in) financing activities",
+        "slot_id": "FBV1-042::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-043": [
+      {
+        "children_considered": 50,
+        "coarse_count": 49,
+        "fine_count": 61,
+        "kind": "metric",
+        "latency_ms": 120.6171460216865,
+        "phrase": "% Change",
+        "slot_id": "FBV1-043::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 92,
+        "coarse_count": 200,
+        "fine_count": 200,
+        "kind": "metric",
+        "latency_ms": 905.5065340362489,
+        "phrase": "2023: Year Ended December 31,",
+        "slot_id": "FBV1-043::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-044": [
+      {
+        "children_considered": 50,
+        "coarse_count": 49,
+        "fine_count": 61,
+        "kind": "metric",
+        "latency_ms": 119.16081805247813,
+        "phrase": "% Change",
+        "slot_id": "FBV1-044::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 91,
+        "coarse_count": 200,
+        "fine_count": 200,
+        "kind": "metric",
+        "latency_ms": 966.1122730467469,
+        "phrase": "2024: Year Ended December 31,",
+        "slot_id": "FBV1-044::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-045": [
+      {
+        "children_considered": 40,
+        "coarse_count": 35,
+        "fine_count": 43,
+        "kind": "metric",
+        "latency_ms": 125.73735194746405,
+        "phrase": "% Change",
+        "slot_id": "FBV1-045::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 83,
+        "coarse_count": 200,
+        "fine_count": 200,
+        "kind": "metric",
+        "latency_ms": 990.6693859957159,
+        "phrase": "2024: Year Ended December 31,",
+        "slot_id": "FBV1-045::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-046": [
+      {
+        "children_considered": 131,
+        "coarse_count": 36,
+        "fine_count": 69,
+        "kind": "metric",
+        "latency_ms": 59.45248599164188,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-046::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 118,
+        "coarse_count": 138,
+        "fine_count": 163,
+        "kind": "metric",
+        "latency_ms": 546.333922073245,
+        "phrase": "Accrued purchases of property and equipment (1)",
+        "slot_id": "FBV1-046::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-047": [
+      {
+        "children_considered": 120,
+        "coarse_count": 36,
+        "fine_count": 60,
+        "kind": "metric",
+        "latency_ms": 60.05418498534709,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-047::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 118,
+        "coarse_count": 176,
+        "fine_count": 200,
+        "kind": "metric",
+        "latency_ms": 879.4000400230289,
+        "phrase": "Accrued purchases of property and equipment (1)",
+        "slot_id": "FBV1-047::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-048": [
+      {
+        "children_considered": 120,
+        "coarse_count": 36,
+        "fine_count": 60,
+        "kind": "metric",
+        "latency_ms": 59.935154975391924,
+        "phrase": "Accrued customer liabilities",
+        "slot_id": "FBV1-048::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 118,
+        "coarse_count": 168,
+        "fine_count": 192,
+        "kind": "metric",
+        "latency_ms": 587.67555502709,
+        "phrase": "Accrued purchases of property and equipment (1)",
+        "slot_id": "FBV1-048::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-049": [
+      {
+        "children_considered": 64,
+        "coarse_count": 200,
+        "fine_count": 200,
+        "kind": "metric",
+        "latency_ms": 839.7218240424991,
+        "phrase": "2023: Year Ended December 31,",
+        "slot_id": "FBV1-049::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 192,
+        "coarse_count": 200,
+        "fine_count": 200,
+        "kind": "metric",
+        "latency_ms": 343.9390300773084,
+        "phrase": "Accounts receivable, net and other",
+        "slot_id": "FBV1-049::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-050": [
+      {
+        "children_considered": 64,
+        "coarse_count": 200,
+        "fine_count": 200,
+        "kind": "metric",
+        "latency_ms": 846.5726230060682,
+        "phrase": "2024: Year Ended December 31,",
+        "slot_id": "FBV1-050::slot_1",
+        "wrong_period_excluded": 0
+      },
+      {
+        "children_considered": 192,
+        "coarse_count": 187,
+        "fine_count": 200,
+        "kind": "metric",
+        "latency_ms": 359.6434419741854,
+        "phrase": "Accounts receivable, net and other",
+        "slot_id": "FBV1-050::slot_2",
+        "wrong_period_excluded": 0
+      }
+    ],
+    "FBV1-051": [],
+    "FBV1-052": [],
+    "FBV1-053": [],
+    "FBV1-054": [],
+    "FBV1-055": [],
+    "FBV1-056": [],
+    "FBV1-057": [],
+    "FBV1-058": [],
+    "FBV1-059": [],
+    "FBV1-060": [],
+    "FBV1-061": [],
+    "FBV1-062": [],
+    "FBV1-063": [],
+    "FBV1-064": [],
+    "FBV1-065": [],
+    "FBV1-066": [],
+    "FBV1-067": [],
+    "FBV1-068": [],
+    "FBV1-069": [],
+    "FBV1-070": [],
+    "FBV1-071": [],
+    "FBV1-072": [],
+    "FBV1-073": [],
+    "FBV1-074": [],
+    "FBV1-075": [],
+    "FBV1-076": [],
+    "FBV1-077": [],
+    "FBV1-078": [],
+    "FBV1-079": [],
+    "FBV1-080": [],
+    "FBV1-081": [],
+    "FBV1-082": [],
+    "FBV1-083": [],
+    "FBV1-084": [],
+    "FBV1-085": [],
+    "FBV1-086": [],
+    "FBV1-087": [],
+    "FBV1-088": [],
+    "FBV1-089": [],
+    "FBV1-090": [],
+    "FBV1-091": [],
+    "FBV1-092": [],
+    "FBV1-093": [],
+    "FBV1-094": [],
+    "FBV1-095": [],
+    "FBV1-096": [],
+    "FBV1-097": [],
+    "FBV1-098": [],
+    "FBV1-099": [],
+    "FBV1-100": [],
+    "FBV1-101": [],
+    "FBV1-102": [],
+    "FBV1-103": [],
+    "FBV1-104": [],
+    "FBV1-105": [],
+    "FBV1-106": [],
+    "FBV1-107": [],
+    "FBV1-108": [],
+    "FBV1-109": [],
+    "FBV1-110": [],
+    "FBV1-111": [],
+    "FBV1-112": [],
+    "FBV1-113": [],
+    "FBV1-114": [],
+    "FBV1-115": [],
+    "FBV1-116": [],
+    "FBV1-117": [],
+    "FBV1-118": [],
+    "FBV1-119": [],
+    "FBV1-120": []
+  }
+}

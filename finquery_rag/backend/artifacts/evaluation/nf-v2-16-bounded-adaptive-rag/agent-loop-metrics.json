@@ -1,0 +1,12 @@
+{
+  "budget_exhausted": 0,
+  "budget_violations": 0,
+  "infinite_loops": 0,
+  "invalid_state_transitions": [],
+  "max_tool_calls": 2,
+  "no_progress": 2,
+  "recovery": 3,
+  "replan_attempted": 5,
+  "replan_needed": 5,
+  "replan_success": 3
+}

@@ -1,0 +1,7 @@
+{
+  "designed_conflict_fail_closed": true,
+  "designed_filter_empty_fail_closed": true,
+  "designed_no_progress_fail_closed": true,
+  "failure_taxonomy": {},
+  "notes": "All cases are TEST_FIXTURE integration cases; no frozen-72 replay was run."
+}

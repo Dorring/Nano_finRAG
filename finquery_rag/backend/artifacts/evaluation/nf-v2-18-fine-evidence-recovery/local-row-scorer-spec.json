@@ -1,0 +1,24 @@
+{
+  "family_depths_tested": [
+    5,
+    10,
+    20,
+    30
+  ],
+  "features": [
+    "row_label_exact_phrase",
+    "row_label_token_overlap",
+    "table_title_overlap",
+    "retrieval_text_overlap",
+    "deterministic_period_compatibility",
+    "explicit_wrong_period_exclusion"
+  ],
+  "fine_child_depths_tested": [
+    3,
+    5,
+    10
+  ],
+  "global_row_comparison": false,
+  "gold_or_answer_values_used": false,
+  "version": "nf-v2-18A-R1/local-row-ranker-v1"
+}

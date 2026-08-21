@@ -1,0 +1,14 @@
+{
+  "canary_decision": "READY_FOR_LIMITED_CANARY",
+  "production_status": "V1",
+  "production_switch": false,
+  "requirements": {
+    "bounded_concurrency_stable": true,
+    "metric_accounting_reconciled": true,
+    "model_service_stable": true,
+    "no_safety_regression": true,
+    "no_unresolved_generator_defect": true,
+    "observability_complete": true,
+    "routing_correct": true
+  }
+}

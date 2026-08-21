@@ -1,0 +1,75 @@
+{
+  "task": "NF-V2-18A-R2P0",
+  "current_fields": {
+    "source": "finquery_rag/backend/scripts/evaluation/run_nf_v2_17a4_parse.py",
+    "document_fields": [
+      "ixbrl_context_count",
+      "ixbrl_fact_count",
+      "ixbrl_contexts",
+      "ixbrl_facts"
+    ],
+    "fact_fields": [
+      "fact_id",
+      "concept",
+      "context_ref",
+      "unit_ref",
+      "unit",
+      "decimals",
+      "format",
+      "raw_value",
+      "context",
+      "normalized_value",
+      "currency",
+      "percent"
+    ]
+  },
+  "shared_contract_target": {
+    "primary": "AtomicFact/RowMatrix/SourceTraceback",
+    "optional_extension": "ixbrl metadata attached to canonical cell/fact provenance",
+    "fields": [
+      "concept",
+      "fact_id",
+      "context_ref",
+      "unit_ref",
+      "decimals",
+      "format"
+    ]
+  },
+  "mapping": [
+    {
+      "html": "fact_id",
+      "shared": "source_traceback.ixbrl_fact_id",
+      "rule": "retain exact source fact ID"
+    },
+    {
+      "html": "concept",
+      "shared": "source_traceback.ixbrl_concept",
+      "rule": "retain QName; do not collapse to a benchmark metric label"
+    },
+    {
+      "html": "context_ref/context",
+      "shared": "period_start/period_end/temporal_kind plus source_traceback.ixbrl_context_ref",
+      "rule": "only bind when context deterministic"
+    },
+    {
+      "html": "unit_ref/unit",
+      "shared": "unit_context/currency/measurement metadata",
+      "rule": "explicit unit only; unresolved remains unresolved"
+    },
+    {
+      "html": "decimals",
+      "shared": "source_traceback.ixbrl_decimals",
+      "rule": "preserve declaration, do not use as value replacement"
+    },
+    {
+      "html": "normalized_value/raw_value",
+      "shared": "value_normalized/value_raw",
+      "rule": "HTML/table value remains traceable and conflicts are surfaced"
+    }
+  ],
+  "conflict_policy": "iXBRL enriches shared table/cell object; it does not replace table semantics. Table/iXBRL disagreement preserves both provenance records and fails closed until deterministic reconciliation.",
+  "pdf_policy": "PDF path has no native iXBRL; fields remain absent/NOT_APPLICABLE.",
+  "new_system": false,
+  "implementation_deferred": true
+}
+

@@ -1,0 +1,33 @@
+{
+  "actual": {
+    "R@10": 0.5666666666666667,
+    "R@5": 0.5166666666666667,
+    "calculation_operand@10": 0.3333333333333333,
+    "multi_all@10": 0.3,
+    "multi_any@5": 0.85
+  },
+  "baseline_b3_modified": false,
+  "decision": "RETRIEVAL_PARTIALLY_RECOVERED",
+  "development_set_status": "CONSUMED_DEVELOPMENT_REGRESSION",
+  "next_gate": "NF-V2-18B_FULL_RUNTIME_RECOVERY",
+  "production": "V1",
+  "production_switch": false,
+  "safety": {
+    "authorization_leakage": 0,
+    "created_at_misuse": 0,
+    "document_type_violation": 0,
+    "entity_violation": 0,
+    "silent_relaxation": 0,
+    "temporal_violation": 0,
+    "version_violation": 0
+  },
+  "selected_config_sha": "4e877a79e3e271cf1a01fa1708c953b1a5668f57660f7da7cf7c35e29d32db72",
+  "selected_stage": "A4",
+  "targets": {
+    "R@10": 0.8,
+    "R@5": 0.7,
+    "calculation_operand@10": 0.7,
+    "multi_all@10": 0.5,
+    "multi_any@5": 0.7
+  }
+}

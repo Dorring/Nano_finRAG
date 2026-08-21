@@ -1,0 +1,31 @@
+{
+  "annual": {
+    "correct": 1,
+    "period_correct": 0,
+    "questions": 30,
+    "released": 4,
+    "retrieval": 2
+  },
+  "cross_document_mixed": {
+    "questions": 75
+  },
+  "qualitative": {
+    "correct": 0,
+    "questions": 10,
+    "released": 0,
+    "retrieval": 2
+  },
+  "quantitative_or_structured": {
+    "correct": 6,
+    "questions": 110,
+    "released": 12,
+    "retrieval": 0
+  },
+  "quarterly": {
+    "correct": 2,
+    "period_correct": 0,
+    "questions": 15,
+    "released": 3,
+    "retrieval": 0
+  }
+}

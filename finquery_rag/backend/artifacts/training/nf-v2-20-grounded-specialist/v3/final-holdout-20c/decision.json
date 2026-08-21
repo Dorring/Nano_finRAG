@@ -1,0 +1,12 @@
+{
+  "decision": "SPECIALIST_V3_FRESH_HOLDOUT_SUCCESS",
+  "orcl_released_pct": 99.8,
+  "orcl_strict_correct_pct": 99.8,
+  "production": "V1",
+  "production_switch": false,
+  "runtime_readiness": "LOCAL_SPECIALIST_READY_FOR_RUNTIME_INTEGRATION",
+  "selected_checkpoint": "model_000156.pt",
+  "selected_sha256": "3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a",
+  "task": "NF-V2-20C",
+  "unsafe_releases_count": 0
+}

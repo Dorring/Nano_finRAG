@@ -1,0 +1,23 @@
+{
+  "count": 86600,
+  "fields": [
+    "company",
+    "ticker",
+    "document_type",
+    "fiscal_scope",
+    "section",
+    "logical_table_id",
+    "metric_path",
+    "row_label",
+    "column_headers",
+    "period_semantics",
+    "period_start",
+    "period_end",
+    "currency",
+    "unit",
+    "scale",
+    "canonical_evidence_id"
+  ],
+  "value_only_rows_embedded": false,
+  "version": "nf-v2-18-r4/table-row-qwen-v1"
+}

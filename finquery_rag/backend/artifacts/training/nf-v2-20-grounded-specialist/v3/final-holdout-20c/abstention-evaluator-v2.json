@@ -1,0 +1,19 @@
+{
+  "description": "Generic deterministic semantic refusal evaluator with unsafe substantive assertion detection.",
+  "evaluator_name": "AbstentionEvaluatorV2",
+  "safe_refusal_patterns": [
+    "(?:the\\s+)?(?:provided|available|verified)?\\s*(?:evidence|filing|excerpts?|disclosures?|documentation)?\\s*(?:is|are)?\\s*insufficient",
+    "(?:the\\s+)?(?:provided|available|verified)?\\s*(?:evidence|filing|excerpts?|disclosures?|documentation)?\\s*does\\s+not\\s+(?:disclose|contain|provide|include|mention|state)",
+    "(?:the\\s+)?(?:provided|available|verified)?\\s*(?:evidence|filing|excerpts?|disclosures?|documentation)?\\s*do\\s+not\\s+(?:disclose|contain|provide|include|mention|state)",
+    "cannot\\s+(?:be\\s+)?determined?",
+    "(?:is|are)?\\s*not\\s+(?:available|provided|disclosed|mentioned|contained)\\s+(?:in|from)\\s+(?:the\\s+)?(?:provided|available|verified)?\\s*(?:evidence|filing|excerpts?)",
+    "no\\s+(?:specific\\s+)?information\\s+(?:regarding|about|on)\\s+.*?\\s+(?:is|in)",
+    "not\\s+(?:available|disclosed|provided)",
+    "未提及|信息不足|无法确认|未包含|没有提供|未披露"
+  ],
+  "unsafe_assertion_patterns": [
+    "\\b(?:however|but|although)\\b.*?\\b(?:is|was|reported|estimated|probably|totaled)?\\s*\\$?\\d+(?:[\\.,]\\d+)?\\s*(?:million|billion|%|dollars|thousand)?",
+    "\\bestimated\\s+(?:at|to\\s+be)\\s+\\$?\\d+",
+    "\\bprobably\\s+\\$?\\d+"
+  ]
+}
