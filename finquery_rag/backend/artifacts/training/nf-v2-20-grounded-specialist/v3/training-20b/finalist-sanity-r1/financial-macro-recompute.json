@@ -1,0 +1,14 @@
+{
+  "formula": "mean(table_qa, summarization, sentiment, numeric_qa, entity_extraction, relation_extraction)",
+  "recomputed_macro_pct": 36.26,
+  "reported_macro_pct": 36.26,
+  "status": "PASS",
+  "task_components": {
+    "entity_extraction": 63.64,
+    "numeric_qa": 9.09,
+    "relation_extraction": 40.74,
+    "sentiment": 56.54,
+    "summarization": 30.9,
+    "table_qa": 16.67
+  }
+}

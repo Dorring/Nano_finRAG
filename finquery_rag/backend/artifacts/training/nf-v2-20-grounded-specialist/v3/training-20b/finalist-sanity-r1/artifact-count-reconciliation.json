@@ -1,0 +1,6 @@
+{
+  "actual_files_in_training_20b": 23,
+  "claimed_count_in_report": 22,
+  "classification": "REPORT_BOOKKEEPING_ONLY",
+  "notes": "23 files exist because training-config.sha256 was included as a separate companion file to training-config.json. No required artifact is missing."
+}
