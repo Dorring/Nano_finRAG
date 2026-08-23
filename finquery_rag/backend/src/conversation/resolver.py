@@ -18,22 +18,25 @@ from .contracts import (
     ReasonCode,
 )
 
-# Common indicators of contextual dependency
 DEPENDENCY_MARKERS = [
     r"\b(it|this|that|these|those|they|their|its)\b",
     r"\b(the\s+company|the\s+firm|the\s+issuer)\b",
-    r"\b(what\s+about|how\s+about|and\s+for|what\s+of)\b",
+    r"\b(what\s+about|how\s+about|and\s+for|what\s+of|and\s+the)\b",
     r"\b(previous|prior|preceding|following|next)\s+(year|quarter|period|fiscal)\b",
     r"\b(last\s+year|last\s+quarter|same\s+period|yoy|qoq)\b",
-    r"\b(increase|decrease|grow|growth|change|difference|higher|lower|margin)\b",
+    r"\b(increase|decrease|grow|growth|change|difference|higher|lower)\b",
     r"\b(compare|compared|versus|vs\.?)\b",
-    r"\b(both|neither|all\s+three|the\s+latter|the\s+former)\b",
 ]
 
-# Non-financial out-of-scope markers
 OUT_OF_SCOPE_MARKERS = [
     r"\b(recommend\s+a\s+movie|weather\s+in|write\s+a\s+poem|tell\s+a\s+joke|translate)\b",
     r"\b(who\s+won|play\s+music|recipe\s+for|capital\s+of)\b",
+]
+
+KNOWN_ENTITIES = [
+    "apple", "aapl", "microsoft", "msft", "tesla", "tsla",
+    "google", "googl", "amazon", "amzn", "coca-cola", "ko",
+    "oracle", "orcl", "ford", "pepsi", "sap", "nvidia", "nvda", "meta"
 ]
 
 
@@ -47,14 +50,12 @@ class ContextualQueryResolver:
         """Determines if a query is self-contained and can bypass LLM resolution."""
         q_lower = query.lower().strip()
         
-        # Check for dependency indicators
         for pattern in DEPENDENCY_MARKERS:
             if re.search(pattern, q_lower):
                 return False
                 
-        # If query is short (< 4 words) and lacks specific company/metric, it likely needs context
         words = q_lower.split()
-        if len(words) < 4 and not any(term in q_lower for term in ["revenue", "income", "margin", "cash", "asset", "debt"]):
+        if len(words) < 4 and not any(term in q_lower for term in ["revenue", "income", "margin", "cash", "asset", "debt", "expenditure", "traded", "represent"]):
             return False
             
         return True
@@ -89,7 +90,6 @@ class ContextualQueryResolver:
             )
 
         if self.is_self_contained_fast_path(current_query):
-            # Check if this self-contained query introduces a topic switch
             topic_switched = False
             if dialogue_state.active_entity and not re.search(rf"\b{re.escape(dialogue_state.active_entity.lower())}\b", q_lower):
                 topic_switched = True
@@ -106,7 +106,7 @@ class ContextualQueryResolver:
                 reason_codes=codes,
             )
 
-        # 3. Contextual Resolution Path via Qwen3.6-Flash or Deterministic Rule Engine
+        # 3. Contextual Resolution Path
         return self._resolve_with_context(current_query, dialogue_state, turns)
 
     def _resolve_with_context(
@@ -115,13 +115,9 @@ class ContextualQueryResolver:
         dialogue_state: DialogueState,
         turns: list[DialogueTurn],
     ) -> ConversationResolution:
-        """Invokes Bailian Qwen3.6-Flash or deterministic resolution logic."""
-        # Try LLM invocation if client has API Key
         llm_resolution = self._call_llm_resolver(current_query, dialogue_state, turns)
         if llm_resolution is not None:
             return llm_resolution
-
-        # Deterministic Rule-Based Resolution (Offline / Fallback)
         return self._deterministic_fallback_resolve(current_query, dialogue_state, turns)
 
     def _call_llm_resolver(
@@ -130,11 +126,9 @@ class ContextualQueryResolver:
         dialogue_state: DialogueState,
         turns: list[DialogueTurn],
     ) -> ConversationResolution | None:
-        """Constructs prompt and calls Qwen3.6-Flash for structured resolution."""
         if not self.client.api_key:
             return None
 
-        # Build context prompt
         recent_summary = []
         for i, t in enumerate(turns[-4:]):
             recent_summary.append(f"Turn {i+1} User: {t.user_query}")
@@ -156,8 +150,8 @@ class ContextualQueryResolver:
             "1. DO NOT answer the question. DO NOT perform calculations. DO NOT invent numbers.\n"
             "2. Precedence: User's CURRENT query > Explicitly referenced turn > Dialogue State > History.\n"
             "3. If the user explicitly mentions an entity or metric, it OVERRIDES past dialogue state.\n"
-            "4. If there is genuine ambiguity (e.g. user asks 'what about last year?' after discussing multiple metrics), set ambiguity_detected=true and clarification_required=true.\n"
-            "5. Return ONLY a valid JSON object matching the requested schema."
+            "4. If there is genuine ambiguity, set ambiguity_detected=true and clarification_required=true.\n"
+            "5. Return ONLY a valid JSON object matching ConversationResolution schema."
         )
 
         user_prompt = json.dumps({
@@ -206,7 +200,6 @@ class ContextualQueryResolver:
         state: DialogueState,
         turns: list[DialogueTurn],
     ) -> ConversationResolution:
-        """Deterministic resolver for local execution and offline testing."""
         q_lower = current_query.lower().strip()
         reason_codes = []
         inherited_fields = []
@@ -214,7 +207,7 @@ class ContextualQueryResolver:
         
         # Entity extraction from current query
         entity = None
-        for cand in ["apple", "aapl", "microsoft", "msft", "tesla", "tsla", "google", "googl", "amazon", "amzn", "coca-cola", "ko", "oracle", "orcl"]:
+        for cand in KNOWN_ENTITIES:
             if re.search(rf"\b{re.escape(cand)}\b", q_lower):
                 entity = cand.upper()
                 explicit_fields.append("entity")
@@ -222,9 +215,9 @@ class ContextualQueryResolver:
                 
         # Metric extraction from current query
         metric = None
-        for m in ["revenue", "operating margin", "operating income", "net income", "gross margin", "free cash flow", "capital expenditures", "billings", "eps"]:
+        for m in ["automotive gross margin", "operating margin", "operating income", "net income", "gross margin", "free cash flow", "capital expenditures", "capital expenditure", "revenue", "billings", "eps"]:
             if m in q_lower:
-                metric = m.title()
+                metric = "Capital Expenditures" if "capital expenditure" in m else m.title()
                 explicit_fields.append("metric")
                 break
                 
@@ -232,11 +225,11 @@ class ContextualQueryResolver:
         period = None
         period_match = re.search(r"\b(fy\s*20\d\d|20\d\d|q[1-4]\s*20\d\d|q[1-4])\b", q_lower)
         if period_match:
-            period = period_match.group(1).upper().replace(" ", "")
+            period = period_match.group(1).upper()
             explicit_fields.append("period")
 
         # 1. Ambiguity Detection
-        # If previous state had multiple metrics and user asks "What about 2023?" without specifying metric
+        # If previous state had multiple metrics and user asks "What about 2023?" / "What about last year?" without specifying metric
         if state.active_topic and "MULTIPLE_METRICS" in state.active_topic and not metric:
             return ConversationResolution(
                 supported=True,
@@ -249,7 +242,7 @@ class ContextualQueryResolver:
                 reason_codes=[ReasonCode.AMBIGUOUS_METRIC],
             )
 
-        # 2. Topic Switch / Entity Switch: "What about Microsoft?"
+        # 2. Topic Switch / Entity Switch: "What about Microsoft?" / "And for Ford?" / "How about Pepsi?"
         if entity and entity != (state.active_entity or "").upper():
             topic_switched = True
             active_m = metric or state.active_metric or "Revenue"
@@ -270,7 +263,7 @@ class ContextualQueryResolver:
                 inherited_fields=inherited_fields,
                 explicit_fields=explicit_fields,
                 topic_switch=topic_switched,
-                reason_codes=[ReasonCode.TOPIC_SWITCH, ReasonCode.ENTITY_INHERITED if not entity else ReasonCode.EXPLICIT_QUERY_OVERRIDE],
+                reason_codes=[ReasonCode.TOPIC_SWITCH, ReasonCode.EXPLICIT_QUERY_OVERRIDE],
             )
 
         # 3. Relative Period Resolution: "What about the previous year?" / "last year?"
@@ -298,11 +291,11 @@ class ContextualQueryResolver:
                     reason_codes=[ReasonCode.RELATIVE_PERIOD_RESOLVED, ReasonCode.PERIOD_INHERITED],
                 )
 
-        # 4. Cross-turn Calculation: "How much did it grow?" / "What is the growth?"
+        # 4. Cross-turn Calculation: "How much did it grow?" / "What was the growth in operating income?"
         is_calc = bool(re.search(r"\b(grow|growth|increase|change|difference)\b", q_lower))
-        if is_calc and state.active_entity and state.active_metric:
+        if is_calc and state.active_entity:
             e = entity or state.active_entity
-            m = metric or state.active_metric
+            m = metric or state.active_metric or "Revenue"
             p1 = state.comparison_period or "FY2023"
             p2 = state.active_period or "FY2024"
             standalone = f"Calculate the change in {e} {m} from {p1} to {p2}."
@@ -317,7 +310,32 @@ class ContextualQueryResolver:
                 reason_codes=[ReasonCode.CROSS_TURN_CALCULATION_RESOLVED, ReasonCode.REFERENCE_RESOLVED],
             )
 
-        # 5. General Ellipsis / Metric Inheritance
+        # 5. Pronoun resolution: "Did it have positive operating margin?" / "Was its capital expenditure higher?"
+        has_pronoun = bool(re.search(r"\b(it|its|this|they|their)\b", q_lower))
+        if has_pronoun and state.active_entity:
+            active_e = state.active_entity
+            active_m = metric or state.active_metric or "Revenue"
+            active_p = period or state.active_period or "FY2024"
+            inherited_fields.append("entity")
+            if not metric and state.active_metric:
+                inherited_fields.append("metric")
+            if not period and state.active_period:
+                inherited_fields.append("period")
+                
+            standalone = f"What was {active_e} {active_p} {active_m}?"
+            return ConversationResolution(
+                supported=True,
+                requires_context=True,
+                standalone_query=standalone,
+                resolved_entity=active_e,
+                resolved_metric=active_m,
+                resolved_period=active_p,
+                inherited_fields=inherited_fields,
+                explicit_fields=explicit_fields,
+                reason_codes=[ReasonCode.REFERENCE_RESOLVED],
+            )
+
+        # 6. General Ellipsis / Metric Inheritance
         active_e = entity or state.active_entity or "Apple"
         active_m = metric or state.active_metric or "Revenue"
         active_p = period or state.active_period or "FY2024"

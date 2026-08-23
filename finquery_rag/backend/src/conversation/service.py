@@ -24,7 +24,7 @@ from .contracts import (
     ReasonCode,
 )
 from .relevance_filter import ContextRelevanceFilter
-from .resolver import ContextualQueryResolver
+from .resolver import KNOWN_ENTITIES, ContextualQueryResolver
 from .store import ConversationStateStore, InMemoryConversationStore
 
 
@@ -90,27 +90,26 @@ class ConversationContextManager:
                 last_turn.referenced_evidence_ids = list(referenced_evidence_ids)
             self.store.save_state(state)
 
-    def _extract_semantic_entities(self, query: str) -> tuple[str | None, str | None, str | None]:
-        """Extracts entity, metric, period from query text."""
+    def _extract_semantic_entities(self, query: str) -> tuple[str | None, list[str], str | None]:
+        """Extracts entity, metrics list, and period from query text."""
         q_lower = query.lower()
         entity = None
-        for cand in ["apple", "aapl", "microsoft", "msft", "tesla", "tsla", "google", "googl", "amazon", "amzn", "coca-cola", "ko", "oracle", "orcl"]:
+        for cand in KNOWN_ENTITIES:
             if re.search(rf"\b{re.escape(cand)}\b", q_lower):
                 entity = cand.capitalize() if len(cand) > 4 else cand.upper()
                 break
                 
-        metric = None
-        for m in ["automotive gross margin", "operating margin", "operating income", "net income", "gross margin", "free cash flow", "capital expenditures", "revenue", "billings", "eps"]:
+        metrics = []
+        for m in ["automotive gross margin", "operating margin", "operating income", "net income", "gross margin", "free cash flow", "capital expenditures", "capital expenditure", "revenue", "billings", "eps"]:
             if m in q_lower:
-                metric = m.title()
-                break
+                metrics.append("Capital Expenditures" if "capital expenditure" in m else m.title())
                 
         period = None
         p_match = re.search(r"\b(fy\s*20\d\d|20\d\d|q[1-4]\s*20\d\d|q[1-4])\b", q_lower)
         if p_match:
-            period = p_match.group(1).upper().replace(" ", "")
+            period = p_match.group(1).upper()
             
-        return entity, metric, period
+        return entity, metrics, period
 
     def _update_state_on_resolution(
         self,
@@ -122,16 +121,21 @@ class ConversationContextManager:
         state.turn_count += 1
         turn_id = f"turn_{state.turn_count}"
         
-        # If coordinates not explicitly in resolution (e.g. fast path), extract from query
-        ent = res.resolved_entity
-        met = res.resolved_metric
-        per = res.resolved_period
+        parsed_e, parsed_m_list, parsed_p = self._extract_semantic_entities(res.standalone_query or raw_user_query)
         
-        if not ent or not met or not per:
-            parsed_e, parsed_m, parsed_p = self._extract_semantic_entities(res.standalone_query or raw_user_query)
-            ent = ent or parsed_e
-            met = met or parsed_m
-            per = per or parsed_p
+        ent = res.resolved_entity or parsed_e
+        per = res.resolved_period or parsed_p
+        
+        # Check if multiple metrics were requested in the query
+        if len(parsed_m_list) > 1:
+            state.active_topic = "MULTIPLE_METRICS_" + "_".join(parsed_m_list)
+            state.active_metric = None
+        elif parsed_m_list:
+            state.active_metric = parsed_m_list[0]
+            state.active_topic = f"{ent}_{parsed_m_list[0]}" if ent else state.active_topic
+        elif res.resolved_metric:
+            state.active_metric = res.resolved_metric
+            state.active_topic = f"{ent}_{res.resolved_metric}" if ent else state.active_topic
 
         # Create new turn record
         turn = DialogueTurn(
@@ -139,7 +143,7 @@ class ConversationContextManager:
             user_query=raw_user_query,
             standalone_query=res.standalone_query,
             timestamp=time.time(),
-            topic=f"{ent}_{met}" if ent else state.active_topic,
+            topic=state.active_topic,
         )
         state.recent_turns.append(turn)
 
@@ -150,14 +154,10 @@ class ConversationContextManager:
             state.comparison_period = state.active_period
             
             state.active_entity = ent
-            state.active_metric = met
             state.active_period = per
-            state.active_topic = f"{ent}_{met}" if ent else None
         else:
             if ent:
                 state.active_entity = ent
-            if met:
-                state.active_metric = met
             if per:
                 if state.active_period and per != state.active_period:
                     state.comparison_period = state.active_period
