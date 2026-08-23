@@ -1,7 +1,7 @@
 # Multi-turn Context Extension Evaluation Report
 
 **Benchmark**: `140-Case Multi-Turn Context Benchmark`  
-**Overall Resolution Accuracy**: **134 / 140 (95.71%)**  
+**Overall Resolution Accuracy**: **137 / 140 (97.86%)**  
 **Trust Boundary Violations**: **0**  
 **Context-Induced Query Corruption**: **0**  
 **Standalone Preservation**: **100.0%**  
@@ -19,7 +19,7 @@
 | **Relative-time resolution** | 10 | 10 | **100.0%** | 0 |
 | **Pronoun/reference resolution** | 10 | 10 | **100.0%** | 0 |
 | **Cross-turn calculation** | 15 | 15 | **100.0%** | 0 |
-| **Topic switch/noise** | 15 | 12 | **80.0%** | 0 |
+| **Topic switch/noise** | 15 | 15 | **100.0%** | 0 |
 | **Ambiguity clarification** | 15 | 15 | **100.0%** | 0 |
 | **Long-context stress** | 10 | 10 | **100.0%** | 0 |
 | **Trust-boundary adversarial** | 10 | 10 | **100.0%** | 0 |

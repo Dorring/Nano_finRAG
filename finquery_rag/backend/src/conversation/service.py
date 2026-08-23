@@ -27,6 +27,20 @@ from .relevance_filter import ContextRelevanceFilter
 from .resolver import KNOWN_ENTITIES, ContextualQueryResolver
 from .store import ConversationStateStore, InMemoryConversationStore
 
+ALL_METRIC_NAMES = [
+    "automotive gross margin",
+    "capital expenditures",
+    "capital expenditure",
+    "operating income",
+    "operating margin",
+    "free cash flow",
+    "gross margin",
+    "net income",
+    "billings",
+    "revenue",
+    "eps",
+]
+
 
 class ConversationContextManager:
     """Central orchestrator for the Conversation Context Layer."""
@@ -91,7 +105,7 @@ class ConversationContextManager:
             self.store.save_state(state)
 
     def _extract_semantic_entities(self, query: str) -> tuple[str | None, list[str], str | None]:
-        """Extracts entity, metrics list, and period from query text."""
+        """Extracts entity, metrics list, and period from query text without sub-phrase overlap."""
         q_lower = query.lower()
         entity = None
         for cand in KNOWN_ENTITIES:
@@ -100,9 +114,13 @@ class ConversationContextManager:
                 break
                 
         metrics = []
-        for m in ["automotive gross margin", "operating margin", "operating income", "net income", "gross margin", "free cash flow", "capital expenditures", "capital expenditure", "revenue", "billings", "eps"]:
-            if m in q_lower:
-                metrics.append("Capital Expenditures" if "capital expenditure" in m else m.title())
+        q_temp = q_lower
+        # Check longest metric names first, replacing matched substrings to prevent sub-phrase duplicates
+        for m in ALL_METRIC_NAMES:
+            if m in q_temp:
+                norm_m = "Capital Expenditures" if "capital expenditure" in m else m.title()
+                metrics.append(norm_m)
+                q_temp = q_temp.replace(m, " " * len(m))
                 
         period = None
         p_match = re.search(r"\b(fy\s*20\d\d|20\d\d|q[1-4]\s*20\d\d|q[1-4])\b", q_lower)
@@ -126,8 +144,8 @@ class ConversationContextManager:
         ent = res.resolved_entity or parsed_e
         per = res.resolved_period or parsed_p
         
-        # Check if multiple metrics were requested in the query
-        if len(parsed_m_list) > 1:
+        # Check if genuinely distinct multiple metrics were requested (e.g. "Revenue AND Operating Margin")
+        if len(parsed_m_list) > 1 and (" and " in raw_user_query.lower() or " & " in raw_user_query.lower() or "compare" in raw_user_query.lower()):
             state.active_topic = "MULTIPLE_METRICS_" + "_".join(parsed_m_list)
             state.active_metric = None
         elif parsed_m_list:
