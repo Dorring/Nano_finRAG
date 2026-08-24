@@ -418,6 +418,23 @@ class SQLiteConversationStateStore(ConversationStateStore):
     def exists(self, user_id: int, session_id: str) -> bool:
         return self.get(user_id, session_id) is not None
 
+    def delete_all_for_user(self, user_id: int) -> int:
+        """Delete all structured states for one user during session cleanup."""
+        normalized_user_id = self._user_id(user_id)
+        conn = self._get_conn()
+        try:
+            cursor = conn.execute(
+                "DELETE FROM conversation_states WHERE user_id = ?",
+                (normalized_user_id,),
+            )
+            conn.commit()
+            return cursor.rowcount
+        except sqlite3.Error as exc:
+            conn.rollback()
+            raise ConversationStateStoreError(
+                "conversation state bulk delete failed",
+            ) from exc
+
     def get_state_version(self, user_id: int, session_id: str) -> int | None:
         row = self._row_for(session_id, user_id)
         return None if row is None else int(row["state_version"])

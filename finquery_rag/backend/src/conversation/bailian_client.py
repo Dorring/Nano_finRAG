@@ -42,6 +42,9 @@ class BailianClient:
         self.max_retries = max_retries if max_retries is not None else int(os.environ.get("CONTEXT_MAX_RETRIES", "2"))
         self.max_output_tokens = max_output_tokens or int(os.environ.get("CONTEXT_RESOLVER_MAX_OUTPUT_TOKENS", "512"))
         
+        self.last_call_status = "NOT_CALLED"
+        self.last_error_code: str | None = None
+
         if enable_thinking is not None:
             self.enable_thinking = enable_thinking
         else:
@@ -55,7 +58,10 @@ class BailianClient:
         response_format: dict[str, str] | None = None,
     ) -> str | None:
         """Invokes chat completion with bounded retries and JSON decoding."""
+        self.last_call_status = "RUNNING"
+        self.last_error_code = None
         if not self.api_key:
+            self.last_call_status = "SKIPPED_NO_API_KEY"
             # Offline/unconfigured environment: return None to allow resolver deterministic fallback
             return None
 
@@ -86,9 +92,19 @@ class BailianClient:
                     resp_data = json.loads(resp.read().decode("utf-8"))
                     choices = resp_data.get("choices", [])
                     if choices and "message" in choices[0]:
+                        self.last_call_status = "SUCCESS"
                         return choices[0]["message"].get("content", "")
+                    self.last_call_status = "EMPTY_RESPONSE"
+                    self.last_error_code = "EMPTY_RESPONSE"
                     return None
             except urllib.error.HTTPError as e:
+                self.last_status_code = e.code
+                self.last_error_code = (
+                    "HTTP_429" if e.code == 429 else
+                    "HTTP_5XX" if e.code >= 500 else
+                    f"HTTP_{e.code}"
+                )
+                self.last_call_status = "ERROR"
                 if e.code == 429 or e.code >= 500:
                     if attempt < self.max_retries:
                         # Exponential backoff with jitter
@@ -96,7 +112,20 @@ class BailianClient:
                         time.sleep(backoff)
                         continue
                 return None
+            except json.JSONDecodeError:
+                self.last_call_status = "ERROR"
+                self.last_error_code = "INVALID_JSON"
+                return None
+            except TimeoutError:
+                self.last_call_status = "ERROR"
+                self.last_error_code = "TIMEOUT"
+                if attempt < self.max_retries:
+                    time.sleep(0.1 + random.uniform(0.01, 0.05))
+                    continue
+                return None
             except Exception:
+                self.last_call_status = "ERROR"
+                self.last_error_code = "REQUEST_ERROR"
                 if attempt < self.max_retries:
                     time.sleep(0.1 + random.uniform(0.01, 0.05))
                     continue

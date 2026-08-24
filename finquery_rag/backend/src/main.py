@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, StreamingResponse
+import logging
 from openai import OpenAI
 import json
 import time
@@ -47,6 +48,9 @@ from .runtime import (
     QueryExecutionService,
     to_legacy_query_dict,
 )
+from .conversation.config import resolve_multiturn_context_mode
+from .conversation.shadow_service import ConversationShadowService
+from .conversation.sqlite_store import SQLiteConversationStateStore
 
 from datetime import timedelta, datetime
 import os
@@ -54,6 +58,8 @@ import uuid
 import shutil
 import tempfile
 from dotenv import load_dotenv
+
+logger = logging.getLogger(__name__)
 
 # Create database tables (if relying on this instead of alembic for initial dev)
 #创建数据库表（如果不使用 alembic 进行迁移的话）
@@ -104,6 +110,7 @@ document_registry = DocumentRegistry()
 session_manager = SessionManager()
 memory_store = UserMemoryStore()
 feedback_store = FeedbackStore()
+conversation_shadow_service: ConversationShadowService | None = None
 
 def get_rag_engine():
     """
@@ -153,6 +160,51 @@ def _financial_runtime_adapter_enabled() -> bool:
     """Return the I3 migration flag without creating a V1/V2 router."""
     value = os.getenv("FINANCIAL_RUNTIME_ADAPTER_ENABLED", "true")
     return value.strip().lower() not in {"0", "false", "off", "no"}
+
+
+def _multiturn_context_mode() -> str:
+    """Validate the I5 conversation mode on every request boundary."""
+    return resolve_multiturn_context_mode(environ=os.environ)
+
+
+def get_conversation_shadow_service() -> ConversationShadowService:
+    """Lazily share the SessionManager SQLite database with Shadow state."""
+    global conversation_shadow_service
+    if conversation_shadow_service is None:
+        db_path = getattr(session_manager, "db_path", None)
+        conversation_shadow_service = ConversationShadowService(
+            SQLiteConversationStateStore(db_path=db_path),
+        )
+    return conversation_shadow_service
+
+
+def _delete_conversation_state_or_raise(user_id: int, session_id: str) -> None:
+    """Keep structured state cleanup coupled to raw session cleanup."""
+    try:
+        get_conversation_shadow_service().delete_state(
+            user_id=int(user_id),
+            session_id=session_id,
+        )
+    except Exception as exc:
+        logger.exception("conversation state cleanup failed")
+        raise api_error(
+            500,
+            "conversation_state_error",
+            "Conversation state cleanup failed",
+        ) from exc
+
+
+def _delete_all_conversation_states_or_raise(user_id: int) -> None:
+    """Delete all structured state rows after a user-wide session clear."""
+    try:
+        get_conversation_shadow_service().delete_all_states(user_id=int(user_id))
+    except Exception as exc:
+        logger.exception("conversation state bulk cleanup failed")
+        raise api_error(
+            500,
+            "conversation_state_error",
+            "Conversation state cleanup failed",
+        ) from exc
 
 
 def _public_registry_document(row: dict) -> dict:
@@ -972,6 +1024,7 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
     历史回答不会作为金融事实进入检索上下文。
     """
     try:
+        multiturn_mode = _multiturn_context_mode()
         engine = get_rag_engine()
 
         # Phase 4: Load conversation history for query rewriting
@@ -1012,6 +1065,24 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
                 "memory_profile": memory_profile,
             },
         )
+
+        # I5 Shadow is observation-only. It receives history loaded before the
+        # current user message is committed and cannot mutate the V1 request.
+        shadow_service = None
+        if multiturn_mode == "shadow":
+            try:
+                shadow_service = get_conversation_shadow_service()
+                shadow_service.observe(
+                    request_id=request_id,
+                    user_id=current_user.id,
+                    session_id=session_id,
+                    original_query=request.question,
+                    prior_history=conversation_history,
+                )
+            except Exception:
+                logger.exception("conversation shadow invocation failed")
+
+        runtime_result = None
         if _financial_runtime_adapter_enabled():
             runtime = LegacyFinancialRuntimeAdapter(engine)
             execution_service = QueryExecutionService(runtime)
@@ -1028,6 +1099,23 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
                 conversation_history=conversation_history,
                 memory_profile=memory_profile,
             )
+
+        # Record only structured provenance after V1 has finalized. Answer text
+        # is never parsed or stored as conversation state.
+        if shadow_service is not None and session_id is not None:
+            try:
+                structured_ids = []
+                if runtime_result is not None:
+                    structured_ids.extend(runtime_result.evidence_ids)
+                    structured_ids.extend(runtime_result.citation_ids)
+                    structured_ids.extend(runtime_result.calculation_ids)
+                shadow_service.record_assistant_turn(
+                    user_id=current_user.id,
+                    session_id=session_id,
+                    referenced_evidence_ids=structured_ids,
+                )
+            except Exception:
+                logger.exception("conversation shadow assistant metadata failed")
 
         # Phase 4: Save messages to session
         rewritten = result.get("rewritten_question")
@@ -1247,6 +1335,7 @@ async def clear_session(request: QueryRequest, current_user: User = Depends(get_
         raise api_error(400, "session_id_required", "session_id is required")
     session_id = _validate_session_id(request.session_id)
     cleared = session_manager.clear_session(session_id, current_user.id)
+    _delete_conversation_state_or_raise(current_user.id, session_id)
     return {"message": "Session cleared", "session_id": session_id, "cleared": cleared}
 
 @app.get("/sessions/{session_id}")
@@ -1263,6 +1352,7 @@ async def get_session_history(session_id: str, current_user: User = Depends(get_
 async def clear_all_sessions(current_user: User = Depends(get_current_user)):
     """Clear all conversation sessions for the current user."""
     deleted_messages = session_manager.clear_all_for_user(current_user.id)
+    _delete_all_conversation_states_or_raise(current_user.id)
     return {
         "message": "All sessions cleared",
         "deleted_messages": deleted_messages,

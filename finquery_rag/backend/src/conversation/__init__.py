@@ -1,5 +1,6 @@
 """NanoFinance Conversation Context Layer."""
 
+from .config import resolve_multiturn_context_mode
 from .contracts import (
     ConversationResolution,
     DialogueState,
@@ -17,6 +18,7 @@ from .sqlite_store import (
     SQLiteConversationStateStore,
 )
 from .store import ConversationStateStore, InMemoryConversationStore
+from .shadow_service import ConversationShadowObservation, ConversationShadowService
 
 
 __all__ = [
@@ -32,4 +34,7 @@ __all__ = [
     "ConversationStateVersionError",
     "ConversationStateConflictError",
     "ConversationStateIdentityError",
+    "ConversationShadowObservation",
+    "ConversationShadowService",
+    "resolve_multiturn_context_mode",
 ]

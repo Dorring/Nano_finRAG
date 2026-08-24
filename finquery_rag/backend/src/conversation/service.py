@@ -10,18 +10,15 @@ Coordinates:
 
 from __future__ import annotations
 
-import os
 import re
 import time
 from typing import Any
 
-from .bailian_client import BailianClient
 from .context_budget import ContextBudgetManager
 from .contracts import (
     ConversationResolution,
     DialogueState,
     DialogueTurn,
-    ReasonCode,
 )
 from .relevance_filter import ContextRelevanceFilter
 from .resolver import KNOWN_ENTITIES, ContextualQueryResolver
@@ -61,19 +58,39 @@ class ConversationContextManager:
         self,
         conversation_id: str,
         user_query: str,
+        history_turns: list[DialogueTurn] | None = None,
+        diagnostics: dict[str, Any] | None = None,
     ) -> ConversationResolution:
-        """Processes a user turn, resolving multi-turn context and updating state."""
+        """Process one turn with optional transient prior raw history.
+
+        Shadow callers supply SessionManager history loaded before the current
+        user message is committed. It is never persisted by this component.
+        Existing callers that omit it retain the historical behavior.
+        """
         state = self.store.get_state(conversation_id)
         if not state:
             state = DialogueState(conversation_id=conversation_id)
 
+        context_turns = state.recent_turns if history_turns is None else list(history_turns)
+
         # 1. Filter relevant history turns
-        relevant_turns = self.relevance_filter.filter_turns(user_query, state, state.recent_turns)
+        relevant_turns = self.relevance_filter.filter_turns(user_query, state, context_turns)
 
         # 2. Budget and prepare context
         budgeted_turns, compressed_history, est_tokens = self.budget_manager.prepare_context(
             user_query, state, relevant_turns
         )
+        if diagnostics is not None:
+            diagnostics.update({
+                "raw_history_turn_count": len(context_turns),
+                "relevant_turn_count": len(relevant_turns),
+                "selected_turn_count": len(budgeted_turns),
+                "dropped_turn_count": max(0, len(context_turns) - len(budgeted_turns)),
+                "estimated_context_tokens": est_tokens,
+                "compressed_history_tokens": self.budget_manager.count_tokens(
+                    compressed_history or ""
+                ),
+            })
 
         # 3. Resolve contextual query
         resolution = self.resolver.resolve(user_query, state, budgeted_turns)
@@ -88,21 +105,29 @@ class ConversationContextManager:
     def record_assistant_turn(
         self,
         conversation_id: str,
-        assistant_response: str,
+        assistant_response: str | None,
         referenced_evidence_ids: list[str] | None = None,
     ) -> None:
-        """Records assistant turn provenance metadata.
-        
-        Trust Boundary:
-        Stores evidence IDs as provenance metadata only; NEVER converts raw text to facts.
+        """Record assistant provenance without promoting text to a fact.
+
+        Shadow callers pass assistant_response=None: SessionManager owns the
+        raw assistant message; this store receives structured provenance only.
         """
         state = self.store.get_state(conversation_id)
-        if state and state.recent_turns:
+        if not state:
+            return
+        if state.recent_turns and assistant_response is not None:
             last_turn = state.recent_turns[-1]
             last_turn.assistant_response = assistant_response
             if referenced_evidence_ids:
                 last_turn.referenced_evidence_ids = list(referenced_evidence_ids)
-            self.store.save_state(state)
+        if referenced_evidence_ids:
+            existing = list(state.referenced_evidence_ids)
+            state.referenced_evidence_ids = existing + [
+                value for value in referenced_evidence_ids
+                if value not in existing
+            ]
+        self.store.save_state(state)
 
     def _extract_semantic_entities(self, query: str) -> tuple[str | None, list[str], str | None]:
         """Extracts entity, metrics list, and period from query text without sub-phrase overlap."""
