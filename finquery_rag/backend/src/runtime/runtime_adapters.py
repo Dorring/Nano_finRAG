@@ -48,6 +48,23 @@ class _LegacyEngine(Protocol):
     ) -> Mapping[str, Any]: ...
 
 
+_LEGACY_RESPONSE_FIELDS = (
+    "searched_docs",
+    "rewritten_question",
+    "confidence",
+    "context_sufficient",
+    "intent",
+    "intent_confidence",
+    "trace_id",
+    "retrieved_chunks",
+    "retrieval_debug",
+    "calculations",
+    "answerability",
+    "validation",
+    "repair",
+)
+
+
 class LegacyFinancialRuntimeAdapter(FinancialQARuntime):
     """Expose an existing V1 RAGEngine through the I1 runtime port.
 
@@ -252,6 +269,15 @@ class LegacyFinancialRuntimeAdapter(FinancialQARuntime):
 
         debug_metadata: dict[str, Any] = {
             "adapter": "legacy_v1",
+            # The response mapper consumes this compatibility payload to
+            # preserve the existing QueryResponse shape. It contains only
+            # already-public V1 fields; answer and sources are carried by the
+            # typed contract fields above.
+            "legacy_response": {
+                key: copy.deepcopy(raw_result[key])
+                for key in _LEGACY_RESPONSE_FIELDS
+                if key in raw_result
+            },
         }
         for key in (
             "trace_id",

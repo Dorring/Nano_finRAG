@@ -98,3 +98,38 @@ V1 result mapping is conservative:
 
 I2 status: ADAPTER_IMPLEMENTED, NOT_PRODUCTION_ROUTED. The production
 endpoints still invoke the legacy RAGEngine path directly.
+
+## I3 /query production routing
+
+I3 adds a narrow QueryExecutionService boundary and routes only the
+non-streaming /query endpoint through the existing V1 adapter:
+
+~~~text
+/query
+   |
+QueryExecutionService
+   |
+FinancialQARuntime
+   |
+LegacyFinancialRuntimeAdapter
+   |
+the same cached RAGEngine
+   |
+existing V1 RAG pipeline
+~~~
+
+FINANCIAL_RUNTIME_ADAPTER_ENABLED defaults to enabled. Setting it to
+false, 0, off, or no retains the original direct RAGEngine.query call as a
+deterministic rollback/parity path. Both paths use the same engine instance
+and the same V1 arguments. The endpoint always constructs
+original_query == standalone_query with query_as_resolved == false;
+conversation resolution and legacy-rewrite bypass remain future work.
+
+The adapter result is mapped back to the existing QueryResponse payload.
+No public response fields, session lifecycle, validation behavior, or V1
+rewrite behavior are changed. The adapter and execution service do not load
+or persist sessions.
+
+I3 status: QUERY_PRODUCTION_ROUTED for /query only. /query/stream remains
+on the legacy direct V1 path in this milestone. Conversation and V2 are not
+integrated.

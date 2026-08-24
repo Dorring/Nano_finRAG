@@ -5,6 +5,11 @@ from .runtime_adapters import (
     LegacyFinancialRuntimeAdapterError,
     UnsupportedResolvedQueryError,
 )
+from .query_execution_service import QueryExecutionService
+from .response_mapper import (
+    LegacyResponseMappingError,
+    to_legacy_query_dict,
+)
 from .runtime_contract import (
     ClarificationPayload,
     FinancialQARuntime,
@@ -24,6 +29,8 @@ __all__ = [
     "FinancialQueryRequest",
     "FinancialQueryResult",
     "LegacyFinancialRuntimeAdapter",
+    "LegacyResponseMappingError",
+    "QueryExecutionService",
     "LegacyFinancialRuntimeAdapterError",
     "ReleaseStatus",
     "RouterMode",
@@ -32,4 +39,5 @@ __all__ = [
     "RuntimeStatus",
     "RuntimeVersion",
     "UnsupportedResolvedQueryError",
+    "to_legacy_query_dict",
 ]

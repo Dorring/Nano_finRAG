@@ -41,6 +41,12 @@ from .models.schemas import (
 from .models.user import User #User ORM 模型
 from .database import get_db, engine, Base #SQLAlchemy 数据库连接和基础模型
 from sqlalchemy.orm import Session #SQLAlchemy 会话管理
+from .runtime import (
+    FinancialQueryRequest,
+    LegacyFinancialRuntimeAdapter,
+    QueryExecutionService,
+    to_legacy_query_dict,
+)
 
 from datetime import timedelta, datetime
 import os
@@ -141,6 +147,12 @@ def _normalize_api_pagination(limit, offset, default_limit=50, max_limit=1000):
     if normalized_offset < 0:
         raise api_error(400, "invalid_pagination", "offset must be >= 0")
     return min(normalized_limit, max_limit), normalized_offset
+
+
+def _financial_runtime_adapter_enabled() -> bool:
+    """Return the I3 migration flag without creating a V1/V2 router."""
+    value = os.getenv("FINANCIAL_RUNTIME_ADAPTER_ENABLED", "true")
+    return value.strip().lower() not in {"0", "false", "off", "no"}
 
 
 def _public_registry_document(row: dict) -> dict:
@@ -970,21 +982,52 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
                 session_id, current_user.id
             )
         memory_profile = memory_store.get_profile(current_user.id)
+        # UserMemoryStore returns a dict. Keep test doubles or malformed
+        # profiles from changing the legacy engine's existing empty-profile
+        # behavior while preserving real production profiles unchanged.
+        if not isinstance(memory_profile, dict):
+            memory_profile = None
 
         resolved_doc_names = _resolve_query_document_names_for_user(
             current_user.id,
             request.document_names,
         )
 
-        # Run RAG pipeline
-        result = await engine.query(
-            question=request.question,
-            doc_names=resolved_doc_names,
-            n_results=request.n_results,
-            user_id=current_user.id,
-            conversation_history=conversation_history,
-            memory_profile=memory_profile,
+        # I3 routes only /query through the contract-compatible V1 adapter.
+        # The migration flag keeps an exact direct-call rollback path; both
+        # branches use this same cached RAGEngine and unchanged V1 inputs.
+        request_id = uuid.uuid4().hex
+        runtime_request = FinancialQueryRequest(
+            request_id=request_id,
+            user_id=str(current_user.id),
+            session_id=session_id or f"__stateless__:{request_id}",
+            original_query=request.question,
+            standalone_query=request.question,
+            query_as_resolved=False,
+            conversation_metadata={},
+            request_metadata={
+                "document_names": resolved_doc_names,
+                "n_results": request.n_results,
+                "conversation_history": conversation_history,
+                "memory_profile": memory_profile,
+            },
         )
+        if _financial_runtime_adapter_enabled():
+            runtime = LegacyFinancialRuntimeAdapter(engine)
+            execution_service = QueryExecutionService(runtime)
+            runtime_result = await execution_service.execute(runtime_request)
+            result = to_legacy_query_dict(runtime_result)
+        else:
+            # Keep the original direct call as a deterministic migration
+            # fallback and as the I3 parity reference path.
+            result = await engine.query(
+                question=request.question,
+                doc_names=resolved_doc_names,
+                n_results=request.n_results,
+                user_id=current_user.id,
+                conversation_history=conversation_history,
+                memory_profile=memory_profile,
+            )
 
         # Phase 4: Save messages to session
         rewritten = result.get("rewritten_question")
