@@ -1,5 +1,10 @@
-"""Runtime contracts and ports."""
+"""Runtime contracts, ports, and compatibility adapters."""
 
+from .runtime_adapters import (
+    LegacyFinancialRuntimeAdapter,
+    LegacyFinancialRuntimeAdapterError,
+    UnsupportedResolvedQueryError,
+)
 from .runtime_contract import (
     ClarificationPayload,
     FinancialQARuntime,
@@ -18,10 +23,13 @@ __all__ = [
     "FinancialQARuntime",
     "FinancialQueryRequest",
     "FinancialQueryResult",
+    "LegacyFinancialRuntimeAdapter",
+    "LegacyFinancialRuntimeAdapterError",
     "ReleaseStatus",
     "RouterMode",
     "RuntimeMetadata",
     "RuntimeRouterMode",
     "RuntimeStatus",
     "RuntimeVersion",
+    "UnsupportedResolvedQueryError",
 ]

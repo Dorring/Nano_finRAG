@@ -49,3 +49,52 @@ The contract provides deterministic dictionary and JSON round trips for
 request/result logging, shadow comparison, and later HTTP integration. It
 does not define a second streaming runtime interface: the current
 /query/stream can continue to package the validated V1 result as SSE.
+
+## I2 legacy V1 adapter
+
+I2 adds LegacyFinancialRuntimeAdapter as a thin implementation of
+FinancialQARuntime:
+
+~~~text
+FinancialQARuntime
+        ^
+        |
+LegacyFinancialRuntimeAdapter
+        |
+        v
+existing RAGEngine instance
+~~~
+
+The adapter receives an already-created RAGEngine; it never constructs a
+second retriever, gateway, orchestrator, validator, or calculator. Optional
+V1 call arguments are read only from request_metadata:
+
+- document_names
+- n_results
+- conversation_history
+- memory_profile
+
+The adapter converts the contract user_id string to the numeric user ID
+required by the current V1 vector-store scope. It does not own session
+loading, message persistence, or session deletion.
+
+During I2, query_as_resolved=true fails fast with
+UnsupportedResolvedQueryError. A changed standalone_query without that flag
+also fails fast. This is intentional because the legacy V1 rewrite bypass is
+not implemented yet; silently executing a pre-resolved query would permit a
+future double rewrite.
+
+V1 result mapping is conservative:
+
+- a validation status of passed maps to ANSWER and RELEASED;
+- explicit answerability/calculation blocking or validation blocked/failed
+  maps to FAIL_CLOSED and NOT_RELEASED;
+- absent or not_applicable validation does not claim a trusted release;
+- explicit out-of-scope and clarification states are not fabricated because
+  the current V1 legacy result does not expose them structurally;
+- sources are copied as citations, chunk_id and evidence_chunk_id are copied
+  into evidence_ids, and absent citation/calculation IDs remain empty;
+- engine exceptions become an explicit ERROR result without exception text.
+
+I2 status: ADAPTER_IMPLEMENTED, NOT_PRODUCTION_ROUTED. The production
+endpoints still invoke the legacy RAGEngine path directly.
