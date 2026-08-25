@@ -28,12 +28,21 @@ from .runtime_contract import (
     RuntimeVersion,
 )
 from .trusted_v2_adapter import TrustedFinancialRuntimeV2
+from .trusted_v2_capabilities import (
+    CalculationCapability,
+    EvidenceEvaluationCapability,
+    GenerationCapability,
+    ReleaseValidationCapability,
+    RetrievalCapability,
+    TrustedV2CapabilityPorts,
+)
 from .trusted_v2_contracts import (
     TrustedV2ExecutionCoordinator,
     V2ExecutionOutcome,
     V2ExecutionRequest,
     V2ExecutionStatus,
 )
+from .trusted_v2_coordinator import BoundedTrustedV2Coordinator, V2ExecutionTrace
 
 __all__ = [
     "ClarificationPayload",
@@ -55,9 +64,17 @@ __all__ = [
     "RuntimeVersion",
     "UnsupportedResolvedQueryError",
     "TrustedFinancialRuntimeV2",
+    "CalculationCapability",
+    "EvidenceEvaluationCapability",
+    "GenerationCapability",
+    "ReleaseValidationCapability",
+    "RetrievalCapability",
+    "TrustedV2CapabilityPorts",
     "TrustedV2ExecutionCoordinator",
     "V2ExecutionOutcome",
     "V2ExecutionRequest",
     "V2ExecutionStatus",
+    "BoundedTrustedV2Coordinator",
+    "V2ExecutionTrace",
     "to_legacy_query_dict",
 ]
