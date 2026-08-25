@@ -32,6 +32,7 @@ from .models.schemas import (
     QueryRequest,
     QueryResponse,
     RepairResponse,
+    ClarificationResponse,
     Token,
     UploadResponse,
     UserLogin,
@@ -49,6 +50,7 @@ from .runtime import (
     to_legacy_query_dict,
 )
 from .conversation.config import resolve_multiturn_context_mode
+from .conversation.resolver import ContextualQueryResolver
 from .conversation.shadow_service import ConversationShadowService
 from .conversation.sqlite_store import SQLiteConversationStateStore
 
@@ -165,6 +167,78 @@ def _financial_runtime_adapter_enabled() -> bool:
 def _multiturn_context_mode() -> str:
     """Validate the I5 conversation mode on every request boundary."""
     return resolve_multiturn_context_mode(environ=os.environ)
+
+
+def _active_query_requires_context(question: str) -> bool:
+    """Classify whether active mode may safely fall back to legacy V1."""
+    resolver = ContextualQueryResolver(client=object())
+    return not resolver.is_self_contained_fast_path(question)
+
+
+def _active_query_is_out_of_scope(question: str) -> bool:
+    """Detect deterministic out-of-scope control requests without model I/O."""
+    resolver = ContextualQueryResolver(client=object())
+    return not resolver.resolve(question).supported
+
+
+def _control_response(
+    *,
+    request: QueryRequest,
+    session_id: str | None,
+    searched_docs: list[str],
+    status: str,
+    answer: str,
+    clarification_question: str | None = None,
+    reason_codes: list[str] | None = None,
+    options: list[str] | None = None,
+) -> QueryResponse:
+    """Build a public conversation-control response without financial execution."""
+    normalized_reasons = list(reason_codes or [])
+    clarification = (
+        ClarificationResponse(
+            question=clarification_question or answer,
+            reason_codes=normalized_reasons,
+            options=list(options or []),
+        )
+        if status == "CLARIFICATION_REQUIRED"
+        else None
+    )
+    return QueryResponse(
+        answer=answer,
+        sources=[],
+        question=request.question,
+        searched_docs=list(searched_docs),
+        session_id=session_id,
+        status=status,
+        clarification=clarification,
+    )
+
+
+def _commit_control_turn(
+    *,
+    session_id: str | None,
+    user_id: int,
+    question: str,
+    answer: str,
+    status: str,
+    reason_codes: list[str],
+) -> None:
+    """Persist a control turn as UI metadata, never as financial provenance."""
+    if not session_id:
+        return
+    session_manager.add_message(session_id, user_id, "user", question)
+    session_manager.add_message(
+        session_id,
+        user_id,
+        "assistant",
+        answer,
+        metadata={
+            "control_status": status,
+            "reason_codes": list(reason_codes),
+            "evidence_ids": [],
+            "calculation_ids": [],
+        },
+    )
 
 
 def get_conversation_shadow_service() -> ConversationShadowService:
@@ -1019,15 +1093,12 @@ async def upload_document(file: UploadFile = File(...), current_user: User = Dep
 @app.post("/query", response_model=QueryResponse, response_model_exclude_none=True)
 async def query_documents(request: QueryRequest, current_user: User = Depends(get_current_user)):
     """
-    对一个或多个文档进行提问。
-    支持会话记忆：传入 session_id 将自动加载历史消息用于问题改写。
-    历史回答不会作为金融事实进入检索上下文。
+    Answer one or more documents with V1, optionally preceded by Conversation
+    Shadow or active context resolution. /query/stream remains unchanged.
     """
     try:
         multiturn_mode = _multiturn_context_mode()
-        engine = get_rag_engine()
 
-        # Phase 4: Load conversation history for query rewriting
         session_id = _validate_session_id(request.session_id) if request.session_id else None
         conversation_history = None
         if session_id:
@@ -1035,9 +1106,6 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
                 session_id, current_user.id
             )
         memory_profile = memory_store.get_profile(current_user.id)
-        # UserMemoryStore returns a dict. Keep test doubles or malformed
-        # profiles from changing the legacy engine's existing empty-profile
-        # behavior while preserving real production profiles unchanged.
         if not isinstance(memory_profile, dict):
             memory_profile = None
 
@@ -1045,34 +1113,15 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
             current_user.id,
             request.document_names,
         )
-
-        # I3 routes only /query through the contract-compatible V1 adapter.
-        # The migration flag keeps an exact direct-call rollback path; both
-        # branches use this same cached RAGEngine and unchanged V1 inputs.
         request_id = uuid.uuid4().hex
-        runtime_request = FinancialQueryRequest(
-            request_id=request_id,
-            user_id=str(current_user.id),
-            session_id=session_id or f"__stateless__:{request_id}",
-            original_query=request.question,
-            standalone_query=request.question,
-            query_as_resolved=False,
-            conversation_metadata={},
-            request_metadata={
-                "document_names": resolved_doc_names,
-                "n_results": request.n_results,
-                "conversation_history": conversation_history,
-                "memory_profile": memory_profile,
-            },
-        )
 
-        # I5 Shadow is observation-only. It receives history loaded before the
-        # current user message is committed and cannot mutate the V1 request.
-        shadow_service = None
+        # I5 Shadow remains observation-only. It receives history loaded before
+        # the current user turn is committed and cannot affect this request.
+        conversation_service = None
         if multiturn_mode == "shadow":
             try:
-                shadow_service = get_conversation_shadow_service()
-                shadow_service.observe(
+                conversation_service = get_conversation_shadow_service()
+                conversation_service.observe(
                     request_id=request_id,
                     user_id=current_user.id,
                     session_id=session_id,
@@ -1082,6 +1131,230 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
             except Exception:
                 logger.exception("conversation shadow invocation failed")
 
+        execution_query = request.question
+        execution_history = conversation_history
+        query_as_resolved = False
+
+        if multiturn_mode == "on":
+            # A stateless, self-contained question needs no resolver call.
+            if session_id is None:
+                if _active_query_is_out_of_scope(request.question):
+                    reason_codes = ["OUT_OF_SCOPE"]
+                    answer = (
+                        "This question is outside the supported financial "
+                        "document scope."
+                    )
+                    _commit_control_turn(
+                        session_id=session_id,
+                        user_id=current_user.id,
+                        question=request.question,
+                        answer=answer,
+                        status="OUT_OF_SCOPE",
+                        reason_codes=reason_codes,
+                    )
+                    return _control_response(
+                        request=request,
+                        session_id=session_id,
+                        searched_docs=resolved_doc_names,
+                        status="OUT_OF_SCOPE",
+                        answer=answer,
+                        reason_codes=reason_codes,
+                    )
+                if _active_query_requires_context(request.question):
+                    reason_codes = ["CONTEXT_UNAVAILABLE"]
+                    answer = (
+                        "Please restate the company, metric, and period so I "
+                        "can answer this safely."
+                    )
+                    _commit_control_turn(
+                        session_id=session_id,
+                        user_id=current_user.id,
+                        question=request.question,
+                        answer=answer,
+                        status="CLARIFICATION_REQUIRED",
+                        reason_codes=reason_codes,
+                    )
+                    return _control_response(
+                        request=request,
+                        session_id=session_id,
+                        searched_docs=resolved_doc_names,
+                        status="CLARIFICATION_REQUIRED",
+                        answer=answer,
+                        clarification_question=answer,
+                        reason_codes=reason_codes,
+                    )
+                execution_history = None
+            else:
+                conversation_service = get_conversation_shadow_service()
+                if (
+                    not conversation_history
+                    and _active_query_requires_context(request.question)
+                ):
+                    reason_codes = ["CONTEXT_UNAVAILABLE"]
+                    answer = (
+                        "I need the earlier company, metric, and period context "
+                        "before I can answer this safely."
+                    )
+                    _commit_control_turn(
+                        session_id=session_id,
+                        user_id=current_user.id,
+                        question=request.question,
+                        answer=answer,
+                        status="CLARIFICATION_REQUIRED",
+                        reason_codes=reason_codes,
+                    )
+                    return _control_response(
+                        request=request,
+                        session_id=session_id,
+                        searched_docs=resolved_doc_names,
+                        status="CLARIFICATION_REQUIRED",
+                        answer=answer,
+                        clarification_question=answer,
+                        reason_codes=reason_codes,
+                    )
+                try:
+                    resolution = conversation_service.resolve_active(
+                        request_id=request_id,
+                        user_id=current_user.id,
+                        session_id=session_id,
+                        original_query=request.question,
+                        prior_history=conversation_history,
+                    )
+                except Exception as exc:
+                    logger.exception("active conversation resolution failed")
+                    if _active_query_requires_context(request.question):
+                        reason_codes = (
+                            ["CONTEXT_STATE_UNAVAILABLE"]
+                            if "STATE" in type(exc).__name__.upper()
+                            or "SQLITE" in type(exc).__name__.upper()
+                            else ["CONTEXT_RESOLUTION_FAILED"]
+                        )
+                        answer = (
+                            "I need the company, metric, and period stated "
+                            "explicitly before I can answer this safely."
+                        )
+                        _commit_control_turn(
+                            session_id=session_id,
+                            user_id=current_user.id,
+                            question=request.question,
+                            answer=answer,
+                            status="CLARIFICATION_REQUIRED",
+                            reason_codes=reason_codes,
+                        )
+                        return _control_response(
+                            request=request,
+                            session_id=session_id,
+                            searched_docs=resolved_doc_names,
+                            status="CLARIFICATION_REQUIRED",
+                            answer=answer,
+                            clarification_question=answer,
+                            reason_codes=reason_codes,
+                        )
+                    # A self-contained query can safely use V1 without
+                    # forwarding stale raw conversation history.
+                    conversation_service = None
+                    execution_history = None
+                else:
+                    resolution_codes = [
+                        str(getattr(code, "value", code))
+                        for code in (resolution.reason_codes or [])
+                    ]
+                    if not resolution.supported:
+                        reason_codes = resolution_codes or ["OUT_OF_SCOPE"]
+                        answer = (
+                            "This question is outside the supported financial "
+                            "document scope."
+                        )
+                        _commit_control_turn(
+                            session_id=session_id,
+                            user_id=current_user.id,
+                            question=request.question,
+                            answer=answer,
+                            status="OUT_OF_SCOPE",
+                            reason_codes=reason_codes,
+                        )
+                        return _control_response(
+                            request=request,
+                            session_id=session_id,
+                            searched_docs=resolved_doc_names,
+                            status="OUT_OF_SCOPE",
+                            answer=answer,
+                            reason_codes=reason_codes,
+                        )
+                    if resolution.clarification_required:
+                        reason_codes = resolution_codes or ["AMBIGUOUS_REFERENCE"]
+                        answer = (
+                            resolution.clarification_question
+                            or "Which company, metric, or period should I use?"
+                        )
+                        _commit_control_turn(
+                            session_id=session_id,
+                            user_id=current_user.id,
+                            question=request.question,
+                            answer=answer,
+                            status="CLARIFICATION_REQUIRED",
+                            reason_codes=reason_codes,
+                        )
+                        return _control_response(
+                            request=request,
+                            session_id=session_id,
+                            searched_docs=resolved_doc_names,
+                            status="CLARIFICATION_REQUIRED",
+                            answer=answer,
+                            clarification_question=answer,
+                            reason_codes=reason_codes,
+                            options=resolution.clarification_options,
+                        )
+                    resolved_query = (resolution.standalone_query or "").strip()
+                    if not resolved_query:
+                        reason_codes = ["INVALID_RESOLUTION"]
+                        answer = (
+                            "Please restate the company, metric, and period "
+                            "so I can answer this safely."
+                        )
+                        _commit_control_turn(
+                            session_id=session_id,
+                            user_id=current_user.id,
+                            question=request.question,
+                            answer=answer,
+                            status="CLARIFICATION_REQUIRED",
+                            reason_codes=reason_codes,
+                        )
+                        return _control_response(
+                            request=request,
+                            session_id=session_id,
+                            searched_docs=resolved_doc_names,
+                            status="CLARIFICATION_REQUIRED",
+                            answer=answer,
+                            clarification_question=answer,
+                            reason_codes=reason_codes,
+                        )
+                    execution_query = resolved_query
+                    query_as_resolved = bool(
+                        resolution.requires_context
+                        or execution_query != request.question
+                    )
+                    # Active Conversation owns context interpretation. Do not
+                    # send uncontrolled raw history into the financial runtime.
+                    execution_history = None
+
+        runtime_request = FinancialQueryRequest(
+            request_id=request_id,
+            user_id=str(current_user.id),
+            session_id=session_id or f"__stateless__:{request_id}",
+            original_query=request.question,
+            standalone_query=execution_query,
+            query_as_resolved=query_as_resolved,
+            conversation_metadata={},
+            request_metadata={
+                "document_names": resolved_doc_names,
+                "n_results": request.n_results,
+                "conversation_history": execution_history,
+                "memory_profile": memory_profile,
+            },
+        )
+
+        engine = get_rag_engine()
         runtime_result = None
         if _financial_runtime_adapter_enabled():
             runtime = LegacyFinancialRuntimeAdapter(engine)
@@ -1089,35 +1362,41 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
             runtime_result = await execution_service.execute(runtime_request)
             result = to_legacy_query_dict(runtime_result)
         else:
-            # Keep the original direct call as a deterministic migration
-            # fallback and as the I3 parity reference path.
-            result = await engine.query(
-                question=request.question,
-                doc_names=resolved_doc_names,
-                n_results=request.n_results,
-                user_id=current_user.id,
-                conversation_history=conversation_history,
-                memory_profile=memory_profile,
-            )
+            # Keep the direct path as an exact rollback for unresolved V1
+            # requests. Resolved active requests still carry the explicit
+            # bypass flag if the migration fallback is used.
+            engine_kwargs = {
+                "question": execution_query,
+                "doc_names": resolved_doc_names,
+                "n_results": request.n_results,
+                "user_id": current_user.id,
+                "conversation_history": execution_history,
+                "memory_profile": memory_profile,
+            }
+            if query_as_resolved:
+                engine_kwargs["query_as_resolved"] = True
+            result = await engine.query(**engine_kwargs)
 
-        # Record only structured provenance after V1 has finalized. Answer text
-        # is never parsed or stored as conversation state.
-        if shadow_service is not None and session_id is not None:
+        if query_as_resolved and execution_query != request.question:
+            result["rewritten_question"] = execution_query
+
+        # Record structured provenance only after V1 has finalized. Clarification
+        # and out-of-scope controls return before this point.
+        if conversation_service is not None and session_id is not None:
             try:
                 structured_ids = []
                 if runtime_result is not None:
                     structured_ids.extend(runtime_result.evidence_ids)
                     structured_ids.extend(runtime_result.citation_ids)
                     structured_ids.extend(runtime_result.calculation_ids)
-                shadow_service.record_assistant_turn(
+                conversation_service.record_assistant_turn(
                     user_id=current_user.id,
                     session_id=session_id,
                     referenced_evidence_ids=structured_ids,
                 )
             except Exception:
-                logger.exception("conversation shadow assistant metadata failed")
+                logger.exception("conversation assistant metadata failed")
 
-        # Phase 4: Save messages to session
         rewritten = result.get("rewritten_question")
         if session_id:
             session_manager.add_message(session_id, current_user.id, "user", request.question)
@@ -1162,7 +1441,6 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
         raise
     except Exception as e:
         raise api_error(500, "query_error", f"Query error: {str(e)}")
-
 
 
 @app.post("/query/stream")

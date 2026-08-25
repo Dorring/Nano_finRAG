@@ -274,7 +274,7 @@ def test_restart_current_turn_once_clear_and_user_isolation(api_context, tmp_pat
     assert restarted_store.get(43, "same-session").active_entity == "Tesla"
 
 
-def test_active_mode_is_rejected_without_calling_v1(api_context):
+def test_active_stateless_context_dependent_query_clarifies_without_calling_v1(api_context):
     engine = FakeRAGEngine()
     with (
         patch("src.main.get_rag_engine", return_value=engine),
@@ -289,8 +289,197 @@ def test_active_mode_is_rejected_without_calling_v1(api_context):
     ):
         response = api_context.client.post(
             "/query",
-            json={"question": "Revenue?", "document_names": ["annual_report.pdf"], "n_results": 5},
+            json={
+                "question": "What about the previous year?",
+                "document_names": ["annual_report.pdf"],
+                "n_results": 5,
+            },
         )
-    assert response.status_code == 500
-    assert response.json()["detail"]["error_code"] == "query_error"
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["status"] == "CLARIFICATION_REQUIRED"
+    assert payload["clarification"]["reason_codes"] == ["CONTEXT_UNAVAILABLE"]
+    assert payload["answer"]
     assert engine.calls == []
+
+
+def test_active_context_dependent_query_without_prior_turn_clarifies(api_context):
+    response, engine = _post(
+        api_context,
+        mode="on",
+        question="What about the previous year?",
+        session_id="active-empty-context",
+    )
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["status"] == "CLARIFICATION_REQUIRED"
+    assert payload["clarification"]["reason_codes"] == ["CONTEXT_UNAVAILABLE"]
+    assert engine.calls == []
+
+
+def test_active_relative_period_reaches_v1_with_rewrite_bypass(api_context):
+    first, _ = _post(
+        api_context,
+        mode="on",
+        question="Apple FY2024 Revenue?",
+        session_id="active-relative",
+    )
+    assert first.status_code == 200
+
+    second, engine = _post(
+        api_context,
+        mode="on",
+        question="What about the previous year?",
+        session_id="active-relative",
+    )
+
+    assert second.status_code == 200
+    payload = second.json()
+    assert payload["rewritten_question"].startswith("What was Apple FY2023")
+    assert engine.calls[0]["question"].startswith("What was Apple FY2023")
+    assert engine.calls[0]["conversation_history"] is None
+    assert engine.calls[0]["query_as_resolved"] is True
+
+
+def test_active_ambiguity_returns_control_response_without_v1(api_context):
+    first, _ = _post(
+        api_context,
+        mode="on",
+        question="Apple Revenue and Operating Margin FY2024?",
+        session_id="active-ambiguous",
+    )
+    assert first.status_code == 200
+    state_before = api_context.store.get(42, "active-ambiguous")
+    assert state_before.active_metric is None
+    turn_count_before = state_before.turn_count
+
+    second, engine = _post(
+        api_context,
+        mode="on",
+        question="What about the previous year?",
+        session_id="active-ambiguous",
+    )
+
+    assert second.status_code == 200
+    payload = second.json()
+    assert payload["status"] == "CLARIFICATION_REQUIRED"
+    assert payload["clarification"]["reason_codes"] == ["AMBIGUOUS_METRIC"]
+    assert engine.calls == []
+    state_after = api_context.store.get(42, "active-ambiguous")
+    assert state_after.turn_count == turn_count_before
+    assert state_after.active_metric is None
+
+
+def test_active_resolver_failure_clarifies_contextual_query(api_context):
+    first, _ = _post(
+        api_context,
+        mode="on",
+        question="Apple FY2024 Revenue?",
+        session_id="active-timeout",
+    )
+    assert first.status_code == 200
+    failing_service = ConversationShadowService(
+        api_context.store,
+        resolver_factory=lambda: RaisingResolver(),
+    )
+
+    second, engine = _post(
+        api_context,
+        mode="on",
+        question="What about the previous year?",
+        session_id="active-timeout",
+        service=failing_service,
+    )
+
+    assert second.status_code == 200
+    payload = second.json()
+    assert payload["status"] == "CLARIFICATION_REQUIRED"
+    assert payload["clarification"]["reason_codes"] == ["CONTEXT_RESOLUTION_FAILED"]
+    assert engine.calls == []
+
+
+def test_active_resolver_failure_allows_self_contained_v1_without_history(api_context):
+    first, _ = _post(
+        api_context,
+        mode="on",
+        question="Apple FY2024 Revenue?",
+        session_id="active-self-contained-timeout",
+    )
+    assert first.status_code == 200
+    failing_service = ConversationShadowService(
+        api_context.store,
+        resolver_factory=lambda: RaisingResolver(),
+    )
+
+    second, engine = _post(
+        api_context,
+        mode="on",
+        question="Microsoft FY2024 Revenue?",
+        session_id="active-self-contained-timeout",
+        service=failing_service,
+    )
+
+    assert second.status_code == 200
+    assert second.json()["answer"] == "Revenue was $100B."
+    assert engine.calls[0]["question"] == "Microsoft FY2024 Revenue?"
+    assert engine.calls[0]["conversation_history"] is None
+    assert "query_as_resolved" not in engine.calls[0]
+
+
+def test_active_explicit_topic_switch_does_not_forward_stale_history(api_context):
+    first, _ = _post(
+        api_context,
+        mode="on",
+        question="Apple FY2024 Revenue?",
+        session_id="active-switch",
+    )
+    assert first.status_code == 200
+
+    second, engine = _post(
+        api_context,
+        mode="on",
+        question="Tesla FY2024 Operating Margin?",
+        session_id="active-switch",
+    )
+
+    assert second.status_code == 200
+    assert engine.calls[0]["question"] == "Tesla FY2024 Operating Margin?"
+    assert engine.calls[0]["conversation_history"] is None
+    assert "Apple" not in engine.calls[0]["question"]
+    assert api_context.store.get(42, "active-switch").active_entity == "Tesla"
+
+
+def test_active_cross_turn_calculation_does_not_use_assistant_numeric_text(api_context):
+    first, _ = _post(
+        api_context,
+        mode="on",
+        question="Apple FY2024 Revenue?",
+        session_id="active-calc",
+    )
+    assert first.status_code == 200
+    second, _ = _post(
+        api_context,
+        mode="on",
+        question="What about the previous year?",
+        session_id="active-calc",
+    )
+    assert second.status_code == 200
+    api_context.session_manager.add_message(
+        "active-calc",
+        42,
+        "assistant",
+        "Apple FY2023 revenue was $999B.",
+    )
+
+    third, engine = _post(
+        api_context,
+        mode="on",
+        question="How much did it grow?",
+        session_id="active-calc",
+    )
+
+    assert third.status_code == 200
+    assert "Calculate the change in Apple" in engine.calls[0]["question"]
+    assert "$999B" not in engine.calls[0]["question"]
+    assert engine.calls[0]["conversation_history"] is None

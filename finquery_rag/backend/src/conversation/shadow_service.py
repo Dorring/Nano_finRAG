@@ -18,7 +18,7 @@ from typing import Any
 
 from .bailian_client import BailianClient
 from .context_budget import ContextBudgetManager
-from .contracts import DialogueState, DialogueTurn, ReasonCode
+from .contracts import ConversationResolution, DialogueState, DialogueTurn, ReasonCode
 from .resolver import ContextualQueryResolver
 from .service import ConversationContextManager
 from .sqlite_store import SQLiteConversationStateStore
@@ -191,6 +191,8 @@ class ConversationShadowService:
         session_id: str | None,
         original_query: str,
         prior_history: Sequence[Mapping[str, Any]] | None,
+        resolution_sink: Callable[[ConversationResolution], None] | None = None,
+        raise_errors: bool = False,
     ) -> ConversationShadowObservation:
         """Run one shadow resolution and never raise into the V1 request."""
         history = list(prior_history or [])
@@ -218,6 +220,8 @@ class ConversationShadowService:
                 history_turns=history_turns,
                 diagnostics=diagnostics,
             )
+            if resolution_sink is not None:
+                resolution_sink(resolution)
             elapsed_ms = (time.perf_counter() - started) * 1000.0
             reason_codes = [
                 str(getattr(code, "value", code))
@@ -295,8 +299,41 @@ class ConversationShadowService:
             observation.shadow_status = "ERROR"
             observation.shadow_error_code = type(exc).__name__.upper()
             observation.resolver_invoked = True
+            self._emit(observation)
+            if raise_errors:
+                raise
+            return observation
         self._emit(observation)
         return observation
+
+    def resolve_active(
+        self,
+        *,
+        request_id: str,
+        user_id: int,
+        session_id: str,
+        original_query: str,
+        prior_history: Sequence[Mapping[str, Any]] | None,
+    ) -> ConversationResolution:
+        """Resolve one active request and propagate state/resolver failures.
+
+        Active callers need the structured resolution and must not silently
+        convert a resolver or state-store failure into a guessed financial
+        query. The existing observe() path remains best-effort by default.
+        """
+        resolutions: list[ConversationResolution] = []
+        self.observe(
+            request_id=request_id,
+            user_id=user_id,
+            session_id=session_id,
+            original_query=original_query,
+            prior_history=prior_history,
+            resolution_sink=resolutions.append,
+            raise_errors=True,
+        )
+        if not resolutions:
+            raise RuntimeError("active conversation resolution produced no result")
+        return resolutions[0]
 
     def record_assistant_turn(
         self,

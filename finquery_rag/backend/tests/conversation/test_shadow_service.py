@@ -324,12 +324,10 @@ def test_mode_contract_has_no_active_on_state():
         )
         == "shadow"
     )
-    try:
+    assert (
         resolve_multiturn_context_mode(environ={"MULTITURN_CONTEXT_MODE": "on"})
-    except ValueError as exc:
-        assert "not available in I5" in str(exc)
-    else:
-        raise AssertionError("active context mode must fail validation")
+        == "on"
+    )
 
 
 class ErrorMarkedResolver:
