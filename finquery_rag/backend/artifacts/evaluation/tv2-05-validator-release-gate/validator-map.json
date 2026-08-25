@@ -1,0 +1,45 @@
+{
+  "audited_not_direct_v2_root": [
+    {
+      "classification": "V1_PRODUCTION_USED",
+      "component": "GroundedValidationPipeline",
+      "reason": "V1 ResponseValidator contract does not consume TV2 CandidateExecutionResult directly"
+    },
+    {
+      "classification": "V2_COMPONENT_READY",
+      "component": "TrustedRAGRuntimeV2.handle",
+      "reason": "owns generation and validation together; direct reuse would regenerate the TV2-04 candidate"
+    },
+    {
+      "classification": "V1_PRODUCTION_USED",
+      "component": "ResponseRepair",
+      "reason": "V1 ValidationResult contract; TV2 uses structured candidate repair adapter"
+    }
+  ],
+  "canonical": [
+    {
+      "component": "RuntimeGenerationValidatorV1",
+      "role": "envelope/citation/numeric/period/unit-scale/calculation",
+      "source": "rag_v2.generation.validator",
+      "wired": true
+    },
+    {
+      "component": "SemanticClaimVerifierV1",
+      "role": "claim grounding",
+      "routes": [
+        "STRUCTURED_SINGLE",
+        "QUALITATIVE",
+        "MULTI",
+        "SPECIALIST"
+      ],
+      "source": "rag_v2.runtime.semantic_claims",
+      "wired": true
+    },
+    {
+      "component": "DeterministicCandidateRepair",
+      "role": "structured fact/calculation repair once",
+      "source": "src.runtime.trusted_v2_validation",
+      "wired": true
+    }
+  ]
+}

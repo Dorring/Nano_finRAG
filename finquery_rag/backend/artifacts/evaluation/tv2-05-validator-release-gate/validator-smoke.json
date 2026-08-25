@@ -1,0 +1,21 @@
+{
+  "calculation": {
+    "calculation_provenance": "C1",
+    "release_status": "RELEASED",
+    "status": "READY_FOR_RELEASE"
+  },
+  "fact": {
+    "release_status": "RELEASED",
+    "status": "READY_FOR_RELEASE",
+    "validator": "RuntimeGenerationValidatorV1+SemanticClaimVerifierV1"
+  },
+  "specialist": {
+    "release_status": "RELEASED",
+    "status": "READY_FOR_RELEASE",
+    "validator": "RuntimeGenerationValidatorV1+SemanticClaimVerifierV1"
+  },
+  "validator_crash": {
+    "release_status": "NOT_RELEASED",
+    "status": "EXECUTION_ERROR"
+  }
+}

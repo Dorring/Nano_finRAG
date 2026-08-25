@@ -1,0 +1,25 @@
+{
+  "failed_repair_releases": 0,
+  "failed_revalidation": {
+    "final": "FAIL_CLOSED",
+    "initial": "FAIL",
+    "repair_attempts": 1,
+    "revalidated": true
+  },
+  "numeric_mismatch": {
+    "final": "RELEASED",
+    "initial": "FAIL",
+    "repair_attempts": 1,
+    "revalidated": true
+  },
+  "repair_added_unbound_evidence": 0,
+  "repair_provider_crash": {
+    "final": "EXECUTION_ERROR",
+    "release": "NOT_RELEASED",
+    "repair_attempts": 1
+  },
+  "unbound_evidence": {
+    "final": "FAIL_CLOSED",
+    "repair_attempts": 0
+  }
+}

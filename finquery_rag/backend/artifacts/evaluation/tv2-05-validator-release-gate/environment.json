@@ -1,0 +1,9 @@
+{
+  "canonical_python": "3.12.2",
+  "full_backend_environment_verification": "PASS",
+  "implementation": "CPython",
+  "numpy_import": true,
+  "openai_import": true,
+  "python_jose_import": true,
+  "str_enum_available": true
+}

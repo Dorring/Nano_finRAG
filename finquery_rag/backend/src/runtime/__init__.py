@@ -28,6 +28,7 @@ from .runtime_contract import (
     RuntimeVersion,
 )
 from .trusted_v2_adapter import TrustedFinancialRuntimeV2
+from .trusted_v2_factory import TrustedV2FactoryError, build_trusted_v2_runtime
 from .trusted_v2_capabilities import (
     CalculationCapability,
     EvidenceEvaluationCapability,
@@ -44,6 +45,14 @@ from .trusted_v2_calculation import (
     DeterministicCalculationCapability,
     DeterministicCalculationCapabilityError,
     SUPPORTED_CALCULATION_OPERATIONS,
+)
+from .trusted_v2_validation import (
+    CandidateRepairCapability,
+    CandidateRepairError,
+    CandidateRepairUnavailable,
+    DeterministicCandidateRepair,
+    TrustedReleaseValidationCapability,
+    V2ValidationResult,
 )
 from .trusted_v2_generation import (
     CandidateExecutionResult,
@@ -88,6 +97,8 @@ __all__ = [
     "RuntimeVersion",
     "UnsupportedResolvedQueryError",
     "TrustedFinancialRuntimeV2",
+    "TrustedV2FactoryError",
+    "build_trusted_v2_runtime",
     "CalculationCapability",
     "EvidenceEvaluationCapability",
     "GenerationCapability",
@@ -104,6 +115,12 @@ __all__ = [
     "DeterministicFactRenderer",
     "LocalSpecialistGenerationAdapter",
     "TrustedV2GenerationCapability",
+    "CandidateRepairCapability",
+    "CandidateRepairError",
+    "CandidateRepairUnavailable",
+    "DeterministicCandidateRepair",
+    "TrustedReleaseValidationCapability",
+    "V2ValidationResult",
     "CandidateDirectR4Policy",
     "R4CandidateSchemaError",
     "R4RetrievalCapability",

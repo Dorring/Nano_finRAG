@@ -1,0 +1,13 @@
+{
+  "environment_skips": 0,
+  "focused_failed": 0,
+  "focused_passed": 44,
+  "focused_tests": "tests/test_trusted_v2_validator_release.py tests/test_trusted_v2_coordinator.py tests/test_trusted_v2_r4_binder.py tests/test_trusted_v2_calculator_generator.py",
+  "notes": [
+    "canonical validator smoke executes through actual V2 Coordinator",
+    "all release paths require TrustedReleaseValidationCapability candidate_mode",
+    "repair provider crash maps to EXECUTION_ERROR"
+  ],
+  "old_consumed_benchmarks_rerun": false,
+  "phase": "TV2-05"
+}

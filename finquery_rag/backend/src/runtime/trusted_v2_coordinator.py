@@ -29,6 +29,11 @@ from rag_v2.supervisor import SupervisorService, validate_plan_v2_01
 from .runtime_contract import ReleaseStatus
 from .trusted_v2_capabilities import TrustedV2CapabilityPorts
 from .trusted_v2_generation import CandidateExecutionResult
+from .trusted_v2_validation import (
+    CandidateRepairError,
+    CandidateRepairUnavailable,
+    V2ValidationResult,
+)
 from .trusted_v2_contracts import (
     TrustedV2ExecutionCoordinator,
     V2ExecutionOutcome,
@@ -94,6 +99,17 @@ class V2ExecutionTrace:
     candidate_generation_id: str | None = None
     candidate_ready: bool = False
     validation_pending: bool = False
+    validation_id: str | None = None
+    validation_passed: bool = False
+    failed_checks: tuple[str, ...] = ()
+    validation_reason_codes: tuple[str, ...] = ()
+    repair_eligible: bool = False
+    repair_attempted: bool = False
+    repair_count: int = 0
+    revalidated: bool = False
+    final_candidate_id: str | None = None
+    release_decision: str | None = None
+    release_status: str | None = None
 
     @classmethod
     def from_state(
@@ -111,6 +127,7 @@ class V2ExecutionTrace:
         binder = capability_trace.get("binder", {})
         calculation = capability_trace.get("calculation", {})
         generation = capability_trace.get("generation", {})
+        validation = capability_trace.get("validation", {})
         trace_reason_codes = list(reason_codes)
         for record in binder.get("binder_rounds", ()):
             if isinstance(record, Mapping):
@@ -190,6 +207,35 @@ class V2ExecutionTrace:
             ),
             candidate_ready=bool(generation.get("candidate_ready", False)),
             validation_pending=bool(generation.get("validation_pending", False)),
+            validation_id=(
+                str(validation["validation_id"])
+                if validation.get("validation_id")
+                else None
+            ),
+            validation_passed=bool(validation.get("validation_passed", False)),
+            failed_checks=tuple(str(item) for item in validation.get("failed_checks", ())),
+            validation_reason_codes=tuple(
+                str(item) for item in validation.get("validation_reason_codes", ())
+            ),
+            repair_eligible=bool(validation.get("repair_eligible", False)),
+            repair_attempted=bool(validation.get("repair_attempted", False)),
+            repair_count=int(validation.get("repair_count", 0)),
+            revalidated=bool(validation.get("revalidated", False)),
+            final_candidate_id=(
+                str(validation["final_candidate_id"])
+                if validation.get("final_candidate_id")
+                else None
+            ),
+            release_decision=(
+                str(validation["release_decision"])
+                if validation.get("release_decision")
+                else None
+            ),
+            release_status=(
+                str(validation["release_status"])
+                if validation.get("release_status")
+                else None
+            ),
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -226,6 +272,17 @@ class V2ExecutionTrace:
             "candidate_generation_id": self.candidate_generation_id,
             "candidate_ready": self.candidate_ready,
             "validation_pending": self.validation_pending,
+            "validation_id": self.validation_id,
+            "validation_passed": self.validation_passed,
+            "failed_checks": list(self.failed_checks),
+            "validation_reason_codes": list(self.validation_reason_codes),
+            "repair_eligible": self.repair_eligible,
+            "repair_attempted": self.repair_attempted,
+            "repair_count": self.repair_count,
+            "revalidated": self.revalidated,
+            "final_candidate_id": self.final_candidate_id,
+            "release_decision": self.release_decision,
+            "release_status": self.release_status,
         }
 
 
@@ -414,6 +471,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             ("binder", self.capabilities.evidence_evaluator),
             ("calculation", self.capabilities.calculation),
             ("generation", self.capabilities.generation),
+            ("validation", self.capabilities.release_validator),
         ):
             getter = getattr(port, "trace_snapshot", None)
             if callable(getter):
@@ -500,11 +558,10 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         state: AdaptiveRAGStateV1,
         evaluator_adapter: _EvaluatorAdapter,
     ) -> V2ExecutionOutcome:
-        """Run TV2-04 candidate preparation after Binder reaches READY."""
+        """Prepare one Candidate and, when wired, cross the TV2-05 gate."""
 
         calculation_ids: tuple[str, ...] = ()
         candidate_answer: str | None = None
-        route: str | None = None
         extra: dict[str, Any] = {}
         if plan.intent is Intent.CALCULATION:
             capability = self.capabilities.calculation
@@ -559,8 +616,10 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                     citation_ids=evaluator_adapter.citation_ids,
                 )
             calculation_ids = (
-                str(getattr(capability, "last_calculation_id", "")),
-            ) if getattr(capability, "last_calculation_id", None) else ()
+                (str(getattr(capability, "last_calculation_id")),)
+                if getattr(capability, "last_calculation_id", None)
+                else ()
+            )
             state.calculation_result_id = calculation_ids[0] if calculation_ids else None
             extra["calculation_status"] = result.status.value
             extra["calculation_result_id"] = state.calculation_result_id
@@ -588,19 +647,24 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 citation_ids=evaluator_adapter.citation_ids,
                 calculation_ids=calculation_ids,
             )
+
         if isinstance(raw_candidate, CandidateExecutionResult):
-            candidate_answer = raw_candidate.candidate_answer
-            route = raw_candidate.route
-            extra.update(dict(raw_candidate.generation_metadata))
-            extra["candidate_status"] = raw_candidate.candidate_status
-            extra["candidate_generation_id"] = raw_candidate.candidate_generation_id
-            calculation_ids = tuple(raw_candidate.calculation_ids) or calculation_ids
-            candidate_citations = tuple(raw_candidate.citation_ids)
-            candidate_evidence = tuple(raw_candidate.bound_evidence_ids)
+            candidate = raw_candidate
+            candidate_answer = candidate.candidate_answer
+            extra.update(dict(candidate.generation_metadata))
+            extra["candidate_status"] = candidate.candidate_status
+            extra["candidate_generation_id"] = candidate.candidate_generation_id
+            calculation_ids = tuple(candidate.calculation_ids) or calculation_ids
         elif isinstance(raw_candidate, str) and raw_candidate.strip():
             candidate_answer = raw_candidate.strip()
-            candidate_citations = evaluator_adapter.citation_ids
-            candidate_evidence = evaluator_adapter.bound_evidence_ids
+            candidate = CandidateExecutionResult(
+                candidate_answer=candidate_answer,
+                route=str(getattr(state, "generation_route", "") or "STRUCTURED_SINGLE"),
+                route_reason=str(getattr(state, "route_reason", "") or "candidate"),
+                bound_evidence_ids=evaluator_adapter.bound_evidence_ids,
+                citation_ids=evaluator_adapter.citation_ids,
+                calculation_ids=calculation_ids,
+            )
         else:
             return self._outcome(
                 request=request, plan=plan, plan_id=plan_id, state=state,
@@ -611,16 +675,290 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 citation_ids=evaluator_adapter.citation_ids,
                 calculation_ids=calculation_ids,
             )
+
         extra["candidate_ready"] = True
         extra["validation_pending"] = True
+        validator = self.capabilities.release_validator
+        if getattr(validator, "candidate_mode", False):
+            return self._validated_candidate_stage(
+                request=request,
+                plan=plan,
+                plan_id=plan_id,
+                state=state,
+                candidate=candidate,
+                extra_metadata=extra,
+            )
+
         return self._outcome(
             request=request, plan=plan, plan_id=plan_id, state=state,
             reason_codes=["FINAL_VALIDATION_NOT_WIRED"],
             status=V2ExecutionStatus.FAIL_CLOSED,
-            answer=candidate_answer, route=route, terminal_state="CANDIDATE_READY_FOR_VALIDATION",
-            evidence_ids=candidate_evidence or evaluator_adapter.bound_evidence_ids,
-            citation_ids=candidate_citations or evaluator_adapter.citation_ids,
-            calculation_ids=calculation_ids, extra_metadata=extra,
+            answer=candidate.candidate_answer,
+            route=candidate.route,
+            terminal_state="CANDIDATE_READY_FOR_VALIDATION",
+            evidence_ids=candidate.bound_evidence_ids or evaluator_adapter.bound_evidence_ids,
+            citation_ids=candidate.citation_ids or evaluator_adapter.citation_ids,
+            calculation_ids=candidate.calculation_ids,
+            extra_metadata=extra,
+        )
+
+    @staticmethod
+    def _record_validator_release(
+        validator: Any,
+        *,
+        released: bool,
+        candidate: CandidateExecutionResult,
+    ) -> None:
+        recorder = getattr(validator, "record_release", None)
+        if callable(recorder):
+            recorder(
+                released=released,
+                final_candidate_id=candidate.candidate_generation_id,
+                release_status=(
+                    ReleaseStatus.RELEASED.value
+                    if released
+                    else ReleaseStatus.NOT_RELEASED.value
+                ),
+            )
+
+    @staticmethod
+    def _validation_metadata(
+        extra: Mapping[str, Any],
+        *,
+        validation: V2ValidationResult | None,
+        candidate: CandidateExecutionResult,
+        repair_attempted: bool,
+        repair_count: int,
+        revalidated: bool,
+        release_decision: str,
+    ) -> dict[str, Any]:
+        payload = dict(extra)
+        payload.update(
+            {
+                "config_version": "tv2-05",
+                "candidate_generation_id": candidate.candidate_generation_id,
+                "final_candidate_id": candidate.candidate_generation_id,
+                "validation_status": validation.status if validation else "ERROR",
+                "validation_id": validation.validation_id if validation else None,
+                "validation_passed": bool(validation and validation.passed),
+                "failed_checks": list(validation.failed_checks) if validation else [],
+                "validation_reason_codes": list(validation.reason_codes) if validation else [],
+                "repair_eligible": bool(validation and validation.repairable),
+                "repair_attempted": repair_attempted,
+                "repair_count": repair_count,
+                "revalidated": revalidated,
+                "release_decision": release_decision,
+                "release_status": (
+                    ReleaseStatus.RELEASED.value
+                    if release_decision == "RELEASED"
+                    else ReleaseStatus.NOT_RELEASED.value
+                ),
+            }
+        )
+        if validation is not None:
+            payload["validation"] = validation.to_dict()
+        return payload
+
+    def _validated_candidate_stage(
+        self,
+        *,
+        request: V2ExecutionRequest,
+        plan: SupervisorPlan,
+        plan_id: str,
+        state: AdaptiveRAGStateV1,
+        candidate: CandidateExecutionResult,
+        extra_metadata: Mapping[str, Any],
+    ) -> V2ExecutionOutcome:
+        validator = self.capabilities.release_validator
+        if validator is None:
+            raise RuntimeError("candidate validation stage requires a validator")
+
+        def failed_outcome(
+            current: CandidateExecutionResult,
+            validation: V2ValidationResult | None,
+            reasons: Iterable[str],
+            *,
+            status: V2ExecutionStatus = V2ExecutionStatus.FAIL_CLOSED,
+            terminal_state: str = "FINAL_VALIDATION",
+            repair_attempted: bool = False,
+            repair_count: int = 0,
+            revalidated: bool = False,
+        ) -> V2ExecutionOutcome:
+            self._record_validator_release(validator, released=False, candidate=current)
+            metadata = self._validation_metadata(
+                extra_metadata,
+                validation=validation,
+                candidate=current,
+                repair_attempted=repair_attempted,
+                repair_count=repair_count,
+                revalidated=revalidated,
+                release_decision="NOT_RELEASED",
+            )
+            return self._outcome(
+                request=request, plan=plan, plan_id=plan_id, state=state,
+                reason_codes=reasons,
+                status=status,
+                answer=current.candidate_answer,
+                route=current.route,
+                terminal_state=terminal_state,
+                evidence_ids=current.bound_evidence_ids,
+                citation_ids=current.citation_ids,
+                calculation_ids=current.calculation_ids,
+                extra_metadata=metadata,
+                validator_status=validation.status if validation else "ERROR",
+            )
+
+        try:
+            validation = validator.validate(state, candidate)
+        except Exception:
+            return failed_outcome(
+                candidate,
+                None,
+                ["VALIDATOR_EXCEPTION"],
+                status=V2ExecutionStatus.EXECUTION_ERROR,
+                terminal_state="FINAL_VALIDATION_ERROR",
+            )
+        if not isinstance(validation, V2ValidationResult):
+            return failed_outcome(
+                candidate,
+                None,
+                ["VALIDATOR_CONTRACT_INVALID"],
+                status=V2ExecutionStatus.EXECUTION_ERROR,
+                terminal_state="FINAL_VALIDATION_ERROR",
+            )
+
+        if validation.passed:
+            self._record_validator_release(validator, released=True, candidate=candidate)
+            metadata = self._validation_metadata(
+                extra_metadata,
+                validation=validation,
+                candidate=candidate,
+                repair_attempted=False,
+                repair_count=0,
+                revalidated=False,
+                release_decision="RELEASED",
+            )
+            return self._outcome(
+                request=request, plan=plan, plan_id=plan_id, state=state,
+                reason_codes=["VALIDATED_RELEASE"],
+                status=V2ExecutionStatus.READY_FOR_RELEASE,
+                answer=candidate.candidate_answer,
+                route=candidate.route,
+                terminal_state="RELEASED",
+                evidence_ids=candidate.bound_evidence_ids,
+                citation_ids=candidate.citation_ids,
+                calculation_ids=candidate.calculation_ids,
+                extra_metadata=metadata,
+                validator_status=validation.status,
+            )
+
+        if not validation.repairable:
+            return failed_outcome(candidate, validation, validation.reason_codes)
+
+        try:
+            repaired = validator.repair(state, candidate, validation)
+        except CandidateRepairUnavailable:
+            return failed_outcome(
+                candidate,
+                validation,
+                [*validation.reason_codes, "REPAIR_UNAVAILABLE"],
+                repair_attempted=True,
+                repair_count=1,
+            )
+        except CandidateRepairError:
+            return failed_outcome(
+                candidate,
+                validation,
+                [*validation.reason_codes, "REPAIR_EXCEPTION"],
+                status=V2ExecutionStatus.EXECUTION_ERROR,
+                terminal_state="REPAIR_ERROR",
+                repair_attempted=True,
+                repair_count=1,
+            )
+        except Exception:
+            return failed_outcome(
+                candidate,
+                validation,
+                [*validation.reason_codes, "REPAIR_EXCEPTION"],
+                status=V2ExecutionStatus.EXECUTION_ERROR,
+                terminal_state="REPAIR_ERROR",
+                repair_attempted=True,
+                repair_count=1,
+            )
+        if not isinstance(repaired, CandidateExecutionResult):
+            return failed_outcome(
+                candidate,
+                validation,
+                [*validation.reason_codes, "REPAIR_CONTRACT_INVALID"],
+                status=V2ExecutionStatus.EXECUTION_ERROR,
+                terminal_state="REPAIR_ERROR",
+                repair_attempted=True,
+                repair_count=1,
+            )
+
+        recorder = getattr(validator, "record_revalidation", None)
+        if callable(recorder):
+            recorder()
+        try:
+            second = validator.validate(state, repaired)
+        except Exception:
+            return failed_outcome(
+                repaired,
+                validation,
+                [*validation.reason_codes, "REVALIDATION_EXCEPTION"],
+                status=V2ExecutionStatus.EXECUTION_ERROR,
+                terminal_state="REVALIDATION_ERROR",
+                repair_attempted=True,
+                repair_count=1,
+                revalidated=True,
+            )
+        if not isinstance(second, V2ValidationResult):
+            return failed_outcome(
+                repaired,
+                validation,
+                [*validation.reason_codes, "REVALIDATION_CONTRACT_INVALID"],
+                status=V2ExecutionStatus.EXECUTION_ERROR,
+                terminal_state="REVALIDATION_ERROR",
+                repair_attempted=True,
+                repair_count=1,
+                revalidated=True,
+            )
+        if second.passed:
+            self._record_validator_release(validator, released=True, candidate=repaired)
+            metadata = self._validation_metadata(
+                extra_metadata,
+                validation=second,
+                candidate=repaired,
+                repair_attempted=True,
+                repair_count=1,
+                revalidated=True,
+                release_decision="RELEASED",
+            )
+            metadata["repaired_from_validation_id"] = validation.validation_id
+            return self._outcome(
+                request=request, plan=plan, plan_id=plan_id, state=state,
+                reason_codes=["REPAIRED_ONCE", "VALIDATED_RELEASE"],
+                status=V2ExecutionStatus.READY_FOR_RELEASE,
+                answer=repaired.candidate_answer,
+                route=repaired.route,
+                terminal_state="RELEASED_AFTER_REPAIR",
+                evidence_ids=repaired.bound_evidence_ids,
+                citation_ids=repaired.citation_ids,
+                calculation_ids=repaired.calculation_ids,
+                extra_metadata=metadata,
+                validator_status=second.status,
+            )
+        return failed_outcome(
+            repaired,
+            second,
+            [
+                *validation.reason_codes,
+                "REPAIR_REVALIDATION_FAILED",
+                *second.reason_codes,
+            ],
+            repair_attempted=True,
+            repair_count=1,
+            revalidated=True,
         )
 
     def _outcome(
@@ -638,9 +976,11 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         calculation_ids: Iterable[str] = (),
         route: str | None = None,
         extra_metadata: Mapping[str, Any] | None = None,
+        validator_status: str | None = None,
         terminal_state: str,
     ) -> V2ExecutionOutcome:
         reason_list = _stable_unique(reason_codes)
+        calculation_id_list = _stable_unique(calculation_ids)
         trace = self._trace(
             request,
             plan_id,
@@ -661,19 +1001,30 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             reason_codes=reason_list,
             release_status=release_status,
             route=route or (plan.intent.value if plan is not None else None),
-            calculation_ids=_stable_unique(calculation_ids),
+            calculation_ids=calculation_id_list,
             calculation_result_id=(
-                next(iter(calculation_ids), None)
-                if calculation_ids
-                else None
+                calculation_id_list[0] if calculation_id_list else None
             ),
+            validator_status=validator_status,
             runtime_metadata=self._metadata(
                 plan_id=plan_id,
                 terminal_state=terminal_state,
                 downstream_execution_wired=bool(
-                    self.allow_test_release
-                    and self.capabilities.generation is not None
-                    and self.capabilities.release_validator is not None
+                    (
+                        self.allow_test_release
+                        and self.capabilities.generation is not None
+                        and self.capabilities.release_validator is not None
+                    )
+                    or (
+                        self._candidate_generation_enabled()
+                        and bool(
+                            getattr(
+                                self.capabilities.release_validator,
+                                "candidate_mode",
+                                False,
+                            )
+                        )
+                    )
                 ),
                 calculation_port_configured=self.capabilities.calculation is not None,
                 candidate_generation_wired=self._candidate_generation_enabled(),

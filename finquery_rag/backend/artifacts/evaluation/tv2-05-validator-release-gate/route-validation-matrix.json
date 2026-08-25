@@ -1,0 +1,28 @@
+{
+  "max_repair_attempts": 1,
+  "routes": [
+    {
+      "generator": "DeterministicFactRenderer",
+      "release_authority": "validator",
+      "result": "PASS",
+      "route": "STRUCTURED_SINGLE",
+      "validator": "RuntimeGenerationValidatorV1 + SemanticClaimVerifierV1"
+    },
+    {
+      "generator": "DeterministicCalculator + C1 renderer",
+      "release_authority": "validator",
+      "result": "PASS",
+      "route": "CALCULATION_SIMPLE",
+      "validator": "RuntimeGenerationValidatorV1 + C1 consistency"
+    },
+    {
+      "generator": "Financial Specialist",
+      "release_authority": "validator",
+      "result": "PASS",
+      "route": "MULTI/QUALITATIVE",
+      "validator": "RuntimeGenerationValidatorV1 + SemanticClaimVerifierV1"
+    }
+  ],
+  "validator_calls_after_repair": 2,
+  "validator_calls_per_normal_request": 1
+}

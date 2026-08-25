@@ -62,8 +62,8 @@ class GenerationCapability(Protocol):
 class ReleaseValidationCapability(Protocol):
     """Reserved release validator port for explicit test wiring."""
 
-    def validate(self, state: AdaptiveRAGStateV1, candidate: str) -> bool:
-        """Return whether the candidate may cross the release boundary."""
+    def validate(self, state: AdaptiveRAGStateV1, candidate: Any) -> Any:
+        """Return a structured validation result, never a release decision."""
         ...
 
 
