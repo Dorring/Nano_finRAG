@@ -27,6 +27,13 @@ from .runtime_contract import (
     RuntimeStatus,
     RuntimeVersion,
 )
+from .trusted_v2_adapter import TrustedFinancialRuntimeV2
+from .trusted_v2_contracts import (
+    TrustedV2ExecutionCoordinator,
+    V2ExecutionOutcome,
+    V2ExecutionRequest,
+    V2ExecutionStatus,
+)
 
 __all__ = [
     "ClarificationPayload",
@@ -47,5 +54,10 @@ __all__ = [
     "RuntimeStatus",
     "RuntimeVersion",
     "UnsupportedResolvedQueryError",
+    "TrustedFinancialRuntimeV2",
+    "TrustedV2ExecutionCoordinator",
+    "V2ExecutionOutcome",
+    "V2ExecutionRequest",
+    "V2ExecutionStatus",
     "to_legacy_query_dict",
 ]

@@ -1,0 +1,23 @@
+{
+  "input": "V2ExecutionRequest",
+  "canonical_query": "standalone_query",
+  "raw_conversation_history_forwarded": false,
+  "query_as_resolved_semantics": "conversation_resolved_metadata_only",
+  "output": "V2ExecutionOutcome",
+  "statuses": [
+    "READY_FOR_RELEASE",
+    "FAIL_CLOSED",
+    "EXECUTION_ERROR"
+  ],
+  "release_invariant": {
+    "READY_FOR_RELEASE": "RELEASED",
+    "FAIL_CLOSED": "NOT_RELEASED",
+    "EXECUTION_ERROR": "NOT_RELEASED"
+  },
+  "provenance_sources": [
+    "structured_outcome.evidence_ids",
+    "structured_outcome.citation_ids",
+    "structured_outcome.calculation_ids"
+  ],
+  "answer_text_parsing": false
+}
