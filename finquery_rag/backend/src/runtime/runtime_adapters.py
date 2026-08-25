@@ -31,7 +31,7 @@ class LegacyFinancialRuntimeAdapterError(RuntimeError):
 
 
 class UnsupportedResolvedQueryError(LegacyFinancialRuntimeAdapterError):
-    """Raised until the legacy query rewrite bypass is implemented."""
+    """Raised when a request violates the resolved-query contract."""
 
 
 class _LegacyEngine(Protocol):
@@ -45,6 +45,7 @@ class _LegacyEngine(Protocol):
         n_results: int = 3,
         conversation_history: list[dict[str, Any]] | None = None,
         memory_profile: dict[str, Any] | None = None,
+        query_as_resolved: bool = False,
     ) -> Mapping[str, Any]: ...
 
 
@@ -74,9 +75,9 @@ class LegacyFinancialRuntimeAdapter(FinancialQARuntime):
     execution service, while the current endpoint remains responsible for
     loading and persisting conversation messages.
 
-    During I2, pre-resolved queries fail fast because V1 still performs its
-    own legacy rewrite when conversation history is supplied. This prevents
-    an advanced resolver from being silently followed by a second rewrite.
+    Resolved requests carry an explicit query_as_resolved flag through the
+    existing RAGEngine into RAGOrchestrator, where the legacy rewrite call is
+    bypassed. Unresolved requests retain the I3 parity contract.
     """
 
     def __init__(self, engine: RAGEngine | _LegacyEngine) -> None:
@@ -96,15 +97,19 @@ class LegacyFinancialRuntimeAdapter(FinancialQARuntime):
             self._request_options(request)
         )
 
+        engine_kwargs = {
+            "question": request.standalone_query,
+            "doc_names": doc_names,
+            "user_id": user_id,
+            "n_results": n_results,
+            "conversation_history": conversation_history,
+            "memory_profile": memory_profile,
+        }
+        if request.query_as_resolved:
+            engine_kwargs["query_as_resolved"] = True
+
         try:
-            raw_result = await self._engine.query(
-                question=request.standalone_query,
-                doc_names=doc_names,
-                user_id=user_id,
-                n_results=n_results,
-                conversation_history=conversation_history,
-                memory_profile=memory_profile,
-            )
+            raw_result = await self._engine.query(**engine_kwargs)
         except Exception as exc:
             return self._error_result(
                 reason_code="LEGACY_RUNTIME_EXCEPTION",
@@ -129,16 +134,12 @@ class LegacyFinancialRuntimeAdapter(FinancialQARuntime):
         if not isinstance(request, FinancialQueryRequest):
             raise TypeError("request must be FinancialQueryRequest")
         if request.query_as_resolved:
-            raise UnsupportedResolvedQueryError(
-                "Legacy V1 adapter does not yet support pre-resolved queries. "
-                "Legacy rewrite bypass must be integrated before "
-                "query_as_resolved=True is allowed.",
-            )
+            return
         if request.standalone_query != request.original_query:
             raise UnsupportedResolvedQueryError(
                 "standalone_query differs from original_query while "
                 "query_as_resolved is false; the legacy rewrite bypass is "
-                "not available in I2.",
+                "not available for unresolved V1 requests.",
             )
 
     @staticmethod

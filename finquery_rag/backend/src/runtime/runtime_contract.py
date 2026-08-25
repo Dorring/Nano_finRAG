@@ -223,8 +223,8 @@ class FinancialQueryRequest:
     original_query is the immutable user wording. standalone_query is the
     query that a financial runtime should execute; it defaults to the
     original wording until a conversation resolver supplies a resolved query.
-    query_as_resolved is an explicit future rewrite gate and has no effect on
-    the current production path during I1.
+    query_as_resolved is the explicit Conversation-to-financial-runtime rewrite
+    gate. When true, the runtime must not invoke legacy query rewriting.
     """
 
     request_id: str

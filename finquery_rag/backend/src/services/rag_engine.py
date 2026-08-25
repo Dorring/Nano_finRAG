@@ -469,6 +469,7 @@ class RAGEngine:
         n_results: int = 3,
         conversation_history: list = None,
         memory_profile: dict | None = None,
+        query_as_resolved: bool = False,
     ) -> dict:
         """Facade entry point: build a ``QueryRequest``, delegate to the
         orchestrator, and unwrap the legacy dict for API compatibility.
@@ -484,6 +485,7 @@ class RAGEngine:
             user_id=user_id,
             conversation_history=tuple(conversation_history or ()),
             memory_profile=memory_profile,
+            query_as_resolved=query_as_resolved,
         )
         result = await self._orchestrator.answer(request, n_results=n_results)
         return result.to_legacy_dict()

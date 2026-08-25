@@ -176,7 +176,7 @@ def test_adapter_preserves_explicit_empty_conversation_history() -> None:
 
     assert engine.calls[0]["conversation_history"] == []
 
-def test_query_as_resolved_fails_fast_before_engine_call() -> None:
+def test_query_as_resolved_reaches_engine_with_bypass_flag() -> None:
     engine = FakeRAGEngine()
     request = FinancialQueryRequest(
         request_id="req-2",
@@ -187,9 +187,12 @@ def test_query_as_resolved_fails_fast_before_engine_call() -> None:
         query_as_resolved=True,
     )
 
-    with pytest.raises(UnsupportedResolvedQueryError, match="rewrite bypass"):
-        asyncio.run(adapter_result(engine, request))
-    assert engine.calls == []
+    result = asyncio.run(adapter_result(engine, request))
+
+    assert result.status is RuntimeStatus.ANSWER
+    assert engine.calls[0]["question"] == "Apple FY2023 revenue"
+    assert engine.calls[0]["conversation_history"] is None
+    assert engine.calls[0]["query_as_resolved"] is True
 
 
 def test_changed_standalone_query_without_flag_also_fails_fast() -> None:

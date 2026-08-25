@@ -181,7 +181,10 @@ class RAGOrchestrator:
                 "record_context",
                 context_hash=frozen_evaluation_context.final_context_hash,
             )
-        if request.conversation_history:
+        if request.query_as_resolved:
+            trace_data["query_as_resolved"] = True
+            trace_data["query_rewrite_bypassed"] = True
+        elif request.conversation_history:
             question = await self._llm_gateway.rewrite_query(
                 question,
                 list(request.conversation_history),
@@ -794,6 +797,7 @@ class RAGOrchestrator:
         n_results: int = 3,
         conversation_history: list = None,
         memory_profile: dict | None = None,
+        query_as_resolved: bool = False,
     ) -> dict:
         """Legacy entry point retained for tests that mock the orchestrator.
 
@@ -805,6 +809,7 @@ class RAGOrchestrator:
             user_id=user_id,
             conversation_history=tuple(conversation_history or ()),
             memory_profile=memory_profile,
+            query_as_resolved=query_as_resolved,
         )
         result = await self.answer(request, n_results=n_results)
         return result.to_legacy_dict()
