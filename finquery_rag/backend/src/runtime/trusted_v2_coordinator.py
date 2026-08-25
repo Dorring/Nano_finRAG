@@ -1,9 +1,9 @@
-"""TV2-02 Supervisor plus bounded-runtime coordinator.
+"""TV2-02/03 Supervisor plus bounded-runtime coordinator.
 
 This module wires the existing one-call SupervisorService to the existing
-PLAN -> ACT -> OBSERVE -> EVALUATE bounded adaptive controller.  It does not
-wire real R4 retrieval, Binder, Calculator, Generator, Validator, or
-TrustedRAGRuntimeV2.  Those components arrive in later TV2 gates.
+PLAN -> ACT -> OBSERVE -> EVALUATE bounded adaptive controller.  TV2-03 may
+inject the real R4 retrieval and Semantic Binder ports, while Calculator,
+Generator, Validator, and TrustedRAGRuntimeV2 remain later-stage components.
 """
 
 from __future__ import annotations
@@ -73,6 +73,17 @@ class V2ExecutionTrace:
     same_tool_retry_count: int
     no_progress_count: int
     terminal_state: str
+    retrieval_rounds: tuple[dict[str, Any], ...] = ()
+    candidate_count_per_round: tuple[int, ...] = ()
+    candidate_ids_per_round: tuple[tuple[str, ...], ...] = ()
+    targeted_slot_ids: tuple[str, ...] = ()
+    binder_status_per_round: tuple[str, ...] = ()
+    bound_slot_ids: tuple[str, ...] = ()
+    missing_slot_ids: tuple[str, ...] = ()
+    wrong_period_slots: tuple[str, ...] = ()
+    missing_operand_slots: tuple[str, ...] = ()
+    conflict_ids: tuple[str, ...] = ()
+    bound_evidence_ids: tuple[str, ...] = ()
 
     @classmethod
     def from_state(
@@ -82,19 +93,66 @@ class V2ExecutionTrace:
         plan_id: str | None,
         state: AdaptiveRAGStateV1,
         reason_codes: Iterable[str],
+        capability_trace: Mapping[str, Any] | None = None,
     ) -> "V2ExecutionTrace":
         no_progress_count = int(state.stop_reason == ReasonCode.NO_PROGRESS.value)
+        capability_trace = capability_trace or {}
+        retrieval = capability_trace.get("retrieval", {})
+        binder = capability_trace.get("binder", {})
+        trace_reason_codes = list(reason_codes)
+        for record in binder.get("binder_rounds", ()):
+            if isinstance(record, Mapping):
+                trace_reason_codes.extend(
+                    str(item) for item in record.get("reason_codes", ())
+                )
+        retrieval_rounds = tuple(
+            copy.deepcopy(item)
+            for item in retrieval.get("retrieval_rounds", ())
+            if isinstance(item, Mapping)
+        )
+        candidate_counts = tuple(
+            int(item) for item in retrieval.get("candidate_count_per_round", ())
+        )
+        candidate_ids = tuple(
+            tuple(str(value) for value in item)
+            for item in retrieval.get("candidate_ids_per_round", ())
+        )
         return cls(
             request_id=request_id,
             plan_id=plan_id,
             transitions=tuple(copy.deepcopy(state.transitions)),
             tool_history=tuple(copy.deepcopy(state.tool_history)),
-            reason_codes=tuple(_stable_unique(reason_codes)),
+            reason_codes=tuple(_stable_unique(trace_reason_codes)),
             replan_count=state.replan_rounds,
             tool_call_count=state.tool_calls,
             same_tool_retry_count=sum(state.same_tool_retries.values()),
             no_progress_count=no_progress_count,
             terminal_state=state.status,
+            retrieval_rounds=retrieval_rounds,
+            candidate_count_per_round=candidate_counts,
+            candidate_ids_per_round=candidate_ids,
+            targeted_slot_ids=tuple(
+                str(item) for item in retrieval.get("targeted_slot_ids", ())
+            ),
+            binder_status_per_round=tuple(
+                str(item) for item in binder.get("binder_status_per_round", ())
+            ),
+            bound_slot_ids=tuple(
+                str(item) for item in binder.get("bound_slot_ids", ())
+            ),
+            missing_slot_ids=tuple(
+                str(item) for item in binder.get("missing_slot_ids", ())
+            ),
+            wrong_period_slots=tuple(
+                str(item) for item in binder.get("wrong_period_slots", ())
+            ),
+            missing_operand_slots=tuple(
+                str(item) for item in binder.get("missing_operand_slots", ())
+            ),
+            conflict_ids=tuple(str(item) for item in binder.get("conflict_ids", ())),
+            bound_evidence_ids=tuple(
+                str(item) for item in binder.get("bound_evidence_ids", ())
+            ),
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -109,6 +167,19 @@ class V2ExecutionTrace:
             "same_tool_retry_count": self.same_tool_retry_count,
             "no_progress_count": self.no_progress_count,
             "terminal_state": self.terminal_state,
+            "retrieval_rounds": copy.deepcopy(list(self.retrieval_rounds)),
+            "candidate_count_per_round": list(self.candidate_count_per_round),
+            "candidate_ids_per_round": [
+                list(item) for item in self.candidate_ids_per_round
+            ],
+            "targeted_slot_ids": list(self.targeted_slot_ids),
+            "binder_status_per_round": list(self.binder_status_per_round),
+            "bound_slot_ids": list(self.bound_slot_ids),
+            "missing_slot_ids": list(self.missing_slot_ids),
+            "wrong_period_slots": list(self.wrong_period_slots),
+            "missing_operand_slots": list(self.missing_operand_slots),
+            "conflict_ids": list(self.conflict_ids),
+            "bound_evidence_ids": list(self.bound_evidence_ids),
         }
 
 
@@ -120,12 +191,36 @@ class _EvaluatorAdapter:
         delegate: Any,
         *,
         intent: Intent,
+        errors: list[Exception] | None = None,
     ) -> None:
         self.delegate = delegate
         self.intent = intent
+        self.errors = errors if errors is not None else []
+
+    @property
+    def bound_evidence_ids(self) -> tuple[str, ...]:
+        values = getattr(self.delegate, "last_bound_evidence_ids", ())
+        return tuple(str(item) for item in values)
+
+    @property
+    def citation_ids(self) -> tuple[str, ...]:
+        values = getattr(self.delegate, "last_citation_ids", ())
+        return tuple(str(item) for item in values)
+
+    def trace_snapshot(self) -> Mapping[str, Any]:
+        getter = getattr(self.delegate, "trace_snapshot", None)
+        if callable(getter):
+            snapshot = getter()
+            if isinstance(snapshot, Mapping):
+                return snapshot
+        return {}
 
     def evaluate(self, state: AdaptiveRAGStateV1) -> EvidenceEvaluationV1:
-        result = self.delegate.evaluate(state)
+        try:
+            result = self.delegate.evaluate(state)
+        except Exception as exc:
+            self.errors.append(exc)
+            raise
         if not isinstance(result, EvidenceEvaluationV1):
             raise TypeError("evidence evaluator must return EvidenceEvaluationV1")
         reasons = list(result.reason_codes)
@@ -234,20 +329,38 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             "operand_slots": [slot.slot_id for slot in plan.required_slots],
         }
 
-    @staticmethod
+    def _capability_trace(self) -> dict[str, Any]:
+        trace: dict[str, Any] = {}
+        for name, port in (
+            ("retrieval", self.capabilities.retrieval),
+            ("binder", self.capabilities.evidence_evaluator),
+        ):
+            getter = getattr(port, "trace_snapshot", None)
+            if callable(getter):
+                try:
+                    snapshot = getter()
+                except Exception:
+                    snapshot = {}
+                if isinstance(snapshot, Mapping):
+                    trace[name] = snapshot
+        return trace
+
     def _trace(
+        self,
         request: V2ExecutionRequest,
         plan_id: str | None,
         state: AdaptiveRAGStateV1 | None,
         reason_codes: Iterable[str],
         terminal_state: str,
     ) -> V2ExecutionTrace:
+        capability_trace = self._capability_trace()
         if state is not None:
             return V2ExecutionTrace.from_state(
                 request_id=request.request_id,
                 plan_id=plan_id,
                 state=state,
                 reason_codes=reason_codes,
+                capability_trace=capability_trace,
             )
         return V2ExecutionTrace(
             request_id=request.request_id,
@@ -260,6 +373,12 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             same_tool_retry_count=0,
             no_progress_count=0,
             terminal_state=terminal_state,
+            bound_evidence_ids=tuple(
+                str(item)
+                for item in capability_trace.get("binder", {}).get(
+                    "bound_evidence_ids", ()
+                )
+            ),
         )
 
     @staticmethod
@@ -272,7 +391,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
     ) -> dict[str, Any]:
         return {
             "coordinator": "bounded_trusted_v2",
-            "config_version": "tv2-02",
+            "config_version": "tv2-03",
             "production_routing": False,
             "downstream_execution_wired": downstream_execution_wired,
             "calculation_port_configured": calculation_port_configured,
@@ -290,6 +409,8 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         reason_codes: Iterable[str],
         status: V2ExecutionStatus,
         answer: str | None = None,
+        evidence_ids: Iterable[str] = (),
+        citation_ids: Iterable[str] = (),
         terminal_state: str,
     ) -> V2ExecutionOutcome:
         reason_list = _stable_unique(reason_codes)
@@ -308,6 +429,8 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         return V2ExecutionOutcome(
             status=status,
             answer=answer,
+            evidence_ids=_stable_unique(evidence_ids),
+            citation_ids=_stable_unique(citation_ids),
             reason_codes=reason_list,
             release_status=release_status,
             route=plan.intent.value if plan is not None else None,
@@ -416,6 +539,11 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         )
         capability_errors: list[Exception] = []
         evaluator = self.capabilities.evidence_evaluator or EvidenceStateEvaluatorV1()
+        evaluator_adapter = _EvaluatorAdapter(
+            evaluator,
+            intent=plan.intent,
+            errors=capability_errors,
+        )
         tools: dict[str, Any] = {}
         if self.capabilities.retrieval is not None:
             for capability in ToolCapability:
@@ -442,7 +570,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
 
         try:
             bounded_result = BoundedAdaptiveRAGV1(
-                evaluator=_EvaluatorAdapter(evaluator, intent=plan.intent),
+                evaluator=evaluator_adapter,
                 budget=self.budget,
             ).run(
                 state,
@@ -457,7 +585,13 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 plan=plan,
                 plan_id=plan_id,
                 state=state,
-                reason_codes=["COORDINATOR_EXCEPTION"],
+                reason_codes=(
+                    ["CAPABILITY_EXCEPTION"]
+                    if capability_errors
+                    else ["COORDINATOR_EXCEPTION"]
+                ),
+                evidence_ids=evaluator_adapter.bound_evidence_ids,
+                citation_ids=evaluator_adapter.citation_ids,
                 status=V2ExecutionStatus.EXECUTION_ERROR,
                 terminal_state="EXECUTION_ERROR",
             )
@@ -469,6 +603,8 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 plan_id=plan_id,
                 state=state,
                 reason_codes=["CAPABILITY_EXCEPTION"],
+                evidence_ids=evaluator_adapter.bound_evidence_ids,
+                citation_ids=evaluator_adapter.citation_ids,
                 status=V2ExecutionStatus.EXECUTION_ERROR,
                 terminal_state="EXECUTION_ERROR",
             )
@@ -495,6 +631,9 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         if final_state == "FAIL_CLOSED" and not reasons:
             reasons.append("FAIL_CLOSED")
 
+        bound_evidence_ids = evaluator_adapter.bound_evidence_ids
+        citation_ids = evaluator_adapter.citation_ids
+
         if final_state == "RELEASE" and self.allow_test_release:
             output = bounded_result.output
             if not isinstance(output, str) or not output.strip():
@@ -504,6 +643,8 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                     plan_id=plan_id,
                     state=state,
                     reason_codes=["GENERATION_CONTRACT_INVALID"],
+                    evidence_ids=bound_evidence_ids,
+                    citation_ids=citation_ids,
                     status=V2ExecutionStatus.EXECUTION_ERROR,
                     terminal_state="GENERATE",
                 )
@@ -513,6 +654,8 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 plan_id=plan_id,
                 state=state,
                 reason_codes=reasons,
+                evidence_ids=bound_evidence_ids,
+                citation_ids=citation_ids,
                 status=V2ExecutionStatus.READY_FOR_RELEASE,
                 answer=output,
                 terminal_state=final_state,
@@ -524,6 +667,8 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             plan_id=plan_id,
             state=state,
             reason_codes=reasons,
+            evidence_ids=bound_evidence_ids,
+            citation_ids=citation_ids,
             status=V2ExecutionStatus.FAIL_CLOSED,
             terminal_state=final_state,
         )

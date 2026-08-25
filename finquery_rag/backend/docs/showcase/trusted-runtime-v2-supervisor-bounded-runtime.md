@@ -132,13 +132,15 @@ TV2-02 uses CPU-safe injected fakes only:
 - GPU calls = false;
 - benchmark rerun = false.
 
-Focused control-loop verification is complete. The full backend environment
-verification remains pending because the existing environment still has the
-previously audited numpy/openai and Python-version compatibility gaps:
+Focused control-loop verification is complete. At the TV2-02 checkpoint the full backend environment was still pending.
+TV2-03P0 subsequently verified the canonical Python 3.12.2 environment,
+locked dependencies, NumPy/OpenAI/Jose, StrEnum, and the relevant R4/Binder
+imports. The pending checkpoint is therefore closed:
 
-FULL_BACKEND_ENVIRONMENT_VERIFICATION = PENDING
+FULL_BACKEND_ENVIRONMENT_VERIFICATION = PASS (closed in TV2-03P0)
 
-That environment must be completed before TV2-06 V2 shadow execution.
+TV2-03 remains CPU-safe and does not call external models or rerun consumed
+benchmarks.
 
 ## Production graph remains unchanged
 

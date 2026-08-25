@@ -36,6 +36,18 @@ from .trusted_v2_capabilities import (
     RetrievalCapability,
     TrustedV2CapabilityPorts,
 )
+from .trusted_v2_binder import (
+    SemanticBinderCapabilityError,
+    SemanticEvidenceEvaluationCapability,
+)
+from .trusted_v2_r4 import (
+    CandidateDirectR4Policy,
+    R4CandidateSchemaError,
+    R4RetrievalCapability,
+    R4RetrievalCapabilityError,
+    R4RetrievalRequest,
+    R4RetrievalResult,
+)
 from .trusted_v2_contracts import (
     TrustedV2ExecutionCoordinator,
     V2ExecutionOutcome,
@@ -70,6 +82,14 @@ __all__ = [
     "ReleaseValidationCapability",
     "RetrievalCapability",
     "TrustedV2CapabilityPorts",
+    "SemanticBinderCapabilityError",
+    "SemanticEvidenceEvaluationCapability",
+    "CandidateDirectR4Policy",
+    "R4CandidateSchemaError",
+    "R4RetrievalCapability",
+    "R4RetrievalCapabilityError",
+    "R4RetrievalRequest",
+    "R4RetrievalResult",
     "TrustedV2ExecutionCoordinator",
     "V2ExecutionOutcome",
     "V2ExecutionRequest",

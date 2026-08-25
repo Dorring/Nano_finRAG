@@ -1,0 +1,18 @@
+{
+  "base_tv2_02": "3750263dd51cb9ab547014d85cc7a810743cb658",
+  "benchmark_rerun": false,
+  "binder": "REAL_WIRED",
+  "bounded_runtime": "WIRED",
+  "calculator": "NOT_REAL_WIRED",
+  "decision": "PASS",
+  "evidence_recovery_loop": "REAL_WIRED",
+  "full_backend_environment_verification": "PASS",
+  "generator": "NOT_REAL_WIRED",
+  "production_financial_runtime": "V1",
+  "production_v2_routing": "OFF",
+  "r4": "REAL_WIRED",
+  "status": "R4_BINDER_REAL_WIRED",
+  "supervisor_plan": "WIRED",
+  "task": "TV2-03",
+  "validator_release": "NOT_REAL_WIRED"
+}

@@ -1,0 +1,67 @@
+{
+  "binder_rounds": [
+    {
+      "missing_slot_ids": [
+        "revenue"
+      ],
+      "reason_codes": [
+        "WRONG_PERIOD"
+      ],
+      "round": 0,
+      "selected_fact_ids": [],
+      "status": "MISSING"
+    },
+    {
+      "bound_evidence_ids": [
+        "RIGHT"
+      ],
+      "bound_slot_ids": [
+        "revenue"
+      ],
+      "reason_codes": [],
+      "round": 1,
+      "selected_fact_ids": [
+        "RIGHT"
+      ],
+      "status": "BOUND"
+    }
+  ],
+  "bound_evidence_ids": [
+    "RIGHT"
+  ],
+  "candidate_ids_per_round": [
+    [
+      "WRONG"
+    ],
+    [
+      "RIGHT"
+    ]
+  ],
+  "production_v2_routing": "OFF",
+  "request_id": "fixture-wrong-period",
+  "retrieval_rounds": [
+    {
+      "candidate_count": 1,
+      "candidate_ids": [
+        "WRONG"
+      ],
+      "reason_code": "MISSING_SLOT",
+      "round": 0,
+      "target_slot_ids": [
+        "revenue"
+      ]
+    },
+    {
+      "candidate_count": 1,
+      "candidate_ids": [
+        "RIGHT"
+      ],
+      "reason_code": "WRONG_PERIOD",
+      "round": 1,
+      "target_slot_ids": [
+        "revenue"
+      ]
+    }
+  ],
+  "task": "TV2-03"
+}
