@@ -13,7 +13,7 @@ from ..conversation.sqlite_store import ConversationStateConflictError
 from .query_execution_service import QueryExecutionService
 from .response_mapper import to_legacy_query_dict
 from .runtime_adapters import LegacyFinancialRuntimeAdapter
-from .runtime_contract import FinancialQueryRequest, FinancialQueryResult
+from .runtime_contract import FinancialQARuntime, FinancialQueryRequest, FinancialQueryResult
 
 logger = logging.getLogger(__name__)
 
@@ -71,6 +71,9 @@ class QueryLifecycleService:
         active_query_is_out_of_scope: Callable[[str], bool],
         assistant_session_metadata: Callable[..., dict[str, Any]],
         execution_service_factory: Callable[[Any], QueryExecutionService] = QueryExecutionService,
+        financial_runtime_factory: Callable[
+            [Any, FinancialQueryRequest], FinancialQARuntime
+        ] | None = None,
     ) -> None:
         self.session_manager = session_manager
         self.memory_store = memory_store
@@ -81,6 +84,7 @@ class QueryLifecycleService:
         self.active_query_is_out_of_scope = active_query_is_out_of_scope
         self.assistant_session_metadata = assistant_session_metadata
         self.execution_service_factory = execution_service_factory
+        self.financial_runtime_factory = financial_runtime_factory
 
     @staticmethod
     def _value(value: Any) -> str:
@@ -249,9 +253,14 @@ class QueryLifecycleService:
         engine = self.get_rag_engine()
         runtime: FinancialQueryResult | None = None
         if self.financial_runtime_adapter_enabled():
-            runtime = await self.execution_service_factory(
-                LegacyFinancialRuntimeAdapter(engine)
-            ).execute(runtime_request)
+            runtime_impl = (
+                self.financial_runtime_factory(engine, runtime_request)
+                if self.financial_runtime_factory is not None
+                else LegacyFinancialRuntimeAdapter(engine)
+            )
+            runtime = await self.execution_service_factory(runtime_impl).execute(
+                runtime_request
+            )
             legacy = to_legacy_query_dict(runtime)
         else:
             kwargs = {

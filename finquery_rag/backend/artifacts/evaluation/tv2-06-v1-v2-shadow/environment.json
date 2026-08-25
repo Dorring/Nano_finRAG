@@ -1,0 +1,16 @@
+{
+  "api_model_note": "Endpoint smoke uses test-only offline embedding constructor; production vector-store model remains unchanged.",
+  "canonical_environment": "Python 3.12.2 backend .venv",
+  "packages": {
+    "bcrypt": "5.0.0",
+    "fastapi": "0.139.2",
+    "numpy": "1.26.4",
+    "openai": "2.38.0",
+    "pydantic": "2.13.4",
+    "pytest": "7.4.4",
+    "python-jose": "3.5.0"
+  },
+  "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+  "python": "3.12.2",
+  "python_executable": "/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat/.worktrees/codex-conversation-shadow-i5-r1/finquery_rag/backend/.venv/bin/python"
+}

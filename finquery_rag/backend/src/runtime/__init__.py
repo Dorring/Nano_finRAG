@@ -27,6 +27,17 @@ from .runtime_contract import (
     RuntimeStatus,
     RuntimeVersion,
 )
+from .runtime_router import FinancialRuntimeRouter
+from .shadow_comparator import ShadowComparator, ShadowComparison
+from .shadow_contracts import (
+    FinancialRuntimeMode,
+    FinancialRuntimeModeError,
+    InMemoryShadowObservationSink,
+    LoggingShadowObservationSink,
+    ShadowObservationSink,
+    V2ShadowObservation,
+    resolve_financial_runtime_mode,
+)
 from .trusted_v2_adapter import TrustedFinancialRuntimeV2
 from .trusted_v2_factory import TrustedV2FactoryError, build_trusted_v2_runtime
 from .trusted_v2_capabilities import (
@@ -95,6 +106,16 @@ __all__ = [
     "RuntimeRouterMode",
     "RuntimeStatus",
     "RuntimeVersion",
+    "FinancialRuntimeMode",
+    "FinancialRuntimeModeError",
+    "FinancialRuntimeRouter",
+    "InMemoryShadowObservationSink",
+    "LoggingShadowObservationSink",
+    "ShadowComparator",
+    "ShadowComparison",
+    "ShadowObservationSink",
+    "V2ShadowObservation",
+    "resolve_financial_runtime_mode",
     "UnsupportedResolvedQueryError",
     "TrustedFinancialRuntimeV2",
     "TrustedV2FactoryError",

@@ -5,6 +5,7 @@ import logging
 from openai import OpenAI
 import json
 import time
+from typing import Any
 
 from .services.auth import create_access_token, get_current_user, get_password_hash, verify_password
 from .services.ingest import get_ingest_lineage, process_pdf
@@ -43,7 +44,16 @@ from .models.schemas import (
 from .models.user import User #User ORM 模型
 from .database import get_db, engine, Base #SQLAlchemy 数据库连接和基础模型
 from sqlalchemy.orm import Session #SQLAlchemy 会话管理
-from .runtime import QueryExecutionService
+from .runtime import (
+    FinancialQARuntime,
+    FinancialQueryRequest,
+    FinancialRuntimeModeError,
+    FinancialRuntimeRouter,
+    LegacyFinancialRuntimeAdapter,
+    QueryExecutionService,
+    TrustedFinancialRuntimeV2,
+    resolve_financial_runtime_mode,
+)
 from .runtime.query_lifecycle import (
     QueryLifecycleService,
     UserTurnExecutionRequest,
@@ -55,6 +65,7 @@ from .conversation.shadow_service import ConversationShadowService
 from .conversation.sqlite_store import SQLiteConversationStateStore
 
 from datetime import timedelta, datetime
+from collections.abc import Callable
 import os
 import uuid
 import shutil
@@ -113,6 +124,25 @@ session_manager = SessionManager()
 memory_store = UserMemoryStore()
 feedback_store = FeedbackStore()
 conversation_shadow_service: ConversationShadowService | None = None
+_trusted_v2_shadow_runtime_builder: (
+    Callable[[Any, FinancialQueryRequest], FinancialQARuntime] | None
+) = None
+
+
+def configure_trusted_v2_shadow_runtime_builder(
+    builder: Callable[[Any, FinancialQueryRequest], FinancialQARuntime] | None,
+) -> None:
+    """Inject the real TV2-05 factory for an explicit shadow deployment.
+
+    The default remains unconfigured so a deployment cannot silently create a
+    fake V2 or fall back to V1 while claiming shadow mode.
+    """
+
+    global _trusted_v2_shadow_runtime_builder
+    if builder is not None and not callable(builder):
+        raise TypeError("shadow runtime builder must be callable or None")
+    _trusted_v2_shadow_runtime_builder = builder
+
 
 def get_rag_engine():
     """
@@ -159,9 +189,61 @@ def _normalize_api_pagination(limit, offset, default_limit=50, max_limit=1000):
 
 
 def _financial_runtime_adapter_enabled() -> bool:
-    """Return the I3 migration flag without creating a V1/V2 router."""
+    """Return the I3 flag, requiring the shared runtime port for shadow mode."""
     value = os.getenv("FINANCIAL_RUNTIME_ADAPTER_ENABLED", "true")
-    return value.strip().lower() not in {"0", "false", "off", "no"}
+    enabled = value.strip().lower() not in {"0", "false", "off", "no"}
+    if _financial_runtime_mode() != "v1" and not enabled:
+        raise FinancialRuntimeModeError(
+            "FINANCIAL_RUNTIME_MODE=shadow requires "
+            "FINANCIAL_RUNTIME_ADAPTER_ENABLED=true",
+        )
+    return enabled
+
+
+def _financial_runtime_mode() -> str:
+    return resolve_financial_runtime_mode(environ=os.environ)
+
+
+def _financial_runtime_shadow_timeout_ms() -> int:
+    value = os.getenv("V2_SHADOW_TIMEOUT_MS", "5000")
+    try:
+        timeout = int(value)
+    except (TypeError, ValueError) as exc:
+        raise FinancialRuntimeModeError(
+            "V2_SHADOW_TIMEOUT_MS must be a positive integer",
+        ) from exc
+    if timeout <= 0:
+        raise FinancialRuntimeModeError(
+            "V2_SHADOW_TIMEOUT_MS must be a positive integer",
+        )
+    return timeout
+
+
+def _build_financial_runtime(
+    engine: Any,
+    request: FinancialQueryRequest,
+) -> FinancialQARuntime:
+    primary = LegacyFinancialRuntimeAdapter(engine)
+    mode = _financial_runtime_mode()
+    if mode == "v1":
+        return primary
+    builder = _trusted_v2_shadow_runtime_builder
+    if builder is None:
+        raise FinancialRuntimeModeError(
+            "FINANCIAL_RUNTIME_MODE=shadow requires an explicit real "
+            "TV2-05 TrustedFinancialRuntimeV2 factory",
+        )
+    shadow = builder(engine, request)
+    if not isinstance(shadow, TrustedFinancialRuntimeV2):
+        raise FinancialRuntimeModeError(
+            "shadow runtime builder must return TrustedFinancialRuntimeV2",
+        )
+    return FinancialRuntimeRouter(
+        primary,
+        shadow_runtime=shadow,
+        mode=mode,
+        shadow_timeout_ms=_financial_runtime_shadow_timeout_ms(),
+    )
 
 
 def _multiturn_context_mode() -> str:
@@ -1064,7 +1146,8 @@ def _build_user_turn_execution_request(
 
 
 def _get_query_lifecycle_service() -> QueryLifecycleService:
-    """Build the shared business lifecycle from the existing V1 dependencies."""
+    """Build the shared lifecycle with the selected runtime port."""
+    _financial_runtime_mode()
     return QueryLifecycleService(
         session_manager=session_manager,
         memory_store=memory_store,
@@ -1075,6 +1158,7 @@ def _get_query_lifecycle_service() -> QueryLifecycleService:
         active_query_is_out_of_scope=_active_query_is_out_of_scope,
         assistant_session_metadata=_assistant_session_metadata,
         execution_service_factory=QueryExecutionService,
+        financial_runtime_factory=_build_financial_runtime,
     )
 
 

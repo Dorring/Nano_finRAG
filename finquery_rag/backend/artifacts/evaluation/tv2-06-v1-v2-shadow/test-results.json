@@ -1,0 +1,21 @@
+{
+  "combined_tv2_06_tests": {
+    "failed": 0,
+    "passed": 103,
+    "skipped": 0
+  },
+  "focused_shadow_and_endpoint_tests": {
+    "failed": 0,
+    "passed": 13,
+    "skipped": 0
+  },
+  "old_api_suite": {
+    "reason": "existing vector_store import attempts unavailable HuggingFace metadata network access",
+    "status": "not_counted"
+  },
+  "runtime_regression_suite": {
+    "failed": 0,
+    "passed": 90,
+    "skipped": 0
+  }
+}

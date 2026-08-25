@@ -1,0 +1,19 @@
+{
+  "case_ids": [
+    "fact_release",
+    "calculation_release",
+    "evidence_fail_closed",
+    "repair_once_release"
+  ],
+  "official_response_diff_caused_by_v2_shadow": 0,
+  "official_runtime": "V1",
+  "phase": "TV2-06",
+  "real_tv2_factory_smokes": 4,
+  "shadow_runtime": "V2",
+  "status": "V1_V2_SHADOW_EXECUTION",
+  "v1_to_v2_fallback": 0,
+  "v2_business_side_effects": 0,
+  "v2_internal_v1_fallback": 0,
+  "v2_shadow_to_conversation_state_writes": 0,
+  "v2_shadow_to_session_writes": 0
+}

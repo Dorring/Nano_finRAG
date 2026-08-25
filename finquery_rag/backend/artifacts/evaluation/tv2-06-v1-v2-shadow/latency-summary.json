@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "case_id": "fact_release",
+      "critical_path_elapsed_ms": 3.336,
+      "v1_latency_ms": 2.9728219960816205,
+      "v2_latency_ms": 2.973353024572134
+    },
+    {
+      "case_id": "calculation_release",
+      "critical_path_elapsed_ms": 1.781,
+      "v1_latency_ms": 1.5865190071053803,
+      "v2_latency_ms": 1.5866289904806763
+    },
+    {
+      "case_id": "evidence_fail_closed",
+      "critical_path_elapsed_ms": 1.135,
+      "v1_latency_ms": 0.9735039784573019,
+      "v2_latency_ms": 0.9738049993757159
+    },
+    {
+      "case_id": "repair_once_release",
+      "critical_path_elapsed_ms": 1.575,
+      "v1_latency_ms": 1.412702986272052,
+      "v2_latency_ms": 1.4130740019027144
+    }
+  ],
+  "note": "Small deterministic shadow smoke; no performance threshold claimed."
+}
