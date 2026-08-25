@@ -24,8 +24,9 @@ FinancialQueryRequest preserves the current production identity boundary:
 - original_query is the immutable user wording.
 - standalone_query is the query passed to the financial runtime and defaults
   to original_query.
-- query_as_resolved is an explicit future rewrite gate. It is only data in
-  I1; no legacy rewrite behavior is changed.
+- query_as_resolved is the explicit Conversation-to-financial-runtime rewrite
+  gate. It remains false in off/shadow modes; active mode sets it true only
+  after a successful contextual resolution.
 - Conversation and request metadata are extension maps. No required
   tenant_id is introduced.
 
@@ -78,11 +79,12 @@ The adapter converts the contract user_id string to the numeric user ID
 required by the current V1 vector-store scope. It does not own session
 loading, message persistence, or session deletion.
 
-During I2, query_as_resolved=true fails fast with
-UnsupportedResolvedQueryError. A changed standalone_query without that flag
-also fails fast. This is intentional because the legacy V1 rewrite bypass is
-not implemented yet; silently executing a pre-resolved query would permit a
-future double rewrite.
+During I2, query_as_resolved=true failed fast with
+UnsupportedResolvedQueryError. I6 replaces that temporary guard with an
+explicit flag through RAGEngine into RAGOrchestrator: resolved requests bypass
+the legacy rewrite, while a changed standalone_query without the flag still
+fails fast. This keeps the bypass at the actual rewrite gate rather than
+inferring it from conversation_history.
 
 V1 result mapping is conservative:
 
@@ -121,9 +123,11 @@ existing V1 RAG pipeline
 FINANCIAL_RUNTIME_ADAPTER_ENABLED defaults to enabled. Setting it to
 false, 0, off, or no retains the original direct RAGEngine.query call as a
 deterministic rollback/parity path. Both paths use the same engine instance
-and the same V1 arguments. The endpoint always constructs
-original_query == standalone_query with query_as_resolved == false;
-conversation resolution and legacy-rewrite bypass remain future work.
+and the same V1 arguments. The endpoint constructs
+original_query == standalone_query with query_as_resolved == false in off and
+shadow modes. I6 adds an explicit on mode where ConversationResolution can
+supply standalone_query and the active endpoint sends query_as_resolved=true;
+the default remains off.
 
 The adapter result is mapped back to the existing QueryResponse payload.
 No public response fields, session lifecycle, validation behavior, or V1

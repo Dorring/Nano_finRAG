@@ -303,7 +303,7 @@ def test_stateless_shadow_is_bypassed_without_affecting_v1(tmp_path):
     assert observations[0]["shadow_status"] == "BYPASSED"
 
 
-def test_mode_contract_has_no_active_on_state():
+def test_mode_contract_supports_active_on_state():
     assert resolve_multiturn_context_mode(environ={}) == "off"
     assert (
         resolve_multiturn_context_mode(environ={"MULTITURN_CONTEXT_MODE": "shadow"})
