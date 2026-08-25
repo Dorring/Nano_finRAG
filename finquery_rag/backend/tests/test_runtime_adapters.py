@@ -80,7 +80,7 @@ def test_adapter_implements_runtime_protocol_and_maps_v1_answer() -> None:
             "doc_names": ["report.pdf"],
             "user_id": 7,
             "n_results": 3,
-            "conversation_history": [],
+            "conversation_history": None,
             "memory_profile": None,
         },
     ]
@@ -160,6 +160,21 @@ def test_adapter_preserves_request_options_without_session_lifecycle() -> None:
         "memory_profile": {"active_metric": "revenue"},
     }
 
+
+def test_adapter_preserves_none_conversation_history() -> None:
+    engine = FakeRAGEngine()
+
+    asyncio.run(adapter_result(engine, _request(conversation_history=None)))
+
+    assert engine.calls[0]["conversation_history"] is None
+
+
+def test_adapter_preserves_explicit_empty_conversation_history() -> None:
+    engine = FakeRAGEngine()
+
+    asyncio.run(adapter_result(engine, _request(conversation_history=[])))
+
+    assert engine.calls[0]["conversation_history"] == []
 
 def test_query_as_resolved_fails_fast_before_engine_call() -> None:
     engine = FakeRAGEngine()

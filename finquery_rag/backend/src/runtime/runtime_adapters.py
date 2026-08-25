@@ -158,7 +158,7 @@ class LegacyFinancialRuntimeAdapter(FinancialQARuntime):
     ) -> tuple[
         list[str] | None,
         int,
-        list[dict[str, Any]],
+        list[dict[str, Any]] | None,
         dict[str, Any] | None,
     ]:
         metadata = request.request_metadata
@@ -176,7 +176,7 @@ class LegacyFinancialRuntimeAdapter(FinancialQARuntime):
                 "request_metadata.n_results must be a positive integer",
             )
 
-        history_value = metadata.get("conversation_history", [])
+        history_value = metadata.get("conversation_history")
         conversation_history = cls._history_list(history_value)
         memory_profile_value = metadata.get("memory_profile")
         if memory_profile_value is not None and not isinstance(
@@ -214,9 +214,9 @@ class LegacyFinancialRuntimeAdapter(FinancialQARuntime):
         return result
 
     @staticmethod
-    def _history_list(value: Any) -> list[dict[str, Any]]:
+    def _history_list(value: Any) -> list[dict[str, Any]] | None:
         if value is None:
-            return []
+            return None
         if isinstance(value, (str, bytes)) or not isinstance(value, Iterable):
             raise LegacyFinancialRuntimeAdapterError(
                 "request_metadata.conversation_history must be a list",
