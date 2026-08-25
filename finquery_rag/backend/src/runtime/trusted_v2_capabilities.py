@@ -53,8 +53,8 @@ class CalculationCapability(Protocol):
 class GenerationCapability(Protocol):
     """Reserved downstream generation port for explicit test wiring."""
 
-    def generate(self, state: AdaptiveRAGStateV1) -> str:
-        """Return a candidate answer; this port is not release authority."""
+    def generate(self, state: AdaptiveRAGStateV1) -> Any:
+        """Return a candidate result; this port is not release authority."""
         ...
 
 

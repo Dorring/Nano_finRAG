@@ -40,6 +40,18 @@ from .trusted_v2_binder import (
     SemanticBinderCapabilityError,
     SemanticEvidenceEvaluationCapability,
 )
+from .trusted_v2_calculation import (
+    DeterministicCalculationCapability,
+    DeterministicCalculationCapabilityError,
+    SUPPORTED_CALCULATION_OPERATIONS,
+)
+from .trusted_v2_generation import (
+    CandidateExecutionResult,
+    CandidateGenerationCapabilityError,
+    DeterministicFactRenderer,
+    LocalSpecialistGenerationAdapter,
+    TrustedV2GenerationCapability,
+)
 from .trusted_v2_r4 import (
     CandidateDirectR4Policy,
     R4CandidateSchemaError,
@@ -84,6 +96,14 @@ __all__ = [
     "TrustedV2CapabilityPorts",
     "SemanticBinderCapabilityError",
     "SemanticEvidenceEvaluationCapability",
+    "DeterministicCalculationCapability",
+    "DeterministicCalculationCapabilityError",
+    "SUPPORTED_CALCULATION_OPERATIONS",
+    "CandidateExecutionResult",
+    "CandidateGenerationCapabilityError",
+    "DeterministicFactRenderer",
+    "LocalSpecialistGenerationAdapter",
+    "TrustedV2GenerationCapability",
     "CandidateDirectR4Policy",
     "R4CandidateSchemaError",
     "R4RetrievalCapability",

@@ -1,0 +1,19 @@
+{
+  "calculation_id": "stable C1-derived structured identifier",
+  "executor": "existing finance calculation executor",
+  "missing_operands": "blocked without invoking executor",
+  "operand_text_parsing": false,
+  "operands": "structured bound evidence only",
+  "operations": [
+    "ABSOLUTE_CHANGE",
+    "PERCENT_CHANGE",
+    "PERCENTAGE_POINT_CHANGE",
+    "RATIO",
+    "MARGIN",
+    "YOY_GROWTH",
+    "CAGR",
+    "WEIGHTED_AVERAGE",
+    "SCALE_CONVERSION"
+  ],
+  "scale_conversion": "source and target scales are passed explicitly to the existing executor"
+}

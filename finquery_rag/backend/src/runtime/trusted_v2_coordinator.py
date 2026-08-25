@@ -28,6 +28,7 @@ from rag_v2.supervisor import SupervisorService, validate_plan_v2_01
 
 from .runtime_contract import ReleaseStatus
 from .trusted_v2_capabilities import TrustedV2CapabilityPorts
+from .trusted_v2_generation import CandidateExecutionResult
 from .trusted_v2_contracts import (
     TrustedV2ExecutionCoordinator,
     V2ExecutionOutcome,
@@ -84,6 +85,15 @@ class V2ExecutionTrace:
     missing_operand_slots: tuple[str, ...] = ()
     conflict_ids: tuple[str, ...] = ()
     bound_evidence_ids: tuple[str, ...] = ()
+    generation_route: str | None = None
+    route_reason: str | None = None
+    calculator_invoked: bool = False
+    renderer_invoked: bool = False
+    specialist_invoked: bool = False
+    calculation_result_id: str | None = None
+    candidate_generation_id: str | None = None
+    candidate_ready: bool = False
+    validation_pending: bool = False
 
     @classmethod
     def from_state(
@@ -99,6 +109,8 @@ class V2ExecutionTrace:
         capability_trace = capability_trace or {}
         retrieval = capability_trace.get("retrieval", {})
         binder = capability_trace.get("binder", {})
+        calculation = capability_trace.get("calculation", {})
+        generation = capability_trace.get("generation", {})
         trace_reason_codes = list(reason_codes)
         for record in binder.get("binder_rounds", ()):
             if isinstance(record, Mapping):
@@ -153,6 +165,31 @@ class V2ExecutionTrace:
             bound_evidence_ids=tuple(
                 str(item) for item in binder.get("bound_evidence_ids", ())
             ),
+            generation_route=(
+                str(generation["generation_route"])
+                if generation.get("generation_route")
+                else None
+            ),
+            route_reason=(
+                str(generation["route_reason"])
+                if generation.get("route_reason")
+                else None
+            ),
+            calculator_invoked=bool(calculation.get("calculator_invoked", False)),
+            renderer_invoked=bool(generation.get("renderer_invoked", False)),
+            specialist_invoked=bool(generation.get("specialist_invoked", False)),
+            calculation_result_id=(
+                str(calculation["calculation_result_id"])
+                if calculation.get("calculation_result_id")
+                else None
+            ),
+            candidate_generation_id=(
+                str(generation["candidate_generation_id"])
+                if generation.get("candidate_generation_id")
+                else None
+            ),
+            candidate_ready=bool(generation.get("candidate_ready", False)),
+            validation_pending=bool(generation.get("validation_pending", False)),
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -180,6 +217,15 @@ class V2ExecutionTrace:
             "missing_operand_slots": list(self.missing_operand_slots),
             "conflict_ids": list(self.conflict_ids),
             "bound_evidence_ids": list(self.bound_evidence_ids),
+            "generation_route": self.generation_route,
+            "route_reason": self.route_reason,
+            "calculator_invoked": self.calculator_invoked,
+            "renderer_invoked": self.renderer_invoked,
+            "specialist_invoked": self.specialist_invoked,
+            "calculation_result_id": self.calculation_result_id,
+            "candidate_generation_id": self.candidate_generation_id,
+            "candidate_ready": self.candidate_ready,
+            "validation_pending": self.validation_pending,
         }
 
 
@@ -207,6 +253,17 @@ class _EvaluatorAdapter:
         values = getattr(self.delegate, "last_citation_ids", ())
         return tuple(str(item) for item in values)
 
+    @property
+    def bound_slot_bindings(self) -> dict[str, tuple[str, ...]]:
+        values = getattr(self.delegate, "last_bound_slot_bindings", {})
+        if not isinstance(values, Mapping):
+            return {}
+        return {
+            str(key): tuple(str(item) for item in value)
+            for key, value in values.items()
+            if isinstance(value, (list, tuple, set))
+        }
+
     def trace_snapshot(self) -> Mapping[str, Any]:
         getter = getattr(self.delegate, "trace_snapshot", None)
         if callable(getter):
@@ -223,6 +280,10 @@ class _EvaluatorAdapter:
             raise
         if not isinstance(result, EvidenceEvaluationV1):
             raise TypeError("evidence evaluator must return EvidenceEvaluationV1")
+        state.bound_evidence_ids = list(self.bound_evidence_ids)
+        state.bound_slot_bindings = {
+            key: list(value) for key, value in self.bound_slot_bindings.items()
+        }
         reasons = list(result.reason_codes)
         if (
             self.intent is Intent.CALCULATION
@@ -321,19 +382,38 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         return slots
 
     @staticmethod
-    def _calculation_requirements(plan: SupervisorPlan) -> dict[str, Any]:
+    def _calculation_requirements(
+        plan: SupervisorPlan,
+        request_metadata: Mapping[str, Any] | None = None,
+    ) -> dict[str, Any]:
         if plan.intent is not Intent.CALCULATION:
             return {}
-        return {
+        requirements: dict[str, Any] = {
             "operation": plan.operation,
             "operand_slots": [slot.slot_id for slot in plan.required_slots],
         }
+        metadata = request_metadata or {}
+        calculation_metadata = metadata.get("calculation")
+        if isinstance(calculation_metadata, Mapping):
+            metadata = {**dict(metadata), **dict(calculation_metadata)}
+        for key in (
+            "source_scale",
+            "target_scale",
+            "precision",
+            "target_metric",
+            "label",
+        ):
+            if key in metadata and metadata[key] is not None:
+                requirements[key] = metadata[key]
+        return requirements
 
     def _capability_trace(self) -> dict[str, Any]:
         trace: dict[str, Any] = {}
         for name, port in (
             ("retrieval", self.capabilities.retrieval),
             ("binder", self.capabilities.evidence_evaluator),
+            ("calculation", self.capabilities.calculation),
+            ("generation", self.capabilities.generation),
         ):
             getter = getattr(port, "trace_snapshot", None)
             if callable(getter):
@@ -388,16 +468,160 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         terminal_state: str,
         downstream_execution_wired: bool,
         calculation_port_configured: bool,
+        candidate_generation_wired: bool,
+        extra: Mapping[str, Any] | None = None,
     ) -> dict[str, Any]:
-        return {
+        payload = {
             "coordinator": "bounded_trusted_v2",
-            "config_version": "tv2-03",
+            "config_version": "tv2-04" if candidate_generation_wired else "tv2-03",
             "production_routing": False,
             "downstream_execution_wired": downstream_execution_wired,
             "calculation_port_configured": calculation_port_configured,
+            "candidate_generation_wired": candidate_generation_wired,
             "plan_id": plan_id,
             "terminal_state": terminal_state,
         }
+        if extra:
+            payload.update(dict(extra))
+        return payload
+
+    def _candidate_generation_enabled(self) -> bool:
+        return bool(
+            getattr(self.capabilities.calculation, "candidate_mode", False)
+            or getattr(self.capabilities.generation, "candidate_mode", False)
+        )
+
+    def _candidate_stage(
+        self,
+        *,
+        request: V2ExecutionRequest,
+        plan: SupervisorPlan,
+        plan_id: str,
+        state: AdaptiveRAGStateV1,
+        evaluator_adapter: _EvaluatorAdapter,
+    ) -> V2ExecutionOutcome:
+        """Run TV2-04 candidate preparation after Binder reaches READY."""
+
+        calculation_ids: tuple[str, ...] = ()
+        candidate_answer: str | None = None
+        route: str | None = None
+        extra: dict[str, Any] = {}
+        if plan.intent is Intent.CALCULATION:
+            capability = self.capabilities.calculation
+            if capability is None:
+                return self._outcome(
+                    request=request, plan=plan, plan_id=plan_id, state=state,
+                    reason_codes=["CALCULATOR_NOT_WIRED"],
+                    status=V2ExecutionStatus.FAIL_CLOSED,
+                    terminal_state="EVIDENCE_READY",
+                    evidence_ids=evaluator_adapter.bound_evidence_ids,
+                    citation_ids=evaluator_adapter.citation_ids,
+                )
+            try:
+                result = capability.calculate(state)
+            except Exception:
+                return self._outcome(
+                    request=request, plan=plan, plan_id=plan_id, state=state,
+                    reason_codes=["CALCULATOR_EXCEPTION"],
+                    status=V2ExecutionStatus.EXECUTION_ERROR,
+                    terminal_state="CALCULATE",
+                    evidence_ids=evaluator_adapter.bound_evidence_ids,
+                    citation_ids=evaluator_adapter.citation_ids,
+                )
+            from src.domain.calculation import CalculationResult, CalculationStatus
+
+            if not isinstance(result, CalculationResult):
+                return self._outcome(
+                    request=request, plan=plan, plan_id=plan_id, state=state,
+                    reason_codes=["CALCULATOR_CONTRACT_INVALID"],
+                    status=V2ExecutionStatus.EXECUTION_ERROR,
+                    terminal_state="CALCULATE",
+                    evidence_ids=evaluator_adapter.bound_evidence_ids,
+                    citation_ids=evaluator_adapter.citation_ids,
+                )
+            if result.status is not CalculationStatus.EXECUTED:
+                code = (
+                    "CALCULATION_FAILED"
+                    if result.status is CalculationStatus.FAILED
+                    and result.error_code == "PRIMITIVE_EXCEPTION"
+                    else "CALCULATION_INVALID"
+                )
+                status = (
+                    V2ExecutionStatus.EXECUTION_ERROR
+                    if code == "CALCULATION_FAILED"
+                    else V2ExecutionStatus.FAIL_CLOSED
+                )
+                return self._outcome(
+                    request=request, plan=plan, plan_id=plan_id, state=state,
+                    reason_codes=[code, result.error_code or "CALCULATION_NOT_EXECUTED"],
+                    status=status, terminal_state="CALCULATE",
+                    evidence_ids=evaluator_adapter.bound_evidence_ids,
+                    citation_ids=evaluator_adapter.citation_ids,
+                )
+            calculation_ids = (
+                str(getattr(capability, "last_calculation_id", "")),
+            ) if getattr(capability, "last_calculation_id", None) else ()
+            state.calculation_result_id = calculation_ids[0] if calculation_ids else None
+            extra["calculation_status"] = result.status.value
+            extra["calculation_result_id"] = state.calculation_result_id
+
+        generation = self.capabilities.generation
+        if generation is None:
+            return self._outcome(
+                request=request, plan=plan, plan_id=plan_id, state=state,
+                reason_codes=["GENERATOR_NOT_WIRED"],
+                status=V2ExecutionStatus.FAIL_CLOSED,
+                terminal_state="EVIDENCE_READY",
+                evidence_ids=evaluator_adapter.bound_evidence_ids,
+                citation_ids=evaluator_adapter.citation_ids,
+                calculation_ids=calculation_ids,
+            )
+        try:
+            raw_candidate = generation.generate(state)
+        except Exception:
+            return self._outcome(
+                request=request, plan=plan, plan_id=plan_id, state=state,
+                reason_codes=["GENERATION_EXCEPTION"],
+                status=V2ExecutionStatus.EXECUTION_ERROR,
+                terminal_state="GENERATE",
+                evidence_ids=evaluator_adapter.bound_evidence_ids,
+                citation_ids=evaluator_adapter.citation_ids,
+                calculation_ids=calculation_ids,
+            )
+        if isinstance(raw_candidate, CandidateExecutionResult):
+            candidate_answer = raw_candidate.candidate_answer
+            route = raw_candidate.route
+            extra.update(dict(raw_candidate.generation_metadata))
+            extra["candidate_status"] = raw_candidate.candidate_status
+            extra["candidate_generation_id"] = raw_candidate.candidate_generation_id
+            calculation_ids = tuple(raw_candidate.calculation_ids) or calculation_ids
+            candidate_citations = tuple(raw_candidate.citation_ids)
+            candidate_evidence = tuple(raw_candidate.bound_evidence_ids)
+        elif isinstance(raw_candidate, str) and raw_candidate.strip():
+            candidate_answer = raw_candidate.strip()
+            candidate_citations = evaluator_adapter.citation_ids
+            candidate_evidence = evaluator_adapter.bound_evidence_ids
+        else:
+            return self._outcome(
+                request=request, plan=plan, plan_id=plan_id, state=state,
+                reason_codes=["CANDIDATE_CONTRACT_INVALID"],
+                status=V2ExecutionStatus.EXECUTION_ERROR,
+                terminal_state="GENERATE",
+                evidence_ids=evaluator_adapter.bound_evidence_ids,
+                citation_ids=evaluator_adapter.citation_ids,
+                calculation_ids=calculation_ids,
+            )
+        extra["candidate_ready"] = True
+        extra["validation_pending"] = True
+        return self._outcome(
+            request=request, plan=plan, plan_id=plan_id, state=state,
+            reason_codes=["FINAL_VALIDATION_NOT_WIRED"],
+            status=V2ExecutionStatus.FAIL_CLOSED,
+            answer=candidate_answer, route=route, terminal_state="CANDIDATE_READY_FOR_VALIDATION",
+            evidence_ids=candidate_evidence or evaluator_adapter.bound_evidence_ids,
+            citation_ids=candidate_citations or evaluator_adapter.citation_ids,
+            calculation_ids=calculation_ids, extra_metadata=extra,
+        )
 
     def _outcome(
         self,
@@ -411,6 +635,9 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         answer: str | None = None,
         evidence_ids: Iterable[str] = (),
         citation_ids: Iterable[str] = (),
+        calculation_ids: Iterable[str] = (),
+        route: str | None = None,
+        extra_metadata: Mapping[str, Any] | None = None,
         terminal_state: str,
     ) -> V2ExecutionOutcome:
         reason_list = _stable_unique(reason_codes)
@@ -433,7 +660,13 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             citation_ids=_stable_unique(citation_ids),
             reason_codes=reason_list,
             release_status=release_status,
-            route=plan.intent.value if plan is not None else None,
+            route=route or (plan.intent.value if plan is not None else None),
+            calculation_ids=_stable_unique(calculation_ids),
+            calculation_result_id=(
+                next(iter(calculation_ids), None)
+                if calculation_ids
+                else None
+            ),
             runtime_metadata=self._metadata(
                 plan_id=plan_id,
                 terminal_state=terminal_state,
@@ -443,6 +676,8 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                     and self.capabilities.release_validator is not None
                 ),
                 calculation_port_configured=self.capabilities.calculation is not None,
+                candidate_generation_wired=self._candidate_generation_enabled(),
+                extra=extra_metadata,
             ),
             debug_metadata={"trace": trace.to_dict()},
             plan_id=plan_id,
@@ -535,7 +770,9 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 "supervisor_plan": plan.to_dict(),
                 "plan_id": plan_id,
             },
-            calculation_requirements=self._calculation_requirements(plan),
+            calculation_requirements=self._calculation_requirements(
+                plan, request.request_metadata
+            ),
         )
         capability_errors: list[Exception] = []
         evaluator = self.capabilities.evidence_evaluator or EvidenceStateEvaluatorV1()
@@ -610,6 +847,14 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             )
 
         final_state = bounded_result.state.status
+        if final_state == "READY_TO_GENERATE" and self._candidate_generation_enabled():
+            return self._candidate_stage(
+                request=request,
+                plan=plan,
+                plan_id=plan_id,
+                state=state,
+                evaluator_adapter=evaluator_adapter,
+            )
         evaluation_reasons = (
             item.value
             for item in (

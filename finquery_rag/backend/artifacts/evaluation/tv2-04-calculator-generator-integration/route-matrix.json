@@ -1,0 +1,32 @@
+{
+  "all_candidate_routes": {
+    "final_validation": "PENDING_TV2-05",
+    "release_status": "NOT_RELEASED"
+  },
+  "calculation": {
+    "renderer": "render_calculation_result",
+    "route": "DETERMINISTIC_CALCULATOR",
+    "specialist_fallback": false
+  },
+  "fact": {
+    "calculator_calls": 0,
+    "downstream": "candidate only",
+    "route": "DETERMINISTIC_RENDERER"
+  },
+  "missing_operand": {
+    "calculator_calls": 0,
+    "reason": "INSUFFICIENT_OPERANDS",
+    "specialist_calls": 0,
+    "status": "FAIL_CLOSED"
+  },
+  "synthesis": {
+    "calculator_authority": false,
+    "evidence_source": "bound evidence only",
+    "route": "FINANCIAL_SPECIALIST"
+  },
+  "zero_denominator": {
+    "reason": "CALCULATION_FAILED",
+    "specialist_fallback": false,
+    "status": "FAIL_CLOSED"
+  }
+}

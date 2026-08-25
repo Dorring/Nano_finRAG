@@ -1,0 +1,45 @@
+{
+  "base_commit": "9356ed0c1f83f34394c9b08552f41ca53a3f9d29",
+  "candidate_contract": {
+    "candidate_status": "CANDIDATE_READY_FOR_VALIDATION",
+    "reason_codes": [
+      "FINAL_VALIDATION_NOT_WIRED"
+    ],
+    "release_status": "NOT_RELEASED",
+    "status": "FAIL_CLOSED",
+    "validation_pending": true
+  },
+  "hard_invariants": {
+    "assistant_text_as_operand": 0,
+    "calculator_failure_specialist_fallbacks": 0,
+    "candidate_as_released_answer": 0,
+    "missing_operand_calculator_calls": 0,
+    "text_derived_provenance": 0,
+    "unbound_evidence_provenance": 0
+  },
+  "not_wired": [
+    "final validator/release gate",
+    "repair-once",
+    "production V2 routing",
+    "Conversation",
+    "QueryLifecycleService",
+    "TrustedRAGRuntimeV2.handle"
+  ],
+  "phase": "TV2-04",
+  "production": {
+    "conversation_unchanged": true,
+    "financial_runtime": "V1",
+    "query_stream_unchanged": true,
+    "query_unchanged": true,
+    "v2_routing": "OFF"
+  },
+  "scope": "Evidence-ready routing through deterministic calculation, deterministic fact rendering, or the existing local financial specialist; final release remains unwired.",
+  "status": "IMPLEMENTED_COMPONENT_READY",
+  "wired": {
+    "calculation_renderer": "existing render_calculation_result",
+    "calculator": "existing deterministic executor",
+    "fact_renderer": "thin structured bridge",
+    "generator_routing": "existing GeneratorRoutingPolicy",
+    "specialist": "injected adapter to existing LocalFinancialSpecialist"
+  }
+}

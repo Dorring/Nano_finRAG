@@ -1,0 +1,12 @@
+{
+  "canonical_python": "3.12.2",
+  "gpu_benchmark": false,
+  "jose_import": "PASS",
+  "model_benchmark": false,
+  "numpy_import": "PASS",
+  "openai_import": "PASS",
+  "specialist_checkpoint_sha256": "3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a",
+  "specialist_load_smoke": "PASS_CPU",
+  "specialist_one_token_smoke": "PASS_CPU",
+  "strenum_import": "PASS"
+}

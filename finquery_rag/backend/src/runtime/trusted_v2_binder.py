@@ -51,6 +51,7 @@ class SemanticEvidenceEvaluationCapability:
         self.last_run: BinderRun | None = None
         self.last_bound_evidence_ids: tuple[str, ...] = ()
         self.last_citation_ids: tuple[str, ...] = ()
+        self.last_bound_slot_bindings: dict[str, tuple[str, ...]] = {}
         self._trace: list[dict[str, Any]] = []
 
     @staticmethod
@@ -134,6 +135,10 @@ class SemanticEvidenceEvaluationCapability:
                 )
             selected = _stable_unique(run.validation.selected_fact_ids)
             self.last_bound_evidence_ids = selected
+            self.last_bound_slot_bindings = {
+                str(slot_id): tuple(str(item) for item in fact_ids)
+                for slot_id, fact_ids in run.binding.slot_bindings.items()
+            }
             fact_by_id = {
                 str(fact.get("fact_id")): fact
                 for fact in facts
@@ -160,6 +165,10 @@ class SemanticEvidenceEvaluationCapability:
             self.last_bound_evidence_ids = _stable_unique(
                 run.validation.selected_fact_ids
             )
+            self.last_bound_slot_bindings = {
+                str(slot_id): tuple(str(item) for item in fact_ids)
+                for slot_id, fact_ids in run.binding.slot_bindings.items()
+            }
             self.last_citation_ids = ()
             evaluation = EvidenceEvaluationV1(
                 decision=EvidenceDecision.REPAIRABLE,
@@ -175,6 +184,7 @@ class SemanticEvidenceEvaluationCapability:
             )
         elif status == BindingStatus.AMBIGUOUS.value:
             self.last_bound_evidence_ids = ()
+            self.last_bound_slot_bindings = {}
             self.last_citation_ids = ()
             evaluation = EvidenceEvaluationV1(
                 decision=EvidenceDecision.UNRESOLVED_CONFLICT,
@@ -193,6 +203,7 @@ class SemanticEvidenceEvaluationCapability:
             )
         elif status == BindingStatus.INVALID.value:
             self.last_bound_evidence_ids = ()
+            self.last_bound_slot_bindings = {}
             self.last_citation_ids = ()
             if not run.schema_valid:
                 raise SemanticBinderCapabilityError(
@@ -258,6 +269,9 @@ class SemanticEvidenceEvaluationCapability:
                 slot_id for item in records for slot_id in item["ambiguous_slot_ids"]
             ],
             "bound_evidence_ids": list(self.last_bound_evidence_ids),
+            "bound_slot_bindings": {
+                key: list(value) for key, value in self.last_bound_slot_bindings.items()
+            },
             "binder_rounds": records,
         }
 
