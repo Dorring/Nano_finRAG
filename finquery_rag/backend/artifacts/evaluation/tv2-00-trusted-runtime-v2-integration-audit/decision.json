@@ -1,0 +1,14 @@
+{
+  "audit":"TV2-00",
+  "baseline":"869cd08968f897071d38a010a07a7bd879f1b779",
+  "audit_status":"PASS",
+  "v2_production_integration":"NOT_READY",
+  "production_financial_runtime":"V1",
+  "default_multiturn_context_mode":"off",
+  "conversation":"I8 sealed and unchanged",
+  "endpoint_coverage_if_backend_replaced":{"query":true,"query_stream":true,"condition":"Both use QueryLifecycleService and QueryExecutionService."},
+  "benchmark_rerun":false,
+  "runtime_behavior_modified":false,
+  "next_gate":"TV2-01 TrustedFinancialRuntimeV2 Adapter",
+  "production_switch":false
+}

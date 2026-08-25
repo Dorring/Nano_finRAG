@@ -1,0 +1,9 @@
+{
+  "audit":"TV2-00",
+  "baseline":"869cd08968f897071d38a010a07a7bd879f1b779",
+  "true_unified_execution_root":false,
+  "closest_root":{"object":"rag_v2.runtime.runtime.TrustedRAGRuntimeV2","method":"handle","starts_after":["SupervisorPlan","retrieval","binding","calculation_result","VerifiedEvidencePacket"],"does_not":["call Supervisor","retrieve R4","call SemanticBinderService","run production calculator","run bounded retrieval/replan"]},
+  "minimum_required_root":["FinancialQueryRequest.standalone_query","SupervisorService.plan","bounded coordinator","R4 retrieval/materialization","semantic binding gate","V1 calculator bridge","VerifiedEvidencePacket","TrustedRAGRuntimeV2.handle","FinancialQueryResult mapping"],
+  "production_call_sites_found":{"TrustedRAGRuntimeV2":false,"SupervisorService":false,"SemanticBinderService":false,"BoundedAdaptiveRAGV1":false,"src.pdf_retrieval_v4_from_src":false},
+  "decision":"TV2-01_REQUIRED"
+}
