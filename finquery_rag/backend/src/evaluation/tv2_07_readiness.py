@@ -56,6 +56,8 @@ HARD_GATE_NAMES = (
     "CALCULATION_RELEASED_INCORRECT",
     "UNKNOWN_CITATION_RELEASE",
     "UNSUPPORTED_CLAIM_RELEASE",
+    "WRONG_PERIOD_RELEASE",
+    "WRONG_UNIT_SCALE_RELEASE",
     "ASSISTANT_HISTORY_FACT_LEAK",
     "UNVALIDATED_RELEASE",
     "REPAIR_ATTEMPTS_GT_1",
@@ -63,6 +65,7 @@ HARD_GATE_NAMES = (
     "UNEXPECTED_RUNTIME_ERROR",
     "UNEXPECTED_TIMEOUT",
     "GOLD_EVIDENCE_INJECTION",
+    "GOLD_RUNTIME_LEAK",
 )
 
 _RAW_CONTEXT_KEYS = frozenset({
@@ -122,6 +125,44 @@ def _mapping(value: Mapping[str, Any] | None) -> dict[str, Any]:
     return copy.deepcopy(dict(value))
 
 
+_RUNTIME_GOLD_KEYS = frozenset({
+    "gold",
+    "gold_answer",
+    "gold_evidence",
+    "gold_evidence_ids",
+    "answerability",
+    "expected_release",
+    "expected_route",
+    "expected_calculation",
+    "review_result",
+    "reference_answer",
+})
+
+
+def _assert_runtime_request_is_blind(
+    value: Any,
+    *,
+    path: str = "request",
+) -> None:
+    """Reject labels/reference data before either runtime is invoked."""
+
+    if isinstance(value, Mapping):
+        for key, child in value.items():
+            name = str(key).strip().lower()
+            if name in _RUNTIME_GOLD_KEYS:
+                raise ValueError(
+                    f"Gold field is not allowed in runtime request: {path}.{key}"
+                )
+            if name in _RAW_CONTEXT_KEYS:
+                raise ValueError(
+                    f"raw context is not allowed in runtime request: {path}.{key}"
+                )
+            _assert_runtime_request_is_blind(child, path=f"{path}.{key}")
+    elif isinstance(value, (list, tuple)):
+        for index, child in enumerate(value):
+            _assert_runtime_request_is_blind(child, path=f"{path}[{index}]")
+
+
 def _assert_query_metadata_is_blind(value: Any, *, path: str = "metadata") -> None:
     if isinstance(value, Mapping):
         for key, child in value.items():
@@ -152,6 +193,8 @@ class TV2ReadinessQuery:
     standalone_query: str | None = None
     query_as_resolved: bool = False
     metadata: dict[str, Any] = field(default_factory=dict)
+    input_turns: tuple[dict[str, str], ...] = ()
+    dataset_provenance: str = "tv2_07_wiring_fixture"
 
     def __post_init__(self) -> None:
         for name in ("case_id", "question", "category"):
@@ -168,6 +211,25 @@ class TV2ReadinessQuery:
         object.__setattr__(self, "standalone_query", standalone)
         if not isinstance(self.query_as_resolved, bool):
             raise TypeError("query_as_resolved must be bool")
+        turns: list[dict[str, str]] = []
+        for index, turn in enumerate(self.input_turns):
+            if not isinstance(turn, Mapping):
+                raise TypeError(f"input_turns[{index}] must be a mapping")
+            role = str(turn.get("role", "")).strip().lower()
+            text = str(turn.get("text", "")).strip()
+            if role not in {"user", "assistant"} or not text:
+                raise ValueError(
+                    f"input_turns[{index}] requires role=user|assistant and non-empty text"
+                )
+            turn_id = str(turn.get("turn_id") or f"turn-{index + 1}").strip()
+            if not turn_id:
+                raise ValueError(f"input_turns[{index}].turn_id must be non-empty")
+            turns.append({"turn_id": turn_id, "role": role, "text": text})
+        object.__setattr__(self, "input_turns", tuple(turns))
+        provenance = str(self.dataset_provenance).strip()
+        if not provenance:
+            raise ValueError("dataset_provenance must be non-empty")
+        object.__setattr__(self, "dataset_provenance", provenance)
         metadata = _mapping(self.metadata)
         _assert_query_metadata_is_blind(metadata)
         object.__setattr__(self, "metadata", metadata)
@@ -183,6 +245,8 @@ class TV2ReadinessQuery:
             standalone_query=value.get("standalone_query"),
             query_as_resolved=bool(value.get("query_as_resolved", False)),
             metadata=value.get("metadata"),
+            input_turns=tuple(value.get("input_turns", value.get("turns", ())) or ()),
+            dataset_provenance=value.get("dataset_provenance", "tv2_07_wiring_fixture"),
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -195,6 +259,8 @@ class TV2ReadinessQuery:
             "standalone_query": self.standalone_query,
             "query_as_resolved": self.query_as_resolved,
             "metadata": copy.deepcopy(self.metadata),
+            "input_turns": [dict(turn) for turn in self.input_turns],
+            "dataset_provenance": self.dataset_provenance,
         }
 
     def to_request(self) -> FinancialQueryRequest:
@@ -230,6 +296,7 @@ class TV2ReadinessLabel:
     forbidden_evidence_prefixes: tuple[str, ...] = ()
     tags: tuple[str, ...] = ()
     annotation: dict[str, Any] = field(default_factory=dict)
+    dataset_provenance: str = "tv2_07_wiring_fixture"
 
     def __post_init__(self) -> None:
         for name in ("case_id", "category"):
@@ -264,6 +331,10 @@ class TV2ReadinessLabel:
                 copy.deepcopy(dict(self.expected_calculation)),
             )
         object.__setattr__(self, "annotation", _mapping(self.annotation))
+        provenance = str(self.dataset_provenance).strip()
+        if not provenance:
+            raise ValueError("dataset_provenance must be non-empty")
+        object.__setattr__(self, "dataset_provenance", provenance)
 
     @classmethod
     def from_dict(cls, value: Mapping[str, Any]) -> "TV2ReadinessLabel":
@@ -284,6 +355,7 @@ class TV2ReadinessLabel:
             ),
             tags=tuple(value.get("tags", ())),
             annotation=value.get("annotation"),
+            dataset_provenance=value.get("dataset_provenance", "tv2_07_wiring_fixture"),
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -302,6 +374,7 @@ class TV2ReadinessLabel:
             "forbidden_evidence_prefixes": list(self.forbidden_evidence_prefixes),
             "tags": list(self.tags),
             "annotation": copy.deepcopy(self.annotation),
+            "dataset_provenance": self.dataset_provenance,
         }
 
 
@@ -467,6 +540,7 @@ async def _invoke(
 
 
 RuntimeFactory = Callable[[], FinancialQARuntime]
+RequestFactory = Callable[[TV2ReadinessQuery], FinancialQueryRequest]
 
 
 class TV2IntegratedEvaluationRunner:
@@ -478,6 +552,7 @@ class TV2IntegratedEvaluationRunner:
         v2_factory: RuntimeFactory,
         *,
         timeout_seconds: float = 120.0,
+        request_factory: RequestFactory | None = None,
     ) -> None:
         if not callable(v1_factory) or not callable(v2_factory):
             raise TypeError("runtime factories must be callable")
@@ -486,6 +561,9 @@ class TV2IntegratedEvaluationRunner:
         self.v1_factory = v1_factory
         self.v2_factory = v2_factory
         self.timeout_seconds = float(timeout_seconds)
+        if request_factory is not None and not callable(request_factory):
+            raise TypeError("request_factory must be callable")
+        self.request_factory = request_factory
 
     async def run(self, queries: Sequence[TV2ReadinessQuery]) -> list[TV2ReadinessPrediction]:
         predictions: list[TV2ReadinessPrediction] = []
@@ -494,7 +572,18 @@ class TV2IntegratedEvaluationRunner:
             if query.case_id in seen:
                 raise ValueError(f"duplicate query case_id: {query.case_id}")
             seen.add(query.case_id)
-            request = query.to_request()
+            if query.input_turns and self.request_factory is None:
+                raise ValueError(
+                    "multi-turn readiness cases require an injected request_factory"
+                )
+            request = (
+                self.request_factory(query)
+                if self.request_factory is not None
+                else query.to_request()
+            )
+            if not isinstance(request, FinancialQueryRequest):
+                raise TypeError("request_factory must return FinancialQueryRequest")
+            _assert_runtime_request_is_blind(request.to_dict())
             v1 = self.v1_factory()
             v2 = self.v2_factory()
             if not callable(getattr(v1, "execute", None)):
@@ -522,6 +611,33 @@ def _ids_match(actual: Sequence[str], expected: Sequence[str]) -> bool:
 def _contains(text: str | None, terms: Sequence[str]) -> bool:
     value = (text or "").casefold()
     return any(str(term).casefold() in value for term in terms)
+
+
+def _find_structured_field(value: Any, names: Sequence[str]) -> Any:
+    """Find a scalar field in structured metadata only, never answer text."""
+
+    if isinstance(value, Mapping):
+        for name in names:
+            candidate = value.get(name)
+            if isinstance(candidate, (str, int, float, bool)) or candidate is None:
+                if name in value:
+                    return candidate
+        for child in value.values():
+            found = _find_structured_field(child, names)
+            if found is not None:
+                return found
+    elif isinstance(value, (list, tuple)):
+        for child in value:
+            found = _find_structured_field(child, names)
+            if found is not None:
+                return found
+    return None
+
+
+def _normalized_field(value: Any) -> str | None:
+    if value is None:
+        return None
+    return str(value).strip().casefold()
 
 
 def _calculation_matches(snapshot: RuntimeSnapshot, expected: Mapping[str, Any]) -> bool:
@@ -559,7 +675,7 @@ def score_readiness_case(
     attrs = _attrs(v2)
     violations: list[str] = []
     if prediction.gold_injection_detected:
-        violations.append("GOLD_EVIDENCE_INJECTION")
+        violations.extend(("GOLD_EVIDENCE_INJECTION", "GOLD_RUNTIME_LEAK"))
     if v2.error_code == "TIMEOUT":
         violations.append("UNEXPECTED_TIMEOUT")
     if v2.status == RuntimeStatus.ERROR.value:
@@ -585,6 +701,27 @@ def score_readiness_case(
     )
     checks["reason_codes"] = reason_codes_ok
     if released:
+        validation_codes = {
+            str(code).upper()
+            for code in (
+                tuple(trace.get("validation_reason_codes", ()))
+                + tuple(trace.get("failed_checks", ()))
+                + tuple(v2.reason_codes)
+            )
+        }
+        if any(
+            "WRONG_PERIOD" in code or "PERIOD_MISMATCH" in code
+            for code in validation_codes
+        ):
+            violations.extend(("WRONG_PERIOD_RELEASE", "UNSAFE_RELEASES"))
+        if any(
+            (
+                ("UNIT" in code or "SCALE" in code or "CURRENCY" in code)
+                and ("WRONG" in code or "MISMATCH" in code or "INVALID" in code)
+            )
+            for code in validation_codes
+        ):
+            violations.extend(("WRONG_UNIT_SCALE_RELEASE", "UNSAFE_RELEASES"))
         validated = bool(
             trace.get("validation_passed")
             and trace.get("release_decision") == ReleaseStatus.RELEASED.value
@@ -628,6 +765,36 @@ def score_readiness_case(
             )
         calc_ok = _calculation_matches(v2, label.expected_calculation or {})
         checks["calculation"] = calc_ok
+        structured_sources = (_trace(v2), _attrs(v2))
+        for field_name, aliases, violation in (
+            ("period", ("period", "normalized_period", "period_end"), "WRONG_PERIOD_RELEASE"),
+            (
+                "unit",
+                ("unit", "normalized_unit"),
+                "WRONG_UNIT_SCALE_RELEASE",
+            ),
+            (
+                "currency",
+                ("currency", "normalized_currency"),
+                "WRONG_UNIT_SCALE_RELEASE",
+            ),
+            ("scale", ("scale", "normalized_scale"), "WRONG_UNIT_SCALE_RELEASE"),
+        ):
+            expected_value = label.annotation.get(f"gold_{field_name}")
+            if expected_value is None:
+                continue
+            actual_value = None
+            for source in structured_sources:
+                actual_value = _find_structured_field(source, aliases)
+                if actual_value is not None:
+                    break
+            field_ok = (
+                actual_value is not None
+                and _normalized_field(actual_value) == _normalized_field(expected_value)
+            )
+            checks[field_name] = field_ok
+            if not field_ok:
+                violations.extend((violation, "RELEASED_INCORRECT", "UNSAFE_RELEASES"))
         if label.expected_calculation and not calc_ok:
             violations.extend(
                 (
@@ -1122,6 +1289,7 @@ __all__ = [
     "TV2ReadinessOutcome",
     "TV2ReadinessPrediction",
     "TV2ReadinessQuery",
+    "RequestFactory",
     "aggregate_readiness_metrics",
     "build_tv2_07_manifest",
     "finalize_tv2_07_manifest",
