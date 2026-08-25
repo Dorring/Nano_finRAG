@@ -45,6 +45,108 @@ class ReasonCode:
     RESOLVER_BYPASS = "RESOLVER_BYPASS"
     RESOLVER_RETRY_EXHAUSTED = "RESOLVER_RETRY_EXHAUSTED"
     INVALID_RESOLUTION = "INVALID_RESOLUTION"
+    PENDING_CLARIFICATION_RESOLVED = "PENDING_CLARIFICATION_RESOLVED"
+    IDEMPOTENT_REPLAY = "IDEMPOTENT_REPLAY"
+
+
+class ConversationTurnOutcome:
+    """Stable lifecycle outcome names for one user turn."""
+
+    FINANCIAL_ANSWER = "FINANCIAL_ANSWER"
+    CLARIFICATION = "CLARIFICATION"
+    FAIL_CLOSED = "FAIL_CLOSED"
+    OUT_OF_SCOPE = "OUT_OF_SCOPE"
+    ERROR = "ERROR"
+
+
+@dataclass
+class PendingClarification:
+    """Semantic-only clarification state; never stores financial values."""
+
+    reason_codes: list[str] = field(default_factory=list)
+    candidates: list[str] = field(default_factory=list)
+    unresolved_fields: list[str] = field(default_factory=list)
+    source_turn_id: str | None = None
+    entity: str | None = None
+    period: str | None = None
+    topic: str | None = None
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+    @classmethod
+    def from_dict(cls, value: Mapping[str, Any]) -> "PendingClarification":
+        if not isinstance(value, Mapping):
+            raise TypeError("pending_clarification must be a mapping")
+
+        def string_list(name: str) -> list[str]:
+            raw = value.get(name, [])
+            if not isinstance(raw, list) or any(
+                not isinstance(item, str) for item in raw
+            ):
+                raise TypeError(
+                    f"pending_clarification {name} must be a list of strings",
+                )
+            return list(raw)
+
+        return cls(
+            reason_codes=string_list("reason_codes"),
+            candidates=string_list("candidates"),
+            unresolved_fields=string_list("unresolved_fields"),
+            source_turn_id=value.get("source_turn_id"),
+            entity=value.get("entity"),
+            period=value.get("period"),
+            topic=value.get("topic"),
+        )
+
+
+@dataclass
+class AssistantProvenance:
+    """Structured provenance for the last user-visible assistant outcome."""
+
+    assistant_turn_id: str
+    evidence_ids: list[str] = field(default_factory=list)
+    citation_ids: list[str] = field(default_factory=list)
+    calculation_ids: list[str] = field(default_factory=list)
+    release_status: str = "NOT_APPLICABLE"
+    outcome: str = ConversationTurnOutcome.FINANCIAL_ANSWER
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+    @classmethod
+    def from_dict(cls, value: Mapping[str, Any]) -> "AssistantProvenance":
+        if not isinstance(value, Mapping):
+            raise TypeError("last_assistant_provenance must be a mapping")
+
+        def string_list(name: str) -> list[str]:
+            raw = value.get(name, [])
+            if not isinstance(raw, list) or any(
+                not isinstance(item, str) for item in raw
+            ):
+                raise TypeError(
+                    f"last_assistant_provenance {name} must be a list of strings",
+                )
+            return list(raw)
+
+        assistant_turn_id = value.get("assistant_turn_id")
+        if not isinstance(assistant_turn_id, str) or not assistant_turn_id:
+            raise ValueError(
+                "last_assistant_provenance assistant_turn_id is required",
+            )
+        return cls(
+            assistant_turn_id=assistant_turn_id,
+            evidence_ids=string_list("evidence_ids"),
+            citation_ids=string_list("citation_ids"),
+            calculation_ids=string_list("calculation_ids"),
+            release_status=str(value.get("release_status", "NOT_APPLICABLE")),
+            outcome=str(
+                value.get(
+                    "outcome",
+                    ConversationTurnOutcome.FINANCIAL_ANSWER,
+                ),
+            ),
+        )
 
 
 @dataclass
@@ -96,6 +198,13 @@ class DialogueState:
     # Provenance metadata only; never an authoritative fact or calculator input.
     referenced_evidence_ids: list[str] = field(default_factory=list)
 
+    # Lifecycle-only state; none of these fields are financial facts.
+    pending_clarification: PendingClarification | None = None
+    last_assistant_provenance: AssistantProvenance | None = None
+    last_processed_request_id: str | None = None
+    last_processed_original_query: str | None = None
+    last_turn_outcome: str | None = None
+
     # Hierarchical history components
     recent_turns: list[DialogueTurn] = field(default_factory=list)
     compressed_history: str | None = None
@@ -115,6 +224,19 @@ class DialogueState:
             "last_resolved_query": self.last_resolved_query,
             "referenced_turn_ids": list(self.referenced_turn_ids),
             "referenced_evidence_ids": list(self.referenced_evidence_ids),
+            "pending_clarification": (
+                None
+                if self.pending_clarification is None
+                else self.pending_clarification.to_dict()
+            ),
+            "last_assistant_provenance": (
+                None
+                if self.last_assistant_provenance is None
+                else self.last_assistant_provenance.to_dict()
+            ),
+            "last_processed_request_id": self.last_processed_request_id,
+            "last_processed_original_query": self.last_processed_original_query,
+            "last_turn_outcome": self.last_turn_outcome,
             "recent_turns": [t.to_dict() for t in self.recent_turns],
             "compressed_history": self.compressed_history,
             "turn_count": self.turn_count,
@@ -167,6 +289,19 @@ class DialogueState:
         ):
             raise ValueError("DialogueState turn_count must be a non-negative integer")
 
+        pending_value = value.get("pending_clarification")
+        pending_clarification = (
+            None
+            if pending_value is None
+            else PendingClarification.from_dict(pending_value)
+        )
+        provenance_value = value.get("last_assistant_provenance")
+        last_assistant_provenance = (
+            None
+            if provenance_value is None
+            else AssistantProvenance.from_dict(provenance_value)
+        )
+
         return cls(
             conversation_id=conversation_id,
             active_entity=value.get("active_entity"),
@@ -180,6 +315,11 @@ class DialogueState:
             last_resolved_query=value.get("last_resolved_query"),
             referenced_turn_ids=string_list("referenced_turn_ids"),
             referenced_evidence_ids=string_list("referenced_evidence_ids"),
+            pending_clarification=pending_clarification,
+            last_assistant_provenance=last_assistant_provenance,
+            last_processed_request_id=value.get("last_processed_request_id"),
+            last_processed_original_query=value.get("last_processed_original_query"),
+            last_turn_outcome=value.get("last_turn_outcome"),
             recent_turns=recent_turns,
             compressed_history=value.get("compressed_history"),
             turn_count=turn_count,

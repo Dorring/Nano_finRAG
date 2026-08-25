@@ -118,7 +118,15 @@ def api_context(tmp_path):
     session_manager.close()
 
 
-def _post(ctx, *, mode, question="Apple FY2024 Revenue?", session_id="shadow-session", service=None):
+def _post(
+    ctx,
+    *,
+    mode,
+    question="Apple FY2024 Revenue?",
+    session_id="shadow-session",
+    service=None,
+    request_id=None,
+):
     engine = FakeRAGEngine()
     with (
         patch("src.main.get_rag_engine", return_value=engine),
@@ -132,6 +140,7 @@ def _post(ctx, *, mode, question="Apple FY2024 Revenue?", session_id="shadow-ses
             clear=False,
         ),
     ):
+        headers = {"X-Request-ID": request_id} if request_id else None
         response = ctx.client.post(
             "/query",
             json={
@@ -140,6 +149,7 @@ def _post(ctx, *, mode, question="Apple FY2024 Revenue?", session_id="shadow-ses
                 "n_results": 5,
                 "session_id": session_id,
             },
+            headers=headers,
         )
     return response, engine
 
@@ -367,7 +377,7 @@ def test_active_ambiguity_returns_control_response_without_v1(api_context):
     assert payload["clarification"]["reason_codes"] == ["AMBIGUOUS_METRIC"]
     assert engine.calls == []
     state_after = api_context.store.get(42, "active-ambiguous")
-    assert state_after.turn_count == turn_count_before
+    assert state_after.turn_count == turn_count_before + 1
     assert state_after.active_metric is None
 
 
@@ -483,3 +493,196 @@ def test_active_cross_turn_calculation_does_not_use_assistant_numeric_text(api_c
     assert "Calculate the change in Apple" in engine.calls[0]["question"]
     assert "$999B" not in engine.calls[0]["question"]
     assert engine.calls[0]["conversation_history"] is None
+
+
+def test_active_clarification_pending_followup_and_provenance(api_context):
+    first, _ = _post(
+        api_context,
+        mode="on",
+        question="Apple Revenue and Operating Margin FY2024?",
+        session_id="lifecycle",
+    )
+    assert first.status_code == 200
+
+    clarification, engine = _post(
+        api_context,
+        mode="on",
+        question="What about the previous year?",
+        session_id="lifecycle",
+    )
+    assert clarification.status_code == 200
+    assert clarification.json()["status"] == "CLARIFICATION_REQUIRED"
+    assert engine.calls == []
+
+    pending = api_context.store.get(42, "lifecycle")
+    assert pending is not None
+    assert pending.pending_clarification is not None
+    assert pending.pending_clarification.candidates == [
+        "Revenue",
+        "Operating Margin",
+        "Both",
+    ]
+    assert pending.pending_clarification.period == "FY2023"
+    assert pending.last_turn_outcome == "CLARIFICATION"
+    assert pending.last_assistant_provenance is not None
+    assert pending.last_assistant_provenance.outcome == "CLARIFICATION"
+    assert pending.last_assistant_provenance.release_status == "NOT_APPLICABLE"
+    assert pending.last_assistant_provenance.evidence_ids == []
+    assert len(api_context.session_manager.get_recent_messages("lifecycle", 42)) == 4
+
+    answer, engine = _post(
+        api_context,
+        mode="on",
+        question="Revenue",
+        session_id="lifecycle",
+    )
+    assert answer.status_code == 200
+    assert engine.calls[0]["question"].startswith("What was Apple FY2023 Revenue")
+    assert engine.calls[0]["query_as_resolved"] is True
+
+    committed = api_context.store.get(42, "lifecycle")
+    assert committed is not None
+    assert committed.pending_clarification is None
+    assert committed.active_metric == "Revenue"
+    assert committed.last_turn_outcome == "FINANCIAL_ANSWER"
+    assert committed.last_assistant_provenance is not None
+    assert committed.last_assistant_provenance.evidence_ids == ["chunk-revenue"]
+    assert committed.last_assistant_provenance.citation_ids == []
+    assert committed.last_assistant_provenance.calculation_ids == []
+    assert committed.last_assistant_provenance.release_status == "NOT_APPLICABLE"
+    assert len(api_context.session_manager.get_recent_messages("lifecycle", 42)) == 6
+
+
+def test_duplicate_request_id_does_not_duplicate_turn_or_state(api_context):
+    first, first_engine = _post(
+        api_context,
+        mode="on",
+        question="Apple FY2024 Revenue?",
+        session_id="idempotent",
+        request_id="request-123",
+    )
+    assert first.status_code == 200
+    first_messages = api_context.session_manager.get_recent_messages(
+        "idempotent",
+        42,
+    )
+    first_version = api_context.store.get_state_version(42, "idempotent")
+    assert first_version == 2
+
+    second, second_engine = _post(
+        api_context,
+        mode="on",
+        question="Apple FY2024 Revenue?",
+        session_id="idempotent",
+        request_id="request-123",
+    )
+    assert second.status_code == 200
+    assert first_engine.calls and second_engine.calls
+    assert api_context.session_manager.get_recent_messages(
+        "idempotent",
+        42,
+    ) == first_messages
+    assert api_context.store.get_state_version(42, "idempotent") == first_version
+    assert api_context.store.get(42, "idempotent").turn_count == 1
+
+
+def test_clear_removes_pending_clarification_and_provenance(api_context):
+    _post(
+        api_context,
+        mode="on",
+        question="Apple Revenue and Operating Margin FY2024?",
+        session_id="clear-lifecycle",
+    )
+    _post(
+        api_context,
+        mode="on",
+        question="What about the previous year?",
+        session_id="clear-lifecycle",
+    )
+    state = api_context.store.get(42, "clear-lifecycle")
+    assert state is not None and state.pending_clarification is not None
+
+    response = _clear(api_context, "clear-lifecycle")
+    assert response.status_code == 200
+    assert api_context.store.get(42, "clear-lifecycle") is None
+
+
+def test_active_topic_switch_clears_pending_clarification(api_context):
+    first, _ = _post(
+        api_context,
+        mode="on",
+        question="Apple Revenue and Operating Margin FY2024?",
+        session_id="switch-pending",
+    )
+    assert first.status_code == 200
+
+    clarification, engine = _post(
+        api_context,
+        mode="on",
+        question="What about the previous year?",
+        session_id="switch-pending",
+    )
+    assert clarification.status_code == 200
+    assert clarification.json()["status"] == "CLARIFICATION_REQUIRED"
+    assert engine.calls == []
+    pending = api_context.store.get(42, "switch-pending")
+    assert pending is not None and pending.pending_clarification is not None
+
+    switched, engine = _post(
+        api_context,
+        mode="on",
+        question="Microsoft FY2024 Revenue?",
+        session_id="switch-pending",
+    )
+
+    assert switched.status_code == 200
+    assert engine.calls[0]["question"] == "Microsoft FY2024 Revenue?"
+    state = api_context.store.get(42, "switch-pending")
+    assert state is not None
+    assert state.pending_clarification is None
+    assert state.active_entity == "Microsoft"
+    assert state.active_metric == "Revenue"
+
+
+def test_restart_restores_pending_clarification_for_follow_up(api_context):
+    first, _ = _post(
+        api_context,
+        mode="on",
+        question="Apple Revenue and Operating Margin FY2024?",
+        session_id="restart-pending",
+    )
+    assert first.status_code == 200
+    clarification, engine = _post(
+        api_context,
+        mode="on",
+        question="What about the previous year?",
+        session_id="restart-pending",
+    )
+    assert clarification.status_code == 200
+    assert clarification.json()["status"] == "CLARIFICATION_REQUIRED"
+    assert engine.calls == []
+
+    previous_store = api_context.store
+    db_path = previous_store.db_path
+    previous_store.close()
+    restarted_store = SQLiteConversationStateStore(db_path)
+    api_context.store = restarted_store
+    api_context.service = ConversationShadowService(
+        restarted_store,
+        resolver_factory=lambda: ContextualQueryResolver(client=OfflineClient()),
+    )
+
+    follow_up, engine = _post(
+        api_context,
+        mode="on",
+        question="Revenue",
+        session_id="restart-pending",
+    )
+
+    assert follow_up.status_code == 200
+    assert engine.calls[0]["question"].startswith("What was Apple FY2023 Revenue")
+    assert engine.calls[0]["query_as_resolved"] is True
+    state = restarted_store.get(42, "restart-pending")
+    assert state is not None
+    assert state.pending_clarification is None
+    restarted_store.close()

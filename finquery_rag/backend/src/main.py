@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException, Depends
+from fastapi import FastAPI, Request as FastAPIRequest, UploadFile, File, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, StreamingResponse
 import logging
@@ -53,6 +53,7 @@ from .conversation.config import resolve_multiturn_context_mode
 from .conversation.resolver import ContextualQueryResolver
 from .conversation.shadow_service import ConversationShadowService
 from .conversation.sqlite_store import SQLiteConversationStateStore
+from .conversation.contracts import ConversationTurnOutcome
 
 from datetime import timedelta, datetime
 import os
@@ -222,11 +223,17 @@ def _commit_control_turn(
     answer: str,
     status: str,
     reason_codes: list[str],
+    request_id: str | None = None,
+    conversation_service: ConversationShadowService | None = None,
+    idempotent_replay: bool = False,
 ) -> None:
-    """Persist a control turn as UI metadata, never as financial provenance."""
+    """Persist final control output and semantic lifecycle metadata once."""
     if not session_id:
         return
-    session_manager.add_message(session_id, user_id, "user", question)
+    if not idempotent_replay:
+        session_manager.add_message(session_id, user_id, "user", question)
+    if idempotent_replay:
+        return
     session_manager.add_message(
         session_id,
         user_id,
@@ -239,6 +246,22 @@ def _commit_control_turn(
             "calculation_ids": [],
         },
     )
+    if conversation_service is not None and request_id:
+        outcome = {
+            "CLARIFICATION_REQUIRED": ConversationTurnOutcome.CLARIFICATION,
+            "OUT_OF_SCOPE": ConversationTurnOutcome.OUT_OF_SCOPE,
+        }.get(status, ConversationTurnOutcome.ERROR)
+        try:
+            conversation_service.record_control_turn(
+                user_id=user_id,
+                session_id=session_id,
+                request_id=request_id,
+                original_query=question,
+                outcome=outcome,
+                reason_codes=reason_codes,
+            )
+        except Exception:
+            logger.exception("conversation control metadata failed")
 
 
 def get_conversation_shadow_service() -> ConversationShadowService:
@@ -1091,7 +1114,7 @@ async def upload_document(file: UploadFile = File(...), current_user: User = Dep
         raise api_error(500, "processing_error", "Processing error: %s" % str(e))
 
 @app.post("/query", response_model=QueryResponse, response_model_exclude_none=True)
-async def query_documents(request: QueryRequest, current_user: User = Depends(get_current_user)):
+async def query_documents(request: QueryRequest, current_user: User = Depends(get_current_user), http_request: FastAPIRequest = None):
     """
     Answer one or more documents with V1, optionally preceded by Conversation
     Shadow or active context resolution. /query/stream remains unchanged.
@@ -1113,14 +1136,48 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
             current_user.id,
             request.document_names,
         )
-        request_id = uuid.uuid4().hex
+        request_id = (
+            http_request.headers.get("X-Request-ID", "").strip()
+            if http_request is not None
+            else ""
+        ) or uuid.uuid4().hex
+        if len(request_id) > 128:
+            raise api_error(400, "invalid_request_id", "X-Request-ID is too long")
 
         # I5 Shadow remains observation-only. It receives history loaded before
         # the current user turn is committed and cannot affect this request.
         conversation_service = None
+        idempotent_replay = False
+
+        def commit_control_turn(
+            *,
+            question: str,
+            answer: str,
+            status: str,
+            reason_codes: list[str],
+            **_ignored: object,
+        ) -> None:
+            _commit_control_turn(
+                session_id=session_id,
+                user_id=current_user.id,
+                question=question,
+                answer=answer,
+                status=status,
+                reason_codes=reason_codes,
+                request_id=request_id,
+                conversation_service=conversation_service,
+                idempotent_replay=idempotent_replay,
+            )
+
         if multiturn_mode == "shadow":
             try:
                 conversation_service = get_conversation_shadow_service()
+                idempotent_replay = conversation_service.is_request_processed(
+                    user_id=current_user.id,
+                    session_id=session_id,
+                    request_id=request_id,
+                    original_query=request.question,
+                )
                 conversation_service.observe(
                     request_id=request_id,
                     user_id=current_user.id,
@@ -1144,7 +1201,7 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
                         "This question is outside the supported financial "
                         "document scope."
                     )
-                    _commit_control_turn(
+                    commit_control_turn(
                         session_id=session_id,
                         user_id=current_user.id,
                         question=request.question,
@@ -1166,7 +1223,7 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
                         "Please restate the company, metric, and period so I "
                         "can answer this safely."
                     )
-                    _commit_control_turn(
+                    commit_control_turn(
                         session_id=session_id,
                         user_id=current_user.id,
                         question=request.question,
@@ -1186,6 +1243,12 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
                 execution_history = None
             else:
                 conversation_service = get_conversation_shadow_service()
+                idempotent_replay = conversation_service.is_request_processed(
+                    user_id=current_user.id,
+                    session_id=session_id,
+                    request_id=request_id,
+                    original_query=request.question,
+                )
                 if (
                     not conversation_history
                     and _active_query_requires_context(request.question)
@@ -1195,7 +1258,7 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
                         "I need the earlier company, metric, and period context "
                         "before I can answer this safely."
                     )
-                    _commit_control_turn(
+                    commit_control_turn(
                         session_id=session_id,
                         user_id=current_user.id,
                         question=request.question,
@@ -1233,7 +1296,7 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
                             "I need the company, metric, and period stated "
                             "explicitly before I can answer this safely."
                         )
-                        _commit_control_turn(
+                        commit_control_turn(
                             session_id=session_id,
                             user_id=current_user.id,
                             question=request.question,
@@ -1259,13 +1322,14 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
                         str(getattr(code, "value", code))
                         for code in (resolution.reason_codes or [])
                     ]
+                    idempotent_replay = idempotent_replay or "IDEMPOTENT_REPLAY" in resolution_codes
                     if not resolution.supported:
                         reason_codes = resolution_codes or ["OUT_OF_SCOPE"]
                         answer = (
                             "This question is outside the supported financial "
                             "document scope."
                         )
-                        _commit_control_turn(
+                        commit_control_turn(
                             session_id=session_id,
                             user_id=current_user.id,
                             question=request.question,
@@ -1287,7 +1351,7 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
                             resolution.clarification_question
                             or "Which company, metric, or period should I use?"
                         )
-                        _commit_control_turn(
+                        commit_control_turn(
                             session_id=session_id,
                             user_id=current_user.id,
                             question=request.question,
@@ -1312,7 +1376,7 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
                             "Please restate the company, metric, and period "
                             "so I can answer this safely."
                         )
-                        _commit_control_turn(
+                        commit_control_turn(
                             session_id=session_id,
                             user_id=current_user.id,
                             question=request.question,
@@ -1380,25 +1444,8 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
         if query_as_resolved and execution_query != request.question:
             result["rewritten_question"] = execution_query
 
-        # Record structured provenance only after V1 has finalized. Clarification
-        # and out-of-scope controls return before this point.
-        if conversation_service is not None and session_id is not None:
-            try:
-                structured_ids = []
-                if runtime_result is not None:
-                    structured_ids.extend(runtime_result.evidence_ids)
-                    structured_ids.extend(runtime_result.citation_ids)
-                    structured_ids.extend(runtime_result.calculation_ids)
-                conversation_service.record_assistant_turn(
-                    user_id=current_user.id,
-                    session_id=session_id,
-                    referenced_evidence_ids=structured_ids,
-                )
-            except Exception:
-                logger.exception("conversation assistant metadata failed")
-
         rewritten = result.get("rewritten_question")
-        if session_id:
+        if session_id and not idempotent_replay:
             session_manager.add_message(session_id, current_user.id, "user", request.question)
             session_manager.add_message(
                 session_id,
@@ -1407,6 +1454,57 @@ async def query_documents(request: QueryRequest, current_user: User = Depends(ge
                 result["answer"],
                 metadata=_assistant_session_metadata(result=result),
             )
+
+        if (
+            conversation_service is not None
+            and session_id is not None
+            and not idempotent_replay
+        ):
+            try:
+                evidence_ids = []
+                citation_ids = []
+                calculation_ids = []
+                release_status = "NOT_APPLICABLE"
+                outcome = ConversationTurnOutcome.FINANCIAL_ANSWER
+                if runtime_result is not None:
+                    evidence_ids = list(runtime_result.evidence_ids)
+                    citation_ids = list(runtime_result.citation_ids)
+                    calculation_ids = list(runtime_result.calculation_ids)
+                    release_status = str(
+                        getattr(
+                            runtime_result.release_status,
+                            "value",
+                            runtime_result.release_status,
+                        ),
+                    )
+                    runtime_status = str(
+                        getattr(
+                            runtime_result.status,
+                            "value",
+                            runtime_result.status,
+                        ),
+                    )
+                    outcome = {
+                        "FAIL_CLOSED": ConversationTurnOutcome.FAIL_CLOSED,
+                        "OUT_OF_SCOPE": ConversationTurnOutcome.OUT_OF_SCOPE,
+                        "ERROR": ConversationTurnOutcome.ERROR,
+                    }.get(
+                        runtime_status,
+                        ConversationTurnOutcome.FINANCIAL_ANSWER,
+                    )
+                conversation_service.record_assistant_turn(
+                    user_id=current_user.id,
+                    session_id=session_id,
+                    request_id=request_id,
+                    original_query=request.question,
+                    referenced_evidence_ids=evidence_ids,
+                    citation_ids=citation_ids,
+                    calculation_ids=calculation_ids,
+                    release_status=release_status,
+                    outcome=outcome,
+                )
+            except Exception:
+                logger.exception("conversation assistant metadata failed")
 
         return QueryResponse(
             answer=result["answer"],

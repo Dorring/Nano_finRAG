@@ -2,11 +2,13 @@ from __future__ import annotations
 
 import json
 
+import pytest
+
 from src.conversation.config import resolve_multiturn_context_mode
 from src.conversation.contracts import ConversationResolution
 from src.conversation.resolver import ContextualQueryResolver
 from src.conversation.shadow_service import ConversationShadowService
-from src.conversation.sqlite_store import SQLiteConversationStateStore
+from src.conversation.sqlite_store import ConversationStateConflictError, SQLiteConversationStateStore
 from src.services.session_manager import SessionManager
 
 
@@ -156,7 +158,7 @@ def test_ambiguity_is_observed_without_mutating_active_metric(tmp_path):
     assert observation.shadow_status == "CLARIFICATION"
     assert observation.clarification_required is True
     state_after = store.get(2, "ambiguous")
-    assert state_after.turn_count == state_before.turn_count
+    assert state_after.turn_count == state_before.turn_count + 1
     assert state_after.active_metric is None
 
 
@@ -357,3 +359,43 @@ def test_provider_error_is_visible_even_when_deterministic_shadow_fallback_succe
     assert observation.shadow_status == "ERROR"
     assert observation.shadow_error_code == "HTTP_429"
     assert store.get(9, "provider-error") is not None
+
+
+def test_request_replay_is_read_only_and_query_reuse_conflicts(tmp_path):
+    service, store = make_service(tmp_path)
+    original = "Apple FY2024 Revenue?"
+    service.observe(
+        request_id="replay-1",
+        user_id=9,
+        session_id="replay",
+        original_query=original,
+        prior_history=[],
+    )
+    assert service.record_assistant_turn(
+        user_id=9,
+        session_id="replay",
+        request_id="replay-1",
+        original_query=original,
+        referenced_evidence_ids=["chunk-1"],
+    )
+    version = store.get_state_version(9, "replay")
+
+    replay = service.resolve_active(
+        request_id="replay-1",
+        user_id=9,
+        session_id="replay",
+        original_query=original,
+        prior_history=[],
+    )
+    assert "IDEMPOTENT_REPLAY" in replay.reason_codes
+    assert store.get_state_version(9, "replay") == version
+    assert store.get(9, "replay").turn_count == 1
+
+    with pytest.raises(ConversationStateConflictError):
+        service.resolve_active(
+            request_id="replay-1",
+            user_id=9,
+            session_id="replay",
+            original_query="Tesla FY2024 Revenue?",
+            prior_history=[],
+        )

@@ -12,16 +12,27 @@ from __future__ import annotations
 import json
 import logging
 import time
+import uuid
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import asdict, dataclass, field
 from typing import Any
 
 from .bailian_client import BailianClient
 from .context_budget import ContextBudgetManager
-from .contracts import ConversationResolution, DialogueState, DialogueTurn, ReasonCode
+from .contracts import (
+    AssistantProvenance,
+    ConversationResolution,
+    ConversationTurnOutcome,
+    DialogueState,
+    DialogueTurn,
+    ReasonCode,
+)
 from .resolver import ContextualQueryResolver
 from .service import ConversationContextManager
-from .sqlite_store import SQLiteConversationStateStore
+from .sqlite_store import (
+    ConversationStateConflictError,
+    SQLiteConversationStateStore,
+)
 from .store import ConversationStateStore
 
 logger = logging.getLogger(__name__)
@@ -159,6 +170,77 @@ class ConversationShadowService:
         resolver = self.resolver_factory()
         return self.manager_factory(scoped_store, resolver)
 
+    def get_state(self, *, user_id: int, session_id: str) -> DialogueState | None:
+        """Return structured state at the production identity boundary."""
+        return self.state_store.get(int(user_id), session_id)
+
+    def is_request_processed(
+        self,
+        *,
+        user_id: int,
+        session_id: str | None,
+        request_id: str,
+        original_query: str,
+    ) -> bool:
+        """Check request idempotency without replaying financial execution."""
+        if not session_id:
+            return False
+        state = self.get_state(user_id=user_id, session_id=session_id)
+        if state is None or state.last_processed_request_id is None:
+            return False
+        if state.last_processed_request_id != request_id:
+            return False
+        if (
+            state.last_processed_original_query is not None
+            and state.last_processed_original_query != original_query
+        ):
+            raise ConversationStateConflictError(
+                "request_id was reused with a different original query",
+            )
+        return True
+
+    @staticmethod
+    def _replay_resolution(
+        state: DialogueState,
+        original_query: str,
+    ) -> ConversationResolution:
+        """Reconstruct prior semantic outcome without another state write."""
+        pending = state.pending_clarification
+        if pending is not None:
+            field_name = (
+                pending.unresolved_fields[0]
+                if pending.unresolved_fields
+                else "metric"
+            )
+            options = list(pending.candidates)
+            suffix = f" ({', '.join(options)})" if options else ""
+            return ConversationResolution(
+                supported=True,
+                requires_context=True,
+                standalone_query="",
+                resolved_entity=pending.entity or state.active_entity,
+                resolved_period=pending.period or state.active_period,
+                ambiguity_detected=True,
+                clarification_required=True,
+                clarification_question=(
+                    f"Which {field_name} should I use{suffix}?"
+                ),
+                clarification_options=options,
+                reason_codes=list(pending.reason_codes)
+                + [ReasonCode.IDEMPOTENT_REPLAY],
+            )
+        standalone = state.last_resolved_query or original_query
+        return ConversationResolution(
+            supported=True,
+            requires_context=standalone != original_query,
+            standalone_query=standalone,
+            resolved_entity=state.active_entity,
+            resolved_metric=state.active_metric,
+            resolved_period=state.active_period,
+            resolved_scope=state.active_scope,
+            reason_codes=[ReasonCode.IDEMPOTENT_REPLAY],
+        )
+
     def _emit(self, observation: ConversationShadowObservation) -> None:
         payload = observation.to_dict()
         if self.observation_sink is not None:
@@ -213,13 +295,36 @@ class ConversationShadowService:
         diagnostics: dict[str, Any] = {}
         started = time.perf_counter()
         try:
-            manager = self._new_manager(int(user_id))
-            resolution = manager.process_user_turn(
-                session_id,
-                original_query,
-                history_turns=history_turns,
-                diagnostics=diagnostics,
+            replay_state = self.get_state(
+                user_id=int(user_id),
+                session_id=session_id,
             )
+            is_replay = bool(
+                replay_state is not None
+                and replay_state.last_processed_request_id == request_id
+            )
+            if is_replay:
+                if (
+                    replay_state.last_processed_original_query is not None
+                    and replay_state.last_processed_original_query
+                    != original_query
+                ):
+                    raise ConversationStateConflictError(
+                        "request_id was reused with a different original query",
+                    )
+                resolution = self._replay_resolution(
+                    replay_state,
+                    original_query,
+                )
+                manager = None
+            else:
+                manager = self._new_manager(int(user_id))
+                resolution = manager.process_user_turn(
+                    session_id,
+                    original_query,
+                    history_turns=history_turns,
+                    diagnostics=diagnostics,
+                )
             if resolution_sink is not None:
                 resolution_sink(resolution)
             elapsed_ms = (time.perf_counter() - started) * 1000.0
@@ -235,7 +340,7 @@ class ConversationShadowService:
                 )
             )
             client_error = getattr(
-                getattr(manager, "resolver", None),
+                getattr(manager, "resolver", None) if manager is not None else None,
                 "client",
                 None,
             )
@@ -256,7 +361,7 @@ class ConversationShadowService:
             observation.explicit_fields = list(resolution.explicit_fields or [])
             observation.reason_codes = reason_codes
             observation.relevant_turn_ids = list(resolution.relevant_turn_ids or [])
-            observation.resolver_invoked = resolver_invoked
+            observation.resolver_invoked = False if is_replay else resolver_invoked
             observation.resolver_latency_ms = round(elapsed_ms, 3)
             observation.selected_context_tokens = int(
                 diagnostics.get("estimated_context_tokens", 0)
@@ -290,7 +395,7 @@ class ConversationShadowService:
                 else "OK"
             )
             observation.state_persisted = bool(
-                resolution.supported and not resolution.clarification_required
+                resolution.supported
             )
         except Exception as exc:
             observation.resolver_latency_ms = round(
@@ -335,30 +440,136 @@ class ConversationShadowService:
             raise RuntimeError("active conversation resolution produced no result")
         return resolutions[0]
 
+    @staticmethod
+    def _clean_ids(values: Sequence[str] | None) -> list[str]:
+        result: list[str] = []
+        for value in values or []:
+            if isinstance(value, str) and value and value not in result:
+                result.append(value)
+        return result
+
+    def _save_final_state(
+        self,
+        *,
+        user_id: int,
+        state: DialogueState,
+        expected_state_version: int | None,
+    ) -> None:
+        self.state_store.save_state(
+            state,
+            user_id=int(user_id),
+            expected_state_version=expected_state_version,
+        )
+
+    def record_control_turn(
+        self,
+        *,
+        user_id: int,
+        session_id: str | None,
+        request_id: str,
+        original_query: str,
+        outcome: str,
+        reason_codes: Sequence[str] | None = None,
+    ) -> bool:
+        """Commit a user-visible control outcome exactly once."""
+        if not session_id:
+            return False
+        state = self.get_state(user_id=int(user_id), session_id=session_id)
+        expected_version = (
+            self.state_store.get_state_version(int(user_id), session_id)
+            if state is not None
+            else None
+        )
+        if state is None:
+            state = DialogueState(conversation_id=session_id)
+        if state.last_processed_request_id == request_id:
+            if (
+                state.last_processed_original_query is not None
+                and state.last_processed_original_query != original_query
+            ):
+                raise ConversationStateConflictError(
+                    "request_id was reused with a different original query",
+                )
+            return False
+        state.last_processed_request_id = request_id
+        state.last_processed_original_query = original_query
+        state.last_turn_outcome = outcome
+        state.last_assistant_provenance = AssistantProvenance(
+            assistant_turn_id=f"{request_id}:assistant",
+            release_status="NOT_APPLICABLE",
+            outcome=outcome,
+        )
+        self._save_final_state(
+            user_id=int(user_id),
+            state=state,
+            expected_state_version=expected_version,
+        )
+        return True
+
     def record_assistant_turn(
         self,
         *,
         user_id: int,
         session_id: str | None,
         referenced_evidence_ids: Sequence[str] | None = None,
-    ) -> None:
+        citation_ids: Sequence[str] | None = None,
+        calculation_ids: Sequence[str] | None = None,
+        request_id: str | None = None,
+        original_query: str | None = None,
+        release_status: str = "NOT_APPLICABLE",
+        outcome: str = ConversationTurnOutcome.FINANCIAL_ANSWER,
+    ) -> bool:
         """Persist structured provenance after V1 finalization.
 
         The raw assistant message is written exactly once by SessionManager.
         The SQLite store strips runtime-only raw turns from structured state.
         """
         if not session_id:
-            return
-        manager = self._new_manager(int(user_id))
-        manager.record_assistant_turn(
+            return False
+        state = self.get_state(user_id=int(user_id), session_id=session_id)
+        if state is None:
+            return False
+        expected_version = self.state_store.get_state_version(
+            int(user_id),
             session_id,
-            assistant_response=None,
-            referenced_evidence_ids=[
-                value
-                for value in (referenced_evidence_ids or [])
-                if isinstance(value, str) and value
-            ],
         )
+        if request_id is not None and state.last_processed_request_id == request_id:
+            if (
+                state.last_processed_original_query is not None
+                and original_query is not None
+                and state.last_processed_original_query != original_query
+            ):
+                raise ConversationStateConflictError(
+                    "request_id was reused with a different original query",
+                )
+            return False
+        evidence_ids = self._clean_ids(referenced_evidence_ids)
+        citation_ids_clean = self._clean_ids(citation_ids)
+        calculation_ids_clean = self._clean_ids(calculation_ids)
+        state.referenced_evidence_ids = list(state.referenced_evidence_ids) + [
+            value
+            for value in evidence_ids
+            if value not in state.referenced_evidence_ids
+        ]
+        assistant_turn_id = request_id or uuid.uuid4().hex
+        state.last_assistant_provenance = AssistantProvenance(
+            assistant_turn_id=assistant_turn_id,
+            evidence_ids=evidence_ids,
+            citation_ids=citation_ids_clean,
+            calculation_ids=calculation_ids_clean,
+            release_status=release_status,
+            outcome=outcome,
+        )
+        state.last_turn_outcome = outcome
+        if request_id is not None:
+            state.last_processed_request_id = request_id
+            state.last_processed_original_query = original_query
+        self._save_final_state(
+            user_id=int(user_id),
+            state=state,
+            expected_state_version=expected_version,
+        )
+        return True
 
     def delete_state(self, *, user_id: int, session_id: str) -> bool:
         return self.state_store.delete(int(user_id), session_id)
