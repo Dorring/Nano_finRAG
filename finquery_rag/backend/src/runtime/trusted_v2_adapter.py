@@ -1,9 +1,8 @@
-"""Thin FinancialQARuntime adapter for the future Trusted V2 coordinator.
+"""Thin FinancialQARuntime adapter for the Trusted V2 coordinator.
 
-TV2-01 is a contract shell, not a production V2 route.  The adapter accepts
-an injected coordinator and deliberately does not import or call
-TrustedRAGRuntimeV2.handle(), because that component starts after evidence
-preparation.  A real coordinator will be assembled in TV2-02 through TV2-05.
+The adapter exposes the complete TV2-05 coordinator through the shared runtime
+port. TV2-08 registers it through explicit production dependency injection;
+the adapter still does not import or call TrustedRAGRuntimeV2.handle() directly.
 """
 
 from __future__ import annotations
@@ -31,17 +30,25 @@ from .trusted_v2_contracts import (
 
 
 class TrustedFinancialRuntimeV2(FinancialQARuntime):
-    """Expose a future full V2 coordinator through the shared runtime port.
+    """Expose the complete V2 coordinator through the shared runtime port.
 
-    The coordinator is injected so this phase cannot accidentally create a
-    fake production execution root.  No instance of this adapter is registered
-    by QueryLifecycleService in TV2-01.
+    The coordinator is injected so production and tests share an explicit dependency boundary.
+    TV2-08 marks official routing explicitly; this class never constructs a fake runtime.
+    It remains transport- and Conversation-independent.
     """
 
-    def __init__(self, coordinator: TrustedV2ExecutionCoordinator) -> None:
+    def __init__(
+        self,
+        coordinator: TrustedV2ExecutionCoordinator,
+        *,
+        production_routing: bool = False,
+    ) -> None:
         if not callable(getattr(coordinator, "execute", None)):
             raise TypeError("coordinator must expose an execute method")
+        if not isinstance(production_routing, bool):
+            raise TypeError("production_routing must be a bool")
         self._coordinator = coordinator
+        self.production_routing = production_routing
 
     @property
     def coordinator(self) -> TrustedV2ExecutionCoordinator:
@@ -56,11 +63,10 @@ class TrustedFinancialRuntimeV2(FinancialQARuntime):
         outcome_metadata: Mapping[str, Any] | None = None,
     ) -> RuntimeMetadata:
         attributes = copy.deepcopy(dict(outcome_metadata or {}))
-        attributes.setdefault("production_routing", False)
         attributes.setdefault("coordinator_type", type(coordinator).__name__)
         return RuntimeMetadata(
             implementation="trusted_v2_adapter",
-            config_version="tv2-01",
+            config_version="tv2-08",
             attributes=attributes,
         )
 
@@ -84,7 +90,10 @@ class TrustedFinancialRuntimeV2(FinancialQARuntime):
             runtime_version=RuntimeVersion.V2,
             release_status=ReleaseStatus.NOT_RELEASED,
             debug_metadata=debug_metadata,
-            runtime_metadata=self._metadata(coordinator=self._coordinator),
+            runtime_metadata=self._metadata(
+                coordinator=self._coordinator,
+                outcome_metadata={"production_routing": self.production_routing},
+            ),
         )
 
     async def execute(self, request: FinancialQueryRequest) -> FinancialQueryResult:
@@ -135,6 +144,7 @@ class TrustedFinancialRuntimeV2(FinancialQARuntime):
                 runtime_attributes.setdefault(name, value)
         debug_metadata = copy.deepcopy(outcome.debug_metadata)
         debug_metadata.setdefault("v2_execution_status", outcome.status.value)
+        runtime_attributes.setdefault("production_routing", self.production_routing)
 
         return FinancialQueryResult(
             status=status,

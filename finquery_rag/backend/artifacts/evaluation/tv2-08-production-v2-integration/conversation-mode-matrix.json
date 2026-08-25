@@ -1,0 +1,7 @@
+{
+  "default": "on",
+  "supported": ["off", "shadow", "on"],
+  "off": "legacy conversation bypass",
+  "shadow": "resolver/state observation without official query rewrite",
+  "on": "resolved standalone_query is sent to the selected financial runtime"
+}

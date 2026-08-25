@@ -1,7 +1,7 @@
-"""Contracts for V1-primary/V2-shadow execution.
+"""Contracts for explicit V1, V2-shadow, and V2-official execution modes.
 
-TV2-06 keeps shadow output strictly outside the FinancialQueryResult returned
-to callers. These types are observation-only and have no SessionManager or
+Shadow observations remain outside the FinancialQueryResult returned to
+callers. These types are observation-only and have no SessionManager or
 ConversationStateStore dependency.
 """
 from __future__ import annotations
@@ -15,10 +15,11 @@ from typing import Any, Protocol
 
 
 class FinancialRuntimeMode(str, Enum):
-    """Deployment modes supported by TV2-06."""
+    """Explicit deployment modes for the FinancialQARuntime router."""
 
     V1 = "v1"
     SHADOW = "shadow"
+    V2 = "v2"
 
 
 class FinancialRuntimeModeError(ValueError):
@@ -30,24 +31,20 @@ def resolve_financial_runtime_mode(
     *,
     environ: Mapping[str, Any] | None = None,
 ) -> str:
-    """Validate FINANCIAL_RUNTIME_MODE without accepting active V2."""
+    """Validate FINANCIAL_RUNTIME_MODE with an explicit V2 mode."""
 
     if mode is None and environ is not None:
         mode = environ.get("FINANCIAL_RUNTIME_MODE")
     raw_mode = getattr(mode, "value", mode)
-    normalized = "v1" if raw_mode is None else str(raw_mode).strip().lower()
+    normalized = "v2" if raw_mode is None else str(raw_mode).strip().lower()
     if normalized in {
         FinancialRuntimeMode.V1.value,
         FinancialRuntimeMode.SHADOW.value,
+        FinancialRuntimeMode.V2.value,
     }:
         return normalized
-    if normalized == "v2":
-        raise FinancialRuntimeModeError(
-            "FINANCIAL_RUNTIME_MODE=v2 is not available in TV2-06; "
-            "use v1 or shadow",
-        )
     raise FinancialRuntimeModeError(
-        "FINANCIAL_RUNTIME_MODE must be one of: v1, shadow",
+        "FINANCIAL_RUNTIME_MODE must be one of: v1, shadow, v2",
     )
 
 

@@ -1,0 +1,17 @@
+{
+  "query": [
+    "QueryLifecycleService",
+    "FinancialRuntimeRouter",
+    "TrustedFinancialRuntimeV2",
+    "Supervisor",
+    "BoundedRuntime",
+    "R4",
+    "SemanticBinder",
+    "CalculatorOrGeneratorRouting",
+    "ValidatorReleaseGate",
+    "SessionAndDialogueStateCommit"
+  ],
+  "query_stream": "shares_query_lifecycle_and_runtime_router; validated_final_sse",
+  "v2_internal_v1_fallback": 0,
+  "raw_history_forwarded_to_v2": false
+}

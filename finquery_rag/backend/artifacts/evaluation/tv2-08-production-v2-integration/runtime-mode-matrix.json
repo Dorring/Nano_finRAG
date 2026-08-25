@@ -1,0 +1,22 @@
+{
+  "v1": {
+    "official_runtime": "LegacyFinancialRuntimeAdapter",
+    "v1_calls": 1,
+    "v2_calls": 0,
+    "fallback": false
+  },
+  "shadow": {
+    "official_runtime": "LegacyFinancialRuntimeAdapter",
+    "v1_calls": 1,
+    "v2_calls": 1,
+    "v2_authority": false,
+    "fallback": false
+  },
+  "v2": {
+    "official_runtime": "TrustedFinancialRuntimeV2",
+    "v1_calls": 0,
+    "v2_calls": 1,
+    "v2_authority": true,
+    "fallback": false
+  }
+}

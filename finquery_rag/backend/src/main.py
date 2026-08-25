@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request as FastAPIRequest, UploadFile, File, HTTPEx
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, StreamingResponse
 import logging
+import importlib
 from openai import OpenAI
 import json
 import time
@@ -124,24 +125,61 @@ session_manager = SessionManager()
 memory_store = UserMemoryStore()
 feedback_store = FeedbackStore()
 conversation_shadow_service: ConversationShadowService | None = None
-_trusted_v2_shadow_runtime_builder: (
+_trusted_v2_runtime_builder: (
     Callable[[Any, FinancialQueryRequest], FinancialQARuntime] | None
 ) = None
+
+
+def configure_trusted_v2_runtime_builder(
+    builder: Callable[[Any, FinancialQueryRequest], FinancialQARuntime] | None,
+) -> None:
+    """Register the real TV2-05 factory used by shadow and official V2 modes.
+
+    The builder is deliberately explicit: an unset V2 dependency is a
+    configuration error, never an opportunity to construct a fake runtime or
+    silently fall back to V1.
+    """
+
+    global _trusted_v2_runtime_builder
+    if builder is not None and not callable(builder):
+        raise TypeError("V2 runtime builder must be callable or None")
+    _trusted_v2_runtime_builder = builder
 
 
 def configure_trusted_v2_shadow_runtime_builder(
     builder: Callable[[Any, FinancialQueryRequest], FinancialQARuntime] | None,
 ) -> None:
-    """Inject the real TV2-05 factory for an explicit shadow deployment.
+    """Backward-compatible alias for the shared V2 runtime builder."""
 
-    The default remains unconfigured so a deployment cannot silently create a
-    fake V2 or fall back to V1 while claiming shadow mode.
-    """
+    configure_trusted_v2_runtime_builder(builder)
 
-    global _trusted_v2_shadow_runtime_builder
-    if builder is not None and not callable(builder):
-        raise TypeError("shadow runtime builder must be callable or None")
-    _trusted_v2_shadow_runtime_builder = builder
+
+def _configured_trusted_v2_runtime_builder() -> (
+    Callable[[Any, FinancialQueryRequest], FinancialQARuntime] | None
+):
+    """Resolve explicit DI, optionally from a deployment import path."""
+
+    if _trusted_v2_runtime_builder is not None:
+        return _trusted_v2_runtime_builder
+    path = os.getenv("TRUSTED_V2_RUNTIME_BUILDER", "").strip()
+    if not path:
+        return None
+    if ":" not in path:
+        raise FinancialRuntimeModeError(
+            "TRUSTED_V2_RUNTIME_BUILDER must use module:callable syntax",
+        )
+    module_name, attribute = path.rsplit(":", 1)
+    try:
+        builder = getattr(importlib.import_module(module_name), attribute)
+    except (ImportError, AttributeError) as exc:
+        raise FinancialRuntimeModeError(
+            "TRUSTED_V2_RUNTIME_BUILDER could not be imported",
+        ) from exc
+    if not callable(builder):
+        raise FinancialRuntimeModeError(
+            "TRUSTED_V2_RUNTIME_BUILDER must resolve to a callable",
+        )
+    return builder
 
 
 def get_rag_engine():
@@ -189,12 +227,13 @@ def _normalize_api_pagination(limit, offset, default_limit=50, max_limit=1000):
 
 
 def _financial_runtime_adapter_enabled() -> bool:
-    """Return the I3 flag, requiring the shared runtime port for shadow mode."""
+    """Return the I3 flag, requiring the shared runtime port for V1/V2 modes."""
     value = os.getenv("FINANCIAL_RUNTIME_ADAPTER_ENABLED", "true")
     enabled = value.strip().lower() not in {"0", "false", "off", "no"}
-    if _financial_runtime_mode() != "v1" and not enabled:
+    mode = _financial_runtime_mode()
+    if mode != "v1" and not enabled:
         raise FinancialRuntimeModeError(
-            "FINANCIAL_RUNTIME_MODE=shadow requires "
+            f"FINANCIAL_RUNTIME_MODE={mode} requires "
             "FINANCIAL_RUNTIME_ADAPTER_ENABLED=true",
         )
     return enabled
@@ -223,25 +262,35 @@ def _build_financial_runtime(
     engine: Any,
     request: FinancialQueryRequest,
 ) -> FinancialQARuntime:
-    primary = LegacyFinancialRuntimeAdapter(engine)
+    """Build the selected runtime without an implicit cross-version fallback."""
+
     mode = _financial_runtime_mode()
     if mode == "v1":
-        return primary
-    builder = _trusted_v2_shadow_runtime_builder
+        return LegacyFinancialRuntimeAdapter(engine)
+
+    builder = _configured_trusted_v2_runtime_builder()
     if builder is None:
         raise FinancialRuntimeModeError(
-            "FINANCIAL_RUNTIME_MODE=shadow requires an explicit real "
-            "TV2-05 TrustedFinancialRuntimeV2 factory",
+            f"FINANCIAL_RUNTIME_MODE={mode} requires an explicit real "
+            "TrustedFinancialRuntimeV2 production factory",
         )
-    shadow = builder(engine, request)
-    if not isinstance(shadow, TrustedFinancialRuntimeV2):
+    v2_runtime = builder(engine, request)
+    if not isinstance(v2_runtime, TrustedFinancialRuntimeV2):
         raise FinancialRuntimeModeError(
-            "shadow runtime builder must return TrustedFinancialRuntimeV2",
+            "Trusted V2 runtime builder must return TrustedFinancialRuntimeV2",
         )
+
+    if mode == "v2":
+        v2_runtime.production_routing = True
+        return FinancialRuntimeRouter(
+            v2_runtime=v2_runtime,
+            mode="v2",
+        )
+
     return FinancialRuntimeRouter(
-        primary,
-        shadow_runtime=shadow,
-        mode=mode,
+        LegacyFinancialRuntimeAdapter(engine),
+        shadow_runtime=v2_runtime,
+        mode="shadow",
         shadow_timeout_ms=_financial_runtime_shadow_timeout_ms(),
     )
 
@@ -1145,9 +1194,20 @@ def _build_user_turn_execution_request(
     )
 
 
+def _validate_financial_runtime_configuration() -> None:
+    """Fail before a turn executes when the selected runtime is not constructible."""
+    mode = _financial_runtime_mode()
+    _financial_runtime_adapter_enabled()
+    if mode in {"shadow", "v2"} and _configured_trusted_v2_runtime_builder() is None:
+        raise FinancialRuntimeModeError(
+            f"FINANCIAL_RUNTIME_MODE={mode} requires an explicit real "
+            "TrustedFinancialRuntimeV2 production factory",
+        )
+
+
 def _get_query_lifecycle_service() -> QueryLifecycleService:
     """Build the shared lifecycle with the selected runtime port."""
-    _financial_runtime_mode()
+    _validate_financial_runtime_configuration()
     return QueryLifecycleService(
         session_manager=session_manager,
         memory_store=memory_store,
@@ -1174,6 +1234,10 @@ def _query_response_from_execution(
         else None
     )
     is_control = execution.status in {"CLARIFICATION_REQUIRED", "OUT_OF_SCOPE"}
+    is_v2_non_answer = (
+        execution.runtime_version == "V2"
+        and execution.status != "ANSWER"
+    )
     return QueryResponse(
         answer=execution.answer or "",
         sources=legacy.get("sources", []),
@@ -1204,7 +1268,7 @@ def _query_response_from_execution(
             if legacy.get("repair")
             else None
         ),
-        status=execution.status if is_control else None,
+        status=execution.status if (is_control or is_v2_non_answer) else None,
         clarification=clarification if is_control else None,
     )
 

@@ -126,15 +126,20 @@ def test_query_and_stream_share_v1_primary_shadow_transport(
             and "memory_profile" not in request.request_metadata
             for request in coordinator.requests
         )
-        before_rejected = coordinator.calls
         monkeypatch.setenv("FINANCIAL_RUNTIME_MODE", "v2")
-        rejected = client.post(
+        official_json = client.post(
             "/query",
             json={"question": "What was revenue?", "document_names": ["annual_report.pdf"]},
         )
-        assert rejected.status_code == 500
-        assert "FINANCIAL_RUNTIME_MODE=v2" in rejected.text
-        assert coordinator.calls == before_rejected
+        official_stream = client.post(
+            "/query/stream",
+            json={"question": "What was revenue?", "document_names": ["annual_report.pdf"]},
+        )
+        assert official_json.status_code == 200
+        assert official_stream.status_code == 200
+        assert official_json.json()["answer"] == "V2 shadow answer"
+        assert "V2 shadow answer" in official_stream.text
+        assert coordinator.calls == 4
     finally:
         main.configure_trusted_v2_shadow_runtime_builder(None)
         main.app.dependency_overrides.clear()

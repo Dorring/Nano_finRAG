@@ -12,7 +12,6 @@ from rag_v2.supervisor import DeterministicFallbackProvider, SupervisorService
 from src.runtime import (
     DeterministicCalculationCapability,
     FinancialQueryRequest,
-    FinancialRuntimeModeError,
     FinancialRuntimeRouter,
     FinancialQueryResult,
     InMemoryShadowObservationSink,
@@ -182,12 +181,11 @@ def _real_v2_fact_runtime(
     return runtime, policy, retrieval, validator
 
 
-def test_mode_defaults_to_v1_and_rejects_active_v2() -> None:
-    assert resolve_financial_runtime_mode() == "v1"
+def test_mode_defaults_to_v2_and_accepts_explicit_runtime_modes() -> None:
+    assert resolve_financial_runtime_mode() == "v2"
     assert resolve_financial_runtime_mode(FinancialRuntimeMode.V1) == "v1"
     assert resolve_financial_runtime_mode(environ={"FINANCIAL_RUNTIME_MODE": "shadow"}) == "shadow"
-    with pytest.raises(FinancialRuntimeModeError):
-        resolve_financial_runtime_mode("v2")
+    assert resolve_financial_runtime_mode("v2") == "v2"
 
 
 def test_v1_mode_executes_only_primary() -> None:

@@ -1,9 +1,9 @@
-"""V1-primary/V2-shadow runtime router for TV2-06.
+"""Explicit V1, V2-shadow, and V2-official runtime router.
 
-The router is an implementation of the existing FinancialQARuntime port. It
-returns the primary V1 result exactly and keeps V2 strictly in an observation
-branch. The shadow branch has a bounded timeout and no Session or Conversation
-dependencies.
+The router is an implementation of the existing FinancialQARuntime port. In
+v1 mode it invokes only the legacy runtime, in shadow mode it returns the V1
+result while observing a bounded V2 branch, and in v2 mode it returns only the
+Trusted V2 result. No mode silently falls back to another runtime.
 """
 from __future__ import annotations
 
@@ -71,29 +71,36 @@ def _error_stage(result: FinancialQueryResult | None) -> str | None:
 
 
 class FinancialRuntimeRouter(FinancialQARuntime):
-    """Run V1 as the only authority and V2 as bounded shadow."""
+    """Route explicit V1, V2-shadow, or V2-official execution modes."""
 
     def __init__(
         self,
-        primary_runtime: FinancialQARuntime,
+        primary_runtime: FinancialQARuntime | None = None,
         *,
         shadow_runtime: FinancialQARuntime | None = None,
+        v2_runtime: FinancialQARuntime | None = None,
         mode: str = "v1",
         shadow_timeout_ms: int = 5_000,
         observation_sink: ShadowObservationSink | Callable[[V2ShadowObservation], None] | None = None,
         comparator: ShadowComparator | None = None,
     ) -> None:
-        if not callable(getattr(primary_runtime, "execute", None)):
-            raise TypeError("primary_runtime must implement FinancialQARuntime")
         normalized_mode = resolve_financial_runtime_mode(mode)
-        if shadow_runtime is not None and not callable(getattr(shadow_runtime, "execute", None)):
-            raise TypeError("shadow_runtime must implement FinancialQARuntime")
-        if normalized_mode == "shadow" and shadow_runtime is None:
-            raise ValueError("shadow mode requires an explicit real V2 runtime")
+        if shadow_runtime is not None and v2_runtime is not None:
+            raise ValueError("provide only one of shadow_runtime or v2_runtime")
+        selected_v2 = v2_runtime if v2_runtime is not None else shadow_runtime
+        if normalized_mode in {"v1", "shadow"} and not callable(
+            getattr(primary_runtime, "execute", None),
+        ):
+            raise TypeError("primary_runtime must implement FinancialQARuntime")
+        if selected_v2 is not None and not callable(getattr(selected_v2, "execute", None)):
+            raise TypeError("v2 runtime must implement FinancialQARuntime")
+        if normalized_mode in {"shadow", "v2"} and selected_v2 is None:
+            raise ValueError(f"{normalized_mode} mode requires an explicit real V2 runtime")
         if isinstance(shadow_timeout_ms, bool) or int(shadow_timeout_ms) <= 0:
             raise ValueError("shadow_timeout_ms must be a positive integer")
         self.primary_runtime = primary_runtime
-        self.shadow_runtime = shadow_runtime
+        self.shadow_runtime = selected_v2
+        self.v2_runtime = selected_v2
         self.mode = normalized_mode
         self.shadow_timeout_ms = int(shadow_timeout_ms)
         self.comparator = comparator or ShadowComparator()
@@ -231,15 +238,25 @@ class FinancialRuntimeRouter(FinancialQARuntime):
             logger.exception("v2 shadow observation sink failed")
 
     async def execute(self, request: FinancialQueryRequest) -> FinancialQueryResult:
-        """Execute primary V1 and optionally await a bounded V2 shadow."""
+        """Execute the selected runtime with no implicit fallback."""
 
         if not isinstance(request, FinancialQueryRequest):
             raise TypeError("request must be FinancialQueryRequest")
 
+        if self.mode == "v2":
+            v2_runtime = self.v2_runtime
+            if v2_runtime is None:  # defensive: constructor already guards it
+                raise RuntimeError("v2 runtime is not configured")
+            self.v2_calls += 1
+            return await self._invoke(v2_runtime, request)
+
+        primary_runtime = self.primary_runtime
+        if primary_runtime is None:  # defensive: constructor already guards it
+            raise RuntimeError("primary runtime is not configured")
         self.v1_calls += 1
         v1_started = time.perf_counter()
         if self.mode == "v1":
-            return await self._invoke(self.primary_runtime, request)
+            return await self._invoke(primary_runtime, request)
 
         shadow_runtime = self.shadow_runtime
         if shadow_runtime is None:  # defensive: constructor already guards it
@@ -247,7 +264,7 @@ class FinancialRuntimeRouter(FinancialQARuntime):
 
         self.v2_calls += 1
         v2_started = time.perf_counter()
-        primary_task = asyncio.create_task(self._invoke(self.primary_runtime, request))
+        primary_task = asyncio.create_task(self._invoke(primary_runtime, request))
         shadow_task = asyncio.create_task(self._invoke(shadow_runtime, request))
         primary: FinancialQueryResult | None = None
         primary_error: BaseException | None = None

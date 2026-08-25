@@ -1,0 +1,8 @@
+{
+  "stage": "TV2-08",
+  "canonical_readiness_run": false,
+  "benchmark_rerun": false,
+  "focused_tests": "recorded by CI/terminal run",
+  "ruff": "PASS",
+  "python_compile": "PASS"
+}

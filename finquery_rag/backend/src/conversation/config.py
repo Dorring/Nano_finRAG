@@ -19,11 +19,11 @@ def resolve_multiturn_context_mode(
     legacy_enabled: Any = None,
     environ: Mapping[str, Any] | None = None,
 ) -> str:
-    """Return the validated I5 mode, with the new variable taking precedence.
+    """Return the validated TV2-08 mode, with the new variable taking precedence.
 
     MULTITURN_CONTEXT_ENABLED is accepted only as a deprecated compatibility
     fallback when MULTITURN_CONTEXT_MODE is absent. The legacy boolean fallback
-    maps true to shadow; active mode requires the explicit mode variable.
+    maps true to shadow and false to off; an absent setting defaults to on.
     """
     if mode is None and environ is not None:
         if "MULTITURN_CONTEXT_MODE" in environ:
@@ -32,7 +32,7 @@ def resolve_multiturn_context_mode(
             legacy_enabled = environ.get("MULTITURN_CONTEXT_ENABLED")
     if mode is None:
         if legacy_enabled is None:
-            return "off"
+            return "on"
         legacy = str(legacy_enabled).strip().lower()
         if legacy in _TRUE_VALUES:
             return "shadow"
