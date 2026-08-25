@@ -65,4 +65,5 @@ def test_main_query_endpoints_use_ready_document_resolver_static():
     assert "def _resolve_query_document_names_for_user" in content
     assert "document_registry.list_documents(user_id)" in content
     assert "Documents are not ready or not found" in content
-    assert "doc_names=resolved_doc_names" in content
+    assert "document_names=_resolve_query_document_names_for_user(" in content
+    assert "request.document_names" in content

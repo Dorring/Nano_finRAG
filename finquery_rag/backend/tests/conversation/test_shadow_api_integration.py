@@ -686,3 +686,167 @@ def test_restart_restores_pending_clarification_for_follow_up(api_context):
     assert state is not None
     assert state.pending_clarification is None
     restarted_store.close()
+
+
+def _post_stream(
+    ctx,
+    *,
+    mode,
+    question="Apple FY2024 Revenue?",
+    session_id="shadow-session",
+    service=None,
+    request_id=None,
+):
+    engine = FakeRAGEngine()
+    with (
+        patch("src.main.get_rag_engine", return_value=engine),
+        patch("src.main._resolve_query_document_names_for_user", return_value=["annual_report.pdf"]),
+        patch("src.main.memory_store", SimpleNamespace(get_profile=lambda user_id: {})),
+        patch("src.main.session_manager", ctx.session_manager),
+        patch("src.main.get_conversation_shadow_service", return_value=service or ctx.service),
+        patch.dict(
+            os.environ,
+            {"FINANCIAL_RUNTIME_ADAPTER_ENABLED": "true", "MULTITURN_CONTEXT_MODE": mode},
+            clear=False,
+        ),
+    ):
+        headers = {"X-Request-ID": request_id} if request_id else None
+        response = ctx.client.post(
+            "/query/stream",
+            json={
+                "question": question,
+                "document_names": ["annual_report.pdf"],
+                "n_results": 5,
+                "session_id": session_id,
+            },
+            headers=headers,
+        )
+    return response, engine
+
+
+def _sse_events(response):
+    import json
+    return [
+        json.loads(line.removeprefix("data: "))
+        for line in response.text.splitlines()
+        if line.startswith("data: ")
+    ]
+
+
+def test_stream_active_resolution_uses_shared_lifecycle(api_context):
+    first, _ = _post(
+        api_context,
+        mode="on",
+        question="Apple FY2024 Revenue?",
+        session_id="stream-active",
+    )
+    assert first.status_code == 200
+
+    response, engine = _post_stream(
+        api_context,
+        mode="on",
+        question="What about the previous year?",
+        session_id="stream-active",
+    )
+    assert response.status_code == 200
+    assert engine.calls[0]["question"].startswith("What was Apple FY2023")
+    assert engine.calls[0]["conversation_history"] is None
+    assert engine.calls[0]["query_as_resolved"] is True
+    events = _sse_events(response)
+    assert events[0] == {"type": "token", "content": "Revenue was $100B."}
+    assert events[-1]["type"] == "done"
+    assert "status" not in events[-1]
+
+
+def test_stream_clarification_is_terminal_and_followup_crosses_query(api_context):
+    first, _ = _post(
+        api_context,
+        mode="on",
+        question="Apple Revenue and Operating Margin FY2024?",
+        session_id="stream-clarification",
+    )
+    assert first.status_code == 200
+
+    response, engine = _post_stream(
+        api_context,
+        mode="on",
+        question="What about the previous year?",
+        session_id="stream-clarification",
+    )
+    assert response.status_code == 200
+    assert engine.calls == []
+    events = _sse_events(response)
+    assert events[0]["type"] == "token"
+    assert events[-1]["status"] == "CLARIFICATION_REQUIRED"
+    assert events[-1]["clarification"]["reason_codes"] == ["AMBIGUOUS_METRIC"]
+
+    followup, engine = _post(
+        api_context,
+        mode="on",
+        question="Revenue",
+        session_id="stream-clarification",
+    )
+    assert followup.status_code == 200
+    assert engine.calls[0]["question"].startswith("What was Apple FY2023 Revenue")
+    assert engine.calls[0]["query_as_resolved"] is True
+
+
+def test_stream_duplicate_request_id_does_not_duplicate_lifecycle_commits(api_context):
+    first, first_engine = _post_stream(
+        api_context,
+        mode="on",
+        question="Apple FY2024 Revenue?",
+        session_id="stream-idempotent",
+        request_id="stream-request-1",
+    )
+    assert first.status_code == 200
+    messages = api_context.session_manager.get_recent_messages("stream-idempotent", 42)
+    state_version = api_context.store.get_state_version(42, "stream-idempotent")
+
+    second, second_engine = _post_stream(
+        api_context,
+        mode="on",
+        question="Apple FY2024 Revenue?",
+        session_id="stream-idempotent",
+        request_id="stream-request-1",
+    )
+    assert second.status_code == 200
+    assert first_engine.calls and second_engine.calls
+    assert api_context.session_manager.get_recent_messages("stream-idempotent", 42) == messages
+    assert api_context.store.get_state_version(42, "stream-idempotent") == state_version
+
+
+def test_stream_off_mode_preserves_final_v1_event_shape(api_context):
+    off, off_engine = _post_stream(
+        api_context,
+        mode="off",
+        question="Apple FY2024 Revenue?",
+        session_id="stream-off",
+    )
+    assert off.status_code == 200
+    events = _sse_events(off)
+    assert events[0] == {"type": "token", "content": "Revenue was $100B."}
+    assert events[-1]["type"] == "done"
+    assert "status" not in events[-1]
+    assert off_engine.calls[0]["conversation_history"] == []
+
+
+def test_stream_shadow_only_observes_and_does_not_change_v1(api_context):
+    off, _ = _post_stream(
+        api_context,
+        mode="off",
+        question="Apple FY2024 Revenue?",
+        session_id="stream-shadow",
+    )
+    assert off.status_code == 200
+    _clear(api_context, "stream-shadow")
+
+    shadow, shadow_engine = _post_stream(
+        api_context,
+        mode="shadow",
+        question="Apple FY2024 Revenue?",
+        session_id="stream-shadow",
+    )
+    assert shadow.status_code == 200
+    assert _sse_events(shadow)[0] == _sse_events(off)[0]
+    assert shadow_engine.calls[0]["question"] == "Apple FY2024 Revenue?"

@@ -6,6 +6,11 @@ from .runtime_adapters import (
     UnsupportedResolvedQueryError,
 )
 from .query_execution_service import QueryExecutionService
+from .query_lifecycle import (
+    QueryLifecycleService,
+    UserTurnExecutionRequest,
+    UserTurnExecutionResult,
+)
 from .response_mapper import (
     LegacyResponseMappingError,
     to_legacy_query_dict,
@@ -31,6 +36,9 @@ __all__ = [
     "LegacyFinancialRuntimeAdapter",
     "LegacyResponseMappingError",
     "QueryExecutionService",
+    "QueryLifecycleService",
+    "UserTurnExecutionRequest",
+    "UserTurnExecutionResult",
     "LegacyFinancialRuntimeAdapterError",
     "ReleaseStatus",
     "RouterMode",

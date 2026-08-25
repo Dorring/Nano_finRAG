@@ -371,7 +371,7 @@ class TestAwaitChecks:
 
     def test_query_endpoint_awaits_engine_query(self):
         node = self._get_endpoint_body("query_documents")
-        assert self._has_await_call(node, "query")
+        assert self._has_await_call(node, "execute_user_turn")
 
     def test_stream_endpoint_awaits_multi_doc(self):
         """Phase 3 hotfix: /query/stream now calls engine.query() uniformly.
@@ -384,7 +384,7 @@ class TestAwaitChecks:
         # The generate() inner function should await engine.query()
         for child in ast.walk(node):
             if isinstance(child, ast.AsyncFunctionDef) and child.name == "generate":
-                assert self._has_await_call(child, "query")
+                assert self._has_await_call(child, "execute_user_turn")
                 return
         pytest.fail("generate() inner function not found")
 

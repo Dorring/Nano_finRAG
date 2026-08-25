@@ -43,17 +43,16 @@ from .models.schemas import (
 from .models.user import User #User ORM 模型
 from .database import get_db, engine, Base #SQLAlchemy 数据库连接和基础模型
 from sqlalchemy.orm import Session #SQLAlchemy 会话管理
-from .runtime import (
-    FinancialQueryRequest,
-    LegacyFinancialRuntimeAdapter,
-    QueryExecutionService,
-    to_legacy_query_dict,
+from .runtime import QueryExecutionService
+from .runtime.query_lifecycle import (
+    QueryLifecycleService,
+    UserTurnExecutionRequest,
+    UserTurnExecutionResult,
 )
 from .conversation.config import resolve_multiturn_context_mode
 from .conversation.resolver import ContextualQueryResolver
 from .conversation.shadow_service import ConversationShadowService
 from .conversation.sqlite_store import SQLiteConversationStateStore
-from .conversation.contracts import ConversationTurnOutcome
 
 from datetime import timedelta, datetime
 import os
@@ -180,88 +179,6 @@ def _active_query_is_out_of_scope(question: str) -> bool:
     """Detect deterministic out-of-scope control requests without model I/O."""
     resolver = ContextualQueryResolver(client=object())
     return not resolver.resolve(question).supported
-
-
-def _control_response(
-    *,
-    request: QueryRequest,
-    session_id: str | None,
-    searched_docs: list[str],
-    status: str,
-    answer: str,
-    clarification_question: str | None = None,
-    reason_codes: list[str] | None = None,
-    options: list[str] | None = None,
-) -> QueryResponse:
-    """Build a public conversation-control response without financial execution."""
-    normalized_reasons = list(reason_codes or [])
-    clarification = (
-        ClarificationResponse(
-            question=clarification_question or answer,
-            reason_codes=normalized_reasons,
-            options=list(options or []),
-        )
-        if status == "CLARIFICATION_REQUIRED"
-        else None
-    )
-    return QueryResponse(
-        answer=answer,
-        sources=[],
-        question=request.question,
-        searched_docs=list(searched_docs),
-        session_id=session_id,
-        status=status,
-        clarification=clarification,
-    )
-
-
-def _commit_control_turn(
-    *,
-    session_id: str | None,
-    user_id: int,
-    question: str,
-    answer: str,
-    status: str,
-    reason_codes: list[str],
-    request_id: str | None = None,
-    conversation_service: ConversationShadowService | None = None,
-    idempotent_replay: bool = False,
-) -> None:
-    """Persist final control output and semantic lifecycle metadata once."""
-    if not session_id:
-        return
-    if not idempotent_replay:
-        session_manager.add_message(session_id, user_id, "user", question)
-    if idempotent_replay:
-        return
-    session_manager.add_message(
-        session_id,
-        user_id,
-        "assistant",
-        answer,
-        metadata={
-            "control_status": status,
-            "reason_codes": list(reason_codes),
-            "evidence_ids": [],
-            "calculation_ids": [],
-        },
-    )
-    if conversation_service is not None and request_id:
-        outcome = {
-            "CLARIFICATION_REQUIRED": ConversationTurnOutcome.CLARIFICATION,
-            "OUT_OF_SCOPE": ConversationTurnOutcome.OUT_OF_SCOPE,
-        }.get(status, ConversationTurnOutcome.ERROR)
-        try:
-            conversation_service.record_control_turn(
-                user_id=user_id,
-                session_id=session_id,
-                request_id=request_id,
-                original_query=question,
-                outcome=outcome,
-                reason_codes=reason_codes,
-            )
-        except Exception:
-            logger.exception("conversation control metadata failed")
 
 
 def get_conversation_shadow_service() -> ConversationShadowService:
@@ -1113,480 +1030,149 @@ async def upload_document(file: UploadFile = File(...), current_user: User = Dep
             shutil.rmtree(temp_dir, ignore_errors=True)
         raise api_error(500, "processing_error", "Processing error: %s" % str(e))
 
-@app.post("/query", response_model=QueryResponse, response_model_exclude_none=True)
-async def query_documents(request: QueryRequest, current_user: User = Depends(get_current_user), http_request: FastAPIRequest = None):
-    """
-    Answer one or more documents with V1, optionally preceded by Conversation
-    Shadow or active context resolution. /query/stream remains unchanged.
-    """
-    try:
-        multiturn_mode = _multiturn_context_mode()
+def _request_id_from_http(http_request: FastAPIRequest | None) -> str:
+    """Read the request id once for both query transports."""
+    request_id = (
+        http_request.headers.get("X-Request-ID", "").strip()
+        if http_request is not None
+        else ""
+    ) or uuid.uuid4().hex
+    if len(request_id) > 128:
+        raise api_error(400, "invalid_request_id", "X-Request-ID is too long")
+    return request_id
 
-        session_id = _validate_session_id(request.session_id) if request.session_id else None
-        conversation_history = None
-        if session_id:
-            conversation_history = session_manager.get_recent_messages(
-                session_id, current_user.id
-            )
-        memory_profile = memory_store.get_profile(current_user.id)
-        if not isinstance(memory_profile, dict):
-            memory_profile = None
 
-        resolved_doc_names = _resolve_query_document_names_for_user(
+def _build_user_turn_execution_request(
+    request: QueryRequest,
+    current_user: User,
+    http_request: FastAPIRequest | None,
+) -> UserTurnExecutionRequest:
+    """Build the transport-neutral request shared by JSON and SSE."""
+    session_id = _validate_session_id(request.session_id) if request.session_id else None
+    return UserTurnExecutionRequest(
+        request_id=_request_id_from_http(http_request),
+        user_id=int(current_user.id),
+        original_query=request.question,
+        session_id=session_id,
+        document_names=_resolve_query_document_names_for_user(
             current_user.id,
             request.document_names,
+        ),
+        n_results=request.n_results,
+        conversation_mode=_multiturn_context_mode(),
+    )
+
+
+def _get_query_lifecycle_service() -> QueryLifecycleService:
+    """Build the shared business lifecycle from the existing V1 dependencies."""
+    return QueryLifecycleService(
+        session_manager=session_manager,
+        memory_store=memory_store,
+        get_rag_engine=get_rag_engine,
+        get_conversation_service=get_conversation_shadow_service,
+        financial_runtime_adapter_enabled=_financial_runtime_adapter_enabled,
+        active_query_requires_context=_active_query_requires_context,
+        active_query_is_out_of_scope=_active_query_is_out_of_scope,
+        assistant_session_metadata=_assistant_session_metadata,
+        execution_service_factory=QueryExecutionService,
+    )
+
+
+def _query_response_from_execution(
+    request: QueryRequest,
+    execution: UserTurnExecutionResult,
+) -> QueryResponse:
+    """Map one final lifecycle result to the unchanged JSON response shape."""
+    legacy = execution.legacy_result or {}
+    clarification = (
+        ClarificationResponse(**execution.clarification)
+        if execution.clarification is not None
+        else None
+    )
+    is_control = execution.status in {"CLARIFICATION_REQUIRED", "OUT_OF_SCOPE"}
+    return QueryResponse(
+        answer=execution.answer or "",
+        sources=legacy.get("sources", []),
+        question=request.question,
+        searched_docs=legacy.get("searched_docs", []),
+        session_id=execution.session_id,
+        rewritten_question=legacy.get("rewritten_question"),
+        confidence=legacy.get("confidence"),
+        context_sufficient=legacy.get("context_sufficient"),
+        intent=legacy.get("intent"),
+        intent_confidence=legacy.get("intent_confidence"),
+        trace_id=legacy.get("trace_id"),
+        retrieved_chunks=legacy.get("retrieved_chunks", []),
+        retrieval_debug=legacy.get("retrieval_debug", {}),
+        calculations=legacy.get("calculations", []),
+        answerability=(
+            AnswerabilityResponse(**legacy["answerability"])
+            if legacy.get("answerability")
+            else None
+        ),
+        validation=(
+            ValidationResponse(**legacy["validation"])
+            if legacy.get("validation")
+            else None
+        ),
+        repair=(
+            RepairResponse(**legacy["repair"])
+            if legacy.get("repair")
+            else None
+        ),
+        status=execution.status if is_control else None,
+        clarification=clarification if is_control else None,
+    )
+
+
+@app.post("/query", response_model=QueryResponse, response_model_exclude_none=True)
+async def query_documents(
+    request: QueryRequest,
+    current_user: User = Depends(get_current_user),
+    http_request: FastAPIRequest = None,
+):
+    """Execute one user turn through the shared Conversation/V1 lifecycle."""
+    try:
+        execution_request = _build_user_turn_execution_request(
+            request,
+            current_user,
+            http_request,
         )
-        request_id = (
-            http_request.headers.get("X-Request-ID", "").strip()
-            if http_request is not None
-            else ""
-        ) or uuid.uuid4().hex
-        if len(request_id) > 128:
-            raise api_error(400, "invalid_request_id", "X-Request-ID is too long")
-
-        # I5 Shadow remains observation-only. It receives history loaded before
-        # the current user turn is committed and cannot affect this request.
-        conversation_service = None
-        idempotent_replay = False
-
-        def commit_control_turn(
-            *,
-            question: str,
-            answer: str,
-            status: str,
-            reason_codes: list[str],
-            **_ignored: object,
-        ) -> None:
-            _commit_control_turn(
-                session_id=session_id,
-                user_id=current_user.id,
-                question=question,
-                answer=answer,
-                status=status,
-                reason_codes=reason_codes,
-                request_id=request_id,
-                conversation_service=conversation_service,
-                idempotent_replay=idempotent_replay,
-            )
-
-        if multiturn_mode == "shadow":
-            try:
-                conversation_service = get_conversation_shadow_service()
-                idempotent_replay = conversation_service.is_request_processed(
-                    user_id=current_user.id,
-                    session_id=session_id,
-                    request_id=request_id,
-                    original_query=request.question,
-                )
-                conversation_service.observe(
-                    request_id=request_id,
-                    user_id=current_user.id,
-                    session_id=session_id,
-                    original_query=request.question,
-                    prior_history=conversation_history,
-                )
-            except Exception:
-                logger.exception("conversation shadow invocation failed")
-
-        execution_query = request.question
-        execution_history = conversation_history
-        query_as_resolved = False
-
-        if multiturn_mode == "on":
-            # A stateless, self-contained question needs no resolver call.
-            if session_id is None:
-                if _active_query_is_out_of_scope(request.question):
-                    reason_codes = ["OUT_OF_SCOPE"]
-                    answer = (
-                        "This question is outside the supported financial "
-                        "document scope."
-                    )
-                    commit_control_turn(
-                        session_id=session_id,
-                        user_id=current_user.id,
-                        question=request.question,
-                        answer=answer,
-                        status="OUT_OF_SCOPE",
-                        reason_codes=reason_codes,
-                    )
-                    return _control_response(
-                        request=request,
-                        session_id=session_id,
-                        searched_docs=resolved_doc_names,
-                        status="OUT_OF_SCOPE",
-                        answer=answer,
-                        reason_codes=reason_codes,
-                    )
-                if _active_query_requires_context(request.question):
-                    reason_codes = ["CONTEXT_UNAVAILABLE"]
-                    answer = (
-                        "Please restate the company, metric, and period so I "
-                        "can answer this safely."
-                    )
-                    commit_control_turn(
-                        session_id=session_id,
-                        user_id=current_user.id,
-                        question=request.question,
-                        answer=answer,
-                        status="CLARIFICATION_REQUIRED",
-                        reason_codes=reason_codes,
-                    )
-                    return _control_response(
-                        request=request,
-                        session_id=session_id,
-                        searched_docs=resolved_doc_names,
-                        status="CLARIFICATION_REQUIRED",
-                        answer=answer,
-                        clarification_question=answer,
-                        reason_codes=reason_codes,
-                    )
-                execution_history = None
-            else:
-                conversation_service = get_conversation_shadow_service()
-                idempotent_replay = conversation_service.is_request_processed(
-                    user_id=current_user.id,
-                    session_id=session_id,
-                    request_id=request_id,
-                    original_query=request.question,
-                )
-                if (
-                    not conversation_history
-                    and _active_query_requires_context(request.question)
-                ):
-                    reason_codes = ["CONTEXT_UNAVAILABLE"]
-                    answer = (
-                        "I need the earlier company, metric, and period context "
-                        "before I can answer this safely."
-                    )
-                    commit_control_turn(
-                        session_id=session_id,
-                        user_id=current_user.id,
-                        question=request.question,
-                        answer=answer,
-                        status="CLARIFICATION_REQUIRED",
-                        reason_codes=reason_codes,
-                    )
-                    return _control_response(
-                        request=request,
-                        session_id=session_id,
-                        searched_docs=resolved_doc_names,
-                        status="CLARIFICATION_REQUIRED",
-                        answer=answer,
-                        clarification_question=answer,
-                        reason_codes=reason_codes,
-                    )
-                try:
-                    resolution = conversation_service.resolve_active(
-                        request_id=request_id,
-                        user_id=current_user.id,
-                        session_id=session_id,
-                        original_query=request.question,
-                        prior_history=conversation_history,
-                    )
-                except Exception as exc:
-                    logger.exception("active conversation resolution failed")
-                    if _active_query_requires_context(request.question):
-                        reason_codes = (
-                            ["CONTEXT_STATE_UNAVAILABLE"]
-                            if "STATE" in type(exc).__name__.upper()
-                            or "SQLITE" in type(exc).__name__.upper()
-                            else ["CONTEXT_RESOLUTION_FAILED"]
-                        )
-                        answer = (
-                            "I need the company, metric, and period stated "
-                            "explicitly before I can answer this safely."
-                        )
-                        commit_control_turn(
-                            session_id=session_id,
-                            user_id=current_user.id,
-                            question=request.question,
-                            answer=answer,
-                            status="CLARIFICATION_REQUIRED",
-                            reason_codes=reason_codes,
-                        )
-                        return _control_response(
-                            request=request,
-                            session_id=session_id,
-                            searched_docs=resolved_doc_names,
-                            status="CLARIFICATION_REQUIRED",
-                            answer=answer,
-                            clarification_question=answer,
-                            reason_codes=reason_codes,
-                        )
-                    # A self-contained query can safely use V1 without
-                    # forwarding stale raw conversation history.
-                    conversation_service = None
-                    execution_history = None
-                else:
-                    resolution_codes = [
-                        str(getattr(code, "value", code))
-                        for code in (resolution.reason_codes or [])
-                    ]
-                    idempotent_replay = idempotent_replay or "IDEMPOTENT_REPLAY" in resolution_codes
-                    if not resolution.supported:
-                        reason_codes = resolution_codes or ["OUT_OF_SCOPE"]
-                        answer = (
-                            "This question is outside the supported financial "
-                            "document scope."
-                        )
-                        commit_control_turn(
-                            session_id=session_id,
-                            user_id=current_user.id,
-                            question=request.question,
-                            answer=answer,
-                            status="OUT_OF_SCOPE",
-                            reason_codes=reason_codes,
-                        )
-                        return _control_response(
-                            request=request,
-                            session_id=session_id,
-                            searched_docs=resolved_doc_names,
-                            status="OUT_OF_SCOPE",
-                            answer=answer,
-                            reason_codes=reason_codes,
-                        )
-                    if resolution.clarification_required:
-                        reason_codes = resolution_codes or ["AMBIGUOUS_REFERENCE"]
-                        answer = (
-                            resolution.clarification_question
-                            or "Which company, metric, or period should I use?"
-                        )
-                        commit_control_turn(
-                            session_id=session_id,
-                            user_id=current_user.id,
-                            question=request.question,
-                            answer=answer,
-                            status="CLARIFICATION_REQUIRED",
-                            reason_codes=reason_codes,
-                        )
-                        return _control_response(
-                            request=request,
-                            session_id=session_id,
-                            searched_docs=resolved_doc_names,
-                            status="CLARIFICATION_REQUIRED",
-                            answer=answer,
-                            clarification_question=answer,
-                            reason_codes=reason_codes,
-                            options=resolution.clarification_options,
-                        )
-                    resolved_query = (resolution.standalone_query or "").strip()
-                    if not resolved_query:
-                        reason_codes = ["INVALID_RESOLUTION"]
-                        answer = (
-                            "Please restate the company, metric, and period "
-                            "so I can answer this safely."
-                        )
-                        commit_control_turn(
-                            session_id=session_id,
-                            user_id=current_user.id,
-                            question=request.question,
-                            answer=answer,
-                            status="CLARIFICATION_REQUIRED",
-                            reason_codes=reason_codes,
-                        )
-                        return _control_response(
-                            request=request,
-                            session_id=session_id,
-                            searched_docs=resolved_doc_names,
-                            status="CLARIFICATION_REQUIRED",
-                            answer=answer,
-                            clarification_question=answer,
-                            reason_codes=reason_codes,
-                        )
-                    execution_query = resolved_query
-                    query_as_resolved = bool(
-                        resolution.requires_context
-                        or execution_query != request.question
-                    )
-                    # Active Conversation owns context interpretation. Do not
-                    # send uncontrolled raw history into the financial runtime.
-                    execution_history = None
-
-        runtime_request = FinancialQueryRequest(
-            request_id=request_id,
-            user_id=str(current_user.id),
-            session_id=session_id or f"__stateless__:{request_id}",
-            original_query=request.question,
-            standalone_query=execution_query,
-            query_as_resolved=query_as_resolved,
-            conversation_metadata={},
-            request_metadata={
-                "document_names": resolved_doc_names,
-                "n_results": request.n_results,
-                "conversation_history": execution_history,
-                "memory_profile": memory_profile,
-            },
+        execution = await _get_query_lifecycle_service().execute_user_turn(
+            execution_request
         )
-
-        engine = get_rag_engine()
-        runtime_result = None
-        if _financial_runtime_adapter_enabled():
-            runtime = LegacyFinancialRuntimeAdapter(engine)
-            execution_service = QueryExecutionService(runtime)
-            runtime_result = await execution_service.execute(runtime_request)
-            result = to_legacy_query_dict(runtime_result)
-        else:
-            # Keep the direct path as an exact rollback for unresolved V1
-            # requests. Resolved active requests still carry the explicit
-            # bypass flag if the migration fallback is used.
-            engine_kwargs = {
-                "question": execution_query,
-                "doc_names": resolved_doc_names,
-                "n_results": request.n_results,
-                "user_id": current_user.id,
-                "conversation_history": execution_history,
-                "memory_profile": memory_profile,
-            }
-            if query_as_resolved:
-                engine_kwargs["query_as_resolved"] = True
-            result = await engine.query(**engine_kwargs)
-
-        if query_as_resolved and execution_query != request.question:
-            result["rewritten_question"] = execution_query
-
-        rewritten = result.get("rewritten_question")
-        if session_id and not idempotent_replay:
-            session_manager.add_message(session_id, current_user.id, "user", request.question)
-            session_manager.add_message(
-                session_id,
-                current_user.id,
-                "assistant",
-                result["answer"],
-                metadata=_assistant_session_metadata(result=result),
-            )
-
-        if (
-            conversation_service is not None
-            and session_id is not None
-            and not idempotent_replay
-        ):
-            try:
-                evidence_ids = []
-                citation_ids = []
-                calculation_ids = []
-                release_status = "NOT_APPLICABLE"
-                outcome = ConversationTurnOutcome.FINANCIAL_ANSWER
-                if runtime_result is not None:
-                    evidence_ids = list(runtime_result.evidence_ids)
-                    citation_ids = list(runtime_result.citation_ids)
-                    calculation_ids = list(runtime_result.calculation_ids)
-                    release_status = str(
-                        getattr(
-                            runtime_result.release_status,
-                            "value",
-                            runtime_result.release_status,
-                        ),
-                    )
-                    runtime_status = str(
-                        getattr(
-                            runtime_result.status,
-                            "value",
-                            runtime_result.status,
-                        ),
-                    )
-                    outcome = {
-                        "FAIL_CLOSED": ConversationTurnOutcome.FAIL_CLOSED,
-                        "OUT_OF_SCOPE": ConversationTurnOutcome.OUT_OF_SCOPE,
-                        "ERROR": ConversationTurnOutcome.ERROR,
-                    }.get(
-                        runtime_status,
-                        ConversationTurnOutcome.FINANCIAL_ANSWER,
-                    )
-                conversation_service.record_assistant_turn(
-                    user_id=current_user.id,
-                    session_id=session_id,
-                    request_id=request_id,
-                    original_query=request.question,
-                    referenced_evidence_ids=evidence_ids,
-                    citation_ids=citation_ids,
-                    calculation_ids=calculation_ids,
-                    release_status=release_status,
-                    outcome=outcome,
-                )
-            except Exception:
-                logger.exception("conversation assistant metadata failed")
-
-        return QueryResponse(
-            answer=result["answer"],
-            sources=result["sources"],
-            question=request.question,
-            searched_docs=result["searched_docs"],
-            session_id=session_id,
-            rewritten_question=rewritten,
-            confidence=result.get("confidence"),
-            context_sufficient=result.get("context_sufficient"),
-            intent=result.get("intent"),
-            intent_confidence=result.get("intent_confidence"),
-            trace_id=result.get("trace_id"),
-            retrieved_chunks=result.get("retrieved_chunks", []),
-            retrieval_debug=result.get("retrieval_debug", {}),
-            calculations=result.get("calculations", []),
-            answerability=(
-                AnswerabilityResponse(**result["answerability"])
-                if result.get("answerability") else None
-            ),
-            validation=(
-                ValidationResponse(**result["validation"])
-                if result.get("validation") else None
-            ),
-            repair=(
-                RepairResponse(**result["repair"])
-                if result.get("repair") else None
-            ),
-        )
-
+        return _query_response_from_execution(request, execution)
     except HTTPException:
         raise
-    except Exception as e:
-        raise api_error(500, "query_error", f"Query error: {str(e)}")
+    except Exception as exc:
+        raise api_error(500, "query_error", f"Query error: {exc}") from exc
 
 
 @app.post("/query/stream")
-async def query_documents_stream(request: QueryRequest, current_user: User = Depends(get_current_user)):
-    """
-    使用服务器发送事件（SSE）流式传输查询响应。
-
-    Phase 3 热修复：统一调用 ``engine.query()``，使计算链路在生产
-    流式接口中生效。当 ``calculations`` 非空时（EXECUTED/BLOCKED/
-    FAILED），确定性答案作为单个 token 事件输出，不调用 LLM 流式
-    生成；非计算请求的答案同样通过 ``engine.query()`` 获取并以
-    SSE 协议输出。
-
-    Args:
-        request (QueryRequest): 查询请求体。
-        current_user (User): 当前登录用户。
-    """
-    resolved_doc_names = _resolve_query_document_names_for_user(
-        current_user.id,
-        request.document_names,
-    )
+async def query_documents_stream(
+    request: QueryRequest,
+    current_user: User = Depends(get_current_user),
+    http_request: FastAPIRequest = None,
+):
+    """Run the shared validated-final lifecycle and serialize its final result as SSE."""
+    try:
+        execution_request = _build_user_turn_execution_request(
+            request,
+            current_user,
+            http_request,
+        )
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise api_error(500, "query_error", f"Query error: {exc}") from exc
 
     async def generate():
         try:
-            engine = get_rag_engine()
-            session_id = _validate_session_id(request.session_id) if request.session_id else None
-
-            # Load conversation history for query rewriting (shared with /query).
-            conversation_history = None
-            if session_id:
-                conversation_history = session_manager.get_recent_messages(
-                    session_id, current_user.id
-                )
-            memory_profile = memory_store.get_profile(current_user.id)
-
-            # Unified: call engine.query() which runs the full orchestrator
-            # including the Phase 3 calculation pipeline. This ensures the
-            # streaming path exercises the same calculation logic as /query.
-            result = await engine.query(
-                question=request.question,
-                doc_names=resolved_doc_names,
-                n_results=request.n_results,
-                user_id=current_user.id,
-                conversation_history=conversation_history,
-                memory_profile=memory_profile,
+            execution = await _get_query_lifecycle_service().execute_user_turn(
+                execution_request
             )
-
-            answer = result["answer"]
+            result = execution.legacy_result or {}
+            answer = execution.answer or ""
             sources = result.get("sources", [])
             confidence = result.get("confidence")
             context_sufficient = result.get("context_sufficient")
@@ -1594,40 +1180,12 @@ async def query_documents_stream(request: QueryRequest, current_user: User = Dep
             intent_confidence = result.get("intent_confidence")
             trace_id = result.get("trace_id")
             calculations = result.get("calculations", [])
-            # Phase 4: forward validation verdicts to the SSE done event.
-            # Only included when the validation pipeline produced them, so
-            # the legacy event shape is preserved when validation is disabled.
             answerability_data = result.get("answerability")
             validation_data = result.get("validation")
             repair_data = result.get("repair")
 
-            # Save session messages (compatible with /query behavior).
-            if session_id:
-                session_manager.add_message(session_id, current_user.id, "user", request.question)
-                session_manager.add_message(
-                    session_id,
-                    current_user.id,
-                    "assistant",
-                    answer,
-                    metadata=_assistant_session_metadata(
-                        result=result,
-                        sources=sources,
-                        trace_id=trace_id,
-                        context_sufficient=context_sufficient,
-                        confidence=confidence,
-                        intent=intent,
-                        intent_confidence=intent_confidence,
-                    ),
-                )
-
-            # Emit the answer as a token event. For calculation results
-            # (EXECUTED/BLOCKED/FAILED) the LLM stream is never invoked —
-            # the answer is deterministic. For non-calculation results the
-            # answer was already generated by engine.query() and is emitted
-            # as a single token event.
             yield f"data: {json.dumps({'type': 'token', 'content': answer})}\n\n"
 
-            # Emit the done event with all fields including calculations.
             done_kwargs = dict(
                 sources=sources,
                 confidence=confidence,
@@ -1643,8 +1201,13 @@ async def query_documents_stream(request: QueryRequest, current_user: User = Dep
                 done_kwargs["validation"] = validation_data
             if repair_data is not None:
                 done_kwargs["repair"] = repair_data
+            if execution.status != "ANSWER":
+                done_kwargs["status"] = execution.status
+                done_kwargs["release_status"] = execution.release_status
+                done_kwargs["reason_codes"] = execution.reason_codes
+                if execution.clarification is not None:
+                    done_kwargs["clarification"] = execution.clarification
             yield make_stream_done_event(**done_kwargs)
-
         except Exception as exc:
             error_message = "Streaming query failed. Please retry."
             try:
@@ -1665,7 +1228,12 @@ async def query_documents_stream(request: QueryRequest, current_user: User = Dep
                 trace_id = safe_log_query_trace(engine, trace_payload)
             except Exception:
                 trace_id = None
-            yield make_stream_error_event("stream_error", error_message, retryable=True, trace_id=trace_id)
+            yield make_stream_error_event(
+                "stream_error",
+                error_message,
+                retryable=True,
+                trace_id=trace_id,
+            )
 
     return StreamingResponse(
         generate(),
@@ -1673,7 +1241,7 @@ async def query_documents_stream(request: QueryRequest, current_user: User = Dep
         headers={
             "Cache-Control": "no-cache",
             "Connection": "keep-alive",
-        }
+        },
     )
 
 # <---------------------- Session endpoints (Phase 4) ---------------------->
