@@ -267,6 +267,18 @@ class AdaptiveRAGStateV1:
     conflicts: list[dict[str, Any]] = field(default_factory=list)
     calculation_requirements: dict[str, Any] = field(default_factory=dict)
     calculation_ready: bool = False
+    # TV2-04 downstream fields are populated only after Binder admission.
+    # They remain structured state, never answer-text-derived facts.
+    bound_evidence_ids: list[str] = field(default_factory=list)
+    bound_slot_bindings: dict[str, list[str]] = field(default_factory=dict)
+    calculation_result: dict[str, Any] | None = None
+    calculation_result_id: str | None = None
+    generation_route: str | None = None
+    route_reason: str | None = None
+    candidate_answer: str | None = None
+    candidate_generation_id: str | None = None
+    candidate_status: str | None = None
+    validation_pending: bool = False
     tool_history: list[dict[str, Any]] = field(default_factory=list)
     query_history: list[str] = field(default_factory=list)
     iteration: int = 0

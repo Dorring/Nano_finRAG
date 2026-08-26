@@ -1,0 +1,7 @@
+{
+  "audit":"TV2-00",
+  "input":{"source":"FinancialQueryRequest","v2_question":"standalone_query","original_query":"audit_and_session_only","query_as_resolved":"V1 rewrite compatibility; V2 must not re-resolve","raw_conversation_history":"not forwarded as uncontrolled V2 context"},
+  "output":{"target":"FinancialQueryResult","runtime_version":"V2","released":"ANSWER/RELEASED","policy_refusal":"FAIL_CLOSED/NOT_RELEASED","execution_error":"ERROR/NOT_RELEASED","clarification":"Conversation-owned before runtime","evidence_ids":"verified bound fact IDs","citation_ids":"allowed packet citation IDs","calculation_ids":"retain C1/CalculationResultPacket identity","reason_codes":"terminal plus binder/calculator/validator codes","latency_metadata":"trace and coordinator timings"},
+  "provenance_rule":"Never parse answer text for IDs.",
+  "current_v2_response_gap":["TrustedRAGResponseV2 exposes citation_ids only","TrustedRAGResponseV2 lacks evidence_ids","TrustedRAGResponseV2 lacks calculation_ids","ABSTAINED covers policy and some execution failures; use TerminalReason"]
+}

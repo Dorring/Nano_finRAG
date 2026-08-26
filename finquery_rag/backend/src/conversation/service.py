@@ -10,17 +10,16 @@ Coordinates:
 
 from __future__ import annotations
 
-import os
 import re
 import time
 from typing import Any
 
-from .bailian_client import BailianClient
 from .context_budget import ContextBudgetManager
 from .contracts import (
     ConversationResolution,
     DialogueState,
     DialogueTurn,
+    PendingClarification,
     ReasonCode,
 )
 from .relevance_filter import ContextRelevanceFilter
@@ -61,26 +60,56 @@ class ConversationContextManager:
         self,
         conversation_id: str,
         user_query: str,
+        history_turns: list[DialogueTurn] | None = None,
+        diagnostics: dict[str, Any] | None = None,
     ) -> ConversationResolution:
-        """Processes a user turn, resolving multi-turn context and updating state."""
+        """Process one turn with optional transient prior raw history.
+
+        Shadow callers supply SessionManager history loaded before the current
+        user message is committed. It is never persisted by this component.
+        Existing callers that omit it retain the historical behavior.
+        """
         state = self.store.get_state(conversation_id)
         if not state:
             state = DialogueState(conversation_id=conversation_id)
 
+        context_turns = state.recent_turns if history_turns is None else list(history_turns)
+
         # 1. Filter relevant history turns
-        relevant_turns = self.relevance_filter.filter_turns(user_query, state, state.recent_turns)
+        relevant_turns = self.relevance_filter.filter_turns(user_query, state, context_turns)
 
         # 2. Budget and prepare context
         budgeted_turns, compressed_history, est_tokens = self.budget_manager.prepare_context(
             user_query, state, relevant_turns
         )
+        if diagnostics is not None:
+            diagnostics.update({
+                "raw_history_turn_count": len(context_turns),
+                "relevant_turn_count": len(relevant_turns),
+                "selected_turn_count": len(budgeted_turns),
+                "dropped_turn_count": max(0, len(context_turns) - len(budgeted_turns)),
+                "estimated_context_tokens": est_tokens,
+                "compressed_history_tokens": self.budget_manager.count_tokens(
+                    compressed_history or ""
+                ),
+            })
 
-        # 3. Resolve contextual query
-        resolution = self.resolver.resolve(user_query, state, budgeted_turns)
+        # 3. Resolve contextual query. A short answer to a pending
+        # clarification is handled at this lifecycle boundary so the
+        # historical resolver algorithm remains unchanged.
+        resolution = self._resolve_pending_choice(user_query, state)
+        if resolution is None:
+            resolution = self.resolver.resolve(user_query, state, budgeted_turns)
 
-        # 4. If supported and resolved, update dialogue state
-        if resolution.supported and not resolution.clarification_required:
-            self._update_state_on_resolution(state, user_query, resolution)
+        # 4. Every supported user request is one logical conversation turn.
+        # Clarification is a real user turn, but its semantic fields remain
+        # pending rather than being guessed into active state.
+        if resolution.supported:
+            state.turn_count += 1
+            if resolution.clarification_required:
+                self._set_pending_clarification(state, user_query, resolution)
+            else:
+                self._update_state_on_resolution(state, user_query, resolution)
             self.store.save_state(state)
 
         return resolution
@@ -88,21 +117,29 @@ class ConversationContextManager:
     def record_assistant_turn(
         self,
         conversation_id: str,
-        assistant_response: str,
+        assistant_response: str | None,
         referenced_evidence_ids: list[str] | None = None,
     ) -> None:
-        """Records assistant turn provenance metadata.
-        
-        Trust Boundary:
-        Stores evidence IDs as provenance metadata only; NEVER converts raw text to facts.
+        """Record assistant provenance without promoting text to a fact.
+
+        Shadow callers pass assistant_response=None: SessionManager owns the
+        raw assistant message; this store receives structured provenance only.
         """
         state = self.store.get_state(conversation_id)
-        if state and state.recent_turns:
+        if not state:
+            return
+        if state.recent_turns and assistant_response is not None:
             last_turn = state.recent_turns[-1]
             last_turn.assistant_response = assistant_response
             if referenced_evidence_ids:
                 last_turn.referenced_evidence_ids = list(referenced_evidence_ids)
-            self.store.save_state(state)
+        if referenced_evidence_ids:
+            existing = list(state.referenced_evidence_ids)
+            state.referenced_evidence_ids = existing + [
+                value for value in referenced_evidence_ids
+                if value not in existing
+            ]
+        self.store.save_state(state)
 
     def _extract_semantic_entities(self, query: str) -> tuple[str | None, list[str], str | None]:
         """Extracts entity, metrics list, and period from query text without sub-phrase overlap."""
@@ -129,6 +166,103 @@ class ConversationContextManager:
             
         return entity, metrics, period
 
+    def _resolve_pending_choice(
+        self,
+        user_query: str,
+        state: DialogueState,
+    ) -> ConversationResolution | None:
+        """Resolve a semantic choice without changing the resolver algorithm."""
+        pending = state.pending_clarification
+        if pending is None:
+            return None
+        entity, metrics, period = self._extract_semantic_entities(user_query)
+        # Explicit entity/period input remains highest priority and is sent
+        # through the existing resolver for normal topic-switch handling.
+        if entity or period:
+            return None
+        selected_metric = None
+        if metrics:
+            candidates = {
+                value.strip().lower() for value in pending.candidates
+            }
+            if metrics[0].lower() in candidates:
+                selected_metric = metrics[0]
+        if selected_metric is None and user_query.strip().lower() == "both":
+            if any(value.strip().lower() == "both" for value in pending.candidates):
+                selected_metric = "Revenue and Operating Margin"
+        if selected_metric is None:
+            return None
+        entity = pending.entity or state.active_entity
+        period = pending.period or state.active_period
+        if not entity or not period:
+            # A pending choice without enough semantic coordinates must not
+            # invent an entity or period to make the financial query run.
+            return None
+        standalone = f"What was {entity} {period} {selected_metric}?"
+        return ConversationResolution(
+            supported=True,
+            requires_context=True,
+            standalone_query=standalone,
+            resolved_entity=entity,
+            resolved_metric=selected_metric,
+            resolved_period=period,
+            inherited_fields=["entity", "period"],
+            explicit_fields=["metric"],
+            reason_codes=[
+                ReasonCode.PENDING_CLARIFICATION_RESOLVED,
+                ReasonCode.REFERENCE_RESOLVED,
+            ],
+        )
+
+    @staticmethod
+    def _previous_period(period: str | None) -> str | None:
+        if not period:
+            return period
+        match = re.search(r"20\d\d", period)
+        if not match:
+            return period
+        previous = str(int(match.group(0)) - 1)
+        return period[: match.start()] + previous + period[match.end() :]
+
+    def _set_pending_clarification(
+        self,
+        state: DialogueState,
+        raw_user_query: str,
+        res: ConversationResolution,
+    ) -> None:
+        """Persist only semantic ambiguity coordinates for a later answer."""
+        codes = [
+            str(getattr(code, "value", code))
+            for code in (res.reason_codes or [])
+        ]
+        unresolved_fields = []
+        for code, field_name in (
+            (ReasonCode.AMBIGUOUS_METRIC, "metric"),
+            (ReasonCode.AMBIGUOUS_ENTITY, "entity"),
+            (ReasonCode.AMBIGUOUS_PERIOD, "period"),
+        ):
+            if code in codes:
+                unresolved_fields.append(field_name)
+        if not unresolved_fields:
+            unresolved_fields = ["reference"]
+
+        period = state.active_period
+        if re.search(
+            r"\b(previous|prior|preceding|last)\s+(year|period|fy)\b",
+            raw_user_query.lower(),
+        ):
+            period = self._previous_period(period)
+
+        state.pending_clarification = PendingClarification(
+            reason_codes=codes,
+            candidates=list(res.clarification_options or []),
+            unresolved_fields=unresolved_fields,
+            source_turn_id=f"turn_{state.turn_count}",
+            entity=state.active_entity,
+            period=period,
+            topic=state.active_topic,
+        )
+
     def _update_state_on_resolution(
         self,
         state: DialogueState,
@@ -136,7 +270,6 @@ class ConversationContextManager:
         res: ConversationResolution,
     ) -> None:
         """Updates dialogue state following a successful query resolution."""
-        state.turn_count += 1
         turn_id = f"turn_{state.turn_count}"
         
         parsed_e, parsed_m_list, parsed_p = self._extract_semantic_entities(res.standalone_query or raw_user_query)
@@ -182,6 +315,9 @@ class ConversationContextManager:
                 state.active_period = per
 
         state.last_resolved_query = res.standalone_query
+        state.pending_clarification = None
+        if turn_id not in state.referenced_turn_ids:
+            state.referenced_turn_ids.append(turn_id)
 
         # Update compressed summary if turn threshold reached
         compressed = self.budget_manager.update_compressed_history(state, state.recent_turns)

@@ -1,0 +1,19 @@
+{
+  "audit": "TV2-00",
+  "baseline": "869cd08968f897071d38a010a07a7bd879f1b779",
+  "production_runtime": "V1",
+  "default_multiturn_mode": "off",
+  "components": [
+    {"name":"SupervisorService","exists":true,"implementation_status":"COMPONENT_READY","runtime_usage":"EVALUATION_ONLY","production_call_site":false,"gap":"Request adapter and bounded coordinator."},
+    {"name":"Bounded orchestration","exists":true,"implementation_status":"COMPONENT_READY","runtime_usage":"EVALUATION_ONLY","production_call_site":false,"gap":"No production tool registry or end-to-end loop."},
+    {"name":"R4 combined retrieval","exists":true,"implementation_status":"COMPONENT_READY","runtime_usage":"EVALUATION_ONLY","production_call_site":false,"gap":"No unified production root; src does not import pdf_retrieval_v4."},
+    {"name":"Semantic Binder","exists":true,"implementation_status":"COMPONENT_READY","runtime_usage":"EVALUATION_ONLY","production_call_site":false,"gap":"No candidate-to-VerifiedEvidencePacket coordinator."},
+    {"name":"V1 deterministic calculator","exists":true,"implementation_status":"PRODUCTION_USED","runtime_usage":"PRODUCTION_USED_BY_V1","production_call_site":true,"gap":"Needs V2 CalculationResultPacket/C1 bridge."},
+    {"name":"V2 CalculationResultPacket","exists":true,"implementation_status":"COMPONENT_READY","runtime_usage":"EVALUATION_ONLY","production_call_site":false,"gap":"No mapping from src.domain.calculation.CalculationResult."},
+    {"name":"GeneratorRoutingPolicyV1","exists":true,"implementation_status":"COMPONENT_READY","runtime_usage":"EVALUATION_ONLY","production_call_site":false,"gap":"Provider IDs are configured; services are not wired."},
+    {"name":"LocalSpecialistGenerator","exists":true,"implementation_status":"COMPONENT_READY","runtime_usage":"EVALUATION_ONLY","production_call_site":false,"gap":"No production provider lifecycle or registry."},
+    {"name":"V2 validator/release state machine","exists":true,"implementation_status":"COMPONENT_READY","runtime_usage":"EVALUATION_ONLY","production_call_site":false,"gap":"Post-generation gate exists; packet/API adapter absent."},
+    {"name":"V1 GroundedValidationPipeline","exists":true,"implementation_status":"PRODUCTION_USED","runtime_usage":"PRODUCTION_USED_BY_V1","production_call_site":true,"gap":"Separate V1 release path."},
+    {"name":"TrustedRAGRuntimeV2","exists":true,"implementation_status":"COMPONENT_READY","runtime_usage":"EVALUATION_ONLY","production_call_site":false,"gap":"Prebuilt-plan/packet root, not standalone-query root."}
+  ]
+}

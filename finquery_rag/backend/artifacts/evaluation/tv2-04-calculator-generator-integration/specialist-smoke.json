@@ -1,0 +1,11 @@
+{
+  "benchmark_rerun": false,
+  "checkpoint_resolution": "canonical configured specialist checkpoint",
+  "checkpoint_sha256": "3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a",
+  "component": "LocalFinancialSpecialist",
+  "input_policy": "structured bound evidence only",
+  "load_smoke": "PASS_CPU",
+  "one_token_generation_smoke": "PASS_CPU",
+  "phase": "TV2-04",
+  "prompt_or_chain_of_thought_saved": false
+}

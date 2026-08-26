@@ -119,4 +119,4 @@ def test_main_wires_memory_profile_endpoints_and_query_path():
     assert '@app.get("/memory/profile", response_model=MemoryProfileResponse)' in content
     assert '@app.put("/memory/profile", response_model=MemoryProfileResponse)' in content
     assert '@app.delete("/memory/profile")' in content
-    assert "memory_profile=memory_profile" in content
+    assert "memory_store=memory_store" in content

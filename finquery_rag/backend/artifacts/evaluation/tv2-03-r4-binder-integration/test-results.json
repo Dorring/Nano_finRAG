@@ -1,0 +1,30 @@
+{
+  "combined_canonical_suite": {
+    "failed": 0,
+    "passed": 61,
+    "skipped": 0
+  },
+  "decision": "PASS",
+  "focused_real_r4_binder": {
+    "failed": 0,
+    "passed": 12,
+    "skipped": 0
+  },
+  "hard_indicators": {
+    "BINDER_NOT_READY_DOWNSTREAM_CALLS": 0,
+    "CALCULATOR_CALLS_WITH_MISSING_OPERAND": 0,
+    "CANDIDATE_AS_VERIFIED_EVIDENCE_VIOLATIONS": 0,
+    "RAW_RETRIEVAL_CANDIDATE_PROVENANCE_LEAKS": 0,
+    "REAL_BINDER_CALLS": ">0",
+    "REAL_R4_CAPABILITY_CALLS": ">0",
+    "RETRIEVAL_CALLS_AFTER_BUDGET_EXHAUSTION": 0,
+    "UNRESOLVED_CONFLICT_DOWNSTREAM_CALLS": 0
+  },
+  "old_consumed_benchmark_rerun": false,
+  "relevant_regression_and_contracts": {
+    "failed": 0,
+    "passed": 49,
+    "skipped": 0
+  },
+  "task": "TV2-03"
+}

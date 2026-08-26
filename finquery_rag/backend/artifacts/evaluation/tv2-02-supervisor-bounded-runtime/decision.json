@@ -1,0 +1,20 @@
+{
+  "task": "TV2-02",
+  "decision": "PASS",
+  "status": "SUPERVISOR_BOUNDED_RUNTIME_WIRED",
+  "supervisor_plan": "WIRED",
+  "bounded_runtime": "WIRED",
+  "capability_execution": "PORT_FAKE",
+  "r4": "NOT_REAL_WIRED",
+  "binder": "NOT_REAL_WIRED",
+  "calculator": "NOT_REAL_WIRED",
+  "generator": "NOT_REAL_WIRED",
+  "validator_release": "NOT_REAL_WIRED",
+  "production_financial_runtime": "V1",
+  "production_v2_routing": "OFF",
+  "model_calls": false,
+  "gpu_calls": false,
+  "benchmark_rerun": false,
+  "full_backend_environment_verification": "PENDING",
+  "base": "d4cfe1a16db36a12e709277de46857b466ee3fc6"
+}

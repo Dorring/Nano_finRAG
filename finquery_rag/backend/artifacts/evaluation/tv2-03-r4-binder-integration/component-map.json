@@ -1,0 +1,28 @@
+{
+  "components": {
+    "bounded_runtime": "WIRED",
+    "calculator": "NOT_REAL_WIRED",
+    "generator": "NOT_REAL_WIRED",
+    "production_v2_routing": "OFF",
+    "qwen_reranker": "NOT_IN_CURRENT_CANDIDATE_DIRECT_POLICY",
+    "r4_retrieval": {
+      "adapter": "src.runtime.trusted_v2_r4.CandidateDirectR4Policy",
+      "implementation": "src.pdf_retrieval_v4.candidate_direct_retriever.CandidateDirectRetriever",
+      "status": "REAL_WIRED"
+    },
+    "semantic_binder": {
+      "adapter": "src.runtime.trusted_v2_binder.SemanticEvidenceEvaluationCapability",
+      "implementation": "rag_v2.evidence.binder_service.SemanticBinderService",
+      "status": "REAL_WIRED"
+    },
+    "supervisor_plan": "WIRED",
+    "validator_release": "NOT_REAL_WIRED"
+  },
+  "provenance": {
+    "answer_text_parsing": false,
+    "candidate_ids": "trace_only",
+    "citation_ids": "binder_admitted_fact_citation_ids",
+    "evidence_ids": "binder_admitted_fact_ids"
+  },
+  "task": "TV2-03"
+}

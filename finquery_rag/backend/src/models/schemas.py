@@ -115,6 +115,14 @@ class AnswerabilityResponse(BaseModel):
     missing_requirements: list[str] = Field(default_factory=list)
 
 
+class ClarificationResponse(BaseModel):
+    """Public conversation-control response for unresolved active context."""
+
+    question: str
+    reason_codes: list[str] = Field(default_factory=list)
+    options: list[str] = Field(default_factory=list)
+
+
 class ValidationResponse(BaseModel):
     """Post-generation validation verdict (public API).
 
@@ -181,6 +189,10 @@ class QueryResponse(BaseModel):
     repair: RepairResponse | None = None
     # Phase 4: Repair outcome. None when the validation pipeline is disabled
     # or no repair was attempted.
+    status: str | None = None
+    # Conversation control status; omitted for legacy normal answers.
+    clarification: ClarificationResponse | None = None
+    # Structured clarification payload; omitted for ordinary V1 answers.
 
 
 class EvalScoreRequest(BaseModel):

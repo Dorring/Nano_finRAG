@@ -106,8 +106,9 @@ def test_sessions_endpoint_and_query_paths_use_validated_session_id_static():
     assert "session_manager.clear_all_for_user(current_user.id)" in main
     assert '"total_sessions": total_sessions' in sessions_block
     assert '"has_more": normalized_offset + len(sessions) < total_sessions' in sessions_block
-    assert "session_id = _validate_session_id(request.session_id) if request.session_id else None" in query_block
-    assert "session_manager.get_recent_messages(\n                session_id, current_user.id" in query_block
-    assert "session_id = _validate_session_id(request.session_id) if request.session_id else None" in stream_block
-    assert "request.session_id, current_user.id" not in query_block
-    assert "request.session_id, current_user.id" not in stream_block
+    assert "def _build_user_turn_execution_request" in main
+    assert "session_id = _validate_session_id(request.session_id) if request.session_id else None" in main
+    lifecycle = open(os.path.join(root, "src", "runtime", "query_lifecycle.py"), encoding="utf-8").read()
+    assert "get_recent_messages(" in lifecycle
+    assert "execute_user_turn" in query_block
+    assert "execute_user_turn" in stream_block

@@ -1,0 +1,14 @@
+{
+  "task": "TV2-01",
+  "status": "TRUSTED_RUNTIME_V2_ADAPTER",
+  "decision": "PASS",
+  "adapter": "COMPONENT_READY",
+  "full_v2_coordinator": "NOT_WIRED",
+  "production_financial_runtime": "V1",
+  "production_v2_routing": "OFF",
+  "production_behavior_changed": false,
+  "benchmark_rerun": false,
+  "model_execution": false,
+  "gpu_execution": false,
+  "base": "42943b01b4e943275b07981c55aa1d6894d1ff15"
+}

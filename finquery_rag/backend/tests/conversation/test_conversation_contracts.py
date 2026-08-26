@@ -2,9 +2,12 @@
 
 import unittest
 from src.conversation.contracts import (
+    AssistantProvenance,
     ConversationResolution,
+    ConversationTurnOutcome,
     DialogueState,
     DialogueTurn,
+    PendingClarification,
     ReasonCode,
 )
 
@@ -37,6 +40,41 @@ class TestConversationContracts(unittest.TestCase):
         d = state.to_dict()
         self.assertEqual(d["conversation_id"], "conv_100")
         self.assertEqual(d["active_metric"], "Revenue")
+
+    def test_lifecycle_fields_round_trip_without_financial_facts(self):
+        state = DialogueState(
+            conversation_id="conv_lifecycle",
+            active_entity="Apple",
+            active_metric=None,
+            active_period="FY2023",
+            pending_clarification=PendingClarification(
+                reason_codes=[ReasonCode.AMBIGUOUS_METRIC],
+                candidates=["Revenue", "Operating Margin"],
+                unresolved_fields=["metric"],
+                source_turn_id="turn_2",
+                entity="Apple",
+                period="FY2023",
+            ),
+            last_assistant_provenance=AssistantProvenance(
+                assistant_turn_id="request-1",
+                evidence_ids=["chunk-1"],
+                citation_ids=["citation-1"],
+                calculation_ids=[],
+                release_status="RELEASED",
+                outcome=ConversationTurnOutcome.FINANCIAL_ANSWER,
+            ),
+            last_processed_request_id="request-1",
+            last_processed_original_query="Apple FY2024 Revenue?",
+            last_turn_outcome=ConversationTurnOutcome.FINANCIAL_ANSWER,
+        )
+        restored = DialogueState.from_dict(state.to_dict())
+        self.assertEqual(restored.pending_clarification.candidates, ["Revenue", "Operating Margin"])
+        self.assertEqual(restored.last_assistant_provenance.evidence_ids, ["chunk-1"])
+        self.assertEqual(restored.last_processed_request_id, "request-1")
+        self.assertEqual(restored.last_turn_outcome, ConversationTurnOutcome.FINANCIAL_ANSWER)
+        payload = restored.to_dict()
+        self.assertNotIn("answer_numeric_value", payload)
+        self.assertNotIn("trusted_answer", payload)
 
     def test_conversation_resolution_standalone(self):
         res = ConversationResolution(

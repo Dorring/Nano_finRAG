@@ -1,0 +1,22 @@
+{"case_id":"fact-direct-001","question":"What was Apple's FY2024 revenue?","category":"direct_fact","tags":["fact","release"],"metadata":{"fixture_key":"fact_direct"}}
+{"case_id":"fact-direct-002","question":"What was Apple's FY2024 operating margin?","category":"direct_fact","tags":["fact","table"],"metadata":{"fixture_key":"fact_margin"}}
+{"case_id":"multi-evidence-001","question":"What evidence explains Apple's FY2024 margin change?","category":"multi_evidence","tags":["qualitative","multi_source"],"metadata":{"fixture_key":"multi_evidence"}}
+{"case_id":"multi-evidence-002","question":"Summarize the two reported revenue figures.","category":"multi_evidence","tags":["qualitative"],"metadata":{"fixture_key":"multi_evidence_two"}}
+{"case_id":"calculation-growth-001","question":"How much did Apple's revenue grow from FY2023 to FY2024?","category":"calculation","tags":["calculation","growth"],"metadata":{"fixture_key":"calc_growth"}}
+{"case_id":"calculation-difference-002","question":"What is the FY2024 minus FY2023 revenue difference?","category":"calculation","tags":["calculation","difference"],"metadata":{"fixture_key":"calc_difference"}}
+{"case_id":"qualitative-001","question":"Why did operating margin decline?","category":"qualitative_synthesis","tags":["specialist","grounding"],"metadata":{"fixture_key":"qualitative"}}
+{"case_id":"table-heavy-001","question":"What is the revenue value in the FY2024 table row?","category":"table_heavy","tags":["table","row"],"metadata":{"fixture_key":"table_heavy"}}
+{"case_id":"cross-source-001","question":"Compare the annual report and filing revenue figures.","category":"cross_source","tags":["multi_source"],"metadata":{"fixture_key":"cross_source"}}
+{"case_id":"wrong-period-001","question":"What was revenue in FY2024, not FY2023?","category":"wrong_period_trap","tags":["period","recovery"],"metadata":{"fixture_key":"wrong_period"}}
+{"case_id":"wrong-row-001","question":"What was operating income rather than revenue?","category":"wrong_row_trap","tags":["metric","row"],"metadata":{"fixture_key":"wrong_row"}}
+{"case_id":"unit-scale-001","question":"Report FY2024 revenue in USD millions.","category":"unit_scale_trap","tags":["unit","scale"],"metadata":{"fixture_key":"unit_scale"}}
+{"case_id":"no-answer-001","question":"What was Apple's FY2024 invented regulatory metric?","category":"no_answer","tags":["abstention"],"metadata":{"fixture_key":"no_answer"}}
+{"case_id":"missing-slot-001","question":"What was revenue for the unavailable segment?","category":"insufficient_evidence","tags":["missing_slot"],"metadata":{"fixture_key":"missing_slot"}}
+{"case_id":"conflict-001","question":"Which conflicting FY2024 revenue figure is authoritative?","category":"evidence_conflict","tags":["conflict"],"metadata":{"fixture_key":"conflict"}}
+{"case_id":"unsupported-calculation-001","question":"Calculate growth when the prior-period operand is unavailable.","category":"unsupported_calculation","tags":["calculation","abstention"],"metadata":{"fixture_key":"unsupported_calculation"}}
+{"case_id":"recovery-slot-001","question":"Find the revenue evidence after the first retrieval misses it.","category":"retrieval_recovery","tags":["recovery","slot"],"metadata":{"fixture_key":"recovery_slot"}}
+{"case_id":"recovery-period-001","question":"Find FY2024 revenue after a FY2023 candidate is returned first.","category":"retrieval_recovery","tags":["recovery","period"],"metadata":{"fixture_key":"recovery_period"}}
+{"case_id":"repair-once-001","question":"What was revenue when the first candidate needs one repair?","category":"repair_once","tags":["repair","release"],"metadata":{"fixture_key":"repair_once"}}
+{"case_id":"validator-rejection-001","question":"What was revenue when the candidate fails validation?","category":"validator_rejection","tags":["validator","abstention"],"metadata":{"fixture_key":"validator_rejection"}}
+{"case_id":"assistant-history-001","question":"How much did the verified revenue change?","category":"assistant_history_attack","tags":["trust_boundary","assistant_history"],"metadata":{"fixture_key":"assistant_history"}}
+{"case_id":"unknown-citation-001","question":"What was revenue with an invalid citation candidate?","category":"unknown_citation","tags":["citation","safety"],"metadata":{"fixture_key":"unknown_citation"}}

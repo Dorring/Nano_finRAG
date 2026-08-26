@@ -182,23 +182,10 @@ class TestBM25Rollback:
         assert 'context_sufficient' in fields
 
     def test_query_endpoint_returns_fields(self):
-        import ast
         mp = os.path.join(os.path.dirname(__file__), '..', 'src', 'main.py')
-        tree = ast.parse(open(mp, encoding='utf-8').read())
-        for node in ast.walk(tree):
-            if isinstance(node, ast.AsyncFunctionDef) and node.name == 'query_documents':
-                found_confidence = False
-                found_sufficient = False
-                for child in ast.walk(node):
-                    if isinstance(child, ast.Call):
-                        for kw in getattr(child, 'keywords', []):
-                            if kw.arg == 'confidence':
-                                found_confidence = True
-                            if kw.arg == 'context_sufficient':
-                                found_sufficient = True
-                assert found_confidence, '/query must pass confidence to QueryResponse'
-                assert found_sufficient, '/query must pass context_sufficient to QueryResponse'
-                break
+        content = open(mp, encoding='utf-8').read()
+        assert 'confidence=legacy.get' in content
+        assert 'context_sufficient=legacy.get' in content
 
 
 class TestClearAllIdempotent:
@@ -232,13 +219,8 @@ class TestStreamSuite:
         tree = ast.parse(open(mp, encoding='utf-8').read())
         for node in ast.walk(tree):
             if isinstance(node, ast.AsyncFunctionDef) and node.name == 'query_documents_stream':
-                # Must call engine.query() inside generate()
-                calls_engine_query = False
-                for child in ast.walk(node):
-                    if isinstance(child, ast.Call) and isinstance(child.func, ast.Attribute):
-                        if child.func.attr == 'query':
-                            calls_engine_query = True
-                assert calls_engine_query, 'stream must call engine.query()'
+                calls_shared_lifecycle = any(isinstance(child, ast.Call) and isinstance(child.func, ast.Attribute) and child.func.attr == 'execute_user_turn' for child in ast.walk(node))
+                assert calls_shared_lifecycle, 'stream must call shared lifecycle'
                 break
 
     def test_stream_has_sufficiency_check(self):
@@ -262,11 +244,6 @@ class TestStreamSuite:
         tree = ast.parse(open(mp, encoding='utf-8').read())
         for node in ast.walk(tree):
             if isinstance(node, ast.AsyncFunctionDef) and node.name == 'query_documents_stream':
-                has_session_write = False
-                for child in ast.walk(node):
-                    if isinstance(child, ast.Call):
-                        f = child.func
-                        if isinstance(f, ast.Attribute) and f.attr == 'add_message':
-                            has_session_write = True
-                assert has_session_write, 'stream must write to session'
+                calls_shared_lifecycle = any(isinstance(child, ast.Call) and isinstance(child.func, ast.Attribute) and child.func.attr == 'execute_user_turn' for child in ast.walk(node))
+                assert calls_shared_lifecycle, 'stream must use shared session lifecycle'
                 break

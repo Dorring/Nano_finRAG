@@ -40,7 +40,8 @@ def test_query_stream_generator_has_error_event_fallback():
     assert "make_stream_error_event" in content
     assert "except Exception as exc:" in content
     assert "safe_log_query_trace(engine, trace_payload)" in content
-    assert 'yield make_stream_error_event("stream_error", error_message, retryable=True, trace_id=trace_id)' in content
+    assert "yield make_stream_error_event(" in content
+    assert "trace_id=trace_id" in content
     # Phase 4 hotfix: diagnostics spans multiple lines with error_code and exception_type.
     assert '"stream_error": True' in content
     assert '"error_code": "STREAM_INTERNAL_ERROR"' in content

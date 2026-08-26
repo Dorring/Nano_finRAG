@@ -16,5 +16,6 @@ class QueryRequest:
     session_id: str | None = None
     conversation_history: tuple[dict[str, Any], ...] = ()
     memory_profile: dict[str, Any] | None = None
+    query_as_resolved: bool = False
     stream: bool = False
     debug: bool = False

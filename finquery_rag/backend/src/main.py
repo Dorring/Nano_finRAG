@@ -1,9 +1,12 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException, Depends
+from fastapi import FastAPI, Request as FastAPIRequest, UploadFile, File, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, StreamingResponse
+import logging
+import importlib
 from openai import OpenAI
 import json
 import time
+from typing import Any
 
 from .services.auth import create_access_token, get_current_user, get_password_hash, verify_password
 from .services.ingest import get_ingest_lineage, process_pdf
@@ -31,6 +34,7 @@ from .models.schemas import (
     QueryRequest,
     QueryResponse,
     RepairResponse,
+    ClarificationResponse,
     Token,
     UploadResponse,
     UserLogin,
@@ -41,13 +45,35 @@ from .models.schemas import (
 from .models.user import User #User ORM 模型
 from .database import get_db, engine, Base #SQLAlchemy 数据库连接和基础模型
 from sqlalchemy.orm import Session #SQLAlchemy 会话管理
+from .runtime import (
+    FinancialQARuntime,
+    FinancialQueryRequest,
+    FinancialRuntimeModeError,
+    FinancialRuntimeRouter,
+    LegacyFinancialRuntimeAdapter,
+    QueryExecutionService,
+    TrustedFinancialRuntimeV2,
+    resolve_financial_runtime_mode,
+)
+from .runtime.query_lifecycle import (
+    QueryLifecycleService,
+    UserTurnExecutionRequest,
+    UserTurnExecutionResult,
+)
+from .conversation.config import resolve_multiturn_context_mode
+from .conversation.resolver import ContextualQueryResolver
+from .conversation.shadow_service import ConversationShadowService
+from .conversation.sqlite_store import SQLiteConversationStateStore
 
 from datetime import timedelta, datetime
+from collections.abc import Callable
 import os
 import uuid
 import shutil
 import tempfile
 from dotenv import load_dotenv
+
+logger = logging.getLogger(__name__)
 
 # Create database tables (if relying on this instead of alembic for initial dev)
 #创建数据库表（如果不使用 alembic 进行迁移的话）
@@ -98,6 +124,63 @@ document_registry = DocumentRegistry()
 session_manager = SessionManager()
 memory_store = UserMemoryStore()
 feedback_store = FeedbackStore()
+conversation_shadow_service: ConversationShadowService | None = None
+_trusted_v2_runtime_builder: (
+    Callable[[Any, FinancialQueryRequest], FinancialQARuntime] | None
+) = None
+
+
+def configure_trusted_v2_runtime_builder(
+    builder: Callable[[Any, FinancialQueryRequest], FinancialQARuntime] | None,
+) -> None:
+    """Register the real TV2-05 factory used by shadow and official V2 modes.
+
+    The builder is deliberately explicit: an unset V2 dependency is a
+    configuration error, never an opportunity to construct a fake runtime or
+    silently fall back to V1.
+    """
+
+    global _trusted_v2_runtime_builder
+    if builder is not None and not callable(builder):
+        raise TypeError("V2 runtime builder must be callable or None")
+    _trusted_v2_runtime_builder = builder
+
+
+def configure_trusted_v2_shadow_runtime_builder(
+    builder: Callable[[Any, FinancialQueryRequest], FinancialQARuntime] | None,
+) -> None:
+    """Backward-compatible alias for the shared V2 runtime builder."""
+
+    configure_trusted_v2_runtime_builder(builder)
+
+
+def _configured_trusted_v2_runtime_builder() -> (
+    Callable[[Any, FinancialQueryRequest], FinancialQARuntime] | None
+):
+    """Resolve explicit DI, optionally from a deployment import path."""
+
+    if _trusted_v2_runtime_builder is not None:
+        return _trusted_v2_runtime_builder
+    path = os.getenv("TRUSTED_V2_RUNTIME_BUILDER", "").strip()
+    if not path:
+        return None
+    if ":" not in path:
+        raise FinancialRuntimeModeError(
+            "TRUSTED_V2_RUNTIME_BUILDER must use module:callable syntax",
+        )
+    module_name, attribute = path.rsplit(":", 1)
+    try:
+        builder = getattr(importlib.import_module(module_name), attribute)
+    except (ImportError, AttributeError) as exc:
+        raise FinancialRuntimeModeError(
+            "TRUSTED_V2_RUNTIME_BUILDER could not be imported",
+        ) from exc
+    if not callable(builder):
+        raise FinancialRuntimeModeError(
+            "TRUSTED_V2_RUNTIME_BUILDER must resolve to a callable",
+        )
+    return builder
+
 
 def get_rag_engine():
     """
@@ -141,6 +224,132 @@ def _normalize_api_pagination(limit, offset, default_limit=50, max_limit=1000):
     if normalized_offset < 0:
         raise api_error(400, "invalid_pagination", "offset must be >= 0")
     return min(normalized_limit, max_limit), normalized_offset
+
+
+def _financial_runtime_adapter_enabled() -> bool:
+    """Return the I3 flag, requiring the shared runtime port for V1/V2 modes."""
+    value = os.getenv("FINANCIAL_RUNTIME_ADAPTER_ENABLED", "true")
+    enabled = value.strip().lower() not in {"0", "false", "off", "no"}
+    mode = _financial_runtime_mode()
+    if mode != "v1" and not enabled:
+        raise FinancialRuntimeModeError(
+            f"FINANCIAL_RUNTIME_MODE={mode} requires "
+            "FINANCIAL_RUNTIME_ADAPTER_ENABLED=true",
+        )
+    return enabled
+
+
+def _financial_runtime_mode() -> str:
+    return resolve_financial_runtime_mode(environ=os.environ)
+
+
+def _financial_runtime_shadow_timeout_ms() -> int:
+    value = os.getenv("V2_SHADOW_TIMEOUT_MS", "5000")
+    try:
+        timeout = int(value)
+    except (TypeError, ValueError) as exc:
+        raise FinancialRuntimeModeError(
+            "V2_SHADOW_TIMEOUT_MS must be a positive integer",
+        ) from exc
+    if timeout <= 0:
+        raise FinancialRuntimeModeError(
+            "V2_SHADOW_TIMEOUT_MS must be a positive integer",
+        )
+    return timeout
+
+
+def _build_financial_runtime(
+    engine: Any,
+    request: FinancialQueryRequest,
+) -> FinancialQARuntime:
+    """Build the selected runtime without an implicit cross-version fallback."""
+
+    mode = _financial_runtime_mode()
+    if mode == "v1":
+        return LegacyFinancialRuntimeAdapter(engine)
+
+    builder = _configured_trusted_v2_runtime_builder()
+    if builder is None:
+        raise FinancialRuntimeModeError(
+            f"FINANCIAL_RUNTIME_MODE={mode} requires an explicit real "
+            "TrustedFinancialRuntimeV2 production factory",
+        )
+    v2_runtime = builder(engine, request)
+    if not isinstance(v2_runtime, TrustedFinancialRuntimeV2):
+        raise FinancialRuntimeModeError(
+            "Trusted V2 runtime builder must return TrustedFinancialRuntimeV2",
+        )
+
+    if mode == "v2":
+        v2_runtime.production_routing = True
+        return FinancialRuntimeRouter(
+            v2_runtime=v2_runtime,
+            mode="v2",
+        )
+
+    return FinancialRuntimeRouter(
+        LegacyFinancialRuntimeAdapter(engine),
+        shadow_runtime=v2_runtime,
+        mode="shadow",
+        shadow_timeout_ms=_financial_runtime_shadow_timeout_ms(),
+    )
+
+
+def _multiturn_context_mode() -> str:
+    """Validate the I5 conversation mode on every request boundary."""
+    return resolve_multiturn_context_mode(environ=os.environ)
+
+
+def _active_query_requires_context(question: str) -> bool:
+    """Classify whether active mode may safely fall back to legacy V1."""
+    resolver = ContextualQueryResolver(client=object())
+    return not resolver.is_self_contained_fast_path(question)
+
+
+def _active_query_is_out_of_scope(question: str) -> bool:
+    """Detect deterministic out-of-scope control requests without model I/O."""
+    resolver = ContextualQueryResolver(client=object())
+    return not resolver.resolve(question).supported
+
+
+def get_conversation_shadow_service() -> ConversationShadowService:
+    """Lazily share the SessionManager SQLite database with Shadow state."""
+    global conversation_shadow_service
+    if conversation_shadow_service is None:
+        db_path = getattr(session_manager, "db_path", None)
+        conversation_shadow_service = ConversationShadowService(
+            SQLiteConversationStateStore(db_path=db_path),
+        )
+    return conversation_shadow_service
+
+
+def _delete_conversation_state_or_raise(user_id: int, session_id: str) -> None:
+    """Keep structured state cleanup coupled to raw session cleanup."""
+    try:
+        get_conversation_shadow_service().delete_state(
+            user_id=int(user_id),
+            session_id=session_id,
+        )
+    except Exception as exc:
+        logger.exception("conversation state cleanup failed")
+        raise api_error(
+            500,
+            "conversation_state_error",
+            "Conversation state cleanup failed",
+        ) from exc
+
+
+def _delete_all_conversation_states_or_raise(user_id: int) -> None:
+    """Delete all structured state rows after a user-wide session clear."""
+    try:
+        get_conversation_shadow_service().delete_all_states(user_id=int(user_id))
+    except Exception as exc:
+        logger.exception("conversation state bulk cleanup failed")
+        raise api_error(
+            500,
+            "conversation_state_error",
+            "Conversation state cleanup failed",
+        ) from exc
 
 
 def _public_registry_document(row: dict) -> dict:
@@ -952,134 +1161,166 @@ async def upload_document(file: UploadFile = File(...), current_user: User = Dep
             shutil.rmtree(temp_dir, ignore_errors=True)
         raise api_error(500, "processing_error", "Processing error: %s" % str(e))
 
-@app.post("/query", response_model=QueryResponse, response_model_exclude_none=True)
-async def query_documents(request: QueryRequest, current_user: User = Depends(get_current_user)):
-    """
-    对一个或多个文档进行提问。
-    支持会话记忆：传入 session_id 将自动加载历史消息用于问题改写。
-    历史回答不会作为金融事实进入检索上下文。
-    """
-    try:
-        engine = get_rag_engine()
+def _request_id_from_http(http_request: FastAPIRequest | None) -> str:
+    """Read the request id once for both query transports."""
+    request_id = (
+        http_request.headers.get("X-Request-ID", "").strip()
+        if http_request is not None
+        else ""
+    ) or uuid.uuid4().hex
+    if len(request_id) > 128:
+        raise api_error(400, "invalid_request_id", "X-Request-ID is too long")
+    return request_id
 
-        # Phase 4: Load conversation history for query rewriting
-        session_id = _validate_session_id(request.session_id) if request.session_id else None
-        conversation_history = None
-        if session_id:
-            conversation_history = session_manager.get_recent_messages(
-                session_id, current_user.id
-            )
-        memory_profile = memory_store.get_profile(current_user.id)
 
-        resolved_doc_names = _resolve_query_document_names_for_user(
+def _build_user_turn_execution_request(
+    request: QueryRequest,
+    current_user: User,
+    http_request: FastAPIRequest | None,
+) -> UserTurnExecutionRequest:
+    """Build the transport-neutral request shared by JSON and SSE."""
+    session_id = _validate_session_id(request.session_id) if request.session_id else None
+    return UserTurnExecutionRequest(
+        request_id=_request_id_from_http(http_request),
+        user_id=int(current_user.id),
+        original_query=request.question,
+        session_id=session_id,
+        document_names=_resolve_query_document_names_for_user(
             current_user.id,
             request.document_names,
+        ),
+        n_results=request.n_results,
+        conversation_mode=_multiturn_context_mode(),
+    )
+
+
+def _validate_financial_runtime_configuration() -> None:
+    """Fail before a turn executes when the selected runtime is not constructible."""
+    mode = _financial_runtime_mode()
+    _financial_runtime_adapter_enabled()
+    if mode in {"shadow", "v2"} and _configured_trusted_v2_runtime_builder() is None:
+        raise FinancialRuntimeModeError(
+            f"FINANCIAL_RUNTIME_MODE={mode} requires an explicit real "
+            "TrustedFinancialRuntimeV2 production factory",
         )
 
-        # Run RAG pipeline
-        result = await engine.query(
-            question=request.question,
-            doc_names=resolved_doc_names,
-            n_results=request.n_results,
-            user_id=current_user.id,
-            conversation_history=conversation_history,
-            memory_profile=memory_profile,
+
+def _get_query_lifecycle_service() -> QueryLifecycleService:
+    """Build the shared lifecycle with the selected runtime port."""
+    _validate_financial_runtime_configuration()
+    return QueryLifecycleService(
+        session_manager=session_manager,
+        memory_store=memory_store,
+        get_rag_engine=get_rag_engine,
+        get_conversation_service=get_conversation_shadow_service,
+        financial_runtime_adapter_enabled=_financial_runtime_adapter_enabled,
+        active_query_requires_context=_active_query_requires_context,
+        active_query_is_out_of_scope=_active_query_is_out_of_scope,
+        assistant_session_metadata=_assistant_session_metadata,
+        execution_service_factory=QueryExecutionService,
+        financial_runtime_factory=_build_financial_runtime,
+    )
+
+
+def _query_response_from_execution(
+    request: QueryRequest,
+    execution: UserTurnExecutionResult,
+) -> QueryResponse:
+    """Map one final lifecycle result to the unchanged JSON response shape."""
+    legacy = execution.legacy_result or {}
+    clarification = (
+        ClarificationResponse(**execution.clarification)
+        if execution.clarification is not None
+        else None
+    )
+    is_control = execution.status in {"CLARIFICATION_REQUIRED", "OUT_OF_SCOPE"}
+    is_v2_non_answer = (
+        execution.runtime_version == "V2"
+        and execution.status != "ANSWER"
+    )
+    return QueryResponse(
+        answer=execution.answer or "",
+        sources=legacy.get("sources", []),
+        question=request.question,
+        searched_docs=legacy.get("searched_docs", []),
+        session_id=execution.session_id,
+        rewritten_question=legacy.get("rewritten_question"),
+        confidence=legacy.get("confidence"),
+        context_sufficient=legacy.get("context_sufficient"),
+        intent=legacy.get("intent"),
+        intent_confidence=legacy.get("intent_confidence"),
+        trace_id=legacy.get("trace_id"),
+        retrieved_chunks=legacy.get("retrieved_chunks", []),
+        retrieval_debug=legacy.get("retrieval_debug", {}),
+        calculations=legacy.get("calculations", []),
+        answerability=(
+            AnswerabilityResponse(**legacy["answerability"])
+            if legacy.get("answerability")
+            else None
+        ),
+        validation=(
+            ValidationResponse(**legacy["validation"])
+            if legacy.get("validation")
+            else None
+        ),
+        repair=(
+            RepairResponse(**legacy["repair"])
+            if legacy.get("repair")
+            else None
+        ),
+        status=execution.status if (is_control or is_v2_non_answer) else None,
+        clarification=clarification if is_control else None,
+    )
+
+
+@app.post("/query", response_model=QueryResponse, response_model_exclude_none=True)
+async def query_documents(
+    request: QueryRequest,
+    current_user: User = Depends(get_current_user),
+    http_request: FastAPIRequest = None,
+):
+    """Execute one user turn through the shared Conversation/V1 lifecycle."""
+    try:
+        execution_request = _build_user_turn_execution_request(
+            request,
+            current_user,
+            http_request,
         )
-
-        # Phase 4: Save messages to session
-        rewritten = result.get("rewritten_question")
-        if session_id:
-            session_manager.add_message(session_id, current_user.id, "user", request.question)
-            session_manager.add_message(
-                session_id,
-                current_user.id,
-                "assistant",
-                result["answer"],
-                metadata=_assistant_session_metadata(result=result),
-            )
-
-        return QueryResponse(
-            answer=result["answer"],
-            sources=result["sources"],
-            question=request.question,
-            searched_docs=result["searched_docs"],
-            session_id=session_id,
-            rewritten_question=rewritten,
-            confidence=result.get("confidence"),
-            context_sufficient=result.get("context_sufficient"),
-            intent=result.get("intent"),
-            intent_confidence=result.get("intent_confidence"),
-            trace_id=result.get("trace_id"),
-            retrieved_chunks=result.get("retrieved_chunks", []),
-            retrieval_debug=result.get("retrieval_debug", {}),
-            calculations=result.get("calculations", []),
-            answerability=(
-                AnswerabilityResponse(**result["answerability"])
-                if result.get("answerability") else None
-            ),
-            validation=(
-                ValidationResponse(**result["validation"])
-                if result.get("validation") else None
-            ),
-            repair=(
-                RepairResponse(**result["repair"])
-                if result.get("repair") else None
-            ),
+        execution = await _get_query_lifecycle_service().execute_user_turn(
+            execution_request
         )
-
+        return _query_response_from_execution(request, execution)
     except HTTPException:
         raise
-    except Exception as e:
-        raise api_error(500, "query_error", f"Query error: {str(e)}")
-
+    except Exception as exc:
+        raise api_error(500, "query_error", f"Query error: {exc}") from exc
 
 
 @app.post("/query/stream")
-async def query_documents_stream(request: QueryRequest, current_user: User = Depends(get_current_user)):
-    """
-    使用服务器发送事件（SSE）流式传输查询响应。
-
-    Phase 3 热修复：统一调用 ``engine.query()``，使计算链路在生产
-    流式接口中生效。当 ``calculations`` 非空时（EXECUTED/BLOCKED/
-    FAILED），确定性答案作为单个 token 事件输出，不调用 LLM 流式
-    生成；非计算请求的答案同样通过 ``engine.query()`` 获取并以
-    SSE 协议输出。
-
-    Args:
-        request (QueryRequest): 查询请求体。
-        current_user (User): 当前登录用户。
-    """
-    resolved_doc_names = _resolve_query_document_names_for_user(
-        current_user.id,
-        request.document_names,
-    )
+async def query_documents_stream(
+    request: QueryRequest,
+    current_user: User = Depends(get_current_user),
+    http_request: FastAPIRequest = None,
+):
+    """Run the shared validated-final lifecycle and serialize its final result as SSE."""
+    try:
+        execution_request = _build_user_turn_execution_request(
+            request,
+            current_user,
+            http_request,
+        )
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise api_error(500, "query_error", f"Query error: {exc}") from exc
 
     async def generate():
         try:
-            engine = get_rag_engine()
-            session_id = _validate_session_id(request.session_id) if request.session_id else None
-
-            # Load conversation history for query rewriting (shared with /query).
-            conversation_history = None
-            if session_id:
-                conversation_history = session_manager.get_recent_messages(
-                    session_id, current_user.id
-                )
-            memory_profile = memory_store.get_profile(current_user.id)
-
-            # Unified: call engine.query() which runs the full orchestrator
-            # including the Phase 3 calculation pipeline. This ensures the
-            # streaming path exercises the same calculation logic as /query.
-            result = await engine.query(
-                question=request.question,
-                doc_names=resolved_doc_names,
-                n_results=request.n_results,
-                user_id=current_user.id,
-                conversation_history=conversation_history,
-                memory_profile=memory_profile,
+            execution = await _get_query_lifecycle_service().execute_user_turn(
+                execution_request
             )
-
-            answer = result["answer"]
+            result = execution.legacy_result or {}
+            answer = execution.answer or ""
             sources = result.get("sources", [])
             confidence = result.get("confidence")
             context_sufficient = result.get("context_sufficient")
@@ -1087,40 +1328,12 @@ async def query_documents_stream(request: QueryRequest, current_user: User = Dep
             intent_confidence = result.get("intent_confidence")
             trace_id = result.get("trace_id")
             calculations = result.get("calculations", [])
-            # Phase 4: forward validation verdicts to the SSE done event.
-            # Only included when the validation pipeline produced them, so
-            # the legacy event shape is preserved when validation is disabled.
             answerability_data = result.get("answerability")
             validation_data = result.get("validation")
             repair_data = result.get("repair")
 
-            # Save session messages (compatible with /query behavior).
-            if session_id:
-                session_manager.add_message(session_id, current_user.id, "user", request.question)
-                session_manager.add_message(
-                    session_id,
-                    current_user.id,
-                    "assistant",
-                    answer,
-                    metadata=_assistant_session_metadata(
-                        result=result,
-                        sources=sources,
-                        trace_id=trace_id,
-                        context_sufficient=context_sufficient,
-                        confidence=confidence,
-                        intent=intent,
-                        intent_confidence=intent_confidence,
-                    ),
-                )
-
-            # Emit the answer as a token event. For calculation results
-            # (EXECUTED/BLOCKED/FAILED) the LLM stream is never invoked —
-            # the answer is deterministic. For non-calculation results the
-            # answer was already generated by engine.query() and is emitted
-            # as a single token event.
             yield f"data: {json.dumps({'type': 'token', 'content': answer})}\n\n"
 
-            # Emit the done event with all fields including calculations.
             done_kwargs = dict(
                 sources=sources,
                 confidence=confidence,
@@ -1136,8 +1349,13 @@ async def query_documents_stream(request: QueryRequest, current_user: User = Dep
                 done_kwargs["validation"] = validation_data
             if repair_data is not None:
                 done_kwargs["repair"] = repair_data
+            if execution.status != "ANSWER":
+                done_kwargs["status"] = execution.status
+                done_kwargs["release_status"] = execution.release_status
+                done_kwargs["reason_codes"] = execution.reason_codes
+                if execution.clarification is not None:
+                    done_kwargs["clarification"] = execution.clarification
             yield make_stream_done_event(**done_kwargs)
-
         except Exception as exc:
             error_message = "Streaming query failed. Please retry."
             try:
@@ -1158,7 +1376,12 @@ async def query_documents_stream(request: QueryRequest, current_user: User = Dep
                 trace_id = safe_log_query_trace(engine, trace_payload)
             except Exception:
                 trace_id = None
-            yield make_stream_error_event("stream_error", error_message, retryable=True, trace_id=trace_id)
+            yield make_stream_error_event(
+                "stream_error",
+                error_message,
+                retryable=True,
+                trace_id=trace_id,
+            )
 
     return StreamingResponse(
         generate(),
@@ -1166,7 +1389,7 @@ async def query_documents_stream(request: QueryRequest, current_user: User = Dep
         headers={
             "Cache-Control": "no-cache",
             "Connection": "keep-alive",
-        }
+        },
     )
 
 # <---------------------- Session endpoints (Phase 4) ---------------------->
@@ -1204,6 +1427,7 @@ async def clear_session(request: QueryRequest, current_user: User = Depends(get_
         raise api_error(400, "session_id_required", "session_id is required")
     session_id = _validate_session_id(request.session_id)
     cleared = session_manager.clear_session(session_id, current_user.id)
+    _delete_conversation_state_or_raise(current_user.id, session_id)
     return {"message": "Session cleared", "session_id": session_id, "cleared": cleared}
 
 @app.get("/sessions/{session_id}")
@@ -1220,6 +1444,7 @@ async def get_session_history(session_id: str, current_user: User = Depends(get_
 async def clear_all_sessions(current_user: User = Depends(get_current_user)):
     """Clear all conversation sessions for the current user."""
     deleted_messages = session_manager.clear_all_for_user(current_user.id)
+    _delete_all_conversation_states_or_raise(current_user.id)
     return {
         "message": "All sessions cleared",
         "deleted_messages": deleted_messages,
