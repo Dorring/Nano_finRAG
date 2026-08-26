@@ -181,7 +181,7 @@ class RAGOrchestrator:
                 "record_context",
                 context_hash=frozen_evaluation_context.final_context_hash,
             )
-        if request.query_as_resolved:
+        if getattr(request, "query_as_resolved", False):
             trace_data["query_as_resolved"] = True
             trace_data["query_rewrite_bypassed"] = True
         elif request.conversation_history:

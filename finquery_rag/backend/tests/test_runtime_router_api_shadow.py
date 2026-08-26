@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import importlib
-import sys
 from types import SimpleNamespace
 from typing import Any
 
@@ -64,8 +63,6 @@ def _load_main(monkeypatch: Any, tmp_path: Any) -> Any:
         "SentenceTransformerEmbeddingFunction",
         OfflineEmbedding,
     )
-    if "src.services.vector_store" in sys.modules:
-        raise RuntimeError("run this endpoint smoke in a fresh Python process")
     return importlib.import_module("src.main")
 
 

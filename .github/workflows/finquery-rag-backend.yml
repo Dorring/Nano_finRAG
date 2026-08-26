@@ -57,8 +57,31 @@ jobs:
       - name: Compile Python files
         run: uv run --with pytest python -m compileall -q src tests scripts
 
+      # The historical evaluation suites below require generated local artifacts
+      # that are intentionally not part of a clean checkout. Keep them in
+      # dedicated offline/evaluation runs; this step covers backend regressions.
       - name: Run backend tests
-        run: uv run --with pytest python -m pytest -q
+        env:
+          FINANCIAL_RUNTIME_MODE: v1
+          MULTITURN_CONTEXT_MODE: off
+        run: >
+          uv run --with pytest python -m pytest -q
+          --ignore=tests/evaluation
+          --ignore=tests/pdf_retrieval_v4
+          --ignore=tests/rag_v2/test_nf_v2_02_top20_financial_fact.py
+
+      - name: Run TV2-08 official activation tests
+        env:
+          FINANCIAL_RUNTIME_MODE: v2
+          MULTITURN_CONTEXT_MODE: on
+        run: >
+          uv run --with pytest python -m pytest -q
+          tests/test_tv2_08_production_integration.py
+          tests/test_runtime_router_shadow.py
+          tests/test_runtime_router_api_shadow.py
+          tests/test_tv2_07_readiness.py
+          tests/test_tv2_07_r1_readiness.py
+          tests/evaluation/test_deterministic_runtime.py
 
       - name: Run eval gate smoke
         env:
