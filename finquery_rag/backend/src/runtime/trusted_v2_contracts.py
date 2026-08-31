@@ -15,6 +15,7 @@ from enum import Enum
 from typing import Any, Protocol, runtime_checkable
 
 from .runtime_contract import (
+    ClaimProvenance,
     FinancialQueryRequest,
     ReleaseStatus,
 )
@@ -280,6 +281,7 @@ class V2ExecutionOutcome:
     plan_id: str | None = None
     evidence_packet_id: str | None = None
     calculation_result_id: str | None = None
+    claim_provenance: tuple[ClaimProvenance, ...] = ()
 
     def __post_init__(self) -> None:
         status = _coerce_enum(
@@ -347,6 +349,47 @@ class V2ExecutionOutcome:
                 field_name,
                 _optional_string(getattr(self, field_name), field_name),
             )
+        raw_claims = self.claim_provenance
+        if raw_claims is None:
+            raw_claims = ()
+        if isinstance(raw_claims, (str, bytes)) or not isinstance(
+            raw_claims,
+            Iterable,
+        ):
+            raise TypeError("claim_provenance must be an iterable of mappings")
+        claims: list[ClaimProvenance] = []
+        seen_claim_ids: set[str] = set()
+        for raw_claim in raw_claims:
+            claim = (
+                raw_claim
+                if isinstance(raw_claim, ClaimProvenance)
+                else ClaimProvenance.from_dict(raw_claim)
+                if isinstance(raw_claim, Mapping)
+                else None
+            )
+            if claim is None:
+                raise TypeError(
+                    "each claim_provenance item must be ClaimProvenance or a mapping",
+                )
+            if claim.claim_id in seen_claim_ids:
+                raise ValueError(
+                    f"claim_provenance contains duplicate claim_id: {claim.claim_id}",
+                )
+            seen_claim_ids.add(claim.claim_id)
+            claims.append(claim)
+        expected_claim_release = (
+            ReleaseStatus.RELEASED
+            if status is V2ExecutionStatus.READY_FOR_RELEASE
+            else ReleaseStatus.NOT_RELEASED
+        )
+        if any(
+            claim.release_status is not expected_claim_release for claim in claims
+        ):
+            raise ValueError(
+                f"claim provenance release status must be "
+                f"{expected_claim_release.value} for {status.value}",
+            )
+        object.__setattr__(self, "claim_provenance", tuple(claims))
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -366,6 +409,9 @@ class V2ExecutionOutcome:
             "plan_id": self.plan_id,
             "evidence_packet_id": self.evidence_packet_id,
             "calculation_result_id": self.calculation_result_id,
+            "claim_provenance": [
+                claim.to_dict() for claim in self.claim_provenance
+            ],
         }
 
     @classmethod
@@ -392,6 +438,7 @@ class V2ExecutionOutcome:
             plan_id=value.get("plan_id"),
             evidence_packet_id=value.get("evidence_packet_id"),
             calculation_result_id=value.get("calculation_result_id"),
+            claim_provenance=value.get("claim_provenance"),
         )
 
     def to_json(self) -> str:
@@ -426,6 +473,7 @@ class TrustedV2ExecutionCoordinator(Protocol):
 
 __all__ = [
     "TrustedV2ExecutionCoordinator",
+    "ClaimProvenance",
     "V2ExecutionOutcome",
     "V2ExecutionRequest",
     "V2ExecutionStatus",

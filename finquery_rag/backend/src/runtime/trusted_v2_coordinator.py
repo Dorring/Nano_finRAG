@@ -47,6 +47,7 @@ from .trusted_v2_contracts import (
     V2ExecutionRequest,
     V2ExecutionStatus,
 )
+from .trusted_v2_provenance import build_claim_provenance
 
 
 def _stable_unique(values: Iterable[str]) -> list[str]:
@@ -118,6 +119,7 @@ class V2ExecutionTrace:
     release_decision: str | None = None
     release_status: str | None = None
     semantic_alignment: dict[str, Any] | None = None
+    claim_provenance: tuple[dict[str, Any], ...] = ()
 
     @classmethod
     def from_state(
@@ -129,6 +131,7 @@ class V2ExecutionTrace:
         reason_codes: Iterable[str],
         capability_trace: Mapping[str, Any] | None = None,
         semantic_alignment: Mapping[str, Any] | None = None,
+        claim_provenance: Iterable[Mapping[str, Any]] = (),
     ) -> "V2ExecutionTrace":
         no_progress_count = int(state.stop_reason == ReasonCode.NO_PROGRESS.value)
         capability_trace = capability_trace or {}
@@ -254,6 +257,7 @@ class V2ExecutionTrace:
                 if isinstance(semantic_alignment, Mapping)
                 else None
             ),
+            claim_provenance=tuple(copy.deepcopy(dict(item)) for item in claim_provenance),
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -306,6 +310,7 @@ class V2ExecutionTrace:
                 if self.semantic_alignment is not None
                 else None
             ),
+            "claim_provenance": copy.deepcopy(list(self.claim_provenance)),
         }
 
 
@@ -520,6 +525,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         reason_codes: Iterable[str],
         terminal_state: str,
         semantic_alignment: Mapping[str, Any] | None = None,
+        claim_provenance: Iterable[Mapping[str, Any]] = (),
     ) -> V2ExecutionTrace:
         capability_trace = self._capability_trace()
         if state is not None:
@@ -530,6 +536,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 reason_codes=reason_codes,
                 capability_trace=capability_trace,
                 semantic_alignment=semantic_alignment,
+                claim_provenance=claim_provenance,
             )
         return V2ExecutionTrace(
             request_id=request.request_id,
@@ -552,6 +559,9 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 copy.deepcopy(dict(semantic_alignment))
                 if isinstance(semantic_alignment, Mapping)
                 else None
+            ),
+            claim_provenance=tuple(
+                copy.deepcopy(dict(item)) for item in claim_provenance
             ),
         )
 
@@ -1017,7 +1027,26 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         terminal_state: str,
     ) -> V2ExecutionOutcome:
         reason_list = _stable_unique(reason_codes)
+        evidence_id_list = _stable_unique(evidence_ids)
+        citation_id_list = _stable_unique(citation_ids)
         calculation_id_list = _stable_unique(calculation_ids)
+        release_status = (
+            ReleaseStatus.RELEASED
+            if status is V2ExecutionStatus.READY_FOR_RELEASE
+            else ReleaseStatus.NOT_RELEASED
+        )
+        claim_provenance = tuple(
+            claim.to_dict()
+            for claim in build_claim_provenance(
+                plan=plan,
+                state=state,
+                evidence_ids=evidence_id_list,
+                citation_ids=citation_id_list,
+                calculation_ids=calculation_id_list,
+                release_status=release_status,
+                validator_status=validator_status,
+            )
+        )
         alignment_metadata: Mapping[str, Any] | None = semantic_alignment
         if alignment_metadata is None and state is not None and isinstance(
             state.plan,
@@ -1039,17 +1068,13 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             reason_list,
             terminal_state,
             semantic_alignment=alignment_metadata,
-        )
-        release_status = (
-            ReleaseStatus.RELEASED
-            if status is V2ExecutionStatus.READY_FOR_RELEASE
-            else ReleaseStatus.NOT_RELEASED
+            claim_provenance=claim_provenance,
         )
         return V2ExecutionOutcome(
             status=status,
             answer=answer,
-            evidence_ids=_stable_unique(evidence_ids),
-            citation_ids=_stable_unique(citation_ids),
+            evidence_ids=evidence_id_list,
+            citation_ids=citation_id_list,
             reason_codes=reason_list,
             release_status=release_status,
             route=route or (plan.intent.value if plan is not None else None),
@@ -1084,6 +1109,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             ),
             debug_metadata={"trace": trace.to_dict()},
             plan_id=plan_id,
+            claim_provenance=claim_provenance,
         )
 
     async def execute(
