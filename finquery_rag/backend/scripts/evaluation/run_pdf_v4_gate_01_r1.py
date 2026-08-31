@@ -21,11 +21,36 @@ from typing import Any, Iterable
 
 
 ROOT = Path(__file__).resolve().parents[2]
+
+
+def _find_shared_nanochat_root(root: Path) -> Path:
+    """Find the repository root without assuming a fixed checkout depth.
+
+    Historical evaluation scripts ran from a deeper shared server checkout and
+    used ROOT.parents[4]. A normal GitHub checkout is shallower, so that
+    indexing raises during test collection before the evaluation is even run.
+    Keep the old layout working when present and use the canonical repository
+    root for the local/CI layout.
+    """
+
+    for candidate in (root, *root.parents):
+        if (
+            (candidate / "pyproject.toml").is_file()
+            and (candidate / "finquery_rag").is_dir()
+        ):
+            return candidate
+    return root
+
+
+SHARED_NANOCHAT_ROOT = _find_shared_nanochat_root(ROOT)
 DEFAULT_PROBE = ROOT / "artifacts/evaluation/pdf-retrieval-v4-gate-01"
 DEFAULT_ORACLE = ROOT / "artifacts/evaluation/nf-opt-08-r2/manual-mapping-review-package.json"
 DEFAULT_OUT = ROOT / "artifacts/evaluation/pdf-retrieval-v4-gate-01-r1"
-DEFAULT_RUNTIME = ROOT.parents[4] / ".runtime/pdf-retrieval-v4-gate-01"
-DEFAULT_PDF_ROOT = ROOT.parents[3] / "backend/runtime/benchmark/financial_rag_v1/review-package/pdfs"
+DEFAULT_RUNTIME = SHARED_NANOCHAT_ROOT / ".runtime/pdf-retrieval-v4-gate-01"
+DEFAULT_PDF_ROOT = (
+    SHARED_NANOCHAT_ROOT
+    / "finquery_rag/backend/runtime/benchmark/financial_rag_v1/review-package/pdfs"
+)
 
 ORIGINAL_METRICS = {
     "hybrid_high": {"numeric": [10, 22], "scale": [18, 22]},

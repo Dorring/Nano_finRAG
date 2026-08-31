@@ -23,8 +23,14 @@ A V2 deployment must provide a real factory through
 configure_trusted_v2_runtime_builder(...) or the
 TRUSTED_V2_RUNTIME_BUILDER=module:callable deployment setting. The selected
 factory must return TrustedFinancialRuntimeV2; a missing or invalid factory
-is a configuration error. The router never constructs a fake runtime and
-never silently falls back to V1.
+is a configuration error. The canonical in-repository factory is
+`src.runtime.trusted_v2_production:build_trusted_v2_runtime_for_request`.
+It validates and loads the provisioned R4 four-lane index, structured fact
+registry, Supervisor/Binder providers, and Specialist checkpoint; those
+assets remain deployment inputs and are not bundled in a fresh clone. The
+router never constructs a fake runtime and never silently falls back to V1.
+See [the production builder contract](trusted-runtime-v2-production-builder.md)
+for the complete asset and preflight requirements.
 
 ## Shared request path
 

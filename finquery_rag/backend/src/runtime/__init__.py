@@ -87,6 +87,15 @@ from .trusted_v2_contracts import (
     V2ExecutionStatus,
 )
 from .trusted_v2_coordinator import BoundedTrustedV2Coordinator, V2ExecutionTrace
+from .trusted_v2_production import (
+    StructuredFactStore,
+    TrustedV2ProductionConfigurationError,
+    TrustedV2RuntimeResources,
+    build_trusted_v2_runtime_for_request,
+    clear_trusted_v2_production_cache,
+    inspect_r4_index,
+    validate_trusted_v2_production_configuration,
+)
 
 __all__ = [
     "ClarificationPayload",
@@ -154,5 +163,12 @@ __all__ = [
     "V2ExecutionStatus",
     "BoundedTrustedV2Coordinator",
     "V2ExecutionTrace",
+    "StructuredFactStore",
+    "TrustedV2ProductionConfigurationError",
+    "TrustedV2RuntimeResources",
+    "build_trusted_v2_runtime_for_request",
+    "clear_trusted_v2_production_cache",
+    "inspect_r4_index",
+    "validate_trusted_v2_production_configuration",
     "to_legacy_query_dict",
 ]
