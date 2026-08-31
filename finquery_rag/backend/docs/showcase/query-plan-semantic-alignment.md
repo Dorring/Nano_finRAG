@@ -43,7 +43,10 @@ The pre-retrieval gate rejects explicit metric, period, operation, or optional
 entity/scope contradictions.  Multiple explicit targets that cannot be
 represented by the plan are `AMBIGUOUS`, not silently reduced to one target.
 Derived comparison periods remain valid: a plan may add the prior period when
-the query names only the current period.
+the query names only the current period.  When the Conversation layer has
+already authorized a semantic expectation, the gate cross-checks the plan
+against that metric/period/entity/scope as a second independent signal.  It
+does not use that context to invent a missing value.
 
 The post-Binder gate independently checks admitted facts against their bound
 slots and the explicit query.  Retrieval candidates are not treated as
@@ -63,6 +66,16 @@ metric is unknown, explicit periods and operations are still checked.
 The policy and both gate decisions are emitted in runtime metadata and the
 structured trace, making a fail-closed decision auditable without answer-text
 parsing, retrieval heuristics, or another model call.
+
+## Claim-level provenance
+
+After the Binder has admitted evidence, V2 derives a typed
+`ClaimProvenance` record for each bound required slot and each structured
+calculation.  Each record links `claim_id` to required slot IDs,
+Binder-admitted evidence IDs, citation IDs, calculation IDs, and the final
+release/validator status.  Retrieval-only candidates are excluded, and the
+generated answer is never an input to this derivation.  This preserves the
+distinction between a candidate answer and a released, auditable claim.
 
 ## Contract boundary
 

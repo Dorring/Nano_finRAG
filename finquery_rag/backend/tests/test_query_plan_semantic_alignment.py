@@ -19,6 +19,7 @@ from rag_v2.supervisor import (
     canonical_metric_id,
     canonical_period_id,
     extract_query_semantic_frame,
+    metric_alias_registry,
 )
 from src.runtime import V2ExecutionRequest, V2ExecutionStatus
 from src.runtime.trusted_v2_capabilities import TrustedV2CapabilityPorts
@@ -73,6 +74,16 @@ def test_canonical_metric_vocabulary_keeps_operating_and_net_income_distinct() -
         "What was Apple FY2024 operating income?",
     )
     assert frame.metric_ids == ("operating_income",)
+
+
+def test_metric_ontology_is_shared_and_returns_a_defensive_copy() -> None:
+    registry = metric_alias_registry()
+    assert "operating_income" in registry
+    assert "operating income" in registry["operating_income"]
+    assert "net income" in registry["net_income"]
+    assert "net income" not in registry["operating_income"]
+    registry["operating_income"] = ("incorrect alias",)
+    assert canonical_metric_id("operating income") == "operating_income"
 
 
 def test_period_vocabulary_is_normalized_without_changing_plan_contract() -> None:
@@ -357,6 +368,26 @@ def test_optional_entity_expectation_rejects_topic_mismatch() -> None:
     assert canonical_entity_id("AAPL") == "aapl"
     assert result.status is SemanticAlignmentStatus.MISMATCH
     assert "query_entity_not_expected:msft" in result.mismatches
+
+
+def test_authorized_metric_and_period_expectations_reject_plan_drift() -> None:
+    result = align_query_to_plan(
+        "What was Apple FY2024 revenue?",
+        _plan("net income", period="FY2023"),
+        semantic_context={
+            "resolved_metric": "Revenue",
+            "resolved_period": "FY2024",
+        },
+    )
+
+    assert result.status is SemanticAlignmentStatus.MISMATCH
+    assert result.expected_metric_ids == ("revenue",)
+    assert result.expected_period_ids == ("FY2024",)
+    assert "planned_metric_not_expected:net_income" in result.mismatches
+    assert "planned_period_not_expected:FY2023" in result.mismatches
+    payload = result.to_dict()
+    assert payload["expected_metric_ids"] == ["revenue"]
+    assert payload["expected_period_ids"] == ["FY2024"]
 
 
 def test_bound_evidence_cross_check_rejects_wrong_metric_and_entity() -> None:

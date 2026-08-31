@@ -91,6 +91,16 @@ def _normalize_string_list(
     return normalized
 
 
+def _normalize_unique_string_tuple(
+    value: Iterable[Any] | None,
+    field_name: str,
+) -> tuple[str, ...]:
+    """Normalize IDs once while preserving first-seen order."""
+
+    normalized = _normalize_string_list(value, field_name)
+    return tuple(dict.fromkeys(normalized))
+
+
 def _normalize_citations(
     value: Iterable[Mapping[str, Any]] | None,
 ) -> list[dict[str, Any]]:
@@ -213,6 +223,85 @@ class RuntimeMetadata:
             implementation=value.get("implementation"),
             config_version=value.get("config_version"),
             attributes=value.get("attributes"),
+        )
+
+
+@dataclass(frozen=True)
+class ClaimProvenance:
+    """Structured lineage for one released or rejected semantic claim.
+
+    This contract deliberately contains identifiers and validation metadata,
+    never answer text or extracted numeric values.  A claim can therefore be
+    traced from the Supervisor's required slots to Binder-admitted evidence
+    and deterministic calculation results without making the generated answer
+    an evidence source.
+    """
+
+    claim_id: str
+    required_slot_ids: tuple[str, ...] = ()
+    bound_evidence_ids: tuple[str, ...] = ()
+    citation_ids: tuple[str, ...] = ()
+    calculation_ids: tuple[str, ...] = ()
+    release_status: ReleaseStatus = ReleaseStatus.NOT_RELEASED
+    validator_status: str | None = None
+
+    def __post_init__(self) -> None:
+        object.__setattr__(
+            self,
+            "claim_id",
+            _require_non_empty_string(self.claim_id, "claim_id"),
+        )
+        for field_name in (
+            "required_slot_ids",
+            "bound_evidence_ids",
+            "citation_ids",
+            "calculation_ids",
+        ):
+            object.__setattr__(
+                self,
+                field_name,
+                _normalize_unique_string_tuple(
+                    getattr(self, field_name),
+                    field_name,
+                ),
+            )
+        object.__setattr__(
+            self,
+            "release_status",
+            _coerce_enum(self.release_status, ReleaseStatus, "release_status"),
+        )
+        object.__setattr__(
+            self,
+            "validator_status",
+            _optional_string(self.validator_status, "validator_status"),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "claim_id": self.claim_id,
+            "required_slot_ids": list(self.required_slot_ids),
+            "bound_evidence_ids": list(self.bound_evidence_ids),
+            "citation_ids": list(self.citation_ids),
+            "calculation_ids": list(self.calculation_ids),
+            "release_status": self.release_status.value,
+            "validator_status": self.validator_status,
+        }
+
+    @classmethod
+    def from_dict(cls, value: Mapping[str, Any]) -> "ClaimProvenance":
+        if not isinstance(value, Mapping):
+            raise TypeError("claim provenance must be a mapping")
+        return cls(
+            claim_id=value.get("claim_id"),
+            required_slot_ids=value.get("required_slot_ids"),
+            bound_evidence_ids=value.get("bound_evidence_ids"),
+            citation_ids=value.get("citation_ids"),
+            calculation_ids=value.get("calculation_ids"),
+            release_status=value.get(
+                "release_status",
+                ReleaseStatus.NOT_RELEASED,
+            ),
+            validator_status=value.get("validator_status"),
         )
 
 
@@ -347,6 +436,7 @@ class FinancialQueryResult:
     latency_metadata: dict[str, Any] = field(default_factory=dict)
     debug_metadata: dict[str, Any] = field(default_factory=dict)
     runtime_metadata: RuntimeMetadata | None = None
+    claim_provenance: tuple[ClaimProvenance, ...] = ()
 
     def __post_init__(self) -> None:
         status = _coerce_enum(self.status, RuntimeStatus, "status")
@@ -427,6 +517,49 @@ class FinancialQueryResult:
             "debug_metadata",
             _copy_mapping(self.debug_metadata, "debug_metadata"),
         )
+        raw_claims = self.claim_provenance
+        if raw_claims is None:
+            raw_claims = ()
+        if isinstance(raw_claims, (str, bytes)) or not isinstance(
+            raw_claims,
+            Iterable,
+        ):
+            raise TypeError("claim_provenance must be an iterable of mappings")
+        claims: list[ClaimProvenance] = []
+        seen_claim_ids: set[str] = set()
+        for raw_claim in raw_claims:
+            claim = (
+                raw_claim
+                if isinstance(raw_claim, ClaimProvenance)
+                else ClaimProvenance.from_dict(raw_claim)
+                if isinstance(raw_claim, Mapping)
+                else None
+            )
+            if claim is None:
+                raise TypeError(
+                    "each claim_provenance item must be ClaimProvenance or a mapping",
+                )
+            if claim.claim_id in seen_claim_ids:
+                raise ValueError(
+                    f"claim_provenance contains duplicate claim_id: {claim.claim_id}",
+                )
+            seen_claim_ids.add(claim.claim_id)
+            claims.append(claim)
+        if claims and runtime_version is RuntimeVersion.V2:
+            expected_claim_release = (
+                ReleaseStatus.RELEASED
+                if status is RuntimeStatus.ANSWER
+                else ReleaseStatus.NOT_RELEASED
+            )
+            if any(
+                claim.release_status is not expected_claim_release
+                for claim in claims
+            ):
+                raise ValueError(
+                    f"claim provenance release status must be "
+                    f"{expected_claim_release.value} for {status.value}",
+                )
+        object.__setattr__(self, "claim_provenance", tuple(claims))
         if self.runtime_metadata is not None and isinstance(
             self.runtime_metadata,
             Mapping,
@@ -459,6 +592,9 @@ class FinancialQueryResult:
             "release_status": self.release_status.value,
             "latency_metadata": copy.deepcopy(self.latency_metadata),
             "debug_metadata": copy.deepcopy(self.debug_metadata),
+            "claim_provenance": [
+                claim.to_dict() for claim in self.claim_provenance
+            ],
             "runtime_metadata": (
                 None
                 if self.runtime_metadata is None
@@ -488,6 +624,7 @@ class FinancialQueryResult:
             latency_metadata=value.get("latency_metadata"),
             debug_metadata=value.get("debug_metadata"),
             runtime_metadata=value.get("runtime_metadata"),
+            claim_provenance=value.get("claim_provenance"),
         )
 
     def to_json(self) -> str:

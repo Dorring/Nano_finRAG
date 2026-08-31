@@ -16,6 +16,7 @@ from .response_mapper import (
     to_legacy_query_dict,
 )
 from .runtime_contract import (
+    ClaimProvenance,
     ClarificationPayload,
     FinancialQARuntime,
     FinancialQueryRequest,
@@ -87,6 +88,7 @@ from .trusted_v2_contracts import (
     V2ExecutionStatus,
 )
 from .trusted_v2_coordinator import BoundedTrustedV2Coordinator, V2ExecutionTrace
+from .trusted_v2_provenance import build_claim_provenance
 from .trusted_v2_production import (
     StructuredFactStore,
     TrustedV2ProductionConfigurationError,
@@ -99,6 +101,7 @@ from .trusted_v2_production import (
 
 __all__ = [
     "ClarificationPayload",
+    "ClaimProvenance",
     "FinancialQARuntime",
     "FinancialQueryRequest",
     "FinancialQueryResult",
@@ -163,6 +166,7 @@ __all__ = [
     "V2ExecutionStatus",
     "BoundedTrustedV2Coordinator",
     "V2ExecutionTrace",
+    "build_claim_provenance",
     "StructuredFactStore",
     "TrustedV2ProductionConfigurationError",
     "TrustedV2RuntimeResources",

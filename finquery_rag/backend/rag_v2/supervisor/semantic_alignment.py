@@ -65,6 +65,20 @@ class MetricMention:
 
 
 @dataclass(frozen=True)
+class MetricDefinition:
+    """One canonical metric concept and its explicitly equivalent aliases.
+
+    Keeping the ontology explicit is intentional. A schema can validate that
+    ``net income`` is a legal value, but only this registry can state that it
+    is not equivalent to ``operating income``. The same registry is used by
+    query extraction and plan normalization so they cannot silently drift.
+    """
+
+    metric_id: str
+    aliases: tuple[str, ...]
+
+
+@dataclass(frozen=True)
 class PeriodMention:
     """One explicit period expression normalized to a stable period ID."""
 
@@ -182,6 +196,8 @@ class PlanSemanticAlignment:
     query_entity_ids: tuple[str, ...] = ()
     query_operation_ids: tuple[str, ...] = ()
     query_scope_ids: tuple[str, ...] = ()
+    expected_metric_ids: tuple[str, ...] = ()
+    expected_period_ids: tuple[str, ...] = ()
     expected_entity_ids: tuple[str, ...] = ()
     expected_scope_ids: tuple[str, ...] = ()
     ambiguous_query_fields: tuple[str, ...] = ()
@@ -247,6 +263,8 @@ class PlanSemanticAlignment:
             "query_entity_ids": list(self.query_entity_ids),
             "query_operation_ids": list(self.query_operation_ids),
             "query_scope_ids": list(self.query_scope_ids),
+            "expected_metric_ids": list(self.expected_metric_ids),
+            "expected_period_ids": list(self.expected_period_ids),
             "expected_entity_ids": list(self.expected_entity_ids),
             "expected_scope_ids": list(self.expected_scope_ids),
             "ambiguous_query_fields": list(self.ambiguous_query_fields),
@@ -289,17 +307,11 @@ class BoundEvidenceSemanticCheck:
         }
 
 
-@dataclass(frozen=True)
-class _MetricDefinition:
-    metric_id: str
-    aliases: tuple[str, ...]
-
-
 # Keep this vocabulary intentionally small and explicit.  Aliases are only
 # added when the business meaning is equivalent; notably, operating income
 # and net income are separate metrics and must never be aliases.
-_METRIC_DEFINITIONS: tuple[_MetricDefinition, ...] = (
-    _MetricDefinition(
+_METRIC_DEFINITIONS: tuple[MetricDefinition, ...] = (
+    MetricDefinition(
         "operating_income",
         (
             "operating income",
@@ -311,7 +323,7 @@ _METRIC_DEFINITIONS: tuple[_MetricDefinition, ...] = (
             "营业收益",
         ),
     ),
-    _MetricDefinition(
+    MetricDefinition(
         "net_income",
         (
             "net income",
@@ -322,7 +334,7 @@ _METRIC_DEFINITIONS: tuple[_MetricDefinition, ...] = (
             "归母净利润",
         ),
     ),
-    _MetricDefinition(
+    MetricDefinition(
         "revenue",
         (
             "total revenue",
@@ -337,7 +349,7 @@ _METRIC_DEFINITIONS: tuple[_MetricDefinition, ...] = (
             "净销售额",
         ),
     ),
-    _MetricDefinition(
+    MetricDefinition(
         "operating_margin",
         (
             "operating margin",
@@ -346,7 +358,7 @@ _METRIC_DEFINITIONS: tuple[_MetricDefinition, ...] = (
             "经营利润率",
         ),
     ),
-    _MetricDefinition(
+    MetricDefinition(
         "net_margin",
         (
             "net margin",
@@ -355,27 +367,27 @@ _METRIC_DEFINITIONS: tuple[_MetricDefinition, ...] = (
             "净利润率",
         ),
     ),
-    _MetricDefinition(
+    MetricDefinition(
         "gross_profit",
         ("gross profit", "毛利润", "毛利"),
     ),
-    _MetricDefinition(
+    MetricDefinition(
         "gross_margin",
         ("gross margin", "gross profit margin", "毛利率"),
     ),
-    _MetricDefinition(
+    MetricDefinition(
         "ebitda",
         ("ebitda", "息税折旧摊销前利润"),
     ),
-    _MetricDefinition(
+    MetricDefinition(
         "assets",
         ("total assets", "assets", "总资产", "资产"),
     ),
-    _MetricDefinition(
+    MetricDefinition(
         "liabilities",
         ("total liabilities", "liabilities", "总负债", "负债"),
     ),
-    _MetricDefinition(
+    MetricDefinition(
         "cost_of_revenue",
         (
             "cost of revenue",
@@ -606,6 +618,21 @@ def canonical_metric_id(value: Any) -> str | None:
     return None
 
 
+def metric_alias_registry() -> Mapping[str, tuple[str, ...]]:
+    """Return a copy of the explicit metric ontology used by the gate.
+
+    Callers may use this for audits or contract fixtures, but mutating the
+    returned mapping cannot change runtime behavior.  New aliases must be
+    reviewed as semantic equivalences; they are never learned from retrieval
+    results or generated answer text.
+    """
+
+    return {
+        definition.metric_id: tuple(definition.aliases)
+        for definition in _METRIC_DEFINITIONS
+    }
+
+
 def _canonical_vocabulary_id(
     value: Any,
     index: tuple[tuple[str, str], ...],
@@ -745,8 +772,9 @@ def align_query_to_plan(
     The gate rejects only deterministic contradictions.  If no recognized
     metric is present in the query, it returns ``UNKNOWN`` and leaves existing
     generic/operation-only queries backwards compatible.  Optional semantic
-    context may provide an already-authorized expected entity or scope; it is
-    never inferred from a candidate or from the answer.
+    context may provide already-authorized expected metric, period, entity, or
+    scope expectations; it is never inferred from a candidate or from the
+    answer.
     """
 
     if not isinstance(plan, SupervisorPlan):
@@ -783,6 +811,16 @@ def align_query_to_plan(
         keys=("entity", "resolved_entity", "active_entity"),
         canonicalizer=canonical_entity_id,
     )
+    expected_metric_ids = _expected_vocabulary_ids(
+        semantic_context,
+        keys=("metric", "resolved_metric", "active_metric"),
+        canonicalizer=canonical_metric_id,
+    )
+    expected_period_ids = _expected_vocabulary_ids(
+        semantic_context,
+        keys=("period", "resolved_period", "active_period"),
+        canonicalizer=canonical_period_id,
+    )
     expected_scope_ids = _expected_vocabulary_ids(
         semantic_context,
         keys=("scope", "resolved_scope", "active_scope"),
@@ -809,6 +847,27 @@ def align_query_to_plan(
             for metric_id in plan_metric_ids_tuple:
                 if metric_id not in query_set:
                     mismatches.append(f"planned_metric_not_in_query:{metric_id}")
+
+    # A caller may provide an already-authorized semantic expectation from the
+    # Conversation layer.  This is deliberately a cross-check, not a source
+    # of inferred values: explicit query semantics must agree with the
+    # expectation, and the Supervisor plan must target the same concept.  The
+    # intersection rule still permits a calculation plan to include a derived
+    # result metric alongside its operand metrics.
+    if expected_metric_ids:
+        expected_metric_set = set(expected_metric_ids)
+        if query_metric_ids and not (set(query_metric_ids) & expected_metric_set):
+            mismatches.extend(
+                f"query_metric_not_expected:{metric_id}"
+                for metric_id in query_metric_ids
+            )
+        if plan_metric_ids_tuple and not (
+            set(plan_metric_ids_tuple) & expected_metric_set
+        ):
+            mismatches.extend(
+                f"planned_metric_not_expected:{metric_id}"
+                for metric_id in plan_metric_ids_tuple
+            )
     if len(query_metric_ids) > 1 and query_set != plan_set:
         ambiguous_query_fields.append("metric")
     if unknown_plan_metrics:
@@ -831,6 +890,24 @@ def align_query_to_plan(
             f"unrecognized_plan_period:{period}"
             for period in dict.fromkeys(unknown_plan_periods)
         )
+
+    if expected_period_ids:
+        expected_period_set = set(expected_period_ids)
+        if query_period_ids and not (set(query_period_ids) & expected_period_set):
+            mismatches.extend(
+                f"query_period_not_expected:{period_id}"
+                for period_id in query_period_ids
+            )
+        # Comparison/growth plans can contain an inferred prior period.  Only
+        # require that at least one plan period matches the authorized
+        # expectation; do not reject the derived companion period.
+        if plan_period_ids_tuple and not (
+            set(plan_period_ids_tuple) & expected_period_set
+        ):
+            mismatches.extend(
+                f"planned_period_not_expected:{period_id}"
+                for period_id in plan_period_ids_tuple
+            )
 
     if len(query_operation_ids) > 1:
         ambiguous_query_fields.append("operation")
@@ -885,6 +962,8 @@ def align_query_to_plan(
         query_entity_ids=query_entity_ids,
         query_operation_ids=query_operation_ids,
         query_scope_ids=query_scope_ids,
+        expected_metric_ids=expected_metric_ids,
+        expected_period_ids=expected_period_ids,
         expected_entity_ids=expected_entity_ids,
         expected_scope_ids=expected_scope_ids,
         ambiguous_query_fields=tuple(dict.fromkeys(ambiguous_query_fields)),
@@ -1061,6 +1140,7 @@ __all__ = [
     "BoundEvidenceSemanticCheck",
     "EntityMention",
     "MetricMention",
+    "MetricDefinition",
     "OperationMention",
     "PeriodMention",
     "PlanSemanticAlignment",
@@ -1071,6 +1151,7 @@ __all__ = [
     "align_bound_evidence_to_query",
     "canonical_entity_id",
     "canonical_metric_id",
+    "metric_alias_registry",
     "canonical_operation_id",
     "canonical_period_id",
     "canonical_scope_id",
