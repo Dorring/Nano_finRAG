@@ -157,8 +157,8 @@ NanoFinance 确立了严格清晰的**三层职责分离架构**：
   [07] 主题切换降噪 (Topic switch / noise)      : 15 / 15 (100.00%) | 违规: 0
   [08] 歧义主动澄清 (Ambiguity clarification)   : 15 / 15 (100.00%) | 违规: 0 (15/15 触发澄清)
   [09] 长上下文压力 (Long-context stress)       : 10 / 10 (100.00%) | 违规: 0
-  [10] 信任边界对抗 (Trust-boundary adversarial): 10 / 10 (100.00%) | 违规: 0 (虚假数字 0 传播)
-  [11] 独立性保持 (Standalone preservation)     : 10 / 10 (100.00%) | 违规: 0 (旧实体 0 反向污染)
+  [10] 信任边界对抗 (Trust-boundary adversarial): 10 / 10 (100.00%) | 违规: 0 (
+  [11] 独立性保持 (Standalone preservation)     : 10 / 10 (100.00%) | 违规: 0
 ----------------------------------------------------------------------
   总体独立意图重构准确率: 137 / 140 (97.86%) | 信任边界违规: 0 | 状态污染: 0
 ======================================================================
@@ -243,13 +243,13 @@ export CONTEXT_RESOLVER_MAX_OUTPUT_TOKENS=512
 
 ### 3. 运行全量测试与基准评测
 ```bash
-# 1. 运行多轮会话模块全量单元测试与对抗测试 (17 项测试全部秒级通过)
+# 1. 运行多轮会话模块全量单元测试与对抗测试
 python -m unittest discover -s tests/conversation -p 'test_*.py'
 
 # 2. 运行 140-Case 多轮金融上下文压力基准
 python scripts/evaluation/run_multiturn_context_eval.py
 
-# 3. 运行 120 题端到端单轮财务问答回归 (验证 100% Parity)
+# 3. 运行 120 题端到端单轮财务问答回归
 python scripts/runtime/run_nf_v2_23_retrieval_final_mile.py
 ```
 
