@@ -12,6 +12,10 @@ from rag_v2.adaptive import (
 from rag_v2.contracts.evidence import BindingStatus
 from rag_v2.contracts.plan import Intent, SupervisorPlan
 from rag_v2.evidence.binder_service import BinderRequest, BinderRun, SemanticBinderService
+from rag_v2.supervisor import (
+    BoundEvidenceSemanticCheck,
+    align_bound_evidence_to_query,
+)
 
 
 class SemanticBinderCapabilityError(RuntimeError):
@@ -52,6 +56,7 @@ class SemanticEvidenceEvaluationCapability:
         self.last_bound_evidence_ids: tuple[str, ...] = ()
         self.last_citation_ids: tuple[str, ...] = ()
         self.last_bound_slot_bindings: dict[str, tuple[str, ...]] = {}
+        self.last_semantic_check: BoundEvidenceSemanticCheck | None = None
         self._trace: list[dict[str, Any]] = []
 
     @staticmethod
@@ -128,11 +133,57 @@ class SemanticEvidenceEvaluationCapability:
         run = self.binder.bind(request)
         self.last_run = run
         status = getattr(run.binding.status, "value", str(run.binding.status))
+        self.last_semantic_check = None
         if status == BindingStatus.BOUND.value:
             if not run.validation.passed:
                 raise SemanticBinderCapabilityError(
                     "bound_evidence_failed_structural_validation"
                 )
+            semantic_check = align_bound_evidence_to_query(
+                state.normalized_query,
+                plan,
+                facts,
+                run.binding.slot_bindings,
+                selected_fact_ids=run.validation.selected_fact_ids,
+            )
+            self.last_semantic_check = semantic_check
+            if not semantic_check.allowed:
+                self.last_bound_evidence_ids = ()
+                self.last_bound_slot_bindings = {}
+                self.last_citation_ids = ()
+                evaluation = EvidenceEvaluationV1(
+                    decision=EvidenceDecision.TERMINAL_INSUFFICIENT,
+                    reason_codes=(ReasonCode.QUERY_EVIDENCE_SEMANTIC_MISMATCH,),
+                    requested_slots=tuple(
+                        slot.slot_id for slot in plan.required_slots
+                    ),
+                    supported_slots=(),
+                    missing_slots=tuple(
+                        slot.slot_id for slot in plan.required_slots
+                    ),
+                    conflicts=tuple(
+                        {"reason": reason}
+                        for reason in semantic_check.mismatches
+                    ),
+                    temporal_status="SEMANTIC_MISMATCH",
+                    calculation_ready=False,
+                )
+                self._trace.append(
+                    {
+                        "round": self.calls - 1,
+                        "status": status,
+                        "bound_slot_ids": [],
+                        "missing_slot_ids": [
+                            slot.slot_id for slot in plan.required_slots
+                        ],
+                        "ambiguous_slot_ids": [],
+                        "bound_evidence_ids": [],
+                        "reason_codes": [item.value for item in evaluation.reason_codes],
+                        "selected_fact_ids": list(run.validation.selected_fact_ids),
+                        "semantic_check": semantic_check.to_dict(),
+                    }
+                )
+                return evaluation
             selected = _stable_unique(run.validation.selected_fact_ids)
             self.last_bound_evidence_ids = selected
             self.last_bound_slot_bindings = {
@@ -239,6 +290,11 @@ class SemanticEvidenceEvaluationCapability:
                 "bound_evidence_ids": list(self.last_bound_evidence_ids),
                 "reason_codes": [item.value for item in evaluation.reason_codes],
                 "selected_fact_ids": list(run.validation.selected_fact_ids),
+                "semantic_check": (
+                    self.last_semantic_check.to_dict()
+                    if self.last_semantic_check is not None
+                    else None
+                ),
             }
         )
         return evaluation
@@ -272,6 +328,11 @@ class SemanticEvidenceEvaluationCapability:
             "bound_slot_bindings": {
                 key: list(value) for key, value in self.last_bound_slot_bindings.items()
             },
+            "semantic_checks": [
+                item.get("semantic_check")
+                for item in records
+                if item.get("semantic_check") is not None
+            ],
             "binder_rounds": records,
         }
 

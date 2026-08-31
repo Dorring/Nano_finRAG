@@ -214,6 +214,37 @@ class SelectingBinderProvider:
         return BinderProviderResult(binding=binding, metadata=metadata)
 
 
+class StructurallyValidWrongMetricProvider:
+    """Deliberately binds a wrong-metric fact to exercise the semantic firewall."""
+
+    provider_name = "fixture"
+    model_name = "deterministic-wrong-metric"
+    last_call = None
+
+    def __init__(self) -> None:
+        self.calls = 0
+
+    def bind(self, request: Mapping[str, Any]) -> BinderProviderResult:
+        self.calls += 1
+        slot_id = str(request["required_slots"][0]["slot_id"])
+        fact_id = str(request["financial_facts"][0]["fact_id"])
+        binding = EvidenceBinding(
+            status=BindingStatus.BOUND.value,
+            slot_bindings={slot_id: (fact_id,)},
+        )
+        metadata = BinderCallMetadata(
+            provider=self.provider_name,
+            model=self.model_name,
+            provider_role="evidence_binder",
+            model_role="deterministic_fixture",
+            latency_ms=0.1,
+            provider_response_success=True,
+            structured_output_success=True,
+        )
+        self.last_call = metadata
+        return BinderProviderResult(binding=binding, metadata=metadata)
+
+
 class AmbiguousBinderProvider(SelectingBinderProvider):
     def bind(self, request: Mapping[str, Any]) -> BinderProviderResult:
         self.calls += 1
@@ -331,6 +362,35 @@ def test_real_r4_and_real_binder_one_shot_produce_bound_provenance() -> None:
     assert trace["binder_status_per_round"] == ["BOUND"]
     assert trace["bound_evidence_ids"] == ["E1"]
     assert trace["candidate_ids_per_round"] == [["E1"]]
+
+
+def test_semantic_firewall_rejects_structurally_bound_wrong_metric() -> None:
+    facts = {"E1": _fact("E1", metric="Net Income")}
+    wrong_metric_provider = StructurallyValidWrongMetricProvider()
+    retrieval, binder, policy, reader, _ = _real_capabilities(
+        [["E1"]],
+        facts,
+        wrong_metric_provider,
+    )
+    query = "What was Apple FY2024 operating income?"
+    coordinator = _coordinator(
+        query,
+        _plan(_slot("value", metric="Operating Income")),
+        retrieval,
+        binder,
+    )
+
+    outcome = asyncio.run(coordinator.execute(_request(query)))
+
+    assert policy.calls == 1
+    assert reader.search_calls > 0
+    assert wrong_metric_provider.calls == 1
+    assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
+    assert "QUERY_EVIDENCE_SEMANTIC_MISMATCH" in outcome.reason_codes
+    assert outcome.evidence_ids == []
+    semantic_check = binder.trace_snapshot()["semantic_checks"][0]
+    assert semantic_check["status"] == "MISMATCH"
+    assert "fact_metric_not_matching_slot:E1:value" in semantic_check["mismatches"]
 
 
 def test_wrong_period_drives_real_targeted_recovery() -> None:

@@ -29,7 +29,12 @@ from typing import Any
 
 from rag_v2.adaptive import AdaptiveRAGBudgetV1
 from rag_v2.evidence import BailianBinderProvider, SemanticBinderService
-from rag_v2.supervisor import APIProvider, BailianProvider, SupervisorService
+from rag_v2.supervisor import (
+    APIProvider,
+    BailianProvider,
+    SupervisorService,
+    UnknownSemanticPolicy,
+)
 
 from .runtime_contract import FinancialQueryRequest
 from .trusted_v2_adapter import TrustedFinancialRuntimeV2
@@ -858,6 +863,10 @@ def build_trusted_v2_runtime_for_request(
             resources.supervisor,
             capabilities=capabilities,
             budget=resources.budget,
+            # A production direct-fact request must not proceed when its
+            # metric is not explicitly recognized by the alignment gate.
+            # Generic operation-only calculation prompts remain compatible.
+            unknown_semantic_policy=UnknownSemanticPolicy.STRICT_DIRECT_FACT,
         )
     except TrustedV2ProductionConfigurationError:
         raise

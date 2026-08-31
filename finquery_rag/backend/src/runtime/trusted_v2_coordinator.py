@@ -24,7 +24,14 @@ from rag_v2.adaptive import (
     ToolCapability,
 )
 from rag_v2.contracts.plan import Action, Intent, SupervisorPlan
-from rag_v2.supervisor import SupervisorService, validate_plan_v2_01
+from rag_v2.supervisor import (
+    SemanticAlignmentStatus,
+    SupervisorService,
+    UnknownSemanticPolicy,
+    align_query_to_plan,
+    coerce_unknown_semantic_policy,
+    validate_plan_v2_01,
+)
 
 from .runtime_contract import ReleaseStatus
 from .trusted_v2_capabilities import TrustedV2CapabilityPorts
@@ -110,6 +117,7 @@ class V2ExecutionTrace:
     final_candidate_id: str | None = None
     release_decision: str | None = None
     release_status: str | None = None
+    semantic_alignment: dict[str, Any] | None = None
 
     @classmethod
     def from_state(
@@ -120,6 +128,7 @@ class V2ExecutionTrace:
         state: AdaptiveRAGStateV1,
         reason_codes: Iterable[str],
         capability_trace: Mapping[str, Any] | None = None,
+        semantic_alignment: Mapping[str, Any] | None = None,
     ) -> "V2ExecutionTrace":
         no_progress_count = int(state.stop_reason == ReasonCode.NO_PROGRESS.value)
         capability_trace = capability_trace or {}
@@ -128,6 +137,10 @@ class V2ExecutionTrace:
         calculation = capability_trace.get("calculation", {})
         generation = capability_trace.get("generation", {})
         validation = capability_trace.get("validation", {})
+        if semantic_alignment is None and isinstance(state.plan, Mapping):
+            state_alignment = state.plan.get("semantic_alignment")
+            if isinstance(state_alignment, Mapping):
+                semantic_alignment = state_alignment
         trace_reason_codes = list(reason_codes)
         for record in binder.get("binder_rounds", ()):
             if isinstance(record, Mapping):
@@ -236,6 +249,11 @@ class V2ExecutionTrace:
                 if validation.get("release_status")
                 else None
             ),
+            semantic_alignment=(
+                copy.deepcopy(dict(semantic_alignment))
+                if isinstance(semantic_alignment, Mapping)
+                else None
+            ),
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -283,6 +301,11 @@ class V2ExecutionTrace:
             "final_candidate_id": self.final_candidate_id,
             "release_decision": self.release_decision,
             "release_status": self.release_status,
+            "semantic_alignment": (
+                copy.deepcopy(self.semantic_alignment)
+                if self.semantic_alignment is not None
+                else None
+            ),
         }
 
 
@@ -421,6 +444,9 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         capabilities: TrustedV2CapabilityPorts,
         budget: AdaptiveRAGBudgetV1 | None = None,
         allow_test_release: bool = False,
+        unknown_semantic_policy: UnknownSemanticPolicy | str = (
+            UnknownSemanticPolicy.COMPATIBILITY
+        ),
     ) -> None:
         if not isinstance(supervisor, SupervisorService):
             raise TypeError("supervisor must be SupervisorService")
@@ -428,6 +454,9 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         self.capabilities = capabilities
         self.budget = budget or AdaptiveRAGBudgetV1()
         self.allow_test_release = bool(allow_test_release)
+        self.unknown_semantic_policy = coerce_unknown_semantic_policy(
+            unknown_semantic_policy,
+        )
 
     @staticmethod
     def _slot_dicts(plan: SupervisorPlan) -> list[dict[str, Any]]:
@@ -490,6 +519,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         state: AdaptiveRAGStateV1 | None,
         reason_codes: Iterable[str],
         terminal_state: str,
+        semantic_alignment: Mapping[str, Any] | None = None,
     ) -> V2ExecutionTrace:
         capability_trace = self._capability_trace()
         if state is not None:
@@ -499,6 +529,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 state=state,
                 reason_codes=reason_codes,
                 capability_trace=capability_trace,
+                semantic_alignment=semantic_alignment,
             )
         return V2ExecutionTrace(
             request_id=request.request_id,
@@ -516,6 +547,11 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 for item in capability_trace.get("binder", {}).get(
                     "bound_evidence_ids", ()
                 )
+            ),
+            semantic_alignment=(
+                copy.deepcopy(dict(semantic_alignment))
+                if isinstance(semantic_alignment, Mapping)
+                else None
             ),
         )
 
@@ -976,17 +1012,33 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         calculation_ids: Iterable[str] = (),
         route: str | None = None,
         extra_metadata: Mapping[str, Any] | None = None,
+        semantic_alignment: Mapping[str, Any] | None = None,
         validator_status: str | None = None,
         terminal_state: str,
     ) -> V2ExecutionOutcome:
         reason_list = _stable_unique(reason_codes)
         calculation_id_list = _stable_unique(calculation_ids)
+        alignment_metadata: Mapping[str, Any] | None = semantic_alignment
+        if alignment_metadata is None and state is not None and isinstance(
+            state.plan,
+            Mapping,
+        ):
+            state_alignment = state.plan.get("semantic_alignment")
+            if isinstance(state_alignment, Mapping):
+                alignment_metadata = state_alignment
+        metadata_extra = dict(extra_metadata or {})
+        if alignment_metadata is not None:
+            metadata_extra.setdefault(
+                "semantic_alignment",
+                copy.deepcopy(dict(alignment_metadata)),
+            )
         trace = self._trace(
             request,
             plan_id,
             state,
             reason_list,
             terminal_state,
+            semantic_alignment=alignment_metadata,
         )
         release_status = (
             ReleaseStatus.RELEASED
@@ -1028,7 +1080,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 ),
                 calculation_port_configured=self.capabilities.calculation is not None,
                 candidate_generation_wired=self._candidate_generation_enabled(),
-                extra=extra_metadata,
+                extra=metadata_extra,
             ),
             debug_metadata={"trace": trace.to_dict()},
             plan_id=plan_id,
@@ -1100,6 +1152,40 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 status=V2ExecutionStatus.FAIL_CLOSED,
                 terminal_state="PLAN",
             )
+        semantic_alignment = align_query_to_plan(
+            request.standalone_query,
+            plan,
+            unknown_policy=self.unknown_semantic_policy,
+            semantic_context=(
+                request.conversation_metadata.get("semantic_expectations")
+                if isinstance(request.conversation_metadata, Mapping)
+                and isinstance(
+                    request.conversation_metadata.get("semantic_expectations"),
+                    Mapping,
+                )
+                else None
+            ),
+        )
+        if not semantic_alignment.allowed:
+            reason_code_by_status = {
+                SemanticAlignmentStatus.MISMATCH: ReasonCode.QUERY_PLAN_SEMANTIC_MISMATCH,
+                SemanticAlignmentStatus.AMBIGUOUS: ReasonCode.QUERY_PLAN_SEMANTIC_AMBIGUOUS,
+                SemanticAlignmentStatus.UNKNOWN: ReasonCode.QUERY_PLAN_SEMANTIC_UNKNOWN,
+            }
+            reason_code = reason_code_by_status.get(
+                semantic_alignment.status,
+                ReasonCode.QUERY_PLAN_SEMANTIC_MISMATCH,
+            ).value
+            return self._outcome(
+                request=request,
+                plan=plan,
+                plan_id=plan_id,
+                state=None,
+                reason_codes=[reason_code],
+                status=V2ExecutionStatus.FAIL_CLOSED,
+                semantic_alignment=semantic_alignment.to_dict(),
+                terminal_state="PLAN",
+            )
         if plan.next_action is Action.ABSTAIN:
             return self._outcome(
                 request=request,
@@ -1108,6 +1194,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 state=None,
                 reason_codes=["SUPERVISOR_ABSTAIN"],
                 status=V2ExecutionStatus.FAIL_CLOSED,
+                semantic_alignment=semantic_alignment.to_dict(),
                 terminal_state="PLAN",
             )
 
@@ -1120,6 +1207,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             plan={
                 "supervisor_plan": plan.to_dict(),
                 "plan_id": plan_id,
+                "semantic_alignment": semantic_alignment.to_dict(),
             },
             calculation_requirements=self._calculation_requirements(
                 plan, request.request_metadata

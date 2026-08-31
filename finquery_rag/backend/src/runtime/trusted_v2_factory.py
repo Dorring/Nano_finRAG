@@ -8,7 +8,7 @@ from __future__ import annotations
 from typing import Any
 
 from rag_v2.adaptive import AdaptiveRAGBudgetV1
-from rag_v2.supervisor import SupervisorService
+from rag_v2.supervisor import SupervisorService, UnknownSemanticPolicy
 
 from .trusted_v2_adapter import TrustedFinancialRuntimeV2
 from .trusted_v2_capabilities import TrustedV2CapabilityPorts
@@ -33,6 +33,9 @@ def build_trusted_v2_runtime(
     *,
     capabilities: TrustedV2CapabilityPorts,
     budget: AdaptiveRAGBudgetV1 | None = None,
+    unknown_semantic_policy: UnknownSemanticPolicy | str = (
+        UnknownSemanticPolicy.COMPATIBILITY
+    ),
 ) -> TrustedFinancialRuntimeV2:
     """Build the complete V2 runtime with explicit dependencies.
 
@@ -70,6 +73,7 @@ def build_trusted_v2_runtime(
         capabilities=capabilities,
         budget=budget,
         allow_test_release=False,
+        unknown_semantic_policy=unknown_semantic_policy,
     )
     return TrustedFinancialRuntimeV2(coordinator)
 
