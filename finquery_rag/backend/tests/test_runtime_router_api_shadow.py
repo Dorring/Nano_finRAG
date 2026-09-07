@@ -49,20 +49,6 @@ def _load_main(monkeypatch: Any, tmp_path: Any) -> Any:
     monkeypatch.setenv("DATABASE_URL", f"sqlite:///{tmp_path / 'api.db'}")
     monkeypatch.setenv("SESSIONS_DB_PATH", str(tmp_path / "sessions.db"))
     monkeypatch.setenv("FINANCIAL_RUNTIME_ADAPTER_ENABLED", "true")
-    from chromadb.utils import embedding_functions
-
-    class OfflineEmbedding:
-        def __init__(self, *args: Any, **kwargs: Any) -> None:
-            pass
-
-        def __call__(self, inputs: list[str]) -> list[list[float]]:
-            return [[0.0] * 384 for _ in inputs]
-
-    monkeypatch.setattr(
-        embedding_functions,
-        "SentenceTransformerEmbeddingFunction",
-        OfflineEmbedding,
-    )
     return importlib.import_module("src.main")
 
 

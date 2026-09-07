@@ -59,6 +59,11 @@ not receive raw conversation history for financial execution. Existing L1/L2/L3
 context management, clarification, CAS, and idempotency remain in the shared
 lifecycle.
 
+In official v2 mode, the lifecycle does not construct the legacy V1 RAGEngine;
+the production builder owns the V2 R4 index, fact store, providers, and
+Specialist checkpoint. V1 engine construction remains limited to v1 and
+shadow modes.
+
 ## Official V2 boundaries
 
 In v2 mode:

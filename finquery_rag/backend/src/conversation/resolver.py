@@ -8,7 +8,6 @@ from __future__ import annotations
 
 import json
 import re
-from typing import Any
 
 from .bailian_client import BailianClient
 from .contracts import (
@@ -201,7 +200,6 @@ class ContextualQueryResolver:
         turns: list[DialogueTurn],
     ) -> ConversationResolution:
         q_lower = current_query.lower().strip()
-        reason_codes = []
         inherited_fields = []
         explicit_fields = []
         

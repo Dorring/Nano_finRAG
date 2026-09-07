@@ -116,10 +116,17 @@ __BACKEND_ENV_VARS=(
 : > "${LOG_FILE}"
 tmux new-session -d -s "${SESSION}" "bash $(shell_squote "${LAUNCHER}")"
 
-echo "[backend] Started in tmux session '${SESSION}'. Waiting for /healthz (up to 60s)..."
+echo "[backend] Started in tmux session '${SESSION}'. Waiting for /healthz and /readyz (up to 60s each)..."
 
-__URL="http://${BACKEND_HOST}:${BACKEND_PORT}/healthz"
-if wait_for_http_checked "${__URL}" 60 "${PID_FILE}"; then
+__HEALTH_URL="http://${BACKEND_HOST}:${BACKEND_PORT}/healthz"
+if ! wait_for_http_checked "${__HEALTH_URL}" 60 "${PID_FILE}"; then
+    echo "[backend] FAILED liveness check within 60s. See ${LOG_FILE}." >&2
+    write_status "FAILED"
+    exit 1
+fi
+
+__READY_URL="http://${BACKEND_HOST}:${BACKEND_PORT}/readyz"
+if wait_for_http_checked "${__READY_URL}" 60 "${PID_FILE}"; then
     __pid="$(cat "${PID_FILE}" 2>/dev/null || true)"
     if [[ -n "${__pid}" ]]; then
         write_pid_meta "${PID_FILE}" "${__pid}" "src.main:app" "${SESSION}"
@@ -129,6 +136,6 @@ if wait_for_http_checked "${__URL}" 60 "${PID_FILE}"; then
     exit 0
 fi
 
-echo "[backend] FAILED to become healthy within 60s. See ${LOG_FILE}." >&2
+echo "[backend] FAILED readiness check within 60s. See ${LOG_FILE}." >&2
 write_status "FAILED"
 exit 1

@@ -9,6 +9,7 @@ The checks in this module are intentionally lightweight:
 from __future__ import annotations
 
 import os
+import importlib
 import sqlite3
 import time
 from pathlib import Path
@@ -215,6 +216,102 @@ def collect_config_snapshot() -> dict[str, Any]:
     }
 
 
+def _trusted_v2_preflight_check() -> dict[str, Any]:
+    """Check the selected V2/shadow deployment inputs without model calls."""
+    mode = os.getenv("FINANCIAL_RUNTIME_MODE", "v2").strip().lower()
+    if mode == "v1":
+        return {
+            "ok": True,
+            "required": False,
+            "mode": mode,
+            "status": "skipped",
+        }
+    if mode not in {"shadow", "v2"}:
+        return {
+            "ok": False,
+            "required": True,
+            "mode": mode,
+            "status": "invalid",
+            "error": "FINANCIAL_RUNTIME_MODE must be one of: v1, shadow, v2",
+        }
+    required_env = (
+        "TRUSTED_V2_RUNTIME_BUILDER",
+        "TRUSTED_V2_R4_INDEX_DIR",
+        "TRUSTED_V2_FACT_STORE_PATH",
+        "TRUSTED_V2_SPECIALIST_CHECKPOINT",
+    )
+    missing_env = [name for name in required_env if not os.getenv(name, "").strip()]
+    if missing_env:
+        return {
+            "ok": False,
+            "required": True,
+            "mode": mode,
+            "status": "blocked",
+            "error_type": "TrustedV2ProductionConfigurationError",
+            "error": "missing required V2 configuration: " + ", ".join(missing_env),
+        }
+    builder_path = os.environ["TRUSTED_V2_RUNTIME_BUILDER"].strip()
+    if ":" not in builder_path:
+        return {
+            "ok": False,
+            "required": True,
+            "mode": mode,
+            "status": "blocked",
+            "error_type": "TrustedV2ProductionConfigurationError",
+            "error": "TRUSTED_V2_RUNTIME_BUILDER must use module:callable syntax",
+        }
+    module_name, attribute = builder_path.rsplit(":", 1)
+    try:
+        builder = getattr(importlib.import_module(module_name), attribute)
+    except (ImportError, AttributeError) as exc:
+        return {
+            "ok": False,
+            "required": True,
+            "mode": mode,
+            "status": "blocked",
+            "error_type": "TrustedV2ProductionConfigurationError",
+            "error": "TRUSTED_V2_RUNTIME_BUILDER could not be imported",
+            "detail": str(exc),
+        }
+    if not callable(builder):
+        return {
+            "ok": False,
+            "required": True,
+            "mode": mode,
+            "status": "blocked",
+            "error_type": "TrustedV2ProductionConfigurationError",
+            "error": "TRUSTED_V2_RUNTIME_BUILDER must resolve to a callable",
+        }
+    try:
+        try:
+            from ..runtime.trusted_v2_production import (
+                validate_trusted_v2_production_configuration,
+            )
+        except ImportError:
+            # Some legacy health scripts import services as a top-level package.
+            from runtime.trusted_v2_production import (
+                validate_trusted_v2_production_configuration,
+            )
+
+        report = validate_trusted_v2_production_configuration()
+        return {
+            "ok": True,
+            "required": True,
+            "mode": mode,
+            "status": "ready",
+            "report": report,
+        }
+    except Exception as exc:
+        return {
+            "ok": False,
+            "required": True,
+            "mode": mode,
+            "status": "blocked",
+            "error_type": type(exc).__name__,
+            "error": str(exc),
+        }
+
+
 def collect_health_snapshot(
     *,
     document_registry: Any | None = None,
@@ -223,6 +320,7 @@ def collect_health_snapshot(
     bm25_db_path: str | None = None,
     trace_db_path: str | None = None,
     feedback_db_path: str | None = None,
+    trusted_v2_preflight: bool = False,
 ) -> dict[str, Any]:
     """Return a readiness snapshot without reading tenant content."""
     config = collect_config_snapshot()
@@ -277,6 +375,8 @@ def collect_health_snapshot(
             "required": False,
         },
     }
+    if trusted_v2_preflight:
+        checks["trusted_v2"] = _trusted_v2_preflight_check()
 
     required_ok = all(
         check.get("ok", False)

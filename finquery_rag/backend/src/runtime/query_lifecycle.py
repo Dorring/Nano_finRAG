@@ -74,6 +74,7 @@ class QueryLifecycleService:
         financial_runtime_factory: Callable[
             [Any, FinancialQueryRequest], FinancialQARuntime
         ] | None = None,
+        financial_runtime_requires_engine: Callable[[], bool] | None = None,
     ) -> None:
         self.session_manager = session_manager
         self.memory_store = memory_store
@@ -85,6 +86,7 @@ class QueryLifecycleService:
         self.assistant_session_metadata = assistant_session_metadata
         self.execution_service_factory = execution_service_factory
         self.financial_runtime_factory = financial_runtime_factory
+        self.financial_runtime_requires_engine = financial_runtime_requires_engine
 
     @staticmethod
     def _value(value: Any) -> str:
@@ -250,7 +252,18 @@ class QueryLifecycleService:
                 "memory_profile": profile,
             },
         )
-        engine = self.get_rag_engine()
+        # V2 owns its R4 index and structured fact store.  Do not eagerly
+        # construct the legacy RAG engine for an official V2 request: doing so
+        # would make V2 depend on V1 retrieval dependencies before its own
+        # production builder is reached.  Keep the historical eager behavior
+        # for callers that do not provide an explicit runtime dependency
+        # policy, and for V1/shadow paths which still need the legacy engine.
+        requires_engine = self.financial_runtime_requires_engine
+        engine = (
+            self.get_rag_engine()
+            if requires_engine is None or requires_engine()
+            else None
+        )
         runtime: FinancialQueryResult | None = None
         if self.financial_runtime_adapter_enabled():
             runtime_impl = (
@@ -263,6 +276,10 @@ class QueryLifecycleService:
             )
             legacy = to_legacy_query_dict(runtime)
         else:
+            if engine is None:
+                raise RuntimeError(
+                    "legacy query execution requires the RAG engine",
+                )
             kwargs = {
                 "question": query,
                 "doc_names": list(request.document_names),

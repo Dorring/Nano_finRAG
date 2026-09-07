@@ -23,6 +23,7 @@ def _ready(registry, document_id, file_hash, *, parser, splitter, embedding):
 def test_duplicate_detection_is_scoped_to_processing_lineage():
     handle = tempfile.NamedTemporaryFile(suffix=".db", delete=False)
     handle.close()
+    registry = None
     try:
         registry = DocumentRegistry(db_path=handle.name)
         file_hash = DocumentRegistry.file_hash(b"same PDF bytes")
@@ -52,4 +53,8 @@ def test_duplicate_detection_is_scoped_to_processing_lineage():
         # Legacy callers without lineage retain the original duplicate lookup.
         assert registry.find_by_file_hash(1, file_hash)["document_id"] == "native-v1"
     finally:
+        # SQLite connections are short-lived in DocumentRegistry, but keeping
+        # the object alive until function teardown can retain a Windows file
+        # handle long enough to make the temporary database undeletable.
+        registry = None
         os.unlink(handle.name)
