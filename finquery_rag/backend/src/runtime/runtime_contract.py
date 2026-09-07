@@ -41,6 +41,30 @@ class RuntimeVersion(str, Enum):
     V2 = "V2"
 
 
+class ContextTrustLevel(str, Enum):
+    """Origin and authority level for context passed through the runtime.
+
+    Conversation context can help interpret a query without becoming a
+    financial fact.  Only Binder-admitted evidence is allowed to cross the
+    financial fact/calculation boundary; all other levels remain semantic or
+    candidate context.
+    """
+
+    USER_EXPLICIT_QUERY = "USER_EXPLICIT_QUERY"
+    STRUCTURED_DIALOGUE_STATE = "STRUCTURED_DIALOGUE_STATE"
+    COMPRESSED_HISTORY = "COMPRESSED_HISTORY"
+    ASSISTANT_TEXT = "ASSISTANT_TEXT"
+    MODEL_GENERATED_SUMMARY = "MODEL_GENERATED_SUMMARY"
+    RETRIEVED_CANDIDATE = "RETRIEVED_CANDIDATE"
+    BINDER_ADMITTED_EVIDENCE = "BINDER_ADMITTED_EVIDENCE"
+
+    @property
+    def can_enter_financial_fact_chain(self) -> bool:
+        """Whether this source may become a financial fact or operand."""
+
+        return self is ContextTrustLevel.BINDER_ADMITTED_EVIDENCE
+
+
 class RuntimeRouterMode(str, Enum):
     """How a runtime implementation is being invoked by a future router."""
 

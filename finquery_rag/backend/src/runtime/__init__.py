@@ -18,6 +18,7 @@ from .response_mapper import (
 from .runtime_contract import (
     ClaimProvenance,
     ClarificationPayload,
+    ContextTrustLevel,
     FinancialQARuntime,
     FinancialQueryRequest,
     FinancialQueryResult,
@@ -102,6 +103,7 @@ from .trusted_v2_production import (
 __all__ = [
     "ClarificationPayload",
     "ClaimProvenance",
+    "ContextTrustLevel",
     "FinancialQARuntime",
     "FinancialQueryRequest",
     "FinancialQueryResult",

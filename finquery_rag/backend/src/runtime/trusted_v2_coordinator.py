@@ -9,6 +9,8 @@ Generator, Validator, and TrustedRAGRuntimeV2 remain later-stage components.
 from __future__ import annotations
 
 import copy
+import hashlib
+import json
 from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
 from typing import Any
@@ -33,7 +35,7 @@ from rag_v2.supervisor import (
     validate_plan_v2_01,
 )
 
-from .runtime_contract import ReleaseStatus
+from .runtime_contract import ContextTrustLevel, ReleaseStatus
 from .trusted_v2_capabilities import TrustedV2CapabilityPorts
 from .trusted_v2_generation import CandidateExecutionResult
 from .trusted_v2_validation import (
@@ -61,9 +63,6 @@ def _stable_unique(values: Iterable[str]) -> list[str]:
 
 
 def _plan_id(request: V2ExecutionRequest, plan: SupervisorPlan) -> str:
-    import hashlib
-    import json
-
     payload = {
         "request_id": request.request_id,
         "standalone_query": request.standalone_query,
@@ -71,6 +70,98 @@ def _plan_id(request: V2ExecutionRequest, plan: SupervisorPlan) -> str:
     }
     encoded = json.dumps(payload, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(encoded.encode("utf-8")).hexdigest()
+
+
+def _execution_id(request: V2ExecutionRequest, plan_id: str | None) -> str:
+    """Return a stable identifier for one logical V2 execution."""
+
+    payload = {
+        "request_id": request.request_id,
+        "plan_id": plan_id,
+        "standalone_query": request.standalone_query,
+    }
+    encoded = json.dumps(payload, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(encoded.encode("utf-8")).hexdigest()
+
+
+_TRACE_FORBIDDEN_KEY_MARKERS = (
+    "chain_of_thought",
+    "chainofthought",
+    "cot",
+    "hidden_reasoning",
+    "private_reasoning",
+    "model_reasoning",
+    "model_thought",
+    "thought_process",
+    "reasoning",
+    "thought",
+)
+
+
+def _trace_key_is_forbidden(key: Any) -> bool:
+    normalized = str(key).casefold().replace("-", "_").replace(" ", "_")
+    return any(marker in normalized for marker in _TRACE_FORBIDDEN_KEY_MARKERS)
+
+
+def _sanitize_trace_payload(value: Any) -> Any:
+    """Keep trace data structured while dropping provider-private reasoning."""
+
+    if isinstance(value, Mapping):
+        return {
+            key: _sanitize_trace_payload(item)
+            for key, item in value.items()
+            if not _trace_key_is_forbidden(key)
+        }
+    if isinstance(value, (list, tuple)):
+        return [_sanitize_trace_payload(item) for item in value]
+    return copy.deepcopy(value)
+
+
+def _normalize_trace_levels(
+    value: Iterable[ContextTrustLevel | str] | None,
+    field_name: str,
+) -> tuple[str, ...]:
+    levels: list[str] = []
+    for item in value or ():
+        try:
+            level = (
+                item
+                if isinstance(item, ContextTrustLevel)
+                else ContextTrustLevel(item)
+            )
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"{field_name} contains an unknown trust level") from exc
+        if level.value not in levels:
+            levels.append(level.value)
+    return tuple(levels)
+
+
+def _observed_context_trust_levels(
+    request: V2ExecutionRequest,
+    state: AdaptiveRAGStateV1 | None,
+    capability_trace: Mapping[str, Any],
+) -> tuple[tuple[str, ...], tuple[str, ...]]:
+    """Separate semantic context observations from financial authority."""
+
+    levels = list(_normalize_trace_levels(
+        request.context_trust_levels,
+        "context_trust_levels",
+    ))
+    bound_ids = getattr(state, "bound_evidence_ids", ()) if state is not None else ()
+    bound_ids = tuple(
+        str(item).strip() for item in bound_ids if str(item).strip()
+    )
+    if state is not None and state.evidence_packets:
+        candidate_level = ContextTrustLevel.RETRIEVED_CANDIDATE.value
+        if candidate_level not in levels:
+            levels.append(candidate_level)
+    financial_levels: tuple[str, ...] = ()
+    if bound_ids:
+        admitted_level = ContextTrustLevel.BINDER_ADMITTED_EVIDENCE.value
+        if admitted_level not in levels:
+            levels.append(admitted_level)
+        financial_levels = (admitted_level,)
+    return tuple(levels), financial_levels
 
 
 @dataclass(frozen=True)
@@ -87,6 +178,7 @@ class V2ExecutionTrace:
     same_tool_retry_count: int
     no_progress_count: int
     terminal_state: str
+    execution_id: str | None = None
     retrieval_rounds: tuple[dict[str, Any], ...] = ()
     candidate_count_per_round: tuple[int, ...] = ()
     candidate_ids_per_round: tuple[tuple[str, ...], ...] = ()
@@ -120,6 +212,63 @@ class V2ExecutionTrace:
     release_status: str | None = None
     semantic_alignment: dict[str, Any] | None = None
     claim_provenance: tuple[dict[str, Any], ...] = ()
+    context_trust_levels: tuple[str, ...] = ()
+    financial_fact_context_levels: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        if self.execution_id is not None and not str(self.execution_id).strip():
+            raise ValueError("execution_id must not be empty")
+        object.__setattr__(
+            self,
+            "execution_id",
+            str(self.execution_id) if self.execution_id is not None else None,
+        )
+        object.__setattr__(
+            self,
+            "context_trust_levels",
+            _normalize_trace_levels(
+                self.context_trust_levels,
+                "context_trust_levels",
+            ),
+        )
+        financial_levels = _normalize_trace_levels(
+            self.financial_fact_context_levels,
+            "financial_fact_context_levels",
+        )
+        if any(
+            item != ContextTrustLevel.BINDER_ADMITTED_EVIDENCE.value
+            for item in financial_levels
+        ):
+            raise ValueError(
+                "financial_fact_context_levels may contain only "
+                "BINDER_ADMITTED_EVIDENCE",
+            )
+        object.__setattr__(self, "financial_fact_context_levels", financial_levels)
+        for field_name in (
+            "transitions",
+            "tool_history",
+            "retrieval_rounds",
+            "semantic_alignment",
+            "claim_provenance",
+        ):
+            value = getattr(self, field_name)
+            if field_name in {"semantic_alignment"}:
+                normalized = (
+                    _sanitize_trace_payload(value)
+                    if isinstance(value, Mapping)
+                    else value
+                )
+            elif field_name in {"transitions", "tool_history", "retrieval_rounds"}:
+                normalized = tuple(
+                    _sanitize_trace_payload(item)
+                    for item in value
+                )
+            else:
+                normalized = tuple(
+                    _sanitize_trace_payload(item)
+                    for item in value
+                )
+            object.__setattr__(self, field_name, normalized)
 
     @classmethod
     def from_state(
@@ -132,9 +281,12 @@ class V2ExecutionTrace:
         capability_trace: Mapping[str, Any] | None = None,
         semantic_alignment: Mapping[str, Any] | None = None,
         claim_provenance: Iterable[Mapping[str, Any]] = (),
+        execution_id: str | None = None,
+        context_trust_levels: Iterable[ContextTrustLevel | str] = (),
+        financial_fact_context_levels: Iterable[ContextTrustLevel | str] = (),
     ) -> "V2ExecutionTrace":
         no_progress_count = int(state.stop_reason == ReasonCode.NO_PROGRESS.value)
-        capability_trace = capability_trace or {}
+        capability_trace = _sanitize_trace_payload(capability_trace or {})
         retrieval = capability_trace.get("retrieval", {})
         binder = capability_trace.get("binder", {})
         calculation = capability_trace.get("calculation", {})
@@ -173,6 +325,7 @@ class V2ExecutionTrace:
             same_tool_retry_count=sum(state.same_tool_retries.values()),
             no_progress_count=no_progress_count,
             terminal_state=state.status,
+            execution_id=execution_id,
             retrieval_rounds=retrieval_rounds,
             candidate_count_per_round=candidate_counts,
             candidate_ids_per_round=candidate_ids,
@@ -253,17 +406,23 @@ class V2ExecutionTrace:
                 else None
             ),
             semantic_alignment=(
-                copy.deepcopy(dict(semantic_alignment))
+                _sanitize_trace_payload(dict(semantic_alignment))
                 if isinstance(semantic_alignment, Mapping)
                 else None
             ),
-            claim_provenance=tuple(copy.deepcopy(dict(item)) for item in claim_provenance),
+            claim_provenance=tuple(
+                _sanitize_trace_payload(dict(item))
+                for item in claim_provenance
+            ),
+            context_trust_levels=tuple(context_trust_levels),
+            financial_fact_context_levels=tuple(financial_fact_context_levels),
         )
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "request_id": self.request_id,
             "plan_id": self.plan_id,
+            "execution_id": self.execution_id,
             "transitions": copy.deepcopy(list(self.transitions)),
             "tool_history": copy.deepcopy(list(self.tool_history)),
             "reason_codes": list(self.reason_codes),
@@ -311,6 +470,10 @@ class V2ExecutionTrace:
                 else None
             ),
             "claim_provenance": copy.deepcopy(list(self.claim_provenance)),
+            "context_trust_levels": list(self.context_trust_levels),
+            "financial_fact_context_levels": list(
+                self.financial_fact_context_levels,
+            ),
         }
 
 
@@ -514,7 +677,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 except Exception:
                     snapshot = {}
                 if isinstance(snapshot, Mapping):
-                    trace[name] = snapshot
+                    trace[name] = _sanitize_trace_payload(snapshot)
         return trace
 
     def _trace(
@@ -528,6 +691,13 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         claim_provenance: Iterable[Mapping[str, Any]] = (),
     ) -> V2ExecutionTrace:
         capability_trace = self._capability_trace()
+        context_trust_levels, financial_fact_context_levels = (
+            _observed_context_trust_levels(
+                request,
+                state,
+                capability_trace,
+            )
+        )
         if state is not None:
             return V2ExecutionTrace.from_state(
                 request_id=request.request_id,
@@ -537,6 +707,9 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 capability_trace=capability_trace,
                 semantic_alignment=semantic_alignment,
                 claim_provenance=claim_provenance,
+                execution_id=_execution_id(request, plan_id),
+                context_trust_levels=context_trust_levels,
+                financial_fact_context_levels=financial_fact_context_levels,
             )
         return V2ExecutionTrace(
             request_id=request.request_id,
@@ -549,20 +722,18 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             same_tool_retry_count=0,
             no_progress_count=0,
             terminal_state=terminal_state,
-            bound_evidence_ids=tuple(
-                str(item)
-                for item in capability_trace.get("binder", {}).get(
-                    "bound_evidence_ids", ()
-                )
-            ),
+            execution_id=_execution_id(request, plan_id),
+            bound_evidence_ids=(),
             semantic_alignment=(
-                copy.deepcopy(dict(semantic_alignment))
+                _sanitize_trace_payload(dict(semantic_alignment))
                 if isinstance(semantic_alignment, Mapping)
                 else None
             ),
             claim_provenance=tuple(
-                copy.deepcopy(dict(item)) for item in claim_provenance
+                _sanitize_trace_payload(dict(item)) for item in claim_provenance
             ),
+            context_trust_levels=context_trust_levels,
+            financial_fact_context_levels=financial_fact_context_levels,
         )
 
     @staticmethod
@@ -595,6 +766,25 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             or getattr(self.capabilities.generation, "candidate_mode", False)
         )
 
+    @staticmethod
+    def _binder_admission_is_authoritative(
+        state: AdaptiveRAGStateV1,
+        evaluator_adapter: _EvaluatorAdapter,
+    ) -> bool:
+        """Require Binder-admitted IDs before calculation or generation."""
+
+        state_ids = {
+            str(item).strip()
+            for item in getattr(state, "bound_evidence_ids", ())
+            if str(item).strip()
+        }
+        adapter_ids = {
+            str(item).strip()
+            for item in evaluator_adapter.bound_evidence_ids
+            if str(item).strip()
+        }
+        return bool(adapter_ids) and adapter_ids <= state_ids
+
     def _candidate_stage(
         self,
         *,
@@ -605,6 +795,19 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         evaluator_adapter: _EvaluatorAdapter,
     ) -> V2ExecutionOutcome:
         """Prepare one Candidate and, when wired, cross the TV2-05 gate."""
+
+        if not self._binder_admission_is_authoritative(state, evaluator_adapter):
+            return self._outcome(
+                request=request,
+                plan=plan,
+                plan_id=plan_id,
+                state=state,
+                reason_codes=["BINDER_ADMISSION_REQUIRED"],
+                status=V2ExecutionStatus.FAIL_CLOSED,
+                terminal_state="EVIDENCE_READY",
+                evidence_ids=(),
+                citation_ids=(),
+            )
 
         calculation_ids: tuple[str, ...] = ()
         candidate_answer: str | None = None
