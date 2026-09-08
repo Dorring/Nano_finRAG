@@ -191,6 +191,96 @@ def test_preflight_accepts_complete_layout_without_network(tmp_path: Path) -> No
     assert len(report["config_fingerprint"]) == 64
 
 
+def test_preflight_accepts_api_binder_provider(tmp_path: Path) -> None:
+    """V2_BINDER_PROVIDER=api must now pass preflight alongside a valid api supervisor."""
+    index_dir = tmp_path / "r4"
+    _minimal_r4_index(index_dir)
+    fact_path = tmp_path / "facts.json"
+    fact_path.write_text(json.dumps([_fact()]), encoding="utf-8")
+    checkpoint = tmp_path / "specialist.pt"
+    checkpoint.write_bytes(b"checkpoint fixture")
+
+    report = validate_trusted_v2_production_configuration(
+        {
+            "TRUSTED_V2_R4_INDEX_DIR": str(index_dir),
+            "TRUSTED_V2_FACT_STORE_PATH": str(fact_path),
+            "TRUSTED_V2_SPECIALIST_CHECKPOINT": str(checkpoint),
+            "V2_SUPERVISOR_PROVIDER": "api",
+            "V2_SUPERVISOR_BASE_URL": "https://api.deepseek.com/v1",
+            "V2_SUPERVISOR_API_KEY": "sk-test-supervisor",
+            "V2_SUPERVISOR_MODEL": "deepseek-chat",
+            "V2_BINDER_PROVIDER": "api",
+            "V2_BINDER_BASE_URL": "https://api.deepseek.com/v1",
+            "V2_BINDER_API_KEY": "sk-test-binder",
+            "V2_BINDER_MODEL": "deepseek-chat",
+        }
+    )
+
+    assert report["r4_index"]["row_count"] == 4
+    assert report["fact_count"] == 1
+    assert len(report["config_fingerprint"]) == 64
+
+
+def test_preflight_rejects_unknown_binder_provider(tmp_path: Path) -> None:
+    """Unknown V2_BINDER_PROVIDER values must be rejected at preflight."""
+    index_dir = tmp_path / "r4"
+    _minimal_r4_index(index_dir)
+    fact_path = tmp_path / "facts.json"
+    fact_path.write_text(json.dumps([_fact()]), encoding="utf-8")
+    checkpoint = tmp_path / "specialist.pt"
+    checkpoint.write_bytes(b"checkpoint fixture")
+
+    with pytest.raises(
+        TrustedV2ProductionConfigurationError,
+        match="V2_BINDER_PROVIDER must be 'bailian' or 'api'",
+    ):
+        validate_trusted_v2_production_configuration(
+            {
+                "TRUSTED_V2_R4_INDEX_DIR": str(index_dir),
+                "TRUSTED_V2_FACT_STORE_PATH": str(fact_path),
+                "TRUSTED_V2_SPECIALIST_CHECKPOINT": str(checkpoint),
+                "V2_SUPERVISOR_PROVIDER": "bailian",
+                "V2_SUPERVISOR_BASE_URL": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+                "V2_SUPERVISOR_API_KEY": "test-key",
+                "V2_SUPERVISOR_MODEL": "qwen-plus",
+                "V2_BINDER_PROVIDER": "unsupported-provider",
+                "V2_BINDER_BASE_URL": "https://example.invalid/v1",
+                "V2_BINDER_API_KEY": "test-key",
+                "V2_BINDER_MODEL": "some-model",
+            }
+        )
+
+
+def test_preflight_api_binder_inherits_supervisor_url_when_binder_url_omitted(
+    tmp_path: Path,
+) -> None:
+    """When V2_BINDER_BASE_URL is absent, the fallback to V2_SUPERVISOR_BASE_URL must work."""
+    index_dir = tmp_path / "r4"
+    _minimal_r4_index(index_dir)
+    fact_path = tmp_path / "facts.json"
+    fact_path.write_text(json.dumps([_fact()]), encoding="utf-8")
+    checkpoint = tmp_path / "specialist.pt"
+    checkpoint.write_bytes(b"checkpoint fixture")
+
+    # Only supervisor url/key/model set; binder falls back to supervisor values.
+    report = validate_trusted_v2_production_configuration(
+        {
+            "TRUSTED_V2_R4_INDEX_DIR": str(index_dir),
+            "TRUSTED_V2_FACT_STORE_PATH": str(fact_path),
+            "TRUSTED_V2_SPECIALIST_CHECKPOINT": str(checkpoint),
+            "V2_SUPERVISOR_PROVIDER": "api",
+            "V2_SUPERVISOR_BASE_URL": "https://api.deepseek.com/v1",
+            "V2_SUPERVISOR_API_KEY": "sk-shared",
+            "V2_SUPERVISOR_MODEL": "deepseek-chat",
+            "V2_BINDER_PROVIDER": "api",
+            # No V2_BINDER_BASE_URL / V2_BINDER_API_KEY / V2_BINDER_MODEL
+            # → _provider_common falls back to V2_SUPERVISOR_* values
+        }
+    )
+
+    assert report["fact_count"] == 1
+
+
 class _BinderProvider:
     provider_name = "test-binder"
     model_name = "test-binder"

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+﻿#!/usr/bin/env bash
 # Start the FinQuery RAG backend (uvicorn) in a tmux session.
 set -euo pipefail
 
@@ -70,6 +70,7 @@ elif command -v uv >/dev/null 2>&1; then
 fi
 
 # Environment variables the backend depends on (passed explicitly into the session).
+# CUDA_VISIBLE_DEVICES is included to enforce GPU physical isolation in the tmux session.
 __BACKEND_ENV_VARS=(
     FINANCIAL_RUNTIME_MODE MULTITURN_CONTEXT_MODE TRUSTED_V2_RUNTIME_BUILDER
     TRUSTED_V2_R4_INDEX_DIR TRUSTED_V2_FACT_STORE_PATH
@@ -94,6 +95,7 @@ __BACKEND_ENV_VARS=(
     MINERU_AUTO_MIN_TEXT_CHARS MINERU_METHOD MINERU_FORCE_CPU
     MINERU_CUDA_VISIBLE_DEVICES
     SECRET_KEY ALLOWED_ORIGINS
+    CUDA_VISIBLE_DEVICES
 )
 
 # Generate a launcher script (avoids nested-quoting issues with tmux).

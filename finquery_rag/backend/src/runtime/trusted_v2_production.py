@@ -28,7 +28,7 @@ from pathlib import Path
 from typing import Any
 
 from rag_v2.adaptive import AdaptiveRAGBudgetV1
-from rag_v2.evidence import BailianBinderProvider, SemanticBinderService
+from rag_v2.evidence import APIBinderProvider, BailianBinderProvider, SemanticBinderService
 from rag_v2.supervisor import (
     APIProvider,
     BailianProvider,
@@ -551,9 +551,9 @@ def _build_supervisor(environ: Mapping[str, str]) -> SupervisorService:
 
 def _build_binder(environ: Mapping[str, str]) -> SemanticBinderService:
     provider_name = (_env(environ, "V2_BINDER_PROVIDER", "bailian") or "bailian").casefold()
-    if provider_name != "bailian":
+    if provider_name not in {"bailian", "api"}:
         raise TrustedV2ProductionConfigurationError(
-            "V2_BINDER_PROVIDER must be 'bailian'; no generic Binder provider is registered"
+            "V2_BINDER_PROVIDER must be 'bailian' or 'api'"
         )
     base_url, api_key, model_name = _provider_common(
         environ,
@@ -561,18 +561,30 @@ def _build_binder(environ: Mapping[str, str]) -> SemanticBinderService:
         fallback_prefix="V2_SUPERVISOR_",
     )
     try:
-        provider = BailianBinderProvider(
-            base_url=base_url,
-            api_key=api_key,
-            model_name=model_name,
-            enable_thinking=_bool_env(environ, "V2_BINDER_ENABLE_THINKING", False),
-            temperature=_float_env(environ, "V2_BINDER_TEMPERATURE", 0.0, minimum=0.0),
-            timeout=_float_env(environ, "V2_BINDER_TIMEOUT_SECONDS", 180.0, minimum=0.1),
-            max_retries=0,
-        )
+        if provider_name == "bailian":
+            provider = BailianBinderProvider(
+                base_url=base_url,
+                api_key=api_key,
+                model_name=model_name,
+                enable_thinking=_bool_env(environ, "V2_BINDER_ENABLE_THINKING", False),
+                temperature=_float_env(environ, "V2_BINDER_TEMPERATURE", 0.0, minimum=0.0),
+                timeout=_float_env(environ, "V2_BINDER_TIMEOUT_SECONDS", 180.0, minimum=0.1),
+                max_retries=0,
+            )
+        else:  # api
+            provider = APIBinderProvider(
+                base_url=base_url,
+                api_key=api_key,
+                model_name=model_name,
+                temperature=_float_env(environ, "V2_BINDER_TEMPERATURE", 0.0, minimum=0.0),
+                timeout=_float_env(environ, "V2_BINDER_TIMEOUT_SECONDS", 180.0, minimum=0.1),
+                max_retries=0,
+            )
+    except TrustedV2ProductionConfigurationError:
+        raise
     except Exception as exc:
         raise TrustedV2ProductionConfigurationError(
-            "could not construct V2 Semantic Binder provider"
+            f"could not construct V2 Semantic Binder provider '{provider_name}'"
         ) from exc
     return SemanticBinderService(provider)
 
@@ -711,9 +723,9 @@ def validate_trusted_v2_production_configuration(
         )
     _provider_common(env, "V2_SUPERVISOR_")
     binder_provider = (_env(env, "V2_BINDER_PROVIDER", "bailian") or "bailian").casefold()
-    if binder_provider != "bailian":
+    if binder_provider not in {"bailian", "api"}:
         raise TrustedV2ProductionConfigurationError(
-            "V2_BINDER_PROVIDER must be 'bailian'"
+            "V2_BINDER_PROVIDER must be 'bailian' or 'api'"
         )
     _provider_common(env, "V2_BINDER_", fallback_prefix="V2_SUPERVISOR_")
     return {

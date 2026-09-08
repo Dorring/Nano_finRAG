@@ -151,6 +151,175 @@ def _binding_from_payload(payload: Any) -> EvidenceBinding:
         raise BinderProviderError("EvidenceBinding response failed frozen contract validation") from exc
 
 
+class APIBinderProvider:
+    """OpenAI-compatible strict JSON binder provider (e.g. DeepSeek, generic API).
+
+    This provider targets any OpenAI-compatible endpoint that supports
+    ``response_format={"type": "json_object"}`` (JSON Mode).
+
+    Security contract:
+    - Only ``message.content`` is read; ``reasoning_content`` and any other
+      private model-reasoning fields are explicitly discarded and never logged.
+    - The frozen ``EvidenceBinding`` schema is enforced via ``_binding_from_payload``.
+    """
+
+    provider_name = "api"
+    provider_role = "evidence_binder"
+    model_role = "strong_general_llm"
+
+    def __init__(
+        self,
+        *,
+        base_url: str,
+        api_key: str,
+        model_name: str,
+        temperature: float = 0.0,
+        timeout: float = 180.0,
+        max_retries: int = 0,
+        http_client: Any | None = None,
+    ) -> None:
+        if OpenAI is None:
+            raise RuntimeError("the API binder provider requires the openai package")
+        client_kwargs: dict[str, Any] = {
+            "base_url": base_url,
+            "api_key": api_key,
+            "timeout": timeout,
+            "max_retries": max_retries,
+        }
+        if http_client is not None:
+            client_kwargs["http_client"] = http_client
+        self.client = OpenAI(**client_kwargs)
+        self.model_name = model_name
+        self.temperature = temperature
+        self.max_retries = max_retries
+        self.client_created_at = _datetime.datetime.now(_datetime.timezone.utc).isoformat()
+        self.last_call: BinderCallMetadata | None = None
+        self.last_raw_response: str | None = None
+
+    def close(self) -> None:
+        self.client.close()
+
+    def bind(self, request: Mapping[str, Any]) -> BinderProviderResult:
+        started = time.perf_counter()
+        self.last_raw_response = None
+        response: Any | None = None
+        try:
+            body: dict[str, Any] = {
+                "model": self.model_name,
+                "messages": build_binder_messages(request),
+                "temperature": self.temperature,
+                "response_format": BINDER_RESPONSE_FORMAT,
+            }
+            response = self.client.chat.completions.create(**body)
+            message = response.choices[0].message if response.choices else None
+            # Explicitly read only `content`; discard `reasoning_content` or
+            # any other private chain-of-thought fields returned by the model.
+            content = getattr(message, "content", None) if message is not None else None
+            raw = content if isinstance(content, str) else None
+            self.last_raw_response = raw
+            if not raw or not raw.strip():
+                raise BinderProviderError("API binder returned an empty EvidenceBinding response")
+            try:
+                payload = json.loads(raw.strip())
+            except json.JSONDecodeError as exc:
+                raise BinderProviderError("API binder response was not strict JSON") from exc
+            binding = _binding_from_payload(payload)
+            metadata = self._metadata(
+                response,
+                started,
+                structured=True,
+                raw_content_length=len(raw),
+                request_id=getattr(response, "id", None),
+            )
+            self.last_call = metadata
+            return BinderProviderResult(binding=binding, metadata=metadata, raw_response=raw)
+        except BinderProviderError as exc:
+            cause = exc.__cause__ or exc.__context__
+            metadata = self._metadata(
+                response,
+                started,
+                structured=False,
+                error=str(exc),
+                provider_success=response is not None,
+                exception_type=type(exc).__name__,
+                exception_cause_type=type(cause).__name__ if cause is not None else None,
+                exception_cause_message=_safe_message(cause) if cause is not None else None,
+                raw_content_length=len(self.last_raw_response or ""),
+                request_id=getattr(response, "id", None),
+                http_status=_exception_http_status(exc),
+                exception_chain=_exception_chain(exc),
+            )
+            self.last_call = metadata
+            raise
+        except Exception as exc:
+            cause = exc.__cause__ or exc.__context__
+            metadata = self._metadata(
+                response,
+                started,
+                structured=False,
+                error=_safe_message(exc),
+                provider_success=False,
+                exception_type=type(exc).__name__,
+                exception_cause_type=type(cause).__name__ if cause is not None else None,
+                exception_cause_message=_safe_message(cause) if cause is not None else None,
+                errno=getattr(exc, "errno", None),
+                raw_content_length=len(self.last_raw_response or ""),
+                request_id=getattr(response, "id", None),
+                http_status=_exception_http_status(exc),
+                exception_chain=_exception_chain(exc),
+            )
+            self.last_call = metadata
+            raise BinderProviderError(f"API binder call failed: {_safe_message(exc)}") from exc
+
+    def _metadata(
+        self,
+        response: Any,
+        started: float,
+        *,
+        structured: bool,
+        error: str | None = None,
+        provider_success: bool = True,
+        exception_type: str | None = None,
+        exception_cause_type: str | None = None,
+        exception_cause_message: str | None = None,
+        errno: int | str | None = None,
+        raw_content_length: int | None = None,
+        request_id: str | None = None,
+        http_status: int | None = None,
+        exception_chain: tuple[dict[str, Any], ...] = (),
+    ) -> BinderCallMetadata:
+        usage = getattr(response, "usage", None) if response is not None else None
+        details = getattr(usage, "completion_tokens_details", None) if usage is not None else None
+        reasoning = getattr(details, "reasoning_tokens", None) if details is not None else None
+        choice = response.choices[0] if response is not None and getattr(response, "choices", None) else None
+        finish_reason = getattr(choice, "finish_reason", None) if choice is not None else None
+        response_http_status = getattr(response, "status_code", None) if response is not None else None
+        resolved_http_status = http_status if http_status is not None else response_http_status
+        return BinderCallMetadata(
+            provider=self.provider_name,
+            model=self.model_name,
+            provider_role=self.provider_role,
+            model_role=self.model_role,
+            latency_ms=(time.perf_counter() - started) * 1000,
+            provider_response_success=provider_success,
+            structured_output_success=structured,
+            input_tokens=_usage_int(usage, "prompt_tokens"),
+            output_tokens=_usage_int(usage, "completion_tokens"),
+            total_tokens=_usage_int(usage, "total_tokens"),
+            reasoning_tokens=int(reasoning) if isinstance(reasoning, (int, float)) else None,
+            error=error,
+            exception_type=exception_type,
+            exception_cause_type=exception_cause_type,
+            exception_cause_message=exception_cause_message,
+            errno=errno if isinstance(errno, (int, str)) else None,
+            http_status=int(resolved_http_status) if isinstance(resolved_http_status, (int, float)) else None,
+            finish_reason=str(finish_reason) if finish_reason is not None else None,
+            raw_content_length=raw_content_length,
+            request_id=request_id,
+            exception_chain=exception_chain,
+        )
+
+
 class BailianBinderProvider:
     """Alibaba Bailian strict JSON provider for evidence binding only."""
 

@@ -49,6 +49,10 @@ class APIProvider:
         self.structured_output = structured_output
         self.last_call: SupervisorCallMetadata | None = None
 
+    def close(self) -> None:
+        """Release the underlying HTTP client connection pool."""
+        self.client.close()
+
     def plan(self, question: str) -> SupervisorPlan:
         started = time.perf_counter()
         raw: str | None = None
