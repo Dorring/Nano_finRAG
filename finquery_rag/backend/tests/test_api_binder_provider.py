@@ -1,4 +1,4 @@
-﻿"""Unit tests for APIBinderProvider (OpenAI-compatible evidence binder).
+"""Unit tests for APIBinderProvider (OpenAI-compatible evidence binder).
 
 These tests use unittest.mock to avoid real network calls.  The module under
 test (binder_provider) imports openai lazily so the tests are CPU-safe even
@@ -28,7 +28,7 @@ from rag_v2.evidence.binder_provider import (
 
 def _valid_payload() -> dict[str, Any]:
     return {
-        "status": "COMPLETE",
+        "status": "BOUND",
         "slot_bindings": {"revenue": ["evidence-1"]},
         "missing_slots": [],
         "ambiguous_slots": [],
@@ -77,7 +77,7 @@ def test_bind_returns_correct_evidence_binding_on_valid_json() -> None:
     result = provider.bind({"slots": [{"slot_id": "revenue"}], "candidates": []})
 
     assert result.binding is not None
-    assert result.binding.status == "COMPLETE"
+    assert result.binding.status == "BOUND"
     assert result.binding.slot_bindings == {"revenue": ("evidence-1",)}
     assert result.metadata.provider == "api"
     assert result.metadata.provider_response_success is True
@@ -100,7 +100,7 @@ def test_bind_discards_reasoning_content_and_reads_only_content() -> None:
 
     # Result must be built purely from content, not reasoning_content.
     assert result.binding is not None
-    assert result.binding.status == "COMPLETE"
+    assert result.binding.status == "BOUND"
 
 
 def test_close_releases_underlying_client() -> None:
