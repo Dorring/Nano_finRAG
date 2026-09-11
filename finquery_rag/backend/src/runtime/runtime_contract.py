@@ -450,6 +450,7 @@ class FinancialQueryResult:
     answer: str | None = None
     clarification: ClarificationPayload | None = None
     citations: list[dict[str, Any]] = field(default_factory=list)
+    calculations: list[dict[str, Any]] = field(default_factory=list)
     evidence_ids: list[str] = field(default_factory=list)
     citation_ids: list[str] = field(default_factory=list)
     calculation_ids: list[str] = field(default_factory=list)
@@ -511,6 +512,7 @@ class FinancialQueryResult:
         object.__setattr__(self, "clarification", clarification)
 
         object.__setattr__(self, "citations", _normalize_citations(self.citations))
+        object.__setattr__(self, "calculations", _normalize_citations(self.calculations))
         object.__setattr__(
             self,
             "evidence_ids",
@@ -607,6 +609,7 @@ class FinancialQueryResult:
                 None if self.clarification is None else self.clarification.to_dict()
             ),
             "citations": copy.deepcopy(self.citations),
+            "calculations": copy.deepcopy(self.calculations),
             "evidence_ids": list(self.evidence_ids),
             "citation_ids": list(self.citation_ids),
             "calculation_ids": list(self.calculation_ids),
@@ -635,6 +638,7 @@ class FinancialQueryResult:
             answer=value.get("answer"),
             clarification=value.get("clarification"),
             citations=value.get("citations"),
+            calculations=value.get("calculations"),
             evidence_ids=value.get("evidence_ids"),
             citation_ids=value.get("citation_ids"),
             calculation_ids=value.get("calculation_ids"),

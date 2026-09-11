@@ -12,12 +12,35 @@ _ISSUER_WORDS = re.compile(
     r"the\s+coca[- ]cola\s+company)\b(?:'s)?",
     re.IGNORECASE,
 )
-_PERIOD_WORDS = re.compile(r"\b(?:FY\s*|fiscal\s+|year ended\s+|during\s+)?(?:19|20)\d{2}\b", re.IGNORECASE)
+_MONTH = r"(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)"
+_PERIOD_WORDS = re.compile(
+    rf"\b(?:"
+    rf"(?:fy\s*)?(?:19|20)\d{{2}}[-/]\d{{1,2}}[-/]\d{{1,2}}"
+    rf"|(?:(?:fy\s*|fiscal\s+(?:year\s*)?|year\s+ended\s+)?"
+    rf"(?:{_MONTH}\s+\d{{1,2}},?\s+)?)?(?:19|20)\d{{2}}"
+    rf")\b",
+    re.IGNORECASE,
+)
+_SOURCE_WORDS = re.compile(
+    r"\b(?:filing|annual\s+report|10[- ]k|report|disclosure|statement|"
+    r"line\s+item|row|source\s+occurrence\s+\d+)\b",
+    re.IGNORECASE,
+)
+_QUERY_WORDS = re.compile(
+    r"\b(?:compare|comparison|versus|vs|calculate|compute|find|tell|give|show|"
+    r"given|associated|using|requested|disclosures?|retrieve|answer|temporal|scope|"
+    r"represent|their|it)\b",
+    re.IGNORECASE,
+)
 
 
-def _clean_phrase(value: str) -> str:
+def _clean_phrase(value: str, *, remove_periods: bool = True) -> str:
     value = _ISSUER_WORDS.sub(" ", value)
-    value = _PERIOD_WORDS.sub(" ", value)
+    value = re.sub(r"\b(?:aapl|amzn|googl|jpm|msft|nvda|pfe|tsla|v|ko)\b", " ", value, flags=re.I)
+    if remove_periods:
+        value = _PERIOD_WORDS.sub(" ", value)
+    value = _SOURCE_WORDS.sub(" ", value)
+    value = _QUERY_WORDS.sub(" ", value)
     value = re.sub(r"\b(?:reported|report|according to|the company|company's|company)\b", " ", value, flags=re.I)
     value = re.sub(r"\b(?:what|was|were|is|are|how much|how many|percentage|percent)\b", " ", value, flags=re.I)
     value = re.sub(r"\s+", " ", value).strip(" ,:;.-")
@@ -58,7 +81,10 @@ def _question_metric_candidates(question: str, operation: str | None, fallback: 
             cleaned = [_clean_phrase(piece) for piece in pieces if _clean_phrase(piece)]
             if len(cleaned) >= 2:
                 return cleaned
-    cleaned_fallback = [_clean_phrase(x) for x in fallback if _clean_phrase(x)]
+    # Query-feature extraction has already removed query-level periods while
+    # preserving quoted/date-like row labels. Do not erase those labels again
+    # when turning the profile into calculation operand slots.
+    cleaned_fallback = [_clean_phrase(x, remove_periods=False) for x in fallback if _clean_phrase(x, remove_periods=False)]
     return cleaned_fallback
 
 

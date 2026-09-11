@@ -5,10 +5,10 @@ Specialist Generator (Step-156, checkpoint SHA:
 3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a)
 into the financial RAG runtime under the FinancialGenerationViewV1 semantic contract.
 """
+
 from __future__ import annotations
 
 import hashlib
-import os
 from pathlib import Path
 import re
 import sys
@@ -21,9 +21,12 @@ NANOCHAT_REPO = Path("/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat")
 if str(NANOCHAT_REPO) not in sys.path:
     sys.path.insert(0, str(NANOCHAT_REPO))
 
-extra_site = "/mnt/disk/mxf/anaconda3/lib/python3.12/site-packages"
-if extra_site not in sys.path:
-    sys.path.append(extra_site)
+# Keep the backend interpreter isolated.  Appending an unrelated Anaconda
+# site-packages directory here made imports process-global and allowed binary
+# extensions built against NumPy 1.x (for example numexpr/bottleneck) to
+# shadow the backend venv's NumPy 2.x dependencies.  The canonical backend
+# environment already contains the NanoChat runtime dependencies; if it does
+# not, startup should fail fast instead of silently mixing environments.
 
 try:
     from nanochat.checkpoint_manager import build_model
@@ -38,9 +41,7 @@ EXPECTED_CHECKPOINT_PATH = Path(
 EXPECTED_CHECKPOINT_SHA256 = (
     "3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a"
 )
-EXPECTED_VIEW_SHA = (
-    "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4"
-)
+EXPECTED_VIEW_SHA = "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4"
 
 
 def sha256_file(path: Path) -> str:
@@ -53,6 +54,7 @@ def sha256_file(path: Path) -> str:
 
 class LocalSpecialistUnavailableError(Exception):
     """Raised when the Local Financial Specialist cannot be loaded or verified."""
+
     pass
 
 
@@ -190,10 +192,14 @@ class LocalSpecialistGenerator:
         lines.append("[ANSWER RULES]")
         lines.append("1. Use only the verified evidence and calculation above.")
         lines.append("2. Do not introduce outside financial knowledge.")
-        lines.append("3. Preserve supplied numbers, periods, units, currencies and scales exactly.")
+        lines.append(
+            "3. Preserve supplied numbers, periods, units, currencies and scales exactly."
+        )
         lines.append("4. Do not recalculate canonical calculation results.")
         lines.append("5. Cite factual claims using the supplied [E#] / [C#] IDs.")
-        lines.append("6. If required evidence is missing, explicitly state that the provided evidence is insufficient.")
+        lines.append(
+            "6. If required evidence is missing, explicitly state that the provided evidence is insufficient."
+        )
         lines.append("7. Answer concisely.")
 
         return "\n".join(lines)
@@ -210,7 +216,9 @@ class LocalSpecialistGenerator:
                 "LocalSpecialistGenerator is not loaded. Call load() first."
             )
 
-        rendered_input = self.render_prompt(question, evidence_items, calculation_result)
+        rendered_input = self.render_prompt(
+            question, evidence_items, calculation_result
+        )
 
         prompt_tokens = (
             [self.bos_token_id, self.user_start_id]
@@ -228,7 +236,7 @@ class LocalSpecialistGenerator:
             )
         latency = time.perf_counter() - t0
 
-        new_tokens = gen_tokens[0][len(prompt_tokens):]
+        new_tokens = gen_tokens[0][len(prompt_tokens) :]
         raw_output = self.tokenizer.decode(new_tokens)
 
         finish_reason = "length" if len(new_tokens) >= self.max_new_tokens else "stop"
@@ -239,7 +247,9 @@ class LocalSpecialistGenerator:
             "tokens_generated": len(new_tokens),
             "finish_reason": finish_reason,
             "rendered_input_length": len(prompt_tokens),
-            "checkpoint_sha256_prefix": self.checkpoint_sha256[:16] if self.checkpoint_sha256 else "",
+            "checkpoint_sha256_prefix": self.checkpoint_sha256[:16]
+            if self.checkpoint_sha256
+            else "",
             "role": self.ROLE,
         }
 
@@ -248,8 +258,12 @@ class LocalSpecialistGenerator:
         vram_alloc = 0.0
         vram_reserved = 0.0
         if torch.cuda.is_available() and self.device.type == "cuda":
-            vram_alloc = round(torch.cuda.memory_allocated(self.device) / (1024 * 1024), 2)
-            vram_reserved = round(torch.cuda.memory_reserved(self.device) / (1024 * 1024), 2)
+            vram_alloc = round(
+                torch.cuda.memory_allocated(self.device) / (1024 * 1024), 2
+            )
+            vram_reserved = round(
+                torch.cuda.memory_reserved(self.device) / (1024 * 1024), 2
+            )
 
         return {
             "model_loaded": self._model_loaded,

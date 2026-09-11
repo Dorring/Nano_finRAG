@@ -20,6 +20,7 @@ import gzip
 import hashlib
 import json
 import os
+import re
 import sqlite3
 import threading
 from collections.abc import Iterable, Mapping, MutableMapping
@@ -87,6 +88,36 @@ def _stable_unique(values: Iterable[Any]) -> tuple[str, ...]:
             seen.add(text)
             result.append(text)
     return tuple(result)
+
+
+_SPLIT_CURRENCY_NUMBER_RE = re.compile(
+    r"^\s*(?P<sign>\(?)\s*"
+    r"(?P<head>\d[\d,.]*)\s*"
+    r"(?P<currency>[$€£¥])\s*"
+    r"(?P<tail>\d+)\s*(?P<close>\)?)\s*$"
+)
+
+
+def _normalize_split_currency_number(value: Any) -> str | None:
+    """Repair one lossless PDF text-extraction artifact in a numeric field.
+
+    Some table extractors place a currency glyph between the last digits of a
+    value when the glyph and trailing digit occupy separate PDF text spans
+    (for example ``281,72$ 4`` for the source value ``281,724``).  This helper
+    only removes that interleaved glyph and whitespace; it does not infer a
+    missing digit, scale, currency, or value from answer text.  Values that do
+    not match the complete, unambiguous shape are left untouched.
+    """
+
+    if not isinstance(value, str):
+        return None
+    match = _SPLIT_CURRENCY_NUMBER_RE.fullmatch(value)
+    if match is None:
+        return None
+    if bool(match.group("sign")) != bool(match.group("close")):
+        return None
+    combined = f"{match.group('head')}{match.group('tail')}"
+    return f"-{combined}" if match.group("sign") else combined
 
 
 def _env(environ: Mapping[str, str], name: str, default: str | None = None) -> str | None:
@@ -350,6 +381,21 @@ class StructuredFactStore:
                 # numbers merely because an alias was used.
                 record[canonical] = copy.deepcopy(value)
                 break
+
+        # Preserve the extractor's raw field for physical-source auditing, but
+        # expose a canonical numeric field when a lossless currency-split
+        # artifact is present.  The runtime and calculator consume the
+        # structured canonical fields; no answer text is inspected here.
+        for source_field in ("parsed_numeric_value", "value", "raw_value"):
+            normalized_value = _normalize_split_currency_number(
+                record.get(source_field),
+            )
+            if normalized_value is None:
+                continue
+            record["parsed_numeric_value"] = normalized_value
+            record["value"] = normalized_value
+            record["value_normalization"] = "collapse_interleaved_currency"
+            break
 
         if not _first_text(
             record.get("source_id"),
@@ -667,6 +713,7 @@ def _configuration_fingerprint(environ: Mapping[str, str]) -> str:
         "TRUSTED_V2_SPECIALIST_DEVICE",
         "TRUSTED_V2_SPECIALIST_MAX_NEW_TOKENS",
         "TRUSTED_V2_SPECIALIST_TEMPERATURE",
+        "EMBEDDING_MODEL_NAME",
         "V2_SUPERVISOR_PROVIDER",
         "V2_SUPERVISOR_BASE_URL",
         "V2_SUPERVISOR_API_KEY",

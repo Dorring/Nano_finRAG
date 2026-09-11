@@ -110,6 +110,46 @@ class ScopeMention:
     surface_form: str
 
 
+class EvidenceScope(str, Enum):
+    """Small, source-derived scope classification for an admitted fact.
+
+    The query/plan alignment gate cannot infer a business scope from a
+    metric name alone.  This enum is therefore deliberately conservative:
+    ``UNKNOWN`` means that the indexed source did not expose enough row
+    context to classify the fact, not that the fact is consolidated.
+    """
+
+    CONSOLIDATED = "consolidated"
+    SEGMENT = "segment"
+    UNKNOWN = "unknown"
+
+
+@dataclass(frozen=True)
+class EvidenceScopeClassification:
+    """Deterministic classification of source row/reporting scope."""
+
+    scope: EvidenceScope = EvidenceScope.UNKNOWN
+    scope_label: str | None = None
+    source: str | None = None
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.scope, EvidenceScope):
+            object.__setattr__(self, "scope", EvidenceScope(self.scope))
+        if self.scope_label is not None:
+            label = str(self.scope_label).strip()
+            object.__setattr__(self, "scope_label", label or None)
+        if self.source is not None:
+            source = str(self.source).strip()
+            object.__setattr__(self, "source", source or None)
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "scope": self.scope.value,
+            "scope_label": self.scope_label,
+            "source": self.source,
+        }
+
+
 @dataclass(frozen=True)
 class QuerySemanticFrame:
     """The deterministic semantic facts used by the alignment gate."""
@@ -290,6 +330,8 @@ class BoundEvidenceSemanticCheck:
     query_metric_ids: tuple[str, ...] = ()
     query_entity_ids: tuple[str, ...] = ()
     query_period_ids: tuple[str, ...] = ()
+    query_scope_ids: tuple[str, ...] = ()
+    fact_scope_ids: tuple[str, ...] = ()
 
     @property
     def allowed(self) -> bool:
@@ -304,6 +346,8 @@ class BoundEvidenceSemanticCheck:
             "query_metric_ids": list(self.query_metric_ids),
             "query_entity_ids": list(self.query_entity_ids),
             "query_period_ids": list(self.query_period_ids),
+            "query_scope_ids": list(self.query_scope_ids),
+            "fact_scope_ids": list(self.fact_scope_ids),
         }
 
 
@@ -338,6 +382,8 @@ _METRIC_DEFINITIONS: tuple[MetricDefinition, ...] = (
         "revenue",
         (
             "total revenue",
+            "total revenues",
+            "total net sales",
             "net sales",
             "sales revenue",
             "revenue",
@@ -347,6 +393,29 @@ _METRIC_DEFINITIONS: tuple[MetricDefinition, ...] = (
             "销售收入",
             "营收",
             "净销售额",
+        ),
+    ),
+    # ``net revenue`` is intentionally a separate canonical concept.  It is
+    # common in payment/financial-service filings (for example Visa), but it
+    # is not universally interchangeable with gross or aggregate revenue.
+    # Keeping it distinct prevents a plan for generic ``revenue`` from being
+    # silently accepted for an explicitly requested net measure while still
+    # allowing the exact filing label to align end to end.
+    MetricDefinition(
+        "net_revenue",
+        (
+            "net revenue",
+            "net revenues",
+            # Filing-specific aggregate labels used by financial-services
+            # and beverage issuers. These remain under the distinct
+            # ``net_revenue`` concept rather than collapsing into generic
+            # ``revenue``.
+            "total net revenue",
+            "total net revenues",
+            "net operating revenue",
+            "net operating revenues",
+            "total net operating revenue",
+            "total net operating revenues",
         ),
     ),
     MetricDefinition(
@@ -418,7 +487,29 @@ _ENTITY_DEFINITIONS: tuple[_VocabularyDefinition, ...] = (
     _VocabularyDefinition("orcl", ("oracle", "orcl", "甲骨文")),
     _VocabularyDefinition("nvda", ("nvidia", "nvda", "英伟达")),
     _VocabularyDefinition("meta", ("meta", "facebook", "脸书")),
-    _VocabularyDefinition("ko", ("coca cola", "coca-cola", "ko")),
+    _VocabularyDefinition(
+        "ko",
+        (
+            "coca cola",
+            "coca-cola",
+            "coca cola company",
+            "the coca cola company",
+            "the coca-cola company",
+            "ko",
+        ),
+    ),
+    _VocabularyDefinition(
+        "jpmorganchase",
+        (
+            "jpmorgan",
+            "jpmorgan chase",
+            "jpmorganchase",
+            "j p morgan",
+            "jpmorgan chase co",
+            "jpmorgan chase and co",
+        ),
+    ),
+    _VocabularyDefinition("visa", ("visa", "visa inc", "visa inc company")),
     _VocabularyDefinition("ford", ("ford", "福特")),
 )
 
@@ -431,7 +522,10 @@ _OPERATION_DEFINITIONS: tuple[_VocabularyDefinition, ...] = (
             "year-over-year",
             "yoy",
             "grew",
+            "grow",
             "growth",
+            "increased",
+            "increase",
             "同比",
             "增长率",
         ),
@@ -665,6 +759,355 @@ def canonical_scope_id(value: Any) -> str | None:
     """Resolve a known reporting-scope qualifier."""
 
     return _canonical_vocabulary_id(value, _SCOPE_INDEX)
+
+
+_TOTAL_REVENUE_MARKERS = frozenset(
+    {
+        "total revenue",
+        "total revenues",
+        "total net sales",
+        "total sales",
+        "consolidated revenue",
+        "consolidated revenues",
+        "consolidated net sales",
+    }
+)
+_SEGMENT_HEADER_MARKERS = frozenset(
+    {
+        "segment",
+        "segments",
+        "business segment",
+        "business segments",
+        "revenue by segment",
+        "revenues by segment",
+        "segment revenue",
+        "segment revenues",
+    }
+)
+_ROW_HEADER_MARKERS = frozenset(
+    {
+        "metric",
+        "metrics",
+        "line item",
+        "line items",
+        "description",
+        "descriptions",
+        "item",
+        "items",
+    }
+)
+_REVENUE_ROW_MARKERS = frozenset(
+    {
+        "revenue",
+        "revenues",
+        "net sales",
+        "sales",
+        "total revenue",
+        "total revenues",
+        "total net sales",
+        "total sales",
+    }
+)
+
+
+def _scope_mapping_values(
+    fact: Mapping[str, Any],
+) -> tuple[Mapping[str, Any], ...]:
+    """Return the fact and linked source mappings without following text."""
+
+    values: list[Mapping[str, Any]] = [fact]
+    for key in ("metadata", "retrieval_context", "source_metadata"):
+        value = fact.get(key)
+        if isinstance(value, Mapping):
+            values.append(value)
+    return tuple(values)
+
+
+def _scope_texts(fact: Mapping[str, Any]) -> tuple[str, ...]:
+    texts: list[str] = []
+    for mapping in _scope_mapping_values(fact):
+        for key in (
+            "retrieval_text",
+            "source_text",
+            "raw_content",
+            "raw_text",
+            "content",
+            "row_label",
+            "table_title",
+            "statement_title",
+            "section_title",
+        ):
+            value = mapping.get(key)
+            if isinstance(value, str) and value.strip():
+                texts.append(value)
+        nested_texts = mapping.get("retrieval_texts")
+        if isinstance(nested_texts, (list, tuple)):
+            texts.extend(
+                str(item) for item in nested_texts if isinstance(item, str) and item.strip()
+            )
+    return tuple(dict.fromkeys(texts))
+
+
+def _scope_labels(value: Any) -> tuple[str, ...]:
+    if value is None:
+        return ()
+    if isinstance(value, str):
+        values = (value,)
+    elif isinstance(value, (list, tuple, set)):
+        values = tuple(str(item) for item in value)
+    else:
+        values = (str(value),)
+    return tuple(item.strip() for item in values if str(item).strip())
+
+
+def _pipe_row_scope(text: str) -> EvidenceScopeClassification | None:
+    """Classify an explicitly labelled pipe-delimited source row.
+
+    Candidate-aligned views preserve the original table row.  Looking at the
+    labelled row/cell structure is safer than searching arbitrary prose and
+    does not use an answer or a model-generated summary.
+    """
+
+    # Candidate-aligned structured views may serialize a table row over two
+    # lines: a section/segment label followed by the pipe-delimited metric
+    # row. Keep only a plausible immediately preceding label. In particular,
+    # ``Document:``, ``Page:``, and ``Source:`` metadata lines must never leak
+    # into the scope label; the previous implementation did exactly that when
+    # a source row had a ``Page:`` line between the header and the table.
+    preceding_label: str | None = None
+    generic_labels = _ROW_HEADER_MARKERS | _SEGMENT_HEADER_MARKERS | {
+        "income statement",
+        "statements of income",
+        "consolidated statements of income",
+        "consolidated statements of operations",
+        "microsoft corporation",
+        "apple inc",
+        "tesla, inc",
+        "fiscal year",
+        "fiscal years",
+        "year",
+        "years",
+        "period",
+        "periods",
+    }
+
+    def label_candidate(value: str) -> str | None:
+        candidate = " ".join(value.split()).strip(" |:-")
+        normalized = _normalize_surface(candidate)
+        if not candidate or not normalized:
+            return None
+        if normalized in generic_labels:
+            return None
+        if re.match(
+            r"^(?:document|page|source|fact type|metric|period|periods|"
+            r"value|values|fact|table|row|rows)\s*:",
+            candidate,
+            flags=re.IGNORECASE,
+        ):
+            return None
+        if normalized in _TOTAL_REVENUE_MARKERS or normalized in _REVENUE_ROW_MARKERS:
+            return None
+        return candidate
+
+    for line in text.splitlines():
+        stripped_line = line.strip()
+        if stripped_line and "|" not in stripped_line:
+            preceding_label = label_candidate(stripped_line)
+        if "|" not in line:
+            continue
+        cells = [item.strip() for item in line.split("|")]
+        cells = [item for item in cells if item]
+        if not cells or all(set(item) <= {"-", ":"} for item in cells):
+            continue
+        normalized_cells = [_normalize_surface(item) for item in cells]
+        # A one-cell pipe row is how the candidate index encodes a section or
+        # segment header (for example ``| Productivity and Business
+        # Processes |``). Remember it for the following metric row rather
+        # than accidentally retaining ``Page: N`` from the preamble.
+        if len(cells) == 1:
+            normalized_label = normalized_cells[0]
+            if normalized_label in _TOTAL_REVENUE_MARKERS or normalized_label == "total":
+                return EvidenceScopeClassification(
+                    EvidenceScope.CONSOLIDATED,
+                    source="structured_total_row",
+                )
+            preceding_label = label_candidate(cells[0])
+            continue
+        if any(item in _TOTAL_REVENUE_MARKERS for item in normalized_cells):
+            return EvidenceScopeClassification(
+                EvidenceScope.CONSOLIDATED,
+                source="structured_total_row",
+            )
+        metric_indices = [
+            index
+            for index, item in enumerate(normalized_cells)
+            if item in _REVENUE_ROW_MARKERS
+        ]
+        if not metric_indices:
+            continue
+        metric_index = metric_indices[0]
+        if metric_index <= 0 and not (metric_index == 0 and preceding_label):
+            continue
+        if metric_index == 0 and preceding_label:
+            return EvidenceScopeClassification(
+                EvidenceScope.SEGMENT,
+                scope_label=preceding_label,
+                source="structured_segment_header",
+            )
+        label = cells[0]
+        normalized_label = normalized_cells[0]
+        if (
+            not normalized_label
+            or normalized_label in _ROW_HEADER_MARKERS
+            or normalized_label in _REVENUE_ROW_MARKERS
+        ):
+            continue
+        if normalized_label in _TOTAL_REVENUE_MARKERS or normalized_label == "total":
+            return EvidenceScopeClassification(
+                EvidenceScope.CONSOLIDATED,
+                source="structured_total_row",
+            )
+        if preceding_label:
+            return EvidenceScopeClassification(
+                EvidenceScope.SEGMENT,
+                scope_label=preceding_label,
+                source="structured_segment_header",
+            )
+        return EvidenceScopeClassification(
+            EvidenceScope.SEGMENT,
+            scope_label=label,
+            source="structured_segment_row",
+        )
+    return None
+
+
+def classify_evidence_scope(
+    fact: Mapping[str, Any],
+) -> EvidenceScopeClassification:
+    """Classify a fact using only explicit structured/source row context.
+
+    ``UNKNOWN`` is intentionally preserved when the source does not expose a
+    trustworthy scope.  In particular, this function never treats an
+    unqualified ``Revenue`` metric as a company total by default.
+    """
+
+    if not isinstance(fact, Mapping):
+        raise TypeError("fact must be a mapping")
+    mappings = _scope_mapping_values(fact)
+    if any(bool(mapping.get("scope_conflict")) for mapping in mappings):
+        return EvidenceScopeClassification(
+            EvidenceScope.UNKNOWN,
+            source="conflicting_source_scope",
+        )
+    for mapping in mappings:
+        for key in ("scope", "normalized_scope", "raw_scope"):
+            for value in _scope_labels(mapping.get(key)):
+                scope_id = canonical_scope_id(value)
+                normalized = _normalize_surface(value)
+                if scope_id in {"consolidated", "company_total"} or normalized in {
+                    "total",
+                    "aggregate",
+                    "aggregated",
+                }:
+                    return EvidenceScopeClassification(
+                        EvidenceScope.CONSOLIDATED,
+                        source=f"explicit_{key}",
+                    )
+                if scope_id == "segment" or "segment" in normalized or "分部" in normalized:
+                    label = next(
+                        (
+                            item
+                            for label_key in ("scope_label", "segment_label", "segment")
+                            for item in _scope_labels(mapping.get(label_key))
+                            if _normalize_surface(item) not in {"segment", "segments", "分部"}
+                        ),
+                        None,
+                    )
+                    return EvidenceScopeClassification(
+                        EvidenceScope.SEGMENT,
+                        scope_label=label or (None if normalized in {"segment", "segments", "分部"} else value),
+                        source=f"explicit_{key}",
+                    )
+        for key in ("segment", "segment_label", "segments"):
+            labels = _scope_labels(mapping.get(key))
+            if labels:
+                return EvidenceScopeClassification(
+                    EvidenceScope.SEGMENT,
+                    scope_label=labels[0],
+                    source=f"explicit_{key}",
+                )
+
+    # A metric path of ``Total`` is source structure, not a metric synonym.
+    # It is only promoted to consolidated scope here; metric normalization is
+    # handled by the R4 adapter when the row is explicitly Total Revenue.
+    for mapping in mappings:
+        paths: list[str] = []
+        for key in ("row_path", "row_hierarchy", "metric_path", "metric_paths"):
+            paths.extend(_scope_labels(mapping.get(key)))
+        normalized_paths = {_normalize_surface(item) for item in paths}
+        if any(
+            path in {"total", "total revenue", "total revenues", "total net sales"}
+            for path in normalized_paths
+        ):
+            return EvidenceScopeClassification(
+                EvidenceScope.CONSOLIDATED,
+                source="structured_metric_path",
+            )
+
+    for text in _scope_texts(fact):
+        normalized = _normalize_surface(text)
+        if any(marker in normalized for marker in _TOTAL_REVENUE_MARKERS):
+            return EvidenceScopeClassification(
+                EvidenceScope.CONSOLIDATED,
+                source="structured_total_text",
+            )
+        row_scope = _pipe_row_scope(text)
+        if row_scope is not None:
+            return row_scope
+        if any(marker in normalized for marker in _SEGMENT_HEADER_MARKERS):
+            return EvidenceScopeClassification(
+                EvidenceScope.SEGMENT,
+                source="structured_segment_text",
+            )
+    return EvidenceScopeClassification()
+
+
+def query_allows_evidence_scope(
+    query: str,
+    frame: QuerySemanticFrame,
+    classification: EvidenceScopeClassification,
+    *,
+    known_segment_labels: Iterable[str] = (),
+) -> bool:
+    """Apply the default company-total convention without guessing labels.
+
+    ``known_segment_labels`` is source-derived context from the current
+    candidate packet. It lets the firewall reject an aggregate candidate when
+    the user explicitly named a concrete segment, even when the query did not
+    contain the generic word ``segment``.
+    """
+
+    normalized_query = _normalize_surface(query)
+    if classification.scope is EvidenceScope.UNKNOWN:
+        # An explicit scope in the question must be verifiable in the source.
+        return bool(not frame.scope_ids)
+    requested = set(frame.scope_ids)
+    explicit_segment = "segment" in requested or any(
+        label
+        and _alias_matches(normalized_query, _normalize_surface(label))
+        for label in known_segment_labels
+    )
+    if classification.scope is EvidenceScope.CONSOLIDATED:
+        return not explicit_segment
+    if explicit_segment:
+        return True
+    if classification.scope_label:
+        normalized_label = _normalize_surface(classification.scope_label)
+        if normalized_label and _alias_matches(normalized_query, normalized_label):
+            return True
+    # An unqualified financial fact conventionally means the company total;
+    # a segment candidate must never silently satisfy it.
+    return False
 
 
 def canonical_period_id(value: Any) -> str | None:
@@ -1060,6 +1503,7 @@ def align_bound_evidence_to_query(
             query_metric_ids=frame.metric_ids,
             query_entity_ids=frame.entity_ids,
             query_period_ids=frame.period_ids,
+            query_scope_ids=frame.scope_ids,
         )
 
     slot_map = {slot.slot_id: slot for slot in plan.required_slots}
@@ -1069,6 +1513,13 @@ def align_bound_evidence_to_query(
         if metric_id
     }
     mismatches: list[str] = []
+    fact_scope_ids: list[str] = []
+    known_segment_labels = tuple(
+        label
+        for fact in fact_map.values()
+        for label in (classify_evidence_scope(fact).scope_label,)
+        if label
+    )
     for slot_id, fact_ids in slot_bindings.items():
         slot = slot_map.get(str(slot_id))
         if slot is None:
@@ -1082,6 +1533,28 @@ def align_bound_evidence_to_query(
             if fact is None:
                 mismatches.append(f"bound_fact_not_supplied:{normalized_id}")
                 continue
+            scope_classification = classify_evidence_scope(fact)
+            fact_scope_ids.append(scope_classification.scope.value)
+            if scope_classification.source == "conflicting_source_scope":
+                mismatches.append(f"fact_scope_conflict:{normalized_id}")
+            elif not query_allows_evidence_scope(
+                query,
+                frame,
+                scope_classification,
+                known_segment_labels=known_segment_labels,
+            ):
+                if scope_classification.scope is EvidenceScope.SEGMENT:
+                    mismatches.append(
+                        f"fact_segment_scope_not_requested:{normalized_id}"
+                    )
+                elif scope_classification.scope is EvidenceScope.CONSOLIDATED:
+                    mismatches.append(
+                        f"fact_consolidated_scope_not_requested:{normalized_id}"
+                    )
+                else:
+                    mismatches.append(
+                        f"fact_scope_unverifiable:{normalized_id}"
+                    )
             fact_metric = canonical_metric_id(
                 _fact_value(fact, "metric", "normalized_metric", "raw_metric")
             )
@@ -1132,12 +1605,16 @@ def align_bound_evidence_to_query(
         query_metric_ids=frame.metric_ids,
         query_entity_ids=frame.entity_ids,
         query_period_ids=frame.period_ids,
+        query_scope_ids=frame.scope_ids,
+        fact_scope_ids=tuple(dict.fromkeys(fact_scope_ids)),
     )
 
 
 __all__ = [
     "BoundEvidenceAlignmentStatus",
     "BoundEvidenceSemanticCheck",
+    "EvidenceScope",
+    "EvidenceScopeClassification",
     "EntityMention",
     "MetricMention",
     "MetricDefinition",
@@ -1155,6 +1632,8 @@ __all__ = [
     "canonical_operation_id",
     "canonical_period_id",
     "canonical_scope_id",
+    "classify_evidence_scope",
     "coerce_unknown_semantic_policy",
     "extract_query_semantic_frame",
+    "query_allows_evidence_scope",
 ]

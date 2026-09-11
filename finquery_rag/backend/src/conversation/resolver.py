@@ -35,8 +35,26 @@ OUT_OF_SCOPE_MARKERS = [
 KNOWN_ENTITIES = [
     "apple", "aapl", "microsoft", "msft", "tesla", "tsla",
     "google", "googl", "amazon", "amzn", "coca-cola", "ko",
-    "oracle", "orcl", "ford", "pepsi", "sap", "nvidia", "nvda", "meta"
+    "oracle", "orcl", "ford", "pepsi", "sap", "nvidia", "nvda", "meta",
+    "jpmorgan", "jpmorgan chase", "pfizer", "pfe", "visa", "v",
 ]
+
+# Operation words such as ``growth`` and ``compare`` are also dependency
+# markers (they can describe a follow-up like "how much did it grow?").  A
+# complete first-turn question must therefore be recognised by the semantic
+# anchors it explicitly supplies, rather than by word count alone.
+EXPLICIT_PERIOD_PATTERNS = (
+    r"\bfy\s*\d{2,4}\b",
+    r"\b(?:q[1-4]|quarter\s+[1-4])\b",
+    r"\b(?:19|20)\d{2}\b",
+)
+
+EXPLICIT_METRIC_MARKERS = (
+    "revenue", "sales", "income", "profit", "earnings", "margin",
+    "assets", "liabilities", "equity", "cash", "debt", "expense",
+    "expenses", "ebit", "ebitda", "eps", "volume", "transactions",
+    "dividend", "shares", "yield", "operating", "gross", "net",
+)
 
 
 class ContextualQueryResolver:
@@ -48,6 +66,15 @@ class ContextualQueryResolver:
     def is_self_contained_fast_path(self, query: str) -> bool:
         """Determines if a query is self-contained and can bypass LLM resolution."""
         q_lower = query.lower().strip()
+
+        # Explicit first-turn financial questions may contain words such as
+        # ``growth``, ``compare`` or ``previous`` as part of a fully specified
+        # calculation.  Those words are dependency markers for genuinely
+        # elliptical follow-ups, but must not force an already complete query
+        # through the conversation-context gate.  Requiring an entity, an
+        # explicit period and a financial metric keeps the bypass conservative.
+        if self._has_explicit_financial_context(q_lower):
+            return True
         
         for pattern in DEPENDENCY_MARKERS:
             if re.search(pattern, q_lower):
@@ -58,6 +85,28 @@ class ContextualQueryResolver:
             return False
             
         return True
+
+    @staticmethod
+    def _has_explicit_financial_context(query: str) -> bool:
+        """Return whether *query* carries the anchors needed for a first turn.
+
+        This is intentionally a small deterministic guard, not a replacement
+        for Supervisor semantic planning.  It only prevents the lifecycle
+        layer from treating an explicit calculation question as an ellipsis.
+        The financial runtime still performs its own plan, retrieval and
+        evidence validation.
+        """
+        q_lower = str(query).lower()
+        # Match entity aliases as tokens.  In particular, Visa's one-letter
+        # ticker ``v`` must not match the ``v`` inside unrelated words such as
+        # ``revenue``.
+        has_entity = any(
+            re.search(rf"(?<!\w){re.escape(entity)}(?!\w)", q_lower)
+            for entity in KNOWN_ENTITIES
+        )
+        has_period = any(re.search(pattern, q_lower) for pattern in EXPLICIT_PERIOD_PATTERNS)
+        has_metric = any(marker in q_lower for marker in EXPLICIT_METRIC_MARKERS)
+        return has_entity and has_period and has_metric
 
     def resolve(
         self,

@@ -34,6 +34,7 @@ _SHARE = (
 )
 _DIFFERENCE = (
     "difference between",
+    "their difference",
     "by how much",
     "how much higher",
     "how much lower",
@@ -42,7 +43,7 @@ _DIFFERENCE = (
     "subtract",
     "minus",
 )
-_SUM = ("combined total", "sum of", "total of", "together", "in aggregate")
+_SUM = ("combined total", "sum of", "their sum", "total of", "together", "in aggregate")
 _AVERAGE = ("average of", "mean of", "average across")
 _EXPLICIT = ("calculate", "compute", "derive", "work out")
 _RATIO = (

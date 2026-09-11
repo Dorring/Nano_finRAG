@@ -5,7 +5,11 @@ import pytest
 from rag_v2.contracts import Action, Intent, RequiredSlot, SupervisorPlan
 from rag_v2.contracts.errors import ContractError, PlanValidationError, StateTransitionError
 from rag_v2.orchestration import State, StateMachine
-from rag_v2.supervisor import DeterministicFallbackProvider, SupervisorService, validate_plan_v2_01
+from rag_v2.supervisor import (
+    DeterministicFallbackProvider,
+    SupervisorService,
+    validate_plan_v2_01,
+)
 
 
 def slot(slot_id: str = "slot_1", role: str = "value") -> RequiredSlot:
@@ -91,3 +95,46 @@ def test_no_downstream_calls_are_part_of_provider_contract() -> None:
     assert run.metadata.provider == "deterministic_fallback"
     assert not hasattr(provider, "retrieve")
     assert not hasattr(provider, "calculate")
+
+
+def test_explicit_growth_query_repairs_contradictory_intent_and_roles() -> None:
+    query = "How much did Apple revenue grow from FY2024 to FY2025?"
+    # The first helper slot is FY2025, so provide a plan with deliberately
+    # reversed/opaque roles to exercise chronological role normalization.
+    malformed = SupervisorPlan(
+        Intent.MULTI_EVIDENCE,
+        (
+            RequiredSlot("newer", "revenue", "FY2025", "value", "numeric", None),
+            RequiredSlot("older", "revenue", "FY2024", "value", "numeric", None),
+        ),
+        "growth_rate",
+        Action.RETRIEVE,
+    )
+    run = SupervisorService(DeterministicFallbackProvider({query: malformed})).plan(query)
+
+    assert run.plan_valid is True
+    assert run.plan is not None
+    assert run.plan.intent is Intent.CALCULATION
+    assert [(item.period, item.role) for item in run.plan.required_slots] == [
+        ("FY2025", "current_period"),
+        ("FY2024", "base_period"),
+    ]
+    assert run.normalization is not None
+    assert run.normalization.strategy == "explicit_query_calculation_alignment"
+
+
+def test_contradictory_calculation_plan_without_explicit_operation_stays_invalid() -> None:
+    query = "Compare Apple revenue for FY2024 and FY2025."
+    malformed = SupervisorPlan(
+        Intent.MULTI_EVIDENCE,
+        (
+            RequiredSlot("newer", "revenue", "FY2025", "value", "numeric", None),
+            RequiredSlot("older", "revenue", "FY2024", "value", "numeric", None),
+        ),
+        "growth_rate",
+        Action.RETRIEVE,
+    )
+    run = SupervisorService(DeterministicFallbackProvider({query: malformed})).plan(query)
+
+    assert run.plan_valid is False
+    assert run.normalization is None

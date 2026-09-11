@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env bash
+#!/usr/bin/env bash
 # Start the FinQuery RAG backend (uvicorn) in a tmux session.
 set -euo pipefail
 

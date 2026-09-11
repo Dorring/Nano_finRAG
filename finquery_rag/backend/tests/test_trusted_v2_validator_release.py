@@ -123,6 +123,41 @@ def test_calculation_candidate_passes_and_preserves_c1_provenance() -> None:
     assert calculation.calls == 1
 
 
+def test_calculation_release_report_has_no_hidden_generation_hard_fail() -> None:
+    facts = {
+        "CURRENT": _fact("CURRENT", period="FY2024", slots=("current",), value="391"),
+        "PRIOR": _fact("PRIOR", period="FY2023", slots=("prior",), value="383"),
+    }
+    retrieval, binder, _, _, _ = _real_capabilities(
+        [["CURRENT", "PRIOR"]], facts, SelectingBinderProvider()
+    )
+    calculation = DeterministicCalculationCapability()
+    validator = TrustedReleaseValidationCapability()
+    plan = _plan(
+        _slot("current", period="FY2024", role="current"),
+        _slot("prior", period="FY2023", role="prior"),
+        intent=Intent.CALCULATION,
+        operation="growth_rate",
+    )
+    outcome = asyncio.run(
+        _coordinator(
+            "Compare years",
+            plan,
+            retrieval,
+            binder,
+            calculation=calculation,
+            generation=TrustedV2GenerationCapability(),
+            validator=validator,
+        ).execute(_request("Compare years", "tv2-05-calc-report"))
+    )
+
+    assert outcome.status is V2ExecutionStatus.READY_FOR_RELEASE
+    report = outcome.runtime_metadata["validation"]["generation_report"]
+    assert report["status"] == "PASS"
+    assert report["failure_codes"] == []
+    assert all(item["severity"] != "HARD_FAIL" for item in report["findings"])
+
+
 class _Specialist:
     def __init__(self, answer: str, citation_ids: list[str]) -> None:
         self.answer = answer

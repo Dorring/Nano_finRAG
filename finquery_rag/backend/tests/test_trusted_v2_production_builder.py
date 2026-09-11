@@ -66,6 +66,44 @@ def test_structured_fact_store_reads_gzipped_jsonl_and_normalizes_sealed_fields(
     assert store.materialize("candidate:1")["metric"] == "Revenue"
 
 
+def test_structured_fact_store_repairs_lossless_split_currency_value(
+    tmp_path: Path,
+) -> None:
+    row = _fact()
+    row.pop("parsed_numeric_value")
+    row["raw_value"] = "281,72$ 4"
+    row["value"] = "281,72$ 4"
+    path = tmp_path / "split-value.jsonl"
+    path.write_text(json.dumps(row), encoding="utf-8")
+
+    materialized = StructuredFactStore(path).materialize("candidate:1")
+
+    # Keep the physically extracted source token for auditability while using
+    # the losslessly collapsed structured value for rendering/calculation.
+    assert materialized["raw_value"] == "281,72$ 4"
+    assert materialized["value"] == "281,724"
+    assert materialized["parsed_numeric_value"] == "281,724"
+    assert materialized["value_normalization"] == "collapse_interleaved_currency"
+
+
+@pytest.mark.parametrize("value", ["$ 281,724", "USD 281,72$ 4", "281,72"])
+def test_structured_fact_store_does_not_guess_non_lossless_numeric_values(
+    tmp_path: Path,
+    value: str,
+) -> None:
+    row = _fact()
+    row.pop("parsed_numeric_value")
+    row["raw_value"] = value
+    row["value"] = value
+    path = tmp_path / "unchanged-value.jsonl"
+    path.write_text(json.dumps(row), encoding="utf-8")
+
+    materialized = StructuredFactStore(path).materialize("candidate:1")
+
+    assert materialized["value"] == value
+    assert "value_normalization" not in materialized
+
+
 def test_structured_fact_store_rejects_duplicate_or_incomplete_provenance(
     tmp_path: Path,
 ) -> None:

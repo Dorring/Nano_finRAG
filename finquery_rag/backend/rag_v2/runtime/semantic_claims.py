@@ -77,7 +77,11 @@ class SemanticClaimVerifierV1:
     version = "SemanticClaimVerifierV1"
     # Accept the canonical E#/C# IDs and the existing runtime EV-/CV-style
     # evidence IDs.  The packet allow-list remains authoritative.
-    _CITATION = re.compile(r"\[([A-Za-z][A-Za-z0-9_-]*)\]")
+    # Runtime citation IDs may be structured (for example
+    # ``citation:v2:<digest>`` or ``atomic:<digest>``).  Strip the complete
+    # bracketed ID before numeric extraction so digits in an ID cannot become
+    # a spurious financial value.
+    _CITATION = re.compile(r"\[([A-Za-z][A-Za-z0-9_.:/-]*)\]")
     _NUMBER = re.compile(r"(?<![A-Za-z0-9])[-+]?\d[\d,]*(?:\.\d+)?(?:[eE][-+]?\d+)?%?")
     _PERIOD = re.compile(r"\b(?:FY\s*\d{4}|Q[1-4]\s*FY?\s*\d{4}|\d{4}\s*Q[1-4]|20\d{2})\b", re.I)
     _CURRENCY = re.compile(r"(?:\$|€|£|¥|\b(?:USD|EUR|GBP|JPY|CNY)\b)", re.I)
@@ -176,6 +180,9 @@ class SemanticClaimVerifierV1:
         for index, evidence_id in enumerate(cls._evidence_ids(packet), 1):
             result[f"E{index}"] = evidence_id
             result[evidence_id] = evidence_id
+            # Keep a normalized lookup key for structured IDs; the original
+            # value remains the canonical provenance identifier.
+            result[evidence_id.upper()] = evidence_id
             result[f"C{index}"] = evidence_id
         return result
 
@@ -288,8 +295,9 @@ class SemanticClaimVerifierV1:
             reasons.append("SCV_CITATION_MISSING")
         elif envelope_ids:
             for value in envelope_ids:
-                if value in citation_map:
-                    referenced_ids.append(citation_map[value])
+                mapped = citation_map.get(value) or citation_map.get(value.upper())
+                if mapped:
+                    referenced_ids.append(mapped)
 
         answer_without_period = self._CITATION.sub(" ", answer)
         answer_without_period = self._PERIOD.sub(" ", answer_without_period)

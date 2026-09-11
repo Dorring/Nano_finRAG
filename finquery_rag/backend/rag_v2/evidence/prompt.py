@@ -17,8 +17,20 @@ specific safe fact. Use MISSING when no supplied fact can satisfy a slot. Use
 AMBIGUOUS when multiple materially plausible facts cannot be safely
 distinguished. Prefer MISSING or AMBIGUOUS to guessing.
 
+For an unqualified direct financial fact, interpret the requested scope as the
+company-wide/consolidated total. Never bind a segment row merely because its
+metric and period match. If the packet contains only segment rows and no
+explicitly matching aggregate row, return MISSING. If the question explicitly
+requests a segment, bind only that segment; never substitute a consolidated
+total. Use the supplied row, metric-path, and scope metadata as source context.
+
 For calculation plans, preserve the frozen slot roles and do not calculate.
-The output must contain exactly the schema fields and only IDs from the packet.
+Return exactly one JSON object with exactly these five keys and no wrapper:
+{"status":"BOUND","slot_bindings":{"slot_id":["fact_id"]},"missing_slots":[],"ambiguous_slots":[],"invalid_reasons":[]}
+Use only the literal keys ``status``, ``slot_bindings``, ``missing_slots``,
+``ambiguous_slots``, and ``invalid_reasons``. Do not emit alternate wrappers
+such as ``bindings`` or ``evidence_bindings``. The output must contain only
+IDs from the packet; the frozen schema is validated locally as well.
 """
 
 

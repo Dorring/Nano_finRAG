@@ -78,6 +78,7 @@ def test_official_v2_does_not_construct_legacy_rag_engine() -> None:
     assert captured["engine"] is None
     assert result.runtime_version == "V2"
     assert result.status == "ANSWER"
+    assert result.legacy_result["trace_id"] == "v2-engine-isolation"
 
 
 def test_legacy_engine_is_still_required_for_direct_engine_execution() -> None:

@@ -200,3 +200,57 @@ def test_v2_structured_result_maps_to_legacy_transport_without_text_provenance()
     refused_payload = to_legacy_query_dict(refused)
     assert refused_payload["answer"]
     assert refused_payload["sources"] == []
+
+
+def test_v2_structured_sources_and_calculations_reach_legacy_transport() -> None:
+    from src.runtime.response_mapper import to_legacy_query_dict
+
+    calculation = {
+        "calculation_id": "C1-001",
+        "status": "executed",
+        "operation": "difference",
+        "value": "10",
+        "formula": "current - previous",
+        "formula_version": "difference.v1",
+        "operands": [],
+    }
+    result = FinancialQueryResult(
+        status=RuntimeStatus.ANSWER,
+        answer="Difference: 10",
+        runtime_version=RuntimeVersion.V2,
+        release_status=ReleaseStatus.RELEASED,
+        evidence_ids=["E1"],
+        citation_ids=["CITE-1"],
+        calculation_ids=["C1-001"],
+        citations=[
+            {
+                "evidence_id": "E1",
+                "citation_id": "CITE-1",
+                "filename": "annual.pdf",
+                "page": 4,
+                "chunk_id": "E1",
+            },
+        ],
+        calculations=[calculation],
+    )
+
+    payload = to_legacy_query_dict(result)
+
+    assert payload["sources"] == result.citations
+    assert payload["calculations"] == [calculation]
+
+
+def test_v2_structured_execution_trace_maps_to_public_trace_id() -> None:
+    from src.runtime.response_mapper import to_legacy_query_dict
+
+    result = FinancialQueryResult(
+        status=RuntimeStatus.ANSWER,
+        answer="Revenue: 391 USD billion",
+        runtime_version=RuntimeVersion.V2,
+        release_status=ReleaseStatus.RELEASED,
+        debug_metadata={"trace": {"execution_id": "v2-execution-001"}},
+    )
+
+    payload = to_legacy_query_dict(result)
+
+    assert payload["trace_id"] == "v2-execution-001"

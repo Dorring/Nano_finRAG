@@ -6,6 +6,7 @@ from typing import Any
 from rag_v2.contracts.plan import SupervisorPlan
 
 from .plan_validator import validate_plan_v2_01
+from .plan_normalizer import PlanNormalization, normalize_supervisor_plan
 from .provider import SupervisorCallMetadata, SupervisorProvider, SupervisorProviderError
 
 
@@ -16,14 +17,18 @@ class SupervisorRun:
     plan_valid: bool
     error: str | None
     metadata: SupervisorCallMetadata | None
+    normalization: PlanNormalization | None = None
 
     def to_dict(self) -> dict[str, Any]:
-        return {
+        payload = {
             "plan": self.plan.to_dict() if self.plan is not None else None,
             "plan_valid": self.plan_valid,
             "error": self.error,
             "metadata": self.metadata.to_dict() if self.metadata else None,
         }
+        if self.normalization is not None:
+            payload["normalization"] = self.normalization.to_dict()
+        return payload
 
 
 class SupervisorService:
@@ -44,9 +49,24 @@ class SupervisorService:
         except Exception as exc:
             metadata = getattr(self.provider, "last_call", None)
             return SupervisorRun(question, None, False, f"{type(exc).__name__}: {exc}", metadata)
+        normalized, normalization = normalize_supervisor_plan(question, proposed)
         try:
-            validated = validate_plan_v2_01(proposed)
+            validated = validate_plan_v2_01(normalized)
         except Exception as exc:
             metadata = getattr(self.provider, "last_call", None)
-            return SupervisorRun(question, proposed, False, str(exc), metadata)
-        return SupervisorRun(question, validated, True, None, getattr(self.provider, "last_call", None))
+            return SupervisorRun(
+                question,
+                normalized,
+                False,
+                str(exc),
+                metadata,
+                normalization,
+            )
+        return SupervisorRun(
+            question,
+            validated,
+            True,
+            None,
+            getattr(self.provider, "last_call", None),
+            normalization,
+        )

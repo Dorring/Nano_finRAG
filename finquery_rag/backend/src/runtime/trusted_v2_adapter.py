@@ -151,6 +151,7 @@ class TrustedFinancialRuntimeV2(FinancialQARuntime):
             status=status,
             answer=outcome.answer,
             citations=copy.deepcopy(outcome.citations),
+            calculations=copy.deepcopy(outcome.calculations),
             evidence_ids=list(outcome.evidence_ids),
             citation_ids=list(outcome.citation_ids),
             calculation_ids=list(outcome.calculation_ids),

@@ -1,4 +1,5 @@
 import json
+import sqlite3
 import sys
 from pathlib import Path
 from unittest.mock import MagicMock
@@ -10,6 +11,7 @@ from src.services.retrieval_config import (
     build_retrieval_model_config,
     get_embedding_model_name,
 )
+from src.pdf_retrieval_v4.candidate_view_index import CandidateViewIndexReader
 
 
 def _write_jsonl(path, rows):
@@ -68,6 +70,31 @@ def test_vector_store_uses_configured_embedding_model(monkeypatch):
 
     mock_st_ef.SentenceTransformerEmbeddingFunction.assert_called_with(
         model_name="local-embedding-model"
+    )
+
+
+def test_candidate_reader_uses_configured_local_embedding_model(tmp_path, monkeypatch):
+    metadata = tmp_path / "candidate-metadata.sqlite"
+    with sqlite3.connect(metadata) as conn:
+        conn.execute(
+            "CREATE TABLE view_metadata ("
+            "lane TEXT, view_id TEXT, candidate_key TEXT, view_type TEXT, "
+            "retrieval_text TEXT, document_id TEXT, metadata_json TEXT)"
+        )
+
+    mock_sentence_transformers = MagicMock()
+    mock_sentence_transformers.SentenceTransformer.return_value = MagicMock()
+    monkeypatch.setitem(sys.modules, "sentence_transformers", mock_sentence_transformers)
+    monkeypatch.setenv("EMBEDDING_MODEL_NAME", "/models/all-MiniLM-L6-v2")
+
+    reader = CandidateViewIndexReader(metadata.parent)
+    try:
+        reader._encoder_instance()
+    finally:
+        reader.close()
+
+    mock_sentence_transformers.SentenceTransformer.assert_called_once_with(
+        "/models/all-MiniLM-L6-v2", device="cpu"
     )
 
 

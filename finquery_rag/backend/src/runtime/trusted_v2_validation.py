@@ -424,22 +424,9 @@ class TrustedReleaseValidationCapability:
                 semantic_failed = tuple(semantic.reason_codes or ("SCV_CLAIM_UNSUPPORTED",))
 
         generation_failures = tuple(report.failure_codes)
-        # The canonical validator represents ratio values as percentages in
-        # the deterministic C1 renderer.  Treat that display alias as a
-        # structured unit equivalence; do not relax arbitrary unit claims.
-        calculation_payload = getattr(state, "calculation_result", None)
-        if (
-            candidate_obj.route == "CALCULATION_SIMPLE"
-            and isinstance(calculation_payload, Mapping)
-            and str(calculation_payload.get("unit", "")).casefold() == "ratio"
-            and "%" in candidate_obj.candidate_answer
-            and "GV5_UNIT_CURRENCY_SCALE_FIDELITY" in generation_failures
-        ):
-            generation_failures = tuple(
-                code
-                for code in generation_failures
-                if code != "GV5_UNIT_CURRENCY_SCALE_FIDELITY"
-            )
+        # RuntimeGenerationValidatorV1 owns the structured ratio/percentage
+        # equivalence. Keep its report and failure codes authoritative here;
+        # a release result must never contain a hidden HARD_FAIL finding.
         reasons = _stable_unique((*generation_failures, *semantic_failed))
         passed = not generation_failures and not semantic_failed
         generation_payload = report.to_dict()

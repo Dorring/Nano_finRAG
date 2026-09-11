@@ -24,6 +24,11 @@ LAUNCHER="${RUNTIME_DIR}/.launch_model.sh"
 : "${MODEL_PYTHON:=}"
 : "${HF_HUB_OFFLINE:=1}"
 : "${HF_DATASETS_OFFLINE:=1}"
+# Loading the production checkpoint can legitimately take longer than two
+# minutes on a busy GPU host.  Keep the timeout configurable so a slow load is
+# not mistaken for a model failure (and so start_all.sh does not roll back a
+# healthy process that is still initializing).
+: "${MODEL_HEALTH_TIMEOUT_SECONDS:=300}"
 
 write_status() { printf '%s\n' "$1" > "${STATUS_FILE}"; }
 
@@ -44,6 +49,11 @@ fi
 # Pre-flight checks.
 if [[ -z "${CUDA_VISIBLE_DEVICES:-}" ]]; then
     echo "[model] CUDA_VISIBLE_DEVICES is not set." >&2
+    write_status "FAILED"
+    exit 1
+fi
+if ! [[ "${MODEL_HEALTH_TIMEOUT_SECONDS}" =~ ^[1-9][0-9]*$ ]]; then
+    echo "[model] MODEL_HEALTH_TIMEOUT_SECONDS must be a positive integer (got ${MODEL_HEALTH_TIMEOUT_SECONDS})." >&2
     write_status "FAILED"
     exit 1
 fi
@@ -110,10 +120,10 @@ fi
 : > "${LOG_FILE}"
 tmux new-session -d -s "${SESSION}" "bash $(shell_squote "${LAUNCHER}")"
 
-echo "[model] Started in tmux session '${SESSION}'. Waiting for /health (up to 120s)..."
+echo "[model] Started in tmux session '${SESSION}'. Waiting for /health (up to ${MODEL_HEALTH_TIMEOUT_SECONDS}s)..."
 
 __URL="http://${MODEL_HOST}:${MODEL_PORT}/health"
-if wait_for_http_checked "${__URL}" 120 "${PID_FILE}"; then
+if wait_for_http_checked "${__URL}" "${MODEL_HEALTH_TIMEOUT_SECONDS}" "${PID_FILE}"; then
     __pid="$(cat "${PID_FILE}" 2>/dev/null || true)"
     if [[ -n "${__pid}" ]]; then
         write_pid_meta "${PID_FILE}" "${__pid}" "chat_openai_compat" "${SESSION}"

@@ -32,6 +32,17 @@ current_period/base_period, numerator/denominator,
 minuend/subtrahend, operand, value, gross_profit/revenue,
 net_income/revenue, debt/assets, and value.
 
+Hard consistency rules:
+- If operation is non-null, intent must be CALCULATION.
+- If the question explicitly asks for growth, year-over-year growth, or a
+  difference across two explicit periods, use CALCULATION with the matching
+  operation and one slot per period.
+- Never emit MULTI_EVIDENCE together with an operation; never attach an
+  operation to a non-calculation plan.
+- For growth_rate, the later period is current_period and the earlier period
+  is base_period. For difference, the later period is minuend and the earlier
+  period is subtrahend.
+
 The JSON object must have exactly these top-level keys:
 intent, required_slots, operation, next_action.
 """

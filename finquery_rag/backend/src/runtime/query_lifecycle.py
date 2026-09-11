@@ -205,6 +205,12 @@ class QueryLifecycleService:
             service=service,
             replay=replay,
         )
+        legacy_result = self._empty_legacy(answer, request.document_names)
+        # Control outcomes (clarification/out-of-scope) stop before a
+        # FinancialQARuntime is invoked, so there is no runtime trace object
+        # to provide an id.  The validated logical request id remains a safe,
+        # deterministic correlation id for these user-visible outcomes.
+        legacy_result["trace_id"] = request.request_id
         return UserTurnExecutionResult(
             status=status,
             answer=answer,
@@ -222,7 +228,7 @@ class QueryLifecycleService:
             query_as_resolved=False,
             request_id=request.request_id,
             session_id=request.session_id,
-            legacy_result=self._empty_legacy(answer, request.document_names),
+            legacy_result=legacy_result,
             idempotent_replay=replay,
         )
 
@@ -275,6 +281,11 @@ class QueryLifecycleService:
                 runtime_request
             )
             legacy = to_legacy_query_dict(runtime)
+            # V2 intentionally does not construct the legacy RAG engine, so
+            # early coordinator failures may not have a trace execution id.
+            # Keep the public correlation contract total by using the already
+            # validated logical request id as a deterministic fallback.
+            legacy.setdefault("trace_id", request.request_id)
         else:
             if engine is None:
                 raise RuntimeError(

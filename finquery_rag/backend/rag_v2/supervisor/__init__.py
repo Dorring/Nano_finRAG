@@ -5,10 +5,13 @@ from .bailian_provider import BailianProvider
 from .deterministic_fallback import DeterministicFallbackProvider
 from .local_provider import LocalProvider
 from .plan_validator import validate_plan, validate_plan_v2_01
+from .plan_normalizer import PlanNormalization, normalize_supervisor_plan
 from .provider import SupervisorCallMetadata, SupervisorProvider, SupervisorProviderError
 from .semantic_alignment import (
     BoundEvidenceAlignmentStatus,
     BoundEvidenceSemanticCheck,
+    EvidenceScope,
+    EvidenceScopeClassification,
     EntityMention,
     MetricDefinition,
     MetricMention,
@@ -26,8 +29,10 @@ from .semantic_alignment import (
     canonical_operation_id,
     canonical_period_id,
     canonical_scope_id,
+    classify_evidence_scope,
     coerce_unknown_semantic_policy,
     extract_query_semantic_frame,
+    query_allows_evidence_scope,
 )
 from .service import SupervisorRun, SupervisorService
 from .strong_general_provider import StrongGeneralAPIProvider
@@ -40,11 +45,15 @@ __all__ = [
     "SupervisorCallMetadata",
     "SupervisorProvider",
     "SupervisorProviderError",
+    "PlanNormalization",
+    "normalize_supervisor_plan",
     "SupervisorRun",
     "SupervisorService",
     "StrongGeneralAPIProvider",
     "BoundEvidenceAlignmentStatus",
     "BoundEvidenceSemanticCheck",
+    "EvidenceScope",
+    "EvidenceScopeClassification",
     "EntityMention",
     "MetricDefinition",
     "MetricMention",
@@ -62,8 +71,10 @@ __all__ = [
     "canonical_operation_id",
     "canonical_period_id",
     "canonical_scope_id",
+    "classify_evidence_scope",
     "coerce_unknown_semantic_policy",
     "extract_query_semantic_frame",
+    "query_allows_evidence_scope",
     "validate_plan",
     "validate_plan_v2_01",
 ]

@@ -45,6 +45,11 @@ _SOURCE_FIELDS = (
 # the FinancialFactV1 relation or from the already-linked candidate metadata;
 # they are never inferred from a question or a RequiredSlot.
 _V2_SOURCE_FIELDS = (
+    "scope",
+    "scope_label",
+    "segment_label",
+    "metric_path",
+    "metric_paths",
     "row_label",
     "row_path",
     "row_hierarchy",
@@ -100,6 +105,8 @@ def _parse_source_structure(source: Mapping[str, Any]) -> dict[str, Any]:
         "Section Path": "section_path",
         "Table": "table_title",
         "Table title": "table_title",
+        "Scope": "scope",
+        "Segment": "segment_label",
     }
     for line in text.splitlines():
         line = line.strip()
@@ -147,6 +154,11 @@ def binder_fact_view_v2_field_provenance(
         if fact.get(key) is not None:
             result[key] = {"source_field": key, "source_candidate_id": source.get("candidate_id"), "origin": "financial_fact"}
     source_keys: dict[str, tuple[str, ...]] = {
+        "scope": ("scope", "normalized_scope", "raw_scope"),
+        "scope_label": ("scope_label", "segment_label", "segment"),
+        "segment_label": ("segment_label", "segment"),
+        "metric_path": ("metric_path",),
+        "metric_paths": ("metric_paths",),
         "row_label": ("row_label",),
         "row_path": ("row_path", "row_hierarchy", "metric_path"),
         "row_hierarchy": ("row_hierarchy",),
@@ -207,6 +219,11 @@ def build_binder_fact_view_v2(
     # Keep source values structured.  In particular, never flatten a row or
     # header path into a newly generated metric label.
     values: dict[str, Any] = {
+        "scope": _source_value(fact, source, parsed, "scope", "normalized_scope", "raw_scope"),
+        "scope_label": _source_value(fact, source, parsed, "scope_label", "segment_label", "segment"),
+        "segment_label": _source_value(fact, source, parsed, "segment_label", "segment"),
+        "metric_path": _source_value(fact, source, parsed, "metric_path"),
+        "metric_paths": _source_value(fact, source, parsed, "metric_paths"),
         "row_label": _source_value(fact, source, parsed, "row_label"),
         "row_path": _source_value(fact, source, parsed, "row_path", "row_hierarchy", "metric_path"),
         "row_hierarchy": _source_value(fact, source, parsed, "row_hierarchy"),
@@ -230,7 +247,7 @@ def build_binder_fact_view_v2(
     }
     for key, value in values.items():
         if value is not None:
-            if key in {"row_path", "row_hierarchy", "column_header_path", "multi_level_column_headers", "section_path"}:
+            if key in {"row_path", "row_hierarchy", "column_header_path", "multi_level_column_headers", "section_path", "metric_paths"}:
                 sequence = _clean_sequence(value)
                 if sequence:
                     view[key] = sequence

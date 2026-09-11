@@ -423,9 +423,27 @@ class CandidateViewIndexBuilder:
 class CandidateViewIndexReader:
     """Read-only reader for the 4 candidate-aligned shadow lanes."""
 
-    def __init__(self, index_dir: Path, *, rrf_k: int = 60) -> None:
+    def __init__(
+        self,
+        index_dir: Path,
+        *,
+        rrf_k: int = 60,
+        encoder_model: str | None = None,
+    ) -> None:
         self.index_dir = Path(index_dir)
         self.rrf_k = int(rrf_k)
+        # Keep the reader aligned with the process-wide retrieval model
+        # configuration. A model-hub name is useful in development, but an
+        # offline production host must be able to point at its local snapshot
+        # explicitly (the previous hard-coded name triggered network lookups
+        # even when the snapshot was already present on disk).
+        if encoder_model is None:
+            from src.services.retrieval_config import get_embedding_model_name
+
+            encoder_model = get_embedding_model_name()
+        self.encoder_model = str(encoder_model).strip()
+        if not self.encoder_model:
+            raise ValueError("embedding_model_name_empty")
         meta_path = self.index_dir / "candidate-metadata.sqlite"
         if not meta_path.is_file():
             raise FileNotFoundError(f"metadata_not_found:{meta_path}")
@@ -514,7 +532,7 @@ class CandidateViewIndexReader:
         if self._encoder is None:
             from sentence_transformers import SentenceTransformer  # type: ignore
 
-            self._encoder = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
+            self._encoder = SentenceTransformer(self.encoder_model, device="cpu")
         return self._encoder
 
     def _query_vector(self, query: str) -> np.ndarray:

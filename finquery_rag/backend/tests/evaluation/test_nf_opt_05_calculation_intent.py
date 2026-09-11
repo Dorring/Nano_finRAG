@@ -32,3 +32,19 @@ def test_sum_query_routes_to_calculation():
     )
     assert result.requires_calculation
     assert result.operation is CalculationOperation.SUM
+
+
+def test_reported_values_their_sum_routes_to_calculation():
+    result = detect_calculation_intent(
+        "Using the reported values for 'Revenue' and 'Operating Expenses', what is their sum?"
+    )
+    assert result.requires_calculation
+    assert result.operation is CalculationOperation.SUM
+
+
+def test_reported_values_their_difference_routes_to_calculation():
+    result = detect_calculation_intent(
+        "Using the reported values for 'Current' and 'Deferred', what is their difference?"
+    )
+    assert result.requires_calculation
+    assert result.operation is CalculationOperation.DIFFERENCE

@@ -15,6 +15,29 @@ class LegacyResponseMappingError(RuntimeError):
     """Raised when a runtime result cannot preserve the legacy API shape."""
 
 
+def _structured_trace_id(result: FinancialQueryResult) -> str | None:
+    """Return a trace identifier from structured runtime metadata only.
+
+    V1 carries its trace id in the historical compatibility payload.  V2 does
+    not construct the legacy RAG engine, so its bounded coordinator exposes a
+    stable ``execution_id`` inside the sanitized structured trace instead.
+    Keeping this fallback here preserves the public observability contract
+    without parsing answer text or forcing V2 to instantiate V1 dependencies.
+    """
+
+    candidates: list[object] = [result.debug_metadata.get("trace_id")]
+    trace = result.debug_metadata.get("trace")
+    if isinstance(trace, Mapping):
+        candidates.append(trace.get("execution_id"))
+    runtime_metadata = result.runtime_metadata
+    if runtime_metadata is not None:
+        candidates.append(runtime_metadata.attributes.get("execution_id"))
+    for candidate in candidates:
+        if isinstance(candidate, str) and candidate.strip():
+            return candidate.strip()
+    return None
+
+
 def to_legacy_query_dict(result: FinancialQueryResult) -> dict:
     """Return the exact public V1 payload expected by the existing endpoint.
 
@@ -65,7 +88,7 @@ def to_legacy_query_dict(result: FinancialQueryResult) -> dict:
             "searched_docs": [],
             "retrieved_chunks": [],
             "retrieval_debug": {},
-            "calculations": [],
+            "calculations": copy.deepcopy(result.calculations),
         }
     payload = copy.deepcopy(dict(legacy_payload))
     if "searched_docs" not in payload:
@@ -83,4 +106,10 @@ def to_legacy_query_dict(result: FinancialQueryResult) -> dict:
         )
     )
     payload["sources"] = copy.deepcopy(result.citations)
+    if result.runtime_version.value == "V2":
+        payload["calculations"] = copy.deepcopy(result.calculations)
+    if result.runtime_version.value == "V2" and not payload.get("trace_id"):
+        trace_id = _structured_trace_id(result)
+        if trace_id is not None:
+            payload["trace_id"] = trace_id
     return payload

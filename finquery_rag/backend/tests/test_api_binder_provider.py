@@ -87,6 +87,18 @@ def test_bind_returns_correct_evidence_binding_on_valid_json() -> None:
     assert result.raw_response == json.dumps(payload)
 
 
+def test_api_provider_requests_json_mode_and_validates_schema_locally() -> None:
+    """DeepSeek supports JSON Mode; the frozen schema remains local enforcement."""
+    provider = _make_provider()
+    provider.client.chat.completions.create.return_value = _make_response(json.dumps(_valid_payload()))
+
+    provider.bind({"slots": [], "candidates": []})
+
+    call = provider.client.chat.completions.create.call_args
+    assert call is not None
+    assert call.kwargs["response_format"] == {"type": "json_object"}
+
+
 def test_bind_discards_reasoning_content_and_reads_only_content() -> None:
     """The provider must read only message.content; reasoning_content is never accessed."""
     provider = _make_provider()

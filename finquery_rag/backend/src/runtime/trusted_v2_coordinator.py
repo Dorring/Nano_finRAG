@@ -62,6 +62,107 @@ def _stable_unique(values: Iterable[str]) -> list[str]:
     return result
 
 
+def _structured_evidence_identity(item: Mapping[str, Any]) -> str:
+    for key in ("evidence_id", "fact_id", "candidate_id", "candidate_key", "chunk_id"):
+        value = item.get(key)
+        if value is not None and str(value).strip():
+            return str(value).strip()
+    return ""
+
+
+def _structured_citations(
+    state: AdaptiveRAGStateV1 | None,
+    evidence_ids: Iterable[str],
+    citation_ids: Iterable[str],
+) -> list[dict[str, Any]]:
+    """Expose only Binder-admitted evidence as public source metadata.
+
+    The API source shape is reconstructed from the structured evidence packet,
+    never from the answer string. Retrieval candidates that were not admitted
+    by the Binder cannot appear because evidence_ids is the post-admission set
+    supplied by the coordinator.
+    """
+
+    if state is None:
+        return []
+    packets: dict[str, Mapping[str, Any]] = {}
+    for raw in getattr(state, "evidence_packets", ()):
+        if not isinstance(raw, Mapping):
+            continue
+        identity = _structured_evidence_identity(raw)
+        if identity and identity not in packets:
+            packets[identity] = raw
+    allowed_citations = {
+        str(value).strip()
+        for value in citation_ids
+        if str(value).strip()
+    }
+    sources: list[dict[str, Any]] = []
+    for evidence_id in _stable_unique(evidence_ids):
+        packet = packets.get(evidence_id)
+        if packet is None:
+            continue
+        source: dict[str, Any] = {
+            "evidence_id": evidence_id,
+            "chunk_id": (
+                packet.get("chunk_id")
+                or packet.get("candidate_key")
+                or packet.get("candidate_id")
+                or evidence_id
+            ),
+        }
+        citation_id = packet.get("citation_id")
+        if citation_id is not None and str(citation_id).strip():
+            normalized_citation = str(citation_id).strip()
+            if not allowed_citations or normalized_citation in allowed_citations:
+                source["citation_id"] = normalized_citation
+        filename = (
+            packet.get("filename")
+            or packet.get("document_name")
+            or packet.get("document_id")
+            or packet.get("source_id")
+            or packet.get("physical_source_id")
+        )
+        if filename is not None and str(filename).strip():
+            source["filename"] = str(filename).strip()
+        page = packet.get("page", packet.get("pdf_page"))
+        if page is not None:
+            try:
+                source["page"] = int(page)
+            except (TypeError, ValueError):
+                source["page"] = str(page)
+        source_type = (
+            packet.get("type")
+            or packet.get("block_type")
+            or packet.get("evidence_type")
+        )
+        if source_type is not None and str(source_type).strip():
+            source["type"] = str(source_type).strip()
+        sources.append(source)
+    return sources
+
+
+def _structured_calculations(
+    state: AdaptiveRAGStateV1 | None,
+    calculation_ids: Iterable[str],
+) -> list[dict[str, Any]]:
+    """Serialize the structured calculator result without answer parsing."""
+
+    ids = _stable_unique(calculation_ids)
+    if state is None or not ids:
+        return []
+    calculation = getattr(state, "_calculation_result_obj", None)
+    try:
+        from src.domain.calculation import CalculationResult
+    except ImportError:
+        return []
+    if not isinstance(calculation, CalculationResult):
+        return []
+    payload = calculation.to_public_dict()
+    payload["calculation_id"] = ids[0]
+    return [payload]
+
+
 def _plan_id(request: V2ExecutionRequest, plan: SupervisorPlan) -> str:
     payload = {
         "request_id": request.request_id,
@@ -1264,6 +1365,13 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 "semantic_alignment",
                 copy.deepcopy(dict(alignment_metadata)),
             )
+        if state is not None and isinstance(state.plan, Mapping):
+            normalization = state.plan.get("supervisor_plan_normalization")
+            if isinstance(normalization, Mapping):
+                metadata_extra.setdefault(
+                    "supervisor_plan_normalization",
+                    copy.deepcopy(dict(normalization)),
+                )
         trace = self._trace(
             request,
             plan_id,
@@ -1273,9 +1381,21 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             semantic_alignment=alignment_metadata,
             claim_provenance=claim_provenance,
         )
+        public_citations = (
+            _structured_citations(state, evidence_id_list, citation_id_list)
+            if status is V2ExecutionStatus.READY_FOR_RELEASE
+            else []
+        )
+        public_calculations = (
+            _structured_calculations(state, calculation_id_list)
+            if status is V2ExecutionStatus.READY_FOR_RELEASE
+            else []
+        )
         return V2ExecutionOutcome(
             status=status,
             answer=answer,
+            citations=public_citations,
+            calculations=public_calculations,
             evidence_ids=evidence_id_list,
             citation_ids=citation_id_list,
             reason_codes=reason_list,
@@ -1369,6 +1489,11 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 terminal_state="SUPERVISOR",
             )
         plan_id = _plan_id(request, plan)
+        plan_normalization = (
+            supervisor_run.normalization.to_dict()
+            if supervisor_run.normalization is not None
+            else None
+        )
         try:
             validate_plan_v2_01(plan)
         except Exception:
@@ -1412,6 +1537,11 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 state=None,
                 reason_codes=[reason_code],
                 status=V2ExecutionStatus.FAIL_CLOSED,
+                extra_metadata=(
+                    {"supervisor_plan_normalization": plan_normalization}
+                    if plan_normalization is not None
+                    else None
+                ),
                 semantic_alignment=semantic_alignment.to_dict(),
                 terminal_state="PLAN",
             )
@@ -1437,6 +1567,11 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 "supervisor_plan": plan.to_dict(),
                 "plan_id": plan_id,
                 "semantic_alignment": semantic_alignment.to_dict(),
+                **(
+                    {"supervisor_plan_normalization": plan_normalization}
+                    if plan_normalization is not None
+                    else {}
+                ),
             },
             calculation_requirements=self._calculation_requirements(
                 plan, request.request_metadata

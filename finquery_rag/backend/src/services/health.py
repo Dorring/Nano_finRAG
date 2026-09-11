@@ -341,14 +341,30 @@ def collect_health_snapshot(
     trace_path = trace_db_path or _runtime_path("TRACE_DB_PATH", TRACE_DB_PATH)
     chroma_path = _runtime_path("CHROMA_PATH", CHROMA_PATH)
 
-    bm25_check = _sqlite_check(bm25_path, required_tables=("chunk_store", "fts_index"))
-    bm25_check["required"] = True
-    if bm25_check.get("ok"):
-        bm25_integrity = _bm25_integrity_summary(bm25_path)
-        bm25_check["integrity"] = bm25_integrity
-        if not bm25_integrity.get("ok", False):
-            bm25_check["ok"] = False
-            bm25_check["error"] = "bm25 index integrity check failed"
+    # The legacy V1 BM25 store is not on the V2 execution path.  Do not make
+    # a V2 readiness probe perform the expensive full-table FTS integrity
+    # scan (which can take minutes on a production-sized store), nor make a
+    # stale V1 database block a V2-only deployment.  Shadow still executes
+    # V1, so it keeps the original required check.
+    runtime_mode = os.getenv("FINANCIAL_RUNTIME_MODE", "").strip().lower()
+    if runtime_mode == "v2":
+        bm25_check = {
+            **_path_check(bm25_path),
+            "kind": "sqlite",
+            "required_tables": ["chunk_store", "fts_index"],
+            "missing_tables": [],
+            "required": False,
+            "status": "not_required_for_v2",
+        }
+    else:
+        bm25_check = _sqlite_check(bm25_path, required_tables=("chunk_store", "fts_index"))
+        bm25_check["required"] = True
+        if bm25_check.get("ok"):
+            bm25_integrity = _bm25_integrity_summary(bm25_path)
+            bm25_check["integrity"] = bm25_integrity
+            if not bm25_integrity.get("ok", False):
+                bm25_check["ok"] = False
+                bm25_check["error"] = "bm25 index integrity check failed"
 
     checks = {
         "config": config,

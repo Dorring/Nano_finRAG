@@ -164,9 +164,14 @@ class RuntimeGenerationValidatorV1:
         answer_units = {item.lower() for item in _UNIT_RE.findall(envelope.answer_text)}
         known_unit_tokens = {item.lower() for item in _known_units(packet)}
         if answer_units and known_unit_tokens:
+            ratio_units = {"percent", "percentage", "%", "ratio"}
+            answer_ratio_units = answer_units & ratio_units
+            known_ratio_units = known_unit_tokens & ratio_units
             incompatible = {"percent", "percentage", "%", "ratio"} & answer_units
-            known_ratio = {"ratio", "percent", "percentage", "%"} & known_unit_tokens
-            if incompatible and known_ratio and not incompatible & known_ratio:
+            # A deterministic ratio result is conventionally rendered as a
+            # percentage (for example, 0.064 -> 6.40%). Treat those tokens
+            # as one structured unit family. Other unit claims remain strict.
+            if incompatible and known_ratio_units and not (answer_ratio_units and known_ratio_units):
                 add("GV5_UNIT_CURRENCY_SCALE_FIDELITY", ValidationSeverity.HARD_FAIL,
                     "answer unit conflicts with packet")
         scale_words = {"thousand": 1, "thousands": 1, "million": 1000000, "millions": 1000000,

@@ -17,6 +17,13 @@ from rag_v2.contracts.evidence import EvidenceBinding
 from .prompt import BINDER_RESPONSE_FORMAT, build_binder_messages
 
 
+# DeepSeek and some other OpenAI-compatible endpoints expose JSON Mode but do
+# not implement the OpenAI ``json_schema`` response format. The API provider
+# therefore requests JSON Mode and keeps the frozen EvidenceBinding schema
+# enforcement local in ``_binding_from_payload`` below.
+API_BINDER_RESPONSE_FORMAT: dict[str, str] = {"type": "json_object"}
+
+
 class BinderProviderError(RuntimeError):
     """Raised when the provider cannot return strict EvidenceBinding JSON."""
 
@@ -208,7 +215,7 @@ class APIBinderProvider:
                 "model": self.model_name,
                 "messages": build_binder_messages(request),
                 "temperature": self.temperature,
-                "response_format": BINDER_RESPONSE_FORMAT,
+                "response_format": API_BINDER_RESPONSE_FORMAT,
             }
             response = self.client.chat.completions.create(**body)
             message = response.choices[0].message if response.choices else None

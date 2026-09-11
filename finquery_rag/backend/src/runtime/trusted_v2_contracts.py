@@ -330,6 +330,7 @@ class V2ExecutionOutcome:
     status: V2ExecutionStatus
     answer: str | None = None
     citations: list[dict[str, Any]] = field(default_factory=list)
+    calculations: list[dict[str, Any]] = field(default_factory=list)
     evidence_ids: list[str] = field(default_factory=list)
     citation_ids: list[str] = field(default_factory=list)
     calculation_ids: list[str] = field(default_factory=list)
@@ -377,6 +378,11 @@ class V2ExecutionOutcome:
             self,
             "citations",
             _normalize_citations(self.citations),
+        )
+        object.__setattr__(
+            self,
+            "calculations",
+            _normalize_citations(self.calculations),
         )
         for field_name in (
             "evidence_ids",
@@ -458,6 +464,7 @@ class V2ExecutionOutcome:
             "status": self.status.value,
             "answer": self.answer,
             "citations": copy.deepcopy(self.citations),
+            "calculations": copy.deepcopy(self.calculations),
             "evidence_ids": list(self.evidence_ids),
             "citation_ids": list(self.citation_ids),
             "calculation_ids": list(self.calculation_ids),
@@ -484,6 +491,7 @@ class V2ExecutionOutcome:
             status=value.get("status"),
             answer=value.get("answer"),
             citations=value.get("citations"),
+            calculations=value.get("calculations"),
             evidence_ids=value.get("evidence_ids"),
             citation_ids=value.get("citation_ids"),
             calculation_ids=value.get("calculation_ids"),
