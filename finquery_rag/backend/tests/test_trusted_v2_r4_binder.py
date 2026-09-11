@@ -390,6 +390,68 @@ class AmbiguousBinderProvider(SelectingBinderProvider):
         return BinderProviderResult(binding=binding, metadata=metadata)
 
 
+class PartiallyAmbiguousBinderProvider(SelectingBinderProvider):
+    """Preserve one provider binding while marking another slot ambiguous."""
+
+    def __init__(
+        self,
+        *,
+        preserved_slot_id: str,
+        preserved_fact_id: str,
+        ambiguous_slot_id: str,
+    ) -> None:
+        super().__init__()
+        self.preserved_slot_id = preserved_slot_id
+        self.preserved_fact_id = preserved_fact_id
+        self.ambiguous_slot_id = ambiguous_slot_id
+
+    def bind(self, request: Mapping[str, Any]) -> BinderProviderResult:
+        self.calls += 1
+        binding = EvidenceBinding(
+            status=BindingStatus.AMBIGUOUS.value,
+            slot_bindings={self.preserved_slot_id: (self.preserved_fact_id,)},
+            ambiguous_slots=(self.ambiguous_slot_id,),
+        )
+        metadata = BinderCallMetadata(
+            provider=self.provider_name,
+            model=self.model_name,
+            provider_role="evidence_binder",
+            model_role="deterministic_fixture",
+            latency_ms=0.1,
+            provider_response_success=True,
+            structured_output_success=True,
+        )
+        self.last_call = metadata
+        return BinderProviderResult(binding=binding, metadata=metadata)
+
+
+class PartiallyAmbiguousDuplicateBinderProvider(PartiallyAmbiguousBinderProvider):
+    """Return equal duplicate bindings for the otherwise non-ambiguous slot."""
+
+    def __init__(
+        self,
+        *,
+        preserved_slot_id: str,
+        preserved_fact_ids: tuple[str, ...],
+        ambiguous_slot_id: str,
+    ) -> None:
+        super().__init__(
+            preserved_slot_id=preserved_slot_id,
+            preserved_fact_id=preserved_fact_ids[0],
+            ambiguous_slot_id=ambiguous_slot_id,
+        )
+        self.preserved_fact_ids = preserved_fact_ids
+
+    def bind(self, request: Mapping[str, Any]) -> BinderProviderResult:
+        result = super().bind(request)
+        binding = EvidenceBinding(
+            status=BindingStatus.AMBIGUOUS.value,
+            slot_bindings={self.preserved_slot_id: self.preserved_fact_ids},
+            ambiguous_slots=(self.ambiguous_slot_id,),
+        )
+        return BinderProviderResult(binding=binding, metadata=result.metadata)
+
+
 class InvalidSchemaBinderProvider(SelectingBinderProvider):
     def bind(self, request: Mapping[str, Any]) -> BinderProviderResult:
         error = BinderProviderError("malformed binder payload")
@@ -838,6 +900,146 @@ def test_ambiguous_binder_does_not_count_duplicate_physical_source_as_consensus(
     assert binder.trace_snapshot()["binder_rounds"][0]["semantic_repair"] is None
 
 
+def test_partial_ambiguity_recovers_only_the_consensus_slot() -> None:
+    facts = {
+        "CURRENT-1": _fact("CURRENT-1", value="391035"),
+        "CURRENT-2": _fact("CURRENT-2", value="391035"),
+        "PRIOR-1": _fact("PRIOR-1", period="FY2023", value="383285"),
+    }
+    provider = PartiallyAmbiguousBinderProvider(
+        preserved_slot_id="previous",
+        preserved_fact_id="PRIOR-1",
+        ambiguous_slot_id="current",
+    )
+    retrieval, binder, _, _, _ = _real_capabilities(
+        [["CURRENT-1", "CURRENT-2", "PRIOR-1"]], facts, provider
+    )
+    query = "What was Apple's revenue growth from FY2023 to FY2024?"
+    plan = _plan(
+        _slot("current", period="FY2024", role="current"),
+        _slot("previous", period="FY2023", role="base"),
+        intent=Intent.CALCULATION,
+        operation="growth_rate",
+    )
+
+    outcome = asyncio.run(
+        _coordinator(query, plan, retrieval, binder).execute(_request(query))
+    )
+
+    assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
+    assert set(outcome.evidence_ids) == {"CURRENT-1", "PRIOR-1"}
+    assert "DOWNSTREAM_EXECUTION_NOT_WIRED" in outcome.reason_codes
+    repair = binder.trace_snapshot()["binder_rounds"][0]["semantic_repair"]
+    assert repair["strategy"] == "deterministic_partial_ambiguous_packet_consensus"
+    assert repair["preserved_slot_bindings"] == {"previous": ["PRIOR-1"]}
+    assert repair["replaced_slot_bindings"] == {"current": {"to": ["CURRENT-1"]}}
+    assert repair["consensus_size_by_slot"] == {"current": 2}
+
+
+def test_partial_ambiguity_normalizes_matching_duplicate_bound_slot() -> None:
+    facts = {
+        "CURRENT-1": _fact("CURRENT-1", value="391035"),
+        "CURRENT-2": _fact("CURRENT-2", value="391035"),
+        "PRIOR-1": _fact("PRIOR-1", period="FY2023", value="383285"),
+        "PRIOR-2": _fact("PRIOR-2", period="FY2023", value="383285"),
+    }
+    provider = PartiallyAmbiguousDuplicateBinderProvider(
+        preserved_slot_id="previous",
+        preserved_fact_ids=("PRIOR-1", "PRIOR-2"),
+        ambiguous_slot_id="current",
+    )
+    retrieval, binder, _, _, _ = _real_capabilities(
+        [["CURRENT-1", "CURRENT-2", "PRIOR-1", "PRIOR-2"]], facts, provider
+    )
+    query = "What was Apple's revenue growth from FY2023 to FY2024?"
+    plan = _plan(
+        _slot("current", period="FY2024", role="current"),
+        _slot("previous", period="FY2023", role="base"),
+        intent=Intent.CALCULATION,
+        operation="growth_rate",
+    )
+
+    outcome = asyncio.run(
+        _coordinator(query, plan, retrieval, binder).execute(_request(query))
+    )
+
+    assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
+    assert set(outcome.evidence_ids) == {"CURRENT-1", "PRIOR-1"}
+    repair = binder.trace_snapshot()["binder_rounds"][0]["semantic_repair"]
+    assert repair["normalized_slot_bindings"] == {
+        "previous": {"from": ["PRIOR-1", "PRIOR-2"], "to": ["PRIOR-1"]}
+    }
+    assert repair["consensus_size_by_slot"] == {"current": 2, "previous": 2}
+
+
+def test_partial_ambiguity_rejects_conflicting_duplicate_bound_slot() -> None:
+    facts = {
+        "CURRENT-1": _fact("CURRENT-1", value="391035"),
+        "CURRENT-2": _fact("CURRENT-2", value="391035"),
+        "PRIOR-1": _fact("PRIOR-1", period="FY2023", value="383285"),
+        "PRIOR-2": _fact("PRIOR-2", period="FY2023", value="999999"),
+    }
+    provider = PartiallyAmbiguousDuplicateBinderProvider(
+        preserved_slot_id="previous",
+        preserved_fact_ids=("PRIOR-1", "PRIOR-2"),
+        ambiguous_slot_id="current",
+    )
+    retrieval, binder, _, _, _ = _real_capabilities(
+        [["CURRENT-1", "CURRENT-2", "PRIOR-1", "PRIOR-2"]], facts, provider
+    )
+    query = "What was Apple's revenue growth from FY2023 to FY2024?"
+    plan = _plan(
+        _slot("current", period="FY2024", role="current"),
+        _slot("previous", period="FY2023", role="base"),
+        intent=Intent.CALCULATION,
+        operation="growth_rate",
+    )
+
+    outcome = asyncio.run(
+        _coordinator(query, plan, retrieval, binder).execute(_request(query))
+    )
+
+    assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
+    assert "EVIDENCE_CONFLICT" in outcome.reason_codes
+    assert outcome.evidence_ids == []
+    assert binder.trace_snapshot()["binder_rounds"][0]["semantic_repair"] is None
+
+
+def test_partial_ambiguity_rejects_same_source_pseudo_consensus() -> None:
+    facts = {
+        "CURRENT-1": _fact("CURRENT-1", value="391035"),
+        "CURRENT-2": _fact("CURRENT-2", value="391035"),
+        "PRIOR-1": _fact("PRIOR-1", period="FY2023", value="383285"),
+    }
+    facts["CURRENT-2"]["physical_source_id"] = facts["CURRENT-1"][
+        "physical_source_id"
+    ]
+    provider = PartiallyAmbiguousBinderProvider(
+        preserved_slot_id="previous",
+        preserved_fact_id="PRIOR-1",
+        ambiguous_slot_id="current",
+    )
+    retrieval, binder, _, _, _ = _real_capabilities(
+        [["CURRENT-1", "CURRENT-2", "PRIOR-1"]], facts, provider
+    )
+    query = "What was Apple's revenue growth from FY2023 to FY2024?"
+    plan = _plan(
+        _slot("current", period="FY2024", role="current"),
+        _slot("previous", period="FY2023", role="base"),
+        intent=Intent.CALCULATION,
+        operation="growth_rate",
+    )
+
+    outcome = asyncio.run(
+        _coordinator(query, plan, retrieval, binder).execute(_request(query))
+    )
+
+    assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
+    assert "EVIDENCE_CONFLICT" in outcome.reason_codes
+    assert outcome.evidence_ids == []
+    assert binder.trace_snapshot()["binder_rounds"][0]["semantic_repair"] is None
+
+
 def test_unresolved_binder_conflict_never_reaches_downstream() -> None:
     facts = {"E1": _fact("E1")}
     retrieval, binder, _, _, provider = _real_capabilities(
@@ -1194,6 +1396,60 @@ def test_supervisor_slot_id_maps_to_query_plan_slot_pool() -> None:
     assert result.candidate_ids[0] == "RIGHT"
     assert result.source_branch_metadata["planner_slot_ids"] == ["fact"]
 
+
+def test_single_missing_slot_uses_canonical_slot_query_not_original_multi_query() -> None:
+    """Recovery for net income must not repeatedly retrieve total net sales."""
+
+    class MultiSlotReader(ScriptedIndexReader):
+        def search(
+            self,
+            lane: str,
+            query: str,
+            *,
+            allowed_candidate_keys: set[str] | None = None,
+            k: int = 50,
+        ) -> list[CandidateSearchHit]:
+            key = "NET" if "net income" in query.casefold() and "total net sales" not in query.casefold() else "SALES"
+            if allowed_candidate_keys is not None and key not in allowed_candidate_keys:
+                return []
+            return [
+                CandidateSearchHit(
+                    candidate_key=key,
+                    view_id=f"{lane}:{key}",
+                    lane=lane,
+                    bm25_rank=1 if "bm25" in lane else None,
+                    dense_rank=1 if "dense" in lane else None,
+                    bm25_score=1.0 if "bm25" in lane else None,
+                    dense_score=1.0 if "dense" in lane else None,
+                )
+            ]
+
+    facts = {
+        "SALES": _fact("SALES", metric="Total net sales"),
+        "NET": _fact("NET", metric="Net income"),
+    }
+    policy = CandidateDirectR4Policy(
+        CandidateDirectRetriever(MultiSlotReader([["SALES", "NET"]]), lane_k=10),
+        materializer=lambda key: facts[key],
+    )
+    plan = _plan(
+        _slot("sales", metric="Total net sales"),
+        _slot("net_income", metric="Net income"),
+        intent=Intent.MULTI_EVIDENCE,
+    )
+
+    result = policy.retrieve(
+        R4RetrievalRequest(
+            request_id="targeted-net-income",
+            standalone_query="Compare Apple FY2024 total net sales and net income.",
+            plan=plan,
+            reason_code="MISSING_SLOT",
+            target_slots=("net_income",),
+        )
+    )
+
+    assert result.candidate_ids == ("NET",)
+    assert result.source_branch_metadata["query"] == "Net income FY2024"
 
 def test_real_r4_structured_lane_recovers_secondary_slot_under_crowding() -> None:
     facts = {

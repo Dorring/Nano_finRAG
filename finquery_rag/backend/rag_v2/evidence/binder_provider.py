@@ -181,12 +181,16 @@ class APIBinderProvider:
         api_key: str,
         model_name: str,
         temperature: float = 0.0,
+        max_tokens: int = 1024,
         timeout: float = 180.0,
         max_retries: int = 0,
         http_client: Any | None = None,
+        enable_thinking: bool | None = None,
     ) -> None:
         if OpenAI is None:
             raise RuntimeError("the API binder provider requires the openai package")
+        if isinstance(max_tokens, bool) or not isinstance(max_tokens, int) or max_tokens < 1:
+            raise ValueError("max_tokens must be a positive integer")
         client_kwargs: dict[str, Any] = {
             "base_url": base_url,
             "api_key": api_key,
@@ -198,7 +202,11 @@ class APIBinderProvider:
         self.client = OpenAI(**client_kwargs)
         self.model_name = model_name
         self.temperature = temperature
+        self.max_tokens = max_tokens
         self.max_retries = max_retries
+        if enable_thinking is not None and not isinstance(enable_thinking, bool):
+            raise ValueError("enable_thinking must be a bool or None")
+        self.enable_thinking = enable_thinking
         self.client_created_at = _datetime.datetime.now(_datetime.timezone.utc).isoformat()
         self.last_call: BinderCallMetadata | None = None
         self.last_raw_response: str | None = None
@@ -215,8 +223,18 @@ class APIBinderProvider:
                 "model": self.model_name,
                 "messages": build_binder_messages(request),
                 "temperature": self.temperature,
+                "max_tokens": self.max_tokens,
                 "response_format": API_BINDER_RESPONSE_FORMAT,
             }
+            # Preserve generic OpenAI compatibility by leaving the extension
+            # absent unless the production builder has explicitly selected a
+            # DeepSeek-compatible thinking-mode control path.
+            if self.enable_thinking is not None:
+                body["extra_body"] = {
+                    "thinking": {
+                        "type": "enabled" if self.enable_thinking else "disabled",
+                    },
+                }
             response = self.client.chat.completions.create(**body)
             message = response.choices[0].message if response.choices else None
             # Explicitly read only `content`; discard `reasoning_content` or

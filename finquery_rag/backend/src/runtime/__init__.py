@@ -97,6 +97,7 @@ from .trusted_v2_production import (
     build_trusted_v2_runtime_for_request,
     clear_trusted_v2_production_cache,
     inspect_r4_index,
+    inspect_r4_fact_store_compatibility,
     validate_trusted_v2_production_configuration,
 )
 
@@ -175,6 +176,7 @@ __all__ = [
     "build_trusted_v2_runtime_for_request",
     "clear_trusted_v2_production_cache",
     "inspect_r4_index",
+    "inspect_r4_fact_store_compatibility",
     "validate_trusted_v2_production_configuration",
     "to_legacy_query_dict",
 ]

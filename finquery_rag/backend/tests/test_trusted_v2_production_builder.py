@@ -21,6 +21,7 @@ from src.runtime import (
     TrustedV2RuntimeResources,
     build_trusted_v2_runtime_for_request,
     inspect_r4_index,
+    inspect_r4_fact_store_compatibility,
     validate_trusted_v2_production_configuration,
 )
 from src.runtime.trusted_v2_generation import LocalSpecialistGenerationAdapter
@@ -227,6 +228,42 @@ def test_preflight_accepts_complete_layout_without_network(tmp_path: Path) -> No
     assert report["fact_count"] == 1
     assert report["specialist_checkpoint_sha256"]
     assert len(report["config_fingerprint"]) == 64
+
+
+def test_preflight_rejects_r4_fact_store_candidate_namespace_mismatch(
+    tmp_path: Path,
+) -> None:
+    index_dir = tmp_path / "r4"
+    _minimal_r4_index(index_dir)
+    fact_path = tmp_path / "facts.json"
+    fact_path.write_text(json.dumps([_fact("candidate:other")]), encoding="utf-8")
+    checkpoint = tmp_path / "specialist.pt"
+    checkpoint.write_bytes(b"checkpoint fixture")
+
+    compatibility = inspect_r4_fact_store_compatibility(
+        index_dir,
+        StructuredFactStore(fact_path),
+    )
+    assert compatibility["compatible"] is False
+    assert compatibility["unmaterializable_r4_candidate_count"] == 1
+    assert compatibility["unmaterializable_candidate_examples"] == ["candidate:1"]
+
+    with pytest.raises(
+        TrustedV2ProductionConfigurationError,
+        match="not materializable by the configured fact store",
+    ):
+        validate_trusted_v2_production_configuration(
+            {
+                "TRUSTED_V2_R4_INDEX_DIR": str(index_dir),
+                "TRUSTED_V2_FACT_STORE_PATH": str(fact_path),
+                "TRUSTED_V2_SPECIALIST_CHECKPOINT": str(checkpoint),
+                "V2_SUPERVISOR_PROVIDER": "api",
+                "V2_SUPERVISOR_BASE_URL": "https://example.invalid/v1",
+                "V2_SUPERVISOR_API_KEY": "test-secret",
+                "V2_SUPERVISOR_MODEL": "test-model",
+                "V2_BINDER_PROVIDER": "bailian",
+            }
+        )
 
 
 def test_preflight_accepts_api_binder_provider(tmp_path: Path) -> None:

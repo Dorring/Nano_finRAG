@@ -119,11 +119,24 @@ def _tokenize_for_index(text: str) -> str:
 
 
 class CandidateViewIndexBuilder:
-    """Build 4 isolated shadow lanes for candidate-aligned retrieval."""
+    """Build 4 isolated shadow lanes for candidate-aligned retrieval.
 
-    def __init__(self, out_dir: Path, encoder_model: str = "all-MiniLM-L6-v2") -> None:
+    ``encoder_device`` applies only while constructing offline dense assets;
+    the runtime reader remains independently configured.  Keeping the default
+    CPU preserves existing evaluation/reproducibility behavior while allowing
+    an explicitly provisioned build job to use an isolated GPU.
+    """
+
+    def __init__(
+        self,
+        out_dir: Path,
+        encoder_model: str = "all-MiniLM-L6-v2",
+        *,
+        encoder_device: str = "cpu",
+    ) -> None:
         self.out_dir = Path(out_dir)
         self.encoder_model = encoder_model
+        self.encoder_device = str(encoder_device).strip() or "cpu"
         self._encoder = None
         self._stats: dict[str, Any] = {}
 
@@ -133,7 +146,10 @@ class CandidateViewIndexBuilder:
         if self._encoder is None:
             from sentence_transformers import SentenceTransformer  # type: ignore
 
-            self._encoder = SentenceTransformer(self.encoder_model, device="cpu")
+            self._encoder = SentenceTransformer(
+                self.encoder_model,
+                device=self.encoder_device,
+            )
         return self._encoder
 
     def _lane_dir(self, lane: str) -> Path:
@@ -533,6 +549,7 @@ class CandidateViewIndexReader:
             from sentence_transformers import SentenceTransformer  # type: ignore
 
             self._encoder = SentenceTransformer(self.encoder_model, device="cpu")
+
         return self._encoder
 
     def _query_vector(self, query: str) -> np.ndarray:

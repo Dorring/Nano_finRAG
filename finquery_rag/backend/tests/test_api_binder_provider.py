@@ -51,14 +51,21 @@ def _make_response(content: str | None, finish_reason: str = "stop") -> Any:
     return SimpleNamespace(choices=[choice], usage=usage, id="resp-001")
 
 
-def _make_provider(http_client: Any = None) -> APIBinderProvider:
+def _make_provider(
+    http_client: Any = None,
+    *,
+    max_tokens: int = 1024,
+    enable_thinking: bool | None = None,
+) -> APIBinderProvider:
     with patch("rag_v2.evidence.binder_provider.OpenAI") as mock_openai_cls:
         mock_openai_cls.return_value = MagicMock()
         provider = APIBinderProvider(
             base_url="https://api.deepseek.com/v1",
             api_key="sk-test",
             model_name="deepseek-chat",
+            max_tokens=max_tokens,
             http_client=http_client,
+            enable_thinking=enable_thinking,
         )
     return provider
 
@@ -97,7 +104,42 @@ def test_api_provider_requests_json_mode_and_validates_schema_locally() -> None:
     call = provider.client.chat.completions.create.call_args
     assert call is not None
     assert call.kwargs["response_format"] == {"type": "json_object"}
+    assert call.kwargs["max_tokens"] == 1024
 
+
+def test_api_provider_respects_configured_output_budget() -> None:
+    provider = _make_provider(max_tokens=1536)
+    provider.client.chat.completions.create.return_value = _make_response(
+        json.dumps(_valid_payload())
+    )
+
+    provider.bind({"slots": [], "candidates": []})
+
+    assert provider.client.chat.completions.create.call_args.kwargs["max_tokens"] == 1536
+
+
+def test_api_provider_can_explicitly_disable_deepseek_thinking() -> None:
+    provider = _make_provider(enable_thinking=False)
+    provider.client.chat.completions.create.return_value = _make_response(
+        json.dumps(_valid_payload())
+    )
+
+    provider.bind({"slots": [], "candidates": []})
+
+    assert provider.client.chat.completions.create.call_args.kwargs["extra_body"] == {
+        "thinking": {"type": "disabled"},
+    }
+
+
+def test_api_provider_omits_thinking_extension_for_generic_endpoints() -> None:
+    provider = _make_provider()
+    provider.client.chat.completions.create.return_value = _make_response(
+        json.dumps(_valid_payload())
+    )
+
+    provider.bind({"slots": [], "candidates": []})
+
+    assert "extra_body" not in provider.client.chat.completions.create.call_args.kwargs
 
 def test_bind_discards_reasoning_content_and_reads_only_content() -> None:
     """The provider must read only message.content; reasoning_content is never accessed."""

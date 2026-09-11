@@ -496,23 +496,35 @@ class SemanticEvidenceEvaluationCapability:
         """Resolve a provider ambiguity only with independently corroborated facts.
 
         ``AMBIGUOUS`` remains a fail-closed result by default. This narrow
-        recovery is available only when every requested slot has a unique,
-        exact structured-value consensus across at least two independent
-        physical sources. It never treats duplicate R4 lanes, answer text,
-        or a single source as corroboration.
+        recovery is available only when each ambiguous requested slot has a
+        unique, exact structured-value consensus across at least two
+        independent physical sources. A provider may preserve already-bound
+        non-ambiguous slots, but missing slots, unknown slot IDs, overlapping
+        bindings, duplicate R4 lanes, answer text, and a single source never
+        qualify as corroboration.
         """
 
         if plan.intent not in {Intent.DIRECT_FACT, Intent.CALCULATION}:
             return None
         if not run.schema_valid:
             return None
-        if run.binding.slot_bindings:
-            return None
         expected_slot_ids = {slot.slot_id for slot in plan.required_slots}
-        if (
-            not expected_slot_ids
-            or set(run.binding.ambiguous_slots) != expected_slot_ids
-        ):
+        ambiguous_slot_ids = set(
+            _stable_unique(str(slot_id) for slot_id in run.binding.ambiguous_slots)
+        )
+        existing_bindings = {
+            str(slot_id): tuple(str(fact_id) for fact_id in fact_ids)
+            for slot_id, fact_ids in run.binding.slot_bindings.items()
+        }
+        bound_slot_ids = set(existing_bindings)
+        missing_slot_ids = {str(slot_id) for slot_id in run.binding.missing_slots}
+        if not expected_slot_ids or not ambiguous_slot_ids:
+            return None
+        if not ambiguous_slot_ids.issubset(expected_slot_ids):
+            return None
+        if missing_slot_ids or bound_slot_ids & ambiguous_slot_ids:
+            return None
+        if bound_slot_ids | ambiguous_slot_ids != expected_slot_ids:
             return None
         try:
             frame = extract_query_semantic_frame(query)
@@ -521,9 +533,65 @@ class SemanticEvidenceEvaluationCapability:
         if not frame.entity_ids:
             return None
 
-        replacements: dict[str, tuple[str, ...]] = {}
+        replacements = dict(existing_bindings)
         consensus_sizes: dict[str, int] = {}
+        normalized_slot_bindings: dict[str, dict[str, list[str]]] = {}
+        fact_by_id = {
+            str(fact.get("fact_id") or fact.get("evidence_id")): fact
+            for fact in facts
+            if fact.get("fact_id") or fact.get("evidence_id")
+        }
+        known_segment_labels = tuple(
+            label
+            for fact in facts
+            for label in (classify_evidence_scope(fact).scope_label,)
+            if label
+        )
         for slot in plan.required_slots:
+            slot_id = slot.slot_id
+            current_ids = existing_bindings.get(slot_id, ())
+            if slot_id not in ambiguous_slot_ids:
+                # ``BOUND`` permits exactly one fact per slot.  An ambiguous
+                # provider response may still carry duplicate, equal-valued
+                # rows for a different slot.  Collapse those rows only when
+                # every provider-selected row matches the same independently
+                # corroborated packet consensus; a conflicting or malformed
+                # selection remains fail-closed.
+                if len(current_ids) <= 1:
+                    continue
+                resolved = cls._consensus_fact_for_slot(
+                    query,
+                    frame,
+                    slot,
+                    facts,
+                    require_explicit_source=True,
+                )
+                if resolved is None:
+                    return None
+                fact_id, consensus_size, value_key = resolved
+                if consensus_size < 2:
+                    return None
+                for current_id in current_ids:
+                    current_fact = fact_by_id.get(current_id)
+                    if (
+                        current_fact is None
+                        or not cls._fact_matches_slot(
+                            query,
+                            frame,
+                            slot,
+                            current_fact,
+                            known_segment_labels,
+                        )
+                        or cls._fact_value_key(current_fact) != value_key
+                    ):
+                        return None
+                replacements[slot_id] = (fact_id,)
+                consensus_sizes[slot_id] = consensus_size
+                normalized_slot_bindings[slot_id] = {
+                    "from": list(current_ids),
+                    "to": [fact_id],
+                }
+                continue
             resolved = cls._consensus_fact_for_slot(
                 query,
                 frame,
@@ -536,9 +604,11 @@ class SemanticEvidenceEvaluationCapability:
             fact_id, consensus_size, _value_key = resolved
             if consensus_size < 2:
                 return None
-            replacements[slot.slot_id] = (fact_id,)
-            consensus_sizes[slot.slot_id] = consensus_size
+            replacements[slot_id] = (fact_id,)
+            consensus_sizes[slot_id] = consensus_size
 
+        if set(replacements) != expected_slot_ids:
+            return None
         try:
             binding = EvidenceBinding(
                 status=BindingStatus.BOUND.value,
@@ -571,12 +641,22 @@ class SemanticEvidenceEvaluationCapability:
             repaired_run,
             semantic_check,
             {
-                "strategy": "deterministic_ambiguous_packet_consensus",
+                "strategy": (
+                    "deterministic_ambiguous_packet_consensus"
+                    if not existing_bindings
+                    else "deterministic_partial_ambiguous_packet_consensus"
+                ),
                 "original_ambiguous_slots": list(run.binding.ambiguous_slots),
+                "preserved_slot_bindings": {
+                    slot_id: list(fact_ids)
+                    for slot_id, fact_ids in existing_bindings.items()
+                },
                 "replaced_slot_bindings": {
                     slot_id: {"to": list(fact_ids)}
                     for slot_id, fact_ids in replacements.items()
+                    if slot_id in ambiguous_slot_ids
                 },
+                "normalized_slot_bindings": normalized_slot_bindings,
                 "consensus_size_by_slot": consensus_sizes,
             },
         )

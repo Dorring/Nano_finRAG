@@ -330,20 +330,36 @@ class CandidateDirectR4Policy:
 
     def retrieve(self, request: R4RetrievalRequest) -> R4RetrievalResult:
         self.calls += 1
+        targeted_slots = tuple(
+            slot
+            for slot in request.plan.required_slots
+            if request.target_slots and slot.slot_id in request.target_slots
+        )
         target_terms: list[str] = []
-        for slot in request.plan.required_slots:
-            if request.target_slots and slot.slot_id not in request.target_slots:
-                continue
+        for slot in targeted_slots:
             target_terms.extend(
                 term
                 for term in (slot.metric, slot.period)
                 if term
             )
-        targeted_question = (
-            append_missing_query_terms(request.standalone_query, target_terms)
-            if request.target_slots
-            else request.standalone_query
-        )
+        if len(targeted_slots) == 1:
+            # Recovery must search for the missing requirement itself, not
+            # repeat the original multi-slot question. The latter can make the
+            # legacy QueryPlan parser choose the first metric again, returning
+            # the same crowded candidate pool indefinitely. This is a
+            # deterministic slot query built from the Supervisor's canonical
+            # RequiredSlot, never a second LLM plan.
+            target = targeted_slots[0]
+            targeted_question = " ".join(
+                part for part in (target.metric, target.period) if part
+            )
+        elif request.target_slots:
+            targeted_question = append_missing_query_terms(
+                request.standalone_query,
+                target_terms,
+            )
+        else:
+            targeted_question = request.standalone_query
         query_plan = build_query_plan(
             targeted_question,
             tuple(request.document_scope or self.document_scope),

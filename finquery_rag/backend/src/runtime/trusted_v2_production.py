@@ -154,6 +154,12 @@ def _path_env(
     return path.resolve()
 
 
+def _is_deepseek_endpoint(base_url: str) -> bool:
+    """Whether a direct DeepSeek-compatible endpoint supports `thinking` control."""
+
+    return "api.deepseek.com" in base_url.casefold()
+
+
 def _bool_env(environ: Mapping[str, str], name: str, default: bool = False) -> bool:
     value = _env(environ, name)
     if value is None:
@@ -532,6 +538,70 @@ def inspect_r4_index(index_dir: Path | str) -> dict[str, Any]:
     }
 
 
+def inspect_r4_fact_store_compatibility(
+    index_dir: Path | str,
+    fact_store: StructuredFactStore,
+) -> dict[str, Any]:
+    """Report whether every R4 candidate can be materialized by the fact store.
+
+    R4 retrieval returns ``candidate_key`` values, and the runtime treats a
+    materialization miss as an execution failure.  Treat index/fact key-space
+    alignment as a deployment contract rather than discovering a mismatch only
+    after a user request reaches the bounded runtime.
+    """
+
+    if not isinstance(fact_store, StructuredFactStore):
+        raise TypeError("fact_store must be StructuredFactStore")
+    root = Path(index_dir).expanduser().resolve()
+    metadata_path = root / "candidate-metadata.sqlite"
+    try:
+        with sqlite3.connect(
+            f"file:{metadata_path.as_posix()}?mode=ro", uri=True
+        ) as connection:
+            index_keys = {
+                str(row[0]).strip()
+                for row in connection.execute(
+                    "SELECT DISTINCT candidate_key FROM view_metadata"
+                )
+                if str(row[0]).strip()
+            }
+    except sqlite3.Error as exc:
+        raise TrustedV2ProductionConfigurationError(
+            f"R4 metadata cannot be opened read-only: {metadata_path}"
+        ) from exc
+    if not index_keys:
+        raise TrustedV2ProductionConfigurationError(
+            f"R4 metadata contains no candidate keys: {metadata_path}"
+        )
+
+    fact_keys = set(fact_store.candidate_keys)
+    missing = index_keys - fact_keys
+    return {
+        "compatible": not missing,
+        "r4_candidate_key_count": len(index_keys),
+        "fact_store_candidate_key_count": len(fact_keys),
+        "materializable_r4_candidate_count": len(index_keys) - len(missing),
+        "unmaterializable_r4_candidate_count": len(missing),
+        "unmaterializable_candidate_examples": sorted(missing)[:5],
+        "unindexed_fact_candidate_count": len(fact_keys - index_keys),
+    }
+
+
+def _require_r4_fact_store_compatibility(
+    index_dir: Path | str,
+    fact_store: StructuredFactStore,
+) -> dict[str, Any]:
+    compatibility = inspect_r4_fact_store_compatibility(index_dir, fact_store)
+    if compatibility["compatible"]:
+        return compatibility
+    examples = ", ".join(compatibility["unmaterializable_candidate_examples"])
+    raise TrustedV2ProductionConfigurationError(
+        "R4 index candidates are not materializable by the configured fact store: "
+        f"missing={compatibility['unmaterializable_r4_candidate_count']}; "
+        f"examples={examples or 'none'}"
+    )
+
+
 def _provider_common(
     environ: Mapping[str, str],
     prefix: str,
@@ -558,6 +628,11 @@ def _build_supervisor(environ: Mapping[str, str]) -> SupervisorService:
     base_url, api_key, model_name = _provider_common(environ, "V2_SUPERVISOR_")
     temperature = _float_env(environ, "V2_SUPERVISOR_TEMPERATURE", 0.0, minimum=0.0)
     enable_thinking = _bool_env(environ, "V2_SUPERVISOR_ENABLE_THINKING", False)
+    api_thinking_control = _bool_env(
+        environ,
+        "V2_SUPERVISOR_API_THINKING_CONTROL",
+        _is_deepseek_endpoint(base_url),
+    )
     try:
         if provider_name == "bailian":
             provider = BailianProvider(
@@ -566,7 +641,7 @@ def _build_supervisor(environ: Mapping[str, str]) -> SupervisorService:
                 model_name=model_name,
                 enable_thinking=enable_thinking,
                 temperature=temperature,
-                max_tokens=_int_env(environ, "V2_SUPERVISOR_MAX_TOKENS", 512, minimum=1),
+                max_tokens=_int_env(environ, "V2_SUPERVISOR_MAX_TOKENS", 1024, minimum=1),
                 timeout=_float_env(environ, "V2_SUPERVISOR_TIMEOUT_SECONDS", 180.0, minimum=0.1),
                 max_retries=0,
             )
@@ -576,11 +651,14 @@ def _build_supervisor(environ: Mapping[str, str]) -> SupervisorService:
                 api_key=api_key,
                 model_name=model_name,
                 temperature=temperature,
-                max_tokens=_int_env(environ, "V2_SUPERVISOR_MAX_TOKENS", 512, minimum=1),
+                max_tokens=_int_env(environ, "V2_SUPERVISOR_MAX_TOKENS", 1024, minimum=1),
                 timeout=_float_env(environ, "V2_SUPERVISOR_TIMEOUT_SECONDS", 120.0, minimum=0.1),
                 provider_role="supervisor",
                 model_role="strong_general_llm",
                 structured_output=True,
+                enable_thinking=(
+                    enable_thinking if api_thinking_control else None
+                ),
             )
         else:
             raise TrustedV2ProductionConfigurationError(
@@ -606,13 +684,19 @@ def _build_binder(environ: Mapping[str, str]) -> SemanticBinderService:
         "V2_BINDER_",
         fallback_prefix="V2_SUPERVISOR_",
     )
+    api_thinking_control = _bool_env(
+        environ,
+        "V2_BINDER_API_THINKING_CONTROL",
+        _is_deepseek_endpoint(base_url),
+    )
+    enable_thinking = _bool_env(environ, "V2_BINDER_ENABLE_THINKING", False)
     try:
         if provider_name == "bailian":
             provider = BailianBinderProvider(
                 base_url=base_url,
                 api_key=api_key,
                 model_name=model_name,
-                enable_thinking=_bool_env(environ, "V2_BINDER_ENABLE_THINKING", False),
+                enable_thinking=enable_thinking,
                 temperature=_float_env(environ, "V2_BINDER_TEMPERATURE", 0.0, minimum=0.0),
                 timeout=_float_env(environ, "V2_BINDER_TIMEOUT_SECONDS", 180.0, minimum=0.1),
                 max_retries=0,
@@ -623,8 +707,12 @@ def _build_binder(environ: Mapping[str, str]) -> SemanticBinderService:
                 api_key=api_key,
                 model_name=model_name,
                 temperature=_float_env(environ, "V2_BINDER_TEMPERATURE", 0.0, minimum=0.0),
+                max_tokens=_int_env(environ, "V2_BINDER_MAX_TOKENS", 1024, minimum=1),
                 timeout=_float_env(environ, "V2_BINDER_TIMEOUT_SECONDS", 180.0, minimum=0.1),
                 max_retries=0,
+                enable_thinking=(
+                    enable_thinking if api_thinking_control else None
+                ),
             )
     except TrustedV2ProductionConfigurationError:
         raise
@@ -719,6 +807,7 @@ def _configuration_fingerprint(environ: Mapping[str, str]) -> str:
         "V2_SUPERVISOR_API_KEY",
         "V2_SUPERVISOR_MODEL",
         "V2_SUPERVISOR_ENABLE_THINKING",
+        "V2_SUPERVISOR_API_THINKING_CONTROL",
         "V2_SUPERVISOR_TEMPERATURE",
         "V2_SUPERVISOR_MAX_TOKENS",
         "V2_SUPERVISOR_TIMEOUT_SECONDS",
@@ -727,7 +816,9 @@ def _configuration_fingerprint(environ: Mapping[str, str]) -> str:
         "V2_BINDER_API_KEY",
         "V2_BINDER_MODEL",
         "V2_BINDER_ENABLE_THINKING",
+        "V2_BINDER_API_THINKING_CONTROL",
         "V2_BINDER_TEMPERATURE",
+        "V2_BINDER_MAX_TOKENS",
         "V2_BINDER_TIMEOUT_SECONDS",
         "V2_MAX_REPLANS",
         "V2_MAX_TOOL_CALLS",
@@ -761,6 +852,10 @@ def validate_trusted_v2_production_configuration(
     checkpoint = _path_env(env, "TRUSTED_V2_SPECIALIST_CHECKPOINT", directory=False)
     index_manifest = inspect_r4_index(index_dir)
     fact_store = StructuredFactStore(fact_path)
+    fact_store_compatibility = _require_r4_fact_store_compatibility(
+        index_dir,
+        fact_store,
+    )
     # Validate that the declared provider family and all endpoint/model values
     # are present without instantiating network clients.
     supervisor_provider = (_env(env, "V2_SUPERVISOR_PROVIDER", "bailian") or "bailian").casefold()
@@ -778,6 +873,7 @@ def validate_trusted_v2_production_configuration(
     return {
         "config_fingerprint": _configuration_fingerprint(env),
         "r4_index": index_manifest,
+        "r4_fact_store_compatibility": fact_store_compatibility,
         "fact_store_path": str(fact_path),
         "fact_count": fact_store.candidate_count,
         "specialist_checkpoint": str(checkpoint),
@@ -819,6 +915,7 @@ def _load_resources(environ: Mapping[str, str]) -> TrustedV2RuntimeResources:
     fact_path = _path_env(environ, "TRUSTED_V2_FACT_STORE_PATH", directory=False)
     index_manifest = inspect_r4_index(index_dir)
     fact_store = StructuredFactStore(fact_path)
+    _require_r4_fact_store_compatibility(index_dir, fact_store)
     index_reader = None
     try:
         from src.pdf_retrieval_v4.candidate_view_index import CandidateViewIndexReader
@@ -942,5 +1039,6 @@ __all__ = [
     "build_trusted_v2_runtime_for_request",
     "clear_trusted_v2_production_cache",
     "inspect_r4_index",
+    "inspect_r4_fact_store_compatibility",
     "validate_trusted_v2_production_configuration",
 ]
