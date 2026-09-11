@@ -208,13 +208,13 @@ class SelectingBinderProvider:
         facts = list(request["financial_facts"])
         bindings: dict[str, tuple[str, ...]] = {}
         missing: list[str] = []
+        selected_fact_ids: set[str] = set()
         for slot in request["required_slots"]:
             slot_id = str(slot["slot_id"])
             matches = [
                 fact
                 for fact in facts
-                if slot_id in tuple(str(item) for item in fact.get("slots", ()))
-                and str(fact.get("metric", "")).casefold()
+                if str(fact.get("metric", "")).casefold()
                 == str(slot.get("metric", "")).casefold()
                 and str(fact.get("period", "")).casefold()
                 == str(slot.get("period", "")).casefold()
@@ -224,8 +224,15 @@ class SelectingBinderProvider:
                 matches = [
                     fact for fact in matches if str(fact.get("fact_id")) == preferred
                 ] or matches
+            matches = [
+                fact
+                for fact in matches
+                if str(fact.get("fact_id")) not in selected_fact_ids
+            ]
             if matches:
-                bindings[slot_id] = (str(matches[0]["fact_id"]),)
+                fact_id = str(matches[0]["fact_id"])
+                bindings[slot_id] = (fact_id,)
+                selected_fact_ids.add(fact_id)
             else:
                 missing.append(slot_id)
         status = (
@@ -267,8 +274,7 @@ class OverselectingBinderProvider(SelectingBinderProvider):
             matches = [
                 fact
                 for fact in facts
-                if slot_id in tuple(str(item) for item in fact.get("slots", ()))
-                and str(fact.get("metric", "")).casefold()
+                if str(fact.get("metric", "")).casefold()
                 == str(slot.get("metric", "")).casefold()
                 and str(fact.get("period", "")).casefold()
                 == str(slot.get("period", "")).casefold()

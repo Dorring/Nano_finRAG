@@ -7,6 +7,7 @@ the internal FinancialFactV1 object and its identity remain unchanged.
 
 from __future__ import annotations
 
+import copy
 import re
 from typing import Any, Mapping
 
@@ -72,6 +73,162 @@ _V2_SOURCE_FIELDS = (
     "period_value_bindings",
 )
 
+# The production Binder is an external-model boundary. It needs enough typed,
+# source-derived information to choose a fact ID, but it must never receive an
+# unbounded retrieval packet (or any conversational/assistant text that
+# happened to survive in a candidate mapping). Keep this allowlist intentionally
+# small and explicit. Adding a new field is a contract change, not a
+# convenience copy of an arbitrary fact dictionary.
+_RUNTIME_BINDER_IDENTITY_FIELDS = (
+    "fact_id",
+    "evidence_id",
+    "candidate_id",
+    "candidate_key",
+    "citation_id",
+    "physical_source_id",
+    "source_id",
+    "document_id",
+    "pdf_page",
+    "page",
+    "table_fragment_id",
+    "logical_table_id",
+    "table_id",
+    "row_id",
+    "column_id",
+    "cell_id",
+)
+
+_RUNTIME_BINDER_SEMANTIC_FIELDS = (
+    "entity",
+    "issuer",
+    "company",
+    "ticker",
+    "metric",
+    "normalized_metric",
+    "raw_metric",
+    "metric_path",
+    "metric_paths",
+    "period",
+    "normalized_period",
+    "raw_period",
+    "periods",
+    "value",
+    "parsed_numeric_value",
+    "raw_value",
+    "currency",
+    "unit",
+    "scale",
+    "normalized_scale",
+    "raw_scale",
+    "scope",
+    "scope_label",
+    "segment_label",
+    "row_label",
+    "row_path",
+    "row_hierarchy",
+    "column_label",
+    "column_header_path",
+    "multi_level_column_headers",
+    "table_title",
+    "statement_title",
+    "statement_type",
+    "section_title",
+    "section_path",
+)
+
+
+def _runtime_structural_context(fact: Mapping[str, Any]) -> tuple[Mapping[str, Any], ...]:
+    """Return only pre-existing structured metadata containers.
+
+    The function deliberately does not look at ``content``, ``source_text``,
+    arbitrary nested payloads, or conversation metadata. ``metadata`` and
+    ``structural_context`` are accepted only as a source for individually
+    allowlisted fields below; they are never passed through wholesale.
+    """
+
+    contexts: list[Mapping[str, Any]] = [fact]
+    for key in ("structural_context", "metadata"):
+        value = fact.get(key)
+        if isinstance(value, Mapping):
+            contexts.append(value)
+    return tuple(contexts)
+
+
+def _runtime_field_value(
+    contexts: tuple[Mapping[str, Any], ...],
+    field: str,
+) -> Any:
+    for context in contexts:
+        value = context.get(field)
+        if value is not None:
+            return value
+    return None
+
+
+def _runtime_safe_value(value: Any) -> Any | None:
+    """Copy only JSON-shaped scalar/list values across the provider boundary.
+
+    A fact registry may contain diagnostic mappings, extraction blobs, or raw
+    source text. None of those are needed to bind a RequiredSlot. Rejecting
+    nested mappings here keeps accidental future fields from widening the
+    external context surface.
+    """
+
+    if value is None or isinstance(value, (str, int, float, bool)):
+        return copy.deepcopy(value)
+    if isinstance(value, (list, tuple)):
+        result: list[Any] = []
+        for item in value:
+            copied = _runtime_safe_value(item)
+            if copied is None and item is not None:
+                return None
+            result.append(copied)
+        return result
+    return None
+
+
+def build_runtime_binder_fact_view(fact: Mapping[str, Any]) -> dict[str, Any]:
+    """Build the compact, source-derived fact DTO used by production Binder.
+
+    This is *not* a second FinancialFact schema and does not change the
+    internal candidate object or its identity. It only makes the model-facing
+    surface explicit:
+
+    * actual fact IDs and provenance identifiers remain selectable;
+    * typed financial and table/row/period metadata remain available;
+    * raw retrieval text, assistant text, summaries, and opaque diagnostic
+      objects are excluded by construction.
+
+    The projector has no question, RequiredSlot, Gold answer, or conversation
+    input, so it cannot grant evidence authority or act as an oracle.
+    """
+
+    contexts = _runtime_structural_context(fact)
+    view: dict[str, Any] = {}
+    for field in _RUNTIME_BINDER_IDENTITY_FIELDS + _RUNTIME_BINDER_SEMANTIC_FIELDS:
+        value = _runtime_safe_value(_runtime_field_value(contexts, field))
+        if value is not None:
+            view[field] = value
+
+    # The local binding validator needs this exact boolean after the provider
+    # returns an ID. Do not default missing provenance to true.
+    view["provenance_complete"] = fact.get("provenance_complete") is True
+
+    # ``fact_id`` is mandatory for selection. Some frozen fact artifacts use
+    # ``evidence_id`` as the primary identity, so preserve that established
+    # alias deterministically without inspecting any answer text.
+    fact_id = view.get("fact_id") or view.get("evidence_id")
+    if fact_id is not None and str(fact_id).strip():
+        view["fact_id"] = str(fact_id)
+    return view
+
+
+def build_runtime_binder_fact_views(
+    facts: tuple[Mapping[str, Any], ...] | list[Mapping[str, Any]],
+) -> list[dict[str, Any]]:
+    """Project a candidate packet in stable order for the external Binder."""
+
+    return [build_runtime_binder_fact_view(fact) for fact in facts]
 
 def _clean_sequence(value: Any) -> list[Any] | None:
     if value is None:
