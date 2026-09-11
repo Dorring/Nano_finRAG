@@ -49,8 +49,11 @@ The builder requires all of the following deployment assets:
    only from deployment configuration; deterministic test providers are not
    accepted by the production builder.
 4. `TRUSTED_V2_SPECIALIST_CHECKPOINT`, loadable by the existing specialist
-   loader.  The loader verifies the checkpoint identity/hash before serving
-   requests.
+   loader. The loader verifies the checkpoint identity/hash before serving
+   requests. If the NanoChat package is mounted outside this repository,
+   `NANOCHAT_REPO` may explicitly name that source root; otherwise the loader
+   resolves the repository root from its own source location and never appends
+   an unrelated Python environment.
 
 The optional `V2_MAX_*` values configure the existing bounded runtime.  They
 do not create a second budget policy.

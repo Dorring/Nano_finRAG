@@ -69,6 +69,16 @@ def test_fact_store_views_share_candidate_keys_and_keep_source_only_context() ->
         "candidate_pair_count": 1,
         "structured_view_count": 1,
         "document_count": 1,
+        "explicit_metadata_coverage": {
+            "entity": {"populated_count": 1, "ratio": 1.0},
+            "metric": {"populated_count": 1, "ratio": 1.0},
+            "period": {"populated_count": 1, "ratio": 1.0},
+            "scope": {"populated_count": 1, "ratio": 1.0},
+            "unit": {"populated_count": 0, "ratio": 0.0},
+            "currency": {"populated_count": 1, "ratio": 1.0},
+            "scale": {"populated_count": 1, "ratio": 1.0},
+            "statement_type": {"populated_count": 0, "ratio": 0.0},
+        },
     }
 
 
@@ -108,3 +118,23 @@ def test_fact_store_views_reject_incomplete_source_contracts(
 ) -> None:
     with pytest.raises(TrustedV2FactIndexError, match=error):
         build_fact_store_candidate_views([_fact(**overrides)])
+
+
+def test_fact_store_summary_treats_unknown_metadata_as_unpopulated() -> None:
+    _, summary = build_fact_store_candidate_views(
+        [
+            _fact(
+                entity="UNKNOWN",
+                metric="unknown",
+                period=None,
+                scope="N/A",
+                currency=None,
+                scale="null",
+                statement_type="UNKNOWN",
+            )
+        ]
+    )
+
+    coverage = summary.to_dict()["explicit_metadata_coverage"]
+    for name in ("entity", "metric", "period", "scope", "currency", "scale", "statement_type"):
+        assert coverage[name] == {"populated_count": 0, "ratio": 0.0}

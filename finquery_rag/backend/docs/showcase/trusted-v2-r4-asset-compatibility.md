@@ -59,6 +59,21 @@ physically extracted source text already present in the Fact Store.  Neither
 view consumes questions, Gold evidence, answers, assistant history, model
 summaries, or private reasoning.
 
+## Metadata readiness diagnostic
+
+The generated `candidate_contract.explicit_metadata_coverage` records the
+count and ratio of candidates with non-placeholder source fields for entity,
+metric, period, scope, unit, currency, scale and statement type. It is an
+asset-quality signal, not a release override: a populated field does not make
+a candidate Binder-admitted, and a missing field never permits a generated
+answer to bypass the Binder.
+
+Review this section before interpreting a smoke result. For example, sparse
+period/unit/scope coverage predicts conservative multi-slot and qualitative
+outcomes; the appropriate remedy is to enrich or correct source-derived fact
+metadata and rebuild the reviewed index, not to loosen evidence admission or
+silently infer missing qualifiers.
+
 ## Deployment sequence
 
 1. Preserve the existing Fact Store; build a new index directory instead of

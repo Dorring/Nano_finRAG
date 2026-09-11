@@ -33,22 +33,49 @@ class TrustedV2FactIndexError(ValueError):
     """Raised when a fact record cannot safely become an R4 candidate view."""
 
 
+_METADATA_FIELD_ALIASES: dict[str, tuple[str, ...]] = {
+    "entity": ("entity", "issuer", "company"),
+    "metric": ("metric", "normalized_metric", "raw_metric"),
+    "period": ("period", "normalized_period", "raw_period"),
+    "scope": ("scope", "scope_label"),
+    "unit": ("unit",),
+    "currency": ("currency",),
+    "scale": ("scale", "normalized_scale"),
+    "statement_type": ("statement_type",),
+}
+_UNKNOWN_METADATA_VALUES = frozenset({"unknown", "n/a", "na", "none", "null"})
+
+
 @dataclass(frozen=True)
 class FactCandidateViewBuildSummary:
-    """Small, serializable summary of a source-only fact-index build input."""
+    """Serializable source-quality summary for an R4 fact-index build.
+
+    Coverage is diagnostic only: it never upgrades a retrieval candidate into
+    admitted evidence and it does not relax Binder requirements.
+    """
 
     source_fact_count: int
     candidate_pair_count: int
     structured_view_count: int
     document_count: int
+    explicit_metadata_counts: tuple[tuple[str, int], ...]
 
-    def to_dict(self) -> dict[str, int | str]:
+    def to_dict(self) -> dict[str, Any]:
+        denominator = self.source_fact_count
+        coverage = {
+            name: {
+                "populated_count": count,
+                "ratio": round(count / denominator, 6) if denominator else 0.0,
+            }
+            for name, count in self.explicit_metadata_counts
+        }
         return {
             "schema_version": FACT_CANDIDATE_INDEX_SCHEMA_VERSION,
             "source_fact_count": self.source_fact_count,
             "candidate_pair_count": self.candidate_pair_count,
             "structured_view_count": self.structured_view_count,
             "document_count": self.document_count,
+            "explicit_metadata_coverage": coverage,
         }
 
 
@@ -79,6 +106,13 @@ def _values(record: Mapping[str, Any], *keys: str) -> tuple[str, ...]:
         else:
             values.append(value)
     return _stable_unique(values)
+
+
+def _has_explicit_metadata(record: Mapping[str, Any], aliases: tuple[str, ...]) -> bool:
+    for value in _values(record, *aliases):
+        if value.casefold() not in _UNKNOWN_METADATA_VALUES:
+            return True
+    return False
 
 
 def _context(record: Mapping[str, Any]) -> Mapping[str, Any]:
@@ -273,6 +307,9 @@ def build_fact_store_candidate_views(
     pairs: list[CandidateViewPair] = []
     seen: set[str] = set()
     documents: set[str] = set()
+    explicit_metadata_counts = {
+        name: 0 for name in _METADATA_FIELD_ALIASES
+    }
     count = 0
     for count, fact in enumerate(facts, 1):
         pair = _fact_views(fact, count)
@@ -283,6 +320,9 @@ def build_fact_store_candidate_views(
         seen.add(pair.candidate_key)
         pairs.append(pair)
         documents.add(pair.document_id)
+        for name, aliases in _METADATA_FIELD_ALIASES.items():
+            if _has_explicit_metadata(fact, aliases):
+                explicit_metadata_counts[name] += 1
     if not pairs:
         raise TrustedV2FactIndexError("fact_store_contains_no_candidate_views")
     return pairs, FactCandidateViewBuildSummary(
@@ -290,6 +330,7 @@ def build_fact_store_candidate_views(
         candidate_pair_count=len(pairs),
         structured_view_count=sum(pair.structured_view is not None for pair in pairs),
         document_count=len(documents),
+        explicit_metadata_counts=tuple(explicit_metadata_counts.items()),
     )
 
 
