@@ -9,6 +9,7 @@ into the financial RAG runtime under the FinancialGenerationViewV1 semantic cont
 from __future__ import annotations
 
 import hashlib
+import os
 from pathlib import Path
 import re
 import sys
@@ -17,7 +18,21 @@ from typing import Any
 
 import torch
 
-NANOCHAT_REPO = Path("/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat")
+
+def _resolve_nanochat_repo() -> Path:
+    """Resolve the NanoChat source root without coupling V2 to one host path.
+
+    ``NANOCHAT_REPO`` is the explicit deployment override; the source tree
+    containing this module is the safe local default. No unrelated Python
+    environment is appended to the interpreter path.
+    """
+    configured = os.getenv("NANOCHAT_REPO")
+    if configured:
+        return Path(configured).expanduser().resolve()
+    return Path(__file__).resolve().parents[4]
+
+
+NANOCHAT_REPO = _resolve_nanochat_repo()
 if str(NANOCHAT_REPO) not in sys.path:
     sys.path.insert(0, str(NANOCHAT_REPO))
 
