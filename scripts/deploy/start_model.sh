@@ -22,8 +22,11 @@ LAUNCHER="${RUNTIME_DIR}/.launch_model.sh"
 : "${MODEL_MAX_TOKENS:=512}"
 : "${CONDA_ENV_NAME:=nano}"
 : "${MODEL_PYTHON:=}"
+: "${HF_ENDPOINT:=}"
+: "${HF_HOME:=}"
 : "${HF_HUB_OFFLINE:=1}"
 : "${HF_DATASETS_OFFLINE:=1}"
+: "${TRANSFORMERS_OFFLINE:=1}"
 # Loading the production checkpoint can legitimately take longer than two
 # minutes on a busy GPU host.  Keep the timeout configurable so a slow load is
 # not mistaken for a model failure (and so start_all.sh does not roll back a
@@ -100,8 +103,11 @@ fi
     printf 'set -e\n'
     printf 'echo $$ > %s\n' "$(shell_squote "${PID_FILE}")"
     printf 'cd %s\n' "$(shell_squote "${REPO_ROOT}")"
+    printf 'export HF_ENDPOINT=%s\n' "$(shell_squote "${HF_ENDPOINT}")"
+    printf 'export HF_HOME=%s\n' "$(shell_squote "${HF_HOME}")"
     printf 'export HF_HUB_OFFLINE=%s\n' "$(shell_squote "${HF_HUB_OFFLINE}")"
     printf 'export HF_DATASETS_OFFLINE=%s\n' "$(shell_squote "${HF_DATASETS_OFFLINE}")"
+    printf 'export TRANSFORMERS_OFFLINE=%s\n' "$(shell_squote "${TRANSFORMERS_OFFLINE}")"
     printf '%sCUDA_VISIBLE_DEVICES=%s exec %s -m scripts.chat_openai_compat --source %s --model-tag %s --step %s --model-name %s --port %s --host %s --temperature %s --max-tokens %s > %s 2>&1\n' \
         "${__CONDA_PRE}" \
         "$(shell_squote "${CUDA_VISIBLE_DEVICES}")" \
