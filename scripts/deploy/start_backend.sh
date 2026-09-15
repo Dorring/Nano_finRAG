@@ -35,14 +35,26 @@ if tmux has-session -t "${SESSION}" 2>/dev/null; then
     exit 1
 fi
 
-# Pre-flight: model service must be reachable.
-__MODEL_URL="http://${MODEL_HOST}:${MODEL_PORT}/health"
-__code="$(curl -s -o /dev/null -w '%{http_code}' "${__MODEL_URL}" 2>/dev/null || true)"
-if [[ "${__code}" != "200" ]]; then
-    echo "[backend] Model service not available at ${__MODEL_URL} (status: ${__code}). Start the model first." >&2
+# V2 owns its Specialist in-process. Only V1 and shadow require the legacy model service.
+case "${FINANCIAL_RUNTIME_MODE:-v2}" in
+v1|shadow)
+    __MODEL_URL="http://${MODEL_HOST}:${MODEL_PORT}/health"
+    __code="$(curl -s -o /dev/null -w '%{http_code}' "${__MODEL_URL}" 2>/dev/null || true)"
+    if [[ "${__code}" != "200" ]]; then
+        echo "[backend] Legacy model service not available at ${__MODEL_URL} (status: ${__code}). Start the model first." >&2
+        write_status "FAILED"
+        exit 1
+    fi
+    ;;
+v2)
+    echo "[backend] FINANCIAL_RUNTIME_MODE=v2; legacy model-service preflight is not required."
+    ;;
+*)
+    echo "[backend] FINANCIAL_RUNTIME_MODE must be v1, shadow, or v2 (got '${FINANCIAL_RUNTIME_MODE}')." >&2
     write_status "FAILED"
     exit 1
-fi
+    ;;
+esac
 
 # Pre-flight: port checks.
 if [[ "${BACKEND_PORT}" -le 1024 ]]; then
@@ -89,7 +101,7 @@ __BACKEND_ENV_VARS=(
     DOCUMENT_REGISTRY_DB_PATH SESSIONS_DB_PATH TRACE_DB_PATH
     RAG_CANDIDATE_MULTIPLIER
     EMBEDDING_MODEL_NAME RAG_RERANKER RAG_RERANKER_MODEL
-    HF_HUB_OFFLINE TRANSFORMERS_OFFLINE
+    HF_HOME HF_HUB_OFFLINE HF_DATASETS_OFFLINE TRANSFORMERS_OFFLINE
     PARSER_BACKEND MINERU_COMMAND MINERU_API_URL MINERU_BACKEND
     MINERU_TIMEOUT_SECONDS MINERU_AUTO_ENABLED MINERU_AUTO_SAMPLE_PAGES
     MINERU_AUTO_MIN_TEXT_CHARS MINERU_METHOD MINERU_FORCE_CPU
