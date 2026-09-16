@@ -14,6 +14,7 @@ from rag_v2.adaptive import (
     AdaptiveActionPolicyV1,
     AdaptiveRAGBudgetV1,
     AdaptiveRAGStateV1,
+    BoundedAdaptiveRAGV1,
     ReasonCode,
     ToolCapability,
 )
@@ -75,3 +76,26 @@ def test_policy_defaults_to_the_shared_budget(default_budget: AdaptiveRAGBudgetV
     policy = AdaptiveActionPolicyV1(default_budget)
     assert policy.check_tool_call(_state(tool_calls=4)) is None
     assert policy.check_tool_call(_state(tool_calls=5)) is ReasonCode.BUDGET_EXHAUSTED
+
+
+def test_loop_rejects_a_policy_with_a_different_budget() -> None:
+    """Two sources of truth for the same limits make a run unpredictable.
+
+    The loop guard reads one budget and the permission checks another, so the
+    run could fail closed while reporting budget it never used.
+    """
+
+    loop_budget = AdaptiveRAGBudgetV1(max_total_tool_calls=5)
+    other_budget = AdaptiveRAGBudgetV1(max_total_tool_calls=1)
+
+    with pytest.raises(ValueError, match="share the loop budget"):
+        BoundedAdaptiveRAGV1(
+            budget=loop_budget,
+            policy=AdaptiveActionPolicyV1(other_budget),
+        )
+
+
+def test_loop_accepts_a_policy_sharing_its_budget() -> None:
+    budget = AdaptiveRAGBudgetV1(max_total_tool_calls=3)
+    loop = BoundedAdaptiveRAGV1(budget=budget, policy=AdaptiveActionPolicyV1(budget))
+    assert loop.policy.budget is budget

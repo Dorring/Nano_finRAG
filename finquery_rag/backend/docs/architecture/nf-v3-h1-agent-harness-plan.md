@@ -376,8 +376,60 @@ findings. Fixed:
 Reported, not fixed — pre-existing and out of H1 scope:
 
 - `max_identical_query_retry` is declared, plumbed through
-  `V2_MAX_IDENTICAL_QUERY_RETRIES`, and enforced nowhere.
+  `V2_MAX_IDENTICAL_QUERY_RETRIES`, and enforced nowhere. Left alone
+  deliberately: the replanner emits `state.normalized_query` verbatim, so
+  enforcing the default of 0 would change legacy retrieval behaviour that H1
+  exists to preserve.
 - `_capability_trace()` exposes lifetime port counters, so a trace can report
-  work done by a previous request on the same coordinator.
+  work done by a previous request on the same coordinator. Not a production
+  defect: all five capability ports are constructed per request inside
+  `build_trusted_v2_runtime_for_request`, so the counters reset. It only affects
+  a coordinator reused across requests, as evaluation scripts do.
 - `runtime_metadata` is not passed through `_sanitize_trace_payload`, unlike the
   trace itself.
+
+A second cleanup pass then:
+
+- moved the harness test fixtures into `tests/harness/harness_support.py`, so
+  the calculation-phase and closed-loop suites share one coordinator wiring
+  instead of two copies that could drift;
+- extended the mode-equivalence assertions to `calculations`,
+  `calculation_result_id` and `claim_provenance`, which had been left
+  uncompared — the same gap that had hidden the `route` and `reason_codes`
+  divergences earlier;
+- added `test_required_calculation_without_admitted_evidence_never_calculates`,
+  pinning the admission gate at the harness level rather than only through the
+  coordinator.
+
+A second review pass then found 8 more. Fixed:
+
+- `_candidate_stage` had two call sites and only one supplied the captured
+  in-loop calculation result, leaving `state.calculation_attempted` and the value
+  coupled by convention only. Both supply it now.
+- `V2ExecutionTrace.__post_init__` had an `elif` byte-identical to its `else`;
+  adding `turns` to the `elif` set was a no-op (the load-bearing change was the
+  field tuple). The branches are collapsed.
+- `BoundedAdaptiveRAGV1` accepted a `policy` carrying a *different* budget from
+  the loop's own, creating two sources of truth for the same limits — the run
+  could fail closed while reporting budget it never used. A mismatched policy is
+  now rejected at construction.
+
+Accepted or deferred, with reasons:
+
+- **A stronger harness-side admission gate is not implementable there.** The
+  coordinator's `_binder_admission_is_authoritative` needs the evaluator adapter;
+  the harness only sees `state.bound_evidence_ids`, and `_EvaluatorAdapter.evaluate`
+  assigns that field from the adapter, so the two cannot diverge on any path that
+  goes through EVALUATE. Divergence requires a resumed or externally supplied
+  state. The docstring now says the gate is "evidence was admitted" rather than
+  claiming parity with the coordinator's gate.
+- **harness_v3 builds the trace twice per released request** — once inside
+  `_candidate_stage`, then again against the completed state. The second build is
+  what makes the trace cover GENERATE/VERIFY/RELEASE. Removing it means patching
+  a frozen outcome on the release path; not worth the risk for a per-request
+  constant factor.
+- **`_release_verdict` does not run on the production harness_v3 path**, because
+  the finalizer replaces the harness's generator and verifier there, and the
+  verdict is honoured instead inside `_candidate_stage`. That is correct — the
+  release-integrity defect it fixes was reproducible only on the
+  `allow_test_release` path, which is where it now applies.

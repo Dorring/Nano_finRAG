@@ -63,6 +63,11 @@ class BoundedAdaptiveRAGV1:
         policy: AdaptiveActionPolicyV1 | None = None,
     ) -> None:
         self.budget = budget or AdaptiveRAGBudgetV1()
+        if policy is not None and policy.budget != self.budget:
+            raise ValueError(
+                "policy must share the loop budget; two sources of truth for the "
+                "same limits make the run's behaviour unpredictable"
+            )
         self.evaluator = evaluator or EvidenceStateEvaluatorV1()
         self.replanner = replanner or BoundedReplannerV1(self.budget)
         self.progress = progress_detector or ProgressDetectorV1()
@@ -91,13 +96,16 @@ class BoundedAdaptiveRAGV1:
         requirements, evidence must have been admitted, and a calculator must
         have been supplied.
 
-        The admission condition is what keeps the calculator behind the
-        evidence gate.  ``state.bound_evidence_ids`` is the set the evidence
-        evaluator admitted; without it a run whose operands were never admitted
-        would still invoke the calculator and mutate calculation state before
-        being rejected downstream.  Without a calculator the harness is not the
-        owner of calculation at all -- the caller keeps that step, which is the
-        legacy contract.
+        The admission condition keeps the calculator behind the evidence gate:
+        ``state.bound_evidence_ids`` is the set the evidence evaluator admitted,
+        so a run whose operands were never admitted does not calculate at all.
+        It is *not* equivalent to the coordinator's stronger
+        ``_binder_admission_is_authoritative`` check, which also needs the
+        evaluator adapter; the harness only ever sees the state.  Because the
+        adapter assigns this field during EVALUATE, the two cannot diverge on any
+        path that goes through that phase -- only for a resumed or externally
+        supplied state.  Without a calculator at all the harness is not the owner
+        of calculation: the caller keeps that step, which is the legacy contract.
         """
 
         if calculator is None:

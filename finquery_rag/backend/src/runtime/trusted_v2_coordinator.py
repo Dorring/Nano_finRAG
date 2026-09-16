@@ -366,12 +366,9 @@ class V2ExecutionTrace:
                     if isinstance(value, Mapping)
                     else value
                 )
-            elif field_name in {"transitions", "tool_history", "retrieval_rounds", "turns"}:
-                normalized = tuple(
-                    _sanitize_trace_payload(item)
-                    for item in value
-                )
             else:
+                # Sequence-of-mappings fields: transitions, tool_history,
+                # retrieval_rounds, turns, claim_provenance.
                 normalized = tuple(
                     _sanitize_trace_payload(item)
                     for item in value
@@ -1831,6 +1828,10 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 plan_id=plan_id,
                 state=state,
                 evaluator_adapter=evaluator_adapter,
+                # Both call sites must supply the captured result, so that
+                # state.calculation_attempted and the value stay coupled no
+                # matter which path reached the candidate stage.
+                harness_calculation=calculation_sink.get("result"),
             )
         evaluation_reasons = (
             item.value
