@@ -7,20 +7,27 @@ fails a normal test run rather than only a manual script run.
 
 from __future__ import annotations
 
+import dataclasses
 from typing import Any
 
 import pytest
 
 from src.runtime.trusted_v2_contracts import V2ExecutionOutcome
-from tests.harness.equivalence import unclassified_fields
+from tests.harness.equivalence import (
+    CONTRACT_FIELDS,
+    unclassified_fields,
+    unknown_contract_fields,
+)
 from tests.harness.h1_integration import (
     SUBSTITUTED_PORTS,
     FIXTURES,
-    fixture_report,
+    H1Fixture,
     run_all,
+    run_fixture,
     sealed_case_keys,
     sealed_digest,
 )
+from src.runtime.harness_runtime_mode import AgentRuntimeMode
 
 FIXTURE_IDS = sorted(fixture.fixture_id for fixture in FIXTURES)
 
@@ -63,7 +70,9 @@ def test_every_fixture_ran(run: dict[str, Any]) -> None:
     assert run["fixture_count"] == len(FIXTURES)
 
 
-def test_the_successful_calculation_traces_the_full_harness_path() -> None:
+def test_the_successful_calculation_traces_the_full_harness_path(
+    run: dict[str, Any],
+) -> None:
     """The end-to-end trace claim, on real wiring rather than a composed loop.
 
     A successful calculation query must be *seen* to reach CALCULATE and then
@@ -71,7 +80,7 @@ def test_the_successful_calculation_traces_the_full_harness_path() -> None:
     that no fixture walks.
     """
 
-    report = fixture_report(next(f for f in FIXTURES if f.fixture_id == "calculation_growth_rate"))
+    report = _report(run, "calculation_growth_rate")
 
     assert report["harness_v3"]["transitions"] == [
         "ACT",
@@ -120,35 +129,41 @@ def test_a_calculation_that_did_not_execute_produced_nothing(run: dict[str, Any]
         assert capability["calculation_result_id"] is None, fixture_id
 
 
-def test_the_flag_changes_the_execution_model_not_just_an_attribute() -> None:
-    """Both modes must be reached through the environment, and differ.
+def test_the_flag_changes_the_execution_model_not_just_an_attribute(
+    run: dict[str, Any],
+) -> None:
+    """Both modes must be reached through the environment, and genuinely differ.
 
-    ``_assert_flag_reached`` would already have raised if the flag never landed
-    on the coordinator, but a flag that is set and ignored would look identical.
-    The two modes must produce different phase traces for the same fixture.
+    ``_assert_flag_reached`` raises if the flag never landed on the coordinator,
+    but a flag that is set and then ignored would look identical.  The same
+    fixture must produce *different recorded work* in the two modes while
+    reaching the same verdict -- that is what makes this an ablation rather than
+    a rename.
     """
 
-    report = fixture_report(next(f for f in FIXTURES if f.fixture_id == "fact_direct"))
+    report = _report(run, "fact_direct")
 
-    assert "RELEASE" in report["harness_v3"]["transitions"]
-    assert report["harness_v3"]["transitions"] != [
-        "ACT",
-        "OBSERVE",
-        "EVALUATE",
-        "READY_TO_GENERATE",
+    assert report["legacy"]["turns"] == ["SEMANTIC_RETRIEVAL"]
+    assert report["harness_v3"]["turns"] == [
+        "SEMANTIC_RETRIEVAL",
+        "GENERATE",
+        "VERIFY",
     ]
-    # legacy never enters the harness tail, so it reports no such transition.
-    assert report["legacy"]["released"] == report["harness_v3"]["released"]
+    assert "RELEASE" in report["harness_v3"]["transitions"]
+    assert report["harness_v3"]["status"] == "READY_FOR_RELEASE"
+    assert report["legacy"]["released"] == report["harness_v3"]["released"] is True
 
 
-def test_every_fixture_declares_how_it_was_built() -> None:
+def test_every_fixture_declares_how_it_was_built(run: dict[str, Any]) -> None:
     """The report must not present substituted wiring as production wiring."""
 
-    for fixture in FIXTURES:
+    by_id = {fixture.fixture_id: fixture for fixture in FIXTURES}
+    assert {report["fixture_id"] for report in run["fixtures"]} == set(by_id)
+    for report in run["fixtures"]:
+        fixture = by_id[report["fixture_id"]]
         production = (
             fixture.factory_eligible and fixture.fixture_id not in SUBSTITUTED_PORTS
         )
-        report = fixture_report(fixture)
         assert report["production_entry_point"] == production, fixture.fixture_id
         if not production:
             assert (
@@ -189,3 +204,140 @@ def test_the_coverage_table_cannot_drift_from_the_dataset(run: dict[str, Any]) -
     """A case added to the dataset without a coverage entry fails loudly."""
 
     assert set(run["sealed_case_coverage"]["cases"]) == set(sealed_case_keys())
+
+
+def test_every_declared_fixture_field_is_sealed() -> None:
+    """A fixture field that is not in ``spec()`` is not covered by the digest.
+
+    The first version of ``spec()`` omitted every ``expect_*`` field, so the
+    sealed digest did not move when a fixture's expectation did: it sealed the
+    inputs while the report described it as sealing the fixture.
+    """
+
+    declared = {field.name for field in dataclasses.fields(H1Fixture)}
+    for fixture in FIXTURES:
+        assert set(fixture.spec()) == declared, fixture.fixture_id
+
+
+def test_the_sealed_digest_moves_when_a_fixture_moves() -> None:
+    """Keeping the digest stable is not the same as the digest working."""
+
+    base = sealed_digest()
+    assert base == sealed_digest()
+
+    for field, value in (
+        ("query", "A different question?"),
+        ("expect_released", not FIXTURES[0].expect_released),
+        ("expect_status", "EXECUTION_ERROR"),
+        ("factory_eligible", False),
+    ):
+        mutated = (dataclasses.replace(FIXTURES[0], **{field: value}), *FIXTURES[1:])
+        assert sealed_digest(mutated) != base, field
+
+
+def test_the_calculation_marker_is_set_only_by_the_harness_mode() -> None:
+    """The contract strips this key, so nothing else would notice it vanish.
+
+    ``calculation_in_harness`` is classified harness-only, which is correct: it
+    records that calculation ran as a loop phase, and ``legacy`` has no such
+    phase.  Stripping it also means the fixture suite would stay green if the
+    coordinator stopped writing it -- so it is asserted here, directly, the same
+    way the composed suite asserts it.
+    """
+
+    fixture = next(f for f in FIXTURES if f.fixture_id == "calculation_growth_rate")
+
+    harness = run_fixture(fixture, AgentRuntimeMode.HARNESS_V3)
+    legacy = run_fixture(fixture, AgentRuntimeMode.LEGACY)
+
+    assert harness.runtime_metadata.get("calculation_in_harness") is True
+    assert "calculation_in_harness" not in legacy.runtime_metadata
+
+
+def test_no_fixture_runs_past_the_bounded_turn_limit(run: dict[str, Any]) -> None:
+    """The script gates on this, so the suite must assert it too."""
+
+    assert run["summary"]["infinite_loop"] == 0
+
+
+def test_the_contract_is_not_vacuous(run: dict[str, Any]) -> None:
+    """'The modes agree' and 'the comparison collapsed' must be distinguishable.
+
+    Replacing ``canonicalize_decision_result`` with a function returning ``{}``
+    leaves every fixture comparison green, because two empty payloads are equal.
+    These assertions pin the shape the comparison depends on.
+    """
+
+    from tests.harness.equivalence import canonicalize_decision_result
+
+    outcome = run_fixture(
+        next(f for f in FIXTURES if f.fixture_id == "fact_direct"),
+        AgentRuntimeMode.HARNESS_V3,
+    )
+    payload = canonicalize_decision_result(outcome)
+
+    assert set(CONTRACT_FIELDS) <= set(payload)
+    assert payload["status"] == "READY_FOR_RELEASE"
+    assert isinstance(payload["runtime_metadata"], dict) and payload["runtime_metadata"]
+    assert payload["reason_codes"]
+
+
+def test_the_contract_names_only_real_outcome_fields() -> None:
+    """A typo in the contract used to compare ``None == None`` and pass."""
+
+    assert unknown_contract_fields(V2ExecutionOutcome) == []
+
+
+def test_a_coverage_entry_for_a_case_that_no_longer_exists_is_rejected(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The reverse direction of the drift check."""
+
+    from tests.harness import h1_integration
+
+    monkeypatch.setitem(
+        h1_integration.SEALED_CASE_COVERAGE, "a-case-not-in-the-dataset", (None, "gap: stale")
+    )
+    with pytest.raises(AssertionError, match="unknown sealed cases"):
+        h1_integration.sealed_coverage_report()
+
+
+def test_every_contract_name_reaches_the_payload(
+    run: dict[str, Any],
+) -> None:
+    """Every declared name must actually be compared, not merely declared.
+
+    ``runtime_metadata`` is named by ``DECISION_BEARING_METADATA`` rather than by
+    ``DECISION_BEARING_FIELDS``, and for a while the payload was built from the
+    second alone -- so the field carrying ``release_decision``,
+    ``validation_status``, ``failed_checks`` and the terminal state was declared
+    decision-bearing and never compared.  Every differential test stayed green.
+    """
+
+    from tests.harness.equivalence import canonicalize_decision_result
+
+    payload = canonicalize_decision_result(
+        run_fixture(FIXTURES[0], AgentRuntimeMode.HARNESS_V3)
+    )
+
+    for name in CONTRACT_FIELDS:
+        assert name in payload, name
+    assert payload["runtime_metadata"].get("release_decision")
+
+
+def test_a_collapsed_contract_is_refused_rather_than_reported_as_agreement(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """'The modes agree' and 'nothing was compared' must not look the same.
+
+    Letting the payload be empty makes every fixture equivalent -- the two
+    outcomes have no differing fields because they have no fields.  The refusal
+    lives on the comparison path, so every caller gets it, not just this test.
+    """
+
+    from tests.harness import equivalence
+
+    monkeypatch.setattr(equivalence, "canonicalize_decision_result", lambda outcome: {})
+
+    with pytest.raises(AssertionError, match="missing declared contract fields"):
+        equivalence.decision_differences(object(), object())

@@ -41,6 +41,7 @@ from enum import Enum
 from typing import Any, Mapping
 
 __all__ = [
+    "CONTRACT_FIELDS",
     "DECISION_BEARING_FIELDS",
     "DECISION_BEARING_METADATA",
     "HARNESS_ONLY_FIELDS",
@@ -51,6 +52,7 @@ __all__ = [
     "decision_differences",
     "decision_equivalent",
     "unclassified_fields",
+    "unknown_contract_fields",
 ]
 
 
@@ -114,12 +116,21 @@ VOLATILE_METADATA_KEYS: tuple[str, ...] = (
 
 
 def _jsonable(value: Any) -> Any:
-    """Reduce a contract object to plain JSON-comparable data."""
+    """Reduce a contract object to plain JSON-comparable data.
 
-    if value is None or isinstance(value, (str, int, float, bool)):
+    ``Enum`` is checked before ``str`` on purpose.  ``V2ExecutionStatus`` and
+    ``ReleaseStatus`` both subclass ``str``, so the other order makes the enum
+    branch unreachable for exactly the two fields it exists for -- the payload
+    then holds enum members rather than their values, which compares and
+    serialises fine and quietly stops being "plain JSON data".
+    """
+
+    if value is None or isinstance(value, (int, float, bool)):
         return value
     if isinstance(value, Enum):
         return value.value
+    if isinstance(value, str):
+        return value
     to_dict = getattr(value, "to_dict", None)
     if callable(to_dict):
         return _jsonable(to_dict())
@@ -150,6 +161,16 @@ _METADATA_CONTAINERS = (
     "latency_metadata",
 )
 
+#: Everything the comparison reads.  ``DECISION_BEARING_METADATA`` is a field
+#: name as well as a key name, and it is deliberately not repeated in
+#: ``DECISION_BEARING_FIELDS`` -- so the payload has to be built from the union.
+#: Building it from ``DECISION_BEARING_FIELDS`` alone silently stopped comparing
+#: ``runtime_metadata``, which carries ``release_decision``,
+#: ``validation_status``, ``failed_checks`` and the terminal state, and every
+#: differential test stayed green.  ``test_every_contract_name_reaches_the_payload``
+#: now pins that.
+CONTRACT_FIELDS: tuple[str, ...] = (*DECISION_BEARING_FIELDS, DECISION_BEARING_METADATA)
+
 
 def canonicalize_decision_result(outcome: Any) -> dict[str, Any]:
     """Return the decision surface both runtime modes must agree on.
@@ -160,7 +181,7 @@ def canonicalize_decision_result(outcome: Any) -> dict[str, Any]:
 
     ignored = _VOLATILE | frozenset(HARNESS_ONLY_METADATA_KEYS)
     payload: dict[str, Any] = {}
-    for name in DECISION_BEARING_FIELDS:
+    for name in CONTRACT_FIELDS:
         value = _jsonable(getattr(outcome, name, None))
         if name in _METADATA_CONTAINERS:
             value = _strip(value, ignored)
@@ -185,11 +206,44 @@ def unclassified_fields(outcome_type: Any) -> list[str]:
     return sorted(name for name in fields if name not in classified)
 
 
+def unknown_contract_fields(outcome_type: Any) -> list[str]:
+    """Names in the contract that the outcome does not actually have.
+
+    The other direction of :func:`unclassified_fields`.  A typo in
+    ``DECISION_BEARING_FIELDS`` used to be invisible -- ``getattr(outcome,
+    name, None)`` returns ``None`` on both sides, the fields compare equal, and
+    the contract silently stops comparing the thing it names.
+    """
+
+    fields = set(getattr(outcome_type, "__dataclass_fields__", {}))
+    named = set(DECISION_BEARING_FIELDS) | set(HARNESS_ONLY_FIELDS)
+    return sorted(name for name in named if name not in fields)
+
+
+def _require_complete(payload: Mapping[str, Any], side: str) -> None:
+    """Refuse to compare a payload that the contract did not fully populate.
+
+    Without this, a contract that stopped comparing a field -- or one collapsed
+    to compare nothing at all -- makes "the modes agree" and "nothing was
+    compared" produce the same answer: an empty difference list.  The check sits
+    on the comparison path rather than in a test, so every caller gets it.
+    """
+
+    missing = [name for name in CONTRACT_FIELDS if name not in payload]
+    if missing:
+        raise AssertionError(
+            f"the {side} decision payload is missing declared contract fields "
+            f"{missing}; comparing it would report agreement about nothing"
+        )
+
+
 def decision_differences(legacy: Any, harness: Any) -> list[dict[str, Any]]:
     """Return one entry per decision-bearing field the two modes disagree on."""
 
     left = canonicalize_decision_result(legacy)
     right = canonicalize_decision_result(harness)
+    _require_complete(left, "legacy")
+    _require_complete(right, "harness_v3")
     return [
         {"field": field, "legacy": left.get(field), "harness_v3": right.get(field)}
         for field in sorted(set(left) | set(right))

@@ -19,6 +19,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 from rag_v2.adaptive import AdaptiveRAGBudgetV1, BoundedAdaptiveRAGV1
 from tests.harness.harness_support import loop_state
 
@@ -72,7 +74,11 @@ def test_the_bound_does_not_change_what_the_loop_does() -> None:
 def test_no_adaptive_decision_reads_a_reserved_budget_field() -> None:
     """The enforcement tripwire.
 
-    A field that is read anywhere in the control plane stops being reserved.
+    A field that is *read* anywhere in the control plane stops being reserved.
+    Naming it in order to configure it does not count, which is why
+    ``trusted_v2_production.py`` -- which passes
+    ``max_identical_query_retry=_int_env(...)`` when it builds the budget, and
+    warns about it -- is deliberately outside the scan.
     """
 
     sources: dict[str, str] = {}
@@ -80,12 +86,36 @@ def test_no_adaptive_decision_reads_a_reserved_budget_field() -> None:
         paths = sorted(entry.rglob("*.py")) if entry.is_dir() else [entry]
         for path in paths:
             if path.name != "adaptive_budget.py":
-                sources[path.name] = path.read_text(encoding="utf-8")
-    assert sources, "the tripwire found nothing to scan"
+                # Keyed by full path: keying by basename lets two files with the
+                # same name in different roots silently shadow one another.
+                sources[str(path)] = path.read_text(encoding="utf-8")
+
+    assert len(sources) > 5, f"the tripwire scanned almost nothing: {sorted(sources)}"
+    assert any("adaptive_policy" in path for path in sources)
+    assert any("trusted_v2_coordinator" in path for path in sources)
 
     for name in AdaptiveRAGBudgetV1.RESERVED_FIELDS:
         readers = sorted(path for path, text in sources.items() if name in text)
         assert not readers, f"{name} is read by {readers}; it is no longer reserved"
+
+
+def test_the_reserved_field_is_configurable_but_inert() -> None:
+    """Configured through the production path, and still not enforced."""
+
+    from src.runtime.trusted_v2_production import _build_budget
+
+    with pytest.warns(RuntimeWarning, match="not enforced"):
+        budget = _build_budget(
+            {
+                "V2_MAX_IDENTICAL_QUERY_RETRIES": "3",
+                "V2_MAX_REPLANS": "2",
+                "V2_MAX_TOOL_CALLS": "5",
+                "V2_MAX_SAME_TOOL_RETRIES": "1",
+            }
+        )
+
+    assert budget.max_identical_query_retry == 3
+    assert budget.unenforced_settings() == {"max_identical_query_retry": 3}
 
 
 def test_reserved_settings_are_reported_when_configured_away_from_default() -> None:

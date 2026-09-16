@@ -48,11 +48,10 @@ from typing import Any, Mapping
 from rag_v2.adaptive import AdaptiveRAGBudgetV1
 from rag_v2.contracts import Action, Intent, RequiredSlot, SupervisorPlan
 from rag_v2.evidence.binder_service import SemanticBinderService
-from rag_v2.supervisor import DeterministicFallbackProvider, SupervisorService
-from src.domain.calculation import (
-    CalculationOperation,
-    CalculationResult,
-    CalculationStatus,
+from rag_v2.supervisor import (
+    DeterministicFallbackProvider,
+    SupervisorService,
+    UnknownSemanticPolicy,
 )
 from src.pdf_retrieval_v4.candidate_view_index import CandidateSearchHit
 from src.runtime import (
@@ -70,6 +69,12 @@ from src.runtime.trusted_v2_binder import SemanticEvidenceEvaluationCapability
 from src.runtime.trusted_v2_coordinator import BoundedTrustedV2Coordinator
 from src.runtime.trusted_v2_factory import build_trusted_v2_runtime
 from tests.harness.equivalence import decision_differences
+from tests.harness.harness_support import (
+    BUDGET,
+    CALCULATION_FACTS,
+    BlockedCalculation,
+    RaisingCalculation,
+)
 from tests.test_trusted_v2_r4_binder import (
     ScriptedIndexReader,
     SelectingBinderProvider,
@@ -87,9 +92,9 @@ __all__ = [
     "sealed_digest",
 ]
 
-DEFAULT_BUDGET = AdaptiveRAGBudgetV1(
-    max_replan_rounds=3, max_total_tool_calls=4, max_same_tool_retry=3
-)
+# The composed suite and this one share one budget literal; a second copy here
+# is a second place for it to drift.
+DEFAULT_BUDGET = BUDGET
 TIGHT_BUDGET = AdaptiveRAGBudgetV1(
     max_replan_rounds=0, max_total_tool_calls=1, max_same_tool_retry=0
 )
@@ -113,8 +118,8 @@ _CAPABILITY_VIEW_KEYS = (
     "release_decision",
 )
 
-CURRENT_FACT = _fact("CURRENT", period="FY2024", slots=("current",), value="391")
-PRIOR_FACT = _fact("PRIOR", period="FY2023", slots=("prior",), value="383")
+CURRENT_FACT = CALCULATION_FACTS["CURRENT"]
+PRIOR_FACT = CALCULATION_FACTS["PRIOR"]
 REVENUE_FACT = _fact("REVENUE", slots=("revenue",), value="391")
 WRONG_PERIOD_FACT = _fact("WRONG", period="FY2023", slots=("revenue",), value="90")
 
@@ -183,7 +188,14 @@ class H1Fixture:
         return ()
 
     def spec(self) -> dict[str, Any]:
-        """The fixture as plain JSON, for hashing and for the report."""
+        """The fixture as plain JSON, for hashing and for the report.
+
+        Every declared field appears here, expectations included.  An earlier
+        version omitted the ``expect_*`` fields, so the sealed digest did not
+        change when a fixture's expectation did -- it sealed the inputs while
+        claiming to seal the fixture.  ``test_every_declared_fixture_field_is_sealed``
+        keeps this in step with the dataclass.
+        """
 
         return {
             "fixture_id": self.fixture_id,
@@ -199,6 +211,11 @@ class H1Fixture:
             "retrieval": self.retrieval,
             "retrieval_raises": self.retrieval_raises,
             "budget": dict(self.budget) if self.budget else None,
+            "expect_released": self.expect_released,
+            "expect_status": self.expect_status,
+            "expect_reasons": list(self.expect_reasons),
+            "expect_transitions": list(self.expect_transitions),
+            "factory_eligible": self.factory_eligible,
         }
 
 
@@ -464,6 +481,14 @@ def sealed_coverage_report() -> dict[str, Any]:
     unknown = [key for key in keys if key not in SEALED_CASE_COVERAGE]
     if unknown:
         raise AssertionError(f"sealed cases with no coverage entry: {unknown}")
+    # The other direction.  A stale entry for a case the dataset no longer has
+    # is invisible to the check above: ``cases`` is built by iterating the
+    # dataset keys, so a deleted case left the table describing something that
+    # no longer exists and nothing noticed.
+    known = set(keys)
+    stale = sorted(key for key in SEALED_CASE_COVERAGE if key not in known)
+    if stale:
+        raise AssertionError(f"coverage entries for unknown sealed cases: {stale}")
     covered = [key for key in keys if SEALED_CASE_COVERAGE[key][0] is not None]
     unclaimed = [
         key
@@ -505,7 +530,6 @@ class _QueryRoutedIndexReader(ScriptedIndexReader):
     def __init__(self, fixture: H1Fixture) -> None:
         super().__init__([])
         self.fixture = fixture
-        self.queries: list[str] = []
 
     def search(
         self,
@@ -518,7 +542,6 @@ class _QueryRoutedIndexReader(ScriptedIndexReader):
         self.search_calls += 1
         self.seen_lanes.append(lane)
         self.seen_queries.append(query)
-        self.queries.append(query)
         if self.fixture.retrieval_raises:
             raise RuntimeError("index unavailable")
         keys = list(self.fixture.keys_for(query))
@@ -558,57 +581,6 @@ class _FixtureSpecialist:
         calculation_result: Mapping[str, Any] | None = None,
     ) -> str:
         return "fixture specialist answer"
-
-
-class _BlockedCalculation:
-    """A wired calculator that deterministically declines to compute."""
-
-    candidate_mode = True
-    last_calculation_id = None
-
-    def __init__(self) -> None:
-        self.calls = 0
-        self.last_result = CalculationResult(
-            status=CalculationStatus.BLOCKED,
-            operation=CalculationOperation.GROWTH_RATE,
-            error_code="OPERAND_MISSING",
-        )
-
-    def calculate(self, state: Any) -> Any:
-        self.calls += 1
-        return self.last_result
-
-    def trace_snapshot(self) -> dict[str, Any]:
-        return {
-            "calculator_invoked": self.calls > 0,
-            "calculator_call_count": self.calls,
-            "calculation_status": self.last_result.status.value,
-        }
-
-
-class _RaisingCalculation:
-    """A wired calculator that violates its contract."""
-
-    candidate_mode = True
-    last_calculation_id = None
-    last_result = None
-
-    def __init__(self) -> None:
-        self.calls = 0
-
-    def calculate(self, state: Any) -> Any:
-        self.calls += 1
-        raise RuntimeError("calculator secret")
-
-    def trace_snapshot(self) -> dict[str, Any]:
-        # The port contract's snapshot slot.  Reporting the invocation is what
-        # lets the runner prove the calculator ran *and* that nothing was
-        # generated from its failure.
-        return {
-            "calculator_invoked": self.calls > 0,
-            "calculator_call_count": self.calls,
-            "calculation_status": None,
-        }
 
 
 class _ForeignCitationGeneration:
@@ -652,9 +624,12 @@ def _build_capabilities(fixture: H1Fixture, resources: TrustedV2RuntimeResources
     """Reconstruct what the production builder builds, with a port substituted.
 
     This mirrors ``build_trusted_v2_runtime_for_request``'s construction block
-    on purpose.  It is used only for the fixtures listed in
-    :data:`SUBSTITUTED_PORTS`, and the report says so, so a divergence between
-    this and the production builder cannot be mistaken for production wiring.
+    on purpose, including its ``STRICT_DIRECT_FACT`` semantic policy -- the
+    fixtures that already need a substituted port must not also be the ones
+    running behind a laxer gate than production.  It is used only for the
+    fixtures listed in :data:`SUBSTITUTED_PORTS`, and the report says so, so a
+    divergence between this and the production builder cannot be mistaken for
+    production wiring.
     """
 
     from src.pdf_retrieval_v4.candidate_direct_retriever import CandidateDirectRetriever
@@ -673,9 +648,9 @@ def _build_capabilities(fixture: H1Fixture, resources: TrustedV2RuntimeResources
         materializer=resources.fact_store.materialize,
         document_scope=document_scope,
     )
-    calculator = _BlockedCalculation()
+    calculator = BlockedCalculation()
     if fixture.calculation == "raising":
-        calculator = _RaisingCalculation()
+        calculator = RaisingCalculation()
     generation = TrustedV2GenerationCapability(
         routing_policy=None,
         renderer=DeterministicFactRenderer(),
@@ -779,6 +754,11 @@ def run_fixture(fixture: H1Fixture, mode: AgentRuntimeMode) -> V2ExecutionOutcom
             resources.supervisor,
             capabilities=_build_capabilities(fixture, resources),
             budget=resources.budget,
+            # Same semantic gate as the production entry point.  A substituted
+            # port is already a deviation; adding a laxer policy on top would
+            # make these three fixtures differ from production in two ways at
+            # once, and the report could not tell you which mattered.
+            unknown_semantic_policy=UnknownSemanticPolicy.STRICT_DIRECT_FACT,
             runtime_mode=mode,
         )
     elif not fixture.factory_eligible:
@@ -1009,6 +989,16 @@ def fixture_report(fixture: H1Fixture) -> dict[str, Any]:
         f"harness_v3: {problem}"
         for problem in _failure_reasons(fixture, harness, AgentRuntimeMode.HARNESS_V3)
     ]
+    # The transport adapter is the one production surface the trace cannot be
+    # read back from, so it is checked separately.  This call was dropped in the
+    # rewiring and the check sat unasserted for a while -- it is now part of the
+    # report, and ``test_the_transport_adapter_agrees_with_the_coordinator``
+    # fails if it stops being consulted.
+    failures += [
+        f"transport[{mode.value}]: {problem}"
+        for mode in (AgentRuntimeMode.LEGACY, AgentRuntimeMode.HARNESS_V3)
+        for problem in adapter_agrees(fixture, mode)
+    ]
 
     return {
         "fixture_id": fixture.fixture_id,
@@ -1020,7 +1010,11 @@ def fixture_report(fixture: H1Fixture) -> dict[str, Any]:
         "harness_v3": {
             **_mode_view(harness),
             "transitions": _transitions(harness),
-            "turns": harness.debug_metadata.get("trace", {}).get("turns"),
+            # Named "turn_records" and not "turns": ``_mode_view`` already
+            # publishes "turns" as the list of action names, and both modes
+            # share that key.  Reusing the name for the full per-turn dicts made
+            # ``report[mode]["turns"]`` change shape depending on the mode.
+            "turn_records": harness.debug_metadata.get("trace", {}).get("turns"),
             "capability_view": _capability_view(harness),
         },
         "decision_equivalent": not differences,

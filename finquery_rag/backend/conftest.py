@@ -147,22 +147,20 @@ def _missing_artifact_path(excinfo: Any) -> str | None:
     return None
 
 
-@pytest.hookimpl(hookwrapper=True)
+@pytest.hookimpl(wrapper=True)
 def pytest_runtest_makereport(item: Any, call: Any):
     """Report a missing-artifact read as a skip, naming the artifact."""
 
-    outcome = yield
-    report = outcome.get_result()
-    if not report.failed or call.excinfo is None:
-        return
-    missing = _missing_artifact_path(call.excinfo)
-    if missing is None:
-        return
-    report.outcome = "skipped"
-    report.longrepr = (
-        f"{getattr(report, 'when', 'call')} skipped: "
-        f"sealed evaluation artifact not present: {missing}"
-    )
+    report = yield
+    if report.failed and call.excinfo is not None:
+        missing = _missing_artifact_path(call.excinfo)
+        if missing is not None:
+            report.outcome = "skipped"
+            report.longrepr = (
+                f"{getattr(report, 'when', 'call')} skipped: "
+                f"sealed evaluation artifact not present: {missing}"
+            )
+    return report
 
 
 def pytest_configure(config: Any) -> None:

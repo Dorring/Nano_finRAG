@@ -6,16 +6,21 @@ harness's internal phase order -- the unit suite does that.  It answers one
 question on real wiring: *given the same request and the same capabilities, do
 the two runtime modes reach the same decision?*
 
-Each fixture is executed in both modes through ``build_trusted_v2_runtime``,
-the same factory the production builder calls, over the real R4 retriever, the
-real Semantic Binder, the real deterministic calculator, the real generator
-routing and the real release validator.  The two outcomes are compared through
-``tests.harness.equivalence``, which requires every decision-bearing field to
-match and strips only measurements and harness-only execution markers.
+Every fixture runs through ``NF_AGENT_RUNTIME_MODE`` and
+``build_trusted_v2_runtime_for_request`` -- the production entry point, which is
+the only place the environment is read -- over the real R4 retriever, Semantic
+Binder, deterministic calculator, generator routing and release validator.
+Three fixtures need a capability the production builder cannot be told to build,
+and one needs a graph the factory correctly refuses; those are marked in the
+report per fixture rather than presented as production wiring.
 
-Exit status is non-zero if any fixture diverges, any fixture fails its own
-expectation, or a rejected candidate is released.  A green run means the
-ablation is safe to enable; it does not mean the harness is correct in general.
+The two outcomes are compared through ``tests.harness.equivalence``, which
+requires every decision-bearing field to match and strips only measurements and
+harness-only execution markers.
+
+Exit status is non-zero if any fixture diverges, fails its own expectation, or if
+a rejected candidate is released.  A green run means the ablation is safe to
+enable; it does not mean the harness is correct in general.
 
     python scripts/runtime/run_nf_v3_h1_harness_integration.py
 """
@@ -32,7 +37,7 @@ BACKEND_DIR = Path(__file__).parents[2]
 if str(BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(BACKEND_DIR))
 
-from tests.harness.h1_integration import run_all, sealed_digest  # noqa: E402
+from tests.harness.h1_integration import run_all  # noqa: E402
 
 DEFAULT_OUTPUT = (
     BACKEND_DIR / "artifacts/runtime/nf-v3-h1-harness-core/integration-report.json"
@@ -98,9 +103,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     report = run_all()
-    payload = {**report, "sealed_digest_recomputed": sealed_digest()}
     if not args.no_write:
-        _write_json(args.output, payload)
+        _write_json(args.output, report)
     print(_render(report))
     if not args.no_write:
         print(f"\nreport written to {args.output}")
@@ -111,6 +115,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         and summary["expectation_failures"] == 0
         and summary["release_bypass"] == 0
         and summary["false_calculation_release"] == 0
+        and summary["infinite_loop"] == 0
     )
     return 0 if clean else 1
 
