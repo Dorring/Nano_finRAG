@@ -1,294 +1,346 @@
 # NF-V3 H1 Harness Core Seal
 
-Status: **BOUNDED_FINANCIAL_AGENT_HARNESS_CORE = SEALED**
+Status: **BOUNDED FINANCIAL AGENT HARNESS CORE = SEALED**
 
-H1 turns the existing Trusted RAG pipeline into a bounded financial agent
-harness: one closed control loop that plans, acts, observes, evaluates,
-replans, calculates, generates, verifies and releases -- with the deterministic
-validator still owning the release decision in both runtime modes.
+H1 closes the existing trusted execution loop: calculation, generation,
+verification and release became harness phases, behind a default-off runtime
+mode flag, with the deterministic validator still owning the release decision.
 
-This document is the seal evidence. It records what was claimed, what was
-measured, and what the measurement cannot show.
+**What this is not.** It is a *bounded, policy-constrained* harness, not an
+autonomous one. The execution skeleton was already present; the agent
+intelligence half is not. §7 lists exactly what is still missing, and that list
+is the honest boundary of this seal.
 
-## The audit finding that shaped H1
+## 1. The audit finding, stated correctly
 
-The H1 brief assumed the harness kernel did not exist and specified a new
-`contracts/run.py` / `harness/` / `tools/` tree. It did exist. `rag_v2/adaptive/`
-already contained every named component, and it was already on the production
-path via `BoundedTrustedV2Coordinator.execute()`:
+The H1 brief assumed no harness existed and specified a new `contracts/run.py` /
+`harness/` / `tools/` tree. `rag_v2/adaptive/` already implemented the component
+list — `AdaptiveRAGStateV1`, `AdaptiveRAGBudgetV1`, `BoundedReplannerV1`,
+`ProgressDetectorV1`, `BoundedAdaptiveRAGV1.run()` — and it was already on the
+production path through `BoundedTrustedV2Coordinator.execute()`.
 
-| Brief | Already present |
-| --- | --- |
-| `RunState` | `AdaptiveRAGStateV1` (strict superset) |
-| `RunBudget` | `AdaptiveRAGBudgetV1` |
-| `ActionResolver` | `BoundedReplannerV1` |
-| `StopPolicy` | `ProgressDetectorV1` |
-| `FinancialHarnessRunner` | `BoundedAdaptiveRAGV1.run()` |
-| Tool registry / runtime | `tools: Mapping[ToolCapability, ToolFn]` + the ACT phase |
+An earlier revision of this document summarised that as "roughly 85% of the
+harness already exists". **That framing was too generous, and it was reached by
+matching class names to a component list.** Name correspondence is not capability
+correspondence. Two of the correspondences are only partly true:
 
-Building the brief literally would have produced a second parallel execution
-kernel. The real gap was narrower and worse: **the loop did not close.** The
-coordinator stopped the harness at `READY_TO_GENERATE` and produced the answer
-in `_candidate_stage`, outside the loop. The harness's own `GENERATE` /
-`VERIFY` / `RELEASE` phases were unreachable in production, and the code said so
-itself with a `DOWNSTREAM_EXECUTION_NOT_WIRED` reason code.
+- `BoundedReplannerV1` is not an agent decision layer. It is a deterministic
+  `reason_code -> ToolCapability` table. That is a deliberate design choice for a
+  financial runtime, but it means no model participates in the loop's choice of
+  next action, which is the single largest thing separating this from a modern
+  harness.
+- `tools: Mapping[ToolCapability, ToolFn]` is a capability dispatch table, not a
+  tool runtime. It carries no input/output contract per tool, no execution-status
+  versus domain-status distinction, no per-tool timeout or error taxonomy. The
+  calculator defect found during H1 (§5) is exactly the failure that distinction
+  prevents: `calculate()` returning normally is not the same as the calculation
+  having succeeded.
 
-H1 therefore extended `rag_v2/adaptive/` rather than duplicating it, and treated
-the closed loop -- not a new kernel -- as the deliverable.
+The accurate statement is:
 
-## What changed
+> **The execution harness skeleton existed and was live. The agent intelligence
+> harness — per-turn context engineering, model-guided replanning, recovery,
+> durable state — did not.**
 
-Runtime mode flag:
+What was genuinely broken was narrower and worse than either description: the
+loop did not close. The coordinator stopped the harness at `READY_TO_GENERATE`
+and produced the answer in `_candidate_stage`, outside the loop, so the harness's
+own `GENERATE` / `VERIFY` / `RELEASE` phases were unreachable in production. The
+code said so itself with a `DOWNSTREAM_EXECUTION_NOT_WIRED` reason code.
 
-- `src/runtime/harness_runtime_mode.py` (new) -- `NF_AGENT_RUNTIME_MODE`,
-  `legacy` (default) or `harness_v3`. The coordinator never reads the
-  environment; only `trusted_v2_production.py` does.
+## 2. Execution paths
 
-Harness control plane (`rag_v2/adaptive/`):
+### legacy (default)
 
-- `adaptive_contracts.py` -- `AdaptivePhase.CALCULATE`; failure reason codes for
-  calculator, generator and verifier wiring; `state.turns` /
-  `record_turn` / `observe_turn` / `action_trace`.
-- `adaptive_policy.py` (new) -- `AdaptiveActionPolicyV1` separates *permission*
-  (budget, retry, replan) from `BoundedReplannerV1`'s *proposal*.
-- `adaptive_state_machine.py` -- CALCULATE as a loop phase; GENERATE, VERIFY
-  and RELEASE reachable; unknown status and unwired calculator/generator/
-  verifier all fail closed instead of raising out of `run()`.
-- `adaptive_budget.py` -- `RESERVED_FIELDS` / `unenforced_settings()`.
+```
+FinancialQueryRequest
+  -> build_trusted_v2_runtime_for_request()
+  -> BoundedTrustedV2Coordinator.execute()
+       supervisor.plan()
+       BoundedAdaptiveRAGV1.run()          exits at READY_TO_GENERATE
+       _candidate_stage()                  OUTSIDE the loop
+         binder-admission gate -> calculate -> generate -> validate -> release
+```
 
-Coordinator (`src/runtime/trusted_v2_coordinator.py`):
+### harness_v3
 
-- `_harness_calculator` captures the in-loop result at the call boundary.
-- `_release_verdict` reads a validator result's verdict, never its truthiness.
-- `_harness_finalizer` runs the existing candidate/validation path as the
-  harness tail; the harness decides *when* generation happens, the deterministic
-  validator still decides *whether* an answer may be released.
-- The released outcome is rebuilt against the completed state so its trace
-  covers GENERATE / VERIFY / RELEASE.
-- `V2ExecutionTrace` carries `turns`, `turn_count` and `action_trace`.
+```
+FinancialQueryRequest
+  -> NF_AGENT_RUNTIME_MODE=harness_v3
+  -> resolve_agent_runtime_mode()          the only environment read
+  -> build_trusted_v2_runtime_for_request()
+  -> BoundedTrustedV2Coordinator.execute()
+       supervisor.plan()
+       BoundedAdaptiveRAGV1.run()
+         ... -> CALCULATE -> READY_TO_GENERATE
+             -> GENERATE  (the finalizer wraps _candidate_stage)
+             -> VERIFY    (the validator's verdict, read as a verdict)
+             -> RELEASE
+```
 
-## Acceptance criteria
+The finalizer wraps `_candidate_stage` rather than reimplementing it, so no
+release logic is duplicated: the harness decides *when* generation happens, the
+deterministic validator still decides *whether* an answer may be released.
 
-| # | Criterion | Result |
+## 3. Why H1 extended `rag_v2/adaptive/` instead of adding a second kernel
+
+Building the brief literally would have produced two parallel execution kernels
+with two `RunState`s, two budgets, two replanners and two stop policies, both
+reachable from production. The brief itself authorised the deviation ("do not
+force the design; adapt minimally to the real code and explain why"). The
+deviation was taken, and it is recorded here rather than presented as the
+original plan.
+
+`rag_v2/adaptive/` is now the harness kernel. A second one is not to be added.
+
+## 4. Decision equivalence
+
+`tests/harness/equivalence.py` classifies every field of `V2ExecutionOutcome`
+once, so no differential test picks its own list:
+
+| Class | Fields | Rule |
 | --- | --- | --- |
-| 1 | Existing regression does not degrade | PASS -- failing-test set unchanged from the pre-H1 baseline |
-| 2 | New harness tests all green | PASS -- `tests/harness/` 83 passed |
-| 3 | `legacy` still runs, and is the default | PASS |
-| 4 | `harness_v3` enabled by feature flag | PASS -- `NF_AGENT_RUNTIME_MODE` |
-| 5 | Evidence Gate not bypassed | PASS -- and one violation was found and fixed (below) |
-| 6 | Calculator contract not bypassed | PASS -- 9 operations unchanged |
-| 7 | Runtime Validator not bypassed | PASS -- and one pre-existing bypass was found and fixed (below) |
-| 8 | Unsupported action fails closed | PASS -- `unsupported_route` fixture |
-| 9 | Budget exhaustion fails closed | PASS -- `budget_exhaustion` fixture |
-| 10 | No infinite loop | PASS -- loop guard + trace tripwires |
-| 11 | No new agent-framework dependency | PASS -- `pyproject.toml` unchanged |
-| 12 | Simple fact query needs no multi-agent | PASS -- `fact_direct` fixture |
-| 13 | No subagent / swarm | PASS |
+| **A** decision-bearing | `status`, `release_status`, `answer`, `route`, `reason_codes`, `evidence_ids`, `citation_ids`, `calculation_ids`, `calculation_result_id`, `citations`, `calculations`, `validator_status`, `claim_provenance`, `plan_id`, `evidence_packet_id`, `latency_metadata`, `runtime_metadata` | must be identical |
+| **B** harness-only | `debug_metadata` (the execution trace), and `calculation_in_harness` inside `runtime_metadata` | stripped, never asserted equal, verified against its own invariants |
+| **C** volatile | `latency_ms`, `duration_ms`, `elapsed_ms`, `run_id`, `span_id` | removed at any depth |
 
-## Two defects found, both in release integrity
+`plan_id`, `evidence_packet_id` and `latency_metadata` were uncertain, so per the
+project's rule they default to *compared*. `unclassified_fields()` returns empty,
+and a test asserts it: a new field on the outcome cannot pass silently until it
+has been bucketed.
+
+The partition exists because hand-picked lists are how the first two divergences
+survived a review pass: `route` was missing from the first list, and
+`calculations` / `calculation_result_id` / `claim_provenance` from the second.
+
+## 5. Two defects found, both in release integrity
 
 **1. A rejected candidate could be released (pre-existing).** The
 `allow_test_release` path handed the raw validator to the harness as its
 verifier. `TrustedReleaseValidationCapability.validate` returns a
 `V2ValidationResult` dataclass, which is truthy regardless of its verdict, so
-`bool(verifier(...))` released candidates the validator had just refused. This
-was the only path in the coordinator that could release without the validator
-agreeing. Fixed by `_release_verdict`, which reads `passed` off the result.
+`bool(verifier(...))` released candidates the validator had just refused. It was
+the only path in the coordinator that could release without the validator
+agreeing.
 
 **2. A blocked calculation reached generation (introduced during H1).** When
 CALCULATE moved inside the loop, the candidate stage re-read the calculator's
 result by id instead of re-validating it, so a `BLOCKED` result could flow into
-generation. Fixed by having the candidate stage validate the captured result
-through the same path as the legacy branch.
+generation. This is the concrete case of *invocation success is not domain
+success* noted in §1.
 
-Both are now covered by tests that fail if the defect returns.
+Both are fixed, both have tests that fail if they return, and the integration
+suite now asserts the second one from the generation capability's own recorded
+state rather than from control flow.
 
-## Decision equivalence
+## 6. Sealed integration fixtures
 
-`harness_v3` is an ablation, so the claim it must earn is not "it works" but "it
-decides the same thing". `tests/harness/equivalence.py` partitions every field
-of `V2ExecutionOutcome` once, so that no differential test picks its own list:
-
-- **A. Decision-bearing** -- `status`, `release_status`, `answer`, `route`,
-  `reason_codes`, `evidence_ids`, `citation_ids`, `calculation_ids`,
-  `calculation_result_id`, `citations`, `calculations`, `validator_status`,
-  `claim_provenance`, and `runtime_metadata` minus B and C.
-- **B. Harness-only** -- `calculation_in_harness`, and `debug_metadata` in full.
-  `harness_v3` executes more phases, so it records more execution.
-- **C. Volatile** -- `latency_ms`, duration and per-run identifiers.
-
-The partition exists because hand-picked field lists are what let the first two
-divergences survive review. `route` and `reason_codes` were missing from the
-first list; `calculations`, `calculation_result_id` and `claim_provenance` were
-missing from the second. `test_the_equivalence_contract_covers_the_fields_that_once_diverged`
-asserts their presence in the contract.
-
-## Sealed fixtures and integration evidence
-
-Nine fixtures, hashed as a set:
+Ten fixtures, hashed as a set:
 
 ```
 sealed fixture digest
-75c043585a44c1828dfb58f222ec18d6ff041beb1a5d673e09d495e967c71602
+9c7cda07004f05ce1bac616c1a7f6bb3570488c052d6299fe193674d1a3a562e
 ```
 
-They run in both modes through `build_trusted_v2_runtime` -- the factory the
-production builder calls -- over the real R4 retriever, the real Semantic
-Binder, the real deterministic calculator, the real generator routing and the
-real release validator.
+They run through the **production entry point** — `NF_AGENT_RUNTIME_MODE` read by
+`resolve_agent_runtime_mode`, then `build_trusted_v2_runtime_for_request`, then
+the factory — over the real R4 retriever, Semantic Binder, deterministic
+calculator, generator routing and release validator. The runner asserts the flag
+reached the coordinator it produced, so a mode that silently failed to propagate
+cannot pass.
 
-| Fixture | legacy | harness_v3 | Equivalent |
-| --- | --- | --- | --- |
-| `fact_direct` | READY_FOR_RELEASE | READY_FOR_RELEASE | yes |
-| `calculation_growth_rate` | READY_FOR_RELEASE | READY_FOR_RELEASE | yes |
-| `calculation_blocked` | FAIL_CLOSED | FAIL_CLOSED | yes |
-| `calculation_error` | EXECUTION_ERROR | EXECUTION_ERROR | yes |
-| `wrong_period_recovery` | READY_FOR_RELEASE | READY_FOR_RELEASE | yes |
-| `missing_evidence` | FAIL_CLOSED | FAIL_CLOSED | yes |
-| `validator_rejection` | FAIL_CLOSED | FAIL_CLOSED | yes |
-| `budget_exhaustion` | FAIL_CLOSED | FAIL_CLOSED | yes |
-| `unsupported_route` | FAIL_CLOSED | FAIL_CLOSED | yes |
+| Fixture | legacy | harness_v3 | Equivalent | Entry point |
+| --- | --- | --- | --- | --- |
+| `fact_direct` | READY_FOR_RELEASE | READY_FOR_RELEASE | yes | production |
+| `calculation_growth_rate` | READY_FOR_RELEASE | READY_FOR_RELEASE | yes | production |
+| `calculation_blocked` | FAIL_CLOSED | FAIL_CLOSED | yes | factory + substituted calculator |
+| `calculation_error` | EXECUTION_ERROR | EXECUTION_ERROR | yes | factory + substituted calculator |
+| `wrong_period_no_progress` | FAIL_CLOSED | FAIL_CLOSED | yes | production |
+| `missing_evidence` | FAIL_CLOSED | FAIL_CLOSED | yes | production |
+| `retrieval_error` | EXECUTION_ERROR | EXECUTION_ERROR | yes | production |
+| `validator_rejection` | FAIL_CLOSED | FAIL_CLOSED | yes | factory + substituted generator |
+| `budget_exhaustion` | FAIL_CLOSED | FAIL_CLOSED | yes | production |
+| `unsupported_route` | FAIL_CLOSED | FAIL_CLOSED | yes | directly constructed coordinator |
 
 ```
-decision equivalence : 9/9
+decision equivalence : 10/10
 expectation failures : 0
 release bypass       : 0
 false calc release   : 0
 infinite loop        : 0
 ```
 
-The successful calculation fixture walks the full harness path on real wiring:
+Three fixtures cannot use the production entry point, and say so in the report
+rather than being presented as production wiring: two need a calculator the
+production builder cannot be told to build, one needs a generator that cites
+unadmitted evidence, and one needs an absent retrieval port — which the factory
+correctly refuses, making `UNSUPPORTED_TOOL_ROUTE` a defence-in-depth guard
+rather than a production-reachable path.
+
+### The successful calculation trace
 
 ```
 ACT -> OBSERVE -> EVALUATE -> CALCULATE -> READY_TO_GENERATE -> GENERATE -> VERIFY -> RELEASE
 ```
 
-`legacy` never enters `CALCULATE`; its calculator stays outside the loop. The
+`legacy` never enters `CALCULATE`: its calculator stays outside the loop. The
 fixture asserts both.
 
 ### The runner was falsified before it was trusted
 
-A green report proves nothing if the assertions cannot fail. The same fixture
-set was run against `3abc2f1`, the commit immediately before the review fixes
-landed, by driving the coordinator directly (the factory did not accept a
-runtime mode yet at that commit):
+A green report is worthless if its assertions cannot fail. Run against
+`3abc2f1`, the commit immediately before the review fixes, the same fixture set
+reports 4/9 and names the divergences — `route` on four fixtures, `reason_codes`
+on two, `status` on one — i.e. exactly the fields the hand-picked lists omitted.
+
+### A finding from the rewiring: WRONG_PERIOD does not vary retrieval
+
+The first version of the wrong-period fixture drove its second retrieval round
+from a round counter, a test-only affordance. Rebuilt against the real
+`CandidateDirectR4Policy`, the two rounds issue **byte-identical derived
+queries**: the period constraint the replanner adds is already present in the
+alias queries generated from the slot in round one (`"Revenue FY2024 | Revenue |
+FY2024"` appears in both). The recovery therefore re-retrieves the same
+candidates, re-binds the same wrong-period fact, and loops to budget exhaustion.
+
+This is pre-existing runtime behaviour, untouched by H1, and identical in both
+modes (which the fixture now pins). Recovery is not unreachable — the unit suite
+drives it with a reader that can advance between rounds — but it is not
+reachable through this retriever's query derivation. Recorded, not fixed:
+changing retrieval or binder semantics is outside H1's scope by construction.
+
+## 7. What H1 does not have
+
+These are the capabilities of a modern agent harness that this project does
+**not** have. They are the forward roadmap, not a defect list.
+
+1. **Per-turn agent context engineering.** Each model call does not rebuild what
+   the model sees from run state. Context is still conversation history plus RAG
+   evidence plus the plan. There is no `ContextPack` (task goal, phase, verified
+   and missing slots, calculation state, recent observations, failure state,
+   available capabilities, remaining budget, evidence summaries, artifact
+   references).
+2. **Artifact / JIT context.** Evidence is carried as packets, not as addressable
+   artifacts loaded on demand. Nothing compacts tool output before it re-enters
+   context.
+3. **Model-guided replanning.** `BoundedReplannerV1` is a deterministic
+   reason-code table. No model proposes an action in response to an observation,
+   and there is no typed action proposal for a policy to validate.
+4. **Durable checkpoint / resume.** Run state is in-process. A crash loses the
+   run; there is no resume, no failure taxonomy and no repeated-action detection
+   beyond the same-tool retry budget.
+5. **Subagent orchestration.** None, deliberately. The loop already retrieves,
+   replans, repairs, calculates and verifies; splitting those into agents would
+   be a retreat. The only later candidate is a complexity gate spawning ephemeral
+   evidence workers that hold no calculation, release or validation authority.
+
+Also absent, and named so it is not mistaken for done: the release path is
+single-shot (a rejected candidate fails closed rather than entering the repair
+lane), `runtime_metadata` is not passed through `_sanitize_trace_payload`, and
+`harness_v3` builds the execution trace twice on a released request.
+
+## 8. Acceptance criteria
+
+| # | Criterion | Result |
+| --- | --- | --- |
+| 1 | Existing regression does not degrade | PASS — failing-test set unchanged from the pre-H1 baseline |
+| 2 | New harness tests all green | PASS — `tests/harness/` 89 passed |
+| 3 | `legacy` still runs, and is the default | PASS |
+| 4 | `harness_v3` enabled by feature flag | PASS — and the flag path itself is under test |
+| 5 | Evidence Gate not bypassed | PASS — one violation found and fixed |
+| 6 | Calculator contract not bypassed | PASS — 9 operations unchanged |
+| 7 | Runtime Validator not bypassed | PASS — one pre-existing bypass found and fixed |
+| 8 | Unsupported action fails closed | PASS — `unsupported_route` |
+| 9 | Budget exhaustion fails closed | PASS — `budget_exhaustion` |
+| 10 | No infinite loop | PASS — loop guard + bounded-turn invariant |
+| 11 | No new agent-framework dependency | PASS — `pyproject.toml` unchanged |
+| 12 | Simple fact query needs no multi-agent | PASS — `fact_direct` |
+| 13 | No subagent / swarm | PASS |
+
+## 9. Test suite accounting
 
 ```
-decision equivalence : 4/9
+4047 collected (H1.1, before the rewiring) = 39 failed + 3865 passed + 143 skipped
+4053 collected (H1.1, final)               = 39 failed + 3871 passed + 143 skipped
+4017 collected (baseline)                  = 144 failed + 3835 passed + 38 skipped
 ```
 
-Five fixtures diverged, on exactly the fields the old assertion sets omitted:
+The counts sum exactly in every row. H1's audit reported "3964 collected", which
+was bad arithmetic on the same run — it omitted the skipped tests. There was no
+count contradiction, only a reporting error, recorded here because the project
+leans on exact counts.
 
-| Fixture | Diverged field | legacy | harness_v3 |
-| --- | --- | --- | --- |
-| `fact_direct` | `route` | `STRUCTURED_SINGLE` | `DIRECT_FACT` |
-| `calculation_growth_rate` | `route` | `CALCULATION_SIMPLE` | `CALCULATION` |
-| `calculation_error` | `status` | `EXECUTION_ERROR` | `FAIL_CLOSED` |
-| `calculation_error` | `reason_codes` | `['CALCULATOR_EXCEPTION']` | `['CALCULATION_ERROR']` |
-| `wrong_period_recovery` | `reason_codes` | `['VALIDATED_RELEASE']` | `['VALIDATED_RELEASE', 'WRONG_PERIOD']` |
-| `validator_rejection` | `route` | `STRUCTURED_SINGLE` | `DIRECT_FACT` |
+Measured in a working tree that also carries five uncommitted TV2 evaluation
+files contributing 14 tests (12 pass, 2 skip). On a clean checkout of this
+commit, subtract them: `4039 = 39 + 3859 + 141`. The identities hold either way.
 
-The `route` column is the rebuilt outcome reporting the plan intent instead of
-the generation route; the `reason_codes` rows are the released outcome
-inheriting the trace's superset, labelling a clean release with a recovery code
-that had already been resolved.
-
-## Test suite accounting
-
-The suite reports three numbers, and they add up exactly:
-
-```
-4017 collected (pre-H1) = 144 failed + 3835 passed + 38 skipped
-4047 collected (H1.1)   =  39 failed + 3865 passed + 143 skipped
-```
-
-Both rows were measured in this working tree, which also carries five
-uncommitted TV2 evaluation files contributing 14 tests (12 pass, 2 skip). On a
-clean checkout of this commit, subtract those: `4033 collected = 39 failed +
-3853 passed + 141 skipped`. The identities hold either way.
-
-H1's audit reported "3964 collected", which was simply wrong arithmetic on the
-same run -- it omitted the skipped tests. There was no count contradiction; there
-was a reporting error, and it is recorded here because the project leans on
-exact counts.
-
-The original 144 failures, classified by cause:
+The original 144 failures by cause:
 
 | Count | Cause | Disposition |
 | --- | --- | --- |
-| 104 | Sealed evaluation artifacts under `artifacts/evaluation/<run>/` that were never committed | Now skipped, with the missing path named in the reason |
-| 39 | `FINANCIAL_RUNTIME_MODE` defaults to `v2` and `v2` requires `TRUSTED_V2_RUNTIME_BUILDER`; these endpoint tests predate that default and never set the mode | **Not fixed.** See below. |
+| 104 | Sealed evaluation artifacts under `artifacts/evaluation/<run>/` never committed | now skipped, reason names the missing path |
+| 39 | `FINANCIAL_RUNTIME_MODE` defaults to `v2`; `v2` requires `TRUSTED_V2_RUNTIME_BUILDER`; these endpoint tests predate that default (`b84fa3a`) and never set the mode | **deliberately not fixed** |
+| 1 | a test mid-edit during the measurement run | n/a |
 
-The 39 are a pre-existing defect introduced by `b84fa3a` and are unrelated to
-H1. Setting `FINANCIAL_RUNTIME_MODE=v1` turns 34 of them green, leaving 5 that
-fail on semantic-alignment behaviour instead. They are left alone deliberately:
-choosing between "these tests should run as v2" and "the tests should pin v1" is
-a product decision about the default runtime mode, not a harness fix, and
-silently pinning the environment would answer it by accident.
+Setting `FINANCIAL_RUNTIME_MODE=v1` turns 34 of the 39 green; the remaining 5
+fail on semantic-alignment behaviour instead. They are left failing rather than
+pinned to `v1` because choosing the default runtime mode is a product decision,
+and an environment pin would make it by accident.
 
 Two collection-time guards were added to `conftest.py`:
 
 - Modules that cannot import without an optional runtime (`chromadb`, `torch`)
-  are excluded with a header line naming what is missing. Previously they were
-  collection *errors*, and pytest aborts the whole session on a collection
-  error -- so a checkout without those runtimes could not run the suite at all.
-- A test that fails reading a missing path under `artifacts/` is reported as a
-  skip naming that artifact. The skip is decided from the actual error, not from
-  the directory being absent: a first attempt skipped whole modules whose
-  declared artifact root was missing, and silently swallowed nine tests in those
-  same modules that pass without the artifact.
+  are excluded with a header line naming what is missing. Previously these were
+  collection *errors*, and pytest aborts the session on a collection error — so
+  on this machine a bare `pytest` ran nothing at all.
+- A test that fails reading a path under `artifacts/` is reported as a skip
+  naming that artifact. The decision is taken from the actual error, not from the
+  directory being absent: a first attempt skipped whole modules whose declared
+  `ARTIFACT*` root was missing and silently swallowed nine tests in those modules
+  that pass without the artifact.
 
 `pytest -m "not requires_artifacts"` deselects the artifact-dependent group.
 
-## What this seal does not claim
+## 10. One budget field is explicitly inert
 
-- **The harness is not a model-driven ReAct loop.** `BoundedReplannerV1` maps a
-  concrete evaluator reason code to one permitted capability. That is
-  deterministic bounded replanning by design: financial execution should not be
-  handed to free-form model tool selection. What is model-driven is the
-  Supervisor's semantic planning and slot requirement.
-- **`max_identical_query_retry` is reserved, not enforced.** Nothing reads it.
-  Enforcing it at its default of 0 would forbid a same-query retry that legacy
-  has always performed, changing retrieval behaviour inside an ablation whose
-  only claim is equivalence. It is now listed in
-  `AdaptiveRAGBudgetV1.RESERVED_FIELDS`, production warns when an operator sets
-  it, and a tripwire test fails if any adaptive decision starts reading it.
-- **`UNSUPPORTED_TOOL_ROUTE` is unreachable from the factory.** The factory
-  refuses an incomplete dependency graph, so the guard is defence in depth
-  against a manually constructed coordinator. The fixture says so.
-- **`_candidate_stage` still owns the candidate path.** The finalizer wraps it
-  rather than reimplementing it, so no release logic is duplicated -- but the
-  harness does not own that code.
-- **The capability trace is lifetime-scoped, and that is pinned at the builder.**
-  Port snapshots (`validation_calls`, `calculator_call_count`,
-  `retrieval_rounds`, ...) count for as long as the port lives, and the
-  coordinator reports them verbatim. They describe *this run* only because
-  `build_trusted_v2_runtime_for_request` builds a fresh port set per request;
-  `tests/test_trusted_v2_production_builder.py` now asserts all five ports differ
-  between two builder calls over one shared resource set. A coordinator that is
-  reused across requests would still report a lifetime in a per-run trace.
-- **The R4 evaluation corpora remain uncommitted.** This seal is about the
-  harness, not about the evaluation artifacts.
+`max_identical_query_retry` was declared, read from the environment and asserted
+in the V2-16 contract test — but read by nothing. `BoundedReplannerV1` reuses the
+same query text for `MISSING_SLOT`, so enforcing the field at its default of 0
+would forbid a retry `legacy` has always performed: a retrieval behaviour change
+arriving through a budget, in an ablation whose only claim is equivalence.
 
-## Reproduction
+It is listed in `AdaptiveRAGBudgetV1.RESERVED_FIELDS`, production warns when an
+operator configures it away from its default, and a tripwire test fails if any
+mode in the control plane starts reading it.
+
+## 11. Capability trace scope
+
+The coordinator reports each port's own `trace_snapshot()` verbatim, and those
+are lifetime figures — `validation_calls`, `calculator_call_count`,
+`retrieval_rounds` accumulate for as long as the port lives. They describe *this
+run* only because `build_trusted_v2_runtime_for_request` builds a fresh port set
+per request. `tests/test_trusted_v2_production_builder.py` asserts all five ports
+differ between two builder calls over one shared resource set, and the
+coordinator states which way it depends on that. Honest limit: a coordinator that
+*is* reused across requests would still report a lifetime in a per-run trace —
+pinned at the builder, not enforced at the coordinator.
+
+## 12. Reproduction
 
 ```bash
 cd finquery_rag/backend
 
-# Ablation report
-python scripts/runtime/run_nf_v3_h1_harness_integration.py
-
-# Harness suite
-python -m pytest tests/harness -q
-
-# Full suite
-python -m pytest -q
+python scripts/runtime/run_nf_v3_h1_harness_integration.py   # ablation report
+python -m pytest tests/harness -q                            # harness suite
+python -m pytest -q                                          # full suite
 ```
 
-`scripts/runtime/` is matched by the repository's root `.gitignore` rule
+`scripts/runtime/` is matched by the repository root's `.gitignore` rule
 `runtime/`, so new files there need `git add -f`.
 
-## Commits
+## 13. Commits
+
+Core:
 
 - `fb318da` test(harness): freeze the legacy v2 execution model as a baseline
 - `023d54d` feat(harness): surface run turns and name the action policy
@@ -299,17 +351,22 @@ python -m pytest -q
 - `8f5e705` docs(harness): correct two misleading dead-code comments
 - `5c6a046` fix(runtime): close review findings in the harness control plane
 - `0bb08fc` refactor(harness): share test fixtures and close a second review pass
-- H1.1 integration, equivalence contract and suite accounting
 
-## Next
+H1.1 seal:
 
-H2 Context & Artifact Runtime. The audit found the agent loop was already 85%
-present; the same question now applies to context, which is still conversation
-history rather than run state (task state, plan, evidence, calculation, tool
-observations, failure state) with evidence artifacts loaded just in time.
+- `cc9e412` test(harness): pin the legacy/harness_v3 decision-equivalence contract
+- `12cd3c9` feat(harness): run the ablation over sealed fixtures end to end
+- `7f4589b` fix(tests): make the suite report an honest number about itself
+- `7d39b34` docs(harness): seal NF-V3 H1
+- `acc63f0` docs(harness): state which working tree the sealed counts came from
+- `8eaa319` test(runtime): pin that capability ports are per request, not per process
+- and the H1.1 rewiring commit that moved the runner onto the production entry point
 
-Multi-agent remains deferred. `BoundedAdaptiveRAGV1` already retrieves, replans,
-repairs, calculates and verifies; adding a Retriever Agent, Calculator Agent and
-Validator Agent would be an architectural retreat. The only later candidate is a
-complexity gate that spawns ephemeral evidence workers for multi-entity queries,
-and those workers would hold no calculation, release or validation authority.
+## 14. Next
+
+`H2A Context & Artifact Runtime` — what the agent sees each turn, not more state
+machinery. Then `H2B Hybrid Decision Runtime` (deterministic replanner for
+slot-missing / operands-ready, model-guided replanner for metric ambiguity and
+evidence conflict, typed action proposal, policy validation), then `H3 Recovery &
+Durable State`, then `H4 Selective Parallel Workers` only if a complex benchmark
+demonstrates the benefit.

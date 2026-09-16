@@ -15,9 +15,24 @@ under new `rag_v2/contracts/`, `rag_v2/harness/`, and `rag_v2/tools/` packages.
 The brief explicitly instructed: audit first, and if the repository does not match
 those assumptions, adapt minimally to the real code rather than forcing the design.
 
-**The audit found that roughly 85% of the proposed harness already exists** — under
-different names, in `rag_v2/adaptive/`, and it is already running in production.
-Building the brief as written would have duplicated a live execution kernel.
+**The audit found that the execution harness already exists** — under different
+names, in `rag_v2/adaptive/`, and already running in production. Building the
+brief as written would have duplicated a live execution kernel.
+
+Correction to an earlier revision of this section, which said "roughly 85% of the
+proposed harness already exists". That was reached by matching class names to a
+component list, and name correspondence is not capability correspondence:
+
+- `BoundedReplannerV1` is a deterministic `reason_code -> ToolCapability` table,
+  not an agent decision layer. No model participates in the loop's choice of next
+  action.
+- `tools: Mapping[ToolCapability, ToolFn]` is a capability dispatch table, not a
+  tool runtime: no per-tool input/output contract, no execution-status versus
+  domain-status distinction, no timeout or error taxonomy.
+
+So: the execution harness skeleton existed and was live; the agent intelligence
+harness — per-turn context engineering, model-guided replanning, recovery,
+durable state — did not. §6 and the seal document list what is still missing.
 
 This document records the real execution model, the deviation from the brief, and
 the re-scoped H1 that closes the genuine gap.
@@ -463,20 +478,30 @@ Delivered:
 1. **Integration runner** — `scripts/runtime/run_nf_v3_h1_harness_integration.py`
    (§3.3, previously outstanding), plus `tests/harness/h1_integration.py` holding
    the fixtures and the wiring so the script and the test suite cannot drift.
-2. **Nine sealed fixtures** — fact, calculation, blocked calculation, raising
-   calculator, wrong-period recovery, missing evidence, validator rejection,
-   budget exhaustion, unsupported route. The set is content-hashed
-   (`sealed_digest`) and the digest is recorded in the report.
+2. **Ten sealed fixtures** — fact, calculation, blocked calculation, raising
+   calculator, wrong-period no-progress, missing evidence, retrieval error,
+   validator rejection, budget exhaustion, unsupported route. The set is
+   content-hashed (`sealed_digest`) and the digest is recorded in the report.
 3. **Canonical equivalence contract** — `tests/harness/equivalence.py`, replacing
    per-test field lists. See the seal document for the A/B/C partition.
 4. **End-to-end trace proof** — `calculation_growth_rate` reaches
    `ACT → OBSERVE → EVALUATE → CALCULATE → READY_TO_GENERATE → GENERATE → VERIFY → RELEASE`
    on real wiring. `legacy` never enters CALCULATE.
 5. **Suite accounting** (below).
-6. **Port scope pinned** — the capability snapshots the coordinator reports are
+6. **Runner rewired onto the production entry point** — the first H1.1 runner
+   called the factory with an explicit `runtime_mode`, which meant
+   `resolve_agent_runtime_mode()` — the actual production seam, and the only
+   place the environment is read — was never exercised. The runner now sets
+   `NF_AGENT_RUNTIME_MODE`, goes through `build_trusted_v2_runtime_for_request`,
+   and asserts the flag reached the coordinator it produced. Three fixtures whose
+   capability the production builder cannot be told to build use the factory with
+   one substituted port, and the report states which tier each fixture used.
+   Rewiring also surfaced that the WRONG_PERIOD replan does not vary retrieval —
+   see the seal document, §6.
+7. **Port scope pinned** — the capability snapshots the coordinator reports are
    lifetime figures, which only equal this-run figures because the builder makes
    fresh ports per request. That was true and untested; it now is tested (§10).
-7. **Seal** — `docs/showcase/nf-v3-h1-harness-core.md`, tag `nf-v3-h1-harness-core`.
+8. **Seal** — `docs/showcase/nf-v3-h1-harness-core.md`, tag `nf-v3-h1-harness-core`.
 
 ### Cross-check: the runner was falsified against the pre-fix tree
 
