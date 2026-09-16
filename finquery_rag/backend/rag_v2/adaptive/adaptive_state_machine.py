@@ -226,7 +226,10 @@ class BoundedAdaptiveRAGV1:
                 # Deterministic calculation is a harness step, not a downstream
                 # afterthought: it runs inside the loop so the run trace and the
                 # budget cover it.  Entered only when a calculator was supplied.
-                if calculator is None:  # defensive; _needs_calculation gates this
+                # Reachable when the loop is entered with a state already in
+                # this phase (a resumed or externally supplied run), even though
+                # _needs_calculation gates the normal transition into it.
+                if calculator is None:
                     self._fail(state, ReasonCode.CALCULATOR_NOT_WIRED)
                     break
                 state.record_turn(AdaptivePhase.CALCULATE.value)
@@ -252,7 +255,9 @@ class BoundedAdaptiveRAGV1:
                 state.transition(AdaptivePhase.GENERATE, "trusted evidence ready")
                 continue
             if phase is AdaptivePhase.GENERATE:
-                if generator is None:  # defensive; unreachable when wired
+                # Reachable when the loop is entered with a state already in
+                # this phase (a resumed or externally supplied run).
+                if generator is None:
                     self._fail(state, ReasonCode.GENERATOR_NOT_WIRED)
                     break
                 state.record_turn(AdaptivePhase.GENERATE.value)
