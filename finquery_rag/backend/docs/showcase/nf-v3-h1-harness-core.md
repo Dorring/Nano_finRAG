@@ -202,6 +202,11 @@ The suite reports three numbers, and they add up exactly:
 4047 collected (H1.1)   =  39 failed + 3865 passed + 143 skipped
 ```
 
+Both rows were measured in this working tree, which also carries five
+uncommitted TV2 evaluation files contributing 14 tests (12 pass, 2 skip). On a
+clean checkout of this commit, subtract those: `4033 collected = 39 failed +
+3853 passed + 141 skipped`. The identities hold either way.
+
 H1's audit reported "3964 collected", which was simply wrong arithmetic on the
 same run -- it omitted the skipped tests. There was no count contradiction; there
 was a reporting error, and it is recorded here because the project leans on

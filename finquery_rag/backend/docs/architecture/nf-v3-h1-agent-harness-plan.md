@@ -492,6 +492,10 @@ side, not an inconsistency in the suite. The counts sum exactly:
 
 `144 + 3835 + 38 = 4017`. The earlier "3964" omitted the skipped tests.
 
+Both rows were measured in this working tree, which also carries five uncommitted
+TV2 evaluation files contributing 14 tests (12 pass, 2 skip). On a clean checkout
+the identities are `4033 = 39 + 3853 + 141`.
+
 By cause, the original 144:
 
 | Count | Cause | Disposition |
