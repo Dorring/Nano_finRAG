@@ -23,15 +23,17 @@ from rag_v2.adaptive import (
     ToolCapability,
 )
 from rag_v2.contracts import Intent
-from rag_v2.supervisor import DeterministicFallbackProvider, SupervisorService
 from src.domain.calculation import (
     CalculationOperation,
     CalculationResult,
     CalculationStatus,
 )
+from rag_v2.supervisor import DeterministicFallbackProvider, SupervisorService
 from src.runtime import (
     DeterministicCalculationCapability,
+    TrustedReleaseValidationCapability,
     TrustedV2CapabilityPorts,
+    TrustedV2GenerationCapability,
     V2ExecutionStatus,
 )
 from src.runtime.harness_runtime_mode import AgentRuntimeMode
@@ -43,6 +45,8 @@ from tests.harness.equivalence import (
 )
 from tests.harness.harness_support import (
     BUDGET,
+    BlockedCalculation,
+    RaisingCalculation,
     execute,
     loop_state,
     packet,
@@ -150,25 +154,6 @@ def test_both_modes_agree_on_a_calculation_plan() -> None:
     assert "calculation_in_harness" not in legacy.runtime_metadata
 
 
-class _BlockedCalculation:
-    """A wired calculator that deterministically declines to compute."""
-
-    candidate_mode = True
-    last_calculation_id = None
-
-    def __init__(self) -> None:
-        self.calls = 0
-        self.last_result = CalculationResult(
-            status=CalculationStatus.BLOCKED,
-            operation=CalculationOperation.GROWTH_RATE,
-            error_code="OPERAND_MISSING",
-        )
-
-    def calculate(self, state: AdaptiveRAGStateV1) -> Any:
-        self.calls += 1
-        return self.last_result
-
-
 def test_blocked_calculation_fails_closed_in_both_modes() -> None:
     """A blocked calculation must not reach generation in either mode.
 
@@ -191,7 +176,7 @@ def test_blocked_calculation_fails_closed_in_both_modes() -> None:
 
     outcomes = {}
     for mode in (AgentRuntimeMode.LEGACY, AgentRuntimeMode.HARNESS_V3):
-        calculation = _BlockedCalculation()
+        calculation = BlockedCalculation()
         outcome = execute(
             mode,
             "Compare years",
@@ -204,10 +189,10 @@ def test_blocked_calculation_fails_closed_in_both_modes() -> None:
         assert calculation.calls == 1
         outcomes[mode] = outcome
 
+    assert set(outcomes) == {AgentRuntimeMode.LEGACY, AgentRuntimeMode.HARNESS_V3}
     for mode, outcome in outcomes.items():
         assert outcome.status is not V2ExecutionStatus.READY_FOR_RELEASE, mode
         assert "CALCULATION_INVALID" in outcome.reason_codes, mode
-        assert mode.value in ("legacy", "harness_v3")
 
     legacy = outcomes[AgentRuntimeMode.LEGACY]
     harness = outcomes[AgentRuntimeMode.HARNESS_V3]
@@ -339,17 +324,6 @@ def test_missing_operand_never_invokes_the_calculator_in_either_mode() -> None:
         assert outcome.status is not V2ExecutionStatus.READY_FOR_RELEASE, mode
 
 
-class _RaisingCalculation:
-    """A wired calculator that raises, like a contract violation would."""
-
-    candidate_mode = True
-    last_calculation_id = None
-    last_result = None
-
-    def calculate(self, state: AdaptiveRAGStateV1) -> Any:
-        raise RuntimeError("calculator secret")
-
-
 def test_calculator_exception_has_the_same_terminal_in_both_modes() -> None:
     """The ablation must not change the observable failure class.
 
@@ -377,7 +351,7 @@ def test_calculator_exception_has_the_same_terminal_in_both_modes() -> None:
             facts,
             [["CURRENT", "PRIOR"]],
             binder_provider=SelectingBinderProvider(),
-            calculation=_RaisingCalculation(),
+            calculation=RaisingCalculation(),
         )
         assert "calculator secret" not in str(outcome.to_dict()), mode
         outcomes[mode] = outcome
@@ -530,3 +504,106 @@ def test_verifier_exception_fails_closed() -> None:
     assert result.state.status == AdaptivePhase.FAIL_CLOSED.value
     assert result.state.stop_reason == ReasonCode.VERIFICATION_ERROR.value
     assert "validator secret" not in str(result.state.last_observation)
+
+
+def test_the_test_release_flag_does_not_split_the_two_modes() -> None:
+    """`allow_test_release` with candidate-mode ports used to diverge.
+
+    The flag wires the *string*-returning generator the pre-closure loop was
+    built for, and the post-loop release branch rejects anything that is not a
+    string.  With candidate-mode ports -- which return a CandidateExecutionResult
+    -- legacy therefore ran the raw generator, reached RELEASE, and then failed
+    its own contract check, while harness_v3's finalizer ignored the flag and
+    released.  The two modes disagreed on nine decision-bearing fields.
+
+    No existing test covered the combination: the flag's own tests use
+    generators without `candidate_mode`, so this wiring never engaged.
+    """
+
+    facts = {"E1": _fact("E1", value="100")}
+    plan = _plan(_slot("revenue"))
+
+    def run(mode: AgentRuntimeMode) -> Any:
+        retrieval, binder, _, _, _ = _real_capabilities([["E1"]], facts)
+        coordinator = BoundedTrustedV2Coordinator(
+            SupervisorService(
+                DeterministicFallbackProvider({"What was revenue?": plan})
+            ),
+            capabilities=TrustedV2CapabilityPorts(
+                retrieval=retrieval,
+                evidence_evaluator=binder,
+                generation=TrustedV2GenerationCapability(),
+                release_validator=TrustedReleaseValidationCapability(),
+            ),
+            budget=BUDGET,
+            runtime_mode=mode,
+            allow_test_release=True,
+        )
+        return asyncio.run(coordinator.execute(_request("What was revenue?", "h1-flag")))
+
+    legacy = run(AgentRuntimeMode.LEGACY)
+    harness = run(AgentRuntimeMode.HARNESS_V3)
+
+    assert_decision_equivalent(legacy, harness)
+    assert legacy.status is V2ExecutionStatus.READY_FOR_RELEASE
+
+
+def test_the_ablation_does_not_invoke_the_calculator_where_legacy_does_not() -> None:
+    """CALCULATE is a harness phase only when the harness owns the downstream.
+
+    With a calculation port that is not candidate-mode and no candidate-mode
+    generator, legacy returns at READY_TO_GENERATE and never reaches the
+    candidate stage's ``calculate()``.  Running CALCULATE anyway made the
+    ablation invoke the calculator where the baseline does not -- contract-blind,
+    because the decision surface is identical, and visible only in the port's own
+    call count and the state it mutates.
+    """
+
+    class PlainCalculation:
+        """A calculator port without ``candidate_mode``."""
+
+        last_calculation_id = None
+
+        def __init__(self) -> None:
+            self.calls = 0
+
+        def calculate(self, state: Any) -> Any:
+            self.calls += 1
+            return _calculation_result()
+
+    facts = {
+        "CURRENT": _fact("CURRENT", period="FY2024", slots=("current",), value="391"),
+        "PRIOR": _fact("PRIOR", period="FY2023", slots=("prior",), value="383"),
+    }
+    plan = _plan(
+        _slot("current", period="FY2024", role="current"),
+        _slot("prior", period="FY2023", role="prior"),
+        intent=Intent.CALCULATION,
+        operation="growth_rate",
+    )
+
+    calls = {}
+    for mode in (AgentRuntimeMode.LEGACY, AgentRuntimeMode.HARNESS_V3):
+        calculation = PlainCalculation()
+        retrieval, binder, _, _, _ = _real_capabilities([["CURRENT", "PRIOR"]], facts)
+        coordinator = BoundedTrustedV2Coordinator(
+            SupervisorService(DeterministicFallbackProvider({"Compare years": plan})),
+            capabilities=TrustedV2CapabilityPorts(
+                retrieval=retrieval,
+                evidence_evaluator=binder,
+                calculation=calculation,
+            ),
+            budget=BUDGET,
+            runtime_mode=mode,
+        )
+        asyncio.run(coordinator.execute(_request("Compare years", "h1-calc-gate")))
+        calls[mode] = calculation.calls
+
+    assert calls[AgentRuntimeMode.LEGACY] == calls[AgentRuntimeMode.HARNESS_V3]
+
+
+def _calculation_result() -> Any:
+    return CalculationResult(
+        status=CalculationStatus.EXECUTED,
+        operation=CalculationOperation.GROWTH_RATE,
+    )

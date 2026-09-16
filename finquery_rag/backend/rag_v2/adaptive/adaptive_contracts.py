@@ -278,8 +278,13 @@ class AdaptiveRAGStateV1:
     conflicts: list[dict[str, Any]] = field(default_factory=list)
     calculation_requirements: dict[str, Any] = field(default_factory=dict)
     calculation_ready: bool = False
-    # Set once the CALCULATE phase has run, so a calculator that returns a
-    # blocked result cannot drive the loop into recalculating forever.
+    # Set once the CALCULATE phase has run.  Its job is coupling: the coordinator
+    # has two call sites that reach the candidate stage, and both must agree on
+    # whether the calculation already happened inside the loop, so that the
+    # result is validated rather than re-run.  It is *not* a guard against
+    # recalculating forever -- EVALUATE cannot be re-entered after CALCULATE
+    # (CALCULATE -> READY_TO_GENERATE -> GENERATE -> VERIFY -> RELEASE|REPAIR),
+    # so there is no such cycle to prevent.
     calculation_attempted: bool = False
     # TV2-04 downstream fields are populated only after Binder admission.
     # They remain structured state, never answer-text-derived facts.

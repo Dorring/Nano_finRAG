@@ -132,9 +132,19 @@ class BoundedAdaptiveRAGV1:
         output: Any = None
         no_progress = False
         guard = 0
-        # One spin per phase transition, not per tool call.  The margin covers
-        # PLAN/ACT/OBSERVE/EVALUATE/REPLAN/CALCULATE/READY_TO_GENERATE plus the
-        # GENERATE/VERIFY/RELEASE tail for every round.
+        # Spin bound, one spin per phase transition rather than per tool call.
+        # This is a backstop against a future edit that makes a phase fail to
+        # advance, not a tight budget: every branch here either advances a phase
+        # or terminates, and the only cycle (ACT -> OBSERVE -> EVALUATE -> REPLAN
+        # -> ACT) consumes a tool call per lap, so the spin count stays a small
+        # multiple of the permitted tool calls.  Measured across budgets from n=1
+        # to n=25, a bounded run terminates after 4-8 transitions with the bound
+        # no lower than 26 -- so it is never approached, not merely not exceeded.
+        #
+        # Consequence worth knowing: ``_fail(BUDGET_EXHAUSTED)`` after the loop
+        # is unreachable for the same reason and is kept as a second backstop.
+        # Budget enforcement that actually binds lives in
+        # ``AdaptiveActionPolicyV1``.
         while guard < self.budget.max_total_tool_calls * 6 + 20:
             guard += 1
             try:

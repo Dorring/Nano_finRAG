@@ -20,6 +20,11 @@ from rag_v2.adaptive import (
     ToolCapability,
 )
 from rag_v2.contracts import Intent
+from src.domain.calculation import (
+    CalculationOperation,
+    CalculationResult,
+    CalculationStatus,
+)
 from rag_v2.supervisor import DeterministicFallbackProvider, SupervisorService
 from src.runtime import (
     TrustedReleaseValidationCapability,
@@ -38,11 +43,13 @@ from tests.test_trusted_v2_r4_binder import (
 
 __all__ = [
     "BUDGET",
+    "BlockedCalculation",
     "CALCULATION_FACTS",
     "REVENUE_FACTS",
     "calculation_loop_state",
     "calculation_plan",
     "execute",
+    "RaisingCalculation",
     "loop_state",
     "packet",
     "run_loop",
@@ -154,3 +161,62 @@ def run_loop(state: AdaptiveRAGStateV1 | None = None, **kwargs: Any) -> Any:
         ),
         **kwargs,
     )
+
+
+# --- calculation stubs shared by the composed and integration suites --------
+#
+# Both suites need a calculator that declines to compute and one that violates
+# its contract.  They were defined twice, and the copies here lacked
+# ``trace_snapshot`` -- so a test driving the capability-view assertions through
+# this pair would report the calculator as never invoked, silently rather than
+# as an error.  One definition, used by both.
+
+
+class BlockedCalculation:
+    """A wired calculator that deterministically declines to compute."""
+
+    candidate_mode = True
+    last_calculation_id = None
+
+    def __init__(self) -> None:
+        self.calls = 0
+        self.last_result = CalculationResult(
+            status=CalculationStatus.BLOCKED,
+            operation=CalculationOperation.GROWTH_RATE,
+            error_code="OPERAND_MISSING",
+        )
+
+    def calculate(self, state: AdaptiveRAGStateV1) -> Any:
+        self.calls += 1
+        return self.last_result
+
+    def trace_snapshot(self) -> dict[str, Any]:
+        return {
+            "calculator_invoked": self.calls > 0,
+            "calculator_call_count": self.calls,
+            "calculation_status": self.last_result.status.value,
+        }
+
+
+class RaisingCalculation:
+    """A wired calculator that raises, like a contract violation would."""
+
+    candidate_mode = True
+    last_calculation_id = None
+    last_result = None
+
+    def __init__(self) -> None:
+        self.calls = 0
+
+    def calculate(self, state: AdaptiveRAGStateV1) -> Any:
+        self.calls += 1
+        raise RuntimeError("calculator secret")
+
+    def trace_snapshot(self) -> dict[str, Any]:
+        # Reporting the invocation is what lets a caller prove the calculator
+        # ran *and* that nothing was generated from its failure.
+        return {
+            "calculator_invoked": self.calls > 0,
+            "calculator_call_count": self.calls,
+            "calculation_status": None,
+        }

@@ -25,6 +25,7 @@ from src.runtime import (
     inspect_r4_fact_store_compatibility,
     validate_trusted_v2_production_configuration,
 )
+from src.runtime.harness_runtime_mode import AgentRuntimeModeError
 from src.runtime.trusted_v2_generation import LocalSpecialistGenerationAdapter
 
 
@@ -448,3 +449,42 @@ def test_builder_constructs_request_scoped_v2_graph_with_injected_resources(
         assert getattr(second, port) is not getattr(first, port), port
     # The heavy process-scoped resources are shared, as intended.
     assert second.retrieval.policy.materializer.__self__ is fact_store
+
+
+def test_an_unrecognised_runtime_mode_reports_the_bad_setting(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A typo in NF_AGENT_RUNTIME_MODE must not look like a build failure.
+
+    ``resolve_agent_runtime_mode`` raises a purpose-built error naming the bad
+    value and the accepted ones.  It used to be called *inside* the graph-building
+    try, where the generic ``except Exception`` re-wrapped it as "could not build
+    the request-scoped Trusted V2 runtime graph", leaving the real reason only in
+    ``__cause__`` and sending the operator to look at their asset provisioning.
+    """
+
+    facts_path = tmp_path / "facts.json"
+    facts_path.write_text(json.dumps([_fact()]), encoding="utf-8")
+    resources = TrustedV2RuntimeResources(
+        index_reader=object(),
+        fact_store=StructuredFactStore(facts_path),
+        supervisor=SupervisorService(DeterministicFallbackProvider({})),
+        binder=SemanticBinderService(_BinderProvider()),
+        specialist=LocalSpecialistGenerationAdapter(_SpecialistBackend()),
+        budget=AdaptiveRAGBudgetV1(),
+        config_fingerprint="test-fingerprint",
+        index_manifest={"row_count": 1},
+    )
+    request = FinancialQueryRequest(
+        request_id="req-mode",
+        user_id="user-mode",
+        session_id="session-mode",
+        original_query="What was Apple FY2023 revenue?",
+    )
+    monkeypatch.setenv("NF_AGENT_RUNTIME_MODE", "harnessv3")
+
+    with pytest.raises(AgentRuntimeModeError) as raised:
+        build_trusted_v2_runtime_for_request(None, request, resources=resources)
+
+    assert "harnessv3" in str(raised.value)
+    assert "harness_v3" in str(raised.value)

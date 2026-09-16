@@ -903,9 +903,20 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         CalculationResult`` is the entire port contract -- ``last_result`` is a
         private implementation detail that a conforming calculator need not
         maintain.
+
+        Gated on exactly the same condition as ``_harness_finalizer``, not on the
+        runtime mode alone.  In a configuration where the candidate path is not
+        enabled, ``legacy`` returns at READY_TO_GENERATE and never reaches the
+        candidate stage's ``calculate()`` -- so running CALCULATE as a phase
+        would have the ablation invoke the calculator where the baseline does
+        not.  That divergence is contract-blind (the decision surface is
+        identical) and invisible in every differential test; only the port's own
+        call count and the state it mutates show it.
         """
 
         if self.runtime_mode is not AgentRuntimeMode.HARNESS_V3:
+            return None
+        if not self._candidate_generation_enabled():
             return None
         calculation = self.capabilities.calculation
         if calculation is None:
@@ -1711,8 +1722,21 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         )
         generator = None
         verifier = None
+        # The test-release wiring is for a generator that returns a *string* --
+        # it exists so the pre-closure loop can release in tests, and the
+        # post-loop release branch rejects anything that is not a string.
+        #
+        # It must therefore not engage when the candidate path is enabled: those
+        # ports return a CandidateExecutionResult, so wiring them here made
+        # legacy run the raw generator, reach RELEASE, and then fail the
+        # post-loop isinstance check with GENERATION_CONTRACT_INVALID -- while
+        # harness_v3, whose finalizer ignores this flag, released normally. The
+        # two modes disagreed on nine decision-bearing fields, and no test
+        # covered the combination because the flag's own tests use generators
+        # without `candidate_mode`.
         if (
             self.allow_test_release
+            and not self._candidate_generation_enabled()
             and self.capabilities.generation is not None
             and self.capabilities.release_validator is not None
         ):

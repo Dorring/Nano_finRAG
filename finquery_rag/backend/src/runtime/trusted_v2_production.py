@@ -1004,6 +1004,14 @@ def build_trusted_v2_runtime_for_request(
         raise TypeError("resources must be TrustedV2RuntimeResources")
 
     document_scope = _document_scope(request)
+    # Resolved *before* the graph-building try.  ``resolve_agent_runtime_mode``
+    # raises ``AgentRuntimeModeError`` (a ValueError) for an unrecognised mode,
+    # and inside the try that purpose-built message -- the one naming the bad
+    # value and the accepted ones -- was swallowed by the generic
+    # ``except Exception`` and re-raised as "could not build the graph", with the
+    # real reason surviving only in ``__cause__``.  An operator typo in
+    # NF_AGENT_RUNTIME_MODE reported a build failure instead of a bad setting.
+    agent_runtime_mode = resolve_agent_runtime_mode()
     try:
         from src.pdf_retrieval_v4.candidate_direct_retriever import CandidateDirectRetriever
 
@@ -1040,7 +1048,7 @@ def build_trusted_v2_runtime_for_request(
             # This is the only place NF_AGENT_RUNTIME_MODE is read.  The
             # coordinator takes an explicit mode so that constructing one does
             # not depend on ambient process state.
-            runtime_mode=resolve_agent_runtime_mode(),
+            runtime_mode=agent_runtime_mode,
         )
     except TrustedV2ProductionConfigurationError:
         raise
