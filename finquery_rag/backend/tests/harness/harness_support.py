@@ -9,7 +9,6 @@ apart -- a change to how a test coordinator is wired must move both, not one.
 from __future__ import annotations
 
 import asyncio
-import copy
 from typing import Any
 
 from rag_v2.adaptive import (
@@ -47,7 +46,6 @@ __all__ = [
     "loop_state",
     "packet",
     "run_loop",
-    "semantic_metadata",
     "transitions",
 ]
 
@@ -103,21 +101,6 @@ def execute(
 
 def transitions(outcome: Any) -> list[str]:
     return [item["to"] for item in outcome.debug_metadata["trace"]["transitions"]]
-
-
-def semantic_metadata(outcome: Any) -> dict[str, Any]:
-    """Runtime metadata with timing removed.
-
-    Every other field — validation id, status, claims, reports, provenance —
-    must match exactly between modes.  ``latency_ms`` is a measurement, not a
-    decision, so it is the only thing excluded.
-    """
-
-    metadata = copy.deepcopy(dict(outcome.runtime_metadata))
-    validation = metadata.get("validation")
-    if isinstance(validation, dict):
-        validation.pop("latency_ms", None)
-    return metadata
 
 
 # --- harness-level fixtures (no coordinator) --------------------------------

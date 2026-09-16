@@ -12,6 +12,7 @@ assert both the closed loop and that the verdict is unchanged between modes.
 from __future__ import annotations
 
 import asyncio
+from dataclasses import replace
 from typing import Any
 
 from rag_v2.adaptive import (
@@ -35,13 +36,17 @@ from src.runtime import (
 )
 from src.runtime.harness_runtime_mode import AgentRuntimeMode
 from src.runtime.trusted_v2_coordinator import BoundedTrustedV2Coordinator
+from tests.harness.equivalence import (
+    DECISION_BEARING_FIELDS,
+    assert_decision_equivalent,
+    decision_differences,
+)
 from tests.harness.harness_support import (
     BUDGET,
     execute,
     loop_state,
     packet,
     run_loop,
-    semantic_metadata,
     transitions,
 )
 from tests.test_trusted_v2_r4_binder import (
@@ -91,7 +96,12 @@ def test_legacy_never_enters_generate_or_release() -> None:
 
 
 def test_both_modes_agree_on_release_decision_and_answer() -> None:
-    """The whole point of the flag: same semantics, different execution model."""
+    """The whole point of the flag: same semantics, different execution model.
+
+    Compared through the shared contract, not a list of fields chosen here.  A
+    hand-picked list is exactly how ``route`` and ``reason_codes`` diverged
+    unnoticed the first time round.
+    """
 
     facts = {"E1": _fact("E1", value="100")}
     plan = _plan(_slot("revenue"))
@@ -99,17 +109,8 @@ def test_both_modes_agree_on_release_decision_and_answer() -> None:
     legacy = execute(AgentRuntimeMode.LEGACY, "What was revenue?", plan, facts, [["E1"]])
     harness = execute(AgentRuntimeMode.HARNESS_V3, "What was revenue?", plan, facts, [["E1"]])
 
-    assert legacy.status is harness.status
-    assert legacy.release_status == harness.release_status
-    assert legacy.answer == harness.answer
-    assert legacy.citation_ids == harness.citation_ids
-    assert legacy.evidence_ids == harness.evidence_ids
-    assert legacy.validator_status == harness.validator_status
-    assert legacy.calculations == harness.calculations
-    assert legacy.calculation_result_id == harness.calculation_result_id
-    assert legacy.claim_provenance == harness.claim_provenance
-    # No calculation on this plan, so the metadata must match exactly.
-    assert semantic_metadata(legacy) == semantic_metadata(harness)
+    assert_decision_equivalent(legacy, harness)
+    assert legacy.status is V2ExecutionStatus.READY_FOR_RELEASE
 
 
 def test_both_modes_agree_on_a_calculation_plan() -> None:
@@ -138,20 +139,15 @@ def test_both_modes_agree_on_a_calculation_plan() -> None:
     legacy = run(AgentRuntimeMode.LEGACY)
     harness = run(AgentRuntimeMode.HARNESS_V3)
 
-    assert legacy.status is harness.status
-    assert legacy.release_status == harness.release_status
-    assert legacy.answer == harness.answer
-    assert legacy.calculation_ids == harness.calculation_ids
-    assert legacy.calculation_result_id == harness.calculation_result_id
-    assert legacy.calculations == harness.calculations
-    assert legacy.claim_provenance == harness.claim_provenance
+    assert_decision_equivalent(legacy, harness)
     assert "CALCULATE" in transitions(harness)
     assert "CALCULATE" not in transitions(legacy)
 
-    # Metadata differs only by the marker recording where calculation ran.
-    harness_metadata = semantic_metadata(harness)
-    assert harness_metadata.pop("calculation_in_harness", None) is True
-    assert semantic_metadata(legacy) == harness_metadata
+    # The one field the contract strips for harness_v3 is the marker recording
+    # where calculation ran.  Stripping it is only safe while it is actually
+    # set, so assert it directly rather than letting the contract excuse it.
+    assert harness.runtime_metadata.get("calculation_in_harness") is True
+    assert "calculation_in_harness" not in legacy.runtime_metadata
 
 
 class _BlockedCalculation:
@@ -264,7 +260,53 @@ def test_reason_codes_are_not_polluted_by_resolved_recovery_rounds() -> None:
 
     assert legacy.status is V2ExecutionStatus.READY_FOR_RELEASE
     assert harness.status is V2ExecutionStatus.READY_FOR_RELEASE
-    assert legacy.reason_codes == harness.reason_codes
+    assert_decision_equivalent(legacy, harness)
+
+    # The point of the fixture: a recovery round *did* run, so the trace carries
+    # the reason code it resolved.  Without that the test would pass vacuously.
+    assert ReasonCode.WRONG_PERIOD.value in harness.debug_metadata["trace"]["reason_codes"]
+    assert ReasonCode.WRONG_PERIOD.value not in harness.reason_codes
+
+
+def test_the_equivalence_contract_covers_the_fields_that_once_diverged() -> None:
+    """Guards the contract itself, not the runtime.
+
+    ``route`` and ``reason_codes`` are the two fields the first differential
+    assertion set omitted; ``calculations``, ``calculation_result_id`` and
+    ``claim_provenance`` are the three the second pass had to add.  Every one of
+    them diverged at some point while the old hand-picked lists stayed green, so
+    their presence in the contract is the regression test for the process.
+    """
+
+    for field in (
+        "route",
+        "reason_codes",
+        "calculations",
+        "calculation_result_id",
+        "claim_provenance",
+    ):
+        assert field in DECISION_BEARING_FIELDS, field
+
+
+def test_the_equivalence_contract_reports_every_field_not_just_the_first() -> None:
+    """A one-line assertion would hide the other divergences in the same run."""
+
+    facts = {"E1": _fact("E1", value="100")}
+    plan = _plan(_slot("revenue"))
+    legacy = execute(AgentRuntimeMode.LEGACY, "What was revenue?", plan, facts, [["E1"]])
+    harness = execute(AgentRuntimeMode.HARNESS_V3, "What was revenue?", plan, facts, [["E1"]])
+    assert_decision_equivalent(legacy, harness)
+
+    divergent = replace(harness, route="ABSTAIN", answer="a different answer")
+
+    assert decision_differences(legacy, divergent) == [
+        {
+            "field": "answer",
+            "legacy": legacy.answer,
+            "harness_v3": "a different answer",
+        },
+        {"field": "route", "legacy": legacy.route, "harness_v3": "ABSTAIN"},
+    ]
 
 
 def test_missing_operand_never_invokes_the_calculator_in_either_mode() -> None:

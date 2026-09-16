@@ -23,6 +23,7 @@ import os
 import re
 import sqlite3
 import threading
+import warnings
 from collections.abc import Iterable, Mapping, MutableMapping
 from dataclasses import dataclass
 from pathlib import Path
@@ -762,7 +763,7 @@ def _build_specialist(environ: Mapping[str, str]) -> LocalSpecialistGenerationAd
 
 
 def _build_budget(environ: Mapping[str, str]) -> AdaptiveRAGBudgetV1:
-    return AdaptiveRAGBudgetV1(
+    budget = AdaptiveRAGBudgetV1(
         max_replan_rounds=_int_env(environ, "V2_MAX_REPLANS", 2, minimum=0),
         max_total_tool_calls=_int_env(environ, "V2_MAX_TOOL_CALLS", 5, minimum=1),
         max_same_tool_retry=_int_env(
@@ -778,6 +779,18 @@ def _build_budget(environ: Mapping[str, str]) -> AdaptiveRAGBudgetV1:
             minimum=0,
         ),
     )
+    # Accepting a bound that nothing reads is worse than rejecting it: the
+    # operator would believe a runaway loop was capped.  Say so instead.  See
+    # AdaptiveRAGBudgetV1.RESERVED_FIELDS for why it is not enforced.
+    unenforced = budget.unenforced_settings()
+    if unenforced:
+        warnings.warn(
+            "these adaptive budget settings are reserved and are not enforced: "
+            + ", ".join(sorted(unenforced)),
+            RuntimeWarning,
+            stacklevel=2,
+        )
+    return budget
 
 
 @dataclass
