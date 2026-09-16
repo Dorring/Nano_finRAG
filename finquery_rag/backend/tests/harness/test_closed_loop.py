@@ -12,6 +12,7 @@ assert both the closed loop and that the verdict is unchanged between modes.
 from __future__ import annotations
 
 import asyncio
+import copy
 from typing import Any
 
 from rag_v2.adaptive import (
@@ -83,6 +84,21 @@ def _transitions(outcome: Any) -> list[str]:
     return [item["to"] for item in outcome.debug_metadata["trace"]["transitions"]]
 
 
+def _semantic_metadata(outcome: Any) -> dict[str, Any]:
+    """Runtime metadata with timing removed.
+
+    Every other field — validation id, status, claims, reports, provenance —
+    must match exactly between modes.  ``latency_ms`` is a measurement, not a
+    decision, so it is the only thing excluded.
+    """
+
+    metadata = copy.deepcopy(dict(outcome.runtime_metadata))
+    validation = metadata.get("validation")
+    if isinstance(validation, dict):
+        validation.pop("latency_ms", None)
+    return metadata
+
+
 def test_harness_v3_releases_inside_the_loop() -> None:
     facts = {"E1": _fact("E1", value="100")}
 
@@ -133,6 +149,8 @@ def test_both_modes_agree_on_release_decision_and_answer() -> None:
     assert legacy.citation_ids == harness.citation_ids
     assert legacy.evidence_ids == harness.evidence_ids
     assert legacy.validator_status == harness.validator_status
+    # No calculation on this plan, so the metadata must match exactly.
+    assert _semantic_metadata(legacy) == _semantic_metadata(harness)
 
 
 def test_both_modes_agree_on_a_calculation_plan() -> None:
@@ -167,6 +185,11 @@ def test_both_modes_agree_on_a_calculation_plan() -> None:
     assert legacy.calculation_ids == harness.calculation_ids
     assert "CALCULATE" in _transitions(harness)
     assert "CALCULATE" not in _transitions(legacy)
+
+    # Metadata differs only by the marker recording where calculation ran.
+    harness_metadata = _semantic_metadata(harness)
+    assert harness_metadata.pop("calculation_in_harness", None) is True
+    assert _semantic_metadata(legacy) == harness_metadata
 
 
 class _BlockedCalculation:
