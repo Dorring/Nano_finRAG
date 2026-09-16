@@ -899,6 +899,41 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         calculator = getattr(calculation, "calculate", None)
         return calculator if callable(calculator) else None
 
+    def _harness_finalizer(
+        self,
+        *,
+        request: V2ExecutionRequest,
+        plan: SupervisorPlan,
+        plan_id: str,
+        evaluator_adapter: "_EvaluatorAdapter",
+        finalization: dict[str, Any],
+    ) -> tuple[Any, Any]:
+        """Run the existing candidate/validation path as the harness tail.
+
+        The harness decides *when* generation happens.  It does not decide
+        *whether* an answer may be released: the deterministic validator inside
+        the candidate stage still owns that, and this finalizer only reports its
+        verdict back to the loop.  No release logic is duplicated here.
+        """
+
+        def generate(current_state: AdaptiveRAGStateV1) -> bool:
+            outcome = self._candidate_stage(
+                request=request,
+                plan=plan,
+                plan_id=plan_id,
+                state=current_state,
+                evaluator_adapter=evaluator_adapter,
+            )
+            finalization["outcome"] = outcome
+            return bool(outcome.status is V2ExecutionStatus.READY_FOR_RELEASE)
+
+        def verify(current_state: AdaptiveRAGStateV1, verdict: Any) -> bool:
+            # ``verdict`` is the release decision the candidate stage already
+            # made.  The harness must not reinterpret a validated verdict.
+            return bool(verdict)
+
+        return generate, verify
+
     @staticmethod
     def _binder_admission_is_authoritative(
         state: AdaptiveRAGStateV1,
@@ -1653,6 +1688,19 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             generator = self.capabilities.generation.generate
             verifier = self.capabilities.release_validator.validate
 
+        finalization: dict[str, Any] = {}
+        if (
+            self.runtime_mode is AgentRuntimeMode.HARNESS_V3
+            and self._candidate_generation_enabled()
+        ):
+            generator, verifier = self._harness_finalizer(
+                request=request,
+                plan=plan,
+                plan_id=plan_id,
+                evaluator_adapter=evaluator_adapter,
+                finalization=finalization,
+            )
+
         try:
             bounded_result = BoundedAdaptiveRAGV1(
                 evaluator=evaluator_adapter,
@@ -1696,6 +1744,33 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             )
 
         final_state = bounded_result.state.status
+
+        # harness_v3: generation, validation and release ran *inside* the loop.
+        # The candidate stage produced the authoritative decision, but it built
+        # its trace mid-loop.  Rebuild the outcome against the completed state so
+        # the trace covers GENERATE / VERIFY / RELEASE as well.
+        if finalization.get("outcome") is not None:
+            candidate = finalization["outcome"]
+            candidate_trace = candidate.debug_metadata.get("trace", {})
+            return self._outcome(
+                request=request,
+                plan=plan,
+                plan_id=plan_id,
+                state=bounded_result.state,
+                reason_codes=candidate_trace.get("reason_codes", ()),
+                status=candidate.status,
+                answer=candidate.answer,
+                evidence_ids=candidate.evidence_ids,
+                citation_ids=candidate.citation_ids,
+                calculation_ids=candidate.calculation_ids,
+                validator_status=candidate.validator_status,
+                terminal_state=(
+                    candidate_trace.get("terminal_state") or bounded_result.state.status
+                ),
+                extra_metadata=candidate.runtime_metadata,
+                semantic_alignment=candidate_trace.get("semantic_alignment"),
+            )
+
         if final_state == "READY_TO_GENERATE" and self._candidate_generation_enabled():
             return self._candidate_stage(
                 request=request,

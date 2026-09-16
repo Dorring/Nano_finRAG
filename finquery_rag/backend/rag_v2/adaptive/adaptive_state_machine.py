@@ -252,11 +252,35 @@ class BoundedAdaptiveRAGV1:
                 state.transition(AdaptivePhase.GENERATE, "trusted evidence ready")
                 continue
             if phase is AdaptivePhase.GENERATE:
-                output = generator(state) if generator else None
+                if generator is None:  # defensive; unreachable when wired
+                    self._fail(state, ReasonCode.GENERATOR_NOT_WIRED)
+                    break
+                state.record_turn(AdaptivePhase.GENERATE.value)
+                try:
+                    output = generator(state)
+                except Exception as exc:  # deterministic fail-closed; expose only type
+                    state.last_observation = {"error": type(exc).__name__}
+                    state.observe_turn(state.last_observation)
+                    self._fail(state, ReasonCode.GENERATION_ERROR)
+                    break
+                state.last_observation = {"generated": True, "output_type": type(output).__name__}
+                state.observe_turn(state.last_observation)
                 state.transition(AdaptivePhase.VERIFY, "generator output produced")
                 continue
             if phase is AdaptivePhase.VERIFY:
-                if verifier is None or verifier(state, output):
+                # A missing verifier is a wiring defect, not a release licence.
+                # Releasing on `verifier is None` would let an unvalidated answer
+                # through, so this fails closed instead.
+                if verifier is None:
+                    self._fail(state, ReasonCode.VERIFICATION_NOT_WIRED)
+                    break
+                try:
+                    passed = bool(verifier(state, output))
+                except Exception as exc:  # deterministic fail-closed; expose only type
+                    state.last_observation = {"error": type(exc).__name__}
+                    self._fail(state, ReasonCode.VERIFICATION_ERROR)
+                    break
+                if passed:
                     state.transition(AdaptivePhase.RELEASE, "existing validator path passed")
                 else:
                     state.transition(AdaptivePhase.REPAIR, "existing validator requested repair")

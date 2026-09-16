@@ -105,16 +105,22 @@ def test_harness_v3_calculates_inside_the_loop() -> None:
     outcome = _execute(AgentRuntimeMode.HARNESS_V3, calculation)
 
     assert outcome.status is V2ExecutionStatus.READY_FOR_RELEASE
+    # The full closed loop: retrieval, the calculation phase, then the
+    # generation/verification/release tail, all inside the harness.
     assert _transitions(outcome) == [
         "ACT",
         "OBSERVE",
         "EVALUATE",
         "CALCULATE",
         "READY_TO_GENERATE",
+        "GENERATE",
+        "VERIFY",
+        "RELEASE",
     ]
     assert outcome.debug_metadata["trace"]["action_trace"] == [
         "SEMANTIC_RETRIEVAL",
         "CALCULATE",
+        "GENERATE",
     ]
 
 

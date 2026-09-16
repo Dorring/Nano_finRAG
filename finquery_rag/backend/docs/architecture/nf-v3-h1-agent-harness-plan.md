@@ -1,6 +1,6 @@
 # NF-V3 H1 — Financial Agent Harness: Plan
 
-Status: **plan, pending execution**
+Status: **D1–D5 delivered** (see §9 delivery record)
 Baseline commit: `b393d3e` (`feat/context-trust-runtime-trace`, in sync with `origin`)
 Scope: runtime control plane only. No retrieval, binder, calculator, or generator
 algorithm changes.
@@ -302,3 +302,47 @@ loop). Lower risk, but does not close the gap that motivated H1.
 
 Consequence to accept: D4 edits the release path, the most sensitive code in the
 repository. Commits are ordered so that this lands last, behind a default-off flag.
+
+## 9. Delivery record
+
+| Commit | Scope | Status |
+|---|---|---|
+| `fb318da` | characterization baseline + this plan | done |
+| `023d54d` | D1 run turn trace, D2 named `AdaptiveActionPolicyV1` | done |
+| `cbcfa00` | D3 calculation as a harness phase, D5 runtime mode flag | done |
+| (this commit) | D4 closed loop via the harness finalizer | done |
+
+Evidence, measured at each step against the same baseline:
+
+- Baseline without any H1 change: **144 failed / 3782 passed**, 2 collection errors
+  from missing optional deps (`chromadb`, `torch`).
+- After D1+D2: 144 failed / 3791 passed, failing-file breakdown byte-identical.
+- After D3+D5: 144 failed / 3806 passed, failing-file breakdown byte-identical.
+- After D4: 144 failed / 3822 passed, failing-file breakdown byte-identical.
+
+The 144 are pre-existing and environmental: missing `artifacts/evaluation` frozen
+fixtures, and `FINANCIAL_RUNTIME_MODE=v2` needing a configured production factory.
+None touch `rag_v2.adaptive` or the coordinator.
+
+Two deviations from the plan, both recorded rather than absorbed:
+
+1. **D5 moved into commit 3.** D3 cannot land without the flag: entering CALCULATE
+   on the production path changes the execution model, which would have broken the
+   behaviour pinned by commit 1.
+2. **D4 implements the finalizer as a wrapper, not a rewrite.** The plan said to
+   wire generation and validation into the harness. It did — but the finalizer
+   reuses `_candidate_stage` verbatim rather than reimplementing release logic
+   inside the loop, and the coordinator rebuilds the trace against the completed
+   state so it covers `GENERATE` / `VERIFY` / `RELEASE`. No release logic is
+   duplicated, so the validator remains the single release authority.
+
+Still outstanding from §3.3: `scripts/runtime/run_nf_v3_h1_harness_integration.py`,
+the legacy-vs-harness_v3 integration runner over a real fixture set. H1's
+unit-level equivalence is proven; the end-to-end runner is not yet built.
+
+One latent hazard was found and closed while wiring D4: the harness's VERIFY phase
+read `if verifier is None or verifier(state, output)`, so a generator wired without
+a verifier would have released unconditionally. It now fails closed with
+`VERIFICATION_NOT_WIRED`. This mattered because `TrustedReleaseValidationCapability.validate`
+returns a `V2ValidationResult` object, not a bool — it is always truthy, so a
+naive wiring would have released without the validator's verdict being read.
