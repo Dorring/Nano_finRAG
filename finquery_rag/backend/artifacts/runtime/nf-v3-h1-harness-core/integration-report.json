@@ -1,0 +1,914 @@
+{
+  "fixture_count": 9,
+  "fixtures": [
+    {
+      "decision_equivalent": true,
+      "description": "One admitted fact releases a direct-fact answer.",
+      "differences": [],
+      "expectation_failures": [],
+      "fixture_id": "fact_direct",
+      "harness_v3": {
+        "answer": "Revenue (FY2024): 391 USD million [citation-REVENUE]",
+        "reason_codes": [
+          "VALIDATED_RELEASE"
+        ],
+        "released": true,
+        "route": "STRUCTURED_SINGLE",
+        "status": "READY_FOR_RELEASE",
+        "transitions": [
+          "ACT",
+          "OBSERVE",
+          "EVALUATE",
+          "READY_TO_GENERATE",
+          "GENERATE",
+          "VERIFY",
+          "RELEASE"
+        ],
+        "turn_count": 3,
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "GENERATE",
+          "VERIFY"
+        ]
+      },
+      "legacy": {
+        "answer": "Revenue (FY2024): 391 USD million [citation-REVENUE]",
+        "reason_codes": [
+          "VALIDATED_RELEASE"
+        ],
+        "released": true,
+        "route": "STRUCTURED_SINGLE",
+        "status": "READY_FOR_RELEASE",
+        "turns": [
+          "SEMANTIC_RETRIEVAL"
+        ]
+      },
+      "sealed_spec": {
+        "budget": null,
+        "calculation": "none",
+        "description": "One admitted fact releases a direct-fact answer.",
+        "facts": {
+          "REVENUE": {
+            "candidate_id": "REVENUE",
+            "citation_id": "citation-REVENUE",
+            "currency": "USD",
+            "document_id": "doc-REVENUE",
+            "entity": "Apple",
+            "evidence_id": "REVENUE",
+            "fact_id": "REVENUE",
+            "metric": "Revenue",
+            "pdf_page": 1,
+            "period": "FY2024",
+            "physical_source_id": "source-REVENUE",
+            "provenance_complete": true,
+            "scale": "million",
+            "scope": "consolidated",
+            "slots": [
+              "revenue"
+            ],
+            "source": "fixture",
+            "unit": "USD",
+            "value": "391"
+          }
+        },
+        "fixture_id": "fact_direct",
+        "generation": "trusted",
+        "intent": "DIRECT_FACT",
+        "operation": null,
+        "query": "What was revenue?",
+        "retrieval": true,
+        "retrieval_batches": [
+          [
+            "REVENUE"
+          ]
+        ],
+        "slots": [
+          {
+            "metric": "Revenue",
+            "period": "FY2024",
+            "slot_id": "revenue"
+          }
+        ]
+      }
+    },
+    {
+      "decision_equivalent": true,
+      "description": "A calculation plan runs the deterministic calculator as a loop phase and releases the rendered result.",
+      "differences": [],
+      "expectation_failures": [],
+      "fixture_id": "calculation_growth_rate",
+      "harness_v3": {
+        "answer": "Growth Rate: 2.09%\n\nFormula: (current - previous) / previous (growth_rate.v1)\nInputs:\n  - current = 391,000,000.00 — doc-CURRENT\n  - previous = 383,000,000.00 — doc-PRIOR",
+        "reason_codes": [
+          "VALIDATED_RELEASE"
+        ],
+        "released": true,
+        "route": "CALCULATION_SIMPLE",
+        "status": "READY_FOR_RELEASE",
+        "transitions": [
+          "ACT",
+          "OBSERVE",
+          "EVALUATE",
+          "CALCULATE",
+          "READY_TO_GENERATE",
+          "GENERATE",
+          "VERIFY",
+          "RELEASE"
+        ],
+        "turn_count": 4,
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "CALCULATE",
+          "GENERATE",
+          "VERIFY"
+        ]
+      },
+      "legacy": {
+        "answer": "Growth Rate: 2.09%\n\nFormula: (current - previous) / previous (growth_rate.v1)\nInputs:\n  - current = 391,000,000.00 — doc-CURRENT\n  - previous = 383,000,000.00 — doc-PRIOR",
+        "reason_codes": [
+          "VALIDATED_RELEASE"
+        ],
+        "released": true,
+        "route": "CALCULATION_SIMPLE",
+        "status": "READY_FOR_RELEASE",
+        "turns": [
+          "SEMANTIC_RETRIEVAL"
+        ]
+      },
+      "sealed_spec": {
+        "budget": null,
+        "calculation": "deterministic",
+        "description": "A calculation plan runs the deterministic calculator as a loop phase and releases the rendered result.",
+        "facts": {
+          "CURRENT": {
+            "candidate_id": "CURRENT",
+            "citation_id": "citation-CURRENT",
+            "currency": "USD",
+            "document_id": "doc-CURRENT",
+            "entity": "Apple",
+            "evidence_id": "CURRENT",
+            "fact_id": "CURRENT",
+            "metric": "Revenue",
+            "pdf_page": 1,
+            "period": "FY2024",
+            "physical_source_id": "source-CURRENT",
+            "provenance_complete": true,
+            "scale": "million",
+            "scope": "consolidated",
+            "slots": [
+              "current"
+            ],
+            "source": "fixture",
+            "unit": "USD",
+            "value": "391"
+          },
+          "PRIOR": {
+            "candidate_id": "PRIOR",
+            "citation_id": "citation-PRIOR",
+            "currency": "USD",
+            "document_id": "doc-PRIOR",
+            "entity": "Apple",
+            "evidence_id": "PRIOR",
+            "fact_id": "PRIOR",
+            "metric": "Revenue",
+            "pdf_page": 1,
+            "period": "FY2023",
+            "physical_source_id": "source-PRIOR",
+            "provenance_complete": true,
+            "scale": "million",
+            "scope": "consolidated",
+            "slots": [
+              "prior"
+            ],
+            "source": "fixture",
+            "unit": "USD",
+            "value": "383"
+          }
+        },
+        "fixture_id": "calculation_growth_rate",
+        "generation": "trusted",
+        "intent": "CALCULATION",
+        "operation": "growth_rate",
+        "query": "Compare revenue across years",
+        "retrieval": true,
+        "retrieval_batches": [
+          [
+            "CURRENT",
+            "PRIOR"
+          ]
+        ],
+        "slots": [
+          {
+            "metric": "Revenue",
+            "period": "FY2024",
+            "role": "current",
+            "slot_id": "current"
+          },
+          {
+            "metric": "Revenue",
+            "period": "FY2023",
+            "role": "prior",
+            "slot_id": "prior"
+          }
+        ]
+      }
+    },
+    {
+      "decision_equivalent": true,
+      "description": "The calculator declines to compute.  The BLOCKED result must fail closed and must not reach generation.",
+      "differences": [],
+      "expectation_failures": [],
+      "fixture_id": "calculation_blocked",
+      "harness_v3": {
+        "answer": null,
+        "reason_codes": [
+          "CALCULATION_INVALID",
+          "OPERAND_MISSING"
+        ],
+        "released": false,
+        "route": "CALCULATION",
+        "status": "FAIL_CLOSED",
+        "transitions": [
+          "ACT",
+          "OBSERVE",
+          "EVALUATE",
+          "CALCULATE",
+          "READY_TO_GENERATE",
+          "GENERATE",
+          "VERIFY",
+          "REPAIR",
+          "FAIL_CLOSED"
+        ],
+        "turn_count": 4,
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "CALCULATE",
+          "GENERATE",
+          "VERIFY"
+        ]
+      },
+      "legacy": {
+        "answer": null,
+        "reason_codes": [
+          "CALCULATION_INVALID",
+          "OPERAND_MISSING"
+        ],
+        "released": false,
+        "route": "CALCULATION",
+        "status": "FAIL_CLOSED",
+        "turns": [
+          "SEMANTIC_RETRIEVAL"
+        ]
+      },
+      "sealed_spec": {
+        "budget": null,
+        "calculation": "blocked",
+        "description": "The calculator declines to compute.  The BLOCKED result must fail closed and must not reach generation.",
+        "facts": {
+          "CURRENT": {
+            "candidate_id": "CURRENT",
+            "citation_id": "citation-CURRENT",
+            "currency": "USD",
+            "document_id": "doc-CURRENT",
+            "entity": "Apple",
+            "evidence_id": "CURRENT",
+            "fact_id": "CURRENT",
+            "metric": "Revenue",
+            "pdf_page": 1,
+            "period": "FY2024",
+            "physical_source_id": "source-CURRENT",
+            "provenance_complete": true,
+            "scale": "million",
+            "scope": "consolidated",
+            "slots": [
+              "current"
+            ],
+            "source": "fixture",
+            "unit": "USD",
+            "value": "391"
+          },
+          "PRIOR": {
+            "candidate_id": "PRIOR",
+            "citation_id": "citation-PRIOR",
+            "currency": "USD",
+            "document_id": "doc-PRIOR",
+            "entity": "Apple",
+            "evidence_id": "PRIOR",
+            "fact_id": "PRIOR",
+            "metric": "Revenue",
+            "pdf_page": 1,
+            "period": "FY2023",
+            "physical_source_id": "source-PRIOR",
+            "provenance_complete": true,
+            "scale": "million",
+            "scope": "consolidated",
+            "slots": [
+              "prior"
+            ],
+            "source": "fixture",
+            "unit": "USD",
+            "value": "383"
+          }
+        },
+        "fixture_id": "calculation_blocked",
+        "generation": "trusted",
+        "intent": "CALCULATION",
+        "operation": "growth_rate",
+        "query": "Compare revenue across years",
+        "retrieval": true,
+        "retrieval_batches": [
+          [
+            "CURRENT",
+            "PRIOR"
+          ]
+        ],
+        "slots": [
+          {
+            "metric": "Revenue",
+            "period": "FY2024",
+            "role": "current",
+            "slot_id": "current"
+          },
+          {
+            "metric": "Revenue",
+            "period": "FY2023",
+            "role": "prior",
+            "slot_id": "prior"
+          }
+        ]
+      }
+    },
+    {
+      "decision_equivalent": true,
+      "description": "The calculator raises a contract violation.  Both modes must report the same failure class and leak no exception text.",
+      "differences": [],
+      "expectation_failures": [],
+      "fixture_id": "calculation_error",
+      "harness_v3": {
+        "answer": null,
+        "reason_codes": [
+          "CALCULATOR_EXCEPTION"
+        ],
+        "released": false,
+        "route": "CALCULATION",
+        "status": "EXECUTION_ERROR",
+        "transitions": [
+          "ACT",
+          "OBSERVE",
+          "EVALUATE",
+          "CALCULATE",
+          "FAIL_CLOSED"
+        ],
+        "turn_count": 2,
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "CALCULATE"
+        ]
+      },
+      "legacy": {
+        "answer": null,
+        "reason_codes": [
+          "CALCULATOR_EXCEPTION"
+        ],
+        "released": false,
+        "route": "CALCULATION",
+        "status": "EXECUTION_ERROR",
+        "turns": [
+          "SEMANTIC_RETRIEVAL"
+        ]
+      },
+      "sealed_spec": {
+        "budget": null,
+        "calculation": "raising",
+        "description": "The calculator raises a contract violation.  Both modes must report the same failure class and leak no exception text.",
+        "facts": {
+          "CURRENT": {
+            "candidate_id": "CURRENT",
+            "citation_id": "citation-CURRENT",
+            "currency": "USD",
+            "document_id": "doc-CURRENT",
+            "entity": "Apple",
+            "evidence_id": "CURRENT",
+            "fact_id": "CURRENT",
+            "metric": "Revenue",
+            "pdf_page": 1,
+            "period": "FY2024",
+            "physical_source_id": "source-CURRENT",
+            "provenance_complete": true,
+            "scale": "million",
+            "scope": "consolidated",
+            "slots": [
+              "current"
+            ],
+            "source": "fixture",
+            "unit": "USD",
+            "value": "391"
+          },
+          "PRIOR": {
+            "candidate_id": "PRIOR",
+            "citation_id": "citation-PRIOR",
+            "currency": "USD",
+            "document_id": "doc-PRIOR",
+            "entity": "Apple",
+            "evidence_id": "PRIOR",
+            "fact_id": "PRIOR",
+            "metric": "Revenue",
+            "pdf_page": 1,
+            "period": "FY2023",
+            "physical_source_id": "source-PRIOR",
+            "provenance_complete": true,
+            "scale": "million",
+            "scope": "consolidated",
+            "slots": [
+              "prior"
+            ],
+            "source": "fixture",
+            "unit": "USD",
+            "value": "383"
+          }
+        },
+        "fixture_id": "calculation_error",
+        "generation": "trusted",
+        "intent": "CALCULATION",
+        "operation": "growth_rate",
+        "query": "Compare revenue across years",
+        "retrieval": true,
+        "retrieval_batches": [
+          [
+            "CURRENT",
+            "PRIOR"
+          ]
+        ],
+        "slots": [
+          {
+            "metric": "Revenue",
+            "period": "FY2024",
+            "role": "current",
+            "slot_id": "current"
+          },
+          {
+            "metric": "Revenue",
+            "period": "FY2023",
+            "role": "prior",
+            "slot_id": "prior"
+          }
+        ]
+      }
+    },
+    {
+      "decision_equivalent": true,
+      "description": "The first retrieval round admits the wrong period; the replanner recovers and the second round releases.  The resolved round's reason code must not survive into the released outcome.",
+      "differences": [],
+      "expectation_failures": [],
+      "fixture_id": "wrong_period_recovery",
+      "harness_v3": {
+        "answer": "Revenue (FY2024): 391 USD million [citation-REVENUE]",
+        "reason_codes": [
+          "VALIDATED_RELEASE"
+        ],
+        "released": true,
+        "route": "STRUCTURED_SINGLE",
+        "status": "READY_FOR_RELEASE",
+        "transitions": [
+          "ACT",
+          "OBSERVE",
+          "EVALUATE",
+          "REPLAN",
+          "ACT",
+          "OBSERVE",
+          "EVALUATE",
+          "READY_TO_GENERATE",
+          "GENERATE",
+          "VERIFY",
+          "RELEASE"
+        ],
+        "turn_count": 4,
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "STRUCTURED_FINANCIAL_LOOKUP",
+          "GENERATE",
+          "VERIFY"
+        ]
+      },
+      "legacy": {
+        "answer": "Revenue (FY2024): 391 USD million [citation-REVENUE]",
+        "reason_codes": [
+          "VALIDATED_RELEASE"
+        ],
+        "released": true,
+        "route": "STRUCTURED_SINGLE",
+        "status": "READY_FOR_RELEASE",
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "STRUCTURED_FINANCIAL_LOOKUP"
+        ]
+      },
+      "sealed_spec": {
+        "budget": null,
+        "calculation": "none",
+        "description": "The first retrieval round admits the wrong period; the replanner recovers and the second round releases.  The resolved round's reason code must not survive into the released outcome.",
+        "facts": {
+          "REVENUE": {
+            "candidate_id": "REVENUE",
+            "citation_id": "citation-REVENUE",
+            "currency": "USD",
+            "document_id": "doc-REVENUE",
+            "entity": "Apple",
+            "evidence_id": "REVENUE",
+            "fact_id": "REVENUE",
+            "metric": "Revenue",
+            "pdf_page": 1,
+            "period": "FY2024",
+            "physical_source_id": "source-REVENUE",
+            "provenance_complete": true,
+            "scale": "million",
+            "scope": "consolidated",
+            "slots": [
+              "revenue"
+            ],
+            "source": "fixture",
+            "unit": "USD",
+            "value": "391"
+          },
+          "WRONG": {
+            "candidate_id": "WRONG",
+            "citation_id": "citation-WRONG",
+            "currency": "USD",
+            "document_id": "doc-WRONG",
+            "entity": "Apple",
+            "evidence_id": "WRONG",
+            "fact_id": "WRONG",
+            "metric": "Revenue",
+            "pdf_page": 1,
+            "period": "FY2023",
+            "physical_source_id": "source-WRONG",
+            "provenance_complete": true,
+            "scale": "million",
+            "scope": "consolidated",
+            "slots": [
+              "revenue"
+            ],
+            "source": "fixture",
+            "unit": "USD",
+            "value": "90"
+          }
+        },
+        "fixture_id": "wrong_period_recovery",
+        "generation": "trusted",
+        "intent": "DIRECT_FACT",
+        "operation": null,
+        "query": "What was revenue?",
+        "retrieval": true,
+        "retrieval_batches": [
+          [
+            "WRONG"
+          ],
+          [
+            "REVENUE"
+          ]
+        ],
+        "slots": [
+          {
+            "metric": "Revenue",
+            "period": "FY2024",
+            "slot_id": "revenue"
+          }
+        ]
+      }
+    },
+    {
+      "decision_equivalent": true,
+      "description": "Retrieval returns nothing, so no evidence is ever admitted.  The run must fail closed rather than generate from an empty binder.",
+      "differences": [],
+      "expectation_failures": [],
+      "fixture_id": "missing_evidence",
+      "harness_v3": {
+        "answer": null,
+        "reason_codes": [
+          "MISSING_SLOT",
+          "NO_PROGRESS"
+        ],
+        "released": false,
+        "route": "DIRECT_FACT",
+        "status": "FAIL_CLOSED",
+        "transitions": [
+          "ACT",
+          "OBSERVE",
+          "EVALUATE",
+          "REPLAN",
+          "ACT",
+          "OBSERVE",
+          "EVALUATE",
+          "FAIL_CLOSED"
+        ],
+        "turn_count": 2,
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "SEMANTIC_RETRIEVAL"
+        ]
+      },
+      "legacy": {
+        "answer": null,
+        "reason_codes": [
+          "MISSING_SLOT",
+          "NO_PROGRESS"
+        ],
+        "released": false,
+        "route": "DIRECT_FACT",
+        "status": "FAIL_CLOSED",
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "SEMANTIC_RETRIEVAL"
+        ]
+      },
+      "sealed_spec": {
+        "budget": null,
+        "calculation": "none",
+        "description": "Retrieval returns nothing, so no evidence is ever admitted.  The run must fail closed rather than generate from an empty binder.",
+        "facts": {
+          "REVENUE": {
+            "candidate_id": "REVENUE",
+            "citation_id": "citation-REVENUE",
+            "currency": "USD",
+            "document_id": "doc-REVENUE",
+            "entity": "Apple",
+            "evidence_id": "REVENUE",
+            "fact_id": "REVENUE",
+            "metric": "Revenue",
+            "pdf_page": 1,
+            "period": "FY2024",
+            "physical_source_id": "source-REVENUE",
+            "provenance_complete": true,
+            "scale": "million",
+            "scope": "consolidated",
+            "slots": [
+              "revenue"
+            ],
+            "source": "fixture",
+            "unit": "USD",
+            "value": "391"
+          }
+        },
+        "fixture_id": "missing_evidence",
+        "generation": "trusted",
+        "intent": "DIRECT_FACT",
+        "operation": null,
+        "query": "What was revenue?",
+        "retrieval": true,
+        "retrieval_batches": [
+          []
+        ],
+        "slots": [
+          {
+            "metric": "Revenue",
+            "period": "FY2024",
+            "slot_id": "revenue"
+          }
+        ]
+      }
+    },
+    {
+      "decision_equivalent": true,
+      "description": "The generator cites evidence outside Binder admission, so the *real* release validator rejects it.  A rejected candidate must not be released in either mode.",
+      "differences": [],
+      "expectation_failures": [],
+      "fixture_id": "validator_rejection",
+      "harness_v3": {
+        "answer": "Revenue was 391.",
+        "reason_codes": [
+          "UNBOUND_CITATION_METADATA"
+        ],
+        "released": false,
+        "route": "STRUCTURED_SINGLE",
+        "status": "FAIL_CLOSED",
+        "transitions": [
+          "ACT",
+          "OBSERVE",
+          "EVALUATE",
+          "READY_TO_GENERATE",
+          "GENERATE",
+          "VERIFY",
+          "REPAIR",
+          "FAIL_CLOSED"
+        ],
+        "turn_count": 3,
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "GENERATE",
+          "VERIFY"
+        ]
+      },
+      "legacy": {
+        "answer": "Revenue was 391.",
+        "reason_codes": [
+          "UNBOUND_CITATION_METADATA"
+        ],
+        "released": false,
+        "route": "STRUCTURED_SINGLE",
+        "status": "FAIL_CLOSED",
+        "turns": [
+          "SEMANTIC_RETRIEVAL"
+        ]
+      },
+      "sealed_spec": {
+        "budget": null,
+        "calculation": "none",
+        "description": "The generator cites evidence outside Binder admission, so the *real* release validator rejects it.  A rejected candidate must not be released in either mode.",
+        "facts": {
+          "REVENUE": {
+            "candidate_id": "REVENUE",
+            "citation_id": "citation-REVENUE",
+            "currency": "USD",
+            "document_id": "doc-REVENUE",
+            "entity": "Apple",
+            "evidence_id": "REVENUE",
+            "fact_id": "REVENUE",
+            "metric": "Revenue",
+            "pdf_page": 1,
+            "period": "FY2024",
+            "physical_source_id": "source-REVENUE",
+            "provenance_complete": true,
+            "scale": "million",
+            "scope": "consolidated",
+            "slots": [
+              "revenue"
+            ],
+            "source": "fixture",
+            "unit": "USD",
+            "value": "391"
+          }
+        },
+        "fixture_id": "validator_rejection",
+        "generation": "foreign_citation",
+        "intent": "DIRECT_FACT",
+        "operation": null,
+        "query": "What was revenue?",
+        "retrieval": true,
+        "retrieval_batches": [
+          [
+            "REVENUE"
+          ]
+        ],
+        "slots": [
+          {
+            "metric": "Revenue",
+            "period": "FY2024",
+            "slot_id": "revenue"
+          }
+        ]
+      }
+    },
+    {
+      "decision_equivalent": true,
+      "description": "Retrieval keeps returning nothing under a zero-replan budget, so the replanner is refused and the run must fail closed on budget.",
+      "differences": [],
+      "expectation_failures": [],
+      "fixture_id": "budget_exhaustion",
+      "harness_v3": {
+        "answer": null,
+        "reason_codes": [
+          "MISSING_SLOT",
+          "BUDGET_EXHAUSTED"
+        ],
+        "released": false,
+        "route": "DIRECT_FACT",
+        "status": "FAIL_CLOSED",
+        "transitions": [
+          "ACT",
+          "OBSERVE",
+          "EVALUATE",
+          "FAIL_CLOSED"
+        ],
+        "turn_count": 1,
+        "turns": [
+          "SEMANTIC_RETRIEVAL"
+        ]
+      },
+      "legacy": {
+        "answer": null,
+        "reason_codes": [
+          "MISSING_SLOT",
+          "BUDGET_EXHAUSTED"
+        ],
+        "released": false,
+        "route": "DIRECT_FACT",
+        "status": "FAIL_CLOSED",
+        "turns": [
+          "SEMANTIC_RETRIEVAL"
+        ]
+      },
+      "sealed_spec": {
+        "budget": {
+          "max_identical_query_retry": 0,
+          "max_replan_rounds": 0,
+          "max_same_tool_retry": 0,
+          "max_total_tool_calls": 1
+        },
+        "calculation": "none",
+        "description": "Retrieval keeps returning nothing under a zero-replan budget, so the replanner is refused and the run must fail closed on budget.",
+        "facts": {
+          "REVENUE": {
+            "candidate_id": "REVENUE",
+            "citation_id": "citation-REVENUE",
+            "currency": "USD",
+            "document_id": "doc-REVENUE",
+            "entity": "Apple",
+            "evidence_id": "REVENUE",
+            "fact_id": "REVENUE",
+            "metric": "Revenue",
+            "pdf_page": 1,
+            "period": "FY2024",
+            "physical_source_id": "source-REVENUE",
+            "provenance_complete": true,
+            "scale": "million",
+            "scope": "consolidated",
+            "slots": [
+              "revenue"
+            ],
+            "source": "fixture",
+            "unit": "USD",
+            "value": "391"
+          }
+        },
+        "fixture_id": "budget_exhaustion",
+        "generation": "trusted",
+        "intent": "DIRECT_FACT",
+        "operation": null,
+        "query": "What was revenue?",
+        "retrieval": true,
+        "retrieval_batches": [
+          []
+        ],
+        "slots": [
+          {
+            "metric": "Revenue",
+            "period": "FY2024",
+            "slot_id": "revenue"
+          }
+        ]
+      }
+    },
+    {
+      "decision_equivalent": true,
+      "description": "No retrieval port is wired, so the initial action has no tool.  Reachable only from a manually constructed coordinator: the factory refuses an incomplete graph, which is the point of the guard being there as well.",
+      "differences": [],
+      "expectation_failures": [],
+      "fixture_id": "unsupported_route",
+      "harness_v3": {
+        "answer": null,
+        "reason_codes": [
+          "UNSUPPORTED_TOOL_ROUTE"
+        ],
+        "released": false,
+        "route": "DIRECT_FACT",
+        "status": "FAIL_CLOSED",
+        "transitions": [
+          "ACT",
+          "FAIL_CLOSED"
+        ],
+        "turn_count": 0,
+        "turns": []
+      },
+      "legacy": {
+        "answer": null,
+        "reason_codes": [
+          "UNSUPPORTED_TOOL_ROUTE"
+        ],
+        "released": false,
+        "route": "DIRECT_FACT",
+        "status": "FAIL_CLOSED",
+        "turns": []
+      },
+      "sealed_spec": {
+        "budget": null,
+        "calculation": "none",
+        "description": "No retrieval port is wired, so the initial action has no tool.  Reachable only from a manually constructed coordinator: the factory refuses an incomplete graph, which is the point of the guard being there as well.",
+        "facts": {},
+        "fixture_id": "unsupported_route",
+        "generation": "trusted",
+        "intent": "DIRECT_FACT",
+        "operation": null,
+        "query": "What was revenue?",
+        "retrieval": false,
+        "retrieval_batches": [],
+        "slots": [
+          {
+            "metric": "Revenue",
+            "period": "FY2024",
+            "slot_id": "revenue"
+          }
+        ]
+      }
+    }
+  ],
+  "harness": "nf-v3-h1-harness-core",
+  "sealed_digest": "75c043585a44c1828dfb58f222ec18d6ff041beb1a5d673e09d495e967c71602",
+  "sealed_digest_recomputed": "75c043585a44c1828dfb58f222ec18d6ff041beb1a5d673e09d495e967c71602",
+  "summary": {
+    "decision_equivalence": 9,
+    "expectation_failures": 0,
+    "false_calculation_release": 0,
+    "infinite_loop": 0,
+    "release_bypass": 0
+  }
+}
