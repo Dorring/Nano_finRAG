@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Callable, Iterable, Mapping, Sequence
 from dataclasses import dataclass, field
+import re
 from typing import Any, Protocol
 
 from rag_v2.adaptive import AdaptiveRAGStateV1, ReplanActionV1
@@ -78,13 +79,24 @@ def _slot_metric_matches(left: Any, right: Any) -> bool:
     right_id = canonical_metric_id(right)
     if left_id is not None and right_id is not None:
         return left_id == right_id
+
+    # If one side is a compound phrase from the query plan (for example
+    # "JPMorganChase total net revenue change from to"), extract canonical
+    # metric mentions via the supervisor ontology instead of doing raw substring search.
+    if left_id is not None:
+        right_frame = extract_query_semantic_frame(str(right or ""))
+        if right_frame and left_id in right_frame.metric_ids:
+            return True
+    if right_id is not None:
+        left_frame = extract_query_semantic_frame(str(left or ""))
+        if left_frame and right_id in left_frame.metric_ids:
+            return True
+
     left_str = str(left or "").strip().casefold()
     right_str = str(right or "").strip().casefold()
     if not left_str or not right_str:
         return False
-    if left_str == right_str:
-        return True
-    return left_str in right_str or right_str in left_str
+    return left_str == right_str
 
 
 def _slot_period_matches(left: Any, right: Any) -> bool:
@@ -557,9 +569,21 @@ class CandidateDirectR4Policy:
         def entity_match_priority(cand: Mapping[str, Any]) -> int:
             if not frame or not frame.entity_ids:
                 return 0
-            cand_entity = canonical_entity_id(cand.get("entity")) or str(cand.get("entity") or "").strip().casefold()
-            if any(eid in cand_entity for eid in frame.entity_ids):
+            cand_val = cand.get("entity")
+            if not cand_val:
+                return 1
+            cand_id = canonical_entity_id(cand_val)
+            if cand_id and cand_id in frame.entity_ids:
                 return 0
+            if cand_id and cand_id not in frame.entity_ids:
+                return 1
+            cand_norm = " ".join(str(cand_val).casefold().split())
+            for mention in getattr(frame, "entity_mentions", ()):
+                surface = " ".join(mention.surface_form.casefold().split())
+                if not surface:
+                    continue
+                if re.search(rf"(?<!\w){re.escape(surface)}(?!\w)", cand_norm, flags=re.UNICODE):
+                    return 0
             return 1
 
         if frame is not None and not frame.scope_ids and not explicit_segment_label:

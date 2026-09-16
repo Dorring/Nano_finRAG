@@ -1685,9 +1685,10 @@ def test_fact_value_key_normalizes_currency_footnotes_and_parenthesized_negative
     assert key3 == key4 == "-3037|usd|usd|"
 
 
-def test_slot_metric_matches_substring_fallback() -> None:
+def test_slot_metric_matches_hardened_against_adversarial_subsets() -> None:
     from src.runtime.trusted_v2_r4 import _slot_metric_matches
 
+    # 1. Valid compound plan phrase matching
     assert _slot_metric_matches(
         "total net revenue",
         "JPMorganChase total net revenue change from to",
@@ -1696,7 +1697,19 @@ def test_slot_metric_matches_substring_fallback() -> None:
         "JPMorganChase total net revenue change from to",
         "total net revenue",
     )
-    assert not _slot_metric_matches("net income", "total net revenue")
+
+    # 2. Adversarial metric subsets must NEVER match:
+    # "income" must not match "net income"
+    assert not _slot_metric_matches("income", "net income")
+    assert not _slot_metric_matches("net income", "income")
+
+    # "revenue" must not match "cost of revenue"
+    assert not _slot_metric_matches("revenue", "cost of revenue")
+    assert not _slot_metric_matches("cost of revenue", "revenue")
+
+    # "operating income" must not match "net income"
+    assert not _slot_metric_matches("operating income", "net income")
+    assert not _slot_metric_matches("net income", "operating income")
 
 
 def test_candidate_direct_r4_interleaves_multi_slot_pools_and_respects_entity_priority() -> None:
@@ -1769,5 +1782,116 @@ def test_candidate_direct_r4_interleaves_multi_slot_pools_and_respects_entity_pr
     assert len(jpm_keys) == 3  # JPM_2023_1, JPM_2023_2, JPM_2024_1 must all be prioritized
     assert "JPM_2024_1" in cand_keys
     assert "JPM_2023_1" in cand_keys
+
+
+def test_candidate_direct_r4_entity_priority_hardened_against_similar_entity_names() -> None:
+    from src.pdf_retrieval_v4.candidate_direct_retriever import CandidateDirectRetriever
+
+    class MockSingleSlotRetriever(CandidateDirectRetriever):
+        def __init__(self) -> None:
+            self.reader = None
+            self.final_pool_k = 10
+
+        def retrieve(self, query_plan: Any, document_scope: Any = None) -> dict[str, Any]:
+            return {
+                "candidate_direct_pool": [
+                    {"candidate_key": "HARTFORD_INSURANCE"},
+                    {"candidate_key": "STANFORD_HEALTH"},
+                    {"candidate_key": "FORD_MOTOR"},
+                ],
+                "slot_pools": {},
+            }
+
+    def mock_materializer(key: str) -> dict[str, Any]:
+        entity_map = {
+            "HARTFORD_INSURANCE": "Hartford Insurance",
+            "STANFORD_HEALTH": "Stanford Healthcare",
+            "FORD_MOTOR": "Ford Motor Co",
+        }
+        return {
+            "candidate_key": key,
+            "evidence_id": key,
+            "fact_id": key,
+            "metric": "Revenue",
+            "period": "FY2024",
+            "entity": entity_map[key],
+            "scope": "consolidated",
+            "value": "100",
+            "unit": "USD",
+            "currency": "USD",
+            "provenance_complete": True,
+        }
+
+    plan = _plan(_slot("slot_1", metric="Revenue", period="FY2024"))
+    policy = CandidateDirectR4Policy(
+        MockSingleSlotRetriever(),  # type: ignore[arg-type]
+        materializer=mock_materializer,
+    )
+    result = policy.retrieve(
+        R4RetrievalRequest(
+            request_id="test-entity-adversarial",
+            standalone_query="What was Ford total revenue in FY2024?",
+            plan=plan,
+            reason_code="MISSING_SLOT",
+        )
+    )
+
+    cand_keys = [cand["candidate_key"] for cand in result.candidate_evidence]
+    # Ford Motor must be ranked first because Hartford and Stanford must NOT receive entity priority
+    assert cand_keys[0] == "FORD_MOTOR"
+
+    # Also test Apple vs Pineapple / Snapple
+    class MockAppleRetriever(CandidateDirectRetriever):
+        def __init__(self) -> None:
+            self.reader = None
+            self.final_pool_k = 10
+
+        def retrieve(self, query_plan: Any, document_scope: Any = None) -> dict[str, Any]:
+            return {
+                "candidate_direct_pool": [
+                    {"candidate_key": "PINEAPPLE_INC"},
+                    {"candidate_key": "SNAPPLE_BEVERAGE"},
+                    {"candidate_key": "APPLE_INC"},
+                ],
+                "slot_pools": {},
+            }
+
+    def mock_apple_materializer(key: str) -> dict[str, Any]:
+        entity_map = {
+            "PINEAPPLE_INC": "Pineapple Inc",
+            "SNAPPLE_BEVERAGE": "Snapple Beverage Corp",
+            "APPLE_INC": "Apple Inc",
+        }
+        return {
+            "candidate_key": key,
+            "evidence_id": key,
+            "fact_id": key,
+            "metric": "Revenue",
+            "period": "FY2024",
+            "entity": entity_map[key],
+            "scope": "consolidated",
+            "value": "100",
+            "unit": "USD",
+            "currency": "USD",
+            "provenance_complete": True,
+        }
+
+    policy_apple = CandidateDirectR4Policy(
+        MockAppleRetriever(),  # type: ignore[arg-type]
+        materializer=mock_apple_materializer,
+    )
+    result_apple = policy_apple.retrieve(
+        R4RetrievalRequest(
+            request_id="test-apple-adversarial",
+            standalone_query="What was Apple revenue in FY2024?",
+            plan=plan,
+            reason_code="MISSING_SLOT",
+        )
+    )
+    apple_cand_keys = [cand["candidate_key"] for cand in result_apple.candidate_evidence]
+    # Apple Inc must be ranked first because Pineapple and Snapple must NOT receive entity priority
+    assert apple_cand_keys[0] == "APPLE_INC"
+
+
 
 
