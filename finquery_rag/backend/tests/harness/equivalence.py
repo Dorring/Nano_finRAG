@@ -43,12 +43,14 @@ from typing import Any, Mapping
 __all__ = [
     "DECISION_BEARING_FIELDS",
     "DECISION_BEARING_METADATA",
+    "HARNESS_ONLY_FIELDS",
     "HARNESS_ONLY_METADATA_KEYS",
     "VOLATILE_METADATA_KEYS",
     "assert_decision_equivalent",
     "canonicalize_decision_result",
     "decision_differences",
     "decision_equivalent",
+    "unclassified_fields",
 ]
 
 
@@ -68,6 +70,15 @@ DECISION_BEARING_FIELDS: tuple[str, ...] = (
     "calculations",
     "validator_status",
     "claim_provenance",
+    # Identifiers of the artefacts the decision is about.  Deterministic from a
+    # fixed request, so including them costs nothing and catches an outcome that
+    # reports a different packet than the one it was built from.
+    "plan_id",
+    "evidence_packet_id",
+    # Nothing populates this yet.  Classified as decision-bearing anyway: a
+    # measurement container is exactly the kind of field that quietly grows a
+    # decision payload, and the cost of comparing an empty dict is zero.
+    "latency_metadata",
 )
 
 #: Keys inside ``runtime_metadata`` that must match.  ``runtime_metadata`` as a
@@ -82,6 +93,13 @@ DECISION_BEARING_METADATA = "runtime_metadata"
 #: ``harness_v3`` runs calculation as a loop phase, and records that it did.
 #: ``legacy`` has no equivalent marker because its calculation is not a phase.
 HARNESS_ONLY_METADATA_KEYS: tuple[str, ...] = ("calculation_in_harness",)
+
+#: Container fields whose *contents* are execution record rather than decision.
+#: ``debug_metadata`` holds the execution trace, which ``harness_v3`` is
+#: expected to differ on: it runs more phases, so it records more phases.  The
+#: trace is still verified -- just against its own invariants, in
+#: ``h1_integration._trace_problems``, not against the legacy trace.
+HARNESS_ONLY_FIELDS: tuple[str, ...] = ("debug_metadata",)
 
 
 # --- C. measurements and per-run identifiers --------------------------------
@@ -126,6 +144,13 @@ def _strip(value: Any, keys: frozenset[str]) -> Any:
     return value
 
 
+_VOLATILE = frozenset(VOLATILE_METADATA_KEYS)
+_METADATA_CONTAINERS = (
+    DECISION_BEARING_METADATA,
+    "latency_metadata",
+)
+
+
 def canonicalize_decision_result(outcome: Any) -> dict[str, Any]:
     """Return the decision surface both runtime modes must agree on.
 
@@ -133,15 +158,31 @@ def canonicalize_decision_result(outcome: Any) -> dict[str, Any]:
     into an integration report without a second serializer.
     """
 
+    ignored = _VOLATILE | frozenset(HARNESS_ONLY_METADATA_KEYS)
     payload: dict[str, Any] = {}
     for name in DECISION_BEARING_FIELDS:
-        payload[name] = _jsonable(getattr(outcome, name, None))
-    ignored = frozenset(VOLATILE_METADATA_KEYS) | frozenset(HARNESS_ONLY_METADATA_KEYS)
-    payload[DECISION_BEARING_METADATA] = _strip(
-        _jsonable(getattr(outcome, DECISION_BEARING_METADATA, None) or {}),
-        ignored,
-    )
+        value = _jsonable(getattr(outcome, name, None))
+        if name in _METADATA_CONTAINERS:
+            value = _strip(value, ignored)
+        payload[name] = value
     return payload
+
+
+def unclassified_fields(outcome_type: Any) -> list[str]:
+    """Fields of an outcome the contract has not placed in a bucket.
+
+    Nothing may be silently uncompared.  A new field on
+    ``V2ExecutionOutcome`` has to be classified as decision-bearing,
+    harness-only or volatile before this returns empty again.
+    """
+
+    classified = (
+        set(DECISION_BEARING_FIELDS)
+        | set(HARNESS_ONLY_FIELDS)
+        | {DECISION_BEARING_METADATA}
+    )
+    fields = getattr(outcome_type, "__dataclass_fields__", {})
+    return sorted(name for name in fields if name not in classified)
 
 
 def decision_differences(legacy: Any, harness: Any) -> list[dict[str, Any]]:

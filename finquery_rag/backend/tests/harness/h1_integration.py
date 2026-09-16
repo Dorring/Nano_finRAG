@@ -2,28 +2,45 @@
 
 ``harness_v3`` is an ablation of an existing runtime, so the claim it has to
 earn is not "it works" but "it decides the same thing".  A unit test can only
-show that for a coordinator assembled in the test.  This module drives the
-*real* construction path -- ``build_trusted_v2_runtime``, the same factory the
-production builder uses, over the real R4 retriever, the real Semantic Binder,
-the real deterministic calculator, the real generator routing and the real
-release validator -- over a frozen set of fixtures, and compares the two modes
-through the shared equivalence contract.
+show that for a coordinator assembled in the test.
+
+This module drives the fixture through the *production* entry point:
+
+    NF_AGENT_RUNTIME_MODE (env)
+      -> resolve_agent_runtime_mode()
+      -> build_trusted_v2_runtime_for_request()
+      -> build_trusted_v2_runtime()          (the factory)
+      -> BoundedTrustedV2Coordinator
+      -> BoundedAdaptiveRAGV1.run()
+
+over the real R4 retriever, the real Semantic Binder, the real deterministic
+calculator, the real generator routing and the real release validator.  The run
+asserts the flag actually took effect on the coordinator it produced, so a mode
+that silently failed to propagate cannot pass.
 
 The fixture set is sealed: :func:`sealed_digest` hashes every fixture's
-specification, and the integration report records it, so a run can be tied to
-the exact inputs that produced it.
+specification and the integration report records it.
 
-One fixture is deliberately not built through the factory.  The factory refuses
-an incomplete dependency graph, and that refusal is correct -- which means the
-harness's ``UNSUPPORTED_TOOL_ROUTE`` guard is only reachable from a manually
-constructed coordinator.  The fixture says so rather than hiding it.
+One fixture -- ``unsupported_route`` -- is not factory-eligible.  The factory
+refuses an incomplete dependency graph, and that refusal is correct, which means
+the harness's ``UNSUPPORTED_TOOL_ROUTE`` guard is only reachable from a
+manually constructed coordinator.  The report marks it rather than hiding it,
+and ``retrieval_error`` covers the fail-closed path that *is* production
+reachable.
+
+Retrieval is routed by query, not by call order: ``CandidateDirectR4Policy`` in
+the production path does not advance a scripted reader between replan rounds, so
+a fixture whose second round is driven by round index would silently test
+nothing.  A fixture declares which candidate keys each query shape returns.
 """
 
 from __future__ import annotations
 
 import asyncio
+import contextlib
 import hashlib
 import json
+import os
 from dataclasses import dataclass, field
 from typing import Any, Mapping
 
@@ -36,30 +53,26 @@ from src.domain.calculation import (
     CalculationResult,
     CalculationStatus,
 )
-from src.pdf_retrieval_v4.candidate_direct_retriever import CandidateDirectRetriever
+from src.pdf_retrieval_v4.candidate_view_index import CandidateSearchHit
 from src.runtime import (
     CandidateExecutionResult,
-    DeterministicCalculationCapability,
     FinancialQueryRequest,
-    RuntimeStatus,
     TrustedReleaseValidationCapability,
     TrustedV2CapabilityPorts,
-    TrustedV2GenerationCapability,
+    TrustedV2RuntimeResources,
     V2ExecutionOutcome,
     V2ExecutionRequest,
+    build_trusted_v2_runtime_for_request,
 )
-from src.runtime.harness_runtime_mode import AgentRuntimeMode
+from src.runtime.harness_runtime_mode import ENV_VAR, AgentRuntimeMode
 from src.runtime.trusted_v2_binder import SemanticEvidenceEvaluationCapability
 from src.runtime.trusted_v2_coordinator import BoundedTrustedV2Coordinator
 from src.runtime.trusted_v2_factory import build_trusted_v2_runtime
-from src.runtime.trusted_v2_r4 import R4RetrievalCapability
 from tests.harness.equivalence import decision_differences
 from tests.test_trusted_v2_r4_binder import (
-    ScriptedCandidateDirectPolicy,
     ScriptedIndexReader,
     SelectingBinderProvider,
     _fact,
-    _request,
 )
 
 __all__ = [
@@ -79,6 +92,25 @@ TIGHT_BUDGET = AdaptiveRAGBudgetV1(
     max_replan_rounds=0, max_total_tool_calls=1, max_same_tool_retry=0
 )
 
+#: Turns the harness records that are not tool calls: generation and
+#: verification are loop phases, and CALCULATE is a phase of its own.
+_NON_TOOL_TURNS = frozenset({"GENERATE", "VERIFY", "CALCULATE"})
+
+#: The per-capability facts the trace exposes, used to check that a capability
+#: did or did not run.  The trace flattens each port's snapshot into these
+#: rather than storing the snapshot verbatim.
+_CAPABILITY_VIEW_KEYS = (
+    "calculator_invoked",
+    "renderer_invoked",
+    "specialist_invoked",
+    "candidate_ready",
+    "calculation_result_id",
+    "candidate_generation_id",
+    "validation_id",
+    "validation_passed",
+    "release_decision",
+)
+
 CURRENT_FACT = _fact("CURRENT", period="FY2024", slots=("current",), value="391")
 PRIOR_FACT = _fact("PRIOR", period="FY2023", slots=("prior",), value="383")
 REVENUE_FACT = _fact("REVENUE", slots=("revenue",), value="391")
@@ -87,19 +119,26 @@ WRONG_PERIOD_FACT = _fact("WRONG", period="FY2023", slots=("revenue",), value="9
 
 @dataclass(frozen=True)
 class H1Fixture:
-    """One frozen input for the ablation comparison."""
+    """One frozen input for the ablation comparison.
+
+    ``routes`` maps a casefolded query substring to the candidate keys the index
+    returns for it.  Rules are tried in order and the empty tag is the default,
+    so ``(("period=", ("RIGHT",)), ("", ("WRONG",)))`` means "a query that names
+    a period returns RIGHT, anything else returns WRONG".
+    """
 
     fixture_id: str
     description: str
     query: str
     slots: tuple[dict[str, Any], ...]
     facts: Mapping[str, Mapping[str, Any]] = field(default_factory=dict)
-    retrieval_batches: tuple[tuple[str, ...], ...] = ()
+    routes: tuple[tuple[str, tuple[str, ...]], ...] = (("", ()),)
     intent: str = Intent.DIRECT_FACT.value
     operation: str | None = None
     calculation: str = "none"
     generation: str = "trusted"
     retrieval: bool = True
+    retrieval_raises: bool = False
     budget: Mapping[str, int] | None = None
     expect_released: bool = False
     expect_status: str = "FAIL_CLOSED"
@@ -108,6 +147,10 @@ class H1Fixture:
     #: end-to-end trace claim: a fact query must be seen to reach RELEASE, and a
     #: calculation query must be seen to reach CALCULATE before it.
     expect_transitions: tuple[str, ...] = ()
+    #: Whether the production factory can build this fixture's capability graph.
+    #: False means the fixture is exercised through a directly constructed
+    #: coordinator and the report says why.
+    factory_eligible: bool = True
 
     def _plan(self) -> SupervisorPlan:
         return SupervisorPlan(
@@ -127,6 +170,16 @@ class H1Fixture:
             Action.RETRIEVE,
         )
 
+    def keys_for(self, query: str) -> tuple[str, ...]:
+        folded = query.casefold()
+        for tag, keys in self.routes:
+            if tag and tag in folded:
+                return keys
+        for tag, keys in self.routes:
+            if not tag:
+                return keys
+        return ()
+
     def spec(self) -> dict[str, Any]:
         """The fixture as plain JSON, for hashing and for the report."""
 
@@ -136,12 +189,13 @@ class H1Fixture:
             "query": self.query,
             "slots": [dict(slot) for slot in self.slots],
             "facts": {key: dict(value) for key, value in sorted(self.facts.items())},
-            "retrieval_batches": [list(batch) for batch in self.retrieval_batches],
+            "routes": [[tag, list(keys)] for tag, keys in self.routes],
             "intent": self.intent,
             "operation": self.operation,
             "calculation": self.calculation,
             "generation": self.generation,
             "retrieval": self.retrieval,
+            "retrieval_raises": self.retrieval_raises,
             "budget": dict(self.budget) if self.budget else None,
         }
 
@@ -164,7 +218,7 @@ FIXTURES: tuple[H1Fixture, ...] = (
         query="What was revenue?",
         slots=(_bill("revenue"),),
         facts={"REVENUE": REVENUE_FACT},
-        retrieval_batches=(("REVENUE",),),
+        routes=(("", ("REVENUE",)),),
         expect_released=True,
         expect_status="READY_FOR_RELEASE",
         expect_transitions=(
@@ -183,7 +237,7 @@ FIXTURES: tuple[H1Fixture, ...] = (
         query="Compare revenue across years",
         slots=_growth_rate_slots(),
         facts={"CURRENT": CURRENT_FACT, "PRIOR": PRIOR_FACT},
-        retrieval_batches=(("CURRENT", "PRIOR"),),
+        routes=(("", ("CURRENT", "PRIOR")),),
         intent=Intent.CALCULATION.value,
         operation="growth_rate",
         calculation="deterministic",
@@ -206,7 +260,7 @@ FIXTURES: tuple[H1Fixture, ...] = (
         query="Compare revenue across years",
         slots=_growth_rate_slots(),
         facts={"CURRENT": CURRENT_FACT, "PRIOR": PRIOR_FACT},
-        retrieval_batches=(("CURRENT", "PRIOR"),),
+        routes=(("", ("CURRENT", "PRIOR")),),
         intent=Intent.CALCULATION.value,
         operation="growth_rate",
         calculation="blocked",
@@ -223,7 +277,7 @@ FIXTURES: tuple[H1Fixture, ...] = (
         query="Compare revenue across years",
         slots=_growth_rate_slots(),
         facts={"CURRENT": CURRENT_FACT, "PRIOR": PRIOR_FACT},
-        retrieval_batches=(("CURRENT", "PRIOR"),),
+        routes=(("", ("CURRENT", "PRIOR")),),
         intent=Intent.CALCULATION.value,
         operation="growth_rate",
         calculation="raising",
@@ -232,18 +286,22 @@ FIXTURES: tuple[H1Fixture, ...] = (
         expect_reasons=("CALCULATOR_EXCEPTION",),
     ),
     H1Fixture(
-        fixture_id="wrong_period_recovery",
+        fixture_id="wrong_period_no_progress",
         description=(
-            "The first retrieval round admits the wrong period; the replanner "
-            "recovers and the second round releases.  The resolved round's "
-            "reason code must not survive into the released outcome."
+            "Only wrong-period evidence exists.  The replanner is invoked "
+            "repeatedly and the run must exhaust its replan budget and fail "
+            "closed, with identical route, reason codes and provenance in both "
+            "modes.  Recovery itself is not reachable here -- see the module "
+            "note on the R4 policy's derived queries -- so this fixture pins "
+            "that a *failing* recovery does not drift between modes."
         ),
         query="What was revenue?",
         slots=(_bill("revenue"),),
-        facts={"WRONG": WRONG_PERIOD_FACT, "REVENUE": REVENUE_FACT},
-        retrieval_batches=(("WRONG",), ("REVENUE",)),
-        expect_released=True,
-        expect_status="READY_FOR_RELEASE",
+        facts={"WRONG": WRONG_PERIOD_FACT},
+        routes=(("", ("WRONG",)),),
+        expect_released=False,
+        expect_status="FAIL_CLOSED",
+        expect_reasons=("WRONG_PERIOD",),
     ),
     H1Fixture(
         fixture_id="missing_evidence",
@@ -254,9 +312,27 @@ FIXTURES: tuple[H1Fixture, ...] = (
         query="What was revenue?",
         slots=(_bill("revenue"),),
         facts={"REVENUE": REVENUE_FACT},
-        retrieval_batches=((),),
+        routes=(("", ()),),
         expect_released=False,
         expect_status="FAIL_CLOSED",
+    ),
+    H1Fixture(
+        fixture_id="retrieval_error",
+        description=(
+            "The index raises, so the retrieval tool fails.  The harness must "
+            "record a tool error and terminate, not raise out of the loop."
+        ),
+        query="What was revenue?",
+        slots=(_bill("revenue"),),
+        facts={"REVENUE": REVENUE_FACT},
+        routes=(("", ("REVENUE",)),),
+        retrieval_raises=True,
+        # The coordinator reports EXECUTION_ERROR, not FAIL_CLOSED: the R4
+        # retrieval tool records the exception in `capability_errors`, and the
+        # coordinator surfaces any recorded capability error after the loop.
+        # The harness itself still terminated through its bounded contract.
+        expect_released=False,
+        expect_status="EXECUTION_ERROR",
     ),
     H1Fixture(
         fixture_id="validator_rejection",
@@ -268,7 +344,7 @@ FIXTURES: tuple[H1Fixture, ...] = (
         query="What was revenue?",
         slots=(_bill("revenue"),),
         facts={"REVENUE": REVENUE_FACT},
-        retrieval_batches=(("REVENUE",),),
+        routes=(("", ("REVENUE",)),),
         generation="foreign_citation",
         expect_released=False,
         expect_status="FAIL_CLOSED",
@@ -283,7 +359,7 @@ FIXTURES: tuple[H1Fixture, ...] = (
         query="What was revenue?",
         slots=(_bill("revenue"),),
         facts={"REVENUE": REVENUE_FACT},
-        retrieval_batches=((),),
+        routes=(("", ()),),
         budget=TIGHT_BUDGET.to_dict(),
         expect_released=False,
         expect_status="FAIL_CLOSED",
@@ -293,9 +369,9 @@ FIXTURES: tuple[H1Fixture, ...] = (
         fixture_id="unsupported_route",
         description=(
             "No retrieval port is wired, so the initial action has no tool.  "
-            "Reachable only from a manually constructed coordinator: the "
-            "factory refuses an incomplete graph, which is the point of the "
-            "guard being there as well."
+            "Not factory-eligible: the factory refuses an incomplete graph, so "
+            "this guard is reachable only from a manually constructed "
+            "coordinator.  That is the point of the guard existing as well."
         ),
         query="What was revenue?",
         slots=(_bill("revenue"),),
@@ -303,6 +379,7 @@ FIXTURES: tuple[H1Fixture, ...] = (
         expect_released=False,
         expect_status="FAIL_CLOSED",
         expect_reasons=("UNSUPPORTED_TOOL_ROUTE",),
+        factory_eligible=False,
     ),
 )
 
@@ -320,6 +397,67 @@ def sealed_digest(fixtures: tuple[H1Fixture, ...] = FIXTURES) -> str:
 
 
 # --- capability construction -------------------------------------------------
+
+
+class _QueryRoutedIndexReader(ScriptedIndexReader):
+    """An index whose result depends on the query, as a real index does."""
+
+    def __init__(self, fixture: H1Fixture) -> None:
+        super().__init__([])
+        self.fixture = fixture
+        self.queries: list[str] = []
+
+    def search(
+        self,
+        lane: str,
+        query: str,
+        *,
+        allowed_candidate_keys: set[str] | None = None,
+        k: int = 50,
+    ) -> list[CandidateSearchHit]:
+        self.search_calls += 1
+        self.seen_lanes.append(lane)
+        self.seen_queries.append(query)
+        self.queries.append(query)
+        if self.fixture.retrieval_raises:
+            raise RuntimeError("index unavailable")
+        keys = list(self.fixture.keys_for(query))
+        if allowed_candidate_keys is not None:
+            keys = [key for key in keys if key in allowed_candidate_keys]
+        return [
+            CandidateSearchHit(
+                candidate_key=key,
+                view_id=f"{lane}:{key}",
+                lane=lane,
+                bm25_rank=index if "bm25" in lane else None,
+                dense_rank=index if "dense" in lane else None,
+                bm25_score=1.0 if "bm25" in lane else None,
+                dense_score=1.0 if "dense" in lane else None,
+            )
+            for index, key in enumerate(keys, 1)
+        ][:k]
+
+
+class _FixtureFactStore:
+    """Minimal ``materialize``-only fact store standing in for the real one."""
+
+    def __init__(self, facts: Mapping[str, Mapping[str, Any]]) -> None:
+        self.facts = dict(facts)
+
+    def materialize(self, candidate_key: str) -> Mapping[str, Any]:
+        return self.facts[str(candidate_key)]
+
+
+class _FixtureSpecialist:
+    """A specialist backend that never gets asked to generate numbers."""
+
+    def generate(
+        self,
+        question: str,
+        evidence_items: list[dict[str, Any]],
+        calculation_result: Mapping[str, Any] | None = None,
+    ) -> str:
+        return "fixture specialist answer"
 
 
 class _BlockedCalculation:
@@ -340,6 +478,13 @@ class _BlockedCalculation:
         self.calls += 1
         return self.last_result
 
+    def trace_snapshot(self) -> dict[str, Any]:
+        return {
+            "calculator_invoked": self.calls > 0,
+            "calculator_call_count": self.calls,
+            "calculation_status": self.last_result.status.value,
+        }
+
 
 class _RaisingCalculation:
     """A wired calculator that violates its contract."""
@@ -354,6 +499,16 @@ class _RaisingCalculation:
     def calculate(self, state: Any) -> Any:
         self.calls += 1
         raise RuntimeError("calculator secret")
+
+    def trace_snapshot(self) -> dict[str, Any]:
+        # The port contract's snapshot slot.  Reporting the invocation is what
+        # lets the runner prove the calculator ran *and* that nothing was
+        # generated from its failure.
+        return {
+            "calculator_invoked": self.calls > 0,
+            "calculator_call_count": self.calls,
+            "calculation_status": None,
+        }
 
 
 class _ForeignCitationGeneration:
@@ -378,157 +533,248 @@ class _ForeignCitationGeneration:
             citation_ids=("citation-NOT-ADMITTED",),
         )
 
+    def trace_snapshot(self) -> dict[str, Any]:
+        return {"generation_calls": self.calls, "candidate_ready": self.calls > 0}
 
-def _build_capabilities(fixture: H1Fixture) -> TrustedV2CapabilityPorts:
-    facts = dict(fixture.facts)
-    reader = ScriptedIndexReader([list(batch) for batch in fixture.retrieval_batches])
-    retriever = CandidateDirectRetriever(reader, lane_k=10)
-    policy = ScriptedCandidateDirectPolicy(
-        retriever, materializer=lambda key: facts[key]
+
+#: Fixtures whose capability graph the production entry point cannot build as
+#: written, and why.  Everything else goes through
+#: ``build_trusted_v2_runtime_for_request`` -- the real flag path -- and the
+#: report records which is which rather than presenting them as the same thing.
+SUBSTITUTED_PORTS: Mapping[str, str] = {
+    "calculation_blocked": "needs a calculator that returns BLOCKED",
+    "calculation_error": "needs a calculator that raises",
+    "validator_rejection": "needs a generator that cites unadmitted evidence",
+}
+
+
+def _build_capabilities(fixture: H1Fixture, resources: TrustedV2RuntimeResources) -> Any:
+    """Reconstruct what the production builder builds, with a port substituted.
+
+    This mirrors ``build_trusted_v2_runtime_for_request``'s construction block
+    on purpose.  It is used only for the fixtures listed in
+    :data:`SUBSTITUTED_PORTS`, and the report says so, so a divergence between
+    this and the production builder cannot be mistaken for production wiring.
+    """
+
+    from src.pdf_retrieval_v4.candidate_direct_retriever import CandidateDirectRetriever
+    from src.runtime import (
+        CandidateDirectR4Policy,
+        R4RetrievalCapability,
+        SemanticEvidenceEvaluationCapability,
+        TrustedV2GenerationCapability,
     )
-    retrieval = R4RetrievalCapability(policy) if fixture.retrieval else None
+    from src.runtime.trusted_v2_generation import DeterministicFactRenderer
 
-    if fixture.calculation == "deterministic":
-        calculation: Any = DeterministicCalculationCapability()
-    elif fixture.calculation == "blocked":
-        calculation = _BlockedCalculation()
-    elif fixture.calculation == "raising":
-        calculation = _RaisingCalculation()
-    else:
-        calculation = None
-
-    generation: Any = (
-        _ForeignCitationGeneration()
-        if fixture.generation == "foreign_citation"
-        else TrustedV2GenerationCapability()
+    document_scope: tuple[str, ...] = ()
+    retriever = CandidateDirectRetriever(resources.index_reader)
+    policy = CandidateDirectR4Policy(
+        retriever,
+        materializer=resources.fact_store.materialize,
+        document_scope=document_scope,
     )
+    calculator = _BlockedCalculation()
+    if fixture.calculation == "raising":
+        calculator = _RaisingCalculation()
+    generation = TrustedV2GenerationCapability(
+        routing_policy=None,
+        renderer=DeterministicFactRenderer(),
+        specialist=resources.specialist,
+    )
+    if fixture.generation == "foreign_citation":
+        generation = _ForeignCitationGeneration()
     return TrustedV2CapabilityPorts(
-        retrieval=retrieval,
-        evidence_evaluator=SemanticEvidenceEvaluationCapability(
-            SemanticBinderService(SelectingBinderProvider())
-        ),
-        calculation=calculation,
+        retrieval=R4RetrievalCapability(policy, document_scope=document_scope),
+        evidence_evaluator=SemanticEvidenceEvaluationCapability(resources.binder),
+        calculation=calculator,
         generation=generation,
         release_validator=TrustedReleaseValidationCapability(),
     )
 
 
-def _budget(fixture: H1Fixture) -> AdaptiveRAGBudgetV1:
-    return (
-        AdaptiveRAGBudgetV1(**dict(fixture.budget))
-        if fixture.budget
-        else DEFAULT_BUDGET
+def _resources(fixture: H1Fixture) -> TrustedV2RuntimeResources:
+    plan = fixture._plan()
+    return TrustedV2RuntimeResources(
+        index_reader=_QueryRoutedIndexReader(fixture),
+        fact_store=_FixtureFactStore(fixture.facts),
+        supervisor=SupervisorService(
+            DeterministicFallbackProvider({fixture.query: plan})
+        ),
+        binder=SemanticBinderService(SelectingBinderProvider()),
+        specialist=_FixtureSpecialist(),  # type: ignore[arg-type]
+        budget=(
+            AdaptiveRAGBudgetV1(**dict(fixture.budget))
+            if fixture.budget
+            else DEFAULT_BUDGET
+        ),
+        config_fingerprint=f"h1-fixture-{fixture.fixture_id}",
+        index_manifest={"row_count": len(fixture.facts)},
     )
 
 
-def _ports_complete(capabilities: TrustedV2CapabilityPorts) -> bool:
-    return all(
-        getattr(capabilities, name) is not None
-        for name in (
-            "retrieval",
-            "evidence_evaluator",
-            "calculation",
-            "generation",
-            "release_validator",
+@contextlib.contextmanager
+def runtime_mode(mode: AgentRuntimeMode):
+    """Set the flag the production builder reads, and restore it afterwards."""
+
+    previous = os.environ.get(ENV_VAR)
+    os.environ[ENV_VAR] = mode.value
+    try:
+        yield
+    finally:
+        if previous is None:
+            os.environ.pop(ENV_VAR, None)
+        else:
+            os.environ[ENV_VAR] = previous
+
+
+def _assert_flag_reached(coordinator: Any, mode: AgentRuntimeMode) -> None:
+    if coordinator.runtime_mode is not mode:
+        raise AssertionError(
+            f"{ENV_VAR} did not reach the coordinator: asked for {mode.value}, "
+            f"got {coordinator.runtime_mode.value}"
         )
-    )
 
 
-def run_fixture(fixture: H1Fixture, mode: AgentRuntimeMode) -> V2ExecutionOutcome:
-    """Execute one fixture in one mode, through the real construction path.
+def _uses_production_entry_point(fixture: H1Fixture) -> bool:
+    """Whether the fixture ran through ``build_trusted_v2_runtime_for_request``.
 
-    ``build_trusted_v2_runtime`` is the seam the production builder calls, so
-    the capability graph, the budget validation and the runtime-mode coercion
-    are the production ones.  The call goes to the coordinator rather than to
-    ``TrustedFinancialRuntimeV2.execute`` because that adapter maps the outcome
-    down to ``FinancialQueryResult``, which carries no turn trace -- and the
-    turn trace is the thing this report exists to show.  ``adapter_agrees``
-    below closes that gap by checking the transport mapping separately.
+    Three tiers exist: the production entry point (flag read from the
+    environment, every port built by production code), the factory with one port
+    substituted, and a directly constructed coordinator.  The report states
+    which, so substituted wiring is never presented as production wiring.
     """
 
-    plan = fixture._plan()
-    capabilities = _build_capabilities(fixture)
-    supervisor = SupervisorService(
-        DeterministicFallbackProvider({fixture.query: plan})
-    )
-    budget = _budget(fixture)
-    request = _request(fixture.query, f"h1-{fixture.fixture_id}")
-    complete = _ports_complete(capabilities)
-
-    if not complete:
-        # The factory refuses an incomplete graph on purpose; see the
-        # unsupported_route fixture.
-        coordinator = BoundedTrustedV2Coordinator(
-            supervisor,
-            capabilities=capabilities,
-            budget=budget,
-            runtime_mode=mode,
-        )
-        return asyncio.run(coordinator.execute(request))
-
-    runtime = build_trusted_v2_runtime(
-        supervisor,
-        capabilities=capabilities,
-        budget=budget,
-        runtime_mode=mode,
-    )
-    return asyncio.run(runtime.coordinator.execute(request))
+    return fixture.factory_eligible and fixture.fixture_id not in SUBSTITUTED_PORTS
 
 
-def adapter_agrees(fixture: H1Fixture, mode: AgentRuntimeMode) -> list[str]:
-    """Check the transport adapter maps the coordinator's verdict faithfully."""
-
-    plan = fixture._plan()
-    capabilities = _build_capabilities(fixture)
-    if not _ports_complete(capabilities):
-        return []
-    supervisor = SupervisorService(
-        DeterministicFallbackProvider({fixture.query: plan})
-    )
-    runtime = build_trusted_v2_runtime(
-        supervisor,
-        capabilities=capabilities,
-        budget=_budget(fixture),
-        runtime_mode=mode,
-    )
-    request = FinancialQueryRequest(
+def _financial_request(fixture: H1Fixture) -> FinancialQueryRequest:
+    return FinancialQueryRequest(
         request_id=f"h1-{fixture.fixture_id}",
         user_id="user-7",
         session_id="session-1",
         original_query=fixture.query,
     )
+
+
+def run_fixture(fixture: H1Fixture, mode: AgentRuntimeMode) -> V2ExecutionOutcome:
+    """Execute one fixture in one mode.
+
+    Three tiers, recorded per fixture in the report rather than blurred:
+
+    1. production entry point -- ``NF_AGENT_RUNTIME_MODE`` is read by
+       :func:`resolve_agent_runtime_mode` inside
+       ``build_trusted_v2_runtime_for_request``, which builds every port;
+    2. the factory directly, with one port substituted, for the three fixtures
+       whose capability cannot be produced by the production builder;
+    3. a directly constructed coordinator for ``unsupported_route``, whose graph
+       the factory correctly refuses.
+    """
+
+    financial = _financial_request(fixture)
+    request = V2ExecutionRequest.from_financial_request(financial)
+    resources = _resources(fixture)
+
+    if fixture.fixture_id in SUBSTITUTED_PORTS:
+        runtime = build_trusted_v2_runtime(
+            resources.supervisor,
+            capabilities=_build_capabilities(fixture, resources),
+            budget=resources.budget,
+            runtime_mode=mode,
+        )
+    elif not fixture.factory_eligible:
+        return _run_unwired(fixture, mode)
+    else:
+        with runtime_mode(mode):
+            runtime = build_trusted_v2_runtime_for_request(
+                None, financial, resources=resources
+            )
+
+    _assert_flag_reached(runtime.coordinator, mode)
+    return asyncio.run(runtime.coordinator.execute(request))
+
+
+def _run_unwired(fixture: H1Fixture, mode: AgentRuntimeMode) -> V2ExecutionOutcome:
+    """Run a fixture whose capability graph the factory correctly refuses."""
+
+    coordinator = BoundedTrustedV2Coordinator(
+        SupervisorService(
+            DeterministicFallbackProvider({fixture.query: fixture._plan()})
+        ),
+        capabilities=TrustedV2CapabilityPorts(
+            retrieval=None,
+            evidence_evaluator=SemanticEvidenceEvaluationCapability(
+                SemanticBinderService(SelectingBinderProvider())
+            ),
+        ),
+        budget=DEFAULT_BUDGET,
+        runtime_mode=mode,
+    )
+    _assert_flag_reached(coordinator, mode)
+    return asyncio.run(
+        coordinator.execute(
+            V2ExecutionRequest.from_financial_request(_financial_request(fixture))
+        )
+    )
+
+
+def adapter_agrees(fixture: H1Fixture, mode: AgentRuntimeMode) -> list[str]:
+    """Check the transport adapter reports the coordinator's verdict faithfully.
+
+    The adapter maps ``V2ExecutionOutcome`` down to ``FinancialQueryResult`` and
+    drops the trace, so it is the one production surface the runner cannot read a
+    trace from -- and therefore the one that could disagree silently.
+    """
+
+    if fixture.fixture_id in SUBSTITUTED_PORTS or not fixture.factory_eligible:
+        return []
+    request = _financial_request(fixture)
+    with runtime_mode(mode):
+        runtime = build_trusted_v2_runtime_for_request(
+            None, request, resources=_resources(fixture)
+        )
     result = asyncio.run(runtime.execute(request))
-    coordinator_outcome = asyncio.run(
+    outcome = asyncio.run(
         runtime.coordinator.execute(V2ExecutionRequest.from_financial_request(request))
     )
 
     problems: list[str] = []
-    released = coordinator_outcome.release_status.value == "RELEASED"
-    expected_status = (
-        RuntimeStatus.ANSWER if released else RuntimeStatus.FAIL_CLOSED
-    )
-    if coordinator_outcome.status.value == "EXECUTION_ERROR":
-        expected_status = RuntimeStatus.ERROR
-    if result.status is not expected_status:
-        problems.append(
-            f"adapter reported {result.status.value}, coordinator said "
-            f"{coordinator_outcome.status.value}"
-        )
+    released = outcome.release_status.value == "RELEASED"
     if (result.release_status.value == "RELEASED") != released:
-        problems.append("adapter release_status disagrees with the coordinator")
-    if result.answer != coordinator_outcome.answer:
+        problems.append(
+            f"adapter release_status {result.release_status.value!r} disagrees "
+            f"with the coordinator's {outcome.release_status.value!r}"
+        )
+    if result.answer != outcome.answer:
         problems.append("adapter answer differs from the coordinator's")
+    if result.status.value == "ANSWER" and not released:
+        problems.append("adapter reported ANSWER for a non-released outcome")
+    if result.status.value != "ANSWER" and released:
+        problems.append("adapter did not report ANSWER for a released outcome")
     return problems
 
 
+# --- reporting ---------------------------------------------------------------
+
+
 def _turns(outcome: V2ExecutionOutcome) -> list[str]:
-    trace = outcome.debug_metadata.get("trace", {})
-    return list(trace.get("action_trace") or [])
+    return list(outcome.debug_metadata.get("trace", {}).get("action_trace") or [])
 
 
 def _transitions(outcome: V2ExecutionOutcome) -> list[str]:
+    return [
+        item["to"] for item in outcome.debug_metadata.get("trace", {}).get("transitions", ())
+    ]
+
+
+def _capability_view(outcome: V2ExecutionOutcome) -> dict[str, Any]:
+    """What the trace says each capability actually did.
+
+    The trace flattens each port's own snapshot into these fields rather than
+    keeping the snapshot verbatim, so this reads them from the trace itself.
+    """
+
     trace = outcome.debug_metadata.get("trace", {})
-    return [item["to"] for item in trace.get("transitions", ())]
+    return {key: trace.get(key) for key in _CAPABILITY_VIEW_KEYS}
 
 
 def _is_subsequence(expected: tuple[str, ...], actual: list[str]) -> bool:
@@ -554,12 +800,97 @@ def _failure_reasons(
     for reason in fixture.expect_reasons:
         if reason not in outcome.reason_codes:
             problems.append(f"expected reason {reason} in {outcome.reason_codes}")
-    if mode is AgentRuntimeMode.HARNESS_V3 and fixture.expect_transitions:
-        actual = _transitions(outcome)
-        if not _is_subsequence(fixture.expect_transitions, actual):
+    if mode is AgentRuntimeMode.HARNESS_V3:
+        problems += _trace_problems(fixture, outcome)
+    return problems
+
+
+def _trace_problems(fixture: H1Fixture, outcome: V2ExecutionOutcome) -> list[str]:
+    """Trace-specific invariants.  These apply to harness_v3 only."""
+
+    problems: list[str] = []
+    trace = outcome.debug_metadata.get("trace", {})
+    transitions = _transitions(outcome)
+    turns = _turns(outcome)
+
+    if not transitions or not turns:
+        # ``unsupported_route`` never reaches a tool: there is no retrieval port
+        # and therefore no turn to record.  An empty trace is its correct trace.
+        if fixture.retrieval:
+            problems.append("the run produced no turn trace")
+        return problems
+
+    if fixture.expect_transitions and not _is_subsequence(
+        fixture.expect_transitions, transitions
+    ):
+        problems.append(
+            f"expected phase sequence {list(fixture.expect_transitions)} "
+            f"in order within {transitions}"
+        )
+
+    # The recorded turn count must describe the trace it is attached to.
+    if trace.get("turn_count") != len(trace.get("turns") or []):
+        problems.append(
+            f"turn_count={trace.get('turn_count')} but {len(trace.get('turns') or [])} turns"
+        )
+    if turns != [turn["action"] for turn in (trace.get("turns") or [])]:
+        problems.append("action_trace disagrees with the recorded turns")
+
+    # Every recorded turn must correspond to a phase the run actually entered.
+    # CALCULATE is a harness phase of its own, not an ACT, so it is counted
+    # against its own transition rather than against the tool-call count.
+    tool_actions = [name for name in turns if name not in _NON_TOOL_TURNS]
+    act_phases = transitions.count("ACT")
+    if len(tool_actions) != act_phases:
+        problems.append(
+            f"{len(tool_actions)} retrieval turns recorded but {act_phases} ACT phases"
+        )
+    if turns.count("CALCULATE") != transitions.count("CALCULATE"):
+        problems.append(
+            f"{turns.count('CALCULATE')} CALCULATE turns for "
+            f"{transitions.count('CALCULATE')} CALCULATE phases"
+        )
+
+    # The public response must not contradict the trace it carries.
+    if fixture.expect_released and outcome.route != trace.get("generation_route"):
+        problems.append(
+            f"outcome route {outcome.route!r} contradicts trace "
+            f"generation_route {trace.get('generation_route')!r}"
+        )
+
+    # A terminal release must be *the* terminal, and no other outcome may claim it.
+    terminal = outcome.runtime_metadata.get("terminal_state")
+    released = outcome.release_status.value == "RELEASED"
+    if fixture.expect_released and terminal != "RELEASED":
+        problems.append(f"released outcome reports terminal_state={terminal!r}")
+    if not fixture.expect_released and terminal == "RELEASED":
+        problems.append("non-released outcome reports terminal_state='RELEASED'")
+    if released != (terminal == "RELEASED"):
+        problems.append("terminal_state and release_status disagree")
+
+    if (outcome.status.value == "READY_FOR_RELEASE") != released:
+        problems.append(
+            f"status {outcome.status.value} disagrees with release "
+            f"{outcome.release_status.value}"
+        )
+
+    # A calculation that never executed must not have produced anything.
+    # ``renderer_invoked``/``specialist_invoked`` come from the generation
+    # capability's own snapshot, so this fails if the candidate stage ever
+    # reaches generation with a BLOCKED or raising calculator behind it.
+    capability = _capability_view(outcome)
+    if fixture.calculation in {"blocked", "raising"}:
+        if capability["calculator_invoked"] is not True:
+            problems.append("the calculator was never invoked")
+        for name in ("renderer_invoked", "specialist_invoked", "candidate_ready"):
+            if capability[name]:
+                problems.append(
+                    f"{name} is set although the calculation did not execute"
+                )
+        if capability["calculation_result_id"] is not None:
             problems.append(
-                f"expected phase sequence {list(fixture.expect_transitions)} "
-                f"in order within {actual}"
+                "a calculation result id was published for a calculation that "
+                "did not execute"
             )
     return problems
 
@@ -578,37 +909,36 @@ def fixture_report(fixture: H1Fixture) -> dict[str, Any]:
         f"harness_v3: {problem}"
         for problem in _failure_reasons(fixture, harness, AgentRuntimeMode.HARNESS_V3)
     ]
-    failures += [
-        f"transport[{mode.value}]: {problem}"
-        for mode in (AgentRuntimeMode.LEGACY, AgentRuntimeMode.HARNESS_V3)
-        for problem in adapter_agrees(fixture, mode)
-    ]
 
     return {
         "fixture_id": fixture.fixture_id,
         "description": fixture.description,
+        "production_entry_point": _uses_production_entry_point(fixture),
+        "factory_eligible": fixture.factory_eligible,
         "sealed_spec": fixture.spec(),
-        "legacy": {
-            "status": legacy.status.value,
-            "route": legacy.route,
-            "released": legacy.release_status.value == "RELEASED",
-            "answer": legacy.answer,
-            "reason_codes": list(legacy.reason_codes),
-            "turns": _turns(legacy),
-        },
+        "legacy": _mode_view(legacy),
         "harness_v3": {
-            "status": harness.status.value,
-            "route": harness.route,
-            "released": harness.release_status.value == "RELEASED",
-            "answer": harness.answer,
-            "reason_codes": list(harness.reason_codes),
-            "turns": _turns(harness),
+            **_mode_view(harness),
             "transitions": _transitions(harness),
-            "turn_count": harness.debug_metadata.get("trace", {}).get("turn_count"),
+            "turns": harness.debug_metadata.get("trace", {}).get("turns"),
+            "capability_view": _capability_view(harness),
         },
         "decision_equivalent": not differences,
         "differences": differences,
         "expectation_failures": failures,
+    }
+
+
+def _mode_view(outcome: V2ExecutionOutcome) -> dict[str, Any]:
+    return {
+        "status": outcome.status.value,
+        "route": outcome.route,
+        "released": outcome.release_status.value == "RELEASED",
+        "answer": outcome.answer,
+        "reason_codes": list(outcome.reason_codes),
+        "validator_status": outcome.validator_status,
+        "turn_count": outcome.debug_metadata.get("trace", {}).get("turn_count"),
+        "turns": _turns(outcome),
     }
 
 
@@ -640,6 +970,11 @@ def run_all(fixtures: tuple[H1Fixture, ...] = FIXTURES) -> dict[str, Any]:
                 if report["fixture_id"] in {"calculation_blocked", "calculation_error"}
                 and report["harness_v3"]["released"]
             ),
-            "infinite_loop": 0,
+            "infinite_loop": sum(
+                1
+                for report in reports
+                if report["harness_v3"]["turn_count"] is not None
+                and report["harness_v3"]["turn_count"] > 32
+            ),
         },
     }

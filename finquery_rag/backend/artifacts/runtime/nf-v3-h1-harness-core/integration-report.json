@@ -1,14 +1,26 @@
 {
-  "fixture_count": 9,
+  "fixture_count": 10,
   "fixtures": [
     {
       "decision_equivalent": true,
       "description": "One admitted fact releases a direct-fact answer.",
       "differences": [],
       "expectation_failures": [],
+      "factory_eligible": true,
       "fixture_id": "fact_direct",
       "harness_v3": {
         "answer": "Revenue (FY2024): 391 USD million [citation-REVENUE]",
+        "capability_view": {
+          "calculation_result_id": null,
+          "calculator_invoked": false,
+          "candidate_generation_id": "G1-e64f0f854bf9814e",
+          "candidate_ready": true,
+          "release_decision": "RELEASED",
+          "renderer_invoked": true,
+          "specialist_invoked": false,
+          "validation_id": "V2-810f81b95b3b8dc7",
+          "validation_passed": true
+        },
         "reason_codes": [
           "VALIDATED_RELEASE"
         ],
@@ -26,10 +38,39 @@
         ],
         "turn_count": 3,
         "turns": [
-          "SEMANTIC_RETRIEVAL",
-          "GENERATE",
-          "VERIFY"
-        ]
+          {
+            "action": "SEMANTIC_RETRIEVAL",
+            "outcome": {
+              "evidence_ids": [
+                "REVENUE"
+              ],
+              "packet_count": 1
+            },
+            "query": "What was revenue?",
+            "reason_code": "MISSING_SLOT",
+            "turn": 1
+          },
+          {
+            "action": "GENERATE",
+            "outcome": {
+              "generated": true,
+              "output_type": "bool"
+            },
+            "query": null,
+            "reason_code": null,
+            "turn": 2
+          },
+          {
+            "action": "VERIFY",
+            "outcome": {
+              "verification_passed": true
+            },
+            "query": null,
+            "reason_code": null,
+            "turn": 3
+          }
+        ],
+        "validator_status": "PASS"
       },
       "legacy": {
         "answer": "Revenue (FY2024): 391 USD million [citation-REVENUE]",
@@ -39,10 +80,13 @@
         "released": true,
         "route": "STRUCTURED_SINGLE",
         "status": "READY_FOR_RELEASE",
+        "turn_count": 1,
         "turns": [
           "SEMANTIC_RETRIEVAL"
-        ]
+        ],
+        "validator_status": "PASS"
       },
+      "production_entry_point": true,
       "sealed_spec": {
         "budget": null,
         "calculation": "none",
@@ -77,9 +121,13 @@
         "operation": null,
         "query": "What was revenue?",
         "retrieval": true,
-        "retrieval_batches": [
+        "retrieval_raises": false,
+        "routes": [
           [
-            "REVENUE"
+            "",
+            [
+              "REVENUE"
+            ]
           ]
         ],
         "slots": [
@@ -96,9 +144,21 @@
       "description": "A calculation plan runs the deterministic calculator as a loop phase and releases the rendered result.",
       "differences": [],
       "expectation_failures": [],
+      "factory_eligible": true,
       "fixture_id": "calculation_growth_rate",
       "harness_v3": {
         "answer": "Growth Rate: 2.09%\n\nFormula: (current - previous) / previous (growth_rate.v1)\nInputs:\n  - current = 391,000,000.00 — doc-CURRENT\n  - previous = 383,000,000.00 — doc-PRIOR",
+        "capability_view": {
+          "calculation_result_id": "C1-b55ba5d38df1276c",
+          "calculator_invoked": true,
+          "candidate_generation_id": "G1-9cab3f7d9f0442ff",
+          "candidate_ready": true,
+          "release_decision": "RELEASED",
+          "renderer_invoked": true,
+          "specialist_invoked": false,
+          "validation_id": "V2-0b15e92ec7006d2d",
+          "validation_passed": true
+        },
         "reason_codes": [
           "VALIDATED_RELEASE"
         ],
@@ -117,11 +177,49 @@
         ],
         "turn_count": 4,
         "turns": [
-          "SEMANTIC_RETRIEVAL",
-          "CALCULATE",
-          "GENERATE",
-          "VERIFY"
-        ]
+          {
+            "action": "SEMANTIC_RETRIEVAL",
+            "outcome": {
+              "evidence_ids": [
+                "CURRENT",
+                "PRIOR"
+              ],
+              "packet_count": 2
+            },
+            "query": "Compare revenue across years",
+            "reason_code": "MISSING_SLOT",
+            "turn": 1
+          },
+          {
+            "action": "CALCULATE",
+            "outcome": {
+              "calculation_status": "executed"
+            },
+            "query": null,
+            "reason_code": null,
+            "turn": 2
+          },
+          {
+            "action": "GENERATE",
+            "outcome": {
+              "generated": true,
+              "output_type": "bool"
+            },
+            "query": null,
+            "reason_code": null,
+            "turn": 3
+          },
+          {
+            "action": "VERIFY",
+            "outcome": {
+              "verification_passed": true
+            },
+            "query": null,
+            "reason_code": null,
+            "turn": 4
+          }
+        ],
+        "validator_status": "PASS"
       },
       "legacy": {
         "answer": "Growth Rate: 2.09%\n\nFormula: (current - previous) / previous (growth_rate.v1)\nInputs:\n  - current = 391,000,000.00 — doc-CURRENT\n  - previous = 383,000,000.00 — doc-PRIOR",
@@ -131,10 +229,13 @@
         "released": true,
         "route": "CALCULATION_SIMPLE",
         "status": "READY_FOR_RELEASE",
+        "turn_count": 1,
         "turns": [
           "SEMANTIC_RETRIEVAL"
-        ]
+        ],
+        "validator_status": "PASS"
       },
+      "production_entry_point": true,
       "sealed_spec": {
         "budget": null,
         "calculation": "deterministic",
@@ -191,10 +292,14 @@
         "operation": "growth_rate",
         "query": "Compare revenue across years",
         "retrieval": true,
-        "retrieval_batches": [
+        "retrieval_raises": false,
+        "routes": [
           [
-            "CURRENT",
-            "PRIOR"
+            "",
+            [
+              "CURRENT",
+              "PRIOR"
+            ]
           ]
         ],
         "slots": [
@@ -218,9 +323,21 @@
       "description": "The calculator declines to compute.  The BLOCKED result must fail closed and must not reach generation.",
       "differences": [],
       "expectation_failures": [],
+      "factory_eligible": true,
       "fixture_id": "calculation_blocked",
       "harness_v3": {
         "answer": null,
+        "capability_view": {
+          "calculation_result_id": null,
+          "calculator_invoked": true,
+          "candidate_generation_id": null,
+          "candidate_ready": false,
+          "release_decision": null,
+          "renderer_invoked": false,
+          "specialist_invoked": false,
+          "validation_id": null,
+          "validation_passed": false
+        },
         "reason_codes": [
           "CALCULATION_INVALID",
           "OPERAND_MISSING"
@@ -241,11 +358,49 @@
         ],
         "turn_count": 4,
         "turns": [
-          "SEMANTIC_RETRIEVAL",
-          "CALCULATE",
-          "GENERATE",
-          "VERIFY"
-        ]
+          {
+            "action": "SEMANTIC_RETRIEVAL",
+            "outcome": {
+              "evidence_ids": [
+                "CURRENT",
+                "PRIOR"
+              ],
+              "packet_count": 2
+            },
+            "query": "Compare revenue across years",
+            "reason_code": "MISSING_SLOT",
+            "turn": 1
+          },
+          {
+            "action": "CALCULATE",
+            "outcome": {
+              "calculation_status": "blocked"
+            },
+            "query": null,
+            "reason_code": null,
+            "turn": 2
+          },
+          {
+            "action": "GENERATE",
+            "outcome": {
+              "generated": true,
+              "output_type": "bool"
+            },
+            "query": null,
+            "reason_code": null,
+            "turn": 3
+          },
+          {
+            "action": "VERIFY",
+            "outcome": {
+              "verification_passed": false
+            },
+            "query": null,
+            "reason_code": null,
+            "turn": 4
+          }
+        ],
+        "validator_status": null
       },
       "legacy": {
         "answer": null,
@@ -256,10 +411,13 @@
         "released": false,
         "route": "CALCULATION",
         "status": "FAIL_CLOSED",
+        "turn_count": 1,
         "turns": [
           "SEMANTIC_RETRIEVAL"
-        ]
+        ],
+        "validator_status": null
       },
+      "production_entry_point": false,
       "sealed_spec": {
         "budget": null,
         "calculation": "blocked",
@@ -316,10 +474,14 @@
         "operation": "growth_rate",
         "query": "Compare revenue across years",
         "retrieval": true,
-        "retrieval_batches": [
+        "retrieval_raises": false,
+        "routes": [
           [
-            "CURRENT",
-            "PRIOR"
+            "",
+            [
+              "CURRENT",
+              "PRIOR"
+            ]
           ]
         ],
         "slots": [
@@ -343,9 +505,21 @@
       "description": "The calculator raises a contract violation.  Both modes must report the same failure class and leak no exception text.",
       "differences": [],
       "expectation_failures": [],
+      "factory_eligible": true,
       "fixture_id": "calculation_error",
       "harness_v3": {
         "answer": null,
+        "capability_view": {
+          "calculation_result_id": null,
+          "calculator_invoked": true,
+          "candidate_generation_id": null,
+          "candidate_ready": false,
+          "release_decision": null,
+          "renderer_invoked": false,
+          "specialist_invoked": false,
+          "validation_id": null,
+          "validation_passed": false
+        },
         "reason_codes": [
           "CALCULATOR_EXCEPTION"
         ],
@@ -361,9 +535,30 @@
         ],
         "turn_count": 2,
         "turns": [
-          "SEMANTIC_RETRIEVAL",
-          "CALCULATE"
-        ]
+          {
+            "action": "SEMANTIC_RETRIEVAL",
+            "outcome": {
+              "evidence_ids": [
+                "CURRENT",
+                "PRIOR"
+              ],
+              "packet_count": 2
+            },
+            "query": "Compare revenue across years",
+            "reason_code": "MISSING_SLOT",
+            "turn": 1
+          },
+          {
+            "action": "CALCULATE",
+            "outcome": {
+              "error": "RuntimeError"
+            },
+            "query": null,
+            "reason_code": null,
+            "turn": 2
+          }
+        ],
+        "validator_status": null
       },
       "legacy": {
         "answer": null,
@@ -373,10 +568,13 @@
         "released": false,
         "route": "CALCULATION",
         "status": "EXECUTION_ERROR",
+        "turn_count": 1,
         "turns": [
           "SEMANTIC_RETRIEVAL"
-        ]
+        ],
+        "validator_status": null
       },
+      "production_entry_point": false,
       "sealed_spec": {
         "budget": null,
         "calculation": "raising",
@@ -433,10 +631,14 @@
         "operation": "growth_rate",
         "query": "Compare revenue across years",
         "retrieval": true,
-        "retrieval_batches": [
+        "retrieval_raises": false,
+        "routes": [
           [
-            "CURRENT",
-            "PRIOR"
+            "",
+            [
+              "CURRENT",
+              "PRIOR"
+            ]
           ]
         ],
         "slots": [
@@ -457,18 +659,31 @@
     },
     {
       "decision_equivalent": true,
-      "description": "The first retrieval round admits the wrong period; the replanner recovers and the second round releases.  The resolved round's reason code must not survive into the released outcome.",
+      "description": "Only wrong-period evidence exists.  The replanner is invoked repeatedly and the run must exhaust its replan budget and fail closed, with identical route, reason codes and provenance in both modes.  Recovery itself is not reachable here -- see the module note on the R4 policy's derived queries -- so this fixture pins that a *failing* recovery does not drift between modes.",
       "differences": [],
       "expectation_failures": [],
-      "fixture_id": "wrong_period_recovery",
+      "factory_eligible": true,
+      "fixture_id": "wrong_period_no_progress",
       "harness_v3": {
-        "answer": "Revenue (FY2024): 391 USD million [citation-REVENUE]",
+        "answer": null,
+        "capability_view": {
+          "calculation_result_id": null,
+          "calculator_invoked": false,
+          "candidate_generation_id": null,
+          "candidate_ready": false,
+          "release_decision": null,
+          "renderer_invoked": false,
+          "specialist_invoked": false,
+          "validation_id": null,
+          "validation_passed": false
+        },
         "reason_codes": [
-          "VALIDATED_RELEASE"
+          "WRONG_PERIOD",
+          "BUDGET_EXHAUSTED"
         ],
-        "released": true,
-        "route": "STRUCTURED_SINGLE",
-        "status": "READY_FOR_RELEASE",
+        "released": false,
+        "route": "DIRECT_FACT",
+        "status": "FAIL_CLOSED",
         "transitions": [
           "ACT",
           "OBSERVE",
@@ -477,59 +692,93 @@
           "ACT",
           "OBSERVE",
           "EVALUATE",
-          "READY_TO_GENERATE",
-          "GENERATE",
-          "VERIFY",
-          "RELEASE"
+          "REPLAN",
+          "ACT",
+          "OBSERVE",
+          "EVALUATE",
+          "REPLAN",
+          "ACT",
+          "OBSERVE",
+          "EVALUATE",
+          "FAIL_CLOSED"
         ],
+        "turn_count": 4,
+        "turns": [
+          {
+            "action": "SEMANTIC_RETRIEVAL",
+            "outcome": {
+              "evidence_ids": [
+                "WRONG"
+              ],
+              "packet_count": 1
+            },
+            "query": "What was revenue?",
+            "reason_code": "MISSING_SLOT",
+            "turn": 1
+          },
+          {
+            "action": "STRUCTURED_FINANCIAL_LOOKUP",
+            "outcome": {
+              "evidence_ids": [
+                "WRONG"
+              ],
+              "packet_count": 1
+            },
+            "query": "What was revenue? [period=FY2024]",
+            "reason_code": "WRONG_PERIOD",
+            "turn": 2
+          },
+          {
+            "action": "STRUCTURED_FINANCIAL_LOOKUP",
+            "outcome": {
+              "evidence_ids": [
+                "WRONG"
+              ],
+              "packet_count": 1
+            },
+            "query": "What was revenue? [period=FY2024]",
+            "reason_code": "WRONG_PERIOD",
+            "turn": 3
+          },
+          {
+            "action": "STRUCTURED_FINANCIAL_LOOKUP",
+            "outcome": {
+              "evidence_ids": [
+                "WRONG"
+              ],
+              "packet_count": 1
+            },
+            "query": "What was revenue? [period=FY2024]",
+            "reason_code": "WRONG_PERIOD",
+            "turn": 4
+          }
+        ],
+        "validator_status": null
+      },
+      "legacy": {
+        "answer": null,
+        "reason_codes": [
+          "WRONG_PERIOD",
+          "BUDGET_EXHAUSTED"
+        ],
+        "released": false,
+        "route": "DIRECT_FACT",
+        "status": "FAIL_CLOSED",
         "turn_count": 4,
         "turns": [
           "SEMANTIC_RETRIEVAL",
           "STRUCTURED_FINANCIAL_LOOKUP",
-          "GENERATE",
-          "VERIFY"
-        ]
-      },
-      "legacy": {
-        "answer": "Revenue (FY2024): 391 USD million [citation-REVENUE]",
-        "reason_codes": [
-          "VALIDATED_RELEASE"
-        ],
-        "released": true,
-        "route": "STRUCTURED_SINGLE",
-        "status": "READY_FOR_RELEASE",
-        "turns": [
-          "SEMANTIC_RETRIEVAL",
+          "STRUCTURED_FINANCIAL_LOOKUP",
           "STRUCTURED_FINANCIAL_LOOKUP"
-        ]
+        ],
+        "validator_status": null
       },
+      "production_entry_point": true,
       "sealed_spec": {
         "budget": null,
         "calculation": "none",
-        "description": "The first retrieval round admits the wrong period; the replanner recovers and the second round releases.  The resolved round's reason code must not survive into the released outcome.",
+        "description": "Only wrong-period evidence exists.  The replanner is invoked repeatedly and the run must exhaust its replan budget and fail closed, with identical route, reason codes and provenance in both modes.  Recovery itself is not reachable here -- see the module note on the R4 policy's derived queries -- so this fixture pins that a *failing* recovery does not drift between modes.",
         "facts": {
-          "REVENUE": {
-            "candidate_id": "REVENUE",
-            "citation_id": "citation-REVENUE",
-            "currency": "USD",
-            "document_id": "doc-REVENUE",
-            "entity": "Apple",
-            "evidence_id": "REVENUE",
-            "fact_id": "REVENUE",
-            "metric": "Revenue",
-            "pdf_page": 1,
-            "period": "FY2024",
-            "physical_source_id": "source-REVENUE",
-            "provenance_complete": true,
-            "scale": "million",
-            "scope": "consolidated",
-            "slots": [
-              "revenue"
-            ],
-            "source": "fixture",
-            "unit": "USD",
-            "value": "391"
-          },
           "WRONG": {
             "candidate_id": "WRONG",
             "citation_id": "citation-WRONG",
@@ -553,18 +802,19 @@
             "value": "90"
           }
         },
-        "fixture_id": "wrong_period_recovery",
+        "fixture_id": "wrong_period_no_progress",
         "generation": "trusted",
         "intent": "DIRECT_FACT",
         "operation": null,
         "query": "What was revenue?",
         "retrieval": true,
-        "retrieval_batches": [
+        "retrieval_raises": false,
+        "routes": [
           [
-            "WRONG"
-          ],
-          [
-            "REVENUE"
+            "",
+            [
+              "WRONG"
+            ]
           ]
         ],
         "slots": [
@@ -581,9 +831,21 @@
       "description": "Retrieval returns nothing, so no evidence is ever admitted.  The run must fail closed rather than generate from an empty binder.",
       "differences": [],
       "expectation_failures": [],
+      "factory_eligible": true,
       "fixture_id": "missing_evidence",
       "harness_v3": {
         "answer": null,
+        "capability_view": {
+          "calculation_result_id": null,
+          "calculator_invoked": false,
+          "candidate_generation_id": null,
+          "candidate_ready": false,
+          "release_decision": null,
+          "renderer_invoked": false,
+          "specialist_invoked": false,
+          "validation_id": null,
+          "validation_passed": false
+        },
         "reason_codes": [
           "MISSING_SLOT",
           "NO_PROGRESS"
@@ -603,9 +865,28 @@
         ],
         "turn_count": 2,
         "turns": [
-          "SEMANTIC_RETRIEVAL",
-          "SEMANTIC_RETRIEVAL"
-        ]
+          {
+            "action": "SEMANTIC_RETRIEVAL",
+            "outcome": {
+              "evidence_ids": [],
+              "packet_count": 0
+            },
+            "query": "What was revenue?",
+            "reason_code": "MISSING_SLOT",
+            "turn": 1
+          },
+          {
+            "action": "SEMANTIC_RETRIEVAL",
+            "outcome": {
+              "evidence_ids": [],
+              "packet_count": 0
+            },
+            "query": "What was revenue?",
+            "reason_code": "MISSING_SLOT",
+            "turn": 2
+          }
+        ],
+        "validator_status": null
       },
       "legacy": {
         "answer": null,
@@ -616,11 +897,14 @@
         "released": false,
         "route": "DIRECT_FACT",
         "status": "FAIL_CLOSED",
+        "turn_count": 2,
         "turns": [
           "SEMANTIC_RETRIEVAL",
           "SEMANTIC_RETRIEVAL"
-        ]
+        ],
+        "validator_status": null
       },
+      "production_entry_point": true,
       "sealed_spec": {
         "budget": null,
         "calculation": "none",
@@ -655,8 +939,156 @@
         "operation": null,
         "query": "What was revenue?",
         "retrieval": true,
-        "retrieval_batches": [
-          []
+        "retrieval_raises": false,
+        "routes": [
+          [
+            "",
+            []
+          ]
+        ],
+        "slots": [
+          {
+            "metric": "Revenue",
+            "period": "FY2024",
+            "slot_id": "revenue"
+          }
+        ]
+      }
+    },
+    {
+      "decision_equivalent": true,
+      "description": "The index raises, so the retrieval tool fails.  The harness must record a tool error and terminate, not raise out of the loop.",
+      "differences": [],
+      "expectation_failures": [],
+      "factory_eligible": true,
+      "fixture_id": "retrieval_error",
+      "harness_v3": {
+        "answer": null,
+        "capability_view": {
+          "calculation_result_id": null,
+          "calculator_invoked": false,
+          "candidate_generation_id": null,
+          "candidate_ready": false,
+          "release_decision": null,
+          "renderer_invoked": false,
+          "specialist_invoked": false,
+          "validation_id": null,
+          "validation_passed": false
+        },
+        "reason_codes": [
+          "CAPABILITY_EXCEPTION"
+        ],
+        "released": false,
+        "route": "DIRECT_FACT",
+        "status": "EXECUTION_ERROR",
+        "transitions": [
+          "ACT",
+          "OBSERVE",
+          "EVALUATE",
+          "REPLAN",
+          "ACT",
+          "OBSERVE",
+          "EVALUATE",
+          "REPLAN",
+          "ACT",
+          "OBSERVE",
+          "EVALUATE",
+          "FAIL_CLOSED"
+        ],
+        "turn_count": 3,
+        "turns": [
+          {
+            "action": "SEMANTIC_RETRIEVAL",
+            "outcome": {
+              "error": "RuntimeError",
+              "packet_count": 0
+            },
+            "query": "What was revenue?",
+            "reason_code": "MISSING_SLOT",
+            "turn": 1
+          },
+          {
+            "action": "LEXICAL_RETRIEVAL",
+            "outcome": {
+              "error": "RuntimeError",
+              "packet_count": 0
+            },
+            "query": "What was revenue?",
+            "reason_code": "TOOL_ERROR",
+            "turn": 2
+          },
+          {
+            "action": "LEXICAL_RETRIEVAL",
+            "outcome": {
+              "error": "RuntimeError",
+              "packet_count": 0
+            },
+            "query": "What was revenue?",
+            "reason_code": "TOOL_ERROR",
+            "turn": 3
+          }
+        ],
+        "validator_status": null
+      },
+      "legacy": {
+        "answer": null,
+        "reason_codes": [
+          "CAPABILITY_EXCEPTION"
+        ],
+        "released": false,
+        "route": "DIRECT_FACT",
+        "status": "EXECUTION_ERROR",
+        "turn_count": 3,
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "LEXICAL_RETRIEVAL",
+          "LEXICAL_RETRIEVAL"
+        ],
+        "validator_status": null
+      },
+      "production_entry_point": true,
+      "sealed_spec": {
+        "budget": null,
+        "calculation": "none",
+        "description": "The index raises, so the retrieval tool fails.  The harness must record a tool error and terminate, not raise out of the loop.",
+        "facts": {
+          "REVENUE": {
+            "candidate_id": "REVENUE",
+            "citation_id": "citation-REVENUE",
+            "currency": "USD",
+            "document_id": "doc-REVENUE",
+            "entity": "Apple",
+            "evidence_id": "REVENUE",
+            "fact_id": "REVENUE",
+            "metric": "Revenue",
+            "pdf_page": 1,
+            "period": "FY2024",
+            "physical_source_id": "source-REVENUE",
+            "provenance_complete": true,
+            "scale": "million",
+            "scope": "consolidated",
+            "slots": [
+              "revenue"
+            ],
+            "source": "fixture",
+            "unit": "USD",
+            "value": "391"
+          }
+        },
+        "fixture_id": "retrieval_error",
+        "generation": "trusted",
+        "intent": "DIRECT_FACT",
+        "operation": null,
+        "query": "What was revenue?",
+        "retrieval": true,
+        "retrieval_raises": true,
+        "routes": [
+          [
+            "",
+            [
+              "REVENUE"
+            ]
+          ]
         ],
         "slots": [
           {
@@ -672,9 +1104,21 @@
       "description": "The generator cites evidence outside Binder admission, so the *real* release validator rejects it.  A rejected candidate must not be released in either mode.",
       "differences": [],
       "expectation_failures": [],
+      "factory_eligible": true,
       "fixture_id": "validator_rejection",
       "harness_v3": {
         "answer": "Revenue was 391.",
+        "capability_view": {
+          "calculation_result_id": null,
+          "calculator_invoked": false,
+          "candidate_generation_id": null,
+          "candidate_ready": true,
+          "release_decision": "NOT_RELEASED",
+          "renderer_invoked": false,
+          "specialist_invoked": false,
+          "validation_id": "V2-e1529dbd80b9f9fc",
+          "validation_passed": false
+        },
         "reason_codes": [
           "UNBOUND_CITATION_METADATA"
         ],
@@ -693,10 +1137,39 @@
         ],
         "turn_count": 3,
         "turns": [
-          "SEMANTIC_RETRIEVAL",
-          "GENERATE",
-          "VERIFY"
-        ]
+          {
+            "action": "SEMANTIC_RETRIEVAL",
+            "outcome": {
+              "evidence_ids": [
+                "REVENUE"
+              ],
+              "packet_count": 1
+            },
+            "query": "What was revenue?",
+            "reason_code": "MISSING_SLOT",
+            "turn": 1
+          },
+          {
+            "action": "GENERATE",
+            "outcome": {
+              "generated": true,
+              "output_type": "bool"
+            },
+            "query": null,
+            "reason_code": null,
+            "turn": 2
+          },
+          {
+            "action": "VERIFY",
+            "outcome": {
+              "verification_passed": false
+            },
+            "query": null,
+            "reason_code": null,
+            "turn": 3
+          }
+        ],
+        "validator_status": "FAIL"
       },
       "legacy": {
         "answer": "Revenue was 391.",
@@ -706,10 +1179,13 @@
         "released": false,
         "route": "STRUCTURED_SINGLE",
         "status": "FAIL_CLOSED",
+        "turn_count": 1,
         "turns": [
           "SEMANTIC_RETRIEVAL"
-        ]
+        ],
+        "validator_status": "FAIL"
       },
+      "production_entry_point": false,
       "sealed_spec": {
         "budget": null,
         "calculation": "none",
@@ -744,9 +1220,13 @@
         "operation": null,
         "query": "What was revenue?",
         "retrieval": true,
-        "retrieval_batches": [
+        "retrieval_raises": false,
+        "routes": [
           [
-            "REVENUE"
+            "",
+            [
+              "REVENUE"
+            ]
           ]
         ],
         "slots": [
@@ -763,9 +1243,21 @@
       "description": "Retrieval keeps returning nothing under a zero-replan budget, so the replanner is refused and the run must fail closed on budget.",
       "differences": [],
       "expectation_failures": [],
+      "factory_eligible": true,
       "fixture_id": "budget_exhaustion",
       "harness_v3": {
         "answer": null,
+        "capability_view": {
+          "calculation_result_id": null,
+          "calculator_invoked": false,
+          "candidate_generation_id": null,
+          "candidate_ready": false,
+          "release_decision": null,
+          "renderer_invoked": false,
+          "specialist_invoked": false,
+          "validation_id": null,
+          "validation_passed": false
+        },
         "reason_codes": [
           "MISSING_SLOT",
           "BUDGET_EXHAUSTED"
@@ -781,8 +1273,18 @@
         ],
         "turn_count": 1,
         "turns": [
-          "SEMANTIC_RETRIEVAL"
-        ]
+          {
+            "action": "SEMANTIC_RETRIEVAL",
+            "outcome": {
+              "evidence_ids": [],
+              "packet_count": 0
+            },
+            "query": "What was revenue?",
+            "reason_code": "MISSING_SLOT",
+            "turn": 1
+          }
+        ],
+        "validator_status": null
       },
       "legacy": {
         "answer": null,
@@ -793,10 +1295,13 @@
         "released": false,
         "route": "DIRECT_FACT",
         "status": "FAIL_CLOSED",
+        "turn_count": 1,
         "turns": [
           "SEMANTIC_RETRIEVAL"
-        ]
+        ],
+        "validator_status": null
       },
+      "production_entry_point": true,
       "sealed_spec": {
         "budget": {
           "max_identical_query_retry": 0,
@@ -836,8 +1341,12 @@
         "operation": null,
         "query": "What was revenue?",
         "retrieval": true,
-        "retrieval_batches": [
-          []
+        "retrieval_raises": false,
+        "routes": [
+          [
+            "",
+            []
+          ]
         ],
         "slots": [
           {
@@ -850,12 +1359,24 @@
     },
     {
       "decision_equivalent": true,
-      "description": "No retrieval port is wired, so the initial action has no tool.  Reachable only from a manually constructed coordinator: the factory refuses an incomplete graph, which is the point of the guard being there as well.",
+      "description": "No retrieval port is wired, so the initial action has no tool.  Not factory-eligible: the factory refuses an incomplete graph, so this guard is reachable only from a manually constructed coordinator.  That is the point of the guard existing as well.",
       "differences": [],
       "expectation_failures": [],
+      "factory_eligible": false,
       "fixture_id": "unsupported_route",
       "harness_v3": {
         "answer": null,
+        "capability_view": {
+          "calculation_result_id": null,
+          "calculator_invoked": false,
+          "candidate_generation_id": null,
+          "candidate_ready": false,
+          "release_decision": null,
+          "renderer_invoked": false,
+          "specialist_invoked": false,
+          "validation_id": null,
+          "validation_passed": false
+        },
         "reason_codes": [
           "UNSUPPORTED_TOOL_ROUTE"
         ],
@@ -867,7 +1388,8 @@
           "FAIL_CLOSED"
         ],
         "turn_count": 0,
-        "turns": []
+        "turns": [],
+        "validator_status": null
       },
       "legacy": {
         "answer": null,
@@ -877,12 +1399,15 @@
         "released": false,
         "route": "DIRECT_FACT",
         "status": "FAIL_CLOSED",
-        "turns": []
+        "turn_count": 0,
+        "turns": [],
+        "validator_status": null
       },
+      "production_entry_point": false,
       "sealed_spec": {
         "budget": null,
         "calculation": "none",
-        "description": "No retrieval port is wired, so the initial action has no tool.  Reachable only from a manually constructed coordinator: the factory refuses an incomplete graph, which is the point of the guard being there as well.",
+        "description": "No retrieval port is wired, so the initial action has no tool.  Not factory-eligible: the factory refuses an incomplete graph, so this guard is reachable only from a manually constructed coordinator.  That is the point of the guard existing as well.",
         "facts": {},
         "fixture_id": "unsupported_route",
         "generation": "trusted",
@@ -890,7 +1415,13 @@
         "operation": null,
         "query": "What was revenue?",
         "retrieval": false,
-        "retrieval_batches": [],
+        "retrieval_raises": false,
+        "routes": [
+          [
+            "",
+            []
+          ]
+        ],
         "slots": [
           {
             "metric": "Revenue",
@@ -902,10 +1433,10 @@
     }
   ],
   "harness": "nf-v3-h1-harness-core",
-  "sealed_digest": "75c043585a44c1828dfb58f222ec18d6ff041beb1a5d673e09d495e967c71602",
-  "sealed_digest_recomputed": "75c043585a44c1828dfb58f222ec18d6ff041beb1a5d673e09d495e967c71602",
+  "sealed_digest": "9c7cda07004f05ce1bac616c1a7f6bb3570488c052d6299fe193674d1a3a562e",
+  "sealed_digest_recomputed": "9c7cda07004f05ce1bac616c1a7f6bb3570488c052d6299fe193674d1a3a562e",
   "summary": {
-    "decision_equivalence": 9,
+    "decision_equivalence": 10,
     "expectation_failures": 0,
     "false_calculation_release": 0,
     "infinite_loop": 0,

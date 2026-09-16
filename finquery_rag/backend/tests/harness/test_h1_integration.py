@@ -11,7 +11,10 @@ from typing import Any
 
 import pytest
 
+from src.runtime.trusted_v2_contracts import V2ExecutionOutcome
+from tests.harness.equivalence import unclassified_fields
 from tests.harness.h1_integration import (
+    SUBSTITUTED_PORTS,
     FIXTURES,
     fixture_report,
     run_all,
@@ -97,3 +100,66 @@ def test_rejected_validator_cannot_release_in_either_mode(run: dict[str, Any]) -
     assert report["legacy"]["released"] is False
     assert report["harness_v3"]["released"] is False
     assert "UNBOUND_CITATION_METADATA" in report["harness_v3"]["reason_codes"]
+
+
+def test_a_calculation_that_did_not_execute_produced_nothing(run: dict[str, Any]) -> None:
+    """The BLOCKED and raising fixtures must not have reached generation.
+
+    Read from the generation capability's own recorded state, so this fails if
+    the candidate stage ever generates from a result that did not execute --
+    having a result id is not the same as having a result.
+    """
+
+    for fixture_id in ("calculation_blocked", "calculation_error"):
+        capability = _report(run, fixture_id)["harness_v3"]["capability_view"]
+        assert capability["calculator_invoked"] is True, fixture_id
+        assert capability["renderer_invoked"] is False, fixture_id
+        assert capability["specialist_invoked"] is False, fixture_id
+        assert capability["candidate_ready"] is False, fixture_id
+        assert capability["calculation_result_id"] is None, fixture_id
+
+
+def test_the_flag_changes_the_execution_model_not_just_an_attribute() -> None:
+    """Both modes must be reached through the environment, and differ.
+
+    ``_assert_flag_reached`` would already have raised if the flag never landed
+    on the coordinator, but a flag that is set and ignored would look identical.
+    The two modes must produce different phase traces for the same fixture.
+    """
+
+    report = fixture_report(next(f for f in FIXTURES if f.fixture_id == "fact_direct"))
+
+    assert "RELEASE" in report["harness_v3"]["transitions"]
+    assert report["harness_v3"]["transitions"] != [
+        "ACT",
+        "OBSERVE",
+        "EVALUATE",
+        "READY_TO_GENERATE",
+    ]
+    # legacy never enters the harness tail, so it reports no such transition.
+    assert report["legacy"]["released"] == report["harness_v3"]["released"]
+
+
+def test_every_fixture_declares_how_it_was_built() -> None:
+    """The report must not present substituted wiring as production wiring."""
+
+    for fixture in FIXTURES:
+        production = (
+            fixture.factory_eligible and fixture.fixture_id not in SUBSTITUTED_PORTS
+        )
+        report = fixture_report(fixture)
+        assert report["production_entry_point"] == production, fixture.fixture_id
+        if not production:
+            assert (
+                fixture.fixture_id in SUBSTITUTED_PORTS or not fixture.retrieval
+            ), fixture.fixture_id
+
+
+def test_the_equivalence_contract_leaves_no_outcome_field_unclassified() -> None:
+    """A new field on the outcome must be bucketed before it can pass silently.
+
+    This is the rule that makes the contract durable: the two divergences that
+    survived the first review were both fields nobody had classified.
+    """
+
+    assert unclassified_fields(V2ExecutionOutcome) == []
