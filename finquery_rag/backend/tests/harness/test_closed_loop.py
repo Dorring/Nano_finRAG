@@ -14,8 +14,6 @@ from __future__ import annotations
 import asyncio
 from typing import Any
 
-import pytest
-
 from rag_v2.adaptive import (
     AdaptivePhase,
     AdaptiveRAGBudgetV1,
@@ -27,6 +25,11 @@ from rag_v2.adaptive import (
 )
 from rag_v2.contracts import Intent
 from rag_v2.supervisor import DeterministicFallbackProvider, SupervisorService
+from src.domain.calculation import (
+    CalculationOperation,
+    CalculationResult,
+    CalculationStatus,
+)
 from src.runtime import (
     DeterministicCalculationCapability,
     TrustedReleaseValidationCapability,
@@ -49,17 +52,24 @@ _BUDGET = AdaptiveRAGBudgetV1(
     max_replan_rounds=3, max_total_tool_calls=4, max_same_tool_retry=3
 )
 
-_FACTS: dict[str, Any] = {}
 
-
-def _execute(mode: AgentRuntimeMode, query: str, plan: Any, facts: dict[str, Any], keys: list[list[str]], **kwargs: Any) -> Any:
-    retrieval, binder, _, _, _ = _real_capabilities(keys, facts, kwargs.pop("binder_provider", None))
+def _execute(
+    mode: AgentRuntimeMode,
+    query: str,
+    plan: Any,
+    facts: dict[str, Any],
+    keys: list[list[str]],
+    *,
+    binder_provider: Any = None,
+    calculation: Any = None,
+) -> Any:
+    retrieval, binder, _, _, _ = _real_capabilities(keys, facts, binder_provider)
     coordinator = BoundedTrustedV2Coordinator(
         SupervisorService(DeterministicFallbackProvider({query: plan})),
         capabilities=TrustedV2CapabilityPorts(
             retrieval=retrieval,
             evidence_evaluator=binder,
-            calculation=kwargs.pop("calculation", None),
+            calculation=calculation,
             generation=TrustedV2GenerationCapability(),
             release_validator=TrustedReleaseValidationCapability(),
         ),
@@ -159,8 +169,72 @@ def test_both_modes_agree_on_a_calculation_plan() -> None:
     assert "CALCULATE" not in _transitions(legacy)
 
 
-# --- harness-level verification guards --------------------------------------
+class _BlockedCalculation:
+    """A wired calculator that deterministically declines to compute."""
 
+    candidate_mode = True
+    last_calculation_id = None
+
+    def __init__(self) -> None:
+        self.calls = 0
+        self.last_result = CalculationResult(
+            status=CalculationStatus.BLOCKED,
+            operation=CalculationOperation.GROWTH_RATE,
+            error_code="OPERAND_MISSING",
+        )
+
+    def calculate(self, state: AdaptiveRAGStateV1) -> Any:
+        self.calls += 1
+        return self.last_result
+
+
+def test_blocked_calculation_fails_closed_in_both_modes() -> None:
+    """A blocked calculation must not reach generation in either mode.
+
+    harness_v3 runs the calculator inside the loop; the candidate stage then
+    re-reads rather than re-runs its result.  It must still *validate* that
+    result, otherwise a blocked calculation would slip through to generation and
+    lose the precise terminal reason the legacy path reports.
+    """
+
+    facts = {
+        "CURRENT": _fact("CURRENT", period="FY2024", slots=("current",), value="391"),
+        "PRIOR": _fact("PRIOR", period="FY2023", slots=("prior",), value="383"),
+    }
+    plan = _plan(
+        _slot("current", period="FY2024", role="current"),
+        _slot("prior", period="FY2023", role="prior"),
+        intent=Intent.CALCULATION,
+        operation="growth_rate",
+    )
+
+    outcomes = {}
+    for mode in (AgentRuntimeMode.LEGACY, AgentRuntimeMode.HARNESS_V3):
+        calculation = _BlockedCalculation()
+        outcome = _execute(
+            mode,
+            "Compare years",
+            plan,
+            facts,
+            [["CURRENT", "PRIOR"]],
+            binder_provider=SelectingBinderProvider(),
+            calculation=calculation,
+        )
+        assert calculation.calls == 1
+        outcomes[mode] = outcome
+
+    for mode, outcome in outcomes.items():
+        assert outcome.status is not V2ExecutionStatus.READY_FOR_RELEASE, mode
+        assert "CALCULATION_INVALID" in outcome.reason_codes, mode
+        assert mode.value in ("legacy", "harness_v3")
+
+    legacy = outcomes[AgentRuntimeMode.LEGACY]
+    harness = outcomes[AgentRuntimeMode.HARNESS_V3]
+    assert legacy.status is harness.status
+    assert legacy.reason_codes == harness.reason_codes
+
+
+# --- harness-level verification guards --------------------------------------
 
 def _loop_state() -> AdaptiveRAGStateV1:
     return AdaptiveRAGStateV1.new(

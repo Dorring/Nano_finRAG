@@ -980,20 +980,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         calculation_ids: tuple[str, ...] = ()
         candidate_answer: str | None = None
         extra: dict[str, Any] = {}
-        if plan.intent is Intent.CALCULATION and state.calculation_attempted:
-            # harness_v3 already ran the deterministic calculator inside the
-            # loop; the candidate stage must not run it a second time.  Only the
-            # provenance id is recovered here.
-            last_calculation_id = getattr(
-                self.capabilities.calculation, "last_calculation_id", None
-            )
-            calculation_ids = (
-                (str(last_calculation_id),) if last_calculation_id else ()
-            )
-            state.calculation_result_id = calculation_ids[0] if calculation_ids else None
-            extra["calculation_result_id"] = state.calculation_result_id
-            extra["calculation_in_harness"] = True
-        elif plan.intent is Intent.CALCULATION:
+        if plan.intent is Intent.CALCULATION:
             capability = self.capabilities.calculation
             if capability is None:
                 return self._outcome(
@@ -1004,17 +991,25 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                     evidence_ids=evaluator_adapter.bound_evidence_ids,
                     citation_ids=evaluator_adapter.citation_ids,
                 )
-            try:
-                result = capability.calculate(state)
-            except Exception:
-                return self._outcome(
-                    request=request, plan=plan, plan_id=plan_id, state=state,
-                    reason_codes=["CALCULATOR_EXCEPTION"],
-                    status=V2ExecutionStatus.EXECUTION_ERROR,
-                    terminal_state="CALCULATE",
-                    evidence_ids=evaluator_adapter.bound_evidence_ids,
-                    citation_ids=evaluator_adapter.citation_ids,
-                )
+            if state.calculation_attempted:
+                # harness_v3 ran the calculator inside the loop.  Re-read its
+                # result instead of running it twice, but run it through the
+                # same validation below: an in-loop calculation that came back
+                # blocked must fail closed here with the same reason code the
+                # legacy path would have produced.
+                result = getattr(capability, "last_result", None)
+            else:
+                try:
+                    result = capability.calculate(state)
+                except Exception:
+                    return self._outcome(
+                        request=request, plan=plan, plan_id=plan_id, state=state,
+                        reason_codes=["CALCULATOR_EXCEPTION"],
+                        status=V2ExecutionStatus.EXECUTION_ERROR,
+                        terminal_state="CALCULATE",
+                        evidence_ids=evaluator_adapter.bound_evidence_ids,
+                        citation_ids=evaluator_adapter.citation_ids,
+                    )
             from src.domain.calculation import CalculationResult, CalculationStatus
 
             if not isinstance(result, CalculationResult):
@@ -1053,6 +1048,8 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             state.calculation_result_id = calculation_ids[0] if calculation_ids else None
             extra["calculation_status"] = result.status.value
             extra["calculation_result_id"] = state.calculation_result_id
+            if state.calculation_attempted:
+                extra["calculation_in_harness"] = True
 
         generation = self.capabilities.generation
         if generation is None:

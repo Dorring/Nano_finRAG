@@ -1,23 +1,28 @@
-"""Characterization baseline for the NF-V2 execution model.
+"""Characterization baseline for the ``legacy`` execution model.
 
-These tests pin the *current* behaviour of the trusted V2 runtime before the
-NF-V3 H1 harness work changes it.  They exist so that "nothing regressed" is a
-checkable claim rather than an assertion.
+These tests pin the trusted V2 runtime's behaviour as it stood before NF-V3 H1,
+and they still describe the default runtime mode.  They exist so that "nothing
+regressed" is a checkable claim rather than an assertion.
 
 Plan of record: `docs/architecture/nf-v3-h1-agent-harness-plan.md`.
 
-Two findings this file freezes deliberately, because H1 changes them:
+NF-V3 H1 added a second mode, ``harness_v3``, which closes the loop: calculation,
+generation, verification and release all run as harness phases.  ``legacy`` keeps
+the original split, and remains the production default.  The closed-loop
+expectations live in the sibling test modules:
+
+- ``test_calculation_phase.py`` — calculation as a harness phase
+- ``test_closed_loop.py`` — generation, verification and release in the loop
+
+Two facts this file still freezes, both specific to ``legacy``:
 
 1. The harness loop stops at ``READY_TO_GENERATE``.  Deterministic calculation
    runs *outside* the loop, in the coordinator's candidate stage, so the
    transition trace never contains ``CALCULATE``.
 2. ``generator`` / ``verifier`` are wired into the harness only when
    ``allow_test_release`` is true, so the harness's ``GENERATE`` / ``VERIFY`` /
-   ``RELEASE`` phases are unreachable on the production path.
-
-Do not "fix" these assertions to match new behaviour.  When H1 lands, the
-replacement expectations belong in the harness-v3 tests, and these should be
-retargeted at the ``legacy`` runtime mode instead.
+   ``RELEASE`` phases are unreachable on this path.  The answer is still
+   released, but by ``_candidate_stage`` after the loop returns.
 """
 
 from __future__ import annotations
@@ -33,7 +38,6 @@ from src.runtime import (
     TrustedReleaseValidationCapability,
     TrustedV2CapabilityPorts,
     TrustedV2GenerationCapability,
-    V2ExecutionRequest,
     V2ExecutionStatus,
 )
 from src.runtime.trusted_v2_coordinator import BoundedTrustedV2Coordinator
