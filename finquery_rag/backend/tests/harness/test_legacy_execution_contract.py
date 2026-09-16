@@ -96,6 +96,10 @@ LEGACY_TRACE_KEYS = frozenset(
         "validation_pending",
         "validation_reason_codes",
         "wrong_period_slots",
+        # Added by NF-V3 H1 commit 2 (run turn trace).  Deliberate and additive.
+        "turns",
+        "turn_count",
+        "action_trace",
     }
 )
 
@@ -226,12 +230,11 @@ def test_legacy_trace_key_contract_is_frozen() -> None:
     assert set(outcome.debug_metadata["trace"]) == LEGACY_TRACE_KEYS
 
 
-def test_legacy_trace_exposes_no_turn_counter() -> None:
-    """H1-D1 adds real turn accounting; today the loop's turn counter is local.
+def test_trace_exposes_the_run_turn_trace() -> None:
+    """H1-D1: the run's decision trace is now first class.
 
-    ``tool_call_count`` counts tool invocations, not loop turns.  The harness's
-    guard variable never reaches the trace, so ``turns`` and ``action_trace``
-    do not exist yet.
+    ``tool_call_count`` counts tool invocations; ``turns`` records each action
+    the controller took, in order, with why it took it and what came back.
     """
 
     facts = {"E1": _fact("E1", value="100")}
@@ -242,15 +245,48 @@ def test_legacy_trace_exposes_no_turn_counter() -> None:
         _plan(_slot("revenue")),
         retrieval,
         binder,
-        request_id="h1-baseline-turns",
+        request_id="h1-turns",
         generation=TrustedV2GenerationCapability(),
         validator=TrustedReleaseValidationCapability(),
     )
 
     trace = outcome.debug_metadata["trace"]
-    assert "turns" not in trace
-    assert "action_trace" not in trace
+    assert trace["turn_count"] == 1
+    assert trace["action_trace"] == ["SEMANTIC_RETRIEVAL"]
     assert trace["tool_call_count"] == 1
+
+    (turn,) = trace["turns"]
+    assert turn["turn"] == 1
+    assert turn["action"] == "SEMANTIC_RETRIEVAL"
+    assert turn["reason_code"] == "MISSING_SLOT"
+    assert turn["outcome"]["packet_count"] == 1
+
+
+def test_turn_trace_records_each_recovery_action_in_order() -> None:
+    """A repair round shows both actions, in the order they were taken."""
+
+    facts = {
+        "WRONG": _fact("WRONG", period="FY2023", slots=("revenue",), value="90"),
+        "RIGHT": _fact("RIGHT", period="FY2024", slots=("revenue",), value="100"),
+    }
+    retrieval, binder, _, _, _ = _real_capabilities(
+        [["WRONG"], ["RIGHT"]], facts, SelectingBinderProvider()
+    )
+
+    outcome = _run(
+        "What was revenue?",
+        _plan(_slot("revenue")),
+        retrieval,
+        binder,
+        request_id="h1-turns-replan",
+        generation=TrustedV2GenerationCapability(),
+        validator=TrustedReleaseValidationCapability(),
+    )
+
+    trace = outcome.debug_metadata["trace"]
+    assert trace["action_trace"] == ["SEMANTIC_RETRIEVAL", "STRUCTURED_FINANCIAL_LOOKUP"]
+    assert [turn["turn"] for turn in trace["turns"]] == [1, 2]
+    assert trace["turns"][1]["reason_code"] == "WRONG_PERIOD"
 
 
 def test_legacy_harness_release_phase_is_unreachable_without_test_wiring() -> None:

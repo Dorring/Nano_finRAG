@@ -295,6 +295,10 @@ class AdaptiveRAGStateV1:
     status: str = "PLAN"
     stop_reason: str | None = None
     transitions: list[dict[str, Any]] = field(default_factory=list)
+    # One record per action the controller actually took, in order.  Unlike
+    # ``transitions`` (which logs every phase spin, including no-op ones) this is
+    # the run's decision trace: what was done, why, and what came back.
+    turns: list[dict[str, Any]] = field(default_factory=list)
 
     @classmethod
     def new(
@@ -322,6 +326,37 @@ class AdaptiveRAGStateV1:
         self.transitions.append({"from": self.status, "to": to_state.value, "reason": reason})
         self.status = to_state.value
         self.current_step = to_state.value
+
+    def record_turn(
+        self,
+        action: str,
+        reason_code: str | None = None,
+        *,
+        query: str | None = None,
+    ) -> dict[str, Any]:
+        """Open a turn record for one action the controller is about to take."""
+
+        record: dict[str, Any] = {
+            "turn": len(self.turns) + 1,
+            "action": str(action),
+            "reason_code": reason_code,
+            "query": query,
+            "outcome": None,
+        }
+        self.turns.append(record)
+        return record
+
+    def observe_turn(self, outcome: Mapping[str, Any]) -> None:
+        """Attach what the most recent turn produced, without opening a new one."""
+
+        if self.turns:
+            self.turns[-1]["outcome"] = dict(outcome)
+
+    @property
+    def action_trace(self) -> list[str]:
+        """The ordered actions this run took."""
+
+        return [str(record.get("action")) for record in self.turns]
 
     def add_evidence(self, packets: list[EvidencePacketV1]) -> None:
         by_id = {item.get("evidence_id"): item for item in self.evidence_packets}

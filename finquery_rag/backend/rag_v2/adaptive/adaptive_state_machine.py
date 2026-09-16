@@ -21,6 +21,7 @@ from .adaptive_contracts import (
     ToolCapability,
 )
 from .adaptive_evaluator import EvidenceStateEvaluatorV1
+from .adaptive_policy import AdaptiveActionPolicyV1
 from .adaptive_progress import ProgressDetectorV1
 from .adaptive_replanner import BoundedReplannerV1
 
@@ -58,11 +59,14 @@ class BoundedAdaptiveRAGV1:
         replanner: BoundedReplannerV1 | None = None,
         progress_detector: ProgressDetectorV1 | None = None,
         budget: AdaptiveRAGBudgetV1 | None = None,
+        policy: AdaptiveActionPolicyV1 | None = None,
     ) -> None:
         self.budget = budget or AdaptiveRAGBudgetV1()
         self.evaluator = evaluator or EvidenceStateEvaluatorV1()
         self.replanner = replanner or BoundedReplannerV1(self.budget)
         self.progress = progress_detector or ProgressDetectorV1()
+        # The replanner proposes; the policy permits.  See adaptive_policy.py.
+        self.policy = policy or AdaptiveActionPolicyV1(self.budget)
 
     @staticmethod
     def _capability(value: Any) -> ToolCapability:
@@ -99,8 +103,9 @@ class BoundedAdaptiveRAGV1:
                 state.transition(AdaptivePhase.ACT, "initial plan accepted")
                 continue
             if phase is AdaptivePhase.ACT:
-                if state.tool_calls >= self.budget.max_total_tool_calls:
-                    self._fail(state, ReasonCode.BUDGET_EXHAUSTED)
+                denied = self.policy.check_tool_call(state)
+                if denied is not None:
+                    self._fail(state, denied)
                     break
                 capability = pending.capability
                 try:
@@ -112,25 +117,29 @@ class BoundedAdaptiveRAGV1:
                     break
                 key = capability.value
                 prior = state.same_tool_retries.get(key, 0)
-                if prior > self.budget.max_same_tool_retry:
-                    self._fail(state, ReasonCode.BUDGET_EXHAUSTED)
+                denied = self.policy.check_tool_retry(state, capability)
+                if denied is not None:
+                    self._fail(state, denied)
                     break
                 state.same_tool_retries[key] = prior + 1
                 state.tool_calls += 1
                 state.iteration += 1
                 state.last_action = pending.to_dict()
+                state.record_turn(key, pending.reason_code.value, query=pending.query)
                 state.tool_history.append({"capability": key, "query": pending.query, "iteration": state.iteration})
                 state.query_history.append(pending.query)
                 try:
                     raw_packets = list(tool(pending.query, state))
                 except Exception as exc:  # deterministic fail-closed; expose only type
                     state.last_observation = {"error": type(exc).__name__, "packet_count": 0}
+                    state.observe_turn(state.last_observation)
                     state.stop_reason = ReasonCode.TOOL_ERROR.value
                     state.transition(AdaptivePhase.OBSERVE, ReasonCode.TOOL_ERROR.value)
                     continue
                 packets = [EvidencePacketV1.from_mapping(item) for item in raw_packets]
                 state.add_evidence(packets)
                 state.last_observation = {"packet_count": len(packets), "evidence_ids": [item.evidence_id for item in packets]}
+                state.observe_turn(state.last_observation)
                 state.transition(AdaptivePhase.OBSERVE, "tool observation captured")
                 continue
             if phase is AdaptivePhase.OBSERVE:
@@ -170,7 +179,7 @@ class BoundedAdaptiveRAGV1:
                 if evaluation.decision is EvidenceDecision.SUFFICIENT:
                     state.transition(AdaptivePhase.READY_TO_GENERATE, "evidence sufficient")
                 elif evaluation.decision is EvidenceDecision.REPAIRABLE:
-                    if state.replan_rounds >= self.budget.max_replan_rounds or state.tool_calls >= self.budget.max_total_tool_calls:
+                    if self.policy.check_replan(state) is not None:
                         self._fail(state, ReasonCode.BUDGET_EXHAUSTED)
                     else:
                         state.transition(AdaptivePhase.REPLAN, "concrete information gap")

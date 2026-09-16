@@ -315,6 +315,11 @@ class V2ExecutionTrace:
     claim_provenance: tuple[dict[str, Any], ...] = ()
     context_trust_levels: tuple[str, ...] = ()
     financial_fact_context_levels: tuple[str, ...] = ()
+    # The run's decision trace: one record per action the controller took, plus
+    # the ordered action names.  Additive; existing consumers keep working.
+    turns: tuple[dict[str, Any], ...] = ()
+    turn_count: int = 0
+    action_trace: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         if self.execution_id is not None and not str(self.execution_id).strip():
@@ -420,6 +425,9 @@ class V2ExecutionTrace:
             plan_id=plan_id,
             transitions=tuple(copy.deepcopy(state.transitions)),
             tool_history=tuple(copy.deepcopy(state.tool_history)),
+            turns=tuple(copy.deepcopy(state.turns)),
+            turn_count=len(state.turns),
+            action_trace=tuple(str(item.get("action")) for item in state.turns),
             reason_codes=tuple(_stable_unique(trace_reason_codes)),
             replan_count=state.replan_rounds,
             tool_call_count=state.tool_calls,
@@ -575,6 +583,9 @@ class V2ExecutionTrace:
             "financial_fact_context_levels": list(
                 self.financial_fact_context_levels,
             ),
+            "turns": copy.deepcopy(list(self.turns)),
+            "turn_count": self.turn_count,
+            "action_trace": list(self.action_trace),
         }
 
 
