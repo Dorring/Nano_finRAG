@@ -391,10 +391,18 @@ Reported, not fixed — pre-existing and out of H1 scope:
   enforcing the default of 0 would change legacy retrieval behaviour that H1
   exists to preserve.
 - `_capability_trace()` exposes lifetime port counters, so a trace can report
-  work done by a previous request on the same coordinator. Not a production
-  defect: all five capability ports are constructed per request inside
-  `build_trusted_v2_runtime_for_request`, so the counters reset. It only affects
-  a coordinator reused across requests, as evaluation scripts do.
+  work done by a previous request on the same coordinator.
+  **Resolved in H1.1.** The counters are still lifetime figures -- they live on
+  the port -- but nothing asserted that the ports themselves are per request,
+  which is the property that makes the two the same thing. The claim in the
+  original finding that evaluation scripts reuse a coordinator was wrong:
+  `scripts/evaluation/run_tv2_canonical_benchmark.py:105` builds the runtime
+  inside its per-question loop. `tests/test_trusted_v2_production_builder.py`
+  now builds twice from one `TrustedV2RuntimeResources` and asserts all five
+  ports differ while the fact store is still shared, and the coordinator says
+  which way it depends on that. The remaining honest limit: a coordinator that
+  *is* reused still reports a lifetime in a per-run trace; the invariant is
+  pinned at the builder, not enforced at the coordinator.
 - `runtime_metadata` is not passed through `_sanitize_trace_payload`, unlike the
   trace itself.
 
@@ -465,7 +473,10 @@ Delivered:
    `ACT → OBSERVE → EVALUATE → CALCULATE → READY_TO_GENERATE → GENERATE → VERIFY → RELEASE`
    on real wiring. `legacy` never enters CALCULATE.
 5. **Suite accounting** (below).
-6. **Seal** — `docs/showcase/nf-v3-h1-harness-core.md`, tag `nf-v3-h1-harness-core`.
+6. **Port scope pinned** — the capability snapshots the coordinator reports are
+   lifetime figures, which only equal this-run figures because the builder makes
+   fresh ports per request. That was true and untested; it now is tested (§10).
+7. **Seal** — `docs/showcase/nf-v3-h1-harness-core.md`, tag `nf-v3-h1-harness-core`.
 
 ### Cross-check: the runner was falsified against the pre-fix tree
 

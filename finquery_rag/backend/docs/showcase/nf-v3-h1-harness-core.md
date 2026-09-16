@@ -259,6 +259,14 @@ Two collection-time guards were added to `conftest.py`:
 - **`_candidate_stage` still owns the candidate path.** The finalizer wraps it
   rather than reimplementing it, so no release logic is duplicated -- but the
   harness does not own that code.
+- **The capability trace is lifetime-scoped, and that is pinned at the builder.**
+  Port snapshots (`validation_calls`, `calculator_call_count`,
+  `retrieval_rounds`, ...) count for as long as the port lives, and the
+  coordinator reports them verbatim. They describe *this run* only because
+  `build_trusted_v2_runtime_for_request` builds a fresh port set per request;
+  `tests/test_trusted_v2_production_builder.py` now asserts all five ports differ
+  between two builder calls over one shared resource set. A coordinator that is
+  reused across requests would still report a lifetime in a per-run trace.
 - **The R4 evaluation corpora remain uncommitted.** This seal is about the
   harness, not about the evaluation artifacts.
 
