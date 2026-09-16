@@ -121,6 +121,7 @@ def test_harness_v3_calculates_inside_the_loop() -> None:
         "SEMANTIC_RETRIEVAL",
         "CALCULATE",
         "GENERATE",
+        "VERIFY",
     ]
 
 
@@ -164,12 +165,16 @@ def test_direct_fact_query_never_enters_calculate_in_harness_v3() -> None:
 
 
 def _harness_state() -> AdaptiveRAGStateV1:
-    return AdaptiveRAGStateV1.new(
+    state = AdaptiveRAGStateV1.new(
         "q1",
         "Compare revenue across years",
         required_slots=[{"slot_id": "revenue", "metric": "Revenue", "period": "FY2024"}],
         calculation_requirements={"operation": "growth_rate", "operand_slots": ["revenue"]},
     )
+    # The evidence evaluator admits evidence before the loop may calculate; a
+    # bare state has no admitted evidence, so the CALCULATE phase is not entered.
+    state.bound_evidence_ids = ["e1"]
+    return state
 
 
 def _revenue_packet() -> dict[str, Any]:

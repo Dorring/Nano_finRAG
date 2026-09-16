@@ -120,6 +120,7 @@ def test_harness_v3_releases_inside_the_loop() -> None:
     assert outcome.debug_metadata["trace"]["action_trace"] == [
         "SEMANTIC_RETRIEVAL",
         "GENERATE",
+        "VERIFY",
     ]
 
 
@@ -257,8 +258,228 @@ def test_blocked_calculation_fails_closed_in_both_modes() -> None:
     assert legacy.reason_codes == harness.reason_codes
 
 
-# --- harness-level verification guards --------------------------------------
+def test_route_matches_between_modes() -> None:
+    """The rebuilt harness_v3 outcome must keep the generation route.
 
+    Without an explicit route the rebuild falls back to the plan intent, which
+    contradicts the trace's own generation_route on a public field.
+    """
+
+    facts = {"E1": _fact("E1", value="100")}
+    plan = _plan(_slot("revenue"))
+
+    legacy = _execute(AgentRuntimeMode.LEGACY, "What was revenue?", plan, facts, [["E1"]])
+    harness = _execute(AgentRuntimeMode.HARNESS_V3, "What was revenue?", plan, facts, [["E1"]])
+
+    assert legacy.route == harness.route
+    assert harness.route == harness.debug_metadata["trace"]["generation_route"]
+
+
+def test_reason_codes_are_not_polluted_by_resolved_recovery_rounds() -> None:
+    """A clean release must not carry the reason code of a round that succeeded.
+
+    The trace deliberately folds every binder round's reason codes into its own
+    list; the released outcome must not inherit that superset.
+    """
+
+    facts = {
+        "WRONG": _fact("WRONG", period="FY2023", slots=("revenue",), value="90"),
+        "RIGHT": _fact("RIGHT", period="FY2024", slots=("revenue",), value="100"),
+    }
+    plan = _plan(_slot("revenue"))
+
+    def run(mode: AgentRuntimeMode) -> Any:
+        return _execute(
+            mode,
+            "What was revenue?",
+            plan,
+            facts,
+            [["WRONG"], ["RIGHT"]],
+            binder_provider=SelectingBinderProvider(),
+        )
+
+    legacy = run(AgentRuntimeMode.LEGACY)
+    harness = run(AgentRuntimeMode.HARNESS_V3)
+
+    assert legacy.status is V2ExecutionStatus.READY_FOR_RELEASE
+    assert harness.status is V2ExecutionStatus.READY_FOR_RELEASE
+    assert legacy.reason_codes == harness.reason_codes
+
+
+def test_missing_operand_never_invokes_the_calculator_in_either_mode() -> None:
+    """The calculator must stay behind evidence admission.
+
+    Running it inside the loop must not let it run before the gate: a run whose
+    operands were never admitted must not calculate at all.
+    """
+
+    facts = {"CURRENT": _fact("CURRENT", period="FY2024", slots=("current",), value="391")}
+    plan = _plan(
+        _slot("current", period="FY2024", role="current"),
+        _slot("prior", period="FY2023", role="prior"),
+        intent=Intent.CALCULATION,
+        operation="growth_rate",
+    )
+
+    for mode in (AgentRuntimeMode.LEGACY, AgentRuntimeMode.HARNESS_V3):
+        calculation = DeterministicCalculationCapability()
+        outcome = _execute(
+            mode,
+            "Compare years",
+            plan,
+            facts,
+            [["CURRENT"], []],
+            binder_provider=SelectingBinderProvider(),
+            calculation=calculation,
+        )
+        assert calculation.calls == 0, mode
+        assert outcome.status is not V2ExecutionStatus.READY_FOR_RELEASE, mode
+
+
+class _RaisingCalculation:
+    """A wired calculator that raises, like a contract violation would."""
+
+    candidate_mode = True
+    last_calculation_id = None
+    last_result = None
+
+    def calculate(self, state: AdaptiveRAGStateV1) -> Any:
+        raise RuntimeError("calculator secret")
+
+
+def test_calculator_exception_has_the_same_terminal_in_both_modes() -> None:
+    """The ablation must not change the observable failure class.
+
+    A raising calculator is an execution error, not a policy refusal; both modes
+    must say so, and must not leak the exception text.
+    """
+
+    facts = {
+        "CURRENT": _fact("CURRENT", period="FY2024", slots=("current",), value="391"),
+        "PRIOR": _fact("PRIOR", period="FY2023", slots=("prior",), value="383"),
+    }
+    plan = _plan(
+        _slot("current", period="FY2024", role="current"),
+        _slot("prior", period="FY2023", role="prior"),
+        intent=Intent.CALCULATION,
+        operation="growth_rate",
+    )
+
+    outcomes = {}
+    for mode in (AgentRuntimeMode.LEGACY, AgentRuntimeMode.HARNESS_V3):
+        outcome = _execute(
+            mode,
+            "Compare years",
+            plan,
+            facts,
+            [["CURRENT", "PRIOR"]],
+            binder_provider=SelectingBinderProvider(),
+            calculation=_RaisingCalculation(),
+        )
+        assert "calculator secret" not in str(outcome.to_dict()), mode
+        outcomes[mode] = outcome
+
+    legacy = outcomes[AgentRuntimeMode.LEGACY]
+    harness = outcomes[AgentRuntimeMode.HARNESS_V3]
+    assert legacy.status is harness.status
+    assert legacy.reason_codes == harness.reason_codes
+
+
+def test_rejected_validator_never_releases_on_the_test_release_path() -> None:
+    """A verdict object is truthy regardless of its verdict.
+
+    The test-release path wires the validator into the harness.  A validator
+    that returns a result object rather than a bool must still be able to
+    reject: reading truthiness instead of the verdict would release a candidate
+    the validator just refused.
+    """
+
+    verdicts: list[str] = []
+
+    class Verdict:
+        passed = False
+        status = "FAIL"
+        reason_codes = ("BOUND_EVIDENCE_NOT_ADMITTED",)
+
+    class RejectingValidation:
+        def validate(self, state: AdaptiveRAGStateV1, candidate: Any) -> Any:
+            verdicts.append("called")
+            return Verdict()
+
+    class StringGeneration:
+        def generate(self, state: AdaptiveRAGStateV1) -> str:
+            return "UNVALIDATED ANSWER"
+
+    facts = {"E1": _fact("E1", value="100")}
+    retrieval, binder, _, _, _ = _real_capabilities([["E1"]], facts)
+    coordinator = BoundedTrustedV2Coordinator(
+        SupervisorService(
+            DeterministicFallbackProvider({"What was revenue?": _plan(_slot("revenue"))})
+        ),
+        capabilities=TrustedV2CapabilityPorts(
+            retrieval=retrieval,
+            evidence_evaluator=binder,
+            generation=StringGeneration(),
+            release_validator=RejectingValidation(),
+        ),
+        budget=_BUDGET,
+        allow_test_release=True,
+    )
+    outcome = asyncio.run(coordinator.execute(_request("What was revenue?", "h1-verdict")))
+
+    assert verdicts == ["called"], "the validator must actually be consulted"
+    assert outcome.release_status.value != "RELEASED"
+    assert outcome.answer is None
+
+
+def test_unknown_status_fails_closed_instead_of_raising() -> None:
+    """A resumed state may carry a phase this controller does not own."""
+
+    state = _loop_state()
+    state.status = "EXECUTION_ERROR"
+    result = BoundedAdaptiveRAGV1().run(
+        state,
+        {ToolCapability.SEMANTIC_RETRIEVAL: lambda query, current: [_packet()]},
+    )
+
+    assert result.state.status == AdaptivePhase.FAIL_CLOSED.value
+    assert result.state.stop_reason == ReasonCode.STRUCTURAL_NOT_READY.value
+
+
+def test_malformed_tool_packet_fails_closed_like_a_raising_tool() -> None:
+    """Normalization is part of the tool contract, not outside it.
+
+    A packet the harness cannot normalize must be captured as a tool error and
+    fail the run closed, rather than raising out of ``run()`` and bypassing the
+    bounded-result contract.
+    """
+
+    result = BoundedAdaptiveRAGV1().run(
+        _loop_state(),
+        {ToolCapability.SEMANTIC_RETRIEVAL: lambda query, current: [{"evidence_id": "e1", "slots": 5}]},
+    )
+
+    # The run terminated through the bounded contract, not by raising.
+    assert result.state.status == AdaptivePhase.FAIL_CLOSED.value
+    # The malformed packet was recorded as a tool error on its turn.
+    assert result.state.turns[0]["action"] == "SEMANTIC_RETRIEVAL"
+    assert result.state.turns[0]["outcome"]["error"] == "TypeError"
+    assert result.state.turns[0]["outcome"]["packet_count"] == 0
+
+
+def test_verification_is_recorded_as_a_turn() -> None:
+    """The trace must show that verification ran, and whether it passed."""
+
+    passed = _run_loop(generator=lambda state: "answer", verifier=lambda state, out: True)
+    assert passed.state.turns[-1]["action"] == "VERIFY"
+    assert passed.state.turns[-1]["outcome"] == {"verification_passed": True}
+
+    rejected = _run_loop(generator=lambda state: "answer", verifier=lambda state, out: False)
+    assert rejected.state.turns[-1]["action"] == "VERIFY"
+    assert rejected.state.turns[-1]["outcome"] == {"verification_passed": False}
+
+
+# --- harness-level verification guards --------------------------------------
 def _loop_state() -> AdaptiveRAGStateV1:
     return AdaptiveRAGStateV1.new(
         "q1",
@@ -297,7 +518,7 @@ def test_generator_and_verifier_pass_reaches_release() -> None:
 
     assert result.state.status == AdaptivePhase.RELEASE.value
     assert result.released is True
-    assert result.state.action_trace == ["SEMANTIC_RETRIEVAL", "GENERATE"]
+    assert result.state.action_trace == ["SEMANTIC_RETRIEVAL", "GENERATE", "VERIFY"]
 
 
 def test_a_generator_without_a_verifier_fails_closed() -> None:

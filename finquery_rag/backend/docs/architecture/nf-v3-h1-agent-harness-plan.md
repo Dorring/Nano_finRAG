@@ -24,6 +24,11 @@ the re-scoped H1 that closes the genuine gap.
 
 ## 2. Audit: the real execution path
 
+**This section is the audit record as found at baseline `b393d3e`.** Line numbers
+and behaviour described here are pre-H1; D1–D5 changed several of them (§9 records
+what changed). Read it as "what was true when the plan was written", not as a
+description of the current tree.
+
 ### 2.1 Production entry
 
 ```
@@ -60,9 +65,9 @@ already implements the control plane the brief asked for:
 | Generation is not a tool | `generator` / `verifier` callbacks after `READY_TO_GENERATE` | `adaptive_state_machine.py:191-205` |
 
 The harness is bounded and fail-closed: a local `guard`
-(`adaptive_state_machine.py:95`, `max_total_tool_calls * 4 + 12`) prevents infinite
-loops, and every abnormal exit routes through `_fail()` to `FAIL_CLOSED` with a
-`ReasonCode`.
+(`adaptive_state_machine.py:95`, `max_total_tool_calls * 4 + 12` at baseline;
+`* 6 + 20` after D3 added phases) prevents infinite loops, and every abnormal exit
+routes through `_fail()` to `FAIL_CLOSED` with a `ReasonCode`.
 
 ### 2.3 The actual gap — the loop does not close
 
@@ -346,3 +351,33 @@ a verifier would have released unconditionally. It now fails closed with
 `VERIFICATION_NOT_WIRED`. This mattered because `TrustedReleaseValidationCapability.validate`
 returns a `V2ValidationResult` object, not a bool — it is always truthy, so a
 naive wiring would have released without the validator's verdict being read.
+
+## 10. Review findings and disposition
+
+A three-way review (change set, coordinator, `rag_v2/adaptive`) produced 15
+findings. Fixed:
+
+| # | Finding | Where |
+|---|---|---|
+| 1 | A rejected candidate could RELEASE: the test-release path wired the raw validator into the harness, and `bool(V2ValidationResult)` is always true | `_release_verdict` reads the verdict explicitly |
+| 2 | harness_v3 dropped `route`, so a public field reported the plan intent instead of the generation route | outcome rebuild passes `route=` |
+| 3 | harness_v3 released with the trace's reason-code superset, labelling a clean release `WRONG_PERIOD` | rebuild uses the candidate's own codes |
+| 4 | A BLOCKED/FAILED in-loop calculation reached generation (validation was skipped) | invocation conditional, validation shared |
+| 5 | The candidate stage read `capability.last_result`, an undocumented side effect; a conforming calculator without it turned a release into EXECUTION_ERROR | the loop's return value is captured at the call boundary |
+| 6 | The in-loop CALCULATE ran *before* evidence admission | gated on `state.bound_evidence_ids` |
+| 7 | A raising calculator produced a different failure class per mode | mapped to the legacy terminal |
+| 8 | `NF_AGENT_RUNTIME_MODE` leaked into every coordinator construction, so an exported env var broke unrelated tests | only production wiring reads the env |
+| 9 | `turns` bypassed `_sanitize_trace_payload`, breaking the no-private-reasoning invariant | added to the normalized field list |
+| 10 | `AdaptivePhase(state.status)` raised on an unknown status, escaping `run()` | fails closed with `STRUCTURAL_NOT_READY` |
+| 11 | A malformed tool packet raised during normalization, outside the tool `try` | normalization moved inside it |
+| 12 | The VERIFY phase recorded no turn, so the trace could not show verification ran or failed | records a turn with the verdict |
+| 13 | This document stated the pre-change guard formula as current | labelled §2 as the baseline record |
+
+Reported, not fixed — pre-existing and out of H1 scope:
+
+- `max_identical_query_retry` is declared, plumbed through
+  `V2_MAX_IDENTICAL_QUERY_RETRIES`, and enforced nowhere.
+- `_capability_trace()` exposes lifetime port counters, so a trace can report
+  work done by a previous request on the same coordinator.
+- `runtime_metadata` is not passed through `_sanitize_trace_payload`, unlike the
+  trace itself.

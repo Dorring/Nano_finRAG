@@ -10,6 +10,7 @@ from typing import Any
 from rag_v2.adaptive import AdaptiveRAGBudgetV1
 from rag_v2.supervisor import SupervisorService, UnknownSemanticPolicy
 
+from .harness_runtime_mode import AgentRuntimeMode, coerce_agent_runtime_mode
 from .trusted_v2_adapter import TrustedFinancialRuntimeV2
 from .trusted_v2_capabilities import TrustedV2CapabilityPorts
 from .trusted_v2_coordinator import BoundedTrustedV2Coordinator
@@ -36,6 +37,7 @@ def build_trusted_v2_runtime(
     unknown_semantic_policy: UnknownSemanticPolicy | str = (
         UnknownSemanticPolicy.COMPATIBILITY
     ),
+    runtime_mode: AgentRuntimeMode | str | None = None,
 ) -> TrustedFinancialRuntimeV2:
     """Build the complete V2 runtime with explicit dependencies.
 
@@ -74,6 +76,7 @@ def build_trusted_v2_runtime(
         budget=budget,
         allow_test_release=False,
         unknown_semantic_policy=unknown_semantic_policy,
+        runtime_mode=coerce_agent_runtime_mode(runtime_mode),
     )
     return TrustedFinancialRuntimeV2(coordinator)
 

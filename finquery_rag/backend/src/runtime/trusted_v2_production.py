@@ -37,6 +37,7 @@ from rag_v2.supervisor import (
     UnknownSemanticPolicy,
 )
 
+from .harness_runtime_mode import resolve_agent_runtime_mode
 from .runtime_contract import FinancialQueryRequest
 from .trusted_v2_adapter import TrustedFinancialRuntimeV2
 from .trusted_v2_binder import SemanticEvidenceEvaluationCapability
@@ -1023,6 +1024,10 @@ def build_trusted_v2_runtime_for_request(
             # metric is not explicitly recognized by the alignment gate.
             # Generic operation-only calculation prompts remain compatible.
             unknown_semantic_policy=UnknownSemanticPolicy.STRICT_DIRECT_FACT,
+            # This is the only place NF_AGENT_RUNTIME_MODE is read.  The
+            # coordinator takes an explicit mode so that constructing one does
+            # not depend on ambient process state.
+            runtime_mode=resolve_agent_runtime_mode(),
         )
     except TrustedV2ProductionConfigurationError:
         raise

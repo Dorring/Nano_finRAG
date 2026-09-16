@@ -355,6 +355,7 @@ class V2ExecutionTrace:
             "transitions",
             "tool_history",
             "retrieval_rounds",
+            "turns",
             "semantic_alignment",
             "claim_provenance",
         ):
@@ -365,7 +366,7 @@ class V2ExecutionTrace:
                     if isinstance(value, Mapping)
                     else value
                 )
-            elif field_name in {"transitions", "tool_history", "retrieval_rounds"}:
+            elif field_name in {"transitions", "tool_history", "retrieval_rounds", "turns"}:
                 normalized = tuple(
                     _sanitize_trace_payload(item)
                     for item in value
@@ -883,12 +884,16 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             or getattr(self.capabilities.generation, "candidate_mode", False)
         )
 
-    def _harness_calculator(self) -> Any | None:
-        """Return the in-loop calculator, or None when the mode keeps it outside.
+    def _harness_calculator(self, sink: dict[str, Any]) -> Any | None:
+        """Return the in-loop calculator, capturing what it returns.
 
-        Only ``harness_v3`` wires deterministic calculation into the loop.  In
-        ``legacy`` mode calculation stays in ``_candidate_stage``, so the two
-        modes remain directly comparable.
+        The harness runs the calculator inside the loop; the candidate stage
+        must then validate *that* result rather than invoke the calculator a
+        second time.  The result is captured at this boundary rather than read
+        back from the capability afterwards, because ``calculate(state) ->
+        CalculationResult`` is the entire port contract -- ``last_result`` is a
+        private implementation detail that a conforming calculator need not
+        maintain.
         """
 
         if self.runtime_mode is not AgentRuntimeMode.HARNESS_V3:
@@ -896,8 +901,27 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         calculation = self.capabilities.calculation
         if calculation is None:
             return None
-        calculator = getattr(calculation, "calculate", None)
-        return calculator if callable(calculator) else None
+        calculate = getattr(calculation, "calculate", None)
+        if not callable(calculate):
+            return None
+
+        def calculator(state: AdaptiveRAGStateV1) -> Any:
+            result = calculate(state)
+            sink["result"] = result
+            return result
+
+        return calculator
+
+    def _release_verdict(self, state: AdaptiveRAGStateV1, candidate: Any) -> bool:
+        """Read the validator's verdict as a bool, for the harness VERIFY phase.
+
+        Validators may return either a bool or a result object.  A result
+        object is truthy regardless of its verdict, so the judgement must be
+        read from the result rather than from its presence.
+        """
+
+        result = self.capabilities.release_validator.validate(state, candidate)
+        return bool(getattr(result, "passed", result))
 
     def _harness_finalizer(
         self,
@@ -907,6 +931,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         plan_id: str,
         evaluator_adapter: "_EvaluatorAdapter",
         finalization: dict[str, Any],
+        calculation_sink: dict[str, Any],
     ) -> tuple[Any, Any]:
         """Run the existing candidate/validation path as the harness tail.
 
@@ -923,6 +948,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 plan_id=plan_id,
                 state=current_state,
                 evaluator_adapter=evaluator_adapter,
+                harness_calculation=calculation_sink.get("result"),
             )
             finalization["outcome"] = outcome
             return bool(outcome.status is V2ExecutionStatus.READY_FOR_RELEASE)
@@ -961,6 +987,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         plan_id: str,
         state: AdaptiveRAGStateV1,
         evaluator_adapter: _EvaluatorAdapter,
+        harness_calculation: Any = None,
     ) -> V2ExecutionOutcome:
         """Prepare one Candidate and, when wired, cross the TV2-05 gate."""
 
@@ -992,12 +1019,10 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                     citation_ids=evaluator_adapter.citation_ids,
                 )
             if state.calculation_attempted:
-                # harness_v3 ran the calculator inside the loop.  Re-read its
-                # result instead of running it twice, but run it through the
-                # same validation below: an in-loop calculation that came back
-                # blocked must fail closed here with the same reason code the
-                # legacy path would have produced.
-                result = getattr(capability, "last_result", None)
+                # harness_v3 ran the calculator inside the loop.  Validate the
+                # value it returned, captured at the call boundary, rather than
+                # running it twice or reading the port's private state.
+                result = harness_calculation
             else:
                 try:
                     result = capability.calculate(state)
@@ -1683,9 +1708,14 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             and self.capabilities.release_validator is not None
         ):
             generator = self.capabilities.generation.generate
-            verifier = self.capabilities.release_validator.validate
+            # Never hand the raw validator to the loop.  A validator that
+            # returns a result object rather than a bool is always truthy, so
+            # `bool(verifier(...))` would release a candidate the validator just
+            # rejected.  _release_verdict reads the verdict explicitly.
+            verifier = self._release_verdict
 
         finalization: dict[str, Any] = {}
+        calculation_sink: dict[str, Any] = {}
         if (
             self.runtime_mode is AgentRuntimeMode.HARNESS_V3
             and self._candidate_generation_enabled()
@@ -1696,6 +1726,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 plan_id=plan_id,
                 evaluator_adapter=evaluator_adapter,
                 finalization=finalization,
+                calculation_sink=calculation_sink,
             )
 
         try:
@@ -1706,7 +1737,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 state,
                 tools,
                 initial_action=initial_action,
-                calculator=self._harness_calculator(),
+                calculator=self._harness_calculator(calculation_sink),
                 generator=generator,
                 verifier=verifier,
             )
@@ -1754,18 +1785,43 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 plan=plan,
                 plan_id=plan_id,
                 state=bounded_result.state,
-                reason_codes=candidate_trace.get("reason_codes", ()),
+                # The candidate's own release reasons, not the trace's.  The
+                # trace deliberately folds in every binder round's reason codes,
+                # so reusing it here would label a clean release with a recovery
+                # code that was already resolved (e.g. WRONG_PERIOD).
+                reason_codes=candidate.reason_codes,
                 status=candidate.status,
                 answer=candidate.answer,
+                # Without this the rebuilt outcome would report the plan intent
+                # as its route, contradicting the trace's generation_route.
+                route=candidate.route,
                 evidence_ids=candidate.evidence_ids,
                 citation_ids=candidate.citation_ids,
                 calculation_ids=candidate.calculation_ids,
                 validator_status=candidate.validator_status,
                 terminal_state=(
-                    candidate_trace.get("terminal_state") or bounded_result.state.status
+                    candidate.runtime_metadata.get("terminal_state")
+                    or bounded_result.state.status
                 ),
                 extra_metadata=candidate.runtime_metadata,
                 semantic_alignment=candidate_trace.get("semantic_alignment"),
+            )
+
+        # harness_v3 runs the calculator inside the loop, so a calculator that
+        # raises is caught there rather than in the calculation branch below.
+        # Map it back to the legacy terminal so the ablation does not change the
+        # observable failure class (EXECUTION_ERROR, not a policy refusal).
+        if (
+            self.runtime_mode is AgentRuntimeMode.HARNESS_V3
+            and state.stop_reason == ReasonCode.CALCULATION_ERROR.value
+        ):
+            return self._outcome(
+                request=request, plan=plan, plan_id=plan_id, state=state,
+                reason_codes=["CALCULATOR_EXCEPTION"],
+                status=V2ExecutionStatus.EXECUTION_ERROR,
+                terminal_state="CALCULATE",
+                evidence_ids=evaluator_adapter.bound_evidence_ids,
+                citation_ids=evaluator_adapter.citation_ids,
             )
 
         if final_state == "READY_TO_GENERATE" and self._candidate_generation_enabled():

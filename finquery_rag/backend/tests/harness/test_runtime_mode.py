@@ -36,14 +36,34 @@ def test_unknown_mode_is_rejected_loudly() -> None:
     assert "legacy" in str(excinfo.value)
 
 
-def test_coerce_prefers_an_explicit_value_over_the_environment(
+def test_coerce_defaults_to_legacy_and_ignores_the_environment(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
+    """A coordinator must not change behaviour because of ambient process state.
+
+    Only the production wiring calls resolve_agent_runtime_mode(); every other
+    construction path defaults to legacy regardless of NF_AGENT_RUNTIME_MODE.
+    """
+
     monkeypatch.setenv(ENV_VAR, "harness_v3")
     assert coerce_agent_runtime_mode(AgentRuntimeMode.LEGACY) is AgentRuntimeMode.LEGACY
     assert coerce_agent_runtime_mode("harness_v3") is AgentRuntimeMode.HARNESS_V3
-    # None means "ask the environment", which the monkeypatch has set.
-    assert coerce_agent_runtime_mode(None) is AgentRuntimeMode.HARNESS_V3
+    assert coerce_agent_runtime_mode(None) is AgentRuntimeMode.LEGACY
+
+
+def test_constructing_a_coordinator_is_environment_independent(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from rag_v2.supervisor import DeterministicFallbackProvider, SupervisorService
+    from src.runtime.trusted_v2_capabilities import TrustedV2CapabilityPorts
+    from src.runtime.trusted_v2_coordinator import BoundedTrustedV2Coordinator
+
+    monkeypatch.setenv(ENV_VAR, "harness_v3")
+    coordinator = BoundedTrustedV2Coordinator(
+        SupervisorService(DeterministicFallbackProvider({})),
+        capabilities=TrustedV2CapabilityPorts(),
+    )
+    assert coordinator.runtime_mode is AgentRuntimeMode.LEGACY
 
 
 def test_coordinator_defaults_to_legacy_mode() -> None:

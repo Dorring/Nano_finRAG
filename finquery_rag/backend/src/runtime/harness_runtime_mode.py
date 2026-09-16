@@ -8,6 +8,10 @@ release are harness phases.
 The default is ``legacy``.  That makes the change an ablation rather than a
 replacement: same supervisor, retrieval, binder, calculator, generator and
 validator, with only the execution model differing.
+
+Only the production wiring reads ``NF_AGENT_RUNTIME_MODE``
+(:func:`resolve_agent_runtime_mode`); the coordinator itself takes an explicit
+mode and defaults to ``legacy`` without touching the environment.
 """
 
 from __future__ import annotations
@@ -51,10 +55,17 @@ def resolve_agent_runtime_mode(
 def coerce_agent_runtime_mode(
     value: AgentRuntimeMode | str | None,
 ) -> AgentRuntimeMode:
-    """Normalize an explicit mode, falling back to the environment."""
+    """Normalize an explicit mode, defaulting to ``legacy``.
+
+    This deliberately does **not** consult the environment.  A coordinator that
+    read ``os.environ`` at construction would change behaviour based on ambient
+    process state, which makes tests order- and environment-dependent.  Only the
+    production wiring calls :func:`resolve_agent_runtime_mode` and passes the
+    result in explicitly.
+    """
 
     if value is None:
-        return resolve_agent_runtime_mode()
+        return AgentRuntimeMode.LEGACY
     if isinstance(value, AgentRuntimeMode):
         return value
     try:

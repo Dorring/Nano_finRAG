@@ -87,13 +87,22 @@ class BoundedAdaptiveRAGV1:
     ) -> bool:
         """Whether this run should run the calculator inside the loop.
 
-        Two conditions, both required.  The plan must carry calculation
-        requirements, and a calculator must have been supplied.  Without a
-        calculator the harness is not the owner of calculation: the caller
-        keeps that step, which is the legacy contract.
+        Three conditions, all required.  The plan must carry calculation
+        requirements, evidence must have been admitted, and a calculator must
+        have been supplied.
+
+        The admission condition is what keeps the calculator behind the
+        evidence gate.  ``state.bound_evidence_ids`` is the set the evidence
+        evaluator admitted; without it a run whose operands were never admitted
+        would still invoke the calculator and mutate calculation state before
+        being rejected downstream.  Without a calculator the harness is not the
+        owner of calculation at all -- the caller keeps that step, which is the
+        legacy contract.
         """
 
         if calculator is None:
+            return False
+        if not state.bound_evidence_ids:
             return False
         return bool(state.calculation_requirements) and not state.calculation_attempted
 
@@ -120,7 +129,14 @@ class BoundedAdaptiveRAGV1:
         # GENERATE/VERIFY/RELEASE tail for every round.
         while guard < self.budget.max_total_tool_calls * 6 + 20:
             guard += 1
-            phase = AdaptivePhase(state.status)
+            try:
+                phase = AdaptivePhase(state.status)
+            except ValueError:
+                # A resumed or externally supplied state may carry a status this
+                # controller does not own.  Fail closed instead of raising out of
+                # run() and bypassing the bounded-result contract.
+                self._fail(state, ReasonCode.STRUCTURAL_NOT_READY)
+                break
             if phase is AdaptivePhase.PLAN:
                 state.transition(AdaptivePhase.ACT, "initial plan accepted")
                 continue
@@ -152,13 +168,16 @@ class BoundedAdaptiveRAGV1:
                 state.query_history.append(pending.query)
                 try:
                     raw_packets = list(tool(pending.query, state))
+                    # Normalization is part of the tool contract: a tool that
+                    # returns a malformed packet has failed, and must fail
+                    # closed exactly like one that raised.
+                    packets = [EvidencePacketV1.from_mapping(item) for item in raw_packets]
                 except Exception as exc:  # deterministic fail-closed; expose only type
                     state.last_observation = {"error": type(exc).__name__, "packet_count": 0}
                     state.observe_turn(state.last_observation)
                     state.stop_reason = ReasonCode.TOOL_ERROR.value
                     state.transition(AdaptivePhase.OBSERVE, ReasonCode.TOOL_ERROR.value)
                     continue
-                packets = [EvidencePacketV1.from_mapping(item) for item in raw_packets]
                 state.add_evidence(packets)
                 state.last_observation = {"packet_count": len(packets), "evidence_ids": [item.evidence_id for item in packets]}
                 state.observe_turn(state.last_observation)
@@ -279,12 +298,16 @@ class BoundedAdaptiveRAGV1:
                 if verifier is None:
                     self._fail(state, ReasonCode.VERIFICATION_NOT_WIRED)
                     break
+                state.record_turn(AdaptivePhase.VERIFY.value)
                 try:
                     passed = bool(verifier(state, output))
                 except Exception as exc:  # deterministic fail-closed; expose only type
                     state.last_observation = {"error": type(exc).__name__}
+                    state.observe_turn(state.last_observation)
                     self._fail(state, ReasonCode.VERIFICATION_ERROR)
                     break
+                state.last_observation = {"verification_passed": passed}
+                state.observe_turn(state.last_observation)
                 if passed:
                     state.transition(AdaptivePhase.RELEASE, "existing validator path passed")
                 else:
