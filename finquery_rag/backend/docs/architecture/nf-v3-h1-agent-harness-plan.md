@@ -501,7 +501,15 @@ Delivered:
 7. **Port scope pinned** — the capability snapshots the coordinator reports are
    lifetime figures, which only equal this-run figures because the builder makes
    fresh ports per request. That was true and untested; it now is tested (§10).
-8. **Seal** — `docs/showcase/nf-v3-h1-harness-core.md`, tag `nf-v3-h1-harness-core`.
+8. **Review pass** — two independent reviews, over the test surface and the
+   production diff, each verifying findings by execution. Sixteen findings, all
+   addressed. The most serious was introduced *during* the cleanup: a rewrite of
+   `canonicalize_decision_result` stopped comparing `runtime_metadata` -- the
+   field carrying `release_decision`, `validation_status` and `failed_checks` --
+   and all ten fixtures stayed green. The seal document records it in full,
+   because the mechanism (a field named by a different constant than the one the
+   loop iterated) is the same class of defect the contract exists to prevent.
+9. **Seal** — `docs/showcase/nf-v3-h1-harness-core.md`, tag `nf-v3-h1-harness-core`.
 
 ### Cross-check: the runner was falsified against the pre-fix tree
 

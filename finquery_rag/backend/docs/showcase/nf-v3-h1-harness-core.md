@@ -8,7 +8,7 @@ mode flag, with the deterministic validator still owning the release decision.
 
 **What this is not.** It is a *bounded, policy-constrained* harness, not an
 autonomous one. The execution skeleton was already present; the agent
-intelligence half is not. §7 lists exactly what is still missing, and that list
+intelligence half is not. §9 lists exactly what is still missing, and that list
 is the honest boundary of this seal.
 
 ## 1. The audit finding, stated correctly
@@ -139,7 +139,7 @@ Ten fixtures, hashed as a set:
 
 ```
 sealed fixture digest
-9c7cda07004f05ce1bac616c1a7f6bb3570488c052d6299fe193674d1a3a562e
+ac978c942d572325df3bcbf33bf3dc032dbdac5818d69e9b582347fbe8ffc02d
 ```
 
 They run through the **production entry point** — `NF_AGENT_RUNTIME_MODE` read by
@@ -190,7 +190,8 @@ in `SEALED_CASE_COVERAGE`; a test asserts every sealed case has exactly one entr
 so the table cannot drift from the dataset. Two of the gaps matter most:
 
 - `recovery_period` — cannot be driven through production wiring at all, because
-  the retriever issues identical queries across replan rounds (§ below).
+  the retriever issues identical queries across replan rounds (see the
+  WRONG_PERIOD note below).
 - `repair_once` — the release path is single-shot in both modes: a rejected
   candidate fails closed instead of entering the repair lane.
 
@@ -230,7 +231,101 @@ drives it with a reader that can advance between rounds — but it is not
 reachable through this retriever's query derivation. Recorded, not fixed:
 changing retrieval or binder semantics is outside H1's scope by construction.
 
-## 7. What H1 does not have
+## 7. The review pass, and what it caught
+
+Two independent reviews — one over the harness test surface, one over the
+production diff — ran after the seal. Both were asked to verify every finding by
+execution, and both did. The most useful result was not in the change set.
+
+**The equivalence contract had stopped comparing `runtime_metadata` — introduced
+during cleanup, found by a test written to guard the contract.** A rewrite of
+`canonicalize_decision_result` built its payload by iterating
+`DECISION_BEARING_FIELDS`, and `runtime_metadata` is named by a *separate*
+constant, so the field carrying `release_decision`, `validation_status`,
+`failed_checks` and the terminal state was declared decision-bearing and never
+compared. All ten fixtures stayed green, because nothing else differed. A
+production reviewer found it independently, by tampering with
+`release_decision` and observing that the comparison did not notice.
+
+The fix has three parts: the payload is built from the union of both constants; a
+non-vacuity test asserts every declared name reaches the payload; and
+`decision_differences` now *refuses* to compare an incomplete payload rather than
+reporting agreement, so "the modes agree" and "nothing was compared" can no
+longer produce the same answer. The refusal sits on the comparison path, so every
+caller gets it.
+
+Other findings fixed:
+
+- **A bad `NF_AGENT_RUNTIME_MODE` reported a build failure.** The mode was
+  resolved inside the graph-building `try`, so the purpose-built error naming the
+  bad value was swallowed by the generic handler and re-raised as "could not
+  build the request-scoped Trusted V2 runtime graph". An operator typo sent
+  someone to look at their asset provisioning. Verified before and after.
+- **`allow_test_release` silently split the two modes.** The flag wires the
+  *string*-returning generator the pre-closure loop was built for, and the
+  post-loop release branch rejects anything that is not a string. With
+  candidate-mode ports — which return a `CandidateExecutionResult` — `legacy` ran
+  the raw generator, reached RELEASE, and then failed its own contract check,
+  while `harness_v3`'s finalizer ignored the flag and released. Nine
+  decision-bearing fields diverged. No test covered the combination, because the
+  flag's own tests use generators without `candidate_mode`, so the wiring never
+  engaged. The flag is now gated on the candidate path being disabled.
+- **The ablation invoked the calculator where the baseline does not.**
+  `_harness_calculator` gated on the runtime mode alone, so with a
+  non-candidate-mode calculation port `harness_v3` ran CALCULATE as a phase while
+  `legacy` returned at READY_TO_GENERATE and never reached the candidate stage's
+  `calculate()`. Contract-blind — the decision surfaces were identical — and
+  visible only in the port's call count. It is now gated on exactly the same
+  condition as the finalizer.
+- **`adapter_agrees` was dead code**: 34 lines asserting the transport mapping
+  agreed with the coordinator, dropped in the rewiring and called by nothing. It
+  is wired back into the report.
+- **The sealed digest did not seal the fixtures.** `spec()` omitted every
+  `expect_*` field, so the digest did not move when a fixture's expectation did —
+  it sealed the inputs while the report described it as sealing the fixture. A
+  test now asserts every declared field appears in `spec()`.
+- **Two coverage assertions were tautologies** (`len(x) + (n - len(x)) == n`),
+  and the drift check only ran in one direction: an entry for a case the dataset
+  no longer has was invisible. Both directions are checked now.
+- Four smaller ones: an unreachable `Enum` branch in `_jsonable` (both status
+  enums subclass `str`, so the branch was dead and the payload held enum
+  members); `DECISION_BEARING_FIELDS` never validated its names, so a typo
+  compared `None == None`; duplicated calculation stubs whose copies lacked
+  `trace_snapshot`; a tripwire keyed by basename that could silently drop a file
+  and excluded the one production file that legitimately names the field.
+
+Two findings were documentation defects rather than code defects, and both are
+corrected in place: the loop-guard comment claimed a margin that measurement
+shows is never consumed (a bounded run terminates after 4–8 transitions against a
+bound of at least 26, so the post-loop `BUDGET_EXHAUSTED` fail is a second
+backstop that cannot fire today), and `calculation_attempted` was described as
+preventing endless recalculation when EVALUATE cannot be re-entered after
+CALCULATE — its real job is coupling the coordinator's two candidate-stage call
+sites.
+
+## 8. Legacy is not byte-identical, and the difference is deliberate
+
+The review built a baseline worktree at `b393d3e`, ran a legacy scenario matrix
+against both trees, and found three loop-level changes reachable by direct
+`BoundedAdaptiveRAGV1.run` callers:
+
+| Scenario | Baseline | Now |
+| --- | --- | --- |
+| retrieval returns non-Mapping packets | TypeError escapes `run()` | FAIL_CLOSED / `TOOL_ERROR` |
+| unknown `state.status` | ValueError escapes `run()` | FAIL_CLOSED / `STRUCTURAL_NOT_READY` |
+| generator wired without a verifier | RELEASE | FAIL_CLOSED / `VERIFICATION_NOT_WIRED` |
+
+The third is the release-integrity fix and must stay. The first two replace an
+exception escaping the bounded-result contract with a fail-closed terminal —
+robustness, not a semantic change, but a change. Everything else in the matrix
+was byte-identical apart from the additive trace keys.
+
+**Through the coordinator — the production path — `legacy` is unchanged.** These
+three affect only callers driving `run()` directly. The seal's "legacy does not
+degrade" claim is about the coordinator path; this table is the precise version
+of that claim.
+
+## 9. What H1 does not have
 
 These are the capabilities of a modern agent harness that this project does
 **not** have. They are the forward roadmap, not a defect list.
@@ -260,12 +355,12 @@ single-shot (a rejected candidate fails closed rather than entering the repair
 lane), `runtime_metadata` is not passed through `_sanitize_trace_payload`, and
 `harness_v3` builds the execution trace twice on a released request.
 
-## 8. Acceptance criteria
+## 10. Acceptance criteria
 
 | # | Criterion | Result |
 | --- | --- | --- |
 | 1 | Existing regression does not degrade | PASS — failing-test set unchanged from the pre-H1 baseline |
-| 2 | New harness tests all green | PASS — `tests/harness/` 89 passed |
+| 2 | New harness tests all green | PASS — `tests/harness/` 103 passed |
 | 3 | `legacy` still runs, and is the default | PASS |
 | 4 | `harness_v3` enabled by feature flag | PASS — and the flag path itself is under test |
 | 5 | Evidence Gate not bypassed | PASS — one violation found and fixed |
@@ -278,12 +373,11 @@ lane), `runtime_metadata` is not passed through `_sanitize_trace_payload`, and
 | 12 | Simple fact query needs no multi-agent | PASS — `fact_direct` |
 | 13 | No subagent / swarm | PASS |
 
-## 9. Test suite accounting
+## 11. Test suite accounting
 
 ```
-4047 collected (H1.1, before the rewiring) = 39 failed + 3865 passed + 143 skipped
-4053 collected (H1.1, final)               = 39 failed + 3871 passed + 143 skipped
-4017 collected (baseline)                  = 144 failed + 3835 passed + 38 skipped
+4068 collected (H1.1, final)  =  39 failed + 3886 passed + 143 skipped
+4017 collected (baseline)     = 144 failed + 3835 passed +  38 skipped
 ```
 
 The counts sum exactly in every row. H1's audit reported "3964 collected", which
@@ -293,7 +387,7 @@ leans on exact counts.
 
 Measured in a working tree that also carries five uncommitted TV2 evaluation
 files contributing 14 tests (12 pass, 2 skip). On a clean checkout of this
-commit, subtract them: `4039 = 39 + 3859 + 141`. The identities hold either way.
+commit, subtract them: `4054 = 39 + 3874 + 141`. The identities hold either way.
 
 The original 144 failures by cause:
 
@@ -322,7 +416,7 @@ Two collection-time guards were added to `conftest.py`:
 
 `pytest -m "not requires_artifacts"` deselects the artifact-dependent group.
 
-## 10. One budget field is explicitly inert
+## 12. One budget field is explicitly inert
 
 `max_identical_query_retry` was declared, read from the environment and asserted
 in the V2-16 contract test — but read by nothing. `BoundedReplannerV1` reuses the
@@ -334,7 +428,7 @@ It is listed in `AdaptiveRAGBudgetV1.RESERVED_FIELDS`, production warns when an
 operator configures it away from its default, and a tripwire test fails if any
 mode in the control plane starts reading it.
 
-## 11. Capability trace scope
+## 13. Capability trace scope
 
 The coordinator reports each port's own `trace_snapshot()` verbatim, and those
 are lifetime figures — `validation_calls`, `calculator_call_count`,
@@ -346,7 +440,7 @@ coordinator states which way it depends on that. Honest limit: a coordinator tha
 *is* reused across requests would still report a lifetime in a per-run trace —
 pinned at the builder, not enforced at the coordinator.
 
-## 12. Reproduction
+## 14. Reproduction
 
 ```bash
 cd finquery_rag/backend
@@ -359,7 +453,7 @@ python -m pytest -q                                          # full suite
 `scripts/runtime/` is matched by the repository root's `.gitignore` rule
 `runtime/`, so new files there need `git add -f`.
 
-## 13. Commits
+## 15. Commits
 
 Core:
 
@@ -383,7 +477,7 @@ H1.1 seal:
 - `8eaa319` test(runtime): pin that capability ports are per request, not per process
 - and the H1.1 rewiring commit that moved the runner onto the production entry point
 
-## 14. Next
+## 16. Next
 
 `H2A Context & Artifact Runtime` — what the agent sees each turn, not more state
 machinery. Then `H2B Hybrid Decision Runtime` (deterministic replanner for

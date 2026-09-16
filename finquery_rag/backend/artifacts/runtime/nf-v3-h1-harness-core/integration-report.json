@@ -37,7 +37,7 @@
           "RELEASE"
         ],
         "turn_count": 3,
-        "turns": [
+        "turn_records": [
           {
             "action": "SEMANTIC_RETRIEVAL",
             "outcome": {
@@ -70,6 +70,11 @@
             "turn": 3
           }
         ],
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "GENERATE",
+          "VERIFY"
+        ],
         "validator_status": "PASS"
       },
       "legacy": {
@@ -91,6 +96,16 @@
         "budget": null,
         "calculation": "none",
         "description": "One admitted fact releases a direct-fact answer.",
+        "expect_reasons": [],
+        "expect_released": true,
+        "expect_status": "READY_FOR_RELEASE",
+        "expect_transitions": [
+          "READY_TO_GENERATE",
+          "GENERATE",
+          "VERIFY",
+          "RELEASE"
+        ],
+        "factory_eligible": true,
         "facts": {
           "REVENUE": {
             "candidate_id": "REVENUE",
@@ -176,7 +191,7 @@
           "RELEASE"
         ],
         "turn_count": 4,
-        "turns": [
+        "turn_records": [
           {
             "action": "SEMANTIC_RETRIEVAL",
             "outcome": {
@@ -219,6 +234,12 @@
             "turn": 4
           }
         ],
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "CALCULATE",
+          "GENERATE",
+          "VERIFY"
+        ],
         "validator_status": "PASS"
       },
       "legacy": {
@@ -240,6 +261,17 @@
         "budget": null,
         "calculation": "deterministic",
         "description": "A calculation plan runs the deterministic calculator as a loop phase and releases the rendered result.",
+        "expect_reasons": [],
+        "expect_released": true,
+        "expect_status": "READY_FOR_RELEASE",
+        "expect_transitions": [
+          "CALCULATE",
+          "READY_TO_GENERATE",
+          "GENERATE",
+          "VERIFY",
+          "RELEASE"
+        ],
+        "factory_eligible": true,
         "facts": {
           "CURRENT": {
             "candidate_id": "CURRENT",
@@ -357,7 +389,7 @@
           "FAIL_CLOSED"
         ],
         "turn_count": 4,
-        "turns": [
+        "turn_records": [
           {
             "action": "SEMANTIC_RETRIEVAL",
             "outcome": {
@@ -400,6 +432,12 @@
             "turn": 4
           }
         ],
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "CALCULATE",
+          "GENERATE",
+          "VERIFY"
+        ],
         "validator_status": null
       },
       "legacy": {
@@ -422,6 +460,13 @@
         "budget": null,
         "calculation": "blocked",
         "description": "The calculator declines to compute.  The BLOCKED result must fail closed and must not reach generation.",
+        "expect_reasons": [
+          "CALCULATION_INVALID"
+        ],
+        "expect_released": false,
+        "expect_status": "FAIL_CLOSED",
+        "expect_transitions": [],
+        "factory_eligible": true,
         "facts": {
           "CURRENT": {
             "candidate_id": "CURRENT",
@@ -534,7 +579,7 @@
           "FAIL_CLOSED"
         ],
         "turn_count": 2,
-        "turns": [
+        "turn_records": [
           {
             "action": "SEMANTIC_RETRIEVAL",
             "outcome": {
@@ -558,6 +603,10 @@
             "turn": 2
           }
         ],
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "CALCULATE"
+        ],
         "validator_status": null
       },
       "legacy": {
@@ -579,6 +628,13 @@
         "budget": null,
         "calculation": "raising",
         "description": "The calculator raises a contract violation.  Both modes must report the same failure class and leak no exception text.",
+        "expect_reasons": [
+          "CALCULATOR_EXCEPTION"
+        ],
+        "expect_released": false,
+        "expect_status": "EXECUTION_ERROR",
+        "expect_transitions": [],
+        "factory_eligible": true,
         "facts": {
           "CURRENT": {
             "candidate_id": "CURRENT",
@@ -703,7 +759,7 @@
           "FAIL_CLOSED"
         ],
         "turn_count": 4,
-        "turns": [
+        "turn_records": [
           {
             "action": "SEMANTIC_RETRIEVAL",
             "outcome": {
@@ -753,6 +809,12 @@
             "turn": 4
           }
         ],
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "STRUCTURED_FINANCIAL_LOOKUP",
+          "STRUCTURED_FINANCIAL_LOOKUP",
+          "STRUCTURED_FINANCIAL_LOOKUP"
+        ],
         "validator_status": null
       },
       "legacy": {
@@ -778,6 +840,13 @@
         "budget": null,
         "calculation": "none",
         "description": "Only wrong-period evidence exists.  The replanner is invoked repeatedly and the run must exhaust its replan budget and fail closed, with identical route, reason codes and provenance in both modes.  Recovery itself is not reachable here -- see the module note on the R4 policy's derived queries -- so this fixture pins that a *failing* recovery does not drift between modes.",
+        "expect_reasons": [
+          "WRONG_PERIOD"
+        ],
+        "expect_released": false,
+        "expect_status": "FAIL_CLOSED",
+        "expect_transitions": [],
+        "factory_eligible": true,
         "facts": {
           "WRONG": {
             "candidate_id": "WRONG",
@@ -864,7 +933,7 @@
           "FAIL_CLOSED"
         ],
         "turn_count": 2,
-        "turns": [
+        "turn_records": [
           {
             "action": "SEMANTIC_RETRIEVAL",
             "outcome": {
@@ -885,6 +954,10 @@
             "reason_code": "MISSING_SLOT",
             "turn": 2
           }
+        ],
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "SEMANTIC_RETRIEVAL"
         ],
         "validator_status": null
       },
@@ -909,6 +982,11 @@
         "budget": null,
         "calculation": "none",
         "description": "Retrieval returns nothing, so no evidence is ever admitted.  The run must fail closed rather than generate from an empty binder.",
+        "expect_reasons": [],
+        "expect_released": false,
+        "expect_status": "FAIL_CLOSED",
+        "expect_transitions": [],
+        "factory_eligible": true,
         "facts": {
           "REVENUE": {
             "candidate_id": "REVENUE",
@@ -996,7 +1074,7 @@
           "FAIL_CLOSED"
         ],
         "turn_count": 3,
-        "turns": [
+        "turn_records": [
           {
             "action": "SEMANTIC_RETRIEVAL",
             "outcome": {
@@ -1028,6 +1106,11 @@
             "turn": 3
           }
         ],
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "LEXICAL_RETRIEVAL",
+          "LEXICAL_RETRIEVAL"
+        ],
         "validator_status": null
       },
       "legacy": {
@@ -1051,6 +1134,11 @@
         "budget": null,
         "calculation": "none",
         "description": "The index raises, so the retrieval tool fails.  The harness must record a tool error and terminate, not raise out of the loop.",
+        "expect_reasons": [],
+        "expect_released": false,
+        "expect_status": "EXECUTION_ERROR",
+        "expect_transitions": [],
+        "factory_eligible": true,
         "facts": {
           "REVENUE": {
             "candidate_id": "REVENUE",
@@ -1136,7 +1224,7 @@
           "FAIL_CLOSED"
         ],
         "turn_count": 3,
-        "turns": [
+        "turn_records": [
           {
             "action": "SEMANTIC_RETRIEVAL",
             "outcome": {
@@ -1169,6 +1257,11 @@
             "turn": 3
           }
         ],
+        "turns": [
+          "SEMANTIC_RETRIEVAL",
+          "GENERATE",
+          "VERIFY"
+        ],
         "validator_status": "FAIL"
       },
       "legacy": {
@@ -1190,6 +1283,13 @@
         "budget": null,
         "calculation": "none",
         "description": "The generator cites evidence outside Binder admission, so the *real* release validator rejects it.  A rejected candidate must not be released in either mode.",
+        "expect_reasons": [
+          "UNBOUND_CITATION_METADATA"
+        ],
+        "expect_released": false,
+        "expect_status": "FAIL_CLOSED",
+        "expect_transitions": [],
+        "factory_eligible": true,
         "facts": {
           "REVENUE": {
             "candidate_id": "REVENUE",
@@ -1272,7 +1372,7 @@
           "FAIL_CLOSED"
         ],
         "turn_count": 1,
-        "turns": [
+        "turn_records": [
           {
             "action": "SEMANTIC_RETRIEVAL",
             "outcome": {
@@ -1283,6 +1383,9 @@
             "reason_code": "MISSING_SLOT",
             "turn": 1
           }
+        ],
+        "turns": [
+          "SEMANTIC_RETRIEVAL"
         ],
         "validator_status": null
       },
@@ -1311,6 +1414,13 @@
         },
         "calculation": "none",
         "description": "Retrieval keeps returning nothing under a zero-replan budget, so the replanner is refused and the run must fail closed on budget.",
+        "expect_reasons": [
+          "BUDGET_EXHAUSTED"
+        ],
+        "expect_released": false,
+        "expect_status": "FAIL_CLOSED",
+        "expect_transitions": [],
+        "factory_eligible": true,
         "facts": {
           "REVENUE": {
             "candidate_id": "REVENUE",
@@ -1388,6 +1498,7 @@
           "FAIL_CLOSED"
         ],
         "turn_count": 0,
+        "turn_records": [],
         "turns": [],
         "validator_status": null
       },
@@ -1408,6 +1519,13 @@
         "budget": null,
         "calculation": "none",
         "description": "No retrieval port is wired, so the initial action has no tool.  Not factory-eligible: the factory refuses an incomplete graph, so this guard is reachable only from a manually constructed coordinator.  That is the point of the guard existing as well.",
+        "expect_reasons": [
+          "UNSUPPORTED_TOOL_ROUTE"
+        ],
+        "expect_released": false,
+        "expect_status": "FAIL_CLOSED",
+        "expect_transitions": [],
+        "factory_eligible": false,
         "facts": {},
         "fixture_id": "unsupported_route",
         "generation": "trusted",
@@ -1433,8 +1551,102 @@
     }
   ],
   "harness": "nf-v3-h1-harness-core",
-  "sealed_digest": "9c7cda07004f05ce1bac616c1a7f6bb3570488c052d6299fe193674d1a3a562e",
-  "sealed_digest_recomputed": "9c7cda07004f05ce1bac616c1a7f6bb3570488c052d6299fe193674d1a3a562e",
+  "sealed_case_coverage": {
+    "cases": {
+      "assistant_history": {
+        "fixture_id": null,
+        "note": "gap: needs a conversation-history case"
+      },
+      "calc_difference": {
+        "fixture_id": "calculation_growth_rate",
+        "note": "covered: same calculator path, different operation"
+      },
+      "calc_growth": {
+        "fixture_id": "calculation_growth_rate",
+        "note": "covered"
+      },
+      "conflict": {
+        "fixture_id": null,
+        "note": "gap: needs conflicting-evidence binding"
+      },
+      "cross_source": {
+        "fixture_id": null,
+        "note": "gap: needs multi-document cross-source binding"
+      },
+      "fact_direct": {
+        "fixture_id": "fact_direct",
+        "note": "covered"
+      },
+      "fact_margin": {
+        "fixture_id": "fact_direct",
+        "note": "covered: same shape, one admitted fact"
+      },
+      "missing_slot": {
+        "fixture_id": "missing_evidence",
+        "note": "covered: insufficient evidence"
+      },
+      "multi_evidence": {
+        "fixture_id": null,
+        "note": "gap: needs a MULTI-route multi-evidence release"
+      },
+      "multi_evidence_two": {
+        "fixture_id": null,
+        "note": "gap: needs a MULTI-route partial-evidence case"
+      },
+      "no_answer": {
+        "fixture_id": "missing_evidence",
+        "note": "covered: no evidence admitted"
+      },
+      "qualitative": {
+        "fixture_id": null,
+        "note": "gap: needs a MULTI-route qualitative synthesis model"
+      },
+      "recovery_period": {
+        "fixture_id": null,
+        "note": "gap: the retriever issues identical queries across replan rounds, so this case cannot be driven through production wiring (see seal note)"
+      },
+      "recovery_slot": {
+        "fixture_id": null,
+        "note": "gap: needs a slot recovery the retriever can drive"
+      },
+      "repair_once": {
+        "fixture_id": null,
+        "note": "gap: the release path is single-shot in both modes"
+      },
+      "table_heavy": {
+        "fixture_id": null,
+        "note": "gap: needs table-derived evidence"
+      },
+      "unit_scale": {
+        "fixture_id": null,
+        "note": "gap: needs a unit/scale trap corpus"
+      },
+      "unknown_citation": {
+        "fixture_id": "validator_rejection",
+        "note": "covered: same release gate, unadmitted citation"
+      },
+      "unsupported_calculation": {
+        "fixture_id": "calculation_blocked",
+        "note": "covered: as a calculator that declines to execute"
+      },
+      "validator_rejection": {
+        "fixture_id": "validator_rejection",
+        "note": "covered"
+      },
+      "wrong_period": {
+        "fixture_id": "wrong_period_no_progress",
+        "note": "covered: as a fail-closed case"
+      },
+      "wrong_row": {
+        "fixture_id": null,
+        "note": "gap: needs a wrong-row trap corpus"
+      }
+    },
+    "covered": 10,
+    "not_covered": 12,
+    "sealed_cases": 22
+  },
+  "sealed_digest": "ac978c942d572325df3bcbf33bf3dc032dbdac5818d69e9b582347fbe8ffc02d",
   "summary": {
     "decision_equivalence": 10,
     "expectation_failures": 0,
