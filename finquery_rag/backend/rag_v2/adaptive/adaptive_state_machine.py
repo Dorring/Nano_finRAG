@@ -27,6 +27,7 @@ from .adaptive_replanner import BoundedReplannerV1
 
 
 ToolFn = Callable[[str, AdaptiveRAGStateV1], Iterable[Mapping[str, Any]]]
+CalculatorFn = Callable[[AdaptiveRAGStateV1], Any]
 GeneratorFn = Callable[[AdaptiveRAGStateV1], Any]
 VerifierFn = Callable[[AdaptiveRAGStateV1, Any], bool]
 
@@ -79,12 +80,30 @@ class BoundedAdaptiveRAGV1:
         state.stop_reason = reason.value
         state.transition(AdaptivePhase.FAIL_CLOSED, reason.value)
 
+    @staticmethod
+    def _needs_calculation(
+        state: AdaptiveRAGStateV1,
+        calculator: CalculatorFn | None,
+    ) -> bool:
+        """Whether this run should run the calculator inside the loop.
+
+        Two conditions, both required.  The plan must carry calculation
+        requirements, and a calculator must have been supplied.  Without a
+        calculator the harness is not the owner of calculation: the caller
+        keeps that step, which is the legacy contract.
+        """
+
+        if calculator is None:
+            return False
+        return bool(state.calculation_requirements) and not state.calculation_attempted
+
     def run(
         self,
         state: AdaptiveRAGStateV1,
         tools: Mapping[ToolCapability | str, ToolFn],
         *,
         initial_action: ReplanActionV1 | None = None,
+        calculator: CalculatorFn | None = None,
         generator: GeneratorFn | None = None,
         verifier: VerifierFn | None = None,
     ) -> AdaptiveRunResultV1:
@@ -96,7 +115,10 @@ class BoundedAdaptiveRAGV1:
         output: Any = None
         no_progress = False
         guard = 0
-        while guard < self.budget.max_total_tool_calls * 4 + 12:
+        # One spin per phase transition, not per tool call.  The margin covers
+        # PLAN/ACT/OBSERVE/EVALUATE/REPLAN/CALCULATE/READY_TO_GENERATE plus the
+        # GENERATE/VERIFY/RELEASE tail for every round.
+        while guard < self.budget.max_total_tool_calls * 6 + 20:
             guard += 1
             phase = AdaptivePhase(state.status)
             if phase is AdaptivePhase.PLAN:
@@ -177,7 +199,10 @@ class BoundedAdaptiveRAGV1:
                 state.conflicts = [dict(item) for item in evaluation.conflicts]
                 state.filled_slots = {slot: [] for slot in evaluation.supported_slots}
                 if evaluation.decision is EvidenceDecision.SUFFICIENT:
-                    state.transition(AdaptivePhase.READY_TO_GENERATE, "evidence sufficient")
+                    if self._needs_calculation(state, calculator):
+                        state.transition(AdaptivePhase.CALCULATE, "evidence sufficient; calculation required")
+                    else:
+                        state.transition(AdaptivePhase.READY_TO_GENERATE, "evidence sufficient")
                 elif evaluation.decision is EvidenceDecision.REPAIRABLE:
                     if self.policy.check_replan(state) is not None:
                         self._fail(state, ReasonCode.BUDGET_EXHAUSTED)
@@ -196,6 +221,30 @@ class BoundedAdaptiveRAGV1:
                 state.stop_reason = None
                 no_progress = False
                 state.transition(AdaptivePhase.ACT, f"replan:{pending.reason_code.value}")
+                continue
+            if phase is AdaptivePhase.CALCULATE:
+                # Deterministic calculation is a harness step, not a downstream
+                # afterthought: it runs inside the loop so the run trace and the
+                # budget cover it.  Entered only when a calculator was supplied.
+                if calculator is None:  # defensive; _needs_calculation gates this
+                    self._fail(state, ReasonCode.CALCULATOR_NOT_WIRED)
+                    break
+                state.record_turn(AdaptivePhase.CALCULATE.value)
+                try:
+                    result = calculator(state)
+                except Exception as exc:  # deterministic fail-closed; expose only type
+                    state.calculation_attempted = True
+                    state.last_observation = {"error": type(exc).__name__}
+                    state.observe_turn(state.last_observation)
+                    self._fail(state, ReasonCode.CALCULATION_ERROR)
+                    break
+                state.calculation_attempted = True
+                calculation_status = getattr(result, "status", None)
+                state.last_observation = {
+                    "calculation_status": getattr(calculation_status, "value", str(calculation_status)),
+                }
+                state.observe_turn(state.last_observation)
+                state.transition(AdaptivePhase.READY_TO_GENERATE, "calculation complete")
                 continue
             if phase is AdaptivePhase.READY_TO_GENERATE:
                 if generator is None:

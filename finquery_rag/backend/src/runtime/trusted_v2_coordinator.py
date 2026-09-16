@@ -35,6 +35,7 @@ from rag_v2.supervisor import (
     validate_plan_v2_01,
 )
 
+from .harness_runtime_mode import AgentRuntimeMode, coerce_agent_runtime_mode
 from .runtime_contract import ContextTrustLevel, ReleaseStatus
 from .trusted_v2_capabilities import TrustedV2CapabilityPorts
 from .trusted_v2_generation import CandidateExecutionResult
@@ -727,6 +728,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         unknown_semantic_policy: UnknownSemanticPolicy | str = (
             UnknownSemanticPolicy.COMPATIBILITY
         ),
+        runtime_mode: AgentRuntimeMode | str | None = None,
     ) -> None:
         if not isinstance(supervisor, SupervisorService):
             raise TypeError("supervisor must be SupervisorService")
@@ -737,6 +739,9 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         self.unknown_semantic_policy = coerce_unknown_semantic_policy(
             unknown_semantic_policy,
         )
+        # ``legacy`` (the default) keeps answer production outside the loop.
+        # ``harness_v3`` runs calculation inside the loop as a harness phase.
+        self.runtime_mode = coerce_agent_runtime_mode(runtime_mode)
 
     @staticmethod
     def _slot_dicts(plan: SupervisorPlan) -> list[dict[str, Any]]:
@@ -878,6 +883,22 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             or getattr(self.capabilities.generation, "candidate_mode", False)
         )
 
+    def _harness_calculator(self) -> Any | None:
+        """Return the in-loop calculator, or None when the mode keeps it outside.
+
+        Only ``harness_v3`` wires deterministic calculation into the loop.  In
+        ``legacy`` mode calculation stays in ``_candidate_stage``, so the two
+        modes remain directly comparable.
+        """
+
+        if self.runtime_mode is not AgentRuntimeMode.HARNESS_V3:
+            return None
+        calculation = self.capabilities.calculation
+        if calculation is None:
+            return None
+        calculator = getattr(calculation, "calculate", None)
+        return calculator if callable(calculator) else None
+
     @staticmethod
     def _binder_admission_is_authoritative(
         state: AdaptiveRAGStateV1,
@@ -924,7 +945,20 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         calculation_ids: tuple[str, ...] = ()
         candidate_answer: str | None = None
         extra: dict[str, Any] = {}
-        if plan.intent is Intent.CALCULATION:
+        if plan.intent is Intent.CALCULATION and state.calculation_attempted:
+            # harness_v3 already ran the deterministic calculator inside the
+            # loop; the candidate stage must not run it a second time.  Only the
+            # provenance id is recovered here.
+            last_calculation_id = getattr(
+                self.capabilities.calculation, "last_calculation_id", None
+            )
+            calculation_ids = (
+                (str(last_calculation_id),) if last_calculation_id else ()
+            )
+            state.calculation_result_id = calculation_ids[0] if calculation_ids else None
+            extra["calculation_result_id"] = state.calculation_result_id
+            extra["calculation_in_harness"] = True
+        elif plan.intent is Intent.CALCULATION:
             capability = self.capabilities.calculation
             if capability is None:
                 return self._outcome(
@@ -1627,6 +1661,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 state,
                 tools,
                 initial_action=initial_action,
+                calculator=self._harness_calculator(),
                 generator=generator,
                 verifier=verifier,
             )

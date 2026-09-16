@@ -27,6 +27,7 @@ class AdaptivePhase(str, Enum):
     OBSERVE = "OBSERVE"
     EVALUATE = "EVALUATE"
     REPLAN = "REPLAN"
+    CALCULATE = "CALCULATE"
     READY_TO_GENERATE = "READY_TO_GENERATE"
     GENERATE = "GENERATE"
     VERIFY = "VERIFY"
@@ -63,6 +64,8 @@ class ReasonCode(str, Enum):
     TOOL_ERROR = "TOOL_ERROR"
     UNSUPPORTED_TOOL_ROUTE = "UNSUPPORTED_TOOL_ROUTE"
     STRUCTURAL_NOT_READY = "STRUCTURAL_NOT_READY"
+    CALCULATOR_NOT_WIRED = "CALCULATOR_NOT_WIRED"
+    CALCULATION_ERROR = "CALCULATION_ERROR"
 
 
 class PeriodSemantics(str, Enum):
@@ -271,6 +274,9 @@ class AdaptiveRAGStateV1:
     conflicts: list[dict[str, Any]] = field(default_factory=list)
     calculation_requirements: dict[str, Any] = field(default_factory=dict)
     calculation_ready: bool = False
+    # Set once the CALCULATE phase has run, so a calculator that returns a
+    # blocked result cannot drive the loop into recalculating forever.
+    calculation_attempted: bool = False
     # TV2-04 downstream fields are populated only after Binder admission.
     # They remain structured state, never answer-text-derived facts.
     bound_evidence_ids: list[str] = field(default_factory=list)
