@@ -264,11 +264,20 @@ H1 is complete only when all hold:
   `tests/rag_v2/test_nf_v2_02_top20_financial_fact.py::test_same_candidate_facts_and_fact_ids_are_preserved`
   expects the missing artifact
   `artifacts/evaluation/nf-e2e-09-r0-structured-financial-fact-representation/financial-facts-v1.jsonl.gz`.
-- Full collection: **3964 tests collected, 2 collection errors**, both from missing
-  optional dependencies in this interpreter (`chromadb` for
+- Full collection at `b393d3e`: **4017 collected**, of which **144 failed / 3835
+  passed / 38 skipped**, plus 2 collection errors, both from missing optional
+  dependencies in this interpreter (`chromadb` for
   `tests/evaluation/test_nf40_cli.py`, `torch` for `tests/test_local_specialist_generator.py`).
+  The three counts sum exactly to the collected total.
+  Correction: an earlier revision of this section recorded "3964 collected",
+  which was bad arithmetic on the same run — it omitted the skipped tests.
+  Corrected in §11.
 - Tests must be run with `python -m pytest` from `finquery_rag/backend` so that
   `rag_v2` and `src` are importable.
+- A bare `pytest` did not complete at all at this baseline: pytest aborts the
+  session on a collection error, and the two modules above cannot import in this
+  environment. `--continue-on-collection-errors` was needed to see any numbers.
+  Fixed in §11.
 
 Any new failure relative to this baseline is a regression.
 
@@ -315,19 +324,24 @@ repository. Commits are ordered so that this lands last, behind a default-off fl
 | `fb318da` | characterization baseline + this plan | done |
 | `023d54d` | D1 run turn trace, D2 named `AdaptiveActionPolicyV1` | done |
 | `cbcfa00` | D3 calculation as a harness phase, D5 runtime mode flag | done |
-| (this commit) | D4 closed loop via the harness finalizer | done |
+| `0709636` | D4 closed loop via the harness finalizer | done |
+| `715a92c`..`0bb08fc` | two review passes: 23 findings, 16 fixed | done |
+| §11 | H1.1 integration runner, sealed fixtures, equivalence contract, seal | done |
 
 Evidence, measured at each step against the same baseline:
 
-- Baseline without any H1 change: **144 failed / 3782 passed**, 2 collection errors
-  from missing optional deps (`chromadb`, `torch`).
+- Baseline without any H1 change: **144 failed / 3835 passed / 38 skipped**
+  (4017 collected), 2 collection errors from missing optional deps
+  (`chromadb`, `torch`).
 - After D1+D2: 144 failed / 3791 passed, failing-file breakdown byte-identical.
 - After D3+D5: 144 failed / 3806 passed, failing-file breakdown byte-identical.
 - After D4: 144 failed / 3822 passed, failing-file breakdown byte-identical.
 
 The 144 are pre-existing and environmental: missing `artifacts/evaluation` frozen
 fixtures, and `FINANCIAL_RUNTIME_MODE=v2` needing a configured production factory.
-None touch `rag_v2.adaptive` or the coordinator.
+None touch `rag_v2.adaptive` or the coordinator. The exact split is recorded in
+§11; H1's per-step evidence is the *failing-file breakdown diff*, which was
+byte-identical at every step.
 
 Two deviations from the plan, both recorded rather than absorbed:
 
@@ -340,10 +354,6 @@ Two deviations from the plan, both recorded rather than absorbed:
    inside the loop, and the coordinator rebuilds the trace against the completed
    state so it covers `GENERATE` / `VERIFY` / `RELEASE`. No release logic is
    duplicated, so the validator remains the single release authority.
-
-Still outstanding from §3.3: `scripts/runtime/run_nf_v3_h1_harness_integration.py`,
-the legacy-vs-harness_v3 integration runner over a real fixture set. H1's
-unit-level equivalence is proven; the end-to-end runner is not yet built.
 
 One latent hazard was found and closed while wiring D4: the harness's VERIFY phase
 read `if verifier is None or verifier(state, output)`, so a generator wired without
@@ -433,3 +443,96 @@ Accepted or deferred, with reasons:
   verdict is honoured instead inside `_candidate_stage`. That is correct — the
   release-integrity defect it fixes was reproducible only on the
   `allow_test_release` path, which is where it now applies.
+
+## 11. H1.1 — Integration and seal
+
+H1's core design needed no change. What it lacked was production-level evidence:
+the equivalence claim was proven on a coordinator composed inside a test, and the
+suite could not report an honest number about itself.
+
+Delivered:
+
+1. **Integration runner** — `scripts/runtime/run_nf_v3_h1_harness_integration.py`
+   (§3.3, previously outstanding), plus `tests/harness/h1_integration.py` holding
+   the fixtures and the wiring so the script and the test suite cannot drift.
+2. **Nine sealed fixtures** — fact, calculation, blocked calculation, raising
+   calculator, wrong-period recovery, missing evidence, validator rejection,
+   budget exhaustion, unsupported route. The set is content-hashed
+   (`sealed_digest`) and the digest is recorded in the report.
+3. **Canonical equivalence contract** — `tests/harness/equivalence.py`, replacing
+   per-test field lists. See the seal document for the A/B/C partition.
+4. **End-to-end trace proof** — `calculation_growth_rate` reaches
+   `ACT → OBSERVE → EVALUATE → CALCULATE → READY_TO_GENERATE → GENERATE → VERIFY → RELEASE`
+   on real wiring. `legacy` never enters CALCULATE.
+5. **Suite accounting** (below).
+6. **Seal** — `docs/showcase/nf-v3-h1-harness-core.md`, tag `nf-v3-h1-harness-core`.
+
+### Cross-check: the runner was falsified against the pre-fix tree
+
+A green report is worthless if its assertions cannot fail. The fixture set was
+run against `3abc2f1`, the commit immediately before the review fixes:
+
+```
+decision equivalence : 4/9
+```
+
+Five fixtures diverged — on `route` (four fixtures), `reason_codes` (two) and
+`status` (one) — i.e. exactly the fields the hand-picked assertion lists had
+omitted. Full table in the seal document.
+
+### Suite accounting
+
+The "3964 vs 3979" contradiction raised in review was a reporting error on my
+side, not an inconsistency in the suite. The counts sum exactly:
+
+| State | Collected | Failed | Passed | Skipped | Errors |
+|---|---|---|---|---|---|
+| Baseline `b393d3e` | 4017 | 144 | 3835 | 38 | 2 |
+| After H1.1 | 4047 | 39 | 3865 | 143 | 0 |
+
+`144 + 3835 + 38 = 4017`. The earlier "3964" omitted the skipped tests.
+
+By cause, the original 144:
+
+| Count | Cause | Disposition |
+|---|---|---|
+| 104 | Sealed evaluation artifacts under `artifacts/evaluation/<run>/` never committed | now skipped, reason names the missing path |
+| 39 | `FINANCIAL_RUNTIME_MODE` defaults to `v2`; `v2` requires `TRUSTED_V2_RUNTIME_BUILDER`; these endpoint tests predate that default (introduced by `b84fa3a`) and never set the mode | **deliberately not fixed** — see below |
+| 1 | a test mid-edit during the measurement run | n/a |
+
+Setting `FINANCIAL_RUNTIME_MODE=v1` turns 34 of the 39 green; the remaining 5
+fail on semantic-alignment behaviour instead. They are left failing rather than
+pinned to `v1` because that choice is a product decision about the default
+runtime mode, and an environment pin would make it by accident.
+
+Two collection-time guards were added to `conftest.py`:
+
+- **Optional-runtime modules.** `tests/evaluation/test_nf40_cli.py` (`chromadb`)
+  and `tests/test_local_specialist_generator.py` (`torch`) are excluded, with a
+  session header line naming the missing runtime. Previously these were
+  collection *errors*, and pytest aborts the session on a collection error — so
+  on this machine a bare `pytest` ran nothing at all.
+- **Missing-artifact reads.** A test that fails reading a path under `artifacts/`
+  is reported as a skip naming that artifact. The decision is taken from the
+  actual error, not from the directory being absent: a first attempt skipped
+  whole modules whose declared `ARTIFACT*` root was missing, and silently
+  swallowed nine tests in those modules that pass without the artifact. Caught by
+  diffing the skip set against the baseline failure set.
+
+`pytest -m "not requires_artifacts"` deselects the artifact group, which is
+marked at collection time when a module's declared artifact root is absent.
+
+### One budget field is now explicitly inert
+
+`max_identical_query_retry` was declared, read from
+`V2_MAX_IDENTICAL_QUERY_RETRIES`, and asserted in the V2-16 contract test — but
+read by nothing. `BoundedReplannerV1` reuses the same query text for
+`MISSING_SLOT`, so enforcing the field at its default of 0 would forbid a retry
+that `legacy` has always performed: a retrieval behaviour change arriving
+through a budget, inside an ablation whose only claim is equivalence.
+
+It is now listed in `AdaptiveRAGBudgetV1.RESERVED_FIELDS`, production warns via
+`unenforced_settings()` when an operator configures it away from its default,
+and `tests/harness/test_reserved_budget.py` fails if any module in
+`rag_v2/adaptive/` starts reading it — which is the signal to enforce it
+deliberately and update the note.
