@@ -30,6 +30,11 @@ if [[ -f "${PID_FILE}" ]] && kill -0 "$(cat "${PID_FILE}" 2>/dev/null || true)" 
     write_status "READY"
     exit 0
 fi
+if [[ -f "${PID_FILE}" ]]; then
+    echo "[frontend] Removing stale PID file ${PID_FILE}."
+    rm -f "${PID_FILE}"
+fi
+
 if tmux has-session -t "${SESSION}" 2>/dev/null; then
     echo "[frontend] tmux session '${SESSION}' already exists. Run stop_all.sh first." >&2
     write_status "FAILED"

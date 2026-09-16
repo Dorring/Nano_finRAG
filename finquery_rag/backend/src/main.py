@@ -1326,6 +1326,7 @@ async def query_documents(
     except HTTPException:
         raise
     except Exception as exc:
+        logger.exception("query lifecycle execution failed")
         raise api_error(500, "query_error", f"Query error: {exc}") from exc
 
 
@@ -1345,6 +1346,7 @@ async def query_documents_stream(
     except HTTPException:
         raise
     except Exception as exc:
+        logger.exception("query lifecycle execution failed")
         raise api_error(500, "query_error", f"Query error: {exc}") from exc
 
     async def generate():

@@ -280,6 +280,18 @@ class QueryLifecycleService:
             runtime = await self.execution_service_factory(runtime_impl).execute(
                 runtime_request
             )
+            logger.info(
+                "financial runtime completed runtime=%s route=%s status=%s release=%s reason_codes=%s",
+                self._value(runtime.runtime_version),
+                (
+                    runtime.runtime_metadata.attributes.get("route")
+                    if runtime.runtime_metadata is not None
+                    else None
+                ),
+                self._value(runtime.status),
+                self._value(runtime.release_status),
+                list(runtime.reason_codes),
+            )
             legacy = to_legacy_query_dict(runtime)
             # V2 intentionally does not construct the legacy RAG engine, so
             # early coordinator failures may not have a trace execution id.

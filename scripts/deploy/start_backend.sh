@@ -29,6 +29,11 @@ if [[ -f "${PID_FILE}" ]] && kill -0 "$(cat "${PID_FILE}" 2>/dev/null || true)" 
     write_status "READY"
     exit 0
 fi
+if [[ -f "${PID_FILE}" ]]; then
+    echo "[backend] Removing stale PID file ${PID_FILE}."
+    rm -f "${PID_FILE}"
+fi
+
 if tmux has-session -t "${SESSION}" 2>/dev/null; then
     echo "[backend] tmux session '${SESSION}' already exists. Run stop_all.sh first." >&2
     write_status "FAILED"
@@ -107,6 +112,7 @@ __BACKEND_ENV_VARS=(
     MINERU_AUTO_MIN_TEXT_CHARS MINERU_METHOD MINERU_FORCE_CPU
     MINERU_CUDA_VISIBLE_DEVICES
     SECRET_KEY ALLOWED_ORIGINS
+    NANOCHAT_BASE_DIR NANOCHAT_DTYPE
     CUDA_VISIBLE_DEVICES
 )
 
@@ -118,6 +124,9 @@ __BACKEND_ENV_VARS=(
     printf 'cd %s\n' "$(shell_squote "${BACKEND_DIR}")"
     __v=""
     for __v in "${__BACKEND_ENV_VARS[@]}"; do
+        if [[ ( "${__v}" == "NANOCHAT_BASE_DIR" || "${__v}" == "NANOCHAT_DTYPE" ) && -z "${!__v:-}" ]]; then
+            continue
+        fi
         printf 'export %s=%s\n' "${__v}" "$(shell_squote "${!__v:-}")"
     done
     printf 'exec %s src.main:app --host %s --port %s --workers 1 > %s 2>&1\n' \

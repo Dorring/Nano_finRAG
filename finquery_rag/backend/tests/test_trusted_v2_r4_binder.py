@@ -1491,3 +1491,283 @@ def test_real_r4_structured_lane_recovers_secondary_slot_under_crowding() -> Non
     trace = outcome.debug_metadata["trace"]
     assert set(trace["candidate_ids_per_round"][0]) == {"PRIMARY", "SECONDARY"}
     assert outcome.evidence_ids == ["SECONDARY"]
+
+
+def test_facts_promotes_nested_metadata_qualifiers_without_overwriting_top_level() -> None:
+    from rag_v2.adaptive import AdaptiveRAGStateV1
+
+    plan = _plan(_slot("revenue"))
+    state = AdaptiveRAGStateV1.new(
+        request_id="req-metadata-promote",
+        query="What was Apple revenue?",
+        plan={"supervisor_plan": plan.to_dict()},
+    )
+    state.evidence_packets = [
+        {
+            "fact_id": "fact-1",
+            "entity": "TopLevelEntity",
+            "metadata": {
+                "fact_id": "ignored-fact-id",
+                "entity": "NestedEntity",
+                "metric": "Net Sales",
+                "normalized_metric": "net sales",
+                "period": "FY2024",
+                "currency": "USD",
+                "scale": "million",
+                "unit": "$",
+                "scope": "consolidated",
+                "statement_type": "income_statement",
+            },
+        }
+    ]
+    facts = SemanticEvidenceEvaluationCapability._facts(state)
+    assert len(facts) == 1
+    fact = facts[0]
+    # Existing top-level keys must be preserved
+    assert fact["entity"] == "TopLevelEntity"
+    assert fact["fact_id"] == "fact-1"
+    # Nested metadata keys must be promoted to top-level
+    assert fact["metric"] == "Net Sales"
+    assert fact["normalized_metric"] == "net sales"
+    assert fact["period"] == "FY2024"
+    assert fact["currency"] == "USD"
+    assert fact["scale"] == "million"
+    assert fact["unit"] == "$"
+    assert fact["scope"] == "consolidated"
+    assert fact["statement_type"] == "income_statement"
+
+
+def test_repair_missing_binding_recovers_when_binder_returns_empty_tuple_slot_bindings() -> None:
+    from rag_v2.adaptive import AdaptiveRAGStateV1
+
+    class MissingEmptyTupleBinderProvider:
+        provider_name = "fixture"
+        model_name = "missing-empty-tuple"
+
+        def bind(self, request: Mapping[str, Any]) -> BinderProviderResult:
+            slots = [str(s["slot_id"]) for s in request["required_slots"]]
+            return BinderProviderResult(
+                binding=EvidenceBinding(
+                    status=BindingStatus.MISSING.value,
+                    slot_bindings={s: () for s in slots},
+                    missing_slots=tuple(slots),
+                ),
+                metadata=BinderCallMetadata(
+                    provider=self.provider_name,
+                    model=self.model_name,
+                    provider_role="evidence_binder",
+                    model_role="deterministic_fixture",
+                    latency_ms=0.1,
+                    provider_response_success=True,
+                    structured_output_success=True,
+                ),
+                raw_response={"status": "MISSING"},
+            )
+
+    fact_2023 = _fact(
+        "REV_2023",
+        period="FY2023",
+        metric="Total net revenue",
+        value="1000",
+        slots=("revenue_2023",),
+    )
+    fact_2023["entity"] = "Apple"
+    fact_2023["source"] = "10K-2023"
+    fact_2023["physical_source_id"] = "10K-2023"
+
+    fact_2024 = _fact(
+        "REV_2024",
+        period="FY2024",
+        metric="Total net revenue",
+        value="1200",
+        slots=("revenue_2024",),
+    )
+    fact_2024["entity"] = "Apple"
+    fact_2024["source"] = "10K-2024"
+    fact_2024["physical_source_id"] = "10K-2024"
+
+    plan = _plan(
+        _slot("revenue_2023", metric="Total net revenue", period="FY2023"),
+        _slot("revenue_2024", metric="Total net revenue", period="FY2024"),
+        intent=Intent.CALCULATION,
+        operation="difference",
+    )
+
+    binder = SemanticEvidenceEvaluationCapability(
+        SemanticBinderService(MissingEmptyTupleBinderProvider()),
+    )
+    state = AdaptiveRAGStateV1.new(
+        request_id="calc-recovery-empty-tuple",
+        query="What was Apple net revenue change from FY2023 to FY2024?",
+        intent="CALCULATION",
+        plan={"supervisor_plan": plan.to_dict()},
+    )
+    state.evidence_packets = [fact_2023, fact_2024]
+
+    evaluation = binder.evaluate(state)
+    assert evaluation.decision.value == "SUFFICIENT"
+    assert binder.last_run.binding.status == BindingStatus.BOUND.value
+    assert binder.last_run.binding.slot_bindings == {
+        "revenue_2023": ("REV_2023",),
+        "revenue_2024": ("REV_2024",),
+    }
+    assert evaluation.supported_slots == ("revenue_2023", "revenue_2024")
+    assert binder.last_bound_evidence_ids == ("REV_2023", "REV_2024")
+
+
+def test_evaluate_does_not_mark_empty_tuple_slot_bindings_as_supported_slots() -> None:
+    from rag_v2.adaptive import AdaptiveRAGStateV1
+
+    class UnrecoverableMissingBinderProvider:
+        provider_name = "fixture"
+        model_name = "unrecoverable-missing"
+
+        def bind(self, request: Mapping[str, Any]) -> BinderProviderResult:
+            slots = [str(s["slot_id"]) for s in request["required_slots"]]
+            return BinderProviderResult(
+                binding=EvidenceBinding(
+                    status=BindingStatus.MISSING.value,
+                    slot_bindings={s: () for s in slots},
+                    missing_slots=tuple(slots),
+                ),
+                metadata=BinderCallMetadata(
+                    provider=self.provider_name,
+                    model=self.model_name,
+                    provider_role="evidence_binder",
+                    model_role="deterministic_fixture",
+                    latency_ms=0.1,
+                    provider_response_success=True,
+                    structured_output_success=True,
+                ),
+                raw_response={"status": "MISSING"},
+            )
+
+    fact_distractor = _fact(
+        "DISTRACTOR",
+        period="FY2020",
+        metric="Other Expense",
+        value="50",
+    )
+    plan = _plan(
+        _slot("revenue_2099", metric="Total net revenue", period="FY2099"),
+        intent=Intent.DIRECT_FACT,
+    )
+    binder = SemanticEvidenceEvaluationCapability(
+        SemanticBinderService(UnrecoverableMissingBinderProvider()),
+    )
+    state = AdaptiveRAGStateV1.new(
+        request_id="missing-with-distractor",
+        query="What was Apple FY2099 revenue?",
+        intent="DIRECT_FACT",
+        plan={"supervisor_plan": plan.to_dict()},
+    )
+    state.evidence_packets = [fact_distractor]
+    evaluation = binder.evaluate(state)
+    assert evaluation.decision.value == "REPAIRABLE"
+    assert evaluation.supported_slots == ()
+    assert binder.last_bound_slot_bindings == {}
+    trace = binder.trace_snapshot()
+    assert trace["bound_slot_ids"] == []
+
+
+def test_fact_value_key_normalizes_currency_footnotes_and_parenthesized_negatives() -> None:
+    fact1 = {"value": "$ 177,556(g)", "unit": "USD", "currency": "USD"}
+    fact2 = {"value": "177,556", "unit": "USD", "currency": "USD"}
+    fact3 = {"value": "(3,037)", "unit": "USD", "currency": "USD"}
+    fact4 = {"value": "-3037", "unit": "USD", "currency": "USD"}
+
+    key1 = SemanticEvidenceEvaluationCapability._fact_value_key(fact1)
+    key2 = SemanticEvidenceEvaluationCapability._fact_value_key(fact2)
+    key3 = SemanticEvidenceEvaluationCapability._fact_value_key(fact3)
+    key4 = SemanticEvidenceEvaluationCapability._fact_value_key(fact4)
+
+    assert key1 == key2 == "177556|usd|usd|"
+    assert key3 == key4 == "-3037|usd|usd|"
+
+
+def test_slot_metric_matches_substring_fallback() -> None:
+    from src.runtime.trusted_v2_r4 import _slot_metric_matches
+
+    assert _slot_metric_matches(
+        "total net revenue",
+        "JPMorganChase total net revenue change from to",
+    )
+    assert _slot_metric_matches(
+        "JPMorganChase total net revenue change from to",
+        "total net revenue",
+    )
+    assert not _slot_metric_matches("net income", "total net revenue")
+
+
+def test_candidate_direct_r4_interleaves_multi_slot_pools_and_respects_entity_priority() -> None:
+    from src.pdf_retrieval_v4.candidate_direct_retriever import CandidateDirectRetriever
+    from src.runtime.trusted_v2_r4 import _planner_slot_ids_for_targets
+
+    class MockSlotRetriever(CandidateDirectRetriever):
+        def __init__(self) -> None:
+            self.reader = None
+            self.final_pool_k = 4
+
+        def retrieve(self, query_plan: Any, document_scope: Any = None) -> dict[str, Any]:
+            return {
+                "candidate_direct_pool": [],
+                "slot_pools": {
+                    "period_1": [
+                        {"candidate_key": "PFIZER_2023_1"},
+                        {"candidate_key": "JPM_2023_1"},
+                        {"candidate_key": "JPM_2023_2"},
+                    ],
+                    "period_2": [
+                        {"candidate_key": "PFIZER_2024_1"},
+                        {"candidate_key": "JPM_2024_1"},
+                    ],
+                },
+            }
+
+    def mock_materializer(key: str) -> dict[str, Any]:
+        entity = "JPMorgan" if "JPM" in key else "Pfizer"
+        period = "FY2023" if "2023" in key else "FY2024"
+        return {
+            "candidate_key": key,
+            "evidence_id": key,
+            "fact_id": key,
+            "metric": "Revenue",
+            "period": period,
+            "entity": entity,
+            "scope": "consolidated",
+            "value": "100",
+            "unit": "USD",
+            "currency": "USD",
+            "provenance_complete": True,
+        }
+
+    plan = _plan(
+        _slot("slot_1", metric="Revenue", period="FY2023"),
+        _slot("slot_2", metric="Revenue", period="FY2024"),
+        intent=Intent.CALCULATION,
+        operation="difference",
+    )
+
+    policy = CandidateDirectR4Policy(
+        MockSlotRetriever(),  # type: ignore[arg-type]
+        materializer=mock_materializer,
+    )
+    result = policy.retrieve(
+        R4RetrievalRequest(
+            request_id="test-interleaving",
+            standalone_query="How much did JPMorgan revenue change from FY2023 to FY2024?",
+            plan=plan,
+            reason_code="PLAN_REQUIRES_DETERMINISTIC_CALCULATION",
+        )
+    )
+
+    cand_keys = [cand["candidate_key"] for cand in result.candidate_evidence]
+    # JPMorgan candidates should take entity priority over Pfizer candidates,
+    # and both slots should be present within the top 4
+    assert len(cand_keys) == 4
+    jpm_keys = [k for k in cand_keys if "JPM" in k]
+    assert len(jpm_keys) == 3  # JPM_2023_1, JPM_2023_2, JPM_2024_1 must all be prioritized
+    assert "JPM_2024_1" in cand_keys
+    assert "JPM_2023_1" in cand_keys
+
+

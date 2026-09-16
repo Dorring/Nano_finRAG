@@ -9,6 +9,7 @@ from rag_v2.contracts.plan import SupervisorPlan
 from rag_v2.supervisor import (
     EvidenceScope,
     EvidenceScopeClassification,
+    canonical_entity_id,
     canonical_metric_id,
     classify_evidence_scope,
     extract_query_semantic_frame,
@@ -77,7 +78,13 @@ def _slot_metric_matches(left: Any, right: Any) -> bool:
     right_id = canonical_metric_id(right)
     if left_id is not None and right_id is not None:
         return left_id == right_id
-    return str(left or "").strip().casefold() == str(right or "").strip().casefold()
+    left_str = str(left or "").strip().casefold()
+    right_str = str(right or "").strip().casefold()
+    if not left_str or not right_str:
+        return False
+    if left_str == right_str:
+        return True
+    return left_str in right_str or right_str in left_str
 
 
 def _slot_period_matches(left: Any, right: Any) -> bool:
@@ -317,15 +324,23 @@ class CandidateDirectR4Policy:
     @staticmethod
     def _rrf_pool_item(hit: Any, rank: int) -> dict[str, Any]:
         """Convert a slot RRF hit to the adapter's bounded pool shape."""
+        if isinstance(hit, Mapping):
+            candidate_key = str(hit.get("candidate_key") or "")
+            rrf_score = hit.get("rrf_score")
+            lane_ranks = dict(hit.get("lane_ranks") or {})
+            supporting_view_ids = dict(hit.get("supporting_view_ids") or {})
+        else:
+            candidate_key = str(getattr(hit, "candidate_key", "") or "")
+            rrf_score = getattr(hit, "rrf_score", None)
+            lane_ranks = dict(getattr(hit, "lane_ranks", {}) or {})
+            supporting_view_ids = dict(getattr(hit, "supporting_view_ids", {}) or {})
 
         return {
-            "candidate_key": str(getattr(hit, "candidate_key", "")),
-            "rrf_score": getattr(hit, "rrf_score", None),
+            "candidate_key": candidate_key,
+            "rrf_score": rrf_score,
             "rank": rank,
-            "lane_ranks": dict(getattr(hit, "lane_ranks", {}) or {}),
-            "supporting_view_ids": dict(
-                getattr(hit, "supporting_view_ids", {}) or {}
-            ),
+            "lane_ranks": lane_ranks,
+            "supporting_view_ids": supporting_view_ids,
         }
 
     def retrieve(self, request: R4RetrievalRequest) -> R4RetrievalResult:
@@ -376,40 +391,41 @@ class CandidateDirectR4Policy:
                 query_plan,
                 request.target_slots,
             )
+            slot_values_list: list[list[Any]] = []
             for slot_id in planner_slot_ids:
                 values = slot_pools.get(slot_id, ())
                 if isinstance(values, Iterable):
-                    # ``slot_pools`` contains CandidateRRFHit objects.  Keep
-                    # their supporting view IDs when adapting them to the
-                    # policy pool; dropping that metadata prevents the
-                    # source-row scope/metric-path firewall from seeing the
-                    # aligned structured view and lets a segment row compete
-                    # with a consolidated row on metric/period alone.
-                    for rank, item in enumerate(values, 1):
-                        pool.append(
-                            item
-                            if isinstance(item, Mapping)
-                            else self._rrf_pool_item(item, rank)
+                    slot_values_list.append(list(values))
+            max_depth = max((len(v) for v in slot_values_list), default=0)
+            existing_pool_keys: set[str] = set()
+            for depth in range(max_depth):
+                for slot_values in slot_values_list:
+                    if depth < len(slot_values):
+                        raw_item = slot_values[depth]
+                        rank = depth + 1
+                        item = (
+                            raw_item
+                            if isinstance(raw_item, Mapping)
+                            else self._rrf_pool_item(raw_item, rank)
                         )
+                        ckey = str(item.get("candidate_key") or "")
+                        if ckey and ckey not in existing_pool_keys:
+                            existing_pool_keys.add(ckey)
+                            pool.append(item)
         if not pool:
             values = raw.get("candidate_direct_pool", ())
             if isinstance(values, Iterable):
                 pool.extend(
                     item
                     if isinstance(item, Mapping)
-                        else {"candidate_key": getattr(item, "candidate_key", "")}
-                        for item in values
+                    else {"candidate_key": getattr(item, "candidate_key", "")}
+                    for item in values
                 )
 
-        # A single direct-fact query still has a slot-specific R4 pool. The
-        # historical retriever used only the global raw-question Top-40 for
-        # this case, which allowed dense/structured aggregate rows to be
-        # crowded out by segment and cost-of-revenue rows. Add a bounded
-        # window from the slot pool before materialization; source-aware scope
-        # ordering below then promotes a verified aggregate while the final
-        # Binder packet remains capped. This is a bounded candidate union,
-        # not a second retrieval or an oracle lookup.
-        if not request.target_slots and len(request.plan.required_slots) == 1:
+        # Ensure slot-specific candidates from R4 slot pools are fairly
+        # interleaved before candidate materialization and scope ordering,
+        # preventing a single slot from starving operands in calculations.
+        if not request.target_slots and request.plan.required_slots:
             slot_pool_values = raw.get("slot_pools", {})
             if isinstance(slot_pool_values, Mapping):
                 existing = {
@@ -417,17 +433,21 @@ class CandidateDirectR4Policy:
                     for item in pool
                     if isinstance(item, Mapping) and item.get("candidate_key")
                 }
-                for slot_hits in slot_pool_values.values():
-                    if not isinstance(slot_hits, Iterable):
-                        continue
-                    for rank, hit in enumerate(slot_hits, 1):
-                        if rank > max(80, self.retriever.final_pool_k * 2):
-                            break
-                        item = self._rrf_pool_item(hit, rank)
-                        candidate_key = item["candidate_key"]
-                        if candidate_key and candidate_key not in existing:
-                            pool.append(item)
-                            existing.add(candidate_key)
+                slot_values_list = [
+                    list(v) for v in slot_pool_values.values() if isinstance(v, Iterable)
+                ]
+                max_depth = max((len(v) for v in slot_values_list), default=0)
+                limit = max(80, self.retriever.final_pool_k * 2)
+                for depth in range(min(max_depth, limit)):
+                    for slot_values in slot_values_list:
+                        if depth < len(slot_values):
+                            hit = slot_values[depth]
+                            rank = depth + 1
+                            item = self._rrf_pool_item(hit, rank)
+                            candidate_key = item["candidate_key"]
+                            if candidate_key and candidate_key not in existing:
+                                pool.append(item)
+                                existing.add(candidate_key)
 
         candidate_ids = _stable_unique(
             str(item.get("candidate_key", ""))
@@ -534,6 +554,14 @@ class CandidateDirectR4Policy:
                     classify_evidence_scope(item),
                 )
             )
+        def entity_match_priority(cand: Mapping[str, Any]) -> int:
+            if not frame or not frame.entity_ids:
+                return 0
+            cand_entity = canonical_entity_id(cand.get("entity")) or str(cand.get("entity") or "").strip().casefold()
+            if any(eid in cand_entity for eid in frame.entity_ids):
+                return 0
+            return 1
+
         if frame is not None and not frame.scope_ids and not explicit_segment_label:
             scope_priority = {
                 EvidenceScope.CONSOLIDATED.value: 0,
@@ -545,6 +573,7 @@ class CandidateDirectR4Policy:
                 for _index, item in sorted(
                     enumerate(candidates),
                     key=lambda pair: (
+                        entity_match_priority(pair[1]),
                         scope_priority.get(
                             classify_evidence_scope(pair[1]).scope.value,
                             1,

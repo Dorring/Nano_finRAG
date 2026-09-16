@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Iterable, Mapping
+import re
 from typing import Any
 
 from rag_v2.adaptive import (
@@ -80,8 +81,28 @@ class SemanticEvidenceEvaluationCapability:
                 "invalid_supervisor_plan_for_binder"
             ) from exc
 
-    @staticmethod
-    def _facts(state: AdaptiveRAGStateV1) -> tuple[Mapping[str, Any], ...]:
+    _METADATA_PROMOTED_KEYS: tuple[str, ...] = (
+        "fact_id",
+        "provenance_complete",
+        "physical_source_id",
+        "metric",
+        "normalized_metric",
+        "raw_metric",
+        "period",
+        "normalized_period",
+        "raw_period",
+        "entity",
+        "company",
+        "ticker",
+        "scope",
+        "statement_type",
+        "unit",
+        "currency",
+        "scale",
+    )
+
+    @classmethod
+    def _facts(cls, state: AdaptiveRAGStateV1) -> tuple[Mapping[str, Any], ...]:
         facts: list[Mapping[str, Any]] = []
         for raw in state.evidence_packets:
             if not isinstance(raw, Mapping):
@@ -89,7 +110,7 @@ class SemanticEvidenceEvaluationCapability:
             fact = dict(raw)
             metadata = fact.get("metadata")
             if isinstance(metadata, Mapping):
-                for key in ("fact_id", "provenance_complete", "physical_source_id"):
+                for key in cls._METADATA_PROMOTED_KEYS:
                     if key not in fact and key in metadata:
                         fact[key] = metadata[key]
             fact_id = fact.get("fact_id") or fact.get("evidence_id")
@@ -235,11 +256,22 @@ class SemanticEvidenceEvaluationCapability:
         if value is None or not str(value).strip():
             return None
 
+        def normalize_val(val: Any) -> str:
+            raw = str(val).strip()
+            raw = re.sub(r"^[\$€£¥\s]+", "", raw)
+            raw = re.sub(r"[\$€£¥\s]+$", "", raw)
+            raw = raw.replace(",", "").strip()
+            raw = re.sub(r"\([a-zA-Z]\)", "", raw).strip()
+            m_neg = re.fullmatch(r"\((\d+(?:\.\d+)?)\)", raw)
+            if m_neg:
+                return f"-{m_neg.group(1)}"
+            return "".join(raw.casefold().split())
+
         def normalize(item: Any) -> str:
             return "".join(str(item).casefold().split()).replace(",", "")
 
         parts = (
-            normalize(value),
+            normalize_val(value),
             normalize(fact.get("unit")) if fact.get("unit") is not None else "",
             normalize(fact.get("currency")) if fact.get("currency") is not None else "",
             normalize(fact.get("scale")) if fact.get("scale") is not None else "",
@@ -515,6 +547,7 @@ class SemanticEvidenceEvaluationCapability:
         existing_bindings = {
             str(slot_id): tuple(str(fact_id) for fact_id in fact_ids)
             for slot_id, fact_ids in run.binding.slot_bindings.items()
+            if fact_ids
         }
         bound_slot_ids = set(existing_bindings)
         missing_slot_ids = {str(slot_id) for slot_id in run.binding.missing_slots}
@@ -661,6 +694,112 @@ class SemanticEvidenceEvaluationCapability:
             },
         )
 
+    @classmethod
+    def _repair_missing_binding(
+        cls,
+        query: str,
+        plan: SupervisorPlan,
+        facts: tuple[Mapping[str, Any], ...],
+        run: BinderRun,
+    ) -> tuple[BinderRun, BoundEvidenceSemanticCheck, dict[str, Any]] | None:
+        """Recover a fully missing provider result only from packet consensus.
+
+        This is intentionally narrower than ordinary retry. It is available
+        only for direct facts and calculations when the provider returned a
+        structurally valid complete missing response, every required slot has
+        one exact, provenance-complete packet value with no competing structured
+        value, and the reconstructed binding passes both contract validation
+        and query-to-evidence semantic alignment. Multiple R4 views of one
+        physical table do not fabricate corroboration, but a unique exact fact
+        remains usable evidence. This never reads answer text,
+        conversation history, or facts outside the current R4 packet.
+        """
+
+        if plan.intent not in {Intent.DIRECT_FACT, Intent.CALCULATION}:
+            return None
+        if not run.schema_valid:
+            return None
+        expected_slot_ids = {slot.slot_id for slot in plan.required_slots}
+        missing_slot_ids = {
+            str(slot_id) for slot_id in _stable_unique(run.binding.missing_slots)
+        }
+        existing_bindings = {
+            str(slot_id): tuple(str(fact_id) for fact_id in fact_ids)
+            for slot_id, fact_ids in run.binding.slot_bindings.items()
+            if fact_ids
+        }
+        if (
+            not expected_slot_ids
+            or missing_slot_ids != expected_slot_ids
+            or existing_bindings
+            or run.binding.ambiguous_slots
+        ):
+            return None
+        try:
+            frame = extract_query_semantic_frame(query)
+        except (TypeError, ValueError):
+            return None
+        if not frame.entity_ids:
+            return None
+
+        replacements: dict[str, tuple[str, ...]] = {}
+        consensus_sizes: dict[str, int] = {}
+        for slot in plan.required_slots:
+            resolved = cls._consensus_fact_for_slot(
+                query,
+                frame,
+                slot,
+                facts,
+                require_explicit_source=True,
+            )
+            if resolved is None:
+                return None
+            fact_id, consensus_size, _value_key = resolved
+            replacements[slot.slot_id] = (fact_id,)
+            consensus_sizes[slot.slot_id] = consensus_size
+
+        try:
+            binding = EvidenceBinding(
+                status=BindingStatus.BOUND.value,
+                slot_bindings=replacements,
+            )
+        except Exception:
+            return None
+        validation = validate_binding(binding, plan, facts)
+        if not validation.passed:
+            return None
+        semantic_check = align_bound_evidence_to_query(
+            query,
+            plan,
+            facts,
+            binding.slot_bindings,
+            selected_fact_ids=validation.selected_fact_ids,
+        )
+        if not semantic_check.allowed:
+            return None
+        repaired_run = BinderRun(
+            request=run.request,
+            binding=binding,
+            validation=validation,
+            metadata=run.metadata,
+            skipped_no_fact_supply=run.skipped_no_fact_supply,
+            raw_response=run.raw_response,
+            schema_valid=run.schema_valid,
+        )
+        return (
+            repaired_run,
+            semantic_check,
+            {
+                "strategy": "deterministic_missing_packet_consensus",
+                "original_missing_slots": list(run.binding.missing_slots),
+                "replaced_slot_bindings": {
+                    slot_id: {"to": list(fact_ids)}
+                    for slot_id, fact_ids in replacements.items()
+                },
+                "consensus_size_by_slot": consensus_sizes,
+            },
+        )
+
     def evaluate(self, state: AdaptiveRAGStateV1) -> EvidenceEvaluationV1:
         plan = self._plan(state)
         all_facts = self._facts(state)
@@ -679,6 +818,19 @@ class SemanticEvidenceEvaluationCapability:
         self.last_semantic_repair = None
         if status == BindingStatus.AMBIGUOUS.value:
             repaired = self._repair_ambiguous_binding(
+                state.normalized_query,
+                plan,
+                facts,
+                run,
+            )
+            if repaired is not None:
+                run, semantic_check, repair_info = repaired
+                self.last_run = run
+                self.last_semantic_check = semantic_check
+                self.last_semantic_repair = repair_info
+                status = BindingStatus.BOUND.value
+        if status == BindingStatus.MISSING.value:
+            repaired = self._repair_missing_binding(
                 state.normalized_query,
                 plan,
                 facts,
@@ -783,6 +935,7 @@ class SemanticEvidenceEvaluationCapability:
             self.last_bound_slot_bindings = {
                 str(slot_id): tuple(str(item) for item in fact_ids)
                 for slot_id, fact_ids in run.binding.slot_bindings.items()
+                if fact_ids
             }
             fact_by_id = {
                 str(fact.get("fact_id")): fact for fact in facts if fact.get("fact_id")
@@ -796,7 +949,9 @@ class SemanticEvidenceEvaluationCapability:
                 decision=EvidenceDecision.SUFFICIENT,
                 requested_slots=tuple(slot.slot_id for slot in plan.required_slots),
                 supported_slots=tuple(
-                    str(slot_id) for slot_id in run.binding.slot_bindings
+                    str(slot_id)
+                    for slot_id, fact_ids in run.binding.slot_bindings.items()
+                    if fact_ids
                 ),
                 supporting_evidence_ids=selected,
                 temporal_status="BOUND",
@@ -811,6 +966,7 @@ class SemanticEvidenceEvaluationCapability:
             self.last_bound_slot_bindings = {
                 str(slot_id): tuple(str(item) for item in fact_ids)
                 for slot_id, fact_ids in run.binding.slot_bindings.items()
+                if fact_ids
             }
             self.last_citation_ids = ()
             evaluation = EvidenceEvaluationV1(
@@ -818,7 +974,9 @@ class SemanticEvidenceEvaluationCapability:
                 reason_codes=(reason,),
                 requested_slots=tuple(slot.slot_id for slot in plan.required_slots),
                 supported_slots=tuple(
-                    str(slot_id) for slot_id in run.binding.slot_bindings
+                    str(slot_id)
+                    for slot_id, fact_ids in run.binding.slot_bindings.items()
+                    if fact_ids
                 ),
                 missing_slots=missing,
                 supporting_evidence_ids=self.last_bound_evidence_ids,
@@ -834,7 +992,9 @@ class SemanticEvidenceEvaluationCapability:
                 reason_codes=(ReasonCode.EVIDENCE_CONFLICT,),
                 requested_slots=tuple(slot.slot_id for slot in plan.required_slots),
                 supported_slots=tuple(
-                    str(slot_id) for slot_id in run.binding.slot_bindings
+                    str(slot_id)
+                    for slot_id, fact_ids in run.binding.slot_bindings.items()
+                    if fact_ids
                 ),
                 missing_slots=tuple(run.binding.ambiguous_slots),
                 conflicts=tuple(
@@ -870,11 +1030,16 @@ class SemanticEvidenceEvaluationCapability:
                 f"unknown_binder_status:{run.binding.status}"
             )
 
+        bound_slots = [
+            str(slot_id)
+            for slot_id, fact_ids in run.binding.slot_bindings.items()
+            if fact_ids
+        ]
         self._trace.append(
             {
                 "round": self.calls - 1,
                 "status": status,
-                "bound_slot_ids": list(run.binding.slot_bindings),
+                "bound_slot_ids": bound_slots,
                 "missing_slot_ids": list(run.binding.missing_slots),
                 "ambiguous_slot_ids": list(run.binding.ambiguous_slots),
                 "bound_evidence_ids": list(self.last_bound_evidence_ids),
