@@ -5,6 +5,7 @@ from __future__ import annotations
 import gzip
 import json
 import sqlite3
+from dataclasses import replace
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -422,3 +423,28 @@ def test_builder_constructs_request_scoped_v2_graph_with_injected_resources(
     # The request-scoped graph carries only the document scope; raw context is
     # filtered by FinancialQueryRequest/V2ExecutionRequest before execution.
     assert retrieval.document_scope == ()
+
+    # "Request-scoped" has to mean the capability objects, not just the graph
+    # around them.  The ports carry lifetime counters and accumulating traces
+    # (`validation_calls`, `calculator_call_count`, `retrieval_rounds`, ...) that
+    # the coordinator reports verbatim in its execution trace.  Sharing a port
+    # across requests would make those numbers describe the port's lifetime while
+    # the trace presents them as this run's, so two requests must not share one.
+    second = build_trusted_v2_runtime_for_request(
+        None,
+        replace(request, request_id="req-builder-2"),
+        resources=resources,
+    ).coordinator.capabilities
+
+    first = runtime.coordinator.capabilities
+    assert second is not first
+    for port in (
+        "retrieval",
+        "evidence_evaluator",
+        "calculation",
+        "generation",
+        "release_validator",
+    ):
+        assert getattr(second, port) is not getattr(first, port), port
+    # The heavy process-scoped resources are shared, as intended.
+    assert second.retrieval.policy.materializer.__self__ is fact_store

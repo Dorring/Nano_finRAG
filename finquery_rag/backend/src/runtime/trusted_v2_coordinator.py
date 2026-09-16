@@ -777,6 +777,18 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         return requirements
 
     def _capability_trace(self) -> dict[str, Any]:
+        """Collect each port's own trace snapshot.
+
+        The numbers and lists in these snapshots are **lifetime** figures: the
+        ports count calls and accumulate rounds for as long as they live, and
+        this method reports them verbatim.  That is only the same thing as "this
+        request" because ``build_trusted_v2_runtime_for_request`` constructs a
+        fresh port set per request.  A coordinator that reused ports across
+        requests would report a lifetime in a per-run trace, so
+        ``tests/test_trusted_v2_production_builder.py`` pins the per-request
+        identity of all five ports.
+        """
+
         trace: dict[str, Any] = {}
         for name, port in (
             ("retrieval", self.capabilities.retrieval),
