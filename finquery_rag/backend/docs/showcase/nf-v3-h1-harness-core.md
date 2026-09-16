@@ -177,6 +177,27 @@ unadmitted evidence, and one needs an absent retrieval port — which the factor
 correctly refuses, making `UNSUPPORTED_TOOL_ROUTE` a defence-in-depth guard
 rather than a production-reachable path.
 
+### Coverage against the repository's own sealed case set
+
+`tests/fixtures/tv2_07_production_readiness/` is a committed, sealed set of 22
+labelled cases. It is a *scoring* set — labels, no fact corpus — so a case cannot
+be executed without inventing the facts behind its `fixture_key`; there is nothing
+here to reuse as runnable inputs. What it can do honestly is act as a coverage
+inventory, and it is a much richer one than anything written from scratch.
+
+The fixtures reach **10 of 22**. The other 12 are named as gaps, with the reason,
+in `SEALED_CASE_COVERAGE`; a test asserts every sealed case has exactly one entry,
+so the table cannot drift from the dataset. Two of the gaps matter most:
+
+- `recovery_period` — cannot be driven through production wiring at all, because
+  the retriever issues identical queries across replan rounds (§ below).
+- `repair_once` — the release path is single-shot in both modes: a rejected
+  candidate fails closed instead of entering the repair lane.
+
+A coverage gap is not a regression. It is the list of cases that would have to be
+built before this harness could be measured against the project's own readiness
+bar, and it is the right starting inventory for H2A.
+
 ### The successful calculation trace
 
 ```

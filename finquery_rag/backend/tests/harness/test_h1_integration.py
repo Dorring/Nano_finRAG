@@ -18,6 +18,7 @@ from tests.harness.h1_integration import (
     FIXTURES,
     fixture_report,
     run_all,
+    sealed_case_keys,
     sealed_digest,
 )
 
@@ -163,3 +164,28 @@ def test_the_equivalence_contract_leaves_no_outcome_field_unclassified() -> None
     """
 
     assert unclassified_fields(V2ExecutionOutcome) == []
+
+
+def test_every_sealed_case_is_accounted_for(run: dict[str, Any]) -> None:
+    """The repository's own sealed case set is a coverage checklist, not a corpus.
+
+    ``tests/fixtures/tv2_07_production_readiness/`` ships 22 labelled cases and
+    no fact corpus, so a case cannot be executed without inventing the facts
+    behind it.  What it can do honestly is say which cases these fixtures reach.
+    A gap must be named, not left implicit.
+    """
+
+    coverage = run["sealed_case_coverage"]
+
+    assert coverage["sealed_cases"] == len(sealed_case_keys())
+    assert coverage["covered"] + coverage["not_covered"] == coverage["sealed_cases"]
+    for case, entry in coverage["cases"].items():
+        assert entry["note"], case
+        if entry["fixture_id"] is None:
+            assert entry["note"].startswith("gap:"), case
+
+
+def test_the_coverage_table_cannot_drift_from_the_dataset(run: dict[str, Any]) -> None:
+    """A case added to the dataset without a coverage entry fails loudly."""
+
+    assert set(run["sealed_case_coverage"]["cases"]) == set(sealed_case_keys())

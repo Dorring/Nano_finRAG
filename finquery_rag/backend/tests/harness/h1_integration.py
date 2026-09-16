@@ -42,6 +42,7 @@ import hashlib
 import json
 import os
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any, Mapping
 
 from rag_v2.adaptive import AdaptiveRAGBudgetV1
@@ -82,6 +83,7 @@ __all__ = [
     "fixture_report",
     "run_all",
     "run_fixture",
+    "sealed_coverage_report",
     "sealed_digest",
 ]
 
@@ -382,6 +384,104 @@ FIXTURES: tuple[H1Fixture, ...] = (
         factory_eligible=False,
     ),
 )
+
+
+# --- coverage against the repository's own sealed case set -------------------
+#
+# ``tests/fixtures/tv2_07_production_readiness/`` is a committed, sealed case set
+# with per-case expectations (release, route, evidence ids, citation ids).  It is
+# a *scoring* set: it ships labels but no fact corpus, so a case cannot be
+# executed without inventing the facts behind its ``fixture_key`` -- which is
+# what these fixtures do anyway.  What it can be used for honestly is coverage:
+# it is a far richer inventory of what a financial harness must handle than
+# anything written from scratch, and naming the cases this seal does *not* reach
+# is more useful than implying it reaches them.
+#
+# ``None`` means no fixture here exercises that case.  The reason is recorded for
+# every gap, and a test asserts every sealed case appears exactly once, so the
+# table cannot silently drift out of step with the dataset.
+SEALED_CASE_COVERAGE: Mapping[str, tuple[str | None, str]] = {
+    "fact_direct": ("fact_direct", "covered"),
+    "fact_margin": ("fact_direct", "covered: same shape, one admitted fact"),
+    "multi_evidence": (None, "gap: needs a MULTI-route multi-evidence release"),
+    "multi_evidence_two": (None, "gap: needs a MULTI-route partial-evidence case"),
+    "calc_growth": ("calculation_growth_rate", "covered"),
+    "calc_difference": (
+        "calculation_growth_rate",
+        "covered: same calculator path, different operation",
+    ),
+    "qualitative": (None, "gap: needs a MULTI-route qualitative synthesis model"),
+    "table_heavy": (None, "gap: needs table-derived evidence"),
+    "cross_source": (None, "gap: needs multi-document cross-source binding"),
+    "wrong_period": ("wrong_period_no_progress", "covered: as a fail-closed case"),
+    "wrong_row": (None, "gap: needs a wrong-row trap corpus"),
+    "unit_scale": (None, "gap: needs a unit/scale trap corpus"),
+    "no_answer": ("missing_evidence", "covered: no evidence admitted"),
+    "missing_slot": ("missing_evidence", "covered: insufficient evidence"),
+    "conflict": (None, "gap: needs conflicting-evidence binding"),
+    "unsupported_calculation": (
+        "calculation_blocked",
+        "covered: as a calculator that declines to execute",
+    ),
+    "recovery_slot": (None, "gap: needs a slot recovery the retriever can drive"),
+    "recovery_period": (
+        None,
+        "gap: the retriever issues identical queries across replan rounds, so "
+        "this case cannot be driven through production wiring (see seal note)",
+    ),
+    "repair_once": (None, "gap: the release path is single-shot in both modes"),
+    "validator_rejection": ("validator_rejection", "covered"),
+    "assistant_history": (None, "gap: needs a conversation-history case"),
+    "unknown_citation": (
+        "validator_rejection",
+        "covered: same release gate, unadmitted citation",
+    ),
+}
+
+SEALED_CASES_PATH = (
+    Path(__file__).resolve().parents[1]
+    / "fixtures"
+    / "tv2_07_production_readiness"
+    / "questions.jsonl"
+)
+
+
+def sealed_case_keys() -> list[str]:
+    """The ``fixture_key`` of every case in the committed sealed set."""
+
+    keys = []
+    with SEALED_CASES_PATH.open(encoding="utf-8") as handle:
+        for line in handle:
+            if line.strip():
+                keys.append(str(json.loads(line)["metadata"]["fixture_key"]))
+    return keys
+
+
+def sealed_coverage_report() -> dict[str, Any]:
+    """Which sealed cases this fixture set reaches, and which it does not."""
+
+    keys = sealed_case_keys()
+    unknown = [key for key in keys if key not in SEALED_CASE_COVERAGE]
+    if unknown:
+        raise AssertionError(f"sealed cases with no coverage entry: {unknown}")
+    covered = [key for key in keys if SEALED_CASE_COVERAGE[key][0] is not None]
+    unclaimed = [
+        key
+        for key, (fixture_id, _) in SEALED_CASE_COVERAGE.items()
+        if fixture_id is not None and fixture_id not in {f.fixture_id for f in FIXTURES}
+    ]
+    if unclaimed:
+        raise AssertionError(f"coverage names unknown fixtures: {unclaimed}")
+    return {
+        "sealed_cases": len(keys),
+        "covered": len(covered),
+        "not_covered": len(keys) - len(covered),
+        "cases": {
+            key: {"fixture_id": SEALED_CASE_COVERAGE[key][0],
+                  "note": SEALED_CASE_COVERAGE[key][1]}
+            for key in keys
+        },
+    }
 
 
 def sealed_digest(fixtures: tuple[H1Fixture, ...] = FIXTURES) -> str:
@@ -950,6 +1050,7 @@ def run_all(fixtures: tuple[H1Fixture, ...] = FIXTURES) -> dict[str, Any]:
         "harness": "nf-v3-h1-harness-core",
         "sealed_digest": sealed_digest(fixtures),
         "fixture_count": len(reports),
+        "sealed_case_coverage": sealed_coverage_report(),
         "fixtures": reports,
         "summary": {
             "decision_equivalence": sum(
