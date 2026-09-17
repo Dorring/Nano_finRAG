@@ -147,3 +147,97 @@ def test_the_fingerprint_is_not_the_serialized_record() -> None:
     )
 
     assert base.content_fingerprint == decorated.content_fingerprint
+
+
+# --- H2A-2B: quantity identity, and text identity, kept apart -----------------
+
+
+def test_the_same_quantity_written_two_ways_is_not_progress() -> None:
+    """``1 billion`` and ``1000 million`` are one figure, not two reports.
+
+    This is the round-two case the progress detector gets wrong when the
+    magnitude is compared as a label: the run answers the retriever again with
+    the same quantity in different units, and reads it as new information.
+    """
+
+    detector = ProgressDetectorV1()
+    state = AdaptiveRAGStateV1.new("r", "What was revenue?")
+
+    billion = _packet("A", value="1", scale="billion")
+    million = _packet("B", value="1000", scale="million")
+
+    assert billion.content_fingerprint == million.content_fingerprint
+    assert detector.observe(state, _signature(detector, [billion])) is True
+    assert detector.observe(state, _signature(detector, [million])) is False
+
+
+def test_a_changed_magnitude_is_still_progress() -> None:
+    """Do not fix the above by canonicalising everything to one constant."""
+
+    detector = ProgressDetectorV1()
+    state = AdaptiveRAGStateV1.new("r", "What was revenue?")
+
+    first = _packet("A", value="1", scale="billion")
+    other = _packet("B", value="1.2", scale="billion")
+
+    assert first.content_fingerprint != other.content_fingerprint
+    assert detector.observe(state, _signature(detector, [first])) is True
+    assert detector.observe(state, _signature(detector, [other])) is True
+
+
+def test_a_ratio_is_not_its_percentage_form_here_either() -> None:
+    """The representation distinction survives into the fingerprint."""
+
+    ratio = _packet("A", value="0.12", unit="ratio")
+    percent = _packet("B", value="12", unit="%")
+
+    assert ratio.content_fingerprint != percent.content_fingerprint
+
+
+def test_a_comma_in_a_textual_field_is_part_of_the_claim() -> None:
+    """``Revenue, net`` and ``Revenue net`` are different metrics.
+
+    The helper this replaced removed every comma, which is right for a digit
+    grouping separator and wrong for every other comma -- and it could not tell
+    which it had.
+    """
+
+    left = _packet("A", metric="Revenue, net")
+    right = _packet("B", metric="Revenue net")
+
+    assert left.content_fingerprint != right.content_fingerprint
+
+
+def test_a_malformed_number_is_not_guessed_into_a_different_one() -> None:
+    """``1,5`` is not ``15``.  Neither is chosen; they stay different."""
+
+    ambiguous = _packet("A", value="1,5", scale=None)
+    comma_stripped = _packet("B", value="15", scale=None)
+
+    assert ambiguous.content_fingerprint != comma_stripped.content_fingerprint
+
+
+def test_a_grouping_separator_is_not_a_difference() -> None:
+    assert _packet("A", value="1,500", scale=None).content_fingerprint == _packet(
+        "B", value="1500", scale=None
+    ).content_fingerprint
+
+
+def test_every_content_identity_field_is_still_in_the_fingerprint() -> None:
+    """The two halves must partition the fields the fingerprint claims to cover.
+
+    A field missing from both would be ignored silently, which is how a
+    fingerprint stops noticing a dimension of the claim it is supposed to
+    identify.
+    """
+
+    from rag_v2.adaptive.adaptive_contracts import (
+        CONTENT_IDENTITY_FIELDS,
+        QUANTITY_IDENTITY_FIELDS,
+        TEXT_IDENTITY_FIELDS,
+    )
+
+    assert set(TEXT_IDENTITY_FIELDS) | set(QUANTITY_IDENTITY_FIELDS) == set(
+        CONTENT_IDENTITY_FIELDS
+    )
+    assert set(TEXT_IDENTITY_FIELDS) & set(QUANTITY_IDENTITY_FIELDS) == set()

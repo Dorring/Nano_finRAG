@@ -12,6 +12,17 @@ import re
 from decimal import Decimal, InvalidOperation
 from typing import Any, Iterable, Mapping
 
+from rag_v2.contracts.financial_semantics import (
+    canonical_decimal,
+    magnitude_multiplier,
+    magnitude_of,
+    magnitude_tokens,
+    measurement_unit_tokens,
+    representation_of,
+    representation_tokens,
+    token_pattern,
+)
+
 from .contracts import (AnswerEnvelopeV1, GenerationValidationFindingV1,
                         GenerationValidationReportV1, ValidationSeverity)
 
@@ -19,7 +30,16 @@ _CITATION_RE = re.compile(r"\[([^\[\]]+)\]")
 _NUMBER_RE = re.compile(r"(?<![A-Za-z0-9])[-+]?\d[\d,]*(?:\.\d+)?(?:[eE][-+]?\d+)?%?")
 _PERIOD_RE = re.compile(r"\b(?:FY\s*\d{4}|Q[1-4]\s*FY?\s*\d{4}|\d{4}\s*Q[1-4]|20\d{2})\b", re.I)
 _CURRENCY_RE = re.compile(r"(?:\$|€|£|¥|\b(?:USD|EUR|GBP|JPY|CNY)\b)", re.I)
-_UNIT_RE = re.compile(r"\b(?:millions?|billions?|thousands?|percent|percentage|ratio|shares?|dollars?)\b|%", re.I)
+
+#: The unit/scale tokens this validator scans for.  Which words it looks for in
+#: an answer is a lexical choice that stays here; what those words *mean* does
+#: not, so the alternation is built from the shared financial semantics rather
+#: than re-typed.  Re-typing it is how this file and `semantic_claims.py` came
+#: to hold two vocabularies that agreed only by luck.
+_UNIT_TOKENS = token_pattern(
+    set(magnitude_tokens()) | set(representation_tokens()) | set(measurement_unit_tokens())
+)
+_UNIT_RE = re.compile(rf"\b(?:{_UNIT_TOKENS})\b|%", re.I)
 
 
 def _text(value: Any) -> str:
@@ -219,33 +239,57 @@ class RuntimeGenerationValidatorV1:
         answer_units = {item.lower() for item in _UNIT_RE.findall(envelope.answer_text)}
         known_unit_tokens = {item.lower() for item in _known_units(packet)}
         if answer_units and known_unit_tokens:
-            ratio_units = {"percent", "percentage", "%", "ratio"}
-            answer_ratio_units = answer_units & ratio_units
-            known_ratio_units = known_unit_tokens & ratio_units
-            incompatible = {"percent", "percentage", "%", "ratio"} & answer_units
+            # Which tokens are representation kinds is not this file's to
+            # decide.  ``percent`` and ``ratio`` used to sit in the same set as
+            # ``million`` here, which is the conflation the shared vocabulary
+            # exists to remove -- so the classification is asked for, not
+            # re-listed.
+            #
+            # NOTE (H2A-2B, verified): the predicate below is unreachable, and
+            # was unreachable before this phase as well.  ``incompatible`` is
+            # the same set as ``answer_ratio_units``, so it reads
+            # ``A and K and not (A and K)`` -- false for every input, which is
+            # why the ratio family has never actually been enforced here.
+            # Recorded rather than repaired: making it live would introduce a
+            # HARD_FAIL that has never fired on any answer, and choosing what it
+            # should reject is a validator decision this phase was not asked to
+            # make.
+            answer_ratio_units = {
+                item for item in answer_units if representation_of(item) is not None
+            }
+            known_ratio_units = {
+                item for item in known_unit_tokens if representation_of(item) is not None
+            }
+            incompatible = answer_ratio_units
             # A deterministic ratio result is conventionally rendered as a
             # percentage (for example, 0.064 -> 6.40%). Treat those tokens
             # as one structured unit family. Other unit claims remain strict.
             if incompatible and known_ratio_units and not (answer_ratio_units and known_ratio_units):
                 add("GV5_UNIT_CURRENCY_SCALE_FIDELITY", ValidationSeverity.HARD_FAIL,
                     "answer unit conflicts with packet")
-        scale_words = {"thousand": 1, "thousands": 1, "million": 1000000, "millions": 1000000,
-                       "billion": 1000000000, "billions": 1000000000}
-        answer_scales = {scale_words[item.lower()] for item in _UNIT_RE.findall(envelope.answer_text)
-                         if item.lower() in scale_words}
+        # The magnitude of each scale word comes from the shared semantics.  This
+        # table used to be local, and it mapped ``thousand`` to 1 while mapping
+        # ``million`` to 1000000 -- a word meaning a magnitude one order off
+        # from the one the same word means everywhere else in the repository.
+        answer_scales = {
+            int(magnitude_multiplier(scale))
+            for item in _UNIT_RE.findall(envelope.answer_text)
+            if (scale := magnitude_of(item)) is not None
+        }
         packet_scales: set[int] = set()
-        for item in _iter_evidence(packet):
-            raw = _text(item.get("scale")).replace(",", "").strip()
-            if raw:
-                try:
-                    packet_scales.add(int(Decimal(raw)))
-                except (InvalidOperation, ValueError):
-                    pass
-        if isinstance(calculation, Mapping) and calculation.get("scale"):
-            try:
-                packet_scales.add(int(Decimal(_text(calculation["scale"]))))
-            except (InvalidOperation, ValueError):
-                pass
+        # One parse for both spellings.  The evidence loop stripped commas by
+        # hand and the calculation branch did not, so `1,000,000` and
+        # `1000000` were read by two different rules in the same check -- and
+        # the by-hand rule turned `1,5` into 15.  A scale this project cannot
+        # read is skipped, which leaves the comparison unable to fire rather
+        # than firing on a number nobody wrote.
+        for raw in (
+            *(item.get("scale") for item in _iter_evidence(packet)),
+            calculation.get("scale") if isinstance(calculation, Mapping) else None,
+        ):
+            number = canonical_decimal(raw)
+            if number is not None:
+                packet_scales.add(int(number))
         if answer_scales and packet_scales and not any(scale in packet_scales for scale in answer_scales):
             add("GV5_UNIT_CURRENCY_SCALE_FIDELITY", ValidationSeverity.HARD_FAIL,
                 "answer scale conflicts with packet")

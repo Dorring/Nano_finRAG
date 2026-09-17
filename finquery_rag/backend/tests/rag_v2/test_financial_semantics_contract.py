@@ -283,6 +283,45 @@ def test_a_magnitude_is_not_another_magnitude() -> None:
     assert len(multipliers) == len(scales)
 
 
+# --- the bare words, and the delegation consumers go through -----------------
+
+
+def test_the_bare_words_are_the_vocabulary_in_singular() -> None:
+    assert fs.magnitude_words() == ("thousand", "million", "billion", "trillion")
+    assert fs.MAGNITUDE_WORDS == {
+        fs.MagnitudeScale.THOUSAND: "thousand",
+        fs.MagnitudeScale.MILLION: "million",
+        fs.MagnitudeScale.BILLION: "billion",
+        fs.MagnitudeScale.TRILLION: "trillion",
+    }
+    for scale, word in fs.MAGNITUDE_WORDS.items():
+        assert fs.magnitude_of(word) is scale
+
+
+def test_a_consumer_table_cannot_disagree_with_the_shared_magnitudes() -> None:
+    """The delegation used by the tables that keep a vocabulary of their own.
+
+    ``million`` is written wrong on purpose: a local table keeps the words the
+    shared semantics has never heard of, and cannot keep a different meaning for
+    a word it has heard of.
+    """
+
+    resolved = fs.with_shared_magnitudes(
+        {
+            "million": Decimal("1"),
+            "thousand": Decimal("1000"),
+            "k": Decimal("1000"),
+            "万": Decimal("10000"),
+        }
+    )
+
+    assert resolved["million"] == Decimal("1000000")
+    assert resolved["thousand"] == Decimal("1000")
+    assert resolved["k"] == Decimal("1000")
+    assert resolved["万"] == Decimal("10000")
+    assert set(resolved) == {"million", "thousand", "k", "万"}
+
+
 # --- textual identity --------------------------------------------------------
 
 

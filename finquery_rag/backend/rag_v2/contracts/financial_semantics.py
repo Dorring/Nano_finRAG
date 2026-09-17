@@ -87,6 +87,22 @@ MAGNITUDE_CANONICAL_NAMES: Mapping[MagnitudeScale, str] = {
     MagnitudeScale.TRILLION: "trillions",
 }
 
+#: The bare singular word for each magnitude that has one, in declaration order.
+#:
+#: Distinct from :data:`MAGNITUDE_CANONICAL_NAMES`: that one is a caption's
+#: plural ("dollars in millions") and is compared as a label, this one is the
+#: word a consumer names a magnitude by.  A consumer that matches text uses it
+#: to state *which* magnitudes it looks for without restating what they are --
+#: the words here are checked against the vocabulary and the multipliers below,
+#: so a list built from them cannot name a magnitude the shared semantics does
+#: not define.
+MAGNITUDE_WORDS: Mapping[MagnitudeScale, str] = {
+    MagnitudeScale.THOUSAND: "thousand",
+    MagnitudeScale.MILLION: "million",
+    MagnitudeScale.BILLION: "billion",
+    MagnitudeScale.TRILLION: "trillion",
+}
+
 #: Every word or phrasing that names a magnitude, lower-cased and whitespace
 #: normalised.
 #:
@@ -148,6 +164,38 @@ def magnitude_multiplier(scale: MagnitudeScale) -> Decimal:
 
 def magnitude_canonical_name(scale: MagnitudeScale) -> str:
     return MAGNITUDE_CANONICAL_NAMES[scale]
+
+
+def magnitude_words() -> tuple[str, ...]:
+    """The bare singular word of every magnitude that has one, in order."""
+
+    return tuple(
+        MAGNITUDE_WORDS[scale] for scale in MagnitudeScale if scale in MAGNITUDE_WORDS
+    )
+
+
+def with_shared_magnitudes(local: Mapping[str, Decimal]) -> dict[str, Decimal]:
+    """Re-point a consumer's own scale table at the shared multipliers.
+
+    A consumer that recognises words this layer does not -- bare suffixes
+    (``k``, ``bn``), Chinese magnitude units -- keeps its own table, because
+    that is its lexical vocabulary.  It does not keep its own *numbers*: every
+    word the shared semantics knows takes the shared multiplier here, so a table
+    can hold a vocabulary the shared layer has never heard of and still be
+    incapable of disagreeing with it about what ``million`` means.
+
+    The replacement is unconditional rather than a comparison.  A local table
+    that disagrees is the defect this exists to remove, and it should not be
+    allowed to win because it was written first.
+    """
+
+    resolved: dict[str, Decimal] = {}
+    for word, fallback in local.items():
+        scale = magnitude_of(word)
+        resolved[word] = (
+            magnitude_multiplier(scale) if scale is not None else fallback
+        )
+    return resolved
 
 
 # ---------------------------------------------------------------------------

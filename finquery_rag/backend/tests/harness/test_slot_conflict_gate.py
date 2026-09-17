@@ -191,6 +191,8 @@ EQUIVALENT_QUANTITIES: tuple[tuple[dict, dict], ...] = (
     ({"value": "1000", "scale": "million"}, {"value": "1", "scale": "billion"}),
     # Decimal precision is presentation, not quantity.
     ({"value": "1.000", "scale": "billion"}, {"value": "1000.0", "scale": "million"}),
+    # Digit grouping is presentation, not quantity.
+    ({"value": "1,500"}, {"value": "1500"}),
     # Corroboration: two sources, the same figure.
     ({"value": "391"}, {"value": "391"}),
 )
@@ -208,6 +210,12 @@ DISTINCT_QUANTITIES: tuple[tuple[dict, dict], ...] = (
      {"value": "12", "unit": "%", "scale": None}),
     # An unrecognised scale is a qualifier, not a magnitude.
     ({"value": "1", "scale": "adjusted-billion"}, {"value": "1", "scale": "billion"}),
+    # A comma that is not a group separator is not punctuation.  ``1,5`` is 1.5
+    # in one locale and 15 by comma-deletion, and neither is recoverable from
+    # the text, so it must not become the number comma-deletion would produce.
+    ({"value": "1,5"}, {"value": "15"}),
+    ({"value": "1,50"}, {"value": "150"}),
+    ({"value": "12,34,567"}, {"value": "1234567"}),
     # A different figure is a different figure.
     ({"value": "391"}, {"value": "383"}),
 )

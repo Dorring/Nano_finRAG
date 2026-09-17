@@ -5,10 +5,10 @@ created_at/ingested_at values are never used as financial effective time.
 """
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass
 from typing import Iterable
 
+from ..contracts.financial_semantics import canonical_decimal
 from .adaptive_contracts import (
     ConsistencyDecision,
     EvidencePacketV1,
@@ -25,15 +25,24 @@ def _norm(value: object | None) -> str | None:
 
 
 def _number(value: str | None) -> float | None:
+    """The exact number a candidate value states, when it states one.
+
+    ``canonical_decimal`` and not ``replace(",", "")``.  The old form deleted
+    every comma, so ``1,5`` became 15 and two candidates stating *different*
+    quantities compared equal -- the disagreement this consistency check exists
+    to find was the one it erased.  A value whose representation is not one this
+    project understands now returns ``None``, which sends the caller back to
+    comparing the literal text: the conservative direction, and the only one
+    available when the text does not determine the number.
+    """
+
     if value is None:
         return None
-    text = str(value).replace(",", "").strip()
-    if not re.fullmatch(r"[-+]?\d+(?:\.\d+)?%?", text):
-        return None
-    try:
-        return float(text.rstrip("%"))
-    except ValueError:
-        return None
+    text = str(value).strip()
+    if text.endswith("%"):
+        text = text[:-1].strip()
+    number = canonical_decimal(text)
+    return None if number is None else float(number)
 
 
 @dataclass(frozen=True)

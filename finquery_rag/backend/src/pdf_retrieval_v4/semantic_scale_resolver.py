@@ -20,40 +20,44 @@ from __future__ import annotations
 
 from typing import Any
 
+from rag_v2.contracts.financial_semantics import (
+    MAGNITUDE_SYNONYMS,
+    magnitude_canonical_name,
+    magnitude_multiplier,
+    magnitude_of,
+)
 from src.pdf_retrieval_v4.semantic_graph_models import ScaleResolution
 
 # ---------------------------------------------------------------------------
-# Scale keyword → (factor, unit) mapping
+# Scale vocabulary
 # ---------------------------------------------------------------------------
+#
+# The words are not defined here.  They belong to the shared financial-semantic
+# authority (`rag_v2/contracts/financial_semantics.py`), which this module now
+# reads instead of maintaining its own copy -- the copy here and the two in
+# `rag_v2` enumerated the same words with no shared source, so any of the three
+# could drift and the other two would keep looking correct.
+#
+# What stays local is the *retrieval* decision: which of the known phrasings a
+# table caption contains, and what the level hierarchy does about it.  That is a
+# lexical and procedural choice, not a semantic one, and it is the reason this
+# module is a consumer of the vocabulary rather than a second definition of it.
+#
+# `MAGNITUDE_SYNONYMS` is keyed by lower-cased, whitespace-normalised token and
+# is scanned as substrings below, so its order is load-bearing: longer phrasings
+# precede the bare words they contain.
 
-_SCALE_MAP: dict[str, tuple[float, str]] = {
-    "in millions": (1e6, "millions"),
-    "in million": (1e6, "millions"),
-    "millions": (1e6, "millions"),
-    "million": (1e6, "millions"),
-    "in billions": (1e9, "billions"),
-    "in billion": (1e9, "billions"),
-    "billions": (1e9, "billions"),
-    "billion": (1e9, "billions"),
-    "in thousands": (1e3, "thousands"),
-    "in thousand": (1e3, "thousands"),
-    "thousands": (1e3, "thousands"),
-    "thousand": (1e3, "thousands"),
-    "dollars in millions": (1e6, "millions"),
-    "dollars in thousands": (1e3, "thousands"),
-    "dollars in billions": (1e9, "billions"),
-    "amounts in millions": (1e6, "millions"),
-    "amounts in thousands": (1e3, "thousands"),
-    "amounts in billions": (1e9, "billions"),
-}
-
-# Case-insensitive lookup
-_SCALE_MAP_LOWER = {k.lower(): v for k, v in _SCALE_MAP.items()}
+_MAGNITUDE_KEYWORDS: tuple[str, ...] = tuple(MAGNITUDE_SYNONYMS)
 
 
 def _resolve_scale_keyword(keyword: str) -> tuple[float, str] | None:
     """Resolve a single scale keyword to (factor, unit)."""
-    return _SCALE_MAP_LOWER.get(keyword.lower())
+    scale = magnitude_of(keyword)
+    if scale is None:
+        return None
+    # A float factor is this module's published shape; the shared authority
+    # carries an exact Decimal, so this is the boundary where it is widened.
+    return (float(magnitude_multiplier(scale)), magnitude_canonical_name(scale))
 
 
 def resolve_scale_keyword(keyword: str) -> tuple[float, str] | None:
@@ -105,14 +109,14 @@ def resolve_table_scale(
             cell_scale_candidates.append(str(sc))
         # Also check cell text directly
         text = str(cell.get("resolved_text") or "").lower()
-        for kw in _SCALE_MAP_LOWER:
+        for kw in _MAGNITUDE_KEYWORDS:
             if kw in text:
                 cell_scale_candidates.append(kw)
 
     row_scale_candidates: list[str] = []
     for row in table.get("rows") or []:
         text = str(row.get("resolved_text") or "").lower()
-        for kw in _SCALE_MAP_LOWER:
+        for kw in _MAGNITUDE_KEYWORDS:
             if kw in text:
                 row_scale_candidates.append(kw)
 
@@ -121,7 +125,7 @@ def resolve_table_scale(
     header_texts = table.get("header_texts") or []
     for ht in header_texts:
         text = str(ht).lower()
-        for kw in _SCALE_MAP_LOWER:
+        for kw in _MAGNITUDE_KEYWORDS:
             if kw in text:
                 title_scale_candidates.append(kw)
 

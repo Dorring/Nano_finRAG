@@ -14,6 +14,14 @@ from enum import Enum
 import re
 from typing import Any, Mapping
 
+from rag_v2.contracts.financial_semantics import (
+    magnitude_multiplier,
+    magnitude_of,
+    magnitude_tokens,
+    measurement_unit_tokens,
+    representation_tokens,
+    token_pattern,
+)
 from rag_v2.generation.contracts import AnswerEnvelopeV1
 
 
@@ -85,11 +93,18 @@ class SemanticClaimVerifierV1:
     _NUMBER = re.compile(r"(?<![A-Za-z0-9])[-+]?\d[\d,]*(?:\.\d+)?(?:[eE][-+]?\d+)?%?")
     _PERIOD = re.compile(r"\b(?:FY\s*\d{4}|Q[1-4]\s*FY?\s*\d{4}|\d{4}\s*Q[1-4]|20\d{2})\b", re.I)
     _CURRENCY = re.compile(r"(?:\$|€|£|¥|\b(?:USD|EUR|GBP|JPY|CNY)\b)", re.I)
-    _UNIT = re.compile(
-        r"\b(?:cubic\s+feet?|square\s+feet?|feet?|meters?|metres?|kg|kilograms?|"
-        r"millions?|billions?|thousands?|percent(?:age)?|ratio|shares?|dollars?)\b|%",
-        re.I,
+    #: Physical units are this verifier's own vocabulary -- they are not
+    #: financial semantics and are deliberately absent from the shared module.
+    #: The financial half of the alternation is built from it, so a magnitude or
+    #: representation word cannot mean one thing here and another in the
+    #: validator's gate.
+    _PHYSICAL_UNITS = (
+        r"cubic\s+feet?|square\s+feet?|feet?|meters?|metres?|kg|kilograms?"
     )
+    _FINANCIAL_UNITS = token_pattern(
+        set(magnitude_tokens()) | set(representation_tokens()) | set(measurement_unit_tokens())
+    )
+    _UNIT = re.compile(rf"\b(?:{_PHYSICAL_UNITS}|{_FINANCIAL_UNITS})\b|%", re.I)
     _RELATIONAL = re.compile(
         r"\b(?:increase(?:d)?|decrease(?:d)?|growth|grew|decline(?:d)?|higher|lower|"
         r"more|less|compared|versus|vs\.?|margin|rate)\b",
@@ -215,12 +230,14 @@ class SemanticClaimVerifierV1:
         known = cls._packet_units(packet)
         if answer_unit in known:
             return True
-        aliases = {
-            "million": "1000000", "millions": "1000000",
-            "billion": "1000000000", "billions": "1000000000",
-            "thousand": "1000", "thousands": "1000",
-        }
-        return answer_unit in aliases and aliases[answer_unit] in known
+        # A scale word in an answer is supported when the packet states the
+        # magnitude it names.  The word-to-number table was local here and
+        # listed three of the four magnitudes the repository knows; it now
+        # reads the shared semantics, so the set cannot be short again.
+        scale = magnitude_of(answer_unit)
+        if scale is None:
+            return False
+        return str(magnitude_multiplier(scale)) in known
 
     @classmethod
     def _metric_supported(cls, answer: str, packet: Mapping[str, Any]) -> bool | None:

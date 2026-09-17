@@ -12,6 +12,8 @@ from dataclasses import asdict, dataclass, field
 from enum import Enum
 from typing import Any, Mapping
 
+from rag_v2.contracts.financial_semantics import quantity_identity, text_identity
+
 
 #: What the evidence says.  Deliberately not the instance id, the citation,
 #: the document, the page, the source or the metadata bag -- see
@@ -27,13 +29,22 @@ CONTENT_IDENTITY_FIELDS: tuple[str, ...] = (
     "scale",
 )
 
+#: Fields that are one quantity, folded as a quantity.
+#:
+#: These are deliberately not folded one at a time as text.  A magnitude is not
+#: a label to be compared with other labels: ``1000 million`` and ``1 billion``
+#: are the same quantity written two ways, and a field-by-field text comparison
+#: can only ever see two different strings.  They go through the shared
+#: financial semantics together, which is also what conflict consensus uses --
+#: so the two cannot disagree about whether two sources state the same figure.
+QUANTITY_IDENTITY_FIELDS: tuple[str, ...] = ("value", "unit", "currency", "scale")
 
-def _identity_text(value: Any) -> str:
-    """Fold presentation differences that do not change what is claimed."""
-
-    if value is None:
-        return ""
-    return " ".join(str(value).replace(",", "").casefold().split())
+#: Fields that are text, folded as text.  Derived rather than listed, so the two
+#: halves cannot stop partitioning :data:`CONTENT_IDENTITY_FIELDS` -- a field
+#: dropped from both would leave the fingerprint quietly ignoring it.
+TEXT_IDENTITY_FIELDS: tuple[str, ...] = tuple(
+    field for field in CONTENT_IDENTITY_FIELDS if field not in QUANTITY_IDENTITY_FIELDS
+)
 
 
 def _canon(value: Any) -> str:
@@ -283,12 +294,28 @@ class EvidencePacketV1:
         id, so it was a *serialized-record* hash: identical content under a new
         id hashed differently, and the progress detector read that as new
         information.
+
+        The version before this one folded every field through one text helper
+        that removed commas.  That is wrong in both directions and could not be
+        made right, because the helper had no way to know which kind of field it
+        held: for a metric, ``Revenue, net`` and ``Revenue net`` are different
+        claims and were merged; for a value, ``1,5`` and ``15`` are different
+        numbers and were merged too.  So the two kinds are separated here.  Text
+        fields are folded as text; the numeric fields are handed to the shared
+        financial semantics as the one quantity they describe, which is what
+        makes ``1000 million USD`` and ``1 billion USD`` fingerprint alike.
         """
 
         payload = {
-            field: _identity_text(self._canonical(field))
-            for field in CONTENT_IDENTITY_FIELDS
+            field: text_identity(self._canonical(field))
+            for field in TEXT_IDENTITY_FIELDS
         }
+        payload["quantity"] = quantity_identity(
+            self._canonical("value"),
+            scale=self._canonical("scale"),
+            unit=self._canonical("unit"),
+            currency=self._canonical("currency"),
+        )
         return stable_hash(payload)
 
     def _canonical(self, field: str) -> Any:

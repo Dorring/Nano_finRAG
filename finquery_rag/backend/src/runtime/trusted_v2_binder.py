@@ -1,8 +1,6 @@
 from __future__ import annotations
 
 from collections.abc import Iterable, Mapping
-from decimal import Decimal
-import re
 from typing import Any
 
 from rag_v2.adaptive import (
@@ -12,6 +10,7 @@ from rag_v2.adaptive import (
     ReasonCode,
 )
 from rag_v2.contracts.evidence import BindingStatus, EvidenceBinding
+from rag_v2.contracts.financial_semantics import quantity_identity
 from rag_v2.contracts.plan import Intent, SupervisorPlan
 from rag_v2.evidence.binder_service import (
     BinderRequest,
@@ -29,7 +28,6 @@ from rag_v2.supervisor import (
     extract_query_semantic_frame,
 )
 from rag_v2.supervisor import EvidenceScope, query_allows_evidence_scope
-from src.pdf_retrieval_v4.semantic_scale_resolver import resolve_scale_keyword
 
 
 class SemanticBinderCapabilityError(RuntimeError):
@@ -240,32 +238,34 @@ class SemanticEvidenceEvaluationCapability:
                 return ReasonCode.WRONG_PERIOD
         return ReasonCode.MISSING_SLOT
 
-    @staticmethod
-    def _canonical_scale(raw_scale: Any) -> tuple[float, str] | None:
-        """Fold a scale keyword into a factor and a canonical name.
-
-        Reuses the retrieval layer's scale vocabulary rather than introducing a
-        second one: without this, "1000 million" and "1 billion" are different
-        value keys and two sources stating the same quantity in different units
-        read as a disagreement.  That is a false conflict, and false conflicts
-        fail closed on correct evidence.
-        """
-
-        if raw_scale is None:
-            return None
-        try:
-            return resolve_scale_keyword(str(raw_scale))
-        except Exception:
-            return None
-
     @classmethod
     def _fact_value_key(cls, fact: Mapping[str, Any]) -> str | None:
-        """Build a conservative structured value identity for consensus repair.
+        """The structured quantity identity of an R4 candidate.
 
-        This is deliberately not a parser for answer text.  It only compares
-        the value/unit/scale fields already present on an R4 candidate.  A
-        differing scale or unit therefore remains a conflict instead of being
-        silently treated as the same fact.
+        This is deliberately not a parser for answer text.  It compares the
+        value/unit/currency/scale fields already present on the candidate, and
+        it does so by asking the shared financial semantics what those fields
+        mean -- the same primitive the content fingerprint uses, so the two
+        cannot disagree about whether two sources state the same quantity.
+
+        Three consequences follow from that, and all three are the point:
+
+        * A differing scale or unit stays a difference.  ``1 billion USD`` and
+          ``1 billion EUR`` are different quantities, and two admissible
+          candidates that state them are in conflict.
+        * A *known* scale is folded into the value, so ``1000 million`` and
+          ``1 billion`` key the same -- otherwise two sources writing one
+          quantity in different units read as a disagreement, and a fail-closed
+          gate then refuses evidence that agrees.
+        * An *unrecognised* scale is not folded and is not a magnitude.  It
+          stays a literal part of the key, so ``adjusted-billion`` remains a
+          different fact from ``billion`` rather than being silently equated
+          with it.
+
+        Arbitration -- how many agreeing candidates are enough, what counts as
+        corroboration -- is not here.  This method answers "what quantity does
+        this record state"; the conflict gate answers "do these agree enough to
+        bind".
         """
 
         value = fact.get("parsed_numeric_value")
@@ -276,58 +276,12 @@ class SemanticEvidenceEvaluationCapability:
         if value is None or not str(value).strip():
             return None
 
-        def normalize_val(val: Any) -> str:
-            raw = str(val).strip()
-            raw = re.sub(r"^[\$€£¥\s]+", "", raw)
-            raw = re.sub(r"[\$€£¥\s]+$", "", raw)
-            raw = raw.replace(",", "").strip()
-            raw = re.sub(r"\([a-zA-Z]\)", "", raw).strip()
-            m_neg = re.fullmatch(r"\((\d+(?:\.\d+)?)\)", raw)
-            if m_neg:
-                return f"-{m_neg.group(1)}"
-            return "".join(raw.casefold().split())
-
-        def normalize(item: Any) -> str:
-            return "".join(str(item).casefold().split()).replace(",", "")
-
-        # Fold a known scale into the value so the same quantity written two
-        # ways keys the same.  The scale name then drops out of the key: it is
-        # already accounted for by the factor, and keeping it would make
-        # "1000 million" and "1 billion" differ on the name after agreeing on
-        # the quantity -- a false conflict over a unit label.
-        #
-        # An unrecognised scale stays a literal part, so a scale this code does
-        # not understand remains a difference rather than being silently
-        # equated.
-        raw_scale = fact.get("scale")
-        resolved_scale = cls._canonical_scale(raw_scale)
-        if resolved_scale is not None:
-            factor, _canonical_name = resolved_scale
-            try:
-                scaled_value = Decimal(normalize_val(value)) * Decimal(str(factor))
-            except (ArithmeticError, ValueError):
-                value_part = normalize_val(value)
-                scale_part = normalize(raw_scale)
-            else:
-                # ``normalize()`` strips trailing zeros, so 1.000 billion and
-                # 1000.0 million key the same.  Decimal multiplication preserves
-                # significant digits, so without this the two products are
-                # "1000000000.000" and "1000000000.00" -- and two sources
-                # writing one quantity at different precision would read as a
-                # disagreement, failing closed on evidence that agrees.
-                value_part = normalize(str(scaled_value.normalize()))
-                scale_part = ""
-        else:
-            value_part = normalize_val(value)
-            scale_part = normalize(raw_scale) if raw_scale is not None else ""
-
-        parts = (
-            value_part,
-            normalize(fact.get("unit")) if fact.get("unit") is not None else "",
-            normalize(fact.get("currency")) if fact.get("currency") is not None else "",
-            scale_part,
+        return quantity_identity(
+            value,
+            scale=fact.get("scale"),
+            unit=fact.get("unit"),
+            currency=fact.get("currency"),
         )
-        return "|".join(parts)
 
     @classmethod
     def _fact_matches_slot(

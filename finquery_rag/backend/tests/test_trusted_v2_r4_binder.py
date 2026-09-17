@@ -1689,8 +1689,19 @@ def test_fact_value_key_normalizes_currency_footnotes_and_parenthesized_negative
     key3 = SemanticEvidenceEvaluationCapability._fact_value_key(fact3)
     key4 = SemanticEvidenceEvaluationCapability._fact_value_key(fact4)
 
-    assert key1 == key2 == "177556|usd|usd|"
-    assert key3 == key4 == "-3037|usd|usd|"
+    # The key is a private identity, not a published format, so what is pinned
+    # here is what it must *say*: the two spellings are one quantity, and the
+    # magnitude in the key is the one that was written -- 177,556 folded
+    # exactly, and a parenthesised value folded to a negative.
+    #
+    # The separators and the trailing parts are not asserted: pinning them
+    # pinned a layout, and the layout changed in H2A-2B when the key began
+    # carrying the representation kind as well as the unit and currency.
+    assert key1 == key2
+    assert key3 == key4
+    assert key1 is not None and key1.startswith("177556|")
+    assert key3 is not None and key3.startswith("-3037|")
+    assert key1 != key3
 
 
 def test_slot_metric_matches_hardened_against_adversarial_subsets() -> None:
