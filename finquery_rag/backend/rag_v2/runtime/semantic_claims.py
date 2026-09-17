@@ -86,7 +86,11 @@ class SemanticClaimVerifierV1:
     # Accept the canonical E#/C# IDs and the existing runtime EV-/CV-style
     # evidence IDs.  The packet allow-list remains authoritative.
     # Runtime citation IDs may be structured (for example
-    # ``citation:v2:<digest>`` or ``atomic:<digest>``).  Strip the complete
+    # The live id families are ``citation:<digest>`` (the fact store) and
+    # ``atomic:<digest>`` (the retrieval semantic graph).  ``citation:v2:``
+    # was named here and never implemented anywhere -- no producer, parser or
+    # compatibility consumer -- so naming it invited a reader to treat an
+    # imaginary identity domain as real (H2A-2D-4).
     # bracketed ID before numeric extraction so digits in an ID cannot become
     # a spurious financial value.
     _CITATION = re.compile(r"\[([A-Za-z][A-Za-z0-9_.:/-]*)\]")

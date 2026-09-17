@@ -9,7 +9,6 @@ from rag_v2.contracts import (
     Action,
     AnswerEnvelope,
     BindingStatus,
-    BoundFact,
     CanonicalAnswer,
     CanonicalSource,
     CheckStatus,
@@ -20,7 +19,6 @@ from rag_v2.contracts import (
     SupervisorPlan,
     ValidationDecision,
     ValidationResult,
-    VerifiedEvidencePacket,
 )
 from rag_v2.contracts.calculation import CalculationResultPacket, CalculationStatus
 from rag_v2.contracts.errors import StateTransitionError
@@ -38,24 +36,6 @@ def make_slot(slot_id: str = "slot_1", metric: str = "revenue", period: str = "F
 
 def make_binding() -> EvidenceBinding:
     return EvidenceBinding(BindingStatus.BOUND, {"slot_1": ("fact_1",)})
-
-
-def make_fact() -> BoundFact:
-    return BoundFact(
-        fact_id="fact_1",
-        candidate_id="candidate_1",
-        physical_source_id="source_1",
-        document_id="doc_1",
-        pdf_page=1,
-        metric="revenue",
-        period="FY2025",
-        value="100",
-        currency="USD",
-        scale="1",
-        unit="currency",
-        citation_id="source_1",
-        slot_id="slot_1",
-    )
 
 
 def make_validation(decision: ValidationDecision) -> ValidationResult:
@@ -82,9 +62,15 @@ def test_supervisor_plan_schema_has_no_no_answer_intent() -> None:
         validate_plan(SupervisorPlan(Intent.DIRECT_FACT, (make_slot(),), None, Action.CALCULATE))
 
 
-def test_verified_packet_and_answer_cannot_escape_canonical_sources() -> None:
-    packet = VerifiedEvidencePacket("What was revenue?", Intent.DIRECT_FACT, (make_fact(),), None, ("source_1",))
-    assert packet.to_dict()["allowed_citations"] == ["source_1"]
+def test_an_answer_cannot_escape_its_canonical_sources() -> None:
+    """The live half of a test that had been written through a dead type.
+
+    The deleted packet type is deliberately not named here; the assertion that
+    read its `allowed_citations` went with it, because it was testing the dead
+    type rather than a runtime contract.  What remains is the invariant that was
+    never about it: an answer's citations must come from its canonical sources.
+    """
+
     canonical = CanonicalAnswer("100", "FY2025", "USD", "1", "currency", CanonicalSource.FINANCIAL_FACT, ("source_1",))
     envelope = AnswerEnvelope(canonical, "Revenue was $100.", ("source_1",))
     assert envelope.to_dict()["canonical_answer"]["value"] == "100"

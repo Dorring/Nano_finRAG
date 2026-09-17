@@ -74,13 +74,13 @@ def test_network_transaction_claim_remains_supported():
 
 
 def test_structured_runtime_citation_id_is_supported_and_removed_from_numbers():
-    citation_id = "citation:v2:abc123"
+    citation_id = "citation:abc123"
     packet = _packet("Net income", "93736")
     packet["evidence_items"][0]["citation_id"] = citation_id
     result = SemanticClaimVerifierV1().verify(
         packet,
         _answer_with_citations(
-            "Net income in FY2025 was 93736 [citation:v2:abc123].",
+            "Net income in FY2025 was 93736 [citation:abc123].",
             (citation_id,),
         ),
     )

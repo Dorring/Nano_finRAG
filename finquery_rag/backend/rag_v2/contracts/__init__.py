@@ -2,12 +2,7 @@
 
 from .answer import AnswerEnvelope, CanonicalAnswer, CanonicalSource
 from .calculation import CalculationResultPacket, CalculationStatus
-from .evidence import (
-    BindingStatus,
-    BoundFact,
-    EvidenceBinding,
-    VerifiedEvidencePacket,
-)
+from .evidence import BindingStatus, EvidenceBinding
 from .errors import ContractError, PlanValidationError, StateTransitionError
 from .plan import Action, Intent, RequiredSlot, SupervisorPlan
 from .query import QuestionEnvelope
@@ -17,7 +12,6 @@ __all__ = [
     "Action",
     "AnswerEnvelope",
     "BindingStatus",
-    "BoundFact",
     "CanonicalAnswer",
     "CanonicalSource",
     "CheckStatus",
@@ -33,5 +27,4 @@ __all__ = [
     "SupervisorPlan",
     "ValidationDecision",
     "ValidationResult",
-    "VerifiedEvidencePacket",
 ]
