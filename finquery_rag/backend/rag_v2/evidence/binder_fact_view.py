@@ -7,6 +7,8 @@ the internal FinancialFactV1 object and its identity remain unchanged.
 
 from __future__ import annotations
 
+from .disclosure import EvidenceDisclosureProfile, allowed_fields
+
 import copy
 import re
 from typing import Any, Mapping
@@ -79,62 +81,13 @@ _V2_SOURCE_FIELDS = (
 # happened to survive in a candidate mapping). Keep this allowlist intentionally
 # small and explicit. Adding a new field is a contract change, not a
 # convenience copy of an arbitrary fact dictionary.
-_RUNTIME_BINDER_IDENTITY_FIELDS = (
-    "fact_id",
-    "evidence_id",
-    "candidate_id",
-    "candidate_key",
-    "citation_id",
-    "physical_source_id",
-    "source_id",
-    "document_id",
-    "pdf_page",
-    "page",
-    "table_fragment_id",
-    "logical_table_id",
-    "table_id",
-    "row_id",
-    "column_id",
-    "cell_id",
-)
-
-_RUNTIME_BINDER_SEMANTIC_FIELDS = (
-    "entity",
-    "issuer",
-    "company",
-    "ticker",
-    "metric",
-    "normalized_metric",
-    "raw_metric",
-    "metric_path",
-    "metric_paths",
-    "period",
-    "normalized_period",
-    "raw_period",
-    "periods",
-    "value",
-    "parsed_numeric_value",
-    "raw_value",
-    "currency",
-    "unit",
-    "scale",
-    "normalized_scale",
-    "raw_scale",
-    "scope",
-    "scope_label",
-    "segment_label",
-    "row_label",
-    "row_path",
-    "row_hierarchy",
-    "column_label",
-    "column_header_path",
-    "multi_level_column_headers",
-    "table_title",
-    "statement_title",
-    "statement_type",
-    "section_title",
-    "section_path",
-)
+# The Binder's visible field set is now owned by the disclosure authority, so
+# that "which fields may a model see" has one answer rather than one per
+# boundary.  The projection below keeps its own *extraction* -- walking nested
+# table context and rejecting nested mappings -- but not its own policy: the
+# list of fields is the authority's, and a field the authority does not name is
+# invisible here too.
+_RUNTIME_BINDER_FIELDS = allowed_fields(EvidenceDisclosureProfile.BINDER)
 
 
 def _runtime_structural_context(fact: Mapping[str, Any]) -> tuple[Mapping[str, Any], ...]:
@@ -205,7 +158,7 @@ def build_runtime_binder_fact_view(fact: Mapping[str, Any]) -> dict[str, Any]:
 
     contexts = _runtime_structural_context(fact)
     view: dict[str, Any] = {}
-    for field in _RUNTIME_BINDER_IDENTITY_FIELDS + _RUNTIME_BINDER_SEMANTIC_FIELDS:
+    for field in _RUNTIME_BINDER_FIELDS:
         value = _runtime_safe_value(_runtime_field_value(contexts, field))
         if value is not None:
             view[field] = value

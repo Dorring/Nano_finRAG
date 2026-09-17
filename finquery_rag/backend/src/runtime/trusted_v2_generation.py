@@ -14,6 +14,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from rag_v2.adaptive import AdaptiveRAGStateV1
+from rag_v2.evidence.disclosure import EvidenceDisclosureProfile, project
 from src.generation.generator_routing_policy import (
     GeneratorRouteDecision,
     GeneratorRoutingPolicy,
@@ -209,6 +210,9 @@ class TrustedV2GenerationCapability:
         self.last_decision: GeneratorRouteDecision | None = None
         self.last_result: CandidateExecutionResult | None = None
         self._unknown_citation_count = 0
+        #: Names of the fields disclosed to the specialist on the last call.
+        #: Names only: a trace must never carry evidence content.
+        self.last_disclosed_fields: tuple[str, ...] = ()
 
     @staticmethod
     def _calculation_object(state: AdaptiveRAGStateV1) -> CalculationResult | None:
@@ -287,7 +291,23 @@ class TrustedV2GenerationCapability:
             raise CandidateGenerationCapabilityError("financial_specialist_not_callable")
         calculation_payload = calculation.to_dict() if calculation else None
         self.specialist_calls += 1
-        raw = method(state.normalized_query, items, calculation_payload)
+        # Project before the boundary, not after.  ``items`` are whole evidence
+        # packets, whose ``metadata`` bag carries the extracted source text;
+        # handing them to a model was the ungoverned half of the disclosure
+        # asymmetry, and the only reason it was not already leaking is that this
+        # prompt happens to look for the text at the top level.  Safety that
+        # holds because two shapes disagree is not safety.
+        projected = [
+            project(item, profile=EvidenceDisclosureProfile.SPECIALIST)
+            for item in items
+        ]
+        # ``last_disclosed_fields`` records which fields crossed, by name only
+        # and never by value, so a disclosure question can be answered from the
+        # snapshot without putting evidence content into a trace.
+        self.last_disclosed_fields = tuple(
+            sorted({field for view in projected for field in view})
+        )
+        raw = method(state.normalized_query, projected, calculation_payload)
         metadata: dict[str, Any] = {}
         if isinstance(raw, Mapping):
             answer = raw.get("answer_text") or raw.get("answer") or raw.get("raw_output")
@@ -392,6 +412,7 @@ class TrustedV2GenerationCapability:
             "validation_pending": result is not None,
             "candidate_generation_id": result.candidate_generation_id if result else None,
             "unknown_generated_citation_count": self._unknown_citation_count,
+            "disclosed_fields": list(self.last_disclosed_fields),
         }
 
 
