@@ -1,7 +1,7 @@
 # NF-V3 H2A-1A — Model-Facing Disclosure Matrix
 
-Status: **AUTHORITY IMPLEMENTED FOR THE V2 EVIDENCE BOUNDARIES; FOUR PATHS OUTSIDE
-IT ARE NAMED BELOW AND A IS NOT COMPLETE**
+Status: **A OWNED BOUNDARIES GOVERNED — V2 evidence, V1 answer, ingestion.
+ONE DIALOGUE BOUNDARY IS CLASSIFIED RATHER THAN COVERED (see below).**
 
 Baseline: `1a19a80`. Companion to
 `nf-v3-h2a-context-artifact-runtime-plan.md`.
@@ -15,10 +15,11 @@ profile=...)`, deny by default. The Binder and the Specialist both route through
 it; `binder_fact_view` keeps its own nested-table *extraction* and takes its
 *policy* from the authority, so there are not two allowlists.
 
-**System-wide: not yet.** The matrix below records four production-reachable
-model boundaries that are outside it. They are listed rather than omitted,
-because a disclosure authority that does not know what it does not cover is the
-same situation this phase was created to fix.
+**System-wide, with one stated exception.** Every production-reachable boundary
+that carries evidence or source material is governed; the matrix below is the
+record, and the one exception is named in "Remaining" rather than left implicit.
+A disclosure authority that does not know what it does not cover is the situation
+this phase was created to fix, so the matrix is kept complete either way.
 
 ## Matrix
 
@@ -44,7 +45,7 @@ same situation this phase was created to fix.
 Non-production (eval/test/never-constructed) sites are listed in the audit and
 are not repeated here.
 
-## What A changed, stated precisely
+## First pass: the V2 evidence boundaries
 
 **The Specialist boundary was the real one.** At HEAD it received the *complete
 evidence packet*, whose `metadata` carries `source_text` (set from
@@ -62,46 +63,81 @@ The profile is the eleven fields the prompt actually reads. `source_text` is
 deliberately excluded, so the dead branch cannot start firing if the packet
 shape changes.
 
-## Remaining trust gaps
+## After the V1 fix
 
-Recorded, not fixed. Each needs its own decision about *what may cross*, which
-is a design question rather than a wiring one.
+Three boundaries are now governed by one authority:
 
-1. **V1 answer generation (#8/#9) — the largest exposure.** The whole assembled
-   context — raw extracted document text, chunks joined by `---` — goes into the
-   answer prompt with no projection; the only bound is a token budget and a
-   score filter. Reachable whenever `FINANCIAL_RUNTIME_MODE` is `v1` or `shadow`,
-   which the production-integration document describes as the supported rollback
-   path. Governing it means deciding what a *retrieved chunk* may disclose, which
-   is a different object with a different lifecycle from an evidence packet.
-2. **V1 query rewrite (#10).** Truncated conversation turns, which may quote
-   document text, into a rewrite prompt.
-3. **Ingestion table enhancement (#12).** Full page text to a third-party model
-   at upload time. Different subsystem, different threat model — this is
-   document processing, not evidence disclosure — but it is a model receiving
-   raw financial document text and it is not governed by anything.
-4. **Rerankers and embeddings (#13–#15).** Raw chunk content to local models.
-   Embedding is arguably out of scope (no generative disclosure); rerankers are
-   off by default.
+| Boundary | Profile | What changed |
+| --- | --- | --- |
+| Binder | `BINDER` | policy moved into the authority; its ~50-field surface is unchanged |
+| Binder + Specialist (V2 evidence) | `SPECIALIST` | was ungoverned; received whole packets incl. `metadata.source_text` |
+| **V1 answer (#8/#9)** | `V1_ANSWER` | was ungoverned; received the whole assembled context with no projection at all |
+| **Ingestion table clean (#12)** | `INGEST_TABLE` | was ungoverned; raw page text to a third-party model |
 
-## Why A stops here rather than extending
+The V1 projection sits at the *entry* to `ContextBuilder.build` rather than at
+each caller, so every caller is covered by construction and the projection
+precedes formatting — a finished context string cannot be projected back into
+fields.
 
-Extending the authority to the V1 context blob is not a wiring change. The V1
-path passes a *context string*, not evidence objects — governing it means
-designing what a retrieved chunk may disclose, and doing that well requires the
-same audit-first treatment this phase got. Doing it as a tail-end addition to A
-would produce exactly the kind of unexamined projection the phase exists to
-prevent.
+**The V1 audit was incomplete on the first pass, and that is the useful part.**
+Reading `ContextBuilder.build` gives you a field list; it does not give you the
+fields the boundary needs, because its output has a *second* consumer.
+`last_context_evidence` feeds `EvidenceItem.from_chunk`, whose `document_name`
+drives the answerability check — so an allowlist built from the formatter alone
+silently added a "could not verify these documents" suffix to every V1 answer.
+One existing test caught it. The profile is now the union of what the formatter
+and that consumer read, and a test pins the trap by running a projected chunk
+through `EvidenceItem.from_chunk` and asserting `document_name` survives.
 
-The V1 path is also the documented rollback, not the default; `v2` is.
+`INGEST_TABLE` is the one profile that *permits* raw text, because cleaning an
+extracted table is impossible without the table. Routing it through the
+authority strips nothing; it records the decision, so "who allowed a model to
+see raw page text?" has an answer instead of being an omission nobody examined.
 
-## What is solid
+## Remaining: one boundary, classified rather than ignored
 
-- One authority, one implementation, two profiles, deny by default.
-- The Specialist boundary — the one that was actually ungoverned — is closed,
-  with a test that drives the real generation capability rather than the helper.
-- Future evidence-contract fields are invisible to every profile until named.
-- Disclosure is recorded by field name only, so the trace answers "what could
-  this model see" without carrying content.
-- No behaviour change: 3956 passed, 0 failed; readiness gate unchanged
-  (`false_release 0`, `semantic_mismatch 2`, `label_alias 3`, `unexplained 0`).
+**`src/retrieval/query_processor.py:252` — the V1 follow-up rewrite.**
+
+It passes conversation turns (truncated to 160 characters each) plus a memory
+profile bounded by `ALLOWED_PROFILE_FIELDS`. This is a *dialogue* boundary, not
+an evidence boundary: it carries no retrieval object and no evidence packet, so
+the evidence disclosure authority has nothing to project there. Assistant turns
+can transitively quote document text, so it is not cleanly source-free either.
+
+Whether dialogue needs a disclosure profile of its own is a real question that
+this phase does not answer, and it is named here rather than counted as covered.
+It is production-reachable on `v1`/`shadow` only.
+
+Not model-facing in the sense this phase governs: embeddings
+(`vector_store.py:16`, `candidate_view_index.py:551`) produce no generation, and
+the rerankers (`reranker.py:109,419`) score rather than generate and are off by
+default.
+
+## Verification
+
+```
+full suite                     3963 passed + 143 skipped, 0 failed
+V1 regression path (mode=v1)    694 passed, 7 skipped
+disclosure tests                 16 passed
+readiness gate                 false_release 0, semantic_mismatch 2,
+                               label_alias 3, unexplained 0
+```
+
+## The principle this phase establishes
+
+> Rollback may degrade capability, but it must not silently degrade model-input
+> trust guarantees.
+
+V1 is the documented rollback path and it was the largest ungoverned exposure in
+the system. Governing it cost one profile and a projection at one call site; the
+alternative would have been a trust guarantee that held only on the path that
+happened to be default.
+
+## The question, answered
+
+> Which component decides which financial evidence fields a model may see?
+
+**`rag_v2/evidence/disclosure.py`**, for every production-reachable boundary that
+carries evidence or source material: `project(evidence, profile=...)`, deny by
+default, four profiles, one implementation. The single exception is stated above
+by name.

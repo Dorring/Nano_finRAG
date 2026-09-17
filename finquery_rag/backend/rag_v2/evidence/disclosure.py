@@ -29,6 +29,7 @@ from enum import Enum
 from typing import Any
 
 __all__ = [
+    "NESTED_FIELD_POLICY",
     "EvidenceDisclosureProfile",
     "UnknownDisclosureProfile",
     "allowed_fields",
@@ -49,6 +50,8 @@ class EvidenceDisclosureProfile(str, Enum):
 
     BINDER = "BINDER"
     SPECIALIST = "SPECIALIST"
+    V1_ANSWER = "V1_ANSWER"
+    INGEST_TABLE = "INGEST_TABLE"
 
 
 #: Deny by default: these are the *only* fields each boundary may see.
@@ -150,9 +153,93 @@ _SPECIALIST_FIELDS: tuple[str, ...] = (
 )
 
 
+#: The V1 rollback runtime answers from assembled retrieval context rather than
+#: from evidence packets, so it is a different authoritative source type with a
+#: different role.  It gets its own profile rather than borrowing BINDER or
+#: SPECIALIST, whose field semantics do not describe a retrieved chunk.
+#:
+#: Audited field by field from ``ContextBuilder.build`` -- the only consumer on
+#: this path -- rather than from the retrieval object's full schema.  Chunk text
+#: is legitimately required here: V1 answering reads the retrieved content, so
+#: ``content`` is allowed deliberately.  What is *not* allowed is the chunk
+#: object, or its ``metadata`` dictionary wholesale.
+#:
+#: The audit had to be widened once, and the reason is worth keeping: reading
+#: ``ContextBuilder.build`` alone is not enough.  Its output
+#: (``last_context_evidence``) has a *second* consumer --
+#: ``EvidenceItem.from_chunk`` -- whose ``document_name`` drives the
+#: answerability check, which decides whether the user-visible answer carries a
+#: "could not verify these documents" suffix.  An allowlist built from the
+#: formatter alone silently changed V1's answers.  The fields below are the
+#: union of what the formatter and that consumer read.
+#:
+#: ``score``, ``rerank_score`` and the identity fields are retrieval internals,
+#: and they are permitted only because removing them would change V1 behaviour.
+#: This phase governs disclosure; it does not narrow function.
+_V1_ANSWER_FIELDS: tuple[str, ...] = (
+    "content",
+    "doc_id",
+    "chunk_id",
+    "document_name",
+    "doc_name",
+    "page",
+    "content_type",
+    "type",
+    "score",
+    "rerank_score",
+    "metadata",
+)
+
+#: Fields permitted *inside* a nested container.  A profile that names a
+#: container without naming its keys would be an exclude-list by another route,
+#: and a key added to chunk metadata later would cross models by default -- the
+#: exact failure this module exists to prevent.
+#:
+#: ``parent_excerpt`` is required: ``_merge_parent_context_chunks`` expands a
+#: child hit to its parent section text, and that text becomes the content the
+#: answer model reads.  It is retrieved document text, sourced from the same
+#: document as the chunk, so it is permitted for the same reason ``content`` is.
+_V1_ANSWER_METADATA_FIELDS: tuple[str, ...] = (
+    "type",
+    "page",
+    "parent_id",
+    "section_path",
+    "child_hit_count",
+    "table_num",
+    "parent_excerpt",
+    # read by ``EvidenceItem.from_chunk``, which the answerability check depends on
+    "document_name",
+    "doc_name",
+    "filename",
+    "content_type",
+)
+
+#: Document ingestion, which runs before any evidence exists.  This is the one
+#: boundary whose legitimate input *is* raw document text -- the model's whole
+#: job is to clean an extracted table, and it cannot do that without the table
+#: and its surrounding page text.
+#:
+#: So the profile permits raw text, and that is the point: the decision is now
+#: written down and auditable rather than being an omission nobody examined.  A
+#: reader asking "who decided a model may see raw page text?" gets an answer
+#: instead of a shrug.  ``page_text`` and ``table_markdown`` are the only inputs
+#: the prompt interpolates; anything else on this path stays out.
+_INGEST_TABLE_FIELDS: tuple[str, ...] = (
+    "page_text",
+    "table_markdown",
+    "page_num",
+)
+
+NESTED_FIELD_POLICY: Mapping[EvidenceDisclosureProfile, Mapping[str, tuple[str, ...]]] = {
+    EvidenceDisclosureProfile.V1_ANSWER: {"metadata": _V1_ANSWER_METADATA_FIELDS},
+}
+
+
 PROFILE_FIELDS: Mapping[EvidenceDisclosureProfile, tuple[str, ...]] = {
     EvidenceDisclosureProfile.BINDER: _BINDER_FIELDS,
     EvidenceDisclosureProfile.SPECIALIST: _SPECIALIST_FIELDS,
+    EvidenceDisclosureProfile.V1_ANSWER: _V1_ANSWER_FIELDS,
+    EvidenceDisclosureProfile.INGEST_TABLE: _INGEST_TABLE_FIELDS,
 }
 
 
@@ -187,12 +274,21 @@ def project(
     """
 
     fields = allowed_fields(profile)
+    nested = NESTED_FIELD_POLICY.get(EvidenceDisclosureProfile(profile), {})
     lookup = resolve or (lambda fact, name: fact.get(name))
-    return {
-        field: value
-        for field in fields
-        if (value := lookup(evidence, field)) is not None
-    }
+    view: dict[str, Any] = {}
+    for field in fields:
+        value = lookup(evidence, field)
+        if value is None:
+            continue
+        permitted = nested.get(field)
+        if permitted is not None and isinstance(value, Mapping):
+            # A named container is still filtered key by key.  Allowing
+            # ``metadata`` whole would let any key added to chunk metadata
+            # later reach a model without anyone deciding it should.
+            value = {key: item for key, item in value.items() if key in permitted}
+        view[field] = value
+    return view
 
 
 def fields_present(

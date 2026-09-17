@@ -22,6 +22,7 @@ from typing import Any
 import pytest
 
 from rag_v2.evidence.disclosure import (
+    NESTED_FIELD_POLICY,
     PROFILE_FIELDS,
     EvidenceDisclosureProfile,
     UnknownDisclosureProfile,
@@ -80,9 +81,15 @@ def test_raw_source_text_never_crosses_any_profile() -> None:
     assert evidence["metadata"]["source_text"] == RAW_TEXT  # it really is there
 
     for profile in EvidenceDisclosureProfile:
-        rendered = repr(project(evidence, profile=profile))
-        assert RAW_TEXT not in rendered, profile
-        assert "metadata" not in project(evidence, profile=profile), profile
+        view = project(evidence, profile=profile)
+        assert RAW_TEXT not in repr(view), profile
+        # A container may cross, but only with the keys its profile names --
+        # V1_ANSWER permits ``metadata`` and must still filter it key by key.
+        for name in ("metadata",):
+            nested = view.get(name)
+            if isinstance(nested, dict):
+                assert set(nested) <= set(NESTED_FIELD_POLICY.get(profile, {}).get(name, ())), profile
+                assert "source_text" not in nested, profile
 
 
 def test_an_unknown_profile_is_refused_rather_than_defaulted() -> None:
@@ -235,3 +242,189 @@ def test_the_disclosure_is_recorded_by_field_name_only() -> None:
         allowed_fields(EvidenceDisclosureProfile.SPECIALIST)
     )
     assert RAW_TEXT not in repr(snapshot)
+
+
+# --- the V1 rollback runtime ---------------------------------------------
+#
+# V1 answers from assembled retrieval context rather than evidence packets, so
+# it is a different authoritative source type with its own profile.  These drive
+# the real chain -- retrieval chunk -> ContextBuilder -> LLMGateway -> provider
+# -- and assert on the prompt the provider actually receives, not on the helper.
+
+
+def _retrieval_chunk(**overrides: Any) -> dict[str, Any]:
+    """A chunk shaped like the ones retrieval produces, private fields included."""
+
+    chunk = {
+        "content": "Apple FY2024 total net sales were 391,035 million.",
+        "doc_id": "user_7::annual_report.pdf",
+        "score": 0.87,
+        "metadata": {
+            "type": "text",
+            "page": 12,
+            "parent_id": "p-12",
+            "section_path": ["Item 7", "Revenue"],
+            "child_hit_count": 1,
+            "internal_rerank_score": "PRIVATE_SCORE",
+            "retrieval_debug": {"PRIVATE_DEBUG": True},
+        },
+    }
+    chunk.update(overrides)
+    return chunk
+
+
+class _SpyLLMClient:
+    """Captures exactly what the answer model is asked."""
+
+    def __init__(self) -> None:
+        self.messages: list[list[dict[str, str]]] = []
+        outer = self
+
+        class _Completions:
+            def create(self, *, model: str, messages: list, **kw: Any) -> Any:
+                outer.messages.append([dict(m) for m in messages])
+                return type("R", (), {"choices": [type("C", (), {"message": type("M", (), {"content": "ok"})()})()]})()
+
+        self.chat = type("Chat", (), {"completions": _Completions()})()
+
+
+def _v1_prompt(chunks: list[dict[str, Any]]) -> tuple[str, _SpyLLMClient, Any]:
+    """Run the real V1 chain and return the prompt the model was given."""
+
+    import asyncio
+
+    from src.generation.llm_gateway import LLMGateway
+    from src.retrieval.context_builder import ContextBuilder
+
+    builder = ContextBuilder()
+    context, sources = builder.build(chunks)
+    client = _SpyLLMClient()
+    gateway = LLMGateway(llm_client=client, model_name="spy", max_new_tokens=64)
+    asyncio.run(gateway.generate(context, "What was FY2024 revenue?"))
+    return client.messages[-1][-1]["content"], client, builder
+
+
+def test_v1_approved_chunk_text_still_reaches_the_answer_prompt() -> None:
+    """Governed, not narrowed.  V1 answers from retrieved text; removing it
+    would silently break the runtime this profile exists to govern."""
+
+    prompt, _, builder = _v1_prompt([_retrieval_chunk()])
+
+    assert "Apple FY2024 total net sales were 391,035 million." in prompt
+    assert builder.last_disclosure_profile == "V1_ANSWER"
+    assert "content" in builder.last_disclosed_fields
+
+
+def test_v1_retrieval_internals_do_not_reach_the_answer_prompt() -> None:
+    """A chunk is not a prompt field, and its metadata bag is not either."""
+
+    prompt, _, _ = _v1_prompt([_retrieval_chunk()])
+
+    assert "PRIVATE_SCORE" not in prompt
+    assert "PRIVATE_DEBUG" not in prompt
+    assert "internal_rerank_score" not in prompt
+    assert "retrieval_debug" not in prompt
+
+
+def test_a_field_added_to_chunks_later_does_not_reach_the_answer_prompt() -> None:
+    """Future-field safety on the V1 path, the same property V2 has."""
+
+    chunk = _retrieval_chunk()
+    chunk["metadata"]["board_commentary"] = "PRIVATE_FUTURE_FIELD"
+    chunk["future_top_level_field"] = "PRIVATE_FUTURE_TOP"
+
+    prompt, _, _ = _v1_prompt([chunk])
+
+    assert "PRIVATE_FUTURE_FIELD" not in prompt
+    assert "PRIVATE_FUTURE_TOP" not in prompt
+
+
+def test_v1_sources_are_still_built_from_the_projection() -> None:
+    """The source list is a model-facing surface too, and must keep working."""
+
+    import asyncio  # noqa: F401
+
+    from src.retrieval.context_builder import ContextBuilder
+
+    _, sources = ContextBuilder().build([_retrieval_chunk()])
+
+    assert sources
+    assert sources[0]["page"] == 12
+    assert sources[0]["chunk_id"] == "user_7::annual_report.pdf"
+    # The source list is itself model-facing, so it must be built from permitted
+    # fields only.  ``filename`` is deliberately not asserted: it is derived from
+    # the doc_id by V1's existing prefix-stripping, which is unrelated to
+    # disclosure and should not be pinned here.
+    assert set(sources[0]) == {
+        "filename", "page", "type", "score", "chunk_id", "parent_id",
+        "section_path", "child_hit_count",
+    }
+    assert "internal_rerank_score" not in sources[0]
+
+
+def test_the_v1_answer_model_receives_strings_not_retrieval_objects() -> None:
+    """The boundary's input type is the contract, not just its content."""
+
+    _, client, _ = _v1_prompt([_retrieval_chunk()])
+
+    for message in client.messages[0]:
+        assert isinstance(message["content"], str)
+    assert "doc_id" not in client.messages[0][-1]["content"]
+
+
+def test_the_v1_profile_permits_what_the_formatter_reads_and_nothing_else() -> None:
+    """Audited from ``ContextBuilder.build``, not from the chunk schema."""
+
+    from rag_v2.evidence.disclosure import NESTED_FIELD_POLICY
+
+    fields = set(allowed_fields(EvidenceDisclosureProfile.V1_ANSWER))
+    nested = set(NESTED_FIELD_POLICY[EvidenceDisclosureProfile.V1_ANSWER]["metadata"])
+
+    # Everything the formatter reads.
+    assert {"content", "doc_id", "score", "metadata"} <= fields
+    # And everything the *second* consumer of its output reads.  Narrowing this
+    # back to what ContextBuilder alone needs is what silently added a "could
+    # not verify these documents" suffix to V1 answers.
+    assert {"document_name", "doc_name", "chunk_id", "page"} <= fields
+    assert {"document_name", "doc_name", "filename"} <= nested
+    assert {
+        "type",
+        "page",
+        "parent_id",
+        "section_path",
+        "child_hit_count",
+        "table_num",
+        "parent_excerpt",
+    } <= nested
+    # And nothing it does not.
+    assert "metadata" not in nested
+    assert nested.isdisjoint({"internal_rerank_score", "retrieval_debug"})
+
+
+def test_narrowing_the_v1_profile_to_the_formatter_alone_changes_answers() -> None:
+    """The trap this profile already fell into once, pinned.
+
+    ``ContextBuilder.build`` produces ``last_context_evidence``, and that has a
+    second consumer: ``EvidenceItem.from_chunk``, whose ``document_name`` drives
+    the answerability check.  An allowlist built from the formatter alone dropped
+    it, the answerability check then reported the requested document as missing,
+    and every V1 answer gained a "could not verify" suffix.
+
+    So: the fields ``from_chunk`` reads must remain permitted, and this test
+    fails the moment someone narrows the profile back to the formatter's needs.
+    """
+
+    from src.domain.evidence import EvidenceItem
+
+    chunk = {
+        "content": "text",
+        "doc_id": "d1",
+        "document_name": "report.pdf",
+        "page": 3,
+        "metadata": {"filename": "report.pdf"},
+    }
+    projected = project(chunk, profile=EvidenceDisclosureProfile.V1_ANSWER)
+    item = EvidenceItem.from_chunk(projected)
+
+    assert item.document_name == "report.pdf"
+    assert item.page == 3

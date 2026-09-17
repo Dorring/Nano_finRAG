@@ -5,6 +5,8 @@ from typing import Any
 
 import requests
 
+from rag_v2.evidence.disclosure import EvidenceDisclosureProfile, project
+
 
 def format_table(table: Any) -> str:
     """Format a Camelot table as Markdown."""
@@ -140,6 +142,23 @@ def enhance_table_with_context(table_md: dict, page_text: str, page_num: int) ->
         return {"summary": "", "content": table_md["md"]}
 
     url = "https://integrate.api.nvidia.com/v1/chat/completions"
+
+    # The one boundary where raw document text is the legitimate input.  Routing
+    # it through the disclosure authority does not strip anything -- it records
+    # that this model may see page text, and why, so the question has an answer
+    # instead of being an omission.  Anything not named in the profile cannot
+    # be added to this prompt without failing here first.
+    disclosed = project(
+        {
+            "page_text": page_text,
+            "table_markdown": table_md["md"],
+            "page_num": page_num,
+        },
+        profile=EvidenceDisclosureProfile.INGEST_TABLE,
+    )
+    page_text = disclosed["page_text"]
+    table_md = {**table_md, "md": disclosed["table_markdown"]}
+    page_num = disclosed["page_num"]
 
     prompt = f"""You are a data preprocessing assistant for a retrieval system operating on financial documents.
 
