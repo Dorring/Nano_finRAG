@@ -75,6 +75,15 @@ BOUNDARIES: tuple[tuple[str, tuple[str, ...], str], ...] = (
         "passed through, and not the capability that called it",
     ),
     (
+        "src/generation/financial_model_binding.py",
+        ("src.runtime", "rag_v2.adaptive"),
+        "the binding names the model boundary for the capability that calls it.  "
+        "Importing src.runtime would close an import cycle and let the binding "
+        "consult the thing it is configuring; importing rag_v2.adaptive would "
+        "let it read the RunState and decide what the model may see, which is "
+        "the renderer's question and not the binding's",
+    ),
+    (
         "src/services",
         ("rag_v2.invocation",),
         "ingestion writes trusted fields.  If it cannot see a ModelResponseV1 it "

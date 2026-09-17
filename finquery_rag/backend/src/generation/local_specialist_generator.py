@@ -82,6 +82,13 @@ class LocalSpecialistGenerator:
     ROLE = "LOCAL_FINANCIAL_SPECIALIST_GENERATOR"
     CONTRACT_VERSION = "FinancialGenerationViewV1"
 
+    #: The model's stable identity, P1.1.  A registry name rather than a path:
+    #: an absolute Linux path describes one host's filesystem layout, and the
+    #: checkpoint's SHA256 is deployment metadata that already travels in the
+    #: configuration fingerprint.  Neither belongs in a field that names *which
+    #: model produced this answer*.
+    MODEL_ID = "nano-finance-2.08b-step156"
+
     def __init__(
         self,
         checkpoint_path: Path | str = EXPECTED_CHECKPOINT_PATH,
@@ -154,6 +161,23 @@ class LocalSpecialistGenerator:
     @property
     def is_loaded(self) -> bool:
         return self._model_loaded
+
+    @property
+    def model_id(self) -> str:
+        """The model's identity, for the binding that reaches it.
+
+        P1.1.  ``build_financial_model_binding`` reads this rather than stamping
+        a constant on whatever backend it is handed, so a test double -- which
+        declares no identity -- yields ``None`` instead of being labelled the
+        financial model.
+
+        Identity is available before ``load()``: it describes which model this
+        object *is*, not whether it is currently resident.  Its counterpart,
+        ``tokenizer``, is the opposite -- ``None`` until a real checkpoint has
+        loaded, which is what makes its presence a genuine claim that this
+        backend can count its own tokens.
+        """
+        return self.MODEL_ID
 
     def generate(self, prompt: str) -> dict[str, Any]:
         """Generate from an already-rendered prompt.

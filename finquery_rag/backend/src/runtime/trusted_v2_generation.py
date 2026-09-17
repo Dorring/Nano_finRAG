@@ -45,19 +45,16 @@ from rag_v2.context import (
     specialist_context_request,
 )
 from rag_v2.invocation import (
-    CallableContextRendererV1,
-    LegacyPromptProviderAdapterV1,
     ModelBindingV1,
     ModelInvocationRuntimeV1,
-    ModelProviderV1,
 )
+from src.generation.financial_model_binding import build_financial_model_binding
 from src.generation.generator_routing_policy import (
     GeneratorRouteDecision,
     GeneratorRoutingPolicy,
     GeneratorTarget,
     RouteName,
 )
-from src.generation.specialist_prompt import render_specialist_prompt
 
 from src.domain.calculation import CalculationResult, CalculationStatus
 from src.finance.calculation_renderer import render_calculation_result
@@ -214,7 +211,7 @@ class TrustedV2GenerationCapability:
 
     @staticmethod
     def _binding_for(backend: Any) -> ModelBindingV1:
-        """Bind a model backend to the specialist renderer.
+        """Bind a model backend into the financial model's ``ModelBindingV1``.
 
         H2A-3C.  ``model_backend=`` accepts either a provider or a legacy
         ``generate(prompt)`` backend, and the difference is one ``isinstance``
@@ -230,33 +227,15 @@ class TrustedV2GenerationCapability:
         really does hold the specialist, and narrowing that name would have
         been a different change with a different meaning.
 
-        ``provider_id`` prefers what the backend declares about itself and falls
-        back to its type name.  It is a *label* -- it names a boundary in a trace
-        -- so a fallback here invents nothing about the world, unlike the
-        fabricated financial defaults this project has already removed once.
-
-        ``exact_token_counter`` is ``None``, and that is the whole of B3's token
-        story: its tokenizer is the checkpoint's, so no bound is configured and
-        none is approximated.  A provider that can count its own tokens supplies
-        one here and the rule from H2A-3B1 starts applying to it.
+        P1.1 moved the body to ``build_financial_model_binding`` and left this
+        as the call site.  The shape did not change; what changed is that the
+        binding now carries the backend's own ``model_id`` and, once a real
+        checkpoint is resident, its exact token counter.  The reasoning for both
+        -- and for why no token bound is configured alongside them -- lives with
+        the factory rather than being restated here.
         """
 
-        provider = (
-            backend
-            if isinstance(backend, ModelProviderV1)
-            else LegacyPromptProviderAdapterV1(backend)
-        )
-        declared = getattr(backend, "provider_id", None)
-        provider_id = (
-            declared
-            if isinstance(declared, str) and declared.strip()
-            else type(backend).__name__
-        )
-        return ModelBindingV1(
-            provider=provider,
-            renderer=CallableContextRendererV1(render_specialist_prompt),
-            provider_id=provider_id,
-        )
+        return build_financial_model_binding(backend)
 
     def __init__(
         self,

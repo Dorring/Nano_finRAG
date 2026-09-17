@@ -43,7 +43,6 @@ from rag_v2.context import (
     AgentContextPackV1,
     ContextCompilerV1,
     ContextRequestV1,
-    ContextRoleV1,
     SpecialistContextPolicyV1,
     specialist_context_request,
 )
@@ -52,7 +51,7 @@ from tests.harness.b3_legacy_context_baseline import (
     SCENARIOS,
     build_state,
 )
-from src.runtime import trusted_v2_generation as generation_module
+from src.generation import financial_model_binding as binding_module
 from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
 
 #: Reaches B3 without the router turning it away: ``"QUALITATIVE" in route_hint``
@@ -140,7 +139,12 @@ def test_production_compiles_once_and_renders_once_per_specialist_call(
     rendered: list[Any] = []
 
     real_compile = ContextCompilerV1.compile
-    real_render = generation_module.render_specialist_prompt
+    # P1.1 moved the renderer reference out of the capability and into the
+    # binding factory, which is where the binding is now assembled.  The spy
+    # follows the renderer rather than the module that used to mention it --
+    # patching the old location would have left this test passing while
+    # observing nothing.
+    real_render = binding_module.render_specialist_prompt
 
     def compile_spy(self: ContextCompilerV1, request: ContextRequestV1):
         compiled.append(request)
@@ -151,7 +155,7 @@ def test_production_compiles_once_and_renders_once_per_specialist_call(
         return real_render(pack)
 
     monkeypatch.setattr(ContextCompilerV1, "compile", compile_spy)
-    monkeypatch.setattr(generation_module, "render_specialist_prompt", render_spy)
+    monkeypatch.setattr(binding_module, "render_specialist_prompt", render_spy)
 
     capability, backend, _ = _run(_state([_packet("e1")], {"revenue/FY2024": ["e1"]},
                                          intent=QUALITATIVE))
