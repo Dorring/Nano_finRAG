@@ -89,6 +89,15 @@ _V2_SOURCE_FIELDS = (
 # invisible here too.
 _RUNTIME_BINDER_FIELDS = allowed_fields(EvidenceDisclosureProfile.BINDER)
 
+#: Fields whose runtime view must be read from the evidence object alone.
+#:
+#: Every other field may fall back through `structural_context` and `metadata`
+#: because those are where their values legitimately live.  Page is the field
+#: H2A-1C promoted out of the metadata bag precisely so that provenance has one
+#: home, and re-deriving it from the bag here would put the second authority
+#: back on the live binder path.  See ``build_runtime_binder_fact_view``.
+_CANONICAL_ONLY_FIELDS = frozenset({"page", "pdf_page"})
+
 
 def _runtime_structural_context(fact: Mapping[str, Any]) -> tuple[Mapping[str, Any], ...]:
     """Return only pre-existing structured metadata containers.
@@ -159,7 +168,25 @@ def build_runtime_binder_fact_view(fact: Mapping[str, Any]) -> dict[str, Any]:
     contexts = _runtime_structural_context(fact)
     view: dict[str, Any] = {}
     for field in _RUNTIME_BINDER_FIELDS:
-        value = _runtime_safe_value(_runtime_field_value(contexts, field))
+        if field in _CANONICAL_ONLY_FIELDS:
+            # H2A-2D-2B.  Page is runtime provenance, and provenance has one
+            # owner: the canonical field on the evidence object.  The generic
+            # ladder below resolves a field across [fact, structural_context,
+            # metadata] and continues past ``None``, which made the metadata bag
+            # a *second* authority able to supply a page the canonical field did
+            # not have.  No current producer creates that shape -- the canonical
+            # page is derived from the same two raw keys the bag retains -- but
+            # this ladder does not know that, and a provenance guard that holds
+            # only while no producer emits a different shape is a coincidence.
+            #
+            # A producer that only knows the extractor's ``pdf_page`` name is
+            # normalised once, at the ingestion boundary
+            # (``EvidencePacketV1.from_mapping``), which is what makes this
+            # narrowing safe rather than lossy: by the time a fact reaches this
+            # view, the conversion has already happened.
+            value = _runtime_safe_value(fact.get(field))
+        else:
+            value = _runtime_safe_value(_runtime_field_value(contexts, field))
         if value is not None:
             view[field] = value
 

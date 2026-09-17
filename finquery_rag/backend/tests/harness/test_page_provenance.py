@@ -57,6 +57,11 @@ def test_the_extractor_page_is_a_first_class_packet_field() -> None:
     packet = _packet(pdf_page=7)
 
     assert packet["page"] == 7
+    # Compatibility check, not the correctness guard: this only shows the
+    # ingest keys are still retained in the bag. It cannot prove either copy is
+    # right, and it depends on the duplication it would have to guard, so
+    # H2A-2D-2A added the real oracle -- authored page literals plus an
+    # adversarial sentinel -- in `test_page_lineage_oracle.py`.
     assert packet["page"] == packet["metadata"]["pdf_page"]
 
 
