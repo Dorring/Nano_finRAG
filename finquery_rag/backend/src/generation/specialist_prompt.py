@@ -33,13 +33,23 @@ This renderer states absence and invents nothing.  Every field is written
 through ``_render``, so "the model is shown the evidence, or an explicit
 statement that it is not there" is a property of the renderer rather than the
 habit of whoever wrote each line.
+
+H2A-3B3 made it take an ``AgentContextPackV1`` and nothing else.  The renderer
+used to be handed ``(question, evidence_items, calculation_result)``, which were
+the pack's three dynamic fields travelling loose -- so nothing stopped a caller
+from assembling them some other way, and nothing stopped this function from
+reaching past them.  Taking the pack makes the compiler the only source of
+dynamic context by construction, and it is what lets the specialist backend
+accept a plain ``str``: after the migration the model boundary is text, and
+there is no second route to it.
 """
 
 from __future__ import annotations
 
-import re
-from collections.abc import Mapping, Sequence
+from collections.abc import Mapping
 from typing import Any
+
+from rag_v2.context import AgentContextPackV1
 
 __all__ = ["ABSENT", "render_specialist_prompt"]
 
@@ -95,26 +105,38 @@ def _render(value: Any) -> str:
     return ABSENT if value is None else str(value).strip()
 
 
-def render_specialist_prompt(
-    question: str,
-    evidence_items: Sequence[Mapping[str, Any]],
-    calculation_result: Mapping[str, Any] | None = None,
-) -> str:
-    """Render the specialist prompt adhering strictly to FinancialGenerationViewV1.
+def render_specialist_prompt(pack: AgentContextPackV1) -> str:
+    """Render the specialist prompt from a governed context pack.
 
-    ``evidence_items`` are disclosure-projected views, never whole evidence
+    H2A-3B3.  The pack is the renderer's **entire dynamic input**, and that is
+    the point of the signature rather than a style choice: this function is the
+    only place evidence becomes text for the specialist, it is handed exactly
+    what the compiler released, and it has no reference to a RunState, an
+    ``EvidencePacketV1``, a ``CalculationResult`` or a binding from which to
+    reach around the compiler for something the pack omitted.  A renderer that
+    could do that would make the pack a decoration.
+
+    What is *not* in the pack stays out: the question formatting, the section
+    headers, the answer rules and every other static instruction are this
+    module's own text.  A pack carries governed dynamic context; the renderer
+    owns presentation.
+
+    ``pack.evidence`` are disclosure-projected views, never whole evidence
     packets.  This function reads fields; it does not decide which fields exist,
     so it cannot widen model exposure on its own -- adding a field here has no
     effect until the SPECIALIST disclosure profile allows it to arrive.
+
+    The citation handles come from ``pack.references``, which is where they are
+    assigned.  They are not recomputed positionally here: the pack's handles are
+    what a validator will resolve a citation against, so a renderer that minted
+    its own could emit a handle no validator knows.
     """
 
-    lines = [f"[QUESTION]\n{question.strip()}\n", "[VERIFIED EVIDENCE]\n"]
+    handles = pack.references.evidence_handles
 
-    for i, ev in enumerate(evidence_items, start=1):
-        cite_id = ev.get("citation_id", f"E{i}")
-        if not re.match(r"^E\d+$", cite_id):
-            cite_id = f"E{i}"
+    lines = [f"[QUESTION]\n{pack.query.strip()}\n", "[VERIFIED EVIDENCE]\n"]
 
+    for handle, ev in zip(handles, pack.evidence):
         # The one fallback left, and it is not the same kind of thing as the
         # five this phase removed: ``normalized_metric`` is a second field the
         # evidence contract really carries and this profile really admits, not a
@@ -139,7 +161,7 @@ def render_specialist_prompt(
             else f"{_render(document)}:{_render(page)}"
         )
 
-        lines.append(f"[{cite_id}]")
+        lines.append(f"[{handle}]")
         lines.append(f"Metric: {_render(metric)}")
         lines.append(f"Period: {_render(_stated(ev, 'period'))}")
         lines.append(f"Scope: {_render(_stated(ev, 'scope'))}")
@@ -153,10 +175,11 @@ def render_specialist_prompt(
             lines.append(f"Evidence: {ev['source_text']}")
         lines.append("")
 
-    if calculation_result:
-        c1_val = str(calculation_result.get("value", "")).strip()
-        c1_unit = calculation_result.get("unit", "")
-        c1_op = calculation_result.get("operation", "calculated_metric")
+    calculation = pack.calculation
+    if calculation:
+        c1_val = str(calculation.get("value", "")).strip()
+        c1_unit = calculation.get("unit", "")
+        c1_op = calculation.get("operation", "calculated_metric")
         lines.append("[VERIFIED CALCULATION]\n")
         lines.append("[C1]")
         lines.append(f"Operation: {c1_op}")

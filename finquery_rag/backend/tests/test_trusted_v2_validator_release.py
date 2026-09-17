@@ -164,8 +164,8 @@ class _Specialist:
         self.citation_ids = citation_ids
         self.calls = 0
 
-    def generate(self, question: str, evidence_items: list[dict[str, Any]], calculation_result: dict[str, Any] | None):
-        del question, evidence_items, calculation_result
+    def generate(self, prompt: str):
+        del prompt
         self.calls += 1
         return {"answer_text": self.answer, "citation_ids": self.citation_ids}
 

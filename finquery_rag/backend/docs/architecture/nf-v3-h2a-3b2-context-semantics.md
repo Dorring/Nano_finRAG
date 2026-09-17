@@ -323,6 +323,14 @@ true by definition.
 
 Replaces §10 of the 3B1 note. Items 1 and 2 are now done.
 
+> **All seven discharged by H2A-3B3.** The migration happened, the duplicated
+> selection was paid off, the anti-migration guard was inverted, and the renderer
+> was extended to consume the pack -- which required narrowing the specialist
+> backend protocol to a single prompt, since a renderer's invocation is not
+> countable from inside the torch-gated provider module. Item 6 resolved as
+> *not rendered*: the prompt is byte-identical to v2. See
+> `nf-v3-h2a-3b3-compiler-migration.md`.
+
 1. ~~F10 fixed, post-F10 baseline v2 frozen.~~ **Done** (§12).
 2. ~~A decision on the claim/support representation.~~ **Done** (§2).
 3. **The duplicated selection is still to be paid off.** `_bound_items` in

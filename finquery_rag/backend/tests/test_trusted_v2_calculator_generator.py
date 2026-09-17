@@ -207,16 +207,11 @@ class _FakeSpecialist:
         self.answer = answer
         self.citation_ids = citation_ids or []
         self.calls = 0
-        self.last_items: list[dict[str, Any]] = []
+        self.last_prompt: str | None = None
 
-    def generate(
-        self,
-        question: str,
-        evidence_items: list[dict[str, Any]],
-        calculation_result: dict[str, Any] | None,
-    ) -> dict[str, Any]:
+    def generate(self, prompt: str) -> dict[str, Any]:
         self.calls += 1
-        self.last_items = evidence_items
+        self.last_prompt = prompt
         return {"answer_text": self.answer, "citation_ids": self.citation_ids}
 
 
@@ -255,7 +250,13 @@ def test_qualitative_route_calls_specialist_with_bound_evidence_only() -> None:
     )
 
     assert specialist.calls == 1
-    assert {item["evidence_id"] for item in specialist.last_items} == {"E1", "E2"}
+    # H2A-3B3.  What the specialist is handed is now the rendered prompt; the
+    # evidence that reached the boundary is read from the compiled pack, which
+    # is where the production path put it and what Disclosure Authority governed.
+    assert generation.last_context_pack is not None
+    assert set(generation.last_context_pack.evidence_ids) == {"E1", "E2"}
+    assert specialist.last_prompt is not None
+    assert "Operating Margin" in specialist.last_prompt
     assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
     assert outcome.citation_ids == ["citation-E1", "citation-E2"]
     assert "unknown-X" not in outcome.citation_ids

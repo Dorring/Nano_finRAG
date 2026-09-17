@@ -174,18 +174,19 @@ def test_the_specialist_profile_is_what_its_prompt_reads() -> None:
 
 
 class _RecordingSpecialist:
-    """A specialist that records exactly what it was handed."""
+    """A specialist that records exactly what it was handed.
+
+    H2A-3B3.  What it is handed is a rendered prompt now, so the assertions
+    below read the compiled pack instead.  That is the stronger place to read
+    from: the pack is what crossed the boundary under Disclosure Authority, and
+    this records only that the call happened and what text it carried.
+    """
 
     def __init__(self) -> None:
-        self.payloads: list[list[dict[str, Any]]] = []
+        self.prompts: list[str] = []
 
-    def generate(
-        self,
-        question: str,
-        evidence_items: list[dict[str, Any]],
-        calculation_result: Any = None,
-    ) -> str:
-        self.payloads.append([dict(item) for item in evidence_items])
+    def generate(self, prompt: str) -> str:
+        self.prompts.append(prompt)
         return "recorded"
 
 
@@ -228,8 +229,10 @@ def test_a_real_specialist_call_receives_a_projection_not_an_evidence_object() -
 
     capability.generate(state)
 
-    assert specialist.payloads, "the specialist was never called"
-    for item in specialist.payloads[0]:
+    assert specialist.prompts, "the specialist was never called"
+    pack = capability.last_context_pack
+    assert pack is not None, "the specialist was reached without a compiled context"
+    for item in pack.evidence:
         assert "metadata" not in item
         assert "source_text" not in item
         assert "content" not in item
@@ -472,13 +475,18 @@ CALC_ERROR = "INTERNAL EXCEPTION /var/lib/secret.py"
 
 
 class _RecordingSpecialistWithCalculation:
-    """Records the calculation payload as well as the evidence items."""
+    """Records that it was called, and the text it was handed.
+
+    H2A-3B3.  The calculation payload used to arrive here as one of three
+    arguments; it now arrives as part of the rendered prompt, and the governed
+    projection that produced it lives in the pack.
+    """
 
     def __init__(self) -> None:
-        self.calculations: list[Any] = []
+        self.prompts: list[str] = []
 
-    def generate(self, question: str, evidence_items: list[dict], calculation_result: Any = None) -> str:
-        self.calculations.append(calculation_result)
+    def generate(self, prompt: str) -> str:
+        self.prompts.append(prompt)
         return "recorded"
 
 
@@ -524,10 +532,13 @@ def test_the_specialist_calculation_payload_is_projected_not_raw() -> None:
     from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
 
     specialist = _RecordingSpecialistWithCalculation()
-    TrustedV2GenerationCapability(specialist=specialist).generate(_state_with_calculation())
+    capability = TrustedV2GenerationCapability(specialist=specialist)
+    capability.generate(_state_with_calculation())
 
-    assert specialist.calculations, "the specialist must actually have been called"
-    payload = specialist.calculations[0]
+    assert specialist.prompts, "the specialist must actually have been called"
+    pack = capability.last_context_pack
+    assert pack is not None
+    payload = pack.calculation
     assert payload is not None, "the branch under test must be reached"
 
     assert CALC_SECRET not in repr(payload), "raw operand text crossed the boundary"
@@ -535,16 +546,22 @@ def test_the_specialist_calculation_payload_is_projected_not_raw() -> None:
     assert "operands" not in payload
     assert set(payload) == {"operation", "unit", "value"}
 
+    # And none of it reached the text a model reads either.
+    assert CALC_SECRET not in specialist.prompts[0]
+    assert CALC_ERROR not in specialist.prompts[0]
+
 
 def test_the_specialist_still_receives_the_calculation_fields_it_reads() -> None:
     """Governed, not narrowed: the prompt reads these three and still gets them."""
 
     from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
 
-    specialist = _RecordingSpecialistWithCalculation()
-    TrustedV2GenerationCapability(specialist=specialist).generate(_state_with_calculation())
+    capability = TrustedV2GenerationCapability(
+        specialist=_RecordingSpecialistWithCalculation()
+    )
+    capability.generate(_state_with_calculation())
 
-    assert specialist.calculations[0] == {
+    assert dict(capability.last_context_pack.calculation) == {
         "operation": "difference",
         "unit": "USD",
         "value": "8",

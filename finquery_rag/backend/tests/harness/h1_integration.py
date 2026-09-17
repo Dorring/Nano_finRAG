@@ -574,12 +574,7 @@ class _FixtureFactStore:
 class _FixtureSpecialist:
     """A specialist backend that never gets asked to generate numbers."""
 
-    def generate(
-        self,
-        question: str,
-        evidence_items: list[dict[str, Any]],
-        calculation_result: Mapping[str, Any] | None = None,
-    ) -> str:
+    def generate(self, prompt: str) -> str:
         return "fixture specialist answer"
 
 

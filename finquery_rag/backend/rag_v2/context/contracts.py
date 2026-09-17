@@ -406,26 +406,41 @@ class AgentContextPackV1:
                 "calculation",
                 _frozen_view(self.calculation, where="calculation"),
             )
-        self._check_support_groups()
+        self._check_references()
 
-    def _check_support_groups(self) -> None:
-        """A group may only name handles the model is actually being shown.
+    def _check_references(self) -> None:
+        """The handles and the evidence they stand for must correspond.
 
-        Enforced here rather than trusted from the compiler for the same reason
-        nested mappings are refused: it is the difference between a property and
-        a promise.  A support group naming ``E3`` in a pack that carries two
-        items would tell the model that a corroboration exists which the
-        boundary did not release -- the claim and its evidence crossing
-        separately, which is how a governed context starts asserting things the
-        boundary never established.
+        Two properties, both structural rather than promised.
 
-        Also refused: an empty group, and a group naming a handle twice.  A
-        repeated handle is not a second witness, so reporting it as one would
-        state a corroboration that does not exist -- the same failure this phase
-        removes from the renderer, one layer up.
+        **One evidence handle per evidence item.**  A pack's handles are the
+        citation namespace: a model writes ``[E1]`` and a validator resolves it,
+        and the renderer is handed the pack rather than minting its own.  A pack
+        whose handle list did not correspond to its evidence would render a
+        citation that resolves to the wrong item or to nothing -- so the
+        correspondence is checked where the handles are, not left to whichever
+        consumer pairs them up.
+
+        **A support group may only name handles the model is actually being
+        shown.**  A group naming ``E3`` in a pack that carries two items would
+        tell the model that a corroboration exists which the boundary did not
+        release -- the claim and its evidence crossing separately, which is how
+        a governed context starts asserting things the boundary never
+        established.  Also refused: an empty group, and a group naming a handle
+        twice.  A repeated handle is not a second witness, so reporting it as
+        one would state a corroboration that does not exist -- the same failure
+        H2A-3B2 removed from the renderer, one layer up.
         """
 
-        evidence_handles = set(self.references.evidence_handles)
+        evidence_handles = self.references.evidence_handles
+        if len(evidence_handles) != len(self.evidence):
+            raise PackIntegrityError(
+                f"the pack carries {len(self.evidence)} evidence items and "
+                f"{len(evidence_handles)} evidence handles; the handles are the "
+                f"citation namespace and must correspond to the evidence"
+            )
+
+        cited = set(evidence_handles)
         for group in self.references.support_groups:
             if not group.supports:
                 raise PackIntegrityError(
@@ -435,7 +450,7 @@ class AgentContextPackV1:
             unknown = [
                 handle
                 for handle in group.supports
-                if handle not in evidence_handles
+                if handle not in cited
             ]
             if unknown:
                 raise PackIntegrityError(

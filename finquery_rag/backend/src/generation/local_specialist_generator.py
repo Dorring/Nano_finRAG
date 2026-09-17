@@ -17,8 +17,6 @@ from typing import Any
 
 import torch
 
-from src.generation.specialist_prompt import render_specialist_prompt
-
 
 def _resolve_nanochat_repo() -> Path:
     """Resolve the NanoChat source root without coupling V2 to one host path.
@@ -157,51 +155,31 @@ class LocalSpecialistGenerator:
     def is_loaded(self) -> bool:
         return self._model_loaded
 
-    def render_prompt(
-        self,
-        question: str,
-        evidence_items: list[dict[str, Any]],
-        calculation_result: dict[str, Any] | None = None,
-    ) -> str:
-        """Render prompt adhering strictly to FinancialGenerationViewV1.
+    def generate(self, prompt: str) -> dict[str, Any]:
+        """Generate from an already-rendered prompt.
 
-        H2A-3B0.  The renderer itself now lives in
-        ``src/generation/specialist_prompt.py``, so that what a model is asked
-        can be asserted on without importing ``torch`` -- this module is
-        excluded from test collection wherever torch is absent, and a prompt
-        assertion that silently never runs is worse than no assertion.
+        H2A-3B3.  This used to take ``(question, evidence_items,
+        calculation_result)`` and render them here through
+        ``render_specialist_prompt``.  The renderer is now the pack-based one,
+        invoked by the candidate-generation capability from the compiled
+        ``AgentContextPackV1`` -- so the prompt handed in is the whole of what
+        the compiler released, and this method's job is the provider's own:
+        tokenize, run the engine, decode.
 
-        This method is kept, and delegates, because callers and the frozen
-        generation contract reach the prompt through it.  Its behaviour is the
-        renderer's; the one intentional change is that a missing page is no
-        longer rendered as page 1.
+        The signature narrowing is the migration's guarantee rather than a
+        tidy-up.  A backend that could still be handed loose evidence would be a
+        second route to the model, and nothing on this path reads evidence at
+        all any more -- there is no argument here to bypass Disclosure
+        Authority with.
         """
-
-        return render_specialist_prompt(
-            question,
-            evidence_items,
-            calculation_result,
-        )
-
-    def generate(
-        self,
-        question: str,
-        evidence_items: list[dict[str, Any]],
-        calculation_result: dict[str, Any] | None = None,
-    ) -> dict[str, Any]:
-        """Generate response using greedy evaluation decoding."""
         if not self._model_loaded:
             raise LocalSpecialistUnavailableError(
                 "LocalSpecialistGenerator is not loaded. Call load() first."
             )
 
-        rendered_input = self.render_prompt(
-            question, evidence_items, calculation_result
-        )
-
         prompt_tokens = (
             [self.bos_token_id, self.user_start_id]
-            + self.tokenizer.encode(rendered_input)
+            + self.tokenizer.encode(prompt)
             + [self.user_end_id, self.assistant_start_id]
         )
 

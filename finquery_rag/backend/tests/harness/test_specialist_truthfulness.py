@@ -120,8 +120,35 @@ def _view(*, drop: str | None = None, **overrides: Any) -> dict[str, Any]:
     return project(packet, profile=EvidenceDisclosureProfile.SPECIALIST)
 
 
+def _pack(items: list[dict[str, Any]], **kwargs: Any) -> Any:
+    """Compile a pack from already-projected views.
+
+    H2A-3B3 made the renderer take a pack, so a test that wants to render a
+    particular projection compiles one.  The compiler re-projects what it is
+    handed, which on an already-projected SPECIALIST view is the identity -- the
+    production projection applied twice, not a second one.
+    """
+
+    from rag_v2.context import (
+        ContextCompilerV1,
+        ContextRequestV1,
+        ContextRoleV1,
+        SpecialistContextPolicyV1,
+    )
+
+    return ContextCompilerV1(SpecialistContextPolicyV1()).compile(
+        ContextRequestV1(
+            role=ContextRoleV1.SPECIALIST,
+            invocation_id="test-render",
+            query=kwargs.pop("query", "What was revenue?"),
+            admitted_evidence=tuple(items),
+            calculation=kwargs.pop("calculation", None),
+        )
+    )
+
+
 def _rendered(*items: dict[str, Any]) -> str:
-    return render_specialist_prompt("What was revenue?", list(items), None)
+    return render_specialist_prompt(_pack(list(items)))
 
 
 def _block(prompt: str, handle: str = "E1") -> dict[str, str]:
@@ -348,9 +375,11 @@ def test_the_calculation_block_is_unchanged_by_f10() -> None:
     """
 
     prompt = render_specialist_prompt(
-        "Why did revenue change?",
-        [_view()],
-        {"operation": "difference", "value": "8", "unit": "USD"},
+        _pack(
+            [_view()],
+            query="Why did revenue change?",
+            calculation={"operation": "difference", "value": "8", "unit": "USD"},
+        )
     )
 
     assert "[VERIFIED CALCULATION]" in prompt
@@ -362,20 +391,18 @@ def test_the_calculation_block_is_unchanged_by_f10() -> None:
 
 
 class _RenderingSpecialist:
-    """A specialist that renders what it was handed, exactly as production does."""
+    """A specialist that records the prompt the boundary rendered for it.
+
+    H2A-3B3.  It used to render the prompt itself; the prompt now arrives
+    already rendered from the compiled pack, so this records the production
+    model input rather than a second rendering of it.
+    """
 
     def __init__(self) -> None:
         self.prompts: list[str] = []
 
-    def generate(
-        self,
-        question: str,
-        evidence_items: list[dict[str, Any]],
-        calculation_result: Any = None,
-    ) -> str:
-        self.prompts.append(
-            render_specialist_prompt(question, evidence_items, calculation_result)
-        )
+    def generate(self, prompt: str) -> str:
+        self.prompts.append(prompt)
         return "rendered"
 
 

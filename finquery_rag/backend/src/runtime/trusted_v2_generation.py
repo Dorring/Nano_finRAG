@@ -3,6 +3,22 @@
 The adapters reuse the frozen GeneratorRoutingPolicy and deterministic
 calculation renderer.  They create a candidate only; Validator/Release is a
 separate TV2-05 boundary.
+
+H2A-3B3.  The specialist's dynamic context is no longer built here.  It is
+compiled:
+
+    authoritative state -> adapter -> ContextRequestV1
+      -> ContextCompilerV1 -> AgentContextPackV1
+      -> pack-based renderer -> the model boundary
+
+Two consequences worth stating where they are visible.  Selection still happens
+in this module, because the routing policy needs the admitted items with their
+authoritative fields -- including ``entity``, which the SPECIALIST disclosure
+profile does not admit -- to decide whether a generator is needed at all; that
+selection is now the adapter's one implementation rather than a second copy of
+it.  And disclosure no longer happens here at all: there is no ``project`` call
+on this path, so this module cannot disagree with the Disclosure Authority about
+what a model may see.
 """
 
 from __future__ import annotations
@@ -14,10 +30,12 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from rag_v2.adaptive import AdaptiveRAGStateV1
-from rag_v2.evidence.disclosure import (
-    EvidenceDisclosureProfile,
-    project,
-    project_calculation,
+from rag_v2.context import (
+    AgentContextPackV1,
+    ContextCompilerV1,
+    SpecialistContextPolicyV1,
+    admitted_specialist_evidence,
+    specialist_context_request,
 )
 from src.generation.generator_routing_policy import (
     GeneratorRouteDecision,
@@ -25,6 +43,7 @@ from src.generation.generator_routing_policy import (
     GeneratorTarget,
     RouteName,
 )
+from src.generation.specialist_prompt import render_specialist_prompt
 
 from src.domain.calculation import CalculationResult, CalculationStatus
 from src.finance.calculation_renderer import render_calculation_result
@@ -85,26 +104,30 @@ def _stable_unique(values: Iterable[Any]) -> tuple[str, ...]:
     return tuple(result)
 
 
-def _candidate_identity(candidate: Mapping[str, Any]) -> str:
-    value = candidate.get("fact_id") or candidate.get("evidence_id") or candidate.get("candidate_id")
-    return str(value).strip() if value is not None else ""
-
-
 def _bound_items(state: AdaptiveRAGStateV1) -> list[dict[str, Any]]:
-    allowed = set(_stable_unique(getattr(state, "bound_evidence_ids", ())))
-    if not allowed:
-        return []
-    items: list[dict[str, Any]] = []
-    seen: set[str] = set()
-    for raw in state.evidence_packets:
-        if not isinstance(raw, Mapping):
-            raise CandidateGenerationCapabilityError("candidate_evidence_must_be_mapping")
-        item = dict(raw)
-        identity = _candidate_identity(item)
-        if identity in allowed and identity not in seen:
-            seen.add(identity)
-            items.append(item)
-    return items
+    """The admitted evidence, in state order -- the B3 adapter's own selection.
+
+    H2A-3B3.  This used to be a second implementation of ``_bound_items``'s
+    logic living beside the compiler's copy in ``rag_v2.context.specialist``.
+    One of the two had to go, and it was this one: the compiler's is the copy
+    the production context path uses, so keeping a second here would have meant
+    two answers to "which evidence is admitted" that agree until one is edited.
+
+    What remains is a translation, not a selection.  The routing policy still
+    needs the admitted items with their authoritative fields -- it decides
+    whether a generator is needed at all, before any context is compiled, and it
+    reads ``entity``/``company``/``ticker``, which the SPECIALIST disclosure
+    profile does not admit.  So it cannot consume a pack, and this stays its
+    input.  The exception type is translated because the two layers name their
+    failures differently and a caller here has always caught this one.
+    """
+
+    try:
+        return [dict(item) for item in admitted_specialist_evidence(state)]
+    except TypeError as exc:
+        raise CandidateGenerationCapabilityError(
+            "candidate_evidence_must_be_mapping"
+        ) from exc
 
 
 def _bound_citation_ids(items: Iterable[Mapping[str, Any]]) -> tuple[str, ...]:
@@ -175,6 +198,14 @@ class LocalSpecialistGenerationAdapter:
 
     The backend is injected so CPU-safe tests can use a deterministic provider;
     a production/canonical smoke may inject LocalSpecialistGenerator itself.
+
+    H2A-3B3 narrowed this from ``(question, evidence_items,
+    calculation_result)`` to a single rendered prompt.  That is the migration's
+    point rather than a tidy-up: the evidence a specialist sees is now produced
+    in exactly one place -- the compiler, through the pack-based renderer -- and
+    a backend that could still be handed loose evidence dicts would be a second
+    route to the model that bypasses Disclosure Authority.  After this change
+    the model boundary is a string, so there is nothing else to leak through.
     """
 
     def __init__(self, backend: Any) -> None:
@@ -183,14 +214,9 @@ class LocalSpecialistGenerationAdapter:
         self.backend = backend
         self.calls = 0
 
-    def generate(
-        self,
-        question: str,
-        evidence_items: list[dict[str, Any]],
-        calculation_result: Mapping[str, Any] | None = None,
-    ) -> Mapping[str, Any] | str:
+    def generate(self, prompt: str) -> Mapping[str, Any] | str:
         self.calls += 1
-        return self.backend.generate(question, evidence_items, calculation_result)
+        return self.backend.generate(prompt)
 
 
 class TrustedV2GenerationCapability:
@@ -208,11 +234,25 @@ class TrustedV2GenerationCapability:
         self.routing_policy = routing_policy or GeneratorRoutingPolicy()
         self.renderer = renderer or DeterministicFactRenderer()
         self.specialist = specialist
+        # One compiler for the capability's lifetime, so "exactly one compile per
+        # specialist invocation" is a property of the call path rather than of
+        # how often someone happened to construct one.  It carries no token
+        # bound: B3's tokenizer is the checkpoint's, and H2A-3B1's rule is that a
+        # bound is either measured exactly or not configured.
+        self.context_compiler = ContextCompilerV1(SpecialistContextPolicyV1())
         self.route_calls = 0
         self.renderer_calls = 0
         self.specialist_calls = 0
+        self.context_compile_count = 0
+        self.context_render_count = 0
         self.last_decision: GeneratorRouteDecision | None = None
         self.last_result: CandidateExecutionResult | None = None
+        #: The governed context compiled for the last specialist invocation, or
+        #: ``None`` when the route did not reach one.  Held for the same reason
+        #: ``last_result`` is: it is the artifact of this invocation, and a test
+        #: that recompiled it itself would be observing a second compile rather
+        #: than the one production performed.
+        self.last_context_pack: AgentContextPackV1 | None = None
         self._unknown_citation_count = 0
         #: Names of the fields disclosed to the specialist on the last call.
         #: Names only: a trace must never carry evidence content.
@@ -284,46 +324,64 @@ class TrustedV2GenerationCapability:
     def _call_specialist(
         self,
         state: AdaptiveRAGStateV1,
-        items: list[dict[str, Any]],
-        calculation: CalculationResult | None,
         allowed_citations: tuple[str, ...],
     ) -> tuple[str, tuple[str, ...], dict[str, Any]]:
+        """Compile, render, and call the model -- once each.
+
+        H2A-3B3.  This used to assemble the specialist's context by hand:
+        ``_bound_items`` selected, ``project`` disclosed, ``project_calculation``
+        disclosed the calculation, and the three pieces went to a backend that
+        rendered them.  Every one of those steps now belongs to the Context
+        Runtime, and this method is the wiring that proves it takes over:
+
+            authoritative state -> adapter -> ContextRequestV1
+              -> ContextCompilerV1 -> AgentContextPackV1
+              -> pack-based renderer -> the model boundary
+
+        The order is the point, and so is the absence of a bypass.  After the
+        compile there is no ``project`` call here, no reading of
+        ``state.evidence_packets``, and no calculation payload assembled beside
+        the pack -- a second projection at this layer would be a second
+        disclosure policy, which is the asymmetry H2A-1 existed to remove.  What
+        crosses into the model is a string, so there is nothing else it *could*
+        carry.
+        """
         if self.specialist is None:
             raise CandidateGenerationCapabilityError("financial_specialist_not_configured")
         method = getattr(self.specialist, "generate", None)
         if not callable(method):
             raise CandidateGenerationCapabilityError("financial_specialist_not_callable")
-        calculation_payload = (
-            project_calculation(calculation.to_dict(), profile=EvidenceDisclosureProfile.SPECIALIST)
-            if calculation
-            else None
-        )
-        self.specialist_calls += 1
-        # Project before the boundary, not after.  ``items`` are whole evidence
-        # packets, whose ``metadata`` bag carries the extracted source text;
-        # handing them to a model was the ungoverned half of the disclosure
-        # asymmetry, and the only reason it was not already leaking is that this
-        # prompt happens to look for the text at the top level.  Safety that
-        # holds because two shapes disagree is not safety.
-        projected = [
-            project(item, profile=EvidenceDisclosureProfile.SPECIALIST)
-            for item in items
-        ]
+
+        # 1. The adapter reads the runtime's authoritative state.
+        request = specialist_context_request(state)
+        # 2. The compiler is the only path from those artifacts to model-visible
+        #    context.  Compiled once per invocation, here.
+        pack = self.context_compiler.compile(request)
+        self.context_compile_count += 1
+        self.last_context_pack = pack
+        # 3. The renderer turns the pack into the model's text.  It is handed the
+        #    pack and nothing else, so it cannot reach around the compiler for a
+        #    field the pack does not carry.
+        prompt = render_specialist_prompt(pack)
+        self.context_render_count += 1
+
         # ``last_disclosed_fields`` records which fields crossed, by name only
         # and never by value, so a disclosure question can be answered from the
-        # snapshot without putting evidence content into a trace.
-        # Namespaced by artifact type.  The audit found the trace accounting for
-        # evidence fields while the calculation payload crossed unrecorded, so
-        # "what was this model allowed to see" had an incomplete answer.  Field
-        # names only, never values.
+        # snapshot without putting evidence content into a trace.  Namespaced by
+        # artifact type.  The audit found the trace accounting for evidence
+        # fields while the calculation payload crossed unrecorded, so "what was
+        # this model allowed to see" had an incomplete answer.  Field names only,
+        # never values.  It is read from the pack because the pack is what
+        # crossed.
         self.last_disclosed_fields = tuple(
-            [f"evidence.{field}" for field in sorted({f for view in projected for f in view})]
-            + [
-                f"calculation.{field}"
-                for field in sorted(calculation_payload or {})
+            [
+                f"evidence.{field}"
+                for field in sorted({f for view in pack.evidence for f in view})
             ]
+            + [f"calculation.{field}" for field in sorted(pack.calculation or {})]
         )
-        raw = method(state.normalized_query, projected, calculation_payload)
+        self.specialist_calls += 1
+        raw = method(prompt)
         metadata: dict[str, Any] = {}
         if isinstance(raw, Mapping):
             answer = raw.get("answer_text") or raw.get("answer") or raw.get("raw_output")
@@ -352,6 +410,9 @@ class TrustedV2GenerationCapability:
         return answer.strip(), _stable_unique(citations), metadata
 
     def generate(self, state: AdaptiveRAGStateV1) -> CandidateExecutionResult:
+        # Cleared per invocation: a deterministic route compiles nothing, and a
+        # stale pack left over from a previous call would read as this one's.
+        self.last_context_pack = None
         items = _bound_items(state)
         if not items:
             raise CandidateGenerationCapabilityError("generation_requires_bound_evidence")
@@ -386,7 +447,7 @@ class TrustedV2GenerationCapability:
             self.renderer_calls += 1
         elif decision.target is GeneratorTarget.LOCAL_SPECIALIST:
             answer, citations, specialist_metadata = self._call_specialist(
-                state, items, calculation, allowed_citations
+                state, allowed_citations
             )
             metadata.update(specialist_metadata)
             allowed_citations = citations
@@ -416,6 +477,7 @@ class TrustedV2GenerationCapability:
 
     def trace_snapshot(self) -> dict[str, Any]:
         result = self.last_result
+        pack = self.last_context_pack
         return {
             "generation_route": result.route if result else None,
             "route_reason": result.route_reason if result else None,
@@ -424,6 +486,24 @@ class TrustedV2GenerationCapability:
             "renderer_call_count": self.renderer_calls,
             "specialist_invoked": self.specialist_calls > 0,
             "specialist_call_count": self.specialist_calls,
+            # H2A-3B3.  The migration's own observability, and deliberately
+            # counts rather than contents: the compile and render counts are what
+            # make "one context compilation per specialist invocation" checkable
+            # from outside, and the support-group count is the one fact about the
+            # topology the current B3 prompt does not carry.  Nothing here can
+            # grow into a copy of the pack -- a trace is a record of decisions,
+            # not a second context store.
+            "context_compile_count": self.context_compile_count,
+            "context_render_count": self.context_render_count,
+            "context_evidence_selected": (
+                None if pack is None else pack.budget.evidence_selected
+            ),
+            "context_evidence_dropped": (
+                None if pack is None else pack.budget.evidence_dropped
+            ),
+            "context_support_group_count": (
+                None if pack is None else len(pack.references.support_groups)
+            ),
             "candidate_ready": result is not None,
             "validation_pending": result is not None,
             "candidate_generation_id": result.candidate_generation_id if result else None,

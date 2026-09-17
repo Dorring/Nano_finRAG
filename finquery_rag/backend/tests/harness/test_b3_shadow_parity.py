@@ -1,8 +1,11 @@
-"""H2A-3B1-B: B3 shadow compilation, and exactly what it agrees with.
+"""H2A-3B1-B/A-3B3: what the compiled pack agrees with, and that B3 now uses it.
 
-The compiler now exists.  This file proves it reproduces B3's intended dynamic
-context **without touching the production path** -- the production model call
-still receives the legacy context, and nothing in ``src/`` reaches the compiler.
+The compiler was built in shadow and has since taken over the boundary.  This
+file still answers the question it was written for -- does the compiled pack
+carry what the legacy path carried? -- because that is the equivalence half of
+H2A-3B3's differential.  What changed is who is being compared: the pack is now
+compiled by the *production* path rather than beside it, and the structural
+guards below were inverted accordingly.
 
 Three kinds of assertion, kept apart on purpose:
 
@@ -14,10 +17,15 @@ Three kinds of assertion, kept apart on purpose:
    ``projected_evidence`` and ``projected_calculation`` are what the legacy path
    actually handed the boundary; the compiled pack must carry the same.  This is
    equivalence, and equivalence is not correctness.
-3. **Structural guarantees.**  The production path is unchanged, and no whole
-   RunState reaches a pack.
+3. **Structural guarantees.**  The production path runs on the compiler, and no
+   whole RunState reaches a pack.
 
-F10 is fixed as of H2A-3B2, and note where it lived: the fabricated ``scale``,
+The *correctness* half lives in ``test_specialist_truthfulness``,
+``test_b3_support_topology`` and ``test_b3_compiler_migration``.  A differential
+against a captured baseline cannot supply it: the capture and the implementation
+could be regenerated from each other and this file would still be green.
+
+F10 was fixed in H2A-3B2, and note where it lived: the fabricated ``scale``,
 ``document_id``, ``metric``, ``period`` and ``scope`` defaults were in the
 **renderer**, and the compiler does not touch the renderer.  Both the legacy
 projection and the compiled pack carried absence as absence throughout, so the
@@ -220,34 +228,53 @@ def test_the_shadow_path_did_not_move_the_legacy_path() -> None:
 # --- 3. structural guarantees -----------------------------------------------------------
 
 
-def test_the_production_generation_path_does_not_use_the_compiler() -> None:
-    """The phase's central constraint, asserted against the source.
+def test_the_production_generation_path_now_uses_the_compiler() -> None:
+    """H2A-3B1's anti-migration guard, inverted by H2A-3B3.
 
-    During 3B1 the compiled pack must never reach a model call.  A behavioural
-    test cannot prove a negative about wiring that does not exist yet, so this
-    asserts the wiring is absent -- and it will start failing the moment
-    someone opts B3 in early, which is exactly when it should.
+    This file used to assert that ``src/runtime/trusted_v2_generation.py``
+    contained no reference to the compiler, so that opting B3 in early would go
+    red.  B3 has now been opted in deliberately, and a guard that still asserted
+    the old state would be a guard against the migration.
+
+    It is not simply deleted, because the *reason* it existed has not gone away:
+    the production path must run on the compiler, and a future edit that quietly
+    reverted it should be visible.  The behavioural form of that claim -- one
+    compile, one render, the renderer handed the object the compiler returned --
+    lives in ``test_b3_compiler_migration``.  What is left here is the shape of
+    the wiring, which is the thing that changed.
     """
 
     source = pathlib.Path(
         "src/runtime/trusted_v2_generation.py"
     ).read_text(encoding="utf-8")
 
-    assert "rag_v2.context" not in source
-    assert "ContextCompiler" not in source
-    assert "AgentContextPack" not in source
+    assert "rag_v2.context" in source
+    assert "ContextCompilerV1" in source
+    assert "specialist_context_request" in source
+    assert "AgentContextPack" in source
 
 
-def test_the_compiler_is_not_reachable_from_the_runtime_package() -> None:
-    """Nothing under ``src/runtime`` may import the compiler in this phase."""
+def test_no_legacy_context_construction_remains_on_the_production_path() -> None:
+    """The other half of the inversion: the old assembly is gone, not dormant.
 
-    offenders = [
-        path.as_posix()
-        for path in pathlib.Path("src/runtime").glob("*.py")
-        if "rag_v2.context" in path.read_text(encoding="utf-8")
-    ]
+    A migration that left the legacy ``select -> project -> assemble`` sequence
+    in place beside the compiler would have two live context paths, and the
+    differential would be proving something about whichever one happened to run.
+    ``_bound_items`` survives, because the routing policy still needs admitted
+    items with their authoritative fields, but it no longer selects -- it
+    delegates to the adapter's one implementation.
+    """
 
-    assert offenders == []
+    from src.runtime.trusted_v2_generation import _bound_items
+
+    import inspect
+
+    source = inspect.getsource(_bound_items)
+    assert "admitted_specialist_evidence" in source, (
+        "_bound_items must delegate to the adapter's selection rather than "
+        "reimplementing it"
+    )
+    assert "for raw in" not in source, "a second selection loop is back"
 
 
 def test_a_pack_holds_no_run_state_and_no_undeclared_field() -> None:
@@ -413,6 +440,6 @@ class _RecordingSpecialist:
     def __init__(self) -> None:
         self.calls = 0
 
-    def generate(self, question: str, evidence_items: list[dict], calculation_result: Any = None) -> str:
+    def generate(self, prompt: str) -> str:
         self.calls += 1
         return "recorded"

@@ -167,32 +167,21 @@ SCENARIOS: dict[str, dict[str, Any]] = {
 
 
 class RecordingSpecialist:
-    """Records exactly what the boundary handed it, and renders what a model reads.
+    """Records exactly what the boundary handed it.
 
-    The prompt is rendered with the production renderer rather than reimplemented
-    here, so the recorded "model input" is the same text the specialist generator
-    would encode.
+    H2A-3B3.  This used to render the prompt itself from
+    ``(question, evidence_items, calculation_result)``.  It now receives the
+    prompt the capability rendered from the compiled pack, so ``prompts`` is a
+    recording of the production model input rather than a re-rendering of it --
+    which is a stronger thing for this file to hold, since a baseline that
+    rendered its own copy could agree with itself while the boundary drifted.
     """
 
     def __init__(self) -> None:
-        from src.generation.specialist_prompt import render_specialist_prompt
-
-        self._render = render_specialist_prompt
-        self.payloads: list[list[dict[str, Any]]] = []
-        self.calculations: list[Any] = []
         self.prompts: list[str] = []
 
-    def generate(
-        self,
-        question: str,
-        evidence_items: list[dict[str, Any]],
-        calculation_result: Any = None,
-    ) -> str:
-        self.payloads.append([dict(item) for item in evidence_items])
-        self.calculations.append(calculation_result)
-        self.prompts.append(
-            self._render(question, evidence_items, calculation_result)
-        )
+    def generate(self, prompt: str) -> str:
+        self.prompts.append(prompt)
         return "The reported revenue was 391 million USD [E1]."
 
 
@@ -234,10 +223,17 @@ def build_state(scenario: str):
 
 
 def observe(scenario: str) -> dict[str, Any]:
-    """Run the legacy B3 context path and record everything it decided.
+    """Run the B3 context path and record everything it decided.
 
     One implementation, used by both the capture and the assertion, so the
     frozen values and the checked values cannot drift apart.
+
+    H2A-3B3.  ``projected_evidence`` and ``projected_calculation`` now come from
+    the compiled pack rather than from what the backend was handed -- the
+    backend is handed a string now, which is the migration's point.  The
+    *expected* values below are unchanged: they were captured from the legacy
+    path before the compiler took over, so this function producing them again is
+    the differential, not a restatement of it.
     """
 
     from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
@@ -245,6 +241,13 @@ def observe(scenario: str) -> dict[str, Any]:
     specialist = RecordingSpecialist()
     capability = TrustedV2GenerationCapability(specialist=specialist)
     result = capability.generate(build_state(scenario))
+
+    pack = capability.last_context_pack
+    if pack is None:
+        raise AssertionError(
+            f"the {scenario} scenario did not reach a specialist invocation, so "
+            f"it has no compiled context to record"
+        )
 
     return {
         # what was selected
@@ -256,8 +259,10 @@ def observe(scenario: str) -> dict[str, Any]:
         "calculation_ids": list(result.calculation_ids),
         # what the disclosure authority let across
         "disclosed_fields": list(capability.trace_snapshot()["disclosed_fields"]),
-        "projected_evidence": specialist.payloads[0],
-        "projected_calculation": specialist.calculations[0],
+        "projected_evidence": [dict(item) for item in pack.evidence],
+        "projected_calculation": (
+            None if pack.calculation is None else dict(pack.calculation)
+        ),
         # the model input
         "prompt": specialist.prompts[0],
         # Carried alongside the text so a regression reports a changed digest

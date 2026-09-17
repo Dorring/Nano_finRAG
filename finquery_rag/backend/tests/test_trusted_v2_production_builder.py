@@ -365,12 +365,7 @@ class _BinderProvider:
 
 
 class _SpecialistBackend:
-    def generate(
-        self,
-        question: str,
-        evidence_items: list[dict[str, Any]],
-        calculation_result: Mapping[str, Any] | None = None,
-    ) -> str:
+    def generate(self, prompt: str) -> str:
         return "test candidate"
 
 
