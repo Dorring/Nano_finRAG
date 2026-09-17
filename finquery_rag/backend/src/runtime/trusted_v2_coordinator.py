@@ -147,7 +147,18 @@ def _structured_calculations(
     state: AdaptiveRAGStateV1 | None,
     calculation_ids: Iterable[str],
 ) -> list[dict[str, Any]]:
-    """Serialize the structured calculator result without answer parsing."""
+    """Serialize the structured calculator result without answer parsing.
+
+    Refuses to publish a result the runtime has not admitted.  The gate is on
+    the *result*, not on the ids the caller supplies: a non-None calculation id
+    must never by itself make a result publishable, and a caller that paired a
+    BLOCKED result with an id gets nothing rather than a trusted-looking payload.
+
+    This is a projection boundary, so an inadmissible calculation yields nothing
+    here.  It must not be read as "no calculation was requested" -- that
+    conclusion belongs upstream, where a required calculation that cannot be
+    admitted terminates with a reason code rather than being erased.
+    """
 
     ids = _stable_unique(calculation_ids)
     if state is None or not ids:
@@ -159,8 +170,12 @@ def _structured_calculations(
         return []
     if not isinstance(calculation, CalculationResult):
         return []
+    # A BLOCKED or FAILED result has no identity of its own, so there is nothing
+    # here to publish and no way for the caller's ids to manufacture one.
+    if not calculation.is_admissible or calculation.calculation_id is None:
+        return []
     payload = calculation.to_public_dict()
-    payload["calculation_id"] = ids[0]
+    payload["calculation_id"] = calculation.calculation_id
     return [payload]
 
 

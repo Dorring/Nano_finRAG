@@ -7,8 +7,6 @@ Binder-admitted evidence IDs and the structured SupervisorPlan are accepted.
 
 from __future__ import annotations
 
-import hashlib
-import json
 from collections.abc import Iterable, Mapping
 from decimal import Decimal
 from typing import Any, Callable
@@ -116,27 +114,6 @@ def _page(candidate: Mapping[str, Any]) -> int | None:
         return int(value)
     except (TypeError, ValueError):
         return None
-
-
-def _calculation_id(operation: CalculationOperation, result: CalculationResult) -> str:
-    payload = {
-        "operation": operation.value,
-        "formula_version": result.formula_version,
-        "value": str(result.value) if result.value is not None else None,
-        "unit": result.unit,
-        "operands": [
-            {
-                "name": operand.name,
-                "value": str(operand.value),
-                "evidence_chunk_id": operand.evidence_chunk_id,
-            }
-            for operand in result.operands
-        ],
-    }
-    digest = hashlib.sha256(
-        json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()
-    ).hexdigest()[:16]
-    return f"C1-{digest}"
 
 
 class DeterministicCalculationCapability:
@@ -362,11 +339,12 @@ class DeterministicCalculationCapability:
         self.last_operand_evidence_ids = tuple(
             operand.evidence_chunk_id for operand in result.operands
         )
-        self.last_calculation_id = (
-            _calculation_id(operation, result)
-            if result.status is CalculationStatus.EXECUTED
-            else None
-        )
+        # The identity belongs to the result, and the result only hands one
+        # out when it is admissible.  This used to be computed here from a
+        # status check made at the call site -- the same fact, but living
+        # beside the result rather than in it, so any other producer could
+        # pair a BLOCKED result with a non-None id.
+        self.last_calculation_id = result.calculation_id
         state.calculation_result = result.to_dict()
         state.calculation_result_id = self.last_calculation_id
         state._calculation_result_obj = result

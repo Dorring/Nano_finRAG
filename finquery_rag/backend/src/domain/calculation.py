@@ -25,6 +25,8 @@ Key invariants enforced by these types:
 from __future__ import annotations
 
 from dataclasses import dataclass
+import hashlib
+import json
 from decimal import Decimal
 from enum import Enum
 from typing import Any
@@ -208,6 +210,58 @@ class CalculationResult:
     operands: tuple[CalculationOperand, ...] = ()
     error_code: str | None = None
     error_message: str | None = None
+
+    @property
+    def is_admissible(self) -> bool:
+        """Whether this is a usable financial result, not merely a return value.
+
+        ``EXECUTED`` is the only status that means the calculation produced a
+        value that may be reasoned over.  ``BLOCKED`` and ``FAILED`` are
+        successful *invocations* -- the calculator ran and reported honestly --
+        that produced no admissible result, and ``NOT_APPLICABLE``/``READY`` are
+        not results at all.
+
+        Keeping this distinct from "the capability returned" is the point: a
+        function returning normally says nothing about whether what it returned
+        may be used.
+        """
+
+        return self.status is CalculationStatus.EXECUTED
+
+    @property
+    def calculation_id(self) -> str | None:
+        """This result's identity, or ``None`` when it is not admissible.
+
+        The identity belongs to the result rather than living beside it, so
+        there is one truth and it cannot disagree with the status.  A caller
+        cannot obtain an id for a BLOCKED or FAILED result, because there is no
+        id to obtain -- which is what makes admissibility a property of the
+        contract rather than a check every caller has to remember.
+
+        The digest covers only the arithmetic and its operand provenance, so it
+        is stable across runs for the same inputs.
+        """
+
+        if not self.is_admissible or self.operation is None:
+            return None
+        payload = {
+            "operation": self.operation.value,
+            "formula_version": self.formula_version,
+            "value": str(self.value) if self.value is not None else None,
+            "unit": self.unit,
+            "operands": [
+                {
+                    "name": operand.name,
+                    "value": str(operand.value),
+                    "evidence_chunk_id": operand.evidence_chunk_id,
+                }
+                for operand in self.operands
+            ],
+        }
+        digest = hashlib.sha256(
+            json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()
+        ).hexdigest()[:16]
+        return f"C1-{digest}"
 
     def to_dict(self) -> dict[str, Any]:
         """Serialize to a dict for internal diagnostics.
