@@ -574,10 +574,19 @@ def test_duplicate_bound_rows_are_repaired_from_packet_consensus() -> None:
     assert policy.calls == 1
     assert reader.search_calls > 0
     assert provider.calls == 1
-    assert binder.last_semantic_repair is not None
-    assert binder.last_semantic_repair["strategy"] == (
-        "deterministic_candidate_consensus"
-    )
+    # H2A-2C-2: this used to assert a repair was *recorded*, because an
+    # overselecting provider was by definition wrong -- BOUND permitted one fact
+    # per slot, so two rows had to be collapsed into one.  It is no longer
+    # wrong: E1 and E2 are two distinct physical sources stating 391035, so the
+    # packet consensus for this slot *is* the pair, and reconciliation is
+    # reached without changing anything.  `last_semantic_repair` staying None
+    # means nothing needed correcting, not that nothing was checked.
+    #
+    # The safety intent is preserved and pinned below -- the bound set is the
+    # consensus support set, not whatever the provider emitted.  The cases where
+    # a row falls *outside* the consensus are the two
+    # `test_semantic_firewall_repairs_*` tests beside this one.
+    assert outcome.evidence_ids == ["E1", "E2"]
     assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
     assert "DOWNSTREAM_EXECUTION_NOT_WIRED" in outcome.reason_codes
     assert outcome.evidence_ids == ["E1"]
@@ -646,7 +655,13 @@ def test_semantic_firewall_repairs_wrong_period_selection_from_packet_consensus(
     assert reader.search_calls > 0
     assert provider.calls == 1
     assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
-    assert outcome.evidence_ids == ["CURRENT-1", "PREVIOUS-1"]
+    # H2A-2C-2: each slot keeps both of its independent supports.
+    assert outcome.evidence_ids == [
+        "CURRENT-1",
+        "CURRENT-2",
+        "PREVIOUS-1",
+        "PREVIOUS-2",
+    ]
     trace = binder.trace_snapshot()
     assert trace["bound_evidence_ids"] == ["CURRENT-1", "PREVIOUS-1"]
     repair = trace["binder_rounds"][0]["semantic_repair"]
@@ -677,7 +692,8 @@ def test_semantic_firewall_repairs_same_period_value_misalignment() -> None:
     )
 
     assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
-    assert outcome.evidence_ids == ["RIGHT-1"]
+    # H2A-2C-2: both independent supports.
+    assert outcome.evidence_ids == ["RIGHT-1", "RIGHT-2"]
     repair = binder.trace_snapshot()["binder_rounds"][0]["semantic_repair"]
     assert repair["strategy"] == "deterministic_candidate_consensus"
     assert repair["replaced_slot_bindings"]["value"]["from"] == ["WRONG-VALUE"]
@@ -810,7 +826,8 @@ def test_candidate_and_bound_provenance_are_separate() -> None:
         ).execute(_request("What was revenue?"))
     )
 
-    assert outcome.evidence_ids == ["E2"]
+    # H2A-2C-2: the independent consensus, not one representative of it.
+    assert outcome.evidence_ids == ["E1", "E2", "E3"]
     trace = outcome.debug_metadata["trace"]
     assert set(trace["candidate_ids_per_round"][0]) == {"E1", "E2", "E3"}
     assert trace["bound_evidence_ids"] == ["E2"]
@@ -873,7 +890,8 @@ def test_ambiguous_binder_recovers_only_with_independent_exact_consensus() -> No
 
     assert provider.calls == 1
     assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
-    assert outcome.evidence_ids == ["E1"]
+    # H2A-2C-2: both independent supports of the consensus.
+    assert outcome.evidence_ids == ["E1", "E2"]
     assert "DOWNSTREAM_EXECUTION_NOT_WIRED" in outcome.reason_codes
     repair = binder.trace_snapshot()["binder_rounds"][0]["semantic_repair"]
     assert repair["strategy"] == "deterministic_ambiguous_packet_consensus"
@@ -935,7 +953,8 @@ def test_partial_ambiguity_recovers_only_the_consensus_slot() -> None:
     )
 
     assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
-    assert set(outcome.evidence_ids) == {"CURRENT-1", "PRIOR-1"}
+    # H2A-2C-2: CURRENT keeps both independent supports; PRIOR is untouched.
+    assert set(outcome.evidence_ids) == {"CURRENT-1", "CURRENT-2", "PRIOR-1"}
     assert "DOWNSTREAM_EXECUTION_NOT_WIRED" in outcome.reason_codes
     repair = binder.trace_snapshot()["binder_rounds"][0]["semantic_repair"]
     assert repair["strategy"] == "deterministic_partial_ambiguous_packet_consensus"
@@ -972,7 +991,8 @@ def test_partial_ambiguity_normalizes_matching_duplicate_bound_slot() -> None:
     )
 
     assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
-    assert set(outcome.evidence_ids) == {"CURRENT-1", "PRIOR-1"}
+    # H2A-2C-2: PRIOR keeps both independent supports.
+    assert set(outcome.evidence_ids) == {"CURRENT-1", "PRIOR-1", "PRIOR-2"}
     repair = binder.trace_snapshot()["binder_rounds"][0]["semantic_repair"]
     assert repair["normalized_slot_bindings"] == {
         "previous": {"from": ["PRIOR-1", "PRIOR-2"], "to": ["PRIOR-1"]}
@@ -1498,7 +1518,11 @@ def test_real_r4_structured_lane_recovers_secondary_slot_under_crowding() -> Non
     assert "candidate_structured_dense" in reader.seen_lanes
     trace = outcome.debug_metadata["trace"]
     assert set(trace["candidate_ids_per_round"][0]) == {"PRIMARY", "SECONDARY"}
-    assert outcome.evidence_ids == ["SECONDARY"]
+    # H2A-2C-2: the provider *prefers* SECONDARY and both lanes return it,
+    # but PRIMARY is an equally independent source of the same fact, so the
+    # bound set is the pair. The assertion above still pins what this test is
+    # named for -- the candidate lanes are not the bound provenance.
+    assert outcome.evidence_ids == ["PRIMARY", "SECONDARY"]
 
 
 def test_facts_promotes_nested_metadata_qualifiers_without_overwriting_top_level() -> None:

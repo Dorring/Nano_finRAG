@@ -30,6 +30,20 @@ def fact_quantity_key(fact: Mapping[str, Any]) -> str:
     )
 
 
+def support_source(fact: Mapping[str, Any], fact_id: str) -> str:
+    """Which physical witness a bound fact speaks for.
+
+    The same ladder the consensus uses when it decides whether a row has already
+    been counted, so "independent" means one thing in both places.  A fact with
+    no stated source is its own witness, which is the conservative reading: it
+    cannot silently merge with another unsourced row.
+    """
+
+    return str(
+        fact.get("physical_source_id") or fact.get("source_id") or fact_id
+    ).strip()
+
+
 @dataclass(frozen=True)
 class BindingValidationResult:
     passed: bool
@@ -102,13 +116,21 @@ def validate_binding(
         if any(len(ids) < 1 for ids in binding.slot_bindings.values()):
             reasons.append("bound_fact_cardinality_mismatch")
         for slot_id, ids in binding.slot_bindings.items():
-            stated = {
-                fact_quantity_key(fact_map[fact_id])
-                for fact_id in ids
-                if fact_id in fact_map
-            }
+            in_slot = [(fact_id, fact_map[fact_id]) for fact_id in ids if fact_id in fact_map]
+            stated = {fact_quantity_key(fact) for _fact_id, fact in in_slot}
             if len(stated) > 1:
                 reasons.append(f"slot_supports_disagree:{slot_id}")
+            # A support set is independent *witnesses*, not rows.  Two rows from
+            # one physical source agreeing with each other is one source, and
+            # three rows from it must not read as a corroborated fact.  This is
+            # the same policy `_consensus_fact_for_slot` applies when it builds
+            # the set -- checked here as a contract on whatever a caller
+            # supplies directly, without re-deriving which set should have won.
+            sources = [
+                support_source(fact, fact_id) for fact_id, fact in in_slot
+            ]
+            if len(set(sources)) != len(sources):
+                reasons.append(f"slot_supports_share_source:{slot_id}")
         if binding.missing_slots or binding.ambiguous_slots or binding.invalid_reasons:
             reasons.append("bound_has_error_fields")
     elif binding.status == BindingStatus.MISSING:

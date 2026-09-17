@@ -66,7 +66,10 @@ def test_a_label_alias_is_not_counted_as_a_mismatch(benchmark: dict[str, Any]) -
     that is supposed to track runtime defects.
     """
 
-    assert benchmark["summary"]["semantic_mismatch"] == 2
+    # H2A-2C-2: was 2.  `cross_source` and `multi_evidence` matched their
+    # unchanged sealed labels once a slot could keep both of its independent
+    # supports, so the registry is empty and this counter is 0.
+    assert benchmark["summary"]["semantic_mismatch"] == 0
     assert benchmark["summary"]["label_alias"] == 3
     assert benchmark["summary"]["semantic_mismatch"] + benchmark[
         "summary"
@@ -78,7 +81,9 @@ def test_the_recorded_mismatches_are_still_the_recorded_ones(
 ) -> None:
     """Pin what the runtime does, so a change in either direction is visible."""
 
-    assert benchmark["summary"]["task_success"] == 17
+    # H2A-2C-2: was 17.  The two cases above now meet their labels, and no
+    # other case moved.
+    assert benchmark["summary"]["task_success"] == 19
     # The H2A-1E conflict gate took this from 3 to 0.  It is the headline of
     # that change and the one number that must not creep back up.
     assert benchmark["summary"]["false_release"] == 0
@@ -127,7 +132,11 @@ def test_the_two_kinds_of_mismatch_are_not_conflated(benchmark: dict[str, Any]) 
 
     assert set(LABEL_ALIASES) & set(SEMANTIC_MISMATCHES) == set()
     assert len(LABEL_ALIASES) == 3
-    assert len(SEMANTIC_MISMATCHES) == 2
+    # H2A-2C-2: was 2.  The registry is now empty -- both entries described the
+    # same one-fact-per-slot limit, and the binding contract no longer has it.
+    # The assertion is kept rather than deleted because it is what makes a
+    # *new* entry impossible to add without this test noticing.
+    assert len(SEMANTIC_MISMATCHES) == 0
 
 
 def test_token_counts_are_never_faked(benchmark: dict[str, Any]) -> None:

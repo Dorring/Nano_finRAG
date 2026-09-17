@@ -393,22 +393,18 @@ LABEL_ALIASES: dict[str, str] = {
     ),
 }
 
-#: The only cases whose semantics differ from the label.  Both are the same
-#: limit -- see the note below -- and both belong to H2A-2, not here.
-SEMANTIC_MISMATCHES: dict[str, str] = {
-    "cross_source": (
-        "binds one fact per slot, so the label's two corroborating evidence ids "
-        "cannot both be bound and the MULTI route is never selected. The "
-        "binding validator already names this shape: "
-        "bound_fact_cardinality_mismatch"
-    ),
-    "multi_evidence": (
-        "same one-fact-per-slot limit. This fixture also gave the two "
-        "candidates different values, which the conflict gate correctly "
-        "refuses -- the label wants two pieces of supporting evidence for one "
-        "claim, which the current binding contract has no way to express"
-    ),
-}
+#: Cases whose semantics differ from the label.  Empty, and that is the phase's
+#: headline: it held `cross_source` and `multi_evidence`, both the same limit --
+#: "one usable fact per slot" -- and H2A-2C-2 changed the binding contract so
+#: that a slot keeps every independent support of its canonical value.  Both
+#: cases now match their unchanged sealed labels, so the entries are gone.
+#:
+#: Removing them is not editing the oracle.  The labels were never touched, the
+#: corrected fixtures were not touched, and the registry is a *run-derived
+#: baseline snapshot*: when a defect is fixed, the record of it shrinks.  An
+#: entry left here would be a stale claim that the runtime still fails a case it
+#: now passes.
+SEMANTIC_MISMATCHES: dict[str, str] = {}
 
 #: Recorded follow-up, deliberately not acted on in H2A-1: ``strict majority
 #: wins`` in ``_consensus_fact_for_slot`` is an evidence *aggregation policy*,
