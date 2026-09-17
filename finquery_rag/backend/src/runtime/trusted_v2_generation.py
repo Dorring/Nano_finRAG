@@ -19,6 +19,13 @@ selection is now the adapter's one implementation rather than a second copy of
 it.  And disclosure no longer happens here at all: there is no ``project`` call
 on this path, so this module cannot disagree with the Disclosure Authority about
 what a model may see.
+
+H2A-3C moved the model boundary behind a ``ModelBindingV1``.  This module no
+longer knows how the pack becomes text or how the model is reached: it compiles,
+hands the pack to a ``ModelInvocationRuntimeV1``, and reads a ``ModelResponseV1``
+back.  A financial model or a DeepSeek endpoint is a different binding, not a
+change to this file -- which is what the phase means by the Harness core not
+moving.
 """
 
 from __future__ import annotations
@@ -36,6 +43,13 @@ from rag_v2.context import (
     SpecialistContextPolicyV1,
     admitted_specialist_evidence,
     specialist_context_request,
+)
+from rag_v2.invocation import (
+    CallableContextRendererV1,
+    LegacyPromptProviderAdapterV1,
+    ModelBindingV1,
+    ModelInvocationRuntimeV1,
+    ModelProviderV1,
 )
 from src.generation.generator_routing_policy import (
     GeneratorRouteDecision,
@@ -104,10 +118,10 @@ def _stable_unique(values: Iterable[Any]) -> tuple[str, ...]:
     return tuple(result)
 
 
-def _bound_items(state: AdaptiveRAGStateV1) -> list[dict[str, Any]]:
+def _routing_evidence_items(state: AdaptiveRAGStateV1) -> list[dict[str, Any]]:
     """The admitted evidence, in state order -- the B3 adapter's own selection.
 
-    H2A-3B3.  This used to be a second implementation of ``_bound_items``'s
+    H2A-3B3.  This used to be a second implementation of ``_routing_evidence_items``'s
     logic living beside the compiler's copy in ``rag_v2.context.specialist``.
     One of the two had to go, and it was this one: the compiler's is the copy
     the production context path uses, so keeping a second here would have meant
@@ -193,36 +207,50 @@ class DeterministicFactRenderer:
         return answer
 
 
-class LocalSpecialistGenerationAdapter:
-    """Adapt the existing LocalSpecialistGenerator contract.
-
-    The backend is injected so CPU-safe tests can use a deterministic provider;
-    a production/canonical smoke may inject LocalSpecialistGenerator itself.
-
-    H2A-3B3 narrowed this from ``(question, evidence_items,
-    calculation_result)`` to a single rendered prompt.  That is the migration's
-    point rather than a tidy-up: the evidence a specialist sees is now produced
-    in exactly one place -- the compiler, through the pack-based renderer -- and
-    a backend that could still be handed loose evidence dicts would be a second
-    route to the model that bypasses Disclosure Authority.  After this change
-    the model boundary is a string, so there is nothing else to leak through.
-    """
-
-    def __init__(self, backend: Any) -> None:
-        if not callable(getattr(backend, "generate", None)):
-            raise TypeError("specialist backend must expose generate")
-        self.backend = backend
-        self.calls = 0
-
-    def generate(self, prompt: str) -> Mapping[str, Any] | str:
-        self.calls += 1
-        return self.backend.generate(prompt)
-
-
 class TrustedV2GenerationCapability:
     """Reuse routing policy and call one candidate generator target."""
 
     candidate_mode = True
+
+    @staticmethod
+    def _binding_for(backend: Any) -> ModelBindingV1:
+        """Bind a model backend to the specialist renderer.
+
+        H2A-3C.  ``specialist=`` accepts either a provider or a legacy
+        ``generate(prompt)`` backend, and the difference is one ``isinstance``
+        with a large consequence: an object that already implements
+        ``ModelProviderV1`` is used as the provider it says it is, and anything
+        else is adapted.  A future financial or DeepSeek binding therefore
+        arrives through the same parameter as the local specialist, which is
+        what "the Harness core does not move" has to mean in practice.
+
+        ``provider_id`` prefers what the backend declares about itself and falls
+        back to its type name.  It is a *label* -- it names a boundary in a trace
+        -- so a fallback here invents nothing about the world, unlike the
+        fabricated financial defaults this project has already removed once.
+
+        ``exact_token_counter`` is ``None``, and that is the whole of B3's token
+        story: its tokenizer is the checkpoint's, so no bound is configured and
+        none is approximated.  A provider that can count its own tokens supplies
+        one here and the rule from H2A-3B1 starts applying to it.
+        """
+
+        provider = (
+            backend
+            if isinstance(backend, ModelProviderV1)
+            else LegacyPromptProviderAdapterV1(backend)
+        )
+        declared = getattr(backend, "provider_id", None)
+        provider_id = (
+            declared
+            if isinstance(declared, str) and declared.strip()
+            else type(backend).__name__
+        )
+        return ModelBindingV1(
+            provider=provider,
+            renderer=CallableContextRendererV1(render_specialist_prompt),
+            provider_id=provider_id,
+        )
 
     def __init__(
         self,
@@ -234,17 +262,29 @@ class TrustedV2GenerationCapability:
         self.routing_policy = routing_policy or GeneratorRoutingPolicy()
         self.renderer = renderer or DeterministicFactRenderer()
         self.specialist = specialist
+        # The model boundary, built once.  ``None`` when no backend was
+        # configured, which is the state every deterministic route runs in.
+        self.binding = (
+            None if specialist is None else self._binding_for(specialist)
+        )
+        self.invocation = (
+            None if self.binding is None else ModelInvocationRuntimeV1(self.binding)
+        )
         # One compiler for the capability's lifetime, so "exactly one compile per
         # specialist invocation" is a property of the call path rather than of
-        # how often someone happened to construct one.  It carries no token
-        # bound: B3's tokenizer is the checkpoint's, and H2A-3B1's rule is that a
-        # bound is either measured exactly or not configured.
-        self.context_compiler = ContextCompilerV1(SpecialistContextPolicyV1())
+        # how often someone happened to construct one.  The binding supplies the
+        # exact counter when it has one; B3 configures no token bound, so nothing
+        # is enforced and the counter is None.
+        self.context_compiler = ContextCompilerV1(
+            SpecialistContextPolicyV1(),
+            token_counter=(
+                None if self.binding is None else self.binding.exact_token_counter
+            ),
+        )
         self.route_calls = 0
         self.renderer_calls = 0
         self.specialist_calls = 0
         self.context_compile_count = 0
-        self.context_render_count = 0
         self.last_decision: GeneratorRouteDecision | None = None
         self.last_result: CandidateExecutionResult | None = None
         #: The governed context compiled for the last specialist invocation, or
@@ -329,28 +369,30 @@ class TrustedV2GenerationCapability:
         """Compile, render, and call the model -- once each.
 
         H2A-3B3.  This used to assemble the specialist's context by hand:
-        ``_bound_items`` selected, ``project`` disclosed, ``project_calculation``
-        disclosed the calculation, and the three pieces went to a backend that
-        rendered them.  Every one of those steps now belongs to the Context
-        Runtime, and this method is the wiring that proves it takes over:
+        ``_routing_evidence_items`` selected, ``project`` disclosed,
+        ``project_calculation`` disclosed the calculation, and the three pieces
+        went to a backend that rendered them.  Every one of those steps now
+        belongs to the Context Runtime, and this method is the wiring that proves
+        it takes over:
 
             authoritative state -> adapter -> ContextRequestV1
               -> ContextCompilerV1 -> AgentContextPackV1
-              -> pack-based renderer -> the model boundary
+              -> invocation runtime -> ModelRequestV1 -> provider
 
         The order is the point, and so is the absence of a bypass.  After the
         compile there is no ``project`` call here, no reading of
         ``state.evidence_packets``, and no calculation payload assembled beside
         the pack -- a second projection at this layer would be a second
-        disclosure policy, which is the asymmetry H2A-1 existed to remove.  What
-        crosses into the model is a string, so there is nothing else it *could*
-        carry.
+        disclosure policy, which is the asymmetry H2A-1 existed to remove.
+
+        H2A-3C moved the last two steps behind a binding.  What is left here is
+        the compile and the hand-off: this method no longer knows how the text is
+        rendered or how the model is reached, which is what lets a financial
+        model or a DeepSeek endpoint arrive as a new ``ModelBindingV1`` rather
+        than as a change to this file.
         """
-        if self.specialist is None:
+        if self.specialist is None or self.invocation is None:
             raise CandidateGenerationCapabilityError("financial_specialist_not_configured")
-        method = getattr(self.specialist, "generate", None)
-        if not callable(method):
-            raise CandidateGenerationCapabilityError("financial_specialist_not_callable")
 
         # 1. The adapter reads the runtime's authoritative state.
         request = specialist_context_request(state)
@@ -359,11 +401,6 @@ class TrustedV2GenerationCapability:
         pack = self.context_compiler.compile(request)
         self.context_compile_count += 1
         self.last_context_pack = pack
-        # 3. The renderer turns the pack into the model's text.  It is handed the
-        #    pack and nothing else, so it cannot reach around the compiler for a
-        #    field the pack does not carry.
-        prompt = render_specialist_prompt(pack)
-        self.context_render_count += 1
 
         # ``last_disclosed_fields`` records which fields crossed, by name only
         # and never by value, so a disclosure question can be answered from the
@@ -381,16 +418,16 @@ class TrustedV2GenerationCapability:
             + [f"calculation.{field}" for field in sorted(pack.calculation or {})]
         )
         self.specialist_calls += 1
-        raw = method(prompt)
+
+        # 3. The invocation runtime renders the pack once and calls the provider
+        #    once.  Everything between the pack and the model is now one
+        #    component's job, which is what makes "exactly one of each" a
+        #    property of a call rather than a claim about a module.
+        response = self.invocation.invoke(pack)
+
+        answer = response.text
+        raw_citations = response.citations
         metadata: dict[str, Any] = {}
-        if isinstance(raw, Mapping):
-            answer = raw.get("answer_text") or raw.get("answer") or raw.get("raw_output")
-            raw_citations = raw.get("citation_ids", ())
-            if isinstance(raw.get("metadata"), Mapping):
-                metadata.update(dict(raw["metadata"]))
-        else:
-            answer = raw
-            raw_citations = ()
         if not isinstance(answer, str) or not answer.strip():
             raise CandidateGenerationCapabilityError("financial_specialist_empty_candidate")
         raw_citations = raw_citations if isinstance(raw_citations, (list, tuple, set)) else ()
@@ -413,7 +450,7 @@ class TrustedV2GenerationCapability:
         # Cleared per invocation: a deterministic route compiles nothing, and a
         # stale pack left over from a previous call would read as this one's.
         self.last_context_pack = None
-        items = _bound_items(state)
+        items = _routing_evidence_items(state)
         if not items:
             raise CandidateGenerationCapabilityError("generation_requires_bound_evidence")
         calculation = self._calculation_object(state)
@@ -493,8 +530,18 @@ class TrustedV2GenerationCapability:
             # topology the current B3 prompt does not carry.  Nothing here can
             # grow into a copy of the pack -- a trace is a record of decisions,
             # not a second context store.
+            #
+            # H2A-3C classifies all of it as an **observability projection**: no
+            # runtime decision reads any of these, and the render count now
+            # comes from the invocation runtime that performs the render rather
+            # than from a counter kept here that could drift from it.
             "context_compile_count": self.context_compile_count,
-            "context_render_count": self.context_render_count,
+            "context_render_count": (
+                0 if self.invocation is None else self.invocation.render_count
+            ),
+            "context_provider_count": (
+                0 if self.invocation is None else self.invocation.provider_count
+            ),
             "context_evidence_selected": (
                 None if pack is None else pack.budget.evidence_selected
             ),
@@ -516,6 +563,5 @@ __all__ = [
     "CandidateExecutionResult",
     "CandidateGenerationCapabilityError",
     "DeterministicFactRenderer",
-    "LocalSpecialistGenerationAdapter",
     "TrustedV2GenerationCapability",
 ]

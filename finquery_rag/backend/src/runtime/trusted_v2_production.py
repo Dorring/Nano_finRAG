@@ -47,7 +47,6 @@ from .trusted_v2_capabilities import TrustedV2CapabilityPorts
 from .trusted_v2_factory import build_trusted_v2_runtime
 from .trusted_v2_generation import (
     DeterministicFactRenderer,
-    LocalSpecialistGenerationAdapter,
     TrustedV2GenerationCapability,
 )
 from .trusted_v2_r4 import CandidateDirectR4Policy, R4RetrievalCapability
@@ -725,7 +724,7 @@ def _build_binder(environ: Mapping[str, str]) -> SemanticBinderService:
     return SemanticBinderService(provider)
 
 
-def _build_specialist(environ: Mapping[str, str]) -> LocalSpecialistGenerationAdapter:
+def _build_specialist(environ: Mapping[str, str]) -> Any:
     checkpoint = _path_env(
         environ,
         "TRUSTED_V2_SPECIALIST_CHECKPOINT",
@@ -759,7 +758,7 @@ def _build_specialist(environ: Mapping[str, str]) -> LocalSpecialistGenerationAd
         raise TrustedV2ProductionConfigurationError(
             "could not load the configured V2 Financial Specialist checkpoint"
         ) from exc
-    return LocalSpecialistGenerationAdapter(specialist)
+    return specialist
 
 
 def _build_budget(environ: Mapping[str, str]) -> AdaptiveRAGBudgetV1:
@@ -801,7 +800,14 @@ class TrustedV2RuntimeResources:
     fact_store: StructuredFactStore
     supervisor: SupervisorService
     binder: SemanticBinderService
-    specialist: LocalSpecialistGenerationAdapter
+    #: The specialist backend.  H2A-3C: this is a legacy ``generate(prompt)``
+    #: backend rather than a provider, and the generation capability adapts it
+    #: through ``LegacyPromptProviderAdapterV1`` when it builds its binding.
+    #: Typed ``Any`` because the concrete class lives behind a lazy torch
+    #: import, which is the same reason it always was -- what the Harness
+    #: requires of it is now written down in ``ModelProviderV1`` instead of
+    #: being implied by a wrapper class.
+    specialist: Any
     budget: AdaptiveRAGBudgetV1
     config_fingerprint: str
     index_manifest: Mapping[str, Any]

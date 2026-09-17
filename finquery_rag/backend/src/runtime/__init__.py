@@ -71,7 +71,6 @@ from .trusted_v2_generation import (
     CandidateExecutionResult,
     CandidateGenerationCapabilityError,
     DeterministicFactRenderer,
-    LocalSpecialistGenerationAdapter,
     TrustedV2GenerationCapability,
 )
 from .trusted_v2_r4 import (
@@ -149,7 +148,6 @@ __all__ = [
     "CandidateExecutionResult",
     "CandidateGenerationCapabilityError",
     "DeterministicFactRenderer",
-    "LocalSpecialistGenerationAdapter",
     "TrustedV2GenerationCapability",
     "CandidateRepairCapability",
     "CandidateRepairError",

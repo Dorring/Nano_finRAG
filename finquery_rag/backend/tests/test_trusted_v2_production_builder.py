@@ -26,7 +26,6 @@ from src.runtime import (
     validate_trusted_v2_production_configuration,
 )
 from src.runtime.harness_runtime_mode import AgentRuntimeModeError
-from src.runtime.trusted_v2_generation import LocalSpecialistGenerationAdapter
 
 
 def _fact(candidate_key: str = "candidate:1") -> dict[str, Any]:
@@ -384,7 +383,7 @@ def test_builder_constructs_request_scoped_v2_graph_with_injected_resources(
         fact_store=fact_store,
         supervisor=SupervisorService(provider),
         binder=SemanticBinderService(_BinderProvider()),
-        specialist=LocalSpecialistGenerationAdapter(_SpecialistBackend()),
+        specialist=_SpecialistBackend(),
         budget=AdaptiveRAGBudgetV1(),
         config_fingerprint="test-fingerprint",
         index_manifest={"row_count": 1},
@@ -465,7 +464,7 @@ def test_an_unrecognised_runtime_mode_reports_the_bad_setting(
         fact_store=StructuredFactStore(facts_path),
         supervisor=SupervisorService(DeterministicFallbackProvider({})),
         binder=SemanticBinderService(_BinderProvider()),
-        specialist=LocalSpecialistGenerationAdapter(_SpecialistBackend()),
+        specialist=_SpecialistBackend(),
         budget=AdaptiveRAGBudgetV1(),
         config_fingerprint="test-fingerprint",
         index_manifest={"row_count": 1},

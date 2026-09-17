@@ -1,4 +1,4 @@
-"""B3's role policy, and the shadow path that compiles a pack from a RunState.
+"""B3's role policy, and the adapter that compiles a pack from a RunState.
 
 Two things live here, and the split between them is the design:
 
@@ -17,17 +17,18 @@ it is not a role's judgment about evidence.  ``rag_v2`` could not compute it in
 any case: the canonicalisation lives in ``src/runtime`` and ``src/generation``,
 and the dependency runs the other way.
 
-The adapter is a faithful re-implementation of
-``trusted_v2_generation._bound_items``, deliberately: H2A-3B1 proves the
-framework without moving the production path, so the production path keeps its
-own code and this one runs beside it.  That duplication is temporary and is
-exactly what H2A-3B3's migration exists to resolve -- but it is duplication of
-*selection*, not of admission.  Which evidence is trusted stays with the Binder;
-this only decides which admitted items a model is shown.
+``admitted_specialist_evidence`` is **the one implementation of that selection.**
+H2A-3B1 wrote it beside the production path's own copy so the framework could be
+proven without moving anything; H2A-3B3 moved the boundary and made the
+production copy delegate here instead.  What is left on that side is a routing
+helper -- ``trusted_v2_generation._routing_evidence_items`` -- because the
+routing policy has to decide whether a generator is needed at all, before any
+context exists, and it reads fields the SPECIALIST profile does not admit.  So
+the direction of the dependency is now the reverse of what it was in 3B1: this
+module owns the rule, and the router borrows it.
 
-Nothing in ``src/`` imports this module.  That is not an accident of wiring, it
-is H2A-3B1's central constraint: during 3B1 the compiled pack must never reach a
-model call, and that remains true until 3B3 moves the boundary deliberately.
+Selection is not admission, in either direction.  Which evidence is trusted
+stays with the Binder; this only decides which admitted items a model is shown.
 """
 
 from __future__ import annotations

@@ -260,18 +260,18 @@ def test_no_legacy_context_construction_remains_on_the_production_path() -> None
     A migration that left the legacy ``select -> project -> assemble`` sequence
     in place beside the compiler would have two live context paths, and the
     differential would be proving something about whichever one happened to run.
-    ``_bound_items`` survives, because the routing policy still needs admitted
+    ``_routing_evidence_items`` survives, because the routing policy still needs admitted
     items with their authoritative fields, but it no longer selects -- it
     delegates to the adapter's one implementation.
     """
 
-    from src.runtime.trusted_v2_generation import _bound_items
+    from src.runtime.trusted_v2_generation import _routing_evidence_items
 
     import inspect
 
-    source = inspect.getsource(_bound_items)
+    source = inspect.getsource(_routing_evidence_items)
     assert "admitted_specialist_evidence" in source, (
-        "_bound_items must delegate to the adapter's selection rather than "
+        "_routing_evidence_items must delegate to the adapter's selection rather than "
         "reimplementing it"
     )
     assert "for raw in" not in source, "a second selection loop is back"

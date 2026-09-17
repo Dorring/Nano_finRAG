@@ -253,6 +253,14 @@ run the engine, decode. No rendering.
 
 ## 11 · Remaining Harness debt before H2A-3C
 
+> **Addressed by H2A-3C.** Item 1 is settled: a `ModelBindingV1` binds a
+> provider *and* its renderer, so a provider now has exactly the seam this
+> section said it lacked, and the capability no longer chooses between them.
+> Item 4 is done (`_routing_evidence_items`). Item 2's policy is frozen as
+> semantic reference metadata, opt-in for a future renderer, though no renderer
+> exercises the opt-in yet. Items 3, 5 and 6 carry forward. See
+> `nf-v3-h2a-3c-model-invocation.md` §14.
+
 1. **B5/B6/V1 have no role.** `ContextRoleV1` still has one member. Each gets
    its own policy, profile and renderer when its requirements are known.
 2. **`canonical_slot` disclosure is decided but not yet reviewed.** It travels in

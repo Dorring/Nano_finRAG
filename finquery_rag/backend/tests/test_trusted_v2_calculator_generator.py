@@ -11,7 +11,6 @@ from rag_v2.supervisor import DeterministicFallbackProvider, SupervisorService
 from src.domain.calculation import CalculationStatus
 from src.runtime import (
     DeterministicCalculationCapability,
-    LocalSpecialistGenerationAdapter,
     TrustedV2CapabilityPorts,
     TrustedV2GenerationCapability,
     V2ExecutionStatus,
@@ -178,9 +177,7 @@ def test_zero_denominator_is_fail_closed_without_specialist_fallback() -> None:
     )
     calculation = DeterministicCalculationCapability()
     generation = TrustedV2GenerationCapability(
-        specialist=LocalSpecialistGenerationAdapter(
-            _FakeSpecialist("should-not-be-called")
-        )
+        specialist=_FakeSpecialist("should-not-be-called")
     )
     outcome = asyncio.run(
         _coordinator(
@@ -232,7 +229,7 @@ def test_qualitative_route_calls_specialist_with_bound_evidence_only() -> None:
     )
     specialist = _FakeSpecialist("Margin declined because of costs.", ["unknown-X"])
     generation = TrustedV2GenerationCapability(
-        specialist=LocalSpecialistGenerationAdapter(specialist)
+        specialist=specialist
     )
     plan = _plan(
         _slot("cause_a", metric="Operating Margin", period="FY2024", role="operand"),
