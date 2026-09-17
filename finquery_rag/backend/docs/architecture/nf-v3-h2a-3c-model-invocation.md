@@ -299,6 +299,13 @@ and the Harness/provider boundary can now be tested on any checkout.
 6. **F6 remains the one real Harness trust debt.** Model-produced artifacts have
    no admission contract: a model's cleaned table can become trusted-looking
    context without a deterministic verifier in between. That is H2A-3D.
+
+   > **Closed by H2A-3D.** `rag_v2/derived/` adds `ModelDerivedArtifactV1`,
+   > `ArtifactAdmissionResultV1` and an `AdmittedDerivedArtifactV1` that cannot be
+   > built without a successful admission, plus a deterministic numeric-fidelity
+   > verifier whose oracle is the authoritative pre-model table. The ingestion
+   > path no longer writes raw model output anywhere. See
+   > `nf-v3-h2a-3d-model-derived-admission.md`. Items 1–5 and 7 carry forward.
 7. **B5/B6/V1 still have no role.** `ContextRoleV1` keeps one member until a
    boundary is actually migrated, and the framework has to support that
    expansion without `AgentContextPackV1` becoming a universal RunState.

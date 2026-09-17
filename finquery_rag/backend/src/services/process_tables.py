@@ -1,10 +1,15 @@
-import camelot
 import os
 import re
 from typing import Any
 
 import requests
 
+from rag_v2.derived import (
+    AdmittedDerivedArtifactV1,
+    ModelDerivedArtifactV1,
+    TransformationKindV1,
+    verify_table_fidelity,
+)
 from rag_v2.evidence.disclosure import EvidenceDisclosureProfile, project
 
 
@@ -70,6 +75,17 @@ def is_usable_table_markdown(markdown: str) -> bool:
 
 def _read_tables(pdf_path: str, pages: str) -> list[Any]:
     """Best-effort Camelot extraction. Failures must not block PDF ingest."""
+
+    # Imported here rather than at module scope.  Camelot is a heavy PDF library
+    # that only the extraction functions need, and importing it at module scope
+    # meant this module -- and ``ingest.py``, which imports it -- could not be
+    # imported at all on a checkout without it.  The consequence was concrete:
+    # ``enhance_table_with_context`` needs no PDF stack, and no test could
+    # exercise it.  H2A-3B0 moved the specialist renderer out of the
+    # torch-importing module for the same reason; a test that cannot run is not
+    # a test, and the one place this module needed camelot is here.
+    import camelot
+
     try:
         tables = camelot.read_pdf(pdf_path, pages=pages, flavor="stream", edge_tol=50, row_tol=10)
         if len(tables) > 0:
@@ -129,17 +145,85 @@ def extract_tables_with_camelot(pdf_path: str, pages: str = "1-end") -> dict[int
     return tables_by_page
 
 
-def enhance_table_with_context(table_md: dict, page_text: str, page_num: int) -> dict:
+def _admission_record(
+    candidate: ModelDerivedArtifactV1,
+    admission: Any,
+) -> dict[str, Any]:
+    """The bounded record a chunk carries about how its content was admitted.
+
+    H2A-3D.  Names, a reason and lineage; never content.  A reader of a chunk
+    can now tell extracted source text from a verified representation of it,
+    which is precisely the distinction the pipeline could not make before --
+    model-written text and parser-produced text arrived under the same key with
+    the same shape.
+
+    ``location`` names the structured position a refusal turned on, and it is
+    source-derived: a row label and a column header from the authoritative
+    table, not the model's text.  An admission record should be able to say
+    *where* without quoting what it refused.
     """
-    Use the optional NVIDIA API to clean and summarize an extracted table.
-    Falls back to the original Markdown when the API is not configured or fails.
+
+    return {
+        "transformation": candidate.transformation.value,
+        "admitted": bool(admission.admitted),
+        "reason": admission.reason.value,
+        "location": admission.location,
+        "source_reference": candidate.source_reference,
+        "artifact_id": candidate.artifact_id,
+        "model_id": candidate.model_id,
+    }
+
+
+def enhance_table_with_context(
+    table_md: dict,
+    page_text: str,
+    page_num: int,
+    *,
+    source_reference: str,
+) -> dict:
+    """Clean an extracted table with a model, and admit the result before using it.
+
+    H2A-3D, closing F6.  What this used to do was take the ``CLEANED TABLE:``
+    section of the model's answer and return it as ``content`` -- the same key,
+    with the same shape, that the fallback returns.  From that point on nothing
+    in the pipeline could tell model-produced text from parser-produced text, and
+    the model's answer became embedded, BM25-indexed, expanded into
+    ``parent_excerpt`` and read as evidence by every downstream consumer.
+
+    Generation succeeding was being treated as admission succeeding.  The
+    prompt's "Do NOT change numeric values" is a request, and a request is not a
+    check; the ``cleaned_table = table_md["md"]`` default above it was a
+    fallback for *failure*, never for *wrongness*.
+
+    So the answer is now a **candidate** first.  It becomes a
+    ``ModelDerivedArtifactV1``, a deterministic verifier compares its numeric
+    content against the authoritative pre-model table, and only an admitted
+    artifact's content leaves this function.  Everything else -- no key, a
+    failed call, no ``CLEANED TABLE:`` section, or a failed verification --
+    returns the authoritative table unchanged.
+
+    ``content`` is therefore always safe to write into a chunk, and
+    ``admission_record`` is the bounded record of which of the two it is.
+    ``None`` there means no model produced content here at all, so what came
+    back is source-original.
+
+    What is deliberately *not* returned any more is the model's prose summary.
+    It is unverifiable -- nothing in the source says what a description of the
+    table ought to say -- and it used to be folded into both ``content`` and
+    ``parent_excerpt``, which is the same defect one step removed: model text
+    occupying a trusted field.  The prompt still asks for it; the answer is
+    simply not used.
+
+    ``source_reference`` names the authoritative artifact this table came from,
+    so the admitted content keeps its lineage instead of arriving as a piece of
+    text with no origin.
     """
     nvidia_api_key = os.getenv("NVIDIA_API_KEY")
     nvidia_model = os.getenv("NVIDIA_MODEL_NAME", "meta/llama-3.1-8b-instruct")
 
     if not nvidia_api_key:
         print("NVIDIA_API_KEY not set, skipping table enhancement")
-        return {"summary": "", "content": table_md["md"]}
+        return {"content": table_md["md"], "admission_record": None}
 
     url = "https://integrate.api.nvidia.com/v1/chat/completions"
 
@@ -206,20 +290,43 @@ CLEANED TABLE:
 
         enhanced = response_json["choices"][0]["message"]["content"].strip()
 
-        summary = ""
-        cleaned_table = table_md["md"]
-        summary_match = re.search(r"TABLE SUMMARY:\s*(.*?)(?=\nCLEANED TABLE:)", enhanced, re.DOTALL)
         table_match = re.search(r"CLEANED TABLE:\s*(.*)", enhanced, re.DOTALL)
+        parsed_table = table_match.group(1).strip() if table_match else ""
 
-        if summary_match:
-            summary = summary_match.group(1).strip()
-        if table_match:
-            parsed_table = table_match.group(1).strip()
-            if parsed_table:
-                cleaned_table = parsed_table
+        if not parsed_table:
+            # A model that answered without a table produced nothing to admit.
+            # This is the same "no candidate" case as a missing key, not a
+            # rejection -- there is nothing to reject.
+            return {"content": table_md["md"], "admission_record": None}
 
-        return {"summary": summary, "content": cleaned_table}
+        candidate = ModelDerivedArtifactV1(
+            artifact_id=f"{source_reference}::table-cleaning",
+            content=parsed_table,
+            transformation=TransformationKindV1.TABLE_CLEANING,
+            source_reference=source_reference,
+            provider_id="nvidia",
+            model_id=nvidia_model,
+        )
+        admission = verify_table_fidelity(candidate, table_md["md"])
 
     except Exception as exc:
         print(f"NVIDIA API table enhancement failed: {exc}")
-        return {"summary": "", "content": table_md["md"]}
+        return {"content": table_md["md"], "admission_record": None}
+
+    if admission.admitted:
+        # The only way this constructor succeeds, and therefore the only way
+        # model content leaves this function.
+        admitted = AdmittedDerivedArtifactV1(candidate, admission)
+        return {
+            "content": admitted.content,
+            "admission_record": _admission_record(candidate, admission),
+        }
+
+    print(
+        f"Rejected a model-cleaned table on page {page_num}: "
+        f"{admission.reason.value} at {admission.location or 'the table structure'}"
+    )
+    return {
+        "content": table_md["md"],
+        "admission_record": _admission_record(candidate, admission),
+    }
