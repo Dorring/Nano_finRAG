@@ -13,6 +13,29 @@ from enum import Enum
 from typing import Any, Mapping
 
 
+#: What the evidence says.  Deliberately not the instance id, the citation,
+#: the document, the page, the source or the metadata bag -- see
+#: ``EvidencePacketV1.content_fingerprint``.
+CONTENT_IDENTITY_FIELDS: tuple[str, ...] = (
+    "metric",
+    "period",
+    "entity",
+    "scope",
+    "value",
+    "unit",
+    "currency",
+    "scale",
+)
+
+
+def _identity_text(value: Any) -> str:
+    """Fold presentation differences that do not change what is claimed."""
+
+    if value is None:
+        return ""
+    return " ".join(str(value).replace(",", "").casefold().split())
+
+
 def _canon(value: Any) -> str:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), default=str)
 
@@ -241,8 +264,34 @@ class EvidencePacketV1:
         }
 
     @property
-    def content_hash(self) -> str:
-        return stable_hash(self.to_dict())
+    def content_fingerprint(self) -> str:
+        """Identity of what this evidence *says*, not of which object it is.
+
+        Excludes ``evidence_id``, ``citation_id``, ``document_id``, ``source``,
+        ``page`` and ``metadata``.  Those are instance identity and provenance:
+        two documents reporting the same figure are the same content and
+        different provenance, and a fingerprint that merged them would make
+        corroborating sources look like one source.
+
+        The previous version hashed ``to_dict()``, which includes the evidence
+        id, so it was a *serialized-record* hash: identical content under a new
+        id hashed differently, and the progress detector read that as new
+        information.
+        """
+
+        payload = {
+            field: _identity_text(self._canonical(field))
+            for field in CONTENT_IDENTITY_FIELDS
+        }
+        return stable_hash(payload)
+
+    def _canonical(self, field: str) -> Any:
+        """Prefer a normalised form when the packet carries one."""
+
+        normalized = self.metadata.get(f"normalized_{field}")
+        if normalized is not None and str(normalized).strip():
+            return normalized
+        return getattr(self, field, None)
 
 
 @dataclass(frozen=True)
@@ -407,7 +456,13 @@ class AdaptiveRAGStateV1:
         for packet in packets:
             by_id[packet.evidence_id] = packet.to_dict()
         self.evidence_packets = [by_id[key] for key in sorted(by_id)]
-        self.evidence_hashes = [EvidencePacketV1.from_mapping(item).content_hash for item in self.evidence_packets]
+        # Semantic identity, not instance identity: this field has no reader today,
+        # and if one appears it should see the same evidence the progress detector
+        # does rather than one entry per retrieved row.
+        self.evidence_hashes = [
+            EvidencePacketV1.from_mapping(item).content_fingerprint
+            for item in self.evidence_packets
+        ]
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
