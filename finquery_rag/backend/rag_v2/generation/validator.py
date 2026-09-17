@@ -54,65 +54,32 @@ def _iter_evidence(packet: Mapping[str, Any]) -> Iterable[Mapping[str, Any]]:
             yield item
 
 
-def _provenance_citations(packet: Mapping[str, Any]) -> list[str]:
-    r"""The exact source-locator strings this answer can carry.
+def _claim_numbers(answer_text: str, packet: Mapping[str, Any]) -> list[Decimal]:
+    """The numbers an answer *claims*, as opposed to the locators it carries.
 
-    Reconstructed from the same structured operand fields the calculation
-    renderer reads, rather than matched against a pattern.  That distinction is
-    the point: a growing list of textual exceptions ("ignore ``p.\d+``,
-    ignore ``section \d+``, ignore ``[2]``") would have to be extended every
-    time the renderer learned a new locator, and each entry would be a place a
-    real claim number could hide.  Here the set is derived from authoritative
-    provenance, so it names exactly what the renderer wrote and nothing else.
+    When the packet has a calculation, the answer is the deterministic
+    rendering -- the routing policy forces a ``CALCULATION`` plan onto the
+    deterministic calculator, so no model writes around it -- and the claim
+    surface is exactly the structured values: the result and its operands.
+    Reading them directly means no locator string is reconstructed and nothing
+    is removed from the text.
+
+    Otherwise the answer is prose and the whole of it is claim-bearing, which is
+    why that branch is unchanged.
     """
 
-    citations: list[str] = []
     calculation = packet.get("calculation_result")
     if not isinstance(calculation, Mapping):
-        return citations
+        return _numbers(answer_text)
+
+    values = list(_numbers(calculation.get("value")))
+    # Ratios are commonly verbalised as percentages, so the rendered percentage
+    # is a claim of the same quantity.
+    values += [item * Decimal("100") for item in list(values)]
     for operand in calculation.get("operands", ()):
-        if not isinstance(operand, Mapping):
-            continue
-        parts: list[str] = []
-        document = operand.get("document_name")
-        if document:
-            parts.append(str(document))
-        page = operand.get("page")
-        if page is not None:
-            parts.append(f"p.{page}")
-        if not parts:
-            chunk_id = operand.get("evidence_chunk_id")
-            if chunk_id:
-                parts.append(f"chunk {chunk_id}")
-        if parts:
-            citations.append(", ".join(parts))
-    return citations
-
-
-def _without_provenance_citations(
-    text: str, packet: Mapping[str, Any]
-) -> str:
-    r"""Remove rendered source locators so only claim-bearing numbers remain.
-
-    Only an exact locator string is removed, so a page number is dropped exactly
-    where it is provenance.  A genuine financial claim of the same value
-    elsewhere in the answer is untouched -- the check must not become "ignore
-    this number".
-
-    Longest first, because these are plain substrings and one locator can be a
-    prefix of another: ``report.pdf, p.1`` is a prefix of ``report.pdf, p.12``,
-    so removing the shorter one first leaves ``... 2`` -- a bare number token
-    manufactured by the removal itself, which is worse than the false positive
-    this function exists to prevent.
-
-    Replacement is a single space rather than the empty string, so removing a
-    locator cannot splice its neighbours together into a number that neither
-    side contained.
-    """
-
-    for citation in sorted(_provenance_citations(packet), key=len, reverse=True):
-        text = text.replace(citation, " ")
-    return text
+        if isinstance(operand, Mapping):
+            values.extend(_numbers(operand.get("value")))
+    return values
 
 
 def _supported_numbers(packet: Mapping[str, Any]) -> list[Decimal]:
@@ -199,15 +166,25 @@ class RuntimeGenerationValidatorV1:
 
         # Do not count years in an explicit period as numeric claims.
         answer_without_periods = _CITATION_RE.sub(" ", _PERIOD_RE.sub(" ", envelope.answer_text))
-        # Nor count source locators as numeric claims.  A rendered operand reads
-        # "current = 391,000,000.00 -- report.pdf, p.12": the 391,000,000.00 is a
-        # claim, the 12 is where it came from.  Both are digits in one string,
-        # and treating the second as a claim made every answer that cites a page
-        # fail fidelity.
-        answer_claims_only = _without_provenance_citations(
-            answer_without_periods, packet
-        )
-        answer_nums = _numbers(answer_claims_only)
+        # Nor count a source locator as a claim.  A rendered operand reads
+        # "current = 391,000,000.00 -- report.pdf, p.12": the value is a claim,
+        # the 12 is where it came from.
+        #
+        # Until H2A-1C.1 this subtracted the locator from the text, by
+        # reconstructing the renderer's string and `str.replace`-ing it out.  That
+        # made the validator a consumer of the renderer's *format*: the two
+        # duplicated the same three branches and could drift, one locator could
+        # be a prefix of another, and -- because `document_name` is data -- a
+        # name shaped like claim text could remove a claim rather than a locator.
+        # None of those is reachable today, but the mechanism is fragile in ways
+        # that are invisible in the string it operates on.
+        #
+        # So the check reads structure instead.  For a calculation answer that is
+        # provably complete: the routing policy forces a CALCULATION plan onto
+        # the deterministic calculator, so the answer *is* the rendering and its
+        # claim surface is exactly these values -- nothing is removed from a
+        # string, and no locator string is reconstructed.
+        answer_nums = _claim_numbers(answer_without_periods, packet)
         supported = _supported_numbers(packet)
         calculation = packet.get("calculation_result")
         if calculation and isinstance(calculation, Mapping):

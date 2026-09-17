@@ -20,10 +20,7 @@ from decimal import Decimal
 from typing import Any
 
 from rag_v2.adaptive.adaptive_contracts import AdaptiveRAGStateV1, EvidencePacketV1
-from rag_v2.generation.validator import (
-    _provenance_citations,
-    _without_provenance_citations,
-)
+from rag_v2.generation.validator import _claim_numbers
 from src.runtime import trusted_v2_coordinator as coord
 from tests.test_trusted_v2_r4_binder import _fact
 
@@ -114,10 +111,19 @@ def test_a_table_derived_fact_keeps_its_page() -> None:
 
 
 # --- defect 2: provenance numbers are not claims -----------------------------
+#
+# The invariant: changing a document name or a page locator must not change
+# which financial claim numbers are validated.
+#
+# The first fix for this subtracted the renderer's locator string from the
+# answer -- which made the validator a consumer of the renderer's *format*, gave
+# it a duplicate of the formatter's logic, and let a data-controlled document
+# name delete claim text.  The check now reads the calculation's structured
+# values instead, so there is no string to reconstruct and nothing to remove.
 
 
-def test_the_renderer_emits_page_provenance() -> None:
-    """The suffix the promotion re-enabled, pinned at its source."""
+def test_the_renderer_still_emits_page_provenance() -> None:
+    """The suffix C re-enabled.  Unchanged by C.1: this is about the validator."""
 
     from src.finance.calculation_renderer import render_calculation_result
     from src.domain.calculation import (
@@ -137,79 +143,67 @@ def test_the_renderer_emits_page_provenance() -> None:
     assert "p.12" in render_calculation_result(result)
 
 
-def test_provenance_locators_are_reconstructed_from_structure() -> None:
-    """Not from a pattern: from the same operand fields the renderer read."""
+def test_a_page_number_never_enters_the_claim_set() -> None:
+    """The page is provenance; it is not read at all now, rather than removed."""
 
     packet = _calculation_packet(12)
 
-    assert _provenance_citations(packet) == ["report.pdf, p.12"]
+    claims = {str(item) for item in _claim_numbers("", packet)}
+
+    assert "12" not in claims
+    assert "0.0209" in claims
 
 
-def test_a_page_number_is_not_treated_as_a_claim() -> None:
-    """The failure this defect produced: 1 appears only as provenance."""
+def test_changing_a_document_name_cannot_change_the_validated_claims() -> None:
+    """The invariant, stated directly.
 
-    packet = _calculation_packet(1)
-    answer = "Growth Rate: 2.09%\nInputs:\n  - current = 391 … report.pdf, p.1"
-
-    stripped = _without_provenance_citations(answer, packet)
-
-    assert "p.1" not in stripped
-    # The claim value is untouched.
-    assert "391" in stripped
-
-
-def test_a_genuine_claim_of_the_same_value_is_still_checked() -> None:
-    """The over-suppression risk.  Do not ignore the number 1.
-
-    A page locator and a claimed value can be the same digits; only the locator
-    is provenance, and only its exact rendered string is removed.
+    The old implementation reconstructed a locator from ``document_name`` and
+    deleted that exact string from the answer, so a name shaped like claim text
+    could remove a claim.  Nothing about the name is read now.
     """
 
-    packet = _calculation_packet(1)
-    answer = "Revenue grew by 1 … report.pdf, p.1"
+    answers = [
+        _calculation_packet(7),
+        {**_calculation_packet(7),
+         "calculation_result": {**_calculation_packet(7)["calculation_result"],
+                                "operands": [{"name": "op0", "value": "391", "page": 7,
+                                              "document_name": "revenue 999"}]}},
+    ]
 
-    stripped = _without_provenance_citations(answer, packet)
+    first = [str(item) for item in _claim_numbers("", answers[0])]
+    second = [str(item) for item in _claim_numbers("", answers[1])]
 
-    assert "p.1" not in stripped
-    assert "grew by 1" in stripped
-
-
-def test_page_zero_does_not_look_like_a_claim() -> None:
-    packet = _calculation_packet(0)
-
-    assert _provenance_citations(packet) == ["report.pdf, p.0"]
-    assert "p.0" not in _without_provenance_citations(
-        "current = 391 … report.pdf, p.0", packet
-    )
+    assert first == second
 
 
-def test_the_same_value_in_two_roles_is_distinguished_by_role() -> None:
-    """A claimed 391 and a page 391 must not be confused.
+def test_changing_a_page_cannot_change_the_validated_claims() -> None:
+    low = [str(item) for item in _claim_numbers("", _calculation_packet(1))]
+    high = [str(item) for item in _claim_numbers("", _calculation_packet(99999))]
 
-    The exclusion is positional and derived from the operand's page field, so it
-    removes the locator and leaves the claim -- whatever the numbers are.
+    assert low == high
+
+
+def test_page_zero_is_not_a_claim() -> None:
+    assert "0" not in {str(item) for item in _claim_numbers("", _calculation_packet(0))}
+
+
+def test_a_prose_answer_is_still_fully_claim_bearing() -> None:
+    """No calculation means no provenance, so the text is unchanged.
+
+    C.1 must not create a blind spot: outside a calculation route every number
+    the answer states is still checked.
     """
 
-    packet = _calculation_packet(391)
-    answer = "current = 391 … report.pdf, p.391"
-
-    stripped = _without_provenance_citations(answer, packet)
-
-    assert "p.391" not in stripped
-    assert "current = 391" in stripped
+    assert _claim_numbers("Revenue was 999", {}) == [Decimal("999")]
 
 
-def test_no_page_means_no_provenance_string_to_remove() -> None:
-    """Missing provenance must not invent a locator."""
+def test_the_old_string_removal_helpers_are_gone() -> None:
+    """They carried the renderer's format into the validator.  No consumer remains."""
 
-    packet = _calculation_packet(None)
+    import rag_v2.generation.validator as validator
 
-    # The document is still cited -- only the page is absent, and absent must
-    # not become a locator.  No "p." fragment is invented for the renderer to
-    # have written, so there is nothing of that kind to remove.
-    assert _provenance_citations(packet) == ["report.pdf"]
-    assert not any("p." in locator for locator in _provenance_citations(packet))
-    assert _without_provenance_citations("current = 391", packet) == "current = 391"
+    assert not hasattr(validator, "_provenance_citations")
+    assert not hasattr(validator, "_without_provenance_citations")
 
 
 # --- the real production path ------------------------------------------------
@@ -242,24 +236,3 @@ def test_the_real_citation_carries_the_trusted_evidence_page() -> None:
     assert all(citation.get("page") is not None for citation in outcome.citations)
 
 
-def test_a_locator_that_prefixes_another_does_not_leave_a_stray_number() -> None:
-    """``report.pdf, p.1`` is a prefix of ``report.pdf, p.12``.
-
-    Removing the shorter locator first turns the longer one into ``... 2`` -- a
-    bare number token manufactured by the removal itself, which the numeric
-    check would then read as an unsupported claim.  The removal has to run
-    longest-first.
-
-    Found by asking whether the removal was span-based or a plain substring
-    replace.  It is a substring replace, and this is what that costs.
-    """
-
-    packet = _calculation_packet(1, 12)
-    answer = "a = 391 … report.pdf, p.1\nb = 383 … report.pdf, p.12"
-
-    stripped = _without_provenance_citations(answer, packet)
-
-    assert "p.1 " not in stripped and "p.12" not in stripped
-    # No digit survives as a leftover of a partially removed locator.
-    assert " 2" not in stripped
-    assert stripped.count("391") == 1 and stripped.count("383") == 1
