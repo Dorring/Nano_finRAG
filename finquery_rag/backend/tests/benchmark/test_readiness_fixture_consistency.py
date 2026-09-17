@@ -27,9 +27,8 @@ file exists to remove.
 
 from __future__ import annotations
 
+import json
 from typing import Any
-
-import pytest
 
 from rag_v2.contracts.financial_semantics import quantity_identity
 from tests.benchmark.tv2_readiness_cases import cases
@@ -51,32 +50,51 @@ def _case_by_id(case_id: str) -> Any:
 # --- the general invariant ---------------------------------------------------
 
 
+def _evidence_key(spec: Any) -> str:
+    """What the runtime is given, ignoring the question text."""
+
+    return json.dumps(
+        {"slots": spec.slots, "facts": spec.facts, "routes": spec.routes},
+        sort_keys=True,
+        default=str,
+    )
+
+
+def _metric_vocabulary() -> set[str]:
+    """Every metric name any fixture declares, lower-cased.
+
+    Used to tell an answer term that *names a metric* from one that is a value
+    or a word the deterministic renderer contributes on its own.  `Revenue` is
+    a metric name; `100` and `Growth Rate` are not.
+    """
+
+    names: set[str] = set()
+    for case in cases():
+        for slot in case.fixture.slots:
+            metric = slot.get("metric")
+            if metric:
+                names.add(str(metric).casefold())
+    return names
+
+
 def test_cases_presenting_identical_evidence_agree_on_whether_it_answers() -> None:
     """A tripwire, not a theorem: identical evidence, opposite labels.
 
-    `multi_evidence` and `qualitative` are *separate* fixture objects -- not one
-    shared one -- but they carry identical slots, identical facts and identical
-    retrieval routes, and their labels ask for opposite outcomes (release versus
-    abstain).  Only the query text differs.
+    `multi_evidence` and `qualitative` carried identical slots, identical facts
+    and identical retrieval routes under opposite labels -- abstain versus
+    release -- with only the query text differing.  This runtime's release
+    decision is driven by whether the required slot is supported by admissible
+    evidence, so identical evidence cannot produce opposite outcomes: at most
+    one of the two labels is reachable, and the mismatch count was guaranteed
+    non-zero before any runtime behaviour was considered.
 
-    This runtime's release decision is driven by whether the required slot is
-    supported by admissible evidence, so identical evidence cannot produce
-    opposite outcomes: at most one of the two labels is reachable, and the
-    mismatch count was guaranteed to be non-zero before any runtime behaviour
-    was considered.  If this fires, a human has to say which label the evidence
-    is meant to demonstrate -- it is not something a runtime can be asked to
-    reconcile.
+    If this fires, a human has to say which label the evidence is meant to
+    demonstrate.  It is not something a runtime can be asked to reconcile.
     """
 
-    by_evidence: dict[tuple, list[Any]] = {}
+    by_evidence: dict[str, list[Any]] = {}
     for case in cases():
-        spec = case.fixture
-        key = (
-            tuple(tuple(sorted(dict(slot).items())) for slot in spec.slots),
-            tuple(sorted((name, tuple(sorted(dict(fact).items()))) for name, fact in spec.facts.items())),
-            tuple(tuple(route) for route in spec.routes),
-        )
-        by_evidence.setdefault(key, []).append(case)
+        by_evidence.setdefault(_evidence_key(case.fixture), []).append(case)
 
     for shared in by_evidence.values():
         if len(shared) < 2:
@@ -89,31 +107,38 @@ def test_cases_presenting_identical_evidence_agree_on_whether_it_answers() -> No
         )
 
 
-def test_a_released_case_can_produce_its_required_answer_terms() -> None:
-    """A required term the fixture cannot express makes the case unpassable.
+def test_a_released_case_declares_every_metric_its_answer_terms_name() -> None:
+    """A required term naming a metric needs a fact carrying that metric.
 
-    Only cases expected to release are checked: the harness rates answer terms
-    on release (`tv2_readiness_scoring.py:104`), and an abstaining case is not
-    asked to produce an answer at all.
+    `multi-evidence-001` required the answer to contain "Revenue" while its
+    fixture declared one `operating_margin` slot and no Revenue fact: the term
+    was unreachable by construction and no binding change could produce it.
+
+    Scoped to terms that name a metric, because a required term may instead be a
+    value the fixture carries or a word the deterministic renderer emits on its
+    own (`calculation-growth-001` requires "Growth", which the calculation
+    renderer writes as "Growth Rate:").  Only the metric case is a statement
+    about the fixture's ability to express its label.
     """
 
+    vocabulary = _metric_vocabulary()
     unproducible: list[str] = []
     for case in cases():
         if not case.expected_release or not case.required_answer_terms:
             continue
-        spec = case.fixture
-        # Everything the case can put into an answer: the metric names it
-        # declares, the values the facts carry, and the query itself.
-        available = " ".join(
-            [str(slot.get("metric") or "") for slot in spec.slots]
-            + [str(fact.get("value") or "") for fact in spec.facts.values()]
-            + [str(spec.query)]
-        ).casefold()
+        declared = {
+            str(slot.get("metric") or "").casefold() for slot in case.fixture.slots
+        } | {
+            str(fact.get("metric") or "").casefold()
+            for fact in case.fixture.facts.values()
+        }
         for term in case.required_answer_terms:
-            if str(term).casefold() not in available:
+            name = str(term).casefold()
+            if name in vocabulary and name not in declared:
                 unproducible.append(f"{case.case_id}: {term!r}")
     assert unproducible == [], (
-        "required answer term(s) no fixture field can produce: " + "; ".join(unproducible)
+        "required answer term(s) name a metric this fixture does not declare: "
+        + "; ".join(unproducible)
     )
 
 
