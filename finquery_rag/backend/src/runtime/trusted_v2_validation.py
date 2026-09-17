@@ -314,13 +314,39 @@ class TrustedReleaseValidationCapability:
         if isinstance(value, CandidateExecutionResult):
             return value
         if isinstance(value, str) and value.strip():
+            # A bare string candidate has no way to declare citation or
+            # calculation references, and this branch used to *invent* them:
+            #
+            #     citation_ids=tuple(getattr(state, "_candidate_citation_ids", ()))
+            #     calculation_ids=tuple(getattr(state, "_candidate_calculation_ids", ()))
+            #
+            # Neither attribute is written anywhere in the repository -- no
+            # assignment, no `setattr`, no field on `AdaptiveRAGStateV1`, no
+            # deserialization path, no fixture. Because the state has an ordinary
+            # ``__dict__``, `getattr` returned the default, so the candidate was
+            # handed an empty set it had never declared, and the guard that
+            # consumes it -- "candidate citation metadata is not Binder-admitted"
+            # -- was trivially satisfied for every input. A trust invariant that
+            # has never once been evaluated is not a strict guard; it is an
+            # absent one wearing a guard's name.
+            #
+            # H2A-2D-3A: the fabrication is removed rather than repaired.
+            # Candidate-reference authorization is **not applicable** on this
+            # path, and "not declared" is deliberately not expressed as "declared
+            # empty" -- the first says the question cannot be asked here, the
+            # second would say it was asked and answered. What actually protects
+            # this path is the downstream envelope contract: `_coerce_envelope`
+            # requires structured citation ids, which is the failure a bare
+            # string generator actually produces.
+            #
+            # The path that *can* declare references is the structured one, and
+            # its contract is live and separate: `_validation_packet` rejects a
+            # candidate whose declared citations are not Binder-admitted.
             return CandidateExecutionResult(
                 candidate_answer=value.strip(),
                 route=str(getattr(state, "generation_route", "") or "STRUCTURED_SINGLE"),
                 route_reason=str(getattr(state, "route_reason", "") or "candidate"),
                 bound_evidence_ids=tuple(getattr(state, "bound_evidence_ids", ())),
-                citation_ids=tuple(str(item) for item in getattr(state, "_candidate_citation_ids", ())),
-                calculation_ids=tuple(str(item) for item in getattr(state, "_candidate_calculation_ids", ())),
             )
         raise TypeError("candidate must be CandidateExecutionResult or non-empty string")
 
