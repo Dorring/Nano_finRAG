@@ -155,6 +155,21 @@ class TemporalEvidenceV1:
         return payload
 
 
+def _coerce_page(value: Any) -> Any:
+    """Preserve a page value verbatim, without inventing one.
+
+    Integers stay integers, including ``0`` -- truthiness would silently drop a
+    legitimate first page.  An absent page stays absent: provenance that is
+    missing must read as missing, not as page 0 or 1.
+    """
+
+    if value is None or isinstance(value, bool):
+        return None
+    if isinstance(value, float) and value.is_integer():
+        return int(value)
+    return value
+
+
 @dataclass(frozen=True)
 class EvidencePacketV1:
     evidence_id: str
@@ -169,6 +184,15 @@ class EvidencePacketV1:
     citation_id: str | None = None
     source: str | None = None
     document_id: str | None = None
+    #: Source location as the extractor recorded it.  A first-class field rather
+    #: than a key inside ``metadata``: it used to be demoted there, and the
+    #: citation projection reads the top level, so every public citation lost
+    #: its page.  Promoting it also re-enables the calculation renderer's
+    #: long-standing ``doc-X, p.N`` suffix, which had never once rendered.
+    #:
+    #: Semantics are the extractor's, unchanged and unrenumbered: a physical
+    #: page value, typed, with ``0`` valid and absence preserved as absence.
+    page: int | None = None
     slots: tuple[str, ...] = ()
     operands: tuple[str, ...] = ()
     calculation_result: str | None = None
@@ -193,7 +217,11 @@ class EvidencePacketV1:
             period=raw.get("period"), entity=raw.get("entity"), scope=raw.get("scope"),
             unit=raw.get("unit"), currency=raw.get("currency"), scale=raw.get("scale"),
             citation_id=raw.get("citation_id"), source=raw.get("source"),
-            document_id=raw.get("document_id"), slots=tuple(str(x) for x in slots),
+            document_id=raw.get("document_id"),
+            # ``pdf_page`` is the extractor's name and ``page`` the fact store's
+            # canonical alias; accept either and keep the value's type.
+            page=_coerce_page(raw.get("page", raw.get("pdf_page"))),
+            slots=tuple(str(x) for x in slots),
             operands=tuple(str(x) for x in operands),
             calculation_result=None if raw.get("calculation_result") is None else str(raw.get("calculation_result")),
             temporal=TemporalEvidenceV1.from_mapping(temporal_raw),
@@ -206,7 +234,8 @@ class EvidencePacketV1:
             "period": self.period, "entity": self.entity, "scope": self.scope,
             "unit": self.unit, "currency": self.currency, "scale": self.scale,
             "citation_id": self.citation_id, "source": self.source,
-            "document_id": self.document_id, "slots": list(self.slots),
+            "document_id": self.document_id, "page": self.page,
+            "slots": list(self.slots),
             "operands": list(self.operands), "calculation_result": self.calculation_result,
             "temporal": self.temporal.to_dict(), "metadata": dict(self.metadata),
         }

@@ -54,6 +54,57 @@ def _iter_evidence(packet: Mapping[str, Any]) -> Iterable[Mapping[str, Any]]:
             yield item
 
 
+def _provenance_citations(packet: Mapping[str, Any]) -> list[str]:
+    """The exact source-locator strings this answer can carry.
+
+    Reconstructed from the same structured operand fields the calculation
+    renderer reads, rather than matched against a pattern.  That distinction is
+    the point: a growing list of textual exceptions ("ignore ``p.\d+``,
+    ignore ``section \d+``, ignore ``[2]``") would have to be extended every
+    time the renderer learned a new locator, and each entry would be a place a
+    real claim number could hide.  Here the set is derived from authoritative
+    provenance, so it names exactly what the renderer wrote and nothing else.
+    """
+
+    citations: list[str] = []
+    calculation = packet.get("calculation_result")
+    if not isinstance(calculation, Mapping):
+        return citations
+    for operand in calculation.get("operands", ()):
+        if not isinstance(operand, Mapping):
+            continue
+        parts: list[str] = []
+        document = operand.get("document_name")
+        if document:
+            parts.append(str(document))
+        page = operand.get("page")
+        if page is not None:
+            parts.append(f"p.{page}")
+        if not parts:
+            chunk_id = operand.get("evidence_chunk_id")
+            if chunk_id:
+                parts.append(f"chunk {chunk_id}")
+        if parts:
+            citations.append(", ".join(parts))
+    return citations
+
+
+def _without_provenance_citations(
+    text: str, packet: Mapping[str, Any]
+) -> str:
+    """Remove rendered source locators so only claim-bearing numbers remain.
+
+    Only an exact locator string is removed, so a page number is dropped exactly
+    where it is provenance.  A genuine financial claim of the same value
+    elsewhere in the answer is untouched -- the check must not become "ignore
+    this number".
+    """
+
+    for citation in _provenance_citations(packet):
+        text = text.replace(citation, " ")
+    return text
+
+
 def _supported_numbers(packet: Mapping[str, Any]) -> list[Decimal]:
     values: list[Decimal] = []
     for item in _iter_evidence(packet):
@@ -138,7 +189,15 @@ class RuntimeGenerationValidatorV1:
 
         # Do not count years in an explicit period as numeric claims.
         answer_without_periods = _CITATION_RE.sub(" ", _PERIOD_RE.sub(" ", envelope.answer_text))
-        answer_nums = _numbers(answer_without_periods)
+        # Nor count source locators as numeric claims.  A rendered operand reads
+        # "current = 391,000,000.00 -- report.pdf, p.12": the 391,000,000.00 is a
+        # claim, the 12 is where it came from.  Both are digits in one string,
+        # and treating the second as a claim made every answer that cites a page
+        # fail fidelity.
+        answer_claims_only = _without_provenance_citations(
+            answer_without_periods, packet
+        )
+        answer_nums = _numbers(answer_claims_only)
         supported = _supported_numbers(packet)
         calculation = packet.get("calculation_result")
         if calculation and isinstance(calculation, Mapping):
