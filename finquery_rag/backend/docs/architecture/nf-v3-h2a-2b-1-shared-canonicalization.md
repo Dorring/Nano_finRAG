@@ -72,7 +72,8 @@ footnote markers. The grammar was not broadened past those.
 **Rejected — not canonicalizable:**
 
 ```
-1,5    1,50    1,5000    12,34,567    1,,500    1,500,    ,1500    1500.    1.5.3
+1,5    1,50    12,00    123,45    1,5000    12,34,567
+1,,500    1,500,    ,1500    1500.    1.5.3
 ```
 
 The rule behind the list: an unrecognised representation is never *guessed*
@@ -80,6 +81,11 @@ into a number. `1,5` is 1.5 in one locale and 15 by comma-deletion, and neither
 is recoverable from the text, so the text keeps a literal identity. The previous
 implementation answered 15 — a number ten times larger, arrived at by deleting a
 character the author wrote deliberately.
+
+`12,00` is listed as its own case because it was challenged during review and
+the answer should be a test rather than a reading of the report: a separator
+must be followed by exactly three digits, so two digits are no more a group than
+one. The accepted example immediately above is `12,345,678`.
 
 **Unknown vocabulary.** `magnitude_of` returns `None`, never `BASE`.
 `adjusted-billion` keeps its literal identity instead of silently becoming a

@@ -54,6 +54,8 @@ def test_accepted_numeric_forms(text: str, expected: Decimal) -> None:
     [
         "1,5",  # a comma followed by one digit is not a group separator
         "1,50",
+        "12,00",  # two digits is no more a group than one
+        "123,45",
         "1,5000",
         "12,34,567",
         "1,,500",
@@ -70,7 +72,7 @@ def test_rejected_numeric_forms_are_not_canonicalizable(text: str) -> None:
     assert fs.canonical_decimal(text) is None
 
 
-@pytest.mark.parametrize("text", ["1,5", "1,50", "1,5000", "12,34,567"])
+@pytest.mark.parametrize("text", ["1,5", "1,50", "12,00", "123,45", "1,5000", "12,34,567"])
 def test_a_rejected_form_does_not_keep_the_digits(text: str) -> None:
     """The defect this contract exists for, stated as its own assertion.
 
