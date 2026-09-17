@@ -19,7 +19,8 @@ from typing import Any
 
 from src.runtime.harness_runtime_mode import AgentRuntimeMode
 from tests.benchmark.tv2_readiness_cases import (
-    KNOWN_MISMATCHES,
+    LABEL_ALIASES,
+    SEMANTIC_MISMATCHES,
     ReadinessCase,
     cases,
 )
@@ -40,7 +41,8 @@ class CaseResult:
     expected_route: str | None
     reason_codes: tuple[str, ...]
     failures: tuple[str, ...]
-    known_mismatch: str | None
+    label_alias: str | None
+    semantic_mismatch: str | None
     evidence_tokens: int | None
     answer_tokens: int | None
     #: Length of the reference payload the outcome carries, not of the raw
@@ -130,7 +132,8 @@ def score_case(case: ReadinessCase, outcome: Any, tokenizer: Any | None) -> Case
         expected_route=case.expected_route,
         reason_codes=tuple(outcome.reason_codes),
         failures=tuple(failures),
-        known_mismatch=KNOWN_MISMATCHES.get(case.fixture_key),
+        label_alias=LABEL_ALIASES.get(case.fixture_key),
+        semantic_mismatch=SEMANTIC_MISMATCHES.get(case.fixture_key),
         evidence_tokens=_count(tokenizer, json.dumps(reference, ensure_ascii=False)),
         answer_tokens=_count(tokenizer, answer),
         evidence_reference_chars=reference_chars,
@@ -157,11 +160,21 @@ def run_benchmark(
         "results": [r.to_dict() for r in results],
         "summary": {
             "task_success": sum(1 for r in results if r.matches_label),
-            "known_mismatch": sum(
-                1 for r in results if not r.matches_label and r.known_mismatch
+            # Only these two are mismatches.  A label alias is a scenario
+            # name, not a runtime failure, and folding the two together would
+            # make the registry stop meaning what it says.
+            "semantic_mismatch": sum(
+                1 for r in results if not r.matches_label and r.semantic_mismatch
+            ),
+            "label_alias": sum(
+                1
+                for r in results
+                if not r.matches_label and not r.semantic_mismatch and r.label_alias
             ),
             "unexplained_mismatch": sum(
-                1 for r in results if not r.matches_label and not r.known_mismatch
+                1
+                for r in results
+                if not r.matches_label and not r.semantic_mismatch and not r.label_alias
             ),
             # Trust metrics, counted the way the label defines them.
             "false_release": sum(

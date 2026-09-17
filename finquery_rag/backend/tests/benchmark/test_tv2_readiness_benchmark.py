@@ -17,7 +17,12 @@ from typing import Any
 
 import pytest
 
-from tests.benchmark.tv2_readiness_cases import FIXTURE_SPECS, KNOWN_MISMATCHES, cases
+from tests.benchmark.tv2_readiness_cases import (
+    FIXTURE_SPECS,
+    LABEL_ALIASES,
+    SEMANTIC_MISMATCHES,
+    cases,
+)
 from tests.benchmark.tv2_readiness_scoring import run_benchmark
 
 
@@ -41,7 +46,7 @@ def test_no_case_fails_for_a_reason_nobody_has_looked_at(benchmark: dict[str, An
     """A mismatch must be a recorded finding, not a surprise.
 
     The first version of this registry was written by inspecting the labels and
-    five of its entries were wrong.  It is now derived from the run, and this
+    five of six entries were wrong.  It is now derived from the run, and this
     assertion is what keeps it that way.
     """
 
@@ -49,7 +54,23 @@ def test_no_case_fails_for_a_reason_nobody_has_looked_at(benchmark: dict[str, An
     mismatched = {
         case["fixture_key"] for case in benchmark["results"] if not case["matches_label"]
     }
-    assert mismatched == set(KNOWN_MISMATCHES)
+    assert mismatched == set(SEMANTIC_MISMATCHES) | set(LABEL_ALIASES)
+
+
+def test_a_label_alias_is_not_counted_as_a_mismatch(benchmark: dict[str, Any]) -> None:
+    """The registry means what it says.
+
+    Three cases the runtime gets right are listed as label aliases: the runtime
+    abstains where the label says abstain, and the two vocabularies name the
+    outcome differently. Counting them as mismatches would inflate the number
+    that is supposed to track runtime defects.
+    """
+
+    assert benchmark["summary"]["semantic_mismatch"] == 2
+    assert benchmark["summary"]["label_alias"] == 3
+    assert benchmark["summary"]["semantic_mismatch"] + benchmark[
+        "summary"
+    ]["label_alias"] == len(SEMANTIC_MISMATCHES) + len(LABEL_ALIASES)
 
 
 def test_the_recorded_mismatches_are_still_the_recorded_ones(
@@ -89,21 +110,16 @@ def test_no_case_releases_where_the_readiness_contract_says_abstain(
 
 
 def test_the_two_kinds_of_mismatch_are_not_conflated(benchmark: dict[str, Any]) -> None:
-    """A vocabulary difference is not a runtime failure.
-
-    Three of the remaining mismatches are cases where the runtime now behaves
-    correctly and the label says it in different words. Counting them against
-    the runtime would hide the two that are real capability gaps.
-    """
+    """A vocabulary difference is not a runtime failure."""
 
     from tests.benchmark.tv2_readiness_cases import (
-        BEHAVIOUR_MATCHES_LABEL,
-        CAPABILITY_GAPS,
+        LABEL_ALIASES,
+        SEMANTIC_MISMATCHES,
     )
 
-    assert set(BEHAVIOUR_MATCHES_LABEL) & set(CAPABILITY_GAPS) == set()
-    assert len(BEHAVIOUR_MATCHES_LABEL) == 3
-    assert len(CAPABILITY_GAPS) == 2
+    assert set(LABEL_ALIASES) & set(SEMANTIC_MISMATCHES) == set()
+    assert len(LABEL_ALIASES) == 3
+    assert len(SEMANTIC_MISMATCHES) == 2
 
 
 def test_token_counts_are_never_faked(benchmark: dict[str, Any]) -> None:

@@ -354,18 +354,20 @@ def cases() -> tuple[ReadinessCase, ...]:
     return tuple(sorted(out, key=lambda case: case.case_id))
 
 
-#: Cases whose label the runtime does not currently meet, split by what the
-#: difference actually is.  Derived from a run, never from reading the labels:
-#: an earlier registry written by inspection had five of six entries wrong.
+#: Scenarios where the runtime behaves correctly and the label names the outcome
+#: differently.  These are NOT mismatches and are deliberately not counted as
+#: such: the runtime abstains where the label says abstain, and calling that a
+#: failure would hide the two that are real.
 #:
-#: BEHAVIOUR_MATCHES -- the runtime now does the right thing and the label says
-#: it in different words.  These are not defects; they are the two vocabularies
-#: not having been reconciled, and they are listed separately so they are not
-#: counted as runtime failures.
-BEHAVIOUR_MATCHES_LABEL: dict[str, str] = {
+#: The two vocabularies answer different questions.  The label names a *scenario*
+#: ("CONFLICT"); the runtime emits a machine *reason code*
+#: ("EVIDENCE_CONFLICT").  A third name, QUERY_EVIDENCE_SEMANTIC_MISMATCH, is the
+#: fallback category and is no longer used for a conflict the runtime has
+#: positively identified.
+LABEL_ALIASES: dict[str, str] = {
     "conflict": (
         "abstains, as the label requires; the runtime reports EVIDENCE_CONFLICT "
-        "where the label names the code CONFLICT"
+        "where the label names the scenario CONFLICT"
     ),
     "no_answer": (
         "abstains, as the label requires; an invented metric is rejected by the "
@@ -378,8 +380,9 @@ BEHAVIOUR_MATCHES_LABEL: dict[str, str] = {
     ),
 }
 
-#: CAPABILITY_GAP -- the label asks for something the runtime cannot express.
-CAPABILITY_GAPS: dict[str, str] = {
+#: The only cases whose semantics differ from the label.  Both are the same
+#: limit -- see the note below -- and both belong to H2A-2, not here.
+SEMANTIC_MISMATCHES: dict[str, str] = {
     "cross_source": (
         "binds one fact per slot, so the label's two corroborating evidence ids "
         "cannot both be bound and the MULTI route is never selected. The "
@@ -394,7 +397,12 @@ CAPABILITY_GAPS: dict[str, str] = {
     ),
 }
 
-KNOWN_MISMATCHES: dict[str, str] = {
-    **BEHAVIOUR_MATCHES_LABEL,
-    **CAPABILITY_GAPS,
-}
+#: Recorded follow-up, deliberately not acted on in H2A-1: ``strict majority
+#: wins`` in ``_consensus_fact_for_slot`` is an evidence *aggregation policy*,
+#: not just dedup.  Two duplicated or syndicated sources currently outvote one
+#: authoritative filing.  Changing that would turn a correctness fix into a
+#: redesign of evidence arbitration, and is a separate decision.
+AGGREGATION_POLICY_NOTE = (
+    "source-count consensus is the current policy; source-authority weighting "
+    "is an open dimension, not part of this phase"
+)

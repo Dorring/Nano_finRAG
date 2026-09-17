@@ -168,3 +168,79 @@ def test_a_different_period_candidate_is_not_a_same_slot_conflict() -> None:
     )
 
     assert ReasonCode.EVIDENCE_CONFLICT not in evaluation.reason_codes
+
+
+# --- the value identity the gate compares ------------------------------------
+#
+# The gate is only as good as its notion of "these two facts agree".  A key that
+# is too loose merges different quantities; one that is too tight manufactures a
+# conflict from consistent evidence, and a fail-closed system then refuses to
+# answer a question it could answer.  Both directions are pinned here.
+
+
+def _key(value: str, *, unit: str = "USD", currency: str = "USD", scale: Any = "million") -> str:
+    from src.runtime.trusted_v2_binder import SemanticEvidenceEvaluationCapability
+
+    fact = {
+        **_fact("K", slots=("revenue",), value=value),
+        "unit": unit,
+        "currency": currency,
+        "scale": scale,
+    }
+    key = SemanticEvidenceEvaluationCapability._fact_value_key(fact)
+    assert key is not None
+    return key
+
+
+def test_a_known_scale_is_folded_into_the_quantity() -> None:
+    assert _key("1000", scale="million") == _key("1", scale="billion")
+
+
+def test_a_different_currency_is_a_different_quantity() -> None:
+    """Equal numbers are not equal amounts.
+
+    1e9 USD and 1e9 EUR normalise to the same numeric value; treating them as
+    agreement would let one currency's figure be bound for the other's slot.
+    """
+
+    assert _key("1000", scale="million", currency="USD") != _key(
+        "1", scale="billion", currency="EUR"
+    )
+
+
+def test_a_different_unit_is_a_different_quantity() -> None:
+    """A share count is not a currency amount."""
+
+    assert _key("1", scale="billion", unit="shares") != _key("1", scale="billion", unit="USD")
+
+
+def test_the_same_quantity_at_different_precision_is_the_same_quantity() -> None:
+    """1.000 billion and 1000.0 million are one number written two ways.
+
+    Decimal multiplication preserves significant digits, so a naive string
+    comparison of the product sees "1000000000.000" and "1000000000.00" as
+    different.
+    """
+
+    assert _key("1.000", scale="billion") == _key("1000.0", scale="million")
+
+
+def test_an_unrecognised_scale_stays_a_difference() -> None:
+    """'adjusted billion' is not a magnitude, it is a qualifier.
+
+    Treating an unknown scale keyword as a multiplier would be a silent
+    semantic conversion -- the thing scale normalisation must not become.
+    """
+
+    assert _key("1", scale="adjusted-billion") != _key("1", scale="billion")
+
+
+def test_a_percentage_is_not_silently_equated_with_its_decimal_form() -> None:
+    """0.12 and 12% may or may not be the same field.
+
+    Normalising scale must not quietly become unit normalisation: equating these
+    on numeric coincidence would merge a ratio with a percentage point.  If the
+    financial contract ever declares them canonical, this changes deliberately.
+    """
+
+    assert _key("0.12", unit="ratio", scale=None) != _key("12", unit="%", scale=None)

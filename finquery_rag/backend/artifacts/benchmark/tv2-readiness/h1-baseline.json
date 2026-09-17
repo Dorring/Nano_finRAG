@@ -13,13 +13,14 @@
       "expected_route": "STRUCTURED_SINGLE",
       "failures": [],
       "fixture_key": "assistant_history",
-      "known_mismatch": null,
+      "label_alias": null,
       "matches_label": true,
       "reason_codes": [
         "VALIDATED_RELEASE"
       ],
       "released": true,
       "route": "STRUCTURED_SINGLE",
+      "semantic_mismatch": null,
       "status": "READY_FOR_RELEASE"
     },
     {
@@ -32,13 +33,14 @@
       "expected_route": "CALCULATION_SIMPLE",
       "failures": [],
       "fixture_key": "calc_difference",
-      "known_mismatch": null,
+      "label_alias": null,
       "matches_label": true,
       "reason_codes": [
         "VALIDATED_RELEASE"
       ],
       "released": true,
       "route": "CALCULATION_SIMPLE",
+      "semantic_mismatch": null,
       "status": "READY_FOR_RELEASE"
     },
     {
@@ -51,13 +53,14 @@
       "expected_route": "CALCULATION_SIMPLE",
       "failures": [],
       "fixture_key": "calc_growth",
-      "known_mismatch": null,
+      "label_alias": null,
       "matches_label": true,
       "reason_codes": [
         "VALIDATED_RELEASE"
       ],
       "released": true,
       "route": "CALCULATION_SIMPLE",
+      "semantic_mismatch": null,
       "status": "READY_FOR_RELEASE"
     },
     {
@@ -72,13 +75,14 @@
         "reason code CONFLICT absent from ['EVIDENCE_CONFLICT']"
       ],
       "fixture_key": "conflict",
-      "known_mismatch": "abstains, as the label requires; the runtime reports EVIDENCE_CONFLICT where the label names the code CONFLICT",
+      "label_alias": "abstains, as the label requires; the runtime reports EVIDENCE_CONFLICT where the label names the scenario CONFLICT",
       "matches_label": false,
       "reason_codes": [
         "EVIDENCE_CONFLICT"
       ],
       "released": false,
       "route": "DIRECT_FACT",
+      "semantic_mismatch": null,
       "status": "FAIL_CLOSED"
     },
     {
@@ -95,13 +99,14 @@
         "citations: ['citation-X2'] missing"
       ],
       "fixture_key": "cross_source",
-      "known_mismatch": "binds one fact per slot, so the label's two corroborating evidence ids cannot both be bound and the MULTI route is never selected. The binding validator already names this shape: bound_fact_cardinality_mismatch",
+      "label_alias": null,
       "matches_label": false,
       "reason_codes": [
         "VALIDATED_RELEASE"
       ],
       "released": true,
       "route": "STRUCTURED_SINGLE",
+      "semantic_mismatch": "binds one fact per slot, so the label's two corroborating evidence ids cannot both be bound and the MULTI route is never selected. The binding validator already names this shape: bound_fact_cardinality_mismatch",
       "status": "READY_FOR_RELEASE"
     },
     {
@@ -114,13 +119,14 @@
       "expected_route": "STRUCTURED_SINGLE",
       "failures": [],
       "fixture_key": "fact_direct",
-      "known_mismatch": null,
+      "label_alias": null,
       "matches_label": true,
       "reason_codes": [
         "VALIDATED_RELEASE"
       ],
       "released": true,
       "route": "STRUCTURED_SINGLE",
+      "semantic_mismatch": null,
       "status": "READY_FOR_RELEASE"
     },
     {
@@ -133,13 +139,14 @@
       "expected_route": "STRUCTURED_SINGLE",
       "failures": [],
       "fixture_key": "fact_margin",
-      "known_mismatch": null,
+      "label_alias": null,
       "matches_label": true,
       "reason_codes": [
         "VALIDATED_RELEASE"
       ],
       "released": true,
       "route": "STRUCTURED_SINGLE",
+      "semantic_mismatch": null,
       "status": "READY_FOR_RELEASE"
     },
     {
@@ -152,7 +159,7 @@
       "expected_route": null,
       "failures": [],
       "fixture_key": "missing_slot",
-      "known_mismatch": null,
+      "label_alias": null,
       "matches_label": true,
       "reason_codes": [
         "MISSING_SLOT",
@@ -160,6 +167,7 @@
       ],
       "released": false,
       "route": "DIRECT_FACT",
+      "semantic_mismatch": null,
       "status": "FAIL_CLOSED"
     },
     {
@@ -175,13 +183,14 @@
         "route: label=MULTI actual=DIRECT_FACT"
       ],
       "fixture_key": "multi_evidence",
-      "known_mismatch": "same one-fact-per-slot limit. This fixture also gave the two candidates different values, which the conflict gate correctly refuses -- the label wants two pieces of supporting evidence for one claim, which the current binding contract has no way to express",
+      "label_alias": null,
       "matches_label": false,
       "reason_codes": [
         "EVIDENCE_CONFLICT"
       ],
       "released": false,
       "route": "DIRECT_FACT",
+      "semantic_mismatch": "same one-fact-per-slot limit. This fixture also gave the two candidates different values, which the conflict gate correctly refuses -- the label wants two pieces of supporting evidence for one claim, which the current binding contract has no way to express",
       "status": "FAIL_CLOSED"
     },
     {
@@ -194,13 +203,14 @@
       "expected_route": null,
       "failures": [],
       "fixture_key": "multi_evidence_two",
-      "known_mismatch": null,
+      "label_alias": null,
       "matches_label": true,
       "reason_codes": [
         "EVIDENCE_CONFLICT"
       ],
       "released": false,
       "route": "DIRECT_FACT",
+      "semantic_mismatch": null,
       "status": "FAIL_CLOSED"
     },
     {
@@ -215,13 +225,14 @@
         "reason code MISSING_SLOT absent from ['QUERY_PLAN_SEMANTIC_MISMATCH']"
       ],
       "fixture_key": "no_answer",
-      "known_mismatch": "abstains, as the label requires; an invented metric is rejected by the semantic-alignment gate as QUERY_PLAN_SEMANTIC_MISMATCH before the binder can report MISSING_SLOT",
+      "label_alias": "abstains, as the label requires; an invented metric is rejected by the semantic-alignment gate as QUERY_PLAN_SEMANTIC_MISMATCH before the binder can report MISSING_SLOT",
       "matches_label": false,
       "reason_codes": [
         "QUERY_PLAN_SEMANTIC_MISMATCH"
       ],
       "released": false,
       "route": "DIRECT_FACT",
+      "semantic_mismatch": null,
       "status": "FAIL_CLOSED"
     },
     {
@@ -236,13 +247,14 @@
         "route: label=MULTI actual=DIRECT_FACT"
       ],
       "fixture_key": "qualitative",
-      "known_mismatch": "abstains, as the label requires; the label additionally expects the MULTI route, which needs more than one bound fact (see below)",
+      "label_alias": "abstains, as the label requires; the label additionally expects the MULTI route, which needs more than one bound fact (see below)",
       "matches_label": false,
       "reason_codes": [
         "EVIDENCE_CONFLICT"
       ],
       "released": false,
       "route": "DIRECT_FACT",
+      "semantic_mismatch": null,
       "status": "FAIL_CLOSED"
     },
     {
@@ -255,13 +267,14 @@
       "expected_route": "STRUCTURED_SINGLE",
       "failures": [],
       "fixture_key": "recovery_period",
-      "known_mismatch": null,
+      "label_alias": null,
       "matches_label": true,
       "reason_codes": [
         "VALIDATED_RELEASE"
       ],
       "released": true,
       "route": "STRUCTURED_SINGLE",
+      "semantic_mismatch": null,
       "status": "READY_FOR_RELEASE"
     },
     {
@@ -274,13 +287,14 @@
       "expected_route": "STRUCTURED_SINGLE",
       "failures": [],
       "fixture_key": "recovery_slot",
-      "known_mismatch": null,
+      "label_alias": null,
       "matches_label": true,
       "reason_codes": [
         "VALIDATED_RELEASE"
       ],
       "released": true,
       "route": "STRUCTURED_SINGLE",
+      "semantic_mismatch": null,
       "status": "READY_FOR_RELEASE"
     },
     {
@@ -293,13 +307,14 @@
       "expected_route": "STRUCTURED_SINGLE",
       "failures": [],
       "fixture_key": "repair_once",
-      "known_mismatch": null,
+      "label_alias": null,
       "matches_label": true,
       "reason_codes": [
         "VALIDATED_RELEASE"
       ],
       "released": true,
       "route": "STRUCTURED_SINGLE",
+      "semantic_mismatch": null,
       "status": "READY_FOR_RELEASE"
     },
     {
@@ -312,13 +327,14 @@
       "expected_route": "STRUCTURED_SINGLE",
       "failures": [],
       "fixture_key": "table_heavy",
-      "known_mismatch": null,
+      "label_alias": null,
       "matches_label": true,
       "reason_codes": [
         "VALIDATED_RELEASE"
       ],
       "released": true,
       "route": "STRUCTURED_SINGLE",
+      "semantic_mismatch": null,
       "status": "READY_FOR_RELEASE"
     },
     {
@@ -331,13 +347,14 @@
       "expected_route": "STRUCTURED_SINGLE",
       "failures": [],
       "fixture_key": "unit_scale",
-      "known_mismatch": null,
+      "label_alias": null,
       "matches_label": true,
       "reason_codes": [
         "VALIDATED_RELEASE"
       ],
       "released": true,
       "route": "STRUCTURED_SINGLE",
+      "semantic_mismatch": null,
       "status": "READY_FOR_RELEASE"
     },
     {
@@ -350,13 +367,14 @@
       "expected_route": "STRUCTURED_SINGLE",
       "failures": [],
       "fixture_key": "unknown_citation",
-      "known_mismatch": null,
+      "label_alias": null,
       "matches_label": true,
       "reason_codes": [
         "VALIDATED_RELEASE"
       ],
       "released": true,
       "route": "STRUCTURED_SINGLE",
+      "semantic_mismatch": null,
       "status": "READY_FOR_RELEASE"
     },
     {
@@ -369,7 +387,7 @@
       "expected_route": null,
       "failures": [],
       "fixture_key": "unsupported_calculation",
-      "known_mismatch": null,
+      "label_alias": null,
       "matches_label": true,
       "reason_codes": [
         "MISSING_OPERAND",
@@ -377,6 +395,7 @@
       ],
       "released": false,
       "route": "CALCULATION",
+      "semantic_mismatch": null,
       "status": "FAIL_CLOSED"
     },
     {
@@ -389,13 +408,14 @@
       "expected_route": null,
       "failures": [],
       "fixture_key": "validator_rejection",
-      "known_mismatch": null,
+      "label_alias": null,
       "matches_label": true,
       "reason_codes": [
         "UNBOUND_CITATION_METADATA"
       ],
       "released": false,
       "route": "STRUCTURED_SINGLE",
+      "semantic_mismatch": null,
       "status": "FAIL_CLOSED"
     },
     {
@@ -408,13 +428,14 @@
       "expected_route": "STRUCTURED_SINGLE",
       "failures": [],
       "fixture_key": "wrong_period",
-      "known_mismatch": null,
+      "label_alias": null,
       "matches_label": true,
       "reason_codes": [
         "VALIDATED_RELEASE"
       ],
       "released": true,
       "route": "STRUCTURED_SINGLE",
+      "semantic_mismatch": null,
       "status": "READY_FOR_RELEASE"
     },
     {
@@ -427,13 +448,14 @@
       "expected_route": "STRUCTURED_SINGLE",
       "failures": [],
       "fixture_key": "wrong_row",
-      "known_mismatch": null,
+      "label_alias": null,
       "matches_label": true,
       "reason_codes": [
         "VALIDATED_RELEASE"
       ],
       "released": true,
       "route": "STRUCTURED_SINGLE",
+      "semantic_mismatch": null,
       "status": "READY_FOR_RELEASE"
     }
   ],
@@ -444,9 +466,10 @@
     "expected_release": 15,
     "false_release": 0,
     "grounded_success": 13,
-    "known_mismatch": 5,
+    "label_alias": 3,
     "over_conservative": 1,
     "released": 14,
+    "semantic_mismatch": 2,
     "task_success": 17,
     "token_counts_available": false,
     "unexplained_mismatch": 0

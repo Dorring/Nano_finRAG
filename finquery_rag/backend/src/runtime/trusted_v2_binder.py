@@ -309,7 +309,13 @@ class SemanticEvidenceEvaluationCapability:
                 value_part = normalize_val(value)
                 scale_part = normalize(raw_scale)
             else:
-                value_part = normalize(str(scaled_value))
+                # ``normalize()`` strips trailing zeros, so 1.000 billion and
+                # 1000.0 million key the same.  Decimal multiplication preserves
+                # significant digits, so without this the two products are
+                # "1000000000.000" and "1000000000.00" -- and two sources
+                # writing one quantity at different precision would read as a
+                # disagreement, failing closed on evidence that agrees.
+                value_part = normalize(str(scaled_value.normalize()))
                 scale_part = ""
         else:
             value_part = normalize_val(value)
