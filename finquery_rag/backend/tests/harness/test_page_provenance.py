@@ -240,3 +240,26 @@ def test_the_real_citation_carries_the_trusted_evidence_page() -> None:
 
     assert outcome.citations, "the fixture releases with citations"
     assert all(citation.get("page") is not None for citation in outcome.citations)
+
+
+def test_a_locator_that_prefixes_another_does_not_leave_a_stray_number() -> None:
+    """``report.pdf, p.1`` is a prefix of ``report.pdf, p.12``.
+
+    Removing the shorter locator first turns the longer one into ``... 2`` -- a
+    bare number token manufactured by the removal itself, which the numeric
+    check would then read as an unsupported claim.  The removal has to run
+    longest-first.
+
+    Found by asking whether the removal was span-based or a plain substring
+    replace.  It is a substring replace, and this is what that costs.
+    """
+
+    packet = _calculation_packet(1, 12)
+    answer = "a = 391 … report.pdf, p.1\nb = 383 … report.pdf, p.12"
+
+    stripped = _without_provenance_citations(answer, packet)
+
+    assert "p.1 " not in stripped and "p.12" not in stripped
+    # No digit survives as a leftover of a partially removed locator.
+    assert " 2" not in stripped
+    assert stripped.count("391") == 1 and stripped.count("383") == 1

@@ -55,7 +55,7 @@ def _iter_evidence(packet: Mapping[str, Any]) -> Iterable[Mapping[str, Any]]:
 
 
 def _provenance_citations(packet: Mapping[str, Any]) -> list[str]:
-    """The exact source-locator strings this answer can carry.
+    r"""The exact source-locator strings this answer can carry.
 
     Reconstructed from the same structured operand fields the calculation
     renderer reads, rather than matched against a pattern.  That distinction is
@@ -92,15 +92,25 @@ def _provenance_citations(packet: Mapping[str, Any]) -> list[str]:
 def _without_provenance_citations(
     text: str, packet: Mapping[str, Any]
 ) -> str:
-    """Remove rendered source locators so only claim-bearing numbers remain.
+    r"""Remove rendered source locators so only claim-bearing numbers remain.
 
     Only an exact locator string is removed, so a page number is dropped exactly
     where it is provenance.  A genuine financial claim of the same value
     elsewhere in the answer is untouched -- the check must not become "ignore
     this number".
+
+    Longest first, because these are plain substrings and one locator can be a
+    prefix of another: ``report.pdf, p.1`` is a prefix of ``report.pdf, p.12``,
+    so removing the shorter one first leaves ``... 2`` -- a bare number token
+    manufactured by the removal itself, which is worse than the false positive
+    this function exists to prevent.
+
+    Replacement is a single space rather than the empty string, so removing a
+    locator cannot splice its neighbours together into a number that neither
+    side contained.
     """
 
-    for citation in _provenance_citations(packet):
+    for citation in sorted(_provenance_citations(packet), key=len, reverse=True):
         text = text.replace(citation, " ")
     return text
 
