@@ -354,37 +354,47 @@ def cases() -> tuple[ReadinessCase, ...]:
     return tuple(sorted(out, key=lambda case: case.case_id))
 
 
-#: Cases whose label the runtime does not currently meet, with the reason.
-#: Derived from an actual run, not from reading the labels: an earlier version of
-#: this registry was written by inspection and five of its entries were wrong --
-#: including one fixture that declared a substituted generator and silently got
-#: the production one, because the dispatch was keyed by fixture id and this
-#: module names its fixtures differently.  A benchmark that skips what it fails
-#: is not a benchmark, so these still execute and are still scored; they are
-#: listed here only so a runner can report them as known rather than new.
-KNOWN_MISMATCHES: dict[str, str] = {
+#: Cases whose label the runtime does not currently meet, split by what the
+#: difference actually is.  Derived from a run, never from reading the labels:
+#: an earlier registry written by inspection had five of six entries wrong.
+#:
+#: BEHAVIOUR_MATCHES -- the runtime now does the right thing and the label says
+#: it in different words.  These are not defects; they are the two vocabularies
+#: not having been reconciled, and they are listed separately so they are not
+#: counted as runtime failures.
+BEHAVIOUR_MATCHES_LABEL: dict[str, str] = {
     "conflict": (
-        "two candidates for one slot with contradictory values bind to one "
-        "admitted fact and release; the label expects CONFLICT and no release"
-    ),
-    "multi_evidence_two": (
-        "the same shape: two candidates for one slot resolve to one admitted "
-        "fact, so the runtime releases where the label abstains"
-    ),
-    "qualitative": (
-        "the label marks this unanswerable and expects MULTI; the deterministic "
-        "binder admits one fact and the runtime releases STRUCTURED_SINGLE"
-    ),
-    "multi_evidence": (
-        "release matches the label; the route does not -- one fact binds, so the "
-        "routing policy selects STRUCTURED_SINGLE rather than MULTI"
-    ),
-    "cross_source": (
-        "release matches the label; the route does not, for the same reason"
+        "abstains, as the label requires; the runtime reports EVIDENCE_CONFLICT "
+        "where the label names the code CONFLICT"
     ),
     "no_answer": (
-        "the outcome matches the label -- no release -- but the reason code "
-        "does not: an invented metric is rejected by the semantic-alignment gate "
-        "as QUERY_PLAN_SEMANTIC_MISMATCH before the binder can report MISSING_SLOT"
+        "abstains, as the label requires; an invented metric is rejected by the "
+        "semantic-alignment gate as QUERY_PLAN_SEMANTIC_MISMATCH before the "
+        "binder can report MISSING_SLOT"
     ),
+    "qualitative": (
+        "abstains, as the label requires; the label additionally expects the "
+        "MULTI route, which needs more than one bound fact (see below)"
+    ),
+}
+
+#: CAPABILITY_GAP -- the label asks for something the runtime cannot express.
+CAPABILITY_GAPS: dict[str, str] = {
+    "cross_source": (
+        "binds one fact per slot, so the label's two corroborating evidence ids "
+        "cannot both be bound and the MULTI route is never selected. The "
+        "binding validator already names this shape: "
+        "bound_fact_cardinality_mismatch"
+    ),
+    "multi_evidence": (
+        "same one-fact-per-slot limit. This fixture also gave the two "
+        "candidates different values, which the conflict gate correctly "
+        "refuses -- the label wants two pieces of supporting evidence for one "
+        "claim, which the current binding contract has no way to express"
+    ),
+}
+
+KNOWN_MISMATCHES: dict[str, str] = {
+    **BEHAVIOUR_MATCHES_LABEL,
+    **CAPABILITY_GAPS,
 }

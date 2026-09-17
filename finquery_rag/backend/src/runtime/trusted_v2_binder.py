@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Iterable, Mapping
+from decimal import Decimal
 import re
 from typing import Any
 
@@ -28,6 +29,7 @@ from rag_v2.supervisor import (
     extract_query_semantic_frame,
 )
 from rag_v2.supervisor import EvidenceScope, query_allows_evidence_scope
+from src.pdf_retrieval_v4.semantic_scale_resolver import resolve_scale_keyword
 
 
 class SemanticBinderCapabilityError(RuntimeError):
@@ -239,7 +241,25 @@ class SemanticEvidenceEvaluationCapability:
         return ReasonCode.MISSING_SLOT
 
     @staticmethod
-    def _fact_value_key(fact: Mapping[str, Any]) -> str | None:
+    def _canonical_scale(raw_scale: Any) -> tuple[float, str] | None:
+        """Fold a scale keyword into a factor and a canonical name.
+
+        Reuses the retrieval layer's scale vocabulary rather than introducing a
+        second one: without this, "1000 million" and "1 billion" are different
+        value keys and two sources stating the same quantity in different units
+        read as a disagreement.  That is a false conflict, and false conflicts
+        fail closed on correct evidence.
+        """
+
+        if raw_scale is None:
+            return None
+        try:
+            return resolve_scale_keyword(str(raw_scale))
+        except Exception:
+            return None
+
+    @classmethod
+    def _fact_value_key(cls, fact: Mapping[str, Any]) -> str | None:
         """Build a conservative structured value identity for consensus repair.
 
         This is deliberately not a parser for answer text.  It only compares
@@ -270,11 +290,36 @@ class SemanticEvidenceEvaluationCapability:
         def normalize(item: Any) -> str:
             return "".join(str(item).casefold().split()).replace(",", "")
 
+        # Fold a known scale into the value so the same quantity written two
+        # ways keys the same.  The scale name then drops out of the key: it is
+        # already accounted for by the factor, and keeping it would make
+        # "1000 million" and "1 billion" differ on the name after agreeing on
+        # the quantity -- a false conflict over a unit label.
+        #
+        # An unrecognised scale stays a literal part, so a scale this code does
+        # not understand remains a difference rather than being silently
+        # equated.
+        raw_scale = fact.get("scale")
+        resolved_scale = cls._canonical_scale(raw_scale)
+        if resolved_scale is not None:
+            factor, _canonical_name = resolved_scale
+            try:
+                scaled_value = Decimal(normalize_val(value)) * Decimal(str(factor))
+            except (ArithmeticError, ValueError):
+                value_part = normalize_val(value)
+                scale_part = normalize(raw_scale)
+            else:
+                value_part = normalize(str(scaled_value))
+                scale_part = ""
+        else:
+            value_part = normalize_val(value)
+            scale_part = normalize(raw_scale) if raw_scale is not None else ""
+
         parts = (
-            normalize_val(value),
+            value_part,
             normalize(fact.get("unit")) if fact.get("unit") is not None else "",
             normalize(fact.get("currency")) if fact.get("currency") is not None else "",
-            normalize(fact.get("scale")) if fact.get("scale") is not None else "",
+            scale_part,
         )
         return "|".join(parts)
 
@@ -319,6 +364,57 @@ class SemanticEvidenceEvaluationCapability:
             classify_evidence_scope(fact),
             known_segment_labels=known_segment_labels,
         )
+
+    @classmethod
+    def _unresolved_conflict_slots(
+        cls,
+        query: str,
+        plan: SupervisorPlan,
+        facts: tuple[Mapping[str, Any], ...],
+    ) -> tuple[str, ...]:
+        """Slots whose admissible candidates disagree with no safe consensus.
+
+        Deliberately reuses ``_consensus_fact_for_slot`` rather than adding a
+        second comparison rule: that helper already counts an exact duplicate
+        once, accepts a strict majority of *distinct physical sources*, and
+        returns ``None`` for a tie or an uncorroborated winner.  Writing the
+        conflict test separately would be a second place for the definition of
+        "these two facts agree" to live.
+
+        A slot is reported only when more than one candidate is admissible for
+        it *and* no consensus exists among them, so a single candidate, an exact
+        duplicate, two sources reporting the same value, and a clear majority
+        are all still bound normally.
+        """
+
+        try:
+            frame = extract_query_semantic_frame(query)
+        except (TypeError, ValueError):
+            return ()
+        known_segment_labels = tuple(
+            label
+            for fact in facts
+            for label in (classify_evidence_scope(fact).scope_label,)
+            if label
+        )
+        conflicted: list[str] = []
+        for slot in plan.required_slots:
+            admissible = [
+                fact
+                for fact in facts
+                if cls._fact_matches_slot(
+                    query,
+                    frame,
+                    slot,
+                    fact,
+                    known_segment_labels,
+                )
+            ]
+            if len(admissible) < 2:
+                continue
+            if cls._consensus_fact_for_slot(query, frame, slot, facts) is None:
+                conflicted.append(str(slot.slot_id))
+        return tuple(conflicted)
 
     @classmethod
     def _consensus_fact_for_slot(
@@ -893,6 +989,63 @@ class SemanticEvidenceEvaluationCapability:
                 self.last_run = run
                 self.last_semantic_check = semantic_check
                 self.last_semantic_repair = repair_info
+            # A provider that binds one of several *disagreeing* admissible
+            # candidates has answered "which single fact can be bound", not
+            # "which value is correct".  Those are different claims, and the
+            # runtime must not accept the first as the second.
+            #
+            # ``_consensus_fact_for_slot`` already draws exactly the right
+            # distinctions -- an exact duplicate is counted once, corroborating
+            # sources agree, a strict majority wins -- and returns ``None`` when
+            # there is no safe consensus.  What was missing was this caller
+            # treating that ``None`` as "no repair found, proceed" instead of
+            # "this slot is unresolved".  The three readiness cases that
+            # released a confident answer from contradicting evidence all came
+            # through here.
+            conflicted = self._unresolved_conflict_slots(
+                state.normalized_query,
+                plan,
+                facts,
+            )
+            if conflicted:
+                self.last_bound_evidence_ids = ()
+                self.last_bound_slot_bindings = {}
+                self.last_citation_ids = ()
+                evaluation = EvidenceEvaluationV1(
+                    decision=EvidenceDecision.UNRESOLVED_CONFLICT,
+                    reason_codes=(ReasonCode.EVIDENCE_CONFLICT,),
+                    requested_slots=tuple(slot.slot_id for slot in plan.required_slots),
+                    supported_slots=(),
+                    missing_slots=tuple(slot.slot_id for slot in plan.required_slots),
+                    supporting_evidence_ids=(),
+                    temporal_status="CONFLICTED",
+                    conflicts=tuple({"slot_id": slot_id} for slot_id in conflicted),
+                    calculation_ready=False,
+                )
+                # Record the round before returning.  Every other exit from this
+                # method writes a binder round, and a fail-closed path that is
+                # invisible in the trace is the one path nobody can diagnose.
+                self._trace.append(
+                    {
+                        "round": self.calls - 1,
+                        "status": status,
+                        "bound_slot_ids": [],
+                        "missing_slot_ids": [
+                            slot.slot_id for slot in plan.required_slots
+                        ],
+                        "ambiguous_slot_ids": list(conflicted),
+                        "bound_evidence_ids": [],
+                        "reason_codes": [
+                            item.value for item in evaluation.reason_codes
+                        ],
+                        "selected_fact_ids": list(run.validation.selected_fact_ids),
+                        "candidate_fact_count": len(all_facts),
+                        "binding_fact_count": len(facts),
+                        "semantic_check": semantic_check.to_dict(),
+                        "semantic_repair": self.last_semantic_repair,
+                    }
+                )
+                return evaluation
             if not semantic_check.allowed:
                 self.last_bound_evidence_ids = ()
                 self.last_bound_slot_bindings = {}

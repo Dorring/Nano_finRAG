@@ -57,21 +57,26 @@ def test_the_recorded_mismatches_are_still_the_recorded_ones(
 ) -> None:
     """Pin what the runtime does, so a change in either direction is visible."""
 
-    assert benchmark["summary"]["task_success"] == 16
-    # Rising means the runtime got closer to the readiness contract; falling
-    # means it regressed.  Either way it should not move silently.
-    assert benchmark["summary"]["false_release"] == 3
-    assert benchmark["summary"]["over_conservative"] == 0
+    assert benchmark["summary"]["task_success"] == 17
+    # The H2A-1E conflict gate took this from 3 to 0.  It is the headline of
+    # that change and the one number that must not creep back up.
+    assert benchmark["summary"]["false_release"] == 0
+    # One case has become over-conservative: multi_evidence asks for two
+    # corroborating facts for one slot, and the fixture supplies two that
+    # disagree, which the gate now refuses.  Counting it here rather than
+    # adjusting the fixture keeps the disagreement visible.
+    assert benchmark["summary"]["over_conservative"] == 1
 
 
-def test_false_releases_are_the_absence_of_conflict_detection(
+def test_no_case_releases_where_the_readiness_contract_says_abstain(
     benchmark: dict[str, Any],
 ) -> None:
-    """Name the finding rather than only counting it.
+    """The defect this phase fixed, stated as an invariant.
 
-    All three are the same shape: several candidates for one slot resolve to one
-    admitted fact, and the runtime releases without noticing that the other
-    candidate disagreed.  That is the ``conflict`` case in the readiness contract.
+    Three cases used to release here -- conflict, multi_evidence_two and
+    qualitative -- all the same shape: several candidates for one slot bound to
+    one of them and the disagreement was never examined.  This is the assertion
+    that must not go back to listing them.
     """
 
     false_releases = [
@@ -80,7 +85,25 @@ def test_false_releases_are_the_absence_of_conflict_detection(
         if case["released"] and not case["expected_release"]
     ]
 
-    assert false_releases == ["conflict", "multi_evidence_two", "qualitative"]
+    assert false_releases == []
+
+
+def test_the_two_kinds_of_mismatch_are_not_conflated(benchmark: dict[str, Any]) -> None:
+    """A vocabulary difference is not a runtime failure.
+
+    Three of the remaining mismatches are cases where the runtime now behaves
+    correctly and the label says it in different words. Counting them against
+    the runtime would hide the two that are real capability gaps.
+    """
+
+    from tests.benchmark.tv2_readiness_cases import (
+        BEHAVIOUR_MATCHES_LABEL,
+        CAPABILITY_GAPS,
+    )
+
+    assert set(BEHAVIOUR_MATCHES_LABEL) & set(CAPABILITY_GAPS) == set()
+    assert len(BEHAVIOUR_MATCHES_LABEL) == 3
+    assert len(CAPABILITY_GAPS) == 2
 
 
 def test_token_counts_are_never_faked(benchmark: dict[str, Any]) -> None:

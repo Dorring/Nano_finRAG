@@ -64,23 +64,22 @@
       "answer_tokens": null,
       "case_id": "conflict-001",
       "category": "evidence_conflict",
-      "evidence_reference_chars": 7,
+      "evidence_reference_chars": 2,
       "evidence_tokens": null,
       "expected_release": false,
       "expected_route": null,
       "failures": [
-        "release: label=False actual=True",
-        "reason code CONFLICT absent from ['VALIDATED_RELEASE']"
+        "reason code CONFLICT absent from ['EVIDENCE_CONFLICT']"
       ],
       "fixture_key": "conflict",
-      "known_mismatch": "two candidates for one slot with contradictory values bind to one admitted fact and release; the label expects CONFLICT and no release",
+      "known_mismatch": "abstains, as the label requires; the runtime reports EVIDENCE_CONFLICT where the label names the code CONFLICT",
       "matches_label": false,
       "reason_codes": [
-        "VALIDATED_RELEASE"
+        "EVIDENCE_CONFLICT"
       ],
-      "released": true,
-      "route": "STRUCTURED_SINGLE",
-      "status": "READY_FOR_RELEASE"
+      "released": false,
+      "route": "DIRECT_FACT",
+      "status": "FAIL_CLOSED"
     },
     {
       "answer_tokens": null,
@@ -96,7 +95,7 @@
         "citations: ['citation-X2'] missing"
       ],
       "fixture_key": "cross_source",
-      "known_mismatch": "release matches the label; the route does not, for the same reason",
+      "known_mismatch": "binds one fact per slot, so the label's two corroborating evidence ids cannot both be bound and the MULTI route is never selected. The binding validator already names this shape: bound_fact_cardinality_mismatch",
       "matches_label": false,
       "reason_codes": [
         "VALIDATED_RELEASE"
@@ -167,48 +166,42 @@
       "answer_tokens": null,
       "case_id": "multi-evidence-001",
       "category": "multi_evidence",
-      "evidence_reference_chars": 6,
+      "evidence_reference_chars": 2,
       "evidence_tokens": null,
       "expected_release": true,
       "expected_route": "MULTI",
       "failures": [
-        "route: label=MULTI actual=STRUCTURED_SINGLE",
-        "evidence: ['Q2'] not in ['Q1']",
-        "citations: ['citation-Q2'] missing",
-        "required answer term 'Revenue' absent"
+        "release: label=True actual=False",
+        "route: label=MULTI actual=DIRECT_FACT"
       ],
       "fixture_key": "multi_evidence",
-      "known_mismatch": "release matches the label; the route does not -- one fact binds, so the routing policy selects STRUCTURED_SINGLE rather than MULTI",
+      "known_mismatch": "same one-fact-per-slot limit. This fixture also gave the two candidates different values, which the conflict gate correctly refuses -- the label wants two pieces of supporting evidence for one claim, which the current binding contract has no way to express",
       "matches_label": false,
       "reason_codes": [
-        "VALIDATED_RELEASE"
+        "EVIDENCE_CONFLICT"
       ],
-      "released": true,
-      "route": "STRUCTURED_SINGLE",
-      "status": "READY_FOR_RELEASE"
+      "released": false,
+      "route": "DIRECT_FACT",
+      "status": "FAIL_CLOSED"
     },
     {
       "answer_tokens": null,
       "case_id": "multi-evidence-002",
       "category": "multi_evidence",
-      "evidence_reference_chars": 6,
+      "evidence_reference_chars": 2,
       "evidence_tokens": null,
       "expected_release": false,
       "expected_route": null,
-      "failures": [
-        "release: label=False actual=True",
-        "evidence: ['M2'] not in ['M1']",
-        "citations: ['citation-M2'] missing"
-      ],
+      "failures": [],
       "fixture_key": "multi_evidence_two",
-      "known_mismatch": "the same shape: two candidates for one slot resolve to one admitted fact, so the runtime releases where the label abstains",
-      "matches_label": false,
+      "known_mismatch": null,
+      "matches_label": true,
       "reason_codes": [
-        "VALIDATED_RELEASE"
+        "EVIDENCE_CONFLICT"
       ],
-      "released": true,
-      "route": "STRUCTURED_SINGLE",
-      "status": "READY_FOR_RELEASE"
+      "released": false,
+      "route": "DIRECT_FACT",
+      "status": "FAIL_CLOSED"
     },
     {
       "answer_tokens": null,
@@ -222,7 +215,7 @@
         "reason code MISSING_SLOT absent from ['QUERY_PLAN_SEMANTIC_MISMATCH']"
       ],
       "fixture_key": "no_answer",
-      "known_mismatch": "the outcome matches the label -- no release -- but the reason code does not: an invented metric is rejected by the semantic-alignment gate as QUERY_PLAN_SEMANTIC_MISMATCH before the binder can report MISSING_SLOT",
+      "known_mismatch": "abstains, as the label requires; an invented metric is rejected by the semantic-alignment gate as QUERY_PLAN_SEMANTIC_MISMATCH before the binder can report MISSING_SLOT",
       "matches_label": false,
       "reason_codes": [
         "QUERY_PLAN_SEMANTIC_MISMATCH"
@@ -235,25 +228,22 @@
       "answer_tokens": null,
       "case_id": "qualitative-001",
       "category": "qualitative_synthesis",
-      "evidence_reference_chars": 6,
+      "evidence_reference_chars": 2,
       "evidence_tokens": null,
       "expected_release": false,
       "expected_route": "MULTI",
       "failures": [
-        "release: label=False actual=True",
-        "route: label=MULTI actual=STRUCTURED_SINGLE",
-        "evidence: ['Q2'] not in ['Q1']",
-        "citations: ['citation-Q2'] missing"
+        "route: label=MULTI actual=DIRECT_FACT"
       ],
       "fixture_key": "qualitative",
-      "known_mismatch": "the label marks this unanswerable and expects MULTI; the deterministic binder admits one fact and the runtime releases STRUCTURED_SINGLE",
+      "known_mismatch": "abstains, as the label requires; the label additionally expects the MULTI route, which needs more than one bound fact (see below)",
       "matches_label": false,
       "reason_codes": [
-        "VALIDATED_RELEASE"
+        "EVIDENCE_CONFLICT"
       ],
-      "released": true,
-      "route": "STRUCTURED_SINGLE",
-      "status": "READY_FOR_RELEASE"
+      "released": false,
+      "route": "DIRECT_FACT",
+      "status": "FAIL_CLOSED"
     },
     {
       "answer_tokens": null,
@@ -449,15 +439,15 @@
   ],
   "summary": {
     "answer_tokens": null,
-    "evidence_reference_chars": 184,
+    "evidence_reference_chars": 167,
     "evidence_tokens": null,
     "expected_release": 15,
-    "false_release": 3,
-    "grounded_success": 14,
-    "known_mismatch": 6,
-    "over_conservative": 0,
-    "released": 18,
-    "task_success": 16,
+    "false_release": 0,
+    "grounded_success": 13,
+    "known_mismatch": 5,
+    "over_conservative": 1,
+    "released": 14,
+    "task_success": 17,
     "token_counts_available": false,
     "unexplained_mismatch": 0
   },

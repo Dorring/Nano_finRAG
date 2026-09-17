@@ -709,7 +709,15 @@ def test_semantic_firewall_does_not_repair_conflicting_packet_values() -> None:
     )
 
     assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
-    assert "QUERY_EVIDENCE_SEMANTIC_MISMATCH" in outcome.reason_codes
+    # The reason code is now the precise one.  This fixture is two admissible
+    # candidates for one slot that disagree -- PREVIOUS (FY2024, 90) and
+    # PREVIOUS-CONFLICT (FY2024, 80) -- and H2A-1E added a same-slot conflict
+    # gate, so it reports EVIDENCE_CONFLICT rather than the catch-all
+    # QUERY_EVIDENCE_SEMANTIC_MISMATCH it used to share with every other
+    # semantic failure.  Every other property of this test is unchanged and was
+    # already true: it fails closed, binds nothing, and attempts no repair.
+    # The three assertions below are the ones that carry the safety property.
+    assert "EVIDENCE_CONFLICT" in outcome.reason_codes
     assert outcome.evidence_ids == []
     assert binder.trace_snapshot()["binder_rounds"][0]["semantic_repair"] is None
 
