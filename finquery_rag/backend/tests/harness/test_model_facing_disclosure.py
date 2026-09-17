@@ -504,7 +504,9 @@ def _state_with_calculation() -> Any:
     )
     state.bound_evidence_ids = ["e1", "e2"]
     state._calculation_result_obj = calculation
-    state.calculation_result_id = calculation.calculation_id
+    # H2A-2D-3B: the state's `calculation_result_id` is derived from this
+    # object, so restating the id here was a second copy of a truth the
+    # result already owns -- and the setter no longer exists to allow it.
     return state
 
 

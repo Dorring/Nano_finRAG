@@ -31,8 +31,9 @@ from typing import Any
 
 from rag_v2.adaptive.adaptive_contracts import AdaptiveRAGStateV1, EvidencePacketV1
 from src.runtime.trusted_v2_generation import CandidateExecutionResult
+from src.domain.calculation import CalculationResult, CalculationStatus
 from src.runtime.trusted_v2_validation import TrustedReleaseValidationCapability
-from tests.harness.test_calculation_identity_oracle import GOLDEN_ID
+from tests.harness.test_calculation_identity_oracle import GOLDEN_ID, _result
 from tests.test_trusted_v2_r4_binder import _fact
 
 #: Authored literal: an id no admissible result in this file can produce.
@@ -41,15 +42,21 @@ FABRICATED_ID = "C1-deadbeefdeadbeef"
 CITATION = "citation-E1"
 
 
-def _state(calculation_result_id: str | None) -> AdaptiveRAGStateV1:
-    """A state whose evidence is admitted and whose calculation authority is set."""
+def _state(result: CalculationResult | None) -> AdaptiveRAGStateV1:
+    """A state whose evidence is admitted and whose calculation authority is set.
+
+    H2A-2D-3B: the authority is attached as a *result*, not assigned as an id.
+    The state's `calculation_result_id` is now derived from this object, so a
+    test can no longer declare an id the result does not have -- which is the
+    drift this phase removes.
+    """
 
     state = AdaptiveRAGStateV1.new("r", "q")
     state.add_evidence(
         [EvidencePacketV1.from_mapping({**_fact("E1"), "citation_id": CITATION})]
     )
     state.bound_evidence_ids = ["E1"]
-    state.calculation_result_id = calculation_result_id
+    state._calculation_result_obj = result
     return state
 
 
@@ -66,9 +73,16 @@ def _candidate(declared: tuple[str, ...]) -> CandidateExecutionResult:
     )
 
 
-def _validate(calculation_result_id: str | None, declared: tuple[str, ...]) -> Any:
+#: The authored admissible vector from the frozen oracle; its id is GOLDEN_ID.
+ADMISSIBLE = _result()
+
+#: An inadmissible result, which authorizes nothing.
+BLOCKED = CalculationResult(status=CalculationStatus.BLOCKED)
+
+
+def _validate(result: CalculationResult | None, declared: tuple[str, ...]) -> Any:
     return TrustedReleaseValidationCapability().validate(
-        _state(calculation_result_id), _candidate(declared)
+        _state(result), _candidate(declared)
     )
 
 
@@ -83,7 +97,7 @@ def test_a_candidate_declaring_the_admitted_calculation_is_authorized() -> None:
     and conflating them would hide which invariant fired.
     """
 
-    result = _validate(GOLDEN_ID, (GOLDEN_ID,))
+    result = _validate(ADMISSIBLE, (GOLDEN_ID,))
 
     assert "CALCULATION_PROVENANCE_MISMATCH" not in result.reason_codes
 
@@ -94,7 +108,7 @@ def test_a_candidate_declaring_the_admitted_calculation_is_authorized() -> None:
 def test_a_fabricated_calculation_reference_is_rejected() -> None:
     """Rejected by this invariant, not by a later generic failure."""
 
-    result = _validate(GOLDEN_ID, (FABRICATED_ID,))
+    result = _validate(ADMISSIBLE, (FABRICATED_ID,))
 
     assert result.passed is False
     assert "CALCULATION_PROVENANCE_MISMATCH" in result.reason_codes
@@ -103,7 +117,7 @@ def test_a_fabricated_calculation_reference_is_rejected() -> None:
 def test_declaring_extra_calculation_references_is_rejected() -> None:
     """A superset is not authorized either -- the declaration must match."""
 
-    result = _validate(GOLDEN_ID, (GOLDEN_ID, FABRICATED_ID))
+    result = _validate(ADMISSIBLE, (GOLDEN_ID, FABRICATED_ID))
 
     assert "CALCULATION_PROVENANCE_MISMATCH" in result.reason_codes
 
@@ -119,7 +133,7 @@ def test_a_blocked_calculation_cannot_authorize_an_id() -> None:
     the identifier for a calculation that never ran could be released.
     """
 
-    result = _validate(None, (GOLDEN_ID,))
+    result = _validate(BLOCKED, (GOLDEN_ID,))
 
     assert result.passed is False
     assert "CALCULATION_PROVENANCE_MISMATCH" in result.reason_codes
@@ -134,6 +148,6 @@ def test_a_blocked_calculation_and_a_silent_candidate_do_not_mismatch() -> None:
     guard vacuous.
     """
 
-    result = _validate(None, ())
+    result = _validate(BLOCKED, ())
 
     assert "CALCULATION_PROVENANCE_MISMATCH" not in result.reason_codes

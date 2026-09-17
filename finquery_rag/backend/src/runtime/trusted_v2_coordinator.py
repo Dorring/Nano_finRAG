@@ -1105,7 +1105,6 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 if getattr(capability, "last_calculation_id", None)
                 else ()
             )
-            state.calculation_result_id = calculation_ids[0] if calculation_ids else None
             extra["calculation_status"] = result.status.value
             extra["calculation_result_id"] = state.calculation_result_id
             if state.calculation_attempted:

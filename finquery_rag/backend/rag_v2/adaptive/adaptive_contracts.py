@@ -402,7 +402,6 @@ class AdaptiveRAGStateV1:
     bound_evidence_ids: list[str] = field(default_factory=list)
     bound_slot_bindings: dict[str, list[str]] = field(default_factory=dict)
     calculation_result: dict[str, Any] | None = None
-    calculation_result_id: str | None = None
     generation_route: str | None = None
     route_reason: str | None = None
     candidate_answer: str | None = None
@@ -425,6 +424,30 @@ class AdaptiveRAGStateV1:
     # ``transitions`` (which logs every phase spin, including no-op ones) this is
     # the run's decision trace: what was done, why, and what came back.
     turns: list[dict[str, Any]] = field(default_factory=list)
+
+    @property
+    def calculation_result_id(self) -> str | None:
+        """The calculation's identity, derived from the result that owns it.
+
+        H2A-2D-3B.  This was a durable field, assigned from
+        ``CalculationResult.calculation_id`` at two write sites and read back as
+        though it were a truth of its own -- a second stored copy that could
+        drift from the result it described.  The result already holds the id and
+        already lives on this state, so the field was a copy of something
+        reachable from here.
+
+        Reading through to the authority means there is nothing left to drift:
+        an inadmissible result has no id to read, so ``BLOCKED`` and ``FAILED``
+        cannot project one either, without the property needing to know that
+        rule.  The name is unchanged, so every reader keeps working.
+
+        The object is kept in ``__dict__`` rather than declared as a field
+        because the calculator attaches it dynamically; ``getattr`` with a
+        default keeps a state that never ran a calculation readable.
+        """
+
+        result = self.__dict__.get("_calculation_result_obj")
+        return None if result is None else result.calculation_id
 
     @classmethod
     def new(

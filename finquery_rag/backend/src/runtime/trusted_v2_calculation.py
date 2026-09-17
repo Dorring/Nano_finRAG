@@ -354,7 +354,6 @@ class DeterministicCalculationCapability:
         # pair a BLOCKED result with a non-None id.
         self.last_calculation_id = result.calculation_id
         state.calculation_result = result.to_dict()
-        state.calculation_result_id = self.last_calculation_id
         state._calculation_result_obj = result
         return result
 
