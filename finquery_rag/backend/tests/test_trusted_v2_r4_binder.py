@@ -589,8 +589,7 @@ def test_duplicate_bound_rows_are_repaired_from_packet_consensus() -> None:
     assert outcome.evidence_ids == ["E1", "E2"]
     assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
     assert "DOWNSTREAM_EXECUTION_NOT_WIRED" in outcome.reason_codes
-    assert outcome.evidence_ids == ["E1"]
-    assert outcome.citation_ids == ["citation-E1"]
+    assert outcome.citation_ids == ["citation-E1", "citation-E2"]
 
 
 def test_semantic_firewall_rejects_structurally_bound_wrong_metric() -> None:
@@ -663,11 +662,19 @@ def test_semantic_firewall_repairs_wrong_period_selection_from_packet_consensus(
         "PREVIOUS-2",
     ]
     trace = binder.trace_snapshot()
-    assert trace["bound_evidence_ids"] == ["CURRENT-1", "PREVIOUS-1"]
+    assert trace["bound_evidence_ids"] == [
+        "CURRENT-1",
+        "CURRENT-2",
+        "PREVIOUS-1",
+        "PREVIOUS-2",
+    ]
     repair = trace["binder_rounds"][0]["semantic_repair"]
     assert repair["strategy"] == "deterministic_candidate_consensus"
     assert repair["replaced_slot_bindings"]["previous"]["from"] == ["WRONG-PERIOD"]
-    assert repair["replaced_slot_bindings"]["previous"]["to"] == ["PREVIOUS-1"]
+    assert repair["replaced_slot_bindings"]["previous"]["to"] == [
+        "PREVIOUS-1",
+        "PREVIOUS-2",
+    ]
 
 
 def test_semantic_firewall_repairs_same_period_value_misalignment() -> None:
@@ -697,7 +704,10 @@ def test_semantic_firewall_repairs_same_period_value_misalignment() -> None:
     repair = binder.trace_snapshot()["binder_rounds"][0]["semantic_repair"]
     assert repair["strategy"] == "deterministic_candidate_consensus"
     assert repair["replaced_slot_bindings"]["value"]["from"] == ["WRONG-VALUE"]
-    assert repair["replaced_slot_bindings"]["value"]["to"] == ["RIGHT-1"]
+    assert repair["replaced_slot_bindings"]["value"]["to"] == [
+        "RIGHT-1",
+        "RIGHT-2",
+    ]
 
 
 def test_semantic_firewall_does_not_repair_conflicting_packet_values() -> None:
@@ -830,7 +840,7 @@ def test_candidate_and_bound_provenance_are_separate() -> None:
     assert outcome.evidence_ids == ["E1", "E2", "E3"]
     trace = outcome.debug_metadata["trace"]
     assert set(trace["candidate_ids_per_round"][0]) == {"E1", "E2", "E3"}
-    assert trace["bound_evidence_ids"] == ["E2"]
+    assert trace["bound_evidence_ids"] == ["E1", "E2", "E3"]
 
 
 def test_r4_candidate_schema_failure_is_execution_error() -> None:
@@ -959,7 +969,12 @@ def test_partial_ambiguity_recovers_only_the_consensus_slot() -> None:
     repair = binder.trace_snapshot()["binder_rounds"][0]["semantic_repair"]
     assert repair["strategy"] == "deterministic_partial_ambiguous_packet_consensus"
     assert repair["preserved_slot_bindings"] == {"previous": ["PRIOR-1"]}
-    assert repair["replaced_slot_bindings"] == {"current": {"to": ["CURRENT-1"]}}
+    # The consensus slot is repaired to its whole winning group; the other
+    # slot is left exactly as the provider bound it, which the
+    # `preserved_slot_bindings` assertion above pins separately.
+    assert repair["replaced_slot_bindings"] == {
+        "current": {"to": ["CURRENT-1", "CURRENT-2"]}
+    }
     assert repair["consensus_size_by_slot"] == {"current": 2}
 
 
@@ -992,10 +1007,15 @@ def test_partial_ambiguity_normalizes_matching_duplicate_bound_slot() -> None:
 
     assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
     # H2A-2C-2: PRIOR keeps both independent supports.
-    assert set(outcome.evidence_ids) == {"CURRENT-1", "PRIOR-1", "PRIOR-2"}
+    assert set(outcome.evidence_ids) == {
+        "CURRENT-1",
+        "CURRENT-2",
+        "PRIOR-1",
+        "PRIOR-2",
+    }
     repair = binder.trace_snapshot()["binder_rounds"][0]["semantic_repair"]
     assert repair["normalized_slot_bindings"] == {
-        "previous": {"from": ["PRIOR-1", "PRIOR-2"], "to": ["PRIOR-1"]}
+        "previous": {"from": ["PRIOR-1", "PRIOR-2"], "to": ["PRIOR-1", "PRIOR-2"]}
     }
     assert repair["consensus_size_by_slot"] == {"current": 2, "previous": 2}
 
