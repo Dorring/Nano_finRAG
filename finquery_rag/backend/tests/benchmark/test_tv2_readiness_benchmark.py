@@ -82,11 +82,19 @@ def test_the_recorded_mismatches_are_still_the_recorded_ones(
     # The H2A-1E conflict gate took this from 3 to 0.  It is the headline of
     # that change and the one number that must not creep back up.
     assert benchmark["summary"]["false_release"] == 0
-    # One case has become over-conservative: multi_evidence asks for two
-    # corroborating facts for one slot, and the fixture supplies two that
-    # disagree, which the gate now refuses.  Counting it here rather than
-    # adjusting the fixture keeps the disagreement visible.
-    assert benchmark["summary"]["over_conservative"] == 1
+    # This was 1, and it was a fixture defect rather than a runtime one.
+    # `multi_evidence` asks for two corroborating facts for one slot, and its
+    # fixture supplied two that disagreed -- so the conflict gate correctly
+    # refused a case whose label wants a release, and the count recorded the
+    # harness's mistake as the runtime being over-conservative.  H2A-2C
+    # corrected the fixture (see `test_readiness_fixture_consistency.py`) and
+    # the number moved to 0 with no runtime change: the release decision was
+    # never wrong.
+    #
+    # What remains for 2C is genuinely the runtime's, and this counter does not
+    # see it: both target cases now release correctly and differ only in how
+    # many of the supports they state the binding keeps.
+    assert benchmark["summary"]["over_conservative"] == 0
 
 
 def test_no_case_releases_where_the_readiness_contract_says_abstain(

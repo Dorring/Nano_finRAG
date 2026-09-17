@@ -62,12 +62,25 @@ FIXTURE_SPECS: dict[str, H1Fixture] = {
     ),
     "multi_evidence": H1Fixture(
         fixture_id="tv2-multi-evidence",
-        description="Two bound facts; the routing policy selects MULTI.",
-        query="What was Apple's FY2024 operating margin?",
-        slots=({"slot_id": "margin", "metric": "operating_margin", "period": "FY2024"},),
+        description="Two independent sources corroborating one revenue figure.",
+        query="What was Apple's FY2024 revenue?",
+        slots=({"slot_id": "revenue", "metric": "Revenue", "period": "FY2024"},),
+        # One quantity written two ways, from two physical sources.  1 million
+        # and 1000 thousand are the same figure under the shared financial
+        # semantics, so this is corroboration rather than a conflict -- which is
+        # the shape the sealed label asks for: release, route MULTI, evidence
+        # [Q1, Q2], and an answer containing "Revenue".
+        #
+        # It previously carried one operating_margin slot with Q1 = 100 and
+        # Q2 = 80.  Those are two different quantities for one slot, which is a
+        # conflict and must abstain -- the case next door, `multi_evidence_two`,
+        # already covers exactly that -- and the fixture had no Revenue fact, so
+        # the label's required answer term was unreachable by construction.
+        # `qualitative` was rebuilt separately rather than sharing this object,
+        # because its label asks for the opposite outcome.
         facts={
-            "Q1": _rev("Q1", metric="operating_margin", slots=("margin",), value="100"),
-            "Q2": _rev("Q2", metric="operating_margin", slots=("margin",), value="80"),
+            "Q1": {**_rev("Q1", slots=("revenue",), value="1"), "scale": "million"},
+            "Q2": {**_rev("Q2", slots=("revenue",), value="1000"), "scale": "thousand"},
         },
         routes=(("", ("Q1", "Q2")),),
     ),
