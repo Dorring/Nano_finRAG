@@ -20,7 +20,7 @@ from decimal import Decimal
 from typing import Any
 
 from rag_v2.adaptive.adaptive_contracts import AdaptiveRAGStateV1, EvidencePacketV1
-from rag_v2.generation.validator import _claim_numbers
+from rag_v2.generation.validator import _rendered_locator_numbers
 from src.runtime import trusted_v2_coordinator as coord
 from tests.test_trusted_v2_r4_binder import _fact
 
@@ -143,58 +143,89 @@ def test_the_renderer_still_emits_page_provenance() -> None:
     assert "p.12" in render_calculation_result(result)
 
 
-def test_a_page_number_never_enters_the_claim_set() -> None:
-    """The page is provenance; it is not read at all now, rather than removed."""
+def test_a_page_is_supported_as_a_locator_not_claimed_as_a_finding() -> None:
+    """The page is read from the operand's own field, never from the format."""
 
     packet = _calculation_packet(12)
 
-    claims = {str(item) for item in _claim_numbers("", packet)}
+    locators = {str(item) for item in _rendered_locator_numbers(packet)}
 
-    assert "12" not in claims
-    assert "0.0209" in claims
+    assert locators == {"12"}
 
 
-def test_changing_a_document_name_cannot_change_the_validated_claims() -> None:
-    """The invariant, stated directly.
+def test_a_fabricated_number_is_still_caught_on_a_calculation_route() -> None:
+    """The gate this check exists for, and which C.1 briefly removed.
 
-    The old implementation reconstructed a locator from ``document_name`` and
-    deleted that exact string from the answer, so a name shaped like claim text
-    could remove a claim.  Nothing about the name is read now.
+    An earlier revision read the claim numbers out of the calculation and never
+    looked at the answer text, which made the check a tautology: any fabricated
+    number passed whenever a calculation was present.  That is only sound if the
+    answer is *provably* the deterministic rendering, and that holds for the TV2
+    coordinator but not for every runtime reachable by configuration.
     """
 
-    answers = [
-        _calculation_packet(7),
-        {**_calculation_packet(7),
-         "calculation_result": {**_calculation_packet(7)["calculation_result"],
-                                "operands": [{"name": "op0", "value": "391", "page": 7,
-                                              "document_name": "revenue 999"}]}},
-    ]
+    from rag_v2.generation.contracts import AnswerEnvelopeV1
+    from rag_v2.generation.validator import RuntimeGenerationValidatorV1
 
-    first = [str(item) for item in _claim_numbers("", answers[0])]
-    second = [str(item) for item in _claim_numbers("", answers[1])]
+    packet = {
+        "query_id": "q1",
+        "route": "CALCULATION_SIMPLE",
+        "validation_status": "VERIFIED",
+        "allowed_citation_ids": ["EV-1"],
+        "evidence_items": [{"citation_id": "EV-1", "value": "391", "period": "FY2024"}],
+        "calculation_result": {
+            "value": "0.0209",
+            "operands": [{"name": "a", "value": "391", "page": 7}],
+        },
+    }
+    envelope = AnswerEnvelopeV1(
+        "q1", "CALCULATION_SIMPLE",
+        "Growth rate: 2.09% (fabricated 99999) [EV-1]", ("EV-1",), "mock", "mock",
+    )
 
-    assert first == second
+    report = RuntimeGenerationValidatorV1().validate(packet, envelope)
+
+    assert "GV3_NUMERIC_FIDELITY" in report.failure_codes
+
+
+def test_a_rendered_locator_does_not_trip_the_gate() -> None:
+    """And the reason the locator had to be supported at all."""
+
+    from rag_v2.generation.contracts import AnswerEnvelopeV1
+    from rag_v2.generation.validator import RuntimeGenerationValidatorV1
+
+    packet = {
+        "query_id": "q1",
+        "route": "CALCULATION_SIMPLE",
+        "validation_status": "VERIFIED",
+        "allowed_citation_ids": ["EV-1"],
+        "evidence_items": [{"citation_id": "EV-1", "value": "391", "period": "FY2024"}],
+        "calculation_result": {
+            "value": "0.0209",
+            "operands": [{"name": "a", "value": "391", "page": 7}],
+        },
+    }
+    envelope = AnswerEnvelopeV1(
+        "q1", "CALCULATION_SIMPLE",
+        "current = 391 -- report.pdf, p.7 [EV-1]", ("EV-1",), "mock", "mock",
+    )
+
+    report = RuntimeGenerationValidatorV1().validate(packet, envelope)
+
+    assert report.failure_codes == ()
 
 
 def test_changing_a_page_cannot_change_the_validated_claims() -> None:
-    low = [str(item) for item in _claim_numbers("", _calculation_packet(1))]
-    high = [str(item) for item in _claim_numbers("", _calculation_packet(99999))]
+    """Provenance is read from structure; the answer text is scanned the same
+    way whatever the page is."""
 
-    assert low == high
+    low = {str(item) for item in _rendered_locator_numbers(_calculation_packet(1))}
+    high = {str(item) for item in _rendered_locator_numbers(_calculation_packet(99999))}
+
+    assert low == {"1"} and high == {"99999"}
 
 
-def test_page_zero_is_not_a_claim() -> None:
-    assert "0" not in {str(item) for item in _claim_numbers("", _calculation_packet(0))}
-
-
-def test_a_prose_answer_is_still_fully_claim_bearing() -> None:
-    """No calculation means no provenance, so the text is unchanged.
-
-    C.1 must not create a blind spot: outside a calculation route every number
-    the answer states is still checked.
-    """
-
-    assert _claim_numbers("Revenue was 999", {}) == [Decimal("999")]
+def test_page_zero_is_a_locator_not_a_claim() -> None:
+    assert {str(item) for item in _rendered_locator_numbers(_calculation_packet(0))} == {"0"}
 
 
 def test_the_old_string_removal_helpers_are_gone() -> None:

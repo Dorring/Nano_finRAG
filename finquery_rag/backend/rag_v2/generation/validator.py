@@ -54,31 +54,26 @@ def _iter_evidence(packet: Mapping[str, Any]) -> Iterable[Mapping[str, Any]]:
             yield item
 
 
-def _claim_numbers(answer_text: str, packet: Mapping[str, Any]) -> list[Decimal]:
-    """The numbers an answer *claims*, as opposed to the locators it carries.
+def _rendered_locator_numbers(packet: Mapping[str, Any]) -> list[Decimal]:
+    """Source-locator values the renderer legitimately emits, from structure.
 
-    When the packet has a calculation, the answer is the deterministic
-    rendering -- the routing policy forces a ``CALCULATION`` plan onto the
-    deterministic calculator, so no model writes around it -- and the claim
-    surface is exactly the structured values: the result and its operands.
-    Reading them directly means no locator string is reconstructed and nothing
-    is removed from the text.
+    A rendered operand reads "current = 391,000,000.00 -- report.pdf, p.12": the
+    value is a claim, the 12 is where it came from.  Both are numbers in the
+    answer, so both must be *supported* -- the page is legitimately stated by
+    the rendering, not fabricated by the answer.
 
-    Otherwise the answer is prose and the whole of it is claim-bearing, which is
-    why that branch is unchanged.
+    Derived from the operand's own ``page`` field rather than from the renderer's
+    format, so the validator needs no knowledge of how a locator is written and
+    nothing is removed from any string.
     """
 
+    values: list[Decimal] = []
     calculation = packet.get("calculation_result")
     if not isinstance(calculation, Mapping):
-        return _numbers(answer_text)
-
-    values = list(_numbers(calculation.get("value")))
-    # Ratios are commonly verbalised as percentages, so the rendered percentage
-    # is a claim of the same quantity.
-    values += [item * Decimal("100") for item in list(values)]
+        return values
     for operand in calculation.get("operands", ()):
         if isinstance(operand, Mapping):
-            values.extend(_numbers(operand.get("value")))
+            values.extend(_numbers(operand.get("page")))
     return values
 
 
@@ -184,8 +179,22 @@ class RuntimeGenerationValidatorV1:
         # the deterministic calculator, so the answer *is* the rendering and its
         # claim surface is exactly these values -- nothing is removed from a
         # string, and no locator string is reconstructed.
-        answer_nums = _claim_numbers(answer_without_periods, packet)
+        # Claim surface: the answer text is scanned in full.  An earlier
+        # revision read the numbers out of the calculation and never looked at
+        # the text, which made this check a tautology -- any fabricated number
+        # passed whenever a calculation was present.  That is sound only if the
+        # answer is *provably* the deterministic rendering, and that holds for
+        # the TV2 coordinator but not for every runtime reachable by
+        # configuration.
+        answer_nums = _numbers(answer_without_periods)
         supported = _supported_numbers(packet)
+        # Provenance the renderer emits is answer content too, and supporting it
+        # is what lets the text be scanned in full.  The version before this one
+        # subtracted locator *strings* from the answer, which made the validator
+        # depend on the renderer's format and let a document name delete claim
+        # text; the correction leaned on a routing assumption that does not hold
+        # everywhere.  Reading the operand's own page field has neither problem.
+        supported += _rendered_locator_numbers(packet)
         calculation = packet.get("calculation_result")
         if calculation and isinstance(calculation, Mapping):
             canonical = _numbers(calculation.get("value"))

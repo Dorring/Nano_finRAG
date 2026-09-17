@@ -243,7 +243,13 @@ class EvidencePacketV1:
             document_id=raw.get("document_id"),
             # ``pdf_page`` is the extractor's name and ``page`` the fact store's
             # canonical alias; accept either and keep the value's type.
-            page=_coerce_page(raw.get("page", raw.get("pdf_page"))),
+            # Accept either name, and treat an explicit ``None`` as absent --
+            # ``dict.get(k, default)`` returns the default only when the key is
+            # *missing*, so a producer emitting both with ``page=None`` would
+            # silently discard a present ``pdf_page``.
+            page=_coerce_page(
+                raw["page"] if raw.get("page") is not None else raw.get("pdf_page")
+            ),
             slots=tuple(str(x) for x in slots),
             operands=tuple(str(x) for x in operands),
             calculation_result=None if raw.get("calculation_result") is None else str(raw.get("calculation_result")),

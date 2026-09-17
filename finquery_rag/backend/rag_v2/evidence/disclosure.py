@@ -282,12 +282,27 @@ def project(
         if value is None:
             continue
         permitted = nested.get(field)
-        if permitted is not None and isinstance(value, Mapping):
-            # A named container is still filtered key by key.  Allowing
-            # ``metadata`` whole would let any key added to chunk metadata
-            # later reach a model without anyone deciding it should.
-            value = {key: item for key, item in value.items() if key in permitted}
-        view[field] = value
+        if permitted is None:
+            # Deny by default governs *structure*, not only names.  A permitted
+            # field name is not a licence for whatever is stored under it: a
+            # mapping or sequence there would carry keys nobody approved, so it
+            # is dropped unless this profile explicitly governs that container.
+            if isinstance(value, (Mapping, list, tuple, set, frozenset)):
+                continue
+            view[field] = value
+            continue
+        # A governed container is filtered key by key -- allowing ``metadata``
+        # whole would let any key added to it later reach a model without anyone
+        # deciding it should -- and only one level deep, since a permitted key
+        # whose value is itself a structure is the same hole one level down.
+        if not isinstance(value, Mapping):
+            continue
+        view[field] = {
+            key: item
+            for key, item in value.items()
+            if key in permitted
+            and not isinstance(item, (Mapping, list, tuple, set, frozenset))
+        }
     return view
 
 

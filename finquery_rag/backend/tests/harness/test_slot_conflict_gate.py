@@ -244,3 +244,20 @@ def test_a_percentage_is_not_silently_equated_with_its_decimal_form() -> None:
     """
 
     assert _key("0.12", unit="ratio", scale=None) != _key("12", unit="%", scale=None)
+
+
+def test_a_single_admissible_candidate_is_still_sufficient() -> None:
+    """The arity guard, pinned from below.
+
+    Every "must not be flagged" case in this file supplies two facts, so the
+    guard's lower bound was never tested: relaxing `len(admissible) < 2` to
+    `< 1` passed the whole suite. A one-character change there would fail closed
+    on entirely ordinary evidence -- one candidate for one slot -- with nothing
+    objecting.
+    """
+
+    evaluation, capability = _evaluate([_fact("ONLY", slots=("revenue",), value="100")])
+
+    assert evaluation.decision is EvidenceDecision.SUFFICIENT
+    assert evaluation.supported_slots == ("revenue",)
+    assert capability.last_bound_evidence_ids == ("ONLY",)

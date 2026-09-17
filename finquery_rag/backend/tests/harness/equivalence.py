@@ -220,30 +220,63 @@ def unknown_contract_fields(outcome_type: Any) -> list[str]:
     return sorted(name for name in named if name not in fields)
 
 
-def _require_complete(payload: Mapping[str, Any], side: str) -> None:
-    """Refuse to compare a payload that the contract did not fully populate.
+def _require_classified(outcome: Any, side: str) -> None:
+    """Refuse to compare an outcome whose fields the contract has not placed.
 
-    Without this, a contract that stopped comparing a field -- or one collapsed
-    to compare nothing at all -- makes "the modes agree" and "nothing was
-    compared" produce the same answer: an empty difference list.  The check sits
-    on the comparison path rather than in a test, so every caller gets it.
+    This is deliberately *not* a check that the payload contains every name in
+    ``CONTRACT_FIELDS``.  That check is circular and cannot fire:
+    ``canonicalize_decision_result`` builds the payload *by iterating the same
+    list*, so removing a name removes it from both sides and the guard agrees
+    with itself.  It was written that way once and gave false assurance.
+
+    The non-circular question is the reverse one: does the contract classify
+    every field this outcome actually has?  A field nobody classified is neither
+    compared nor explicitly excused, which is the failure mode this module
+    exists to prevent.
     """
 
-    missing = [name for name in CONTRACT_FIELDS if name not in payload]
+    unclassified = unclassified_fields(type(outcome))
+    if unclassified:
+        raise AssertionError(
+            f"the {side} outcome has fields the contract does not classify: "
+            f"{unclassified}. Classify them as decision-bearing, harness-only "
+            f"or volatile; an unclassified field is neither compared nor "
+            f"excused."
+        )
+
+
+def _require_covers(outcome: Any, payload: Mapping[str, Any], side: str) -> None:
+    """Refuse a payload that does not carry every decision-bearing outcome field.
+
+    Together with :func:`_require_classified` this closes both ways a comparison
+    can silently stop comparing, and neither check is circular:
+
+    * contract truncated -- a name dropped from ``CONTRACT_FIELDS`` shows up as
+      an *unclassified outcome field*, which the type-level check above catches;
+    * builder collapsed -- a payload missing names the outcome has is caught
+      here, because the expected set comes from the outcome type rather than from
+      the list the builder iterates.
+    """
+
+    expected = {name for name in CONTRACT_FIELDS if hasattr(outcome, name)}
+    missing = sorted(expected - set(payload))
     if missing:
         raise AssertionError(
-            f"the {side} decision payload is missing declared contract fields "
-            f"{missing}; comparing it would report agreement about nothing"
+            f"the {side} decision payload is missing fields the outcome "
+            f"carries: {missing}; comparing it would report agreement about "
+            f"something it never read"
         )
 
 
 def decision_differences(legacy: Any, harness: Any) -> list[dict[str, Any]]:
     """Return one entry per decision-bearing field the two modes disagree on."""
 
+    _require_classified(legacy, "legacy")
+    _require_classified(harness, "harness_v3")
     left = canonicalize_decision_result(legacy)
     right = canonicalize_decision_result(harness)
-    _require_complete(left, "legacy")
-    _require_complete(right, "harness_v3")
+    _require_covers(legacy, left, "legacy")
+    _require_covers(harness, right, "harness_v3")
     return [
         {"field": field, "legacy": left.get(field), "harness_v3": right.get(field)}
         for field in sorted(set(left) | set(right))

@@ -1722,7 +1722,6 @@ def test_slot_metric_matches_hardened_against_adversarial_subsets() -> None:
 
 def test_candidate_direct_r4_interleaves_multi_slot_pools_and_respects_entity_priority() -> None:
     from src.pdf_retrieval_v4.candidate_direct_retriever import CandidateDirectRetriever
-    from src.runtime.trusted_v2_r4 import _planner_slot_ids_for_targets
 
     class MockSlotRetriever(CandidateDirectRetriever):
         def __init__(self) -> None:

@@ -332,12 +332,20 @@ def test_a_collapsed_contract_is_refused_rather_than_reported_as_agreement(
 
     Letting the payload be empty makes every fixture equivalent -- the two
     outcomes have no differing fields because they have no fields.  The refusal
-    lives on the comparison path, so every caller gets it, not just this test.
+    lives on the comparison path, so every caller gets it.
+
+    Note what the first check could *not* do: comparing the payload against
+    ``CONTRACT_FIELDS`` is circular, because the builder iterates that same list,
+    so removing a name removes it from both sides.  That check agreed with
+    itself for as long as it existed.  The two assertions below are the pair
+    that works -- the builder-collapsed case is caught by coverage of the
+    outcome's own fields, and a truncated contract by the type-level check.
     """
 
     from tests.harness import equivalence
 
-    monkeypatch.setattr(equivalence, "canonicalize_decision_result", lambda outcome: {})
+    outcome = run_fixture(FIXTURES[0], AgentRuntimeMode.HARNESS_V3)
+    monkeypatch.setattr(equivalence, "canonicalize_decision_result", lambda item: {})
 
-    with pytest.raises(AssertionError, match="missing declared contract fields"):
-        equivalence.decision_differences(object(), object())
+    with pytest.raises(AssertionError, match="missing fields the outcome carries"):
+        equivalence.decision_differences(outcome, outcome)
