@@ -131,13 +131,13 @@ _BINDER_FIELDS: tuple[str, ...] = (
 )
 
 #: SPECIALIST is the field set its prompt actually reads, audited field by field
-#: from ``LocalSpecialistGenerator.render_prompt``:
+#: from ``src/generation/specialist_prompt.py`` (reached in production through
+#: ``LocalSpecialistGenerator.render_prompt``):
 #:
 #:   citation_id, metric (normalized_metric fallback), period, value, unit,
-#:   currency, scale, scope, document_id
+#:   currency, scale, scope, document_id, page
 #:
-#: Two things the prompt *asks for* are deliberately absent, and the difference
-#: matters:
+#: One field the prompt *asks for* is still deliberately absent:
 #:
 #: * ``source_text``.  The prompt has an ``Evidence: {ev['source_text']}`` branch
 #:   that has never fired on this path, because the text lives under
@@ -147,10 +147,20 @@ _BINDER_FIELDS: tuple[str, ...] = (
 #:   need narrative evidence, ``evidence_excerpt`` gets added here as a named,
 #:   bounded, provenance-carrying field -- and this comment is where that
 #:   decision gets recorded.
-#: * ``page``.  The prompt reads ``ev.get("page")`` at top level and falls back
-#:   to 1; the real value is again nested.  Propagating it is H2A-1C's job
-#:   (provenance lineage), and it is added here when it survives that far --
-#:   not before, or the profile would name a field that is always absent.
+#:
+#: ``page`` was the second such field and it is now admitted -- H2A-3B0.  The
+#: deferral condition this comment recorded ("added here when it survives that
+#: far") was met by H2A-2D-2B, which made ``EvidencePacketV1.page`` the single
+#: authority for runtime page provenance and confirmed the value reaches this
+#: repository as a top-level field, not a ``metadata`` key.
+#:
+#: The reason it could not be deferred further is the reason this file exists at
+#: all.  With ``page`` absent from this list, ``project`` never emitted it, so
+#: the prompt's ``page = ev.get("page") or 1`` always took its fallback and every
+#: source line asserted page 1.  The safety held only because two shapes
+#: disagreed -- exactly the accident this module was written to replace, in the
+#: one direction that produces a *false statement* rather than a leak.  A field
+#: the prompt invented was worse than a field it lacked.
 _SPECIALIST_FIELDS: tuple[str, ...] = (
     "evidence_id",
     "citation_id",
@@ -163,6 +173,7 @@ _SPECIALIST_FIELDS: tuple[str, ...] = (
     "scale",
     "scope",
     "document_id",
+    "page",
 )
 
 
@@ -264,8 +275,9 @@ PROFILE_FIELDS: Mapping[EvidenceDisclosureProfile, tuple[str, ...]] = {
 #: carries each operand's full `source_text` and the raw `error_message`, unlike
 #: `to_public_dict()` which substitutes a bounded excerpt.
 #:
-#: Three fields, audited from `LocalSpecialistGenerator.render_prompt`, which
-#: reads `value`, `unit` and `operation` and nothing else.  `to_public_dict()` is
+#: Three fields, audited from `src/generation/specialist_prompt.py` (reached
+#: through `LocalSpecialistGenerator.render_prompt`), which reads `value`, `unit`
+#: and `operation` and nothing else.  `to_public_dict()` is
 #: deliberately *not* used here: "safe for a public response" and "safe for this
 #: model" are different questions asked by different consumers, and conflating
 #: them is how a payload ends up governed by whoever wrote the other one.

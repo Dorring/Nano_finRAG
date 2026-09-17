@@ -11,12 +11,13 @@ from __future__ import annotations
 import hashlib
 import os
 from pathlib import Path
-import re
 import sys
 import time
 from typing import Any
 
 import torch
+
+from src.generation.specialist_prompt import render_specialist_prompt
 
 
 def _resolve_nanochat_repo() -> Path:
@@ -162,62 +163,25 @@ class LocalSpecialistGenerator:
         evidence_items: list[dict[str, Any]],
         calculation_result: dict[str, Any] | None = None,
     ) -> str:
-        """Render prompt adhering strictly to FinancialGenerationViewV1."""
-        lines = [f"[QUESTION]\n{question.strip()}\n", "[VERIFIED EVIDENCE]\n"]
+        """Render prompt adhering strictly to FinancialGenerationViewV1.
 
-        for i, ev in enumerate(evidence_items, start=1):
-            cite_id = ev.get("citation_id", f"E{i}")
-            if not re.match(r"^E\d+$", cite_id):
-                cite_id = f"E{i}"
+        H2A-3B0.  The renderer itself now lives in
+        ``src/generation/specialist_prompt.py``, so that what a model is asked
+        can be asserted on without importing ``torch`` -- this module is
+        excluded from test collection wherever torch is absent, and a prompt
+        assertion that silently never runs is worse than no assertion.
 
-            metric = ev.get("metric") or ev.get("normalized_metric") or "Metric"
-            period = ev.get("period") or "Period"
-            value = str(ev.get("value", "")).strip()
-            unit = ev.get("unit") or "not specified"
-            currency = ev.get("currency") or "not specified"
-            scale = ev.get("scale") or "1"
-            scope = ev.get("scope") or metric
-            source_doc = ev.get("document_id") or "filing"
-            page = ev.get("page") or 1
+        This method is kept, and delegates, because callers and the frozen
+        generation contract reach the prompt through it.  Its behaviour is the
+        renderer's; the one intentional change is that a missing page is no
+        longer rendered as page 1.
+        """
 
-            lines.append(f"[{cite_id}]")
-            lines.append(f"Metric: {metric}")
-            lines.append(f"Period: {period}")
-            lines.append(f"Scope: {scope}")
-            lines.append(f"Value: {value}")
-            lines.append(f"Unit: {unit}")
-            lines.append(f"Currency: {currency}")
-            lines.append(f"Scale: {scale}")
-            lines.append(f"Source: {source_doc}:{page}")
-
-            if "source_text" in ev and ev["source_text"]:
-                lines.append(f"Evidence: {ev['source_text']}")
-            lines.append("")
-
-        if calculation_result:
-            c1_val = str(calculation_result.get("value", "")).strip()
-            c1_unit = calculation_result.get("unit", "")
-            c1_op = calculation_result.get("operation", "calculated_metric")
-            lines.append("[VERIFIED CALCULATION]\n")
-            lines.append("[C1]")
-            lines.append(f"Operation: {c1_op}")
-            lines.append(f"Value: {c1_val} {c1_unit}".strip())
-            lines.append("")
-
-        lines.append("[ANSWER RULES]")
-        lines.append("1. Use only the verified evidence and calculation above.")
-        lines.append("2. Do not introduce outside financial knowledge.")
-        lines.append(
-            "3. Preserve supplied numbers, periods, units, currencies and scales exactly."
+        return render_specialist_prompt(
+            question,
+            evidence_items,
+            calculation_result,
         )
-        lines.append("4. Do not recalculate canonical calculation results.")
-        lines.append("5. Cite factual claims using the supplied [E#] / [C#] IDs.")
-        lines.append(
-            "6. If required evidence is missing, explicitly state that the provided evidence is insufficient."
-        )
-        lines.append("7. Answer concisely.")
-
-        return "\n".join(lines)
 
     def generate(
         self,

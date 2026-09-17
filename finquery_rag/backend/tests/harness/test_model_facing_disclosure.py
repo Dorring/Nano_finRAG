@@ -132,15 +132,23 @@ def test_the_binder_sees_more_than_the_specialist_and_both_are_closed() -> None:
 
 
 def test_the_specialist_profile_is_what_its_prompt_reads() -> None:
-    """Audited from ``LocalSpecialistGenerator.render_prompt`` field by field.
+    """Audited from ``src/generation/specialist_prompt.py`` field by field.
 
-    Two fields the prompt *asks for* are deliberately absent:
+    One field the prompt *asks for* is still deliberately absent:
 
     - ``source_text``: the prompt's ``Evidence: {ev['source_text']}`` branch has
       never fired on this path, because the text is nested under ``metadata``.
       Adding it would broaden model exposure while claiming to unify it.
-    - ``page``: the prompt reads ``ev.get("page")`` at the top level and falls
-      back to 1.  It joins the profile when H2A-1C makes it survive that far.
+
+    ``page`` was the second such field and is now admitted -- H2A-3B0.  The
+    deferral this test used to record ("it joins the profile when H2A-1C makes
+    it survive that far") was met by H2A-2D-2B, which made
+    ``EvidencePacketV1.page`` the single authority for page provenance.  Leaving
+    it out was not the conservative choice it appeared to be: with ``page``
+    absent from the profile, ``project`` never emitted it, so the prompt's
+    ``ev.get("page") or 1`` fallback fired on every call and every source line
+    asserted page 1.  The field being *missing* was what produced the false
+    statement -- see ``test_specialist_page_disclosure.py``.
     """
 
     specialist = set(allowed_fields(EvidenceDisclosureProfile.SPECIALIST))
@@ -157,9 +165,9 @@ def test_the_specialist_profile_is_what_its_prompt_reads() -> None:
         "scale",
         "scope",
         "document_id",
+        "page",
     }
     assert "source_text" not in specialist
-    assert "page" not in specialist
 
 
 # --- a real production boundary ----------------------------------------------
