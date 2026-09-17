@@ -14,7 +14,11 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from rag_v2.adaptive import AdaptiveRAGStateV1
-from rag_v2.evidence.disclosure import EvidenceDisclosureProfile, project
+from rag_v2.evidence.disclosure import (
+    EvidenceDisclosureProfile,
+    project,
+    project_calculation,
+)
 from src.generation.generator_routing_policy import (
     GeneratorRouteDecision,
     GeneratorRoutingPolicy,
@@ -289,7 +293,11 @@ class TrustedV2GenerationCapability:
         method = getattr(self.specialist, "generate", None)
         if not callable(method):
             raise CandidateGenerationCapabilityError("financial_specialist_not_callable")
-        calculation_payload = calculation.to_dict() if calculation else None
+        calculation_payload = (
+            project_calculation(calculation.to_dict(), profile=EvidenceDisclosureProfile.SPECIALIST)
+            if calculation
+            else None
+        )
         self.specialist_calls += 1
         # Project before the boundary, not after.  ``items`` are whole evidence
         # packets, whose ``metadata`` bag carries the extracted source text;
@@ -304,8 +312,16 @@ class TrustedV2GenerationCapability:
         # ``last_disclosed_fields`` records which fields crossed, by name only
         # and never by value, so a disclosure question can be answered from the
         # snapshot without putting evidence content into a trace.
+        # Namespaced by artifact type.  The audit found the trace accounting for
+        # evidence fields while the calculation payload crossed unrecorded, so
+        # "what was this model allowed to see" had an incomplete answer.  Field
+        # names only, never values.
         self.last_disclosed_fields = tuple(
-            sorted({field for view in projected for field in view})
+            [f"evidence.{field}" for field in sorted({f for view in projected for f in view})]
+            + [
+                f"calculation.{field}"
+                for field in sorted(calculation_payload or {})
+            ]
         )
         raw = method(state.normalized_query, projected, calculation_payload)
         metadata: dict[str, Any] = {}

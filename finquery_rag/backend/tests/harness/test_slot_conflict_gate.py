@@ -178,6 +178,41 @@ def test_a_different_period_candidate_is_not_a_same_slot_conflict() -> None:
 # answer a question it could answer.  Both directions are pinned here.
 
 
+#: The financial semantic contract, authored here rather than generated.
+#:
+#: The helper below calls the production `_fact_value_key`, so any expectation it
+#: produced would be the function agreeing with itself.  These pairs state the
+#: *domain* claim instead -- which quantities are the same and which are not --
+#: and the test asks whether the runtime agrees.  They are the same distinctions
+#: the conflict contract was sealed on, written down where the implementation
+#: cannot reach them.
+EQUIVALENT_QUANTITIES: tuple[tuple[dict, dict], ...] = (
+    # 1000 million is 1 billion.  Written two ways, one quantity.
+    ({"value": "1000", "scale": "million"}, {"value": "1", "scale": "billion"}),
+    # Decimal precision is presentation, not quantity.
+    ({"value": "1.000", "scale": "billion"}, {"value": "1000.0", "scale": "million"}),
+    # Corroboration: two sources, the same figure.
+    ({"value": "391"}, {"value": "391"}),
+)
+
+DISTINCT_QUANTITIES: tuple[tuple[dict, dict], ...] = (
+    # A different currency is a different quantity, whatever the digits.
+    ({"value": "1000", "scale": "million", "currency": "USD"},
+     {"value": "1", "scale": "billion", "currency": "EUR"}),
+    # A share count is not a currency amount.
+    ({"value": "1", "scale": "billion", "unit": "shares"},
+     {"value": "1", "scale": "billion", "unit": "USD"}),
+    # A ratio is not its percentage form: equating them on numeric coincidence
+    # would merge a ratio with a percentage point.
+    ({"value": "0.12", "unit": "ratio", "scale": None},
+     {"value": "12", "unit": "%", "scale": None}),
+    # An unrecognised scale is a qualifier, not a magnitude.
+    ({"value": "1", "scale": "adjusted-billion"}, {"value": "1", "scale": "billion"}),
+    # A different figure is a different figure.
+    ({"value": "391"}, {"value": "383"}),
+)
+
+
 def _key(value: str, *, unit: str = "USD", currency: str = "USD", scale: Any = "million") -> str:
     from src.runtime.trusted_v2_binder import SemanticEvidenceEvaluationCapability
 
@@ -192,58 +227,40 @@ def _key(value: str, *, unit: str = "USD", currency: str = "USD", scale: Any = "
     return key
 
 
-def test_a_known_scale_is_folded_into_the_quantity() -> None:
-    assert _key("1000", scale="million") == _key("1", scale="billion")
-
-
-def test_a_different_currency_is_a_different_quantity() -> None:
-    """Equal numbers are not equal amounts.
-
-    1e9 USD and 1e9 EUR normalise to the same numeric value; treating them as
-    agreement would let one currency's figure be bound for the other's slot.
-    """
-
-    assert _key("1000", scale="million", currency="USD") != _key(
-        "1", scale="billion", currency="EUR"
+def _key_for(spec: dict) -> str:
+    return _key(
+        spec.get("value", "100"),
+        unit=spec.get("unit", "USD"),
+        currency=spec.get("currency", "USD"),
+        scale=spec.get("scale", "million"),
     )
 
 
-def test_a_different_unit_is_a_different_quantity() -> None:
-    """A share count is not a currency amount."""
+@pytest.mark.parametrize("left,right", EQUIVALENT_QUANTITIES)
+def test_quantities_the_domain_calls_equal_share_a_key(left: dict, right: dict) -> None:
+    assert _key_for(left) == _key_for(right)
 
-    assert _key("1", scale="billion", unit="shares") != _key("1", scale="billion", unit="USD")
+
+@pytest.mark.parametrize("left,right", DISTINCT_QUANTITIES)
+def test_quantities_the_domain_calls_different_do_not_share_a_key(
+    left: dict, right: dict
+) -> None:
+    assert _key_for(left) != _key_for(right)
 
 
-def test_the_same_quantity_at_different_precision_is_the_same_quantity() -> None:
-    """1.000 billion and 1000.0 million are one number written two ways.
+def test_the_folded_magnitude_is_the_literal_quantity_not_a_derived_one() -> None:
+    """The one expectation worth pinning as a value rather than a relation.
 
-    Decimal multiplication preserves significant digits, so a naive string
-    comparison of the product sees "1000000000.000" and "1000000000.00" as
-    different.
+    Key equality says "these agree"; it does not say they agree on the *right*
+    number.  A canonicalizer that folded every scale to the same constant would
+    satisfy every equivalence above.  This pins the magnitude itself, against a
+    literal written here.
     """
 
-    assert _key("1.000", scale="billion") == _key("1000.0", scale="million")
-
-
-def test_an_unrecognised_scale_stays_a_difference() -> None:
-    """'adjusted billion' is not a magnitude, it is a qualifier.
-
-    Treating an unknown scale keyword as a multiplier would be a silent
-    semantic conversion -- the thing scale normalisation must not become.
-    """
-
-    assert _key("1", scale="adjusted-billion") != _key("1", scale="billion")
-
-
-def test_a_percentage_is_not_silently_equated_with_its_decimal_form() -> None:
-    """0.12 and 12% may or may not be the same field.
-
-    Normalising scale must not quietly become unit normalisation: equating these
-    on numeric coincidence would merge a ratio with a percentage point.  If the
-    financial contract ever declares them canonical, this changes deliberately.
-    """
-
-    assert _key("0.12", unit="ratio", scale=None) != _key("12", unit="%", scale=None)
+    assert _key("1000", scale="million").startswith("1e+9|")
+    assert _key("1", scale="billion").startswith("1e+9|")
+    # And an unscaled value is left alone rather than being folded by default.
+    assert _key("391", scale=None).startswith("391|")
 
 
 def test_a_single_admissible_candidate_is_still_sufficient() -> None:

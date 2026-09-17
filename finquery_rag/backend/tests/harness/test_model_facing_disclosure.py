@@ -238,9 +238,14 @@ def test_the_disclosure_is_recorded_by_field_name_only() -> None:
 
     snapshot = capability.trace_snapshot()
     assert "disclosed_fields" in snapshot
-    assert set(snapshot["disclosed_fields"]) <= set(
-        allowed_fields(EvidenceDisclosureProfile.SPECIALIST)
-    )
+    # Namespaced by artifact type, so a calculation field cannot be mistaken for
+    # an evidence field in the trace.
+    disclosed = set(snapshot["disclosed_fields"])
+    assert all(
+        name.split(".", 1)[-1] in set(allowed_fields(EvidenceDisclosureProfile.SPECIALIST))
+        or name.startswith("calculation.")
+        for name in disclosed
+    ), disclosed
     assert RAW_TEXT not in repr(snapshot)
 
 
@@ -428,3 +433,134 @@ def test_narrowing_the_v1_profile_to_the_formatter_alone_changes_answers() -> No
 
     assert item.document_name == "report.pdf"
     assert item.page == 3
+
+
+# --- calculation payloads: the second artifact type ---------------------------
+#
+# The audit found `_call_specialist` applying two policies in one call.  The
+# evidence items beside it were projected; the calculation payload was
+# `CalculationResult.to_dict()` -- the internal diagnostics form, which carries
+# each operand's full `source_text` and the raw `error_message`, where
+# `to_public_dict()` substitutes a bounded excerpt.
+#
+# The shipping router happens not to reach that branch, because `_route` forces
+# the deterministic calculator when the plan is a calculation and the calculator
+# refuses a plan that is not.  That is two facts staying true, not a boundary --
+# which is the pattern this module was written to replace.
+
+CALC_SECRET = "RAW OPERAND SOURCE TEXT FROM FILING PAGE 7"
+CALC_ERROR = "INTERNAL EXCEPTION /var/lib/secret.py"
+
+
+class _RecordingSpecialistWithCalculation:
+    """Records the calculation payload as well as the evidence items."""
+
+    def __init__(self) -> None:
+        self.calculations: list[Any] = []
+
+    def generate(self, question: str, evidence_items: list[dict], calculation_result: Any = None) -> str:
+        self.calculations.append(calculation_result)
+        return "recorded"
+
+
+def _state_with_calculation() -> Any:
+    from decimal import Decimal
+
+    from rag_v2.adaptive.adaptive_contracts import AdaptiveRAGStateV1, EvidencePacketV1
+    from src.domain.calculation import (
+        CalculationOperation, CalculationOperand, CalculationResult, CalculationStatus,
+    )
+
+    calculation = CalculationResult(
+        status=CalculationStatus.EXECUTED,
+        operation=CalculationOperation.DIFFERENCE,
+        value=Decimal("8"),
+        unit="USD",
+        operands=(
+            CalculationOperand(name="current", value=Decimal("391"), source_text=CALC_SECRET),
+        ),
+        error_message=CALC_ERROR,
+    )
+    state = AdaptiveRAGStateV1.new("r", "Why did revenue change?")
+    # Not CALCULATION, so `_route` does not force the deterministic calculator --
+    # i.e. the state a direct caller could construct.
+    state.intent = "MULTI_EVIDENCE"
+    state.add_evidence(
+        [
+            EvidencePacketV1.from_mapping({**_evidence(), "evidence_id": "e1"}),
+            EvidencePacketV1.from_mapping({**_evidence(), "evidence_id": "e2"}),
+        ]
+    )
+    state.bound_evidence_ids = ["e1", "e2"]
+    state._calculation_result_obj = calculation
+    state.calculation_result_id = calculation.calculation_id
+    return state
+
+
+def test_the_specialist_calculation_payload_is_projected_not_raw() -> None:
+    """The P0: one call, two policies, until now."""
+
+    from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
+
+    specialist = _RecordingSpecialistWithCalculation()
+    TrustedV2GenerationCapability(specialist=specialist).generate(_state_with_calculation())
+
+    assert specialist.calculations, "the specialist must actually have been called"
+    payload = specialist.calculations[0]
+    assert payload is not None, "the branch under test must be reached"
+
+    assert CALC_SECRET not in repr(payload), "raw operand text crossed the boundary"
+    assert CALC_ERROR not in repr(payload), "raw error text crossed the boundary"
+    assert "operands" not in payload
+    assert set(payload) == {"operation", "unit", "value"}
+
+
+def test_the_specialist_still_receives_the_calculation_fields_it_reads() -> None:
+    """Governed, not narrowed: the prompt reads these three and still gets them."""
+
+    from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
+
+    specialist = _RecordingSpecialistWithCalculation()
+    TrustedV2GenerationCapability(specialist=specialist).generate(_state_with_calculation())
+
+    assert specialist.calculations[0] == {
+        "operation": "difference",
+        "unit": "USD",
+        "value": "8",
+    }
+
+
+def test_the_calculation_fields_are_named_in_the_trace() -> None:
+    """The audit found the trace accounting for evidence but silent on calculation.
+
+    "What was this model allowed to see" has to have a complete answer, and it
+    has to be answerable by name without carrying values.
+    """
+
+    from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
+
+    capability = TrustedV2GenerationCapability(
+        specialist=_RecordingSpecialistWithCalculation()
+    )
+    capability.generate(_state_with_calculation())
+    fields = capability.trace_snapshot()["disclosed_fields"]
+
+    assert "calculation.operation" in fields
+    assert "calculation.value" in fields
+    assert any(name.startswith("evidence.") for name in fields)
+    assert CALC_SECRET not in repr(fields)
+
+
+def test_a_profile_without_a_calculation_allowlist_receives_nothing() -> None:
+    """Deny by default: an unconsidered boundary gets None, not the payload."""
+
+    from rag_v2.evidence.disclosure import EvidenceDisclosureProfile, project_calculation
+
+    payload = {"operation": "difference", "value": "8", "operands": [{"source_text": CALC_SECRET}]}
+
+    for profile in EvidenceDisclosureProfile:
+        view = project_calculation(payload, profile=profile)
+        if profile is EvidenceDisclosureProfile.SPECIALIST:
+            assert view == {"operation": "difference", "value": "8"}
+        else:
+            assert view is None, profile

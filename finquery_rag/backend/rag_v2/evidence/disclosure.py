@@ -41,6 +41,19 @@ class UnknownDisclosureProfile(ValueError):
     """Raised when a caller asks for a profile this authority does not define."""
 
 
+class DisclosureArtifactType(str, Enum):
+    """The kinds of authoritative object a profile can be asked to project.
+
+    One authority, one role per boundary, one allowlist per artifact type.
+    Introducing a second authority for calculations would recreate the split
+    this module exists to remove: the question "what may this model see" would
+    again have two answers depending on which authority you asked.
+    """
+
+    EVIDENCE = "EVIDENCE"
+    CALCULATION = "CALCULATION"
+
+
 class EvidenceDisclosureProfile(str, Enum):
     """The model boundaries that may receive evidence.
 
@@ -241,6 +254,57 @@ PROFILE_FIELDS: Mapping[EvidenceDisclosureProfile, tuple[str, ...]] = {
     EvidenceDisclosureProfile.V1_ANSWER: _V1_ANSWER_FIELDS,
     EvidenceDisclosureProfile.INGEST_TABLE: _INGEST_TABLE_FIELDS,
 }
+
+
+#: Calculation payloads, governed by the same authority and the same role.
+#:
+#: The audit found `_call_specialist` applying two policies in one call: the
+#: evidence items beside it were projected, while the calculation payload was
+#: `CalculationResult.to_dict()` -- the *internal diagnostics* form, which
+#: carries each operand's full `source_text` and the raw `error_message`, unlike
+#: `to_public_dict()` which substitutes a bounded excerpt.
+#:
+#: Three fields, audited from `LocalSpecialistGenerator.render_prompt`, which
+#: reads `value`, `unit` and `operation` and nothing else.  `to_public_dict()` is
+#: deliberately *not* used here: "safe for a public response" and "safe for this
+#: model" are different questions asked by different consumers, and conflating
+#: them is how a payload ends up governed by whoever wrote the other one.
+CALCULATION_PROFILE_FIELDS: Mapping[EvidenceDisclosureProfile, tuple[str, ...]] = {
+    EvidenceDisclosureProfile.SPECIALIST: (
+        "operation",
+        "unit",
+        "value",
+    ),
+}
+
+
+def project_calculation(
+    calculation: Mapping[str, Any],
+    *,
+    profile: EvidenceDisclosureProfile | str,
+) -> dict[str, Any] | None:
+    """Project an authoritative calculation payload onto a model-facing view.
+
+    Deny by default, like the evidence projection.  A profile with no entry for
+    calculations gets ``None`` -- not the payload, and not a partial guess -- so
+    a boundary that has not been considered cannot receive one by omission.
+    """
+
+    resolved = EvidenceDisclosureProfile(profile)
+    permitted = CALCULATION_PROFILE_FIELDS.get(resolved)
+    if permitted is None:
+        return None
+    view: dict[str, Any] = {}
+    for field in permitted:
+        value = calculation.get(field)
+        if value is None:
+            continue
+        # Same rule as the evidence projection: a permitted name is not a licence
+        # for a structure stored under it.
+        if isinstance(value, (Mapping, list, tuple, set, frozenset)):
+            continue
+        view[field] = value
+    return view
 
 
 def allowed_fields(profile: EvidenceDisclosureProfile | str) -> tuple[str, ...]:
