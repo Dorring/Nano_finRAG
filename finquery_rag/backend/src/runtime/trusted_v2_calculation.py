@@ -128,9 +128,26 @@ class DeterministicCalculationCapability:
         self.executor = executor
         self.calls = 0
         self.last_result: CalculationResult | None = None
-        self.last_calculation_id: str | None = None
         self.last_operand_evidence_ids: tuple[str, ...] = ()
         self._last_error: str | None = None
+
+    @property
+    def last_calculation_id(self) -> str | None:
+        """The last calculation's identity, derived from the result that owns it.
+
+        H2A-2D-3B.  This was a stored field kept in step with `last_result` by
+        hand -- assigned the id on success and reset to ``None`` on failure --
+        which is a second truth with a lifecycle.  A paired assignment is only
+        correct while both halves are remembered, and the failure mode is not a
+        wrong value but a *stale* one: an id from a previous execution surviving
+        into a run whose calculation never produced an id.
+
+        Reading through to the result removes the lifecycle entirely.  A BLOCKED
+        or FAILED result has no id to read, so the reset is not a step anyone can
+        forget.
+        """
+
+        return None if self.last_result is None else self.last_result.calculation_id
 
     @staticmethod
     def _plan(state: AdaptiveRAGStateV1) -> SupervisorPlan:
@@ -291,7 +308,6 @@ class DeterministicCalculationCapability:
                 error_message="Binder-admitted operands are incomplete",
             )
             self.last_result = result
-            self.last_calculation_id = None
             self.last_operand_evidence_ids = tuple(
                 operand.evidence_chunk_id for operand in operands
             )
@@ -352,7 +368,6 @@ class DeterministicCalculationCapability:
         # status check made at the call site -- the same fact, but living
         # beside the result rather than in it, so any other producer could
         # pair a BLOCKED result with a non-None id.
-        self.last_calculation_id = result.calculation_id
         state.calculation_result = result.to_dict()
         state._calculation_result_obj = result
         return result
