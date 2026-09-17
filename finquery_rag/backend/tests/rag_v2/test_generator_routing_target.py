@@ -44,6 +44,8 @@ def _fact(
     unit: str | None = "USD",
     currency: str | None = "USD",
     scale: str | None = None,
+    entity: str | None = "Apple",
+    scope: str | None = "consolidated",
 ) -> dict[str, Any]:
     return {
         "metric": metric,
@@ -52,6 +54,8 @@ def _fact(
         "unit": unit,
         "currency": currency,
         "scale": scale,
+        "entity": entity,
+        "scope": scope,
     }
 
 
@@ -166,6 +170,99 @@ def test_a_qualitative_question_keeps_a_free_form_target() -> None:
     )
 
     assert decision.route_name is RouteName.QUALITATIVE
+    assert decision.target is GeneratorTarget.LOCAL_SPECIALIST
+
+
+# --- the identity is the semantic slot, not a coincidence of numbers ---------
+
+
+def test_two_issuers_stating_the_same_figure_are_not_one_fact() -> None:
+    """Same metric, period and number; two companies.
+
+    `1 million` from Company A and `1 million` from Company B are not one fact
+    stated twice, and rendering either alone would attribute one issuer's figure
+    to the other.  Metric, period and quantity are not sufficient identity --
+    which is why the route now asks the same question the binder asks when it
+    decides which slot a fact belongs to.
+    """
+
+    decision = _route(
+        "Compare the two companies' revenue.",
+        [_fact(entity="Apple"), _fact(entity="Microsoft")],
+    )
+
+    assert decision.target is not GeneratorTarget.DETERMINISTIC_RENDERER
+
+
+def test_two_scopes_stating_the_same_figure_are_not_one_fact() -> None:
+    decision = _route(
+        "Compare consolidated and segment revenue.",
+        [_fact(scope="consolidated"), _fact(scope="segment")],
+    )
+
+    assert decision.target is not GeneratorTarget.DETERMINISTIC_RENDERER
+
+
+def test_two_unspecified_entities_are_still_one_fact() -> None:
+    """The guard must not be so strict that ordinary corroboration stops working.
+
+    Neither source names an issuer; they agree on everything the slot is made
+    of, so they are one fact with two supports.
+    """
+
+    decision = _route(
+        "What was revenue?",
+        [
+            _fact(value="1", scale="million", entity=None),
+            _fact(value="1000", scale="thousand", entity=None),
+        ],
+    )
+
+    assert decision.target is GeneratorTarget.DETERMINISTIC_RENDERER
+
+
+# --- a calculation keeps numeric authority regardless of support count -------
+
+
+def _calculation() -> dict[str, Any]:
+    return {"status": "executed", "value": "2.09", "unit": "percent"}
+
+
+def test_a_calculation_with_several_supports_still_uses_the_calculator() -> None:
+    """Operand count and support count are not reasons to consult a generator.
+
+    This branch read `has_explanation_terms or len(evidence_items) > 1`, so a
+    calculation with two corroborating supports for one operand -- or two
+    operands -- was handed to a free-form generator.  That is the same defect as
+    MULTI -> Specialist, in a second place: numeric authority decided by how
+    many evidence items happened to be admitted.
+    """
+
+    decision = _route(
+        "What is the total revenue?",
+        [_fact(value="1", scale="million"), _fact(value="1000", scale="thousand")],
+        calculation_result=_calculation(),
+        route_hint="CALCULATION",
+    )
+
+    assert decision.target is GeneratorTarget.DETERMINISTIC_CALCULATOR
+
+
+def test_a_calculation_that_asks_for_an_explanation_may_still_synthesise() -> None:
+    """The genuine capability boundary is retained, and it is not cardinality.
+
+    A request for prose cannot be served as `metric (period): value`, so it
+    keeps the free-form target -- on the wording, not on the count.
+    """
+
+    decision = _route(
+        "Explain why the growth rate changed.",
+        [_fact(value="1", scale="million"), _fact(value="1000", scale="thousand")],
+        calculation_result=_calculation(),
+        route_hint="CALCULATION",
+    )
+
+    assert decision.route_name is RouteName.CALCULATION_WITH_EXPLANATION
     assert decision.target is GeneratorTarget.LOCAL_SPECIALIST
 
 

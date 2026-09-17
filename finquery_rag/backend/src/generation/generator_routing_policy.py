@@ -22,9 +22,15 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any
+from typing import Any, Mapping
 
-from rag_v2.contracts.financial_semantics import quantity_identity
+from rag_v2.contracts.financial_semantics import quantity_identity, text_identity
+from rag_v2.supervisor.semantic_alignment import (
+    canonical_entity_id,
+    canonical_metric_id,
+    canonical_period_id,
+    canonical_scope_id,
+)
 
 
 class GeneratorTarget(str, Enum):
@@ -66,46 +72,76 @@ class GeneratorRoutingPolicy:
     """Evaluates query and evidence conditions to select generator target."""
 
     @staticmethod
+    def _semantic_slot_identity(item: Mapping[str, Any]) -> tuple[str, str, str, str, str]:
+        """The semantic slot an admitted item belongs to, and its quantity.
+
+        Composed from the repository's existing canonical identities --
+        `canonical_metric_id`, `canonical_period_id`, `canonical_entity_id`,
+        `canonical_scope_id` -- rather than from a field tuple maintained here.
+        Those are the same identities `_fact_matches_slot` uses to decide which
+        slot a fact belongs to, so "one canonical fact" means the same thing in
+        both places by construction instead of by agreement.
+
+        Each falls back to normalised text when the vocabulary does not know the
+        value, and the fallback direction is the conservative one: two spellings
+        of one entity that the vocabulary cannot resolve read as different
+        slots, which costs a deterministic answer and cannot produce a wrong
+        one. Merging on a coincidence of text is the failure this prevents --
+        `Company A Revenue FY2024 = 100` and `Company B Revenue FY2024 = 100`
+        must not be one fact.
+        """
+
+        def _first(*keys: str) -> Any:
+            for key in keys:
+                value = item.get(key)
+                if value is not None and str(value).strip():
+                    return value
+            return None
+
+        metric = _first("metric", "normalized_metric", "raw_metric")
+        period = _first("period", "normalized_period", "raw_period")
+        entity = _first("entity", "company", "ticker")
+        scope = _first("scope")
+
+        return (
+            canonical_metric_id(metric) or text_identity(metric),
+            canonical_period_id(period) or text_identity(period),
+            canonical_entity_id(entity) or text_identity(entity),
+            canonical_scope_id(scope) or text_identity(scope),
+            quantity_identity(
+                item.get("value")
+                if item.get("value") is not None
+                else item.get("parsed_numeric_value"),
+                scale=item.get("scale"),
+                unit=item.get("unit"),
+                currency=item.get("currency"),
+            ),
+        )
+
+    @staticmethod
     def states_one_canonical_fact(evidence_items: list[dict[str, Any]]) -> bool:
         """Whether the admitted state reduces to one fact the renderer can state.
 
         This is the capability question, asked of the *state* rather than of a
         count: the deterministic structured renderer emits one metric, one
-        period and one value, so a state it can express honestly is one where
-        every admitted item names the same metric, the same period, and -- once
-        the H2A-2B shared semantics have canonicalised it -- the same quantity.
+        period, one value and one citation set, so a state it can express
+        honestly is one where every admitted item belongs to the same semantic
+        slot and states the same quantity once H2A-2B's shared semantics have
+        canonicalised it.
 
-        Metric and period and quantity are one question here rather than three
-        because for a *renderer* they are one: any disagreement among them means
-        a single rendering would have to drop or choose, and both are dishonest.
-        ``1 million`` and ``1000 thousand`` are therefore the same fact; ``1
-        million`` and ``1200 thousand`` are not, however alike they look.
-
-        The canonicalisation is the shared one, not a second comparison: a
-        routing rule that decided two sources disagreed because they spelled
-        their scale differently would manufacture the conflict the binding layer
-        exists to resolve.
+        Metric, period, entity, scope and quantity are one question here rather
+        than five because for a *renderer* they are one: any disagreement among
+        them means a single rendering would have to drop or choose, and both are
+        dishonest. ``1 million`` and ``1000 thousand`` are therefore the same
+        fact; ``1 million`` and ``1200 thousand`` are not, however alike they
+        look. Entity and scope joined the identity in H2A-2C-2, because a
+        quantity that matches across two issuers is two facts, not one.
         """
 
         if not evidence_items:
             return False
         keys = {
-            (
-                str(item.get("metric") or item.get("normalized_metric") or "")
-                .strip()
-                .casefold(),
-                str(item.get("period") or item.get("normalized_period") or "")
-                .strip()
-                .casefold(),
-                quantity_identity(
-                    item.get("value")
-                    if item.get("value") is not None
-                    else item.get("parsed_numeric_value"),
-                    scale=item.get("scale"),
-                    unit=item.get("unit"),
-                    currency=item.get("currency"),
-                ),
-            )
+            GeneratorRoutingPolicy._semantic_slot_identity(item)
             for item in evidence_items
         }
         return len(keys) == 1
@@ -131,7 +167,8 @@ class GeneratorRoutingPolicy:
         norm_hint = (route_hint or "").upper()
 
         if "CALCULATION" in norm_hint or calculation_result is not None:
-            # Check if query requests qualitative explanation or comparison along with calculation
+            # Check if the query requests qualitative explanation or comparison
+            # along with the calculation.
             has_explanation_terms = any(
                 term in query.lower()
                 for term in [
@@ -146,7 +183,22 @@ class GeneratorRoutingPolicy:
                     "trend",
                 ]
             )
-            if has_explanation_terms or len(evidence_items) > 1:
+            # H2A-2C-2: cardinality is not a reason to hand away numeric
+            # authority.  This read `has_explanation_terms or
+            # len(evidence_items) > 1`, which sent a calculation to a free-form
+            # generator whenever it had more than one evidence item -- the same
+            # defect family as MULTI -> Specialist, in a second branch.  Two
+            # corroborating supports for *one* operand, or two operands, are
+            # exactly what the deterministic calculator is for.
+            #
+            # The runtime already refuses this at a higher layer
+            # (`trusted_v2_generation.py:_route` forces the deterministic
+            # calculator for a CALCULATION plan), so the coupling was inert
+            # there -- the correction belongs here regardless, because the
+            # override is a second rule compensating for this one, and a policy
+            # that is only correct when something above it disagrees is not
+            # correct.
+            if has_explanation_terms:
                 return GeneratorRouteDecision(
                     route_name=RouteName.CALCULATION_WITH_EXPLANATION,
                     target=GeneratorTarget.LOCAL_SPECIALIST,
