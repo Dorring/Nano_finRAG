@@ -180,10 +180,17 @@ The sealed gold, read exactly (`labels.jsonl` / `questions.jsonl`, unchanged):
 
 The harness fixture for `multi_evidence` (`tests/benchmark/tv2_readiness_cases.py:63`)
 supplies **one** slot `margin/operating_margin/FY2024` with `Q1 = "100"` and
-`Q2 = "80"` — and **no Revenue fact at all**, while the same fixture object is
-reused for `qualitative`.
+`Q2 = "80"` — and **no Revenue fact at all**.
 
-Two independent reasons it cannot satisfy its own label whatever SlotBinding does:
+`qualitative` is a *separate* fixture object, not the same one: it carries
+identical slots, identical facts and identical routes, and only the query text
+differs, while its label asks for the opposite outcome (abstain). So the two
+cases present the same evidence under opposite labels, and at most one of them
+is reachable — the mismatch count was guaranteed non-zero before any runtime
+behaviour was considered.
+
+Two independent reasons `multi_evidence` cannot satisfy its own label, whatever
+SlotBinding does:
 
 1. `required_answer_terms` is checked only on release (`scoring.py:104`), and the
    answer for a slot whose metric is `operating_margin` cannot contain
@@ -268,6 +275,25 @@ Routing either case to `MULTI` therefore trades one failure for two. **The two
 readiness gaps cannot be closed by binding alone**; the harness's specialist
 stand-in has to be able to carry evidence, or the routing target for a
 single-canonical-value multi-support slot has to stop being the specialist.
+
+### The sequencing consequence
+
+This is not a separate issue to park: it decides the order of the remaining
+commits. Both target cases release correctly *today* because they keep one
+support and therefore route `STRUCTURED_SINGLE`, which the deterministic
+renderer serves. Teaching the binding to keep both supports makes
+`len(evidence_items) == 2`, which routes `MULTI`, which hands the answer to the
+constant stub — so the release that is currently correct would flip to
+`NOT_RELEASED` on `SCV_METRIC_UNSUPPORTED`, `over_conservative` would climb back
+off zero, and the benchmark would get *worse* while the underlying capability
+got better.
+
+Verified by probe on the two-slot fixture above, which reaches the same code
+path today.
+
+So the binding change is correct and required, but it must not land before the
+`MULTI` target is able to produce a grounded answer, or the phase's own
+instrument will report a regression that is not one.
 
 That second option is a real design question and belongs to §2's B-vs-C
 distinction: `cross_source` is *one* slot with *two supports* — one canonical
