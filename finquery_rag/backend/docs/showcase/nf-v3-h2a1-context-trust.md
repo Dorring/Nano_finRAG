@@ -2,7 +2,7 @@
 
 Status: **SEALED**
 
-Frozen at `c51ab6f817d5a1b29eb2f48af7dad4fea82a426e`
+Frozen at `027082262549e5338509dfaa06353eb49c102818`
 (`feat/context-trust-runtime-trace`, clean tree, 0 ahead / 0 behind `origin`).
 
 H2A-1 is not a feature phase. It is five trust contracts that decide **what the
@@ -136,13 +136,46 @@ the answer *is* the rendering (verified byte-identical) and its claim surface is
 exactly those values. No locator string is reconstructed and nothing is removed
 from text.
 
-**Honest scope.** C.1 is hardening, not a demonstrated exploit. The
-string-removal version it replaced could not be made to produce a wrong outcome —
-on a calculation route the claims are operand values, which are structurally
-supported either way. What changed is the *coupling*: the validator no longer
-knows how the renderer formats a page, so a formatter change cannot drift them
-apart, and no data-controlled document name can influence which numbers are
-checked.
+**Post-seal correction: the first C.1 made this check vacuous.** The seal was
+originally issued at `551ceb7`, whose validator replaced the answer-text scan
+with a structured claim set built from the same expressions `_supported_numbers`
+uses. Claims were therefore a subset of supported *by construction*, and the
+answer text was never read whenever a packet carried a calculation:
+
+```
+answer "Growth rate: 2.09% (fabricated 99999)"   [packet with a calculation]
+before C.1   HARD_FAIL GV3 "unsupported material number(s): ['99999']"
+at 551ceb7   PASS, findings=[]
+```
+
+That is not latent. `TrustedRAGRuntimeV2` is reachable by configuration with a
+model-backed `CALCULATION` route, and there a model-written answer contradicting
+the canonical result released where it previously failed. The justification
+written for it -- that the routing policy forces a `CALCULATION` plan onto the
+deterministic calculator -- holds for the TV2 coordinator and is false in
+general.
+
+The gate is now live again, by scanning the answer in full and *supporting* the
+locator values the renderer legitimately emits, read from the operand's own
+`page` field. Neither previous problem returns: no locator string is
+reconstructed, so the validator still does not know the renderer's format, and
+nothing is removed from text, so a data-controlled document name still cannot
+suppress a claim. Tests cover both directions -- a fabricated number hard-fails,
+a rendered `p.7` passes.
+
+**Honest scope of C.1 itself.** It is hardening, not a demonstrated exploit of
+the *string-removal* version it replaced: that version could not be made to
+produce a wrong outcome, because on a calculation route the claims are operand
+values that are structurally supported either way. What C.1 changed is the
+*coupling* -- the validator no longer knows the renderer's format, so a
+formatter change cannot drift them apart and no document name can influence
+which numbers are checked. The blind spot above was introduced by C.1, not by
+the version before it, and this seal originally overstated C.1 by not recording
+it.
+
+The tag `nf-v3-h2a1-context-trust` was moved to this commit. Its previous
+position (`551ceb7`) contained the blind spot, and a seal tag that identifies
+code failing the seal's own claims is worse than a moved tag.
 
 ---
 
@@ -196,10 +229,10 @@ canonicalisation, and this seal does not claim it does.**
 Raw counts from the seal run. No historical figure is reused.
 
 ```
-collected          4149
-full regression    4006 passed + 143 skipped + 0 failed
+collected          4150
+full regression    4007 passed + 143 skipped + 0 failed
 
-E conflict                   13 passed
+E conflict                   14 passed
 A disclosure                 16 passed
 B calculation admissibility  21 passed
 C provenance / numeric       15 passed
@@ -248,6 +281,17 @@ Plus the three durable representations of the same evidence the H2A audit found
 last run).
 
 ---
+
+## Correction history
+
+| Revision | Commit | What changed |
+| --- | --- | --- |
+| original | `551ceb7` | sealed; C.1 recorded as complete |
+| corrected | `0270822` | GV3 blind spot fixed; tag moved here |
+
+The correction is recorded rather than silently folded in, because the defect
+was introduced by a change the original seal called complete, and a seal that
+edits its own history without saying so is not evidence.
 
 ## What this seal does not establish
 
