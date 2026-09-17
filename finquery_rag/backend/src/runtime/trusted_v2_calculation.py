@@ -183,8 +183,16 @@ class DeterministicCalculationCapability:
         operation: CalculationOperation,
     ) -> CalculationOperand | None:
         ids = bindings.get(slot_id, ())
-        if len(ids) != 1:
+        if not ids:
             return None
+        # H2A-2C-2: a slot may carry several independent supports of one
+        # canonical fact.  They are provenance, not operands -- the calculator
+        # runs once, on the quantity, and must not be handed three rows that
+        # say the same thing.  The first id is the canonical representative
+        # chosen by the binding's admission order, and the validator has already
+        # proved every id in the tuple states the same quantity, so which one is
+        # read cannot change the arithmetic.  Computing once per support would
+        # both triple the work and invite a sum or an average of one number.
         candidate = candidates.get(ids[0])
         if candidate is None:
             return None

@@ -385,8 +385,8 @@ class SemanticEvidenceEvaluationCapability:
         facts: tuple[Mapping[str, Any], ...],
         *,
         require_explicit_source: bool = False,
-    ) -> tuple[str, int, str] | None:
-        """Return one fact only when candidate evidence has a safe consensus.
+    ) -> tuple[str, tuple[str, ...], str] | None:
+        """Return the admitted support set when candidate evidence has a safe consensus.
 
         A Binder provider may select a structurally valid duplicate whose
         period/value columns are misaligned in an extracted table.  We may
@@ -394,6 +394,16 @@ class SemanticEvidenceEvaluationCapability:
         period, entity and requested scope must match, and conflicting
         structured values must have a strict consensus.  Ties are intentionally
         left unresolved so the runtime still fails closed.
+
+        Returns ``(canonical_fact_id, support_ids, value_key)``.  The support
+        set is every fact in the winning canonical group, deduplicated by
+        physical source -- one id per independent witness, however many
+        extraction rows that witness produced.  Until H2A-2C-2 this returned
+        only ``winner_values[0][0]`` and a count, so the corroboration it had
+        just computed was discarded at the door: the binding layer could not
+        keep two sources agreeing, which is the one thing a corroboration set is
+        for.  The count is now ``len(support_ids)`` and the caller reads it from
+        the set rather than beside it, so the two cannot disagree.
         """
 
         known_segment_labels = tuple(
@@ -454,7 +464,18 @@ class SemanticEvidenceEvaluationCapability:
             return None
         if len(ranked) > 1 and len(winner_values) < 2:
             return None
-        return winner_values[0][0], len(winner_values), winner_key
+        # Every id in the winning group is an admitted independent support:
+        # the group was built by discarding a fact whose physical source had
+        # already been counted, so its size is a number of *witnesses*, not a
+        # number of rows.  The first is the canonical representative, chosen by
+        # the order the facts were admitted, so the value read from it is
+        # stable and -- since the group agrees by construction -- the same one
+        # any other member would give.
+        return (
+            winner_values[0][0],
+            tuple(fact_id for fact_id, _source_id in winner_values),
+            winner_key,
+        )
 
     @classmethod
     def _repair_semantic_binding(
@@ -480,9 +501,9 @@ class SemanticEvidenceEvaluationCapability:
             resolved = cls._consensus_fact_for_slot(query, frame, slot, facts)
             if resolved is None:
                 return None
-            fact_id, consensus_size, value_key = resolved
-            replacements[slot.slot_id] = (fact_id,)
-            consensus_sizes[slot.slot_id] = consensus_size
+            _fact_id, support_ids, _value_key = resolved
+            replacements[slot.slot_id] = support_ids
+            consensus_sizes[slot.slot_id] = len(support_ids)
 
         original = {
             str(slot_id): tuple(str(item) for item in fact_ids)
@@ -502,13 +523,18 @@ class SemanticEvidenceEvaluationCapability:
         # preserves the provider's stable provenance choice for equivalent
         # duplicate rows while still replacing a wrong-period or wrong-value
         # selection.
+        #
+        # H2A-2C-2: the replacement is now the winning group rather than one
+        # representative of it.  When the provider's pick is a member of that
+        # group it is preserved -- as a member -- and so are its independent
+        # corroborators, which the old single-id replacement dropped.
         for slot in plan.required_slots:
             slot_id = slot.slot_id
             current_ids = original.get(slot_id, ())
             winner = cls._consensus_fact_for_slot(query, frame, slot, facts)
             if winner is None:
                 return None
-            winner_id, _consensus_size, winner_value_key = winner
+            _winner_id, support_ids, winner_value_key = winner
             if len(current_ids) == 1:
                 current_fact = fact_by_id.get(current_ids[0])
                 if (
@@ -522,7 +548,8 @@ class SemanticEvidenceEvaluationCapability:
                     )
                     and cls._fact_value_key(current_fact) == winner_value_key
                 ):
-                    replacements[slot_id] = current_ids
+                    replacements[slot_id] = support_ids
+                    consensus_sizes[slot_id] = len(support_ids)
         if all(
             original.get(slot_id) == fact_ids
             for slot_id, fact_ids in replacements.items()
@@ -640,12 +667,18 @@ class SemanticEvidenceEvaluationCapability:
             slot_id = slot.slot_id
             current_ids = existing_bindings.get(slot_id, ())
             if slot_id not in ambiguous_slot_ids:
-                # ``BOUND`` permits exactly one fact per slot.  An ambiguous
-                # provider response may still carry duplicate, equal-valued
-                # rows for a different slot.  Collapse those rows only when
-                # every provider-selected row matches the same independently
-                # corroborated packet consensus; a conflicting or malformed
-                # selection remains fail-closed.
+                # An ambiguous provider response may carry duplicate,
+                # equal-valued rows for a different slot.  Collapse those rows
+                # only when every provider-selected row matches the same
+                # independently corroborated packet consensus; a conflicting or
+                # malformed selection remains fail-closed.
+                #
+                # H2A-2C-2: "collapse" now means "bind the winning group",
+                # which may itself hold several independent sources.  Every
+                # provider-selected row was verified to state the winning
+                # value, so nothing equivalent is being discarded -- only a
+                # second copy of a witness already counted, or a row whose
+                # stated value differs.
                 if len(current_ids) <= 1:
                     continue
                 resolved = cls._consensus_fact_for_slot(
@@ -657,8 +690,8 @@ class SemanticEvidenceEvaluationCapability:
                 )
                 if resolved is None:
                     return None
-                fact_id, consensus_size, value_key = resolved
-                if consensus_size < 2:
+                _fact_id, support_ids, value_key = resolved
+                if len(support_ids) < 2:
                     return None
                 for current_id in current_ids:
                     current_fact = fact_by_id.get(current_id)
@@ -674,11 +707,11 @@ class SemanticEvidenceEvaluationCapability:
                         or cls._fact_value_key(current_fact) != value_key
                     ):
                         return None
-                replacements[slot_id] = (fact_id,)
-                consensus_sizes[slot_id] = consensus_size
+                replacements[slot_id] = support_ids
+                consensus_sizes[slot_id] = len(support_ids)
                 normalized_slot_bindings[slot_id] = {
                     "from": list(current_ids),
-                    "to": [fact_id],
+                    "to": list(support_ids),
                 }
                 continue
             resolved = cls._consensus_fact_for_slot(
@@ -690,11 +723,11 @@ class SemanticEvidenceEvaluationCapability:
             )
             if resolved is None:
                 return None
-            fact_id, consensus_size, _value_key = resolved
-            if consensus_size < 2:
+            _fact_id, support_ids, _value_key = resolved
+            if len(support_ids) < 2:
                 return None
-            replacements[slot_id] = (fact_id,)
-            consensus_sizes[slot_id] = consensus_size
+            replacements[slot_id] = support_ids
+            consensus_sizes[slot_id] = len(support_ids)
 
         if set(replacements) != expected_slot_ids:
             return None
@@ -810,9 +843,9 @@ class SemanticEvidenceEvaluationCapability:
             )
             if resolved is None:
                 return None
-            fact_id, consensus_size, _value_key = resolved
-            replacements[slot.slot_id] = (fact_id,)
-            consensus_sizes[slot.slot_id] = consensus_size
+            _fact_id, support_ids, _value_key = resolved
+            replacements[slot.slot_id] = support_ids
+            consensus_sizes[slot.slot_id] = len(support_ids)
 
         try:
             binding = EvidenceBinding(

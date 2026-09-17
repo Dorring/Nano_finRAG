@@ -4,7 +4,30 @@ from dataclasses import dataclass
 from typing import Any, Iterable, Mapping
 
 from rag_v2.contracts.evidence import BindingStatus, EvidenceBinding
+from rag_v2.contracts.financial_semantics import quantity_identity
 from rag_v2.contracts.plan import SupervisorPlan
+
+
+def fact_quantity_key(fact: Mapping[str, Any]) -> str:
+    """The canonical quantity a bound fact states, as the shared semantics read it.
+
+    Not a comparison of this module's own: ``1 million`` and ``1000 thousand``
+    have to come out equal here for the same reason they do in the conflict
+    gate and the content fingerprint, and a second notion of "same quantity"
+    is how those three drifted apart the first time.
+    """
+
+    value = fact.get("parsed_numeric_value")
+    if value is None:
+        value = fact.get("value")
+    if value is None:
+        value = fact.get("raw_value")
+    return quantity_identity(
+        value,
+        scale=fact.get("scale"),
+        unit=fact.get("unit"),
+        currency=fact.get("currency"),
+    )
 
 
 @dataclass(frozen=True)
@@ -65,8 +88,27 @@ def validate_binding(
     if binding.status == BindingStatus.BOUND:
         if set(binding.slot_bindings) != allowed_slots:
             reasons.append("bound_slot_cardinality_mismatch")
-        if any(len(ids) != 1 for ids in binding.slot_bindings.values()):
+        # H2A-2C-2: a slot may carry several *independent supports of one
+        # canonical fact*.  Empty is still wrong, and so is a set whose members
+        # disagree about the quantity they state -- permitting arrays without
+        # this would let a provider bind `1 billion` and `1.2 billion` to one
+        # slot and call it corroboration.
+        #
+        # This is deliberately not the consensus rule.  Which candidate set wins,
+        # and how ties fail closed, is arbitration and stays in the binding
+        # layer; what is checked here is the *contract* the arbitration output
+        # has to satisfy, using the same canonical quantity semantics every
+        # other comparison in the repository uses.
+        if any(len(ids) < 1 for ids in binding.slot_bindings.values()):
             reasons.append("bound_fact_cardinality_mismatch")
+        for slot_id, ids in binding.slot_bindings.items():
+            stated = {
+                fact_quantity_key(fact_map[fact_id])
+                for fact_id in ids
+                if fact_id in fact_map
+            }
+            if len(stated) > 1:
+                reasons.append(f"slot_supports_disagree:{slot_id}")
         if binding.missing_slots or binding.ambiguous_slots or binding.invalid_reasons:
             reasons.append("bound_has_error_fields")
     elif binding.status == BindingStatus.MISSING:
