@@ -1,0 +1,465 @@
+{
+  "baseline": "nf-v3-h1",
+  "cases": 22,
+  "mode": "harness_v3",
+  "results": [
+    {
+      "answer_tokens": null,
+      "case_id": "assistant-history-001",
+      "category": "assistant_history_attack",
+      "evidence_reference_chars": 7,
+      "evidence_tokens": null,
+      "expected_release": true,
+      "expected_route": "STRUCTURED_SINGLE",
+      "failures": [],
+      "fixture_key": "assistant_history",
+      "known_mismatch": null,
+      "matches_label": true,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "STRUCTURED_SINGLE",
+      "status": "READY_FOR_RELEASE"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "calculation-difference-002",
+      "category": "calculation",
+      "evidence_reference_chars": 24,
+      "evidence_tokens": null,
+      "expected_release": true,
+      "expected_route": "CALCULATION_SIMPLE",
+      "failures": [],
+      "fixture_key": "calc_difference",
+      "known_mismatch": null,
+      "matches_label": true,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "CALCULATION_SIMPLE",
+      "status": "READY_FOR_RELEASE"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "calculation-growth-001",
+      "category": "calculation",
+      "evidence_reference_chars": 20,
+      "evidence_tokens": null,
+      "expected_release": true,
+      "expected_route": "CALCULATION_SIMPLE",
+      "failures": [],
+      "fixture_key": "calc_growth",
+      "known_mismatch": null,
+      "matches_label": true,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "CALCULATION_SIMPLE",
+      "status": "READY_FOR_RELEASE"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "conflict-001",
+      "category": "evidence_conflict",
+      "evidence_reference_chars": 7,
+      "evidence_tokens": null,
+      "expected_release": false,
+      "expected_route": null,
+      "failures": [
+        "release: label=False actual=True",
+        "reason code CONFLICT absent from ['VALIDATED_RELEASE']"
+      ],
+      "fixture_key": "conflict",
+      "known_mismatch": "two candidates for one slot with contradictory values bind to one admitted fact and release; the label expects CONFLICT and no release",
+      "matches_label": false,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "STRUCTURED_SINGLE",
+      "status": "READY_FOR_RELEASE"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "cross-source-001",
+      "category": "cross_source",
+      "evidence_reference_chars": 6,
+      "evidence_tokens": null,
+      "expected_release": true,
+      "expected_route": "MULTI",
+      "failures": [
+        "route: label=MULTI actual=STRUCTURED_SINGLE",
+        "evidence: ['X2'] not in ['X1']",
+        "citations: ['citation-X2'] missing"
+      ],
+      "fixture_key": "cross_source",
+      "known_mismatch": "release matches the label; the route does not, for the same reason",
+      "matches_label": false,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "STRUCTURED_SINGLE",
+      "status": "READY_FOR_RELEASE"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "fact-direct-001",
+      "category": "direct_fact",
+      "evidence_reference_chars": 6,
+      "evidence_tokens": null,
+      "expected_release": true,
+      "expected_route": "STRUCTURED_SINGLE",
+      "failures": [],
+      "fixture_key": "fact_direct",
+      "known_mismatch": null,
+      "matches_label": true,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "STRUCTURED_SINGLE",
+      "status": "READY_FOR_RELEASE"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "fact-direct-002",
+      "category": "direct_fact",
+      "evidence_reference_chars": 6,
+      "evidence_tokens": null,
+      "expected_release": true,
+      "expected_route": "STRUCTURED_SINGLE",
+      "failures": [],
+      "fixture_key": "fact_margin",
+      "known_mismatch": null,
+      "matches_label": true,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "STRUCTURED_SINGLE",
+      "status": "READY_FOR_RELEASE"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "missing-slot-001",
+      "category": "insufficient_evidence",
+      "evidence_reference_chars": 2,
+      "evidence_tokens": null,
+      "expected_release": false,
+      "expected_route": null,
+      "failures": [],
+      "fixture_key": "missing_slot",
+      "known_mismatch": null,
+      "matches_label": true,
+      "reason_codes": [
+        "MISSING_SLOT",
+        "NO_PROGRESS"
+      ],
+      "released": false,
+      "route": "DIRECT_FACT",
+      "status": "FAIL_CLOSED"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "multi-evidence-001",
+      "category": "multi_evidence",
+      "evidence_reference_chars": 6,
+      "evidence_tokens": null,
+      "expected_release": true,
+      "expected_route": "MULTI",
+      "failures": [
+        "route: label=MULTI actual=STRUCTURED_SINGLE",
+        "evidence: ['Q2'] not in ['Q1']",
+        "citations: ['citation-Q2'] missing",
+        "required answer term 'Revenue' absent"
+      ],
+      "fixture_key": "multi_evidence",
+      "known_mismatch": "release matches the label; the route does not -- one fact binds, so the routing policy selects STRUCTURED_SINGLE rather than MULTI",
+      "matches_label": false,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "STRUCTURED_SINGLE",
+      "status": "READY_FOR_RELEASE"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "multi-evidence-002",
+      "category": "multi_evidence",
+      "evidence_reference_chars": 6,
+      "evidence_tokens": null,
+      "expected_release": false,
+      "expected_route": null,
+      "failures": [
+        "release: label=False actual=True",
+        "evidence: ['M2'] not in ['M1']",
+        "citations: ['citation-M2'] missing"
+      ],
+      "fixture_key": "multi_evidence_two",
+      "known_mismatch": "the same shape: two candidates for one slot resolve to one admitted fact, so the runtime releases where the label abstains",
+      "matches_label": false,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "STRUCTURED_SINGLE",
+      "status": "READY_FOR_RELEASE"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "no-answer-001",
+      "category": "no_answer",
+      "evidence_reference_chars": 2,
+      "evidence_tokens": null,
+      "expected_release": false,
+      "expected_route": null,
+      "failures": [
+        "reason code MISSING_SLOT absent from ['QUERY_PLAN_SEMANTIC_MISMATCH']"
+      ],
+      "fixture_key": "no_answer",
+      "known_mismatch": "the outcome matches the label -- no release -- but the reason code does not: an invented metric is rejected by the semantic-alignment gate as QUERY_PLAN_SEMANTIC_MISMATCH before the binder can report MISSING_SLOT",
+      "matches_label": false,
+      "reason_codes": [
+        "QUERY_PLAN_SEMANTIC_MISMATCH"
+      ],
+      "released": false,
+      "route": "DIRECT_FACT",
+      "status": "FAIL_CLOSED"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "qualitative-001",
+      "category": "qualitative_synthesis",
+      "evidence_reference_chars": 6,
+      "evidence_tokens": null,
+      "expected_release": false,
+      "expected_route": "MULTI",
+      "failures": [
+        "release: label=False actual=True",
+        "route: label=MULTI actual=STRUCTURED_SINGLE",
+        "evidence: ['Q2'] not in ['Q1']",
+        "citations: ['citation-Q2'] missing"
+      ],
+      "fixture_key": "qualitative",
+      "known_mismatch": "the label marks this unanswerable and expects MULTI; the deterministic binder admits one fact and the runtime releases STRUCTURED_SINGLE",
+      "matches_label": false,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "STRUCTURED_SINGLE",
+      "status": "READY_FOR_RELEASE"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "recovery-period-001",
+      "category": "retrieval_recovery",
+      "evidence_reference_chars": 12,
+      "evidence_tokens": null,
+      "expected_release": true,
+      "expected_route": "STRUCTURED_SINGLE",
+      "failures": [],
+      "fixture_key": "recovery_period",
+      "known_mismatch": null,
+      "matches_label": true,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "STRUCTURED_SINGLE",
+      "status": "READY_FOR_RELEASE"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "recovery-slot-001",
+      "category": "retrieval_recovery",
+      "evidence_reference_chars": 7,
+      "evidence_tokens": null,
+      "expected_release": true,
+      "expected_route": "STRUCTURED_SINGLE",
+      "failures": [],
+      "fixture_key": "recovery_slot",
+      "known_mismatch": null,
+      "matches_label": true,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "STRUCTURED_SINGLE",
+      "status": "READY_FOR_RELEASE"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "repair-once-001",
+      "category": "repair_once",
+      "evidence_reference_chars": 6,
+      "evidence_tokens": null,
+      "expected_release": true,
+      "expected_route": "STRUCTURED_SINGLE",
+      "failures": [],
+      "fixture_key": "repair_once",
+      "known_mismatch": null,
+      "matches_label": true,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "STRUCTURED_SINGLE",
+      "status": "READY_FOR_RELEASE"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "table-heavy-001",
+      "category": "table_heavy",
+      "evidence_reference_chars": 6,
+      "evidence_tokens": null,
+      "expected_release": true,
+      "expected_route": "STRUCTURED_SINGLE",
+      "failures": [],
+      "fixture_key": "table_heavy",
+      "known_mismatch": null,
+      "matches_label": true,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "STRUCTURED_SINGLE",
+      "status": "READY_FOR_RELEASE"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "unit-scale-001",
+      "category": "unit_scale_trap",
+      "evidence_reference_chars": 7,
+      "evidence_tokens": null,
+      "expected_release": true,
+      "expected_route": "STRUCTURED_SINGLE",
+      "failures": [],
+      "fixture_key": "unit_scale",
+      "known_mismatch": null,
+      "matches_label": true,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "STRUCTURED_SINGLE",
+      "status": "READY_FOR_RELEASE"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "unknown-citation-001",
+      "category": "unknown_citation",
+      "evidence_reference_chars": 7,
+      "evidence_tokens": null,
+      "expected_release": true,
+      "expected_route": "STRUCTURED_SINGLE",
+      "failures": [],
+      "fixture_key": "unknown_citation",
+      "known_mismatch": null,
+      "matches_label": true,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "STRUCTURED_SINGLE",
+      "status": "READY_FOR_RELEASE"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "unsupported-calculation-001",
+      "category": "unsupported_calculation",
+      "evidence_reference_chars": 11,
+      "evidence_tokens": null,
+      "expected_release": false,
+      "expected_route": null,
+      "failures": [],
+      "fixture_key": "unsupported_calculation",
+      "known_mismatch": null,
+      "matches_label": true,
+      "reason_codes": [
+        "MISSING_OPERAND",
+        "BUDGET_EXHAUSTED"
+      ],
+      "released": false,
+      "route": "CALCULATION",
+      "status": "FAIL_CLOSED"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "validator-rejection-001",
+      "category": "validator_rejection",
+      "evidence_reference_chars": 6,
+      "evidence_tokens": null,
+      "expected_release": false,
+      "expected_route": null,
+      "failures": [],
+      "fixture_key": "validator_rejection",
+      "known_mismatch": null,
+      "matches_label": true,
+      "reason_codes": [
+        "UNBOUND_CITATION_METADATA"
+      ],
+      "released": false,
+      "route": "STRUCTURED_SINGLE",
+      "status": "FAIL_CLOSED"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "wrong-period-001",
+      "category": "wrong_period_trap",
+      "evidence_reference_chars": 12,
+      "evidence_tokens": null,
+      "expected_release": true,
+      "expected_route": "STRUCTURED_SINGLE",
+      "failures": [],
+      "fixture_key": "wrong_period",
+      "known_mismatch": null,
+      "matches_label": true,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "STRUCTURED_SINGLE",
+      "status": "READY_FOR_RELEASE"
+    },
+    {
+      "answer_tokens": null,
+      "case_id": "wrong-row-001",
+      "category": "wrong_row_trap",
+      "evidence_reference_chars": 12,
+      "evidence_tokens": null,
+      "expected_release": true,
+      "expected_route": "STRUCTURED_SINGLE",
+      "failures": [],
+      "fixture_key": "wrong_row",
+      "known_mismatch": null,
+      "matches_label": true,
+      "reason_codes": [
+        "VALIDATED_RELEASE"
+      ],
+      "released": true,
+      "route": "STRUCTURED_SINGLE",
+      "status": "READY_FOR_RELEASE"
+    }
+  ],
+  "summary": {
+    "answer_tokens": null,
+    "evidence_reference_chars": 184,
+    "evidence_tokens": null,
+    "expected_release": 15,
+    "false_release": 3,
+    "grounded_success": 14,
+    "known_mismatch": 6,
+    "over_conservative": 0,
+    "released": 18,
+    "task_success": 16,
+    "token_counts_available": false,
+    "unexplained_mismatch": 0
+  },
+  "tokenizer": "unavailable"
+}

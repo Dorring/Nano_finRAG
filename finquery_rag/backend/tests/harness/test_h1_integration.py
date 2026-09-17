@@ -19,7 +19,7 @@ from tests.harness.equivalence import (
     unknown_contract_fields,
 )
 from tests.harness.h1_integration import (
-    SUBSTITUTED_PORTS,
+    substituted_ports,
     FIXTURES,
     H1Fixture,
     run_all,
@@ -162,12 +162,12 @@ def test_every_fixture_declares_how_it_was_built(run: dict[str, Any]) -> None:
     for report in run["fixtures"]:
         fixture = by_id[report["fixture_id"]]
         production = (
-            fixture.factory_eligible and fixture.fixture_id not in SUBSTITUTED_PORTS
+            fixture.factory_eligible and substituted_ports(fixture) is None
         )
         assert report["production_entry_point"] == production, fixture.fixture_id
         if not production:
             assert (
-                fixture.fixture_id in SUBSTITUTED_PORTS or not fixture.retrieval
+                substituted_ports(fixture) is not None or not fixture.retrieval
             ), fixture.fixture_id
 
 

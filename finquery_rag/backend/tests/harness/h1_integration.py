@@ -610,14 +610,27 @@ class _ForeignCitationGeneration:
 
 
 #: Fixtures whose capability graph the production entry point cannot build as
-#: written, and why.  Everything else goes through
-#: ``build_trusted_v2_runtime_for_request`` -- the real flag path -- and the
-#: report records which is which rather than presenting them as the same thing.
-SUBSTITUTED_PORTS: Mapping[str, str] = {
+#: written, and why.  Derived from each fixture's own declaration rather than
+#: looked up by id: a registry keyed by ``fixture_id`` is invisible to a module
+#: that names its fixtures differently, and silently handing such a fixture the
+#: production generator makes it test the wrong thing while appearing to pass.
+SUBSTITUTED_PORT_REASONS: Mapping[str, str] = {
     "calculation_blocked": "needs a calculator that returns BLOCKED",
-    "calculation_error": "needs a calculator that raises",
-    "validator_rejection": "needs a generator that cites unadmitted evidence",
+    "calculation_raising": "needs a calculator that raises",
+    "generation_foreign_citation": "needs a generator that cites unadmitted evidence",
 }
+
+
+def substituted_ports(fixture: H1Fixture) -> str | None:
+    """Why this fixture cannot use the production capability graph, if it cannot."""
+
+    if fixture.calculation == "blocked":
+        return SUBSTITUTED_PORT_REASONS["calculation_blocked"]
+    if fixture.calculation == "raising":
+        return SUBSTITUTED_PORT_REASONS["calculation_raising"]
+    if fixture.generation == "foreign_citation":
+        return SUBSTITUTED_PORT_REASONS["generation_foreign_citation"]
+    return None
 
 
 def _build_capabilities(fixture: H1Fixture, resources: TrustedV2RuntimeResources) -> Any:
@@ -627,7 +640,7 @@ def _build_capabilities(fixture: H1Fixture, resources: TrustedV2RuntimeResources
     on purpose, including its ``STRICT_DIRECT_FACT`` semantic policy -- the
     fixtures that already need a substituted port must not also be the ones
     running behind a laxer gate than production.  It is used only for the
-    fixtures listed in :data:`SUBSTITUTED_PORTS`, and the report says so, so a
+    fixtures the caller reports as substituted, and the report says so, so a
     divergence between this and the production builder cannot be mistaken for
     production wiring.
     """
@@ -719,7 +732,7 @@ def _uses_production_entry_point(fixture: H1Fixture) -> bool:
     which, so substituted wiring is never presented as production wiring.
     """
 
-    return fixture.factory_eligible and fixture.fixture_id not in SUBSTITUTED_PORTS
+    return fixture.factory_eligible and substituted_ports(fixture) is None
 
 
 def _financial_request(fixture: H1Fixture) -> FinancialQueryRequest:
@@ -749,7 +762,7 @@ def run_fixture(fixture: H1Fixture, mode: AgentRuntimeMode) -> V2ExecutionOutcom
     request = V2ExecutionRequest.from_financial_request(financial)
     resources = _resources(fixture)
 
-    if fixture.fixture_id in SUBSTITUTED_PORTS:
+    if substituted_ports(fixture) is not None:
         runtime = build_trusted_v2_runtime(
             resources.supervisor,
             capabilities=_build_capabilities(fixture, resources),
@@ -805,7 +818,7 @@ def adapter_agrees(fixture: H1Fixture, mode: AgentRuntimeMode) -> list[str]:
     trace from -- and therefore the one that could disagree silently.
     """
 
-    if fixture.fixture_id in SUBSTITUTED_PORTS or not fixture.factory_eligible:
+    if substituted_ports(fixture) is not None or not fixture.factory_eligible:
         return []
     request = _financial_request(fixture)
     with runtime_mode(mode):
