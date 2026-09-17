@@ -221,9 +221,16 @@ class _FakeSpecialist:
 
 
 def test_qualitative_route_calls_specialist_with_bound_evidence_only() -> None:
+    # Two genuinely distinct facts: the same metric in two periods, which is a
+    # multi-fact state.  Both rows used to be FY2024 with the same value, so
+    # they were one canonical fact stated twice -- and H2A-2C-1 stopped sending
+    # that to a generator, because the structured renderer states it correctly.
+    # The specialist is now reached for what it is actually for, and every
+    # assertion below is about the disclosure and citation boundary rather than
+    # about which route got there.
     facts = {
-        "E1": _fact("E1", slots=("cause_a",), metric="Operating Margin"),
-        "E2": _fact("E2", slots=("cause_b",), metric="Operating Margin"),
+        "E1": _fact("E1", slots=("cause_a",), metric="Operating Margin", period="FY2024"),
+        "E2": _fact("E2", slots=("cause_b",), metric="Operating Margin", period="FY2023"),
     }
     retrieval, binder, _, _, _ = _real_capabilities(
         [["E1", "E2"]], facts, SelectingBinderProvider()
@@ -233,8 +240,8 @@ def test_qualitative_route_calls_specialist_with_bound_evidence_only() -> None:
         specialist=LocalSpecialistGenerationAdapter(specialist)
     )
     plan = _plan(
-        _slot("cause_a", metric="Operating Margin", role="operand"),
-        _slot("cause_b", metric="Operating Margin", role="operand"),
+        _slot("cause_a", metric="Operating Margin", period="FY2024", role="operand"),
+        _slot("cause_b", metric="Operating Margin", period="FY2023", role="operand"),
         intent=Intent.MULTI_EVIDENCE,
     )
     outcome = asyncio.run(

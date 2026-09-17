@@ -2,12 +2,29 @@
 
 Defines routing decisions among deterministic renderers, deterministic calculators,
 and the Local Financial Specialist Generator based on query and evidence properties.
+
+Route and target answer different questions, and the two are deliberately
+separate fields:
+
+    RouteName        the *shape* of the request -- how much evidence there is,
+                     and what kind of thing is being asked.
+    GeneratorTarget  which capability can actually produce the answer.
+
+H2A-2C-1 separated them in the selection rule as well as in the type.  The rule
+used to read ``len(evidence_items) > 1`` as MULTI and MULTI as "the Local
+Specialist writes it", which is three questions collapsed into one number:
+evidence cardinality, semantic arity, and execution capability.  Two independent
+sources stating one figure is cardinality > 1 with arity 1, and the deterministic
+renderer states it correctly -- asking a free-form generator to do so was asking
+a capability to solve a problem it was never needed for.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
 from typing import Any
+
+from rag_v2.contracts.financial_semantics import quantity_identity
 
 
 class GeneratorTarget(str, Enum):
@@ -47,6 +64,51 @@ class GeneratorRouteDecision:
 
 class GeneratorRoutingPolicy:
     """Evaluates query and evidence conditions to select generator target."""
+
+    @staticmethod
+    def states_one_canonical_fact(evidence_items: list[dict[str, Any]]) -> bool:
+        """Whether the admitted state reduces to one fact the renderer can state.
+
+        This is the capability question, asked of the *state* rather than of a
+        count: the deterministic structured renderer emits one metric, one
+        period and one value, so a state it can express honestly is one where
+        every admitted item names the same metric, the same period, and -- once
+        the H2A-2B shared semantics have canonicalised it -- the same quantity.
+
+        Metric and period and quantity are one question here rather than three
+        because for a *renderer* they are one: any disagreement among them means
+        a single rendering would have to drop or choose, and both are dishonest.
+        ``1 million`` and ``1000 thousand`` are therefore the same fact; ``1
+        million`` and ``1200 thousand`` are not, however alike they look.
+
+        The canonicalisation is the shared one, not a second comparison: a
+        routing rule that decided two sources disagreed because they spelled
+        their scale differently would manufacture the conflict the binding layer
+        exists to resolve.
+        """
+
+        if not evidence_items:
+            return False
+        keys = {
+            (
+                str(item.get("metric") or item.get("normalized_metric") or "")
+                .strip()
+                .casefold(),
+                str(item.get("period") or item.get("normalized_period") or "")
+                .strip()
+                .casefold(),
+                quantity_identity(
+                    item.get("value")
+                    if item.get("value") is not None
+                    else item.get("parsed_numeric_value"),
+                    scale=item.get("scale"),
+                    unit=item.get("unit"),
+                    currency=item.get("currency"),
+                ),
+            )
+            for item in evidence_items
+        }
+        return len(keys) == 1
 
     @staticmethod
     def route(
@@ -108,10 +170,24 @@ class GeneratorRoutingPolicy:
             )
 
         if "MULTI" in norm_hint or len(evidence_items) > 1:
+            # Route and target part company here.  More than one admitted item
+            # is what MULTI names, and that is evidence cardinality -- the
+            # sealed readiness gold labels it and it is not ours to reshape.
+            # Whether a *generator* is needed is a different question, and the
+            # answer is no when the items are independent sources of one
+            # canonical fact: the structured renderer states that exactly, and
+            # a free-form generator adds only the opportunity to paraphrase a
+            # number.
+            if GeneratorRoutingPolicy.states_one_canonical_fact(evidence_items):
+                return GeneratorRouteDecision(
+                    route_name=RouteName.MULTI,
+                    target=GeneratorTarget.DETERMINISTIC_RENDERER,
+                    reason="Multi-source single fact: the structured renderer states one canonical value with all supporting citations.",
+                )
             return GeneratorRouteDecision(
                 route_name=RouteName.MULTI,
                 target=GeneratorTarget.LOCAL_SPECIALIST,
-                reason="Multi-evidence synthesis: Local Specialist combines multiple verified facts.",
+                reason="Multi-fact synthesis: Local Specialist combines distinct verified facts.",
             )
 
         if "QUALITATIVE" in norm_hint or any(

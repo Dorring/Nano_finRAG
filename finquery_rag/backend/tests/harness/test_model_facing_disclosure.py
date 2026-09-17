@@ -196,13 +196,24 @@ def test_a_real_specialist_call_receives_a_projection_not_an_evidence_object() -
     capability = TrustedV2GenerationCapability(specialist=specialist)
 
     # Two bound facts, because the routing policy only reaches the specialist
-    # for a multi-evidence route; one fact renders deterministically and never
+    # for a state it cannot render: one fact renders deterministically and never
     # crosses a model boundary at all.
+    #
+    # H2A-2C-1 tightened what "cannot render" means.  This used to reach the
+    # specialist by supplying two rows that differed only in `evidence_id` --
+    # the same metric, period and value twice.  That is *one* canonical fact
+    # stated twice, which the structured renderer states correctly, so it now
+    # renders and never crosses a boundary.  The second fact differs in period,
+    # which is what makes this a genuine multi-fact state -- the thing a
+    # specialist is actually for -- and the disclosure assertions below are
+    # unchanged by it.
     state = AdaptiveRAGStateV1.new("r", "What was revenue?")
     state.add_evidence(
         [
             EvidencePacketV1.from_mapping(_evidence()),
-            EvidencePacketV1.from_mapping({**_evidence(), "evidence_id": "e2"}),
+            EvidencePacketV1.from_mapping(
+                {**_evidence(period="FY2023"), "evidence_id": "e2"}
+            ),
         ]
     )
     state.bound_evidence_ids = ["e1", "e2"]

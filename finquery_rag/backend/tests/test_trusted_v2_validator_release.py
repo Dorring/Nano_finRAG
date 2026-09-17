@@ -171,9 +171,15 @@ class _Specialist:
 
 
 def test_specialist_candidate_uses_same_release_authority() -> None:
+    # Two distinct facts, one per period.  Both rows were previously FY2024
+    # Revenue with the same value -- the same canonical fact twice -- which
+    # H2A-2C-1 now renders deterministically instead of sending to a generator.
+    # The subject of this test is that a specialist candidate passes through the
+    # *same* release authority, so the state has to be one the specialist is
+    # genuinely selected for.
     facts = {
-        "E1": _fact("E1", slots=("a",)),
-        "E2": _fact("E2", slots=("b",)),
+        "E1": _fact("E1", slots=("a",), period="FY2024"),
+        "E2": _fact("E2", slots=("b",), period="FY2023"),
     }
     retrieval, binder, _, _, _ = _real_capabilities(
         [["E1", "E2"]], facts, SelectingBinderProvider()
@@ -181,7 +187,7 @@ def test_specialist_candidate_uses_same_release_authority() -> None:
     specialist = _Specialist("Revenue [citation-E1]", ["citation-E1"])
     generation = TrustedV2GenerationCapability(specialist=specialist)
     validator = TrustedReleaseValidationCapability()
-    plan = _plan(_slot("a"), _slot("b"))
+    plan = _plan(_slot("a", period="FY2024"), _slot("b", period="FY2023"))
     outcome = asyncio.run(
         _coordinator(
             "Summarize revenue",
