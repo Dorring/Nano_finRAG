@@ -30,6 +30,7 @@ import asyncio
 import json
 import os
 import sys
+import pytest
 from unittest.mock import AsyncMock, MagicMock, patch
 
 # Mock heavy/unavailable imports before importing app modules (mirrors
@@ -427,3 +428,14 @@ class TestNoValidationFieldBaseline:
         assert "answerability" not in legacy
         # calculations IS present for calculation results (Phase 3).
         assert "calculations" in legacy
+
+
+# Declared, not inherited.  See `legacy_single_turn_endpoint` in conftest.py for
+# why a test that patches the RAG engine must say which runtime it exercises
+# rather than depend on whichever mode is currently the default.
+
+
+@pytest.fixture(autouse=True)
+def _declared_runtime(legacy_single_turn_endpoint: None) -> None:
+    """This module characterises the Phase 4 baseline HTTP/SSE responses, which
+    are produced by the V1 lifecycle."""

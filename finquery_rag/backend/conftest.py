@@ -169,3 +169,37 @@ def pytest_configure(config: Any) -> None:
         "requires_artifacts: reads a sealed evaluation artifact directory "
         "produced by an evaluation run; not committed to the repository",
     )
+
+
+# --- declared runtime for endpoint tests -------------------------------------
+#
+# The application has two ambient defaults that decide which execution path a
+# request takes, and a test that does not declare them is not testing a
+# behaviour -- it is testing whatever the defaults happen to be today:
+#
+#   FINANCIAL_RUNTIME_MODE    default "v2".  The documented contract: v2 is the
+#                             official Trusted V2 path and fails closed when no
+#                             real runtime builder is configured; v1 is the
+#                             explicit rollback/compatibility path.
+#                             (docs/showcase/trusted-runtime-v2-production-integration.md)
+#   MULTITURN_CONTEXT_MODE    default "on".  With it on and no session id, an
+#                             under-specified query is answered with a
+#                             clarification request rather than being run.
+#
+# Thirty-nine tests across five modules exercised the legacy single-turn /query
+# path -- they patch `get_rag_engine`, which only the V1 lifecycle calls --
+# without declaring either.  They passed while the defaults matched their
+# assumptions and broke en masse when the defaults moved, which told us nothing
+# about the code under test.
+#
+# This fixture is how such a test states what it is testing.  Use it instead of
+# relying on the ambient value, unless the test's subject IS the default
+# selection -- in which case it should assert the resolved value explicitly.
+
+
+@pytest.fixture
+def legacy_single_turn_endpoint(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Declare the V1, single-turn runtime an endpoint test exercises."""
+
+    monkeypatch.setenv("FINANCIAL_RUNTIME_MODE", "v1")
+    monkeypatch.setenv("MULTITURN_CONTEXT_MODE", "off")
