@@ -177,6 +177,17 @@ The tag `nf-v3-h2a1-context-trust` was moved to this commit. Its previous
 position (`551ceb7`) contained the blind spot, and a seal tag that identifies
 code failing the seal's own claims is worse than a moved tag.
 
+**A moved tag is not an immutable tag.** Having moved once, `nf-v3-h2a1-context-trust`
+can no longer be described as immutable in the strict sense. A second tag was
+created that has never moved and will not:
+
+```
+nf-v3-h2a1-context-trust-r2 -> fda328a   (immutable, final)
+```
+
+`nf-v3-h2a1-context-trust` is now a historical alias with a prior position;
+`-r2` is the name to cite.
+
 ---
 
 ## D — Evidence Content Identity
