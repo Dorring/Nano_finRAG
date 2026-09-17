@@ -205,6 +205,12 @@ parity target.
 
 ## 9 · Known gap recorded for 3B2 — claim cardinality
 
+> **Closed by H2A-3B2.** The pack now carries the Binder's claim/support
+> relation as `references.support_groups`, projected rather than re-derived, and
+> the pack's field set is unchanged. See
+> `nf-v3-h2a-3b2-context-semantics.md` §2–§6. Everything below is the record of
+> what was open at this commit, kept as written.
+
 The pack has **no representation of "one claim with N supports"**. If a
 multi-support state were compiled, it would carry both supports as two ordinary
 evidence items, indistinguishable in shape from two genuinely distinct facts, and

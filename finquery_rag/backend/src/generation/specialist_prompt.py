@@ -15,6 +15,24 @@ renderer is pure string assembly and needs no model, so it lives here and is
 asserted on directly.
 
 The contract rendered is ``FinancialGenerationViewV1``.
+
+H2A-3B2 removed every fabricated default from this renderer.  The rule, frozen:
+
+    missing information must never be converted into invented domain information
+
+Five expressions broke it -- ``scale or "1"``, ``document_id or "filing"``,
+``metric or "Metric"``, ``period or "Period"`` and ``scope or metric`` -- and
+they were worse than an omission in a way worth stating plainly.  A reader can
+tell ``Unit: not specified`` from a real unit; there is no such thing as a
+metric named ``Metric``, so a model shown it has been handed a *value* where the
+record had none.  The last one was the worst of the five: ``scope or metric``
+answered an unknown scope with an assertion that scope equals metric, which is
+not a placeholder at all but a new fact about the world.
+
+This renderer states absence and invents nothing.  Every field is written
+through ``_render``, so "the model is shown the evidence, or an explicit
+statement that it is not there" is a property of the renderer rather than the
+habit of whoever wrote each line.
 """
 
 from __future__ import annotations
@@ -23,7 +41,58 @@ import re
 from collections.abc import Mapping, Sequence
 from typing import Any
 
-__all__ = ["render_specialist_prompt"]
+__all__ = ["ABSENT", "render_specialist_prompt"]
+
+#: How a field the evidence does not carry is written into the prompt.
+#:
+#: One marker for every field, and the choice is not stylistic.  The frozen
+#: schema (``data/grounding_alignment/v1/financial-generation-view-v1.md``) is a
+#: fixed set of lines per evidence block, and the canonical renderer for that
+#: schema -- ``rag_v2/generation/financial_view_v1.py``, SHA-pinned to it --
+#: already answers this question the same way, in its ``_value`` helper, for
+#: every field including metric, period and scope.  Two renderers of one contract
+#: spelling absence differently is a divergence to argue about; inventing a
+#: *value* is not, which is why the five F10 expressions were defects rather than
+#: a style the other renderer happened to disagree with.
+#:
+#: The alternative the audit considered was omitting the line instead.  That is
+#: honest too, but it makes the block's *shape* depend on the data, so a reading
+#: of the prompt can no longer distinguish a field that was absent from a
+#: renderer version that stopped emitting it -- and answer rule 6 asks the model
+#: to notice missing evidence, which a stated absence serves and a vanished line
+#: does not.
+ABSENT = "not specified"
+
+
+def _stated(item: Mapping[str, Any], name: str) -> Any:
+    """The field exactly as the evidence states it, or ``None`` if it does not.
+
+    Absence arrives two ways -- an absent key, and the empty string -- and this
+    treats both as absent rather than as *present and empty*.  The disclosure
+    projection drops ``None`` outright, so in production only the first shape
+    occurs; the second is here because "the evidence says the metric is the
+    empty string" is not a thing anyone recorded, and rendering it verbatim
+    would put a blank where a statement belongs.
+
+    Nothing is converted.  ``0`` survives as ``0``, which is the B0 finding: a
+    truthiness test cannot tell a real zero from an absent value, and the page
+    field is where that cost a fact.
+    """
+
+    value = item.get(name)
+    if value is None:
+        return None
+    return value if str(value).strip() else None
+
+
+def _render(value: Any) -> str:
+    """A field as it is written into the prompt: its value, or stated absence.
+
+    This does not choose a value; it chooses only how to spell *no value*.  Every
+    line in the block goes through it.
+    """
+
+    return ABSENT if value is None else str(value).strip()
 
 
 def render_specialist_prompt(
@@ -46,45 +115,39 @@ def render_specialist_prompt(
         if not re.match(r"^E\d+$", cite_id):
             cite_id = f"E{i}"
 
-        metric = ev.get("metric") or ev.get("normalized_metric") or "Metric"
-        period = ev.get("period") or "Period"
-        value = str(ev.get("value", "")).strip()
-        unit = ev.get("unit") or "not specified"
-        currency = ev.get("currency") or "not specified"
-        scale = ev.get("scale") or "1"
-        scope = ev.get("scope") or metric
-        source_doc = ev.get("document_id") or "filing"
+        # The one fallback left, and it is not the same kind of thing as the
+        # five this phase removed: ``normalized_metric`` is a second field the
+        # evidence contract really carries and this profile really admits, not a
+        # literal invented here.  The canonical renderer and the routing policy
+        # both read the pair the same way, and dropping it would replace a
+        # present metric with "not specified".  Written out rather than as
+        # ``or`` so that the distinction is visible at the point of use: what
+        # was removed is *inventing* a value, not *reading* a declared field.
+        metric = _stated(ev, "metric")
+        if metric is None:
+            metric = _stated(ev, "normalized_metric")
 
-        # H2A-3B0.  This read ``ev.get("page") or 1``, and that expression
-        # fabricated a page on *every* call: ``page`` was absent from the
-        # SPECIALIST disclosure profile, so the lookup always missed and every
-        # source line asserted page 1.  The model was being told, as
-        # provenance, something nobody had established.
-        #
-        # Two errors were stacked in one expression, and they are worth keeping
-        # apart.  ``or`` treats a genuine page 0 as absent, though the evidence
-        # contract keeps 0 valid and absence preserved as absence -- a
-        # truthiness test conflates the two.  And the fallback invented a
-        # *specific* value rather than stating the absence, which is the
-        # difference between an honest marker and a fabricated one: ``unit`` and
-        # ``currency`` two lines above fall back to "not specified", which a
-        # reader can tell from a real unit, while ``1`` is indistinguishable
-        # from a page the extractor actually found.
-        #
-        # Absence is now rendered as absence, in the same idiom the neighbouring
-        # fields already use.
-        page = ev.get("page")
-        page_label = "not specified" if page is None else str(page)
+        # ``Source`` names where the evidence came from, in two components, and
+        # each is stated independently -- so `doc-1:7`, `doc-1:not specified`
+        # and `not specified:7` all say exactly what is known.  When neither
+        # component is known the line is the single marker, which is what the
+        # canonical renderer emits for it.
+        document = _stated(ev, "document_id")
+        page = _stated(ev, "page")
+        source = (
+            ABSENT if document is None and page is None
+            else f"{_render(document)}:{_render(page)}"
+        )
 
         lines.append(f"[{cite_id}]")
-        lines.append(f"Metric: {metric}")
-        lines.append(f"Period: {period}")
-        lines.append(f"Scope: {scope}")
-        lines.append(f"Value: {value}")
-        lines.append(f"Unit: {unit}")
-        lines.append(f"Currency: {currency}")
-        lines.append(f"Scale: {scale}")
-        lines.append(f"Source: {source_doc}:{page_label}")
+        lines.append(f"Metric: {_render(metric)}")
+        lines.append(f"Period: {_render(_stated(ev, 'period'))}")
+        lines.append(f"Scope: {_render(_stated(ev, 'scope'))}")
+        lines.append(f"Value: {_render(_stated(ev, 'value'))}")
+        lines.append(f"Unit: {_render(_stated(ev, 'unit'))}")
+        lines.append(f"Currency: {_render(_stated(ev, 'currency'))}")
+        lines.append(f"Scale: {_render(_stated(ev, 'scale'))}")
+        lines.append(f"Source: {source}")
 
         if "source_text" in ev and ev["source_text"]:
             lines.append(f"Evidence: {ev['source_text']}")

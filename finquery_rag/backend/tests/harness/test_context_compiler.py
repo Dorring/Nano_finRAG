@@ -24,10 +24,13 @@ from rag_v2.context import (
     ContextBudgetUnsupported,
     ContextBudgetV1,
     ContextCompilerV1,
+    ContextReferenceV1,
+    ContextReferencesV1,
     ContextRequestV1,
     ContextRoleV1,
     ContextSelectionEntryV1,
     ContextSelectionReasonV1,
+    ContextSupportGroupV1,
     PackIntegrityError,
     SelectionResultV1,
     UnknownContextRole,
@@ -105,7 +108,9 @@ def _artifact(evidence_id: str = "e1", **extra: Any) -> dict[str, Any]:
     }
 
 
-def _compile(*artifacts: dict[str, Any], **kwargs: Any) -> AgentContextPackV1:
+def _compile(
+    *artifacts: dict[str, Any], bindings: Any = (), **kwargs: Any
+) -> AgentContextPackV1:
     compiler = ContextCompilerV1(_Policy(), **kwargs)
     return compiler.compile(
         ContextRequestV1(
@@ -113,6 +118,7 @@ def _compile(*artifacts: dict[str, Any], **kwargs: Any) -> AgentContextPackV1:
             invocation_id="inv-1",
             query="What was revenue?",
             admitted_evidence=tuple(artifacts),
+            slot_bindings=tuple(bindings),
         )
     )
 
@@ -487,6 +493,72 @@ def test_a_request_for_another_role_is_refused() -> None:
                 query="q",
             )
         )
+
+
+# --- support topology is projected, not decided -------------------------------------
+
+
+def test_support_groups_are_projected_from_the_request() -> None:
+    """A kernel feature, not a B3 one: any role given a binding gets it.
+
+    The policy is not consulted and is not told about the relation.  That is the
+    design rather than an omission -- grouping is not a role's judgment about
+    evidence, so no policy should be in a position to make it, and a boundary
+    that should not receive topology simply does not supply a binding.
+    """
+
+    pack = _compile(
+        _artifact("e1"),
+        _artifact("e2"),
+        bindings=[("revenue/FY2024", ("e1", "e2"))],
+    )
+
+    assert [
+        (group.handle, group.canonical_slot, group.supports)
+        for group in pack.references.support_groups
+    ] == [("G1", "revenue/FY2024", ("E1", "E2"))]
+
+
+def test_a_request_without_a_binding_carries_no_topology() -> None:
+    """No binding is not the same as "everything is its own claim"."""
+
+    pack = _compile(_artifact("e1"), _artifact("e2"))
+
+    assert pack.evidence_ids == ("e1", "e2")
+    assert pack.references.support_groups == ()
+    assert pack.references.evidence_handles == ("E1", "E2")
+
+
+def test_the_measured_payload_includes_the_topology() -> None:
+    """``selected_context_tokens`` measures the groups as well as the evidence.
+
+    Asserted on the serializer rather than through the budget, and the reason is
+    a property of the kernel's own test double: ``_WordCounter`` counts
+    whitespace-separated runs, and a serialized payload has almost none -- its
+    words come from inside evidence values.  A budget-level assertion here would
+    therefore turn on whether some metric happened to be spelled with a space,
+    which is a test measuring its fixture rather than the compiler.
+
+    What matters is that the text handed to the counter contains the topology.
+    A bound measured without it under-counts the context the bound exists to
+    bound, so the compiler could admit evidence it believed it had room for.
+    """
+
+    from rag_v2.context.compiler import _payload_text
+
+    views = [{"evidence_id": "e1", "metric": "Revenue"}]
+    references = ContextReferencesV1(
+        handles=(
+            ContextReferenceV1(handle="E1", kind="evidence", evidence_id="e1"),
+        ),
+        support_groups=(ContextSupportGroupV1("G1", "revenue/FY2024", ("E1",)),),
+    )
+
+    measured = _payload_text(views, None, references)
+
+    assert "revenue/FY2024" in measured
+    assert "G1" in measured
+    assert _payload_text(views, None, ContextReferencesV1()) != measured
 
 
 # --- ContextBudget is not RunBudget ----------------------------------------------------------------

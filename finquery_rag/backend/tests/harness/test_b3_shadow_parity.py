@@ -17,11 +17,12 @@ Three kinds of assertion, kept apart on purpose:
 3. **Structural guarantees.**  The production path is unchanged, and no whole
    RunState reaches a pack.
 
-F10 is deliberately *not* fixed.  Note where it lives: the fabricated ``scale``,
-``document_id``, ``metric`` and ``period`` fallbacks are in the **renderer**, and
-the compiler does not touch the renderer.  Both the legacy projection and the
-compiled pack carry absence as absence, so F10 is downstream of both -- which is
-why it can be fixed later, once, without reopening the compiler.
+F10 is fixed as of H2A-3B2, and note where it lived: the fabricated ``scale``,
+``document_id``, ``metric``, ``period`` and ``scope`` defaults were in the
+**renderer**, and the compiler does not touch the renderer.  Both the legacy
+projection and the compiled pack carried absence as absence throughout, so the
+fix moved no pack field -- which is why the parity assertions below are
+unchanged by it and why the baseline this file compares against is ``V2``.
 """
 
 from __future__ import annotations
@@ -43,7 +44,7 @@ from rag_v2.evidence.disclosure import (
     allowed_fields,
 )
 from tests.harness.b3_legacy_context_baseline import (
-    BASELINE,
+    BASELINE_V2,
     SCENARIOS,
     build_state,
     observe,
@@ -133,8 +134,8 @@ def test_the_model_visible_handles_are_the_ones_the_renderer_emits(
     if SCENARIOS[scenario]["calculation"] is not None:
         expected_handles.append("C1")
 
-    assert [reference.handle for reference in pack.references] == expected_handles
-    assert [reference.evidence_id for reference in pack.references][: len(authored)] == [
+    assert [reference.handle for reference in pack.references.handles] == expected_handles
+    assert [r.evidence_id for r in pack.references.handles][: len(authored)] == [
         item["evidence_id"] for item in authored
     ]
 
@@ -171,7 +172,7 @@ def test_the_compiled_pack_matches_the_legacy_projection(scenario: str) -> None:
     change, not that either side is right.
     """
 
-    legacy = BASELINE[scenario]
+    legacy = BASELINE_V2[scenario]
     pack = _compiled(scenario)
 
     assert [dict(item) for item in pack.evidence] == [
@@ -191,7 +192,7 @@ def test_the_disclosed_field_set_agrees_with_the_legacy_trace(scenario: str) -> 
     fields, which is a reporting order, not a claim about the pack.
     """
 
-    legacy = set(BASELINE[scenario]["disclosed_fields"])
+    legacy = set(BASELINE_V2[scenario]["disclosed_fields"])
     pack = _compiled(scenario)
 
     compiled = {
@@ -213,7 +214,7 @@ def test_the_shadow_path_did_not_move_the_legacy_path() -> None:
     """
 
     for scenario in SCENARIO_NAMES:
-        assert observe(scenario) == BASELINE[scenario], scenario
+        assert observe(scenario) == BASELINE_V2[scenario], scenario
 
 
 # --- 3. structural guarantees -----------------------------------------------------------
@@ -304,9 +305,10 @@ def test_multi_support_evidence_is_routed_away_from_the_specialist() -> None:
     here against the real capability, not asserted from the policy's source.
 
     The consequence for the compiler is that B3 is never asked to compile this
-    shape in production.  What the compiler does with it if handed one directly
-    is recorded below, because that gap belongs to 3B2 and should not be
-    discovered later.
+    shape in production -- which is why the routing policy is re-verified here
+    rather than assumed.  The pack can now represent the shape correctly if it
+    ever is asked (asserted below), so the diversion is a routing decision and
+    not a workaround for a representation the context layer could not express.
     """
 
     from rag_v2.adaptive.adaptive_contracts import AdaptiveRAGStateV1, EvidencePacketV1
@@ -345,17 +347,18 @@ def test_multi_support_evidence_is_routed_away_from_the_specialist() -> None:
     assert snapshot["generation_route"] == "MULTI"
 
 
-def test_the_pack_has_no_representation_of_one_claim_with_many_supports() -> None:
-    """Recorded, not fixed.  A known gap that H2A-3B2 has to decide about.
+def test_the_pack_now_represents_one_claim_with_many_supports() -> None:
+    """H2A-3B1 recorded this gap; H2A-3B2 closes it -- without a ninth field.
 
-    If a pack *were* compiled for a multi-support state, it would carry both
-    supports as two ordinary evidence items.  Nothing in the pack distinguishes
-    "two witnesses of one figure" from "two different figures", so a renderer
-    reading it has no way to avoid stating the value twice.  That is the defect
-    the routing policy currently prevents upstream -- which is why this is a
-    3B2 decision rather than a 3B1 fix: the correct representation is a claim
-    with N supports, and inventing it here would be inventing the very structure
-    H2A-2C spent a phase establishing.
+    Before this phase, a multi-support state compiled to two ordinary evidence
+    items, and nothing in the pack distinguished "two witnesses of one figure"
+    from "two different figures".  The topology now says which, and it says it
+    where H2A-3B1 predicted: inside ``references``, because the pack's field set
+    is part of its contract and growing it was not the fix.
+
+    The assertion is driven through the *adapter*, so what is proved is that a
+    message the runtime really carries -- ``bound_slot_bindings`` -- reaches the
+    pack, not that a hand-built request would.
     """
 
     from rag_v2.adaptive.adaptive_contracts import AdaptiveRAGStateV1, EvidencePacketV1
@@ -374,22 +377,34 @@ def test_the_pack_has_no_representation_of_one_claim_with_many_supports() -> Non
         ]
     )
     state.bound_evidence_ids = ["X1", "X2"]
+    state.bound_slot_bindings = {"revenue/FY2024": ["X1", "X2"]}
 
     pack = ContextCompilerV1(SpecialistContextPolicyV1()).compile(
         specialist_context_request(state)
     )
 
-    # Observed, and honestly so: two items, indistinguishable in shape from two
-    # genuinely distinct facts.
+    # Both supports still cross as evidence, in order.
     assert pack.evidence_ids == ("X1", "X2")
     assert [item["value"] for item in pack.evidence] == ["391", "391"]
-    assert {item["metric"] for item in pack.evidence} == {"Revenue"}
-    # The pack records no claim/support cardinality at all.
-    assert set(AgentContextPackV1.__dataclass_fields__) & {
-        "claims",
-        "supports",
-        "slot_bindings",
-    } == set()
+
+    # And the pack now says they are one claim rather than leaving it to a guess.
+    assert len(pack.references.support_groups) == 1
+    group = pack.references.support_groups[0]
+    assert (group.handle, group.canonical_slot, group.supports) == (
+        "G1", "revenue/FY2024", ("E1", "E2"),
+    )
+
+    # Still eight top-level fields: the topology went into ``references``.
+    assert set(AgentContextPackV1.__dataclass_fields__) == {
+        "role",
+        "invocation_id",
+        "query",
+        "evidence",
+        "calculation",
+        "references",
+        "budget",
+        "selection",
+    }
 
 
 class _RecordingSpecialist:

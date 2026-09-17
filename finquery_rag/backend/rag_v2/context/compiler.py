@@ -42,10 +42,12 @@ from .contracts import (
     ContextBudgetUnsupported,
     ContextBudgetV1,
     ContextReferenceV1,
+    ContextReferencesV1,
     ContextRoleV1,
     ContextSelectionEntryV1,
     ContextSelectionReasonV1,
     ContextSelectionTraceV1,
+    ContextSupportGroupV1,
     ExactTokenCounterV1,
     PackIntegrityError,
     UnknownContextRole,
@@ -71,6 +73,16 @@ class ContextRequestV1:
     ``calculation`` is the authoritative calculation payload, or ``None``.  It
     is not recomputed here, and a pack never carries a calculation the runtime
     did not already produce.
+
+    ``slot_bindings`` is the **authoritative claim/support relation**, carried
+    as ordered pairs so that the compiler inherits the authority's ordering
+    rather than imposing one: each pair is a Binder slot key and the evidence
+    ids admitted as that slot's supports.  One id is one claim with one source;
+    several are one claim with several independent sources.  The compiler does
+    not group them, does not decide when two items are the same claim, and has
+    no code that could -- it projects the relation it was handed.  An empty
+    tuple means the runtime established no topology, and the pack then reports
+    none rather than partitioning the evidence itself.
     """
 
     role: ContextRoleV1
@@ -78,6 +90,7 @@ class ContextRequestV1:
     query: str
     admitted_evidence: tuple[Mapping[str, Any], ...] = ()
     calculation: Mapping[str, Any] | None = None
+    slot_bindings: tuple[tuple[str, tuple[str, ...]], ...] = ()
 
 
 @dataclass(frozen=True)
@@ -117,20 +130,36 @@ class EvidenceSelectionPolicyV1(Protocol):
 def _payload_text(
     evidence_views: Sequence[Mapping[str, Any]],
     calculation_view: Mapping[str, Any] | None,
+    references: ContextReferencesV1,
 ) -> str:
     """Canonical serialization of the compiler's own dynamic payload.
 
     Measured only when an exact counter is supplied.  The text is a *stable*
-    rendering of the disclosed projections and nothing else -- no instructions,
-    no formatting, no renderer output -- so a count taken here describes the
-    context the compiler selected, which is not the same number as the model's
-    prompt length.  ``selected_context_tokens`` is named for exactly that reason.
+    rendering of the disclosed projections and the model-visible topology, and
+    nothing else -- no instructions, no formatting, no renderer output -- so a
+    count taken here describes the context the compiler selected, which is not
+    the same number as the model's prompt length.  ``selected_context_tokens``
+    is named for exactly that reason.
+
+    The topology belongs in the count because it is context: a support group is
+    something the invocation sees, so a bound measured without it would
+    under-count the thing it exists to bound.  The ``E1..En`` handles are not
+    listed separately -- they are a positional function of the evidence order,
+    so they carry no information this payload does not already have.
     """
 
     return json.dumps(
         {
             "evidence": [dict(view) for view in evidence_views],
             "calculation": None if calculation_view is None else dict(calculation_view),
+            "support_groups": [
+                {
+                    "handle": group.handle,
+                    "canonical_slot": group.canonical_slot,
+                    "supports": list(group.supports),
+                }
+                for group in references.support_groups
+            ],
         },
         ensure_ascii=False,
         sort_keys=True,
@@ -215,21 +244,32 @@ class ContextCompilerV1:
         #    policy's own ordering -- never in the middle, which would make the
         #    surviving order depend on how many were dropped.
         entries = list(selection.entries)
+        references = _references(
+            evidence_views, calculation_view, request.slot_bindings
+        )
         if self.budget.max_input_tokens is not None:
             limit = self.budget.max_input_tokens
             while evidence_views and self._measure(
-                _payload_text(evidence_views, calculation_view)
+                _payload_text(evidence_views, calculation_view, references)
             ) > limit:
                 evidence_views.pop()
                 entries = _mark_last_kept_as_dropped(entries)
+                # The topology shrinks with the evidence.  A shed support is no
+                # longer a witness this invocation can see, and the pack refuses
+                # a group naming a handle it does not carry -- so the groups are
+                # rebuilt rather than left describing evidence that is gone.
+                references = _references(
+                    evidence_views, calculation_view, request.slot_bindings
+                )
 
         # 4. Budget accounting and the pack.
         payload_tokens = (
             None
             if self.token_counter is None
-            else self._measure(_payload_text(evidence_views, calculation_view))
+            else self._measure(
+                _payload_text(evidence_views, calculation_view, references)
+            )
         )
-        references = _references(evidence_views, calculation_view)
 
         considered = len(request.admitted_evidence)
         selected_count = len(evidence_views)
@@ -282,7 +322,8 @@ def _mark_last_kept_as_dropped(
 def _references(
     evidence_views: Sequence[Mapping[str, Any]],
     calculation_view: Mapping[str, Any] | None,
-) -> tuple[ContextReferenceV1, ...]:
+    slot_bindings: Sequence[tuple[str, Sequence[str]]] = (),
+) -> ContextReferencesV1:
     """Model-visible handles, assigned by selection order.
 
     These are the same handles the B3 renderer emits -- ``E1..En`` positionally
@@ -290,7 +331,7 @@ def _references(
     resolved back to an authoritative identity without the pack carrying one.
     """
 
-    references = [
+    handles = [
         ContextReferenceV1(
             handle=f"E{index}",
             kind="evidence",
@@ -304,5 +345,65 @@ def _references(
         for index, view in enumerate(evidence_views, start=1)
     ]
     if calculation_view is not None:
-        references.append(ContextReferenceV1(handle="C1", kind="calculation"))
-    return tuple(references)
+        handles.append(ContextReferenceV1(handle="C1", kind="calculation"))
+    return ContextReferencesV1(
+        handles=tuple(handles),
+        support_groups=_support_groups(handles, slot_bindings),
+    )
+
+
+def _support_groups(
+    handles: Sequence[ContextReferenceV1],
+    slot_bindings: Sequence[tuple[str, Sequence[str]]],
+) -> tuple[ContextSupportGroupV1, ...]:
+    """Project the authority's claim/support relation onto the handles it maps to.
+
+    This is a rename and a filter, and deliberately nothing more.  Each slot the
+    Binder bound becomes one group, named ``G1..Gm`` in the authority's own
+    order, carrying the slots' supports translated from evidence ids into the
+    handles the model will actually cite.  No slot key is composed here, no two
+    items are judged to be the same claim here, and there is no code in this
+    module that could do either -- that judgment is slot binding's, and it
+    happened upstream.
+
+    Two restrictions, neither of which is a judgment about the evidence:
+
+    * an id the pack does not carry is left out.  The boundary did not release
+      it, so the model cannot check a corroboration it cannot see, and a group
+      naming it would be a claim about evidence that never crossed;
+    * a slot whose every support was left out is not emitted at all, because an
+      empty group is that same claim with nothing behind it -- and the pack
+      refuses to hold one.
+
+    A repeated id collapses.  Slot bindings are deduplicated where they are
+    built, so the authority does not produce one; the guard is here because if
+    one ever did, reporting it twice would state a corroboration that does not
+    exist, which is the failure this phase removes rather than reproduces.
+    """
+
+    handle_by_id: dict[str, str] = {}
+    for reference in handles:
+        if reference.kind != "evidence" or reference.evidence_id is None:
+            continue
+        # First occurrence wins, matching the positional assignment above: a
+        # duplicate identity would have produced a second handle, and the group
+        # must point at the one the renderer emits first.
+        handle_by_id.setdefault(reference.evidence_id, reference.handle)
+
+    groups: list[ContextSupportGroupV1] = []
+    for slot_id, evidence_ids in slot_bindings:
+        supports: list[str] = []
+        for evidence_id in evidence_ids:
+            handle = handle_by_id.get(str(evidence_id))
+            if handle is not None and handle not in supports:
+                supports.append(handle)
+        if not supports:
+            continue
+        groups.append(
+            ContextSupportGroupV1(
+                handle=f"G{len(groups) + 1}",
+                canonical_slot=str(slot_id),
+                supports=tuple(supports),
+            )
+        )
+    return tuple(groups)

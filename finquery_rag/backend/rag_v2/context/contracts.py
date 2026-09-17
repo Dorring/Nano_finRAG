@@ -21,6 +21,10 @@ undo without noticing:
   never be mistaken for a production measurement.
 * **A configured token bound without an exact counter is a configuration
   error**, not something to approximate.  See ``ContextBudgetUnsupported``.
+* **A support group cannot name evidence the pack does not carry.**  The
+  topology between evidence items is a projection of the Binder's slot binding,
+  and the pack refuses to hold a group whose members it was not given.  See
+  ``ContextSupportGroupV1``.
 """
 
 from __future__ import annotations
@@ -37,10 +41,12 @@ __all__ = [
     "ContextBudgetUnsupported",
     "ContextBudgetV1",
     "ContextReferenceV1",
+    "ContextReferencesV1",
     "ContextRoleV1",
     "ContextSelectionEntryV1",
     "ContextSelectionReasonV1",
     "ContextSelectionTraceV1",
+    "ContextSupportGroupV1",
     "ExactTokenCounterV1",
     "PackIntegrityError",
     "UnknownContextRole",
@@ -261,6 +267,62 @@ class ContextReferenceV1:
     citation_id: str | None = None
 
 
+@dataclass(frozen=True)
+class ContextSupportGroupV1:
+    """One canonical claim, and the model-visible handles that support it.
+
+    ``canonical_slot`` is the Binder's own slot key, carried **verbatim**.  The
+    compiler does not compose it, does not canonicalise it, and has no function
+    that could: the identity of a claim is settled by slot binding upstream, and
+    a context compiler that recomputed it would be a second binding authority
+    wearing a different hat.
+
+    ``supports`` holds handles, not identities, and every one of them is a
+    handle the pack already carries.  That is enforced by the pack itself, so a
+    group can never name evidence the model was not shown.
+
+    One group is emitted per bound slot, including slots with a single support:
+    "these three items are three separate claims" is worth as much to a reader
+    as "these two are one", and a representation that only marked the
+    interesting case would leave the ordinary one ambiguous.
+    """
+
+    handle: str
+    canonical_slot: str
+    supports: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
+class ContextReferencesV1:
+    """The pack's model-visible handles, and the topology between them.
+
+    Two different questions, kept as two fields rather than mixed into one
+    sequence: ``handles`` is the citation namespace the model writes in and a
+    validator resolves against, and ``support_groups`` is *which of those
+    handles say the same thing*.  A consumer that resolves a citation must not
+    have to filter group entries out to do it.
+
+    ``support_groups`` is a **projection of an authority, never an inference**.
+    When the runtime carries no binding, this is empty and the pack says nothing
+    rather than partitioning the evidence itself -- "the authority did not place
+    this item" and "this item is its own claim" are different statements, and
+    only the first is one a compiler is entitled to make.
+    """
+
+    handles: tuple[ContextReferenceV1, ...] = ()
+    support_groups: tuple[ContextSupportGroupV1, ...] = ()
+
+    @property
+    def evidence_handles(self) -> tuple[str, ...]:
+        """The evidence handles only, in order -- ``E1..En``, no ``C1``."""
+
+        return tuple(
+            reference.handle
+            for reference in self.handles
+            if reference.kind == "evidence"
+        )
+
+
 # --- the pack ----------------------------------------------------------------------------
 
 
@@ -316,7 +378,7 @@ class AgentContextPackV1:
     query: str
     evidence: tuple[Mapping[str, Any], ...]
     calculation: Mapping[str, Any] | None
-    references: tuple[ContextReferenceV1, ...]
+    references: ContextReferencesV1
     budget: ContextBudgetAccountingV1
     selection: ContextSelectionTraceV1
 
@@ -327,6 +389,8 @@ class AgentContextPackV1:
             raise PackIntegrityError("invocation_id must be non-empty")
         if not isinstance(self.query, str):
             raise PackIntegrityError("query must be a string")
+        if not isinstance(self.references, ContextReferencesV1):
+            raise PackIntegrityError("references must be a ContextReferencesV1")
 
         object.__setattr__(
             self,
@@ -342,6 +406,47 @@ class AgentContextPackV1:
                 "calculation",
                 _frozen_view(self.calculation, where="calculation"),
             )
+        self._check_support_groups()
+
+    def _check_support_groups(self) -> None:
+        """A group may only name handles the model is actually being shown.
+
+        Enforced here rather than trusted from the compiler for the same reason
+        nested mappings are refused: it is the difference between a property and
+        a promise.  A support group naming ``E3`` in a pack that carries two
+        items would tell the model that a corroboration exists which the
+        boundary did not release -- the claim and its evidence crossing
+        separately, which is how a governed context starts asserting things the
+        boundary never established.
+
+        Also refused: an empty group, and a group naming a handle twice.  A
+        repeated handle is not a second witness, so reporting it as one would
+        state a corroboration that does not exist -- the same failure this phase
+        removes from the renderer, one layer up.
+        """
+
+        evidence_handles = set(self.references.evidence_handles)
+        for group in self.references.support_groups:
+            if not group.supports:
+                raise PackIntegrityError(
+                    f"support group {group.handle!r} names no supports; a group "
+                    f"with nothing in it states a claim the model cannot check"
+                )
+            unknown = [
+                handle
+                for handle in group.supports
+                if handle not in evidence_handles
+            ]
+            if unknown:
+                raise PackIntegrityError(
+                    f"support group {group.handle!r} names {unknown}, which the "
+                    f"pack does not carry as evidence"
+                )
+            if len(set(group.supports)) != len(group.supports):
+                raise PackIntegrityError(
+                    f"support group {group.handle!r} names a support twice; a "
+                    f"repeated handle is not a second witness"
+                )
 
     @property
     def evidence_ids(self) -> tuple[str, ...]:
