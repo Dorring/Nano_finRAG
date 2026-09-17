@@ -311,6 +311,13 @@ after:   content = the authoritative table
 
 ## 11 · Remaining debt before the H2A-3 final seal
 
+> **Consolidated by H2A-3E.** The live list is §13 of
+> `nf-v3-h2a-3-harness-runtime.md`; this list is the record of what was open at
+> H2A-3D. Item 4's `generation` field was audited and deleted, and the
+> `specialist=` rename was done, so what carries into the seal is items 1, 2, 3
+> and 5 as stated debt rather than as blockers. F1 is downgraded there to legacy
+> V1 implementation debt.
+
 1. **B5/B6/V1 have no role.** `ContextRoleV1` keeps one member; the framework has
    to support their arrival without `AgentContextPackV1` becoming a universal
    RunState. Whether they are migrated at all is a modernization question, not a

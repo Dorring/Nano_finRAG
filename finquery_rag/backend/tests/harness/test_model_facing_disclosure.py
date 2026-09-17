@@ -202,7 +202,7 @@ def test_a_real_specialist_call_receives_a_projection_not_an_evidence_object() -
     from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
 
     specialist = _RecordingSpecialist()
-    capability = TrustedV2GenerationCapability(specialist=specialist)
+    capability = TrustedV2GenerationCapability(model_backend=specialist)
 
     # Two bound facts, because the routing policy only reaches the specialist
     # for a state it cannot render: one fact renders deterministically and never
@@ -246,7 +246,7 @@ def test_the_disclosure_is_recorded_by_field_name_only() -> None:
     from rag_v2.adaptive.adaptive_contracts import AdaptiveRAGStateV1, EvidencePacketV1
     from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
 
-    capability = TrustedV2GenerationCapability(specialist=_RecordingSpecialist())
+    capability = TrustedV2GenerationCapability(model_backend=_RecordingSpecialist())
     state = AdaptiveRAGStateV1.new("r", "What was revenue?")
     state.add_evidence(
         [
@@ -532,7 +532,7 @@ def test_the_specialist_calculation_payload_is_projected_not_raw() -> None:
     from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
 
     specialist = _RecordingSpecialistWithCalculation()
-    capability = TrustedV2GenerationCapability(specialist=specialist)
+    capability = TrustedV2GenerationCapability(model_backend=specialist)
     capability.generate(_state_with_calculation())
 
     assert specialist.prompts, "the specialist must actually have been called"
@@ -557,7 +557,7 @@ def test_the_specialist_still_receives_the_calculation_fields_it_reads() -> None
     from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
 
     capability = TrustedV2GenerationCapability(
-        specialist=_RecordingSpecialistWithCalculation()
+        model_backend=_RecordingSpecialistWithCalculation()
     )
     capability.generate(_state_with_calculation())
 
@@ -578,7 +578,7 @@ def test_the_calculation_fields_are_named_in_the_trace() -> None:
     from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
 
     capability = TrustedV2GenerationCapability(
-        specialist=_RecordingSpecialistWithCalculation()
+        model_backend=_RecordingSpecialistWithCalculation()
     )
     capability.generate(_state_with_calculation())
     fields = capability.trace_snapshot()["disclosed_fields"]

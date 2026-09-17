@@ -185,7 +185,7 @@ def test_specialist_candidate_uses_same_release_authority() -> None:
         [["E1", "E2"]], facts, SelectingBinderProvider()
     )
     specialist = _Specialist("Revenue [citation-E1]", ["citation-E1"])
-    generation = TrustedV2GenerationCapability(specialist=specialist)
+    generation = TrustedV2GenerationCapability(model_backend=specialist)
     validator = TrustedReleaseValidationCapability()
     plan = _plan(_slot("a", period="FY2024"), _slot("b", period="FY2023"))
     outcome = asyncio.run(

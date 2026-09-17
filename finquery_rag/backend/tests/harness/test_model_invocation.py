@@ -136,7 +136,6 @@ def test_the_request_is_exactly_the_declared_fields() -> None:
         "prompt",
         "provider_id",
         "model_id",
-        "generation",
     }
 
 
@@ -183,7 +182,7 @@ def test_a_request_refuses_a_blank_prompt() -> None:
         )
 
 
-def test_a_request_refuses_a_container_in_its_configuration() -> None:
+def test_a_response_refuses_a_container_in_its_usage() -> None:
     """A named field is not a licence for a structure stored under it.
 
     Same rule the pack applies to evidence, for the same reason: a container
@@ -192,13 +191,19 @@ def test_a_request_refuses_a_container_in_its_configuration() -> None:
     """
 
     with pytest.raises(InvocationIntegrityError):
-        ModelRequestV1(
-            invocation_id="i",
-            role="SPECIALIST",
-            prompt="text",
-            provider_id="p",
-            generation={"options": {"nested": 1}},
-        )
+        ModelResponseV1(text="a", usage={"nested": {"n": 1}})
+
+
+def test_a_request_carries_no_configuration_field_it_has_no_producer_for() -> None:
+    """H2A-3E removed ``generation``: no producer, no consumer, no test.
+
+    A field with nothing on either end is a claim about a future requirement
+    nobody has stated, and the boundary it sat on is the one place a guess is
+    most expensive -- a sampling setting nobody chose is indistinguishable at
+    the provider from one somebody did.
+    """
+
+    assert "generation" not in ModelRequestV1.__dataclass_fields__
 
 
 def test_a_response_collapses_a_repeated_citation() -> None:
@@ -575,7 +580,7 @@ def test_a_binding_refuses_a_counter_that_is_not_one() -> None:
 def test_the_local_specialist_binding_configures_no_token_bound() -> None:
     """B3's honest state: no counter, so no bound is enforced or approximated."""
 
-    capability = TrustedV2GenerationCapability(specialist=_EchoBackend())
+    capability = TrustedV2GenerationCapability(model_backend=_EchoBackend())
 
     assert capability.binding is not None
     assert capability.binding.exact_token_counter is None
@@ -673,7 +678,7 @@ def test_the_trace_is_rebuilt_and_nothing_reads_it() -> None:
     it, or the runtime could consult its own record of what it did.
     """
 
-    capability = TrustedV2GenerationCapability(specialist=_EchoBackend())
+    capability = TrustedV2GenerationCapability(model_backend=_EchoBackend())
     capability.generate(build_state("multi_fact"))
 
     first = capability.trace_snapshot()
@@ -720,7 +725,7 @@ def test_the_boundary_reproduces_baseline_v2_with_a_deterministic_provider(
     import hashlib
 
     provider = _RecordingProvider(text=BASELINE_V2[scenario]["candidate_answer"])
-    capability = TrustedV2GenerationCapability(specialist=provider)
+    capability = TrustedV2GenerationCapability(model_backend=provider)
     result = capability.generate(build_state(scenario))
     frozen = BASELINE_V2[scenario]
 
@@ -754,7 +759,7 @@ def test_a_backend_failure_fails_closed_through_the_harness() -> None:
     """
 
     capability = TrustedV2GenerationCapability(
-        specialist=_EchoBackend(RuntimeError("engine died"))
+        model_backend=_EchoBackend(RuntimeError("engine died"))
     )
 
     with pytest.raises(ModelProviderError) as raised:
@@ -775,7 +780,7 @@ def test_a_providers_own_normalized_failure_is_not_re_wrapped() -> None:
     from rag_v2.invocation import ModelProviderError as Error
 
     capability = TrustedV2GenerationCapability(
-        specialist=_FailingProvider(
+        model_backend=_FailingProvider(
             Error(ProviderFailureKind.TIMEOUT, "the endpoint did not answer")
         )
     )
@@ -795,7 +800,7 @@ def test_the_capability_binds_an_already_correct_provider_without_adapting_it() 
     """
 
     provider = _RecordingProvider()
-    capability = TrustedV2GenerationCapability(specialist=provider)
+    capability = TrustedV2GenerationCapability(model_backend=provider)
 
     assert capability.binding is not None
     assert capability.binding.provider is provider
@@ -806,7 +811,7 @@ def test_the_capability_adapts_a_legacy_backend() -> None:
     """And a ``generate(prompt)`` backend arrives wrapped, once."""
 
     backend = _EchoBackend("an answer")
-    capability = TrustedV2GenerationCapability(specialist=backend)
+    capability = TrustedV2GenerationCapability(model_backend=backend)
 
     assert capability.binding is not None
     assert isinstance(capability.binding.provider, LegacyPromptProviderAdapterV1)

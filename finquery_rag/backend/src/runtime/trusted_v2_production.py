@@ -1039,7 +1039,7 @@ def build_trusted_v2_runtime_for_request(
             generation=TrustedV2GenerationCapability(
                 routing_policy=None,
                 renderer=DeterministicFactRenderer(),
-                specialist=resources.specialist,
+                model_backend=resources.specialist,
             ),
             release_validator=TrustedReleaseValidationCapability(),
         )

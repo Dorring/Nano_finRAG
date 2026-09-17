@@ -110,7 +110,7 @@ class _Backend:
 
 def _run(state: AdaptiveRAGStateV1, backend: _Backend | None = None):
     backend = backend or _Backend()
-    capability = TrustedV2GenerationCapability(specialist=backend)
+    capability = TrustedV2GenerationCapability(model_backend=backend)
     result = capability.generate(state)
     return capability, backend, result
 
@@ -244,7 +244,7 @@ def test_a_deterministic_route_compiles_nothing() -> None:
 def test_a_stale_pack_does_not_survive_into_the_next_invocation() -> None:
     """Lifetime is one invocation, enforced on the capability that holds it."""
 
-    capability = TrustedV2GenerationCapability(specialist=_Backend())
+    capability = TrustedV2GenerationCapability(model_backend=_Backend())
     capability.generate(_state([_packet("e1")], {"revenue/FY2024": ["e1"]},
                                intent=QUALITATIVE))
     assert capability.last_context_pack is not None
@@ -400,7 +400,7 @@ def test_the_migrated_path_reproduces_baseline_v2_exactly(scenario: str) -> None
 
     state = build_state(scenario)
     specialist = RecordingSpecialist()
-    capability = TrustedV2GenerationCapability(specialist=specialist)
+    capability = TrustedV2GenerationCapability(model_backend=specialist)
     result = capability.generate(state)
     frozen = BASELINE_V2[scenario]
 
@@ -543,7 +543,7 @@ def test_a_missing_binding_shape_is_handled_by_the_pack_contract() -> None:
     state = _state([_packet("e1")], {"revenue/FY2024": ["e1"]}, intent=QUALITATIVE)
     state.bound_slot_bindings = "not a mapping"  # type: ignore[assignment]
 
-    capability = TrustedV2GenerationCapability(specialist=_Backend())
+    capability = TrustedV2GenerationCapability(model_backend=_Backend())
     with pytest.raises(TypeError):
         capability.generate(state)
 

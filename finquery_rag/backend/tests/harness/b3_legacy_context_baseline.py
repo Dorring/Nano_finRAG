@@ -239,7 +239,7 @@ def observe(scenario: str) -> dict[str, Any]:
     from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
 
     specialist = RecordingSpecialist()
-    capability = TrustedV2GenerationCapability(specialist=specialist)
+    capability = TrustedV2GenerationCapability(model_backend=specialist)
     result = capability.generate(build_state(scenario))
 
     pack = capability.last_context_pack

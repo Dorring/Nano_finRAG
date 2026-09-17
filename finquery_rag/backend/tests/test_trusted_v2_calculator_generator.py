@@ -177,7 +177,7 @@ def test_zero_denominator_is_fail_closed_without_specialist_fallback() -> None:
     )
     calculation = DeterministicCalculationCapability()
     generation = TrustedV2GenerationCapability(
-        specialist=_FakeSpecialist("should-not-be-called")
+        model_backend=_FakeSpecialist("should-not-be-called")
     )
     outcome = asyncio.run(
         _coordinator(
@@ -229,7 +229,7 @@ def test_qualitative_route_calls_specialist_with_bound_evidence_only() -> None:
     )
     specialist = _FakeSpecialist("Margin declined because of costs.", ["unknown-X"])
     generation = TrustedV2GenerationCapability(
-        specialist=specialist
+        model_backend=specialist
     )
     plan = _plan(
         _slot("cause_a", metric="Operating Margin", period="FY2024", role="operand"),

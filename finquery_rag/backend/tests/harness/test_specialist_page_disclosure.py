@@ -290,7 +290,7 @@ def test_the_production_boundary_hands_the_model_the_true_page() -> None:
     from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
 
     specialist = _RenderingSpecialist()
-    TrustedV2GenerationCapability(specialist=specialist).generate(_multi_fact_state())
+    TrustedV2GenerationCapability(model_backend=specialist).generate(_multi_fact_state())
 
     assert specialist.prompts, "the specialist was never called"
     prompt = specialist.prompts[0]
@@ -311,7 +311,7 @@ def test_the_disclosed_page_is_recorded_in_the_trace_by_name() -> None:
     from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
 
     specialist = _RenderingSpecialist()
-    capability = TrustedV2GenerationCapability(specialist=specialist)
+    capability = TrustedV2GenerationCapability(model_backend=specialist)
     capability.generate(_multi_fact_state())
 
     disclosed = set(capability.trace_snapshot()["disclosed_fields"])

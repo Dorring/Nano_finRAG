@@ -448,7 +448,7 @@ def test_the_production_boundary_renders_no_fabricated_default() -> None:
     from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
 
     specialist = _RenderingSpecialist()
-    TrustedV2GenerationCapability(specialist=specialist).generate(_sparse_state())
+    TrustedV2GenerationCapability(model_backend=specialist).generate(_sparse_state())
 
     assert specialist.prompts, "the specialist was never called"
     prompt = specialist.prompts[0]

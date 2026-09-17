@@ -20,9 +20,6 @@ which rule stopped working.
 
 from __future__ import annotations
 
-import ast
-import pathlib
-
 import pytest
 
 from rag_v2.derived import (
@@ -360,41 +357,8 @@ def test_prose_is_never_pushed_through_the_numeric_parser() -> None:
 
 
 # --- whose job admission is not ------------------------------------------------------------------
-
-
-def _imported_roots(path: pathlib.Path) -> set[str]:
-    tree = ast.parse(path.read_text(encoding="utf-8"))
-    roots: set[str] = set()
-    for node in ast.walk(tree):
-        if isinstance(node, ast.ImportFrom) and node.module:
-            roots.add(node.module)
-        elif isinstance(node, ast.Import):
-            roots.update(alias.name for alias in node.names)
-    return roots
-
-
-@pytest.mark.parametrize("package", ["rag_v2/context", "rag_v2/invocation"])
-def test_admission_is_not_the_compiler_s_or_the_provider_s_job(package: str) -> None:
-    """Two boundaries that must not grow a verifier.
-
-    A ``ContextCompilerV1`` that re-checked raw model output would be a second
-    admission authority; a ``ModelProviderV1`` that decided its own output was
-    trustworthy would be the original defect with better manners.  Neither may
-    even import the contracts, so neither can quietly acquire an opinion.
-    """
-
-    offenders = [
-        path.as_posix()
-        for path in pathlib.Path(package).rglob("*.py")
-        if "rag_v2.derived" in _imported_roots(path)
-    ]
-
-    assert offenders == [], offenders
-
-
-def test_the_derived_package_imports_no_application_layer() -> None:
-    """The admission contract is low; only the table-specific caller is above it."""
-
-    for path in pathlib.Path("rag_v2/derived").rglob("*.py"):
-        roots = _imported_roots(path)
-        assert not {name for name in roots if name.split(".")[0] == "src"}, path
+#
+# That admission is neither the compiler's nor the provider's is asserted in
+# ``tests/architecture/test_harness_boundaries.py``, beside every other
+# cross-package guard.  One home per rule: two copies of a boundary check drift,
+# and the one that drifts is discovered by reading, not by running.

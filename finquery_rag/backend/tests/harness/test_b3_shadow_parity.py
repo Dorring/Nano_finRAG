@@ -363,7 +363,7 @@ def test_multi_support_evidence_is_routed_away_from_the_specialist() -> None:
     )
     state.bound_evidence_ids = ["X1", "X2"]
 
-    capability = TrustedV2GenerationCapability(specialist=_RecordingSpecialist())
+    capability = TrustedV2GenerationCapability(model_backend=_RecordingSpecialist())
     capability.generate(state)
     snapshot = capability.trace_snapshot()
 

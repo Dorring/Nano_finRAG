@@ -662,7 +662,7 @@ def _build_capabilities(fixture: H1Fixture, resources: TrustedV2RuntimeResources
     generation = TrustedV2GenerationCapability(
         routing_policy=None,
         renderer=DeterministicFactRenderer(),
-        specialist=resources.specialist,
+        model_backend=resources.specialist,
     )
     if fixture.generation == "foreign_citation":
         generation = _ForeignCitationGeneration()

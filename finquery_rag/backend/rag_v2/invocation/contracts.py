@@ -33,7 +33,7 @@ against acquiring the dependency.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from enum import Enum
 from types import MappingProxyType
 from typing import Any
@@ -95,10 +95,10 @@ def _freeze_scalars(value: Mapping[str, Any], *, where: str) -> Mapping[str, Any
     """A read-only copy of a configuration mapping, scalars only.
 
     The same rule the pack applies to evidence, for the same reason: a named
-    field is not a licence for a structure stored under it.  Generation
-    configuration is numbers and strings -- a container here would be a second
-    object travelling inside the request, and the boundary this module exists to
-    keep narrow would have a hole in it.
+    field is not a licence for a structure stored under it.  Usage counters are
+    numbers -- a container here would be a second object travelling inside a
+    response, and the boundary this module exists to keep narrow would have a
+    hole in it.
     """
 
     frozen = dict(value)
@@ -125,13 +125,13 @@ class ModelRequestV1:
     would be the change this contract exists to prevent -- a provider that could
     read the pack could reach fields the role's renderer chose not to expose.
 
-    ``generation`` is carried and not populated.  The current provider owns its
-    own sampling configuration in its constructor, exactly as
-    ``ContextBudgetV1.reserved_output_tokens`` is carried and not enforced: the
-    field marks where a binding will supply per-invocation configuration, and an
-    empty mapping says plainly that nothing does yet.  Inventing values for it
-    would be worse than leaving it empty -- a sampling setting nobody chose is
-    indistinguishable at the boundary from one somebody did.
+    There is deliberately no ``generation`` field.  H2A-3C carried an empty one
+    as a marker for where per-invocation sampling configuration would go, and
+    H2A-3E removed it: an audit found no producer, no consumer, and no test
+    beyond the one asserting the field set.  A field with nothing on either end
+    of it is a claim about a future requirement nobody has stated, and the
+    current provider owns its sampling configuration in its own constructor --
+    which is where a real requirement will say it belongs when it arrives.
     """
 
     invocation_id: str
@@ -139,7 +139,6 @@ class ModelRequestV1:
     prompt: str
     provider_id: str
     model_id: str | None = None
-    generation: Mapping[str, Any] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         for name in ("invocation_id", "role", "provider_id"):
@@ -157,9 +156,6 @@ class ModelRequestV1:
             not isinstance(self.model_id, str) or not self.model_id.strip()
         ):
             raise InvocationIntegrityError("model_id must be a non-empty string or None")
-        object.__setattr__(
-            self, "generation", _freeze_scalars(self.generation, where="generation")
-        )
 
 
 @dataclass(frozen=True)

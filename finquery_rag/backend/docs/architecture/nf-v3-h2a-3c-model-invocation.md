@@ -278,6 +278,12 @@ and the Harness/provider boundary can now be tested on any checkout.
 
 ## 14 · Remaining Harness debt before H2A-3D
 
+> **Consolidated by H2A-3E.** The live list is §13 of
+> `nf-v3-h2a-3-harness-runtime.md`. Item 4's `generation` field was audited (no
+> producer, no consumer, one shape test) and **deleted**; item 2's `specialist=`
+> was renamed to `model_backend=`. Item 6 was closed by H2A-3D. Items 1, 3, 5
+> and 7 carry forward as stated debt rather than as blockers.
+
 1. **The provider's interface is one method.** `invoke` is enough for a
    synchronous local model and for the deterministic doubles; streaming, health
    and cancellation are not specified, and a remote provider will need at least

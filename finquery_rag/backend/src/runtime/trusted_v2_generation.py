@@ -216,13 +216,19 @@ class TrustedV2GenerationCapability:
     def _binding_for(backend: Any) -> ModelBindingV1:
         """Bind a model backend to the specialist renderer.
 
-        H2A-3C.  ``specialist=`` accepts either a provider or a legacy
+        H2A-3C.  ``model_backend=`` accepts either a provider or a legacy
         ``generate(prompt)`` backend, and the difference is one ``isinstance``
         with a large consequence: an object that already implements
         ``ModelProviderV1`` is used as the provider it says it is, and anything
         else is adapted.  A future financial or DeepSeek binding therefore
         arrives through the same parameter as the local specialist, which is
         what "the Harness core does not move" has to mean in practice.
+
+        H2A-3E renamed the parameter from ``specialist=``, which described the
+        one backend it was first written for rather than the two kinds it now
+        takes.  ``TrustedV2RuntimeResources.specialist`` was left alone: it
+        really does hold the specialist, and narrowing that name would have
+        been a different change with a different meaning.
 
         ``provider_id`` prefers what the backend declares about itself and falls
         back to its type name.  It is a *label* -- it names a boundary in a trace
@@ -257,15 +263,15 @@ class TrustedV2GenerationCapability:
         *,
         routing_policy: Any | None = None,
         renderer: Any | None = None,
-        specialist: Any | None = None,
+        model_backend: Any | None = None,
     ) -> None:
         self.routing_policy = routing_policy or GeneratorRoutingPolicy()
         self.renderer = renderer or DeterministicFactRenderer()
-        self.specialist = specialist
+        self.model_backend = model_backend
         # The model boundary, built once.  ``None`` when no backend was
         # configured, which is the state every deterministic route runs in.
         self.binding = (
-            None if specialist is None else self._binding_for(specialist)
+            None if model_backend is None else self._binding_for(model_backend)
         )
         self.invocation = (
             None if self.binding is None else ModelInvocationRuntimeV1(self.binding)
@@ -391,7 +397,7 @@ class TrustedV2GenerationCapability:
         model or a DeepSeek endpoint arrive as a new ``ModelBindingV1`` rather
         than as a change to this file.
         """
-        if self.specialist is None or self.invocation is None:
+        if self.model_backend is None or self.invocation is None:
             raise CandidateGenerationCapabilityError("financial_specialist_not_configured")
 
         # 1. The adapter reads the runtime's authoritative state.
