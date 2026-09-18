@@ -15,6 +15,7 @@ import re
 from typing import Any, Mapping
 
 from rag_v2.contracts.financial_semantics import (
+    canonical_quantity,
     magnitude_multiplier,
     magnitude_of,
     magnitude_tokens,
@@ -114,6 +115,17 @@ class SemanticClaimVerifierV1:
         r"more|less|compared|versus|vs\.?|margin|rate)\b",
         re.I,
     )
+    #: Words that assert a comparison *and* its direction.  ``compared``,
+    #: ``versus`` and ``vs`` assert only that a comparison is being made, which
+    #: is a weaker claim and is checked more weakly.
+    _DIRECTION_UP = re.compile(
+        r"\b(?:higher|larger|greater|more|increase(?:d|s)?|exceed(?:s|ed)?|above)\b",
+        re.I,
+    )
+    _DIRECTION_DOWN = re.compile(
+        r"\b(?:lower|smaller|less|decrease(?:d|s)?|decline(?:d|s)?|below|under)\b",
+        re.I,
+    )
     _STOPWORDS = {
         "a", "an", "and", "by", "for", "from", "how", "in", "is", "of", "on",
         "reported", "the", "this", "to", "was", "what", "were", "with", "would",
@@ -204,6 +216,133 @@ class SemanticClaimVerifierV1:
             result[evidence_id.upper()] = evidence_id
             result[f"C{index}"] = evidence_id
         return result
+
+    @classmethod
+    def _evidence_quantities(cls, packet: Mapping[str, Any]) -> dict[str, tuple[str, Any]]:
+        """One canonical quantity per company among the admitted facts.
+
+        A company with two disagreeing quantities is dropped entirely rather
+        than resolved: which of them the answer meant is exactly what cannot be
+        established, and picking one would be guessing at the very thing the
+        claim is about.
+        """
+
+        quantities: dict[str, tuple[str, Any]] = {}
+        conflicted: set[str] = set()
+        for item in cls._items(packet):
+            entity = cls._text(
+                item.get("entity") or item.get("company") or item.get("ticker")
+            )
+            if not entity:
+                continue
+            quantity = canonical_quantity(
+                item.get("value"),
+                scale=item.get("scale"),
+                unit=item.get("unit"),
+                currency=item.get("currency"),
+            )
+            if quantity is None:
+                continue
+            key = entity.casefold()
+            if key in conflicted:
+                continue
+            existing = quantities.get(key)
+            if existing is None:
+                quantities[key] = (entity, quantity)
+            elif existing[1].identity != quantity.identity:
+                conflicted.add(key)
+                quantities.pop(key, None)
+        return quantities
+
+    @classmethod
+    def _direction_subject(
+        cls,
+        answer: str,
+        position: int,
+        quantities: Mapping[str, tuple[str, Any]],
+    ) -> str | None:
+        """The company the answer presents as the subject of its direction word.
+
+        Deliberately narrow and deterministic: the nearest named company that
+        appears *before* the word.  "Apple's X were larger than Microsoft's"
+        names Apple as the larger one.  A sentence where no company precedes the
+        word has no subject this can establish, and says so.
+        """
+
+        folded = answer.casefold()
+        best: tuple[int, str] | None = None
+        for key, (entity, _) in quantities.items():
+            index = folded.rfind(entity.casefold(), 0, position)
+            if index == -1:
+                continue
+            if best is None or index > best[0]:
+                best = (index, key)
+        return best[1] if best is not None else None
+
+    @classmethod
+    def _relation_supported(cls, answer: str, packet: Mapping[str, Any]) -> bool:
+        """Whether the comparison the answer states is the one the evidence shows.
+
+        The rule this replaces asked only whether a calculation result existed.
+        A comparison plan never produces one, so it refused every answer that
+        stated a comparison and released every answer that stated the two values
+        and left the comparison to the reader -- a release decision taken from
+        the answer's *wording* rather than from whether it was supportable.  The
+        three comparisons that released in the P1.3-D run did so by not
+        comparing.
+
+        The relation is established from the admitted facts instead: at least
+        two distinct companies, each with one canonicalisable quantity, all
+        sharing a unit.  When the answer also asserts a direction, the company
+        it presents as the larger one must be the larger one in the evidence.
+
+        Everything this cannot establish falls through to AMBIGUOUS, which is
+        where it was before: a tie, one company, incomparable units, a value that
+        will not canonicalise, a company with two disagreeing quantities, or a
+        subject that cannot be located.
+        """
+
+        up = cls._DIRECTION_UP.search(answer)
+        down = cls._DIRECTION_DOWN.search(answer)
+        if up is not None and down is not None:
+            # Both directions asserted; there is no single claim to check.
+            return False
+        if up is None and down is None:
+            # A relation word with no direction -- "was $7.46, compared to
+            # Apple's $20.02" -- still asserts something this rule cannot
+            # check: which value belongs to which company.  That is not a
+            # hypothetical.  The run that motivated this change contains one,
+            # and the two companies' values are the wrong way round; releasing
+            # it because a comparison was "establishable" would have released a
+            # wrong answer, which is the failure this whole path exists to
+            # prevent.  Checked only when the answer names a direction.
+            return False
+        marker = up if up is not None else down
+
+        quantities = cls._evidence_quantities(packet)
+        if len(quantities) < 2:
+            return False
+        if len({quantity.unit for _, quantity in quantities.values()}) != 1:
+            return False
+
+        if marker is None:
+            # The answer relates the facts without saying which is larger.
+            # That a comparison is establishable is the whole of what it claims.
+            return True
+
+        if len(quantities) != 2:
+            # A direction names one side, so it can only be read against two.
+            return False
+
+        subject = cls._direction_subject(answer, marker.start(), quantities)
+        if subject is None:
+            return False
+
+        (left_key, (_, left)), (right_key, (_, right)) = quantities.items()
+        if left.value == right.value:
+            return False
+        larger = left_key if left.value > right.value else right_key
+        return (subject == larger) if up is not None else (subject != larger)
 
     @staticmethod
     def _close(left: Decimal, right: Decimal) -> bool:
@@ -405,7 +544,16 @@ class SemanticClaimVerifierV1:
                 reasons.append("SCV_UNIT_UNSUPPORTED")
 
         calculation = packet.get("calculation_result")
-        if self._RELATIONAL.search(answer) and not isinstance(calculation, Mapping):
+        # A calculation supports a relational claim directly.  Without one, a
+        # comparison plan can still support it -- from the two admitted facts
+        # themselves, which is what the comparison *is*.  Requiring a
+        # calculation here made the release decision depend on the answer's
+        # wording: only an answer that avoided comparing could be released.
+        if (
+            self._RELATIONAL.search(answer)
+            and not isinstance(calculation, Mapping)
+            and not self._relation_supported(answer, packet)
+        ):
             claim = SemanticClaimV1(
                 "claim-relational", "relational", answer, SemanticClaimDecision.AMBIGUOUS,
                 evidence_ids=tuple(sorted(set(referenced_ids))),
