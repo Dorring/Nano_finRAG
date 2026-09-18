@@ -70,13 +70,21 @@ _CANONICAL_HANDLE = re.compile(r"^[EC]\d+$")
 _FACT_CITATION = re.compile(r"^citation:[0-9a-fA-F]{6,}$")
 
 
-def _decimal(raw: Any) -> Decimal | None:
+def _decimal(raw: Any, *, percent_is_ratio: bool = True) -> Decimal | None:
     """A number from a cell or an answer token, or ``None``.
 
-    Percent is *kept*, not stripped: the gold stores a growth rate as the
-    fraction ``0.3105``, and an answer that says ``31.05%`` is the same quantity
-    written the way an analyst writes it.  Stripping the sign of the percent --
-    which the existing scorer does -- silently makes those two never match.
+    ``percent_is_ratio`` is the whole subtlety, because the gold corpus does not
+    use one convention:
+
+    * an **arithmetic** gold is a computed ratio -- ``0.3105`` for a 31.05%
+      growth rate -- so a ``%`` in an answer has to be divided by 100 before the
+      two can be compared.  Stripping the sign instead, which the existing
+      scorer does, makes those two never match.
+    * a **factual** gold is the display string the filing printed -- ``"1.83 %"``
+      or ``"$ 82,056"`` -- so it is already in the units it is written in, and
+      dividing it by 100 would turn an exact match into a miss.
+
+    One ``%`` rule cannot serve both; the stratum decides which is in force.
     """
 
     if raw is None:
@@ -94,7 +102,7 @@ def _decimal(raw: Any) -> Decimal | None:
         value = Decimal(text)
     except (InvalidOperation, ValueError):
         return None
-    if percent:
+    if percent and percent_is_ratio:
         value = value / Decimal(100)
     return -value if negative else value
 
@@ -105,6 +113,7 @@ def numeric_match(
     *,
     tolerance: Any = None,
     structured: Iterable[Any] = (),
+    percent_is_ratio: bool = True,
 ) -> bool:
     """Whether ``answer`` states ``expected``, within ``tolerance``.
 
@@ -113,18 +122,18 @@ def numeric_match(
     a prose answer only mentions it.
     """
 
-    target = _decimal(expected)
+    target = _decimal(expected, percent_is_ratio=percent_is_ratio)
     if target is None:
         return False
     tol = _decimal(tolerance) if tolerance is not None else Decimal(0)
     tol = abs(tol) if tol is not None else Decimal(0)
 
     for candidate in structured:
-        value = _decimal(candidate)
+        value = _decimal(candidate, percent_is_ratio=percent_is_ratio)
         if value is not None and abs(value - target) <= tol:
             return True
     for token in _NUMBER.findall(answer or ""):
-        value = _decimal(token)
+        value = _decimal(token, percent_is_ratio=percent_is_ratio)
         if value is not None and abs(value - target) <= tol:
             return True
     return False
@@ -164,11 +173,15 @@ def _correct_by_stratum(row: Mapping[str, Any], gold: Mapping[str, Any]) -> bool
         for item in (row.get("calculations") or [])
         if isinstance(item, Mapping)
     ]
+    # A calculation's gold is a ratio; a lookup's gold is what the filing
+    # printed.  See `_decimal`.
+    is_calculation = stratum == "arithmetic_calculation"
     return numeric_match(
         answer,
         gold.get("expected_value"),
         tolerance=gold.get("tolerance"),
         structured=structured,
+        percent_is_ratio=is_calculation,
     )
 
 
@@ -389,12 +402,8 @@ def score_downstream(
         if row.get("provider_failure"):
             counters["provider_failure"] += 1
 
-    def _rate(numerator: str, denominator: str) -> float | None:
-        return (
-            round(counters[numerator] / counters[denominator], 4)
-            if counters[denominator]
-            else None
-        )
+    def _rate(numerator: str, total_for_rate: int) -> float | None:
+        return round(counters[numerator] / total_for_rate, 4) if total_for_rate else None
 
     answerable_count = sum(
         1
@@ -429,8 +438,8 @@ def score_downstream(
             if answerable_count
             else None
         ),
-        "false_release_rate": _rate("false_release", "answerable"),
-        "over_conservative_rate": _rate("over_conservative_block", "answerable"),
+        "false_release_rate": _rate("false_release", answerable_count),
+        "over_conservative_rate": _rate("over_conservative_block", answerable_count),
         "citations": citation_diagnostics(rows),
         "tokens": _tokens(rows),
         "latency": {

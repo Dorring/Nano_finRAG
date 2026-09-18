@@ -354,7 +354,59 @@ def test_releasing_on_an_abstention_question_is_a_false_release() -> None:
     assert scored["no_answer_correctness"] == 0.0
 
 
+def test_a_factual_gold_already_written_as_a_percentage_matches_literally() -> None:
+    """The gold corpus uses two conventions and one rule cannot serve both.
+
+    An *arithmetic* gold is a computed ratio (``0.3105``); a *factual* gold is
+    the display string the filing printed (``"1.83 %"``).  Applying the ratio
+    rule to the second divides an exact match by 100 and turns it into a miss --
+    which is exactly what happened on three rows of the first replay run before
+    this distinction existed.
+    """
+
+    assert numeric_match(
+        "Allowance for loan losses to total retained loans (FY2025): 1.83 %",
+        "1.83 %",
+        percent_is_ratio=False,
+    )
+    # The same pair under the ratio rule is a deliberate miss, not a bug.
+    assert not numeric_match("1.83 %", "1.83 %", percent_is_ratio=True)
+
+
+def test_a_growth_rate_gold_still_needs_the_ratio_rule() -> None:
+    assert numeric_match("growth was 31.05%", "0.3105", tolerance="0.0001")
+    assert not numeric_match("growth was 31.05%", "0.3105", percent_is_ratio=False)
+
+
+def test_the_false_release_rate_is_a_rate_and_not_an_absence() -> None:
+    """A denominator of zero is not the same as a denominator that was never wired."""
+
+    rows = [
+        _row(answer="revenue was 999", release_status="RELEASED", status="ANSWER"),
+        _row(answer="revenue was 391", release_status="RELEASED", status="ANSWER"),
+    ]
+    scored = score_downstream(rows, {"q1": _gold()})
+
+    assert scored["false_release_rate"] == 0.5
+    assert scored["over_conservative_rate"] == 0.0
+
+
 # --- reachability -------------------------------------------------------------------------------
+
+
+def test_an_unobservable_gate_verdict_is_reported_as_absent() -> None:
+    """The RAW track cannot see the gate's verdict over HTTP.
+
+    Reporting 0.0 there reads as "no query passed the gate" when the truth is
+    "this track cannot see the gate" -- and the first replay run's report said
+    exactly that beside five released answers.
+    """
+
+    scored = score_reachability([_row(), _row()])
+
+    assert scored["align_gate_observable"] is False
+    assert scored["align_pass_rate"] is None
+    assert scored["align_reject_rate"] is None
 
 
 def test_reachability_counts_stages_and_keeps_the_real_gate_verdict() -> None:
