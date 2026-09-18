@@ -24,6 +24,17 @@ explicitly matching aggregate row, return MISSING. If the question explicitly
 requests a segment, bind only that segment; never substitute a consolidated
 total. Use the supplied row, metric-path, and scope metadata as source context.
 
+A slot may name the company whose fact it requires, in ``entity``, with the
+normalised ``entity_id`` beside it. That is a requirement of the slot and not a
+hint: a fact belonging to a different company does not satisfy the slot, so
+leave it out of the bindings rather than weighing it. In particular, do not
+return AMBIGUOUS because several companies report the same metric in the same
+period -- that is what a comparison question is, and each slot names the company
+it wants. Return AMBIGUOUS only when the packet holds more than one fact for
+the *same* named company that cannot be safely told apart. A slot that names no
+company is unconstrained as before, and any company the question asks about may
+satisfy it.
+
 For calculation plans, preserve the frozen slot roles and do not calculate.
 Return exactly one JSON object with exactly these five keys and no wrapper:
 {"status":"BOUND","slot_bindings":{"slot_id":["fact_id"]},"missing_slots":[],"ambiguous_slots":[],"invalid_reasons":[]}
