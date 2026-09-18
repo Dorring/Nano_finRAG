@@ -294,6 +294,31 @@ def _trusted_v2_preflight_check() -> dict[str, Any]:
             )
 
         report = validate_trusted_v2_production_configuration()
+        # Configuration being valid is not the service being able to serve.
+        # This check used to stop at the report above -- paths, env, the
+        # checkpoint's digest -- and went on reporting ready on a host where the
+        # specialist could not be loaded at all because the card was full.
+        # Every query returned 500 for forty minutes and the probe never moved.
+        try:
+            from ..runtime.trusted_v2_production import last_resource_load_failure
+        except ImportError:  # pragma: no cover - package layout fallback
+            from runtime.trusted_v2_production import last_resource_load_failure
+
+        load_failure = last_resource_load_failure()
+        if load_failure is not None:
+            return {
+                "ok": False,
+                "required": True,
+                "mode": mode,
+                "status": "blocked",
+                "error_type": "TrustedV2ResourceLoadError",
+                "error": (
+                    "configuration is valid but the runtime resources could not "
+                    "be built on the last attempt; queries will fail closed"
+                ),
+                "detail": load_failure,
+                "report": report,
+            }
         return {
             "ok": True,
             "required": True,

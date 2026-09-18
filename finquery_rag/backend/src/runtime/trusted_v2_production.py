@@ -902,6 +902,9 @@ def validate_trusted_v2_production_configuration(
 
 
 _RESOURCE_CACHE: MutableMapping[str, TrustedV2RuntimeResources] = {}
+#: The last resource-build failure, for readiness to report.  Set by
+#: ``_cached_resources``; cleared whenever a build succeeds.
+_RESOURCE_LOAD_FAILURE: str | None = None
 _RESOURCE_LOCK = threading.Lock()
 
 
@@ -967,14 +970,39 @@ def _load_resources(environ: Mapping[str, str]) -> TrustedV2RuntimeResources:
 
 
 def _cached_resources(environ: Mapping[str, str]) -> TrustedV2RuntimeResources:
+    global _RESOURCE_LOAD_FAILURE
     key = _configuration_fingerprint(environ)
     with _RESOURCE_LOCK:
         cached = _RESOURCE_CACHE.get(key)
         if cached is not None:
             return cached
-        resources = _load_resources(environ)
+        try:
+            resources = _load_resources(environ)
+        except Exception as exc:
+            # Recorded so readiness can report it.  Readiness used to validate
+            # *configuration* only -- paths, env, the checkpoint's digest -- and
+            # reported ready on a host where the specialist could not be
+            # loaded at all, because the card was full.  Every query returned
+            # 500 for forty minutes and the probe never moved.  A readiness
+            # signal that does not move when the service stops working is not a
+            # readiness signal.
+            _RESOURCE_LOAD_FAILURE = f"{type(exc).__name__}: {exc}"
+            raise
+        _RESOURCE_LOAD_FAILURE = None
         _RESOURCE_CACHE[key] = resources
         return resources
+
+
+def last_resource_load_failure() -> str | None:
+    """The last failure to build the trusted-v2 resources, or ``None``.
+
+    ``None`` means the last attempt succeeded *or* that none has been made yet;
+    the two are distinguishable by ``_RESOURCE_CACHE``, which readiness does not
+    need to consult -- a service that has not yet been asked to load its model is
+    not claiming that it can.
+    """
+
+    return _RESOURCE_LOAD_FAILURE
 
 
 def _document_scope(request: FinancialQueryRequest) -> tuple[str, ...]:
@@ -1079,6 +1107,7 @@ __all__ = [
     "build_trusted_v2_runtime_for_request",
     "clear_trusted_v2_production_cache",
     "inspect_r4_index",
+    "last_resource_load_failure",
     "inspect_r4_fact_store_compatibility",
     "validate_trusted_v2_production_configuration",
 ]
