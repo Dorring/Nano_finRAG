@@ -20,6 +20,7 @@ from rag_v2.contracts.financial_semantics import (
     magnitude_of,
     magnitude_tokens,
     measurement_unit_tokens,
+    quantities_are_comparable,
     representation_tokens,
     token_pattern,
 )
@@ -322,7 +323,18 @@ class SemanticClaimVerifierV1:
         quantities = cls._evidence_quantities(packet)
         if len(quantities) < 2:
             return False
-        if len({quantity.unit for _, quantity in quantities.values()}) != 1:
+        # The measurement unit cannot see this.  `$5` and `5.49 %` both carry an
+        # empty unit in the store -- the currency symbol and the percent sign
+        # ride inside the value text -- so a unit-string test passed for a
+        # percentage against a currency amount, and would have gone on passing
+        # once percentages began to canonicalise.  The representation is what
+        # distinguishes them, and the rule for asking stays in the shared module
+        # rather than being restated here.
+        pivot = next(iter(quantities.values()))[1]
+        if not all(
+            quantities_are_comparable(pivot, quantity)
+            for _entity, quantity in quantities.values()
+        ):
             return False
 
         if marker is None:
@@ -338,10 +350,16 @@ class SemanticClaimVerifierV1:
         if subject is None:
             return False
 
+        # Either reading settles this: the predicate above has already required
+        # one representation across the set, and `ratio_value` is `points_value`
+        # divided by a positive constant within one, so the ordering is the same
+        # whichever is named.  `points_value` is named because it is what the
+        # record states, and no division is introduced on a path that does not
+        # need one.
         (left_key, (_, left)), (right_key, (_, right)) = quantities.items()
-        if left.value == right.value:
+        if left.points_value == right.points_value:
             return False
-        larger = left_key if left.value > right.value else right_key
+        larger = left_key if left.points_value > right.points_value else right_key
         return (subject == larger) if up is not None else (subject != larger)
 
     @staticmethod

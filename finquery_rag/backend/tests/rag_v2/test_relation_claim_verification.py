@@ -71,17 +71,73 @@ def test_a_correct_directional_comparison_is_supported() -> None:
 def test_a_comparison_between_incomparable_quantities_is_not_supported() -> None:
     """compare-007: Pfizer $5 against JPMorganChase 5.49 %.
 
-    A percentage does not canonicalise here, so only one side is comparable and
-    there is nothing to establish a direction from.  Failing closed is correct
-    and not merely conservative: the two numbers are not the same kind of thing.
+    Re-derived, because the original pair could not distinguish the two rules.
+    It stated the direction the *numbers* contradict -- it called Pfizer, whose
+    5 is the smaller, the higher -- so the direction check refused it whatever
+    the representation rule did.  It would have gone on passing with that rule
+    deleted, which is the definition of a test that has stopped testing.
+
+    Here the answer states the direction the numbers do show, so the relation is
+    refused only if a percentage and a currency amount are not comparable, and
+    the control below proves the direction path is reachable at all.
     """
 
+    answer = (
+        "The verified evidence reports that Pfizer's Discount rate was lower in "
+        "FY2025 compared to JPMorganChase [citation:v2:pfizer]."
+    )
+    mixed = [
+        _item("Pfizer", "$5", metric="Discount rate"),
+        _item("JPMorganChase", "5.49 %", metric="Discount rate"),
+    ]
+
+    assert not _supported(answer, mixed)
+
+    # The control.  Same direction, same ordering, both read as one kind of
+    # quantity: this must be supported, or the assertion above says nothing
+    # about comparability -- a rule that refused every comparison would pass it.
+    same_kind = [
+        _item("Pfizer", "5", metric="Discount rate"),
+        _item("JPMorganChase", "5.49", metric="Discount rate"),
+    ]
+
+    assert _supported(answer, same_kind)
+
+
+# --- percentages against percentages ------------------------------------------
+#
+# No benchmark question compares two percentages today, so nothing covered this
+# before.  It is the capability the representation work exists to give, and it
+# is covered here rather than left to the first question that needs it.
+
+
+def test_a_correct_comparison_between_two_percentages_is_supported() -> None:
     answer = (
         "The verified evidence reports that Pfizer's Discount rate was higher in "
         "FY2025 compared to JPMorganChase [citation:v2:pfizer]."
     )
     items = [
-        _item("Pfizer", "$5", metric="Discount rate"),
+        _item("Pfizer", "7.2 %", metric="Discount rate"),
+        _item("JPMorganChase", "5.49 %", metric="Discount rate"),
+    ]
+
+    assert _supported(answer, items)
+
+
+def test_an_inverted_percentage_comparison_is_not_supported() -> None:
+    """compare-008's shape, now reachable for percentages.
+
+    The facts show Pfizer higher and the answer says JPMorganChase is.  Both
+    read as percentages, so the only thing that can refuse this is the direction
+    check -- which is exactly what should refuse it.
+    """
+
+    answer = (
+        "The verified evidence reports that JPMorganChase's Discount rate was "
+        "higher in FY2025 compared to Pfizer [citation:v2:jpmorganchase]."
+    )
+    items = [
+        _item("Pfizer", "7.2 %", metric="Discount rate"),
         _item("JPMorganChase", "5.49 %", metric="Discount rate"),
     ]
 

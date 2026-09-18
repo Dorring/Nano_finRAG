@@ -443,6 +443,66 @@ def canonical_decimal(value: Any) -> Decimal | None:
     return -number if negative else number
 
 
+# ---------------------------------------------------------------------------
+# The representation suffix
+# ---------------------------------------------------------------------------
+#
+# A representation token written *after* the number: ``5.49 %``, ``12 percent``.
+#
+# Anchored and suffix-only, and that is a safety property rather than a parsing
+# preference.  The moment this accepts a leading word, every prose cell that
+# reaches ``rag_v2/derived/tables.py`` is one call away from being read as a
+# number.  ``"Revenue growth of 12 percent"`` must stay a label; it is pinned as
+# one.
+#
+# The whitespace between the number and the token is optional **on purpose**.
+# The fact store writes both forms -- 305 glued (``21%``, mostly growth rates)
+# and 222 spaced (``5.49 %``, mostly yields) -- and they are one quantity written
+# two ways.  A grammar that told them apart would be reading a blank character as
+# a fact, which is exactly the defect this exists to remove: the runtime's number
+# parser put the two 100x apart.
+
+_REPRESENTATION_SUFFIX_RE = re.compile(
+    r"^(?P<number>.+?)\s*(?P<representation>"
+    + token_pattern((*representation_tokens(), "%"))
+    + r")$",
+    re.IGNORECASE,
+)
+
+
+def _split_representation_suffix(
+    value: Any,
+) -> tuple[Any, "RepresentationKind | None"]:
+    """``(what canonical_decimal should read, how the number is written)``.
+
+    Returns ``(value, None)`` whenever there is nothing to split, so a caller may
+    use the first element unconditionally.  Non-text values come straight back:
+    ``canonical_decimal`` already returns a typed ``Decimal`` unchanged, and a
+    parsed value must not round-trip through its own string form.
+
+    This is deliberately *not* part of ``canonical_decimal``.  That function's
+    strictness is load-bearing in three places that have nothing to do with
+    representation -- the temporal consistency gate, the answer validator's
+    scale-fidelity check, and the label-versus-number decision when a table is
+    admitted -- and widening it there would move all three.
+    """
+
+    if value is None or isinstance(value, (Decimal, int, float)):
+        return value, None
+
+    match = _REPRESENTATION_SUFFIX_RE.fullmatch(str(value).strip())
+    if match is None:
+        return value, None
+
+    number = match.group("number").strip()
+    if not number or canonical_decimal(number) is None:
+        # The token is present but what precedes it is not a number this project
+        # reads.  "Revenue growth of 12 percent" is a label, and returns whole.
+        return value, None
+
+    return number, representation_of(match.group("representation"))
+
+
 def _is_finite_float(value: float) -> bool:
     return value == value and value not in (float("inf"), float("-inf"))
 
@@ -475,27 +535,61 @@ def text_identity(value: Any) -> str:
 # ---------------------------------------------------------------------------
 
 
+#: Percentage points per unit of ratio.  ``21 %`` is 21 points and the factor
+#: 0.21, and the two readings are one division apart by definition rather than
+#: by convention -- which is why neither may be *inferred* from the other
+#: downstream.  A caller that wants the factor asks for it.
+_PERCENT_DIVISOR = Decimal(100)
+
+
 @dataclass(frozen=True)
 class CanonicalQuantity:
     """A typed financial quantity with its magnitude folded in.
 
-    ``scale`` is absent by design: it has been applied to ``value``, and keeping
+    ``scale`` is absent by design: it has been applied to the value, and keeping
     the name as well would make ``1000 million`` and ``1 billion`` differ on a
     label after agreeing on the quantity -- a false conflict over a word.
+
+    Two readings, and no ``value``
+    ------------------------------
+
+    There is deliberately no ``value`` field.  A percentage has two defensible
+    readings -- ``21 %`` is 21 percentage points and also the factor 0.21 -- and
+    this project held both, in different modules, neither saying which it meant.
+    A single ``value`` can only be one of them, so every reader of it was
+    silently taking a side, and the two sides were 100x apart.
+
+    ``points_value`` is the number as the record states it, magnitude applied:
+    ``21 %`` -> 21, ``$5`` -> 5, ``0.12 ratio`` -> 0.12.  Display, percentage-point
+    arithmetic and the benchmark gold all mean this one.
+    ``ratio_value`` is the multiplicative form: ``21 %`` -> 0.21, and equal to
+    ``points_value`` for every quantity that is not a percentage.  A factor means
+    this one.
+
+    Naming one is the whole point; there is no default.  ``representation`` says
+    which kind of quantity this is, and it is part of the identity, so a
+    percentage never merges with an amount stating the same digits.
     """
 
-    value: Decimal
+    points_value: Decimal
+    ratio_value: Decimal
     magnitude: MagnitudeScale
     unit: str
     representation: RepresentationKind
 
     @property
     def identity(self) -> str:
-        """A stable, comparable rendering of the whole quantity."""
+        """A stable, comparable rendering of the whole quantity.
+
+        Built on ``points_value``, which is the stated number and therefore the
+        one two records can be compared on without either being reinterpreted.
+        The representation rides alongside, so ``21 %`` and ``21`` are distinct
+        even though they render the same digits.
+        """
 
         return "|".join(
             (
-                _decimal_text(self.value),
+                _decimal_text(self.points_value),
                 self.unit,
                 self.representation.value,
             )
@@ -517,7 +611,8 @@ def canonical_quantity(
     from what was written, so the caller keeps the literal form.
     """
 
-    number = canonical_decimal(value)
+    numeric, written_as = _split_representation_suffix(value)
+    number = canonical_decimal(numeric)
     if number is None:
         return None
 
@@ -525,15 +620,55 @@ def canonical_quantity(
     if magnitude is None:
         return None
 
+    declared = representation_of(unit)
+    if written_as is not None and declared is not None and written_as is not declared:
+        # The record states how to read its number twice and disagrees with
+        # itself -- a ``5.49 %`` row in a table stamped ``ratio``.  Nothing is
+        # established, so this is the same answer as any other unreadable
+        # quantity: keep the literal identity.
+        return None
+
     folded = number * magnitude_multiplier(magnitude)
     unit_text = text_identity(unit)
     currency_text = text_identity(currency)
+    representation = written_as or declared or RepresentationKind.ABSOLUTE
     return CanonicalQuantity(
-        value=folded,
+        points_value=folded,
+        ratio_value=(
+            folded / _PERCENT_DIVISOR
+            if representation is RepresentationKind.PERCENT
+            else folded
+        ),
         magnitude=magnitude,
         unit=" ".join(part for part in (unit_text, currency_text) if part),
-        representation=representation_of(unit) or RepresentationKind.ABSOLUTE,
+        representation=representation,
     )
+
+
+def quantities_are_comparable(
+    left: CanonicalQuantity, right: CanonicalQuantity
+) -> bool:
+    """Whether a magnitude comparison between two quantities states anything.
+
+    Not "are they equal".  ``5.49 %`` is neither larger nor smaller than ``$5``:
+    nothing in this project's contract relates a percentage to a currency amount,
+    and a rule that compared their ``Decimal`` values would silently do so.  A
+    percentage is comparable with a percentage; an absolute quantity with an
+    absolute quantity of the same measurement unit; and a percentage is not
+    comparable with a ratio -- ``12 %`` and ``ratio 0.12`` are convertible and
+    are still different claims.
+
+    The measurement unit is asked only of an absolute quantity.  A percentage
+    carries none of its own -- the representation *is* what is being compared --
+    so ``5.49 %`` and a percentage whose record also stamps ``unit="percent"``
+    are one kind of thing.
+    """
+
+    if left.representation is not right.representation:
+        return False
+    if left.representation is RepresentationKind.ABSOLUTE:
+        return left.unit == right.unit
+    return True
 
 
 def quantity_identity(

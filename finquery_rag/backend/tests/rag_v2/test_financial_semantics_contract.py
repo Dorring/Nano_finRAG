@@ -113,7 +113,11 @@ def test_magnitude_is_folded_to_a_literal_quantity(
 
     quantity = fs.canonical_quantity(value, scale=scale)
     assert quantity is not None
-    assert quantity.value == expected
+    assert quantity.points_value == expected
+    # None of these states a representation, so the two readings coincide.
+    # Asserted rather than assumed: a canonicaliser that divided everything
+    # would pass the line above and fail this one.
+    assert quantity.ratio_value == expected
 
 
 def test_representation_equivalent_magnitudes_are_one_quantity() -> None:
@@ -335,6 +339,185 @@ def test_text_identity_does_not_touch_commas() -> None:
 
 def test_text_identity_folds_only_case_and_whitespace() -> None:
     assert fs.text_identity("  Net   Income ") == fs.text_identity("net income")
+
+
+# --- percentages, and the two readings a quantity can have -------------------
+#
+# The fact store writes a percentage with the sign inside the value text -- 305
+# glued (`21%`) and 222 spaced (`5.49 %`) -- and `unit` is populated on none of
+# them.  So the canonicaliser has to read the token off the text, and it has to
+# read it the same way whichever side of the number it is written on: a blank
+# character is not a fact about the quantity.
+
+
+def test_a_percentage_is_a_quantity_with_both_readings() -> None:
+    """Literal, so a canonicaliser returning one number for everything fails."""
+
+    quantity = fs.canonical_quantity("21 %")
+
+    assert quantity is not None
+    assert quantity.points_value == Decimal("21")
+    assert quantity.ratio_value == Decimal("0.21")
+    assert quantity.representation is fs.RepresentationKind.PERCENT
+    assert quantity.magnitude is fs.MagnitudeScale.BASE
+
+
+@pytest.mark.parametrize("text", ["21%", "21 %", "21.0 %", "  21   %  "])
+def test_a_percentage_written_either_way_is_one_quantity(text: str) -> None:
+    """The blank character, and the precision, are presentation."""
+
+    assert fs.quantity_identity(text) == fs.quantity_identity("21 %")
+
+
+def test_the_identity_of_a_percentage_is_the_number_and_its_kind() -> None:
+    """The literal is authored here, not read back from the implementation."""
+
+    assert fs.quantity_identity("21 %") == "21||percent"
+
+
+def test_a_percentage_is_not_its_ratio_form() -> None:
+    """21 % and ratio 0.21 are convertible and are still different claims.
+
+    The conversion exists and is deliberately not performed: nothing in this
+    project's contract says the two are one fact, so the identity keeps them
+    apart and ``quantities_are_comparable`` refuses to relate them.
+    """
+
+    assert fs.quantity_identity("21 %") != fs.quantity_identity("0.21", unit="ratio")
+    assert fs.quantity_identity("21 %") != fs.quantity_identity("21")
+
+
+def test_a_percentage_does_not_merge_with_the_amount_it_shares_digits_with() -> None:
+    """`$5` and `5 %` render the same digits and are not the same quantity."""
+
+    assert fs.quantity_identity("5 %") != fs.quantity_identity("$5")
+    assert fs.canonical_quantity("$5").representation is fs.RepresentationKind.ABSOLUTE
+
+
+def test_the_two_readings_coincide_for_everything_that_is_not_a_percentage() -> None:
+    """The invariant that makes the dual reading safe to adopt.
+
+    A quantity that states no representation has one reading, so both fields
+    carry it.  A canonicaliser that divided unconditionally would satisfy every
+    points/ratio pair above and fail here.
+    """
+
+    for value, kwargs in (
+        ("1500", {}),
+        ("1,500.25", {}),
+        ("$5", {}),
+        ("(486)", {}),
+        ("1000", {"scale": "million"}),
+        ("0.12", {"unit": "ratio"}),
+    ):
+        quantity = fs.canonical_quantity(value, **kwargs)
+        assert quantity is not None, (value, kwargs)
+        assert quantity.points_value == quantity.ratio_value, (value, kwargs)
+
+
+def test_a_percentage_never_enters_the_canonical_decimal_grammar() -> None:
+    """The split belongs to `canonical_quantity`, and the boundary is pinned.
+
+    `canonical_decimal`'s strictness is load-bearing in three places that have
+    nothing to do with representation -- the temporal consistency gate, the
+    answer validator's scale-fidelity check, and the label-versus-number decision
+    when a derived table is admitted.  Widening it there would move all three,
+    so a percent-bearing string must still be unreadable to it.
+    """
+
+    assert fs.canonical_decimal("21 %") is None
+    assert fs.canonical_decimal("21%") is None
+    assert fs.canonical_decimal("21") == Decimal("21")
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        # The first is pinned as a table LABEL by
+        # tests/harness/test_model_derived_admission.py; the rest say the same
+        # kind of thing with the token in the wrong place.
+        "Revenue growth of 12 percent",
+        "12 percent growth",
+        "up 12 %",
+        "5 % shares",
+        "12 percent.",
+        "%",
+        "5 % %",
+    ],
+)
+def test_prose_that_mentions_a_percentage_is_not_a_quantity(text: str) -> None:
+    """Suffix-only is a safety property, not a parsing preference.
+
+    The moment the grammar accepts a leading word, every prose cell that reaches
+    the derived-table admission path is one call away from being read as a
+    number.
+    """
+
+    assert fs.canonical_quantity(text) is None
+    assert fs.quantity_identity(text).startswith("literal:")
+
+
+def test_a_representation_stated_twice_and_disagreeing_is_not_a_quantity() -> None:
+    """A `5.49 %` row in a table stamped `ratio` has said two things."""
+
+    assert fs.canonical_quantity("5.49 %", unit="ratio") is None
+    # And agreeing is not a contradiction.
+    assert fs.canonical_quantity("5.49 %", unit="%") is not None
+
+
+# --- comparability, asked of hand-built quantities ---------------------------
+
+
+def _quantity(
+    points: str,
+    *,
+    representation: fs.RepresentationKind = fs.RepresentationKind.ABSOLUTE,
+    unit: str = "",
+) -> fs.CanonicalQuantity:
+    """Built directly, so the predicate's input is never its own output."""
+
+    ratio = Decimal(points)
+    if representation is fs.RepresentationKind.PERCENT:
+        ratio = ratio / Decimal("100")
+    return fs.CanonicalQuantity(
+        points_value=Decimal(points),
+        ratio_value=ratio,
+        magnitude=fs.MagnitudeScale.BASE,
+        unit=unit,
+        representation=representation,
+    )
+
+
+@pytest.mark.parametrize(
+    "left,right,expected",
+    [
+        (_quantity("21", representation=fs.RepresentationKind.PERCENT),
+         _quantity("5.49", representation=fs.RepresentationKind.PERCENT), True),
+        (_quantity("5"), _quantity("7"), True),
+        (_quantity("5", unit="usd"), _quantity("7", unit="usd"), True),
+        # compare-007: a percentage against a currency amount.
+        (_quantity("5.49", representation=fs.RepresentationKind.PERCENT),
+         _quantity("5"), False),
+        # 21 % and ratio 0.21 are convertible and are not comparable.
+        (_quantity("21", representation=fs.RepresentationKind.PERCENT),
+         _quantity("0.21", representation=fs.RepresentationKind.RATIO), False),
+        (_quantity("5", unit="usd"), _quantity("7", unit=""), False),
+        (_quantity("5", unit="usd"), _quantity("7", unit="eur"), False),
+        (_quantity("5", unit="usd"), _quantity("7", unit="shares"), False),
+    ],
+)
+def test_quantities_are_comparable(
+    left: fs.CanonicalQuantity, right: fs.CanonicalQuantity, expected: bool
+) -> None:
+    """Comparability is a property of the kinds, not of the numbers.
+
+    A rule that compared the Decimal values would answer `True` for every row
+    here, which is why the mixed-kind rows are the ones that matter.
+    """
+
+    assert fs.quantities_are_comparable(left, right) is expected
+    # Symmetric: neither side is privileged.
+    assert fs.quantities_are_comparable(right, left) is expected
 
 
 def test_a_numeric_field_does_not_use_the_text_helper() -> None:
