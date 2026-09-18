@@ -116,6 +116,13 @@ _OPERATION_SLOTS: dict[str, tuple[str, ...]] = {
 #: carries ``period_current``/``period_previous``.
 _FACT_PER_OPERAND_OPERATIONS = frozenset({"sum", "average"})
 
+#: Gold operations that name a *shape of answer* rather than an arithmetic one.
+#: They become MULTI_EVIDENCE plans carrying one slot per gold fact -- a
+#: comparison names two sides, a ranking names as many sides as it ranks.
+_MULTI_EVIDENCE_OPERATIONS = frozenset(
+    {"comparison", "cross_entity_difference", "ranking"}
+)
+
 #: The join key between a gold ``fact_ids`` entry and a fact-store record.
 _FACT_ID_FIELDS = ("candidate_key", "candidate_id", "fact_id", "evidence_id")
 
@@ -334,21 +341,30 @@ def author_plan(
                 else "gold_intent:" + str(question_record.get("expected_intent"))
             )
         )
-        # A comparison names two entities; the plan carries one slot per side so
-        # the binder has something to bind against, rather than a single slot
-        # that would silently answer a one-sided question.
-        arity = 2 if intent == "MULTI_EVIDENCE" else 1
-        slots = [
-            {
-                "slot_id": f"s{index + 1}",
-                "metric": metric,
-                "period": periods[min(index, len(periods) - 1)],
-                "role": "value",
-                "value_type": "numeric",
-                "unit": None,
-            }
-            for index in range(arity)
-        ]
+        if intent == "MULTI_EVIDENCE":
+            # One slot per gold fact, each naming its own company.  The arity is
+            # the gold's, not a literal: a ranking names as many sides as it
+            # ranks, and a plan that asked for two of four could not be
+            # satisfied by any binder.
+            slots = _multi_evidence_slots(
+                gold,
+                question_record,
+                operand_facts or {},
+                metric=metric,
+                periods=periods,
+            )
+            sourced["entity"] = "gold_operand_facts"
+        else:
+            slots = [
+                {
+                    "slot_id": "s1",
+                    "metric": metric,
+                    "period": periods[0],
+                    "role": "value",
+                    "value_type": "numeric",
+                    "unit": None,
+                }
+            ]
 
     return {
         "id": question_record["id"],
@@ -392,6 +408,10 @@ def operand_fact_ids(gold_path: Path) -> list[str]:
     Collected from the gold rather than from the store so the read is bounded by
     what is actually referenced, and so a store that has grown is not scanned
     for facts nothing asks about.
+
+    Two families need a fact's coordinates: the arithmetic operations whose
+    operands are one fact each, and the multi-evidence shapes, where every side
+    is a fact and the entity is what tells the sides apart.
     """
 
     needed: list[str] = []
@@ -399,11 +419,72 @@ def operand_fact_ids(gold_path: Path) -> list[str]:
         if not line.strip():
             continue
         row = json.loads(line)
-        operation = _ARITHMETIC_OPERATIONS.get(str(row.get("operation") or ""))
-        if operation not in _FACT_PER_OPERAND_OPERATIONS:
+        operation = str(row.get("operation") or "")
+        arithmetic = _ARITHMETIC_OPERATIONS.get(operation)
+        if operation not in _MULTI_EVIDENCE_OPERATIONS and (
+            arithmetic not in _FACT_PER_OPERAND_OPERATIONS
+        ):
             continue
         needed.extend(str(item) for item in (row.get("fact_ids") or []))
     return needed
+
+
+def _multi_evidence_slots(
+    gold: Mapping[str, Any],
+    question_record: Mapping[str, Any],
+    operand_facts: Mapping[str, Mapping[str, Any]],
+    *,
+    metric: str,
+    periods: list[str],
+) -> list[dict[str, Any]]:
+    """One slot per gold fact, each naming the company its fact is about.
+
+    The arity used to be the literal 2.  That is right for a comparison and
+    wrong for a ranking: `rank-003` ranks four companies and got two slots, so
+    the plan asked for half the evidence the question needs and no binder could
+    have satisfied it.  The gold states how many facts are required, so the gold
+    decides the arity.
+
+    Each slot carries its fact's ``entity`` because without it the slots are
+    indistinguishable -- one metric, one period, one role, repeated -- and a
+    plan whose slots cannot be told apart cannot say which company a fact was
+    for.  That is what made all twenty comparison fixtures unanswerable.
+
+    ``entity_id`` is deliberately absent.  The Harness derives it from the
+    mention, and a fixture that wrote one would be authoring an identity rather
+    than serialising a fact -- which is the mistake that produced the operand
+    periods this builder had to be fixed for.
+    """
+
+    case = question_record["id"]
+    fact_ids = [
+        str(item).strip() for item in (gold.get("fact_ids") or []) if str(item).strip()
+    ]
+    if not fact_ids:
+        raise ValueError(f"{case!r}: a multi-evidence plan needs gold facts, none named")
+
+    slots: list[dict[str, Any]] = []
+    for index, fact_id in enumerate(fact_ids):
+        record = operand_facts.get(fact_id)
+        if record is None:
+            raise ValueError(
+                f"{case!r}: gold fact {fact_id!r} is not in the fact store"
+            )
+        entity = str(record.get("entity") or "").strip()
+        if not entity:
+            raise ValueError(f"{case!r}: gold fact {fact_id!r} names no entity")
+        slots.append(
+            {
+                "slot_id": f"s{index + 1}",
+                "metric": metric,
+                "period": periods[min(index, len(periods) - 1)],
+                "role": "value",
+                "value_type": "numeric",
+                "unit": None,
+                "entity": entity,
+            }
+        )
+    return slots
 
 
 def render_fixtures(fixtures: list[dict[str, Any]]) -> str:
