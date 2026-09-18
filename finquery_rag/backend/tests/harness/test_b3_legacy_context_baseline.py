@@ -24,7 +24,7 @@ breaking the page handling -- which is exactly what kind 1 did after H2A-3B0
 changed the renderer, and why kind 2 has to be written from the inputs.
 
 Kind 4 is new in H2A-3B2 and exists because a migration needs a target that does
-not contain the defect being removed.  ``BASELINE_V2`` is that target; the v1
+not contain the defect being removed.  ``BASELINE_V3`` is that target; the v1
 record is retained as evidence, and its own test fails if it is tidied up to
 match.
 """
@@ -37,12 +37,18 @@ import re
 import pytest
 
 from tests.harness.b3_legacy_context_baseline import (
-    BASELINE_V2,
+    BASELINE_V3,
     NOT_DETERMINED,
     SCENARIOS,
     observe,
 )
 from tests.harness.b3_legacy_context_baseline_v1 import BASELINE_V1
+#: The record F10 produced, archived when the citation fix moved the live
+#: baseline again.  The F10 blast-radius comparison below must run against
+#: *this* one: measuring it against the current baseline would put two
+#: independent changes into one comparison and it would stop answering the
+#: question it asks.
+from tests.harness.b3_legacy_context_baseline_v2 import BASELINE_V2 as BASELINE_V2_F10
 
 SCENARIO_NAMES = sorted(SCENARIOS)
 
@@ -125,7 +131,7 @@ def _blocks(prompt: str) -> list[dict[str, str]]:
 def test_every_scenario_is_frozen() -> None:
     """A scenario added without a capture would silently assert nothing."""
 
-    assert SCENARIO_NAMES == sorted(BASELINE_V2)
+    assert SCENARIO_NAMES == sorted(BASELINE_V3)
     assert SCENARIO_NAMES, "the baseline must not be empty"
     assert SCENARIO_NAMES == sorted(BASELINE_V1)
 
@@ -142,7 +148,7 @@ def test_the_live_context_path_has_not_moved(scenario: str) -> None:
     """
 
     live = observe(scenario)
-    frozen = BASELINE_V2[scenario]
+    frozen = BASELINE_V3[scenario]
 
     assert set(live) == set(frozen), "the recorded shape itself changed"
 
@@ -171,7 +177,7 @@ def test_the_live_context_path_has_not_moved(scenario: str) -> None:
 def test_every_scenario_still_reaches_the_specialist(scenario: str) -> None:
     """The baseline only means something if B3 is what it exercises."""
 
-    assert BASELINE_V2[scenario]["route_target"] == "LOCAL_SPECIALIST"
+    assert BASELINE_V3[scenario]["route_target"] == "LOCAL_SPECIALIST"
 
 
 # --- 2. contract properties, held against the frozen artifact --------------------
@@ -185,7 +191,7 @@ def test_no_forbidden_field_reaches_the_frozen_model_input(scenario: str) -> Non
     hold for the artifact H2A-3B3 compares against, not only for today's run.
     """
 
-    frozen = BASELINE_V2[scenario]
+    frozen = BASELINE_V3[scenario]
 
     for name in FORBIDDEN_IN_MODEL_INPUT:
         assert name not in frozen["disclosed_fields"], (scenario, name)
@@ -221,7 +227,7 @@ def test_every_rendered_field_is_the_authored_value_or_a_stated_absence(
     """
 
     authored = SCENARIOS[scenario]["evidence"]
-    blocks = _blocks(BASELINE_V2[scenario]["prompt"])
+    blocks = _blocks(BASELINE_V3[scenario]["prompt"])
 
     assert len(blocks) == len(authored), scenario
 
@@ -254,7 +260,7 @@ def test_the_frozen_model_input_carries_no_fabricated_default(scenario: str) -> 
     prompt grows a line neither test accounts for, which is itself worth a red.
     """
 
-    prompt = BASELINE_V2[scenario]["prompt"]
+    prompt = BASELINE_V3[scenario]["prompt"]
 
     for literal in FABRICATED_LITERALS:
         assert literal not in prompt, (scenario, literal)
@@ -270,7 +276,7 @@ def test_the_page_variants_survive_in_the_frozen_record() -> None:
 
     source_lines = [
         line
-        for line in BASELINE_V2["page_variants"]["prompt"].splitlines()
+        for line in BASELINE_V3["page_variants"]["prompt"].splitlines()
         if line.startswith("Source:")
     ]
 
@@ -287,7 +293,7 @@ def test_the_frozen_token_count_is_recorded_as_undetermined() -> None:
     """
 
     for scenario in SCENARIO_NAMES:
-        assert BASELINE_V2[scenario]["input_tokens"] == NOT_DETERMINED, scenario
+        assert BASELINE_V3[scenario]["input_tokens"] == NOT_DETERMINED, scenario
 
 
 def test_the_calculation_scenario_carries_a_governed_projection() -> None:
@@ -299,7 +305,7 @@ def test_the_calculation_scenario_carries_a_governed_projection() -> None:
     not a second copy of it.
     """
 
-    frozen = BASELINE_V2["calculation_with_explanation"]
+    frozen = BASELINE_V3["calculation_with_explanation"]
 
     assert frozen["projected_calculation"] == {
         "operation": "difference",
@@ -335,7 +341,7 @@ def test_v1_still_records_the_defect_it_is_kept_to_document() -> None:
 
     # The same prompt, post-F10: the honest marker is still there, and the two
     # fabrications beside it are gone.
-    fixed = BASELINE_V2["page_variants"]["prompt"]
+    fixed = BASELINE_V3["page_variants"]["prompt"]
     assert "Unit: not specified" in fixed
     assert "Scope: Revenue" not in fixed
     assert "Scale: 1" not in fixed
@@ -355,7 +361,7 @@ def test_the_two_records_differ_only_where_a_default_was_fabricated() -> None:
     assert untouched <= set(SCENARIO_NAMES), "the control scenario is missing"
 
     for scenario in SCENARIO_NAMES:
-        v1, v2 = BASELINE_V1[scenario], BASELINE_V2[scenario]
+        v1, v2 = BASELINE_V1[scenario], BASELINE_V2_F10[scenario]
         assert set(v1) == set(v2), scenario
 
         changed = {key for key in v1 if v1[key] != v2[key]}
@@ -365,7 +371,7 @@ def test_the_two_records_differ_only_where_a_default_was_fabricated() -> None:
 
     # Every recorded digest is the digest of the prompt beside it, in both
     # records -- so a hand-edited prompt cannot leave a stale digest behind.
-    for record in (BASELINE_V1, BASELINE_V2):
+    for record in (BASELINE_V1, BASELINE_V2_F10):
         for scenario, frozen in record.items():
             assert (
                 hashlib.sha256(frozen["prompt"].encode("utf-8")).hexdigest()

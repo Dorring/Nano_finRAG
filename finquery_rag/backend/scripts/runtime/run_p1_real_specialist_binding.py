@@ -19,7 +19,7 @@ What it establishes, in the order the brief asks for it:
   3. `ModelProviderV1` is sufficient: the capability reaches the model through
      `ModelBindingV1` with no change to the Harness core;
   4. B3 context is fed correctly -- the prompt is byte-identical to the frozen
-     `BASELINE_V2`, measured through the real binding rather than the recording
+     `BASELINE_V3`, measured through the real binding rather than the recording
      double the baseline tests use;
   5. the binding declares a stable `model_id` and a real exact counter, and
      **no token bound is configured** -- measured, not enforced.
@@ -127,7 +127,7 @@ def main(argv: list[str] | None = None) -> int:
     # --- the binding, built exactly the way production builds it -------------
     from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
     from tests.harness.b3_legacy_context_baseline import (
-        BASELINE_V2,
+        BASELINE_V3,
         SCENARIOS,
         build_state,
     )
@@ -172,7 +172,7 @@ def main(argv: list[str] | None = None) -> int:
         assert request is not None and response is not None and pack is not None
 
         prompt = request.prompt
-        identical = prompt == BASELINE_V2[scenario]["prompt"]
+        identical = prompt == BASELINE_V3[scenario]["prompt"]
 
         usage = dict(response.usage or {})
         prompt_tokens = usage.get("prompt_tokens")
@@ -245,7 +245,7 @@ def main(argv: list[str] | None = None) -> int:
     print()
     print("=== verdict ===")
     print(f"  every scenario reached the specialist        : {all_specialist}")
-    print(f"  every prompt byte-identical to BASELINE_V2   : {all_identical}")
+    print(f"  every prompt byte-identical to BASELINE_V3   : {all_identical}")
     print(f"  counter and provider agree on the tokenizer  : {all_agree}")
     print(f"  every invocation produced real tokens        : {all_inferred}")
     print(f"  binding declares the stable model_id         : {binding.model_id == EXPECTED_MODEL_ID}")

@@ -52,7 +52,7 @@ from rag_v2.evidence.disclosure import (
     allowed_fields,
 )
 from tests.harness.b3_legacy_context_baseline import (
-    BASELINE_V2,
+    BASELINE_V3,
     SCENARIOS,
     build_state,
     observe,
@@ -180,7 +180,7 @@ def test_the_compiled_pack_matches_the_legacy_projection(scenario: str) -> None:
     change, not that either side is right.
     """
 
-    legacy = BASELINE_V2[scenario]
+    legacy = BASELINE_V3[scenario]
     pack = _compiled(scenario)
 
     assert [dict(item) for item in pack.evidence] == [
@@ -200,7 +200,7 @@ def test_the_disclosed_field_set_agrees_with_the_legacy_trace(scenario: str) -> 
     fields, which is a reporting order, not a claim about the pack.
     """
 
-    legacy = set(BASELINE_V2[scenario]["disclosed_fields"])
+    legacy = set(BASELINE_V3[scenario]["disclosed_fields"])
     pack = _compiled(scenario)
 
     compiled = {
@@ -222,7 +222,7 @@ def test_the_shadow_path_did_not_move_the_legacy_path() -> None:
     """
 
     for scenario in SCENARIO_NAMES:
-        assert observe(scenario) == BASELINE_V2[scenario], scenario
+        assert observe(scenario) == BASELINE_V3[scenario], scenario
 
 
 # --- 3. structural guarantees -----------------------------------------------------------

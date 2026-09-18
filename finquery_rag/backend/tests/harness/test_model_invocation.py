@@ -59,7 +59,7 @@ from rag_v2.invocation import (
 )
 from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
 from tests.harness.b3_legacy_context_baseline import (
-    BASELINE_V2,
+    BASELINE_V3,
     SCENARIOS,
     build_state,
 )
@@ -687,7 +687,7 @@ def test_the_trace_is_rebuilt_and_nothing_reads_it() -> None:
     second = capability.trace_snapshot()
 
     assert second["context_compile_count"] == 1
-    assert second["generation_route"] == BASELINE_V2["multi_fact"]["route"]
+    assert second["generation_route"] == BASELINE_V3["multi_fact"]["route"]
 
     # And the decision path never reads it: `generate` is walked rather than
     # grepped, so a comment naming the method cannot satisfy this.
@@ -724,10 +724,10 @@ def test_the_boundary_reproduces_baseline_v2_with_a_deterministic_provider(
 
     import hashlib
 
-    provider = _RecordingProvider(text=BASELINE_V2[scenario]["candidate_answer"])
+    provider = _RecordingProvider(text=BASELINE_V3[scenario]["candidate_answer"])
     capability = TrustedV2GenerationCapability(model_backend=provider)
     result = capability.generate(build_state(scenario))
-    frozen = BASELINE_V2[scenario]
+    frozen = BASELINE_V3[scenario]
 
     assert len(provider.requests) == 1, "the provider must be called exactly once"
     request = provider.requests[0]
@@ -820,4 +820,4 @@ def test_the_capability_adapts_a_legacy_backend() -> None:
     capability.generate(build_state("multi_fact"))
 
     assert len(backend.prompts) == 1
-    assert backend.prompts[0] == BASELINE_V2["multi_fact"]["prompt"]
+    assert backend.prompts[0] == BASELINE_V3["multi_fact"]["prompt"]

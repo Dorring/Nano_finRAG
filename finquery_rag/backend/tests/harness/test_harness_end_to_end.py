@@ -51,7 +51,7 @@ from src.runtime.trusted_v2_generation import (
 )
 from src.services import process_tables
 from tests.harness.b3_legacy_context_baseline import (
-    BASELINE_V2,
+    BASELINE_V3,
     SCENARIOS,
     build_state,
 )
@@ -111,7 +111,7 @@ def test_a_normal_specialist_answer_travels_the_whole_path() -> None:
     same chain the baseline records.
     """
 
-    provider = _FakeProvider(text=BASELINE_V2["multi_fact"]["candidate_answer"])
+    provider = _FakeProvider(text=BASELINE_V3["multi_fact"]["candidate_answer"])
     capability = TrustedV2GenerationCapability(model_backend=provider)
 
     result = capability.generate(_state("multi_fact"))
@@ -122,7 +122,7 @@ def test_a_normal_specialist_answer_travels_the_whole_path() -> None:
     assert request.role == "SPECIALIST"
     assert request.provider_id == "fake"
     assert request.invocation_id.endswith(":candidate-generation")
-    assert request.prompt == BASELINE_V2["multi_fact"]["prompt"]
+    assert request.prompt == BASELINE_V3["multi_fact"]["prompt"]
 
     # The governed context it came from.
     pack = capability.last_context_pack
@@ -131,7 +131,7 @@ def test_a_normal_specialist_answer_travels_the_whole_path() -> None:
     assert pack.budget.evidence_selected == 2
 
     # And the candidate that came back.
-    assert result.candidate_answer == BASELINE_V2["multi_fact"]["candidate_answer"]
+    assert result.candidate_answer == BASELINE_V3["multi_fact"]["candidate_answer"]
     assert capability.trace_snapshot()["context_compile_count"] == 1
     assert capability.trace_snapshot()["context_render_count"] == 1
     assert capability.trace_snapshot()["context_provider_count"] == 1
@@ -162,7 +162,7 @@ def test_multi_support_context_keeps_its_topology_to_the_boundary() -> None:
         for group in pack.references.support_groups
     ] == [("G1", "revenue/FY2024", ("E1", "E2"))]
 
-    assert provider.requests[0].prompt == BASELINE_V2["multi_fact"]["prompt"]
+    assert provider.requests[0].prompt == BASELINE_V3["multi_fact"]["prompt"]
     assert "G1" not in provider.requests[0].prompt
     assert "revenue/FY2024" not in provider.requests[0].prompt
 
@@ -184,7 +184,7 @@ def test_a_calculation_context_carries_its_projection_to_the_boundary() -> None:
         "value": "8",
     }
     assert "[VERIFIED CALCULATION]" in provider.requests[0].prompt
-    assert provider.requests[0].prompt == BASELINE_V2["calculation_with_explanation"]["prompt"]
+    assert provider.requests[0].prompt == BASELINE_V3["calculation_with_explanation"]["prompt"]
 
 
 # --- 4. provider failure ------------------------------------------------------------------------
@@ -351,11 +351,11 @@ def test_a_rejected_table_artifact_never_becomes_trusted_content(
 def test_every_authored_scenario_survives_the_whole_path(scenario: str) -> None:
     """The end-to-end regression, over every shape the boundary is reached with."""
 
-    provider = _FakeProvider(text=BASELINE_V2[scenario]["candidate_answer"])
+    provider = _FakeProvider(text=BASELINE_V3[scenario]["candidate_answer"])
     capability = TrustedV2GenerationCapability(model_backend=provider)
     result = capability.generate(build_state(scenario))
 
     assert len(provider.requests) == 1
-    assert provider.requests[0].prompt == BASELINE_V2[scenario]["prompt"]
-    assert result.candidate_answer == BASELINE_V2[scenario]["candidate_answer"]
-    assert result.candidate_generation_id == BASELINE_V2[scenario]["candidate_generation_id"]
+    assert provider.requests[0].prompt == BASELINE_V3[scenario]["prompt"]
+    assert result.candidate_answer == BASELINE_V3[scenario]["candidate_answer"]
+    assert result.candidate_generation_id == BASELINE_V3[scenario]["candidate_generation_id"]

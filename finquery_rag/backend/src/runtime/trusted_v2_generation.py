@@ -32,6 +32,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from collections.abc import Iterable, Mapping
 from dataclasses import dataclass, field
 from typing import Any
@@ -60,9 +61,72 @@ from src.domain.calculation import CalculationResult, CalculationStatus
 from src.finance.calculation_renderer import render_calculation_result
 
 
+#: The handles the renderer writes into the prompt and asks the model to cite:
+#: ``[E1]``, ``[E2]``, ``[C1]``.  Short on purpose -- a prompt that repeated a
+#: sixty-four character digest beside every evidence item would spend its
+#: context budget on identifiers.
+_CITED_HANDLE = re.compile(r"\[([EC]\d+)\]")
+
+
+def _resolve_cited_handles(
+    answer: str,
+    pack: AgentContextPackV1,
+) -> tuple[str, tuple[str, ...], dict[str, Any]]:
+    """Translate the handles a model cited into the identities they denote.
+
+    The renderer asks the model to cite ``[E1]``; the validator resolves
+    citations against canonical fact-store ids.  Nothing reconciled the two, so
+    **every** specialist answer that followed the prompt's own instruction was
+    rejected as ``GV7_UNKNOWN_CITATION`` -- the model was told to write one
+    vocabulary and graded in another.
+
+    This is where the two meet.  The pairing is the pack's, not a guess: a
+    handle names one evidence item and the pack carries that item's
+    ``citation_id`` beside it.  So the rewrite is denotation-preserving -- it
+    replaces a local alias with the global identity of the thing it names, and
+    invents nothing.
+
+    A handle the pack does not carry is left **exactly as the model wrote it**.
+    Dropping it would hide a fabricated citation, and inventing an id for it
+    would manufacture one; leaving it means a hallucinated ``[E9]`` still fails
+    validation, which is the outcome that should happen.
+
+    Returns the rewritten answer, the citation ids actually cited, and a record
+    of what could not be resolved.
+    """
+
+    by_handle: dict[str, str] = {}
+    references = getattr(pack, "references", None)
+    for reference in getattr(references, "handles", ()) or ():
+        citation_id = getattr(reference, "citation_id", None)
+        if citation_id:
+            by_handle[str(getattr(reference, "handle", ""))] = str(citation_id)
+
+    resolved: list[str] = []
+    unresolved: list[str] = []
+
+    def _replace(match: re.Match[str]) -> str:
+        handle = match.group(1)
+        citation_id = by_handle.get(handle)
+        if citation_id is None:
+            unresolved.append(handle)
+            return match.group(0)
+        resolved.append(citation_id)
+        return f"[{citation_id}]"
+
+    rewritten = _CITED_HANDLE.sub(_replace, answer)
+    return (
+        rewritten,
+        _stable_unique(resolved),
+        {
+            "cited_handles_resolved": len(resolved),
+            "unresolved_cited_handles": _stable_unique(unresolved),
+        },
+    )
+
+
 class CandidateGenerationCapabilityError(RuntimeError):
     """Raised when a candidate-generation contract cannot be satisfied."""
-
 
 @dataclass(frozen=True)
 class CandidateExecutionResult:
@@ -415,6 +479,12 @@ class TrustedV2GenerationCapability:
         metadata: dict[str, Any] = {}
         if not isinstance(answer, str) or not answer.strip():
             raise CandidateGenerationCapabilityError("financial_specialist_empty_candidate")
+
+        # The model answers in the renderer's handle vocabulary; the validator
+        # reads the canonical one.  Translate before either is consulted.
+        answer, cited_citation_ids, handle_metadata = _resolve_cited_handles(answer, pack)
+        metadata.update(handle_metadata)
+
         raw_citations = raw_citations if isinstance(raw_citations, (list, tuple, set)) else ()
         unknown = [str(item) for item in raw_citations if str(item) not in allowed_citations]
         self._unknown_citation_count += len(unknown)
@@ -424,11 +494,24 @@ class TrustedV2GenerationCapability:
                 "unknown_generated_citation_ids": unknown,
             }
         )
-        citations = tuple(
+        # Three tiers, in order of how much the candidate actually declared.
+        # The middle one is new: it is what the model cited in its own answer,
+        # resolved through the pack.  Before it existed, a model that cited
+        # correctly resolved to nothing and fell through to the third tier --
+        # which attributes every bound citation to a candidate that named none,
+        # so a hallucinating answer and a careful one were indistinguishable.
+        declared = tuple(
             str(item) for item in raw_citations if str(item) in allowed_citations
         )
-        if not citations:
-            citations = allowed_citations
+        from_answer = tuple(
+            citation_id for citation_id in cited_citation_ids if citation_id in allowed_citations
+        )
+        citations = declared or from_answer or allowed_citations
+        metadata["citation_source"] = (
+            "provider_declared"
+            if declared
+            else "answer_handles" if from_answer else "bound_evidence_fallback"
+        )
         return answer.strip(), _stable_unique(citations), metadata
 
     def generate(self, state: AdaptiveRAGStateV1) -> CandidateExecutionResult:

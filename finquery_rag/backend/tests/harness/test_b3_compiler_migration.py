@@ -47,7 +47,7 @@ from rag_v2.context import (
     specialist_context_request,
 )
 from tests.harness.b3_legacy_context_baseline import (
-    BASELINE_V2,
+    BASELINE_V3,
     SCENARIOS,
     build_state,
 )
@@ -406,7 +406,7 @@ def test_the_migrated_path_reproduces_baseline_v2_exactly(scenario: str) -> None
     specialist = RecordingSpecialist()
     capability = TrustedV2GenerationCapability(model_backend=specialist)
     result = capability.generate(state)
-    frozen = BASELINE_V2[scenario]
+    frozen = BASELINE_V3[scenario]
 
     assert result.route == frozen["route"]
     assert list(result.bound_evidence_ids) == frozen["bound_evidence_ids"]

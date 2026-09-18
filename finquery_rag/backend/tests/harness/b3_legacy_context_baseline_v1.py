@@ -3,7 +3,7 @@
 This is *history, not a target.*  It records what the specialist boundary
 produced at the H2A-3B0 commit -- post-F5, **pre-F10** -- and it is retained
 only so that the defect it documents stays checkable.  Nothing migrates against
-it: ``b3_legacy_context_baseline.BASELINE_V2`` is the migration baseline, and
+it: ``b3_legacy_context_baseline.BASELINE_V3`` is the migration baseline, and
 H2A-3B3's differential compares the compiled pack against that.
 
 Why keep a superseded record at all.  F10 was five fabricated defaults in the

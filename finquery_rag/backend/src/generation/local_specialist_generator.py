@@ -17,6 +17,8 @@ from typing import Any
 
 import torch
 
+from rag_v2.invocation import ModelProviderError, ProviderFailureKind
+
 
 def _resolve_nanochat_repo() -> Path:
     """Resolve the NanoChat source root without coupling V2 to one host path.
@@ -66,6 +68,30 @@ def sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
+def exceeds_sequence_window(
+    prompt_tokens: int,
+    max_new_tokens: int,
+    sequence_len: int | None,
+) -> bool:
+    """Whether a request would run past the model's physical window.
+
+    The whole sequence the engine holds is the prompt *plus* what is generated,
+    so a prompt that fits on its own can still overflow once generation starts.
+    Counting only the prompt is the mistake this exists to avoid, and it is why
+    the rule is a named function rather than an inline comparison: it is
+    testable without a checkpoint, a GPU or torch.
+
+    ``None`` means the checkpoint declared no window, which is reported rather
+    than guessed at -- an engine whose limit is unknown is not checked here
+    rather than being checked against a made-up number.
+    """
+
+    return (
+        sequence_len is not None
+        and prompt_tokens + max_new_tokens > sequence_len
+    )
+
+
 class LocalSpecialistUnavailableError(Exception):
     """Raised when the Local Financial Specialist cannot be loaded or verified."""
 
@@ -106,6 +132,8 @@ class LocalSpecialistGenerator:
         self.tokenizer = None
         self.engine = None
         self.checkpoint_sha256 = None
+        #: Set by ``load()`` from the checkpoint's own config.
+        self.sequence_len: int | None = None
         self._model_loaded = False
         self._load_duration_seconds = 0.0
 
@@ -143,12 +171,22 @@ class LocalSpecialistGenerator:
 
         t0 = time.perf_counter()
         ckpt_dir = str(self.checkpoint_path.parent)
-        self.model, self.tokenizer, _ = build_model(
+        self.model, self.tokenizer, meta = build_model(
             ckpt_dir, 156, self.device, phase="eval"
         )
         self.model.eval()
         self.engine = Engine(self.model, self.tokenizer)
         self._load_duration_seconds = time.perf_counter() - t0
+
+        #: The model's physical window, taken from the checkpoint's own config
+        #: rather than assumed.  This is a *provider fact* -- what this engine
+        #: can accept -- and not a context policy: nothing here decides how much
+        #: context anyone should send, only what happens when they send more
+        #: than the engine can hold.  ``None`` when the checkpoint does not
+        #: declare one, which is reported rather than guessed at.
+        config = meta.get("model_config") if isinstance(meta, dict) else None
+        declared = config.get("sequence_len") if isinstance(config, dict) else None
+        self.sequence_len = int(declared) if isinstance(declared, int) else None
 
         # Cache special token IDs
         self.bos_token_id = self.tokenizer.get_bos_token_id()
@@ -206,6 +244,27 @@ class LocalSpecialistGenerator:
             + self.tokenizer.encode(prompt)
             + [self.user_end_id, self.assistant_start_id]
         )
+
+        # Refuse a request the engine cannot hold, before the engine is asked to
+        # hold it.  Nothing upstream bounds this: no evidence-count limit is
+        # configured and no token bound is configured, so the prompt grows with
+        # whatever the binder admitted.  Handing an over-long sequence to
+        # `generate_batch` does not return an error, it trips a CUDA assertion
+        # and takes the process -- and with it the service -- down.
+        #
+        # This is a window check, not a context policy.  It says this provider
+        # cannot serve this request, which is the same class of statement as the
+        # checkpoint being missing; it does not say how much context anyone
+        # should send, which is a bound somebody still has to justify.
+        if exceeds_sequence_window(
+            len(prompt_tokens), self.max_new_tokens, self.sequence_len
+        ):
+            raise ModelProviderError(
+                ProviderFailureKind.UNAVAILABLE,
+                f"prompt of {len(prompt_tokens)} tokens plus "
+                f"{self.max_new_tokens} requested exceeds this model's "
+                f"{self.sequence_len}-token window",
+            )
 
         t0 = time.perf_counter()
         with torch.no_grad():
