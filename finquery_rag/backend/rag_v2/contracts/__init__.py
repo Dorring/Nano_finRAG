@@ -4,7 +4,7 @@ from .answer import AnswerEnvelope, CanonicalAnswer, CanonicalSource
 from .calculation import CalculationResultPacket, CalculationStatus
 from .evidence import BindingStatus, EvidenceBinding
 from .errors import ContractError, PlanValidationError, StateTransitionError
-from .plan import Action, Intent, RequiredSlot, SupervisorPlan
+from .plan import Action, Intent, RequiredSlot, SupervisorPlan, slot_key_error
 from .query import QuestionEnvelope
 from .validation import CheckStatus, ValidationDecision, ValidationResult
 
@@ -27,4 +27,5 @@ __all__ = [
     "SupervisorPlan",
     "ValidationDecision",
     "ValidationResult",
+    "slot_key_error",
 ]
