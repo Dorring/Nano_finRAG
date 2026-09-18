@@ -33,6 +33,7 @@ from rag_v2.supervisor import (
     UnknownSemanticPolicy,
     align_query_to_plan,
     coerce_unknown_semantic_policy,
+    derive_slot_identities,
     validate_plan_v2_01,
 )
 
@@ -1653,6 +1654,12 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 status=V2ExecutionStatus.EXECUTION_ERROR,
                 terminal_state="SUPERVISOR",
             )
+        # The Harness derives each slot's identity from the mention it carries,
+        # before the plan is hashed into its id, so that the id names the plan
+        # everything downstream actually sees.  Derivation overwrites rather
+        # than fills: a plan may not assert an identity its own mention
+        # contradicts.
+        plan = derive_slot_identities(plan)
         plan_id = _plan_id(request, plan)
         plan_normalization = (
             supervisor_run.normalization.to_dict()

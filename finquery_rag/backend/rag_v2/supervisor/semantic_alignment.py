@@ -510,6 +510,13 @@ _ENTITY_DEFINITIONS: tuple[_VocabularyDefinition, ...] = (
         ),
     ),
     _VocabularyDefinition("visa", ("visa", "visa inc", "visa inc company")),
+    # Added after the P1.3 fixture audit: `pfe_fy2024` is a document in the
+    # corpus and Pfizer is ten questions in the canonical eval set, but the
+    # vocabulary did not know it, so `canonical_entity_id("Pfizer")` returned
+    # None.  A slot carrying the mention still binds -- the mention is matched
+    # as text when there is no id -- but a slot that could have carried an
+    # identity could not, and the audit could not tell "unnamed" from "unknown".
+    _VocabularyDefinition("pfe", ("pfizer", "pfe", "辉瑞")),
     _VocabularyDefinition("ford", ("ford", "福特")),
 )
 

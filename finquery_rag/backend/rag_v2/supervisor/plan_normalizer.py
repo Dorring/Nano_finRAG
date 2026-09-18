@@ -17,6 +17,7 @@ from typing import Any
 from rag_v2.contracts.plan import Intent, RequiredSlot, SupervisorPlan
 
 from .semantic_alignment import (
+    canonical_entity_id,
     canonical_operation_id,
     canonical_period_id,
     extract_query_semantic_frame,
@@ -171,4 +172,51 @@ def normalize_supervisor_plan(
     )
 
 
-__all__ = ["PlanNormalization", "normalize_supervisor_plan"]
+def derive_slot_identities(plan: SupervisorPlan) -> SupervisorPlan:
+    """Fill each slot's derived coordinates from the mentions it carries.
+
+    The contract keeps ``entity`` as an open-world mention and ``entity_id`` as
+    an identity the Harness *derived* from it, one way: mention, then
+    canonicalisation, then id.  This is the derivation step.  It is not a
+    repair and it is not conditional -- every plan that reaches the runtime goes
+    through it, because a plan whose ids were derived only sometimes would make
+    the binder's behaviour depend on which path the plan arrived by.
+
+    The mention is authoritative.  Deriving from it *overwrites* any id that
+    came with the plan, so a plan cannot assert an identity its own mention
+    contradicts; and it is deterministic and vocabulary-only, with no model and
+    no fuzzy matching anywhere in it.
+
+    A mention the vocabulary cannot name keeps ``entity_id=None``, which means
+    *constrained and unnamed* and never *unconstrained*.  The mention is
+    therefore kept exactly as written -- dropping it because its id could not be
+    derived would turn "we cannot name this company" into "any company", and
+    that failure would look like a wider recall rather than a lost constraint.
+    """
+
+    if not isinstance(plan, SupervisorPlan):
+        raise TypeError("plan must be SupervisorPlan")
+
+    slots: list[RequiredSlot] = []
+    changed = False
+    for slot in plan.required_slots:
+        if not slot.entity:
+            slots.append(slot)
+            continue
+        entity_id = canonical_entity_id(slot.entity)
+        if slot.entity_id != entity_id:
+            slots.append(replace(slot, entity_id=entity_id))
+            changed = True
+        else:
+            slots.append(slot)
+
+    if not changed:
+        return plan
+    return replace(plan, required_slots=tuple(slots))
+
+
+__all__ = [
+    "PlanNormalization",
+    "derive_slot_identities",
+    "normalize_supervisor_plan",
+]

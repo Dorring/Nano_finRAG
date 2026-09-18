@@ -5,7 +5,11 @@ from .bailian_provider import BailianProvider
 from .deterministic_fallback import DeterministicFallbackProvider
 from .local_provider import LocalProvider
 from .plan_validator import validate_plan, validate_plan_v2_01
-from .plan_normalizer import PlanNormalization, normalize_supervisor_plan
+from .plan_normalizer import (
+    PlanNormalization,
+    derive_slot_identities,
+    normalize_supervisor_plan,
+)
 from .provider import SupervisorCallMetadata, SupervisorProvider, SupervisorProviderError
 from .semantic_alignment import (
     BoundEvidenceAlignmentStatus,
@@ -47,6 +51,7 @@ __all__ = [
     "SupervisorProviderError",
     "PlanNormalization",
     "normalize_supervisor_plan",
+    "derive_slot_identities",
     "SupervisorRun",
     "SupervisorService",
     "StrongGeneralAPIProvider",

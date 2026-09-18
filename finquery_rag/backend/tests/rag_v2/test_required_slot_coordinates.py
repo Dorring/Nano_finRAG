@@ -25,7 +25,7 @@ from rag_v2.contracts import (
     SupervisorPlan,
     slot_key_error,
 )
-from rag_v2.supervisor import validate_plan_v2_01
+from rag_v2.supervisor import derive_slot_identities, validate_plan_v2_01
 
 
 def _v1_payload() -> dict:
@@ -166,3 +166,59 @@ def test_a_plan_carrying_coordinates_still_validates() -> None:
     )
 
     assert validate_plan_v2_01(plan) is plan
+
+
+# --- deriving the identity from the mention ----------------------------------------------
+
+
+def _plan(*slots: RequiredSlot) -> SupervisorPlan:
+    return SupervisorPlan(
+        intent=Intent.MULTI_EVIDENCE,
+        required_slots=slots,
+        operation=None,
+        next_action=Action.RETRIEVE,
+    )
+
+
+def test_a_known_mention_gets_its_identity() -> None:
+    derived = derive_slot_identities(_plan(_slot(entity="Visa")))
+
+    assert derived.required_slots[0].entity_id == "visa"
+
+
+def test_an_unknown_mention_keeps_its_mention_and_gains_no_identity() -> None:
+    """`entity_id is None` here means "we cannot name it", not "no constraint"."""
+
+    derived = derive_slot_identities(_plan(_slot(entity="Some Unknown Corp")))
+
+    slot = derived.required_slots[0]
+    assert slot.entity == "Some Unknown Corp"
+    assert slot.entity_id is None
+
+
+def test_the_mention_overwrites_a_contradicting_identity() -> None:
+    """Derived, not asserted: a plan may not name a company it is not about."""
+
+    derived = derive_slot_identities(_plan(_slot(entity="Visa", entity_id="aapl")))
+
+    assert derived.required_slots[0].entity_id == "visa"
+
+
+def test_a_slot_with_no_mention_is_left_alone() -> None:
+    derived = derive_slot_identities(_plan(_slot()))
+
+    assert derived.required_slots[0].entity is None
+    assert derived.required_slots[0].entity_id is None
+
+
+def test_nothing_to_derive_returns_the_same_plan() -> None:
+    """A plan that needed no derivation must not be rebuilt into an equal one.
+
+    Identity of the object is what the coordinator hashes into the plan id, and
+    rebuilding identical plans would make that id depend on whether the
+    derive step happened to be a no-op.
+    """
+
+    plan = _plan(_slot())
+
+    assert derive_slot_identities(plan) is plan
