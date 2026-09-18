@@ -179,6 +179,33 @@ def run_raw(
 # --- ALIGNED-REPLAY -----------------------------------------------------------------------------
 
 
+def _load_deployment_env() -> None:
+    """Load the deployment configuration without clobbering an explicit device.
+
+    The replay track needs the real assets the service uses -- the R4 index, the
+    fact store, the binder credentials, the specialist checkpoint -- and those
+    live in ``config/deployment/online.env``.  It must be loaded with
+    ``override=False``: that file sets ``CUDA_VISIBLE_DEVICES``, and the whole
+    point of this run is to use a device the operator chose.  A silent override
+    would put a second PyTorch process on the service's card.
+    """
+
+    try:
+        from dotenv import load_dotenv
+    except ImportError:  # pragma: no cover - dotenv is a declared dependency
+        return
+    for candidate in (
+        Path("/disk/qh/nano-finrag/config/deployment/online.env"),
+        _BACKEND_DIR.parents[1] / "config/deployment/online.env",
+        _BACKEND_DIR / "online.env",
+    ):
+        if candidate.exists():
+            load_dotenv(candidate, override=False)
+            print(f"  deployment env loaded from {candidate} (override=False)")
+            return
+    print("  no deployment env found; relying on the process environment")
+
+
 def run_replay(
     questions: list[dict[str, Any]],
     fixtures_by_id: dict[str, dict[str, Any]],
@@ -193,6 +220,7 @@ def run_replay(
         build_trusted_v2_runtime_for_request as build_runtime,
     )
 
+    _load_deployment_env()
     environ = dict(os.environ)
     resources = _load_resources(environ)
     print("  resources loaded from the production loader (assets unchanged)")
@@ -491,12 +519,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--timeout-per-query", type=float, default=90.0)
     args = parser.parse_args(argv)
 
-    import run_tv2_canonical_benchmark as canonical
-
-    args.eval_set = args.eval_set or canonical.Path(
+    args.eval_set = args.eval_set or Path(
         "artifacts/evaluation/tv2-final-01-canonical-eval-set/canonical-eval-v1.jsonl"
     )
-    args.gold_evidence = args.gold_evidence or canonical.Path(
+    args.gold_evidence = args.gold_evidence or Path(
         "artifacts/evaluation/tv2-final-01-canonical-eval-set/gold-evidence-v1.jsonl"
     )
     args.sessions_db = args.sessions_db or str(_BACKEND_DIR / "sessions.db")
