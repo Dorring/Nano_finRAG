@@ -25,8 +25,11 @@ import pytest
 from rag_v2.contracts import Action, Intent, RequiredSlot, SupervisorPlan
 from rag_v2.supervisor import validate_plan_v2_01
 from scripts.evaluation.build_p1_2_plan_fixtures import (
+    DEFAULT_FACT_STORE,
     author_plan,
     build_fixtures,
+    load_fact_coordinates,
+    operand_fact_ids,
     render_fixtures,
 )
 from src.evaluation.p1_2_dual_track import (
@@ -46,10 +49,21 @@ GOLD = (
     / "artifacts/evaluation/tv2-final-01-canonical-eval-set/gold-evidence-v1.jsonl"
 )
 
-corpus_required = pytest.mark.skipif(
-    not (EVAL_SET.exists() and GOLD.exists()),
-    reason="the canonical eval set is not present in this checkout",
+#: Authoring the corpus now reads the *periods of the gold's operand facts* for
+#: ``sum``/``average``, because the gold names two operands and no periods and
+#: re-deriving them produced two identical slots.  The store lives in the
+#: deployment, so a checkout without it can verify the frozen fixtures but not
+#: rebuild them.
+fact_store_required = pytest.mark.skipif(
+    not (EVAL_SET.exists() and GOLD.exists() and DEFAULT_FACT_STORE.exists()),
+    reason="the fact store is not present in this checkout",
 )
+
+
+def _corpus_fixtures() -> list[dict]:
+    needed = operand_fact_ids(GOLD)
+    return build_fixtures(EVAL_SET, GOLD, load_fact_coordinates(DEFAULT_FACT_STORE, needed))
+
 
 #: Keys that never belong in a fixture, because they are the answer the runtime
 #: is supposed to find.  Asserted absent rather than merely unused.
@@ -135,23 +149,23 @@ def test_no_fixture_carries_answer_material(tmp_path: Path) -> None:
         assert key not in rendered, f"{key} leaked into a fixture"
 
 
-@corpus_required
+@fact_store_required
 def test_the_corpus_fixtures_are_deterministic() -> None:
     """Same inputs, same bytes -- so the frozen digest means something."""
 
-    first = render_fixtures(build_fixtures(EVAL_SET, GOLD))
-    second = render_fixtures(build_fixtures(EVAL_SET, GOLD))
+    first = render_fixtures(_corpus_fixtures())
+    second = render_fixtures(_corpus_fixtures())
 
     assert first == second
 
 
-@corpus_required
+@fact_store_required
 def test_editing_a_fixture_changes_its_digest() -> None:
     """The injection check for the freeze: a mutated fixture cannot pass unseen."""
 
     import hashlib
 
-    fixtures = build_fixtures(EVAL_SET, GOLD)
+    fixtures = _corpus_fixtures()
     before = hashlib.sha256(render_fixtures(fixtures).encode("utf-8")).hexdigest()
 
     fixtures[0]["plan"]["required_slots"][0]["metric"] = "mutated"
@@ -160,17 +174,17 @@ def test_editing_a_fixture_changes_its_digest() -> None:
     assert before != after
 
 
-@corpus_required
+@fact_store_required
 def test_the_corpus_fixtures_never_carry_answer_material() -> None:
-    rendered = render_fixtures(build_fixtures(EVAL_SET, GOLD))
+    rendered = render_fixtures(_corpus_fixtures())
 
     for key in _ANSWER_MATERIAL:
         assert key not in rendered, f"{key} leaked into a fixture"
 
 
-@corpus_required
+@fact_store_required
 def test_every_corpus_fixture_is_a_valid_plan() -> None:
-    for row in build_fixtures(EVAL_SET, GOLD):
+    for row in _corpus_fixtures():
         blob = row["plan"]
         plan = SupervisorPlan(
             Intent(blob["intent"]),
