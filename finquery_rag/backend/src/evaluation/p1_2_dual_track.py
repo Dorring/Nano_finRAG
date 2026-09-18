@@ -287,11 +287,21 @@ def score_reachability(rows: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
         1 for row in rows if row.get("computed_align_status") == "ALIGNED"
     )
     overridden = sum(1 for row in rows if row.get("align_overridden"))
+    # The RAW track reaches the question over HTTP, and the response does not
+    # expose the gate's verdict.  Reporting 0.0 there would read as "no query
+    # passed the gate" when the truth is "this track cannot see the gate" --
+    # a measurement that is absent must be reported as absent.
+    gate_observable = any(row.get("computed_align_status") for row in rows)
 
     return {
         "total": total,
-        "align_pass_rate": round(aligned / total, 4) if total else None,
-        "align_reject_rate": round((total - aligned) / total, 4) if total else None,
+        "align_pass_rate": (
+            round(aligned / total, 4) if (total and gate_observable) else None
+        ),
+        "align_reject_rate": (
+            round((total - aligned) / total, 4) if (total and gate_observable) else None
+        ),
+        "align_gate_observable": gate_observable,
         "align_override_count": overridden,
         "reject_reason_distribution": dict(sorted(reasons.items())),
         "reached_retrieval": reached["retrieval"],
