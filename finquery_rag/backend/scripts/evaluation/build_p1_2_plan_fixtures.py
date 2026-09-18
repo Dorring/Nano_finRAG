@@ -42,7 +42,7 @@ Every authored field still records which tier produced it (``sourced_from``),
 so a reader can see how much of a plan is gold and how much is question text.
 
     python build_p1_2_plan_fixtures.py --fact-store <store.jsonl> \
-        --out-dir artifacts/evaluation/p1-2-plan-fixtures --name plan-fixtures-v2
+        --out-dir benchmarks/tv2_canonical_v1 --name plan-fixtures-v2
 """
 
 from __future__ import annotations
@@ -62,13 +62,13 @@ if str(_BACKEND_DIR) not in sys.path:
 
 DEFAULT_EVAL_SET = (
     _BACKEND_DIR
-    / "artifacts/evaluation/tv2-final-01-canonical-eval-set/canonical-eval-v1.jsonl"
+    / "benchmarks/tv2_canonical_v1/canonical-eval-v1.jsonl"
 )
 DEFAULT_GOLD = (
     _BACKEND_DIR
-    / "artifacts/evaluation/tv2-final-01-canonical-eval-set/gold-evidence-v1.jsonl"
+    / "benchmarks/tv2_canonical_v1/gold-evidence-v1.jsonl"
 )
-DEFAULT_OUT_DIR = _BACKEND_DIR / "artifacts/evaluation/p1-2-plan-fixtures"
+DEFAULT_OUT_DIR = _BACKEND_DIR / "benchmarks/tv2_canonical_v1"
 #: The authoritative fact store.  It is the deployment's, not the checkout's, so
 #: a full build runs where the store lives.
 DEFAULT_FACT_STORE = Path(

@@ -1,0 +1,34 @@
+{
+  "eval_set_sha256": "9c8ca9ceea21cecfc43a8b3861d13884b3e1a70e3839438cec3db06f599882a0",
+  "fact_store_sha256": "0382c6a17f7065516c0edd0d2ca10d5ea6e0e0c7bb0dff68acae38134fc4db57",
+  "fixture": "plan-fixtures-v2",
+  "fixture_sha256": "f0e1b1eb95700da6175af138fef161ae9185f0c8bc906cfd3632995657b4553c",
+  "gold_sha256": "7831eef2d33abc3086f8e88c028f0e3bd3723917765612d86551d4604bba6925",
+  "intent_distribution": {
+    "CALCULATION": 40,
+    "DIRECT_FACT": 60,
+    "MULTI_EVIDENCE": 20
+  },
+  "operand_facts_read": 20,
+  "provenance": {
+    "intent:gold_intent:financial_lookup": 40,
+    "intent:gold_operation:average": 5,
+    "intent:gold_operation:comparison": 10,
+    "intent:gold_operation:cross_entity_difference": 5,
+    "intent:gold_operation:difference": 7,
+    "intent:gold_operation:growth_rate": 15,
+    "intent:gold_operation:percentage_share": 8,
+    "intent:gold_operation:ranking": 5,
+    "intent:gold_operation:sum": 5,
+    "intent:gold_outcome:abstention": 20,
+    "metric:gold": 87,
+    "metric:question_possessive_clause": 28,
+    "metric:question_trimmed": 5,
+    "period:gold": 68,
+    "period:gold_operand_facts": 10,
+    "period:gold_operand_periods": 22,
+    "period:question_text": 20
+  },
+  "stage": "P1-3-PLAN-FIXTURES",
+  "total": 120
+}

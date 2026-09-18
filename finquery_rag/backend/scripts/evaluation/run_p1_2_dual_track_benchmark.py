@@ -44,7 +44,7 @@ _EVALUATION_DIR = Path(__file__).resolve().parent
 if str(_EVALUATION_DIR) not in sys.path:
     sys.path.insert(0, str(_EVALUATION_DIR))
 
-DEFAULT_FIXTURES = _BACKEND_DIR / "artifacts/evaluation/p1-2-plan-fixtures/plan-fixtures-v1.jsonl"
+DEFAULT_FIXTURES = _BACKEND_DIR / "benchmarks/tv2_canonical_v1/plan-fixtures-v1.jsonl"
 DEFAULT_OUT_DIR = _BACKEND_DIR / "artifacts/evaluation/p1-2-dual-track"
 EXPECTED_PRODUCTION_FINGERPRINT = (
     "25e7c9b33792637ba61fefc53b80d10745895696ebe8910b3ff2c1e21ee534fc"
@@ -565,10 +565,10 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     args.eval_set = args.eval_set or Path(
-        "artifacts/evaluation/tv2-final-01-canonical-eval-set/canonical-eval-v1.jsonl"
+        "benchmarks/tv2_canonical_v1/canonical-eval-v1.jsonl"
     )
     args.gold_evidence = args.gold_evidence or Path(
-        "artifacts/evaluation/tv2-final-01-canonical-eval-set/gold-evidence-v1.jsonl"
+        "benchmarks/tv2_canonical_v1/gold-evidence-v1.jsonl"
     )
     args.sessions_db = args.sessions_db or str(_BACKEND_DIR / "sessions.db")
 

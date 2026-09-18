@@ -43,13 +43,13 @@ from pathlib import Path
 from typing import Any, Mapping, Sequence
 
 DEFAULT_EVAL_SET = Path(
-    "artifacts/evaluation/tv2-final-01-canonical-eval-set/canonical-eval-v1.jsonl"
+    "benchmarks/tv2_canonical_v1/canonical-eval-v1.jsonl"
 )
 DEFAULT_GOLD = Path(
-    "artifacts/evaluation/tv2-final-01-canonical-eval-set/gold-evidence-v1.jsonl"
+    "benchmarks/tv2_canonical_v1/gold-evidence-v1.jsonl"
 )
 DEFAULT_FIXTURES = Path(
-    "artifacts/evaluation/p1-2-plan-fixtures/plan-fixtures-v2.jsonl"
+    "benchmarks/tv2_canonical_v1/plan-fixtures-v2.jsonl"
 )
 DEFAULT_OUT_DIR = Path("artifacts/evaluation/p1-3-ground-truth-audit")
 

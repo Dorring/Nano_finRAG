@@ -1,0 +1,48 @@
+{
+  "contamination_audit": {
+    "category_c_count": 364,
+    "contaminated_count": 0,
+    "contaminated_ids": [],
+    "status": "CLEAN"
+  },
+  "dataset_name": "canonical-eval-v1",
+  "entity_distribution": {
+    "Alphabet": 1,
+    "Amazon": 1,
+    "Apple": 21,
+    "JPMorganChase": 13,
+    "Meta Platforms": 1,
+    "Microsoft": 8,
+    "NVIDIA": 11,
+    "Netflix": 1,
+    "Pfizer": 10,
+    "Tesla": 11,
+    "The Coca-Cola Company": 14,
+    "Visa": 7,
+    "Walmart": 1,
+    "cross_entity": 20
+  },
+  "execution_inputs": {
+    "answer_text_read": false,
+    "conversation_history_read": false,
+    "gold_read": false,
+    "model_called": false,
+    "questions_read": false
+  },
+  "fact_store_path": "/disk/qh/nano-finrag/data/trusted-v2/fact-store/financial-facts.jsonl",
+  "output_files": {
+    "eval_jsonl": "artifacts/evaluation/tv2-final-01-canonical-eval-set/canonical-eval-v1.jsonl",
+    "eval_jsonl_sha256": "9c8ca9ceea21cecfc43a8b3861d13884b3e1a70e3839438cec3db06f599882a0",
+    "gold_jsonl": "artifacts/evaluation/tv2-final-01-canonical-eval-set/gold-evidence-v1.jsonl",
+    "gold_jsonl_sha256": "7831eef2d33abc3086f8e88c028f0e3bd3723917765612d86551d4604bba6925"
+  },
+  "seed": 42,
+  "stage": "TV2-FINAL-01",
+  "stratum_distribution": {
+    "adversarial_abstention": 25,
+    "arithmetic_calculation": 35,
+    "cross_entity_comparison": 20,
+    "factual_lookup": 40
+  },
+  "total_questions": 120
+}

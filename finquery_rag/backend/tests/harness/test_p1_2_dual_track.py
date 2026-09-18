@@ -42,11 +42,11 @@ from src.evaluation.p1_2_dual_track import (
 
 EVAL_SET = (
     Path(__file__).resolve().parents[2]
-    / "artifacts/evaluation/tv2-final-01-canonical-eval-set/canonical-eval-v1.jsonl"
+    / "benchmarks/tv2_canonical_v1/canonical-eval-v1.jsonl"
 )
 GOLD = (
     Path(__file__).resolve().parents[2]
-    / "artifacts/evaluation/tv2-final-01-canonical-eval-set/gold-evidence-v1.jsonl"
+    / "benchmarks/tv2_canonical_v1/gold-evidence-v1.jsonl"
 )
 
 #: Authoring the corpus now reads the *periods of the gold's operand facts* for

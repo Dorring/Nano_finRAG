@@ -27,7 +27,7 @@ from scripts.evaluation.build_p1_2_plan_fixtures import (
 )
 
 FIXTURE_DIR = (
-    Path(__file__).resolve().parents[2] / "artifacts/evaluation/p1-2-plan-fixtures"
+    Path(__file__).resolve().parents[2] / "benchmarks/tv2_canonical_v1"
 )
 FIXTURE_V1 = FIXTURE_DIR / "plan-fixtures-v1.jsonl"
 FIXTURE_V2 = FIXTURE_DIR / "plan-fixtures-v2.jsonl"
