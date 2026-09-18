@@ -32,6 +32,7 @@ import dataclasses
 import hashlib
 import json
 import os
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -57,6 +58,43 @@ def _sha256_file(path: Path) -> str:
         for block in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def _git_commit_sha() -> str:
+    """The revision these numbers belong to, read from the repository.
+
+    This used to be the environment variable alone, so a run that did not export
+    it recorded `null` and said nothing about which revision produced the
+    numbers -- which is the one thing a seal exists to say.  It was `null` for
+    the whole P1.3-0D run.
+
+    An override is still honoured first, for a run made from an exported tree
+    that is not itself a checkout.  Otherwise the repository is asked, and a
+    revision that cannot be read is an error rather than an empty field: a seal
+    naming no commit cannot be checked against anything.
+    """
+
+    override = os.environ.get("P1_2_COMMIT_SHA", "").strip()
+    if override:
+        return override
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=_BACKEND_DIR,
+            capture_output=True,
+            text=True,
+            timeout=15,
+            check=True,
+        )
+    except (OSError, subprocess.SubprocessError) as exc:
+        raise RuntimeError(
+            "cannot determine the commit this run belongs to; "
+            "run from a checkout or set P1_2_COMMIT_SHA"
+        ) from exc
+    commit = result.stdout.strip()
+    if not commit:
+        raise RuntimeError("git rev-parse HEAD returned nothing")
+    return commit
 
 
 def _load_jsonl(path: Path) -> list[dict[str, Any]]:
@@ -627,7 +665,7 @@ def main(argv: list[str] | None = None) -> int:
 
     provenance = {
         "stage": "P1-2-DUAL-TRACK",
-        "commit_sha": os.environ.get("P1_2_COMMIT_SHA"),
+        "commit_sha": _git_commit_sha(),
         "config_fingerprint": EXPECTED_PRODUCTION_FINGERPRINT,
         "eval_set_sha256": _sha256_file(args.eval_set),
         "gold_sha256": _sha256_file(args.gold_evidence),
