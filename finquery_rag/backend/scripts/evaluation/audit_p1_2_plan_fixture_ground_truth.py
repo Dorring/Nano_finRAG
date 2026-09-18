@@ -48,7 +48,9 @@ DEFAULT_EVAL_SET = Path(
 DEFAULT_GOLD = Path(
     "artifacts/evaluation/tv2-final-01-canonical-eval-set/gold-evidence-v1.jsonl"
 )
-DEFAULT_FIXTURES = Path("artifacts/evaluation/p1-2-plan-fixtures/plan-fixtures-v1.jsonl")
+DEFAULT_FIXTURES = Path(
+    "artifacts/evaluation/p1-2-plan-fixtures/plan-fixtures-v2.jsonl"
+)
 DEFAULT_OUT_DIR = Path("artifacts/evaluation/p1-3-ground-truth-audit")
 
 _PERIOD_RE = re.compile(r"\bFY\s?\d{4}\b", re.IGNORECASE)
