@@ -95,7 +95,9 @@ def _parse_candidate_value(
             raw,
             scale=candidate.get("scale") if apply_scale else None,
         )
-    return result.value if result.ok else None
+    # The operand as the record states it.  `ratio_value` would divide a
+    # percentage by 100 here and the calculator would then divide it again.
+    return result.points_value if result.ok else None
 
 
 def _source_text(candidate: Mapping[str, Any]) -> str:

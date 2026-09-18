@@ -91,12 +91,40 @@ def _states_a_representation(value: Any) -> bool:
     return any(text.endswith(mark) for mark in _REPRESENTATION_MARKS)
 
 
+def _parser_reading(parsed: Any) -> str:
+    """What ``parse_financial_number`` made of one value.
+
+    This script is a *differential*: it is run once on each side of a change and
+    the two outputs differenced, so it has to read the shape being proposed and
+    the shape being replaced.  The legacy branch is the replaced one -- a single
+    unnamed ``value``, which for a percentage held the ratio form and produced
+    the 100x the change exists to remove.  It is here only so the "before"
+    column can be produced at all, and it is never taken on the current code.
+    """
+
+    if not parsed.ok:
+        return f"unparsed:{parsed.error}"
+    points = getattr(parsed, "points_value", None)
+    if points is not None:
+        return f"{points}|{parsed.ratio_value}|{parsed.representation.value}"
+    legacy = getattr(parsed, "value", None)
+    return f"{legacy}|{legacy}|legacy"
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     source = parser.add_mutually_exclusive_group()
     source.add_argument("--fact-store", type=Path, default=None)
     source.add_argument("--coordinates", type=Path, default=None)
     parser.add_argument("--out", type=Path, default=None)
+    parser.add_argument(
+        "--parser",
+        action="store_true",
+        help=(
+            "audit parse_financial_number (the calculator's lexer) instead of "
+            "quantity_identity (the evidence layer's canonicaliser)"
+        ),
+    )
     args = parser.parse_args(argv)
 
     if args.coordinates is not None:
@@ -112,18 +140,30 @@ def main(argv: list[str] | None = None) -> int:
     lines: list[str] = []
     marked_records = 0
     literal_records = 0
+    parse_fn = None
+    if args.parser:
+        from src.finance.primitive_tools import parse_financial_number
+
+        parse_fn = parse_financial_number
+
     for row in rows:
-        identity = quantity_identity(
-            row.get("value"),
-            scale=row.get("scale"),
-            unit=row.get("unit"),
-            currency=row.get("currency"),
-        )
         count = int(row.get("count") or 1)
         if _states_a_representation(row.get("value")):
             marked_records += count
-        if identity.startswith("literal:"):
-            literal_records += count
+        if parse_fn is None:
+            reading = quantity_identity(
+                row.get("value"),
+                scale=row.get("scale"),
+                unit=row.get("unit"),
+                currency=row.get("currency"),
+            )
+            if reading.startswith("literal:"):
+                literal_records += count
+        else:
+            parsed = parse_fn(row.get("value"), scale=row.get("scale"))
+            reading = _parser_reading(parsed)
+            if not parsed.ok:
+                literal_records += count
         lines.append(
             "\t".join(
                 (
@@ -131,7 +171,7 @@ def main(argv: list[str] | None = None) -> int:
                     _cell(row.get("unit")),
                     _cell(row.get("currency")),
                     _cell(row.get("scale")),
-                    identity,
+                    reading,
                     str(count),
                 )
             )
@@ -146,8 +186,9 @@ def main(argv: list[str] | None = None) -> int:
 
     total = sum(int(row.get("count") or 1) for row in rows)
     print(
-        f"{origin}: {len(rows)} distinct tuples, {total} records, "
-        f"{marked_records} stating a representation, {literal_records} literal",
+        f"{origin} [{'parser' if parse_fn else 'canonical'}]: {len(rows)} distinct tuples, "
+        f"{total} records, {marked_records} stating a representation, "
+        f"{literal_records} literal/unparsed",
         file=sys.stderr,
     )
     return 0

@@ -42,8 +42,10 @@ def replay() -> dict:
                 "binding_status": "bound",
                 "strict_binding_pass": True,
                 "calculator_status": "executed" if result.ok else "failed",
-                "result_ratio": str(result.value) if result.ok else None,
-                "result_percent": str(result.value * 100) if result.ok else None,
+                "result_ratio": str(result.ratio_value) if result.ok else None,
+                "result_percent": (
+                    str(result.ratio_value * Decimal("100")) if result.ok else None
+                ),
             }
         )
     return {

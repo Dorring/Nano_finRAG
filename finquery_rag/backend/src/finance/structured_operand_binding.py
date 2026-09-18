@@ -90,8 +90,16 @@ def _currency(metadata: dict) -> str | None:
 
 
 def _parse_value(value: object, scale: str | None) -> Decimal | None:
+    """The operand as the row states it.
+
+    ``points_value`` and not ``ratio_value``: these operands feed the calculator,
+    and the benchmark gold computes ``21 / (486)`` for a part written ``21%`` --
+    the percentage as written.  Reading the ratio form here would put every
+    percent share exactly 100x out.
+    """
+
     parsed = parse_financial_number(value, scale=scale)
-    return parsed.value if parsed.ok else None
+    return parsed.points_value if parsed.ok else None
 
 
 def _facts_from_structured_row(item: EvidenceItem) -> tuple[FinancialFact, ...]:

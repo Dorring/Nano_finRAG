@@ -94,7 +94,7 @@ def _execute_scale_conversion(plan: CalculationPlan) -> CalculationResult:
             error_message=str(exc),
         )
 
-    if not tool_result.ok or tool_result.value is None:
+    if not tool_result.ok or tool_result.points_value is None:
         return CalculationResult(
             status=CalculationStatus.BLOCKED,
             operation=CalculationOperation.SCALE_CONVERSION,
@@ -109,7 +109,7 @@ def _execute_scale_conversion(plan: CalculationPlan) -> CalculationResult:
     return CalculationResult(
         status=CalculationStatus.EXECUTED,
         operation=CalculationOperation.SCALE_CONVERSION,
-        value=tool_result.value,
+        value=tool_result.points_value,
         unit=plan.target_scale,
         formula=formula,
         formula_version=plan.formula_version,
@@ -228,7 +228,12 @@ def execute_plan(plan: CalculationPlan) -> CalculationResult:
             error_message=str(exc),
         )
 
-    if not result.ok or result.value is None:
+    # The stated reading, and it is the same number the old unnamed field held
+    # for every operation whose result is not a percentage: a ratio result
+    # carries ``points_value == ratio_value``, and ``_format_value`` applies the
+    # x100 for ``unit == "ratio"`` itself.  It differs only for a percentage
+    # operand, where the stated number is the one the gold arithmetic uses.
+    if not result.ok or result.points_value is None:
         # Primitive declined (e.g. division by zero, missing scale params).
         # This is a deterministic refusal, so we BLOCK rather than FAILED
         # so the orchestrator bypasses the LLM with a deterministic refusal.
@@ -247,7 +252,7 @@ def execute_plan(plan: CalculationPlan) -> CalculationResult:
     return CalculationResult(
         status=CalculationStatus.EXECUTED,
         operation=plan.operation,
-        value=result.value,
+        value=result.points_value,
         unit=entry.unit,
         formula=entry.formula,
         formula_version=entry.formula_version,
