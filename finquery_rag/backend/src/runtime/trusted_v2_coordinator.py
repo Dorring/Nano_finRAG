@@ -27,6 +27,7 @@ from rag_v2.adaptive import (
 )
 from rag_v2.contracts.plan import Action, Intent, SupervisorPlan
 from rag_v2.supervisor import (
+    PlanSemanticAlignment,
     SemanticAlignmentStatus,
     SupervisorService,
     UnknownSemanticPolicy,
@@ -742,6 +743,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             UnknownSemanticPolicy.COMPATIBILITY
         ),
         runtime_mode: AgentRuntimeMode | str | None = None,
+        alignment_override: PlanSemanticAlignment | None = None,
     ) -> None:
         if not isinstance(supervisor, SupervisorService):
             raise TypeError("supervisor must be SupervisorService")
@@ -755,6 +757,22 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         # ``legacy`` (the default) keeps answer production outside the loop.
         # ``harness_v3`` runs calculation inside the loop as a harness phase.
         self.runtime_mode = coerce_agent_runtime_mode(runtime_mode)
+        # P1.2.  ``None`` everywhere in production -- the production builder does
+        # not pass it, and no environment variable can set it.  It exists so a
+        # benchmark can measure the chain *after* the semantic-alignment gate
+        # without pretending the gate passed: the real verdict is still computed
+        # and still recorded beside the override, so a run that used one is
+        # distinguishable from a run that did not.  A seam that hid its own use
+        # would be worse than no seam, because its results would be quotable as
+        # production behaviour.
+        if alignment_override is not None and not isinstance(
+            alignment_override, PlanSemanticAlignment
+        ):
+            raise TypeError(
+                "alignment_override must be a PlanSemanticAlignment or None, got "
+                f"{type(alignment_override).__name__}"
+            )
+        self.alignment_override = alignment_override
 
     @staticmethod
     def _slot_dicts(plan: SupervisorPlan) -> list[dict[str, Any]]:
@@ -1508,6 +1526,17 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                     "supervisor_plan_normalization",
                     copy.deepcopy(dict(normalization)),
                 )
+            # P1.2.  An overridden run says so in its own outcome metadata.  The
+            # effective verdict is recorded under ``semantic_alignment`` above
+            # and the gate's real one here, so a reader of this outcome alone
+            # can tell that the gate did not in fact allow it -- which is the
+            # difference between a measurement and a claim.
+            override_record = state.plan.get("semantic_alignment_override")
+            if isinstance(override_record, Mapping):
+                metadata_extra.setdefault(
+                    "semantic_alignment_override",
+                    copy.deepcopy(dict(override_record)),
+                )
         trace = self._trace(
             request,
             plan_id,
@@ -1656,6 +1685,21 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 else None
             ),
         )
+        # P1.2.  The gate is always computed, and it is what decides unless a
+        # benchmark explicitly installed a different verdict.  Recording the
+        # computed one beside the effective one is the whole point: a reader
+        # must be able to tell "the gate allowed this" from "we said it did".
+        alignment_override_record: dict[str, Any] | None = None
+        if self.alignment_override is not None:
+            alignment_override_record = {
+                "computed_status": semantic_alignment.status.value,
+                "computed_allowed": semantic_alignment.allowed,
+                "computed_mismatches": list(semantic_alignment.mismatches),
+                "computed_unknown_query_fields": list(
+                    semantic_alignment.unknown_query_fields
+                ),
+            }
+            semantic_alignment = self.alignment_override
         if not semantic_alignment.allowed:
             reason_code_by_status = {
                 SemanticAlignmentStatus.MISMATCH: ReasonCode.QUERY_PLAN_SEMANTIC_MISMATCH,
@@ -1703,6 +1747,11 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 "supervisor_plan": plan.to_dict(),
                 "plan_id": plan_id,
                 "semantic_alignment": semantic_alignment.to_dict(),
+                **(
+                    {"semantic_alignment_override": alignment_override_record}
+                    if alignment_override_record is not None
+                    else {}
+                ),
                 **(
                     {"supervisor_plan_normalization": plan_normalization}
                     if plan_normalization is not None

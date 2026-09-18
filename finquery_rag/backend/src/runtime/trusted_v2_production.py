@@ -991,6 +991,7 @@ def build_trusted_v2_runtime_for_request(
     request: FinancialQueryRequest,
     *,
     resources: TrustedV2RuntimeResources | None = None,
+    alignment_override: Any | None = None,
 ) -> TrustedFinancialRuntimeV2:
     """Build one real ``TrustedFinancialRuntimeV2`` for a financial request.
 
@@ -1055,6 +1056,13 @@ def build_trusted_v2_runtime_for_request(
             # coordinator takes an explicit mode so that constructing one does
             # not depend on ambient process state.
             runtime_mode=agent_runtime_mode,
+            # P1.2's seam.  ``None`` on every production call path: this
+            # parameter has no environment variable, no default other than
+            # ``None``, and no caller in ``src`` that passes it.  A benchmark
+            # measuring the chain past the alignment gate passes one here
+            # rather than mutating a built coordinator, so a run that used one
+            # is distinguishable from a run that did not.
+            alignment_override=alignment_override,
         )
     except TrustedV2ProductionConfigurationError:
         raise

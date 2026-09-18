@@ -38,11 +38,18 @@ def build_trusted_v2_runtime(
         UnknownSemanticPolicy.COMPATIBILITY
     ),
     runtime_mode: AgentRuntimeMode | str | None = None,
+    alignment_override: Any | None = None,
 ) -> TrustedFinancialRuntimeV2:
     """Build the complete V2 runtime with explicit dependencies.
 
     Missing ports fail fast.  There is deliberately no V1 fallback and no
     production registration in this function.
+
+    ``alignment_override`` is P1.2's seam and is ``None`` everywhere in
+    production -- no environment variable reaches it and this function's own
+    default is the production value.  It is threaded through here rather than
+    set on the coordinator afterwards because a coordinator that had been
+    configured by mutation would be indistinguishable from one that had not.
     """
 
     if not isinstance(supervisor, SupervisorService):
@@ -77,6 +84,7 @@ def build_trusted_v2_runtime(
         allow_test_release=False,
         unknown_semantic_policy=unknown_semantic_policy,
         runtime_mode=coerce_agent_runtime_mode(runtime_mode),
+        alignment_override=alignment_override,
     )
     return TrustedFinancialRuntimeV2(coordinator)
 
