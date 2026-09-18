@@ -45,7 +45,7 @@ _EVALUATION_DIR = Path(__file__).resolve().parent
 if str(_EVALUATION_DIR) not in sys.path:
     sys.path.insert(0, str(_EVALUATION_DIR))
 
-DEFAULT_FIXTURES = _BACKEND_DIR / "benchmarks/tv2_canonical_v1/plan-fixtures-v2.jsonl"
+DEFAULT_FIXTURES = _BACKEND_DIR / "benchmarks/tv2_canonical_v1/plan-fixtures-v3.jsonl"
 DEFAULT_OUT_DIR = _BACKEND_DIR / "artifacts/evaluation/p1-2-dual-track"
 EXPECTED_PRODUCTION_FINGERPRINT = (
     "25e7c9b33792637ba61fefc53b80d10745895696ebe8910b3ff2c1e21ee534fc"

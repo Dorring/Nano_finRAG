@@ -30,12 +30,7 @@ FIXTURE_DIR = (
     Path(__file__).resolve().parents[2] / "benchmarks/tv2_canonical_v1"
 )
 FIXTURE_V1 = FIXTURE_DIR / "plan-fixtures-v1.jsonl"
-FIXTURE_V2 = FIXTURE_DIR / "plan-fixtures-v2.jsonl"
-
-#: The operations whose operands are one gold fact each.  Their periods come
-#: from those facts; a collision here means the fixture asks for one quantity
-#: twice.
-MULTI_PERIOD_OPERATIONS = {"sum", "average"}
+FIXTURE_V3 = FIXTURE_DIR / "plan-fixtures-v3.jsonl"
 
 _ANSWER_MATERIAL = ("fact_ids", "expected_value", "operands", "values", "expected_higher")
 
@@ -48,19 +43,29 @@ def _read_jsonl(path: Path) -> list[dict]:
     ]
 
 
-def _colliding_multi_period_cases(rows: list[dict]) -> list[str]:
-    """Cases whose multi-period slots cannot be told apart."""
+def _colliding_cases(rows: list[dict]) -> list[str]:
+    """Cases whose slots cannot be told apart on the whole coordinate.
+
+    The signature includes ``entity``: the contract lets a slot say whose fact
+    it needs, so two slots naming two companies are two requirements however
+    identical the rest of them is.  Reading it without entity would report the
+    repaired comparison fixtures as still colliding.
+    """
 
     colliding: list[str] = []
     for row in rows:
-        plan = row["plan"]
-        if str(plan.get("operation") or "") not in MULTI_PERIOD_OPERATIONS:
-            continue
+        slots = row["plan"]["required_slots"]
         signature = {
-            (slot["role"], slot["metric"], slot["period"])
-            for slot in plan["required_slots"]
+            (
+                slot["role"],
+                slot["metric"],
+                slot["period"],
+                slot.get("unit"),
+                slot.get("entity"),
+            )
+            for slot in slots
         }
-        if len(signature) != len(plan["required_slots"]):
+        if len(signature) != len(slots):
             colliding.append(row["id"])
     return colliding
 
@@ -192,30 +197,65 @@ def test_reading_no_ids_does_not_open_the_store(tmp_path: Path) -> None:
 # --- the frozen fixtures -----------------------------------------------------------------
 
 
-@pytest.mark.skipif(not FIXTURE_V2.exists(), reason="the v2 fixture is not present")
+@pytest.mark.skipif(not FIXTURE_V3.exists(), reason="the v3 fixture is not present")
 def test_the_frozen_fixture_has_no_colliding_slots() -> None:
-    assert _colliding_multi_period_cases(_read_jsonl(FIXTURE_V2)) == []
+    assert _colliding_cases(_read_jsonl(FIXTURE_V3)) == []
 
 
 @pytest.mark.skipif(not FIXTURE_V1.exists(), reason="the v1 fixture is not present")
-def test_the_check_finds_the_defect_it_was_written_for() -> None:
+def test_the_check_finds_the_defects_it_was_written_for() -> None:
     """The archived fixture must still fail this, or the check proves nothing.
 
     v1 is kept rather than corrected so the two can be compared; a detector that
-    passed on both would be measuring nothing.
+    passed on both would be measuring nothing.  Both defect classes are named
+    here, so a check that caught only one of them would fail rather than pass.
     """
 
-    colliding = _colliding_multi_period_cases(_read_jsonl(FIXTURE_V1))
+    colliding = _colliding_cases(_read_jsonl(FIXTURE_V1))
 
-    assert len(colliding) == 10
-    assert "tv2f01-s2-sum-003" in colliding
+    assert len(colliding) == 30
+    assert "tv2f01-s2-sum-003" in colliding  # the duplicated operand period
+    assert "tv2f01-s3-compare-002" in colliding  # the indistinguishable entities
 
 
-@pytest.mark.skipif(not FIXTURE_V2.exists(), reason="the v2 fixture is not present")
+@pytest.mark.skipif(not FIXTURE_V3.exists(), reason="the v3 fixture is not present")
+def test_a_comparison_is_repaired_by_entity_and_not_by_duplication() -> None:
+    rows = {row["id"]: row for row in _read_jsonl(FIXTURE_V3)}
+
+    slots = rows["tv2f01-s3-compare-002"]["plan"]["required_slots"]
+
+    assert [slot.get("entity") for slot in slots] == ["Apple", "Visa"]
+    assert len({slot["metric"] for slot in slots}) == 1
+
+
+@pytest.mark.skipif(not FIXTURE_V3.exists(), reason="the v3 fixture is not present")
+def test_a_ranking_plan_asks_for_every_company_it_ranks() -> None:
+    """The arity is the gold's, not the literal two it used to be."""
+
+    rows = {row["id"]: row for row in _read_jsonl(FIXTURE_V3)}
+
+    slots = rows["tv2f01-s3-rank-003"]["plan"]["required_slots"]
+
+    assert len(slots) == 4
+    assert len({slot.get("entity") for slot in slots}) == 4
+
+
+@pytest.mark.skipif(not FIXTURE_V3.exists(), reason="the v3 fixture is not present")
+def test_the_fixture_carries_a_mention_and_never_an_identity() -> None:
+    """`entity_id` is the Harness's to derive.  A fixture writing one would be
+    authoring an identity rather than serialising a fact -- the mistake that
+    produced the operand periods this builder was fixed for once already."""
+
+    rendered = FIXTURE_V3.read_text(encoding="utf-8")
+
+    assert "entity_id" not in rendered
+
+
+@pytest.mark.skipif(not FIXTURE_V3.exists(), reason="the v3 fixture is not present")
 def test_the_frozen_fixture_still_carries_no_answer_material() -> None:
     """Checked against the frozen bytes, so it holds without the fact store."""
 
-    rendered = FIXTURE_V2.read_text(encoding="utf-8")
+    rendered = FIXTURE_V3.read_text(encoding="utf-8")
 
     for key in _ANSWER_MATERIAL:
         assert key not in rendered, f"{key} leaked into a fixture"

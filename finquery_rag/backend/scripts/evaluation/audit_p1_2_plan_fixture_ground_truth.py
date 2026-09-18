@@ -15,20 +15,26 @@ review tier rather than guessing.
 Three defect classes are separable, and they were found by reading the builder,
 not by pattern-matching the output:
 
-``LOST_OPERAND_PERIOD``
+``LOST_PERIOD_OPERAND``
     The operation's arity is over periods (``sum``, ``average``), the question
     names more periods than the slots carry, and the missing ones were never in
-    the gold.  ``build_p1_2_plan_fixtures.py:166``.
+    the gold.  Fixed in fixture v2: the periods now come from the gold operand
+    facts.  ``build_p1_2_plan_fixtures.py``.
 
-``CANNOT_DISCRIMINATE_ENTITY``
-    Two slots with identical ``(role, metric, period)`` in a question that names
-    two entities.  This one is structural and not fixable in the builder:
-    ``RequiredSlot`` (``rag_v2/contracts/plan.py:65``) has no entity field, so
-    the plan contract cannot express "Apple's revenue" and "Visa's revenue" as
-    two different requirements at all.
+``SLOT_IDENTITY_COLLISION``
+    Two slots identical on the whole coordinate.  This one was structural and
+    could not be fixed in the builder: ``RequiredSlot`` had no entity field, so
+    the plan contract could not express "Apple's revenue" and "Visa's revenue"
+    as two different requirements at all -- and because the builder also gave
+    every multi-evidence plan a literal two slots, a four-company ranking asked
+    for two.  Fixed in fixture v3, on top of the contract change that added the
+    coordinate.
 
 ``GARBLED_METRIC``
     The metric came from the question rather than the gold, and is not a metric.
+
+``UNDERSPECIFIED_SLOT_COUNT``
+    The plan asks for fewer facts than the gold names.
 
 Output is written to ``--out-dir``; the script prints only the summary.
 """
@@ -49,7 +55,7 @@ DEFAULT_GOLD = Path(
     "benchmarks/tv2_canonical_v1/gold-evidence-v1.jsonl"
 )
 DEFAULT_FIXTURES = Path(
-    "benchmarks/tv2_canonical_v1/plan-fixtures-v2.jsonl"
+    "benchmarks/tv2_canonical_v1/plan-fixtures-v3.jsonl"
 )
 DEFAULT_OUT_DIR = Path("artifacts/evaluation/p1-3-ground-truth-audit")
 
@@ -74,11 +80,17 @@ def _load_jsonl(path: Path) -> list[dict[str, Any]]:
     ]
 
 
-def _slot_signature(slot: Mapping[str, Any]) -> tuple[str, str, str, str]:
+def _slot_signature(slot: Mapping[str, Any]) -> tuple[str, str, str, str, str]:
     """What has to differ for two slots to be two requirements.
 
     ``slot_id`` is excluded on purpose: it is an index, and two slots that
     differ only by index are the same requirement written twice.
+
+    ``entity`` is included because the contract added it to the coordinate -- a
+    plan may now say *whose* fact it needs, and two slots naming two companies
+    are two requirements however identical the rest of them is.  Reading the
+    signature without it would report the repaired comparison fixtures as still
+    colliding, which is the audit disagreeing with the contract it audits.
     """
 
     return (
@@ -86,6 +98,7 @@ def _slot_signature(slot: Mapping[str, Any]) -> tuple[str, str, str, str]:
         str(slot.get("metric", "")),
         str(slot.get("period", "")),
         str(slot.get("unit") or ""),
+        str(slot.get("entity") or ""),
     )
 
 
