@@ -306,6 +306,49 @@ def run_replay(
     return rows, summary
 
 
+def _binder_observation(runtime: Any) -> dict[str, Any]:
+    """What the binder decided, in the binder's own vocabulary.
+
+    ``EVIDENCE_CONFLICT`` is one reason code covering three unrelated
+    mechanisms: a slot with admissible-but-disagreeing candidates and no safe
+    consensus, a binding the provider returned as ``AMBIGUOUS``, and a binding
+    the provider returned as ``INVALID`` -- which is a schema failure, not a
+    conflict at all.  Counting them together makes the number unusable for
+    saying *why* binding failed, and a repair aimed at "conflicts" would be
+    aimed at all three at once.
+
+    The capability already records which one fired, per round, and exposes it
+    through ``trace_snapshot()``; the benchmark simply was not reading it.
+    Capturing it here is observation only -- the snapshot is taken after the
+    run and nothing in the pipeline reads it back.
+    """
+
+    if runtime is None:
+        return {}
+    try:
+        capability = runtime.coordinator.capabilities.evidence_evaluator
+        snapshot = capability.trace_snapshot()
+    except Exception:  # pragma: no cover - defensive, shape may change
+        return {}
+
+    rounds = list(snapshot.get("binder_rounds") or [])
+    final = rounds[-1] if rounds else {}
+    return {
+        # One entry per binder round; the last is the one the outcome reflects.
+        "binder_round_statuses": [str(item.get("status")) for item in rounds],
+        "binder_final_status": str(final.get("status")) if final else None,
+        "binder_final_bound_slot_ids": list(final.get("bound_slot_ids") or []),
+        "binder_final_missing_slot_ids": list(final.get("missing_slot_ids") or []),
+        # On the ``_unresolved_conflict_slots`` path this carries the slots the
+        # consensus test refused; on the AMBIGUOUS path, the provider's own.
+        "binder_final_conflict_slot_ids": list(final.get("ambiguous_slot_ids") or []),
+        "binder_bound_slots": sorted(
+            str(key) for key in (snapshot.get("bound_slot_bindings") or {})
+        ),
+        "binder_round_count": len(rounds),
+    }
+
+
 def _replay_row(
     *,
     question: dict[str, Any],
@@ -370,6 +413,7 @@ def _replay_row(
             "provider_failure": bool(error),
             "tokens": tokens,
             "pack_handle_count": pack_handle_count,
+            **_binder_observation(runtime),
         }
 
     terminal_state = (outcome.runtime_metadata or {}).get("terminal_state")
@@ -406,6 +450,7 @@ def _replay_row(
         "validator_status": outcome.validator_status,
         "tokens": {key: value for key, value in tokens.items() if value is not None},
         "pack_handle_count": pack_handle_count,
+        **_binder_observation(runtime),
     }
 
 
