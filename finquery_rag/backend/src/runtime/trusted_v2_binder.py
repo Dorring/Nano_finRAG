@@ -10,7 +10,7 @@ from rag_v2.adaptive import (
     ReasonCode,
 )
 from rag_v2.contracts.evidence import BindingStatus, EvidenceBinding
-from rag_v2.contracts.financial_semantics import quantity_identity
+from rag_v2.contracts.financial_semantics import quantity_identity, text_identity
 from rag_v2.contracts.plan import Intent, SupervisorPlan
 from rag_v2.evidence.binder_service import (
     BinderRequest,
@@ -283,6 +283,71 @@ class SemanticEvidenceEvaluationCapability:
             currency=fact.get("currency"),
         )
 
+    @staticmethod
+    def _frame_allows_entity(fact_entity_id: str | None, frame: Any) -> bool:
+        """Whether the query's own mentions permit a fact about this company.
+
+        A query that names no company constrains no company, which is the
+        behaviour this had before slots could carry an entity at all.
+        """
+
+        entity_ids = set(getattr(frame, "entity_ids", ()) or ())
+        if not entity_ids:
+            return True
+        return fact_entity_id is not None and fact_entity_id in entity_ids
+
+    @classmethod
+    def _entity_matches_slot(
+        cls,
+        slot: Any,
+        fact: Mapping[str, Any],
+        frame: Any,
+    ) -> bool:
+        """Whether this fact is about the company *this slot* asked for.
+
+        Entity used to be matched against the query's mentions alone, once for
+        the whole plan (`frame.entity_ids`).  In a two-company question that let
+        either company's fact satisfy either slot, which is precisely the
+        question a comparison asks -- so a comparison could be answered by
+        binding the same company twice and never noticed.
+
+        Three cases, in the order the contract defines them, and no fourth:
+
+        * **the slot carries a canonical id.**  The fact must canonicalise to
+          the same id.  A fact that cannot be canonicalised at all is *not* a
+          match: the slot declared an identity, and degrading to a text
+          comparison would quietly answer a question the plan did not ask.  The
+          query's own mentions are still consulted here, because both sides are
+          in the vocabulary and a plan should not be able to introduce a company
+          the question never mentioned.
+        * **the slot carries only a mention.**  Strict normalised text equality
+          and nothing else.  ``Pfizer`` matches ``Pfizer``; it does not match
+          ``Pfizer Inc.``.  Inferring that is ontology work, and doing it here
+          would make the answer depend on which spellings happened to be
+          written down.  The query's mentions are deliberately *not* consulted:
+          they come from a twelve-company vocabulary, and gating on them would
+          reject exactly the companies the mention exists to support.
+        * **the slot carries neither.**  The query-level test is all there was
+          before, and it stays in charge.
+        """
+
+        slot_entity = getattr(slot, "entity", None)
+        slot_entity_id = getattr(slot, "entity_id", None)
+        fact_entity = fact.get("entity") or fact.get("company") or fact.get("ticker")
+
+        if not slot_entity and not slot_entity_id:
+            return cls._frame_allows_entity(canonical_entity_id(fact_entity), frame)
+
+        if slot_entity_id:
+            fact_entity_id = canonical_entity_id(fact_entity)
+            if fact_entity_id != slot_entity_id:
+                return False
+            return cls._frame_allows_entity(fact_entity_id, frame)
+
+        if fact_entity is None:
+            return False
+        return text_identity(slot_entity) == text_identity(fact_entity)
+
     @classmethod
     def _fact_matches_slot(
         cls,
@@ -312,12 +377,8 @@ class SemanticEvidenceEvaluationCapability:
             return False
         if fact_metric != expected_metric or fact_period != expected_period:
             return False
-        if frame.entity_ids:
-            fact_entity = canonical_entity_id(
-                fact.get("entity") or fact.get("company") or fact.get("ticker")
-            )
-            if fact_entity is None or fact_entity not in set(frame.entity_ids):
-                return False
+        if not cls._entity_matches_slot(slot, fact, frame):
+            return False
         return query_allows_evidence_scope(
             query,
             frame,
