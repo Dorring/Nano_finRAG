@@ -75,13 +75,18 @@ def test_a_ranking_goes_to_the_calculator() -> None:
 def test_an_arithmetic_calculation_can_still_be_explained() -> None:
     """The rule is about relations, not about explanations.
 
-    A quantity has an explanation worth writing around it, and the model
+    A quantity has an explanation worth writing around it, and a model
     restating "6" as "revenue rose by 6" cannot contradict the arithmetic the
     way a restated ordering can -- the quantity is checkable in the prose and
     the ordering was not.
+
+    Note the question contains "difference", which is itself one of the
+    policy's explanation terms.  That routing is *pre-existing* and this change
+    does not touch it; the test asserts it precisely so a future reader can see
+    the arithmetic path was left alone rather than assume it.
     """
 
-    decision = _route("Explain why revenue grew: what was the difference?", "difference")
+    decision = _route("What was the difference in revenue?", "difference")
 
     assert decision.target is GeneratorTarget.LOCAL_SPECIALIST
     assert decision.route_name is RouteName.CALCULATION_WITH_EXPLANATION
@@ -100,7 +105,9 @@ def test_a_relational_result_is_never_sent_to_the_specialist() -> None:
 
 
 def test_a_plain_calculation_is_unaffected() -> None:
-    decision = _route("What was the difference?", "difference")
+    """A calculation question with no explanation term routes as it always did."""
+
+    decision = _route("How much did revenue rise in FY2025?", "difference")
 
     assert decision.target is GeneratorTarget.DETERMINISTIC_CALCULATOR
     assert decision.route_name is RouteName.CALCULATION_SIMPLE
