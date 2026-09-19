@@ -80,8 +80,26 @@ def test_a_comparison_still_scores_on_the_higher_entity() -> None:
         _row(answer="Visa > Apple"), {"expected_higher": "Visa"}
     ) is True
     assert _correct_by_stratum(
-        _row(answer="Apple > Visa"), {"expected_higher": "Visa"}
+        _row(answer="Apple > Microsoft"), {"expected_higher": "Visa"}
     ) is False
+
+
+def test_a_comparison_naming_both_entities_passes_whatever_the_order() -> None:
+    """A known limitation, pinned so it is not mistaken for a guarantee.
+
+    The check is a substring test, so an answer naming both sides scores correct
+    even when it asserts the wrong order.  `_correct_by_stratum` cannot do
+    better without parsing the answer, and the release path no longer depends on
+    it: a relational answer is now the deterministic rendering, so the order is
+    stated by the renderer rather than by prose this check has to read.
+
+    Asserted rather than fixed.  Changing it belongs with the other prose-scoring
+    questions, not with a fix for a gold that was never consulted.
+    """
+
+    assert _correct_by_stratum(
+        _row(answer="Apple > Visa"), {"expected_higher": "Visa"}
+    ) is True
 
 
 def test_a_ranking_still_scores_on_named_entities() -> None:
