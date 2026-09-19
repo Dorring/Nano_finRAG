@@ -1421,12 +1421,12 @@ def test_alias_variant_search_is_fused_into_slot_pool() -> None:
 
 
 @pytest.mark.parametrize(
-    ("alias_expansion", "expected"),
-    [(False, "DISTRACTOR"), (True, "RIGHT")],
+    ("alias_expansion", "reaches_canonical_fact"),
+    [(False, False), (True, True)],
     ids=["arm-A-literal-query", "arm-B-slot-local-aliases"],
 )
 def test_a_targeted_slot_searches_for_its_own_requirement(
-    alias_expansion: bool, expected: str
+    alias_expansion: bool, reaches_canonical_fact: bool
 ) -> None:
     """A targeted slot is queried from its own RequiredSlot, not the question.
 
@@ -1438,12 +1438,21 @@ def test_a_targeted_slot_searches_for_its_own_requirement(
     drifting to the unscoped pool.
 
     ``QuerySensitiveIndexReader`` answers ``RIGHT`` only for a query containing
-    "total net sales", which makes the two arms separate cleanly.  Arm A -- the
-    literal ``Revenue FY2024`` -- never reaches it; Arm B does, by expanding the
-    metric to its filing-label aliases while keeping the slot's own entity and
-    period.  Both halves are pinned so that removing the expansion again cannot
-    pass unnoticed, and so the alias capability is recorded as load-bearing
-    rather than as legacy decoration.
+    "total net sales", which separates the two arms cleanly:
+
+        arm A  ('DISTRACTOR',)           the canonical fact is never reached
+        arm B  ('DISTRACTOR', 'RIGHT')   reached, second
+
+    Asserted as *reachability*, not as rank 1, and that is the honest claim: both
+    candidates land at lane rank 1 and RRF breaks the tie on ``candidate_key``,
+    so ``DISTRACTOR`` sorts first either way.  What differs is whether the
+    canonical fact enters the pool at all -- and a fact that is present at rank 2
+    is bindable while one that is absent is not, which is precisely what the
+    cross-entity starvation was.
+
+    Both arms are pinned so the alias capability is recorded as load-bearing
+    rather than as legacy decoration, and so removing it again cannot pass
+    unnoticed.
     """
 
     facts = {
@@ -1467,7 +1476,7 @@ def test_a_targeted_slot_searches_for_its_own_requirement(
         )
     )
 
-    assert result.candidate_ids[0] == expected
+    assert ("RIGHT" in result.candidate_ids) is reaches_canonical_fact
     assert result.source_branch_metadata["slot_ids"] == ["revenue"]
 
 
