@@ -17,7 +17,12 @@ from rag_v2.adaptive import AdaptiveRAGStateV1
 from rag_v2.generation.contracts import AnswerEnvelopeV1, ValidationSeverity
 from rag_v2.generation.validator import RuntimeGenerationValidatorV1
 from rag_v2.runtime.semantic_claims import SemanticClaimDecision, SemanticClaimVerifierV1
-from src.domain.calculation import CalculationResult, CalculationStatus
+from src.domain.calculation import (
+    RELATIONAL_OPERATIONS,
+    CalculationOperation,
+    CalculationResult,
+    CalculationStatus,
+)
 from src.finance.calculation_renderer import render_calculation_result
 
 from .trusted_v2_generation import CandidateExecutionResult, DeterministicFactRenderer
@@ -310,6 +315,52 @@ class TrustedReleaseValidationCapability:
         self._release_record: dict[str, Any] = {}
 
     @staticmethod
+    def _relational_result_gap(state: AdaptiveRAGStateV1) -> str | None:
+        """The reason a relational plan must not release, or ``None`` if it may.
+
+        A comparison or a ranking answered in prose is unfalsifiable here: there
+        is nothing structured to compare the answer against.  That is exactly
+        how `compare-002` released "General and administrative for FY2025 at
+        8,077" for a question whose answer is Visa -- both operands bound, no
+        comparison performed, and a validator with nothing to check.
+
+        An invariant, not a stopgap.  A task requiring a relational operation
+        and holding no admissible structured result cannot release, whether the
+        result is missing because the operands did not bind, because the
+        calculator was blocked, or because the operands could not be ordered.
+        Each of those is a reason to refuse, and none is a reason to let prose
+        answer instead.
+
+        Returns ``None`` for every plan that does not require a relational
+        operation, so no other stratum's behaviour depends on this.
+        """
+
+        plan_blob = (
+            state.plan.get("supervisor_plan")
+            if isinstance(getattr(state, "plan", None), Mapping)
+            else None
+        )
+        if not isinstance(plan_blob, Mapping):
+            return None
+        raw_operation = plan_blob.get("operation")
+        if raw_operation is None:
+            return None
+        try:
+            operation = CalculationOperation(str(raw_operation))
+        except ValueError:
+            return None
+        if operation not in RELATIONAL_OPERATIONS:
+            return None
+
+        calculation = getattr(state, "_calculation_result_obj", None)
+        if (
+            isinstance(calculation, CalculationResult)
+            and calculation.relational_result_is_well_formed
+        ):
+            return None
+        return "RELATIONAL_RESULT_REQUIRED"
+
+    @staticmethod
     def _candidate(value: Any, state: AdaptiveRAGStateV1) -> CandidateExecutionResult:
         if isinstance(value, CandidateExecutionResult):
             return value
@@ -424,6 +475,17 @@ class TrustedReleaseValidationCapability:
                 candidate=candidate_obj,
                 validation_id=validation_id,
                 reason_codes=["CALCULATION_PROVENANCE_MISMATCH"],
+                started=started,
+            )
+            self.last_result = result
+            return result
+
+        relational_gap = self._relational_result_gap(state)
+        if relational_gap is not None:
+            result = self._failure(
+                candidate=candidate_obj,
+                validation_id=validation_id,
+                reason_codes=[relational_gap],
                 started=started,
             )
             self.last_result = result
