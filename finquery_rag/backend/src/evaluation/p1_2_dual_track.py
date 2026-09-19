@@ -159,22 +159,35 @@ def _correct_by_stratum(row: Mapping[str, Any], gold: Mapping[str, Any]) -> bool
         # so it is handled by the release verdict alone.
         return False
 
-    if stratum == "cross_entity_comparison":
-        expected_higher = gold.get("expected_higher")
-        if expected_higher:
-            return str(expected_higher).lower() in answer.lower()
-        ranking = gold.get("expected_ranking") or ()
-        return bool(ranking) and all(
-            str(entity).lower() in answer.lower() for entity in ranking
-        )
-
     structured = [
         item.get("value", item.get("result"))
         for item in (row.get("calculations") or [])
         if isinstance(item, Mapping)
     ]
-    # A calculation's gold is a ratio; a lookup's gold is what the filing
-    # printed.  See `_decimal`.
+
+    if stratum == "cross_entity_comparison":
+        expected_higher = gold.get("expected_higher")
+        if expected_higher:
+            return str(expected_higher).lower() in answer.lower()
+        ranking = gold.get("expected_ranking") or ()
+        if ranking:
+            return all(str(entity).lower() in answer.lower() for entity in ranking)
+        # A cross-entity *difference* answers with a number, neither a name nor
+        # an order.  This branch used to end at `bool(ranking) and ...`, so a
+        # gold carrying `expected_value` and nothing else -- which is all five
+        # `cross_entity_difference` cases -- returned False however right the
+        # answer was, and a correct deterministic release was scored as a false
+        # release.  An evaluator that cannot see the gold is not measuring the
+        # system; this is the same defect as the circular release verdict
+        # removed from the canonical scorer.
+        return numeric_match(
+            answer,
+            gold.get("expected_value"),
+            tolerance=gold.get("tolerance"),
+            structured=structured,
+            percent_is_ratio=False,
+        )
+
     is_calculation = stratum == "arithmetic_calculation"
     return numeric_match(
         answer,
