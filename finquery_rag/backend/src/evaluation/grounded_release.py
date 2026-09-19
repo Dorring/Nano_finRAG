@@ -158,18 +158,27 @@ def operand_grounded_correct(
     if not authorised:
         return None
 
-    # `percent_is_ratio` follows the same rule the correctness scorer uses: an
-    # arithmetic gold is a computed ratio, a factual one is the display string.
-    percent_is_ratio = str(row.get("stratum")) == "arithmetic_calculation"
+    # Operands are compared in **display** units, which is not the convention
+    # `_correct_by_stratum` uses for the answer -- and the difference is real.
+    #
+    # A gold record carries two conventions at once: `growth-001` states
+    # `{"current": "325", "previous": "248"}` as its operands while its
+    # `expected_value` is the computed ratio `0.3105`.  So a `%` in `operands`
+    # or `values` is the printed unit, exactly as in a factual gold, while a
+    # `%` in `expected_value` is a ratio.
+    #
+    # Applying the ratio convention to operands reported `pctshare-003` -- whose
+    # operands `21` and `-486` match its gold `21 %` and `(486)` exactly -- as
+    # an ungrounded release.  A grounding check that fails correct releases is
+    # worse than none, because it is believed.
     tolerance = gold_row.get("tolerance")
-
     remaining = list(authorised)
     for operand in operands:
-        stated = _decimal(operand.get("value"), percent_is_ratio=percent_is_ratio)
+        stated = _decimal(operand.get("value"), percent_is_ratio=False)
         if stated is None:
             return False
         for index, candidate in enumerate(remaining):
-            expected = _decimal(candidate, percent_is_ratio=percent_is_ratio)
+            expected = _decimal(candidate, percent_is_ratio=False)
             if expected is None:
                 continue
             limit = abs(_decimal(tolerance) or 0) if tolerance is not None else 0

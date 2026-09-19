@@ -132,6 +132,43 @@ def test_grounding_honours_the_gold_tolerance() -> None:
     assert operand_grounded_correct(row, gold) is True
 
 
+def test_operands_are_compared_in_display_units_not_as_ratios() -> None:
+    """A gold record carries two conventions at once, and operands use the other.
+
+    `pctshare-003`'s operands are `21` and `-486` and its gold states `21 %` and
+    `(486)` -- they agree exactly.  Reading the operands with the ratio
+    convention, which is correct for `expected_value` and wrong here, turns the
+    gold's `21 %` into `0.21` and reports a correct release as ungrounded.
+
+    A grounding check that fails correct releases is worse than no check,
+    because it is believed.
+    """
+
+    row = _row(
+        stratum="arithmetic_calculation",
+        calculations=[{"operands": [{"value": "21"}, {"value": "-486"}]}],
+    )
+    gold = _gold(values=None, operands={"part": "21 %", "total": "(486)"})
+    assert operand_grounded_correct(row, gold) is True
+
+
+def test_the_display_unit_convention_cannot_reach_expected_value() -> None:
+    """`expected_value` is a computed ratio; grounding must only read operands.
+
+    The two conventions coexist in one gold record, so the boundary between them
+    is worth pinning: `gold_operand_values` returns `values`/`operands` and never
+    `expected_value`, which is what keeps the display-unit fix from leaking into
+    the correctness scorer's ratio handling.
+    """
+
+    gold = _gold(
+        values=None,
+        expected_value=0.3105,
+        operands={"current": "325", "previous": "248"},
+    )
+    assert gold_operand_values(gold) == ("325", "248")
+
+
 def test_operands_are_read_from_the_calculations_not_the_answer() -> None:
     """A prose answer that happens to name the gold value grounds nothing."""
 
