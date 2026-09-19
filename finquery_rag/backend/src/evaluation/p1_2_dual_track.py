@@ -143,6 +143,30 @@ def _released(row: Mapping[str, Any]) -> bool:
     return row.get("release_status") == "RELEASED"
 
 
+def _predicted_ordering(answer: str) -> tuple[tuple[str, ...], ...] | None:
+    """The ordering a rendered relational answer states, or ``None``.
+
+    The relational renderer's format is frozen -- ``A > B > C``, with ``=``
+    between equal operands -- so reading it is not prose interpretation.  It is
+    the same string the release path produced, not a model's paraphrase of it.
+
+    Anything without that shape returns ``None`` rather than a best guess.  A
+    scorer that guesses is worse than one that refuses: it would report a number
+    that no reader can check.
+    """
+
+    text = (answer or "").strip()
+    if not text or ">" not in text:
+        return None
+    groups: list[tuple[str, ...]] = []
+    for chunk in text.split(">"):
+        parts = tuple(part.strip() for part in chunk.split("=") if part.strip())
+        if not parts:
+            return None
+        groups.append(parts)
+    return tuple(groups)
+
+
 def _correct_by_stratum(row: Mapping[str, Any], gold: Mapping[str, Any]) -> bool:
     """Whether the answer the model produced states the gold fact.
 
@@ -169,9 +193,29 @@ def _correct_by_stratum(row: Mapping[str, Any], gold: Mapping[str, Any]) -> bool
         expected_higher = gold.get("expected_higher")
         if expected_higher:
             return str(expected_higher).lower() in answer.lower()
-        ranking = gold.get("expected_ranking") or ()
+        ranking = tuple(str(entity) for entity in (gold.get("expected_ranking") or ()))
         if ranking:
-            return all(str(entity).lower() in answer.lower() for entity in ranking)
+            # Order, not membership.  This was
+            # ``all(entity in answer for entity in ranking)``, which scored
+            # "Apple > Microsoft > Coca-Cola" correct against a gold of
+            # [Apple, Coca-Cola, Microsoft] -- three names present, the ordering
+            # entirely wrong, and the release counted correct.  That is a
+            # false-release mask in the one stratum whose whole point is order.
+            predicted = _predicted_ordering(answer)
+            if predicted is None:
+                return False
+            # `expected_ranking` cannot express a tie, so a prediction that
+            # states one is scored incorrect rather than guessed at.  Teaching
+            # the gold about ties is a benchmark change, not a scorer change,
+            # and is not made here.
+            if any(len(group) != 1 for group in predicted):
+                return False
+            got = tuple(group[0] for group in predicted)
+            if len(got) != len(ranking):
+                return False
+            return [name.casefold() for name in got] == [
+                name.casefold() for name in ranking
+            ]
         # A cross-entity *difference* answers with a number, neither a name nor
         # an order.  This branch used to end at `bool(ranking) and ...`, so a
         # gold carrying `expected_value` and nothing else -- which is all five

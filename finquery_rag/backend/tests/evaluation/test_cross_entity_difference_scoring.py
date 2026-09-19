@@ -30,7 +30,10 @@ _BACKEND = Path(__file__).resolve().parents[2]
 if str(_BACKEND) not in sys.path:
     sys.path.insert(0, str(_BACKEND))
 
-from src.evaluation.p1_2_dual_track import _correct_by_stratum  # noqa: E402
+from src.evaluation.p1_2_dual_track import (  # noqa: E402
+    _correct_by_stratum,
+    _predicted_ordering,
+)
 
 
 def _row(**overrides):
@@ -109,3 +112,81 @@ def test_a_ranking_still_scores_on_named_entities() -> None:
         _row(answer="Microsoft > Tesla > Apple"), gold
     ) is True
     assert _correct_by_stratum(_row(answer="Microsoft > Apple"), gold) is False
+
+
+# --- a ranking is an order, and ordering was never checked ---------------------
+
+
+def test_a_ranking_in_the_wrong_order_is_not_correct() -> None:
+    """`rank-005`: three names present, the order entirely wrong.
+
+    The check used to be membership, so this scored correct and a real wrong
+    release was counted as a correct one -- in the one stratum whose whole point
+    is order.
+    """
+
+    gold = {"expected_ranking": ["Apple", "The Coca-Cola Company", "Microsoft"]}
+
+    assert _correct_by_stratum(
+        _row(answer="Apple > Microsoft > The Coca-Cola Company"), gold
+    ) is False
+
+
+def test_a_ranking_in_the_right_order_is_correct() -> None:
+    gold = {"expected_ranking": ["Apple", "The Coca-Cola Company", "Microsoft"]}
+
+    assert _correct_by_stratum(
+        _row(answer="Apple > The Coca-Cola Company > Microsoft"), gold
+    ) is True
+
+
+@pytest.mark.parametrize(
+    ("answer", "why"),
+    [
+        ("Apple > Microsoft", "a member is missing"),
+        ("Apple > Microsoft > Coca-Cola > Tesla", "there is an extra member"),
+        ("Apple", "there is no ordering at all"),
+        ("", "nothing was answered"),
+        ("The calculation could not be completed.", "prose, not a rendered order"),
+    ],
+    ids=["missing-member", "extra-member", "no-ordering", "empty", "prose"],
+)
+def test_a_ranking_that_does_not_state_the_order_is_not_correct(
+    answer: str, why: str
+) -> None:
+    gold = {"expected_ranking": ["Apple", "The Coca-Cola Company", "Microsoft"]}
+
+    assert _correct_by_stratum(_row(answer=answer), gold) is False, why
+
+
+def test_a_tie_prediction_is_not_scored_correct() -> None:
+    """`expected_ranking` cannot express a tie, so it is not guessed at.
+
+    Scoring it either way would be inventing a gold the benchmark does not
+    state.  Teaching the gold about ties is a benchmark change and is not made
+    here; until then a tie prediction is incorrect rather than ambiguous.
+    """
+
+    gold = {"expected_ranking": ["Apple", "Microsoft"]}
+
+    assert _correct_by_stratum(_row(answer="Apple = Microsoft"), gold) is False
+
+
+def test_the_order_check_is_not_case_sensitive() -> None:
+    gold = {"expected_ranking": ["Microsoft", "Tesla", "Apple"]}
+
+    assert _correct_by_stratum(
+        _row(answer="microsoft > tesla > apple"), gold
+    ) is True
+
+
+def test_a_rendered_ranking_parses_into_groups() -> None:
+    """The parser reads the renderer's frozen format and nothing else."""
+
+    assert _predicted_ordering("Apple > Microsoft") == (("Apple",), ("Microsoft",))
+    assert _predicted_ordering("Apple = Microsoft > Tesla") == (
+        ("Apple", "Microsoft"),
+        ("Tesla",),
+    )
+    assert _predicted_ordering("just some prose") is None
+    assert _predicted_ordering("") is None
