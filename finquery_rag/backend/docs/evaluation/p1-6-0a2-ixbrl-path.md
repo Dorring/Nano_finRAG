@@ -109,6 +109,53 @@ negative result that pointed here — but the concept layer it implements is sup
 `2,601 / 20,394` facts sit at coordinates with no readable quantity. Unexamined; may be
 larger than the defect being fixed. Not part of P1.6-A.
 
+## JPM reconciliation — the feasibility probe, run
+
+One filing, against the seven JPM values verified by hand from the table earlier in this
+work. Every one is recovered, with the standard concept:
+
+```
+Net income 57,048           -> us-gaap:NetIncomeLoss                ctx=c-1
+Diluted EPS 20.02           -> us-gaap:EarningsPerShareDiluted      ctx=c-1   unique
+Comprehensive income 65,214 -> us-gaap:ComprehensiveIncomeNetOfTax  ctx=c-1
+Interest expense 97,898     -> us-gaap:InterestExpenseOperating     ctx=c-1   unique
+Total assets 4,424,900      -> us-gaap:Assets                       ctx=c-30
+Total liabilities 4,062,462 -> us-gaap:Liabilities                  ctx=c-30  unique
+Total net revenue 182,447   -> us-gaap:Revenues                     ctx=c-1
+```
+
+All at `2025-01-01..2025-12-31`, all `unit=number`. The residual ambiguity is exactly the
+kind the context resolves: `us-gaap:NetIncomeLoss` appears at three contexts, and the
+company figure is the undimensioned one.
+
+Context definitions parse cleanly out of `primary.html` — **2,216** of them, 2,199 with
+dimensions:
+
+```
+c-1     has_segment=False  members=[]
+c-30    has_segment=False  members=[]
+c-63    has_segment=True   StatementEquityComponentsAxis=us-gaap:RetainedEarningsMember
+c-2179  has_segment=True   ConsolidatedEntitiesAxis=srt:ParentCompanyMember
+```
+
+Two things this settles that the string-parsing approach could not:
+
+- **The scope axis is named.** `ConsolidatedEntitiesAxis`, `StatementEquityComponentsAxis`
+  — the dimension says what it is. `c-2179`'s variant is `55,681`, the parent-company
+  figure, and nothing had to be inferred to know that.
+- **The company-level fact is well defined**: the one whose context carries no segment.
+  That is a rule, not a heuristic, and it is what "the coordinate identifies one value"
+  should have meant all along.
+
+One caution visible in the data: `Total assets 4,424,900` matches both `us-gaap:Assets`
+and `us-gaap:LiabilitiesAndStockholdersEquity`, which are equal by the accounting
+identity. Concept-keyed retrieval is not automatically right — it is automatically
+*specific*, which is the property that was missing.
+
+**Verdict: reproducible.** The source HTML is on disk, the contexts parse, the concepts
+are standard, and the seven verified values reconcile without special-casing. The eight
+filings can be rebuilt this way.
+
 ## Status
 
 No store changed, no fixture changed. `derive_fact_concept` is committed shadow-only and
