@@ -123,17 +123,15 @@ def _plan_from_fixture(row: dict[str, Any]) -> Any:
     blob = row["plan"]
     return SupervisorPlan(
         Intent(blob["intent"]),
-        tuple(
-            RequiredSlot(
-                slot["slot_id"],
-                slot["metric"],
-                slot["period"],
-                slot["role"],
-                slot["value_type"],
-                slot["unit"],
-            )
-            for slot in blob["required_slots"]
-        ),
+        # `RequiredSlot.from_dict` rather than a positional construction.  The
+        # positional form listed six fields and stopped, so every slot reaching
+        # the replay lost its `entity`, `entity_id`, `scope` and `scope_id` --
+        # the whole of P1.4d's entity work was invisible to this track, and
+        # `_entity_matches_slot` fell back to the query-level check that lets
+        # either company's fact satisfy either slot.  Reading through the
+        # contract's own reader means a field added to the contract is carried
+        # here by construction rather than by someone remembering.
+        tuple(RequiredSlot.from_dict(slot) for slot in blob["required_slots"]),
         blob["operation"],
         Action(blob["next_action"]),
     )
