@@ -15,7 +15,7 @@ set -u
 
 REPO=/disk/qh/nano-finrag
 BACKEND=$REPO/finquery_rag/backend
-OUT=$REPO/artifacts/evaluation/p1-4e-metric-identity
+OUT=${OUT:-$REPO/artifacts/evaluation/p1-4e-metric-identity}
 FIXTURES=$BACKEND/benchmarks/tv2_canonical_v1/plan-fixtures-v5.jsonl
 PY=$BACKEND/.venv/bin/python
 LOG=$OUT/campaign.log

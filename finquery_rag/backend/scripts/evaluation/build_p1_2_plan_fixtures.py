@@ -60,6 +60,13 @@ _BACKEND_DIR = Path(__file__).resolve().parents[2]
 if str(_BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(_BACKEND_DIR))
 
+# The Harness's own canonicalisers rather than a second opinion.  A fixture that
+# wrote an ``entity_id`` some other way would be authoring an identity that the
+# runtime then disagrees with, which is the drift this whole set exists to catch.
+from rag_v2.supervisor import canonical_entity_id, canonical_scope_id  # noqa: E402
+if str(_BACKEND_DIR) not in sys.path:
+    sys.path.insert(0, str(_BACKEND_DIR))
+
 DEFAULT_EVAL_SET = (
     _BACKEND_DIR
     / "benchmarks/tv2_canonical_v1/canonical-eval-v1.jsonl"
@@ -69,6 +76,12 @@ DEFAULT_GOLD = (
     / "benchmarks/tv2_canonical_v1/gold-evidence-v1.jsonl"
 )
 DEFAULT_OUT_DIR = _BACKEND_DIR / "benchmarks/tv2_canonical_v1"
+
+#: Where the build's intermediate findings go.  Under ``artifacts/``, which is
+#: gitignored: the ambiguity list is a working record that will change as the
+#: store or the fixtures change, and a file that gets rewritten every build does
+#: not belong in the same tree as the fixtures it is about.
+DEFAULT_AUDIT_DIR = _BACKEND_DIR / "artifacts/evaluation/p1-4d-fixture-audit"
 #: The authoritative fact store.  It is the deployment's, not the checkout's, so
 #: a full build runs where the store lives.
 DEFAULT_FACT_STORE = Path(
@@ -418,17 +431,27 @@ def author_plan(
     }
 
 
+def _load_records(path: Path) -> dict[str, dict[str, Any]]:
+    """The question rows by id.  The company a question names lives here."""
+
+    return {
+        json.loads(line)["id"]: json.loads(line)
+        for line in path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    }
+
+
+def _load_gold(path: Path) -> dict[str, dict[str, Any]]:
+    return _load_records(path)
+
+
 def build_fixtures(
     eval_path: Path,
     gold_path: Path,
     operand_facts: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     questions = [json.loads(line) for line in eval_path.read_text(encoding="utf-8").splitlines() if line.strip()]
-    gold_by_id = {
-        json.loads(line)["id"]: json.loads(line)
-        for line in gold_path.read_text(encoding="utf-8").splitlines()
-        if line.strip()
-    }
+    gold_by_id = _load_gold(gold_path)
     return [
         author_plan(
             record["question"],
@@ -441,15 +464,13 @@ def build_fixtures(
 
 
 def operand_fact_ids(gold_path: Path) -> list[str]:
-    """Every gold fact id whose coordinate a build will need to read.
+    """Every gold fact id the build may need to read a coordinate from.
 
-    Collected from the gold rather than from the store so the read is bounded by
-    what is actually referenced, and so a store that has grown is not scanned
-    for facts nothing asks about.
-
-    Two families need a fact's coordinates: the arithmetic operations whose
-    operands are one fact each, and the multi-evidence shapes, where every side
-    is a fact and the entity is what tells the sides apart.
+    This used to be scoped to the operations whose *slots* were authored from
+    operand facts.  It is now every gold fact, because every answerable slot is
+    enriched from its fact: a lookup slot that names only a metric is
+    under-determined store-wide, and the entity that fixes that comes from the
+    fact the gold points at, not from the question.
     """
 
     needed: list[str] = []
@@ -457,14 +478,221 @@ def operand_fact_ids(gold_path: Path) -> list[str]:
         if not line.strip():
             continue
         row = json.loads(line)
-        operation = str(row.get("operation") or "")
-        arithmetic = _ARITHMETIC_OPERATIONS.get(operation)
-        if operation not in _MULTI_EVIDENCE_OPERATIONS and (
-            arithmetic not in _FACT_PER_OPERAND_OPERATIONS
-        ):
-            continue
         needed.extend(str(item) for item in (row.get("fact_ids") or []))
     return needed
+
+
+def load_coordinate_index(store: Path) -> dict[tuple[tuple[str, ...], tuple[str, ...]], list[str]]:
+    """How many facts each coordinate selects, indexed by coordinate subset.
+
+    Only ids are kept -- the validation needs counts, not content, so this stays
+    small where ``load_fact_coordinates`` deliberately keeps only the records a
+    build asks for.
+
+    Subsets rather than prefixes, and for the same reason as in the audit: a slot
+    that names no scope does not constrain the scope, so it must be counted
+    against facts of every scope.  A prefix key would silently count it only
+    against facts whose scope is empty, which is a different and wrong question.
+    """
+
+    fields = ("entity", "metric", "period", "scope")
+    subsets = [
+        combo
+        for width in range(1, len(fields) + 1)
+        for combo in _combinations(fields, width)
+    ]
+    index: dict[tuple[tuple[str, ...], tuple[str, ...]], list[str]] = {}
+    with store.open(encoding="utf-8") as handle:
+        for line in handle:
+            if not line.strip():
+                continue
+            record = json.loads(line)
+            if record.get("fact_type") != "atomic":
+                continue
+            fact_id = str(record.get("fact_id") or record.get("candidate_key") or "")
+            if not fact_id:
+                continue
+            for combo in subsets:
+                key = (combo, tuple(_fold_field(record.get(f)) for f in combo))
+                index.setdefault(key, []).append(fact_id)
+    return index
+
+
+def _combinations(items: tuple[str, ...], width: int) -> list[tuple[str, ...]]:
+    from itertools import combinations
+
+    return list(combinations(items, width))
+
+
+def _fold_field(value: Any) -> str:
+    if value is None:
+        return ""
+    return " ".join(str(value).casefold().split())
+
+
+#: The coordinate a slot's own fields describe, in the order they narrow it.
+_SLOT_COORDINATE_FIELDS = ("entity", "metric", "period", "scope")
+
+
+def _slot_candidates(
+    slot: Mapping[str, Any],
+    index: Mapping[tuple[tuple[str, ...], tuple[str, ...]], list[str]],
+) -> list[str]:
+    present = tuple(
+        field for field in _SLOT_COORDINATE_FIELDS if _fold_field(slot.get(field))
+    )
+    if not present:
+        return []
+    # Fold each field, not the generator producing them: a generator stringifies
+    # to its repr, so folding it builds a key no record can ever match and every
+    # coordinate silently counts as empty.
+    key = tuple(_fold_field(slot.get(field)) for field in present)
+    return index.get((present, key), [])
+
+
+def _enrich_slots(
+    row: dict[str, Any],
+    gold: Mapping[str, Any],
+    fact_coordinates: Mapping[str, Mapping[str, Any]],
+    index: Mapping[tuple[tuple[str, ...], tuple[str, ...]], list[str]],
+    *,
+    case: str,
+    entity_hint: str,
+) -> None:
+    """Give every slot the coordinates of the fact the gold points at, in place.
+
+    Only fields with values are written, so a question that gains no entity does
+    not gain an ``entity: null`` -- the shape that made every slot in the set
+    look alike when the four coordinate fields were introduced.
+
+    A slot is enriched from the fact at the same index, and only when the gold
+    names exactly as many facts as the plan has slots.  A gold that does not
+    line up is left alone rather than paired by guess: the pairing is the whole
+    content of the change, and inventing one is how the operand periods came out
+    duplicated the first time.
+    """
+
+    fact_ids = [
+        str(item).strip() for item in (gold.get("fact_ids") or []) if str(item).strip()
+    ]
+    slots = row["plan"]["required_slots"]
+
+    if len(fact_ids) != len(slots):
+        # An abstention question has no fact to read -- the gold names none -- so
+        # it takes the company from the question instead.  That is not a fallback
+        # for a missing gold: it is the coordinate that expresses *why* the
+        # question is unanswerable.  "Coca-Cola's Principal-protected debt" is
+        # unanswerable because Coca-Cola does not report that metric, and a slot
+        # that omits Coca-Cola matches every other company that does -- so the
+        # fixture would assert an abstention it does not describe, and would do it
+        # by accident of who else happens to report the metric.
+        if entity_hint:
+            for slot in slots:
+                if not _fold_field(slot.get("entity")):
+                    slot["entity"] = entity_hint
+    else:
+        for slot, fact_id in zip(slots, fact_ids):
+            record = fact_coordinates.get(fact_id)
+            if record is None:
+                continue
+            entity = str(record.get("entity") or "").strip()
+            if entity and not _fold_field(slot.get("entity")):
+                slot["entity"] = entity
+            scope = str(record.get("scope") or "").strip()
+            if scope and not _fold_field(slot.get("scope")):
+                slot["scope"] = scope
+
+    # Ids last, so they describe the mention actually written above -- including
+    # a mention the fixture already carried.
+    for slot in slots:
+        entity = str(slot.get("entity") or "").strip()
+        if entity:
+            entity_id = canonical_entity_id(entity)
+            if entity_id:
+                slot["entity_id"] = entity_id
+        scope = str(slot.get("scope") or "").strip()
+        if scope:
+            scope_id = canonical_scope_id(scope)
+            if scope_id:
+                slot["scope_id"] = scope_id
+
+
+def enrich_and_validate(
+    fixtures: list[dict[str, Any]],
+    gold_by_id: Mapping[str, Mapping[str, Any]],
+    fact_coordinates: Mapping[str, Mapping[str, Any]],
+    index: Mapping[tuple[tuple[str, ...], tuple[str, ...]], list[str]],
+    eval_by_id: Mapping[str, Mapping[str, Any]] | None = None,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Enrich every slot, count its candidates, and enforce the stratum's rule.
+
+    The stratum decides what a correct count is, and a single rule cannot serve
+    both.  An abstention question is *supposed* to select nothing -- that is what
+    makes it unanswerable -- so a zero there is the design, and an answerable
+    question selecting nothing can never be bound, so a zero there is a defect.
+    One rule for both would either wave through every unanswerable slot or fail
+    every abstention fixture.
+    """
+
+    enriched: list[dict[str, Any]] = []
+    problems: list[dict[str, Any]] = []
+    eval_by_id = eval_by_id or {}
+
+    for row in fixtures:
+        case = row["id"]
+        stratum = row.get("stratum")
+        gold = gold_by_id.get(case, {})
+        entity_hint = str((eval_by_id.get(case) or {}).get("entity") or "").strip()
+        _enrich_slots(
+            row,
+            gold,
+            fact_coordinates,
+            index,
+            case=case,
+            entity_hint=entity_hint,
+        )
+
+        counts: dict[str, int] = {}
+        for slot in row["plan"]["required_slots"]:
+            candidates = _slot_candidates(slot, index)
+            counts[slot["slot_id"]] = len(candidates)
+            if len(candidates) > 1:
+                # Recorded, not fatal.  These are not duplicates: the store
+                # carries several facts under one (entity, metric, period) with
+                # *different values* and no scope to separate them, so the plan
+                # contract cannot express the difference and no fixture edit can
+                # remove the ambiguity.
+                problems.append(
+                    {
+                        "case_id": case,
+                        "slot_id": slot["slot_id"],
+                        "role": slot["role"],
+                        "coordinate": {
+                            f: slot.get(f) for f in _SLOT_COORDINATE_FIELDS if slot.get(f)
+                        },
+                        "candidates": len(candidates),
+                        "candidate_fact_ids": candidates[:5],
+                    }
+                )
+        row["coordinate_candidates"] = counts
+        row["expects_no_candidate"] = stratum == "adversarial_abstention"
+
+        if stratum == "adversarial_abstention":
+            wrong = {k: v for k, v in counts.items() if v != 0}
+            if wrong:
+                raise ValueError(
+                    f"{case!r}: an abstention plan must select no fact, got {wrong}"
+                )
+        else:
+            empty = {k: v for k, v in counts.items() if v == 0}
+            if empty:
+                raise ValueError(
+                    f"{case!r}: an answerable slot selects no fact: {empty}"
+                )
+        enriched.append(row)
+
+    return enriched, problems
+
 
 
 def _multi_evidence_slots(
@@ -537,6 +765,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--gold-evidence", type=Path, default=DEFAULT_GOLD)
     parser.add_argument("--fact-store", type=Path, default=DEFAULT_FACT_STORE)
     parser.add_argument("--out-dir", type=Path, default=DEFAULT_OUT_DIR)
+    parser.add_argument("--audit-dir", type=Path, default=DEFAULT_AUDIT_DIR)
     parser.add_argument(
         "--name",
         default="plan-fixtures-v2",
@@ -546,12 +775,13 @@ def main(argv: list[str] | None = None) -> int:
 
     needed = operand_fact_ids(args.gold_evidence)
     operand_facts: dict[str, Mapping[str, Any]] = {}
+    coordinate_index: dict[tuple[tuple[str, ...], tuple[str, ...]], list[str]] = {}
     if needed:
         if not args.fact_store.exists():
             print(f"fact store not found: {args.fact_store}", file=sys.stderr)
             print(
-                "  the sum/average operands cannot be serialised without it, and "
-                "they are not derivable from the question",
+                "  every answerable slot takes its coordinates from the fact the "
+                "gold names, and those are not derivable from the question",
                 file=sys.stderr,
             )
             return 2
@@ -559,13 +789,20 @@ def main(argv: list[str] | None = None) -> int:
         missing = sorted(set(needed) - set(operand_facts))
         if missing:
             print(
-                f"{len(missing)} gold operand fact(s) are not in the store: "
-                f"{missing[:5]}",
+                f"{len(missing)} gold fact(s) are not in the store: {missing[:5]}",
                 file=sys.stderr,
             )
             return 2
+        coordinate_index = load_coordinate_index(args.fact_store)
 
     fixtures = build_fixtures(args.eval_set, args.gold_evidence, operand_facts)
+    fixtures, ambiguous = enrich_and_validate(
+        fixtures,
+        _load_gold(args.gold_evidence),
+        operand_facts,
+        coordinate_index,
+        _load_records(args.eval_set),
+    )
     rendered = render_fixtures(fixtures)
     digest = hashlib.sha256(rendered.encode("utf-8")).hexdigest()
 
@@ -574,6 +811,28 @@ def main(argv: list[str] | None = None) -> int:
     fixture_path.write_text(rendered, encoding="utf-8", newline="\n")
     (args.out_dir / f"{args.name}.jsonl.sha256").write_text(
         digest + "\n", encoding="utf-8", newline="\n"
+    )
+
+    args.audit_dir.mkdir(parents=True, exist_ok=True)
+    ambiguous_path = args.audit_dir / f"{args.name}.ambiguous.json"
+    ambiguous_rendered = (
+        json.dumps(
+            {
+                "fixture": args.name,
+                "fixture_sha256": digest,
+                "count": len(ambiguous),
+                "slots": ambiguous,
+            },
+            indent=2,
+            ensure_ascii=False,
+            sort_keys=True,
+        )
+        + "\n"
+    )
+    ambiguous_path.write_text(ambiguous_rendered, encoding="utf-8", newline="\n")
+    ambiguous_digest = hashlib.sha256(ambiguous_rendered.encode("utf-8")).hexdigest()
+    (args.audit_dir / f"{args.name}.ambiguous.json.sha256").write_text(
+        ambiguous_digest + "\n", encoding="utf-8", newline="\n"
     )
 
     intents = Counter(row["plan"]["intent"] for row in fixtures)
@@ -597,6 +856,20 @@ def main(argv: list[str] | None = None) -> int:
         "operand_facts_read": len(operand_facts),
         "intent_distribution": dict(sorted(intents.items())),
         "provenance": dict(sorted(sources.items())),
+        "ambiguous_slots": len(ambiguous),
+        "ambiguous_sha256": ambiguous_digest,
+        "coordinate_candidate_histogram": dict(
+            sorted(
+                Counter(
+                    count
+                    for row in fixtures
+                    for count in row["coordinate_candidates"].values()
+                ).items()
+            )
+        ),
+        "abstention_rows_expecting_no_candidate": sum(
+            1 for row in fixtures if row["expects_no_candidate"]
+        ),
     }
     (args.out_dir / f"{args.name}.manifest.json").write_text(
         json.dumps(manifest, indent=2, ensure_ascii=False, sort_keys=True) + "\n",
@@ -607,6 +880,8 @@ def main(argv: list[str] | None = None) -> int:
     print(f"wrote {len(fixtures)} fixtures to {fixture_path}")
     print(f"  sha256    : {digest}")
     print(f"  intents   : {dict(sorted(intents.items()))}")
+    print(f"  candidates: {manifest['coordinate_candidate_histogram']}")
+    print(f"  ambiguous : {len(ambiguous)} slot(s)  -> {ambiguous_path}")
     for key, count in sorted(sources.items()):
         print(f"    {key:<42} {count}")
     return 0
