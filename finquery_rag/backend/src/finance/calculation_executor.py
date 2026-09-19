@@ -33,7 +33,7 @@ from src.domain.calculation import (
     CalculationResult,
     CalculationStatus,
 )
-from src.finance.calculation_registry import get_operation_entry
+from src.finance.calculation_registry import RelationalToolResult, get_operation_entry
 from src.finance.primitive_tools import convert_scale
 
 logger = logging.getLogger(__name__)
@@ -233,6 +233,42 @@ def execute_plan(plan: CalculationPlan) -> CalculationResult:
     # carries ``points_value == ratio_value``, and ``_format_value`` applies the
     # x100 for ``unit == "ratio"`` itself.  It differs only for a percentage
     # operand, where the stated number is the one the gold arithmetic uses.
+    # Dispatch on what the adapter *returned*, never on the operation's name.
+    # A name-based branch would be a second authority for "which operation
+    # produces which shape", and it would start disagreeing with the adapter the
+    # first time either changed.
+    if isinstance(result, RelationalToolResult):
+        if not result.ok:
+            # Same BLOCKED path a declining primitive takes: operands that may
+            # not be ordered against each other are a deterministic refusal, so
+            # the orchestrator bypasses the LLM with a refusal rather than
+            # letting prose answer a comparison nothing could verify.
+            return CalculationResult(
+                status=CalculationStatus.BLOCKED,
+                operation=plan.operation,
+                formula=entry.formula,
+                formula_version=entry.formula_version,
+                target_metric=plan.target_metric,
+                operands=plan.operands,
+                error_code="PRIMITIVE_DECLINED",
+                error_message=result.error or "relational primitive declined",
+            )
+        # No `value`.  The relation *is* the answer, and a sign derived from it
+        # would be a second field that can disagree with the first -- which is
+        # the shape of defect this phase exists to remove.  A caller wanting the
+        # sign can read it off `relation`.
+        return CalculationResult(
+            status=CalculationStatus.EXECUTED,
+            operation=plan.operation,
+            unit=entry.unit,
+            formula=entry.formula,
+            formula_version=entry.formula_version,
+            target_metric=plan.target_metric,
+            operands=plan.operands,
+            relation=result.relation,
+            ordering_groups=result.ordering_groups,
+        )
+
     if not result.ok or result.points_value is None:
         # Primitive declined (e.g. division by zero, missing scale params).
         # This is a deterministic refusal, so we BLOCK rather than FAILED

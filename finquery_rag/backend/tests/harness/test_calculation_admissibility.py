@@ -177,20 +177,19 @@ def test_every_operation_can_produce_an_admissible_identity(
     assert result.calculation_id is not None
 
 
-def test_the_nine_operations_are_unchanged() -> None:
-    """B hardens admission; it does not touch arithmetic."""
+def test_the_legacy_arithmetic_operations_are_unchanged() -> None:
+    """B hardens admission; it does not touch arithmetic.
 
-    assert [op.value for op in CalculationOperation] == [
-        "difference",
-        "growth_rate",
-        "percentage_share",
-        "sum",
-        "average",
-        "gross_margin",
-        "net_margin",
-        "debt_ratio",
-        "scale_conversion",
-    ]
+    Asserted as containment in a frozen set rather than as an exact list.  The
+    exact list had to be rewritten for every addition, and being a list it also
+    pinned the *order* of an enum nothing depends on -- so it carried a
+    requirement nobody had asked for alongside the one that mattered.  What this
+    has to say is that these nine are still here.
+    """
+
+    from tests.finance.test_calculation_domain import LEGACY_ARITHMETIC_OPERATIONS
+
+    assert {op.value for op in CalculationOperation} >= LEGACY_ARITHMETIC_OPERATIONS
 
 
 # --- the real production path ------------------------------------------------

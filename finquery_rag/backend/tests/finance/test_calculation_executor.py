@@ -58,7 +58,15 @@ def _ready_plan(
 
 
 class TestCalculationRegistry:
-    def test_all_nine_operations_registered(self):
+    def test_every_operation_has_a_registry_entry(self):
+        """The registry is the executable-capability authority.
+
+        An operation with no entry cannot be executed, so this is the invariant
+        that says the enum and the registry describe the same set -- adding an
+        enum member without an entry is a half-wired change, and this is what
+        catches it.
+        """
+
         registered = set(CALCULATION_REGISTRY.keys())
         expected = set(CalculationOperation)
         assert registered == expected, (

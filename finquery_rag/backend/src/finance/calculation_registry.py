@@ -23,7 +23,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Callable
 
-from src.domain.calculation import CalculationOperand, CalculationOperation
+from src.domain.calculation import (
+    CalculationOperand,
+    CalculationOperation,
+    ComparisonRelation,
+)
 from src.finance.primitive_tools import (
     ToolResult,
     average_values,
@@ -37,10 +41,47 @@ from src.finance.primitive_tools import (
 )
 
 
+#: A ranking's operand ceiling.  A bound rather than a limit anyone expects to
+#: reach -- the largest question in the canonical set ranks four companies -- so
+#: that `max_operands` stays a real constraint rather than a placeholder.
+MAX_RANKING_OPERANDS = 64
+
 # Type alias for the adapter functions that wrap primitive_tools calls.
-# Each adapter takes a tuple of operands and a precision int, returning
-# a ``ToolResult``.
-CalculationFunc = Callable[[tuple[CalculationOperand, ...], int], ToolResult]
+# Each adapter takes a tuple of operands and a precision int and returns a
+# ``ToolResult`` -- or, for a relational operation, a ``RelationalToolResult``.
+# The union is what lets the nine arithmetic adapters stay byte-identical while
+# two operations answer with a relation instead of a quantity.
+CalculationFunc = Callable[
+    [tuple[CalculationOperand, ...], int],
+    "ToolResult | RelationalToolResult",
+]
+
+
+@dataclass(frozen=True)
+class RelationalToolResult:
+    """What a relational adapter returns, before it becomes a result.
+
+    Executor-internal, exactly as ``ToolResult`` is: this is the adapter's
+    return, not the Harness's artifact.  ``CalculationResult`` remains the one
+    authority the validator reads, so nothing downstream has to know this type
+    exists.
+
+    ``ok`` mirrors ``ToolResult.ok`` so that an adapter can decline
+    deterministically -- operands that may not be ordered against each other are
+    a refusal, not an exception -- and the executor maps both kinds of decline
+    through the same BLOCKED path.
+
+    Exactly one of ``relation`` / ``ordering_groups`` is populated on success,
+    and which one is fixed by the operation's own contract rather than by the
+    executor reading the operation's name.  Dispatching on a name would put a
+    second copy of "which operation expects which shape" beside the adapters
+    that already embody it.
+    """
+
+    ok: bool
+    relation: "ComparisonRelation | None" = None
+    ordering_groups: tuple[tuple[str, ...], ...] | None = None
+    error: str | None = None
 
 
 @dataclass(frozen=True)
@@ -163,6 +204,79 @@ def _scale_conversion_adapter(
 # Registry
 # ---------------------------------------------------------------------------
 
+def _comparison_adapter(
+    operands: tuple[CalculationOperand, ...], precision: int
+) -> RelationalToolResult:
+    """Which of exactly two operands is larger, as a stated relation.
+
+    ``difference`` is doing double duty here, deliberately.  It already refuses
+    operands whose kinds or units do not agree, so ordering reuses that rule
+    instead of restating compatibility -- a second rule would be a second
+    authority for "may these two numbers be compared", and the two would drift.
+
+    The sign becomes a ``ComparisonRelation`` rather than being left as a
+    number: the caller wants "which operand is larger", and a bare ``-1`` does
+    not answer that without also knowing which operand was first.
+    """
+
+    if len(operands) != 2:
+        return RelationalToolResult(
+            ok=False, error=f"comparison requires exactly 2 operands, got {len(operands)}"
+        )
+    delta = difference(operands[0].value, operands[1].value, precision=precision)
+    if not delta.ok or delta.points_value is None:
+        return RelationalToolResult(
+            ok=False, error=delta.error or "operands_are_not_comparable"
+        )
+    if delta.points_value > 0:
+        relation = ComparisonRelation.LHS_GT_RHS
+    elif delta.points_value < 0:
+        relation = ComparisonRelation.RHS_GT_LHS
+    else:
+        relation = ComparisonRelation.EQUAL
+    return RelationalToolResult(ok=True, relation=relation)
+
+
+def _ranking_adapter(
+    operands: tuple[CalculationOperand, ...], precision: int
+) -> RelationalToolResult:
+    """Every operand, ordered descending, with equals grouped.
+
+    ``average_values`` is the compatibility probe for the same reason
+    ``difference`` is for a comparison: it refuses a mixture of kinds outright,
+    so ranking inherits that rule rather than restating it.
+
+    The refs are ``slot_id``.  A ranking is a claim about which *required
+    operands* stand in what order; keying it on evidence would make the same
+    ranking a different result whenever a different support of one canonical
+    fact happened to be bound.
+    """
+
+    if len(operands) < 2:
+        return RelationalToolResult(
+            ok=False, error=f"ranking requires at least 2 operands, got {len(operands)}"
+        )
+    probe = average_values([operand.value for operand in operands], precision=precision)
+    if not probe.ok:
+        return RelationalToolResult(
+            ok=False, error=probe.error or "operands_are_not_comparable"
+        )
+
+    # `slot_id` breaks ties in the *ordering of construction* only; equal values
+    # still land in one group, so this cannot change the result, only the order
+    # groups are emitted in -- and groups are compared as an ordering of sets.
+    ordered = sorted(operands, key=lambda item: (-item.value, item.slot_id))
+    groups: list[tuple[str, ...]] = []
+    previous: object = object()
+    for operand in ordered:
+        if groups and operand.value == previous:
+            groups[-1] = groups[-1] + (operand.slot_id,)
+        else:
+            groups.append((operand.slot_id,))
+        previous = operand.value
+    return RelationalToolResult(ok=True, ordering_groups=tuple(groups))
+
+
 CALCULATION_REGISTRY: dict[CalculationOperation, OperationEntry] = {
     CalculationOperation.DIFFERENCE: OperationEntry(
         operation=CalculationOperation.DIFFERENCE,
@@ -253,6 +367,33 @@ CALCULATION_REGISTRY: dict[CalculationOperation, OperationEntry] = {
         min_operands=1,
         max_operands=1,
         operand_roles=("value",),
+    ),
+    # Relational operations.  Their adapters return ``RelationalToolResult``
+    # rather than ``ToolResult``, and the executor dispatches on the returned
+    # type -- never on the operation's name, which would put a second copy of
+    # "which operation expects which shape" beside the adapters that embody it.
+    CalculationOperation.COMPARISON: OperationEntry(
+        operation=CalculationOperation.COMPARISON,
+        func=_comparison_adapter,
+        formula="sign(lhs - rhs) as an explicit relation",
+        formula_version="comparison.v1",
+        unit="relation",
+        min_operands=2,
+        max_operands=2,
+        operand_roles=("lhs", "rhs"),
+    ),
+    CalculationOperation.RANKING: OperationEntry(
+        operation=CalculationOperation.RANKING,
+        func=_ranking_adapter,
+        formula="operands ordered descending, equals grouped",
+        formula_version="ranking.v1",
+        unit="ordering",
+        min_operands=2,
+        max_operands=MAX_RANKING_OPERANDS,
+        # No fixed roles: a ranking is over however many slots the plan asked
+        # for, and naming them here would be a second statement of the plan's
+        # cardinality.
+        operand_roles=(),
     ),
 }
 

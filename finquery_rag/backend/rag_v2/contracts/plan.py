@@ -40,6 +40,18 @@ _OPERATION_VALUES = frozenset(
         "net_margin",
         "debt_ratio",
         "scale_conversion",
+        # Relational operations: their answer is a relation between operands
+        # rather than a quantity.  Cross-entity comparison and ranking used to
+        # be planned with no operation at all, which left their answers as prose
+        # that no validator had a structured result to check against.
+        #
+        # This set is necessarily a literal: it is the contract layer, and
+        # `rag_v2` must never import `src`, where the executable registry lives.
+        # The two are kept in agreement by the tests that assert every
+        # registered operation is expressible here and every name here is
+        # executable.
+        "comparison",
+        "ranking",
     }
 )
 _PERIOD_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9 ./_:-]{0,63}$")

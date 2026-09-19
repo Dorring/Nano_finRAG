@@ -22,7 +22,7 @@ from src.domain.calculation import (
     CalculationStatus,
 )
 from src.finance.calculation_executor import execute_plan
-from src.finance.calculation_registry import get_operation_entry
+from src.finance.calculation_registry import CALCULATION_REGISTRY, get_operation_entry
 from src.finance.primitive_tools import parse_financial_number
 
 
@@ -30,8 +30,18 @@ class DeterministicCalculationCapabilityError(RuntimeError):
     """Raised when the structured calculator boundary is invalid."""
 
 
+#: The operations this runtime can execute, projected from the registry rather
+#: than listed here.
+#:
+#: The registry is the executable-capability authority: an operation is
+#: executable exactly when it has an entry describing how to execute it.  A
+#: second list here -- even one derived from the enum rather than hand-typed --
+#: would answer the same question a second time, and the two would disagree the
+#: first time an operation gained a registry entry without one, or the reverse.
+#: Deriving it keeps the answer in one place; the tuple is a compatibility
+#: projection for callers that want a flat sequence of names.
 SUPPORTED_CALCULATION_OPERATIONS = tuple(
-    operation.value for operation in CalculationOperation
+    operation.value for operation in CALCULATION_REGISTRY
 )
 
 
@@ -230,6 +240,11 @@ class DeterministicCalculationCapability:
             evidence_chunk_id=_candidate_id(candidate),
             document_name=(candidate.get("document_name") or candidate.get("document_id")),
             page=_page(candidate),
+            # The operand's semantic identity, and what a relational result
+            # refers to.  The evidence id above is provenance -- one canonical
+            # fact may be supported by several rows -- so an ordering keyed on
+            # the evidence would move when a different support was bound.
+            slot_id=slot_id,
         )
 
     @classmethod

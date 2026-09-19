@@ -277,7 +277,7 @@ def test_candidate_paths_never_emit_released_status() -> None:
     assert outcome.status is not V2ExecutionStatus.READY_FOR_RELEASE
 
 
-def test_all_nine_registry_operations_use_existing_executor() -> None:
+def test_every_registry_operation_executes_through_the_same_path() -> None:
     from rag_v2.adaptive import AdaptiveRAGStateV1
     from rag_v2.contracts import RequiredSlot
     from src.domain.calculation import CalculationOperation, CalculationStatus
@@ -303,6 +303,11 @@ def test_all_nine_registry_operations_use_existing_executor() -> None:
             ("2",),
             {"source_scale": "million", "target_scale": "billion"},
         ),
+        # Relational operations.  They execute through the same path and end at
+        # the same authority artifact; what differs is that the result carries a
+        # relation or an ordering instead of a value.
+        "comparison": (("lhs", "rhs"), ("10", "4"), {}),
+        "ranking": (("a", "b", "c"), ("10", "4", "7"), {}),
     }
 
     for operation, (roles, values, requirements) in fixtures.items():
