@@ -11,7 +11,10 @@ from collections.abc import Sequence
 from dataclasses import replace
 from typing import Any
 
-from src.pdf_retrieval_v4.candidate_query_builder import build_all_queries
+from src.pdf_retrieval_v4.candidate_query_builder import (
+    _metric_aliases,
+    build_all_queries,
+)
 from src.pdf_retrieval_v4.candidate_rrf import CandidateRRFHit, fuse_candidate_hits
 from src.pdf_retrieval_v4.candidate_slot_pool import build_slot_pool
 from src.pdf_retrieval_v4.candidate_view_index import (
@@ -21,6 +24,40 @@ from src.pdf_retrieval_v4.candidate_view_index import (
 )
 from src.pdf_retrieval_v4.query_plan_models import QueryPlan
 from src.pdf_retrieval_v4.retrieval_demand import SlotRetrievalRequestV1
+
+
+def _slot_query_variants(request: SlotRetrievalRequestV1) -> list[str]:
+    """The literal slot query, then this slot's own alias expansions.
+
+    Every variant inherits the slot's own ``entity`` and ``period``.  An alias is
+    a different name for *the same requirement*; it is never licence to widen the
+    search to another slot's terms.  That distinction is the whole defect this
+    replaces -- the plan-wide `_entity_terms` put every company into every slot's
+    query, so four lanes all searched the same crowded pool:
+
+        "and JPMorganChase larger | FY2025 | tsla | jpmorganchase"
+
+    Alias expansion is measurably load-bearing, not legacy decoration: four slots
+    in the canonical fixture set have a question surface that differs from the
+    filing label (``Revenues`` vs ``net sales``), one of them a case that
+    currently releases.  It is therefore kept -- but kept slot-local, so it
+    cannot re-introduce cross-slot contamination.
+
+    The literal query is always first, so a caller that wants no expansion is the
+    same code path with one variant rather than a second implementation.
+    """
+
+    variants = [request.query]
+
+    def _render(term: str) -> str:
+        parts = (request.entity, term, request.period)
+        return " ".join(part.strip() for part in parts if part and part.strip())
+
+    for alias in _metric_aliases(request.metric):
+        candidate = _render(alias)
+        if candidate and candidate not in variants:
+            variants.append(candidate)
+    return variants
 
 
 class CandidateDirectRetriever:
@@ -246,6 +283,7 @@ class CandidateDirectRetriever:
         *,
         document_scope: set[str],
         total_k: int | None = None,
+        alias_expansion: bool = False,
     ) -> dict[str, Any]:
         """One lane per retrieval demand, merged by rank into a bounded packet.
 
@@ -281,9 +319,23 @@ class CandidateDirectRetriever:
         slot_pools: dict[str, list[CandidateRRFHit]] = {}
         slot_queries: dict[str, list[str]] = {}
         for request in requests:
-            query = request.query
-            slot_queries[request.slot_id] = [query]
-            lane_hits = self._search_lanes(query, allowed_keys)
+            variants = (
+                _slot_query_variants(request) if alias_expansion else [request.query]
+            )
+            slot_queries[request.slot_id] = list(variants)
+            if len(variants) == 1:
+                lane_hits = self._search_lanes(variants[0], allowed_keys)
+            else:
+                # The same bounded variant merge the legacy path used, so the
+                # alias-priority penalty keeps its meaning.  What is new is that
+                # every variant here belongs to *one* slot.
+                lane_hits = self._merge_variant_lane_hits(
+                    [self._search_lanes(variant, allowed_keys) for variant in variants],
+                    variant_priorities=[
+                        self._variant_priority(variant) for variant in variants
+                    ],
+                    rank_penalty=max(5, self.lane_k // 5),
+                )
             slot_pools[request.slot_id] = fuse_candidate_hits(
                 lane_hits, rrf_k=self.rrf_k
             )
