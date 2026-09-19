@@ -84,7 +84,7 @@ def _comparison_result(*, well_formed: bool = True) -> CalculationResult:
             CalculationOperand(name="lhs", value=Decimal("-8077"), evidence_chunk_id="E1", slot_id="s1"),
             CalculationOperand(name="rhs", value=Decimal("1926"), evidence_chunk_id="E2", slot_id="s2"),
         ),
-        relation=ComparisonRelation.RHS_GT_LHS if well_formed else None,
+        ordering_groups=(("s2",), ("s1",)) if well_formed else None,
     )
 
 

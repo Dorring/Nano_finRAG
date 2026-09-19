@@ -66,17 +66,20 @@ class CalculationOperation(str, Enum):
 
 
 class ComparisonRelation(str, Enum):
-    """Which way a two-operand comparison resolved.
+    """How a two-operand comparison resolved, **derived** from the ordering.
 
-    Deliberately not the sign in ``CalculationResult.value``.  ``-1`` is a
-    number; this is a claim about two named things.  A validator checking
-    whether an answer said "Visa" needs the relation, and deriving it from the
-    sign would also require knowing which operand was the left one -- two
-    authorities for one fact.
+    Expressed as the ordering's shape rather than as "left" and "right", because
+    there is no left and right: the operands are an unordered set until the
+    ordering ranks them.  An earlier version did name them ``lhs``/``rhs`` and
+    read them from ``operands[0]`` / ``operands[1]`` -- which is precisely the
+    container-order authority this contract exists to remove, and it survived
+    here for one round after ranking had already been fixed.
+
+    This is a convenience projection.  ``ordering_groups`` is the relational
+    authority, and this says nothing the ordering does not already say.
     """
 
-    LHS_GT_RHS = "lhs_gt_rhs"
-    RHS_GT_LHS = "rhs_gt_lhs"
+    FIRST_GT_SECOND = "first_gt_second"
     EQUAL = "equal"
 
 
@@ -256,11 +259,7 @@ class CalculationResult:
     formula_version: str | None = None
     target_metric: str | None = None
     operands: tuple[CalculationOperand, ...] = ()
-    #: How a ``COMPARISON`` resolved.  Present because ``value`` alone is a
-    #: projection: ``-1`` does not say which operand was larger without also
-    #: consulting the operand order, and one fact should have one authority.
-    relation: ComparisonRelation | None = None
-    #: The ``RANKING`` result, as groups of equal operands in descending order::
+    #: The relational answer, as groups of equal operands in descending order::
     #:
     #:     (("s2",), ("s1", "s3"))     s2 > s1 = s3
     #:
@@ -269,6 +268,11 @@ class CalculationResult:
     #: -- semantic operands, never evidence ids: several evidence rows may
     #: support one canonical fact, and a result keyed on which support happened
     #: to be bound would change while the ranking it describes did not.
+    #:
+    #: **This is the relational authority for both operations.**  A comparison
+    #: is an ordering over two operands and a ranking an ordering over N; giving
+    #: them separate result shapes would leave comparison free to define "left"
+    #: from the order of ``operands``, which carries no meaning.
     #:
     #: ``operands`` keeps its provenance meaning and its order carries none.
     ordering_groups: tuple[tuple[str, ...], ...] | None = None
@@ -322,17 +326,41 @@ class CalculationResult:
         if not required or any(not ref for ref in required):
             return False
 
+        groups = self.ordering_groups
+        if not groups or any(not group for group in groups):
+            return False
+        refs = [ref for group in groups for ref in group]
+        if sorted(refs) != sorted(required):
+            return False
+
+        # A comparison ranks exactly two operands.  One shared rule for both
+        # relational operations, because they share one result shape -- the only
+        # difference is the size of the ordering, and stating it separately for
+        # each would be the beginning of two shapes again.
         if self.operation is CalculationOperation.COMPARISON:
-            return self.relation is not None and len(required) == 2
+            return len(required) == 2
+        return True
 
-        if self.operation is CalculationOperation.RANKING:
-            groups = self.ordering_groups
-            if not groups or any(not group for group in groups):
-                return False
-            refs = [ref for group in groups for ref in group]
-            return sorted(refs) == sorted(required)
+    @property
+    def relation(self) -> ComparisonRelation | None:
+        """A comparison's shape, derived from the ordering that decides it.
 
-        return False
+        Derived rather than stored, so it cannot disagree with
+        ``ordering_groups``.  ``None`` for anything that is not a two-operand
+        ordering -- including a ranking, whose answer the ordering states
+        directly.
+        """
+
+        groups = self.ordering_groups
+        if not groups:
+            return None
+        if sum(len(group) for group in groups) != 2:
+            return None
+        if len(groups) == 1:
+            return ComparisonRelation.EQUAL
+        if len(groups) == 2:
+            return ComparisonRelation.FIRST_GT_SECOND
+        return None
 
     @property
     def calculation_id(self) -> str | None:
@@ -358,9 +386,10 @@ class CalculationResult:
             "operands": self._identity_operands(),
         }
         if self.operation in RELATIONAL_OPERATIONS:
-            # The relation *is* the answer, so it belongs to the identity; for a
-            # quantity it would be redundant with `value`.
-            payload["relation"] = self.relation.value if self.relation else None
+            # The ordering *is* the answer, so it belongs to the identity.  The
+            # derived `relation` is deliberately not folded in: it says nothing
+            # the ordering does not, and a digest over two statements of one
+            # fact would move for a reason that is not a change.
             payload["ordering_groups"] = self._ordering_groups_payload()
         digest = hashlib.sha256(
             json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()

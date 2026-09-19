@@ -253,10 +253,11 @@ def execute_plan(plan: CalculationPlan) -> CalculationResult:
                 error_code="PRIMITIVE_DECLINED",
                 error_message=result.error or "relational primitive declined",
             )
-        # No `value`.  The relation *is* the answer, and a sign derived from it
+        # No `value`.  The ordering *is* the answer, and a sign derived from it
         # would be a second field that can disagree with the first -- which is
         # the shape of defect this phase exists to remove.  A caller wanting the
-        # sign can read it off `relation`.
+        # comparison's direction reads it off `relation`, which is derived from
+        # the ordering rather than stored beside it.
         return CalculationResult(
             status=CalculationStatus.EXECUTED,
             operation=plan.operation,
@@ -265,7 +266,6 @@ def execute_plan(plan: CalculationPlan) -> CalculationResult:
             formula_version=entry.formula_version,
             target_metric=plan.target_metric,
             operands=plan.operands,
-            relation=result.relation,
             ordering_groups=result.ordering_groups,
         )
 

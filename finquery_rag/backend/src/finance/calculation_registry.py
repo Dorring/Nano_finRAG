@@ -26,7 +26,6 @@ from typing import Callable
 from src.domain.calculation import (
     CalculationOperand,
     CalculationOperation,
-    ComparisonRelation,
 )
 from src.finance.primitive_tools import (
     ToolResult,
@@ -79,7 +78,6 @@ class RelationalToolResult:
     """
 
     ok: bool
-    relation: "ComparisonRelation | None" = None
     ordering_groups: tuple[tuple[str, ...], ...] | None = None
     error: str | None = None
 
@@ -225,12 +223,19 @@ def _units_agree(operands: tuple[CalculationOperand, ...]) -> bool:
 def _comparison_adapter(
     operands: tuple[CalculationOperand, ...], precision: int
 ) -> RelationalToolResult:
-    """Which of exactly two operands is larger, as a stated relation.
+    """Which of exactly two operands is larger, as an ordering over two.
 
-    ``difference`` supplies the sign.  The sign becomes a ``ComparisonRelation``
-    rather than being left as a number: the caller wants "which operand is
-    larger", and a bare ``-1`` does not answer that without also knowing which
-    operand was first.
+    A comparison answers with the *same shape* a ranking does -- an ordering
+    over ``slot_id`` -- rather than with a "left"/"right" relation of its own.
+    That is not tidiness.  A relation naming a left and a right has to get them
+    from somewhere, and the only somewhere available is the order of
+    ``operands``, which is provenance and carries no meaning; comparison would
+    then have kept exactly the implicit container-order authority that was
+    removed from ranking.
+
+    The operand order still reaches the subtraction below, and deliberately: it
+    decides only which way round the sign comes out.  Both ways round produce the
+    same ordering, so nothing of it survives into the result.
     """
 
     if len(operands) != 2:
@@ -245,18 +250,21 @@ def _comparison_adapter(
                 f"{operands[0].unit!r} vs {operands[1].unit!r}"
             ),
         )
-    delta = difference(operands[0].value, operands[1].value, precision=precision)
+
+    first, second = operands
+    delta = difference(first.value, second.value, precision=precision)
     if not delta.ok or delta.points_value is None:
         return RelationalToolResult(
             ok=False, error=delta.error or "operands_are_not_comparable"
         )
-    if delta.points_value > 0:
-        relation = ComparisonRelation.LHS_GT_RHS
-    elif delta.points_value < 0:
-        relation = ComparisonRelation.RHS_GT_LHS
+
+    if delta.points_value == 0:
+        groups: tuple[tuple[str, ...], ...] = ((first.slot_id, second.slot_id),)
+    elif delta.points_value > 0:
+        groups = ((first.slot_id,), (second.slot_id,))
     else:
-        relation = ComparisonRelation.EQUAL
-    return RelationalToolResult(ok=True, relation=relation)
+        groups = ((second.slot_id,), (first.slot_id,))
+    return RelationalToolResult(ok=True, ordering_groups=groups)
 
 
 def _ranking_adapter(

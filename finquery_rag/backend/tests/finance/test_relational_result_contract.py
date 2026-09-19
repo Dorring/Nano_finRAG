@@ -58,13 +58,21 @@ def _ranking(
 
 def _comparison(
     operands: tuple[CalculationOperand, ...],
-    relation: ComparisonRelation | None,
+    groups: tuple[tuple[str, ...], ...] | None,
 ) -> CalculationResult:
+    """A comparison result, which now carries an *ordering* like a ranking.
+
+    A comparison used to carry a ``relation`` naming a left and a right, and
+    those came from ``operands[0]`` / ``operands[1]`` -- the container-order
+    authority this contract exists to remove.  Both relational operations answer
+    with one shape now, and ``relation`` is derived from it.
+    """
+
     return CalculationResult(
         status=CalculationStatus.EXECUTED,
         operation=CalculationOperation.COMPARISON,
         operands=operands,
-        relation=relation,
+        ordering_groups=groups,
     )
 
 
@@ -173,31 +181,71 @@ def test_a_blocked_ranking_is_not_well_formed() -> None:
 # --- comparison ---------------------------------------------------------------
 
 
-def test_a_comparison_needs_a_relation() -> None:
-    """`value = -1` does not say *which* operand was larger on its own."""
+def test_a_comparison_needs_an_ordering() -> None:
+    """A comparison with no ordering is a status field and nothing else."""
 
     operands = (_operand("s1", "10"), _operand("s2", "30"))
 
-    assert _comparison(operands, ComparisonRelation.RHS_GT_LHS).relational_result_is_well_formed is True
+    assert _comparison(operands, (("s2",), ("s1",))).relational_result_is_well_formed is True
     assert _comparison(operands, None).relational_result_is_well_formed is False
 
 
 def test_a_comparison_is_over_exactly_two_operands() -> None:
     result = _comparison(
         (_operand("s1", "10"), _operand("s2", "30"), _operand("s3", "20")),
-        ComparisonRelation.RHS_GT_LHS,
+        (("s2",), ("s3",), ("s1",)),
     )
 
     assert result.relational_result_is_well_formed is False
 
 
-def test_equality_is_a_relation_not_an_absence() -> None:
+def test_equality_is_a_group_not_an_absence() -> None:
     result = _comparison(
         (_operand("s1", "10"), _operand("s2", "10")),
-        ComparisonRelation.EQUAL,
+        (("s1", "s2"),),
     )
 
     assert result.relational_result_is_well_formed is True
+
+
+def test_the_relation_is_derived_from_the_ordering() -> None:
+    """It is a projection, so it cannot disagree with what decides it."""
+
+    operands = (_operand("s1", "10"), _operand("s2", "30"))
+
+    assert _comparison(operands, (("s2",), ("s1",))).relation is ComparisonRelation.FIRST_GT_SECOND
+    assert _comparison(operands, (("s2", "s1"),)).relation is ComparisonRelation.EQUAL
+    assert _comparison(operands, None).relation is None
+
+
+def test_a_ranking_has_no_derived_relation() -> None:
+    """Only a two-operand ordering has a comparison's shape."""
+
+    result = _ranking(
+        (_operand("s1", "10"), _operand("s2", "30"), _operand("s3", "20")),
+        (("s2",), ("s3",), ("s1",)),
+    )
+
+    assert result.relation is None
+
+
+def test_the_operand_order_does_not_reach_a_comparison_result() -> None:
+    """The reason comparison carries an ordering rather than a left and a right.
+
+    Both orderings of the same two operands describe the same fact, and the
+    result identity is the same one -- so nothing about which operand happened
+    to be built first survives into it.
+    """
+
+    first = _comparison(
+        (_operand("s1", "10"), _operand("s2", "30")), (("s2",), ("s1",))
+    )
+    swapped = _comparison(
+        (_operand("s2", "30"), _operand("s1", "10")), (("s2",), ("s1",))
+    )
+
+    assert first.ordering_groups == swapped.ordering_groups
+    assert first.calculation_id == swapped.calculation_id
 
 
 # --- identity: semantic, not evidence-bound -----------------------------------
@@ -316,13 +364,16 @@ def test_an_absent_ordering_serializes_as_none_not_empty() -> None:
     assert result.to_dict()["ordering_groups"] is None
 
 
-def test_the_relation_serializes_as_its_value() -> None:
+def test_the_derived_relation_serializes_alongside_the_ordering() -> None:
+    """Both are emitted; only one of them decides anything."""
+
     result = _comparison(
         (_operand("s1", "10"), _operand("s2", "30")),
-        ComparisonRelation.RHS_GT_LHS,
+        (("s2",), ("s1",)),
     )
 
-    assert result.to_dict()["relation"] == "rhs_gt_lhs"
+    assert result.to_dict()["relation"] == "first_gt_second"
+    assert result.to_dict()["ordering_groups"] == [["s2"], ["s1"]]
 
 
 def test_operands_carry_their_slot_id_across_serialization() -> None:

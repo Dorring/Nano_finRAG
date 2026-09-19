@@ -94,34 +94,45 @@ def test_a_ranking_accepts_however_many_the_plan_asked_for() -> None:
 
 
 @pytest.mark.parametrize(
-    ("left", "right", "expected"),
+    ("left", "right", "expected_groups"),
     [
-        ("30", "10", ComparisonRelation.LHS_GT_RHS),
-        ("10", "30", ComparisonRelation.RHS_GT_LHS),
-        ("10", "10", ComparisonRelation.EQUAL),
+        ("30", "10", (("s1",), ("s2",))),
+        ("10", "30", (("s2",), ("s1",))),
+        ("10", "10", (("s1", "s2"),)),
     ],
 )
-def test_a_comparison_states_which_side_is_larger(
-    left: str, right: str, expected: ComparisonRelation
+def test_a_comparison_orders_the_two_operands(
+    left: str, right: str, expected_groups: tuple[tuple[str, ...], ...]
 ) -> None:
     result = _comparison_adapter((_operand("s1", left), _operand("s2", right)), 4)
 
     assert result.ok is True
-    assert result.relation is expected
-    assert result.ordering_groups is None
+    assert result.ordering_groups == expected_groups
 
 
-def test_a_negative_operand_is_larger_than_nothing_found_by_sign_alone() -> None:
-    """`compare-002`'s shape: Apple is `(8,077)`, so Visa is the larger one.
+def test_the_comparison_result_does_not_depend_on_operand_order() -> None:
+    """Why it answers with an ordering rather than a left and a right.
 
-    The relation says that; the sign would only say "-1".
+    A relation naming a left and a right has to get them from somewhere, and the
+    only somewhere available is the order of `operands` -- which is provenance
+    and carries no meaning.  Both orders produce the same ordering, so nothing
+    of that order survives into the result.
     """
+
+    forwards = _comparison_adapter((_operand("s1", "10"), _operand("s2", "30")), 4)
+    backwards = _comparison_adapter((_operand("s2", "30"), _operand("s1", "10")), 4)
+
+    assert forwards.ordering_groups == backwards.ordering_groups
+
+
+def test_a_negative_operand_is_ranked_below_a_positive_one() -> None:
+    """`compare-002`'s shape: Apple is `(8,077)`, so Visa ranks first."""
 
     result = _comparison_adapter(
         (_operand("s1", "-8077"), _operand("s2", "1926")), 4
     )
 
-    assert result.relation is ComparisonRelation.RHS_GT_LHS
+    assert result.ordering_groups == (("s2",), ("s1",))
 
 
 def test_a_comparison_needs_two_operands() -> None:
@@ -216,7 +227,7 @@ def test_the_executor_turns_a_relation_into_a_result() -> None:
     result = execute_plan(plan)
 
     assert result.status is CalculationStatus.EXECUTED
-    assert result.relation is ComparisonRelation.RHS_GT_LHS
+    assert result.ordering_groups == (("s2",), ("s1",))
     assert result.relational_result_is_well_formed is True
 
 
