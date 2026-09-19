@@ -7,6 +7,7 @@ final pool K=40.
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import replace
 from typing import Any
 
@@ -19,6 +20,7 @@ from src.pdf_retrieval_v4.candidate_view_index import (
     CandidateViewIndexReader,
 )
 from src.pdf_retrieval_v4.query_plan_models import QueryPlan
+from src.pdf_retrieval_v4.retrieval_demand import SlotRetrievalRequestV1
 
 
 class CandidateDirectRetriever:
@@ -236,4 +238,74 @@ class CandidateDirectRetriever:
             "rrf_hits": rrf_hits,
             "slot_pools": slot_pools,
             "slot_query_variants": slot_query_variants,
+        }
+
+    def retrieve_for_requests(
+        self,
+        requests: Sequence[SlotRetrievalRequestV1],
+        *,
+        document_scope: set[str],
+        total_k: int | None = None,
+    ) -> dict[str, Any]:
+        """One lane per retrieval demand, merged by rank into a bounded packet.
+
+        The result's cardinality is ``len(requests)`` and nothing else.  Every
+        other input to lane count has been removed, because the demand is the
+        one thing already decided upstream and re-deciding it is what went
+        wrong: `retrieve` above takes its count from `QueryPlan.operand_slots`,
+        which is the retrieval planner's own guess at a number `SupervisorPlan`
+        had already stated -- and for every cross-entity comparison and ranking
+        that guess is 1.
+
+        Each lane is searched with its own demand's deterministic query, so no
+        lane carries another slot's entity.  Lanes are fused per slot and then
+        merged by `build_slot_pool`, which interleaves them round-robin by rank
+        with a per-slot minimum budget.  Rank-based rather than score-based is
+        required, not stylistic: an RRF score is bounded by how many lanes a
+        candidate appeared in, so two slots' scores are not on one scale and
+        comparing them would compare lane counts.  Round-robin is what stops one
+        company's evidence from occupying the whole packet -- the observed
+        failure.
+
+        A single demand keeps the plain top-``final_pool_k`` shape rather than
+        going through the slot pool, whose per-slot truncation is sized for
+        splitting a budget between several slots and would halve a lone slot's
+        depth for no reason.
+
+        Returns the same mapping shape as `retrieve`, so callers need no second
+        code path.  ``lane_hits`` and ``rrf_hits`` are empty: they describe one
+        globally fused search, and there is no longer one.
+        """
+
+        allowed_keys = self._allowed_keys_for_scope(document_scope)
+        slot_pools: dict[str, list[CandidateRRFHit]] = {}
+        slot_queries: dict[str, list[str]] = {}
+        for request in requests:
+            query = request.query
+            slot_queries[request.slot_id] = [query]
+            lane_hits = self._search_lanes(query, allowed_keys)
+            slot_pools[request.slot_id] = fuse_candidate_hits(
+                lane_hits, rrf_k=self.rrf_k
+            )
+
+        if not slot_pools:
+            return {
+                "candidate_direct_pool": [],
+                "lane_hits": {},
+                "rrf_hits": [],
+                "slot_pools": {},
+                "slot_query_variants": {},
+            }
+
+        if len(slot_pools) == 1:
+            pool = self._pool_from_rrf(next(iter(slot_pools.values())))
+        else:
+            pool = build_slot_pool(slot_pools, total_k=total_k or self.final_pool_k)
+
+        return {
+            "candidate_direct_pool": pool,
+            "lane_hits": {},
+            "rrf_hits": [],
+            "slot_pools": slot_pools,
+            "slot_query_variants": slot_queries,
         }

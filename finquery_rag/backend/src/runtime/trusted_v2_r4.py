@@ -16,8 +16,7 @@ from rag_v2.supervisor import (
     extract_query_semantic_frame,
 )
 from src.pdf_retrieval_v4.candidate_direct_retriever import CandidateDirectRetriever
-from src.pdf_retrieval_v4.candidate_query_builder import append_missing_query_terms
-from src.pdf_retrieval_v4.planner import build_query_plan
+from src.pdf_retrieval_v4.retrieval_demand import SlotRetrievalRequestV1
 
 
 class R4RetrievalCapabilityError(RuntimeError):
@@ -53,6 +52,45 @@ class R4RetrievalResult:
     retrieval_round: int
     source_branch_metadata: Mapping[str, Any] = field(default_factory=dict)
     result_fingerprint: str | None = None
+
+
+def build_slot_retrieval_requests(
+    plan: SupervisorPlan,
+) -> tuple[SlotRetrievalRequestV1, ...]:
+    """One retrieval demand per required slot, in the plan's order.
+
+    A *copy*, not a derivation.  Nothing here reads the question, the plan's
+    intent, or the retrieval layer's own opinion of how many facts the question
+    needs -- `SupervisorPlan` already decided that, and deriving it a second time
+    is how `operand_slots` came to be 1 for a four-company ranking.
+
+    Cardinality is therefore guaranteed rather than merely intended::
+
+        len(build_slot_retrieval_requests(plan)) == len(plan.required_slots)
+
+    including when two slots are semantically identical.  Those stay separate
+    demands -- noticing the duplication is the plan contract's job, upstream, and
+    collapsing them here would quietly answer a question the plan asked twice.
+
+    Lives in the runtime layer rather than beside the type because it is the
+    layer that already depends on both `rag_v2` and `src.pdf_retrieval_v4`; the
+    type itself stays dependency-free so the retrieval package can hold it
+    without reaching back into the supervisor.
+    """
+
+    return tuple(
+        SlotRetrievalRequestV1(
+            slot_id=slot.slot_id,
+            metric=slot.metric,
+            period=slot.period,
+            role=slot.role,
+            value_type=slot.value_type,
+            unit=slot.unit,
+            entity=slot.entity,
+            entity_id=slot.entity_id,
+        )
+        for slot in plan.required_slots
+    )
 
 
 class R4Policy(Protocol):
@@ -357,109 +395,41 @@ class CandidateDirectR4Policy:
 
     def retrieve(self, request: R4RetrievalRequest) -> R4RetrievalResult:
         self.calls += 1
-        targeted_slots = tuple(
-            slot
-            for slot in request.plan.required_slots
-            if request.target_slots and slot.slot_id in request.target_slots
-        )
-        target_terms: list[str] = []
-        for slot in targeted_slots:
-            target_terms.extend(
-                term
-                for term in (slot.metric, slot.period)
-                if term
+        # The demand, not the question.  One request per required slot, copied
+        # from the plan, so *this* -- not `build_query_plan` -- decides how many
+        # lanes there are.  Recovery may narrow the set to the slots the
+        # evaluator reported missing; it can only select from what the plan
+        # already asked for, never re-derive the count or add a lane.
+        #
+        # The old path built one `targeted_question` and let the legacy QueryPlan
+        # parser decide the slot count from it.  For every cross-entity
+        # comparison and ranking that parser answers 1, which is how a
+        # four-company question came to share a single retrieval pool.
+        requests = build_slot_retrieval_requests(request.plan)
+        if request.target_slots:
+            selected = tuple(
+                item for item in requests if item.slot_id in set(request.target_slots)
             )
-        if len(targeted_slots) == 1:
-            # Recovery must search for the missing requirement itself, not
-            # repeat the original multi-slot question. The latter can make the
-            # legacy QueryPlan parser choose the first metric again, returning
-            # the same crowded candidate pool indefinitely. This is a
-            # deterministic slot query built from the Supervisor's canonical
-            # RequiredSlot, never a second LLM plan.
-            target = targeted_slots[0]
-            targeted_question = " ".join(
-                part for part in (target.metric, target.period) if part
-            )
-        elif request.target_slots:
-            targeted_question = append_missing_query_terms(
-                request.standalone_query,
-                target_terms,
-            )
-        else:
-            targeted_question = request.standalone_query
-        query_plan = build_query_plan(
-            targeted_question,
-            tuple(request.document_scope or self.document_scope),
-        )
-        raw = self.retriever.retrieve(
-            query_plan,
+            if selected:
+                requests = selected
+        raw = self.retriever.retrieve_for_requests(
+            requests,
             document_scope=set(request.document_scope or self.document_scope),
         )
         slot_pools = raw.get("slot_pools", {})
+        # `retrieve_for_requests` has already merged the lanes -- round-robin by
+        # rank across slots when there are several, a plain top-K when there is
+        # one.  Interleaving again here would be a second merge policy for the
+        # same packet, and the two would drift.
         pool: list[Mapping[str, Any]] = []
-        if request.target_slots and isinstance(slot_pools, Mapping):
-            planner_slot_ids = _planner_slot_ids_for_targets(
-                request.plan,
-                query_plan,
-                request.target_slots,
+        values = raw.get("candidate_direct_pool", ())
+        if isinstance(values, Iterable):
+            pool.extend(
+                item
+                if isinstance(item, Mapping)
+                else {"candidate_key": getattr(item, "candidate_key", "")}
+                for item in values
             )
-            slot_values_list: list[list[Any]] = []
-            for slot_id in planner_slot_ids:
-                values = slot_pools.get(slot_id, ())
-                if isinstance(values, Iterable):
-                    slot_values_list.append(list(values))
-            max_depth = max((len(v) for v in slot_values_list), default=0)
-            existing_pool_keys: set[str] = set()
-            for depth in range(max_depth):
-                for slot_values in slot_values_list:
-                    if depth < len(slot_values):
-                        raw_item = slot_values[depth]
-                        rank = depth + 1
-                        item = (
-                            raw_item
-                            if isinstance(raw_item, Mapping)
-                            else self._rrf_pool_item(raw_item, rank)
-                        )
-                        ckey = str(item.get("candidate_key") or "")
-                        if ckey and ckey not in existing_pool_keys:
-                            existing_pool_keys.add(ckey)
-                            pool.append(item)
-        if not pool:
-            values = raw.get("candidate_direct_pool", ())
-            if isinstance(values, Iterable):
-                pool.extend(
-                    item
-                    if isinstance(item, Mapping)
-                    else {"candidate_key": getattr(item, "candidate_key", "")}
-                    for item in values
-                )
-
-        # Ensure slot-specific candidates from R4 slot pools are fairly
-        # interleaved before candidate materialization and scope ordering,
-        # preventing a single slot from starving operands in calculations.
-        if not request.target_slots and request.plan.required_slots:
-            slot_pool_values = raw.get("slot_pools", {})
-            if isinstance(slot_pool_values, Mapping):
-                existing = {
-                    str(item.get("candidate_key"))
-                    for item in pool
-                    if isinstance(item, Mapping) and item.get("candidate_key")
-                }
-                slot_values_list = [
-                    list(v) for v in slot_pool_values.values() if isinstance(v, Iterable)
-                ]
-                max_depth = max((len(v) for v in slot_values_list), default=0)
-                limit = max(80, self.retriever.final_pool_k * 2)
-                for depth in range(min(max_depth, limit)):
-                    for slot_values in slot_values_list:
-                        if depth < len(slot_values):
-                            hit = slot_values[depth]
-                            rank = depth + 1
-                            item = self._rrf_pool_item(hit, rank)
-                            candidate_key = item["candidate_key"]
-                            if candidate_key and candidate_key not in existing:
-                                pool.append(item)
-                                existing.add(candidate_key)
 
         candidate_ids = _stable_unique(
             str(item.get("candidate_key", ""))
@@ -627,14 +597,15 @@ class CandidateDirectR4Policy:
                 "policy": "candidate_direct_r4",
                 "slot_pool_count": len(slot_pools) if isinstance(slot_pools, Mapping) else 0,
                 "candidate_direct_pool_count": len(raw.get("candidate_direct_pool", ())),
-                "query": targeted_question,
-                "planner_slot_ids": list(
-                    _planner_slot_ids_for_targets(
-                        request.plan,
-                        query_plan,
-                        request.target_slots,
-                    )
-                ),
+                # The *demand's* query and slot ids.  This used to report the
+                # retrieval planner's slot ids -- the output of a mapping whose
+                # only purpose was to undo the planner's own slot-count guess,
+                # and which no longer decides anything.  `query` is kept for the
+                # single-demand case because "a targeted recovery searches for
+                # the missing requirement itself, not the original multi-slot
+                # question" is a property worth still being able to assert.
+                "query": requests[0].query if len(requests) == 1 else None,
+                "slot_ids": [item.slot_id for item in requests],
                 "slot_query_variants": {
                     str(slot_id): [str(query) for query in queries]
                     for slot_id, queries in (raw.get("slot_query_variants", {}) or {}).items()
