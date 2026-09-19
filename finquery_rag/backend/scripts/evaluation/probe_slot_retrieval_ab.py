@@ -83,7 +83,7 @@ def main(argv: list[str] | None = None) -> int:
     from src.runtime.trusted_v2_r4 import build_slot_retrieval_requests
     from rag_v2.contracts.plan import SupervisorPlan
 
-    index_dir = _path_env(dict(os.environ), "TRUSTED_V2_R4_INDEX_DIR")
+    index_dir = _path_env(dict(os.environ), "TRUSTED_V2_R4_INDEX_DIR", directory=True)
     retriever = CandidateDirectRetriever(CandidateViewIndexReader(index_dir))
 
     cases = [
