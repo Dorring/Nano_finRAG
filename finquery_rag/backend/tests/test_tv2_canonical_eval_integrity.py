@@ -66,16 +66,25 @@ def gold_by_id(gold_records):
 
 @pytest.fixture(scope="module")
 def fact_store_keys():
+    """The keys of the store the runtime would actually build.
+
+    Read through the runtime's own construction rather than the legacy file
+    directly.  The migrated cross-entity gold names facts from the rebuilt iXBRL
+    store, so a check that read only `financial-facts.jsonl` would report the new
+    gold as unresolvable while the runtime resolves it perfectly well.  What this
+    test is for is the deployment contract -- every named fact is materializable
+    -- and that contract is about the store in use, not about one file.
+    """
+
     if not FACT_STORE.exists():
         pytest.skip("Fact store not available at %s" % FACT_STORE)
-    keys = set()
-    with FACT_STORE.open(encoding="utf-8") as f:
-        for line in f:
-            fact = json.loads(line)
-            ck = fact.get("candidate_key")
-            if ck:
-                keys.add(ck)
-    return keys
+    import os
+    import sys
+
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+    from src.runtime.trusted_v2_production import _build_fact_store
+
+    return set(_build_fact_store(FACT_STORE, os.environ).candidate_keys)
 
 
 @pytest.fixture(scope="module")

@@ -26,6 +26,7 @@ from rag_v2.contracts import Action, Intent, RequiredSlot, SupervisorPlan
 from rag_v2.supervisor import validate_plan_v2_01
 from scripts.evaluation.build_p1_2_plan_fixtures import (
     DEFAULT_FACT_STORE,
+    DEFAULT_IXBRL_FACT_STORE,
     author_plan,
     build_fixtures,
     load_fact_coordinates,
@@ -61,8 +62,21 @@ fact_store_required = pytest.mark.skipif(
 
 
 def _corpus_fixtures() -> list[dict]:
+    """The corpus fixtures, rebuilt from gold.
+
+    Both stores are read.  The cross-entity stratum was re-derived onto canonical
+    concepts and its gold `fact_ids` are iXBRL keys, so a rebuild that read only
+    the legacy store could not resolve them and would author slots with no
+    coordinate -- which is a rebuild failure that says nothing about the
+    fixtures.
+    """
+
     needed = operand_fact_ids(GOLD)
-    return build_fixtures(EVAL_SET, GOLD, load_fact_coordinates(DEFAULT_FACT_STORE, needed))
+    return build_fixtures(
+        EVAL_SET,
+        GOLD,
+        load_fact_coordinates([DEFAULT_FACT_STORE, DEFAULT_IXBRL_FACT_STORE], needed),
+    )
 
 
 #: Keys that never belong in a fixture, because they are the answer the runtime

@@ -535,6 +535,47 @@ class StructuredFactStore:
         return materialized
 
 
+#: Optional override for the rebuilt iXBRL store.  Unset, the conventional file
+#: beside the legacy store is used when it exists; set to an empty string, the
+#: canonical path is disabled entirely.
+IXBRL_FACT_STORE_ENV = "TRUSTED_V2_IXBRL_FACT_STORE_PATH"
+
+#: The name the rebuilt store is written under, beside the legacy one.
+IXBRL_FACT_STORE_FILENAME = "financial-facts-ixbrl-v1.jsonl"
+
+
+def _build_fact_store(
+    fact_path: Path, environ: Mapping[str, str]
+) -> Any:
+    """The fact store, wrapped to answer canonical quantities.
+
+    **On by default when the rebuilt store is present**, because the migrated
+    cross-entity fixtures name facts from it: leaving it opt-in would mean a
+    deployment that had not set an environment variable silently could not
+    materialize half its gold, which is a worse failure than not having the
+    feature.  An explicit empty value disables it, and a missing file degrades to
+    the legacy store.
+
+    The wrapper is additive and refuses rather than guesses: a metric that names
+    no single quantity is absent from its map, and a quantity still holding more
+    than one value resolves to nothing.  Both fall through to the legacy store.
+    """
+
+    legacy = StructuredFactStore(fact_path)
+    configured = environ.get(IXBRL_FACT_STORE_ENV)
+    if configured is None:
+        candidate = Path(fact_path).parent / IXBRL_FACT_STORE_FILENAME
+    elif not str(configured).strip():
+        return legacy
+    else:
+        candidate = Path(str(configured)).expanduser()
+    if not candidate.is_file():
+        return legacy
+    from src.runtime.trusted_v2_canonical_store import CanonicalFactStore
+
+    return CanonicalFactStore(legacy, candidate)
+
+
 def _sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -637,8 +678,17 @@ def inspect_r4_fact_store_compatibility(
     after a user request reaches the bounded runtime.
     """
 
-    if not isinstance(fact_store, StructuredFactStore):
-        raise TypeError("fact_store must be StructuredFactStore")
+    # The contract this check exists to enforce is "every R4 candidate key can be
+    # materialized", not "this object is that class".  Testing the class instead
+    # rejected the canonical wrapper, which delegates `candidate_keys` and
+    # `materialize` to a store that satisfies it -- the check would have passed
+    # on the wrapped store and failed on its wrapper, which is backwards.
+    for attribute in ("candidate_keys", "materialize"):
+        if not hasattr(fact_store, attribute):
+            raise TypeError(
+                f"fact_store must materialize candidate keys; "
+                f"missing {attribute!r}"
+            )
     root = Path(index_dir).expanduser().resolve()
     metadata_path = root / "candidate-metadata.sqlite"
     try:
@@ -957,7 +1007,7 @@ def validate_trusted_v2_production_configuration(
     fact_path = _path_env(env, "TRUSTED_V2_FACT_STORE_PATH", directory=False)
     checkpoint = _path_env(env, "TRUSTED_V2_SPECIALIST_CHECKPOINT", directory=False)
     index_manifest = inspect_r4_index(index_dir)
-    fact_store = StructuredFactStore(fact_path)
+    fact_store = _build_fact_store(fact_path, env)
     fact_store_compatibility = _require_r4_fact_store_compatibility(
         index_dir,
         fact_store,
@@ -1023,7 +1073,7 @@ def _load_resources(environ: Mapping[str, str]) -> TrustedV2RuntimeResources:
     index_dir = _path_env(environ, "TRUSTED_V2_R4_INDEX_DIR", directory=True)
     fact_path = _path_env(environ, "TRUSTED_V2_FACT_STORE_PATH", directory=False)
     index_manifest = inspect_r4_index(index_dir)
-    fact_store = StructuredFactStore(fact_path)
+    fact_store = _build_fact_store(fact_path, environ)
     _require_r4_fact_store_compatibility(index_dir, fact_store)
     index_reader = None
     try:

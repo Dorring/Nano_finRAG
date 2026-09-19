@@ -88,6 +88,14 @@ DEFAULT_FACT_STORE = Path(
     "/disk/qh/nano-finrag/data/trusted-v2/fact-store/financial-facts.jsonl"
 )
 
+#: The rebuilt iXBRL store, written beside it.  Gold now names facts from two
+#: stores -- the cross-entity stratum was re-derived onto canonical concepts, and
+#: its `fact_ids` are iXBRL keys -- so a build reads both.  Missing, it is simply
+#: skipped and the build behaves as it did before the rebuild.
+DEFAULT_IXBRL_FACT_STORE = Path(
+    "/disk/qh/nano-finrag/data/trusted-v2/fact-store/financial-facts-ixbrl-v1.jsonl"
+)
+
 #: Gold `operation` values that are executable plan operations.  The rest of the
 #: gold vocabulary (`comparison`, `cross_entity_difference`, `ranking`) names a
 #: *shape of answer* rather than an arithmetic operation, and `SupervisorPlan`
@@ -228,13 +236,29 @@ def _metric_from_question(question: str) -> tuple[str, str] | None:
     return None
 
 
+def _store_paths(fact_store: Path | Iterable[Path]) -> list[Path]:
+    """One store path or several, normalised to a list of existing files.
+
+    Two stores now answer for gold: the legacy table-derived one and the rebuilt
+    iXBRL one, and the migrated cross-entity gold names facts from the second.
+    A loader that read only the first would report that gold as unresolvable
+    while the runtime resolves it, so both are read the same way.
+    """
+
+    if isinstance(fact_store, (str, Path)):
+        candidates = [Path(fact_store)]
+    else:
+        candidates = [Path(item) for item in fact_store]
+    return [path for path in candidates if path.is_file()]
+
+
 def load_fact_coordinates(
-    fact_store: Path,
+    fact_store: Path | Iterable[Path],
     fact_ids: Iterable[str],
 ) -> dict[str, Mapping[str, Any]]:
     """Read the records of exactly the facts a fixture build needs.
 
-    One pass over the store keeping only the wanted ids, so a twenty-thousand
+    One pass over each store keeping only the wanted ids, so a twenty-thousand
     record store costs seconds rather than memory.  A record is indexed under
     whichever of ``_FACT_ID_FIELDS`` the gold's id matched, and the first record
     for an id wins: a store can carry several extraction rows for one candidate,
@@ -245,17 +269,18 @@ def load_fact_coordinates(
     if not wanted:
         return {}
     found: dict[str, Mapping[str, Any]] = {}
-    with fact_store.open(encoding="utf-8") as handle:
-        for line in handle:
-            line = line.strip()
-            if not line:
-                continue
-            record = json.loads(line)
-            for field in _FACT_ID_FIELDS:
-                key = record.get(field)
-                if key is not None and str(key) in wanted:
-                    found.setdefault(str(key), record)
-                    break
+    for path in _store_paths(fact_store):
+        with path.open(encoding="utf-8") as handle:
+            for line in handle:
+                line = line.strip()
+                if not line:
+                    continue
+                record = json.loads(line)
+                for field in _FACT_ID_FIELDS:
+                    key = record.get(field)
+                    if key is not None and str(key) in wanted:
+                        found.setdefault(str(key), record)
+                        break
     return found
 
 
@@ -542,7 +567,7 @@ def operand_fact_ids(gold_path: Path) -> list[str]:
     return needed
 
 
-def load_coordinate_index(store: Path) -> dict[tuple[tuple[str, ...], tuple[str, ...]], list[str]]:
+def load_coordinate_index(store: Path | Iterable[Path]) -> dict[tuple[tuple[str, ...], tuple[str, ...]], list[str]]:
     """How many facts each coordinate selects, indexed by coordinate subset.
 
     Only ids are kept -- the validation needs counts, not content, so this stays
@@ -562,19 +587,25 @@ def load_coordinate_index(store: Path) -> dict[tuple[tuple[str, ...], tuple[str,
         for combo in _combinations(fields, width)
     ]
     index: dict[tuple[tuple[str, ...], tuple[str, ...]], list[str]] = {}
-    with store.open(encoding="utf-8") as handle:
-        for line in handle:
-            if not line.strip():
-                continue
-            record = json.loads(line)
-            if record.get("fact_type") != "atomic":
-                continue
-            fact_id = str(record.get("fact_id") or record.get("candidate_key") or "")
-            if not fact_id:
-                continue
-            for combo in subsets:
-                key = (combo, tuple(_fold_field(record.get(f)) for f in combo))
-                index.setdefault(key, []).append(fact_id)
+    for path in _store_paths(store):
+        with path.open(encoding="utf-8") as handle:
+            for line in handle:
+                if not line.strip():
+                    continue
+                record = json.loads(line)
+                # Legacy rows mark themselves `atomic`; iXBRL rows carry no
+                # `fact_type` at all.  Requiring the marker excluded every
+                # canonical fact, so the index described a store the runtime no
+                # longer uses for the migrated stratum -- and counted a
+                # coordinate's ambiguity over the wrong population.
+                if record.get("fact_type") not in (None, "atomic"):
+                    continue
+                fact_id = str(record.get("fact_id") or record.get("candidate_key") or "")
+                if not fact_id:
+                    continue
+                for combo in subsets:
+                    key = (combo, tuple(_fold_field(record.get(f)) for f in combo))
+                    index.setdefault(key, []).append(fact_id)
     return index
 
 
@@ -824,6 +855,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--eval-set", type=Path, default=DEFAULT_EVAL_SET)
     parser.add_argument("--gold-evidence", type=Path, default=DEFAULT_GOLD)
     parser.add_argument("--fact-store", type=Path, default=DEFAULT_FACT_STORE)
+    parser.add_argument(
+        "--ixbrl-fact-store",
+        type=Path,
+        default=DEFAULT_IXBRL_FACT_STORE,
+        help="the rebuilt iXBRL store; gold facts named from it are read here",
+    )
     parser.add_argument("--out-dir", type=Path, default=DEFAULT_OUT_DIR)
     parser.add_argument("--audit-dir", type=Path, default=DEFAULT_AUDIT_DIR)
     parser.add_argument(
@@ -845,7 +882,9 @@ def main(argv: list[str] | None = None) -> int:
                 file=sys.stderr,
             )
             return 2
-        operand_facts = load_fact_coordinates(args.fact_store, needed)
+        operand_facts = load_fact_coordinates(
+            [args.fact_store, args.ixbrl_fact_store], needed
+        )
         missing = sorted(set(needed) - set(operand_facts))
         if missing:
             print(
@@ -853,7 +892,9 @@ def main(argv: list[str] | None = None) -> int:
                 file=sys.stderr,
             )
             return 2
-        coordinate_index = load_coordinate_index(args.fact_store)
+        coordinate_index = load_coordinate_index(
+            [args.fact_store, args.ixbrl_fact_store]
+        )
 
     fixtures = build_fixtures(args.eval_set, args.gold_evidence, operand_facts)
     fixtures, ambiguous = enrich_and_validate(

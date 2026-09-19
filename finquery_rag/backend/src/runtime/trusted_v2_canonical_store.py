@@ -193,7 +193,7 @@ class CanonicalFactStore:
 
     @property
     def candidate_count(self) -> int:
-        return self.legacy.candidate_count
+        return self.legacy.candidate_count + len(self._records)
 
     @property
     def coordinate_count(self) -> int:
@@ -201,4 +201,14 @@ class CanonicalFactStore:
 
     @property
     def candidate_keys(self) -> tuple[str, ...]:
-        return self.legacy.candidate_keys
+        """Both key spaces.
+
+        A gold fixture may name a fact from either store -- the migrated
+        cross-entity stratum names iXBRL keys -- and the deployment contract is
+        that every named fact is materializable.  Reporting only the legacy keys
+        would make that check fail on records the wrapper can serve perfectly
+        well.
+        """
+
+        keys = [str(r.get("candidate_key")) for r in self._records if r.get("candidate_key")]
+        return tuple(self.legacy.candidate_keys) + tuple(keys)
