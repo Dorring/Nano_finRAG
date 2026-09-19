@@ -245,3 +245,114 @@ def test_calculate_does_not_read_the_plan_intent() -> None:
 
     assert referenced, "the scan yielded nothing to read"
     assert "intent" not in referenced
+
+
+# --- the third place the coupling lived ---------------------------------------
+
+
+def test_the_plan_validator_allows_an_operation_on_a_multi_evidence_plan() -> None:
+    """`non-calculation plans cannot carry an operation` was the whole blocker.
+
+    The coupling was removed from the calculator and the coordinator first, and
+    this rule was missed.  The S2E migration then failed every case with
+    INVALID_PLAN -- which is how it was found, and why this test exists rather
+    than a second round of reading the same three files.
+    """
+
+    from rag_v2.supervisor.plan_validator import validate_plan_v2_01
+
+    plan = SupervisorPlan(
+        intent=Intent.MULTI_EVIDENCE,
+        required_slots=tuple(
+            RequiredSlot(
+                slot_id=f"s{index}",
+                metric="General and administrative",
+                period="FY2025",
+                role="value",
+                value_type="numeric",
+                entity=entity,
+            )
+            for index, entity in enumerate(("Apple", "Visa"), 1)
+        ),
+        operation="comparison",
+        next_action=Action.RETRIEVE,
+    )
+
+    assert validate_plan_v2_01(plan) is plan
+
+
+def test_the_validator_checks_the_operation_whatever_the_intent() -> None:
+    """A named operation must satisfy its own arity contract either way."""
+
+    from rag_v2.contracts.errors import PlanValidationError
+    from rag_v2.supervisor.plan_validator import validate_plan_v2_01
+
+    def plan(intent: Intent, operation: str, slots: int) -> SupervisorPlan:
+        return SupervisorPlan(
+            intent=intent,
+            required_slots=tuple(
+                RequiredSlot(
+                    slot_id=f"s{index}",
+                    metric="Revenue",
+                    period="FY2025",
+                    role="value",
+                    value_type="numeric",
+                )
+                for index in range(slots)
+            ),
+            operation=operation,
+            next_action=Action.RETRIEVE,
+        )
+
+    # A comparison ranks exactly two, under either intent.
+    for intent in (Intent.MULTI_EVIDENCE, Intent.CALCULATION):
+        with pytest.raises(PlanValidationError, match="exactly two"):
+            validate_plan_v2_01(plan(intent, "comparison", 3))
+
+
+def test_a_calculation_without_an_operation_is_still_a_planning_fault() -> None:
+    """The rule that was *not* removed, guarded against over-deletion."""
+
+    from rag_v2.contracts.errors import PlanValidationError
+    from rag_v2.supervisor.plan_validator import validate_plan_v2_01
+
+    with pytest.raises(PlanValidationError, match="require an operation"):
+        validate_plan_v2_01(
+            SupervisorPlan(
+                intent=Intent.CALCULATION,
+                required_slots=(
+                    RequiredSlot(
+                        slot_id="s1",
+                        metric="Revenue",
+                        period="FY2024",
+                        role="value",
+                        value_type="numeric",
+                    ),
+                ),
+                operation=None,
+                next_action=Action.RETRIEVE,
+            )
+        )
+
+
+def test_a_plan_with_no_operation_is_unaffected() -> None:
+    """Every factual and abstention plan, which must not start being rejected."""
+
+    from rag_v2.supervisor.plan_validator import validate_plan_v2_01
+
+    plan = SupervisorPlan(
+        intent=Intent.DIRECT_FACT,
+        required_slots=(
+            RequiredSlot(
+                slot_id="s1",
+                metric="Revenue",
+                period="FY2025",
+                role="value",
+                value_type="numeric",
+            ),
+        ),
+        operation=None,
+        next_action=Action.RETRIEVE,
+    )
+
+    assert validate_plan_v2_01(plan) is plan
