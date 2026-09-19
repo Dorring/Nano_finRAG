@@ -13,16 +13,24 @@ them is named.
     NEW_FALSE_RELEASE      released wrong where it did not before
     NEW_EXECUTION_ERROR    EXECUTION_ERROR where it was not
     FIXED_EXECUTION_ERROR  no longer EXECUTION_ERROR
+    GROUND_TRUTH_AMBIGUOUS moved, but the case's gold cannot judge the system
     UNCHANGED_OTHER        equally wrong, or equally uninformative, both sides
 
 `SAFER_FAIL_CLOSED` is the one that needs an explicit name.  It is an
 improvement and it looks like a loss in any count of releases.
+
+`GROUND_TRUTH_AMBIGUOUS` is the other.  Without it `compare-009` reads as a
+regression: it released a correct answer and now fail-closes.  But its gold took
+one cell of a flattened segment table (`P1.6-0C`), so the case was never
+measuring the system -- it was measuring the fixture.  A diff that cannot say
+that reports a caught defect as a lost release.
 
 A case's verdict is taken from its **modal** status across the runs, so a single
 provider flake does not read as a behavioural change.  Cases whose runs disagree
 are reported separately rather than folded in.
 
   python diff_p1_5f_regression.py --baseline <dir> --after <dir>
+      [--gold-validity <P1.6-0C artifact>]
 """
 
 from __future__ import annotations
@@ -65,7 +73,18 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--baseline", type=Path, required=True)
     parser.add_argument("--after", type=Path, required=True)
     parser.add_argument("--gold", type=Path, required=True)
+    parser.add_argument(
+        "--gold-validity",
+        type=Path,
+        default=None,
+        help="P1.6-0C artifact; cases whose gold it discredited or could not "
+        "settle are classified GROUND_TRUTH_AMBIGUOUS instead of REGRESSED",
+    )
     args = parser.parse_args(argv)
+
+    from src.evaluation.grounded_release import GoldValidity, load_gold_validity
+
+    validity = load_gold_validity(args.gold_validity) if args.gold_validity else {}
 
     from src.evaluation.p1_2_dual_track import _correct_by_stratum
 
@@ -101,6 +120,14 @@ def main(argv: list[str] | None = None) -> int:
 
         if b_status == a_status and b_correct == a_correct:
             verdict = "UNCHANGED_CORRECT" if a_correct else "UNCHANGED_OTHER"
+        elif validity.get(case_id) in (
+            GoldValidity.WRONG_SCOPE,
+            GoldValidity.UNRESOLVED,
+        ):
+            # Checked before every directional verdict.  The case moved, but the
+            # gold cannot say whether the movement helped, so calling it either
+            # way would be an attribution the evidence does not support.
+            verdict = "GROUND_TRUTH_AMBIGUOUS"
         elif a_status == "EXECUTION_ERROR" and b_status != "EXECUTION_ERROR":
             verdict = "NEW_EXECUTION_ERROR"
         elif b_status == "EXECUTION_ERROR" and a_status != "EXECUTION_ERROR":
@@ -117,7 +144,14 @@ def main(argv: list[str] | None = None) -> int:
             verdict = "UNCHANGED_OTHER"
 
         verdicts[verdict] += 1
-        by_stratum[str(gold_row.get("stratum") or "?")][verdict] += 1
+        # The stratum lives on the prediction row, not on the gold row -- the
+        # gold corpus carries no `stratum` field at all, so reading it from
+        # there put every case under "?" and made the per-stratum table unable
+        # to attribute anything.
+        stratum = str(
+            next(iter(exemplar.values())).get("stratum") or "?"
+        )
+        by_stratum[stratum][verdict] += 1
         if verdict not in ("UNCHANGED_CORRECT", "UNCHANGED_OTHER"):
             rows.append({"case": case_id, "verdict": verdict,
                          "baseline": b_status, "after": a_status,

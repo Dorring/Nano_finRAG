@@ -384,8 +384,29 @@ def score_reachability(rows: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
 def score_downstream(
     rows: Sequence[Mapping[str, Any]],
     gold: Mapping[str, Mapping[str, Any]],
+    *,
+    gold_validity: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """The post-alignment chain, scored with candidate and release kept apart."""
+    """The post-alignment chain, scored with candidate and release kept apart.
+
+    ``gold_validity`` is optional and comes from the P1.6-0C audit.  When it is
+    given, the release verdict is split further -- a correct answer from an
+    operand the gold does not authorise is reported as `ungrounded_release`
+    rather than counted as a success, and a case whose gold the audit
+    discredited is reported as ungradeable rather than as a failure.  Omitted,
+    every case is unaudited and the older counters mean what they always did.
+    """
+
+    from src.evaluation.grounded_release import (
+        GoldValidity,
+        ReleaseVerdict,
+        operand_grounded_correct,
+        release_verdict,
+    )
+
+    validity_for = lambda case_id: (  # noqa: E731 - one expression, used twice
+        (gold_validity or {}).get(str(case_id), GoldValidity.UNAUDITED)
+    )
 
     total = len(rows)
     counters: Counter[str] = Counter()
@@ -404,6 +425,14 @@ def score_downstream(
         "no_answer_false_release",
         "no_answer_reason_attributed",
         "provider_failure",
+        # The grounded-release split.  These are emitted on every run, zero or
+        # not, for the same reason as the rest: an absent rate reads as an
+        # absent problem.
+        "trusted_release",
+        "ungrounded_release",
+        "gold_ungradeable_release",
+        "operand_grounded_correct",
+        "operand_grounding_unjudged",
     ):
         counters[name] = 0
     by_stratum: dict[str, Counter[str]] = {}
@@ -456,6 +485,32 @@ def score_downstream(
                     counters["no_answer_reason_attributed"] += 1
                     bucket["no_answer_reason_attributed"] += 1
 
+        # The grounded split, computed for every row so that a case with no
+        # deterministic execution is counted as unjudged rather than silently
+        # folded in with the grounded ones.
+        verdict = release_verdict(
+            row,
+            gold_row,
+            decision_correct=candidate_correct,
+            gold_validity=validity_for(row.get("id")),
+        )
+        if verdict is ReleaseVerdict.TRUSTED:
+            counters["trusted_release"] += 1
+            bucket["trusted_release"] += 1
+        elif verdict is ReleaseVerdict.UNGROUNDED:
+            counters["ungrounded_release"] += 1
+            bucket["ungrounded_release"] += 1
+        elif verdict is ReleaseVerdict.GOLD_UNGRADEABLE:
+            counters["gold_ungradeable_release"] += 1
+            bucket["gold_ungradeable_release"] += 1
+        grounded = operand_grounded_correct(row, gold_row)
+        if grounded is True:
+            counters["operand_grounded_correct"] += 1
+            bucket["operand_grounded_correct"] += 1
+        elif grounded is None:
+            counters["operand_grounding_unjudged"] += 1
+            bucket["operand_grounding_unjudged"] += 1
+
         if row.get("provider_failure"):
             counters["provider_failure"] += 1
 
@@ -496,6 +551,14 @@ def score_downstream(
             else None
         ),
         "false_release_rate": _rate("false_release", answerable_count),
+        "trusted_release_rate": _rate("trusted_release", answerable_count),
+        "ungrounded_release_rate": _rate("ungrounded_release", answerable_count),
+        "grounded_scoring": (
+            "P1.6-0C gold validity supplied"
+            if gold_validity
+            else "unaudited: gold_validity not supplied, so every release is "
+            "judged on the answer alone"
+        ),
         "over_conservative_rate": _rate("over_conservative_block", answerable_count),
         "citations": citation_diagnostics(rows),
         "tokens": _tokens(rows),
