@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from collections.abc import Iterable, Mapping
-import os
 from typing import Any
 
 from rag_v2.adaptive import (
@@ -457,14 +456,6 @@ class SemanticEvidenceEvaluationCapability:
         slot_entity = getattr(slot, "entity", None)
         slot_entity_id = getattr(slot, "entity_id", None)
         fact_entity = fact.get("entity") or fact.get("company") or fact.get("ticker")
-
-        if os.environ.get("P15R_ENFORCE", "on") == "off":
-            # P1.5-R diagnostic only.  Reproduces what this matcher did before
-            # the entity contract reached it -- the query-level check alone --
-            # so the ablation can tell "the model can see the entity" apart from
-            # "the entity is enforced here".  The two are one field read at two
-            # places, and only turning one of them off isolates them.
-            return cls._frame_allows_entity(canonical_entity_id(fact_entity), frame)
 
         if not slot_entity and not slot_entity_id:
             return cls._frame_allows_entity(canonical_entity_id(fact_entity), frame)

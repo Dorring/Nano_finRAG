@@ -36,7 +36,6 @@ runtime layer that composes it can hold the type.
 
 from __future__ import annotations
 
-import os as _os
 from dataclasses import dataclass
 
 
@@ -76,31 +75,28 @@ class SlotRetrievalRequestV1:
     def query(self) -> str:
         """The deterministic retrieval query for this slot.
 
-        ``<entity> <metric> <period>`` and nothing else.  Deliberately not the
-        question, not a paraphrase of it, and not any other slot's terms: the
-        measured failure was exactly that cross-slot contamination, and a
-        per-slot lane whose query still names the other slots is a per-slot lane
-        in name only.
+        ``<metric> <period>`` and nothing else.  Not the question, not a
+        paraphrase of it, not another slot's terms -- and **not the entity**.
 
-        The entity mention is used rather than ``entity_id`` because that is
-        what was measured -- an entity-scoped query built this way found 47/47
-        gold facts at a median rank of 20 against the production query's 39/47
-        at a median of 129.  Swapping in the canonical id is an untested
-        variation on that result, not a neutral tidy-up.
+        The entity was here, and it was wrong.  The lanes tokenise a query as an
+        OR expression, so a company name adds tokens matching every row for that
+        company and dilutes the ranking until the specific fact falls outside
+        `slot_top_k`.  That is not a theory: with the entity in the query, five
+        single-entity cases went from correct releases to fail-closed, and
+        removing it restored all five across three runs while *improving*
+        cross-entity reachability -- lane 40/47 -> 44/47, packet 30/47 -> 31/47.
+
+        The entity is not lost by this.  It stays on the slot, reaches the
+        Binder, and is enforced deterministically by `_entity_matches_slot`;
+        isolating by it is a metadata and eligibility concern, which is what
+        `candidate_query_builder._entity_terms` already does when a document
+        scope is present.  Reproducing a structured constraint as a lexical term
+        adds noise and no isolation.
 
         A slot may legitimately carry no entity (a single-company question), in
-        which case the query is the metric and period alone.
+        which case this is unchanged -- which is itself the point: entity or no
+        entity, the query is the same.
         """
 
-        if _os.environ.get("P15R_QUERY_ENTITY", "on") == "off":
-            # P1.5-R diagnostic only.  The 2x2 ablation over prompt exposure and
-            # deterministic enforcement found both arms identical, which means
-            # the entity's effect on those five cases is somewhere neither
-            # toggle reached -- and this is the third place the field is read:
-            # it builds the slot's retrieval *query*, so it changes which
-            # candidates are retrieved at all.
-            parts = (self.metric, self.period)
-            return " ".join(part.strip() for part in parts if part and part.strip())
-
-        parts = (self.entity, self.metric, self.period)
+        parts = (self.metric, self.period)
         return " ".join(part.strip() for part in parts if part and part.strip())
