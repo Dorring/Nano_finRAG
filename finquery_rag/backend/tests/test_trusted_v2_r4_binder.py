@@ -1420,7 +1420,32 @@ def test_alias_variant_search_is_fused_into_slot_pool() -> None:
     )
 
 
-def test_supervisor_slot_id_maps_to_query_plan_slot_pool() -> None:
+@pytest.mark.parametrize(
+    ("alias_expansion", "expected"),
+    [(False, "DISTRACTOR"), (True, "RIGHT")],
+    ids=["arm-A-literal-query", "arm-B-slot-local-aliases"],
+)
+def test_a_targeted_slot_searches_for_its_own_requirement(
+    alias_expansion: bool, expected: str
+) -> None:
+    """A targeted slot is queried from its own RequiredSlot, not the question.
+
+    This replaces an assertion on ``source_branch_metadata["planner_slot_ids"]
+    == ["fact"]`` -- the mapping from a Supervisor slot id onto the retrieval
+    planner's own slot id.  That mapping existed only to undo the planner's
+    slot-count guess and is gone, so what it was protecting is asserted
+    directly: a targeted slot selects the candidate for *that* slot rather than
+    drifting to the unscoped pool.
+
+    ``QuerySensitiveIndexReader`` answers ``RIGHT`` only for a query containing
+    "total net sales", which makes the two arms separate cleanly.  Arm A -- the
+    literal ``Revenue FY2024`` -- never reaches it; Arm B does, by expanding the
+    metric to its filing-label aliases while keeping the slot's own entity and
+    period.  Both halves are pinned so that removing the expansion again cannot
+    pass unnoticed, and so the alias capability is recorded as load-bearing
+    rather than as legacy decoration.
+    """
+
     facts = {
         "RIGHT": _fact("RIGHT"),
         "DISTRACTOR": _fact("DISTRACTOR"),
@@ -1430,6 +1455,7 @@ def test_supervisor_slot_id_maps_to_query_plan_slot_pool() -> None:
     policy = CandidateDirectR4Policy(
         retriever,
         materializer=lambda key: facts[key],
+        alias_expansion=alias_expansion,
     )
     result = policy.retrieve(
         R4RetrievalRequest(
@@ -1441,8 +1467,8 @@ def test_supervisor_slot_id_maps_to_query_plan_slot_pool() -> None:
         )
     )
 
-    assert result.candidate_ids[0] == "RIGHT"
-    assert result.source_branch_metadata["planner_slot_ids"] == ["fact"]
+    assert result.candidate_ids[0] == expected
+    assert result.source_branch_metadata["slot_ids"] == ["revenue"]
 
 
 def test_single_missing_slot_uses_canonical_slot_query_not_original_multi_query() -> None:
@@ -1779,24 +1805,57 @@ def test_candidate_direct_r4_interleaves_multi_slot_pools_and_respects_entity_pr
     from src.pdf_retrieval_v4.candidate_direct_retriever import CandidateDirectRetriever
 
     class MockSlotRetriever(CandidateDirectRetriever):
+        """Two slot pools, merged the way production merges them.
+
+        Overrides ``retrieve_for_requests``, which is now the seam the policy
+        calls; it previously overrode ``retrieve(plan, ...)``, which the policy
+        no longer calls at all.  The merge is the same ``build_slot_pool``
+        production uses, so what this test still asserts about is the policy's
+        entity-priority pass over a round-robin pool -- the property it was
+        written for.
+
+        Nothing here is weakened to make the test pass: the mocked pools, the
+        expected counts and the entity-priority claim are unchanged.
+        """
+
         def __init__(self) -> None:
             self.reader = None
             self.final_pool_k = 4
 
-        def retrieve(self, query_plan: Any, document_scope: Any = None) -> dict[str, Any]:
+        def retrieve_for_requests(
+            self,
+            requests: Any,
+            *,
+            document_scope: Any = None,
+            total_k: int | None = None,
+            alias_expansion: bool = False,
+        ) -> dict[str, Any]:
+            from src.pdf_retrieval_v4.candidate_rrf import CandidateRRFHit
+            from src.pdf_retrieval_v4.candidate_slot_pool import build_slot_pool
+
+            def hits(*keys: str) -> list[CandidateRRFHit]:
+                return [
+                    CandidateRRFHit(
+                        candidate_key=key,
+                        rrf_score=1.0 / (index + 1),
+                        lane_ranks={"candidate_raw_bm25": index + 1},
+                        supporting_view_ids={"candidate_raw_bm25": f"view:{key}"},
+                    )
+                    for index, key in enumerate(keys)
+                ]
+
+            pools = {
+                "period_1": hits("PFIZER_2023_1", "JPM_2023_1", "JPM_2023_2"),
+                "period_2": hits("PFIZER_2024_1", "JPM_2024_1"),
+            }
             return {
-                "candidate_direct_pool": [],
-                "slot_pools": {
-                    "period_1": [
-                        {"candidate_key": "PFIZER_2023_1"},
-                        {"candidate_key": "JPM_2023_1"},
-                        {"candidate_key": "JPM_2023_2"},
-                    ],
-                    "period_2": [
-                        {"candidate_key": "PFIZER_2024_1"},
-                        {"candidate_key": "JPM_2024_1"},
-                    ],
-                },
+                "candidate_direct_pool": build_slot_pool(
+                    pools, total_k=total_k or max(80, self.final_pool_k * 2)
+                ),
+                "slot_pools": pools,
+                "slot_query_variants": {},
+                "lane_hits": {},
+                "rrf_hits": [],
             }
 
     def mock_materializer(key: str) -> dict[str, Any]:
@@ -1850,11 +1909,25 @@ def test_candidate_direct_r4_entity_priority_hardened_against_similar_entity_nam
     from src.pdf_retrieval_v4.candidate_direct_retriever import CandidateDirectRetriever
 
     class MockSingleSlotRetriever(CandidateDirectRetriever):
+        """A single lane's candidates, in the shape the policy now consumes.
+
+        Overrides ``retrieve_for_requests`` rather than ``retrieve(plan, ...)``,
+        which the policy no longer calls.  The candidate keys and the assertion
+        are unchanged -- only the seam moved.
+        """
+
         def __init__(self) -> None:
             self.reader = None
             self.final_pool_k = 10
 
-        def retrieve(self, query_plan: Any, document_scope: Any = None) -> dict[str, Any]:
+        def retrieve_for_requests(
+            self,
+            requests: Any,
+            *,
+            document_scope: Any = None,
+            total_k: int | None = None,
+            alias_expansion: bool = False,
+        ) -> dict[str, Any]:
             return {
                 "candidate_direct_pool": [
                     {"candidate_key": "HARTFORD_INSURANCE"},
@@ -1862,6 +1935,9 @@ def test_candidate_direct_r4_entity_priority_hardened_against_similar_entity_nam
                     {"candidate_key": "FORD_MOTOR"},
                 ],
                 "slot_pools": {},
+                "slot_query_variants": {},
+                "lane_hits": {},
+                "rrf_hits": [],
             }
 
     def mock_materializer(key: str) -> dict[str, Any]:
@@ -1908,7 +1984,14 @@ def test_candidate_direct_r4_entity_priority_hardened_against_similar_entity_nam
             self.reader = None
             self.final_pool_k = 10
 
-        def retrieve(self, query_plan: Any, document_scope: Any = None) -> dict[str, Any]:
+        def retrieve_for_requests(
+            self,
+            requests: Any,
+            *,
+            document_scope: Any = None,
+            total_k: int | None = None,
+            alias_expansion: bool = False,
+        ) -> dict[str, Any]:
             return {
                 "candidate_direct_pool": [
                     {"candidate_key": "PINEAPPLE_INC"},
@@ -1916,6 +1999,9 @@ def test_candidate_direct_r4_entity_priority_hardened_against_similar_entity_nam
                     {"candidate_key": "APPLE_INC"},
                 ],
                 "slot_pools": {},
+                "slot_query_variants": {},
+                "lane_hits": {},
+                "rrf_hits": [],
             }
 
     def mock_apple_materializer(key: str) -> dict[str, Any]:

@@ -352,7 +352,17 @@ class CandidateDirectRetriever:
         if len(slot_pools) == 1:
             pool = self._pool_from_rrf(next(iter(slot_pools.values())))
         else:
-            pool = build_slot_pool(slot_pools, total_k=total_k or self.final_pool_k)
+            # Merged to a working depth, not to the final packet size.  The
+            # caller still applies entity and scope ordering before its own cap
+            # at `final_pool_k`, and truncating to the final size here would drop
+            # the deeper candidates that ordering exists to rescue -- a slot's
+            # second candidate is exactly the one an entity-priority pass lifts
+            # over another slot's first.  The depth is the one the previous
+            # interleave used for the same reason.
+            pool = build_slot_pool(
+                slot_pools,
+                total_k=total_k or max(80, self.final_pool_k * 2),
+            )
 
         return {
             "candidate_direct_pool": pool,

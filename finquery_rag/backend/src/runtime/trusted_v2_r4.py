@@ -363,12 +363,18 @@ class CandidateDirectR4Policy:
         *,
         materializer: Materializer,
         document_scope: Sequence[str] = (),
+        alias_expansion: bool = False,
     ) -> None:
         if not isinstance(retriever, CandidateDirectRetriever):
             raise TypeError("retriever must be CandidateDirectRetriever")
         self.retriever = retriever
         self.materializer = materializer
         self.document_scope = tuple(str(item) for item in document_scope if str(item))
+        # Whether each lane also searches the slot's own alias variants.  A
+        # constructor flag rather than a constant so both arms run through the
+        # production path and differ in one variable -- measuring Arm B by
+        # editing the source would make the two arms two different programs.
+        self.alias_expansion = bool(alias_expansion)
         self.calls = 0
 
     @staticmethod
@@ -415,6 +421,7 @@ class CandidateDirectR4Policy:
         raw = self.retriever.retrieve_for_requests(
             requests,
             document_scope=set(request.document_scope or self.document_scope),
+            alias_expansion=self.alias_expansion,
         )
         slot_pools = raw.get("slot_pools", {})
         # `retrieve_for_requests` has already merged the lanes -- round-robin by
