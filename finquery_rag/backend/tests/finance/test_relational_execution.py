@@ -132,11 +132,12 @@ def test_a_comparison_needs_two_operands() -> None:
 
 
 def test_a_comparison_of_incomparable_units_declines() -> None:
-    """Compatibility is asked of the primitive that already decides it.
+    """Units are checked on the operands, because the primitives cannot see them.
 
-    `difference` refuses operands whose units disagree, so ordering inherits
-    that rule rather than restating it -- a second rule would be a second
-    authority for "may these be compared" and the two would drift.
+    Every adapter hands the primitives ``operand.value``, so `difference`
+    receives two bare ``Decimal``s and a USD/EUR mismatch is invisible to it.
+    An earlier version of this code claimed otherwise; this test is what
+    established it does not.
     """
 
     result = _comparison_adapter(
@@ -144,6 +145,18 @@ def test_a_comparison_of_incomparable_units_declines() -> None:
     )
 
     assert result.ok is False
+
+
+def test_an_unstated_unit_does_not_disagree_with_a_stated_one() -> None:
+    """``None`` is unknown, not different -- refusing it would fail closed on
+    every record whose unit the extractor did not populate, which is currently
+    all of them."""
+
+    result = _comparison_adapter(
+        (_operand("s1", "10", unit=None), _operand("s2", "4", unit="USD")), 4
+    )
+
+    assert result.ok is True
 
 
 # --- ranking ------------------------------------------------------------------

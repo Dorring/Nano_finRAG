@@ -204,24 +204,46 @@ def _scale_conversion_adapter(
 # Registry
 # ---------------------------------------------------------------------------
 
+def _units_agree(operands: tuple[CalculationOperand, ...]) -> bool:
+    """Whether the operands are stated in a single unit.
+
+    Checked here, on the *operands*, because the primitives cannot: every
+    adapter hands them ``operand.value``, so `difference` and `average_values`
+    receive bare ``Decimal``s and a USD/EUR mismatch is invisible to them.  An
+    earlier version of this comment claimed the primitives already refused
+    mismatched units; they do not, and a test caught it.
+
+    ``None`` means the record did not state a unit, which is unknown rather than
+    different, so it does not disagree with anything.  Two *stated* units that
+    differ always do.
+    """
+
+    stated = {operand.unit for operand in operands if operand.unit is not None}
+    return len(stated) <= 1
+
+
 def _comparison_adapter(
     operands: tuple[CalculationOperand, ...], precision: int
 ) -> RelationalToolResult:
     """Which of exactly two operands is larger, as a stated relation.
 
-    ``difference`` is doing double duty here, deliberately.  It already refuses
-    operands whose kinds or units do not agree, so ordering reuses that rule
-    instead of restating compatibility -- a second rule would be a second
-    authority for "may these two numbers be compared", and the two would drift.
-
-    The sign becomes a ``ComparisonRelation`` rather than being left as a
-    number: the caller wants "which operand is larger", and a bare ``-1`` does
-    not answer that without also knowing which operand was first.
+    ``difference`` supplies the sign.  The sign becomes a ``ComparisonRelation``
+    rather than being left as a number: the caller wants "which operand is
+    larger", and a bare ``-1`` does not answer that without also knowing which
+    operand was first.
     """
 
     if len(operands) != 2:
         return RelationalToolResult(
             ok=False, error=f"comparison requires exactly 2 operands, got {len(operands)}"
+        )
+    if not _units_agree(operands):
+        return RelationalToolResult(
+            ok=False,
+            error=(
+                "operands_are_not_comparable: "
+                f"{operands[0].unit!r} vs {operands[1].unit!r}"
+            ),
         )
     delta = difference(operands[0].value, operands[1].value, precision=precision)
     if not delta.ok or delta.points_value is None:
@@ -242,19 +264,23 @@ def _ranking_adapter(
 ) -> RelationalToolResult:
     """Every operand, ordered descending, with equals grouped.
 
-    ``average_values`` is the compatibility probe for the same reason
-    ``difference`` is for a comparison: it refuses a mixture of kinds outright,
-    so ranking inherits that rule rather than restating it.
-
     The refs are ``slot_id``.  A ranking is a claim about which *required
     operands* stand in what order; keying it on evidence would make the same
     ranking a different result whenever a different support of one canonical
     fact happened to be bound.
+
+    ``average_values`` is called as a cheap numeric sanity probe -- it declines
+    on a mixture of kinds, which sorts would silently accept.  It cannot see
+    units, so those are checked separately.
     """
 
     if len(operands) < 2:
         return RelationalToolResult(
             ok=False, error=f"ranking requires at least 2 operands, got {len(operands)}"
+        )
+    if not _units_agree(operands):
+        return RelationalToolResult(
+            ok=False, error="operands_are_not_comparable: mixed units"
         )
     probe = average_values([operand.value for operand in operands], precision=precision)
     if not probe.ok:
