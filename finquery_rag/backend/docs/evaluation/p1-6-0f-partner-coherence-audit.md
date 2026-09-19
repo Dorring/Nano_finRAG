@@ -23,7 +23,16 @@ regression-tested and are not.
 | rank-002 | Tesla `$6,411` | Apple `(34,550)`, Microsoft `32,488` | **no — sign error** |
 | rank-005 | Coca-Cola `16` | Apple `12,875`, Microsoft `0` | incoherent (different quantity types) |
 
-## `compare-001` — the verified verdict is wrong
+## `compare-001` — the verified verdict is wrong, and so is the correction below it
+
+> **Corrected by `p1-6-0f-coherence-pass.md`.** The analysis in this section concluded
+> that `compare-001`'s gold is correct because both values are "United States"
+> jurisdiction figures. The full pass found they are jurisdiction figures **of different
+> concepts**: Tesla's `47,627` is US *revenue* (page 129, "revenues by geographic area")
+> while Coca-Cola's `5,678` is US *pretax income* (page 103, "Income before income taxes
+> consisted of the following"). The comparison is incoherent after all — not for the
+> reason the verification gave, but incoherent. This section is kept for the record; the
+> coherence pass supersedes it.
 
 The question is *"Which company had a higher **United States** in FY2025, The Coca-Cola
 Company or Tesla?"* and the stored metric is `United States`. Both golds are that
