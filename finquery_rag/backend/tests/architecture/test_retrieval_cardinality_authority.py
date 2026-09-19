@@ -182,20 +182,26 @@ def test_a_wrong_task_type_cannot_reduce_lane_count() -> None:
     assert parameters == ["plan"], parameters
 
 
-def test_a_slot_query_carries_only_its_own_entity() -> None:
-    """The observed failure, stated as a test.
+def test_a_slot_query_carries_no_entity_at_all() -> None:
+    """It used to carry its own entity, and that was the P1.5-R regression.
 
-    Production built `"and JPMorganChase larger | FY2025 | tsla |
-    jpmorganchase"` -- one lane's query naming both companies -- because
-    `OperandSlot` has no entity field and the entity was re-attached plan-wide.
+    The lanes tokenise a query as an OR expression, so a company name adds
+    tokens matching every row for that company and dilutes the ranking until the
+    specific fact falls outside `slot_top_k`.  Five single-entity cases went
+    from correct releases to fail-closed because of it, and removing it restored
+    all five while *improving* cross-entity reachability (P1.5-R1).
+
+    The property this test was originally written for -- that no slot's query
+    names *another* slot's entity -- is now satisfied by every query naming
+    none, which is why it is asserted in that form rather than deleted.
     """
 
     companies = ("Tesla", "JPMorganChase", "Visa")
     plan = _plan(*[_slot(f"s{i}", entity=name) for i, name in enumerate(companies, 1)])
 
     for request in build_slot_retrieval_requests(plan):
-        named = [name for name in companies if name in request.query]
-        assert named == [request.entity], (request.slot_id, request.query, named)
+        assert not any(name in request.query for name in companies), request.query
+        assert request.query == f"{request.metric} {request.period}"
 
 
 def test_a_slot_without_an_entity_still_queries() -> None:
@@ -219,7 +225,11 @@ def test_an_unnamed_entity_is_still_a_constraint() -> None:
 
     assert request.entity == "Pfizer"
     assert request.entity_id is None
-    assert request.query.startswith("Pfizer ")
+    # The constraint lives on the slot, not in its query text.  This asserted
+    # `query.startswith("Pfizer ")` until P1.5-R1 removed the entity from the
+    # query; the constraint it was protecting is unchanged and still asserted
+    # above, and the query is now the metric and period whoever the slot is for.
+    assert request.query == "Comprehensive income FY2025"
 
 
 # --- the tripwire -------------------------------------------------------------
