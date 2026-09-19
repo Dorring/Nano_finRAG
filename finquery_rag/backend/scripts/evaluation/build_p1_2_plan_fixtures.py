@@ -119,6 +119,23 @@ _RELATIONAL_OPERATIONS = {
     "comparison": "comparison",
     "ranking": "ranking",
 }
+#: Gold operations whose answer is a numeric difference *between entities*
+#: rather than between periods.
+#:
+#: They were planned with no operation, which left five cases answering in
+#: prose that no validator had a structured result to check -- the last
+#: unchecked decision path in the stratum, and the last false release in it.
+#: The arithmetic is the ordinary `difference`; what differs is only where the
+#: operands come from, which is why this is a mapping rather than a new
+#: executor.
+#:
+#: The gold's `fact_ids` are in slot order and the gold's `expected_value` is
+#: `operands[0] - operands[1]`: `crossdiff-001` is Tesla `1,083` minus NVIDIA
+#: `1,203` = `-120`, and `crossdiff-004` is Coca-Cola `850` minus Visa `19,602`
+#: = `-18,752`. Roles `minuend`/`subtrahend` normalise to `current`/`previous`,
+#: which is the role pair `difference` already expects.
+_CROSS_ENTITY_ARITHMETIC = {"cross_entity_difference": "difference"}
+
 _RELATIONAL_OPERATION_NAMES = frozenset(_RELATIONAL_OPERATIONS.values())
 
 #: Slots per operation, in the role vocabulary `validate_plan_v2_01` accepts.
@@ -331,6 +348,7 @@ def author_plan(
     plan_operation = (
         _ARITHMETIC_OPERATIONS.get(str(operation))
         or _RELATIONAL_OPERATIONS.get(str(operation))
+        or _CROSS_ENTITY_ARITHMETIC.get(str(operation))
         if operation
         else None
     )
@@ -384,20 +402,37 @@ def author_plan(
             sourced["metric"] = "gold_operand_facts"
         else:
             slot_metrics = [metric] * len(roles)
-        slots = [
-            {
-                "slot_id": f"s{index + 1}",
-                "metric": slot_metrics[index],
-                # ``min`` only ever clamps operations whose arity exceeds the
-                # periods the gold states; for the fact-per-operand operations
-                # the two lengths are checked equal before this point.
-                "period": periods[min(index, len(periods) - 1)],
-                "role": role,
-                "value_type": "numeric",
-                "unit": None,
-            }
-            for index, role in enumerate(roles)
-        ]
+        if str(operation) in _CROSS_ENTITY_ARITHMETIC:
+            # One slot per gold fact, in the gold's order, each naming its own
+            # company -- the shape the multi-evidence cases already use, because
+            # these operands are two *entities'* facts rather than two periods
+            # of one entity's.  Building from `roles` alone would hand both
+            # slots the same metric and no entity, which is precisely the defect
+            # the entity fields were added to remove.
+            slots = _multi_evidence_slots(
+                gold,
+                question_record,
+                operand_facts or {},
+                metric=metric,
+                periods=periods,
+            )
+            for index, slot in enumerate(slots):
+                slot["role"] = roles[index] if index < len(roles) else "operand"
+        else:
+            slots = [
+                {
+                    "slot_id": f"s{index + 1}",
+                    "metric": slot_metrics[index],
+                    # ``min`` only ever clamps operations whose arity exceeds the
+                    # periods the gold states; for the fact-per-operand operations
+                    # the two lengths are checked equal before this point.
+                    "period": periods[min(index, len(periods) - 1)],
+                    "role": role,
+                    "value_type": "numeric",
+                    "unit": None,
+                }
+                for index, role in enumerate(roles)
+            ]
     else:
         # An abstention question is a lookup that retrieval will not satisfy --
         # authoring it as ABSTAIN would put the expected failure into the plan
