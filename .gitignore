@@ -71,6 +71,20 @@ checkpoint*/
 
 .runtime/
 runtime/
+
+# `runtime/` above is meant for the deployment runtime directory at the repo
+# root -- pids, status files, logs.  As written it matches a directory of that
+# name at ANY depth, which silently swallowed the source packages
+# `src/runtime/` and `rag_v2/runtime/`.  The cost was not theoretical:
+# `src/runtime/trusted_v2_canonical_fact_store.py` was skipped, while the test
+# that imports it (`tests/test_trusted_v2_canonical_fact_store.py`) was
+# committed -- a tracked test that cannot run, failing the whole suite at
+# collection.
+#
+# The negation names the *directory*: git cannot re-include a file whose parent
+# directory is excluded, so `!path/to/runtime/**/*.py` does nothing at all.
+!finquery_rag/backend/src/runtime/
+!finquery_rag/backend/rag_v2/runtime/
 *.db
 *.sqlite
 *.sqlite3
