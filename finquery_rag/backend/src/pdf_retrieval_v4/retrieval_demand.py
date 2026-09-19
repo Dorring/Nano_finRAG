@@ -36,6 +36,7 @@ runtime layer that composes it can hold the type.
 
 from __future__ import annotations
 
+import os as _os
 from dataclasses import dataclass
 
 
@@ -90,6 +91,16 @@ class SlotRetrievalRequestV1:
         A slot may legitimately carry no entity (a single-company question), in
         which case the query is the metric and period alone.
         """
+
+        if _os.environ.get("P15R_QUERY_ENTITY", "on") == "off":
+            # P1.5-R diagnostic only.  The 2x2 ablation over prompt exposure and
+            # deterministic enforcement found both arms identical, which means
+            # the entity's effect on those five cases is somewhere neither
+            # toggle reached -- and this is the third place the field is read:
+            # it builds the slot's retrieval *query*, so it changes which
+            # candidates are retrieved at all.
+            parts = (self.metric, self.period)
+            return " ".join(part.strip() for part in parts if part and part.strip())
 
         parts = (self.entity, self.metric, self.period)
         return " ".join(part.strip() for part in parts if part and part.strip())
