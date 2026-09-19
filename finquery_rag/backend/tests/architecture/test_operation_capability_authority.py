@@ -31,6 +31,7 @@ from pathlib import Path
 import pytest
 
 from rag_v2.adaptive import AdaptiveRAGStateV1
+from rag_v2.contracts.errors import ContractError
 from rag_v2.contracts.plan import Action, Intent, RequiredSlot, SupervisorPlan
 from src.domain.calculation import (
     CalculationOperation,
@@ -172,15 +173,33 @@ def test_calculation_intent_without_an_operation_does_not_execute() -> None:
     assert "operation" in str(caught.value)
 
 
-def test_an_unsupported_operation_is_a_capability_error() -> None:
-    """Unsupported is a capability failure, not a reason to answer in prose."""
+def test_an_unsupported_operation_cannot_be_expressed_as_a_plan() -> None:
+    """The plan contract refuses it long before the calculator could.
 
-    with pytest.raises(Exception) as caught:
-        DeterministicCalculationCapability().calculate(
-            _state(intent=Intent.CALCULATION, operation="not_an_operation")
-        )
+    Stronger than the calculator failing closed, and worth stating separately:
+    an operation outside `_OPERATION_VALUES` cannot be written into a plan at
+    all, so there is no path by which an unexecutable operation reaches
+    execution.  The calculator's own `unsupported_calculation_operation` guard
+    therefore covers the case where the *vocabulary* and the *registry* have
+    drifted -- a name that is expressible but not executable -- rather than a
+    malformed plan.
+    """
 
-    assert "unsupported_calculation_operation" in str(caught.value)
+    with pytest.raises(ContractError):
+        _state(intent=Intent.CALCULATION, operation="not_an_operation")
+
+
+def test_the_vocabulary_and_the_registry_do_not_drift() -> None:
+    """Every name a plan may carry is executable, and the reverse.
+
+    This is the invariant that keeps the guard above from ever being the thing
+    that catches a real fault: if the two sets can differ, one of them is
+    wrong and nothing says which.
+    """
+
+    from rag_v2.contracts.plan import _OPERATION_VALUES
+
+    assert _OPERATION_VALUES == {operation.value for operation in CALCULATION_REGISTRY}
 
 
 # --- the tripwire -------------------------------------------------------------
