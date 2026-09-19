@@ -429,3 +429,30 @@ def get_operation_entry(
 ) -> OperationEntry | None:
     """Return the registry entry for ``operation``, or None if not registered."""
     return CALCULATION_REGISTRY.get(operation)
+
+
+def supports(operation: "CalculationOperation | str | None") -> bool:
+    """Whether this operation can be executed deterministically.
+
+    The question "may the calculator run for this plan" is answered here, by the
+    registry, and not by the plan's intent.  An operation is executable exactly
+    when an entry describes how to execute it; intent describes what the
+    question wanted, which is a routing concern.
+
+    Those were conflated: the calculator refused anything that was not
+    `Intent.CALCULATION`, and cross-entity comparison and ranking are planned as
+    `MULTI_EVIDENCE`, so an entire stratum could never reach deterministic
+    execution no matter what operation it named.
+
+    ``None`` is not executable.  A plan that names no operation has nothing to
+    execute, and saying so is not the same as calling it unsupported.
+    """
+
+    if operation is None:
+        return False
+    if isinstance(operation, CalculationOperation):
+        return operation in CALCULATION_REGISTRY
+    try:
+        return CalculationOperation(str(operation)) in CALCULATION_REGISTRY
+    except ValueError:
+        return False

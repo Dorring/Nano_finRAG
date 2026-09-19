@@ -1096,7 +1096,17 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         calculation_ids: tuple[str, ...] = ()
         candidate_answer: str | None = None
         extra: dict[str, Any] = {}
-        if plan.intent is Intent.CALCULATION:
+        # The *operation* decides whether the calculator is offered this plan,
+        # not the intent.  Reading the intent here is the other half of the gate
+        # `calculate` used to hold: cross-entity comparison and ranking are
+        # planned as MULTI_EVIDENCE, so a plan naming `comparison` was never
+        # offered to the calculator at all.
+        #
+        # A plan that declares CALCULATION intent and names no operation is
+        # still included, so it reaches the calculator and fails there rather
+        # than quietly becoming prose -- "asked for a calculation, named none"
+        # is a planning fault and should be reported as one.
+        if plan.operation is not None or plan.intent is Intent.CALCULATION:
             capability = self.capabilities.calculation
             if capability is None:
                 return self._outcome(

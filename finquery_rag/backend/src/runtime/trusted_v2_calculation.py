@@ -12,7 +12,7 @@ from decimal import Decimal
 from typing import Any, Callable
 
 from rag_v2.adaptive import AdaptiveRAGStateV1
-from rag_v2.contracts.plan import Intent, SupervisorPlan
+from rag_v2.contracts.plan import SupervisorPlan
 
 from src.domain.calculation import (
     CalculationOperation,
@@ -302,17 +302,27 @@ class DeterministicCalculationCapability:
         """Execute only on Binder-admitted complete structured operands."""
 
         plan = self._plan(state)
-        if plan.intent is not Intent.CALCULATION:
-            raise DeterministicCalculationCapabilityError(
-                "calculator_called_for_non_calculation_plan"
-            )
-        operands = self._build_operands(plan, state)
+        # Execution eligibility is a property of the *operation*, decided by the
+        # registry, and deliberately not of the plan's intent.
+        #
+        # This gate used to read ``plan.intent is Intent.CALCULATION``.  That
+        # made an entire stratum unreachable: cross-entity comparison and
+        # ranking are planned as ``MULTI_EVIDENCE``, so however clearly such a
+        # plan named an operation, the calculator refused it -- and their
+        # answers stayed prose that no validator had a structured result to
+        # check.
+        #
+        # ``Intent`` still decides *routing*: whether the coordinator offers a
+        # plan to the calculator at all.  That is the question intent answers.
+        # "Can this be executed deterministically" is a different one, and the
+        # registry is where it is answered.
         operation = _operation(plan.operation)
         entry = get_operation_entry(operation)
         if entry is None:
             raise DeterministicCalculationCapabilityError(
                 f"unsupported_calculation_operation:{operation.value}"
             )
+        operands = self._build_operands(plan, state)
         if len(operands) < entry.min_operands:
             result = CalculationResult(
                 status=CalculationStatus.BLOCKED,
