@@ -26,6 +26,7 @@ from rag_v2.supervisor import (
     canonical_period_id,
     classify_evidence_scope,
     extract_query_semantic_frame,
+    metric_identity,
 )
 from rag_v2.supervisor import EvidenceScope, query_allows_evidence_scope
 
@@ -226,11 +227,11 @@ class SemanticEvidenceEvaluationCapability:
             slot = by_slot.get(slot_id)
             if slot is None:
                 continue
-            expected_metric = canonical_metric_id(slot.metric)
+            expected_metric = metric_identity(slot.metric)
             same_metric = [
                 fact
                 for fact in facts
-                if canonical_metric_id(fact.get("metric")) == expected_metric
+                if metric_identity(fact.get("metric")) == expected_metric
             ]
             if same_metric and all(
                 _norm(fact.get("period")) != _norm(slot.period) for fact in same_metric
@@ -357,9 +358,12 @@ class SemanticEvidenceEvaluationCapability:
         fact: Mapping[str, Any],
         known_segment_labels: tuple[str, ...],
     ) -> bool:
-        expected_metric = canonical_metric_id(slot.metric)
+        # The wider identity, so a metric the ontology cannot name is still
+        # comparable.  This used to return False for both sides, which made any
+        # slot naming such a metric unsatisfiable while the fact existed.
+        expected_metric = metric_identity(slot.metric)
         expected_period = canonical_period_id(slot.period) or _norm(slot.period)
-        fact_metric = canonical_metric_id(
+        fact_metric = metric_identity(
             fact.get("metric")
             or fact.get("normalized_metric")
             or fact.get("raw_metric")

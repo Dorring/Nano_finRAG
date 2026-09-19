@@ -356,6 +356,15 @@ class BoundEvidenceSemanticCheck:
 # and net income are separate metrics and must never be aliases.
 _METRIC_DEFINITIONS: tuple[MetricDefinition, ...] = (
     MetricDefinition(
+        "total_operating_expenses",
+        (
+            "total operating expenses",
+            "total operating expense",
+            "operating expenses",
+            "operating expense",
+        ),
+    ),
+    MetricDefinition(
         "operating_income",
         (
             "operating income",
@@ -717,6 +726,44 @@ def canonical_metric_id(value: Any) -> str | None:
         if normalized == alias:
             return metric_id
     return None
+
+
+#: Prefix marking a metric identity that is the fact's own surface rather than
+#: an ontology id.  Interior spaces become underscores so the id is one token.
+LITERAL_METRIC_PREFIX = "literal:"
+
+
+def metric_identity(value: Any) -> str | None:
+    """A metric's identity: the ontology's id, or the metric's own exact surface.
+
+    The ontology cannot name every metric a filing reports.  ``Impact of the
+    State Aid Decision`` is a real row in the corpus and no amount of aliasing
+    makes it ``revenue``; before this, it resolved to ``None`` and *nothing could
+    bind it* -- a slot naming it was unsatisfiable while the fact existed.
+
+    The fallback is deliberately the weakest thing that works.  It is the
+    normalized surface and nothing else: no synonym expansion, no stemming, no
+    fuzzy distance.  Two metrics share a literal identity exactly when they are
+    the same string after casefolding, punctuation stripping and whitespace
+    collapsing, which is the same normalisation the ontology's own aliases go
+    through.  ``"Impact of the State Aid Decision."`` and
+    ``"impact  of the state aid decision"`` are one metric; ``"Impact of the
+    State Aid"`` is a different one.
+
+    This cannot forge a metric.  A literal identity is only ever *compared*; it
+    names nothing on its own, and a slot carrying one still binds only if a fact
+    from the store carries the same literal.  A question asking for
+    ``Number of Employees`` gets a literal identity and finds no such fact, which
+    is exactly the abstention it was authored to be.
+    """
+
+    known = canonical_metric_id(value)
+    if known is not None:
+        return known
+    normalized = _normalize_surface(value)
+    if not normalized:
+        return None
+    return LITERAL_METRIC_PREFIX + normalized.replace(" ", "_")
 
 
 def metric_alias_registry() -> Mapping[str, tuple[str, ...]]:
@@ -1532,7 +1579,14 @@ def align_bound_evidence_to_query(
         if slot is None:
             mismatches.append(f"unknown_slot_binding:{slot_id}")
             continue
-        expected_metric = canonical_metric_id(slot.metric)
+        # Matching uses the wider identity, reporting keeps the vocabulary.
+        # A metric the ontology cannot name is still a metric a fact can carry,
+        # and refusing to compare it left every such slot unsatisfiable.  The
+        # gate's own ``unknown_plan_metric`` signal is raised from
+        # ``canonical_metric_id`` above, so widening the comparison does not
+        # silence it -- the plan is still told its metric is unrecognised, and
+        # now the binding can succeed anyway when a fact really carries it.
+        expected_metric = metric_identity(slot.metric)
         expected_period = canonical_period_id(slot.period)
         for fact_id in fact_ids:
             normalized_id = str(fact_id).strip()
@@ -1562,7 +1616,7 @@ def align_bound_evidence_to_query(
                     mismatches.append(
                         f"fact_scope_unverifiable:{normalized_id}"
                     )
-            fact_metric = canonical_metric_id(
+            fact_metric = metric_identity(
                 _fact_value(fact, "metric", "normalized_metric", "raw_metric")
             )
             fact_period = canonical_period_id(
