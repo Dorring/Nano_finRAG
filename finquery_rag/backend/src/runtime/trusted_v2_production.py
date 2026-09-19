@@ -547,33 +547,34 @@ IXBRL_FACT_STORE_FILENAME = "financial-facts-ixbrl-v1.jsonl"
 def _build_fact_store(
     fact_path: Path, environ: Mapping[str, str]
 ) -> Any:
-    """The fact store, wrapped to answer canonical quantities.
+    """The fact store the runtime uses.
 
-    **On by default when the rebuilt store is present**, because the migrated
-    cross-entity fixtures name facts from it: leaving it opt-in would mean a
-    deployment that had not set an environment variable silently could not
-    materialize half its gold, which is a worse failure than not having the
-    feature.  An explicit empty value disables it, and a missing file degrades to
-    the legacy store.
+    **Returns the legacy store, and the canonical wrapper is deliberately not
+    wired here.**  It was, and the measurement killed it: on the 20 cross-entity
+    cases, with the wrapper on 0 released and 20 blocked; with it off, 5 released
+    and 13 blocked.  It made the stratum strictly worse, so it is not in
+    production.
 
-    The wrapper is additive and refuses rather than guesses: a metric that names
-    no single quantity is absent from its map, and a quantity still holding more
-    than one value resolves to nothing.  Both fall through to the legacy store.
+    The reason is a store mismatch, not a defect in the wrapper.  The packet's
+    candidates come from R4 retrieval over the legacy `v2fact:` key space, and
+    the operand guard asks the fact store about *those* candidates' coordinates.
+    Pointing `facts_at_coordinate` at a different store makes the guard compare a
+    legacy candidate against canonical siblings, find no agreement, and refuse --
+    `INSUFFICIENT_OPERANDS` with the binder reporting BOUND.  Instrumenting it:
+
+        GUARD s1 entity=JPMorganChase metric=None candidate='20.02'
+              siblings=[] -> conflicting_values
+
+    So the canonical store becomes usable when **retrieval returns canonical
+    candidates**, which is the remaining piece -- not by redirecting the lookup
+    underneath a path that still speaks the old key space.
+
+    The environment variable is still read so a deployment can point at a
+    different legacy store, and `CanonicalFactStore` remains available and tested
+    for the retrieval change to build on.
     """
 
-    legacy = StructuredFactStore(fact_path)
-    configured = environ.get(IXBRL_FACT_STORE_ENV)
-    if configured is None:
-        candidate = Path(fact_path).parent / IXBRL_FACT_STORE_FILENAME
-    elif not str(configured).strip():
-        return legacy
-    else:
-        candidate = Path(str(configured)).expanduser()
-    if not candidate.is_file():
-        return legacy
-    from src.runtime.trusted_v2_canonical_store import CanonicalFactStore
-
-    return CanonicalFactStore(legacy, candidate)
+    return StructuredFactStore(fact_path)
 
 
 def _sha256_file(path: Path) -> str:
