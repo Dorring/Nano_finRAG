@@ -467,6 +467,18 @@ class StructuredFactStore:
     def _coordinate_key(record: Mapping[str, Any]) -> tuple[str, str, str]:
         return _coordinate_key(record)
 
+    @staticmethod
+    def coordinate_key(record: Mapping[str, Any]) -> tuple[str, str, str]:
+        """The coordinate a record is filed under.
+
+        Public because callers grouping the store by coordinate -- the
+        ambiguity survey, the operand guard -- must agree on what a coordinate
+        *is*; a second definition drifting from this one would silently measure
+        a different store.
+        """
+
+        return _coordinate_key(record)
+
     def facts_at_coordinate(
         self,
         entity: Any,
