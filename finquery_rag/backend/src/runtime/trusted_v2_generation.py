@@ -59,6 +59,7 @@ from src.generation.generator_routing_policy import (
 
 from src.domain.calculation import CalculationResult, CalculationStatus
 from src.finance.calculation_renderer import render_calculation_result
+from src.finance.relational_directory import RelationalOperandDirectory
 
 
 #: The handles the renderer writes into the prompt and asks the model to cite:
@@ -352,6 +353,35 @@ class TrustedV2GenerationCapability:
         value = getattr(state, "_calculation_result_obj", None)
         return value if isinstance(value, CalculationResult) else None
 
+    @staticmethod
+    def _relational_directory(
+        state: AdaptiveRAGStateV1,
+    ) -> RelationalOperandDirectory | None:
+        """The ``slot_id -> operand`` projection, built from the plan's slots.
+
+        Built here rather than inside the renderer because the renderer must not
+        read the plan: one that could would be able to build a second
+        `slot_id -> entity` lookup, and a second lookup is a second authority for
+        one fact.
+
+        ``None`` when the state carries no usable plan, which the renderer
+        treats as "cannot state a relation" rather than as a reason to guess.
+        """
+
+        from rag_v2.contracts.plan import SupervisorPlan
+
+        from .trusted_v2_calculation import build_relational_operand_directory
+
+        raw = getattr(state, "plan", None)
+        blob = raw.get("supervisor_plan") if isinstance(raw, Mapping) else None
+        if not isinstance(blob, Mapping):
+            return None
+        try:
+            plan = SupervisorPlan.from_dict(blob)
+        except Exception:  # noqa: BLE001 - a malformed plan is not a render fault
+            return None
+        return build_relational_operand_directory(plan)
+
     def _route(
         self,
         state: AdaptiveRAGStateV1,
@@ -390,10 +420,14 @@ class TrustedV2GenerationCapability:
         item: Mapping[str, Any] | None,
         question: str,
         calculation: CalculationResult | None,
+        directory: RelationalOperandDirectory | None = None,
     ) -> str:
         if calculation is not None:
-            # The existing calculation_renderer is the authoritative path.
-            return render_calculation_result(calculation)
+            # The existing calculation_renderer is the authoritative path.  It
+            # needs the directory to state a relation and returns "" without it,
+            # so this passes whatever the caller could build rather than letting
+            # the renderer go looking for a plan it must not read.
+            return render_calculation_result(calculation, directory=directory)
         if item is None:
             raise CandidateGenerationCapabilityError("renderer_missing_bound_fact")
         method = getattr(renderer, "render", None)
@@ -539,7 +573,12 @@ class TrustedV2GenerationCapability:
         if decision.target is GeneratorTarget.DETERMINISTIC_CALCULATOR:
             if calculation is None or calculation.status is not CalculationStatus.EXECUTED:
                 raise CandidateGenerationCapabilityError("calculation_result_not_ready")
-            answer = render_calculation_result(calculation)
+            # A relational result is stated from this directory, not from prose.
+            # That is what makes the release invariant enforceable rather than
+            # hopeful: there is no prose for a wrong relation to hide in.
+            answer = render_calculation_result(
+                calculation, directory=self._relational_directory(state)
+            )
             self.renderer_calls += 1
         elif decision.target is GeneratorTarget.DETERMINISTIC_RENDERER:
             item = items[0] if items else None
@@ -548,6 +587,7 @@ class TrustedV2GenerationCapability:
                 item=item,
                 question=state.normalized_query,
                 calculation=calculation,
+                directory=self._relational_directory(state),
             )
             self.renderer_calls += 1
         elif decision.target is GeneratorTarget.LOCAL_SPECIALIST:
