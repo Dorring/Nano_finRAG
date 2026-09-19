@@ -24,6 +24,10 @@ from src.domain.calculation import (
 from src.finance.calculation_executor import execute_plan
 from src.finance.calculation_registry import CALCULATION_REGISTRY, get_operation_entry
 from src.finance.primitive_tools import parse_financial_number
+from src.finance.relational_directory import (
+    RelationalOperandDirectory,
+    RelationalOperandRef,
+)
 
 
 class DeterministicCalculationCapabilityError(RuntimeError):
@@ -43,6 +47,38 @@ class DeterministicCalculationCapabilityError(RuntimeError):
 SUPPORTED_CALCULATION_OPERATIONS = tuple(
     operation.value for operation in CALCULATION_REGISTRY
 )
+
+
+def build_relational_operand_directory(
+    plan: SupervisorPlan,
+) -> RelationalOperandDirectory:
+    """The ``slot_id -> operand`` projection a relational result is stated in.
+
+    A *controlled* projection of `required_slots`: only the coordinates a
+    relation is named with, and deliberately no evidence id, chunk, retrieval
+    score or source text.  Resolving a relation must not need evidence, because
+    binding already happened and a second lookup would be a second bind.
+
+    Built here rather than beside the type because this is the layer that
+    already depends on the supervisor; the type stays dependency-free so the
+    renderer can hold it.  The renderer and the validator both take the
+    directory and never the plan, so neither can grow a `slot_id -> entity`
+    lookup of its own that disagrees with the other's.
+    """
+
+    return RelationalOperandDirectory(
+        refs=tuple(
+            RelationalOperandRef(
+                slot_id=slot.slot_id,
+                entity=slot.entity,
+                entity_id=slot.entity_id,
+                metric=slot.metric,
+                period=slot.period,
+                role=slot.role,
+            )
+            for slot in plan.required_slots
+        )
+    )
 
 
 def _stable_unique(values: Iterable[str]) -> list[str]:
