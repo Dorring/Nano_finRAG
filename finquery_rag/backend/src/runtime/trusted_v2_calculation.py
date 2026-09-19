@@ -256,7 +256,6 @@ class DeterministicCalculationCapability:
         candidates: Mapping[str, Mapping[str, Any]],
         operation: CalculationOperation,
         *,
-        slot: Any | None = None,
         fact_store: Any | None = None,
     ) -> CalculationOperand | None:
         ids = bindings.get(slot_id, ())
@@ -283,22 +282,27 @@ class DeterministicCalculationCapability:
         # downstream could have caught it: the executor did what it was given
         # and the release invariant saw an admissible relational result.
         #
-        # Asked of the *store*, not the packet.  A packet-scoped guard would be
-        # safe only on the days top-K happens to surface a competitor, which
-        # makes safety a function of retrieval depth rather than of whether the
-        # fact is identifiable.
+        # Asked of the **bound fact's own coordinate**, not the slot's.  A slot
+        # may state no entity -- `(metric, period)` is then its whole address --
+        # and looking up that would find nothing and block every such case,
+        # which is what the first version did.  The question is whether *this
+        # fact* is identifiable, and the fact states its own entity.
+        #
+        # Asked of the *store*, not the packet: a packet-scoped guard is safe
+        # only on the days top-K happens to surface a competitor, which makes
+        # safety a function of retrieval depth rather than of identifiability.
         #
         # Returning `None` is the whole mechanism: `_build_operands` then
         # returns `()`, and the existing `INSUFFICIENT_OPERANDS` path blocks the
         # calculation.  Refusing is the honest answer -- this cannot know which
         # of the competing values is right, and separating them is P1.6-A.
-        if slot is not None and fact_store is not None:
+        if fact_store is not None:
             status = coordinate_status(
                 candidate,
                 fact_store.facts_at_coordinate(
-                    getattr(slot, "entity", None),
-                    getattr(slot, "metric", None),
-                    getattr(slot, "period", None),
+                    candidate.get("entity"),
+                    candidate.get("metric") or candidate.get("normalized_metric"),
+                    candidate.get("period") or candidate.get("normalized_period"),
                 ),
             )
             if status is CoordinateStatus.CONFLICTING_VALUES:
@@ -345,7 +349,6 @@ class DeterministicCalculationCapability:
         if not candidates or not bindings:
             return ()
 
-        slots_by_id = {slot.slot_id: slot for slot in plan.required_slots}
         slot_by_role: dict[str, str] = {}
         for slot in plan.required_slots:
             slot_by_role.setdefault(_normalise_role(slot.role), slot.slot_id)
@@ -365,7 +368,6 @@ class DeterministicCalculationCapability:
                 bindings,
                 candidates,
                 operation,
-                slot=slots_by_id.get(slot_id),
                 fact_store=fact_store,
             )
             if operand is None:
@@ -380,7 +382,6 @@ class DeterministicCalculationCapability:
                     bindings,
                     candidates,
                     operation,
-                    slot=slot,
                     fact_store=fact_store,
                 )
                 if operand is None:

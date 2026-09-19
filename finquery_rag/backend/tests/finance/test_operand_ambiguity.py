@@ -122,10 +122,20 @@ def test_a_bound_value_of_none_is_not_admissible() -> None:
     assert coordinate_status(_fact(None), [_fact("1")]) is CoordinateStatus.CONFLICTING_VALUES
 
 
-def test_a_coordinate_with_no_readable_siblings_still_uses_the_bound_value() -> None:
-    """The bound fact is one of its own coordinate's facts."""
+def test_a_coordinate_that_returns_no_facts_is_not_admissible() -> None:
+    """The bound fact is always one of its own coordinate's facts.
 
-    assert coordinate_status(_fact("1083"), []) is CoordinateStatus.UNIQUE
+    So an empty result means the lookup did not find what it was handed, which
+    is a fault rather than an unambiguous coordinate.  Failing closed here is
+    what caught a mis-wired lookup during P1.6-0: it blocked every harness
+    fixture instead of quietly admitting them, which is the direction a safety
+    guard should break in.
+
+    My first version of this test asserted UNIQUE -- the lenient reading -- and
+    the implementation disagreed with it.  The implementation was right.
+    """
+
+    assert coordinate_status(_fact("1083"), []) is CoordinateStatus.CONFLICTING_VALUES
 
 
 # --- the real coordinates, as measured from the store -------------------------
