@@ -605,6 +605,41 @@ class V2ExecutionTrace:
         }
 
 
+#: Exception types whose message is a fixed identifier rather than a description.
+#:
+#: The distinction is not cosmetic.
+#: ``test_capability_crash_is_execution_error_not_policy_refusal`` pins that a
+#: capability exception's message never reaches the outcome's serialised form,
+#: and it is right to: a message is arbitrary text from an arbitrary failure and
+#: can carry whatever that failure was holding.  But the diagnostic value is
+#: real -- the reason code says only that *something* raised, and pinning one
+#: canonical case to ``binder_returned_invalid_schema`` took a probe wrapping two
+#: internal methods, because nothing on the result said which raise site fired.
+#:
+#: So the type is recorded for every exception, and the message only for the ones
+#: this codebase raises with a literal code.  A new type belongs here only if its
+#: message is a constant in the source, never if it interpolates a value.
+_STATIC_CODE_EXCEPTIONS = frozenset({"SemanticBinderCapabilityError"})
+
+
+def _capability_error_detail(errors: Iterable[BaseException]) -> dict[str, Any]:
+    """Which capability exceptions fired, in the detail the outcome may carry.
+
+    Observation only.  Nothing reads this back, and the reason code, the status
+    and the release decision are all unchanged -- an untraced failure stays a
+    failure rather than becoming a different one.
+    """
+
+    detail: list[dict[str, str]] = []
+    for exc in errors:
+        name = type(exc).__name__
+        entry = {"type": name}
+        if name in _STATIC_CODE_EXCEPTIONS:
+            entry["code"] = str(exc)
+        detail.append(entry)
+    return {"capability_errors": detail}
+
+
 class _EvaluatorAdapter:
     """Adapt an injected evaluator while prioritizing missing operands."""
 
@@ -1855,6 +1890,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                     if capability_errors
                     else ["COORDINATOR_EXCEPTION"]
                 ),
+                extra_metadata=_capability_error_detail(capability_errors),
                 evidence_ids=evaluator_adapter.bound_evidence_ids,
                 citation_ids=evaluator_adapter.citation_ids,
                 status=V2ExecutionStatus.EXECUTION_ERROR,
@@ -1868,6 +1904,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 plan_id=plan_id,
                 state=state,
                 reason_codes=["CAPABILITY_EXCEPTION"],
+                extra_metadata=_capability_error_detail(capability_errors),
                 evidence_ids=evaluator_adapter.bound_evidence_ids,
                 citation_ids=evaluator_adapter.citation_ids,
                 status=V2ExecutionStatus.EXECUTION_ERROR,

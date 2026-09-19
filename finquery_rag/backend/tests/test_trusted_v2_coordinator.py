@@ -261,6 +261,36 @@ def test_capability_crash_is_execution_error_not_policy_refusal() -> None:
     assert "retrieval secret" not in str(outcome.to_dict())
 
 
+def test_the_capability_error_detail_keeps_the_type_and_withholds_the_message() -> None:
+    """The other half of the property the test above pins.
+
+    The reason code says only that a capability raised, so which one and where
+    is unrecoverable from the result -- pinning one canonical case to
+    ``binder_returned_invalid_schema`` took a probe wrapping two internal
+    methods, because nothing on the outcome said so.  The type closes that for
+    every exception.  The message does not: it is arbitrary text from an
+    arbitrary failure, so it is kept only for the types whose message is a
+    literal in the source rather than a description.
+    """
+
+    from src.runtime.trusted_v2_binder import SemanticBinderCapabilityError
+    from src.runtime.trusted_v2_coordinator import _capability_error_detail
+
+    detail = _capability_error_detail(
+        [
+            RuntimeError("retrieval secret"),
+            SemanticBinderCapabilityError("binder_returned_invalid_schema"),
+        ]
+    )
+
+    assert detail["capability_errors"][0] == {"type": "RuntimeError"}
+    assert detail["capability_errors"][1] == {
+        "type": "SemanticBinderCapabilityError",
+        "code": "binder_returned_invalid_schema",
+    }
+    assert "retrieval secret" not in str(detail)
+
+
 def test_invalid_plan_has_zero_capability_calls() -> None:
     invalid = object.__new__(SupervisorPlan)
     object.__setattr__(invalid, "intent", Intent.DIRECT_FACT)
