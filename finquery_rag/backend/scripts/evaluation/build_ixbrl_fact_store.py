@@ -66,12 +66,29 @@ _MEMBER = re.compile(
 
 
 def _digits(text: object) -> str | None:
-    cleaned = re.sub(r"[^\d.]", "", str(text or ""))
+    """The value as a signed number string, or ``None``.
+
+    Sign is preserved, and it is load-bearing.  A filing writes an outflow as
+    `(2,385)` and XBRL does the same, so stripping non-digits turns Microsoft's
+    interest expense into `2385` -- and `rank-004` ranks four filers by interest
+    expense, where the difference between `-2,385` and `2,385` is the difference
+    between last place and second.  `1,042` of the store's records carry a sign or
+    parentheses; dropping them would have been invisible in every count and wrong
+    in every ranking that includes a negative.
+    """
+
+    raw = str(text or "").strip()
+    if not raw:
+        return None
+    negative = raw.startswith("(") or raw.lstrip().startswith("-")
+    cleaned = re.sub(r"[^\d.]", "", raw)
     if not cleaned:
         return None
     if "." in cleaned:
         cleaned = cleaned.rstrip("0").rstrip(".")
-    return cleaned or None
+    if not cleaned:
+        return None
+    return f"-{cleaned}" if negative else cleaned
 
 
 def _contexts(html_path: Path) -> dict[str, dict]:
