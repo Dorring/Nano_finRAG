@@ -31,6 +31,7 @@ from rag_v2.supervisor.semantic_alignment import (
     canonical_period_id,
     canonical_scope_id,
 )
+from src.domain.calculation import RELATIONAL_OPERATIONS
 
 
 class GeneratorTarget(str, Enum):
@@ -198,6 +199,31 @@ class GeneratorRoutingPolicy:
             # override is a second rule compensating for this one, and a policy
             # that is only correct when something above it disagrees is not
             # correct.
+            # A relational result is its own answer, and must not be handed to a
+            # free-form generator.
+            #
+            # "Visa > Apple" is not an approximation of something a model should
+            # restate; it *is* the answer.  `compare-002` computed it correctly
+            # -- operands Apple `-8077` and Visa `1926`, ordering `Visa > Apple`
+            # -- and released "Apple's General and administrative was larger",
+            # because the explanation branch below sent the calculation to the
+            # Local Specialist.  The validator had nothing to check the prose
+            # against, so it passed.
+            #
+            # An explanation may be added *around* a relation.  It may never be
+            # stated in place of one.
+            if str((calculation_result or {}).get("operation") or "") in {
+                item.value for item in RELATIONAL_OPERATIONS
+            }:
+                return GeneratorRouteDecision(
+                    route_name=RouteName.CALCULATION_SIMPLE,
+                    target=GeneratorTarget.DETERMINISTIC_CALCULATOR,
+                    reason=(
+                        "Relational result: the ordering is the answer, and is "
+                        "stated deterministically rather than restated."
+                    ),
+                    requires_c1=True,
+                )
             if has_explanation_terms:
                 return GeneratorRouteDecision(
                     route_name=RouteName.CALCULATION_WITH_EXPLANATION,
