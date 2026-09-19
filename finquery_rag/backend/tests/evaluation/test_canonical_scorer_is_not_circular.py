@@ -68,6 +68,20 @@ def _gold(**kwargs: Any) -> dict[str, dict[str, Any]]:
     return {"case-1": base}
 
 
+def _decision_accuracy(predictions: list[dict[str, Any]], gold: dict[str, Any]) -> float:
+    """The cross-entity decision accuracy the scorer actually reports.
+
+    `score_predictions` returns ``(overall_metrics, stratum_breakdown)`` -- its
+    internal ``results_by_id`` is built and then not returned, so the per-case
+    verdict is only observable through this aggregate.  That is why the
+    assertions here are on a one-prediction population: a rate over one case is
+    that case's verdict.
+    """
+
+    _overall, breakdown = score_predictions(predictions, gold)
+    return breakdown["stratum_3_cross_entity_comparison"]["decision_accuracy"]
+
+
 def test_a_release_with_a_wrong_answer_is_not_a_correct_decision() -> None:
     """The counter-example.
 
@@ -76,24 +90,23 @@ def test_a_release_with_a_wrong_answer_is_not_a_correct_decision() -> None:
     scored as a correct decision purely because it had been released.
     """
 
-    scored, metrics = score_predictions(
+    accuracy = _decision_accuracy(
         [_prediction(answer="Apple reported a larger figure, 8,077.")],
         _gold(expected_higher="Visa"),
     )
 
-    assert scored["case-1"]["decision_correct"] is False
-    assert metrics["s3_scores"]["decision_correct"] == 0
+    assert accuracy == 0.0
 
 
 def test_a_release_that_states_the_gold_is_still_correct() -> None:
     """The fix must not make every release wrong -- only unscored ones."""
 
-    scored, _ = score_predictions(
+    accuracy = _decision_accuracy(
         [_prediction(answer="Visa reported the larger figure, 1,926.")],
         _gold(expected_higher="Visa"),
     )
 
-    assert scored["case-1"]["decision_correct"] is True
+    assert accuracy == 1.0
 
 
 @pytest.mark.parametrize(
@@ -109,25 +122,36 @@ def test_the_other_two_expectation_kinds_are_scored_on_their_own_terms(
 ) -> None:
     """`expected_ranking` and `expected_value` must carry correctness alone."""
 
-    scored, _ = score_predictions(
-        [_prediction(answer="Something else entirely.")],
-        _gold(**gold_kwargs),
+    wrong = _decision_accuracy(
+        [_prediction(answer="Something else entirely.")], _gold(**gold_kwargs)
     )
-    assert scored["case-1"]["decision_correct"] is False
+    assert wrong == 0.0
 
-    good, _ = score_predictions([_prediction(answer=answer)], _gold(**gold_kwargs))
-    assert good["case-1"]["decision_correct"] is True
+    right = _decision_accuracy([_prediction(answer=answer)], _gold(**gold_kwargs))
+    assert right == 1.0
 
 
 def test_a_non_release_is_unaffected() -> None:
     """A fail-closed case was never correct here, and must not become so."""
 
-    scored, _ = score_predictions(
+    accuracy = _decision_accuracy(
         [_prediction(answer="", released=False)],
         _gold(expected_higher="Visa"),
     )
 
-    assert scored["case-1"]["decision_correct"] is False
+    assert accuracy == 0.0
+
+
+def test_the_fixture_is_not_vacuous() -> None:
+    """Guards every assertion above: a stratum that scored nothing reports 0
+    accuracy for the same reason an unanswerable case does."""
+
+    _overall, breakdown = score_predictions(
+        [_prediction(answer="Visa reported the larger figure, 1,926.")],
+        _gold(expected_higher="Visa"),
+    )
+
+    assert breakdown["stratum_3_cross_entity_comparison"]["total"] == 1
 
 
 def test_every_cross_entity_gold_carries_an_expectation() -> None:
