@@ -68,6 +68,7 @@ from src.runtime.harness_runtime_mode import ENV_VAR, AgentRuntimeMode
 from src.runtime.trusted_v2_binder import SemanticEvidenceEvaluationCapability
 from src.runtime.trusted_v2_coordinator import BoundedTrustedV2Coordinator
 from src.runtime.trusted_v2_factory import build_trusted_v2_runtime
+from src.runtime.trusted_v2_production import _coordinate_key
 from tests.harness.equivalence import decision_differences
 from tests.harness.harness_support import (
     BUDGET,
@@ -562,13 +563,32 @@ class _QueryRoutedIndexReader(ScriptedIndexReader):
 
 
 class _FixtureFactStore:
-    """Minimal ``materialize``-only fact store standing in for the real one."""
+    """``materialize``-only fact store standing in for the real one.
+
+    It carries the coordinate lookup too, because the operator-ambiguity guard
+    (P1.6-0) asks the authoritative store whether a bound operand is uniquely
+    identifiable.  A stand-in that omitted it would make the guard raise here
+    and run in production -- the harness testing a different system from the one
+    that ships, which is the divergence every fixture in this file exists to
+    prevent.
+    """
 
     def __init__(self, facts: Mapping[str, Mapping[str, Any]]) -> None:
         self.facts = dict(facts)
 
     def materialize(self, candidate_key: str) -> Mapping[str, Any]:
         return self.facts[str(candidate_key)]
+
+    def facts_at_coordinate(
+        self,
+        entity: Any,
+        metric: Any,
+        period: Any,
+    ) -> tuple[Mapping[str, Any], ...]:
+        key = _coordinate_key({"entity": entity, "metric": metric, "period": period})
+        return tuple(
+            fact for fact in self.facts.values() if _coordinate_key(fact) == key
+        )
 
 
 class _FixtureSpecialist:
