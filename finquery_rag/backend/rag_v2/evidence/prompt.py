@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from typing import Any, Mapping
 
 
@@ -72,7 +73,41 @@ BINDER_RESPONSE_FORMAT: dict[str, Any] = {
 }
 
 
+def _without_slot_entities(request: Mapping[str, Any]) -> Mapping[str, Any]:
+    """A copy of the request whose slots carry no ``entity``/``entity_id``.
+
+    P1.5-R diagnostic only.  The ablation has to separate "the model can see the
+    entity" from "the entity is enforced deterministically", and in production
+    those are one field read at two different places -- so a toggle that only
+    touched the matcher would not isolate them.
+
+    Returns the request unchanged for anything it does not recognise, so a shape
+    change upstream degrades to the production behaviour rather than to a
+    silently different one.
+    """
+
+    plan = request.get("plan") if isinstance(request, Mapping) else None
+    if not isinstance(plan, Mapping):
+        return request
+    slots = plan.get("required_slots")
+    if not isinstance(slots, (list, tuple)):
+        return request
+    stripped = dict(request)
+    stripped["plan"] = {
+        **plan,
+        "required_slots": [
+            {k: v for k, v in slot.items() if k not in ("entity", "entity_id")}
+            if isinstance(slot, Mapping)
+            else slot
+            for slot in slots
+        ],
+    }
+    return stripped
+
+
 def build_binder_messages(request: Mapping[str, Any]) -> list[dict[str, str]]:
+    if os.environ.get("P15R_PROMPT_ENTITY", "on") == "off":
+        request = _without_slot_entities(request)
     payload = json.dumps(request, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     return [
         {"role": "system", "content": BINDER_SYSTEM_PROMPT_V1},
