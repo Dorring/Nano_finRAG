@@ -454,8 +454,15 @@ def score_predictions(
                 decision_correct = True
             elif exp_val and exp_val in pred_answer:
                 decision_correct = True
-            elif pred_released:
-                decision_correct = True
+            # There was a fourth branch here: ``elif pred_released:
+            # decision_correct = True``.  It made a release its own evidence of
+            # correctness -- the evaluator endorsing the system with the
+            # system's own verdict -- so no release could ever be scored wrong
+            # and ``false_release`` was unreachable for this stratum.  The
+            # question "did the answer state the gold" is answerable on its own:
+            # all twenty cross-entity golds carry exactly one of
+            # ``expected_higher`` / ``expected_ranking`` / ``expected_value``, so
+            # no case becomes unscorable without it.
 
             if binding_hit or (decision_correct and pred_released):
                 binding_hit = True
