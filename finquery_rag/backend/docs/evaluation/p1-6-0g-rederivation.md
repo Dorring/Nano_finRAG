@@ -146,6 +146,70 @@ artifacts/evaluation/p1-6-0g-rederivation/
 
 ## Not yet done
 
-**No fixture has been changed.** The stratum above is a specification. Writing it into
-`benchmarks/` — gold values, `fact_ids`, plan `required_slots[].metric`, question text,
-and the manifest hash — is the migration, and it is a single batch.
+**No fixture has been changed.** The stratum above is a specification, and the
+migration was attempted and **stopped** — see below.
+
+---
+
+# P1.6-0H — the migration is blocked on the store, not on the design
+
+The migration was written and dry-run. It resolves a `fact_id` per value, and the
+resolution failed for most of the stratum in a way that is worth more than the
+migration:
+
+```
+Apple      Operating income     0 facts     absent
+Apple      Total liabilities    0 facts     absent
+NVIDIA     Total assets         0 facts     absent
+Microsoft  Operating income     6 facts     14,166 / 44,589 / 69,773  <- segment values,
+                                            not the company's 128,528
+Microsoft  Net income           2 facts     101,832 / 101,832         duplicate
+Apple      Research and dev.    2 facts     (34,550)                  sign defect
+```
+
+And where the store does hold the concept, the value can come from the wrong table:
+
+```
+The Coca-Cola Company / Total assets / FY2025
+  filing   ko p65   "Total Assets $ 104,816 $ 100,549"     the balance sheet
+  store           115,098  (fact page 87)                 the equity-method
+                                                           investees summary
+```
+
+`115,098` is a real number from a real KO table. It is simply not the company's total
+assets, and the coordinate `(The Coca-Cola Company, Total assets, FY2025)` cannot tell
+the two apart — which is P1.6-A's problem, now demonstrated on a concept the
+re-derivation chose precisely because it was supposed to be unambiguous.
+
+**So the re-derived stratum cannot be instantiated against the current store.** Setting
+`required_slots[].metric` to `Operating income` when no such fact exists retrieves
+nothing; setting it to a concept that exists but holds segment values retrieves the
+wrong number. Either way the case fails for a reason that has nothing to do with the
+system under test.
+
+That is not a fixture defect and cannot be fixed in the fixtures. The plan's metric and
+the store's metric have to be the same string *and* that string has to identify one
+company-level value — which is exactly what `(entity, metric, period)` currently fails
+to do across 18.2% of coordinates and 52.5% of the cross-entity gold cases.
+
+### What this changes
+
+The order inverts. P1.6-A was scheduled after the seal; it is now **upstream of the
+cross-entity stratum being usable at all**:
+
+1. The store must carry clean concept labels — the extractor currently concatenates
+   table headers into `metric` (`Operating expenses: / Operating income` is Apple's
+   operating-income row) — and must file the company-level line rather than a note's
+   or a segment's version of it.
+2. Only then can a fixture name a concept and have retrieval find the right fact.
+3. The re-derived stratum above is ready to apply the moment that holds. It needs no
+   further design work.
+
+Until then the cross-entity stratum is measurable only on the cases whose concepts the
+store already holds cleanly and uniquely — `rank-003` (`Comprehensive income`, all four
+resolved), `rank-004` partially, `compare-005`, `compare-008` — which is a handful, not
+twenty.
+
+**Nothing has been written. `plan-fixtures-v7.jsonl`, `gold-evidence-v1.jsonl` and
+`canonical-eval-v1.jsonl` are untouched**, and their preimage is backed up at
+`artifacts/evaluation/p1-6-0h-migration-preimage/`.
