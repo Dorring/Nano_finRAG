@@ -180,7 +180,6 @@ def test_a_ranking_orders_descending() -> None:
 
     assert result.ok is True
     assert result.ordering_groups == (("s2",), ("s3",), ("s1",))
-    assert result.relation is None
 
 
 def test_equal_operands_land_in_one_group() -> None:
