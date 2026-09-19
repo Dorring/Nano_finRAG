@@ -196,11 +196,24 @@ def release_verdict(
         return ReleaseVerdict.NOT_RELEASED
     if not decision_correct:
         return ReleaseVerdict.WRONG
-    # A gold the audit discredited cannot certify the release, and neither can
-    # one the source could not settle.  Both are reported as ungradeable rather
-    # than as failures: the case says nothing about the system.
-    if gold_validity in (GoldValidity.WRONG_SCOPE, GoldValidity.UNRESOLVED):
-        return ReleaseVerdict.GOLD_UNGRADEABLE
+    # Ungroundedness is checked *before* the gold's validity, because the two
+    # findings sit on opposite sides of the system/benchmark line.
+    #
+    # `rank-002` used 1,332 where the gold states 6,411, and 1,332 matches no
+    # value at that coordinate under any reading of it -- so the release is
+    # ungrounded whatever the audit decides the gold should have been.  That is
+    # a fact about the system and it does not go away because the benchmark is
+    # also imperfect.
+    #
+    # `compare-009` is the reverse: its operand matches the gold exactly, and it
+    # is the *gold* that took one cell of a flattened segment row.  There the
+    # release is grounded and the case still cannot certify anything, which is
+    # what GOLD_UNGRADEABLE says.
+    #
+    # Checking the gold first would file rank-002 under the benchmark's problem
+    # and lose the finding entirely.
     if operand_grounded_correct(row, gold_row) is False:
         return ReleaseVerdict.UNGROUNDED
+    if gold_validity in (GoldValidity.WRONG_SCOPE, GoldValidity.UNRESOLVED):
+        return ReleaseVerdict.GOLD_UNGRADEABLE
     return ReleaseVerdict.TRUSTED

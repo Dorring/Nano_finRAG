@@ -184,6 +184,35 @@ def test_a_released_wrong_answer_is_wrong_whatever_the_gold() -> None:
     assert release_verdict(row, _gold(), decision_correct=False) is ReleaseVerdict.WRONG
 
 
+def test_ungroundedness_outranks_a_discredited_gold() -> None:
+    """The two findings are on opposite sides of the system/benchmark line.
+
+    `rank-002` used an operand matching no gold value under any reading, so it
+    is ungrounded whatever the audit later decides the gold should have been.
+    Filing it under the benchmark's problem because the benchmark is *also*
+    imperfect would lose a real finding about the system.
+    """
+
+    row = _row(calculations=[{"operands": [{"value": "1332"}]}])
+    gold = _gold(values={"Tesla": "$ 6,411"})
+    verdict = release_verdict(
+        row, gold, decision_correct=True, gold_validity=GoldValidity.UNRESOLVED
+    )
+    assert verdict is ReleaseVerdict.UNGROUNDED
+
+
+def test_a_grounded_release_under_a_discredited_gold_is_still_ungradeable() -> None:
+    """`compare-009` the other way round: the operand matches and the gold is
+    the thing that is wrong, so the case certifies nothing either way."""
+
+    row = _row(calculations=[{"operands": [{"value": "4520"}]}])
+    gold = _gold(values={"JPMorganChase": "$ 4,520"})
+    verdict = release_verdict(
+        row, gold, decision_correct=True, gold_validity=GoldValidity.WRONG_SCOPE
+    )
+    assert verdict is ReleaseVerdict.GOLD_UNGRADEABLE
+
+
 def test_an_unreleased_row_makes_no_release_claim() -> None:
     row = _row(release_status="FAIL_CLOSED", answer="")
     assert (
