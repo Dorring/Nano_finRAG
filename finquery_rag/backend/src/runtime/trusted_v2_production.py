@@ -293,6 +293,28 @@ def _read_json_rows(path: Path) -> list[Mapping[str, Any]]:
     return normalized_rows
 
 
+def _coordinate_key(record: Mapping[str, Any]) -> tuple[str, str, str]:
+    """The semantic coordinate a fact is filed under.
+
+    Case- and whitespace-folded, because a different spelling of a company is
+    not a different company.  Entity, metric and period only -- and that is the
+    whole point: the dimensions that would tell these facts apart (scope, table,
+    row hierarchy, unit) are the ones P1.6-A has to recover, and their absence
+    is why two different values can share one coordinate at all.
+    """
+
+    def fold(value: Any) -> str:
+        if value is None:
+            return ""
+        return " ".join(str(value).casefold().split())
+
+    return (
+        fold(record.get("entity")),
+        fold(record.get("metric")),
+        fold(record.get("period")),
+    )
+
+
 class StructuredFactStore:
     """Read-only candidate-key -> structured FinancialFact materializer.
 
@@ -310,6 +332,11 @@ class StructuredFactStore:
             )
         self.require_citation_id = bool(require_citation_id)
         self._by_candidate: dict[str, dict[str, Any]] = {}
+        #: Facts grouped by their semantic coordinate, for the operand-ambiguity
+        #: guard.  Built from the records rather than the candidate keys,
+        #: because one record may be reachable by several keys and counting it
+        #: twice would invent a conflict that does not exist.
+        self._by_coordinate: dict[tuple[str, str, str], list[dict[str, Any]]] = {}
         self._load()
         if not self._by_candidate:
             raise TrustedV2ProductionConfigurationError(
@@ -429,6 +456,36 @@ class StructuredFactStore:
                         f"fact store has ambiguous duplicate candidate key: {candidate_key}"
                     )
                 self._by_candidate[candidate_key] = record
+        seen: set[int] = set()
+        for record in self._by_candidate.values():
+            if id(record) in seen:
+                continue
+            seen.add(id(record))
+            self._by_coordinate.setdefault(_coordinate_key(record), []).append(record)
+
+    @staticmethod
+    def _coordinate_key(record: Mapping[str, Any]) -> tuple[str, str, str]:
+        return _coordinate_key(record)
+
+    def facts_at_coordinate(
+        self,
+        entity: Any,
+        metric: Any,
+        period: Any,
+    ) -> tuple[Mapping[str, Any], ...]:
+        """Every stored fact sharing one semantic coordinate.
+
+        The *authoritative* store's answer to "which facts are these", not the
+        packet's.  A guard scoped to what retrieval returned would be safe only
+        on the days top-K happens to surface a competitor.
+        """
+
+        key = _coordinate_key({"entity": entity, "metric": metric, "period": period})
+        return tuple(self._by_coordinate.get(key, ()))
+
+    @property
+    def coordinate_count(self) -> int:
+        return len(self._by_coordinate)
 
     @property
     def candidate_count(self) -> int:
@@ -1064,7 +1121,14 @@ def build_trusted_v2_runtime_for_request(
         capabilities = TrustedV2CapabilityPorts(
             retrieval=retrieval,
             evidence_evaluator=evidence,
-            calculation=DeterministicCalculationCapability(),
+            calculation=DeterministicCalculationCapability(
+                # The authoritative store, so operand admission can ask whether
+                # a bound fact is uniquely identifiable at its coordinate --
+                # P1.6-0.  The calculator cannot answer that from the packet: a
+                # guard scoped to what retrieval returned is safe only on the
+                # days top-K happens to surface a competitor.
+                fact_store=resources.fact_store,
+            ),
             generation=TrustedV2GenerationCapability(
                 routing_policy=None,
                 renderer=DeterministicFactRenderer(),

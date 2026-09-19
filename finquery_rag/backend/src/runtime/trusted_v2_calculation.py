@@ -23,6 +23,7 @@ from src.domain.calculation import (
 )
 from src.finance.calculation_executor import execute_plan
 from src.finance.calculation_registry import CALCULATION_REGISTRY, get_operation_entry
+from src.finance.operand_ambiguity import CoordinateStatus, coordinate_status
 from src.finance.primitive_tools import parse_financial_number
 from src.finance.relational_directory import (
     RelationalOperandDirectory,
@@ -172,8 +173,16 @@ class DeterministicCalculationCapability:
     def __init__(
         self,
         executor: Callable[[CalculationPlan], CalculationResult] = execute_plan,
+        *,
+        fact_store: Any | None = None,
     ) -> None:
         self.executor = executor
+        #: The authoritative fact store, when the caller has one.  Used only to
+        #: ask whether a bound operand's coordinate identifies one value -- see
+        #: `src/finance/operand_ambiguity.py`.  `None` disables the guard, which
+        #: is what the deterministic unit tests want and what a caller without a
+        #: store has to accept.
+        self.fact_store = fact_store
         self.calls = 0
         self.last_result: CalculationResult | None = None
         self.last_operand_evidence_ids: tuple[str, ...] = ()
@@ -246,6 +255,9 @@ class DeterministicCalculationCapability:
         bindings: Mapping[str, tuple[str, ...]],
         candidates: Mapping[str, Mapping[str, Any]],
         operation: CalculationOperation,
+        *,
+        slot: Any | None = None,
+        fact_store: Any | None = None,
     ) -> CalculationOperand | None:
         ids = bindings.get(slot_id, ())
         if not ids:
@@ -261,6 +273,37 @@ class DeterministicCalculationCapability:
         candidate = candidates.get(ids[0])
         if candidate is None:
             return None
+
+        # P1.6-0: is this operand uniquely identifiable at all?
+        #
+        # `rank-005` bound The Coca-Cola Company / Interest rate contracts /
+        # FY2025 to `-2` while the store holds four distinct values under that
+        # coordinate and the gold is `16`.  The deterministic ranking then
+        # faithfully rendered the wrong operands and released.  Nothing
+        # downstream could have caught it: the executor did what it was given
+        # and the release invariant saw an admissible relational result.
+        #
+        # Asked of the *store*, not the packet.  A packet-scoped guard would be
+        # safe only on the days top-K happens to surface a competitor, which
+        # makes safety a function of retrieval depth rather than of whether the
+        # fact is identifiable.
+        #
+        # Returning `None` is the whole mechanism: `_build_operands` then
+        # returns `()`, and the existing `INSUFFICIENT_OPERANDS` path blocks the
+        # calculation.  Refusing is the honest answer -- this cannot know which
+        # of the competing values is right, and separating them is P1.6-A.
+        if slot is not None and fact_store is not None:
+            status = coordinate_status(
+                candidate,
+                fact_store.facts_at_coordinate(
+                    getattr(slot, "entity", None),
+                    getattr(slot, "metric", None),
+                    getattr(slot, "period", None),
+                ),
+            )
+            if status is CoordinateStatus.CONFLICTING_VALUES:
+                return None
+
         value = _parse_candidate_value(
             candidate,
             apply_scale=operation is not CalculationOperation.SCALE_CONVERSION,
@@ -288,6 +331,8 @@ class DeterministicCalculationCapability:
         cls,
         plan: SupervisorPlan,
         state: AdaptiveRAGStateV1,
+        *,
+        fact_store: Any | None = None,
     ) -> tuple[CalculationOperand, ...]:
         operation = _operation(plan.operation)
         entry = get_operation_entry(operation)
@@ -300,6 +345,7 @@ class DeterministicCalculationCapability:
         if not candidates or not bindings:
             return ()
 
+        slots_by_id = {slot.slot_id: slot for slot in plan.required_slots}
         slot_by_role: dict[str, str] = {}
         for slot in plan.required_slots:
             slot_by_role.setdefault(_normalise_role(slot.role), slot.slot_id)
@@ -314,7 +360,13 @@ class DeterministicCalculationCapability:
             if slot_id is None:
                 return ()
             operand = cls._operand_for_slot(
-                slot_id, role, bindings, candidates, operation
+                slot_id,
+                role,
+                bindings,
+                candidates,
+                operation,
+                slot=slots_by_id.get(slot_id),
+                fact_store=fact_store,
             )
             if operand is None:
                 return ()
@@ -328,6 +380,8 @@ class DeterministicCalculationCapability:
                     bindings,
                     candidates,
                     operation,
+                    slot=slot,
+                    fact_store=fact_store,
                 )
                 if operand is None:
                     return ()
@@ -358,7 +412,7 @@ class DeterministicCalculationCapability:
             raise DeterministicCalculationCapabilityError(
                 f"unsupported_calculation_operation:{operation.value}"
             )
-        operands = self._build_operands(plan, state)
+        operands = self._build_operands(plan, state, fact_store=self.fact_store)
         if len(operands) < entry.min_operands:
             result = CalculationResult(
                 status=CalculationStatus.BLOCKED,
