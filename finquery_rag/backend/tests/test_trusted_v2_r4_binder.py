@@ -1837,6 +1837,7 @@ def test_candidate_direct_r4_interleaves_multi_slot_pools_and_respects_entity_pr
             *,
             document_scope: Any = None,
             total_k: int | None = None,
+            slot_top_k: int | None = None,
             alias_expansion: bool = False,
         ) -> dict[str, Any]:
             from src.pdf_retrieval_v4.candidate_rrf import CandidateRRFHit
@@ -1935,6 +1936,7 @@ def test_candidate_direct_r4_entity_priority_hardened_against_similar_entity_nam
             *,
             document_scope: Any = None,
             total_k: int | None = None,
+            slot_top_k: int | None = None,
             alias_expansion: bool = False,
         ) -> dict[str, Any]:
             return {
@@ -1999,6 +2001,7 @@ def test_candidate_direct_r4_entity_priority_hardened_against_similar_entity_nam
             *,
             document_scope: Any = None,
             total_k: int | None = None,
+            slot_top_k: int | None = None,
             alias_expansion: bool = False,
         ) -> dict[str, Any]:
             return {

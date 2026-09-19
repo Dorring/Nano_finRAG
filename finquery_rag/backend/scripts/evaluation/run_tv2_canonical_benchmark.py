@@ -37,10 +37,30 @@ _CANDIDATE_ENV_PATHS = [
     _BACKEND_DIR.parent / "config" / "deployment" / "online.env",
     _BACKEND_DIR / "online.env",
 ]
-for _p in _CANDIDATE_ENV_PATHS:
-    if _p.exists():
-        load_dotenv(_p, override=True)
-        break
+
+
+def load_deployment_env() -> None:
+    """Load the deployment env for a run, not for an import.
+
+    This ran at module scope with ``override=True``, so *importing* the module
+    rewrote ``os.environ`` for the whole process.  The effect was not subtle: a
+    test that imports this module to reach `score_predictions` injected the
+    production configuration into an entire test session, and every suite
+    asserting what happens when configuration is *absent* -- health snapshot,
+    eval doctor, preflight -- failed in the full run while passing perfectly in
+    isolation.
+
+    Importing a module must not reconfigure the process.  The script's own
+    `main` calls this explicitly.  `run_p1_2_dual_track_benchmark` loads its own
+    deployment env and reaches this module only for `BenchmarkHTTPClient` and
+    `FactStoreGroundingIndex`, both of which take their configuration as
+    arguments.
+    """
+
+    for path in _CANDIDATE_ENV_PATHS:
+        if path.exists():
+            load_dotenv(path, override=True)
+            return
 
 logging.basicConfig(
     level=logging.INFO,
@@ -638,6 +658,7 @@ The 120-question canonical evaluation benchmark (`canonical-eval-v1.jsonl`) was 
 # ---------------------------------------------------------------------------
 
 def main() -> int:
+    load_deployment_env()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--eval-set",
