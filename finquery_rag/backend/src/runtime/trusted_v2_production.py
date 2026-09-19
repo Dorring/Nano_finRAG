@@ -483,6 +483,23 @@ class StructuredFactStore:
         key = _coordinate_key({"entity": entity, "metric": metric, "period": period})
         return tuple(self._by_coordinate.get(key, ()))
 
+    def iter_records(self) -> tuple[Mapping[str, Any], ...]:
+        """Every stored fact, once.
+
+        Deduplicated by identity rather than by candidate key: one record may be
+        reachable by several keys, and a caller asking how widely a value is
+        stated must not count the same row twice for that reason.
+        """
+
+        seen: set[int] = set()
+        records: list[Mapping[str, Any]] = []
+        for record in self._by_candidate.values():
+            if id(record) in seen:
+                continue
+            seen.add(id(record))
+            records.append(record)
+        return tuple(records)
+
     @property
     def coordinate_count(self) -> int:
         return len(self._by_coordinate)
