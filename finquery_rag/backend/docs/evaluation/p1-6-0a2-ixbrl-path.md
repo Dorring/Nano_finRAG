@@ -156,6 +156,58 @@ identity. Concept-keyed retrieval is not automatically right — it is automatic
 are standard, and the seven verified values reconcile without special-casing. The eight
 filings can be rebuilt this way.
 
+## All eight filings — 39 of 39 reconcile
+
+`rebuild_ixbrl_facts.py` locates the eight filings, parses their contexts and
+reconciles every value read by hand during this work.
+
+```
+filings located   8 / 8   (all with primary.html present)
+values reconciled 39 / 39  RESOLVED_UNDIMENSIONED
+```
+
+Every one is found at an **undimensioned** context — the company-level figure, by the rule
+established above — and carries a `us-gaap:` concept:
+
+```
+NetIncomeLoss  OperatingIncomeLoss  Assets  Liabilities  EarningsPerShareDiluted
+ComprehensiveIncomeNetOfTax  ResearchAndDevelopmentExpense  LongTermDebt…
+```
+
+### Two caveats the reconciliation exposes, which the switch has to handle
+
+**The taxonomy is standard but not uniform.** The same line is tagged with different
+concepts by different filers:
+
+```
+Net income   Apple, JPM, MSFT, NVDA  ->  us-gaap:NetIncomeLoss
+             Tesla, Coca-Cola        ->  us-gaap:ProfitLoss
+             Visa                    ->  both
+
+Interest exp JPM                     ->  us-gaap:InterestExpenseOperating
+             Visa, MSFT, Coca-Cola   ->  us-gaap:InterestExpenseNonoperating
+```
+
+`ProfitLoss` is the parent concept and `NetIncomeLoss` its total; a bank's interest
+expense is an operating item and a manufacturer's is not. So a concept is not yet
+*comparable* just because it is standard — a mapping across these pairs is required, and
+`rank-004` (Interest expense, four filers) sits exactly on the second one. This is
+tractable and named, but it must be done before retrieval keys on `concept`, or the
+cross-entity cases will compare a bank's interest expense against a manufacturer's under
+two different tags and call it a like-for-like.
+
+**The accounting identity duplicates a value across concepts.** `Total assets` matches
+both `us-gaap:Assets` and `us-gaap:LiabilitiesAndStockholdersEquity` at the same context
+and value. Concept-keyed retrieval of "total assets" would find both; picking either
+gives the right number, which is exactly the kind of right-for-the-wrong-reason the
+earlier phases kept finding.
+
+### Verdict
+
+Reproducible, and the reconciliation is complete. The eight filings can be rebuilt as
+`(concept, dimensions, period, unit, value)`. Before retrieval keys on `concept`, the
+concept-alignment mapping above has to exist — that is the next piece, not a detail.
+
 ## Status
 
 No store changed, no fixture changed. `derive_fact_concept` is committed shadow-only and
