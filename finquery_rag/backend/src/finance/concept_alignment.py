@@ -57,9 +57,14 @@ CONCEPT_ALIGNMENT: dict[str, tuple[str, ...]] = {
     "total_liabilities": ("us-gaap:Liabilities",),
     "research_and_development": ("us-gaap:ResearchAndDevelopmentExpense",),
     "diluted_eps": ("us-gaap:EarningsPerShareDiluted",),
+    # Consolidated first, for the same reason as `net_income`: the two differ by
+    # the noncontrolling interest.  Tesla states both -- 4,886 including the
+    # noncontrolling portion against 4,825 attributable -- and the benchmark's
+    # verified value is 4,886.  Preferring `ComprehensiveIncomeNetOfTax` here was
+    # wrong and was caught by reading the value back out of the filing.
     "comprehensive_income": (
-        "us-gaap:ComprehensiveIncomeNetOfTax",
         "us-gaap:ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest",
+        "us-gaap:ComprehensiveIncomeNetOfTax",
     ),
     "interest_expense": (
         "us-gaap:InterestExpense",
