@@ -1630,13 +1630,25 @@ def align_bound_evidence_to_query(
                 mismatches.append(
                     f"fact_period_not_matching_slot:{normalized_id}:{slot.slot_id}"
                 )
+            # The query-side and plan-side metric sets are built from the
+            # ontology, so they can only ever hold metrics the ontology names.
+            # A literal identity is therefore never in them, and these branches
+            # used to read that as "the fact is about something the query never
+            # asked about" -- which is not what an unnamed metric means.
+            #
+            # The failure needs a *mix* to appear, which is why it stayed hidden:
+            # with every metric unnamed the frame set is empty and the check is
+            # skipped, so the case passed.  Naming one metric makes the set
+            # non-empty, the check fires, and the fact for the metric still
+            # unnamed is rejected -- for a query that names both.
+            fact_metric_is_named = not fact_metric.startswith(LITERAL_METRIC_PREFIX)
             if frame.metric_ids and plan.intent is Intent.DIRECT_FACT:
                 if fact_metric is None:
                     mismatches.append(f"fact_metric_unverifiable:{normalized_id}")
-                elif fact_metric not in set(frame.metric_ids):
+                elif fact_metric_is_named and fact_metric not in set(frame.metric_ids):
                     mismatches.append(f"fact_metric_not_in_query:{normalized_id}")
             elif frame.metric_ids and fact_metric is not None:
-                if fact_metric not in plan_metric_ids:
+                if fact_metric_is_named and fact_metric not in plan_metric_ids:
                     mismatches.append(f"fact_metric_not_in_plan:{normalized_id}")
 
             if frame.entity_ids:

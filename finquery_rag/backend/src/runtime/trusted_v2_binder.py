@@ -10,7 +10,11 @@ from rag_v2.adaptive import (
     ReasonCode,
 )
 from rag_v2.contracts.evidence import BindingStatus, EvidenceBinding
-from rag_v2.contracts.financial_semantics import quantity_identity, text_identity
+from rag_v2.contracts.financial_semantics import (
+    canonical_quantity,
+    quantity_identity,
+    text_identity,
+)
 from rag_v2.contracts.plan import Intent, SupervisorPlan
 from rag_v2.evidence.binder_service import (
     BinderRequest,
@@ -51,6 +55,120 @@ def _stable_unique(values: Iterable[str]) -> tuple[str, ...]:
             result.append(text)
             seen.add(text)
     return tuple(result)
+
+
+#: Why a candidate cannot participate in binding a slot.  Structural facts about
+#: the candidate and the slot's declared requirements -- never a judgement about
+#: relevance, which is what the Binder is for.
+CANDIDATE_PERIOD_ABSENT = "candidate_period_absent"
+CANDIDATE_PERIOD_MISMATCH = "candidate_period_mismatch"
+CANDIDATE_VALUE_NOT_NUMERIC = "candidate_numeric_value_absent"
+
+
+def _fact_field(fact: Mapping[str, Any], *keys: str) -> Any:
+    for key in keys:
+        value = fact.get(key)
+        if value is not None and str(value).strip():
+            return value
+    return None
+
+
+def _metric_is_admissible(
+    fact: Mapping[str, Any],
+    expected_metrics: set[str],
+) -> bool:
+    """Whether the metric prefilter may drop this candidate.
+
+    It may drop a fact whose metric the ontology *names* and the plan does not
+    ask for.  It may not drop one whose metric the ontology cannot name at all,
+    and that distinction is not a nicety -- conflating them is a regression this
+    filter has already caused twice.
+
+    ``_facts_for_binding`` runs only when at least one slot's metric resolves.
+    Before ``total_operating_expenses`` was added to the ontology, a plan naming
+    it and ``Leasehold improvements`` resolved *nothing*, the early return handed
+    the Binder the whole packet, and the case passed.  Adding the one metric made
+    the filter fire -- and it then dropped every ``Leasehold improvements`` fact,
+    because an unnamed metric is not in a set of names.  The Binder was left
+    without the fact for one of its two slots and reported MISSING, over a packet
+    that contained it.  ``pctshare-004`` is the same shape with the roles
+    swapped: ``Cost of sales`` resolved, ``Impact of the State Aid Decision`` did
+    not, and the State Aid rows were removed before the Binder saw anything.
+
+    So an unnamed metric is retained.  It is genuinely unknown to the plan's
+    vocabulary, which is a fact about this ontology and not evidence of
+    irrelevance, and the Binder is the component that decides relevance.
+    """
+
+    named = canonical_metric_id(
+        fact.get("metric")
+        or fact.get("normalized_metric")
+        or fact.get("raw_metric")
+    )
+    return named is None or named in expected_metrics
+
+
+def candidate_eligible_for_slot(
+    fact: Mapping[str, Any],
+    slot: Any,
+) -> tuple[bool, tuple[str, ...]]:
+    """Whether a candidate meets the slot's *structural* minimum, and why not.
+
+    This is not the complement of "relevant"; it is the complement of "complete
+    enough to be considered".  A slot that declares FY2025 and a numeric value
+    cannot be satisfied by a row with neither, and that is a deterministic
+    reading of the slot's own contract rather than a guess about meaning.
+
+    It exists because the two were being given to the model together.  A
+    retrieval packet is allowed to be broad -- it carries rows for audit and
+    recovery that no particular slot can use -- and sending those into a slot's
+    candidate set asks the model to rule them out.  The model does it
+    inconsistently: the case that motivated this bound its denominator on one run
+    and reported both slots missing on the next, over a byte-identical packet.
+
+    What this is NOT: a filter on the packet.  The packet keeps every row,
+    because a period-less or value-less row may be exactly what a later
+    qualitative, heading or metric-discovery task wants.  Retrieval-admissible
+    and slot-binding-eligible are different properties, and only the second is
+    decided here.
+
+    Silence is never a rejection.  A slot that declares no period does not
+    thereby reject a period-less candidate, and a slot that does not ask for a
+    numeric value does not reject one that has none.  Only a requirement the slot
+    actually states can be unmet -- otherwise this becomes the global tidy-up of
+    untidy data that it is written not to be.
+
+    ``canonical_quantity`` is the numeric test rather than ``canonical_decimal``
+    because a percentage is a value: ``21%`` is what an income-tax-rate row
+    states, and a rule that called it a non-value would exclude the very
+    candidates these fixtures exist to bind.
+    """
+
+    reasons: list[str] = []
+
+    required_period = canonical_period_id(slot.period) or _norm(slot.period)
+    if required_period is not None:
+        stated = _fact_field(fact, "period", "normalized_period", "raw_period")
+        candidate_period = canonical_period_id(stated) or _norm(stated)
+        if candidate_period is None:
+            reasons.append(CANDIDATE_PERIOD_ABSENT)
+        elif candidate_period != required_period:
+            reasons.append(CANDIDATE_PERIOD_MISMATCH)
+
+    if _norm(getattr(slot, "value_type", None)) == "numeric":
+        value = _fact_field(fact, "value", "parsed_numeric_value", "raw_value")
+        if (
+            canonical_quantity(
+                value,
+                scale=_fact_field(fact, "scale"),
+                unit=_fact_field(fact, "unit"),
+                currency=_fact_field(fact, "currency"),
+            )
+            is None
+        ):
+            reasons.append(CANDIDATE_VALUE_NOT_NUMERIC)
+
+    return (not reasons), tuple(reasons)
 
 
 class SemanticEvidenceEvaluationCapability:
@@ -155,12 +273,15 @@ class SemanticEvidenceEvaluationCapability:
         relevant = tuple(
             fact
             for fact in facts
-            if canonical_metric_id(
-                fact.get("metric")
-                or fact.get("normalized_metric")
-                or fact.get("raw_metric")
+            if _metric_is_admissible(fact, expected_metrics)
+            # The metric prefilter is left in place; eligibility is added
+            # alongside it.  This step changes one thing -- a candidate
+            # structurally incapable of filling a slot is no longer offered to
+            # the Binder for that slot.
+            and any(
+                candidate_eligible_for_slot(fact, slot)[0]
+                for slot in plan.required_slots
             )
-            in expected_metrics
         )
         # Preserve the full packet when the source schema did not expose a
         # metric at all; the Binder can then make an explicit MISSING decision
