@@ -256,3 +256,54 @@ def test_the_resolved_relation_matches_the_result_derivation(
 
     assert resolved is not None
     assert resolved.relation is expected
+
+
+# --- the calculation renderer, which is on the generation path ----------------
+
+
+def test_the_renderer_states_a_relation_given_a_directory() -> None:
+    """The route a relational answer takes instead of prose."""
+
+    from src.finance.calculation_renderer import render_calculation_result
+
+    assert render_calculation_result(_result(), directory=DIRECTORY) == "Visa > Apple"
+
+
+def test_the_renderer_refuses_a_relation_without_a_directory() -> None:
+    """It must not fall through to the quantity path.
+
+    A relational result has no `value`, so the fall-through would format `None`
+    -- a crash at best, and at worst whatever `None` happens to render as.  The
+    generation route calls this with a `CalculationResult` and no other context,
+    so the refusal has to live here rather than in the caller's discipline.
+    """
+
+    from src.finance.calculation_renderer import render_calculation_result
+
+    assert render_calculation_result(_result()) == ""
+
+
+def test_the_renderer_refuses_a_relation_it_cannot_resolve() -> None:
+    from src.finance.calculation_renderer import render_calculation_result
+
+    unresolvable = _result(groups=(("s2",), ("s9",)))
+
+    assert render_calculation_result(unresolvable, directory=DIRECTORY) == ""
+
+
+def test_the_renderer_still_renders_a_quantity_unchanged() -> None:
+    """No arithmetic path goes through the relational branch."""
+
+    from src.finance.calculation_renderer import render_calculation_result
+
+    quantity = CalculationResult(
+        status=CalculationStatus.EXECUTED,
+        operation=CalculationOperation.DIFFERENCE,
+        value=Decimal("6"),
+        unit="base",
+        operands=(_operand("s1", "10"), _operand("s2", "4")),
+    )
+
+    assert "6" in render_calculation_result(quantity)
+    assert render_calculation_result(quantity, directory=DIRECTORY) == \
+           render_calculation_result(quantity)
