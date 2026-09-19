@@ -283,6 +283,7 @@ class CandidateDirectRetriever:
         *,
         document_scope: set[str],
         total_k: int | None = None,
+        slot_top_k: int | None = None,
         alias_expansion: bool = False,
     ) -> dict[str, Any]:
         """One lane per retrieval demand, merged by rank into a bounded packet.
@@ -359,10 +360,14 @@ class CandidateDirectRetriever:
             # second candidate is exactly the one an entity-priority pass lifts
             # over another slot's first.  The depth is the one the previous
             # interleave used for the same reason.
-            pool = build_slot_pool(
-                slot_pools,
-                total_k=total_k or max(80, self.final_pool_k * 2),
-            )
+            merge_kwargs: dict[str, Any] = {
+                "total_k": total_k or max(80, self.final_pool_k * 2)
+            }
+            # Only passed when asked for, so the merge's own default stays the
+            # one place the production depth is written down.
+            if slot_top_k is not None:
+                merge_kwargs["slot_top_k"] = slot_top_k
+            pool = build_slot_pool(slot_pools, **merge_kwargs)
 
         return {
             "candidate_direct_pool": pool,

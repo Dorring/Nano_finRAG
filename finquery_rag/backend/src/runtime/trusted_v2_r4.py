@@ -364,6 +364,7 @@ class CandidateDirectR4Policy:
         materializer: Materializer,
         document_scope: Sequence[str] = (),
         alias_expansion: bool = False,
+        slot_top_k: int | None = None,
     ) -> None:
         if not isinstance(retriever, CandidateDirectRetriever):
             raise TypeError("retriever must be CandidateDirectRetriever")
@@ -375,6 +376,9 @@ class CandidateDirectR4Policy:
         # production path and differ in one variable -- measuring Arm B by
         # editing the source would make the two arms two different programs.
         self.alias_expansion = bool(alias_expansion)
+        # Per-lane retrieval depth.  `None` keeps the merge's own default rather
+        # than restating it here, so the production depth has one home.
+        self.slot_top_k = slot_top_k
         self.calls = 0
 
     @staticmethod
@@ -422,6 +426,7 @@ class CandidateDirectR4Policy:
             requests,
             document_scope=set(request.document_scope or self.document_scope),
             alias_expansion=self.alias_expansion,
+            slot_top_k=self.slot_top_k,
         )
         slot_pools = raw.get("slot_pools", {})
         # `retrieve_for_requests` has already merged the lanes -- round-robin by
