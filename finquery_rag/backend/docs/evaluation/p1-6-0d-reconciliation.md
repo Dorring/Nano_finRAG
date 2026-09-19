@@ -37,71 +37,94 @@ same quantity. `crossdiff-003`'s Apple `9,683` (Federal sub-total → `Provision
 income taxes $20,719`) and `compare-001`'s `$5,678` (`United States` → `Total
 $15,998`) I had already read out of the filings myself and they agree.
 
-## Not accepted as stated — two slots need different treatment
+## Not accepted as stated — three slots need different treatment
 
-Both are cases where "`WRONG_SCOPE_GOLD`, company-level truth is X" would put a number
-into fixture v6 that the filing does not support.
+Three slots are not "wrong scope, substitute the company total". In each, the gold
+values for the entities compared are **not the same kind of quantity**, and no row or
+column choice makes them one. That is a fixture defect one level up from scope, and
+the fix is to make the *metric* specific, not to find a better value.
 
-### `compare-004` Apple — the "company value" is a derived sum
-
-```
-aapl_fy2025_10k.pdf p42
-  Derivative instruments designated as accounting hedges:
-      Foreign exchange contracts   62,647
-  Derivative instruments not designated as accounting hedges:
-      Foreign exchange contracts  109,079
-```
-
-`171,726` is `62,647 + 109,079`. **The filing never states it.** The two figures are
-two categories of the same metric, each a reported number; their sum is a construction.
-
-This is not necessarily wrong — a question *can* legitimately ask for the combined
-total — but it must be a deliberate fixture decision about what the question asks, not
-a silently computed value presented as source truth. Before v6, `compare-004`'s
-**question text** has to be checked: if it asks about "foreign exchange contracts"
-without distinguishing designated from not-designated, the case may need the question
-narrowed rather than the gold replaced with a sum.
-
-The same shape applies to `compare-004` Microsoft, where `(853)` is `(809) + (44)`.
-
-### `rank-005` — the gold values are different *kinds* of quantity
+### `compare-004` — a notional amount against a fair value
 
 ```
-tsla… (question) rank Apple, The Coca-Cola Company, Microsoft by "Interest rate contracts"
+Q: "Compare Apple and Microsoft: which reported a larger Foreign exchange contracts
+    in FY2025?"                       metric: "Foreign exchange contracts"
 
-Apple   gold  12,875   aapl p42: "The notional amounts of the Company's outstanding
-                        derivative instruments … Interest rate contracts $ 12,875"
-                        -> a NOTIONAL AMOUNT
+Apple      gold  62,647  aapl p42  "Derivative instruments designated as accounting
+                                    hedges: Foreign exchange contracts 62,647"
+                                    under  "The notional amounts of the Company's
+                                    outstanding derivative instruments"
+                                    -> a NOTIONAL AMOUNT
 
-Coca-Cola gold    16   ko p84: table "Gain (Loss) Recognized in OCI"
-                        -> a GAIN recognised in other comprehensive income
-
-Microsoft gold     0   (type not established)
+Microsoft  gold   (809)  msft p58  under  "Not Designated as Hedging Instruments"
+                                           "Fair Values of Derivative Instruments"
+                                    -> a FAIR VALUE
 ```
 
-`16` is not a mis-scoped `13,674`. They are different quantities — an OCI gain and a
-notional principal — and no row or column choice makes one into the other. So the
-verifier's proposed company value for Coca-Cola (`13,674`, the notional of fair-value
-hedges) is the right *kind* of number to compare against Apple's `12,875`, but that is
-a **fixture redesign**, not a scope correction: the gold for at least two of the three
-entities is currently measuring something else.
+The two entities are being asked the same question and answering with different
+quantities. The filing never states `171,726` (the proposed "company value" is
+`62,647 + 109,079`, a sum of two categories); and a Microsoft total built as
+`(809) + (44)` would be a sum of fair values, which still would not be a notional.
+**Substituting values cannot make this case sound.** Its metric has to name the
+quantity — *notional amount of foreign exchange derivatives* — so the same thing is
+retrieved for every entity.
 
-Until that is settled, `rank-005` should not be counted as a fixable `WRONG_SCOPE_GOLD`.
-It is a case whose gold is internally incoherent, and it needs either a re-posed
-question over a single consistent quantity or retirement.
+### `rank-005` — a notional amount against an OCI gain
 
-## What this changes
+```
+Q: "Rank … by Interest rate contracts in FY2025: Apple, The Coca-Cola Company,
+    Microsoft."                       metric: "Interest rate contracts"
 
-The `WRONG_SCOPE_GOLD` label is not uniform, and treating it as such would put two
-unsupported values into fixture v6. Before the v5 → v6 migration, each of the eleven
-slots needs its **fix** classified, not just its verdict:
+Apple      gold  12,875  aapl p42  "The notional amounts of the Company's outstanding
+                                    derivative instruments … Interest rate contracts"
+                                    -> a NOTIONAL AMOUNT
+Coca-Cola  gold      16  ko p84    table "Gain (Loss) Recognized in OCI"
+                                    -> a GAIN in other comprehensive income
+Microsoft  gold       0  (type not established)
+```
+
+`16` is not a mis-scoped `13,674`: an OCI gain and a notional principal are different
+quantities. The verifier's `13,674` is the right *kind* of number to put beside Apple's
+`12,875`, which confirms the metric must be re-specified — this is a fixture redesign,
+not a scope correction.
+
+### `crossdiff-003` — the metric is the word "Total"
+
+```
+Q: "What is the difference in Total between Apple and Tesla in FY2025?"
+                                      metric: "Total"
+
+Apple  gold   9,683   Total of the Federal grouping in the income tax note
+Tesla  gold  13,279   Total of the accrued liabilities note
+```
+
+The question has no coherent subject. "Total" of what? The two golds are totals of
+unrelated concepts, so the difference the case computes is meaningless, and the
+verifier's proposed replacements (`$20,719` and `$54,941`) are a tax provision and
+total liabilities — still unrelated. This case cannot be repaired by any value
+substitution; it needs a metric, and probably a different question.
+
+### The general defect
+
+The pattern across all three is the same and it is worth naming, because it predicts
+where else it will occur: **a metric string that is a generic word — `Total`,
+`Current`, `Foreign exchange contracts`, `Interest rate contracts`, `United States` —
+matches facts in several different tables, so the fixture retrieves a different
+quantity for each entity.** `Foreign exchange contracts` exists in both a notional
+table and a fair-value table; `Total` exists in every note.
+
+So the migration has two different jobs, and conflating them would ship cases that look
+repaired but are still incoherent:
 
 | fix | slots |
 |---|---|
-| company total of the *same* quantity — substitute the value | compare-001, compare-003, compare-005, compare-009, compare-010, crossdiff-003 (×2), crossdiff-004 |
-| gold is already correct; nothing to change | rank-002 |
-| needs a decision about what the **question** asks before any value is chosen | compare-004 (×2) |
-| gold is internally incoherent across entities; needs re-posing or retirement | rank-005 |
+| the metric is coherent; the gold took a component of it — **substitute the value** | compare-001, compare-003, compare-005, compare-009, compare-010, crossdiff-004 |
+| the metric is coherent and the gold is already right — **no change** | rank-002 |
+| the metric is incoherent across entities — **re-specify the metric, then re-pick every value** | compare-004, rank-005, crossdiff-003 |
+
+`crossdiff-003` is the strongest case for retirement rather than repair, since no
+single coherent quantity is visible in its question.
 
 No fixture has been changed. This is recorded so the migration is one deliberate batch
-rather than eleven independent edits.
+rather than eleven independent edits — and so that "10 WRONG_SCOPE_GOLD" is not read
+as ten interchangeable value substitutions, which is how it was reported.
