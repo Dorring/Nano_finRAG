@@ -22,7 +22,7 @@ from pathlib import Path
 import pytest
 
 from scripts.evaluation.build_p1_2_plan_fixtures import (
-    _operand_periods_from_gold,
+    _operand_coordinates_from_gold,
     load_fact_coordinates,
 )
 
@@ -77,12 +77,12 @@ def _gold(fact_ids: list[str]) -> dict:
     return {"fact_ids": fact_ids, "operation": "sum"}
 
 
-def _fact(period: str) -> dict:
-    return {"period": period, "metric": "Cost of sales", "entity": "Apple"}
+def _fact(period: str, metric: str = "Cost of sales") -> dict:
+    return {"period": period, "metric": metric, "entity": "Apple"}
 
 
-def test_operand_periods_come_from_the_facts_in_gold_order() -> None:
-    periods = _operand_periods_from_gold(
+def test_operand_coordinates_come_from_the_facts_in_gold_order() -> None:
+    coordinates = _operand_coordinates_from_gold(
         _gold(["a", "b"]),
         {"id": "q"},
         {"a": _fact("FY2024"), "b": _fact("FY2025")},
@@ -90,14 +90,44 @@ def test_operand_periods_come_from_the_facts_in_gold_order() -> None:
         operation="sum",
     )
 
-    assert periods == ["FY2024", "FY2025"]
+    assert coordinates == [
+        ("Cost of sales", "FY2024"),
+        ("Cost of sales", "FY2025"),
+    ]
 
 
-def test_two_operands_at_one_period_are_refused() -> None:
-    """The exact defect: the same requirement written twice."""
+def test_two_metrics_at_one_period_are_two_requirements() -> None:
+    """The ``percentage_share`` shape, which the period-only check refused.
 
-    with pytest.raises(ValueError, match="not distinct on period"):
-        _operand_periods_from_gold(
+    ``sum`` and ``average`` add one metric across two periods; a share divides
+    two metrics at one period.  Both are two operands.  A rule written for the
+    first shape read the second as one requirement written twice, so every
+    ``percentage_share`` case was unbuildable and the operation had no reachable
+    coverage at all.
+    """
+
+    coordinates = _operand_coordinates_from_gold(
+        _gold(["a", "b"]),
+        {"id": "tv2f01-s2-pctshare-003"},
+        {
+            "a": _fact("FY2025", "Statutory federal income tax rate"),
+            "b": _fact("FY2025", "Impact of the State Aid Decision"),
+        },
+        arity=2,
+        operation="percentage_share",
+    )
+
+    assert coordinates == [
+        ("Statutory federal income tax rate", "FY2025"),
+        ("Impact of the State Aid Decision", "FY2025"),
+    ]
+
+
+def test_one_metric_at_one_period_is_still_refused() -> None:
+    """The defect the check was written for, still caught after generalising."""
+
+    with pytest.raises(ValueError, match=r"not distinct on \(metric, period\)"):
+        _operand_coordinates_from_gold(
             _gold(["a", "b"]),
             {"id": "q"},
             {"a": _fact("FY2024"), "b": _fact("FY2024")},
@@ -106,9 +136,22 @@ def test_two_operands_at_one_period_are_refused() -> None:
         )
 
 
+def test_an_operand_fact_without_a_metric_is_refused() -> None:
+    """The corpus must supply the coordinate, not the question."""
+
+    with pytest.raises(ValueError, match="states no metric"):
+        _operand_coordinates_from_gold(
+            _gold(["a", "b"]),
+            {"id": "q"},
+            {"a": {"period": "FY2024"}, "b": _fact("FY2025")},
+            arity=2,
+            operation="percentage_share",
+        )
+
+
 def test_a_missing_operand_fact_is_refused_rather_than_guessed() -> None:
     with pytest.raises(ValueError, match="is not in the fact store"):
-        _operand_periods_from_gold(
+        _operand_coordinates_from_gold(
             _gold(["a", "b"]),
             {"id": "q"},
             {"a": _fact("FY2024")},
@@ -119,7 +162,7 @@ def test_a_missing_operand_fact_is_refused_rather_than_guessed() -> None:
 
 def test_a_gold_that_names_the_wrong_number_of_operands_is_refused() -> None:
     with pytest.raises(ValueError, match="needs 2 operand facts, gold names 1"):
-        _operand_periods_from_gold(
+        _operand_coordinates_from_gold(
             _gold(["a"]),
             {"id": "q"},
             {"a": _fact("FY2024")},
@@ -130,7 +173,7 @@ def test_a_gold_that_names_the_wrong_number_of_operands_is_refused() -> None:
 
 def test_an_operand_fact_without_a_period_is_refused() -> None:
     with pytest.raises(ValueError, match="states no period"):
-        _operand_periods_from_gold(
+        _operand_coordinates_from_gold(
             _gold(["a", "b"]),
             {"id": "q"},
             {"a": {"metric": "Cost of sales"}, "b": _fact("FY2025")},
@@ -143,7 +186,7 @@ def test_the_error_names_the_case_it_could_not_author() -> None:
     """A build failure has to say which question it could not author."""
 
     with pytest.raises(ValueError, match="tv2f01-s2-sum-003"):
-        _operand_periods_from_gold(
+        _operand_coordinates_from_gold(
             _gold(["a", "b"]),
             {"id": "tv2f01-s2-sum-003"},
             {"a": _fact("FY2024"), "b": _fact("FY2024")},

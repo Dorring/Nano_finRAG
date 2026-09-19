@@ -114,7 +114,17 @@ _OPERATION_SLOTS: dict[str, tuple[str, ...]] = {
 #: gold's to say, and a builder that re-derives it is authoring ground truth.
 #: ``growth_rate`` and ``difference`` are not here because their gold already
 #: carries ``period_current``/``period_previous``.
-_FACT_PER_OPERAND_OPERATIONS = frozenset({"sum", "average"})
+#: Operations whose every operand is exactly one gold fact, so the fixture can
+#: read the operand's coordinates rather than derive them from the question.
+#:
+#: ``percentage_share`` is here for the same reason as the other two and was
+#: missing from it: its operands are two facts the gold names, so a metric read
+#: off the question's possessive clause was never ground truth.  The clause
+#: mashing both operands together -- "Impact of the State Aid Decision was
+#: Statutory federal income tax rate" -- matched no fact in the corpus, the
+#: binder correctly returned MISSING on both slots, and the whole operation was
+#: unreachable in the benchmark.
+_FACT_PER_OPERAND_OPERATIONS = frozenset({"sum", "average", "percentage_share"})
 
 #: Gold operations that name a *shape of answer* rather than an arithmetic one.
 #: They become MULTI_EVIDENCE plans carrying one slot per gold fact -- a
@@ -204,21 +214,28 @@ def load_fact_coordinates(
     return found
 
 
-def _operand_periods_from_gold(
+def _operand_coordinates_from_gold(
     gold: Mapping[str, Any],
     question_record: Mapping[str, Any],
     operand_facts: Mapping[str, Mapping[str, Any]],
     *,
     arity: int,
     operation: str,
-) -> list[str]:
-    """One period per gold operand fact, or a failure naming what is missing.
+) -> list[tuple[str, str]]:
+    """One ``(metric, period)`` per gold operand fact, or a failure naming what is missing.
 
     Every branch here raises rather than falling back.  Each one is a statement
     that the corpus cannot support this question's fixture, and a fixture
     invented to cover that would measure this script's guess instead of the
     binder -- which is precisely how both ``sum`` operands came to name the same
-    period.
+    period, and how every ``percentage_share`` slot came to name a metric no
+    fact carries.
+
+    What must be distinct is the *coordinate*, not the period.  ``sum`` and
+    ``average`` add one metric across two periods; ``percentage_share`` divides
+    two metrics at one period.  Both are two requirements, and checking periods
+    alone refused the second shape outright -- a check that only ever passed for
+    the operation it was written for.
     """
 
     case = question_record["id"]
@@ -230,7 +247,7 @@ def _operand_periods_from_gold(
             f"{case!r}: {operation} needs {arity} operand facts, gold names {len(fact_ids)}"
         )
 
-    periods: list[str] = []
+    coordinates: list[tuple[str, str]] = []
     for fact_id in fact_ids:
         record = operand_facts.get(fact_id)
         if record is None:
@@ -240,15 +257,20 @@ def _operand_periods_from_gold(
         period = str(record.get("period") or "").strip()
         if not period:
             raise ValueError(f"{case!r}: gold operand fact {fact_id!r} states no period")
-        periods.append(period)
+        metric = str(record.get("metric") or "").strip()
+        if not metric:
+            raise ValueError(f"{case!r}: gold operand fact {fact_id!r} states no metric")
+        coordinates.append((metric, period))
 
-    # Two operands of one metric at one period is the same requirement written
-    # twice -- the binder refuses it, and it is the defect this reader removes.
-    if len(set(periods)) != len(periods):
+    # Two operands with one coordinate between them is the same requirement
+    # written twice -- the binder refuses it, and it is the defect this reader
+    # removes.
+    if len(set(coordinates)) != len(coordinates):
         raise ValueError(
-            f"{case!r}: {operation} operands are not distinct on period: {periods}"
+            f"{case!r}: {operation} operands are not distinct on "
+            f"(metric, period): {coordinates}"
         )
-    return periods
+    return coordinates
 
 
 def author_plan(
@@ -268,7 +290,8 @@ def author_plan(
     sourced: dict[str, str] = {}
 
     gold_metric = gold.get("metric")
-    if isinstance(gold_metric, str) and gold_metric.strip():
+    states_metric = isinstance(gold_metric, str) and bool(gold_metric.strip())
+    if states_metric:
         metric, sourced["metric"] = gold_metric.strip(), "gold"
     else:
         derived = _metric_from_question(question)
@@ -281,14 +304,16 @@ def author_plan(
     roles = _OPERATION_SLOTS.get(plan_operation or "", ())
 
     periods: list[str] = []
+    operand_coordinates: list[tuple[str, str]] = []
     if plan_operation in _FACT_PER_OPERAND_OPERATIONS:
-        periods = _operand_periods_from_gold(
+        operand_coordinates = _operand_coordinates_from_gold(
             gold,
             question_record,
             operand_facts or {},
             arity=len(roles),
             operation=str(plan_operation),
         )
+        periods = [period for _metric, period in operand_coordinates]
         sourced["period"] = "gold_operand_facts"
     elif isinstance(gold.get("period"), str) and gold["period"].strip():
         periods = [gold["period"].strip()]
@@ -308,10 +333,23 @@ def author_plan(
     if plan_operation is not None:
         intent = "CALCULATION"
         sourced["intent"] = f"gold_operation:{operation}"
+        # Which metric each slot needs.  A gold that states one states it for the
+        # whole operation and every slot shares it -- the shape ``sum`` and
+        # ``average`` have, and the reason their rows do not move here.  A gold
+        # that states none names its operands by fact instead, and each slot
+        # takes its own.  ``percentage_share`` divides two *different* metrics,
+        # and a fixture allowed only one metric for both had to read them off the
+        # question at once -- which is how it came to name a phrase that matches
+        # no fact, and why the whole operation was unreachable.
+        if operand_coordinates and not states_metric:
+            slot_metrics = [operand_metric for operand_metric, _period in operand_coordinates]
+            sourced["metric"] = "gold_operand_facts"
+        else:
+            slot_metrics = [metric] * len(roles)
         slots = [
             {
                 "slot_id": f"s{index + 1}",
-                "metric": metric,
+                "metric": slot_metrics[index],
                 # ``min`` only ever clamps operations whose arity exceeds the
                 # periods the gold states; for the fact-per-operand operations
                 # the two lengths are checked equal before this point.
