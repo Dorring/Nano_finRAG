@@ -55,6 +55,17 @@ checkpoint*/
 *.arrow
 *.npy
 *.npz
+
+# The benchmark corpus is the measurement, not build output, and its jsonl is
+# committed on purpose.  The blanket rule above hides a *new* fixture version
+# from `git add` without saying so, which is how `plan-fixtures-v5.jsonl` came
+# to be absent from the repository while its `.sha256` and manifest were
+# present: the seal existed and the thing it sealed did not.  Re-including the
+# directory is the only fix that does not depend on remembering `-f` each time
+# a fixture version is cut.  Nothing here is re-included that was not already
+# tracked -- v1..v4 are all in the index.
+!finquery_rag/backend/benchmarks/**/*.jsonl
+
 .pytest_cache/
 .ruff_cache/
 
