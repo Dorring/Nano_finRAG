@@ -85,6 +85,12 @@ runtime/
 # directory is excluded, so `!path/to/runtime/**/*.py` does nothing at all.
 !finquery_rag/backend/src/runtime/
 !finquery_rag/backend/rag_v2/runtime/
+#
+# `tests/runtime/` is the same trap a third time: the rule swallowed the package
+# directory, so a test module placed there is neither committed nor listed by
+# `git status`, and its absence is invisible.  Named as a directory for the
+# reason above.
+!finquery_rag/backend/tests/runtime/
 *.db
 *.sqlite
 *.sqlite3
