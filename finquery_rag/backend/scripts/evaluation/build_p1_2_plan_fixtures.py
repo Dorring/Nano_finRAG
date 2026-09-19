@@ -106,6 +106,21 @@ _ARITHMETIC_OPERATIONS = {
     "scale_conversion": "scale_conversion",
 }
 
+#: Gold operations that are executable *relational* operations.  They used to
+#: fall into `_MULTI_EVIDENCE_OPERATIONS` below and become plans with no
+#: operation, which left their answers as prose no validator had a structured
+#: result to check -- the path `compare-002` released a wrong answer on.
+#:
+#: `cross_entity_difference` is deliberately **not** here.  Its gold expects a
+#: numeric value rather than a relation, so it is an arithmetic `difference` and
+#: belongs in a migration of its own; folding it in here would change two
+#: different things in one measurement.
+_RELATIONAL_OPERATIONS = {
+    "comparison": "comparison",
+    "ranking": "ranking",
+}
+_RELATIONAL_OPERATION_NAMES = frozenset(_RELATIONAL_OPERATIONS.values())
+
 #: Slots per operation, in the role vocabulary `validate_plan_v2_01` accepts.
 #: The count is the operation's arity, not a guess: a `growth_rate` with one
 #: operand is not a growth rate.
@@ -313,7 +328,17 @@ def author_plan(
         metric, sourced["metric"] = derived
 
     operation = gold.get("operation")
-    plan_operation = _ARITHMETIC_OPERATIONS.get(str(operation)) if operation else None
+    plan_operation = (
+        _ARITHMETIC_OPERATIONS.get(str(operation))
+        or _RELATIONAL_OPERATIONS.get(str(operation))
+        if operation
+        else None
+    )
+    # A relational operation is planned on MULTI_EVIDENCE, because that is what
+    # the question is -- it names several sides.  Execution no longer keys off
+    # the intent (`registry.supports(operation)` decides that), so the intent is
+    # free to say what was wanted rather than what may be executed.
+    is_relational = plan_operation in _RELATIONAL_OPERATION_NAMES
     roles = _OPERATION_SLOTS.get(plan_operation or "", ())
 
     periods: list[str] = []
@@ -343,7 +368,7 @@ def author_plan(
         periods = [derived_period, derived_period]
         sourced["period"] = "question_text"
 
-    if plan_operation is not None:
+    if plan_operation is not None and not is_relational:
         intent = "CALCULATION"
         sourced["intent"] = f"gold_operation:{operation}"
         # Which metric each slot needs.  A gold that states one states it for the
