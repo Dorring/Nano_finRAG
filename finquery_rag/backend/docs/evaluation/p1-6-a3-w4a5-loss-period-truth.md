@@ -59,20 +59,48 @@ It still cannot separate a period column from prose that happens to contain one 
 column header reading `Indenture, dated as of October 28, 2021` is counted as declaring a
 period when it is describing a document. The over-count is in the 1,649, not in the 6,378.
 
+## The other half: where the periods V2 would *add* come from
+
+The loss direction is measured above. The gain direction is not in the store -- the legacy
+never admitted those cells -- so it is checked from the binding the producer recorded:
+every source cell it read has to be in the column the fact sits in.
+
+```
+rule_gain: every source cell is in the fact's own column      6110
+rule_gain: row-scoped declaration (INLINE_PERIOD_DATA_ROW)     276
+offenders                                                         0
+```
+
+**All 6,386 cells V2 would newly admit carry a period sourced from their own column** (or
+from a row-scoped declaration in that row). This is not a coincidence of the sample: the
+column rules read `raw[col]`, that column's own header cells, and nothing else. It is the
+same property that makes the producer refuse the equity statements, and it is why the two
+directions are not symmetric.
+
 ## What this does to W4-B
 
-The deficit is not what it looked like in W4-A2. Of 8,369 cells:
+The deficit is not what it looked like in W4-A2.
+
+```
+would add       6,386   period sourced from the cell's own column       100%
+would remove    8,369   period the cell's own column names            <= 19.7%
+```
+
+And the removals are not the same kind of thing as the additions:
 
 - **6,405 (76.5%)** carry a period their own column does not name — the equity defect in
   shapes that do not need equity anchors to see, plus notes, exhibit indexes and tables of
   contents. Withholding these withholds facts the store is holding wrongly.
 - **at most 1,649 (19.7%)** sit in a column that names exactly their period. That is the
-  only part that is genuinely coverage, and it is an upper bound.
+  only part that is genuine coverage, and it is an upper bound.
 
-Against a store of 26,977, the honest cost of switching is **at most 6% of the store**, and
-the remaining 94% of the deficit is correction rather than loss. That is a very different
-proposition from the one W4-A2 recorded, and it is the number W4-B should be decided on.
+Against a store of 26,977 the honest cost of switching is **at most 6% of the store**, while
+the addition is 6,386 facts that are period-correct by construction and whose periods the
+legacy path cannot supply at all (all 14,802 rule-gain cells carry no period on the legacy
+axis -- W4-A, "why there is no rule-only escape").
 
-The other half of the entry condition is unchanged and matters more: `producer_gain` is
-still **0**. The new producer has never yet bound a cell the legacy axis missed, so a switch
-today is still strictly narrower regardless of how right the withheld facts are.
+The one thing that has not moved is the count the entry condition was written against:
+`producer_gain` is still **0**. The new producer has never yet bound a cell the legacy axis
+missed. So the switch remains strictly narrower on *coverage* -- it just turns out that a
+large majority of what it would drop is wrong, which is a different sentence from the one
+W4-A2 recorded and the one W4-B should be decided on.
