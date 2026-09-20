@@ -194,14 +194,36 @@ def test_nothing_in_the_pipeline_imports_this_module_yet():
 
 
 def test_the_sealed_counts_are_untouched_by_this_commit():
-    """The seal is recomputed, not restated: a seal that cannot fail is not a seal."""
-    seal = _BACKEND_DIR / "scripts" / "evaluation" / "seal_table_authority_benchmark.py"
-    if not seal.is_file():
-        pytest.skip("seal script not present in this checkout")
+    """The commit that introduced this module must not have touched a behaviour file.
+
+    An earlier version of this test diffed `HEAD~1..HEAD`, which passes for the wrong
+    reason in any checkout where HEAD is not that commit -- the diff is empty and the
+    assertion holds without checking anything.  A test that is green because it looked at
+    nothing is worse than no test, because the green gets read as evidence.
+
+    So the commit is *found*, not assumed, and the test skips with a stated reason when it
+    cannot be found rather than passing quietly.
+    """
+    module = _BACKEND_DIR / "src" / "pdf_retrieval_v4" / "period_binding.py"
+    if not module.is_file():
+        pytest.skip("W1 module is not in this checkout")
+
+    found = subprocess.run(
+        ["git", "log", "--diff-filter=A", "--format=%H", "--",
+         str(module.relative_to(_BACKEND_DIR))],
+        cwd=_BACKEND_DIR, capture_output=True, text=True,
+    )
+    if found.returncode != 0 or not found.stdout.strip():
+        pytest.skip("cannot find the commit that added period_binding.py: "
+                    "no git history for it in this checkout")
+
+    commit = found.stdout.split()[0]
     changed = subprocess.run(
-        ["git", "diff", "--name-only", "HEAD~1", "HEAD"],
+        ["git", "show", "--name-only", "--format=", commit],
         cwd=_BACKEND_DIR, capture_output=True, text=True,
     ).stdout.split()
+    assert changed, f"commit {commit} reports no files; the check would be vacuous"
+
     behaviour_paths = ("run_nf_v2_17a4_parse", "build_store_v2",
                        "resolve_store_v2_slot", "trusted_v2_canonical_fact_store",
                        "html_semantic_adapter", "temporal_axis_graph",
