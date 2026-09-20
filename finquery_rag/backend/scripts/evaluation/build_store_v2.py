@@ -69,6 +69,63 @@ DOCUMENTS = {
 
 CORPUS_MANIFEST = Path("/disk/qh/nano-finrag/data/raw_pdfs/corpus-manifest.json")
 
+#: The table-role classifier's output, which carries the two fields V2 was missing.
+SHADOW = Path(
+    "/disk/qh/nano-finrag/artifacts/evaluation/p1-6-a2b19b-shadow/shadow-classification.json"
+)
+#: And the oracle's audit verdicts, for the role sidecar only -- never for the store.
+ORACLE = Path(
+    "/disk/qh/nano-finrag/artifacts/evaluation/p1-6-a2b19a-oracle/table-authority-oracle.json"
+)
+
+
+def table_roles(document_id: str, blocks: list[dict]) -> dict[str, dict]:
+    """`table_fragment_id` -> what that table is and whether it may speak for the company.
+
+    The classifier reads the filing and keys its verdicts by `document_id#source_order`,
+    which is the index of the `<table>` in document order -- the same quantity the parser
+    records on every block.  Joining on it is what carries the two fields from the
+    classification into the store without either side reproducing the other's ids.
+
+    A table the classifier never saw is a layout scaffold: it left the corpus at the
+    eligibility layer, and it is recorded as such rather than defaulted to something
+    permissive.
+    """
+
+    by_key: dict[str, dict] = {}
+    if SHADOW.is_file():
+        shadow = json.loads(SHADOW.read_text(encoding="utf-8"))
+        for row in shadow["documents"].get(document_id, {}).get("tables") or ():
+            by_key[str(row["oracle_key"])] = row
+
+    # The oracle's own verdict, where it made one, so that a later pass can ask
+    # whether a resolved value came out of a table the oracle read and refused.
+    audit: dict[str, str] = {}
+    if ORACLE.is_file():
+        oracle = json.loads(ORACLE.read_text(encoding="utf-8"))
+        for table in oracle["documents"].get(document_id, {}).get("tables") or ():
+            audit[str(table["oracle_key"])] = str(table["oracle_role"])
+
+    out: dict[str, dict] = {}
+    for block in blocks:
+        if block["block_type"] != "TABLE":
+            continue
+        key = f"{document_id}#{block['source_order']}"
+        row = by_key.get(key)
+        if row is None:
+            out[block["table_id"]] = {
+                "table_eligibility": "LAYOUT_SCAFFOLD",
+                "table_role": "NON_PRIMARY",
+                "oracle_role": audit.get(key, "SCAFFOLD"),
+            }
+            continue
+        out[block["table_id"]] = {
+            "table_eligibility": row["table_eligibility"],
+            "table_role": row["new_table_role"],
+            "oracle_role": audit.get(key, "NOT_IN_ORACLE"),
+        }
+    return out
+
 
 def company_of(document_id: str) -> str:
     """The entity name the benchmark uses for a filing, or a hard failure.
@@ -141,7 +198,7 @@ def parse_filing(ticker: str, accession: str, document_id: str) -> dict:
     }
 
 
-def to_v2(records: list[dict], source: dict) -> list[dict]:
+def to_v2(records: list[dict], source: dict, roles: dict[str, dict]) -> list[dict]:
     """Reshape builder records into the V2 contract.
 
     Explicit rather than pass-through: the point of V2 is that the structural
@@ -150,8 +207,14 @@ def to_v2(records: list[dict], source: dict) -> list[dict]:
     """
 
     out = []
+    missing_role = 0
     for record in records:
         anchors = record.get("ixbrl_anchors") or []
+        table_id = record.get("table_fragment_id")
+        role = roles.get(table_id)
+        if role is None:
+            missing_role += 1
+            role = {"table_eligibility": "UNKNOWN", "table_role": "UNKNOWN"}
         out.append({
             "fact_id": f"v2:{record['candidate_key']}",
             "entity": record.get("entity"),
@@ -171,6 +234,15 @@ def to_v2(records: list[dict], source: dict) -> list[dict]:
             # `UNKNOWN` means "not a primary statement" and must never be read as
             # "probably one".
             "statement_type": record.get("statement_type"),
+            # The two fields that separate "what is this table about" from "may it
+            # speak for the company".  `statement_type` answered both before, and
+            # A2B-19A showed that no single value of it can: a hedging note in the
+            # legacy labelling carries `BALANCE_SHEET` and is not the balance sheet,
+            # and a consolidated income statement in seven of the eight filings
+            # carries `UNKNOWN` and is.  The resolver's authority test moves to
+            # `table_role`; `statement_type` keeps answering the first question only.
+            "table_eligibility": role["table_eligibility"],
+            "table_role": role["table_role"],
             # The structure the legacy store did not carry.
             "table_fragment_id": record.get("table_fragment_id"),
             "row_id": record.get("row_id"),
@@ -192,7 +264,7 @@ def to_v2(records: list[dict], source: dict) -> list[dict]:
                             " + src/runtime/trusted_v2_canonical_fact_store.py",
             },
         })
-    return out
+    return out, missing_role
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -209,6 +281,7 @@ def main(argv: list[str] | None = None) -> int:
     wanted = {args.only: DOCUMENTS[args.only]} if args.only else DOCUMENTS
 
     all_v2: list[dict] = []
+    all_roles: dict[str, dict] = {}
     per_document: dict[str, dict] = {}
     misses: list[tuple] = []
     deterministic = True
@@ -224,17 +297,23 @@ def main(argv: list[str] | None = None) -> int:
             "accession": accession,
             "primary_html_sha256": _sha256(raw_path),
         }
-        records, _summary = build_canonical_fact_store(
-            [parse_filing(ticker, accession, document_id)]
-        )
-        v2 = to_v2(records, source)
+        parsed = parse_filing(ticker, accession, document_id)
+        records, _summary = build_canonical_fact_store([parsed])
+        roles = table_roles(document_id, parsed["blocks"])
+        all_roles.update(roles)
+        v2, missing_role = to_v2(records, source, roles)
+        if missing_role:
+            raise SystemExit(
+                f"{document_id}: {missing_role} record(s) name a table the classifier "
+                f"never saw, so their table_role would be UNKNOWN for the wrong reason"
+            )
 
         # Same inputs twice, to show the producer is deterministic.  Checked per
         # filing rather than once, because a single non-deterministic document is
         # the thing that would matter and an aggregate would hide it.
-        rebuilt = to_v2(build_canonical_fact_store(
+        rebuilt, _ = to_v2(build_canonical_fact_store(
             [parse_filing(ticker, accession, document_id)]
-        )[0], source)
+        )[0], source, roles)
         same = _render(v2) == _render(rebuilt)
         deterministic = deterministic and same
 
@@ -249,6 +328,10 @@ def main(argv: list[str] | None = None) -> int:
             "records": len(v2),
             "structured_records": structured,
             "anchored_records": anchored,
+            "authoritative_records": sum(
+                1 for r in v2 if r["table_role"] == "PRIMARY_FINANCIAL_STATEMENT"),
+            "scaffold_records": sum(
+                1 for r in v2 if r["table_eligibility"] == "LAYOUT_SCAFFOLD"),
             "deterministic": same,
             "sha256": hashlib.sha256(_render(v2).encode("utf-8")).hexdigest(),
         }
@@ -280,6 +363,7 @@ def main(argv: list[str] | None = None) -> int:
               f"records {block['records']:>6}  "
               f"structured {block['structured_records']:>6}/{block['records']:<6} "
               f"anchored {block['anchored_records']:>6}  "
+              f"authoritative {block['authoritative_records']:>5}  "
               f"deterministic {block['deterministic']}")
     print()
     print(f"  total records {len(all_v2)}")
@@ -295,6 +379,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.apply:
         args.out.mkdir(parents=True, exist_ok=True)
         (args.out / "store-v2.jsonl").write_text(text, encoding="utf-8")
+        (args.out / "table-roles.json").write_text(
+            json.dumps(all_roles, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8")
         (args.out / "store-v2.manifest.json").write_text(
             json.dumps({
                 "phase": "P1.6-A2B-12",

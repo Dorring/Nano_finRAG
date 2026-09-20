@@ -48,6 +48,28 @@ _COMPANY_LEVEL = re.compile(r"(?:^|/)\s*(total|consolidated|firm)\b", re.I)
 #: column named `Total`, failed on 40 of 47 slots for want of it.
 _PRIMARY_STATEMENTS = frozenset({"INCOME_STATEMENT", "BALANCE_SHEET", "CASH_FLOW"})
 
+#: Which field decides that a table may speak for the company.
+#:
+#: `statement_type` is the rule this resolver has used: the table's family, as the
+#: parse layer classified it.  `table_role` is the field A2B-19A added, and it
+#: answers the authority question directly rather than inferring it from the family.
+#:
+#: **Both are kept, and the default does not move.**  A2B-20 is a single-variable
+#: experiment: the store gains `table_role`, and the resolver is asked for it
+#: explicitly, so the run under the old rule is reproducible from the same store and
+#: any difference between the two runs is attributable to this one choice.
+AUTHORITY_STATEMENT_TYPE = "statement_type"
+AUTHORITY_TABLE_ROLE = "table_role"
+
+#: What a table's role must be to count as the company speaking for itself.
+_AUTHORITATIVE_ROLE = "PRIMARY_FINANCIAL_STATEMENT"
+
+
+def _has_authority(record: dict, authority: str) -> bool:
+    if authority == AUTHORITY_TABLE_ROLE:
+        return str(record.get("table_role")) == _AUTHORITATIVE_ROLE
+    return str(record.get("statement_type")) in _PRIMARY_STATEMENTS
+
 #: Columns that carry no figure of their own -- change columns, percentages,
 #: basis comparisons.  Excluded from company-level candidacy rather than treated
 #: as segments, because they are not scope claims at all.
@@ -111,12 +133,17 @@ def _matches_metric(label: object, metric: str) -> bool:
     return folded == metric
 
 
-def resolve(records: list[dict], entity: str, metric: str, period: str) -> dict:
+def resolve(records: list[dict], entity: str, metric: str, period: str,
+            authority: str = AUTHORITY_STATEMENT_TYPE) -> dict:
     """The company-level fact for a slot, or why one cannot be named.
 
     Exact on entity and period; the metric is matched against the row label, not
     the breadcrumb path, because the path is a table-level string and the label
     is what the filing calls the row.
+
+    `authority` chooses only which field decides that a table may speak for the
+    company.  Every other step -- the entity, metric and period matching, the
+    company-level column rule, the refusal -- is the same under both.
     """
 
     want_entity, want_metric = _norm(entity), _norm(metric)
@@ -136,8 +163,7 @@ def resolve(records: list[dict], entity: str, metric: str, period: str) -> dict:
     # period columns, not scope columns.  Tried first, because it is the direct
     # statement of the thing being asked and does not depend on a table having
     # chosen to head a column `Total`.
-    primary = [r for r in pool
-               if str(r.get("statement_type")) in _PRIMARY_STATEMENTS]
+    primary = [r for r in pool if _has_authority(r, authority)]
     if primary:
         values = {str(r.get("value")) for r in primary}
         if len(values) == 1:
@@ -148,16 +174,19 @@ def resolve(records: list[dict], entity: str, metric: str, period: str) -> dict:
                 "value": record.get("value"), "value_raw": record.get("value_raw"),
                 "column_header": record.get("column_header"),
                 "statement_type": record.get("statement_type"),
+                "table_role": record.get("table_role"),
                 "table_fragment_id": record.get("table_fragment_id"),
                 "cell_id": record.get("cell_id"),
                 "segments_seen": [],
-                "basis": "primary statement",
+                "basis": f"primary statement ({authority})",
                 "candidates": len(pool),
             }
         return {"status": "AMBIGUOUS_COMPANY_LEVEL", "entity": entity,
                 "metric": metric, "period": period,
                 "values": sorted(values), "candidates": len(pool),
-                "basis": "primary statement"}
+                "basis": f"primary statement ({authority})",
+                "authority_tables": sorted({
+                    str(r.get("table_fragment_id")) for r in primary})}
 
     scoped: dict[str, list[dict]] = defaultdict(list)
     unscoped = []
