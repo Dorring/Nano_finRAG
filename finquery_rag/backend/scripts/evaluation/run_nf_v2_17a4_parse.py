@@ -577,6 +577,63 @@ def col_headers(grid, idx) -> list[str]:
     return out
 
 
+_PERIOD_PRODUCER: Any = None
+
+
+def period_producer():
+    """The A3 period producer, loaded once.
+
+    W4-B decides admission from a `PeriodBindingV2`, and the producer that builds one needs
+    the grid -- which lives here and nowhere further down.  So it runs here, and the
+    composed binding travels to the emitter on the cell.
+
+    The name collides with `period_binding()` above, which is the legacy per-header period
+    string and a different thing entirely; this is the A3 contract's module.
+    """
+    global _PERIOD_PRODUCER
+    if _PERIOD_PRODUCER is None:
+        import importlib.util
+        import sys as _sys
+        backend = Path(__file__).resolve().parents[2]
+        if str(backend) not in _sys.path:
+            _sys.path.insert(0, str(backend))
+        path = Path(__file__).with_name("period_binding_shadow.py")
+        spec = importlib.util.spec_from_file_location("period_binding_shadow", path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        _PERIOD_PRODUCER = module
+    return _PERIOD_PRODUCER
+
+
+class _ParserSurface:
+    """Exactly the functions the period producer reads off its `nf` argument.
+
+    A shim rather than `sys.modules[__name__]`: this module is loaded three ways -- run
+    directly, and via `importlib` from two callers that never register it -- so only one of
+    those puts it in `sys.modules`, and the producer would fail on the other two.
+    """
+
+    ws = staticmethod(ws)
+    header_idx = staticmethod(header_idx)
+    parse_date_text = staticmethod(parse_date_text)
+    year_tokens = staticmethod(year_tokens)
+    has_num = staticmethod(has_num)
+
+
+def composed_period_binding(producer, bound: dict, ri: int, ci: int):
+    """The period evidence for one cell: a row declaration shadows an inherited column.
+
+    Scope semantics, not precedence -- the same composition `resolve_period_evidence`
+    performs, called here because this is where the row and column coordinates exist.
+    """
+    column = bound["columns"].get(ci)
+    row = bound["rows"].get(ri)
+    inherited = [column] if isinstance(column, producer.PeriodBindingV2) else []
+    if isinstance(row, producer.PeriodBindingV2):
+        return producer.resolve_period_evidence(row, inherited)
+    return inherited[0] if inherited else None
+
+
 def parse_table(
     table: etree._Element, tid: str, doc: dict, sec: str, order: int, prior: str
 ) -> dict[str, Any]:
@@ -606,6 +663,10 @@ def parse_table(
     rows = []
     cells = []
     width = len(headers)
+    # W4-B: the period producer runs here, where the grid is, and its result rides on each
+    # cell as JSON because everything between here and the emitter is serialised.
+    producer = period_producer()
+    v2_bound = producer.bind_table(_ParserSurface, grid, doc["document_id"], tid)
     for ri, row in enumerate(grid):
         label = ws(row[0]["raw_text"]) if row and row[0] else ""
         rid = did("row", doc["document_id"], tid, ri, label)
@@ -648,6 +709,11 @@ def parse_table(
                 # `Corporate` against the same row under `Total` -- so an anchor
                 # here is what lets a tagged fact be told from its neighbour.
                 "ixbrl_anchors": rec.get("ixbrl_anchors") or [],
+                # W4-B: the composed period evidence for this cell.  Absent means the
+                # producer bound nothing here, which the emitter reads as a refusal --
+                # never as permission.
+                "period_binding_v2": producer.binding_payload(
+                    composed_period_binding(producer, v2_bound, ri, ci)),
                 "source_provenance": {
                     "document_id": doc["document_id"],
                     "table_id": tid,

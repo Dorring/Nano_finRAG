@@ -31,6 +31,8 @@ from src.pdf_retrieval_v4.period_binding import (  # noqa: E402
     TemporalKindEvidence,
     TemporalKindMethod,
     decide_emission_admission,
+    binding_from_payload,
+    binding_payload,
     periods_are_compatible,
     temporal_kind_of,
 )
@@ -94,6 +96,31 @@ def test_a_kind_alone_never_moves_the_decision():
     outcomes = {decide_emission_admission(_request(_resolved(), kind)).outcome
                 for kind in kinds}
     assert outcomes == {AdmissionOutcome.ADMIT}
+
+
+def test_the_binding_survives_the_trip_through_a_dict():
+    """W4-B decides admission in `emit_atomic_facts`, which sees cells, not grids.
+
+    The composed binding travels on the parsed cell as JSON, so it has to come back
+    unchanged -- and a `Conflict` has to come back *as a conflict*, not as an absent
+    field.  Those two read very differently downstream: one is a refusal with a reason,
+    the other looks like a column nobody said anything about.
+    """
+    resolved = _resolved("2025-12-31")
+    round_tripped = binding_from_payload(binding_payload(resolved))
+    assert round_tripped == resolved
+
+    conflict = Conflict(key="a|b", candidates=(_resolved("2022-12-31"),
+                                               _resolved("2023-12-31")))
+    back = binding_from_payload(binding_payload(conflict))
+    assert isinstance(back, Conflict)
+    assert len(back.candidates) == 2
+    assert decide_emission_admission(
+        _request(back)).reason is AdmissionReason.CONFLICTED_PERIOD
+
+    assert binding_payload(None) is None
+    assert binding_from_payload(None) is None
+    assert binding_from_payload({}) is None
 
 
 def test_admission_cannot_see_table_role():

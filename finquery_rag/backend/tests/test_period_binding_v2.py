@@ -173,9 +173,11 @@ def test_round_trip_keeps_the_two_enums_apart():
 
 # --- W1 is behaviour-neutral --------------------------------------------------------
 
-#: The modules that actually produce facts.  W2 adds a shadow producer that *does* import
-#: the contract, and that is allowed -- what must stay true is that nothing on the path
-#: from a filing to an AtomicFact reads it.
+#: The modules that actually produce facts.  From W1 to W4-A this test asserted the
+#: opposite -- that none of them read the contract -- because the contract was a contract
+#: until something that emits facts consumed it.  W4-B is that moment, so the assertion
+#: turns around: the admission path is now *required* to read it, and the shadow that must
+#: stay unconsumed is a different module.
 PRODUCTION_PATH = (
     "run_nf_v2_17a4_parse.py",
     "build_store_v2.py",
@@ -189,22 +191,52 @@ PRODUCTION_PATH = (
     "metric_path_builder.py",
 )
 
+#: What each half of the admission path must import after W4-B.
+#:
+#: They reach the contract by different routes and that is deliberate: the parse script
+#: needs the *producer*, because only it has the grid, and the emitter needs the *decision*,
+#: because it is what asks the question.  Asserting one import string for both would have
+#: passed for the wrong reason on either half.
+ADMISSION_PATH = (
+    ("typed_evidence_emitters.py", "period_binding import"),
+    ("run_nf_v2_17a4_parse.py", "period_binding_shadow"),
+)
 
-def test_the_production_path_does_not_import_this_module():
-    """The contract is a contract until something that emits facts reads it.
 
-    Narrowed at W2: the earlier version forbade any module under the three trees, which a
-    shadow producer legitimately violates.  What must hold is that the path from a filing
-    to an AtomicFact -- parse, store build, resolve -- does not touch it.
+def test_the_admission_path_reads_the_contract():
+    """W4-B: admission authority is the A3 decision, so both halves must read it.
+
+    `run_nf_v2_17a4_parse` builds the binding where the grid is; `typed_evidence_emitters`
+    asks it whether the fact exists.  If either stops reading it, admission has silently
+    reverted to a rule that does not know what the source stated.
+    """
+    missing = []
+    for name, needle in ADMISSION_PATH:
+        found = False
+        for path in _BACKEND_DIR.rglob(name):
+            text = path.read_text(encoding="utf-8", errors="replace")
+            if needle in text:
+                found = True
+        if not found:
+            missing.append(f"{name} (no {needle!r})")
+    assert missing == [], f"the admission path no longer reads the contract: {missing}"
+
+
+def test_the_temporal_kind_shadow_is_still_not_consumed():
+    """W4-B switches admission authority and nothing else.
+
+    W3's kind producer is a shadow output with no consumer, and switching it is a separate
+    variable.  If this fails, the W4-B delta has two causes in it and neither is
+    attributable.
     """
     offenders = []
     for name in PRODUCTION_PATH:
         for path in _BACKEND_DIR.rglob(name):
             text = path.read_text(encoding="utf-8", errors="replace")
-            if "period_binding import" in text:
+            if "temporal_kind_shadow import" in text:
                 offenders.append(str(path.relative_to(_BACKEND_DIR)))
     assert offenders == [], (
-        f"the production path must not consume PeriodBindingV2 yet: {offenders}")
+        f"W4-B must not consume the temporal-kind shadow: {offenders}")
 
 
 def test_the_sealed_counts_are_untouched_by_this_commit():

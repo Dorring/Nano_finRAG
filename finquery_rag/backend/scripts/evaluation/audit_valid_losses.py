@@ -305,6 +305,10 @@ def main(argv: list[str] | None = None) -> int:
                     "document_id": document_id, "source_order": order,
                     "table_fragment_id": tid, "column_index": col,
                     "cells": len(members), "table_role": entry["table_role"],
+                    # Cell ids, not just a count: W4-B's delta accounting has to attribute
+                    # each removed fact to a class, and the only thing a store record and
+                    # this audit share is the cell it came from.
+                    "cell_ids": [e["cell_id"] for e, _ in members],
                     "statement_type": record.get("statement_type"),
                     "legacy_kind": entry["legacy_kind"],
                     "v2_reason": entry["v2_reason"],

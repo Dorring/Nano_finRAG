@@ -568,6 +568,31 @@ def test_unknown_temporal_axis_fail_closed() -> None:
 # ---------------------------------------------------------------------------
 
 
+def _with_period(cell: dict, period: str = "2025-06-30") -> dict:
+    """Attach the A3 period evidence that W4-B admits on.
+
+    Before W4-B these tests needed only an axis binding, because the rule was a whitelist
+    over the axis's kind.  The rule is `decide_emission_admission` now, which asks for a
+    period the source settled -- so a cell carrying no binding is refused with
+    `NO_BINDING`, and a test that does not supply one measures the absence of evidence
+    rather than the rule it means to measure.
+    """
+    cell = dict(cell)
+    cell["period_binding_v2"] = {"binding": {
+        "normalized_period": period,
+        "granularity": "DAY",
+        "status": "RESOLVED",
+        "method": "DIRECT_HEADER",
+        "target_scope": "COLUMN",
+        "source_cells": [{"document_id": "doc:test", "table_id": "table:test",
+                          "row": 0, "column": cell.get("column_index", 1),
+                          "text": period}],
+        "temporal": None,
+        "conflict_candidates": [],
+    }}
+    return cell
+
+
 def test_atomic_fact_source_traceback_roundtrip() -> None:
     """AtomicFact must carry full source_traceback for round-trip."""
     rows = [_make_row("row:0", 0, "metric_row", "Revenue")]
@@ -576,7 +601,8 @@ def test_atomic_fact_source_traceback_roundtrip() -> None:
         _make_axis("c1", "row:0", 1, "duration", normalized_period="FY2025"),
     ]
     cells = [
-        _make_cell("c1", 0, 1, "106265", numeric="106265", row_id="row:0"),
+        _with_period(_make_cell("c1", 0, 1, "106265", numeric="106265",
+                                row_id="row:0")),
     ]
     scale = _make_scale()
     currency = _make_currency()
@@ -745,9 +771,9 @@ def test_atomic_facts_exclude_bucket_and_comparison_cells() -> None:
         ),
     ]
     cells = [
-        _make_cell("c_pt", 0, 1, "100", numeric="100", row_id="row:0"),
-        _make_cell("c_bk", 0, 2, "42", numeric="42", row_id="row:0"),
-        _make_cell("c_comp", 0, 3, "5%", numeric="5", row_id="row:0"),
+        _with_period(_make_cell("c_pt", 0, 1, "100", numeric="100", row_id="row:0")),
+        _with_period(_make_cell("c_bk", 0, 2, "42", numeric="42", row_id="row:0")),
+        _with_period(_make_cell("c_comp", 0, 3, "5%", numeric="5", row_id="row:0")),
     ]
     scale = _make_scale()
     currency = _make_currency()
@@ -755,12 +781,13 @@ def test_atomic_facts_exclude_bucket_and_comparison_cells() -> None:
     facts = emit_atomic_facts(
         rows, metric_paths, axis_bindings, cells, scale, currency, {}
     )
-    # Only point and comparison qualify for atomic facts
-    # (comparison is included per the emitter logic)
+    # W4-B: routing decides by what the source declared the column to be, not by the shape
+    # it stated.  A `point` and a `comparison` column are periods and are admitted; a
+    # `bucket` column is a breakdown and is routed to the bucket emitter instead.
     fact_cell_ids = {f.cell_id for f in facts}
     assert "c_pt" in fact_cell_ids
-    assert "c_comp" in fact_cell_ids
-    assert "c_bk" not in fact_cell_ids  # bucket excluded
+    assert "c_comp" in fact_cell_ids     # a comparison is a period column, routed by kind
+    assert "c_bk" not in fact_cell_ids   # a bucket is a breakdown, not a period
 
 
 def test_bucket_facts_emitted_for_bucket_cells() -> None:

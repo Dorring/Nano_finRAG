@@ -54,6 +54,8 @@ from src.pdf_retrieval_v4.period_binding import (  # noqa: E402
     TemporalKind,
     TemporalKindEvidence,
     TemporalKindMethod,
+    binding_payload,
+    resolve_period_evidence,
 )
 
 PARSER = _BACKEND_DIR / "scripts/evaluation/run_nf_v2_17a4_parse.py"

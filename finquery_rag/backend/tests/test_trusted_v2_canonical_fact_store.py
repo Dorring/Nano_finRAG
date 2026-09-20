@@ -1,6 +1,22 @@
 from src.runtime.trusted_v2_canonical_fact_store import build_canonical_fact_store
 
 
+def _binding(column: int, period: str = "2024-12-31") -> dict:
+    """The A3 period evidence W4-B admits on.
+
+    This path shares `emit_atomic_facts`, so the switch reaches it too -- admission is the
+    A3 decision everywhere the emitter decides.  A cell with no binding is refused with
+    `NO_BINDING`, so a fixture that carries only the legacy `period_end` no longer emits.
+    """
+    return {"binding": {
+        "normalized_period": period, "granularity": "DAY", "status": "RESOLVED",
+        "method": "DIRECT_HEADER", "target_scope": "COLUMN",
+        "source_cells": [{"document_id": "acme-fy2024", "table_id": "income",
+                          "row": 0, "column": column, "text": period}],
+        "temporal": None, "conflict_candidates": [],
+    }}
+
+
 def _document() -> dict:
     return {
         "document": {"document_id": "acme-fy2024", "company": "Acme Corp", "ticker": "ACME", "fiscal_year": 2024},
@@ -11,7 +27,7 @@ def _document() -> dict:
             "period_columns": [{}, {"header_text": "Year ended 2024", "period_semantics": "ANNUAL", "period_end": "2024-12-31"}],
             "cells": [
                 {"cell_id": "income:r1:c0", "row_id": "r1", "column_index": 0, "raw_value": "Revenue"},
-                {"cell_id": "income:r1:c1", "row_id": "r1", "column_index": 1, "raw_value": "100", "normalized_value": "100", "period_end": "2024-12-31", "period_semantics": "ANNUAL"},
+                {"cell_id": "income:r1:c1", "row_id": "r1", "column_index": 1, "raw_value": "100", "normalized_value": "100", "period_end": "2024-12-31", "period_semantics": "ANNUAL", "period_binding_v2": _binding(1)},
             ],
             "rows": [{"row_id": "r1", "row_label": "Revenue"}],
         }],
@@ -38,6 +54,10 @@ def test_build_canonical_fact_store_excludes_cell_without_explicit_period() -> N
     document = _document()
     document["tables"][0]["cells"][1]["period_end"] = None
     document["tables"][0]["cells"][1]["period_semantics"] = "UNKNOWN"
+    # W4-B: "no explicit period" is now the absence of a settled binding, which is what
+    # the decision reads.  Clearing only the legacy fields would leave the binding in place
+    # and the cell would be admitted -- the test would pass while measuring nothing.
+    document["tables"][0]["cells"][1].pop("period_binding_v2")
     document["tables"][0]["period_columns"][1] = {}
     document["tables"][0]["header_rows"] = [["", ""]]
     document["tables"][0]["column_headers"] = ["Metric", ""]

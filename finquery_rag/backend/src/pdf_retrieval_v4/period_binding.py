@@ -518,6 +518,36 @@ def decide_emission_admission(request: AdmissionRequest) -> EmissionAdmission:
         binding=binding)
 
 
+def binding_payload(binding: "PeriodBindingV2 | Conflict | None") -> dict | None:
+    """A JSON-safe form, for the one place the binding crosses a dict.
+
+    W4-B decides admission inside `emit_atomic_facts`, which sees parsed cells rather than
+    grids -- the grid is only in scope back in `parse_table`, where the period producer
+    runs.  So the composed binding travels on the cell, and it travels as a dict because
+    the parsed table is JSON-serialised in between.
+
+    `None` in, `None` out, and a `Conflict` keeps its candidates rather than being flattened
+    to nothing: a payload that silently dropped a disagreement would turn a refusal into
+    an absent field, and the two read very differently downstream.
+    """
+    if binding is None:
+        return None
+    if isinstance(binding, Conflict):
+        return {"conflict": [c.to_dict() for c in binding.candidates]}
+    return {"binding": binding.to_dict()}
+
+
+def binding_from_payload(payload: dict | None) -> "PeriodBindingV2 | Conflict | None":
+    if not payload:
+        return None
+    if "conflict" in payload:
+        return Conflict(key="", candidates=tuple(PeriodBindingV2.from_dict(c)
+                                                 for c in payload["conflict"]))
+    if "binding" in payload:
+        return PeriodBindingV2.from_dict(payload["binding"])
+    return None
+
+
 def periods_are_compatible(
     source: PeriodBindingV2 | None,
     requested_granularity: PeriodGranularity,
