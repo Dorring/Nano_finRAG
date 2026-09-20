@@ -124,10 +124,49 @@ def score_released(prediction: dict, gold: dict) -> str | None:
     return "wrong"
 
 
+def load_alias_map(fact_store: Path) -> dict[str, str]:
+    """fact/evidence/citation id -> canonical candidate id, as the runtime resolves them.
+
+    The two sides are in different namespaces -- gold says `v2fact:<hex>`, a citation says
+    `citation:v2:<hex>` -- so comparing them as strings would report 0% precision on
+    perfectly correct citations.  Resolution has to happen before scoring, and it happens
+    here so the metric is about the citation and not about the naming.
+    """
+    aliases: dict[str, str] = {}
+    for line in fact_store.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        record = json.loads(line)
+        candidate = record.get("candidate_id") or record.get("candidate_key")
+        if not candidate:
+            continue
+        aliases[candidate] = candidate
+        for key in ("fact_id", "evidence_id", "citation_id", "source_id",
+                    "physical_source_id"):
+            value = record.get(key)
+            if not value:
+                continue
+            aliases[value] = candidate
+            if ":" in value:
+                aliases[value.split(":")[-1]] = candidate
+    return aliases
+
+
+def resolve(identifier: str, aliases: dict[str, str]) -> str:
+    if identifier in aliases:
+        return aliases[identifier]
+    if ":" in identifier:
+        return aliases.get(identifier.split(":")[-1], identifier)
+    return identifier
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--predictions", type=Path, required=True)
     parser.add_argument("--gold", type=Path, required=True)
+    parser.add_argument("--fact-store", type=Path, default=None,
+                        help="needed for citation precision/recall; without it the two "
+                             "id namespaces cannot be compared")
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args(argv)
 
@@ -136,6 +175,7 @@ def main(argv: list[str] | None = None) -> int:
                    if line.strip()]
     gold = {json.loads(line)["id"]: json.loads(line)
             for line in args.gold.read_text(encoding="utf-8").splitlines() if line.strip()}
+    aliases = load_alias_map(args.fact_store) if args.fact_store else {}
 
     # `expected_failure_reason` is how the benchmark marks a case that must be refused.
     def must_refuse(case_id: str) -> bool:
@@ -187,6 +227,28 @@ def main(argv: list[str] | None = None) -> int:
             tally["released_with_citation"] += 1 if citations else 0
             if not citations:
                 tally["released_without_citation"] += 1
+            # Citation precision and recall, never merged into one "citation accuracy":
+            # precision asks whether a cited cell supports the claim, recall whether the
+            # claim's own cells were cited.  A system can score 100% on either by citing
+            # everything or nothing respectively.
+            cited = [resolve(c, aliases) for c in (prediction.get("citation_ids") or [])]
+            wanted = [resolve(f, aliases)
+                      for f in (gold.get(case_id) or {}).get("fact_ids") or []]
+            admitted = [resolve(e, aliases)
+                        for e in (prediction.get("evidence_ids") or [])]
+            if aliases and wanted:
+                tally["cited_total"] += len(cited)
+                tally["cited_in_gold"] += sum(1 for c in cited if c in wanted)
+                tally["gold_total"] += len(wanted)
+                tally["gold_cited"] += sum(1 for w in wanted if w in cited)
+                # Two different questions, and conflating them misreports both.  `in gold`
+                # asks whether the citation is the cell the benchmark names; `in evidence`
+                # asks whether the citation is a cell the runtime actually admitted.  A
+                # citation can be one without the other, and a system that cites a
+                # different-but-real cell is a different thing from one that invents a
+                # citation, which is what the second number is there to catch.
+                tally["cited_total_ev"] += len(cited)
+                tally["cited_in_evidence"] += sum(1 for c in cited if c in admitted)
             released_rows.append({
                 "id": case_id, "stratum": stratum, "verdict": verdict,
                 "citations": citations,
@@ -233,6 +295,20 @@ def main(argv: list[str] | None = None) -> int:
           f"   (unscoreable {tally['released_unscoreable']})")
     print(f"    released with a citation    "
           f"{tally['released_with_citation']}/{tally['released']}")
+    if aliases:
+        cited_total, gold_total = tally["cited_total"], tally["gold_total"]
+        ev_total = tally["cited_total_ev"]
+        print(f"    citation in its own evidence  {tally['cited_in_evidence']}/{ev_total}"
+              f"   ({tally['cited_in_evidence'] / max(1, ev_total):.1%})"
+              f"   <- the citation points at an admitted cell")
+        print(f"    citation precision vs gold   {tally['cited_in_gold']}/{cited_total}"
+              f"   ({tally['cited_in_gold'] / max(1, cited_total):.1%})"
+              f"   <- the citation IS the benchmark's cell")
+        print(f"    citation recall vs gold      {tally['gold_cited']}/{gold_total}"
+              f"   ({tally['gold_cited'] / max(1, gold_total):.1%})")
+    else:
+        print("    citation precision/recall   not computed (no --fact-store: the gold "
+              "and citation id namespaces cannot be compared without it)")
     print()
     print("=== per released case ===")
     for row in released_rows:
