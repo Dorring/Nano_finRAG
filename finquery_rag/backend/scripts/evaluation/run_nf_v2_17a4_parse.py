@@ -456,6 +456,11 @@ def grid_rows(rows: list[list[etree._Element]]) -> list[list[dict | None]]:
                 "header": lname(node) == "th",
                 "rowspan": rs,
                 "colspan": cs,
+                # Captured here because the element is dropped from the grid:
+                # downstream there is no way back to the node to ask.  This is
+                # what makes a *cell* anchorable rather than only the table --
+                # and the column is the dimension the store is missing.
+                "ixbrl_anchors": ixbrl_anchors(node),
             }
             for rr in range(ri, ri + rs):
                 while len(grid) <= rr:
@@ -613,6 +618,11 @@ def parse_table(
                 "period_start": pb.get("period_start"),
                 "period_end": pb.get("period_end"),
                 "period_semantics": pb.get("period_semantics", "UNKNOWN"),
+                # The cell's own facts.  `row_label` and `column_header` above
+                # are what separate two cells of one row -- `Net income` under
+                # `Corporate` against the same row under `Total` -- so an anchor
+                # here is what lets a tagged fact be told from its neighbour.
+                "ixbrl_anchors": rec.get("ixbrl_anchors") or [],
                 "source_provenance": {
                     "document_id": doc["document_id"],
                     "table_id": tid,
