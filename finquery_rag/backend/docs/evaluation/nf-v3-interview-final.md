@@ -104,8 +104,23 @@ pre-existing and stated rather than worked around.
    the entity and scored a correct answer wrong. Now takes the capitalised name nearest the
    word "higher".
 
-## Reproduce
+## Three further details a reader should have
 
+**The reranker is lexical, not a cross-encoder.** `RAG_RERANKER=heuristic` and no reranker
+weights exist on this host — only `all-MiniLM-L6-v2`, the dense lane's bi-encoder — so the
+"reranked" column is the dependency-free heuristic and its numbers are not cross-encoder
+numbers. Worth saying out loud: it **degrades** top-5 gold recall (0.507 → 0.460) while
+improving @20, and the benchmark reports that rather than rounding it away.
+
+**Gold cannot reach retrieval, structurally.** `retrieve_case(question, …)` takes no gold
+argument and all 120 cases are retrieved to completion before `score_case` — the only
+gold-reading function — is entered. Two full runs produced byte-identical metrics JSON.
+
+**What would make cross-entity measurable** is a data decision, not a script change: build
+an R4 index over `financial-facts-ixbrl-v1.jsonl`, or re-derive cross-entity gold into
+`v2fact:` ids. Until one of those happens the stratum has no rank to measure.
+
+## Reproduce
 ```bash
 # Phase 0 store + gates
 python scripts/evaluation/audit_bucket_token_boundary.py --out <dir>
