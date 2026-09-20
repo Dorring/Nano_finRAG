@@ -476,6 +476,82 @@ _METRIC_DEFINITIONS: tuple[MetricDefinition, ...] = (
             "销售成本",
         ),
     ),
+    # ------------------------------------------------------------------
+    # P1.6-E2.  Twelve concepts added after auditing every label the
+    # alignment gate was refusing (docs/evaluation/p1-6-e2-ontology-review.md).
+    #
+    # Each was admitted on one test only: the label names one quantity, it
+    # would be recognised in any filing that reports it, and the mapping
+    # would still be wanted with a different benchmark. Whether adding it
+    # releases a case was not asked and is not recorded anywhere -- that
+    # would be fitting the ontology to the evaluation set.
+    #
+    # Each is a NEW canonical metric, not an alias onto an existing one.
+    # `leasehold_improvements` is not a kind of `assets`, and mapping it
+    # there to make the gate pass would be exactly the false equivalence
+    # the NO_COLLISION rule exists to prevent. Only genuine synonyms belong
+    # in an existing entry's alias tuple.
+    # ------------------------------------------------------------------
+    MetricDefinition(
+        "accumulated_depreciation",
+        ("accumulated depreciation", "累计折旧"),
+    ),
+    MetricDefinition(
+        "finished_goods",
+        ("finished goods", "finished goods inventory", "产成品"),
+    ),
+    MetricDefinition(
+        "other_long_term_liabilities",
+        ("other long-term liabilities", "other non-current liabilities"),
+    ),
+    MetricDefinition(
+        "selling_and_marketing",
+        (
+            "selling and marketing",
+            "销售及市场推广",
+        ),
+    ),
+    MetricDefinition(
+        "basic_eps",
+        ("basic earnings per share", "basic eps", "基本每股收益"),
+    ),
+    MetricDefinition(
+        "basic_weighted_average_shares",
+        (
+            "basic weighted average shares",
+            "basic weighted-average shares",
+            "basic weighted average shares outstanding",
+        ),
+    ),
+    MetricDefinition(
+        "diluted_weighted_average_shares",
+        (
+            "weighted-average shares—diluted",
+            "diluted weighted average shares",
+            "diluted weighted-average shares",
+            "weighted average shares diluted",
+        ),
+    ),
+    MetricDefinition(
+        "tangible_book_value_per_share",
+        ("tangible book value per share", "tbvps", "有形账面价值每股"),
+    ),
+    MetricDefinition(
+        "lending_related_commitments",
+        ("total lending-related commitments", "lending-related commitments"),
+    ),
+    MetricDefinition(
+        "us_treasury_securities",
+        ("u.s. treasury securities", "us treasury securities", "美国国债"),
+    ),
+    MetricDefinition(
+        "leasehold_improvements",
+        ("leasehold improvements", "租赁资产改良"),
+    ),
+    MetricDefinition(
+        "land",
+        ("land", "土地"),
+    ),
 )
 
 

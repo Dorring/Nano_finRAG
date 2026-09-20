@@ -186,14 +186,21 @@ def test_the_period_rule_still_applies_to_a_qualitative_slot() -> None:
 def test_a_metric_the_ontology_cannot_name_is_admissible() -> None:
     """Unnamed is not irrelevant, and treating it as such caused two regressions.
 
-    A plan naming `Total operating expenses` and `Leasehold improvements` makes
+    A plan naming `Total operating expenses` and an unnameable second metric makes
     the prefilter fire on the first and, before this, dropped every fact for the
     second -- because an unnamed metric is not in a set of names.  The Binder was
     then asked to fill a slot whose only fact it had never been shown.
+
+    `Leasehold improvements` used to be the example here.  P1.6-E2 added it to the
+    ontology as a canonical metric, so it is no longer an *unnamed* metric and can
+    no longer stand for one: the prefilter now recognises it and correctly drops
+    candidates carrying a different named metric.  That is the prefilter working,
+    not the property failing -- so the example changes and the claim does not.
     """
 
     assert _metric_is_admissible(
-        {"metric": "Leasehold improvements"}, {"total_operating_expenses"}
+        {"metric": "Hedge accounting fair value adjustments"},
+        {"total_operating_expenses"},
     )
     assert _metric_is_admissible(
         {"metric": "Impact of the State Aid Decision"}, {"cost_of_revenue"}

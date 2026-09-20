@@ -286,7 +286,8 @@ def make_slot_budget_retriever(reader: Any):
 # ---------------------------------------------------------------------------
 
 
-def run_case(case_id, question, plan_payload, arm, resources, gold_ids, comparable):
+def run_case(case_id, question, plan_payload, arm, resources, gold_ids, comparable,
+             aliases=None):
     from src.runtime.query_lifecycle import QueryExecutionService
     from src.runtime.runtime_contract import FinancialQueryRequest
     from src.runtime.trusted_v2_production import build_trusted_v2_runtime_for_request
@@ -328,6 +329,19 @@ def run_case(case_id, question, plan_payload, arm, resources, gold_ids, comparab
     bound = _dedupe([str(x) for x in (trace.get("bound_evidence_ids") or [])])
     gold = set(gold_ids) if comparable else set()
 
+    # E2-0. The bound evidence ids are `evidence_id` values while the gold ids
+    # are `candidate_key` values, so comparing them as strings gives 0 for every
+    # case and says nothing -- the same id-space trap that already produced a
+    # false "cross-entity is unmeasurable" and a false "gold never admitted".
+    # Both sides are resolved through the fact store's own alias map, and the
+    # raw ids are kept beside the resolved ones so the mapping is auditable
+    # rather than asserted.
+    def _resolve(value: str) -> str:
+        return aliases.get(value) or (aliases.get(value.split(":")[-1]) or value)             if aliases else value
+
+    gold_resolved = {_resolve(x) for x in gold}
+    bound_resolved = {_resolve(x) for x in bound}
+
     alignment = trace.get("semantic_alignment") or {}
     reasons = [str(r) for r in (trace.get("reason_codes") or result.reason_codes or [])]
     gate_code = next((GATE_REASONS[r] for r in reasons if r in GATE_REASONS), None)
@@ -364,7 +378,11 @@ def run_case(case_id, question, plan_payload, arm, resources, gold_ids, comparab
         "binder_status_per_round": [str(x) for x in
                                     (trace.get("binder_status_per_round") or [])],
         "bound_evidence": len(bound),
-        "gold_bound": len(gold & set(bound)),
+        "bound_evidence_ids": sorted(bound),
+        "bound_evidence_resolved": sorted(bound_resolved),
+        "gold_resolved": sorted(gold_resolved),
+        "gold_bound": len(gold_resolved & bound_resolved),
+        "gold_bound_raw_string_compare": len(gold & set(bound)),
         "missing_slot_ids": list(trace.get("missing_slot_ids") or []),
         "wrong_period_slots": list(trace.get("wrong_period_slots") or []),
         "missing_operand_slots": list(trace.get("missing_operand_slots") or []),
@@ -440,6 +458,10 @@ def main(argv: list[str] | None = None) -> int:
         keep = {q["id"] for q in questions}
         pinned = [row for row in pinned if row["case_id"] in keep]
 
+    import score_nf_v3_final as scorer
+
+    aliases = scorer.load_alias_map(args.v2_fact_store)
+
     plans_by_question: dict[str, Mapping[str, Any]] = {}
     for row in pinned:
         if row.get("plan"):
@@ -477,7 +499,7 @@ def main(argv: list[str] | None = None) -> int:
             comparable = bool(raw_ids) and all(f.startswith("v2fact:") for f in raw_ids)
             try:
                 row = run_case(case_id, question, (entry or {}).get("plan") or {},
-                               arm, resources, raw_ids, comparable)
+                               arm, resources, raw_ids, comparable, aliases)
             except MissingPinnedPlan as exc:
                 row = {"case_id": case_id, "arm": arm, "stratum": question.get("stratum"),
                        "comparable": comparable, "gold_ids": raw_ids,
