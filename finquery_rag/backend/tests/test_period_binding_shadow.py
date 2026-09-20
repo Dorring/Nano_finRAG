@@ -190,3 +190,72 @@ def test_pfizer_inline_rows_are_scoped_to_their_own_row_and_do_not_inherit():
         assert binding.target_scope is PeriodTargetScope.ROW
         for cell in binding.source_cells:
             assert cell.row == row, f"row {row} cites row {cell.row}"
+
+
+# --- month names, abbreviated and not -------------------------------------------------
+
+def test_an_abbreviated_month_is_the_same_claim_as_the_full_name():
+    """`Jan 26, 2025` and `January 26, 2025` are one date.
+
+    W4-A measured 352 oracle-PRIMARY cells lost purely because NVIDIA's fiscal calendar is
+    written `Jan 26, 2025` and the pattern listed full names only.
+    """
+    shadow = _shadow()
+    assert shadow._iso("Jan 26,", "2025") == "2025-01-26"
+    assert shadow._iso("January 26,", "2025") == "2025-01-26"
+    assert shadow._iso("Sept 27", "2025") == "2025-09-27"
+    assert shadow._iso("Sep 27", "2025") == "2025-09-27"
+    assert shadow._iso("September 27,", "2025") == "2025-09-27"
+    assert shadow._iso("Dec 31", "2024") == "2024-12-31"
+
+
+def test_every_month_resolves_from_its_first_three_letters():
+    shadow = _shadow()
+    assert [shadow._month_number(n) for n in
+            ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
+             "Nov", "Dec")] == list(range(1, 13))
+    assert shadow._month_number("January") == 1
+    assert shadow._month_number("Sept") == 9
+    # Not months, and not silently read as one.
+    assert shadow._month_number("Nope") is None
+    assert shadow._month_number("Ju") is None
+    assert shadow._month_number("") is None
+    assert shadow._iso("Nope 5", "2025") is None
+
+
+def test_an_abbreviation_cannot_match_inside_a_longer_word():
+    """`Mar` must not fire on `Marketing`, or widening the pattern would admit prose."""
+    shadow = _shadow()
+    for text in ("Marketing 5", "Junction 7", "Decembering 3", "Mayo 2", "Augment 9"):
+        assert not shadow._MONTH_DAY.search(text), text
+    assert shadow._MONTH_DAY.search("Mar 5")
+
+
+def test_the_year_capture_moved_with_the_unnamed_month():
+    """`_MONTH_DAY_YEAR`'s month is no longer a group, so the year is group 1.
+
+    Both call sites read `whole.group(1)`; this pins the arity so a later edit cannot
+    quietly index the wrong group and produce a period with the day as its year.
+    """
+    shadow = _shadow()
+    match = shadow._MONTH_DAY_YEAR.search("as of Jan 26, 2025")
+    assert match and match.group(1) == "2025"
+    assert shadow._MONTH_DAY_YEAR.groups == 1
+
+
+def test_nvda_abbreviated_headers_now_bind():
+    """The measured case, end to end: NVIDIA's income statement columns get a date.
+
+    Before the widening this returned no DAY-granularity column at all -- `Year Ended /
+    Jan 26, 2025` matched nothing -- which is what put 352 primary cells in W4-A's loss
+    column.
+    """
+    bound = _bind("nvda_fy2025", "NVDA", "SEC_1045810_000104581025000023", 6754)
+    days = {c: b for c, b in bound["columns"].items()
+            if b.granularity is PeriodGranularity.DAY}
+    assert days, "no DAY-granularity column; the fixture has moved"
+    assert {b.normalized_period[:7] for b in days.values()} == {"2025-01", "2024-01"}, (
+        {b.normalized_period for b in days.values()})
+    for binding in days.values():
+        assert binding.status is PeriodBindingStatus.RESOLVED
+        assert binding.method is PeriodBindingMethod.DIRECT_HEADER

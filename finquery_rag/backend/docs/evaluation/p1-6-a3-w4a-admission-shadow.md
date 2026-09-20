@@ -145,6 +145,28 @@ Registered rather than papered over, in the same way as `REAL_BUCKET_POSITIVE_UN
 - The non-primary loss buckets are classified by header text, not adjudicated cell by cell.
   The primary buckets are the ones that decide the phase and those are.
 
+## W4-A2 — the first slice, predicted before it was run
+
+The two-cause model above is worth exactly as much as its predictions, so they are written
+down **before** the abbreviated-month widening is applied and measured:
+
+```
+oracle-PRIMARY regression       708  ->  ~356      the 352 abbreviated-month cells
+                                                   recovered; the 22 `Year ended
+                                                   December 31` and the 2 empty headers
+                                                   are untouched by this change
+total regression              9,688  ->  ~7,467    recovered: 352 + 1,236 + 405 + 228
+```
+
+If the primary number does not land near 356, the cause classification was fitting prose to
+a number rather than explaining it, and the remaining gaps need re-diagnosing rather than
+fixing.
+
+The change is a pure widening of the month pattern — full names and abbreviations go
+through one path — plus one structural consequence: `_MONTH_DAY_YEAR`'s month is no longer
+a capture group, so both call sites read the year from group 1. That arity is pinned by a
+test, because indexing the wrong group would produce a period whose year is the day.
+
 ## Behaviour-neutral, provably
 
 Since the W1 baseline `8ef4c45` the **only** production file changed is

@@ -16,6 +16,11 @@ disagreement inside a class is a `Conflict`, never a choice.
     INLINE_PERIOD_DATA_ROW        the target row states its own period
     YEAR_ONLY_PERIOD              the source states a year and no date
 
+A3-W4-A named two mechanical gaps in the date patterns, and this widens the first of them:
+month names were spelled out in full, so `Jan 26, 2025` -- NVIDIA's whole fiscal calendar
+-- matched nothing.  The second (`as of December 31` with the year in a sibling cell) is
+untouched here and is measured separately.
+
   python period_binding_shadow.py --out <dir>
 """
 
@@ -56,27 +61,53 @@ ORACLES = (
     ("ko_fy2025", 11388, "BALANCE_SHEET"),
 )
 
+_MONTHS = ("january", "february", "march", "april", "may", "june", "july",
+           "august", "september", "october", "november", "december")
+
+#: `Jan 26, 2025` and `September 27, 2025` are the same claim.  The full names alone were
+#: not enough: NVIDIA's fiscal calendar is written `Jan 26, 2025` throughout, so every one
+#: of its primary statements had no column binding at all under the old pattern -- 352 of
+#: the 708 primary-table cells W4-A measured as lost.
+#:
+#: Each alternative is the full name with a trailing optional run, so `Mar` cannot match
+#: inside `Marketing`: the alternation is followed by `\s+\d`, and `keting` is not that.
+_MONTH_NAME = (r"(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|"
+               r"Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|"
+               r"Dec(?:ember)?)")
+
 _MONTH_DAY_YEAR = re.compile(
-    r"\b(January|February|March|April|May|June|July|August|September|October|"
-    r"November|December)\.?\s+\d{1,2}(?:st|nd|rd|th)?,?\s+((?:19|20)\d{2})\b", re.I)
-_MONTH_DAY = re.compile(
-    r"\b(January|February|March|April|May|June|July|August|September|October|"
-    r"November|December)\.?\s+\d{1,2}(?:st|nd|rd|th)?,?", re.I)
+    rf"\b{_MONTH_NAME}\.?\s+\d{{1,2}}(?:st|nd|rd|th)?,?\s+((?:19|20)\d{{2}})\b", re.I)
+_MONTH_DAY = re.compile(rf"\b{_MONTH_NAME}\.?\s+\d{{1,2}}(?:st|nd|rd|th)?,?", re.I)
 _BARE_YEAR = re.compile(r"^\s*(?:FY\s*)?((?:19|20)\d{2})\s*$", re.I)
 _VALUE_LIKE = re.compile(r"^\(?\$?\s*-?[\d,]+(?:\.\d+)?\s*\)?%?$")
 _YEAR_ONLY_TEXT = re.compile(r"^\s*(?:FY\s*)?(?:19|20)\d{2}\s*$", re.I)
 
+#: `Jan`, `Sept`, `September` -> the same number.  Keyed by the first three letters,
+#: which is the shortest prefix all twelve names are distinct on.
+_MONTH_BY_PREFIX = {name[:3]: index + 1 for index, name in enumerate(_MONTHS)}
+
+
+def _month_number(text: str) -> int | None:
+    word = re.match(r"[A-Za-z]+", text.strip())
+    if not word:
+        return None
+    return _MONTH_BY_PREFIX.get(word.group(0).lower()[:3])
+
 
 def _iso(month_day: str, year: str) -> str | None:
-    """`December 31,` + `2025` -> `2025-12-31`, or None if the month is unreadable."""
+    """`December 31,` + `2025` -> `2025-12-31`, or None if the month is unreadable.
+
+    The month is read off the matched text rather than off a capture group, so an
+    abbreviation and a full name go through the same path.
+    """
     match = _MONTH_DAY.search(month_day)
     if not match:
         return None
-    names = ("january", "february", "march", "april", "may", "june", "july",
-             "august", "september", "october", "november", "december")
-    month = names.index(match.group(1).lower()) + 1
-    day = int(re.search(r"(\d{1,2})", match.group(0)).group(1))
-    return f"{year}-{month:02d}-{day:02d}"
+    month = _month_number(match.group(0))
+    day_match = re.search(r"(\d{1,2})", match.group(0))
+    if month is None or not day_match:
+        return None
+    return f"{year}-{month:02d}-{int(day_match.group(1)):02d}"
 
 
 def _value_like(text: str) -> bool:
@@ -192,21 +223,29 @@ def bind_table(nf, grid, doc_id: str, table_id: str) -> dict:
         # 1. a complete date in this column's own header cell
         for i, text in cells:
             whole = _MONTH_DAY_YEAR.search(text)
-            if whole and _is_period_header_cell(text, whole):
-                columns[col] = PeriodBindingV2(
-                    normalized_period=_iso(whole.group(0), whole.group(2)),
-                    granularity=PeriodGranularity.DAY,
-                    status=PeriodBindingStatus.RESOLVED,
-                    method=(PeriodBindingMethod.HEADER_ROW_SELECTION_EXTEND
-                            if i in added else PeriodBindingMethod.DIRECT_HEADER),
-                    target_scope=PeriodTargetScope.COLUMN,
-                    source_cells=source,
-                    temporal=TemporalKindEvidence(
-                        kind=TemporalKind.POINT,
-                        method=TemporalKindMethod.PERIOD_BINDING,
-                        source_cells=source),
-                )
-                break
+            if not whole or not _is_period_header_cell(text, whole):
+                continue
+            resolved = _iso(whole.group(0), whole.group(1))
+            # `_MONTH_DAY_YEAR` matched, so `_iso` should always resolve; if it somehow
+            # does not, fall through rather than build a `RESOLVED` binding whose
+            # `normalized_period` is None -- an incoherent state the contract forbids and
+            # one that would read downstream as "resolved, but to nothing".
+            if resolved is None:
+                continue
+            columns[col] = PeriodBindingV2(
+                normalized_period=resolved,
+                granularity=PeriodGranularity.DAY,
+                status=PeriodBindingStatus.RESOLVED,
+                method=(PeriodBindingMethod.HEADER_ROW_SELECTION_EXTEND
+                        if i in added else PeriodBindingMethod.DIRECT_HEADER),
+                target_scope=PeriodTargetScope.COLUMN,
+                source_cells=source,
+                temporal=TemporalKindEvidence(
+                    kind=TemporalKind.POINT,
+                    method=TemporalKindMethod.PERIOD_BINDING,
+                    source_cells=source),
+            )
+            break
         if col in columns:
             continue
 
@@ -275,8 +314,11 @@ def bind_table(nf, grid, doc_id: str, table_id: str) -> dict:
             years = set(re.findall(r"(?<!\d)(?:19|20)\d{2}(?!\d)", text))
             if len(years) != 1:
                 continue
+            resolved = _iso(whole.group(0), whole.group(1))
+            if resolved is None:
+                continue
             rows[ri] = PeriodBindingV2(
-                normalized_period=_iso(whole.group(0), whole.group(2)),
+                normalized_period=resolved,
                 granularity=PeriodGranularity.DAY,
                 status=PeriodBindingStatus.RESOLVED,
                 method=PeriodBindingMethod.INLINE_PERIOD_DATA_ROW,
