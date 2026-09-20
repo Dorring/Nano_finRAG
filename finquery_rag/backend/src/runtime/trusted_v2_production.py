@@ -24,7 +24,7 @@ import re
 import sqlite3
 import threading
 import warnings
-from collections.abc import Iterable, Mapping, MutableMapping
+from collections.abc import Callable, Iterable, Mapping, MutableMapping
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -1157,6 +1157,7 @@ def build_trusted_v2_runtime_for_request(
     *,
     resources: TrustedV2RuntimeResources | None = None,
     alignment_override: Any | None = None,
+    retriever_factory: Callable[[Any], Any] | None = None,
 ) -> TrustedFinancialRuntimeV2:
     """Build one real ``TrustedFinancialRuntimeV2`` for a financial request.
 
@@ -1165,6 +1166,17 @@ def build_trusted_v2_runtime_for_request(
     calls the legacy V1 retriever.  Expensive clients/models are process
     cached; request-scoped R4 policy and capability wrappers keep document
     scope and trace state isolated.
+
+    ``retriever_factory`` is an experiment seam, not a configuration knob.
+    ``None`` -- the default, and what every production caller passes by not
+    passing it -- builds ``CandidateDirectRetriever`` exactly as before, so the
+    default path is unchanged decision-for-decision.  A benchmark comparing two
+    *retrieval policies* passes a factory to get the other one, and because the
+    swap happens here rather than by editing the adapter, both arms run the same
+    ``CandidateDirectR4Policy``, the same materialisation and every capability
+    downstream of them.  The alternative -- patching the policy from the
+    harness -- would make the arms two different programs in a way the source
+    does not show.
     """
 
     del engine
@@ -1187,7 +1199,11 @@ def build_trusted_v2_runtime_for_request(
     try:
         from src.pdf_retrieval_v4.candidate_direct_retriever import CandidateDirectRetriever
 
-        retriever = CandidateDirectRetriever(resources.index_reader)
+        retriever = (
+            CandidateDirectRetriever(resources.index_reader)
+            if retriever_factory is None
+            else retriever_factory(resources.index_reader)
+        )
         policy = CandidateDirectR4Policy(
             retriever,
             materializer=resources.fact_store.materialize,
