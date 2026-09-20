@@ -96,12 +96,33 @@ The non-primary losses are mostly the producer being right — `June 29, 2025 to
 header. Reporting one number would have read as catastrophe where the detail reads as a
 short list.
 
+## Why there is no rule-only escape
+
+The obvious way out would be to switch the rule now and leave the period source alone —
+`V1` is finished, one kind wide, zero loss. That option does not exist, and checking rather
+than assuming is what showed it:
+
+```
+unknown-kind cells the legacy rule drops            14802
+  ... and the legacy axis carries NO period         14802
+  ... and it has a normalized_period                    0
+```
+
+Every one of them. Not "most" — the tally reconciles cell for cell with the shadow's
+`rule_gain` of 14,802 by an independent route, and a legacy `unknown` column is unknown
+precisely *because* `_classify_column_temporal` falls through to
+`return ("unknown", None, None, None)`. Admitting them under the legacy period source would
+store 14,802 facts with no period, which is worse than withholding them.
+
+So the rule and the period source cannot be switched apart: the new rule's whole content is
+"a usable binding is what makes a fact storable", and there is no binding to be had from the
+path being replaced.
+
 ## Verdict
 
-**W4-B as originally scoped — switch admission, which means switching the period source
-with it — is blocked, and it is blocked by the producer, not by the rule.** Switching
-today would remove 3,302 facts net (6,386 in, 9,688 out), 708 of them from oracle-PRIMARY
-statements.
+**W4-B is blocked, and it is blocked by the producer, not by the rule.** Switching today
+would remove 3,302 facts net (6,386 in, 9,688 out), 708 of them from oracle-PRIMARY
+statements, and the 14,802 the rule would add cannot be stored without a period.
 
 The rule half is finished and measured. The producer half needs its two gaps closed and a
 re-measurement before anything switches, and its entry condition is now sayable:
