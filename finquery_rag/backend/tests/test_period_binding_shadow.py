@@ -1,0 +1,192 @@
+"""A3-W2 acceptance: the producers are right, not merely running.
+
+The contract-level half is pure and fast.  The corpus half needs a filing on disk and
+skips with a reason when there is none -- a test that passes because it looked at nothing
+is worse than no test.
+"""
+
+from __future__ import annotations
+
+import importlib.util
+import sys
+from pathlib import Path
+
+import pytest
+
+_BACKEND_DIR = Path(__file__).resolve().parents[1]
+if str(_BACKEND_DIR) not in sys.path:
+    sys.path.insert(0, str(_BACKEND_DIR))
+
+from src.pdf_retrieval_v4.period_binding import (  # noqa: E402
+    Conflict,
+    PeriodBindingMethod,
+    PeriodBindingStatus,
+    PeriodBindingV2,
+    PeriodGranularity,
+    PeriodTargetScope,
+    SourceCell,
+    TemporalKind,
+    TemporalKindEvidence,
+    TemporalKindMethod,
+    resolve_period_evidence,
+)
+
+CORPUS = Path("/disk/qh/nano-finrag/data/financial_corpus_v2/raw/SEC")
+
+SHADOW = _BACKEND_DIR / "scripts/evaluation/period_binding_shadow.py"
+PARSER = _BACKEND_DIR / "scripts/evaluation/run_nf_v2_17a4_parse.py"
+
+
+def _shadow():
+    spec = importlib.util.spec_from_file_location("pb_shadow", SHADOW)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _cell(method_row: int) -> SourceCell:
+    return SourceCell("ko_fy2025", "table_x", method_row, 0, "Balance, December 31, 2022")
+
+
+def _direct(period: str = "2022-12-31", row: int = 15) -> PeriodBindingV2:
+    return PeriodBindingV2(
+        normalized_period=period, granularity=PeriodGranularity.DAY,
+        status=PeriodBindingStatus.RESOLVED,
+        method=PeriodBindingMethod.INLINE_PERIOD_DATA_ROW,
+        target_scope=PeriodTargetScope.ROW, source_cells=(_cell(row),))
+
+
+def _inherited(period: str = "2025-12-31",
+               method: PeriodBindingMethod = PeriodBindingMethod.DIRECT_HEADER
+               ) -> PeriodBindingV2:
+    return PeriodBindingV2(
+        normalized_period=period, granularity=PeriodGranularity.DAY,
+        status=PeriodBindingStatus.RESOLVED, method=method,
+        target_scope=PeriodTargetScope.COLUMN, source_cells=(_cell(1),))
+
+
+def _year_only(year: str = "2025") -> PeriodBindingV2:
+    return PeriodBindingV2(
+        normalized_period=year, granularity=PeriodGranularity.YEAR,
+        status=PeriodBindingStatus.PARTIAL,
+        method=PeriodBindingMethod.YEAR_ONLY_PERIOD,
+        target_scope=PeriodTargetScope.CELL_GROUP, source_cells=(_cell(1),),
+        temporal=TemporalKindEvidence(TemporalKind.UNKNOWN,
+                                      TemporalKindMethod.PERIOD_BINDING))
+
+
+# --- contract semantics --------------------------------------------------------------
+
+def test_direct_declaration_shadows_a_disagreeing_inherited_binding():
+    """Not a conflict: the row states its own period, and that is scope, not precedence."""
+    declared, inherited = _direct("2022-12-31"), _inherited("2025-12-31")
+    assert resolve_period_evidence(declared, [inherited]) is declared
+
+
+def test_two_disagreeing_direct_declarations_are_a_conflict():
+    outcome = resolve_period_evidence(None, [_direct("2022-12-31", 15),
+                                             _direct("2023-12-31", 26)])
+    assert isinstance(outcome, Conflict)
+    assert len(outcome.candidates) == 2
+
+
+def test_two_disagreeing_inherited_bindings_are_a_conflict():
+    outcome = resolve_period_evidence(None, [_inherited("2025-12-31"), _inherited("2024-12-31",
+                                             PeriodBindingMethod.ADJACENT_YEAR_JOIN)])
+    assert isinstance(outcome, Conflict)
+
+
+def test_agreeing_evidence_merges_rather_than_conflicting():
+    """Repeated evidence is not disagreement; a false conflict would be as wrong."""
+    merged = resolve_period_evidence(None, [_inherited("2025-12-31"),
+                                            _inherited("2025-12-31",
+                                                       PeriodBindingMethod.ADJACENT_YEAR_JOIN)])
+    assert isinstance(merged, PeriodBindingV2)
+    assert merged.normalized_period == "2025-12-31"
+    assert len(merged.source_cells) == 2
+
+
+def test_year_only_never_fabricates_a_calendar_date():
+    binding = _year_only("2025")
+    assert binding.normalized_period == "2025"
+    assert binding.granularity is PeriodGranularity.YEAR
+    assert not binding.normalized_period.endswith("-12-31")
+
+
+def test_partial_does_not_collapse_into_unresolved():
+    binding = _year_only("2025")
+    assert binding.status is PeriodBindingStatus.PARTIAL
+    assert binding.is_usable
+    assert binding.temporal.kind is TemporalKind.UNKNOWN
+    assert binding.status is not PeriodBindingStatus.UNRESOLVED
+
+
+# --- the producers, against the filings ----------------------------------------------
+
+def _bind(document_id: str, ticker: str, accession: str, order: int):
+    if not CORPUS.is_dir():
+        pytest.skip("corpus not present on this host")
+    from lxml import etree, html
+    nf_spec = importlib.util.spec_from_file_location("nf17a4", PARSER)
+    nf = importlib.util.module_from_spec(nf_spec)
+    nf_spec.loader.exec_module(nf)
+    root = html.parse(str(CORPUS / ticker / accession / "primary.html"),
+                      etree.HTMLParser(recover=True, no_network=True, huge_tree=True,
+                                       remove_comments=True)).getroot()
+    blocks, lookup, _prior = nf.make_blocks(
+        root, {"document_id": document_id, "ticker": ticker, "role": "ANNUAL"})
+    block = next(b for b in blocks
+                 if b["block_type"] == "TABLE" and b["source_order"] == order)
+    return _shadow().bind_table(nf, nf.grid_rows(nf.direct_rows(lookup[block["table_id"]])),
+                                document_id, block["table_id"])
+
+
+@pytest.mark.parametrize("document_id,ticker,accession,order", [
+    ("jpm_fy2025", "JPM", "SEC_19617_000162828026008131", 63193),
+    ("ko_fy2025", "KO", "SEC_21344_000162828026010047", 11388),
+])
+def test_adjacent_year_join_keeps_each_column_its_own_year(document_id, ticker,
+                                                           accession, order):
+    """The core correctness property of the join: no column eats a sibling's year."""
+    bound = _bind(document_id, ticker, accession, order)
+    joins = {c: b for c, b in bound["columns"].items()
+             if b.method is PeriodBindingMethod.ADJACENT_YEAR_JOIN}
+    assert joins, "no ADJACENT_YEAR_JOIN columns; the fixture has moved"
+
+    for column, binding in joins.items():
+        target_year = binding.normalized_period[:4]
+        cited = [cell.text for cell in binding.source_cells]
+        own_years = {y for text in cited for y in __import__("re").findall(r"(?:19|20)\d{2}",
+                                                                          text)}
+        assert target_year in own_years, (column, binding.normalized_period, cited)
+        for other in own_years:
+            assert other == target_year, (
+                f"column {column} bound {binding.normalized_period} but cites {other}: "
+                f"{cited}")
+
+    bound_years = {b.normalized_period[:4] for b in joins.values()}
+    assert bound_years == {"2024", "2025"}, bound_years
+
+
+def test_visa_row_39_is_not_a_direct_declaration():
+    """`… shares issued and outstanding as of September 30, 2025 and 2024` is a sentence.
+
+    It names two years, so it declares no single period.  Taking it would bind a date to a
+    row that never claimed one -- the over-reach a producer must not have.
+    """
+    bound = _bind("v_fy2025", "V", "SEC_1403161_000140316125000089", 9951)
+    assert 39 not in bound["rows"], (
+        f"row 39 was bound as {bound['rows'].get(39)}")
+    assert not any(b.method is PeriodBindingMethod.INLINE_PERIOD_DATA_ROW
+                   for b in bound["rows"].values())
+
+
+def test_pfizer_inline_rows_are_scoped_to_their_own_row_and_do_not_inherit():
+    bound = _bind("pfe_fy2024", "PFE", "SEC_78003_000007800325000054", 24395)
+    inline = {r: b for r, b in bound["rows"].items()
+              if b.method is PeriodBindingMethod.INLINE_PERIOD_DATA_ROW}
+    assert inline, "no INLINE_PERIOD_DATA_ROW rows; the fixture has moved"
+    for row, binding in inline.items():
+        assert binding.target_scope is PeriodTargetScope.ROW
+        for cell in binding.source_cells:
+            assert cell.row == row, f"row {row} cites row {cell.row}"

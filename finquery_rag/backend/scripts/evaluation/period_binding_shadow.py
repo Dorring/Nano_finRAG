@@ -237,6 +237,15 @@ def bind_table(nf, grid, doc_id: str, table_id: str) -> dict:
             numeric = sum(1 for c in row if c and _value_like(nf.ws(c["raw_text"])))
             if numeric < 2:
                 continue
+            # A row naming more than one year is not declaring one period.  Visa's
+            # balance sheet has `… shares issued and outstanding as of September 30,
+            # 2025 and 2024`, a disclosure sentence that contains a date; taking it would
+            # bind a second date to a row that never claimed one.  The single-year rule
+            # is objective, and it is what separates `Balance, December 31, 2022` from a
+            # sentence that happens to mention a date.
+            years = set(re.findall(r"(?<!\d)(?:19|20)\d{2}(?!\d)", text))
+            if len(years) != 1:
+                continue
             rows[ri] = PeriodBindingV2(
                 normalized_period=_iso(whole.group(0), whole.group(2)),
                 granularity=PeriodGranularity.DAY,
