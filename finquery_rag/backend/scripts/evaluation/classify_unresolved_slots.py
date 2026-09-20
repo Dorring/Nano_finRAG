@@ -16,8 +16,15 @@ resolver being conservative where it should perhaps not be.
     C  NON_PRIMARY_SOURCE_ONLY         the figure exists only in notes/MDA
     D  PERIOD_MISMATCH                 the metric exists at another period
     E  PARSER_EXTRACTION_MISS          the row is in the source, no fact came out
-    F  TRUE_SOURCE_ABSENCE             the filing does not state it
+    F  SOURCE_ABSENCE_UNVERIFIED       nothing found -- **unverified**, because a
+                                       filing states `Diluted earnings per share`
+                                       whether or not this pass recognised it
     G  SOURCE_AUTHORITY_UNRESOLVED     several candidates, nothing says which
+
+**Two populations, not one.** This pass and the resolver ask different questions --
+"is there a primary-statement candidate" against "do the company-level candidates
+agree" -- so their unresolved sets differ.  Both are reported, with the overlap, so
+that neither number is quoted as the coverage figure without the other beside it.
 
   python classify_unresolved_slots.py --out <dir>
 """
@@ -197,8 +204,10 @@ def classify(records, tables, entity, metric, period) -> dict:
                     "detail": "the metric appears in a parsed table with no fact",
                     "evidence": [{"table_head": table["text_head"],
                                   "statement_type": table["section_type"]}]}
-    return {"taxonomy": "F_TRUE_SOURCE_ABSENCE",
-            "detail": "no row, fact or table in the source carries this metric",
+    return {"taxonomy": "SOURCE_ABSENCE_UNVERIFIED",
+            "detail": "no row, fact or table in the source carries this metric; "
+                      "not checked exhaustively, so this is unverified absence "
+                      "rather than an established one",
             "evidence": []}
 
 
@@ -217,6 +226,7 @@ def main(argv: list[str] | None = None) -> int:
 
     rows = []
     tally = collections.Counter()
+    classified_slots: set[tuple[str, str]] = set()
     for case_id, (metric, entities) in sorted(CASES.items()):
         for entity in entities:
             period = PERIOD.get(entity, "FY2025")
@@ -227,13 +237,38 @@ def main(argv: list[str] | None = None) -> int:
             if result["taxonomy"] == "RESOLVED_ELSEWHERE":
                 continue
             tally[result["taxonomy"]] += 1
+            classified_slots.add((case_id, entity))
             rows.append({"case_id": case_id, "entity": entity, "metric": metric,
                          "period": period, **result})
+
+    # The resolver's own unresolved set, so the two denominators are named rather
+    # than conflated.  They answer different questions and their difference is
+    # reported instead of reconciled away.
+    resolver_unresolved: set[tuple[str, str]] = set()
+    resolver_path = Path(
+        "/disk/qh/nano-finrag/artifacts/evaluation/p1-6-a2b15-cross-v2/"
+        "cross-entity-v2-resolution.json"
+    )
+    if resolver_path.is_file():
+        artifact = json.loads(resolver_path.read_text(encoding="utf-8"))
+        for case in artifact.get("cases") or ():
+            for slot in case.get("slots") or ():
+                if slot.get("status") != "RESOLVED_COMPANY_LEVEL":
+                    resolver_unresolved.add((case["case_id"], slot["entity"]))
+
+    populations = {
+        "taxonomy_population": len(classified_slots),
+        "resolver_unresolved_population": len(resolver_unresolved),
+        "intersection": len(classified_slots & resolver_unresolved),
+        "taxonomy_only": sorted(f"{c}/{e}" for c, e in classified_slots - resolver_unresolved),
+        "resolver_only": sorted(f"{c}/{e}" for c, e in resolver_unresolved - classified_slots),
+    }
 
     args.out.mkdir(parents=True, exist_ok=True)
     (args.out / "unresolved-slot-taxonomy.json").write_text(
         json.dumps({"phase": "P1.6-A2B-17", "mutation": "none",
-                    "tally": dict(tally), "rows": rows},
+                    "tally": dict(tally), "populations": populations,
+                    "rows": rows},
                    ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         encoding="utf-8")
 
@@ -250,6 +285,15 @@ def main(argv: list[str] | None = None) -> int:
             print(f"    {row['case_id']:14} {row['entity'][:22]:22} "
                   f"{row['metric'][:26]:26}")
             print(f"        {row['detail']}")
+    print()
+    print("=== the two populations, kept apart ===")
+    for key in ("taxonomy_population", "resolver_unresolved_population",
+                "intersection"):
+        print(f"  {key:32} {populations[key]}")
+    print(f"  taxonomy only ({len(populations['taxonomy_only'])})  "
+          f"{populations['taxonomy_only'][:6]}")
+    print(f"  resolver only ({len(populations['resolver_only'])})  "
+          f"{populations['resolver_only'][:6]}")
     print()
     print(f"  written to {args.out / 'unresolved-slot-taxonomy.json'}")
     return 0
