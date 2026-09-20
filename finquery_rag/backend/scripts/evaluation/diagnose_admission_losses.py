@@ -3,37 +3,29 @@
 Diagnosis only, and it reads the W4-A delta artifact rather than the corpus, so it costs
 nothing to re-run after a fix.
 
-W4-A measured two deltas and they came out nothing alike:
+The first version of this classified a lost cell by whether an abbreviated month name
+appeared anywhere in its column header, and W4-A2 falsified it.  It predicted the
+abbreviated-month widening would recover 352 of the 708 oracle-PRIMARY losses; it
+recovered 234, and 118 of the cells it had blamed on abbreviations were still lost
+afterwards:
 
-    legacy -> V1   the rule change      +14,802 / -0        one kind wide, as contracted
-    V1     -> V2   the producer change  +0      / -18,104   all of it `NO_BINDING`
+    nvda ord=7899 col=27  'Retained / Earnings / ... / as of Jan 30 / ... / as of Jan 29'
 
-`+0` is the part that decides the phase.  The producer never binds a cell the legacy axis
-missed, so V2 is not a wider path with a different failure mode -- it is strictly narrower,
-and switching to it would lose facts the store holds today.  9,688 of those were admitted
-by the legacy rule; 708 of them are in **oracle-PRIMARY** tables.
+`Jan 30` is abbreviated, and that is incidental -- the cell is lost because there is no
+**year** in the column, exactly like the 332 it had filed under a different heading.  The
+buckets overlapped and the first match won, so one cause was reported as two and the count
+attached to the wrong one.
 
-This classifies each lost cell by what its column header actually says, which is what
-turns "the producer is narrower" into a list of named things to fix:
+So this now asks the structural question instead of the lexical one:
 
-    PRIMARY            352  an abbreviated month name -- `Jan 26, 2025`.  The binder's
-                            month pattern lists full names only, so NVIDIA's fiscal
-                            calendar matches nothing at all.
-                       332  `as of December 31` with the year in a sibling cell.  The
-                            adjacent-year join only fires on a *bare* year cell
-                            (`^2025$`); here the year travels with other text.
-                        22  `Year ended December 31` in every column, no year present --
-                            the same join, one step further out.
-                         2  an empty header.  Correctly unbound.
+    no month-day expression in the column header     nothing to bind
+    a month-day with no year in the column header    the year is not here to join to
+    both present, still unbound                      refused -- prose, a range, or a
+                                                     second year beside it
 
-    non-primary      2,907  a month-day *range* (`June 29, 2025 to August 2, 2025:`) or a
-                            table of contents.  Refusing these is the producer being
-                            right, and matches what `table_role` already says about them.
-
-So the primary losses are almost entirely two mechanical gaps, and the non-primary losses
-are mostly correct refusals.  The buckets are reported together rather than as one number
-because "18,104 lost" reads as a catastrophe and "684 primary cells, two named causes"
-does not.
+Reading, not assuming: `abbreviated month` is deliberately not a bucket any more, because
+after the widening both spellings take the same path and the distinction no longer
+explains anything.
 
   python diagnose_admission_losses.py --delta <path to emission-admission-shadow.json>
 """
@@ -51,37 +43,39 @@ _BACKEND_DIR = Path(__file__).resolve().parents[2]
 if str(_BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(_BACKEND_DIR))
 
-ABBREVIATED_MONTH = re.compile(
-    r"\b(Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)\.?\s+\d{1,2}\b")
-FULL_MONTH_DAY = re.compile(
-    r"\b(January|February|March|April|May|June|July|August|September|October|November|"
-    r"December)\.?\s+\d{1,2}\b")
-AS_OF_WITHOUT_YEAR = re.compile(
-    r"\bas of\s+\w+\.?\s+\d{1,2}\s*(?!,?\s*(?:19|20)\d{2})", re.I)
+_MONTH_WORD = (r"(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|"
+               r"Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|"
+               r"Dec(?:ember)?)")
+MONTH_DAY = re.compile(rf"\b{_MONTH_WORD}\.?\s+\d{{1,2}}(?:st|nd|rd|th)?", re.I)
+YEAR = re.compile(r"(?<!\d)(?:19|20)\d{2}(?!\d)")
 
-CAUSES = (
-    "abbreviated month name",
-    "`as of <month day>` with no year in the same cell",
-    "month-day present, still unbound (range, prose, or a year that travels)",
-    "no month-day expression in the column header",
-)
+NO_DATE = "no month-day expression in the column header"
+NO_YEAR = "a month-day with no year in this column's header"
+BOTH_PRESENT = "month-day and year both present, still unbound"
+
+CAUSES = (NO_DATE, NO_YEAR, BOTH_PRESENT)
 
 
 def cause_of(entry: dict) -> str:
+    """Which of the three structural situations this column's header is in.
+
+    Deliberately structural.  The lexical version this replaces asked whether a month name
+    was abbreviated, which is true of a cell whose actual problem is a missing year, and
+    the resulting count was wrong by a third.
+    """
     header = str(entry.get("column_header") or "")
-    if ABBREVIATED_MONTH.search(header):
-        return CAUSES[0]
-    if AS_OF_WITHOUT_YEAR.search(header):
-        return CAUSES[1]
-    if FULL_MONTH_DAY.search(header):
-        return CAUSES[2]
-    return CAUSES[3]
+    if not MONTH_DAY.search(header):
+        return NO_DATE
+    if not YEAR.search(header):
+        return NO_YEAR
+    return BOTH_PRESENT
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--delta", type=Path, required=True)
     parser.add_argument("--samples", type=int, default=2)
+    parser.add_argument("--width", type=int, default=60)
     args = parser.parse_args(argv)
 
     report = json.loads(args.delta.read_text(encoding="utf-8"))
@@ -107,13 +101,8 @@ def main(argv: list[str] | None = None) -> int:
             for entry in subset_of[:args.samples]:
                 print(f"              {entry['document_id']} ord={entry['source_order']} "
                       f"col={entry['column_index']} "
-                      f"{str(entry['column_header'])[:60]!r}")
+                      f"{str(entry['column_header'])[:args.width]!r}")
         print()
-        if role == "PRIMARY":
-            gap = sum(1 for e in subset if cause_of(e) in CAUSES[:2])
-            print(f"    -> {gap} of {len(subset)} primary cells are the two mechanical "
-                  f"gaps ({', '.join(CAUSES[:2])})")
-            print()
 
     return 0
 

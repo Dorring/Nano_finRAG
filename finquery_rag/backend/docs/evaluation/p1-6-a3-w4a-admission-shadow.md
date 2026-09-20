@@ -73,23 +73,26 @@ WEAK_NON_PRIMARY     1240
 PRIMARY               708
 ```
 
-## The 708 primary cells are two mechanical gaps
+## The 708 primary cells
 
 ```
-352   abbreviated month name            nvda ord=6754  'Year Ended / Jan 26, 2025'
-332   `as of <month day>`, year in a     tsla ord=9172  'Common Stock / Shares / as of December 31'
-      sibling cell
- 22   `Year ended December 31` in every  jpm ord=63944  'Year ended December 31 / ...'
-      column, year one step further out
+432   a month-day with no year      nvda ord=7899  'Retained / Earnings / ... / as of Jan 30'
+      in the column's header
+274   month-day and year both       nvda ord=6754  'Year Ended / Jan 26, 2025'
+      present, still unbound
   2   empty header -- correctly unbound
 ```
 
-684 of 708 have two named causes, and both are narrow:
+The first version of this section split the same 708 into "352 abbreviated month name /
+332 `as of` with no year / 22 / 2", and that split was wrong — see W4-A2 below, where the
+prediction built on it missed by a third. A cell whose problem is a missing year was being
+counted under "abbreviated month name" because an abbreviation happened to appear in its
+header text. The buckets overlapped and the first match won.
 
-- **the month pattern lists full names only**, so NVIDIA's `Jan 26, 2025` fiscal calendar
-  matches nothing at all;
-- **the adjacent-year join only fires on a bare year cell** (`^2025$`), and in a
-  stockholders' equity statement the year travels with other text.
+The structural reading is the one that survives: **the dominant primary gap is a month-day
+whose year is not in the column's header.** The adjacent-year join fires only on a bare
+year cell (`^2025$`), and in a stockholders' equity statement the year travels with other
+text or sits in a sibling column.
 
 The non-primary losses are mostly the producer being right — `June 29, 2025 to August 2,
 2025:` is a range and declares no single period; a table of contents is not a period
@@ -121,10 +124,11 @@ path being replaced.
 ## Verdict
 
 **W4-B is blocked, and it is blocked by the producer, not by the rule.** Switching today
-would remove 3,302 facts net (6,386 in, 9,688 out), 708 of them from oracle-PRIMARY
-statements, and the 14,802 the rule would add cannot be stored without a period.
+would remove facts the store holds — 8,369 after the abbreviated-month widening, 474 of
+them from oracle-PRIMARY statements, 472 of those one single gap — and the 14,802 the rule
+would add cannot be stored without a period at all.
 
-The rule half is finished and measured. The producer half needs its two gaps closed and a
+The rule half is finished and measured. The producer half needs the second gap closed and a
 re-measurement before anything switches, and its entry condition is now sayable:
 
 ```
@@ -145,27 +149,82 @@ Registered rather than papered over, in the same way as `REAL_BUCKET_POSITIVE_UN
 - The non-primary loss buckets are classified by header text, not adjudicated cell by cell.
   The primary buckets are the ones that decide the phase and those are.
 
-## W4-A2 — the first slice, predicted before it was run
+## W4-A2 — the first slice, and a prediction that was wrong
 
-The two-cause model above is worth exactly as much as its predictions, so they are written
-down **before** the abbreviated-month widening is applied and measured:
+The prediction was written down **before** the abbreviated-month widening ran:
 
 ```
-oracle-PRIMARY regression       708  ->  ~356      the 352 abbreviated-month cells
-                                                   recovered; the 22 `Year ended
-                                                   December 31` and the 2 empty headers
-                                                   are untouched by this change
-total regression              9,688  ->  ~7,467    recovered: 352 + 1,236 + 405 + 228
+oracle-PRIMARY regression       708  ->  ~356
+total regression              9,688  ->  ~7,467
 ```
 
-If the primary number does not land near 356, the cause classification was fitting prose to
-a number rather than explaining it, and the remaining gaps need re-diagnosing rather than
-fixing.
+What happened:
 
-The change is a pure widening of the month pattern — full names and abbreviations go
-through one path — plus one structural consequence: `_MONTH_DAY_YEAR`'s month is no longer
-a capture group, so both call sites read the year from group 1. That arity is pinned by a
-test, because indexing the wrong group would produce a period whose year is the day.
+```
+oracle-PRIMARY regression       708  ->   474     recovered 234, predicted 352
+total regression              9,688  -> 8,369     recovered 1,319, predicted 2,221
+```
+
+**The model over-predicted, and the reason it did is worth more than the fix.** The
+classifier bucketed a cell by whether an abbreviated month name appeared anywhere in its
+column header. That is a *lexical* test; the boundary that matters is *structural*. Of the
+352 cells it blamed on abbreviations, about 100 had no year in the column at all —
+`as of Jan 30` — so no widening of the month pattern could ever have reached them. A
+lexical bucket straddled a structural boundary and reported one cause as two.
+
+`abbreviated month` is no longer a bucket. After the widening both spellings take the same
+path, so the distinction explains nothing, and keeping it would have preserved the same
+error in a new shape. The structural question gives a clean answer:
+
+```
+PRIMARY                      before   after
+  no month-day expression         2       2
+  month-day, no year in column  432     432
+  both present, still unbound   274      40
+```
+
+**472 of the 474 remaining primary losses are one gap: the year is not in the cell that
+carries the month-day.** `as of Jan 30`, `as of December 31`. The abbreviated-month work is
+finished; what is left is the second gap and nothing else.
+
+### What the widening did and did not move
+
+```
+                          before    after
+unchanged_admitted        17,604   18,923    +1,319
+producer_loss             18,104   16,785    -1,319
+regression (stored)        9,688    8,369    -1,319
+rule_gain                 14,802   14,802         0
+producer_gain                  0        0         0
+unchanged_withheld        13,740   13,740         0
+```
+
+One number up by exactly what another is down by, and nothing else moved: **the widening is
+monotone.** It added bindings and removed none — a widening month pattern cannot unbind a
+column it used to bind, and this is the measurement that says so rather than the argument.
+
+`producer_gain` is still **0**. The producer still never binds a cell the legacy axis
+missed, so the entry condition for W4-B has not moved.
+
+## W4-A2 implementation notes
+
+A pure widening of the month pattern — full names and abbreviations through one path. Each
+alternative is the full name plus a trailing optional run, so `Mar` cannot match inside
+`Marketing`: the alternation is followed by `\s+\d` and `keting` is not that, pinned against
+`Marketing 5`, `Junction 7`, `Decembering 3`, `Mayo 2`, `Augment 9`.
+
+One structural consequence: `_MONTH_DAY_YEAR`'s month is no longer a capture group, so both
+call sites read the year from group 1. Indexing the wrong group would not crash — it would
+produce a period whose year is the day — so the arity is pinned by a test.
+
+Both producers also gained a guard the widening makes reachable in principle: a `RESOLVED`
+binding whose `normalized_period` is None is the incoherent state the contract forbids and
+would read downstream as "resolved, but to nothing". They fall through instead.
+
+The first assertion written for the NVDA case was wrong in the useful direction — it
+expected two fiscal years and the filing has three (`2025-01-26`, `2024-01-28`,
+`2023-01-29`). A hand-written expectation met a computed value and lost, rather than
+agreeing with it and pinning nothing.
 
 ## Behaviour-neutral, provably
 
