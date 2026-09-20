@@ -260,3 +260,78 @@ def test_nvda_abbreviated_headers_now_bind():
     for binding in days.values():
         assert binding.status is PeriodBindingStatus.RESOLVED
         assert binding.method is PeriodBindingMethod.DIRECT_HEADER
+
+
+# --- W4-A7: the period-header predicate, against the filings' own families ------------
+#
+# Both lists are copied from real cells, read in full during W4-A6.  They are the oracle
+# because they are the two sides of the distinction the old predicate could not make: the
+# positives are the 876 cells the twelve-character rule refused, the negatives are the 28
+# it correctly refused.  A rule that accepts the first list and refuses the second is the
+# whole requirement, and no rule that fails either half is good enough.
+
+#: Must be accepted: each is a source-grounded claim about when the column is reported.
+PERIOD_HEADERS = (
+    "Fair value at Jan. 1, 2025",
+    "For the Year Ended September 30, 2025",
+    "Change in unrealized gains/(losses) related to financial instruments held at "
+    "Dec. 31, 2025",
+    "Central case assumptions at December 31, 2025",
+    "Contractual rate in effect at December 31, 2025",
+    "As of or for the year ended December 31, 2025 (in millions, except ratios)",
+    "Fair value purchase price allocation as of May 1, 2023",
+    "December 31, 2025",
+    "(in millions) September 27, 2025",
+    "Year Ended June 30, 2025",
+    "Age (at December 31, 2025)",
+)
+
+#: Must be refused: each contains a date that is not the column's reporting period.
+NOT_PERIOD_HEADERS = (
+    "Chairman of the Board of Directors and Chief Executive Officer February 20, 2026",
+    "President and Chief Financial Officer February 20, 2026",
+    'Recovery of Erroneously Awarded Incentive-Based Compensation Policy - Firmwide, '
+    "effective October 10, 2025 . (b)",
+    '50% of the net issued shares received as a result of Performance Share Units '
+    '("PSUs") vesting on March 25, 2026',
+    "Indenture, dated as of October 28, 2021, between the Company and the Trustee",
+    "Class C common stock, and 9 shares issued and outstanding as of September 30, "
+    "2025 and 2024",
+    "Amounts Recognized as of Acquisition Date (as previously reported as of "
+    "December 31, 2023)",
+    "Date: October 31, 2025",
+    "Dated: February 27, 2025",
+)
+
+
+def _accepts(text: str) -> bool:
+    shadow = _shadow()
+    match = shadow._MONTH_DAY_YEAR.search(text)
+    assert match, f"the fixture names no date the pattern can see: {text!r}"
+    return shadow._is_period_header_cell(text, match)
+
+
+def test_every_period_header_in_the_filings_is_accepted():
+    """W4-A6's class A, cell for cell.  The twelve-character rule refused all of these."""
+    refused = [t for t in PERIOD_HEADERS if not _accepts(t)]
+    assert refused == [], f"period headers still refused: {refused}"
+
+
+def test_no_date_that_is_not_a_reporting_period_is_accepted():
+    """W4-A6's class B.  A predicate that accepts the first list by accepting everything
+    would pass that test and fail this one, which is the whole point of keeping them."""
+    accepted = [t for t in NOT_PERIOD_HEADERS if _accepts(t)]
+    assert accepted == [], f"not reporting periods, but accepted: {accepted}"
+
+
+def test_a_state_and_an_event_have_the_same_shape():
+    """The distinction the length rule could never make, stated as a test.
+
+    `... instruments held at Dec. 31, 2025` and `... PSUs vesting on March 25, 2026` are
+    both clause, preposition, date.  One names the point the column is measured at, the
+    other names when something happened, and a predicate that only counts punctuation
+    cannot tell them apart.  If someone later replaces the -ing rule with a length rule,
+    this fails first.
+    """
+    assert _accepts("financial instruments held at Dec. 31, 2025")
+    assert not _accepts("Performance Share Units vesting on March 25, 2026")

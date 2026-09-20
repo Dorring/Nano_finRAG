@@ -21,6 +21,13 @@ month names were spelled out in full, so `Jan 26, 2025` -- NVIDIA's whole fiscal
 -- matched nothing.  The second (`as of December 31` with the year in a sibling cell) is
 untouched here and is measured separately.
 
+W4-A7 replaces the period-header predicate.  It used to be "a date, and no more than twelve
+characters of anything else", which W4-A6 falsified: the limit refused 876 source-grounded
+cells, `For the Year Ended September 30, 2025` among them, and it had no semantic content
+to begin with.  It is replaced by what precedes and follows the date and what that means --
+see `_is_period_header_cell`.  The A and B families W4-A6 read out of the filings are the
+oracle, in `tests/test_period_binding_shadow.py`.
+
   python period_binding_shadow.py --out <dir>
 """
 
@@ -117,21 +124,93 @@ def _value_like(text: str) -> bool:
     return bool(_VALUE_LIKE.match(t))
 
 
-def _is_period_header_cell(text: str, match: re.Match) -> bool:
-    """Whether the date *is* the cell, rather than a sentence the cell contains.
+#: Constructions that introduce *when* a column is reported at.  Matched at the end of
+#: whatever precedes the date, so `For the Year Ended` and `... held at` both qualify.
+_PERIOD_LOCATOR = re.compile(
+    r"(?:"
+    r"\bas\s+of"
+    r"|\bat"
+    r"|\bon"
+    r"|\bended"
+    r"|\bending"
+    r"|\bthrough"
+    r"|\bfor\s+the\s+(?:year|quarter|period|month|week|three|six|nine|twelve)\b"
+    r"|\bfiscal\s+(?:year|quarter|period)\b"
+    r"|\bperiod\s+ended"
+    r"|\byear\s+to\s+date"
+    r")\s*$", re.I)
 
-    Visa's added header rows read `Class C common stock, and 9 shares issued and
-    outstanding as of September 30, 2025 and 2024`.  Taking that as a period header gives
-    the label columns a `2025-09-30` binding the source never declared -- the same
-    over-reach as row 39, one layer up.  A header cell is a period expression, optionally
-    with a units caption; anything with prose or a second year beside it is not.
+#: A present participle in front of the locator turns the date into the date of an *event*
+#: rather than the point the column is measured at:
+#:
+#:     financial instruments held    at  Dec. 31, 2025      a state at a time
+#:     PSUs                vesting   on  March 25, 2026     an event that happens
+#:
+#: Same lexical shape -- clause, preposition, date -- and opposite meanings.  That is why
+#: the twelve-character rule could not separate them and why no length rule ever will, and
+#: it is the one place in this predicate where the decision is about what the words mean
+#: rather than about how the cell is punctuated.
+_EVENT_BEFORE_LOCATOR = re.compile(r"[A-Za-z]+ing\s*$", re.I)
+
+
+def _is_period_header_cell(text: str, match: re.Match) -> bool:
+    """Whether the date *is* the cell's claim about when the column is reported.
+
+    Three things have to hold, and the length of what precedes the date is **not one of
+    them**.  A twelve-character limit on the remainder was the previous rule and it was
+    falsified by measurement: it refused 876 source-grounded cells (W4-A6), among them
+    `For the Year Ended September 30, 2025` -- nineteen characters, and as plain a period
+    header as a filing contains.  The limit had no semantic content; it was tuned to catch
+    prose and it caught period headers instead.
+
+      what follows the date   must be nothing but a units caption, or the cell is a
+                              sentence that mentions a date
+      what precedes it        must *introduce* a period -- `For the Year Ended`, `held at`,
+                              `as of`.  `... Chief Executive Officer February 20, 2026` and
+                              `... effective October 10, 2025` do not, and are refused.
+      and not an event        a present participle before the locator makes the date the
+                              date of a happening, not a reporting point
+
+    The Visa case this replaces is still refused, by the first rule rather than the length
+    one: `Class C common stock, and 9 shares issued and outstanding as of September 30,
+    2025 and 2024` carries a second year, so it declares no single period.  Taking it bound
+    a date to a column that never claimed one.
     """
-    rest = (text[:match.start()] + " " + text[match.end():]).strip()
-    rest = re.sub(r"\([^)]*\)", " ", rest)               # drop units captions
-    rest = re.sub(r"[\s,;:—–-]+", " ", rest).strip()
-    if re.search(r"(?<!\d)(?:19|20)\d{2}(?!\d)", rest):  # a second year -> not one period
+    # Captions are dropped from *both* sides.  Dropping them from the suffix alone would
+    # refuse `(in millions) September 27, 2025`, which the length rule accepted and which
+    # is plainly a period header -- a repair that unbinds a column is not a repair.
+    prefix = re.sub(r"\([^)]*\)", " ", text[:match.start()])
+    suffix = re.sub(r"[\s,;:—–-]+", " ",
+                    re.sub(r"\([^)]*\)", " ", text[match.end():])).strip()
+
+    if re.search(r"(?<!\d)(?:19|20)\d{2}(?!\d)", prefix + " " + suffix):
+        return False                     # a second year -> not one period
+    if len(suffix) > 12:
+        return False                     # a sentence continues past the date
+    # A parenthesis opened before the date and not yet closed puts the date inside an
+    # aside -- unless the aside is *only* a locator.  The two cases look alike and mean
+    # opposite things:
+    #
+    #     Age (at December 31, 2025)                                        a period
+    #     Amounts Recognized as of Acquisition Date (as previously          a qualification
+    #       reported as of December 31, 2023)
+    #
+    # so what is between the innermost open bracket and the date has to be a locator and
+    # nothing else.  W4-A6 filed the second family as ambiguous; the first was binding
+    # before the repair and must go on binding after it.
+    raw_prefix = text[:match.start()]
+    if raw_prefix.count("(") > raw_prefix.count(")"):
+        inner = raw_prefix[raw_prefix.rfind("(") + 1:].strip(" \t,;:—–-")
+        if inner and not _PERIOD_LOCATOR.fullmatch(inner):
+            return False
+
+    stripped = prefix.strip(" \t,;:—–-")
+    if not stripped:
+        return True                      # the cell *is* the date; nothing qualifies it
+    locator = _PERIOD_LOCATOR.search(stripped)
+    if not locator:
         return False
-    return len(rest) <= 12
+    return not _EVENT_BEFORE_LOCATOR.search(stripped[:locator.start()].rstrip())
 
 
 def extended_header_idx(nf, grid) -> tuple[list[int], set[int]]:
