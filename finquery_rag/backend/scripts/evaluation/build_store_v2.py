@@ -55,6 +55,42 @@ def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+#: The eight filings, with the accession each store document corresponds to.
+DOCUMENTS = {
+    "aapl_fy2025": ("AAPL", "SEC_320193_000032019325000079"),
+    "jpm_fy2025": ("JPM", "SEC_19617_000162828026008131"),
+    "ko_fy2025": ("KO", "SEC_21344_000162828026010047"),
+    "msft_fy2025": ("MSFT", "SEC_789019_000095017025100235"),
+    "nvda_fy2025": ("NVDA", "SEC_1045810_000104581025000023"),
+    "pfe_fy2024": ("PFE", "SEC_78003_000007800325000054"),
+    "tsla_fy2025": ("TSLA", "SEC_1318605_000162828026003952"),
+    "v_fy2025": ("V", "SEC_1403161_000140316125000089"),
+}
+
+CORPUS_MANIFEST = Path("/disk/qh/nano-finrag/data/raw_pdfs/corpus-manifest.json")
+
+
+def company_of(document_id: str) -> str:
+    """The entity name the benchmark uses for a filing, or a hard failure.
+
+    This used to fall back to the ticker, and the fallback is what produced a
+    store whose every record said `JPM` where the benchmark says `JPMorganChase`
+    -- silently, so that every slot query simply matched nothing.  An entity the
+    benchmark cannot recognise is not a store to build, it is a mistake to stop
+    on, so there is no fallback here.
+    """
+
+    if not CORPUS_MANIFEST.is_file():
+        raise SystemExit(f"corpus manifest not found: {CORPUS_MANIFEST}")
+    for entry in json.loads(CORPUS_MANIFEST.read_text(encoding="utf-8")).get("documents") or ():
+        if str(entry.get("document_id")) == document_id:
+            company = str(entry.get("company") or "").strip()
+            if company:
+                return company
+            raise SystemExit(f"manifest entry {document_id} carries no company name")
+    raise SystemExit(f"manifest has no entry for {document_id}")
+
+
 def parse_filing(ticker: str, accession: str, document_id: str) -> dict:
     """The parsed document, in the shape the builder consumes."""
 
@@ -70,19 +106,8 @@ def parse_filing(ticker: str, accession: str, document_id: str) -> dict:
         etree.HTMLParser(recover=True, no_network=True, huge_tree=True,
                          remove_comments=True),
     ).getroot()
-    # `company` matters: the builder falls back to the ticker when it is absent,
-    # so a record would say `JPM` where the benchmark says `JPMorganChase` and no
-    # slot query would match. Taken from the same manifest the rest of the
-    # benchmark's entity vocabulary comes from rather than invented here.
-    company = ticker
-    manifest = Path("/disk/qh/nano-finrag/data/raw_pdfs/corpus-manifest.json")
-    if manifest.is_file():
-        for entry in json.loads(manifest.read_text(encoding="utf-8")).get("documents") or ():
-            if str(entry.get("document_id")) == document_id:
-                company = str(entry.get("company") or ticker)
-                break
     doc = {"document_id": document_id, "ticker": ticker, "role": "ANNUAL",
-           "company": company}
+           "company": company_of(document_id)}
 
     blocks, lookup, prior = module.make_blocks(root, doc)
     contexts = module.ix_contexts(root)
@@ -165,67 +190,98 @@ def to_v2(records: list[dict], source: dict) -> list[dict]:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--ticker", default="JPM")
-    parser.add_argument("--accession", default="SEC_19617_000162828026008131")
-    parser.add_argument("--document-id", default="jpm_fy2025")
-    parser.add_argument("--entity", default="JPMorganChase")
     parser.add_argument("--out", type=Path,
-                        default=Path("/disk/qh/nano-finrag/artifacts/evaluation/p1-6-a2b9-store-v2"))
+                        default=Path("/disk/qh/nano-finrag/artifacts/evaluation/p1-6-a2b12-store-v2"))
+    parser.add_argument("--only", default=None,
+                        help="build a single document_id instead of all eight")
     parser.add_argument("--apply", action="store_true")
     args = parser.parse_args(argv)
 
     from src.runtime.trusted_v2_canonical_fact_store import build_canonical_fact_store
 
-    raw_path = CORPUS / "raw/SEC" / args.ticker / args.accession / "primary.html"
-    source = {
-        "document_id": args.document_id,
-        "accession": args.accession,
-        "primary_html_sha256": _sha256(raw_path),
-    }
+    wanted = {args.only: DOCUMENTS[args.only]} if args.only else DOCUMENTS
 
-    document = parse_filing(args.ticker, args.accession, args.document_id)
-    records, _summary = build_canonical_fact_store([document])
-    v2 = to_v2(records, source)
+    all_v2: list[dict] = []
+    per_document: dict[str, dict] = {}
+    misses: list[tuple] = []
+    deterministic = True
 
-    text = "\n".join(json.dumps(r, ensure_ascii=False, sort_keys=True) for r in v2) + "\n"
+    for document_id, (ticker, accession) in sorted(wanted.items()):
+        raw_path = CORPUS / "raw/SEC" / ticker / accession / "primary.html"
+        if not raw_path.is_file():
+            per_document[document_id] = {"status": "MISSING_SOURCE",
+                                         "path": str(raw_path)}
+            continue
+        source = {
+            "document_id": document_id,
+            "accession": accession,
+            "primary_html_sha256": _sha256(raw_path),
+        }
+        records, _summary = build_canonical_fact_store(
+            [parse_filing(ticker, accession, document_id)]
+        )
+        v2 = to_v2(records, source)
+
+        # Same inputs twice, to show the producer is deterministic.  Checked per
+        # filing rather than once, because a single non-deterministic document is
+        # the thing that would matter and an aggregate would hide it.
+        rebuilt = to_v2(build_canonical_fact_store(
+            [parse_filing(ticker, accession, document_id)]
+        )[0], source)
+        same = _render(v2) == _render(rebuilt)
+        deterministic = deterministic and same
+
+        structured = sum(1 for r in v2 if r["column_header"] and r["row_id"]
+                         and r["cell_id"])
+        anchored = sum(1 for r in v2 if r["source_anchors"])
+        per_document[document_id] = {
+            "status": "OK",
+            "entity": company_of(document_id),
+            "accession": accession,
+            "source_sha256": source["primary_html_sha256"],
+            "records": len(v2),
+            "structured_records": structured,
+            "anchored_records": anchored,
+            "deterministic": same,
+            "sha256": hashlib.sha256(_render(v2).encode("utf-8")).hexdigest(),
+        }
+        all_v2.extend(v2)
+
+        # The audited set is JPMorganChase's, so it is only checked where it is
+        # the filing under test -- and the check is reported as skipped rather
+        # than passed for the others.
+        if document_id == "jpm_fy2025":
+            for metric, value, column, year in AUDITED:
+                if not any(
+                    metric in str(r["row_label"])
+                    and str(r["value_raw"]) == value
+                    and column in str(r["column_header"])
+                    and str(r["period_end"])[:4] == year
+                    for r in v2
+                ):
+                    misses.append((metric, value, column, year))
+
+    text = _render(all_v2)
     digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
 
-    # Second build, same inputs, to show the producer is deterministic.
-    rebuild = to_v2(build_canonical_fact_store(
-        [parse_filing(args.ticker, args.accession, args.document_id)]
-    )[0], source)
-    rebuild_text = "\n".join(
-        json.dumps(r, ensure_ascii=False, sort_keys=True) for r in rebuild
-    ) + "\n"
-
-    structured = sum(1 for r in v2 if r["column_header"] and r["row_id"] and r["cell_id"])
-    anchored = sum(1 for r in v2 if r["source_anchors"])
-
-    print(f"=== Canonical Fact Store V2 — {args.document_id} ===")
-    print(f"  source        {args.accession}")
-    print(f"  source sha256 {source['primary_html_sha256'][:16]}")
-    print(f"  records       {len(v2)}")
-    print(f"  with column_header + row_id + cell_id   {structured} / {len(v2)}")
-    print(f"  with source anchors                     {anchored} / {len(v2)}")
-    print(f"  sha256        {digest[:16]}")
-    print(f"  reproducible  {text == rebuild_text}")
+    print("=== Canonical Fact Store V2 ===")
+    for document_id, block in sorted(per_document.items()):
+        if block["status"] != "OK":
+            print(f"  {document_id:14} {block['status']}")
+            continue
+        print(f"  {document_id:14} {block['entity']:22} "
+              f"records {block['records']:>6}  "
+              f"structured {block['structured_records']:>6}/{block['records']:<6} "
+              f"anchored {block['anchored_records']:>6}  "
+              f"deterministic {block['deterministic']}")
     print()
-
-    print("  audited facts rebuilt from the filing's own row:")
-    misses = []
+    print(f"  total records {len(all_v2)}")
+    print(f"  deterministic {deterministic}")
+    print(f"  sha256        {digest[:16]}")
+    print()
+    print("  audited facts (JPMorganChase's, the set read from that filing):")
     for metric, value, column, year in AUDITED:
-        hits = [
-            r for r in v2
-            # `row_label` is the row as the filing labels it; `metric` is the
-            # breadcrumb path, which for this filing is a different string.
-            if metric in str(r["row_label"])
-            and str(r["value_raw"]) == value
-            and column in str(r["column_header"])
-            and str(r["period_end"])[:4] == year
-        ]
-        mark = "ok " if hits else "MISS"
-        if not hits:
-            misses.append((metric, value, column, year))
+        mark = "MISS" if (metric, value, column, year) in misses else "ok "
         print(f"    {mark} {metric:12} {value:>9}  under {column:10} at {year}")
     print()
 
@@ -234,15 +290,12 @@ def main(argv: list[str] | None = None) -> int:
         (args.out / "store-v2.jsonl").write_text(text, encoding="utf-8")
         (args.out / "store-v2.manifest.json").write_text(
             json.dumps({
-                "phase": "P1.6-A2B-9",
-                "scope": "one filing; not a benchmark migration",
-                "source": source,
-                "records": len(v2),
-                "structured_records": structured,
-                "anchored_records": anchored,
+                "phase": "P1.6-A2B-12",
+                "scope": "eight filings; still not a benchmark migration",
+                "documents": per_document,
+                "total_records": len(all_v2),
+                "deterministic": deterministic,
                 "sha256": digest,
-                "deterministic": text == rebuild_text,
-                "audited_checks": len(AUDITED),
                 "audited_misses": misses,
                 "not_the_legacy_store": (
                     "record count is not compared to financial-facts.jsonl; that "
@@ -256,6 +309,12 @@ def main(argv: list[str] | None = None) -> int:
     else:
         print("  (dry run -- pass --apply to write)")
     return 0 if not misses else 1
+
+
+def _render(records: list[dict]) -> str:
+    return "\n".join(
+        json.dumps(r, ensure_ascii=False, sort_keys=True) for r in records
+    ) + "\n"
 
 
 if __name__ == "__main__":
