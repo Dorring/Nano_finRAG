@@ -52,7 +52,14 @@ def _run_one(case, question, resources, factory=None):
         query_as_resolved=True,
         conversation_metadata={},
         request_metadata={
-            "document_names": [question["document_id"]] if question.get("document_id") else [],
+            # NOT scoped to the case's document.  The published benchmark posts
+            # only {"question", "session_id"}, and in v2 mode
+            # `_resolve_query_document_names_for_user` returns [] for a None
+            # request -- so the shipped run searched the whole index.  Passing
+            # the case's own document here scopes retrieval to one filing, which
+            # is a different experiment and was the first confound between this
+            # harness and the baseline it is meant to reproduce.
+            "document_names": [],
             "n_results": 5,
             "conversation_history": None,
             "memory_profile": None,
