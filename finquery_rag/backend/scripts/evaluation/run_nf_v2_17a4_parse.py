@@ -805,18 +805,23 @@ def ix_facts(root, contexts):
 
 
 def make_blocks(root, doc):
-    order = {id(n): i for i, n in enumerate(root.iter())}
     tables = {
         id(t): t
         for t in root.xpath(".//table")
         if not hidden(t) and not any(lname(a) == "table" for a in t.iterancestors())
     }
+    # One pass, and `o` taken from it directly.  The previous version built
+    # `{id(n): i}` from one `root.iter()` and looked it up from a second, which
+    # cannot work: lxml creates element proxies on demand and frees them, so
+    # `id()` is reused and the lookup could return another element's index -- or
+    # the 0 default.  Two different tables then derived the same `table_id`,
+    # which is where the three duplicated ids and the downstream
+    # "duplicate canonical candidate key" came from.
     els = []
-    for n in root.iter():
+    for o, n in enumerate(root.iter()):
         if hidden(n):
             continue
         tag = lname(n)
-        o = order.get(id(n), 0)
         if tag == "table" and id(n) in tables:
             els.append((o, n, "TABLE"))
         elif tag in {"h1", "h2", "h3", "h4", "h5", "h6"} and text_of(n):
