@@ -79,6 +79,15 @@ directions are not symmetric.
 
 ## What this does to W4-B
 
+> **Overclaim corrected.** An earlier version of this section called the 6,405
+> "corrections" and said the store "is holding them wrongly". That does not follow from the
+> measurement and is not claimed here. `the column does not name this period` is **not**
+> `this period is wrong`: a legitimate period may come from a row, a row-group, or the
+> table's own context, none of which the column-scoped producer can see. What is measured
+> is that **V2's column-local producer does not recognise them** — nothing more. The equity
+> 474 are the exception, and only because they were proved wrong by an independent source
+> geometry, not by this lens.
+
 The deficit is not what it looked like in W4-A2.
 
 ```
@@ -86,21 +95,30 @@ would add       6,386   period sourced from the cell's own column       100%
 would remove    8,369   period the cell's own column names            <= 19.7%
 ```
 
-And the removals are not the same kind of thing as the additions:
+The 1,649 are the load-bearing number, and they are the *only* candidates that satisfy
 
-- **6,405 (76.5%)** carry a period their own column does not name — the equity defect in
-  shapes that do not need equity anchors to see, plus notes, exhibit indexes and tables of
-  contents. Withholding these withholds facts the store is holding wrongly.
-- **at most 1,649 (19.7%)** sit in a column that names exactly their period. That is the
-  only part that is genuine coverage, and it is an upper bound.
+```
+legacy period  ~=  the period the cell's own column explicitly names
+```
 
-Against a store of 26,977 the honest cost of switching is **at most 6% of the store**, while
-the addition is 6,386 facts that are period-correct by construction and whose periods the
+so they are the closest thing to a genuine V2 capability regression. They are audited
+separately in W4-A6. The other 6,405 are **not** called corrections: they are facts whose
+period this lens cannot confirm and cannot refute, which is a different state and one that
+must not be settled by deleting them.
+
+Against a store of 26,977, the arithmetic cost of switching is at most 6% of the store; the
+addition is 6,386 facts that are period-correct by construction and whose periods the
 legacy path cannot supply at all (all 14,802 rule-gain cells carry no period on the legacy
-axis -- W4-A, "why there is no rule-only escape").
+axis -- W4-A, "why there is no rule-only escape"). But the gate W4-B is decided on is not
+the arithmetic.
 
-The one thing that has not moved is the count the entry condition was written against:
-`producer_gain` is still **0**. The new producer has never yet bound a cell the legacy axis
-missed. So the switch remains strictly narrower on *coverage* -- it just turns out that a
-large majority of what it would drop is wrong, which is a different sentence from the one
-W4-A2 recorded and the one W4-B should be decided on.
+The one thing that has not moved is `producer_gain = 0`, and that is **not** a blocker in
+its own right. It says V2 found no cell the legacy had not touched; it does not say V2
+added no capability. V2 supplies a usable binding for cells the legacy had **no** usable
+period for, which is where the 6,386 come from. The number that matters is not
+`producer_gain` but:
+
+```
+newly admissible source-grounded facts   6386
+unexplained valid losses                 ?      <- W4-A6
+```
