@@ -1,0 +1,56 @@
+{
+  "phase": "P1.6-A2B-19A",
+  "note": "The oracle decides only what the filing itself declares: a statement title standing above a table that carries company-level facts, or a fact set that is entirely disaggregated. Everything else is left UNRESOLVED rather than guessed. This file is the other half of that contract: the tables the *current classifier* promotes while the oracle is silent, read by hand, with the source evidence that settles each one. It is checked in so that the adjudication can be reviewed and disagreed with, and the scorer folds it in only when passed explicitly.",
+  "population": "every table the current statement classifier labels INCOME_STATEMENT / BALANCE_SHEET / CASH_FLOW that the oracle could not decide",
+  "adjudications": [
+    {
+      "oracle_key": "msft_fy2025#11784",
+      "current": "CASH_FLOW",
+      "label": "NON_PRIMARY",
+      "reason": "NOTE_UNEARNED_REVENUE_SCHEDULE",
+      "evidence": "The table's own caption reads 'The following table outlines the expected future recognition of unearned revenue as of June 30, 2025', and its rows are quarterly periods ending September 30, 2025 through Thereafter. It is the remaining-performance-obligation schedule, not a cash flow statement."
+    },
+    {
+      "oracle_key": "msft_fy2025#11982",
+      "current": "CASH_FLOW",
+      "label": "NON_PRIMARY",
+      "reason": "DEBT_MATURITY_SCHEDULE",
+      "evidence": "Caption 'The following table summarizes the payments due by fiscal year for our outstanding contractual obligations', rows 'Long-term debt: (a) Principal payments / Interest payments / Construction commitments'. A contractual-obligations maturity schedule."
+    },
+    {
+      "oracle_key": "msft_fy2025#34702",
+      "current": "CASH_FLOW",
+      "label": "NON_PRIMARY",
+      "reason": "DERIVATIVES_HEDGING_NOTE",
+      "evidence": "Caption 'The following table presents our derivative instruments', rows split 'Designated as Hedging Instruments / Not Designated as Hedging Instruments' by contract type. Derivative assets and liabilities are balance-sheet line items; this table is the note that breaks them down."
+    },
+    {
+      "oracle_key": "msft_fy2025#36735",
+      "current": "CASH_FLOW",
+      "label": "NON_PRIMARY",
+      "reason": "FAIR_VALUE_NOTE",
+      "evidence": "Caption 'The following table presents the fair value of our derivatives instruments on a gross basis', columns 'Level 1 / Level 2 / Level 3 / Total' -- the fair-value hierarchy disclosure, not a statement."
+    },
+    {
+      "oracle_key": "msft_fy2025#50208",
+      "current": "CASH_FLOW",
+      "label": "NON_PRIMARY",
+      "reason": "SUPPLEMENTARY_RECONCILIATION",
+      "evidence": "Caption 'Supplemental cash flow information related to leases was as follows'. The words 'supplemental' and 'related to leases' both scope it: it supplements the cash flow statement, it does not replace or constitute it."
+    },
+    {
+      "oracle_key": "msft_fy2025#50757",
+      "current": "BALANCE_SHEET",
+      "label": "NON_PRIMARY",
+      "reason": "SUPPLEMENTARY_RECONCILIATION",
+      "evidence": "Caption 'Supplemental balance sheet information related to leases was as follows'. Same shape as the cash-flow supplement, against the balance sheet."
+    },
+    {
+      "oracle_key": "msft_fy2025#51968",
+      "current": "BALANCE_SHEET",
+      "label": "NON_PRIMARY",
+      "reason": "LEASE_NOTE",
+      "evidence": "Caption 'The following table outlines maturities of our lease liabilities as of June 30, 2025', rows 2026 through Thereafter for operating and finance leases separately. A maturity schedule."
+    }
+  ]
+}
