@@ -88,6 +88,10 @@ def main(argv: list[str] | None = None) -> int:
                 "status": entry.get("binding_status"),
                 "granularity": entry.get("binding_granularity"),
                 "legacy_kind": entry.get("legacy_kind"),
+                # The A3 kind, which is the one the admission decision actually routes on.
+                # `legacy_kind` is kept beside it so an addition can be read against the
+                # kind the old rule would have seen rather than only the new one.
+                "new_kind": entry.get("new_kind"),
                 "table_role": entry.get("table_role"),
             }
 
@@ -125,24 +129,93 @@ def main(argv: list[str] | None = None) -> int:
 
     print("=== added, by provenance ===")
     by = collections.defaultdict(collections.Counter)
+    identity = collections.Counter()
     unclassified_added = 0
     for cell_id in added:
         prov = added_provenance.get(cell_id)
         if prov is None:
             unclassified_added += 1
             continue
-        for field in ("method", "status", "granularity", "legacy_kind", "table_role"):
+        for field in ("method", "status", "granularity", "legacy_kind", "new_kind",
+                      "table_role"):
             by[field][str(prov.get(field))] += 1
-    for field in ("method", "status", "granularity", "legacy_kind", "table_role"):
+        # The joint pair, because the two marginal distributions cannot be added back
+        # together: `3368 PARTIAL` and `3368 YEAR` are consistent with every PARTIAL
+        # being a YEAR and with none of them being one, and the claim under test is
+        # about the pair.
+        identity[f"{prov.get('status')} / {prov.get('granularity')}"] += 1
+    for field in ("method", "status", "granularity", "legacy_kind", "new_kind",
+                  "table_role"):
         print(f"    by {field}:")
         for value, count in by[field].most_common(6):
             print(f"        {count:>6}  {value}")
+    print("    by (status / granularity):")
+    for value, count in identity.most_common(8):
+        print(f"        {count:>6}  {value}")
     print(f"    UNCLASSIFIED_ADDED  {unclassified_added}")
     if unclassified_added:
         report["failures"].append(f"UNCLASSIFIED_ADDED = {unclassified_added}")
     report["added_by"] = {f: dict(c) for f, c in by.items()}
+    report["added_by_identity"] = dict(identity)
     report["unclassified_added"] = unclassified_added
     report["unclassified_removed"] = unexplained_removed
+    print()
+
+    # --- unchanged has to mean unchanged, not merely "still there" --------------------
+    #
+    # A cell present in both stores under the same key proves nothing about its contents.
+    # The B2 bridge added three fields to the record; if it also moved a fourth -- and
+    # `period_end` is the one that would matter, because that is what the resolver reads
+    # for its period match -- the delta accounting above would report the cell as
+    # UNCHANGED and never look inside it.  So the intersection is compared field by field.
+    print("=== unchanged, compared field by field ===")
+    drifted = collections.Counter()
+    drift_examples: dict[str, list[str]] = collections.defaultdict(list)
+    for cell_id in unchanged:
+        before, after = old[cell_id], new[cell_id]
+        for field in sorted(set(before) | set(after)):
+            if before.get(field) == after.get(field):
+                continue
+            drifted[field] += 1
+            if len(drift_examples[field]) < 3:
+                drift_examples[field].append(
+                    f"{cell_id}: {before.get(field)!r} -> {after.get(field)!r}")
+    if not drifted:
+        print("    every field identical on all "
+              f"{len(unchanged)} cells that survived the rebuild")
+    for field, count in drifted.most_common():
+        print(f"    {count:>6}  {field} changed")
+        for example in drift_examples[field]:
+            print(f"            {example}")
+    report["unchanged_field_drift"] = {f: {"count": c, "examples": drift_examples[f]}
+                                       for f, c in drifted.items()}
+    # The three fields B2 introduced are the expected difference and are not drift.
+    b2_fields = {"normalized_period", "period_binding_status", "period_granularity"}
+    # `period` is the fourth, and it is not free: B2 makes the emitted fact take its
+    # period from the binding rather than from the legacy axis, so `period` can move on a
+    # cell whose identity did not.  The invariant that makes that safe is that `period`
+    # is a *rendering* while `period_end` is the cell's own physical period and the field
+    # the resolver matches on -- so a rendering may change only where the thing rendered
+    # did not.  A `period_end` that moves on an otherwise-unchanged cell is a silent
+    # mutation of the resolver's input, and blocks.
+    period_moved = {c for c in unchanged
+                    if old[c].get("period") != new[c].get("period")}
+    period_end_moved = {c for c in period_moved
+                        if old[c].get("period_end") != new[c].get("period_end")}
+    if period_moved:
+        print(f"    {len(period_moved):>6}  period changed (a rendering; see "
+              f"audit_period_field_change.py for the adjudication)")
+    if period_end_moved:
+        print(f"    {len(period_end_moved):>6}  period_end changed ON THOSE SAME CELLS")
+    report["period_rendering_moved"] = len(period_moved)
+    report["period_end_moved_on_those_cells"] = len(period_end_moved)
+    unexpected = {f: c for f, c in drifted.items()
+                  if f not in b2_fields | {"period"}}
+    if unexpected:
+        report["failures"].append(f"UNCHANGED_FIELD_DRIFT = {unexpected}")
+    if period_end_moved:
+        report["failures"].append(
+            f"PERIOD_END_MOVED_ON_UNCHANGED_CELLS = {len(period_end_moved)}")
     print()
 
     print("=== the three classes, kept apart ===")
