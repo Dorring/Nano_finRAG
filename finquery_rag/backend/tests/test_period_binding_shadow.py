@@ -254,7 +254,8 @@ def test_nvda_abbreviated_headers_now_bind():
     days = {c: b for c, b in bound["columns"].items()
             if b.granularity is PeriodGranularity.DAY}
     assert days, "no DAY-granularity column; the fixture has moved"
-    assert {b.normalized_period[:7] for b in days.values()} == {"2025-01", "2024-01"}, (
+    assert {b.normalized_period for b in days.values()} == {
+        "2025-01-26", "2024-01-28", "2023-01-29"}, (
         {b.normalized_period for b in days.values()})
     for binding in days.values():
         assert binding.status is PeriodBindingStatus.RESOLVED
