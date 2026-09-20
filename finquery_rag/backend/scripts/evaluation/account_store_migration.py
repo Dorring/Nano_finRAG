@@ -39,6 +39,20 @@ VERDICT_NAMES = {"B": "LEGACY_FALSE_POSITIVE",
                  "D": "SOURCE_AMBIGUOUS",
                  "A": "V2_PRODUCER_GAP"}
 
+#: Every field the migration phases added to the V2 record, and therefore the only ones
+#: allowed to differ on a cell that survived into the new store.  B2 added the period
+#: identity, W5 the provenance behind it.  The list is *declared* rather than derived: a
+#: new field reaching the store without being named here is a schema change nobody
+#: announced, which is exactly what this check exists to catch.
+DECLARED_ADDITIONS = frozenset({
+    # W4-B2 -- what the period is
+    "normalized_period", "period_binding_status", "period_granularity",
+    # W5 -- why it is believed
+    "period_binding_method", "period_target_scope", "period_source_cells",
+    "period_conflict_candidates", "temporal_kind", "legacy_temporal_kind",
+    "temporal_kind_method", "temporal_kind_source_cells", "temporal_kind_matched_text",
+})
+
 #: The manifest's headings, spelled the same way so the two cannot drift apart.
 REMOVAL_CLASSES = ("LEGACY_FALSE_POSITIVE", "SOURCE_AMBIGUOUS",
                    "VALID_BUT_OUT_OF_SCOPE_GEOMETRY")
@@ -189,15 +203,14 @@ def main(argv: list[str] | None = None) -> int:
             print(f"            {example}")
     report["unchanged_field_drift"] = {f: {"count": c, "examples": drift_examples[f]}
                                        for f, c in drifted.items()}
-    # The three fields B2 introduced are the expected difference and are not drift.
-    b2_fields = {"normalized_period", "period_binding_status", "period_granularity"}
-    # `period` is the fourth, and it is not free: B2 makes the emitted fact take its
-    # period from the binding rather than from the legacy axis, so `period` can move on a
-    # cell whose identity did not.  The invariant that makes that safe is that `period`
-    # is a *rendering* while `period_end` is the cell's own physical period and the field
-    # the resolver matches on -- so a rendering may change only where the thing rendered
-    # did not.  A `period_end` that moves on an otherwise-unchanged cell is a silent
-    # mutation of the resolver's input, and blocks.
+    # The declared additions are expected and are not drift.  `period` is the one field
+    # outside that set which is still allowed to move, and it is not free: B2 makes the
+    # emitted fact take its period from the binding rather than from the legacy axis, so
+    # `period` can move on a cell whose identity did not.  The invariant that makes that
+    # safe is that `period` is a *rendering* while `period_end` is the cell's own physical
+    # period and the field the resolver matches on -- so a rendering may change only where
+    # the thing rendered did not.  A `period_end` that moves on an otherwise-unchanged cell
+    # is a silent mutation of the resolver's input, and blocks.
     period_moved = {c for c in unchanged
                     if old[c].get("period") != new[c].get("period")}
     period_end_moved = {c for c in period_moved
@@ -210,7 +223,7 @@ def main(argv: list[str] | None = None) -> int:
     report["period_rendering_moved"] = len(period_moved)
     report["period_end_moved_on_those_cells"] = len(period_end_moved)
     unexpected = {f: c for f, c in drifted.items()
-                  if f not in b2_fields | {"period"}}
+                  if f not in DECLARED_ADDITIONS | {"period"}}
     if unexpected:
         report["failures"].append(f"UNCHANGED_FIELD_DRIFT = {unexpected}")
     if period_end_moved:

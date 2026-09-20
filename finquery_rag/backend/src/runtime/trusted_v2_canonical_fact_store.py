@@ -274,6 +274,28 @@ def build_canonical_fact_store(
             "normalized_period": _text(payload.get("normalized_period")) or None,
             "period_binding_status": _text(payload.get("period_binding_status")) or None,
             "period_granularity": _text(payload.get("period_granularity")) or None,
+            # W5: why the identity above is believed, carried through unchanged from the
+            # binding the admission decision was made on.  `source_cells` keeps document,
+            # table, row and column per cell, so a reader goes back to the cell rather than
+            # to a string that resembles one.  Not re-derived here -- re-deriving would be
+            # a second opinion, and the point is to persist the first one faithfully.
+            "period_binding_method": _text(payload.get("period_binding_method")) or None,
+            "period_target_scope": _text(payload.get("period_target_scope")) or None,
+            "period_source_cells": list(payload.get("period_source_cells") or ()),
+            "period_conflict_candidates": list(
+                payload.get("period_conflict_candidates") or ()),
+            "temporal_kind_method": _text(payload.get("temporal_kind_method")) or None,
+            "temporal_kind_source_cells": list(
+                payload.get("temporal_kind_source_cells") or ()),
+            "temporal_kind_matched_text": _text(
+                payload.get("temporal_kind_matched_text")) or None,
+            # The store carried no temporal kind at all before W5, so the bare name is
+            # free here and goes to the A3 kind -- the one whose method and source cells
+            # sit beside it.  The legacy axis kind is kept as `legacy_temporal_kind`
+            # rather than dropped, because the two can disagree and that disagreement is
+            # the thing worth being able to see.
+            "temporal_kind": _text(payload.get("binding_temporal_kind")) or None,
+            "legacy_temporal_kind": _text(payload.get("temporal_kind")) or None,
             "normalized_period": source_period or period,
             "period_start": _text(payload.get("period_start")) or None,
             "period_end": _text(payload.get("period_end")) or None,

@@ -398,15 +398,23 @@ def bind_table(nf, grid, doc_id: str, table_id: str) -> dict:
             resolved = _iso(whole.group(0), whole.group(1))
             if resolved is None:
                 continue
+            row_cell = SourceCell(doc_id, table_id, ri, ci, text)
             rows[ri] = PeriodBindingV2(
                 normalized_period=resolved,
                 granularity=PeriodGranularity.DAY,
                 status=PeriodBindingStatus.RESOLVED,
                 method=PeriodBindingMethod.INLINE_PERIOD_DATA_ROW,
                 target_scope=PeriodTargetScope.ROW,
-                source_cells=(SourceCell(doc_id, table_id, ri, ci, text),),
+                source_cells=(row_cell,),
+                # W5: the same cell the binding names.  The row states its own period, so
+                # that cell is the evidence for the *kind* as much as for the period, and
+                # omitting it here made `point` assertable but not traceable -- 1,375 facts
+                # carried a kind with nothing saying which cell it came from.  Provenance
+                # only: nothing consults `temporal.source_cells` to decide anything, so
+                # this changes what the record can prove and not what it admits.
                 temporal=TemporalKindEvidence(kind=TemporalKind.POINT,
-                                              method=TemporalKindMethod.PERIOD_BINDING),
+                                              method=TemporalKindMethod.PERIOD_BINDING,
+                                              source_cells=(row_cell,)),
             )
             break
 

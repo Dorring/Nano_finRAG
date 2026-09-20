@@ -228,6 +228,22 @@ def to_v2(records: list[dict], source: dict, roles: dict[str, dict]) -> list[dic
             "normalized_period": record.get("normalized_period"),
             "period_binding_status": record.get("period_binding_status"),
             "period_granularity": record.get("period_granularity"),
+            # W5: and why that identity is believed.  Named in the schema for the same
+            # reason B2's three are: a field that is absent here is absent on purpose and
+            # visible as such, rather than missing because a later stage dropped it.
+            "period_binding_method": record.get("period_binding_method"),
+            "period_target_scope": record.get("period_target_scope"),
+            "period_source_cells": record.get("period_source_cells") or [],
+            "period_conflict_candidates": record.get("period_conflict_candidates") or [],
+            "temporal_kind_method": record.get("temporal_kind_method"),
+            "temporal_kind_source_cells": record.get("temporal_kind_source_cells") or [],
+            "temporal_kind_matched_text": record.get("temporal_kind_matched_text"),
+            # The store's `temporal_kind` is the A3 kind; the builder calls it
+            # `binding_temporal_kind` on the fact because `AtomicFact.temporal_kind` is
+            # the legacy axis kind and `semantic_equivalence` groups on it. Mapped here,
+            # once, rather than renaming either side.
+            "temporal_kind": record.get("temporal_kind"),
+            "legacy_temporal_kind": record.get("legacy_temporal_kind"),
             "value": record.get("value"),
             "value_raw": record.get("raw_value"),
             "unit": record.get("unit"),

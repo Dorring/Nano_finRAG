@@ -37,6 +37,7 @@ from src.pdf_retrieval_v4.semantic_graph_models import (
 from src.pdf_retrieval_v4.table_html_parser import norm_text
 from src.pdf_retrieval_v4.period_binding import (
     AdmissionRequest,
+    PeriodBindingV2,
     binding_from_payload,
     decide_emission_admission,
     temporal_kind_of,
@@ -45,6 +46,54 @@ from src.pdf_retrieval_v4.period_binding import (
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
+
+def _provenance_of(binding: Any) -> dict[str, Any]:
+    """The *why* behind an admitted fact's period identity, as flat record fields.
+
+    **A3-W5.**  W4-B2 persisted WHAT the period is -- `normalized_period`, `status`,
+    `granularity`.  This persists WHY it is believed: which method produced it, what it
+    applies to, and the actual cells it was read from.
+
+    The difference is not documentation.  `normalized_period = '2025'` alone cannot be
+    audited: it does not say whether the source wrote a year, or whether a default filled
+    a day in and something downstream trimmed it.  `method` and `source_cells` settle that,
+    and `source_cells` carries document, table, row and column so a reader can go back to
+    the cell rather than to a string that merely resembles it.
+
+    Behaviour-neutral by construction.  Admission already withheld any binding without
+    source cells (`INCOMPLETE_PROVENANCE`), so this records a decision that has already
+    been made rather than making one -- the store's contents are identical with and
+    without these fields.
+
+    A `Conflict` cannot reach here: it is withheld before the fact is built.  The branch is
+    written rather than assumed so that a `CONFLICT` arriving here would be visible as an
+    empty provenance rather than as a silently wrong one.
+    """
+    if not isinstance(binding, PeriodBindingV2):
+        return {}
+    temporal = binding.temporal
+    return {
+        "period_binding_method": binding.method.value if binding.method else None,
+        "period_target_scope": binding.target_scope.value if binding.target_scope else None,
+        "period_source_cells": tuple(c.to_dict() for c in binding.source_cells),
+        # The candidates are kept rather than flattened to nothing, so a disagreement stays
+        # legible as a disagreement.  Empty on every stored fact today, by the withholding
+        # above -- a conflict is withheld before this point, so its candidates live on the
+        # admission decision rather than in the store.
+        "period_conflict_candidates": tuple(c.to_dict()
+                                            for c in binding.conflict_candidates),
+        "temporal_kind_method": temporal.method.value if temporal else None,
+        "temporal_kind_source_cells": (tuple(c.to_dict() for c in temporal.source_cells)
+                                       if temporal else ()),
+        # The A3 kind, which is the one whose method and source cells are recorded here.
+        # Named `binding_` because `AtomicFact.temporal_kind` is a *different* value -- the
+        # legacy axis kind -- and `semantic_equivalence` groups canonical facts on it, so it
+        # cannot be renamed to match. The store maps this onto its own `temporal_kind` and
+        # keeps the axis kind beside it as `legacy_temporal_kind`.
+        "binding_temporal_kind": temporal.kind.value if temporal else None,
+        "temporal_kind_matched_text": temporal.matched_text if temporal else None,
+    }
 
 
 def _get_numeric_value(cell: dict[str, Any]) -> tuple[str, str | None]:
@@ -174,6 +223,10 @@ def emit_atomic_facts(
                                else axis.normalized_period),
             period_binding_status=(binding.status.value if binding else None),
             period_granularity=(binding.granularity.value if binding else None),
+            # W5: and *why* that identity is believed.  Expanded rather than passed as a
+            # nested object so an unrecognised key is a TypeError at construction rather
+            # than a field that quietly never arrives.
+            **_provenance_of(binding),
             period_start=axis.period_start,
             period_end=axis.period_end,
             value_raw=raw_val,
