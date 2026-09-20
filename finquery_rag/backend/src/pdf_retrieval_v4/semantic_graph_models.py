@@ -367,6 +367,16 @@ class AtomicFact:
     #: The inline-XBRL facts stated in this cell, as the parse recorded them.
     ixbrl_anchors: tuple[dict[str, Any], ...] = ()
 
+    #: A3-W4-B2: the period identity the admission decision admitted on.
+    #:
+    #: Minimal on purpose.  `status` and `granularity` say what the source *stated*, so a
+    #: `YEAR(2025)` survives persistence as a year and is never rendered into a date it
+    #: never claimed -- which is the whole reason this is a separate bridge and not a
+    #: convenience on `period_end`.  The full provenance -- method, source cells, target
+    #: scope -- is W5: this layer saves *what* the period is, W5 saves *why* it is believed.
+    period_binding_status: str | None = None
+    period_granularity: str | None = None
+
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
 

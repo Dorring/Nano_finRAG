@@ -151,6 +151,14 @@ def emit_atomic_facts(
 
         equiv_group = equivalence_map.get(row_id)
 
+        # W4-B2: the fact's period identity is the binding's, not the legacy axis's.
+        #
+        # The gains have no legacy period at all -- that absence is why the old rule
+        # dropped them -- so reading the identity off `axis` would persist `None` for
+        # exactly the facts the switch exists to add, and the store would veto them a layer
+        # further down.
+        binding = admission.binding
+
         fact = AtomicFact(
             semantic_fact_id=build_atomic_fact_id(
                 document_id, table_fragment_id, row_id, cell_id
@@ -162,7 +170,10 @@ def emit_atomic_facts(
             metric_path=mp.metric_path,
             leaf_metric=mp.leaf_metric,
             temporal_kind=axis.temporal_kind,
-            normalized_period=axis.normalized_period,
+            normalized_period=(binding.normalized_period if binding
+                               else axis.normalized_period),
+            period_binding_status=(binding.status.value if binding else None),
+            period_granularity=(binding.granularity.value if binding else None),
             period_start=axis.period_start,
             period_end=axis.period_end,
             value_raw=raw_val,

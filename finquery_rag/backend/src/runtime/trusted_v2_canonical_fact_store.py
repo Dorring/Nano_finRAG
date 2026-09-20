@@ -39,9 +39,42 @@ def _stable_unique(values: Iterable[Any]) -> list[str]:
 
 
 def _canonical_period(
-    *, normalized_period: Any, period_end: Any, period_semantics: Any
+    *, normalized_period: Any, period_end: Any, period_semantics: Any,
+    binding_status: Any = None, binding_granularity: Any = None,
 ) -> str | None:
-    """Render an FY label only for an explicitly annual source cell."""
+    """Render the period identity a fact may be stored under.
+
+    **W4-B2.**  When the fact carries an A3 binding status, that decides.  The legacy path
+    took `normalized_period or period_end` and skipped anything with neither -- which is
+    every fact the new admission decision adds, because those are exactly the cells the
+    legacy axis had no period for.  The gate was not wrong to exist; it was reading a
+    source that the authority had already been moved off.
+
+    `PARTIAL` is the case this exists for.  `YEAR(2025)` is a usable identity: it is stored
+    as the year it is, at YEAR granularity, and is **not** expanded into `2025-12-31`.  A
+    year does not pin a day, and rendering one here would undo the work that made `PARTIAL`
+    a status of its own rather than a flavour of failure.
+
+    Admission and identity stay two judgements.  A fact can be admitted and still have no
+    canonical period -- `CONFLICT` and `UNRESOLVED` name none -- and nothing here promotes
+    one because the admission said yes.
+    """
+    status = _text(binding_status).upper()
+    if status:
+        if status not in ("RESOLVED", "PARTIAL"):
+            return None
+        if _text(binding_granularity).upper() == "UNKNOWN":
+            return None
+        source = _text(normalized_period)
+        if not source:
+            return None
+        if status == "PARTIAL":
+            return source
+        if _text(period_semantics).upper() == "ANNUAL":
+            match = _YEAR_RE.search(source)
+            if match:
+                return f"FY{match.group(1)}"
+        return source
 
     source = _text(normalized_period) or _text(period_end)
     if not source:
@@ -172,6 +205,8 @@ def build_canonical_fact_store(
             normalized_period=payload.get("normalized_period"),
             period_end=payload.get("period_end"),
             period_semantics=period_semantics,
+            binding_status=payload.get("period_binding_status"),
+            binding_granularity=payload.get("period_granularity"),
         )
         source_period = _text(payload.get("normalized_period")) or _text(payload.get("period_end"))
         value = _text(payload.get("value_normalized"))
@@ -233,6 +268,12 @@ def build_canonical_fact_store(
             "metric": metric,
             "normalized_metric": metric,
             "period": period,
+            # W4-B2: the identity, carried on the record so a consumer can tell a year from
+            # a date without re-deriving it -- and so `2025` is never confused with a
+            # fabricated `2025-12-31`.
+            "normalized_period": _text(payload.get("normalized_period")) or None,
+            "period_binding_status": _text(payload.get("period_binding_status")) or None,
+            "period_granularity": _text(payload.get("period_granularity")) or None,
             "normalized_period": source_period or period,
             "period_start": _text(payload.get("period_start")) or None,
             "period_end": _text(payload.get("period_end")) or None,

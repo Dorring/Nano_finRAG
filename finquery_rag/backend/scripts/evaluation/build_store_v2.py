@@ -222,6 +222,12 @@ def to_v2(records: list[dict], source: dict, roles: dict[str, dict]) -> list[dic
             "period": record.get("period"),
             "period_start": record.get("period_start"),
             "period_end": record.get("period_end"),
+            # W4-B2: the minimal period identity.  Named here rather than passed through
+            # because V2's whole point is that the structural fields are *named in the
+            # schema* -- a field that is absent is absent on purpose and visible as such.
+            "normalized_period": record.get("normalized_period"),
+            "period_binding_status": record.get("period_binding_status"),
+            "period_granularity": record.get("period_granularity"),
             "value": record.get("value"),
             "value_raw": record.get("raw_value"),
             "unit": record.get("unit"),
