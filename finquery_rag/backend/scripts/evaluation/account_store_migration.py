@@ -31,6 +31,14 @@ _BACKEND_DIR = Path(__file__).resolve().parents[2]
 if str(_BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(_BACKEND_DIR))
 
+#: The audit records a verdict letter; the manifest and every later summary use the name.
+#: Mapping here rather than renaming in one place keeps a single spelling of each class
+#: across the two artifacts, which is the whole point of keeping them apart.
+VERDICT_NAMES = {"B": "LEGACY_FALSE_POSITIVE",
+                 "C": "VALID_BUT_OUT_OF_SCOPE_GEOMETRY",
+                 "D": "SOURCE_AMBIGUOUS",
+                 "A": "V2_PRODUCER_GAP"}
+
 #: The manifest's headings, spelled the same way so the two cannot drift apart.
 REMOVAL_CLASSES = ("LEGACY_FALSE_POSITIVE", "SOURCE_AMBIGUOUS",
                    "VALID_BUT_OUT_OF_SCOPE_GEOMETRY")
@@ -108,7 +116,8 @@ def main(argv: list[str] | None = None) -> int:
         if key.startswith("removed"):
             print(f"    {key:<52} {tally[key]}")
     report["removed_by_class"] = {
-        k.split(": ", 1)[1]: v for k, v in tally.items() if k.startswith("removed")}
+        VERDICT_NAMES.get(k.split(": ", 1)[1], k.split(": ", 1)[1]): v
+        for k, v in tally.items() if k.startswith("removed")}
     unexplained_removed = tally.get("removed: UNCLASSIFIED_REMOVED", 0)
     if unexplained_removed:
         report["failures"].append(f"UNCLASSIFIED_REMOVED = {unexplained_removed}")

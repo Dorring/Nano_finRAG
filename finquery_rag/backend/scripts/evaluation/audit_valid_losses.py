@@ -178,31 +178,97 @@ ADJUDICATIONS = (
     # `Erroneou sly` with the space is how the filing's own HTML renders it; matching the
     # full word missed the family and filed it as unadjudicated.
     ("Recovery of Erroneou", "B", "a policy description"),
+
+    # --- families that only appear once the audit covers the whole loss set -----------
+    #
+    # `--scope plausibly` never reached these: they are columns whose header names no
+    # period at all, which is exactly why W4-A5's lens set them aside.  W4-B's accounting
+    # then removed them from the store, so they need a class like any other.
+    ("Incorporated by Reference", "B",
+     "an exhibit index -- the rows are document references and the legacy axis read a "
+     "filing date out of the text as if it were a reporting period"),
+    ("Approved June", "B", "a date of approval, not a period the column is reported at"),
+    ("Approved February", "B", "a date of approval"),
+    ("Approved January", "B", "a date of approval"),
+    ("Approved April", "B", "a date of approval"),
+    ("Twelve Months Ended", "C",
+     "a period phrase whose year is not in the column -- the same join gap as "
+     "`Year ended December 31,`, at a scope the column model cannot reach"),
+    ("Year ended December 31,", "C",
+     "the year is elsewhere; the column states the period and cannot state it fully"),
+    ("Year Ended December 31,", "C", "the same, capitalised"),
+    ("Year Ended Dec. 31,", "C", "the same, abbreviated"),
+    ("As of or for the year ended December 31,", "C", "the same, in the long form"),
+    ("versus", "C",
+     "a comparison column names two periods, so it declares no single one"),
+    ("Increase/(decrease)", "C", "a comparison column"),
+    ("Total", "C",
+     "a scope column -- the period comes from the table, not the column"),
+    ("Rate", "C", "a scope column"),
+    ("Average balance", "C", "a scope column"),
+    ("Selected metrics", "C", "a scope column"),
+    ("Fair value measurements", "C",
+     "a measurement-basis column in a table whose period is the table's own"),
+    ("Available-for-sale securities", "C", "a measurement-basis column"),
+    ("Global Revenues", "C", "a scope column"),
 )
 
 
-def adjudicate(prefix: str) -> tuple[str, str]:
+#: Entries adjudicated from the `FULL_DATE_REFUSED` families, and scoped to that bucket.
+#:
+#: The same words mean something else when the year is missing entirely.  `As of or for the
+#: year ended December 31,` with a full date beside it is a period header the old predicate
+#: refused for being long; with no year anywhere in the column it is a period the column
+#: cannot state, which is a different class.  Scoping these made 16 false `V2_PRODUCER_GAP`
+#: disappear -- the table had reported the first situation's verdict for the second, and a
+#: false A is worse than a missing one: it blocks a phase for a defect that is not there.
+_SCOPED_TO_REFUSED = (
+    "For the Year Ended", "As of or for the year ended", "Fair value at",
+    "Contractual rate in effect at", "Fair value purchase price allocation",
+    "Central case assumptions at", "Change in unrealized gains",
+    "Amounts Recognized as of Acquisition Date", "Summary of TSRU and PTU information as of",
+    "50% of the net issued shares", "President and Chief Financial Officer",
+    "Chairman of the Board of Directors", "Date", "Dated", "Recovery of Erroneou",
+)
+
+
+def adjudicate(prefix: str, bucket: str = "FULL_DATE_REFUSED") -> tuple[str, str] | None:
+    """The hand adjudication for a family, or `None` if nothing applies.
+
+    `None` rather than a default: the caller falls back to the structural bucket's own
+    verdict, and a family nobody has read stays `D` -- unadjudicated and not deleted --
+    instead of being quietly filed under a neighbour.
+    """
     for shared, verdict, reason in ADJUDICATIONS:
-        if prefix.startswith(shared):
-            return verdict, reason
-    return "D", "not adjudicated -- no family matched, so it is not deleted"
+        if not prefix.startswith(shared):
+            continue
+        if shared in _SCOPED_TO_REFUSED and bucket != "FULL_DATE_REFUSED":
+            continue
+        return verdict, reason
+    return None
 
 
 def family_of(pb, bucket: str, text: str, rest: str) -> tuple[str, str, str]:
-    """`(family, verdict, reason)` for one unbound column."""
+    """`(family, verdict, reason)` for one unbound column.
+
+    Every bucket consults the same adjudication table, keyed on the column's own header
+    text, because the same judgement applies whatever structural bucket a column landed
+    in: `Incorporated by Reference` is an exhibit index whether the producer found no
+    header cell for it or refused a date in it.
+    """
     if bucket != "FULL_DATE_REFUSED":
-        if bucket == "NO_DATE_IN_COLUMN":
-            return (f"the column names no date at all: {text[:40]!r}",
-                    *VERDICTS[bucket])
-        if bucket == "MONTH_DAY_NO_YEAR":
-            return f"month-day without a year: {text[:40]!r}", *VERDICTS[bucket]
-        return bucket, *VERDICTS[bucket]
+        verdict = adjudicate(text, bucket)
+        if verdict is not None:
+            return f"{text[:46]!r}", verdict[0], verdict[1]
+        return f"{text[:46]!r}", *VERDICTS[bucket]
 
     match = pb._MONTH_DAY_YEAR.search(text)
     if match is None:  # pragma: no cover - diagnose_column returns this bucket only on a match
         return f"unreadable: {text[:40]!r}", *VERDICTS[bucket]
     prefix = _SEPARATORS.sub(" ", _CAPTION.sub(" ", text[:match.start()])).strip()
-    verdict, reason = adjudicate(prefix)
+    verdict, reason = adjudicate(prefix, bucket) or (None, None)
+    if verdict is None:
+        return f"{prefix[:46]!r}", *VERDICTS[bucket]
     return f"{prefix[:46]!r}", verdict, reason
 
 
@@ -212,6 +278,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--store", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--samples", type=int, default=3)
+    #: `plausibly` audits the subset whose own column names their period -- the 1,649 that
+    #: can be a capability regression, which is all W4-A6 needed.  `all` audits the whole
+    #: loss set, which is what W4-B's accounting needs: the rebuild removed 6,303 cells
+    #: outside that subset and every one of them has to carry a class.
+    parser.add_argument("--scope", choices=("plausibly", "all"), default="plausibly")
     args = parser.parse_args(argv)
 
     nf = load("nf17a4", PARSER)
@@ -225,16 +296,18 @@ def main(argv: list[str] | None = None) -> int:
                if line.strip()]
     by_cell = {str(r.get("cell_id")): r for r in records if r.get("cell_id")}
 
-    # --- the 1,649, selected by the W4-A5 lens and by nothing else -------------------
-    plausibly = []
+    # --- the loss set, narrowed by the W4-A5 lens only when asked ---------------------
+    losses = []
     for entry in report["producer_loss"]:
         if entry["legacy_blocker"] != "":
             continue
         record = by_cell.get(str(entry["cell_id"]))
         if record is None:
             continue
-        if truth.classify(record) == truth.DECLARED:
-            plausibly.append((entry, record))
+        if args.scope == "plausibly" and truth.classify(record) != truth.DECLARED:
+            continue
+        losses.append((entry, record))
+    plausibly = losses
 
     columns: dict[tuple, list] = collections.defaultdict(list)
     for entry, record in plausibly:
@@ -255,6 +328,10 @@ def main(argv: list[str] | None = None) -> int:
     #: forced it: `As of or for the year ended December 31, 2024` and `Indenture, dated as
     #: of October 28, 2021` land in the same bucket and mean opposite things.
     families: dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
+    #: `family -> (verdict, reason)`, recorded as the run goes.  The summary reads this
+    #: rather than re-deriving, because the family label alone does not carry the header
+    #: text the adjudication keys on.
+    family_verdict: dict[str, tuple[str, str]] = {}
     #: The reason recorded for each verdict, kept so the summary states why rather than
     #: only how many.
     verdict_reason: dict[str, str] = {}
@@ -300,6 +377,7 @@ def main(argv: list[str] | None = None) -> int:
                 buckets[bucket][verdict] += len(members)
                 buckets[bucket]["columns"] += 1
                 families[bucket][family] += len(members)
+                family_verdict[family] = (verdict, why)
                 verdict_reason.setdefault(verdict, why)
                 detail[bucket].append({
                     "document_id": document_id, "source_order": order,
@@ -347,8 +425,7 @@ def main(argv: list[str] | None = None) -> int:
     for bucket, counts in sorted(families.items(), key=lambda kv: -sum(kv[1].values())):
         print(f"  {bucket}")
         for family, count in counts.most_common(14):
-            verdict, reason = adjudicate(family.strip("'")) if bucket == "FULL_DATE_REFUSED" \
-                else VERDICTS[bucket]
+            verdict, reason = family_verdict.get(family, ("D", "unadjudicated"))
             print(f"      {count:>5}  {verdict}  {family}")
             print(f"             {reason[:96]}")
     print()
