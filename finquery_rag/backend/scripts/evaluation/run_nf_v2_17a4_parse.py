@@ -637,6 +637,15 @@ def parse_table(
                 {
                     "table_id": tid,
                     "row_id": rid,
+                    # `classify_table_rows` groups cells by `cell["row_index"]`
+                    # and looks them up by `row["row_index"]`.  Without this the
+                    # lookup is `int(None or 0)` for every row, so every row is
+                    # handed row 0's cells -- usually the header row, with no
+                    # numerics -- `_has_numeric` is false throughout, `metric_row`
+                    # is never reached, and ordinary line items fall to `unknown`.
+                    # Measured before the fix: 5,643 rows, 3,825 of which have a
+                    # numeric value column, and 448 classified as financial.
+                    "row_index": ri,
                     "row_label": label,
                     "cells": rc,
                     "source_order": order,
