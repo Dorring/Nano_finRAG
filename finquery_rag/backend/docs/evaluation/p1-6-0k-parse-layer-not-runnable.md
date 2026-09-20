@@ -58,14 +58,50 @@ applies** (skips `xsi:nil`, requires `name` and `contextRef`) so every anchor na
 that actually reaches the corpus, and records `{fact_id, concept, context_ref}` on each
 block's `metadata`. Both block-emission sites carry it.
 
-**Unverified.** It imports cleanly and is consistent with `ix_facts` by construction, but
-the reconciliation it exists to pass — anchors resolving to emitted facts, and every
-emitted fact reachable from a block — has not been run, because nothing that imports this
-module can run here.
+## Verified, on Microsoft's filing
 
-`verify_parse_anchors.py` is the check, written and ready: it reports anchors per block
-type, anchors that fail to resolve, and facts not reachable from any block. It needs the
-same `lxml`.
+`lxml 6.1.3` installed into the deployment venv (`ensurepip`, then `pip install lxml` —
+the venv had been created by `uv` with no pip of its own). The verification then ran:
+
+```
+blocks                1135
+facts emitted         1829
+anchors recorded      1710
+anchors that resolve  1710 / 1710
+facts reachable       1710 / 1829
+
+by block type:  TABLE     1534 anchors in 57 blocks
+                PARAGRAPH  176 anchors in 66 blocks
+                HEADING      0 anchors in  0 blocks
+```
+
+**Every anchor resolves to a fact the same parse emits**, and 93.5% of emitted facts are
+reachable from a block. Before the change that number was **zero** — no view had any path
+to a tagged fact.
+
+### The 119 that are not reachable, characterised
+
+They are not a defect in the link. 29 carry no value at all — `dei:AmendmentFlag`,
+`dei:EntityCentralIndexKey` and similar — and live in the `ix:header` rather than the
+document body, so no block contains them and none should. The remaining **90 are almost
+entirely `...TextBlock` concepts** — `ScheduleOfDerivativeInstrumentsGainLoss…TextBlock`,
+`CybersecurityRiskManagementProcesses…TextBlock` — which wrap a whole note rather than
+stating a value.
+
+So the gap is not leaf facts. The anchors cover the population the link exists for, and
+the uncovered facts are of two kinds the route has nothing to say about: header metadata
+and note-sized text wrappers.
+
+### What this establishes
+
+The anchor route works, verified on real data against a count taken independently from the
+raw HTML. Recording anchors at parse time does link blocks to the facts they state, with
+complete resolution and a fully explained residual.
+
+It does **not** establish that the rest of option B is worth doing: carrying the anchor
+through `atomic facts -> store records -> candidate views -> R4 index` still has to be
+built, and the re-parse still has to reproduce the corpus. What is now settled is that the
+first link — the one nothing else could proceed without — holds.
 
 ## The decision this needs
 
