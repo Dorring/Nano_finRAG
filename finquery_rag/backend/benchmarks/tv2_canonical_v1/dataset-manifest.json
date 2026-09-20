@@ -1,4 +1,6 @@
 {
+  "_superseded_by": "benchmark-version.json",
+  "_note": "This records how the set was GENERATED (TV2-FINAL-01, seed 42) and is kept for that reason. It is not the current state: the cross-entity stratum was re-derived at P1.6-0H, so output_files.*_sha256 below name the pre-migration content. The authoritative current hashes are in benchmark-version.json.",
   "contamination_audit": {
     "category_c_count": 364,
     "contaminated_count": 0,

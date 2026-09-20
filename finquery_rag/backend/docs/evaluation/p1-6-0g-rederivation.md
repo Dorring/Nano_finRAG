@@ -153,6 +153,15 @@ migration was attempted and **stopped** — see below.
 
 # P1.6-0H — the migration is blocked on the store, not on the design
 
+> **Superseded.** The blocker below was real and its diagnosis held, but it was
+> subsequently removed: the iXBRL store was rebuilt with clean concept labels, and the
+> migration was then **applied and verified**. Everything in this section describes the
+> state *before* that — including the closing line "nothing has been written", which was
+> true when written and is not true now.
+>
+> Authoritative record: `p1-6-0h-fixture-migration.md`, plus the per-case diff and
+> version manifest under `benchmarks/tv2_canonical_v1/`.
+
 The migration was written and dry-run. It resolves a `fact_id` per value, and the
 resolution failed for most of the stratum in a way that is worth more than the
 migration:
@@ -213,3 +222,7 @@ twenty.
 **Nothing has been written. `plan-fixtures-v7.jsonl`, `gold-evidence-v1.jsonl` and
 `canonical-eval-v1.jsonl` are untouched**, and their preimage is backed up at
 `artifacts/evaluation/p1-6-0h-migration-preimage/`.
+
+> *Written at the dry-run stage; the migration was applied afterwards (see the note at
+> the top of this section). The preimage it names is the source of the pre-migration
+> hashes recorded in `benchmarks/tv2_canonical_v1/benchmark-version.json`.*

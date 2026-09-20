@@ -1,0 +1,889 @@
+{
+  "by_attribution": {
+    "DOCUMENTED": 8,
+    "MECHANICAL": 9,
+    "STRATUM_RULE": 3
+  },
+  "by_reason": {
+    "CONCEPT_NOT_DISCLOSED": 2,
+    "FISCAL_YEAR_MISALIGNMENT": 1,
+    "METRIC_NOT_A_QUANTITY": 1,
+    "METRIC_NOT_COMPANY_LEVEL": 7,
+    "PRESENTATION_ONLY": 2,
+    "SIGN_CORRECTION": 2,
+    "STRATUM_REDERIVATION": 3,
+    "VALUE_NOT_THE_FILED_ONE": 2
+  },
+  "changes": [
+    {
+      "attribution": "DOCUMENTED",
+      "case_id": "tv2f01-s3-compare-001",
+      "expected": {
+        "new": {
+          "expected_higher": "The Coca-Cola Company",
+          "expected_ranking": null,
+          "expected_value": null
+        },
+        "old": {
+          "expected_higher": "Tesla",
+          "expected_ranking": null,
+          "expected_value": null
+        }
+      },
+      "metric": {
+        "new": "Net income",
+        "old": "United States"
+      },
+      "note": "`United States` is both a revenue geography and a tax jurisdiction.",
+      "operation": "comparison",
+      "question": {
+        "new": "Which company had a higher Net income in FY2025, The Coca-Cola Company or Tesla?",
+        "old": "Which company had a higher United States in FY2025, The Coca-Cola Company or Tesla?"
+      },
+      "reason": "METRIC_NOT_COMPANY_LEVEL",
+      "source": "docs/evaluation/p1-6-0g-rederivation.md (the design rule)",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "Tesla": "3855",
+          "The Coca-Cola Company": "13137"
+        },
+        "old": {
+          "Tesla": "$ 47,627",
+          "The Coca-Cola Company": "$ 5,678"
+        }
+      }
+    },
+    {
+      "attribution": "STRATUM_RULE",
+      "case_id": "tv2f01-s3-compare-002",
+      "expected": {
+        "new": {
+          "expected_higher": "Apple",
+          "expected_ranking": null,
+          "expected_value": null
+        },
+        "old": {
+          "expected_higher": "Visa",
+          "expected_ranking": null,
+          "expected_value": null
+        }
+      },
+      "metric": {
+        "new": "Net income",
+        "old": "General and administrative"
+      },
+      "note": "'General and administrative' -> 'Net income'. Covered by the rule that a case survives only if one concept is a single company-level line for every entity; the per-case reason was not recorded.",
+      "operation": "comparison",
+      "question": {
+        "new": "Which company had a higher Net income in FY2025, Apple or Visa?",
+        "old": "Compare Apple and Visa: which reported a larger General and administrative in FY2025?"
+      },
+      "reason": "STRATUM_REDERIVATION",
+      "source": "the stratum's design rule, with no narrower rationale written down",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "Apple": "112010",
+          "Visa": "20058"
+        },
+        "old": {
+          "Apple": "(8,077)",
+          "Visa": "1,926"
+        }
+      }
+    },
+    {
+      "attribution": "STRATUM_RULE",
+      "case_id": "tv2f01-s3-compare-003",
+      "expected": {
+        "new": {
+          "expected_higher": "Tesla",
+          "expected_ranking": null,
+          "expected_value": null
+        },
+        "old": {
+          "expected_higher": "The Coca-Cola Company",
+          "expected_ranking": null,
+          "expected_value": null
+        }
+      },
+      "metric": {
+        "new": "Total assets",
+        "old": "Gross profit"
+      },
+      "note": "'Gross profit' -> 'Total assets'. Covered by the rule that a case survives only if one concept is a single company-level line for every entity; the per-case reason was not recorded.",
+      "operation": "comparison",
+      "question": {
+        "new": "Which company had a higher Total assets in FY2025, Tesla or The Coca-Cola Company?",
+        "old": "Which company had a higher Gross profit in FY2025, The Coca-Cola Company or Tesla?"
+      },
+      "reason": "STRATUM_REDERIVATION",
+      "source": "the stratum's design rule, with no narrower rationale written down",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "Tesla": "137806",
+          "The Coca-Cola Company": "104816"
+        },
+        "old": {
+          "Tesla": "$ 13,292",
+          "The Coca-Cola Company": "42,178"
+        }
+      }
+    },
+    {
+      "attribution": "MECHANICAL",
+      "case_id": "tv2f01-s3-compare-004",
+      "expected": {
+        "new": {
+          "expected_higher": "Apple",
+          "expected_ranking": null,
+          "expected_value": null
+        },
+        "old": {
+          "expected_higher": "Apple",
+          "expected_ranking": null,
+          "expected_value": null
+        }
+      },
+      "metric": {
+        "new": "Net income",
+        "old": "Foreign exchange contracts"
+      },
+      "note": "'Foreign exchange contracts' names a geography, a segment or a note row, so the two operands were not the same quantity of the same kind.",
+      "operation": "comparison",
+      "question": {
+        "new": "Which company had a higher Net income in FY2025, Apple or Microsoft?",
+        "old": "Compare Apple and Microsoft: which reported a larger Foreign exchange contracts in FY2025?"
+      },
+      "reason": "METRIC_NOT_COMPANY_LEVEL",
+      "source": "the design rule: one company-level line per entity",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "Apple": "112010",
+          "Microsoft": "101832"
+        },
+        "old": {
+          "Apple": "$ 62,647",
+          "Microsoft": "(809)"
+        }
+      }
+    },
+    {
+      "attribution": "MECHANICAL",
+      "case_id": "tv2f01-s3-compare-005",
+      "expected": {
+        "new": {
+          "expected_higher": "JPMorganChase",
+          "expected_ranking": null,
+          "expected_value": null
+        },
+        "old": {
+          "expected_higher": "Apple",
+          "expected_ranking": null,
+          "expected_value": null
+        }
+      },
+      "metric": {
+        "new": "Diluted earnings per share",
+        "old": "Current"
+      },
+      "note": "'Current' names a geography, a segment or a note row, so the two operands were not the same quantity of the same kind.",
+      "operation": "comparison",
+      "question": {
+        "new": "Which company had a higher Diluted earnings per share in FY2025, JPMorganChase or Apple?",
+        "old": "Which company had a higher Current in FY2025, JPMorganChase or Apple?"
+      },
+      "reason": "METRIC_NOT_COMPANY_LEVEL",
+      "source": "the design rule: one company-level line per entity",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "Apple": "7.46",
+          "JPMorganChase": "20.02"
+        },
+        "old": {
+          "Apple": "$ 11,487",
+          "JPMorganChase": "$ 840"
+        }
+      }
+    },
+    {
+      "attribution": "MECHANICAL",
+      "case_id": "tv2f01-s3-compare-006",
+      "expected": {
+        "new": {
+          "expected_higher": "JPMorganChase",
+          "expected_ranking": null,
+          "expected_value": null
+        },
+        "old": {
+          "expected_higher": "JPMorganChase",
+          "expected_ranking": null,
+          "expected_value": null
+        }
+      },
+      "metric": {
+        "new": "Comprehensive income",
+        "old": "2025"
+      },
+      "note": "'2025' names a date, not a quantity, so the two operands could not be compared on it.",
+      "operation": "comparison",
+      "question": {
+        "new": "Which company had a higher Comprehensive income in FY2025, JPMorganChase or Tesla?",
+        "old": "Compare Tesla and JPMorganChase: which reported a larger 2025 in FY2025?"
+      },
+      "reason": "METRIC_NOT_A_QUANTITY",
+      "source": "the old metric is a bare period",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "JPMorganChase": "65214",
+          "Tesla": "4886"
+        },
+        "old": {
+          "JPMorganChase": "2025",
+          "Tesla": "2025"
+        }
+      }
+    },
+    {
+      "attribution": "DOCUMENTED",
+      "case_id": "tv2f01-s3-compare-007",
+      "expected": {
+        "new": {
+          "expected_higher": "JPMorganChase",
+          "expected_ranking": null,
+          "expected_value": null
+        },
+        "old": {
+          "expected_higher": "JPMorganChase",
+          "expected_ranking": null,
+          "expected_value": null
+        }
+      },
+      "metric": {
+        "new": "Net income",
+        "old": "Discount rate"
+      },
+      "note": "Pfizer is the corpus's only FY2024 filing. The case now carries fiscal_year_by_entity so a runner cannot silently align the periods.",
+      "operation": "comparison",
+      "question": {
+        "new": "Which company had a higher Net income in FY2025, JPMorganChase or Pfizer?",
+        "old": "Which company had a higher Discount rate in FY2025, Pfizer or JPMorganChase?"
+      },
+      "reason": "FISCAL_YEAR_MISALIGNMENT",
+      "source": "docs/evaluation/p1-6-0g-rederivation.md (compare-007)",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "JPMorganChase": "57048",
+          "Pfizer": "8062"
+        },
+        "old": {
+          "JPMorganChase": "5.49 %",
+          "Pfizer": "$5"
+        }
+      }
+    },
+    {
+      "attribution": "MECHANICAL",
+      "case_id": "tv2f01-s3-compare-008",
+      "expected": {
+        "new": {
+          "expected_higher": "JPMorganChase",
+          "expected_ranking": null,
+          "expected_value": null
+        },
+        "old": {
+          "expected_higher": "JPMorganChase",
+          "expected_ranking": null,
+          "expected_value": null
+        }
+      },
+      "metric": {
+        "new": "Diluted earnings per share",
+        "old": "Diluted earnings per share"
+      },
+      "note": "The old gold was read off a rendered page, the new one from the filers' tagged values. The expectation is unchanged.",
+      "operation": "comparison",
+      "question": {
+        "new": "Which company had a higher Diluted earnings per share in FY2025, JPMorganChase or Apple?",
+        "old": "Compare JPMorganChase and Apple: which reported a larger Diluted earnings per share in FY2025?"
+      },
+      "reason": "PRESENTATION_ONLY",
+      "source": "the numbers are unchanged; only the formatting moved",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "Apple": "7.46",
+          "JPMorganChase": "20.02"
+        },
+        "old": {
+          "Apple": "$ 7.46",
+          "JPMorganChase": "20.02"
+        }
+      }
+    },
+    {
+      "attribution": "MECHANICAL",
+      "case_id": "tv2f01-s3-compare-009",
+      "expected": {
+        "new": {
+          "expected_higher": "Apple",
+          "expected_ranking": null,
+          "expected_value": null
+        },
+        "old": {
+          "expected_higher": "Apple",
+          "expected_ranking": null,
+          "expected_value": null
+        }
+      },
+      "metric": {
+        "new": "Net income",
+        "old": "Net income"
+      },
+      "note": "At least one operand's value changed materially, so the old gold was not the number the filing attributes to that concept.",
+      "operation": "comparison",
+      "question": {
+        "new": "Which company had a higher Net income in FY2025, Apple or JPMorganChase?",
+        "old": "Which company had a higher Net income in FY2025, Apple or JPMorganChase?"
+      },
+      "reason": "VALUE_NOT_THE_FILED_ONE",
+      "source": "same metric, a value that is not what the filing states",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "Apple": "112010",
+          "JPMorganChase": "57048"
+        },
+        "old": {
+          "Apple": "112,010",
+          "JPMorganChase": "$ 4,520"
+        }
+      }
+    },
+    {
+      "attribution": "MECHANICAL",
+      "case_id": "tv2f01-s3-compare-010",
+      "expected": {
+        "new": {
+          "expected_higher": "Apple",
+          "expected_ranking": null,
+          "expected_value": null
+        },
+        "old": {
+          "expected_higher": "Apple",
+          "expected_ranking": null,
+          "expected_value": null
+        }
+      },
+      "metric": {
+        "new": "Operating income",
+        "old": "Other current liabilities"
+      },
+      "note": "'Other current liabilities' names a geography, a segment or a note row, so the two operands were not the same quantity of the same kind.",
+      "operation": "comparison",
+      "question": {
+        "new": "Which company had a higher Operating income in FY2025, Apple or Microsoft?",
+        "old": "Compare Apple and Microsoft: which reported a larger Other current liabilities in FY2025?"
+      },
+      "reason": "METRIC_NOT_COMPANY_LEVEL",
+      "source": "the design rule: one company-level line per entity",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "Apple": "133050",
+          "Microsoft": "128528"
+        },
+        "old": {
+          "Apple": "44,452",
+          "Microsoft": "$ 5,424"
+        }
+      }
+    },
+    {
+      "attribution": "MECHANICAL",
+      "case_id": "tv2f01-s3-crossdiff-001",
+      "expected": {
+        "new": {
+          "expected_higher": null,
+          "expected_ranking": null,
+          "expected_value": "69025"
+        },
+        "old": {
+          "expected_higher": null,
+          "expected_ranking": null,
+          "expected_value": "-120"
+        }
+      },
+      "metric": {
+        "new": "Net income",
+        "old": "Additions"
+      },
+      "note": "'Additions' names a geography, a segment or a note row, so the two operands were not the same quantity of the same kind.",
+      "operation": "cross_entity_difference",
+      "question": {
+        "new": "What is the difference in Net income between NVIDIA and Tesla in FY2025?",
+        "old": "What is the difference in Additions between Tesla and NVIDIA in FY2025?"
+      },
+      "reason": "METRIC_NOT_COMPANY_LEVEL",
+      "source": "the design rule: one company-level line per entity",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "NVIDIA": "72880",
+          "Tesla": "3855"
+        },
+        "old": {
+          "NVIDIA": "1,203",
+          "Tesla": "1,083"
+        }
+      }
+    },
+    {
+      "attribution": "DOCUMENTED",
+      "case_id": "tv2f01-s3-crossdiff-002",
+      "expected": {
+        "new": {
+          "expected_higher": null,
+          "expected_ranking": null,
+          "expected_value": "10178"
+        },
+        "old": {
+          "expected_higher": null,
+          "expected_ranking": null,
+          "expected_value": "-338"
+        }
+      },
+      "metric": {
+        "new": "Net income",
+        "old": "Other"
+      },
+      "note": "`Other` matched several concepts per filing.",
+      "operation": "cross_entity_difference",
+      "question": {
+        "new": "What is the difference in Net income between Apple and Microsoft in FY2025?",
+        "old": "What is the difference in Other between Microsoft and Apple in FY2025?"
+      },
+      "reason": "METRIC_NOT_COMPANY_LEVEL",
+      "source": "docs/evaluation/p1-6-0g-rederivation.md (the design rule)",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "Apple": "112010",
+          "Microsoft": "101832"
+        },
+        "old": {
+          "Apple": "410",
+          "Microsoft": "72"
+        }
+      }
+    },
+    {
+      "attribution": "DOCUMENTED",
+      "case_id": "tv2f01-s3-crossdiff-003",
+      "expected": {
+        "new": {
+          "expected_higher": null,
+          "expected_ranking": null,
+          "expected_value": "230567"
+        },
+        "old": {
+          "expected_higher": null,
+          "expected_ranking": null,
+          "expected_value": "-3596"
+        }
+      },
+      "metric": {
+        "new": "Total liabilities",
+        "old": "Total"
+      },
+      "note": "`Total` lives in every note.",
+      "operation": "cross_entity_difference",
+      "question": {
+        "new": "What is the difference in Total liabilities between Apple and Tesla in FY2025?",
+        "old": "What is the difference in Total between Apple and Tesla in FY2025?"
+      },
+      "reason": "METRIC_NOT_COMPANY_LEVEL",
+      "source": "docs/evaluation/p1-6-0g-rederivation.md (the design rule)",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "Apple": "285508",
+          "Tesla": "54941"
+        },
+        "old": {
+          "Apple": "9,683",
+          "Tesla": "$ 13,279"
+        }
+      }
+    },
+    {
+      "attribution": "MECHANICAL",
+      "case_id": "tv2f01-s3-crossdiff-004",
+      "expected": {
+        "new": {
+          "expected_higher": null,
+          "expected_ranking": null,
+          "expected_value": "22517"
+        },
+        "old": {
+          "expected_higher": null,
+          "expected_ranking": null,
+          "expected_value": "-18752"
+        }
+      },
+      "metric": {
+        "new": "Long-term debt",
+        "old": "Long-term debt"
+      },
+      "note": "At least one operand's value changed materially, so the old gold was not the number the filing attributes to that concept.",
+      "operation": "cross_entity_difference",
+      "question": {
+        "new": "What is the difference in Long-term debt between The Coca-Cola Company and Visa in FY2025?",
+        "old": "What is the difference in Long-term debt between The Coca-Cola Company and Visa in FY2025?"
+      },
+      "reason": "VALUE_NOT_THE_FILED_ONE",
+      "source": "same metric, a value that is not what the filing states",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "The Coca-Cola Company": "42119",
+          "Visa": "19602"
+        },
+        "old": {
+          "The Coca-Cola Company": "850",
+          "Visa": "19,602"
+        }
+      }
+    },
+    {
+      "attribution": "DOCUMENTED",
+      "case_id": "tv2f01-s3-crossdiff-005",
+      "expected": {
+        "new": {
+          "expected_higher": null,
+          "expected_ranking": null,
+          "expected_value": "6785"
+        },
+        "old": {
+          "expected_higher": null,
+          "expected_ranking": null,
+          "expected_value": "246"
+        }
+      },
+      "metric": {
+        "new": "Total assets",
+        "old": "Land"
+      },
+      "note": "Coca-Cola's balance sheet has no single Total liabilities line; the case moved to Total assets, which both filers publish.",
+      "operation": "cross_entity_difference",
+      "question": {
+        "new": "What is the difference in Total assets between NVIDIA and The Coca-Cola Company in FY2025?",
+        "old": "What is the difference in Land between NVIDIA and The Coca-Cola Company in FY2025?"
+      },
+      "reason": "CONCEPT_NOT_DISCLOSED",
+      "source": "docs/evaluation/p1-6-0g-rederivation.md (the design rule)",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "NVIDIA": "111601",
+          "The Coca-Cola Company": "104816"
+        },
+        "old": {
+          "NVIDIA": "$ 511",
+          "The Coca-Cola Company": "265"
+        }
+      }
+    },
+    {
+      "attribution": "STRATUM_RULE",
+      "case_id": "tv2f01-s3-rank-001",
+      "expected": {
+        "new": {
+          "expected_higher": null,
+          "expected_ranking": [
+            "Visa",
+            "The Coca-Cola Company",
+            "Tesla"
+          ],
+          "expected_value": null
+        },
+        "old": {
+          "expected_higher": null,
+          "expected_ranking": [
+            "Visa",
+            "The Coca-Cola Company",
+            "Tesla"
+          ],
+          "expected_value": null
+        }
+      },
+      "metric": {
+        "new": "Net income",
+        "old": "Prepaid expenses and other current assets"
+      },
+      "note": "'Prepaid expenses and other current assets' -> 'Net income'. Covered by the rule that a case survives only if one concept is a single company-level line for every entity; the per-case reason was not recorded.",
+      "operation": "ranking",
+      "question": {
+        "new": "Rank the following companies by Net income in FY2025 from highest to lowest: Tesla, The Coca-Cola Company, Visa.",
+        "old": "Rank the following companies by Prepaid expenses and other current assets in FY2025 from highest to lowest: The Coca-Cola Company, Visa, Tesla."
+      },
+      "reason": "STRATUM_REDERIVATION",
+      "source": "the stratum's design rule, with no narrower rationale written down",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "Tesla": "3855",
+          "The Coca-Cola Company": "13137",
+          "Visa": "20058"
+        },
+        "old": {
+          "Tesla": "$ 130",
+          "The Coca-Cola Company": "147",
+          "Visa": "1,208"
+        }
+      }
+    },
+    {
+      "attribution": "DOCUMENTED",
+      "case_id": "tv2f01-s3-rank-002",
+      "expected": {
+        "new": {
+          "expected_higher": null,
+          "expected_ranking": [
+            "Apple",
+            "Microsoft",
+            "Tesla"
+          ],
+          "expected_value": null
+        },
+        "old": {
+          "expected_higher": null,
+          "expected_ranking": [
+            "Microsoft",
+            "Tesla",
+            "Apple"
+          ],
+          "expected_value": null
+        }
+      },
+      "metric": {
+        "new": "Research and development",
+        "old": "Research and development"
+      },
+      "note": "Apple R&D is stored as (34,550) where the filing says 34,550, so the old ranking put Apple last on a sign artefact.",
+      "operation": "ranking",
+      "question": {
+        "new": "Rank the following companies by Research and development in FY2025 from highest to lowest: Apple, Microsoft, Tesla.",
+        "old": "Rank the following companies by Research and development in FY2025 from highest to lowest: Apple, Microsoft, Tesla."
+      },
+      "reason": "SIGN_CORRECTION",
+      "source": "docs/evaluation/p1-6-0g-rederivation.md (P1.6-0H, store defects)",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "Apple": "34550",
+          "Microsoft": "32488",
+          "Tesla": "6411"
+        },
+        "old": {
+          "Apple": "(34,550)",
+          "Microsoft": "32,488",
+          "Tesla": "$ 6,411"
+        }
+      }
+    },
+    {
+      "attribution": "MECHANICAL",
+      "case_id": "tv2f01-s3-rank-003",
+      "expected": {
+        "new": {
+          "expected_higher": null,
+          "expected_ranking": [
+            "Microsoft",
+            "JPMorganChase",
+            "Visa",
+            "Tesla"
+          ],
+          "expected_value": null
+        },
+        "old": {
+          "expected_higher": null,
+          "expected_ranking": [
+            "Microsoft",
+            "JPMorganChase",
+            "Visa",
+            "Tesla"
+          ],
+          "expected_value": null
+        }
+      },
+      "metric": {
+        "new": "Comprehensive income",
+        "old": "Comprehensive income"
+      },
+      "note": "The old gold was read off a rendered page, the new one from the filers' tagged values. The expectation is unchanged.",
+      "operation": "ranking",
+      "question": {
+        "new": "Rank the following companies by Comprehensive income in FY2025 from highest to lowest: JPMorganChase, Microsoft, Tesla, Visa.",
+        "old": "Rank the following companies by Comprehensive income in FY2025 from highest to lowest: JPMorganChase, Microsoft, Visa, Tesla."
+      },
+      "reason": "PRESENTATION_ONLY",
+      "source": "the numbers are unchanged; only the formatting moved",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "JPMorganChase": "65214",
+          "Microsoft": "104075",
+          "Tesla": "4886",
+          "Visa": "20614"
+        },
+        "old": {
+          "JPMorganChase": "$ 65,214",
+          "Microsoft": "$ 104,075",
+          "Tesla": "4,886",
+          "Visa": "$ 20,614"
+        }
+      }
+    },
+    {
+      "attribution": "DOCUMENTED",
+      "case_id": "tv2f01-s3-rank-004",
+      "expected": {
+        "new": {
+          "expected_higher": null,
+          "expected_ranking": [
+            "JPMorganChase",
+            "Microsoft",
+            "The Coca-Cola Company",
+            "Visa"
+          ],
+          "expected_value": null
+        },
+        "old": {
+          "expected_higher": null,
+          "expected_ranking": [
+            "JPMorganChase",
+            "The Coca-Cola Company",
+            "Visa",
+            "Microsoft"
+          ],
+          "expected_value": null
+        }
+      },
+      "metric": {
+        "new": "Interest expense",
+        "old": "Interest expense"
+      },
+      "note": "US-GAAP expense concepts carry a debit balance type: a positive tagged amount is the expense. The old gold ranked the presented sign, putting the smallest expense second-from-last.",
+      "operation": "ranking",
+      "question": {
+        "new": "Rank the following companies by Interest expense in FY2025 from highest to lowest: JPMorganChase, The Coca-Cola Company, Visa, Microsoft.",
+        "old": "Rank the following companies by Interest expense in FY2025 from highest to lowest: JPMorganChase, Visa, The Coca-Cola Company, Microsoft."
+      },
+      "reason": "SIGN_CORRECTION",
+      "source": "docs/evaluation/p1-6-0a10-expense-sign.md",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "JPMorganChase": "97898",
+          "Microsoft": "2385",
+          "The Coca-Cola Company": "1654",
+          "Visa": "589"
+        },
+        "old": {
+          "JPMorganChase": "97,898",
+          "Microsoft": "(2,385)",
+          "The Coca-Cola Company": "1,654",
+          "Visa": "$ (589)"
+        }
+      }
+    },
+    {
+      "attribution": "DOCUMENTED",
+      "case_id": "tv2f01-s3-rank-005",
+      "expected": {
+        "new": {
+          "expected_higher": null,
+          "expected_ranking": [
+            "Apple",
+            "Microsoft",
+            "The Coca-Cola Company"
+          ],
+          "expected_value": null
+        },
+        "old": {
+          "expected_higher": null,
+          "expected_ranking": [
+            "Apple",
+            "The Coca-Cola Company",
+            "Microsoft"
+          ],
+          "expected_value": null
+        }
+      },
+      "metric": {
+        "new": "Operating income",
+        "old": "Interest rate contracts"
+      },
+      "note": "The store held no shared concept, which read as 'no such concept exists'. Apple, Microsoft and Coca-Cola each publish Operating income as one line, so the case was rescued onto it rather than retired.",
+      "operation": "ranking",
+      "question": {
+        "new": "Rank the following companies by Operating income in FY2025 from highest to lowest: Apple, Microsoft, The Coca-Cola Company.",
+        "old": "Rank the following companies by Interest rate contracts in FY2025 from highest to lowest: Apple, The Coca-Cola Company, Microsoft."
+      },
+      "reason": "CONCEPT_NOT_DISCLOSED",
+      "source": "docs/evaluation/p1-6-0g-rederivation.md (rank-005 is rescued)",
+      "stratum": "cross_entity_comparison",
+      "values": {
+        "new": {
+          "Apple": "133050",
+          "Microsoft": "128528",
+          "The Coca-Cola Company": "13762"
+        },
+        "old": {
+          "Apple": "$ 12,875",
+          "Microsoft": "0",
+          "The Coca-Cola Company": "16"
+        }
+      }
+    }
+  ],
+  "design_rule": "a case survives only if one concept is disclosed as a single company-level line by every entity in it",
+  "expectation_changed": [
+    "tv2f01-s3-compare-001",
+    "tv2f01-s3-compare-002",
+    "tv2f01-s3-compare-003",
+    "tv2f01-s3-compare-005",
+    "tv2f01-s3-crossdiff-001",
+    "tv2f01-s3-crossdiff-002",
+    "tv2f01-s3-crossdiff-003",
+    "tv2f01-s3-crossdiff-004",
+    "tv2f01-s3-crossdiff-005",
+    "tv2f01-s3-rank-002",
+    "tv2f01-s3-rank-004",
+    "tv2f01-s3-rank-005"
+  ],
+  "failures": [],
+  "gold_rows_changed": 20,
+  "gold_rows_untouched": 100,
+  "migration": {
+    "applied_in": "docs/evaluation/p1-6-0h-fixture-migration.md",
+    "corrections": "docs/evaluation/p1-6-0a10-expense-sign.md",
+    "id": "p1.6-0h",
+    "spec": "docs/evaluation/p1-6-0g-rederivation.md",
+    "store": "financial-facts-ixbrl-v1.jsonl (the rebuilt iXBRL store)",
+    "stratum": "cross_entity_comparison"
+  },
+  "post_ref": "working tree",
+  "pre_ref": "3a82b11",
+  "questions_changed": 17,
+  "strata_touched": {
+    "cross_entity_comparison": 17
+  }
+}

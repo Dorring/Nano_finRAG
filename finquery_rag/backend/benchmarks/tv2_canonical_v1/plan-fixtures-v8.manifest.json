@@ -1,0 +1,89 @@
+{
+  "abstention_rows_expecting_no_candidate": 25,
+  "ambiguous_sha256": "5cec1f4476e3392467c6a5db9d957c06faf8c71f1cd4785076bef8ab145414dd",
+  "ambiguous_slots": 68,
+  "coordinate_candidate_histogram": {
+    "0": 30,
+    "1": 89,
+    "11": 1,
+    "14": 1,
+    "17": 1,
+    "2": 27,
+    "21": 1,
+    "3": 16,
+    "4": 8,
+    "5": 7,
+    "6": 3,
+    "7": 1,
+    "8": 1,
+    "9": 1
+  },
+  "cross_entity_rederivation": {
+    "cases_changed": [
+      "tv2f01-s3-compare-001",
+      "tv2f01-s3-compare-002",
+      "tv2f01-s3-compare-003",
+      "tv2f01-s3-compare-004",
+      "tv2f01-s3-compare-005",
+      "tv2f01-s3-compare-006",
+      "tv2f01-s3-compare-007",
+      "tv2f01-s3-compare-008",
+      "tv2f01-s3-compare-009",
+      "tv2f01-s3-compare-010",
+      "tv2f01-s3-crossdiff-001",
+      "tv2f01-s3-crossdiff-002",
+      "tv2f01-s3-crossdiff-003",
+      "tv2f01-s3-crossdiff-004",
+      "tv2f01-s3-crossdiff-005",
+      "tv2f01-s3-rank-001",
+      "tv2f01-s3-rank-002",
+      "tv2f01-s3-rank-003",
+      "tv2f01-s3-rank-004",
+      "tv2f01-s3-rank-005"
+    ],
+    "corrections": "docs/evaluation/p1-6-0a10-expense-sign.md",
+    "fact_id_status": {
+      "resolved": 47
+    },
+    "previous": {
+      "canonical-eval-v1.jsonl": "9c8ca9ceea21cecfc43a8b3861d13884b3e1a70e3839438cec3db06f599882a0",
+      "gold-evidence-v1.jsonl": "7831eef2d33abc3086f8e88c028f0e3bd3723917765612d86551d4604bba6925",
+      "plan-fixtures-v7.jsonl": "43f740f7ab702371d4cb0091ffb2071c8f7b24e8c14e35fa7612f22691e7c066"
+    },
+    "spec": "docs/evaluation/p1-6-0g-rederivation.md"
+  },
+  "eval_set_sha256": "227f0341d94ab8d4b9e7ee033feaa9b40e86ec32c3137a74d2931657e9281ece",
+  "fact_store_sha256": "0382c6a17f7065516c0edd0d2ca10d5ea6e0e0c7bb0dff68acae38134fc4db57",
+  "fixture": "plan-fixtures-v8",
+  "fixture_sha256": "7463b45a5bfc309d0a5ab29cdb15b3f070c13c8526ae5d1486ca67847dda362d",
+  "gold_sha256": "3d2a0c5b7839656ce1414923ab90d03b844bc5c5fc17d82dc5e68224f466eb05",
+  "intent_distribution": {
+    "CALCULATION": 45,
+    "DIRECT_FACT": 60,
+    "MULTI_EVIDENCE": 15
+  },
+  "operand_facts_read": 150,
+  "provenance": {
+    "entity:gold_operand_facts": 15,
+    "intent:gold_intent:financial_lookup": 40,
+    "intent:gold_operation:average": 5,
+    "intent:gold_operation:comparison": 10,
+    "intent:gold_operation:cross_entity_difference": 5,
+    "intent:gold_operation:difference": 7,
+    "intent:gold_operation:growth_rate": 15,
+    "intent:gold_operation:percentage_share": 8,
+    "intent:gold_operation:ranking": 5,
+    "intent:gold_operation:sum": 5,
+    "intent:gold_outcome:abstention": 20,
+    "metric:gold": 87,
+    "metric:gold_operand_facts": 8,
+    "metric:question_possessive_clause": 24,
+    "metric:question_trimmed": 1,
+    "period:gold": 60,
+    "period:gold_operand_facts": 18,
+    "period:gold_operand_periods": 22,
+    "period:question_text": 20
+  },
+  "stage": "P1-6-0H-REDERIVED-CROSS-ENTITY",
+  "total": 120
+}

@@ -1,0 +1,43 @@
+{
+  "applied": true,
+  "benchmark": "tv2-canonical-v1",
+  "files": {
+    "canonical-eval-v1.jsonl": {
+      "role": "questions",
+      "rows": 120,
+      "sha256": "227f0341d94ab8d4b9e7ee033feaa9b40e86ec32c3137a74d2931657e9281ece"
+    },
+    "gold-evidence-v1.jsonl": {
+      "role": "gold",
+      "rows": 120,
+      "sha256": "3d2a0c5b7839656ce1414923ab90d03b844bc5c5fc17d82dc5e68224f466eb05"
+    },
+    "plan-fixtures-v8.jsonl": {
+      "role": "plan fixtures",
+      "rows": 120,
+      "sha256": "7463b45a5bfc309d0a5ab29cdb15b3f070c13c8526ae5d1486ca67847dda362d"
+    }
+  },
+  "migrations": [
+    {
+      "applied_in": "docs/evaluation/p1-6-0h-fixture-migration.md",
+      "corrections": "docs/evaluation/p1-6-0a10-expense-sign.md",
+      "id": "p1.6-0h",
+      "post": {
+        "canonical-eval-v1.jsonl": "227f0341d94ab8d4b9e7ee033feaa9b40e86ec32c3137a74d2931657e9281ece",
+        "gold-evidence-v1.jsonl": "3d2a0c5b7839656ce1414923ab90d03b844bc5c5fc17d82dc5e68224f466eb05",
+        "plan-fixtures-v8.jsonl": "7463b45a5bfc309d0a5ab29cdb15b3f070c13c8526ae5d1486ca67847dda362d"
+      },
+      "pre": {
+        "canonical-eval-v1.jsonl": "9c8ca9ceea21cecfc43a8b3861d13884b3e1a70e3839438cec3db06f599882a0",
+        "gold-evidence-v1.jsonl": "7831eef2d33abc3086f8e88c028f0e3bd3723917765612d86551d4604bba6925",
+        "plan-fixtures-v7.jsonl": "43f740f7ab702371d4cb0091ffb2071c8f7b24e8c14e35fa7612f22691e7c066"
+      },
+      "record": "migrations/p1-6-0h.json",
+      "spec": "docs/evaluation/p1-6-0g-rederivation.md",
+      "stratum": "cross_entity_comparison"
+    }
+  ],
+  "note": "Content changed under unchanged file names at P1.6-0H. The pre-migration revision is identified by the hashes under migrations[].pre; do not treat these file names as implying the pre-migration content.",
+  "version": "tv2-canonical-v1-post-p1.6-0h"
+}

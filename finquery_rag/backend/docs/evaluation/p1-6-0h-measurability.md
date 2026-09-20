@@ -1,5 +1,19 @@
 # P1.6-0H — what is measurable now, and what waits for P1.6-A
 
+> **Superseded on one point.** This document was written at the dry-run stage, and its
+> closing line — *no fixture has been changed* — was true when it was written. The
+> migration was subsequently **applied**: the rebuilt iXBRL store removed the blocker
+> described below, and the stratum went in as one batch. The measurements of what the
+> store supports remain as written and are still the reason `p1-6-0h-measurability`'s
+> option 3 was the one taken.
+>
+> Authoritative record of what actually shipped: `p1-6-0h-fixture-migration.md`, the
+> per-case diff at `benchmarks/tv2_canonical_v1/migrations/p1-6-0h.json`, and the
+> version manifest at `benchmarks/tv2_canonical_v1/benchmark-version.json`.
+>
+> The history is kept rather than edited because "dry-run, then apply" is the correct
+> order and the pre-application measurement is what justified applying it.
+
 Option A executed. Two facts decide the seal's denominator, and the second one was not
 known when A was chosen.
 
