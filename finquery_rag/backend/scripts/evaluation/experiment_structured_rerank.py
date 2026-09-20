@@ -66,6 +66,9 @@ W_ENTITY = 0.35
 W_METRIC = 0.45
 W_PERIOD = 0.20
 
+#: How much the candidate's own retrieval rank counts beside the field score.
+FUSION_WEIGHT = 0.25
+
 _STOP = frozenset("""a an the of for in on at to and or is was were be been what which
 how much did does do according filing reported report per its their this that these
 those with from by as if than then there here total""".split())
@@ -99,6 +102,18 @@ def _rerank(pool, fields, slots, cand_text, mode, canonical_of):
     ordering deterministic and means the reranker can only ever move a candidate
     relative to another on an actual field difference.
     """
+    weights = {
+        "field": (W_ENTITY, W_METRIC, W_PERIOD),
+        # Period is the field most likely to be WRONG in the plan rather than in
+        # the candidate -- a filing states one year many ways -- so this arm
+        # keeps it as a weak signal instead of a third of the score.
+        "field_period_light": (W_ENTITY, W_METRIC, W_PERIOD / 4),
+        # Metric is what the question is about; entity and period disambiguate.
+        "field_metric_heavy": (0.25, 0.55, 0.20),
+        "field_lexical": (W_ENTITY, W_METRIC, W_PERIOD),
+    }[mode]
+    we, wm, wp = weights
+
     want: set[str] = set()
     if mode == "field_lexical":
         for _, slot_metric, _ in slots:
@@ -114,10 +129,14 @@ def _rerank(pool, fields, slots, cand_text, mode, canonical_of):
             cm = canonical_of(cand_metric) or _norm(cand_metric)
             metric = 1.0 if sm and sm == cm else 0.0
             period = 1.0 if slot_period and slot_period == cand_period else 0.0
-            best = max(best, W_ENTITY * entity + W_METRIC * metric + W_PERIOD * period)
+            best = max(best, we * entity + wm * metric + wp * period)
         lexical = (len(want & _tokens(cand_text.get(key, ""))) / len(want)
                    if want else 0.0)
-        keys[key] = (-best, -lexical, rank)
+        # The fusion rank enters as a genuine component, not only as a tiebreak:
+        # the fields are coarse and hundreds of candidates share a score, so a
+        # pure field order discards the retrieval evidence for most of the list.
+        blended = best + FUSION_WEIGHT * (1.0 / (rank + 1))
+        keys[key] = (-blended, -best, -lexical, rank)
     return sorted(pool, key=lambda key: keys[key])
 
 
@@ -266,7 +285,8 @@ def main(argv: list[str] | None = None) -> int:
                     pool.append(hit.candidate_key)
 
         scored = {"fusion_only": list(pool)}
-        for mode in ("field", "field_lexical"):
+        for mode in ("field", "field_period_light", "field_metric_heavy",
+                     "field_lexical"):
             scored[mode] = _rerank(pool, fields, slots, cand_text, mode,
                                    canonical_metric_id)
         per_case[question["id"]] = scored
@@ -288,14 +308,16 @@ def main(argv: list[str] | None = None) -> int:
     print("=" * 78)
     print(f"    {'arm':16}{'R@5':>10}{'R@10':>10}{'R@20':>10}")
     results = {}
-    for arm in ("fusion_only", "field", "field_lexical"):
+    for arm in ("fusion_only", "field", "field_period_light",
+                "field_metric_heavy", "field_lexical"):
         row = {str(k): round(macro(arm, k), 6) for k in KS}
         results[arm] = row
         print(f"    {arm:16}{row['5']:>10.3%}{row['10']:>10.3%}{row['20']:>10.3%}")
     print()
     print(f"    published shipped hybrid R@5 {PUBLISHED_RRF[5]:.3%}   "
           f"(this pool, unreranked: {results['fusion_only']['5']:.3%})")
-    best = max(("fusion_only", "field", "field_lexical"),
+    best = max(("fusion_only", "field", "field_period_light",
+                "field_metric_heavy", "field_lexical"),
                key=lambda a: results[a]["5"])
     print(f"    best R@5: {best} {results[best]['5']:.3%}   "
           f"target 80.000%  {'MET' if results[best]['5'] > 0.80 else 'not met'}")
