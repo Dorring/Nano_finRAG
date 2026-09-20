@@ -47,6 +47,10 @@ CROSS = _BACKEND_DIR / "scripts/evaluation/resolve_cross_entity_v2.py"
 
 RESOLVED = "RESOLVED_COMPANY_LEVEL"
 
+#: The safety gates, named so that a zero is recorded rather than omitted.
+GATE_NAMES = ("wrong_scope", "wrong_metric", "value_mismatch",
+              "dangerous_authority", "scaffold_authority")
+
 
 def _resolver():
     spec = importlib.util.spec_from_file_location("resolver", RESOLVER)
@@ -145,7 +149,7 @@ def main(argv: list[str] | None = None) -> int:
                 f"{case_id}/{entity} from {slot.get('table_fragment_id')} "
                 f"({slot.get('statement_type')})")
 
-    # --- the transition matrix ---------------------------------------------------
+    # --- the transitions ---------------------------------------------------
     transitions = collections.Counter()
     rows = []
     for key in sorted(old):
@@ -180,8 +184,12 @@ def main(argv: list[str] | None = None) -> int:
     report = {
         "phase": "P1.6-A2B-20", "mutation": "authority: statement_type -> table_role",
         "records": len(records),
-        "gate": dict(gate), "gate_detail": {k: v for k, v in gate_detail.items()},
-        "baseline_gate": dict(old_gate),
+        # A Counter of zeros serialises to `{}`, which would leave the artifact silent
+        # about the gates that passed.  Every gate is named with its value, so a
+        # reader sees five checks rather than an empty object.
+        "gate": {name: gate.get(name, 0) for name in GATE_NAMES},
+        "gate_detail": {k: v for k, v in gate_detail.items()},
+        "baseline_gate": {name: old_gate.get(name, 0) for name in GATE_NAMES},
         "baseline_gate_detail": {k: v for k, v in old_detail.items()},
         "transitions": dict(transitions), "slots": rows,
         "old_statuses": dict(collections.Counter(s["status"] for s in old.values())),
