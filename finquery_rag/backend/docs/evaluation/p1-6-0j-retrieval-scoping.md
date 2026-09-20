@@ -68,6 +68,46 @@ canonical value under a legacy evidence id, and the release validator checks the
 answer against the structured result — so an operand whose value and citation disagree
 about which store they came from is a defect waiting to be found later.
 
+## The link exists in the source, and is dropped at parse time
+
+Option B needs to know which iXBRL fact a retrieved passage refers to. The answer is in
+the filings, and the pipeline currently throws it away.
+
+```
+raw SEC HTML
+  <p ...><span ...><ix:nonFraction id="F_fc35ccbf-b2d8-4e01-8351-c484daa23a07"
+      contextRef="C_04ab15e3-..." name="us-gaap:...">...</ix:nonFraction>
+
+1,551 ix:nonFraction elements in Microsoft's filing, 1,418 of them inside a <td>
+
+parsed block
+  {"block_type": "TABLE", "table_id": "...", "text": "☒ | ANNUAL REPORT PURSUANT TO ...",
+   "metadata": {"tag": "table"}}
+  {"block_type": "PARAGRAPH", "metadata": {"tag": "p", "element_id": null}}
+```
+
+`run_nf_v2_17a4_parse.py:824` records `element_id: n.get("id")` — **the block's own
+element**, which is a `<p>` or a `<table>` and carries no fact id. The fact id is on a
+*descendant* `ix:nonFraction`, so `element_id` is null exactly where the link would be.
+
+The R4 views inherit the gap: their `fact_ids` are `narrative:`/`atomic:` keys and their
+`row_ids` and `logical_table_ids` are empty. There is no stored path from a view to a
+tagged fact.
+
+**So the link is recoverable, by recording each block's descendant anchors at parse
+time.** That is a small change at one site. The cost is everything downstream of it:
+
+```
+parse (8 filings)  ->  atomic facts  ->  store records  ->  candidate views  ->  R4 index
+                                                                              81,576 rows,
+                                                                              40,788 views,
+                                                                              2 dense lanes
+```
+
+The anchor has to be carried through every one of those stages, and each has to be re-run.
+That is the size of option B, and it is the branch deferred earlier as "rebuild parsed
+docs correctly".
+
 ## What I have not done
 
 Nothing has been built. This is reconnaissance and sizing, because the first attempt at
@@ -78,5 +118,6 @@ The question to settle before any of A, B or C is written:
 > **Which fact does a retrieved passage refer to** — and where is that decided?
 
 That is not a retrieval question. It is the same one P1.6-A answered for the store, asked
-about the index, and it should be answered the same way: from the filing, with the
-passage's own coordinates, rather than by joining two populations on a matching value.
+about the index, and it should be answered the same way: **from the filing, by recording
+the passage's own anchors** — not by joining two populations on a matching value. The
+anchors are there; the pipeline simply does not keep them.
