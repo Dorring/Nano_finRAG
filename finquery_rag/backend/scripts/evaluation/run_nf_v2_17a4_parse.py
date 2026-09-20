@@ -125,6 +125,51 @@ def hidden(e: etree._Element) -> bool:
     return False
 
 
+def ixbrl_anchors(e: etree._Element) -> list[dict]:
+    """The inline-XBRL facts this element contains.
+
+    The fact id and its concept tag live on a **descendant**
+    ``<ix:nonFraction>``/``<ix:nonNumeric>``, not on the block's own element --
+    which is a ``<p>`` or a ``<table>`` and carries neither.  ``element_id``
+    therefore records ``None`` in exactly the place a link to the tagged fact
+    would be, and the parsed corpus ends up unable to say which fact a passage
+    states.
+
+    Recording them here is what makes the link recoverable from the filing's own
+    anchors rather than by matching a passage against a fact on their values --
+    which is the guess that would silently attach the wrong concept to a passage.
+    """
+
+    found: list[dict] = []
+    for node in e.iter():
+        if lname(node) not in ("nonfraction", "nonnumeric"):
+            continue
+        # The same filter `ix_facts` applies, so every anchor names a fact that
+        # actually reaches the corpus.  An anchor to a fact the parser drops
+        # would be a link to nothing, and counting it would overstate coverage.
+        if (
+            str(node.get("{http://www.w3.org/2001/XMLSchema-instance}nil") or "").lower()
+            == "true"
+        ):
+            continue
+        fact_id = str(node.get("id") or "").strip()
+        concept = str(node.get("name") or "").strip()
+        context_ref = str(
+            node.get("contextref") or node.get("contextRef") or ""
+        ).strip()
+        if not concept or not context_ref:
+            continue
+        found.append(
+            {
+                "fact_id": fact_id or None,
+                "concept": concept,
+                # lxml lower-cases attribute names when parsing HTML.
+                "context_ref": context_ref,
+            }
+        )
+    return found
+
+
 def text_of(e: etree._Element) -> str:
     out = []
     for n in e.iter():
@@ -795,7 +840,10 @@ def make_blocks(root, doc):
                     "source_order": o,
                     "text": tx[:2000],
                     "table_id": tid,
-                    "metadata": {"tag": "table"},
+                    "metadata": {
+                        "tag": "table",
+                        "ixbrl_anchors": ixbrl_anchors(n),
+                    },
                 }
             )
         else:
@@ -821,7 +869,11 @@ def make_blocks(root, doc):
                     "source_order": o,
                     "text": tx,
                     "table_id": None,
-                    "metadata": {"tag": lname(n), "element_id": n.get("id")},
+                    "metadata": {
+                        "tag": lname(n),
+                        "element_id": n.get("id"),
+                        "ixbrl_anchors": ixbrl_anchors(n),
+                    },
                 }
             )
             prior.append((o, tx))
