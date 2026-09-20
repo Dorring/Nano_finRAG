@@ -16,6 +16,7 @@ import logging
 import os
 import re
 import sqlite3
+import subprocess
 import sys
 import time
 import urllib.error
@@ -95,6 +96,49 @@ def _sha256_file(path: Path) -> str:
         for block in iter(lambda: f.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def _git(*args: str) -> str | None:
+    """Run one git command in this checkout, or `None` if there is no git here."""
+    try:
+        result = subprocess.run(("git", *args), cwd=Path(__file__).resolve().parents[2],
+                                capture_output=True, text=True, timeout=15)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    return result.stdout.strip() if result.returncode == 0 else None
+
+
+def _git_revision() -> str | None:
+    """The revision this run's code corresponds to.
+
+    On the deployment host the backend is copied rather than cloned, so there is no git
+    there to ask.  `NF_V3_COMMIT` supplies the answer in that case -- a run record that
+    says UNRECORDED is merely honest, whereas one that says the wrong revision is worse
+    than useless, and one that can be *told* the revision is actually checkable.
+    """
+    return os.environ.get("NF_V3_COMMIT") or _git("rev-parse", "HEAD")
+
+
+def _git_dirty() -> bool | None:
+    """Whether the tree differs from that commit.  A revision alone does not say whether
+    the code that ran was the code the revision names, so the two are recorded together."""
+    status = _git("status", "--porcelain")
+    return None if status is None else bool(status)
+
+
+def _config_fingerprint() -> str:
+    """A hash of the deployment env the run resolved, or `UNRECORDED`.
+
+    Deliberately not a recomputation of the original constant: what produced that value is
+    not in this repository, and emitting a different hash under the same name would be a
+    second fiction in the field whose only job is to be checkable.
+    """
+    for candidate in (Path("/disk/qh/nano-finrag/config/deployment/online.env"),
+                      Path(__file__).resolve().parents[2]
+                      / "config/deployment/online.env"):
+        if candidate.is_file():
+            return hashlib.sha256(candidate.read_bytes()).hexdigest()
+    return "UNRECORDED"
 
 
 # ---------------------------------------------------------------------------
@@ -782,8 +826,18 @@ def main() -> int:
 
     manifest_info = {
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
-        "commit_sha": "b393d3e8cecd2e00925d40bfb6eedaa0a7d7683e",
-        "config_fingerprint": "25e7c9b33792637ba61fefc53b80d10745895696ebe8910b3ff2c1e21ee534fc",
+        # Computed, not frozen.  These were both hard-coded constants of the original run,
+        # so every later report named a commit and a config fingerprint that were not the
+        # ones that produced it -- which is the one thing a reproducibility record must
+        # not do.  The commit is read from the working tree the run actually happened in;
+        # a tree with no git (or a dirty one) reports what it can and says so.
+        "commit_sha": _git_revision() or "UNRECORDED",
+        "commit_dirty": _git_dirty(),
+        # The original fingerprint is not recomputable here: whatever produced
+        # `25e7c9b3...` is not in this repository, so recomputing something else and
+        # calling it the same name would be a second fiction.  It is recorded as absent
+        # unless the deployment env is available to hash, which is a real input.
+        "config_fingerprint": _config_fingerprint(),
         "eval_dataset_sha256": _sha256_file(eval_path),
         "gold_dataset_sha256": _sha256_file(gold_path),
         "predictions_sha256": _sha256_file(predictions_path),
