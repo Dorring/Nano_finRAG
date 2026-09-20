@@ -350,6 +350,32 @@ class AdmissionReason(str, Enum):
     INCOMPLETE_PROVENANCE = "INCOMPLETE_PROVENANCE"
 
 
+def temporal_kind_of(name: str | None) -> TemporalKind | None:
+    """The legacy classifier's string, as the contract's enum.
+
+    Case-insensitive on purpose, and that is not a convenience.  The legacy vocabulary is
+    lower case (`unknown`, `non_temporal`) while this enum spells two of its members
+    upper case (`UNKNOWN`, `YEAR`), so the obvious `TemporalKind("unknown")` raises -- and
+    a caller catching that sees `None`, meaning *no kind at all*, for exactly the columns
+    whose shape the legacy could not determine.  That population is the one W4 exists for,
+    and a silent `None` there is indistinguishable from a missing axis.
+
+    It went unnoticed in the first W4-A smoke run for the worst possible reason: the
+    decision came out right anyway, because `None` also passes the routing gate.  A bug
+    that produces the correct answer is the kind that survives.
+
+    `None` in, `None` out.  An unmappable string is also `None`, and callers must treat
+    that as fail-closed rather than as permission.
+    """
+    if name is None:
+        return None
+    text = str(name).strip().lower()
+    for kind in TemporalKind:
+        if kind.value.lower() == text:
+            return kind
+    return None
+
+
 #: Kinds where the source declared a breakdown rather than a period.  Their cells are
 #: real and belong in the store -- as bucket facts, not as company-level period facts.
 DISAGGREGATION_KINDS = frozenset({

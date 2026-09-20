@@ -16,6 +16,7 @@ if str(_BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(_BACKEND_DIR))
 
 from src.pdf_retrieval_v4.period_binding import (  # noqa: E402
+    DISAGGREGATION_KINDS,
     AdmissionOutcome,
     AdmissionReason,
     AdmissionRequest,
@@ -31,6 +32,7 @@ from src.pdf_retrieval_v4.period_binding import (  # noqa: E402
     TemporalKindMethod,
     decide_emission_admission,
     periods_are_compatible,
+    temporal_kind_of,
 )
 
 
@@ -106,6 +108,62 @@ def test_admission_cannot_see_table_role():
         "value_normalized", "cell_id",
     }
     assert not hasattr(_request(_resolved()), "table_role")
+
+
+def test_the_legacy_vocabulary_bridges_to_the_enum():
+    """`unknown` and `UNKNOWN` are the same column shape, spelled by two layers.
+
+    `TemporalKind("unknown")` raises, so a caller that did not normalise would read every
+    legacy `unknown` as "no kind at all" -- the population W4 exists for, silently looking
+    like a missing axis.  Nothing else in the suite would have caught it.
+    """
+    for name in ("point", "duration", "comparison", "segment", "bucket", "category",
+                 "non_temporal", "unknown", "Unknown", "UNKNOWN", "year", "YEAR"):
+        assert temporal_kind_of(name) is not None, name
+    assert temporal_kind_of("unknown") is TemporalKind.UNKNOWN
+    assert temporal_kind_of("UNKNOWN") is TemporalKind.UNKNOWN
+    assert temporal_kind_of("non_temporal") is TemporalKind.NON_TEMPORAL
+
+    # `None` in, `None` out; and an unmappable string is `None` too, which callers must
+    # read as fail-closed rather than as permission.
+    assert temporal_kind_of(None) is None
+    assert temporal_kind_of("") is None
+    assert temporal_kind_of("something_new") is None
+
+
+def test_the_new_rule_differs_from_the_old_one_on_exactly_unknown():
+    """W4's rule change is one kind wide, and this is what makes that checkable.
+
+    The old expression is `kind in {point, duration, comparison}`; the new one is `kind
+    not in {segment, bucket, category, non_temporal, comparison}`.  Reading the two sets
+    against each other leaves exactly one kind on each side that the other does not have:
+
+        only the old eligible    point, duration        still eligible
+        only the new ineligible  segment, bucket, ...   still ineligible
+        in both                  comparison             eligible  -> ineligible
+        in neither               unknown                ineligible -> eligible
+
+    `unknown` is the cell A3-1d diagnosed; `comparison` is the one genuine removal, and
+    it is here so the removal is visible rather than discovered by a count going down.
+    """
+    from src.pdf_retrieval_v4.typed_evidence_emitters import ATOMIC_ELIGIBLE_KINDS
+
+    legacy = set(ATOMIC_ELIGIBLE_KINDS)
+    new_ineligible = ({k.value for k in DISAGGREGATION_KINDS}
+                      | {TemporalKind.NON_TEMPORAL.value,
+                         TemporalKind.COMPARISON.value})
+
+    assert legacy - new_ineligible == {"point", "duration"}
+    assert new_ineligible - legacy == {"segment", "bucket", "category", "non_temporal"}
+    assert legacy & new_ineligible == {"comparison"}
+
+    # Both expressions are written over the legacy classifier's vocabulary, and `unknown`
+    # is the only value of it that neither side claims.  `YEAR` is W3's kind and belongs
+    # to neither expression -- it is not a value the legacy classifier can produce.
+    legacy_vocabulary = {k.value for k in TemporalKind} - {TemporalKind.YEAR.value,
+                                                           TemporalKind.UNKNOWN.value}
+    assert (legacy | new_ineligible) == legacy_vocabulary - {TemporalKind.UNKNOWN.value}
+    assert TemporalKind.UNKNOWN.value not in (legacy | new_ineligible)
 
 
 # --- routing: what the column is ------------------------------------------------------
