@@ -76,21 +76,6 @@ VERDICTS = {
     "NO_DATE_IN_COLUMN": ("D", "the lens found a period the producer's rows do not hold"),
 }
 
-#: The refined verdict for `FULL_DATE_REFUSED`, which is split by what the cell actually
-#: says rather than by which predicate refused it.  The map above is written from
-#: expectation; this one is written from the filings, and where they disagree this one is
-#: right.  `For the Year Ended December 31, 2024` is a period header the producer's own
-#: rule would take but for a twelve-character prose limit, and calling that a legacy false
-#: positive would have hidden a real producer gap behind a bucket name.
-REFINED = (
-    ("a period header the twelve-character rule refused",
-     "A", "the cell is a period phrase plus a date and nothing else -- the producer's "
-          "twelve-character prose rule is what refused it"),
-    ("the cell names a second period",
-     "D", "the cell declares more than one period; which one the row belongs to is not "
-          "provable from the cell"),
-)
-
 
 def load(name: str, path: Path):
     spec = importlib.util.spec_from_file_location(name, path)
