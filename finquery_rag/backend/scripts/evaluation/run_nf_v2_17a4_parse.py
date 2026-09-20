@@ -514,6 +514,30 @@ def header_idx(grid) -> list[int]:
 
 def col_headers(grid, idx) -> list[str]:
     w = max((len(r) for r in grid), default=0)
+
+    # Carry each header row's text forward across blank columns.
+    #
+    # A group header like `Total` is one cell with a colspan, and the layout it
+    # spans is usually wider than that colspan reaches: a filing's three years
+    # are laid out as `2025 | | 2024 | | 2023 | |` inside a group whose colspan
+    # stops a cell short.  Reading the header at a column directly then returns a
+    # year with no group -- which is how `49,552` came out under
+    # `As of December 31 / 2023` while its siblings read `... / Total / 2024`.
+    #
+    # Carrying forward is bounded by the next non-empty cell in the same row, so
+    # a new group or a new year resets it.
+    carried: dict[int, list[str]] = {}
+    for i in idx:
+        row = grid[i]
+        running = ""
+        per_column = []
+        for c in range(w):
+            text = ws(row[c]["raw_text"]) if c < len(row) and row[c] else ""
+            if text:
+                running = text
+            per_column.append(running)
+        carried[i] = per_column
+
     out = []
     for c in range(w):
         vals = []
@@ -545,7 +569,8 @@ def col_headers(grid, idx) -> list[str]:
                     scope = ws(
                         scope + " " + date_match.group(1) + " " + date_match.group(2)
                     )
-            for part in ((scope if x else ""), x):
+            header_text = x or carried[i][c]
+            for part in ((scope if header_text else ""), header_text):
                 if part and part not in vals:
                     vals.append(part)
         out.append(" / ".join(vals))
