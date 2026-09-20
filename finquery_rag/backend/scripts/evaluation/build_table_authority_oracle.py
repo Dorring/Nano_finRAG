@@ -237,7 +237,7 @@ def _title_run(window: list[str]) -> tuple[str, int, int] | None:
     return best
 
 
-def _family(title: str) -> str:
+def family_of(title: str) -> str:
     low = title.lower()
     if "cash" in low and "flow" in low:
         return "CASH_FLOW"
@@ -366,6 +366,8 @@ def scan(document_id: str, ticker: str, accession: str) -> dict:
         title = _title_run(window)
         nearest = above[-1] if above else None
         labels = _row_labels(node)
+        rows = sum(1 for r in node.iter() if _lname(r) == "tr" and not _hidden(r))
+        figures = _has_figures(node)
         # What the filing actually calls this table: the nearest line above it that
         # is not a units caption, the registrant's name, a page number or an
         # `Item 8` header.  For a statement that line is its title; for a note it is
@@ -401,15 +403,25 @@ def scan(document_id: str, ticker: str, accession: str) -> dict:
             # a false inclusion costs one look, a false exclusion costs the
             # guarantee that this set is never promoted.
             "danger_line": label if label and DANGER_LINE.search(label) else None,
-            "row_labels": _row_labels(node),
+            "row_labels": labels,
             "column_headers": _column_headers(node),
             # The table's own leading caption, if it has one.  A statement of
             # record opens with a units caption and then its line items; a note
             # opens by naming its own subject.
             "own_caption": (labels[0] if labels else None),
-            "rows": sum(1 for r in node.iter()
-                        if _lname(r) == "tr" and not _hidden(r)),
-            "has_figures": _has_figures(node),
+            "rows": rows,
+            "has_figures": figures,
+            # Whether this is a table of figures at all, which is a different
+            # question from what it says.  A Workiva page is laid out as a stack
+            # of one- and two-row tables -- 592 of the 1498 here, carrying page
+            # numbers, cover-page checkboxes and empty spacers -- and those must
+            # leave the corpus before anything classifies them, or every metric
+            # downstream is computed over a denominator that is 40% padding.
+            "table_eligibility": (
+                "LAYOUT_SCAFFOLD"
+                if (not facts and rows <= 2 and not figures)
+                else "DATA_TABLE"
+            ),
             "body_head": _text(node)[:220],
         })
 
@@ -431,11 +443,12 @@ def decide(table: dict) -> dict:
     undim = table["undimensioned_facts"]
     facts = table["facts"]
 
-    if facts == 0 and table["rows"] <= 2 and not table["has_figures"]:
-        # A table with no tagged fact whose whole content is one or two rows with
-        # no row of figures.  Workiva lays a page out as a stack of these -- 592 of
-        # the 1498 tables here, carrying page numbers, cover-page checkboxes and
-        # empty spacers -- and a page footer states nothing, tagged or not.
+    if table["table_eligibility"] == "LAYOUT_SCAFFOLD":
+        # Settled before any reading of the table, because it is not a table of
+        # figures and the question does not arise.  Eligibility is separate from
+        # role on purpose: "is this a data table" and "may it speak for the
+        # company" are two properties, and folding the first into the second is
+        # what put 592 pieces of page furniture into every denominator.
         return {"label": "NON_PRIMARY", "reason": "LAYOUT_SCAFFOLDING",
                 "detail": f"a {table['rows']}-row table with no iXBRL fact and no row "
                           f"of figures: page layout, not a table of figures",
@@ -478,11 +491,11 @@ def decide(table: dict) -> dict:
                     "reason": "TITLE_STATEMENT_OF_RECORD",
                     "detail": f"{title!r} stands {distance} line(s) above the table "
                               f"and the table carries {undim} company-level fact(s)",
-                    "family": _family(title)}
+                    "family": family_of(title)}
         return {"label": "UNRESOLVED", "reason": "TITLE_WITHOUT_COMPANY_LEVEL_FACTS",
                 "detail": f"{title!r} stands {distance} line(s) above the table but "
                           f"none of its {facts} fact(s) is company-level",
-                "family": _family(title)}
+                "family": family_of(title)}
 
     if facts == 0:
         return {"label": "UNRESOLVED", "reason": "NO_TAGGED_FACTS",
@@ -494,6 +507,28 @@ def decide(table: dict) -> dict:
             "detail": f"{undim} of {facts} fact(s) are company-level but no "
                       f"statement title stands within three lines",
             "family": None}
+
+
+def oracle_role(table: dict) -> str:
+    """How far this table's label can be trusted.
+
+    Two tiers, and the distinction is the whole point of separating them.  `PRIMARY`
+    and `DANGEROUS_NEGATIVE` are the **hard** oracle: the 42 statements were read
+    one by one and all 42 are genuine, and the dangerous set is the safety gate --
+    tables whose own caption names a disaggregation and which must never be
+    promoted.  The rules' other decisions are **weak**: they are the source
+    declaring a fact's scope, which is sound, but nobody has checked them table by
+    table, so they may be reported and must not decide whether a classifier passes.
+    """
+    if table["verdict"]["label"] == "PRIMARY_FINANCIAL_STATEMENT":
+        return "PRIMARY"
+    if table["table_eligibility"] == "LAYOUT_SCAFFOLD":
+        return "SCAFFOLD"
+    if table["danger_line"]:
+        return "DANGEROUS_NEGATIVE"
+    if table["verdict"]["label"] == "NON_PRIMARY":
+        return "WEAK_NON_PRIMARY"
+    return "OPEN"
 
 
 def stratum_of(table: dict, verdict: dict) -> list[str]:
@@ -528,24 +563,27 @@ def main(argv: list[str] | None = None) -> int:
         record = scan(document_id, ticker, accession)
         for table in record["tables"]:
             table["verdict"] = decide(table)
+            table["oracle_role"] = oracle_role(table)
             table["strata"] = stratum_of(table, table["verdict"])
 
+        eligibility = collections.Counter(t["table_eligibility"] for t in record["tables"])
+        roles = collections.Counter(t["oracle_role"] for t in record["tables"])
         labels = collections.Counter(t["verdict"]["label"] for t in record["tables"])
         counts = collections.Counter(t["verdict"]["reason"] for t in record["tables"])
-        primary = [t for t in record["tables"]
-                   if t["verdict"]["label"] == "PRIMARY_FINANCIAL_STATEMENT"]
-        danger = [t for t in record["tables"] if "DANGER_NEIGHBOUR" in t["strata"]]
-        danger_primary = [t for t in danger
-                          if t["verdict"]["label"] == "PRIMARY_FINANCIAL_STATEMENT"]
+        primary = [t for t in record["tables"] if t["oracle_role"] == "PRIMARY"]
+        danger = [t for t in record["tables"] if t["oracle_role"] == "DANGEROUS_NEGATIVE"]
+        danger_primary = [t for t in danger if t["oracle_role"] == "PRIMARY"]
 
-        print(f"--- {document_id}  tables {len(record['tables'])}")
+        print(f"--- {document_id}  tables {len(record['tables'])}  "
+              f"{dict(eligibility)}")
         print(f"    {dict(labels)}")
         for reason, count in counts.most_common():
             print(f"      {count:>4}  {reason}")
+        print(f"    hard oracle: {roles['PRIMARY']} primary, "
+              f"{roles['DANGEROUS_NEGATIVE']} dangerous negative; "
+              f"weak {roles['WEAK_NON_PRIMARY']}, open {roles['OPEN']}")
         print(f"    primary with a title: "
               f"{[(t['table_ordinal'], t['verdict']['family']) for t in primary]}")
-        print(f"    danger-neighbour tables {len(danger)}, "
-              f"of them called primary {len(danger_primary)}")
         for table in danger_primary:
             print(f"      !! {table['oracle_key']} {table['title']!r} "
                   f"danger={table['danger_line']!r}")
@@ -554,16 +592,23 @@ def main(argv: list[str] | None = None) -> int:
         report["documents"][document_id] = {
             "ticker": ticker, "accession": accession,
             "tables": record["tables"],
+            "eligibility": dict(eligibility), "roles": dict(roles),
             "labels": dict(labels), "reasons": dict(counts),
         }
         totals.update(labels)
+        for name, count in eligibility.items():
+            totals[f"ELIGIBILITY_{name}"] += count
+        for name, count in roles.items():
+            totals[f"ROLE_{name}"] += count
         reasons.update(counts)
         per_document[document_id] = {
             "tables": len(record["tables"]),
-            "primary": labels["PRIMARY_FINANCIAL_STATEMENT"],
-            "non_primary": labels["NON_PRIMARY"],
-            "unresolved": labels["UNRESOLVED"],
-            "danger": len(danger),
+            "data_tables": eligibility["DATA_TABLE"],
+            "layout_scaffold": eligibility["LAYOUT_SCAFFOLD"],
+            "primary": roles["PRIMARY"],
+            "dangerous_negative": roles["DANGEROUS_NEGATIVE"],
+            "weak_non_primary": roles["WEAK_NON_PRIMARY"],
+            "open": roles["OPEN"],
             "danger_primary": len(danger_primary),
         }
 
@@ -599,7 +644,12 @@ def main(argv: list[str] | None = None) -> int:
         "".join(digest_rows), encoding="utf-8")
 
     print("=== totals ===")
-    print(f"  {dict(totals)}")
+    print(f"  eligibility  data tables {totals['ELIGIBILITY_DATA_TABLE']}   "
+          f"layout scaffolds {totals['ELIGIBILITY_LAYOUT_SCAFFOLD']}")
+    print(f"  hard oracle  primary {totals['ROLE_PRIMARY']}   "
+          f"dangerous negatives {totals['ROLE_DANGEROUS_NEGATIVE']}")
+    print(f"  weak         non-primary {totals['ROLE_WEAK_NON_PRIMARY']}   "
+          f"open {totals['ROLE_OPEN']}")
     print()
     print("=== reasons ===")
     for reason, count in reasons.most_common():
