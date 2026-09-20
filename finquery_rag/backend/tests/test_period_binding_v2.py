@@ -173,24 +173,38 @@ def test_round_trip_keeps_the_two_enums_apart():
 
 # --- W1 is behaviour-neutral --------------------------------------------------------
 
-def test_nothing_in_the_pipeline_imports_this_module_yet():
-    """W1 lands the contract; W2 starts populating it.
+#: The modules that actually produce facts.  W2 adds a shadow producer that *does* import
+#: the contract, and that is allowed -- what must stay true is that nothing on the path
+#: from a filing to an AtomicFact reads it.
+PRODUCTION_PATH = (
+    "run_nf_v2_17a4_parse.py",
+    "build_store_v2.py",
+    "resolve_store_v2_slot.py",
+    "resolve_cross_entity_v2.py",
+    "trusted_v2_canonical_fact_store.py",
+    "html_semantic_adapter.py",
+    "temporal_axis_graph.py",
+    "typed_evidence_emitters.py",
+    "semantic_row_classifier.py",
+    "metric_path_builder.py",
+)
 
-    If a pipeline module already imports this, W1 stopped being a contract commit and
-    the 47-slot result can no longer be attributed between introduction and migration.
+
+def test_the_production_path_does_not_import_this_module():
+    """The contract is a contract until something that emits facts reads it.
+
+    Narrowed at W2: the earlier version forbade any module under the three trees, which a
+    shadow producer legitimately violates.  What must hold is that the path from a filing
+    to an AtomicFact -- parse, store build, resolve -- does not touch it.
     """
-    roots = [_BACKEND_DIR / "src" / "pdf_retrieval_v4",
-             _BACKEND_DIR / "src" / "runtime",
-             _BACKEND_DIR / "scripts" / "evaluation"]
     offenders = []
-    for root in roots:
-        for path in root.rglob("*.py"):
-            if path.name == "period_binding.py":
-                continue
+    for name in PRODUCTION_PATH:
+        for path in _BACKEND_DIR.rglob(name):
             text = path.read_text(encoding="utf-8", errors="replace")
-            if "period_binding import" in text or "from .period_binding" in text:
+            if "period_binding import" in text:
                 offenders.append(str(path.relative_to(_BACKEND_DIR)))
-    assert offenders == [], f"W1 must not be imported yet: {offenders}"
+    assert offenders == [], (
+        f"the production path must not consume PeriodBindingV2 yet: {offenders}")
 
 
 def test_the_sealed_counts_are_untouched_by_this_commit():
