@@ -41,27 +41,74 @@ DEFAULT_STORE = Path(
 #: cannot be mistaken for a column.
 _COMPANY_LEVEL = re.compile(r"(?:^|/)\s*(total|consolidated|firm)\b", re.I)
 
+#: Where a filing states the company's own figures.  In these tables the columns
+#: are periods -- 2025, 2024, 2023 -- because the table as a whole is the company,
+#: so there is no `Total` column to look for.  This is the signal that separates a
+#: primary statement from a breakdown, and the earlier rule, which looked for a
+#: column named `Total`, failed on 40 of 47 slots for want of it.
+_PRIMARY_STATEMENTS = frozenset({"INCOME_STATEMENT", "BALANCE_SHEET", "CASH_FLOW"})
+
 #: Columns that carry no figure of their own -- change columns, percentages,
 #: basis comparisons.  Excluded from company-level candidacy rather than treated
 #: as segments, because they are not scope claims at all.
 _NON_SCOPE = re.compile(r"\b(change|%|percent|versus|increase|decrease)\b", re.I)
+
+#: A column header that is only a period, a unit note or both.  In a breakdown
+#: these say nothing about scope, so a row carrying one is neither a company
+#: figure nor a named segment -- it is unlabelled, and is reported as such.
+#:
+#: Written as a **token test rather than one nested pattern**.  The first version
+#: was `^(?:…|\s)*)+$`, whose inner `*` and outer `+` range over overlapping
+#: alternatives -- catastrophic backtracking, and the acceptance run hung with no
+#: output rather than failing. Splitting on separators and testing each token
+#: keeps the same meaning with no nesting.
+_PERIOD_TOKENS = frozenset({
+    "in", "except", "millions", "thousands", "billions", "dollars", "shares",
+    "per", "share", "amounts", "amount", "ratios", "ratio", "data", "and",
+    "year", "years", "ended", "end", "as", "of", "fiscal", "quarter", "quarterly",
+    "three", "six", "nine", "twelve", "months", "month", "ytd", "to", "date",
+    "december", "january", "february", "march", "april", "may", "june", "july",
+    "august", "september", "october", "november",
+})
+_PERIOD_SPLIT = re.compile(r"[^a-z0-9]+")
+
+
+def _is_period_or_unit(column: str) -> bool:
+    """Whether a column header says only *when*, or only what units it is in."""
+
+    tokens = [t for t in _PERIOD_SPLIT.split(column.casefold()) if t]
+    if not tokens:
+        return True
+    return all(t in _PERIOD_TOKENS or t.isdigit() for t in tokens)
 
 
 def _norm(text: object) -> str:
     return " ".join(str(text or "").split()).casefold()
 
 
-def _matches_metric(label: object, metric: str) -> bool:
-    """Whether the row label names the metric, as a whole phrase.
+#: A trailing unit caption on a row label: `Net income (in millions)`.
+_ROW_CAPTION = re.compile(r"\s*\((?:in|except|dollars in|amounts in)[^)]*\)\s*$", re.I)
 
-    Word-boundary rather than substring: `interest expense` is a substring of
-    `Total noninterest expense`, so a naive `in` matched the wrong row and
-    resolved the slot to `95,640` -- a different line item -- with no sign that
-    anything was wrong.  That is the failure this whole line of work is about,
-    arriving from a direction nothing had checked.
+
+def _matches_metric(label: object, metric: str) -> bool:
+    """Whether the row label names the metric and nothing further.
+
+    **Equality after stripping a unit caption**, not a prefix and not a
+    substring.  Two defects have now arrived through this one function:
+
+    - substring: `interest expense` is a substring of `Total noninterest
+      expense`, so the slot resolved to `95,640`, a different line item;
+    - word-boundary prefix: `net income` is a prefix of `Net income per share`
+      and of `Net income attributable to …`, so a primary statement -- which
+      holds all of those -- reported six competing values and the slot went
+      AMBIGUOUS rather than resolving to the row the filing calls `Net income`.
+
+    Each was found by an acceptance check rather than by reading the code, and
+    each looked like a working resolver from the inside.
     """
 
-    return re.search(rf"(?<![a-z]){re.escape(metric)}(?![a-z])", _norm(label)) is not None
+    folded = _ROW_CAPTION.sub("", _norm(label)).strip()
+    return folded == metric
 
 
 def resolve(records: list[dict], entity: str, metric: str, period: str) -> dict:
@@ -85,6 +132,33 @@ def resolve(records: list[dict], entity: str, metric: str, period: str) -> dict:
         return {"status": "NO_FACT", "entity": entity, "metric": metric,
                 "period": period, "candidates": 0}
 
+    # A row in a primary statement *is* the company's figure: those tables have
+    # period columns, not scope columns.  Tried first, because it is the direct
+    # statement of the thing being asked and does not depend on a table having
+    # chosen to head a column `Total`.
+    primary = [r for r in pool
+               if str(r.get("statement_type")) in _PRIMARY_STATEMENTS]
+    if primary:
+        values = {str(r.get("value")) for r in primary}
+        if len(values) == 1:
+            record = primary[0]
+            return {
+                "status": "RESOLVED_COMPANY_LEVEL",
+                "entity": entity, "metric": metric, "period": period,
+                "value": record.get("value"), "value_raw": record.get("value_raw"),
+                "column_header": record.get("column_header"),
+                "statement_type": record.get("statement_type"),
+                "table_fragment_id": record.get("table_fragment_id"),
+                "cell_id": record.get("cell_id"),
+                "segments_seen": [],
+                "basis": "primary statement",
+                "candidates": len(pool),
+            }
+        return {"status": "AMBIGUOUS_COMPANY_LEVEL", "entity": entity,
+                "metric": metric, "period": period,
+                "values": sorted(values), "candidates": len(pool),
+                "basis": "primary statement"}
+
     scoped: dict[str, list[dict]] = defaultdict(list)
     unscoped = []
     for record in pool:
@@ -93,7 +167,7 @@ def resolve(records: list[dict], entity: str, metric: str, period: str) -> dict:
             continue
         if _COMPANY_LEVEL.search(column):
             scoped["company"].append(record)
-        elif column.strip():
+        elif column.strip() and not _is_period_or_unit(column):
             scoped[column].append(record)
         else:
             unscoped.append(record)

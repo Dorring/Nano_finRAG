@@ -164,6 +164,13 @@ def to_v2(records: list[dict], source: dict) -> list[dict]:
             "unit": record.get("unit"),
             "scale": record.get("scale"),
             "currency": record.get("currency"),
+            # Which statement the row is in.  This is the signal that separates a
+            # primary statement from a breakdown, and it is what decides whether
+            # a period column is the company figure: a consolidated income
+            # statement has no `Total` column, because the table is the company.
+            # `UNKNOWN` means "not a primary statement" and must never be read as
+            # "probably one".
+            "statement_type": record.get("statement_type"),
             # The structure the legacy store did not carry.
             "table_fragment_id": record.get("table_fragment_id"),
             "row_id": record.get("row_id"),
