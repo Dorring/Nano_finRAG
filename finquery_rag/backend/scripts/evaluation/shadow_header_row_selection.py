@@ -137,6 +137,12 @@ def main(argv: list[str] | None = None) -> int:
 
         old = nf.header_idx(grid)
         new = header_idx_v2(nf, grid)
+        # Extend, never replace.  The old selector's inclusions are load-bearing:
+        # Pfizer's equity statement labels each period inline on what is structurally a
+        # data row, so the new structural test rejects rows the old rule found usefully.
+        # A union keeps both and drops neither, which is what makes this an extension
+        # rather than a rewrite with a regression attached.
+        union = sorted(set(old) | set(new))
 
         def dated(idx):
             headers = nf.col_headers(grid, idx)
@@ -145,21 +151,24 @@ def main(argv: list[str] | None = None) -> int:
 
         old_dated, width = dated(old)
         new_dated, _ = dated(new)
+        union_dated, _ = dated(union)
 
         key = f"{document_id}#{order}"
         report["tables"][key] = {
             "family": family, "role": role, "grid_rows": len(grid),
-            "old_header_idx": old, "new_header_idx": new,
+            "old_header_idx": old, "new_header_idx": new, "union_header_idx": union,
             "added": sorted(set(new) - set(old)), "removed": sorted(set(old) - set(new)),
             "old_dated_columns": old_dated, "new_dated_columns": new_dated,
+            "union_dated_columns": union_dated,
             "columns": width,
         }
-        print(f"  [{role}] {key:<20} {family:<16} rows {len(grid):>3}")
-        print(f"        old {old}  -> dated {old_dated}/{width}")
-        print(f"        new {new}  -> dated {new_dated}/{width}")
-        if set(new) - set(old):
-            print(f"        added {sorted(set(new) - set(old))}   "
-                  f"removed {sorted(set(old) - set(new))}")
+        print(f"  [{role}] {key:<20} {family:<16} rows {len(grid):>3}  cols {width}")
+        print(f"        old   {old}")
+        print(f"        new   {new}                     dated {new_dated}/{width}")
+        print(f"        union {union}                     dated {union_dated}/{width}")
+        if set(old) - set(new):
+            print(f"        new drops {sorted(set(old) - set(new))} -- "
+                  f"union retains {'them' if len(set(old) - set(new)) > 1 else 'it'}")
         print()
 
     args.out.mkdir(parents=True, exist_ok=True)
