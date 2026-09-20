@@ -71,6 +71,19 @@ DOCUMENTS = {
     "v_fy2025": ("V", "SEC_1403161_000140316125000089"),
 }
 
+#: Filings outside the eight the rules were designed against.  Kept **out** of
+#: `DOCUMENTS` so that an ordinary run cannot silently absorb them and move the sealed
+#: counts; a holdout is run by naming it.  Neither of these filers contributed a title,
+#: a weight, a threshold or an adjudication to anything in A2B-19A, 19B or 20.
+#:
+#: The authoring platform is the same as the eight -- Workiva -- so this tests
+#: generalisation across **filers**, not across authoring styles.  That limitation is
+#: recorded rather than papered over; a different-platform filing has not been run.
+HOLDOUT = {
+    "amzn_fy2025": ("AMZN", "SEC_1018724_000101872426000004"),
+    "googl_fy2025": ("GOOGL", "SEC_1652044_000165204426000018"),
+}
+
 #: The three statement families the resolver admits.  Kept here so the oracle can
 #: say which family a primary table belongs to without that being the decision.
 PRIMARY_FAMILIES = ("INCOME_STATEMENT", "BALANCE_SHEET", "CASH_FLOW")
@@ -548,9 +561,15 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--documents", default="")
+    parser.add_argument("--holdout", action="store_true",
+                        help="run the filings held out of every rule's design")
     args = parser.parse_args(argv)
 
-    wanted = [d for d in args.documents.split(",") if d] or sorted(DOCUMENTS)
+    universe = {**DOCUMENTS, **HOLDOUT}
+    if args.holdout:
+        wanted = sorted(HOLDOUT)
+    else:
+        wanted = [d for d in args.documents.split(",") if d] or sorted(DOCUMENTS)
     report = {"phase": "P1.6-A2B-19A", "mutation": "none", "documents": {}}
     totals = collections.Counter()
     reasons = collections.Counter()
@@ -559,7 +578,7 @@ def main(argv: list[str] | None = None) -> int:
     print("=== table authority oracle ===")
     print()
     for document_id in wanted:
-        ticker, accession = DOCUMENTS[document_id]
+        ticker, accession = universe[document_id]
         record = scan(document_id, ticker, accession)
         for table in record["tables"]:
             table["verdict"] = decide(table)
