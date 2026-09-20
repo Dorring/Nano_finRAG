@@ -337,9 +337,16 @@ class AdmissionReason(str, Enum):
 
     #: 1. Routing -- what the source declared this column to be.  Not a completeness
     #: judgement: a segment column is not an incomplete fact, it is a different fact.
+    #:
+    #: `comparison` is deliberately **not** here.  A first draft had it, on the reasoning
+    #: that a `% change` column is a different fact type emitted elsewhere -- and that
+    #: reasoning was asserted without being checked.  On the Store V2 path it is false:
+    #: `html_semantic_adapter` calls `emit_atomic_facts` and nothing else, so a comparison
+    #: cell withheld here is not reclassified, it is *gone*.  Whether a percentage-change
+    #: column ought to be an atomic fact is a real question, and it belongs to the
+    #: comparison-fact work rather than being settled by a side effect of W4.
     DISAGGREGATION_AXIS = "DISAGGREGATION_AXIS"
     NON_PERIOD_AXIS = "NON_PERIOD_AXIS"
-    COMPARISON_AXIS = "COMPARISON_AXIS"
 
     #: 2. The period itself.
     NO_BINDING = "NO_BINDING"
@@ -460,6 +467,13 @@ def decide_emission_admission(request: AdmissionRequest) -> EmissionAdmission:
     segment column is not an incomplete period fact, it is a breakdown, and it is
     answered with a routing reason rather than a completeness one.
 
+    Against the old rule this is **one kind wide, and only one**: the old whitelist
+    `{point, duration, comparison}` becomes the negative
+    `not in {segment, bucket, category, non_temporal}`, which differs on exactly `unknown`
+    -- the population A3-1d diagnosed -- and on nothing else.
+    `test_the_new_rule_differs_from_the_old_one_on_exactly_unknown` reads the two sets
+    against each other and asserts it, so the phase cannot quietly widen.
+
     A `CONFLICT` is withheld with its candidates kept.  It may not be stored because
     storing it would require choosing one period, and choosing is the guess this layer
     exists to refuse.  An `UNRESOLVED` binding is withheld too: the new path recovering
@@ -473,9 +487,6 @@ def decide_emission_admission(request: AdmissionRequest) -> EmissionAdmission:
     if kind is TemporalKind.NON_TEMPORAL:
         return EmissionAdmission(AdmissionOutcome.WITHHOLD,
                                  AdmissionReason.NON_PERIOD_AXIS)
-    if kind is TemporalKind.COMPARISON:
-        return EmissionAdmission(AdmissionOutcome.WITHHOLD,
-                                 AdmissionReason.COMPARISON_AXIS)
 
     binding = request.binding
     if isinstance(binding, Conflict):

@@ -135,27 +135,27 @@ def test_the_new_rule_differs_from_the_old_one_on_exactly_unknown():
     """W4's rule change is one kind wide, and this is what makes that checkable.
 
     The old expression is `kind in {point, duration, comparison}`; the new one is `kind
-    not in {segment, bucket, category, non_temporal, comparison}`.  Reading the two sets
-    against each other leaves exactly one kind on each side that the other does not have:
+    not in {segment, bucket, category, non_temporal}`.  Reading the two sets against each
+    other leaves exactly one kind on one side that the other does not have:
 
-        only the old eligible    point, duration        still eligible
-        only the new ineligible  segment, bucket, ...   still ineligible
-        in both                  comparison             eligible  -> ineligible
-        in neither               unknown                ineligible -> eligible
+        in both                point, duration, comparison   still eligible
+        only new-ineligible    segment, bucket, category,    still ineligible
+                               non_temporal
+        in neither             unknown         ineligible -> eligible
 
-    `unknown` is the cell A3-1d diagnosed; `comparison` is the one genuine removal, and
-    it is here so the removal is visible rather than discovered by a count going down.
+    `unknown` is the cell A3-1d diagnosed, and it is the *only* kind W4 moves.  If a kind
+    is ever added to either side, this fails rather than widening the admission rule by a
+    kind nobody chose.
     """
     from src.pdf_retrieval_v4.typed_evidence_emitters import ATOMIC_ELIGIBLE_KINDS
 
     legacy = set(ATOMIC_ELIGIBLE_KINDS)
     new_ineligible = ({k.value for k in DISAGGREGATION_KINDS}
-                      | {TemporalKind.NON_TEMPORAL.value,
-                         TemporalKind.COMPARISON.value})
+                      | {TemporalKind.NON_TEMPORAL.value})
 
-    assert legacy - new_ineligible == {"point", "duration"}
+    assert legacy - new_ineligible == {"point", "duration", "comparison"}
     assert new_ineligible - legacy == {"segment", "bucket", "category", "non_temporal"}
-    assert legacy & new_ineligible == {"comparison"}
+    assert not (legacy & new_ineligible)
 
     # Both expressions are written over the legacy classifier's vocabulary, and `unknown`
     # is the only value of it that neither side claims.  `YEAR` is W3's kind and belongs
@@ -176,9 +176,17 @@ def test_a_segment_column_is_routed_not_judged_incomplete():
         assert admission.reason is AdmissionReason.DISAGGREGATION_AXIS
 
 
-def test_a_comparison_column_routes_to_its_own_emitter():
+def test_a_comparison_column_stays_admitted():
+    """`% change` columns are a real question, and not W4's to answer.
+
+    A first draft withheld them, reasoning that a comparison is a different fact type
+    emitted elsewhere.  That was asserted without being checked, and on the Store V2 path
+    it is false: `html_semantic_adapter` calls `emit_atomic_facts` and nothing else, so a
+    comparison cell withheld here is not reclassified but gone.  Withholding would have
+    been a coverage removal smuggled in under a decoupling.
+    """
     admission = decide_emission_admission(_request(_resolved(), TemporalKind.COMPARISON))
-    assert admission.reason is AdmissionReason.COMPARISON_AXIS
+    assert admission.admitted
 
 
 def test_a_non_temporal_column_is_withheld_as_having_no_period():
