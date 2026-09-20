@@ -1158,6 +1158,7 @@ def build_trusted_v2_runtime_for_request(
     resources: TrustedV2RuntimeResources | None = None,
     alignment_override: Any | None = None,
     retriever_factory: Callable[[Any], Any] | None = None,
+    pool_reranker: Callable[[Any, Any], Any] | None = None,
 ) -> TrustedFinancialRuntimeV2:
     """Build one real ``TrustedFinancialRuntimeV2`` for a financial request.
 
@@ -1208,6 +1209,7 @@ def build_trusted_v2_runtime_for_request(
             retriever,
             materializer=resources.fact_store.materialize,
             document_scope=document_scope,
+            pool_reranker=pool_reranker,
         )
         retrieval = R4RetrievalCapability(
             policy,

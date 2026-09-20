@@ -365,6 +365,7 @@ class CandidateDirectR4Policy:
         document_scope: Sequence[str] = (),
         alias_expansion: bool = False,
         slot_top_k: int | None = None,
+        pool_reranker: Callable | None = None,
     ) -> None:
         if not isinstance(retriever, CandidateDirectRetriever):
             raise TypeError("retriever must be CandidateDirectRetriever")
@@ -379,6 +380,12 @@ class CandidateDirectR4Policy:
         # Per-lane retrieval depth.  `None` keeps the merge's own default rather
         # than restating it here, so the production depth has one home.
         self.slot_top_k = slot_top_k
+        # Experiment seam, `None` by default: reorders the pool AFTER this
+        # class's entity and scope ordering and BEFORE the `final_pool_k` cut,
+        # which is the only place a reranker can act.  Reranking inside the
+        # retriever would be undone here -- the sort below re-establishes entity
+        # priority and the reranked order would survive only as a tiebreak.
+        self.pool_reranker = pool_reranker
         self.calls = 0
 
     @staticmethod
@@ -588,6 +595,9 @@ class CandidateDirectR4Policy:
                     ),
                 )
             ]
+
+        if self.pool_reranker is not None:
+            candidates = list(self.pool_reranker(candidates, requests))
 
         # Keep the Binder request bounded after the single-slot expansion.
         # Scope ordering is intentionally performed before this cap so a

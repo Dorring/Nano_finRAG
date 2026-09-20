@@ -74,6 +74,27 @@ how much did does do according filing reported report per its their this that th
 those with from by as if than then there here total""".split())
 
 
+def _period_key(value: Any) -> str:
+    """`FY2025`, `2025`, `fy 2025` are the same period; the store and the plan
+    spell it differently and a raw string compare throws that agreement away."""
+    text = _norm(value).replace("fy", "").strip()
+    return text
+
+
+def _entity_key(value: Any, canonical_entity) -> str:
+    """`The Coca-Cola Company`, `Coca-Cola` and `KO` are one filer.  The entity
+    vocabulary already knows this; comparing surfaces instead of ids is how the
+    entity term silently matched nothing."""
+    return canonical_entity(value) or _norm(value)
+
+
+def _metric_overlap(left: str, right: str) -> float:
+    a, b = _tokens(left), _tokens(right)
+    if not a or not b:
+        return 0.0
+    return len(a & b) / max(len(a), len(b))
+
+
 def _norm(text: Any) -> str:
     return re.sub(r"[^a-z0-9]+", " ", str(text or "").casefold()).strip()
 
@@ -122,13 +143,20 @@ def _rerank(pool, fields, slots, cand_text, mode, canonical_of):
     keys: dict[str, tuple] = {}
     for rank, key in enumerate(pool):
         cand_entity, cand_metric, cand_period = fields.get(key, ("", "", ""))
+        cand_pkey = _period_key(cand_period)
         best = 0.0
         for slot_entity, slot_metric, slot_period in slots:
             entity = 1.0 if slot_entity and slot_entity == cand_entity else 0.0
-            sm = canonical_of(slot_metric) or _norm(slot_metric)
-            cm = canonical_of(cand_metric) or _norm(cand_metric)
-            metric = 1.0 if sm and sm == cm else 0.0
-            period = 1.0 if slot_period and slot_period == cand_period else 0.0
+            sm = canonical_of(slot_metric)
+            cm = canonical_of(cand_metric)
+            if sm and cm:
+                metric = 1.0 if sm == cm else 0.0
+            else:
+                # One side is a label the ontology cannot name.  Falling back to
+                # exact surface equality makes those candidates unmatchable and
+                # silently scores them 0 against every slot.
+                metric = _metric_overlap(slot_metric, cand_metric)
+            period = 1.0 if _period_key(slot_period) and                 _period_key(slot_period) == cand_pkey else 0.0
             best = max(best, we * entity + wm * metric + wp * period)
         lexical = (len(want & _tokens(cand_text.get(key, ""))) / len(want)
                    if want else 0.0)
@@ -176,6 +204,9 @@ def main(argv: list[str] | None = None) -> int:
                  else _path_env(environ, "TRUSTED_V2_R4_INDEX_DIR", directory=True))
 
     # -- candidate fields, straight from the store the index was built from ----
+    from rag_v2.supervisor.semantic_alignment import (  # noqa: E402
+        canonical_entity_id)
+
     fields: dict[str, tuple[str, str, str]] = {}
     cand_text: dict[str, str] = {}
     for line in args.v2_fact_store.read_text(encoding="utf-8").splitlines():
@@ -185,7 +216,8 @@ def main(argv: list[str] | None = None) -> int:
         key = str(record.get("candidate_key") or record.get("candidate_id") or "")
         if not key:
             continue
-        fields[key] = (_norm(record.get("entity")), str(record.get("metric") or ""),
+        fields[key] = (_entity_key(record.get("entity"), canonical_entity_id),
+                       str(record.get("metric") or ""),
                        str(record.get("period") or ""))
         cand_text[key] = " ".join(str(v) for v in (
             record.get("metric"), record.get("row_label"),
@@ -242,7 +274,7 @@ def main(argv: list[str] | None = None) -> int:
         # The demand, as the plan states it: entity and period are plan-level,
         # the metric phrase is per slot.
         plan = build_query_plan(question["question"], ())
-        issuer = _norm(getattr(plan, "issuer", None))
+        issuer = _entity_key(getattr(plan, "issuer", None), canonical_entity_id)
         slots: list[tuple[str, str, str]] = []
         for slot in plan.operand_slots:
             phrase = str(getattr(slot, "raw_metric_phrase", "") or "")
@@ -320,7 +352,7 @@ def main(argv: list[str] | None = None) -> int:
                 "field_metric_heavy", "field_lexical"),
                key=lambda a: results[a]["5"])
     print(f"    best R@5: {best} {results[best]['5']:.3%}   "
-          f"target 80.000%  {'MET' if results[best]['5'] > 0.80 else 'not met'}")
+          f"target 85.000%  {'MET' if results[best]['5'] >= 0.85 else 'not met'}")
     print()
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
@@ -328,7 +360,7 @@ def main(argv: list[str] | None = None) -> int:
         json.dumps({"scorable_cases": len(scorable), "results": results,
                     "weights": {"entity": W_ENTITY, "metric": W_METRIC,
                                 "period": W_PERIOD},
-                    "target": 0.80}, ensure_ascii=False, indent=2,
+                    "target": 0.85}, ensure_ascii=False, indent=2,
                    sort_keys=True) + "\n", encoding="utf-8", newline="\n")
     print(f"  written to {args.out_dir / 'structured-rerank.json'}")
     return 0

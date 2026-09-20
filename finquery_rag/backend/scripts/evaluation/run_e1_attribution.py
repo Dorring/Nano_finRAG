@@ -71,8 +71,95 @@ GATE_REASONS = {
     "INVALID_PLAN": "INVALID_PLAN",
 }
 
+#: Weights from the E4 rerank experiment, which measured Recall@5 82.667% on the
+#: benchmark path.  Period is deliberately the weak term: the plan's period is
+#: the field most likely to be wrong, and every arm that weighted it fully lost
+#: R@10 and R@20 to buy a little R@5.
+RERANK_W_ENTITY = 0.25
+RERANK_W_METRIC = 0.55
+RERANK_W_PERIOD = 0.20
+RERANK_FUSION_WEIGHT = 0.25
+
+
+def make_pool_reranker():
+    """Reorder the policy's pool by how well each candidate matches the demand.
+
+    Reads the fields the pool already carries -- `normalized_metric`, `period`,
+    `entity` -- against the slots the plan asked for.  No gold, no case ids, no
+    branch on question text: a fixed function applied to every request.  The
+    candidate's own pool position enters as a component, because the field score
+    is coarse and hundreds of candidates tie.
+    """
+    from rag_v2.supervisor.semantic_alignment import (
+        canonical_entity_id, canonical_metric_id)
+
+    import re as _re
+
+    def _norm(value: Any) -> str:
+        return _re.sub(r"[^a-z0-9]+", " ", str(value or "").casefold()).strip()
+
+    def _period_key(value: Any) -> str:
+        return _norm(value).replace("fy", "").strip()
+
+    def _overlap(left: str, right: str) -> float:
+        a = {t for t in _norm(left).split() if len(t) > 1}
+        b = {t for t in _norm(right).split() if len(t) > 1}
+        if not a or not b:
+            return 0.0
+        return len(a & b) / max(len(a), len(b))
+
+    def _entity_key(value: Any) -> str:
+        # Identity, not surface: `The Coca-Cola Company` and `Coca-Cola` are one
+        # filer and the vocabulary already knows it.  Comparing surfaces made
+        # the entity term match nothing and quietly scored every candidate the
+        # same on it.
+        return canonical_entity_id(value) or _norm(value)
+
+    def rerank(candidates, requests):
+        slots = []
+        for request in requests:
+            slots.append((_entity_key(getattr(request, "entity", None)),
+                          str(getattr(request, "metric", "") or ""),
+                          _period_key(getattr(request, "period", "") or "")))
+        scored = []
+        for rank, candidate in enumerate(candidates):
+            cand_metric = str(candidate.get("normalized_metric")
+                              or candidate.get("metric") or "")
+            cand_entity = _entity_key(candidate.get("entity"))
+            cand_pkey = _period_key(candidate.get("period"))
+            best = 0.0
+            for slot_entity, slot_metric, slot_period in slots:
+                entity = 1.0 if slot_entity and slot_entity == cand_entity else 0.0
+                left = canonical_metric_id(slot_metric)
+                right = canonical_metric_id(cand_metric)
+                if left and right:
+                    metric = 1.0 if left == right else 0.0
+                else:
+                    metric = _overlap(slot_metric, cand_metric)
+                period = 1.0 if slot_period and slot_period == cand_pkey else 0.0
+                best = max(best, RERANK_W_ENTITY * entity + RERANK_W_METRIC * metric
+                           + RERANK_W_PERIOD * period)
+            blended = best + RERANK_FUSION_WEIGHT * (1.0 / (rank + 1))
+            scored.append((-blended, -best, rank, candidate))
+        scored.sort(key=lambda item: item[:3])
+        return [item[3] for item in scored]
+
+    return rerank
+
+
+#: Short, distinct column labels.  `arm.split("_")[0]` collided -- B_pool_rerank
+#: and B_gate_bypass both printed as "B" and the funnel showed two identical
+#: columns, which reads as a result rather than as a bug.
+ARM_LABEL = {
+    "A_pinned_production": "A",
+    "B_pool_rerank": "B_rerank",
+    "B_gate_bypass": "B_bypass",
+    "C_slot_retrieval": "C",
+}
+
 ARMS: tuple[tuple[str, str], ...] = (
     ("A_pinned_production", "gate ON,   shipped retriever, pinned plan"),
+    ("B_pool_rerank", "gate ON,   shipped retriever + structured pool rerank"),
     ("B_gate_bypass", "gate OVER, shipped retriever, pinned plan"),
     ("C_slot_retrieval", "gate OVER, SlotBudgetRetriever, pinned plan"),
 )
@@ -287,7 +374,7 @@ def make_slot_budget_retriever(reader: Any):
 
 
 def run_case(case_id, question, plan_payload, arm, resources, gold_ids, comparable,
-             aliases=None):
+             aliases=None, pool_rerank=False):
     from src.runtime.query_lifecycle import QueryExecutionService
     from src.runtime.runtime_contract import FinancialQueryRequest
     from src.runtime.trusted_v2_production import build_trusted_v2_runtime_for_request
@@ -310,7 +397,7 @@ def run_case(case_id, question, plan_payload, arm, resources, gold_ids, comparab
         },
     )
 
-    gate_on = arm == "A_pinned_production"
+    gate_on = arm in ("A_pinned_production", "B_pool_rerank")
     override = (None if gate_on
                 else make_gate_override(question["question"],
                                         SupervisorPlan.from_dict(plan_payload)))
@@ -318,7 +405,8 @@ def run_case(case_id, question, plan_payload, arm, resources, gold_ids, comparab
 
     runtime = build_trusted_v2_runtime_for_request(
         None, request, resources=resources,
-        alignment_override=override, retriever_factory=factory)
+        alignment_override=override, retriever_factory=factory,
+        pool_reranker=make_pool_reranker() if pool_rerank else None)
     result = asyncio.run(QueryExecutionService(runtime).execute(request))
     trace = (getattr(result, "debug_metadata", None) or {}).get("trace") or {}
 
@@ -391,6 +479,11 @@ def run_case(case_id, question, plan_payload, arm, resources, gold_ids, comparab
         "validation_reason_codes": [str(x) for x in
                                     (trace.get("validation_reason_codes") or [])],
         "failed_checks": [str(x) for x in (trace.get("failed_checks") or [])],
+        # The answer text and citations, so a released case can be scored for
+        # correctness rather than only counted.  Without these, "9 released"
+        # is silent about whether any of them is right.
+        "answer": getattr(result, "answer", None),
+        "citation_ids": [str(x) for x in (getattr(result, "citation_ids", None) or [])],
         "release_status": trace.get("release_status") or result.release_status,
         "released": (trace.get("release_status") or result.release_status) == "RELEASED",
     }
@@ -499,7 +592,8 @@ def main(argv: list[str] | None = None) -> int:
             comparable = bool(raw_ids) and all(f.startswith("v2fact:") for f in raw_ids)
             try:
                 row = run_case(case_id, question, (entry or {}).get("plan") or {},
-                               arm, resources, raw_ids, comparable, aliases)
+                               arm, resources, raw_ids, comparable, aliases,
+                               pool_rerank=(arm == "B_pool_rerank"))
             except MissingPinnedPlan as exc:
                 row = {"case_id": case_id, "arm": arm, "stratum": question.get("stratum"),
                        "comparable": comparable, "gold_ids": raw_ids,
@@ -512,7 +606,7 @@ def main(argv: list[str] | None = None) -> int:
                        "reason_codes": [], "gate_blocked": False, "gate_code": None,
                        "bound_evidence": 0, "binder_status_per_round": [],
                        "wrong_period_slots": [], "missing_operand_slots": [],
-                       "overridden": arm != "A_pinned_production",
+                       "overridden": arm not in ("A_pinned_production", "B_pool_rerank"),
                        "effective_allowed": None, "computed_status": None,
                        "computed_allowed": None, "computed_mismatches": [],
                        "computed_unknown_query_fields": [], "plan_slots": [],
@@ -562,7 +656,8 @@ def main(argv: list[str] | None = None) -> int:
     print("=" * 78)
     print("FUNNEL -- 75 comparable answerable cases")
     print("=" * 78)
-    print(f"    {'stage':24}" + "".join(f"{arm.split('_')[0]:>12}" for arm in wanted))
+    print(f"    {'stage':24}" + "".join(f"{ARM_LABEL.get(a, a[:8]):>12}"
+                                        for a in wanted))
     summary: dict[str, Any] = {}
     funnels = {arm: _funnel(all_rows[arm]) for arm in wanted}
     summary["funnels"] = funnels
