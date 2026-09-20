@@ -70,7 +70,19 @@ def parse_filing(ticker: str, accession: str, document_id: str) -> dict:
         etree.HTMLParser(recover=True, no_network=True, huge_tree=True,
                          remove_comments=True),
     ).getroot()
-    doc = {"document_id": document_id, "ticker": ticker, "role": "ANNUAL"}
+    # `company` matters: the builder falls back to the ticker when it is absent,
+    # so a record would say `JPM` where the benchmark says `JPMorganChase` and no
+    # slot query would match. Taken from the same manifest the rest of the
+    # benchmark's entity vocabulary comes from rather than invented here.
+    company = ticker
+    manifest = Path("/disk/qh/nano-finrag/data/raw_pdfs/corpus-manifest.json")
+    if manifest.is_file():
+        for entry in json.loads(manifest.read_text(encoding="utf-8")).get("documents") or ():
+            if str(entry.get("document_id")) == document_id:
+                company = str(entry.get("company") or ticker)
+                break
+    doc = {"document_id": document_id, "ticker": ticker, "role": "ANNUAL",
+           "company": company}
 
     blocks, lookup, prior = module.make_blocks(root, doc)
     contexts = module.ix_contexts(root)
