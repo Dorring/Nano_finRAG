@@ -86,6 +86,23 @@ def _value_like(text: str) -> bool:
     return bool(_VALUE_LIKE.match(t))
 
 
+def _is_period_header_cell(text: str, match: re.Match) -> bool:
+    """Whether the date *is* the cell, rather than a sentence the cell contains.
+
+    Visa's added header rows read `Class C common stock, and 9 shares issued and
+    outstanding as of September 30, 2025 and 2024`.  Taking that as a period header gives
+    the label columns a `2025-09-30` binding the source never declared -- the same
+    over-reach as row 39, one layer up.  A header cell is a period expression, optionally
+    with a units caption; anything with prose or a second year beside it is not.
+    """
+    rest = (text[:match.start()] + " " + text[match.end():]).strip()
+    rest = re.sub(r"\([^)]*\)", " ", rest)               # drop units captions
+    rest = re.sub(r"[\s,;:—–-]+", " ", rest).strip()
+    if re.search(r"(?<!\d)(?:19|20)\d{2}(?!\d)", rest):  # a second year -> not one period
+        return False
+    return len(rest) <= 12
+
+
 def extended_header_idx(nf, grid) -> tuple[list[int], set[int]]:
     """The legacy header rows unioned with the structurally discovered ones.
 
@@ -131,27 +148,39 @@ def bind_table(nf, grid, doc_id: str, table_id: str) -> dict:
                     cells.append((i, text))
         raw[col] = cells
 
-    # A month-day that opens a header group applies to the bare-year cells after it, in
-    # the same header row.  This is the join A3-1a validated: each column keeps its own
-    # year, and no column consumes another's.
+    # A month-day that opens a header group applies to the bare-year cells that follow it.
+    # **`pending` is carried across header rows, not reset per row.**  Visa puts
+    # `September 30,` in row 1 spanning columns 3-11 and its years in row 2; resetting per
+    # row meant the month-day never met a year and every data column fell back to
+    # YEAR-only while three label columns picked up a bogus DAY from prose.  Each column
+    # still keeps its own year, and no column consumes another's.
     group_month_day: dict[int, tuple[int, str]] = {}
+    pending: tuple[int, str] | None = None
     for i in union:
-        pending: tuple[int, str] | None = None
         if i >= len(grid):
             continue
+        seen_cells: set[int] = set()
         for col in range(width):
             cell = grid[i][col] if col < len(grid[i]) else None
-            if not cell:
+            if not cell or id(cell) in seen_cells:
                 continue
+            seen_cells.add(id(cell))
             text = nf.ws(cell["raw_text"])
             if not text:
                 continue
             month = _MONTH_DAY.search(text)
-            if month and not _MONTH_DAY_YEAR.search(text):
-                pending = (col, month.group(0))
+            if month and _is_period_header_cell(text, month):
+                pending = (i, month.group(0))
                 continue
             if _BARE_YEAR.match(text) and pending is not None:
-                group_month_day.setdefault(col, pending)
+                # The year cell spans its columns, so every column it covers inherits the
+                # month-day -- not only the first.  Visa's `2025` has colspan 3 over
+                # columns 3-5, and registering only column 3 left 4 and 5 as YEAR-only
+                # inside a group the source declared as one date.
+                covers = [c for c in range(len(grid[i]))
+                          if grid[i][c] is not None and id(grid[i][c]) == id(cell)]
+                for covered in covers:
+                    group_month_day.setdefault(covered, pending)
 
     columns: dict[int, PeriodBindingV2] = {}
     for col in range(width):
@@ -163,7 +192,7 @@ def bind_table(nf, grid, doc_id: str, table_id: str) -> dict:
         # 1. a complete date in this column's own header cell
         for i, text in cells:
             whole = _MONTH_DAY_YEAR.search(text)
-            if whole:
+            if whole and _is_period_header_cell(text, whole):
                 columns[col] = PeriodBindingV2(
                     normalized_period=_iso(whole.group(0), whole.group(2)),
                     granularity=PeriodGranularity.DAY,

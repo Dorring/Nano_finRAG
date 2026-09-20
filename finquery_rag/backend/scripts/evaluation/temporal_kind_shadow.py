@@ -48,6 +48,15 @@ SHADOW = _BACKEND_DIR / "scripts/evaluation/period_binding_shadow.py"
 #: The words that collide as substrings, and the whole-token forms that do not.
 _COLLIDING = ("rating", "range", "grade", "tier")
 
+#: The tables W3's acceptance is about: two the legacy classifier gets wrong and two it
+#: gets right.  Recorded beside the period oracles so one run covers both halves.
+TEMPORAL_ORACLES = (
+    ("nvda_fy2025", 8766, "CASH_FLOW"),
+    ("tsla_fy2025", 10407, "CASH_FLOW"),
+    ("aapl_fy2025", 6383, "CASH_FLOW"),
+    ("msft_fy2025", 17151, "CASH_FLOW"),
+)
+
 
 def token_safe(pattern: re.Pattern) -> re.Pattern:
     """Harden the collateral words.  Everything structural is left alone, so a behaviour
@@ -58,7 +67,8 @@ def token_safe(pattern: re.Pattern) -> re.Pattern:
     return re.compile(source, pattern.flags)
 
 
-def classify(column_evidence: str, tag, binding=None) -> TemporalKindEvidence:
+def classify(column_evidence: str, tag, binding=None,
+             table_duration_phrase: str | None = None) -> TemporalKindEvidence:
     """The legacy cascade, over column-local evidence only, with token-safe patterns.
 
     `cell_text` is not consulted at all.  That is the whole change: a row label can no
@@ -94,8 +104,14 @@ def classify(column_evidence: str, tag, binding=None) -> TemporalKindEvidence:
                                         method=TemporalKindMethod.COLUMN_HEADER_CELL,
                                         matched_text=match.group(0))
 
-    # Structural evidence: the binding says when, so the shape follows from it.  A date
-    # with no duration phrase is an instant; a bare year is a year.
+    # Structural evidence: the binding says when, so the shape follows from it.  A bare
+    # year is a year; a date is an instant *unless the table says the period ends there*.
+    #
+    # `table_duration_phrase` is header evidence, not row prose: Microsoft's cash flow
+    # statement puts `Year Ended June 30,` in one header cell and the year in another, so
+    # a column-scoped reading sees only the year and would call a duration statement an
+    # instant.  A first version did exactly that and broke the control it was meant to
+    # preserve -- 13 duration columns became 6 point.
     if binding is not None and binding.is_usable:
         if binding.granularity is PeriodGranularity.YEAR:
             return TemporalKindEvidence(kind=TemporalKind.YEAR,
@@ -103,10 +119,13 @@ def classify(column_evidence: str, tag, binding=None) -> TemporalKindEvidence:
                                         source_cells=binding.source_cells,
                                         matched_text=binding.normalized_period)
         if binding.granularity is PeriodGranularity.DAY:
-            return TemporalKindEvidence(kind=TemporalKind.POINT,
+            kind = (TemporalKind.DURATION if table_duration_phrase
+                    else TemporalKind.POINT)
+            return TemporalKindEvidence(kind=kind,
                                         method=TemporalKindMethod.PERIOD_BINDING,
                                         source_cells=binding.source_cells,
-                                        matched_text=binding.normalized_period)
+                                        matched_text=table_duration_phrase
+                                        or binding.normalized_period)
 
     return TemporalKindEvidence(kind=TemporalKind.UNKNOWN,
                                 method=TemporalKindMethod.COLUMN_HEADER_CELL)
@@ -126,6 +145,23 @@ def column_evidence(nf, grid, union_idx: list[int]) -> dict[int, tuple[str, tupl
                     cells.append((i, text))
         out[col] = (" ".join(texts), tuple(cells))
     return out
+
+
+def header_duration_phrase(nf, grid, union_idx: list[int]) -> str | None:
+    """A duration phrase anywhere in the header block -- header cells, not row prose."""
+    pattern = re.compile(r"\byears?\s+ended\b|\byear\s+ended\b", re.I)
+    for i in union_idx:
+        if i >= len(grid):
+            continue
+        seen: set[int] = set()
+        for cell in grid[i]:
+            if not cell or id(cell) in seen:
+                continue
+            seen.add(id(cell))
+            match = pattern.search(nf.ws(cell["raw_text"]))
+            if match:
+                return match.group(0)
+    return None
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -151,7 +187,7 @@ def main(argv: list[str] | None = None) -> int:
     print("=== TemporalKind shadow (column-local, token-safe) ===")
     print()
 
-    for document_id, order, family in pb.ORACLES:
+    for document_id, order, family in pb.ORACLES + TEMPORAL_ORACLES:
         ticker, accession = builder.DOCUMENTS[document_id]
         raw_path = (Path("/disk/qh/nano-finrag/data/financial_corpus_v2/raw/SEC")
                     / ticker / accession / "primary.html")
@@ -166,10 +202,11 @@ def main(argv: list[str] | None = None) -> int:
         union, _added = pb.extended_header_idx(nf, grid)
         evidence = column_evidence(nf, grid, union)
         bound = pb.bind_table(nf, grid, document_id, block["table_id"])
+        duration_phrase = header_duration_phrase(nf, grid, union)
 
         columns = {}
         for col, (text, cells) in evidence.items():
-            kind = classify(text, tag, bound["columns"].get(col))
+            kind = classify(text, tag, bound["columns"].get(col), duration_phrase)
             columns[col] = {
                 "kind": kind.kind.value,
                 "trigger": kind.matched_text,
