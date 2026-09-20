@@ -81,6 +81,9 @@ RERANK_W_PERIOD = 0.20
 RERANK_FUSION_WEIGHT = 0.25
 
 
+POOL_TRACE: list[dict] = []
+
+
 def make_pool_reranker():
     """Reorder the policy's pool by how well each candidate matches the demand.
 
@@ -116,6 +119,11 @@ def make_pool_reranker():
         return canonical_entity_id(value) or _norm(value)
 
     def rerank(candidates, requests):
+        # Recorded for the rank-transfer audit.  The reranker still sees no gold
+        # -- it writes the ordering it produced and the caller decides what was
+        # in it, which is the only way to ask "did reranking move the gold"
+        # without letting the answer influence the ranking.
+        before = [str(c.get("candidate_key") or "") for c in candidates]
         slots = []
         for request in requests:
             slots.append((_entity_key(getattr(request, "entity", None)),
@@ -142,7 +150,10 @@ def make_pool_reranker():
             blended = best + RERANK_FUSION_WEIGHT * (1.0 / (rank + 1))
             scored.append((-blended, -best, rank, candidate))
         scored.sort(key=lambda item: item[:3])
-        return [item[3] for item in scored]
+        ordered = [item[3] for item in scored]
+        POOL_TRACE.append({"before": before,
+                           "after": [str(c.get("candidate_key") or "") for c in ordered]})
+        return ordered
 
     return rerank
 
@@ -373,6 +384,17 @@ def make_slot_budget_retriever(reader: Any):
 # ---------------------------------------------------------------------------
 
 
+def _gold_rank(ordered, gold):
+    """1-based position of the best-ranked gold candidate, or None."""
+    if not ordered or not gold:
+        return None
+    wanted = set(gold)
+    for position, key in enumerate(ordered, 1):
+        if key in wanted:
+            return position
+    return None
+
+
 def run_case(case_id, question, plan_payload, arm, resources, gold_ids, comparable,
              aliases=None, pool_rerank=False):
     from src.runtime.query_lifecycle import QueryExecutionService
@@ -409,6 +431,7 @@ def run_case(case_id, question, plan_payload, arm, resources, gold_ids, comparab
         pool_reranker=make_pool_reranker() if pool_rerank else None)
     result = asyncio.run(QueryExecutionService(runtime).execute(request))
     trace = (getattr(result, "debug_metadata", None) or {}).get("trace") or {}
+    rank_trace = POOL_TRACE.pop() if POOL_TRACE else {}
 
     pool: list[str] = []
     for round_ids in (trace.get("candidate_ids_per_round") or []):
@@ -465,6 +488,11 @@ def run_case(case_id, question, plan_payload, arm, resources, gold_ids, comparab
         "gold_in_pool": len(gold & set(pool)),
         "binder_status_per_round": [str(x) for x in
                                     (trace.get("binder_status_per_round") or [])],
+        # Rank transfer, for the audit: where the gold sat in the pool this
+        # policy was handed, and where it sat in what the policy then returned.
+        "gold_rank_before": _gold_rank(rank_trace.get("before"), gold),
+        "gold_rank_after": _gold_rank(rank_trace.get("after"), gold),
+        "pool_depth": len(rank_trace.get("before") or []),
         "bound_evidence": len(bound),
         "bound_evidence_ids": sorted(bound),
         "bound_evidence_resolved": sorted(bound_resolved),
