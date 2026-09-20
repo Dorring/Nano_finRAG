@@ -160,11 +160,24 @@ def main(argv: list[str] | None = None) -> int:
             facts["rule"] = rule
             per_slot.append(facts)
             rule_tally[rule] += 1
-            # A case takes the *most actionable* slot verdict, because fixing
-            # the ontology is per-concept and one unresolvable slot means the
-            # question still cannot be answered.
-            if case_class is None or PRIORITY.index(klass) < PRIORITY.index(case_class):
-                case_class = klass
+
+        # A case is classified by the slots that actually BLOCKED it, not by its
+        # most actionable slot.  A two-slot ratio question with one resolvable
+        # leg and one raw label is blocked by the raw label; promoting it to
+        # "the ontology names it, so the alignment path dropped it" would send
+        # someone to fix a path that is working.  So the resolvable slots are
+        # excluded first -- and a case survives to
+        # ALIGNMENT_NORMALIZATION_GAP only if *every* slot resolved and it was
+        # blocked anyway, which is the only shape that actually indicts the path.
+        blocking = [slot for slot in per_slot if not slot["canonical_id"]]
+        if not blocking:
+            case_class = "ALIGNMENT_NORMALIZATION_GAP"
+        else:
+            case_class = None
+            for slot in blocking:
+                klass = slot["class"]
+                if case_class is None or PRIORITY.index(klass) < PRIORITY.index(case_class):
+                    case_class = klass
 
         tally[case_class] += 1
         verdicts.append({
