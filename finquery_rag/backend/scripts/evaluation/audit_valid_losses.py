@@ -168,7 +168,16 @@ ADJUDICATIONS = (
      "period the column is reported at"),
     ("President and Chief Financial Officer", "B", "a signature block"),
     ("Chairman of the Board of Directors", "B", "a signature block"),
-    ("Recovery of Erroneously Awarded", "B", "a policy description"),
+    # These two appear only after the W4-A7 repair, which refuses them: the old predicate
+    # bound `Date: October 31, 2025` as a period.  They are the date line of the same
+    # signature block the two entries above are the name line of, so they are adjudicated
+    # into that family rather than left unadjudicated -- and the extension is recorded here
+    # rather than folded in silently.
+    ("Date", "B", "the date line of a signature block"),
+    ("Dated", "B", "the date line of a signature block"),
+    # `Erroneou sly` with the space is how the filing's own HTML renders it; matching the
+    # full word missed the family and filed it as unadjudicated.
+    ("Recovery of Erroneou", "B", "a policy description"),
 )
 
 
