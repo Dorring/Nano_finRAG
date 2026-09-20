@@ -1056,6 +1056,16 @@ def parse_one(row: dict, raw: Path, norm_root: Path, parsed_root: Path):
             "normalization_version": NORMALIZATION_VERSION,
             "normalization_config_sha": CONFIG_SHA,
             "blocks": blocks,
+            # `tables` was computed and then dropped here, and the semantic
+            # adapter consumes exactly this key: `adapt_document_tables` reads
+            # `document["tables"]`, iterates it, and emits one atomic fact per
+            # numeric cell.  Without it the loop body never runs, `atomic_facts`
+            # stays empty, and the canonical store emits nothing at all --
+            # measured, not inferred: building from the persisted corpus gives
+            # 0 atomic facts and 0 store records.  The tables are also where the
+            # cell-level structure lives, so this is both why the corpus could
+            # not reproduce the store and where the column dimension travels.
+            "tables": tables,
             "ixbrl_context_count": len(contexts),
             "ixbrl_fact_count": len(facts),
             "ixbrl_facts": facts,

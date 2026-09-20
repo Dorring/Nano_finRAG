@@ -350,6 +350,22 @@ class AtomicFact:
     currency_code: str | None
     equivalent_group_id: str | None
     source_traceback: dict[str, Any]
+    #: The filing's own structural coordinates for the cell this fact came from.
+    #:
+    #: `column_header` is the dimension the canonical store was missing.  Two
+    #: cells of one row -- `Net income` under `Corporate` and the same row under
+    #: `Total` -- differ by it, and by nothing else the fact records: same
+    #: document, same table, same row.  Without it the two are one coordinate
+    #: holding two values, which is what the operand guard refuses and what
+    #: P1.6-0C measured at 18.2% of the store.
+    #:
+    #: Carried explicitly rather than folded into `source_traceback`, so a later
+    #: stage cannot drop it silently: a missing field is a schema error, a
+    #: missing dict key is not.
+    column_header: str | None = None
+    row_label: str | None = None
+    #: The inline-XBRL facts stated in this cell, as the parse recorded them.
+    ixbrl_anchors: tuple[dict[str, Any], ...] = ()
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)

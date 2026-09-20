@@ -251,6 +251,14 @@ def build_canonical_fact_store(
             "row_id": row_id,
             "cell_id": cell_id,
             "pdf_page": traceback.get("pdf_page"),
+            # The filing's own structural coordinates, carried from the parsed
+            # cell through the atomic fact to here.  `column_header` is the
+            # dimension whose absence made a coordinate hold several values:
+            # this row's `Net income` under `Corporate` and under `Total` are
+            # the same document, table and row.
+            "column_header": payload.get("column_header") or None,
+            "row_label": payload.get("row_label") or None,
+            "ixbrl_anchors": list(payload.get("ixbrl_anchors") or ()),
             "content": content,
             "source_text": content,
             "source_traceback": {"document_id": document_id, "table_fragment_id": table_id, "row_id": row_id, "cell_id": cell_id, "pdf_page": traceback.get("pdf_page")},

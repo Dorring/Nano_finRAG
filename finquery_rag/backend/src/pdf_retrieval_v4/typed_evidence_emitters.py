@@ -153,6 +153,12 @@ def emit_atomic_facts(
                 "bbox": cell.get("cell_bbox"),
                 "raw_text": raw_val,
             },
+            # The cell's own structural coordinates, carried explicitly.  The
+            # column is the one the store was missing: this row's `Net income`
+            # under `Corporate` and under `Total` are otherwise one coordinate.
+            column_header=str(cell.get("column_header") or "").strip() or None,
+            row_label=str(cell.get("row_label") or "").strip() or None,
+            ixbrl_anchors=tuple(cell.get("ixbrl_anchors") or ()),
         )
         facts.append(fact)
 
