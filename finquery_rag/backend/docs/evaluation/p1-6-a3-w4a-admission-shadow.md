@@ -123,6 +123,12 @@ path being replaced.
 
 ## Verdict
 
+> **Superseded in part by W4-A3 and W4-A4 — read those before acting on this section.**
+> The 474 oracle-PRIMARY cells counted below as coverage the store would lose are not
+> that: they are facts the store holds under a period that is not theirs, and W4-A4 shows
+> none of the 47 slots reaches one. The counts here stand; the interpretation of the
+> primary share does not.
+
 **W4-B is blocked, and it is blocked by the producer, not by the rule.** Switching today
 would remove facts the store holds — 8,369 after the abbreviated-month widening, 474 of
 them from oracle-PRIMARY statements, 472 of those one single gap — and the 14,802 the rule
