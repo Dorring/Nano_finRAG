@@ -469,6 +469,7 @@ _METRIC_DEFINITIONS: tuple[MetricDefinition, ...] = (
         "cost_of_revenue",
         (
             "cost of revenue",
+            "cost of revenues",
             "cost of sales",
             "costs of revenue",
             "cogs",
@@ -551,6 +552,53 @@ _METRIC_DEFINITIONS: tuple[MetricDefinition, ...] = (
     MetricDefinition(
         "land",
         ("land", "土地"),
+    ),
+    # ------------------------------------------------------------------
+    # P1.6-E3.  Eight more from the E3-1 audit
+    # (docs/evaluation/p1-6-e3-semantic-coverage.md), on the same test as the
+    # twelve above: one quantity, table-independent, wanted with a different
+    # benchmark.  `total_comprehensive_income` is separate from
+    # `other_comprehensive_income` because total CI is net income plus OCI --
+    # aliasing them would be the false equivalence the rules forbid.
+    # ------------------------------------------------------------------
+    MetricDefinition(
+        "interest_expense",
+        ("interest expense", "利息费用"),
+    ),
+    MetricDefinition(
+        "stock_based_compensation",
+        ("stock-based compensation expense", "stock based compensation",
+         "share-based compensation", "股份支付费用"),
+    ),
+    MetricDefinition(
+        "other_comprehensive_income",
+        ("other comprehensive income (loss)", "other comprehensive income"),
+    ),
+    MetricDefinition(
+        "total_comprehensive_income",
+        ("total comprehensive income", "综合收益总额"),
+    ),
+    MetricDefinition(
+        "foreign_currency_translation_adjustment",
+        ("foreign currency translation adjustment",
+         "net foreign currency translation adjustments",
+         "外币报表折算差额"),
+    ),
+    MetricDefinition(
+        "return_on_equity",
+        ("return on equity", "roe", "净资产收益率"),
+    ),
+    MetricDefinition(
+        "risk_free_interest_rate",
+        ("risk-free interest rate", "risk free interest rate", "无风险利率"),
+    ),
+    MetricDefinition(
+        "statutory_federal_income_tax_rate",
+        ("statutory federal income tax rate",),
+    ),
+    MetricDefinition(
+        "noncurrent_term_debt",
+        ("total non-current portion of term debt", "non-current portion of term debt"),
     ),
 )
 
@@ -660,8 +708,21 @@ _SCOPE_DEFINITIONS: tuple[_VocabularyDefinition, ...] = (
 )
 
 
+#: A footnote marker welded onto a row label by the extractor: `Commercial(3)`,
+#: `Interest^{(f)}`, `Cost of revenues (1)`.  Deliberately narrow -- a digit or a
+#: SINGLE letter -- because a wider pattern would eat a meaningful parenthetical:
+#: `Earnings per share (diluted)` must not collapse onto `Earnings per share`,
+#: which is a different concept and a collision the gate exists to prevent.
+_FOOTNOTE_SUFFIX = re.compile(
+    r"(?:\s*\(\s*(?:\d{1,2}|[a-z])\s*\)"
+    r"|\s*\^\s*\{\s*(?:\d{1,2}|[a-z])\s*\})+\s*$",
+    re.IGNORECASE,
+)
+
+
 def _normalize_surface(value: Any) -> str:
-    text = unicodedata.normalize("NFKC", str(value or "")).casefold()
+    raw = str(value or "")
+    text = unicodedata.normalize("NFKC", _FOOTNOTE_SUFFIX.sub("", raw)).casefold()
     text = text.replace("’", "'")
     # Retain Unicode word characters (including Chinese), while making
     # punctuation-separated phrases comparable to the prompt's plain text.
