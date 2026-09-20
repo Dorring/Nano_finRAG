@@ -257,8 +257,11 @@ def main(argv: list[str] | None = None) -> int:
         "landmine_tripped": reach["legacy_landmine_tripped"],
         "a3_decision_load_bearing": reach["a3_decision_load_bearing"],
         "rule_moved": reach["rule_delta"]["moved_over_legacy_domain"],
-        "path_modules": len(reach["path_modules"]),
     }
+    # Recorded, not compared.  How many modules the build pulls in is evidence about the
+    # path, but it moves whenever anything is imported anywhere, so freezing it would make
+    # the seal fail for reasons that have nothing to do with what it seals.
+    observed["reachability_path_modules"] = len(reach["path_modules"])
 
     # --- compare ---------------------------------------------------------------------------
     print()
