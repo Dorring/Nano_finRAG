@@ -21,6 +21,10 @@ for the same reason as a table of junk, because temporal kind was deciding admis
 `A2B-19/20` is why the second is: `table_role` owns company-level authority and nothing
 here may reach over it.
 
+W4 is where the first of those stops being a comment.  `decide_emission_admission` makes the
+three questions explicit and separable, so a kind may change without moving admission and an
+admission may change without moving a kind.
+
 **Status and temporal kind are different enums and must stay so.**  A binding is
 `UNRESOLVED` when no source evidence was found; a temporal kind is `UNKNOWN` when the
 source stated no shape.  Coca-Cola's equity statement is a `PARTIAL` binding with an
@@ -301,6 +305,180 @@ def resolve_period_evidence(
         )
     return Conflict(key="|".join(sorted(f"{b.normalized_period}" for b in live)),
                     candidates=tuple(live))
+
+
+# ---------------------------------------------------------------------------
+# W4: emission admission -- whether the fact is complete enough to store
+# ---------------------------------------------------------------------------
+
+
+class AdmissionOutcome(str, Enum):
+    """Whether a valued cell becomes a stored fact, and under what restriction."""
+
+    ADMIT = "ADMIT"
+
+    #: The period identity is resolved but the source stated only its coarsest part --
+    #: Coca-Cola's `2025`.  It is storable, and answerable only at a granularity the
+    #: source actually claimed.  This is not a weaker `ADMIT`: the restriction *is* the
+    #: content, which is why it is a separate outcome rather than a flag on `ADMIT`.
+    ADMIT_GRAIN_LIMITED = "ADMIT_GRAIN_LIMITED"
+
+    WITHHOLD = "WITHHOLD"
+
+
+class AdmissionReason(str, Enum):
+    """Which question was asked and answered no.
+
+    The order is the attribution.  A withheld cell names the *first* thing missing, so
+    the tally counts where cells stopped rather than everything wrong with them; the
+    same cell would otherwise be counted once per missing field and the distribution
+    would say nothing.
+    """
+
+    #: 1. Routing -- what the source declared this column to be.  Not a completeness
+    #: judgement: a segment column is not an incomplete fact, it is a different fact.
+    DISAGGREGATION_AXIS = "DISAGGREGATION_AXIS"
+    NON_PERIOD_AXIS = "NON_PERIOD_AXIS"
+    COMPARISON_AXIS = "COMPARISON_AXIS"
+
+    #: 2. The period itself.
+    NO_BINDING = "NO_BINDING"
+    UNRESOLVED_PERIOD = "UNRESOLVED_PERIOD"
+    CONFLICTED_PERIOD = "CONFLICTED_PERIOD"
+
+    #: 3. The fact's own coordinate.
+    INCOMPLETE_PROVENANCE = "INCOMPLETE_PROVENANCE"
+
+
+#: Kinds where the source declared a breakdown rather than a period.  Their cells are
+#: real and belong in the store -- as bucket facts, not as company-level period facts.
+DISAGGREGATION_KINDS = frozenset({
+    TemporalKind.SEGMENT,
+    TemporalKind.BUCKET,
+    TemporalKind.CATEGORY,
+})
+
+
+@dataclass(frozen=True)
+class AdmissionRequest:
+    """Everything admission may look at, and nothing else.
+
+    **`table_role` is absent on purpose.**  Authority and completeness are different
+    questions: a table's role may not buy its cells into the store, and a note table's
+    cells are not less complete for being in a note.  Reading the role here would
+    re-weld what A2B-19/20 separated, and the omission is asserted by a test rather than
+    left to a comment -- a field added later would be exactly how it creeps back.
+    """
+
+    binding: PeriodBindingV2 | Conflict | None
+    temporal_kind: TemporalKind | None = None
+    metric_path: str | None = None
+    metric_status: str | None = None
+    value_normalized: str | None = None
+    cell_id: str | None = None
+
+
+@dataclass(frozen=True)
+class EmissionAdmission:
+    """The decision, the reason, and the period it may be stored under."""
+
+    outcome: AdmissionOutcome
+    reason: AdmissionReason | None = None
+    binding: PeriodBindingV2 | None = None
+    conflict_candidates: tuple[PeriodBindingV2, ...] = ()
+
+    @property
+    def admitted(self) -> bool:
+        return self.outcome is not AdmissionOutcome.WITHHOLD
+
+    @property
+    def grain_limited(self) -> bool:
+        return self.outcome is AdmissionOutcome.ADMIT_GRAIN_LIMITED
+
+    @property
+    def normalized_period(self) -> str | None:
+        """The one period this fact may be stored under, or `None`.
+
+        A withheld fact has no period **by construction**, which is what makes the
+        conflict rule enforceable rather than advisory: `CONFLICTED_PERIOD` retains its
+        candidates and names no winner, so no consumer can read a determinate period off
+        a fact that was never admitted.
+        """
+        return self.binding.normalized_period if self.binding else None
+
+    def to_dict(self) -> dict[str, Any]:
+        return {"outcome": self.outcome.value,
+                "reason": self.reason.value if self.reason else None,
+                "normalized_period": self.normalized_period,
+                "binding": self.binding.to_dict() if self.binding else None,
+                "conflict_candidates": [c.to_dict() for c in self.conflict_candidates]}
+
+
+def decide_emission_admission(request: AdmissionRequest) -> EmissionAdmission:
+    """Whether a valued cell becomes a stored fact.
+
+    Three questions, in this order, and the first to fail names the reason:
+
+      1. routing     did the source declare this column to be a period at all?
+      2. period      is there a period, and is it settled?
+      3. provenance  is the fact's own coordinate complete?
+
+    **Temporal kind is not consulted in questions 2 and 3.**  That is the decoupling W4
+    exists for.  The legacy collapsed all three into one expression --
+    `temporal_kind not in ("point", "duration", "comparison")` -- so an unstated *shape*
+    was dropped for the same reason as a table of junk, and Coca-Cola's fully traceable
+    `YEAR(2025)` never reached the store.
+
+    Question 1 stays a kind question, and that is not a leftover: it asks what the column
+    *is*, not whether the fact is complete.  The difference is the whole point -- a
+    segment column is not an incomplete period fact, it is a breakdown, and it is
+    answered with a routing reason rather than a completeness one.
+
+    A `CONFLICT` is withheld with its candidates kept.  It may not be stored because
+    storing it would require choosing one period, and choosing is the guess this layer
+    exists to refuse.  An `UNRESOLVED` binding is withheld too: the new path recovering
+    more periods is not by itself a reason for a cell with no period to be admitted.
+    """
+
+    kind = request.temporal_kind
+    if kind in DISAGGREGATION_KINDS:
+        return EmissionAdmission(AdmissionOutcome.WITHHOLD,
+                                 AdmissionReason.DISAGGREGATION_AXIS)
+    if kind is TemporalKind.NON_TEMPORAL:
+        return EmissionAdmission(AdmissionOutcome.WITHHOLD,
+                                 AdmissionReason.NON_PERIOD_AXIS)
+    if kind is TemporalKind.COMPARISON:
+        return EmissionAdmission(AdmissionOutcome.WITHHOLD,
+                                 AdmissionReason.COMPARISON_AXIS)
+
+    binding = request.binding
+    if isinstance(binding, Conflict):
+        return EmissionAdmission(AdmissionOutcome.WITHHOLD,
+                                 AdmissionReason.CONFLICTED_PERIOD,
+                                 conflict_candidates=binding.candidates)
+    if binding is None:
+        return EmissionAdmission(AdmissionOutcome.WITHHOLD, AdmissionReason.NO_BINDING)
+    if binding.status is PeriodBindingStatus.CONFLICT:
+        return EmissionAdmission(AdmissionOutcome.WITHHOLD,
+                                 AdmissionReason.CONFLICTED_PERIOD,
+                                 conflict_candidates=binding.conflict_candidates)
+    if not binding.is_usable:
+        return EmissionAdmission(AdmissionOutcome.WITHHOLD,
+                                 AdmissionReason.UNRESOLVED_PERIOD)
+    if not binding.source_cells:
+        return EmissionAdmission(AdmissionOutcome.WITHHOLD,
+                                 AdmissionReason.INCOMPLETE_PROVENANCE)
+
+    if not (request.cell_id and request.metric_path
+            and request.metric_status != "missing" and request.value_normalized):
+        return EmissionAdmission(AdmissionOutcome.WITHHOLD,
+                                 AdmissionReason.INCOMPLETE_PROVENANCE)
+
+    return EmissionAdmission(
+        outcome=(AdmissionOutcome.ADMIT
+                 if binding.status is PeriodBindingStatus.RESOLVED
+                 else AdmissionOutcome.ADMIT_GRAIN_LIMITED),
+        binding=binding)
 
 
 def periods_are_compatible(
