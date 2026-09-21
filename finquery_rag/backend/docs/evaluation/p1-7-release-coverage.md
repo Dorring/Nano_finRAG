@@ -111,6 +111,38 @@ measuring apparatus rather than in the system.
   set is empty and `gold_in_pool` is 0 by construction. Eleven of fourteen
   "retrieval misses" were this.
 
+## The ceiling, measured rather than argued
+
+Before concluding that the remaining blocks need representation work, the
+obvious objection has to be closed: maybe the admission rule is simply too
+strict. So the gate was removed entirely and the run repeated on GPU.
+
+```
+gate fully bypassed      50/95 = 52.6%
+of the 22 my rule blocks, bypass releases   3
+the other 19 fail as:    EVIDENCE_CONFLICT 16
+                         QUERY_EVIDENCE_SEMANTIC_MISMATCH 2
+                         MISSING_OPERAND  1
+```
+
+**No gate policy reaches 60%.** The maximum any admission rule can achieve on
+this benchmark is 52.6%, because the sixteen cases that remain are refused
+downstream by the Binder at the same coordinates -- with the gate silent, the
+Binder says `AMBIGUOUS` for the same reason the gate did. Loosening the gate
+further buys three cases and hands the rest to a later refusal.
+
+That also disposes of the "the values must be arbitrary, so the rule is too
+strict" reading. Five of the eighteen conflicting coordinates do hold a
+total-and-components structure -- Microsoft's `Cost of revenue` FY2025 is
+87,831 = 22,422 + 40,171 + 25,238, confirmed by the prior-year column where
+74,114 = 19,611 + 29,611 + 24,892. A total-detecting rule would recover about
+five cases, taking the ceiling to roughly 54%, and it would be choosing on the
+system's behalf which of several reported numbers the question meant.
+
+Thirteen of the eighteen have no such structure. `Deferred` is deferred
+revenue, deferred tax and deferred compensation; `Income tax effect` is five
+unrelated numbers; `Intersegment` is seven.
+
 ## Where the remaining 49 answerable cases go
 
 ```
@@ -135,17 +167,46 @@ Recovering those needs the missing dimensions restored -- statement, table,
 column, row hierarchy (P1.6-A). It is not a gate policy and not a retrieval
 policy, and loosening either would admit guesses rather than answers.
 
-The `s3-compare`/`rank` cases are a separate subsystem: cross-entity plans whose
-slots each name a different filer, where the Binder returns `MISSING` for most
-slots. Entity-bearing slot queries were tested as the fix and **do not work**
-(arm C on GPU: 5 of 20 compare cases against 7 for the shipped query, 46.3%
-overall against 48.4%).
+### The one path that would reach 60%
+
+The `s3-compare`/`rank`/`crossdiff` cases are a *separate* subsystem and are not
+limited by the representation defect: their metrics are `Net income`,
+`Total assets`, `Interest expense` -- unambiguous labels. They fail in
+cross-entity binding, and the metrics are not the problem.
+
+```
+CAPABILITY_EXCEPTION        4   binder_returned_invalid_schema
+MISSING_SLOT                3   (with NO_PROGRESS / BUDGET_EXHAUSTED)
+SCV_RELATION_AMBIGUOUS      2
+MISSING_OPERAND             2
+QUERY_EVIDENCE_SEMANTIC_MISMATCH 1
+EVIDENCE_CONFLICT           1
+```
+
+Recovering all thirteen takes release to 59/95 = 62.1%. Two of the obstacles are
+deliberate design decisions rather than bugs, and neither is mine to reverse
+silently:
+
+- **`binder_returned_invalid_schema` is not retried.** `TransportRetryPolicy`
+  freezes one semantic response and one transport retry, and `retryable_failures`
+  lists only transport and HTTP errors. Re-rolling a *malformed* response is not
+  the same act as re-rolling one the model disagreed with -- malformed output
+  carries no semantics to re-roll -- but the freeze is explicit and says R0E.
+- **Entity-bearing slot queries do not help.** Tested on GPU as the natural fix
+  for a cross-entity pool: 5 of 20 compare cases released against 7 for the
+  shipped entity-less query, and 46.3% overall against 48.4%. The hypothesis is
+  refuted, not untested.
 
 ## Not claimed
 
-- **60% was not reached.** 48.4% is the measured value.
+- **60% was not reached.** 48.4% is the measured value, and 52.6% is the
+  measured ceiling for any gate policy.
 - The two structural blocks above are diagnosed, not fixed.
 - `pctshare-003` releases a wrong answer: the planner maps `What percentage of
   A was B` with A as numerator, and it is B/A. It is the only wrong release and
   it is a planner construction error, reported rather than papered over.
-- Citation precision is 83.3%, below the 90% asked for.
+- Citation precision is 83.3% on strict gold-fact ids. Six of the twelve misses
+  are the same row reached through a different table fragment -- the store holds
+  each row twice, and `iPad` FY2025 is 28,023 under two fragment ids -- so
+  precision by fact identity is 91.7%. Both numbers are reported; the strict one
+  is the one in the table.
