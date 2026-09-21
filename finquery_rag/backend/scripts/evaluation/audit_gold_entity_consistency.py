@@ -41,7 +41,11 @@ def _load(path: Path) -> list[dict]:
 
 
 def _fold(value: object) -> str:
-    return " ".join(str(value or "").casefold().split())
+    text = " ".join(str(value or "").casefold().split())
+    # The issuer regex stops before the possessive but the capture still carries
+    # it in some phrasings, and `apple's` never matches `apple` -- which made
+    # every flagged case in the first run a false positive.
+    return re.sub(r"(?:'s|’s)$", "", text)
 
 
 def main(argv: list[str] | None = None) -> int:
