@@ -241,3 +241,33 @@ so the next attempt starts from a measured position rather than a hypothesis.
   each row twice, and `iPad` FY2025 is 28,023 under two fragment ids -- so
   precision by fact identity is 91.7%. Both numbers are reported; the strict one
   is the one in the table.
+
+## The last two levers, measured and closed
+
+Both remaining ideas were tried rather than argued, and both are small.
+
+**Ontology aliases.** The second firewall -- `align_bound_evidence_to_query` --
+refuses a binding whose fact's metric identity differs from its slot's, and that
+refusal is invisible in the outcome trace (`semantic_check` stays in the Binder's
+own round trace). Wrapping the function and re-running all 49 blocked cases
+gives **two** refusals in the whole set:
+
+```
+fact_metric_not_matching_slot ... coca_cola_net_income_fy2025   (s3-compare-001)
+fact_metric_not_matching_slot ... pfe-030 cost_of_sales
+```
+
+The second is incidental: `pfe-030` is a coordinate-conflict case whose Binder
+already said `AMBIGUOUS`. So one case in the whole benchmark turns on a missing
+alias -- Coca-Cola files the line as `Consolidated Net Income` where the slot
+says `Net income`.
+
+It is not added. `net_income` already carries `归母净利润`, which is net income
+*attributable to the parent*; `Consolidated Net Income` is the total including
+non-controlling interests, and the two are different numbers in any filing that
+has one. The collision is pre-existing, and resolving it needs a decision about
+which quantity `net_income` denotes -- not another alias, and certainly not one
+whose measured effect is a single case.
+
+**Entity isolation at retrieval.** Covered above: +1, inside the Binder's spread,
+off by default.
