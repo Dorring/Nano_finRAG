@@ -347,6 +347,50 @@ nothing is downgraded unless the binding names its own gaps.
 
 Release 49 -> 50, with `incorrect release` still 0.
 
+## P1.7-C0/C1 — the ceiling re-measured, and where the loss actually is
+
+The `52.6%` gate-bypass ceiling was measured *before* this round's two bug fixes,
+so it was no longer the current system's ceiling and was being quoted as if it
+were. Re-measured on current HEAD, same pinned plans, store, retriever, binder,
+validator and finalizer, changing only the gate:
+
+```
+                    GATE ON    GATE BYPASS
+gate blocked            20          0
+reached retrieval       55         75
+gold in pool            52         71
+gold bound              43         44
+slots complete          47         54
+released              50 (52.6%)  51 (53.7%)
+released correct        48/50      49/51
+INCORRECT RELEASE         0          0
+```
+
+**The gate now costs exactly one release**, and the ceiling for any admission
+policy is 53.7% rather than 52.6%. The gate is exhausted as a lever.
+
+The bottleneck has moved and is now unambiguous. Bypass reaches retrieval for
+**75 of 75** and puts gold in the pool for **71**, then binds only **44**. Of the
+45 unreleased answerable cases, attributed to a single first-failure stage with
+**UNATTRIBUTED = 0**:
+
+```
+SEMANTIC_ALIGNMENT   20     the gate
+BINDING              17     gold in pool, not bound
+VALIDATION            6
+RETRIEVAL             1
+SLOT_COMPLETENESS     1
+```
+
+`BINDING` is now the largest single stage after the gate, and unlike the gate it
+has **27 cases of headroom** between what reaches the pool and what gets bound.
+That is where the coverage is, and it is the same defect B0 identified: a
+coordinate that does not identify one value, so the Binder refuses to choose.
+
+Both audits record the mistake that made C0 necessary: two implementation bugs
+had been hiding inside what looked like a capability ceiling, and a ceiling
+measured before a bug fix is not a ceiling.
+
 ## Not claimed
 
 - **60% was not reached.** 48.4% is the measured value, and 52.6% is the
