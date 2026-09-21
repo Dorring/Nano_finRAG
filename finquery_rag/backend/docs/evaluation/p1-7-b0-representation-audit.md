@@ -85,12 +85,48 @@ question does not name is not selectable.
 
 ## Q3 — can it be rebuilt deterministically
 
-- The five arithmetic cases: **already determinable today**, from values the
-  store holds. No rebuild.
-- The seven conditional: **unknown, and this audit cannot settle it.** It needs
-  the source HTML table structure to say whether a row's enclosing statement or
-  table is recoverable. That check is cheap and should precede any migration.
-- The 43% identity duplication (below): **deterministic**, by construction.
+Answered as far as the record can answer it, and it narrows the question to one
+that only the source can settle.
+
+Measured over the 21 blocked coordinates that hold more than one value:
+
+```
+SEVERAL_ROWS       12   genuinely different rows
+ONE_ROW_COLUMNS     9   one row's cells, read as if they were quantities
+```
+
+The two are different problems and only one of them is a migration.
+
+**The nine column cases are not recoverable at all.** Visa's FY2025 `U.S.
+Treasury securities` is not three competing values: `2,101` and `15` and the
+rest carry the *same* `row_id`, the same `row_index` and the same `row_bbox`.
+They are cells of one row, and the store emitted a fact per cell. Adding
+`column_identity` would let the system describe that row; it would not tell it
+which column the answer is, because the question says "the reported U.S. Treasury
+securities" and names no column. These are `SOURCE_AMBIGUOUS` and stay blocked.
+
+**The twelve row cases are the whole Go margin**, and the record already
+identifies the row: `row_id`, `row_index` and `row_bbox` are all present. What is
+missing is not *which row* but *what the row means* -- the caption it sits under.
+Coca-Cola has two `Operating income` rows on different pages:
+
+```
+Operating Income | 13,762 |  9,992 | 11,311
+Operating income | 13,426 | 12,536 | 11,868
+```
+
+Both are real rows with real `row_id`s. Nothing in the record says the second is
+the consolidated statement's and the first a segment table's, and that is what
+decides the answer.
+
+So the migration's Go verdict rests on exactly one unverified fact: **does the
+source table's caption attach to the row in a form that survives?** If it does,
+the twelve are recoverable and the ceiling is 60.7%. If it does not, they are
+zero and the ceiling is 55.4%. This audit cannot see the source, and that check
+is cheap.
+
+Of the earlier list, what B0 called `RECOVERABLE_FROM_THE_RECORD` are the four
+where the arithmetic settles it without any of this.
 
 ## Q4 — the ceiling, computed rather than assumed
 
