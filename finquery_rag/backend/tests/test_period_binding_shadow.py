@@ -126,7 +126,15 @@ def test_partial_does_not_collapse_into_unresolved():
 def _bind(document_id: str, ticker: str, accession: str, order: int):
     if not CORPUS.is_dir():
         pytest.skip("corpus not present on this host")
-    from lxml import etree, html
+    # `lxml` is a tooling dependency -- nothing under src/ or rag_v2/ imports it,
+    # and it is declared in neither pyproject.toml nor uv.lock, so an environment
+    # built by `uv sync` does not have it.  Skip for the same reason the corpus
+    # check above skips: this test needs a filing *and* a parser, and reporting a
+    # missing tool as a failing assertion says the wrong thing about the code.
+    try:
+        from lxml import etree, html
+    except ImportError:
+        pytest.skip("lxml is not installed in this environment")
     nf_spec = importlib.util.spec_from_file_location("nf17a4", PARSER)
     nf = importlib.util.module_from_spec(nf_spec)
     nf_spec.loader.exec_module(nf)

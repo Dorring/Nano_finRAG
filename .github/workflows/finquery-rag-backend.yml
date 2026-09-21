@@ -27,6 +27,24 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
+    env:
+      # uv resolves its interpreter from `.python-version`, and this repository
+      # has two that disagree: the root's says 3.10 and `finquery_rag/`'s says
+      # 3.13, while this job's setup-python installs 3.12 and pyproject requires
+      # >=3.12. With no satisfying interpreter on the runner, uv downloads the
+      # newest release instead -- CPython 3.14 -- where `onnxruntime` publishes
+      # no wheel and `uv sync` fails outright:
+      #
+      #   error: Distribution `onnxruntime==1.23.2` can't be installed because
+      #   it doesn't have a source distribution or wheel for the current platform
+      #   hint: You're using CPython 3.14 (`cp314`), but `onnxruntime` (v1.23.2)
+      #   only has wheels with the following Python ABI tags: cp312, cp313, cp313t
+      #
+      # Pinning it explicitly makes the build independent of which interpreter
+      # the runner happens to expose, and keeps CI on the 3.12 every sealed
+      # measurement was produced on.
+      UV_PYTHON: "3.12"
+
     defaults:
       run:
         working-directory: finquery_rag/backend
