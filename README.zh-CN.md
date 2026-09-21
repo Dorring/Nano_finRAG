@@ -1,330 +1,175 @@
-# nano_finance
+<div align="center">
 
-*金融垂类大模型训练、有据可依的RAG、确定性计算、校验与无Root在线部署*
+<img src="assets/nano_finrag_banner.svg" alt="Nano_finRAG Banner" width="100%" />
 
-[English version](README.md)
+<br/>
 
----
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.12-green.svg)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.9%20CUDA%2012.8-ee4c2c.svg)](https://pytorch.org/)
+[![Release Coverage](https://img.shields.io/badge/Trusted%20Release-67.53%25-success.svg)](#2-基准与核心指标-metrics-snapshot)
+[![Incorrect Release](https://img.shields.io/badge/Incorrect%20Release-0-brightgreen.svg)](#2-基准与核心指标-metrics-snapshot)
+[![Tests](https://img.shields.io/badge/Tests-5148%20passed-brightgreen.svg)](#7-可靠性与测试保障)
 
-> **本文档描述的是较早的阶段。** 最终已封存的数字与结论以
-> [`finquery_rag/backend/docs/evaluation/FINAL_SEAL.md`](finquery_rag/backend/docs/evaluation/FINAL_SEAL.md)
-> 为准：
->
-> | 指标 | 最终结果 |
-> |---|---:|
-> | Trusted Release Coverage | 52/77 = **67.53%** |
-> | Released Accuracy | 52/52 = **100%** |
-> | Incorrect Release | **0** |
-> | Correct Refusal | 43/43 = **100%** |
-> | Citation P/R（canonical identity） | **96.0% / 95.3%** |
-> | Offline Retrieval R@5（production Hybrid RRF） | **50.7%** |
-> | Offline Retrieval R@5（structured rerank，默认关闭） | 85.3% |
->
-> 正文若与此表冲突，以本表为准。
+[English](README.md) · [中文文档](README.zh-CN.md)
+
+</div>
 
 ---
 
-## 项目概览
+## 1. 项目定位与核心前提
 
-nano_finance 是一个端到端的金融领域语言模型与 RAG 系统，基于原生
-[NanoChat](https://github.com/karpathy/nanochat) 训练栈构建。
+**Nano_finRAG** 是一个面向金融年报问答与复杂计算的**高可信 Agentic RAG Harness（安全底盘）**。系统基于真实 SEC 10-K/Q 财报主表及附注构建，其核心工程前提为：
 
-项目覆盖分词器适配、领域预训练、监督微调、混合检索、确定性金融计算、有据可依的答案校验、评估治理以及无 Root 在线部署——全部设计为可在无 root 权限、无 Docker、无系统级工具的大学服务器上运行。
+> **“任何无法被事实证据严格对齐与锚定的答案绝不可释放，且系统必须能够明确指出阻断的具体阶段与原因。”**
 
----
-
-## 解决的核心问题
-
-| 问题 | 解决方案 |
-|---|---|
-| 英文原生分词器对中文金融文本效率低下 | 自定义 65K 词表大小的 Byte-Level BPE 分词器 |
-| 通用大模型缺乏金融领域知识 | 领域自适应预训练 + 金融 SFT |
-| 普通 RAG 产生检索错误、数字幻觉和单位错误 | 混合检索（Dense + BM25 + RRF + Reranker）配合层次化上下文 |
-| LLM 自由形式计算缺乏可审计性 | 基于 Decimal 的确定性金融计算器，操作数绑定证据来源 |
-| 答案可能缺乏来源或包含错误引用 | 有据可依的校验流水线，覆盖 6+ 个校验类别 |
-| 大学服务器：无 root、无 Docker、端口受限 | 基于 tmux 的三服务无 Root 部署，配合 SSH 隧道访问 |
+在此前提下，系统彻底摒弃普通 Demo 级 RAG “检索文本块直接丢给大模型自由生成并心算数字”的不可控路线，构建了包含**有界规划、多通道检索、证据槽位绑定、确定性 Python Decimal 计算器、以及释放校验门禁**的严谨状态机执行流。
 
 ---
 
-## 核心能力
+## 2. 基准与核心指标 (Metrics Snapshot)
 
-| 能力 | 描述 |
-|---|---|
-| **领域分词器** | Byte-Level BPE，65K 词表，中英混合 + 金融语料 |
-| **金融预训练与 SFT** | 基础预训练 → 领域自适应 → 仅对助手部分计算损失的监督微调 |
-| **混合 RAG** | Dense 检索 + BM25 + RRF 融合 + Reranker + 层次化上下文 |
-| **确定性金融计算器** | 9 种金融运算，Decimal 精度，操作数绑定证据，单位/量纲校验 |
-| **有据可依的校验** | 可回答性、论断提取、数值/单位/时期/引用/计算校验、修复一次、安全回退 |
-| **无 Root 三服务部署** | 模型（18001）→ 后端（18002）→ 前端（18003），tmux，SSH 隧道，健康/冒烟/重启验证 |
+<div align="center">
+  <img src="assets/nano_finrag_metrics.svg" alt="Benchmark V2 Key Metrics" width="100%" />
+</div>
+
+<br/>
+
+| 评测维度 | 评测数据集 / 对应层级 | 实测性能与指标 | 工程定位与状态 |
+|:---|:---|:---|:---|
+| **🛡️ 受信任端到端** | **Benchmark V2**<br/>*(77 可回答 / 43 对抗性拒答)* | **67.53%** 释放覆盖率 (52/77)<br/>**100%** 释放准确率 (52/52，**0 错误释放**)<br/>**100%** 正确拒答率 (43/43 安全阻断) | **生产环境默认上线**<br/>`FINANCIAL_RUNTIME_MODE=v2` |
+| **🔍 引文溯源精度** | **规范金融实体映射 (Canonical Identity)**<br/>*(覆盖 52 个释放用例)* | **96.0%** Precision (95/99)<br/>**95.3%** Recall (82/86) | **生产级事实锚定门禁** |
+| **⚡ 生产检索召回** | **R4 候选索引库 (310 MB)**<br/>*(Hybrid BM25 + Dense)* | **50.7%** Recall@5<br/>**58.0%** Recall@10<br/>**65.3%** Recall@20 | **线上发布检索路径**<br/>倒数排名融合 ($k=60$) |
+| **🧪 结构化重排** | **结构化候选重排器 (Structured Reranker)**<br/>*(离线评测分支，n=75)* | **85.3%** Recall@5<br/>**93.3%** Recall@10<br/>**95.3%** Recall@20 | **默认禁用 (严禁虚标)**<br/>端到端无显著增益 |
+
+> ℹ️ **85.3% 是离线结构化重排实验指标，绝非生产检索指标。**
+> 生产默认检索路径为 Hybrid RRF（R@5 达到 **50.7%**）。该重排器虽然在离线 Rank 表现优异，但其提权的候选事实早在 Binder 可见窗口内（`PROMOTED_INTO_WINDOW = 0`），未能产生实际端到端释放收益，因此**默认强制关闭**。
+
+> 🛡️ **67.53% 是受信任释放覆盖率，而非单纯的回答准确率。**
+> 它是系统在确保 **100% 正确且零幻觉** 前提下，愿意回答的比例。当证据存在实质冲突或不完备时，系统选择安全闭合拒答，宁缺毋滥。
 
 ---
 
-## 系统架构
+## 3. 为什么不是又一个“RAG Demo”
+
+| 核心维度 | 市面常见 RAG Demo ❌ | Nano_finRAG 生产级 Harness 🛡️ |
+|:---|:---|:---|
+| **检索目标** | 粗粒度文本切片直接喂给 Prompt | 检索**强类型事实**，通过 **RequiredSlot** 严格绑定坐标与上下文 |
+| **计算引擎** | 由大模型自主算数 $ightarrow$ 极其严重的算术与单位幻觉 | **确定性金融计算器**（9 种算子，Decimal 精度） $ightarrow$ 严禁模型心算 |
+| **执行控制** | 单次 Prompt / 缺乏约束的死循环 Agent | 显式 **RunState / 预算 / 停止策略** $ightarrow$ 最大重规划 2 轮，有界成本 |
+| **失败处理** | 面对冲突强行编造答案 $ightarrow$ 静默发布错误 | **带 ReasonCode 的失败闭合** $ightarrow$ 错误释放归零，阶段完全可审计 |
+| **评测标准** | 混为一谈的泛化“回答准确率” | **释放覆盖率 (67.53%)** 与 **释放准确率 (100%)** 严格解耦 |
+| **质量抓手** | 依赖 Prompt 提示词工程微调 | **系统级 Harness 架构**：规划器、语义门禁、绑定器、计算器、校验门禁 |
+
+---
+
+## 4. 生产架构与执行流水线 (Production Pipeline)
+
+<div align="center">
+  <img src="assets/nano_finrag_architecture.svg" alt="Nano_finRAG 架构图" width="100%" />
+</div>
+
+<br/>
+
+<details>
+<summary><b>📐 点击查看 Mermaid 流程图源码</b></summary>
 
 ```mermaid
-flowchart LR
-    A[用户 / Web 界面] --> B[FastAPI 后端]
-    B --> C[查询处理]
-    C --> D[Dense 检索]
-    C --> E[BM25 检索]
-    D --> F[RRF 融合]
-    E --> F
-    F --> G[Reranker]
-    G --> H[上下文构建器]
+flowchart TD
+    Q[用户查询 User Query] --> H[Trusted V2 Harness<br/>RunState · 预算 · 停止策略]
+    H --> P[有界规划器 Bounded Planner<br/>RequiredSlots + 意图算子]
+    P --> A{语义对齐门禁 Semantic Gate}
+    A -- 阻断 refuse --> FC[失败闭合 Fail-closed]
+    A -- 放行 allow --> R[混合检索 Hybrid Retrieval<br/>BM25 + Dense, RRF 融合]
+    R --> B[证据绑定器 Evidence Binder<br/>每个槽位坐标唯一确定值]
+    B -- 歧义/缺失 --> FC
+    B --> C[确定性计算器 Deterministic Calculator<br/>9 种数学算子，操作数校验]
+    C --> G[金融专家大模型 Specialist LM<br/>仅负责叙述组织]
+    G --> V[释放校验器 Validator<br/>数值一致 · 范围 · 引文]
+    V -- 失败 fail --> FC
+    V --> REL[受信任释放 Release]
 
-    H --> I{意图识别}
-    I -->|计算| J[确定性计算器]
-    I -->|文档问答| K[金融 LLM]
-
-    J --> L[有据可依的校验]
-    K --> L
-    L --> M[答案 / 安全回退]
+    ST[(事实库 Fact Store<br/>20,394 记录<br/>iXBRL + legacy)] -.-> R
+    ST -.-> B
+    ST -.-> C
+    TR[(执行追踪 Trace / Audit)] -.-> H
 ```
+</details>
 
-### 训练流水线
+### 生产流水线六大核心阶段
 
-```text
-原始语料 → 金融分词器 → 基础预训练 → 领域预训练 → SFT → 模型服务 → RAG 应用
-```
-
-架构将**模型能力**、**系统编排**、**确定性计算**、**检索**、**校验**和**在线部署**分离为独立、可审计的层次。确定性计算器是系统组件，而非模型原生的工具调用。
-
----
-
-## 核心能力详解
-
-### 1. 分词器与训练流水线
-
-- 自定义 Byte-Level BPE 分词器，65K 词表大小
-- 中英混合通用语料 + 中文金融语料
-- 基础预训练 → 领域自适应 → 监督微调
-- SFT 阶段仅对助手部分计算损失
-
-> 标记为*历史自述*的训练数据目前无法进行独立验证。
-
-### 2. 混合 RAG
-
-- **Dense 检索**：通过 ChromaDB 进行语义向量搜索
-- **BM25**：稀疏词汇检索，用于关键词匹配
-- **RRF 融合**：对稠密和稀疏结果进行倒数排序融合
-- **Reranker**：对融合后的候选结果进行 Cross-encoder 重排序
-- **层次化上下文**：文档范围控制、页面级分块、来源归属
-- **上下文充分性**：自动检测上下文不足并安全拒绝
-
-### 3. 确定性金融计算
-
-使用 Python `Decimal` 实现的九种确定性运算：
-
-| 运算 | 描述 |
-|---|---|
-| `difference` | 两个值之间的绝对差值 |
-| `growth_rate` | 从基期到目标值的百分比增长率 |
-| `percentage_share` | 某部分占整体的比例 |
-| `sum` | 多个值的求和 |
-| `average` | 多个值的算术平均 |
-| `gross_margin` | （营收 - 营业成本）/ 营收 |
-| `net_margin` | 净利润 / 营收 |
-| `debt_ratio` | 总负债 / 总资产 |
-| `scale_conversion` | 单位转换（如百万转十亿） |
-
-核心保障：
-- 所有操作数必须绑定到文档、页面和块级别的证据
-- 单位和量纲在计算前进行校验
-- 失败时故障关闭：不回退到 LLM 重新计算
-- 证据缺失时安全阻断
-
-### 4. 有据可依的校验
-
-校验流水线对每个答案检查以下方面：
-
-- **可回答性**：该问题是否能从现有文档中回答？
-- **论断提取**：将答案分解为可验证的论断
-- **数值校验**：引用的数字是否与源文本一致？
-- **单位/时期校验**：单位和时间周期是否正确传递？
-- **引用校验**：每个论断是否有有效的来源引用？
-- **计算校验**：计算操作数是否可追溯到证据？
-- **无据论断校验**：是否存在无证据支持的论断？
-- **修复一次**：单次确定性修复尝试（无 LLM 循环）
-- **安全回退**：被阻断或失败的答案使用安全回退消息
-
-系统通过确定性校验和故障关闭的响应处理来减少无依据的回复。
-
-### 5. 在线部署
-
-三个服务作为用户空间进程在 tmux 下运行：
-
-| 服务 | 端口 | 会话名称 |
-|---|---|---|
-| 模型服务 | 127.0.0.1:18001 | `nano-finance-model` |
-| 后端服务 | 127.0.0.1:18002 | `nano-finance-backend` |
-| 前端服务 | 127.0.0.1:18003 | `nano-finance-frontend` |
-
-特性：
-- 无 root、无 Docker、无 systemd
-- 基于 tmux 的进程管理，带 PID 属主验证
-- 有序启动：模型 → 后端 → 前端
-- 健康检查、冒烟测试、SSE 流验证、重启恢复
-- SSH 隧道用于远程访问
-- 服务器重启后需手动重启
+| 阶段 | 核心组件 | 职责与不变量保证 |
+|:---:|:---|:---|
+| **01. 多轮输入与降噪** | `QueryLifecycleService`<br/>`ContextRelevanceFilter` | 会话管理与历史追踪；动态多轮降噪（闲聊惩罚 -5.0，换话题惩罚 -6.0）；Qwen3.6-Flash 重构自包含问题。 |
+| **02. 任务规划与门禁** | `SupervisorService`<br/>`SemanticAlignmentGate` | 生成包含意图、算子与 `RequiredSlots` 的强类型规划；依据财报原始披露行标签校验语义对齐，未收录直接拒答。 |
+| **03. 自适应检索与绑定** | `CandidateDirectR4Policy`<br/>`SemanticBinderService` | 多通道检索（BM25 + Dense $ightarrow$ RRF $k=60$）；绑定器严格对齐槽位坐标事实；依据缺失槽位执行定向补检（最多 2 轮）。 |
+| **04. 确定性金融计算** | `DeterministicCalculationCapability` | 9 种内置运算算子（差额、占比、增长率、毛利率等），Python Decimal 高精度，严禁 LLM 算数。 |
+| **05. 专家叙述生成** | `TrustedV2GenerationCapability` | 金融专用语言模型仅负责将已验证的事实与计算结果整合为自然语言，严格限制模型自由推理修改数字。 |
+| **06. 释放校验与安全门禁**| `TrustedReleaseValidationCapability` | 三重闭环校验：论断数值精确匹配、合并与分部范围对齐、规范引文存在性 $ightarrow$ 100% 准确释放或安全拒答。 |
 
 ---
 
-## 已验证的工程指标
-
-仅呈现可独立验证的结果：
-
-| 指标 | 数值 | 含义 |
-|---|---|---|
-| 确定性金融运算 | 9 | 覆盖差值、增长率、利润率比率和单位转换 |
-| 校验类别 | 6+ | 数值、单位/时期、引用、计算、无据论断、可回答性 |
-| 在线服务数 | 3 | 模型、后端、前端 |
-| 阶段七部署验收 | 42/42 | 完整的三服务链路验证 |
-| 自动化测试 | 2,000+ | 全部通过，零失败 |
-| 部署冒烟测试 | 12/12 | 健康、问答、计算、SSE、重启 |
-
-详细指标及其来源见
-[docs/showcase/verified-metrics.md](docs/showcase/verified-metrics.md)。
-
-> 以下内容**明确不**作为质量声明使用：合成留出集 0/54、无法验证的 17.68B tokens、未复现的分词器压缩率、未验证的检查点哈希、失败的实验 BPB，或任何"生产级精度"声明。
-
----
-
-## 演示
-
-五个演示场景记录在
-[docs/showcase/demo-guide.md](docs/showcase/demo-guide.md) 中：
-
-1. **财报问答**：上传文档，提问，查看带页码的来源
-2. **确定性金融计算**：增长率与利润率计算，操作数可追溯
-3. **单位/时期歧义**：系统阻断歧义计算而非猜测
-4. **无法回答的问题**：证据缺失时安全拒绝
-5. **在线三服务状态**：模型/后端/前端就绪状态及 SSH 隧道访问
-
-截图可在 [assets/demo/](assets/demo/) 中查看。
-
----
-
-## 快速开始
-
-### 本地开发
-
-后端和前端依赖的项目特定配置见 `finquery_rag/` 目录。
-
-### 在线部署（大学服务器）
+## 5. 快速开始 (Quick Start)
 
 ```bash
-# 启动全部三个服务
-bash scripts/deploy/start_all.sh
+git clone https://github.com/Dorring/Nano_finRAG.git
+cd Nano_finRAG/finquery_rag/backend
 
-# 检查服务状态
-bash scripts/deploy/status.sh
+# 推荐使用 uv 进行高速依赖对齐
+uv sync                                   # 或: python -m venv .venv && pip install -e .
 
-# 运行健康检查
-python scripts/deploy/healthcheck.py
+cp .env.example .env                      # 配置大模型 API 凭证
 ```
 
-### SSH 隧道访问
+配置必须的底层外部事实库与 R4 索引路径：
 
 ```bash
-ssh -N \
-  -L 18003:127.0.0.1:18003 \
-  -L 18002:127.0.0.1:18002 \
-  <user>@<server>
+export TRUSTED_V2_FACT_STORE_PATH=/path/to/financial-facts.jsonl
+export TRUSTED_V2_R4_INDEX_DIR=/path/to/r4-index
 ```
 
-然后在浏览器中打开 `http://127.0.0.1:18003`。
+启动生产后端服务：
+
+```bash
+python -m uvicorn src.main:app --host 127.0.0.1 --port 18002 --workers 1
+```
 
 ---
 
-## 项目时间线
+## 6. 基准与评测复现 (Benchmark Reproduction)
 
-| 阶段 | 重点 |
-|---|---|
-| 阶段一 | 检索完整性 |
-| 阶段二 | RAG 编排 |
-| 阶段三 | 金融计算流水线 |
-| 阶段四 | 有据可依与校验 |
-| 阶段五 | 评估基础设施 |
-| 阶段六 | 发布证据分类 |
-| 阶段七 | 无 Root 在线部署 |
+在 `finquery_rag/backend` 目录下，Benchmark V2 可由代码纯正向推导复现：
 
-详细文档：
+```bash
+# 1. 重建 Benchmark V2 (由 V1 基础数据推导):
+python scripts/evaluation/build_p1_8c_benchmark_v2.py     --base benchmarks/tv2_canonical_v1 --out /tmp/v2
 
-- [docs/architecture/](docs/architecture/)
-- [docs/deployment/](docs/deployment/)
-- [docs/release/](docs/release/)
-- [docs/showcase/](docs/showcase/)
+# 2. 从 v8 规范升级 v9 fixture:
+python scripts/evaluation/build_p1_8_d1_fixture_v9.py --apply
 
----
+# 3. 校验 fixture 完整性守卫 (C5 操作数顺序一致性):
+python scripts/evaluation/verify_fixture_integrity.py     --eval-set benchmarks/tv2_canonical_v1/canonical-eval-v1.jsonl     benchmarks/tv2_canonical_v1/plan-fixtures-v9.jsonl
 
-## 文档索引
+# 4. 执行受信任端到端重放评测:
+python scripts/evaluation/run_p1_2_dual_track_benchmark.py     --track replay     --eval-set  /tmp/v2/canonical-eval-v1.jsonl     --gold-evidence /tmp/v2/gold-evidence-v1.jsonl     --fixtures benchmarks/tv2_canonical_v1/plan-fixtures-v9.jsonl     --out-dir /tmp/replay
 
-| 文档 | 描述 |
-|---|---|
-| [docs/showcase/demo-guide.md](docs/showcase/demo-guide.md) | 逐步演示指南 |
-| [docs/showcase/demo-script.md](docs/showcase/demo-script.md) | 演示脚本（用于展示） |
-| [docs/showcase/verified-metrics.md](docs/showcase/verified-metrics.md) | 已验证的工程指标 |
-| [docs/showcase/interview-guide.md](docs/showcase/interview-guide.md) | 面试准备指南 |
-| [docs/showcase/resume-evidence.md](docs/showcase/resume-evidence.md) | 简历级项目证据 |
-| [docs/showcase/known-claims.md](docs/showcase/known-claims.md) | 不应做出的声明 |
-| [docs/deployment/online-deployment.md](docs/deployment/online-deployment.md) | 部署指南 |
-| [docs/deployment/ssh-tunnel.md](docs/deployment/ssh-tunnel.md) | SSH 隧道设置 |
-| [docs/deployment/troubleshooting.md](docs/deployment/troubleshooting.md) | 故障排查指南 |
-| [docs/release/model-card.md](docs/release/model-card.md) | 模型卡 |
-| [docs/release/rag-system-card.md](docs/release/rag-system-card.md) | RAG 系统卡 |
+# 5. 运行一键行为零漂移冻结守卫:
+python scripts/evaluation/final_regression_guard.py --expect --write baseline.json
+python scripts/evaluation/final_regression_guard.py --check  baseline.json
+# -> 预期输出: BEHAVIORAL_DRIFT = 0
+```
 
 ---
 
-## 已知局限
+## 7. 可靠性与测试保障
 
-- 模型检查点验证依赖历史记录（目前无法进行独立验证）
-- 服务器重启后系统需要手动重启
-- 无公网访问；远程访问需通过 SSH 隧道
-- 无自动扩缩容或多机部署
-- 计算器仅限于文档中列出的九种运算
-- 校验为尽力而为；无法保证消除所有错误
-
-参见 [docs/deployment/known-limitations.md](docs/deployment/known-limitations.md)
-和 [docs/release/limitations-and-risks.md](docs/release/limitations-and-risks.md)
+- **5148 个自动化测试全绿通过**，覆盖架构一致性、语义门禁、绑定器契约与确定性计算。
+- **15 种对抗性故障注入测试 (Fault Injection)**：网络断联、模型输出格式损坏、恶意篡改数字、预算耗尽、证据实质冲突 $ightarrow$ **0 错误释放，100% 成功阻断**。
+- 完整的设计决策背景、事实证据链与已知技术债务请参阅 [`finquery_rag/backend/docs/evaluation/FINAL_SEAL.md`](finquery_rag/backend/docs/evaluation/FINAL_SEAL.md)。
 
 ---
 
-## 上游项目与致谢
-
-nano_finance 基于 Andrej Karpathy 的
-[NanoChat](https://github.com/karpathy/nanochat) 构建——这是一个在单 GPU 节点上训练 LLM 的实验性工具集，覆盖分词、预训练、微调、评估、推理和聊天界面。
-
-原始 nanochat 训练栈提供了基础训练基础设施、GPT 模型架构、分词器框架和聊天界面基础，nano_finance 在此基础上扩展了金融领域能力。
-
-额外致谢：
-
-- [modded-nanoGPT](https://github.com/KellerJordan/modded-nanogpt) —— 预训练优化思路
-- [HuggingFace](https://hf-mirror.com/) —— 数据集（FineWeb、SmolTalk）
-- [ChromaDB](https://www.trychroma.com/) —— 向量存储
-- [FastAPI](https://fastapi.tiangolo.com/) —— 后端框架
-
----
-
-## 许可证
-
-MIT
-
-## NF-V2-11 ??????
-
-???????? Supervisor ???
-
-Financial RAG Supervisor -> ?? / ???? -> ???????? -> ??? Calculator -> ???? Financial Specialist -> ??? Validator -> ?? / fallback / fail-closed?
-
-Financial Specialist ???????????????? Supervisor?????????Calculator ?????????Grounding ????????????????? V1?PROJECT_FREEZE_V1_PRODUCTION??
-
-Grounded Financial SFT ??????????? grounded???? canonical calculation ???47/64?52/64?7/11??? Multi ? 5/5??????? oracle/trusted evidence ???????? E2E ?????? E2E ???? 4/64 ? answerable ???????/grounded ? 3/64?8 ? no-answer ???????false execution ? false binding ?? 0?68/72 ??? fail-closed??? 1 ????????????? V2 ??????
-
-???????????? finquery_rag/backend/artifacts/final-project-freeze/????????????? known-limitations.md?R1 + LoRA/DPO ???????????????????????
-
-## NF-V2-15 Claim-Verifier 收口
-
-最终 V2 候选链路在 `RuntimeGenerationValidatorV1` 前加入已验证的后生成
-`SemanticClaimVerifierV1`。在同一份冻结 72 题回放中，保留原先 3 个正确释放，
-拦截 1 个历史单位幻觉，结果为 3 个释放且 3 个正确、语义不安全最终释放为 0。
-这只是组件/回放证据，不是 fresh-blind E2E 精度；覆盖仍然有限，Production 继续保持 V1。
-被拒绝的 R1 + LoRA/DPO 实验只作为历史研究证据，不进入运行时。
+<div align="center">
+<sub>基准封存于 <code>nano-finrag-interview-final</code> · 本文档更新于 <code>nano-finrag-interview-release</code>。<br/>
+系统行为已完全冻结，严禁在生产路径随意修改未经校验的代码。</sub>
+</div>

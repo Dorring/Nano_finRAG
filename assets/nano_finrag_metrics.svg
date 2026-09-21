@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 240" width="1200" height="240">
+  <defs>
+    <linearGradient id="mBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090E17" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="borderGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#1E293B" stop-opacity="0.4" />
+    </linearGradient>
+    <filter id="mCardShadow" x="-5%" y="-10%" width="110%" height="125%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <style>
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .kpi-title { font-size: 11.5px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+    .kpi-num { font-size: 30px; font-weight: 800; letter-spacing: -0.8px; }
+    .kpi-desc { font-size: 12px; fill: #94A3B8; font-weight: 400; }
+  </style>
+
+  <rect width="1200" height="240" rx="14" fill="url(#mBg)" stroke="#1E293B" stroke-width="1.2" />
+
+  <!-- Header line -->
+  <g transform="translate(40, 28)">
+    <text class="sans" font-size="14" font-weight="700" fill="#38BDF8" letter-spacing="1px">BENCHMARK V2 KEY PERFORMANCE METRICS</text>
+    <text class="sans" font-size="13" font-weight="400" fill="#64748B" x="385">|  120 SEC Filings Questions (77 Answerable / 43 Abstention) · Frozen &amp; Sealed</text>
+  </g>
+
+  <!-- 5 Cards Row -->
+  <g transform="translate(40, 60)">
+    <!-- Card 1: Released Accuracy -->
+    <g transform="translate(0, 0)" filter="url(#mCardShadow)">
+      <rect width="210" height="150" rx="10" fill="url(#cardGrad1)" stroke="url(#borderGrad1)" stroke-width="1" />
+      <rect width="210" height="3" rx="1.5" fill="#10B981" />
+      <text x="18" y="32" class="sans kpi-title" fill="#10B981">RELEASED ACCURACY</text>
+      <text x="18" y="74" class="sans kpi-num" fill="#F8FAFC">100%</text>
+      <text x="18" y="100" class="mono" font-size="12" font-weight="600" fill="#34D399">52 / 52 Correct</text>
+      <text x="18" y="128" class="sans kpi-desc">0 Incorrect Releases</text>
+    </g>
+
+    <!-- Card 2: Release Coverage -->
+    <g transform="translate(228, 0)" filter="url(#mCardShadow)">
+      <rect width="210" height="150" rx="10" fill="url(#cardGrad1)" stroke="url(#borderGrad1)" stroke-width="1" />
+      <rect width="210" height="3" rx="1.5" fill="#6366F1" />
+      <text x="18" y="32" class="sans kpi-title" fill="#818CF8">TRUSTED COVERAGE</text>
+      <text x="18" y="74" class="sans kpi-num" fill="#F8FAFC">67.53%</text>
+      <text x="18" y="100" class="mono" font-size="12" font-weight="600" fill="#A5B4FC">52 / 77 Released</text>
+      <text x="18" y="128" class="sans kpi-desc">Zero Guessing on Conflict</text>
+    </g>
+
+    <!-- Card 3: Correct Refusal -->
+    <g transform="translate(456, 0)" filter="url(#mCardShadow)">
+      <rect width="210" height="150" rx="10" fill="url(#cardGrad1)" stroke="url(#borderGrad1)" stroke-width="1" />
+      <rect width="210" height="3" rx="1.5" fill="#F59E0B" />
+      <text x="18" y="32" class="sans kpi-title" fill="#FBBF24">CORRECT REFUSAL</text>
+      <text x="18" y="74" class="sans kpi-num" fill="#F8FAFC">100%</text>
+      <text x="18" y="100" class="mono" font-size="12" font-weight="600" fill="#FDE68A">43 / 43 Blocked</text>
+      <text x="18" y="128" class="sans kpi-desc">Total Fail-Closed Defense</text>
+    </g>
+
+    <!-- Card 4: Citation Grounding -->
+    <g transform="translate(684, 0)" filter="url(#mCardShadow)">
+      <rect width="210" height="150" rx="10" fill="url(#cardGrad1)" stroke="url(#borderGrad1)" stroke-width="1" />
+      <rect width="210" height="3" rx="1.5" fill="#8B5CF6" />
+      <text x="18" y="32" class="sans kpi-title" fill="#A78BFA">CITATION FIDELITY</text>
+      <text x="18" y="74" class="sans kpi-num" fill="#F8FAFC">96.0%</text>
+      <text x="18" y="100" class="mono" font-size="12" font-weight="600" fill="#C4B5FD">95.3% Recall</text>
+      <text x="18" y="128" class="sans kpi-desc">Canonical Financial Identity</text>
+    </g>
+
+    <!-- Card 5: Hybrid RRF Retrieval -->
+    <g transform="translate(912, 0)" filter="url(#mCardShadow)">
+      <rect width="208" height="150" rx="10" fill="url(#cardGrad1)" stroke="url(#borderGrad1)" stroke-width="1" />
+      <rect width="208" height="3" rx="1.5" fill="#06B6D4" />
+      <text x="18" y="32" class="sans kpi-title" fill="#22D3EE">PRODUCTION RETRIEVAL</text>
+      <text x="18" y="74" class="sans kpi-num" fill="#F8FAFC">50.7%</text>
+      <text x="18" y="100" class="mono" font-size="12" font-weight="600" fill="#67E8F9">R@5 (58.0% R@10)</text>
+      <text x="18" y="128" class="sans kpi-desc">Hybrid BM25+Dense RRF</text>
+    </g>
+  </g>
+</svg>
