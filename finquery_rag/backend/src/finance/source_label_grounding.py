@@ -60,8 +60,16 @@ class SourceLabelGrounding:
         # strings would find no facts and read that as "the source is silent"
         # rather than as "the question was spelled differently".
         period = canonical_period_id(getattr(slot, "period", None))
-        facts = self._store.facts_at_coordinate(
-            getattr(slot, "entity", None), metric, period)
+        entity = getattr(slot, "entity", None)
+        if entity:
+            facts = self._store.facts_at_coordinate(entity, metric, period)
+        else:
+            # A slot may carry no entity, and looking that up as the empty one
+            # finds nothing -- which reads as *the source has no such row* when
+            # the source has it for exactly one filer.  Asking across filers and
+            # then requiring determinacy keeps the rule honest: two companies
+            # reporting the same label differently is still not grounded.
+            facts = self._store.facts_for_label(metric, period)
         if not facts:
             return None
         if coordinate_status(facts[0], facts) is CoordinateStatus.CONFLICTING_VALUES:

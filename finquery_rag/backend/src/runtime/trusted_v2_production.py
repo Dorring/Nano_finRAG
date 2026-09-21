@@ -570,6 +570,31 @@ class StructuredFactStore:
         }
         return self._entity_key_cache
 
+    def facts_for_label(
+        self,
+        metric: Any,
+        period: Any,
+    ) -> tuple[Mapping[str, Any], ...]:
+        """Every fact carrying this metric and period, whoever filed it.
+
+        A plan is not required to fill a slot's entity, and looking a missing
+        one up as the empty entity finds nothing -- which reads as *the source
+        does not have this row* when the source has it for exactly one filer.
+        That conflation cost twelve cases their vocabulary, so the store answers
+        the question the caller actually asked: which facts carry this label,
+        and the caller decides what several filers' rows mean.
+        """
+
+        def fold(value: Any) -> str:
+            return " ".join(str(value or "").casefold().split())
+
+        wanted = (fold(metric), fold(period))
+        facts: list[Mapping[str, Any]] = []
+        for coordinate, rows in self._by_coordinate.items():
+            if (coordinate[1], coordinate[2]) == wanted:
+                facts.extend(rows)
+        return tuple(facts)
+
     def logical_fact_ids(self) -> dict[str, str]:
         """candidate key -> the logical fact that key states.
 

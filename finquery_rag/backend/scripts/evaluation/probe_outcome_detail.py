@@ -44,6 +44,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--evidence", action="store_true",
                         help="print the bound-evidence semantic check when it "
                              "refuses, which is the one refusal the trace drops")
+    parser.add_argument("--binder-raw", action="store_true",
+                        help="print the provider response when the Binder reports "
+                             "an invalid schema, to separate model noise from a "
+                             "parser that cannot read a shape it should")
     parser.add_argument("--gold", type=Path, default=BENCH_DIR / "gold-evidence-v1.jsonl")
     parser.add_argument("--ixbrl-fact-store", type=Path, default=Path(
         "/disk/qh/nano-finrag/data/trusted-v2/fact-store/"
@@ -133,6 +137,29 @@ def main(argv: list[str] | None = None) -> int:
             return result
 
         binder_module.align_bound_evidence_to_query = checking
+
+    if args.binder_raw:
+        # `binder_returned_invalid_schema` says the provider could not parse
+        # what the model returned.  Whether that is model noise or a parser that
+        # cannot read a shape it should is a different question, and only the
+        # response answers it.
+        from rag_v2.evidence.binder_service import SemanticBinderService
+
+        original_bind = SemanticBinderService.bind
+
+        def binding(self, request):
+            run = original_bind(self, request)
+            if not run.schema_valid:
+                print("\n!!! binder schema invalid")
+                print("    invalid_reasons %s" % (run.binding.invalid_reasons,))
+                print("    metadata %s"
+                      % json.dumps(run.metadata, ensure_ascii=False, default=str)[:900]
+                      if run.metadata else "    metadata None")
+                print("    raw %s" % str(run.raw_response)[:900])
+                print("    slots %s" % [s.slot_id for s in request.plan.required_slots])
+            return run
+
+        SemanticBinderService.bind = binding
 
     report: dict = {}
 

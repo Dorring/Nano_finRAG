@@ -6,17 +6,18 @@ Goal for this round: raise trusted-E2E **release coverage** while holding
 
 ```
                     baseline    this round    gate bypassed
-release coverage     20/95        46/95          50/95
-                      21.1%        48.4%          52.6%
-released correct     20/20        44/46          48/50
+release coverage     20/95        49/95          50/95
+                      21.1%        51.6%          52.6%
+released correct     20/20        47/49          48/50
 incorrect release       0            0              0
 correct refusal      25/25        25/25          25/25
-citation P / R     84.4 / 96.4   83.3 / 96.8    82.1 / 97.0
-  by logical fact  87.5 / 96.4   91.7 / 98.4    92.3 / 98.5
+citation P / R     84.4 / 96.4   82.3 / 97.0    82.1 / 97.0
+  by logical fact  87.5 / 96.4   92.4 / 98.5    92.3 / 98.5
 ```
 
 The second citation row is the same citations resolved to the *fact* rather
-than to *where it was printed* -- see below.
+than to *where it was printed* -- see below. This round is now within one case
+of the gate-bypass ceiling, so the gate is exhausted as a lever.
 
 All three columns were measured on the same host, same day, same code except
 the gate's vocabulary -- the third removes it entirely and is the ceiling, not a
@@ -306,6 +307,42 @@ citation recall           60/62 96.8%    61/62 98.4%
 Both numbers are reported and neither replaces the other. The baseline moves
 only 27/32 -> 28/32 under the same resolution, so this is a namespace doing real
 work rather than a metric that flatters everything.
+
+### A defect in the grounding rule itself
+
+A plan is not required to fill a slot's `entity`, and `SourceLabelGrounding`
+looked a missing one up as the *empty* entity -- which matches no fact, and so
+read as "the source does not have this row" when the source had it for exactly
+one filer. Twelve blocked cases had a null slot entity, and every one of them
+was refused for a reason that was not about the source at all.
+
+`facts_for_label` asks the store the question the caller meant -- which facts
+carry this label, whichever filer filed it -- and the determinacy requirement
+does the rest: two companies reporting the same label differently is still not
+grounded. Gate blocks 22 -> 20, release 46 -> 49.
+
+### The contract that discards a usable binding
+
+Four of the compare cases fail with `binder_returned_invalid_schema`, and the
+provider metadata says why:
+
+```
+provider_response_success=True  structured_output_success=False
+exception_cause_message='BOUND binding must be complete and error-free'
+```
+
+The model returns `status=BOUND` while listing missing slots, and
+`rag_v2/contracts/evidence.py` rejects the *entire response* rather than reading
+the status its own content supports. That is a defect of the same shape as the
+status-derivation the codebase prefers elsewhere -- `PlanSemanticAlignment
+.allowed` is a property derived from `status`, not a claim -- and it has a
+concrete cost: the rejection skips the targeted-slot repair loop that exists to
+fill exactly those missing slots.
+
+It is **not changed here.** It is four cases, it lives in a frozen contract
+module, and the honest fix is to derive `status` from the binding's completeness
+rather than to trust the provider's self-report -- which is a decision about a
+contract, not a step on the way to a coverage number.
 
 ## Not claimed
 

@@ -88,6 +88,11 @@ def main(argv: list[str] | None = None) -> int:
     records = _load(args.v2_fact_store)
     pinned = {row["case_id"]: row for row in _load(args.pinned)}
 
+    from rag_v2.supervisor.semantic_alignment import canonical_period_id
+    from src.runtime.trusted_v2_production import StructuredFactStore
+
+    store = StructuredFactStore(args.v2_fact_store)
+
     by_coordinate: dict[tuple[str, str, str], list[dict]] = collections.defaultdict(list)
     by_logical: dict[tuple, set[str]] = collections.defaultdict(set)
     for record in records:
@@ -120,15 +125,14 @@ def main(argv: list[str] | None = None) -> int:
 
         slot_detail = []
         for slot in slots:
-            key = (_fold(slot.get("entity")), _fold(slot.get("metric")),
-                   _fold(slot.get("period")) if slot.get("period") else "")
-            facts = []
-            for candidate_key, facts_at in by_coordinate.items():
-                if candidate_key[0] != key[0] or candidate_key[1] != key[1]:
-                    continue
-                if key[2] and candidate_key[2] not in ("", key[2]):
-                    continue
-                facts.extend(facts_at)
+            # The *store's* coordinate lookup, not a re-implementation of it.
+            # Folding the slot's period as written would compare `fiscal year
+            # 2025` against the store's `FY2025`, find nothing, and report a
+            # determinate coordinate as unreadable -- an audit that measures a
+            # different store than the gate does.
+            facts = list(store.facts_at_coordinate(
+                slot.get("entity"), slot.get("metric"),
+                canonical_period_id(slot.get("period"))))
             if not facts:
                 continue
             values = [v for v in (_number(f.get("value")) for f in facts) if v is not None]

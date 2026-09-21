@@ -590,6 +590,27 @@ class _FixtureFactStore:
             fact for fact in self.facts.values() if _coordinate_key(fact) == key
         )
 
+    def facts_for_label(
+        self, metric: Any, period: Any
+    ) -> tuple[Mapping[str, Any], ...]:
+        """Carries this label, whichever filer filed it -- the sibling lookup.
+
+        A plan may leave a slot's entity empty, and grounding asks across filers
+        rather than reading the empty entity as "no such row".  The stand-in
+        answers it for the same reason it answers the coordinate lookup: a
+        fixture that raised here would fail in the harness and not in
+        production.
+        """
+
+        def fold(value: Any) -> str:
+            return " ".join(str(value or "").casefold().split())
+
+        wanted = (fold(metric), fold(period))
+        return tuple(
+            fact for fact in self.facts.values()
+            if (fold(fact.get("metric")), fold(fact.get("period"))) == wanted
+        )
+
     def candidate_keys_for_entities(
         self, entities: Any
     ) -> frozenset[str]:
