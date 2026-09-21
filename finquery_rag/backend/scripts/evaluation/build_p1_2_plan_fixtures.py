@@ -67,6 +67,15 @@ from rag_v2.supervisor import canonical_entity_id, canonical_scope_id  # noqa: E
 if str(_BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(_BACKEND_DIR))
 
+# The operand-order invariant, from the module that also verifies it against a
+# frozen fixture.  It is checked here as well because this is where the defect
+# was introduced: the P1.6-0H migration rewrote the cross-entity slots' *metric*
+# without re-deriving their entities, and a fixture that cannot be verified
+# should not be written in the first place.
+if str(Path(__file__).resolve().parent) not in sys.path:
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+import fixture_integrity  # noqa: E402
+
 DEFAULT_EVAL_SET = (
     _BACKEND_DIR
     / "benchmarks/tv2_canonical_v1/canonical-eval-v1.jsonl"
@@ -537,15 +546,22 @@ def build_fixtures(
 ) -> list[dict[str, Any]]:
     questions = [json.loads(line) for line in eval_path.read_text(encoding="utf-8").splitlines() if line.strip()]
     gold_by_id = _load_gold(gold_path)
-    return [
-        author_plan(
+    fixtures: list[dict[str, Any]] = []
+    for record in questions:
+        row = author_plan(
             record["question"],
             gold_by_id.get(record["id"], {}),
             record,
             operand_facts,
         )
-        for record in questions
-    ]
+        # A `difference ... between A and B` whose slots name the companies in
+        # the other order is a plan the runtime will execute correctly and
+        # answer with the wrong sign, which is what `crossdiff-001` and
+        # `crossdiff-002` did.  The question is the authority here, so a row
+        # that disagrees with it fails the build rather than being written.
+        fixture_integrity.assert_plan_integrity(record["question"], row)
+        fixtures.append(row)
+    return fixtures
 
 
 def operand_fact_ids(gold_path: Path) -> list[str]:

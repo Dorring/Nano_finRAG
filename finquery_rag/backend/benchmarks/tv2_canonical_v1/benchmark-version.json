@@ -12,10 +12,10 @@
       "rows": 120,
       "sha256": "3d2a0c5b7839656ce1414923ab90d03b844bc5c5fc17d82dc5e68224f466eb05"
     },
-    "plan-fixtures-v8.jsonl": {
+    "plan-fixtures-v9.jsonl": {
       "role": "plan fixtures",
       "rows": 120,
-      "sha256": "7463b45a5bfc309d0a5ab29cdb15b3f070c13c8526ae5d1486ca67847dda362d"
+      "sha256": "c20afaec24bcab1360bbcbf9e880d9c8661c24551a1bcef2c59dc0248f3147da"
     }
   },
   "migrations": [
@@ -36,8 +36,21 @@
       "record": "migrations/p1-6-0h.json",
       "spec": "docs/evaluation/p1-6-0g-rederivation.md",
       "stratum": "cross_entity_comparison"
+    },
+    {
+      "applied_in": "docs/evaluation/p1-8-d1-c3-fixture-regeneration.md",
+      "id": "p1.8-d1-c3",
+      "post": {
+        "plan-fixtures-v9.jsonl": "c20afaec24bcab1360bbcbf9e880d9c8661c24551a1bcef2c59dc0248f3147da"
+      },
+      "pre": {
+        "plan-fixtures-v8.jsonl": "7463b45a5bfc309d0a5ab29cdb15b3f070c13c8526ae5d1486ca67847dda362d"
+      },
+      "record": "migrations/p1.8-d1-c3.json",
+      "stratum": "cross_entity_comparison",
+      "summary": "Two cross-entity rows were pinned with the operand order of the pre-P1.6-0H question. The runtime executed them faithfully and released both with the wrong sign. Regenerated through the authoring contract; no question, gold or runtime source changed."
     }
   ],
   "note": "Content changed under unchanged file names at P1.6-0H. The pre-migration revision is identified by the hashes under migrations[].pre; do not treat these file names as implying the pre-migration content.",
-  "version": "tv2-canonical-v1-post-p1.6-0h"
+  "version": "tv2-canonical-v1-post-p1.8-d1-c3"
 }
