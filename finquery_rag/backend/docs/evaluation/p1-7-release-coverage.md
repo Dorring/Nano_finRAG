@@ -228,6 +228,30 @@ The lookup is therefore **off on every production call path**, exactly as the
 structured reranker is, and for the same reason. The seam and the store API stay
 so the next attempt starts from a measured position rather than a hypothesis.
 
+## The arithmetic, so the decision is not a matter of opinion
+
+Every lever that does not touch a safety invariant has now been tried and
+measured:
+
+```
+source-grounded admission        +30 cases   (shipped, this round)
+ontology aliases                  +1   2 refusals in 49 blocked cases
+entity isolation at retrieval     +1   inside the Binder's spread, off
+consolidated-total preference     +5   5 of 18 conflicting coordinates hold one
+plan-entity inference             +2   refused by derive_slot_identities' design
+                                  ---
+ceiling from policy alone      <= 52.6%   measured with the gate fully removed
+target                            60.0%
+```
+
+The gap cannot be closed by policy. What is left is (A) the Binder's conflict
+and retry semantics, which the entity-isolation experiment showed is where the
+refusals actually happen -- the packet had the filer and the Binder still would
+not choose -- or (B) the table, column and row-hierarchy dimensions in the fact
+representation, which is where the twenty-one gate blocks and seven of the ten
+binding losses come from. Both change something this project has deliberately
+frozen, and neither is a decision to take on the way to a metric.
+
 ## Not claimed
 
 - **60% was not reached.** 48.4% is the measured value, and 52.6% is the
@@ -271,3 +295,18 @@ whose measured effect is a single case.
 
 **Entity isolation at retrieval.** Covered above: +1, inside the Binder's spread,
 off by default.
+
+**Two binding failures look like a plan defect and are not one.** `tsla-031` and
+`tsla-033` have a slot whose `entity` is null, so nothing constrains the fact to
+Tesla and the Binder returns `MISSING`. Deriving the entity from the question is
+refused by design rather than overlooked: `derive_slot_identities` is one-way
+from the slot's own mention, because "a plan cannot assert an identity its own
+mention contradicts" and a mention the vocabulary cannot name means *constrained
+and unnamed*, never *unconstrained*. Inventing one from the question is exactly
+the inference that function exists to refuse, and it is worth two cases.
+
+**Period misattribution is not the cause.** The one conflict shape that would
+have been a correctable extraction defect -- a coordinate holding last year's
+number under this year's label -- does not occur. Coca-Cola's `Operating income`
+is clean: `FY2025 13,426`, `FY2024 12,536`, `FY2023 11,868`, one value each. The
+conflicts are rows and columns, which is why they need the representation.
