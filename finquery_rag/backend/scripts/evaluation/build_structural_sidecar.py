@@ -131,17 +131,22 @@ _STATEMENT_HEADING = re.compile(
 
 
 def _nearest_heading(preceding: str) -> str:
-    """The last short, unpunctuated line before a table -- its heading.
+    """The heading above a table, preferring one that names a statement.
 
-    A heading is what a filing puts immediately above a table to say what the
-    table is: `CONSOLIDATED STATEMENTS OF INCOME`, or a segment's name.  Reading
-    a *window* of prose instead is how the first version returned
-    CONSOLIDATED_STATEMENT for a segment table -- 4,000 characters back, a
-    filing says "consolidated" almost everywhere.
+    "Nearest short line" is not enough, and the source shows why: the line
+    immediately above the income statement is `(In millions except per share
+    data)`, with `CONSOLIDATED STATEMENTS OF INCOME` above *that*.  So the
+    reader looks back for a statement caption first and only falls back to the
+    nearest heading-like line, rather than taking whichever is closest.
     """
 
     lines = [line.strip() for line in preceding.split("\n") if line.strip()]
-    for line in reversed(lines[-14:]):
+    recent = lines[-20:]
+    for line in reversed(recent):
+        normalized = _norm(line)
+        if _STATEMENT_HEADING.search(normalized) or "consolidated balance sheet" in normalized:
+            return line
+    for line in reversed(recent):
         if len(line) <= 90 and not line.endswith("."):
             return line
     return ""
