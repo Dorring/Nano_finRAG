@@ -136,34 +136,66 @@ python -m uvicorn src.main:app --host 127.0.0.1 --port 18002 --workers 1
 
 ## 6. 基准与评测复现 (Benchmark Reproduction)
 
-在 `finquery_rag/backend` 目录下，Benchmark V2 可由代码纯正向推导复现：
+在 `finquery_rag/backend` 目录下，可直接运行一键零漂移冻结守卫：
+
+```bash
+# 运行一键行为零漂移冻结守卫
+python scripts/evaluation/final_regression_guard.py --check baseline.json
+# -> 预期输出: BEHAVIORAL_DRIFT = 0
+```
+
+<details>
+<summary><b>🛠️ 点击展开多阶段正向推导与评测脚本</b></summary>
 
 ```bash
 # 1. 重建 Benchmark V2 (由 V1 基础数据推导):
-python scripts/evaluation/build_p1_8c_benchmark_v2.py     --base benchmarks/tv2_canonical_v1 --out /tmp/v2
+python scripts/evaluation/build_p1_8c_benchmark_v2.py --base benchmarks/tv2_canonical_v1 --out /tmp/v2
 
 # 2. 从 v8 规范升级 v9 fixture:
 python scripts/evaluation/build_p1_8_d1_fixture_v9.py --apply
 
 # 3. 校验 fixture 完整性守卫 (C5 操作数顺序一致性):
-python scripts/evaluation/verify_fixture_integrity.py     --eval-set benchmarks/tv2_canonical_v1/canonical-eval-v1.jsonl     benchmarks/tv2_canonical_v1/plan-fixtures-v9.jsonl
+python scripts/evaluation/verify_fixture_integrity.py \
+    --eval-set benchmarks/tv2_canonical_v1/canonical-eval-v1.jsonl \
+    benchmarks/tv2_canonical_v1/plan-fixtures-v9.jsonl
 
 # 4. 执行受信任端到端重放评测:
-python scripts/evaluation/run_p1_2_dual_track_benchmark.py     --track replay     --eval-set  /tmp/v2/canonical-eval-v1.jsonl     --gold-evidence /tmp/v2/gold-evidence-v1.jsonl     --fixtures benchmarks/tv2_canonical_v1/plan-fixtures-v9.jsonl     --out-dir /tmp/replay
+python scripts/evaluation/run_p1_2_dual_track_benchmark.py \
+    --track replay \
+    --eval-set /tmp/v2/canonical-eval-v1.jsonl \
+    --gold-evidence /tmp/v2/gold-evidence-v1.jsonl \
+    --fixtures benchmarks/tv2_canonical_v1/plan-fixtures-v9.jsonl \
+    --out-dir /tmp/replay
 
-# 5. 运行一键行为零漂移冻结守卫:
-python scripts/evaluation/final_regression_guard.py --expect --write baseline.json
-python scripts/evaluation/final_regression_guard.py --check  baseline.json
-# -> 预期输出: BEHAVIORAL_DRIFT = 0
+# 5. 测量多通道检索召回率:
+python scripts/evaluation/run_nf_v3_retrieval_benchmark.py \
+    --eval-set /tmp/v2/canonical-eval-v1.jsonl \
+    --gold-evidence /tmp/v2/gold-evidence-v1.jsonl \
+    --fixtures benchmarks/tv2_canonical_v1/plan-fixtures-v9.jsonl \
+    --out-dir /tmp/retrieval
 ```
+
+</details>
 
 ---
 
 ## 7. 可靠性与测试保障
 
-- **5148 个自动化测试全绿通过**，覆盖架构一致性、语义门禁、绑定器契约与确定性计算。
-- **15 种对抗性故障注入测试 (Fault Injection)**：网络断联、模型输出格式损坏、恶意篡改数字、预算耗尽、证据实质冲突 $ightarrow$ **0 错误释放，100% 成功阻断**。
-- 完整的设计决策背景、事实证据链与已知技术债务请参阅 [`finquery_rag/backend/docs/evaluation/FINAL_SEAL.md`](finquery_rag/backend/docs/evaluation/FINAL_SEAL.md)。
+| 验证维度 | 测试规模 / 覆盖范围 | 验证结论 |
+|:---|:---|:---|
+| **全量自动化测试** | 5,148 passed · 0 回归 | **100% 通过** |
+| **故障注入对抗测试 (Fault Injection)** | 15 种异常场景（网络断联、输出损坏、事实冲突等） | **0 错误释放 · 100% 安全阻断** |
+| **行为零漂移守卫** | 全局状态机与输出确定性基线 | `BEHAVIORAL_DRIFT = 0` |
+| **Fixture 契约完整性** | C5 操作数顺序与实体坐标对齐 | **严格通过** |
+
+---
+
+## 8. 核心工程决策
+
+- **确定性计算器 vs. 大模型心算**：将数学运算剥离出大模型并由 Python Decimal 严密执行，将数值正确性从“提示词工程技巧”升级为“可确定性单测”。
+- **严谨失败闭合 vs. 概率性猜答**：在严肃金融问答中，错误答案的危害远超拒绝回答。面对冲突或缺失，返回显式阻断码（Reason Code）是唯一的企业级合规方案。
+- **规划器主导操作数顺序**：操作数语义角色（被减数、除数等）由规划器严格绑定至事实坐标，绝不由大模型依据自然语言句式臆测。
+- **多层检索解耦与透明评测**：结构化重排使 Top-5 召回显著提升至 85.3%，系统保持检索、重排与绑定的模块化解耦，每个阶段均可独立度量。
 
 ---
 
